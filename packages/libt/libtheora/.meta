@@ -1,0 +1,7 @@
+<package name="libtheora" project="openSUSE:Factory">
+  <title>Free Video Codec</title>
+  <description>Theora is a free video codec based on VP3. The package contains the
+library that can decode and encode Theora streams. Theora is also able
+to playback VP3 streams.</description>
+  <devel project="multimedia:libs" package="libtheora"/>
+</package>

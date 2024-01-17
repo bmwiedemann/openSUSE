@@ -1,0 +1,5 @@
+<package name="gnome-backgrounds" project="openSUSE:Factory">
+  <title>GNOME Backgrounds</title>
+  <description>Background images from the GNOME project.</description>
+  <devel project="GNOME:Factory" package="gnome-backgrounds"/>
+</package>

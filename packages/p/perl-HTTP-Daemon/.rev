@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b434dfa3c69d6b874fe69de7e9f44a5f</srcmd5>
+    <version>6.00</version>
+    <time>1300454813</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64414 from user vitezslav_cizek
+</comment>
+    <requestid>64414</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e0026a410a48af060cf19e985b459f5d</srcmd5>
+    <version>6.00</version>
+    <time>1300454823</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64414
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e0026a410a48af060cf19e985b459f5d</srcmd5>
+    <version>6.00</version>
+    <time>1319182276</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>a944bbfda56847fac40adbcfb9a25e26</srcmd5>
+    <version>6.00</version>
+    <time>1323193362</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39015b6400e1af40a6cedf96a299ef36</srcmd5>
+    <version>6.01</version>
+    <time>1330619006</time>
+    <user>coolo</user>
+    <comment>- updated to 6.01
+  If you bind localhost, don't trust gethostbyaddr() to resolve the
+  address.  [RT#67247]
+  Restore perl-5.8.1 compatiblity.</comment>
+    <requestid>105997</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>39015b6400e1af40a6cedf96a299ef36</srcmd5>
+    <version>6.01</version>
+    <time>1340183854</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>39015b6400e1af40a6cedf96a299ef36</srcmd5>
+    <version>6.01</version>
+    <time>1359109697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>39015b6400e1af40a6cedf96a299ef36</srcmd5>
+    <version>6.01</version>
+    <time>1379663704</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>39015b6400e1af40a6cedf96a299ef36</srcmd5>
+    <version>6.01</version>
+    <time>1409302324</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0dcdbdbc52ecc4f1ff2c99a3417d23fd</srcmd5>
+    <version>6.04</version>
+    <time>1554379964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690873</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9a52638738f96c4783dbdc060007874f</srcmd5>
+    <version>6.05</version>
+    <time>1564488121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719394</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4886a9154c51f4609ba44fb010e23c5d</srcmd5>
+    <version>6.06</version>
+    <time>1567848532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727335</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a32d791338b3ffc2eff9c0d42f23030f</srcmd5>
+    <version>6.10</version>
+    <time>1591101221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809206</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8a84e7ee57a39d54a1e6d155889d3157</srcmd5>
+    <version>6.12</version>
+    <time>1591742016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811724</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>da8d0d6d31842a5916cc59755665f048</srcmd5>
+    <version>6.13</version>
+    <time>1645054210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955047</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>634a1651c75a8ce34925d0d56e1ce3e9</srcmd5>
+    <version>6.14</version>
+    <time>1646848025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960193</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>d3e9b91b937d7a952cf92759007e1ba8</srcmd5>
+    <version>6.14</version>
+    <time>1659301235</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>991013</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b3207e649ce9082198e7da934af9b157</srcmd5>
+    <version>6.16</version>
+    <time>1678555418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070691</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="Photini" project="openSUSE:Factory">
+  <title>An easy to use digital photograph metadata (EXIF, IPTC, XMP) editing application.</title>
+  <description>A free, easy to use, digital photograph metadata (EXIF, IPTC, XMP) editing application.
+
+&quot;Metadata&quot; is said to mean &quot;data about data&quot;. In the context of digital photographs this means information that isn't essential in order to display the image, but tells you something about it. For example a title and description of the scene or the date &amp; time and the GPS coordinates of the camera's position when the picture was taken.
+
+</description>
+  <devel project="graphics" package="Photini"/>
+</package>

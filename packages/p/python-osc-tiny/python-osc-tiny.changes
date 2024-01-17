@@ -1,0 +1,300 @@
+-------------------------------------------------------------------
+Mon Dec 11 15:55:04 UTC 2023 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.8.1
+  * Support for new OSC config
+
+-------------------------------------------------------------------
+Wed Nov  29 18:03:47 UTC 2023 - Chen Huang <chhuang@suse.com>
+
+- Release 0.8.0
+  * Added the attributes extension
+  * Project.get_meta: target the /_project path to really get specific revisions
+  * Add an optional rev parameter to Project.get_meta
+  * Reusable function to extract error message from responses and converted get_objectified_xml into standalone function
+  * Removed backport of lru_cache
+  * Session optimizations
+  * Add Build.get_log
+
+-------------------------------------------------------------------
+Mon Mar  6 06:03:47 UTC 2023 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release .0.7.12
+  * Enhanced usability and reliability for `HttpSignatureAuth`
+  * Prevent sharing of sessions across forked processes
+  * Fixed typo in quickstart doc
+
+-------------------------------------------------------------------
+Mon Jan  9 08:44:37 UTC 2023 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.11
+  * Make it possible to force setting meta
+  * Improved strong authentication method
+  * Support product list views honoring the `expand` parameter
+
+-------------------------------------------------------------------
+Mon Jan  2 09:33:59 UTC 2023 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.10
+  * Include the original error message, when an SSH key cannot be read
+  * Added a link to the documentation of `HttpSignatureAuth`
+  * Allow `Package.exists` to raise exceptions
+  * Added methods to get/set the project config
+
+-------------------------------------------------------------------
+Mon Dec 12 09:09:04 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.9
+  * Simplified handling of SSH keys (fixes #114)
+  * Replaced `Request.cmd` with `Request.update` (fixes #113)
+  * Added a comment parameter to project and package `set_meta`
+
+-------------------------------------------------------------------
+Wed Nov  2 12:07:32 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.7
+  * Support for Python 3.11
+  * Workaround for another parameter inconsistency in the API
+
+-------------------------------------------------------------------
+Thu Oct 20 08:12:01 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.6
+  * Treat `deleted` and `expand` parameters of `/source/<project>/` 
+    as boolean (despite not being documented as such)
+  * Do not send the `deleted` parameter, when the `view` parameter 
+    is present
+
+-------------------------------------------------------------------
+Fri Oct  7 14:12:34 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.5
+  * Workaround for another inconsistency in parameter handling in OBS API
+
+-------------------------------------------------------------------
+Wed Oct  5 08:51:51 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.4
+  * Deprecated `Project.get_files` (fixes #101)
+    (i.e. yet another workaround for an inconsistent server API)
+  * Updated documentation for `Package.cmd` method
+
+-------------------------------------------------------------------
+Mon Sep 19 12:11:43 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.3
+  * Consider "boolean" parameters of specific API endpoints (fixes #97)
+    Workaround for
+    https://github.com/openSUSE/open-build-service/issues/9715
+
+-------------------------------------------------------------------
+Mon Sep 19 07:45:03 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.2
+  * Suppress logging of response content when streaming
+  * Fixed error in docstring
+  * Removed Python2 support libararies (closes #81)
+  * Removed warning about boolean query params
+  * Fixed issues in `Project.put_meta` (fixes #84)
+  * Deprecated `projects.put_meta` in favor of using `set_meta` (fixes #85)
+
+-------------------------------------------------------------------
+Tue Aug 16 12:34:34 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.1
+  * Make distinction between "true" booleans and pretenders
+
+-------------------------------------------------------------------
+Tue Aug 16 07:51:59 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.0
+  * Support setting of multiple values on attribute
+  * Added feature to download binaries
+  * Handle boolean query params
+  * Convert relative paths to SSH keys to absolute paths
+
+-------------------------------------------------------------------
+Wed Aug  3 09:48:04 UTC 2022 - Marina Latini <marina.latini@suse.com>
+
+- Buildrequires cached-property always, not only for Python lower than 3.8
+  * This is needed due to a mismatching python-rpm-macros
+
+-------------------------------------------------------------------
+Wed Aug  3 08:01:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix conditional Requires and BuildRequires.
+
+-------------------------------------------------------------------
+Tue Aug  2 15:45:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- It's PyYAML, not pyYAML.
+
+-------------------------------------------------------------------
+Tue Aug  2 08:23:02 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix two typos
+
+-------------------------------------------------------------------
+Mon Aug  1 21:35:10 UTC 2022 - Marina Latini <marina.latini@suse.com>
+
+- Enhanced dependency management for Py3.7 and earlier
+  * Re-add `responses` that is needed for building tests
+- Use python_module macro for build requires
+- Remove the BuildRequires:  %{python_module devel}
+- Refactoring of spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jul 21 14:15:00 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.6
+  * Workaround for credential mangers of `osc` having different return types
+
+-------------------------------------------------------------------
+Wed Jul 20 08:49:57 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.5: Enhanced dependency management
+  * Removed `responses` as requirement
+  * Use `cached_property` instead of `backports.cached_property` 
+    (which is not in the openSUSE repos)
+  * Only install `cached_property` as requirement for Py3.7 and earlier
+
+-------------------------------------------------------------------
+Tue Jul 19 07:01:51 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.4
+  * Handle 40x (x!=1) responses properly in `HttpSignatureAuth`
+
+-------------------------------------------------------------------
+Mon Jul 18 07:55:16 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.3
+  * Do not assume that `oscrc` contains the SSH passphrase
+  * Handle absence of `sshkey` in `.oscrc` gracefully 
+
+-------------------------------------------------------------------
+Thu Jun 30 08:48:29 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.2
+  * Added `cmd` method to `Build` extension
+  * Fixes for sessions and authentication:
+    * Use thread-safe sessions and support huge trees again
+    * Support for server returning multiple `WWW-Authenticate` headers
+
+-------------------------------------------------------------------
+Fri Jun 17 09:49:36 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.1
+  * Removed obsolete parser instance to allow pickling of Osc instances 
+
+-------------------------------------------------------------------
+Thu Jun  9 11:53:07 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.0
+  * Support for the "Signature authentication scheme"
+  * Revised method to retrieve credentials from `osc`
+
+-------------------------------------------------------------------
+Tue May 17 13:03:24 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.5.0
+  * Added capability to log API requests (without headers!) and responses
+  * Make it possible to add a comment when pushing files
+  * Added method to get build history
+
+
+-------------------------------------------------------------------
+Thu Jan 20 10:54:08 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.4.2
+  * Bugfix: Explicitly quote special characters in URLs
+
+-------------------------------------------------------------------
+Wed Sep 22 10:45:07 UTC 2021 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.4.1
+  * Bugfix for configuration utilities
+
+- Release 0.4.0
+  * Added support to parse `osc` configuration
+  * Bugfix for `origin` extension
+  
+
+-------------------------------------------------------------------
+Wed Feb 24 10:49:30 UTC 2021 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.3.3
+  * Added the `expand` parameter to some methods of the packages extension.
+
+-------------------------------------------------------------------
+Thu Jan  7 08:24:06 UTC 2021 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.3.2
+  * Support cached_property decorator from the OpenSUSE package
+
+- Release 0.3.1
+  * Support for PyYAML without libyaml
+
+- Release 0.3.0
+  * Added osctiny.extensions.origin
+  * Added osctiny.utils.mapping
+  * Removed support for all Python version prior to 3.6
+
+-------------------------------------------------------------------
+Tue Sep 15 10:52:18 UTC 2020 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- version update to 0.2.4
+  * Added osctiny.extensions.buildresults.Build.get_binary()
+  * Added osctiny.extensions.buildresults.Build.get_package_list()
+  * Changed osctiny.osc.Osc.get_objectified_xml() to accept request objects and strings
+
+-------------------------------------------------------------------
+Mon Jun 29 06:38:31 UTC 2020 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- version update to 0.2.3
+  * Added the `distributions` extension
+
+-------------------------------------------------------------------
+Tue Jun  2 14:00:34 UTC 2020 - pgajdos@suse.com
+
+- for python2, require python2-unittest2 and python2-mock for build
+
+-------------------------------------------------------------------
+Fri Mar 27 13:45:55 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.2.2
+ * Added the `issues` extension
+ * Give (read only) access to issues and issue trackers known to BuildService
+ * Set version to 0.2.2
+ * Dirty hacks for Python2 compatibility
+
+-------------------------------------------------------------------
+Thu Jan  9 12:46:29 UTC 2020 - Chen Huang <chhuang@suse.com>
+
+- Updated to version 0.2.1
+- Allow invalid timestamps during changelog parsing
+- Removed dependency of the future package
+- Backport for Python2 compatibility
+- Bugfixes for :py:mod:`osctiny.utils.changelog`
+
+-------------------------------------------------------------------
+Mon Dec 30 15:53:34 UTC 2019 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Version 0.1.11
+- Changed structure of sub-modules
+- Added `osctiny.utils.changelog`
+- Added parameter `expand` to `osctiny.extensions.packages.Package.get_file`
+
+-------------------------------------------------------------------
+Tue Dec  3 11:36:51 UTC 2019 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Source package instead of _serive "download_files"
+
+-------------------------------------------------------------------
+Tue Dec  3 10:38:41 UTC 2019 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Version 0.1.10
+
+-------------------------------------------------------------------
+Tue Dec  3 10:13:08 UTC 2019 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- New package osc-tiny (version 0.1.9)

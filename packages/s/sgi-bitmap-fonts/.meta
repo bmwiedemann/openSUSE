@@ -1,0 +1,5 @@
+<package name="sgi-bitmap-fonts" project="openSUSE:Factory">
+  <title>sgi-fonts</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="M17N:fonts" package="sgi-bitmap-fonts"/>
+</package>

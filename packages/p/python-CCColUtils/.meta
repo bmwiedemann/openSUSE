@@ -1,0 +1,5 @@
+<package name="python-CCColUtils" project="openSUSE:Factory">
+  <title></title>
+  <description>Kerberos5 Credential Cache Collection Utilities</description>
+  <devel project="devel:languages:python" package="python-CCColUtils"/>
+</package>

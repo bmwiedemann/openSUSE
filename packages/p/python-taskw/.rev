@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a4af7cb663ae5f3564e441f2929996d</srcmd5>
+    <version>1.2.0</version>
+    <time>1571653941</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>741424</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4da391f6b64080892b9cac43fd47d681</srcmd5>
+    <version>1.3.0</version>
+    <time>1607548900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854125</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>645374b29ab12dbd7567e784e58d6504</srcmd5>
+    <version>1.3.0</version>
+    <time>1629471476</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>913284</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>62815cd8edc1f85b6a146a850a09a601</srcmd5>
+    <version>1.3.1</version>
+    <time>1645054277</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.1:
+  * Adds support for Taskwarrior 2.6.0
+  * Fixes changelog syntax
+  * Add tests for pull requests
+- drop taskw-1.3.0-fix-build-with-taskwarrior-2.5.2.patch (upstream)</comment>
+    <requestid>955484</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dec8ca96a6eb400d23f0d7c0741b1eb3</srcmd5>
+    <version>2.0.0</version>
+    <time>1663155890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003394</requestid>
+  </revision>
+</revisionlist>

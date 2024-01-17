@@ -1,0 +1,27 @@
+Index: xsp-3.0.11/packaging/opensuse/xsp2.service
+===================================================================
+--- /dev/null
++++ xsp-3.0.11/packaging/opensuse/xsp2.service
+@@ -0,0 +1,22 @@
++[Unit]
++Description=Small Web Server Hosting ASP.NET
++# Required-Start:    $syslog $remote_fs $local_fs $network
++Requires=syslog.socket
++Requires=remote-fs.target
++Requires=local-fs.target
++Requires=network.target
++# Should-Start: $time ypbind smtp
++Wants=time-sync.target
++Wants=ypbind.service
++# Wants=<something providing mail service>
++
++[Service]
++# Assumption due to the fact that a PIDfile is used
++Type=forking
++EnvironmentFile=/etc/sysconfig/xsp2
++PIDFile=/var/run/xsp2/xsp2.pid
++ExecStart=/usr/share/xsp/scripts/xsp2.init start
++ExecStop=/usr/share/xsp/scripts/xsp2.init stop
++
++[Install]
++WantedBy=multi-user.target

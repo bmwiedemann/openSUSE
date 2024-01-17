@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:08:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Nov  1 23:47:27 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update wai-extra to version 3.1.13.0 revision 1.
+  ## 3.1.13.0
+
+  * Added `Combine Headers` `Middleware` [#901](https://github.com/yesodweb/wai/pull/901)
+
+-------------------------------------------------------------------
+Sat May 14 18:06:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update wai-extra to version 3.1.12.1.
+  ## 3.1.12.1
+
+  * Include test/{json.gz,noprecompress} as extra-source-files [#887](https://github.com/yesodweb/wai/pull/887)
+
+  ## 3.1.12
+
+  * Added gzip caching based on `ETag` [#885](https://github.com/yesodweb/wai/pull/885):
+
+  ## 3.1.11
+
+  * Overhaul to `Network.Wai.Middleware.Gzip` [#880](https://github.com/yesodweb/wai/pull/880):
+      * Don't fail if quality value parameters are present in the `Accept-Encoding` header
+      * Add `Accept-Encoding` to the `Vary` response header, instead of overriding it
+      * Add setting parameter to decide the compression threshold (`gzipSizeThreshold`)
+      * Always skip compression on a `206 Partial Content` response
+      * Only catch `IOException`s and `ZlibException`s when using `GzipCacheFolder`
+      * Added documentation on the usage of `gzip` and its decision-making.
+
+  ## 3.1.10.1
+
+  * Added documentation to `Accept Override` `Middleware` [#884](https://github.com/yesodweb/wai/pull/884)
+
+  ## 3.1.10
+
+  * Fixed import linting mistake introduced in `3.1.9` ([#875)](https://github.com/yesodweb/wai/pull/875)) where `Network.Wai.Handler.CGI` wouldn't compile on Windows. [#881](https://github.com/yesodweb/wai/pull/880)
+  * Added `Select` to choose between `Middleware`s [#878](https://github.com/yesodweb/wai/pull/878)
+
+  ## 3.1.9
+
+  * Cleanup and linting of most of `wai-extra` and refactoring the `gzip` middleware to keep it more DRY and to skip compression earlier if possible [#875](https://github.com/yesodweb/wai/pull/875)
+  * Added `HealthCheckEndpoint` `Middleware`s for health check [#877](https://github.com/yesodweb/wai/pull/877)
+
+-------------------------------------------------------------------
+Mon Jan  3 14:20:11 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update wai-extra to version 3.1.8.
+  ## 3.1.8
+
+  * Added an `ApacheWithSettings` output format for `RequestLogger` that allows request filtering similar to `DetailedWithSettings` and logging of the current user via wai-logger's `initLoggerUser` [#866](https://github.com/yesodweb/wai/pull/866)
+
+-------------------------------------------------------------------
+Mon Nov  1 08:26:51 UTC 2021 - psimons@suse.com
+
+- Update wai-extra to version 3.1.7.
+  ## 3.1.7
+
+  * Added new `mPrelogRequests` option to `DetailedSettings` [#857](https://github.com/yesodweb/wai/pull/857)
+
+-------------------------------------------------------------------
+Tue Jan 19 09:00:23 UTC 2021 - psimons@suse.com
+
+- Update wai-extra to version 3.1.6.
+  ## 3.1.6
+
+  * Remove unused dependencies [#837](https://github.com/yesodweb/wai/pull/837)
+
+-------------------------------------------------------------------
+Mon Jan  4 11:06:39 UTC 2021 - psimons@suse.com
+
+- Update wai-extra to version 3.1.5.
+  ## 3.1.5
+
+  * `Network.Wai.Middleware.RealIp`: Add a new middleware to infer the remote IP address from headers [#834](https://github.com/yesodweb/wai/pull/834)
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Dec 14 13:07:29 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.1.4.1.
+  ## 3.1.4.1
+
+  * `Network.Wai.Middleware.Gzip`: Add `Vary: Accept-Encoding` header to responses [#829](https://github.com/yesodweb/wai/pull/829)
+
+-------------------------------------------------------------------
+Sun Dec  6 13:36:19 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.1.4.
+  ## 3.1.4
+
+  * Export `Network.Wai.Middleware.RequestLogger.JSON.requestToJSON` [#827](https://github.com/yesodweb/wai/pull/827)
+
+-------------------------------------------------------------------
+Fri Nov 27 09:25:27 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.1.3.
+  ## 3.1.3
+
+  * Add a `DetailedWithSettings` output format for `RequestLogger` that allows to hide requests and modify query parameters [#826](https://github.com/yesodweb/wai/pull/826)
+
+-------------------------------------------------------------------
+Sat Nov  7 15:34:15 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.1.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/wai-extra-3.1.2/src/ChangeLog.md
+
+-------------------------------------------------------------------
+Tue Oct  6 08:55:59 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.1.1.
+  ## 3.1.1
+
+  * 'Network.Wai.Middleware.RequestSizeLimit': Add a new middleware to reject request bodies above a certain size. [#818](https://github.com/yesodweb/wai/pull/818/files)
+
+-------------------------------------------------------------------
+Tue Sep 22 09:35:49 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.1.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/wai-extra-3.1.0/src/ChangeLog.md
+
+-------------------------------------------------------------------
+Fri Sep 18 02:00:38 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.0.31.
+  ## 3.0.31
+
+  * Undo WaiTestFailure change in previous release
+
+  ## 3.0.30
+
+  * `Network.Wai.Test`: Add support source locations to assertion primitives [#812](https://github.com/yesodweb/wai/pull/812)
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:36 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:15 UTC 2020 - psimons@suse.com
+
+- Add wai-extra at version 3.0.29.2.
+

@@ -1,0 +1,5 @@
+<package name="yast2-bootloader" project="openSUSE:Factory">
+  <title>YaST2 - Bootloader Configuration</title>
+  <description>This package contains the YaST2 component for bootloader configuration.</description>
+  <devel project="YaST:Head" package="yast2-bootloader"/>
+</package>

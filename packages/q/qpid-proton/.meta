@@ -1,0 +1,5 @@
+<package name="qpid-proton" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:messaging:amqp" package="qpid-proton"/>
+</package>

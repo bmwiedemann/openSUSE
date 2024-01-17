@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Mon Jun  3 15:58:49 UTC 2013 - coolo@suse.com
+
+- updated to 0.18
+    - Add IO::Wrap dependency to Makefile.PL (RT78412).
+    - Change longname() to detect names in newer versions of Outlook.
+      (RT78484)
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:10 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Feb  2 13:40:34 UTC 2011 - vcizek@novell.com
+
+- bzipped source tarball 
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:13 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:33 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct  4 15:45:40 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Fri Aug 22 14:16:18 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Jul 17 13:13:43 CEST 2003 - choeger@suse.de
+
+- use install_vendor and new %perl_process_packlist macro
+
+-------------------------------------------------------------------
+Tue Jun 17 11:41:07 CEST 2003 - choeger@suse.de
+
+- updated filelist
+
+-------------------------------------------------------------------
+Tue May 20 09:08:33 CEST 2003 - choeger@suse.de
+
+- remove installed (but unpackaged) file perllocal.pod
+
+-------------------------------------------------------------------
+Mon Aug  5 12:45:34 MEST 2002 - link@suse.de
+
+- updated to 0.17
+- overhauled spec file 
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Sun Jan 13 03:55:44 MET 2002 - link@suse.de
+
+- update to v0.16 
+
+-------------------------------------------------------------------
+Thu Nov 16 09:28:33 CET 2000 - ro@suse.de
+
+- typo fixed 
+
+-------------------------------------------------------------------
+Wed Nov 15 17:59:37 CET 2000 - choeger@suse.de
+
+- long package name
+- buildroot
+
+-------------------------------------------------------------------
+Wed Jul 19 10:42:28 MEST 2000 - choeger@suse.de
+
+- first package, v0.08
+

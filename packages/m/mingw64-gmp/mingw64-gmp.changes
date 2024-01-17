@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Sep 14 06:02:45 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Add rpmlintrc file to avoid build failures due to windows binaries
+  being in a noarch package
+
+-------------------------------------------------------------------
+Tue Jan 26 10:49:43 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add missing dependency to runtime package for development
+  package to be in sync with native package
+
+-------------------------------------------------------------------
+Wed Nov 20 13:40:31 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- inital package for Factory submission

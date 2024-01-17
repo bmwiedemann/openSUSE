@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4583f59787ff12493285cd65e3ad68bb</srcmd5>
+    <version>1.0.12</version>
+    <time>1593904675</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission to Factory</comment>
+    <requestid>818484</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4f405eaf7383f7bb176f9252e2b98b8d</srcmd5>
+    <version>1.1.0</version>
+    <time>1621269933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893786</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>17be3c6e1048075c917c13d1bf2c6e0f</srcmd5>
+    <version>1.1.0</version>
+    <time>1625225214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903363</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1b63922c7df73b7fd42a6cba1b837e68</srcmd5>
+    <version>1.1.0</version>
+    <time>1633365618</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>922870</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>1870c9f448a94df5205b77b14e2f8a91</srcmd5>
+    <version>1.1.0</version>
+    <time>1682079448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080994</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8a4b58ab1e527a351d69493174be39ea</srcmd5>
+    <version>1.1.4</version>
+    <time>1691674410</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.4, refresh spec file to newer build approach
+- Update to version 1.1.4
+  + Support for PostgreSQL 16
+  1.1.3:
+  + Support PgSQL 15 regression testing changes.
+  1.1.2:
+  + Fixes for PgSQL 14 support of UPDATE/DELETE modes
+  + More logging information available when debugging levels enabled
+  1.1.1:
+  + Support PostgreSQL 14
+</comment>
+    <requestid>1103268</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a8b5fce1240323f516ad2892d48dcaf8</srcmd5>
+    <version>1.1.4</version>
+    <time>1692045376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103911</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>cdc0557303fa667bdb7654b0feacb95d</srcmd5>
+    <version>1.1.4</version>
+    <time>1696529104</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115799</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,28 @@
+Index: metamagic.json-0.9.6/metamagic/json/encoder.py
+===================================================================
+--- metamagic.json-0.9.6.orig/metamagic/json/encoder.py
++++ metamagic.json-0.9.6/metamagic/json/encoder.py
+@@ -11,7 +11,8 @@ from re import compile as re_compile
+ from numbers import Number
+ from decimal import Decimal
+ from math import isnan, isinf
+-from collections import OrderedDict, Set, Sequence, Mapping
++from collections import OrderedDict
++from collections.abc import Set, Sequence, Mapping
+ from uuid import UUID
+ from datetime import date, time
+ 
+Index: metamagic.json-0.9.6/metamagic/json/tests/test_encoder.py
+===================================================================
+--- metamagic.json-0.9.6.orig/metamagic/json/tests/test_encoder.py
++++ metamagic.json-0.9.6/metamagic/json/tests/test_encoder.py
+@@ -16,7 +16,8 @@ except ImportError:
+ 
+ from json import loads as std_loads, dumps as std_dumps
+ from decimal import Decimal
+-from collections import OrderedDict, Set, Sequence, Mapping
++from collections import OrderedDict
++from collections.abc import Set, Sequence, Mapping
+ from uuid import UUID
+ from datetime import datetime, tzinfo, timedelta, date, time
+ 

@@ -1,0 +1,5 @@
+<package name="python-osc-tiny" project="openSUSE:Factory">
+  <title>OSC Tiny</title>
+  <description>This project aims to provide a minimalistic and transparent client for accessing the OpenBuildService API.</description>
+  <devel project="devel:languages:python" package="python-osc-tiny"/>
+</package>
