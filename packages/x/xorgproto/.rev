@@ -1,0 +1,201 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8ad724154d4dd5a1f30a3de7be2dec21</srcmd5>
+    <version>2018.4</version>
+    <time>1532295229</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete protocol packages by their corresponding old package names, not by
+  their pkconfig(...) provides. Additionally move the obsoletes to the -devel
+  package to take effect.
+
+- Create package xorgproto with initial version 2018.4:
+  This package contains all previously split up xorg protocol headers in one
+  package (again!). Additionally this package contains two new protocol 
+  versions required by the upcoming XServer 1.20:
+  + dri3proto version 1.2
+  + randrproto version 1.6
+- Obsolete the old *prot packages by using the actual protocol version to keep
+  this package compatible with the old versioning scheme.
+- &quot;Prefer: xorgproto-devel&quot; in the project config is required to prefer it for
+  now
+
+If things with 
+
+  &quot;Prefer: xorgproto-devel&quot; 
+
+in the project config works out in factory, I'll make delete requests
+for *proto packages.</comment>
+    <requestid>620406</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>415f9cd5d6c0c6618845b422957a7cee</srcmd5>
+    <version>2019.1</version>
+    <time>1563259028</time>
+    <user>dimstar_suse</user>
+    <comment>- use --enable-legacy configure option on existing products in order
+  not to break package builds, which still requires any of these 
+  extensions:
+  * trapproto
+  * xf86miscproto
+  * xproxymngproto
+  deleterequests for the affected packaages have been done for factory/TW
+
+- xorgproto 2019.1
+  * This release boasts a bunch of cleanup work and a few new 
+    keysyms. No functional changes to any of the protocols.</comment>
+    <requestid>711706</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>461287aa790883f23e2595a7c8ce0897</srcmd5>
+    <version>2019.2</version>
+    <time>1571950844</time>
+    <user>dimstar_suse</user>
+    <comment>- xorgproto 2019.2
+  * This release moves more header files to the legacy set. Note
+    that this means libX11 older than 1.6.9 and libXvMC older
+    than 1.0.12 will not build without some legacy headers installed.</comment>
+    <requestid>741048</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c3dcc9770974be79b5142004689e169d</srcmd5>
+    <version>2020.1</version>
+    <time>1587324924</time>
+    <user>dimstar_suse</user>
+    <comment>- xorgproto 2020.1
+  * This release adds a new keysym, a state-change event to the
+    DPMS extension, synchronizes more of the meson and autotools
+    build sytems, and converts some quasi-text documentation to
+    Markdown.</comment>
+    <requestid>793959</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>72b669227aae300b94e0d9f25eb4e414</srcmd5>
+    <version>2021.3</version>
+    <time>1614684350</time>
+    <user>RBrownSUSE</user>
+    <comment>- xorgproto 2021.3
+If you thought the 2021.2 release was exciting, well, you're in for a
+surprise: this one even builds with meson! How cool is that?!
+Somewhat related: the new script to generate and verify the keysyms was
+missing from the (autotools-generated) tarball, causing a meson build from
+that tarball to fail during the setup phase. This is fixed now.
+No changes to the rest of the sources, so this is effectively identical to
+yesterday's tarball.
+
+- xorgproto 2021.2
+This release is mostly all about keysyms. Some additions to Vietnamese and
+Hangul but the big set of commits here is catching up with several years of
+Linux kernel releases.
+The kernel's evdev interface has semantic keycodes (e.g. KEY_ESC is what
+you'd expect). Beyond the normal range expected to change with different
+layouts there are many keycodes that should only ever do one thing.
+For example, KEY_ONSCREEN_KEYBOARD should display the OSK regardless of
+layout). In the past, we've added these keysyms on a as-requested basis.
+We now have a reserved subrange in the already reserved range for XF86Foo
+keysyms. Within that range, keysyms map directly to their evdev
+counterparts, making future updates easier. The above example
+KEY_ONSCREEN_KEYBOARD now has a XF86OnScreenKeyboard keysym.
+The header file follows a strict convention to make this range
+machine-readable, xkeyboard-config can make use of this to
+make those keysyms available by default. Note that almost all keys are
+outside the X keycode range so very little will change under X.
+Note that most keys exist on selected devices only so the practial use is
+quite limited. But those keysyms are available through normal XKB
+configuration so users can re-map existing keys where needed.
+Aside from those, a bit of misc cleanup work. Many thanks to all</comment>
+    <requestid>875092</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e3ef10bc3c2c97bde7508fc79ee29dde</srcmd5>
+    <version>2021.4</version>
+    <time>1619973312</time>
+    <user>dimstar_suse</user>
+    <comment>- xorgproto 2021.4
+The big new feature in this release is Olivier's addition that makes up
+XFixes 6: the new ClientDisconnectMode. An X server that is started on
+demand (Xwayland) should ideally also terminate when the last client
+disconnects. However, some X11 clients that provide system services will
+linger around forever, preventing that shutdown.
+With the new XFixes request, a client can designate itself as
+to-be-terminated and the X server can ignore those clients when counting the
+number of remaining clients. If no other clients are left, the server can
+shut down.
+Note that this requires changes to the X server and each client to work.
+
+yesterday's tarball.</comment>
+    <requestid>889520</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c76162262ec0e61629e0963e826f5467</srcmd5>
+    <version>2021.4</version>
+    <time>1622928632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896416</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8e811cf0fcac0e8831be83a7f2b1626d</srcmd5>
+    <version>2021.5</version>
+    <time>1632251533</time>
+    <user>dimstar_suse</user>
+    <comment>- xorgproto 2021.5
+  * This release introduces the version 2.4 of the X Input
+    protocol. It contains the addition of the concept of touchpad
+    gestures. Touchpad gesture is an interaction of two or more
+    fingers that can be interpreted as a swipe or a pinch.</comment>
+    <requestid>919283</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>985af354d7a8ac7bbf1cf45892e5fd20</srcmd5>
+    <version>2022.1</version>
+    <time>1650735896</time>
+    <user>dimstar_suse</user>
+    <comment>- xorgproto 2022.1
+  * No changes to the actual protocols, just the additions of some
+    new keysyms provided by the Linux kernel.</comment>
+    <requestid>971274</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dffbef7eb96f30b4b21b9acf8de923be</srcmd5>
+    <version>2022.2</version>
+    <time>1661257561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998573</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c9e12a824709dc2c8bf14e66fa9afa10</srcmd5>
+    <version>2022.2</version>
+    <time>1675265906</time>
+    <user>dimstar_suse</user>
+    <comment>- switched to multibuild for -doc package to avoid build cycles
+
+- Build documentation (boo#1207721)</comment>
+    <requestid>1062233</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bd4d9e26a3ab608541edfe02dc661d76</srcmd5>
+    <version>2023.1</version>
+    <time>1686576305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2023.1
+This release introduces a couple of new options for existing extensions:
+ * A new option PresentOptionAsyncMayTear for the Present extension,
+ * A new flag XFixesClientDisconnectFlagForceTerminate to the XFixes
+   XFixesClientDisconnectFlags intended to be used by screen lockers,
+   where the server must exit if the screen locker does.
+The other changes include various fixes, clarifications and keysym
+definitions updates:</comment>
+    <requestid>1091981</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c3e6f0eeb17e56ee58d4e1f7f7e4ecdd</srcmd5>
+    <version>2023.2</version>
+    <time>1687122454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2023.2
+  * quick-fix release to address the Present protocol version not
+    being updated in xorgproto-2023.1.</comment>
+    <requestid>1093477</requestid>
+  </revision>
+</revisionlist>

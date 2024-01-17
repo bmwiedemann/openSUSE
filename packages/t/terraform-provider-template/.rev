@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ef5e62b3655ef580ef90a342d0c9e35</srcmd5>
+    <version>2.1.2</version>
+    <time>1591743197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812993</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c7cc5734ba230831d6cfeaf0ea6e0d5a</srcmd5>
+    <version>2.1.2</version>
+    <time>1597221410</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec clean up
+- Create required symlink
+
+- fix requires</comment>
+    <requestid>825761</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>457f65175929c773b0895ac6ee26b6be</srcmd5>
+    <version>2.1.2</version>
+    <time>1606428935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850967</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>071f22d8dd4e6c77f2d667d503afe895</srcmd5>
+    <version>2.2.0</version>
+    <time>1617130384</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>864248</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8839a3db4bb52778ea8a395ffe5b688d</srcmd5>
+    <version>2.2.0</version>
+    <time>1648665341</time>
+    <user>dimstar_suse</user>
+    <comment>- exclude build for 32bit targets</comment>
+    <requestid>965815</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f48e6f8ed8f1b8d5960d18edd6c476a</srcmd5>
+    <version>0.1.0</version>
+    <time>1377073761</time>
+    <user>scarabeus_factory</user>
+    <comment>- this decorator allows retry of a call if an exception occurs. It is a
+  dependency for the Google storage utilities (gsutils) but also appears
+  generally useful</comment>
+    <requestid>187290</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1f48e6f8ed8f1b8d5960d18edd6c476a</srcmd5>
+    <version>0.1.0</version>
+    <time>1379664276</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>51ccd0cec8087b837b4c31808d709542</srcmd5>
+    <version>1.0.0</version>
+    <time>1385391824</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 208166 from posophe)</comment>
+    <requestid>208167</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ce023f55e32a0720861f4af3a5b6aa9f</srcmd5>
+    <version>1.0.0</version>
+    <time>1393089402</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223381</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>ce023f55e32a0720861f4af3a5b6aa9f</srcmd5>
+    <version>1.0.0</version>
+    <time>1409302982</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>35eab495cb90048ae1e3ecd56dc4b0c6</srcmd5>
+    <version>1.0.0</version>
+    <time>1558428053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704264</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7fedb4ae0f8f7f96b7c4ef495f686716</srcmd5>
+    <version>1.1.1</version>
+    <time>1587070824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791830</requestid>
+  </revision>
+</revisionlist>

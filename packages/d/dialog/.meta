@@ -1,0 +1,5 @@
+<package name="dialog" project="openSUSE:Factory">
+  <title>Menus and Input Boxes for Shell Scripts</title>
+  <description>This program lets you use menus and dialog boxes in shell scripts.</description>
+  <devel project="Base:System" package="dialog"/>
+</package>

@@ -1,0 +1,1049 @@
+-------------------------------------------------------------------
+Tue Oct 31 13:04:53 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add build dependency on redis and openssh
+- Add upstream patch redis_config_remove_parser_class.patch
+
+-------------------------------------------------------------------
+Thu Jul 20 10:11:02 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.18.2
+  * Added support for browsing changes for a individual string.
+  * Fixed plurals handling in automatic translation from other components.
+  * Added keyboard shortcut Alt+Enter to submit string as a suggestion.
+  * Improved performance of translation memory.
+  * Added add-on to customize XML output.
+  * Format string checks now also detects duplicated formats.
+  * Improved search performance for some specially formatted strings.
+  * Celery beat is now storing the tasks schedule in the database.
+  * Dropped support for VCS integration settings deprecated in 4.14.
+  * Added support for Bitbucket Server pull requests.
+  * Improved conflicts handling in gettext PO files.
+  * Added plurals support to automatic suggestions.
+  * Allow to filter on language in reports.
+  * Dropped deprecated command cleanup_celery.
+  * Fixed private project visibility for some teams.
+  * Added support for Ed25519 SSH key.
+  * Improved API error messages on permission denied.
+  * Reduced false positives of the XML checks.
+  * Avoiding signing-out user in some rate-limits.
+  * Support for automatic update of screenshots from a repository.
+  * Added dark theme; browser-following and manual setting are
+    available.
+  * More changes, see https://github.com/WeblateOrg/weblate/releases
+- Add opensuse use-old-html-theme.patch and upstream pyparsing.patch
+- Add one more hunk to skip-test_ocr.patch
+
+-------------------------------------------------------------------
+Wed Apr 19 15:17:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use boolean deps for simple 'and' constructs. Having them
+  separated into simple requires each is equivalent.
+
+-------------------------------------------------------------------
+Wed Mar 15 09:23:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add skip-test_ocr.patch (gh#WeblateOrg/weblate#8931).
+
+-------------------------------------------------------------------
+Tue Mar 14 21:31:14 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Fix one /usr/bin/env shebang.
+- Clean up SPEC file
+
+-------------------------------------------------------------------
+Mon Dec  5 14:18:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.14.2
+  * Added support for removing entries from translation memory.
+  * Improved analysis on the duplicate language alert.
+  * Improved accurancy of the consecutive duplicated words check.
+  * Improved scaling of sending many notifications.
+  * Improved string state handling for subtitle translation.
+  * Deprecated insecure configuration of VCS service API keys via
+    _TOKEN/_USERNAME configuration instead of _CREDENTIALS list.
+  * Fixed processing of some uploaded CSV files.
+  * Improved whitespace changes handling in diff display.
+  * Added automatic suggestions management link to management pages.
+  * Track comment removal/resolving in history.
+  * Fixed restoring project backups with linked components.
+  * Fixed captcha entering on unsuccessful registration.
+  * Improved languages support in DeepL.
+  * Improved webhooks compatibility with authenticated repositories.
+  * Added support for Python 3.11.
+
+-------------------------------------------------------------------
+Thu Nov 10 10:10:41 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.14.1
+  * Changed behavior of updating language names.
+  * Added pagination to projects listing.
+  * API for creating new units now returns information about newly
+  * created unit.
+  * Component discovery now supports configuring an intermediate
+  * language.
+  * Added fixed encoding variants to CSV formats.
+  * Changed handling of context and location for some formats to better
+  * fit underlying implementation.
+  * Added support for ResourceDictionary format.
+  * Improved progress bar colors for color blind.
+  * Fixed variants cleanup on string removal.
+  * Compatibility with Django 4.1.
+  * Added support for storing escaped XML elements in XLIFF.
+  * Improved formatting of placeholder check errors.
+  * Redirect /.well-known/change-password to /accounts/password/.
+  * Machine translation services are now configurable per project.
+  * Added separate permission for resolving comments and grant it to the
+  * Review strings{.interpreted-text role="guilabel"} role.
+  * Added support for storing alternative translations in the CSV file.
+  * The placeholders check can now be case-insensitive as well.
+  * Track add-on changes in a history.
+  * Fixed parsing translation from Windows RC, HTML and text files.
+  * Extended language code style configuration options.
+  * Added support for pluralse updated in recent CLDR releases.
+  * Reduced memory usage while updating components with a lot of
+  * translations.
+  * Added support for translation domain in SAP Translation Hub.
+  * Allow absolute links in source string locations.
+  * Improved operation behind some reverse proxies.
+  * Exteded API to cover translation memory.
+  * Improved document translation workflow.
+  * Improved reliability of HTML and text files translation.
+  * Added support for project level backups.
+  * Improved performance and memory usage of translation memory lookups.
+
+-------------------------------------------------------------------
+Tue May 17 11:00:31 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.12.2
+  * Added support for Amharic in :ref:check-end-stop.
+  * Added support for Burmese in :ref:check-end-question.
+  * Extended options of the :ref:addon-weblate.generate.pseudolocale add-on.
+  * Added ignore-all-checks flag to ignore all quality checks on a string.
+  * Avoid :ref:addon-weblate.generate.pseudolocale add-on to trigger failing checks.
+  * Added support for :ref:vcs-gitea.
+  * Added Linux style language code to :ref:component-language_code_style.
+  * Added support for rebuilding project translation memory.
+  * Improved API for creating components from a file.
+  * Add copy and clone buttons to other translations.
+  * Make merge request message configurable at component level.
+  * Improved maximal length restriction behavior with XML tags.
+  * Fixed loading Fluent files with additional comments.
+  * Add support for web monetization.
+  * Ensure Weblate SSH key is generated during migrations.
+
+-------------------------------------------------------------------
+Wed Apr  6 19:36:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Don't limit the upper version of social-auth packages.
+
+-------------------------------------------------------------------
+Wed Mar  2 07:57:49 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.11 (bsc#1196540):
+  - Fixes stored XSS, see GHSA-6jp6-9rf9-gc66 (CVE-2022-24710)
+    for more details.
+  - Fixed add-on installation using API.
+  - Renamed Strings needing action to Unfinished strings.
+  - Fixed false positives from ICU MessageFormat syntax.
+  - Indicate lock and contributor agreement on other occurrences
+    listing.
+  - Fixed updating PO files with obsolete strings or missing
+    plurals.
+  - Improved squash add-on compatibility with Gerrit.
+  - Automatically initialize user languages based on the
+    Accept-Language header.
+  - Improved error handling on string removal.
+  - Weblate now requires Python 3.7 or newer.
+  - Fixed some write operations with project token authentication.
+  - Fixed string state tracking when the strings changes in the
+    repository.
+  - Track string changes from the repository.
+  - Sticky header on translations listing to improve navigation.
+  - Fixed untranslating strings in Java properties.
+  - Fixed Git operation with non-ascii branch names.
+  - New add-on Prefill translation with source.
+  - Added Merge without fast-forward Merge style.
+  - Fixed Automatic translation add-on trigger on newly added strings.
+  - Improved punctuation checks for Burmese.
+  - Added support for defining custom teams at project level to
+    grant users access, see Managing per-project access control.
+  - Added documentation links to alerts.
+  - Added support for searching for resolved comments.
+  - Added support for borgbackup 1.2.
+  - Fixed applying of Automatically translated label.
+- Update to 4.10.1:
+  - Documented changes introduced by upgrading to Django 4.0.
+  - Fixed displaying of Automatically translated label.
+  - Fixed API display of branch in components with a shared
+    repository.
+  - Improved analysis on the failed push alert.
+  - Fixed manually editing page when browsing changes.
+  - Improved accuracy of check-kashida.
+- Update to 4.10:
+  - Added support for formality and placeholders with DeepL.
+  - Bulk edit and search and replace are now available on project
+    and language level.
+  - Added filtering to search and replace.
+  - Fixed: "Perform automatic translation" privilege is no longer
+    part of the Languages group.
+  - "Perform automatic translation" is in the Administration and
+    the new Automatic translation group.
+  - Fixed generating XLSX files with special chars.
+  - Added ability to the GitHub authentication backend to check
+    if the user belongs to a specific GitHub organization or
+    team.
+  - Improved feedback on invalid parameters passed to API.
+  - Added support for project scoped access tokens for API.
+  - Fixed string removal in some cases.
+  - Fixed translating newly added strings.
+  - Label automatically translated strings to ease their filtering.
+
+-------------------------------------------------------------------
+Mon Jan 10 15:11:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not attempt to build on i586 workers: the resulting package is
+  noarch, so can be used anyway.
+
+-------------------------------------------------------------------
+Mon Dec  6 23:10:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix BRs python-akismet -> python-python-akismet
+- Add missing BR python-fluent
+- Better method of stopping redis-server.
+
+-------------------------------------------------------------------
+Thu Dec  2 23:32:02 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 4.9.1:
+  * Provide more details for events in history.
+  * Improved rendering of history.
+  * Improved performance of the translation pages.
+  * Added support for restricting translation file downloads.
+  * The ``safe-html`` can now understand Markdown when used with
+    ``md-text``.
+  * The ``max-length`` tag now ignores XML markup when used with
+    ``xml-text``.
+  * Fixed dimensions of rendered texts in :ref:`check-max-size`.
+  * Lowered app store title length to 30 to assist with upcoming
+    Google policy changes.
+  * Added support for customizing SSH invocation via
+    :setting:`SSH_EXTRA_ARGS`.
+  * Added checks for ICU MessageFormat.
+  * Improved error condition handling in machine translation
+    backends.
+  * Highlight unusual whitespace characters in the strings.
+  * Added option to stay on translated string while editing.
+  * Added support for customizing Borg invocation via
+    :setting:`BORG_EXTRA_ARGS`.
+  * Fixed generating of MO files for monolingual translations.
+  * Added API endpoint to download all component translations
+    as a ZIP file.
+  * Added support for Python 3.10.
+  * Added support for resending e-mail invitation from the
+    management interface.
+  * Fixed upload of monolingual files after changing template.
+  * Improved handling of whitespace in flags.
+  * Add support for filtering in download API.
+  * Fixed statistics display when adding new translations.
+  * Mitigate issues with GitHub SSH key change.
+
+-------------------------------------------------------------------
+Thu Sep 23 00:23:17 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 4.8.1:
+  * Fixed user removal in Django admin interface.
+  * Document add-on parameters in more detail.
+  * Fixed JavaScript error on glossary.
+  * Add limit to number of matches in consistency check.
+  * Improve placeholders handling in machine translations.
+  * Fixed creating add-ons using API.
+  * Added :setting:`PRIVACY_URL` setting to add privacy policy link
+    to the footer.
+  * Hide member e-mail addresses from project admins.
+  * Improved gettext PO merging in case of conflicts.
+  * Improved glossary highlighting.
+  * Improved ``safe-html`` flag behavior with XML checks.
+  * Fixed commit messages on linked components.
+
+-------------------------------------------------------------------
+Fri Aug 27 07:03:53 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.8
+  * Support more language aliases to be configured on a project.
+  * Fixed search string validation in API.
+  * Fixed Git exporter URLs after a domain change.
+  * Fixed cleanup addon for Windows RC files.
+  * Fixed possible crash on Xliff updating.
+  * Added support for Apple stringsdict format.
+  * The exact search operator is now case-sensitive on PostgreSQL.
+  * Fixed saving glossary explanations in some cases.
+  * Documentation improvements.
+  * Performance improvements.
+  * Improved squash add-on compatibility with Gerrit.
+  * Fixed adding strings to a monolingual glossary components.
+  * Improved performance in hadling variants.
+  * Fixed squash add-on sometimes skipping parsing upstream changes.
+  * Preserve file extension on download.
+  * Added support for the Fluent format.
+  * Add support for using tabs to indent JSON formats.
+
+-------------------------------------------------------------------
+Fri Jul  2 07:59:20 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.7.1
+  * Improved configuration health check.
+  * Added support for object-pascal-format used in gettext PO, see :ref:check-object-pascal-format.
+  * Renamed :guilabel:Nearby keys to :guilabel:Similar keys to better describe the purpose.
+  * Added support for :ref:mi18n-lang.
+  * Improved SAML authentication integration.
+  * Fixed :ref:vcs-gerrit integration to better handle corner cases.
+  * Weblate now requires Django 3.2.
+  * Fixed inviting users when e-mail authentication is disabled.
+  * Improved language definitions.
+  * Added support for blocking users from contributing to a project.
+  * Fixed automatic creation of glossary languages.
+  * Extended documentation about add-ons.
+  * Performance improvements for components with linked repositories.
+  * Added support for free DeepL API.
+  * The user management no longer needs Django admin interface.
+  * Improved popup for adding terms to glossary.
+  * Added support for LibreTranslate machine translation service.
+  * Added rate limiting on creating new projects.
+  * Improved performance of file updates.
+
+-------------------------------------------------------------------
+Mon May 10 13:02:26 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.6.2
+  * Fixed crash after moving shared component between projects.
+  * Fixed adding new strings to empty properties files.
+  * Fixed copy icon alignment in RTL languages.
+  * Extended string statistics on the Info tab.
+  * Fixed handling of translation files ignored in Git.
+  * Improved metrics performance.
+  * Fixed possible bug in saving glossaries.
+  * Fixed consistency check behavior on languages with different plural rules.
+
+-------------------------------------------------------------------
+Mon May  3 09:26:01 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.6.1
+  * Remove obsolete spam protection code.
+  * Improve source plural check accuracy.
+  * Update list of user interface languages in Docker.
+  * Improved error messages when creating pull requests.
+  * Fixed creating pull requests on Pagure.
+  * Fixed triggering automatically installed add-ons.
+  * Fixed possible caching issues on upgrade.
+  * Fixed adding new units to monolingual translations using upload.
+
+-------------------------------------------------------------------
+Fri Apr 30 15:07:08 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Require borgbackup, otherwise some commands fail.
+
+-------------------------------------------------------------------
+Tue Apr 20 19:04:49 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to 4.6:
+  * The auto_translate management command has now a parameter for specifying translation mode.
+  * Added support for :ref:`txt`.
+  * Added trends and metrics for all objects.
+  * Added support for direct copying text from secondary languages.
+  * Added date filtering when browsing changes.
+  * Improved activity charts.
+  * Sender for contact form e-mails can now be configured.
+  * Improved parameters validation in component creation API.
+  * The rate limiting no longer applies to superusers.
+  * Improved automatic translation addon performance and reliability.
+  * The rate limiting now can be customized in the Docker container.
+  * API for creating components now automatically uses :ref:`internal-urls`.
+  * Simplified state indication while listing strings.
+  * Password hashing now uses Argon2 by default.
+  * Simplified progress bars indicating translation status.
+  * Renamed :ref:`addon-weblate.consistency.languages` to clarify the purpose.
+  * Fixed saving string state to XLIFF.
+  * Added language-wide search.
+  * Initial support for :ref:`docker-scaling` the Docker deployment.
+  * Fixed metrics collection.
+  * Fixed possible crash when adding strings.
+  * Improved search query examples.
+  * Fixed possible loss of newly added strings on replace upload.
+  * Configurable schedule for automatic translation.
+  * Added Lua format check.
+  * Ignore format strings in the :ref:`check-duplicate` check.
+  * Allow uploading screenshot from a translate page.
+  * Added forced file synchronization to the repository maintenance.
+  * Fixed automatic suggestions for languages with a longer code.
+  * Improved performance when adding new strings.
+  * Several bug fixes in quality checks.
+  * Several performance improvements.
+  * Added integration with :ref:`discover-weblate`.
+  * Fixed checks behavior with read-only strings.
+
+-------------------------------------------------------------------
+Thu Apr 15 13:12:05 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Re-add and fix sed for python3
+
+-------------------------------------------------------------------
+Thu Apr 15 08:10:19 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Remove unneeded sed for python3
+
+-------------------------------------------------------------------
+Tue Mar 16 07:46:41 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.5.1
+  * Dropped support for migrating from 3.x releases, migrate through 4.1 or 4.0.
+  * Added exports into several monolingual formats.
+  * Simplified main navigation (replaced buttons with icons).
+  * Removed separate Celery queue for translation memory.
+  * Added support for aliasing languages at project level.
+  * The Weblate domain is now configured in the settings, see SITE_DOMAIN.
+  * Include user stats in the API.
+  * Rewritten support for GitHub and GitLab pull requests.
+  * Add Vue I18n formatting check.
+  * Unit API now properly handles plural strings.
+  * Support Markdown in contributor agreement.
+  * Added support for Python 3.9.
+  * Improved performance of translation memory updates.
+  * Weblate now requires Django 3.1.
+  * Improved support for non-standard language codes.
+  * Improved performance of file upload.
+  * Added support for lua-format used in gettext PO.
+  * Added support for sharing a component between projects.
+  * Dropped mailing list field on the project in favor of generic instructions for translators.
+  * Strings can now be added and removed in bilingual formats as well.
+  * Glossaries are now stored as regular components.
+  * Added support for customizing navigation text color.
+
+-------------------------------------------------------------------
+Tue Jan 26 14:12:45 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace system-user-wwwrun with user(wwwrun): be resilient to
+  package name changes.
+
+-------------------------------------------------------------------
+Fri Jun 19 12:31:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.1.1:
+  * Various fixes found after 4.1 release
+- Remove merged patch tests.patch
+
+-------------------------------------------------------------------
+Thu Jun 18 13:10:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix /etc/apache2 permissions to not conflict with others
+
+-------------------------------------------------------------------
+Wed Jun 17 09:34:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch from upstream to fix test execution:
+  * tests.patch
+
+-------------------------------------------------------------------
+Tue Jun 16 14:15:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Install the documentation in subpkg to make weblate bit smaller
+- Do not hardcode optional requires
+- Verify signatures
+- Update to 4.1.0:
+  * Added support for creating new translations with included country code.
+  * Added support for seaching source strings with screenshot.
+  * Extended information available in the stats insights.
+  * Improved search editing on translate pages.
+  * Improve handling of concurrent repository updates.
+  * Include source language in project creation form.
+  * Include changes count in credits.
+  * Fixed UI language selection in some cases.
+  * Allow to whitelist registration methods with registrations closed.
+  * Improved lookup of related terms in glossary.
+  * Improved translation memory matches.
+  * Group same machinery results.
+  * Add direct link to edit screenshot from translate page.
+  * Improved removal confirmation dialog.
+  * Include templates in ZIP download.
+  * Add support for Markdown and notification configuration in announcements.
+  * Extended details in check listings.
+  * Added support for new file formats: :ref:laravel-php, :ref:html, :ref:odf, :ref:idml, :ref:winrc, :ref:ini, :ref:islu, :ref:gwt, :ref:go-i18n-json, :ref:arb.
+  * Consistently use dismissed as state of dismissed checks.
+  * Add support for configuring default addons to enable.
+  * Fixed editor keyboard shortcut to dismiss checks.
+  * Improved machine translation of strings with placeholders.
+  * Show ghost translation for user languages to ease starting them.
+  * Improved language code parsing.
+  * Show translations in user language first in the list.
+  * Renamed shapings to more generic name variants.
+  * Added new quality checks: :ref:check-unnamed-format, :ref:check-long-untranslated, :ref:check-duplicate.
+  * Reintroduced support for wiping translation memory.
+  * Fixed option to ignore source checks.
+  * Added support for configuring different branch for pushing changes.
+  * API now reports rate limiting status in the HTTP headers.
+  * Added support for Google Translate V3 API (Advanced).
+  * Added ability to restrict access on component level.
+  * Added support for whitespace and other special chars in translation flags, see :ref:custom-checks.
+  * Always show rendered text check if enabled.
+  * API now supports filtering of changes.
+  * Added support for sharing glossaries between projects.
+
+-------------------------------------------------------------------
+Tue Jun 16 12:00:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing deps for documentation build
+
+-------------------------------------------------------------------
+Thu May 14 09:40:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.4:
+  * Many bugixes all around
+
+-------------------------------------------------------------------
+Tue Apr 28 10:30:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.2:
+  * Improved performance of translation stats.
+  * Improved performance of changing labels.
+  * Improved bulk edit performance.
+  * Improved translation memory performance.
+  * Fixed possible crash on component deletion.
+  * Fixed displaying of translation changes in some corner cases.
+  * Improved warning about too long celery queue.
+  * Fixed possible false positives in the consistency check.
+  * Fixed deadlock when changing linked component repository.
+  * Included edit distance in changes listing and CSV and reports.
+  * Avoid false positives of punctuation spacing check for Canadian French.
+  * Fixed XLIFF export with placeholders.
+  * Fixed false positive with zero width check.
+  * Improved reporting of configuration errors.
+  * Fixed bilingual source upload.
+  * Automatically detect supported languages for DeepL machine translation.
+  * Fixed progress bar display in some corner cases.
+  * Fixed some checks triggering on non translated strings.
+
+-------------------------------------------------------------------
+Fri Apr 17 06:56:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.1:
+  * Weblate now requires Python 3.6 or newer.
+  * Added management overview of component alerts.
+  * Added component alert for broken repository browser URLs.
+  * Improved sign in and registration pages.
+  * Project access control and workflow configuration integrated to project settings.
+  * Added check and highlighter for i18next interpolation and nesting.
+  * Added check and highlighter for percent placeholders.
+  * Display failing checks for suggestions.
+  * Record source string changes in history.
+  * Upgraded Microsoft Translator to version 3 API.
+  * Reimplemented translation memory backend.
+  * Added support for several is: lookups in :doc:user/search.
+  * Allow to make :ref:check-same avoid internal blacklist.
+  * Improved comments extraction from monolingual po files.
+  * Renamed whiteboard messages to announcements.
+  * Fixed occasional problems with registration mails.
+  * Improved LINGUAS update addon to handle more syntax variants.
+  * Fixed editing monolingual XLIFF source file.
+  * Added support for exact matching in :doc:user/search.
+  * Extended API to cover screenshots, users, groups, componentlists and extended creating projects.
+  * Add support for source upload on bilingual translations.
+  * Added support for intermediate language from developers.
+  * Added support for source strings review.
+  * Extended download options for platform wide translation memory.
+
+-------------------------------------------------------------------
+Tue Apr  7 11:25:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop selenium and chromedriver deps:
+  * These are fragile and cause test failures if mismatch happens
+  * We can live without doing those few depending tests
+
+-------------------------------------------------------------------
+Mon Mar 16 08:19:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop condition < 15.0
+
+-------------------------------------------------------------------
+Mon Mar 16 08:15:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.11.3:
+  * Fixed searching for fields with certain priority.
+  * Fixed predefined query for recently added strings.
+  * Fixed searching returning duplicate matches.
+  * Fixed notifications rendering in Gmail.
+  * Fixed reverting changes from the history.
+  * Added links to events in digest notifications.
+  * Fixed email for account removal confirmation.
+  * Added support for Slack authentication in Docker container.
+  * Avoid sending notifications for not subscribed languages.
+  * Include Celery queues in performance overview.
+  * Fixed documentation links for addons.
+  * Reduced false negatives for unchanged translation check.
+  * Raised bleach dependency to address CVE-2020-6802.
+  * Fixed listing project level changes in history.
+  * Fixed stats invalidation in some corner cases.
+  * Fixed searching for certain string states.
+  * Improved format string checks behavior on missing percent.
+  * Fixed authentication using some third party providers.
+
+-------------------------------------------------------------------
+Tue Feb 25 14:57:38 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.11.2:
+  * Fixed rendering of suggestions.
+  * Fixed some strings wrongly reported as having none words.
+  * Documented Celery setup changes.
+  * Improved filename validation on component creation.
+  * Fixed minimal versions of some dependecies.
+  * Fixed adding groups with certain Django versions.
+  * Fixed manual pushing to upstream repository.
+  * Improved glossary matching.
+  * Allow using VCS push URL during component creation via API.
+  * Rendered width check now shows image with the render.
+  * Fixed links in notifications e-mails.
+  * Improved look of plaintext e-mails.
+  * Display ignored checks and allow to make them active again.
+  * Display nearby keys on monolingual translations.
+  * Added support for groupping string shapings.
+  * Recommend upgrade to new Weblate versions in the system checks.
+  * Provide more detailed analysis for duplicate language alert.
+  * Include more detailed license info on the project pages.
+  * Automatically unshallow local copies if needed.
+  * Fixed download of strings needing action.
+  * New alert to warn about using the same filemask twice.
+  * Improve XML placeables extraction.
+  * The :setting:SINGLE_PROJECT can now enforce redirection to chosen project.
+  * Added option to resolve comments.
+  * Added bulk editing of flags.
+  * Added support for :ref:labels.
+  * Added bulk edit addon.
+  * Added option for :ref:enforcing-checks.
+  * Increased default validity of confirmation links.
+  * Improved Matomo integration.
+  * Fixed :ref:check-translated to correctly handle source string change.
+  * Extended automatic updates configuration by :setting:AUTO_UPDATE.
+  * LINGUAS addons now do full sync of translations in Weblate.
+- Remove patches merged upstream:
+  * test_statistics.patch
+  * test_ssh_add.patch
+
+-------------------------------------------------------------------
+Mon Feb 17 14:11:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- During %post phase do not fail on static files copying if
+  running redis is not available
+
+-------------------------------------------------------------------
+Mon Feb 17 12:23:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch from upstream to fix test_statistics failure:
+  * test_statistics.patch
+- Add patch to fix test_ssh_add failure:
+  * test_ssh_add.patch
+
+-------------------------------------------------------------------
+Mon Feb 17 08:49:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.1.0.3:
+  * Support translate-toolkit 2.5.0.
+  * Add lock indication to projects.
+  * Fixed CSS bug caused flicker in some browsers.
+  * Fixed searching on systems with non English locales.
+  * Improved GitHub and Bitbucket hooks repositories matching.
+  * Fixed data migration on some Python 2.7 installations.
+  * Allow to configure git shallow clones.
+  * Improved background notifications processing.
+  * Fixed broken form submissing when navigating back in browser.
+  * New addon to configure YAML formatting.
+  * Fixed same plurals check to not fire on single plural form languages.
+  * Fixed regex search on some fields.
+
+-------------------------------------------------------------------
+Wed Jan 15 14:39:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.10.1:
+  * Extended API with translation creation.
+  * Fixed several corner cases in data migrations.
+  * Compatibility with Django 3.0.
+  * Improved data cleanup performance.
+  * Added support for customizable security.txt.
+  * Improved breadcrumbs in changes log.
+  * Improved translations listing on dashboard.
+  * Improved HTTP responses for web hooks.
+  * Added support for GitLab pull requests in Docker container.
+  * Improved application user interface.
+  * Added doublespace check.
+  * Fixed creating new languages.
+  * Avoid sending auditlog notifications to deleted e-mails.
+  * Added support for read only strings.
+  * Added support for markdown in comments.
+  * Allow to place translation instructions text into project info.
+  * Add copy to clipboard for secondary languages.
+  * Improved support for Mercurial.
+  * Improved performance in fetching Git repositories.
+  * Add search lookup for age of string.
+  * Show source language for all translations.
+  * Show context for nearby strings.
+  * Added support for notifications on repository operations.
+  * Improved translation listings.
+  * Extended search capabilities.
+  * Added support for automatic translation strings marked for edit.
+  * Avoid sending duplicate notifications for linked component alerts.
+  * Improve default merge request message.
+  * Better indicate string state in zen mode.
+  * Added support for more languages in Yandex Translate.
+  * Improved look of notification e-mails.
+  * Provide choice for translation license.
+
+-------------------------------------------------------------------
+Tue Dec  3 08:43:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add dependency on borgbackup
+
+-------------------------------------------------------------------
+Sat Nov 30 10:07:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add few more missing dependencies/requirements
+
+-------------------------------------------------------------------
+Fri Nov  8 07:35:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.9.1:
+  * Remove some not needed files from backups.
+  * Fixed potential crash in reports.
+  * Fixed cross database migration failure.
+  * Added support for force pushing Git repositories.
+  * Reduced risk of registration token invalidation.
+  * Fixed account removal hitting rate limiter.
+  * Added search based on priority.
+  * Fixed possible crash on adding strings to JSON file.
+  * Safe HTML check and fixup now honor source string markup.
+  * Avoid sending notifications to invited and deleted users.
+  * Fix SSL connection to redis in Celery in Docker container.
+  * Include Weblate metadata in downloaded files.
+  * Improved UI for failing checks.
+  * Indicate missing strings in format checks.
+  * Separate check for French punctuation spacing.
+  * Add support for fixing some of quality checks errors.
+  * Add separate permission to create new projects.
+  * Extend stats for char counts.
+  * Improve support for Java style language codes.
+  * Added new generic check for placeholders.
+  * Added support for WebExtension JSON placeholders.
+  * Added support for flat XML format.
+  * Exteded API with project, component and translation removal and creation.
+  * Added support for Gitea and Gitee webhooks.
+  * Added new custom regex based check.
+  * Allow to configure contributing to shared translation memory.
+  * Added ZIP download for more translation files.
+  * Make Xliff standard compliant parsing of maxwidth and font.
+  * Added new check and fixer for safe HTML markup for translating web applications.
+  * Add component alert on unsupported configuration.
+  * Added automatic translation addon to bootstrap translations.
+  * Extend automatic translation to add suggestions.
+  * Display addon parameters on overview.
+  * Sentry is now supported through modern Sentry SDK instead of Raven.
+  * Changed example settings to be better fit for production environment.
+  * Added automated backups using Borg backup.
+  * Split cleanup addon for RESX to avoid unwanted file updates.
+  * Added advanced search capabilities.
+  * Allow users to download their own reports.
+  * Added localization guide to help configuring components.
+  * Added suport for GitLab merge requests.
+  * Improved display of repository status.
+  * Perform automated translation in the background.
+  * Added support for simplified creating of similar components.
+  * Added support for parsing translation flags from the XML based file formats.
+  * Log exceptions into Celery log.
+  * Improve performance of repository scoped addons.
+  * Improved look of notification e-mails.
+  * Fixed password reset behavior.
+  * Improved performance on most of translation pages.
+  * Fixed listing of languages not known to Weblate.
+  * Add support for cloning addons to discovered components.
+  * Add support for replacing file content with uploaded.
+  * Add support for translating non VCS based content.
+  * Added OpenGraph widget image to use on social networks.
+  * Added support for animated screenshots.
+  * Improved handling of monolingual Xliff files.
+  * Avoid sending multiple notifications for single event.
+  * Add support for filtering changes.
+  * Extended predefined periods for reporting.
+  * Added support for Azure Repos webhooks.
+  * New opt-in notifications on pending suggestions or untranslated strings.
+  * Add one click unsubscribe link to notification e-mails.
+  * Fixed false positives with Has been translated check.
+  * New management interface for admins.
+  * String priority can now be specified using flags.
+  * Added language management views.
+  * Add checks for Qt library and Ruby format strings.
+  * Added configuration to better fit single project installations.
+  * Notify about new string on source string change on monolingual translations.
+  * Added separate view for translation memory with search capability.
+
+-------------------------------------------------------------------
+Tue Jul 23 11:00:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not condition for < 15.0 releases
+
+-------------------------------------------------------------------
+Tue Jul 23 10:39:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.7.1:
+  * Documentation updates.
+  * Fixed some requirements constraints.
+  * Updated language database.
+  * Localization updates.
+  * Various user interface tweaks.
+  * Improved handling of unsupported but discovered translation files.
+  * More verbosely report missing file format requirements.
+  * Added separate Celery queue for notifications.
+  * Use consistent look with application for API browsing.
+  * Include approved stats in the reports.
+  * Report progress when updating translation component.
+  * Allow to abort running background component update.
+  * Extend template language for filename manipulations.
+  * Use templates for editor link and repository browser URL.
+  * Indicate max length and current chars count when editing translation.
+  * Improved handling of abbreviations in unchanged translation check.
+  * Refreshed landing page for new contributors.
+  * Add support for configuring msgmerge addon.
+  * Delay opening SMTP connection when sending notifications.
+  * Improved error logging.
+  * Allow custom location in MO generating addon.
+  * Added addons to cleanup old suggestions or comments.
+  * Added option to enable horizontal mode in the zen editor.
+  * Improved import perfomance with many linked components.
+  * Fixed examples installation in some cases.
+  * Improved rendering of alerts in changes.
+  * Added new horizontal stats widget.
+  * Improved format strings check on plurals.
+  * Added font management tool.
+  * New check for rendered text dimensions.
+  * Added support for subtitle formats.
+  * Include overall completion stats for languages.
+  * Added reporting at project and global scope.
+  * Improved user interface when showing translation status.
+  * New Weblate logo and color scheme.
+  * New look of bitmap badges.
+
+-------------------------------------------------------------------
+Fri May 31 22:06:51 CEST 2019 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add python3-dbm to BuildRequires, otherwise tests will fail.
+
+-------------------------------------------------------------------
+Thu May 23 17:48:31 UTC 2019 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add conflict with broken versions of billiard (weblate#2768).
+
+-------------------------------------------------------------------
+Mon May  6 08:43:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.6.1:
+  * Improved handling of monolingual Xliff files.
+  * Fixed digest notifications in some corner cases.
+  * Fixed addon script error alert.
+  * Fixed generating MO file for monolingual PO files.
+  * Fixed display of uninstalled checks.
+  * Indicate administered projects on project listing.
+  * Allow update to recover from missing VCS repository.
+
+-------------------------------------------------------------------
+Tue Apr 30 14:23:12 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Avoid documented conflicting version of python3-lxml = 4.3.1.
+
+-------------------------------------------------------------------
+Wed Apr 24 11:35:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.6:
+  * Add support for downloading user data.
+  * Addons are now automatically triggered upon installation.
+  * Improved instructions for resolving merge conflicts.
+  * Cleanup addon is now compatible with app store metadata translations.
+  * Configurable language code syntax when adding new translations.
+  * Warn about using Python 2 with planned termination of support in April 2020.
+  * Extract special chars from the source string for visual keyboard.
+  * Extended contributor stats to reflect both source and target counts.
+  * Admins and consistency addons can now add translations even if disabled for users.
+  * Fixed description of toggle disabling Language-Team header manipulation.
+  * Notify users mentioned in comments.
+  * Removed file format autodetection from component setup.
+  * Fixed generating MO file for monolingual PO files.
+  * Added digest notifications.
+  * Added support for muting component notifications.
+  * Added notifications for new alerts, whiteboard messages or components.
+  * Notifications for administered projects can now be configured.
+  * Improved handling of three letter language codes.
+- Remove patch weblate-no-gerrit.patch merged upstream
+
+-------------------------------------------------------------------
+Wed Apr 24 11:09:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove patch weblate-no-zeep.patch that is no longer needed and
+  applying
+
+-------------------------------------------------------------------
+Tue Apr  2 10:00:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.5.1:
+  * Fixed Celery systemd unit example.
+  * Fixed notifications from http repositories with login.
+  * Fixed race condition in editing source string for monolingual translations.
+  * Include output of failed addon execution in the logs.
+  * Improved validation of choices for adding new language.
+  * Allow to edit file format in component settings.
+  * Update installation instructions to prefer Python 3.
+  * Performance and consistency improvements for loading translations.
+  * Make Microsoft Terminology service compatible with current zeep releases.
+  * Localization updates.
+  * Improved performance of built in translation memory.
+  * Added interface to manage global translation memory.
+  * Improved alerting on bad component state.
+  * Added user interface to manage whiteboard messages.
+  * Addon commit message now can be configured.
+  * Reduce number of commits when updating upstream repository.
+  * Fixed possible metadata loss when moving component between projects.
+  * Improved navigation in the zen mode.
+  * Added several new quality checks (Markdown related and URL).
+  * Added support for app store metadata files.
+  * Added support for toggling GitHub or Gerrit integration.
+  * Added check for Kashida letters.
+  * Added option to squash commits based on authors.
+  * Improved support for xlsx file format.
+  * Compatibility with tesseract 4.0.
+  * Billing addon now removes projects for unpaid billings after 45 days.
+  * Added support for XLIFF placeholders.
+  * Celery can now utilize multiple task queues.
+  * Added support for renaming and moving projects and components.
+  * Include chars counts in reports.
+  * Added guided adding of translation components with automatic detection of translation files.
+  * Customizable merge commit messages for Git.
+  * Added visual indication of component alerts in navigation.
+  * Improved performance of loading translation files.
+  * New addon to squash commits prior to push.
+  * Improved displaying of translation changes.
+  * Changed default merge style to rebase and made that configurable.
+  * Better handle private use subtags in language code.
+  * Improved performance of fulltext index updates.
+  * Extended file upload API to support more parameters.
+- Update requirements
+- Remove merged patches:
+  * 0001-Fixed-editing-of-plural-strings.patch
+  * 0001-Fix-file-upload-using-API.patch
+
+-------------------------------------------------------------------
+Thu Jan 17 22:06:40 CET 2019 - sbrabec@suse.com
+
+- Add two upstream hotfixes (weblate#2487, weblate#2496).
+
+-------------------------------------------------------------------
+Wed Jan 16 20:25:45 CET 2019 - sbrabec@suse.com
+
+- Recommend python3-docutils for admin documentation.
+
+-------------------------------------------------------------------
+Fri Jan  4 17:12:32 CET 2019 - sbrabec@suse.com
+
+- Enable zeep for Factory.
+
+-------------------------------------------------------------------
+Tue Dec 18 18:07:28 CET 2018 - sbrabec@suse.com
+
+- Version update to 3.3:
+  * Added support for component and project removal.
+  * Improved performance for some monolingual translations.
+  * Added translation component alerts to highlight problems with a
+    translation.
+  * Expose XLIFF unit resname as context when available.
+  * Added support for XLIFF states.
+  * Added check for non writable files in DATA_DIR.
+  * Improved CSV export for changes.
+
+-------------------------------------------------------------------
+Thu Nov 29 21:57:30 CET 2018 - sbrabec@suse.com
+
+- Version update to 3.2.2:
+  * Remove no longer needed Babel dependency.
+  * Updated langauge definitions.
+  * Improve documentation for addons, LDAP and Celery.
+  * Fixed enabling new dos-eol and auto-java-messageformat flags.
+  * Fixed running setup.py test from PyPI package.
+  * Improved plurals handling.
+  * Fixed translation upload API failure in some corner cases.
+  * Fixed updating Git configuration in case it was changed manually.
+  * Document dependency on backports.csv on Python 2.7.
+  * Fix running tests under root.
+  * Improved error handling in gitexport module.
+  * Fixed progress reporting for newly added languages.
+  * Correctly report Celery worker errors to Sentry.
+  * Fixed creating new translations with Qt Linguist.
+  * Fixed occasional fulltext index update failures.
+  * Improved validation when creating new components.
+  * Added support for cleanup of old suggestions.
+  * Add install_addon management command for automated addon installation.
+  * Allow more fine grained ratelimit settings.
+  * Added support for export and import of Excel files.
+  * Improve component cleanup in case of multiple component discovery addons.
+  * Rewritten Microsoft Terminology machine translation backend.
+  * Weblate now uses Celery to offload some processing.
+  * Improved search capabilities and added regular expression search.
+  * Added support for Youdao Zhiyun API machine translation.
+  * Added support for Baidu API machine translation.
+  * Integrated maintenance and cleanup tasks using Celery.
+  * Improved performance of loading translations by almost 25%.
+  * Removed support for merging headers on upload.
+  * Removed support for custom commit messages.
+  * Configurable editing mode (zen/full).
+  * Added support for error reporting to Sentry.
+  * Added support for automated daily update of repositories.
+  * Added support for creating projects and components by users.
+  * Built in translation memory now automatically stores translations done.
+  * Users and projects can import their existing translation memories.
+  * Better management of related strings for screenshots.
+  * Added support for checking Java MessageFormat.
+- Disable zeep in the test suite (weblate-no-zeep.patch).
+
+-------------------------------------------------------------------
+Wed Aug 22 08:33:32 UTC 2018 - tchvatal@suse.com
+
+- Version update to 3.1.1:
+  * Many bugfixes/tweaks all around, see changelog for details
+- Add missed gpg binary to deps
+- Make tests work again as they read all paths from default
+  weblate configs
+
+-------------------------------------------------------------------
+Tue Aug 21 14:53:22 UTC 2018 - tchvatal@suse.com
+
+- Add dependency over python3-jellyfish as stated by upstream
+
+-------------------------------------------------------------------
+Tue Aug 21 14:43:55 UTC 2018 - tchvatal@suse.com
+
+- Drop libavatar as it was deprecated upstream
+
+-------------------------------------------------------------------
+Thu Aug  2 09:58:30 UTC 2018 - tchvatal@suse.com
+
+- Require basic tesseract data for ocr
+
+-------------------------------------------------------------------
+Thu Aug  2 08:55:47 UTC 2018 - tchvatal@suse.com
+
+- Rather directly state python3 dependencies
+- Add all optional dependencies to BR/R to ensure we have whole
+  feature set
+
+-------------------------------------------------------------------
+Wed Aug  1 14:27:49 UTC 2018 - tchvatal@suse.com
+
+- Convert the package to singlespec
+- Update to 2.20 release:
+  * Various bugfixes around, see changelog documents for details
+
+-------------------------------------------------------------------
+Wed Aug  1 14:21:24 UTC 2018 - tchvatal@suse.com
+
+- Weblate package to be used by openSUSE infrastructure

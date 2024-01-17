@@ -1,0 +1,211 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>964962a39923e4fd9eb619bf6aa7d17d</srcmd5>
+    <version>4.1.1</version>
+    <time>1593727610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815954</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c8d824ce98db01edada97a7542b4b76d</srcmd5>
+    <version>4.5.1</version>
+    <time>1618610481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885882</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab1fde0000261ca2871e51cda2cd5f17</srcmd5>
+    <version>4.6</version>
+    <time>1619031618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887207</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32a7d846565b891f207c9284dcf26506</srcmd5>
+    <version>4.6.1</version>
+    <time>1620334347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890184</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5c74ff3cbd7a279d3d6b7c3109de58bc</srcmd5>
+    <version>4.6.2</version>
+    <time>1620840714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892326</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d415fe259ad1e7240621e1d20215f3d4</srcmd5>
+    <version>4.7.1</version>
+    <time>1625429445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903709</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7b75b18f4af22419505c65a1e9208a7b</srcmd5>
+    <version>4.8</version>
+    <time>1631310095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917990</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6f1f460f45fddaa01fe06ee0482db0d3</srcmd5>
+    <version>4.8.1</version>
+    <time>1632522939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921354</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>51c7e42b4032a6189687a6e2623c9348</srcmd5>
+    <version>4.9.1</version>
+    <time>1640108433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940131</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6125370e14cc11cf20321af291b804ad</srcmd5>
+    <version>4.9.1</version>
+    <time>1642724742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947725</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fd79b81c0e2a934b8e88612f1abedf46</srcmd5>
+    <version>4.11</version>
+    <time>1646241750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958436</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e54fde21dff57a0e11d262b07b3190c4</srcmd5>
+    <version>4.11</version>
+    <time>1649370468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967389</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e3a7da902034f2acdaa9be730a7ff510</srcmd5>
+    <version>4.12.2</version>
+    <time>1654506642</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.12.2
+  * Added support for Amharic in :ref:check-end-stop.
+  * Added support for Burmese in :ref:check-end-question.
+  * Extended options of the :ref:addon-weblate.generate.pseudolocale add-on.
+  * Added ignore-all-checks flag to ignore all quality checks on a string.
+  * Avoid :ref:addon-weblate.generate.pseudolocale add-on to trigger failing checks.
+  * Added support for :ref:vcs-gitea.
+  * Added Linux style language code to :ref:component-language_code_style.
+  * Added support for rebuilding project translation memory.
+  * Improved API for creating components from a file.
+  * Add copy and clone buttons to other translations.
+  * Make merge request message configurable at component level.
+  * Improved maximal length restriction behavior with XML tags.
+  * Fixed loading Fluent files with additional comments.
+  * Add support for web monetization.
+  * Ensure Weblate SSH key is generated during migrations.
+</comment>
+    <requestid>980977</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1543239026cb2988d3c5fad1849e5a2e</srcmd5>
+    <version>4.14.1</version>
+    <time>1668173792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035144</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>379457e0314570c7b725d690fd6f4f49</srcmd5>
+    <version>4.14.2</version>
+    <time>1670514748</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.14.2
+  * Added support for removing entries from translation memory.
+  * Improved analysis on the duplicate language alert.
+  * Improved accurancy of the consecutive duplicated words check.
+  * Improved scaling of sending many notifications.
+  * Improved string state handling for subtitle translation.
+  * Deprecated insecure configuration of VCS service API keys via
+    _TOKEN/_USERNAME configuration instead of _CREDENTIALS list.
+  * Fixed processing of some uploaded CSV files.
+  * Improved whitespace changes handling in diff display.
+  * Added automatic suggestions management link to management pages.
+  * Track comment removal/resolving in history.
+  * Fixed restoring project backups with linked components.
+  * Fixed captcha entering on unsuccessful registration.
+  * Improved languages support in DeepL.
+  * Improved webhooks compatibility with authenticated repositories.
+  * Added support for Python 3.11.</comment>
+    <requestid>1041390</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ed67a0776aa95e67f3374a7aec69135a</srcmd5>
+    <version>4.14.2</version>
+    <time>1681387828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078655</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>deec79c4a1cf29de8947078f06f1bfdd</srcmd5>
+    <version>4.14.2</version>
+    <time>1683037173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084001</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f56f312073972d1d955ccef2f94f1979</srcmd5>
+    <version>4.18.2</version>
+    <time>1690278594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.18.2
+  * Added support for browsing changes for a individual string.
+  * Fixed plurals handling in automatic translation from other components.
+  * Added keyboard shortcut Alt+Enter to submit string as a suggestion.
+  * Improved performance of translation memory.
+  * Added add-on to customize XML output.
+  * Format string checks now also detects duplicated formats.
+  * Improved search performance for some specially formatted strings.
+  * Celery beat is now storing the tasks schedule in the database.
+  * Dropped support for VCS integration settings deprecated in 4.14.
+  * Added support for Bitbucket Server pull requests.
+  * Improved conflicts handling in gettext PO files.
+  * Added plurals support to automatic suggestions.
+  * Allow to filter on language in reports.
+  * Dropped deprecated command cleanup_celery.
+  * Fixed private project visibility for some teams.
+  * Added support for Ed25519 SSH key.
+  * Improved API error messages on permission denied.
+  * Reduced false positives of the XML checks.
+  * Avoiding signing-out user in some rate-limits.
+  * Support for automatic update of screenshots from a repository.
+  * Added dark theme; browser-following and manual setting are
+    available.
+  * More changes, see https://github.com/WeblateOrg/weblate/releases
+- Add opensuse use-old-html-theme.patch and upstream pyparsing.patch
+- Add one more hunk to skip-test_ocr.patch</comment>
+    <requestid>1099725</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>15d33995c6c607b68502894e555a01ba</srcmd5>
+    <version>4.18.2</version>
+    <time>1698952875</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121682</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="perl-AppConfig" project="openSUSE:Factory">
+  <title>Reading configuration files and parsing command line arguments</title>
+  <description>AppConfig is a Perl module for managing application configuration
+information. It maintains the state of any number of variables and
+provides methods for parsing configuration files and command line
+arguments.</description>
+  <devel project="devel:languages:perl" package="perl-AppConfig"/>
+</package>

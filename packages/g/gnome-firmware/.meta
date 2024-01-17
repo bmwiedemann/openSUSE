@@ -1,0 +1,5 @@
+<package name="gnome-firmware" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Apps" package="gnome-firmware"/>
+</package>

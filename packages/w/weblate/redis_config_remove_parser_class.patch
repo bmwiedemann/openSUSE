@@ -1,0 +1,37 @@
+From f990e0a5e0087b905b4d96e6bd926cff2a3c8de8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20=C4=8Ciha=C5=99?= <michal@cihar.com>
+Date: Thu, 17 Aug 2023 07:12:09 +0200
+Subject: [PATCH] settings: remove explicit PARSER_CLASS from redis
+ configuration
+
+It uses hiredis automatically when available for quite some time and
+redis-py 5.0 release changed parser class naming.
+---
+ weblate/settings_docker.py  | 1 -
+ weblate/settings_example.py | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/weblate/settings_docker.py b/weblate/settings_docker.py
+index ea266797b7cf..ec66be7b27c4 100644
+--- a/weblate/settings_docker.py
++++ b/weblate/settings_docker.py
+@@ -1191,7 +1191,6 @@
+         # "LOCATION": "unix:///var/run/redis/redis.sock?db=1",
+         "OPTIONS": {
+             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+-            "PARSER_CLASS": "redis.connection.HiredisParser",
+             # If you set password here, adjust CELERY_BROKER_URL as well
+             "PASSWORD": REDIS_PASSWORD if REDIS_PASSWORD else None,
+             "CONNECTION_POOL_KWARGS": {},
+diff --git a/weblate/settings_example.py b/weblate/settings_example.py
+index 17eb2ff3a878..f66828605766 100644
+--- a/weblate/settings_example.py
++++ b/weblate/settings_example.py
+@@ -827,7 +827,6 @@
+         # "LOCATION": "unix:///var/run/redis/redis.sock?db=1",
+         "OPTIONS": {
+             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+-            "PARSER_CLASS": "redis.connection.HiredisParser",
+             # If you set password here, adjust CELERY_BROKER_URL as well
+             "PASSWORD": None,
+             "CONNECTION_POOL_KWARGS": {},

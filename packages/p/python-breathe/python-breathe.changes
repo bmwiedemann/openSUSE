@@ -1,0 +1,360 @@
+-------------------------------------------------------------------
+Wed Oct  4 13:47:35 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Make support-sphinx-7.2.patch backwards-compatible
+  * and sent upstream: https://github.com/breathe-doc/breathe/pull/956
+
+-------------------------------------------------------------------
+Tue Aug 29 02:48:53 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Upgrade to 4.35: 
+  * Pull lone literal blocks in paragraphs up to produce correct doctree.
+  * Fix tests for changes in Sphinx 5.3.
+  * Bump Python requirement to 3.7.
+  * Support Sphinx 6.
+  * Support sort option to sort sections by name.
+- Drop patch Fix-tests-for-Sphinx-5.3.0.patch, included upstream.
+- Add patch support-sphinx-7.2.patch:
+  * Support Sphinx 7.2 changes.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
+Thu Jul  6 10:23:41 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Fri Mar 24 12:30:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed requirement setuptools
+
+-------------------------------------------------------------------
+Thu Nov  3 12:24:28 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed dep python-six
+
+-------------------------------------------------------------------
+Fri Oct 28 06:53:44 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add Fix-tests-for-Sphinx-5.3.0.patch to make the package compatible with
+  Sphinx 5.3.0
+
+-------------------------------------------------------------------
+Tue Oct 25 12:46:34 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Fix build errors in Leap and Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Sep 23 02:44:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 4.34.0
+  * Treat .unparsed as plain text. #806
+  * Remove unneeded type: ignore annotations. #813
+  * Fix internal NodeFinder visitor for when non-Docutils nodes are present in the content of a directive. #812
+  * Rename lint workflow. #814
+  * Type check pygments and limit docutils stub version. #819
+  * Convert dot files' relative path to absolute. #821
+  * CI, update Sphinx versions to test. #834
+  * CI, update for Sphinx 5.0.1. #846
+  * Fix inconsistency in example. #843
+  * Fix C# enum rendering crash. #849
+  * Drop Sphinx 3 support, add Sphinx 5 support. #850
+  * CICD: Disable python 3.6 for Sphinx master tests. #853
+  * Populate default include text-node's data field instead of raw-source. #828 
+
+-------------------------------------------------------------------
+Mon Mar  7 13:43:13 UTC 2022 - pgajdos@suse.com
+
+- version update to 4.33.1
+  - 2022-02-14 - **Breathe v4.33.1**
+    - Avoid warning about multiple graphviz directives.
+      `#804 <https://github.com/michaeljones/breathe/pull/804>`__
+  - 2022-02-14 - **Breathe v4.33.0**
+    - Fix duplicate ``static`` in variable declarations.
+      `#794 <https://github.com/michaeljones/breathe/pull/794>`__
+    - Update CICD for Sphinx 4.4.0 series.
+      `#795 <https://github.com/michaeljones/breathe/pull/795>`__
+    - Pin version of black in CICD and reformat files.
+      `#792 <https://github.com/michaeljones/breathe/pull/792>`__
+    - Fix code block highlighting.
+      `#760 <https://github.com/michaeljones/breathe/pull/760>`__
+    - Refactoring, cleanup and typing improvements.
+      `#802 <https://github.com/michaeljones/breathe/pull/802>`__
+    - Doxygen dot graphs to Sphinx graphviz.
+      `#757 <https://github.com/michaeljones/breathe/pull/757>`__
+    - Support externally hosted images.
+      `#705 <https://github.com/michaeljones/breathe/pull/705>`__
+    - Address a peculiarity in Doxygen aliases in doc.
+      `#770 <https://github.com/michaeljones/breathe/pull/770>`__
+    - Add flag to doxygengroup, doxygennamespace to display only the description.
+      `#718 <https://github.com/michaeljones/breathe/pull/718>`__
+    - Add support for MD block quotes with attribution(s).
+      `#759 <https://github.com/michaeljones/breathe/pull/759>`__
+  - 2022-01-30 - **Breathe v4.32.0**
+    - Added ``breathe_doxygen_aliases`` config variable.
+      `#729 <https://github.com/michaeljones/breathe/pull/729>`__
+    - Render ``\remark``/``\remarks`` and ``\see``/``\sa`` using Sphinx/Docutils
+      admonition style nodes.
+      `#756 <https://github.com/michaeljones/breathe/pull/756>`__
+    - Render C++ scoped enums differently than unscoped enums, and with their
+      underlying type.
+      `#753 <https://github.com/michaeljones/breathe/pull/753>`__
+    - Render ``\retval`` lists using dedicated field list when Sphinx >= 4.3 is
+      used.
+      `#749 <https://github.com/michaeljones/breathe/pull/749>`__
+   - Make ``.. doxygenfunction`` handle function template specializations.
+      `#750 <https://github.com/michaeljones/breathe/pull/750>`__
+    - Properly handle field-lists and admonitions in the detailed description of
+      classes and functions.
+      `#764 <https://github.com/michaeljones/breathe/pull/764>`__
+    - Add ``:confval:`breathe_show_include``` to control whether ``#include``
+      lines are shown. Defaults to ``True``.
+      `#725 <https://github.com/michaeljones/breathe/pull/725>`__
+    - Fix sys.path adjustment in doc config.
+      `#734 <https://github.com/michaeljones/breathe/pull/734>`__
+    - Fix sphinx renderer variable and function visitors for C#.
+      `#737 <https://github.com/michaeljones/breathe/pull/737>`__
+    - Fix sphinx renderer class visitor for C#.
+      `#738 <https://github.com/michaeljones/breathe/pull/738>`__
+    - Auto-format python code with black.
+      `#743 <https://github.com/michaeljones/breathe/pull/743>`__
+    - Extend flake8 and address some style issues.
+      `#745 <https://github.com/michaeljones/breathe/pull/745>`__
+    - Fix black formatting warning.
+      `#747 <https://github.com/michaeljones/breathe/pull/747>`__
+    - Update Sphinx and Python versions tested against.
+      `#765 <https://github.com/michaeljones/breathe/pull/765>`__
+    - Fix friend functions for older Doxygen versions.
+      `#769 <https://github.com/michaeljones/breathe/pull/769>`__
+    - Doxygen >= 1.9.2 supports C++20 concepts, add support for them.
+      `#779 <https://github.com/michaeljones/breathe/pull/779>`__
+    - Change the way directives are added to adhere to the interface,
+      e.g., avoiding myst-parser to crash.
+      `#780 <https://github.com/michaeljones/breathe/pull/780>`__
+    - Improved list of included files (with cross-references for local includes).
+      `#763 <https://github.com/michaeljones/breathe/pull/763>`__
+    - Update flake8 and mypy related stuff.
+      `#781 <https://github.com/michaeljones/breathe/pull/781>`__
+    - Update readme with logo and sponsorship info.
+      `#784 <https://github.com/michaeljones/breathe/pull/784>`__
+    - Store version number in both setup.py and __init__.py.
+      `#789 <https://github.com/michaeljones/breathe/pull/789>`__
+    - CICD: lint: continue with other jobs if black fails.
+      `#791 <https://github.com/michaeljones/breathe/pull/791>`__
+- actually does not require python-mock
+
+-------------------------------------------------------------------
+Sat Jan 15 15:24:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.31.0:
+  * Collapse multiple retvals into a single bullet list
+  * Fix mypy issues on CI
+  * Print usage message from 'compare' doc script
+  * Test against Sphinx 4.0.3, 4.1.2 and 4.1.x branch
+  * Fix duplicate ``static`` in function declarations
+  * Directive refactoring
+  * Handle parsing errors
+  * Make doxygenfunction more robust when matching parameters
+  * Separate, link and style the changelog
+  * Update changelog and readme ahead of release
+  * CICD: Track Sphinx 4.2.x development series
+
+-------------------------------------------------------------------
+Tue Jun  1 16:05:57 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.30.0:
+  - Fix retval rendering. #687
+  - Correctly label example as C. #690
+  - apidoc: add -m, --members option flag. #694
+  - Do not add inline modifier for C#. #668
+  - Use add_css_file instead of deprecated/removed add_stylesheet. #669
+  - Use native docutils for field lists, notes, and warnings. #670
+  - Handle directives returning no nodes on error. #672
+  - Code and documentation for membergroups and members-only options.
+    #637
+  - Add example.tag to gitignore as it gets modified during build
+    process. #644
+  - Add support for content-only flag when rendering pages. #645
+  - When rendering a section, add target after title. #647
+  - Render pages content in order. #651
+  - Adds an ID to the rubric created for each section of a group. #658
+  - Add missing getter and setter for C#. #661
+  - Add support for rowspan/colspan to tables. #642
+
+-------------------------------------------------------------------
+Thu Feb 25 03:13:38 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.27.0:
+  * Add various specifiers to functions and variables. #628
+  * Add multiply inherited class for PHP objects. #630
+  * Initial support for table rendering. #632
+  * Add rendering of \section, \subsection and \subsubsection. #635
+  * Sphinx 3.5 compatibility. #640
+  * Fix linking to sections. #639
+  * Add table examples to documentation. #638
+  * Fix doxygenfile causing duplicate IDs for unspecified sections. #622
+  * Fixes for doxygenfunction (friend keyword, friend class, arg checks). #623
+  * Add test for ellipsis ('...') in args. #610
+  * Sphinx 3.4.x compatibility. #617
+  * Adapt friendclass to Doxygen 1.9. #618
+  * Add support for \parblock parsing and rendering. #603
+  * Allow lookup in doxygenfunction without writing param names. #606 
+
+-------------------------------------------------------------------
+Wed Dec  9 23:29:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v4.24.1
+  * Fix anchors on pages generated by Doxygen >= 1.8.17. #602
+- Breathe v4.24.0
+  * Update CI for Sphinx 3.3.x and fix test mock. #597
+  * Add support for xrefitem based page generation (doxygenpage).
+    #596
+- Breathe v4.23.0
+  * Add initial xrefsect support. #589
+
+-------------------------------------------------------------------
+Wed Oct 14 01:38:22 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.22.1:
+  * Fix anonymous struct/union usage in C domain. #585
+  * New boolean breathe_show_enumvalue_initializer option specifying whether
+    value of enumvalue should be displayed. #581
+  * Fix Read the Docs build. #567
+  * Document doxygenclass template specialisation spacing. #570
+  * Update upper Sphinx release to <3.4. #571
+  * Reuse breathe.__version__ in setup.py. #572
+  * Document :inner: for the doxygengroup section. #573
+  * Add support for verbatim inline elements. #560
+  * Fix wrong refid when Doxygen SEPARATE_MEMBER_PAGES is YES. #566
+  * Allow Sphinx 3.2. #561
+  * Update CI scripts with new Sphinx versions. #552
+  * Add support for C# using sphinx-csharp. #550
+  * Doc, fix typo, :source: -> :project:. #551
+  * Add support for innergroup. #556
+  * Avoid duplicate doxygen targets when debug tracing. #563
+
+-------------------------------------------------------------------
+Fri Jun 26 08:45:26 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- update to 4.19.2:
+  * Fix crash when visiting typedef. #547
+
+-------------------------------------------------------------------
+Mon Jun 15 10:33:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use tag, not random sha
+
+-------------------------------------------------------------------
+Sun Jun 14 09:41:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.19.1:
+  * Mark package as compatible with Sphinx 3.1.
+  * Refactoring. #528
+  * Make debug config variables available in conf.py. #533
+  * Fix warning formatting for function lookup. #535
+  * Correctly reverse nested namespaces in get_qualification. #540
+
+-------------------------------------------------------------------
+Tue Jun  2 12:57:04 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Increase required version of Sphinx to the one where module
+  cstructobject was introduced. (bsc#1168627)
+
+-------------------------------------------------------------------
+Wed May 27 12:01:04 UTC 2020 - pgajdos@suse.com
+
+- version update to 4.18.1
+  * 2020-05-10 - Breathe v4.18.1
+    - Fix friend class rendering and allow friend struct. #522
+    - Add extern examples to doc and remove variable hack. #526
+    - Render function candidates without using Sphinx directives. #524
+  * 2020-05-02 - Breathe v4.18.0
+    - Support tiles in verbatim blocks. #517
+  * 2020-05-01 - Breathe v4.17.0
+    - Scoped rendering, better integration with Sphinx, misc fixes. #512
+  * 2020-04-19 - Breathe v4.16.0
+    - Strictly depend on Sphinx's minor version. #498
+    - Simplifications and fixes, use more of modern Sphinx natively. #503
+    - Add section option to the doxygen(auto)file directive. #501
+    - Fix link generation when enum is inside a group (enum FQDN). #508
+    - Fix creation of LaTeX math formulas. #506
+    - Improve documentation for doxygen(auto)file section option. #509
+  * 2020-04-07 - Breathe v4.15.0
+    - Add license file to distribution. #492
+    - Update for Sphinx 3. #491
+
+-------------------------------------------------------------------
+Wed May 27 09:36:31 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Tue Apr 14 08:59:32 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.14.2:
+  * Fixes to use Sphinx 2.4.4
+  * Switch to pytest from nose.
+- Remove 0001-Add-MockApp.emit.patch
+
+-------------------------------------------------------------------
+Thu Apr  2 08:06:45 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Fix FTBFS due to test failure
+
+  Add patch: 0001-Add-MockApp.emit.patch
+  This is cherry picked from https://github.com/michaeljones/breathe/pull/486
+  and fixes test failures with sphinx 2.4.4
+
+-------------------------------------------------------------------
+Sun Feb  2 16:00:02 UTC 2020 - aloisio@gmx.com
+
+- Update to version 4.14.1
+  * Use sphinx core instead of mathbase ext. #469
+  * Fix test failure for Sphinx >= 2.2.2. #472
+  version 4.14.0:
+  * Add events attribute to MockApp. #452
+  * Add bit field support for C/C++. #454
+  * Add alias and variable template support. #461
+
+-------------------------------------------------------------------
+Fri Sep 13 11:12:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.13.1:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Thu Jun  6 13:29:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.13.0:
+  * Fixes for Sphinx 2.0
+
+-------------------------------------------------------------------
+Tue Mar 19 14:57:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.12.0:
+  * More sphinx fixes
+- Remove merged patch sphinx18.patch
+
+-------------------------------------------------------------------
+Wed Mar  6 14:17:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.11.1:
+  * Fixes for newer sphinx releases
+- Switch to github tarball for tests and license
+- Add patch to fix build with sphinx 1.8:
+  * sphinx18.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:19 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Sep 18 16:51:24 UTC 2017 - toddrme2178@gmail.com
+
+- Fix provides/obsoletes
+
+-------------------------------------------------------------------
+Fri Sep  8 15:50:22 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

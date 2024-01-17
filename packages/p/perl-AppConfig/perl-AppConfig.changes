@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Tue Apr 14 10:28:46 UTC 2015 - coolo@suse.com
+
+- updated to 1.71
+   see /usr/share/doc/packages/perl-AppConfig/Changes
+
+-------------------------------------------------------------------
+Wed Dec  7 13:23:57 UTC 2011 - coolo@suse.com
+
+- use spdx license
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:05 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:50 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Nov 24 18:58:17 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Jul  9 12:01:12 CEST 2007 - anicka@suse.cz
+
+- update to 1.66
+  * Removed File::HomeDir from the test scripts.
+
+-------------------------------------------------------------------
+Mon Jun 11 09:37:09 CEST 2007 - anicka@suse.cz
+
+- update to 1.65
+  * documentation added
+- move testing to %check
+
+-------------------------------------------------------------------
+Wed May 16 15:47:29 CEST 2007 - pth@suse.de
+
+- Add explicit dependencies on perl-File-HomeDir.
+- Run tests.
+
+-------------------------------------------------------------------
+Tue Jan  9 18:52:28 CET 2007 - anicka@suse.cz
+
+- update to 1.64
+* Bug fix to prevent crashing for users with no home directory
+* Increase File::HomeDir dep to 0.61 which supports no home 
+  directory cases properly.
+
+-------------------------------------------------------------------
+Wed Sep 13 11:24:36 CEST 2006 - anicka@suse.cz
+
+- update to 1.63
+ * removed "use warnings" and "use base Exporter"
+ * Use File::HomeDir to find $HOME
+ * Fixed a POD bug in AppConfig::Sys and added a 99_pod.t test
+ * Added a LICENSE file
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 31 12:12:49 CET 2005 - dmueller@suse.de
+
+- build as nonroot 
+
+-------------------------------------------------------------------
+Thu Feb 26 16:03:49 CET 2004 - mjancar@suse.cz
+
+- update to 1.56
+
+-------------------------------------------------------------------
+Fri Aug 22 13:59:31 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Jul 15 14:33:38 CEST 2003 - freitag@suse.de
+
+- fixed specfile to use vendorbranch and use macros 
+
+-------------------------------------------------------------------
+Sun Jun 22 21:40:57 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Mon May 19 13:52:09 CEST 2003 - freitag@suse.de
+
+- removed perllocal.pod and updated to new version 1.55 
+
+-------------------------------------------------------------------
+Thu Jan 30 11:36:47 CET 2003 - ro@suse.de
+
+- no noarch 
+
+-------------------------------------------------------------------
+Thu Nov 28 10:54:42 CET 2002 - freitag@suse.de
+
+- added noarch Architecture flag. 
+
+-------------------------------------------------------------------
+Thu Nov 28 10:34:31 CET 2002 - freitag@suse.de
+
+- new package perl-AppConfig 
+

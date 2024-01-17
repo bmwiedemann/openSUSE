@@ -1,0 +1,197 @@
+-------------------------------------------------------------------
+Thu Apr  6 03:09:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.050000
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.050000	2023-04-05
+
+   [ Documentation ]
+   - Add a few missing references to the
+     Sub::HandlesVia::HandlerLibrary::Enum module to the documentation.
+   - Mention potential load-order bugs when importing multiple extensions for
+     Moo into the same package.
+   - Update Sub::HandlesVia::Manual::Comparison.
+
+   [ Packaging ]
+   - Change versioning scheme.
+
+-------------------------------------------------------------------
+Sat Dec 17 03:08:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.046
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.046	2022-12-16
+
+   - Added: Sub::HandlesVia::HandlerLibrary::Enum module.
+   - Handler libraries can now provide constants for shortcuts.
+   - Updated: Rebuild with latest Mite.
+
+-------------------------------------------------------------------
+Wed Nov  9 03:06:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.045
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.045	2022-11-08
+   [ Bug Fixes ]
+   - Fix for `with qw(Role1 Role2)` in Moose where at least one role uses
+     Sub::HandlesVia.
+     Bartosz Jarzyna++
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/6>
+   - Support attributes declared with `has '+name'`.
+     Bartosz Jarzyna++
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/7>
+   [ Documentation ]
+   - Document that `with qw(Role1 Role2)` in Mouse is currently broken if
+     either role uses Sub::HandlesVia.
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/9>
+   [ Test Suite ]
+   - Test that `with qw(Role1 Role2)` in Moo works if either role uses
+     Sub::HandlesVia.
+   [ Other ]
+   - Added: Add a `generator_for_prelude` attribute to
+     Sub::HandlesVia::CodeGenerator.
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/8>
+
+-------------------------------------------------------------------
+Tue Nov  1 03:07:25 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.044
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.044	2022-10-31
+   [ Documentation ]
+   - Moved a lot of pod out of Sub::HandlesVia and into
+     Sub::HandlesVia::Manual::*.
+  0.043	2022-10-31
+   - Added: Sub::HandlesVia::HandlerLibrary methods: handler_names,
+     has_handler, and get_handler.
+   - Added: Sub::HandlesVia::HandlerLibrary::Blessed.
+  0.042	2022-10-30
+   - Added: Sub::HandlesVia::Declare for compile-time declaration of
+     Sub::HandlesVia delegations.
+   - Improved support for Object::Pad, including support for non-scalar
+     fields.
+  0.041	2022-10-29
+   - Added: Experimental support for Object::Pad.
+  0.040	2022-10-27
+   [ Bug Fixes ]
+   - Stricter detection of Moo::Role roles to prevent some false positives
+     when given Mouse::Role and Moose::Role roles.
+     Bartosz Jarzyna++
+   [ Test Suite ]
+   - Add a test using Sub::HandlesVia when Beam::Wire is loaded.
+     Bartosz Jarzyna++
+  0.039	2022-10-26
+   [ Bug Fixes ]
+   - Fix application of Sub::HandlesVia Moose/Mouse traits to metaobjects
+     that have other traits applied to them.
+     Bartosz Jarzyna++
+   [ Test Suite ]
+   - Mite has supported Perl 5.8.x for a while now, so Mite-related tests
+     shouldn't be restricted to running on Perl 5.10.1+.
+  0.038	2022-10-21
+   [ Documentation ]
+   - Minor changes to documentation for Hash:accessor and Array:accessor.
+
+-------------------------------------------------------------------
+Tue Sep 27 03:08:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.037
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.037	2022-09-26
+
+   [ Bug Fixes ]
+   - Fix test case broken by Type::Tiny v2.
+     Peter Mottram++
+   - Hash:set shouldn't hardcode use of Carp::croak. Instead a CodeGenerator
+     should decide how to deal with error messages.
+
+-------------------------------------------------------------------
+Sat Aug 27 03:07:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.036
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.036	2022-08-26
+   [ Bug Fixes ]
+   - Fix integration issues with newer versions of Mite.
+   [ Documentation ]
+   - Examples for a few methods.
+   - More tests for a few methods.
+   [ Other ]
+   - Added: Add a delete_where method for hashes.
+   - Added: Add execute_list, execute_scalar, execute_void, and corresponding
+     _method variants for coderefs.
+   - Added: The flatten_deep, natatime, and first_index methods for arrayrefs
+     no longer use callbacks.
+
+-------------------------------------------------------------------
+Sat Aug 13 03:12:43 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.035
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.035	2022-08-12
+   - Sub::HandlesVia::CodeGenerator method_installer is now a rw attribute as
+     Sub::Accessor::Small was relying on that.
+  0.034	2022-08-07
+   - Sub::HandlesVia::CodeGenerator now handles generating code for type
+     assertions and coercions instead of relying on handlers to do it.
+   - Sub::HandlesVia::CodeGenerator now has a configurable sandbox package.
+   - Updated: Sub::HandlesVia::Toolkit::Mite supports recent Mite features
+     such as lvalue accessors and new ways of specifying defaults.
+  0.033	2022-07-12
+   - Optimizations to Sub::HandlesVia::CodeGenerator.
+   - Updated: Recompile with newer Mite.
+
+-------------------------------------------------------------------
+Wed Jul 13 03:08:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.032
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.032	2022-07-12
+   [ Packaging ]
+   - Require newer version of Role::Hooks.
+  0.031	2022-07-09
+   [ Packaging ]
+   - Add dependencies on MRO::Compat and Devel::GlobalDestruction, but only
+     on very old Perls.
+  0.030	2022-07-09
+   [ Packaging ]
+   - Drop dependency on Scope::Guard.
+  0.029	2022-07-09
+   [ Packaging ]
+   - Use Mite internally, dropping the dependency on Class::Tiny.
+  0.028	2022-07-02
+   [ Test Suite ]
+   - Lots more tests for using Sub::HandlesVia with Mite.
+   [ Other ]
+   - Updated: Support for Mite roles.
+
+-------------------------------------------------------------------
+Thu Jun 30 03:06:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.027
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.027	2022-06-30
+   [ Test Suite ]
+   - Skip Mite test on Perl < 5.10.1
+  0.026	2022-06-30
+   - Added: Support classes built with Mite.
+
+-------------------------------------------------------------------
+Fri Jun 17 03:08:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.025
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+-------------------------------------------------------------------
+Fri Oct 16 15:29:45 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Created

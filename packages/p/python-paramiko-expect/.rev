@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b27bf75511b1ab70895964f34df9382</srcmd5>
+    <version>0.2.8</version>
+    <time>1556622054</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697420</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>64c604f845b9585f621b8ee57bdf06ee</srcmd5>
+    <version>0.2.8</version>
+    <time>1587467422</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795799</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec24e573cbde77064087eccff6091859</srcmd5>
+    <version>0.3.2</version>
+    <time>1649370505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967527</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1be08140c565c1d30cbcbf2043529729</srcmd5>
+    <version>0.3.2</version>
+    <time>1660235544</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unneeded BuildRequires of contextlib2 and mock.</comment>
+    <requestid>994414</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6713ea241b7520155a1b82f829090d6b</srcmd5>
+    <version>0.3.4</version>
+    <time>1665754883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010373</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>966fbe871cdc7e3891b5f672b07e630d</srcmd5>
+    <version>0.3.5</version>
+    <time>1683728380</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.5:
+  * use license from tarball
+  * add term option to SSHClientInteraction and use to call invoke_shell</comment>
+    <requestid>1085966</requestid>
+  </revision>
+</revisionlist>

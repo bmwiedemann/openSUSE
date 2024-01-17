@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Jul 24 06:14:40 UTC 2017 - coolo@suse.com
+
+- updated to 0.003
+   see /usr/share/doc/packages/perl-Scalar-String/Changes
+
+  version 0.003; 2017-07-23
+  
+    * update test suite to not rely on . in @INC, which is no longer
+      necessarily there from Perl 5.25.7
+  
+    * when soft-loading utf8, avoid the Perl core bug regarding the
+      context applied to file scope of required modules, in case of a
+      future version of utf8 becoming vulnerable and running on an old Perl
+  
+    * no longer include a Makefile.PL in the distribution
+  
+    * in META.{yml,json}, point to public bug tracker
+  
+    * correct dynamic_config setting to 0
+  
+    * use cBOOL() where appropriate
+  
+    * convert .cvsignore to .gitignore
+
+-------------------------------------------------------------------
+Thu Dec 11 11:16:20 UTC 2014 - ncutler@suse.com
+
+- initial package 0.002
+    * created by cpanspec 1.78.08
+- checked license
+- took maintainership
+

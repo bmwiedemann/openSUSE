@@ -1,0 +1,13 @@
+Index: xtermset-0.5.2/configure.in
+===================================================================
+--- xtermset-0.5.2.orig/configure.in
++++ xtermset-0.5.2/configure.in
+@@ -9,7 +9,7 @@
+ # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ AC_INIT(reconf)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE(xtermset,0.5.2)
+ AC_PROG_CC
+ AC_AIX

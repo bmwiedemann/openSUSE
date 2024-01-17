@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e710a9b5d6bc51cd358105399e2eb17</srcmd5>
+    <version>0~20150104</version>
+    <time>1422626284</time>
+    <user>dimstar_suse</user>
+    <comment>Part of libyal 2015 refresh - may need to go to staging D.  libcstring is a dependency and is currently in staging D.</comment>
+    <requestid>280510</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ca066e4b84d6f9820831c470ecff091b</srcmd5>
+    <version>0~20170111</version>
+    <time>1487681323</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458584</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5ee21869a789c6d59a31c9e45dafe453</srcmd5>
+    <version>0~20181011</version>
+    <time>1560337732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695364</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f92d0b7b22afa3ce16fe25a177a16e38</srcmd5>
+    <version>0~20200708</version>
+    <time>1609253584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859089</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9f4f4dc9a379b3847e361a7cedf65b5f</srcmd5>
+    <version>20210413</version>
+    <time>1623363486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898566</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0e730eda4254795c0b32c4753ae0f8d6</srcmd5>
+    <version>20220110</version>
+    <time>1641855211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220110</comment>
+    <requestid>945302</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6bf04be1a9a2f24944cc3be5f39b31cc</srcmd5>
+    <version>20220110</version>
+    <time>1660051708</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993984</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>47e40a53d9bf9b72be61a9792c65c7e7</srcmd5>
+    <version>20220110</version>
+    <time>1669629972</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038456</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5472e5b1cd50abbb38bca37872152d47</srcmd5>
+    <version>20230115</version>
+    <time>1673801890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230115</comment>
+    <requestid>1058441</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d1bdd41dba861a2f9ab66959f2c1d34c</srcmd5>
+    <version>20240112</version>
+    <time>1705099568</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240112</comment>
+    <requestid>1138265</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="nvptx-tools" project="openSUSE:Factory">
+  <title>nvptx-tools</title>
+  <description>nvptx-tools</description>
+  <devel project="devel:gcc" package="nvptx-tools"/>
+  <url>https://github.com/MentorEmbedded/nvptx-tools/</url>
+</package>

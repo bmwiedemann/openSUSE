@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Tue Jan 15 14:16:07 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+
+-------------------------------------------------------------------
+Tue Aug 11 06:50:04 UTC 2015 - mpluskal@suse.com
+
+- Use %configure macro
+- Update dependencies
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Apr  5 08:00:18 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Wed Mar 13 12:35:33 CET 2013 - pgajdos@suse.cz
+
+- builds with automake 1.13
+  * automake-1.13.patch
+
+-------------------------------------------------------------------
+Sat Jan 12 13:54:29 UTC 2013 - coolo@suse.com
+
+- remove suse_update_config
+
+-------------------------------------------------------------------
+Thu Dec  1 09:21:21 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-2.0+ ; MIT
+  SPDX format
+
+-------------------------------------------------------------------
+Wed Nov 30 10:25:13 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Aug 30 10:03:26 CEST 2006 - anosek@suse.cz
+
+- changed prefix /usr/X11R6 -> /usr
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:30 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov  8 14:38:21 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Fri Jul 25 11:21:23 CEST 2003 - postadal@suse.cz
+
+- update to version 0.5.2
+  * tiny bugs fixed
+
+-------------------------------------------------------------------
+Thu Mar 14 17:04:00 CET 2002 - pmladek@suse.cz
+
+- fixed usage of strcat() to do not write outside of static strigs
+- removed improper test on dash because some values in options
+  can begin with dash, for example font name
+- /usr/X11R6/share/xtermset is owned by this package now
+
+-------------------------------------------------------------------
+Fri Sep  7 09:33:33 CEST 2001 - ro@suse.de
+
+- added "-a" to automake 
+
+-------------------------------------------------------------------
+Tue Mar 13 12:53:41 CET 2001 - cihlar@suse.cz
+
+- update to version 0.5.1
+
+-------------------------------------------------------------------
+Tue Feb 13 07:55:11 CET 2001 - cihlar@suse.cz
+
+- fixed limits of switches and fn
+
+-------------------------------------------------------------------
+Wed Nov 22 09:30:08 CET 2000 - cihlar@suse.cz
+
+- update to version 0.5
+- added suse_update_config
+
+-------------------------------------------------------------------
+Thu Apr 27 14:22:49 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot 
+
+-------------------------------------------------------------------
+Thu Oct 21 19:16:39 MEST 1999 - kukuk@suse.de
+
+- Update to version 0.4
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Apr 27 16:25:58 MEST 1999 - kukuk@suse.de
+
+ - Spec file created from xtermset-0.3.tar.gz by autospec
+
+

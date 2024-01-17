@@ -1,0 +1,7 @@
+<package name="gtk3" project="openSUSE:Factory">
+  <title>The GTK+ toolkit library (version 3)</title>
+  <description>GTK+ is a multi-platform toolkit for creating graphical user interfaces.
+Offering a complete set of widgets, GTK+ is suitable for projects
+ranging from small one-off projects to complete application suites.</description>
+  <devel project="GNOME:Factory" package="gtk3"/>
+</package>

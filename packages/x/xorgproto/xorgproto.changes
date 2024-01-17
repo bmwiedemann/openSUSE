@@ -1,0 +1,189 @@
+-------------------------------------------------------------------
+Fri Jun 16 11:16:43 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2023.2
+  * quick-fix release to address the Present protocol version not
+    being updated in xorgproto-2023.1.
+
+-------------------------------------------------------------------
+Sat Jun 10 11:04:09 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2023.1
+This release introduces a couple of new options for existing extensions:
+
+ * A new option PresentOptionAsyncMayTear for the Present extension,
+ * A new flag XFixesClientDisconnectFlagForceTerminate to the XFixes
+   XFixesClientDisconnectFlags intended to be used by screen lockers,
+   where the server must exit if the screen locker does.
+
+The other changes include various fixes, clarifications and keysym
+definitions updates:
+
+-------------------------------------------------------------------
+Tue Jan 31 10:27:53 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- switched to multibuild for -doc package to avoid build cycles
+
+-------------------------------------------------------------------
+Sun Jan 29 00:30:17 UTC 2023 - Christopher Yeleighton <giecrilj@stegny.2a.pl>
+
+- Build documentation (boo#1207721)
+
+-------------------------------------------------------------------
+Sun Aug 21 11:15:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use xz tarball instead of gz, save a few bytes in size.
+
+-------------------------------------------------------------------
+Fri Aug 12 21:10:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add gpg validation of sources
+
+-------------------------------------------------------------------
+Thu Aug 11 10:16:02 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- xorgproto 2022.2
+  * DRI3: Add DRI3SetDRMDeviceInUse
+  * Add the XWAYLAND extension
+  * Build xz tarballs instead of bzip2
+
+-------------------------------------------------------------------
+Thu Apr 21 02:20:44 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- xorgproto 2022.1
+  * No changes to the actual protocols, just the additions of some
+    new keysyms provided by the Linux kernel.
+
+-------------------------------------------------------------------
+Wed Sep 15 20:54:39 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- xorgproto 2021.5
+  * This release introduces the version 2.4 of the X Input
+    protocol. It contains the addition of the concept of touchpad
+    gestures. Touchpad gesture is an interaction of two or more
+    fingers that can be interpreted as a swipe or a pinch.
+
+-------------------------------------------------------------------
+Mon May 31 15:07:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- package licenses as %%license 
+- modernize spec file
+- list files in files-section to avoid directory permission
+  conflict with filesystem package
+
+-------------------------------------------------------------------
+Fri Apr 30 09:04:25 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- xorgproto 2021.4
+The big new feature in this release is Olivier's addition that makes up
+XFixes 6: the new ClientDisconnectMode. An X server that is started on
+demand (Xwayland) should ideally also terminate when the last client
+disconnects. However, some X11 clients that provide system services will
+linger around forever, preventing that shutdown.
+
+With the new XFixes request, a client can designate itself as
+to-be-terminated and the X server can ignore those clients when counting the
+number of remaining clients. If no other clients are left, the server can
+shut down.
+
+Note that this requires changes to the X server and each client to work.
+
+-------------------------------------------------------------------
+Thu Feb 25 10:42:37 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- xorgproto 2021.3
+If you thought the 2021.2 release was exciting, well, you're in for a
+surprise: this one even builds with meson! How cool is that?!
+
+Somewhat related: the new script to generate and verify the keysyms was
+missing from the (autotools-generated) tarball, causing a meson build from
+that tarball to fail during the setup phase. This is fixed now.
+
+No changes to the rest of the sources, so this is effectively identical to
+yesterday's tarball.  
+
+-------------------------------------------------------------------
+Thu Feb 25 10:39:54 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- xorgproto 2021.2
+This release is mostly all about keysyms. Some additions to Vietnamese and
+Hangul but the big set of commits here is catching up with several years of
+Linux kernel releases.
+
+The kernel's evdev interface has semantic keycodes (e.g. KEY_ESC is what
+you'd expect). Beyond the normal range expected to change with different
+layouts there are many keycodes that should only ever do one thing.
+For example, KEY_ONSCREEN_KEYBOARD should display the OSK regardless of
+layout). In the past, we've added these keysyms on a as-requested basis.
+
+We now have a reserved subrange in the already reserved range for XF86Foo
+keysyms. Within that range, keysyms map directly to their evdev
+counterparts, making future updates easier. The above example
+KEY_ONSCREEN_KEYBOARD now has a XF86OnScreenKeyboard keysym.
+The header file follows a strict convention to make this range
+machine-readable, xkeyboard-config can make use of this to
+make those keysyms available by default. Note that almost all keys are
+outside the X keycode range so very little will change under X.
+
+Note that most keys exist on selected devices only so the practial use is
+quite limited. But those keysyms are available through normal XKB
+configuration so users can re-map existing keys where needed.
+
+Aside from those, a bit of misc cleanup work. Many thanks to all
+contributors.
+
+-------------------------------------------------------------------
+Tue Apr 14 21:22:36 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- xorgproto 2020.1
+  * This release adds a new keysym, a state-change event to the
+    DPMS extension, synchronizes more of the meson and autotools
+    build sytems, and converts some quasi-text documentation to
+    Markdown.
+
+-------------------------------------------------------------------
+Fri Oct 18 10:05:56 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- xorgproto 2019.2
+  * This release moves more header files to the legacy set. Note
+    that this means libX11 older than 1.6.9 and libXvMC older
+    than 1.0.12 will not build without some legacy headers installed.
+
+-------------------------------------------------------------------
+Mon Jun 24 14:28:53 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- use --enable-legacy configure option on existing products in order
+  not to break package builds, which still requires any of these 
+  extensions:
+  * trapproto
+  * xf86miscproto
+  * xproxymngproto
+  deleterequests for the affected packaages have been done for factory/TW
+
+-------------------------------------------------------------------
+Fri Jun 21 10:08:56 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- xorgproto 2019.1
+  * This release boasts a bunch of cleanup work and a few new 
+    keysyms. No functional changes to any of the protocols.
+
+-------------------------------------------------------------------
+Wed Jun 27 23:07:34 UTC 2018 - tobias.johannes.klausmann@mni.thm.de
+
+- Obsolete protocol packages by their corresponding old package names, not by
+  their pkconfig(...) provides. Additionally move the obsoletes to the -devel
+  package to take effect.
+
+-------------------------------------------------------------------
+Wed Feb 28 20:45:12 UTC 2018 - tobias.johannes.klausmann@mni.thm.de
+
+- Create package xorgproto with initial version 2018.4:
+  This package contains all previously split up xorg protocol headers in one
+  package (again!). Additionally this package contains two new protocol 
+  versions required by the upcoming XServer 1.20:
+  + dri3proto version 1.2
+  + randrproto version 1.6
+- Obsolete the old *prot packages by using the actual protocol version to keep
+  this package compatible with the old versioning scheme.
+- "Prefer: xorgproto-devel" in the project config is required to prefer it for
+  now
