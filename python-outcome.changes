@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 12 13:41:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0.post0:
+  * Added type hints to the package. :py:class:`Value` and
+    :py:class:`Outcome` are now generic. A type alias was also added
+    (:py:data:`Maybe`) for the union of :py:class:`Value` and
+    :py:class:`Error`. (#36)
+
+-------------------------------------------------------------------
 Wed Sep  6 19:50:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - drop outdated depndendy on async_generator
-  (see https://github.com/python-trio/outcome/issues/12) 
+  (see https://github.com/python-trio/outcome/issues/12)
 
 -------------------------------------------------------------------
 Fri Apr 21 12:28:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
