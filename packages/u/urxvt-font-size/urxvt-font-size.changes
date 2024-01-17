@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Tue May 17 09:50:43 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.3
+  * Remove explicit path declaration for perl, use /usr/bin/env instead
+  * Update font-size 
+  * Support new extension syntax
+  * Add function to show current font value
+  * Syntax correction
+  * Don't normalize fonts to base font
+  * Automatically bind common functions 
+
+-------------------------------------------------------------------
+Thu Nov 19 16:28:07 UTC 2015 - tampakrap@opensuse.org
+
+- Version bump 1.1
+  * Ignore whitespace when splitting font definitions
+    This fixes an issue where multi-line font definitions that were indented
+    with tabs didn't get handled properly. For some reason this only seems
+    to affect definitions in Xdefaults, not Xresources.
+
+-------------------------------------------------------------------
+Mon Nov 17 13:07:43 UTC 2014 - tampakrap@opensuse.org
+
+- Version bump, initial release 1.0
+
+-------------------------------------------------------------------
+Tue Jul  1 16:41:51 UTC 2014 - tampakrap@opensuse.org
+
+- Initial commit
+

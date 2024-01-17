@@ -1,0 +1,332 @@
+-------------------------------------------------------------------
+Thu Aug 18 00:05:45 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Sync ExcludeArch %ix86 with deadbeef: deadbeef is not being
+  built on i586 and as such we don't have the needed dep available.
+
+-------------------------------------------------------------------
+Fri May 20 01:16:43 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-compile bin/get-kbd-layout from source to support multiple arch
+- Move some modules into separate packages with necessary deps
+- Remove test data from runtime package
+
+-------------------------------------------------------------------
+Wed May 18 12:53:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.5:
+  + New modules: generic layout, GPU module for optimus-manager,
+    network module, and solaar for logitech unifying devices.
+  + New themes: albiceleste, rasafari, nord-colorful, and
+    rose-pine.
+  + Improvements:
+    - Configurable editor for todo
+    - Per-CPU widget for cpu
+    - Better documentation
+    - nvidiagpu get GPU and memory usage
+    - sensors thermal zone auto-detection
+    - Allow hiding of inactive states of modules
+  + Varius bugfixes.
+
+-------------------------------------------------------------------
+Tue Apr 26 07:27:44 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+  https://github.com/tobi-wan-kenobi/bumblebee-status
+
+-------------------------------------------------------------------
+Tue Sep 14 11:01:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace systemd buildREquires with pkgconfig(systemd: Allow OBS
+  to shortcut through the mini flavor.
+
+-------------------------------------------------------------------
+Fri Apr 30 15:02:56 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop the hddtemp plugin: hddtemp is no longer maintained and has
+  been failing to build for a while. Time has come to let go of it.
+- Set pythons to python3: only depend on the primary python3
+  version. There are no python modules built here, thus it is
+  useless to pull in all python3.x versions.
+
+-------------------------------------------------------------------
+Wed Apr  7 23:48:01 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.1.4
+  * shell: do not default to "makewide"
+  * shell: remove obsolete event handlers
+- from v2.1.3
+  * Enable scrolling of shell module output
+  * Add fallback for user module loading
+  * Add a module "keys" that shows whether a key is pressed
+  * Make bumblebee more reactive
+
+-------------------------------------------------------------------
+Thu Feb 25 11:14:36 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add explicit BR for pyusb to fix Leap builds
+- Add Suggests for all modules
+
+-------------------------------------------------------------------
+Thu Feb 25 10:16:30 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.2:
+  * make configuration file name configurable (#764)
+  * Support for spotifyd (#752)
+  * add /usr/share/ as theme directory (#753)
+  * playerctl improvements
+
+-------------------------------------------------------------------
+Mon Jan 18 13:15:12 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update use-python-3.patch
+- Update to v2.1.1
+- from v2.1.0
+  * Added messagereceiver, rofication, thunderbird, todo_org, dunstctl
+  * Added tests for modules
+
+-------------------------------------------------------------------
+Wed Dec  2 04:11:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate contrib module nvidia-prime
+- Add zpool dependency on python-setuptools
+- Add octoprint dependencies Pillow-tk and simplejson
+- Remove unneeded dependency on python-regex
+- Remove macro python_module in Requires and Supplements
+
+-------------------------------------------------------------------
+Wed Dec  2 02:20:22 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove dependencies not in Factory:
+  nvidia-smi, pi-hole, twmn and zfs
+
+-------------------------------------------------------------------
+Tue Jul 21 13:24:24 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix dependency dbus -> dbus-1
+
+-------------------------------------------------------------------
+Fri Jul 17 16:41:03 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix broken installation, including adding import_fix.patch to
+  restore layout used up until v1.10.4
+- Activate test suite
+- Restore and expand subpackages, due to many varied dependencies
+- Add missing dependencies so installation is reliable
+- Re-enable stock module, no longer using deprecated API
+
+-------------------------------------------------------------------
+Tue Jun 30 14:21:32 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.5:
+  * fixed "spamming" of mouse click events (#668)
+  * fixed theme iconset handling (#666)
+  * improved spotify (#667)
+
+-------------------------------------------------------------------
+Mon Jun 29 06:41:02 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.4:
+  New modules:
+  * speedtest
+  Improvements:
+  * spotify buttons (#663)
+  Bugfixes:
+  * fixed CLI commands for sway (#628)
+  * re-enabled brightness reading via ACPI
+  * improved default location (see #664)
+
+-------------------------------------------------------------------
+Thu Jun 25 07:12:18 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.3:
+  * fixed #661 - collapsing modules via middle mouse was missing
+  * fixed #662 - regression that broke the pulseaudio module
+    when using non-english locales
+
+-------------------------------------------------------------------
+Tue Jun 23 09:30:27 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Obsolute/provide old submodules:
+  * bumblebee-status-module-cmus
+  * bumblebee-status-module-dnf
+  * bumblebee-status-module-mocp
+  * bumblebee-status-module-mpd
+  * bumblebee-status-module-redshift
+
+-------------------------------------------------------------------
+Tue Jun 23 09:25:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.2:
+  * #660 - fix problems in nic when using wireguard tunnels
+
+-------------------------------------------------------------------
+Mon Jun 22 08:37:58 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.1:
+  * fixing #658 (regression in shell module)
+
+-------------------------------------------------------------------
+Mon Jun 22 08:36:25 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.0:
+  * The changes in this release are really too big to list
+    it's a rewrite of bumblebee-status, with a focus on greater
+	extensibility and better code testing coverage.
+	The documentation is much nicer now.
+  * This release probably contains numerous bugs and regressions.
+
+-------------------------------------------------------------------
+Fri May 22 09:02:20 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.4:
+  Modules:
+  * libvirtvms - thanks to @rriggs-pk / @maxpivo
+  * bluetooth2 - thanks to @martindoublem
+  * smartstatus - thanks to @martindoublem
+  * watson - thanks to @bendardenne
+  Themes:
+  * added nord-powerline - thanks to @jsy1001
+  Improvements:
+  * i3 output refactoring - thanks to @somospocos
+  * added experimental pango support - thanks to @somospocos
+  * new tool bumblebee-ctl to trigger mouse events via CLI
+  * add option to align scrolling left/right/center
+  * cpu2 theme colors - thanks to @somospocos
+  * better docker_ps output - thanks to @martindoublem
+  * improvements to sun module - thanks to @soykan
+  * improvements to sensors2 - thanks to @martindoublem
+  * misc small improvements - thanks to @soykan
+  Bugfixes:
+  * pulseaudio: only start daemon if it's not running already
+  * pomodoro: refresh bugfix - thanks to @RomainGehrig
+
+-------------------------------------------------------------------
+Tue Mar 31 10:39:03 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.3:
+  * Bugfix release to make PIP/PyPI packaging work correctly.
+- Changes from 1.10.0:
+  New modules:
+  * pomodoro (thanks to @martindoublem and @karthink )
+  * deezer (thanks to @wwmoraes )
+  * battery-upower (thanks to @martindoublem )
+  * shell (thanks to @rrhuffy )
+  * hddtemp (thanks to @somospocos)
+  * layout-xkbswitch (thanks to @somospocos)
+  * cpu2 (thanks to @somospocos)
+  * braille support (thanks to @somospocos)
+  * horizontal/vertical chart support (thanks to @somospocos)
+  New themes:
+  * dracula-powerline (thanks to @xsteadfastx )
+  New features:
+  * docker support (thanks to @brianlechthaler )
+  * spotify is now scrollable (thanks to @joshbarrass )
+  * pip module! (thanks to @tony )
+  Bugfixes and improvements:
+  * deadbeef improvements (thanks to @joshbarrass )
+  * zfs improvements (thanks to @Ninpo )
+  * vpn improvements (thanks to Stijn van Campenhout)
+  * timezone handling improvements (thanks to @cphyc )
+  * cpu improvements (thanks to Ivan Chinenov)
+  * bluetooth improvements (thanks to @piyueh )
+  * mpd improvements (thanks to @somospocos)
+  * weather improvements (thanks to @CPrompt )
+  * battery improvements (@hoamer )
+  * apt improvements (thanks to Piotr Piorkowski)
+  * pacman module improvements
+- Remove subpackages: there are too many modules in bumblebee-status
+  adding each as a subpackage will become a chore and the package will
+  never get updated by anybody
+
+-------------------------------------------------------------------
+Tue Apr 17 11:48:45 UTC 2018 - jengelh@inai.de
+
+- Ensure summaries are noun phrases
+
+-------------------------------------------------------------------
+Wed Apr 11 22:59:18 UTC 2018 - avindra@opensuse.org
+
+- Update to 1.6.1
+  * traffic: Hide down interfaces
+  * nic: Add output format parameter
+  * new theme "greyish-powerline"
+  * new module "taskwarrior"
+  * fix: brightness: Return format fix
+  * fix: theme engine: Remove unneeded YAML dependency
+  * fix: general: Removed typos
+  * fix: battery: Better error handling
+  * fix: getcrypto: Handle downtime of crypto service
+  * fix: datetime: Fallback to en_US formatting
+  * fix: memory: Fixes to percentage calculation
+- package some modules separately (more can be done, this is a
+  start)
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan 19 05:34:23 UTC 2018 - avindra@opensuse.org
+
+- Update to 1.6.0
+  * redshift module now updates in the background and no longer
+    blocks the bar
+  * Awesome fonts in the theme can now be referenced by name
+    (using ${})
+  * Add generic mechanism for slow updates, and apply it to
+    various modules
+  * Update stock widget only every hour
+
+-------------------------------------------------------------------
+Sun Jan  7 21:53:11 UTC 2018 - avindra@opensuse.org
+
+- remove broken stock integration with deprecated Yahoo API
+
+-------------------------------------------------------------------
+Thu Jan  4 23:21:29 UTC 2018 - avindra@opensuse.org
+
+- Do not ship pacman module, as it's only relevant on Arch linux
+- update use-python-3.patch
+  * fix warning about /usr/bin/env breaking dependency detection
+    for python 3
+
+-------------------------------------------------------------------
+Tue Jan  2 03:30:12 UTC 2018 - avindra@opensuse.org
+
+- update to 1.5.1
+  * it was always logging messages to stderr (even when -d was
+    not specified), which end up in ~/.xsession-errors and consume
+    a lot of disk very quickly.
+  * Introduces two "special" log file names, stdout and stderr.
+- includes 1.5.0 (Theme support extension release)
+  * Add support for pywal in themes: Add a "colors" instruction
+    and then simply use names for your pywal colors (see the
+    wal-powerline.json themes for examples)
+  * Themes can now be stored outside the repository structure
+    (i.e. in ~/.config/bumblebee-status/themes/). Themes will be
+    merged, so it is also possible to partially overwrite theme
+    instructions by placing partial JSON files in this directory,
+    with the same name as the main theme (for example, anything
+    you write into ~/.config/bumblebee-status/themes/powerline.json
+    will overwrite the default powerline theme settings).
+  * 4 new modules
+    - rotation: Cycle through display orientations
+    - hipchat: Show number of unread hipchat messages
+    - uptime: Show current uptime
+    - zpool: Show zpool (ZFS) information
+  * new theme: "sac_red"
+- remove remove-invalid-shebang.patch
+  * merged in 9c52624ecb12adf6b3bcc3021feb7a0747ea179e
+
+-------------------------------------------------------------------
+Sun Oct  8 00:23:21 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Fri Oct  6 01:44:38 UTC 2017 - aavindraa@gmail.com
+
+- introduce package at 1.4.4 
+- 2 patches:
+  * remove-invalid-shebang.patch: removes shebang from non-executable
+    library code
+  * use-python-3.patch: force this package to use python 3, as python
+    2 is still the default for openSUSE.

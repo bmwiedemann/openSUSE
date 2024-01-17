@@ -1,0 +1,160 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f2bfe1fc91954157b1f0eb8c89803a3</srcmd5>
+    <version>0.5.1</version>
+    <time>1410528318</time>
+    <user>coolo</user>
+    <comment>replace pam_fprint and libfprint</comment>
+    <requestid>248823</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>947c9f1a68548f3cb82bb731d60ea77e</srcmd5>
+    <version>0.5.1</version>
+    <time>1415953137</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260504</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7c50c5f5f797d581d3c1c86457b9f54</srcmd5>
+    <version>0.6.0</version>
+    <time>1423596121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284774</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dbb487e4477963f1b3de0b26702ce8a1</srcmd5>
+    <version>0.7.0</version>
+    <time>1486465459</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454614</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>278a1ebc5bf8039c912f455d57fd2d76</srcmd5>
+    <version>0.8.0</version>
+    <time>1523029758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593920</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dfa679c305a25c0f157e09c048527c51</srcmd5>
+    <version>0.8.1</version>
+    <time>1546946740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660286</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4ce782ea7bd80a5bd3013554be98b3af</srcmd5>
+    <version>0.8.1</version>
+    <time>1557321464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701545</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b750c9de9921aaea49e358571d101e3b</srcmd5>
+    <version>0.9.0</version>
+    <time>1575282942</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the download url
+
+- update to 0.9.0:
+  *  Fix hangs when there the verification error was &quot;retry&quot;
+  *  Update for fp_get_pollfds() changes
+  *  Fix &quot;client_username&quot; memory leak, fix memory leak when saving a file
+  *  Create the fingerprint storage directory at install time, the storage path is now hard-coded as /var/lib/fprint and created by systemd when the service is started</comment>
+    <requestid>752803</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1df7212abf1f70cfc0b9e82d6645ff5a</srcmd5>
+    <version>1.90.1</version>
+    <time>1584744920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786489</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3d81cc56783639058ea292b2dadb441c</srcmd5>
+    <version>1.90.4</version>
+    <time>1606829006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851949</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5a90df99c4143dfe404c2a60790b2091</srcmd5>
+    <version>1.90.6</version>
+    <time>1607548912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854077</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c036b561bfbf9a6dce16a2e1fb33c76a</srcmd5>
+    <version>1.90.8</version>
+    <time>1608542667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857141</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4ddda7db3843145e5c7bc52c3ddcce71</srcmd5>
+    <version>1.90.9</version>
+    <time>1610965714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863644</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>afaaf50b7543ebc9447d83a97cb884c0</srcmd5>
+    <version>1.90.9</version>
+    <time>1616925392</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881566</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>61f48ca5d250cb067eabc70d111f062b</srcmd5>
+    <version>1.94.1</version>
+    <time>1638052948</time>
+    <user>dimstar_suse</user>
+    <comment>use %{_pam_moduledir}</comment>
+    <requestid>934216</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d0e0877edab742426af28159f6dd775b</srcmd5>
+    <version>1.94.1</version>
+    <time>1645998171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957798</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5dba4b61c777e9eecfd83d264d9ec6ee</srcmd5>
+    <version>1.94.2</version>
+    <time>1652389237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976478</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>80fecafc02eb37c06eae47074342d6e4</srcmd5>
+    <version>1.94.2</version>
+    <time>1654776725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981472</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>c46f5cbdcc92c91378a3efea9f93ea72</srcmd5>
+    <version>1.94.2</version>
+    <time>1696451485</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114945</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,15 @@
+<package name="nsnake" project="openSUSE:Factory">
+  <title>Classic snake game on the terminal</title>
+  <description>nsnake is a clone of the classic snake game that we all used to play on our
+cellphones. You play this game on the terminal, with textual interface.
+
+Here are some features:
+
+- Customizable gameplay, appearance and keybindings
+- Neat GUI-like interface with nice animations
+- Lots of possible game modes, with scores saved for eac
+
+</description>
+  <devel project="games" package="nsnake"/>
+  <url>https://github.com/alexdantas/nSnake</url>
+</package>

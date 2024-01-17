@@ -1,0 +1,5 @@
+<package name="kdiskmark" project="openSUSE:Factory">
+  <title>kdiskmark</title>
+  <description>A simple open-source disk benchmark tool for Linux distros </description>
+  <devel project="benchmark" package="kdiskmark"/>
+</package>

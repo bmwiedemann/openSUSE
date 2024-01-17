@@ -1,0 +1,169 @@
+-------------------------------------------------------------------
+Mon Aug  8 12:27:42 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add patches from upstream git to remove references to deprecated
+  functions in ffmpeg4 and fix building against ffmpeg5:
+  * 372cd422e57a9a3531eb9a30559d665caecff1ba.patch
+  * efb5b618f1c1471c1a7900aed3a59d851ea9a210.patch
+
+-------------------------------------------------------------------
+Tue Mar  3 09:23:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix cmake call
+
+-------------------------------------------------------------------
+Mon Mar  2 12:29:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Use correct url for sources
+- Use modern cmake macro for building
+
+-------------------------------------------------------------------
+Sun Mar  1 21:40:35 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2.2:
+  * Requires cmake >= 3.12.
+  * Removed unstable continuous thumbnail creation.
+- Add ffmpegthumbnailer-cmake-updates.patch: Update CMakeLists.txt
+  for new cmake version.
+- Changes from version 2.2.1: 
+  * CMake improvements: required CMake version is now 3.5 or newer.
+  * Fix anamorphic height.
+  * Fix libffmpegthumbnailer.pc to work with multilib systems.
+  * Fix rotation of 180° rotated videos.
+  * Fix prefer_embedded_metadata in c api.
+  * Fix crash when setting a log callback using the c api.
+  * Check for https as well when skipping stat call.
+  * Support specifying the size as string using the c api.
+  * Support raw rgb data as image type.
+  * Print warnings on stderr instead of stdout.
+  * Support for continuous thumbnail creation.
+
+-------------------------------------------------------------------
+Fri May 26 14:28:16 UTC 2017 - jengelh@inai.de
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Tue Nov 29 21:04:59 UTC 2016 - fisiu@opensuse.org
+
+- Update to 2.2.0, changes since 2.0.9 includes:
+  * Option to prefer embedded image metadata over video content
+  * Fixed 'Resource temporarily unavailable' errors when using ffmpeg < 3.0
+  * Take rotation metadata into account when generating thumbnails
+  * Additional video mime types added to the thumbnailer file
+  * Add MPEG-TS (MTS) support
+  * Project is hosted on github now
+  * Use cmake instead of autotools
+  * Many other fixes and minor improvements
+
+-------------------------------------------------------------------
+Tue Sep 22 08:47:31 UTC 2015 - olaf@aepfle.de
+
+- Use pkgconfig for ffmpeg BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov 21 22:50:21 UTC 2014 - fisiu@opensuse.org
+
+- Update to 2.0.9:
+  * Fixed gio library loading
+  * Support udp sources
+  * No longer support older ffmpeg versions
+- Drop ffmpegthumbnailer-glibc.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Nov 20 10:02:27 UTC 2014 - joerg.lorenzen@ki.tng.de
+
+- enable thumbnailer support (--enable-thumbnailer)
+
+-------------------------------------------------------------------
+Sat Nov 02 2013 - joerg.lorenzen@ki.tng.de
+
+- added patch to build against new glibc
+
+-------------------------------------------------------------------
+Sat Nov 10 04:30:16 UTC 2012 - i@margueirte.su
+
+- build against ffmpeg new API.
+
+-------------------------------------------------------------------
+Sun Oct 28 10:23:57 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 2.0.8
+
+-------------------------------------------------------------------
+Mon Oct 17 22:24:26 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.0.7
+
+-------------------------------------------------------------------
+Wed Mar  2 16:59:26 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.0.6:
+  * fixes memory leaks
+
+-------------------------------------------------------------------
+Mon Dec 13 00:00:00 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.0.5:
+  * replaced deprecate gnome-vfs with gio (--enable-gio)
+
+
+-------------------------------------------------------------------
+Sun Aug 15 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 2.0.4
+- Fixed undefined references when compiling with certain LDFLAGS
+- Writing to stdout is now supported
+- Support for gnome-vfs uris added. New configure flag (--enable-gnome-vfs),
+  this puts a runtime dependancy on libgnome-vfs-2.0
+
+-------------------------------------------------------------------
+Tue Jul 20 00:00:00 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.0.2
+
+-------------------------------------------------------------------
+Tue Apr 27 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 2.0.1
+	* Setting the thumbnail size to 0 will use the original video size (thanks to John Fremlin)
+	* Fix for video files containing lots of audio packets before a video packet
+	* Fixed libs in pkgconfig file (thanks to magnus.tuominen)
+
+-------------------------------------------------------------------
+Sat Jan  9 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 2.0.0
+- new SOname ==> libffmpegthumbnailer4
+
+-------------------------------------------------------------------
+Fri Dec 25 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 1.5.6
+
+-------------------------------------------------------------------
+Tue Sep 22 00:00:00 UTC 2009 - Manfred.Tremmel@iiv.de
+
+- update to 1.5.5
+
+-------------------------------------------------------------------
+Mon Jun 22 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 1.5.4
+
+-------------------------------------------------------------------
+Mon Jun 15 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 1.5.3
+
+-------------------------------------------------------------------
+Sun May 24 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 1.5.2
+- new SO-Name ==> libffmpegthumbnailer3
+
+-------------------------------------------------------------------
+Fri May 15 00:00:00 UTC 2009 - toni@links2linux.de
+
+- initial package 1.5.1
+

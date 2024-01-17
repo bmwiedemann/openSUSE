@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Wed Aug  2 03:07:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-DateTime-Format-MySQL/Changes
+
+  0.08    2023-07-31
+
+  - Fix parsing microsecond < 100,000 off DateTime object by zero-padding
+
+-------------------------------------------------------------------
+Sun May 23 03:06:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.0701
+   see /usr/share/doc/packages/perl-DateTime-Format-MySQL/Changes
+
+  0.0701  2021-05-22
+
+  - Fix versioning, reindex
+
+  0.07    2021-05-21
+
+  - if microseconds are set on provided DateTime object to time_format,
+    use them. Fixes RT #136549
+
+-------------------------------------------------------------------
+Sat Feb 13 09:55:38 UTC 2016 - coolo@suse.com
+
+- updated to 0.06
+   see /usr/share/doc/packages/perl-DateTime-Format-MySQL/Changes
+
+  0.06    2016-02-12
+  
+  - Fixed typo in regex that strangely works most of the time
+
+-------------------------------------------------------------------
+Sun Dec 21 22:14:59 UTC 2014 - lars@linux-schulserver.de
+
+- update to 0.05
+  + Added parsing of MySQL fractional seconds (microseconds).
+  * Allowed additional valid MySQL formats (delimiters in DATE and TIME
+    fields using punctuation, 'T' separator between DATE and TIME and
+    single-digit time or date values).
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:17 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Thu Feb 17 14:48:21 UTC 2011 - jw@novell.com
+
+- recreated by cpanspec 1.78.03
+- removed obsolete vendor patch (Makefile.PL)
+  o using Build.PL
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:46 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun May  9 13:12:48 UTC 2010 - lars@linux-schulserver.de
+
+- initial version 0.04
+

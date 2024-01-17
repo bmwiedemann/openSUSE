@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>252f6d8e9cced3228ad1196bd5eb9315</srcmd5>
+    <version>1.0.1</version>
+    <time>1620240010</time>
+    <user>dimstar_suse</user>
+    <comment>new haskell package</comment>
+    <requestid>890675</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a963dc67eb6fe62a71897d1fc5e22348</srcmd5>
+    <version>1.0.2</version>
+    <time>1636662973</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930308</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4f6afc0a4dd4c088e455c5285b8450d9</srcmd5>
+    <version>1.0.2</version>
+    <time>1644617314</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953435</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>58a55b7a1e71b36a0443d9cd2e62d09d</srcmd5>
+    <version>1.0.3</version>
+    <time>1665668643</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1009702</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bef05def7e5ab17725f0d5ea3f2fd383</srcmd5>
+    <version>1.0.4.1</version>
+    <time>1680635924</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075784</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2f876659b90cb3174e10b3aee1a646ac</srcmd5>
+    <version>1.0.4.1</version>
+    <time>1697657149</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1118468</requestid>
+  </revision>
+</revisionlist>

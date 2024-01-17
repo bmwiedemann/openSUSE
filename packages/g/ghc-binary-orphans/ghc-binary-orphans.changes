@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Fri Oct 13 14:44:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update binary-orphans to version 1.0.4.1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:05:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Mar 15 16:11:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update binary-orphans to version 1.0.4.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Mar  1 19:47:36 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update binary-orphans to version 1.0.4.1.
+  # 1.0.4.1
+
+  - Support OneTuple-0.4
+
+  # 1.0.4
+
+  - Depend on `data-byte-array` to provide `Data.Array.Byte` instance
+
+-------------------------------------------------------------------
+Thu Aug 11 15:11:32 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update binary-orphans to version 1.0.3.
+  # 1.0.3
+
+  - Add `ByteArray` (from `Data.Array.Byte` instance)
+
+-------------------------------------------------------------------
+Tue Nov 16 17:11:56 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update binary-orphans to version 1.0.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Nov  1 08:37:14 UTC 2021 - psimons@suse.com
+
+- Update binary-orphans to version 1.0.2.
+  # 1.0.2
+
+  - Add `Solo` instance
+
+-------------------------------------------------------------------
+Mon Apr 26 09:49:05 UTC 2021 - psimons@suse.com
+
+- Add binary-orphans at version 1.0.1 revision 5.
+

@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58d9d4efe7f7ddad921591c46cfabc1c</srcmd5>
+    <version>2.0.14</version>
+    <time>1533292815</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-Psychopy</comment>
+    <requestid>627212</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ca52d88ccad8b3948f8d30bba78c0724</srcmd5>
+    <version>2.0.14</version>
+    <time>1535122825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628146</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e8b933c7569787b8ef840a0225d1ed37</srcmd5>
+    <version>2.0.14</version>
+    <time>1544631897</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653914</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ba2a81c02e12601b463525c770d1173f</srcmd5>
+    <version>2.0.15</version>
+    <time>1569588450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.15:
+  * Relicensed as MIT</comment>
+    <requestid>730716</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>76648f0e83ff35709da6c8b84096748b</srcmd5>
+    <version>2.0.15</version>
+    <time>1602682778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841626</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d37b7a82c5358bfbd4c31bb325fed746</srcmd5>
+    <version>2.1.1</version>
+    <time>1617130877</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>870118</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f327914092c892c1593c69c499f97a1e</srcmd5>
+    <version>2.1.3</version>
+    <time>1631739090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919151</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6036beff5cfef0f1653fcf52576691ef</srcmd5>
+    <version>2.1.4</version>
+    <time>1665591956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010153</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>da64261348a335cb2d58fc678f64c8af</srcmd5>
+    <version>3.0.0</version>
+    <time>1673650989</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v3.0.0:
+  * No more Python 2.x support.</comment>
+    <requestid>1058184</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>99f01cb993d1eba3a862fd77e9fede2d</srcmd5>
+    <version>3.0.0</version>
+    <time>1693482339</time>
+    <user>anag+factory</user>
+    <comment>- Remove future {Build,}Requires, not needed.
+- Stop using greedy globs in %files.
+- Switch to pyproject macros.
+- Rip out Python 2 support in the spec file.</comment>
+    <requestid>1108063</requestid>
+  </revision>
+</revisionlist>

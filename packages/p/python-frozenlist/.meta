@@ -1,0 +1,5 @@
+<package name="python-frozenlist" project="openSUSE:Factory">
+  <title></title>
+  <description>Python list-like structure which implements collections.abc.MutableSequence.</description>
+  <devel project="devel:languages:python" package="python-frozenlist"/>
+</package>

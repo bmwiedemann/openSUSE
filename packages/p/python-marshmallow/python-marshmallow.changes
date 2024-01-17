@@ -1,0 +1,338 @@
+-------------------------------------------------------------------
+Sun Dec 10 21:27:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.20.1:
+  * Fix call to ``get_declared_fields``: pass ``dict_cls`` again
+  * Add ``absolute`` parameter to ``URL`` validator and ``Url``
+  * Use Abstract Base Classes to define ``FieldABC`` and
+    ``SchemaABC``
+  * Use `OrderedSet` as default `set_class`. Schemas are now
+    ordered by default.
+  * Handle ``OSError`` and ``OverflowError`` in
+    ``utils.from_timestamp`` (:pr:`2102`).
+  * Fix the default inheritance of nested partial schemas
+  * Officially support Python 3.11 (:pr:`2067`).
+  * Drop support for Python 3.7 (:pr:`2135`).
+
+-------------------------------------------------------------------
+Sun Apr 23 23:12:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch documentation to be within the main package on SLE15
+
+-------------------------------------------------------------------
+Fri Apr 21 12:28:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:33 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Thu Mar 16 08:45:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- rename docs subpackage to the more common doc name
+
+-------------------------------------------------------------------
+Wed Mar 15 14:54:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- We want "modern" Sphinx on SLE-15, not the 3.6-based one.
+
+-------------------------------------------------------------------
+Fri Dec  2 20:31:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.19.0
+  * Add timestamp and timestamp_ms formats to fields.DateTime (#612). Thanks @vgavro for    the suggestion and thanks @vanHoi for the PR.
+
+-------------------------------------------------------------------
+Fri Oct 28 18:21:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.18.0 (2022-09-15)¶
+  Features:
+  Add Enum field (#2017) and (#2044).
+  Bug fixes:
+  Fix typing in Field._serialize signature (#2046).
+
+-------------------------------------------------------------------
+Thu Sep 29 15:53:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.17.1 (2022-08-22)
+  Bug fixes:
+  Add return type to fields.Email.__init__ (#2018). Thanks @kkirsche for the PR.
+  Add missing type hint to IPInterface __init__ (#2036).
+
+- Update to 3.17.0 (2022-06-26)
+  Features:
+  Support serialization as float in TimeDelta field (#1998). Thanks @marcosatti for the PR.
+  Add messages_dict property to ValidationError to facilitate type checking (#1976). Thanks @sirosen for the PR.
+
+- Update to 3.16.0 (2022-05-29)
+  Features:
+  Raise ValueError if an invalid value is passed to the unknown argument (#1721, #1732). Thanks @sirosen for the PR.
+  Other changes:
+  Set lower bound for packaging requirement (#1957). Thanks @MatthewNicolTR for reporting and thanks @sirosen for the PR.
+  Improve warning messages by passing stacklevel (#1986). Thanks @tirkarthi for the PR.
+
+- Update to 3.15.0 (2022-03-12)
+  Features:
+  Allow passing a dict to fields.Nested (#1935). Thanks @sirosen for the PR.
+  Other changes:
+  distutils deprecation warning in Python 3.10 (#1903). Thanks @kkirsche for the PR.
+  Add py310 to black target-version (#1921).
+  Drop support for Python 3.6 (#1923).
+
+-------------------------------------------------------------------
+Sun May 29 17:59:12 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to 3.14.1 (2021-11-13)
+  * Fix publishing type hints per PEP-561 (#1905). Thanks @bwindsor for the catch and patch.
+- Release 3.14.0 (2021-10-17)
+  * Fix fields.TimeDelta serialization precision (#1865). Thanks @yarsanich for reporting.
+  * Fix type-hints for `data` arg in `Schema.validate` to accept list of
+    dictionaries (#1790, #1868). Thanks @yourun-proger for PR.
+  * Improve warning when passing metadata as keyword arguments (#1882).
+    Thanks @traherom for the PR.
+  * Don’t build universal wheels. We don’t support Python 2 anymore.
+    (#1860) Thanks @YKdvd for reporting.
+  * Make the build reproducible (#1862).
+  * Drop support for Python 3.5 (#1863).
+  * Test against Python 3.10 (#1888).
+- Release 3.13.0 (2021-07-21)
+  * Replace missing/default field parameters with load_default/dump_default (#1742).
+    Thanks @sirosen for the PR.
+  * The use of missing/default field parameters is deprecated and will be removed
+  * in marshmallow 4. load_default/dump_default should be used instead.
+- Release 3.12.2 (2021-07-06)
+  * Don’t expose Fields as Schema attributes. This reverts a change
+    introduced in 3.12.0 that causes issues when field names conflict
+    with Schema attributes or methods. Fieldss are still accessible on a
+    Schema instance through the fields attribute. (#1843)
+- Release 3.12.1 (2021-05-10)
+  * Fix bug that raised an AttributeError when instantiating a Schema with a
+    field named parent (#1808). Thanks @flying-sheep for reporting and helping with the fix.
+- Release 3.12.0 (2021-05-09)
+  * Add validate.And (#1768). Thanks @rugleb for the suggestion.
+  * Add type annotations to marshmallow.decorators (#1788, #1789). Thanks @michaeldimchuk for the PR.
+  * Let Fields be accessed by name as Schema attributes (#1631).
+  * Improve types in marshmallow.validate (#1786).
+  * Make marshmallow.validate.Validator an abstract base class (#1786).
+  * Remove unnecessary list cast (#1785).
+
+-------------------------------------------------------------------
+Thu Apr 22 09:42:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.11.1
+  * Fix treatment of dotted keys when unknown=INCLUDE (#1506).
+    Thanks @rbu for reporting and thanks @sirosen for the fix
+    (#1745).
+- Release 3.11.0
+  * Add fields.IPInterface, fields.IPv4Interface, and
+    IPv6Interface (#1733). Thanks @madeinoz67 for the suggestion
+    and the PR.
+  * Raise AttributeError for missing methods when using fields.
+    Method (#1675). Thanks @lassandroan.
+  * Remove unnecessary hasattr and getattr checks in Field (#1770).
+- Release 3.10.0
+  * Passing field metadata via keyword arguments is deprecated and
+    will be removed in marshmallow 4 (#1350). Use the explicit
+    metadata=... argument instead. Thanks @sirosen.
+- Release 3.9.1
+  * Cast to mapping type in Mapping.serialize and Mapping.
+    deserialize (#1685).
+  * Fix bug letting Dict pass invalid dict on deserialization when
+    no key or value Field is specified (#1685).
+- Release 3.9.0
+  * Add format argument to fields.Time and timeformat class Meta
+    option (#686). Thanks @BennyAlex for the suggestion and thanks
+    @infinityxxx for the PR.
+  * Remove usage of implicit typing.Optional (#1663). Thanks
+    @nadega for the PR.
+- Release 3.8.0
+  * Add fields.IP, fields.IPv4 and fields.IPv6 (#1485). Thanks
+    @mgetka for the PR.
+  * Fix typing in AwareDateTime (#1658). Thanks @adithyabsk for
+    reporting.
+- Use the python3 sphinx_build do build the docs
+  gh#openSUSE/python-rpm-macros#109
+
+-------------------------------------------------------------------
+Fri Aug 21 06:15:41 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.7.1:
+  * Deprecations:
+    + `marshmallow.pprint` is deprecated and will be removed in marshmallow 4 (:issue:`1588`).
+  * Features:
+    + Add ``validators.ContainsNoneOf`` (:issue:`1528`).
+  * Bug fixes:
+    + Fix typing in ``class_registry`` (:pr:`1574`). Thanks :user:`mahenzon`.
+    + Fix passing ``only`` and ``exclude`` to ``Nested`` with an ordered ``Schema`` (:pr:`1627`).
+    + ``fields.Boolean`` correctly serializes non-hashable types (:pr:`1633`).
+- Refresh patch python-marshmallow-no-version-warning.patch
+
+-------------------------------------------------------------------
+Wed Apr  1 09:10:03 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.5.1
+  - Includes bug fix from 2.21.0.
+  - Fix list of nullable nested fields ``List(Nested(Field, allow_none=True)``
+    (:issue:`1497`). Because this fix reverts an optimization introduced to
+    speed-up serialization and deserialization of lists of nested fields, a
+    negative impact on performance in this specific case is expected.
+  - Improve type coverage (:issue:`1479`). Thanks :user:`Reskov`.
+  - Fix typing for ``data`` param of ``Schema.load`` and ``ValidationError`` (:issue:`1492`).
+    Thanks :user:`mehdigmira` for reporting and thanks :user:`dfirst` for the PR.
+  - Remove unnecessary typecasts (:pr:`1500`). Thanks :user:`hukkinj1`.
+  - Remove useless ``_serialize`` override in ``UUID`` field (:pr:`1489`).
+  - ``fields.Nested`` may take a callable that returns a schema instance.
+    Use this to resolve order-of-declaration issues when schemas nest each other (:issue:`1146`).
+  - Passing the string ``"self"`` to ``fields.Nested`` is deprecated.
+    Use a callable instead.
+  - Fix typing for ``Number._format_num`` (:pr:`1466`). Thanks :user:`hukkinj1`.
+  - Make mypy stricter and remove dead code (:pr:`1467`). Thanks again, :user:`hukkinj1`.
+
+-------------------------------------------------------------------
+Wed Nov 13 15:40:31 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 3.2.2:
+ - Bug fixes:
+  - Don't load fields for which ``load_only`` and ``dump_only`` are both ``True`` (:pr:`1448`).
+  - Fix types in ``marshmallow.validate`` (:pr:`1446`).
+ - Support:
+  - Test against Python 3.8 (pr:`1431`).
+
+-------------------------------------------------------------------
+Tue Oct  8 15:03:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.2.1
+  * Fix typing for Schema.dump[s]
+  * Fix compatibility with Python < 3.5.3
+  * Fix bug that raised an uncaught error when a nested schema
+    instance had an unpickleable object in its context
+  * Fix propagating dot-delimited only and exclude parameters to
+    nested schema instances
+  * Few bug fixes
+
+-------------------------------------------------------------------
+Wed Sep 11 12:45:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.3:
+  * Handle when data_key is an empty string
+  * Includes bug fix from 2.20.3
+  * Fix incorrect super() call in SchemaMeta.__init__
+
+-------------------------------------------------------------------
+Mon Aug 26 14:10:28 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.0.1
+  * Many changes, some of them breaking. For example:
+  * Remove support for Python 2 (#1120). Only Python>=3.5 is supported.
+  * Allow input value to be included in error messages for a number of fields.
+  * Change ordering of keys and values arguments to fields.Dict.
+  * Please read upstream changelog.
+- Drop upstreamed patches reproducible.patch and pytest5.patch
+
+-------------------------------------------------------------------
+Wed Jul 31 09:13:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix building with pytest5 from upstream git:
+  * pytest5.patch
+
+-------------------------------------------------------------------
+Wed Jul 24 07:53:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.19.5:
+  * Fix deserializing ISO8601-formatted datetimes with less than 6-digit miroseconds (:issue:`1251`). Thanks :user:`diego-plan9` for reporting.
+  * Microseconds no longer gets lost when deserializing datetimes without dateutil installed (:issue:`1147`).
+  * Fix bug where nested fields in Meta.exclude would not work on multiple instantiations (:issue:`1212`). Thanks :user:`MHannila` for reporting.
+
+-------------------------------------------------------------------
+Tue May 28 09:46:25 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to make build reproducible (boo#1047218)
+
+-------------------------------------------------------------------
+Fri May 17 14:38:06 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 2.19.2
+  * Handle OverflowError when (de)serializing large integers with
+    fields.Float
+
+-------------------------------------------------------------------
+Fri Apr  5 09:07:04 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 2.19.1
+  - Fix bug where ``Nested(many=True)`` would skip first element when
+    serializing a generator (:issue:`1163`). Thanks :user:`khvn26` for the
+    catch and patch.
+  - A `RemovedInMarshmallow3` warning is raised when using
+    `fields.FormattedString`. Use `fields.Method` or `fields.Function`
+    instead (:issue:`1141`).
+  - A ``ChangedInMarshmallow3Warning`` is no longer raised when
+    ``strict=False`` (:issue:`1108`). Thanks :user:`Aegdesil` for
+    reporting.
+  - Add warnings for functions in ``marshmallow.utils`` that are removed in
+    marshmallow 3.
+  - Copying ``missing`` with ``copy.copy`` or ``copy.deepcopy`` will not
+    duplicate it (:pr:`1099`).
+  - Add ``marshmallow.__version_info__`` (:pr:`1074`).
+  - Add warnings for API that is deprecated or changed to help users
+    prepare for marshmallow 3 (:pr:`1075`).
+  - Prevent memory leak when dynamically creating classes with ``type()``
+    (:issue:`732`). Thanks :user:`asmodehn` for writing the tests to
+    reproduce this issue.
+  - Prevent warning about importing from ``collections`` on Python 3.7
+    (:issue:`1027`). Thanks :user:`nkonin` for reporting and
+    :user:`jmargeta` for the PR.
+  - Remove spurious warning about implicit collection handling
+    (:issue:`998`). Thanks :user:`lalvarezguillen` for reporting.
+  - Allow username without password in basic auth part of the url in
+    ``fields.Url`` (:pr:`982`). Thanks user:`alefnula` for the PR.
+  - Prevent ``TypeError`` when a non-collection is passed to a ``Schema`` with ``many=True``.
+    Instead, raise ``ValidationError`` with ``{'_schema': ['Invalid input type.']}`` (:issue:`906`).
+  - Fix ``root`` attribute for nested container fields on list
+    on inheriting schemas (:issue:`956`). Thanks :user:`bmcbu`
+    for reporting.
+  - Handle empty SQLAlchemy lazy lists gracefully when dumping (:issue:`948`).
+    Thanks :user:`vke-code` for the catch and :user:`YuriHeupa` for the patch.
+  - Respect ``load_from`` when reporting errors for ``@validates('field_name')``
+    (:issue:`748`). Thanks :user:`m-novikov` for the catch and patch.
+  - Fix passing ``only`` as a string to ``nested`` when the passed field
+    defines ``dump_to`` (:issue:`800`, :issue:`822`). Thanks
+    :user:`deckar01` for the catch and patch.
+  - Fix a race condition in validation when concurrent threads use the
+    same ``Schema`` instance (:issue:`783`). Thanks :user:`yupeng0921` and
+    :user:`lafrech` for the fix.
+  - Fix serialization behavior of
+    ``fields.List(fields.Integer(as_string=True))`` (:issue:`788`). Thanks
+    :user:`cactus` for reporting and :user:`lafrech` for the fix.
+  - Fix behavior of ``exclude`` parameter when passed from parent to
+    nested schemas (:issue:`728`). Thanks :user:`timc13` for reporting and
+    :user:`deckar01` for the fix.
+  - :cve:`CVE-2018-17175`: Fix behavior when an empty list is passed as the ``only`` argument
+    (:issue:`772`). Thanks :user:`deckar01` for reporting and thanks
+    :user:`lafrech` for the fix.
+  - Handle ``UnicodeDecodeError`` when deserializing ``bytes`` with a
+    ``String`` field (:issue:`650`). Thanks :user:`dan-blanchard` for the
+    suggestion and thanks :user:`4lissonsilveira` for the PR.
+  - Add ``require_tld`` parameter to ``validate.URL`` (:issue:`664`).
+    Thanks :user:`sduthil` for the suggestion and the PR.
+- added patches
+  + python-marshmallow-no-version-warning.patch
+- deleted patches
+  + patch-remove-unsupported-theme-option.patch (upstreamed)
+
+-------------------------------------------------------------------
+Wed Dec 19 00:15:31 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:18 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Aug 19 09:23:52 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

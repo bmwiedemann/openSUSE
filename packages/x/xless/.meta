@@ -1,0 +1,6 @@
+<package name="xless" project="openSUSE:Factory">
+  <title>Text browser</title>
+  <description>xless 1.7 -- the well-known text browser. Necessary for displaying the
+various HOWTOs.</description>
+  <devel project="X11:Utilities" package="xless"/>
+</package>

@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Wed Aug 30 08:47:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove future {Build,}Requires, not needed.
+- Stop using greedy globs in %files.
+- Switch to pyproject macros.
+- Rip out Python 2 support in the spec file.
+
+-------------------------------------------------------------------
+Fri Jan 13 09:54:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v3.0.0:
+  * No more Python 2.x support.
+
+-------------------------------------------------------------------
+Wed Oct 12 02:41:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.1.4 
+  * Fix unparseable version bound for fonttools under Python 2
+
+-------------------------------------------------------------------
+Wed Sep 15 11:35:08 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.1.3
+  * Remove dependency on `__version__.py` and `default-config.ini` files
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Sun Feb  7 14:29:59 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.1.1
+  * Added support for settings based on a TrueType® font
+  * Fix ResourceWarning
+
+-------------------------------------------------------------------
+Tue Oct 13 15:59:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python-configparser only conditionally when using
+  python-base, aka python2.
+
+-------------------------------------------------------------------
+Fri Sep 13 12:51:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.15:
+  * Relicensed as MIT
+
+-------------------------------------------------------------------
+Tue Dec  4 12:45:37 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Aug  8 14:53:16 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase.
+
+-------------------------------------------------------------------
+Fri Aug  3 03:24:28 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

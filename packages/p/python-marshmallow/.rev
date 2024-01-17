@@ -1,0 +1,219 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>074ff34cfd808332c6fbd39611df700c</srcmd5>
+    <version>2.13.6</version>
+    <time>1503926053</time>
+    <user>dimstar_suse</user>
+    <comment>needs Request#518491</comment>
+    <requestid>518493</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>56e78015d5d2aeafef91e9bddfe3a9f5</srcmd5>
+    <version>2.13.6</version>
+    <time>1545647974</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659490</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bbcd471df833bd1df9979e4981238823</srcmd5>
+    <version>2.13.6</version>
+    <time>1547211862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663805</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6568410844a6874b90a53bc51e1a741b</srcmd5>
+    <version>2.19.1</version>
+    <time>1555691769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691767</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ab63f6b6c3fe35e038f859493d7179e</srcmd5>
+    <version>2.19.2</version>
+    <time>1558515043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703738</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f93cc4d24401686805b0da0a965bec6e</srcmd5>
+    <version>2.19.2</version>
+    <time>1560337309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706098</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7451d6085fb5725a2e9616fcabff783d</srcmd5>
+    <version>2.19.5</version>
+    <time>1564301983</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.19.5:
+  * Fix deserializing ISO8601-formatted datetimes with less than 6-digit miroseconds (:issue:`1251`). Thanks :user:`diego-plan9` for reporting.
+  * Microseconds no longer gets lost when deserializing datetimes without dateutil installed (:issue:`1147`).
+  * Fix bug where nested fields in Meta.exclude would not work on multiple instantiations (:issue:`1212`). Thanks :user:`MHannila` for reporting.</comment>
+    <requestid>718109</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9957102ba73668dad0c97a295737842f</srcmd5>
+    <version>2.19.5</version>
+    <time>1564576596</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix building with pytest5 from upstream git:
+  * pytest5.patch</comment>
+    <requestid>720011</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2924148e042be600b913490bbf12bb03</srcmd5>
+    <version>3.0.1</version>
+    <time>1566894451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726271</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b61794a1533b07ec892a2713d5005228</srcmd5>
+    <version>3.0.3</version>
+    <time>1568379529</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 3.0.3:
+  * Handle when data_key is an empty string
+  * Includes bug fix from 2.20.3
+  * Fix incorrect super() call in SchemaMeta.__init__</comment>
+    <requestid>730134</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8130dd28a373db3d0f4a9d632c3715f5</srcmd5>
+    <version>3.2.1</version>
+    <time>1570627184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736310</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c82b254758533523cd16b876d9e652b3</srcmd5>
+    <version>3.2.2</version>
+    <time>1573771976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748433</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3b2bb5ccec31c6986233e81f4ad5132e</srcmd5>
+    <version>3.5.1</version>
+    <time>1585761574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790511</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8d576e3e582e579f1e1ce99f599668ff</srcmd5>
+    <version>3.7.1</version>
+    <time>1598029639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.1:
+  * Deprecations:
+    + `marshmallow.pprint` is deprecated and will be removed in marshmallow 4 (:issue:`1588`).
+  * Features:
+    + Add ``validators.ContainsNoneOf`` (:issue:`1528`).
+  * Bug fixes:
+    + Fix typing in ``class_registry`` (:pr:`1574`). Thanks :user:`mahenzon`.
+    + Fix passing ``only`` and ``exclude`` to ``Nested`` with an ordered ``Schema`` (:pr:`1627`).
+    + ``fields.Boolean`` correctly serializes non-hashable types (:pr:`1633`).
+- Refresh patch python-marshmallow-no-version-warning.patch</comment>
+    <requestid>828384</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a75d814c8dddc321f51702d30044f0eb</srcmd5>
+    <version>3.11.1</version>
+    <time>1619193044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888006</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>24bf4bdac699401cb2f14e46a9f79f05</srcmd5>
+    <version>3.14.1</version>
+    <time>1653907434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979709</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a49a0c817b6927f07afe1dce96354179</srcmd5>
+    <version>3.17.1</version>
+    <time>1664553467</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007064</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>78b56838cafad0aecba02325f7e5da29</srcmd5>
+    <version>3.18.0</version>
+    <time>1667306538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032503</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>911c745fe84788c8d9c7a63954fe092a</srcmd5>
+    <version>3.19.0</version>
+    <time>1670058223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039662</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>f38c4ef2a03a365deb8b7869bc445c09</srcmd5>
+    <version>3.19.0</version>
+    <time>1679068955</time>
+    <user>dimstar_suse</user>
+    <comment>- rename docs subpackage to the more common doc name 
+
+- We want &quot;modern&quot; Sphinx on SLE-15, not the 3.6-based one.</comment>
+    <requestid>1072288</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>5add92bced91256af70b8cfe2421dbaf</srcmd5>
+    <version>3.19.0</version>
+    <time>1682193603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081862</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>bd4e073f532bfac561732229312c9ba3</srcmd5>
+    <version>3.19.0</version>
+    <time>1685124923</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch documentation to be within the main package on SLE15</comment>
+    <requestid>1089048</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b4dceaf5a10012dfbd6b60178b0435dc</srcmd5>
+    <version>3.20.1</version>
+    <time>1702327780</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.20.1:
+  * Fix call to ``get_declared_fields``: pass ``dict_cls`` again
+  * Add ``absolute`` parameter to ``URL`` validator and ``Url``
+  * Use Abstract Base Classes to define ``FieldABC`` and
+    ``SchemaABC``
+  * Use `OrderedSet` as default `set_class`. Schemas are now
+    ordered by default.
+  * Handle ``OSError`` and ``OverflowError`` in
+    ``utils.from_timestamp`` (:pr:`2102`).
+  * Fix the default inheritance of nested partial schemas
+  * Officially support Python 3.11 (:pr:`2067`).
+  * Drop support for Python 3.7 (:pr:`2135`).
+
+- rename docs subpackage to the more common doc name
+- Update to 3.19.0
+  * Add timestamp and timestamp_ms formats to fields.DateTime (#612). Thanks @vgavro for    the suggestion and thanks @vanHoi for the PR.</comment>
+    <requestid>1132365</requestid>
+  </revision>
+</revisionlist>

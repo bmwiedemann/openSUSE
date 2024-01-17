@@ -1,0 +1,879 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16d8d9b5b3bf31e953ab57b61d231489</srcmd5>
+    <version>20170319</version>
+    <time>1494087848</time>
+    <user>dimstar_suse</user>
+    <comment>More patten name fixes</comment>
+    <requestid>492987</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dca90035f20a69218b942452169b1c0f</srcmd5>
+    <version>20170319</version>
+    <time>1494263895</time>
+    <user>dimstar_suse</user>
+    <comment>Emergency tweak</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>18dd044b0a3c4a699de5736c6276b2e9</srcmd5>
+    <version>20170319</version>
+    <time>1494349876</time>
+    <user>dimstar_suse</user>
+    <comment>Revert - did not work anyway</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7174342739bb67674cc7ae09c90ee252</srcmd5>
+    <version>20170319</version>
+    <time>1494445561</time>
+    <user>dimstar_suse</user>
+    <comment>Re-introduce generic_server pattern</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>295708daf68fe57e79a72a4dbe1f5f7a</srcmd5>
+    <version>20170319</version>
+    <time>1495549035</time>
+    <user>dimstar_suse</user>
+    <comment>Pattern generic_server: recommend wget as a workaround until the removal happens</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>79f1267df2c1a6a71e9a9f4e45bbcb15</srcmd5>
+    <version>20170319</version>
+    <time>1496144555</time>
+    <user>dimstar_suse</user>
+    <comment>Mangle the generic_server pattern once more, before it gets deleted</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>5f3c5f2a540414d83de7e1d1f6e9bdf0</srcmd5>
+    <version>20170319</version>
+    <time>1496833705</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit</comment>
+    <requestid>499669</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>c89291a564bca3598799069c86ec95a2</srcmd5>
+    <version>20170319</version>
+    <time>1496927083</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename pattern minimal_base-conflicts to minimal_base_conflicts:
+  we fall into a neat trap with
+     Provides: pattern() = minimal_base-conflicts
+  As this is translated to RPM lingo, meaning 'minimal_base' is the
+  'version' and 'conflicts' the 'release'; so anything requiring
+  pattern() = minimal_base is satisfied by minimal_base-conflicts
+  directly too (boo#1043348).
+
+- Proper fixes for the last change re generic_server,
+  * other minor tidyup's</comment>
+    <requestid>501866</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>241ddaad455f9643652c9848f80e81f9</srcmd5>
+    <version>20170319</version>
+    <time>1499677267</time>
+    <user>dimstar_suse</user>
+    <comment>- Make pattern minimal_base visible: there are quire some scripts
+  relying on this to install containers.
+
+- Drop sash recommends: sash is being removed from Tumbleweed.
+
+- Drop xinetd from patterns as if someone really needs it they should
+  rather pick it up. Today soultion for the problem is the systemd
+  socket service.</comment>
+    <requestid>508467</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>0e5f6e5c353e12a5c7f3f9e6f6c8138c</srcmd5>
+    <version>20170319</version>
+    <time>1501406456</time>
+    <user>dimstar_suse</user>
+    <comment>Let's give this a try, shall we?</comment>
+    <requestid>510045</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>f52a72f2963c910a91bef7a78a43bedd</srcmd5>
+    <version>20170319</version>
+    <time>1504814949</time>
+    <user>dimstar_suse</user>
+    <comment>- Introduce a wrapper pattern 'basesystem'. One pattern cannot
+  provide two names. This is likely to disappear soon again, but
+  helps for an easier migration/cleanup run (and fixes
+  boo#1049997).</comment>
+    <requestid>520123</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>884fb7eb5bd45a2cb8825fa879f64655</srcmd5>
+    <version>20170319</version>
+    <time>1505722723</time>
+    <user>dimstar_suse</user>
+    <comment>Express fix in TW for libnss_nis/compat</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>d3c227e3c78a5eb7de57fd230cb93a44</srcmd5>
+    <version>20170319</version>
+    <time>1506249089</time>
+    <user>dimstar_suse</user>
+    <comment>They conflict with glibc for now</comment>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>7ae13dae44b96557c267e629e48ef159</srcmd5>
+    <version>20170319</version>
+    <time>1506453104</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528623</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>7a34c75e15cf10b1a482fb8c8714fad4</srcmd5>
+    <version>20170319</version>
+    <time>1510665530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540578</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>f3f7d321ecbc0a82e074210a0494de01</srcmd5>
+    <version>20170319</version>
+    <time>1516221796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563569</requestid>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>4a259f0946fa078649a9e5362100870d</srcmd5>
+    <version>20170319</version>
+    <time>1520588036</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583478</requestid>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>5373d98b674a716f9e46f44804a8ea5e</srcmd5>
+    <version>20170319</version>
+    <time>1522404140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592048</requestid>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>939e20c13858eedd5f4618959b61ee53</srcmd5>
+    <version>20170319</version>
+    <time>1522934894</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend bash-completion by the base system (not minimal_base):
+  most users will expect it to be present and until recently, it
+  was in a recommended chain of systemd (boo#1087710).</comment>
+    <requestid>593175</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>af3389c24f8ff732fb9541fbb02b45c8</srcmd5>
+    <version>20170410</version>
+    <time>1523875539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595676</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>2a6889ba97f51a75ef077911107b204b</srcmd5>
+    <version>20170410</version>
+    <time>1525208805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601904</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>982ad574f704106897da19d53166cc25</srcmd5>
+    <version>20170410</version>
+    <time>1528492257</time>
+    <user>dimstar_suse</user>
+    <comment>- Only recommend rollback-helper if sle_version is defined: The
+  helper makes sense on Leap and SLE, where one can register with
+  SCC, but not for Tumbleweed.</comment>
+    <requestid>614241</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>afbfe2d925dd425635a822e8c8001a31</srcmd5>
+    <version>20170410</version>
+    <time>1532681536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624670</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>48f0a70fb384d96596144c5a4288274a</srcmd5>
+    <version>20170410</version>
+    <time>1535440957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630795</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>fd32e42231628108de7ebe1b6b7600ee</srcmd5>
+    <version>20170410</version>
+    <time>1536094161</time>
+    <user>dimstar_suse</user>
+    <comment>- add lightdm as a recommends to x11 pattern boo#1081760</comment>
+    <requestid>632507</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>2e06b10a00a45af6c08e76874369747a</srcmd5>
+    <version>20170410</version>
+    <time>1537263743</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>634232</requestid>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>7a08afb82fb90f9a44429f8d3ae8be03</srcmd5>
+    <version>20170410</version>
+    <time>1538502302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638664</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>16774aa7c92bb1809d9cc02b6515e99d</srcmd5>
+    <version>20180616</version>
+    <time>1546245795</time>
+    <user>dimstar_suse</user>
+    <comment>Integrate latest changes</comment>
+    <requestid>657102</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>ace60c1b8aa1f6f84791061ed5d5bf83</srcmd5>
+    <version>20180616</version>
+    <time>1546591935</time>
+    <user>dimstar_suse</user>
+    <comment>Recommend grub2-efi on x86_64</comment>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>794dee70e21c670adda77f163c539424</srcmd5>
+    <version>20180616</version>
+    <time>1547131931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663369</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ae63e96d6e1ca9d18aa76214c83920c9</srcmd5>
+    <version>20190206</version>
+    <time>1551385516</time>
+    <user>coolo</user>
+    <comment>Pattern reworks</comment>
+    <requestid>679151</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>c6386901fe2297a04cc93b97c38053fb</srcmd5>
+    <version>20190206</version>
+    <time>1552380457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682650</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>22606da87d2d104e1e1b093be7e3bdeb</srcmd5>
+    <version>20190206</version>
+    <time>1552901653</time>
+    <user>dimstar_suse</user>
+    <comment>- Suggest openSUSE-release to guide zypper away from picking
+  openSUSE-Tumbleweed-Kubic-release automatically
+</comment>
+    <requestid>685276</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f5cb9ae363a4ad8dbda752052da1b79e</srcmd5>
+    <version>20190320</version>
+    <time>1553610951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687464</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>9237a8c7365b5317303b2a9feb5f84dd</srcmd5>
+    <version>20190206</version>
+    <time>1553763264</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:patterns-base revision:33, using expand</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>96501e5bdf66ce4fd17c32eeedb1bba0</srcmd5>
+    <version>20190206</version>
+    <time>1556915216</time>
+    <user>dimstar_suse</user>
+    <comment>- move haveged to base instead of minimal_base as the comment indicates that
+  minimal_base should not have recommended packages.
+- recomment issue-generator in the base pattern rather than the release package
+  (boo#1133636)
+
+- Move haveged from enhanced_base to minimal_base (bsc#1131369).
+
+- Fix x11_raspberrypi (jsc#SLE-4142):
+  * Use only Requires, on JeOS recommmends and suggests are no-ops
+  * Remove xf86-input-void, obsolete (and not in SLE)
+  * Require base and x11 patterns
+  * Add some YaST modules, otherwise the control center is empty</comment>
+    <requestid>700035</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d018aa20fe8ac934de09c87b1c15e38f</srcmd5>
+    <version>20190612</version>
+    <time>1564575879</time>
+    <user>dimstar_suse</user>
+    <comment>Fix provides</comment>
+    <requestid>717151</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>42cfcd1e8863039410bf9cbaddf132d3</srcmd5>
+    <version>20190612</version>
+    <time>1565864837</time>
+    <user>dimstar_suse</user>
+    <comment>- use journal by default (boo#1143144)
+
+- Add openSUSE Welcome to be included in the x11_enhanced pattern.
+
+- Drop google-roboto-fonts recommends: nothing really depends on
+  it and roboto is not used as default font in any openSUSE setup
+  (boo#1144135).</comment>
+    <requestid>723306</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>17ea6ba87d7a3e35f21ea0ecc2a5f8ef</srcmd5>
+    <version>20190612</version>
+    <time>1567580551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727242</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>af944c06f2070e67c7e06a2ad073b3df</srcmd5>
+    <version>20190612</version>
+    <time>1568190065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728432</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>3efe4f5febcba1897848005df2d40ed7</srcmd5>
+    <version>20190612</version>
+    <time>1568900920</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730076</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>ffd054afe4557ca6574488216c3ba95a</srcmd5>
+    <version>20190612</version>
+    <time>1569232919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732088</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>522370d71269d3b6d2f8e4bbe84ca0e5</srcmd5>
+    <version>20190612</version>
+    <time>1569851489</time>
+    <user>dimstar_suse</user>
+    <comment>- Need to explicitly have glibc-locale-base in patterns to make
+  32bit pattern have it too (boo#1142156).</comment>
+    <requestid>732891</requestid>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>fa43bdb44f897c3e0aa642e9fa0bb464</srcmd5>
+    <version>20190612</version>
+    <time>1571057574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737524</requestid>
+  </revision>
+  <revision rev="45" vrev="9">
+    <srcmd5>b89c283c6e24fa2f7d3322f8407cedfc</srcmd5>
+    <version>20190612</version>
+    <time>1571819578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742033</requestid>
+  </revision>
+  <revision rev="46" vrev="10">
+    <srcmd5>11b1b6a2a9da227dea158b434e15b076</srcmd5>
+    <version>20190612</version>
+    <time>1576014110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753964</requestid>
+  </revision>
+  <revision rev="47" vrev="11">
+    <srcmd5>3a61d294a2e79cf36d59bb3257b85daf</srcmd5>
+    <version>20190612</version>
+    <time>1577137174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758034</requestid>
+  </revision>
+  <revision rev="48" vrev="12">
+    <srcmd5>7db9e004df3ca1767661b859a7169790</srcmd5>
+    <version>20190612</version>
+    <time>1577175732</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable purge-kernels-service dependency for now: dracut has not
+  yet been updated to no longer ship the service file.</comment>
+  </revision>
+  <revision rev="49" vrev="13">
+    <srcmd5>2cc0df96b508c8d84ecbb57d2049649b</srcmd5>
+    <version>20190612</version>
+    <time>1579536395</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable purge-kernels-service dependency: dracut dropped the service.</comment>
+  </revision>
+  <revision rev="50" vrev="14">
+    <srcmd5>b51074641dd5d941f2c4377f8ec636ed</srcmd5>
+    <version>20190612</version>
+    <time>1579651313</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="51" vrev="15">
+    <srcmd5>841841fb31fd82d2b6c572b8d4fe245c</srcmd5>
+    <version>20190612</version>
+    <time>1583947987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782599</requestid>
+  </revision>
+  <revision rev="52" vrev="16">
+    <srcmd5>0443b26bffbb372bf7ea8912b8351254</srcmd5>
+    <version>20190612</version>
+    <time>1587070785</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bootloader pattern. Useful for appliances to not repeat the logic
+  in kiwi files.</comment>
+    <requestid>794204</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>970868f53a104a2f8124c7be90653b61</srcmd5>
+    <version>20200417</version>
+    <time>1587838577</time>
+    <user>dimstar_suse</user>
+    <comment>- bootloader: pull in grub2-snapper plugin if snapper is installed
+
+- base pattern cleanup:
+  * make minimal_base really minimal by moving packages to base instead. Only
+    pull in the release package and branding. So this is really what
+    can be used for application containers, portable services etc.
+    In it's current form it also pulls in bash, glibc, coreutils
+    etc, so no need to specify explicitly.
+  * strip down base so it forms a minimal booting system that can install
+    packages.
+  * don't pull in man into transactional system</comment>
+    <requestid>796568</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>e00243182271013b11d15272089a8d12</srcmd5>
+    <version>20200417</version>
+    <time>1588105780</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend bash-completion in enhanced_base as it got lost in the
+  base pattern cleanup</comment>
+    <requestid>798120</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>79fcf913a1d95f7b5eeee718deebfed8</srcmd5>
+    <version>20200505</version>
+    <time>1588856847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801086</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>d6c69a2fa4d2aa9717db9d40ec22ceee</srcmd5>
+    <version>20200505</version>
+    <time>1591653037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811481</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>adeca2352a269abff7343ecb64320f38</srcmd5>
+    <version>20200505</version>
+    <time>1591879430</time>
+    <user>dimstar_suse</user>
+    <comment>- Suggest postfix from the basesystem pattern: suggested packages
+  are not flagged for installation, but give the solver a hint. So
+  in case something wants an MTA (smtp_daemon), openSUSE installs
+  will all default to postfix (as the base pattern is generally
+  installed). Users are still free to switch as they wish
+  (boo#1136078).</comment>
+    <requestid>813244</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>c179d868f5a537f7cc4046c8e95cc9b5</srcmd5>
+    <version>20200505</version>
+    <time>1595772924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822319</requestid>
+  </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>248de7f082e4eaff8ea3f10a12749283</srcmd5>
+    <version>20200505</version>
+    <time>1595949852</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822956</requestid>
+  </revision>
+  <revision rev="60" vrev="6">
+    <srcmd5>aed85ab4e2a8b3d1b776a734794d2bde</srcmd5>
+    <version>20200505</version>
+    <time>1596565100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824097</requestid>
+  </revision>
+  <revision rev="61" vrev="7">
+    <srcmd5>83482741276661e3586a50c87e3184d6</srcmd5>
+    <version>20200505</version>
+    <time>1602155385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839908</requestid>
+  </revision>
+  <revision rev="62" vrev="8">
+    <srcmd5>ebf8713e921f1e93d39f3ac376e68616</srcmd5>
+    <version>20200505</version>
+    <time>1603448409</time>
+    <user>dimstar_suse</user>
+    <comment>- Have pattern enhanced_base recommend documentation:
+  patterns-base-documentation in turn recommends man-pages (man cp)
+  and pam-doc (boo#1177828).
+
+- Stop trying to install grub2-branding on ppc64/ppc64le [boo#1171146]</comment>
+    <requestid>842796</requestid>
+  </revision>
+  <revision rev="63" vrev="9">
+    <srcmd5>cdddf25781fae8e4c92f5c65aea392df</srcmd5>
+    <version>20200505</version>
+    <time>1605216779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847744</requestid>
+  </revision>
+  <revision rev="64" vrev="10">
+    <srcmd5>280b80dbebe62e60da2c71a83b148977</srcmd5>
+    <version>20200505</version>
+    <time>1609705584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859524</requestid>
+  </revision>
+  <revision rev="65" vrev="11">
+    <srcmd5>2ee82a2f894d7442da3abc16cec75f70</srcmd5>
+    <version>20200505</version>
+    <time>1612011341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866785</requestid>
+  </revision>
+  <revision rev="66" vrev="12">
+    <srcmd5>026a362e37f89499ad740ceb3de6112b</srcmd5>
+    <version>20200505</version>
+    <time>1614001187</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>873922</requestid>
+  </revision>
+  <revision rev="67" vrev="13">
+    <srcmd5>65ad3e6e2c712720eee014366993c4b3</srcmd5>
+    <version>20200505</version>
+    <time>1614684348</time>
+    <user>RBrownSUSE</user>
+    <comment>Add bugzilla reference
+
+  pipewire-pulseaudio (boo#1182730). (forwarded request 875000 from alarrosa)</comment>
+    <requestid>875003</requestid>
+  </revision>
+  <revision rev="68" vrev="14">
+    <srcmd5>1ecdb6543b5861816b359740a4a1bd7d</srcmd5>
+    <version>20200505</version>
+    <time>1615362419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877899</requestid>
+  </revision>
+  <revision rev="69" vrev="15">
+    <srcmd5>65acf718fdb33a01f5cce90889ba7d59</srcmd5>
+    <version>20200505</version>
+    <time>1621113354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892610</requestid>
+  </revision>
+  <revision rev="70" vrev="16">
+    <srcmd5>3e32b9ad1c6a7cd693d37f9ea28e7ea9</srcmd5>
+    <version>20200505</version>
+    <time>1621626568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894466</requestid>
+  </revision>
+  <revision rev="71" vrev="17">
+    <srcmd5>cd1157fb2d198591d137ddc207885d0a</srcmd5>
+    <version>20200505</version>
+    <time>1622234032</time>
+    <user>dimstar_suse</user>
+    <comment>- Suggest openssl from patterns-base-base: in case something
+  requires /usr/bin/openssl or openssl(cli), we want to declare
+  openssl as our default.</comment>
+    <requestid>896032</requestid>
+  </revision>
+  <revision rev="72" vrev="18">
+    <srcmd5>f297e1204ed1d6456206dc1fb1fe9b3c</srcmd5>
+    <version>20200505</version>
+    <time>1622839377</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896931</requestid>
+  </revision>
+  <revision rev="73" vrev="19">
+    <srcmd5>7fbfc96421e3553fa5c285fb80ab9570</srcmd5>
+    <version>20200505</version>
+    <time>1624004015</time>
+    <user>dimstar_suse</user>
+    <comment>- We now have two command-not-found provider: favor the previously,
+  well tested one for now (scout-command-not-found).
+
+- Remove requirement on sysconfig package. Doesn't seem to contain anything
+  useful anymore. Tools that actually need it such as wicked will just require
+  sysconfig themselves.</comment>
+    <requestid>900563</requestid>
+  </revision>
+  <revision rev="74" vrev="20">
+    <srcmd5>6a6425bf6cd45dcb71636b95f121b960</srcmd5>
+    <version>20200505</version>
+    <time>1624551743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901381</requestid>
+  </revision>
+  <revision rev="75" vrev="21">
+    <srcmd5>9dadfd26a3dd9821cd0090148e1f65d4</srcmd5>
+    <version>20200505</version>
+    <time>1624630636</time>
+    <user>dimstar_suse</user>
+    <comment>- Favor libz1 when in doubt and asked for libz.so.1.</comment>
+  </revision>
+  <revision rev="76" vrev="22">
+    <srcmd5>1baec828dbf60e1198af3a55e92ef79f</srcmd5>
+    <version>20200505</version>
+    <time>1626644694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906200</requestid>
+  </revision>
+  <revision rev="77" vrev="23">
+    <srcmd5>8e4cae5e6d6518c0a26fec12faae687b</srcmd5>
+    <version>20200505</version>
+    <time>1631543053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917460</requestid>
+  </revision>
+  <revision rev="78" vrev="24">
+    <srcmd5>68999df87d2a1277615c4f55159296b2</srcmd5>
+    <version>20200505</version>
+    <time>1635539584</time>
+    <user>dimstar_suse</user>
+    <comment>- remove mention of &quot;Minimal&quot; from the base pattern</comment>
+    <requestid>927758</requestid>
+  </revision>
+  <revision rev="79" vrev="25">
+    <srcmd5>d62491954f80b93f4a7527e34db303fc</srcmd5>
+    <version>20200505</version>
+    <time>1636498424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929090</requestid>
+  </revision>
+  <revision rev="80" vrev="26">
+    <srcmd5>7a0edb46645bbb964cab594dd6e455ce</srcmd5>
+    <version>20200505</version>
+    <time>1636931171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930781</requestid>
+  </revision>
+  <revision rev="81" vrev="27">
+    <srcmd5>cad1e441029469ec1d37afc2feae75a5</srcmd5>
+    <version>20200505</version>
+    <time>1637701819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932828</requestid>
+  </revision>
+  <revision rev="82" vrev="28">
+    <srcmd5>decb864529fc5ccf3a5979560a7dbabb</srcmd5>
+    <version>20200505</version>
+    <time>1639781671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941259</requestid>
+  </revision>
+  <revision rev="83" vrev="29">
+    <srcmd5>c741e2577e30e81cf3b255a947c063bb</srcmd5>
+    <version>20200505</version>
+    <time>1640459797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942326</requestid>
+  </revision>
+  <revision rev="84" vrev="30">
+    <srcmd5>7ff6e9fe73be2fb92033a0ccb65a1a79</srcmd5>
+    <version>20200505</version>
+    <time>1642198360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946381</requestid>
+  </revision>
+  <revision rev="85" vrev="31">
+    <srcmd5>9bc0d68039a424f4b2431d1cbcd7d628</srcmd5>
+    <version>20200505</version>
+    <time>1644435512</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer recommend apparmor pattern by enhanced_base:
+  installations using YaST have the LSM selected during
+  installation. Other setups might just as well pick SELinux.
+
+- base: favour psmisc over busybox-psmisc or other equivalents
+- x11 pattern: Require xf86-input-libinput also on s390x
+- Move shadow from required to recommended, it not needed for a</comment>
+    <requestid>952124</requestid>
+  </revision>
+  <revision rev="86" vrev="32">
+    <srcmd5>46fd04c26fdf1275066b2a545a90c0f1</srcmd5>
+    <version>20200505</version>
+    <time>1645561071</time>
+    <user>dimstar_suse</user>
+    <comment>- Use ntfs-3g again, udisks no longer works with the new ntfs3 module
+  (gh#storaged-project/udisks#932)</comment>
+    <requestid>956504</requestid>
+  </revision>
+  <revision rev="87" vrev="33">
+    <srcmd5>8f6860d7e06a389a97ac98682781dab4</srcmd5>
+    <version>20200505</version>
+    <time>1654258522</time>
+    <user>dimstar_suse</user>
+    <comment>- No long recommend haveged (boo#1190024): The mainline Linux
+  Kernel has now HAVEGED algorithm build in internally (since
+  version 5.6).</comment>
+    <requestid>980343</requestid>
+  </revision>
+  <revision rev="88" vrev="34">
+    <srcmd5>8b97999bc76ab90d6a5a6cde26ebd7db</srcmd5>
+    <version>20200505</version>
+    <time>1657191400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986848</requestid>
+  </revision>
+  <revision rev="89" vrev="35">
+    <srcmd5>28fe71139988df7acc2ece738bd65fea</srcmd5>
+    <version>20200505</version>
+    <time>1657378773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987464</requestid>
+  </revision>
+  <revision rev="90" vrev="36">
+    <srcmd5>087171c0427373011c8c40de9101ba9c</srcmd5>
+    <version>20200505</version>
+    <time>1657885936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989203</requestid>
+  </revision>
+  <revision rev="91" vrev="37">
+    <srcmd5>c5c2b370b12568f0e219e5615f1b9b86</srcmd5>
+    <version>20200505</version>
+    <time>1662462052</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001330</requestid>
+  </revision>
+  <revision rev="92" vrev="38">
+    <srcmd5>5596b00e91e409a9b7e2b68bd85cd283</srcmd5>
+    <version>20200505</version>
+    <time>1662833831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002306</requestid>
+  </revision>
+  <revision rev="93" vrev="39">
+    <srcmd5>44f9e395583da4f5d76aceea76797b49</srcmd5>
+    <version>20200505</version>
+    <time>1677683619</time>
+    <user>dimstar_suse</user>
+    <comment>- enhanced_base:
+  + Drop systemd-sysvinit recommends: that package has been renamed
+    to systemd-sysvcompat, but should not be needed on modern
+    systems anymore.
+  + Add systemd-coredump recommends: if already we see crashes,
+    it'd be good if users can report usable bugs (boo#1208713).
+
+  of reboot-needed updates)
+- Have the base pattern recommend service(network)</comment>
+    <requestid>1068127</requestid>
+  </revision>
+  <revision rev="94" vrev="40">
+    <srcmd5>117a7ccc62da24ddb44c74483b82b059</srcmd5>
+    <version>20200505</version>
+    <time>1680968330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077752</requestid>
+  </revision>
+  <revision rev="95" vrev="41">
+    <srcmd5>0f3314a7738b7e08c160052619db28b8</srcmd5>
+    <version>20200505</version>
+    <time>1683728191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085650</requestid>
+  </revision>
+  <revision rev="96" vrev="42">
+    <srcmd5>8f837295c3a5fa424a98a51720eb9e0c</srcmd5>
+    <version>20200505</version>
+    <time>1692687323</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105041</requestid>
+  </revision>
+  <revision rev="97" vrev="43">
+    <srcmd5>8d48883294899dc3e7f820d906e10303</srcmd5>
+    <version>20200505</version>
+    <time>1694701504</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110772</requestid>
+  </revision>
+  <revision rev="98" vrev="44">
+    <srcmd5>1788269e852e10f8e5559ed983d84c5c</srcmd5>
+    <version>20200505</version>
+    <time>1698438438</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120509</requestid>
+  </revision>
+  <revision rev="99" vrev="45">
+    <srcmd5>938fb1165fce6afc3ddc143a5dbbb87f</srcmd5>
+    <version>20200505</version>
+    <time>1698952805</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1122648</requestid>
+  </revision>
+  <revision rev="100" vrev="46">
+    <srcmd5>bb0b81390761092d42d88e197de2e252</srcmd5>
+    <version>20200505</version>
+    <time>1701882910</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove scout: the cnf handler has been rewritten in rust and no
+  longer relies on scout/python.</comment>
+  </revision>
+</revisionlist>
