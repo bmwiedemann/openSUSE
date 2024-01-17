@@ -1,0 +1,8 @@
+<package name="ocaml-qtest" project="openSUSE:Factory">
+  <title>Inline (Unit) Tests for OCaml</title>
+  <description>qtest extracts inline unit tests written using a special syntax in
+comments. Those tests are then run using the oUnit framework and the
+qcheck library. The possibilities range from trivial tests -- extremely
+simple to use -- to sophisticated random generation of test cases.</description>
+  <devel project="devel:languages:ocaml" package="ocaml-qtest"/>
+</package>

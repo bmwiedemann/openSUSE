@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Mon Aug 17 03:10:43 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.55
+   see /usr/share/doc/packages/perl-List-Compare/Changes
+
+
+  0.54 Sun Aug 16 14:21:36 EDT 2020
+      - Prepare for future version of Perl with strict- and warnings-by-default.
+
+  0.55 Sun Aug 16 18:37:07 EDT 2020
+      - In test suite, replace IO::CaptureOutput with Capture::Tiny.
+
+-------------------------------------------------------------------
+Mon Jun 15 08:49:26 UTC 2015 - coolo@suse.com
+
+- updated to 0.53
+   see /usr/share/doc/packages/perl-List-Compare/Changes
+
+  
+  0.53 Sun Jun  7 10:49:24 MDT 2015
+      - Accept patch submitted by Paulo Custodio reworking, and correcting,
+        changes originally published in 0.50.
+
+-------------------------------------------------------------------
+Sun Jun  7 08:40:19 UTC 2015 - coolo@suse.com
+
+- updated to 0.52
+   see /usr/share/doc/packages/perl-List-Compare/Changes
+
+  
+  0.52 Thu May 21 21:57:18 EDT 2015
+      - v0.51 changes were not applied to master branch; apply them.
+        Remove two hash-to-hash assignments in List::Compare::Base::_Auxiliary::_subset_subengine.
+
+-------------------------------------------------------------------
+Fri May 15 11:08:32 UTC 2015 - coolo@suse.com
+
+- updated to 0.51
+   see /usr/share/doc/packages/perl-List-Compare/Changes
+
+  
+  0.51 Thu May 14 21:49:00 EDT 2015
+      - Changes to List::Compare::Functional::is_LsubsetR introduced in v0.50
+        found to be buggy.  See: https://rt.cpan.org/Ticket/Display.html?id=104452.
+        Pending further investigation, reverted to v0.49 of
+        List::Compare::Base::_Auxiliary; added two test files.
+
+-------------------------------------------------------------------
+Sun May 10 08:10:51 UTC 2015 - coolo@suse.com
+
+- updated to 0.50
+   see /usr/share/doc/packages/perl-List-Compare/Changes
+
+  
+  0.50 Sat May  9 09:06:41 EDT 2015
+      - Improve performance of is_LsubsetR via patches submitted by Mich Rawson
+        at New York Perl Hackathon (May 2 2015).
+
+-------------------------------------------------------------------
+Tue Apr 14 18:31:27 UTC 2015 - coolo@suse.com
+
+- updated to 0.49
+   see /usr/share/doc/packages/perl-List-Compare/Changes
+
+-------------------------------------------------------------------
+Mon Apr 21 18:23:19 UTC 2014 - mardnh@gmx.de
+
+- update to version 0.38
+
+-------------------------------------------------------------------
+Sun May  1 10:32:59 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.37
+    * created by cpanspec 1.78.04
+

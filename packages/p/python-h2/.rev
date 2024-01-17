@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4613870d7a0f4b566599851d773f878</srcmd5>
+    <version>3.0.1</version>
+    <time>1494088066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>490865</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4cada36e1f28af40a6794738a1df7daf</srcmd5>
+    <version>3.0.1</version>
+    <time>1545866772</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659408</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>adf0fb8272d016a72199cd1e1d98b84f</srcmd5>
+    <version>3.1.0</version>
+    <time>1553888322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689263</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2c60cee97ca6efa1d05ba35366fe2e49</srcmd5>
+    <version>3.1.0</version>
+    <time>1558036785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702967</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9e66605651294b551f64a274b7c2fc29</srcmd5>
+    <version>3.1.0</version>
+    <time>1564484777</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix building with pytest5 pytest5.patch
+
+- Skip flaky test in OBS:
+  * test_changing_max_frame_size
+
+- Use pytest4 for now, link upstream ticket</comment>
+    <requestid>718812</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0fe28b213a029dd93e24d593e4ebdf58</srcmd5>
+    <version>3.1.1</version>
+    <time>1569233335</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Ignore WINDOW_UPDATE and RST_STREAM frames received after stream closure.
+- Drop patch pytest5.patch</comment>
+    <requestid>730347</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f0fd2803d31c811eb35060856aaba802</srcmd5>
+    <version>3.1.1</version>
+    <time>1574414663</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unused dependancies on pytest-cov and pytest-xdist.</comment>
+    <requestid>748547</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>92dee7b1dc4bc79d160242b45f97ece6</srcmd5>
+    <version>3.1.1</version>
+    <time>1575728399</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip one test that is flaky</comment>
+    <requestid>753929</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>660eea10950cf23cbaa9a15780aebd05</srcmd5>
+    <version>3.2.0</version>
+    <time>1583007801</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  * Receiving DATA frames on closed (or reset) streams now properly emit a
+    WINDOW_UPDATE to keep the connection flow window topped up.
+  * h2.config.logger now uses a trace(...) function, in addition to
+    debug(...).</comment>
+    <requestid>779741</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5f61ad8c5dca57cde335b7cb3be63d94</srcmd5>
+    <version>3.2.0</version>
+    <time>1585265040</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784845</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>70ea9453928030e5a108eedae6af8676</srcmd5>
+    <version>3.2.0</version>
+    <time>1603961106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834647</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>98efa2db4ac09e3db2ae5fc3d6206ebb</srcmd5>
+    <version>4.0.0</version>
+    <time>1606328872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850169</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d5bc4ae2d56842e75deb1db01aabc4ae</srcmd5>
+    <version>4.0.0</version>
+    <time>1617279354</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882369</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e89637103278f7ac9e1c5055265ccbe5</srcmd5>
+    <version>4.1.0</version>
+    <time>1641765008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944912</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>bb18adf9ee675c4a4686c2da35351311</srcmd5>
+    <version>4.1.0</version>
+    <time>1671563990</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-repr-checks-for-py311.patch</comment>
+    <requestid>1043739</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>4ef674dda2d90d5f67402c0180ff27e9</srcmd5>
+    <version>4.1.0</version>
+    <time>1682193637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081900</requestid>
+  </revision>
+</revisionlist>

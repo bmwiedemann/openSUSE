@@ -1,0 +1,13 @@
+Index: pyjwkest-9ed11b406911dde70b281b2473a976ec88afd1a9/setup.py
+===================================================================
+--- pyjwkest-9ed11b406911dde70b281b2473a976ec88afd1a9.orig/setup.py
++++ pyjwkest-9ed11b406911dde70b281b2473a976ec88afd1a9/setup.py
+@@ -45,7 +45,7 @@ setup(
+         "Topic :: Software Development :: Libraries :: Python Modules",
+         "Programming Language :: Python :: 2.7",
+         "Programming Language :: Python :: 3.5"],
+-    install_requires=["pycryptodomex", "requests", "six", "future"],
++    install_requires=["pycryptodomex", "requests", "six"],
+     tests_require=['pytest'],
+     zip_safe=False,
+     scripts=glob.glob('script/*.py'),

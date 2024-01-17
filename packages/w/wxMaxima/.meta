@@ -1,0 +1,9 @@
+<package name="wxMaxima" project="openSUSE:Factory">
+  <title>Graphical User Interface for the maxima Computer Algebra System</title>
+  <description>
+wxMaxima is a graphical user interface for the computer algebra system maxima.
+It uses wxWidgets.
+  </description>
+  <devel project="Education" package="wxMaxima"/>
+  <url>https://sourceforge.net/projects/wxmaxima/</url>
+</package>

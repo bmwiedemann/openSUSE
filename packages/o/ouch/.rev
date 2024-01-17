@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22136fe21cd756cf9a022184d6c9ede8</srcmd5>
+    <version>0.3.1~0</version>
+    <time>1667579882</time>
+    <user>dimstar_suse</user>
+    <comment>ouch</comment>
+    <requestid>1033522</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a590e928403a46a3d9ce42458c4da6d0</srcmd5>
+    <version>0.3.1~0</version>
+    <time>1667656010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033585</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b14433a40c8e221232e0dca36cd4fee7</srcmd5>
+    <version>0.4.0~0</version>
+    <time>1669911684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * More than 15 bug fixes (including major bugs).
+  * New accessible mode.
+  * Added list command.
+  * Added support for .lz4 and .sz (snappy).
+  * Infer file type while decompressing via MIME types.
+  * New flags to ignore hidden files and .gitignore'd files when compressing.
+  * Flag -o/--output was renamed to -d/--dir.</comment>
+    <requestid>1039268</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ae050b22626d36e53e09afe0de618e0d</srcmd5>
+    <version>0.4.1~0</version>
+    <time>1673108392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  New Features:
+  * Add cli option to (de)compress quietly #325
+  Improvements:
+  * Allow ouch to decompress archive into existing folder #321
+  * Accept inserting subcommand-independent flags in any position #329
+  * Improve extension parsing logic #330
+  * Slight refactor when ensuring archive-only inputs #331
+  * Use BStr to display possibly non-UTF8 byte sequences#332
+  * Use ubyte instead of humansize #333 #333
+  * Stop keeping track of the names of unpacked files #334
+  * Clean up #335
+  Bug fixes:
+  * Stop incorrectly asking to remove the parent dir #321
+  * Fixed overwriting archive file when decompressing archive detected with MIME types.
+  Tweaks:
+  * Add scoop install instructions to readme #323</comment>
+    <requestid>1056759</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0f2fb69baa223acaaa0a12cbf352efdb</srcmd5>
+    <version>0.4.2~0</version>
+    <time>1691502911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2:
+  New Features:
+  * Add flags to configure the compression level
+    --level to precisely set the compression level #372
+    --fast and --slow #374
+  * Add --format option #341
+  Improvements:
+  * Multi-threaded compression for gzip and snappy using gzp #348
+  * Add ls as an alternative alias for listing #360
+  Bug Fixes:
+  * Fix decompression of zip archives with files larger than 4GB #354
+  * Fix handling of unknown extensions during decompression #355
+  * Remove remaining mentions of .lz that refers to the LZMA format #344
+  * Handle Zip when modification times are missing #433</comment>
+    <requestid>1102811</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>90f345856bfe88df5e6fb81c0be6944c</srcmd5>
+    <version>0.5.0+0</version>
+    <time>1701533586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  New Features:
+  * Add .rar support (decompression and listing, see clarification below) (#529)
+  * Add .7z support (#555)
+  Improvements:
+  * Switch to the faster lz4 implementation, lz4_flex (#445)
+  * Improve error message when decompressing with missing extensions (#518)
+  * Strip binary when building with cargo (#535)
+  * Completions: hint generator to expand to file paths (#508)
+  Bug Fixes:
+  * Fix size unit inconsistency (#502)
+  * Fix unaligned output when using parallelism (#509)</comment>
+    <requestid>1130363</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2cebee82d422e6352b33694692298c18</srcmd5>
+    <version>0.5.1+0</version>
+    <time>1701902912</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.1:
+  * Fix misleading help message
+  * Fix misleading CHANGELOG and README for packages
+  * Explicitly declare feature flags use_zlib &amp; use_zstd_thin #564</comment>
+    <requestid>1131277</requestid>
+  </revision>
+</revisionlist>

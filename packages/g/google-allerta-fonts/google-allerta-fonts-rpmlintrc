@@ -1,0 +1,2 @@
+# We DO want the doc in the original package
+addFilter("package-with-huge-docs")

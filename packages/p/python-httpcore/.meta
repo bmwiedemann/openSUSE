@@ -1,0 +1,5 @@
+<package name="python-httpcore" project="openSUSE:Factory">
+  <title></title>
+  <description>Minimal low-level Python HTTP client</description>
+  <devel project="devel:languages:python" package="python-httpcore"/>
+</package>

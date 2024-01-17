@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Thu Apr 14 07:55:25 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.1.0
+  - Use ``selectors`` instead of ``selectors2`` for Python 3.5+
+  - Dropped support for Python 2.6, 3.3, and 3.4
+- deleted patches
+  - dependencies.patch (upstreamed)
+
+
+-------------------------------------------------------------------
+Wed Jan 22 07:55:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to properly pull in dependencies only when needed:
+  * dependencies.patch 
+
+-------------------------------------------------------------------
+Thu Jan 16 10:20:22 UTC 2020 - wnereiz@member.fsf.org
+
+- Init package at version 0.0.0 

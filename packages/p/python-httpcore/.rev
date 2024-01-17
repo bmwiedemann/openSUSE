@@ -1,0 +1,173 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc2be1328ca4cfe70164656720fa4c93</srcmd5>
+    <version>0.13.3</version>
+    <time>1626045894</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-httpcore</comment>
+    <requestid>897237</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>72aa21d3ac585797d9ff7aded2449593</srcmd5>
+    <version>0.13.6</version>
+    <time>1626887184</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>907330</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d3d9623222db3810a0f9dcfac4c703b7</srcmd5>
+    <version>0.14.5</version>
+    <time>1643926573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.5:
+  * SOCKS proxy support. (#478)
+  * Add proxy_auth argument to HTTPProxy (#481)
+  * Improve error message on 'RemoteProtocolError' exception when server
+    disconnects without sending a response (#479)
+  * Support HTTP/2 on HTTPS tunnelling proxies. (#468)
+  * Fix proxy headers missing on HTTP forwarding. (#456)
+  * Only instantiate SSL context if required. (#457)
+  * More robust HTTP/2 handling. (#253, #439, #440, #441)
+  * Fix race condition when removing closed connections from the pool (#437)
+  * Failed connections no longer remain in the pool. (Pull #433)
+  * max_connections becomes optional. (Pull #429)
+  * certifi is now included in the install dependancies. (Pull #428)
+  * h2 is now strictly optional. (Pull #428)
+  * Log the point at which the connection is established, and the IP/port
+    on which it is made.
+  * Determine if the outgoing request should log as HTTP/1.1 or HTTP/2,
+    rather than having to assume it's HTTP/2 if the --http2 flag was passed.
+  * Log SSL version info / certificate info.
+  * Fix broken error messaging when URL scheme is missing, or a non HTTP(S)
+    scheme is used. (Pull #403) 
+- Inject multibuild to stop a build loop</comment>
+    <requestid>950355</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1c667f0da0d668ef39e108b86110b7b4</srcmd5>
+    <version>0.14.5</version>
+    <time>1644874554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953912</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5e3d01f6bbdb5ded54d8493a7bf6e33a</srcmd5>
+    <version>0.14.7</version>
+    <time>1646241619</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>958238</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fc1325ecb38c91a64c4044cb3bf13fe7</srcmd5>
+    <version>0.15.0</version>
+    <time>1659612199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>990437</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d14b8718d0bcc29f5d3bad43fb4d5d6e</srcmd5>
+    <version>0.15.0</version>
+    <time>1669288954</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing test_request_with_content test
+  (gh#encode/httpcore#622).
+</comment>
+    <requestid>1037634</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>be1bde7e14424e38758347ceedc0e951</srcmd5>
+    <version>0.16.3</version>
+    <time>1671977671</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1045069 from bnavigator
+
+- Update to 0.16.3
+    * Allow ws and wss schemes. Allows us to properly support
+      websocket upgrade connections. (#625)
+    * Forwarding HTTP proxies use a connection-per-remote-host.
+      Required by some proxy implementations. (#637)
+    * Don't raise RuntimeError when closing a connection pool with
+      active connections. Removes some error cases when cancellations
+      are used. (#631)
+    * Lazy import anyio, so that it's no longer a hard dependancy,
+      and isn't imported if unused. (#639)
+  - Add httpcore-allow-deprecationwarnings-test.patch
+    gh#encode/httpcore#511, gh#agronholm/anyio#470</comment>
+    <requestid>1045130</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3a5eb95cf34e866ecf4d7f8c98893072</srcmd5>
+    <version>0.16.3</version>
+    <time>1682193454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081481</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>767872617ff2a2dc814761810b00a892</srcmd5>
+    <version>0.17.0</version>
+    <time>1684490101</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.17.0:
+  * Add DEBUG level logging. (#648)
+  * Respect HTTP/2 max concurrent streams when settings updates
+    are sent by server. (#652)
+  * Increase the allowable HTTP header size to 100kB. (#647)
+  * Add `retries` option to SOCKS proxy classes. (#643)</comment>
+    <requestid>1084216</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3e7c6c7ebf1e603d383ffd2e19095054</srcmd5>
+    <version>0.17.3</version>
+    <time>1694545335</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110216</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>db94d007f871ef797f0b1be16d3fa940</srcmd5>
+    <version>0.18.0</version>
+    <time>1698333107</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.0:
+  - Add support for HTTPS proxies.
+  - Handle sni_hostname extension with SOCKS proxy.
+  - Change the type of Extensions from Mapping[Str, Any] to
+    MutableMapping[Str, Any].
+  - Handle HTTP/1.1 half-closed connections gracefully.
+  - Drop Python 3.7 support.
+- Update httpcore-allow-deprecationwarnings-test.patch
+- Skip failing tests test_ssl_request and test_extra_info
+  (gh#encode/httpcore!832)</comment>
+    <requestid>1120297</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9bc39ca0e6a629115a17ef98b08174be</srcmd5>
+    <version>1.0.2</version>
+    <time>1702158544</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Fix `float(&quot;inf&quot;)` timeouts in `Event.wait` function. (#846)
+  * Fix pool timeout to account for the total time spent
+    retrying. (#823)
+  * Raise a neater RuntimeError when the correct async deps are
+    not installed. (#826)
+  * Add support for synchronous TLS-in-TLS streams. (#840)
+  * From version 1.0 our async support is now optional, as the
+    package has minimal dependencies by default.
+  * For async support use either `pip install
+    'httpcore[asyncio]'` or `pip install 'httpcore[trio]'`.
+  * The project versioning policy is now explicitly governed by
+    SEMVER. See https://semver.org/.
+  * Async support becomes fully optional. (#809)
+  * Add support for Python 3.12. (#807)
+
+- update to 0.17.3
+    scheme is used. (Pull #403)</comment>
+    <requestid>1131743</requestid>
+  </revision>
+</revisionlist>

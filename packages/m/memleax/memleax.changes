@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Jun 27 08:00:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- configure.ac has a whitelist rather than a blacklist, so use
+  ExclusiveArch rather than ExcludeArch.
+
+-------------------------------------------------------------------
+Sun Jun 26 13:40:39 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Package unsupported for s390x. Disable s390x builds.
+
+-------------------------------------------------------------------
+Wed Mar 10 18:09:12 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix download url for source
+- Do not explicitly require libraires, let the dependency generator
+  do its work
+- Use optflags
+
+-------------------------------------------------------------------
+Wed Mar 3 16:00:00 CEST 2021 - ali.aabdallah@suse.com
+
+- Initial package, version 1.1.1

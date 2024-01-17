@@ -1,0 +1,6 @@
+<package name="libbullet" project="openSUSE:Factory">
+  <title></title>
+  <description>Bullet is a Collision Detection and Rigid Body Dynamics Library. The Library is Open Source and free for commercial use, under the ZLib license. This means you can use it in commercial games, even on next-generation consoles like Sony Playstation 3.
+</description>
+  <devel project="games" package="libbullet"/>
+</package>

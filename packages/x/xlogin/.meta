@@ -1,0 +1,14 @@
+<package name="xlogin" project="openSUSE:Factory">
+  <title>xlogin, xtelnet</title>
+  <description>This package contains two scripts, which, called with the name of a
+remote host, will open an xterm window on the local X display with a
+remote session or login shell.
+
+The script xlogin starts by a rsh call (remote shell) an xterm on the
+remote host.  If necessary, the access will be allowed by sending the
+magic key (cookie) of the display to the remote host.
+
+The script xtelnet starts a local xterm with a telnet session on the
+remote host.</description>
+  <devel project="X11:Utilities" package="xlogin"/>
+</package>

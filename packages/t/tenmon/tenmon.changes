@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Tue Jan  9 10:03:23 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20240108:
+  * Migrate to Qt6
+  * Add nearest and bicubic filtering
+  * Add slideshow
+  * Don't skip images before they load
+  * Add bayer mask selection
+  * Additional work on batch processing
+  * Increase number max preload images to 32
+
+-------------------------------------------------------------------
+Fri Nov 17 10:06:10 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20231116:
+  * Add scaling for float images that are out of 0.0-1.0 range
+  * Optimize calculating stast for debayer
+  * Better stretch non full range images like CR2
+  * Made unlinked stretch white balancing
+  * Make STF slider wider
+  * Add tooltip with filenames
+  * Support for unlinked stretch
+  * Sum all channels histograms
+  * Improve histogram for 8 bit images
+  * Add histogram
+  * Fix loading RAW files
+  * Show stats for each channel
+  * Update translations and help
+
+-------------------------------------------------------------------
+Thu Apr 20 08:33:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20230419:
+  * Fix assert lo < hi in std::clamp
+  * Update metainfo
+
+-------------------------------------------------------------------
+Mon Apr 17 08:48:48 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Initial OBS release.
+- Add use_system_libxisf.patch.

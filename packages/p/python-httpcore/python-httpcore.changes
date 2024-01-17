@@ -1,0 +1,271 @@
+-------------------------------------------------------------------
+Thu Dec  7 22:46:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Fix `float("inf")` timeouts in `Event.wait` function. (#846)
+  * Fix pool timeout to account for the total time spent
+    retrying. (#823)
+  * Raise a neater RuntimeError when the correct async deps are
+    not installed. (#826)
+  * Add support for synchronous TLS-in-TLS streams. (#840)
+  * From version 1.0 our async support is now optional, as the
+    package has minimal dependencies by default.
+  * For async support use either `pip install
+    'httpcore[asyncio]'` or `pip install 'httpcore[trio]'`.
+  * The project versioning policy is now explicitly governed by
+    SEMVER. See https://semver.org/.
+  * Async support becomes fully optional. (#809)
+  * Add support for Python 3.12. (#807)
+
+-------------------------------------------------------------------
+Wed Oct 25 11:30:12 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.18.0:
+  - Add support for HTTPS proxies.
+  - Handle sni_hostname extension with SOCKS proxy.
+  - Change the type of Extensions from Mapping[Str, Any] to
+    MutableMapping[Str, Any].
+  - Handle HTTP/1.1 half-closed connections gracefully.
+  - Drop Python 3.7 support.
+- Update httpcore-allow-deprecationwarnings-test.patch
+- Skip failing tests test_ssl_request and test_extra_info
+  (gh#encode/httpcore!832)
+
+-------------------------------------------------------------------
+Sun Sep 10 11:05:24 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to 0.17.3
+  * Support async cancellations, ensuring that the connection pool
+    is left in a clean state when cancellations occur. (#726)
+  * The networking backend interface has been added to the public API.
+    Some classes which were previously private implementation detail
+    are now part of the top-level public API. (#699)
+  * Graceful handling of HTTP/2 GoAway frames, with requests being
+    transparently retried on a new connection. (#730)
+  * Add exceptions when a synchronous trace callback is passed to an
+    asynchronous request or an asynchronous trace callback is passed
+    to a synchronous request. (#717)
+- version 0.17.2
+  * Add socket_options argument to ConnectionPool and HTTProxy classes. (#668)
+  * Improve logging with per-module logger names. (#690)
+  * Add sni_hostname request extension. (#696)
+  * Resolve race condition during import of anyio package. (#692)
+  * Enable TCP_NODELAY for all synchronous sockets. (#651)
+- version 0.17.1
+  * If 'retries' is set, then allow retries if an SSL handshake
+    error occurs. (#669)
+  * Improve correctness of tracebacks on network exceptions, by
+    raising properly chained exceptions. (#678)
+  * Prevent connection-hanging behaviour when HTTP/2 connections
+    are closed by a server-sent 'GoAway' frame". (#679)
+  * Fix edge-case exception when removing requests from the connection pool. (#680)
+  * Fix pool timeout edge-case. (#688)
+
+-------------------------------------------------------------------
+Wed May  3 08:46:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * Add DEBUG level logging. (#648)
+  * Respect HTTP/2 max concurrent streams when settings updates
+    are sent by server. (#652)
+  * Increase the allowable HTTP header size to 100kB. (#647)
+  * Add `retries` option to SOCKS proxy classes. (#643)
+
+-------------------------------------------------------------------
+Fri Apr 21 12:26:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:53 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Fri Dec 23 17:57:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.16.3
+  * Allow ws and wss schemes. Allows us to properly support
+    websocket upgrade connections. (#625)
+  * Forwarding HTTP proxies use a connection-per-remote-host.
+    Required by some proxy implementations. (#637)
+  * Don't raise RuntimeError when closing a connection pool with
+    active connections. Removes some error cases when cancellations
+    are used. (#631)
+  * Lazy import anyio, so that it's no longer a hard dependancy,
+    and isn't imported if unused. (#639)
+- Add httpcore-allow-deprecationwarnings-test.patch
+  gh#encode/httpcore#511, gh#agronholm/anyio#470
+
+-------------------------------------------------------------------
+Mon Dec 19 10:11:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.2:
+  * Revert 'Fix async cancellation behaviour', which introduced race conditions
+  * Raise RuntimeError if attempting to us UNIX domain sockets on Windows
+  * Fix HTTP/1.1 interim informational responses, such as "100 Continue"
+  * Support HTTP/1.1 informational responses.
+  * Fix async cancellation behaviour.
+  * Support h11 0.14
+
+-------------------------------------------------------------------
+Wed Nov 23 14:26:53 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing test_request_with_content test
+  (gh#encode/httpcore#622).
+
+-------------------------------------------------------------------
+Tue Jul 19 15:31:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.15.0
+  * Drop Python 3.6 support (#535)
+  * Ensure HTTP proxy CONNECT requests include timeout
+    configuration. (#506)
+  * Switch to explicit typing.Optional for type hints (#513)
+  * For trio map OSError exceptions to ConnectError (#543)
+- Fix forgotten test package dep drops -- gh#encode/httpcore#473
+
+-------------------------------------------------------------------
+Mon Feb 21 10:54:40 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 0.14.7:
+  * Requests which raise a PoolTimeout need to be removed from the pool queue.
+  * Fix AttributeError that happened when Socks5Connection were terminated.
+  * Fix SOCKS support for `http://` URLs.
+  * Resolve race condition around exceptions during streaming a response.
+
+-------------------------------------------------------------------
+Fri Feb 11 20:38:24 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Only recommend and not require the installation of python-h2 because it is
+  seriously broken and prevents any other Python software to run correctly with -bb.
+  (See also: https://github.com/python-hyper/h2/issues/1236)
+  This also matches upstream's setup.py which lists h2 as optional
+  dependency in extra_requires.
+
+-------------------------------------------------------------------
+Tue Feb  1 07:47:22 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.14.5:
+  * SOCKS proxy support. (#478)
+  * Add proxy_auth argument to HTTPProxy (#481)
+  * Improve error message on 'RemoteProtocolError' exception when server
+    disconnects without sending a response (#479)
+  * Support HTTP/2 on HTTPS tunnelling proxies. (#468)
+  * Fix proxy headers missing on HTTP forwarding. (#456)
+  * Only instantiate SSL context if required. (#457)
+  * More robust HTTP/2 handling. (#253, #439, #440, #441)
+  * Fix race condition when removing closed connections from the pool (#437)
+  * Failed connections no longer remain in the pool. (Pull #433)
+  * max_connections becomes optional. (Pull #429)
+  * certifi is now included in the install dependancies. (Pull #428)
+  * h2 is now strictly optional. (Pull #428)
+  * Log the point at which the connection is established, and the IP/port
+    on which it is made.
+  * Determine if the outgoing request should log as HTTP/1.1 or HTTP/2,
+    rather than having to assume it's HTTP/2 if the --http2 flag was passed.
+  * Log SSL version info / certificate info.
+  * Fix broken error messaging when URL scheme is missing, or a non HTTP(S)
+    scheme is used. (Pull #403)
+- Inject multibuild to stop a build loop
+
+-------------------------------------------------------------------
+Tue Jul 13 13:42:56 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- anyio is actually required (at least for some tests in other
+  packages).
+
+-------------------------------------------------------------------
+Thu Jul  8 08:16:46 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to v0.13.6
+  * Fixed
+    - Close sockets when read or write timeouts occur. (Pull #365)
+
+- Update to v0.13.5
+  * Fixed
+    - Resolved niggles with AnyIO EOF behaviours. (Pull #358, #362)
+
+- Update to v0.13.4
+  * Added
+    - Improved error messaging when URL scheme is missing, or
+      a non HTTP(S) scheme is used. (Pull #354)
+  * Fixed
+    - Switched to anyio as the default backend implementation when
+      running with asyncio. Resolves some awkward TLS timeout
+      issues.
+
+-------------------------------------------------------------------
+Thu Jun  3 09:10:31 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to v0.13.3
+  * Added
+    - Support HTTP/2 prior knowledge, using
+      httpcore.SyncConnectionPool(http1=False). (Pull #333)
+  * Fixed
+    - Handle cases where environment does not provide select.poll
+      support. (Pull #331)
+
+- Update to v0.13.2
+  * Added
+    - Improve error message for specific case of
+      RemoteProtocolError where server disconnects without
+      sending a response. (Pull #313)
+
+- Update to v0.13.1
+  * Fixed
+    - More resiliant testing for closed connections.
+      (Pull #311)
+    - Don't raise exceptions on ungraceful connection closes.
+      (Pull #310)
+
+- Update to v0.13.0
+  * The 0.13 release updates the core API in order to match the
+    HTTPX Transport API, introduced in HTTPX 0.18 onwards.
+  * Changed
+    - The .request() method is now handle_request(). (Pull #296)
+    - The .arequest() method is now .handle_async_request().
+      (Pull #296)
+    - The headers argument is no longer optional. (Pull #296)
+    - The stream argument is no longer optional. (Pull #296)
+    - The ext argument is now named extensions, and is no longer
+      optional. (Pull #296)
+    - The "reason" extension keyword is now named "reason_phrase".
+      (Pull #296)
+    - The "reason_phrase" and "http_version" extensions now use
+      byte strings for their values. (Pull #296)
+    - The httpcore.PlainByteStream() class becomes
+      httpcore.ByteStream(). (Pull #296)
+  * Added
+    - Streams now support a .read() interface. (Pull #296)
+  * Fixed
+    - Task cancelation no longer leaks connections from the
+      connection pool. (Pull #305)
+
+- Update to v0.12.3
+  * Fixed
+    - Abort SSL connections on close rather than waiting for remote
+      EOF when using asyncio. (Pull #167)
+    - Fix exception raised in case of connect timeouts when using
+      the anyio backend. (Pull #236)
+    - Fix Host header precedence for :authority in HTTP/2.
+      (Pull #241, #243)
+    - Handle extra edge case when detecting for socket readability
+      when using asyncio. (Pull #242, #244)
+    - Fix asyncio SSL warning when using proxy tunneling.
+      (Pull #249)
+
+-------------------------------------------------------------------
+Sat May  1 20:32:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't build on python36, because of missing dependencies.
+
+-------------------------------------------------------------------
+Sat Nov 21 11:09:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.12.2
+
+-------------------------------------------------------------------
+Wed Jan  8 12:28:26 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.4.0

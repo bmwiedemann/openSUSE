@@ -1,0 +1,284 @@
+-------------------------------------------------------------------
+Fri Dec 29 12:46:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * Add connection timeout + misc improvements (#440)
+
+-------------------------------------------------------------------
+Mon Dec 11 15:04:27 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Nov 20 20:46:05 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.4.0:
+  - Add Python 3.12 support
+  - Remove Python 3.7 support (end-of-life)
+- Add process-markdown.patch replaces sphinxcontrib-mdinclude
+  with processed Changelog in the restructured text format.
+
+-------------------------------------------------------------------
+Fri Sep 15 09:08:13 UTC 2023 - pgajdos@suse.com
+
+- version update to 2.3.2
+  * Add new error helper for when using a custom (non-.com) TLD results in a 404 (5a860ed)
+  * cli: Add deprecated language fallback support to CLI (5a860ed)
+  * cli: Fix older invalid example (5a860ed)
+
+-------------------------------------------------------------------
+Sat Feb  4 18:39:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.3.1:
+  - Bug fixes:
+    - test: include missing required *.txt test files in dist
+    - loosen dependancies for click and requests, removes six
+      dependancy
+    - test: missing @pytest.mark.net on net-enabled test
+    - test: remove mock package test dependancy
+Features
+    - Centralize project metadata and config into a single
+      pyproject.toml
+    - Drop support for Python 2.7 (long overdue), Python 3.6
+      (end-of-life)
+    - Modernize package config and build/release workflow
+    - Simplify language generator
+    - Languages added: zh-CN (Chinese (Simplified)), zh-TW
+      (Chinese (Traditional))
+    - Languages removed: cy (Welsh), eo (Esperanto), mk
+      (Macedonian), ms (Malay), zh-CN (Chinese)
+- Remove upstreamed patches:
+  - demock.patch
+  - network-tests.patch
+
+-------------------------------------------------------------------
+Mon Mar 21 14:46:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Make tests working at least a little bit. Requires two new patches:
+  - demock.patch (gh#pndurette/gTTS#343)
+  - network-tests.patch (gh#pndurette/gTTS#344)
+
+-------------------------------------------------------------------
+Mon Mar 21 13:27:59 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.2.4
+  2.2.4 (2022-03-14)
+  ------------------
+  Features
+  ~~~~~~~
+  - Added Malay language support (`#316 <https://github.com/pndurette/gTTS/issues/316>`_)
+  - Added Hebrew language support (`#324 <https://github.com/pndurette/gTTS/issues/324>`_)
+  - Added new ``gTTS.stream()`` method to stream bytes (`#319 <https://github.com/pndurette/gTTS/issues/319>`_)
+  Misc
+  ~~~
+  - `#334 <https://github.com/pndurette/gTTS/issues/334>`_
+  2.2.3 (2021-06-17)
+  ------------------
+  Features
+  ~~~~~~~
+  - Added Bulgarian language support (`#302 <https://github.com/pndurette/gTTS/issues/302>`_)
+  2.2.2 (2021-02-03)
+  ------------------
+  Features
+  ~~~~~~~
+  - Adds a language fallback feature for deprecated languages to maintain compatiblity
+    (e.g. ``en-us`` becomes ``en``). Fallback can be disabled with ``lang_check=False``
+    or ``--nocheck`` for the cli (`#267 <https://github.com/pndurette/gTTS/issues/267>`_)
+  Bugfixes
+  ~~~~~~~
+  - Fix Python 2.7 compatiblity (!). Python 2 is long gone, but the cut wasn't clearly communicated
+    for gTTS, so it was restored. Python 2 support will be completely removed in the next major release.
+    (`#255 <https://github.com/pndurette/gTTS/issues/255>`_)
+  - Language code case sensitivity is maintained throughout (`#267 <https://github.com/pndurette/gTTS/issues/267>`_)
+  Deprecations and Removals
+  ~~~~~~~~~~~~~~~~~~~~~~~~
+  - The following list of 'hyphenated' language codes no longer work and have been removed: ``en-us``, ``en-ca``,
+    ``en-uk``, ``en-gb``, ``en-au``, ``en-gh``, ``en-in``, ``en-ie``, ``en-nz``, ``en-ng``, ``en-ph``, ``en-za``,
+    ``en-tz``, ``fr-ca``, ``fr-fr``, ``pt-br``, ``pt-pt``, ``es-es``, ``es-us``, ``zh-cn``, ``zh-tw``
+    (`#267 <https://github.com/pndurette/gTTS/issues/267>`_)
+  - Removed the ``gtts.get_url()`` method (outdated since ``2.1.0``)
+    (`#270 <https://github.com/pndurette/gTTS/issues/270>`_)
+- do not require python-mock for build, testsuite is not run
+
+-------------------------------------------------------------------
+Tue Feb  9 07:00:03 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to 2.2.2
+  Features
+    Adds a language fallback feature for deprecated languages to
+    maintain compatiblity (e.g. en-us becomes en). Fallback can be
+    disabled with lang_check=False or --nocheck for the cli (#267)
+  Bugfixes
+    Fix Python 2.7 compatiblity (!). Python 2 is long gone, but the
+    cut wasn't clearly communicated for gTTS, so it was restored.
+    Python 2 support will be completely removed in the next major
+    release. (#255)
+    Language code case sensitivity is maintained throughout (#267)
+  Deprecations and Removals
+    The following list of 'hyphenated' language codes no longer
+    work and have been removed: en-us, en-ca, en-uk, en-gb, en-au,
+    en-gh, en-in, en-ie, en-nz, en-ng, en-ph, en-za, en-tz, fr-ca
+    fr-fr, pt-br, pt-pt, es-es, es-us, zh-cn, zh-tw (#267)
+    Removed the gtts.get_url() method (outdated since 2.1.0) (#270)
+- Drop remove-pip-requirement.patch
+
+-------------------------------------------------------------------
+Tue May 26 06:34:32 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Mon Apr  6 09:24:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.1.1
+  * Debug mode now uses a copy of locals() to prevent RuntimeError (`#213 <https://github.com/pndurette/gTTS/issues/213>`_)
+  * Added the ability to customize the Google Translate URL hostname.
+    This is useful when ``google.com`` might be blocked within a network but
+    a local or different Google host (e.g. ``google.cn``) is not
+  * Pre-generated TTS API request URLs can now be obtained instead of
+    writing an ``mp3`` file to disk (for example to be used in an
+    external program)
+  * New ``--tld`` option to match the new ``gtts`` customizable hostname
+  * Added Python 3.8 support
+
+-------------------------------------------------------------------
+Thu Sep 12 11:46:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.4:
+  * gTTS is now built as a wheel package (Python 2 & 3) (#181)
+- Rebase patch remove-pip-requirement.patch
+
+-------------------------------------------------------------------
+Sun Feb 10 17:51:09 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Change the egg requirement to use the right name, beautifulsoup4,
+  instead of bs4
+
+-------------------------------------------------------------------
+Sat Feb  2 21:52:59 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 2.0.3:
+  * Added new tokenizer case for ':' preventing cut in the middle of
+    a time notation
+
+- Update to 2.0.2:
+  Features
+  * Added Python 3.7 support, modernization of packaging, testing and CI
+  Bugfixes
+  * Fixed language retrieval/validation broken from new Google Translate page
+
+- Update to 2.0.1:
+  Bugfixes
+  * Fixed an UnicodeDecodeError when installing gTTS if system locale was
+    not utf-8
+  Improved Documentation
+  * Added Pre-processing and tokenizing > Minimizing section about the API's
+    100 characters limit and how larger tokens are handled
+
+- Update to 2.0.0:
+  Features
+  * The gtts module
+    + New logger ("gtts") replaces all occurrences of print()
+    + Languages list is now obtained automatically (gtts.lang)
+    + Added a curated list of language sub-tags that have been observed to
+      provide different dialects or accents (e.g. "en-gb", "fr-ca")
+    + New gTTS() parameter lang_check to disable language checking.
+    + gTTS() now delegates the text tokenizing to the API request methods (i.e.
+      write_to_fp(), save()), allowing gTTS instances to be modified/reused
+    + Rewrote tokenizing and added pre-processing (see below)
+    + New gTTS() parameters pre_processor_funcs and tokenizer_func to configure
+      pre-processing and tokenizing (or use a 3rd party tokenizer)
+    + Error handling:
+      - Added new exception gTTSError raised on API request errors. It attempts
+        to guess what went wrong based on known information and observed
+        behaviour
+      - gTTS.write_to_fp() and gTTS.save() also raise gTTSError on gtts_token
+        error
+      - gTTS.write_to_fp() raises TypeError when fp is not a file-like object
+        or one that doesn't take bytes
+      - gTTS() raises ValueError on unsupported languages (and lang_check is
+        True)
+      - More fine-grained error handling throughout (e.g. request failed vs.
+        request successful with a bad response)
+  * Tokenizer (and new pre-processors):
+    + Rewrote and greatly expanded tokenizer (gtts.tokenizer)
+    + Smarter token 'cleaning' that will remove tokens that only contain
+      characters that can't be spoken (i.e. punctuation and whitespace)
+    + Decoupled token minimizing from tokenizing, making the latter usable
+      in other contexts
+    + New flexible speech-centric text pre-processing
+    + New flexible full-featured regex-based tokenizer
+      (gtts.tokenizer.core.Tokenizer)
+    + New RegexBuilder, PreProcessorRegex and PreProcessorSub classes to make
+      writing regex-powered text pre-processors and tokenizer cases easier
+    + Pre-processors:
+      - Re-form words cut by end-of-line hyphens
+      - Remove periods after a (customizable) list of known abbreviations (e.g.
+        "jr", "sr", "dr") that can be spoken the same without a period
+      - Perform speech corrections by doing word-for-word replacements from a
+        (customizable) list of tuples
+    + Tokenizing:
+      - Keep punctuation that modify the inflection of speech (e.g. "?", "!")
+      - Don't split in the middle of numbers (e.g. "10.5", "20,000,000")
+      - Don't split on "dotted" abbreviations and accronyms (e.g. "U.S.A")
+      - Added Chinese comma ("，"), ellipsis ("…") to punctuation list to
+        tokenize on
+  * The gtts-cli command-line tool
+      - Rewrote cli as first-class citizen module (gtts.cli), powered by Click
+      - Windows support using setuptool's entry_points
+      - Better support for Unicode I/O in Python 2
+      - All arguments are now pre-validated
+      - New --nocheck flag to skip language pre-checking
+      - New --all flag to list all available languages
+      - Either the --file option or the <text> argument can be set to "-" to
+        read from stdin
+      - The --debug flag uses logging and doesn't pollute stdout anymore
+  Bugfixes
+  *  _minimize(): Fixed an infinite recursion loop that would occur when a
+     token started with the miminizing delimiter (i.e. a space)
+  *  _minimize(): Handle the case where a token of more than 100 characters
+     did not contain a space (e.g. in Chinese).
+  *  Fixed an issue that fused multiline text together if the total number of
+     characters was less than 100
+  *  Fixed gtts-cli Unicode errors in Python 2.7
+  Deprecations and Removals
+  * Dropped Python 3.3 support
+  * Removed debug parameter of gTTS (in favour of logger)
+  * gtts-cli: Changed long option name of -o to --output instead of
+    --destination
+  * gTTS() will raise a ValueError rather than an AssertionError on
+    unsupported language
+  Improved Documentation
+  * Rewrote all documentation files as reStructuredText
+  * Comprehensive documentation writen for Sphinx, published to
+    http://gtts.readthedocs.io
+  * Changelog built with towncrier
+  Misc
+  * Major test re-work
+  * Language tests can read a TEST_LANGS enviromment variable so not all
+    language tests are run every time.
+  * Added AppVeyor CI for Windows
+  * PEP 8 compliance
+
+- Add remove-pip-requirement.patch to remove the dependency on pip to build
+  the package.
+
+-------------------------------------------------------------------
+Thu May  3 15:38:01 UTC 2018 - alarrosa@suse.com
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu May  3 09:36:21 UTC 2018 - alarrosa@suse.com
+
+- Use %license for the LICENSE file
+
+-------------------------------------------------------------------
+Sun Mar  4 13:08:06 UTC 2018 - jengelh@inai.de
+
+- Focus description on gTTS.
+
+-------------------------------------------------------------------
+Mon Sep  4 16:53:35 UTC 2017 - alarrosa@suse.com
+
+- Initial release of python-gTTS 1.2.2

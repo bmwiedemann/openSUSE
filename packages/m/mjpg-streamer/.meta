@@ -1,0 +1,6 @@
+<package name="mjpg-streamer" project="openSUSE:Factory">
+  <title>Streams JPEG files from the webcam to a viewer</title>
+  <description>MJPG-streamer takes JPGs from Linux-UVC compatible webcams, filesystem or other input plugins and streams them as M-JPEG via HTTP to webbrowsers, VLC and other software. It is the successor of uvc-streamer, a Linux-UVC streaming application with Pan/Tilt.</description>
+  <devel project="graphics" package="mjpg-streamer"/>
+  <url>http://mjpg-streamer.sourceforge.net/</url>
+</package>

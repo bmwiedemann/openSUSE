@@ -1,0 +1,411 @@
+-------------------------------------------------------------------
+Fri Dec 15 16:46:45 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.1:
+  * Do not install doc folder in site-packages
+    (gh#holoviz/param#878).
+  * Drop the feather-format test dependency
+    (gh#holoviz/param#879).
+  * Add tables to the tests-deser extra (gh#holoviz/param#880).
+  * Fix _state_push and _state_pop (gh#holoviz/param#884).
+  * Don’t import setuptools_scm if the .git folder doesn’t exist
+    (gh#holoviz/param#885).
+- Update URL tag in specfile.
+- Drop old macro redefinition that is no longer needed.
+
+-------------------------------------------------------------------
+Tue Oct 24 14:58:32 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.0.0
+  * Parameter slot values are now all inherited correctly across 
+    a hierarchy of Parameterized classes.
+  * There is now a ListProxy wrapper around Selector.objects (with 
+    forward and backward compatibility) to easily update objects 
+    and watch objects updates.
+  * Parameterized classes and instances now have a rich HTML 
+    representation that is displayed automatically in 
+    a Jupyter/IPython notebook.
+  * Parameters have all gained the allow_refs and nested_refs 
+    attributes, bringing an exceptionally useful feature that was 
+    available in Panel since version 1.2 to Param.
+  * Experimental new rx reactive expressions.
+  * You can now use .param.update as a context manager for applying 
+    temporary updates.
+  * For speed, only generate the Parameter docstring in an IPython context.
+  * Support for deserialization of file types into Array and DataFrame.
+  * Integer now accepts numpy.integer values.
+  * Range now does stricter validation of the slot values.
+  * Path now has check_exists attribute, leading it to raise an error 
+    if path is not found on parameter instantiation.
+  * Add top-level __all__ and move Parameter classes to parameters.py.
+  * Now compatible with Python 3.8+
+  * Other changes, take a look at the upstream changelog.
+
+-------------------------------------------------------------------
+Sun Mar 26 20:01:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.0:
+  * This release includes a new `Bytes` *Parameter* and a few
+    important bug fixes. This release is also marked by the
+    adoption of a formal project governance, ensuring Param's
+    future as a healthy open-source project. Many thanks to
+    @ovidner and @droumis for their first contributions! And to
+    @maximlt, @Hoxbro, @jlstevens, @philippjfr and @jbednar for
+    their continuing support to fixing and improving Param.
+  * Fix copying when having watchers on e.g. bounds on inherited
+    Parameter types (#675)
+  * Allow JSON serialization to work with `json.dumps` (#655)
+  * `ListSelector` restricted to `list` type objects (#531)
+  * Fix `depends` async wrapper (#684)
+  * Allow named colors to be any case (#711)
+
+-------------------------------------------------------------------
+Tue Dec 13 15:45:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.12.3: 
+  The 1.12.3 release adds support for Python 3.11. Many thanks to @musicinmybrain (first contribution!) and @maximlt for contributing to this release.
+  Enhancements:
+  * Preserve existing Random seed behavior in Python 3.11 (#638)
+  * Add support for Python 3.11 (#658)
+
+-------------------------------------------------------------------
+Wed Jun 22 00:34:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.12.2:
+  * Match against complete spec name when determining dynamic
+    watchers (gh#holoviz/param#615).
+  * Ensure async functionality does not cause python2 syntax
+    errors (gh#holoviz/param#624).
+  * Allow (de)serializing CalendarRange and DateRange Parameters
+    (gh#holoviz/param#625).
+  * Improve DateRange validation (gh#holoviz/param#627).
+  * Fix regression in @param.depends execution ordering
+    (gh#holoviz/param#628).
+  * Ensure named_objs does not fail on unhashable objects
+    (gh#holoviz/param#632).
+  * Support comparing date-like objects (gh#holoviz/param#629).
+  * Fixed BinaryPower example in the docs to use the correct name
+    EvenInteger(gh#holoviz/param#634).
+
+-------------------------------------------------------------------
+Sun May  1 18:58:42 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.12.1:
+  * Fixed description of shared_parameters (gh#holoviz/param#568).
+  * Improve the error messages of Date and DateRange
+    (gh#holoviz/param#579).
+  * Clarified step error messages and other docs and links
+    (gh#holoviz/param#604).
+  * Make iscoroutinefunction more robust (gh#holoviz/param#572).
+  * Fix for handling misspelled parameter (gh#holoviz/param#575).
+  * Handle None serialization for Date, CalendarDate, Tuple,
+    Array, and DataFrame (gh#holoviz/param#582).
+  * Support async coroutines in param.depends
+    (gh#holoviz/param#591).
+  * Handle async functions in depends with watch=True
+    (gh#holoviz/param#611).
+  * Avoid equality check on Watcher (gh#holoviz/param#612).
+  * Fix binder (gh#holoviz/param#564).
+  * Fixed description of shared_parameters (gh#holoviz/param#568).
+
+-------------------------------------------------------------------
+Tue Feb 15 23:11:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.12.0:
+  * Many changes, see
+    https://github.com/holoviz/param/releases/tag/v1.12.0.
+- Drop denose.patch: Tests updated to use pytest
+  (gh#holoviz/param#509).
+
+-------------------------------------------------------------------
+Fri Feb 26 20:32:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test optional numpy with python36, but include optional 
+  jsonschema and (non python36) pandas for testing instead.
+
+-------------------------------------------------------------------
+Fri Jan 29 04:27:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove %ifpython3 guard for the %check section.
+
+-------------------------------------------------------------------
+Sun Jan 10 23:03:56 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.10.1:
+  * Fix serialization of Tuple (gh#holoviz/param#446).
+  * Declare asynchronous executor (gh#holoviz/param#449).
+- Use param-%{version} format for source name.
+
+-------------------------------------------------------------------
+Sun Jan  3 15:22:52 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Make sure the correct version is reported, even though we use
+  the GitHub archive and are not installing a git repo.
+
+-------------------------------------------------------------------
+Sat Oct 31 20:21:55 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.10.0:
+  * Fix ClassSelector.get_range() for class_ tuple
+    (gh#holoviz/param#360).
+  * Update links and text to point to holoviz.org
+    (gh#holoviz/param#364).
+  * Include params when calling instance in __new__.
+  * Internal removal of old API usage (gh#holoviz/param#372).
+  * Removed outdated warning message (gh#holoviz/param#373).
+  * Update some packaging metadata. (gh#holoviz/param#370).
+  * Revert Include params when calling instance in __new__
+    (gh#holoviz/param#367, gh#holoviz/param#374).
+  * Turn .param into a property (gh#holoviz/param#386).
+  * Prevent param.version from failing when used alongside async
+    frameworks (gh#holoviz/param#389).
+  * Allow using iadd on constant parameter (gh#holoviz/param#400).
+  * Batch param.depends (gh#holoviz/param#401).
+  * Ensure that Parameterized remaps watchers on copy
+    (gh#holoviz/param#409).
+  * JSON serialization and schema generation
+    (gh#holoviz/param#414).
+  * Make copy of watchers dictionary on instance parameters
+    (gh#holoviz/param#419).
+  * Refactor JSONSerializer (gh#holoviz/param#422).
+  * Ensure Parameterized.param.objects works with uninitialized
+    object (gh#holoviz/param#420).
+  * Micro optimizations (gh#holoviz/param#424).
+  * Fix indentation (gh#holoviz/param#431).
+  * Test suite fixups and updates (gh#holoviz/param#432).
+  * Group depends for watched deps within a class
+    (gh#holoviz/param#434).
+  * Fix .abstract for classes named with leading underscore(s)
+    (gh#holoviz/param#439).
+  * Fix discard_events decorator (gh#holoviz/param#442).
+  * Add new Event parameter type (gh#holoviz/param#438).
+  * Pin nbconvert in doc build for now.
+  * Stricter nbconvert pin.
+- Update denose.patch from latest pull request, plus rebasing to
+  apply cleanly for `tests/API0/testparameterizedobject.py` and
+  `tests/API1/testparameterizedobject.py`.
+- Run tests only for python3 as they fail for python2.
+
+-------------------------------------------------------------------
+Mon Aug  3 10:32:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add denose.patch to remove dependency on nose (gh#holoviz/param#423).
+
+-------------------------------------------------------------------
+Wed Mar 11 14:59:28 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.9.3
+  * Removed outdated warning message
+  * Internal removal of old API usage
+
+-------------------------------------------------------------------
+Wed Jan 22 09:32:08 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 1.9.2:
+  * No upstream changelog 
+
+-------------------------------------------------------------------
+Fri Aug 30 15:53:14 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Include a .version file.  Other packages need this to determine
+  this package's version.
+
+-------------------------------------------------------------------
+Mon Jun  3 10:57:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.1:
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Wed Apr 24 09:06:21 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.9.0
+  New features:
+    Added support for instance parameters, allowing parameter metadata
+     to be modified per instance and allowing parameter objects to be
+     passed to Panel objects (#306)
+    Added label slot to Parameter, to allow overriding attribute name
+     for display (#319)
+    Added step slot to Parameter, e.g. to control Panel widget step
+     size (#326)
+    Added keywords_to_params utility for deducing Parameter types and
+      ranges automatically (#317)
+    Added support for multiple outputs from a Parameterized (#312)
+    Added Selector as a more user-friendly version of ObjectSelector,
+     accepting a list of options as a positional argument (#316)
+  Changes affecting backwards compatibility:
+    Changed from root logger to a param-specific logger; no change to
+     API but will change format of error and warning messages (#330)
+    Old abstract class Selector renamed to SelectorBase; should be no
+     change unless user code added custom classes inherited from
+     Selector without providing a constructor (#316)
+  Bugfixes and other improvements:
+    Various bugfixes (#320, #323, #327, #329)
+    Other improvements (#315, #325)
+
+-------------------------------------------------------------------
+Wed Mar 13 13:43:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.8.2:
+  * Added output decorator and outputs lookup method (#299, #312)
+
+-------------------------------------------------------------------
+Fri Jan  4 16:19:59 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to version 1.8.1
+  * Added positional default arguments for nearly all Parameter
+    subclasses (apart from ClassSelector)
+  * Minor bugfixes for watching callbacks
+- update to version 1.8.0
+  * Parameterized methods can now declare @depends(p,q) to indicate
+    that they depend on parameters p and q (defaulting to all
+    parameters)
+  * Parameterized methods can depend on subobjects with
+    @depends(p.param,q.param.r), where p.param indicates
+    dependencies on all parameters of p and q.param.r indicates a
+    dependency on parameter r of q.
+  * Functions and methods can watch parameter values, re-running
+    when those values change or when an explicit trigger is issued,
+    and can unwatch them later if needed.
+  * Multiple events can be batched to trigger callbacks only once
+    for a coordinated set of changes
+  * Added support in ObjectSelector for selecting lists and dicts
+    (#268)
+  * Added pandas DataFrame and Series parameter types (#285)
+  * Added support for regular expression validation to String
+    Parameter (#241, #245)
+
+-------------------------------------------------------------------
+Tue Jul 17 08:51:50 UTC 2018 - tchvatal@suse.com
+
+- Switch to github tarball and enable tests.
+
+-------------------------------------------------------------------
+Mon Jul 16 16:11:19 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * remove devel requirement
+
+- update to version 1.7.0:
+  * A new param namespace object, which in future will allow
+    subclasses of Parameterized to have much cleaner namespaces
+    (#230).
+  * Started testing on python 3.7-dev (#223).
+  * param.version now provides functions to simplify dependants'
+    setup.py/setup.cfg files (see pyviz/autover#49).
+
+-------------------------------------------------------------------
+Fri May 11 23:11:13 UTC 2018 - arun@gmx.de
+
+- update to version 1.6.1:
+  * Restores support for the previous versioning system (pre 1.6; see
+    #225), and fixes a number of issues with the new versioning
+    system:
+    + Allow package name to differ from repository name
+      (pyviz/autover#39)
+    + Allow develop install to work when repository is dirty
+      (pyviz/autover#41)
+    + Fixed failure to report dirty when commit count is 0
+      (pyviz/autover#44)
+
+-------------------------------------------------------------------
+Wed Apr 18 02:07:38 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 1.6.0
+  * Drop Cython build
+
+-------------------------------------------------------------------
+Thu Aug 17 15:39:13 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 1.5.1
+  * Fixed error messages for ClassSelector with tuple of classes
+  * Added get and contains methods for ParamOverrides
+- Update to version 1.5.0
+  * Added Range, Color, and Date parameters
+  * Improved ObjectSelector error messages
+  * Minor bugfixes
+
+-------------------------------------------------------------------
+Tue Oct 25 20:58:02 UTC 2016 - toddrme2178@gmail.com
+
+- Update to version 1.4.2:
+  * Improved version reporting from version module
+  * Minor bugfixes
+- update to version 1.4.1:
+  * Changed Selector parameters to respect order of provided options
+  * Allow softbounds to be accessed like an attribute
+- update to version 1.4.0:
+  * Improved import ordering in parameterized.py
+  * Fixed problematic travis shield link
+  * Added 1.3.2 release notes
+  * Add pypy to .travis.yml
+  * Updated badge definitions to point to working URLS
+  * Added optional support for setuptools in setup.py
+  * Removed out-of-date pyflakes ignore (imports are used).  69d00b5
+  * Added flake8 to travis config (and for now, output does not affect...
+  * flake8: ignore rule about white space after comma
+  * Fixed the 'python versions' shield.
+  * Enabled cythonizing of param modules if Cython is available
+  * Removed testing of Python 3.2 from travis.yml
+  * Added shared_parameters context manager
+  * Added unit test for shared_parameters context manager
+  * Skip processing non-parameterized classes in setup_param
+  * Update index.rst
+  * Fixed formatting in docs
+  * Fixed date in docs
+  * Fixed typo in docs
+  * Cleaned up get_range 6942b4f
+  * Fixed formatting of print_param_defaults under Python2.7 and
+    Python3
+  * Added new Parameter types from the paramnb project
+  * Fixed previous commit for Python2.6 compatibility
+  * Fixed tests for python2.6 compatibility
+  * commit_count can now be set via the Version constructor
+  * Updated docstring of param.Version constructor
+
+-------------------------------------------------------------------
+Fri Jul 10 08:16:23 UTC 2015 - toddrme2178@gmail.com
+
+- update to version 1.3.2:
+  * Updated unit test of ParamPager in the param IPython extension
+  * Suppressing default parameter object names from the ParamPager
+    title
+  * Made _get_param_info and _param_docstrings methods of Pager public
+  * Unicode support for param.String
+  * Added shield displaying all supported Python versions
+  * Added check for default value of String
+  * Minor fix to logging: python loggers can accept keyword arguments.
+  * Fixed Pyflakes errors
+  * Fixed trailing whitespaces
+
+-------------------------------------------------------------------
+Fri Apr 10 13:47:17 UTC 2015 - toddrme2178@gmail.com
+
+- update to version 1.3.1:
+  * Minor bugfix release to restore pre-1.3.0 script_repr behavior
+    (accidentally changed in 1.3.0) and to fix issues with logging.
+  * Param’s logging interface now matches that of Python’s logging
+    module, making it simpler to use logging (see Python’s logging
+    module for details). Note therefore that Param’s logging methods
+    (a) no longer call functions that are passed as arguments
+    (instead, Python’s logging module does lazy string merges), and
+    (b) no longer automatically combine strings passed as arguments
+    (instead, Python’s logging module supports string formatting).
+- update to version 1.3.0:
+  * Added ‘allow_None’ support to all Parameters. Any subclass of
+    Parameter that checks types and/or values should be modified to
+    add appropriate handling of allow_None.
+  * Improved pretty printing (script_repr) of Parameterized instances,
+    and made available via the pprint method. The script_repr name
+    will be removed in a future release.
+  * Added (reproducible) time-dependent random streams
+    (numbergen.TimeAwareRandomState).
+  * Added label and unit parameters to param.Time class.
+  * Improved optional IPython extension.
+
+-------------------------------------------------------------------
+Mon Jul 14 11:33:03 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

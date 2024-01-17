@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Tue Apr 14 19:21:48 UTC 2015 - coolo@suse.com
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-IO-Multiplex/Changes
+
+  1.16 Thu Apr  9 17:00:00 CET 2015
+  	- Fix descriptor memory leak:
+  	  Make $mux->close actually untie *$fh
+  
+  1.15 Tue Mar 11 14:00:00 CET 2015
+  	- Move untie patch to the right place.
+  
+  1.14 Mon Mar 30 11:00:00 CET 2015
+  	- Fix 110_ntest to avoid reading from muxed handle.
+  	- Apply patch to prevent untie warnings. 
+  	  rt.cpan.org#67846 [dmcbridepath@cpan.org Darin McBride]
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:43 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Mon Apr 18 07:17:47 UTC 2011 - vcizek@novell.com
+
+- update to 1.13
+	- fix handling of outbuf which contains '0'.
+	  rt.cpan.org#67458 [Gordon Russell]
+- license correction (GPL+ or Artistic)
+
+-------------------------------------------------------------------
+Mon Feb 28 09:39:16 UTC 2011 - vcizek@novell.com
+
+- update to 1.12
+	- fix MSWin32 complaints
+	  rt.cpan.org#66096 [Mark Dootson]
+
+-------------------------------------------------------------------
+Tue Feb 22 09:50:34 UTC 2011 - vcizek@novell.com
+
+- update to 1.11
+        - Avoid warning while adding pipe
+          rt.cpan.org#60068 [Khedin] and #16259
+	- Add EWOULDBLOCK and non-blocking mode for windows,
+	  rt.cpan.org#23982 [junk@penilecolada.com]
+	- Typo "closeing", rt.cpan.org#21085 [D Steinbrunner]
+	- avoid shutdown after close,
+	  rt.cpan.org#5715 [Lars Jensen] and #5885
+	- use length of outbuf, not exists to see if it is
+	  empty. [Ersun Warncke]
+	- turn "use warnings" on
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:02 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:16 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:41 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Oct  6 14:53:46 CEST 2008 - anicka@suse.cz
+
+- update to 1.10
+ * Update Copyright and License.
+ * Buttwag around minor Windows deficiencies.
+
+-------------------------------------------------------------------
+Wed Mar  7 10:43:14 CET 2007 - anicka@suse.cz
+
+- update to 1.09
+  * Detect readability for special IO::Socket::SSL
+    handles more accurately.
+  * Avoid "freed value in iteration" crashing.
+
+-------------------------------------------------------------------
+Wed Oct  4 13:55:41 CEST 2006 - anicka@suse.cz
+
+- package created [#207466] 
+

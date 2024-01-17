@@ -1,0 +1,16 @@
+Index: pyjwkest-9ed11b406911dde70b281b2473a976ec88afd1a9/tests/test_4_jwe.py
+===================================================================
+--- pyjwkest-9ed11b406911dde70b281b2473a976ec88afd1a9.orig/tests/test_4_jwe.py
++++ pyjwkest-9ed11b406911dde70b281b2473a976ec88afd1a9/tests/test_4_jwe.py
+@@ -25,7 +25,10 @@ __author__ = 'rohe0002'
+ 
+ 
+ def intarr2bytes(arr):
+-    return array.array('B', arr).tostring()
++    if sys.version_info[0] >= 3:
++        return array.array('B', arr).tobytes()
++    else:
++        return array.array('B', arr).tostring()
+ 
+ 
+ def bytes2intarr(bts):

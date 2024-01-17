@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Domination
+GenericName=Strategy Game
+Comment=Board game that is a bit like the well known game Risk
+Icon=domination
+Exec=domination-SwingGUI
+Type=Application
+Categories=Game;StrategyGame;
+StartupNotify=false

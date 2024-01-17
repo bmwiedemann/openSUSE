@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sat Feb 13 17:04:10 UTC 2016 - opensuse@dstoecker.de
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-Net-OpenID-Consumer/Changes
+
+  1.18      Feb 07 2016
+  
+      * Make naive_verify_failed_network message less mysterious in cases where
+        provider actually responds but with a non-success status.
+  
+      * whitespace changes
+  
+  1.17      Jan 15 2016
+  
+      * Include CGI in test prerequisites since it's not part of perlcore anymore
+
+-------------------------------------------------------------------
+Fri Sep  4 16:03:44 UTC 2015 - oholecek@suse.com
+
+- add utf-charset.patch to fix login with utf characters 
+
+-------------------------------------------------------------------
+Wed Aug 26 08:53:03 UTC 2015 - lnussel@suse.de
+
+- explicitly require perl(CGI) for building. CGI is no longer a core module
+  since perl 5.22.
+
+-------------------------------------------------------------------
+Wed Nov  5 15:17:26 UTC 2014 - aplanas@suse.com
+
+- update package 1.16
+  * Changelog from the package is empty
+
+-------------------------------------------------------------------
+Sat Mar 22 08:04:41 UTC 2014 - coolo@suse.com
+
+- remove broken backup file
+
+-------------------------------------------------------------------
+Fri Mar 21 13:55:38 UTC 2014 - coolo@suse.com
+
+- updated to 1.15, see Changes
+
+-------------------------------------------------------------------
+Wed Feb 16 08:30:37 UTC 2011 - lnussel@suse.de
+
+- initial package version 1.03
+

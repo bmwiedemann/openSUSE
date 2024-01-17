@@ -1,0 +1,180 @@
+-------------------------------------------------------------------
+Thu Nov  2 15:33:37 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8 (September 09, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.2 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.1 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7 (August 09, 2023) ##
+
+*   Error.full_message now strips ":base" from the message.
+
+    *zzak*
+
+*   Add a load hook for `ActiveModel::Model` (named `active_model`) to match the load hook for
+    `ActiveRecord::Base` and allow for overriding aspects of the `ActiveModel::Model` class.
+
+## Rails 7.0.6 (June 29, 2023) ##
+
+*   No changes.
+
+
+-------------------------------------------------------------------
+Tue Jun 27 19:31:09 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 7.0.5.1
+  * https://rubyonrails.org/2023/6/26/Rails-Versions-7-0-5-1-6-1-7-4-have-been-released
+
+-------------------------------------------------------------------
+Mon Jun 26 19:11:57 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 7.0.5
+  * https://rubyonrails.org/2023/5/24/Rails-7-0-5-has-been-released
+
+-------------------------------------------------------------------
+Fri Apr 21 11:21:14 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 7.0.4.3:
+  https://rubyonrails.org/2023/3/13/Rails-7-0-4-3-and-6-1-7-3-have-been-released
+  https://rubyonrails.org/2023/1/24/Rails-7-0-4-2-and-6-1-7-2-have-been-released
+
+-------------------------------------------------------------------
+Thu Feb 23 15:24:51 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+updated to version 7.0.4.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.4.1 (January 17, 2023) ##
+
+  *   No changes.
+
+-------------------------------------------------------------------
+Mon Oct 10 12:53:50 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   Handle name clashes in attribute methods code generation cache.
+  
+      When two distinct attribute methods would generate similar names,
+      the first implementation would be incorrectly re-used.
+  
+      ```ruby
+      class A
+        attribute_method_suffix "_changed?"
+        define_attribute_methods :x
+      end
+  
+      class B
+        attribute_method_suffix "?"
+        define_attribute_methods :x_changed
+      end
+      ```
+  
+      *Jean Boussier*
+  
+
+-------------------------------------------------------------------
+Thu Aug  4 12:52:00 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.3.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.3.1 (July 12, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Sun May 15 15:18:44 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.3
+
+  * no changes
+
+-------------------------------------------------------------------
+Thu Apr 28 05:13:14 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.4 (April 26, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Thu Mar 10 13:21:21 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.2.3
+
+  * no changes
+
+-------------------------------------------------------------------
+Tue Feb 15 07:11:04 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.2 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2.1 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2 (February 08, 2022) ##
+  
+  *   Use different cache namespace for proxy calls
+  
+      Models can currently have different attribute bodies for the same method
+      names, leading to conflicts. Adding a new namespace `:active_model_proxy`
+      fixes the issue.
+  
+      *Chris Salzberg*
+  
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 06:24:04 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.1 (January 06, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Mon Dec 27 11:24:08 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Don't limit building to specific ruby versions
+
+-------------------------------------------------------------------
+Tue Dec 21 22:08:45 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Rails 7.0 has been released
+
+  https://edgeguides.rubyonrails.org/7_0_release_notes.html
+
+-------------------------------------------------------------------
+Sun Dec 12 22:00:28 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

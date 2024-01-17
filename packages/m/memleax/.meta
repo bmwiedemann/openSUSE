@@ -1,0 +1,9 @@
+<package name="memleax" project="openSUSE:Factory">
+  <title>Debugs memory leak of a running process</title>
+  <description>Memleax is capable of debugging memory leak of a running process by attaching to it.
+There is no need to recompile the program or restart the target process.
+
+</description>
+  <devel project="devel:tools" package="memleax"/>
+  <url>https://wubingzheng.github.io/memleax/</url>
+</package>

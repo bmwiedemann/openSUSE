@@ -1,0 +1,9 @@
+<package name="gtkdatabox" project="openSUSE:Factory">
+  <title>GtkDatabox GTK3</title>
+  <description>A widget to display large sets of data as dots (or lines). Different data
+sets will have different colors, you may change colors and style of the data
+The widget gives the possibility to zoom into and out of the data and to 
+scroll around. It also offers a grid like on an oscilloscope.</description>
+  <devel project="Education" package="gtkdatabox"/>
+  <url>http://sourceforge.net/projects/gtkdatabox/</url>
+</package>

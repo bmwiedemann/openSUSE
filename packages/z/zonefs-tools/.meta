@@ -1,0 +1,7 @@
+<package name="zonefs-tools" project="openSUSE:Factory">
+  <title>zones-tools</title>
+  <description>Zonefs is a very simple file system exposing each zone of a zoned block device as a file. Zonefs does not have complex on-disk metadata and relies solely on a super block stored at LBA 0 of the device.
+
+This package contains the user-space tools for zonefs.</description>
+  <devel project="filesystems" package="zonefs-tools"/>
+</package>

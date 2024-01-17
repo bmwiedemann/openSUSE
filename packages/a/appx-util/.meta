@@ -1,0 +1,8 @@
+<package name="appx-util" project="openSUSE:Factory">
+  <title>appx-util - Utility to create Microsoft .appx packages</title>
+  <description>appx is a tool which creates and optionally signs
+Microsoft Windows APPX packages.
+</description>
+  <devel project="Virtualization:WSL" package="appx-util"/>
+  <url>https://github.com/OSInside/appx-util</url>
+</package>

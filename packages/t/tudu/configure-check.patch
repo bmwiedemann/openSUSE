@@ -1,0 +1,38 @@
+--- configure
++++ configure
+@@ -22,7 +22,7 @@
+ (exec ${HOST}-${CPP} --help >/dev/null 2>&1)
+ [ $? = 0 ] && CPP="${HOST}-${CPP}"
+ fi
+-(echo "main(){}" | ${CPP}  >/dev/null 2>&1)
++(echo "int main(){}" | ${CPP}  >/dev/null 2>&1)
+ if [ $? = 0 ]; then echo ${CPP}; else
+ echo "ERROR: ${CPP} cannot parse sources"; fi
+ 
+@@ -280,7 +280,7 @@
+ if [ "$?" = 0 ]; then CXX="${HOST}-${CXX}"; fi
+ fi
+ echo "#include <iostream>" > test.cxx
+-echo "main(){ std::cout << 1; }" >> test.cxx
++echo "int main(){ std::cout << 1; }" >> test.cxx
+ (exec ${CXX} ${CXXFLAGS} ${LDFLAGS} test.cxx -lstdc++ >/dev/null 2>&1)
+ if [ $? = 0 ]; then echo ${CXX}; else
+ HAVE_LANG_CXX=0
+@@ -300,7 +300,7 @@
+ printf "checking for $2... "
+ echo > test.c
+ echo "#include <${INC}>" >>test.c
+-echo "main(){}" >>test.c
++echo "int main(){}" >>test.c
+ eval \$${COMPILER} ${CFLAGS} ${CPPFLAGS} ${CXXFLAGS} test.c >/dev/null 2>&1
+ if [ $? = 0 ]; then
+ 	eval ${VAR}=1
+@@ -337,7 +337,7 @@
+ _CHKLIB_NAME=$2
+ _CHKLIB_LIBS=$(echo "-l${_CHKLIB_NAME}" | sed 's,\+, -l,g')
+ printf "checking for lib${_CHKLIB_NAME} ... "
+-echo "main(){ }" > test.c
++echo "int main(){ }" > test.c
+ eval ${S}${COMPILER} ${CFLAGS} ${CPPFLAGS} ${CXXFLAGS} ${LDFLAGS} ${_CHKLIB_LIBS} test.c >/dev/null 2>&1
+ if [ $? = 0 ]; then
+ 	eval ${VAR}=1

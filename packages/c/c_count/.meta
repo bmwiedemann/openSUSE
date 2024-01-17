@@ -1,0 +1,10 @@
+<package name="c_count" project="openSUSE:Factory">
+  <title>Source Code Measure Counter for C/C++/Java</title>
+  <description>c_count counts lines, statements, and other simple measures of C/C++/Java
+source programs. It is not lex/yacc based, and is easily portable to a variety
+of systems. 
+
+</description>
+  <devel project="devel:tools" package="c_count"/>
+  <url>http://invisible-island.net/c_count/</url>
+</package>

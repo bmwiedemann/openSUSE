@@ -1,0 +1,5 @@
+<package name="python-pyjwkest" project="openSUSE:Factory">
+  <title>python-pyjwkest</title>
+  <description>Implementation of JWT, JWS, JWE and JWK for Python</description>
+  <devel project="devel:languages:python" package="python-pyjwkest"/>
+</package>

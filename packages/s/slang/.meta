@@ -1,0 +1,10 @@
+<package name="slang" project="openSUSE:Factory">
+  <title>Programming Library and Embeddable Extansion Language</title>
+  <description>S-Lang is a multi-platform programming library designed to allow a developer to
+create robust multi-platform software. It provides facilities required by
+interactive applications such as display/screen management, keyboard input,
+keymaps etc. Another major feature of the library is the interpreter for the
+S-Lang extension language which can be embedded into an application to make it
+extensible. With slsh a standalone interpreter is available as well.</description>
+  <devel project="devel:libraries:c_c++" package="slang"/>
+</package>

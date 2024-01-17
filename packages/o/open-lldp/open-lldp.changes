@@ -1,0 +1,425 @@
+-------------------------------------------------------------------
+Sun Jan 14 19:16:32 UTC 2024 - lduncan@suse.com
+
+- Update to version v1.1+106.74c0600a8692 (from upstream/branch-1.1):
+  * lldpad: dcbx: prevent null dereference in dcbx_free_data
+  * lldpad: ieee8023: reorder disabling pMAC and disabling MM TX
+  * uapi: Provide a copy of const.h
+  * dcbx: Fix use-after-free
+  * dcbx: Fix NULL pointer dereference
+  * ChangeLog: mention Additional Ethernet Capabilities TLV
+  * lldptool: add man page for Additional Ethernet Capabilities TLV
+  * lldptool: add CLI interface for Additional Ethernet Capabilities TLV
+  * lldpad: ieee8023: allow changing the addFragSize advertisement
+  * lldpad: ieee8023: add Additional Ethernet Capabilities TLV logic
+  * lldpad: ieee8023: make ieee8023_data() return a pointer to ieee8023_user_data
+  * lldpad: ethtool netlink accessors for MAC merge layer
+  * lldpad: ieee8023: add basic rchange procedure
+  * uapi: copy ethtool definitions for MAC Merge layer from Linux
+  * uapi: update linux/netlink.h copy
+  * uapi: import ethtool kernel headers from net-next
+  * dcbx: Fix leak when receiving legacy TLVs with mismatched mode
+  * lldp: Reject frames with duplicate TLVs
+  * dcbx: Free manifest in rchange callback
+  * dcbx: Avoid memory leak if ifup is called twice
+  * ctrl_iface: Fix a memory leak in ctrl_iface_deinit
+  * lldp: Avoid sending uninitialized data
+  * lldptool: fix null pointer deference
+
+-------------------------------------------------------------------
+Fri Oct 27 19:15:39 UTC 2023 - lduncan@suse.com
+
+- Update to version latest Intel upstream (v1.1+77.75e83b6fb98e, jsc#PED-6852):
+  * lldpad: dcbx: prevent null dereference in dcbx_free_data
+  * dcbx: Fix use-after-free
+  * dcbx: Fix NULL pointer dereference
+  * dcbx: Fix leak when receiving legacy TLVs with mismatched mode
+  * lldp: Reject frames with duplicate TLVs
+  * dcbx: Free manifest in rchange callback
+  * dcbx: Avoid memory leak if ifup is called twice
+  * ctrl_iface: Fix a memory leak in ctrl_iface_deinit
+  * lldp: Avoid sending uninitialized data
+  * lldptool: fix null pointer deference
+  * Revert "Use interface index instead of name in libconfig"
+  * Avoiding null pointer dereference
+  * agent: reset frame status on message delete
+  * basman: use return address when pulling address
+  * 8021Qaz: check for rx block validity
+  * 8021qaz: squelch initialization errors
+  * macvtap: fix error condition
+  * vdp22: convert command parsing to null term
+
+-------------------------------------------------------------------
+Wed Oct 26 18:58:43 UTC 2022 - lduncan@suse.com
+
+- Update to version v1.1+58.8ca361bab766:
+  * clif: Include string.h for mem* function prototypes
+  * basman: use return address when pulling address
+  * Revert "Use interface index instead of name in libconfig"
+  * 8021Qaz: check for rx block validity
+  * 8021qaz: squelch initialization errors
+  * macvtap: fix error condition
+  * vdp22: convert command parsing to null term
+
+-------------------------------------------------------------------
+Mon Sep 20 16:03:06 UTC 2021 - lduncan@suse.com
+
+- Update to version v1.1+44.0f781b4162d3:
+  * agent: reset frame status on message delete
+  * Avoiding null pointer dereference
+
+-------------------------------------------------------------------
+Fri Jan 08 22:14:35 UTC 2021 - lduncan@suse.com
+
+- Update to version v1.1+36.e926f7172b96:
+  * tx: rename variable
+  * event_iface: only set rcv buf size if too small (bsc#1175570)
+  * tx: when operating in rx-only mode don't send a port shutdown pdu
+  * Update .travis.yml
+  * vdp22: manpage typo
+  * lldptool: fix manpage
+  * lldp_head: remove all references
+  * add_rtattr: only copy if data is provided
+  * autoconf: convenience to setup asan and ubsan
+  * Post 1.1 release
+
+-------------------------------------------------------------------
+Thu Dec 10 22:40:33 UTC 2020 - lduncan@suse.com
+
+- Update to version v1.1+18.0e969d0edcc4:
+  * event_iface: only set rcv buf size if too small (bsc#1175570)
+
+-------------------------------------------------------------------
+Mon Nov 09 17:25:48 UTC 2020 - lduncan@suse.com
+
+- Update to version v1.1+15.ef8495548d04, by merging
+  upstream version 1.1 + latest, including:
+  * Fix merge error: remove bogus line
+  * vdp22: manpage typo
+  * lldptool: fix manpage
+  * lldp_head: remove all references
+  * add_rtattr: only copy if data is provided
+  This removed the need for the patch disable-werror.patch.
+
+-------------------------------------------------------------------
+Sun Sep 06 16:13:14 UTC 2020 - lduncan@suse.com
+
+- Update to version v1.0.1+69.e8f522565f5a to removed commpiler
+  and rpmlint complaints:
+  * Fix bash-completion dir: don't use /etc
+  * Fix compiler issue with strcpy(): use memcpy
+  * Fix compiler complaint argument type mismatch.
+  * Fix compiler complaint declaration vs function.
+  * Fix compiler complaint copying to packed member.
+  * add 'lldpad.socket' to the '%service_*' macros in the SPEC
+    file
+
+-------------------------------------------------------------------
+Fri Sep  4 16:19:34 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Moved sources from github.com/intel to github/openSUSE
+  * upgrading to version v1.0.1+110.6009075a9fcc
+    - merged in latest upstream (no API changes)
+
+-------------------------------------------------------------------
+Tue Aug 04 12:06:31 UTC 2020 - hare@suse.de
+
+- Update to version v1.0.1+63.f977e67 (bsc#1171284,bsc#1170745,bsc#1153520):
+  * lldp/rx.c: Reset state machine variable in process_delete_info()
+  * lldp: do not call 'assert' in rxProcessFrame()
+  * ecp: allow for failure to create
+  * lldp_mand: retrieve permanent mac address in get_mac()
+  * lldp_util: use netlink to fetch mac address
+  * lldp_util: drop get_macstr()
+  * linux/if_link.h: Update and add bonding netlink definitions
+
+-------------------------------------------------------------------
+Mon Apr  6 09:26:46 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use -fcommon in order to fix boo#1160407.
+
+-------------------------------------------------------------------
+Fri Jan 24 11:12:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd directly:
+  allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Tue Nov 19 13:14:16 UTC 2019 - hare@suse.com
+
+- Update to version v1.0.1+102.4c7fcc3:
+  * l2_packet: Guard ETH_P_LLDP define (edit: fixes bsc#1156545)
+  * lldp_mand: retrieve permanent mac address in get_mac()
+  * lldp_util: use netlink to fetch mac address
+  * lldp_util: drop get_macstr()
+  * linux/if_link.h: Update and add bonding netlink definitions
+
+-------------------------------------------------------------------
+Tue Nov 19 13:13:17 UTC 2019 - hare@suse.com
+
+- Update to version v1.0.1+95.3168e11:
+  * Test with newer GCC 8 and 9 versions
+  * RPM build is broken, so skip
+  * Place the tarball in the right place
+  * A tarball needs to be built after bootstrap.sh for use with RPM
+  * Added missing steps for building an RPM
+  * Finish off with testing building the RPM
+  * Test package installation as well
+  * Test under multiple GCC releases
+  * Drop requirement for Travis CI testing with Clang
+  * Support checking build with Travis CI
+  * vdp-netlink: account for sizes properly
+  * qbg: avoid warning for extra parens
+  * qbg: port name is always a valid pointer
+  * dcbx-nl: drop run_cmd
+  * ecp: allow for failure to create
+  * lldp_util: allow for null ifa_addr element
+  * lldpad: Do not enable port if already enabled
+  * Silent -Werror=address-of-packed-member warnings.
+  * Come up with STRNCPY_TERMINATED (#25).
+  * vdptool: fixed compile error for getline()
+  * Fix #23 by off by one strncpy value.
+  * 8021qaz: Block lldptool set operations if read only mode is on
+  * 8021qaz: Add read only option for 8021qaz module
+  * lldp: Allow lldptool to modify optional TLV's content
+  * 8021qaz: Print dscp2prio map
+  * autoconf: Add systemd support in configure.ac
+  * rpm-spec: Add vdp22 man files to lldpad.spec.in
+
+-------------------------------------------------------------------
+Tue May 14 09:28:48 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add disable-werror.patch.
+
+-------------------------------------------------------------------
+Thu May  9 12:05:15 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable -Werror (boo#1128299) and remove gcc9-fix-werror.patch.
+
+-------------------------------------------------------------------
+Tue Mar 19 09:43:38 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add gcc9-fix-werror.patch in order to fix bsc#1128299.
+- Adjust project URL as we're using the Intel's fork.
+
+-------------------------------------------------------------------
+Mon Jan 14 15:50:43 CET 2019 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Thu Jan 10 16:32:32 CET 2019 - hare@suse.de
+
+- Update to git commit cb81e9541b5 (FATE#326034,bug#1104011)
+  * 8021qaz: Remove unused variable
+  * 8021qaz: Honor willing value from config file
+  * lldpad: Support DSCP selectors in APP TLV's
+  * Fix application tlv display
+  * basman_clif: print the OID properly
+  * ecp22: deinit l2_packet_data before freeing ecp22
+  * DCB set state operation return value check
+  * memleak on received TLVs from modules
+  * Use interface index instead of name in libconfig
+  * Fix 'is_valid_mac' to include mcast mac address
+  * lldpad: Fix segfault in lldptool
+  * Fixup disabling PG
+  + open-lldp-v1.0.1+56.cb81e95.tar.xz
+- Remove superseded files
+  - open-lldp-1.0.1.tar.gz
+  - open-lldp-git-update.patch.bz2
+  - open-lldp-gcc5.patch
+  - 0001-l2_linux_packet-correctly-process-return-value-of-ge.patch
+  - 0002-lldpad-Only-set-Tx-adminStatus-if-interface-is-not-m.patch
+
+-------------------------------------------------------------------
+Mon Dec 11 13:31:53 UTC 2017 - dimstar@opensuse.org
+
+- Fix calling of fillup_only: it knows no -i parameter.
+
+-------------------------------------------------------------------
+Tue Feb 28 11:08:53 UTC 2017 - dimstar@opensuse.org
+
+- Don't use full URL as source, as the tarball does not exist at
+  that location.
+
+-------------------------------------------------------------------
+Sat Feb 18 05:34:33 UTC 2017 - kukuk@suse.com
+
+- Remove obsolete insserv calls
+
+-------------------------------------------------------------------
+Mon Aug  3 10:24:33 CEST 2015 - hare@suse.de
+
+- Update to v1.0.1 (FATE#318849)
+  * vpd22 updates
+  * Include vpdtool
+  * Support for OUI infrastructure in vpd22
+  * Support for OUI infrastructure in vpdtool
+  * Support for Cisco-specific OUI extensions in vpd22
+  * Add vpdtool manpage
+  * Add open-lldp-1.0.1.tar.gz
+  * Remove open-lldp-0.9.46.tar.gz
+  * Patches merged with upstream
+  * Remove 0001-lldpad-print-verbose-error-messages.patch
+  * Remove 0002-Move-to-libnl3.patch
+- Update to latest git version
+  * Automake fixes
+  * Fix DCBX event generation from lldpad
+  * Make TTL TLV configurable
+  * Update open-lldp-git-update.patch.bz2
+- Correctly process return value in get_perm_hwaddr (bsc#929171)
+  * Add 0001-l2_linux_packet-correctly-process-return-value-of-ge.patch
+- lldpad: Only set Tx adminStatus if interface is not managed
+  (bsc#929171)
+  * Add 0002-lldpad-Only-set-Tx-adminStatus-if-interface-is-not-m.patch
+
+-------------------------------------------------------------------
+Mon Mar 23 23:23:27 UTC 2015 - crrodriguez@opensuse.org
+
+- Fix build with gcc5 (open-lldp-gcc5.patch)
+* do not use -Werror
+* Use -fgnu89-inline as the code relies on the old semantics
+
+-------------------------------------------------------------------
+Wed May 21 15:12:45 UTC 2014 - jsegitz@novell.com
+
+- added necessary macros for systemd files
+
+-------------------------------------------------------------------
+Wed May 14 09:09:11 CEST 2014 - hare@suse.de
+
+- Update to latest git version:
+  * Include upstream version of VEPA migration issue (bnc#866282)
+  * evb 22 test cases
+  * vdp22 fixes
+  * error message fixes
+  * Fix interop issues with Juniper switches
+- Fixup error messages in lldpad
+  * Add 0001-lldpad-print-verbose-error-messages.patch
+- Move to libnl3
+  * Add 0002-Move-to-libnl3.patch
+
+-------------------------------------------------------------------
+Fri Mar 21 15:28:19 CET 2014 - hare@suse.de
+
+- Fix VEPA migration issue (bnc#866282)
+- Remove mkinitrd support
+- Use bzip2 for open-lldp-git-update.patch
+  * Add open-lldp-git-update.patch.bz2
+  * Delete open-lldp-git-update.patch
+
+-------------------------------------------------------------------
+Tue Nov 19 12:52:45 CET 2013 - hare@suse.de
+
+- Update to latest git version:
+  * VPD22 support
+  * Netlink fixes
+
+-------------------------------------------------------------------
+Thu Oct 10 15:14:39 UTC 2013 - tchvatal@suse.com
+
+- Provide and Obsolete old devel packages to avoid collisons.
+- More whitespace cleanup.
+
+-------------------------------------------------------------------
+Fri Sep 13 10:42:57 CEST 2013 - hare@suse.de
+
+- Rename to open-lldp to be compliant with upstream
+- Update to latest git version
+  * Systemd integration
+  * EVB fixes
+- Update mkinitrd scriptlets
+- Remove 'llpdad-makefile-fixup', merged with upstream
+- Remove 'mkinitrd-stop.sh'
+- Add open-lldp-git-update.patch to build properly
+
+-------------------------------------------------------------------
+Thu Aug  1 13:23:39 UTC 2013 - tchvatal@suse.com
+
+- Bump to 0.9.46 new upstream url found from fedora pkg:
+ * Add IEEE802.1Qbg EVB module support
+ * add and improve test code evbest/nltest
+ * 8021qaz fix to work with hardware that does not support CEE DCBX
+ * support lldpad running on bonded interfaces
+ * pretty print support for VDP
+ * new -p option to display lldpad process identifier
+ * generate shared library liblldp_clif for applications to use
+ * Add vdptest program
+ * various link event fixes
+ * Support for multiple agent types Nearest non-TPMR, Nearest customer bridge,
+   and Nearest Bridge (always supported).
+ * New man pages for VDP, EVB, and MED have been added.
+ * DCBX improvements to remap DCB attributes when the host has less traffic
+   classes then the peer.
+ * Support to parse 802.1AB Organizationally Specific TLVs, Cisco Specific TLVs
+   and the LLINK attributes of the DCBX CEE TLVs.
+ * Support to reconfigure and set the MSAP subtype.
+ * Additional gcc warnings turned on and miscellaneous fixes.
+ * New client interface (abstract sockets) to support initrd stage
+ * IEEE 802.1Qaz support has been added
+ * EVB support has been added
+ * Add iSCSI TLV support
+ * Numerous bug fixes and code cleanup
+ * Reworked netlink event handling to be more robust and handle dropped nlmsgs.
+ * DCBx puts netdevice into linkmode until dcbx negotiation complete
+- Remove obsolete patches, applied upstream/done differently by upstream:
+ * lldpad-0.9.32-compile-fixes
+ * lldpad-0.9.32-fix-buffer-overflow
+ * lldpad-0.9.32-fix-error-in-pgid-construction
+ * lldpad-0.9.32-fix-lldptool-segfault
+ * lldpad-0.9.32-fix-race-condition
+- Rebase patch to apply on current version:
+ * lldpad-makefile-fixup
+- Use unit file instead of init file to move under systemd
+
+-------------------------------------------------------------------
+Tue Jul 23 19:02:58 CEST 2013 - ohering@suse.de
+
+- Remove usage of absolute paths in mkinitrd scripts
+- Add Requires(post/postun) to spec file
+
+-------------------------------------------------------------------
+Mon Feb 13 10:49:52 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Nov 23 21:13:01 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Jul  6 10:53:00 CEST 2010 - hare@suse.de
+
+- Port rpm from SLES11 SP1.
+
+-------------------------------------------------------------------
+Fri May  7 16:02:31 CEST 2010 - hare@suse.de
+
+- Remove 'fix link flap' patch (bnc#603580)
+
+-------------------------------------------------------------------
+Mon Apr 26 13:53:10 CEST 2010 - hare@suse.de
+
+- Patches from bnc#599107:
+  * fix race condition by opening client socket earlier
+  * fix error in construction of the Priority Group TLV
+  * fix link flap
+  * fix segfault when handling lldptool arguments
+  * fix buffer overflow in lldp-med inventory string
+
+-------------------------------------------------------------------
+Fri Mar 26 11:50:46 CET 2010 - kukuk@suse.de
+
+- Fix requires of -devel subpackage
+
+-------------------------------------------------------------------
+Wed Mar 24 16:00:04 CET 2010 - hare@suse.de
+
+- Fixup mkinitrd setup script to always create /var/lib/lldpad
+
+-------------------------------------------------------------------
+Tue Mar 23 15:11:03 CET 2010 - hare@suse.de
+
+- Obsolete dcbd by lldpad version 0.9.32 (bnc#590487)
+

@@ -1,0 +1,165 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81ec320cda32d9c9ef466fd3f16c9a32</srcmd5>
+    <version>2.0.3</version>
+    <time>1261997898</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/obconf based on submit request 27651 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b16b5c6b550d7ceb22adf9d844604ee0</srcmd5>
+    <version>2.0.3</version>
+    <time>1263835397</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/obconf based on submit request 29866 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>96d3c4c55d2464bef60a6def790acfd7</srcmd5>
+    <version>2.0.3</version>
+    <time>1268925128</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>96d3c4c55d2464bef60a6def790acfd7</srcmd5>
+    <version>2.0.3</version>
+    <time>1278667371</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>96d3c4c55d2464bef60a6def790acfd7</srcmd5>
+    <version>2.0.3</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>96d3c4c55d2464bef60a6def790acfd7</srcmd5>
+    <version>2.0.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>9c3b4648b4133a2aeafa24ef9c9dc560</srcmd5>
+    <version>2.0.3</version>
+    <time>1304351661</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67110</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>fbb1c401e1c46f53c15e68b2e4135df3</srcmd5>
+    <version>2.0.3</version>
+    <time>1304351670</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67110
+</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>992f24eeaab85e991426b790a58aedc6</srcmd5>
+    <version>2.0.4.git500163e</version>
+    <time>1313498722</time>
+    <user>saschpe</user>
+    <comment>update to version 2.0.4, to make obconf able to work with latest openbox</comment>
+    <requestid>79023</requestid>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>74966441170d64e46f274ce888e0a2cc</srcmd5>
+    <version>2.0.4.git500163e</version>
+    <time>1313498735</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79023
+</comment>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>74966441170d64e46f274ce888e0a2cc</srcmd5>
+    <version>2.0.4.git500163e</version>
+    <time>1319182207</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>a351ac714fe7278066dcb84d3251371d</srcmd5>
+    <version>2.0.4.git500163e</version>
+    <time>1323175953</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94821 from coolo)</comment>
+    <requestid>94826</requestid>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>aa2212e47baa2afafcf773a77d5226a2</srcmd5>
+    <version>2.0.4.git500163e</version>
+    <time>1323192778</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>aa2212e47baa2afafcf773a77d5226a2</srcmd5>
+    <version>2.0.4.git500163e</version>
+    <time>1340183741</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>aa2212e47baa2afafcf773a77d5226a2</srcmd5>
+    <version>2.0.4.git500163e</version>
+    <time>1359109522</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2bfbe44625302f309c5ca978a75f3924</srcmd5>
+    <version>2.0.4</version>
+    <time>1378996649</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to version 2.0.4 
+  - translation updates
+  - new --tab CLI option
+  - allow larger margins
+  - adapt to Openbox 3.5.2 libraries
+- refresh no -&gt; nb patch
+- drop already merge git patch (forwarded request 197521 from jreidinger)</comment>
+    <requestid>198613</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>2bfbe44625302f309c5ca978a75f3924</srcmd5>
+    <version>2.0.4</version>
+    <time>1379663394</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>574b75a0ee277eb0db520164d40431f3</srcmd5>
+    <version>2.0.4</version>
+    <time>1400218192</time>
+    <user>coolo</user>
+    <comment>spec file clean up
+</comment>
+    <requestid>233822</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>574b75a0ee277eb0db520164d40431f3</srcmd5>
+    <version>2.0.4</version>
+    <time>1409302007</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>5adf935b9098a6c91cf15d4d2ffa5b1d</srcmd5>
+    <version>2.0.4</version>
+    <time>1411721540</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>252238</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>e69fea7339ffbc2c4f3268b8a59a521d</srcmd5>
+    <version>2.0.4</version>
+    <time>1421052598</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280762</requestid>
+  </revision>
+</revisionlist>

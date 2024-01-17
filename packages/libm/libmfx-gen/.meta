@@ -1,0 +1,5 @@
+<package name="libmfx-gen" project="openSUSE:Factory">
+  <title>libmfx-gen</title>
+  <description>Intel oneVPL GPU Runtime</description>
+  <devel project="X11:XOrg" package="libmfx-gen"/>
+</package>

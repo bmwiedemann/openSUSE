@@ -1,0 +1,34 @@
+<package name="google-allerta-fonts" project="openSUSE:Factory">
+  <title>Easily Readable Sans Serif Font</title>
+  <description>Allerta is an open source typeface designed for use in
+signage. Allerta was designed to be easily and quickly
+read from a distance. Each letter exploits the most
+unique aspects of that individual letter so that each
+character can be easily distinguished from any other.
+
+Allerta has been released as an open source project so
+that those countries, communities, and/or organizations
+without a proper signage system may have a way of quickly
+designing and implementing one. While Allerta is complete
+with a large character set, because it is open source,
+modification and expansion is encouraged.
+
+For the more urgent of circumstances, Allerta Stencil
+and an accompanying kit have been designed so that signage
+can be created with nothing more than the kit of letters, a
+can of spray paint, and the nearest available substrate.
+Although the stencil kit may allude the finer points of
+typographic spacing, it is intended to serve the most basic
+purpose of signage: guiding people towards their destination
+or towards assistance.
+
+The name Allerta is derived from the origins of the word
+alert (adj. swift, v. to advise or warn). The Italian origin
+all'erta literally means on the lookout.
+
+
+
+</description>
+  <devel project="M17N:fonts" package="google-allerta-fonts"/>
+  <url>http://pixelspread.com/allerta/</url>
+</package>

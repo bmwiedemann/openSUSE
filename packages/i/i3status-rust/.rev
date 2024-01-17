@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82aa9edd5429f031906b788c9258e848</srcmd5>
+    <version>0.22.0</version>
+    <time>1672927247</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>1056066</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bb2e7a8c07db9439239061675c10febd</srcmd5>
+    <version>0.30.3</version>
+    <time>1677591097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068163</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8ba431efe6709e0c0fcf0be22c9fdab</srcmd5>
+    <version>0.30.4</version>
+    <time>1678555431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.30.4
+- Added:
+  * Time: timezone can now be set to a list of values. Click on the block to cycle between timezones.
+- Fixed:
+  * Net: prefer the default device when multiple devices match the regex.
+  * Cpu: fix panic on systems which do not report CPU frequency.
+  * Bluetooth: change block color based on battery level.
+  * Memory: consider ZFS arc cache as available memory.
+  * Backlight: reconnect after monitor sleeps.
+  * Nvidia GPU: display unavailable stats as zeros instead of failing.
+  * Bluetooth: correctly display battery level even if it is not available instantly.
+  * Net: get SSID from NL80211_BSS_INFORMATION_ELEMENTS (makes SSID available on Linux kernel 5.19 and newer).
+  * Backlight: fallback to sysfs on systems which don't use systemd-logind.
+  * Do not require config file to have a .toml extension.
+  
+</comment>
+    <requestid>1070775</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>35d68d5757044a1c498a349212835b61</srcmd5>
+    <version>0.30.7</version>
+    <time>1682079456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081161</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>94dfe58175017d35b1fa31ff9d10f922</srcmd5>
+    <version>0.31.8</version>
+    <time>1688398911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096186</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1d09d5e234b51b309d8f8f17e19a7c9e</srcmd5>
+    <version>0.31.9</version>
+    <time>1691232964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102440</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8e0a50f19a32d78dc74a397e7c5c520a</srcmd5>
+    <version>0.32.1</version>
+    <time>1694019582</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109231</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c21f30911d8fb6c345dc77254500171e</srcmd5>
+    <version>0.32.1</version>
+    <time>1697567132</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118301</requestid>
+  </revision>
+</revisionlist>

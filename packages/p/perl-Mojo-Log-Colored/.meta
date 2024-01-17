@@ -1,0 +1,5 @@
+<package name="perl-Mojo-Log-Colored" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Mojo-Log-Colored"/>
+</package>
