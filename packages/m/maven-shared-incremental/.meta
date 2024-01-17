@@ -1,0 +1,5 @@
+<package name="maven-shared-incremental" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="maven-shared-incremental"/>
+</package>

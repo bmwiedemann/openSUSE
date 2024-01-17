@@ -1,0 +1,31 @@
+--- src/layerPart.cpp.orig	2019-06-14 09:36:05.313574796 +0200
++++ src/layerPart.cpp	2019-06-14 09:38:09.608954136 +0200
+@@ -49,7 +49,7 @@
+ {
+     const auto total_layers = slicer->layers.size();
+     assert(mesh.layers.size() == total_layers);
+-#pragma omp parallel for default(none) shared(mesh, slicer) schedule(dynamic)
++#pragma omp parallel for default(none) shared(mesh, slicer, total_layers) schedule(dynamic)
+     for (unsigned int layer_nr = 0; layer_nr < total_layers; layer_nr++)
+     {
+         SliceLayer& layer_storage = mesh.layers[layer_nr];
+--- src/support.cpp.orig	2019-06-14 09:36:05.317574905 +0200
++++ src/support.cpp	2019-06-14 09:45:31.129002024 +0200
+@@ -854,7 +854,7 @@
+     const double tan_angle = tan(angle) - 0.01;  // the XY-component of the supportAngle
+     xy_disallowed_per_layer[0] = storage.getLayerOutlines(0, false).offset(xy_distance);
+     // for all other layers (of non support meshes) compute the overhang area and possibly use that when calculating the support disallowed area
+-    #pragma omp parallel for default(none) shared(xy_disallowed_per_layer, storage, mesh) schedule(dynamic)
++    #pragma omp parallel for default(none) shared(xy_disallowed_per_layer, storage, mesh, layer_count, xy_distance_overhang, xy_distance, tan_angle, is_support_mesh_place_holder, use_xy_distance_overhang, z_distance_top) schedule(dynamic)
+     for (unsigned int layer_idx = 1; layer_idx < layer_count; layer_idx++)
+     {
+         Polygons outlines = storage.getLayerOutlines(layer_idx, false);
+@@ -1054,7 +1054,7 @@
+         const int max_checking_layer_idx = std::min(static_cast<int>(storage.support.supportLayers.size())
+                                                   , static_cast<int>(layer_count - (layer_z_distance_top - 1)));
+         const size_t max_checking_idx_size_t = std::max(0, max_checking_layer_idx);
+-#pragma omp parallel for default(none) shared(support_areas, storage) schedule(dynamic)
++#pragma omp parallel for default(none) shared(support_areas, storage, layer_z_distance_top, max_checking_layer_idx, max_checking_idx_size_t) schedule(dynamic)
+         for (size_t layer_idx = 0; layer_idx < max_checking_idx_size_t; layer_idx++)
+         {
+             support_areas[layer_idx] = support_areas[layer_idx].difference(storage.getLayerOutlines(layer_idx + layer_z_distance_top - 1, false));

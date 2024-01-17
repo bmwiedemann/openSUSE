@@ -1,0 +1,92 @@
+
+[    8s] app_fancoarsening.cpp:41:3: warning: no return statement in function returning non-void [-Wreturn-type]
+[   13s] app_main.cpp:184:12: warning: deleting object of polymorphic class type 'EnumerationAlgorithm' which has non-virtual destructor might cause undefined behavior [-Wdelete-non-virtual-dtor]
+[   13s]      delete rs;       //<--- In next release, make the class virtual
+[   15s] app_main.cpp:208:12: warning: deleting object of abstract class type 'EnumerationFilePrinter' which has non-virtual destructor will cause undefined behavior [-Wdelete-non-virtual-dtor]
+[   15s]      delete ep;//<--- In next release, make the class virtual
+[   18s] app_test.cpp:103:1: warning: no return statement in function returning non-void [-Wreturn-type]
+[   20s] app_tropicalhypersurfacereconstruction.cpp:57:3: warning: no return statement in function returning non-void [-Wreturn-type]
+[   27s] gfanlib_tropicalhomotopy.h:457:8: warning: operation on 'numberToDrop' may be undefined [-Wsequence-point]
+[   27s]     int numberToDrop=(subconfigurationIndex!=0) ? numberToDrop=k+1 : 0;
+
+---
+ src/app_fancoarsening.cpp                      |    1 +
+ src/app_test.cpp                               |    4 ++--
+ src/app_tropicalhypersurfacereconstruction.cpp |    1 +
+ src/enumeration.h                              |    3 +++
+ src/gfanlib_tropicalhomotopy.h                 |    2 +-
+ 5 files changed, 8 insertions(+), 3 deletions(-)
+
+Index: gfan0.6.2/src/app_fancoarsening.cpp
+===================================================================
+--- gfan0.6.2.orig/src/app_fancoarsening.cpp
++++ gfan0.6.2/src/app_fancoarsening.cpp
+@@ -37,6 +37,7 @@ public:
+   {
+ 
+     int i=0;
++    return {};
+ 
+   }
+ 
+Index: gfan0.6.2/src/app_test.cpp
+===================================================================
+--- gfan0.6.2.orig/src/app_test.cpp
++++ gfan0.6.2/src/app_test.cpp
+@@ -98,8 +98,8 @@ int testIntegers()
+ 		b=a;
+ 		a=c;
+ 		cerr<<a<<endl;
+-	}
+-	return 0;*/
++	}*/
++	return 0;
+ }
+ 	int testGfanLib()
+ 	{
+Index: gfan0.6.2/src/app_tropicalhypersurfacereconstruction.cpp
+===================================================================
+--- gfan0.6.2.orig/src/app_tropicalhypersurfacereconstruction.cpp
++++ gfan0.6.2/src/app_tropicalhypersurfacereconstruction.cpp
+@@ -53,6 +53,7 @@ public:
+   {
+ 
+     int i=0;
++    return {};
+ 
+   }
+ 
+Index: gfan0.6.2/src/enumeration.h
+===================================================================
+--- gfan0.6.2.orig/src/enumeration.h
++++ gfan0.6.2/src/enumeration.h
+@@ -25,6 +25,8 @@ class EnumerationTargetCollector: public
+ 
+ class EnumerationPrinter: public EnumerationTarget
+ {
++	public:
++	virtual ~EnumerationPrinter() = default;
+ };
+ 
+ 
+@@ -60,6 +62,7 @@ class EnumerationAlgorithm
+   void targetEndEnumeration(){if(target)target->endEnumeration();}
+   bool targetBasis(const PolynomialSet &groebnerBasis){bool ret=true;if(target)ret=target->basis(groebnerBasis);printProgress();return ret;}
+  public:
++  virtual ~EnumerationAlgorithm() = default;
+   EnumerationAlgorithm(){target=0;progressCounter=0;}
+   void setEnumerationTarget(EnumerationTarget *target){this->target=target;}
+   virtual void enumerate(const PolynomialSet &groebnerBasis){}
+Index: gfan0.6.2/src/gfanlib_tropicalhomotopy.h
+===================================================================
+--- gfan0.6.2.orig/src/gfanlib_tropicalhomotopy.h
++++ gfan0.6.2/src/gfanlib_tropicalhomotopy.h
+@@ -454,7 +454,7 @@ template<class mvtyp, class mvtypDouble,
+ 			//chioices are "relative" so no update is needed.
+ 
+ 			choices=parent.choices;
+-			int numberToDrop=(subconfigurationIndex!=0) ? numberToDrop=k+1 : 0;
++			int numberToDrop=(subconfigurationIndex!=0) ? k+1 : 0;
+ 
+ 			choices[subconfigurationIndex-1].first-=numberToDrop;
+ 			choices[subconfigurationIndex-1].second-=numberToDrop;

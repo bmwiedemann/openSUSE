@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ceb6b4c5b674ace1a1845a7bc5091223</srcmd5>
+    <version>0.8.1</version>
+    <time>1663596168</time>
+    <user>dimstar_suse</user>
+    <comment>used by SciPy 1.9</comment>
+    <requestid>1004199</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f24cf531ec0983983bd0bf6eb8f94072</srcmd5>
+    <version>0.10.0</version>
+    <time>1665504211</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009788</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d4e40cbcaaded8f70e7f453ab3cc88ca</srcmd5>
+    <version>0.10.0</version>
+    <time>1666089850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update meson-subdir-fix.patch to fix the failure for python3.8 and python3.9
+  because the meson package is only available for python3.10
+- Add meson-subdir-fix.patch to fix the failure with new meson
+</comment>
+    <requestid>1010928</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49988366c39236a05aeac53e704aa8ab</srcmd5>
+    <version>0.11.0</version>
+    <time>1669378289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037919</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fc7571429704752d7843f01e329cca54</srcmd5>
+    <version>0.12.0</version>
+    <time>1674043691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058761</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8668089f96d5ace46063c27d529beb08</srcmd5>
+    <version>0.12.1</version>
+    <time>1680125169</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.1:
+  * Fix regression where the ``MACOSX_DEPLOYMENT_TARGET``
+    environment variable was accidentally renamed to 
+    ``MACOS_DEPLOYMENT_TARGET``</comment>
+    <requestid>1074506</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>22e39cda1d3ddc5f32e746b8c9da4f87</srcmd5>
+    <version>0.12.1</version>
+    <time>1686576282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092244</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c470cca78812a7d10b35c996e80328d2</srcmd5>
+    <version>0.13.2</version>
+    <time>1692795408</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105266</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>87e32eef16d03d9f3346956667293321</srcmd5>
+    <version>0.14.0</version>
+    <time>1695758420</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.0:
+  * Do not run ``meson install`` to build a wheel.
+  * Obey the ``--skip-subprojects`` when specified for the ``meson
+    install`` command.
+  * Implement support for the ``exclude_directories`` and
+    ``exclude_files`` arguments to Meson ``install_subdir()`` function
+    and similar installation functions. This requires Meson version
+    1.1.0 or later.
+  * Implement support for building wheels targeting the Python limited API.
+  * When ``pyproject.toml`` does not contain a ``version`` field and
+    ``version`` is not declared dynamic, raise an error instead of
+    silently using the version declared in ``meson.build``.
+  * Fix the mtime of source files in the sdist tarball.
+  * Add ``objc`` and ``objcpp`` compilers to the cross file generated
+    when the ``$ARCHFLAGS`` is set.
+- Add patch no-build-isolation-in-test.patch, don't use an isolated
+  environment.</comment>
+    <requestid>1112687</requestid>
+  </revision>
+</revisionlist>

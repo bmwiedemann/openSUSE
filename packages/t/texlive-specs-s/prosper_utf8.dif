@@ -1,0 +1,360 @@
+---
+ tex/latex/prosper/PPRalienglow.sty    |    2 +-
+ tex/latex/prosper/PPRautumn.sty       |    2 +-
+ tex/latex/prosper/PPRazure.sty        |    2 +-
+ tex/latex/prosper/PPRcapsules.sty     |    4 ++--
+ tex/latex/prosper/PPRcontemporain.sty |    2 +-
+ tex/latex/prosper/PPRcorners.sty      |   30 +++++++++++++++---------------
+ tex/latex/prosper/PPRdarkblue.sty     |    2 +-
+ tex/latex/prosper/PPRdefault.sty      |    2 +-
+ tex/latex/prosper/PPRframes.sty       |    4 ++--
+ tex/latex/prosper/PPRgyom.sty         |    8 ++++----
+ tex/latex/prosper/PPRlignesbleues.sty |    4 ++--
+ tex/latex/prosper/PPRnuancegris.sty   |    4 ++--
+ tex/latex/prosper/PPRprettybox.sty    |    8 ++++----
+ tex/latex/prosper/PPRrico.sty         |    8 ++++----
+ tex/latex/prosper/PPRthomasd.sty      |    8 ++++----
+ tex/latex/prosper/PPRtroispoints.sty  |    2 +-
+ tex/latex/prosper/prosper.cls         |    4 ++--
+ 17 files changed, 48 insertions(+), 48 deletions(-)
+
+--- texmf-dist/tex/latex/prosper/PPRalienglow.sty
++++ texmf-dist/tex/latex/prosper/PPRalienglow.sty	2021-06-30 12:45:36.239680873 +0000
+@@ -1,6 +1,6 @@
+ %%=============================================================================
+ %% PPRalienglow.sty (a slide style for Prosper)
+-%% Copyright 2000-2001 Frédéric Goualard
++%% Copyright 2000-2001 FrÃ©dÃ©ric Goualard
+ %%
+ %% This program may be distributed and/or modified under the
+ %% conditions of the LaTeX Project Public License, either version 1.2
+--- texmf-dist/tex/latex/prosper/PPRautumn.sty
++++ texmf-dist/tex/latex/prosper/PPRautumn.sty	2021-06-30 12:45:36.287679995 +0000
+@@ -1,6 +1,6 @@
+ %%=============================================================================
+ %% PPRautumn.sty (a slide style for Prosper)
+-%% Copyright 2000-2001 Frédéric Goualard
++%% Copyright 2000-2001 FrÃ©dÃ©ric Goualard
+ %%
+ %% This program may be distributed and/or modified under the
+ %% conditions of the LaTeX Project Public License, either version 1.2
+--- texmf-dist/tex/latex/prosper/PPRazure.sty
++++ texmf-dist/tex/latex/prosper/PPRazure.sty	2021-06-30 12:45:36.339679043 +0000
+@@ -1,6 +1,6 @@
+ %%=============================================================================
+ %% PPRazure.sty (a slide style for Prosper)
+-%% Copyright 2000-2001 Frédéric Goualard
++%% Copyright 2000-2001 FrÃ©dÃ©ric Goualard
+ %%
+ %% This program may be distributed and/or modified under the
+ %% conditions of the LaTeX Project Public License, either version 1.2
+--- texmf-dist/tex/latex/prosper/PPRcapsules.sty
++++ texmf-dist/tex/latex/prosper/PPRcapsules.sty	2021-06-30 12:45:36.387678165 +0000
+@@ -2,8 +2,8 @@
+ % Prosper -- (PPRcapsules.sty) Style file
+ % A LaTeX class for creating slides
+ % Author: Mathieu Goutelle (mgoutell[at]users[dot]sourceforge[dot]net)
+-%         INRIA Rhône-Alpes
+-%         École Normale Supérieure de Lyon, France
++%         INRIA RhÃ´ne-Alpes
++%         Ã‰cole Normale SupÃ©rieure de Lyon, France
+ %
+ % Copyright (c) 2002-2003 Mathieu Goutelle
+ % All rights reserved.
+--- texmf-dist/tex/latex/prosper/PPRcontemporain.sty
++++ texmf-dist/tex/latex/prosper/PPRcontemporain.sty	2021-06-30 12:45:36.439677213 +0000
+@@ -1,6 +1,6 @@
+ %%=============================================================================
+ %% PPRcontemporain.sty (a slide style for Prosper)
+-%% Copyright 2000-2001 Frédéric Goualard
++%% Copyright 2000-2001 FrÃ©dÃ©ric Goualard
+ %%
+ %% This program may be distributed and/or modified under the
+ %% conditions of the LaTeX Project Public License, either version 1.2
+--- texmf-dist/tex/latex/prosper/PPRcorners.sty
++++ texmf-dist/tex/latex/prosper/PPRcorners.sty	2021-06-30 12:45:36.479676481 +0000
+@@ -27,20 +27,20 @@
+ %=============================================================================
+ 
+ % 
+-% ---[ Subtilités ]---
++% ---[ SubtilitÃ©s ]---
+ %
+-% Pour de pures raisons esthétiques, j'ai ajouté deux fonctions :
+-% \slideCaptionLeft{MonTexte} qui permet de définir un cartouche en bas à
+-%       gauche (contient \@Author par défaut)
+-% \NothingLeftPastThisPoint{} pose la fin du décompte de page. Cela
+-%       permet d'avoir des slides en rab pour les réponses aux questions
+-%       évidentes sans qu'ils soient comptés dans le nombre de pages
+-% De plus, la commande \NotLastYetMark peut être redéfinie pour
+-% choisir le marqueur utilisé sur les overlays sauf le dernier (j'ai
+-% tendance sous le stress à oublier mes animations et cela me permet
++% Pour de pures raisons esthÃ©tiques, j'ai ajoutÃ© deux fonctions :
++% \slideCaptionLeft{MonTexte} qui permet de dÃ©finir un cartouche en bas Ã 
++%       gauche (contient \@Author par dÃ©faut)
++% \NothingLeftPastThisPoint{} pose la fin du dÃ©compte de page. Cela
++%       permet d'avoir des slides en rab pour les rÃ©ponses aux questions
++%       Ã©videntes sans qu'ils soient comptÃ©s dans le nombre de pages
++% De plus, la commande \NotLastYetMark peut Ãªtre redÃ©finie pour
++% choisir le marqueur utilisÃ© sur les overlays sauf le dernier (j'ai
++% tendance sous le stress Ã  oublier mes animations et cela me permet
+ % de me souvenir que mon changement de slide sera une animation et pas
+-% un vrai changement de slide. Oui, c'est idiot). Pour supprimer ça il
+-% suffit de redéfinir la commande pour ne rien marquer du tout.
++% un vrai changement de slide. Oui, c'est idiot). Pour supprimer Ã§a il
++% suffit de redÃ©finir la commande pour ne rien marquer du tout.
+ %
+ 
+ \NeedsTeXFormat{LaTeX2e}[1995/12/01]
+@@ -110,7 +110,7 @@
+ \myitem{3}{$\star$}
+ \fi
+ 
+-\gdef\@captionLeft{}%\@Author} % ATTENTION ! \@Author doit être défini !
++\gdef\@captionLeft{}%\@Author} % ATTENTION ! \@Author doit Ãªtre dÃ©fini !
+ \newcommand{\slideCaptionLeft}[1]{\gdef\@captionLeft{#1}}
+ \newcommand{\NotLastYetMark}{$\triangledown$}
+ 
+@@ -157,14 +157,14 @@
+ 
+ \AtBeginDocument{%
+ %
+-% Redéf de lastpage@label pour pouvoir le définir avant la fin
++% RedÃ©f de lastpage@label pour pouvoir le dÃ©finir avant la fin
+ %
+   \let\jyb@lastPagePutLabel=\lastpage@putlabel%
+   \def\lastpage@putlabel{%
+     \ifLastPageAlreadyDefined{}\else\jyb@lastPagePutLabel%
+     \global\LastPageAlreadyDefinedtrue\fi}%
+ %
+-% on redéfinit \maketitle pour virer le cartouche en bas
++% on redÃ©finit \maketitle pour virer le cartouche en bas
+ %
+   \let\jyb@maketitle=\maketitle%
+   \def\maketitle{%
+--- texmf-dist/tex/latex/prosper/PPRdarkblue.sty
++++ texmf-dist/tex/latex/prosper/PPRdarkblue.sty	2021-06-30 12:45:36.531675530 +0000
+@@ -1,6 +1,6 @@
+ %%=============================================================================
+ %% PPRdarkblue.sty (a slide style for Prosper)
+-%% Copyright 2000-2001 Frédéric Goualard
++%% Copyright 2000-2001 FrÃ©dÃ©ric Goualard
+ %%
+ %% This program may be distributed and/or modified under the
+ %% conditions of the LaTeX Project Public License, either version 1.2
+--- texmf-dist/tex/latex/prosper/PPRdefault.sty
++++ texmf-dist/tex/latex/prosper/PPRdefault.sty	2021-06-30 12:45:36.571674798 +0000
+@@ -1,6 +1,6 @@
+ %==============================================================================
+ %% PPRdefault.sty (a slide style for Prosper)
+-%% Copyright 2000-2001 Frédéric Goualard
++%% Copyright 2000-2001 FrÃ©dÃ©ric Goualard
+ %%
+ %% Note: this style was contributed anonymously by a user.
+ %%
+--- texmf-dist/tex/latex/prosper/PPRframes.sty
++++ texmf-dist/tex/latex/prosper/PPRframes.sty	2021-06-30 12:45:36.615673993 +0000
+@@ -1,6 +1,6 @@
+ %%=============================================================================
+ %% PPRframes.sty (a slide style for Prosper)
+-%% Copyright 2000-2001 Frédéric Goualard
++%% Copyright 2000-2001 FrÃ©dÃ©ric Goualard
+ %%
+ %% This program may be distributed and/or modified under the
+ %% conditions of the LaTeX Project Public License, either version 1.2
+@@ -25,7 +25,7 @@
+ \RequirePackage{amssymb}
+ 
+ % Chargement des fichiers de pstricks (on teste les noms en vigueur pour
+-% gérer les différentes versions de pstricks).
++% gÃ©rer les diffÃ©rentes versions de pstricks).
+ \IfFileExists{pst-grad}{\RequirePackage{pst-grad}}{\RequirePackage{gradient}}
+ 
+ \newgray{gris1}{.40}
+--- texmf-dist/tex/latex/prosper/PPRgyom.sty
++++ texmf-dist/tex/latex/prosper/PPRgyom.sty	2021-06-30 12:45:36.655673261 +0000
+@@ -1,11 +1,11 @@
+ %==============================================================================
+ % Prosper -- (PPRgyom.sty) Style file
+ % A LaTeX class for creating slides
+-% Author: Gyôm Raschia (raschia@irin.univ-nantes.fr)
++% Author: GyÃ´m Raschia (raschia@irin.univ-nantes.fr)
+ %         Institut de Recherche en Informatique de Nantes
+ %         University of Nantes, France
+ % 
+-% Copyright (c) 2000 Gyôm Raschia
++% Copyright (c) 2000 GyÃ´m Raschia
+ % All rights reserved.
+ % 
+ % Permission is hereby granted, without written agreement and without
+@@ -29,8 +29,8 @@
+ %==============================================================================
+ \NeedsTeXFormat{LaTeX2e}[1995/12/01]
+ \ProvidesPackage{PPRgyom}[2000/04/17]
+-\typeout{`Gyôm personal' style for Prosper ---}
+-\typeout{(c) 2000 Gyôm Raschia, IRIN, France}
++\typeout{`GyÃ´m personal' style for Prosper ---}
++\typeout{(c) 2000 GyÃ´m Raschia, IRIN, France}
+ \typeout{CVSId: $Id: PPRgyom.sty,v 1.1.1.1 2000/11/28 11:15:20 exupery Exp $}
+ \typeout{ }
+ 
+--- texmf-dist/tex/latex/prosper/PPRlignesbleues.sty
++++ texmf-dist/tex/latex/prosper/PPRlignesbleues.sty	2021-06-30 12:45:36.699672456 +0000
+@@ -1,6 +1,6 @@
+ %%=============================================================================
+ %% PPRlignesbleues.sty (a slide style for Prosper)
+-%% Copyright 2000-2001 Frédéric Goualard
++%% Copyright 2000-2001 FrÃ©dÃ©ric Goualard
+ %%
+ %% This program may be distributed and/or modified under the
+ %% conditions of the LaTeX Project Public License, either version 1.2
+@@ -43,7 +43,7 @@
+ \fi
+ 
+ % Chargement des fichiers de pstricks (on teste les noms en vigueur pour
+-% gérer les différentes versions de pstricks).
++% gÃ©rer les diffÃ©rentes versions de pstricks).
+ \IfFileExists{pst-grad}{\RequirePackage{pst-grad}}{\RequirePackage{gradient}}
+ 
+ 
+--- texmf-dist/tex/latex/prosper/PPRnuancegris.sty
++++ texmf-dist/tex/latex/prosper/PPRnuancegris.sty	2021-06-30 12:45:36.739671723 +0000
+@@ -1,6 +1,6 @@
+ %%=============================================================================
+ %% PPRnuancegris.sty (a slide style for Prosper)
+-%% Copyright 2000-2001 Frédéric Goualard
++%% Copyright 2000-2001 FrÃ©dÃ©ric Goualard
+ %%
+ %% This program may be distributed and/or modified under the
+ %% conditions of the LaTeX Project Public License, either version 1.2
+@@ -44,7 +44,7 @@
+ \newrgbcolor{purple}{0.63 0.13 0.94}
+ 
+ % Chargement des fichiers de pstricks (on teste les noms en vigueur pour
+-% gérer les différentes versions de pstricks).
++% gÃ©rer les diffÃ©rentes versions de pstricks).
+ \IfFileExists{pst-grad}{\RequirePackage{pst-grad}}{\RequirePackage{gradient}}
+ 
+ \FontTitle{\usefont{T1}{phv}{b}{n}\fontsize{20.74pt}{20pt}%
+--- texmf-dist/tex/latex/prosper/PPRprettybox.sty
++++ texmf-dist/tex/latex/prosper/PPRprettybox.sty	2021-06-30 12:45:36.783670918 +0000
+@@ -1,14 +1,14 @@
+ %==============================================================================
+ % Prosper -- (PPRprettybox.sty) Style file
+ % A LaTeX class for creating slides
+-% Author: Marlon Régis Schmitz(mschmitz@if.ufrgs.br)
+-%         Instituto de Física
++% Author: Marlon RÃ©gis Schmitz(mschmitz@if.ufrgs.br)
++%         Instituto de FÃ­sica
+ %         Universidade Federal do Rio Grande do Sul, Brazil
+ %
+ % This comes from PPRframes.sty
+ % Many thank for Frederic Goualard <Frederic.Goualard@irin.univ-nantes.fr>
+ %
+-% Copyright (c) 2002 Marlon Régis Schmitz
++% Copyright (c) 2002 Marlon RÃ©gis Schmitz
+ % All rights reserved.
+ % 
+ % Permission is hereby granted, without written agreement and without
+@@ -34,7 +34,7 @@
+ \NeedsTeXFormat{LaTeX2e}[1995/12/01]
+ \ProvidesPackage{PPRprettybox}[2002/11/29]
+ \typeout{`Pretty Box' style for prosper ---}
+-\typeout{(c) 2002 Marlon Régis Schmitz,IFUFRGS, Brazil}
++\typeout{(c) 2002 Marlon RÃ©gis Schmitz,IFUFRGS, Brazil}
+ \typeout{CVSId : $Id: PPRprettybox.sty,v 1.1 2003/01/27 14:39:20 exupery Exp $}
+ \typeout{Do you like this?}
+ 
+--- texmf-dist/tex/latex/prosper/PPRrico.sty
++++ texmf-dist/tex/latex/prosper/PPRrico.sty	2021-06-30 12:45:36.823670185 +0000
+@@ -1,11 +1,11 @@
+ %==============================================================================
+ % Prosper -- (PPRrico.sty) Style file
+ % A LaTeX class for creating slides
+-% Author: Eric Languénou (Eric.Languenou@irin.univ-nantes.fr)
++% Author: Eric LanguÃ©nou (Eric.Languenou@irin.univ-nantes.fr)
+ %         Institut de Recherche en Informatique de Nantes
+ %         University of Nantes, France
+ %
+-% Copyright (c) 2000 Eric Languénou
++% Copyright (c) 2000 Eric LanguÃ©nou
+ % All rights reserved.
+ % 
+ % Permission is hereby granted, without written agreement and without
+@@ -31,7 +31,7 @@
+ \NeedsTeXFormat{LaTeX2e}[1995/12/01]
+ \ProvidesPackage{PPRrico}[2000/09/08]
+ \typeout{`Rico'  style for prosper ---}
+-\typeout{(c) 2000 Eric Languénou}
++\typeout{(c) 2000 Eric LanguÃ©nou}
+ \typeout{CVSId: $Id: PPRrico.sty,v 1.1.1.1 2000/11/28 11:15:20 exupery Exp $}
+ \typeout{ }
+ 
+@@ -39,7 +39,7 @@
+ \RequirePackage{amssymb}
+ 
+ % Chargement des fichiers de pstricks (on teste les noms en vigueur pour
+-% gérer les différentes versions de pstricks).
++% gÃ©rer les diffÃ©rentes versions de pstricks).
+ \IfFileExists{pst-grad}{\RequirePackage{pst-grad}}{\RequirePackage{gradient}}
+ 
+ \newgray{gris1}{.40}
+--- texmf-dist/tex/latex/prosper/PPRthomasd.sty
++++ texmf-dist/tex/latex/prosper/PPRthomasd.sty	2021-06-30 12:45:36.875669234 +0000
+@@ -85,7 +85,7 @@
+ % Definition of this style for slides.
+ 
+ \newcommand{\TPFrame}[1] {%
+-% Der Rahmen um die Überschrift
++% Der Rahmen um die Ãœberschrift
+ \def\Fleft{-0.5}
+ \def\Fright{11.9}
+ \def\Fupper{8.5}
+@@ -111,15 +111,15 @@
+ %\FPeval{result}{ ( \PGBFright - 0.2 - \PGBFleft) / \themylastpage *
+ %\thepage - \PGBFleft} %% Calculate Right Side of progressbar
+ \FPeval{result}{(( \thepage / \themylastpage ) * ( \PGBFright - \PGBFleft )) + \PGBlhs + \PGBoffset}
+-\typeout{Debug: \PGBFleft § \PGBleft § \thepage § \result § \themylastpage}
++\typeout{Debug: \PGBFleft Â§ \PGBleft Â§ \thepage Â§ \result Â§ \themylastpage}
+ %
+ 
+ \psline[linecolor=highlighted,linewidth=3pt](\PGBleft,\PGBypos)(\result ,\PGBypos)
+ \PutLogo % Mandatory
+ {#1}}
+ 
+-%% vorderezahl  größer -> rechts
+-%% hinterezahl  größer -> höher ?
++%% vorderezahl  grÃ¶ÃŸer -> rechts
++%% hinterezahl  grÃ¶ÃŸer -> hÃ¶her ?
+ \NewSlideStyle{t}{4.5,3.2}{TPFrame}
+ \PDFCroppingBox{10 40 594 800}
+ \RequirePackage{semhelv}
+--- texmf-dist/tex/latex/prosper/PPRtroispoints.sty
++++ texmf-dist/tex/latex/prosper/PPRtroispoints.sty	2021-06-30 12:45:36.923668355 +0000
+@@ -1,6 +1,6 @@
+ %%=============================================================================
+ %% PPRtroispoints.sty (a slide style for Prosper)
+-%% Copyright 2000-2001 Frédéric Goualard
++%% Copyright 2000-2001 FrÃ©dÃ©ric Goualard
+ %%
+ %% This program may be distributed and/or modified under the
+ %% conditions of the LaTeX Project Public License, either version 1.2
+--- texmf-dist/tex/latex/prosper/prosper.cls
++++ texmf-dist/tex/latex/prosper/prosper.cls	2021-06-30 12:45:36.975667403 +0000
+@@ -1,6 +1,6 @@
+ %%=============================================================================
+ %% prosper.cls
+-%% Copyright 2000-2001 Frédéric Goualard and Peter Møller Neergaard
++%% Copyright 2000-2001 FrÃ©dÃ©ric Goualard and Peter MÃ¸ller Neergaard
+ %%
+ %% This program may be distributed and/or modified under the
+ %% conditions of the LaTeX Project Public License, either version 1.2
+@@ -19,7 +19,7 @@
+ \NeedsTeXFormat{LaTeX2e}[1995/12/01]
+ \ProvidesClass{prosper}[\Prosper@Version]
+ \typeout{(c) 2000-2001 Frederic Goualard, EPFL, Switzerland}
+-\typeout{          and Peter Møller Neergaard, Boston Univ., USA}
++\typeout{          and Peter MÃ¸ller Neergaard, Boston Univ., USA}
+ \typeout{CVSId: $Id: prosper.cls,v 1.24 2002/11/25 14:35:50 exupery Exp $}
+ 
+ \newif\ifDVItoPS

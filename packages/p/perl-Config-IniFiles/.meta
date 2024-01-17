@@ -1,0 +1,8 @@
+<package name="perl-Config-IniFiles" project="openSUSE:Factory">
+  <title>Module for reading .ini-style configuration files</title>
+  <description>Config::IniFiles provides a way to have readable configuration files
+outside your Perl script. Configurations can be imported (inherited,
+stacked,...), sections can be grouped, and settings can be accessed from a
+tied hash.</description>
+  <devel project="devel:languages:perl" package="perl-Config-IniFiles"/>
+</package>

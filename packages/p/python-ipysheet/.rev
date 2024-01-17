@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61c41f8afd9dc6d56c2a7f37cb59ae58</srcmd5>
+    <version>0.3.4</version>
+    <time>1558516140</time>
+    <user>dimstar_suse</user>
+    <comment>Spreadsheet widget for the Jupyter notebook</comment>
+    <requestid>699786</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>311651886eacebf6b353006b4db9826a</srcmd5>
+    <version>0.4.2</version>
+    <time>1560459863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709565</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>40174edf22b83a29cd04dc63d1f25c11</srcmd5>
+    <version>0.4.3</version>
+    <time>1564483115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719677</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5474e49a1c681207265affe92ba800bb</srcmd5>
+    <version>0.4.4</version>
+    <time>1592307949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.4:
+  * support for jupyterlab 2</comment>
+    <requestid>814853</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0075b8fa63a81cc2ed7270306b3e4c96</srcmd5>
+    <version>0.4.4</version>
+    <time>1619447961</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>888349</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b9d8ada0af5b8f1e308c93a616e9e538</srcmd5>
+    <version>0.5.0</version>
+    <time>1634587169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925900</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>51539ad5d171b7f6823612e0a5a989b5</srcmd5>
+    <version>0.6.0</version>
+    <time>1665754910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6
+  * no release notes
+- Added compatibility with ipywidgets 8.x
+- Added a warning about the deprecation of the whole package
+
+- Revert 233.patch. Wait for working PR
+  -- gh#quantstack/ipysheet#233
+
+- Add patch 233.patch to fix incompatibility with ipywidgets 8.x
+  gh#quantstack/ipysheet#233</comment>
+    <requestid>1010447</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fccdfaee01e9ae4b3fd427acc55c654f</srcmd5>
+    <version>0.7.0</version>
+    <time>1672093676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7
+  * no release note (removes jupyter-server dependency)
+- Move to PEP517 build</comment>
+    <requestid>1045317</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2ce526ba53e531d6b83c1007f894be58</srcmd5>
+    <version>0.7.0</version>
+    <time>1686752993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092989</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>61880645a739e83dd715a84a490c3c8b</srcmd5>
+    <version>0.7.0</version>
+    <time>1692379697</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104436</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="kpty" project="openSUSE:Factory">
+  <title>kpty</title>
+  <description>KPty</description>
+  <devel project="KDE:Frameworks5" package="kpty"/>
+</package>

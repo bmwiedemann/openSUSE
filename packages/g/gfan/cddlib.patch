@@ -1,0 +1,74 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-09-19 11:39:47.110726857 +0200
+
+To fix the CDDPREFIX yes-or-no conundrum, cddlib 0.94k has introduced
+new unique locations for use inside <>. Adjust gfan.
+
+---
+ src/app_librarytest.cpp |    9 ++-------
+ src/gfanlib_zcone.cpp   |    9 ++-------
+ src/lp_cdd.cpp          |   12 +++---------
+ 3 files changed, 7 insertions(+), 23 deletions(-)
+
+Index: gfan0.6.2/src/app_librarytest.cpp
+===================================================================
+--- gfan0.6.2.orig/src/app_librarytest.cpp
++++ gfan0.6.2/src/app_librarytest.cpp
+@@ -8,13 +8,8 @@
+ #include "gfanapplication.h"
+ #include "gfanlib.h"
+ #include "printer.h"
+-#ifdef NOCDDPREFIX
+-#include "setoper.h"
+-#include "cdd.h"
+-#else
+-#include "cdd/setoper.h"
+-#include "cdd/cdd.h"
+-#endif
++#include <cddlib/setoper.h>
++#include <cddlib/cdd.h>
+ #include <iostream>
+ #include <fstream>
+ using namespace gfan;
+Index: gfan0.6.2/src/gfanlib_zcone.cpp
+===================================================================
+--- gfan0.6.2.orig/src/gfanlib_zcone.cpp
++++ gfan0.6.2/src/gfanlib_zcone.cpp
+@@ -12,13 +12,8 @@
+ #include <sstream>
+ 
+ //extern "C"{
+-#ifdef NOCDDPREFIX
+-#include "setoper.h"
+-#include "cdd.h"
+-#else
+-#include "cdd/setoper.h"
+-#include "cdd/cdd.h"
+-#endif
++#include <cddlib/setoper.h>
++#include <cddlib/cdd.h>
+ //}
+ 
+ namespace gfan{
+Index: gfan0.6.2/src/lp_cdd.cpp
+===================================================================
+--- gfan0.6.2.orig/src/lp_cdd.cpp
++++ gfan0.6.2/src/lp_cdd.cpp
+@@ -1,14 +1,8 @@
+ #include "lp_cdd.h"
+ //extern "C"{
+-#ifdef NOCDDPREFIX
+-#include "setoper.h"
+-#include "cdd.h"
+-#include "cdd_f.h"
+-#else
+-#include "cdd/setoper.h"
+-#include "cdd/cdd.h"
+-#include "cdd/cdd_f.h"
+-#endif
++#include <cddlib/setoper.h>
++#include <cddlib/cdd.h>
++#include <cddlib/cdd_f.h>
+ //}
+ #include "termorder.h"
+ #include "printer.h"

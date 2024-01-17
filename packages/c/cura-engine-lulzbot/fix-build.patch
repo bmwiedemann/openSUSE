@@ -1,0 +1,18 @@
+--- ./src/communication/ArcusCommunication.cpp.orig	2019-06-14 09:55:36.709514543 +0200
++++ ./src/communication/ArcusCommunication.cpp	2019-06-14 09:55:42.877682665 +0200
+@@ -481,7 +481,7 @@
+ 
+ void ArcusCommunication::sliceNext()
+ {
+-    const Arcus::MessagePtr message = private_data->socket->takeNextMessage(true);
++    const Arcus::MessagePtr message = private_data->socket->takeNextMessage();
+ 
+     //Handle the main Slice message.
+     const cura::proto::Slice* slice_message = dynamic_cast<cura::proto::Slice*>(message.get()); //See if the message is of the message type Slice. Returns nullptr otherwise.
+@@ -535,4 +535,4 @@
+ 
+ } //namespace cura
+ 
+-#endif //ARCUS
+\ Kein Zeilenumbruch am Dateiende.
++#endif //ARCUS

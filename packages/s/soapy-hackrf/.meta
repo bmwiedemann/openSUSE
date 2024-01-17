@@ -1,0 +1,9 @@
+<package name="soapy-hackrf" project="openSUSE:Factory">
+  <title>SoapySDR HackRF module</title>
+  <description>Soapy HackRF - HackRF device support for Soapy SDR.
+A Soapy module that supports HackRF devices within the Soapy API.
+
+</description>
+  <devel project="hardware:sdr" package="soapy-hackrf"/>
+  <url>https://github.com/pothosware/SoapyHackRF/wiki</url>
+</package>

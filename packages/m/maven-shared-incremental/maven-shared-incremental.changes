@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Sep  6 22:33:43 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove unnecessary dependency on xmvn tools and parent pom
+
+-------------------------------------------------------------------
+Mon Mar 21 04:38:35 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
+Mon Mar 25 08:31:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-shared-incremental 1.1
+- Generate and customize the ant build.xml file

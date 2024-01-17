@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Mon May 11 07:55:29 UTC 2015 - coolo@suse.com
+
+- updated to 0.04
+   see /usr/share/doc/packages/perl-Class-ErrorHandler/Changes
+
+  0.04 2015-05-10T22:08:23Z
+  
+      - use EU::MM
+
+-------------------------------------------------------------------
+Tue Nov 26 14:39:47 UTC 2013 - coolo@suse.com
+
+- updated to 0.03
+  - minl migrate
+  - Re-packaging without auto_install().  (ANDK)
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:55 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Jul 25 19:29:22 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Fri Jun 19 15:34:45 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- clean up spec
+  o added header
+

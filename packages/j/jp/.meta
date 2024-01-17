@@ -1,0 +1,9 @@
+<package name="jp" project="openSUSE:Factory">
+  <title>Simple terminal plots from JSON (or CSV) data</title>
+  <description>Dead simple terminal plots from JSON (or CSV) data. Bar charts,
+line charts, scatter plots, histograms and heatmaps are supported.
+
+</description>
+  <devel project="utilities" package="jp"/>
+  <url>https://github.com/sgreben/jp</url>
+</package>

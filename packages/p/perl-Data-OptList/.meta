@@ -1,0 +1,36 @@
+<package name="perl-Data-OptList" project="openSUSE:Factory">
+  <title>Parse and validate simple name/value option pairs</title>
+  <description>    Hashes are great for storing named data, but if you want more than one
+    entry for a name, you have to use a list of pairs. Even then, this is
+    really boring to write:
+
+      $values = [
+        foo =&gt; undef,
+        bar =&gt; undef,
+        baz =&gt; undef,
+        xyz =&gt; { ... },
+      ];
+
+    Just look at all those undefs! Don't worry, we can get rid of those:
+
+      $values = [
+        map { $_ =&gt; undef } qw(foo bar baz),
+        xyz =&gt; { ... },
+      ];
+
+    Aaaauuugh! We've saved a little typing, but now it requires thought to
+    read, and thinking is even worse than typing.
+
+    With Data::OptList, you can do this instead:
+
+      $values = Data::OptList::mkopt([
+        qw(foo bar baz),
+        xyz =&gt; { ... },
+      ]);
+
+    This works by assuming that any defined scalar is a name and any
+    reference following a name is its value.
+
+  Author:	Ricardo SIGNES, &lt;rjbs@cpan.org&gt;</description>
+  <devel project="devel:languages:perl" package="perl-Data-OptList"/>
+</package>

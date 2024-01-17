@@ -1,0 +1,6 @@
+<package name="cutecom" project="openSUSE:Factory">
+  <title>Serial terminal</title>
+  <description>Qt based serial terminal</description>
+  <devel project="devel:tools" package="cutecom"/>
+  <url>http://cutecom.sourceforge.net/</url>
+</package>

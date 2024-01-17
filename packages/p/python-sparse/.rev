@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6dcbdc89ee4dca3452b74bafe34be359</srcmd5>
+    <version>0.3.1</version>
+    <time>1527933604</time>
+    <user>dimstar_suse</user>
+    <comment>Sparse n-dimensional arrays</comment>
+    <requestid>612045</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>084fa346760af4870698882daa2de1fd</srcmd5>
+    <version>0.3.1</version>
+    <time>1533045685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626393</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>46f89b81b40f8307128c7236e185478d</srcmd5>
+    <version>0.3.1</version>
+    <time>1545648257</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659685</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6a14e6bee7e1b79e42ec143dd70abe94</srcmd5>
+    <version>0.7.0</version>
+    <time>1555237309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692772</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b651e6b25c3809d65dfb30f09648e216</srcmd5>
+    <version>0.8.0</version>
+    <time>1569523033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728510</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e17d5f1867635b55362759df890e9ff2</srcmd5>
+    <version>0.11.2</version>
+    <time>1609405167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859301</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f7c5ae0c613db3e24b6bf979efac3358</srcmd5>
+    <version>0.11.2</version>
+    <time>1613427404</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 build</comment>
+    <requestid>871453</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b78272d170bcf48c93ee1725f56d9a81</srcmd5>
+    <version>0.13.0</version>
+    <time>1632341586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921019</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>af1dc49d00b0d93326471b69e0e68ecc</srcmd5>
+    <version>0.13.0</version>
+    <time>1643128562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948904</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1b6a36cc278b9f6ab6774aecf9c97268</srcmd5>
+    <version>0.13.0</version>
+    <time>1657885967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989321</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>0b82f5c1565a2e8545d171c38228f6ee</srcmd5>
+    <version>0.13.0</version>
+    <time>1666689612</time>
+    <user>dimstar_suse</user>
+    <comment>- Add skip-32bit-archs.patch skiping a failing test on 32bit arch
+  (gh#pydata/sparse#490).
+- Also remove conditional python_module definition.</comment>
+    <requestid>1030992</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7a846d2cac321ca16674ff5b4d5ca7cc</srcmd5>
+    <version>0.14.0</version>
+    <time>1679933742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074476</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e314fd970e370b406509728d31663bcd</srcmd5>
+    <version>0.14.0</version>
+    <time>1685476969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089730</requestid>
+  </revision>
+</revisionlist>

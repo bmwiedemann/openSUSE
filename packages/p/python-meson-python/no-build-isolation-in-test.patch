@@ -1,0 +1,10 @@
+Index: meson_python-0.14.0/tests/test_pep518.py
+===================================================================
+--- meson_python-0.14.0.orig/tests/test_pep518.py
++++ meson_python-0.14.0/tests/test_pep518.py
+@@ -27,4 +27,4 @@ def test_pep518(package, build_arg, tmp_
+ 
+     with chdir(package_dir / package), in_git_repo_context():
+         build_args = [build_arg] if build_arg else []
+-        subprocess.run([sys.executable, '-m', 'build', '--outdir', str(dist), *build_args], check=True)
++        subprocess.run([sys.executable, '-m', 'build', '-n', '--outdir', str(dist), *build_args], check=True)

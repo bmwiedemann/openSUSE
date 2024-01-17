@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Thu Aug 17 15:40:07 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Suggest primary python package -- boo#1214354
+
+-------------------------------------------------------------------
+Tue Jun 13 20:56:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Unpin jupyterlab build requirement
+
+-------------------------------------------------------------------
+Sun Dec 25 18:33:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7
+  * no release note (removes jupyter-server dependency)
+- Move to PEP517 build
+
+-------------------------------------------------------------------
+Thu Oct 13 09:12:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6
+  * no release notes
+- Added compatibility with ipywidgets 8.x
+- Added a warning about the deprecation of the whole package
+
+-------------------------------------------------------------------
+Wed Oct  5 14:21:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Revert 233.patch. Wait for working PR
+  -- gh#quantstack/ipysheet#233
+
+-------------------------------------------------------------------
+Wed Oct  5 11:39:48 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch 233.patch to fix incompatibility with ipywidgets 8.x
+  gh#quantstack/ipysheet#233
+
+-------------------------------------------------------------------
+Sun Oct 17 19:42:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5
+  * no release notes
+
+-------------------------------------------------------------------
+Mon Apr 26 05:46:29 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
+Tue Jun 16 08:48:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.4:
+  * support for jupyterlab 2
+
+-------------------------------------------------------------------
+Sat Jul 27 03:14:26 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.4.3
+  * Update to JupyterLab 1.0
+  * Use Image.from_file instead of Image.from_url
+
+-------------------------------------------------------------------
+Wed Jun 12 20:18:18 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.4.2
+  * Clear notebook state
+  * Fixup Jupyterlab extension
+  * Safe conditional formatting
+  * Add time cell type
+  * Fix row/column unused arguments
+  * Fix security issue due to growl<0.10 
+
+-------------------------------------------------------------------
+Tue Apr 30 01:07:28 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version (0.3.4)

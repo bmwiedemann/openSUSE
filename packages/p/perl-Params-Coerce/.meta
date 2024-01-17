@@ -1,0 +1,15 @@
+<package name="perl-Params-Coerce" project="openSUSE:Factory">
+  <title>Allows your classes to do coercion of parameters</title>
+  <description>A big part of good API design is that we should be able to be flexible in the
+ways that we take parameters.
+
+Params::Coerce attempts to encourage this, by making it easier to take a
+variety of different arguments, while adding negligable additional complexity
+to your code.
+
+Author:
+-------
+    Adam Kennedy &lt;adamk@cpan.org&gt;</description>
+  <devel project="devel:languages:perl" package="perl-Params-Coerce"/>
+  <url>http://search.cpan.org/perldoc?Params::Coerce</url>
+</package>
