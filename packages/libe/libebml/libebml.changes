@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Dec 28 12:53:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.4.5 (bsc#1218432):
+- update to 1.4.5 (bsc#1218432, CVE-2023-52339):
   * Fix invalid memory access (reading beyond allocated memory)
     due to missing integer overflow check.
 
