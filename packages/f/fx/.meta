@@ -1,0 +1,5 @@
+<package name="fx" project="openSUSE:Factory">
+  <title>fx</title>
+  <description></description>
+  <devel project="utilities" package="fx"/>
+</package>

@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Wed Dec 27 21:11:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 15.100:
+  * This version of the Last Resort fonts corresponds to
+    Unicode Version 15.1.0
+  * 627 mappings that correspond to the 627 new characters in
+    Unicode Version 15.1 were changed.
+  * 4,489 mappings that correspond to the 4,489 new characters in
+    Unicode Version 15.0 were changed.
+
+-------------------------------------------------------------------
+Wed Oct 21 13:27:38 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 13.001
+  * No functional change on Linux, just the file name changed.
+
+-------------------------------------------------------------------
+Sat Oct 10 16:13:13 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Initial release on build.opensuse.org (version 13.000)

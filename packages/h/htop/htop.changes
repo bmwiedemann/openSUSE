@@ -1,0 +1,898 @@
+-------------------------------------------------------------------
+Thu Jan 11 08:08:31 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.3.0:
+  * Multiple refactorings and code improvements
+  * Shorten docker container IDs to 12 characters
+  * Settings: preserve empty header
+  * Fix execlp() argument without pointer cast
+  * OpenFilesScreen: Make column sizing dynamic for file size, offset and inode
+  * Add support for "truss" (FreeBSD equivalent of "strace")
+  * Darwin: add NetworkIOMeter support
+  * HeaderLayout: add "3 columns - 40/30/30", "... 30/40/30" & "... 30/30/40"
+  * Meter: use correct unicode characters for digit '9'
+  * Note in manual re default memory units of KiB
+  * Add column for process container name
+  * Add logic to filter the container name (+type) from the CGroup name
+  * Change NetworkIOMeter value unit from KiB/s to bytes/second
+  * Cap DiskIOMeter "utilisation" percentage at 100%
+  * PCP platform implementation of frontswap and zswap accounting
+  * Shorten podman/libpod container IDs to 12 characters
+  * Write configuration to temporary file first
+  * Incorporate shared memory in bar text
+  * Move shared memory next to used memory
+  * Correct order of memory meter in help
+  * Add recalculate to Ctrl-L refresh
+  * Update process list on thread visibility toggling
+  * Support dynamic screens with 'top-most' entities beyond processes
+  * Introduce Row and Table classes for screens beyond top-processes
+  * Rework ZramMeter and remove MeterClass.comprisedValues
+  * More robust logic for CPU process percentages (Linux & PCP)
+  * Show year as start time for processes older than a year
+  * Short-term fix for docker container detection
+  * default color preset: use bold blue for better visibility
+  * Document 'O' keyboard shortcut
+  * Implement logic for '--max-iterations'
+  * Update F5 key label on tab switch (Tree <-> List)
+  * Force re-sorting of the process list view after switching between list/treeview mode
+  * Linux: (hack) work around the fact that Zswapped pages may be SwapCached
+  * Linux: implement zswap support
+  * {Memory,Swap}Meter: add "compressed memory" metrics
+  * Darwin: add DiskIOMeter support
+  * Fix scroll relative to followed process
+  * ZramMeter: update bar mode
+  * Use shared real memory on FreeBSD
+  * Increase Search and Filter max string length to 128
+  * Improve CPU computation code
+  * Remove LXC special handling for the CPU count
+  * Create new File Descriptor meter
+  * PCP: add IRQ PSI meter
+  * Linux: add IRQ PSI meter
+  * Linux: highlight username if process has elevated privileges
+  * Add support for scheduling policies
+  * Add a systemd user meter to monitor user units.
+  * FreeBSD: remove duplicate zfs ARC size subtraction
+
+-------------------------------------------------------------------
+Tue Nov 28 12:23:07 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch to xz compressed sources
+
+-------------------------------------------------------------------
+Mon Jun 12 10:50:53 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop no longer available configure option
+
+-------------------------------------------------------------------
+Mon Feb  6 09:45:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.2:
+  * CPUMeter now can show frequency in text mode
+  * Add option to render distribution path prefixes shadowed
+  * DiskIOMeter converts to bytes per second (not per interval)
+  * DiskIOMeter uses complete units, including missing "iB/s"
+  * DiskIOMeter indicates read and write in meter mode
+  * NetworkIOMeter converts to packets per second, shows packet rate
+  * Allow continued process following when changing display settings
+  * Update the panel header when changing to another tab
+  * Drop margin around the header if there are no meters
+  * Use Unicode replacement character for non-printable characters
+  * Default color preset uses bold blue for better visibility
+  * Update the Panel header on sort order inversions ('I')
+  * Toggle the header meters with pound key
+  * Fix ScreenPanel to handle quitting the panel while renaming
+  * Add fallback for HOME environment variable using passwd database
+  * Replace meaningless ID column with FD column in lock screen
+  * Use device format in the lock screen matching the files screen
+  * On Linux, improvements to file-descriptor lock detection
+  * On Linux, further distinguish systemd states in the SystemdMeter
+  * On Linux, improvements to cgroup and container identification
+  * On Linux, support openat(2) without readlinkat(2) platforms
+  * On Darwin, fix current process buffer handling for busy systems
+  * On DragonFly BSD, fix incorrect processor time of processes
+  * On FreeBSD, fix an issue with the memory graph not showing correctly
+  * On FreeBSD, add support for displaying shared memory usage
+  * On PCP, use pmLookupDescs(3) if available for efficiency
+  * On PCP, normalize generic columns values for consistent display
+  * On PCP, changes preparing for configurable, dynamic screens
+  * Handle invalid process columns from the configuration file
+  * Avoid undefined behaviour with deeply nested processes
+  * Fix crash when removing the currently active screen
+  * Prevent possible crash on a very early error path
+  * Include automake for Debian/Ubuntu
+  * Restore non-mouse support
+  * Reject unsupported command line arguments
+  * Document idle process state
+  * Clarify M_TRS/M_DRS columns
+
+-------------------------------------------------------------------
+Fri Jun  3 08:06:33 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.2.1
+  * Fix setting to show all branches collapsed by default
+  * Restore functionality of stripExeFromCmdline setting
+  * Fix some command line display settings not being honored without restart
+  * Display single digit precision for CPU% greater than 99.9%
+  * On Linux, FreeBSD and PCP consider only shrinkable ZFS ARC as cache
+  * On Linux, increase field width of CPUD% and SWAPD% columns
+  * Colorize process state characters in help screen
+  * Use mousemask(3X) to enable and disable mouse control
+  * Fix heap buffer overflow in Vector_compact
+  * On Solaris, fix a process time scaling error
+  * On Solaris, fix the build
+  * On NetBSD, OpenBSD and Solaris ensure env buffer size is sufficient
+  * On Linux, resolve processes exiting interfering with sampling
+  * Fix ProcessList quadratic removal when scanning processes
+  * Under LXC, limit CPU count to that given by /proc/cpuinfo
+  * Improve container detection for LXC
+  * Some minor documentation fixes
+
+-------------------------------------------------------------------
+Mon May  2 08:39:49 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.0:
+  * Support for displaying multiple tabs in the user interface
+  * Allow multiple filter and search terms (logical OR, separate by "|")
+  * Set correct default sorting direction (defaultSortDesc)
+  * Improve performance for process lookup and update
+  * Rework the IOMeters initial display
+  * Removed duplicate sections on COMM and EXE
+  * Highlight process UNINTERRUPTIBLE_WAIT state (D)
+  * Show only integer value when CPU% more than 99.9%
+  * Handle rounding ambiguity between 99.9 and 100.0%
+  * No longer leaves empty the last column in header
+  * Fix header layout and meters reset if a header column is empty
+  * Fix PID and UID column widths off-by-one error
+  * On Linux, read generic sysfs batteries
+  * On Linux, do not collect LRS per thread (it is process-wide)
+  * On Linux, dynamically adjust the SECATTR and CGROUP column widths
+  * On Linux, fix a crash in LXD
+  * On FreeBSD, add support for showing process emulation
+  * On Darwin, lazily set process TTY name
+  * Always set SIGCHLD to default handling
+  * Avoid zombie processes on signal races
+  * Ensure last line is cleared when SIGINT is received
+  * Instead of SIGTERM, pre-select the last sent signal
+  * Internal Hashtable performance and sizing improvements
+  * Add heuristics for guessing LXC or Docker from /proc/1/mounts
+  * Force elapsed time display to zero if process started in the future
+  * Avoid extremely large year values when printing time
+  * Fix division by zero when calculating IO rates
+  * Fix out of boundary writes in XUtils
+  * Fix custom thread name display issue
+  * Use AC_CANONICAL_HOST, not AC_CANONICAL_TARGET in configure.ac
+  * Support libunwind of LLVM
+
+-------------------------------------------------------------------
+Tue Nov 30 10:44:12 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 3.1.2
+  * Bugfix for crash when storing modified settings at exit
+  * Generate xz-compressed source tarball (with configure) using github actions
+  * Allow -u UID with numerical value as argument
+  * Added documentation for obsolete/state libraries/program files highlighting
+  * Some obsolete/stale library highlighting refinements
+  * Column width issues resolved
+  * Dynamic UID column sizing improved
+  * Discard stale information from Disk and Network I/O meters
+  * Refined Linux kernel thread detection
+  * Reworked process state handling
+  * New CCGROUP column showing abbreviated cgroup name
+  * New OFFSET column in the list of open files screen
+
+-------------------------------------------------------------------
+Mon Nov  1 10:32:29 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+-  Update to version 3.1.1 (boo#1192144):
+   * See https://github.com/htop-dev/htop/compare/3.1.0...3.1.1 
+
+-------------------------------------------------------------------
+Thu Sep 23 09:29:57 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Enable linux capabilities
+- Drop unsupported configure options 
+
+-------------------------------------------------------------------
+Wed Sep 22 04:13:13 UTC 2021 - kh Lai <dlshcbmuipmam@hotmail.com>
+
+- Add autoconf and automake as dependencies
+- Switch the url to the Github release page
+- Update to 3.1.0:
+  * Updated COPYING file to remove the PLPA exemption (appendix 2)
+    With this change the license is now GPLv2 without any additional wording.
+  * Improved default sort ordering
+    Note for users: This may lead to an inverted sort order on startup of
+    htop 3.1.0 compared to previous versions.
+    This is due to what is stored in your htoprc file. Solution: Press I
+    (to invert sort order).
+    This changed setting will be saved by htop on exit as long as it can
+    write to your htoprc file.
+  * The compile-time option to cater specifically for running htop as
+    setuid has been removed
+  * Add read-only option
+    This allows htop to be run in an non-intrusive fashion where it acts only
+    as a process viewer disabling all functions to manipulate system state.
+    Note: This is not a security feature!
+  * Move the code for handling the command line formatting related tasks
+    to be shared across all platforms
+    This means important features like stale binary/library highlighting
+    can now be available on all supported platforms.
+  * Make the EXE and COMM columns available on all platforms
+    All supported platforms have the name of the executable (EXE) and a
+    self-chosen thread/command name (COMM) available one way or the other.
+    Moving this column to be handled as a platform-independently available
+    information simplifies the markup of the command line.
+  * Introduce configuration file versioning and config_reader_min_version
+    Starting with this version the configuration file contains a version
+    identifying the minimum version of the configuration parser needed to
+    fully understand the configuration file format.
+    Old configuration file formats are automatically upgraded when
+    saving the config file (htoprc).
+  * Make the configuration parser friendlier to users (thanks to Bart Bakker)
+    With this change only settings that cannot be parsed properly are
+    reset to their defaults.
+  * Improve default display for systems with many CPUs
+  * Add the process ELAPSED time column
+  * Improve the process STATE column sorting
+  * Reworked handling resize and redrawing of the UI
+  * Fixed an issue where the LED meter mode could overflow allotted space
+  * Allow text mode Meters to span empty neighbors to the right
+  * Rescale graph meters when value of total changes
+    (thanks to Michael Schönitzer)
+  * Update generic process field display
+    Usually "uninteresting" values in columns like 1 thread, nice value
+    of 0, CPU and memory of 0%, idle/sleeping state, etc. are shown with
+    reduced intensity (dark grey)
+  * Option and key ("*") to collapse / expand all branches under PID 1
+    (and PID 2 if kernel threads are shown) (thanks to Krishna Chaitanya)
+  * Keep following a process when inverting the sort order, displaying
+    the help screen or hiding/unhiding userland threads.
+    If a thread is currently selected the selection is updated to point
+    to the thread's parent process. (thanks to Gonzalo, et.al.)
+  * Reorder process scanning to be performed before updating the display
+    of the meters in the header
+  * Always check the user for a process for any changes.
+    This affects multiple platforms that previously didn't correctly handle
+    the user field for a process to change at runtime (e.g. due to seteuid
+    or similar syscalls).
+  * Disable mouse option when support is unavailable
+  * Support curses libraries without ncurses mouse support
+    (thanks to Santhosh Raju)
+  * Support offline and hot-swapping of CPUs on all platforms
+  * Fix the CPU Meter for machines with more than 256 CPUs
+  * Supplemented the "show updated/deleted executables" feature (red basename)
+    to indicate when linked libraries were updated (yellow basename)
+  * Apply the stale binary highlighting for the EXE column in addition to
+    the command line field
+  * Add new combined Memory and Swap meter
+  * Implement bar and graph mode for NetworkIO Meter
+    (thanks to Michael F. Schönitzer)
+  * Rework TTY column to be more consistent across platforms
+  * Make the CWD column generally available on all platforms
+    (thanks to Santhosh Raju et. al.)
+  * Add Performance Co-Pilot (PCP) platform support
+    This is added via a separate pcp-htop(1) binary which provides remote host
+    analysis, new Meters for any PCP metric and new Columns for any PCP process
+    metric - see the pcp-htop(5) man page for further details.
+    (thanks to Sohaib Mohamed)
+  * Add Linux columns and key bindings for process autogroup identifier
+    and nice value
+  * Change available and used memory reporting on Linux to be based on
+    MemAvailable (Kernel 3.14+) (thanks to Chris Cheney and Tomas Wido)
+  * Add a new SysArchMeter showing kernel and platform information
+    (thanks to ahgamut)
+  * Linux memory usage explicitly treats tmpfs memory usage as shared memory
+    This is to make memory used by tmpfs visible as this cannot be freed
+    unlike normal filesystem cache data.
+  * Exclude zram devices when calculating DiskIO on Linux
+  * Use PATH lookup for systemctl in systemd meter (thanks to Scott Olson)
+  * Add native platform support for NetBSD
+    This allows htop to run on NetBSD without the need for active Linux
+    emulation of the procfs filesystem.
+    (thanks to Santhosh Raju and Nia Alarie)
+  * Add NetworkIO, DiskIO, CPU frequency, and battery meter support on NetBSD
+    (thanks to Nia Alarie)
+  * Fix NetBSD display of in-use and cached memory (thanks to Nia Alarie)
+  * Rework NetBSD CPU and memory accounting (thanks to Santhosh Raju)
+  * Fix NetBSD accounting of user and kernel threads (thanks to Santhosh Raju)
+  * Initial work to allow building with default libcurses on NetBSD
+    (thanks to Santhosh Raju)
+  * FreeBSD updates - implement process majflt and processor column values
+  * Add FreeBSD support for CPU frequency and temperature
+  * Fixes and cleanups for ZFS Meters and metrics
+  * Correctly color the ZFS ARC ratio (thanks to Ross Williams)
+  * Bugfixes related to CPU time display/calculations for darwin on M1 systems
+    (thanks to Alexander Momchilov)
+  * Harmonize the handling of multiple batteries across different platforms.
+    The system is now considered to run on AC if at least one power supply
+    marked as AC is found in the system.
+    Battery capacity is summed up over all batteries found.
+    This also changes the old behavior that batteries reported by the
+    system after the first AC adapter where sometimes ignored.
+  * Correctly handle multiple batteries on Darwin.
+    Resolves a possible memory leak on systems with multiple batteries.
+  * Handle Linux Shmem being part of Cached in the MemoryMeter
+  * Add SwapCached to the Linux swap meter (thanks to David Zarzycki)
+  * Convert process time to days if applicable (thanks to David Zarzycki)
+  * Always show the number of threads in the TaskMeter, even when threads
+    are not shown in the process list
+  * Fix Linux --drop-capabilities option handling
+  * Correctly detect failure to initialize Linux boottime
+  * Overhaul the Linux memory fields to partition them like free(1) now does
+  * Improve the Linux process I/O column values
+  * Rework the libsensors parsing on Linux
+  * Update the MemoryMeter to display shared memory
+  * Update OpenBSD platform - implement additional columns, scan LWP,
+    proper markup for STATE, show CPU frequency
+  * Fix the tree view on OpenBSD when hiding kernel threads
+  * Remove old InfoScreen lines before re-scanning (thanks to Øystein Hiåsen)
+  * Document historic naming of Light-Weight Processes column aka threads
+  * Improve user interaction when the last process entry is selected
+  * Draw the panel header on the TraceScreen (thanks to Youngjae Lee)
+  * Add mouse wheel scroll and fix mouse selection on the InfoScreen
+    (thanks to Youngjae Lee)
+  * Add a HugepageMeter and subtract hugepages from normal memory
+  * Display wide characters in LED meters and restore non-wide ncurses support
+  * Add command line option to drop Linux capabilities
+  * Support scheduler affinity on platforms beyond Linux
+  * Report on any failure to write the configuration file
+  * Cache stderr to be able to print assert messages.
+    These messages are shown in case htop terminates unexpectedly.
+  * Print current settings on crash
+  * Reset signal handlers on program exit
+  * Add configure script option to create a static htop binary
+  * Resolved longer-standing compilation issues on Solaris/Illumos
+  * Check for availability of set_escdelay in configure
+    (thanks to Stefan Polluks)
+  * Build system updates for autotools 2.70
+
+-------------------------------------------------------------------
+Tue Jan 12 08:47:23 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.0.5:
+  * InfoScreen: fix uncontrolled format string
+  * Improve white text in the Light Terminal colour scheme
+  * Enable the function bar on the main screen to be hidden (see Setup -> Display options)
+  * Reduce layout issues esp. around printing wide characters (not complete yet)
+  * Make the follow function exit cleanly after followed process died
+  * Update help and man page for improved -t / -s options
+  * Drop usage of formatted error messages from <err.h>
+  * Show arrow indicating order of sorted process column
+  * Lots of plumbing around the internal Hashtable, hardening and code cleanups
+  * LibSensors: add support for Ryzen CPUs
+  * Fix CPU percentage on M1 silicon Macs
+  * LoadMeter: dynamically adjust color and total of bar
+  * Find libsensors.so.4 for Fedora and friends
+  * Enable going back to previous search matches (Shift-F3)
+  * Added keybind 'N' for sorting by PID (drops 'n'/'N' as not used before much)
+
+-------------------------------------------------------------------
+Wed Dec 23 08:42:18 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- htop 3.0.4:
+  * Separate tree and list sort orders
+  * PSI Meter: constant width and only print ten-duration as bar
+  * Sort in paused mode after inverting sort order
+  * Handle absence of package CPU temperature
+  * Document dynamic bindings and assumed external configuration
+  * Update key mapping documentation for sorting
+
+-------------------------------------------------------------------
+Mon Dec  7 09:19:09 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 3.0.3
+  * Process sorting in 'tree' mode
+  * Improved command display/sort functionality
+  * Add screen for active file locks
+  * Calculate library size (M_LRS column) from maps file
+  * Add a Zram meter
+  * Add Linux cwd process column
+  * Dynamically load libsensors at runtime
+  * Improve PressureStall Meter display strings
+  * Hide process selection on ESC
+  * Fully support non-ascii characters in Meter-Bar
+  * Add support to change numeric options in settings screen
+  * Rename virtual memory column from M_SIZE to M_VIRT
+  * Add process column for normalized CPU usage
+  * Show CPU temperature in CPU meter
+  * Drop hideThreads Setting
+  * Add a systemd meter
+  * Add a network IO meter
+  * Add a SELinux meter
+  * Compress size of default FunctionBar
+  * Updates to the OpenFiles screen
+  * Continue updating header data in paused mode
+  * BUGFIX: Handle data wraparounds in IO meters
+  * BUGFIX: Update InfoScreen content on resize
+  * Add security attribute process column
+  * Add DiskIOMeter for IO read/write usage
+  * Read CPU frequency from sysfs by default
+  * Add Linux process column for context switches
+  * Several FreeBSD and Mac OS X platform updates
+  * Add process environment for FreeBSD
+  * Parse POWER_SUPPLY_CAPACITY for Linux Battery meter
+  * Add octuple-column CPU meters.
+  * BUGFIX: On Linux consider ZFS ARC to be cache
+  * BUGFIX: Limit screen title length to window width
+  * Show selected command wrapped in a separate window
+  * Allow to pass '/' for item search
+  * Document implicit incremental search
+  * Handle 'q' as quit if first character
+  * Avoid expensive build of process tree when not using it
+  * Include documentation for COMM and EXE
+  * Distinguish display of no permissions for reading M_LRS
+  * Only calculate M_LRS size every 2 seconds
+  * Improvements to comm / cmdline display functionality
+  * Merged view for COMM, EXE and cmdline
+    (thanks to Narendran Gopalakrishnan and Benny Baumann)
+  * Consistent kernel thread display for COMM/EXE columns
+  * Central fault handling for all platforms
+  * Handle parsing envID & VPid from process status file
+  * Use threshold for display of guest/steal/irq meters
+  * Enhance highlighting of semi-large and large numbers
+  * Documentation on the repository style guide
+  * Align processor identifier to the right
+  * Document M_PSS, M_PSSWP, M_SWAP in man page
+  * Add Date and DateTime meters
+  * BUGFIX: Fix Solaris 11.4 due to missing ZFS ARC kstats
+  * Code hardening, speedups, fd and memory leak fixes
+  * Number CPUs from zero by default
+  * Remove residual python checks during the build process
+
+-------------------------------------------------------------------
+Tue Sep 15 21:46:04 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 3.0.2
+  * BUGFIX: Drop 'vim_mode' - several issues, needs rethink
+  * BUGFIX: fix regression in -u optional-argument handling
+  * Build system rework to remove python, header generation
+  * CI, code quality improvements
+- Switch to new official bintray tarball to remove automake deps
+
+-------------------------------------------------------------------
+Sun Sep  6 19:55:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.1
+  * BUGFIX: Fix early exit with longer sysfs battery paths
+  * BUGFIX: Improve OOM output, fix sorting
+  * Rework check buttons and tree open/closed
+  * Add -U/--no-unicode option to disable unicode
+  * Improvements to the affinity panel
+
+-------------------------------------------------------------------
+Sat Aug 29 19:17:23 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 3.0.0
+  * Add simple, optional vim key mapping mode
+  * Support more than 2 smaller CPU meter columns
+  * Support Linux proportional set size metrics
+  * Support Linux pressure stall information metrics
+  * New display option to show CPU frequency in CPU meters
+  * Update Linux sysfs battery discovery for recent kernels
+  * Add hardware topology information in the affinity panel
+  * Add timestamp reporting to the strace screen
+  * Added an option to disable the mouse
+  * Without an argument -u uses $USER value automatically
+  * Support less(1) search navigation shortcuts
+  * Support ZFS ARC statistics
+  * Report values larger than 100 terabytes
+  * Widen ST_UID (UID) column to allow for UIDs > 9999
+  * BUGFIX: fix makefiles for building with clang
+  * BUGFIX: fix <sys/sysmacros.h> major() usage
+  * BUGFIX: correctly identify other types of zombie process
+  * BUGFIX: improve follow-process handling in some situations
+  * BUGFIX: fix custom meters reverting to unexpected setting
+  * BUGFIX: close pipe after running lsof(1)
+  * BUGFIX: meters honour setting of counting CPUs from 0/1
+- Drop htop-2.2.0.tar.gz.asc - no sig provided
+- Upstreamed patches removed:
+  * Drop htop-2.2.0-fix-linux-process-ordering.patch
+  * Drop htop-2.2.0-fix-option-string.patch
+  * Drop htop-2.2.0-gcc10.patch
+  * Drop htop-desktop-file-fix-thoenig-01.patch
+  * Drop htop-script-python3.patch
+
+-------------------------------------------------------------------
+Fri Jun  5 07:07:31 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10:
+  * htop-2.2.0-gcc10.patch
+
+-------------------------------------------------------------------
+Thu Apr 23 05:46:54 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Add patches:
+  * htop-2.2.0-fix-linux-process-ordering.patch
+  * htop-2.2.0-fix-option-string.patch (fixes boo#1165352)
+
+-------------------------------------------------------------------
+Thu Apr 12 12:09:09 UTC 2018 - mpluskal@suse.com
+
+- Simplify spec file
+  * Drop support for building on older distros
+  * Trim describtion
+- Enable delayacct
+
+-------------------------------------------------------------------
+Tue Apr 10 22:48:06 UTC 2018 - avindra@opensuse.org
+
+- Update to version 2.2.0
+  * -t/--tree flag for starting in tree-view mode
+  * Various automake and build improvements
+  * Check for pkg-config when building with --enable-delayacct
+  * Avoid some bashisms in configure script
+  * Use CFLAGS from ncurses*-config if present
+  * Header generator supports non-UTF-8 environments
+  * Changed detection of kernel threads
+  * Collapse current subtree pressing Backspace
+  * BUGFIX: fix behavior of SYSCR column
+  * BUGFIX: obtain exit code of lsof correctly
+  * BUGFIX: fix crash with particular keycodes
+  * BUGFIX: fix issue with small terminals
+  * BUGFIX: fix terminal color issues
+  * BUGFIX: preserve LDFLAGS when building
+  * BUGFIX: fixed overflow for systems with >= 100 signals
+- cleanup with spec-cleaner
+- rebase htop-script-python3.patch
+
+-------------------------------------------------------------------
+Fri Feb 23 11:08:31 UTC 2018 - ecsos@opensuse.org
+
+- fix build error for Leap 42.3
+
+-------------------------------------------------------------------
+Tue Feb  6 13:44:23 UTC 2018 - mpluskal@suse.com
+
+- Small cleanup with spec-clener
+
+-------------------------------------------------------------------
+Mon Feb  5 14:44:35 UTC 2018 - aloisio@gmx.com
+
+- Update to version 2.1.0
+  * Linux: Delay accounting metrics
+    (thanks to André Carvalho)
+  * Support for real-time signals
+    (thanks to Kang-Che Sung)
+  * 'c' key now works with threads as well
+  * Session column renamed from SESN to SID
+    (thanks to Kamyar Rasta)
+  * Improved UI for meter style selection
+    (thanks to Kang-Che Sung)
+  * Improved code for constructing process tree
+    (thanks to wangqr)
+  * Compile-time option to disable setuid
+  * Error checking of various standard library operations
+  * Replacement of sprintf with snprintf
+    (thanks to Tomasz Kramkowski)
+  * Linux: performance improvements in battery meter
+  * Linux: update process TTY device
+  * Linux: add support for sorting TASK_IDLE
+    (thanks to Vladimir Panteleev)
+  * Linux: add upper-bound to running process counter
+    (thanks to Lucas Correia Villa Real)
+  * BUGFIX: avoid crash when battery is removed
+    (thanks to Jan Chren)
+
+- Refreshed htop-desktop-file-fix-thoenig-01.patch
+
+- Added htop-script-python3.patch
+
+-------------------------------------------------------------------
+Mon Jan  2 15:32:27 UTC 2017 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Mon Oct 24 07:43:11 UTC 2016 - mpluskal@suse.com
+
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Sat Jul 23 08:06:45 UTC 2016 - mpluskal@suse.com
+
+- Update to version 2.0.2:
+  * Mac OS X: stop trying when task_for_pid fails for a process, 
+    stops spamming logs with errors.
+  * Add Ctrl+A and Ctrl+E to go to beginning and end of line
+  * FreeBSD: fixes for CPU calculation
+  * Usability: auto-follow process after a search.
+  * Use Linux backend on GNU Hurd
+  * Improvement for reproducible builds.
+  * BUGFIX: Fix behavior of Alt-key combinations
+  * Various code tweaks and cleanups
+- Drop htop-2.0.1-fix-escdelay-usage.patch 
+- Update htop-desktop-file-fix-thoenig-01.patch
+- Drop some build dependencies
+- Enable taskstats
+
+-------------------------------------------------------------------
+Sun May 22 15:23:24 UTC 2016 - develop7@develop7.info
+
+- added upstream patch fixing ESCDELAY-related build failure on modern ncurses
+  (htop-2.0.1-fix-escdelay-usage.patch)
+- updated configure script parameters
+
+-------------------------------------------------------------------
+Fri May 13 18:15:43 UTC 2016 - develop7@develop7.info
+
+- Update to v2.0.1
+  * OpenBSD: Various fixes and improvements (thanks to Michael McConville and 
+    Juan Francisco Cantero Hurtado)
+  * FreeBSD: fix CPU and memory readings (thanks to Tim Creech, Hung-Yi Chen, 
+    Bernard Spil, Greg V)
+  * FreeBSD: add battery support (thanks to Greg V)
+  * Linux: Retain last-obtained name of a zombie process
+  * Mac OS X: Improve portability for OS X versions (thanks to Michael Klein)
+  * Mac OS X: Fix reading command-line arguments and basename
+  * Mac OS X: Fix process state information
+  * Mac OS X: Fix tree view collapsing/expanding
+  * Mac OS X: Fix tree organization
+  * Mac OS X: Fix memory accounting
+  * Fix crash when emptying a column of meters
+  * Make Esc key more responsive
+- removed htop-2.0.0-fix-buffer-reuse.patch and htop-stdgnu.patch
+
+-------------------------------------------------------------------
+Thu Mar  3 17:25:17 UTC 2016 - develop7@develop7.info
+
+- htop-2.0.0-fix-buffer-reuse.patch: upstream fix for crash with SIGABRT
+
+-------------------------------------------------------------------
+Thu Feb 11 18:29:47 UTC 2016 - jimmy@boombatower.com
+
+- Update to version 2.0.0.
+  * Platform abstraction layer
+  * Initial FreeBSD support
+  * Initial Mac OS X support (thanks to David Hunt)
+  * Swap meter for Mac OSX (thanks to Ștefan Rusu)
+  * OpenBSD port (thanks to Michael McConville)
+  * FreeBSD support improvements (thanks to Martin Misuth)
+  * Support for NCurses 6 ABI, including mouse wheel support
+  * Much improved mouse responsiveness
+  * Process environment variables screen (thanks to Michael Klein)
+  * Higher-resolution UTF-8 based Graph mode (Thanks to James Hall from vtop for the idea!)
+  * Show program path settings (thanks to Tobias Geerinckx-Rice)
+  * BUGFIX: Fix crash when scrolling an empty filtered list.
+  * Use dynamic units for text display, and several fixes (thanks to Christian Hesse)
+  * BUGFIX: fix error caused by overflow in usertime calculation. (thanks to Patrick Marlier)
+  * Catch all memory allocation errors (thanks to Michael McConville for the push)
+  * Several tweaks and bugfixes (See the Git log for details and contributors!)
+- Rerolled both patches for compatibility with 2.0.0.
+- Fix ncurses 6 incompatibility during compile.
+
+-------------------------------------------------------------------
+Sun Aug  2 16:21:35 UTC 2015 - mpluskal@suse.com
+
+- Add scriplets for desktop file handling
+
+-------------------------------------------------------------------
+Fri Feb 20 13:38:40 UTC 2015 - jhura@suse.com
+
+- Cleanup of spec file with spec-cleaner.
+- Enable oom score watching and native-affinity
+
+-------------------------------------------------------------------
+Mon May 19 18:57:58 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 1.0.3
+  * Tag all children ('c' key)
+  * Fixes in accounting of guest time when using virtualization
+  * Performance improvements
+  * Further performance improvements due to conditional parsing
+    of IO data depending on selected fields.
+  * Better consistency in coloring.
+  * Increase limit of buffer when tracing a deep nested process tree.
+  * Display pagefault stats.
+  * BUGFIX: Fix crash when adding meters and toggling detailed CPU time.
+  * Add column to track the OOM-killer score of processes
+  * Rebase htop-stdgnu.patch
+
+-------------------------------------------------------------------
+Thu Dec 26 21:02:27 UTC 2013 - crrodriguez@opensuse.org
+
+- improve autools build, we do not want packages 
+  using, for example std=c99, instead determine the
+  latest C standard with gnu extensions using autoconf macros.
+  (htop-stdgnu.patch)
+
+-------------------------------------------------------------------
+Tue Nov 26 13:28:46 UTC 2013 - jengelh@inai.de
+
+- Better make install, remove %clean
+
+-------------------------------------------------------------------
+Mon Nov 12 12:11:20 UTC 2012 - puzel@suse.com
+
+- update to htop-1.0.2 
+  * Add IO priority support ('i' key)
+  * Avoid deleting .htoprc if it is a symlink
+  * Fail gracefully when /proc is not mounted
+    (thanks to Philipp Hagemeister)
+  * Option to update process names on every refresh
+    (thanks to Rob Hoelz)
+  * BUGFIX: Fix crashes when process list is empty
+
+-------------------------------------------------------------------
+Fri Feb 17 06:37:59 UTC 2012 - puzel@suse.com
+
+- update to htop-1.0.1 (bugfix release)
+  * respecting $XDG_CONFIG_HOME 
+    (thanks to Hadzhimurad Ustarkhan for the suggestion.)
+  * Safer behavior on the kill screen, to make it harder to kill
+    the wrong process.
+  * BUGFIX: behavior of 'F' (follow) key was broken, also affecting
+    the persistence of mouse selections.
+  * BUGFIX: keep main panel up-to-date when running the screen
+    manager, to fix crash when processes die while on the F9/Kill
+    screen.
+
+-------------------------------------------------------------------
+Thu Nov 24 16:27:15 UTC 2011 - puzel@suse.com
+
+- update to htop-1.0 
+  * Performance improvements
+  * Support for splitting CPU meters into two or four columns
+  * Switch from PLPA, which is now deprecated, to HWLOC.
+  * Bring back support for native Linux sched_setaffinity,
+    so we don't have to use HWLOC where we don't need to.
+  * Support for typing in user names and column fields in selection
+    panels.
+  * Support for UTF-8 tree drawing
+  * Option for counting CPUs from zero
+  * Meters update in every screen (no longer halting while on
+    Setup, etc.)
+  * Stricter checks for command-line options
+  * Incremental filtering
+  * Try harder to find the ncurses header
+  * Man page updates
+  * BUGFIX: Support larger numbers for process times.
+  * BUGFIX: Segfault in BarMeterMode_draw() for small terminal
+    widths
+
+-------------------------------------------------------------------
+Sat Jul 30 17:25:43 UTC 2011 - crrodriguez@opensuse.org
+
+- Use --enable-unicode and switch to ncurses ABI v6 
+
+-------------------------------------------------------------------
+Mon Nov 29 09:54:23 UTC 2010 - puzel@novell.com
+
+- update to htop-0.9
+  * Add support for "steal"/guest CPU time measurement
+    in virtualization environments
+  * Expand and collapse subtrees using '+' and '-' when in tree-view
+  * Support for cgroups
+  * Show custom thread names
+  * Add support for STARTTIME field
+  * Upgrade PLPA to version 1.3.2
+  * Fix license terms with regard to PLPA
+  * getopt-based long options and --no-color
+  * BUGFIX: Fix display of nan% in CPU meters
+  * BUGFIX: Fix memory leak
+  * Add Bash/emacs style navigation keys
+  * Improve battery meter support
+  * BUGFIX: Fix IO-wait color in "Black on White" scheme
+  * BUGFIX: Fix search by process name when list is filtered by
+    user.
+  * BUGFIX: Fix alignment for display of memory values above 100G
+- drop htop-non-printable-characters.patch (in upstream)
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Dec 15 00:13:43 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Wed Jun 24 14:13:39 CEST 2009 - puzel@novell.com
+
+- update to htop-0.8.3
+  * BUGFIX: Fix crash on F6 key (thanks to Rainer Suhm)
+  * BUGFIX: Fix a minor bug which affected the build process.
+
+-------------------------------------------------------------------
+Tue Jun  2 12:54:34 CEST 2009 - puzel@suse.cz
+
+- update to 0.8.2
+  * Integrated lsof (press 'l')
+  * Fix display of gigabyte-sized values
+  * Option to display hostname in the meters area
+  * Rename VEID to CTID in OpenVZ systems
+  * Corrections to the desktop entry file
+  * BUGFIX: Correct page size calculation for FreeBSD systems
+  * Allow compilation without PLPA on systems that don't support it
+  * BUGFIX: Fix missing tree view when userland threads are hidden
+  * BUGFIX: Fix for VPID on OpenVZ systems
+- Recommends strace and lsof
+- use suse_update_desktop_file macro
+
+-------------------------------------------------------------------
+Fri Nov 21 10:57:51 CET 2008 - thoenig@suse.de
+
+- add python to build requires 
+
+-------------------------------------------------------------------
+Fri Nov 21 09:45:29 CET 2008 - thoenig@suse.de
+
+- add patch htop-non-printable-characters.patch: Don't try to show
+  non-printable charcaters (bnc#440951)
+
+-------------------------------------------------------------------
+Tue Sep 23 19:15:12 CEST 2008 - thoenig@suse.de
+
+- Linux-VServer support
+- battery meter
+- fix collection of IO stats in multithreaded processes
+- remove assertion that fails on hardened kernels
+
+-------------------------------------------------------------------
+Thu Jul 31 13:57:32 CEST 2008 - puzel@suse.cz
+
+- configure with --enable-taskstats to enable 
+  per-processes IO statistics
+- use %configure and %makeinstall macros
+
+-------------------------------------------------------------------
+Fri Jul 11 17:29:45 CEST 2008 - bwalle@suse.de
+
+- update to htop 0.8
+  * Ability to change sort column with the mouse by clicking
+    column titles (click again to invert order)
+  * Add support for Linux per-process IO statistics, enabled with
+    the --enable-taskstats flag, which requires a kernel compiled
+    with taskstats support.
+  * Add Unicode support, enabled with the --enable-unicode flag,
+    which requires libncursesw.  (thanks to Sergej Pupykin)
+  * BUGFIX: Fix display of CPU count for threaded processes.  When
+    user threads are hidden, process now shows the sum of
+    processor usage for all processors. When user threads are
+    displayed, each thread shows its own processor usage,
+    including the root thread.
+  * BUGFIX: avoid crashing when using many meters
+- change source tarball format to bzip2
+
+-------------------------------------------------------------------
+Mon Nov 26 11:18:29 CET 2007 - thoenig@suse.de
+
+- Update to htop 0.7
+- Changes:
+ * CPU affinity configuration ('a' key)
+ * Improve display of tree view, properly nesting
+   threads of the same app based on TGID.
+ * IO-wait time now counts as idle time, which is a more
+   accurate description. It is still available in
+   split time, now called detailed CPU time.
+   (thanks to Samuel Thibault for the report)
+ * BUGFIX: Correct display of TPGID field
+ * Add TGID field
+ * BUGFIX: Don't crash with invalid command-line flags
+   (thanks to Nico Golde for the report)
+ * Fix GCC 4.3 compilation issues
+   (thanks to Martin Michlmayr for the report)
+ * OpenVZ support, enabled at compile-time with
+   the --enable-openvz flag.
+  (thanks to Sergey Lychko)
+
+
+
+-------------------------------------------------------------------
+Sat Jun  2 16:34:51 CEST 2007 - thoenig@suse.de
+
+- Update to htop 0.6.6
+- Changes:
+ * Add support of NLWP field
+ * BUGFIX: Fix use of configurable /proc location
+ * Fix memory percentage calculation and make it saner
+ * Added display of DRS, DT, LRS and TRS
+ * BUGFIX: LRS and DRS memory values were flipped
+ * BUGFIX: Don't crash on very high UIDs
+
+-------------------------------------------------------------------
+Tue May 22 13:16:21 CEST 2007 - thoenig@suse.de
+
+- Initial package submission (htop 0.6.5)
+- Add patch htop-desktop-file-fix-thoenig-01.patch

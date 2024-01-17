@@ -1,0 +1,284 @@
+-------------------------------------------------------------------
+Thu Nov 30 07:05:28 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.9.0:
+  * v1.9.0 Release
+  * v1.9.0 Release notes
+  * test: fix syntax problem in helpers.bash
+  * run cargo update
+  * use OsString/Path over String for file paths
+  * chore(deps): update dependency containers/automation_images to v20231116
+  * firewalld-reload: fix CI tests
+  * firewalld-reload: prevent race which could leak fw rules
+  * fix(deps): update rust crate clap to ~4.4.8
+  * CI: skip broken firewalld test
+  * fix(deps): update rust crate http to 0.2.11
+  * rpm: add netavark-firewalld-reload.service to spec
+  * firewalld-reload: add integration tests
+  * firewall/state: make sure to ignore enoent on read
+  * firewall-reload: integrate actual logic to reload rules
+  * firewall/state: improve error messages
+  * firewall: add state functions to serialize configs
+  * firewalld: fix lint errors with rust v1.73
+  * firewall: do not use full Network in NetworkStruct
+  * firewall: add dns_port to SetupNetwork
+  * add firewalld-reload subcommand
+  * fix(deps): update rust crate http to 0.2.10
+  * fix(deps): update rust crate env_logger to 0.10.1
+  * fix(deps): update rust crate tokio to 1.34
+  * Update rust container build files
+  * bridge: force static mac on bridge interface
+  * fix(deps): update rust crate futures-core to 0.3.29
+  * fix(deps): update rust crate serde to 1.0.190
+  * fix(deps): update rust crate serde_json to 1.0.108
+  * fix(deps): update rust crate sysctl to 0.5.5
+  * fix(deps): update rust-futures monorepo to 0.3.29
+  * CI: Drop CI VM distro name
+  * chore(deps): update dependency containers/automation_images to v20231004
+  * fix(deps): update rust crate tokio to 1.33
+  * build-sys: Filter to tier 2 Linux declaratively
+  * fix(deps): update rust crate sha2 to 0.10.8
+  * fix podman.io community link
+  * Bump to v1.9.0-dev
+
+-------------------------------------------------------------------
+Thu Sep 28 05:05:43 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.8.0:
+  * Release v1.8.0
+  * update release notes for v1.8.0
+  * run cargo update
+  * Add vrf support for bridges
+  * Packit: switch to @containers/packit-build team for copr failure notification comments
+  * fix(deps): update rust crate nispor to 1.2.14
+  * [CI:BUILD] Packit: tag @lsm5 on copr build failures
+  * chore(deps): update rust crate chrono to 0.4.31
+  * fix(deps): update rust crate serde_json to 1.0.107
+  * rust io safety: convert RawFd to BorrowedFd<>
+  * bump nix to 0.27.1
+  * chore(deps): update rust crate chrono to 0.4.30
+  * fix(deps): update rust crate serde_json to 1.0.106
+  * chore(deps): update rust crate chrono to 0.4.29
+  * fix(deps): update rust crate netlink-packet-route to 0.17.1
+  * Bump tonic and prost
+  * Update container image to F38
+  * Add ACCEPT rules in firewall for bridge network with internal dns.
+  * chore(deps): update rust crate tonic-build to 0.10
+  * fix(deps): update rust crate nispor to 1.2.13
+  * fix(deps): update rust crate serde to 1.0.188
+  * Fix clippy warnings about formatting
+  * update chrono crate
+  * fix(deps): update rust crate url to 2.4.1
+  * Add protoc dependency to README
+  * [CI:BUILD] rpm: spdx compatible license field
+  * fix(deps): update rust crate tokio to 1.32
+  * chore(deps): update dependency containers/automation_images to v20230816
+  * fix(deps): update rust crate serde_json to 1.0.105
+  * fix(deps): update rust crate tokio to 1.31
+  * fix(deps): update rust crate log to 0.4.20
+  * run cargo update
+  * update tonic-build to 0.9.2
+  * bump rust edition to 2021
+  * iptables: drop invalid packages
+  * fix(deps): update rust crate tokio to 1.30
+  * docs: Convert markdown with go-md2man instead of mandown
+  * fix(deps): update rust crate clap to 4.3.21
+  * packit: Build PRs into default packit COPRs
+  * chore(deps): update dependency containers/automation_images to v20230807
+  * fix(deps): update rust crate serde to 1.0.183
+  * fix(deps): update rust crate serde to 1.0.181
+  * fix(deps): update rust crate serde to 1.0.180
+  * fix(deps): update rust crate serde_json to 1.0.104
+  * fix(deps): update rust crate serde to 1.0.179
+  * fix(deps): update rust crate serde to 1.0.176
+  * fix(deps): update rust crate clap to 4.3.19
+  * fix(deps): update rust crate serde to 1.0.175
+  * fix(deps): update rust crate clap to 4.3.17
+  * fix(deps): update rust crate clap to 4.3.15
+  * fix(deps): update rust crate clap to 4.3.12
+  * fix(deps): update rust crate serde_json to 1.0.103
+  * [CI:BUILD] Packit: remove pre-sync action
+  * fix(deps): update rust crate serde_json to 1.0.102
+  * fix(deps): update rust crate nispor to 1.2.12
+  * macvlan: use netlink type for bclim
+  * bump netlink deps
+  * fix(deps): update rust crate serde to 1.0.171
+  * fix(deps): update rust crate serde to 1.0.167
+  * fix(deps): update rust crate clap to 4.3.11
+  * fix(deps): update rust crate serde to 1.0.166
+  * fix(deps): update rust crate serde_json to 1.0.100
+  * iptables: improve error when ip6?tables commands are missing
+  * fix(deps): update rust crate clap to 4.3.10
+  * fix(deps): update rust crate zbus to 3.14.1
+  * [CI:BUILD] RPM: Fix ELN build and cleanup spec
+  * bump to v1.8.0-dev
+
+-------------------------------------------------------------------
+Tue Jul 11 13:30:20 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Disable restricting builds only for tier1 platforms
+  i.e. only for x86_64 and aarch64 and enable for all.
+
+-------------------------------------------------------------------
+Mon Jul 03 11:22:33 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.7.0:
+  * release v1.7.0
+  * Update release notes for v1.7.0
+  * fix(deps): update rust crate tokio to 1.29
+  * netavark: make --config required for dns
+  * fix(deps): update rust crate serde_json to 1.0.99
+  * fix(deps): update rust crate clap to 4.3.8
+  * [CI:BUILD] Packit: add Fedora downstream tasks
+  * run cargo update
+  * fix(deps): update rust crate serde_json to 1.0.97
+  * fix(deps): update rust crate sha2 to 0.10.7
+  * fix(deps): update rust crate clap to 4.3.4
+  * chore(deps): update dependency containers/automation_images to v20230614
+  * fix(deps): update rust crate clap to 4.3.3
+  * fix(deps): update rust crate log to 0.4.19
+  * aardvark: fix missleading dns disabled log
+  * firewall: add NETAVARK_ISOLATION_3 chain for strict isolation
+  * docs: fix link to getting started
+  * fix(deps): update rust crate serde to 1.0.164
+  * netlink: fix incorrect info log for del_route
+  * dhcp-proxy: apply new ip address/gateway
+  * test-dhcp: fix broekn has_ip() check
+  * dhcp-proxy: actually implement renewing leases
+  * dhcp-proxy: simplify code
+  * dhcp-proxy: drop macaddr dependency
+  * dhcp-proxy: remove some unused traits
+  * fix(deps): update rust crate zbus to 3.13.1
+  * fix(deps): update rust crate clap to 4.3.2
+  * chore(deps): update rust crate once_cell to 1.18.0
+  * fix(deps): update rust crate url to 2.4.0
+  * fix(deps): update rust crate clap to 4.3.1
+  * chore(deps): update dependency containers/automation_images to v20230601
+  * chore(deps): update rust crate chrono to 0.4.26
+  * chore(deps): update rust crate chrono to 0.4.25
+  * fix(deps): update rust crate log to 0.4.18
+  * chore(deps): update rust crate once_cell to 1.17.2
+  * macvlan: add bclim option
+  * parse_option(): return option instead of default
+  * add no_default_gateway option
+  * fix(deps): update rust crate clap to 4.3.0
+  * chore(deps): update dependency containers/automation_images to v20230517
+  * fix(deps): update rust crate serde to 1.0.163
+  * Add ability to add static route
+  * fix(deps): update rust crate serde to 1.0.162
+  * Cirrus: Update fedora name to match image
+  * fix(deps): update rust crate clap to 4.2.7
+  * chore(deps): update dependency containers/automation_images to v20230426
+  * correct typo in Makefile
+  * simplify path printing
+  * fix(deps): update rust crate tokio to 1.28
+  * aardvark-dns pid: return better errors
+  * fix comment in Subnet definition
+  * aardvark: no error when aardvark config is not there
+  * fix(deps): update rust crate zbus to 3.12.0
+  * fix(deps): update rust crate clap to 4.2.4
+  * fix(deps): update rust crate clap to 4.2.2
+  * fix(deps): update rust crate serde_json to 1.0.96
+  * update clap to v4
+  * fix(deps): update rust crate serde to 1.0.160
+  * bump to v1.7.0-dev
+
+-------------------------------------------------------------------
+Fri Jun 23 13:50:40 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Add aardvark-dns as Requires for netavark
+
+-------------------------------------------------------------------
+Wed Apr 12 06:12:35 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.6.0:
+  * v1.6.0 release
+  * Update release notes for v1.6.0
+  * dhcp-proxy: fix typo for --activity-timeout
+  * chore(deps): update dependency containers/automation_images to v20230405
+  * dhcp-proxy: use better error when connection fails
+  * add documentation for netavark plugins
+  * add stderr example plugin to test stderr passthrough
+  * add netavark plugin driver
+  * add example error plugin
+  * add host-device example plugin
+  * plugin: add simple plugin interface
+  * netlink: add dump_addresses
+  * netlink: add set_link_ns
+  * dhcp-proxy: correctly exit > 0 on errors
+  * fix(deps): update rust crate tonic to 0.9
+  * fix(deps): update rust crate mozim to 0.2.2
+  * fix(deps): update rust crate serde to 1.0.159
+  * fix(deps): update rust crate netlink-sys to 0.8.5
+  * dhcp-proxy: create socket directory only when used
+  * dhcp-proxy: do not remove socket when running under systemd
+  * Makefile: netavark-dhcp-proxy.service use correct path
+  * fix(deps): update rust crate http to 0.2.9
+  * chore(deps): update rust crate once_cell to 1.17.1
+  * fix(deps): update rust-futures monorepo to 0.3.28
+  * fix(deps): update rust crate serde_json to 1.0.95
+  * chore(deps): update dependency containers/automation_images to v20230330
+  * Disable Dependabot in favor of Renovate
+  * chore(deps): update rust crate chrono to 0.4.24
+  * build(deps): bump ipnet from 2.7.1 to 2.7.2
+  * build(deps): bump serde from 1.0.158 to 1.0.159
+  * build(deps): bump serde_json from 1.0.94 to 1.0.95
+  * update,main: dont write empty space when no network_dns_servers is given
+  * fix(deps): update rust crate tokio to 1.27
+  * Quit Leasing when Client disconnects
+  * build(deps): bump mozim from 0.2.1 to 0.2.2
+  * iptables: fix incorrect debug statement
+  * build(deps): bump serde from 1.0.156 to 1.0.158
+  * iptables: port fw handle wildcard address correctly
+  * chore(deps): update dependency containers/automation_images to v20230320
+  * build(deps): bump zbus from 3.11.0 to 3.11.1
+  * build(deps): bump anyhow from 1.0.69 to 1.0.70
+  * [CI:BUILD] Packit: trigger builds on commit to main branch
+  * Cirrus: Invalidate v2 bin cache
+  * Include Systemd Files in RPM Package
+  * Cirrus: Fix success failing on artifact extraction
+  * fix lint issue with new rust version 1.68
+  * Cirrus: Update to newer CI VM images
+  * build(deps): bump serde from 1.0.152 to 1.0.156
+  * combine dhcp-proxy and netavark into one binary
+  * update: should allow empty network_dns_servers
+  * build(deps): bump libc from 0.2.139 to 0.2.140
+  * fix aarch64 ncat flake
+  * update to mozim 0.2.1
+  * build(deps): bump zbus from 3.10.0 to 3.11.0
+  * packit: Update build release tag correctly
+  * test: move proto option into run_nc_test()
+  * test: add netns pid param to port checks
+  * test: import podman code to check for ports
+  * cirrus.yaml: add new binaries in art_prep_script
+  * fix netavark-dhcp-proxy binary in system unit
+  * import netavark-proxy-dhcp tests
+  * add build_proxy_client target
+  * add netavark-dhcp-proxy to rpm
+  * Fix dhcp-proxy build
+  * Merge nv-dhcp-proxy into nv
+  * fix default route metric test name
+  * build(deps): bump tokio from 1.25.0 to 1.26.0
+  * Support none parameter on NETAVARK_FW
+  * build(deps): bump anyhow from 1.0.68 to 1.0.69
+  * Fix typos
+  * update netlink-packet-{route,core} to 0.15 and 0.5
+  * build(deps): bump serde_json from 1.0.92 to 1.0.93
+  * build(deps): bump zbus from 3.8.0 to 3.10.0
+  * [CI:BUILD] Packit: initial enablement
+  * Allow custom cargo binary path
+  * build(deps): bump serde_json from 1.0.91 to 1.0.92
+  * Cirrus: Reduce requested CPUs for compile-tasks
+  * bump to version 1.0.6-dev
+  * build(deps): bump netlink-sys from 0.8.3 to 0.8.4
+  * Add renovate.json5
+
+-------------------------------------------------------------------
+Thu Mar 16 14:07:12 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Bump required rust version & fix libexecdir
+
+-------------------------------------------------------------------
+Fri Feb 10 09:14:07 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- First version of netavark

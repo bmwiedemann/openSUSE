@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri Nov 24 12:52:36 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 31.0.0
+  * Added support for JSON streaming/JSON lines.
+  * Added new syntax sugar for .map(x => x.key) as @.key.
+  * Improved JSON parsing error messages.
+  * Improved JS reducer error messages.
+- Update to version 32.2.0
+  * Added keys() and values() functions.
+- Update to version 31.1.1
+  * Replace gid input with current path only if cursor at the end.
+  * Allow JSON path to start with [ char.
+  * Added more built-in functions (https://fx.wtf).
+  * Fixed dig on ctrl+w.
+- Update to version 31.1.0
+  * Added better dig path word jumping
+  * Added len() func
+  * Added fx themes to JS version
+  * Fix: wrap collapsed nodes
+  * Deleted gradient themes
+  * Better dig key handling
+  * Fixed \/ in key
+- Update to version 30.0.0
+  * fx now gracefully handles even the most massive JSON files.
+  * A New TUI Look: Dive deep into your data with a revamped
+    terminal interface—now with themes!
+  * Swift Navigation with Dig Fuzzy Search: Feeling lost in JSON?
+    Just type . and navigate with ease.
+  * Powerful Regex Search: Scan across your entire JSON content
+    with precision.
+  * Elegant Long String Wraps: No more cut-offs. Your strings wrap
+    beautifully now.
+  * All Things JSON: Added love for comments, trailing commas, and
+    JSON streams.
+
+-------------------------------------------------------------------
+Fri Apr  7 13:55:44 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 24.1.0
+  * move cursor to view when jumping around
+  * add flag: -h, --help
+
+-------------------------------------------------------------------
+Sun May 22 11:55:35 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 24.0.0

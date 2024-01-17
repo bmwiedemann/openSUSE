@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4fe2495bb74087d04b453a50c65333e</srcmd5>
+    <version>0.28.1</version>
+    <time>1536833549</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635279</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ee29b39e854c33eb932fabe6ce4a8283</srcmd5>
+    <version>0.28.1</version>
+    <time>1545224028</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659398</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>91403b68493b8417d604a4d633592766</srcmd5>
+    <version>0.29.1</version>
+    <time>1551386461</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676981</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c1da682ff77d486820710180e8afd746</srcmd5>
+    <version>1.0.0</version>
+    <time>1558037451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703522</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bcfa3db0720ef60ade846842c565aeed</srcmd5>
+    <version>1.0.3</version>
+    <time>1568804968</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.0.3:
+  * Make Client.build_api_url an instance method.
+  * Prevent requests from hanging on SSL handshake</comment>
+    <requestid>730363</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc9417995fc5b8e5fcfd6caf846b9c2b</srcmd5>
+    <version>1.3.0</version>
+    <time>1586555588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792420</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4162cb72a37c6326949ef283663a9c68</srcmd5>
+    <version>1.3.0</version>
+    <time>1587467447</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795813</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9284e25da3d320ac92f8026a8a44d087</srcmd5>
+    <version>1.6.0</version>
+    <time>1618387855</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>884874</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b62fe2fbfd2123b4edda679eab0466cd</srcmd5>
+    <version>1.7.2</version>
+    <time>1628023719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.2:
+  * pass kwargs through in 'from_service_account_json' (#109) (efc4bbf)
+  * add 'Client.close' (#100) (7387fc8)
+  * add 'Client.from_service_account_info' factory (#54) (7e59360) 
+- Actually use %pytest macro for testing</comment>
+    <requestid>909842</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>bfa513af3880c2ff26bf9774fc496356</srcmd5>
+    <version>1.7.2</version>
+    <time>1633038223</time>
+    <user>dimstar_suse</user>
+    <comment>- Add --import-mode=importlib to make test suite work.
+</comment>
+    <requestid>922324</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9843174cfc41f03c7471a733efa85988</srcmd5>
+    <version>2.3.0</version>
+    <time>1650232220</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0:
+  - allow extra_api_info to be passed to api request
+  - deps: require google-api-core&gt;=1.31.5, &gt;=2.3.2
+  - deps: require google-auth 1.25.0
+  - correct param type of
+    _ClientFactoryMixin.from_service_account_info method
+  - correct Client and Connection type annotations
+  - add mypy checking + 'py.typed' files
+  - add support for Python 3.10
+  - drop python 2.7 support
+- We really don't need mock BR at all.</comment>
+    <requestid>970481</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ee22c0489488d61371bc11814df4ab9d</srcmd5>
+    <version>2.3.2</version>
+    <time>1662639826</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.2:
+  * require python 3.7+ (#201)
+- from version 2.3.1:
+  * fix changelog header to consistent size (#194)
+- Update BuildRequires and Requires from setup.py (forwarded request 1001882 from glaubitz)</comment>
+    <requestid>1001904</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f6d5557b14e3976447df359bc36133d3</srcmd5>
+    <version>2.3.3</version>
+    <time>1689710938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099265</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f4001dc9012c5e0f0f543982eff041a5</srcmd5>
+    <version>2.4.1</version>
+    <time>1702845136</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.1:
+  * Fix regression with `google.cloud._helpers._NOW` (#266)
+  * Add support for Python 3.12 (#256)
+  * Introduce compatibility with native namespace packages (#260)
+- switch to new python stack for SLE15
+
+  * add 'Client.from_service_account_info' factory (#54) (7e59360)
+  * add support for Python 3.8
+  * Updated client library documentation URLs. (#7307)</comment>
+    <requestid>1133638</requestid>
+  </revision>
+</revisionlist>

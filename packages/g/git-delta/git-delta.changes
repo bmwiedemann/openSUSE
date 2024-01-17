@@ -1,0 +1,505 @@
+-------------------------------------------------------------------
+Tue Jun  6 06:45:45 UTC 2023 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.16.5
+  * Increase number of characters shown in submodule hashes
+  * Fix typo in publishing build job & restore cross-compilation
+  * Drop grep-header-style option
+  * Honor grep-header-decoration-style for ripgrep output
+
+- Fix boo#1212003, xml-rs is no longer used as a dependency. 
+
+- Update to 0.16.4
+  * With this release delta can now display grep output in (hopefully)
+    exactly the same layout that ripgrep does, but adding syntax highlighting,
+    hyperlinks, and navigation. Use `ripgrep --json ... | delta` for that,
+    or set grep-output-type = ripgrep to get that output style from git grep etc.
+  * Address deprecated clap features
+  * Fix clippy warnings
+  * Replace unmaintained/outdated GitHub Actions
+  * Reduce allocations during --show-colors
+  * Fix the--show-themes command
+  * Fixed broken link to README
+  * Update git2 to 0.16.1
+  * Fix warning from bat for an unknown syntax theme
+  * Add gruvmax-fang theme
+  * Spelling
+  * Update clap to 4.1
+  * Encapsulate git2 types
+  * Update dependencies & switch back to the dirs crate
+  * Return the GitRemoteRepo type directly
+  * Added config option.
+  * Add Winget Releaser workflow
+  * Get git's minus/plus style from config instead of copying it around
+  * Add methods for getting GitConfig as reference
+  * Rename git_config_entry module to remote
+  * Tips and tricks manual section
+  * Set language specifiers for code blocks and fix links in manual
+  * Derive the default for enums with #[derive(Default)]/#[default]
+  * Add discord-dark theme
+  * Merge the different GitConfig constructors for a config file
+  * Remove manual line-wrapping
+  * Add link to similar project walles/riff
+  * add: installation instructions for conda/mamba
+  * Clarify how to use delta with tmux
+  * Update bitflags to 2.2
+  * Fix some typos
+  * Remove unneeded extern crate statements
+  * Downgrade and pin the bytelines crate
+  * Improve manual build job
+  * Replace deprecated error_chain crate with anyhow
+  * Fix submodule diff parsing
+  * Fix warning highlight for trailing whitespace
+  * Misc tab refactoring
+  * manual: fix link to using delta on Windows
+  * Introduce grep-output-type option: ripgrep or classic
+
+-------------------------------------------------------------------
+Sun Dec 18 20:10:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * Explicitly request xz compression by @dandavison in #1249
+  * Thanks to all contributors for the changes in this release! One
+    particularly exciting contribution is the tweaks to the highlighting
+    algorithm made by @phillipwood in #1244. This is something that has
+    remained more or less the same since delta was first created, but #1244
+    brings several improvements in the details of exactly which characters
+    are highlighted.
+  * Change Rust toolchain in 'Deploy Manual' CI task by @dandavison in #1183
+  * Switch bat to library mode by @tranzystorek-io in #1187
+  * Add sourcehut link parsing by @p00f in #1190
+  * Refactoring ansi/iterator by @zhiburt in #1191
+  * Add codeberg link parsing by @p00f in #1194
+  * Add terminal width fallback via stty if on windows/MSYS2 by @th1000s in
+    #1030
+  * measure_text_width() without constructing a temporary string by @th1000s
+    in #1216
+  * Remove Git 2.37 workaround from install docs by @adamchainz in #1228
+  * Fix clippy warnings by @clnoll in #1236
+  * Remove Provides in Debian package by @baryluk in #1217
+  * Handle quoted filenames in diff header by @th1000s in #1222
+  * ci: improve formatting by @MarcoIeni in #1238
+  * Highlighting improvements by @phillipwood in #1244
+  * ci: release apple arm binary by @MarcoIeni in #1239
+  * try fix bad alignment in unicode (#1144) by @SheldonNico in #1145
+
+-------------------------------------------------------------------
+Thu Sep  1 11:58:39 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.14.0:
+  * Update color-moved-support.md
+  * Tweak some words improved representation
+  * Only trigger git show handler if a file extension was parsed
+  * Fix commit hyperlink formatting
+  * Avoid lockup when running without arguments and stdin is connected to a tty
+  * Fix whole-file changes being attributed to the wrong commit in "git log" output
+  * Update README.md to include git 2.37.0 workaround
+  * Don't attempt to process ANSI sequences in non-UTF8 input
+  * Update clap
+  * Recreate highlighter on each line of git show $commit:$path output
+  * Fix git-grep match-highlighting at line-start
+  * Update to chameleon theme
+  * Fix typos
+  * Support configurable timestamps in git blame output
+  * Added auto completions for fish shell
+
+-------------------------------------------------------------------
+Tue Jun 14 05:01:54 UTC 2022 - socvirnyl.estela@gmail.com
+
+- remove bump-regex.patch
+
+- Update to version 0.13.0:
+  * Update bat, git2, and syntect
+  * Add 'light = false' w/ comment in gitconfig (#1073)
+  * Add chameleon theme to themes.gitconfig (#1062)
+  * Add note that the package is called "git-delta" in the README
+  * Add link to `bat` on README (#1052)
+  * Apply hyperlinks to diff stat file paths (#1035)
+  * Add custom env struct to store env at init (#1025)
+  * Add support for irreversible-delete
+
+-------------------------------------------------------------------
+Fri Mar 18 09:06:07 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Add bump-regex.patch to fix CVE-2022-24713 (boo#1196972)
+
+- Update to version 0.12.1:
+  * Make git include colors in output going to delta
+  * Clarify language: "in front of" → "before"
+  * Fix parsing for .properties files with - in path
+  * Support CSI sequences other than SGR
+  * Enable commit links for GitLab
+  * Fall back to plain diff when process substitution is used
+  * Include information about GIT_PAGER in manual
+  * Use assets API from bat library instead of vendored code
+  * Calling process: Query more parents, disable full scan
+  * Run in diff mode iff two positional arguments are supplied
+
+- Update to version 0.12.0:
+  Firstly a breaking change: some deprecated options are no longer 
+  supported: in particular plus-color and minus-color. A description 
+  of this change and what you need to do if you're affected by it is below.
+  Secondly, improvements, including:
+  * A (much-needed) short help text is now available: use delta -h. 
+    Delta is the proud possessor of 100 command-line options, 
+    so I think this is going to be helpful.
+  * git blame output now displays line numbers
+  * Improvements to file and mode labels
+  * delta now has a user manual: https://dandavison.github.io/delta/. 
+    You can even create a PDF copy (print button in upper-right hand corner), 
+    and the README is correspondingly now a much easier read with 
+    the minimal required setup instructions and an overview of 
+    functionality with screenshots.
+  Finally some bug fixes, including
+  * File path hyperlinks (e.g. in diff and grep output) were previously 
+    sometimes incorrect, especially when delta was invoked from a 
+    directory other than the repo root.
+  * Some fixes to grep output parsing edge cases
+
+- Update to version 0.11.3:
+  * Fix handling of --word-diff and --color-words. Note that line-numbers 
+    and side-by-side will be ignored if delta detects that the input 
+    was generated by git --word-diff / --color-words.
+  * DELTA_FEATURES can now be used to add to features specified in 
+    ~/.gitconfig. Use a + prefix to do this: an example is 
+    DELTA_FEATURES=+side-by-side which will activate side-by-side, in addition to your usual features.
+  * Store less history file in a better location on Windows.
+  * Fix performance issue affecting some linux users
+
+- Update to version 0.11.2:
+  * This release fixes a performance problem that was affecting some users. 
+
+- Update to version 0.11.1:
+  * Be permissive about unexpected state machine state (fixes crash)
+
+- Update to version 0.11.0:
+  * Handle combined diff format and merge conflicts
+  * Handle failure to parse non hunk header
+
+- Update to version 0.10.3:
+  * Delta was previously handling --word-diff and --color-words 
+    output in a nonsensical way. With this release, delta does not 
+    attempt to handle these output types, allowing git's raw output 
+    through unchanged. Appropriate handling may be added later.
+  * When a line is unchanged but paired with a line that has 
+    additions/deletions, delta now assigns the unchanged line 
+    {plus,minus}-non-emph-style; previously it assigned {plus,minus}-style. 
+    This change does not alter visual output by default because by 
+    default those two style styles are set to the same value.
+  * Fixes a bug affecting line numbers in side-by-side mode
+
+- Update to version 0.10.2:
+  * This releases fixes a bug when using side-by-side with 
+    `git diff.colorMoved``
+
+- Update to version 0.10.1:
+  * Remove trailing \r from raw line, in presence of ANSI escape sequences
+
+- Update to version 0.10.0:
+  * delta displays output from git grep and rg --json ... | delta 
+    with code syntax highlighting and navigate functionality.
+  * delta displays output from git blame with code syntax highlighting, 
+    hyperlinks to commits, and control over formatting.
+  * delta syntax highlights file contents produced by git show $revision:/path/to/file
+  * delta can apply syntax highlighting and arbitrary styling to the 
+    raw colors emitted by git --color-moved. This is done by specifying 
+    rules for remapping styles using map-styles.
+  * More powerful configuration options: styles can reference other 
+    styles, custom styles and custom colors can be defined in 
+    gitconfig and reused, and 140 colors can be specified using their 
+    standard CSS names.
+  * New subcommand --show-colors outputs a demo of 140 background colors 
+    with syntax highlighting, to help choose background colors.
+  * New subcommand --parse-ansi takes color input and prints out the 
+    corresponding style strings (useful for map-styles)
+  * Utilities for interrogating the command line of the process that 
+    is sending output to delta, added by @th1000s.
+
+- Update to version 0.9.2:
+  * Do not reformat submodule diffs under git add -p
+
+- Update to version 0.9.1:
+  * This is a followup to release 0.9.0 fixing a bug in the --help
+    text emitted by the 0.9.0 binary.
+
+- Update to version 0.9.0:
+  With this release, long lines are wrapped in side-by-side mode, 
+  thanks to a far-reaching series of contributions. No special 
+  customization is needed, but sophisticated control over the details 
+  is available: see `--wrap-max-lines`, `--wrap-left-symbol`, 
+  `--wrap-right-symbol`, `--wrap-right-percent`, 
+  `--wrap-right-prefix-symbol`, `--inline-hint-style`.
+  * Fix the empty result issue in add -p
+  * Recognize GitHub SSH remote URLs that don't start with git@ for hyperlinks
+  * Terminate process gracefully on error in diff()
+  * Ignore ctrl-c (SIGINT) to avoid leaving an orphaned pager process.
+  * Remove unnecessary borrows
+  * Fix computed values to be computed after all set_options
+  * Make it possible to jump between files when navigate is active
+  * Fix empty line highlighting
+  * Fix deadlock in git diff mode
+  * Support insteadOf replacements in git remote URLs
+  * Do not suppress submodule diffs
+  * More minimalistic display of submodule (short) diffs
+  * Fix hunk header when line number is not requested and navigate is enabled
+  * Display removed file name in file deletion case
+  * Remove superfluous lowercasing of feature names
+  * Option to set the background extension mode to ANSI or spaces
+  * Add side-by-side line wrapping mode
+  * Width can be an offset from the terminal width
+  * Linenumber refactoring
+  * Use fatal() to exit with errorcode 2
+  * Re-enable ANSI fill by equalizing panel sizes
+  * Update syntaxes and themes from bat v0.18.3
+  * Line numbers and side-by-side mode
+
+-------------------------------------------------------------------
+Tue Sep 28 01:29:39 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
+Wed Aug  4 09:02:40 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Add git as BuildRequires, which is needed for testing
+- Update to version 0.8.3
+  * This release fixes a security vulnerability (CVE-2021-36376) 
+    on Windows. Please update if you are using Windows.
+
+- Update to version 0.8.2
+  * This is a bug fix release: the bug occurs when using delta to 
+    diff files whose names contain spaces. It does not affect use of 
+    delta as git's pager.
+  * closed bug: argument parsing error with delta fileA fileB 
+    when filenames contain spaces
+
+- Update to version 0.8.1
+  * This is mainly a bug fix release: filenames containing spaces 
+    were causing crashes due to a regression in 0.8.0. It also includes 
+    a fix for the delta file_a file_b "diff mode" usage style, and 
+    an improvement for the diff-highlight / diff-so-fancy emulation modes.
+  * closed bug: Panic with filename "01g - Text"
+  * closed bug: side-by-side option only works in diff mode when piping
+  * closed bug: commit-style raw for diff-so-fancy / diff-highlight
+
+- Update to version 0.8.0
+  * New option: relative-paths causes all file paths to be printed 
+   relative to the current directory so that they can be easily opened 
+   in a text editor or used in a shell command. Using 
+   `hunk-header-style = file line-number` syntax will emit the line 
+   number with the file path and thus should allow your editor to 
+   open at the correct line. For example, in the VS Code integrated 
+   terminal this means that with no further configuration every file 
+   path in git output can be opened with ctrl-click/cmd-click, and 
+   opening at a specific line works. Use diff-stat-align-width to 
+   control horizontal alignment of diff stat sections, 
+   although this may be replaced by a better solution in the future.
+  * New option: commit-regex allows delta to work nicely with custom 
+    git log formats
+  * Support git -c delta.foo=bar ... in latest git version
+  * Support custom hyperlink hash formats
+  * Allow custom themes to be defined as light themes
+  * Transform file paths to be relative to current directory
+  * delta file_A file_B now invokes git diff, instead of diff -u
+  * Fixed bug the --24-bit-color option is unusable from .gitconfig: 
+    24-bit-color is deprecated; use true-color instead.
+  * Fixed bug Fix less version parsing
+  * Fixed bug No output for chmod file mode change
+
+- Update to version 0.7.1
+  * This release brings two improvements due to delta contributors:
+    @cben proposed a new way for delta to seed less with the regexp 
+    that is used to implement navigation, which is implemented in 
+    this release. This makes it possible to keep navigate=true in 
+    delta config all the time, without the ill effects that it had before
+  * a new option delta --show-themes, which demos the delta color 
+    themes that are available locally. n and N step forwards and 
+    backwards through the themes.
+  * new themes
+  * Fix bug Setting $PAGER to use delta results in an infinite loop
+  * Fix bug --navigate breaks git log --oneline and empty git diff
+
+-------------------------------------------------------------------
+Thu Feb 18 20:52:58 UTC 2021 - Gordon Schulz <gordon@gordonschulz.de>
+
+- Update to version 0.6.0
+  * This release brings a new and more convenient way to change delta 
+    options in a one-off git command: using git -c. Here's an example:
+
+    git -c delta.line-numbers=false -c delta.max-line-distance=0.8 show
+
+    One note: while quotes around color hex codes are required in 
+    gitconfig, they can be omitted in the git -c context
+
+    git -c delta.plus-style='syntax "#aa0000"'
+    git -c delta.plus-style='syntax #aa0000'
+  * Hunk header misaligned in some cases
+  * Delta does not respect git -c
+  * Can't disable line numbering from command line
+  * Support for Apple Silicon/ARM64
+
+-------------------------------------------------------------------
+Fri Jan  8 09:05:59 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.5.1
+  * This release is primarily to make delta build on Apple Silicon/ARM 
+    for Homebrew. 
+  * It also fixes an inconsistency whereby the line number was not 
+    displayed in the hunk header if line-numbers was active.
+
+- Update to version 0.5.0
+  * This release introduces a cosmetic change to delta output: 
+    the line number (when full line-numbers mode is not active) 
+    is now displayed in the hunk header line, along with the hunk 
+    header code fragment, and optionally a file path.
+
+    Use hunk-header-style to configure it:
+      --hunk-header-style <hunk-header-style>
+        Style (foreground, background, attributes) for the hunk-header. 
+        See STYLES section. Special attributes 'file' and 'line-number' 
+        can be used to include the file path, and number of first 
+        hunk line, in the hunk header. If included in the hunk header, 
+        'file' and 'line-number' are styled according to 'file-style' 
+        and 'hunk-header-decoration-style' respectively. 
+        The style 'omit' can be used to remove the hunk header section
+        from the output [default: line-number syntax]
+    If you are displaying the file path in the hunk header, you may 
+    want to get rid of the main file line. 
+    Use file-style = <my-file-color> omit to set the color of the file 
+    in the hunk header while deactivating the main file section.
+  * The release also fixes a bug that was introduced in the last release 
+    when using delta as a unified diff replacement, 
+    i.e. delta file_a file_b.
+  * delta 0.4.5 binary release messes up terminal on Ubuntu 20 04
+  * delta 0.4.5 binary release does not run on macOS 10.11 (El Capitan)
+  * ReadMe can now use latest less.exe (instead of forked version)
+  * bump-homebrew-formula GitHub CD action is not working
+  * closed: Is it possible to show the file path in the hunk header?
+  * side-by-side alignment incorrect when tabs present
+
+- Update to version 0.4.5
+  * Creatied CI and CD workflows for Delta in GitHub actions
+  * delta shall have non-zero status code if there were any matches 
+    found
+  * Expose max_buffered_lines as configurable option
+  * Some theme options are not working with --color-only enabled
+  * Calculate code coverage
+  * Switch from Travis to GitHub actions
+  * delta does not recognize Git's copy detection
+  * Empty lines highlight plus-marker as whitespace-error
+  * PAGER= does nothing
+  * Add a test that enforces clippy and rustfmt compliance
+  * Dimmed-zebra doesn't show whether line is removed vs. added
+  * Windows Terminal Preview 1.4: Hyperlinks not working
+  * closed: Is it possible to not use hunk header and see absolute 
+            (true) not relative line numbers?
+  * closed: Is it possible to show the file path in the hunk header?
+  * Markdown coloring problem 
+
+-------------------------------------------------------------------
+Wed Oct 14 08:27:19 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Name the installed binary `delta`, as upstream calls it, as
+  renaming causes various breakages (e.g. bash completions) and 
+  inconsitencies with upstream documentation and usage. 
+  Add Conflict with sccs, which also provides a binary called
+  `delta` instead.
+
+-------------------------------------------------------------------
+Wed Oct 14 05:56:35 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.4.4
+  * This release mostly fixes bugs in git add -p behavior, adds 
+    test coverage, and clarifies the code involved.
+    In addition, a new environment variable is supported: 
+    DELTA_PAGER. If set, this takes precedence over BAT_PAGER. 
+    See --paging in delta --help.
+    * bug git add -p one-to-one correspondence errors
+    * bug Line numbers incorrect/relative - Windows/Delta 0.4.1
+    * bug [Linux] git add -p not working with side-by-side
+    * bug Delta crash on Windows when using as stand-alone diff tool
+    * Second document label is missing last character (truncated)
+
+-------------------------------------------------------------------
+Sat Oct 10 17:58:59 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add Conflicts with git-extras
+
+-------------------------------------------------------------------
+Wed Sep 16 09:04:13 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.4.3
+  * A few bug fixes and a couple of minor features (mac-line-length) 
+   and the ability to hide all line numbers.
+
+-------------------------------------------------------------------
+Mon Aug 10 06:03:45 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.4.1
+  * This release fixes a few bugs. In particular, it makes it possible
+    to use git add -p with line numbers activated. If you also have
+    side-by-side activated then that will not be used in git add -p
+    (it's impossible) but it will now not cause an error either.
+  - Dockerfile isn't colored
+  - [Linux] git add -p not working with side-by-side
+  - Mismatch in line numbers between git diff and git add -p
+
+-------------------------------------------------------------------
+Wed Aug  5 09:52:32 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.4
+  * The main new feature in this release is support for git diff
+    --color-moved. This makes Git's native moved-line detection
+    algorithms and styling options available when using Delta. Delta
+    supports this automatically, without any configuration change, but
+    see the new option inspect-raw-lines in case you need to turn it
+    off.
+  * The other new feature is that Delta can now cause files and commit
+    hashes to be rendered as hyperlinks in your terminal emulator:
+    However, this will not be available to you without, at the
+    minimum, installing a patched version of less, because support for
+    the hyperlink spec has only partially spread through the terminal
+    application ecosystem. See delta --help text for details.
+  * Bugs fixed:
+      * Support --color-moved
+      * Support --color-moved-ws
+      * Support displaying files and commits as OSC 8 hyperlinks
+      * width option is not honored in git config sections
+      * diff -U0 rendered with lines out of order
+      * paging should be supported in gitconfig
+      * syntax-theme should be honored in a custom feature in gitconfig
+      * Line numbers style not taking effect with --side-by-side
+      * Duplicate "renamed" header when file is renamed with changes
+
+-------------------------------------------------------------------
+Thu Jul 16 09:09:02 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.3
+  * This release adds a side-by-side diff view: delta -s or 
+    delta --side-by-side. By default, side-by-side view has 
+    line-numbers activated, and has syntax highlighting in both the 
+    left and right panels.
+  * The release also fixes bug #238 in which the line number display 
+    alignment was broken for line numbers greater than 9999.
+
+- Update to version 0.2
+  This is a large release, introducing major changes to delta 
+  configuration as well as new features and bug fixes. It involved a 
+  major overhaul of the code base. 
+  The highlights are:
+   * To configure delta's appearance, you now use "styles" instead 
+     of background color names. A style is a string like red bold ul 
+     "#ffeeee" that specifies foreground color, background color, 
+     and attributes. 
+     See https://github.com/dandavison/delta#choosing-colors-styles.
+   * Delta now reads configuration from a [delta] section in git 
+     config, and this is the recommended way to configure delta. 
+     See https://github.com/dandavison/delta#configuration
+   * Delta now has a line numbers feature. 
+   * Delta now has --diff-highlight and --diff-so-fancy 
+     emulation modes
+
+-------------------------------------------------------------------
+Tue Apr 28 07:58:02 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Initial commit of version 0.1.1 

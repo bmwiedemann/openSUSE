@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed Jan 11 14:15:28 UTC 2012 - coolo@suse.com
+
+- remove tests with unacceptable license (bnc#740773)
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:56 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Oct 12 16:33:04 UTC 2010 - jw@novell.com
+
+- initial package 1.01
+  * created by cpanspec 1.78.02
+  * needed by SQL::Translator
+
