@@ -1,7 +1,7 @@
 #
 # spec file for package kmozillahelper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,12 @@ Group:          System/GUI/KDE
 URL:            https://github.com/openSUSE/kmozillahelper
 Source:         https://github.com/openSUSE/kmozillahelper/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  rpm_macro(cmake_kf5)
 Requires:       mozilla-kde4-version = %{helper_version}
 Supplements:    packageand(MozillaFirefox:plasma5-desktop)
 Supplements:    packageand(MozillaThunderbird:plasma5-desktop)
