@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-music
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-music/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 #PATCH-FIX-SLE  0001-gnome-music-use-python36.patch yfjiang@suse.com -- disable python 3.7 specific feature to allow gnome-music build and run on python 3.6 for SLE/Leap 15.4.
 Patch0:         0001-gnome-music-use-python36.patch
