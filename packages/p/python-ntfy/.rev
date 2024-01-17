@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a934858f4af2313f8f0aeab95c5d8ac</srcmd5>
+    <version>2.6.0</version>
+    <time>1524576705</time>
+    <user>dimstar_suse</user>
+    <comment>New package, see https://lists.opensuse.org/opensuse-factory/2018-04/msg00563.html.</comment>
+    <requestid>596737</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e17252bfc6d3d5810eabf78028f2512f</srcmd5>
+    <version>2.7.0</version>
+    <time>1543591945</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ntfy 2.7.0.
+  * Support customizing or disabling the notification icon.
+  * Support cusotmizing the notification timeout.
+  * Have auto-ntfy ignore htop by default.
+  * Make auto-ntfy send notifications in the background so that
+    control returns to the shell faster.</comment>
+    <requestid>652681</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>307fcc5ddb5c20bfa287e2ea694f3567</srcmd5>
+    <version>2.7.0</version>
+    <time>1545648024</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659517</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b154353171d5f35b0223a091342ac3cf</srcmd5>
+    <version>2.7.0</version>
+    <time>1587659549</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop deprecated usage of %python3_only in favour of
+  %python_alternative.
+</comment>
+    <requestid>796344</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>cd995f53a0a22e9d46dd9446af35fceb</srcmd5>
+    <version>2.7.0</version>
+    <time>1609532048</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859635</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>bf1dc693dbeda821098dc58a8c060a89</srcmd5>
+    <version>2.7.0</version>
+    <time>1622536538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895343</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>e14a1b2360505ed3237a45d34501791a</srcmd5>
+    <version>2.7.0</version>
+    <time>1645137618</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch test execution to pytest to allow for deselecting tests of
+  optional functionality for which we lack the requiired
+  dependencies.
+- Drop build dependency to the sleekxmpp Python module which got
+  dropped from Factory.
+
+- Stop using %pyunittest as this seems to cause build failures on
+  Leap</comment>
+    <requestid>955593</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>aa64a041ede86161ac7170c77eb49c1a</srcmd5>
+    <version>2.7.0</version>
+    <time>1651669848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974775</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>3887d6bdad61b3c97ce47d6e07221ca7</srcmd5>
+    <version>2.7.0</version>
+    <time>1658243989</time>
+    <user>RBrownFactory</user>
+    <comment>- Add emoji-2.0-compatibility.patch to allow upgrade of
+  python-ntfy to version 2.0.
+- Add drop-misleading-shebangs.patch.</comment>
+    <requestid>990081</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>d5126e35908db87dafd78f8435484fbb</srcmd5>
+    <version>2.7.0</version>
+    <time>1673209521</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311-compat.patch to achieve compatibility with Python
+  3.11.</comment>
+    <requestid>1056787</requestid>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>816c995f3582e9ed9b49ff073cc4601a</srcmd5>
+    <version>2.7.0</version>
+    <time>1704281530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136327</requestid>
+  </revision>
+</revisionlist>

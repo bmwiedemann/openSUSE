@@ -1,0 +1,6 @@
+<package name="rfbproxy" project="openSUSE:Factory">
+  <title>Record or play back a VNC session</title>
+  <description>rfbproxy is a simple proxy for VNC which allows recording of screen
+updates, key presses and mouse events for later replay.</description>
+  <devel project="M17N" package="rfbproxy"/>
+</package>

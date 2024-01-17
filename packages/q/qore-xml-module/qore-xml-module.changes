@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Tue Jul 18 14:25:19 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 1.8.1
+  * allow connection options designating files to be selected as files
+
+-------------------------------------------------------------------
+Fri Jan  6 17:57:39 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 1.8.0 because of compatibility with qore 1.12.4 
+  * fixed WSDL handling type conversions when supporting data provider APIs
+  * implemented the SaxDataProvider module
+  * updated to build with qpp from Qore 1.12.4+
+
+-------------------------------------------------------------------
+Thu May 26 12:35:03 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 1.5.3
+  * fixed merging namespaces in externsl XSDs with overlapping prefixes
+  * fixed handling complexType elements with a sequence and any element
+  * fixed error message for WSDLLib::getWebServiceFromUrl() when the 
+    file could not be read
+  * fixed loading URLs with multiple imports of the same external 
+    XSD schema 
+  * fixed a type error processing messages on listeners with no hostname 
+    socket info value
+
+-------------------------------------------------------------------
+Sun Oct 31 13:55:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.5.1 for Qore 1.0.10
+  * Added initial WebDAV module support in the xml module
+  * Fixed errors handling missing message descriptions
+  * Fixed a bug serializing xml comments
+  * Fixed a type error handling messages in listeners without a
+    hostname key in the socket info hash of the connection context hash
+
+-------------------------------------------------------------------
+Sat Jun 12 12:39:04 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.5.0 for qore 0.9.5
+  * Added support for new ConnectionProvider APIs
+  * Added support for the FileLocationHandler module when
+    retrieving WSDLs
+  * Added support for connection serialization
+  * Added data provider API support
+  * Added feature: Object serialization
+  * Use new HTTPClient APIs to ensure that socket events are
+    raised correctly
+  * Fixed SOAP response msg to currespond to the type
+  * Fixed a bug where serialization errors were not thrown with
+    unserializable data types
+  * Fixed a bug parsing empty string values with xmlns attributes
+  * Fixed WSDL serialization
+
+-------------------------------------------------------------------
+Sat Dec 19 18:16:20 UTC 2020 - sarah.kriesch@opensuse.org
+
+- enable s390x architecture in spec file
+
+-------------------------------------------------------------------
+Sun Aug 16 21:04:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * huge list of changes, see https://docs.qore.org/modules/xml/1.4.1/xml/html/#xml141
+
+-------------------------------------------------------------------
+Mon Aug 31 05:27:21 UTC 2015 - normand@linux.vnet.ibm.com
+
+- add --enable-64bit as already done for other qore-*-module
+
+-------------------------------------------------------------------
+Mon Jul 28 15:08:50 UTC 2014 - petr@yarpen.cz
+
+- migrated to OBS file layout
+

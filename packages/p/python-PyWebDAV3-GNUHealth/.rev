@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27cf8002e7944154b3bab69c0c34c331</srcmd5>
+    <version>0.10.2</version>
+    <time>1506870064</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-PyWebDAV3-GNUHealth</comment>
+    <requestid>528304</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9213e7b5b4fe359f58c90441915967d3</srcmd5>
+    <version>0.10.3</version>
+    <time>1543224534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651226</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7d78491d8f46ba0fbbef65a00a6eb8f1</srcmd5>
+    <version>0.12.0</version>
+    <time>1689786618</time>
+    <user>anag+factory</user>
+    <comment>- version 0.12.0
+  * Include version and README.rst in MANIFEST.in
+  * Fix encoding issues in Thunderbird
+  * Enforce str - utf8, not Bytes
+</comment>
+    <requestid>1099338</requestid>
+  </revision>
+</revisionlist>

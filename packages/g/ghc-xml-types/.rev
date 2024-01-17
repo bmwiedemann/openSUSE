@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81614d6b6502e8f88e65ce087f938cde</srcmd5>
+    <version>0.3.6</version>
+    <time>1533412419</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627272</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ace6f30d4e4f20a8b0d57142ffb705a5</srcmd5>
+    <version>0.3.6</version>
+    <time>1540448373</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642907</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>762c4f365d22d2cee42ea0457aaaf098</srcmd5>
+    <version>0.3.6</version>
+    <time>1577451559</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759566</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d2aa964ddc86bed3898b5f4fdc282f8c</srcmd5>
+    <version>0.3.7</version>
+    <time>1592580091</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815224</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7208530bf9826270eb77b16599a9a43a</srcmd5>
+    <version>0.3.8</version>
+    <time>1595339439</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>822048</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f9e7707e84f68a17fd2fbbc1fa94bf23</srcmd5>
+    <version>0.3.8</version>
+    <time>1598643700</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829505</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>a14b29ebb2bdb128f67decf84d30d9d7</srcmd5>
+    <version>0.3.8</version>
+    <time>1608634170</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857672</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>8f1aa5f1725fbc19cea8264045a8d95c</srcmd5>
+    <version>0.3.8</version>
+    <time>1680636303</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076137</requestid>
+  </revision>
+</revisionlist>

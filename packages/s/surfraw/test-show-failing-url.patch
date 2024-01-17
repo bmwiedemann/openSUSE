@@ -1,0 +1,13 @@
+Index: surfraw-2.3.0/test/runtests
+===================================================================
+--- surfraw-2.3.0.orig/test/runtests
++++ surfraw-2.3.0/test/runtests
+@@ -160,7 +160,7 @@ sub testelvis
+ 	my $response=$ua->get($url);
+ 	unless($response->is_success)
+ 	{
+-	    print "FAIL: Get failed: ",$response->status_line;
++	    print "FAIL: Get '", $url, "' failed: ",$response->status_line;
+ 	    if($response->code =~/^[45]/)
+ 	    {
+ 		push(@results,$FAIL);

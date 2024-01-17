@@ -1,0 +1,34 @@
+From acb8a720bd6a74152bcd34401552221cc63e3817 Mon Sep 17 00:00:00 2001
+From: Stanislav Levin <slev@altlinux.org>
+Date: Thu, 22 Jun 2023 15:36:48 +0300
+Subject: [PATCH] tests: Specify version for test PEP621 metadata
+
+According to today's specification
+https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#specification
+
+> The only keys required to be statically defined are:
+  -  name
+  The keys which are required but may be specified either
+  statically or listed as dynamic are:
+  - version
+
+Fixes: https://github.com/pypa/setuptools_scm/issues/866
+Signed-off-by: Stanislav Levin <slev@altlinux.org>
+---
+ testing/test_integration.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/testing/test_integration.py b/testing/test_integration.py
+index 98442724..c8bfc150 100644
+--- a/testing/test_integration.py
++++ b/testing/test_integration.py
+@@ -56,7 +56,8 @@ def test_pyproject_support(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> N
+         "[tool.setuptools_scm]\ndist_name='setuptools_scm_example'"
+     ),
+     "pyproject.project": (
+-        "[project]\nname='setuptools_scm_example'\n[tool.setuptools_scm]"
++        "[project]\nname='setuptools_scm_example'\n"
++        "dynamic=['version']\n[tool.setuptools_scm]"
+     ),
+ }
+ 

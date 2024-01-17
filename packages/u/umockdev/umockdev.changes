@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Thu Sep  7 20:55:27 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.18:
+  * Fix some potential crashes spotted by Coverity.
+
+-------------------------------------------------------------------
+Fri Apr 21 06:05:43 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.17:
+  * Fix uevent race condition in
+    umockdev_testbed_add_from_string().
+
+-------------------------------------------------------------------
+Tue Feb 14 05:24:51 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.16:
+  * preload: Wrap __getcwd_chk().
+  * uevent_sender: Fix fd leak in sendmsg_one.
+  * Fix gcc -fanalyzer complaints.
+
+-------------------------------------------------------------------
+Sun Nov 27 10:24:04 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.15:
+  * Fixes for tests.
+- Changes from version 0.17.14:
+  * ioctl: Make data object usable from Python.
+  * preload: Wrap statfs().
+  * Move to gnu11 C standard.
+  * Lots of small potential bug fixes spotted by Coverity.
+
+-------------------------------------------------------------------
+Fri Jun 24 09:31:11 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 0.17.13:
+  * preload: Wrap fstatfs(), to work with systemd 251 also with Python tests
+  * Fix tests in Gentoo sandbox build
+
+-------------------------------------------------------------------
+Sun May 29 14:30:55 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.12:
+  * Work around packit propose_downstream bug.
+
+-------------------------------------------------------------------
+Mon Apr 11 06:54:23 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.17.9:
+  * preload: Wrap fortified version of readlinkat (thanks Martin
+    Liska)
+
+-------------------------------------------------------------------
+Sat Mar 26 22:34:05 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.8:
+  * Fix some potential crashes spotted by Coverity.
+- Change from version 0.17.7:
+  * Fix uevent race condition in
+    umockdev_testbed_add_from_string().
+
+-------------------------------------------------------------------
+Tue Feb  8 21:21:59 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.6:
+  * Increase uevent buffer size (gh#martinpitt/umockdev#167).
+  * Skip /umockdev-testbed-vala/detects_running_outside_testbed
+    during normal builds for the time being, as it is brittle on
+    several architectures (gh#martinpitt/umockdev#169).
+
+-------------------------------------------------------------------
+Sat Jan 29 09:31:58 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(udev) instead of udev: this allows OBS to
+  properly shotcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Wed Jan 19 23:28:55 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.5:
+  * Relax overzealous stat nlink unit test.
+- Changes from versions 0.17.2 through to 0.17.4:
+  * Include udev properties in emulated netlink messages, to work
+    with recent libudev (gh#martinpitt/umockdev#165).
+  * tests: Work around broken HIDIOCGRDESCSIZE ioctl on big-endian
+    architectures.
+  * preload: Wrap statx() and fstatat(), to fix ls and other tools
+    on recent glibc versions (gh#martinpitt/umockdev#160).
+- Enable tests in a %check section; add BuildRequires: udev,
+  required for tests.
+
+-------------------------------------------------------------------
+Fri Dec 24 20:39:50 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.1:
+  * Fix /sys/dev/* symlinks; regression from 0.15.3
+    (gh#martinpitt/umockdev#155).
+- Changes from version 0.17.0:
+  * Add ioctls necessary to record/replay hidraw devices.
+  * meson: Respect includedir option.
+  * tests: Fix for Fedora koji emulated architectures s390x and
+    arm.
+
+-------------------------------------------------------------------
+Fri Sep 24 20:29:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add umocdev Requires to devel sub-package, packages using
+  umockdev-devel during build expects the binaries to be available.
+
+-------------------------------------------------------------------
+Wed Sep 15 08:15:19 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.16.3:
+  * Several pcap replay fixes.
+  * Immediately create "bus" and "class" directories in /sys to
+    fix udev enumerator (gh#martinpitt/umockdev#144).
+  * preload: Avoid some unaligned access to fix failure on sparc
+    (gh#martinpitt/umockdev#147).
+  * Fix build on Alpine.
+  * Don't build with -Werror by default; use meson setup --werror
+    to re-enable.
+
+-------------------------------------------------------------------
+Mon Sep 13 13:09:28 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable to avoid build cycle with gudev (it is recommended but
+  not required for umockdev itself).
+
+-------------------------------------------------------------------
+Thu Aug 26 18:45:30 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.16.2:
+  * Implement pcap control transfer replaying.
+  * Fix Coverity errors.
+  * Fix most valac build warnings.
+- Changes from version 0.16.1:
+  * Fix wrong ioctl constants on ppc64el.
+  * Fix test-umockdev-record failure in some build environments.
+- Changes from version 0.16.0:
+  * Move ioctl emulation from preload library to main test
+    process.
+  * Add test API for custom ioctl and device read/write handlers
+    (gh#martinpitt/umockdev#96, gh#martinpitt/umockdev#128).
+  * Support USB replay from usbmon pcap captures
+    (gh#martinpitt/umockdev#82, gh#martinpitt/umockdev#117).
+  * Support SPI ioctl/read/write record and replay
+    (gh#martinpitt/umockdev#121).
+- New upstream BuildRequires: pkgconfig(libpcap).
+
+-------------------------------------------------------------------
+Sat May  8 12:08:58 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.15.5:
+  * Fix build with vala 0.52.
+  * Fix build on 32 bit Alpine.
+
+-------------------------------------------------------------------
+Tue Jan  5 14:42:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

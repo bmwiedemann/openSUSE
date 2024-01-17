@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b91d0b91dbb1e11ffd117162fe309e6</srcmd5>
+    <version>2019.1</version>
+    <time>1548064267</time>
+    <user>dimstar_suse</user>
+    <comment>- inital submission of version imb 4.1 - FATE#324155</comment>
+    <requestid>665279</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5cabfe283f6b5d99ecc71ce57e0895df</srcmd5>
+    <version>2019.1</version>
+    <time>1550221321</time>
+    <user>dimstar_suse</user>
+    <comment>- Properly create and tear down default version links when the
+  HPC master packages are installed/uninstalled.
+- Cosmetic changes to module file. (forwarded request 674842 from eeich)</comment>
+    <requestid>674856</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>08373aef4a691ffc33c4fa6a3bf26216</srcmd5>
+    <version>2019.1</version>
+    <time>1550668303</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677359</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6cd97e6c36b9814df1557e9f7fe8af49</srcmd5>
+    <version>2019.1</version>
+    <time>1554384173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691465</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b41c5d38a4c8bb771a0a2d7175eb491a</srcmd5>
+    <version>2019.3</version>
+    <time>1567010287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726715</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>af2494e79249449ccd21d89c915dd1da</srcmd5>
+    <version>2019.3</version>
+    <time>1570010259</time>
+    <user>dimstar_suse</user>
+    <comment>Add Jira feature ID</comment>
+    <requestid>734053</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>59268aacc1573d6e02096e619269afcb</srcmd5>
+    <version>2019.3</version>
+    <time>1571307683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738807</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>0c9e0fadf15a2fe72b3bc6de87deb372</srcmd5>
+    <version>2019.3</version>
+    <time>1575282563</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc7.
+- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8609).
+
+- Disable openmpi1 builds for SLE/Leap &gt; 15.1.
+- Enable openmpi3 builds for Leap and SLE &gt; 15.1 (jsc#SLE-7773).</comment>
+    <requestid>752494</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>22ebaeebbe525b84759b0d4bd93b3198</srcmd5>
+    <version>2019.3</version>
+    <time>1576062814</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
+    <requestid>755684</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5d6e9bd3b4cd4160ad968f90a549aa8a</srcmd5>
+    <version>2019.6</version>
+    <time>1603283923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842836</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8ef1f425347d02650149e023d072dfa0</srcmd5>
+    <version>2019.6</version>
+    <time>1611595403</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix openmpi HPC builds.
+- Add support for gcc10.
+- Add build support for openmpi4.
+</comment>
+    <requestid>866066</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0e38008d4c54fe065574894c76c6568b</srcmd5>
+    <version>2021.2</version>
+    <time>1618061270</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>884013</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>94ea27b1d7823c444d25290d615e62f2</srcmd5>
+    <version>2021.3</version>
+    <time>1664553532</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007255</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6f7d440b6b41931486c3d433fc9a97ed</srcmd5>
+    <version>2021.3</version>
+    <time>1696964482</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116694</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>45d0aa0a0aac99e45d9912a84cc07752</srcmd5>
+    <version>2021.3</version>
+    <time>1698097263</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119586</requestid>
+  </revision>
+</revisionlist>

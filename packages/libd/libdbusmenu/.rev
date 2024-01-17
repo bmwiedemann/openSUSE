@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c180150904751430c57fed5e7cacf9e8</srcmd5>
+    <version>12.10.3+14.04.20140217.1</version>
+    <time>1395495905</time>
+    <user>coolo</user>
+    <comment>Push X11:M:N to X11:M:F; new libraries (external dependencies) and a lot of renamed packages
+
+Fix license </comment>
+    <requestid>225525</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c180150904751430c57fed5e7cacf9e8</srcmd5>
+    <version>12.10.3+14.04.20140217.1</version>
+    <time>1409301534</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>39ce80552a8cc0c416006ce6cb7db077</srcmd5>
+    <version>12.10.3+bzr20150410</version>
+    <time>1434456326</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312148</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>71ae654be4a3cfa4067d8356e3a0c067</srcmd5>
+    <version>12.10.3+bzr20160223</version>
+    <time>1457116226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>365790</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a3ee025f61164cc88374a0f119984b3b</srcmd5>
+    <version>16.04.0</version>
+    <time>1473409247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>425724</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>aaf8e6089460bab38a78f61692e66f21</srcmd5>
+    <version>16.04.0</version>
+    <time>1520021359</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581672</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>eb83917beab8c25eab9b76bcbd39b344</srcmd5>
+    <version>16.04.0</version>
+    <time>1566240677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723508</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>313c38822c776222f24b3cd8b0e35462</srcmd5>
+    <version>16.04.0</version>
+    <time>1571310490</time>
+    <user>dimstar_suse</user>
+    <comment>Fox</comment>
+    <requestid>738840</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>3cff401b9f281d88332df30f67b5dc4e</srcmd5>
+    <version>16.04.0</version>
+    <time>1574549461</time>
+    <user>dimstar_suse</user>
+    <comment>Update </comment>
+    <requestid>750043</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>6c9049cefd8c2aa73b8064559c8df57f</srcmd5>
+    <version>16.04.0</version>
+    <time>1577136967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755748</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>3e6771e102fbf99ff5d5b87c259dd991</srcmd5>
+    <version>16.04.0</version>
+    <time>1585176162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787418</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>dcfc1ed3d89a10fbcd3258b356d35a7d</srcmd5>
+    <version>16.04.0</version>
+    <time>1649274658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966648</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>f5255c819b9f6a8d8b36aea4e4de24b6</srcmd5>
+    <version>16.04.0</version>
+    <time>1664112883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005794</requestid>
+  </revision>
+</revisionlist>

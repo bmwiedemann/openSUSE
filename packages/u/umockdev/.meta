@@ -1,0 +1,11 @@
+<package name="umockdev" project="openSUSE:Factory">
+  <title>Mock hardware devices for creating unit tests and bug reporting</title>
+  <description>umockdev mocks Linux devices for creating integration tests for hardware
+related libraries and programs. It also provides tools to record the properties
+and behaviour of particular devices, and to run a program or test suite under a
+test bed with the previously recorded devices loaded.
+
+</description>
+  <devel project="hardware" package="umockdev"/>
+  <url>https://github.com/martinpitt/umockdev/</url>
+</package>

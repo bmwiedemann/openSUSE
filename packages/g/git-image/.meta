@@ -1,0 +1,5 @@
+<package name="git-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed openSUSE Tumbleweed with Git</title>
+  <description>A micro environment with Git for containers based on the SLE Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="git-image"/>
+</package>

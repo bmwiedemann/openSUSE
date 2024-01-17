@@ -1,0 +1,521 @@
+-------------------------------------------------------------------
+Mon Nov 27 20:03:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * ``--dist=loadscope`` now sorts scopes by number of tests to
+    assign largest scopes early -- in many cases this should
+    improve overall test session running time, as there is less
+    chance of a large scope being left to be processed near the
+    end of the session, leaving other workers idle.
+
+-------------------------------------------------------------------
+Thu Nov 16 21:15:05 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 3.4.0:
+  * #963: Wait for workers to finish reporting when test run stops
+    early.
+  * #965: Added support for Python 3.12.
+
+-------------------------------------------------------------------
+Mon May 22 21:13:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * Avoid remote calls during startup as execnet by default does
+    not ensure remote affinity with the main thread and might
+    accidentally schedule the pytest worker into a non-main
+    thread, which breaks numerous frameworks, for example
+    ``asyncio``, ``anyio``, ``PyQt/PySide``, etc.
+    A more safe correction will require thread affinity in
+    ``execnet``
+
+-------------------------------------------------------------------
+Sun May 14 09:36:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * Improved progress output when collecting nodes to be less
+     verbose.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:32:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:44:12 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Mar 27 07:25:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * Fixed hang in ``worksteal`` scheduler.
+  * Improved Documentation
+  * Document limitations for debugging due
+    to standard I/O of workers not being forwarded. Also, mention
+    remote debugging as a possible workaround.
+  Features:
+  * Users can now configure ``load``
+    scheduling precision using ``--maxschedchunk`` command
+    line option.
+  * New ``worksteal`` scheduler, based on
+    the idea of `work stealing
+    It's similar
+    to ``load`` scheduler, but it should handle tests with
+    significantly differing duration better, and, at the same
+    time, it should provide similar or better reuse of fixtures.
+
+-------------------------------------------------------------------
+Wed Nov 30 08:01:07 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Use autosetup instead of setup + autopatch
+- Remove reintroduce-slave-terminology.patch
+- Remove 0001-Revert-Remove-compat-for-pytest-6.patch
+- Update to 3.0.2:
+  # Bug Fixes
+  * #813: Cancel shutdown when a crashed worker is restarted.
+
+  # Deprecations
+  * #825: The --rsyncdir command line argument and rsyncdirs config variable
+    are deprecated.
+  * The rsync feature will be removed in pytest-xdist 4.0.
+  * #826: The --looponfail command line argument and looponfailroots config
+    variable are deprecated.
+  * The loop-on-fail feature will be removed in pytest-xdist 4.0.
+
+  # Improved Documentation
+  * #791: Document the pytest_xdist_auto_num_workers hook.
+  * #796: Added known limitations section to documentation.
+  * #829: Document the -n logical option.
+
+  # Features
+  * #792: The environment variable PYTEST_XDIST_AUTO_NUM_WORKERS can now be
+    used to specify the default for -n auto and -n logical.
+  * #812: Partially restore old initial batch distribution algorithm in
+    LoadScheduling.
+  * pytest orders tests for optimal sequential execution - i. e. avoiding
+    unnecessary setup and teardown of fixtures. So executing tests in
+    consecutive chunks is important for optimal performance.
+  * In v1.14, initial test distribution in LoadScheduling was changed to
+    round-robin, optimized for the corner case, when the number of tests is
+    less than 2 * number of nodes. At the same time, it became worse for all
+    other cases.
+  * For example: if some tests use some "heavy" fixture, and these tests fit
+    into the initial batch, with round-robin distribution the fixture will be
+    created min(n_tests, n_workers) times, no matter how many other tests there
+    are.
+  * With the old algorithm (before v1.14), if there are enough tests not using
+    the fixture, the fixture was created only once.
+  * So restore the old behavior for typical cases where the number of tests is
+    much greater than the number of workers (or, strictly speaking, when there
+    are at least 2 tests for every node).
+
+  # Removals
+  * #468: The --boxed command-line option has been removed. If you still need
+    this functionality, install pytest-forked separately.
+
+  # Trivial Changes
+
+  * #468: The py dependency has been dropped.
+  * #822: Replace internal usage of py.log with a custom solution (but with the
+    same interface).
+  * #823: Remove usage of py._pydir as an rsync candidate.
+  * #824: Replace internal usages of py.path.local by pathlib.Path.
+
+-------------------------------------------------------------------
+Sat Jan 15 18:31:01 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 2.5.0
+  * Features
+    + Full compatibility with pytest 7 - no deprecation warnings or
+      use of legacy features.
+    + New --dist=loadgroup option, which ensures all tests marked
+      with @pytest.mark.xdist_group run in the same session/worker.
+      Other tests run distributed as in --dist=load.
+  * Trivial Changes
+    + Use @pytest.hookspec decorator to declare hook options in
+      newhooks.py to avoid warnings in pytest 7.0.
+    + Use up-to-date setup.cfg/pyproject.toml packaging setup.
+    + Started using type annotations and mypy checking internally.
+      The types are incomplete and not published.
+- Changes from 2.4.0
+  * Features
+    + On Linux, the process title now changes to indicate the current
+      worker state (running/idle). Depends on the setproctitle package,
+      which can be installed with pip install pytest-xdist[setproctitle].
+    + Add support for Python 3.10.
+- Changes from 2.3.0
+  * Deprecations and Removals
+    + Python 3.5 is no longer supported.
+  * Features
+    + Add --numprocesses=logical flag, which automatically uses the
+      number of logical CPUs available, instead of physical CPUs
+      with auto. This is very useful for test suites which are not
+      CPU-bound.
+    + Added new pytest_handlecrashitem hook to allow handling and
+      rescheduling crashed items.
+  * Bug Fixes
+    + Copy the parent process sys.path into local workers, to work
+      around execnet's python -c adding the current directory to sys.path.
+    + Fix issue caused by changing the branch name of the pytest repository.
+  * Trivial Changes
+    + Replace master with controller where ever possible.
+    + Use 'main' to refer to pytest default branch in tox env names.
+- Update patches
+  * reintroduce-slave-terminology.patch
+  * 0001-Revert-Remove-compat-for-pytest-6.patch
+- Require setuptools_scm >= 6.0 for building
+
+-------------------------------------------------------------------
+Tue Feb  2 09:53:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Internal errors in workers are now propagated to the master node.
+
+-------------------------------------------------------------------
+Tue Oct 13 11:46:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Skip test failing with the new pytest
+
+-------------------------------------------------------------------
+Mon Aug 31 13:01:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.1.0
+  * New ``pytest_xdist_auto_num_workers`` hook can be implemented by plugins
+    or ``conftest.py`` files to control the number of workers when
+    ``--numprocesses=auto`` is given in the command-line.
+  * ``psutil`` has proven to make ``pytest-xdist`` installation in certain
+    platforms and containers problematic, so to use it for automatic number
+    of CPUs detection users need to install the ``psutil`` extra
+- Add patches to keep compatibility with older pytests:
+  * reintroduce-slave-terminology.patch
+  * 0001-Revert-Remove-compat-for-pytest-6.patch
+
+-------------------------------------------------------------------
+Tue Aug 25 08:12:22 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.0.0
+  * Drop backward-compatibility "slave" aliases related to worker nodes.  We deliberately
+    moved away from this terminology years ago, and it seems like the right time to finish
+    the deprecation and removal process.
+  * ``pytest-xdist`` no longer supports Python 2.7.
+  * New functions ``xdist.is_xdist_worker``, ``xdist.is_xdist_master``, ``xdist.get_xdist_worker_id``,
+    to easily identify the current node.
+  * When using ``-n auto``, count the number of physical CPU cores instead of logical ones.
+  * ``pytest-xdist`` now requires ``pytest>=6.0``.
+
+-------------------------------------------------------------------
+Wed May 13 09:10:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not do symlinks
+
+-------------------------------------------------------------------
+Sun May  3 07:41:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- 1.32.0:
+  * #524: Add testrun_uid fixture. This is a shared value that uniquely identifies a test run among all workers. This also adds a PYTEST_XDIST_TESTRUNUID environment variable that is accessible within a test as well as a command line option --testrunuid to manually set the value from outside.
+
+-------------------------------------------------------------------
+Mon Jan  6 12:50:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.31.0:
+  * #486: Add support for Python 3.8.
+  * #491: Fix regression that caused custom plugin command-line
+    arguments to be discarded when using --tx mode.
+
+-------------------------------------------------------------------
+Mon Oct  7 13:00:36 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.30.0:
+  * Fix crash issues related to running xdist with the terminal plugin disabled
+  * Initialization between workers and master nodes is now more consistent
+
+-------------------------------------------------------------------
+Tue Jul  2 12:24:33 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.29.0:
+  * #226: --max-worker-restart now assumes a more reasonable value (4 times the number of nodes) when not given explicitly. This prevents test suites from running forever when the suite crashes during collection.
+  * #435: When the test session is interrupted due to running out of workers, the reason is shown in the test summary for easier viewing.
+  * #442: Compatibility fix for upcoming pytest 5.0: session.exitstatus is now an IntEnum object.
+  * #435: No longer show an internal error when we run out of workers due to crashes.
+
+-------------------------------------------------------------------
+Mon Jun  3 08:49:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.28.0:
+  * #426: pytest-xdist now uses the new pytest_report_to_serializable and
+    pytest_report_from_serializable hooks from pytest 4.4
+
+-------------------------------------------------------------------
+Thu Mar 21 09:54:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.27.0:
+  * #374: The new ``pytest_xdist_getremotemodule`` hook allows overriding the module run on remote nodes.
+  * #415: Improve behavior of ``--numprocesses=auto`` to work well with ``--pdb`` option.
+
+-------------------------------------------------------------------
+Tue Feb 12 12:57:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.26.1:
+  * #406: Do not implement deprecated pytest_logwarning hook in pytest versions where it is deprecated.
+  * #376: The current directory is no longer added sys.path for local workers, only for remote connections.
+  * #379: Warning attributes are checked to make sure they can be dumped prior to serializing the warning for submission to the master node.
+  * #372: Pytest versions older than 3.6 are no longer supported.
+  * #373: Node setup information is hidden when pytest is run in quiet mode to reduce noise on many-core machines.
+  * #388: mainargv is made available in workerinput from the host's sys.argv.
+  * #384: pytest 4.1 support: ExceptionInfo API changes.
+  * #390: pytest 4.1 support: pytest_logwarning hook removed.
+
+-------------------------------------------------------------------
+Fri Oct 26 12:56:22 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to version 1.23.2
+- add python-six to runtime deps
+  * Fix issue where Warnings could cause pytest to fail if they
+     do not set the args attribute correctly.
+  * Fix warnings transfer between workers and master node with pytest >= 3.8
+  * Improve collection performance by reducing the number of events
+     sent to master node
+
+-------------------------------------------------------------------
+Sat Apr  7 21:29:41 UTC 2018 - arun@gmx.de
+
+- update to version 1.22.2:
+  * Add backward compatibility for slaveoutput attribute to
+    WorkerController instances. (#285)
+
+-------------------------------------------------------------------
+Sat Feb 24 18:47:34 UTC 2018 - mimi.vx@gmail.com
+
+-  cleanup Requires and spec
+
+-------------------------------------------------------------------
+Sat Feb 24 18:29:53 UTC 2018 - arun@gmx.de
+
+- update to version 1.22.1:
+  * Bug Fixes
+    + Fix issue when using loadscope or loadfile where tests would
+      fail to start if the first scope had only one test. (#257)
+  * Trivial Changes
+    + Change terminology used by pytest-xdist to master and worker in
+      arguments and messages (for example --max-worker-reset). (#234)
+
+-------------------------------------------------------------------
+Thu Jan 11 23:58:44 UTC 2018 - arun@gmx.de
+
+- update to version 1.22.0:
+  * Add support for the pytest_runtest_logfinish hook which will be
+    released in pytest 3.4. (#266)
+
+-------------------------------------------------------------------
+Wed Jan  3 23:12:36 UTC 2018 - arun@gmx.de
+
+- update to version 1.21.0:
+  * Deprecations and Removals
+    + Drop support for EOL Python 2.6. (#259)
+  * Features
+    + New --dist=loadfile option which load-distributes test to
+      workers grouped by the file the tests live in. (#242)
+  * Bug Fixes
+    + Fix accidental mutation of test report during serialization
+      causing longrepr string-ification to break. (#241)
+
+-------------------------------------------------------------------
+Wed Nov 15 11:45:36 UTC 2017 - mimi.vx@gmail.com
+
+-  new pytest-xdist requires pytest-forked package
+
+-------------------------------------------------------------------
+Sat Nov 11 17:25:50 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * CHANGELOG->CHANGELOG.rst
+  * update pytest version requirement to 3.0.0
+
+- update to version 1.20.1:
+  * Bug Fixes
+    + Fix hang when all worker nodes crash and restart limit is
+      reached (#45)
+    + Fix issue where the -n option would still run distributed tests
+      when pytest was run with the --collect-only option (#5)
+
+- changes from version 1.20.0:
+  * Features
+    + xdist now supports tests to log results multiple times,
+      improving integration with plugins which require it like
+      pytest-rerunfailures and flaky. (#206)
+  * Bug Fixes
+    + Fix issue where tests were being incorrectly identified if a
+      worker crashed during the teardown stage of the test. (#124)
+
+- changes from version 1.19.1:
+  * Bug Fixes
+    + Fix crash when transferring internal pytest warnings from
+      workers to the master node. (#214)
+
+- changes from version 1.19.0:
+  * Deprecations and Removals
+    + --boxed functionality has been moved to a separate plugin,
+        pytest-forked. This release now depends on " pytest-forked"
+        and provides --boxed as a backward compatibility option. (#1)
+  * Features
+    + New --dist=loadscope option: sends group of related tests to the
+      same worker. Tests are grouped by module for test functions and
+      by class for test methods. See README.rst for more
+      information. (#191)
+    + Warnings are now properly transferred from workers to the master
+      node. (#92)
+  * Bug Fixes
+    + Fix serialization of native tracebacks (--tb=native). (#196)
+
+- changes from version 1.18.2:
+  * Bug Fixes
+    + Removal of unnecessary dependency on incorrect version of
+      py. (#105)
+    + Fix bug in internal event-loop error handler in the master
+      node. This bug would shadow the original errors making extremely
+      hard/impossible for users to diagnose the problem
+      properly. (#175)
+
+- changes from version 1.18.1 :
+  * Bug Fixes
+    + Fixed serialization of longrepr.sections during error reporting
+      from workers. (#171)
+    + Fix ReprLocal not being unserialized breaking --showlocals
+      usages. (#176)
+
+- changes from version 1.18.0 :
+  * pytest-xdist now requires pytest>=3.0.0.
+  * Features
+    + Add long option --numprocesses as alternative for -n. (#168)
+  * Bug Fixes
+    + Fix serialization and deserialization dropping longrepr
+      details. (#133)
+
+- changes from version 1.17.1 :
+  * Bug Fixes
+    + Hot fix release reverting the change introduced by #124,
+      unfortunately it broke a number of test suites so we are
+      reversing this change while we investigate the problem. (#157)
+  * Improved Documentation
+    + Introduced towncrier for CHANGELOG management. (#154)
+    + Added HOWTORELEASE documentation. (#155)
+
+- changes from version 1.17.0:
+  * fix #124: xdist would mark test as complete after 'call' step. As
+    a result, xdist could identify the wrong test as failing when test
+    crashes at teardown. To address this issue, xdist now marks test
+    as complete at teardown.
+
+- changes from version 1.16.0:
+  * pytest-xdist now requires pytest 2.7 or later.
+  * Add worker_id attribute in the TestReport
+  * new hook: pytest_xdist_make_scheduler(config, log), can return
+    custom tests items distribution logic implementation. You can take
+    a look at built-in LoadScheduling and EachScheduling
+    implementations. Note that required scheduler class public API may
+    change in next pytest-xdist versions.
+
+-------------------------------------------------------------------
+Sat Apr 22 08:59:30 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Fix source URL
+
+-------------------------------------------------------------------
+Wed Jan 18 15:03:59 UTC 2017 - hpj@urpla.net
+
+- fix Source URL
+
+-------------------------------------------------------------------
+Sun Jan 15 11:45:49 UTC 2017 - hpj@urpla.net
+
+- Update to 1.15.0
+  - new ``worker_id`` fixture, returns the id of the worker in a test or
+    fixture. Thanks Jared Hellman for the PR.
+
+  - display progress during collection only when in a terminal, similar to
+    pytest #1397 issue. Thanks Bruno Oliveira for the PR.
+
+  - fix internal error message when ``--maxfail`` is used (#62, #65).
+    Thanks Collin RM Stocks and Bryan A. Jones for reports and Bruno
+    Oliveira for the PR.
+- exclude two tests, that fail due to too narrow requirements
+
+-------------------------------------------------------------------
+Fri May 27 15:59:32 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 1.14
+  - new hook: ``pytest_xdist_node_collection_finished(node, ids)``, called when
+    a worker has finished collection. Thanks Omer Katz for the request and
+    Bruno Oliveira for the PR.
+  - fix README display on pypi
+  - fix #22: xdist now works if the internal tmpdir plugin is disabled.
+    Thanks Bruno Oliveira for the PR.
+  - fix #32: xdist now works if looponfail or boxed are disabled.
+    Thanks Bruno Oliveira for the PR.
+
+-------------------------------------------------------------------
+Wed Oct 21 09:31:58 UTC 2015 - hpj@urpla.net
+
+- Update to 1.13.1:
+  - fix a regression -n 0 now disables xdist again
+
+- Update to 1.13:
+  - extended the tox matrix with the supported py.test versions
+
+  - split up the plugin into 3 plugin's
+    to prepare the departure of boxed and looponfail.
+
+    looponfail will be a part of core
+    and forked boxed will be replaced
+    with a more reliable primitive based on xdist
+
+  - conforming with new pytest-2.8 behavior of returning non-zero when all
+    tests were skipped or deselected.
+
+  - new "--max-slave-restart" option that can be used to control maximum
+    number of times pytest-xdist can restart slaves due to crashes. Thanks to
+    Anatoly Bubenkov for the report and Bruno Oliveira for the PR.
+
+  - release as wheel
+
+  - "-n" option now can be set to "auto" for automatic detection of number
+    of cpus in the host system. Thanks Suloev Dmitry for the PR.
+
+- Update to 1.12:
+  - fix issue594: properly report errors when the test collection
+    is random.  Thanks Bruno Oliveira.
+
+  - some internal test suite adaptation (to become forward
+    compatible with the upcoming pytest-2.8)
+
+- Update to 1.11:
+  - fix pytest/xdist issue485 (also depends on py-1.4.22):
+    attach stdout/stderr on --boxed processes that die.
+
+  - fix pytest/xdist issue503: make sure that a node has usually
+    two items to execute to avoid scoped fixtures to be torn down
+    pre-maturely (fixture teardown/setup is "nextitem" sensitive).
+    Thanks to Andreas Pelme for bug analysis and failing test.
+
+  - restart crashed nodes by internally refactoring setup handling
+    of nodes.  Also includes better code documentation.
+    Many thanks to Floris Bruynooghe for the complete PR.
+
+-------------------------------------------------------------------
+Fri Jun 13 12:37:55 UTC 2014 - mvyskocil@opensuse.org
+
+- Needs py.test 2.4.2 or higher
+
+-------------------------------------------------------------------
+Wed Jun 11 13:47:06 UTC 2014 - mvyskocil@opensuse.org
+
+- Update to 1.10
+
+-------------------------------------------------------------------
+Sun Jan 19 17:04:33 UTC 2014 - toms@opensuse.org
+
+- Initial version 1.9
+

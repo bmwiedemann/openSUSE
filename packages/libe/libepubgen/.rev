@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efd41d853f2a19f4f5bfbdb0c2e81501</srcmd5>
+    <version>0.0.0</version>
+    <time>1417643393</time>
+    <user>dimstar_suse</user>
+    <comment>Initial release of libepubgen needed by newer writerperfect package</comment>
+    <requestid>263309</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7239202e99e70ffec8a0a0c58c78bb17</srcmd5>
+    <version>0.0.0</version>
+    <time>1470851748</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>417424</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c1f7446149318733306f672c35ea890e</srcmd5>
+    <version>0.0.0</version>
+    <time>1486046577</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453853</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fe09b4e742791cc7705168f9882fbb5f</srcmd5>
+    <version>0.0.1</version>
+    <time>1503593577</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.0.1:
+  * Fix escaping of HTML entities.
+  *  Use symbol visibility on Linux. The library only exports public
+     classes/functions now.
+  * Print debugging output to stderr.
+  * Switch to C++11.</comment>
+    <requestid>516847</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6941e1982c0991d97b51b720c03ab904</srcmd5>
+    <version>0.1.0</version>
+    <time>1513852178</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.1.0:
+  * Fix various validation problems, pointed out by epubcheck.
+  * Add EPUB3 support.
+  * Split on headings: add user-friendly section names.
+  * Support writing CSS styles inline in the XHTML streams.
+  * Support various image wrap types.
+  * Support embedded fonts.
+  * Support cover images.
+  * Support footnotes.
+  * upport EPUB3 fixed layout.</comment>
+    <requestid>558820</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6a7ebc70274c22681287e02720e3c9d3</srcmd5>
+    <version>0.1.1</version>
+    <time>1528895761</time>
+    <user>maxlin_factory</user>
+    <comment>- Version update to 0.1.1:
+  * Avoid &lt;div&gt; inside &lt;p&gt; or &lt;span&gt;.
+  * Avoid writin vertical-align attribute without a value.
+  * Fix generation of invalid XHTML when there is a link starting at the
+    beginning of a footnote.
+  * Handle relative width for images.
+  * Fixed layout: write chapter names to improve navigation.
+  * Support writing mode.
+  * Start a new HTML file at every page span in addition to the splits
+    induced by the chosen split method. This is to ensure that specified
+    writing mode works correctly, as it is HTML &lt;body&gt; attribute.
+  * Improve tests.
+  * Add a basic support for ruby.
+  * Configure: disable treating of compiler warnings as errors by
+    default.
+  * Various minor fixes and code cleanups.</comment>
+    <requestid>614510</requestid>
+  </revision>
+</revisionlist>

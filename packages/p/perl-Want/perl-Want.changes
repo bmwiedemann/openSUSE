@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Tue Mar  8 11:18:53 UTC 2016 - coolo@suse.com
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-Want/Changes
+
+  
+  0.27  Thu 25 Feb 2016 21:26:04 GMT
+      - perl 5.23.8 breaks the hack we were using to implement double_return.
+  
+      This patch from David Mitchell fixes it. See https://rt.cpan.org/Ticket/Display.html?id=112226
+  
+      David wrote:
+  
+      > Running with a debugging perl-5.23.8 will show assertion failures in the Want test suite. It's because PL_comppad/PL_curpad save/restore is now done by the context stack / cx_popsub() rather than as previously on the savestack / LEAVE.
+  
+      > This stops the double_return() 'convert CXt_SUB to CXt_NULL' hack from working properly, as PL_comppad is no longer restored when transitioning from the inner to outer sub. The attached patch substitutes one evil hack for another: it keeps the CXt_SUB context stack entry, but sets its retop field to point to the return op again (rather than its caller) so that the return op gets called twice (with a bit of markstack hackery to ensure there are two marks for the two returns to pop).
+  
+      > rreturn and lnoreturn are also a bit under-tested. In particular, there are no tests for rreturn in list context. I added such a test, but more need adding.
+  
+      > I can see this hack breaking again in the future. Perhaps in the long term
+      > rreturn() and lnoreturn() should be implemented using custom ops???
+  
+      > Dave M.
+  
+  0.28  Thu 25 Feb 2016 22:02:42 GMT
+      - Fix test failure in 5.14
+      - Fix test failure in 5.23.9 (using a patch from Slaven Rezic)
+        http://cpan.cpantesters.org/authors/id/S/SR/SREZIC/patches/Want-0.26-RT112226.patch
+  
+  0.29  Fri 26 Feb 2016 04:42:19 GMT
+      - Restore compatibility with certain older perl versions (5.10 and 5.12)
+  
+        It seems that “ATTRS: lvalue” doesn’t work with older perls, but that you can
+        forward-declare the method in Perl code with the :lvalue attribute with the same
+        effect.
+  
+        This version of Want is still broken with perl 5.8, for reasons I haven’t investigated.
+
+-------------------------------------------------------------------
+Wed Apr 29 10:35:45 UTC 2015 - coolo@suse.com
+
+- updated to 0.26
+   see /usr/share/doc/packages/perl-Want/Changes
+
+  
+  0.26  Tue 28 Apr 2015 12:31:17 BST
+      - There is a new experimental option in bleadperl under which one ought not to use
+        the op_sibling field directly. Quoting from perlguts.pod:
+        
+        “ Starting in version 5.21.2, perls built with the experimental
+          define C<-DPERL_OP_PARENT> add an extra boolean flag for each op,
+          C<op_moresib>.  When not set, this indicates that this is the last op in an
+          C<OpSIBLING> chain. This frees up the C<op_sibling> field on the last
+          sibling to point back to the parent op. Under this build, that field is
+          also renamed C<op_sibparent> to reflect its joint role. The macro
+          C<OpSIBLING(o)> wraps this special behaviour, and always returns NULL on
+          the last sibling.  With this build the C<op_parent(o)> function can be
+          used to find the parent of any op. Thus for forward compatibility, you
+          should always use the C<OpSIBLING(o)> macro rather than accessing
+          C<op_sibling> directly. ”
+       
+        Thanks to Reini Urban for the patch.
+
+-------------------------------------------------------------------
+Tue Apr 14 21:14:41 UTC 2015 - coolo@suse.com
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-Want/Changes
+
+  
+  0.24  Tue  2 Dec 2014 10:22:39 GMT
+      - Accommodate another bleadperl change. Patch provided by Father Chrysostomos at
+        https://rt.cpan.org/Public/Bug/Display.html?id=100626
+  
+  0.25  Wed 10 Dec 2014 19:31:03 GMT
+      - Add support for the new OP_MULTIDEREF
+        Perl has a new op, added as a performance optimisation in fedf30e1c349130b23648c022f5f3cb4ad7928f3,
+        to represent a sequence of array/hash dereferences. This patch adds support for the new op.
+
+-------------------------------------------------------------------
+Sun Jul 20 08:45:03 UTC 2014 - coolo@suse.com
+
+- updated to 0.23
+   - Accommodate a bleadperl change to the optree, made in 7d3c8a6837b55fff0e6294ebf8c94a1601367c76.
+     This is bug #94086 for Want, and bug #121342 for perl5.
+
+-------------------------------------------------------------------
+Mon Feb 24 06:10:28 UTC 2014 - coolo@suse.com
+
+- updated to 0.22
+    - Prevent return from being optimised away by newer (>= 5.19.7) Perls.
+      This is a patch supplied by @wolfsage: see
+      https://github.com/robinhouston/Want/pull/1
+
+-------------------------------------------------------------------
+Wed May 30 08:24:07 UTC 2012 - coolo@suse.com
+
+- updated to 0.21
+    - Change tests to avoid the new warning 'Useless assignment to a temporary' added in 5.15.
+
+    - Remove a test that was testing the behaviour of perl, rather than of this module,
+      and was testing an aspect of perl’s behaviour that has changed (bf8fb5ebd) in
+      in such a way that the test was failing with bleadperl.
+
+    - Avoid leaking the RHS of an lnoreturn lvalue sub, thanks to Father Chrysostomos
+      https://rt.cpan.org/Public/Bug/Display.html?id=72083
+
+-------------------------------------------------------------------
+Tue Jul 19 19:27:32 UTC 2011 - coolo@novell.com
+
+- regenerate with cpanspec
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:00 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Jul 25 19:45:50 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sat Jun 27 23:29:16 CEST 2009 - chris@computersalat.de
+
+- initial pkg 0.18
+

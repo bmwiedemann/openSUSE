@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd8772779c2de03dbe3839fb4319ed05</srcmd5>
+    <version>1.2</version>
+    <time>1406645302</time>
+    <user>coolo</user>
+    <comment>New module for Qore programming language as described in http://lists.opensuse.org/opensuse-factory/2013-01/msg00105.html
+
+with more fixes requested by Doninique</comment>
+    <requestid>242739</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bd8772779c2de03dbe3839fb4319ed05</srcmd5>
+    <version>1.2</version>
+    <time>1409303138</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>932ae9fb6a3679fbcac91e88d19b84ce</srcmd5>
+    <version>1.2</version>
+    <time>1441054786</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328132</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>06bb3e073da557d1b63066a500f0b45c</srcmd5>
+    <version>1.4.1</version>
+    <time>1597658773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827174</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>51764150bfcdb8c6c4a97e4b875679f8</srcmd5>
+    <version>1.4.1</version>
+    <time>1608542643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857089</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>186769958e395bd4c074dacb8f2de1b2</srcmd5>
+    <version>1.5.0+qore0.9.15</version>
+    <time>1627847498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0 for qore 0.9.5
+
+Requires SR#908927</comment>
+    <requestid>908931</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6f4af064d1b4f6267d23bcdf0b115dd3</srcmd5>
+    <version>1.5.1+qore1.0.10</version>
+    <time>1637701829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931996</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ac27519a6206302283e74469a0e9a09c</srcmd5>
+    <version>1.5.3</version>
+    <time>1655396386</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.3
+  * fixed merging namespaces in externsl XSDs with overlapping prefixes
+  * fixed handling complexType elements with a sequence and any element
+  * fixed error message for WSDLLib::getWebServiceFromUrl() when the 
+    file could not be read
+  * fixed loading URLs with multiple imports of the same external 
+    XSD schema 
+  * fixed a type error processing messages on listeners with no hostname 
+    socket info value
+</comment>
+    <requestid>982848</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>52075e391b17a003bbdd60a577a2b3d6</srcmd5>
+    <version>1.8.0</version>
+    <time>1674589374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.0 because of compatibility with qore 1.12.4 
+  * fixed WSDL handling type conversions when supporting data provider APIs
+  * implemented the SaxDataProvider module
+  * updated to build with qpp from Qore 1.12.4+
+</comment>
+    <requestid>1056943</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9f76c5aa5a1f297313efc4c83c6c697c</srcmd5>
+    <version>1.8.1</version>
+    <time>1690215977</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.8.1
+  * allow connection options designating files to be selected as files
+</comment>
+    <requestid>1099939</requestid>
+  </revision>
+</revisionlist>

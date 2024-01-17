@@ -1,0 +1,5 @@
+<package name="yast2-add-on" project="openSUSE:Factory">
+  <title>YaST2 - Add-On media installation code</title>
+  <description>This package contains YaST Add-On media installation code.</description>
+  <devel project="YaST:Head" package="yast2-add-on"/>
+</package>

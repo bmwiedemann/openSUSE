@@ -1,0 +1,5 @@
+<package name="perl-Menlo-Legacy" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Menlo-Legacy"/>
+</package>

@@ -1,0 +1,38 @@
+---
+preamble: |-
+  BuildRequires: systemd
+  Requires(pre): /usr/sbin/groupadd
+  Requires(pre): /usr/sbin/useradd
+  %{?systemd_requires}
+
+  %pre
+  getent group dochazka-www >/dev/null || groupadd -r dochazka-www
+  getent passwd dochazka-www >/dev/null || useradd -r -g dochazka-www -d %{_localstatedir}/lib/dochazka-www -s /sbin/nologin -c "user for dochazka WWW" dochazka-www
+  %service_add_pre dochazka-www.service
+
+  %preun
+  %service_del_preun dochazka-www.service
+
+  %postun
+  %service_del_postun dochazka-www.service
+
+  %post
+  %service_add_post dochazka-www.service
+post_install: |-
+  install -dm0755 %{buildroot}%{_sysconfdir}/dochazka-www
+  install -m0640 ext/WWW_SiteConfig.pm.example %{buildroot}%{_sysconfdir}/dochazka-www/WWW_SiteConfig.pm
+  install -m0640 ext/WWW_SiteConfig.pm.example %{buildroot}%{_sysconfdir}/dochazka-www/WWW_SiteConfig.pm.example
+  install -dm0755 %{buildroot}%{_localstatedir}/lib/dochazka-www
+  install -dm0755 %{buildroot}%{_localstatedir}/log/dochazka-www
+  mkdir -p %{buildroot}%{_sbindir}
+  mkdir -p %{buildroot}%{_unitdir}
+  ln -sf service %{buildroot}%{_sbindir}/rcdochazka-www
+  install -m0644 ext/systemd/dochazka-www.service %{buildroot}%{_unitdir}/dochazka-www.service
+
+  echo "%dir %{_sysconfdir}/dochazka-www" >> %{name}.files
+  echo "%config(noreplace) %attr(0640,dochazka-www,dochazka-www) %{_sysconfdir}/dochazka-www/WWW_SiteConfig.pm" >> %{name}.files
+  echo "%config %attr(0640,dochazka-www,dochazka-www) %{_sysconfdir}/dochazka-www/WWW_SiteConfig.pm.example" >> %{name}.files
+  echo "%attr(0750,dochazka-www,dochazka-www) %dir %{_localstatedir}/lib/dochazka-www" >> %{name}.files
+  echo "%attr(0750,dochazka-www,dochazka-www) %dir %{_localstatedir}/log/dochazka-www" >> %{name}.files
+  echo "%{_sbindir}/rcdochazka-www" >> %{name}.files
+  echo "%{_unitdir}/dochazka-www.service" >> %{name}.files

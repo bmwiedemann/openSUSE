@@ -1,0 +1,8 @@
+<package name="surfraw" project="openSUSE:Factory">
+  <title>Command Line Interface to WWW Search Engines</title>
+  <description>Surfraw provides a Unix command line interface to a variety of WWW search engines and other artifacts of information and makes them available as extensions to the shell.
+Surfraw abstracts the browser away from input. Interpretation of linguistic forms is handed back to the shell.
+ </description>
+  <devel project="network:utilities" package="surfraw"/>
+  <url>http://surfraw.alioth.debian.org/</url>
+</package>

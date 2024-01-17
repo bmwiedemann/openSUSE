@@ -1,0 +1,5 @@
+<package name="perl-App-Dochazka-WWW" project="openSUSE:Factory">
+  <title>Dochazka ATT system - web front-end</title>
+  <description>This is the web front-end of the Dochazka Attendance &amp; Time Tracking system.</description>
+  <devel project="Application:Dochazka" package="perl-App-Dochazka-WWW"/>
+</package>

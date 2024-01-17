@@ -1,0 +1,4 @@
+[org.cinnamon.desktop.session]
+session-manager-uses-logind=true
+settings-daemon-uses-logind=true
+screensaver-uses-logind=true

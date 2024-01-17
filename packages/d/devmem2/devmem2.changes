@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri May  5 11:19:38 UTC 2017 - guillaume@opensuse.org
+
+- Add fix_usage_on_64_bits.patch to fix boo#1032032
+  It updates the current devmem2.c file by the one provided by 
+  Russel King to fix usage on 64 bits systems.
+
+-------------------------------------------------------------------
+Fri Nov 13 17:59:13 UTC 2015 - mpluskal@suse.com
+
+- Use optflags
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar  9 16:37:22 UTC 2012 - guillaume.gardet@opensuse.org
+
+- Initial release for devmem2 utility 
+

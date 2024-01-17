@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8026e4d477f2edc5cd2f5255aabf1f90</srcmd5>
+    <version>0+git20190115.6cfaeb7</version>
+    <time>1549140583</time>
+    <user>coolo</user>
+    <comment>minor changes. Enjoy!</comment>
+    <requestid>670476</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>213662f21cc8c4fdd137524b768bcd80</srcmd5>
+    <version>0+git20190222.cef2c43</version>
+    <time>1552206886</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682445</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>69d8629d0d81096274e5a72a02d50419</srcmd5>
+    <version>1.0.1</version>
+    <time>1578606588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762168</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e05bebaa8f34d719956e9f14a0375b82</srcmd5>
+    <version>1.0.1</version>
+    <time>1578675010</time>
+    <user>dimstar_suse</user>
+    <comment>- remove the _service file as requested in declined OBS sr#762653.
+  download_files seems to work also without the _service file.
+
+- switch the _service approach from using tar_scm to using download_files. We
+  need to use the actual release tarball which contains the generated man
+  pages. The reason is that on SLE we can't generate the man pages using
+  pandoc, since pandoc is not available on SLE.
+- for the same reason make the pandoc BuildRequires conditional for openSUSE
+  vs. SLE.</comment>
+    <requestid>762798</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c64e714b6baeee145f9fe293fd345dfe</srcmd5>
+    <version>1.0.1</version>
+    <time>1587659654</time>
+    <user>dimstar_suse</user>
+    <comment>- remove conditional pandoc BuildRequires for openSUSE. Nothing much is gained
+  from rebuilding the man pages. This shall help synchronizing SLE and
+  openSUSE package builds. (jsc#SLE-12325).</comment>
+    <requestid>796447</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>acf563bdcc55ce51c37a0e0a3be7fb63</srcmd5>
+    <version>1.0.1</version>
+    <time>1587838413</time>
+    <user>dimstar_suse</user>
+    <comment>fix changelog to use jsc# epic, not dev task</comment>
+    <requestid>797153</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>68723db53235c0ada683f592471b0eef</srcmd5>
+    <version>1.1.0</version>
+    <time>1614792943</time>
+    <user>RBrownSUSE</user>
+    <comment>- pass --disable-defaultflags to avoid breakage of our gcc-PIE profile (-&gt;
+  resulted in non-position-independent executable).
+
+- Update to upstream version 1.1.0:
+  * Added:
+    - Configure option for ptpm tests
+    - Configure script AX_CHECK_ENABLE_DEBUG
+    - Option for setting tcti on executable
+    - TCTI-env variable used by default
+    - Support for parent key passwords
+    - openssl.cnf sample file
+  * Changed:
+    - Fix several build system, autotools and testing related issues
+      Now adhere to CFLAGS conventions
+    - Include pkg-config dependecy on libtss2-mu in order to work with tpm2-tss 2.3
+    - Enables parallel testing of integration tests:
+      Make integration tests use TPM simulator; instead of first TPM it finds
+      Use of different port numbers for TCP based tests
+    - Fix EC param info (using named curve format)
+    - Use tpm2-tools 4.X stable branch for integration tests
+    - Use libtss2-tctildr.so instead of custom code for tcti setup
+    - Fix manpages for -P/--parent option and correct engine name
+    - Fix TCTI env variable handling
+    - Set parent handle to OWNER</comment>
+    <requestid>876518</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>26e5cc45da5712be6b6d0d7f61f5394a</srcmd5>
+    <version>1.1.0</version>
+    <time>1639424415</time>
+    <user>dimstar_suse</user>
+    <comment>resulted in non-position-independent executable) (bsc#1183895).
+
+Let's not add dummy changelog entries that makes it hard to understand what is wanted.
+
+All that was intended here was to have the bug ref next to the change responsible to fix it.
+so let's do that: add the bug ref to the change responsible for it. (forwarded request 939078 from dimstar)</comment>
+    <requestid>940279</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>12186d9865eb3c9b8e33cd0aa716d317</srcmd5>
+    <version>1.2.0</version>
+    <time>1675792184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 1.2.0:
+  * Fixed:
+    - Updated minimal version of tpm2-tss to 2.4.x
+    - Fix encoding of emptyauth
+    - Fix some memory leaks
+    - Parent handle issues with signed representation by switching
+      parent handle to BIGNUM.
+    - Fixed RSA_NO_PADDING modes with OpenSSL 1.1.1
+    - Fixed autogen (bootstrap) call from release package by
+      embedding VERSION file.
+  * Added:
+    - Use of restricted keys for signing
+    - StirRandom
+    - Run tests using swtpm
+    - The ability to import key blobs from things like the
+      tpm2-tools project.
+    - Compatibility with openssl &gt;=1.1.x
+    - Support for ECDH
+    - QNX support.
+    - Only set -Werror for non-release builds.
+    - Additional checks on TPM responses
+    - CODE_OF_CONDUCT
+    - SECURITY reporting instructions (forwarded request 1063432 from pmonrealgonzalez)</comment>
+    <requestid>1063587</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>551379753a32e49f216bd07ee877d619</srcmd5>
+    <version>1.2.0</version>
+    <time>1685830346</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix download url and add gpg signature for tarball. (forwarded request 1090284 from fcrozat)</comment>
+    <requestid>1090469</requestid>
+  </revision>
+</revisionlist>

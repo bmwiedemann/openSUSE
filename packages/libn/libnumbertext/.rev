@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>150ff75363bb138a1bcea4fe2373bbc4</srcmd5>
+    <version>1.0.2</version>
+    <time>1527934176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613056</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cf9e7732cdf466e2bd7c0e5f4d5ab9b9</srcmd5>
+    <version>1.0.2</version>
+    <time>1529666950</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch to build on old gcc versions:
+  * libnumbertext-oldgcc.patch</comment>
+    <requestid>613983</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bedafd4325fc3fafa48702d022bab98d</srcmd5>
+    <version>1.0.5</version>
+    <time>1540319593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.5:
+  * Various fixes in numerical calculations and issues reported on
+    libreoffice tracker
+- Drop merged libnumbertext-oldgcc.patch</comment>
+    <requestid>642366</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0f2acc8f0bc4098c22f96a34cd95c630</srcmd5>
+    <version>1.0.5</version>
+    <time>1541666509</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop libnumbertext-boost.patch and rather rely on new gcc, safer
+
+- Add patch libnumbertext-boost.patch to fix build with boost
+  and enable build on older distributions</comment>
+    <requestid>645259</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00dc40b60d64d944dde37a68963ed621</srcmd5>
+    <version>1.0.6</version>
+    <time>1592840592</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.6:
+  * minor fixes and fuzzer fixes</comment>
+    <requestid>815738</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cfc26a52fbd4b1b9fd09810364a66cd1</srcmd5>
+    <version>1.0.7</version>
+    <time>1617279362</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881408</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>627e1aea1878d995c1d8f4162ae6c10d</srcmd5>
+    <version>1.0.7</version>
+    <time>1622536438</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>895578</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>869cd4195ec76fe840ebd9acb06219ec</srcmd5>
+    <version>1.0.8</version>
+    <time>1645137596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955413</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>14d7c1a338248e4bea212278aeb07845</srcmd5>
+    <version>1.0.10</version>
+    <time>1649876667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969242</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>72bd280fc5cf9d289a2fdf9065373aeb</srcmd5>
+    <version>1.0.11</version>
+    <time>1673973298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058743</requestid>
+  </revision>
+</revisionlist>

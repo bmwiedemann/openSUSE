@@ -1,0 +1,213 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:24:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Oct 24 17:14:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.18.0
+  * New features:
+    + Support for EdDSA (Ed25519, Ed448) signature creation and
+      verification.
+    + Support for Ed25519 and Ed448 in PKCS#8 and public key files.
+    + Support for point precomputation for EdDSA.
+  * New API:
+    + CurveEdTw class to represent the Twisted Edwards curve
+      parameters.
+    + PointEdwards class to represent points on Twisted Edwards
+      curve and provide point arithmetic on it.
+    + curve_by_name in curves module to get a Curve object by
+      providing curve name.
+  * Bug fix:
+    + Accept private EdDSA keys that include public key in the
+      ASN.1 structure.
+    + Fix incompatibility with Python 3.3 in handling of
+      memoryviews of empty strings.
+    + Make the VerifyingKey encoded with explicit parameters use
+      the same kind of point encoding for public key and curve
+      generator.
+    + Better handling of malformed curve parameters (as in
+      CVE-2022-0778); make python-ecdsa raise MalformedPointError
+      instead of AssertionError.
+- Also remove the conditional definition of python_module.
+
+-------------------------------------------------------------------
+Tue Aug 31 10:18:41 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.17.0
+  * Keys that use explicit curve parameters can now be read and written.
+    Reading of explicit curves can be disabled by using the
+    `valid_curve_encodings` keyword argument in `VerifyingKey.from_pem()`,
+    `VerifyingKey.from_der()`, `SigningKey.from_pem()`, and
+    `SigningKey.from_der()`.
+  * Keys can now be written with use of explicit curve parameters,
+    use `curve_parameters_encoding` keyword argument of `VerifyingKey.to_pem()`,
+    `VerifyingKey.to_der()`, `SigningKey.to_pem(), or `SigningKey.to_der()` to
+    specify the format. By default `named_curve` will be used, unless the
+    curve doesn't have an associated OID (as will be the case for an unsupported
+    curve), then `explicit` encoding will be used.
+  * Allow specifying acceptable point formats when loading public keys
+    (this also fixes a minor bug where python-ecdsa would accept raw
+    encoding for points in PKCS#8 files). Set of accepted encodings is controlled
+    by `valid_encodings` keyword argument in
+    `ECDH.load_received_public_key_bytes()`, `VerifyingKey.from_string()`,
+    `VerifyingKey.from_pem()`, VerifyingKey.from_der()`.
+  * `PointJacobi` and `Point` now inherit from `AbstractPoint` that implements
+    the methods for parsing points. That added `from_bytes()` and
+    `to_bytes()` methods to both of them.
+  * Curve parameters can now be read and written to PEM and DER files. The
+    `Curve` class supports new `to_der()`, `from_der()`, `to_pem()`, and
+    `from_pem()` methods.
+  * Describe in detail which methods can raise `RSZeroError`, and that
+    `SigningKey.sign_deterministic()` won't raise it.
+  * Correctly truncate hash values larger than the curve order (only impacted
+    custom curves and the curves added in this release).
+  * Correctly handle curves for which the order is larger than the prime
+    (only impacted custom curves and the secp160r1 curve added in this release).
+  * Fix the handling of `==` and `!=` for `Public_key`, `Private_key`, `Point`,
+    `PointJacobi`, `VerifyingKey`, and `SigningKey` so that it behaves
+    consistently and in the expected way both in Python 2 and Python 3.
+  * Implement lock-less algorithm inside PointJacobi for keeping shared state
+    so that when a calculation is aborted with KeyboardInterrupt, the state
+    doesn't become corrupted (this fixes the occasional breakage of ecdsa in
+    interactive shells).
+  * The `speed.py` script now provides performance for signature verification
+    without the use of precomputation.
+  * New curves supported: secp112r1, secp112r2, secp128r1, secp160r1.
+  * Use 2-ary Non-Adjacent Form for the combined multiply-add. This speeds up
+    single-shot verify (i.e. without precomputation) by about 4 to 5%.
+  * Use native Python 3.8 support for calculating multiplicative inverses.
+  * Include Python 3.9 in PyPI keywords.
+  * More realistic branch coverage counting (ignore Python version-specific
+    branches).
+  * Additional test coverage to many parts of the library.
+  * Migrate to Github Actions for Continuous Testing.
+
+-------------------------------------------------------------------
+Sun Dec 20 09:21:59 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to to 0.16.1:
+  * `VerifyingKey.precompute()` supports `lazy` argument to delay
+  precomputation to the first time the key is used to verify a signature.
+  * Make created signatures correct when the hash used is bigger than the curve
+  order bit size and the curve order is not a multiple of 8 
+  * Speed up library load time by calculating the generator point multiplication
+  tables the first time the points are used, not when they are initialised.
+
+-------------------------------------------------------------------
+Thu Sep 17 11:14:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.16.0:
+  * Support for reading and writing private keys in PKCS#8 format.
+  * `to_pem` and `to_der` now accept new parameter, `format`, to specify
+  * the format of the encoded files, either the dafault, legacy "ssleay", or
+  * the new `pkcs8` to use PKCS#8. Note that only unencrypted PKCS#8 files are
+  * supported.
+  * Add `allow_truncate` to `verify` in `VerifyingKey`, it defaults to True,
+  * when specified as False, use of large hashes smaller than curves will be
+  * disallowed (as it was in 0.14.1 and earlier).
+  * Correctly calculate signatures for private keys equal to n-1.
+  * Make `PointJacobi` and thus `SigningKey` and `VerifyingKey` pickleable.
+
+-------------------------------------------------------------------
+Mon Feb 24 15:34:49 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15
+- fix fdupes usage
+ * extra long changelog - see NEWS file
+
+-------------------------------------------------------------------
+Mon Oct 14 21:41:55 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- updated to 0.13.3 (bsc#1153165)
+  + CVE-2019-14853 DOS atack during signature decoding
+  + CVE-2019-14859 signature malleability caused by insufficient checks
+    of DER encoding
+
+-------------------------------------------------------------------
+Tue May 14 07:17:24 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.13.2
+- enable tests
+- fix requires
+ * python packaging fixes
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:34 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Sep 21 12:51:24 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Include in SLE-12 (fate#323875, bsc#1054413)
+
+-------------------------------------------------------------------
+Fri Apr 28 11:52:09 UTC 2017 - pousaduarte@gmail.com
+
+- Convert to singlespec
+- Use "download_files" in _service file to automate source fetching
+
+-------------------------------------------------------------------
+Sat Feb 21 01:31:36 UTC 2015 - prusnak@opensuse.org
+
+- update to 0.13 (bsc#962291)
+
+  Fix the argument order for Curve constructor (put openssl_name= at the end,
+  with a default value) to unbreak compatibility with external callers who used
+  the 0.11 convention.
+
+* update to 0.12
+
+  Switch to Versioneer for version-string management (fixing the broken
+  `ecdsa.__version__` attribute). Add Curve.openssl_name property. Mention
+  secp256k1 in README, test against OpenSSL. Produce "wheel" distributions. Add
+  py3.4 and pypy3 compatibility testing. Other minor fixes.
+
+-------------------------------------------------------------------
+Mon Sep 15 09:09:24 UTC 2014 - tbechtold@suse.com
+
+- update to version 0.11:
+  * update NEWS for 0.11 release
+  * VerifyingKey.from_string(): add validate_point= argument
+  * Merge pull request #17 from trezor/master
+  * README: stop claiming py2.5 compatibility.
+  * Merge pull request #18 from alex/patch-2
+  * Merge pull request #16 from alex/patch-1
+  * Remove Python 2.5 from travis.
+  * Added trove classifiers showing versions supported
+  * canonical versions of sigencode methods these enforce low S values,
+    by negating the value (modulo the order) if above order/2
+  * Remove Python 2.5 from travis.
+  * Run tests under PyPy
+
+-------------------------------------------------------------------
+Fri Apr 18 15:14:10 UTC 2014 - rschweikert@suse.com
+
+- include in SLE 12 (FATE #315990)
+
+-------------------------------------------------------------------
+Mon Jan 13 13:55:47 UTC 2014 - dmueller@suse.com
+
+- update to 0.10:
+  * Make the secp256k1 available
+
+-------------------------------------------------------------------
+Wed Oct  9 13:51:36 UTC 2013 - prusnak@opensuse.org
+
+- updated to version 0.9
+  * added secp256k1 curve
+  * added deterministic (no entropy needed) signatures
+  * added py3.2/py3.3 compatibility
+
+-------------------------------------------------------------------
+Fri Dec 14 18:51:58 UTC 2012 - prusnak@opensuse.org
+
+- created package (version 0.8)
+

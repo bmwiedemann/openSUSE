@@ -1,0 +1,5 @@
+<package name="libsmpp34" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:telephony" package="libsmpp34"/>
+</package>

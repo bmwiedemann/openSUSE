@@ -1,0 +1,5 @@
+<package name="devmem2" project="openSUSE:Factory">
+  <title>devmem2</title>
+  <description>Simple program to read/write from/to any location in memory</description>
+  <devel project="hardware" package="devmem2"/>
+</package>

@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Thu Nov 30 09:48:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231129
+  * Improved Python Unicode handling
+
+-------------------------------------------------------------------
+Tue Aug  1 15:56:47 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- use %{?sle15_python_module_pythons} for opensuse15.5 compatibility
+
+-------------------------------------------------------------------
+Sat Jun  3 08:33:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230603
+  * Support nameless extended attributes
+
+-------------------------------------------------------------------
+Tue Jan  3 15:57:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing Require on libbfio-devel.
+
+-------------------------------------------------------------------
+Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete system-libs.patch (not needed - system libs are
+  autodetected)
+
+-------------------------------------------------------------------
+Tue Aug 30 14:59:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220829
+  * Unspecified updates to the API
+
+-------------------------------------------------------------------
+Mon Aug 29 09:36:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220822
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add forced symvers
+
+-------------------------------------------------------------------
+Sat Jan 22 21:14:36 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220112
+  * Updates to Python bindings and tools.
+
+-------------------------------------------------------------------
+Sun Nov 14 12:43:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210721
+  * Python binding updates
+  * Improved extended attribute support
+
+-------------------------------------------------------------------
+Sat Jun 26 10:31:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210522
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Fri May 14 22:42:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20210513 (3f4411ea)
+  * No changelog was provided
+- Add system-libs.patch
+
+-------------------------------------------------------------------
+Fri Nov 13 03:44:31 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- initial package
+    * version 20201107

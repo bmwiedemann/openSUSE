@@ -1,0 +1,6 @@
+<package name="libreoffice-voikko" project="openSUSE:Factory">
+  <title>LibreOffice spellchecker/hyphenator for finnish language</title>
+  <description>LibreOffice spellchecker/hyphenator for finnish language, which uses
+libvoikko as backend.</description>
+  <devel project="LibreOffice:Factory" package="libreoffice-voikko"/>
+</package>

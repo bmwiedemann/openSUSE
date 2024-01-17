@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54c7efdeb2caf85cda84d8c6826d11a6</srcmd5>
+    <version>2.11.0</version>
+    <time>1578867574</time>
+    <user>dimstar_suse</user>
+    <comment>new package (2nd attempt)</comment>
+    <requestid>762905</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>701add3dd172e443f7424b010db78ccd</srcmd5>
+    <version>2.13.0</version>
+    <time>1597519189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826682</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dface92db04babaec99af8f356a8d612</srcmd5>
+    <version>2.13.3</version>
+    <time>1607017271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852325</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8d57cebccfeecd2b15f4ff2906c9afe</srcmd5>
+    <version>2.13.5</version>
+    <time>1618398307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884864</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>16949b44909b04fee1145fbbd4ae5826</srcmd5>
+    <version>2.13.6</version>
+    <time>1620398712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890402</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e325e838c6bc56125d2a2a9778c7ec92</srcmd5>
+    <version>2.13.7</version>
+    <time>1628675224</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.13.7
+  Fixes:
+  * Added missing `&lt;iterator&gt;` include in benchmarking.
+  * Fixed noexcept build with benchmarking enabled.
+  * Fixed build for compilers with C++17 support but without
+    C++17 library support.
+  * JUnit only uses 3 decimal places when reporting durations.
+  * `!mayfail` tagged tests are now marked as `skipped` in JUnit
+    reporter output.
+</comment>
+    <requestid>910458</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6a41fecbbe33c6c8a58800a61ca349ba</srcmd5>
+    <version>2.13.9</version>
+    <time>1651180034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972971</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9371396b7704a76f79145c7479fb02ee</srcmd5>
+    <version>3.1.0</version>
+    <time>1664210856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005804</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5945b7fcf8e5a0109c2b9b77219b3110</srcmd5>
+    <version>3.2.1</version>
+    <time>1674232741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059876</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f672c8221972adb7a50bc12ee6db9780</srcmd5>
+    <version>3.3.0</version>
+    <time>1674585817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060581</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6d53f8c094826bc811ce8a2c5feb4ce3</srcmd5>
+    <version>3.3.1</version>
+    <time>1676827146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066557</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8f3a5e4c4e8f45c02073155b06c76b68</srcmd5>
+    <version>3.3.2</version>
+    <time>1678283584</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.2:
+  * Further reduced allocations
+  * The compact, console, TAP and XML reporters perform less
+    allocations in various cases
+  * Removed 1 allocation per entered `SECTION`/`TEST_CASE`.
+  * Removed 2 allocations per test case exit, if stdout/stderr is
+    captured
+  * Improved performance
+  * Section tracking is 10%-25% faster than in v3.3.0
+  * Assertion handling is 5%-10% faster than in v3.3.0
+  * Test case registration is 1%-2% faster than in v3.3.0
+  * Tiny speedup for registering listeners
+  * Tiny speedup for `CAPTURE`, `TEST_CASE_METHOD`,
+    `METHOD_AS_TEST_CASE`, and `TEMPLATE_LIST_TEST_*` macros.
+  * `Contains`, `RangeEquals` and `UnorderedRangeEquals` matchers
+    now support ranges with iterator + sentinel pair
+  * Added `IsNaN` matcher
+  * Unlike `REQUIRE(isnan(x))`, `REQUIRE_THAT(x, IsNaN())` shows
+    you the value of `x`.
+  * Suppressed `declared_but_not_referenced` warning for NVHPC
+    (#2637)
+  * Fixed performance regression in section tracking introduced
+    in v3.3.1
+  * Extreme cases would cause the tracking to run about 4x slower
+    than in 3.3.0</comment>
+    <requestid>1070022</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2a643e6a6f06b8e799758ce53ae98c7b</srcmd5>
+    <version>3.4.0</version>
+    <time>1691414930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101376</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>17b7b0f1950f857cb69e65016c05d80c</srcmd5>
+    <version>3.5.0</version>
+    <time>1702844937</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133626</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2f0c93c52af126e205403ebafb95ce47</srcmd5>
+    <version>3.5.1</version>
+    <time>1704380209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136183</requestid>
+  </revision>
+</revisionlist>

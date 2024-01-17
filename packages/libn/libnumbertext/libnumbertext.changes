@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Sat Jan  7 16:15:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.11:
+  * Soros.cxx/java/js/py: fix boundary inheritance of
+  *   optional function (conditional text), reported by Juanma Sanchez
+  *   and Antonio Bueno
+  * test/*, configure.ac, Makefile.am: add C++ unit testing
+  * Soros.cxx: fix an assert seen with in libreoffice crashtesting on
+  *   an empty string, by Caolán McNamara
+  * New modules:
+  * fa.sor: new Persian (Farsi) module by Amir Hossein Maher
+  * mul.sor: new module with note symbols for multiple languages
+  * Module fixes and extensions:
+  * ca.sor: revert removing conditional text
+  * cs.sor: fix ordinals, cardinals, currencies by Stanislav Horáček,
+  *   with help of Zdeněk Crhonek
+  * da.sor: revert removing conditional text
+  * en.sor: add extra currencies (BZF, DKK, ILS, LKR, ZMW, ZWD) for
+  *   LibreOffice locales of Number Format dialog windows
+  * es.sor: add extra currencies (PAB, SVC, VED/VES) for LibreOffice,
+  *   revert removing conditional text
+  * ga.sor: add currency support
+  * hu_Hung.sor: fix regression of transliteration of parenthesized words
+  *   in LibreOffice, reported by Zoltán Óvári
+  * ro.sor: strip first space and remove double space in currency
+  * ru.sor: fix grammar of cents by Alex Ivanov
+  * sl.sor: fix cardinal-masculine and cardinal-neuter,
+  *   reported by Martin Srebotnjak
+  * uk.sor: fix grammar of cents by Alex Ivanov
+  * LibreOffice Calc add-on:
+  * CalcAddIn.xcu: new Russian translation by Evgeniy Kukhtinov
+
+-------------------------------------------------------------------
+Sun Apr 10 09:13:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.10:
+  * hu_Hung.sor: fix regression of transliteration on Windows
+    - non-BMP characters aren't supported in bracket expressions in regex of MS Visual C++,
+      resulting missing transliteration on Windows. Replaced by branches separated by |.
+  * hu_Hung.sor: fix regression of transliteration of punctuation marks
+
+-------------------------------------------------------------------
+Fri Feb 11 22:44:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.8:
+  * src/Soros.py: fix FutureWarning: Possible nested set at position, reported by Rene Engelhard
+  * fr.sor:
+  - use hyphens instead of spaces, e.g. cent-deux, reported by "4560041" at GitHub
+  - new prefix "informal" for 1100–1900 (onze-cents - dix-neuf-cents)
+  - add prefix "feminine" and "masculine" (1 -> une/un), bug reports by arena94 at GitGub
+  * hu_Hung.sor:
+  - fix transliteration of old Hungarian family names, bug report by Zoltán Óvári
+  - fix 100–199, 1000–1999, 1000000–1999999 and 1000000000–1999999999 (bad ordering)
+  – fix conversion of single letters "í", "Í" and "NY";
+  - fix unnecessary conversion of words ending with "q", e.g. "IQ";
+  - fix unnecessary conversion of words not ending with unknown letters
+  * mr.sor: Marathi spelling corrections by Shantanu Oak
+  * pl.sor: fix ordinal 20-29, reported by Gabryha at GitHub
+  * uk.sor, CalcAddIn.xcu, description.xml.in: fix spell by Olexandr Nesterenko
+  - replace apostrophe symbol to U+02BC, reported by Volodymyr Lisivka
+  - up number to 10^42
+  - add cardinal, update help
+  - add uk locale
+  * zh.sor: add ordinal numbers, use always 二 for 2, reported by Ming-Hua
+
+-------------------------------------------------------------------
+Wed May 19 15:17:30 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Define conditionally make_build to fix build on systems that do
+  not have that macro
+
+-------------------------------------------------------------------
+Sat Mar 13 13:04:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.7:
+  * ga.sor: new module Irish by László Németh
+  * lg.sor: new module Luganda by Phillip Samuel
+  * mr.sor: new module Marathi by Ankur Heramb Joshi
+  * mt.sor: new module Maltase by László Németh
+  * fi.sor: fix ordinal 0, bug report by Tuomas Hietala
+  * hu_Hung.sor:
+    - fix transliteration of Vörösmarty, bug report by Zoltán Óvári
+    - replace ü and ű by Viktor Kovács
+    - fix transliteration of dates with affixation
+  * th.sor: fix big (>999,999) numbers by Vladislav Kiper
+  * ua.sor: fix euro cent, bug report by Kty0mka 
+
+-------------------------------------------------------------------
+Thu Jun 18 12:05:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.6:
+  * minor fixes and fuzzer fixes
+
+-------------------------------------------------------------------
+Mon Oct 29 12:38:41 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop libnumbertext-boost.patch and rather rely on new gcc, safer
+
+-------------------------------------------------------------------
+Mon Oct 29 12:33:22 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch libnumbertext-boost.patch to fix build with boost
+  and enable build on older distributions
+
+-------------------------------------------------------------------
+Tue Oct 16 14:20:57 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.5:
+  * Various fixes in numerical calculations and issues reported on
+    libreoffice tracker
+- Drop merged libnumbertext-oldgcc.patch
+
+-------------------------------------------------------------------
+Mon Jun  4 08:38:59 UTC 2018 - tchvatal@suse.com
+
+- Add patch to build on old gcc versions:
+  * libnumbertext-oldgcc.patch
+
+-------------------------------------------------------------------
+Wed May 30 12:43:20 UTC 2018 - tchvatal@suse.com
+
+- Add config.h to installed headers as all headers require it
+
+-------------------------------------------------------------------
+Wed May 30 11:07:47 UTC 2018 - tchvatal@suse.com
+
+- Initial commit, needed by libreoffice
