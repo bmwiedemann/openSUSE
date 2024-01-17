@@ -1,7 +1,7 @@
 #
 # spec file for package upower
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -166,7 +166,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_libdir}/girepository-1.0/UPowerGlib-1.0.typelib
 
 %files -n libupower-glib-devel
-%doc %{_datadir}/gtk-doc/html/UPower/
+%doc %{_datadir}/gtk-doc/
 %{_includedir}/libupower-glib/
 %{_libdir}/pkgconfig/upower-glib.pc
 %{_libdir}/libupower-glib.so
