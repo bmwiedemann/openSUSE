@@ -1,0 +1,6 @@
+<package name="libvdpau-va-gl" project="openSUSE:Factory">
+  <title>VDPAU driver with OpenGL/VAAPI backend</title>
+  <description>Many applications can use VDPAU to accelerate portions of the video decoding process and video post-processing to the GPU video hardware. Unfortunately, there is no such library for many graphic chipsets. Some applications also support VA-API but many of them, including Adobe Flash Player, don't.
+This library proposes a generic VDPAU library. It uses OpenGL under the hood to accelerate drawing and scaling and VA-API (if available) to accelerate video decoding.</description>
+  <devel project="X11:XOrg" package="libvdpau-va-gl"/>
+</package>

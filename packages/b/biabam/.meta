@@ -1,0 +1,7 @@
+<package name="biabam" project="openSUSE:Factory">
+  <title>A Bash Attachment Mailer</title>
+  <description>BIABAM is a small tool, useful when you want to mail attachments from
+the command line. It has similarities to mailing attachments from the
+commandline with Mutt, but it only depends on bash and uuencode.</description>
+  <devel project="server:mail" package="biabam"/>
+</package>

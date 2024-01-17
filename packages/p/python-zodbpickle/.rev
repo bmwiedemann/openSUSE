@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a37c572773487a1c2b5a5f5cfd913d67</srcmd5>
+    <version>0.6.0</version>
+    <time>1503593591</time>
+    <user>dimstar_suse</user>
+    <comment>required by latest version of python-ZODB</comment>
+    <requestid>517026</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e99e1f554e3c30c1bdb03dfada0130a1</srcmd5>
+    <version>1.0.1</version>
+    <time>1532681818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * Fix a memory leak in pickle protocol 3 under Python 2. See issue 36.
+  * Add support for Jython 2.7.
+  * Add support for Python 3.5 and 3.6.
+  * Drop support for Python 2.6 and 3.2 and 3.3</comment>
+    <requestid>625396</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9ea6d173ab74ef13dad7ffcc1e01eea3</srcmd5>
+    <version>1.0.3</version>
+    <time>1555053346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693257</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3398b538d3a0e3eac712966b96e9fbe2</srcmd5>
+    <version>1.0.4</version>
+    <time>1560862697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.4:
+  * Fix pickle corruption under certain conditions. See pull request 47.</comment>
+    <requestid>710333</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef4426f208e9f313473aced32309816b</srcmd5>
+    <version>2.0.0</version>
+    <time>1583759883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782902</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e3195dda468fad8622fb0c25c5d686e6</srcmd5>
+    <version>2.0.0</version>
+    <time>1611348736</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python_module macro for BuildRequires on the testsuite module</comment>
+    <requestid>865548</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0917ad43054cacadaec75ba4ffdaa8e0</srcmd5>
+    <version>2.1.0</version>
+    <time>1632522944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921375</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1ed3e1df3f4119d67fd4f365e899b6ba</srcmd5>
+    <version>2.2.0</version>
+    <time>1643228849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949272</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7144cedf671cca2d387604ef7c95814f</srcmd5>
+    <version>2.3</version>
+    <time>1663596213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004593</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7aa7eef11bbb523f573991db7aff1686</srcmd5>
+    <version>2.4</version>
+    <time>1665754878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010365</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3ef1d63242f4e4a865d77811766a66e6</srcmd5>
+    <version>2.5</version>
+    <time>1668271266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035261</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4d1b9546e4f126799b0eb99120ec1e64</srcmd5>
+    <version>2.6</version>
+    <time>1670332987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040390</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>31fe5c997f5baceeb8baec01626cac4b</srcmd5>
+    <version>3.1</version>
+    <time>1702845114</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1:
+  * Add support for Python 3.12.
+  * Fix ``NameError`` in ``.fastpickle`` and ``.slowpickle``.
+  * Build Linux binary wheels for Python 3.11.
+  * Add preliminary support for Python 3.12a5.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Drop support for deprecated ``python setup.py test``.
+
+- Update to version 2.6
+- Update to version 2.5
+- Update to version 2.4.0
+- version update to 2.3.0
+- Use python_module macro for BuildRequires on the testsuite module</comment>
+    <requestid>1133585</requestid>
+  </revision>
+</revisionlist>

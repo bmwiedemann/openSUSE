@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb1db9a0e06ee124fcffba6051335e6d</srcmd5>
+    <version>1.0.1</version>
+    <time>1380218155</time>
+    <user>coolo</user>
+    <comment>needed by python-ZODB3, which replaced now-deleted python-zodb3</comment>
+    <requestid>200306</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bb1db9a0e06ee124fcffba6051335e6d</srcmd5>
+    <version>1.0.1</version>
+    <time>1409302977</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0a2b43f7856c8975b1a3e3cfd7c5dff3</srcmd5>
+    <version>1.0.1</version>
+    <time>1498910727</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 506709 from alois)</comment>
+    <requestid>506975</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>23133b2cbb8caf530c7e270d0be461c2</srcmd5>
+    <version>1.0.1</version>
+    <time>1572883872</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>743995</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>89cba8c557911852ccbe3752e055c8fe</srcmd5>
+    <version>1.0.1</version>
+    <time>1618694698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886229</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>33a91bf384c5dbc2ffd3ea107edfa0f8</srcmd5>
+    <version>1.0.1</version>
+    <time>1636218805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929053</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>75132a9ce295dbc927e0735236251d6f</srcmd5>
+    <version>1.0.1</version>
+    <time>1682193543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081785</requestid>
+  </revision>
+</revisionlist>

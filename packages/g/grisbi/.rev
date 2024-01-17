@@ -1,0 +1,207 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aff384677c1493d1937cd37f5589f907</srcmd5>
+    <version>0.8.6</version>
+    <time>1308061820</time>
+    <user>saschpe</user>
+    <comment>New package: accounting application, like gnucash; relatively popular</comment>
+    <requestid>72583</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>03277b155c61049a3dc618997605c47e</srcmd5>
+    <version>0.8.6</version>
+    <time>1308061833</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72583
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>74614d41df7a2942e853a108f6247f69</srcmd5>
+    <version>0.8.7</version>
+    <time>1312443616</time>
+    <user>saschpe</user>
+    <comment>Pushing G:A</comment>
+    <requestid>75313</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7fca1ce11e8e546f7798eca5155fd805</srcmd5>
+    <version>0.8.8</version>
+    <time>1316461069</time>
+    <user>lrupp</user>
+    <comment>Update to 0.8.8 + fix build</comment>
+    <requestid>83555</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>55521effc2c7f579bd34f8a79689c373</srcmd5>
+    <version>0.8.8</version>
+    <time>1318762007</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequire to avoid a hidden require from projconfig (forwarded request 87950 from coolo)</comment>
+    <requestid>87978</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>55521effc2c7f579bd34f8a79689c373</srcmd5>
+    <version>0.8.8</version>
+    <time>1319181943</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>90fc19ceadbc39f2861e43646c01828a</srcmd5>
+    <version>0.8.8</version>
+    <time>1323191779</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0164474af443f3878d6c0d9f8768f761</srcmd5>
+    <version>0.8.9</version>
+    <time>1326104118</time>
+    <user>coolo</user>
+    <comment>Remove patch not needed by 0.8.9 so we can push update to Factory (forwarded request 99165 from vuntz)</comment>
+    <requestid>99167</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0164474af443f3878d6c0d9f8768f761</srcmd5>
+    <version>0.8.9</version>
+    <time>1340183411</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>0164474af443f3878d6c0d9f8768f761</srcmd5>
+    <version>0.8.9</version>
+    <time>1359109004</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>0164474af443f3878d6c0d9f8768f761</srcmd5>
+    <version>0.8.9</version>
+    <time>1379662555</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>94ad78cb1b934b4e2840bfcc0abd69c9</srcmd5>
+    <version>1.0.0</version>
+    <time>1407912519</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244062</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>94ad78cb1b934b4e2840bfcc0abd69c9</srcmd5>
+    <version>1.0.0</version>
+    <time>1409301101</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>48763d5128c541546e60317ba83eefdc</srcmd5>
+    <version>1.0.1</version>
+    <time>1478952166</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439605</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a914cc15dcd91802db3211789e201243</srcmd5>
+    <version>1.0.2</version>
+    <time>1505238891</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523052</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5621b9123d0ed855c5a6b41481a3e0f7</srcmd5>
+    <version>1.0.4</version>
+    <time>1528896938</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.0.4:
+  + Fix a bug when the scheduled transaction is executed
+    automatically once.
+  + Fix bugsreports link.
+  + Adding a new option for futures dates.
+- Changes from version 1.0.3:
+  + Fix display bug of bet_tab when load a new account file.
+  + Fix bug in forecasts when decimal_point is comma &quot;,&quot; and
+    thousands_separator is dot &quot;.&quot;.
+  + Fix display split transactions in budgetary lines view.
+  + Partial correction of bug &quot;creating duplicate transactions when
+    categories are not used&quot;.
+  + Fix warning when date is NULL in bet_tab.c.
+  + Fix a warning when displaying reconciled transactions.
+  + Added all scheduled transactions of the month if
+    conf.execute_scheduled_of_month = TRUE.
+  + Fix display bug of the last scheduled transaction of the
+    period.
+- Drop libofx-devel BuildRequires, already in place as pkgconfig().
+- Do minor spec-cleaning. (forwarded request 613898 from iznogood)</comment>
+    <requestid>613923</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>70ac7fe404b99bd9a03789a1cbfba9b7</srcmd5>
+    <version>1.0.4</version>
+    <time>1529402396</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616632</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d45c8639bbaae583d804175f83456f43</srcmd5>
+    <version>1.0.4</version>
+    <time>1580081035</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767369</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>8f2d22b905a7d5aa7f2beaa3b49dfbaf</srcmd5>
+    <version>1.0.4</version>
+    <time>1580511373</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768611 from dimstar)</comment>
+    <requestid>768677</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>175d532860e00950e95595f5ce22c059</srcmd5>
+    <version>1.2.2</version>
+    <time>1587659424</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream rel (forwarded request 795133 from iznogood)</comment>
+    <requestid>795153</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>60e285ca0db16ce181c09258993a1a38</srcmd5>
+    <version>2.0.3</version>
+    <time>1618498688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.3:
+  + Automatic integration of dark themes
+  + New color management of grisbi
+  + Added the ability to change the font size globally
+  + Improved use of grisbi with low definition screens
+  + Redesign of the credit management module
+  + Added import rules for CSV files
+  + Added of a search module in the list of operations
+  + Added the ability to automatically delete old backups
+  + Bugs fix (forwarded request 885259 from ailin_nemui)</comment>
+    <requestid>885650</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c971ba4c46481027f31308eadcbc9a5f</srcmd5>
+    <version>2.0.5</version>
+    <time>1639616459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940796</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>3d88c32e061b5dac366d16fab73e5b96</srcmd5>
+    <version>2.0.5</version>
+    <time>1704919979</time>
+    <user>anag+factory</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 1137888 from dimstar)</comment>
+    <requestid>1137912</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,477 @@
+-------------------------------------------------------------------
+Mon May 29 20:30:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.17:
+  * Fix: Read overflow when parsing CDP addresses.
+  * Don't output empty lines on configure commands.
+
+-------------------------------------------------------------------
+Fri Nov 11 20:24:22 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.16
+  * Do not use 00:00:00:00:00:00 as chassis ID.
+  * Do not busy loop when an interface with a neighbor disappears.
+
+-------------------------------------------------------------------
+Mon Aug 29 10:08:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.15
+  * protocol/lldp: accept unknown TLVs on known orgs
+  * client: Added support to override system capabilities
+  * netlink: ignore IPv6 temporary addresses
+
+-------------------------------------------------------------------
+Sat May 21 21:42:16 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Upate to version 1.0.14
+  Changes:
+  * Add configure commands to alter inventory TLVs.
+  Fixes:
+  * Update seccomp rules for newer kernel/libc.
+  * Correctly handle an interface whose index has changed.
+  * Don't send VLANs when there are too many.
+
+-------------------------------------------------------------------
+Sun Nov 14 12:44:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 1.0.13
+  * Add support for 2.5G, 5G, 25G and 50G based Ethernet.
+  * Fix LLDP packets encapsuled in VLAN 0 in some conditions.
+  * Fix heap overflow when reading SONMP. CVE-2021-43612.
+
+-------------------------------------------------------------------
+Fri Oct 15 12:12:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectClock hardening, can cause issues if other device acceess is needed
+
+-------------------------------------------------------------------
+Tue Oct  5 14:13:15 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_lldpd.service.patch
+
+-------------------------------------------------------------------
+Fri Aug 20 19:12:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.12:
+  Fix:
+  * Use a dedicated file lock to prevent concurrent changes from
+    lldpcli.
+  * Require/display powerpairs for Dot3 power even when device
+    type is PD.
+- Fix URL
+
+-------------------------------------------------------------------
+Sun May  2 14:46:38 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.11:
+  * Changes:
+    + Disable LLDP in firmware for Intel X7xx cards.
+  * Fix:
+    + Ensure Intel E8xx cards can transmit LLDP packets.
+
+-------------------------------------------------------------------
+Sat Apr 10 19:20:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.10:
+  Fix:
+  * Fix chroot directory creation.
+
+-------------------------------------------------------------------
+Fri Apr  2 11:03:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.9:
+  Fix:
+  * Do not use interface alias if we set it ourselves.
+  * More memory leak fixes on duplicate TLVs in LLDP, CDP and EDP
+    (related to CVE-2020-27827).
+  Changes:
+  * Display port status with "show interfaces".
+  * Do not display "age" and "via" when using "show interfaces".
+
+-------------------------------------------------------------------
+Thu Jan 14 20:00:41 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.8:
+  Fix:
+  * Out-of-bound read access when parsing LLDP-MED civic address in
+    liblldpctl for malformed fields.
+  * Fix memory leak when receiving LLDPU with duplicate fields.
+    CVE-2020-27827.
+  Changes:
+  * Enable "router" capability bit when IPv6 routing is enabled.
+
+-------------------------------------------------------------------
+Sun Nov  1 09:57:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.7:
+  Fix:
+  * Do not listen only to LLDP packets on Linux. When an interface
+    is enslaved to an Open vSwitch, incoming packets are missed.
+
+-------------------------------------------------------------------
+Tue Oct 13 10:04:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old specfile constructs. Do not suppress errors from
+  useradd. Require right subpackage from lldpd-devel. Trim
+  redundancies from descriptions.
+
+-------------------------------------------------------------------
+Sat Sep  5 20:22:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.6:
+  Fix:
+  * Do not loose chassis local information when interface status
+    changes.
+  * Fix SNMP walk on lldpRemTable when missing remote system
+    name or description.
+  * Remove length limitation on system description and platform.
+  Changes:
+  * Deprecate use of lldpctl_watch_callback(). Use
+    lldpctl_watch_callback2() instead.
+  * Upgrade embedded libevent to 2.1.11-stable
+  * Add support of sending LLDP frames on a configured VLAN
+
+-------------------------------------------------------------------
+Sun Feb  2 20:08:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.5:
+  Changes:
+  * Interface names are also matched for management addresses.
+  * On Linux, only register protocol handler for LLDP when only LLDP
+    is enabled.
+  * Stricter on LLDP incoming frames validation.
+  * Add support for VLAN-aware bridges for Linux (no range support).
+  * Add support for 802.3BT (no SNMP support).
+  * Add support for millisecond-grained tx-interval
+  * Use generic names for VLAN names, instead of interface names (eg
+    vlan100 instead of eth1.100).
+  Fix:
+  * Don't clear chassis TLV on shutdown LLDPDU.
+  * Don't require/display powerpairs for Dot3 power when device type
+    is PD.
+
+-------------------------------------------------------------------
+Wed Nov 13 19:47:21 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Correct License
+  * MIT -> ISC
+
+-------------------------------------------------------------------
+Sun Jun 16 14:22:28 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.4:
+  Changes:
+  * Add "configure system max-neighbors XX" command to modify maximum
+    of neighbors accepted per port.
+  * Implement lldpRemOrgDefInfoTable table for custom TLVs.
+  * Fix:
+  * Better compliance for statsTLVsUnrecognizedTotal and
+    statsAgeoutsTotal counters.
+  * On Linux, handle rare blocking case in Netlink code.
+
+-------------------------------------------------------------------
+Thu Feb 14 14:30:16 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.3:
+  * Fix creation of chroot directory.
+- Simplify spec file
+
+-------------------------------------------------------------------
+Mon Dec  3 23:18:32 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.0.2
+  * On Linux, the monitor process will now drop its privileges
+    instead of running as root. It will keep CAP_NET_RAW,
+    CAP_NET_ADMIN and CAP_DAC_OVERRIDE capabilities.
+  * Support for CDP PD PoE (with negotiation).
+  * Move support for bonded devices on Linux < 2.6.27 into the
+    `--enable-oldies` option. This avoids duplicate packets
+    starting from Linux 4.19.
+
+-------------------------------------------------------------------
+Wed Aug  1 07:24:49 UTC 2018 - mpluskal@suse.com
+
+- Adjust sysconfig
+
+-------------------------------------------------------------------
+Mon Apr  9 16:38:43 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.0.1 (boo#1103351)
+  * Use "mkdir -p" instead of "mkdir" in systemd unit.
+
+-------------------------------------------------------------------
+Mon Apr  9 07:25:19 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.0.0
+  * Changes:
+    + Chassis ID can be set to an arbitrary value with "configure
+      system chassisid".
+    + Port description can be overriden directly with "configure
+      lldp portdescription".
+    + Command "configure system interface permanent" enables one to
+      specify a pattern for interfaces to be kept in memory even when
+      they are removed from the system.
+  * Fix:
+    + Ensure chassis-related changes are propagated immediately.
+    + Ensure management address change is correctly detected.
+
+-------------------------------------------------------------------
+Mon Dec 18 08:37:22 UTC 2017 - mpluskal@suse.com
+
+- Disable seccomp as it breaks on Factory
+- Further update sysconfig
+- Some more spec-cleaner goodness
+
+-------------------------------------------------------------------
+Sat Dec 16 18:24:59 UTC 2017 - astieger@suse.com
+
+- verify source signature
+
+-------------------------------------------------------------------
+Mon Dec 11 12:29:55 UTC 2017 - mpluskal@suse.com
+
+- Enable seccomp for Factory
+- Adjust default sysconfig to enable other protocols and self
+  advertisment
+- Do not create user/grou starting with underscore (_lldpd)
+
+-------------------------------------------------------------------
+Mon Dec  4 15:47:15 UTC 2017 - mpluskal@suse.com
+
+- Use fillupdir macro
+- Enable libbsd
+- Fix group for devel subpackage
+
+-------------------------------------------------------------------
+Mon Nov 27 13:16:06 UTC 2017 - mpluskal@suse.com
+
+- Clarify licensing and usage of some header files
+- Enable support for libseccomp (disabled by default)
+- Make buildign more verbose
+
+-------------------------------------------------------------------
+Wed Nov 22 19:43:00 UTC 2017 - mardnh@gmx.de
+
+- Created lldpd.changes file (converted inline Changelog via
+  spec2changelog)
+- Specfile cleanup (removed all stuff that is not relevant for
+  recent (open)SUSE versions.)
+
+-------------------------------------------------------------------
+Tue Nov 21 00:00:00 UTC 2017 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sun Aug 20 00:00:00 UTC 2017 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sun Mar 19 00:00:00 UTC 2017 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sat Jan 21 00:00:00 UTC 2017 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Fri Sep 30 00:00:00 UTC 2016 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Fri Jun 17 00:00:00 UTC 2016 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sat May 21 00:00:00 UTC 2016 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sat Mar 19 00:00:00 UTC 2016 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sat Feb 20 00:00:00 UTC 2016 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Fri Jan  1 00:00:00 UTC 2016 - bernat@luffy.cx
+
+- New upstream version.
+- Do not rely on libnl3.
+
+
+-------------------------------------------------------------------
+Sun Dec 27 00:00:00 UTC 2015 - bernat@luffy.cx
+
+- New upstream version.
+- Use system libnl3 when possible.
+- Use system libevent when possible.
+
+
+-------------------------------------------------------------------
+Wed Sep  9 00:00:00 UTC 2015 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Fri Aug  7 00:00:00 UTC 2015 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Wed May 20 00:00:00 UTC 2015 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sat Apr  4 00:00:00 UTC 2015 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Tue Dec 30 00:00:00 UTC 2014 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sat Nov 22 00:00:00 UTC 2014 - bernat@luffy.cx
+
+- New upstream version.
+- Completion for bash and zsh.
+
+
+-------------------------------------------------------------------
+Wed Oct  8 00:00:00 UTC 2014 - bernat@luffy.cx
+
+- New upstream version.
+- Completion for bash and zsh.
+
+
+-------------------------------------------------------------------
+Mon Jul 21 00:00:00 UTC 2014 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Wed May 28 00:00:00 UTC 2014 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sun Apr 13 00:00:00 UTC 2014 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2013 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Fri Jul 12 00:00:00 UTC 2013 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sat Jun 22 00:00:00 UTC 2013 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sun May 12 00:00:00 UTC 2013 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Fri Apr 19 00:00:00 UTC 2013 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sat Jan 12 00:00:00 UTC 2013 - bernat@luffy.cx
+
+- New upstream version.
+
+
+-------------------------------------------------------------------
+Sun Jan  6 00:00:00 UTC 2013 - bernat@luffy.cx
+
+- New upstream version.
+- Requires readline-devel.
+- Ships lldpcli.
+
+
+-------------------------------------------------------------------
+Thu Sep 27 00:00:00 UTC 2012 - bernat@luffy.cx
+
+- New upstream version
+- Do not require libevent, use embedded copy.
+- Provide a -devel package.
+
+
+-------------------------------------------------------------------
+Fri Jun 11 00:00:00 UTC 2010 - bernat@luffy.cx
+
+- New upstream version
+- Define bcond_without and with macros if not defined to be compatible
+  with RHEL
+- Requires useradd and groupadd
+- Adapt to make it work with SuSE
+- Provide an init script targetted at SuSE
+- Build require lm_sensors-devel on RHEL
+
+
+-------------------------------------------------------------------
+Fri Mar 12 00:00:00 UTC 2010 - bernat@luffy.cx
+
+- New upstream version
+- Add XML support
+
+
+-------------------------------------------------------------------
+Tue May 19 00:00:00 UTC 2009 - bernat@luffy.cx
+
+- Add variables
+- Enable SNMP support
+- Add _lldpd user creation
+- Add initscript
+- New upstream version
+
+
+-------------------------------------------------------------------
+Mon May 18 00:00:00 UTC 2009 - dean.hamstead@optusnet.com.au
+
+- Initial attempt
+

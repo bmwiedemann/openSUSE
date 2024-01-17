@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbed3d49457953c2a92941a5aa1dbc4b</srcmd5>
+    <version>0.5.1</version>
+    <time>1558515463</time>
+    <user>dimstar_suse</user>
+    <comment>IPython widget for rendering 3d volumes</comment>
+    <requestid>699929</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2fc9fd68908d727ad1ed9bc00610f490</srcmd5>
+    <version>0.5.2</version>
+    <time>1564576074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719698</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2b61245ae219805e5da2a0e06c8402c6</srcmd5>
+    <version>0.5.2</version>
+    <time>1619298527</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>887914</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8dcb4b2f696e19d3afd2a15b2cfb4b34</srcmd5>
+    <version>0.6.0</version>
+    <time>1675458371</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6
+  * 212 commits, 193 changed files, none of them is a changelog
+  * no upstream release notes
+- PEP517 build
+- New jupyter-jupyterlab-ipyvolume subpackage for the jupyterlab
+  extension</comment>
+    <requestid>1063062</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b3dbf2edc3ca2eb7f84cf0347fd4aa93</srcmd5>
+    <version>0.6.1</version>
+    <time>1679416941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1
+  * no upstream changelog
+  * commit: osname should not fail under emscripten
+</comment>
+    <requestid>1073300</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cf9ece4d8d438c251f6624cda42255c8</srcmd5>
+    <version>0.6.3</version>
+    <time>1686665387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092710</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cecfa32e02a25a62966fdacd1dbd097b</srcmd5>
+    <version>0.6.3</version>
+    <time>1692379699</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104438</requestid>
+  </revision>
+</revisionlist>

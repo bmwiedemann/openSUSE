@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Sat Apr 15 17:10:03 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Use signing key from maintainer's website.
+
+-------------------------------------------------------------------
+Sat Apr 15 16:13:05 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v0.7.0:
+  * Support for Screenshot protocol.
+  * Report output transforms to PipeWire so that clients can show screencasts
+    and screenshots correctly transformed.
+  * Partial support for ScreenCast v4 persisted data. Currently this data is
+    the name of the selected output, and support must be enabled by setting
+    the XDPW_PERSIST_MODE to "transient" or "permanent".
+- Add keyring file so that source_validator can verify it.
+- Download tarball from release instead of GitHub-packed archive so that
+  signature verification works.
+
+-------------------------------------------------------------------
+Thu Jun  9 11:00:02 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Set explicit version bound on libdrm and gbm deps so that build failure
+  is obvious on Leap 15.4, etc that have older versions.
+
+-------------------------------------------------------------------
+Thu Jun  9 10:45:54 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.6.0:
+  * Support for 10-bit color formats.
+  * Better performance through supporting DMA-BUFs and PipeWire's swapchain.
+
+-------------------------------------------------------------------
+Fri Nov  5 17:08:46 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.5.0
+  * Bugfixes and minor internal improvements
+
+-------------------------------------------------------------------
+Tue Jun  1 17:19:27 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.4.0:
+  * some CLI options have been replaced with config options.
+  * quotes in the config file are no longer allowed.
+  * Add wlroots to portal manifest UseIn list
+  * screenshot: implement `interactive` option
+  * screenshot: implement PickColor method
+
+-------------------------------------------------------------------
+Sun Apr 18 17:10:56 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.3.0:
+  * Add support for config file
+  * Add man page
+  * Control how many frames are captured per second
+  * screencast: add outputchooser with config option
+
+-------------------------------------------------------------------
+Mon Feb 15 10:59:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.0:
+  * Add Wayfire to portal UseIn list, as it is also supported
+  * Add river to portal UseIn list
+  * build: introduce sd-bus-provider option
+  * build: add basu as sd-bus provider
+  * screencast: prefix macros to avoid conflict with system definitions
+  * Revert "Remove unnecessary check from wlr_screencast.c" (#54)
+  * core: fix error handling in main
+  * core/main: Add static qualifier to internal func
+  * core/main: Use EXIT_FAILURE / EXIT_SUCCESS
+  * core/main: Clean up option handling
+  * systemd: ensure service is stopped on exit of graphical session
+  * Fix freeze on skipped frame
+  * Remove extraneous whitespace
+  * Add --replace flag
+  * Destroy wlr_buffer only on quit or error in wlr_screencast.c
+  * Only recreate simple_frame on change in wlr_screencast.c
+  * munmap simple_frame.data only if needed in wlr_screencast.c
+  * Fix log messages in wlr_screencast.c
+  * Refresh buffer on change in wlr_screencast.c
+  * Change refresh logic and add tests in wlr_screencast.c
+  * Add functions to clean simple_buffer.{data,buffer} in wlr_screencast.c
+  * Remove unecessary checks in wlr_screencast.c
+  * Update to wlr-screencopy-unstable-v1 version 3
+
+-------------------------------------------------------------------
+Tue Jul 14 08:47:47 UTC 2020 - Arnav Singh <opensuse@arnavion.dev>
+
+- Change systemd buildreq to pkgconfig(systemd) for OBS's sake.
+
+-------------------------------------------------------------------
+Sat Jul 11 04:22:51 UTC 2020 - Arnav Singh <opensuse@arnavion.dev>
+
+- Initial packaging of v0.1.0

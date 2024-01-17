@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e37566fa6cc787467d3fc63547b2102</srcmd5>
+    <version>0.0.1</version>
+    <time>1260977017</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/nuoveXT2-icon-theme based on submit request 26342 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0541354f920249c9d55a5f5c7e60dea7</srcmd5>
+    <version>0.0.1</version>
+    <time>1268925122</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2fc3ce448e7f991813f57cffdf4f1f06</srcmd5>
+    <version>0.0.1</version>
+    <time>1274791982</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/nuoveXT2-icon-theme based on submit request 40582 from user anubisg1
+</comment>
+    <requestid>40582</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a7fd0050f3769808ec908830eec35ecd</srcmd5>
+    <version>0.0.1</version>
+    <time>1275065358</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/nuoveXT2-icon-theme based on submit request 40735 from user anubisg1
+</comment>
+    <requestid>40735</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>a7fd0050f3769808ec908830eec35ecd</srcmd5>
+    <version>0.0.1</version>
+    <time>1278667371</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>a7fd0050f3769808ec908830eec35ecd</srcmd5>
+    <version>0.0.1</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>a7fd0050f3769808ec908830eec35ecd</srcmd5>
+    <version>0.0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>a7fd0050f3769808ec908830eec35ecd</srcmd5>
+    <version>0.0.1</version>
+    <time>1319182206</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>b3087349cb71a3cb77a405bccdf5be4f</srcmd5>
+    <version>0.0.1</version>
+    <time>1323192772</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>b3087349cb71a3cb77a405bccdf5be4f</srcmd5>
+    <version>0.0.1</version>
+    <time>1340183740</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>48a890a6f00c5c70c84c357e35aaacce</srcmd5>
+    <version>0.5.0</version>
+    <time>1347618704</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134025</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>48a890a6f00c5c70c84c357e35aaacce</srcmd5>
+    <version>0.5.0</version>
+    <time>1359109520</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>48a890a6f00c5c70c84c357e35aaacce</srcmd5>
+    <version>0.5.0</version>
+    <time>1379663391</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>48a890a6f00c5c70c84c357e35aaacce</srcmd5>
+    <version>0.5.0</version>
+    <time>1409302004</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1874ef9b7c62822bcbea5cb37c9976ff</srcmd5>
+    <version>0.5.1</version>
+    <time>1410795682</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249129</requestid>
+  </revision>
+</revisionlist>

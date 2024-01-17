@@ -1,0 +1,12 @@
+Index: moban-0.8.2/docs/level-12-use-template-engine-extensions/.moban.yml
+===================================================================
+--- moban-0.8.2.orig/docs/level-12-use-template-engine-extensions/.moban.yml
++++ moban-0.8.2/docs/level-12-use-template-engine-extensions/.moban.yml
+@@ -3,7 +3,6 @@ targets:
+   - b.output: b.template
+ extensions:
+   jinja2:
+-    - jinja2.ext.with_
+     - filter:moban.externals.file_system.url_join
+     - test:moban.externals.file_system.exists
+     - global:description=moban.constants.PROGRAM_DESCRIPTION

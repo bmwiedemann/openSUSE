@@ -1,0 +1,2 @@
+# libgit2-tools ships the tools
+addFilter("libgit2-tools.*shlib-policy-missing-lib")

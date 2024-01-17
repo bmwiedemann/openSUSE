@@ -1,0 +1,5 @@
+<package name="xdg-desktop-portal-wlr" project="openSUSE:Factory">
+  <title></title>
+  <description>https://github.com/emersion/xdg-desktop-portal-wlr</description>
+  <devel project="X11:Wayland" package="xdg-desktop-portal-wlr"/>
+</package>

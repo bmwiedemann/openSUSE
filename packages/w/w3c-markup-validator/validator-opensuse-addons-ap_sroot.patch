@@ -1,0 +1,36 @@
+diff -ruN validator-opensuse-addons-orig/validator-vhost.conf validator-opensuse-addons/validator-vhost.conf
+--- validator-opensuse-addons-orig/validator-vhost.conf	2008-11-18 23:33:36.000000000 +0100
++++ validator-opensuse-addons/validator-vhost.conf	2010-02-17 15:47:21.000000000 +0100
+@@ -12,7 +12,7 @@
+ # about virtual hosts.
+ #
+ # The values below assume that you have the validator files in
+-# /srv/www/htdocs/w3c-markup-validator.  If not, tune them according to your setup.
++# @apache_serverroot@/w3c-markup-validator.  If not, tune them according to your setup.
+ #
+ # To run the validator without mod_perl 2.x even if it is loaded, comment
+ # out the "IfDefine MODPERL2" sections below.
+@@ -22,11 +22,11 @@
+   # Add your.domain.here.
+   # ServerName validator.example.org
+   
+-  DocumentRoot /srv/www/htdocs/w3c-markup-validator/htdocs/
++  DocumentRoot @apache_serverroot@/w3c-markup-validator/htdocs/
+ 
+   # First, tell httpd that check and sendfeedback.pl are CGI scripts.
+-  AliasMatch /check(/+referer)?$   /srv/www/htdocs/w3c-markup-validator/cgi-bin/check
+-  AliasMatch /feedback(\.html)?$   /srv/www/htdocs/w3c-markup-validator/cgi-bin/sendfeedback.pl
++  AliasMatch /check(/+referer)?$   @apache_serverroot@/w3c-markup-validator/cgi-bin/check
++  AliasMatch /feedback(\.html)?$   @apache_serverroot@/w3c-markup-validator/cgi-bin/sendfeedback.pl
+ 
+   <IfDefine MODPERL2>
+     # Note: this affects the whole server, not just the validator.
+@@ -51,7 +51,7 @@
+   </LocationMatch>
+ 
+   # This is the directory where you have the validator's *.html, *.css etc files.
+-  <Directory /srv/www/htdocs/w3c-markup-validator/htdocs/>
++  <Directory @apache_serverroot@/w3c-markup-validator/htdocs/>
+     Options               IncludesNOEXEC Indexes MultiViews
+     AllowOverride         None
+     AddHandler            server-parsed .html

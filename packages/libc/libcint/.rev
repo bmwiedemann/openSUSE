@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81283aab2275656d4837fbd501b6c2d6</srcmd5>
+    <version>3.1.1</version>
+    <time>1599771167</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for python-pyscf</comment>
+    <requestid>833008</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>91e8a0a2cdb785ba73db3fb051045d57</srcmd5>
+    <version>4.0.6</version>
+    <time>1606649315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851089</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad6f4225b75e3f8b91128b5e395d7545</srcmd5>
+    <version>4.0.7</version>
+    <time>1610558622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862750</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a4f611863db4d6535b2d2f7cbbcbef7</srcmd5>
+    <version>4.4.1</version>
+    <time>1624813165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902632</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>94cf143afeccefefc9f18cd2246269b8</srcmd5>
+    <version>5.5.0</version>
+    <time>1700163108</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126973</requestid>
+  </revision>
+</revisionlist>

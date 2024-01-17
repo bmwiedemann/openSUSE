@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>283eeb3566fede748198a038d09d45e7</srcmd5>
+    <version>1.7</version>
+    <time>1610965697</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for python-imagecodecs.</comment>
+    <requestid>863402</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1b396427d12f2431e27f40874dfa2565</srcmd5>
+    <version>1.8</version>
+    <time>1641480664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944047</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6fbb4fffda78155abe4206885212fae2</srcmd5>
+    <version>1.9</version>
+    <time>1643128713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949050</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b549db2962c173b5f9d6825f8883c9fc</srcmd5>
+    <version>1.10</version>
+    <time>1644965866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955073</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>89ec065a90889555229598a1ff3daca1</srcmd5>
+    <version>1.12</version>
+    <time>1657712717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988723</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>98f9836c82b9fcdc58d1b97839305ce0</srcmd5>
+    <version>1.13</version>
+    <time>1660051670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993864</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bb82d81b67656e4dcbbf1708a3ddd708</srcmd5>
+    <version>1.14</version>
+    <time>1664908663</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007760</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>42fa6bbc9e96bb4421832d79d3c1d258</srcmd5>
+    <version>1.15</version>
+    <time>1674324684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060058</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5a84ebac091ab4e19c4863df9b8d3c6b</srcmd5>
+    <version>1.17</version>
+    <time>1674665057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060876</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bde8cfa056435b4bbfbeb7d1d1459938</srcmd5>
+    <version>1.18</version>
+    <time>1683037169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083979</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>732b7e0a132673ed6d169ea7012d19a2</srcmd5>
+    <version>1.19</version>
+    <time>1695209127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111749</requestid>
+  </revision>
+</revisionlist>

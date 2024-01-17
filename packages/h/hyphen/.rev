@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd4f2e5e15352484c141bcfb3ff4607a</srcmd5>
+    <version>2.8.6</version>
+    <time>1355946479</time>
+    <user>coolo</user>
+    <comment>used by libreoffice</comment>
+    <requestid>145685</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>dd4f2e5e15352484c141bcfb3ff4607a</srcmd5>
+    <version>2.8.6</version>
+    <time>1359109058</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>dd4f2e5e15352484c141bcfb3ff4607a</srcmd5>
+    <version>2.8.6</version>
+    <time>1379662629</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3421ba64cad260debde06d776cbf48e8</srcmd5>
+    <version>2.8.6</version>
+    <time>1391604189</time>
+    <user>coolo</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>215158</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>3d81541e422338a8fdd0510743e2be2e</srcmd5>
+    <version>2.8.6</version>
+    <time>1399031617</time>
+    <user>coolo</user>
+    <comment>- Do not provide english hyphen. It is provided by myspell-docs
+  package.</comment>
+    <requestid>231651</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>3d81541e422338a8fdd0510743e2be2e</srcmd5>
+    <version>2.8.6</version>
+    <time>1409301188</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b9e1b28fb823df2f3994b8792e3edc13</srcmd5>
+    <version>2.8.8</version>
+    <time>1421959705</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281763</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5fef8b9f093bf0a9d7b0e48c8a4331bf</srcmd5>
+    <version>2.8.8</version>
+    <time>1454833350</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356545</requestid>
+  </revision>
+</revisionlist>
