@@ -1,6 +1,0 @@
-<package name="python-django-grappelli" project="openSUSE:Factory">
-  <title></title>
-  <description>A jazzy skin for the Django Admin-Interface (only available for standard-compliant browsers).</description>
-  <devel project="devel:languages:python:django" package="python-django-grappelli"/>
-  <url>http://code.google.com/p/django-grappelli</url>
-</package>

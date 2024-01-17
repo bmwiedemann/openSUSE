@@ -1,7 +1,0 @@
-<package name="png++" project="openSUSE:Factory">
-  <title>png++</title>
-  <description>PNG++ aims to provide simple yet powerful C++ interface to libpng, the PNG reference implementation library.
-
-PNG++ is free software distributed under a modified variant of the BSD license. </description>
-  <devel project="devel:libraries:c_c++" package="png++"/>
-</package>

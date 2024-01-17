@@ -1,7 +1,0 @@
-<package name="perl-SDL" project="openSUSE:Factory">
-  <title>Glue between Perl and SDL</title>
-  <description>Programming SDL with Perl.
-</description>
-  <devel project="devel:languages:perl" package="perl-SDL"/>
-  <url>http://sdl.perl.org/</url>
-</package>

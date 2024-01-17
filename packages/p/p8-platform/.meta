@@ -1,5 +1,0 @@
-<package name="p8-platform" project="openSUSE:Factory">
-  <title>Platform support library used by libCEC and binary add-ons for Kodi </title>
-  <description>Platform support library used by libCEC and binary add-ons for Kodi</description>
-  <devel project="hardware" package="p8-platform"/>
-</package>

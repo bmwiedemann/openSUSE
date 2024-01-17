@@ -1,6 +1,0 @@
-<package name="perl-DBIx-Transaction" project="openSUSE:Factory">
-  <title>Allow transactions to be nested in DBI</title>
-  <description>DBIx::Transaction is a wrapper around DBI that helps you manage your
-database transactions.</description>
-  <devel project="devel:languages:perl" package="perl-DBIx-Transaction"/>
-</package>

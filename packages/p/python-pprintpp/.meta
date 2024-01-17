@@ -1,5 +1,0 @@
-<package name="python-pprintpp" project="openSUSE:Factory">
-  <title>python-pprintpp</title>
-  <description>A pprint that is actually pretty</description>
-  <devel project="devel:languages:python" package="python-pprintpp"/>
-</package>

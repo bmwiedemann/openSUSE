@@ -1,5 +1,0 @@
-<package name="perl-XML-Feed" project="openSUSE:Factory">
-  <title>Syndication Feed Parser and Auto-Discovery</title>
-  <description>XML::Feed is a syndication feed parser for both RSS and Atom feeds. It also implements feed auto-discovery for finding feeds, given a URI.</description>
-  <devel project="devel:languages:perl" package="perl-XML-Feed"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="python-lazy-object-proxy" project="openSUSE:Factory">
-  <title>A fast and thorough lazy object proxy for Python</title>
-  <description>A fast and thorough lazy object proxy.
-</description>
-  <devel project="devel:languages:python" package="python-lazy-object-proxy"/>
-</package>

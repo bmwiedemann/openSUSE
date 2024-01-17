@@ -1,6 +1,0 @@
-<package name="perl-IO-TieCombine" project="openSUSE:Factory">
-  <title>produce tied (and other) separate but combined variables</title>
-  <description>produce tied (and other) separate but combined variables</description>
-  <devel project="devel:languages:perl" package="perl-IO-TieCombine"/>
-  <url>http://search.cpan.org/dist/IO-TieCombine</url>
-</package>

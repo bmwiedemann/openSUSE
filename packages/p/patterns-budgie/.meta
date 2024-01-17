@@ -1,9 +1,0 @@
-<package name="patterns-budgie" project="openSUSE:Factory">
-  <title>Patterns for Installation (Budgie)</title>
-  <description>This is an internal package that is used to create the patterns as part
-of the installation source setup. Installation of this package does
-not make sense.
-
-This particular package contains the Budgie pattern.</description>
-  <devel project="X11:Solus" package="patterns-budgie"/>
-</package>

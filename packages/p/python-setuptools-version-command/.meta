@@ -1,5 +1,0 @@
-<package name="python-setuptools-version-command" project="openSUSE:Factory">
-  <title></title>
-  <description>Python setuptools command to dynamically get the version from the VCS of choice.</description>
-  <devel project="devel:languages:python" package="python-setuptools-version-command"/>
-</package>

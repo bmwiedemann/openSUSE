@@ -1,8 +1,0 @@
-<package name="perl-XML-NodeFilter" project="openSUSE:Factory">
-  <title>XML::NodeFilter</title>
-  <description>XML::NodeFilter is a generic node filter class for DOM traversal as
-specified in the DOM Level 2 Traversal and Range specification. It
-extends that specification, so this class is easier to use for Perl
-programmers.</description>
-  <devel project="devel:languages:perl" package="perl-XML-NodeFilter"/>
-</package>

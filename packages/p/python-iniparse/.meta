@@ -1,8 +1,0 @@
-<package name="python-iniparse" project="openSUSE:Factory">
-  <title>Python Module for Accessing and Modifying Configuration Data in INI files</title>
-  <description>iniparse is an INI parser for Python which is API compatible with the
-standard library's ConfigParser, preserves structure of INI files
-(order of sections &amp; options, indentation, comments, and blank lines
-are preserved when data is updated), and is more convenient to use.</description>
-  <devel project="devel:languages:python" package="python-iniparse"/>
-</package>

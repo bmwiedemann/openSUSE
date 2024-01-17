@@ -1,5 +1,0 @@
-<package name="python-django-timezone-field" project="openSUSE:Factory">
-  <title></title>
-  <description>Django app providing fields for pytz timezone objects</description>
-  <devel project="devel:languages:python:django" package="python-django-timezone-field"/>
-</package>

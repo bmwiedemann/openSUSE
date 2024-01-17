@@ -1,5 +1,0 @@
-<package name="perl-Mozilla-LDAP" project="openSUSE:Factory">
-  <title>LDAP Perl module that wraps the Mozilla C SDK</title>
-  <description></description>
-  <devel project="mozilla:Factory" package="perl-Mozilla-LDAP"/>
-</package>

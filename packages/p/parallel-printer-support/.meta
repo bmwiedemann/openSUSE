@@ -1,6 +1,0 @@
-<package name="parallel-printer-support" project="openSUSE:Factory">
-  <title>Parallel Printer Support</title>
-  <description>This package creates a static udev node for the parallel port.  The purpose is to load
-the &quot;lp&quot; kernel module automatically the first time data is sent to the parallel port.</description>
-  <devel project="Printing" package="parallel-printer-support"/>
-</package>

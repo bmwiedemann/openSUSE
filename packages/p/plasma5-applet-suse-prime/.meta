@@ -1,5 +1,0 @@
-<package name="plasma5-applet-suse-prime" project="openSUSE:Factory">
-  <title>Plasma5 applet for SUSE Prime</title>
-  <description>A KDE Plasma 5 applet for switching between video cards on systems with SUSE Prime.</description>
-  <devel project="KDE:Extra" package="plasma5-applet-suse-prime"/>
-</package>

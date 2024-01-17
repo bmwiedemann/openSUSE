@@ -1,5 +1,0 @@
-<package name="python-u-msgpack-python" project="openSUSE:Factory">
-  <title>A portable, lightweight MessagePack serializer and deserializer written in pure Python.</title>
-  <description>u-msgpack-python is a lightweight MessagePack serializer and deserializer module written in pure Python, compatible with both Python 2 and Python 3, as well as CPython and PyPy implementations of Python. u-msgpack-python is fully compliant with the latest MessagePack specification. In particular, it supports the new binary, UTF-8 string, and application-defined ext types. See https://github.com/vsergeev/u-msgpack-python for more information.</description>
-  <devel project="devel:languages:python" package="python-u-msgpack-python"/>
-</package>

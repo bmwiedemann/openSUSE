@@ -1,5 +1,0 @@
-<package name="python3-gcemetadata" project="openSUSE:Factory">
-  <title>Metadata query for GCE</title>
-  <description>Command line tool to query the metadata server in Google Compute Engine</description>
-  <devel project="Cloud:Tools" package="python3-gcemetadata"/>
-</package>

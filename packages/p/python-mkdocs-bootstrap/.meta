@@ -1,5 +1,0 @@
-<package name="python-mkdocs-bootstrap" project="openSUSE:Factory">
-  <title></title>
-  <description>Bootstrap theme for MkDocs</description>
-  <devel project="devel:languages:python" package="python-mkdocs-bootstrap"/>
-</package>

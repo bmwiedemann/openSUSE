@@ -1,7 +1,0 @@
-<package name="powerman" project="openSUSE:Factory">
-  <title>Centralized Power Control for Clusters</title>
-  <description>PowerMan is a tool for manipulating remote power control (RPC) devices from a 
-central location. Several RPC varieties are supported natively by PowerMan and 
-Expect-like configurability simplifies the addition of new devices.</description>
-  <devel project="hardware" package="powerman"/>
-</package>

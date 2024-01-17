@@ -1,7 +1,0 @@
-<package name="perl-Apache-SessionX" project="openSUSE:Factory">
-  <title>Persistent Storage for Arbitrary Data (for Embperl)</title>
-  <description>Apache::SessionX extends Apache::Session. It was initially written to
-use Apache::Session from inside of HTML::Embperl, but is seems to be
-useful outside of Embperl as well, so here is it as standalone module.</description>
-  <devel project="devel:languages:perl" package="perl-Apache-SessionX"/>
-</package>

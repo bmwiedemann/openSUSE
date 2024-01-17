@@ -1,5 +1,0 @@
-<package name="pingtunnel" project="openSUSE:Factory">
-  <title>Reliably tunnel TCP connections over ICMP packets</title>
-  <description>Ping Tunnel is a tool for reliably tunneling TCP connections over ICMP echo request and reply packets (commonly known as ping requests and replies). It is useful for evading firewalls that, for whatever reason, prevent outgoing TCP connections, but allow in- and outgoing ICMP packets. The tunnel works by having a proxy run on a machine ping-able from the inside of the firewall, with the client running on the local machine from which TCP access is required.</description>
-  <devel project="network:utilities" package="pingtunnel"/>
-</package>

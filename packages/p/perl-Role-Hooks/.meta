@@ -1,6 +1,0 @@
-<package name="perl-Role-Hooks" project="openSUSE:Factory">
-  <title>role callbacks</title>
-  <description>This module allows a role to run a callback when it is applied to a class or to another role.</description>
-  <devel project="devel:languages:perl" package="perl-Role-Hooks"/>
-  <url>https://metacpan.org/pod/Role::Hooks</url>
-</package>

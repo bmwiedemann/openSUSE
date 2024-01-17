@@ -1,8 +1,0 @@
-<package name="python-qet_tb_generator" project="openSUSE:Factory">
-  <title>Generates terminal blocks &amp; connectors for QElectroTech</title>
-  <description>Allows to generate terminal blocks and connectors for QElectroTech
-electrical diagram software.
-
-</description>
-  <devel project="devel:languages:python" package="python-qet_tb_generator"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="python-PyGLM" project="openSUSE:Factory">
-  <title>OpenGL Mathematics library for Python</title>
-  <description>PyGLM is an OpenGL Mathematics library for Python. It mostly compatible with
-GLM and offers a variety of features for vector and matrix manipulation.
-
-</description>
-  <devel project="devel:languages:python:numeric" package="python-PyGLM"/>
-  <url>https://github.com/Zuzu-Typ/PyGLM</url>
-</package>

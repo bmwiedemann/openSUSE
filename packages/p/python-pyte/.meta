@@ -1,6 +1,0 @@
-<package name="python-pyte" project="openSUSE:Factory">
-  <title>Pyte</title>
-  <description>Simple VTXXX-compatible linux terminal emulator</description>
-  <devel project="devel:languages:python" package="python-pyte"/>
-  <url>https://github.com/selectel/pyte</url>
-</package>

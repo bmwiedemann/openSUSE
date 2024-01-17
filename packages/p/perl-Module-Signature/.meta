@@ -1,6 +1,0 @@
-<package name="perl-Module-Signature" project="openSUSE:Factory">
-  <title>Module signature file manipulation</title>
-  <description>Module::Signature adds cryptographic authentications to CPAN distributions,
-via the special SIGNATURE file.</description>
-  <devel project="devel:languages:perl" package="perl-Module-Signature"/>
-</package>

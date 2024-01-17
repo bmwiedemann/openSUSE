@@ -1,6 +1,0 @@
-<package name="perl-Test-Differences" project="openSUSE:Factory">
-  <title>Test strings and data structures and show differences if not ok</title>
-  <description>Test strings and data structures and show differences if not ok.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Differences"/>
-  <url>http://search.cpan.org/dist/Test-Differences/</url>
-</package>

@@ -1,3 +1,0 @@
-# This is not fixable look yet
-addFilter("binary-or-shlib-calls-gethostbyname")
-addFilter("missing-call-to-setgroups-before-setuid")

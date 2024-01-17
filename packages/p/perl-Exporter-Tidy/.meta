@@ -1,7 +1,0 @@
-<package name="perl-Exporter-Tidy" project="openSUSE:Factory">
-  <title>Another way of exporting symbols</title>
-  <description>This module serves as an easy, clean alternative to Exporter. Unlike
-Exporter, it is not subclassed, but it simply exports a custom import()
-into your namespace.</description>
-  <devel project="devel:languages:perl" package="perl-Exporter-Tidy"/>
-</package>

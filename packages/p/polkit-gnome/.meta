@@ -1,6 +1,0 @@
-<package name="polkit-gnome" project="openSUSE:Factory">
-  <title>PolicyKit integration for the GNOME desktop</title>
-  <description>polkit-gnome provides an authentication agent for PolicyKit
-that matches the look and feel of the GNOME desktop.</description>
-  <devel project="GNOME:Factory" package="polkit-gnome"/>
-</package>

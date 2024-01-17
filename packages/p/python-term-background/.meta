@@ -1,8 +1,0 @@
-<package name="python-term-background" project="openSUSE:Factory">
-  <title>Determine if shell has a light or dark background</title>
-  <description>A python module to determine if a shell has a light or dark background.
-
-</description>
-  <devel project="devel:languages:python" package="python-term-background"/>
-  <url>http://github.com/rocky/shell-term-background</url>
-</package>

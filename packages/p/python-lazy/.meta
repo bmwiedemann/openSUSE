@@ -1,9 +1,0 @@
-<package name="python-lazy" project="openSUSE:Factory">
-  <title>Lazy attributes for Python objects</title>
-  <description>Lazy attributes are computed attributes that are evaluated only once, the first time they are used. Subsequent uses return the results of the first call. They come handy when code should run
- * late, i.e. just before it is needed, and
- * once, i.e. not twice, in the lifetime of an object.
-
-You can think of it as deferred initialization. The possibilities are endless.</description>
-  <devel project="devel:languages:python" package="python-lazy"/>
-</package>

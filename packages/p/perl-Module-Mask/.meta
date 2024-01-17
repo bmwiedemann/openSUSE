@@ -1,8 +1,0 @@
-<package name="perl-Module-Mask" project="openSUSE:Factory">
-  <title>Pretend certain modules are not installed</title>
-  <description>Sometimes you need to test what happens when a given module is not installed. This module provides a way of temporarily hiding installed modules from perl's require mechanism. The Module::Mask object adds itself to @INC and blocks require calls to restricted modules.
-
-Module::Mask will not affect modules already loaded at time of instantiation.</description>
-  <devel project="devel:languages:perl" package="perl-Module-Mask"/>
-  <url>https://metacpan.org/dist/Module-Mask</url>
-</package>

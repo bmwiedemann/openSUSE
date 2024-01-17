@@ -1,5 +1,0 @@
-<package name="python-google-cloud-kms" project="openSUSE:Factory">
-  <title></title>
-  <description>Cloud Key Management Service (KMS) API API client library</description>
-  <devel project="devel:languages:python" package="python-google-cloud-kms"/>
-</package>

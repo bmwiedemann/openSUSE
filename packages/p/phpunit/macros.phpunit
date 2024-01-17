@@ -1,2 +1,0 @@
-# macro: default PHP CS rules to apply for this version of PHPUnit
-%php_cs_fixer_rules php_unit_namespaced,void_return,php_unit_no_expectation_annotation,php_unit_expectation

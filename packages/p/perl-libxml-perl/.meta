@@ -1,5 +1,0 @@
-<package name="perl-libxml-perl" project="openSUSE:Factory">
-  <title>Collection of Perl modules for working with XML</title>
-  <description>perl-libxml-perl is a collection of Perl modules for working with XML.</description>
-  <devel project="devel:languages:perl" package="perl-libxml-perl"/>
-</package>

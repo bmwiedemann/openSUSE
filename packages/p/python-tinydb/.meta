@@ -1,5 +1,0 @@
-<package name="python-tinydb" project="openSUSE:Factory">
-  <title></title>
-  <description>TinyDB is a tiny, document oriented database optimized for your happiness :)</description>
-  <devel project="devel:languages:python" package="python-tinydb"/>
-</package>

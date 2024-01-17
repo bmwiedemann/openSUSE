@@ -1,7 +1,0 @@
-<package name="python-slixmpp" project="openSUSE:Factory">
-  <title>Python XMPP (Jabber) Library that Implements Everything as a Plugin</title>
-  <description>slixmpp is an MIT licensed XMPP library for Python.
-The goals of the project are ease of implementation, and complete draft XEP (XMPP Extended Protocol) coverage.
-Ideally the community will be able to use this for bots, easy XEP protocolling, etc.</description>
-  <devel project="devel:languages:python" package="python-slixmpp"/>
-</package>

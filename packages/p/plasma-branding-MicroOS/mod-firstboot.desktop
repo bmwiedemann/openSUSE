@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=MicroOS Desktop FirstBoot Setup
-Comment=Sets up MicroOS Desktop Correctly On FirstBoot
-Exec=/usr/bin/mod-firstboot
-Icon=org.gnome.Terminal
-Type=Application
-Categories=Utility;System;
-Name[en_GB]=startup
-Name[en_US]=startup

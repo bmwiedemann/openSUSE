@@ -1,9 +1,0 @@
-[Unit]
-Description=Daily execution of ppc64-diag's enclosure diagnostic
-
-[Timer]
-OnCalendar=Daily
-Persistent=true
-
-[Install]
-WantedBy=timers.target

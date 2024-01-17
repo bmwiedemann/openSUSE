@@ -1,9 +1,0 @@
-<package name="ptlib" project="openSUSE:Factory">
-  <title>Portable Windows Library from Equivalence Pty. Ltd. version 2</title>
-  <description>This is a moderately large class library that was created many years
-ago as a method to produce applications that run on both Microsoft
-Windows and the X Window System. It is used for the opal project, see
-www.openh323.org for details.
-</description>
-  <devel project="network:telephony" package="ptlib"/>
-</package>

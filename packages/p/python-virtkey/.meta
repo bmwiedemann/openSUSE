@@ -1,6 +1,0 @@
-<package name="python-virtkey" project="openSUSE:Factory">
-  <title>Python extension to emulate keypresses</title>
-  <description>python-virtkey is a python extension for emulating keypresses and
-getting the keyboard geometry from the xserver.</description>
-  <devel project="devel:languages:python" package="python-virtkey"/>
-</package>

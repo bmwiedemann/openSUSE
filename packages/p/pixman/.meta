@@ -1,5 +1,0 @@
-<package name="pixman" project="openSUSE:Factory">
-  <title>Pixel manipulation library</title>
-  <description>Pixman is a pixel manipulation library for X and cairo.</description>
-  <devel project="GNOME:Factory" package="pixman"/>
-</package>

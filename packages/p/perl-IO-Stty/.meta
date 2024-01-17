@@ -1,5 +1,0 @@
-<package name="perl-IO-Stty" project="openSUSE:Factory">
-  <title>IO::Stty Perl module</title>
-  <description>This is the PERL POSIX compliant stty.</description>
-  <devel project="devel:languages:perl" package="perl-IO-Stty"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="ppsspp" project="openSUSE:Factory">
-  <title>ppsspp</title>
-  <description>PPSSPP is a PSP emulator written in C++</description>
-  <devel project="Emulators" package="ppsspp"/>
-</package>

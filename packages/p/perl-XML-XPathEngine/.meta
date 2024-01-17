@@ -1,7 +1,0 @@
-<package name="perl-XML-XPathEngine" project="openSUSE:Factory">
-  <title>Re-usable XPath engine for DOM-like trees</title>
-  <description>This module provides an XPath engine, that can be re-used by other
-module/classes that implement trees.</description>
-  <devel project="devel:languages:perl" package="perl-XML-XPathEngine"/>
-  <url>http://search.cpan.org/dist/XML-XPathEngine/</url>
-</package>
