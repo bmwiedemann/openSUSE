@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 27 07:37:06 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix building the package with
+  doxygen >=1.9.7 (gh#wxWidgets/Phoenix#2497):
+  * 0001-Support-building-with-Doxygen-1.9.7.patch
+
+-------------------------------------------------------------------
+Wed Dec 13 23:00:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Update-wxTextCtrl-OSX-overrides-since-they-re-now-do.patch
+  0001-Handle-wxGLCanvas-CreateSurface-which-is-only-availa.patch
+  to fix build failures with wx 3.2.4.
+
+-------------------------------------------------------------------
 Mon Sep 11 14:47:53 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to release 4.2.1
