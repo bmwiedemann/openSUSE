@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,11 +42,7 @@
 %global mpi_family openmpi
 %global mpi_ver 5
 %endif
-%if 0%{?suse_version} <= 1500
-%define is_leap 1
-%else
-%define is_leap 0
-%endif
+
 # Paths  ----------------------------------------------------------------------
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
 %{?with_mpi:%{!?mpi_flavor:%global mpi_flavor openmpi}}
@@ -65,7 +61,7 @@ Release:        0
 Summary:        The Adaptable IO System (ADIOS2)
 License:        Apache-2.0
 Group:          Productivity/Scientific/Other
-URL:            https://adios2.readthedocs.io/en/release/
+URL:            https://adios2.readthedocs.io/en/
 Source0:        ADIOS2-%{version}.tar.gz
 Source1:        adios2-rpmlintrc
 # https://github.com/ornladios/ADIOS2/pull/3585
@@ -81,13 +77,10 @@ BuildRequires:  libffi-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  ninja
 BuildRequires:  zlib-devel
-Requires:       libffi
-Requires:       python3
 ExcludeArch:    %{ix86}
 # mpi4py pkg (Not MPI-4)
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}-devel
-Requires:       %{mpi_flavor}
 %endif
 
 %description
@@ -106,6 +99,7 @@ This package contains all files needed to run projects that depends on the
 Summary:        The Adaptable IO System (ADIOS2) run-time libraries
 Group:          System/Libraries
 Provides:       %{name} = %{version}
+%{?mpi_flavor:Requires:       %{mpi_flavor}}
 
 %description -n %{shlib}
 ADIOS2: The Adaptable Input Output (I/O) System version 2  is an open-source
@@ -140,7 +134,6 @@ bindir=%{_bindir} sed -i "1c #!${bindir}/python3" \
       source/utils/adios2_json_pp.py
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %global __builder ninja
 export CC=gcc
 export CXX=g++
