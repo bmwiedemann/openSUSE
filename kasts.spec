@@ -18,7 +18,7 @@
 
 %bcond_without  released
 Name:           kasts
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        Kirigami-based podcast player
 License:        GPL-2.0-or-later
