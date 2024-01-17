@@ -1,7 +1,7 @@
 #
 # spec file for package apfel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,33 @@
 #
 
 
-%define soname libAPFEL0
+%define soname libAPFEL0_0_0
+# Need -ffat-lto-objects for the static lib
+%define _lto_cflags -flto=auto -ffat-lto-objects
 Name:           apfel
-Version:        3.0.6
+Version:        3.1.1
 Release:        0
 Summary:        A Probability Distribution Function Evolution Library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://apfel.hepforge.org/
 Source:         https://github.com/scarrazza/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM apfel-dont-set-default-reltype.patch badshah400@gmail.com -- Don't assume 'RELEASE' as the release type, this should be set by user
+Patch1:         apfel-dont-set-default-reltype.patch
 BuildRequires:  %{python_module LHAPDF}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  LHAPDF-devel
+BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  libboost_headers-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  swig
 Requires:       python-LHAPDF
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-
 %python_subpackages
 
 %description
@@ -45,6 +52,8 @@ evolution of parton distributions.
 %package -n %{soname}
 Summary:        A Probability Distribution Function Evolution Library
 Group:          System/Libraries
+# Problem with older naming scheme
+Conflicts:      libAPFEL0 <= 3.0.6
 
 %description -n %{soname}
 APFEL is a library to perform the combined QCD+QED DGLAP
@@ -54,7 +63,6 @@ This package provides the shared libraries for %{name}.
 
 %package -n %{name}-devel
 Summary:        Development files for Apfel, a PDF Evolution Library
-Group:          Development/Libraries/C and C++
 Requires:       %{soname} = %{version}
 Requires:       LHAPDF-devel
 Recommends:     %{name}-doc = %{version}
@@ -66,9 +74,20 @@ evolution of parton distributions.
 This package provides the source files required to develop
 applications with %{name}.
 
+%package -n %{name}-devel-static
+# We need to build and install the static lib as there is no way to
+# disable it during configuration stage and it pollutes the cmake files
+Summary:        Static development files for Apfel, a PDF Evolution library
+
+%description -n %{name}-devel-static
+APFEL is a library to perform the combined QCD+QED DGLAP
+evolution of parton distributions.
+
+This package provides the static library required to develop
+applications with %{name}.
+
 %package -n %{name}-doc
 Summary:        Documentation for APFEL, a PDF evolution library
-Group:          Documentation/Other
 
 %description -n %{name}-doc
 This package provides documentation for APFEL in PDF (Portable
@@ -79,22 +98,24 @@ library.
 %autosetup -p1
 
 %build
-%{python_expand # Necessary to run configure with all python flavors
+%{python_expand # Necessary to run configure with all $python flavors
 export PYTHON=%{_bindir}/$python
-mkdir ../{$python}_build
-cp -pr ./ ../{$python}_build
-pushd ../{$python}_build
-%configure \
-  --disable-static
-%make_build
+mkdir ../$python
+cp -pr ./ ../$python
+pushd ../$python
+%cmake \
+  -DCMAKE_RELEASE_TYPE="RelwithDebInfo" \
+  -DPython_EXECUTABLE:PATH=${PYTHON} \
+  -DAPFEL_DOWNLOAD_PDFS:BOOL=OFF
+%cmake_build
 popd
 }
 
 %install
-%{python_expand #  all python flavors as configured above
+%{python_expand #  all $python flavors as configured above
 export PYTHON=%{_bindir}/$python
-pushd ../{$python}_build
-%make_install
+pushd ../$python
+%cmake_install
 %python_clone -a %{buildroot}%{_bindir}/apfel
 popd
 }
@@ -103,7 +124,7 @@ popd
 find %{buildroot} -type f -name "*.la" -delete -print
 
 # FIX env BASED SCRIPT INTERPRETER
-sed -Ei "1{s|#\!\s*/usr/bin/env bash|#\!/bin/bash|}" %{buildroot}%{_bindir}/apfel-config
+sed -Ei "1{s|#\!\s*%{_bindir}/env bash|#\!/bin/bash|}" %{buildroot}%{_bindir}/apfel-config
 
 # REMOVE INSTALLED README, INSTALL IT USING %%doc INSTEAD
 rm -fr %{buildroot}%{_datadir}/doc/apfel/README
@@ -122,21 +143,21 @@ rm -fr %{buildroot}%{_datadir}/apfel/README
 %{_libdir}/*.so.*
 
 %files -n %{name}-devel
-%{_includedir}/APFEL/
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
-%{_bindir}/CheckAPFEL
 %{_bindir}/%{name}-config
-%{_bindir}/ListFunctions
+%{_includedir}/APFEL/
 %{_libdir}/*.so
+
+%files -n %{name}-devel-static
+%license COPYING
+%{_libdir}/*.a
+%{_datadir}/APFEL/
 
 %files %{python_files}
 %python_alternative %{_bindir}/apfel
-%{python_sitearch}/apfel.py
-%{python_sitearch}/*.so
-%pycache_only %{python_sitearch}/__pycache__/*.pyc
-%python2_only %{python_sitearch}/*.pyc
-%{python_sitearch}/APFEL-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/apfel/
+%{python_sitearch}/apfel-%{version}-py%{python_version}.egg-info
 
 %files -n %{name}-doc
 %doc doc/pdfs/manual.pdf
