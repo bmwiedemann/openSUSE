@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>584ec1fce9cfc2e212ab1bd4c0f1e1ae</srcmd5>
+    <version>0.80</version>
+    <time>1397231969</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>229572</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>584ec1fce9cfc2e212ab1bd4c0f1e1ae</srcmd5>
+    <version>0.80</version>
+    <time>1409303558</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>79ac04c060097248e0353495420d9268</srcmd5>
+    <version>0.83</version>
+    <time>1463498170</time>
+    <user>dimstar_suse</user>
+    <comment>update to v0.83 (forwarded request 395602 from develop7)</comment>
+    <requestid>395951</requestid>
+  </revision>
+</revisionlist>

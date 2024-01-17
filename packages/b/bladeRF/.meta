@@ -1,0 +1,5 @@
+<package name="bladeRF" project="openSUSE:Factory">
+  <title>bladeRF</title>
+  <description>The software for bladeRF SDR board developed by Nuand.</description>
+  <devel project="hardware:sdr" package="bladeRF"/>
+</package>

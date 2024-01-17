@@ -1,0 +1,8 @@
+<package name="python-django-guardian" project="openSUSE:Factory">
+  <title>Implementation of per object permissions for Django 1.2</title>
+  <description>django-guardian is implementation of per object permissions as
+authorization backend which is supported since Django 1.2. It won't
+work with older Django releases.</description>
+  <devel project="devel:languages:python:django" package="python-django-guardian"/>
+  <url>http://github.com/lukaszb/django-guardian</url>
+</package>

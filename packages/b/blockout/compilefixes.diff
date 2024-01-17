@@ -1,0 +1,279 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2012-03-25 16:06:07.551725021 +0200
+
+---
+ BlockOut/EditControl.cpp             |    2 +-
+ BlockOut/EditControl.h               |    2 +-
+ BlockOut/GLApp/GLApp.h               |    2 +-
+ BlockOut/GLApp/GLFont.cpp            |    2 +-
+ BlockOut/GLApp/GLSprite.cpp          |    5 ++---
+ BlockOut/GLApp/GLSprite.h            |    2 +-
+ BlockOut/Menu.h                      |    4 ++--
+ BlockOut/MenuGraphics.cpp            |    4 ++--
+ BlockOut/SetupManager.cpp            |    2 +-
+ BlockOut/SetupManager.h              |    2 +-
+ BlockOut/Types.h                     |    6 +++---
+ BlockOut/Utils.cpp                   |    6 +++---
+ ImageLib/src/jpg/jpegdecodermain.cpp |    4 ++--
+ ImageLib/src/png/hpng.c              |    7 ++-----
+ 14 files changed, 23 insertions(+), 27 deletions(-)
+
+Index: BL_SRC/BlockOut/EditControl.cpp
+===================================================================
+--- BL_SRC.orig/BlockOut/EditControl.cpp
++++ BL_SRC/BlockOut/EditControl.cpp
+@@ -30,7 +30,7 @@ void EditControl::SetDisplayLength(int l
+ 
+ // ------------------------------------------------
+ 
+-void EditControl::SetMode(char *text,BOOL edit,BYTE *keys) {
++void EditControl::SetMode(const char *text,BOOL edit,BYTE *keys) {
+ 
+   if( strlen(text)>=255 ) {
+     strncpy(editText,text,255);
+Index: BL_SRC/BlockOut/EditControl.h
+===================================================================
+--- BL_SRC.orig/BlockOut/EditControl.h
++++ BL_SRC/BlockOut/EditControl.h
+@@ -27,7 +27,7 @@ class EditControl {
+     void SetDisplayLength(int length);
+ 
+     // Set edit control mode (keys can be NULL)
+-    void SetMode(char *text,BOOL edit,BYTE *keys);
++    void SetMode(const char *text,BOOL edit,BYTE *keys);
+ 
+     // Get the mode
+     BOOL GetMode();
+Index: BL_SRC/BlockOut/GLApp/GLApp.h
+===================================================================
+--- BL_SRC.orig/BlockOut/GLApp/GLApp.h
++++ BL_SRC/BlockOut/GLApp/GLApp.h
+@@ -60,7 +60,7 @@ protected:
+ 
+     // Internal variables for the state of the app
+     BOOL      m_bWindowed;
+-    char*     m_strWindowTitle;
++    const char *m_strWindowTitle;
+     int       m_screenWidth;
+     int       m_screenHeight;
+     BOOL      m_bVSync;
+Index: BL_SRC/BlockOut/GLApp/GLFont.cpp
+===================================================================
+--- BL_SRC.orig/BlockOut/GLApp/GLFont.cpp
++++ BL_SRC/BlockOut/GLApp/GLFont.cpp
+@@ -8,7 +8,7 @@
+ #undef LoadImage
+ #include <CImage.h>
+ 
+-extern char *LID(char *fileName);
++#include "../Types.h"
+ 
+ // -------------------------------------------
+ 
+Index: BL_SRC/BlockOut/GLApp/GLSprite.cpp
+===================================================================
+--- BL_SRC.orig/BlockOut/GLApp/GLSprite.cpp
++++ BL_SRC/BlockOut/GLApp/GLSprite.cpp
+@@ -7,8 +7,7 @@
+ #include <string.h>
+ #undef LoadImage
+ #include <CImage.h>
+-
+-extern char *LID(char *fileName);
++#include "../Types.h"
+ 
+ // -------------------------------------------
+ 
+@@ -54,7 +53,7 @@ void Sprite2D::UpdateSprite(int x1,int y
+ 
+ // -------------------------------------------
+ 
+-int Sprite2D::RestoreDeviceObjects(char *diffName,char *alphaName,int scrWidth,int scrHeight) {
++int Sprite2D::RestoreDeviceObjects(const char *diffName, const char *alphaName,int scrWidth,int scrHeight) {
+ 
+   GLint  bpp;
+   GLenum format;
+Index: BL_SRC/BlockOut/GLApp/GLSprite.h
+===================================================================
+--- BL_SRC.orig/BlockOut/GLApp/GLSprite.h
++++ BL_SRC/BlockOut/GLApp/GLSprite.h
+@@ -15,7 +15,7 @@ public:
+   
+   // Initialise the sprite
+   // return 1 when success, 0 otherwise
+-  int RestoreDeviceObjects(char *diffName,char *alphaName,int srcWidth,int scrHeight);
++  int RestoreDeviceObjects(const char *diffName, const char *alphaName,int srcWidth,int scrHeight);
+ 
+   // Update sprite mapping and coordinates
+   void UpdateSprite(int x1,int y1,int x2,int y2);
+Index: BL_SRC/BlockOut/Menu.h
+===================================================================
+--- BL_SRC.orig/BlockOut/Menu.h
++++ BL_SRC/BlockOut/Menu.h
+@@ -61,8 +61,8 @@ class Menu {
+     // Menu page
+     void ToPage(MenuPage *page);
+     void ToPage(MenuPage *page,int iParam,void *wParam);
+-    void RenderText(int x,int y,BOOL selected,char *text);
+-    void RenderTitle(char *title);
++    void RenderText(int x,int y,BOOL selected, const char *text);
++    void RenderTitle(const char *title);
+ 
+     PageMainMenu mainMenuPage;
+     PageStartGame startGamePage;
+Index: BL_SRC/BlockOut/MenuGraphics.cpp
+===================================================================
+--- BL_SRC.orig/BlockOut/MenuGraphics.cpp
++++ BL_SRC/BlockOut/MenuGraphics.cpp
+@@ -438,7 +438,7 @@ void Menu::RenderChar(int x,int y,int w,
+ 
+ // ---------------------------------------------------------------------
+ 
+-void Menu::RenderTitle(char *title) {
++void Menu::RenderTitle(const char *title) {
+ 
+   int  lgth = (int)strlen(title);
+   int  nwFont = fround((float)wFont*1.1f);
+@@ -454,7 +454,7 @@ void Menu::RenderTitle(char *title) {
+ 
+ // ---------------------------------------------------------------------
+ 
+-void Menu::RenderText(int x,int y,BOOL selected,char *text) {
++void Menu::RenderText(int x,int y,BOOL selected, const char *text) {
+ 
+   float startLine   = 0.515f;
+   float startColumn = 0.15f;
+Index: BL_SRC/BlockOut/SetupManager.cpp
+===================================================================
+--- BL_SRC.orig/BlockOut/SetupManager.cpp
++++ BL_SRC/BlockOut/SetupManager.cpp
+@@ -364,7 +364,7 @@ int SetupManager::GetTimeout() {
+ 
+ // ------------------------------------------------
+ 
+-char *SetupManager::GetName() {
++const char *SetupManager::GetName() {
+ 
+   static char ret[32];
+   strcpy(ret,"");
+Index: BL_SRC/BlockOut/SetupManager.h
+===================================================================
+--- BL_SRC.orig/BlockOut/SetupManager.h
++++ BL_SRC/BlockOut/SetupManager.h
+@@ -67,7 +67,7 @@ class SetupManager {
+     float GetAnimationTime(); /* in seconds */
+ 
+     // Names
+-    char *GetName();
++    const char *GetName();
+     const char *GetBlockSetName();
+ 
+     // Sound
+Index: BL_SRC/BlockOut/Types.h
+===================================================================
+--- BL_SRC.orig/BlockOut/Types.h
++++ BL_SRC/BlockOut/Types.h
+@@ -203,15 +203,15 @@ extern int fround(float x);
+ extern char *FormatTime(float seconds);
+ extern char *FormatDate(uint32 time);
+ extern char *FormatDateShort(uint32 time);
+-extern int CreateTexture(int width,int height,char *imgName,GLuint *hmap);
++extern int CreateTexture(int width,int height,const char *imgName,GLuint *hmap);
+ extern char GetChar(BYTE *keys);
+ #ifndef WINDOWS
+ extern void ZeroMemory(void *buff,int size);
+ #endif
+ extern BOOL DirExists(char *dirname);
+ extern BOOL CheckEnv();
+-extern char *LID(char *fileName);
+-extern char *LHD(char *fileName);
++extern char *LID(const char *fileName);
++extern char *LHD(const char *fileName);
+ 
+ 
+ #endif /* TYPESH */
+Index: BL_SRC/BlockOut/Utils.cpp
+===================================================================
+--- BL_SRC.orig/BlockOut/Utils.cpp
++++ BL_SRC/BlockOut/Utils.cpp
+@@ -238,7 +238,7 @@ BOOL CheckEnv() {
+ // Name: LID()
+ // Desc: Locate file in the installation directory
+ //-----------------------------------------------------------------------------
+-char *LID(char *fileName) {
++char *LID(const char *fileName) {
+ 
+ #ifdef WINDOWS
+   return fileName;
+@@ -254,7 +254,7 @@ char *LID(char *fileName) {
+ // Name: LHD()
+ // Desc: Locate file in the home directory
+ //-----------------------------------------------------------------------------
+-char *LHD(char *fileName) {
++char *LHD(const char *fileName) {
+ 
+   static char ret[512];
+ 
+@@ -278,7 +278,7 @@ char *LHD(char *fileName) {
+ // Name: CreateTexture()
+ // Desc: Create a texture (no alpha)
+ //-----------------------------------------------------------------------------
+-int CreateTexture(int width,int height,char *imgName,GLuint *hmap) {
++int CreateTexture(int width,int height, const char *imgName,GLuint *hmap) {
+ 
+   *hmap = 0;
+   CImage img;
+Index: BL_SRC/ImageLib/src/jpg/jpegdecodermain.cpp
+===================================================================
+--- BL_SRC.orig/ImageLib/src/jpg/jpegdecodermain.cpp
++++ BL_SRC/ImageLib/src/jpg/jpegdecodermain.cpp
+@@ -54,7 +54,7 @@ int LoadJpegImage(JPEG_IMAGE *d) {
+   Pjpeg_decoder_file_stream Pinput_stream = new jpeg_decoder_file_stream();
+ 
+   if( !Pinput_stream ) {
+-    sprintf(JpegErrorMessage,"Error: Unable to allocate memory for stream object!\n", Psrc_filename);
++    sprintf(JpegErrorMessage,"Error: Unable to allocate memory for stream object! %s\n", Psrc_filename);
+     return (FALSE);    
+   }
+ 
+@@ -69,7 +69,7 @@ int LoadJpegImage(JPEG_IMAGE *d) {
+ 
+   if( !Pd ) {
+     delete Pinput_stream;
+-    sprintf(JpegErrorMessage,"Error: Unable to allocate memory for decoder object!\n", Psrc_filename);
++    sprintf(JpegErrorMessage,"Error: Unable to allocate memory for decoder object! %s\n", Psrc_filename);
+     return (FALSE);    
+   }
+ 
+Index: BL_SRC/ImageLib/src/png/hpng.c
+===================================================================
+--- BL_SRC.orig/ImageLib/src/png/hpng.c
++++ BL_SRC/ImageLib/src/png/hpng.c
+@@ -1,6 +1,7 @@
+ #include <malloc.h>
+ #include <math.h>
+ #include <png.h>
++#include <string.h>
+ #include "hpng.h"
+ 
+ char PngErrorMessage[1024];
+@@ -45,10 +46,6 @@ int LoadPngImage(PNG_IMAGE *d) {
+ 	// ---------------- Error handling
+ 
+ 	png_set_error_fn(png,NULL,my_png_error,NULL);
+-  if (setjmp(png->jmpbuf)) {
+- 	  png_destroy_read_struct(&png, &info, &endinfo);
+-	  return 0;
+-	}
+ 
+ 	// ----------------- Read the image
+ 
+@@ -154,7 +151,7 @@ char *WritePngImage(char *file_name,unsi
+    {
+     	sprintf(PngErrorMessage,"png_create_info_struct() failed");
+       fclose(fp);
+-      png_destroy_write_struct(&png_ptr,  png_infopp_NULL);
++      png_destroy_write_struct(&png_ptr, NULL);
+       return PngErrorMessage;
+    }
+ 
