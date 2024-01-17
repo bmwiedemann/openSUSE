@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 17 09:14:04 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to v.1.5.0:
+  * Bind to output manager v3 if v4 isn't supported
+  * Wait for output configuration events when handling IPC calls
+  * Fix missing IPC reply on config reload error
+  * Add support for custom modes
+    Implements: https://todo.sr.ht/~emersion/kanshi/80
+
+-------------------------------------------------------------------
 Fri Jun 30 22:53:04 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Update to v.1.4.0:
