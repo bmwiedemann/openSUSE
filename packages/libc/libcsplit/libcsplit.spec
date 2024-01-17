@@ -1,7 +1,7 @@
 #
 # spec file for package libcsplit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libcsplit
 %define lname	libcsplit1
-Version:        20220109
+Version:        20240110
 Release:        0
 Summary:        Library for C split string functions
 License:        LGPL-3.0-or-later

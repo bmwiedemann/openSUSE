@@ -141,4 +141,12 @@ Part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>delete system-libs.patch</comment>
     <requestid>1038451</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8617639c2d8591ea468eb125e3a8af59</srcmd5>
+    <version>20240110</version>
+    <time>1705526278</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1139409</requestid>
+  </revision>
 </revisionlist>
