@@ -1,7 +1,7 @@
 #
 # spec file for package python-masakariclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %global oldpython python
 Name:           python-masakariclient
-Version:        7.1.0
+Version:        8.3.0
 Release:        0
 Epoch:          0
 Summary:        Python API and CLI for OpenStack Masakari
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-masakariclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-7.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-8.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-ddt
@@ -82,8 +82,8 @@ This package contains the documentation.
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=7.1.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=7.1.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=8.3.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=8.3.0 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
@@ -92,7 +92,7 @@ rm -r doc/build/html/.{doctrees,buildinfo}
 install -p -D -m 644 doc/build/man/python-masakariclient.1 %{buildroot}%{_mandir}/man1/python-masakariclient.1
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-masakariclient
 %license LICENSE
