@@ -17,7 +17,7 @@
 
 
 Name:           python-gwcs
-Version:        0.18.3
+Version:        0.20.0
 Release:        0
 Summary:        Generalized World Coordinate System
 License:        BSD-3-Clause
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module asdf >= 2.8.1}
 BuildRequires:  %{python_module asdf-astropy >= 0.2.0}
 BuildRequires:  %{python_module asdf_wcs_schemas}
 BuildRequires:  %{python_module astropy >= 5.1}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy}

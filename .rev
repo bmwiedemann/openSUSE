@@ -104,4 +104,41 @@
     @zacharyburnett in #432 (forwarded request 1058262 from bnavigator)</comment>
     <requestid>1058263</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1e6ccf6be7e36fa2bcdd5ba0b8a3a763</srcmd5>
+    <version>0.20.0</version>
+    <time>1702071146</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.20.0:
+  * Replace ``pkg_resources`` with ``importlib.metadata``. [#478]
+  * Serialize and deserialize ``pixel_shape`` with asdf. [#480]
+  * Synchronize ``array_shape`` and ``pixel_shape`` attributes of
+    WCS objects. [#439]
+  * Fix failures and warnings with numpy 2.0. [#472]
+  * Remove deprecated old ``bounding_box``. The new
+    implementation is released with
+  * Refactor ``CoordinateFrame.axis_physical_types``. [#459]
+  * ``StokesFrame`` uses now ``astropy.coordinates.StokesCoord``.
+  * Dropped support for Python 3.8. [#451]
+  * Fixed a call to ``astropy.coordinates`` in
+    ``wcstools.wcs_from_points``. [#448]
+  * Code and docstrings clean up. [#460]
+  * Register all available asdf extension manifests from ``asdf-
+    wcs-schemas``
+
+  * Added an option to to_fits_sip() to be able to specify the
+  * Added support for providing custom range of degrees in
+  * Fix a formula for estimating crpix in to_fits_sip() so that
+  * Allow sub-pixel sampling of the WCS model when computing SIP
+  * Fixed a bug in to_fits_sip due to which inv_degree was
+  * Added insert_frame method to modify the pipeline of a
+  * Added to_fits_tab method to generate FITS header and binary
+  * Added in_image function for testing whether a point in world
+    coordinates maps back to the domain of definition of the
+  * Updated versions of schemas for gwcs objects based on
+    latest versions of transform schemas in asdf-standard.
+  * Added a wcs.Step class to allow serialization to ASDF to
+  * WCS.pipeline now is a list of Step instances instead of</comment>
+    <requestid>1131736</requestid>
+  </revision>
 </revisionlist>
