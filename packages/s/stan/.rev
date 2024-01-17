@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="45">
+    <srcmd5>ba2bda98a868849633e301d77d4678db</srcmd5>
+    <version>0.4</version>
+    <time>1168904281</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="149">
+    <srcmd5>1926ce31c425283d58e60f97f7ec66b3</srcmd5>
+    <version>0.4</version>
+    <time>1210030990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="180">
+    <srcmd5>1926ce31c425283d58e60f97f7ec66b3</srcmd5>
+    <version>0.4</version>
+    <time>1210030990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="181">
+    <srcmd5>49ca84cbb012253f21c5ce2a18f3fb28</srcmd5>
+    <version>0.4</version>
+    <time>1245340766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="183">
+    <srcmd5>49ca84cbb012253f21c5ce2a18f3fb28</srcmd5>
+    <version>0.4</version>
+    <time>1245340766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="184">
+    <srcmd5>3e5412349f2a8891a5966796eda75e33</srcmd5>
+    <version>0.4</version>
+    <time>1268926229</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="186">
+    <srcmd5>3e5412349f2a8891a5966796eda75e33</srcmd5>
+    <version>0.4</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="187">
+    <srcmd5>3e5412349f2a8891a5966796eda75e33</srcmd5>
+    <version>0.4</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="190">
+    <srcmd5>3e5412349f2a8891a5966796eda75e33</srcmd5>
+    <version>0.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="192">
+    <srcmd5>3e5412349f2a8891a5966796eda75e33</srcmd5>
+    <version>0.4</version>
+    <time>1319182488</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="193">
+    <srcmd5>3e76eded80cbd823dd5d93113a4a8ddf</srcmd5>
+    <version>0.4</version>
+    <time>1323113610</time>
+    <user>coolo</user>
+    <comment>- bnc#734459 - the license has one clause more than 3
+
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>94991</requestid>
+  </revision>
+  <revision rev="12" vrev="194">
+    <srcmd5>9050e9255c372449bf48eb4684d16a3b</srcmd5>
+    <version>0.4</version>
+    <time>1323194750</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>907e9defdcec4a742248a6b679376fbd</srcmd5>
+    <version>0.4.1</version>
+    <time>1338528251</time>
+    <user>coolo</user>
+    <comment>- update to 0.4.1 (Minor documentation fixes) (forwarded request 123079 from rudi_m)</comment>
+    <requestid>123147</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>907e9defdcec4a742248a6b679376fbd</srcmd5>
+    <version>0.4.1</version>
+    <time>1340184238</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>907e9defdcec4a742248a6b679376fbd</srcmd5>
+    <version>0.4.1</version>
+    <time>1359110437</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>907e9defdcec4a742248a6b679376fbd</srcmd5>
+    <version>0.4.1</version>
+    <time>1379664731</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>907e9defdcec4a742248a6b679376fbd</srcmd5>
+    <version>0.4.1</version>
+    <time>1409303414</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>4e6b0a989cf2d0f56c45a138790411fb</srcmd5>
+    <version>0.4.1</version>
+    <time>1462178655</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392473</requestid>
+  </revision>
+</revisionlist>

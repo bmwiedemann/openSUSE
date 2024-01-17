@@ -1,0 +1,145 @@
+diff -Nur cmt_1.17/doc/adding_plugins.html new/doc/adding_plugins.html
+--- cmt_1.17/doc/adding_plugins.html	2019-01-03 16:08:22.000000000 +0100
++++ new/doc/adding_plugins.html	2021-05-17 15:17:15.573353921 +0200
+@@ -67,7 +67,6 @@
+ <UL>
+   <LI><A HREF="overview.html">Overview</A></LI>
+   <LI><A HREF="http://www.ladspa.org/download/index.html">Download</A></LI>
+-  <LI><A HREF="installation.html">Installation</A></LI>
+   <LI><A HREF="license.html">License (LGPL)</A></LI>
+   <LI><A HREF="plugins.html">Plugins in the Library</A></LI>
+   <LI><A HREF="adding_plugins.html">Adding Plugins to the Library</A></LI>
+diff -Nur cmt_1.17/doc/bugs.html new/doc/bugs.html
+--- cmt_1.17/doc/bugs.html	2019-01-03 16:08:22.000000000 +0100
++++ new/doc/bugs.html	2021-05-17 15:16:42.721102891 +0200
+@@ -38,7 +38,6 @@
+ <UL>
+   <LI><A HREF="overview.html">Overview</A></LI>
+   <LI><A HREF="http://www.ladspa.org/download/index.html">Download</A></LI>
+-  <LI><A HREF="installation.html">Installation</A></LI>
+   <LI><A HREF="license.html">License (LGPL)</A></LI>
+   <LI><A HREF="plugins.html">Plugins in the Library</A></LI>
+   <LI><A HREF="adding_plugins.html">Adding Plugins to the Library</A></LI>
+diff -Nur cmt_1.17/doc/changes.html new/doc/changes.html
+--- cmt_1.17/doc/changes.html	2019-01-03 16:08:22.000000000 +0100
++++ new/doc/changes.html	2021-05-17 15:16:58.493223408 +0200
+@@ -194,7 +194,6 @@
+ <UL>
+   <LI><A HREF="overview.html">Overview</A></LI>
+   <LI><A HREF="http://www.ladspa.org/download/index.html">Download</A></LI>
+-  <LI><A HREF="installation.html">Installation</A></LI>
+   <LI><A HREF="license.html">License (LGPL)</A></LI>
+   <LI><A HREF="plugins.html">Plugins in the Library</A></LI>
+   <LI><A HREF="adding_plugins.html">Adding Plugins to the Library</A></LI>
+diff -Nur cmt_1.17/doc/index.html new/doc/index.html
+--- cmt_1.17/doc/index.html	2019-01-03 16:08:22.000000000 +0100
++++ new/doc/index.html	2021-05-17 15:16:24.868966479 +0200
+@@ -16,7 +16,6 @@
+ <UL>
+   <LI><A HREF="overview.html">Overview</A></LI>
+   <LI><A HREF="http://www.ladspa.org/download/index.html">Download</A></LI>
+-  <LI><A HREF="installation.html">Installation</A></LI>
+   <LI><A HREF="license.html">License (LGPL)</A></LI>
+   <LI><A HREF="plugins.html">Plugins in the Library</A></LI>
+   <LI><A HREF="adding_plugins.html">Adding Plugins to the Library</A></LI>
+diff -Nur cmt_1.17/doc/installation.html new/doc/installation.html
+--- cmt_1.17/doc/installation.html	2019-01-03 16:08:22.000000000 +0100
++++ new/doc/installation.html	1970-01-01 01:00:00.000000000 +0100
+@@ -1,64 +0,0 @@
+-<HTML>
+-  <HEAD>
+-    <TITLE>CMT Documentation</TITLE>
+-    <META NAME="DESCRIPTION"
+-          CONTENT="CMT Documentation">
+-  </HEAD>
+-  <BODY BGCOLOR=#FFFFFF>
+-    
+-    <CENTER><IMG BORDER=0 SRC="/images/top.jpg"></CENTER>
+-
+-    <HR/>
+-
+-
+-<H1>CMT Installation</H1>
+-
+-<P>To build the plugin library, enter the <CODE>src/</CODE> directory
+-  and run <CODE>make</CODE>. The makefile expects to find the
+-  <CODE>ladspa.h</CODE> header file in your include path or
+-  <CODE>/usr/local/include/</CODE>. If you do not have this file it
+-  can be downloaded as part of the LADSPA SDK
+-  from <A HREF="http://www.ladspa.org/download/index.html">
+-  http://www.ladspa.org/download/index.html</A>.</P>
+-
+-<P>Running <CODE>make</CODE> will generate the CMT LADSPA plugin
+-  library (<CODE>cmt.so</CODE>) in the <CODE>plugins/</CODE>
+-  directory. This can be moved to an appropriate location depending on
+-  the application you are using. Running <CODE>make install</CODE>
+-  from the <CODE>src/</CODE> directory as root will install to
+-  <CODE>/usr/lib/ladspa/</CODE> which is on the search path
+-  recommended for hosts looking for plugin libraries. Some
+-  applications may not search this directory automatically.</P>
+-
+-
+-<HR/>
+-
+-<H1>CMT Index</H1>
+-
+-<UL>
+-  <LI><A HREF="overview.html">Overview</A></LI>
+-  <LI><A HREF="http://www.ladspa.org/download/index.html">Download</A></LI>
+-  <LI><A HREF="installation.html">Installation</A></LI>
+-  <LI><A HREF="license.html">License (LGPL)</A></LI>
+-  <LI><A HREF="plugins.html">Plugins in the Library</A></LI>
+-  <LI><A HREF="adding_plugins.html">Adding Plugins to the Library</A></LI>
+-  <LI><A HREF="changes.html">Change History</A></LI>
+-  <LI><A HREF="bugs.html">Bugs</A></LI>
+-</UL>
+-
+-<H2>Other Links</H2>
+-
+-<UL>
+-  <LI>
+-    The <A HREF="http://www.ladspa.org/ladspa_sdk/overview.html">LADSPA
+-      Software Development Kit</A>
+-  </LI>
+-</UL>
+-
+-
+-    <HR/>
+-
+-    <CENTER><IMG BORDER=0 SRC="/images/base.jpg"></CENTER>
+-
+-  </BODY>
+-</HTML>
+diff -Nur cmt_1.17/doc/license.html new/doc/license.html
+--- cmt_1.17/doc/license.html	2019-01-03 16:08:22.000000000 +0100
++++ new/doc/license.html	2021-05-17 15:17:10.153312505 +0200
+@@ -35,7 +35,6 @@
+ <UL>
+   <LI><A HREF="overview.html">Overview</A></LI>
+   <LI><A HREF="http://www.ladspa.org/download/index.html">Download</A></LI>
+-  <LI><A HREF="installation.html">Installation</A></LI>
+   <LI><A HREF="license.html">License (LGPL)</A></LI>
+   <LI><A HREF="plugins.html">Plugins in the Library</A></LI>
+   <LI><A HREF="adding_plugins.html">Adding Plugins to the Library</A></LI>
+diff -Nur cmt_1.17/doc/overview.html new/doc/overview.html
+--- cmt_1.17/doc/overview.html	2019-01-03 16:08:22.000000000 +0100
++++ new/doc/overview.html	2021-05-17 15:16:51.177167504 +0200
+@@ -30,7 +30,6 @@
+ <UL>
+   <LI><A HREF="overview.html">Overview</A></LI>
+   <LI><A HREF="http://www.ladspa.org/download/index.html">Download</A></LI>
+-  <LI><A HREF="installation.html">Installation</A></LI>
+   <LI><A HREF="license.html">License (LGPL)</A></LI>
+   <LI><A HREF="plugins.html">Plugins in the Library</A></LI>
+   <LI><A HREF="adding_plugins.html">Adding Plugins to the Library</A></LI>
+diff -Nur cmt_1.17/doc/plugins.html new/doc/plugins.html
+--- cmt_1.17/doc/plugins.html	2019-01-03 16:08:22.000000000 +0100
++++ new/doc/plugins.html	2021-05-17 15:17:04.937272648 +0200
+@@ -496,7 +496,6 @@
+ <UL>
+   <LI><A HREF="overview.html">Overview</A></LI>
+   <LI><A HREF="http://www.ladspa.org/download/index.html">Download</A></LI>
+-  <LI><A HREF="installation.html">Installation</A></LI>
+   <LI><A HREF="license.html">License (LGPL)</A></LI>
+   <LI><A HREF="plugins.html">Plugins in the Library</A></LI>
+   <LI><A HREF="adding_plugins.html">Adding Plugins to the Library</A></LI>

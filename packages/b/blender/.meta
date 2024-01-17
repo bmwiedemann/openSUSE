@@ -1,0 +1,21 @@
+<package name="blender" project="openSUSE:Factory">
+  <title>A 3D Modelling And Rendering Package</title>
+  <description>Blender is a 3D modelling and rendering package. It is the in-house
+software of a high quality animation studio, Blender has proven to
+be an extremely fast and versatile design instrument. The software
+has a personal touch, offering a unique approach to the world of
+Three Dimensions. Use Blender to create TV commercials, to make
+technical visualizations, business graphics, to do some morphing,
+or design user interfaces. You can easy build and manage complex
+environments. The renderer is versatile and extremely fast. All
+basic animation principles (curves &amp; keys) are well implemented.It
+includes tools for modeling, sculpting, texturing (painting,
+node-based shader materials, or UV mapped), UV mapping, rigging and
+constraints, weight painting, particle systems, simulation (fluids,
+physics, and soft body dynamics and an external crowd simulator),
+rendering, node-based compositing, and non linear video editing,
+as well as an integrated game engine for real-time interactive 3D
+and game creation and playback with cross-platform compatibility.
+http://www.blender.org</description>
+  <devel project="graphics" package="blender"/>
+</package>

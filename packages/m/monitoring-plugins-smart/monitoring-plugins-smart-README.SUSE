@@ -1,0 +1,34 @@
+Two notes about the plugin and the security:
+
+1) Apparmor profile
+
+If you enable Apparmor on your machine, there is a special apparmor 
+profile file:
+
+ /etc/apparmor.d/usr.lib.nagios.plugins.check_smart
+
+that tries to encapsulate the script. But as there is currently no 
+special Apparmor profile for 'sudo' calls, once someone is able to 
+edit the script itself, he will be able to compromise your system 
+completely. But as the script is installed with ownership root:root 
+and permissions 755, it might already be a problem if someone is able
+to edit this script...
+
+2) sudo rights
+
+The check plugin 'check_smart' uses sudo to call the smartctl command.
+
+In openSUSE 11.4 and beyond, there is a special file:
+
+ /etc/sudoers.d/monitoring-plugins-smart
+
+that contain the needed entry for sudo, so there is no need for manual 
+adaptions.
+
+If you run this script on older distributions (als SLES 11 and SLES 10 
+is 'old' here as they contain an older sudo), you need to add a line 
+like the following one to your /etc/sudoers file (via 'visudo'):
+
+ nagios        ALL=(root) NOPASSWD: /usr/sbin/smartctl
+
+

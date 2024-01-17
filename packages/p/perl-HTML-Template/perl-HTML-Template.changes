@@ -1,0 +1,180 @@
+-------------------------------------------------------------------
+Fri May 19 05:48:47 UTC 2017 - coolo@suse.com
+
+- updated to 2.97
+   see /usr/share/doc/packages/perl-HTML-Template/Changes
+
+  2.97 Thu May 18 2017
+      - Change internal module name HTML::Template::DEFAULT to
+        HTML::Template::DEF to avoid conflict with
+        HTML::Template::Default. [Sam Tregar]
+  
+  2.96 Thu May 18 2017
+      - Fixed typos in documentation [David Steinbrunner, Steve Kemp]
+      - Added CGI.pm as a dependency, needed now that it's no longer in core.
+        [Martin McGrath, Steve Bertrand]
+
+-------------------------------------------------------------------
+Thu Aug 27 14:32:29 UTC 2015 - bwiedemann@suse.com
+
+- Require CGI as it is no more part of base perl-5.22
+
+-------------------------------------------------------------------
+Tue Nov 26 07:35:30 UTC 2013 - coolo@suse.com
+
+- updated to 2.95
+    - Added support for "none" for default_escape [Mark Stosberg]
+    - Escape unicode new-line characters in JS escape [Michael Peters]
+
+-------------------------------------------------------------------
+Wed Jun  5 07:23:01 UTC 2013 - coolo@suse.com
+
+- updated to 2.94
+     - Fixed bug where options were bleeding over into subsequent calls to new()
+       [Michael Peters]
+ 
+     - Feature: Added config() method to make setting global defaults
+       easy so that each call to new() has less boiler plate. [Michael
+       Peters]
+ 
+     - Bug Fix: t/05-force_untaint.t now passes when run with prove
+       [Michael Peters]
+ 
+     - Bug Fix: die_on_bad_params now controls whether we die if tmpl_vars
+       reuse names from tmpl_loops (which can be useful in some situations)
+       [Michael Peters]
+ 
+    - Feature: RT #18901 - Added new utf8 option to make it really simple
+      to use UTF-8 encoded templates [Michael Peters]
+ 
+    - Feature: RT #30586 - Added new open_mode option to allow for
+      Perl IO layers to interact when using open() on the template files
+      [moritz@faui2k3.org and Michael Peters]
+ 
+    - Feature: RT #38189 - Allow clean XML style tags "<tmpl_var foo />"
+      to be used as well. [allard@byte.nl]
+ 
+    - Feature: RT #46285 - Added support for lazily-evaluated coderefs
+      for TMPL_LOOPs. [Justin DeVuyst and Michael Peters]
+ 
+    - Feature: RT #64797 - Added new option die_on_missing_include (defaults
+      to true) that allows users to turn off the behavior of dieing when an 
+      include can't be found [Zdenek Styblik and Michael Peters]
+ 
+    - Feature: Add new cache_lazy_vars option so that the values from coderefs
+      used for TMPL_VARs can be cached and the coderef not run multiple times 
+      [Michael Peters]
+ 
+    - Feature: Add new cache_lazy_loops option so that the values from coderefs
+      used for TMPL_LOOPs can be cached and the coderef not run multiple times 
+      [Michael Peters]
+ 
+    - Feature: Added __even__, __outer__ and __index__ loop context vars. 
+      [Michael Peters]
+ 
+    - Bug Fix: RT #26456 - force_untaint can't work in Perl < 5.8.0
+      [admin@photoresearchers.com]
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:41 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:19 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:11 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:40 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Jan 30 10:32:14 CET 2007 - anicka@suse.cz
+
+- update to 2.9
+  * the new force_untaint option makes sure you do not pass tainted 
+    values to param()
+  * Added ESCAPE=NONE as a synonym for ESCAPE=0.  Fixed
+    both to work with default_escape.
+  * DEFAULT didn't work with URL and JS escaping.
+  * Long-standing bug where variables set in a loop weren't
+    available inside inner loops under global_vars if the variable
+    wasn't actually used in the outer loop.
+  * Changed references to CVS in the docs to Subversion now that
+    the switch is complete.
+  * Tests fixed.
+ 
+-------------------------------------------------------------------
+Wed Jan 25 21:39:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan  6 12:39:02 CET 2006 - anicka@suse.cz
+
+- update to 2.8 
+
+-------------------------------------------------------------------
+Wed Sep 28 22:13:08 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Mon Aug  1 14:04:42 CEST 2005 - cthiel@suse.de
+
+- update to version 2.7
+
+-------------------------------------------------------------------
+Fri Aug 22 14:56:11 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 14 16:09:43 CEST 2003 - freitag@suse.de
+
+- cleaned up specfile filelist to install to vendor dirs 
+
+-------------------------------------------------------------------
+Sun Jun 22 22:11:27 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Mon May 19 14:13:40 CEST 2003 - freitag@suse.de
+
+- update to version 2.6 with bugfixes and some new features (see
+  Changes file in package), removed perllocal.pod off the build
+  system. 
+
+-------------------------------------------------------------------
+Thu Aug  8 18:43:35 CEST 2002 - mls@suse.de
+
+- use sitearch macro
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Tue May 28 13:19:15 CEST 2002 - freitag@suse.de
+
+- update to version 2.5 - mostly bugfixes. 
+
+-------------------------------------------------------------------
+Fri Jun  8 11:44:08 CEST 2001 - freitag@suse.de
+
+- new package with version 2.2
+

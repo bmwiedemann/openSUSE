@@ -1,0 +1,5 @@
+<package name="compton-conf" project="openSUSE:Factory">
+  <title>X composite manager configuration (for compton)</title>
+  <description>X composite manager configuration (for compton)</description>
+  <devel project="X11:LXQt" package="compton-conf"/>
+</package>

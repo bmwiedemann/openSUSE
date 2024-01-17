@@ -1,0 +1,8 @@
+<package name="genromfs" project="openSUSE:Factory">
+  <title>Utility for Creating romfs File Systems</title>
+  <description>Genromfs is a tool for creating romfs file systems, which are
+lightweight, read-only file systems supported by the Linux kernel.
+Romfs file systems are mainly used for the initial RAM disks used
+during installation.</description>
+  <devel project="Base:System" package="genromfs"/>
+</package>

@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9793522f37c7eadd938d6388f39f226</srcmd5>
+    <version>0.2.0</version>
+    <time>1535705204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632162</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>780a4dcc9663175f5ac2d1b7ccf26bd0</srcmd5>
+    <version>1.0.0</version>
+    <time>1566894441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726269</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5dc1396b38fb9cad4805d3f1515dda19</srcmd5>
+    <version>1.0.0</version>
+    <time>1569234746</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patch 0002-Fix-README.md-has-unicode.patch
+  * wrong encoding is used when opening README.md in setup.py (forwarded request 731646 from scarabeus_iv)</comment>
+    <requestid>731648</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d202c41306f8d886d10e309c2d88d688</srcmd5>
+    <version>1.0.1</version>
+    <time>1579195355</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * Permit all allowed values of codec errors (see #86)
+  * BUGFIX: READEME.md has UTF-8 characters, setup.py will fail on systems where the locale is not UTF-8. (see #89)
+- Drop merged patch 0002-Fix-README.md-has-unicode.patch</comment>
+    <requestid>764900</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1fbad5c5b782c7e4e6bbd7707ad84fcd</srcmd5>
+    <version>1.1.0</version>
+    <time>1614792941</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876522</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>25391c4a92af2ab7cf1329b01dd8a85b</srcmd5>
+    <version>1.1.0</version>
+    <time>1641203367</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bump_hiredis_0.14.1.patch to allow using more recent (and
+  without some CVEs) version of hiredis.
+  * BUGFIX: READEME.md has UTF-8 characters, setup.py will fail on
+    systems where the locale is not UTF-8. (see #89)</comment>
+    <requestid>943349</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0f7a4e9327dd958e2ce24ee6553e7048</srcmd5>
+    <version>2.0.0</version>
+    <time>1642371505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946784</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6b68a316fb36f07ebeff2d1f06f9ca56</srcmd5>
+    <version>2.2.2</version>
+    <time>1679182350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.2:
+  - Reverting gcc -BSymbolic due to symbol collisions
+  - Add pack_command to support writing via hiredis-py
+  - Fixing broken windows builds on python &lt; 3.8
+  - Fix url in Issue tracker
+  - Restores publishing of source distribution
+  - Supporting hiredis 1.1.0
+  - Modernizing: Restoring CI, Moving to pytest
+  - Adding LICENSE to Repository
+  - Python 3.11 trove, and links back to the project
+  - Integrating release drafter
+  - Implement pack_command that serializes redis-py command to
+    the RESP bytes object.
+- Add 159-sdsalloc-to-alloc.patch (gh#redis/hiredis-py#158),
+  which replaces use of sdsalloc with plain alloc.
+</comment>
+    <requestid>1072863</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f1fdec860790c3477d6090d4f8017840</srcmd5>
+    <version>2.2.2</version>
+    <time>1679239013</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace 0001-Use-system-libhiredis.patch with
+  the upstream provided (gh#redis/hiredis-py!161)
+  161-use-system-hiredis.patch for proper use of the system
+  hiredis library.</comment>
+    <requestid>1072918</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a214abbd97446e1ac5b1702b680dd7a4</srcmd5>
+    <version>2.2.2</version>
+    <time>1686506174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092289</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>798b3d00f54e7337f1f8511083a2d913</srcmd5>
+    <version>2.3.2</version>
+    <time>1703198308</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.2:
+  * Added Python 3.12 to test matrix and classifiers (#174)
+  * Linking to Redis learning resources (#173)
+  * Updating client license to clear, MIT (#170)
+  * Integrating spellcheck into CI (#169)
+  * hiredis 1.2.0 support, versioning as 2.3.0 (#168)
+  * Fix including tests in sdist (#166)
+  * Use absolute imports and remove __init__.py from tests.
+  * Implement garbage collection support in Reader (#162) (#163)
+
+  * wrong encoding is used when opening README.md in setup.py
+  * (BREAKING CHANGE) Add ability to control how unicode decoding</comment>
+    <requestid>1134334</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4d0b41d241b4c6b6781dc53feb40be14</srcmd5>
+    <version>2.3.2</version>
+    <time>1704491962</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136311</requestid>
+  </revision>
+</revisionlist>

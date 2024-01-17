@@ -1,0 +1,7 @@
+<package name="lcurse" project="openSUSE:Factory">
+  <title>lcurse</title>
+  <description>Python script to have a &quot;curse&quot; compatible client for linux.
+
+In this context curse refers to the curse.com addon database for World of Warcraft.</description>
+  <devel project="games:tools" package="lcurse"/>
+</package>

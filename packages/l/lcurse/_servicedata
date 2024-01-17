@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/ephraim/lcurse.git</param>
+    <param name="changesrevision">9929379b3b9189f98604a76028a672aa97dbd4ae</param>
+  </service>
+</servicedata>

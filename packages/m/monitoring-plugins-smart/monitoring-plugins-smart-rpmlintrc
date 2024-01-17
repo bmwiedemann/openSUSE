@@ -1,0 +1,3 @@
+# the comment is used to have the package name in a comment for the sudo script
+addFilter("macro-in-comment");
+

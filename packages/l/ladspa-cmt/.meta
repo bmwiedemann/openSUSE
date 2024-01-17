@@ -1,0 +1,5 @@
+<package name="ladspa-cmt" project="openSUSE:Factory">
+  <title>LADSPA CMT plugins</title>
+  <description></description>
+  <devel project="multimedia:libs" package="ladspa-cmt"/>
+</package>

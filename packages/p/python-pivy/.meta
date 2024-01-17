@@ -1,0 +1,19 @@
+<package name="python-pivy" project="openSUSE:Factory">
+  <title>Coin Binding for Python</title>
+  <description>
+Pivy is a Coin binding for Python. Coin is a high-level 3D graphics library
+with a C++ Application Programming Interface. Coin uses scene-graph data
+structures to render real-time graphics suitable for mostly all kinds of
+scientific and engineering visualization applications.
+
+Pivy allows:
+
+- Development of Coin applications and extensions in Python
+- Interactive modification of Coin programs from within the Python interpreter
+  at runtime
+- Incorporation of Scripting Nodes into the scene graph which are capable of
+  executing Python code and callbacks
+</description>
+  <devel project="science" package="python-pivy"/>
+  <url>http://pivy.coin3d.org/</url>
+</package>

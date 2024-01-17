@@ -1,0 +1,6 @@
+<package name="perl-HTML-Template" project="openSUSE:Factory">
+  <title>This Module Attempts to make using HTML Templates Simple and Natural</title>
+  <description>This allows you to separate design - the HTML - from the data, which
+you generate in the Perl script.</description>
+  <devel project="devel:languages:perl" package="perl-HTML-Template"/>
+</package>

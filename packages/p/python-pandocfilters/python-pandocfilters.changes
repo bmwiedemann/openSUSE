@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Tue Jul 25 10:44:21 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sun Jul 17 08:08:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Added an environment variable `PANDOCFILTER_CLEANUP` that when
+    `get_filename4code` is used, temporary directory will be cleaned up
+     automatically.
+  * `examples/` is no longer included in the distribution (i.e. source
+    distribution or binary wheels found on PyPI.) This should be a backward
+    incompatible change as `examples/` is never exposed as a Python module, nor
+    entry points.
+  * Added a couple of examples.
+
+-------------------------------------------------------------------
+Mon Oct 25 19:55:22 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Making rpmlint more happy.
+
+-------------------------------------------------------------------
+Mon Oct 25 14:02:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Mark exampls/*.py non-executable.
+
+-------------------------------------------------------------------
+Thu Mar  4 21:06:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3:
+  * LilyPond: take in account width and staffsize from metadata
+  * Autodetect gregorio executables 
+  * Fix metavars example
+  * Documentation fixes 
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:06 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri May 11 19:57:34 UTC 2018 - toddrme2178@gmail.com
+
+- pandoc is not strictly necessart to use this.
+
+-------------------------------------------------------------------
+Sat Nov  4 02:08:16 UTC 2017 - arun@gmx.de
+
+- update to version 1.4.2:
+  * Fixed minor RST error in README.
+  * Fixed typo.
+  * Change element constructor function elt() to return a list instead
+    of a tuple when numargs > 1, enabling elements to be traversed by
+    walk().
+  * Fix indentation of a doc-string
+
+-------------------------------------------------------------------
+Fri Mar 31 03:40:09 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

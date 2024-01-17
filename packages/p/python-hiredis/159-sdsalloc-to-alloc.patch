@@ -1,0 +1,42 @@
+From c2a20695aae53de7b5160e29675344df0b805fa6 Mon Sep 17 00:00:00 2001
+From: Maxim Cournoyer <maxim.cournoyer@gmail.com>
+Date: Sat, 18 Mar 2023 15:18:08 -0400
+Subject: [PATCH] pack: Replace sdsalloc.h with alloc.h
+
+Fixes #158.
+
+* src/pack.c: Replace sdsalloc.h with alloc.h.
+(pack_command): Replace s_malloc with hi_malloc.
+---
+ src/pack.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/pack.c b/src/pack.c
+index 443e9d3..23e4004 100644
+--- a/src/pack.c
++++ b/src/pack.c
+@@ -16,7 +16,7 @@ extern sds sdscpylen(sds s, const char *t, size_t len);
+ extern sds sdsnewlen(const void *init, size_t initlen);
+ #endif
+ 
+-#include <hiredis/sdsalloc.h>
++#include <hiredis/alloc.h>
+ 
+ PyObject *
+ pack_command(PyObject *cmd)
+@@ -32,7 +32,7 @@ pack_command(PyObject *cmd)
+     }
+ 
+     Py_ssize_t tokens_number = PyTuple_Size(cmd);
+-    sds *tokens = s_malloc(sizeof(sds) * tokens_number);
++    sds *tokens = hi_malloc(sizeof(sds) * tokens_number);
+     if (tokens == NULL)
+     {
+         return PyErr_NoMemory();
+@@ -118,4 +118,4 @@ pack_command(PyObject *cmd)
+     sdsfreesplitres(tokens, tokens_number);
+     hi_free(lengths);
+     return result;
+-}
+\ No newline at end of file
++}

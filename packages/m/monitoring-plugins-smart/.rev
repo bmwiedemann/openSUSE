@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>972b1dd85358492f49d16ce53ebf86c2</srcmd5>
+    <version>5.2</version>
+    <time>1408524647</time>
+    <user>lnussel</user>
+    <comment>renamed package nagios-plugins-smart</comment>
+    <requestid>244584</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>972b1dd85358492f49d16ce53ebf86c2</srcmd5>
+    <version>5.2</version>
+    <time>1409301915</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>675253ffa3019a80dbfd7378f02dd23a</srcmd5>
+    <version>5.2</version>
+    <time>1414066814</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257364</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4c771ab186cd771954e9a69141162935</srcmd5>
+    <version>5.2</version>
+    <time>1426064336</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290152</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>03cf46394aa405409e50bb084f03ed4a</srcmd5>
+    <version>6.4</version>
+    <time>1573045465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745269</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f0744145a658e6b2aab0e27f34b9f15</srcmd5>
+    <version>6.9.1</version>
+    <time>1620653961</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.9.1:
+  This is a security-release (bsc#1183057)
+  + Fixes the regular expression for pseudo-devices under the /dev/bus/N path.
+  from 6.9.0
+  + Allows using PCI device paths as device name(s) (#64)
+  + Introduce new optional parameter -l/--ssd-lifetime) which additionally 
+    checks SMART attribute &quot;Percent_Lifetime_Remain&quot; 
+    (available on some SSD drives). (#66 #67)
+  from 6.8.0
+  + Allow skip self-assessment check (--skip-self-assessment)
+  + Add Command_Timeout to default raw list
+  from 6.7.1
+  + Bugfix to make --warn work (issue #54)
+  from 6.7.0
+  + Added support for NVMe drives
+  from 6.6.1
+  + Fix 'deprecation warning on regex with curly brackets' (6.6.1)
+  from 6.6.0
+  + The feature was requested in #30 . This PR adds the possibility to
+    use 3ware,N and cciss,N drives in combination with the 
+    global -g parameter.
+  + Furthermore this PR adjusts the output of the plugin when the -g 
+    is used in combination with hardware raid controllers. Instead of
+    showing the logical device name (/dev/sda for example), the plugin
+    will now show the controller with drive number
+  from 6.5.0:
+  + Add Reported_Uncorrect and Reallocated_Event_Count to default raw list.
+  + As of 6.5 the following SMART attributes are by default checked and 
+    may result in alert when threshold (default 0 is reached):
+    'Current_Pending_Sector,Reallocated_Sector_Ct,Program_Fail_Cnt_Total,</comment>
+    <requestid>892023</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>42c6a0ccd45718b03e1c8447c715d4a4</srcmd5>
+    <version>6.11.0</version>
+    <time>1637372371</time>
+    <user>dimstar_suse</user>
+    <comment>- reduce the sudoers rights for nagios user from using smartctl to 
+  only call the plugin itself. As the plugin is called with sudo 
+  rights, the included sudo calls in the plugin will also be executed
+  as root and don't cause any problem. As the plugin is only writable 
+  by root, this forbits the nagios user to execute smartctl with 
+  arbitrary options (boo#1191671)
+- update to 6.11.0
+  + Handle dots in NVMe attributes, prioritize (order) alerts
+  + Add aacraid devices (6.10.0)
+- add rpmlintrc</comment>
+    <requestid>932589</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c5858e604a9973963770d987a03d9319</srcmd5>
+    <version>6.12.2</version>
+    <time>1639855803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.12.2:
+  + Bugfix when interface parameter was missing in combination 
+    with -g (#79)
+
+- Update to 6.12.1:
+  + Fix regression bug in 6.12.0 (#77)
+  + Security fix in trailing path for pseudo-devices (Additional 
+    anchor for security)
+  + Update help
+  + Add Erase_Fail_Count_Total to default raw list
+  + Fix NVMe perfdata (issue 74)
+- encapsulate the recommends to allow building on RHEL based 
+  distributions</comment>
+    <requestid>941270</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ad09e73ed8df4392749e6bb861eb4f70</srcmd5>
+    <version>6.13.0</version>
+    <time>1651856404</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>975394</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3e762886e1adea15f1a290ff97ef2d15</srcmd5>
+    <version>6.14.0</version>
+    <time>1683994495</time>
+    <user>dimstar_suse</user>
+    <comment>* Version update
+* Add user 'icinga' to sudoers file (audit was in bsc#1211003)</comment>
+    <requestid>1085776</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>81caa32df36b3ebac56abb52a74aee93</srcmd5>
+    <version>6.14.1</version>
+    <time>1695853580</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1113908</requestid>
+  </revision>
+</revisionlist>

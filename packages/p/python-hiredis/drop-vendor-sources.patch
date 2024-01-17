@@ -1,0 +1,16 @@
+---
+setup.py |    3 +--
+ setup.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/setup.py
++++ b/setup.py
+@@ -19,7 +19,7 @@ def version():
+ 
+ def get_sources():
+     hiredis_sources = ("alloc", "async", "hiredis", "net", "read", "sds", "sockcompat")
+-    return sorted(glob.glob("src/*.c") + ["vendor/hiredis/%s.c" % src for src in hiredis_sources])
++    return sorted(glob.glob("src/*.c"))
+ 
+ 
+ def get_linker_args():

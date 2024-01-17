@@ -1,0 +1,387 @@
+-------------------------------------------------------------------
+Wed Jan  3 09:54:01 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Set ExclusiveArch conditionally depending on the distro
+- Remove SLE15 SP4 from the distro check (end of general support)
+
+-------------------------------------------------------------------
+Tue Nov 21 17:52:42 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.58.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.58.0
+
+-------------------------------------------------------------------
+Mon Sep 18 12:36:39 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Enable the build for ALP and remove no longer supported SLE versions
+  from the distro check
+
+-------------------------------------------------------------------
+Tue Aug 15 15:18:09 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.57.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.57.0
+
+-------------------------------------------------------------------
+Wed Jul 12 12:00:14 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add registry path for SLE15 SP6
+
+-------------------------------------------------------------------
+Mon Mar 13 12:14:28 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.56.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.56.0
+
+-------------------------------------------------------------------
+Thu Dec  1 09:58:30 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Ensure RPMs and containers are built against the same distro
+- Be more strict when discovering the registry path: error out if the
+  distro is unknown, instead of falling through to 'opensuse' by
+  default
+
+-------------------------------------------------------------------
+Sat Oct 15 13:41:00 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Build tools/cdi-containerimage-server with CGO_ENABLED=0
+
+-------------------------------------------------------------------
+Mon Oct 10 07:07:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update SP5 kubevirt registry path (bsc#1204140) 
+
+-------------------------------------------------------------------
+Mon Sep 19 06:45:42 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.55.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.55.0
+
+-------------------------------------------------------------------
+Tue Aug 30 06:33:01 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.54.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.54.0
+
+-------------------------------------------------------------------
+Tue Jul 26 16:50:25 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Include additional tools used by cdi-importer:
+  cdi-containerimage-server
+  cdi-image-size-detection
+  cdi-source-update-poller
+
+-------------------------------------------------------------------
+Fri Jul 15 09:41:36 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.51.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.51.0
+
+-------------------------------------------------------------------
+Tue Jun 21 06:02:00 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.50.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.50.0
+
+-------------------------------------------------------------------
+Tue May 31 19:21:24 UTC 2022 - Caleb Crane <caleb.crane@suse.com>
+
+- Update to version 1.49.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.49.0
+
+-------------------------------------------------------------------
+Mon Apr 25 14:07:02 UTC 2022 - Caleb Crane <caleb.crane@suse.com>
+
+- Update to version 1.48.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.48.0
+
+-------------------------------------------------------------------
+Mon Apr 11 07:32:04 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.47.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.47.0
+
+-------------------------------------------------------------------
+Fri Apr  1 07:15:41 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.46.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.46.0
+
+-------------------------------------------------------------------
+Thu Mar 10 08:14:18 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.45.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.45.0
+
+-------------------------------------------------------------------
+Fri Feb  4 11:48:29 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Pack only cdi-{cr,operator}.yaml into the manifests RPM
+
+-------------------------------------------------------------------
+Tue Feb  1 06:04:40 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.44.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.44.0
+
+-------------------------------------------------------------------
+Thu Jan 13 11:11:41 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on aarch64
+
+-------------------------------------------------------------------
+Mon Jan 10 11:16:13 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.43.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.43.0
+
+-------------------------------------------------------------------
+Sun Dec 19 09:19:34 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.42.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.42.0
+
+-------------------------------------------------------------------
+Fri Nov 26 05:51:17 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Detect SLE15 SP4 build environment
+
+-------------------------------------------------------------------
+Fri Nov 12 05:54:26 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.41.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.41.0
+
+-------------------------------------------------------------------
+Mon Oct 11 15:06:10 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.40.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.40.0
+
+-------------------------------------------------------------------
+Tue Aug 10 04:15:24 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.37.1
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.37.1
+
+-------------------------------------------------------------------
+Mon Jul 12 14:42:38 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.36.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.36.0
+
+-------------------------------------------------------------------
+Wed Jun 30 05:36:37 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Generate meta info for containers during rpm build
+
+-------------------------------------------------------------------
+Mon Jun 14 06:05:08 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use registry.suse.com as the default fallback for sle
+- Rename macro registry_path to kubevirt_registry_path
+- Update to version 1.35.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.35.0
+
+-------------------------------------------------------------------
+Fri Jun  4 13:04:46 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add REGISTRY variable
+
+-------------------------------------------------------------------
+Thu May 20 08:24:44 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.34.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.34.0
+
+-------------------------------------------------------------------
+Thu May 20 08:19:07 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Disable changelog generation via tar_scm service (too verbose)
+
+-------------------------------------------------------------------
+Thu Apr 29 11:36:12 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Include release number into docker tag
+- Add cdi_containers_meta build service
+
+-------------------------------------------------------------------
+Thu Apr 29 05:23:06 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Set default reg_path='registry.opensuse.org/kubevirt'
+- Add _constraints file with disk requirements
+- Drop CDI_VERSION env var since its not used during the build
+
+-------------------------------------------------------------------
+Wed Apr 21 15:31:22 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Preparation for submission to SLE15 SP2
+  jsc#SLE-11089 jsc#ECO-3633
+
+-------------------------------------------------------------------
+Thu Apr 15 14:54:19 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Drop csv-generator
+
+-------------------------------------------------------------------
+Wed Apr  7 08:04:36 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update registry path
+
+-------------------------------------------------------------------
+Fri Mar  5 06:35:39 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix import of vendor dependencies
+  * Arrange the directory layout in buildroot
+  * Drop manifest-build-fix.patch
+  * Switch to Go 1.14 (used for upstream builds)
+
+-------------------------------------------------------------------
+Fri Feb 26 18:51:12 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Add a manifests package containing YAML manifests used to
+  install CDI
+  manifest-build-fix.patch
+
+-------------------------------------------------------------------
+Wed Feb 24 23:21:52 UTC 2021 - jfehlig@suse.com
+
+- Update to version 1.30.0:
+  * Release to quay.io instead of docker (#1635)
+  * Preallocation test did not run all scenarios (#1625)
+  * Add diagnostic to flake test (#1626)
+  * VDDK: avoid crash when specified disk isn't in VM. (#1639)
+  * rename importController to uploadController in the upload-controller.go file (#1632)
+  * Simplify shouldReconcile function arguments. (#1602)
+  * Increase polling interval for upload annotation test (#1630)
+  * Remove note about VDDK 7 restriction. (#1631)
+  * Remove OLM integration code not removed in #982 (#1624)
+  * Fix typos in doc/datavolumes.md (#1621)
+  * Support cloning from Filesystem to Block and vice-versa (#1597)
+  * Add error to DV when VDDK configmap is missing. (#1627)
+  * Add focus for destructive tests. (#1614)
+  * Wait for clone to succeed before checking MD5. (#1601)
+  * doc: update url in doc/datavolumes.md. (#1609)
+  * Enable tests for featuregates (#1600)
+  * Make string we are checking for less specific to allow it pass for other platforms. (#1580)
+  * Validate image fits in filesystem in a lot more cases. take filesystem overhead into account when resizing. (#1466)
+  * Try to use the CDIConfig proxy URL if it is set, if not use port-forward (#1598)
+  * Update kubevirtci (#1579)
+  * Replaced file copying code with an existing utility function. (#1585)
+  * Global preallocation setting is not taken into account correctly. (#1565)
+  * Retry finding the pods for looking up the annotations. (#1583)
+  * Make DeletePodByName always wait for the pod to stop existing. (#1584)
+  * When cleaning up NFS disks, recursively delete their contents. (#1576)
+  * Typedef for preallocation status (#1568)
+  * Add Data Volume annotations documentation (#1582)
+  * core: Preallocate blank block volumes (#1559)
+  * Skip test 2555 if running on openshift (#1572)
+
+-------------------------------------------------------------------
+Tue Jan 26 16:25:34 UTC 2021 - jfehlig@suse.com
+
+- Update to version 1.29.0:
+  * Document smartclone disable feature in markdown (#1571)
+  * update cdi config docs (#1556)
+  * Run bazelisk run //plugins/cmd/uploader:uploader -- -workspace /home/prow/go/src/github.com/kubevirt/project-infra/../containerized-data-importer/WORKSPACE -dry-run=false (#1569)
+  * Reduce the noise from the filesystem overhead functionality (#1558)
+  * VDDK: work with block devices better (BZ 1913756). (#1564)
+  * Add a DV/PVC annotation "storage.bind.immediate.requested" (#1560)
+  * Use nbdkit for direct stream for the http importer  (#1508)
+  * Text-only changes missed in removing the Process phase (#1446) (#1562)
+  * Compare logs while ignoring differences in spaces. (#1557)
+  * update api for cert configuration (#1542)
+  * core: Preallocate blank image disks as well (#1555)
+  * Preallocation check all paths (#1535)
+  * Remove temporary approver status.
+  * Change verbosity for preallocation messages, avoid possible infinite loop (#1551)
+  * Add test ids to strict reconciliation tests (#1546)
+  * VDDK: more reliable transfers of full disks. (#1547)
+  * Stop Using Deprecated Packages (#1548)
+  * Run bazelisk run //plugins/cmd/uploader:uploader -- -workspace /home/prow/go/src/github.com/kubevirt/project-infra/../containerized-data-importer/WORKSPACE -dry-run=false (#1543)
+  * Preallocation support (#1498)
+  * VDDK: incremental copy with changed block tracking (#1517)
+  * Run bazelisk run //plugins/cmd/uploader:uploader -- -workspace /home/prow/go/src/github.com/kubevirt/project-infra/../containerized-data-importer/WORKSPACE -dry-run=false (#1536)
+  * Add maya-r to approver list.
+  * Simplify file host, now a new image only has to be added to bazel. (#1534)
+  * Update fedora 33 (#1486)
+  * Allow passing default multus network annotation to transfer pods (#1532)
+  * Try updating the node taint in a loop (#1510)
+  * Add an API for disabling smart-cloning. (#1461)
+  * Read-only clone source pods (#1524)
+  * Clone source program calls tar instead of getting piped input.  This ensures we trap tar errors. (#1521)
+  * Add strict reconciliation tests (#1505)
+  * Allow specifying of the CONTAINER_DISK_IMAGE with a default of the current value. (#1515)
+  * Designate CDI as CDIConfig authority (#1516)
+  * Update builder to fedora 33 (#1511)
+  * In the operator test there is a critical addons test that removes and (#1513)
+  * Create a Datavolume if a coliding PVC with same name exists but is marked to delete (#1477)
+  * Fix make target cluster-sync-cdi, add cluster-clean-cdi & cluster-clean-test-infra (#1503)
+  * increase code coverage by moving utility functions from api packages (#1479)
+  * Pass specific PVC annotations to the transfer pods (#1480)
+  * Move configure_storage to test setup. (#1484)
+  * Make sure the DV is the main resource and single source of truth for WaitForFirstConsumer. (#1499)
+  * Controller support for Multistage Imports (#1450)
+  * Pull less from dockerhub when running testsuite (#1478)
+  * apiserver should serve up openapi spec (#1485)
+  * VDDK: Add more debug logging around nbdkit. (#1465)
+  * k8s-reporter: Add Endpoints logging (#1481)
+  * Add CDIConfig to CDI (#1475)
+  * Run bazelisk run //plugins/cmd/uploader:uploader -- -workspace /home/prow/go/src/github.com/fgimenez/project-infra/../../kubevirt/containerized-data-importer/WORKSPACE -dry-run=false
+  * Wait for stray pods to terminate, destroy/re-create at AfterEach. (#1459)
+  * Remove the "Process" data processor phase, simplify state machine. (#1446)
+  * Scratch import bug (#1424)
+  * Dump service resources after failed tests (#1463)
+  * VDDK: replace qemu-img with libnbd (#1448)
+  * update kubevirtci (#1457)
+  * Update WORKSPACE packages to non-404 ones, and add a second mirror. (#1444)
+  * Don't wait for NS to deleted in test before starting next test (#1439)
+
+-------------------------------------------------------------------
+Tue Oct 27 17:11:40 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Fix binary names for several CDI components
+
+-------------------------------------------------------------------
+Mon Oct 26 19:37:49 UTC 2020 - jfehlig@suse.com
+
+- Update to version 1.25.0:
+  * Update builder image to add libnbd (#1452)
+  * Add make targets cluster-sync-cdi & cluster-sync-test-infra (#1451)
+  * Add library function to determine if a PVC is waiting for first consu… (#1442)
+  * Add test_ids for the tests (#1441)
+  * Retry upload in case upload pod wasn't 100% ready when attempting upload (#1440)
+  * add finalizer to target PVC before creating clone source pod (#1429)
+  * Make CDI infra deployments as critical addons. (#1361)
+  * Fix cloning checking fsGroup test in case of use with OCS. (#1435)
+  * Fix types.go vs code schema verification to actually fail if they are different. (#1428)
+  * Add files used in OpenShift CI. (#1416)
+  * Retry upload in case upload pod wasn't 100% ready when attempting upload (#1437)
+  * Check for expected changes after CDI upgrade (#1417)
+  * Files in tar archives can have paths relative to ./ (#1432)
+  * Attempt to schedula clone sourc/target pods on same node (#1426)
+  * Touch ups for filesystem overhead test cases (#1427)
+  * Fix imports for images with no info about MediaType. (#1413)
+  * Fix size mismatch between source and target in smart clone tests. Ceph no longer (#1421)
+  * use snappy compression for cloning instead of gzip (#1419)
+  * Update to k8s.io/klog/v2, used by kubernetes 1.19 (#1409)
+
+-------------------------------------------------------------------
+Fri Oct 23 15:35:12 UTC 2020 - jfehlig@suse.com
+
+- Update to version 1.24.0:
+  * add system:authorized to groups checked for clone auth (#1415)
+  * Fixing CDIStatus generate-verify issues (#1412)
+  * Reserve overhead when validating that a Filesystem has enough space (#1319)
+  * Test behavior after client-side upload failure. (#1404)
+  * Removed hard coded registry:5000 for vddk datasource test. (#1402)
+  * Add library function to determine if a PVC has been populated fully. (#1400)
+  * Remove dependency update when building the OR CI build image (#1386)
+  * Add test_id for the test cases (#1398)
+  * Fix incorrect region parsing from aws s3 endpoint (#1395)
+  * Add functional test for cloning if source NS has enought quota and (#1387)
+
+-------------------------------------------------------------------
+Fri Oct 23 15:27:46 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Initial attempt at packaging CDI

@@ -1,0 +1,5 @@
+<package name="python-certipy" project="openSUSE:Factory">
+  <title>python-certipy</title>
+  <description>Create and sign CAs and certificates</description>
+  <devel project="devel:languages:python" package="python-certipy"/>
+</package>

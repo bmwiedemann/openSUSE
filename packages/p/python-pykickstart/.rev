@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>deb2562e85f25e8854fc714b46f9646c</srcmd5>
+    <version>3.25</version>
+    <time>1590247624</time>
+    <user>maxlin_factory</user>
+    <comment>Initial packaging for openSUSE</comment>
+    <requestid>807724</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>baa265c1c9b946ab57ecd307d17be658</srcmd5>
+    <version>3.30</version>
+    <time>1608542663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857755</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>942e08c6f1be923ebdc82eb2cbac6b18</srcmd5>
+    <version>3.30</version>
+    <time>1612272289</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapt for new singlespec style</comment>
+    <requestid>868037</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5a2a9f9fb60873221bcdd984ed03c6d</srcmd5>
+    <version>3.43</version>
+    <time>1670588287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041748</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b4f938510a80c8ad01560e517d7efca0</srcmd5>
+    <version>3.43</version>
+    <time>1678204271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069951</requestid>
+  </revision>
+</revisionlist>

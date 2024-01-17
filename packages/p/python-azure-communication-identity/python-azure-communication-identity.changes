@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Fri Dec  1 09:21:42 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Tue Nov  1 08:50:55 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.3.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Mon Oct 17 08:11:52 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Thu Aug 25 09:03:36 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Tue Aug  2 07:52:53 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Fri Jul  2 10:53:36 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 1.0.1

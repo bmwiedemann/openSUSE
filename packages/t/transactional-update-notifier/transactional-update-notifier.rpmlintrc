@@ -1,0 +1,2 @@
+# This is a Golang binary linked against D-Bus Go bindings
+addFilter("transactional-update-notifier.*: E: statically-linked-binary /usr/bin/transactional-update-notifier")

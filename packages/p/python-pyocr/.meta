@@ -1,0 +1,6 @@
+<package name="python-pyocr" project="openSUSE:Factory">
+  <title>pyocr</title>
+  <description>A Python wrapper for OCR engines (Tesseract, Cuneiform, etc)</description>
+  <devel project="devel:languages:python" package="python-pyocr"/>
+  <url>https://pypi.python.org/pypi/pyocr</url>
+</package>

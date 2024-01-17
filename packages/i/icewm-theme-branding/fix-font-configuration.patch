@@ -1,0 +1,57 @@
+From 266d837988d3489c00ca5e4178a0a49077b438a2 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Mon, 31 Jan 2022 12:12:11 +0100
+Subject: [PATCH] Fix font configuration (boo#1195328)
+
+Droid Sans Fallback is only meant to be used as fallback, it does not provide
+many common glyphs.
+---
+ themes/zpaker/default.theme | 36 ++++++++++++++++++------------------
+ 1 file changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/themes/zpaker/default.theme b/themes/zpaker/default.theme
+index 59b2aa4..490afed 100644
+--- a/themes/zpaker/default.theme
++++ b/themes/zpaker/default.theme
+@@ -82,23 +82,23 @@ ColorClockText="black"
+ #DesktopBackgroundScaled=1 # 0 / 1
+ #DesktopBackgroundImage="6_10.jpg"
+ 
+-TitleFontNameXft="Droid Sans Fallback:size=10:bold"
+-MenuFontNameXft="Droid Sans Fallback:size=10"
+-StatusFontNameXft="Droid Sans Fallback:size=10"
+-QuickSwitchFontNameXft="Droid Sans Fallback:size=10"
+-NormalButtonFontNameXft="Droid Sans Fallback:size=10"
+-ActiveButtonFontNameXft="Droid Sans Fallback:size=10"
+-NormalTaskBarFontNameXft="Droid Sans Fallback:size=10"
+-ActiveTaskBarFontNameXft="Droid Sans Fallback:size=10:bold"
+-ToolButtonFontNameXft="Droid Sans Fallback:size=10"
+-NormalWorkspaceFontNameXft="Droid Sans Fallback:size=10"
+-ActiveWorkspaceFontNameXft="Droid Sans Fallback:size=10"
+-MinimizedWindowFontNameXft="Droid Sans Fallback:size=10"
+-ListBoxFontNameXft="Droid Sans Fallback:size=10"
+-ToolTipFontNameXft="Droid Sans Fallback:size=10"
+-ClockFontNameXft="Droid Sans Fallback:size=10:bold"
+-ApmFontNameXft="Droid Sans Fallback:size=10:bold"
+-InputFontNameXft="Droid Sans Fallback:size=10"
+-LabelFontNameXft="Droid Sans Fallback:size=10"
++TitleFontNameXft="Droid Sans:size=10:bold, Droid Sans Fallback:size=10:bold"
++MenuFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++StatusFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++QuickSwitchFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++NormalButtonFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++ActiveButtonFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++NormalTaskBarFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++ActiveTaskBarFontNameXft="Droid Sans:size=10:bold, Droid Sans Fallback:size=10:bold"
++ToolButtonFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++NormalWorkspaceFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++ActiveWorkspaceFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++MinimizedWindowFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++ListBoxFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++ToolTipFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++ClockFontNameXft="Droid Sans:size=10:bold, Droid Sans Fallback:size=10:bold"
++ApmFontNameXft="Droid Sans:size=10:bold, Droid Sans Fallback:size=10:bold"
++InputFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
++LabelFontNameXft="Droid Sans:size=10, Droid Sans Fallback:size=10"
+ 
+ TaskBarClockLeds=0

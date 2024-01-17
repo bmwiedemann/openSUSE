@@ -1,0 +1,18 @@
+<package name="pam_wrapper" project="openSUSE:Factory">
+  <title>A tool to test PAM applications and PAM modules</title>
+  <description>This component of cwrap allows you to either test your PAM (Linux-PAM
+and OpenPAM) application or module.
+
+For testing PAM applications, simple PAM module called pam_matrix is
+included. If you plan to test a PAM module you can use the pamtest library,
+which simplifies testing of modules. You can combine it with the cmocka
+unit testing framework or you can use the provided Python bindings to
+write tests for your module in Python.
+
+This package doesn't have a devel package because this project is for
+development/testing.
+
+</description>
+  <devel project="devel:tools" package="pam_wrapper"/>
+  <url>http://cwrap.org/</url>
+</package>

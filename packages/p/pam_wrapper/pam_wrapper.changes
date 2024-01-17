@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Mon Feb 27 09:38:30 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building with cmocka >= 1.1.6
+  * Added pam_wrapper-fix-cmocka-1.1.6+-support.patch
+
+-------------------------------------------------------------------
+Thu Oct 28 08:40:28 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.4
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/pam_wrapper-1.1.4/CHANGELOG
+
+-------------------------------------------------------------------
+Wed May 20 07:02:41 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix the build (remove py2 lib if built without py2 support)
+
+-------------------------------------------------------------------
+Thu Mar 26 13:36:14 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.3
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/master/CHANGELOG
+
+-------------------------------------------------------------------
+Tue Mar 24 13:51:58 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.2
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/master/CHANGELOG
+
+-------------------------------------------------------------------
+Tue Mar 24 13:21:09 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.1
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/master/CHANGELOG
+
+-------------------------------------------------------------------
+Fri Mar 20 14:13:05 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.0
+  * Added support for pam_start_confdir()
+  * Added pam_chatty module
+  * Added gitlab CI support
+  * Fixed crash when a PAM module outputs too much data
+- Removed pam_wrapper-1.0.8-fix_with_latest_pam.patch
+- Removed fix-pam-module-output-crash.patch
+
+-------------------------------------------------------------------
+Thu Mar 19 08:07:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix crash when testing fprintd:
+  * fix-pam-module-output-crash.patch
+- Fix build without python2 that is atm being removed from Tumbleweed
+- Use cmake macros for build
+
+-------------------------------------------------------------------
+Mon Dec  9 15:11:23 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix pam_wrapper with Linux-PAM master
+- Added pam_wrapper-1.0.8-fix_with_latest_pam.patch
+
+-------------------------------------------------------------------
+Tue Jul 16 09:42:49 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Build documentation in the build stage
+- Use ctest macro
+
+-------------------------------------------------------------------
+Wed Sep 26 12:56:51 UTC 2018 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.0.7
+  * Added support for running with AddressSanitizer
+  * Added logging for pam_set_items module
+  * Fixed building python modules
+  * Fixed pam conversation in libpamtest
+
+-------------------------------------------------------------------
+Thu Feb 22 15:56:44 UTC 2018 - asn@cryptomilk.org
+
+- Update to version 1.0.5
+  * Added support to build python2 and python3 module at the same time
+  * Improved pam test directory creating
+  * Fixed python 2.6 compatibilty
+  * Fixed some build issues on FreeBSD
+  * Fix build on OpenBSD
+  * Fix a resource leak
+- Removed pam_wrapper-1.0.3-build-python2-and-python3-modules.patch
+
+-------------------------------------------------------------------
+Mon Feb 12 11:56:57 UTC 2018 - asn@cryptomilk.org
+
+- Build python2 and python3 packages
+- Added pam_wrapper-1.0.3-build-python2-and-python3-modules.patch
+
+-------------------------------------------------------------------
+Sun Feb  4 09:31:44 UTC 2018 - asn@cryptomilk.org
+
+- Add missing build require to python-rpm-macros
+
+-------------------------------------------------------------------
+Fri Apr  7 14:22:09 UTC 2017 - asn@cryptomilk.org
+
+- Update to version 1.0.3
+  * Fixed some build issues with strict compiler flags
+  * Logging to syslog is disabled by default
+
+-------------------------------------------------------------------
+Tue May 31 06:58:44 UTC 2016 - asn@cryptomilk.org
+
+- Update to version 1.0.2
+  * Fixed pam_wrapper on some BSDs
+  * Fixed simple conversation in libpamtest
+
+-------------------------------------------------------------------
+Sun Feb 14 10:53:47 UTC 2016 - jengelh@inai.de
+
+- Editorial fixes to the descriptions
+
+-------------------------------------------------------------------
+Mon Jan 18 10:13:41 UTC 2016 - asn@cryptomilk.org
+
+- Update to version 1.0.1
+  * Fixed issue with audit_open() and sshd
+  * Fixed several issues found by Coverity
+  * Fixed python linking issues
+
+-------------------------------------------------------------------
+Thu Jan 14 16:13:36 UTC 2016 - asn@cryptomilk.org
+
+- Initial package
+
