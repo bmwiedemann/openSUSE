@@ -466,4 +466,13 @@
     <comment></comment>
     <requestid>1111864</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>371dc359cb8f85fa4759e4bbe09f056e</srcmd5>
+    <version>45</version>
+    <time>1705526187</time>
+    <user>anag+factory</user>
+    <comment>- Drop pkgconfig(mutter-clutter-13) BuildRequires: no longer needed
+  since version 45. (forwarded request 1139381 from dimstar)</comment>
+    <requestid>1139383</requestid>
+  </revision>
 </revisionlist>
