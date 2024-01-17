@@ -1,7 +1,7 @@
 #
 # spec file for package baobab
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@ Summary:        Disk Usage Analyzer
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/DiskUsageAnalyzer
-Source0:        https://download.gnome.org/sources/baobab/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
