@@ -1,0 +1,475 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>250fee7a0269f4eae9e5732b0e1e85a0</srcmd5>
+    <version>5.19.2</version>
+    <time>1593200828</time>
+    <user>dimstar_suse</user>
+    <comment>Alternative shell for Plasma</comment>
+    <requestid>816654</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00ce34157c5e45de680696cdf6914a53</srcmd5>
+    <version>5.19.3</version>
+    <time>1594394325</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.3</comment>
+    <requestid>819428</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8c7cc46e6434826a6507c8781cf3d85</srcmd5>
+    <version>5.19.4</version>
+    <time>1596096105</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.4</comment>
+    <requestid>823272</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e11088809c86d8c33e7c31f691503b38</srcmd5>
+    <version>5.19.5</version>
+    <time>1599343289</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.5</comment>
+    <requestid>831178</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b3b8abbbc18624fe08b120c1f7515d1b</srcmd5>
+    <version>5.20.0</version>
+    <time>1602682725</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.0</comment>
+    <requestid>841020</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>51e277100ce5b384c8357bfb0b2d52c8</srcmd5>
+    <version>5.20.1</version>
+    <time>1603456066</time>
+    <user>dimstar_suse</user>
+    <comment>New plasma release</comment>
+    <requestid>843116</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6dc156f5b11906c0c6ae170f2f81993e</srcmd5>
+    <version>5.20.2</version>
+    <time>1604510678</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.2</comment>
+    <requestid>844613</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2cc58808370f93ed78c9b531b19e78b6</srcmd5>
+    <version>5.20.3</version>
+    <time>1605644593</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.3</comment>
+    <requestid>848077</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>87d4ce54ebe2b4adeb692677c91158a1</srcmd5>
+    <version>5.20.4</version>
+    <time>1607113725</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.4</comment>
+    <requestid>852531</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f9a18b4f0e279966dcd003ffbad4c84</srcmd5>
+    <version>5.20.5</version>
+    <time>1610050947</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.5 (forwarded request 860522 from Vogtinator)</comment>
+    <requestid>860647</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9a34fc8d05f701016d0390c3f4da88ae</srcmd5>
+    <version>5.21.0</version>
+    <time>1613463523</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.21.0 + made pulseaudio optional and pipewire-pulseaudio an alternative. KF5 is publish disabled already. (forwarded request 871992 from Vogtinator)</comment>
+    <requestid>872109</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>15bc450198a37326b09fdcfc8a80efda</srcmd5>
+    <version>5.21.1</version>
+    <time>1614684704</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Plasma 5.21.1</comment>
+    <requestid>875040</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>df42cce66772bb29105e59e65b94943f</srcmd5>
+    <version>5.21.2</version>
+    <time>1615802052</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.21.2</comment>
+    <requestid>876492</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5230b91115bd3f4f8727ebeaa541915a</srcmd5>
+    <version>5.21.3</version>
+    <time>1616168553</time>
+    <user>RBrownSUSE</user>
+    <comment>Plasma 5.21.3</comment>
+    <requestid>879627</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e24da81db710818f85c45365f2b70167</srcmd5>
+    <version>5.21.4</version>
+    <time>1618387823</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 883384 from Vogtinator)</comment>
+    <requestid>883436</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>80ae44799b0406966ebfd756b1ed77d5</srcmd5>
+    <version>5.21.5</version>
+    <time>1620334352</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.21.5</comment>
+    <requestid>890593</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3c63f45c366f200dc10ae4a0794ce631</srcmd5>
+    <version>5.22.0</version>
+    <time>1623098595</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.0</comment>
+    <requestid>897512</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dc6df2a36f8129fca5d688a4450c06da</srcmd5>
+    <version>5.22.1</version>
+    <time>1624004022</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.1 (forwarded request 900221 from Vogtinator)</comment>
+    <requestid>900280</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d4e1c06fa11c1e88bc0595abff85d9de</srcmd5>
+    <version>5.22.2.1</version>
+    <time>1624813144</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.2.1</comment>
+    <requestid>901538</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dadc96121b761aa78d3f8ad94a1a3239</srcmd5>
+    <version>5.22.3</version>
+    <time>1625867916</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.3 (forwarded request 904425 from Vogtinator)</comment>
+    <requestid>904528</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6955b23c82d193b681e17c64eb2c0b2e</srcmd5>
+    <version>5.22.3</version>
+    <time>1626986595</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the %files section. plasma-framework &gt;= 5.84 doesn't install
+  desktop files in %_kf5_servicesdir anymore.</comment>
+    <requestid>906908</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1479ffea264a2ea48e6eb21b66d02d08</srcmd5>
+    <version>5.22.4</version>
+    <time>1627587109</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.4 (forwarded request 908666 from Vogtinator)</comment>
+    <requestid>908725</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>939391de726c52a040b909e907ac739b</srcmd5>
+    <version>5.22.5</version>
+    <time>1630787630</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.5. Hasn't finished building yet (forwarded request 915319 from Vogtinator)</comment>
+    <requestid>915390</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>16f2e1038d2b36139b6eccb093176191</srcmd5>
+    <version>5.23.0</version>
+    <time>1634141159</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.0, lightly tested. KDE:Frameworks5 is already publish disabled. (forwarded request 924672 from Vogtinator)</comment>
+    <requestid>924724</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0dc9fd428187935d6684aa724bd5f2a5</srcmd5>
+    <version>5.23.1</version>
+    <time>1635023638</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.1. Random plasma5-openSUSE failures due to qml-autoreprov. (forwarded request 926351 from Vogtinator)</comment>
+    <requestid>926391</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>746bd5cda174e2c79b8ac370af17133c</srcmd5>
+    <version>5.23.2</version>
+    <time>1635539642</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.2 (forwarded request 927575 from Vogtinator)</comment>
+    <requestid>927704</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9b6db2e2da8e93f046292d8953214bc4</srcmd5>
+    <version>5.23.3</version>
+    <time>1637136491</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.3(.1)</comment>
+    <requestid>931383</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b1be65b052aa3511133c6dc805e03609</srcmd5>
+    <version>5.23.4</version>
+    <time>1638480609</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.23.4</comment>
+    <requestid>934820</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>c24a98862d573a8277fef73b58297a40</srcmd5>
+    <version>5.23.4</version>
+    <time>1639424663</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package build with plasma-framework 5.89.0.</comment>
+    <requestid>939456</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1ea47157ea9ac0f80bd9c11602a5978e</srcmd5>
+    <version>5.23.5</version>
+    <time>1641932249</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 943820 from Vogtinator)</comment>
+    <requestid>943997</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9c76a266864615be46c39e68f35c9789</srcmd5>
+    <version>5.24.0</version>
+    <time>1644273442</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.0. On Leap 15.3 there are some build failures, but those happen in K:F5 already and are unrelated to 5.24.0 (forwarded request 951861 from Vogtinator)</comment>
+    <requestid>951899</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1f2449c4ba7916c14bf3abfb2afa50c4</srcmd5>
+    <version>5.24.1</version>
+    <time>1645137606</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.1. plasma5-mobile tarball is missing translations, so skipped for now.</comment>
+    <requestid>955258</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9308464debedbd943d97d1bad2eb45a7</srcmd5>
+    <version>5.24.2</version>
+    <time>1645723240</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.24.2</comment>
+    <requestid>956982</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8a480cf893630ce4daa4e2253bd711a9</srcmd5>
+    <version>5.24.3</version>
+    <time>1647101712</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.24.3</comment>
+    <requestid>960889</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7057fd67a129cb7a0fd42f189d3becc1</srcmd5>
+    <version>5.24.4</version>
+    <time>1648841726</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.4 - untested (forwarded request 965768 from Vogtinator)</comment>
+    <requestid>965922</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4adec9e3857287b41aa5297f25af9d22</srcmd5>
+    <version>5.24.5</version>
+    <time>1651784727</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.5. Usual version bump + discover patch change (forwarded request 974667 from Vogtinator)</comment>
+    <requestid>974718</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>592dd733a85605b2ef47137086cedb4f</srcmd5>
+    <version>5.25.0</version>
+    <time>1655118163</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.25.0</comment>
+    <requestid>981928</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b5773931afec0f81c5751e8fd0010d76</srcmd5>
+    <version>5.25.1</version>
+    <time>1655972630</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.1. As usual, completely untested. (forwarded request 984192 from Vogtinator)</comment>
+    <requestid>984358</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>51230fff4940f4e6e53a54237896f48d</srcmd5>
+    <version>5.25.2</version>
+    <time>1656675885</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.2 (forwarded request 985627 from Vogtinator)</comment>
+    <requestid>985917</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c4e469835c6e8c8ab854c550e7e9c08d</srcmd5>
+    <version>5.25.3</version>
+    <time>1657809241</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.3, with fixed lockscreen (forwarded request 988718 from Vogtinator)</comment>
+    <requestid>988863</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>23ae8da570950332d7ab22f2c562ed25</srcmd5>
+    <version>5.25.4</version>
+    <time>1659721840</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.4 (forwarded request 992383 from Vogtinator)</comment>
+    <requestid>992520</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0074c658789cba091d323053c0a6767c</srcmd5>
+    <version>5.25.5</version>
+    <time>1662639717</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.5 (forwarded request 1001509 from Vogtinator)</comment>
+    <requestid>1001632</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1e09845832fb2b68b3a231bf9bbb5c68</srcmd5>
+    <version>5.26.0</version>
+    <time>1665504118</time>
+    <user>RBrownFactory</user>
+    <comment>Plasma 5.26.0</comment>
+    <requestid>1009139</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7c5b9fab84af1e2966a96d27eff7bfeb</srcmd5>
+    <version>5.26.1</version>
+    <time>1666257065</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.1, untested. (forwarded request 1029774 from Vogtinator)</comment>
+    <requestid>1029855</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8240e45e4b8b83ddbdc1dc7f3fc65486</srcmd5>
+    <version>5.26.2</version>
+    <time>1667067379</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.2, untested but now with kwin scaling fix (forwarded request 1031457 from Vogtinator)</comment>
+    <requestid>1031886</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>fd1f8be44480096756b061505c14e03e</srcmd5>
+    <version>5.26.3</version>
+    <time>1668086497</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.3(.1), untested as usual (forwarded request 1034741 from Vogtinator)</comment>
+    <requestid>1034784</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>fe769f1914bdd3a1249b509627f29aba</srcmd5>
+    <version>5.26.4</version>
+    <time>1669816790</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.4(.1). (forwarded request 1038954 from Vogtinator)</comment>
+    <requestid>1039006</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ead66f69d0b781b84b5ffec7cdeceaed</srcmd5>
+    <version>5.26.5</version>
+    <time>1673021112</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.5 - untested (forwarded request 1055974 from Vogtinator)</comment>
+    <requestid>1056043</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ea7c044b23e5bc7c03be6e77f1117495</srcmd5>
+    <version>5.27.0</version>
+    <time>1676302829</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.0, preliminary tarballs</comment>
+    <requestid>1064545</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>ca0af184b66a7f1da3ca4f34cb009297</srcmd5>
+    <version>5.27.1</version>
+    <time>1677258453</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.1 (forwarded request 1067115 from Vogtinator)</comment>
+    <requestid>1067252</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>af6917b03796ecc947df650e041c37d6</srcmd5>
+    <version>5.27.2</version>
+    <time>1677794592</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.2 (forwarded request 1068244 from Vogtinator)</comment>
+    <requestid>1068287</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>443312381e1197e9c1e72864a30cc236</srcmd5>
+    <version>5.27.3</version>
+    <time>1679068970</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.3 (forwarded request 1071929 from Vogtinator)</comment>
+    <requestid>1072016</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>36c8a1e19eae6e28c2ae9f5cb43552f9</srcmd5>
+    <version>5.27.4</version>
+    <time>1680722832</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.4(.1) (forwarded request 1077257 from Vogtinator)</comment>
+    <requestid>1077305</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>a4eefb03f0a94428bc4491d5f6bf7f96</srcmd5>
+    <version>5.27.5</version>
+    <time>1683801167</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.5. Not built yet. (forwarded request 1085751 from Vogtinator)</comment>
+    <requestid>1085911</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a92c504f1c80607b835f7a10b775dd29</srcmd5>
+    <version>5.27.6</version>
+    <time>1687379948</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.6. plasma5-sdk needed a workaround. On aarch64 something is broken with breeze5-icons, I'm optimistic and triggered a rebuild. (forwarded request 1094155 from Vogtinator)</comment>
+    <requestid>1094206</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>e3ce694a308e91d55007a7f35ccc2036</srcmd5>
+    <version>5.27.7</version>
+    <time>1690987790</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.7(.1)</comment>
+    <requestid>1101840</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>66ad1bbf31b144f5dc161ce9ba91c3cd</srcmd5>
+    <version>5.27.8</version>
+    <time>1694701518</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
+    <requestid>1110738</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>bf1661d2a3602642b75c3573b649db79</srcmd5>
+    <version>5.27.9</version>
+    <time>1698249770</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
+    <requestid>1120097</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>95c0e855b4127fbfd1d3d09bf2229eda</srcmd5>
+    <version>5.27.10</version>
+    <time>1701972620</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
+    <requestid>1131438</requestid>
+  </revision>
+</revisionlist>

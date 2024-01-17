@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Mon Jul 24 19:09:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Group CLI options
+  * Switch to Hatch
+  * Use `pytest.stash` internally instead of `_metadata`
+  * Simplify code
+
+-------------------------------------------------------------------
+Tue May  9 13:10:34 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Wed Nov 30 11:13:54 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition 
+- Update to 2.0.4:
+  * Fix deprecated pytest.mark.optionalhook marker.
+- 2.0.3:
+  * Remove py dependency. Thanks to @Czaki for reporting.
+- 2.0.2:
+  * Allow all python versions above 3.7
+- 2.0.1:
+  * Fix issues with switching to pyproject.toml
+    Thanks to @dvzrv and @eltrufas for raising issues and providing fixes.
+- 2.0.0:
+  * Drop support for python 2.7 and 3.6
+  * Add support for python 3.9 and 3.10
+  * Introduce pyproject.toml
+  * Provide metadata via JSON file
+    Thanks to @digitalorder for the PR
+- 1.11.0:
+  * Provide a session fixture to include metadata in Junit XMLs as property
+    tags. Thanks to @sanga for the PR
+
+-------------------------------------------------------------------
+Mon Jun 29 11:52:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.10.0
+  * Compatible with pytest-xdist 1.22.3+, now including 2.0+
+
+-------------------------------------------------------------------
+Mon May 18 09:15:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.0:
+  * Add --metadata-from-json argument to support passing metadata as json.
+
+-------------------------------------------------------------------
+Thu Feb 14 14:28:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.8.0:
+  * Add environment variables for Bitbucket pipelines (CI).
+
+-------------------------------------------------------------------
+Thu Nov 22 10:43:12 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Really execute some tests
+
+-------------------------------------------------------------------
+Thu Nov 22 10:40:13 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Cleanup with spec-cleaner
+- Use %license macro
+
+-------------------------------------------------------------------
+Fri Nov 16 16:41:26 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 1.7.0

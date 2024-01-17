@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8665d356ecf8197a6aff50dd21941d1a</srcmd5>
+    <version>1.7.0</version>
+    <time>1543528696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651062</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5d9cf76df5107fd76da9b291cb34a872</srcmd5>
+    <version>1.8.0</version>
+    <time>1550221370</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0:
+  * Add environment variables for Bitbucket pipelines (CI).</comment>
+    <requestid>676058</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d735edd34adaf7ecf41ccc4193d0e81b</srcmd5>
+    <version>1.9.0</version>
+    <time>1589892445</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0:
+  * Add --metadata-from-json argument to support passing metadata as json.</comment>
+    <requestid>806846</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3a51156eda4c5620a4be2f5f7b7838c2</srcmd5>
+    <version>1.10.0</version>
+    <time>1593458306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817713</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aa351704f6b721469d31da2b352d5fd0</srcmd5>
+    <version>2.0.4</version>
+    <time>1669816816</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition 
+- Update to 2.0.4:
+  * Fix deprecated pytest.mark.optionalhook marker.
+- 2.0.3:
+  * Remove py dependency. Thanks to @Czaki for reporting.
+- 2.0.2:
+  * Allow all python versions above 3.7
+- 2.0.1:
+  * Fix issues with switching to pyproject.toml
+    Thanks to @dvzrv and @eltrufas for raising issues and providing fixes.
+- 2.0.0:
+  * Drop support for python 2.7 and 3.6
+  * Add support for python 3.9 and 3.10
+  * Introduce pyproject.toml
+  * Provide metadata via JSON file
+    Thanks to @digitalorder for the PR
+- 1.11.0:
+  * Provide a session fixture to include metadata in Junit XMLs as property
+    tags. Thanks to @sanga for the PR
+</comment>
+    <requestid>1039087</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2fd9d26e38cdbacb088b9d593657f357</srcmd5>
+    <version>2.0.4</version>
+    <time>1683728333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085833</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4003b1c90ec75bceb055923fb84bdc7f</srcmd5>
+    <version>3.0.0</version>
+    <time>1690278685</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Group CLI options
+  * Switch to Hatch
+  * Use `pytest.stash` internally instead of `_metadata`
+  * Simplify code</comment>
+    <requestid>1100450</requestid>
+  </revision>
+</revisionlist>

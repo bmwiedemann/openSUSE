@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>384ec25d5d3dd04721126ecbb75dfd95</srcmd5>
+    <version>1.1</version>
+    <time>1582726029</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>779384</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ac4742ba134b0818e63b2e8b00f803ef</srcmd5>
+    <version>1.1</version>
+    <time>1647889887</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963404</requestid>
+  </revision>
+</revisionlist>

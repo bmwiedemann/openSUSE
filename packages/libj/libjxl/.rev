@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>515c33f24764e38e2492600aee8745de</srcmd5>
+    <version>0.7~779.f5d6e29</version>
+    <time>1658857461</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990991</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b471264e48fd6c58b689d4acb4a92b10</srcmd5>
+    <version>0.7.0</version>
+    <time>1663851018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:</comment>
+    <requestid>1005381</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8ec542fd6134a71e2d4468f557bdd9de</srcmd5>
+    <version>0.7.0</version>
+    <time>1671305759</time>
+    <user>dimstar_suse</user>
+    <comment>I forgot to add baselibs.conf as a source in the .spec file last time, sorry! (forwarded request 1043366 from DarkWav)</comment>
+    <requestid>1043401</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>46d856f9e49887905d4f83a09f5fd921</srcmd5>
+    <version>0.7.0</version>
+    <time>1671563990</time>
+    <user>dimstar_suse</user>
+    <comment>I tested this in a Leap 15.4 system with kimageformats 5.100.0
+and gwenview5 and it could open/save jxl files correctly.
+The test was built in 
+home:alarrosa:branches:openSUSE:Backports:SLE-15-SP4:kimageformats
+
+With this, we can submit jxl support to Backports for SLE15-SP5/
+Leap 15.5
+
+- Add patch (applied reversed) to revert the requirement for an
+  updated liblcms2 library when we have an older one. This allows
+  libjxl to build in SLE15 SP4/SP5 (and Leap 15.4/15.5):
+  * 0001-Remove-LCMS-mutex.patch (forwarded request 1043745 from alarrosa)</comment>
+    <requestid>1043748</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f26f2d822eb77941915e3ba6a194a75</srcmd5>
+    <version>0.8.0</version>
+    <time>1674232660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.8</comment>
+    <requestid>1059421</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2493f9e960b9d19c0d82556c28853353</srcmd5>
+    <version>0.8.1</version>
+    <time>1675792042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.8.1</comment>
+    <requestid>1063309</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>60b35813ca24d805285a3dd27e2934af</srcmd5>
+    <version>0.8.1</version>
+    <time>1676148956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064199</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>534411b08273bbc6d75d4cb151415cb3</srcmd5>
+    <version>0.8.1</version>
+    <time>1682434401</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1082397</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>21a341adf05c45b33c4b2eddfd76c504</srcmd5>
+    <version>0.8.1</version>
+    <time>1686505957</time>
+    <user>dimstar_suse</user>
+    <comment>- Build package in correct phase
+- Use macros for ldconfig (forwarded request 1091774 from pluskalm)</comment>
+    <requestid>1091790</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fa786e7efd9fef9f2016d0c818608823</srcmd5>
+    <version>0.8.2</version>
+    <time>1687033188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.8.2</comment>
+    <requestid>1093137</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4955135a0bb3a644b5525d7ef7e298ee</srcmd5>
+    <version>0.8.2</version>
+    <time>1695664797</time>
+    <user>anag+factory</user>
+    <comment>- Build plugins:</comment>
+    <requestid>1113235</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>68d0f6f1b86d3358992e5474f34194ab</srcmd5>
+    <version>0.9.0</version>
+    <time>1705437400</time>
+    <user>anag+factory</user>
+    <comment>- Remove cjxl/djxl manpages from gtk flavor installation, these
+  are part of the tools subpackage from the main flavor. (forwarded request 1136384 from StefanBruens)</comment>
+    <requestid>1136397</requestid>
+  </revision>
+</revisionlist>

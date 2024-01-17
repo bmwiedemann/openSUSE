@@ -1,0 +1,5 @@
+<package name="plasma5-nano" project="openSUSE:Factory">
+  <title>plasma5-desktop</title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="plasma5-nano"/>
+</package>
