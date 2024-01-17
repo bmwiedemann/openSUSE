@@ -1,0 +1,14 @@
+<!-- See https://en.opensuse.org/openSUSE:Build_Service_Concept_SourceService -->
+<!-- for more details on the syntax -->
+
+<services>
+        <service name="tar_scm" mode="disabled">
+                <param name="scm">git</param>
+                <param name="url">https://github.com/NXPmicro/mfgtools.git</param>
+                <param name="filename">mfgtools</param>
+                <param name="versionrewrite-pattern">uuu_(.*)</param>
+                <param name="versionrewrite-replacement">\1</param>
+                <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@</param>
+        </service>
+        <service mode="disabled" name="set_version" />
+</services>

@@ -1,0 +1,5 @@
+<package name="mfgtools" project="openSUSE:Factory">
+  <title>uuu (Universal Update Utility), mfgtools</title>
+  <description>Freescale/NXP I.MX Chip image deploy tools.</description>
+  <devel project="hardware" package="mfgtools"/>
+</package>

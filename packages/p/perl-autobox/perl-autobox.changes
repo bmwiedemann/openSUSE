@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Sun May  6 06:08:45 UTC 2018 - coolo@suse.com
+
+- updated to 3.0.1
+   see /usr/share/doc/packages/perl-autobox/Changes
+
+  3.0.1 Sat 5 May 20:50:14 2018
+  
+      - GH #11: fix version declaration on 5.8 (thanks, Grinnz)
+  
+  3.0.0 Sat 5 May 18:10:16 2018
+  
+      - breaking change:
+          - the behaviour of UNIVERSAL methods like $native->can and
+            $native->isa is now defined as being the same as when autobox
+            is not enabled rather than "undefined". (technically, this
+            still falls under the rubric of "undefined", but the switch
+            from "don't know" to "don't" could break buggy code, so bump
+            for safety)
+          - add DOES to the list of non-autoboxed methods
+      - switch to SemVer i.e. 2.86 (v2.860.0) -> 3.0.0 (v3.0.0)
+      - upgrade ppport.h from 3.35 -> 3.42
+
+-------------------------------------------------------------------
+Sat Apr 21 06:07:47 UTC 2018 - coolo@suse.com
+
+- updated to 2.86
+   see /usr/share/doc/packages/perl-autobox/Changes
+
+  2.86 Fri 20 Apr 20:07:29 2018
+  
+      - GH #9: fix bug which prevented autoboxing working
+        under the debugger on perl 5.22+ (thanks, skington)
+          - added t/debugger.t
+      - GH #8: fix bug which prevented bareword method-calls being
+        exempted when the method is a variable e.g. Foo->$bar
+      - add operator-overloading note to the gotchas section (GH #7)
+
+-------------------------------------------------------------------
+Tue Feb 28 07:52:23 UTC 2017 - coolo@suse.com
+
+- updated to 2.85
+   see /usr/share/doc/packages/perl-autobox/Changes
+
+  2.85 Mon 27 Feb 18:18:19 2017
+  
+      - fix failing test under 5.25.10 with -Ddefault_inc_excludes_dot
+        (thanks, Kent Fredric)
+
+-------------------------------------------------------------------
+Sat Aug 27 06:16:19 UTC 2016 - coolo@suse.com
+
+- updated to 2.84
+   see /usr/share/doc/packages/perl-autobox/Changes
+
+  2.84 Fri 26 Aug 20:35:48 2016
+  
+      - compatibility fix for perl >= 5.25 (thanks, mat813, karenetheridge and eserte)
+      - update ppport.h from 3.20 to 3.35
+      - add .travis.yml
+
+-------------------------------------------------------------------
+Tue Apr 14 20:39:26 UTC 2015 - coolo@suse.com
+
+- updated to 2.83
+   see /usr/share/doc/packages/perl-autobox/Changes
+
+  2.83 Sun Feb 1 21:34:01 2015
+      - RT #100247: fix assertion failures on 5.21.x perls with -DDEBUGGING
+        (thanks, ilmari and Father Chrysostomos)
+      - RT #100717: don't hide autobox::universal from PAUSE (thanks, ppisar)
+      - RT #89754: INSTALLDIRS fix (thanks, Kent Fredric)
+
+-------------------------------------------------------------------
+Tue Nov 26 07:35:37 UTC 2013 - coolo@suse.com
+
+- updated to 2.82
+    - simplify test to avoid portability woes
+    - fix failing test on Windows
+    - RT #71777: fix segfault in destructor called during global destruction (thanks, Tomas Doran)
+        - added t/rt_71777.t
+
+-------------------------------------------------------------------
+Sat Jun 15 06:16:59 UTC 2013 - coolo@suse.com
+
+- updated to 2.79
+    - allow import arguments to be passed as a hashref
+      - add t/import_hashref.t
+    - doc tweaks
+
+    - fix RT #80400 (thanks, Tokuhiro Matsuno)
+      - added t/rt_80400.t
+
+    - doc tweaks
+    - add multiple-arg autoref tests
+
+    - fix breaking tests in perl >= 5.17.5: update error message pattern (thanks, rjbs)
+    - update ppport.h from 3.19 to 3.20
+
+-------------------------------------------------------------------
+Thu Nov 17 12:44:49 UTC 2011 - coolo@suse.com
+
+- update to 2.75
+   - POD spelling fixes (thanks, gregor herrmann)
+   - portability fix for perl >= 5.14 (thanks, chorny)
+
+-------------------------------------------------------------------
+Tue Apr 12 11:09:21 UTC 2011 - coolo@opensuse.org
+
+- regenerate with newer cpanspec
+
+-------------------------------------------------------------------
+Sun Apr  3 14:57:55 UTC 2011 - coolo@novell.com
+
+- updated to 2.73
+   - Makefile.PL fix
+   - fix conflict with use re 'taint' (thanks, Peter Rabbitson)
+
+-------------------------------------------------------------------
+Mon Jan 17 18:08:43 UTC 2011 - coolo@novell.com
+
+- initial package 2.71
+  * created by cpanspec 1.78.03
+

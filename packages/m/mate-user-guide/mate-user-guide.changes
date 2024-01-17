@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Fri Nov 17 13:16:18 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.2
+  * update translations
+  * fix warnings in de, es, fr, id, it, ja, ko, pl, sl, sr and sv translations
+
+-------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * goscustdesk: Fix typos.
+  * goscaja: Fix typos.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Aug 12 06:35:23 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * Update translations
+  * pre-bump version
+  * build: allow users to disable gettext support (--disable-nls)
+  * Update copyright to 2021
+  * Remove the execution bit from some Italian figures
+  * Remove USE_MATE2_MACROS from autogen.sh (legacy)
+  * Update README
+
+-------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0:
+  * Change language to refer to Classic Menu and Compact Menu.
+  * Sets the required version for gettext (0.19.8).
+  * Migrate from intltool to gettext.
+  * Update transaltions.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
+Thu Jul 18 13:04:02 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.1 (changes since 1.22.1):
+  * remove live.gnome & update joining MATE section
+  * update reporting-bugs section
+  * remove custom-command-options section and correct syntax
+  * update preferred applications section
+  * update reporting-bugs section
+  * gosoverview.xml: Reduce link attributes
+  * Update transaltions.
+
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * Replace docbook link with xref and fix a linkend attribute.
+  * help: Update copyright.
+  * Upgrade the manual to docbook 5.0.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * Add autogen.sh to Extra_dist.
+  * Replace -Dokumentationsprojekt with Documentation Project.
+  * Virtual filesystem in Unix-like operating systems.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Nov 25 15:37:18 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * Use make functions for HELP_LINGUAS.
+  * Update instructions for editing keyboard shortcuts.
+  * Add keyboard shortcut for showing hidden files.
+  * Systems without dconf profiles.
+  * dconf settings storage system.
+  * Remove extra char.
+  * GNOME Media is deprecated: Remove gstreamer-properties.
+  * Remove full stop (period) in title ending.
+  * Remove menu_panel.png.
+  * Show MATE logo in menu panel.
+  * Fix installation.
+  * Resize screenshot.
+  * Browser mode is the default in MATE.
+  * Fix figure title - search bar.
+  * Add autogen.sh to Extra_dist.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Jun 22 17:10:44 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Update translations of content.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Sync translations of desktop file with Transifex.
+  * Add Changelog generation.
+
+-------------------------------------------------------------------
+Wed Jan 27 06:26:36 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+
+-------------------------------------------------------------------
+Thu Oct  8 15:35:25 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0.
+- Add mate-user-guide-lang package.
+
+-------------------------------------------------------------------
+Fri Jun 12 09:04:38 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

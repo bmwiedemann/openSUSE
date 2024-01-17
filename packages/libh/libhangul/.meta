@@ -1,0 +1,5 @@
+<package name="libhangul" project="openSUSE:Factory">
+  <title>Hangul input library used by scim-hangul</title>
+  <description>Hangul input library used by scim-hangul</description>
+  <devel project="M17N" package="libhangul"/>
+</package>

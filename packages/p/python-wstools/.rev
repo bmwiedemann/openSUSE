@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>061095355e9f28780133f0ebaed154bd</srcmd5>
+    <version>0.4.6</version>
+    <time>1517824272</time>
+    <user>dimstar_suse</user>
+    <comment>new package, dependency of internally used stuff in maintenance</comment>
+    <requestid>558831</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e39c5cca296fda4c15820af1c1791fb8</srcmd5>
+    <version>0.4.8</version>
+    <time>1531232166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.8
+  * No changelog provided by upstream</comment>
+    <requestid>621728</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e04ef852e88820bd3d0c5b12326d4e45</srcmd5>
+    <version>0.4.8</version>
+    <time>1544726715</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654072</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7bf898052cbbc6c631ae13125c5b11df</srcmd5>
+    <version>0.4.8</version>
+    <time>1615802076</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the syntax of %{python_module} macro
+</comment>
+    <requestid>878557</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>3d4413285e4b0a73314e4d24a8648a92</srcmd5>
+    <version>0.4.8</version>
+    <time>1630093456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914645</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>fc46ff1d2fe6d0873b001591d91d90e8</srcmd5>
+    <version>0.4.8</version>
+    <time>1636388682</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing six dependency declaration</comment>
+    <requestid>930141</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>53e192e1d7d39ad5d0afe5fc22aef15d</srcmd5>
+    <version>0.4.8</version>
+    <time>1638997766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936463</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>2ee7741a292d70e257330d71b49514ff</srcmd5>
+    <version>0.4.8</version>
+    <time>1643404363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949681</requestid>
+  </revision>
+</revisionlist>

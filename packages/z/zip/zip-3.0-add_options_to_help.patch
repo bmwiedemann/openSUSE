@@ -1,0 +1,10 @@
+--- zip.c
++++ zip.c
+@@ -730,6 +730,7 @@
+ "  -r        recurse into directories (see Recursion below)",
+ "  -m        after archive created, delete original files (move into archive)",
+ "  -j        junk directory names (store just file names)",
++"  -k        Attempt to convert the names and paths to conform to MSDOS",
+ "  -q        quiet operation",
+ "  -v        verbose operation (just \"zip -v\" shows version information)",
+ "  -c        prompt for one-line comment for each entry",

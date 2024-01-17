@@ -1,0 +1,65 @@
+## Path:	Network/WWW/bwbar
+## Description: Settings for bwbar
+## ServiceRestart: bwbar
+
+## Type:	string(input,output)
+## Default:	"output"
+#
+# Measure input or output bandwidth (default)
+BWBAR_MEASURE="output"
+
+## Type:	string
+## Default:	"/srv/www/htdocs/ubar.txt"
+#
+# The name of the text output file
+BWBAR_TEXTFILE="/srv/www/htdocs/ubar.txt"
+
+
+## Type:	string
+## Default:	"/srv/www/htdocs/ubar.png"
+#
+# The name of the text output file
+BWBAR_PNGFILE="/srv/www/htdocs/ubar.png"
+
+## Type:	integer
+## Default:	15
+#
+# The poll interval in seconds 
+BWBAR_INTERVAL=15
+
+## Type:	integer
+## Default:	600
+#
+# Width of the graphical bar
+BWBAR_WIDTH=600
+
+## Type:	integer
+## Default:	4
+#
+# Height of the graphical bar
+BWBAR_HEIGHT=4
+
+## Type:	integer
+## Default:	1
+#
+# Border width of the graphical bar
+BWBAR_BORDER=1
+
+## Type:	string(kbps,Mbps,Gbps)
+## Default:	"Mbps"
+#
+# Bandwidth is measured in this units
+BWBAR_UNIT="Mbps"
+
+## Type:	string("eth0", "eth1", "wlan0",)
+## Default:	"eth0"
+#
+# Monitor this device
+BWBAR_DEVICE="eth0"
+
+## Type:	string("0.8", "1.5" ,"4", "8", "10", "100", "1000",)
+## Default:	"1.5"
+#
+# Maximum Link speed
+BWBAR_MAXMBPS=1.5
+

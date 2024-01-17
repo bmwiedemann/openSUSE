@@ -1,0 +1,5 @@
+<package name="scim-input-pad" project="openSUSE:Factory">
+  <title>an onscreen input pad to easily input symbols</title>
+  <description>An onscreen input pad to easily input symbols</description>
+  <devel project="M17N" package="scim-input-pad"/>
+</package>

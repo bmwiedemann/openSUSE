@@ -1,0 +1,7 @@
+<package name="yast2-trans-stats" project="openSUSE:Factory">
+  <title>YaST2 - Translation Statistics</title>
+  <description>The package contains statistic files (one file per language).  With the
+help of these statistics Yast warns you if you select a language for
+installation which is unsufficiently translated.</description>
+  <devel project="YaST:Head" package="yast2-trans-stats"/>
+</package>

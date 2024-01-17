@@ -1,0 +1,212 @@
+-------------------------------------------------------------------
+Fri Nov 24 19:18:18 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 2.10.0:
+  * Security CVE-2023-4508: Out-of-bounds memory access of filename 
+  * Japanese Language File (PR#183)
+  * Fix crash Edit-file-format dialog (PR#181)
+  * Allow gerbv foo.gvp to act like gerbv -p foo.gvp was specified
+    (PR#184)
+  * Fix Translation and Scale are not editable in Edit-layer dialog
+    (PR#182)
+  * Increase maximum zooming level (PR#186)
+  * Recommend a way of reporting security issues (PR#193)
+- Update to 2.9.8:
+  * Using floating point math for arcs (PR#173)
+  * Bump APERTURE_PARAMETERS_MAX to 10006 in order to comply with
+    Gerber specification revision 2021.02 (PR#172)
+  * Recognize empty drill files (PR#170)
+- Update to 2.9.7:
+  * The BUGS file now references GitHub instead of listing the
+    known issues for reach release (PR#132)
+
+-------------------------------------------------------------------
+Mon Jan  9 07:48:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.6:
+  * Turn off autodetect after FILE_FORMAT
+
+-------------------------------------------------------------------
+Sun Dec  4 21:21:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.5:
+  * Replaced — with - to fix charset issue in gerbv --version on wine
+  * Check for NULL schema source default
+  * Changed TinySCHEME version notice from 1.34 to 1.35
+  * Fix draw.h include guard (PR#141 by @ooxi)
+  * Replaced — with - to fix charset issue in gerbv --version on wine
+
+-------------------------------------------------------------------
+Thu Nov 17 14:26:10 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.9.4
+  * Fix rotation
+  * libgerbv: Free the memory allocated in aperture macro comments
+  * Fix CVE-2021-40400: Gerbv RS-274X aperture macro outline primitive out-of-bounds read vulnerability
+  * Fix CVE-2021-40403: Gerbv pick-and-place rotation parsing use of uninitialized variable vulnerability
+  * Fix CVE-2021-40401: Gerbv RS-274X aperture definition tokenization use-after-free vulnerability
+  * Emit warning when G04 includes a CR or LF
+  * Support spaces in excellon XY drill lines
+  * Add support for Altium-style FILE_FORMAT comments
+
+-------------------------------------------------------------------
+Wed May  4 09:09:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Change the source URL
+- Update to 2.8.2. Changes since 2.7.0:
+  * Fix CVE-2021-40393: RS-274X format aperture macro variables
+    out-of-bounds write vulnerability (boo#1194035)
+  * Adjust autotool related files due warnings by autoconf
+  * Fix CVE-2021-40391: Gerbv drill format T-code tool number
+    out-of-bounds write vulnerability (boo#1192949)
+  * Fix double-freeing memory
+  * Fix casting pointer to different size integer
+  * Fix crash when opening/saving files
+- Drop patch, now upstream:
+  * 0001-Fix-enum-declarations.patch
+
+-------------------------------------------------------------------
+Tue Jan 12 16:03:06 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix duplicate symbol error due to wrong syntax in declaration:
+  * 0001-Fix-enum-declarations.patch
+
+-------------------------------------------------------------------
+Mon Mar 25 22:26:25 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use correct tarball from upstream
+- Remove unused cruft from the specfile
+
+-------------------------------------------------------------------
+Wed Feb 27 12:18:11 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.7.0
+- Translations restored
+- Patches:
+  * gerbv-2.6.1-undefined-symbols.patch upstreamed
+  * gerbv-fix-install-sh-call.patch upstreamed
+  * gerbv-2.6.1-no-translation.patch upstreamed
+  * gerbv-no-build-time.patch removed, build date/time is now set
+    by OBS
+
+-------------------------------------------------------------------
+Tue Mar  3 12:49:46 UTC 2015 - dev@stellardeath.org
+
+- Backport commits 55e4460 and dd8f9fa from upstream that cures
+  the problem of an undefined symbol "screen" when using gerbv as
+  a library
+  * gerbv-2.6.1-undefined-symbols.patch
+
+-------------------------------------------------------------------
+Tue Mar  3 11:46:11 UTC 2015 - dmitry_r@opensuse.org
+
+- Fix desktop menu categories
+
+-------------------------------------------------------------------
+Tue Oct  7 21:24:37 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix build with automake 1.14
+  * gerbv-fix-install-sh-call.patch
+
+-------------------------------------------------------------------
+Tue Jul 23 09:34:34 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 2.6.1
+  * Localization support
+- Disable localization due to missed files
+  * gerbv-2.6.1-no-translation.patch
+
+-------------------------------------------------------------------
+Thu Jan  3 21:24:02 UTC 2013 - dmitry_r@opensuse.org
+
+- Delete guile from requires
+- Delete compilation time from binary
+  * gerbv-no-build-time.patch
+
+-------------------------------------------------------------------
+Wed Dec 26 13:30:40 UTC 2012 - dmitry_r@opensuse.org
+
+- fix summary
+
+-------------------------------------------------------------------
+Tue Dec 25 17:45:28 UTC 2012 - dmitry_r@opensuse.org
+
+- spec file cleanup
+- split libgerbv to separate package
+
+-------------------------------------------------------------------
+Tue Dec 27 08:15:35 UTC 2011 - werner.ho@gmx.de
+
+- new version 2.6.0
+
+-------------------------------------------------------------------
+Sat Nov 19 12:08:10 UTC 2011 - werner.ho@gmx.de
+
+- new version 2.5.0
+- build fixes for openSUSE 12.1
+
+-------------------------------------------------------------------
+Sat Mar 06 00:00:00 UTC 2010 - werner.ho@gmx.de
+
+- new version 2.4.0
+
+-------------------------------------------------------------------
+Sun Oct 11 00:00:00 UTC 2009 - werner.ho@gmx.de
+
+- new version 2.3.0
+
+-------------------------------------------------------------------
+Fri Feb 06 00:00:00 UTC 2009 - werner.ho@gmx.de
+
+- new version 2.2.0
+
+-------------------------------------------------------------------
+Sat Dec 20 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- fixed desktop integration of openSUSE 11.1
+- directory fixes
+- call /sbin/ldconfig
+
+-------------------------------------------------------------------
+Sun Sep 21 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- new version 2.1.0
+- removed support for older distributions
+- created additional devel package
+
+-------------------------------------------------------------------
+Mon Mar 24 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- fixed desktop integration
+
+-------------------------------------------------------------------
+Thu Mar 04 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- new version 2.0.1
+- desktop integration
+
+-------------------------------------------------------------------
+Sun Jan 13 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- new version 2.0.0
+
+-------------------------------------------------------------------
+Thu Nov 29 00:00:00 UTC 2007 - werner.ho@gmx.de
+
+- new version 1.0.3
+- removed msgstr_size patch
+
+-------------------------------------------------------------------
+Wed Feb 28 00:00:00 UTC 2007 - werner.ho@gmx.de
+
+- added msgstr_size patch
+
+-------------------------------------------------------------------
+Tue Aug 29 00:00:00 UTC 2006 - werner.ho@gmx.de
+
+- added libpng-devel: gkt2-devel of SuSE 9.3 didn't provide it
+
+-------------------------------------------------------------------
+Sun Aug 27 00:00:00 UTC 2006 - werner.ho@gmx.de
+
+- first spec file

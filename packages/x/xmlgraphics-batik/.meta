@@ -1,0 +1,8 @@
+<package name="xmlgraphics-batik" project="openSUSE:Factory">
+  <title>Scalable Vector Graphics for Java</title>
+  <description>Batik is a Java(tm) technology based toolkit for applications that want
+to use images in the Scalable Vector Graphics (SVG) format for various
+purposes, such as viewing, generation or manipulation.</description>
+  <devel project="Java:packages" package="xmlgraphics-batik"/>
+  <url>http://xml.apache.org/batik/</url>
+</package>

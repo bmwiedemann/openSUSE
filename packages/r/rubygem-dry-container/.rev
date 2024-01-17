@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d480fcd7ee483e07277e654af3db5e99</srcmd5>
+    <version>0.7.2</version>
+    <time>1593620577</time>
+    <user>dimstar_suse</user>
+    <comment>one more try for dry</comment>
+    <requestid>818086</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>448db2359d083dd10752a137f115e99e</srcmd5>
+    <version>0.8.0</version>
+    <time>1625225255</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903499</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a81b6c92d62bb7b6bf775874a56b62ca</srcmd5>
+    <version>0.9.0</version>
+    <time>1645723216</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>956115</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4857f1ea84231b79a92e952ac4cdd790</srcmd5>
+    <version>0.10.1</version>
+    <time>1660051586</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>993475</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e21658486671867915112a97e77622d9</srcmd5>
+    <version>0.11.0</version>
+    <time>1665591916</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 0.11.0
+ see installed CHANGELOG.md
+  ## 0.11.0 2022-09-16
+  
+  
+  ### Changed
+  
+  - dry-configurable will be used whenever it is in the $LOAD_PATH (see dry-rb/dry-system#247 for more context) (@solnic)
+  
+  [Compare v0.10.1...v0.11.0](https://github.com/dry-rb/dry-container/compare/v0.10.1...v0.11.0)
+  
+</comment>
+    <requestid>1010073</requestid>
+  </revision>
+</revisionlist>

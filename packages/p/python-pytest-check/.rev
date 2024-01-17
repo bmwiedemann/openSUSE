@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96db79a3931916d59b053aea53349cb0</srcmd5>
+    <version>1.0.5</version>
+    <time>1657885972</time>
+    <user>dimstar_suse</user>
+    <comment>needed for testing of python-sphobjinv</comment>
+    <requestid>989344</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fd7d5457ea4be3e80965e2ccb8ce8b0e</srcmd5>
+    <version>2.2.0</version>
+    <time>1690278681</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * pseudo traceback additions
+    `-l` or `--showlocals` shows locals
+    `__tracebackhide__ = True` is honored.
+  * Fix 127 IndexError when running a check in a thread
+  * include tests an examples in sdist -  pr 121
+  * README.md - clean up documentation for `--check-max-tb`.
+  * Minor internal cleanup - removed some debug code.
+  * `check.call_on_fail(func)` - ***Experimental***
+  * Name changed from `check.set_failure_callback(func)`.
+  * This &quot;func&quot; function will be called for each failed check,
+    and needs to accept a string parameter.
+  * With the following change, the default is now pretty darn
+    fast, and most people will not need to modify any settings to
+    get most of the speed improvements.
+  * `--check-max-tb=&lt;int&gt;` - sets the max number of pseudo-
+    traceback reports per test function.
+  * `check.set_no_tb` and `--set-no-tb` will be removed in a
+    future release. (probably soon)
+  * Since `--check-max-tb` is more useful, the default for
+    `--check-max-tb` is 1, which is already pretty fast.
+  * And `--check-max-tb=0` has the same effect as `--check-no-
+    tb`.
+  * Most changes are related to speedup improvements.
+  * use `--check-no-tb --check-max-report=10` to get super zippy.
+  * `check.between()` added just for fun
+  * Rewrote `check.equal()` and other helper functions to not use
+    assert.
+  * `--check-no-tb` - turn off tracebacks
+  * `--check-max-report` - limit reported failures per test</comment>
+    <requestid>1100440</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce8ddd5eb7172ec6cff3f6b7b8d9ca75</srcmd5>
+    <version>2.2.1</version>
+    <time>1694701568</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1111063</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1a722574f72e05a16fea7cfdaf8d37a</srcmd5>
+    <version>2.2.2</version>
+    <time>1696528992</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.2:
+  * fixed Issue #7</comment>
+    <requestid>1114842</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b40e0b311a368a0c93cfbf9759d5a0d7</srcmd5>
+    <version>2.2.3</version>
+    <time>1704487550</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.3:
+  * Check failure info now shows up in summaries.</comment>
+    <requestid>1137114</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0ef20027d929e8ae365425961cebf233</srcmd5>
+    <version>2.2.4</version>
+    <time>1704919925</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.4:
+  * fix 153
+  * Summaries from 2.2.3 are cool, but don't work for pytest &lt;
+    7.3; Remove them for earlier pytest
+  * Add tox test run for pytest 7.0.0
+  * Change dependencies to require 7.0.0 pytest</comment>
+    <requestid>1137813</requestid>
+  </revision>
+</revisionlist>

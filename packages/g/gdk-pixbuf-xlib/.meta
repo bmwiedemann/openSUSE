@@ -1,0 +1,13 @@
+<package name="gdk-pixbuf-xlib" project="openSUSE:Factory">
+  <title>An GdkPixbuf compat library</title>
+  <description>gdk-pixbuf-xlib is an image loading library that can be extended by
+loadable modules for new image formats. It is used by toolkits such
+as GTK+ or Clutter.
+
+This package is a compat package providing various functions to
+integrate GdkPixbuf with Xlib data types
+
+</description>
+  <devel project="GNOME:Factory" package="gdk-pixbuf-xlib"/>
+  <url>https://gitlab.gnome.org/Archive/gdk-pixbuf-xlib</url>
+</package>

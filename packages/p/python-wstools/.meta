@@ -1,0 +1,8 @@
+<package name="python-wstools" project="openSUSE:Factory">
+  <title>WSDL parsing services package for Web Services for Python</title>
+  <description>Python module for WSDL parsing services package for Web Services.
+
+</description>
+  <devel project="devel:languages:python" package="python-wstools"/>
+  <url>https://github.com/pycontribs/wstools</url>
+</package>

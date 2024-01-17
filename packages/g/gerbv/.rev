@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2aa3ee2cc58622c64e290f474af21ec8</srcmd5>
+    <version>2.6.0</version>
+    <time>1357648565</time>
+    <user>coolo</user>
+    <comment>part of gEDA
+http://lists.opensuse.org/opensuse-factory/2012-12/msg00538.html</comment>
+    <requestid>146934</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2aa3ee2cc58622c64e290f474af21ec8</srcmd5>
+    <version>2.6.0</version>
+    <time>1359108920</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>12be6859edf0cb85cfde33bc0905905e</srcmd5>
+    <version>2.6.1</version>
+    <time>1374575490</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.6.1
+  * Localization support
+- Disable localization due to missed files
+  * gerbv-2.6.1-no-translation.patch</comment>
+    <requestid>184067</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>12be6859edf0cb85cfde33bc0905905e</srcmd5>
+    <version>2.6.1</version>
+    <time>1379662415</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>12be6859edf0cb85cfde33bc0905905e</srcmd5>
+    <version>2.6.1</version>
+    <time>1409300945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>2fb6ca510dfaf0506bf03e6b58faabfd</srcmd5>
+    <version>2.6.1</version>
+    <time>1412799235</time>
+    <user>coolo</user>
+    <comment>- Fix build with automake 1.14
+  * gerbv-fix-install-sh-call.patch</comment>
+    <requestid>254639</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>b917a47e1a4b53eb4f8f6635cff9df36</srcmd5>
+    <version>2.6.1</version>
+    <time>1425566410</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288657</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8e956db38a1b76b07fae7b275df5ec5f</srcmd5>
+    <version>2.7.0</version>
+    <time>1553636006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688504</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b6b7102a1d89ee27259af16fb9a5d70d</srcmd5>
+    <version>2.7.0</version>
+    <time>1610633126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862974</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c42a16400513cdcfe430b6d264e7aa96</srcmd5>
+    <version>2.8.2</version>
+    <time>1652389259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976674</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>06acfa0fa63c2e553d3ff1f2aac5a55e</srcmd5>
+    <version>2.9.4</version>
+    <time>1668970017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036820</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7fa0216583185dc5e07f14db09e9c7ff</srcmd5>
+    <version>2.9.5</version>
+    <time>1671722581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044137</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7b279f0591f59902e500a93305229843</srcmd5>
+    <version>2.9.6</version>
+    <time>1674664989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060730</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ca07652b4cdafa7df1af6c9a2605a74a</srcmd5>
+    <version>2.10.0</version>
+    <time>1701378075</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129871</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,253 @@
+Index: ebcdic.h
+===================================================================
+--- ebcdic.h.orig	2005-04-09 23:10:02.000000000 +0200
++++ ebcdic.h	2010-05-21 18:47:36.891591234 +0200
+@@ -277,6 +277,24 @@ ZCONST uch Far iso2oem[] = {
+     0x9B, 0x97, 0xA3, 0x96, 0x81, 0xEC, 0xE7, 0x98   /* F8 - FF */
+ };
+ #endif /* OEM_RUS */
++ZCONST uch Far iso2oem_2[] = {
++    0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87,
++    0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F,
++    0x90, 0x91, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97,
++    0x98, 0x99, 0x9A, 0x9B, 0x9C, 0x9D, 0x9E, 0x9F,
++    0x20, 0xA4, 0xF4, 0x9D, 0xCF, 0x95, 0x97, 0xF5,
++    0xF9, 0xE6, 0xB8, 0x9B, 0x8D, 0x2D, 0xA6, 0xBD,
++    0x20, 0xA5, 0xF2, 0x88, 0xEF, 0x96, 0x98, 0xF3,
++    0xF7, 0xE7, 0xAD, 0x9C, 0xAB, 0xF1, 0xA7, 0xBE,
++    0xE8, 0xB5, 0xB6, 0xC6, 0x8E, 0x91, 0x8F, 0x80,
++    0xAC, 0x90, 0xA8, 0xD3, 0xB7, 0xD6, 0xD7, 0xD2,
++    0xD1, 0xE3, 0xD5, 0xE0, 0xE2, 0x8A, 0x99, 0x9E,
++    0xFC, 0xDE, 0xE9, 0xEB, 0x9A, 0xED, 0xDD, 0xE1,
++    0xEA, 0xA0, 0x83, 0xC7, 0x84, 0x92, 0x86, 0x87,
++    0x9F, 0x82, 0xA9, 0x89, 0xD8, 0xA1, 0x8C, 0xD4,
++    0xD0, 0xE4, 0xE5, 0xA2, 0x93, 0x8B, 0x94, 0xF6,
++    0xFD, 0x85, 0xA3, 0xFB, 0x81, 0xEC, 0xEE, 0xFA
++};
+ #endif /* IZ_ISO2OEM_ARRAY */
+ 
+ #ifdef IZ_OEM2ISO_ARRAY
+@@ -319,6 +337,25 @@ ZCONST uch Far oem2iso[] = {
+     0xB0, 0xA8, 0xB7, 0xB9, 0xB3, 0xB2, 0xA6, 0xA0   /* F8 - FF */
+ };
+ #endif /* OEM_RUS */
++
++ZCONST uch Far oem2iso_2[] = {
++    0xC7, 0xFC, 0xE9, 0xE2, 0xE4, 0xF9, 0xE6, 0xE7,
++    0xB3, 0xEB, 0xD5, 0xF5, 0xEE, 0xAC, 0xC4, 0xC6,
++    0xC9, 0xC5, 0xE5, 0xF4, 0xF6, 0xA5, 0xB5, 0xA6,
++    0xB6, 0xD6, 0xDC, 0xAB, 0xBB, 0xA3, 0xD7, 0xE8,
++    0xE1, 0xED, 0xF3, 0xFA, 0xA1, 0xB1, 0xAE, 0xBE,
++    0xCA, 0xEA, 0xAA, 0xBC, 0xC8, 0xBA, 0x3C, 0x3E,
++    0xB0, 0xB1, 0xB2, 0xB3, 0xB4, 0xC1, 0xC2, 0xCC,
++    0xAA, 0xB9, 0xBA, 0xBB, 0xBC, 0xAF, 0xBF, 0xBF,
++    0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC3, 0xE3,
++    0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xA4,
++    0xF0, 0xD0, 0xCF, 0xCB, 0xEF, 0xD2, 0xCD, 0xCE,
++    0xEC, 0xD9, 0xDA, 0xDB, 0xDC, 0xDE, 0xD9, 0xDF,
++    0xD3, 0xDF, 0xD4, 0xD1, 0xF1, 0xF2, 0xA9, 0xB9,
++    0xC0, 0xDA, 0xE0, 0xDB, 0xFD, 0xDD, 0xFE, 0xB4,
++    0xF0, 0xBD, 0xB2, 0xB7, 0xA2, 0xA7, 0xF7, 0xB8,
++    0xF8, 0xA8, 0xFF, 0xFB, 0xD8, 0xF8, 0xFE, 0xFF
++};
+ #endif /* IZ_OEM2ISO_ARRAY */
+ 
+ #if defined(THEOS) || defined(THEOS_SUPPORT)
+Index: globals.c
+===================================================================
+--- globals.c.orig	2008-05-25 19:26:38.000000000 +0200
++++ globals.c	2010-05-21 18:47:36.895590875 +0200
+@@ -32,6 +32,8 @@ int pathput = 1;        /* 1=store path
+ int scanimage = 1;      /* 1=scan through image files */
+ #endif
+ int method = BEST;      /* one of BEST, DEFLATE (only), or STORE (only) */
++int winify = 0;         /* 1=file names will be converted from IBM PC CP 850 to ISO8859-1 */
++int iso8859_2 = 0;      /* 1=ISO8859-2 will be used instead of ISO8859-1 */
+ int dosify = 0;         /* 1=make new entries look like MSDOS */
+ int verbose = 0;        /* 1=report oddities in zip file structure */
+ int fix = 0;            /* 1=fix the zip file, 2=FF, 3=ZipNote */
+Index: man/zip.1
+===================================================================
+--- man/zip.1.orig	2008-06-17 02:39:40.000000000 +0200
++++ man/zip.1	2010-05-21 18:47:36.895590875 +0200
+@@ -18,7 +18,7 @@
+ zip \- package and compress (archive) files
+ .SH SYNOPSIS
+ .B zip
+-.RB [\- aABcdDeEfFghjklLmoqrRSTuvVwXyz!@$ ]
++.RB [\- aABcdDeEfFghjklLmoOqrRSTuvVwXyz!@$ ]
+ [\-\-longoption ...]
+ .RB [\- b " path]"
+ .RB [\- n " suffixes]"
+@@ -1322,7 +1322,15 @@ Attempt to convert the names and paths t
+ store only the MSDOS attribute (just the user write attribute from Unix),
+ and mark the entry as made under MSDOS (even though it was not);
+ for compatibility with PKUNZIP under MSDOS which cannot handle certain
+-names such as those with two dots.
++names such as those with two dots. Conversion from ISO8859-1 to
++IBM PC CP 852 is used. See also
++.B \-OO
++.TP
++.B \-K
++Attempt to convert the names and paths to conform to MS Windows. Behaviour
++similar to
++.B \-k
++but long names are used.
+ .TP
+ .PD 0
+ .B \-l
+@@ -1578,6 +1586,12 @@ with encrypted entries, \fIzipcloak\fP w
+ them to normal entries.
+ .TP
+ .PD 0
++.B \-OO
++File names will be converted from ISO8859-2 instead of from ISO8859-1. See
++.B \-k
++for details.
++.TP
++.PD 0
+ .B \-p
+ .TP
+ .PD
+Index: unix/unix.c
+===================================================================
+--- unix/unix.c.orig	2008-06-19 06:26:18.000000000 +0200
++++ unix/unix.c	2010-05-21 18:47:36.975590824 +0200
+@@ -267,9 +267,14 @@ int *pdosflag;          /* output: force
+     return NULL;
+   strcpy(n, t);
+ 
+-  if (dosify)
++  if ((dosify) && (!winify))
+     msname(n);
+ 
++#ifdef IZ_ISO2OEM_ARRAY
++  if (dosify)
++    str_iso_to_oem(n, n);
++#endif
++
+ #ifdef EBCDIC
+   strtoasc(n, n);       /* here because msname() needs native coding */
+ #endif
+Index: util.c
+===================================================================
+--- util.c.orig	2008-03-29 13:19:08.000000000 +0100
++++ util.c	2010-05-21 18:47:37.287590701 +0200
+@@ -725,7 +725,10 @@ char *str_iso_to_oem(dst, src)
+   char *dst;
+ {
+   char *dest_start = dst;
+-  while (*dst++ = (char)iso2oem[(uch)(*src++)]);
++  if (!iso8859_2)
++    while (*src) { *dst++ = (*src & 0x80) ? iso2oem[*src++ & 0x7f] : *src++; }
++  else
++    while (*src) { *dst++ = (*src & 0x80) ? iso2oem_2[*src++ & 0x7f] : *src++; }
+   return dest_start;
+ }
+ #endif
+@@ -736,7 +739,10 @@ char *str_oem_to_iso(dst, src)
+   char *dst;
+ {
+   char *dest_start = dst;
+-  while (*dst++ = (char)oem2iso[(uch)(*src++)]);
++  if (!iso8859_2)
++    while (*src) { *dst++ = (*src & 0x80) ? oem2iso[*src++ & 0x7f] : *src++; }
++  else
++    while (*src) { *dst++ = (*src & 0x80) ? oem2iso_2[*src++ & 0x7f] : *src++; }
+   return dest_start;
+ }
+ #endif
+Index: zip.c
+===================================================================
+--- zip.c.orig	2008-07-05 18:34:06.000000000 +0200
++++ zip.c	2010-05-21 18:48:04.779644629 +0200
+@@ -1942,7 +1942,7 @@ int set_filetype(out_path)
+ #ifdef UNICODE_TEST
+ #define o_sC            0x146
+ #endif
+-
++#define o_OO            0x147
+ 
+ /* the below is mainly from the old main command line
+    switch with a few changes */
+@@ -2025,6 +2025,7 @@ struct option_struct far options[] = {
+ #endif /* ?MACOS */
+     {"J",  "junk-sfx",    o_NO_VALUE,       o_NOT_NEGATABLE, 'J',  "strip self extractor from archive"},
+     {"k",  "DOS-names",   o_NO_VALUE,       o_NOT_NEGATABLE, 'k',  "force use of 8.3 DOS names"},
++    {"K",  "latin1-entries", o_NO_VALUE,    o_NOT_NEGATABLE, 'K',  "convert file names from CP850 to ISO8859-1"},
+     {"l",  "to-crlf",     o_NO_VALUE,       o_NOT_NEGATABLE, 'l',  "convert text file line ends - LF->CRLF"},
+     {"ll", "from-crlf",   o_NO_VALUE,       o_NOT_NEGATABLE, o_ll, "convert text file line ends - CRLF->LF"},
+     {"lf", "logfile-path",o_REQUIRED_VALUE, o_NOT_NEGATABLE, o_lf, "log to log file at path (default overwrite)"},
+@@ -2043,6 +2044,7 @@ struct option_struct far options[] = {
+ #endif
+     {"o",  "latest-time", o_NO_VALUE,       o_NOT_NEGATABLE, 'o',  "use latest entry time as archive time"},
+     {"O",  "output-file", o_REQUIRED_VALUE, o_NOT_NEGATABLE, 'O',  "set out zipfile different than in zipfile"},
++    {"OO", "iso8859-2",   o_NO_VALUE,       o_NOT_NEGATABLE, o_OO, "Use ISO8859-2 instead of ISO8859-1"},
+     {"p",  "paths",       o_NO_VALUE,       o_NOT_NEGATABLE, 'p',  "store paths"},
+     {"P",  "password",    o_REQUIRED_VALUE, o_NOT_NEGATABLE, 'P',  "encrypt entries, option value is password"},
+ #if defined(QDOS) || defined(QLZIP)
+@@ -2289,6 +2291,8 @@ char **argv;            /* command line
+   dispose = 0;         /* 1=remove files after put in zip file */
+   pathput = 1;         /* 1=store path with name */
+   method = BEST;       /* one of BEST, DEFLATE (only), or STORE (only) */
++  winify = 0;          /* 1=file names will be converted from IBM PC CP 850 to ISO8859-1 */
++  iso8859_2 = 0;       /* 1=ISO8859-2 will be used instead of ISO8859-1 */
+   dosify = 0;          /* 1=make new entries look like MSDOS */
+   verbose = 0;         /* 1=report oddities in zip file structure */
+   fix = 0;             /* 1=fix the zip file */
+@@ -2859,6 +2863,8 @@ char **argv;            /* command line
+           junk_sfx = 1;  break;
+         case 'k':   /* Make entries using DOS names (k for Katz) */
+           dosify = 1;  break;
++        case 'K':   /* file names will be converted from IBM PC CP 850 to ISO8859-1 */
++          winify = dosify = 1;  break;
+         case 'l':   /* Translate end-of-line */
+           translate_eol = 1; break;
+         case o_ll:
+@@ -2915,6 +2921,8 @@ char **argv;            /* command line
+           free(value);
+           have_out = 1;
+           break;
++        case o_OO:   /* ISO8859-2 will be used instead of ISO8859-1 */
++          iso8859_2 = 1;  break;
+         case 'p':   /* Store path with name */
+           break;            /* (do nothing as annoyance avoidance) */
+         case 'P':   /* password for encryption */
+Index: zip.h
+===================================================================
+--- zip.h.orig	2008-05-25 19:23:22.000000000 +0200
++++ zip.h	2010-05-21 18:47:37.339590945 +0200
+@@ -311,9 +311,11 @@ extern ZCONST uch ebcdic[256];
+ /* Are these ever used?  6/12/05 EG */
+ #ifdef IZ_ISO2OEM_ARRAY         /* ISO 8859-1 (Win CP 1252) --> OEM CP 850 */
+ extern ZCONST uch Far iso2oem[128];
++extern ZCONST uch Far iso2oem_2[128];
+ #endif
+ #ifdef IZ_OEM2ISO_ARRAY         /* OEM CP 850 --> ISO 8859-1 (Win CP 1252) */
+ extern ZCONST uch Far oem2iso[128];
++extern ZCONST uch Far oem2iso_2[128];
+ #endif
+ 
+ extern char errbuf[FNMAX+4081]; /* Handy place to build error messages */
+@@ -342,6 +344,8 @@ extern int des_good;            /* Good
+ extern ulg des_crc;             /* Data descriptor CRC */
+ extern uzoff_t des_csize;       /* Data descriptor csize */
+ extern uzoff_t des_usize;       /* Data descriptor usize */
++extern int winify;              /* file names will be converted from IBM PC CP 850 to ISO8859-1 */
++extern int iso8859_2;           /* ISO8859-2 will be used instead of ISO8859-1 */
+ extern int dosify;              /* Make new entries look like MSDOS */
+ extern char *special;           /* Don't compress special suffixes */
+ extern int verbose;             /* Report oddities in zip file structure */
+Index: unix/Makefile
+===================================================================
+--- unix/Makefile.orig	2008-05-07 08:33:56.000000000 +0200
++++ unix/Makefile	2010-05-21 18:47:37.363590733 +0200
+@@ -57,7 +57,7 @@ IZ_OUR_BZIP2_DIR = bzip2
+ #   CFLAGS    flags for C compile
+ #   LFLAGS1   flags after output file spec, before obj file list
+ #   LFLAGS2   flags after obj file list (libraries, etc)
+-CFLAGS_NOOPT = -I. -DUNIX $(LOCAL_ZIP)
++CFLAGS_NOOPT = -I. -DUNIX -DIZ_ISO2OEM_ARRAY $(LOCAL_ZIP)
+ CFLAGS = -O2 $(CFLAGS_NOOPT)
+ LFLAGS1 =
+ LFLAGS2 = -s
