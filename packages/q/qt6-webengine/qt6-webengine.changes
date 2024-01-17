@@ -1,0 +1,248 @@
+-------------------------------------------------------------------
+Fri Dec 22 09:57:26 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- On Leap build with re2-10 even when re2-11 is available (bsc#1217257).
+  re2-11 pulls in system abseil which is incompatible with bundled abseil
+  causing build failure.
+
+-------------------------------------------------------------------
+Wed Dec 20 12:16:07 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to force pdf_attributions.qdoc to be generated before
+  qtpdf, fixing a race condition that made the docs subpackage
+  build not reproducible (boo#1217774):
+  * 0001-Fix-race-condition-generating-docs.patch
+
+-------------------------------------------------------------------
+Mon Nov 27 14:00:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.1:
+  * https://www.qt.io/blog/qt-6.6.1-released
+
+-------------------------------------------------------------------
+Tue Oct 10 09:40:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * https://www.qt.io/blog/qt-6.6-released
+
+-------------------------------------------------------------------
+Thu Sep 28 07:34:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.3
+  * https://www.qt.io/blog/qt-6.5.3-released
+
+-------------------------------------------------------------------
+Tue Aug  8 16:11:11 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Build with older re2 release on Tumbleweed.
+
+-------------------------------------------------------------------
+Thu Jul 20 09:07:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.2
+  * https://www.qt.io/blog/qt-6.5.2-released-1
+
+-------------------------------------------------------------------
+Fri Jun 30 15:13:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update subpackages requirements
+
+-------------------------------------------------------------------
+Wed May 24 07:45:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.1
+  * https://www.qt.io/blog/qt-6.5.1-released
+- Drop patch, merged upstream:
+  * qtwebengine-gcc13.patch
+
+-------------------------------------------------------------------
+Mon Apr  3 10:03:15 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * https://www.qt.io/blog/qt-6.5-lts-released
+
+-------------------------------------------------------------------
+Tue Mar 28 22:20:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * qtwebengine-gcc13.patch
+
+-------------------------------------------------------------------
+Thu Mar 16 10:00:12 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.3:
+  * https://www.qt.io/blog/qt-6.4.3-released
+
+-------------------------------------------------------------------
+Fri Jan  6 16:46:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.2:
+  * https://www.qt.io/blog/qt-6.4.2-released
+
+-------------------------------------------------------------------
+Tue Nov 15 11:53:28 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.1:
+  * https://www.qt.io/blog/qt-6.4.1-released
+
+-------------------------------------------------------------------
+Tue Oct  4 19:49:38 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update disk constraints for qt6-webengine:docs
+
+-------------------------------------------------------------------
+Thu Sep 29 10:36:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0:
+  * https://www.qt.io/blog/qt-6.4-released
+
+-------------------------------------------------------------------
+Fri Sep 16 08:29:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0 RC
+
+-------------------------------------------------------------------
+Fri Sep  9 12:41:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.2:
+  * https://www.qt.io/blog/qt-6.3.2-released
+- Drop disable-gpu-when-using-nouveau-boo-1005323.diff
+  Patch was not updated for Qt6
+
+-------------------------------------------------------------------
+Mon Aug  8 12:03:18 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Remove python2 from buildrequires - it's a left over from qt5
+
+-------------------------------------------------------------------
+Fri Jun 17 15:15:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.1:
+  * https://www.qt.io/blog/qt-6.3.1-released
+- Drop patches, now upstream:
+  * qtwebengine-icu70.patch
+  * 0001-Find-GIO-with-QtBase-6.2.patch
+
+-------------------------------------------------------------------
+Fri Apr  8 11:57:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0:
+  * https://www.qt.io/blog/qt-6.3-released
+- Drop patches, now upstream:
+  * CVE-2022-0971-qtwebengine-5.15.patch
+  * CVE-2022-1096-qtwebengine-6.2.patch
+
+-------------------------------------------------------------------
+Mon Apr  4 20:41:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add security fixes:
+  * CVE-2022-0971-qtwebengine-5.15.patch (CVE-2022-0971, boo#1197163)
+  * CVE-2022-1096-qtwebengine-6.2.patch (CVE-2022-1096, boo#1197552)
+
+-------------------------------------------------------------------
+Tue Mar 29 12:28:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0-rc
+- Drop patches, fixed upstream:
+  * Drop sandbox-statx-futex_time64.patch
+  * 0001-Fix-build-with-glibc-2.34.patch
+- Add upstream changes:
+  * qtwebengine-icu70.patch
+  * 0001-Find-GIO-with-QtBase-6.2.patch
+- Disable build on 32 bits archs (i586, armv7l)
+  Build fails (QTBUG-102143) and upstream doesn't support 32 bits
+  archs.
+
+-------------------------------------------------------------------
+Mon Mar 21 08:46:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.4
+  * https://www.qt.io/blog/qt-6.2.4-released
+- Drop chromium-90-fseal.patch. Not needed anymore.
+
+-------------------------------------------------------------------
+Mon Jan 31 08:55:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.3:
+  * https://www.qt.io/blog/qt-6.2.3-released
+
+-------------------------------------------------------------------
+Thu Dec  9 11:27:27 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints on arm and set requirements for
+  qt6-webengine:docs
+
+-------------------------------------------------------------------
+Wed Dec  1 10:06:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.2
+  * https://www.qt.io/blog/qt-6.2.2-released
+- Make sure all dependencies are present when installing devel
+  packages. Qt >= 6.2.2 is much less permissive.
+- Rebase rtc-dont-use-h264.patch
+
+-------------------------------------------------------------------
+Tue Oct 26 11:23:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.1
+  * https://www.qt.io/blog/qt-6.2.1-released
+
+- Drop openSUSE patch qtwebengine-boo1163766.patch.
+  should be addressed with:
+    https://github.com/qt/qtwebengine-chromium/commit/652f834de
+    https://github.com/qt/qtwebengine-chromium/commit/faae106ed
+    https://github.com/qt/qtwebengine-chromium/commit/6b7b3f1bf
+- Drop upstream changes:
+  * 0001-Fix-build-when-x11-over-egl-es2.patch
+  * 0001-return-ENOSYS-for-clone3.patch
+- Rebase patches:
+  * 0001-Fix-build-with-glibc-2.34.patch
+  * sandbox-statx-futex_time64.patch
+
+-------------------------------------------------------------------
+Thu Sep 30 12:31:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0:
+  * https://www.qt.io/blog/qt-6.2-lts-released
+
+-------------------------------------------------------------------
+Sat Sep 25 07:18:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-rc2
+
+-------------------------------------------------------------------
+Thu Sep 16 14:24:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-rc
+- Add arm build fix:
+  * 0001-Fix-build-when-x11-over-egl-es2.patch
+
+-------------------------------------------------------------------
+Sat Sep 11 12:47:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-beta4
+- Add glibc 2.34 compatibility patch:
+  * 0001-Fix-build-with-glibc-2.34.patch
+- Import patches from the chromium package:
+  * 0001-return-ENOSYS-for-clone3.patch
+  * chromium-90-fseal.patch
+
+-------------------------------------------------------------------
+Sun Aug  1 09:41:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop chromium-glibc-2.33.patch. Merged upstream
+- Rebase sandbox-statx-futex_time64.patch.
+
+-------------------------------------------------------------------
+Fri Jul  2 12:22:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add back patches from libqt5-qtwebengine:
+  * qtwebengine-boo1163766.patch
+  * rtc-dont-use-h264.patch
+  * sandbox-statx-futex_time64.patch
+  * chromium-glibc-2.33.patch
+
+-------------------------------------------------------------------
+Wed Jun 23 19:27:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Init qt6-webengine

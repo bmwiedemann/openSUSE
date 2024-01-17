@@ -1,0 +1,46 @@
+From 3978f593df65d3e8248560fa5f938a3a6c949cdf Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 14 May 2021 17:52:19 +0200
+Subject: [PATCH 2/2] No /usr/bin/env in shebangs
+
+- Force use of the system python
+- Helps the dependency generator
+---
+ kcms/keyboard/kcminputrc_fix_botched_5_21_0.py                  | 2 +-
+ kcms/keyboard/kcminputrc_migrate_repeat_value.py                | 2 +-
+ kcms/ksmserver/kconf_update/ksmserver_update_loginMode_value.py | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/kcms/keyboard/kcminputrc_fix_botched_5_21_0.py b/kcms/keyboard/kcminputrc_fix_botched_5_21_0.py
+index c6f76ac37..0aec9e3b9 100755
+--- a/kcms/keyboard/kcminputrc_fix_botched_5_21_0.py
++++ b/kcms/keyboard/kcminputrc_fix_botched_5_21_0.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ #
+ #  SPDX-FileCopyrightText: 2021 Carson Black <uhhadd@gmail.com>
+ #
+diff --git a/kcms/keyboard/kcminputrc_migrate_repeat_value.py b/kcms/keyboard/kcminputrc_migrate_repeat_value.py
+index 16bfa384d..3c950305f 100755
+--- a/kcms/keyboard/kcminputrc_migrate_repeat_value.py
++++ b/kcms/keyboard/kcminputrc_migrate_repeat_value.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import sys
+ 
+ for line in sys.stdin:
+diff --git a/kcms/ksmserver/kconf_update/ksmserver_update_loginMode_value.py b/kcms/ksmserver/kconf_update/ksmserver_update_loginMode_value.py
+index a019986ac..cec9c78ce 100644
+--- a/kcms/ksmserver/kconf_update/ksmserver_update_loginMode_value.py
++++ b/kcms/ksmserver/kconf_update/ksmserver_update_loginMode_value.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import fileinput
+ 
+ for line in fileinput.input():
+-- 
+2.25.1
+

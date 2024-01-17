@@ -1,0 +1,16 @@
+---
+ shell.h |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- shell.h
++++ shell.h	2016-03-08 10:22:38.169929522 +0000
+@@ -22,6 +22,9 @@
+ #include "config.h"
+ #endif
+ 
++#include <sys/types.h>
++#include <unistd.h>
++
+ #include "bashjmp.h"
+ 
+ #include "command.h"

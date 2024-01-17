@@ -1,0 +1,14 @@
+---
+ wmidump/wmixtract.py |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: acpica-unix2-20130517/wmidump/wmixtract.py
+===================================================================
+--- acpica-unix2-20130517.orig/wmidump/wmixtract.py
++++ acpica-unix2-20130517/wmidump/wmixtract.py
+@@ -1,3 +1,5 @@
++#!/usr/bin/python3
++
+ import sys
+ import re
+ 

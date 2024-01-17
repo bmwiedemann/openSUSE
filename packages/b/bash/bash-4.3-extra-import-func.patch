@@ -1,0 +1,93 @@
+---
+ builtins/shopt.def |    2 ++
+ doc/bash.1         |    7 +++++++
+ execute_cmd.h      |    1 +
+ shell.c            |    2 ++
+ variables.c        |    7 ++++++-
+ 5 files changed, 18 insertions(+), 1 deletion(-)
+
+--- builtins/shopt.def
++++ builtins/shopt.def	2018-11-29 08:19:32.996571288 +0000
+@@ -90,6 +90,7 @@ extern int autocd;
+ extern int glob_star;
+ extern int glob_asciirange;
+ extern int lastpipe_opt;
++extern int import_functions;
+ extern int inherit_errexit;
+ extern int localvar_inherit;
+ extern int localvar_unset;
+@@ -213,6 +214,7 @@ static struct {
+   { "hostcomplete", &perform_hostname_completion, shopt_enable_hostname_completion },
+ #endif
+   { "huponexit", &hup_on_exit, (shopt_set_func_t *)NULL },
++  { "import-functions", &import_functions, (shopt_set_func_t *)NULL },
+   { "inherit_errexit", &inherit_errexit, (shopt_set_func_t *)NULL },
+   { "interactive_comments", &interactive_comments, set_shellopts_after_change },
+   { "lastpipe", &lastpipe_opt, (shopt_set_func_t *)NULL },
+--- doc/bash.1
++++ doc/bash.1	2018-11-29 08:19:33.000571213 +0000
+@@ -245,6 +245,13 @@ The shell becomes restricted (see
+ .B "RESTRICTED SHELL"
+ below).
+ .TP
++.B \-\-import\-functions
++This shell is patched in such a way that shell functions in the inported environment
++will not be expanded due several security issues (e.g. CVE\-2014\-6271).  This option
++can be used to enable this.  It is also possible to use the
++.B shopt
++builtin to do this.
++.TP
+ .B \-\-verbose
+ Equivalent to \fB\-v\fP.
+ .TP
+--- execute_cmd.h
++++ execute_cmd.h	2018-11-29 08:19:33.000571213 +0000
+@@ -61,6 +61,7 @@ extern int evalnest, evalnest_max;
+ extern int sourcenest, sourcenest_max;
+ extern int stdin_redir;
+ extern int line_number_for_err_trap;
++extern int import_functions;
+ 
+ extern char *the_printed_command_except_trap;
+ 
+--- shell.c
++++ shell.c	2018-11-29 08:19:33.000571213 +0000
+@@ -232,6 +232,7 @@ int posixly_correct = 1;	/* Non-zero mea
+ #else
+ int posixly_correct = 0;	/* Non-zero means posix.2 superset. */
+ #endif
++int import_functions = IMPORT_FUNCTIONS_DEF;      /* Import functions from environment */
+ 
+ /* Some long-winded argument names.  These are obviously new. */
+ #define Int 1
+@@ -251,6 +252,7 @@ static const struct {
+   { "help", Int, &want_initial_help, (char **)0x0 },
+   { "init-file", Charp, (int *)0x0, &bashrc_file },
+   { "login", Int, &make_login_shell, (char **)0x0 },
++  { "import-functions", Int, &import_functions, (char **)0x0 },
+   { "noediting", Int, &no_line_editing, (char **)0x0 },
+   { "noprofile", Int, &no_profile, (char **)0x0 },
+   { "norc", Int, &no_rc, (char **)0x0 },
+--- variables.c
++++ variables.c	2018-11-29 08:19:33.000571213 +0000
+@@ -380,6 +380,11 @@ initialize_shell_variables (env, privmod
+ 	  tname = name + BASHFUNC_PREFLEN;	/* start of func name */
+ 	  tname[namelen] = '\0';		/* now tname == func name */
+ 
++	  if (!import_functions && !interactive_shell) {
++		  report_error (_("Skipping importing function definition for `%s': --import-functions required."), tname);
++		  goto reval;
++	  }
++
+ 	  string_length = strlen (string);
+ 	  temp_string = (char *)xmalloc (namelen + string_length + 2);
+ 
+@@ -394,7 +399,7 @@ initialize_shell_variables (env, privmod
+ 	    parse_and_execute (temp_string, tname, SEVAL_NONINT|SEVAL_NOHIST|SEVAL_FUNCDEF|SEVAL_ONECMD);
+ 	  else
+ 	    free (temp_string);		/* parse_and_execute does this */
+-
++    reval:
+ 	  if (temp_var = find_function (tname))
+ 	    {
+ 	      VSETATTR (temp_var, (att_exported|att_imported));

@@ -1,0 +1,41 @@
+An SNMP agent is a powerful and complex software and, as such, may
+be affected by flaws and security issues.  We recommend that SNMP
+access (161/udp,162/udp) be blocked at your firewall.
+
+There are also some important changes that have been made in this release
+of our package:
+
+      o the daemon now sets a PID file in /var/run/
+
+      o logging is now done directly to /var/log/net-snmpd.log instead
+        of sending stderr/stdout through syslog.
+
+      o the daemon is now started with the '-r'.  This option prevents
+        snmpd from exiting if it doesn't have permission to read something.
+        This only occurs if you start snmpd on a high port as a non-root
+        root user.
+
+      o If you need to run snmptrapd, we've provided an init script
+        in /etc/init.d/snmptrapd, but the service is disabled by default.
+        SNMP traps should be avoided whenever possible because they are
+        unreliable (you should poll with snmpget instead) and snmptrapd
+        has been the source of many of the security problems with SNMP
+        so please don't run this unless you are sure of what you are doing.
+        To enable the service, run
+          chkconfig snmptrapd on
+        and create a configuration file named /etc/snmp/snmptrapd.conf.
+        Then, start the daemon with
+          rcsnmptrapd start
+        Logging is done to /var/log/net-snmpd.log.
+
+        For more information see the manpages for snmptrapd and snmptrapd.conf.
+
+      o Master AgentX support is enabled if you have modules in
+        /usr/lib/net-snmp/agents. The domain socket is created as
+        /var/run/agentx/master.  You can change this to a network
+        interface if needed (see snmpd(1)).  The snmpd init script
+        automatically detects and starts any sub-agents in placed into
+        /var/lib/net-snmp.
+
+More documentation on the net-snmp package can be found in this directory
+as well as the project's homepage: http://www.net-snmp.org/

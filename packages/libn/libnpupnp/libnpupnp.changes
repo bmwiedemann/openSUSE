@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Sat Dec 23 14:29:44 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 6.0.1
+  * Switch UPnP version to 1.1.
+  * Add bootid, configid headers to the SSDP packets, and the corresponding
+    init() options. Set TTL to 2 instead of 4.
+  * Description parser utility. Store the download URL.
+  * Control: schedule events for sending the search packets instead of
+    sleeping in the client thread.
+  * Control: export the minimum and maximum values for the search window in
+    upnp.h, the client may need them.
+  * Add interface to perform unicast search.
+- Update to 5.1.1  
+  * Rebuilt for rpi 1 (armv6) compatibility
+  * Fix choosing interface to use for Gena callback URL: we could sometimes
+    choose an inactive interface.
+- Update to 5.1.0    
+  * Control: add milliseconds timeout option to SoapSendAction(). This is
+    mostly intended to enable polling a device health, and implemented by
+    checking the the responseData previously output-only, now input/output,
+    argument for additional parameters given as (nm, value) string
+    pairs. The only parameter checked at the moment is ("timeoutms",
+    "value"). This change is source and ABI compatible except in the quite
+    unlikely case where the existing code called the function with a
+    non-empty output array containing a pair with a "timeoutms" first
+    element.
+  * Control: added an interface to set an HTTP timeout for the
+    subscribe/unsubscribe operations. The default previous fixed value of
+    30 S is kept, but can now be overridden. The change does not change the
+    ABI for an existing program.
+  * Given that upplay/libupnpp is the only known user of the lib control
+    side, the package name or shared library major version were not
+    changed.
+- Update to 5.0.2      
+  * Minuscule internal changes. Sync with Windows version.
+- Update to 5.0.1        
+  * Web server: fixed bad HTTP protocol conformance when handling range
+    requests. Would bother a lot correct clients which check status codes
+    and headers instead of just using the data, (e.g.: vlc).
+  * New alternate Meson build.
+  * Misc small cleanups inspired by clang-tidy and other housekeeping.
+
+-------------------------------------------------------------------
+Sat Aug 13 10:08:52 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 5.0.0:
+  * Changed the API to avoid truncation of some long subscription IDs.
+    Upnp_SID is now an std::string instead of a fixed size array.
+    This change should be source-compatible for programs which used
+    the UpnpEvent_get_SID_cstr() macro for accessing the value, but the
+    ABI changes, hence the major version, package, and shared lib
+    version changes
+- update to 4.2.3:
+  * Fix bug which could close stderr when changing the log level
+  * Miscellaneous mostly stylistic changes
+
+-------------------------------------------------------------------
+Mon May  9 17:16:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.2.2
+  * Partial sanitizing of the static library object name space.
+
+-------------------------------------------------------------------
+Sun Mar 20 09:43:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.2.1:
+  * improved compatibility with libupnp 1.14.x
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
+Mon Dec 20 22:09:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.5:
+  * Small fix for working in a BSD jail with single interface
+  * Fix vulnerability to DNS-rebind attacks.
+
+-------------------------------------------------------------------
+Thu Apr 15 08:44:06 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 4.1.3:
+  * Fix working with multiple ipv6 link-local interfaces by adding
+    RFC 6874 zone identifiers to the URLs passed to the client code
+  * Add UpnpGetUrlHostPortForClient() interface to help users of the
+    web server compute their URLs
+  * Small build and compat fixes: fix mingw64 build, add empty
+    UpnpGetServerUlaGuaPort6() call, adjust how UPNP_ENABLE_IPV6
+    affects module existence to make it compatible with pupnp
+  * Improve source-level compatibility by defining UPNP_USING_CHUNKED
+  * Fix HEAD requests. Samsung TVs now work with Gerbera + libnpupnp
+  * Send SERVER and USER-AGENT headers in misc places where mandated or useful
+  * Add API for the client code to set the user-agent and server string values
+  * Fix building and running with --disable-ipv6
+  * Misc portability fixes
+
+-------------------------------------------------------------------
+Sun Nov 15 20:17:08 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- Initial version

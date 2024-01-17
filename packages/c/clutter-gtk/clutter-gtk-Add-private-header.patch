@@ -1,0 +1,132 @@
+From 52abb3fe2e97af2a9e25d5c8c180b16e24b843fd Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Wed, 11 Jul 2018 00:35:17 +0100
+Subject: [PATCH] Add private header for GtkClutterEmbed
+
+Declare _gtk_clutter_embed_set_child_active() in a shared private
+header, so we can avoid a compiler warning.
+---
+ clutter-gtk/Makefile.am                 |  5 ++--
+ clutter-gtk/gtk-clutter-embed-private.h | 34 +++++++++++++++++++++++++
+ clutter-gtk/gtk-clutter-embed.c         |  8 +++---
+ clutter-gtk/gtk-clutter-offscreen.c     | 11 +++-----
+ 4 files changed, 46 insertions(+), 12 deletions(-)
+ create mode 100644 clutter-gtk/gtk-clutter-embed-private.h
+
+diff --git a/clutter-gtk/Makefile.am b/clutter-gtk/Makefile.am
+index f84bf2c..0cba73d 100644
+--- a/clutter-gtk/Makefile.am
++++ b/clutter-gtk/Makefile.am
+@@ -22,6 +22,7 @@ AM_CFLAGS = $(MAINTAINER_CFLAGS) $(CLUTTER_GTK_DEPS_CFLAGS)
+ 
+ lib_LTLIBRARIES = libclutter-gtk-@CLUTTER_GTK_API_VERSION@.la
+ 
++# please, keep the lists sorted alphabetically
+ source_c = \
+ 	gtk-clutter-actor.c 	\
+ 	gtk-clutter-embed.c 	\
+@@ -40,11 +41,11 @@ source_h_public = \
+ 	$()
+ 
+ source_h_private = \
+-	gtk-clutter-offscreen.h		\
+ 	gtk-clutter-actor-internal.h	\
++	gtk-clutter-embed-private.h	\
++	gtk-clutter-offscreen.h		\
+ 	$()
+ 
+-# please, keep the list sorted alphabetically
+ libclutter_gtk_@CLUTTER_GTK_API_VERSION@_la_SOURCES = $(source_c) $(source_h) $(source_h_private)
+ libclutter_gtk_@CLUTTER_GTK_API_VERSION@_la_LIBADD  = $(CLUTTER_GTK_DEPS_LIBS) $(LIBM)
+ libclutter_gtk_@CLUTTER_GTK_API_VERSION@_la_LDFLAGS = $(CLUTTER_GTK_LT_LDFLAGS)
+diff --git a/clutter-gtk/gtk-clutter-embed-private.h b/clutter-gtk/gtk-clutter-embed-private.h
+new file mode 100644
+index 0000000..45fcf7f
+--- /dev/null
++++ b/clutter-gtk/gtk-clutter-embed-private.h
+@@ -0,0 +1,34 @@
++/* gtk-clutter-embed-private.h: Embeddable ClutterStage
++ *
++ * Copyright (C) 2007 OpenedHand
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library. If not see <http://www.fsf.org/licensing>.
++ *
++ * Authors:
++ *   Iain Holmes  <iain@openedhand.com>
++ *   Emmanuele Bassi  <ebassi@openedhand.com>
++ */
++
++#pragma once
++
++#include "gtk-clutter-embed.h"
++
++G_BEGIN_DECLS
++
++void
++_gtk_clutter_embed_set_child_active (GtkClutterEmbed *embed,
++                                     GtkWidget       *child,
++                                     gboolean         active);
++
++G_END_DECLS
+diff --git a/clutter-gtk/gtk-clutter-embed.c b/clutter-gtk/gtk-clutter-embed.c
+index e8c31d4..5979847 100644
+--- a/clutter-gtk/gtk-clutter-embed.c
++++ b/clutter-gtk/gtk-clutter-embed.c
+@@ -71,12 +71,14 @@
+ 
+ #include "config.h"
+ 
+-#include <math.h>
+-#include <string.h>
+-#include "gtk-clutter-embed.h"
++#include "gtk-clutter-embed-private.h"
++
+ #include "gtk-clutter-offscreen.h"
+ #include "gtk-clutter-actor.h"
+ 
++#include <math.h>
++#include <string.h>
++
+ #include <glib-object.h>
+ 
+ #include <gdk/gdk.h>
+diff --git a/clutter-gtk/gtk-clutter-offscreen.c b/clutter-gtk/gtk-clutter-offscreen.c
+index c4ebc94..e9d2386 100644
+--- a/clutter-gtk/gtk-clutter-offscreen.c
++++ b/clutter-gtk/gtk-clutter-offscreen.c
+@@ -4,17 +4,14 @@
+ 
+ #include "config.h"
+ 
+-#include <gtk/gtk.h>
+-
+-#include "gtk-clutter-embed.h"
+ #include "gtk-clutter-offscreen.h"
++
++#include "gtk-clutter-embed-private.h"
+ #include "gtk-clutter-actor-internal.h"
+ 
+-G_DEFINE_TYPE (GtkClutterOffscreen, _gtk_clutter_offscreen, GTK_TYPE_BIN);
++#include <gtk/gtk.h>
+ 
+-void _gtk_clutter_embed_set_child_active (GtkClutterEmbed *embed,
+-					  GtkWidget *child,
+-					  gboolean active);
++G_DEFINE_TYPE (GtkClutterOffscreen, _gtk_clutter_offscreen, GTK_TYPE_BIN)
+ 
+ static void
+ gtk_clutter_offscreen_add (GtkContainer *container,
+-- 
+2.18.1
+

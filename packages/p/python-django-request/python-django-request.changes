@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Wed Nov  1 04:30:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch do-not-fail-on-day-one-of-month.patch:
+  * Do not fail due to edge cases on the 1st or last of a month.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
+Tue Jul 11 14:19:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.3:
+  * Confirms support for Django 4.2.
+  * Adds a missing migration with HTTP status codes.
+
+-------------------------------------------------------------------
+Sat Jan 28 09:48:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.2:
+  * Adds support for missing HTTP status codes: 103, 208, 226, 308, 428,
+    429, 431, 451, and 511.
+  * Confirms support for Python 3.11.
+  * Confirms support for Django 4.1.
+  * Don't ignore boosted htmx requests with ``REQUEST_IGNORE_AJAX``.
+- drop python-django-request-no-mock.patch (upstream)
+
+-------------------------------------------------------------------
+Wed May 11 12:12:59 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.6.1
+  * Adds warning logging to middleware on invalid IP addresses in
+    ``REMOTE_ADDR``.
+  * Adds a missing migration to change ``help_text`` of ``Request.is_ajax``.
+- do not require python-mock for build
+- added patches
+  fix https://github.com/django-request/django-request/issues/245
+  + python-django-request-no-mock.patch
+
+-------------------------------------------------------------------
+Fri Feb 25 04:51:19 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.6.0:
+  * Support for Django 1.11, 2.0, 2.1, 3.0, and 3.1 has been dropped.
+  * Support for Python 2.7 and 3.4 has been dropped.
+  * Adds htmx support to the REQUEST_IGNORE_AJAX setting.
+  * Confirms support for Django 4.0.
+  * Confirms support for Django 3.2.
+  * Confirms support for Python 3.10.
+  * Confirms support for Python 3.9.
+- Drop six from {Build,}Requires.
+- Add patch set-timezone-for-day-tests.patch:
+  * Set overridden timezone.
+
+-------------------------------------------------------------------
+Sun Sep 13 09:53:01 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.5.6
+
+-------------------------------------------------------------------
+Wed Jul 21 01:46:37 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 0.3.
+
+-------------------------------------------------------------------
+Mon Jun 28 13:30:55 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 0.23;
+- Spec file cleaned with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jan 22 12:30:14 UTC 2010 - alexandre@exatati.com.br
+
+- Initial package (0.21) for openSUSE.

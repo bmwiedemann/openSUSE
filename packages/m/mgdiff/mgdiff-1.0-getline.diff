@@ -1,0 +1,96 @@
+---
+ rundiff.c |   20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+--- rundiff.c
++++ rundiff.c	2014-10-20 07:49:42.699838147 +0000
+@@ -73,7 +73,7 @@ typedef enum { ADD = 1, CHANGE, DELETE,
+ static char *duplicate (char *s, int *flag);
+ static DiffType parse_diff_line (char *buf, int *f1n1, int *f1n2, int *f2n1, int *f2n2);
+ static int eatline (FILE *f);
+-static void getline (FILE *f, char **cooked, char **raw);
++static void diffgetline (FILE *f, char **cooked, char **raw);
+ static void reset_blist (void);
+ static Block *get_blist (void);
+ static void add_blist (Block *b);
+@@ -281,7 +281,7 @@ DiffInfo *build_diff_info (char *prog, c
+ 		b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
+ 		b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+ 		for (i = 0; i < b->arr[LEFT].fsize; i++) {
+-		    getline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
++		    diffgetline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 		    b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+ 		    if (di->maxcols < b->arr[LEFT].tlen[i]) {
+ 			di->maxcols = b->arr[LEFT].tlen[i];
+@@ -310,7 +310,7 @@ DiffInfo *build_diff_info (char *prog, c
+ 	    b->arr[RIGHT].wtext = (char **) xcalloc (b->arr[RIGHT].fsize, sizeof (char *));
+ 	    b->arr[RIGHT].tlen = (short *) xcalloc (b->arr[RIGHT].fsize, sizeof (short));
+ 	    for (i = 0; i < b->arr[RIGHT].fsize; i++) {
+-		getline (file2, &b->arr[RIGHT].text[i], &b->arr[RIGHT].wtext[i]);
++		diffgetline (file2, &b->arr[RIGHT].text[i], &b->arr[RIGHT].wtext[i]);
+ 		b->arr[RIGHT].tlen[i] = strlen (b->arr[RIGHT].text[i]);
+ 		if (di->maxcols < b->arr[RIGHT].tlen[i]) {
+ 		    di->maxcols = b->arr[RIGHT].tlen[i];
+@@ -341,7 +341,7 @@ DiffInfo *build_diff_info (char *prog, c
+ 		b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
+ 		b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+ 		for (i = 0; i < b->arr[LEFT].fsize; i++) {
+-		    getline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
++		    diffgetline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 		    b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+ 		    if (di->maxcols < b->arr[LEFT].tlen[i]) {
+ 			di->maxcols = b->arr[LEFT].tlen[i];
+@@ -368,7 +368,7 @@ DiffInfo *build_diff_info (char *prog, c
+ 	    b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
+ 	    b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+ 	    for (i = 0; i < b->arr[LEFT].fsize; i++) {
+-		getline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
++		diffgetline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 		b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+ 		if (di->maxcols < b->arr[LEFT].tlen[i]) {
+ 		    di->maxcols = b->arr[LEFT].tlen[i];
+@@ -381,7 +381,7 @@ DiffInfo *build_diff_info (char *prog, c
+ 	    b->arr[RIGHT].wtext = (char **) xcalloc (b->arr[RIGHT].fsize, sizeof (char *));
+ 	    b->arr[RIGHT].tlen = (short *) xcalloc (b->arr[RIGHT].fsize, sizeof (short));
+ 	    for (i = 0; i < b->arr[RIGHT].fsize; i++) {
+-		getline (file2, &b->arr[RIGHT].text[i], &b->arr[RIGHT].wtext[i]);
++		diffgetline (file2, &b->arr[RIGHT].text[i], &b->arr[RIGHT].wtext[i]);
+ 		b->arr[RIGHT].tlen[i] = strlen (b->arr[RIGHT].text[i]);
+ 		if (di->maxcols < b->arr[RIGHT].tlen[i]) {
+ 		    di->maxcols = b->arr[RIGHT].tlen[i];
+@@ -409,7 +409,7 @@ DiffInfo *build_diff_info (char *prog, c
+ 		b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
+ 		b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+ 		for (i = 0; i < b->arr[LEFT].fsize; i++) {
+-		    getline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
++		    diffgetline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 		    b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+ 		    if (di->maxcols < b->arr[LEFT].tlen[i]) {
+ 			di->maxcols = b->arr[LEFT].tlen[i];
+@@ -438,7 +438,7 @@ DiffInfo *build_diff_info (char *prog, c
+ 	    b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
+ 	    b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+ 	    for (i = 0; i < b->arr[LEFT].fsize; i++) {
+-		getline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
++		diffgetline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 		b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+ 		if (di->maxcols < b->arr[LEFT].tlen[i]) {
+ 		    di->maxcols = b->arr[LEFT].tlen[i];
+@@ -501,7 +501,7 @@ DiffInfo *build_diff_info (char *prog, c
+ 	b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
+ 	b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+  	for (i = 0; i < b->arr[LEFT].fsize; i++) {
+-	    getline (file2, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
++	    diffgetline (file2, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 	    b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+ 	    if (di->maxcols < b->arr[LEFT].tlen[i]) {
+ 		di->maxcols = b->arr[LEFT].tlen[i];
+@@ -677,7 +677,7 @@ static int eatline (FILE *f)
+  * printable) if necessary.  Silently truncate input lines at BUFSIZ
+  * characters.
+  */
+-static void getline (FILE *f, char **cooked, char **raw)
++static void diffgetline (FILE *f, char **cooked, char **raw)
+ {
+     char buffer[BUFSIZ+1];
+     char *s;

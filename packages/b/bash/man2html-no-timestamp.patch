@@ -1,0 +1,15 @@
+---
+ support/man2html.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- support/man2html.c
++++ support/man2html.c	2010-09-03 20:49:56.288632000 +0000
+@@ -4076,7 +4076,7 @@ main(int argc, char **argv)
+ 		if (subs)
+ 			fputs("</DL>\n", stdout);
+ 		fputs("</DL>\n", stdout);
+-		print_sig();
++		/* print_sig(); */
+ 		fputs("</BODY>\n</HTML>\n", stdout);
+ 	} else
+ 		fprintf(stderr, "man2html: no output produced\n");

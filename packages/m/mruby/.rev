@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b07c06891448ac292cd57db4d2d6f21</srcmd5>
+    <version>3.0.0</version>
+    <time>1621269902</time>
+    <user>dimstar_suse</user>
+    <comment>Build shared</comment>
+    <requestid>893731</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a644267dc35994847448ec59e555c885</srcmd5>
+    <version>3.0.0</version>
+    <time>1639685986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940902</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7a39a0a9fd16a18877eb56f827371635</srcmd5>
+    <version>3.0.0</version>
+    <time>1642548914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947174</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8b64b17333d0c6c6d39f902444b35855</srcmd5>
+    <version>3.0.0</version>
+    <time>1644440655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953008</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7b371ecbe549370fac4e803e60c32670</srcmd5>
+    <version>3.0.0</version>
+    <time>1645473091</time>
+    <user>dimstar_suse</user>
+    <comment>- Install libmruby_core library, required by mruby binary
+- Fix missing SONAME in library by adding link-with-soname.patch
+</comment>
+    <requestid>956537</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>3506f435b6147dac05d6b0be489344a7</srcmd5>
+    <version>3.0.0</version>
+    <time>1651001699</time>
+    <user>dimstar_suse</user>
+    <comment>- Add b1d0296a.patch: fixing CVE-2022-1286 / boo#1198289
+- Add CVE-2022-1212.patch: fixing CVE-2022-1212 / boo#1198089
+</comment>
+    <requestid>972972</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3cd0b6d32a188b83caf9e23073d23ad7</srcmd5>
+    <version>3.1.0</version>
+    <time>1676562981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066033</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="clutter-gtk" project="openSUSE:Factory">
+  <title>GTK+ integration for Clutter</title>
+  <description>Clutter is an open source software library for creating fast, visually
+rich and animated graphical user interfaces.
+
+Clutter GTK+ enables the use of GTK+ with Clutter.</description>
+  <devel project="GNOME:Factory" package="clutter-gtk"/>
+</package>

@@ -1,0 +1,12 @@
+diff -Nurp net-snmp-5.9.2-orig/net-snmp-create-v3-user.in net-snmp-5.9.2/net-snmp-create-v3-user.in
+--- net-snmp-5.9.2-orig/net-snmp-create-v3-user.in	2022-07-04 16:55:43.067366177 +0200
++++ net-snmp-5.9.2/net-snmp-create-v3-user.in	2022-07-04 16:57:54.927367685 +0200
+@@ -138,7 +138,7 @@ prefix=@prefix@
+ datarootdir=@datarootdir@
+ # To suppress shellcheck complaints about $prefix and $datarootdir.
+ : "$prefix" "$datarootdir"
+-outfile="@datadir@/snmp/snmpd.conf"
++outfile="/etc/snmp/snmpd.conf"
+ line="$token $user"
+ echo "adding the following line to $outfile:"
+ echo "   $line"

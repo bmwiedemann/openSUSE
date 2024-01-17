@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Sun Jun 12 13:08:16 UTC 2016 - coolo@suse.com
+
+- updated to 1.314
+   see /usr/share/doc/packages/perl-Git-Repository-Plugin-Log/Changes
+
+-------------------------------------------------------------------
+Tue May 31 10:28:57 UTC 2016 - coolo@suse.com
+
+- updated to 1.314
+   see /usr/share/doc/packages/perl-Git-Repository-Plugin-Log/Changes
+
+-------------------------------------------------------------------
+Wed Jan 27 10:02:39 UTC 2016 - coolo@suse.com
+
+- updated to 1.313
+   see /usr/share/doc/packages/perl-Git-Repository-Plugin-Log/Changes
+
+  1.313 Tue Jan 26 2016
+      [ENHANCEMENTS]
+      - Add some more unsupported options to Git::Repository::Log::Iterator
+        constructor's blacklist (BJAKUBSKI, via the January 2016 CPAN PRC)
+      - Parse 'from' field in the commit line, and add it as the 'diff_from'
+        attribute to Git::Repository::Log (VYF)
+      - Minor documentation improvements
+      [TESTS]
+      - Prevent system/global configs from messing with test expectations
+      - Add [Prereqs / TestRequires] section to dist.ini
+        (PSCUST, via the October 2015 CPAN PRC)
+      - Use Test::ReportPrereqs instead of ReportVersions::Tiny
+      [ACKNOWLEDGEMENT]
+      - Thanks to NEILB for organizing the CPAN Pull Request Contest,
+        which brought several contributions to this release.
+        Check out http://cpan-prc.org/ and join the fun!
+
+-------------------------------------------------------------------
+Fri Apr 17 11:57:24 UTC 2015 - coolo@suse.com
+
+- initial package $version
+ * created by $NAME $VERSION
+

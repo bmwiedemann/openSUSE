@@ -1,0 +1,5 @@
+<package name="libnpupnp" project="openSUSE:Factory">
+  <title>libnpupnp</title>
+  <description>A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp</description>
+  <devel project="multimedia:libs" package="libnpupnp"/>
+</package>

@@ -1,0 +1,14 @@
+---
+ support/printenv.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- support/printenv.c
++++ support/printenv.c	2014-04-17 09:46:25.874236036 +0000
+@@ -31,6 +31,7 @@
+ #include "bashansi.h"
+ #include <stdio.h>		/* puts */
+ 
++#include <string.h>
+ extern char **environ;
+ 
+ int

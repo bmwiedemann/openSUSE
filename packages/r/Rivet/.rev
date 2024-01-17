@@ -1,0 +1,234 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5bef60fe13fa2c9d66e94f4e28e28f4</srcmd5>
+    <version>2.0.0</version>
+    <time>1398785779</time>
+    <user>coolo</user>
+    <comment>New package - Rivet: A high energy particle physics package. The Rivet project (Robust Independent Validation of Experiment and Theory) is a toolkit for validation of Monte Carlo event generators.
+
+NOTE FOR REVIEWER:
+Depends on
+* sr#230702
+* sr#230703
+* sr#230705</comment>
+    <requestid>230710</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f3d8d9af51cc603d83a0bb7f1ef0aa2a</srcmd5>
+    <version>2.1.2</version>
+    <time>1403642770</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238279</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f3d8d9af51cc603d83a0bb7f1ef0aa2a</srcmd5>
+    <version>2.1.2</version>
+    <time>1409300444</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b4c3daa34d35a506dc5fbbfb9d5e4425</srcmd5>
+    <version>2.1.2</version>
+    <time>1411721553</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252370</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>523ad5070ce590ffe327dd4d5620b855</srcmd5>
+    <version>2.2.0</version>
+    <time>1414613411</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258587</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0cba4041041b82db503a14902b87969e</srcmd5>
+    <version>2.2.0</version>
+    <time>1435652264</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313981</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d2a483fbb0d7fd86cd1bc619dd1b839c</srcmd5>
+    <version>2.5.2</version>
+    <time>1479151007</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440167</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2a23e8d727bee9f2950ce332c5edaa2b</srcmd5>
+    <version>2.5.2</version>
+    <time>1486465525</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454774</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>53a23ddbbf6ec37cfc00046de8e70ae0</srcmd5>
+    <version>2.5.2</version>
+    <time>1487029324</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455252</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>b6dc49a75d9ccf1ab83a6b2337a96ccf</srcmd5>
+    <version>2.5.2</version>
+    <time>1489345215</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>476776</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>07f7e95d7e04c62facb76f65b6a78e6e</srcmd5>
+    <version>2.5.4</version>
+    <time>1498485401</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506115</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ba2e99ce07ee2863afc57324418572f6</srcmd5>
+    <version>2.5.4</version>
+    <time>1505334708</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522240</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>79f4b26f981c1dca7655ba6c10e0a541</srcmd5>
+    <version>2.5.4</version>
+    <time>1522225766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590923</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2a30ce1c2a5180a6eb7ae0b54eaa1265</srcmd5>
+    <version>2.6.0</version>
+    <time>1530304201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618021</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e8a6f1abb83bd7dfec3e82cb9f23090d</srcmd5>
+    <version>2.7.2</version>
+    <time>1566894087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725955</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5eebc5d4d701e4b82d9c8f972e928698</srcmd5>
+    <version>3.1.0</version>
+    <time>1579273452</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Obsoletes: python-Rivet to python3-Rivet to help migration.
+- Update to version 3.1.0 (new upstream recommended version):
+  - Switch to python3:
+- Refresh sover.diff for updated version.
+- Drop Rivet-fix-ambiguous-namespace.patch: incorporated upstream
+- New BuildRequires: rsync, fastjet-contrib-devel
+- Update required version of YODA-devel to 1.8.0.
+- Drop conditionals for outdated openSUSE versions.
+</comment>
+    <requestid>765274</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>0c2d8a44375a836ee8d99332f4829a04</srcmd5>
+    <version>3.1.0</version>
+    <time>1587839222</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix python version in hashbangs. #!%{_bindir}/python introduces wrong for python3 package dependency on python-base.
+</comment>
+    <requestid>796650</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>24baf6dc08f9f7bb683269dec36215bc</srcmd5>
+    <version>3.1.1</version>
+    <time>1590247639</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807781</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f61ace0a71398d3ba2ca4a3c24fcc13a</srcmd5>
+    <version>3.1.2</version>
+    <time>1595012039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821521</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b244c75e7fffc129b3ec268dba13dd6d</srcmd5>
+    <version>3.1.3</version>
+    <time>1613774765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873838</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6555d1012d10c1fd84752fd961b10d30</srcmd5>
+    <version>3.1.5</version>
+    <time>1639424674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940166</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c51c54d8c9a5aecd290196951b6e402f</srcmd5>
+    <version>3.1.5</version>
+    <time>1641855202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945272</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f920402b6d2c52d9ccf4c7113846b4df</srcmd5>
+    <version>3.1.6</version>
+    <time>1654258625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980608</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1689f7f71da71e5468c2e830fd722dd0</srcmd5>
+    <version>3.1.7</version>
+    <time>1682522774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082887</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b184938de0a4c66267718b9e52e696f1</srcmd5>
+    <version>3.1.8</version>
+    <time>1690469537</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100939</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>a8efba310fe48bf4da50a6b68362c520</srcmd5>
+    <version>3.1.8</version>
+    <time>1693685260</time>
+    <user>dimstar_suse</user>
+    <comment>- License: Change LPPL-1.3 to LPPL-1.3a according to spdx list.
+- License correction based on the legaldb scan
+</comment>
+    <requestid>1108503</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2a71611e7f215426f782da19afea27c4</srcmd5>
+    <version>3.1.9</version>
+    <time>1704558598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137214</requestid>
+  </revision>
+</revisionlist>

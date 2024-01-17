@@ -1,0 +1,251 @@
+---
+ Makefile.in        |    2 +-
+ config-top.h       |   16 ++++++++++------
+ doc/Makefile.in    |    2 +-
+ doc/bash.1         |    7 +++++--
+ general.h          |    3 +++
+ parse.y            |    6 +++++-
+ shell.c            |    6 +++++-
+ support/man2html.c |    1 +
+ support/rlvers.sh  |    6 +++---
+ support/shobj-conf |    5 +++--
+ tests/glob.tests   |    4 ++--
+ tests/run-intl     |    2 +-
+ tests/run-read     |    2 +-
+ 13 files changed, 41 insertions(+), 21 deletions(-)
+
+--- Makefile.in
++++ Makefile.in	2022-06-22 06:38:20.511747259 +0000
+@@ -466,7 +466,7 @@ SOURCES	 = $(CSOURCES) $(HSOURCES) $(BUI
+ # headers in top-level source directory that get installed by install-headers
+ INSTALLED_HEADERS = shell.h bashjmp.h command.h syntax.h general.h error.h \
+ 		    variables.h array.h assoc.h arrayfunc.h quit.h dispose_cmd.h \
+-		    make_cmd.h subst.h sig.h externs.h builtins.h \
++		    make_cmd.h subst.h sig.h externs.h builtins.h bashline.h \
+ 		    bashtypes.h xmalloc.h config-top.h config-bot.h \
+ 		    bashintl.h bashansi.h bashjmp.h alias.h hashlib.h \
+ 		    conftypes.h unwind_prot.h jobs.h siglist.h \
+--- config-top.h
++++ config-top.h	2022-04-28 11:55:03.660248012 +0000
+@@ -60,10 +60,14 @@
+    due to EPIPE. */
+ /* #define DONT_REPORT_BROKEN_PIPE_WRITE_ERRORS */
+ 
++#ifndef _PATH_DEFPATH
++# include <paths.h>
++#endif
++
+ /* The default value of the PATH variable. */
+ #ifndef DEFAULT_PATH_VALUE
+ #define DEFAULT_PATH_VALUE \
+-  "/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:."
++  "/usr/local/bin:" _PATH_DEFPATH ":."
+ #endif
+ 
+ /* If you want to unconditionally set a value for PATH in every restricted
+@@ -74,7 +78,7 @@
+    the Posix.2 confstr () function, or CS_PATH define are not present. */
+ #ifndef STANDARD_UTILS_PATH
+ #define STANDARD_UTILS_PATH \
+-  "/bin:/usr/bin:/sbin:/usr/sbin:/etc:/usr/etc"
++  _PATH_STDPATH
+ #endif
+ 
+ /* The default path for enable -f */
+@@ -97,20 +101,20 @@
+ #define DEFAULT_BASHRC "~/.bashrc"
+ 
+ /* System-wide .bashrc file for interactive shells. */
+-/* #define SYS_BASHRC "/etc/bash.bashrc" */
++#define SYS_BASHRC "/etc/bash.bashrc"
+ 
+ /* System-wide .bash_logout for login shells. */
+-/* #define SYS_BASH_LOGOUT "/etc/bash.bash_logout" */
++#define SYS_BASH_LOGOUT "/etc/bash.bash_logout"
+ 
+ /* Define this to make non-interactive shells begun with argv[0][0] == '-'
+    run the startup files when not in posix mode. */
+-/* #define NON_INTERACTIVE_LOGIN_SHELLS */
++#define NON_INTERACTIVE_LOGIN_SHELLS
+ 
+ /* Define this if you want bash to try to check whether it's being run by
+    sshd and source the .bashrc if so (like the rshd behavior).  This checks
+    for the presence of SSH_CLIENT or SSH2_CLIENT in the initial environment,
+    which can be fooled under certain not-uncommon circumstances. */
+-/* #define SSH_SOURCE_BASHRC */
++#define SSH_SOURCE_BASHRC
+ 
+ /* Define if you want the case-toggling operators (~[~]) and the
+    `capcase' variable attribute (declare -c). */
+--- doc/Makefile.in
++++ doc/Makefile.in	2022-04-28 11:53:04.334380153 +0000
+@@ -153,7 +153,7 @@ BASHREF_FILES = $(srcdir)/bashref.texi $
+ #	$(RM) $@
+ #	-${TEXI2PDF} $<
+ 
+-all: ps info dvi text html $(MAN2HTML)
++all: info html $(MAN2HTML)
+ nodvi: ps info text html
+ everything: all pdf
+ 
+--- doc/bash.1
++++ doc/bash.1	2022-06-22 06:37:14.908958305 +0000
+@@ -5745,8 +5745,8 @@ file (the \fIinputrc\fP file).
+ The name of this file is taken from the value of the
+ .SM
+ .B INPUTRC
+-variable.  If that variable is unset, the default is
+-.IR ~/.inputrc .
++environment variable. If that variable is unset, readline will read both
++.IR /etc/inputrc " and " ~/.inputrc .
+ If that file  does not exist or cannot be read, the ultimate default is
+ .IR /etc/inputrc .
+ When a program which uses the readline library starts up, the
+@@ -11706,6 +11706,9 @@ command history
+ .TP
+ .FN ~/.inputrc
+ Individual \fIreadline\fP initialization file
++.TP
++.FN /etc/inputrc
++System \fBreadline\fP initialization file
+ .PD
+ .SH AUTHORS
+ Brian Fox, Free Software Foundation
+--- general.h
++++ general.h	2022-04-28 11:53:04.334380153 +0000
+@@ -21,10 +21,13 @@
+ #if !defined (_GENERAL_H_)
+ #define _GENERAL_H_
+ 
++#include <time.h>
++#include <sys/types.h>
+ #include "stdc.h"
+ 
+ #include "bashtypes.h"
+ #include "chartypes.h"
++#include "bashline.h"
+ 
+ #if defined (HAVE_SYS_RESOURCE_H) && defined (RLIMTYPE)
+ #  if defined (HAVE_SYS_TIME_H)
+--- parse.y
++++ parse.y	2022-04-28 11:53:04.334380153 +0000
+@@ -366,6 +366,10 @@ static FILE *yyerrstream;
+ /* Special; never created by yylex; only set by parse_comsub and xparse_dolparen */
+ %token DOLPAREN
+ 
++/* Declare token YYEOF as older bison version fails
++   with not defined as a token and has no rules */
++%token YYEOF
++
+ /* The types that the various syntactical units return. */
+ 
+ %type <command> inputunit command pipeline pipeline_command
+@@ -1513,7 +1513,7 @@ input_file_descriptor ()
+ 
+ #if defined (READLINE)
+ char *current_readline_prompt = (char *)NULL;
+-char *current_readline_line = (char *)NULL;
++unsigned char *current_readline_line = (unsigned char *)NULL;
+ int current_readline_line_index = 0;
+ 
+ static int
+--- shell.c
++++ shell.c	2022-04-28 11:56:12.623015117 +0000
+@@ -45,6 +45,7 @@
+ #if defined (HAVE_UNISTD_H)
+ #  include <sys/types.h>
+ #  include <unistd.h>
++#  include <grp.h>
+ #endif
+ 
+ #include "bashintl.h"
+@@ -511,7 +512,7 @@ main (argc, argv, env)
+     read_but_dont_execute = 1;
+ #endif
+ 
+-  if (running_setuid && privileged_mode == 0)
++  if (running_setuid && privileged_mode == 0 /* && act_like_sh == 0 */)
+     disable_priv_mode ();
+ 
+   /* Need to get the argument to a -c option processed in the
+@@ -1341,6 +1342,9 @@ disable_priv_mode ()
+ {
+   int e;
+ 
++  if (!current_user.user_name)
++    get_current_user_info();
++  initgroups (current_user.user_name, current_user.gid);
+ #if HAVE_SETRESUID
+   if (setresuid (current_user.uid, current_user.uid, current_user.uid) < 0)
+ #else
+--- support/man2html.c
++++ support/man2html.c	2022-04-28 11:53:04.338380081 +0000
+@@ -78,6 +78,7 @@
+ #include <time.h>
+ #include <sys/time.h>
+ #include <errno.h>
++#include <unistd.h>
+ 
+ #define NULL_TERMINATED(n) ((n) + 1)
+ 
+--- support/rlvers.sh
++++ support/rlvers.sh	2022-04-28 11:53:04.338380081 +0000
+@@ -27,10 +27,10 @@ TDIR=$TMPDIR/rlvers
+ 
+ # defaults
+ CC=cc
+-RL_LIBDIR=/usr/local/lib
+-RL_INCDIR=/usr/local/include
++RL_LIBDIR=/lib
++RL_INCDIR=/usr/include
+ 
+-TERMCAP_LIB="-ltermcap"
++echo 'int main () { return 0; }' | gcc -ltinfo -o /dev/null -xc - > /dev/null 2>&1 && TERMCAP_LIB="-ltinfo" || TERMCAP_LIB="-lncurses"
+ 
+ # cannot rely on the presence of getopts
+ while [ $# -gt 0 ]; do
+--- support/shobj-conf
++++ support/shobj-conf	2022-04-28 11:57:29.117647038 +0000
+@@ -126,10 +126,11 @@ sunos5*|solaris2*)
+ linux*-*|gnu*-*|k*bsd*-gnu-*|midnightbsd*|freebsd*|dragonfly*)
+ 	SHOBJ_CFLAGS=-fPIC
+ 	SHOBJ_LD='${CC}'
+-	SHOBJ_LDFLAGS='-shared -Wl,-soname,$@'
++	SHOBJ_LDFLAGS='-shared'
+ 
+-	SHLIB_XLDFLAGS='-Wl,-rpath,$(libdir) -Wl,-soname,`basename $@ $(SHLIB_MINOR)`'
++	SHLIB_XLDFLAGS='-Wl,-rpath-link,$(libdir) -Wl,-soname,`basename $@ $(SHLIB_MINOR)`'
+ 	SHLIB_LIBVERSION='$(SHLIB_LIBSUFF).$(SHLIB_MAJOR)$(SHLIB_MINOR)'
++	echo 'int main () { return 0; }' | gcc -ltinfo -o /dev/null -xc - > /dev/null 2>&1 && SHLIB_LIBS=-ltinfo || SHLIB_LIBS=-lncurses
+ 	;;
+ 
+ # Darwin/MacOS X
+--- tests/glob.tests
++++ tests/glob.tests	2022-04-28 11:53:04.338380081 +0000
+@@ -34,8 +34,8 @@ ${THIS_SH} ./glob10.sub
+ 
+ MYDIR=$PWD	# save where we are
+ 
+-TESTDIR=$TMPDIR/glob-test-$$
+-mkdir $TESTDIR
++TESTDIR=${TMPDIR:=/tmp}/glob-test-$$
++mkdir -p $TESTDIR
+ builtin cd $TESTDIR || { echo $0: cannot cd to $TESTDIR >&2 ; exit 1; }
+ rm -rf *
+ 
+--- tests/run-intl
++++ tests/run-intl	2022-04-28 11:58:22.140698412 +0000
+@@ -2,4 +2,4 @@
+ ( diff -a ./intl.right ./intl.right >/dev/null 2>&1 ) && AFLAG=-a
+ 
+ ${THIS_SH} ./intl.tests > ${BASH_TSTOUT}
+-diff $AFLAG ${BASH_TSTOUT} intl.right && rm -f ${BASH_TSTOUT}
++diff -w $AFLAG ${BASH_TSTOUT} intl.right && rm -f ${BASH_TSTOUT}
+--- tests/run-read
++++ tests/run-read	2022-04-28 11:53:04.338380081 +0000
+@@ -1,4 +1,4 @@
+ echo "warning: please do not consider output differing only in the amount of" >&2
+ echo "warning: white space to be an error." >&2
+ ${THIS_SH} ./read.tests > ${BASH_TSTOUT} 2>&1
+-diff ${BASH_TSTOUT} read.right && rm -f ${BASH_TSTOUT}
++diff -w ${BASH_TSTOUT} read.right && rm -f ${BASH_TSTOUT}

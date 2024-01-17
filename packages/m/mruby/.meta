@@ -1,0 +1,19 @@
+<package name="mruby" project="openSUSE:Factory">
+  <title>Lightweight Ruby</title>
+  <description>mruby is the lightweight implementation of the Ruby language complying to (part
+of) the ISO standard.
+
+mruby can be linked and embedded within your application.
+
+We provide the interpreter program &quot;mruby&quot; and the interactive mruby shell
+&quot;mirb&quot; as examples.
+
+You can also compile Ruby programs into compiled byte code using the mruby
+compiler &quot;mrbc&quot;.
+
+The &quot;mrbc&quot; is also able to generate compiled byte code in a C source file.
+
+</description>
+  <devel project="devel:languages:ruby" package="mruby"/>
+  <url>https://github.com/mruby/mruby/</url>
+</package>

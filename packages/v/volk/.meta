@@ -1,0 +1,5 @@
+<package name="volk" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware:sdr" package="volk"/>
+</package>

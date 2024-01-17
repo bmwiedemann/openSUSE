@@ -1,0 +1,9 @@
+<package name="python-mrcz" project="openSUSE:Factory">
+  <title>python-mrcz</title>
+  <description>mrcz is a package designed to supplement the venerable MRC image file
+format with a highly efficient compressed variant, using the blosc 
+meta-compressor library to shrink files on disk and greatly accelerate
+file input/output for the era of &quot;Big Data&quot; in electron and optical
+microscopy.</description>
+  <devel project="devel:languages:python" package="python-mrcz"/>
+</package>

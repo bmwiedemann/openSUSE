@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# ckm@suse.com
+# runs the test suite on the installed package instead of in the build
+# tree, really only useful for QA
+
+base=/usr/share/doc/packages/net-snmp/testing
+export PATH="/bin:/usr/bin:/sbin:/usr/sbin:${base}"
+export MIBDIRS=/usr/share/snmp/mibs
+
+rcsnmpd stop &>/dev/null
+cd ${base} || exit 1
+
+RUNTESTS -a

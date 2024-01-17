@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Wed Sep 20 06:06:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.3.1
+  * Bug
+    + MRESOURCES-237: Resource plugin's handling of symbolic links
+      changed in 3.0.x, broke existing behavior
+    + MRESOURCES-265: Resource copying not using specified encoding
+    + MRESOURCES-268: java.nio.charset.MalformedInputException:
+      Input length = 1
+    + MRESOURCES-273: Filtering of Maven properties with long names
+      is not working after transition from 2.6 to 3.2.0
+    + MRESOURCES-275: valid location for directory parameter is
+      always required
+    + MRESOURCES-269: Symlinks cause copying resources to fail
+    + MRESOURCES-289: FileUtils.copyFile() fails with source file
+      having lastModified = 0
+  * New Feature
+    + MRESOURCES-250: Add ability to flatten folder structure into
+      target directory when copying resources
+  * Improvement
+    + MRESOURCES-288: make tests jar reproducible
+    + MRESOURCES-292: describe from and to in "Copying x
+      resources" info message
+  * Task
+    + MRESOURCES-295: Drop plexus legacy
+    + MRESOURCES-297: Update to parent POM 39, reformat sources
+    + MRESOURCES-277: Update plugin (requires Maven 3.2.5+)
+    + MRESOURCES-283: Require Java 8
+  * Dependency upgrade
+    + MRESOURCES-282: Upgrade maven-plugin parent to 36
+    + MRESOURCES-286: Upgrade Maven Filtering to 3.3.0
+    + MRESOURCES-294: Upgrade plexus-utils to 3.5.1
+    + MRESOURCES-296: Upgrade to maven-filtering 3.3.1
+- Modified patch:
+  * maven-resources-plugin-bootstrap-resources.patch
+    + regenerate in cycle
+
+-------------------------------------------------------------------
+Fri Jun 24 09:44:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove all dependencies with scope test, since a raw xmvn does
+  not hide them from maven.
+
+-------------------------------------------------------------------
+Thu Apr 28 11:51:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.2.0
+  * Bug
+    + [MRESOURCES-171] - ISO8859-1 properties files get changed into
+      UTF-8 when filtered
+    + [MRESOURCES-210] - copy-resources erases file permissions
+    + [MRESOURCES-236] - Copying of files with permissions broken
+    + [MRESOURCES-257] - property from list element in pom model
+  * Improvement
+    + [MRESOURCES-251] - Upgrade plexus-interpolation 1.26
+    + [MRESOURCES-252] - Add m2e lifecycle Metadata to plugin
+    + [MRESOURCES-256] - make build Reproducible
+    + [MRESOURCES-258] - Only overwrite filtered resources when
+      contents differ
+  * Dependency upgrade
+    + [MRESOURCES-249] - Upgrade maven-plugins parent to version 32
+    + [MRESOURCES-255] - Upgrade plexus-utils 3.3.0
+    + [MRESOURCES-261] - Make Maven 3.1.0 the minimum version
+    + [MRESOURCES-263] - Update to maven-filtering 3.2.0
+- Modified patch:
+  * maven-resources-plugin-bootstrap-resources.patch
+    + regenerate with current version of tools against the current
+      version of package
+
+-------------------------------------------------------------------
+Tue Mar 22 13:44:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Sun Nov 24 17:47:59 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+
+-------------------------------------------------------------------
+Wed Apr  3 09:27:51 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-resources-plugin 3.1.0
+- Generate and customize ant build.xml file to use with the
+  bootstrap variang
+- Create as a multibuild package to allow bootstrapping
+- Added patch:
+  * maven-resources-plugin-bootstrap-resources.patch
+    + For the bootstrap version, add pre-generated resources that
+      need maven-plugin-plugin and maven to be generated at build
+      time

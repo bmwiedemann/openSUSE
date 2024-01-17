@@ -1,0 +1,40 @@
+From 6d9ce6e9241b18bf1f9b39c5e803e2b8a67ef783 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Wed, 11 Jul 2018 00:36:11 +0100
+Subject: [PATCH] Declare private callbacks as static
+
+Avoid a compiler warning.
+---
+ examples/gtk-clutter-test-actor.c | 2 +-
+ examples/gtk-clutter-test.c       | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/examples/gtk-clutter-test-actor.c b/examples/gtk-clutter-test-actor.c
+index 9c7d3de..e1b3c54 100644
+--- a/examples/gtk-clutter-test-actor.c
++++ b/examples/gtk-clutter-test-actor.c
+@@ -16,7 +16,7 @@ static gboolean do_rotate = TRUE;
+ static int nwidgets;
+ 
+ /* Timeline handler */
+-void
++static void
+ frame_cb (ClutterTimeline *timeline,
+ 	  gint             msecs,
+ 	  gpointer         data)
+diff --git a/examples/gtk-clutter-test.c b/examples/gtk-clutter-test.c
+index e61cd84..3fce37f 100644
+--- a/examples/gtk-clutter-test.c
++++ b/examples/gtk-clutter-test.c
+@@ -67,7 +67,7 @@ input_cb (ClutterStage *stage,
+ 
+ 
+ /* Timeline handler */
+-void
++static void
+ frame_cb (ClutterTimeline *timeline, 
+ 	  gint             msecs,
+ 	  gpointer         data)
+-- 
+2.18.1
+

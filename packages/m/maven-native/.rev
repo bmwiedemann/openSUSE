@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e8f7150c98ef219cc8924e289b35740b</srcmd5>
+    <version>1.0~alpha8</version>
+    <time>1557141987</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>700409</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c7a491e7d93504019c9b931bd7a33b6d</srcmd5>
+    <version>1.0~alpha8</version>
+    <time>1559643183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707303</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f645f8bc32e51529c540c00cae09c75a</srcmd5>
+    <version>1.0~alpha11</version>
+    <time>1602282516</time>
+    <user>dimstar_suse</user>
+    <comment>new version</comment>
+    <requestid>840267</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>37e957927ae8a750ef1974895a8885ef</srcmd5>
+    <version>1.0~alpha11</version>
+    <time>1627492804</time>
+    <user>dimstar_suse</user>
+    <comment>cleanup</comment>
+    <requestid>908805</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7c24a18cd42e72b0da8b0e1d0b1226e3</srcmd5>
+    <version>1.0~alpha11</version>
+    <time>1648241680</time>
+    <user>dimstar_suse</user>
+    <comment>Plexus metadata not correctly generated</comment>
+    <requestid>964787</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>33f0065017bdc5f2f755764f24802a8a</srcmd5>
+    <version>1.0~alpha11</version>
+    <time>1653313935</time>
+    <user>dimstar_suse</user>
+    <comment>trying to fix broken build of openjfx8 on some architectures</comment>
+    <requestid>978703</requestid>
+  </revision>
+</revisionlist>

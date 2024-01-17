@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f653939c92045882b76bfadf0ca8bdd7</srcmd5>
+    <version>0.1.2</version>
+    <time>1637535126</time>
+    <user>dimstar_suse</user>
+    <comment>initial OBS build - required for python-weasyprint (newer version)</comment>
+    <requestid>932753</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>864942e3d2f8be442749ee3dd916bbbb</srcmd5>
+    <version>0.1.2</version>
+    <time>1639616441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940658</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45adb23618d57bde7c7ddb28db23c2fb</srcmd5>
+    <version>0.2.0</version>
+    <time>1660665491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997412</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d1a302957f7bd043b9cc03d8548961dc</srcmd5>
+    <version>0.2.0</version>
+    <time>1660753030</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>997530</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4bbb22a1aafdde73fad7537fba92937a</srcmd5>
+    <version>0.3.0</version>
+    <time>1665592022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010272</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>05ef44dc4b995a883ab3be58532abf54</srcmd5>
+    <version>0.5.0</version>
+    <time>1667067433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032129</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>84d7ea85516964fd20782e475a3b6a03</srcmd5>
+    <version>0.6.0</version>
+    <time>1683295080</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  * Add an option to use compressed object streams for PDF 1.5+,
+    with financial support from Code &amp; Co.
+  * Add new text operators
+  * Clean and fix documentation</comment>
+    <requestid>1084857</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1367dc8f80beea3fc9f7fd0caa00426f</srcmd5>
+    <version>0.7.0</version>
+    <time>1689710112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099028</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>33940fd870c5f16ab8f6ab6bc6c02a86</srcmd5>
+    <version>0.8.0</version>
+    <time>1704487542</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Add text rise operator
+
+- Update to version 0.4.0
+- Update to version 0.3.0</comment>
+    <requestid>1137102</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>314b3d5512c63ed1b7f43e0895af9e49</srcmd5>
+    <version>0.8.0</version>
+    <time>1705003536</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons} macro</comment>
+    <requestid>1138098</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# called by dracut
+check() {
+    return 0
+}
+
+# called by dracut
+depends() {
+    return 0
+}
+
+# called by dracut
+install() {
+    inst_fsck_help "xfs" "@@PATH_TO_HELP@@"
+}

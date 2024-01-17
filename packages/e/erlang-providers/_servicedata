@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/tsloughter/providers.git</param>
+              <param name="changesrevision">3a391b4d45933b62bd63ea63bcd1c63d10d379db</param></service></servicedata>

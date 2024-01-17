@@ -1,0 +1,14 @@
+Index: mgdiff-1.0/debian/rmgdiff
+===================================================================
+--- mgdiff-1.0.orig/debian/rmgdiff
++++ mgdiff-1.0/debian/rmgdiff
+@@ -12,6 +12,9 @@ USE_CVS=""
+ DEBUG=""
+ USE_GUI="TRUE"
+ RMGDIFF_VERSION=""
++# doesn't work in other locales (bnc#768892)
++LC_MESSAGES=POSIX
++export LC_MESSAGES
+ 
+ 
+ 

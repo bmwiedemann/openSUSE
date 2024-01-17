@@ -1,0 +1,11 @@
+diff -Nurp net-snmp-5.9.1-orig/agent/mibgroup/hardware/fsys/fsys_mntent.c net-snmp-5.9.1/agent/mibgroup/hardware/fsys/fsys_mntent.c
+--- net-snmp-5.9.1-orig/agent/mibgroup/hardware/fsys/fsys_mntent.c	2021-10-14 10:41:53.432186916 +0000
++++ net-snmp-5.9.1/agent/mibgroup/hardware/fsys/fsys_mntent.c	2021-10-18 06:24:35.385893383 +0000
+@@ -75,6 +75,7 @@ static const char *other_fs[] = {
+     "jfs",
+     "jffs2",
+     "lofs",
++    "lustre",
+     "mvfs",
+     "nsspool",
+     "nssvol",

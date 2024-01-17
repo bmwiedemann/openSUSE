@@ -1,0 +1,33 @@
+From d7f0e50b7a455dc98df933e18ea6718b9e2649c3 Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Thu, 18 Oct 2018 11:29:05 +0200
+Subject: [PATCH] Replace use of the GPGME_KEYLIST_MODE_LOCATE alias
+
+* src/gpaimportserverop.c (search_keys): Use Extern and local instead.
+--
+
+This way we can build with older gpgme versions.
+
+Reported-by: Andreas Stieger <astieger@suse.com>
+Signed-off-by: Werner Koch <wk@gnupg.org>
+---
+ src/gpaimportserverop.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/gpaimportserverop.c b/src/gpaimportserverop.c
+index 76eb78d..e52a14c 100644
+--- a/src/gpaimportserverop.c
++++ b/src/gpaimportserverop.c
+@@ -148,7 +148,8 @@ search_keys (GpaImportOperation *operation, const char *keyid)
+   mbox = gpgme_addrspec_from_uid (keyid);
+   if (mbox)
+     {
+-      listmode = GPGME_KEYLIST_MODE_LOCATE;
++      /* GPGME_KEYLIST_MODE_LOCATE is an alias for below. */
++      listmode = (GPGME_KEYLIST_MODE_LOCAL | GPGME_KEYLIST_MODE_EXTERN);
+       /* We already extracted the mbox - use it directly than letting
+        * gnupg extract it.  */
+       keyid = mbox;
+-- 
+2.16.4
+

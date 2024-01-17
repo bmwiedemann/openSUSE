@@ -1,0 +1,5 @@
+<package name="mgdiff" project="openSUSE:Factory">
+  <title>mgdiff</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="devel:tools" package="mgdiff"/>
+</package>

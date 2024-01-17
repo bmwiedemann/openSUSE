@@ -1,0 +1,805 @@
+--- Imakefile
++++ Imakefile	2006-03-07 11:15:24.000000000 +0100
+@@ -8,13 +8,14 @@
+ XCOMM
+ XCOMM for Dell SVR4
+ XCOMM
+-#EXTRA_LIBRARIES = -lc -lucb
++EXTRA_LIBRARIES = -lXpm
+ EXTRA_DEFINES = -Wall -Wstrict-prototypes -Wmissing-prototypes
+ 
+ SRCS = mgdiff.c rundiff.c misc.c files.c spawn.c manual.c modal.c legend.c
+ OBJS = mgdiff.o rundiff.o misc.o files.o spawn.o manual.o modal.o legend.o
+ 
+-LOCAL_LIBRARIES = $(XMLIB) $(XTOOLLIB) $(XMULIBONLY) $(XLIB)
++LOCAL_LIBRARIES = $(XMLIB) $(XTOOLLIB) $(XMULIBONLY) $(XLIB) $(XPLIB)
++EXTRA_LOAD_FLAGS = -Wl,-rpath-link,$(SHLIBDIR)
+ 
+ ComplexProgramTarget(mgdiff)
+ InstallAppDefaults(Mgdiff)
+--- Mgdiff.ad
++++ Mgdiff.ad	2006-03-07 11:15:24.000000000 +0100
+@@ -2,6 +2,8 @@
+ ! Mgdiff.ad,v 2.0 1994/05/19 02:01:03 dan Exp
+ !
+ 
++*XmScrollBar*width:       15
++
+ !
+ ! 				widget hierarchy:
+ !
+@@ -169,9 +171,11 @@
+ !
+ ! the overview area
+ !
+-*sbl.width:				16
+-*sbr.width:				16
+-*dam.width:				16
++*sbl.width:				15
++*sbl.Background:			lightgreen
++*sbr.width:				15
++*sbr.Background:			lightgreen
++*dam.width:				30
+ *dam.Foreground:			black
+ *dam.Background:			cyan
+ 
+--- externs.h
++++ externs.h	2006-03-07 11:15:24.000000000 +0100
+@@ -29,7 +29,7 @@
+  */
+ 
+ #if 0
+-static char rcsid_externs_h[] = "externs.h,v 2.0 1994/05/19 02:01:05 dan Exp";
++static char rcsid_externs_h[] __attribute__((unused)) = "externs.h,v 2.0 1994/05/19 02:01:05 dan Exp";
+ #endif
+ 
+ extern int main (int argc, char *argv[]);
+--- files.c
++++ files.c	2006-03-07 11:15:24.000000000 +0100
+@@ -1,5 +1,5 @@
+ #if 0
+-static char rcsid[] = "files.c,v 2.0 1994/05/19 02:01:06 dan Exp";
++static char rcsid[] __attribute__((unused)) = "files.c,v 2.0 1994/05/19 02:01:06 dan Exp";
+ #endif
+ 
+ /*
+@@ -151,7 +151,8 @@
+     XtSetArg (args[0], XmNmessageString, xms);
+     XtSetArg (args[1], XmNdialogStyle, XmDIALOG_PRIMARY_APPLICATION_MODAL);
+     dialog = XmCreateErrorDialog (parent, "werror", args, 2);
+-    XmStringFree (xms);
++    if (xms)
++	XmStringFree (xms);
+     XtVaSetValues (XtParent (dialog), XtNtitle, title, NULL);
+ 
+     XtUnmanageChild (XmMessageBoxGetChild (dialog, XmDIALOG_CANCEL_BUTTON));
+@@ -177,8 +178,10 @@
+ 	    xms1 = xms4;
+ 	else {
+ 	    xms2 = XmStringConcat (xms1, xms4);
+-	    XmStringFree (xms4);
+-	    XmStringFree (xms1);
++	    if (xms4)
++		XmStringFree (xms4);
++	    if (xms1)
++		XmStringFree (xms1);
+ 	    xms1 = xms2;
+ 	}
+ 
+@@ -186,16 +189,19 @@
+ 	    XmString xms3;
+ 
+ 	    xms3 = XmStringConcat (xms1, sep);
+-	    XmStringFree (xms1);
++	    if (xms1)
++		XmStringFree (xms1);
+ 	    xms1 = xms3;
+ 	}
+     }
+-    XmStringFree (sep);
++    if (sep)
++	XmStringFree (sep);
+     
+     XtSetArg (args[0], XmNmessageString, xms1);
+     XtSetArg (args[1], XmNdialogStyle, XmDIALOG_PRIMARY_APPLICATION_MODAL);
+     dialog = XmCreateErrorDialog (parent, "werror", args, 2);
+-    XmStringFree (xms1);
++    if (xms1)
++	XmStringFree (xms1);
+     XtVaSetValues (XtParent (dialog), XtNtitle, title, NULL);
+     XtUnmanageChild (XmMessageBoxGetChild (dialog, XmDIALOG_CANCEL_BUTTON));
+     XtUnmanageChild (XmMessageBoxGetChild (dialog, XmDIALOG_HELP_BUTTON));
+@@ -321,7 +327,7 @@
+     Arg args[2];
+     int i;
+     char *dir;
+-    XmString xms = NULL ;
++    XmString xms = (XmString)0;
+ 
+     shell = XtVaCreatePopupShell ("openfiles", xmDialogShellWidgetClass, parent,
+ 				  XmNallowShellResize, True,
+@@ -352,7 +358,8 @@
+     fsb1 = XmCreateFileSelectionBox (frame1a, "files1", args, i);
+     if (dir) {
+ 	XtFree (dir);
+-	XmStringFree (xms);
++	if (xms)
++	    XmStringFree (xms);
+     }
+ 
+     i = 0;
+@@ -363,7 +370,8 @@
+     fsb2 = XmCreateFileSelectionBox (frame2a, "files2", args, i);
+     if (dir) {
+ 	XtFree (dir);
+-	XmStringFree (xms);
++	if (xms)
++	    XmStringFree (xms);
+     }
+ 
+     XtAddCallback (fsb1, XmNokCallback, filel_both_cb, shell);
+@@ -427,7 +435,7 @@
+     Arg args[2];
+     int i;
+     char *dir;
+-    XmString xms = NULL ;
++    XmString xms = (XmString)0;
+ 
+     i = 0;
+     XtSetArg (args[i], XmNdeleteResponse, XmDO_NOTHING); i++;
+@@ -438,7 +446,8 @@
+     dialog = XmCreateFileSelectionDialog (parent, "openfile", args, i);
+     if (dir) {
+ 	XtFree (dir);
+-	XmStringFree (xms);
++	if (xms)
++	    XmStringFree (xms);
+     }
+     XtAddCallback (XtParent (dialog), XmNpopupCallback, popup_cb, parent);
+     XtAddCallback (dialog, XmNokCallback, file_left_cb, dialog);
+@@ -480,7 +489,7 @@
+     Arg args[2];
+     int i;
+     char *dir;
+-    XmString xms = NULL ;
++    XmString xms = (XmString)0;
+ 
+     i = 0;
+     XtSetArg (args[i], XmNdeleteResponse, XmDO_NOTHING); i++;
+@@ -491,7 +500,8 @@
+     dialog = XmCreateFileSelectionDialog (parent, "openfile", args, XtNumber (args));
+     if (dir) {
+ 	XtFree (dir);
+-	XmStringFree (xms);
++	if (xms)
++	    XmStringFree (xms);
+     }
+ 
+     XtAddCallback (XtParent (dialog), XmNpopupCallback, popup_cb, parent);
+@@ -572,7 +582,7 @@
+     Arg args[3];
+     int i;
+     char *dir;
+-    XmString xms = NULL ;
++    XmString xms = (XmString)0;
+ 
+     i = 0;
+     XtSetArg (args[i], XmNdialogStyle, XmDIALOG_PRIMARY_APPLICATION_MODAL); i++;
+@@ -585,7 +595,8 @@
+     dialog = XmCreateFileSelectionDialog (parent, "savefile", args, i);
+     if (dir) {
+ 	XtFree (dir);
+-	XmStringFree (xms);
++	if (xms)
++	    XmStringFree (xms);
+     }
+ 
+     XtAddCallback (XtParent (dialog), XmNpopupCallback, popup_cb, parent);
+--- legend.c
++++ legend.c	2006-03-07 11:15:24.000000000 +0100
+@@ -1,5 +1,5 @@
+ #if 0
+-static char rcsid[] = "legend.c,v 2.0 1994/05/19 02:01:08 dan Exp";
++static char rcsid[] __attribute__((unused)) = "legend.c,v 2.0 1994/05/19 02:01:08 dan Exp";
+ #endif
+ 
+ /*
+--- manual.c
++++ manual.c	2006-03-07 11:15:24.000000000 +0100
+@@ -1,5 +1,5 @@
+ #if 0
+-static char rcsid[] = "manual.c,v 2.0 1994/05/19 02:01:09 dan Exp";
++static char rcsid[] __attribute__((unused)) = "manual.c,v 2.0 1994/05/19 02:01:09 dan Exp";
+ #endif
+ 
+ /*
+--- mgdiff.c
++++ mgdiff.c	2006-03-07 11:26:05.000000000 +0100
+@@ -1,9 +1,9 @@
+ #if 0
+-static char rcsid[] = "mgdiff.c,v 2.1 1994/09/29 01:56:53 dan Exp";
++static char rcsid[] __attribute__((unused)) = "mgdiff.c,v 2.1 1994/09/29 01:56:53 dan Exp";
+ #endif
+ 
+ #if 0
+-static char copyright[] = "Copyright (c) 1994, Daniel Williams";
++static char copyright[] __attribute__((unused)) = "Copyright (c) 1994, Daniel Williams";
+ #endif
+ 
+ /*
+@@ -34,6 +34,8 @@
+  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  */
+ 
++#define _GNU_SOURCE
++
+ #include <X11/Xos.h>
+ 
+ #include <stdio.h>
+@@ -81,7 +83,7 @@
+ static void do_nothing (Widget widget, XEvent *event, String *params, Cardinal *num_params);
+ static void add_actions (XtAppContext app);
+ static int  x_error_handler (Display *dpy, XErrorEvent *event);
+-static void xt_error_handler (String message);
++static void xt_error_handler (String message) __attribute__ ((noreturn));
+ static void xt_warning_handler (String message);
+ static void redraw_partial_vert (Widget w);
+ static void redraw_partial_horz (Widget w);
+@@ -111,7 +113,9 @@
+ static void unselect_all (void);
+ static Boolean all_selected (void);
+ static Dimension get_preferred_width (Widget w);
++#if !(defined __GLIBC__ && __GLIBC__ >= 2)
+ static char *mgdiff_basename (char *name);
++#endif
+ 
+ enum {
+     WIDGET_LEFT	 = 0x10000000,
+@@ -551,7 +555,7 @@
+ /* ARGSUSED */
+ static void file_cb (Widget w, XtPointer closure, XtPointer call_data)
+ {
+-    switch ((int) closure) {
++    switch ((intptr_t) closure) {
+     case 0:			/* open */
+ 	toggle_open_sensitive (False);
+ 	set_cursor (toplevel);
+@@ -608,7 +612,7 @@
+ /* ARGSUSED */
+ static void view_cb (Widget w, XtPointer closure, XtPointer call_data)
+ {
+-    switch ((int) closure) {
++    switch ((intptr_t) closure) {
+     case 0:			/* previous */
+ 	prev_diff (NULL, NULL, NULL);
+ 	break;
+@@ -630,7 +634,7 @@
+ /* ARGSUSED */
+ static void select_cb (Widget w, XtPointer closure, XtPointer call_data)
+ {
+-    switch ((int) closure) {
++    switch ((intptr_t) closure) {
+     case 0:			/* left */
+ 	select_all (LEFT);
+ 	break;
+@@ -652,7 +656,7 @@
+ /* ARGSUSED */
+ static void options_cb (Widget w, XtPointer closure, XtPointer call_data)
+ {
+-    switch ((int) closure) {
++    switch ((intptr_t) closure) {
+     case 0:			/* toggle overview area */
+ 	overview_flag = !overview_flag;
+ 	if (overview_flag) {
+@@ -708,7 +712,7 @@
+ /* ARGSUSED */
+ static void helpmenu_cb (Widget w, XtPointer closure, XtPointer call_data)
+ {
+-    switch ((int) closure) {
++    switch ((intptr_t) closure) {
+     case 0:			/* version */
+ 	show_version (toplevel);
+ 	break;
+@@ -1066,12 +1070,12 @@
+     {"quitIfSame", "QuitIfSame", XtRBoolean, sizeof (Boolean), 0, XtRString, "false"},
+     {"debug", "Debug", XtRBoolean, sizeof (Boolean), 0, XtRString, "false"},
+     {"filename", "Filename", XtRString, sizeof (String), 0, XtRString, ""}};
+-    
++#if !(defined __GLIBC__ && __GLIBC__ >= 2)
+     progname = mgdiff_basename (argv[0]);
++#else
++    progname = basename (argv[0]);
++#endif
+ 
+-    XtSetLanguageProc (NULL, NULL, NULL);
+-    setlocale (LC_ALL, "");
+-    setlocale (LC_CTYPE, "en");
+     toplevel = XtVaAppInitialize (&app, "Mgdiff", option_table, XtNumber (option_table),
+ #if X11R5
+ 				  &argc,
+@@ -1079,6 +1083,10 @@
+ 				  (unsigned int *) &argc,
+ #endif
+ 				  argv, fallbacks, NULL);
++    setlocale (LC_ALL, "");
++    setlocale (LC_CTYPE, "POSIX");
++    XtSetLanguageProc (app, NULL, NULL);
++
+ 
+     XtVaGetValues (toplevel, XmNdepth, &depth, NULL);
+     if (depth == 1)
+@@ -1921,19 +1929,20 @@
+ 
+ 	    value = (b->sline >= lines_of_context) ? (b->sline - lines_of_context) : b->sline;
+ 	    XtVaGetValues (sb, XmNmaximum, &maximum, XmNsliderSize, &slidersize, NULL);
+-	    if (value > (maximum - slidersize))
+-		value = maximum - slidersize;
+ 
+ 	    if ((w == sbl) || (w == sbr)) {
+ 		int side = (w == sbl) ? LEFT : RIGHT;
+ 
+-		if (newcbs.value > (maximum - slidersize)) {
+-		    newcbs.value = maximum - slidersize;
+-		    XtVaSetValues (w, XmNvalue, newcbs.value - b->sline + b->arr[side].fline, NULL);
++		if (value > (maximum - slidersize)) {
++		    value = maximum - slidersize;
++		    XtVaSetValues (w, XmNvalue, value - b->sline + b->arr[side].fline, NULL);
+ 		    return;
+ 		}
+ 	    }
+ 
++	    if (value > (maximum - slidersize))
++		value = maximum - slidersize;
++
+ 	    newcbs.reason = XmCR_VALUE_CHANGED;
+ 	    newcbs.event = NULL;
+ 	    newcbs.value = value;
+@@ -2640,6 +2649,7 @@
+ /* 
+  * delete any prefix ending in '/' and return a copy
+  */
++#if !(defined __GLIBC__ && __GLIBC__ >= 2)
+ static char *mgdiff_basename (char *path)
+ {
+     if (path) {
+@@ -2665,3 +2675,4 @@
+     else
+ 	return (NULL);
+ }
++#endif
+--- mgdiff.h
++++ mgdiff.h	2006-03-07 11:15:24.000000000 +0100
+@@ -2,7 +2,7 @@
+ #define MXDIFF_H
+ 
+ #if 0
+-static char rcsid_mgdiff_h[] = "mgdiff.h,v 2.0 1994/05/19 02:01:15 dan Exp";
++static char rcsid_mgdiff_h[] __attribute__((unused)) = "mgdiff.h,v 2.0 1994/05/19 02:01:15 dan Exp";
+ #endif
+ 
+ /*
+@@ -90,11 +90,27 @@
+  */
+ #define X11R5 (defined(XtSpecificationRelease) && (XtSpecificationRelease >= 5))
+ 
++#include <string.h>
++#include <stdlib.h>
++static inline char* xstrdup(const char *s)
++{
++    char *ret = strdup(s);
++    if (!ret) {
++        perror("strdup");
++        exit (1);
++    }
++    return ret;
++}
++
+ /*
+  * According to IETF RFC 2279, byte values of 0xfe and 0xff are
+  * not legal utf-8, but all others bytes are legal.
+  */
++#if 1
+ #define islatin(c)     (isprint((c)) || ((((unsigned char)(c)) <= 0xfd)))
+-
+ #define isallowed(c)	(isascii((c)) || islatin((c)))
++#else
++#define islatin(c)	((isprint((c)) || ((((unsigned int)(c)) >= 160) && (((unsigned int)(c)) <= 255))))
++#define isallowed(c)	(isascii((c)) || islatin((c)))
++#endif
+ #endif
+--- misc.c
++++ misc.c	2006-03-07 11:15:24.000000000 +0100
+@@ -1,5 +1,5 @@
+ #if 0
+-static char rcsid[] = "misc.c,v 2.0 1994/05/19 02:01:19 dan Exp";
++static char rcsid[] __attribute__((unused)) = "misc.c,v 2.0 1994/05/19 02:01:19 dan Exp";
+ #endif
+ 
+ /*
+@@ -64,7 +64,7 @@
+ {
+     FILE *fout ;
+     int fd ;
+-	
++#if !(defined __GLIBC__ && __GLIBC__ >= 2)
+     /*
+     **	Seed the random() generator. This does not need to be super
+     **	randomised as the while loop below will be run until a file
+@@ -87,7 +87,18 @@
+ 	
+ 	break ;
+     }
+-
++#else
++    snprintf (name, name_len, "/tmp/mgdif-XXXXXX");
++    if ((fd = mkstemp(name)) < 0) {
++	perror("mkstemp");
++	exit(1);
++    }
++    if ((fout = fdopen (fd, "r+")) == NULL) {
++	close (fd);
++	perror("fdopen");
++	exit(1);
++    }
++#endif
+     while (!feof (fin)) {
+ 	char buffer[BUFSIZ];
+ 	int nitems;
+--- modal.c
++++ modal.c	2006-03-07 11:15:24.000000000 +0100
+@@ -1,5 +1,5 @@
+ #if 0
+-static char rcsid[] = "modal.c,v 2.0 1994/05/19 02:01:20 dan Exp";
++static char rcsid[] __attribute__((unused)) = "modal.c,v 2.0 1994/05/19 02:01:20 dan Exp";
+ #endif
+ 
+ /*
+--- patchlevel.h
++++ patchlevel.h	2006-03-07 11:15:24.000000000 +0100
+@@ -29,7 +29,7 @@
+  */
+ 
+ #if 0
+-static char rcsid_patchlevel_h[] = "patchlevel.h,v 2.0 1994/05/19 02:01:21 dan Exp";
++static char rcsid_patchlevel_h[] __attribute__((unused)) = "patchlevel.h,v 2.0 1994/05/19 02:01:21 dan Exp";
+ #endif
+ 
+ #define VERSION    "1.0"
+--- rundiff.c
++++ rundiff.c	2006-03-07 11:15:24.000000000 +0100
+@@ -1,5 +1,5 @@
+ #if 0
+-static char rcsid[] = "rundiff.c,v 2.0 1994/05/19 02:01:22 dan Exp";
++static char rcsid[] __attribute__((unused)) = "rundiff.c,v 2.0 1994/05/19 02:01:22 dan Exp";
+ #endif
+ 
+ /*
+@@ -44,6 +44,16 @@
+ #include "mgdiff.h"
+ #include "externs.h"
+ 
++static inline void* xcalloc(size_t nmemb, size_t size)
++{
++    void *ret = calloc(nmemb, size);
++    if (!ret) {
++	perror("calloc");
++	exit (1);
++    }
++    return ret;
++}
++
+ /* 
+  * this is the maximum number of lines shown to the user if diff
+  * returns an error
+@@ -170,22 +180,22 @@
+     Block *b;
+     DiffInfo *di;
+ 
+-    di = (DiffInfo *) calloc (1, sizeof (DiffInfo));
++    di = (DiffInfo *) xcalloc (1, sizeof (DiffInfo));
+     di->longline = "  ";
+     di->maxcols = strlen (di->longline);
+     di->status = 2;
+ 
+-    b = (Block *) calloc (1, sizeof (Block));
++    b = (Block *) xcalloc (1, sizeof (Block));
+     b->selected = NEITHER;
+     b->arr[LEFT].type = b->arr[RIGHT].type = SAME;
+     b->sline = 0;
+     b->ssize = 1;
+     b->arr[LEFT].fline = b->arr[RIGHT].fline = 0;
+     b->arr[LEFT].fsize = b->arr[RIGHT].fsize = 1;
+-    b->arr[LEFT].text = (char **) calloc (1, sizeof (char *));
+-    b->arr[LEFT].wtext = (char **) calloc (1, sizeof (char *));
+-    b->arr[LEFT].tlen = (short *) calloc (1, sizeof (short));
+-    b->arr[LEFT].text[0] = strdup ("  ");
++    b->arr[LEFT].text = (char **) xcalloc (1, sizeof (char *));
++    b->arr[LEFT].wtext = (char **) xcalloc (1, sizeof (char *));
++    b->arr[LEFT].tlen = (short *) xcalloc (1, sizeof (short));
++    b->arr[LEFT].text[0] = xstrdup ("  ");
+     b->arr[LEFT].tlen[0] = strlen (b->arr[LEFT].text[0]);
+ 
+     b->arr[RIGHT].text = NULL;
+@@ -220,7 +230,7 @@
+     file2 = fopen (path2, "r");
+     diff = spawn_diff (prog, args, path1, path2);
+ 
+-    di = (DiffInfo *) calloc (1, sizeof (DiffInfo));
++    di = (DiffInfo *) xcalloc (1, sizeof (DiffInfo));
+     di->longline = "";
+ 
+     XmUpdateDisplay (toplevel);
+@@ -244,21 +254,21 @@
+ 	    if (di->errors == 0) {
+ 		char cmdline[4096];
+ 
+-		di->etext = (char **) calloc (MAX_ERROR_LINES + 1, sizeof (char *));
++		di->etext = (char **) xcalloc (MAX_ERROR_LINES + 1, sizeof (char *));
+ 		(void) snprintf (cmdline, sizeof (cmdline), "    \"%s %s %s %s\"", prog, args, path1, path2);
+-		di->etext[di->errors++] = strdup ("diff command line:");
+-		di->etext[di->errors++] = strdup ("");
+-		di->etext[di->errors++] = strdup (cmdline);
+-		di->etext[di->errors++] = strdup ("");
+-		di->etext[di->errors++] = strdup ("produced this output:");
+-		di->etext[di->errors++] = strdup ("");
++		di->etext[di->errors++] = xstrdup ("diff command line:");
++		di->etext[di->errors++] = xstrdup ("");
++		di->etext[di->errors++] = xstrdup (cmdline);
++		di->etext[di->errors++] = xstrdup ("");
++		di->etext[di->errors++] = xstrdup ("produced this output:");
++		di->etext[di->errors++] = xstrdup ("");
+ 	    }
+ 	    if (di->errors < MAX_ERROR_LINES)
+-		di->etext[di->errors++] = strdup (buffer);
++		di->etext[di->errors++] = xstrdup (buffer);
+ 	    break;
+ 	case ADD:
+ 	    if (f2n1 != fline2) {
+-		b = (Block *) calloc (1, sizeof (Block));
++		b = (Block *) xcalloc (1, sizeof (Block));
+ 		b->selected = NEITHER;
+ 		b->arr[LEFT].type = b->arr[RIGHT].type = SAME;
+ 		b->sline = sline;
+@@ -267,9 +277,9 @@
+ 		b->arr[LEFT].fsize = b->arr[RIGHT].fsize = f2n1 - fline2;
+ 		b->ssize = f2n1 - fline2;
+ 		
+-		b->arr[LEFT].text = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-		b->arr[LEFT].wtext = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-		b->arr[LEFT].tlen = (short *) calloc (b->arr[LEFT].fsize, sizeof (short));
++		b->arr[LEFT].text = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++		b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++		b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+ 		for (i = 0; i < b->arr[LEFT].fsize; i++) {
+ 		    getline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 		    b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+@@ -285,7 +295,7 @@
+ 		add_blist (b);
+ 	    }
+ 
+-	    b = (Block *) calloc (1, sizeof (Block));
++	    b = (Block *) xcalloc (1, sizeof (Block));
+ 	    b->selected = NEITHER;
+ 	    b->arr[LEFT].type = BLANK;
+ 	    b->arr[RIGHT].type = INSERT;
+@@ -296,9 +306,9 @@
+ 	    b->arr[RIGHT].fsize = f2n2 - f2n1 + 1;
+ 	    b->ssize = max (b->arr[LEFT].fsize, b->arr[RIGHT].fsize);
+ 
+-	    b->arr[RIGHT].text = (char **) calloc (b->arr[RIGHT].fsize, sizeof (char *));
+-	    b->arr[RIGHT].wtext = (char **) calloc (b->arr[RIGHT].fsize, sizeof (char *));
+-	    b->arr[RIGHT].tlen = (short *) calloc (b->arr[RIGHT].fsize, sizeof (short));
++	    b->arr[RIGHT].text = (char **) xcalloc (b->arr[RIGHT].fsize, sizeof (char *));
++	    b->arr[RIGHT].wtext = (char **) xcalloc (b->arr[RIGHT].fsize, sizeof (char *));
++	    b->arr[RIGHT].tlen = (short *) xcalloc (b->arr[RIGHT].fsize, sizeof (short));
+ 	    for (i = 0; i < b->arr[RIGHT].fsize; i++) {
+ 		getline (file2, &b->arr[RIGHT].text[i], &b->arr[RIGHT].wtext[i]);
+ 		b->arr[RIGHT].tlen[i] = strlen (b->arr[RIGHT].text[i]);
+@@ -318,7 +328,7 @@
+ 	    break;
+ 	case CHANGE:
+ 	    if (f1n1 != fline1) {
+-		b = (Block *) calloc (1, sizeof (Block));
++		b = (Block *) xcalloc (1, sizeof (Block));
+ 		b->selected = NEITHER;
+ 		b->arr[LEFT].type = b->arr[RIGHT].type = SAME;
+ 		b->sline = sline;
+@@ -327,9 +337,9 @@
+ 		b->arr[LEFT].fsize = b->arr[RIGHT].fsize = f1n1 - fline1;
+ 		b->ssize = f1n1 - fline1;
+ 		
+-		b->arr[LEFT].text = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-		b->arr[LEFT].wtext = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-		b->arr[LEFT].tlen = (short *) calloc (b->arr[LEFT].fsize, sizeof (short));
++		b->arr[LEFT].text = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++		b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++		b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+ 		for (i = 0; i < b->arr[LEFT].fsize; i++) {
+ 		    getline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 		    b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+@@ -344,7 +354,7 @@
+ 		sline += b->ssize;
+ 		add_blist (b);
+ 	    }
+-	    b = (Block *) calloc (1, sizeof (Block));
++	    b = (Block *) xcalloc (1, sizeof (Block));
+ 	    b->selected = NEITHER;
+ 	    b->arr[LEFT].type = b->arr[RIGHT].type = DIFF;
+ 	    b->sline = sline;
+@@ -354,9 +364,9 @@
+ 	    b->arr[RIGHT].fsize = f2n2 - f2n1 + 1;
+ 	    b->ssize = max (b->arr[LEFT].fsize, b->arr[RIGHT].fsize);
+ 
+-	    b->arr[LEFT].text = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-	    b->arr[LEFT].wtext = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-	    b->arr[LEFT].tlen = (short *) calloc (b->arr[LEFT].fsize, sizeof (short));
++	    b->arr[LEFT].text = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++	    b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++	    b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+ 	    for (i = 0; i < b->arr[LEFT].fsize; i++) {
+ 		getline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 		b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+@@ -367,9 +377,9 @@
+ 	    }
+ 	    fline1 += b->arr[LEFT].fsize;
+ 
+-	    b->arr[RIGHT].text = (char **) calloc (b->arr[RIGHT].fsize, sizeof (char *));
+-	    b->arr[RIGHT].wtext = (char **) calloc (b->arr[RIGHT].fsize, sizeof (char *));
+-	    b->arr[RIGHT].tlen = (short *) calloc (b->arr[RIGHT].fsize, sizeof (short));
++	    b->arr[RIGHT].text = (char **) xcalloc (b->arr[RIGHT].fsize, sizeof (char *));
++	    b->arr[RIGHT].wtext = (char **) xcalloc (b->arr[RIGHT].fsize, sizeof (char *));
++	    b->arr[RIGHT].tlen = (short *) xcalloc (b->arr[RIGHT].fsize, sizeof (short));
+ 	    for (i = 0; i < b->arr[RIGHT].fsize; i++) {
+ 		getline (file2, &b->arr[RIGHT].text[i], &b->arr[RIGHT].wtext[i]);
+ 		b->arr[RIGHT].tlen[i] = strlen (b->arr[RIGHT].text[i]);
+@@ -386,7 +396,7 @@
+ 	    break;
+ 	case DELETE:
+ 	    if (f1n1 != fline1) {
+-		b = (Block *) calloc (1, sizeof (Block));
++		b = (Block *) xcalloc (1, sizeof (Block));
+ 		b->selected = NEITHER;
+ 		b->arr[LEFT].type = b->arr[RIGHT].type = SAME;
+ 		b->sline = sline;
+@@ -395,9 +405,9 @@
+ 		b->arr[LEFT].fsize = b->arr[RIGHT].fsize = f1n1 - fline1;
+ 		b->ssize = f1n1 - fline1;
+ 		
+-		b->arr[LEFT].text = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-		b->arr[LEFT].wtext = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-		b->arr[LEFT].tlen = (short *) calloc (b->arr[LEFT].fsize, sizeof (short));
++		b->arr[LEFT].text = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++		b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++		b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+ 		for (i = 0; i < b->arr[LEFT].fsize; i++) {
+ 		    getline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 		    b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+@@ -413,7 +423,7 @@
+ 		add_blist (b);
+ 	    }
+ 
+-	    b = (Block *) calloc (1, sizeof (Block));
++	    b = (Block *) xcalloc (1, sizeof (Block));
+ 	    b->selected = NEITHER;
+ 	    b->arr[LEFT].type = INSERT;
+ 	    b->arr[RIGHT].type = BLANK;
+@@ -424,9 +434,9 @@
+ 	    b->arr[RIGHT].fsize = 0;
+ 	    b->ssize = max (b->arr[LEFT].fsize, b->arr[RIGHT].fsize);
+ 
+-	    b->arr[LEFT].text = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-	    b->arr[LEFT].wtext = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-	    b->arr[LEFT].tlen = (short *) calloc (b->arr[LEFT].fsize, sizeof (short));
++	    b->arr[LEFT].text = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++	    b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++	    b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+ 	    for (i = 0; i < b->arr[LEFT].fsize; i++) {
+ 		getline (file1, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 		b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+@@ -478,7 +488,7 @@
+ 	;
+ 
+     if (lines > 0) {
+-	b = (Block *) calloc (1, sizeof (Block));
++	b = (Block *) xcalloc (1, sizeof (Block));
+ 	b->selected = NEITHER;
+ 	b->arr[LEFT].type = b->arr[RIGHT].type = SAME;
+ 	b->sline = sline;
+@@ -487,9 +497,9 @@
+ 	b->arr[LEFT].fsize = b->arr[RIGHT].fsize = lines;
+ 	b->ssize = lines;
+ 		
+-	b->arr[LEFT].text = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-	b->arr[LEFT].wtext = (char **) calloc (b->arr[LEFT].fsize, sizeof (char *));
+-	b->arr[LEFT].tlen = (short *) calloc (b->arr[LEFT].fsize, sizeof (short));
++	b->arr[LEFT].text = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++	b->arr[LEFT].wtext = (char **) xcalloc (b->arr[LEFT].fsize, sizeof (char *));
++	b->arr[LEFT].tlen = (short *) xcalloc (b->arr[LEFT].fsize, sizeof (short));
+  	for (i = 0; i < b->arr[LEFT].fsize; i++) {
+ 	    getline (file2, &b->arr[LEFT].text[i], &b->arr[LEFT].wtext[i]);
+ 	    b->arr[LEFT].tlen[i] = strlen (b->arr[LEFT].text[i]);
+@@ -552,7 +562,7 @@
+     }
+ 
+     if (tabs || ctrls) {
+-	char *ret = (char *) calloc (1, len + 1);
++	char *ret = (char *) xcalloc (1, len + 1);
+ 	int j, ch;
+ 
+ 	for (i = 0, j = 0; s[i] != '\0'; i++) {
+@@ -589,7 +599,7 @@
+     }
+     else {
+ 	*flag = False;
+-	return (strdup (s));
++	return (xstrdup (s));
+     }
+ }
+ 
+@@ -689,7 +699,7 @@
+ 	while (getc (f) != '\n')
+ 	    ;
+     *cooked = s;
+-    *raw = (flag) ? strdup (buffer) : NULL;
++    *raw = (flag) ? xstrdup (buffer) : NULL;
+ }
+ 
+ /* 
+--- spawn.c
++++ spawn.c	2006-03-07 11:15:24.000000000 +0100
+@@ -1,5 +1,5 @@
+ #if 0
+-static char rcsid[] = "spawn.c,v 2.0 1994/05/19 02:01:23 dan Exp";
++static char rcsid[] __attribute__((unused)) = "spawn.c,v 2.0 1994/05/19 02:01:23 dan Exp";
+ #endif
+ 
+ /*
+@@ -42,6 +42,25 @@
+ 
+ #define BLOCKSIZE 10
+ 
++static inline void* xmalloc(size_t size)
++{
++    void *ret = malloc(size);
++    if (!ret) {
++	perror("malloc");
++	exit(1);
++    }
++    return ret;
++}
++static inline void* xrealloc(void *ptr, size_t size)
++{
++    void *ret = realloc(ptr, size);
++    if (!ret) {
++	perror("realloc");
++	exit(1);
++    }
++    return ret;
++}
++
+ /* 
+  * run a program with command line arguments and two pathname 
+  * arguments via fork/exec and return a pipe file descriptor into 
+@@ -91,19 +110,19 @@
+ 
+ 	argc = 0;
+ 	count = BLOCKSIZE;
+-	argv = (char **) malloc (sizeof (char *) * BLOCKSIZE);
++	argv = (char **) xmalloc (sizeof (char *) * BLOCKSIZE);
+ 	argv[argc++] = prog;
+ 
+ 	for (ptr = strtok (args, " \t"); ptr; ptr = strtok (NULL, " \t")) {
+ 	    if (argc >= count) {
+-		argv = (char **) realloc (argv, sizeof (char *) * BLOCKSIZE);
++		argv = (char **) xrealloc (argv, sizeof (char *) * BLOCKSIZE);
+ 		count += BLOCKSIZE;
+ 	    }
+ 	    argv[argc++] = strdup (ptr);
+ 	}
+ 
+ 	if ((argc + 3) >= count)
+-	    argv = (char **) realloc (argv, sizeof (char *) * 3);
++	    argv = (char **) xrealloc (argv, sizeof (char *) * 3);
+ 
+ 	argv[argc++] = path1;
+ 	argv[argc++] = path2;

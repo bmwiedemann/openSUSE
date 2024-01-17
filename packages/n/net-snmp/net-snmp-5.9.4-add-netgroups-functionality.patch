@@ -1,0 +1,402 @@
+commit d047b54f874f392f97ffce8d51f49729e1c78225
+Author: Alexander Bergmann <abergmann@suse.com>
+Date:   Fri Mar 10 15:23:35 2023 +0100
+
+    Create sub-function to parse source address and network mask
+    
+    Function netsnmp_udp_resolve_source was introduced to handle the source
+    address and network mask parsing into in_addr structures.
+
+diff --git a/snmplib/transports/snmpUDPDomain.c b/snmplib/transports/snmpUDPDomain.c
+index 2724cf2191..3ad33d4bc5 100644
+--- a/snmplib/transports/snmpUDPDomain.c
++++ b/snmplib/transports/snmpUDPDomain.c
+@@ -98,6 +98,58 @@ netsnmp_udp_fmtaddr(netsnmp_transport *t, const void *data, int len)
+     return netsnmp_ipv4_fmtaddr("UDP", t, data, len);
+ }
+ 
++static int
++netsnmp_udp_resolve_source(char *source, struct in_addr *network,
++        struct in_addr *mask)
++{
++    /* Split the source/netmask parts */
++    char *strmask = strchr(source, '/');
++    if (strmask != NULL)
++        /* Mask given. */
++        *strmask++ = '\0';
++
++    /* Try interpreting as a dotted quad. */
++   if (inet_pton(AF_INET, source, network) == 0) {
++        /* Nope, wasn't a dotted quad.  Must be a hostname. */
++        int ret = netsnmp_gethostbyname_v4(source, &(network->s_addr));
++        if (ret < 0) {
++            config_perror("cannot resolve source hostname");
++            return ret;
++        }
++    }
++
++    /* Now work out the mask. */
++    if (strmask == NULL || *strmask == '\0') {
++        /* No mask was given. Assume /32 */
++        mask->s_addr = (in_addr_t)(~0UL);
++    } else {
++        /* Try to interpret mask as a "number of 1 bits". */
++        char* cp;
++        long maskLen = strtol(strmask, &cp, 10);
++        if (*cp == '\0') {
++            if (0 < maskLen && maskLen <= 32)
++                mask->s_addr = htonl((in_addr_t)(~0UL << (32 - maskLen)));
++            else if (maskLen == 0)
++                mask->s_addr = 0;
++            else {
++                config_perror("bad mask length");
++                return -1;
++            }
++        }
++        /* Try to interpret mask as a dotted quad. */
++        else if (inet_pton(AF_INET, strmask, mask) == 0) {
++            config_perror("bad mask");
++            return -1;
++        }
++
++        /* Check that the network and mask are consistent. */
++        if (network->s_addr & ~mask->s_addr) {
++            config_perror("source/mask mismatch");
++            return -1;
++        }
++    }
++    return 0;
++}
+ 
+ #if defined(HAVE_IP_PKTINFO) || (defined(HAVE_IP_RECVDSTADDR) && defined(HAVE_IP_SENDSRCADDR))
+ 
+@@ -375,52 +427,10 @@ netsnmp_udp_parse_security(const char *token, char *param)
+             negate = 0;
+             sourcep = source;
+         }
+-
+-        /* Split the source/netmask parts */
+-        strmask = strchr(sourcep, '/');
+-        if (strmask != NULL)
+-            /* Mask given. */
+-            *strmask++ = '\0';
+-
+-        /* Try interpreting as a dotted quad. */
+-        if (inet_pton(AF_INET, sourcep, &network) == 0) {
+-            /* Nope, wasn't a dotted quad.  Must be a hostname. */
+-            int ret = netsnmp_gethostbyname_v4(sourcep, &network.s_addr);
+-            if (ret < 0) {
+-                config_perror("cannot resolve IPv4 source hostname");
+-                return;
+-            }
+-        }
+-
+-        /* Now work out the mask. */
+-        if (strmask == NULL || *strmask == '\0') {
+-            /* No mask was given. Assume /32 */
+-            mask.s_addr = (in_addr_t)(~0UL);
+-        } else {
+-            /* Try to interpret mask as a "number of 1 bits". */
+-            char* cp;
+-            long maskLen = strtol(strmask, &cp, 10);
+-            if (*cp == '\0') {
+-                if (0 < maskLen && maskLen <= 32)
+-                    mask.s_addr = htonl((in_addr_t)(~0UL << (32 - maskLen)));
+-                else if (0 == maskLen)
+-                    mask.s_addr = 0;
+-                else {
+-                    config_perror("bad mask length");
+-                    return;
+-                }
+-            }
+-            /* Try to interpret mask as a dotted quad. */
+-            else if (inet_pton(AF_INET, strmask, &mask) == 0) {
+-                config_perror("bad mask");
+-                return;
+-            }
+-
+-            /* Check that the network and mask are consistent. */
+-            if (network.s_addr & ~mask.s_addr) {
+-                config_perror("source/mask mismatch");
+-                return;
+-            }
++        /* Parse source address and network mask. */
++        if(netsnmp_udp_resolve_source(sourcep, &network, &mask)) {
++            config_perror("source address/network mask parsing issue");
++            return;
+         }
+     }
+ 
+commit a2559914d8d8132f155a81c0852cbbd2090d2d40
+Author: Alexander Bergmann <abergmann@suse.com>
+Date:   Fri Mar 10 15:25:10 2023 +0100
+
+    Create sub-function to check the com2SecEntry_create return code
+    
+    The return code interpretation of the netsnmp_udp_com2SecEntry_create
+    function is now done inside a new sub-function.
+
+diff --git a/snmplib/transports/snmpUDPDomain.c b/snmplib/transports/snmpUDPDomain.c
+index 3ad33d4bc5..5904a1b423 100644
+--- a/snmplib/transports/snmpUDPDomain.c
++++ b/snmplib/transports/snmpUDPDomain.c
+@@ -346,6 +346,33 @@ netsnmp_udp_com2SecEntry_create(com2SecEntry **entryp, const char *community,
+     return C2SE_ERR_SUCCESS;
+ }
+ 
++void
++netsnmp_udp_com2SecEntry_check_return_code(int rc)
++{
++    /*
++     * Check return code of the newly created com2Sec entry.
++     */
++    switch(rc) {
++        case C2SE_ERR_SUCCESS:
++            break;
++        case C2SE_ERR_CONTEXT_TOO_LONG:
++            config_perror("context name too long");
++            break;
++        case C2SE_ERR_COMMUNITY_TOO_LONG:
++            config_perror("community name too long");
++            break;
++        case C2SE_ERR_SECNAME_TOO_LONG:
++            config_perror("security name too long");
++            break;
++        case C2SE_ERR_MASK_MISMATCH:
++            config_perror("source/mask mismatch");
++            break;
++        case C2SE_ERR_MISSING_ARG:
++        default:
++            config_perror("unexpected error; could not create com2SecEntry");
++    }
++}
++
+ void
+ netsnmp_udp_parse_security(const char *token, char *param)
+ {
+@@ -440,25 +467,7 @@ netsnmp_udp_parse_security(const char *token, char *param)
+      */
+     rc = netsnmp_udp_com2SecEntry_create(NULL, community, secName, contextName,
+                                          &network, &mask, negate);
+-    switch(rc) {
+-        case C2SE_ERR_SUCCESS:
+-            break;
+-        case C2SE_ERR_CONTEXT_TOO_LONG:
+-            config_perror("context name too long");
+-            break;
+-        case C2SE_ERR_COMMUNITY_TOO_LONG:
+-            config_perror("community name too long");
+-            break;
+-        case C2SE_ERR_SECNAME_TOO_LONG:
+-            config_perror("security name too long");
+-            break;
+-        case C2SE_ERR_MASK_MISMATCH:
+-            config_perror("source/mask mismatch");
+-            break;
+-        case C2SE_ERR_MISSING_ARG:
+-        default:
+-            config_perror("unexpected error; could not create com2SecEntry");
+-    }
++    netsnmp_udp_com2SecEntry_check_return_code(rc);
+ }
+ 
+ void
+commit 20e2bb7d75c391f5cfde1eb8b8676aff68f3a5f5
+Author: Alexander Bergmann <abergmann@suse.com>
+Date:   Fri Mar 10 15:31:41 2023 +0100
+
+    Add '@' netgroup functionality
+    
+    Allow access control via netgroups defined in /etc/netgroup or NIS/LDAP
+    via the '@' sign inside the configuration file. Same as IP addresses and
+    host names.
+
+diff --git a/configure b/configure
+index 575b60c4d2..82414664cf 100755
+--- a/configure
++++ b/configure
+@@ -31221,6 +31221,12 @@ if test "x$ac_cv_func_closedir" = xyes
+ then :
+   printf "%s\n" "#define HAVE_CLOSEDIR 1" >>confdefs.h
+ 
++fi
++ac_fn_c_check_func "$LINENO" "endnetgrent" "ac_cv_func_endnetgrent"
++if test "x$ac_cv_func_endnetgrent" = xyes
++then :
++  printf "%s\n" "#define HAVE_ENDNETGRENT 1" >>confdefs.h
++
+ fi
+ ac_fn_c_check_func "$LINENO" "fgetc_unlocked" "ac_cv_func_fgetc_unlocked"
+ if test "x$ac_cv_func_fgetc_unlocked" = xyes
+@@ -31257,6 +31263,12 @@ if test "x$ac_cv_func_getlogin" = xyes
+ then :
+   printf "%s\n" "#define HAVE_GETLOGIN 1" >>confdefs.h
+ 
++fi
++ac_fn_c_check_func "$LINENO" "getnetgrent" "ac_cv_func_getnetgrent"
++if test "x$ac_cv_func_getnetgrent" = xyes
++then :
++  printf "%s\n" "#define HAVE_GETNETGRENT 1" >>confdefs.h
++
+ fi
+ ac_fn_c_check_func "$LINENO" "if_nametoindex" "ac_cv_func_if_nametoindex"
+ if test "x$ac_cv_func_if_nametoindex" = xyes
+@@ -31305,6 +31317,12 @@ if test "x$ac_cv_func_setlocale" = xyes
+ then :
+   printf "%s\n" "#define HAVE_SETLOCALE 1" >>confdefs.h
+ 
++fi
++ac_fn_c_check_func "$LINENO" "setnetgrent" "ac_cv_func_setnetgrent"
++if test "x$ac_cv_func_setnetgrent" = xyes
++then :
++  printf "%s\n" "#define HAVE_SETNETGRENT 1" >>confdefs.h
++
+ fi
+ ac_fn_c_check_func "$LINENO" "setsid" "ac_cv_func_setsid"
+ if test "x$ac_cv_func_setsid" = xyes
+diff --git a/configure.d/config_os_functions b/configure.d/config_os_functions
+index b921f8cd7b..0915928e21 100644
+--- a/configure.d/config_os_functions
++++ b/configure.d/config_os_functions
+@@ -25,12 +25,14 @@ AC_TYPE_SIGNAL
+ AC_CHECK_FUNCS([rand   random srand srandom lrand48 srand48])
+ 
+ #  Library:
+-AC_CHECK_FUNCS([asprintf        closedir        fgetc_unlocked   ] dnl
++AC_CHECK_FUNCS([asprintf        closedir        endnetgrent      ] dnl
++               [fgetc_unlocked                                   ] dnl
+                [flockfile       funlockfile     getipnodebyname  ] dnl
+-               [gettimeofday    getlogin                         ] dnl
++               [gettimeofday    getlogin        getnetgrent      ] dnl
+                [if_nametoindex  mkstemp                          ] dnl
+                [opendir         readdir         regcomp          ] dnl
+                [setenv          setitimer       setlocale        ] dnl
++               [setnetgrent                                      ] dnl
+                [setsid          snprintf        strcasestr       ] dnl
+                [strdup          strerror        strncasecmp      ] dnl
+                [sysconf         times           vsnprintf        ] )
+diff --git a/include/net-snmp/net-snmp-config.h.in b/include/net-snmp/net-snmp-config.h.in
+index 89b2ca116d..5efbf12400 100644
+--- a/include/net-snmp/net-snmp-config.h.in
++++ b/include/net-snmp/net-snmp-config.h.in
+@@ -183,6 +183,9 @@
+ /* Define to 1 if you have the `endfsent' function. */
+ #undef HAVE_ENDFSENT
+ 
++/* Define to 1 if you have the `endnetgrent' function. */
++#undef HAVE_ENDNETGRENT
++
+ /* Define to 1 if you have the `ERR_get_error_all' function. */
+ #undef HAVE_ERR_GET_ERROR_ALL
+ 
+@@ -294,6 +297,9 @@
+ /* Define to 1 if you have the `getmntinfo' function. */
+ #undef HAVE_GETMNTINFO
+ 
++/* Define to 1 if you have the `getnetgrent' function. */
++#undef HAVE_GETNETGRENT
++
+ /* Define to 1 if you have the `getopt' function. */
+ #undef HAVE_GETOPT
+ 
+@@ -883,6 +889,9 @@
+ /* Define to 1 if you have the `setmntent' function. */
+ #undef HAVE_SETMNTENT
+ 
++/* Define to 1 if you have the `setnetgrent' function. */
++#undef HAVE_SETNETGRENT
++
+ /* Define to 1 if you have the `setsid' function. */
+ #undef HAVE_SETSID
+ 
+diff --git a/man/snmpd.conf.5.def b/man/snmpd.conf.5.def
+index 2a9abd5b51..6060ed51d1 100644
+--- a/man/snmpd.conf.5.def
++++ b/man/snmpd.conf.5.def
+@@ -434,6 +434,14 @@ com2sec sec1 10.0.0.0/8 public
+ .IP
+ Access from outside of 10.0.0.0/8 would still be denied.
+ .IP
++It is also possible to reference a specific \fInetgroup\fR starting with an
++'@' character (e.g.  @adminhosts). The \fInetgroup\fR lookup is running
++through the NSS (Name Services Switch) making it possible to define the
++group locally or via NIS/LDAP.
++.IP
++Note: The hostname DNS lookup and \fInetgroup\fR resolution is done only
++during snmpd start or reload.
++.IP
+ The same community string can be specified in several separate directives
+ (presumably with different source tokens), and the first source/community
+ combination that matches the incoming request will be selected.
+diff --git a/snmplib/transports/snmpUDPDomain.c b/snmplib/transports/snmpUDPDomain.c
+index 5904a1b423..8f98398704 100644
+--- a/snmplib/transports/snmpUDPDomain.c
++++ b/snmplib/transports/snmpUDPDomain.c
+@@ -445,6 +445,10 @@ netsnmp_udp_parse_security(const char *token, char *param)
+         network.s_addr = 0;
+         mask.s_addr = 0;
+         negate = 0;
++        /* Create a new com2Sec entry. */
++        rc = netsnmp_udp_com2SecEntry_create(NULL, community, secName, contextName,
++                                             &network, &mask, negate);
++        netsnmp_udp_com2SecEntry_check_return_code(rc);
+     } else {
+         char *strmask;
+         if (*source == '!') {
+@@ -454,20 +458,44 @@ netsnmp_udp_parse_security(const char *token, char *param)
+             negate = 0;
+             sourcep = source;
+         }
+-        /* Parse source address and network mask. */
+-        if(netsnmp_udp_resolve_source(sourcep, &network, &mask)) {
+-            config_perror("source address/network mask parsing issue");
+-            return;
++#if HAVE_ENDNETGRENT && HAVE_GETNETGRENT && HAVE_SETNETGRENT
++        /* Interpret as netgroup */
++        if (*sourcep == '@') {
++            char *netgroup = sourcep+1;
++            char *host, *user, *domain;
++            if(setnetgrent(netgroup)) {
++                while (getnetgrent(&host, &user, &domain)) {
++                    /* Parse source address and network mask for each netgroup host. */
++                    if (netsnmp_udp_resolve_source(host, &network, &mask) == 0) {
++                        /* Create a new com2Sec entry. */
++                        rc = netsnmp_udp_com2SecEntry_create(NULL, community, secName, contextName,
++                                                             &network, &mask, negate);
++                        netsnmp_udp_com2SecEntry_check_return_code(rc);
++                    } else {
++                        config_perror("netgroup host address parsing issue");
++                        break;
++                    }
++                }
++                endnetgrent();
++            } else {
++                config_perror("netgroup could not be found");
++            }
++        }
++        /* Without '@' it has to be an address or hostname */
++        else
++#endif
++        {
++            /* Parse source address and network mask. */
++            if(netsnmp_udp_resolve_source(sourcep, &network, &mask) == 0) {
++                /* Create a new com2Sec entry. */
++                rc = netsnmp_udp_com2SecEntry_create(NULL, community, secName, contextName,
++                                                     &network, &mask, negate);
++                netsnmp_udp_com2SecEntry_check_return_code(rc);
++            } else {
++                config_perror("source address/network mask parsing issue");
++            }
+         }
+     }
+-
+-    /*
+-     * Everything is okay.  Copy the parameters to the structure allocated
+-     * above and add it to END of the list.
+-     */
+-    rc = netsnmp_udp_com2SecEntry_create(NULL, community, secName, contextName,
+-                                         &network, &mask, negate);
+-    netsnmp_udp_com2SecEntry_check_return_code(rc);
+ }
+ 
+ void

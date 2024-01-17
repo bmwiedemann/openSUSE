@@ -1,0 +1,4 @@
+Recovery of xfs file systems is not automated. We suggest using the
+'xfs_repair' tool to repair any damage to the file system. If that
+doesn't work you may zero the xfs log with the '-L' option to
+xfs_repair, however this can cause the loss of user files and/or data.

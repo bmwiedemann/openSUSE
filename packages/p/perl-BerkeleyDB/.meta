@@ -1,0 +1,10 @@
+<package name="perl-BerkeleyDB" project="openSUSE:Factory">
+  <title>Perl extension for Berkeley DB version 2, 3 or 4</title>
+  <description>This Perl module provides an interface to most of the functionality available
+in Berkeley DB versions 2, 3 and 4. In general it is safe to assume that the
+interface provided here to be identical to the Berkeley DB interface. The main
+changes have been to make the Berkeley DB API work in a Perl way. Note that if
+you are using Berkeley DB 2.x, the new features available in
+Berkeley DB 3.x or DB 4.x are not available via this module.</description>
+  <devel project="devel:languages:perl" package="perl-BerkeleyDB"/>
+</package>

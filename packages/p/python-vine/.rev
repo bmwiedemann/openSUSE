@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a7eca297e97a0b832864986524f234c</srcmd5>
+    <version>1.1.3</version>
+    <time>1492011139</time>
+    <user>maxlin_factory</user>
+    <comment>single-spec (combined python 2 and python 3) version of python3-vine, which is already on openSUSE:Factory.</comment>
+    <requestid>481997</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e77e5734dab9f18b919d7275cd118211</srcmd5>
+    <version>1.1.4</version>
+    <time>1503392963</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.4:
+  - Added official support for Python 3.5 &amp; 3.6.
+  - Improve Python 2/3 compatibility.
+  - Don't set mutable default values to keyword arguments.</comment>
+    <requestid>517868</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2a0b51063099a51a7a0b63f72ac3b2ec</srcmd5>
+    <version>1.3.0</version>
+    <time>1554189645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688348</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95c0ac21e7ae0f763ee22914133606bc</srcmd5>
+    <version>5.0.0</version>
+    <time>1607801306</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.0:
+  * Dropped Python 2.x, 3.4 and 3.5 support.
+  * Removed the :mod:`vine.five` module.
+  * Removed the :mod:`vine.backports.weakref_backports` module.</comment>
+    <requestid>847012</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ca755de8d359bb580a751fd18ec37fff</srcmd5>
+    <version>5.0.0</version>
+    <time>1665754898</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls</comment>
+    <requestid>1010404</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>dc3d37a714a20ca9dfd6fef479a39a2a</srcmd5>
+    <version>5.0.0</version>
+    <time>1686576377</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092374</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d2ce247c80b3c683f6ac0a30bd095e2</srcmd5>
+    <version>5.1.0</version>
+    <time>1701121508</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.0:
+  * Dropped Python 3.6 support.
+  * Added new Python versions support.
+  * Dropped old dependencies.
+  * Added new GHA based CI.
+  * Added slots support and impproved dynamic assignment.</comment>
+    <requestid>1129241</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+<package name="qt6-webengine" project="openSUSE:Factory">
+  <title>Web browser engine for Qt applications</title>
+  <description>The Qt WebEngine module provides a web browser engine to embed web content into
+Qt applications.
+The functionality in Qt WebEngine is divided into the following
+modules:
+* Qt WebEngine Core module for interacting with Chromium
+* Qt WebEngine Widgets module for creating widget-based web applications
+* Qt WebEngine module for creating Qt Quick based web applications
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-webengine"/>
+  <url>https://www.qt.io</url>
+</package>

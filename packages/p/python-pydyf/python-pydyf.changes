@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Thu Jan 11 10:46:57 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add %{?sle15_python_module_pythons} macro
+
+-------------------------------------------------------------------
+Fri Jan  5 16:02:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * Add text rise operator
+
+-------------------------------------------------------------------
+Sun Jul 16 21:09:43 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.7.0
+  * Python 3.11 is supported and tested
+  * Fix size of fields for xref
+
+-------------------------------------------------------------------
+Thu May  4 19:31:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * Add an option to use compressed object streams for PDF 1.5+,
+    with financial support from Code & Co.
+  * Add new text operators
+  * Clean and fix documentation
+
+-------------------------------------------------------------------
+Fri Oct 28 20:04:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.5.0
+  * Add the PDF.page_references property
+  * Revert the PDF.pages['Kids'] behavior to be backwards compatible with version 0.3.0
+
+- Update to version 0.4.0
+  * Allow nth page’s reference to be retrieved using PDF.pages['Kids'][n]
+
+-------------------------------------------------------------------
+Wed Oct 12 14:08:39 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.3.0
+  * Support marked content
+  * Allow version and ID to be specified when initializing PDF objects
+
+-------------------------------------------------------------------
+Tue Aug 16 20:25:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Implement python packaging best practices for build requirements,
+  testing and files section
+
+-------------------------------------------------------------------
+Sat Aug 13 11:44:53 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- Update to version 0.2.0
+  * Requires Python 3.7+
+  * change buildsystem to .toml
+
+-------------------------------------------------------------------
+Wed Dec 15 07:53:09 UTC 2021 - pgajdos@suse.com
+
+- fix build (testsuite run)
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
+Thu Nov 18 16:23:51 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.1.2
+  inital OBS build

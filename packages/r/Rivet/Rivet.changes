@@ -1,0 +1,985 @@
+-------------------------------------------------------------------
+Sat Jan  6 10:06:00 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.1.9:
+  * Streamline definitions of a "temp" histogram
+  * Account for 2pi boundaries when checking for zero angle
+    in DISKinematics
+  * Improvements to rivet-mkhtml output.
+  * Add STAR_2014_I1253360 p + p -> pi0 + X
+  * Add missing analysis-object methods on Analysis: booking of
+    Scatter1Ds, efficiency and asymmetry calculations for Counters
+    and Histo2Ds.
+  * Fix projection comparison for InvisibleFinalState
+  * Add icon links to Inspire and HepData, escape HTML content in
+    titles as Inspire has started recording MathML for maths.
+  * Add a Matrix3::mkRotation(from, to) static factory function,
+    for one-liner convenience.
+  * Fix unit conversion in HepMC3 readEvent method
+  * Fix CMS_2021_I1920187 to use size_t or unsigned int types in
+    place of non-standard uint.
+  * Remove logic that parses info file from AnalysisInfo constructor
+    and only parse when an analysis is being specifically asked for.
+  * Fix binary relocation in binrelo.c
+  * Make rivet-mkhtml write HTML file before processing images.
+  * Fix rivet-mkhtml-mpl autocomplete.
+  * Explicitly import YODA and Projection base-class operator= into
+    derived classes to silence new GCC13 warnings.
+  * Turn parameters (cuts, jet radius, clustering algorithms etc)
+    into Rivet options in several common MC analyses.
+  * Bypass projection comparison during registration if
+    RIVET_CACHE_PROJECTIONS is false.
+  * Patch projection comparison for SmearedJets
+  * Prevent bookeeping histos from acquiring analysis option
+    on the fly as part of merging
+- Add fix_HepMC_327_compat.patch
+- Remove unused API doc build dependencies (doxygen, texlive etc.)
+
+-------------------------------------------------------------------
+Fri Sep  1 17:38:26 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- License: Change LPPL-1.3 to LPPL-1.3a according to spdx list.
+
+-------------------------------------------------------------------
+Tue Aug 29 13:12:48 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- License correction based on the legaldb scan
+
+-------------------------------------------------------------------
+Tue Jul 11 04:00:30 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.8:
+  * Append extra newlines to plugin sources in batched rivet-build.
+  * Add ability to control the specific plugin library paths for
+    analyses to be loaded from, via new programmatic set and get
+    methods on AnalysisLoader and a new RIVET_ANALYSIS_PLUGINS
+    environment variable.
+  * Remove support for custom ASCII event-file formats.
+  * Use an immediate call to HepMC3::deduce_reader() in the file
+    and stream opening; drop local attempts to deduce the file
+    format.
+  * Require HepMC3 >= 3.2.0
+  * Add variations on the discard/select utility functions to
+    (particularly) discard single elements by equality rather than
+    needing to provide a function.
+  * Fixes in MC_TAU_Decay plot file, courtesy of George Marsden
+  * Provide an implicit cast for FourVector and derived classes to
+    PseudoJet, to avoid the incorrect conversion by PJ's template
+    constructor.
+  * Fix unit for Zjj inclusive runs in ATLAS_2017_I1627873
+  * ATLAS_2019_I1746286: fix generator ctau description in the
+    info file.
+  * Fix memory leaks in binreloc.c and the merging-related method
+    in AnalysisHandler.
+  * Fix CMS_2015_I1346843 to allow FSR photons from muon decays
+  * Add example analysis demonstrating use of an ONNX neural net.
+  * Change/correct DressedLeptons behaviour to accept photons from
+    prompt muons and taus. (Return to 2.x behaviour, accidentally
+    reverted.)
+  * Update ParticleIdUtils content to match latest MCUtils.
+    Includes a serious speed-up (6x!) in PID digit decoding!
+  * Allow linspace() and aspace() to make reversed edge-sets with
+    start > end.
+  * Add powspace() and powdbnspace() uniform-spacing functions for
+    power laws, and a generic _fnspace() function for any
+    transform/inverse function-pair.
+  * Fix couting of raw vs tmp histos when checking
+    self-consistency of output file.
+  * Replace regex_match with reg_search to pick up substring
+    matches, too.
+  * Fix bug in DELPHI_2011_I890503 and OPAL_2003_I599181, where
+    the wrong decay chain was checked for weak decays.
+  * Change configure script to use the --rpath=no option to
+    fastjet-config, removing fragile path-hacking.
+    build script.
+  * Add reentrant marker to MC_DILEPTON.info
+  * Make logger thread safe(r) by making ColorMap and LevelMap
+  * thread_local.
+  * Extend RivetLWTNN.hh to allow use of lwt::LightweightGraph
+  * Enable Cython autoconversion from C++ strings to the
+    appropriate str type for Python v2 and v3, eliminating many
+    noisy and fragile explicit encode()/decode() calls.
+  * Analyses of new experiments (long list, see
+    /usr/share/doc/packages/Rivet-devel/ChangeLog).
+- Drop Rivet-correct-python-platlib.patch: fixed upstream.
+- ExcludeArch %ix86: i586 error due to conversion from
+  `long long` to `size_t`.
+
+-------------------------------------------------------------------
+Sun Oct 23 18:41:35 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.7:
+  * Add HEPTopTagger interface (since made optional, with no-build
+    example analysis).
+  * Add EXAMPLE_NTUPLE_ROOT example analysis showing how to open
+    and write to a ROOT ntuple file.
+  * Add CMS_2021_I1866118: Z boson plus jets (DPS) at 13 TeV
+  * Add EXAMPLE_NTUPLE_CSV example analysis showing how to open
+    and write to a CSV ntuple file.
+  * Add Analysis::analysisDataPath() and the RivetLWTNN.hh include
+    with convenience functions for loading of LWTNN DNNs.
+  * Add EXAMPLE_LWTNN example analysis, demonstrating use of a
+    preserved LWTNN neural network in Rivet.
+  * Install more generically named files from the analysis
+    plugin/data dirs rather than limiting to the .plot, .info,
+    .yoda* set.
+  * Move EXAMPLE_* analyses, which demonstrate functionality to
+    analysis writers rather than being directly useful in compiled
+    form, into an uncompiled analyses/examples/ directory.
+  * Hide the bundled eigen3 in a mangled RivetEigen namespace, to
+    avoid clashes.
+  * Submission of CMS_2022_I2079374: Z pT over a wide mass range
+    at 13 TeV
+  * Upgrade eigen3 and yaml-cpp bundling to remove compiler
+    warnings.
+- Add Rivet-correct-python-platlib.patch: Ensure consistent python
+  platlib across different python versions.
+- Split out data files common to C++ and Python bindings into
+  separate package (Rivet-data) and have it required from both
+  %{name}-devel and python3-%{name} packages.
+- Run tests as part of %check section.
+- Move sed fixes to hashbangs to %setup section, running them over
+  scripts in source rather than on buildroot installed dirs to
+  allow tests in %check to succeed.
+- Drop fixes to pkgconfig script made during %setup as these are
+  no longer needed.
+
+-------------------------------------------------------------------
+Sun May 29 13:09:20 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.6:
+  * Allow the rivet script's -p option to be given multiple times,
+    or to contain a comma-separated list of files to load cf. the
+    -a argument. readData() is called for each specified preload
+    file, in order.
+  * Add a pseudojets() method and automatic conversion operator to
+    Particles.  It sets the user index so the constituents will
+    match the indices of the particle or jet vector used as input.
+  * Move the Jets and Particles definitions into the .hh headers.
+  * Submission of CMS_2017_I1497519: Z boson in association with
+    jets at 8 TeV.
+  * Fall back to old calculation of y in DISKinematics if Q2 is
+    zero.
+  * Add MissingMom typedef for MissingMomentum.
+  * Add vectorEt/PtMiss() and scalarEt/PtMiss() methods to
+    MissingMomentum.
+  * Use ThreeMomentum in MissingMomentum for the vectorPt() etc.
+  * Add ThreeMomentum/P3 type with momentum-oriented method names,
+    cf. FourVector->FourMomentum.
+  * Add a pseudojets() method to the Jets container type.
+  * Add BESIII_2022_I2047667 e+e- > eta omega and omega pi0.
+  * Add finalize-scaling protection in ATLAS_2020_1790256.
+  * Add BESIII_2022_I2039027 e+e- > pi+pi-eta.
+  * Add BESIII_2022_I2033007 e+e-> K+K-pi0.
+
+-------------------------------------------------------------------
+Fri Jan  7 08:31:54 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix sed script for rpath removal from rivet-config.
+
+-------------------------------------------------------------------
+Tue Dec  7 21:51:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.5:
+  * Changed the first labelling in ATLAS_2016_I1467230 from "/*"
+    to "/d01-*"
+  * Use the new Ref(Un)match regex info to filter unwanted objects
+    from ref files during HepData sync.
+  * Add support for Warning, RefMatch, and RefUnmatch keys in
+    analysis info files, mapped to the Analysis and AnalysisInfo
+    APIs.
+  * Add testing, warning messages, and unit tests for
+    negative-virtuality FS particles.
+  * Fix the analysis-plugin uninstall target.
+  * Remove many const return-by-value signatures, and other sloppy
+    or meaningless C++ antipatterns flagged by the icpc build.
+  * Add SFINAE x/y/z/t() method detection to Vector4 constructors,
+    and explicit .pseudojet() calls to Particles and Jets passed
+    to PseudoJet constructors.
+  * submission of ATLAS_2019_I1768911 (Z pT and phi* and at 13
+    TeV)
+  * Provide more options to specify the Cython command to be used.
+    Thanks to Christian Holm Christensen.
+  * Separate the DESTDIR from prefix in the Python module
+    installation, to clean up FreeBSD packaging.
+  * introduce isCompatibleWithSqrtS function for sqrtS dependent
+    hist booking, falls back to ENERGY option to make routines
+    reentrant safe
+  * fix back for CounterPtr filling: no fill should mean no fill,
+    not fill using weight 0
+  * Add ability for mkhtml to use pdfunite in place of pdftk and
+    pdfmerge for making a booklet.
+  * fix indentation in MC_MUONS.info
+  * add per-file print out to rivet-merge
+  * support keyboard interruption in rivet-merge
+  * Correction to use xE rather than xP in OPAL_1997_S3396100, by
+    Adil Jueid.
+  * New CMS analyses: CMS_2020_I1794169 (WZ and same-sign WW boson
+    pairs), CMS_2020_I1814328 (W+W- boson pair production), and
+    CMS_2020_I1837084 (Z-boson differential production cross
+    section using its invisible decay mode; NB: runs on Z->mumu
+    sample)
+  * Improve option handling for booleans, and exception emission
+    with incompatible casts.
+  * Add a default-value argument to the string version of
+    getOption().
+  * Change the DressedLepton single-FS name from barefs to allfs,
+    to reduce confusion.
+  * Add DIRECT and DRESSED options to MC_ELECTRONS and MC_MUONS.
+  * Fix dressed-lepton origin position for the standard,
+    non-jet-clustering mode.
+  * Remove raw int baryon counter from STAR_2006_S6860818.
+  * catch low-stats crash in LHCB_2013_I1208105 reported by Jan
+    Kretzschmar
+  * Improve error message for when the calibration file has been
+    forgotten
+  * Remove numerical epsilon cutoff for pseudorapidity
+    calculation: inf is a perfectly good value for beamline
+    momenta. Regression test updated.
+  * Add convenience V2, V3, V4, and P4 alias names for the vector
+    types.
+  * Add tests for eta and rapidity values calculated in particular
+    for +-z vectors.
+  * Allowing file.yoda:x1.23 and file.yoda:=1.23 as rivet-merge
+    arguments to multiply or overwrite the cross-section
+    respectively
+  * Add LHCB_2010_S8758301 -> LHCB_2010_I865584 alias, requested
+    by LHCb.
+  * Adding zero-division protection in AH::setCrossSection
+    (spotted by P. Ilten, thanks!)
+  * Submission of MC_HFDECAYS (MC-only validation routine for
+    heavy-flavour hadron decays)
+  * Add Analysis::barchart() functions for converting histos to
+    inert 'bar charts' without bin-width scaling. Sometimes
+    necessary, e.g. for reporting infinite-width bin contents.
+  * Update bundled yaml-cpp to version 0.6.3
+- Drop Rivet-analysis-compilation.patch: incorporated upstream.
+
+-------------------------------------------------------------------
+Sat Nov 28 15:38:14 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.3:
+  * Add consistently 'RIVET_'-prefixed versions of the CTOR and
+    PLUGIN macros, to be the preferred future form from 3.2.0
+    onwards.
+  * Add LHCB_2016_I1454404 (W/Z at 8 TeV), and LHCB_2015_I1396331
+    & LHCB_2016_I1490663 (open charm).
+  * Add an explicit configure test and override variable for the
+    cython executable.
+  * Use more numerically robust x and y definitions in
+    DISKinematics
+  * Relax some restrictions on Sphericity calculation.
+  * Backport master-branch tolerance of no-beam events and no-xsec
+    runs to 3.1.x.
+  * Add a --no-downloads flag to rivet-mkanalysis.
+  * Add a GROOM option to MC_JETS.
+  * Add LHCB_2018_I1662483 (forward dilepton top-pair production
+    cross-section)
+  * Add mixed-arithmetic-type min(n1,n2) and max(n1,n2) functions,
+    using std::common_type.
+  * Adding CMS_2018_I1620050 (dileptonic ttbar at 13 TeV) and
+    CMS_2019_I1744604 (t-channel single top at 13 TeV).
+  * Move the experiment-specific smearing functions into
+    ExptSmearingFunctions.hh, with SmearingFunctions.hh retained
+    for UI simplicity and backward compatibility.
+  * Improve the ATLAS Run 2 MET smearing function to incorporate
+    the Run 2 linearity and resolution dependences.
+  * Refine the ATLAS and CMS MET functions to avoid a peak at
+    MET=0 from negative Gaussian smearing.
+  * Add mT plot to MC_WINC
+  * Use options for MC_VINC, MC_VJETS, MC_VKTSPLITTINGS
+  * Add a list of fastjet::Transformer to FastJets, to be applied
+    in order. Transformers don't currently have a comparison
+    operator, so if this list is non-empty, we have to report the
+    projection as non-equivalent and recompute duplicates -- for
+    now -- but it works, and we can feed back that improvement
+    (again).
+  * Tidy jet distance measure enums, introducing convenience AKT,
+    CA, and CAMBRIDGE aliases.
+  * Add missing 'inline' declarations to all high-level filter
+    functions.
+  * Add missing (i)discard/selectIfAll high-level filtering
+    functions.
+  * Correct logical bugs in (i)selectIfAnyDeltaR/Phi function
+    logic: it's not just the equivalent of the discard versions.
+  * Submission of ATLAS_2019_I1750330
+  * Add bare-lepton origin position to DressedLepton constructors.
+  * Add aspace() and l/rpad() utility functions.
+  * Rename the little-used in-place sortBy() functions to
+    isortBy() cf. ifilter() and friends, since the behaviour
+    should not change wildly just based on the constness status of
+    an argument.
+  * Add JADE_1985_I213948 gamma, pi0 and eta spectra at 14, 22.5
+    and 34.4 GeV
+  * Update rivet-diffhepdata-all to check local directory for
+    analysis.json
+  * Add L3_1990_I298078 jet rates at MZ
+  * Add L3_1991_I314407 pi0 and charged particle spectra
+  * Add L3_1994_I374698 pi0 and eta spectra
+  * Add missing jet rates to L3_2004_I652683
+  * Add DELPHI_2000_I531568 p pbar correlations
+  * Add L3_2008_I825820 event shapes at 197 GeV
+  * Add ALEPH_2001_I555653  tau polarization at LEP I
+  * Add DELPHI_2008_I763352 tau polarization at LEP II
+  * Add MAC_1987_I245571    tau polarization at 29 GeV
+  * Add AMY_1990_I298238    tau polarization at 57 GeV
+  * Add VENUS_1997_I440852  tau polarization at 58 GeV
+  * Add DELPHI_2000_I511443 tau polarization at LEP I
+  * Add OPAL_2001_I554583   tau polarization at LEP I
+  * Add L3_1998_I467929     tau polarization at LEP I
+  * Add client-side plot display filtering and and -m/-M pattern
+    (un)matching fags to rivet-mkhtml.
+  * Add BELLE_2018_I1621272 B->D*- tau+ nu_tau
+  * Add BESIII_2019_I1702549 D_S+ -> K0 e+ nu_e
+  * Add BELLE_2019_I1724068 B0->D*- tau+ nu_tau
+  * Fix Clang 12.0 compiler warnings
+  * Add BABAR_2008_I781294 Lambda_c+ -> Xi- pi+ K+
+  * Add BESIII_2020_I1817739 e+e- > omega pi0, omega eta
+  * Add BESIII_2020_I1791570 J/Psi, psi(2S) -> Sigma+, Sigmabar-
+  * Add plot to BESIII_2019_I1691850
+  * Add SND_2020_I1809286 e+e-> pi+pi-pi0
+  * Add BELLE_2020_I1796822 B+- > pi+pi- ell nu
+  * Add BESIII_2020_I1814783 e+e- -> Sigma+-Sigmabar-+
+  * Add CLEOII_1997_I446031 e+e- > e+e- pi0/eta/eta'
+  * Create bash completion dir in $prefix/etc if it doesn't exist.
+  * Fix bug where path wasn't set for booking of scatters
+  * Submission of ATLAS_2019_I1762584, ATLAS_2019_I1772062 and
+    ATLAS_2019_I1759875
+  * Add BELLE_2020_I1789775 e+e- > D_s D_s2
+  * Add BELLE_2019_I1762826 e+e- > D_s D_s1(2536)
+  * Add warnings and physicality checks to PartonicTops
+  * Submission of ATLAS_2020_I1803608
+  * Fix bug related to (de)selection of weight subsets
+  * Make Event class aware of selected weight subsets
+  * Added self-guided Rivet "truth analysis" tutorial
+  * Allow user to specify nominal weight. Also do not write out
+    weight name it skip weights is selected
+  * Add SND_2020_I1806118 e+e- > K+K-pi0
+- Move bash completion helper to standard bash_completion dir
+  (BuildRequires: bash-completion for proper dir ownership).
+- Add Rivet-analysis-compilation.patch: Fix compilation of
+  analyses; patch taken from upstream.
+
+-------------------------------------------------------------------
+Tue Jul 14 20:43:26 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.2:
+  * Submission of ATLAS_2019_I1744201, ATLAS_2019_I1764342.
+  * Add a very horrible preprocessor hack to allow use of a
+    private method on the HepMC2 WeightContainer, for robust and
+    correctly ordered weight name acquisition before HepMC
+    2.06.11.
+  * Allow several AnalysisHandler objects to run in different
+    threads. This is a temporary fix. A permanent fix involves
+    changing the Analysis handler to own its own projections.
+    Currently each AnalysisHandler need sto be created and run
+    completely within the same separate thread.
+  * Allow + and - in AO paths.
+  * Always skip weights that have "AUX" or "DEBUG" in the name.
+  * Add computation of Python versions and passing them to Cython
+    as command-line flags.
+  * Fix small bug in rivet-cmphistos.
+  * Add ATLAS_2018_I163527 (W+jets at 8 TeV).
+  * Add InvisibleFinalState projection.
+  * HTML sectioning and float/overflow/scrollbar improvements in
+    rivet-mkhtml output.
+
+-------------------------------------------------------------------
+Sat May 16 03:11:44 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.1: Long list of changes, see ChangeLog
+  file installed in /usr/share/doc/packages/Rivet-devel.
+- Drop Rivet-plugins-use-HepMC3.patch: fixed upstream.
+- Install COPYING file for all subpkgs.
+- Use properly versioned Provides and Obsoletes for python
+  subpackage.
+
+-------------------------------------------------------------------
+Thu Apr 23 16:58:00 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix python version in hashbangs. #!%{_bindir}/python introduces
+  wrong for python3 package dependency on python-base.
+
+-------------------------------------------------------------------
+Fri Jan 17 13:11:50 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Obsoletes: python-Rivet to python3-Rivet to help migration.
+
+-------------------------------------------------------------------
+Wed Jan  8 21:55:34 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.0 (new upstream recommended version):
+  * Projections/EventMixingFinalState.hh: Replace use of
+    std::random_shuffle (deprecated in C++14, removed in C++17)
+    with std::shuffle and direct access to our thread-safe random
+    number generator.
+  * Significant revisions to tau jet efficiency functions.
+  * Add JET_EFF_ONE/ZERO aliases, cf. the Particle versions.
+  * Give precedence to user-supplied cross-section
+  * Switch required compiler dialect to C++14, to ensure that
+    compiler definitely (?) supports required C++11. C++14 or 17
+    is the current standard LCG build dialect.
+  * Add decay angle to ARGUS_1989_I268577
+  * Add polarization to OPAL_1997_S3608263
+  * Fixes to headers and brefi descriptions in various analyses
+  * Add CMD3_2019_I1770428 K0S K0S pi+ pi- cross section
+  * Fix histogram ids in BELLE_2009_I809630
+  * Add TMP to histogram labels in ARGUS_1993_S2669951
+  * Formally require YODA >= 1.8.0 in configure.
+  * Add new ALEPH analyses
+  * Fixes for pointers, booking in TASSO_1990_I284251 and
+    TASSO_1982_I177174
+  * Added MARKI_1976_I109792, DASP_1979_I132045 particle spectra
+    at low energies
+  * Added DASP_1979_I132410 eta production at low energies
+  * Added BABAR_2006_I719111 particle specta in B decays
+  * Added OPAL_2001_I536266 flavour separate charge particle
+    multiplicites
+  * Added new CLEO and CUSB analyses
+  * Added new BELLE lambda polarization and ARGUS D spectra
+  * Fix issues with ARGUS_1992_I319102, CLEO_2000_I537236
+  * Added new DELPHI analyses
+  * Added L3_1995_I381046, B*/B ratio
+  * Added new OPAL analyses
+  * Added new BES analyses
+  * Added new CMD3 analyses
+  * Added ARGUS_1988_I261672 for sigmac production
+  * Added LHCB_2013_I1243156, ARGUS_1989_I280943,
+    BABAR_2010_I867611 helicity angles for excited D meson decays
+  * Added TPC_1991_I316132, HRS_1987_I250823 D* polarization at 29
+    GeV
+  * Added VENUS_1998_I453613, TOPAZ_1997_I454183 charged particles
+    at 58 GeV
+  * ATLAS_2011_S9128077 ensure all bins outputted in d02,
+    otherwise problems with yodamerge
+  * ATLAS_2015_I1393758 and ATLAS_2016_I1419070,
+  * CMS_2012_I1111014, change numEntries -> effNumEntries to avoid
+    issues in NLO runs
+  * Change ratio plot label, was wrong way up, in
+  * ATLAS_2012_I1203852, ATLAS_2013_I1190187
+  * Use rivet normalize not yoda in ATLAS_2018_I1711114 to avoid
+    issues if histos empty
+  * Avoid crash in ATLAS_2016_I1426523 if host not found
+  * Add omega hist in BABAR_2017_I1621593
+  * EHS_1988_I265504 fix rapidity calc so in CMS not lab
+  * A2_2017_I1486671 fix omega PDG number
+  * Re-enable custom Particles and Jets vectors, with moms() and
+    other conversion functions.
+  * Add default ANY decay mode to TauFinder.
+  * Pass HepMC3 path info through to the rivet-config script.
+  * Refine testing and printing of UNVALIDATED status in analysis
+    listing.
+  * Add INF to the list of predefined constants, and rename the
+    internal constants header.
+  * Improve normalization guidance and fix energy specification in
+    mkanalysis .info file template.  
+- Changes from version 3.0.0 through 3.0.2: See
+  https://gitlab.com/hepcedar/rivet/blob/release-3-0-x/ChangeLog.
+- Switch to python3:
+  * Requires and BuildRequires switched to python3 versions
+  * Rename python package to python3-%{name} and provide
+    python-%{name} from it; this makes the py3 switch clear to
+    users.
+  * Explicitly pass PYTHON_VERSION as py3 version to make it build
+    against python3
+- Build against HepMC3 instead of HepMC2:
+  * Adapt BuildRequires for HepMC3.
+  * Pass HepMC3 specific parameters to configure.
+  * Add Rivet-plugins-use-HepMC3.patch: Port an analysis plugin to
+    HepMC3 from HepMC2
+- Refresh sover.diff for updated version.
+- Drop Rivet-fix-ambiguous-namespace.patch: incorporated upstream
+- New BuildRequires: rsync, fastjet-contrib-devel
+- Update required version of YODA-devel to 1.8.0.
+- Drop conditionals for outdated openSUSE versions.
+
+-------------------------------------------------------------------
+Wed Aug 21 08:37:52 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.7.2
+  * Fixes to CMS_2016_I1487288 jet selection and normalisation.
+  * Improve Vector3::azimuthalAngle() (also used by FourMomentum
+    and FourVector) to use exact rather than fuzzy is-zero check,
+    to only check the perpendicular components, and to note that
+    IEEE floating point implementations of atan2 should already be
+    'safe' unless we decide that this function should throw or
+    return NaN in case of null or along-z vectors.
+  * Tools/Utils.h: Add isum() functions, and mark other container
+    functions as wanting a conversion to use std::function.
+  * Add super-generic (i)discardIfAny(particlebases,
+    particlebases, bool(pb,pb)) functions.
+  * Introduce TTMODE options for MC_TTBAR to pick the decay mode
+- Changes from versions 2.7.1 and 2.7.0: See
+  %{_docdir}/%{name}-devel/ChangeLog.
+- Add Rivet-fix-ambiguous-namespace.patch: Fixed Et -> Kin::Et to
+  avoid ambiguous namespace; patch taken from upstream commit
+- YODA >= 1.7.4 required for building.
+
+-------------------------------------------------------------------
+Sat Jun  9 16:03:53 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.6.0:
+  * Long long list of changes: see
+    %{_docdir}/%{name}-devel/ChangeLog.
+- Rebase sover.diff for updated version.
+- Fix package groups.
+- Add a plugins package containing all the different analysis
+  packages:
+  * Plugins are unversioned; the need to depend on the version of
+    the devel package.
+  * Move plugins to %{_libdir}/Rivet-plugins directory
+  * Install an ld.so.conf file so that the plugins are found when
+    compiling against them.
+
+-------------------------------------------------------------------
+Fri Mar 23 09:20:42 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add _constraints file to avoid OOM build failures
+
+-------------------------------------------------------------------
+Thu Aug 31 22:19:11 UTC 2017 - badshah400@gmail.com
+
+- Build with HepMC2-devel, since Rivet does not compile with
+  HepMC-devel >= 3 yet.
+
+-------------------------------------------------------------------
+Fri Jun 23 20:25:55 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to version 2.5.4:
+  * Fix 8 TeV DY (ATLAS_2016_I1467454), EL/MU bits were bissing.
+  * Add 13 TeV DY (ATLAS_2017_I1514251) and mark
+    ATLAS_2015_CONF_2015_041 obsolete.
+  * Add missing install statement for
+    ATLAS_2016_I1448301.yoda/plot/info leading to segfault.
+  * Slight improvements to Particle constructors.
+  * Improvement to Beam projection: before falling back to
+    barcodes 1 & 2, try a manual search for status=4 particles.
+    Based on a patch from Andrii Verbytskyi.
+  * Add CMS_2016_I1430892: dilepton channel ttbar charge asymmetry
+    analysis.
+  * Add CMS_2016_I1413748: dilepton channel ttbar spin
+    correlations and polarisation analysis.
+  * Add CMS_2017_I1518399: leading jet mass for boosted top
+    quarks at 8 TeV.
+  * Add convenience constructors for ChargedLeptons projection.
+  * Add FinalState and Cut (optional) constructor arguments and
+    usage to DISFinalState. Thanks to Andrii Verbytskyi for the
+    idea and initial patch.
+  * Add ATLAS_2016_I1448301, Z/gamma cross section measurement at
+    8 TeV.
+  * Add ATLAS_2016_I1426515, WW production at 8 TeV.
+  * Add BELLE measurement of semileptonic B0bar -> D*+ ell nu
+    decays. I took the liberty to correct the data in the sense
+    that I take the bin widths into account in the normalisation.
+    BELLE_2017_I1512299.
+    This is a nice analysis as it probes the hadronic and the
+    leptonic side of the decay so very valuable for model building
+    and of course it is rare as it is an unfolded B measurement.
+  * Add ALEPH measurement of hadronic tau decays,
+    ALEPH_2014_I1267648.
+  * Add ALEPH dimuon invariant mass (OS and SS) analysis,
+    ALEPH_2016_I1492968.
+  * The latter needed GENKTEE FastJet algorithm so I added that
+    FastJets.
+  * Protection against logspace exception in histobooking of
+    MC_JetAnalysis.
+  * Fix compiler complaints about uninitialised variable in
+    OPAL_2004.
+  * Tidy ALEPH_1999 charm fragmentation analysis and normalise to
+    data integral. Added DSTARPLUS and DSTARMINUS to PID.
+  * Add ATLAS_2016_CONF_2016_092, inclusive jet cross sections
+    using early 13 TeV data.
+  * Add ATLAS_2017_I1591327, isolated diphoton + X differential
+    cross-sections.
+  * Add ATLAS_2017_I1589844, ATLAS_2017_I1589844_EL,
+    ATLAS_2017_I1589844_MU:  kT splittings in Z events at 8 TeV.
+  * Add ATLAS_2017_I1509919, track-based underlying event at 13
+    TeV in ATLAS.
+  * Add ATLAS_2016_I1492320_2l2j and ATLAS_2016_I1492320_3l, the
+    WWW cross-section at 8 TeV.
+  * Add ATLAS_2016_I1449082, charge asymmetry in top quark pair
+    production in dilepton channel.
+  * Add ATLAS_2015_I1394865, inclusive 4-lepton/ZZ lineshape.
+  * Add ATLAS_2013_I1234228, high-mass Drell-Yan at 7 TeV.
+  * Add CMS_2017_I1519995, search for new physics with dijet
+    angular distributions in proton-proton collisions at
+    sqrt{(s) = 13 TeV.
+  * Add CMS_2017_I1511284, inclusive energy spectrum in the very
+    forward direction in proton-proton collisions at 13 TeV.
+  * Add CMS_2016_I1486238, studies of 2 b-jet + 2 jet production
+    in proton-proton collisions at 7 TeV.
+  * Add CMS_2016_I1454211, boosted ttbar in pp collisions at
+    sqrtS = 8 TeV.
+  * Add CMS_2016_I1421646, CMS azimuthal decorrelations at 8 TeV.
+  * Add CMS_2015_I1380605, per-event yield of the highest
+    transverse momentum charged particle and charged-particle jet.
+  * Add CMS_2015_I1370682_PARTON, a partonic-top version of the CMS
+    7 TeV pseudotop ttbar differential cross-section analysis.
+  * Adding EHS_1988_I265504 from Felix Riehn: charged-particle
+    production in K+ p, pi+ p and pp interactions at 250 GeV/c.
+  * Fix ALICE_2012_I1116147 for pi0 and Lambda feed-down.
+  * Add protection against leptons from QED FSR photon conversions
+    in assigning PartonicTop decay modes. Thanks to Markus Seidel
+    for the report and suggested fix.
+  * Reimplement FastJets methods in terms of new static helper
+    functions.
+  * Add new mkClusterInputs, mkJet and mkJets static methods to
+    FastJets, to help with direct calls to FastJet where particle
+    lookup for constituents and ghost tags are required.
+  * Fix Doxygen config and Makefile target to allow working with
+    out-of-source builds. Thanks to Christian Holm Christensen.
+  * Improve DISLepton for HERA analyses: thanks to Andrii
+    Verbytskyi for the patch!
+  * Replace non-template Analysis::refData functions with C++11
+    default T=Scatter2D.
+  * Allow yes/no and true/false values for LogX, etc. plot options.
+  * Add --errs as an alias for --mc-errs to rivet-mkhtml and
+    rivet-cmphistos.
+  * Added 6 analyses AMY_1990_I295160, HRS_1986_I18502,
+    JADE_1983_I190818, PLUTO_1980_I154270, TASSO_1989_I277658,
+    TPC_1987_I235694 for charged multiplicity in e+e- at CMS
+    energies below the Z pole.
+  * Added 2 analyses for charged multiplicity at the Z pole
+    DELPHI_1991_I301657, OPAL_1992_I321190.
+  * Updated ALEPH_1991_S2435284 to plot the average charged
+    multiplicity.
+  * Added analyses OPAL_2004_I631361, OPAL_2004_I631361_qq,
+    OPAL_2004_I648738 for gluon jets in e+e-, most need fictitious
+    e+e- > g g process.
+  * Add Cut and functor selection args to HeavyHadrons accessor
+    methods.
+  * bin/rivet-mkanalysis: Add FastJets.hh include by default --
+    it's almost always used.
+  * src/Analyses/CMS_2016_I1473674.cc: Patch from CMS to use
+    partonic tops.
+  * src/Analyses/CMS_2015_I1370682.cc: Patch to inline jet finding
+    from CMS.
+  * Convert DressedLeptons use of fromDecay to instead veto photons
+    that match fromHadron() || fromHadronicTau() -- meaning that
+    electrons and muons from leptonic taus will now be dressed.
+  * Move Particle and Jet std::function aliases to .fhh files, and
+    replace many uses of templates for functor arguments with
+    ParticleSelector meta-types instead.
+  * Move the canonical implementations of hasAncestorWith, etc. and
+    isLastWith, etc. from ParticleUtils.hh into Particle.
+  * Disable the event-to-event beam consistency check if the
+    ignore-beams mode is active.
+  * Add BoolParticleAND, BoolJetOR, etc. functor combiners to
+    Tools/ParticleUtils.hh and Tools/JetUtils.hh.
+  * Mark ATLAS_2016_CONF_2016_078 and CMS_2016_PAS_SUS_16_14
+    analyses as validated, since their cutflows match the
+    documentation.
+  * Add aggregate signal regions to CMS_2016_PAS_SUS_16_14.
+  * Add getEnvParam function, for neater use of environment
+    variable parameters with a required default.
+  * Add HasBTag and HasCTag jet functors, with lower-case aliases.
+  * Use std::function in functor-expanded method signatures on
+    JetAlg.
+  * Convert FinalState particles() accessors to use std::function
+    rather than a template arg for sorting, and add filtering
+    functor support -- including a mix of filtering and sorting
+    functors. Yay for C++11!
+  * Add ParticleEffFilter and JetEffFilter constructors from a
+    double (encoding constant efficiency).
+  * Add Vector3::abseta().
+- Changes from version 2.5.3:
+  * Add cut in BZ calculation in OPAL 4 jet analysis. Paper is not
+    clear about treatment of parallel vectors, leads to division by
+    zero and nan-fill and subsequent YODA RangeError
+    (OPAL_2001_S4553896).
+  * Fix bugs in SmearedJets treatment of b & c tagging rates.
+  * Adding ATLAS_2016_I1467454 analysis (high-mass Drell-Yan at 8
+    TeV).
+  * Tweak to 'convert' call to improve the thumbnail quality from
+    rivet-mkhtml/make-plots.
+  * Require Cython 0.24 or later.
+  * Adding L3_2004_I652683 (LEP 1 & 2 event shapes) and
+    LHCB_2014_I1262703 (Z+jet at 7 TeV).
+  * Adding leading dijet mass plots to MC_JetAnalysis (and all
+    derived classes). Thanks to Chris Gutschow!
+  * Adding CMS_2012_I1298807 (ZZ cross-section at 8 TeV),
+    CMS_2016_I1459051 (inclusive jet cross-sections at 13 TeV) and
+    CMS_PAS_FSQ_12_020 (preliminary 7 TeV leading-track underlying
+    event).
+  * Adding CDF_2015_1388868 (ppbar underlying event at 300, 900,
+    and 1960 GeV).
+  * Adding ATLAS_2016_I1467230 (13 TeV min bias),
+    ATLAS_2016_I1468167 (13 TeV inelastic pp cross-section), and
+    ATLAS_2016_I1479760 (7 TeV pp double-parton scattering with 4
+    jets).
+  * Adding ALICE_2012_I1116147 (eta and pi0 pTs and ratio) and
+    ATLAS_2011_I929691 (7 TeV jet frag).
+  * Fix bash bugs in rivet-buildplugin, including fixing the --cmd
+    mode.
+  * Add LHC Run 2 BSM analyses ATLAS_2016_CONF_2016_037 (3-lepton
+    and same-sign 2-lepton), ATLAS_2016_CONF_2016_054 (1-lepton +
+    jets), ATLAS_2016_CONF_2016_078 (ICHEP jets + MET),
+    ATLAS_2016_CONF_2016_094 (1-lepton + many jets),
+    CMS_2013_I1223519 (alphaT + b-jets), and CMS_2016_PAS_SUS_16_14
+    (jets + MET).
+  * Provide convenience reversed-argument versions of apply and
+    declare methods, to allow presentational choice of declare
+    syntax in situations where the projection argument is very
+    long, and reduce requirements on the user's memory since this
+    is one situation in Rivet where there is no 'most natural'
+    ordering choice.
+  * Adding pTvec() function to 4-vectors and ParticleBase.
+  * Fix --pwd option of the rivet script
+  * Add weights and scaling to Cutflow/s.
+  * Add Et(const ParticleBase&) unbound function.
+  * Fix missing YAML quote mark in rivet-mkanalysis.
+  * Fix constness requirements on ifilter_select() and
+    Particle/JetEffFilter::operator().
+  * src/Analyses/ATLAS_2016_I1458270.cc: Fix inverted particle
+    efficiency filtering.
+  * Add rough ATLAS and CMS photon reco efficiency functions from
+    Delphes (ATLAS and CMS versions are identical, hmmm).
+  * Tidying/fixing make-plots custom z-ticks code. Thanks to Dmitry
+    Kalinkin.
+  * Fix SpiresID -> InspireID in some analyses (show-analysis
+    pointed to non-existing web page).
+  * Add Luminosity_fb to AnalysisInfo.
+  * Added some keywords and Lumi to ATLAS_2016_I1458270.
+  * Merge the ATLAS and CMS from-Delphes electron and muon tracking
+    efficiency functions into generic trkeff functions -- this is
+    how it should be.
+  * Fix return type typo in Jet::bTagged(FN) templated method.
+  * Add eta and pT cuts to ATLAS truth b-jet definition.
+  * Use rounding rather than truncation in Cutflow percentage
+    efficiency printing.
+  * make-plots bugfix in y-axis labels for RatioPlotMode=deviation.
+  * Add vector and scalar pT (rather than Et) to MissingMomentum.
+  * Analysis keyword machinery.
+  * rivet -a @semileptonic.
+  * rivet -a @semileptonic@^bdecays -a @semileptonic@^ddecays.
+- Rebase sover.diff.
+- This update actually fixes build with GCC 7 (boo#1041183).
+
+-------------------------------------------------------------------
+Mon Feb 13 16:10:55 UTC 2017 - jengelh@inai.de
+
+- Add sover.diff, enforce versioning as per guidelines
+
+-------------------------------------------------------------------
+Tue Feb  7 11:17:44 UTC 2017 - jengelh@inai.de
+
+- Correct RPM groups
+
+-------------------------------------------------------------------
+Thu Feb  2 12:10:02 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Nov 10 17:35:33 UTC 2016 - badshah400@gmail.com
+
+- Update to version 2.5.2:
+  * Add a requirement to DressedLeptons that the FinalState passed
+    as 'bareleptons' will be filtered to only contain charged
+    leptons, if that is not already the case. Thanks to Markus
+    Seidel for the suggestion.
+  * Add Simone Amoroso's plugin for hadron spectra
+    (ALEPH_1995_I382179)
+  * Add Simone Amoroso's plugin for hadron spectra
+    (OPAL_1993_I342766)
+  * Add CMS ttbar analysis from contrib, mark validated
+    (CMS_2016_I1473674)
+  * Extend rivet-mkhtml --booklet to also work with pdfmerge
+  * Fix make-plots automatic YMax calculation, which had a typo
+    from code cleaning (mea culpa!).
+  * Fix ChargedLeptons projection, which failed to exclude
+    neutrinos!!! Thanks to Markus Seidel.
+  * Add templated FN filtering arg versions of the Jet::*Tags()
+    and Jet::*Tagged() functions.
+  * Add CMS partonic top analysis (CMS_2015_I1397174)
+  * Add L3 xp analysis of eta mesons, thanks Simone
+    (L3_1992_I336180)
+  * Add D0 1.8 TeV jet shapes analysis, thanks Simone
+    (D0_1995_I398175)
+  * Add has{Ancestor,Parent,Child,Descendant}With functions and
+    HasParticle{Ancestor,Parent,Child,Descendant}With functors.
+  * Add ATLAS 8TeV ttbar analysis from contrib
+    (ATLAS_2015_I1404878)
+  * Add particles(GenParticlePtr) to RivetHepMC.hh
+  * Add hasParent, hasParentWith, and hasAncestorWith to Particle.
+  * Add ATLAS 8TeV dijet analysis from contrib
+    (ATLAS_2015_I1393758)
+  * Add ATLAS 8TeV 'number of tracks in jets' analysis from
+    contrib (ATLAS_2016_I1419070)
+  * Add ATLAS 8TeV g->H->WW->enumunu analysis from contrib
+    (ATLAS_2016_I1444991)
+  * Explicit std::toupper and std::tolower to make clang happy
+  * Add ATLAS Run 2 0-lepton SUSY and monojet search papers
+    (ATLAS_2016_I1452559, ATLAS_2016_I1458270)
+  * Add experimental Cutflow and Cutflows objects for BSM cut
+    tracking.
+  * Add 'direct' versions of any, all, none to Utils.hh, with an
+    implicity bool() transforming function.
+  * Add and mark validated B+ to omega analysis
+    (BABAR_2013_I1116411)
+  * Add and mark validated D0 to pi- analysis
+    (BABAR_2015_I1334693)
+  * Add a few more particle names and use PID names in recently
+    added analyses
+  * Add Simone's OPAL b-frag analysis (OPAL_2003_I599181) after
+    some cleanup and heavy usage of new features
+  * Restructured DELPHI_2011_I890503 in the same manner --- picks
+    up a few more B-hadrons now (e.g. 20523 and such)
+  * Clean up and add ATLAS 8TeV MinBias (from contrib
+    ATLAS_2016_I1426695)
+  * Add a static constexpr DBL_NAN to Utils.hh for convenience,
+    and move some utils stuff out of MathHeader.hh
+  * Add count function to Tools/Utils.h
+  * Add and mark validated B0bar and Bminus-decay to pi analysis
+    (BELLE_2013_I1238273)
+  * Add and mark validated B0-decay analysis (BELLE_2011_I878990)
+  * Add and mark validated B to D decay analysis
+    (BELLE_2011_I878990)
+  * Add C-array version of multi-target Analysis::scale() and
+    normalize(), and fix (semantic) constness.
+  * Add == and != operators for cuts applied to integers.
+  * Add missing delta{Phi,Eta,Rap}{Gtr,Less} functors to
+    ParticleBaseUtils.hh
+  * Add templated functor filtering args to the Particle
+    parent/child/descendent methods.
+  * Add ATLAS Run 1 medium and tight electron ID efficiency
+    functions.
+  * Update configure scripts to use newer (Py3-safe) Python
+    testing macros.
+  * Add isFirstWith(out), isLastWith(out) functions, and functor
+    wrappers, using Cut and templated function/functor args.
+  * Add Particle::parent() method.
+  * Add using import/typedef of HepMC *Ptr types (useful step for
+    HepMC 2.07 and 3.00).
+  * Various typo fixes (and canonical renaming) in
+    ParticleBaseUtils functor collection.
+  * Add ATLAS MV2c10 and MV2c20 b-tagging effs to
+    SmearingFunctions.hh collection.
+  * Add a PartonicTops projection.
+  * Add overloaded versions of the Event::allParticles() method
+    with selection Cut or templated selection function arguments.
+  * Add rapidity scheme arg to DeltaR functor constructors.
+  * Provide an Analysis::bookCounter(d,x,y, title) function, for
+    convenience and making the mkanalysis template valid.
+  * Improve container utils functions, and provide combined
+    remove_if+erase filter_* functions for both select- and
+    discard-type selector functions.
+  * Bugfix in rivet-mkhtml (NoneType: ana.spiresID() --> spiresid)
+  * Added <numeric> include to Rivet/Tools/Utils.h to make gcc6
+    happy
+  * Add efffilt() functions and Particle/JetEffFilt functors to
+    SmearingFunctions.hh
+  * Adding filterBy methods for Particle and Jet which accept
+    generic boolean functions as well as the Cut specialisation.
+  * Add a Jet::particles(Cut&) method, for inline filtering of jet
+    constituents.
+  * Add 'conjugate' behaviours to container head and tail functions
+    via negative length arg values.
+  * Add convenience headers for including all final-state and
+    smearing projections, to save user typing.
+  * Add standard MET functions for ATLAS R1 (and currently copies
+    for R2 and CMS).
+  * Add lots of vector/container helpers for e.g. container slicing,
+    summing, and min/max calculation.
+  * Adapt SmearedMET to take *two* arguments, since SET is typically
+    used to calculate MET resolution.
+  * Adding functors for computing vector & ParticleBase differences
+    w.r.t. another vector.
+  * Implemented a few more cuts in prompt photon analysis
+    (CDF_1993_S2742446) but to no avail, the rise of the data towards
+    larger costheta values cannot be reproduced --- maybe this is a
+    candidate for more scrutiny and using the boosting machinery such that
+    the c.m. cuts can be done in a non-approximate way
+  * Rename CDF_2009_S8383952 to CDF_2009_I856131 due to invalid Spires
+    entry.
+  * Add InspireID to all analysis known by their Spires key
+- Even longer list of changes for version 2.2.1 through 2.5.1; see
+  ChangeLog file.
+- Drop upstream incorporated or otherwise fixed patches:
+  * Rivet-compatibility-with-old-boost.patch.
+  * 0001-fix_YODA_Histo1D_includes.patch.
+  * Rivet-boost-configure-for-GCC5.patch.
+
+-------------------------------------------------------------------
+Thu Jun 25 05:45:33 UTC 2015 - badshah400@gmail.com
+
+- Add Rivet-boost-configure-for-GCC5.patch to fix autoconf
+  boost macros lookup with GCC5; patch taken from boost.m4
+  upstream [https://github.com/tsuna/boost.m4].
+
+-------------------------------------------------------------------
+Sun Oct 26 04:40:31 UTC 2014 - badshah400@gmail.com
+
+- Update to version 2.2.0:
+  + Mark Jet::containsBottom and Jet::containsCharm as deprecated
+    methods: use the new methods. Analyses updated.
+  + Add Jet::bTagged(), Jet::cTagged() and Jet::tauTagged() as
+    ghost-assoc-based replacements for the 'contains' tagging methods.
+  + Adding support for 1D and 3D YODA scatters, and helper methods
+    for calling the efficiency, asymm and 2D histo divide functions.
+  + Adding 5 new ATLAS analyses:
+    - ATLAS_2011_I921594: Inclusive isolated prompt photon
+      analysis with full 2010 LHC data
+    - ATLAS_2013_I1263495: Inclusive isolated prompt photon
+      analysis with 2011 LHC data
+    - ATLAS_2014_I1279489: Measurements of electroweak production
+      of dijets + $Z$ boson, and distributions sensitive to vector
+      boson fusion
+    - ATLAS_2014_I1282441: The differential production cross
+      section of the $\phi(1020)$ meson in $\sqrt{s}=7$ TeV $pp$
+      collisions measured with the ATLAS detector
+    - ATLAS_2014_I1298811: Leading jet underlying event at 7 TeV
+      in ATLAS
+  + Adding a median(vector<NUM>) function and fixing the other stats
+    functions to operate on vector<NUM> rather than vector<int>.
+  + Fix wrong behaviour of LorentzTransform with a null boost
+    vector
+  + Add calc() methods to Hemispheres as requested, to allow it to
+    be used with Jet or FourMomentum inputs outside the normal
+    projection system.
+  + Improvements to the particles methods on
+    ParticleFinder/FinalState, in particular adding the range of
+    cuts arguments cf. JetAlg (and tweaking the sorted jets
+    equivalent) and returning as a copy rather than a reference if
+    cut/sorted to avoid accidentally messing up the cached copy.
+  + Creating ParticleFinder projection base class, and moving
+    Particles-accessing methods from FinalState into it.
+  + Adding basic forms of MC_ELECTRONS, MC_MUONS, and MC_TAUS
+    analyses.
+- Changes from 2.2.0Beta:
+  + See /usr/share/doc/packages/Rivet-devel/ChangeLog for full
+    list.
+- Packaging changes:
+  + Rebase patch 0001-fix_YODA_Histo1D_includes.patch for current
+    version; includes dropping the 2nd hunk since it is already
+    incorporated upstream.
+
+-------------------------------------------------------------------
+Thu Sep 25 18:18:21 UTC 2014 - sfalken@opensuse.org
+
+- Added 0001-fix_YODA_Histo1D_includes.patch
+  fixed buildfailure due to YODA/Histo1D changing function names 
+  Additionally fixed buildfailure from MAXINT being defined but not used
+  See https://www.hepforge.org/lists-archive/rivet/2014-September/005167.html
+
+-------------------------------------------------------------------
+Sat Jun 21 22:16:44 UTC 2014 - badshah400@gmail.com
+
+- Update to version 2.1.2:
+  + Lots of changes since previous version (2.0.0), see
+    ChangeLog file in /usr/share/doc/packages/Rivet-devel/ for a
+    full list
+- Packaging changes:
+  + Add Rivet-compatibility-with-old-boost.patch: fix foreach
+    compatibility with boost < 1.50 and make Rivet build with
+    openSUSE 12.3 again
+  + Now requires YODA-devel >= 1.0.6 for building
+  + Package new pkgconfig file (.pc file manually stripped of
+    rpaths to avoid linking issues, and an rpmlint warning)
+  + Also strip rpath from rivet-config script.
+
+-------------------------------------------------------------------
+Tue Dec 10 01:50:31 UTC 2013 - badshah400@gmail.com
+
+- Initial version. 
+

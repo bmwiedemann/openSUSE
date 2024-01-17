@@ -1,0 +1,8 @@
+# using fdupes on include directories means looking for troubles
+addFilter("files-duplicate .*")
+
+# library and development package names don't match
+addFilter("no-dependency-on .*")
+
+# Only libraries used at link time are guaranteed to work
+addFilter("shlib-fixed-dependency .*")

@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dac57e606f3a0583ef3a6312951d38ce</srcmd5>
+    <version>0.4.0</version>
+    <time>1570710820</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python Azure ADK component package</comment>
+    <requestid>735791</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>91e22a9925236a4d6998ab7f42660376</srcmd5>
+    <version>0.4.1</version>
+    <time>1601652278</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.4.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 833084 from glaubitz)</comment>
+    <requestid>833107</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>23998cfeeecc4480c9ae02723c4b8274</srcmd5>
+    <version>0.4.1</version>
+    <time>1607548484</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853855</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f498681b8d1bde526001264538ef67c3</srcmd5>
+    <version>0.5.0</version>
+    <time>1620400498</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 890376 from glaubitz)</comment>
+    <requestid>890671</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f4c03d168deef5df682f3e1b000577d</srcmd5>
+    <version>0.6.0</version>
+    <time>1638831613</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 936030 from glaubitz)</comment>
+    <requestid>936033</requestid>
+  </revision>
+</revisionlist>

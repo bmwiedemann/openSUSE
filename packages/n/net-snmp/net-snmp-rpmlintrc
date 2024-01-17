@@ -1,0 +1,3 @@
+addFilter("net-snmp-devel.* files-duplicate.*man.*")
+addFilter("net-snmp.*incoherent-init-script-name")
+addFilter("perl-SNMP.* zero-length.*\.bs")
