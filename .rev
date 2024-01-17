@@ -39,4 +39,41 @@
     <comment></comment>
     <requestid>1093674</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b9ca1682ac297dc01c55e847486eacae</srcmd5>
+    <version>1.1.5</version>
+    <time>1704566284</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.5:
+  * Use dns.resolver.resolve instead of dns.resolver.query
+    due to deprecation
+  * Treat dns.resolver.NoNameservers like NXDOMAIN (not an
+    error)
+  * Confine errors from dnspython to dnsplug and use dkim
+    errors, since dkim.__init__.py doesn't import dns and
+    needs dkim errors
+  * Catch nacl.exceptions.ValueError and raise
+    KeyFormatError, similar to how RSA key errors are treated
+  * Create ed25519 key files with secure permissions to
+    avoid risk of insecure chmode call/race condition
+  * Properly cleanup temporary directories in tests
+  * Verify correct AMS header is used for ARC seal
+    verification (André Cruz)
+  * Document dropping of Python 2 support
+  * Fix traceback when attempting to verify an unsigned
+    message using async verify
+  * Add domain validity check for ascii domains (no
+    specials)
+  * Add option to specify index number of signature to
+    verify to dkimverify
+  * Correct signature indexing error introduced in 1.0.0
+    that prevents verification of multiple signatures in a
+    single message
+  * Correct dkim.verify processing to avoid errors when
+    verifying messages with no DKIM signatures
+  * Update dnsplug for DNS Python (dns) 2.0 compatibility
+  * Provide more specific error message when ed25519
+    private key is invalid</comment>
+    <requestid>1137284</requestid>
+  </revision>
 </revisionlist>
