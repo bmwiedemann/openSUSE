@@ -1,0 +1,6 @@
+<package name="opencensus-proto" project="openSUSE:Factory">
+  <title>opencensus-proto</title>
+  <description>Protocol buffers for OpenCensus</description>
+  <devel project="devel:languages:go" package="opencensus-proto"/>
+  <url>https://github.com/census-instrumentation/opencensus-proto</url>
+</package>

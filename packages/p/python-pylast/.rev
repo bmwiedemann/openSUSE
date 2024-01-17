@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24a90889ec718223031a76f4e5e8042b</srcmd5>
+    <version>1.8.0</version>
+    <time>1492714396</time>
+    <user>dimstar_suse</user>
+    <comment>single-spec version of python3-pylast, which is already in openSUSE:Factory.</comment>
+    <requestid>487703</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ed55073078fec2ac268a247c8e6d0e08</srcmd5>
+    <version>1.8.0</version>
+    <time>1494938662</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494610</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ce299ac93665e3c4128729cdeb462bb2</srcmd5>
+    <version>1.8.0</version>
+    <time>1545648124</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659593</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7e566ebcde42ca52dd510f3c17eea8fb</srcmd5>
+    <version>3.1.0</version>
+    <time>1557653642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699152</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>93f6473723629543442d33585843e2b4</srcmd5>
+    <version>3.1.0</version>
+    <time>1571210117</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738374</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d543766aec5299ade4ea960c60af067</srcmd5>
+    <version>3.2.1</version>
+    <time>1584745194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786872</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e7014ffdc2e5f30d8bda5199fd579b30</srcmd5>
+    <version>3.3.0</version>
+    <time>1597755925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825368</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7437bd6f5dc6ef66fa7daf19309dee9b</srcmd5>
+    <version>4.1.0</version>
+    <time>1614001266</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874278</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c05515477543d24aec2f38075a74b3e0</srcmd5>
+    <version>4.1.0</version>
+    <time>1647367489</time>
+    <user>dimstar_suse</user>
+    <comment>- use python_expand for fdupes</comment>
+    <requestid>961822</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d33519fdf88749d1169b82ec7eb9d6f0</srcmd5>
+    <version>4.5.0</version>
+    <time>1648330328</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.5.0:
+  * Deprecate is_streamable and is_fulltrack_available
+  * Strip invalid XML characters from response
+  * Speedup: Use faster importlib.metadata for getting version (#377) @hugovk
+  * Convert setup.py to static setup.cfg and format with setup-cfg-fmt (#376) @hugovk
+  * Rename master to main, use 3.10 final, add workflow_dispatch (#374) @hugovk
+  * Set get_top_tracks limit even if it's None, to get unlimited user top_tracks
+  * Add support for Python 3.10
+  * Fix artist.get_bio_content() when bio is empty + other test fixes (#370) @hugovk
+  * Remove artist.shout(&quot;&lt;3&quot;) in README.md (#369) @tieubinhco
+  * Bugfix for get_userloved and get_userplaycount resulting in an empty response from the server
+  * Fix unsafe creation of temp file for caching, and improve exception raising (#356) @kvanzuijlen
+  * [pre-commit.ci] pre-commit autoupdate (#362) @pre-commit-ci</comment>
+    <requestid>965069</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c93c9a1906efe2ae4a8de41491bab1f2</srcmd5>
+    <version>4.5.0</version>
+    <time>1649274726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967312</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>5d98b844e11c449e90e0f31510941770</srcmd5>
+    <version>4.5.0</version>
+    <time>1665592018</time>
+    <user>dimstar_suse</user>
+    <comment>- drop unneeded six dependency</comment>
+    <requestid>1010214</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8c2407189f3cd6509fefa89b1ec98765</srcmd5>
+    <version>5.2.0</version>
+    <time>1704753887</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2.0:
+  * Support for Python 3.12
+  * Drop support for EOL Python 3.7
+  * Publish to PyPI with a Trusted Publisher
+  * Document how to authenticate with a session key
+- update to 5.1.0:
+  * Support Python 3.11 (#399)
+  * Migrate from setuptools + setuptools_scm to hatchling +
+    hatch-vcs (#413) @hugovk
+- update to 5.0.0:
+  * Replace `http.client` with HTTPX (#379) @hugovk
+  * Log method names at INFO level, also log API return data at
+    DEBUG level
+  * Drop support for Python 3.6 (#387) @hugovk
+  * Remove deprecated `is_streamable` and
+    `is_fulltrack_available` (#388) @hugovk
+  * If album has no MBID, `album.get_getmbid()` returns None
+
+  * [pre-commit.ci] pre-commit autoupdate (#362) @pre-commit-ci
+- use python_expand for fdupes
+  * Added
+  * Changed
+  * Fixed
+    * Added
+    * Removed
+      * Remove deprecated Artist.get_cover_image,</comment>
+    <requestid>1137449</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,30 @@
+Index: mcelog-189/mkcputype
+===================================================================
+--- mcelog-189.orig/mkcputype
++++ mcelog-189/mkcputype
+@@ -5,6 +5,12 @@ awk -F\| 'BEGIN {
+ 	print "enum cputype {" > "cputype.tmp"
+ 	print "\tCPU_GENERIC," > "cputype.tmp"
+ 	print "\tCPU_K8," > "cputype.tmp"
++	print "\tCPU_F10H," > "cputype.tmp"
++	print "\tCPU_F11H," > "cputype.tmp"
++	print "\tCPU_F12H," > "cputype.tmp"
++	print "\tCPU_F14H," > "cputype.tmp"
++	print "\tCPU_F15H," > "cputype.tmp"
++	print "\tCPU_F16H," > "cputype.tmp"
+ 
+ 	print "\n\n/* Insert any new non-intel CPU models before this line */\n\n" > "cputype.tmp"
+ 	print "\tCPU_INTEL," > "cputype.tmp"
+@@ -44,6 +50,12 @@ END {
+ 	print "char *cputype_name[] = {" > "lookup_intel_cputype.tmp"
+ 	print "\t[CPU_GENERIC] = \"generic CPU\"," > "lookup_intel_cputype.tmp"
+ 	print "\t[CPU_K8] = \"AMD K8 and derivates\"," > "lookup_intel_cputype.tmp"
++	print "\t[CPU_F10H] = \"AMD Greyhound\"," > "lookup_intel_cputype.tmp"
++	print "\t[CPU_F11H] = \"AMD Griffin\"," > "lookup_intel_cputype.tmp"
++	print "\t[CPU_F12H] = \"AMD Llano\"," > "lookup_intel_cputype.tmp"
++	print "\t[CPU_F14H] = \"AMD Bobcat\"," > "lookup_intel_cputype.tmp"
++	print "\t[CPU_F15H] = \"AMD Bulldozer\"," > "lookup_intel_cputype.tmp"
++	print "\t[CPU_F16H] = \"AMD Jaguar\"," > "lookup_intel_cputype.tmp"
+ 	print "\t[CPU_INTEL] = \"Intel generic architectural MCA\"," > "lookup_intel_cputype.tmp"
+ 	print "\t[CPU_P4] = \"Intel P4\"," > "lookup_intel_cputype.tmp"
+ 	print "\t[CPU_TULSA] = \"Intel Xeon 7100 series\"," > "lookup_intel_cputype.tmp"

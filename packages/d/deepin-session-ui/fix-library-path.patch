@@ -1,0 +1,21 @@
+diff -Nur dde-session-ui-5.5.23/CMakeLists.txt dde-session-ui-5.5.23-new/CMakeLists.txt
+--- dde-session-ui-5.5.23/CMakeLists.txt	2022-04-22 18:40:04.000000000 +0800
++++ dde-session-ui-5.5.23-new/CMakeLists.txt	2022-05-07 09:43:31.098553885 +0800
+@@ -9,6 +9,8 @@
+ set(CMAKE_AUTORCC ON)
+ set(CMAKE_CXX_FLAGS "-g -Wall")
+ 
++link_directories(${LIBRARY_OUTPUT_PATH})
++
+ # 增加安全编译参数
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fstack-protector-all -fPIC")
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fstack-protector-all -fPIC")
+@@ -331,7 +333,7 @@
+ )
+ 
+ ## bin
+-install(TARGETS ${Notification_Plugin_Name} LIBRARY DESTINATION lib/dde-dock/plugins)
++install(TARGETS ${Notification_Plugin_Name} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/dde-dock/plugins)
+ 
+ ## schemas
+ install(FILES dde-notification-plugin/gschema/com.deepin.dde.dock.module.notifications.gschema.xml DESTINATION share/glib-2.0/schemas)

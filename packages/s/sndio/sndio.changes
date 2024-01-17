@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Jan  4 10:40:21 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.0:
+  * No upstream changelog available
+- Add new package sndioctl
+
+-------------------------------------------------------------------
+Fri Apr 17 06:36:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.0:
+  * No upstream changelog available
+- Add dependency on libbsd
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Tue Oct  9 11:21:07 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use the libname to have devel package again installable
+
+-------------------------------------------------------------------
+Mon Oct  8 20:35:42 UTC 2018 - Denisart Benjamin <p.drouand@gmail.com>
+
+- Update to version 1.5.0
+  + No changelog available
+
+-------------------------------------------------------------------
+Sun Jul 10 07:30:36 UTC 2016 - mpluskal@suse.com
+
+- Build with optflags
+- Small spec file cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jan 19 14:09:38 UTC 2016 - jengelh@inai.de
+
+- Compact filelist
+
+-------------------------------------------------------------------
+Sun Jan 10 16:09:00 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging
+- version 1.0.1
+

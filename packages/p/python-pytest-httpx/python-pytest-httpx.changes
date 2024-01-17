@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Tue Jan  9 21:38:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28.0:
+  * Requires `httpx`==0.26.\*
+
+-------------------------------------------------------------------
+Sun Nov 19 10:48:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.27.0:
+  * Explicit support for python `3.12`.
+  * Custom HTTP transport are now handled (parent call to
+    `handle_async_request` or `handle_request`).
+  * Only HTTP transport are now mocked, this should not have any
+    impact, however if it does, please feel free to open an issue
+    describing your use case.
+
+-------------------------------------------------------------------
+Tue Nov  7 19:44:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.0:
+  * Added `proxy_url` parameter which allows matching on proxy
+    URL.
+  * Requires `httpx`==0.25.\*
+  * Added `match_json` parameter which allows matching on JSON
+    decoded body (matching against python representation instead
+    of bytes).
+  * Even if it was never documented as a feature, the
+    `match_headers` parameter was not considering header names
+    case when matching.
+  * Matching on headers does not ignore name case anymore, the
+    name must now be cased as sent (as some servers might expect
+    a specific case).
+  * Add `:Any` type hint to `**matchers` function arguments to
+    satisfy strict type checking mode in `pyright`.
+  * Python `3.7` and `3.8` are no longer supported.
+  * `httpx_mock.add_response` is now returning a new
+    `httpx.Response` instance upon each matching request.
+    Preventing unnecessary recursion in streams.
+
+-------------------------------------------------------------------
+Sat Jul  1 09:13:35 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu May  4 22:53:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.0:
+  * Requires `httpx`==0.24.\*
+  * Update version specifiers for `pytest` dependency to support
+    `packaging` `23`.
+  * Add explicit support for `python` `3.11`.
+
+-------------------------------------------------------------------
+Mon Jan 16 16:21:19 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.21.2
+  * URL containing non ASCII characters in query can now be matched.
+  * Requests are now cleared when calling httpx_mock.reset.
+- 0.21.1
+  * httpx_mock.add_callback now handles async callbacks.
+- Unpin httpx and pytest in python metadata
+
+-------------------------------------------------------------------
+Mon Jul 25 10:37:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.21.0
+  * Requires httpx>=0.23.*
+  * Python 3.6 is no longer supported.
+- Unpin httpx in python metadata
+
+-------------------------------------------------------------------
+Thu Mar  3 00:16:34 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Upgrade to 0.20.0:
+  * Add support for [`pytest`](https://docs.pytest.org)==7.\* ([`pytest`](https://docs.pytest.org)==6.\* is still supported for now).  (many thanks to [`Craig Blaszczyk`](https://github.com/jakul))
+  * Requires [`httpx`](https://www.python-httpx.org)==0.22.\*
+  * Python 3.6 is no longer supported.
+  * Callback are now executed as expected when there is a matching already sent response.
+  * `httpx_mock.add_response` `data`, `files` and `boundary` parameters have been removed. It was deprecated since `0.17.0`. Refer to this version changelog entry for more details on how to update your code.
+  * An exception can now be raised without creating a callback by using `httpx_mock.add_exception` method.
+  * `httpx_mock.add_response` `data` parameter is only used for multipart content. It was deprecated since `0.14.0`. Refer to this version changelog entry for more details on how to update your code.
+  * `pytest_httpx.to_response` function has been removed. It was deprecated since `0.14.0`. Refer to this version changelog entry for more details on how to update your code.
+  * Callbacks are now expected to have a single parameter, the request. The previously second parameter `extensions`, can still be accessed via `request.extensions`.
+  * Callbacks are now expected to return a `httpx.Response` instance instead of the previous `httpcore.Response` tuple. As a consequence, `pytest_httpx.to_response` now returns a `httpx.Response` instance.
+  * `httpx_mock.add_response` now allows to explicitly provide bytes using `content` parameter.
+  * `httpx_mock.add_response` now allows to explicitly provide string using `text` parameter.
+  * `httpx_mock.add_response` now allows to explicitly provide HTML string content using `html` parameter.
+  * `httpx_mock.add_response` now allows to explicitly provide streamed content using `stream` parameter and the new `pytest_httpx.IteratorStream` class.
+  * `pytest_httpx.to_response` is now deprecated in favor of `httpx.Response`. This function will be removed in a future release.
+  * `httpx_mock.add_response` `data` parameter should now only be used for multipart content. Instead, use the appropriate parameter amongst `content`, `text`, `html` or `stream`.
+  * Type information is now provided following [PEP 561](https://www.python.org/dev/peps/pep-0561/) (many thanks to [`Caleb Ho`](https://github.com/calebho)).
+
+-------------------------------------------------------------------
+Thu Jun  3 08:53:42 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-pytest-httpx 0.12.0

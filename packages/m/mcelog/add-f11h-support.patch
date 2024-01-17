@@ -1,0 +1,63 @@
+Add F11h decoding support
+
+Signed-off-by: Borislav Petkov <bp@suse.de>
+---
+ amd.c    |   21 +++++++++++++++++++++
+ amd.h    |    3 ++-
+ mcelog.c |    2 ++
+ mcelog.h |    1 +
+ 4 files changed, 26 insertions(+), 1 deletion(-)
+
+Index: mcelog-189/amd.c
+===================================================================
+--- mcelog-189.orig/amd.c
++++ mcelog-189/amd.c
+@@ -155,6 +155,8 @@ enum cputype select_amd_cputype(u32 fami
+ 		return CPU_K8;
+ 	case 0x10:
+ 		return CPU_F10H;
++	case 0x11:
++		return CPU_F11H;
+ 	default:
+ 		break;
+ 	}
+@@ -367,6 +369,16 @@ static bool f10h_mc0_mce(u16 ec, u8 xec)
+ 	return f12h_mc0_mce(ec, xec);
+ }
+ 
++static bool k8_mc0_mce(u16 ec, u8 xec)
++{
++	if (BUS_ERROR(ec)) {
++		Wprintf("during system linefill.\n");
++		return true;
++	}
++
++	return f10h_mc0_mce(ec, xec);
++}
++
+ static void decode_mc0_mce(struct amd_decoder_ops *ops, struct mce *m)
+ {
+ 	u16 ec = EC(m->status);
+@@ -630,6 +642,12 @@ struct amd_decoder_ops fam_ops[] = {
+ 		.mc1_mce = k8_mc1_mce,
+ 		.mc2_mce = k8_mc2_mce,
+ 	},
++	[AMD_F11H] = {
++		.cpu	 = AMD_F11H,
++		.mc0_mce = k8_mc0_mce,
++		.mc1_mce = k8_mc1_mce,
++		.mc2_mce = k8_mc2_mce,
++	},
+ };
+ 
+ static void __decode_amd_mc(enum cputype cpu, struct mce *mce)
+@@ -640,6 +658,9 @@ static void __decode_amd_mc(enum cputype
+ 	case CPU_F10H:
+ 		ops = &fam_ops[AMD_F10H];
+ 		break;
++	case CPU_F11H:
++		ops = &fam_ops[AMD_F11H];
++		break;
+ 	default:
+ 		Eprintf("Huh? What family is it: 0x%x?!\n", cpu);
+ 		return;

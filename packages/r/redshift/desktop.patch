@@ -1,0 +1,13 @@
+Don't start Redshift in a terminal.
+
+--- data/applications/redshift.desktop.in.orig
++++ data/applications/redshift.desktop.in
+@@ -5,7 +5,7 @@ _GenericName=Color temperature adjustmen
+ _Comment=Color temperature adjustment tool
+ Exec=redshift
+ Icon=redshift
+-Terminal=true
++Terminal=false
+ Type=Application
+ Categories=Utility;
+ NoDisplay=true

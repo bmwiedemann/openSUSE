@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>98c648ee492020047e426e274da3b3cb</srcmd5>
+    <version>20100910</version>
+    <time>1440337374</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>321051</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49c910b3e6655bd70d4b58f4bb73e144</srcmd5>
+    <version>20160630</version>
+    <time>1470413756</time>
+    <user>dimstar_suse</user>
+    <comment>new upstream version that fixes the build</comment>
+    <requestid>412244</requestid>
+  </revision>
+</revisionlist>

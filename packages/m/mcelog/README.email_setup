@@ -1,0 +1,78 @@
+MACHINE CHECK EXCPETION NOTIFICATION VIA EMAIL
+==============================================
+
+(C)opyright by Thomas Renninger <trenn@suse.de> Novell Inc. 2010
+
+The setup to send Machine Check Exceptions (MCEs) via email relies on a
+working smtp server listening on localhost on port 25.
+
+How this can easily be configured is can be read up here:
+http://en.opensuse.org/Mail_server_HOWTO
+in the "Outgoing" section.
+
+Test your setup by trying to send test mails via the "mail" shell command,
+included in the mailx package.
+
+Specify the email address where the MCEs should get mailed to here:
+/etc/sysconfig/mcelog
+
+You can filter MCE mails by matching against these mail headers.
+Either one of these headers are set:
+  - X-Mcelog-Uncorrectable
+  - X-Mcelog-Correctable
+
+and one of these are set:
+  - X-Mcelog-Memory
+  - X-Mcelog-CPU
+  - X-Mcelog-Misc
+
+
+NOTE: If broken HW results in an MCE storm of dozens and hundreds of MCEs,
+mcelog will not sending them all to not overload the machine and network
+traffic. If in doubt, check the local mcelog log files.
+
+
+Autoyast
+--------
+
+For people making use of autoyast to spread similar installations on multiple
+machines, here are some hints how to set up the email notification through
+autoyast. Please read the autoyast documentation first if you are not familiar
+with how to create an autoyast.xml file.
+
+This simply sets the email address, notifications should get send to:
+
+  <sysconfig config:type="list">
+    <sysconfig_entry>
+      <sysconfig_key>MCELOG_ADMIN_EMAIL</sysconfig_key>
+      <sysconfig_path>/etc/sysconfig/mcelog</sysconfig_path>
+      <sysconfig_value>trenn@suse.de</sysconfig_value>
+    </sysconfig_entry>
+ </sysconfig>
+
+
+This is an example of how to set up postfix to listen on localhost and
+sending/forwarding all mails coming in there through the smtp server
+relay.suse.de.
+The alias at the beginning forwards local machine notifications sent to root,
+to trenn@suse.de. Like that mails interesting for the administrator can easily
+be collected and sent to one email address. But this is just one possible mail
+set up example.
+
+<mail>
+    <aliases config:type="list">
+      <alias>
+        <alias>root</alias>
+        <destinations>trenn@suse.de</destinations>
+      </alias>
+    </aliases>
+    <connection_type config:type="symbol">permanent</connection_type>
+    <listen_remote config:type="boolean">false</listen_remote>
+    <masquerade_other_domains config:type="list">
+      <domain>suse.de</domain>
+    </masquerade_other_domains>
+    <mta config:type="symbol">postfix</mta>
+    <outgoing_mail_server>relay.suse.de</outgoing_mail_server>
+    <postfix_mda config:type="symbol">local</postfix_mda>
+    <use_amavis config:type="boolean">false</use_amavis>
+</mail>

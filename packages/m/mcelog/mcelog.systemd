@@ -1,0 +1,13 @@
+[Unit]
+Description=Machine Check Exception Logging Daemon
+ConditionVirtualization=false
+ConditionPathExists=/dev/mcelog
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/mcelog
+ExecStartPre=/sbin/modprobe msr
+ExecStartPre=/sbin/modprobe dmi-sysfs
+ExecStart=/usr/sbin/mcelog --ignorenodev --daemon --foreground
+
+[Install]
+WantedBy=multi-user.target

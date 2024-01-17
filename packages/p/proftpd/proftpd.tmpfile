@@ -1,0 +1,2 @@
+# proFTPD needs a DIR
+d /run/proftpd 0755 root root -

@@ -1,0 +1,161 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07b89bc60b67f28d7cb8e219e713642d</srcmd5>
+    <version>0.5</version>
+    <time>1531947199</time>
+    <user>dimstar_suse</user>
+    <comment>GNU libredwg</comment>
+    <requestid>621859</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cdcdaf6615efeb90b6da5d4f97913824</srcmd5>
+    <version>0.5</version>
+    <time>1532293551</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>624431</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7544f02f6c7987ed135863721e72c296</srcmd5>
+    <version>0.5</version>
+    <time>1533887510</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2018-14524: double free (boo#1102702)
+- CVE-2018-14471: NULL pointer dereference DoS (boo#1102696) (forwarded request 628363 from AndreasStieger)</comment>
+    <requestid>628364</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>34dd1ca9660abccd88c0552a06b7574e</srcmd5>
+    <version>0.6</version>
+    <time>1534322289</time>
+    <user>dimstar_suse</user>
+    <comment>libredwg 0.6 (forwarded request 629184 from AndreasStieger)</comment>
+    <requestid>629185</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8cf9de7f300427e374f3c564906a230f</srcmd5>
+    <version>0.6.2</version>
+    <time>1542202951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647745</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0fcdce21a07f872c1755c4e16250cc0d</srcmd5>
+    <version>0.7</version>
+    <time>1544441424</time>
+    <user>dimstar_suse</user>
+    <comment>libredwg 0.7</comment>
+    <requestid>656769</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>56043a087c77c634f60d574232ec0275</srcmd5>
+    <version>0.8</version>
+    <time>1564994249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720222</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d189b3d583295d4e7ece9b2bd1f6eb0a</srcmd5>
+    <version>0.9.1</version>
+    <time>1573165210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.9.1</comment>
+    <requestid>746156</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fffcbb3f283d50d13ff8c926cd0b967e</srcmd5>
+    <version>0.9.3</version>
+    <time>1577705715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.9.3
+    [CVE-2019-20010, boo#1159825], [CVE-2019-20011, boo#1159826],
+    [CVE-2019-20012, boo#1159827], [CVE-2019-20013, boo#1159828],
+    [CVE-2019-20014, boo#1159831], [CVE-2019-20015, boo#1159832]
+    [CVE-2019-20009, boo#1159824]</comment>
+    <requestid>759939</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4749fd3dbce5e8f523e3a651a6a817a2</srcmd5>
+    <version>0.10</version>
+    <time>1578606771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.10
+  * Add several checks against
+    [CVE-2020-6609, boo#1160520], [CVE-2020-6610, boo#1160522],
+    [CVE-2020-6611, boo#1160523], [CVE-2020-6612, boo#1160524],
+    [CVE-2020-6613, boo#1160525], [CVE-2020-6614, boo#1160526],
+    [CVE-2020-6615, boo#1160527]</comment>
+    <requestid>762209</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>32f1a20b45149daf9c31f232870cc216</srcmd5>
+    <version>0.11</version>
+    <time>1597306990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826183</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3da8c697522fc5066b645e4312034e2f</srcmd5>
+    <version>0.11.1</version>
+    <time>1605644816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.11.1</comment>
+    <requestid>849049</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d92bf2c0a801ecece0bd2d9454f749da</srcmd5>
+    <version>0.12.5</version>
+    <time>1644874568</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.12.5</comment>
+    <requestid>954132</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2dc0affc9351bbd65ac35bd2903b431b</srcmd5>
+    <version>0.12.5</version>
+    <time>1652801051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.12.5 [boo#1193372] [CVE-2021-28237]</comment>
+    <requestid>977604</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>ba3531ebf6e248cf06d92aa7b3c5d195</srcmd5>
+    <version>0.12.5</version>
+    <time>1661020137</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-bits-change-bit_copy_chain.patch,
+  0001-fix-obj_flush_hdlstream-GH-497.patch
+  [CVE-2022-35164] [boo#1202553]</comment>
+    <requestid>998213</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0a5a1634aed83a6fb82304bd0f2c32c5</srcmd5>
+    <version>0.12.5.5907</version>
+    <time>1689614607</time>
+    <user>anag+factory</user>
+    <comment>- Update to tag 0.12.5.5907
+  * Addressed CVE-2022-33025 [boo#1200898],
+    CVE-2023-36271 [boo#1212709], CVE-2023-36272 [boo#1212707],
+    CVE-2023-36273 [boo#1212706], CVE-2023-36274 [boo#1212705]</comment>
+    <requestid>1098839</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c5611c15da4d41425cb6b9d77586c4ac</srcmd5>
+    <version>0.12.5.5907</version>
+    <time>1692687378</time>
+    <user>anag+factory</user>
+    <comment>- Set -D_GNU_SOURCE to work around strcasestr being undeclared</comment>
+    <requestid>1105038</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>947c6e0f311f8f5ddc67e2e539380ecb</srcmd5>
+    <version>0.12.5.6924</version>
+    <time>1704281417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tag 0.12.5.6924</comment>
+    <requestid>1136184</requestid>
+  </revision>
+</revisionlist>

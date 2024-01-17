@@ -1,0 +1,6 @@
+<package name="icon-naming-utils" project="openSUSE:Factory">
+  <title>Icon Name Specification Mapping Script</title>
+  <description>A script for creating a symlink mapping for deprecated icon names to
+the new icon naming specification names for desktop icon themes.</description>
+  <devel project="GNOME:Factory" package="icon-naming-utils"/>
+</package>

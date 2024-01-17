@@ -1,0 +1,71 @@
+--- html2png.c
++++ html2png.c
+@@ -186,13 +186,11 @@
+ }
+ 
+ #ifdef CONFIG_PNG_OUTPUT
+-extern void png_write_init();
+-
+ int png_save(QEditScreen *s, const char *filename)
+ {
+     CFBContext *cfb = s->private;
+-    png_struct * volatile png_ptr = NULL;
+-    png_info * volatile info_ptr = NULL;
++    png_structp png_ptr = NULL;
++    png_infop info_ptr = NULL;
+     png_byte *row_ptr, *row_pointers[1], *row = NULL;
+     int w, h, x, y;
+     unsigned int r, g, b, v;
+@@ -202,32 +200,30 @@
+     row = malloc(3 * s->width);
+     if (!row)
+         goto fail;
+-    png_ptr = malloc(sizeof (png_struct));
++    png_ptr = png_create_write_struct (PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+     if (!png_ptr)
+         goto fail;
+-    info_ptr = malloc(sizeof (png_info));
+-    if (!info_ptr)
++    info_ptr = png_create_info_struct (png_ptr);
++    if (!info_ptr) {
++	png_destroy_write_struct(&png_ptr, (png_infopp)NULL);
+         goto fail;
++    }
+     
+     f = fopen(filename, "w");
+     if (!f) 
+         goto fail;
+ 
+     if (setjmp(png_ptr->jmpbuf)) {
+-        png_write_destroy(png_ptr);
++        png_destroy_write_struct(&png_ptr, &info_ptr);
+     fail:
+         /* free pointers before returning.  Make sure you clean up
+            anything else you've done. */
+-        free(png_ptr);
+-        free(info_ptr);
+         free(row);
+         if (f)
+             fclose(f);
+         return -1;
+     }
+ 
+-    png_info_init(info_ptr);
+-    png_write_init(png_ptr);
+     png_init_io(png_ptr, f);
+     
+     data = (unsigned int *)cfb->base;
+@@ -259,10 +255,9 @@
+         data = (void *)((char *)data + cfb->wrap);
+     }
+     png_write_end(png_ptr, info_ptr);
+-    png_write_destroy(png_ptr);
+-
+-    free(png_ptr);
+-    free(info_ptr);
++    png_destroy_write_struct (&png_ptr, &info_ptr);
++    
++   
+     free(row);
+     fclose(f);
+     return 0;

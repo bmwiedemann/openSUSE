@@ -1,0 +1,243 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1fe83a196e0892a6194072e2a34925dd</srcmd5>
+    <version>2.2.1</version>
+    <time>1524576819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600065</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60526ede25657258648faa83fce3642e</srcmd5>
+    <version>3.0.7</version>
+    <time>1546535202</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove fix_regexps.patch and replace it with
+  multiple-fixes-to-test_hetzner.patch, which fixes the same rpmlint
+  issue and fixes test-hetzner above (gh#AnalogJ/lexicon#333)
+- Requires localzone -&gt; python-localzone
+- Update to version 3.0.7
+- Update BuildRequries and Requires from setup.py
+  and test-requirements.txt</comment>
+    <requestid>661962</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ed07d5dcc90e97e7dca0d38be9451758</srcmd5>
+    <version>3.0.7</version>
+    <time>1549140559</time>
+    <user>coolo</user>
+    <comment>- Drop pytest reqs that are not really needed to reduce dependency
+  pull</comment>
+    <requestid>670062</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8672f9df9ea1261f7618d8823ab2556b</srcmd5>
+    <version>3.1.6</version>
+    <time>1552380846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.6:
+  * Various changes, no upstream changelog
+- Add patch to fix network detection:
+  * ioerror.patch
+- Drop merged patch:
+  * multiple-fixes-to-test_hetzner.patch</comment>
+    <requestid>682855</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ac3cf3a75999da0250a90423a327ca0</srcmd5>
+    <version>3.2.1</version>
+    <time>1554749644</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.1:
+  * Fix resolution of dependencies in a regular install of lexicon distribution
+  * Mark more tests as expected failures
+  * Fix the the updates of Gandi records of a specific type (#384)
+  * Fix the if-condition that handles the updates of Gandi records of a specific rtype
+- Drop merged patch:
+  * ioerror.patch</comment>
+    <requestid>692292</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>68166c17a5ca7a11b9dddc73519f372b</srcmd5>
+    <version>3.2.1</version>
+    <time>1555237372</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use pytest macro for now to get this quickly to 15.1</comment>
+    <requestid>693674</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>078d69c3060032b7362e5dda7900781a</srcmd5>
+    <version>3.2.6</version>
+    <time>1558532459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.6:
+  * Varous pylint fixes</comment>
+    <requestid>704697</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e529a6294a6d863a621cf78f9b188baf</srcmd5>
+    <version>3.3.1</version>
+    <time>1564155241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718794</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9742ec19ba274a481f36b39792a79bcc</srcmd5>
+    <version>3.3.3</version>
+    <time>1568379804</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 3.3.3:
+  * Failsafe list of records when some content is missing
+  * Update provider specific dependencies link 
+  * Add DirectAdmin Provider (#418) * Add provider skeleton for DirectAdmin</comment>
+    <requestid>730635</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>339f19ca7892454877add1610e32c5d3</srcmd5>
+    <version>3.3.3</version>
+    <time>1572443292</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in zeep dependency as zeep is borked and on the
+  way from TW (subreg plugin no longer available)</comment>
+    <requestid>743980</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>09d71860db94869211df10e8a1fd2ae4</srcmd5>
+    <version>3.3.19</version>
+    <time>1585602211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.19:
+  * Implement retry to handle rate limits in DNSMadeEasy (#442)
+  * Updated Link For Constellix API and Added Link for v2 of DNSSimple API
+  * Bug fixed: failure if &quot;Forward&quot; Record (#447)
+  * add RcodeZero (https://www.rcodezero.at) provider
+  * Move test_hostingde provider in the correct place
+  * Added example for lexicon usage as a python library
+  * Add support for Python 3.8
+  * minor fixes for RcodeZero provider: add &quot;Accept&quot; header to request and
+    fixed loglevel of debug message
+  * Change uri check after login for easyname
+  * Fix auto provider handling of parameters. (#473)
+  * Adds subaction as query parameter instead of using url argument
+  * Introduce Gransy provider. Gransy provider is former Subreg provider, but
+    because it works for multiple sites
+  * Changes to robst parser 'html5lib' for Hetzner
+  * Adds TTL to the digitalocean provider (#482)
+- Drop Python 2 support, due to softlayer no longer supporting it
+- Delete one broken unit test class</comment>
+    <requestid>789608</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b8837d3f5f89f1a52e21c9eb0736fb21</srcmd5>
+    <version>3.3.19</version>
+    <time>1590650280</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809413</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c81d1d82c8e4a9907d4ac85450225aa5</srcmd5>
+    <version>3.3.26</version>
+    <time>1594228416</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.26:
+  * More straightforward approach to configure tests suites
+  * Allow updating gandi RRSet TTL
+  * Final customizations for hetzner dns api v1. The main fix is, that hetzner
+    does not need the fqdn as record name
+  * Add initial support for UltraDNS provider
+  * Add support for record sets in Route53
+  * Give a flag to set explicitly the zone ID and avoid unscoped API tokens
+  * Test lowest and highest supported python versions. Move mostly to 3.x
+  * Register properly the pytest mark ext_suite_1
+  * Use Bearer Token Authorization for Cloudflare API Tokens
+  * Remove Hetzner KonsoleH provider that is broken and not maintained
+  * Implement pagination for cloudflare</comment>
+    <requestid>819315</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6cc7b72b0d4507181fbe9a3538f02676</srcmd5>
+    <version>3.5.3</version>
+    <time>1612272279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867444</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0acb0625e428cd677a926b555c673baf</srcmd5>
+    <version>3.5.3</version>
+    <time>1626299934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906310</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>77ec40c124aaad9b757fedaf86c504e1</srcmd5>
+    <version>3.9.4</version>
+    <time>1646848070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 3.9.4
+  * Add webgo provider
+  * Extend possible record types list for dreamhost provider
+- Exclude test_oci.py due to failures.
+- Remove skip on python36
+- Drop remove-mock.patch, included upstream</comment>
+    <requestid>960376</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>fa8a33866acf4cb12dc429f2024bcf46</srcmd5>
+    <version>3.9.4</version>
+    <time>1657559369</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires/Recommends on zeep, due to softlayer-zeep.</comment>
+    <requestid>988223</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6fa9b5c38e178510c8ad2340ff1f7a98</srcmd5>
+    <version>3.11.7</version>
+    <time>1684754082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088310</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>00f375b65465dc2f9ac7059ba3d5901c</srcmd5>
+    <version>3.11.7</version>
+    <time>1688246304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096280</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a1d12d873da06288f84515ed5dd8fe8c</srcmd5>
+    <version>3.12.0</version>
+    <time>1690892150</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 3.12.0:
+  * Add `duckdns` provider (experimental support) (#1533)
+  * Add `dnsservices` provider (#1603)
+  * Add `flexibleengine` provider (#1600)
+  * Official support for Python 3.11
+  * Upgrade API version used for `azure` provider (#1606)
+  * Various fixes for documentation (#1488 #1458 #1601 #1605)
+  * Fix check for extra dependencies (#1568)</comment>
+    <requestid>1101533</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9cb8088ae31de8154686278e31bd0662</srcmd5>
+    <version>3.17.0</version>
+    <time>1701206394</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126890</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>e2238f54b01be67c730cd995d9f91211</srcmd5>
+    <version>3.17.0</version>
+    <time>1702587767</time>
+    <user>anag+factory</user>
+    <comment>- dnspython is not an optional requirement, bump it to Requires.</comment>
+    <requestid>1132965</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c1a4c9ef176ce1a83c991b42a44890c</srcmd5>
+    <version>0.12.0</version>
+    <time>1626045892</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-pytest-httpx</comment>
+    <requestid>897235</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9f4ceeede8a281f1ee1855dabdd32b35</srcmd5>
+    <version>0.20.0</version>
+    <time>1646349433</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.20.0:
+  * Add support for [`pytest`](https://docs.pytest.org)==7.\* ([`pytest`](https://docs.pytest.org)==6.\* is still supported for now).  (many thanks to [`Craig Blaszczyk`](https://github.com/jakul))
+  * Requires [`httpx`](https://www.python-httpx.org)==0.22.\*
+  * Python 3.6 is no longer supported.
+  * Callback are now executed as expected when there is a matching already sent response.
+  * `httpx_mock.add_response` `data`, `files` and `boundary` parameters have been removed. It was deprecated since `0.17.0`. Refer to this version changelog entry for more details on how to update your code.
+  * An exception can now be raised without creating a callback by using `httpx_mock.add_exception` method.
+  * `httpx_mock.add_response` `data` parameter is only used for multipart content. It was deprecated since `0.14.0`. Refer to this version changelog entry for more details on how to update your code.
+  * `pytest_httpx.to_response` function has been removed. It was deprecated since `0.14.0`. Refer to this version changelog entry for more details on how to update your code.
+  * Callbacks are now expected to have a single parameter, the request. The previously second parameter `extensions`, can still be accessed via `request.extensions`.
+  * Callbacks are now expected to return a `httpx.Response` instance instead of the previous `httpcore.Response` tuple. As a consequence, `pytest_httpx.to_response` now returns a `httpx.Response` instance.
+  * `httpx_mock.add_response` now allows to explicitly provide bytes using `content` parameter.
+  * `httpx_mock.add_response` now allows to explicitly provide string using `text` parameter.
+  * `httpx_mock.add_response` now allows to explicitly provide HTML string content using `html` parameter.
+  * `httpx_mock.add_response` now allows to explicitly provide streamed content using `stream` parameter and the new `pytest_httpx.IteratorStream` class.
+  * `pytest_httpx.to_response` is now deprecated in favor of `httpx.Response`. This function will be removed in a future release.
+  * `httpx_mock.add_response` `data` parameter should now only be used for multipart content. Instead, use the appropriate parameter amongst `content`, `text`, `html` or `stream`.
+  * Type information is now provided following [PEP 561](https://www.python.org/dev/peps/pep-0561/) (many thanks to [`Caleb Ho`](https://github.com/calebho)).</comment>
+    <requestid>958541</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>75e70d49ccf64abc002ea49c15b083d7</srcmd5>
+    <version>0.21.0</version>
+    <time>1659945751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>991207</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6c8cfab2c7415f73d53049a9a5e51e3</srcmd5>
+    <version>0.21.2</version>
+    <time>1673973327</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21.2
+  * URL containing non ASCII characters in query can now be matched.
+  * Requests are now cleared when calling httpx_mock.reset.
+- 0.21.1
+  * httpx_mock.add_callback now handles async callbacks.
+- Unpin httpx and pytest in python metadata
+</comment>
+    <requestid>1058836</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>40fa885355e15f481333b6b827c446df</srcmd5>
+    <version>0.22.0</version>
+    <time>1685632797</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.0:
+  * Requires `httpx`==0.24.\*
+  * Update version specifiers for `pytest` dependency to support
+    `packaging` `23`.
+  * Add explicit support for `python` `3.11`.</comment>
+    <requestid>1090223</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>044dfa24b8dcd9d3b023b9d79c3cb920</srcmd5>
+    <version>0.22.0</version>
+    <time>1688246309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096277</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4f9e6c53c66d4bbf54b4f651ef33f41c</srcmd5>
+    <version>0.26.0</version>
+    <time>1699478270</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.26.0:
+  * Added `proxy_url` parameter which allows matching on proxy
+    URL.
+  * Requires `httpx`==0.25.\*
+  * Added `match_json` parameter which allows matching on JSON
+    decoded body (matching against python representation instead
+    of bytes).
+  * Even if it was never documented as a feature, the
+    `match_headers` parameter was not considering header names
+    case when matching.
+  * Matching on headers does not ignore name case anymore, the
+    name must now be cased as sent (as some servers might expect
+    a specific case).
+  * Add `:Any` type hint to `**matchers` function arguments to
+    satisfy strict type checking mode in `pyright`.
+  * Python `3.7` and `3.8` are no longer supported.
+  * `httpx_mock.add_response` is now returning a new
+    `httpx.Response` instance upon each matching request.
+    Preventing unnecessary recursion in streams.</comment>
+    <requestid>1124087</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>316c5e8390da483f65299bad2794b20c</srcmd5>
+    <version>0.27.0</version>
+    <time>1700511567</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.27.0:
+  * Explicit support for python `3.12`.
+  * Custom HTTP transport are now handled (parent call to
+    `handle_async_request` or `handle_request`).
+  * Only HTTP transport are now mocked, this should not have any
+    impact, however if it does, please feel free to open an issue
+    describing your use case.</comment>
+    <requestid>1127546</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ebb2dbf48ad3c0c365c67ea3d52ba644</srcmd5>
+    <version>0.28.0</version>
+    <time>1704919926</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.28.0:
+  * Requires `httpx`==0.26.\*</comment>
+    <requestid>1137816</requestid>
+  </revision>
+</revisionlist>

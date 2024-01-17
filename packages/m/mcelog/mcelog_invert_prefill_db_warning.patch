@@ -1,0 +1,23 @@
+---
+ memdb.c |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+--- a/memdb.c
++++ b/memdb.c
+@@ -431,11 +431,11 @@
+ 		md->location = xstrdup(bl);
+ 		md->name = xstrdup(dmi_getstring(&d->header, d->device_locator));
+ 	}
+-	if (missed) { 
+-		static int warned;
+-		if (!warned) {
+-			Eprintf("failed to prefill DIMM database from DMI data");
+-			warned = 1;
++	if (!missed) {
++		static int db_rill_msg;
++		if (!db_rill_msg) {
++			Gprintf("Prefilled DIMM database from DMI data");
++			db_rill_msg = 1;
+ 		}
+ 	}
+ }

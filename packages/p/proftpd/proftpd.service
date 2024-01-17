@@ -1,0 +1,22 @@
+[Unit]
+Description=ProFTPd FTP server
+After=systemd-user-sessions.service network.target nss-lookup.target local-fs.target remote-fs.target
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+ExecStart=/usr/sbin/proftpd --nodaemon
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

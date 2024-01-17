@@ -1,0 +1,23 @@
+Index: contrib/dist/rpm/proftpd.service
+===================================================================
+--- contrib/dist/rpm/proftpd.service.orig
++++ contrib/dist/rpm/proftpd.service
+@@ -4,6 +4,18 @@ Wants=network-online.target
+ After=network-online.target nss-lookup.target local-fs.target remote-fs.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions
+ Type = simple
+ Environment = PROFTPD_OPTIONS=
+ EnvironmentFile = -/etc/sysconfig/proftpd

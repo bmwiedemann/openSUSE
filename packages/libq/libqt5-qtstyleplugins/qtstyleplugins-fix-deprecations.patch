@@ -1,0 +1,1853 @@
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/platformthemes/gtk2/gtk2.pro
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/platformthemes/gtk2/gtk2.pro
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/platformthemes/gtk2/gtk2.pro
+@@ -1,10 +1,13 @@
+ TARGET = qgtk2
+ 
+ QT += core-private gui-private
+-greaterThan(QT_MAJOR_VERSION, 5)|greaterThan(QT_MINOR_VERSION, 7): \
+-    QT += theme_support-private
+-else: \
+-    QT += platformsupport-private
++lessThan(QT_MAJOR_VERSION, 6) {
++    greaterThan(QT_MINOR_VERSION, 7) {
++        QT += theme_support-private
++    } else {
++        QT += platformsupport-private
++    }
++}
+ 
+ CONFIG += X11
+ CONFIG += link_pkgconfig
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/platformthemes/gtk2/qgtk2dialoghelpers.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/platformthemes/gtk2/qgtk2dialoghelpers.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/platformthemes/gtk2/qgtk2dialoghelpers.cpp
+@@ -568,7 +568,11 @@ static QFont qt_fontFromString(const QSt
+         font.setFamily(family);
+ 
+     const int weight = pango_font_description_get_weight(desc);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++    font.setWeight(QFont::Weight(weight));
++#else
+     font.setWeight(QPlatformFontDatabase::weightFromInteger(weight));
++#endif
+ 
+     PangoStyle style = pango_font_description_get_style(desc);
+     if (style == PANGO_STYLE_ITALIC)
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/cleanlooks/qcleanlooksstyle.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/cleanlooks/qcleanlooksstyle.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/cleanlooks/qcleanlooksstyle.cpp
+@@ -686,7 +686,7 @@ void QCleanlooksStyle::drawPrimitive(Pri
+     dark.setHsv(button.hue(),
+                 qMin(255, (int)(button.saturation()*1.9)),
+                 qMin(255, (int)(button.value()*0.7)));
+-    QColor tabFrameColor = mergedColors(option->palette.background().color(),
++    QColor tabFrameColor = mergedColors(option->palette.window().color(),
+                                                 dark.lighter(135), 60);
+ 
+     switch (elem) {
+@@ -729,6 +729,7 @@ void QCleanlooksStyle::drawPrimitive(Pri
+         }
+         return;
+ #endif // QT_NO_TABBAR
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+     case PE_IndicatorViewItemCheck:
+         {
+             QStyleOptionButton button;
+@@ -737,6 +738,7 @@ void QCleanlooksStyle::drawPrimitive(Pri
+             proxy()->drawPrimitive(PE_IndicatorCheckBox, &button, painter, widget);
+         }
+         return;
++#endif
+     case PE_IndicatorHeaderArrow:
+         if (const QStyleOptionHeader *header = qstyleoption_cast<const QStyleOptionHeader *>(option)) {
+             QRect r = header->rect;
+@@ -748,7 +750,7 @@ void QCleanlooksStyle::drawPrimitive(Pri
+             if (!arrow.isNull()) {
+                 r.setSize(arrow.size());
+                 r.moveCenter(header->rect.center());
+-                arrow.setColor(1, header->palette.foreground().color().rgba());
++                arrow.setColor(1, header->palette.windowText().color().rgba());
+                 painter->drawImage(r, arrow);
+             }
+         }
+@@ -762,24 +764,24 @@ void QCleanlooksStyle::drawPrimitive(Pri
+             const int margin = 6;
+             if (option->state & State_Horizontal) {
+                 const int offset = rect.width()/2;
+-                painter->setPen(QPen(option->palette.background().color().darker(110)));
++                painter->setPen(QPen(option->palette.window().color().darker(110)));
+                 painter->drawLine(rect.bottomLeft().x() + offset,
+                             rect.bottomLeft().y() - margin,
+                             rect.topLeft().x() + offset,
+                             rect.topLeft().y() + margin);
+-                painter->setPen(QPen(option->palette.background().color().lighter(110)));
++                painter->setPen(QPen(option->palette.window().color().lighter(110)));
+                 painter->drawLine(rect.bottomLeft().x() + offset + 1,
+                             rect.bottomLeft().y() - margin,
+                             rect.topLeft().x() + offset + 1,
+                             rect.topLeft().y() + margin);
+             } else { //Draw vertical separator
+                 const int offset = rect.height()/2;
+-                painter->setPen(QPen(option->palette.background().color().darker(110)));
++                painter->setPen(QPen(option->palette.window().color().darker(110)));
+                 painter->drawLine(rect.topLeft().x() + margin ,
+                             rect.topLeft().y() + offset,
+                             rect.topRight().x() - margin,
+                             rect.topRight().y() + offset);
+-                painter->setPen(QPen(option->palette.background().color().lighter(110)));
++                painter->setPen(QPen(option->palette.window().color().lighter(110)));
+                 painter->drawLine(rect.topLeft().x() + margin ,
+                             rect.topLeft().y() + offset + 1,
+                             rect.topRight().x() - margin,
+@@ -798,8 +800,8 @@ void QCleanlooksStyle::drawPrimitive(Pri
+         {
+             painter->setPen(QPen(darkOutline, 1));
+             painter->drawRect(option->rect.adjusted(0, 0, -1, -1));
+-            QColor frameLight = option->palette.background().color().lighter(160);
+-            QColor frameShadow = option->palette.background().color().darker(110);
++            QColor frameLight = option->palette.window().color().lighter(160);
++            QColor frameShadow = option->palette.window().color().darker(110);
+ 
+             //paint beveleffect
+             QRect frame = option->rect.adjusted(1, 1, -1, -1);
+@@ -817,14 +819,14 @@ void QCleanlooksStyle::drawPrimitive(Pri
+ 
+         painter->save();
+         {
+-            QColor softshadow = option->palette.background().color().darker(120);
++            QColor softshadow = option->palette.window().color().darker(120);
+ 
+             QRect rect= option->rect;
+             painter->setPen(softshadow);
+             painter->drawRect(option->rect.adjusted(0, 0, -1, -1));
+             painter->setPen(QPen(option->palette.light(), 0));
+             painter->drawLine(QPoint(rect.left() + 1, rect.top() + 1), QPoint(rect.left() + 1, rect.bottom() - 1));
+-            painter->setPen(QPen(option->palette.background().color().darker(120), 0));
++            painter->setPen(QPen(option->palette.window().color().darker(120), 0));
+             painter->drawLine(QPoint(rect.left() + 1, rect.bottom() - 1), QPoint(rect.right() - 2, rect.bottom() - 1));
+             painter->drawLine(QPoint(rect.right() - 1, rect.top() + 1), QPoint(rect.right() - 1, rect.bottom() - 1));
+ 
+@@ -865,7 +867,7 @@ void QCleanlooksStyle::drawPrimitive(Pri
+             painter->setPen(QPen(option->palette.light(), 0));
+             painter->drawLine(QPoint(rect.left() + 1, rect.top() + 1),
+                               QPoint(rect.left() + 1, rect.bottom() - 1));
+-            painter->setPen(QPen(option->palette.background().color().darker(120), 0));
++            painter->setPen(QPen(option->palette.window().color().darker(120), 0));
+             painter->drawLine(QPoint(rect.left() + 1, rect.bottom() - 1),
+                               QPoint(rect.right() - 2, rect.bottom() - 1));
+             painter->drawLine(QPoint(rect.right() - 1, rect.top() + 1),
+@@ -880,11 +882,11 @@ void QCleanlooksStyle::drawPrimitive(Pri
+         {
+             QPen oldPen = painter->pen();
+             if (option->state & State_Enabled) {
+-                painter->setPen(QPen(option->palette.background(), 0));
++                painter->setPen(QPen(option->palette.window(), 0));
+                 painter->drawRect(rect.adjusted(0, 0, 0, 0));
+                 painter->drawRect(rect.adjusted(1, 1, -1, -1));
+             } else {
+-                painter->fillRect(rect, option->palette.background());
++                painter->fillRect(rect, option->palette.window());
+             }
+             QRect r = rect.adjusted(0, 1, 0, -1);
+             painter->setPen(buttonShadowAlpha);
+@@ -900,7 +902,7 @@ void QCleanlooksStyle::drawPrimitive(Pri
+                 QPoint(r.left(), r.bottom() - 1)
+             };
+             painter->drawPoints(points, 8);
+-            painter->setPen(QPen(option->palette.background().color(), 1));
++            painter->setPen(QPen(option->palette.window().color(), 1));
+             painter->drawLine(QPoint(r.left() + 2, r.top() + 1), QPoint(r.right() - 2, r.top() + 1));
+ 
+             if (option->state & State_HasFocus) {
+@@ -964,7 +966,7 @@ void QCleanlooksStyle::drawPrimitive(Pri
+                 image.setColor(2, fillColor.rgba());
+                 painter->drawImage(rect, image);
+                 if (checkbox->state & State_NoChange) {
+-                    QColor bgc = option->palette.background().color();
++                    QColor bgc = option->palette.window().color();
+                     bgc.setAlpha(127);
+                     painter->fillRect(checkRect.adjusted(1, 1, -1, -1), bgc);
+                 }
+@@ -1226,7 +1228,7 @@ void QCleanlooksStyle::drawPrimitive(Pri
+ #ifndef QT_NO_TABWIDGET
+         if (const QStyleOptionTabWidgetFrame *twf = qstyleoption_cast<const QStyleOptionTabWidgetFrame *>(option)) {
+             QColor borderColor = darkOutline.lighter(110);
+-            QColor alphaCornerColor = mergedColors(borderColor, option->palette.background().color());
++            QColor alphaCornerColor = mergedColors(borderColor, option->palette.window().color());
+ 
+             int borderThickness = proxy()->pixelMetric(PM_TabBarBaseOverlap, twf, widget);
+             bool reverse = (twf->direction == Qt::RightToLeft);
+@@ -1373,9 +1375,9 @@ void QCleanlooksStyle::drawControl(Contr
+                 qMin(255, (int)(button.saturation()*2.0)),
+                 qMin(255, (int)(button.value()*0.6)));
+     QRect rect = option->rect;
+-    QColor shadow = mergedColors(option->palette.background().color().darker(120),
++    QColor shadow = mergedColors(option->palette.window().color().darker(120),
+                                  dark.lighter(130), 60);
+-    QColor tabFrameColor = mergedColors(option->palette.background().color(),
++    QColor tabFrameColor = mergedColors(option->palette.window().color(),
+                                                 dark.lighter(135), 60);
+ 
+     QColor highlight = option->palette.highlight().color();
+@@ -1386,7 +1388,7 @@ void QCleanlooksStyle::drawControl(Contr
+         if (const QStyleOptionButton *btn = qstyleoption_cast<const QStyleOptionButton *>(option)) {
+             bool hover = (btn->state & State_MouseOver && btn->state & State_Enabled);
+             if (hover)
+-                painter->fillRect(rect, btn->palette.background().color().lighter(104));
++                painter->fillRect(rect, btn->palette.window().color().lighter(104));
+             QStyleOptionButton copy = *btn;
+             copy.rect.adjust(2, 0, -2, 0);
+             QProxyStyle::drawControl(element, &copy, painter, widget);
+@@ -1396,7 +1398,7 @@ void QCleanlooksStyle::drawControl(Contr
+         painter->save();
+         {
+             // hover appearance
+-            QBrush fillColor = option->palette.background().color();
++            QBrush fillColor = option->palette.window().color();
+             if (option->state & State_MouseOver && option->state & State_Enabled)
+                 fillColor = fillColor.color().lighter(106);
+ 
+@@ -1550,7 +1552,7 @@ void QCleanlooksStyle::drawControl(Contr
+                 break;
+             }
+ 
+-            QColor light = option->palette.background().color().lighter(110);
++            QColor light = option->palette.window().color().lighter(110);
+ 
+             //draw top border
+             painter->setPen(QPen(light));
+@@ -1634,8 +1636,8 @@ void QCleanlooksStyle::drawControl(Contr
+                                      qMin(255, (int)(gradientStartColor.saturation()*2)),
+                                      qMin(255, (int)(gradientStartColor.value()*0.96)));
+             QLinearGradient gradient(rect.topLeft(), rect.bottomLeft());
+-            if (option->palette.background().gradient()) {
+-                gradient.setStops(option->palette.background().gradient()->stops());
++            if (option->palette.window().gradient()) {
++                gradient.setStops(option->palette.window().gradient()->stops());
+             } else {
+                 gradient.setColorAt(0, gradientStartColor);
+                 gradient.setColorAt(0.8, gradientStartColor);
+@@ -1643,7 +1645,7 @@ void QCleanlooksStyle::drawControl(Contr
+             }
+             painter->fillRect(r, gradient);
+ 
+-            if (!QPixmapCache::find(pixmapName, cache)) {
++            if (!QPixmapCache::find(pixmapName, &cache)) {
+                 cache = QPixmap(r.size());
+                 cache.fill(Qt::transparent);
+                 QRect pixmapRect(0, 0, r.width(), r.height());
+@@ -1681,7 +1683,7 @@ void QCleanlooksStyle::drawControl(Contr
+                 QLine(QPoint(rect.right(), rect.top() + 1), QPoint(rect.right(), rect.bottom() - 1))
+             };
+             painter->drawLines(lines, 4);
+-            QColor alphaCorner = mergedColors(borderColor, option->palette.background().color());
++            QColor alphaCorner = mergedColors(borderColor, option->palette.window().color());
+             QColor innerShadow = mergedColors(borderColor, option->palette.base().color());
+ 
+             //corner smoothing
+@@ -1708,7 +1710,7 @@ void QCleanlooksStyle::drawControl(Contr
+         painter->save();
+         if (const QStyleOptionProgressBar *bar = qstyleoption_cast<const QStyleOptionProgressBar *>(option)) {
+             QRect rect = bar->rect;
+-            bool vertical = (bar->orientation == Qt::Vertical);
++            bool vertical = !(bar->state & QStyle::State_Horizontal);
+             bool inverted = bar->invertedAppearance;
+             bool indeterminate = (bar->minimum == 0 && bar->maximum == 0);
+ 
+@@ -1834,15 +1836,15 @@ void QCleanlooksStyle::drawControl(Contr
+         // Draws one item in a popup menu.
+         if (const QStyleOptionMenuItem *menuItem = qstyleoption_cast<const QStyleOptionMenuItem *>(option)) {
+             QColor highlightOutline = highlight.darker(125);
+-            QColor menuBackground = option->palette.background().color().lighter(104);
+-            QColor borderColor = option->palette.background().color().darker(160);
++            QColor menuBackground = option->palette.window().color().lighter(104);
++            QColor borderColor = option->palette.window().color().darker(160);
+             QColor alphaCornerColor;
+ 
+             if (widget) {
+                 // ### backgroundrole/foregroundrole should be part of the style option
+                 alphaCornerColor = mergedColors(option->palette.color(widget->backgroundRole()), borderColor);
+             } else {
+-                alphaCornerColor = mergedColors(option->palette.background().color(), borderColor);
++                alphaCornerColor = mergedColors(option->palette.window().color(), borderColor);
+             }
+             if (menuItem->menuItemType == QStyleOptionMenuItem::Separator) {
+                 painter->fillRect(menuItem->rect, menuBackground);
+@@ -1852,7 +1854,11 @@ void QCleanlooksStyle::drawControl(Contr
+                     proxy()->drawItemText(painter, menuItem->rect.adjusted(5, 0, -5, 0), Qt::AlignLeft | Qt::AlignVCenter,
+                                  menuItem->palette, menuItem->state & State_Enabled, menuItem->text,
+                                  QPalette::Text);
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++                    w = menuItem->fontMetrics.horizontalAdvance(menuItem->text) + 5;
++#else
+                     w = menuItem->fontMetrics.width(menuItem->text) + 5;
++#endif
+                 }
+                 painter->setPen(shadow.lighter(106));
+                 bool reverse = menuItem->direction == Qt::RightToLeft;
+@@ -1976,7 +1982,7 @@ void QCleanlooksStyle::drawControl(Contr
+                 if (checkable && checked) {
+                     QStyleOption opt = *option;
+                     if (act) {
+-                        QColor activeColor = mergedColors(option->palette.background().color(),
++                        QColor activeColor = mergedColors(option->palette.window().color(),
+                                                         option->palette.highlight().color());
+                         opt.palette.setBrush(QPalette::Button, activeColor);
+                     }
+@@ -1993,7 +1999,11 @@ void QCleanlooksStyle::drawControl(Contr
+             }
+             int x, y, w, h;
+             menuitem->rect.getRect(&x, &y, &w, &h);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            int tab = menuitem->reservedShortcutWidth;
++#else
+             int tab = menuitem->tabWidth;
++#endif
+             QColor discol;
+             if (dis) {
+                 discol = menuitem->palette.text().color();
+@@ -2126,7 +2136,7 @@ void QCleanlooksStyle::drawControl(Contr
+     case CE_MenuBarEmptyArea:
+         painter->save();
+         {
+-            QColor shadow = mergedColors(option->palette.background().color().darker(120),
++            QColor shadow = mergedColors(option->palette.window().color().darker(120),
+                                  dark.lighter(140), 60);
+ 
+             QLinearGradient gradient(rect.topLeft(), QPoint(rect.bottomLeft().x(), rect.bottomLeft().y()*2));
+@@ -2185,7 +2195,7 @@ void QCleanlooksStyle::drawControl(Contr
+ 
+             QColor light = tab->palette.light().color();
+ 
+-            QColor background = tab->palette.background().color();
++            QColor background = tab->palette.window().color();
+             int borderThinkness = proxy()->pixelMetric(PM_TabBarBaseOverlap, tab, widget);
+             if (selected)
+                 borderThinkness /= 2;
+@@ -2240,17 +2250,17 @@ void QCleanlooksStyle::drawControl(Contr
+             QLinearGradient gradient(rect.topLeft(), rect.bottomLeft());
+             if (option->palette.button().gradient()) {
+                 if (selected)
+-                    gradient.setStops(option->palette.background().gradient()->stops());
++                    gradient.setStops(option->palette.window().gradient()->stops());
+                 else
+-                    gradient.setStops(option->palette.background().gradient()->stops());
++                    gradient.setStops(option->palette.window().gradient()->stops());
+             }
+             else if (selected) {
+-                gradient.setColorAt(0, option->palette.background().color().lighter(104));
++                gradient.setColorAt(0, option->palette.window().color().lighter(104));
+                 gradient.setColorAt(1, tabFrameColor);
+                 painter->fillRect(rect.adjusted(0, 2, 0, -1), gradient);
+             } else {
+                 y1 += 2;
+-                gradient.setColorAt(0, option->palette.background().color());
++                gradient.setColorAt(0, option->palette.window().color());
+                 gradient.setColorAt(1, dark.lighter(120));
+                 painter->fillRect(rect.adjusted(0, 2, 0, -2), gradient);
+             }
+@@ -2399,7 +2409,7 @@ void QCleanlooksStyle::drawComplexContro
+         // ### backgroundrole/foregroundrole should be part of the style option
+         alphaCornerColor = mergedColors(option->palette.color(widget->backgroundRole()), darkOutline);
+     } else {
+-        alphaCornerColor = mergedColors(option->palette.background().color(), darkOutline);
++        alphaCornerColor = mergedColors(option->palette.window().color(), darkOutline);
+     }
+     QColor gripShadow = grooveColor.darker(110);
+     QColor buttonShadow = option->palette.button().color().darker(110);
+@@ -2415,7 +2425,7 @@ void QCleanlooksStyle::drawComplexContro
+         if (const QStyleOptionSpinBox *spinBox = qstyleoption_cast<const QStyleOptionSpinBox *>(option)) {
+             QPixmap cache;
+             QString pixmapName = QStyleHelper::uniqueName(QLatin1String("spinbox"), spinBox, spinBox->rect.size());
+-            if (!QPixmapCache::find(pixmapName, cache)) {
++            if (!QPixmapCache::find(pixmapName, &cache)) {
+                 cache = QPixmap(spinBox->rect.size());
+                 cache.fill(Qt::transparent);
+                 QRect pixmapRect(0, 0, spinBox->rect.width(), spinBox->rect.height());
+@@ -2463,7 +2473,7 @@ void QCleanlooksStyle::drawComplexContro
+                     cachePainter.setPen(topShadow);
+                     cachePainter.drawLine(QPoint(r.left() + 2, r.top() - 1), QPoint(r.right() - 2, r.top() - 1));
+ 
+-                    cachePainter.setPen(QPen(option->palette.background().color(), 1));
++                    cachePainter.setPen(QPen(option->palette.window().color(), 1));
+                     cachePainter.drawLine(QPoint(r.left() + 2, r.top() + 1), QPoint(r.right() - 2, r.top() + 1));
+                     QColor highlight = Qt::white;
+                     highlight.setAlpha(130);
+@@ -2601,7 +2611,7 @@ void QCleanlooksStyle::drawComplexContro
+                 if (spinBox->buttonSymbols == QAbstractSpinBox::PlusMinus) {
+                     int centerX = upRect.center().x();
+                     int centerY = upRect.center().y();
+-                    cachePainter.setPen(spinBox->palette.foreground().color());
++                    cachePainter.setPen(spinBox->palette.windowText().color());
+ 
+                     // plus/minus
+                     if (spinBox->activeSubControls == SC_SpinBoxUp && sunken) {
+@@ -2622,21 +2632,21 @@ void QCleanlooksStyle::drawComplexContro
+                 } else if (spinBox->buttonSymbols == QAbstractSpinBox::UpDownArrows){
+                     // arrows
+                     QImage upArrow(qt_spinbox_button_arrow_up);
+-                    upArrow.setColor(1, spinBox->palette.foreground().color().rgba());
++                    upArrow.setColor(1, spinBox->palette.windowText().color().rgba());
+ 
+                     cachePainter.drawImage(upRect.center().x() - upArrow.width() / 2,
+                                             upRect.center().y() - upArrow.height() / 2,
+                                             upArrow);
+ 
+                     QImage downArrow(qt_spinbox_button_arrow_down);
+-                    downArrow.setColor(1, spinBox->palette.foreground().color().rgba());
++                    downArrow.setColor(1, spinBox->palette.windowText().color().rgba());
+ 
+                     cachePainter.drawImage(downRect.center().x() - downArrow.width() / 2,
+                                             downRect.center().y() - downArrow.height() / 2 + 1,
+                                             downArrow);
+                 }
+ 
+-                QColor disabledColor = option->palette.background().color();
++                QColor disabledColor = option->palette.window().color();
+                 disabledColor.setAlpha(150);
+                 if (!(spinBox->stepEnabled & QAbstractSpinBox::StepUpEnabled))
+                     cachePainter.fillRect(upRect.adjusted(1, 0, 0, 0), disabledColor);
+@@ -2660,13 +2670,13 @@ void QCleanlooksStyle::drawComplexContro
+             QColor highlight = option->palette.highlight().color();
+ 
+             QColor titleBarFrameBorder(active ? highlight.darker(180): dark.darker(110));
+-            QColor titleBarHighlight(active ? highlight.lighter(120): palette.background().color().lighter(120));
++            QColor titleBarHighlight(active ? highlight.lighter(120): palette.window().color().lighter(120));
+             QColor textColor(active ? 0xffffff : 0xff000000);
+             QColor textAlphaColor(active ? 0xffffff : 0xff000000 );
+ 
+             {
+                 // Fill title bar gradient
+-                QColor titlebarColor = QColor(active ? highlight: palette.background().color());
++                QColor titlebarColor = QColor(active ? highlight: palette.window().color());
+                 QLinearGradient gradient(option->rect.center().x(), option->rect.top(),
+                                          option->rect.center().x(), option->rect.bottom());
+ 
+@@ -2927,7 +2937,7 @@ void QCleanlooksStyle::drawComplexContro
+             bool horizontal = scrollBar->orientation == Qt::Horizontal;
+             bool sunken = scrollBar->state & State_Sunken;
+ 
+-            painter->fillRect(option->rect, option->palette.background());
++            painter->fillRect(option->rect, option->palette.window());
+ 
+             QRect scrollBarSubLine = proxy()->subControlRect(control, scrollBar, SC_ScrollBarSubLine, widget);
+             QRect scrollBarAddLine = proxy()->subControlRect(control, scrollBar, SC_ScrollBarAddLine, widget);
+@@ -3187,7 +3197,7 @@ void QCleanlooksStyle::drawComplexContro
+             if (isEnabled)
+                 pixmapName += QLatin1String("-enabled");
+ 
+-            if (!QPixmapCache::find(pixmapName, cache)) {
++            if (!QPixmapCache::find(pixmapName, &cache)) {
+                 cache = QPixmap(comboBox->rect.size());
+                 cache.fill(Qt::transparent);
+                 QPainter cachePainter(&cache);
+@@ -3291,15 +3301,15 @@ void QCleanlooksStyle::drawComplexContro
+                     if (comboBox->editable) {
+                         // Draw the down arrow
+                         QImage downArrow(qt_cleanlooks_arrow_down_xpm);
+-                        downArrow.setColor(1, comboBox->palette.foreground().color().rgba());
++                        downArrow.setColor(1, comboBox->palette.windowText().color().rgba());
+                         cachePainter.drawImage(downArrowRect.center().x() - downArrow.width() / 2,
+                                                downArrowRect.center().y() - downArrow.height() / 2 + 1, downArrow);
+                     } else {
+                         // Draw the up/down arrow
+                         QImage upArrow(qt_scrollbar_button_arrow_up);
+-                        upArrow.setColor(1, comboBox->palette.foreground().color().rgba());
++                        upArrow.setColor(1, comboBox->palette.windowText().color().rgba());
+                         QImage downArrow(qt_scrollbar_button_arrow_down);
+-                        downArrow.setColor(1, comboBox->palette.foreground().color().rgba());
++                        downArrow.setColor(1, comboBox->palette.windowText().color().rgba());
+                         cachePainter.drawImage(downArrowRect.center().x() - downArrow.width() / 2,
+                                                downArrowRect.center().y() - upArrow.height() - 1 , upArrow);
+                         cachePainter.drawImage(downArrowRect.center().x() - downArrow.width() / 2,
+@@ -3405,7 +3415,7 @@ void QCleanlooksStyle::drawComplexContro
+                 QRect pixmapRect(0, 0, groove.width(), groove.height());
+ 
+                 // draw background groove
+-                if (!QPixmapCache::find(groovePixmapName, cache)) {
++                if (!QPixmapCache::find(groovePixmapName, &cache)) {
+                     cache = QPixmap(pixmapRect.size());
+                     cache.fill(Qt::transparent);
+                     QPainter groovePainter(&cache);
+@@ -3439,7 +3449,7 @@ void QCleanlooksStyle::drawComplexContro
+                 // draw blue groove highlight
+                 QRect clipRect;
+                 groovePixmapName += QLatin1String("_blue");
+-                if (!QPixmapCache::find(groovePixmapName, cache)) {
++                if (!QPixmapCache::find(groovePixmapName, &cache)) {
+                     cache = QPixmap(pixmapRect.size());
+                     cache.fill(Qt::transparent);
+                     QPainter groovePainter(&cache);
+@@ -3480,7 +3490,7 @@ void QCleanlooksStyle::drawComplexContro
+             // draw handle
+             if ((option->subControls & SC_SliderHandle) ) {
+                 QString handlePixmapName = QStyleHelper::uniqueName(QLatin1String("slider_handle"), option, handle.size());
+-                if (!QPixmapCache::find(handlePixmapName, cache)) {
++                if (!QPixmapCache::find(handlePixmapName, &cache)) {
+                     cache = QPixmap(handle.size());
+                     cache.fill(Qt::transparent);
+                     QRect pixmapRect(0, 0, handle.width(), handle.height());
+@@ -3769,7 +3779,11 @@ QSize QCleanlooksStyle::sizeFromContents
+             QFont font = gb->font();
+             font.setBold(true);
+             QFontMetrics metrics(font);
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++            int baseWidth = metrics.horizontalAdvance(gb->title()) + metrics.horizontalAdvance(QLatin1Char(' '));
++#else
+             int baseWidth = metrics.width(gb->title()) + metrics.width(QLatin1Char(' '));
++#endif
+             if (gb->isCheckable()) {
+                 baseWidth += proxy()->pixelMetric(QStyle::PM_IndicatorWidth, option, widget);
+                 baseWidth += proxy()->pixelMetric(QStyle::PM_CheckBoxLabelSpacing, option, widget);
+@@ -4364,7 +4378,7 @@ int QCleanlooksStyle::styleHint(StyleHin
+         break;
+     case SH_Table_GridLineColor:
+         if (option) {
+-            ret = option->palette.background().color().darker(120).rgb();
++            ret = option->palette.window().color().darker(120).rgb();
+             break;
+         }
+     case SH_ComboBox_Popup:
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/cleanlooks/qcleanlooksstyle.h
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/cleanlooks/qcleanlooksstyle.h
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/cleanlooks/qcleanlooksstyle.h
+@@ -45,8 +45,6 @@
+ #include <QtWidgets/qproxystyle.h>
+ #include <QtCore/qelapsedtimer.h>
+ 
+-QT_BEGIN_HEADER
+-
+ QT_BEGIN_NAMESPACE
+ 
+ class QProgressBar;
+@@ -111,6 +109,4 @@ private:
+ 
+ QT_END_NAMESPACE
+ 
+-QT_END_HEADER
+-
+ #endif // QCLEANLOOKSSTYLE_H
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtk2painter.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/gtk2/qgtk2painter.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtk2painter.cpp
+@@ -146,7 +146,7 @@ void QGtk2Painter::paintBoxGap(GtkWidget
+                          % HexString<gint>(width)
+                          % HexString<gint>(x);
+ 
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_box_gap (style,
+                                            pixmap,
+                                            state,
+@@ -211,7 +211,7 @@ void QGtk2Painter::paintBox(GtkWidget *g
+     QString pixmapName = uniqueName(QLS(part), state, shadow,
+                                     rect.size(), gtkWidget) % pmKey;
+ 
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_box (style,
+                                            pixmap,
+                                            state,
+@@ -264,7 +264,7 @@ void QGtk2Painter::paintHline(GtkWidget
+                          % HexString<int>(x2)
+                          % HexString<int>(y)
+                          % pmKey;
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_hline (style,
+                                          pixmap,
+                                          state,
+@@ -294,7 +294,7 @@ void QGtk2Painter::paintVline(GtkWidget
+                         % HexString<int>(x)
+                         % pmKey;
+ 
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_vline (style,
+                                          pixmap,
+                                          state,
+@@ -323,7 +323,7 @@ void QGtk2Painter::paintExpander(GtkWidg
+                          % HexString<uchar>(expander_state)
+                          % pmKey;
+ 
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_expander (style, pixmap,
+                                             state, NULL,
+                                             gtkWidget, part,
+@@ -346,7 +346,7 @@ void QGtk2Painter::paintFocus(GtkWidget
+ 
+     QPixmap cache;
+     QString pixmapName = uniqueName(QLS(part), state, GTK_SHADOW_NONE, rect.size(), gtkWidget) % pmKey;
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_focus (style, pixmap, state, NULL,
+                                          gtkWidget,
+                                          part,
+@@ -371,7 +371,7 @@ void QGtk2Painter::paintResizeGrip(GtkWi
+ 
+     QPixmap cache;
+     QString pixmapName = uniqueName(QLS(part), state, shadow, rect.size(), gtkWidget) % pmKey;
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_resize_grip (style, pixmap, state,
+                                                NULL, gtkWidget,
+                                                part, edge, 0, 0,
+@@ -402,7 +402,7 @@ void QGtk2Painter::paintArrow(GtkWidget
+     GdkRectangle gtkCliprect = {0, 0, rect.width(), rect.height()};
+     int xOffset = m_cliprect.isValid() ? arrowrect.x() - m_cliprect.x() : 0;
+     int yOffset = m_cliprect.isValid() ? arrowrect.y() - m_cliprect.y() : 0;
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_arrow (style, pixmap, state, shadow,
+                                          &gtkCliprect,
+                                          gtkWidget,
+@@ -430,7 +430,7 @@ void QGtk2Painter::paintHandle(GtkWidget
+     QString pixmapName = uniqueName(QLS(part), state, shadow, rect.size())
+                          % HexString<uchar>(orientation);
+ 
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_handle (style,
+                                           pixmap,
+                                           state,
+@@ -458,7 +458,7 @@ void QGtk2Painter::paintSlider(GtkWidget
+ 
+     QPixmap cache;
+     QString pixmapName = uniqueName(QLS(part), state, shadow, rect.size(), gtkWidget) % pmKey;
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_slider (style,
+                                           pixmap,
+                                           state,
+@@ -488,7 +488,7 @@ void QGtk2Painter::paintShadow(GtkWidget
+ 
+     QPixmap cache;
+     QString pixmapName = uniqueName(QLS(part), state, shadow, rect.size()) % pmKey;
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_shadow(style, pixmap, state, shadow, NULL,
+                                          gtkWidget, part, 0, 0, rect.width(), rect.height()));
+         if (m_usePixmapCache)
+@@ -506,7 +506,7 @@ void QGtk2Painter::paintFlatBox(GtkWidge
+         return;
+     QPixmap cache;
+     QString pixmapName = uniqueName(QLS(part), state, shadow, rect.size()) % pmKey;
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_flat_box (style,
+                                             pixmap,
+                                             state,
+@@ -534,7 +534,7 @@ void QGtk2Painter::paintExtention(GtkWid
+     QString pixmapName = uniqueName(QLS(part), state, shadow, rect.size(), gtkWidget)
+                          % HexString<uchar>(gap_pos);
+ 
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_extension (style, pixmap, state, shadow,
+                                              NULL, gtkWidget,
+                                              (const gchar*)part, 0, 0,
+@@ -562,7 +562,7 @@ void QGtk2Painter::paintOption(GtkWidget
+     GdkRectangle gtkCliprect = {0, 0, rect.width(), rect.height()};
+     int xOffset = m_cliprect.isValid() ? radiorect.x() - m_cliprect.x() : 0;
+     int yOffset = m_cliprect.isValid() ? radiorect.y() - m_cliprect.y() : 0;
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_option(style, pixmap,
+                                          state, shadow,
+                                          &gtkCliprect,
+@@ -593,7 +593,7 @@ void QGtk2Painter::paintCheckbox(GtkWidg
+     GdkRectangle gtkCliprect = {0, 0, rect.width(), rect.height()};
+     int xOffset = m_cliprect.isValid() ? checkrect.x() - m_cliprect.x() : 0;
+     int yOffset = m_cliprect.isValid() ? checkrect.y() - m_cliprect.y() : 0;
+-    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, cache)) {
++    if (!m_usePixmapCache || !QPixmapCache::find(pixmapName, &cache)) {
+         DRAW_TO_CACHE(gtk_paint_check (style,
+                                          pixmap,
+                                          state,
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/gtk2/qgtkstyle.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle.cpp
+@@ -386,15 +386,17 @@ QPalette QGtkStyle::standardPalette() co
+ 
+         palette.setColor(QPalette::Window, bg);
+         palette.setColor(QPalette::Button, bg);
+-        palette.setColor(QPalette::Background, bg);
+         QColor disabled((fg.red()   + bg.red())  / 2,
+                         (fg.green() + bg.green())/ 2,
+                         (fg.blue()  + bg.blue()) / 2);
+         palette.setColor(QPalette::Disabled, QPalette::Text, disabled);
+         palette.setColor(QPalette::Disabled, QPalette::WindowText, disabled);
+-        palette.setColor(QPalette::Disabled, QPalette::Foreground, disabled);
+         palette.setColor(QPalette::Disabled, QPalette::ButtonText, disabled);
+         palette.setColor(QPalette::Highlight, highlight);
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++        palette.setColor(QPalette::Background, bg);
++        palette.setColor(QPalette::Disabled, QPalette::Foreground, disabled);
++#endif
+         // calculate disabled colors by removing saturation
+         highlight.setHsv(highlight.hue(), 0, highlight.value(), highlight.alpha());
+         highlightText.setHsv(highlightText.hue(), 0, highlightText.value(), highlightText.alpha());
+@@ -440,7 +442,11 @@ void QGtkStyle::polish(QApplication *app
+     // not supported as these should be entirely determined by
+     // current Gtk settings
+     if (app->desktopSettingsAware() && d->isThemeAvailable()) {
++#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
++        QApplication::setPalette(standardPalette());
++#else
+         QApplicationPrivate::setSystemPalette(standardPalette());
++#endif
+         QApplicationPrivate::setSystemFont(d->getThemeFont());
+         d->applyCustomPaletteHash();
+         if (!d->isKDE4Session())
+@@ -729,7 +735,7 @@ int QGtkStyle::styleHint(StyleHint hint,
+         return true;
+     case SH_Table_GridLineColor:
+         if (option)
+-            return option->palette.background().color().darker(120).rgb();
++            return option->palette.window().color().darker(120).rgb();
+         break;
+     case SH_WindowFrame_Mask:
+         if (QStyleHintReturnMask *mask = qstyleoption_cast<QStyleHintReturnMask *>(returnData)) {
+@@ -886,7 +892,7 @@ void QGtkStyle::drawPrimitive(PrimitiveE
+         QRect pmRect(QPoint(0,0), QSize(pmSize, pmSize));
+ 
+         // Only draw through style once
+-        if (!QPixmapCache::find(pmKey, pixmap)) {
++        if (!QPixmapCache::find(pmKey, &pixmap)) {
+             pixmap = QPixmap(pmSize, pmSize);
+             pixmap.fill(Qt::transparent);
+             QPainter pmPainter(&pixmap);
+@@ -937,7 +943,7 @@ void QGtkStyle::drawPrimitive(PrimitiveE
+             painter->setPen(QPen(option->palette.light(), 0));
+             painter->drawLine(QPoint(rect.left() + 1, rect.top() + 1),
+                               QPoint(rect.left() + 1, rect.bottom() - 1));
+-            painter->setPen(QPen(option->palette.background().color().darker(120), 0));
++            painter->setPen(QPen(option->palette.window().color().darker(120), 0));
+             painter->drawLine(QPoint(rect.left() + 1, rect.bottom() - 1),
+                               QPoint(rect.right() - 2, rect.bottom() - 1));
+             painter->drawLine(QPoint(rect.right() - 1, rect.top() + 1),
+@@ -956,7 +962,11 @@ void QGtkStyle::drawPrimitive(PrimitiveE
+ 
+     case PE_PanelStatusBar: {
+         if (widget && widget->testAttribute(Qt::WA_SetPalette) &&
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            option->palette.resolveMask() & (1 << QPalette::Window)) {
++#else
+             option->palette.resolve() & (1 << QPalette::Window)) {
++#endif
+             // Respect custom palette
+             painter->fillRect(option->rect, option->palette.window());
+             break;
+@@ -1041,7 +1051,11 @@ void QGtkStyle::drawPrimitive(PrimitiveE
+ 
+     case PE_PanelItemViewItem:
+         if (const QStyleOptionViewItem *vopt = qstyleoption_cast<const QStyleOptionViewItem *>(option)) {
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            quint64 resolve_mask = vopt->palette.resolveMask();
++#else
+             uint resolve_mask = vopt->palette.resolve();
++#endif
+             if (vopt->backgroundBrush.style() != Qt::NoBrush
+                     || (resolve_mask & (1 << QPalette::Base)))
+             {
+@@ -1080,14 +1094,14 @@ void QGtkStyle::drawPrimitive(PrimitiveE
+             if (option->state & State_Horizontal) {
+                 const int offset = option->rect.width()/2;
+                 QRect rect = option->rect.adjusted(offset, margin, 0, -margin);
+-                painter->setPen(QPen(option->palette.background().color().darker(110)));
++                painter->setPen(QPen(option->palette.window().color().darker(110)));
+                 gtkPainter->paintVline(gtkSeparator, "vseparator",
+                                        rect, GTK_STATE_NORMAL, gtk_widget_get_style(gtkSeparator),
+                                        0, rect.height(), 0);
+             } else { //Draw vertical separator
+                 const int offset = option->rect.height()/2;
+                 QRect rect = option->rect.adjusted(margin, offset, -margin, 0);
+-                painter->setPen(QPen(option->palette.background().color().darker(110)));
++                painter->setPen(QPen(option->palette.window().color().darker(110)));
+                 gtkPainter->paintHline(gtkSeparator, "hseparator",
+                                        rect, GTK_STATE_NORMAL, gtk_widget_get_style(gtkSeparator),
+                                        0, rect.width(), 0);
+@@ -1218,7 +1232,11 @@ void QGtkStyle::drawPrimitive(PrimitiveE
+             GtkWidget *gtkEntry = d->gtkWidget("GtkEntry");
+             if (panel->lineWidth > 0)
+                 proxy()->drawPrimitive(PE_FrameLineEdit, option, painter, widget);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            quint64 resolve_mask = option->palette.resolveMask();
++#else
+             uint resolve_mask = option->palette.resolve();
++#endif
+             GtkStyle *gtkEntryStyle = gtk_widget_get_style(gtkEntry);
+             QRect textRect = option->rect.adjusted(gtkEntryStyle->xthickness, gtkEntryStyle->ythickness,
+                                                    -gtkEntryStyle->xthickness, -gtkEntryStyle->ythickness);
+@@ -1398,7 +1416,7 @@ void QGtkStyle::drawPrimitive(PrimitiveE
+                 = qstyleoption_cast<const QStyleOptionTabBarBase *>(option)) {
+             QRect tabRect = tbb->rect;
+             painter->save();
+-            painter->setPen(QPen(option->palette.dark().color().dark(110), 0));
++            painter->setPen(QPen(option->palette.dark().color().darker(110), 0));
+             switch (tbb->shape) {
+ 
+             case QTabBar::RoundedNorth:
+@@ -1476,7 +1494,7 @@ void QGtkStyle::drawComplexControl(Compl
+     if (widget)
+         alphaCornerColor = mergedColors(option->palette.color(widget->backgroundRole()), darkOutline);
+     else
+-        alphaCornerColor = mergedColors(option->palette.background().color(), darkOutline);
++        alphaCornerColor = mergedColors(option->palette.window().color(), darkOutline);
+ 
+     switch (control) {
+ 
+@@ -1496,13 +1514,13 @@ void QGtkStyle::drawComplexControl(Compl
+             QColor highlight = bgColor;
+ 
+             QColor titleBarFrameBorder(active ? highlight.darker(180): dark.darker(110));
+-            QColor titleBarHighlight(active ? highlight.lighter(120): palette.background().color().lighter(120));
++            QColor titleBarHighlight(active ? highlight.lighter(120): palette.window().color().lighter(120));
+             QColor textColor(active ? 0xffffff : 0xff000000);
+             QColor textAlphaColor(active ? 0xffffff : 0xff000000 );
+ 
+             {
+                 // Fill title bar gradient
+-                QColor titlebarColor = QColor(active ? highlight: palette.background().color());
++                QColor titlebarColor = QColor(active ? highlight: palette.window().color());
+                 QLinearGradient gradient(option->rect.center().x(), option->rect.top(),
+                                          option->rect.center().x(), option->rect.bottom());
+ 
+@@ -1865,7 +1883,11 @@ void QGtkStyle::drawComplexControl(Compl
+ 
+                     // Fill the line edit background
+                     // We could have used flat_box with "entry_bg" but that is probably not worth the overhead
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++                    quint64 resolve_mask = option->palette.resolveMask();
++#else
+                     uint resolve_mask = option->palette.resolve();
++#endif
+                     GtkStyle *gtkEntryStyle = gtk_widget_get_style(gtkEntry);
+                     QRect contentRect = frameRect.adjusted(gtkEntryStyle->xthickness, gtkEntryStyle->ythickness,
+                                                            -gtkEntryStyle->xthickness, -gtkEntryStyle->ythickness);
+@@ -2112,7 +2134,7 @@ void QGtkStyle::drawComplexControl(Compl
+             GtkWidget *gtkVScrollBar = d->gtkWidget("GtkVScrollbar");
+ 
+             // Fill background in case the scrollbar is partially transparent
+-            painter->fillRect(option->rect, option->palette.background());
++            painter->fillRect(option->rect, option->palette.window());
+ 
+             QRect rect = scrollBar->rect;
+             QRect scrollBarSubLine = proxy()->subControlRect(control, scrollBar, SC_ScrollBarSubLine, widget);
+@@ -2333,7 +2355,11 @@ void QGtkStyle::drawComplexControl(Compl
+                     QGtkStylePrivate::gtkWidgetSetFocus(gtkSpinButton, true);
+                 }
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++                quint64 resolve_mask = option->palette.resolveMask();
++#else
+                 uint resolve_mask = option->palette.resolve();
++#endif
+ 
+                 if (resolve_mask & (1 << QPalette::Base)) // Palette overridden by user
+                     painter->fillRect(editRect, option->palette.base().color());
+@@ -2658,7 +2684,12 @@ void QGtkStyle::drawControl(ControlEleme
+             QColor alternateTextColor= QColor(gdkText.red>>8, gdkText.green>>8, gdkText.blue>>8);
+ 
+             painter->save();
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            // Also available in Qt 5, but not reliably set by applications
++            bool vertical = !(bar->state & QStyle::State_Horizontal);
++#else
+             bool vertical = (bar->orientation == Qt::Vertical);
++#endif
+             bool inverted = bar->invertedAppearance;
+             if (vertical)
+                 rect = QRect(rect.left(), rect.top(), rect.height(), rect.width()); // flip width and height
+@@ -3213,7 +3244,7 @@ void QGtkStyle::drawControl(ControlEleme
+                     QStyleOption opt = *option;
+ 
+                     if (act) {
+-                        QColor activeColor = mergedColors(option->palette.background().color(),
++                        QColor activeColor = mergedColors(option->palette.window().color(),
+                                                           option->palette.highlight().color());
+                         opt.palette.setBrush(QPalette::Button, activeColor);
+                     }
+@@ -3227,7 +3258,11 @@ void QGtkStyle::drawControl(ControlEleme
+             GdkColor gdkText = style->fg[GTK_STATE_NORMAL];
+             GdkColor gdkDText = style->fg[GTK_STATE_INSENSITIVE];
+             GdkColor gdkHText = style->fg[GTK_STATE_PRELIGHT];
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            quint64 resolve_mask = option->palette.resolveMask();
++#else
+             uint resolve_mask = option->palette.resolve();
++#endif
+             QColor textColor = QColor(gdkText.red>>8, gdkText.green>>8, gdkText.blue>>8);
+             QColor disabledTextColor = QColor(gdkDText.red>>8, gdkDText.green>>8, gdkDText.blue>>8);
+             if (resolve_mask & (1 << QPalette::ButtonText)) {
+@@ -3247,7 +3282,11 @@ void QGtkStyle::drawControl(ControlEleme
+ 
+             int x, y, w, h;
+             menuitem->rect.getRect(&x, &y, &w, &h);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            int tab = menuitem->reservedShortcutWidth;
++#else
+             int tab = menuitem->tabWidth;
++#endif
+             int xm = QGtkStylePrivate::menuItemFrame + checkcol + windowsItemHMargin;
+             int xpos = menuitem->rect.x() + xm + 1;
+             QRect textRect(xpos, y + windowsItemVMargin, w - xm - QGtkStylePrivate::menuRightBorder - tab + 1, h - 2 * windowsItemVMargin);
+@@ -3433,7 +3472,12 @@ void QGtkStyle::drawControl(ControlEleme
+             int xt = style->xthickness;
+             int yt = style->ythickness;
+             QRect rect = bar->rect.adjusted(xt, yt, -xt, -yt);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            // Also available in Qt 5, but not reliably set by applications
++            bool vertical = !(bar->state & QStyle::State_Horizontal);
++#else
+             bool vertical = (bar->orientation == Qt::Vertical);
++#endif
+             bool inverted = bar->invertedAppearance;
+             bool indeterminate = (bar->minimum == 0 && bar->maximum == 0);
+ 
+@@ -3841,7 +3885,11 @@ QSize QGtkStyle::sizeFromContents(Conten
+             QFont font = gb->font();
+             font.setBold(true);
+             QFontMetrics metrics(font);
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++            int baseWidth = metrics.horizontalAdvance(gb->title()) + metrics.horizontalAdvance(QLatin1Char(' '));
++#else
+             int baseWidth = metrics.width(gb->title()) + metrics.width(QLatin1Char(' '));
++#endif
+             if (gb->isCheckable()) {
+                 baseWidth += proxy()->pixelMetric(QStyle::PM_IndicatorWidth, option, widget);
+                 baseWidth += proxy()->pixelMetric(QStyle::PM_CheckBoxLabelSpacing, option, widget);
+@@ -3965,7 +4013,11 @@ QSize QGtkStyle::sizeFromContents(Conten
+                 QFont fontBold = menuItem->font;
+                 fontBold.setBold(true);
+                 QFontMetrics fmBold(fontBold);
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++                w += fmBold.horizontalAdvance(menuItem->text) - fm.horizontalAdvance(menuItem->text);
++#else
+                 w += fmBold.width(menuItem->text) - fm.width(menuItem->text);
++#endif
+             }
+ 
+             int checkcol = qMax<int>(maxpmw, QGtkStylePrivate::menuCheckMarkWidth); // Windows always shows a check column
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle_p.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/gtk2/qgtkstyle_p.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle_p.cpp
+@@ -508,7 +508,9 @@ void QGtkStyleUpdateScheduler::updateThe
+       if (oldTheme != QGtkStylePrivate::getThemeName()) {
+           oldTheme = QGtkStylePrivate::getThemeName();
+           QPalette newPalette = qApp->style()->standardPalette();
++#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+           QApplicationPrivate::setSystemPalette(newPalette);
++#endif
+           QApplication::setPalette(newPalette);
+           if (!QGtkStylePrivate::instances.isEmpty()) {
+               QGtkStylePrivate::instances.last()->initGtkWidgets();
+@@ -548,7 +550,10 @@ QFont QGtkStylePrivate::getThemeFont()
+         if (!family.isEmpty())
+             font.setFamily(family);
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(5, 5, 0)
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++        const int weight = pango_font_description_get_weight(gtk_font);
++        font.setWeight(QFont::Weight(weight));
++#elif QT_VERSION >= QT_VERSION_CHECK(5, 5, 0)
+         const int weight = pango_font_description_get_weight(gtk_font);
+         font.setWeight(QPlatformFontDatabase::weightFromInteger(weight));
+ #else
+@@ -578,7 +583,7 @@ QFont QGtkStylePrivate::getThemeFont()
+ 
+ bool operator==(const QHashableLatin1Literal &l1, const QHashableLatin1Literal &l2)
+ {
+-    return l1.size() == l2.size() || qstrcmp(l1.data(), l2.data()) == 0;
++    return l1.size() == l2.size() && qstrcmp(l1.data(), l2.data()) == 0;
+ }
+ 
+ // copied from qHash.cpp
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qcdestyle.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/motif/qcdestyle.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qcdestyle.cpp
+@@ -215,7 +215,7 @@ void QCDEStyle::drawPrimitive(PrimitiveE
+             if (opt->state & State_NoChange)
+                 p->setPen(opt->palette.dark().color());
+             else
+-                p->setPen(opt->palette.foreground().color());
++                p->setPen(opt->palette.windowText().color());
+             p->drawPolyline(a);
+         }
+         if (!(opt->state & State_Enabled) && styleHint(SH_DitherDisabledText))
+@@ -258,7 +258,7 @@ void QCDEStyle::drawPrimitive(PrimitiveE
+             p->drawPolyline(a);
+             a.setPoints(INTARRLEN(pts5), pts5);
+             a.translate(r.x(), r.y());
+-            QColor fillColor = on ? opt->palette.dark().color() : opt->palette.background().color();
++            QColor fillColor = on ? opt->palette.dark().color() : opt->palette.window().color();
+             p->setPen(fillColor);
+             p->setBrush(on ? opt->palette.brush(QPalette::Dark) :
+                          opt->palette.brush(QPalette::Window));
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qcdestyle.h
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/motif/qcdestyle.h
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qcdestyle.h
+@@ -45,8 +45,6 @@
+ 
+ #include "qmotifstyle.h"
+ 
+-QT_BEGIN_HEADER
+-
+ QT_BEGIN_NAMESPACE
+ 
+ class QCDEStyle : public QMotifStyle
+@@ -69,6 +67,4 @@ public:
+ 
+ QT_END_NAMESPACE
+ 
+-QT_END_HEADER
+-
+ #endif // QCDESTYLE_H
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qmotifstyle.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/motif/qmotifstyle.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qmotifstyle.cpp
+@@ -765,7 +765,7 @@ void QMotifStyle::drawPrimitive(Primitiv
+     case PE_IndicatorProgressChunk:
+         {
+             const QStyleOptionProgressBar *pb = qstyleoption_cast<const QStyleOptionProgressBar *>(opt);
+-            bool vertical = pb && (pb->orientation == Qt::Vertical);
++            bool vertical = pb &&  !(pb->state & QStyle::State_Horizontal);
+             if (!vertical) {
+                 p->fillRect(opt->rect.x(), opt->rect.y(), opt->rect.width(),
+                             opt->rect.height(), opt->palette.brush(QPalette::Highlight));
+@@ -870,7 +870,7 @@ void QMotifStyle::drawControl(ControlEle
+     case CE_PushButtonBevel:
+         if (const QStyleOptionButton *btn = qstyleoption_cast<const QStyleOptionButton *>(opt)) {
+             int diw, x1, y1, x2, y2;
+-            p->setPen(opt->palette.foreground().color());
++            p->setPen(opt->palette.windowText().color());
+             p->setBrush(QBrush(opt->palette.button().color(), Qt::NoBrush));
+             diw = proxy()->pixelMetric(PM_ButtonDefaultIndicator);
+             opt->rect.getCoords(&x1, &y1, &x2, &y2);
+@@ -928,7 +928,7 @@ void QMotifStyle::drawControl(ControlEle
+ 
+                 p->fillRect(opt->rect.adjusted(default_frame, default_frame,
+                                                -default_frame, -default_frame),
+-                                               tab->palette.background());
++                                               tab->palette.window());
+ 
+                 if (tab->shape == QTabBar::RoundedWest) {
+                     tabDark = opt->palette.light().color();
+@@ -966,8 +966,8 @@ void QMotifStyle::drawControl(ControlEle
+                 if (opt->state & State_Selected) {
+                     p->fillRect(QRect(tabRect.left()+1, tabRect.bottom()-frame_offset,
+                                       tabRect.width()-3, 2),
+-                                tab->palette.brush(QPalette::Active, QPalette::Background));
+-                    p->setPen(tab->palette.background().color());
++                                tab->palette.brush(QPalette::Active, QPalette::Window));
++                    p->setPen(tab->palette.window().color());
+                     p->drawLine(tabRect.left()+1, tabRect.bottom(),
+                                 tabRect.left()+1, tabRect.top()+2);
+                     p->setPen(tabLight);
+@@ -1014,7 +1014,7 @@ void QMotifStyle::drawControl(ControlEle
+         if (const QStyleOptionProgressBar *pb = qstyleoption_cast<const QStyleOptionProgressBar *>(opt)) {
+             QTransform oldMatrix = p->transform();
+             QRect rect = pb->rect;
+-            bool vertical = (pb->orientation == Qt::Vertical);
++            bool vertical = !(pb->state & QStyle::State_Horizontal);
+             bool invert = pb->invertedAppearance;
+             bool bottomToTop = pb->bottomToTop;
+             if (vertical) {
+@@ -1101,7 +1101,11 @@ void QMotifStyle::drawControl(ControlEle
+                     proxy()->drawItemText(p, menuitem->rect.adjusted(10, 0, -5, 0), Qt::AlignLeft | Qt::AlignVCenter,
+                                  menuitem->palette, menuitem->state & State_Enabled, menuitem->text,
+                                  QPalette::Text);
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++                    textWidth = menuitem->fontMetrics.horizontalAdvance(menuitem->text) + 10;
++#else
+                     textWidth = menuitem->fontMetrics.width(menuitem->text) + 10;
++#endif
+                     y += menuitem->fontMetrics.height() / 2;
+                     p->setFont(oldFont);
+                 }
+@@ -1183,10 +1187,15 @@ void QMotifStyle::drawControl(ControlEle
+                 p->setPen(discol);
+             }
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            int tab = menuitem->reservedShortcutWidth;
++#else
++            int tab = menuitem->tabWidth;
++#endif
+             int xm = motifItemFrame + maxpmw + motifItemHMargin;
+ 
+             vrect = visualRect(opt->direction, opt->rect,
+-                               QRect(x+xm, y+motifItemVMargin, w-xm-menuitem->tabWidth,
++                               QRect(x+xm, y+motifItemVMargin, w-xm-tab,
+                                      h-2*motifItemVMargin));
+             xvis = vrect.x();
+ 
+@@ -1200,17 +1209,17 @@ void QMotifStyle::drawControl(ControlEle
+                 p->setFont(menuitem->font);
+                 if (t >= 0) {                         // draw tab text
+                     QRect vr = visualRect(opt->direction, opt->rect,
+-                                          QRect(x+w-menuitem->tabWidth-motifItemHMargin-motifItemFrame,
+-                                                y+motifItemVMargin, menuitem->tabWidth,
++                                          QRect(x+w-tab-motifItemHMargin-motifItemFrame,
++                                                y+motifItemVMargin, tab,
+                                                 h-2*motifItemVMargin));
+                     int xv = vr.x();
+-                    QRect tr(xv, y+m, menuitem->tabWidth, h-2*m);
++                    QRect tr(xv, y+m, tab, h-2*m);
+                     p->drawText(tr, text_flags, s.mid(t+1));
+                     if (!(opt->state & State_Enabled) && proxy()->styleHint(SH_DitherDisabledText))
+                         p->fillRect(tr, QBrush(p->background().color(), Qt::Dense5Pattern));
+                     s = s.left(t);
+                 }
+-                QRect tr(xvis, y+m, w - xm - menuitem->tabWidth + 1, h-2*m);
++                QRect tr(xvis, y+m, w - xm - tab + 1, h-2*m);
+                 p->drawText(tr, text_flags, s.left(t));
+                 p->setFont(oldFont);
+                 if (!(opt->state & State_Enabled) && proxy()->styleHint(SH_DitherDisabledText))
+@@ -1273,7 +1282,7 @@ void QMotifStyle::drawControl(ControlEle
+     case CE_ProgressBarContents:
+         if (const QStyleOptionProgressBar *pb = qstyleoption_cast<const QStyleOptionProgressBar *>(opt)) {
+             QRect rect = pb->rect;
+-            bool vertical = (pb->orientation == Qt::Vertical);
++            bool vertical = !(pb->state & QStyle::State_Horizontal);
+             bool inverted = pb->invertedAppearance;
+ 
+             QTransform m;
+@@ -1285,7 +1294,7 @@ void QMotifStyle::drawControl(ControlEle
+ 
+             QPalette pal2 = pb->palette;
+             // Correct the highlight color if it is the same as the background
+-            if (pal2.highlight() == pal2.background())
++            if (pal2.highlight() == pal2.window())
+                 pal2.setColor(QPalette::Highlight, pb->palette.color(QPalette::Active,
+                                                                      QPalette::Highlight));
+             bool reverse = ((!vertical && (pb->direction == Qt::RightToLeft)) || vertical);
+@@ -1652,7 +1661,11 @@ int QMotifStyle::pixelMetric(PixelMetric
+         break;
+ 
+     case PM_SplitterWidth:
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++        ret = 10;
++#else
+         ret = qMax(10, QApplication::globalStrut().width());
++#endif
+         break;
+ 
+     case PM_SliderLength:
+@@ -1746,7 +1759,9 @@ QMotifStyle::subControlRect(ComplexContr
+             QSize bs;
+             bs.setHeight(opt->rect.height()/2 - fw);
+             bs.setWidth(qMin(bs.height() * 8 / 5, opt->rect.width() / 4)); // 1.6 -approximate golden mean
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+             bs = bs.expandedTo(QApplication::globalStrut());
++#endif
+             int y = fw + spinbox->rect.y();
+             int x, lx, rx;
+             x = spinbox->rect.x() + opt->rect.width() - fw - bs.width();
+@@ -1981,7 +1996,11 @@ QMotifStyle::subElementRect(SubElement s
+         if (const QStyleOptionProgressBar *pb = qstyleoption_cast<const QStyleOptionProgressBar *>(opt)) {
+             int textw = 0;
+             if (pb->textVisible)
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++                textw = pb->fontMetrics.horizontalAdvance(QLatin1String("100%")) + 6;
++#else
+                 textw = pb->fontMetrics.width(QLatin1String("100%")) + 6;
++#endif
+ 
+             if (pb->textAlignment == Qt::AlignLeft || pb->textAlignment == Qt::AlignCenter) {
+                 rect = opt->rect;
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qmotifstyle.h
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/motif/qmotifstyle.h
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/motif/qmotifstyle.h
+@@ -43,11 +43,9 @@
+ #define QMOTIFSTYLE_H
+ 
+ #include <QtWidgets/qcommonstyle.h>
+-#include <QtCore/qdatetime.h>
++#include <QtCore/qelapsedtimer.h>
+ #include <QtCore/qpointer.h>
+ 
+-QT_BEGIN_HEADER
+-
+ QT_BEGIN_NAMESPACE
+ 
+ class QPalette;
+@@ -114,7 +112,7 @@ private:
+     QList<QProgressBar *> bars;
+     int animationFps;
+     int animateTimer;
+-    QTime startTime;
++    QElapsedTimer startTime;
+     int animateStep;
+ 
+ protected:
+@@ -123,6 +121,4 @@ protected:
+ 
+ QT_END_NAMESPACE
+ 
+-QT_END_HEADER
+-
+ #endif // QMOTIFSTYLE_H
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/plastique/qplastiquestyle.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/plastique/qplastiquestyle.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/plastique/qplastiquestyle.cpp
+@@ -492,7 +492,7 @@ static void qBrushSetAlphaF(QBrush *brus
+         QString name = QLatin1String("qbrushtexture-alpha")
+                        % HexString<qreal>(alpha)
+                        % HexString<qint64>(texture.cacheKey());
+-        if (!QPixmapCache::find(name, pixmap)) {
++        if (!QPixmapCache::find(name, &pixmap)) {
+             QImage image = texture.toImage();
+             QRgb *rgb = reinterpret_cast<QRgb *>(image.bits());
+             int pixels = image.width() * image.height();
+@@ -556,7 +556,7 @@ static QBrush qBrushLight(QBrush brush,
+                        % HexString<int>(light)
+                        % HexString<qint64>(texture.cacheKey());
+ 
+-        if (!QPixmapCache::find(name, pixmap)) {
++        if (!QPixmapCache::find(name, &pixmap)) {
+             QImage image = texture.toImage();
+             QRgb *rgb = reinterpret_cast<QRgb *>(image.bits());
+             int pixels = image.width() * image.height();
+@@ -618,7 +618,7 @@ static QBrush qBrushDark(QBrush brush, i
+                        % HexString<int>(dark)
+                        % HexString<qint64>(texture.cacheKey());
+ 
+-        if (!QPixmapCache::find(name, pixmap)) {
++        if (!QPixmapCache::find(name, &pixmap)) {
+             QImage image = texture.toImage();
+             QRgb *rgb = reinterpret_cast<QRgb *>(image.bits());
+             int pixels = image.width() * image.height();
+@@ -752,8 +752,8 @@ static void qt_plastique_draw_gradient(Q
+     QRect r = rect;
+ 
+     bool doPixmapCache = painter->deviceTransform().isIdentity()
+-            && painter->worldMatrix().isIdentity();
+-    if (doPixmapCache && QPixmapCache::find(gradientName, cache)) {
++            && painter->worldTransform().isIdentity();
++    if (doPixmapCache && QPixmapCache::find(gradientName, &cache)) {
+         painter->drawPixmap(rect, cache);
+     } else {
+         if (doPixmapCache) {
+@@ -783,7 +783,7 @@ static void qt_plastique_drawFrame(QPain
+     QRect rect = option->rect;
+     QPen oldPen = painter->pen();
+ 
+-    QColor borderColor = option->palette.background().color().darker(178);
++    QColor borderColor = option->palette.window().color().darker(178);
+     QColor gradientStartColor = option->palette.button().color().lighter(104);
+     QColor gradientStopColor = option->palette.button().color().darker(105);
+     QColor alphaCornerColor;
+@@ -791,7 +791,7 @@ static void qt_plastique_drawFrame(QPain
+         // ### backgroundrole/foregroundrole should be part of the style option
+         alphaCornerColor = mergedColors(option->palette.color(widget->backgroundRole()), borderColor);
+     } else {
+-        alphaCornerColor = mergedColors(option->palette.background().color(), borderColor);
++        alphaCornerColor = mergedColors(option->palette.window().color(), borderColor);
+     }
+ 
+     QLine lines[4];
+@@ -862,8 +862,8 @@ static void qt_plastique_drawShadedPanel
+                                        option->palette.button().color().darker(106));
+         } else {
+             qt_plastique_draw_gradient(painter, rect.adjusted(1, 1, -1, -1),
+-                                       base ? option->palette.background().color().lighter(105) : gradientStartColor,
+-                                       base ? option->palette.background().color().darker(102) : gradientStopColor);
++                                       base ? option->palette.window().color().lighter(105) : gradientStartColor,
++                                       base ? option->palette.window().color().darker(102) : gradientStopColor);
+         }
+     }
+ 
+@@ -920,20 +920,32 @@ static QString elliditide(const QString
+ {
+     // Chop and insert ellide into title if text is too wide
+     QString title = text;
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++    int width = textWidth ? *textWidth : fontMetrics.horizontalAdvance(text);
++#else
+     int width = textWidth ? *textWidth : fontMetrics.width(text);
++#endif
+     QString ellipsis = QLatin1String("...");
+     if (width > rect.width()) {
+         QString leftHalf = title.left(title.size() / 2);
+         QString rightHalf = title.mid(leftHalf.size() + 1);
+         while (!leftHalf.isEmpty() && !rightHalf.isEmpty()) {
+             leftHalf.chop(1);
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++            int width = fontMetrics.horizontalAdvance(leftHalf + ellipsis + rightHalf);
++#else
+             int width = fontMetrics.width(leftHalf + ellipsis + rightHalf);
++#endif
+             if (width < rect.width()) {
+                 title = leftHalf + ellipsis + rightHalf;
+                 break;
+             }
+             rightHalf.remove(0, 1);
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++            width = fontMetrics.horizontalAdvance(leftHalf + ellipsis + rightHalf);
++#else
+             width = fontMetrics.width(leftHalf + ellipsis + rightHalf);
++#endif
+             if (width < rect.width()) {
+                 title = leftHalf + ellipsis + rightHalf;
+                 break;
+@@ -951,13 +963,13 @@ static void qt_plastique_draw_handle(QPa
+                                      const QRect &rect, Qt::Orientation orientation,
+                                      const QWidget *widget)
+ {
+-    QColor borderColor = option->palette.background().color().darker(178);
++    QColor borderColor = option->palette.window().color().darker(178);
+     QColor alphaCornerColor;
+     if (widget) {
+         // ### backgroundrole/foregroundrole should be part of the style option
+         alphaCornerColor = mergedColors(option->palette.color(widget->backgroundRole()), borderColor);
+     } else {
+-        alphaCornerColor = mergedColors(option->palette.background().color(), borderColor);
++        alphaCornerColor = mergedColors(option->palette.window().color(), borderColor);
+     }
+     QImage handle(qt_simple_toolbarhandle);
+     alphaCornerColor.setAlpha(170);
+@@ -1069,15 +1081,15 @@ void QPlastiqueStyle::drawPrimitive(Prim
+ {
+     Q_ASSERT(option);
+ 
+-    QColor borderColor = option->palette.background().color().darker(178);
++    QColor borderColor = option->palette.window().color().darker(178);
+     QColor alphaCornerColor;
+     if (widget) {
+         // ### backgroundrole/foregroundrole should be part of the style option
+         alphaCornerColor = mergedColors(option->palette.color(widget->backgroundRole()), borderColor);
+     } else {
+-        alphaCornerColor = mergedColors(option->palette.background().color(), borderColor);
++        alphaCornerColor = mergedColors(option->palette.window().color(), borderColor);
+     }
+-    QColor alphaTextColor = mergedColors(option->palette.background().color(), option->palette.text().color());
++    QColor alphaTextColor = mergedColors(option->palette.window().color(), option->palette.text().color());
+ 
+     switch (element) {
+     case PE_IndicatorButtonDropDown:
+@@ -1390,11 +1402,11 @@ void QPlastiqueStyle::drawPrimitive(Prim
+                 painter->setPen(alphaCornerColor);
+                 painter->drawLine(option->rect.left(), option->rect.bottom(),
+                                   option->rect.right(), option->rect.bottom());
+-                painter->setPen(option->palette.background().color().lighter(104));
++                painter->setPen(option->palette.window().color().lighter(104));
+                 painter->drawLine(option->rect.left(), option->rect.top(),
+                                   option->rect.right(), option->rect.top());
+             } else {
+-                painter->setPen(option->palette.background().color().lighter(104));
++                painter->setPen(option->palette.window().color().lighter(104));
+                 painter->drawLine(option->rect.left(), option->rect.top(),
+                                   option->rect.left(), option->rect.bottom());
+                 painter->setPen(alphaCornerColor);
+@@ -1424,7 +1436,7 @@ void QPlastiqueStyle::drawPrimitive(Prim
+         QPixmap cache;
+         QRect rect = option->rect;
+         QString pixmapName = QStyleHelper::uniqueName(QLatin1String("toolbarhandle"), option, rect.size());
+-        if (!QPixmapCache::find(pixmapName, cache)) {
++        if (!QPixmapCache::find(pixmapName, &cache)) {
+             cache = QPixmap(rect.size());
+             cache.fill(Qt::transparent);
+             QPainter cachePainter(&cache);
+@@ -1432,7 +1444,7 @@ void QPlastiqueStyle::drawPrimitive(Prim
+             if (widget)
+                 cachePainter.fillRect(cacheRect, option->palette.brush(widget->backgroundRole()));
+             else
+-                cachePainter.fillRect(cacheRect, option->palette.background());
++                cachePainter.fillRect(cacheRect, option->palette.window());
+ 
+             QImage handle(qt_toolbarhandle);
+             alphaCornerColor.setAlpha(170);
+@@ -1760,6 +1772,7 @@ void QPlastiqueStyle::drawPrimitive(Prim
+         }
+         break;
+ #endif // QT_NO_DOCKWIDGET
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+     case PE_IndicatorViewItemCheck: {
+         QStyleOptionButton button;
+         button.QStyleOption::operator=(*option);
+@@ -1767,6 +1780,7 @@ void QPlastiqueStyle::drawPrimitive(Prim
+         proxy()->drawPrimitive(PE_IndicatorCheckBox, &button, painter, widget);
+         break;
+     }
++#endif
+     case PE_FrameWindow: {
+         painter->save();
+         bool active = (option->state & State_Active);
+@@ -1795,7 +1809,7 @@ void QPlastiqueStyle::drawPrimitive(Prim
+ 
+ 
+         // alpha corners
+-        painter->setPen(mergedColors(palette.highlight().color(), palette.background().color(), 55));
++        painter->setPen(mergedColors(palette.highlight().color(), palette.window().color(), 55));
+         points[0] = QPoint(option->rect.left() + 2, option->rect.bottom() - 1);
+         points[1] = QPoint(option->rect.left() + 1, option->rect.bottom() - 2);
+         points[2] = QPoint(option->rect.right() - 2, option->rect.bottom() - 1);
+@@ -1804,11 +1818,11 @@ void QPlastiqueStyle::drawPrimitive(Prim
+ 
+ 
+         // upper and lower left inner
+-        painter->setPen(active ? mergedColors(palette.highlight().color(), palette.background().color()) : palette.background().color().darker(120));
++        painter->setPen(active ? mergedColors(palette.highlight().color(), palette.window().color()) : palette.window().color().darker(120));
+         painter->drawLine(option->rect.left() + 1, titleBarStop, option->rect.left() + 1, option->rect.bottom() - 2);
+ 
+ 
+-        painter->setPen(active ? mergedColors(palette.highlight().color(), palette.background().color(), 57) : palette.background().color().darker(130));
++        painter->setPen(active ? mergedColors(palette.highlight().color(), palette.window().color(), 57) : palette.window().color().darker(130));
+         lines[0] = QLine(option->rect.right() - 1, titleBarStop, option->rect.right() - 1, option->rect.bottom() - 2);
+         lines[1] = QLine(option->rect.left() + 1, option->rect.bottom() - 1, option->rect.right() - 1, option->rect.bottom() - 1);
+         painter->drawLines(lines, 2);
+@@ -1895,13 +1909,13 @@ void QPlastiqueStyle::drawPrimitive(Prim
+ void QPlastiqueStyle::drawControl(ControlElement element, const QStyleOption *option,
+                                   QPainter *painter, const QWidget *widget) const
+ {
+-    QColor borderColor = option->palette.background().color().darker(178);
++    QColor borderColor = option->palette.window().color().darker(178);
+     QColor alphaCornerColor;
+     if (widget) {
+         // ### backgroundrole/foregroundrole should be part of the style option
+         alphaCornerColor = mergedColors(option->palette.color(widget->backgroundRole()), borderColor);
+     } else {
+-        alphaCornerColor = mergedColors(option->palette.background().color(), borderColor);
++        alphaCornerColor = mergedColors(option->palette.window().color(), borderColor);
+     }
+ 
+     QColor gradientStartColor = option->palette.button().color().lighter(104);
+@@ -2436,7 +2450,7 @@ void QPlastiqueStyle::drawControl(Contro
+             painter->setFont(font);
+             painter->setPen(bar->palette.text().color());
+ 
+-            bool vertical = (bar->orientation == Qt::Vertical);
++            bool vertical = !(bar->state & QStyle::State_Horizontal);
+             bool inverted = bar->invertedAppearance;
+             bool bottomToTop = bar->bottomToTop;
+ 
+@@ -2493,7 +2507,7 @@ void QPlastiqueStyle::drawControl(Contro
+     case CE_ProgressBarContents:
+         if (const QStyleOptionProgressBar *bar = qstyleoption_cast<const QStyleOptionProgressBar *>(option)) {
+             QRect rect = bar->rect;
+-            bool vertical = (bar->orientation == Qt::Vertical);
++            bool vertical = !(bar->state & QStyle::State_Horizontal);
+             bool inverted = bar->invertedAppearance;
+             bool indeterminate = (bar->minimum == 0 && bar->maximum == 0);
+             if (!indeterminate && bar->progress == -1)
+@@ -2644,7 +2658,7 @@ void QPlastiqueStyle::drawControl(Contro
+             QString progressBarName = QStyleHelper::uniqueName(QLatin1String("progressBarContents"),
+                                                  option, rect.size());
+             QPixmap cache;
+-            if (!QPixmapCache::find(progressBarName, cache) && rect.height() > 7) {
++            if (!QPixmapCache::find(progressBarName, &cache) && rect.height() > 7) {
+                 QSize size = rect.size();
+                 cache = QPixmap(QSize(size.width() - 6 + 30, size.height() - 6));
+                 cache.fill(Qt::white);
+@@ -2705,7 +2719,7 @@ void QPlastiqueStyle::drawControl(Contro
+             pixmapName += QString::number(- int(header->position));
+             pixmapName += QString::number(- int(header->orientation));
+ 
+-            if (!QPixmapCache::find(pixmapName, cache)) {
++            if (!QPixmapCache::find(pixmapName, &cache)) {
+                 cache = QPixmap(option->rect.size());
+                 cache.fill(Qt::white);
+                 QRect pixmapRect(0, 0, option->rect.width(), option->rect.height());
+@@ -2713,11 +2727,11 @@ void QPlastiqueStyle::drawControl(Contro
+ 
+                 bool sunken = (header->state & State_Enabled) && (header->state & State_Sunken);
+ 
+-                QColor headerGradientStart = sunken ? option->palette.background().color().darker(114) : gradientStartColor;
+-                QColor headerGradientStop = sunken ? option->palette.background().color().darker(106) : gradientStopColor;
++                QColor headerGradientStart = sunken ? option->palette.window().color().darker(114) : gradientStartColor;
++                QColor headerGradientStop = sunken ? option->palette.window().color().darker(106) : gradientStopColor;
+ 
+-                QColor lightLine = sunken ? option->palette.background().color().darker(118) : gradientStartColor;
+-                QColor darkLine = sunken ? option->palette.background().color().darker(110) : gradientStopColor.darker(105);
++                QColor lightLine = sunken ? option->palette.window().color().darker(118) : gradientStartColor;
++                QColor darkLine = sunken ? option->palette.window().color().darker(110) : gradientStopColor.darker(105);
+ 
+                 qt_plastique_draw_gradient(&cachePainter, pixmapRect,
+                                            headerGradientStart, headerGradientStop);
+@@ -2761,13 +2775,17 @@ void QPlastiqueStyle::drawControl(Contro
+         if (const QStyleOptionMenuItem *menuItem = qstyleoption_cast<const QStyleOptionMenuItem *>(option)) {
+             painter->save();
+             QBrush textBrush;
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            if (option->palette.resolveMask() & (1 << QPalette::ButtonText))
++#else
+             if (option->palette.resolve() & (1 << QPalette::ButtonText))
++#endif
+                 textBrush = option->palette.buttonText();
+             else
+                 textBrush = option->palette.windowText(); // KDE uses windowText rather than buttonText for menus
+ 
+             if (menuItem->menuItemType == QStyleOptionMenuItem::Separator) {
+-                painter->fillRect(menuItem->rect, option->palette.background().color().lighter(103));
++                painter->fillRect(menuItem->rect, option->palette.window().color().lighter(103));
+ 
+                 int w = 0;
+                 if (!menuItem->text.isEmpty()) {
+@@ -2775,7 +2793,11 @@ void QPlastiqueStyle::drawControl(Contro
+                     proxy()->drawItemText(painter, menuItem->rect.adjusted(5, 0, -5, 0), Qt::AlignLeft | Qt::AlignVCenter,
+                                  menuItem->palette, menuItem->state & State_Enabled, menuItem->text,
+                                  QPalette::Text);
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++                    w = menuItem->fontMetrics.horizontalAdvance(menuItem->text) + 5;
++#else
+                     w = menuItem->fontMetrics.width(menuItem->text) + 5;
++#endif
+                 }
+ 
+                 painter->setPen(alphaCornerColor);
+@@ -2801,7 +2823,7 @@ void QPlastiqueStyle::drawControl(Contro
+                 painter->setPen(option->palette.highlight().color().darker(115));
+                 painter->drawLine(option->rect.bottomLeft(), option->rect.bottomRight());
+             } else {
+-                painter->fillRect(option->rect, option->palette.background().color().lighter(103));
++                painter->fillRect(option->rect, option->palette.window().color().lighter(103));
+             }
+ 
+             // Check
+@@ -2878,7 +2900,11 @@ void QPlastiqueStyle::drawControl(Contro
+             }
+             int x, y, w, h;
+             menuitem->rect.getRect(&x, &y, &w, &h);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            int tab = menuitem->reservedShortcutWidth;
++#else
+             int tab = menuitem->tabWidth;
++#endif
+             QColor discol;
+             if (dis) {
+                 discol = textBrush.color();
+@@ -2949,7 +2975,7 @@ void QPlastiqueStyle::drawControl(Contro
+         if ((option->state & State_Selected)) {
+             QPixmap cache;
+             QString pixmapName = QStyleHelper::uniqueName(QLatin1String("menubaritem"), option, option->rect.size());
+-            if (!QPixmapCache::find(pixmapName, cache)) {
++            if (!QPixmapCache::find(pixmapName, &cache)) {
+                 cache = QPixmap(option->rect.size());
+                 cache.fill(Qt::white);
+                 QRect pixmapRect(0, 0, option->rect.width(), option->rect.height());
+@@ -2964,8 +2990,8 @@ void QPlastiqueStyle::drawControl(Contro
+                                                option->palette.button().color().darker(106));
+                 } else {
+                     qt_plastique_draw_gradient(&cachePainter, rect.adjusted(1, 1, -1, -1),
+-                                               option->palette.background().color().lighter(105),
+-                                               option->palette.background().color().darker(102));
++                                               option->palette.window().color().lighter(105),
++                                               option->palette.window().color().darker(102));
+                 }
+ 
+                 // outer border and corners
+@@ -3003,13 +3029,19 @@ void QPlastiqueStyle::drawControl(Contro
+             }
+             painter->drawPixmap(option->rect.topLeft(), cache);
+         } else {
+-            painter->fillRect(option->rect, option->palette.background());
++            painter->fillRect(option->rect, option->palette.window());
+         }
+ 
+         if (const QStyleOptionMenuItem *mbi = qstyleoption_cast<const QStyleOptionMenuItem *>(option)) {
+             QStyleOptionMenuItem newMI = *mbi;
+-            if (!(option->palette.resolve() & (1 << QPalette::ButtonText))) //KDE uses windowText rather than buttonText for menus
++            // KDE uses windowText rather than buttonText for menus
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            if (!(option->palette.resolveMask() & (1 << QPalette::ButtonText))) {
++#else
++            if (!(option->palette.resolve() & (1 << QPalette::ButtonText))) {
++#endif
+                 newMI.palette.setColor(QPalette::ButtonText, newMI.palette.windowText().color());
++            }
+             QCommonStyle::drawControl(element, &newMI, painter, widget);
+         }
+         break;
+@@ -3105,7 +3137,11 @@ void QPlastiqueStyle::drawControl(Contro
+             bool verticalTitleBar = dockWidget->verticalTitleBar;
+ 
+             // Find text width and title rect
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++            int textWidth = option->fontMetrics.horizontalAdvance(dockWidget->title);
++#else
+             int textWidth = option->fontMetrics.width(dockWidget->title);
++#endif
+             int margin = 4;
+             QRect titleRect = subElementRect(SE_DockWidgetTitleBarText, option, widget);
+             QRect rect = dockWidget->rect;
+@@ -3200,7 +3236,7 @@ void QPlastiqueStyle::drawControl(Contro
+                     // The end and onlyone top toolbar lines draw a double
+                     // line at the bottom to blend with the central
+                     // widget.
+-                    painter->setPen(option->palette.background().color().lighter(104));
++                    painter->setPen(option->palette.window().color().lighter(104));
+                     painter->drawLine(option->rect.bottomLeft(), option->rect.bottomRight());
+                     painter->setPen(alphaCornerColor);
+                     painter->drawLine(option->rect.left(), option->rect.bottom() - 1,
+@@ -3211,7 +3247,7 @@ void QPlastiqueStyle::drawControl(Contro
+                     painter->drawLine(option->rect.bottomLeft(), option->rect.bottomRight());
+                 }
+                 // All top toolbar lines draw a light line at the top.
+-                painter->setPen(option->palette.background().color().lighter(104));
++                painter->setPen(option->palette.window().color().lighter(104));
+                 painter->drawLine(option->rect.topLeft(), option->rect.topRight());
+             } else if (toolBar->toolBarArea == Qt::BottomToolBarArea) {
+                 if (toolBar->positionOfLine == QStyleOptionToolBar::End
+@@ -3232,19 +3268,19 @@ void QPlastiqueStyle::drawControl(Contro
+                     painter->setPen(alphaCornerColor);
+                     painter->drawLine(option->rect.left(), option->rect.bottom() - 1,
+                                       option->rect.right(), option->rect.bottom() - 1);
+-                    painter->setPen(option->palette.background().color().lighter(104));
++                    painter->setPen(option->palette.window().color().lighter(104));
+                     painter->drawLine(option->rect.bottomLeft(), option->rect.bottomRight());
+                 }
+                 if (toolBar->positionOfLine == QStyleOptionToolBar::End) {
+                     painter->setPen(alphaCornerColor);
+                     painter->drawLine(option->rect.topLeft(), option->rect.topRight());
+-                    painter->setPen(option->palette.background().color().lighter(104));
++                    painter->setPen(option->palette.window().color().lighter(104));
+                     painter->drawLine(option->rect.left(), option->rect.top() + 1,
+                                       option->rect.right(), option->rect.top() + 1);
+ 
+                 } else {
+                     // All other bottom toolbars draw a light line at the top.
+-                    painter->setPen(option->palette.background().color().lighter(104));
++                    painter->setPen(option->palette.window().color().lighter(104));
+                     painter->drawLine(option->rect.topLeft(), option->rect.topRight());
+                 }
+             }
+@@ -3253,7 +3289,7 @@ void QPlastiqueStyle::drawControl(Contro
+                     || toolBar->positionOfLine == QStyleOptionToolBar::End) {
+                     // The middle and left end toolbar lines draw a light
+                     // line to the left.
+-                    painter->setPen(option->palette.background().color().lighter(104));
++                    painter->setPen(option->palette.window().color().lighter(104));
+                     painter->drawLine(option->rect.topLeft(), option->rect.bottomLeft());
+                 }
+                 if (toolBar->positionOfLine == QStyleOptionToolBar::End) {
+@@ -3261,7 +3297,7 @@ void QPlastiqueStyle::drawControl(Contro
+                     painter->setPen(alphaCornerColor);
+                     painter->drawLine(option->rect.right() - 1, option->rect.top(),
+                                       option->rect.right() - 1, option->rect.bottom());
+-                    painter->setPen(option->palette.background().color().lighter(104));
++                    painter->setPen(option->palette.window().color().lighter(104));
+                     painter->drawLine(option->rect.topRight(), option->rect.bottomRight());
+                 } else {
+                     // All other left toolbar lines draw a dark line to the right
+@@ -3282,12 +3318,12 @@ void QPlastiqueStyle::drawControl(Contro
+                     painter->setPen(alphaCornerColor);
+                     painter->drawLine(option->rect.topLeft(), option->rect.bottomLeft());
+                     // And a light line next to it
+-                    painter->setPen(option->palette.background().color().lighter(104));
++                    painter->setPen(option->palette.window().color().lighter(104));
+                     painter->drawLine(option->rect.left() + 1, option->rect.top(),
+                                       option->rect.left() + 1, option->rect.bottom());
+                 } else {
+                     // Other right toolbars draw a light line on its left edge
+-                    painter->setPen(option->palette.background().color().lighter(104));
++                    painter->setPen(option->palette.window().color().lighter(104));
+                     painter->drawLine(option->rect.topLeft(), option->rect.bottomLeft());
+                 }
+             }
+@@ -3305,12 +3341,12 @@ void QPlastiqueStyle::drawControl(Contro
+ 
+             QString addLinePixmapName = QStyleHelper::uniqueName(QLatin1String("scrollbar_addline"), option, option->rect.size());
+             QPixmap cache;
+-            if (!QPixmapCache::find(addLinePixmapName, cache)) {
++            if (!QPixmapCache::find(addLinePixmapName, &cache)) {
+                 cache = QPixmap(option->rect.size());
+                 cache.fill(Qt::white);
+                 QRect pixmapRect(0, 0, cache.width(), cache.height());
+                 QPainter addLinePainter(&cache);
+-                addLinePainter.fillRect(pixmapRect, option->palette.background());
++                addLinePainter.fillRect(pixmapRect, option->palette.window());
+ 
+                 if (option->state & State_Enabled) {
+                     // Gradient
+@@ -3350,14 +3386,14 @@ void QPlastiqueStyle::drawControl(Contro
+                 // Arrow
+                 if (horizontal) {
+                     QImage arrow(reverse ? qt_scrollbar_button_arrow_left : qt_scrollbar_button_arrow_right);
+-                    arrow.setColor(1, scrollBar->palette.foreground().color().rgba());
++                    arrow.setColor(1, scrollBar->palette.windowText().color().rgba());
+ 
+                     if ((scrollBar->activeSubControls & SC_ScrollBarAddLine) && sunken)
+                         addLinePainter.translate(1, 1);
+                     addLinePainter.drawImage(QPoint(pixmapRect.center().x() - 2, pixmapRect.center().y() - 3), arrow);
+                 } else {
+                     QImage arrow(qt_scrollbar_button_arrow_down);
+-                    arrow.setColor(1, scrollBar->palette.foreground().color().rgba());
++                    arrow.setColor(1, scrollBar->palette.windowText().color().rgba());
+ 
+                     if ((scrollBar->activeSubControls & SC_ScrollBarAddLine) && sunken)
+                         addLinePainter.translate(1, 1);
+@@ -3382,9 +3418,9 @@ void QPlastiqueStyle::drawControl(Contro
+                 groovePixmapName += QLatin1String("-addpage");
+ 
+             QPixmap cache;
+-            if (!QPixmapCache::find(groovePixmapName, cache)) {
++            if (!QPixmapCache::find(groovePixmapName, &cache)) {
+                 cache = QPixmap(option->rect.size());
+-                cache.fill(option->palette.background().color());
++                cache.fill(option->palette.window().color());
+                 QPainter groovePainter(&cache);
+                 QRect pixmapRect = QRect(0, 0, option->rect.width(), option->rect.height());
+                 QColor color = scrollBar->palette.base().color().darker(sunken ? 125 : 100);
+@@ -3436,12 +3472,12 @@ void QPlastiqueStyle::drawControl(Contro
+ 
+             QString subLinePixmapName = QStyleHelper::uniqueName(QLatin1String("scrollbar_subline"), option, button1.size());
+             QPixmap cache;
+-            if (!QPixmapCache::find(subLinePixmapName, cache)) {
++            if (!QPixmapCache::find(subLinePixmapName, &cache)) {
+                 cache = QPixmap(button1.size());
+                 cache.fill(Qt::white);
+                 QRect pixmapRect(0, 0, cache.width(), cache.height());
+                 QPainter subLinePainter(&cache);
+-                subLinePainter.fillRect(pixmapRect, option->palette.background());
++                subLinePainter.fillRect(pixmapRect, option->palette.window());
+ 
+                 if (isEnabled) {
+                     // Gradients
+@@ -3482,14 +3518,14 @@ void QPlastiqueStyle::drawControl(Contro
+                 // Arrows
+                 if (horizontal) {
+                     QImage arrow(reverse ? qt_scrollbar_button_arrow_right : qt_scrollbar_button_arrow_left);
+-                    arrow.setColor(1, scrollBar->palette.foreground().color().rgba());
++                    arrow.setColor(1, scrollBar->palette.windowText().color().rgba());
+ 
+                     if ((scrollBar->activeSubControls & SC_ScrollBarSubLine) && sunken)
+                         subLinePainter.translate(1, 1);
+                     subLinePainter.drawImage(QPoint(pixmapRect.center().x() - 2, pixmapRect.center().y() - 3), arrow);
+                 } else {
+                     QImage arrow(qt_scrollbar_button_arrow_up);
+-                    arrow.setColor(1, scrollBar->palette.foreground().color().rgba());
++                    arrow.setColor(1, scrollBar->palette.windowText().color().rgba());
+ 
+                     if ((scrollBar->activeSubControls & SC_ScrollBarSubLine) && sunken)
+                         subLinePainter.translate(1, 1);
+@@ -3514,7 +3550,7 @@ void QPlastiqueStyle::drawControl(Contro
+                     sliderPixmapName += QLatin1String("-horizontal");
+ 
+                 QPixmap cache;
+-                if (!QPixmapCache::find(sliderPixmapName, cache)) {
++                if (!QPixmapCache::find(sliderPixmapName, &cache)) {
+                     cache = QPixmap(option->rect.size());
+                     cache.fill(Qt::white);
+                     QRect pixmapRect(0, 0, cache.width(), cache.height());
+@@ -3537,7 +3573,7 @@ void QPlastiqueStyle::drawControl(Contro
+                         }
+                         sliderPainter.fillRect(pixmapRect.adjusted(2, 2, -2, -2), gradient);
+                     } else {
+-                        sliderPainter.fillRect(pixmapRect.adjusted(2, 2, -2, -2), option->palette.background());
++                        sliderPainter.fillRect(pixmapRect.adjusted(2, 2, -2, -2), option->palette.window());
+                     }
+ 
+                     sliderPainter.setPen(borderColor);
+@@ -3645,13 +3681,13 @@ void QPlastiqueStyle::drawControl(Contro
+ void QPlastiqueStyle::drawComplexControl(ComplexControl control, const QStyleOptionComplex *option,
+                                          QPainter *painter, const QWidget *widget) const
+ {
+-    QColor borderColor = option->palette.background().color().darker(178);
++    QColor borderColor = option->palette.window().color().darker(178);
+     QColor alphaCornerColor;
+    if (widget) {
+         // ### backgroundrole/foregroundrole should be part of the style option
+         alphaCornerColor = mergedColors(option->palette.color(widget->backgroundRole()), borderColor);
+     } else {
+-        alphaCornerColor = mergedColors(option->palette.background().color(), borderColor);
++        alphaCornerColor = mergedColors(option->palette.window().color(), borderColor);
+     }
+     QColor gradientStartColor = option->palette.button().color().lighter(104);
+     QColor gradientStopColor = option->palette.button().color().darker(105);
+@@ -3676,7 +3712,7 @@ void QPlastiqueStyle::drawComplexControl
+ 
+             if ((option->subControls & SC_SliderGroove) && groove.isValid()) {
+                 BEGIN_STYLE_PIXMAPCACHE(QString::fromLatin1("slider_groove-%0-%1").arg(ticksAbove).arg(ticksBelow))
+-                p->fillRect(groove, option->palette.background());
++                p->fillRect(groove, option->palette.window());
+ 
+                 rect = groove;
+                 rect.moveTo(groove.left() - option->rect.left(), groove.top() - option->rect.top());
+@@ -3733,7 +3769,7 @@ void QPlastiqueStyle::drawComplexControl
+                 if ((option->activeSubControls & SC_SliderHandle) && (option->state & State_Sunken))
+                     handlePixmapName += QLatin1String("-sunken");
+ 
+-                if (!QPixmapCache::find(handlePixmapName, cache)) {
++                if (!QPixmapCache::find(handlePixmapName, &cache)) {
+                     cache = QPixmap(handle.size());
+                     cache.fill(Qt::transparent);
+                     QRect pixmapRect(0, 0, handle.width(), handle.height());
+@@ -3769,7 +3805,7 @@ void QPlastiqueStyle::drawComplexControl
+                             }
+                             handlePainter.fillPath(path, gradient);
+                         } else {
+-                            handlePainter.fillPath(path, slider->palette.background());
++                            handlePainter.fillPath(path, slider->palette.window());
+                         }
+                     } else {
+                         QPainterPath path;
+@@ -3795,7 +3831,7 @@ void QPlastiqueStyle::drawComplexControl
+                             gradient.setColorAt(1, gradientStopColor);
+                             handlePainter.fillPath(path, gradient);
+                         } else {
+-                            handlePainter.fillPath(path, slider->palette.background());
++                            handlePainter.fillPath(path, slider->palette.window());
+                         }
+                     }
+ 
+@@ -4531,7 +4567,11 @@ void QPlastiqueStyle::drawComplexControl
+                 // text. Otherwise, align center. QWorkspace does elliding for us,
+                 // and it doesn't know about the bold title, so we need to work
+                 // around some of the width mismatches.
++#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
++                bool tooWide = (QFontMetrics(font).horizontalAdvance(titleBar->text) > textRect.width());
++#else
+                 bool tooWide = (QFontMetrics(font).width(titleBar->text) > textRect.width());
++#endif
+                 QTextOption option((tooWide ? Qt::AlignLeft : Qt::AlignHCenter) | Qt::AlignVCenter);
+                 option.setWrapMode(QTextOption::NoWrap);
+ 
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/plastique/qplastiquestyle.h
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/plastique/qplastiquestyle.h
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/plastique/qplastiquestyle.h
+@@ -44,8 +44,7 @@
+ 
+ #include <QtWidgets/qproxystyle.h>
+ #include <QtCore/qelapsedtimer.h>
+-
+-QT_BEGIN_HEADER
++#include <QtCore/qvector.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+@@ -113,6 +112,4 @@ private:
+ 
+ QT_END_NAMESPACE
+ 
+-QT_END_HEADER
+-
+ #endif // QPLASTIQUESTYLE_H
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/shared/qstylecache_p.h
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/shared/qstylecache_p.h
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/shared/qstylecache_p.h
+@@ -80,7 +80,7 @@ inline QPixmap styleCachePixmap(const QS
+     int txType = painter->deviceTransform().type() | painter->worldTransform().type(); \
+     bool doPixmapCache = (txType <= QTransform::TxTranslate) \
+             || (painter->deviceTransform().type() == QTransform::TxScale); \
+-    if (doPixmapCache && QPixmapCache::find(unique, internalPixmapCache)) { \
++    if (doPixmapCache && QPixmapCache::find(unique, &internalPixmapCache)) { \
+         painter->drawPixmap(option->rect.topLeft(), internalPixmapCache); \
+     } else { \
+         if (doPixmapCache) { \

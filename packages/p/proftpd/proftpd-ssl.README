@@ -1,0 +1,16 @@
+Place your CA.crt, crt and key file here and create sysmlinks like following ...
+
+ssl
+├── proftpd.cacert.pem -> CA.crt
+├── proftpd.cert.pem -> wildcard.example.com.crt
+├── proftpd.key.pem -> wildcard.example.com.pem
+├── CA.crt
+├── wildcard.example.com.crt
+└── wildcard.example.com.pem
+
+then:
+copy conf.d/tls.template to conf.d/tls.conf
+
+finally:
+uncomment '#Include  /etc/proftpd/conf.d/*.conf' in proftp.conf
+

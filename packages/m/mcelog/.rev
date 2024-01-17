@@ -1,0 +1,773 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>0731a57fb63e0534dca6ee930a77930c</srcmd5>
+    <version>0.7</version>
+    <time>1168903496</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="111">
+    <srcmd5>8bce2c8de01a3a6d8f686661d4096efb</srcmd5>
+    <version>0.7</version>
+    <time>1222704024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="112">
+    <srcmd5>8bce2c8de01a3a6d8f686661d4096efb</srcmd5>
+    <version>0.7</version>
+    <time>1222704024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="113">
+    <srcmd5>9b736b38f52c8851cf2d5290e8fb4e5a</srcmd5>
+    <version>0.7</version>
+    <time>1231558796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="115">
+    <srcmd5>9b736b38f52c8851cf2d5290e8fb4e5a</srcmd5>
+    <version>0.7</version>
+    <time>1231558796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>95495b8f627fa030bdbbe03e99740be1</srcmd5>
+    <version>0.9pre</version>
+    <time>1258390912</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mcelog based on submit request 24435 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5681875f246a37d5ced4f506140164ba</srcmd5>
+    <version>1.0pre1</version>
+    <time>1263309180</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mcelog based on submit request 29009 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cb09dcd43aace8352b5b4a826439a988</srcmd5>
+    <version>1.0pre3</version>
+    <time>1266930244</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mcelog based on submit request 32894 from user oertel
+</comment>
+    <requestid>32894</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c6b019ee4cd4530d089d0a36a62c2bf5</srcmd5>
+    <version>1.0pre3</version>
+    <time>1268924919</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>c6b019ee4cd4530d089d0a36a62c2bf5</srcmd5>
+    <version>1.0pre3</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>c6b019ee4cd4530d089d0a36a62c2bf5</srcmd5>
+    <version>1.0pre3</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cbed26e21cfa8a92b44e30daa50e5095</srcmd5>
+    <version>1.0pre3.6363f5b719e9</version>
+    <time>1288273077</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51557 from user coolo
+</comment>
+    <requestid>51557</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4d35bd5dd0f56ea6cd52c27e825804d0</srcmd5>
+    <version>1.0pre3.6363f5b719e9</version>
+    <time>1288273085</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51557
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>4d35bd5dd0f56ea6cd52c27e825804d0</srcmd5>
+    <version>1.0pre3.6363f5b719e9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>523ddfd0bd621f5cfc2d6648a69dec25</srcmd5>
+    <version>1.0pre3.6363f5b719e9</version>
+    <time>1308214395</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>73783</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>9a7bdb4675560e436cb5414517b0b150</srcmd5>
+    <version>1.0pre3.6363f5b719e9</version>
+    <time>1308214405</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73783
+</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>17999423d6a8c78693f18edb1c89f053</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1315233514</time>
+    <user>lrupp</user>
+    <comment>Update</comment>
+    <requestid>80892</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>591bf3cacaef8caa5ea1b27fe95a50f4</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1315233528</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80892
+</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>591bf3cacaef8caa5ea1b27fe95a50f4</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1319182173</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>91ecf57cacf7485ef6dd1780e639cc23</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1322215944</time>
+    <user>coolo</user>
+    <comment>- Add systemd unit. (forwarded request 93371 from elvigia)</comment>
+    <requestid>93503</requestid>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>7aec63dda824017f931ed8f32c830235</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1323192511</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>a3bdd42b72de6c3d45e2190f60f5edad</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1336035497</time>
+    <user>coolo</user>
+    <comment>Fixed typo in init-file. (forwarded request 115240 from xandry)</comment>
+    <requestid>115540</requestid>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>a3bdd42b72de6c3d45e2190f60f5edad</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1340183693</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>bfdeb843492c0004c41aa3849c579219</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1347618648</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133902</requestid>
+  </revision>
+  <revision rev="25" vrev="17">
+    <srcmd5>bfdeb843492c0004c41aa3849c579219</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1359109436</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="18">
+    <srcmd5>c99b5d3387b804853147ba37a68a928b</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1361633887</time>
+    <user>coolo</user>
+    <comment>- Install mcelog.service accordingly (/usr/lib/systemd for 12.3
+  and up or /lib/systemd for older versions). (forwarded request 156105 from rmilasan)</comment>
+    <requestid>156168</requestid>
+  </revision>
+  <revision rev="27" vrev="20">
+    <srcmd5>c99b5d3387b804853147ba37a68a928b</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1379663273</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>73e60e5c6fdd8e57a8ea859af3ac2c7d</srcmd5>
+    <version>1.1</version>
+    <time>1382549037</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>204353</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>edc593e7c86f9b57a257d5abb5064924</srcmd5>
+    <version>1.1</version>
+    <time>1387462159</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file
+- activate mcelog service via udev+systemd combo, if the kernel
+  registers a /dev/mcelog device the service will be automatically
+  started.
+- drop sysvinit scripts, add appropiate %pre %post invocations
+  of the needed systemd macros.</comment>
+    <requestid>211411</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2f87c36d5bf94653e33b9f51ba187c04</srcmd5>
+    <version>1.0.1</version>
+    <time>1399032050</time>
+    <user>coolo</user>
+    <comment>- Update to latest git tag v101.
+- Mainline decided to finally do a version upgrade to v101
+- Remove v1.1 again, obsolete it and go for version v102
+- Some important fixes in the latest update:
+    - bnc#873159
+    - bnc#873725 (forwarded request 231933 from trenn)</comment>
+    <requestid>231934</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>07fed9b9163d8a3e67430fad7a0af3a8</srcmd5>
+    <version>1.0.1</version>
+    <time>1400388606</time>
+    <user>coolo</user>
+    <comment>- Add mce decoding support for latest AMD CPUs (bnc#871881).
+- Implementation done by Borislav Petkov &lt;bp@suse.de&gt;
+   * Add patches/Start-consolidating-AMD-specific-stuff.patch
+   * Add add-defines.patch
+   * Add add-f10h-support.patch
+   * Add add-f11h-support.patch
+   * Add add-f12h-support.patch
+   * Add add-f14h-support.patch
+   * Add add-f15h-support.patch
+   * Add add-f16h-support.patch (forwarded request 234343 from trenn)</comment>
+    <requestid>234344</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>b9060cdaaa1a0e546c7d946711701af7</srcmd5>
+    <version>1.0.1</version>
+    <time>1405434348</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239615</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>7b4d524cd5e7a3c9f91afa580e2f7eca</srcmd5>
+    <version>1.0.1</version>
+    <time>1405750576</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241406</requestid>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>7b4d524cd5e7a3c9f91afa580e2f7eca</srcmd5>
+    <version>1.0.1</version>
+    <time>1409301879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>e4284e0c78fdc8d8980a1530e909bd4a</srcmd5>
+    <version>1.0.1</version>
+    <time>1411017124</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>248390</requestid>
+  </revision>
+  <revision rev="36" vrev="8">
+    <srcmd5>cd7e5ae536f35744edb1ad49fa1d10c5</srcmd5>
+    <version>1.0.1</version>
+    <time>1411556936</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250596</requestid>
+  </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>483cab428c33e8fe8f47a7da7c8fa953</srcmd5>
+    <version>1.0.1</version>
+    <time>1416824069</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261882</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3f63c67d4bab5f73604c0414b0d73529</srcmd5>
+    <version>1.0.8</version>
+    <time>1422216839</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282546</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ce39055cb382ac162dee0655c5a7df94</srcmd5>
+    <version>1.20</version>
+    <time>1436111857</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>313136</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f72dd6b05a57e234c667bcdc7271a327</srcmd5>
+    <version>1.29</version>
+    <time>1455272474</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357397</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bc3a7b9a5c303edbe8c697a2a443346a</srcmd5>
+    <version>1.36</version>
+    <time>1462977434</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394483</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bdc569a59c7be0e178fec1e8c5010615</srcmd5>
+    <version>1.46</version>
+    <time>1482784901</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446827</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>fa61dae6e439630d567b2228aa5ec728</srcmd5>
+    <version>1.47</version>
+    <time>1485250167</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451242</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b654133a0056c592a80ebc05b290a48d</srcmd5>
+    <version>1.48</version>
+    <time>1489241877</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>476786</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>7d1dbf905753359c472194249d1b628e</srcmd5>
+    <version>1.48</version>
+    <time>1491565928</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>482923</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f1f83d3b24b715d9a3f07fd946cd7938</srcmd5>
+    <version>1.53</version>
+    <time>1501227784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512296</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>fa3414faef99dad6c7171f4bf52dd2c0</srcmd5>
+    <version>1.53</version>
+    <time>1511949072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545092</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>c8e7289e7e6a3137287108e0ee55cf6b</srcmd5>
+    <version>1.60</version>
+    <time>1538377600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637681</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>bda943f3fd11b0d580914cb630793e79</srcmd5>
+    <version>1.62</version>
+    <time>1553699627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688262</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>de829b62a199290bb4ccbde92f4984d2</srcmd5>
+    <version>1.64</version>
+    <time>1569367214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731696</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>533334eff6154044f80c7fc042ade7ec</srcmd5>
+    <version>1.66</version>
+    <time>1574677457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750323</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>fd5e721d47061f1f4446198cc2499efc</srcmd5>
+    <version>170</version>
+    <time>1597954981</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 170:
+  * mcelog: Add Cometlake client model numbers
+  * mcelog: Do not start mcelog service if edac_mce_amd module is loaded
+  * mcelog: Decode and print stepping from cpuid
+  * mcelog: Add &quot;kflags&quot; field to &quot;struct mce&quot;
+  * Add reporter tracking to trigger-invoking functions.
+  * mcelog: Add decode for MCi_MISC from 10nm memory controller</comment>
+    <requestid>827098</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>0f70a57cb1efdd3967bb87bd4ada7243</srcmd5>
+    <version>170</version>
+    <time>1599770737</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 170:
+  * mcelog: Add Cometlake client model numbers
+  * mcelog: Do not start mcelog service if edac_mce_amd module is loaded
+  * mcelog: Decode and print stepping from cpuid
+  * mcelog: Add &quot;kflags&quot; field to &quot;struct mce&quot;
+  * Add reporter tracking to trigger-invoking functions.
+  * mcelog: Add decode for MCi_MISC from 10nm memory controller
+- covers:
+  * jsc#SLE-13123
+- Update to version 1.66 (jira SLE-10087, jira SLE-8853):
+  * mcelog: Add support for Icelake server, Icelake-D, and Snow Ridge
+M email.patch
+-&gt; Patched with fuzz, refresh needed
+- Update to version 1.65:
+  * mcelog: Add Cascade Lake to supported models
+- mcelog.systemd: Preload the dmi-sysfs kernel module.
+  When /dev/mem can't be read (which is the case when booting in
+  Secure Mode), mcelog can use the dmi-sysfs interface instead,
+  however for that the kernel module needs to be loaded first
+  (bsc#1149186).
+- Update to version 1.64:
+  * mcelog: Add Icelake client model numbers.
+  * add Hygon Dhyana support to not use mcelog, as Hygon Dhyana(0x18h) share similiar arch with AMD Family 17h
+- Update to version 1.62:
+  * mcelog: Fix memory controller bank channel mappings for Skylake
+  * mcelog: update tests for new error code
+  * mcelog: Add decoding for Optane DC persistent memory mode
+  * mcelog: Deduce channel number for Haswell/Broadwell/Skylake systems
+- Change mcelog.spec to use autosetup
+(by trenn@suse.de)
+- Update to version 1.60 (fate#326221):
+  * Turn back rb_color field into unsigned long
+  * trigger: add a sync argument for waiting trigger child process exit
+  * page: trigger: add pre/post sync trigger when doing soft memory offline
+  * fixed build errors for some lose code when merging code
+  * transfer the page address to pre/post-sync-trigger scripts
+  * mcelog: Fix &quot;--ascii&quot; parsing to cope with change in kernel output since v4.10
+  * Remove now unused local variable
+  * Add scripts file to do MCA error code validation for a selected CPU model
+  * Add license file
+  * mcelog: Improve decoding for APEI reported errors
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+- Update to version 1.53:
+  * Add service file
+  * dmi: Handle NULL DMI string
+  * Compress some fields in mempage.
+  * Add coverity fixes
+  * Fix typo in man page
+  * mcelog: Check whether we successfully changed directory for trigger.
+  * mcelog version: Add ability for OS to define version
+  * Document .os_release in README
+  * Set SO_PASSCRED on listen sockets
+  * memutil.h: add missing include for va_list
+- Package also includes fixes for (through previous version updates below):
+  * Add mcelog-skylake.patch patch to support Skylake Xeons (fate#319698)
+  * Add skylake support (bnc#946734)
+  * Avoid warnings at boot up (bsc#920197)
+  * Knights Landing (fate#319507)
+  * Broadwell Ex and Ep (fate#319697)
+  * Different Skylake models (fate#319696)
+- Update to version 1.48
+  * Fix warning with gcc 6.x
+  * Remove obsolete TODO file
+  * Small fixes
+- Use url for getting sources
+- Version update to 1.47 (fate#321308, fate#320907, fate#321931):
+  * Fix PDF links
+  * Fix confusing error message
+- Version update to 1.46:
+  * Various cpu support for new machines
+- Refresh patches:
+  * add-f10h-support.patch
+  * email.patch
+- Force build with pic
+- Use normal webpage as Url and do not point to git
+- Fix build with --as-needed expanded Makefile patch for email.patch
+- Update to bugfix version 1.36
+- Do not start mcelog service based on an udev (/dev/mcelog) rule (bsc#976781)
+- Update to latest version 1.29.
+  Mostly little bug fixes.
+- Update to version v124. Adds skylake CPU support and some bug fixes.
+- Update to latest v120 git tag and name the version 1.20:
+  New supported CPUs:
+     - Add model number for Broadwell-DE
+     - Added Knights Landing (Xeon Phi) 
+     - Add all current Atom cpuids
+     - Support Broadwell-U
+     - New manpages: mcelog.conf.5 and mcelog.triggers.5
+  And quite some undocumented bugfixes, see git log for details
+- Update to version 1.0.8
+- Remove patch which got integrated mainline:
+  0001-Continue-without-dmi-when-no-SMBIOS-or-SMBIOS-0x0-in.patch
+- Fix possible security issue, build service complained about:
+  missing-call-to-setgroups-before-setuid
+  Add fix_setgroups_missing_call.patch
+- While not yet defined, the tmpfiles_create macro takes 
+  an argument for it to actually work
+- mcelog.tmpfiles, mcelog-socket-path.patch, move socket
+  and pid file to /run/mcelog directory.
+  This update may require reboot as the relevant rpm macro
+  tmpfiles_create is not yet in any product.
+- Fixed the architecture tag to %{ix86} as suggested by:
+  Andreas Vetter &lt;asvetter@cip.physik.uni-wuerzburg.de&gt;
+- fixed the architecture tag to %ix86
+- Fixed license, GPL-2.0
+- Added: 0001-Continue-without-dmi-when-no-SMBIOS-or-SMBIOS-0x0-in.patch
+  Continue without dmi when no SMBIOS or SMBIOS=0x0 in /sys/firmware/efi/systab, bnc#829862
+- Add mce decoding support for latest AMD CPUs (bnc#871881).
+- Implementation done by Borislav Petkov &lt;bp@suse.de&gt;
+   * Add patches/Start-consolidating-AMD-specific-stuff.patch
+   * Add add-defines.patch
+   * Add add-f10h-support.patch
+   * Add add-f11h-support.patch
+   * Add add-f12h-support.patch
+   * Add add-f14h-support.patch
+   * Add add-f15h-support.patch
+   * Add add-f16h-support.patch
+- Update to latest git tag v101.
+- Mainline decided to finally do a version upgrade to v101
+- Remove v1.1 again, obsolete it and go for version v102
+- Some important fixes in the latest update:
+    - bnc#873159
+    - bnc#873725
+- Cleanup spec file
+- activate mcelog service via udev+systemd combo, if the kernel
+  registers a /dev/mcelog device the service will be automatically
+  started.
+- drop sysvinit scripts, add appropiate %pre %post invocations
+  of the needed systemd macros. 
+- Updated to latest git HEAD:
+    commit c7bf28088f056925c04d4fd5768504c59bbf19c4
+    Author: Robin Holt &lt;robinmholt@gmail.com&gt;
+    Date:   
+  Because upstream does not use proper tags/revisions, I now
+  versioned this one mcelog-1.1
+- Install mcelog.service accordingly (/usr/lib/systemd for 12.3
+  and up or /lib/systemd for older versions). 
+- bnc#774226 mcelog + systemd: won't start without MCELOG_ADMIN_EMAIL set
+- fix uninitialized variable mail_setup
+- Also build mcelog packages for i386 (bnc#770726)
+- Fixed description in init-file.
+- Add systemd unit. 
+- update to GIT of today (6e4e2a000124f08f1a4e3791c2b02ec9ae6af393)
+- many bugfixes
+- Implement re-parsing of mcelog output in ASCII
+- Add support for non-page aligned EFI Configuration Tables
+- Add --debug-numerrors
+- Add decoder for corrected XEN events to --ascii
+- Correctly log kernel supplied time
+- record the trigger info in the log
+- mcelog: Implement dmi decoding for UEFI
+- mcelog: Add usage information to mcelog for --ignorenodev
+- Fix length calculation of SMBIOS mapping
+- change disclaimer
+- explictly spell out corrected errors
+- Update to latest git version (fate#311830)
+  Unfortunately versions have not been increased, latest tag
+  still is 1.0-pre3 (same as 1 year ago), therefore the date
+  is included in the version. I try to push maintainers to
+  increase the version number.
+- Invert logic of db prefill messages -&gt; info if it works, silent
+  if not
+- Remove test email address from config
+- Add Sandybridge/Westmere decode support
+- Fix domainname for email notification
+- Update to latest git version
+- Update to latest git version having quite some fixes (no features):
+   - Fixed some memleaks and made app valgrind conform
+   - Fixed theoretical DoS attack (bnc#586241)
+   - Added support of additional cpus
+   - Fixed a lot messages (in manpage, in triggers, in README, ...)
+- Update to version 1.0pre3
+     - Boxboro-EX enhancements
+     - Bugfixes
+  Minor pidfile handling adjusting in service file
+- Added missing conf file and trigger scripts
+- Minor .spec and init script fixes/cleanups
+- Add service parts:
+   - let mcelog --daemon handle pid file in /var/run/mcelog.pid
+   - add insserv logic
+   - remove cron.daily script in update case
+- Update to latest git version (called it 1.0pre1 myself, may differ
+  with a possible public 1.0pre1 version), this includes
+  following new featues:
+    - yellow bit support
+    - page predictive failure analysis support
+    - Initial memdb support
+      This allows to account memory errors in memory in daemon mode
+    And a lot more...
+- Update to latest git version (0.9pre)
+  Introduces mcelog damon mode, service file will follow in an
+  extra commit.
+- use ExclusiveArch as in /SRC/arch/
+- fate #304279 mcelog support for Tigerton/Dunnington
+  Patch is from Andi himself with this statement:
+  While it looks large most of it is just new tables.
+- decode intel thermal events too (#179327)
+- Update to 0.7.  This fixes
+  - Fix --dmi option (#166324)
+  - Incorporate old patches
+- Avoid cosmetic problem in --filter (#153347)
+- update to mcelog 0.6
+  * Fixes bugs (#148869, #137985)
+  * Adds --dmi option to map addresses to DIMMs using SMBIOS
+    (default to off)
+- converted neededforbuild to BuildRequires
+- update to version 0.5
+  * Clarify --ascii in the manpage
+  *Support for AMD K8 Revision F machine check DRAM error 
+   thresholding
+- Use RPM_OPT_FLAGS
+- Improve description again
+- mcelog-0.4:
+  * add support to decode AMD K8 (Opteron/Athlon64/AthlonFX) and
+    Intel P4 (Xeon and Pentium 4) events
+  * add --ascii option to decode machine check panic information   
+- Rewrite description in .spec file
+- memlog-0.2:
+  * fix mcelog looping (#41863)
+  * Add GPL notices
+- initial version 
+- fixes #36898
+</comment>
+    <requestid>832898</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>b65cbdfea003e780cf45c8de5626aea6</srcmd5>
+    <version>170</version>
+    <time>1600700975</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835386</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f12aeb624a75dae6231ed02dbe57c17d</srcmd5>
+    <version>173</version>
+    <time>1601743980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838278</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>9c7c30dfa7e486cbae9db52b78a60de2</srcmd5>
+    <version>175</version>
+    <time>1611928584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867083</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>34302380d1a8433647de554d3e5f81cd</srcmd5>
+    <version>175</version>
+    <time>1617908517</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882740</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>37e038373bbf1a048ee3fe067367c203</srcmd5>
+    <version>177</version>
+    <time>1626386331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906016</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>d1db8a0a7cf0caf26d7185158e752dd0</srcmd5>
+    <version>177</version>
+    <time>1626887179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907150</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>fbc4f7b7355c2c71dc8f077dbfbead69</srcmd5>
+    <version>178</version>
+    <time>1630697131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915502</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>a98608efb63d9d5e0f4143ec591a8d06</srcmd5>
+    <version>181</version>
+    <time>1651784670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974671</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>20b48caed8b4032841a5ed1b99440d8b</srcmd5>
+    <version>194</version>
+    <time>1687033199</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 194 (jsc#PED-4218):
+  * client.c: fix build w/ musl libc
+  * mcelog: New model number for Arrowlake
+  * mcelog: Don't overwrite model number when lookup fails
+  * mcelog: Add Graniterapids, Grandridge and Sierraforest
+  * mcelog: New model number for Lunarlake
+  * mcelog: Add Emerald Rapids
+  * mcelog: Add decode support for Sapphire Rapids
+  * Update PFA_test_howto
+  * mcelog: Add support for Meteor Lake
+
+- Includes following SLE 15 SP5 jira features:
+  * jsc#PED-671 mcelog: Update to latest release
+  * jsc#PED-686 [CPU Features] Update mcelog support for ADL-N
+  * jsc#PED-638 [CPU Features] Update mcelog support for MTL-P
+- Update to version 189:
+  * mcelog: Add another Raptor Lake CPU model
+  * Fix generation of cputype files
+  * mcelog: Add missing model numbers for Broadwell and Raptorlake
+  * mcelog: Makefile: Only touch cputype.h if needed to create it
+  * Makefile: add install-nodoc target
+  * Use env as the shebang target
+  * Add missing dependencies for cputype include files
+  * mcelog: Reverse sens of check to call resolveaddr()
+  * mcelog: Reverse the sense of the check to set memory_error_support
+  * mcelog: Drop CASE_INTEL define
+  * mcelog: Generate cpu_choices[] from table
+  * mcelog: Generate the cputype_name[] array from the table
+  * mcelog: Add CPU model numbers to table and generate switch function
+  * mcelog: Generate CPU_* enums from a table</comment>
+    <requestid>1093247</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>0d98c73cae2ca882c415a3ec5c179e60</srcmd5>
+    <version>195</version>
+    <time>1694630611</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110657</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>aeb019e3941bfe1678e679fdfa2df45f</srcmd5>
+    <version>196</version>
+    <time>1700598684</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 196:
+  * mcelog: Add second model number for Arrowlake</comment>
+    <requestid>1127693</requestid>
+  </revision>
+</revisionlist>

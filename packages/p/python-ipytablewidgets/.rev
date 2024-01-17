@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb79ddbcc0c33e6cd14a22e2cdeac649</srcmd5>
+    <version>0.3.1</version>
+    <time>1683037129</time>
+    <user>dimstar_suse</user>
+    <comment>required by python-vega 4</comment>
+    <requestid>1083893</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f5f1f49fa7b20e42919861f1c4ce55c2</srcmd5>
+    <version>0.3.1</version>
+    <time>1692379698</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104437</requestid>
+  </revision>
+</revisionlist>

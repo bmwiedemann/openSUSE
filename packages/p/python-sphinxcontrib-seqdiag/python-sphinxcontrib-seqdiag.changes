@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Mon Jan 10 22:27:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * drop python 3.5/3.6
+  * add python 3.9+ support 
+
+-------------------------------------------------------------------
+Tue Feb 25 06:26:01 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to version 2.0.0:
+  * Update CI settings
+  * blockdiag.utils.compat has been no longer needed
+  * Update package metadata
+  * Drop old Sphinx support
+  * Drop codes for old pythons
+  * Add .mypy_cache to gitignore
+  * Bump v2.0.0
+  * Fix flake8 violations
+- Stop building python2 version. No longer supported upstream
+
+-------------------------------------------------------------------
+Thu Jan  9 12:02:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove bogus python-devel and python-setuptools deps
+
+-------------------------------------------------------------------
+Fri Dec 14 12:53:58 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Package should own whole sitelib/sphinxcontrib/__pycache__
+
+-------------------------------------------------------------------
+Fri Dec  7 21:06:58 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove wrong BR on python-sphinxcontrib
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:46 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Sep 18 22:29:06 UTC 2017 - toddrme2178@gmail.com
+
+- Use new python-sphinxcontrib package to provide namespace
+  directory.
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Tue Nov 15 12:39:04 UTC 2016 - dmueller@suse.com
+
+- update to 0.8.5:
+  * Python 3.5 enablement
+
+-------------------------------------------------------------------
+Wed Nov 25 15:43:36 UTC 2015 - tbechtold@suse.com
+
+- Don't install tests/ into global python site-packages dir
+- Fix license string
+
+-------------------------------------------------------------------
+Fri Jul 10 11:15:25 UTC 2015 - tbechtold@suse.com
+
+- update Requires
+
+-------------------------------------------------------------------
+Fri Jul 10 09:55:06 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging
+

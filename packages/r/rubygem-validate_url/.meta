@@ -1,0 +1,5 @@
+<package name="rubygem-validate_url" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-validate_url"/>
+</package>

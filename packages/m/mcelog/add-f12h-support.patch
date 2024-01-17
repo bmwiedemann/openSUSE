@@ -1,0 +1,58 @@
+Add F12h decoding support
+
+Signed-off-by: Borislav Petkov <bp@suse.de>
+---
+ amd.c    |   11 +++++++++++
+ amd.h    |    4 +++-
+ mcelog.c |    2 ++
+ mcelog.h |    1 +
+ 4 files changed, 17 insertions(+), 1 deletion(-)
+
+Index: mcelog-189/amd.c
+===================================================================
+--- mcelog-189.orig/amd.c
++++ mcelog-189/amd.c
+@@ -157,6 +157,8 @@ enum cputype select_amd_cputype(u32 fami
+ 		return CPU_F10H;
+ 	case 0x11:
+ 		return CPU_F11H;
++	case 0x12:
++		return CPU_F12H;
+ 	default:
+ 		break;
+ 	}
+@@ -648,6 +650,12 @@ struct amd_decoder_ops fam_ops[] = {
+ 		.mc1_mce = k8_mc1_mce,
+ 		.mc2_mce = k8_mc2_mce,
+ 	},
++	[AMD_F12H] = {
++		.cpu	 = AMD_F12H,
++		.mc0_mce = f12h_mc0_mce,
++		.mc1_mce = k8_mc1_mce,
++		.mc2_mce = k8_mc2_mce,
++	},
+ };
+ 
+ static void __decode_amd_mc(enum cputype cpu, struct mce *mce)
+@@ -661,6 +669,9 @@ static void __decode_amd_mc(enum cputype
+ 	case CPU_F11H:
+ 		ops = &fam_ops[AMD_F11H];
+ 		break;
++	case CPU_F12H:
++		ops = &fam_ops[AMD_F12H];
++		break;
+ 	default:
+ 		Eprintf("Huh? What family is it: 0x%x?!\n", cpu);
+ 		return;
+Index: mcelog-189/amd.h
+===================================================================
+--- mcelog-189.orig/amd.h
++++ mcelog-189/amd.h
+@@ -9,6 +9,7 @@ enum amdcpu {
+ 	AMD_K8 = 0,
+ 	AMD_F10H,
+ 	AMD_F11H,
++	AMD_F12H,
+ 	AMD_F14H,
+ 	AMD_F15H,
+ 	AMD_F16H,
