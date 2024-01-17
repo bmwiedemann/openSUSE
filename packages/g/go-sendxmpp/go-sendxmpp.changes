@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 17 03:56:07 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.1:
+  * Add support for tls-server-end-point channel binding
+  * Add experimental support for SOCKS5 proxies using the HTTP_PROXY
+    environment variable
+  * http-upload: Improved error handling.
+
+-------------------------------------------------------------------
 Tue Jan  9 14:09:06 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.0:
