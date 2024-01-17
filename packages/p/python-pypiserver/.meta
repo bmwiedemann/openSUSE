@@ -1,0 +1,5 @@
+<package name="python-pypiserver" project="openSUSE:Factory">
+  <title>python-pypiserver</title>
+  <description>Minimal PyPI server for uploading &amp; downloading packages with pip/easy_install</description>
+  <devel project="devel:languages:python" package="python-pypiserver"/>
+</package>

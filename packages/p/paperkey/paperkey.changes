@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Thu Jan 10 12:57:45 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6:
+  * Selftest updates to allow running tests in parallel via make -j
+
+-------------------------------------------------------------------
+Tue Nov 21 11:01:40 UTC 2017 - astieger@suse.com
+
+- paperkey 1.5:
+  * Added support for OpenPGP EdDSA elliptic curve keys
+  * Properly handle a secret key where the primary key is of a
+    known type but a subkey is not of a known type.
+
+-------------------------------------------------------------------
+Thu Nov 24 09:42:01 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.4:
+  * binary vs text output mismatch when using "--output-type raw"
+    on Windows platforms.
+
+-------------------------------------------------------------------
+Wed Apr 15 16:09:05 UTC 2015 - mpluskal@suse.com
+
+- Update license information
+
+-------------------------------------------------------------------
+Thu Apr  2 13:37:12 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Add gpg signature
+
+-------------------------------------------------------------------
+Fri Aug 16 10:54:41 UTC 2013 - toganm@opensuse.org
+
+- update to 1.3
+
+  * Added support for OpenPGP elliptic curve keys (ECDH and
+    ECDSA) as specified in RFC 6637.
+  * Use minimal OpenPGP packet encoding.  This does not affect
+    functionality, but makes it more likely that a given key will
+    match byte-for-byte the same key after running through paperkey.
+  * Minor bug fixes.
+  * Gnulib refresh.
+
+- Correct license and add url to source
+
+-------------------------------------------------------------------
+Mon Apr 11 13:03:06 UTC 2011 - puzel@novell.com
+
+- use spec-cleaner 
+
+-------------------------------------------------------------------
+Fri Oct 16 14:40:37 UTC 2009 - puzel@novell.com
+
+- update to paperkey-1.2
+  * Minor documentation changes
+  * Gnulib refresh
+  * Generate output files with more restrictive permissions (go-rwx)
+
+-------------------------------------------------------------------
+Sat Feb 14 10:04:13 CET 2009 - puzel@suse.cz
+
+- update to 1.1
+  * make the instructions on how to restore a key without paperkey a
+    bit clearer
+
+-------------------------------------------------------------------
+Mon Jan 26 09:12:13 CET 2009 - puzel@suse.cz
+
+- inital package (version 1.0) 
+

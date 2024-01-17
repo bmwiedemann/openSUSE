@@ -1,0 +1,182 @@
+-------------------------------------------------------------------
+Thu Dec  7 20:33:00 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.4.27
+ * Prefer commit to "return FALSE;" for space, and other keys where the msymbol name is exactly one character,
+   add a sleep for Return. This is to avoid ordering problems in mutter
+
+-------------------------------------------------------------------
+Fri Nov 10 18:09:50 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.4.24
+ * Make IBusEngineSimple read ~/.XCompose
+ * Do not hide empty preedit text before committing text
+
+-------------------------------------------------------------------
+Fri Aug  4 04:26:10 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.4.20
+ * Reduce preedit flicker
+ * Remove xml:lang="en" from the screenshot in appdata.xml
+ * Use ibus_text_new_from_string (string) instead of ibus_text_new_from_static_string (string) in ibus_m17n_engine_commit_string()
+ * Add missing g_free (buf) in ibus_m17n_mtext_to_utf8()
+
+-------------------------------------------------------------------
+Tue Feb 21 14:38:35 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 1.4.17 -> 1.4.19
+- Added weblate translations to Sinhala
+- Add parrot icon emoji
+
+-------------------------------------------------------------------
+Sun Sep 18 05:53:54 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 1.4.13 -> 1.4.17
+- Fix problem that sa-IAST input method cannot be activated and make settings of sa-IAST work
+  * https://github.com/ibus/ibus-m17n/issues/52
+- Let IBusM17nEngine inherit from IBusEngineSimple to enable compose support 
+  * https://github.com/ibus/ibus-m17n/issues/51
+
+-------------------------------------------------------------------
+Thu Sep  8 15:16:39 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 1.4.11 -> 1.4.13
+- Added translations using Weblate (Arabic updated, Georgian added)
+
+-------------------------------------------------------------------
+Sat Sep  3 17:07:56 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 1.4.10 -> 1.4.11
+- Added translation using Weblate (Arabic, 100%)
+- Add 256x256 icon to m17n.appdata.xml
+
+-------------------------------------------------------------------
+Fri Aug  5 21:15:04 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+feat: use _service files to automate fetching sources
+update: 1.4.9 -> 1.4.10
+- Add language to longname in --xml output to make engines which have exactly
+  the same icon distinguishable in the engine switcher
+- Make the icon of the current engine appear at the left of floating panel of ibus.
+  And also show the full engine name as a tooltip on that icon
+  Before only a generic gear wheel ⚙️ was shown, the same for
+  all engines, so one could not distinguish which engine was
+  selected in the floating panel.
+- Show also the engine name in the title of the setup tool window.
+  I.e. instead of just “Preferences” show something like
+  “Preferences m17n:t:latn-post”.
+- Better icon and a screenshot which can be shown in gnome-software	
+- Improvements in m17n.appdata.xml
+
+-------------------------------------------------------------------
+Sun Jun 26 18:48:40 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 1.4.9
+
+update: 1.4.6 -> 1.4.9
+- Allow use of kbd engines gh#ibus/ibus-m17n#32
+- Assign symbols to all the new inscript2 engines (and add some other missing symbols)
+  * gh#ibus/ibus-m17n#37
+- Remove gnome-common requirement and re-write autogen.sh (by Parag Nemade)
+  * gh#ibus/ibus-m17n#37
+- Update weblate translation for Sinhala
+- Free lang and name after engine_name is built gh#ibus/ibus-m17n#39
+- Just return from ibus_m17n_engine_callback with nullable m17n
+- Hide status from the panel if status == title (by Daiki Ueno)
+
+-------------------------------------------------------------------
+Fri Jul 16 12:22:27 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.4.6
+  * Make inscript2 engines rank higher than inscript engines
+
+-------------------------------------------------------------------
+Sat May  8 12:10:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.4.5
+  * Use ibus_engine_update_preedit_with_mode() always with
+    IBUS_ENGINE_PREEDIT_COMMIT mode
+  * Translation update from Weblate, bn new and 100% complete,
+    pt_BR now 100% complete
+
+-------------------------------------------------------------------
+Wed Feb 17 12:27:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.4.4
+  * Update translations 
+
+-------------------------------------------------------------------
+Wed Jan 13 20:43:59 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Update version to 1.4.3
+  * New translation: es (Spanish) 100%
+
+-------------------------------------------------------------------
+Sun Feb 23 09:24:11 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Change group as System/Localization
+- Enable ibus-m17n-setup build
+
+-------------------------------------------------------------------
+Sat Feb 22 12:48:45 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.4.2
+  * Update translations
+  * Fix for google code issue 1781 in ibus-m17n for kk 
+    (Correct symbols for kk input methods)
+  * Add m17n.appdata.xml
+  * Migration from IBusConfig to GSettings
+  * Add an option to emulate US layout
+  * Fix preedit background colour and underlining
+  * Switch off preedit background and foreground correctly if disabled 
+    in the setup tool
+  * bug fixes 
+
+-------------------------------------------------------------------
+Mon Nov 14 17:24:06 UTC 2016 - toddrme2178@gmail.com
+
+- "ua" isn't a valid language code.  Change to "ur", which is
+  listed as an available language in default.xml.in.
+
+-------------------------------------------------------------------
+Thu Aug 21 16:51:13 UTC 2014 - fcrozat@suse.com
+
+- Remove the following languages
+  (cs,da,de,el,en,es,fi,fr,hr,it,nb,nn,pa,pl,sk,sv) from
+  locale-specific provides tag, to prevent ibus/ibus-m17n to be
+  installed by default for those languages.
+
+-------------------------------------------------------------------
+Wed Jul  4 13:34:06 UTC 2012 - swyear@gmail.com
+
+- Add ibus as Requires 
+
+-------------------------------------------------------------------
+Sun Jun 10 16:21:22 UTC+8 2012 - hillwood@linuxfans.org
+
+- update to 1.3.4
+
+-------------------------------------------------------------------
+Fri Sep 23 16:37:51 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typo in ibus-m17n.spec
+
+-------------------------------------------------------------------
+Fri Jul 22 17:02:06 CEST 2011 - tiwai@suse.de
+
+- Add locale-specific provides tag (bnc#707712)
+
+-------------------------------------------------------------------
+Tue Jun 14 03:24:43 UTC 2011 - swyear@gmail.com
+
+- Update to 1.3.2;
+  including fixes for new ibus 1.3.x
+
+-------------------------------------------------------------------
+Fri Mar 26 17:04:24 CET 2010 - tiwai@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Fri Jan 29 06:25:56 UTC 2010 - mxwu@novell.com
+
+- Initial import 
+

@@ -1,0 +1,5 @@
+<package name="lzfse" project="openSUSE:Factory">
+  <title>Reference C implementation of the LZFSE compressor</title>
+  <description>LZFSE is a Lempel-Ziv style data compression algorithm using Finite State Entropy coding. It targets similar compression rates at higher compression and decompression speed compared to deflate using zlib.</description>
+  <devel project="Archiving" package="lzfse"/>
+</package>

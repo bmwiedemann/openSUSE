@@ -1,0 +1,406 @@
+-------------------------------------------------------------------
+Thu Aug  3 08:40:38 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.18.6:
+    * Fix double free() during report generation
+    * Improve handling of ACL errors
+
+-------------------------------------------------------------------
+Mon Jul  3 08:30:54 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.18.5:
+  * Fix child directory processing on equal match
+
+-------------------------------------------------------------------
+Fri Jun 30 10:05:30 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.18.4:
+    * Fix handling of extended attributes on symlinks
+    * Add missing ')' to log message
+    * Fix static linking of the aide binary
+    * Don't require database_out for --dry-init
+    * Remove strerror() calls from thread log messages
+
+-------------------------------------------------------------------
+Mon Jun  5 12:16:24 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- switched service macros from %systemd_* to %service_* 
+  according to documentation at https://en.opensuse.org/openSUSE:Systemd_packaging_guidelines#Registering_unit_files_in_install_scripts
+
+-------------------------------------------------------------------
+Mon Jun  5 07:56:04 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.18.3:
+  * Handle readlink() errors
+
+- Update to 0.18.2:
+  * Add warning if rules contain not compiled-in attributes
+  * Add missing lock for tree operations during file system scan
+
+-------------------------------------------------------------------
+Fri Mar 17 14:55:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.1:
+  * Fix handling of empty growing files
+  * Fix segfault when using --dry-init
+  * Update README
+- switch to pcre2
+
+-------------------------------------------------------------------
+Thu Feb 23 16:50:23 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
+
+- Update to 0.18
+- Rename aide-0.17.3-as-needed.patch to and rebase aide-0.18-as-needed.patch
+- Added autoconf and autoconf-archive as building dependencies due to an error
+  when reconfiguring the source
+- Rebase aide-xattr-in-libc.patch
+
+-------------------------------------------------------------------
+Tue Mar 29 09:19:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.17.4:
+  * fix CVE-2021-45417: precalculate buffer size in base64 functions (bsc#1194735)
+
+-------------------------------------------------------------------
+Thu Nov  4 10:51:25 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Added aide.service and aide.timer in order to run
+  aide periodically in the background via systemd timer.
+- aide-systemd.patch: hook in new manpages
+
+-------------------------------------------------------------------
+Fri Apr  2 07:03:22 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- added missing pcre-devel buildrequires.
+
+-------------------------------------------------------------------
+Wed Feb 24 13:45:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update default config file to match v0.17
+
+-------------------------------------------------------------------
+Wed Feb 24 11:01:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.17.3:
+  * BACKWARDS INCOMPATIBLE CHANGES
+    - '--verbose' command line option and 'verbose' config option are no
+      longer supported, use 'log_level' and 'report_level' options instead
+    - '--report' command line option is no longer supported, use
+      'report_url' config option instead
+    - 'ignore_list' config option is no longer supported, use
+      'report_ignore_changed_attrs' instead
+    - 'report_attributes' config option is no longer supported, use
+      'report_force_attrs' instead
+    - (restricted) regular rules must start with literal '/', i.e. the rule
+      cannot begin with a macro variable
+    - config lines must end with new line
+    - '@' and ' ' in the configuration are now escaped with '\', that means
+      to match a '\' you have to use four backslashes '\\\\' in your rules
+    - 'gzip_dbout=false' fails now with config error when no zlib support
+      is compiled in
+    - remove '--with-initial-errors' configure option
+    - remove PostgreSQL database backend support
+    - remove Sun ACL support
+    - remove config and database signing support
+  * Enhancements:
+    - add new '--log-level' command line option and 'log_level' config option
+    - introduce named log levels
+    - add new 'report' log level to help to debug rule matching
+    - add new 'config' log level to help to debug config and rule parsing
+    - aad new '--dry-init' command
+    - add new '--path-check' command
+    - add directory support for @@include
+    - add new @@x_include config macro
+    - add new @@x_include_setenv config macro
+    - add new default compound group 'H' (all compiled-in hashsums)
+    - add support for per-report_url options
+    - add new 'report_level' config option
+    - add new 'report_append' config option
+    - add exit code 21 for file lock errors
+    - add default config values, available hashsums and compound groups
+      to '--version' output
+    - add Linux capabilities support
+    - show changed attributes in 'different attributes' message
+    - enable 'gost' and 'whirlpool' checksums when using gcrypt
+    - add 'stribog256' and 'stribog512' gcrypt algorithms
+    - add config file names to log output
+  * Miscellaneous behaviour changes:
+    - 'report_summarize_changes': hashsum changes are now indicated with 'H'
+    - print '--help' and '--verion' output to stdout
+    - log messages and errors are always written to stderr
+    - initialise report URLs after configuration parsing
+    - allow empty values for macro variables
+    - SIGUSR1 now toggles debug log level
+    - fail on errors in regular expressions during config parsing
+    - fail on invalid URLs during config check
+    - Fail on double slash in rule path
+    - cache log lines when 'log_level' is not yet set
+  * Deprecations:
+    - 'database' config option is now deprecated, use 'database_in' instead
+    - 'summarize_changes' config option is now deprecated, use
+      'report_summarize_changes' instead
+    - 'grouped' config option is now deprecated, use 'report_grouped'
+      instead
+    - non-alphanumeric group names are deprecated
+  * Notable bug fixes:
+    - fix line numbers in log messages
+    - remove warning when input database is '/dev/null'
+    - correctly handle UTF-8 in path names and rules
+    - fix compilation with curl and gcrypt
+    - warn on unsupported hash algorithms
+    - improve large-file support
+  * Remove obsolete aide-attributes.sh script
+  * Remove outdated manual.html
+  * Update documentation
+
+- Rename aide-0.16.1-as-needed.patch to and rebase aide-0.17.3-as-needed.patch
+- Rebase aide-xattr-in-libc.patch
+- Remove aide-define_hash_use_gcrypt.patch (no longer needed)
+- Remove aide-dynamic.patch (no longer needed)
+
+-------------------------------------------------------------------
+Thu Jul 30 20:13:39 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 0.16.2
+  Bug fixes:
+  * Fix handling of directory-restricted negative rules
+  * Don't lock '/dev/null' when used as output database
+  * Fix parsing of rules containing '?' quantifier
+  * Fix extended attributes support (xattrs)
+  * Fix processing of go files
+  Please note:
+  * The addition of the "trusted.*", "user.*" and the "security.*"
+	namespaces to the xattrs attribute might lead to a vast amount of
+	reported changed entries during your next AIDE run. You can use the
+	`report_ignore_changed_attrs` option (see aide.conf(5)) to ignore
+	changes of the xattrs attribute; but be aware that this will exclude
+	the expected but also the unexpected (potentially malicious) changes.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jul 11 13:03:25 UTC 2019 -  <abergmann@suse.com>
+
+- Remove not available gcrypt algorithm 7 DB_HAVAL (bsc#1098360).
+  Add aide-define_hash_use_gcrypt.patch
+
+-------------------------------------------------------------------
+Sun Mar 17 21:20:12 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 0.16.1
+  * Move to GitHub
+  * Update documentation
+  * Bug fixes
+- Upstream have moved to GitHub update URL and Source URLs accordingly
+- Refresh patch: aide-xattr-in-libc.patch
+- aide-0.16.1-as-needed.patch: replaces aide-0.16-as-needed.patch
+- Some cleanup of spec with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan 18 13:38:03 UTC 2017 - meissner@suse.com
+
+- Updated to 0.16
+  - lots of bugfixes
+  - including regexp matching within subdirectories of expressions
+- aide-0.16-as-needed.patch: replaces aide-0.15.1-as-needed.patch
+- aide-no_m4_dir.patch: upstream
+- aide.keyring: added from keyserver, cross checked key id on
+  http://aide.sourceforge.net/ and a signature from someone
+  I signed.
+
+-------------------------------------------------------------------
+Thu Jul  2 08:07:07 UTC 2015 - meissner@suse.com
+
+- aide-dynamic.patch: avoid overwriting dl* functions, as we might
+  load libcrypto.so dynamically in FIPS mode.
+
+-------------------------------------------------------------------
+Wed May 28 21:51:58 UTC 2014 - crrodriguez@opensuse.org
+
+- aide-xattr-in-libc.patch: Once upon a time, 10 years ago, basic extended
+  attribute functionality moved to libc, therefore libattr is most of the
+  time, not needed at all.
+
+-------------------------------------------------------------------
+Thu Jan 23 08:33:09 UTC 2014 - meissner@suse.com
+
+- seperate a -test package to help with externalized testing.
+
+-------------------------------------------------------------------
+Wed Jan 15 14:11:14 UTC 2014 - meissner@suse.com
+
+- aide.conf: Move from md5 and sha1 as default to sha256+sha512, also
+  to allow FIPS enabling with aide working. FATE#315925
+
+-------------------------------------------------------------------
+Fri Apr 26 11:26:37 UTC 2013 - mmeister@suse.com
+
+- Removed AC_CONFIG_MACRO_DIR([m4]) from configure.in to fix
+  build with new automake: aide-no_m4_dir.patch
+
+-------------------------------------------------------------------
+Wed Jan  4 13:34:11 UTC 2012 - crrodriguez@opensuse.org
+
+- libmhash development was abandoned in 2007, so it is time
+  for it to go into the library heaven, use libgcrypt instead.
+
+-------------------------------------------------------------------
+Fri Dec  2 06:21:56 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 10:50:07 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Add missing call to make
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Oct 01 15:12:21 CEST 2010 - freespacer@gmx.de
+
+- updated to version 0.15.1
+  - Ignore changed file name if attributes does not match
+  - Allow absence of DB_CHECKINODE if file name has changed
+- renew patch
+
+-------------------------------------------------------------------
+Tue Aug 10 17:12:56 CEST 2010 - meissner@suse.de
+
+- updated to 0.15
+  - lots of fixes and some new stuff
+
+-------------------------------------------------------------------
+Fri Apr 30 00:40:34 CEST 2010 - ro@suse.de
+
+- make aide check verbose to get started
+- add sleep and sync to fix build
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Wed Jun 17 19:43:10 CEST 2009 - crrodriguez@suse.de
+
+- fix build when as-needed is a default liker option
+
+-------------------------------------------------------------------
+Mon Jan  5 14:19:26 CET 2009 - meissner@suse.de
+
+- fixed abort on check/update by removing the hash requirement bnc#406597
+- fixed version output bnc#463511
+- enhanced testcase to also run one aide --check
+
+-------------------------------------------------------------------
+Fri Aug 22 09:48:36 CEST 2008 - meissner@suse.de
+
+- enabled SELinux support [Fate#303662]
+- enabled curl
+- disable static (does not make much sense)
+
+-------------------------------------------------------------------
+Tue Feb 12 11:26:20 CET 2008 - meissner@suse.de
+
+- Version 0.13.1
+        * Fixed bug with reading gzipped aide.db files
+        * Removed dead ustat code
+- Version 0.13
+        * Added support for selinux and xattr attributes
+          (kindly contributed by Red Hat)
+        * Added support for the Linux Audit System
+          (kindly contributed by Red Hat)
+        * Fixed usage of libgcrypt instead of libmhash
+        * Added file locking for output files
+        * Fixed bugs
+- Version 0.12
+        * Fixed bugs
+        * Allow http/https/ftp URLs through libcurl
+        * Support posix_fadvice() to avoid caching files
+- enabled ACL and XATTR support
+
+-------------------------------------------------------------------
+Thu Mar 29 10:13:37 CEST 2007 - meissner@suse.de
+
+- buildrequires flex,bison
+
+-------------------------------------------------------------------
+Thu Apr 13 13:06:36 CEST 2006 - meissner@suse.de
+
+- run aide --init as test
+
+-------------------------------------------------------------------
+Mon Feb 20 11:16:00 CET 2006 - mge@suse.de
+
+- update to 0.11
+- fixes bug #149059
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:08 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 22:08:31 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Fri Mar 18 15:46:21 CET 2005 - mge@suse.de
+
+- fixes #71272 - aide-0.10-47 config files not yet converted to utf8
+
+-------------------------------------------------------------------
+Mon Jan 26 11:16:41 CET 2004 - mge@suse.de
+
+- upgrade to 0.10
+- #33600: more usable default aide.conf
+  (thanks to Dirk Mueller <dmuell@gmx.net>)
+- example-cron-job
+
+-------------------------------------------------------------------
+Sat Jan 10 22:05:03 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Nov 13 01:36:35 CET 2002 - ro@suse.de
+
+- fix build for current bison
+
+-------------------------------------------------------------------
+Thu Aug 15 16:11:22 CEST 2002 - mge@suse.de
+
+- update to 0.9
+
+-------------------------------------------------------------------
+Mon Apr  9 11:30:55 CEST 2001 - ro@suse.de
+
+- don't use macro for version
+- remove obsolete macros
+
+-------------------------------------------------------------------
+Wed Nov 22 13:00:27 MET 2000 - mge@suse.de
+
+- created PAC files
+- make SPEC file 7.0 compliant
+
+-------------------------------------------------------------------
+Sat Jul 15 22:06:58 MEST 2000 - mge@suse.de
+
+- initial SuSE RPM, config file /etc/aide.conf
+
+-------------------------------------------------------------------
+Wed Jan 26 00:00:00 MEST 2000 - Matthew Kirkwood <weejock@ferret.lmh.ox.ac.uk>
+
+- Fixes for RH 6.1 and sysconfdir changed to /etc and /var/lib/aide added
+
+-------------------------------------------------------------------
+Sun Sep 12 00:00:00 MEST 1999 - Rami Lehti <rammer@cs.tut.fi>
+
+- Some small changes to make this autogeneratable by configure.
+
+-------------------------------------------------------------------
+Sat Sep 11 00:00:00 MEST 1999 - Zach Brown <zab@redhat.com>
+
+- First go

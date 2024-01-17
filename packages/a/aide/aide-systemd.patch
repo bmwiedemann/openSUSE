@@ -1,0 +1,26 @@
+Index: aide-0.18.3/doc/aide.1
+===================================================================
+--- aide-0.18.3.orig/doc/aide.1
++++ aide-0.18.3/doc/aide.1
+@@ -143,7 +143,7 @@ See \fB--version\fR output for the defau
+ default \fBdatabase_in\fR and \fBdatabase_out\fR config values.
+ 
+ .SH SEE ALSO
+-.BR aide.conf (5)
++.BR aide.conf (5), aide.service (8), aide.timer (8)
+ .SH BUGS
+ There are probably bugs in this release. Please report them
+ at https://github.com/aide/aide/issues .
+Index: aide-0.18.3/doc/aide.conf.5
+===================================================================
+--- aide-0.18.3.orig/doc/aide.conf.5
++++ aide-0.18.3/doc/aide.conf.5
+@@ -1090,7 +1090,7 @@ In the following, the first is not allow
+ .B "/foo e+p+u+g"
+ .PP
+ .SH "SEE ALSO"
+-.BR aide (1)
++.BR aide (1), aide.service (8), aide.timer (8)
+ .SH DISCLAIMER
+ All trademarks are the property of their respective owners.
+ No animals were harmed while making this webpage or this piece of

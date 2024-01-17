@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Mon Sep 11 14:23:34 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to 1.5.2
+  * Upgrade GitHub Actions #447
+  * Support current versions of CPython #453
+  * fix: force setuptools update + no duplicate runs in GH Actions #445
+  * from importlib import reload for Python 3 #448
+  * fix: correct 1.5.1 tag date in CHANGES #457
+  * feat: 🩺 allow customized health check endpoint #442
+  * fix: explicit optional types in config.py #472
+  * chore: disable tests on Python3.6 #471
+  * Upgrade to psf/black stable style 2023 #474
+  * Update README to reflect run/update commands #451
+  * chore: add help output for run and update to README #478
+  * Update README.rst and config.py #470
+  * chore: update docs folder #479
+  * Bump waitress from 1.4.4 to 2.1.2 in /docker #454
+  * Health endpoint usage is missing. #481
+  * Feat/dependabot #493
+  * fix: Add missing pip dependency #500
+  * chore(auto-release-candidate-07-30-2023) #505
+
+-------------------------------------------------------------------
+Tue May  9 13:12:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Fri Oct 28 20:19:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.5.1 
+  * 61e4487 ENH: add extremely basic /health endpoint (#396)
+  * bbd2a47 FIX: docker tests in cicd (#444)
+  * 784a9a1 MAINT: Replace usage of deprecated inspect.getargspec (#436)
+  * 640a748 MAINT: Add traefik/ and auth/ dirs to gitignore (#398)
+  * a67829e MAINT: Fix typos in README (#431)
+
+-------------------------------------------------------------------
+Wed Oct  5 08:06:37 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.5.0
+  * CHORE: pull CHANGES.rst from v1.4.x
+  * DOC: add call for maintainers to README
+  * DOC: Fixes in README examples (#380)
+  * DOC: start of empty contributor documentation directory (#383)
+  * ENH: added JSON Topic for use with micropython-upip (#395, thanks @awachtler)
+  * ENH: Backwards-compatible argparse config (not yet in use) (#339)
+  * ENH: Refactor storage operations into separate Backend classes (#348)
+  * ENH: Restore ability to drop hashing in new config (#347)
+  * ENH: Specify doctype for generated pages.
+  * Fixed violation of PEP 503 warning with pip>=22.
+  * (#413 and #414, thanks @domdfcoding and @luismsgomes)
+  * ENH: Use argparse config throughout app (#349)
+  * FIX: Fix silly typo in the readme :) (#362)
+  * FIX: fix small typing and lint errors in config.py (#421)
+  * FIX: fix version incompatibility that breaks twine in docker test (#356)
+  * FIX: fix(setuptools-in-tests) add packages=[] in test setup (#425)
+  * FIX: Gunicorn/gevent docker, log fixes, cache busting (#371)
+  * MAINT: Add aggregate "tests" job (#370)
+  * MAINT: Add release to PyPi job (#428)
+  * MAINT: add github action for release management (#417)
+  * MAINT: Add python 3.9 testing (#351, disabled in #407)
+  * MAINT: Cleanup code to python 3.6 (#342)
+  * MAINT: contributor update in README (#415)
+  * MAINT: disable unstable test for Python 3.9 (#407, planned temporary)
+  * MAINT: Docker improvements (#365)
+  * MAINT: drop standalone, drop py 2.7 and 3.5 (#338)
+  * MAINT: Merge branch 'v1.4.x'
+  * MAINT: Push to Docker Hub from CI (#375)
+  * MAINT: Refactor test_server to increase speed (#354)
+  * MAINT: Run black on codebase (#336)
+  * MAINT: run gh actions on PRs from forks #401
+  * MAINT: small code style fixes
+  * MAINT: Switch to GH actions (#361)
+
+-------------------------------------------------------------------
+Thu Jan 13 21:37:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.4.2
+  * FIX: The entrypoint for the Dockerfile was failing when called
+    with no arguments (#344, thanks @elfjes!)
+- Release 1.4.1
+  * FIX: The entrypoint for the Dockerfile no longer tries to
+    `chown` the entire `/data` directory, instead limiting itself
+    just to `/data/packages` as before (reported by @stephen-dexda
+    in #341, thanks!).
+- Release 1.4.0
+  * DOC: Add docker-compose example with HTTPS configuration using
+    Traefix (#295, thanks @Lauszus!)
+  * DOC: Add link to zulip chat to README (aa2d78c)
+  * DOC: Documentation for running as a service in windows (#316,
+    thanks @kodaman2!)
+  * DOC: Fix typo in README HTML (#303, thanks @Gerardwx!)
+  * DOC: Moved flask-pypi-proxy and pip2pi to a new "Unmaintained
+    or archived" section (#326, thanks @Luttik!)
+  * DOC: Slightly clarify the relationship to warehouse. (#308,
+    thanks @Julian!)
+  * ENH: Add ignore list for the update command (#298, thanks
+    @peter-slovak!)
+  * ENH: Add official support and testing for Python 3.8 (#292) for
+    Python 3.8 compatibility
+  * ENH: Allow configuration of logging stream (#334, thanks
+    @elfjes)
+  * ENH: Include watchdog to enable caching in docker image (#323,
+    thanks @johnchildren!)
+  * FIX: Cherrypy import for newer versions of cherrypy in vendored
+    bottle.py (#301, thanks @TiemenSch!)
+  * FIX: Improved permissions management in Dockerfile (#330,
+    thanks @normoes)
+  * FIX: Usage of string formatting in HTTPError (#310, thanks
+    @micahjsmith!)
+  * MAINT: Update bottle to 0.12.18 (#290)
+  * MAINT: Use Python 3.8 in Dockerfile (#330, thanks @normoes)
+  * MAINT: bump version of passlib from 1.7.1 to 1.7.2 in Docker
+    requirements (#293)
+  * MAINT: drop official support for Python 3.4 (#321)
+
+-------------------------------------------------------------------
+Wed May 20 07:26:39 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Mon Mar 23 13:11:12 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.3.2
+  - ENH: The Dockerfile used for the official Docker images now uses Python 3.6
+    rather than Python 2.7 (#284, thanks @etene!)
+  - ENH: The `welcome.html` page has been updated to provide more metadata
+    and be more HTML-standards compliant (#283, thanks @maggyero!)
+  - FIX: the `pypi-server -U` command no longer fails when run inside the
+    Docker container (thanks to @mkolb-navican for reporting in #264)
+  - FIX: The `remove_pkg` API action now removes any extant instances of a
+    package name-version combination, not just the first one found. This means
+    that now, for example, if a `.whl` and `.tar.gz` file exist for the
+    requested package name and version, both will be removed (thanks to
+    @esciara for reporting in #268)
+  - FIX: include missing `simple/` path on a URL in the example pip commands
+    on the `welcome.html` page (@276, thanks @maggyero!)
+  - DOC: more consistent and accurate documentation for pip commands provided
+    on the `welcome.html` page (#278, thanks @maggyero!)
+  - DOC: fixes to the README to make it easier for people to use pypiserver
+    behind an apache webserver (#289, thanks @Helveg!)
+  - FIX: previously, it was possible to upload packages with hashing algorithms
+    other than md5, but downloading them again with pip was impossible due to
+    incorrect truncation of the hash. This has been fixed! (Thanks
+    @ArneBachmann for figuring out what was wrong and reporting the issue
+    in #265).
+  - FIX: argument parsing would previously fail for the short form of
+    ``--help``, due an incorrect operator used during comparison (thanks to
+    @maggyero, #271)
+  - DOC: significant improvements to formatting and consistency in the README
+    (thanks to @maggyero, #270)
+
+-------------------------------------------------------------------
+Thu Mar 19 07:34:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Tue May 14 23:38:33 UTC 2019 - svasudevan@suse.com
+
+- Create new python package for pypiserver
+  * pypiserver now consistently and correctly handles the X-Forwarded-Host
+    header to allow for alternative base URLs
+  * significantly more information added to the docker-compose.yml
+    example, including recipes for various configuration options
+  * removed outdated suggestion to serve the packages data directly via
+    a webserver and replaced with information about setting up nginx
+    caching

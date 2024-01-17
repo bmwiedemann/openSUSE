@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Oct  7 15:05:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.2.0 
+  * Add support for Python 3.10
+  * Drop support for Python 3.5
+
+-------------------------------------------------------------------
+Sun Feb  9 21:37:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.0.3

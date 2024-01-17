@@ -1,0 +1,7 @@
+<package name="ripgrep" project="openSUSE:Factory">
+  <title>ripgrep recursively searches directories for a regex pattern</title>
+  <description>ripgrep is a cross-platform, line-oriented search tool that recursively searches your current directory for a regex pattern while respecting your gitignore rules.
+
+ripgrep is similar to other popular search tools like The Silver Searcher, ack and grep.</description>
+  <devel project="utilities" package="ripgrep"/>
+</package>

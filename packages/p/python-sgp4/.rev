@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27e03a73fa313c2231131c80c8ad11b6</srcmd5>
+    <version>2.12</version>
+    <time>1594706366</time>
+    <user>dimstar_suse</user>
+    <comment>This Python package computes the position and velocity of an earth-orbiting
+satellite, given the satellite’s TLE orbital elements from a source like
+Celestrak. It implements the most recent version of SGP4, and is regularly run
+against the SGP4 test suite to make sure that its satellite position predictions
+agree to within 0.1 mm with the predictions of the standard distribution of the
+algorithm. This error is far less than the 1–3 km/day by which satellites
+themselves deviate from the ideal orbits described in TLE files.
+
+If your platform supports it, this package compiles the verbatim source code
+from the official C++ version of SGP4. You can call the routine directly, or
+through an array API that loops over arrays of satellites and arrays of times
+with machine code instead of Python. Otherwise, a slower but reliable Python
+implementation of SGP4 is used instead.
+
+Submitting because it is an optional package for python-astropy</comment>
+    <requestid>820694</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d2e2c03bd1604ebe73cc270ba1224360</srcmd5>
+    <version>2.13</version>
+    <time>1602857813</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.13
+  *  Enhanced sgp4init() with custom code that also sets the
+     epochdays and epochyr satellite attributes. 
+</comment>
+    <requestid>842091</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>61e41cdf954d93521d2b41314f520806</srcmd5>
+    <version>2.13</version>
+    <time>1603545508</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843664</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee7243070845776083d51cc916825a75</srcmd5>
+    <version>2.14</version>
+    <time>1609619477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859772</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ed285b05a9fd51d16b1c254d8068ee5f</srcmd5>
+    <version>2.16</version>
+    <time>1613677262</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 2.16
+  * Fixed ``days2mdhms()`` rounding to always match TLE epoch.
+- Changes in Version 2.15
+  * Fixed parsing of the ``satnum`` TLE field in the Python
+    fallback code, when the field has a leading space
+  * added OMM export routine.
+- skip python36 (NEP 29, NumPy 1.20)
+</comment>
+    <requestid>873226</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>df4764e40899e16fa885d099a5797679</srcmd5>
+    <version>2.20</version>
+    <time>1625429450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903954</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3cea9b67b4158540bf016f8deb8cfcf1</srcmd5>
+    <version>2.22</version>
+    <time>1685632764</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.22:
+  * Added a ``satnum_str`` attribute, exposing the fact that the C++ now
+    stores the satellite number as a string; and check that ``satnum`` is
+    never greater than 339999.
+  * Fixed the units of the ``nddot`` attribute when the value is loaded
+    from an OMM record.  (Since the TLE computation itself ignores this
+    attribute, this did not affect any satellite positions.)
+  * Enhanced the fallback Python version of ``twoline2rv()`` to verify
+    that TLE lines are ASCII, and added documentation using it to
+    double-check TLEs that might suffer from non-ASCII characters.
+  * If the user doesn’t set a satellite’s ``classification``, it now
+    defaults to ``'U'`` for ‘unclassified’.
+  * Added ``dump_satrec()`` to the ``sgp4.conveniences`` module.
+  * Fixed the ``Satrec`` attribute ``.error``, which was previously
+    building a nonsense integer from the wrong data in memory.
+  * Removed ``.whichconst`` from Python ``Satrec``, to help users avoid
+    writing code that will break when the C++ extension is available.</comment>
+    <requestid>1090088</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>68072be70bc03666a131c5c599040fb7</srcmd5>
+    <version>2.23</version>
+    <time>1702673435</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1133439</requestid>
+  </revision>
+</revisionlist>

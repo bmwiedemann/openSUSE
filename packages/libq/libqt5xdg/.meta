@@ -1,0 +1,6 @@
+<package name="libqt5xdg" project="openSUSE:Factory">
+  <title>FreeDesktop.org Specifications for lxqt</title>
+  <description>FreeDesktop.org Specifications for lxqt
+</description>
+  <devel project="X11:LXQt" package="libqt5xdg"/>
+</package>

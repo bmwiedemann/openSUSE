@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Fri Dec  8 12:32:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23:
+  * Tweaked tests to resolve breakage introduced by Python 3.12.
+
+-------------------------------------------------------------------
+Wed May 31 19:48:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.22:
+  * Added a ``satnum_str`` attribute, exposing the fact that the C++ now
+    stores the satellite number as a string; and check that ``satnum`` is
+    never greater than 339999.
+  * Fixed the units of the ``nddot`` attribute when the value is loaded
+    from an OMM record.  (Since the TLE computation itself ignores this
+    attribute, this did not affect any satellite positions.)
+  * Enhanced the fallback Python version of ``twoline2rv()`` to verify
+    that TLE lines are ASCII, and added documentation using it to
+    double-check TLEs that might suffer from non-ASCII characters.
+  * If the user doesn’t set a satellite’s ``classification``, it now
+    defaults to ``'U'`` for ‘unclassified’.
+  * Added ``dump_satrec()`` to the ``sgp4.conveniences`` module.
+  * Fixed the ``Satrec`` attribute ``.error``, which was previously
+    building a nonsense integer from the wrong data in memory.
+  * Removed ``.whichconst`` from Python ``Satrec``, to help users avoid
+    writing code that will break when the C++ extension is available.
+
+-------------------------------------------------------------------
+Sun Jul  4 12:03:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.20
+  * Taught sgp4init() to round both epochdays and jdsatepochF to
+    the same 8 decimal places used for the date fraction in a TLE,
+    if the user-supplied epoch itself has 8 or fewer digits behind
+    the decimal point. This should make it easier to build
+    satellites that round-trip to TLE format with perfect accuracy.
+  * Fixed how export_tle() formats the BSTAR field when its value,
+    if written in scientific notation, has a positive exponent.
+  * Fixed the epochyr assigned by sgp4init() so years before 2000
+    have two digits instead of three (for example, so that 1980
+    produces an epochyr of 80 instead of 980).
+- Release 2.19
+  * Extended the documentation on the Python Package Index and in
+    the module docstring so it lists every Satrec attribute that
+    this library exposes; even the more obscure ones might be
+    useful to folks working to analyze satellite orbits.
+- Release 2.18
+  * If a TLE satellite number lacks the required 5 digits,
+    twoline2rv() now gives the underlying C++ library a little
+    help so it can still parse the classification and
+    international designator correctly.
+  * The Satrec attributes jdsatepoch, jdsatepochF, epochyr, and
+    epochdays are now writeable, so users can adjust their values
+    manually — which should make up for the fact that the sgp4init
+    () method can’t set them with full floating point precision.
+- Release 2.17
+  * Fixed where in the output array the sgp4_array() method writes
+    NaN values when an SGP4 propagation fails.
+
+-------------------------------------------------------------------
+Wed Feb 17 20:47:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to Version 2.16
+  * Fixed ``days2mdhms()`` rounding to always match TLE epoch.
+- Changes in Version 2.15
+  * Fixed parsing of the ``satnum`` TLE field in the Python
+    fallback code, when the field has a leading space
+  * added OMM export routine.
+- skip python36 (NEP 29, NumPy 1.20)
+
+-------------------------------------------------------------------
+Sat Jan  2 00:26:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 2.14
+  * New data formats: added OMM message support for both XML and
+    CSV, and added support for the new Alpha-5 extension to TLE
+    files.
+- Drop sgp4-fix69-precision.patch merged upstream
+
+-------------------------------------------------------------------
+Fri Oct 16 17:49:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Apply upstreams sgp4-fix69-precision.patch instead of own fix
+  gh#brandon-rhodes/python-sgp4#69
+
+-------------------------------------------------------------------
+Fri Oct 16 09:49:21 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 2.13
+  *  Enhanced sgp4init() with custom code that also sets the
+     epochdays and epochyr satellite attributes.
+
+-------------------------------------------------------------------
+Fri Jul 10 10:21:48 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- yank Python 2 package
+
+-------------------------------------------------------------------
+Thu Jul  9 20:46:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- initial package with version 2.12

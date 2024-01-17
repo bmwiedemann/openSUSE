@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed May 10 06:43:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  * Use upstream support for $NVIM_APPNAME
+  * Conceal \e[K escape sequences in pager mode
+  * Fix man page detection for empty lines
+  * makefile: Split install rule, supporting installation without man
+  * Move unit tests to extra file
+  * Handle all test excludes via busted tags
+  * Use native neovim function to get parsed listchar
+  * Filter out broken tests in CI
+  * Run tests in CI with neovim from the official appimages
+  * Set LUA_PATH for the tests in the makefile
+  * Split code into modules
+  * Add helper function to better detect man pages
+
+-------------------------------------------------------------------
+Tue Oct 18 11:56:47 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.0:
+  Breaking changes:
+  * require neovim >= 0.7.2
+  * Rename env var NVIM to NVIMPAGER_NVIM
+  * Improve version number format to better conform to SemVer
+  * Only use buffer local maps
+  * Keep input file order when reading from stdin and files
+  Major changes:
+  * Allow lua init file (#64[1])
+  * Implement follow mode (#21[2])
+  * Add git_colors option to use colors from git instead of internal syntax (#68[3])
+  * Use :Man! to set filetype in python docs
+  * Use exec to start nvim, delete tempfile for stdin from nvim and set buftype=nofile
+  * Rename execed nvim process to "nvimpager"
+  * Remove extra redirect from tty
+
+-------------------------------------------------------------------
+Thu Aug 18 14:01:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of nvimpager 0.10.4 for openSUSE

@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5b59d3cc18c272da15be779609904311</srcmd5>
+    <version>1.3</version>
+    <time>1429346345</time>
+    <user>dimstar_suse</user>
+    <comment>Usefull package</comment>
+    <requestid>296863</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d6384c76e39e49d3e3dcb974eb053b67</srcmd5>
+    <version>1.4</version>
+    <time>1480019137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4:
+  * binary vs text output mismatch when using &quot;--output-type raw&quot;
+    on Windows platforms.</comment>
+    <requestid>441809</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5cedfd22c37e1e942c1d8d0f0ff3d3b9</srcmd5>
+    <version>1.5</version>
+    <time>1511426620</time>
+    <user>dimstar_suse</user>
+    <comment>paperkey 1.5</comment>
+    <requestid>544133</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3a867d2de065133ab11926428fd88ebc</srcmd5>
+    <version>1.6</version>
+    <time>1547211917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6:
+  * Selftest updates to allow running tests in parallel via make -j</comment>
+    <requestid>664349</requestid>
+  </revision>
+</revisionlist>

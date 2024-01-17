@@ -1,0 +1,6 @@
+<package name="smatch" project="openSUSE:Factory">
+  <title>smatch</title>
+  <description>Smatch is a static analysis tool for C. Most of the checks are for the linux kernel.</description>
+  <devel project="devel:tools:statica" package="smatch"/>
+  <url>http://smatch.sf.net</url>
+</package>

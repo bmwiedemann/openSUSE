@@ -1,0 +1,5 @@
+<package name="aide" project="openSUSE:Factory">
+  <title>Advanced Intrusion Detection Environment</title>
+  <description>AIDE is an intrusion detection system that checks file integrity.</description>
+  <devel project="security" package="aide"/>
+</package>

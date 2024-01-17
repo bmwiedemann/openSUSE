@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>877dac85368311611d99edc70462ec99</srcmd5>
+    <version>0.8.2</version>
+    <time>1620158473</time>
+    <user>dimstar_suse</user>
+    <comment>I would like to maintain cglm in factory.</comment>
+    <requestid>890368</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7dad8e48ae1605c59d16dfee1f031788</srcmd5>
+    <version>0.8.2</version>
+    <time>1620840711</time>
+    <user>dimstar_suse</user>
+    <comment>Exclude ix86, as it will fail (optimized for SSE, not available on ix86)</comment>
+    <requestid>892310</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e13abf8583363c56ab84c9fbaca12040</srcmd5>
+    <version>0.8.3</version>
+    <time>1623098623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897926</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5d308ec973c1107bc38002174019c350</srcmd5>
+    <version>0.8.5</version>
+    <time>1652801078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977682</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>53b03796e789797e359cfd9a9339a4ba</srcmd5>
+    <version>0.8.7</version>
+    <time>1670058242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039752</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>70f47687e9a01ac4492b53c3b2825234</srcmd5>
+    <version>0.8.8</version>
+    <time>1674324691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060059</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d3d463415f2bfe994324ceeb47d44f95</srcmd5>
+    <version>0.8.9</version>
+    <time>1676562933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065952</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8c6ae5c4e95465a9a2f9002642f46100</srcmd5>
+    <version>0.9.1</version>
+    <time>1699562130</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.1:
+  * Now we have **mat2x3**, **mat2x4**, **mat3x2**, **mat3x4**,
+    **mat4x2** and **mat4x3** types and its functions
+  * README: add build docs for WebAssembly
+  * io: fix test runner.c implicit declaration glm_arch_print
+  * https://github.com/recp/cglm/pull/309: fix and improve
+    CGLM_USE_ANONYMOUS_STRUCT definition with more robust
+    compiler version check
+  * suppress sign conversion warnings
+  * Implement missing 3D
+    Affine Transforms in the Struct API
+  * drop &quot;-Werror&quot; to allow skip warnings on production build
+  * more robust __builtin_assume_aligned detection
+  * reduce glms_mat[4|3|2]_make()'s dest parameter
+  * fix and improve printing arch name in tests
+  * make GLM_TESTS_NO_COLORFUL_OUTPUT work on non-test print
+    colors too
+  * Now we have WASM 128 SIMD support
+  * `CGLM_OMIT_NS_FROM_STRUCT_API`, omits CGLM_STRUCT_API_NS
+    (glms_) namespace  completely if there is sub namespace e.g
+    mat4_, vec4_ ... **DEFAULT** is not defined
+  * `CGLM_STRUCT_API_NS`: define name space for struct api,
+    **DEFAULT** is `glms`
+  * `CGLM_STRUCT_API_NAME_SUFFIX`: define name suffix,
+    **DEFAULT** is empty e.g `defining it as #define
+    CGLM_STRUCT_API_NAME_SUFFIX  s` will add `s` suffix to
+    `mat4_mul -&gt; mat4s_mul`</comment>
+    <requestid>1124355</requestid>
+  </revision>
+</revisionlist>

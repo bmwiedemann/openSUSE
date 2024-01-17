@@ -1,0 +1,13 @@
+Index: aide-0.18.3/Makefile.am
+===================================================================
+--- aide-0.18.3.orig/Makefile.am
++++ aide-0.18.3/Makefile.am
+@@ -65,7 +65,7 @@ aide_SOURCES += include/fopen.h src/fope
+ endif
+ 
+ aide_CFLAGS = @AIDE_DEFS@ -W -Wall -g ${PTHREAD_CFLAGS}
+-aide_LDADD = -lm ${PCRE2_LIBS} ${ZLIB_LIBS} ${MHASH_LIBS} ${GCRYPT_LIBS} ${POSIX_ACL_LIBS} ${SELINUX_LIBS} ${AUDIT_LIBS} ${XATTR_LIBS} ${ELF_LIBS} ${E2FSATTRS_LIBS} ${CAPABILITIES_LIBS} ${CURL_LIBS} ${PTHREAD_LIBS}
++aide_LDADD = -lm ${LDFLAGS} ${PCRE2_LIBS} ${ZLIB_LIBS} ${MHASH_LIBS} ${GCRYPT_LIBS} ${POSIX_ACL_LIBS} ${SELINUX_LIBS} ${AUDIT_LIBS} ${XATTR_LIBS} ${ELF_LIBS} ${E2FSATTRS_LIBS} ${CAPABILITIES_LIBS} ${CURL_LIBS} ${PTHREAD_LIBS}
+ 
+ if HAVE_CHECK
+ TESTS				= check_aide

@@ -1,0 +1,5 @@
+<package name="perl-File-MMagic" project="openSUSE:Factory">
+  <title>Perl modules to guess file types</title>
+  <description>Perl modules to guess file types</description>
+  <devel project="devel:languages:perl" package="perl-File-MMagic"/>
+</package>

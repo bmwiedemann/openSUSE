@@ -1,0 +1,9 @@
+<package name="python-retryrequests" project="openSUSE:Factory">
+  <title>Extend python requests with exponential back-off retry</title>
+  <description>A Python library for HTTP requests using requests package with
+exponential back-off retry.
+
+</description>
+  <devel project="devel:languages:python" package="python-retryrequests"/>
+  <url>https://github.com/thombashi/retryrequests</url>
+</package>

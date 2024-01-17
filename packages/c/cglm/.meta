@@ -1,0 +1,5 @@
+<package name="cglm" project="openSUSE:Factory">
+  <title>Highly Optimized Graphics Math (glm) for C</title>
+  <description>cglm is an optimized 3D math library written in C99 (compatible with C89). It is similar to the original glm library except mainly for C.</description>
+  <devel project="devel:libraries:c_c++" package="cglm"/>
+</package>

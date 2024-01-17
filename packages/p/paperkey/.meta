@@ -1,0 +1,16 @@
+<package name="paperkey" project="openSUSE:Factory">
+  <title>Tool to backup GnuPG secret keys on paper</title>
+  <description>A reasonable way to achieve a long term backup of OpenPGP (GnuPG, PGP, etc)
+keys is to print them out on paper. Paper and ink have amazingly long retention
+qualities - far longer than the magnetic or optical means that are generally
+used to back up computer data.
+
+Authors:
+--------
+		David Shaw &lt;dshaw@jabberwocky.com&gt;    (program)
+		Peter Palfrader &lt;peter@palfrader.org&gt; (man page)
+
+</description>
+  <devel project="security:privacy" package="paperkey"/>
+  <url>http://www.jabberwocky.com/software/paperkey</url>
+</package>

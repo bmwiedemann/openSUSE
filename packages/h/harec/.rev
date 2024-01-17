@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a48f4e0928ed33ed4926a077957f4252</srcmd5>
+    <version>1699297758.b4dd427</version>
+    <time>1699910283</time>
+    <user>anag+factory</user>
+    <comment>I want to add harec to openSUSE:Factory. Building this project does not require autoconf tools.</comment>
+    <requestid>1125148</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cd06197b21d6cdc874669131393297a7</srcmd5>
+    <version>1701558776.08af325</version>
+    <time>1702071223</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1701558776.08af325:
+  * OpenBSD: Fix _start for arm64.
+- Update to version 1701262234.ec3193e:
+  * types: recover from circular dependency error
+  * check,gen: use name instead of ident to create global_decl declarations
+  * Revert &quot;types: recover from circular dependency error&quot;
+  * types: recover from circular dependency error
+  * type_store: pass around check context
+  * type_store: detect duplicate fields in embedded structs/unions
+  * check: improve error message
+  * ast: make ast_enum_field name non-const
+  * all: use const for more function params
+  * scope: put type and value in a union
+  * rt, tests: drop EXIT_FAILURE
+  * check: resolve type when taking size/alignment
+  * check: replace expression_measure with expression_len
+  * check: allow taking alignment of zero-size type
+  * parse: add error function
+  * lex: use error func for unexpected codepoint error
+  * check: remove unnecessary memset
+  * parse: disallow casting to null
+  * Move func_decl_flags from check.h to ast.h
+  * parse: add missing va_ends
+  * main: use xfprintf with harec -v
+  * gen: use u32 instead of uint for tag
+  * check: allow freeing null
+  * qtype: fix memory leak
+  * check: disallow append/inserting with undefined-size member
+  * check: disallow unbounded array value in append/insert
+  * parse: disallow ellipsis in append/insert length form
+  * tests: make insert rejection tests consistent with append
+  * tests: fix append/insert rejection tests
+  * check: fix append/insert value dereferencing
+  * parse, check: update imports
+  * all: fix format specifiers
+  * check: be more picky about default values of arrays
+  * implement checkless for loops
+</comment>
+    <requestid>1132121</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3263f79d74d766297b318cc66d785f34</srcmd5>
+    <version>1701558776.08af325</version>
+    <time>1702673444</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1133458</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f50ccba1634113b28305cb26d645ba8</srcmd5>
+    <version>1702179030.9d51b36</version>
+    <time>1702845112</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1702179030.9d51b36:
+  * scope: split up scope_lookup_ancestor
+  * Implement for labels
+  * Implement switch/match labels
+  * check: fix enum alias importing
+  * tests/34-declarations: add invalid symbol tests
+  * parse: disallow empty symbol
+  * type_store: fix tagged union segfault
+  * all: use literal/flexible in place of constant
+  * main: check for fmemopen error
+  * mod: remove unnecessary allocation
+  * tests: fix broken rejection tests
+  * type_store: make builtin_type_error have zero size/alignment
+</comment>
+    <requestid>1133561</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1fa2457aa2905f5d992910353ff63829</srcmd5>
+    <version>1702179030.9d51b36</version>
+    <time>1704281113</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135737</requestid>
+  </revision>
+</revisionlist>
