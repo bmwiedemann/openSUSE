@@ -403,4 +403,38 @@
 </comment>
     <requestid>1132832</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>069b74a8d05d3b12dca26dffb6e28dea</srcmd5>
+    <version>23.2.4</version>
+    <time>1705526143</time>
+    <user>anag+factory</user>
+    <comment>- This release contains also the following patches mentioned in
+  previous sle15 releases
+  * bsc1218582-0001-dix-allocate-enough-space-for-logical-button-maps.patch
+  * bsc1218583-0001-dix-Allocate-sufficient-xEvents-for-our-DeviceStateN.patch
+  * bsc1218583-0002-dix-fix-DeviceStateNotify-event-calculation.patch
+  * bsc1218583-0003-Xi-when-creating-a-new-ButtonClass-set-the-number-of.patch
+  * bsc1218584-0001-Xi-flush-hierarchy-events-after-adding-removing-mast.patch
+  * bsc1218585-0001-Xi-do-not-keep-linked-list-pointer-during-recursion.patch
+  * bsc1218585-0002-dix-when-disabling-a-master-float-disabled-slaved-de.patch
+
+- This release contains also the missing fixes of initial
+  U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
+  (bsc#1217765)
+
+- Update to version 23.2.4
+  * This release contains fixes for the issues reported in today's
+    security advisory: 
+    https://lists.x.org/archives/xorg/2024-January/061525.html
+  * CVE-2023-6816  (bsc#1218582)
+  * CVE-2024-0229  (bsc#1218583)
+  * CVE-2024-21885 (bsc#1218584)
+  * CVE-2024-21886 (bsc#1218585)
+  * CVE-2024-0408
+  * CVE-2024-0409
+- supersedes the patches mentioned below:
+  * U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
+  * U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch</comment>
+    <requestid>1139423</requestid>
+  </revision>
 </revisionlist>
