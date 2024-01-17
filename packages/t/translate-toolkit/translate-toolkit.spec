@@ -25,12 +25,11 @@
 %bcond_with test
 %endif
 %define modname translate-toolkit
-%define skip_python2 1
 
 %define binaries_and_manpages %{shrink:\
     poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology \
     build_firefox.sh pretranslate \
-    csv2po csv2tbx dtd2po flatxml2po html2po ical2po idml2po ini2po json2po \
+    android2po csv2po csv2tbx dtd2po flatxml2po html2po ical2po idml2po ini2po json2po \
     moz2po mozfunny2prop mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo \
     po2csv po2dtd po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2oo \
     po2php po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py \
@@ -38,11 +37,11 @@
     tbx2po tiki2po ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po yaml2po}
 %define binaries %{shrink: %binaries_and_manpages\
     pocommentclean pocompendium pocount pomigrate2 popuretext poreencode posplit prop2mozfunny \
-    build_tmdb buildxpi.py get_moz_enUS.py pydiff tmserver junitmsgfmt}
+    build_tmdb buildxpi.py get_moz_enUS.py pydiff tmserver junitmsgfmt md2po po2md}
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.9.2
+Version:        3.12.1
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
@@ -76,7 +75,6 @@ BuildRequires:  python-rpm-macros
 Requires:       gettext-runtime
 Requires:       python
 Requires:       python-lxml >= 4.6.3
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # The following are for the full experience of translate-toolkit
@@ -84,16 +82,16 @@ Recommends:     %{name}-doc
 Recommends:     gaupol
 Recommends:     iso-codes
 Recommends:     python-Levenshtein >= 0.12
-Recommends:     python-aeidon >= 1.11
+Recommends:     python-aeidon >= 1.13
 Recommends:     python-beautifulsoup4 >= 4.3
-Recommends:     python-charset-normalizer >= 3.0.1
-Recommends:     python-cheroot >= 9
+Recommends:     python-charset-normalizer >= 3.3.2
+Recommends:     python-cheroot >= 10
 Recommends:     python-iniparse >= 0.5
-Recommends:     python-phply >= 1.2.5
-Recommends:     python-pycountry >= 22.3.5
+Recommends:     python-mistletoe >= 1.2.1
+Recommends:     python-phply >= 1.2.6
 Recommends:     python-pyenchant >= 3.2.2
-Recommends:     python-pyparsing >= 3.0.9
-Recommends:     python-ruamel.yaml >= 0.17.21
+Recommends:     python-pyparsing >= 3.1.1
+Recommends:     python-ruamel.yaml >= 0.18.5
 Recommends:     python-vobject >= 0.9.6.1
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       translate-toolkit = %{version}-%{release}
@@ -101,12 +99,13 @@ Obsoletes:      translate-toolkit < %{version}-%{release}
 %endif
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module aeidon >= 1.11}
-BuildRequires:  %{python_module chardet >= 3.0.4}
-BuildRequires:  %{python_module pycountry >= 22.3.5}
+BuildRequires:  %{python_module aeidon >= 1.13}
+BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module mistletoe >= 1.2.1}
 BuildRequires:  %{python_module pyenchant >= 3.2.2}
-BuildRequires:  %{python_module pyparsing >= 3.0.9}
+BuildRequires:  %{python_module pyparsing >= 3.1.1}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module translate-toolkit = %{version}}
 BuildRequires:  %{python_module xml}
 BuildRequires:  %{python_module syrupy}
@@ -213,7 +212,7 @@ done
 
 %check
 %if %{with test}
-rm -v translate/storage/test_fluent.py
+rm -v tests/translate/storage/test_fluent.py
 %pytest
 %endif
 
