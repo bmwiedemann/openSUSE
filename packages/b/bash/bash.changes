@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 16 08:49:57 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * bash52-022
+    It's possible for readline to try to zero out a line that's not
+    null-terminated, leading to a memory fault.
+  * bash52-023
+    Running `local -' multiple times in a shell function would
+    overwrite the original saved set of options.
+  * bash52-024
+    Fix bug where associative array compound assignment would not
+    expand tildes in values.
+  * bash52-025
+    Make sure a subshell checks for and handles any terminating
+    signals before exiting (which might have arrived after the
+    command completed) so the parent and any EXIT trap will see
+    the correct value for $?.
+
+-------------------------------------------------------------------
 Wed Nov 15 09:08:33 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Declare token YYEOF to be able to support older bison versions

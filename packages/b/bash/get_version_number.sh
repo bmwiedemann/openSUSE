@@ -13,4 +13,5 @@ OFS="$IFS"
 IFS=-
 last=($(tar --wildcards -tf ${sourcedir}/bash-${version}-patches.tar.bz2 '*/bash[0-9][0-9]-*[0-9]' | sed -r 's@\.patch$@@'| sort -t '-' -k 3,3 -n | tail -n 1))
 IFS="$OFS"
-echo ${last[3]/*0/}
+shopt -s extglob
+echo ${last[3]##+(0)}
