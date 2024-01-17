@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 11 11:46:04 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch openssl-3.2.patch, to fix tests with opennssl
+  3.2.0, gh#urllib3/urllib3#3271
+
+-------------------------------------------------------------------
+Mon Nov 27 20:29:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Removed support for the deprecated urllib3[secure] extra.
+  * Removed support for the deprecated SecureTransport TLS
+    implementation.
+  * Removed support for the end-of-life Python 3.7.
+  * Allowed loading CA certificates from memory for proxies.
+  * Fixed decoding Gzip-encoded responses which specified
+    ``x-gzip`` content-encoding.
+
+-------------------------------------------------------------------
 Wed Oct 18 14:21:44 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
 
 - update to 2.0.7 (bsc#1216377, CVE-2023-45803):
