@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Dec 27 19:01:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.0:
+  Heterogeneous Memory core improvements
+  + Better heuristics to identify the subtype of memory such
+    as HBM, DRAM, NVM, CXL-DRAM, etc.
+  + Build memory tiers, i.e. sets of NUMA nodes with the same
+    subtype and similar performance.
+    - NUMA node tier ranks are exposed in the new MemoryTier
+    info attribute (starts from 0 for highest bandwidth tier).
+  + Add hwloc_topology_free_group_object() to discard a Group
+    created by hwloc_topology_alloc_group_object().
+  + Fix cpukinds on NVIDIA Grace to report identical cores
+    even if they actually have very small frequency differences.
+  + Add CXLDevice attributes to CXL DAX objects and NUMA
+    nodes to show which PCI device implements which window.
+  + Ignore buggy memory-side caches and memory attributes
+    when fake NUMA emulation is enabled on the Linux kernel
+    command-line.
+  + Add more info attributes in MemoryModule Misc objects,
+  + Get CPUModel and CPUFamily info attributes on LoongArch
+    platforms.
+  + Add support for new AMD CPUID leaf 0x80000026 for better
+    detection of Core Complex and Die on Zen4 processors.
+  + Improve Zhaoxin CPU topology detection.
+  + Input locations and many command-line options (e.g.
+    hwloc-calc -I -N -H, lstopo --only) now accept filters such as
+    "NUMA[HBM]" so that only objects are that type and subtype are
+    considered.
+  - NUMA[tier=1] is also accepted for selecting NUMA nodes
+    depending on their MemoryTier info attribute.
+  + Add --object-output to hwloc-calc to report the type as a
+    prefix to object indexes, e.g. Core:2 instead of 2 in the
+    output of -I.
+  + hwloc-info --ancestor and --descendants now accepts kinds
+    of objects instead of single types.
+  - The new --first option only shows the first matching
+    object.
+  + Add --children-of-pid to hwloc-ps to show a hierarchy of
+    processes.
+  + Add --misc-from to lstopo to add Misc objects described
+    in a file.
+  - To be combined with the new hwloc-ps --lstopo-misc for
+    a customizable lstopo --top replacement.
+
+-------------------------------------------------------------------
 Wed Oct 18 11:26:32 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.9.3:
@@ -108,8 +154,8 @@ Mon Jul 11 07:47:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
       thanks to --os-index-prefix and --logical-index-prefix options.
   * Misc
     + Add --disable-readme to avoid regenerating the top-level hwloc README
-      file from the documentation. 
-  * Bugfix 
+      file from the documentation.
+  * Bugfix
    + Use setenv() instead of putenv() - fixes crash in Slurm (bsc#1210227)
 
 -------------------------------------------------------------------
@@ -154,7 +200,7 @@ Fri Apr  8 16:42:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
     + Windows CMake builds now support non-MSVC compilers, detect several
       features at build time, can build/run tests, etc.
       Thanks to Michael Hirsch and Alexander Neumann .
-   
+
 -------------------------------------------------------------------
 Sun Dec  5 21:39:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
@@ -195,7 +241,7 @@ Sun Dec  5 21:39:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sat Jul 17 13:13:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 2.5.0: 
+- update to 2.5.0:
   + Add hwloc/windows.h to query Windows processor groups.
   + Add hwloc_get_obj_with_same_locality() to convert between objects
     with same locality, for instance NUMA nodes and Packages,
@@ -344,7 +390,7 @@ Tue Aug 18 15:37:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     + Add a GRAPHICAL OUTPUT section in the manpage of lstopo.
   * Misc
     + Use the native dlopen instead of libltdl,
-      unless --disable-plugin-dlopen is passed at configure time. 
+      unless --disable-plugin-dlopen is passed at configure time.
 - install systemd files using systemd macros and register it on install
   with systemd
 - build against libnuma on all architectures
@@ -517,9 +563,9 @@ Mon Mar  6 07:59:52 UTC 2017 - Thomas.Blume@suse.com
 
 - make hwloc-dump-hwdata only available on x86, as it is only
   supported for Intel Knights Landing Xeon Phi platforms
-- revert sub packages for SLE from no-arch to arch specific in order 
+- revert sub packages for SLE from no-arch to arch specific in order
   to keep backward compatibility
-- fix typo in specfile 
+- fix typo in specfile
 
 -------------------------------------------------------------------
 Wed Feb  8 12:46:42 UTC 2017 - jengelh@inai.de
@@ -552,7 +598,7 @@ Mon Jan 23 14:37:16 UTC 2017 - tchvatal@suse.com
 -------------------------------------------------------------------
 Tue Jan 17 12:34:11 UTC 2017 - Thomas.Blume@suse.com
 
-- switch  to version 1.11.5 since 2.0 is a development version with 
+- switch  to version 1.11.5 since 2.0 is a development version with
   no .so-version set fate#321929 comment#5)
 
 -------------------------------------------------------------------
@@ -649,41 +695,41 @@ Thu Mar  5 15:32:07 UTC 2015 - mpluskal@suse.com
 
 - Cleanup spec file with spec-cleaner
 - Update to 1.10.1
-  * Actually remove disallowed NUMA nodes from nodesets when the 
+  * Actually remove disallowed NUMA nodes from nodesets when the
     whole-system flag isn't enabled.
-  * Fix the gathering of PCI domains. Thanks to James Custer for 
+  * Fix the gathering of PCI domains. Thanks to James Custer for
     reporting the issue and providing a patch.
-  * Fix the merging of identical parent and child in presence of 
+  * Fix the merging of identical parent and child in presence of
     Misc objects. Thanks to Dave Love for reporting the issue.
-  * Fix some misordering of children when merging with 
+  * Fix some misordering of children when merging with
     ignore_keep_structure() in partially allowed topologies.
-  * Fix an overzealous assertion in the debug code when running 
-    on a single-PU host with I/O. Thanks to Thomas Van Doren for 
+  * Fix an overzealous assertion in the debug code when running
+    on a single-PU host with I/O. Thanks to Thomas Van Doren for
     reporting the issue.
-  * Don't forget to setup NUMA node object nodesets in x86 backend 
+  * Don't forget to setup NUMA node object nodesets in x86 backend
     (for BSDs) and OSF/Tru64 backend.
-  * Fix cpuid-x86 build error with gcc -O3 on x86-32. Thanks to 
+  * Fix cpuid-x86 build error with gcc -O3 on x86-32. Thanks to
     Thomas Van Doren for reporting the issue.
   * Fix support for future very large caches in the x86 backend.
   * Fix vendor/device names for SR-IOV PCI devices on Linux.
   * Fix an unlikely crash in case of buggy hierarchical distance matrix.
-  * Fix PU os_index on some AIX releases. Thanks to Hendryk 
+  * Fix PU os_index on some AIX releases. Thanks to Hendryk
     Bockelmann and Erik Schnetter for helping debugging.
   * Fix hwloc_bitmap_isincluded() in case of infinite sets.
-  * Change hwloc-ls.desktop into a lstopo.desktop and only install 
-    it if lstopo is built with Cairo/X11 support. It cannot work 
+  * Change hwloc-ls.desktop into a lstopo.desktop and only install
+    it if lstopo is built with Cairo/X11 support. It cannot work
     with a non-graphical lstopo or hwloc-ls.
-  * Add support for the renaming of Socket into Package in 
+  * Add support for the renaming of Socket into Package in
     future releases.
-  * Add support for the replacement of HWLOC_OBJ_NODE with 
+  * Add support for the replacement of HWLOC_OBJ_NODE with
     HWLOC_OBJ_NUMANODE in future releases.
-  * Clarify the documentation of distance matrices in hwloc.h and 
-    in the manpage of the hwloc-distances. Thanks to Dave Love for 
+  * Clarify the documentation of distance matrices in hwloc.h and
+    in the manpage of the hwloc-distances. Thanks to Dave Love for
     the suggestion.
-  * Improve some error messages by displaying more information 
+  * Improve some error messages by displaying more information
     about the hwloc library in use.
-  * Document how to deal with the ABI break when upgrading to 
-    the upcoming 2.0 See "How do I handle ABI breaks and API 
+  * Document how to deal with the ABI break when upgrading to
+    the upcoming 2.0 See "How do I handle ABI breaks and API
     upgrades ?" in the FAQ.
 
 -------------------------------------------------------------------
@@ -752,14 +798,14 @@ Tue Dec 16 09:22:26 UTC 2014 - alinm.elena@gmail.com
      + Fix failures to detect X11/Xutil.h on some Solaris platforms.
        Thanks to Siegmar Gross for reporting the failure.
      + The plugin ABI has changed, this release will not load plugins
-       built against previous hwloc releases.  
+       built against previous hwloc releases.
 
 -------------------------------------------------------------------
 Sun Aug 17 18:42:36 UTC 2014 - mardnh@gmx.de
 
 - removed patches (fixed upstream)
    * hwloc-1.7-manpage.patch
-   * hwloc-1.7.patch 
+   * hwloc-1.7.patch
 
 - Update to Version 1.9.0
   * API
@@ -916,7 +962,7 @@ Tue Nov 12 22:17:52 UTC 2013 - meissner@suse.com
 -------------------------------------------------------------------
 Wed Oct 16 08:02:12 UTC 2013 - boris@steki.net
 
-- enable build on SLE and older (12.2) OS 
+- enable build on SLE and older (12.2) OS
 
 -------------------------------------------------------------------
 Fri Oct  4 12:34:25 UTC 2013 - mvyskocil@suse.com

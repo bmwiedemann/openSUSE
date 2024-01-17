@@ -29,12 +29,12 @@
 
 %global lname libhwloc15
 Name:           hwloc
-Version:        2.9.3
+Version:        2.10.0
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
 URL:            https://www.open-mpi.org/projects/hwloc/
-Source0:        https://download.open-mpi.org/release/hwloc/v2.9/hwloc-%{version}.tar.bz2
+Source0:        https://download.open-mpi.org/release/hwloc/v2.10/hwloc-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
