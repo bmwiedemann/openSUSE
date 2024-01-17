@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  9 08:46:50 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to version 0.190:
+  * libelf: Add RELR support.
+  * libdw: Recognize .debug_[ct]u_index sections
+  * readelf:
+    - Support readelf -Ds, --use-dynamic --symbol.
+    - Support .gdb_index version 9
+  * scrlines: New tool that compiles a list of source files associated
+    with a specified dwarf/elf file.
+  * backends: Various LoongArch updates.
+
+-------------------------------------------------------------------
 Tue May  9 11:18:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.

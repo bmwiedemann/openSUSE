@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  9 08:47:09 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to version 0.190
+  * Schema change (reindexing required, sorry!) for a 60%
+    compression in filename representation, which was a large
+    part of the sqlite index; also, more deliberate sqlite
+    -wal management during scanning using the
+    --scan-checkpoint option.
+
+-------------------------------------------------------------------
 Sun Aug 20 00:25:03 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Conditionalize config(debuginfod-profile) Requires tag in the

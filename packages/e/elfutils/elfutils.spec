@@ -1,7 +1,7 @@
 #
 # spec file for package elfutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           elfutils
-Version:        0.189
+Version:        0.190
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://sourceware.org/elfutils/
 #Git-Clone:	git://sourceware.org/git/elfutils
-Source:         https://fedorahosted.org/releases/e/l/%{name}/%{version}/%{name}-%{version}.tar.bz2
+Source:         https://sourceware.org/elfutils/ftp/%{version}/%{name}-%{version}.tar.bz2
 Source1:        README-BEFORE-ADDING-PATCHES
 Source2:        baselibs.conf
-Source4:        https://fedorahosted.org/releases/e/l/%{name}/%{version}/%{name}-%{version}.tar.bz2.sig
+Source4:        https://sourceware.org/elfutils/ftp/%{version}/%{name}-%{version}.tar.bz2.sig
 Source5:        %{name}.keyring
 Source6:        elfutils-rpmlintrc
 Patch1:         harden_debuginfod.service.patch
@@ -209,6 +209,7 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_bindir}/eu-strings
 %{_bindir}/eu-strip
 %{_bindir}/eu-unstrip
+%{_bindir}/eu-srcfiles
 %{_mandir}/man1/eu-*.1*
 
 %files -n libasm1
