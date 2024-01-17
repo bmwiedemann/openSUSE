@@ -1,7 +1,7 @@
 #
 # spec file for package bash
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -105,13 +105,13 @@ BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(ncurses)
 # This has to be always the same version as included in the bash its self
-BuildRequires:  pkgconfig(readline) = 8.2
+BuildRequires:  pkgconfig(readline) >= %{rl_version}
 %if %{with alternatives}
 Requires(post): update-alternatives
-Requires(post): libreadline%{rl_major} = %{rl_version}
+Requires(post): libreadline%{rl_major} >= %{rl_version}
 Requires(preun):update-alternatives
 %endif
-Requires:       libreadline%{rl_major} = %{rl_version}
+Requires:       libreadline%{rl_major} >= %{rl_version}
 Suggests:       bash-doc = %{version}
 Suggests:       command-not-found
 Provides:       /bin/bash
