@@ -189,4 +189,12 @@ New dependency of python-Pyramid</comment>
     Simplify exception tracking, reducing bytecode size</comment>
     <requestid>1114697</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ac0c6bc6aa1bebd4eb75a8d3175eae52</srcmd5>
+    <version>4.4.3</version>
+    <time>1705526350</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1139516</requestid>
+  </revision>
 </revisionlist>

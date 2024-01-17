@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 10 16:27:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.3:
+  * Remove zope.interface.
+  * Fix an issue where auto_reload is enabled and a file is
+    loaded from a package that wasn't zip-compressed.
+  * Drop support for Python 3.7.
+  * Fix names of dependencies for importlib_resources and
+    importlib_metadata.
+  * Local variable scope is now iterable,
+    completing dict interface.
+  * Minor optimizations to rendering logic.
+  * Implicit translation now provides the translation context,
+    domain, and target language to the translation function (if
+    applicable). Previously, the target language was provided,
+    but this did not respect a change via i18n:target.
+  * Replace pkg_resources with newer and faster
+    importlib.resources and importlib.metadata. Just importing
+    pkg_resources becomes slower and slower the more packages are
+    installed.
+
+-------------------------------------------------------------------
 Mon Oct  2 07:19:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.0:
