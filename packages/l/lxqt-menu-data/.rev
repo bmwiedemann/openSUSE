@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>91402ce1f3a1625eb11d186045876f2b</srcmd5>
+    <version>1.4.0</version>
+    <time>1699388740</time>
+    <user>anag+factory</user>
+    <comment>New Package, replaces lxmenu-data in LXQt</comment>
+    <requestid>1123440</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c3c39db40e1044251439622b94277e41</srcmd5>
+    <version>1.4.1</version>
+    <time>1699616032</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.1:
+  * Made arch independent</comment>
+    <requestid>1124848</requestid>
+  </revision>
+</revisionlist>

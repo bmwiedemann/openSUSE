@@ -1,0 +1,182 @@
+-------------------------------------------------------------------
+Wed Oct  5 00:02:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2022/02/04 Version 9.0.4
+  Add py.typed file to MANIFEST.in (ensures mypy actually respects the type annotations)
+
+- Update to 2022/01/18 Version 9.0.3
+  Improve type safety of EventEmitter#on, EventEmitter#add_listener and EventEmitter#listens_to by parameterizing the Handler
+  Minor fixes to documentation
+
+- Update to 2022/01/17 Version 9.0.2
+  Add tests_require to setup.py, fixing COPR build
+  Install as an editable package in environment.yml and requirements_docs.txt, fixing Conda workflows and ReadTheDocs respectively
+
+- Update to 2022/01/17 Version 9.0.1
+  Fix regression where EventEmitter#listeners began crashing when called with uninitialized listeners
+
+- Update to 2022/01/17 Version 9.0.0
+  Compatibility:
+  Drop 3.6 support
+  New features:
+  New EventEmitter.event_names() method (see PR #96)
+  Type annotations and type checking with pyright
+  Exprimental pyee.cls module exposing an @evented class decorator and a @on method decorator (see PR #84)
+  Moved/deprecated interfaces:
+  pyee.TwistedEventEmitter -> pyee.twisted.TwistedEventEmitter
+  pyee.AsyncIOEventEmitter -> pyee.asyncio.AsyncIOEventEmitter
+  pyee.ExecutorEventEmitter -> pyee.executor.ExecutorEventEmitter
+  pyee.TrioEventEmitter -> pyee.trio.TrioEventEmitter
+  Removed interfaces:
+  pyee.CompatEventEmitter
+  Documentation fixes:
+  Add docstring to BaseEventEmitter
+  Update docstrings to reference EventEmitter instead of BaseEventEmitter throughout
+  Developer Setup & CI:
+  Migrated builds from Travis to GitHub Actions
+  Refactor developer setup to use a local virtualenv 
+
+-------------------------------------------------------------------
+Fri Nov 19 11:43:43 UTC 2021 - pgajdos@suse.com
+
+- version update to 8.2.2
+  2021/8/14 Version 8.2.1
+  -----------
+  - Add .readthedocs.yaml file
+  - Remove vcversioner dependency from docs build
+  2021/8/14 Version 8.2.0
+  -----------------------
+  - Remove test_requires and setup_requires directives from setup.py (closing #82)
+  - Remove vcversioner from dependencies
+  - Streamline requirements.txt and environment.yml files
+  - Update and extend CONTRIBUTING.rst
+  - CI with GitHub Actions instead of Travis (closing #56)
+  - Format all code with black
+  - Switch default branch to ``main``
+  - Add the CHANGELOG to Sphinx docs (closing #51)
+  - Updated copyright information
+
+-------------------------------------------------------------------
+Wed Mar 31 14:14:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- make build requirement specification fit for python39 flavor
+
+-------------------------------------------------------------------
+Mon Jan 18 22:37:12 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 8.1.0
+  * Improved thread safety in base EventEmitter
+  * Documentation fix in ExecutorEventEmitter
+- Changelog for Version 8.0.1
+  * Update README to reflect new API
+- Changelog for Version 8.0.0
+  * Drop support for Python 2.7
+  * Remove CompatEventEmitter and rename BaseEventEmitter to
+    EventEmitter
+  * Create an alias for BaseEventEmitter with a deprecation warning
+- Changelog for Version 7.0.4
+  * setup_requires vs tests_require now correct
+  * tests_require updated to pass in tox
+  * 3.7 testing removed from tox
+  * 2.7 testing removed from Travis
+- Changelog for Version 7.0.3
+  * Tag license as MIT in setup.py
+  * Update requirements and environment to pip -e the package
+- Changelog for Version 7.0.2
+  * Support Python 3.8 by attempting to import TimeoutError from
+    asyncio.exceptions
+  * Add LICENSE to package manifest
+  * Add trio testing to tox
+  * Add Python 3.8 to tox
+  * Fix Python 2.7 in tox 
+- Clarify test requirements for different python versions
+- Drop python-pyee-import-asyncio.exceptions.patch merged upstream
+
+-------------------------------------------------------------------
+Thu Mar 26 14:04:57 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.1
+  - Some tweaks to the docs
+  - Added a ``TrioEventEmitter`` class for intended use with trio
+  - ``AsyncIOEventEmitter`` now correctly handles cancellations
+  - Add a new experimental ``pyee.uplift`` API for adding new functionality to
+    existing event emitters
+- deleted patches
+  - fix-build-requirements.patch (upstreamed)
+- Add patch python-pyee-import-asyncio.exceptions.patch
+
+-------------------------------------------------------------------
+Thu Apr 25 07:50:21 UTC 2019 - pgajdos@suse.com
+
+- version update to 6.0.0
+  * Added a ``BaseEventEmitter`` class which is entirely synchronous and
+    intended for simple use and for subclassing
+  * Added an ``AsyncIOEventEmitter`` class for intended use with asyncio
+  * Added a ``TwistedEventEmitter`` class for intended use with twisted
+  * Added an ``ExecutorEventEmitter`` class which runs events in an executor
+  * Deprecated ``EventEmitter`` (use one of the new classes)
+- modified patches
+  % fix-build-requirements.patch (refreshed)
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:10 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Oct 29 15:22:46 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- python-hamcrest was renamed to python-PyHamcrest
+
+-------------------------------------------------------------------
+Thu Jul 19 15:54:33 UTC 2018 - mcepl@suse.com
+
+- Clean up SPEC
+- Add missing BuildRequires
+
+-------------------------------------------------------------------
+Sun Mar  4 20:12:00 UTC 2018 - alarrosa@suse.com
+
+- Fix LICENSE url 
+
+-------------------------------------------------------------------
+Tue Feb 20 07:55:56 UTC 2018 - alarrosa@suse.com
+
+- pytest-asyncio was build requirement by pyee's setup.py file, but
+  it was only used for tests. On top of that, the python-pytest-asyncio
+  package is only available for python3, so now we only do tests on
+  python3 and a patch was added to fix the requirements:
+  * fix-build-requirements.patch
+
+- Since the tests require at least python 3.5, only run the tests when
+  suse_version >= 1500
+
+-------------------------------------------------------------------
+Fri Jan  5 09:29:54 UTC 2018 - alarrosa@suse.com
+
+- Update to version 5.0.0
+  * CHANGELOG.md reformatted to CHANGELOG.rst
+  * Added CONTRIBUTORS.rst
+  * The listeners method no longer returns the raw list of listeners, and
+    instead returns a list of unwrapped listeners; This means that mutating
+    listeners on the EventEmitter by mutating the list returned by this method
+    isn't possible anymore, and that for once handlers this method returns the
+    unwrapped handler rather than the wrapped handler
+  * once API now returns the unwrapped handler in both decorator and
+    non-decorator cases
+  * Possible to remove once handlers with unwrapped handlers
+  * Internally, listeners are now stored on a OrderedDict rather than a list
+  * Minor stylistic tweaks to make code more pythonic
+
+- Update to version 4.0.1
+  * Fix bug in setup.py; Now publishable
+
+- Update to version 4.0.0
+  * Coroutines now work with .once Wrapped listener is removed prior to hook
+  * execution rather than after for synchronous .once handlers
+- Add LICENSE file from upstream
+
+-------------------------------------------------------------------
+Tue Sep  5 15:17:34 UTC 2017 - alarrosa@suse.com
+
+- Initial release of python-pyee 3.0.3 

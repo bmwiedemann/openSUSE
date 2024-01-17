@@ -1,0 +1,27 @@
+From 222d8f1b5c47408900638955b094b6a6e28dcc20 Mon Sep 17 00:00:00 2001
+From: Hans Breuer <hans@breuer.org>
+Date: Sun, 20 May 2012 17:35:26 +0000
+Subject: Bug 675495 - Compile error with libEMF on 64bit
+
+We have to define STRICT to make libemf/64 work. Otherwise there is
+wmf.cpp:1383:40: error: cast from 'void*' to 'W32::HDC' loses precision
+---
+Index: dia-0.97.2/plug-ins/wmf/wmf.cpp
+===================================================================
+--- dia-0.97.2.orig/plug-ins/wmf/wmf.cpp
++++ dia-0.97.2/plug-ins/wmf/wmf.cpp
+@@ -53,9 +53,14 @@ typedef W32::LOGFONTW LOGFONTW;
+ #include <pango/pangowin32.h>
+ 
+ #elif HAVE_LIBEMF
++/* We have to define STRICT to make libemf/64 work. Otherwise there is
++wmf.cpp:1383:40: error: cast from 'void*' to 'W32::HDC' loses precision
++ */
++#define STRICT
+   namespace W32 {
+ #  include <emf.h>
+   }
++#undef STRICT
+ #else
+ #  include "wmf_gdi.h"
+ #  define SAVE_EMF

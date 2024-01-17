@@ -1,0 +1,5 @@
+<package name="vsgExamples" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="games" package="vsgExamples"/>
+</package>

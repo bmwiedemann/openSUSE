@@ -1,0 +1,241 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a1b8b4c1e470ac202a06e8342421848f</srcmd5>
+    <version>2.8.0</version>
+    <time>1453416124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>350690</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6639972c349c850794ec14d28a8ec427</srcmd5>
+    <version>3.0.0</version>
+    <time>1461855402</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>391505</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>737166a579cc773c8cf8ed693bb9b335</srcmd5>
+    <version>3.0.1</version>
+    <time>1464853192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>399487</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f53c5a00d5b722fc00eeefeec7259dc4</srcmd5>
+    <version>3.2.2</version>
+    <time>1479229268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>440221</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4c189ac4d8270e080cb974cde7043f68</srcmd5>
+    <version>3.2.3</version>
+    <time>1479503033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>440766</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6c4b8208379520da1256c955be70fed1</srcmd5>
+    <version>3.2.6</version>
+    <time>1480342168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>442058</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>184ceccfd1258c3b8f3fe4fcfd033328</srcmd5>
+    <version>3.2.13</version>
+    <time>1484041476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>448241</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8c74016a77c8730bd7abe078db7ceeb2</srcmd5>
+    <version>3.4.0</version>
+    <time>1495883689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>493348</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1ea0a5ed95e26a9f72cad5bd1a136e78</srcmd5>
+    <version>3.4.1</version>
+    <time>1498485411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>506202</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ec0e7783b54ec407b52939d7e6dcce0f</srcmd5>
+    <version>3.4.2</version>
+    <time>1503393062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>518013</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6c111fe2cb53efca709de37d9164ae0a</srcmd5>
+    <version>3.4.3</version>
+    <time>1508876661</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>536036</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c20230e388c9afafe99fa37376a7bb32</srcmd5>
+    <version>3.6.1</version>
+    <time>1510660548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540369</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f951bb5af7de6b515cf7f4fbba5acd6b</srcmd5>
+    <version>3.8.0</version>
+    <time>1524742634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599333</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>468f2a03812532b32b3001be9c4a9e77</srcmd5>
+    <version>3.8.1</version>
+    <time>1526023068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606149</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>df1b6a3a472b20924796becc653e7a6d</srcmd5>
+    <version>3.8.2</version>
+    <time>1530866620</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620928</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b377d823da2d994183521b9ca5d5fa10</srcmd5>
+    <version>3.8.3</version>
+    <time>1539869756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.3.</comment>
+    <requestid>642666</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>99b52157dd3fd85c4182962e82b059e2</srcmd5>
+    <version>4.2.0</version>
+    <time>1563455975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713826</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0819851912cfe2312f53dca4f52d9392</srcmd5>
+    <version>4.4.1</version>
+    <time>1584447058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785766</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3a41ac6be356469c0f8bdf33f8117b38</srcmd5>
+    <version>4.6.0</version>
+    <time>1601996953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839618</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>aa2b6313a5099efd717ffd7fe6b279ea</srcmd5>
+    <version>4.8.0</version>
+    <time>1607876994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.0.
+  * Build: Only generate python bytecode during builds with no 
+    temporary install folder.  Package managers should handle this
+    otherwise.
+  * use debhelper 11 for integrated meson support
+  * build: Don't rely on debian magic to install the correct pam 
+    file.
+  * Fix meson syntax error when xinerama support is disabled.
+  * build: use datadir in define_variable for dbus_services_dir
+  * album art: Adjust the album art url for spotify.
+</comment>
+    <requestid>855375</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ba7d0dee5f56d44e1856193be791af0f</srcmd5>
+    <version>5.0.3</version>
+    <time>1624387496</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>900701</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d958dec233a877f1511ad08f8a22d13f</srcmd5>
+    <version>5.0.6</version>
+    <time>1625115954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903292</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>249043469d00eb968a72990cab04914b</srcmd5>
+    <version>5.6.2</version>
+    <time>1670333008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040424</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>915c9f608b8e34f8c903dd2ee70eb3c3</srcmd5>
+    <version>5.6.2</version>
+    <time>1673724705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058311</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4bc5810fef8c12e3717974cd21c5597f</srcmd5>
+    <version>5.6.3</version>
+    <time>1674324664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060063</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e9b597cf92751cf0b770e32dd8029ceb</srcmd5>
+    <version>5.8.0</version>
+    <time>1686506079</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1091839</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8dc61dd5bb5a4c11e7cd2855a68c119e</srcmd5>
+    <version>6.0.0</version>
+    <time>1701632917</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * Don't use libaccountsservice, which can block startup.
+  * Update issue templates.
+  * Fix meson.build deprecations up to 0.56.0
+  * Disable screensaver in wayland sessions
+  * muffinClient.py: Fix typo and clean up Python
+  * cinnamon-screensaver-command: Only try an action if the proxy
+    activation was successful.
+
+  * journal fix (#398)
+  * Build: Only generate python bytecode during builds with no
+  * build: Don't rely on debian magic to install the correct pam
+  * fix segfault due to wrong object being destroyed
+  * Wrap away message and don't let it touch the borders</comment>
+    <requestid>1128874</requestid>
+  </revision>
+</revisionlist>

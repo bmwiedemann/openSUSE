@@ -1,0 +1,6 @@
+<package name="hwinfo" project="openSUSE:Factory">
+  <title>Hardware Library</title>
+  <description>A simple program that lists results from the hardware detection
+library.</description>
+  <devel project="system:install:head" package="hwinfo"/>
+</package>

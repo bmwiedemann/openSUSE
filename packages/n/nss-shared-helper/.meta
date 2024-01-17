@@ -1,0 +1,6 @@
+<package name="nss-shared-helper" project="openSUSE:Factory">
+  <title>Helper functions for sharing NSS database</title>
+  <description>This library provides helper functions for programs that want to share
+an NSS crypto database.</description>
+  <devel project="mozilla:Factory" package="nss-shared-helper"/>
+</package>

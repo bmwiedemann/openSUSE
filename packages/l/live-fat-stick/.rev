@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aad5cae3fa90d2855a721106a4bd4e37</srcmd5>
+    <version>0.3.1</version>
+    <time>1416347076</time>
+    <user>dimstar_suse</user>
+    <comment>live-fat-stick allow to write ISO image to USB key (FAT system) while not destroing data in it</comment>
+    <requestid>260586</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>913926de6882ddbab8bfba224c177448</srcmd5>
+    <version>0.3.1</version>
+    <time>1425892151</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>289539</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ef946994332ece540a3c9ca15bbcc36f</srcmd5>
+    <version>0.3.1</version>
+    <time>1437478037</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317275</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>712fdf061df37eb46e2b3fdac487584b</srcmd5>
+    <version>0.4.0</version>
+    <time>1451674049</time>
+    <user>dimstar_suse</user>
+    <comment>Add live-grub-stick to create multiboot USB using grub2 
+</comment>
+    <requestid>350747</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3d1e9432806b425ebd822631c8d19f8b</srcmd5>
+    <version>0.4.0</version>
+    <time>1452611565</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352734</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ebe36328cb5cfa981b3acfae684e7e65</srcmd5>
+    <version>0.4.0</version>
+    <time>1468482514</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>407724</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>220011653448dad7eeda8c19a7b4f7a2</srcmd5>
+    <version>0.4.0</version>
+    <time>1469382793</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>412761</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>de80f4ab08668d17ed7dc39154579e9e</srcmd5>
+    <version>0.4.1</version>
+    <time>1471428358</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>419586</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>95597dbd0f99ca7cebe888d53ce8d3d4</srcmd5>
+    <version>0.4.2</version>
+    <time>1498485222</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505864</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9630bf77804cafbb6431ed64c80e0422</srcmd5>
+    <version>0.4.2</version>
+    <time>1518282008</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>574938</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b1151deeb8cc922c71fffff4aac70a8c</srcmd5>
+    <version>0.4.2</version>
+    <time>1528111336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613762</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>9dc86c9c41f99da9fc890047f3f3faf2</srcmd5>
+    <version>0.4.2</version>
+    <time>1550151181</time>
+    <user>dimstar_suse</user>
+    <comment>- The description is not supposed to be a manual: trim instructions.
+- Replace %__-type macro indirections.
+- Use noun phrase in summaries.
+- Update descriptions.
+- Add lsb-release requirement, fixes BSC #1093817
+- Remove fuseios requirement
+- Support for ix86 arch on openSUSE
+- Support new kiwi-live for newer openSUSE images
+- tag 0.4.2 version
+- use --force to install grub
+- more explanations in GUI
+- live-usb-gui only show available scripts
+- get correct exit status, xterm always returned 0
+- compare image size after copy
+- Check iso size, vfat does not support file larger than 4G
+- live-grub-stick support openSUSE install media iso on
+  non-vfat partition
+- Require qemu-tools to create cow file for persistence
+- added --suse-persistent and --ubuntu-persistent
+  with these options a cowfile is created to store changes
+  made while in live mode
+- many cross distribution fixes
+- Shortname for Li-f-e
+- Add syslinux availability only on ExclusiveArch ix86 x86_64
+  as suggested by dmueller@suse.com
+- disable suse specific macros on other distros
+- more cleanups, remove duplicated mounts, check before mounting
+- Add ipxe network boot support
+- Add live-grub-stick to create multiboot USB using grub2
+- fixes for isoname and path with spaces in them
+- use by-path instead of by-id to detect usb storage devices
+- Fix live-fat-stick then ISO filename contains spaces
+- use fuseiso to mount iso image instead of mount
+- dd_rescue optimization
+- live-fat-stick now supports --isohybrid option
+- live-usb-gui supports isohybrid and be nice
+- minor fixes
+- add live-usb-gui
+- supports ubuntu and fedora as well, see live-fat-stick -h
+  for syntax change
+- better handling of iso already on stick
+- cleanup, allow using iso already on usb stick
+- live-fat-stick -l to list possible usb sticks
+- initial package
+</comment>
+    <requestid>674438</requestid>
+  </revision>
+</revisionlist>

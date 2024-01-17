@@ -1,0 +1,13 @@
+<services>
+    <service mode="disabled" name="tar_scm">
+        <param name="scm">svn</param>
+        <param name="url">svn://svn.code.sf.net/p/plib/code/trunk</param>
+        <param name="filename">plib</param>
+        <param name="versionprefix">1.8.5+svn</param>
+    </service>
+    <service mode="disabled" name="recompress">
+        <param name="file">*svn*.tar</param>
+        <param name="compression">xz</param>
+    </service>
+    <service mode="disabled" name="set_version"/>
+</services>

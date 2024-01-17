@@ -1,0 +1,10 @@
+<package name="tinyxml" project="openSUSE:Factory">
+  <title>A simple, small, C++ XML parser</title>
+  <description>TinyXML is a simple, small, C++ XML parser that can be easily integrating
+into other programs. Have you ever found yourself writing a text file parser
+every time you needed to save human readable data or serialize objects?
+TinyXML solves the text I/O file once and for all.
+(Or, as a friend said, ends the Just Another Text File Parser problem.)</description>
+  <devel project="devel:libraries:c_c++" package="tinyxml"/>
+  <url>http://sourceforge.net/projects/tinyxml</url>
+</package>

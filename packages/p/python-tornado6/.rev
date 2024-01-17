@@ -1,0 +1,187 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63819717db50d86e5c9af3515b83239b</srcmd5>
+    <version>6.0.3</version>
+    <time>1573164741</time>
+    <user>dimstar_suse</user>
+    <comment>Add py-tornado5</comment>
+    <requestid>737143</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fb25c3625a20e68af15c74fb58043dad</srcmd5>
+    <version>6.0.3</version>
+    <time>1574414733</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ignore-resourcewarning-doctests.patch to ignore ResourceWarnings
+  when running doctests.
+- Use %autopatch macro instead of specific patch number macros
+
+- Define TRAVIS to disable unreliable tests
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>749161</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5d179bc485210478ced5df4398837746</srcmd5>
+    <version>6.0.4</version>
+    <time>1585264793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783780</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d6159d5fc6b8548833bb984c225f10de</srcmd5>
+    <version>6.0.4</version>
+    <time>1588971640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800447</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af7a1cac744d6f44a106fda1b5d450f1</srcmd5>
+    <version>6.1</version>
+    <time>1612466578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868432</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3f04dd9f11e77544210bd016410e153d</srcmd5>
+    <version>6.1</version>
+    <time>1613427017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870435</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>4d6edc3e0dc181711674f7421104740f</srcmd5>
+    <version>6.1</version>
+    <time>1628282671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910351</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>3d3f70e4d380fd9f58c1c4d60668b621</srcmd5>
+    <version>6.1</version>
+    <time>1639424507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940021</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>47b9f6bb1cda3631d12f3efc87ad7da2</srcmd5>
+    <version>6.1</version>
+    <time>1651272267</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-multiheader-http-test.patch:
+  * Do not test multi-line headers.</comment>
+    <requestid>973568</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f1499154d0ca8bc4322aed70822aeb47</srcmd5>
+    <version>6.2</version>
+    <time>1661685131</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999454</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>162960fede0de017081917e3ec9046f1</srcmd5>
+    <version>6.2</version>
+    <time>1682193500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081738</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3a4abef622f88dd927775855ae88309b</srcmd5>
+    <version>6.3.2</version>
+    <time>1685743594</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 6.3.2
+  - Security improvements
+    - Fixed an open redirect vulnerability in StaticFileHandler
+      under certain configurations.
+  - ``tornado.web``
+    - `.RequestHandler.set_cookie` once again accepts capitalized
+      keyword arguments for backwards compatibility. This is
+      deprecated and in Tornado 7.0 only lowercase arguments will
+      be accepted.
+  - What's new in Tornado 6.3.0
+    - The new `.Application` setting ``xsrf_cookie_name``
+      can now be used to take advantage of the ``__Host``
+      cookie prefix for improved security.  To use it, add
+      ``{&quot;xsrf_cookie_name&quot;: &quot;__Host-xsrf&quot;, &quot;xsrf_cookie_kwargs&quot;:
+      {&quot;secure&quot;: True}}`` to your `.Application` settings. Note
+      that this feature currently only works when HTTPS is used.
+    - `.WSGIContainer` now supports running the application in
+      a ``ThreadPoolExecutor`` so the event loop is no longer
+      blocked.
+    - `.AsyncTestCase` and `.AsyncHTTPTestCase`, which were
+      deprecated in Tornado 6.2, are no longer deprecated.
+    - WebSockets are now much faster at receiving large messages
+      split into many fragments.
+  - General changes
+    - Python 3.7 is no longer supported; the minimum supported  .
+      Python version is 3.8 Python 3.12 is now supported        .
+    - To avoid spurious deprecation warnings, users of Python
+      3.10 should upgrade to at least version 3.10.9, and users
+      of Python 3.11 should upgrade to at least version 3.11.1.
+    - Tornado submodules are now imported automatically on</comment>
+    <requestid>1090058</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0f46af321a2633724527f64f33cee1a6</srcmd5>
+    <version>6.3.2</version>
+    <time>1691414940</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 6.3.2 (bsc#1211741, CVE-2023-28370)</comment>
+    <requestid>1102687</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>aaee0e07c61e9f0c012ff275ed58b796</srcmd5>
+    <version>6.3.3</version>
+    <time>1695758421</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112880</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6a0d4b53760583c189a1f089866b3c3d</srcmd5>
+    <version>6.4</version>
+    <time>1704491981</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.4:
+  * https://www.tornadoweb.org/en/stable/releases/v6.4.0.html
+  * Python 3.12 is now supported.
+- drop py312-datetime.patch (upstream)
+
+  * The Content-Length header and chunked Transfer-Encoding sizes
+    are now parsed more strictly (according to the relevant RFCs)
+    to avoid potential request-smuggling vulnerabilities when
+  * Do not test multi-line headers.
+- require python-backports.ssl_hostname only on python 2.x
+    or 3.2.
+  * This release fixes a path traversal vulnerability in StaticFileHandler,
+  in which files whose names started with the static_path directory
+  * SSLIOStream.connect and IOStream.start_tls now
+  * Certificate validation will now use the system CA root certificates
+    instead of certifi when possible (i.e. Python 2.7.9+ or 3.4+).
+  * The default SSL configuration has become stricter,
+    using ssl.create_default_context where available on the client side.
+    (On the server side, applications are encouraged to migrate from
+  * The deprecated classes in the tornado.auth module, GoogleMixin,
+  + See more release details at
+- added python3 package</comment>
+    <requestid>1136473</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>8a1f3d9dde0e9ccc6ad777a2b7bac4e9</srcmd5>
+    <version>6.4</version>
+    <time>1705099476</time>
+    <user>anag+factory</user>
+    <comment>- Add patch openssl-3.2.patch gh#tornadoweb/tornado#3355</comment>
+    <requestid>1138133</requestid>
+  </revision>
+</revisionlist>

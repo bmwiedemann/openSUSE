@@ -1,0 +1,265 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e6a557de5d38a63dd3859ab43d1f351a</srcmd5>
+    <version>0.9.14</version>
+    <time>1537360244</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636391</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6e32722ec61121202c8bcd8b2a3aec6b</srcmd5>
+    <version>0.9.15</version>
+    <time>1554189798</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.9.15</comment>
+    <requestid>690398</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a9777538e2cb306708afd1031461081</srcmd5>
+    <version>0.9.16</version>
+    <time>1601044351</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.9.16
+  Fixes:
+  * The SIGINT handling has been fixed.
+  * The lvm_menu example is fixed.
+  * Some memory allocation issues have been corrected.
+  * The last example in the man page now works correctly.
+  * The manual has been cleaned and corrected.
+  * Missing headers has been added.
+  * The List management code has been corrected and improved.
+  * Invalid UTF-8 sequences entered using \u are now handled
+    correctly.
+  * Unreachable code has been removed.
+  * As xwcscasecmp is missing in C99, a local version is now used.
+  * The search timeout now works correctly.
+  Improvements:
+  * Option management has been completely rewritten to use a new,
+    more flexible system (github.com/p-gen/ctxopt).
+  * The horizontal and vertical scrolling symbols are now visually
+    consistent.
+  * An updated version of autotools is now used.
+  * Wide mode is now allowed in column mode.
+  * Line delimiters can now be defined to break lines in
+    tabulation mode.
+  * A set of UTF-8 characters can now be ignored as input.
+  * Substitution character for non-printable characters can now be
+    changed.
+  * -N and -U options can now have multiple arguments.
+  * Fuzzy and substring searches now ignore leading and
+    trailing blanks.
+  * Unicode codepoints can now be entered using the new \U
+    notation.
+  * smenu has been optimized to support networks with high latency.
+  Misc:
+  * A note in the README to thank the packagers has been added.
+  * The code has been adjusted to conform to C99.
+  * The code has been cleaned up in many places.
+</comment>
+    <requestid>835770</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>011e23ce17359823e700cae5796b42a5</srcmd5>
+    <version>0.9.17</version>
+    <time>1612272300</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.9.17                                                                 
+* Fixes:                                                                     
+  - The method to get the cursor location has been fixed and improved.           
+  - A display problem when the title takes too many lines has been fixed.        
+  - A failure when reopening /dev/tty is now fatal.                              
+  - Interesting signals are now trapped only when needed.                        
+  - The refresh mechanism when resizing the terminal has been fixed              
+    and improved.                                                                
+  - \U does not need too be escaped anymore.                                     
+* Improvements:                                                                  
+  - The -Q|-ignore_quotes option has been added to provide a way to              
+    ignore quotes when splitting the input stream/file into words.               
+  - The -!|-int|-int_string option has been added to define a string to
+    be displayed on stdout when ^C is entered during a smenu session.
+  - The usage text is now displayed in case of an error on the command
+    line.
+  - The code to create include/exclude RE patterns has been simplified.          
+  - smenu now mimics the Unix shell signal processing.                           
+* Misc:                                                                          
+  - The availability of str(n)dup is now checked at compile time.                
+  - Tests for RE patterns/inv. character have bee added.                         
+  - The obsolete autogen.sh script has been removed.                             
+  - github's ctxopt commit f779fb8 is now used.                                  
+  - The code is now a little more readable. 
+</comment>
+    <requestid>868359</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c0dab2a05f30d4af7cc7eac6e5174dd5</srcmd5>
+    <version>0.9.18</version>
+    <time>1623098702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.18:
+  Fixes:
+  * A mismatch between signed and unsigned chars has been corrected.
+  * A fatal error in the direct access code has been corrected.
+  * A logic error that could cause a crash has been fixed.
+  Improvements:
+  * The user manual has been updated.
+  * An early substitution option -ES similar to -S has been added.
+  * Special levels are now considered when displaying searched words.
+  * An option to change the behaviour of the multi-selection mode has
+    been added.
+  * 4 more special levels (-6, -7, -8 and -9) are now available.
+  * The missing blink attribute has been added.
+  * The possibility to overload initial limits has been added.
+  * A new search session now starts from scratch by default.
+  * The integer checking function is now more reliable.
+  * A better code for validating UTF-8 byte sequences is now used.
+  * Tests have been added.
+  Misc:
+  * A missing licence reminder in the usage.c file has been added.
+  * An example in the README file has been added.
+  * Error messages are now more consistent.</comment>
+    <requestid>898176</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>09ab0eb686b45954f5deb494f5a5ef3e</srcmd5>
+    <version>0.9.19</version>
+    <time>1639267073</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.9.19
+* Fixes:
+  * Prevent an attempt to free memory that has already been freed.
+  * Prevent memory leaks when requesting help.
+  * Correctly handle the order of invocation of -i/-e options.
+  * Apply a PR from h1z1 with a small correction.
+  * Fix the UTF-8 byte sequence generation from a given UCS-4 codepoint.
+  * Many small fixes.
+* Improvements:
+  * Improve the documentation.
+  * Improve compatibility with some older compilers.
+  * Added the ability to set a global inactivity timeout.
+  * Improve the reliability of the code.
+* Miscellaneous:
+  * Removed the generation of the SUSE specific specfile.
+  * Many typos have been corrected.
+  * Various code simplifications.
+</comment>
+    <requestid>939979</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0c809c37c522a440392424acb598c160</srcmd5>
+    <version>1.0.0.RC1</version>
+    <time>1653152772</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.0.0.RC1
+* Fixes:
+  * Fix configure.ac for autoconf &gt;= 2.70.
+  * Fixed a bug in the bash example in the README.
+  * Synchronization with the commit 9ddac73 of ctxopt on github.
+  * Use the right format to print size_t values (C99).
+  * Add a missing break.
+  * Fix a potential segfault when allocating .ini paths.
+  * Fixed color and attribute parsing.
+  * Fix some tests.
+* Improvements:
+  * Update to autoconf 2.71.
+  * Added &quot;invisible&quot; style attribute (n).
+  * Prevent smenu from running in the background.
+  * Catch and handle SIGPIPE signal.
+  * Improve the manual.
+* Miscellaneous:
+  * Various code simplifications.
+  * Removal of some unnecessary parameter.
+  * Removal of unnecessary code.
+  * Fixed typos in the README file.
+</comment>
+    <requestid>978322</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>059002899780565b802c8fbc8d9d0358</srcmd5>
+    <version>1.0.0</version>
+    <time>1660051676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Fix and improve the content of the integrated help system.
+  * Allow multiple instances of the &quot;-limits&quot; option.</comment>
+    <requestid>993910</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9ddfb5cc19e04fd311bc8f60c61e05e2</srcmd5>
+    <version>1.1.0</version>
+    <time>1665844686</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.1.0
+* Fixes:
+  * Fix and improve the instant help (?) display.
+  * Fix and improve the substitution code.
+  * Fix and simplify the &quot;End&quot; key management code.
+* Improvements:
+  * Add mouse support.
+  * Allows to shift the window's content horizontally without moving the cursor.
+  * Small adjustments in UTF-8 symbols and comments.
+  * Improve the documentation.
+* Miscellaneous:
+  * Various code simplifications. 
+</comment>
+    <requestid>1011032</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>898ee9d597e22450f352ca9d8c219918</srcmd5>
+    <version>1.2.0</version>
+    <time>1673281412</time>
+    <user>dimstar_suse</user>
+    <comment> Version 1.2.0                                                                  
+* Fixes:                                                                         
+  * Correction of word selections with the mouse in long lines.                  
+  * Fixed support for the double-click mouse delay setting.                      
+  * Prevention of spurious commands being sent by the mouse paste function.      
+  * Allowed compilation with old glibc versions.                                 
+* Improvements:                                                                  
+  * Redesign of the multiple selection mechanism with the possibility to undo.   
+  * Improved initialization of mouse tracking modes.                             
+* Miscellaneous:                                                                 
+  * Corrections and improvements to the manual.                                  
+  * Removal of dead code. 
+</comment>
+    <requestid>1056907</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>67656bcf14303a45beef7413c90f2f87</srcmd5>
+    <version>1.3.0</version>
+    <time>1692795485</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.3.0                                                                  
+* Fixes:                                                                         
+  * Correction of an error in the calculation of the size of the longest word.   
+  * Corrects the calculation of the space taken by the first direct access       
+    numbers when it is explicitly specified.                                     
+  * Increase the size of the buffer to store the scancode to prevent it          
+    being truncated.                                                             
+  * Make decoding the column or row number more robust in command line analysis. 
+  * Prevents the introduction of colours outside the range supported by          
+    the terminal.                                                                
+* Improvements:                                                                  
+  * Add the -sb|-sbw|-show_blank_words option to help display all words          
+    composed entirely of spaces.                                                 
+  * Allow selection intervals to have no start or end number.                    
+  * In column mode, words can now be aligned left/right or centred.              
+  * When numbering is active, unnumbered words are now always filled in with     
+    blanks in col/line/tab mode.                                                 
+  * The -start_pattern option has been extended so that all words matching       
+    the pattern can be searched directly using the Next/previous keys,           
+    without having to enter search mode.                                         
+  * The order in which -C/-R elements appear on the command line is now          
+    taken into account.                                                          
+  * In column mode, columns and/or rows can have their own colour                
+    and/or style.                                                                
+ Miscellaneous:                                                                  
+  * Corrections and improvements to the manual.                                  
+  * Removal of dead code.                                                        
+  * Addition of an FAQ entry on alignments.                                      
+  * The memory consumption has been reduced. 
+  * Removal of files mistakenly left in the package. 
+</comment>
+    <requestid>1105254</requestid>
+  </revision>
+</revisionlist>

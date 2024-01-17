@@ -1,0 +1,20 @@
+Index: gluegen-v2.3.1/make/build-test.xml
+===================================================================
+--- gluegen-v2.3.1.orig/make/build-test.xml
++++ gluegen-v2.3.1/make/build-test.xml
+@@ -84,6 +84,7 @@
+             <pathelement location="${junit.jar}" />
+             <pathelement location="${semver.jar}" />
+             <pathelement location="${gluegen.jar}" />
++	    <pathelement location="${antlr.jar}" />
+         </path>
+ 
+         <path id="junit.run.classpath">
+@@ -94,6 +95,7 @@
+             <pathelement location="${gluegen.jar}" />
+             <pathelement location="${gluegen-test-util.jar}" />
+             <pathelement location="${gluegen-test.jar}" />
++	    <pathelement location="${antlr.jar}" />
+         </path>
+         <property name="junit.run.jars" value="${junit.jar}${path.separator}${ant.jar}${path.separator}${semver.jar}${path.separator}${TestJarsInJar.jar}${path.separator}${gluegen.root}/${rootrel.build}/gluegen-rt.jar${path.separator}${gluegen.root}/${rootrel.build}/gluegen.jar${path.separator}${build}/gluegen-test-util.jar${path.separator}${build_t}/gluegen-test.jar"/>
+         <property name="junit.run.remote.jars" value="${junit.jar}${path.separator}${env.TARGET_ANT_HOME}/lib/ant.jar${path.separator}${env.TARGET_ANT_HOME}/lib/ant-junit.jar${path.separator}${env.TARGET_ANT_HOME}/lib/ant-junit4.jar${path.separator}${semver.jar}${path.separator}${gluegen.root}/make/lib/TestJarsInJar.jar${path.separator}${gluegen.root}/${rootrel.build}/gluegen-rt.jar${path.separator}${gluegen.root}/${rootrel.build}/gluegen.jar${path.separator}${build}/gluegen-test-util.jar${path.separator}${build_t}/gluegen-test.jar"/>

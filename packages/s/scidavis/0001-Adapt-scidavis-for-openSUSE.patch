@@ -1,0 +1,175 @@
+From bef81a09e0af1033bd3daac8441e094d9068877a Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Sat, 27 Apr 2019 19:50:04 +0200
+Subject: [PATCH] Adapt scidavis for openSUSE
+
+- install the python config file to /etc/scidavis/
+- Add a (working) option to fix the lib vs. lib64 installation
+- Update paths for the current qwt5-qt5 and qwtplot3d-qt5 packages
+- Fix the Qt5 linguist executable names
+---
+ config.pri                                    | 21 ++++++++++---------
+ fitPlugins/exp_saturation/exp_saturation.pro  |  1 -
+ fitPlugins/explin/explin.pro                  |  1 -
+ fitPlugins/fitRational0/fitRational0.pro      |  1 -
+ fitPlugins/fitRational1/fitRational1.pro      |  1 -
+ .../planck_wavelength/planck_wavelength.pro   |  1 -
+ libscidavis/libscidavis.pro                   |  1 -
+ 7 files changed, 11 insertions(+), 16 deletions(-)
+
+Index: scidavis-2.9.0/config.pri
+===================================================================
+--- scidavis-2.9.0.orig/config.pri
++++ scidavis-2.9.0/config.pri
+@@ -74,6 +74,11 @@ unix:message(Building with preset $$PRES
+ ###            and/or copy files to the desired locations by other means.      #
+ ################################################################################
+ 
++### 64bit Linux only suffix
++contains(64BITS, 1) { libsuff=64 }
++
++unix:LIBS         += -L/usr/lib$${libsuff}
++
+ unix {# Linux / MacOS X
+ 	contains(PRESET, self_contained) {
+       ### Unless you're trying to build a self-contained bundle, see the
+@@ -120,12 +125,12 @@ unix {# Linux / MacOS X
+ 		### directory specified here or somewhere else in the python path (sys.path) where "import" can find it
+ 
+ 		### where scidavisrc.py is searched for at runtime
+-		pythonconfig.path = "$$INSTALLBASE/../etc"
++		pythonconfig.path = "$$INSTALLBASE/../etc/scidavis"
+ 		### where the scidavisUtil python module is searched for at runtime
+ 		pythonutils.path = "$$INSTALLBASE/share/scidavis"
+ 
+ 		### where plugins are expected by default
+-		plugins.path = "$$INSTALLBASE/lib/scidavis/plugins"
++		plugins.path = "$$INSTALLBASE/lib$${libsuff}/scidavis/plugins"
+ 	}
+ 	
+ ###################### DESKTOP INTEGRATION ##################################	
+@@ -181,10 +186,6 @@ win32 {# Windows
+ 	plugins.path = "$$INSTALLBASE/fitPlugins"
+ }
+ 
+-### 64bit Linux only suffix
+-linux-g++-64: libsuff = 64 
+-unix:LIBS         += -L/usr/lib$${libsuff}
+-
+ ################################################################################
+ ### Optional features                                                          #
+ ################################################################################
+@@ -281,6 +282,8 @@ contains(PRESET, linux_package) {
+         exists(/usr/include/qt5/qwtplot3d-qt5) {INCLUDEPATH+=/usr/include/qt5/qwtplot3d-qt5}
+         exists(/usr/include/qwt5-qt5) {INCLUDEPATH+=/usr/include/qwt5-qt5}
+         exists(/usr/include/qwtplot3d) {INCLUDEPATH+=/usr/include/qwtplot3d}
++        exists(/usr/include/qt5/qwt5)      {INCLUDEPATH+=/usr/include/qt5/qwt5}
++        exists(/usr/include/qt5/qwtplot3d) {INCLUDEPATH+=/usr/include/qt5/qwtplot3d}
+ 
+         system (ls /usr/lib*/libqwt5-qt5.so) {LIBS+=-lqwt5-qt5}
+         system (ls /usr/lib*/*/libqwt5-qt5.so) {LIBS+=-lqwt5-qt5}
+Index: scidavis-2.9.0/fitPlugins/exp_saturation/exp_saturation.pro
+===================================================================
+--- scidavis-2.9.0.orig/fitPlugins/exp_saturation/exp_saturation.pro
++++ scidavis-2.9.0/fitPlugins/exp_saturation/exp_saturation.pro
+@@ -1,5 +1,4 @@
+ QMAKE_PROJECT_DEPTH = 0
+-linux-g++-64: libsuff=64
+ 
+ include(../../config.pri)
+ TARGET = exp_saturation
+Index: scidavis-2.9.0/fitPlugins/explin/explin.pro
+===================================================================
+--- scidavis-2.9.0.orig/fitPlugins/explin/explin.pro
++++ scidavis-2.9.0/fitPlugins/explin/explin.pro
+@@ -1,5 +1,4 @@
+ QMAKE_PROJECT_DEPTH = 0
+-linux-g++-64: libsuff=64
+ 
+ include(../../config.pri)
+ TARGET = explin
+Index: scidavis-2.9.0/fitPlugins/fitRational0/fitRational0.pro
+===================================================================
+--- scidavis-2.9.0.orig/fitPlugins/fitRational0/fitRational0.pro
++++ scidavis-2.9.0/fitPlugins/fitRational0/fitRational0.pro
+@@ -1,5 +1,4 @@
+ QMAKE_PROJECT_DEPTH = 0
+-linux-g++-64: libsuff=64
+ 
+ include(../../config.pri)
+ TARGET            = fitRational0
+Index: scidavis-2.9.0/fitPlugins/fitRational1/fitRational1.pro
+===================================================================
+--- scidavis-2.9.0.orig/fitPlugins/fitRational1/fitRational1.pro
++++ scidavis-2.9.0/fitPlugins/fitRational1/fitRational1.pro
+@@ -1,5 +1,4 @@
+ QMAKE_PROJECT_DEPTH = 0
+-linux-g++-64: libsuff=64
+ 
+ include(../../config.pri)
+ TARGET            = fitRational1
+Index: scidavis-2.9.0/fitPlugins/planck_wavelength/planck_wavelength.pro
+===================================================================
+--- scidavis-2.9.0.orig/fitPlugins/planck_wavelength/planck_wavelength.pro
++++ scidavis-2.9.0/fitPlugins/planck_wavelength/planck_wavelength.pro
+@@ -1,5 +1,4 @@
+ QMAKE_PROJECT_DEPTH = 0
+-linux-g++-64: libsuff=64
+ 
+ include(../../config.pri)
+ TARGET = planck_wavelength
+Index: scidavis-2.9.0/libscidavis/libscidavis.pro
+===================================================================
+--- scidavis-2.9.0.orig/libscidavis/libscidavis.pro
++++ scidavis-2.9.0/libscidavis/libscidavis.pro
+@@ -47,6 +47,5 @@ include( muparser.pri )
+ python {include( python.pri )}
+ 
+ 
+-
+ #############################################################################
+ #############################################################################
+Index: scidavis-2.9.0/libscidavis/python-sipcmd.py
+===================================================================
+--- scidavis-2.9.0.orig/libscidavis/python-sipcmd.py
++++ scidavis-2.9.0/libscidavis/python-sipcmd.py
+@@ -28,8 +28,8 @@
+ 
+ import os
+ import warnings
+-import sys, sipconfig
+-config = sipconfig.Configuration()
++import sys
++import sip
+ 
+ try:
+     pyqt = sys.argv[1]
+@@ -44,22 +44,22 @@ try:
+ except ImportError:
+     pass
+ 
+-sipBin = config.sip_bin
+-sipDir = config.default_sip_dir+'/'+pyqt
++sipBin = '/usr/bin/sip'
++sipDir = '/usr/lib64/python3.8/site-packages/PyQt5/bindings/'
+ if not os.path.exists(sipDir):
+     if sys.version_info[0] >= 3 and sys.version_info[1] >= 8 and pyqt == 'PyQt5':
+         from importlib.metadata import distribution
+         dist = distribution(pyqt)
+-        sip = [p for p in dist.files if p.name == 'QtCoremod.sip']
+-        assert len(sip) == 1
+-        sipDir = str(dist.locate_file(sip[0]).parent.parent)
++        _sip = [p for p in dist.files if p.name == 'QtCoremod.sip']
++        assert len(_sip) == 1
++        sipDir = str(dist.locate_file(_sip[0]).parent.parent)
+     else:
+         warnings.warn('sipDir does not exists, %s' % sipDir)
+ 
+ sipFlags =  PYQT_CONFIGURATION['sip_flags']
+ 
+ flags = ["-I ../scidavis"]
+-if config.sip_version >= 0x040a00:
++if sip.SIP_VERSION >= 0x040a00:
+ 	# make use of docstring generation feature in SIP >= 4.10
+ 	flags.append("-o")
+ 

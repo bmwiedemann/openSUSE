@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Dec  8 16:13:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.1:
+  * Upgrade: relax attrs dependency version
+  * Breaking: trigger release with no changes
+  * Breaking: move internal client to qcs_api_client_internal
+    module
+  * Chore: QCS Schema [auto: qcs-api-docs]
+  * Update: Fix CI and regenerate clients
+  * Fix: token decoding without validation
+  * Update: regenerate client
+
+-------------------------------------------------------------------
+Sun Jan 29 15:02:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.21.3
+  * Chore: QCS Schema
+  * Upgrade: attrs 21
+  * Update: httpx to 0.23.0
+- Fix switch-to-pyrfc39999.patch: format datetime objects as
+  strings, not parse them!
+- Drop support-new-respx.patch
+
+-------------------------------------------------------------------
+Fri Aug 19 06:26:01 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial package for 0.21.1
+

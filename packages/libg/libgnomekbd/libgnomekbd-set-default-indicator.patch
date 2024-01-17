@@ -1,0 +1,13 @@
+Index: libgnomekbd-3.28.0/libgnomekbd/gkbd-keyboard-drawing.c
+===================================================================
+--- libgnomekbd-3.28.0.orig/libgnomekbd/gkbd-keyboard-drawing.c
++++ libgnomekbd-3.28.0/libgnomekbd/gkbd-keyboard-drawing.c
+@@ -2734,7 +2734,7 @@ gkbd_keyboard_drawing_dialog_set_layout
+ 					 XklConfigRegistry * registry,
+ 					 const gchar * full_layout)
+ {
+-	const gchar *layout_name = "?";
++	const gchar *layout_name = "default";
+ 	XklConfigItem *xki = xkl_config_item_new ();
+ 	gchar *layout = NULL, *variant = NULL;
+ 

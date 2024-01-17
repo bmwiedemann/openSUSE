@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Tue Aug 18 22:42:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We can finally use %pyunittest macro
+
+-------------------------------------------------------------------
+Wed Aug 12 23:31:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Run SPEC file through spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jun  4 08:18:19 UTC 2019 - pgajdos@suse.com
+
+- turn on the testsuite
+- added sources
+  + test.py
+
+-------------------------------------------------------------------
+Thu Aug  2 07:39:26 UTC 2018 - tchvatal@suse.com
+
+- Update to 1.2 release:
+  * Unicode 8.0 support
+  * Python3 support
+- Switch to singlespec
+- Install license
+
+-------------------------------------------------------------------
+Thu Jul 16 07:44:36 UTC 2015 - mcihar@suse.cz
+
+- Initial packaging
+

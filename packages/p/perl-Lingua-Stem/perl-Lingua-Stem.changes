@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Sun Sep 27 03:10:35 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.31
+   see /usr/share/doc/packages/perl-Lingua-Stem/Changes
+
+-------------------------------------------------------------------
+Sun Jun 21 03:10:46 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.30
+   see /usr/share/doc/packages/perl-Lingua-Stem/Changes
+
+          2.30 2020.06020 - Cleanup for initial upload to GitHub. Version
+                            numbers for all sub-modules synced on 2.30 for
+                            consistency. Maintainer updated. Build.PL and
+                            Makefile.PL updates. Addition of 'use warnings'
+                            to all files. POD encoding error fix.
+
+-------------------------------------------------------------------
+Wed Dec  3 09:34:10 UTC 2014 - coolo@suse.com
+
+- redo packaging
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:13 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Jul 15 11:00:26 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Fri Apr 30 10:19:07 UTC 2010 - lars@linux-schulserver.de
+
+- update to 0.84:
+  - Documentation fixes to the En stemmer and removal
+    of the accidentally included lib/Lingua/test.pl file
+    Thanks goes to Aaron Naiman for bringing the
+    documentation error to my attention and to
+    Alexandr Ciornii and 'kmx' for the pointing out
+    the problem with the test.pl file.
+
+-------------------------------------------------------------------
+Fri Aug 15 19:57:55 CEST 2008 - lrupp@suse.de
+
+- initial version 0.83
+

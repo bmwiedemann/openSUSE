@@ -1,0 +1,350 @@
+---
+ suse/LIESMICH             |  125 ++++++++++++++++++++++++++++++++++++++++++++++
+ suse/README               |  108 +++++++++++++++++++++++++++++++++++++++
+ suse/emacs/american.el    |    8 ++
+ suse/emacs/british.el     |    9 +++
+ suse/emacs/english.el     |    9 +++
+ suse/ispell-emacs-menu.el |   64 +++++++++++++++++++++++
+ 6 files changed, 323 insertions(+)
+
+--- suse/LIESMICH
++++ suse/LIESMICH	2016-02-12 11:02:35.326533721 +0000
+@@ -0,0 +1,125 @@
++
++  Kurzbeschreibung
++  ================
++
++Ispell ist ein schnelles bildschirmorientiertes Programm zur
++Überprüfung der Rechtschreibung.  Als Vorbild diente das spell
++Programm vom ITS (auf Twenex Systemen auch ispell genannt).
++Es zeigt gefundene Fehler im textuellen Kontext an und schlägt mögliche
++Verbesserungen vor.
++
++Im Vergleich mit dem UNIX-Programm spell ist ispell schneller und
++wesentlich einfacher zu benutzen. Ispell kann neben der englischen
++auch andere Sprachen. Ispell hat eine lange Geschichte, und viele
++Entwickler haben daran gearbeitet. Mehr über die Entwicklungsgeschichte
++finden Sie der Manual-Seite von ispell. 
++
++Die allgemeinste Gebrauchsweise ist `ispell filename'. In diesem Fall
++zeigt ispell jedes Wort, das nicht im Wörterbuch steht, in der
++obersten Zeile an und erlaubt es, dieses zu ändern. Stehen im
++Wörterbuch ähnlich geschriebene Wörter (solche, die sich nur durch
++einen Buchstaben, ein Paar von vertauschten Buchstaben oder
++Leerstellen unterscheiden), so werden diese in den darunterliegenden
++Zeilen angezeigt.  Ebenso schlägt ispell Wörter vor, welche vom
++gleichen Stamm abgeleitet werden. Die Zeile, die das Wort enthält, und
++die vorhergehende Zeile werden am unteren Rand des Bildschirms
++dargestellt.  Wenn möglich, wird das Wort invertiert dargestellt. Man
++kann nun das Wort vollständig ersetzen oder eines der vorgeschlagenen
++Wörter wählen.
++
++Die Default-Sprache ist Englisch, was durch die Environment-Variable
++DICTIONARY oder durch die Verwendung der Option `-d <Sprache>'
++geändert werden kann.  Durch die Option `-T <Format>' kann auf
++verschiedene Umlautformate bzw. Umlautkodierungen umgeschaltet werden.
++So ermöglicht `-T latin1' bei der deutsche Sprache das Lesen deutscher
++Umlaute nach der ISO-Spezifikation 8859-1.  Wenn nach `-T latin1' noch
++die Option `-t' gesetzt ist, so können mit ispell (Version 3.1.20)
++auch (La)TeX-Texte mit echten ISO-8859-1-Umlauten auf Rechtschreibung
++überprüft werden.  Ohne die Option `-T latin1' achtet ispell auf die
++Endungen der zu überprüfenden Dateien.  Welche Endungen und
++Kodierungen für die `-T'-Option möglich sind, können Sie aus den
++`.aff'-Dateien der gewählten Sprache unter /usr/lib/ispell/ erfahren.
++Alle Silbenregeln und die Umlautkodierungen werden in diesen
++sprachabhängigen `.aff'-Dateien festgelegt. So ist es beispielsweise
++bei Verwendung der deutschen Sprache nicht mehr nötig, ispell die
++Umlaute durch die Option `-w' bekannt zu geben.
++Um für einen Benutzer für alle Applikationen, wie z.B. Emacs, die
++Default-Sprache für ispell auf die neue deutsche Rechtschreibung 
++festzulegen, müssen Sie die folgende Zeile in die Datei ~/.bashrc
++eintragen:
++
++    export DICTIONARY=german
++
++Für die alte Rechtschreibung müßte der Eintrag
++
++    export DICTIONARY=deutsch
++
++lauten.
++
++Wir haben neben den englischen auch andere Lexika zum Installieren
++
++Ispell verwendet diese Worttabellen nicht direkt, sondern über die
++größeren Hash-Dateien, die ein schnelleres Lesen ermöglichen.  Wie Sie
++solche Hash-Dateien selbst erstellen können, erfahren Sie ebenfalls
++aus der Manual-Seite zu ispell.
++
++Auf Rechnern mit wenig Speicher kann es bei Verwendung der großen
++Hash-Dateien zu Performance-Problemen kommen.  Wechseln Sie in diesem
++Fall in das Verzeichnis /usr/lib/ispell/ und löschen die
++symbolischen Links deutsch.hash bzw. english.hash um Sie danach mit
++
++  `ln -s deutschmed.hash deutsch.hash'  und
++
++  `ln -s britishmed.hash english.hash'  neu anzulegen.
++
++Die möglichen Hash-Dateien für diese ispell-Implementierung sind
++für Englisch:
++
++    americanmed.hash  (klein)
++
++    americanlxg.hash  (groß)
++
++    britishmed.hash   (klein)
++
++    britishlxg.hash   (groß)
++
++für Deutsch (Paket igerman):
++
++    deutschmed.hash   (mittel)
++
++    deutschlxg.hash   (groß)
++
++für Deutsch, neue Rechtschreibung (Paket ingerman):
++ 
++     germanmed.hash   (mittel)
++ 
++     germanlxg.hash   (groß)
++
++für Dänisch (Paket idanish):
++
++    dansk.hash        (mittel)
++
++für Spanisch (Paket ispanish):
++
++    espanol.hash      (groß)
++
++für Französisch (Paket ifrensh):
++
++    francais.hash     (mittel)
++
++für Italienisch (Paket iitalian):
++
++    italian.hash      (mittel)
++
++für Niederländisch (Paket idutch):
++
++    nederlands.hash   (groß)
++
++für Schwedisch (Paket iswedish):
++
++    svenska.hash      (klein)
++
++für Norwegisch (Paket inorsk):
++
++    norsk.hash        (mittel)
++
+--- suse/README
++++ suse/README	2016-02-12 11:02:35.326533721 +0000
+@@ -0,0 +1,108 @@
++
++     Short description
++     =================
++
++Ispell is a fast screen-oriented spelling checker that shows you your
++errors in the context of the original file, and suggests possible 
++corrections when it can figure them out.  Compared to UNIX spell, it
++is faster and much easier to use.  Ispell can also handle languages
++other than English. Ispell has a long history, and many people have
++contributed to the current version - some of the major contributors
++include R. E. Gorin, Pace Willisson, Walt Buehring, and Geoff 
++Kuenning. 
++
++The easiest usage is 'ispell filename'. In this case ispell presents you
++every word it couldn't find in the dictionary and asks you for a correction.
++Are there any similar words (only differ in letters, a pair of mixed up
++letters or even blanks) they are shown in the line beneath.
++Ispell even shows you a list of words that derive from the same stem. Both
++lines are posted on the lower edge of the monitor. If possible ispell
++inverts the word. Now you can totally replace or choose one of the suggested
++words.
++The default language is English which can be set using the environment
++variable DICTIONARY or the startup option '-d <languag>'. Using the 
++'-T <format>' switch one can use special 'umlaut' modes' or turn them off.
++'-T latin1' e.g. enables you to read German umlauts according to 
++iso 8859-1.  If you set the '-t' flag you can (works with 3.1.20) check
++(La)TeX texts with real ISO-8859-1 umlauts for misspelling. Without the
++'-T latin1' the correct extension of the files are compelling. The 
++possible extensions and codes for the '-T' flag are to be found in the
++appropriate file which resides under '<language>.aff'. All syllable rules
++and codings are put into these '.aff' files therefore it is not longer
++necessary to invoke ispell with the '-w' switch for German umlauts.
++To set the default language of ispell for all applications (e.g. emacs)
++the user has to put the following line into the file ~/.bashrc:
++
++    export DICTIONARY=english
++
++Besides the English dictionaries there are German dictionaries under
++/usr/lib/ispell. The German word tables have been retrieved from the
++dicts-package (hk-deutsch).
++
++Ispell doesn't 'directly' use those tables but the larger hash tables which
++enable you a better and faster reading. How to create hash tables is
++explained also in those above-mentioned README files or ask the man page
++of ispell for help.
++
++On computer with low RAM, problems can occur with those large hash tables.
++If this is your problem just change directory to /usr/lib/ispell and delete
++the symbolic links deutsch.hash or english.hash and recreate them 
++using the following syntax:
++
++    `ln -s deutschmed.hash deutsch.hash'
++
++    `ln -s britishmed.hash english.hash'
++
++The following hash tables are used with this version of ispell:
++for English:
++
++    americanmed.hash  (small)                                             
++
++    americanlxg.hash  (big)                                              
++
++    britishmed.hash   (small)                                             
++
++    britishlxg.hash   (big)                                              
++
++for German (package igerman):                                             
++
++    deutschmed.hash   (middle)                                            
++
++    deutschlxg.hash   (big)      
++
++
++for German, new spelling (package ingerman):
++ 
++     germanmed.hash   (mittel)
++ 
++     germanlxg.hash   (groß)
++
++for Danish (package idanish):
++
++    dansk.hash        (middle)
++
++for Spanish (package ispanish):
++
++    espanol.hash      (big)
++
++for French (package ifrensh):
++
++    francais.hash     (middle)
++
++for Italian (package iitalian):
++
++    italian.hash      (middle)
++
++for Dutch (package idutch):
++
++    nederlands.hash   (big)
++
++for Swedish (package iswedish):
++
++    svenska.hash      (small)
++
++for Norwegian (package inorsk):
++
++    norsk.hash        (mittel)
++
++
+--- suse/emacs/american.el
++++ suse/emacs/american.el	2017-02-28 13:39:37.284734434 +0000
+@@ -0,0 +1,8 @@
++;; Used by ispell-emacs-menu.el
++;; Do *not* byte-compile this file because its loaded by both emacs and xemacs
++
++(append-ispell-dict-alist	"american.hash"
++   '("american" "[A-Za-z]" "[^A-Za-z]" "[']" nil ("-B" "-d" "american") nil iso-latin-1))
++
++(append-ispell-dict-alist	"american.hash"
++   '("american-utf8" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-B" "-d" "american") "~utf8" utf-8))
+--- suse/emacs/british.el
++++ suse/emacs/british.el	2017-02-28 13:42:47.093130616 +0000
+@@ -0,0 +1,9 @@
++;; Used by ispell-emacs-menu.el
++;; Do *not* byte-compile this file because its loaded by both emacs and xemacs
++
++(append-ispell-dict-alist	"british.hash"
++   '("british"  "[A-Za-z]" "[^A-Za-z]" "[']" nil ("-B" "-d" "british")  nil iso-latin-1))
++
++(append-ispell-dict-alist       "british.hash"
++   '("british-utf8" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-B" "-d" "british") "~utf8" utf-8))
++
+--- suse/emacs/english.el
++++ suse/emacs/english.el	2017-02-28 13:41:41.674372696 +0000
+@@ -0,0 +1,9 @@
++;; Used by ispell-emacs-menu.el
++;; Do *not* byte-compile this file because its loaded by both emacs and xemacs
++
++(append-ispell-dict-alist	"english.hash"
++   '("english"  "[A-Za-z]" "[^A-Za-z]" "[']" nil ("-B" "-d" "english")  nil iso-latin-1))
++
++(append-ispell-dict-alist       "english.hash"
++   '("english-utf8" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-B" "-d" "english") "~utf8" utf-8))
++
+--- suse/ispell-emacs-menu.el
++++ suse/ispell-emacs-menu.el	2017-02-28 13:48:52.630198546 +0000
+@@ -0,0 +1,64 @@
++;;; ispell-emacs-menu.el --- Produce the (x)emacs (i)spell menu on the fly
++
++;; Copyright (c) 1999 SuSE Gmbh Nuernberg, Germany.  All rights reserved.
++;; Copyright (c) 2017 SUSE Linux Gmbh Nürnberg, Germany.  All rights reserved.
++;; Author: Werner Fink, <werner@suse.de> 1999/03/04,2017/02/28
++
++;;; Note:
++
++;; Do *not* byte-compile this file because its loaded by both emacs and xemacs
++
++;;; The code:
++
++(defvar ispell-library-path "/usr/lib/ispell/"
++  "The library path used by the installed ispell package")
++
++(defun  append-ispell-dict-alist (hash alist)
++  "Simply append the specified list to ispell-dictionary-alist."
++    (if (file-exists-p (concat ispell-library-path hash))
++	(setq ispell-ispell-dictionary-alist
++	   (append ispell-ispell-dictionary-alist (list alist)))))
++
++(if (string-match "XEmacs\\|Lucid" emacs-version)
++      (progn
++	(if (not (coding-system-alias-p 'iso-latin-1))
++	  (define-coding-system-alias 'iso-latin-1 'iso-8859-1))
++	(if (not (coding-system-alias-p 'iso-latin-2))
++	  (define-coding-system-alias 'iso-latin-2 'iso-8859-2))
++	(if (not (coding-system-alias-p 'iso-latin-3))
++	  (define-coding-system-alias 'iso-latin-3 'iso-8859-3))
++	(if (not (coding-system-alias-p 'iso-latin-4))
++	  (define-coding-system-alias 'iso-latin-4 'iso-8859-4))
++	(if (not (coding-system-alias-p 'iso-latin-5))
++	  (define-coding-system-alias 'iso-latin-5 'iso-8859-9))
++	(if (not (coding-system-alias-p 'iso-latin-8))
++	  (progn
++	    (require 'latin-euro-latin8)
++	    (define-coding-system-alias 'iso-latin-8 'iso-8859-14)))
++	(if (not (coding-system-alias-p 'iso-latin-9))
++	  (define-coding-system-alias 'iso-latin-9 'iso-8859-15))
++	(if (not (memq (car ispell-menu-xemacs) '(:filter)))
++	  (setq ispell-menu-xemacs nil)))
++    (setq ispell-menu-map nil))
++
++(setq ispell-ispell-dictionary-alist '(
++	(nil "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-B") nil nil)))
++
++(when (and (listp 'ispell-local-dictionary-alist)
++	   (not (null ispell-local-dictionary-alist)))
++	(setq ispell-ispell-dictionary-alist
++	      '((append ispell-local-dictionary-alist ispell-ispell-dictionary-alist))))
++
++(let ((dir (directory-files (concat ispell-library-path "emacs/") t ".*\\.el$")))
++     (while dir (load (car dir) nil t t) (setq dir (cdr dir))))
++
++(setq ispell-dictionary-alist ispell-ispell-dictionary-alist)
++(add-hook 'ispell-initialize-spellchecker-hook
++      (lambda ()
++    (setq ispell-base-dicts-override-alist ispell-ispell-dictionary-alist)))
++;;
++;; Now load the library to recreate the Spell menu in the Edit pulldown
++;;
++(load "ispell" nil t)
++
++;;; ispell-emacs-menu.el end here

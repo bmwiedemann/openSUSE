@@ -1,0 +1,9 @@
+<package name="python-h5py" project="openSUSE:Factory">
+  <title>python-h5py</title>
+  <description>H5py provides a simple, robust read/write interface to HDF5 data from Python.                                                          
+Existing Python and Numpy concepts are used for the interface; for example,                                                            
+datasets on disk are represented by a proxy class that supports slicing, and                                                           
+has dtype and shape attributes. HDF5 groups are presented using a dictionary                                                           
+metaphor, indexed by name.</description>
+  <devel project="devel:languages:python:numeric" package="python-h5py"/>
+</package>

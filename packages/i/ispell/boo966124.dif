@@ -1,0 +1,16 @@
+bug boo#966124, boo#981024, and boo#1010330
+
+---
+ languages/english/english.3 |    4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+--- languages/english/english.3
++++ languages/english/english.3	2016-11-22 09:17:32.531592179 +0000
+@@ -10617,7 +10617,6 @@ mailcoach
+ maillol
+ maimonides
+ mainbrace
+-maintenence
+ Maintenon
+ maintopsail
+ mainz

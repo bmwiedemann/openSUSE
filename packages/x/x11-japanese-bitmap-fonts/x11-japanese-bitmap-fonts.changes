@@ -1,0 +1,219 @@
+-------------------------------------------------------------------
+Sat Apr 29 15:50:16 UTC 2017 - bwiedemann@suse.com
+
+- call gzip -n to make build fully reproducible
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:37 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Apr 12 13:34:54 UTC 2012 - pgajdos@suse.com
+
+- license SUSE-Public-Domain and HPND
+
+-------------------------------------------------------------------
+Mon Apr  2 12:56:56 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Public_Domain and HPND
+  The x11/ fonts are not public domain
+
+-------------------------------------------------------------------
+Fri Jan 20 12:06:39 CET 2012 - tiwai@suse.de
+
+- fix build with old distros due to missing freetype shlib
+
+-------------------------------------------------------------------
+Thu Dec 22 18:25:24 CET 2011 - tiwai@suse.de
+
+- Renamed xfntjp -> x11-japanese-bitmap-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Thu Apr  8 16:48:56 CEST 2010 - tiwai@suse.de
+
+- minor clean-ups; removed unneeded buildrequires, removed
+  obsoleted conditions
+
+-------------------------------------------------------------------
+Wed Jan 23 13:18:52 CET 2008 - mfabian@suse.de
+
+- remove kanji32 font completely to be able to remove the
+  "NoSource" tag.
+- use fdupes.
+- bzip2 all sources.
+
+-------------------------------------------------------------------
+Tue Aug  8 14:54:50 CEST 2006 - dmueller@suse.de
+
+- install fonts to /usr/share/fonts
+
+-------------------------------------------------------------------
+Wed Mar 01 16:01:47 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(xorg-x11:ja)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:49:14 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 03 20:38:52 CET 2004 - mfabian@suse.de
+
+- use new macro "%run_suseconfig_fonts".
+
+-------------------------------------------------------------------
+Fri Mar 19 18:22:00 CET 2004 - mfabian@suse.de
+
+- use %suseconfig_fonts_prereq
+
+-------------------------------------------------------------------
+Mon Mar  1 16:34:45 CET 2004 - mfabian@suse.de
+
+- run SuSEconfig.fonts and SuSEconfig.pango in %post and %postun
+
+-------------------------------------------------------------------
+Sun Nov  2 22:34:14 CET 2003 - ro@suse.de
+
+- updated neededforbuild 
+
+-------------------------------------------------------------------
+Fri Jul 18 11:15:58 CEST 2003 - mfabian@suse.de
+
+- Don't include kanji32.bdf in the binary rpm and mark it
+  as "NoSource" because there might be legal problems
+  distributing this font.
+
+-------------------------------------------------------------------
+Thu Sep  5 11:34:06 CEST 2002 - mfabian@suse.de
+
+- re-add lost bold, italic, and bold-italic versions of
+  kanji32 font and the 14 and 16 pixel X11 fonts.
+
+-------------------------------------------------------------------
+Mon Aug 26 10:42:48 CEST 2002 - masaru@turbolinux.co.jp
+
+- upgraded to japanese-bitmap-fonts-0.4.5.
+
+-------------------------------------------------------------------
+Mon Mar 11 00:31:31 CET 2002 - mfabian@suse.de
+
+- remove %post and %postun, SuSEconfig.fonts does that already,
+  it's better not duplicate the work of SuSEconfig.fonts.
+
+-------------------------------------------------------------------
+Wed Feb 20 11:40:57 CET 2002 - mfabian@suse.de
+
+- fix changelog (build did fail an ia64 because of incorrectly
+  formatted changelog)
+
+-------------------------------------------------------------------
+Wed Mar  7 16:27:54 CET 2001 - mfabian@suse.de
+
+- add xf86 to "# neededforbuild" (/usr/X11R6/bin/bdftopcf is
+  needed).
+
+-------------------------------------------------------------------
+Tue Jan 30 13:07:40 CET 2001 - mfabian@suse.de
+
+- add shinonome12-1.0.8 and shinonome16-1.0.3
+- update k14goth to version 1.6.9
+- improve fonts.alias
+- don't pack fonts.dir
+- cleanup of spec file.
+
+-------------------------------------------------------------------
+Fri Aug  4 09:56:57 CEST 2000 - mfabian@suse.de
+
+- adapted to SuSE,
+- updated Nagao San's knj10 fonts to version knj10-1.1
+- added Nagao San's Nagamaru and Nagamin fonts
+  and bold, italic, and bold-italic versions of these.
+- replaced 'fonts.dir.jp' by a call to mkfontdir
+- patched 'mkitalic' which caused autobuild to fail
+
+-------------------------------------------------------------------
+Wed Mar  1 2000 - Yasuyuki Furukawa <furukawa@vinelinux.org>
+
+- 2.0-7, 2.0-9, 2.0-10
+- updated to kaname-alter-2.8.1, k14goth-1.5
+
+-------------------------------------------------------------------
+Tue Jan 18 2000 - Jun Nishii <jun@vinelinux.org>
+
+- 2.0-6
+- updated to kaname-alter-2.5
+
+-------------------------------------------------------------------
+Tue Jan 11 2000 - Jun Nishii <jun@vinelinux.org>
+
+- 2.0-5
+- change group
+- bzip2 many sources
+- updated to kaname-alter-2.4, k14goth-1.3
+
+-------------------------------------------------------------------
+Wed Dec 29 1999 - Jun Nishii <jun@vinelinux.org>
+
+- rebuild (last build seems to be failed...)
+
+-------------------------------------------------------------------
+Fri Dec 24 1999 - Jun Nishii <jun@vinelinux.org>
+
+- removed verbose files in /usr/doc
+
+-------------------------------------------------------------------
+Thu Dec 23 1999 - Jun Nishii <jun@vinelinux.org>
+
+- kaname-alter-2.3
+- k14goth-1.2
+
+-------------------------------------------------------------------
+Thu Nov 11 1999 - Jun Nishii <jun@vinelinux.org>
+
+- 1.9-1.1 try Mr.Furukawa's mkitalic
+
+-------------------------------------------------------------------
+Thu Nov 11 1999 - Jun Nishii <jun@vinelinux.org>
+
+- 1.9-1.0
+- bug fix in fonts.alias
+
+-------------------------------------------------------------------
+Tue Nov 9 1999 - Jun Nishii <jun@vinelinux.org>
+
+- update to kaname-alter-2.1
+
+-------------------------------------------------------------------
+Fri Oct 15 1999 - MATSUMOTO Shoji <shom@flatout.org>
+
+- change mkitalic
+- change to kaname-alter-1.3
+- change to k14goth-1.0
+- add kanji32
+
+-------------------------------------------------------------------
+Tue Oct  5 1999 - MATSUMOTO Shoji <shom@flatout.org>
+
+- add mkitalic
+- replace k14 to k14goth
+
+-------------------------------------------------------------------
+Tue Sep 14 1999 - Norihito Ohmori <ohmori@flatout.org>
+
+- change kaname-machi font to kaname-machi kai
+
+------------------------------------------------------------------- 
+Wed Dec  9 1998 - MATSUMOTO Shoji <pje@linux.or.jp>
+
+- create spec
+

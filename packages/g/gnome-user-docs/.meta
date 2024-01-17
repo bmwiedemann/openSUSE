@@ -1,0 +1,5 @@
+<package name="gnome-user-docs" project="openSUSE:Factory">
+  <title>GNOME Desktop Documentation</title>
+  <description>This package contains documents that are targeted for GNOME end-users.</description>
+  <devel project="GNOME:Factory" package="gnome-user-docs"/>
+</package>

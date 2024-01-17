@@ -1,0 +1,7 @@
+<package name="olm" project="openSUSE:Factory">
+  <title>olm</title>
+  <description>An implementation of the Double Ratchet cryptographic ratchet
+including an implementation of the Megolm cryptographic ratchet</description>
+  <devel project="network:messaging:matrix" package="olm"/>
+  <url>https://git.matrix.org/git/olm</url>
+</package>

@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Wed Feb 15 16:18:51 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to new upstream version 2.4.25
+  - Fix Python dev-mode default handling
+  - Do not touch /usr/lib/python3/dist-packages on Debian Linux
+  - Convert Debian Linux package build to debhelper
+  - Disable ADC calibration for 7p Bricks
+  - Add missing pkg_resources dependency on Linux
+  - Update all temperature readings with 10 Hz
+  - Stop callback emulator from delivering results to destroyed plugins
+  - Avoid crash while loading the 3D model in all IMU plugins
+  - Avoid PyQt5 import problem with the Qt module
+  - Fix accidental dependency on newer PyQt5 version on Linux 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:58:05 UTC 2023 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.23
+  - Allow saving config when Modbus master timeout is changed for RS485 Bricklet
+  - Enable Python development mode when running from source
+  - Fix socket leak on connect error
+  - Add manual y-axis scaling for plot widget
+  - Remove all driver files for Windows 7 and earlier
+  - Fix calibration dialog title for Compass Bricklet plugin
+  - Fix Galileo satellite numbers for GPS Bricklet 3.0
+  - Add support for IPv6 connections
+  - Add commandline options to specify host, port and secret
+  - Add tab select menu that stays in the top left corner
+  - Fix corner cases in IMU Brick(let) plugin untab handling
+  - Add manual firmware list update button if auto-search for updates is disabled
+  - remove upstream patch 0001-red-Handle-service-provider-country-codes-missing-in.patch
+
+-------------------------------------------------------------------
+Thu Aug 18 10:57:06 UTC 2022 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.22
+  - Add support for GPS Bricklet 3.0 and ESP32 (Ethernet) Brick
+  - Add Data Logger support for GPS Bricklet 3.0
+  - Improve plot color palette for dark themes
+  - Rework plot timing logic to greatly reduce jitter
+  - Draw a vertical line to indicate time jumps in plots
+  - Fix driver installation on Windows
+  - Upgrade bundled Python to 3.9 on Windows (Windows 8.1 required)
+  - added 0001-red-Handle-service-provider-country-codes-missing-in.patch to fix build
+
+-------------------------------------------------------------------
+Sat Jan  8 09:35:22 UTC 2022 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.21
+  - Fix serial port listing on Apple M1 Macs
+  - Truncate RED Brick log file view to 10MB
+  - Improve hex input mode for RS232 Bricklet 2.0
+  - Improve compatibility with Python 3.10
+  - Fix OpenGL problems on macOS 12
+
+-------------------------------------------------------------------
+Tue Nov  9 19:00:57 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.20
+  - Hide unused custom line ending controls in hex mode in RS485 Bricklet plugin
+  - Reuse thread in Data Logger timer to avoid slow memory leak
+  - Fix Data Logger device list clearing on config loading
+  - Fix slow memory leak in Data Logger data tab
+  - Add firmware version column to Health Monitor dialog
+  - Improve udev rule compatibility on Linux
+  - Add support for RTC driver config to HAT Brick plugin
+  - Add support for simple mode to NFC Bricklet plugin
+  - Increase required PySerial version to 3.0
+  - Add support for flashing ESP32 (Ethernet) Bricks
+- remove upstream patch 0001-udev-rules-Fix-ATTR-assignment.patch
+
+-------------------------------------------------------------------
+Tue Sep  7 19:23:04 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Fix shebang
+- Add patch to fix udev rule warning
+   0001-udev-rules-Fix-ATTR-assignment.patch
+
+-------------------------------------------------------------------
+Fri May 14 20:33:11 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.19:
+  - Add support for DC 2.0, Industrial PTC and Silent Stepper Bricklet 2.0
+  - Add Data Logger support for DC 2.0, Industrial PTC and Silent Stepper Bricklet 2.0
+  - Fix Healthmonitor error handling
+  - Filter Updates/Flashing and RED Brick Console serial port selection based on
+    USB product- and vendor-ID  
+  version 2.4.18:
+  - Add minimal health monitor dialog
+  - Fix state handling for untabbed plugins
+  - Force correct UI state after aborting autoreconnect on error
+  - Handle errors while opening Data Logger debug log file
+  - Update download.tinkerforge.com certificate chain to fix update autodetection
+  - Autoselect download directory for Brick Viewer downloads
+  - Check if NFC Bricklet is in correct state to start cardemu discovery
+
+-------------------------------------------------------------------
+Wed Jan 20 21:22:02 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Adapt build recipe to python 3 parallel installation support
+- Update to new upstream version 2.4.17:
+  - Add support for Performance DC Bricklet and Servo Bricklet 2.0
+
+-------------------------------------------------------------------
+Thu Dec 10 20:23:38 UTC 2020 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.16:
+  - Add support for IMU Bricklet 3.0 and Industrial Dual AC Relay Bricklet
+  - Improve error handling and reporting
+  - Support running on integrated GPU on macOS
+  - Reduce Qt requirement to 5.11 to fix crash on macOS
+
+-------------------------------------------------------------------
+Thu Aug 20 12:22:23 UTC 2020 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.14:
+  - Fix monoflop handling to cover full uint32 duration range
+  - Better indicate disconnected state
+  - Highlight timeout error counter > 0 in bold red
+  - Fix slider/spinbox mismatch on auto-reconnect in DC Brick plugin
+  - Avoid UI jumps on value changes in Energy Monitor Bricklet plugin
+  - Add extra checkbox to avoid accidental port number changes
+  - Handle all errors while downloading firmware updates
+  version 2.4.13:
+  - Fix race condition in RED Brick program state tracking
+  - Report actual cause for connection errors
+  - Don't reset RED Brick tab on every enumerate callback (fixes tab reset on
+    selecting the Server Monitoring tab)
+  - Ensure that all dialogs have proper close buttons
+  - Fix close buttons for for detached tabs
+  - Fix race condition in RED Brick overview sorting
+
+-------------------------------------------------------------------
+Wed Aug 19 08:28:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use proper %{_udevrulesdir} instead of (wrong)
+  %{_libexecdir}/udev/rules.d.
+
+-------------------------------------------------------------------
+Wed Mar 25 09:01:06 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to new upstream version 2.4.12:
+  - make build reproducible (boo#1041090)
+  - Fix Server Monitoring support for Ambient Light 3.0 and IO-4 Bricklet 2.0
+  - Fix WIFI Extension 2.0 no-encryption configuration
+  - Add checkbox for setting the WIFI Extension 2.0 mesh password, old password is
+    not shown anymore
+  - Improve firmware update error handling
+  - Fix RS485 Bricklet Modbus slave logic for write-multiple-registers function
+  - Improve RS485 Bricklet input field history handling
+  - Fix Data Logger support for Color Bricklet 2.0
+  - Improve corner case handling in enumerate callback logic
+  - Fix error handling for RED Brick file upload
+  - Fix maximum number of LEDs for LED Strip Bricklet 2.0
+  - Show milliseconds in GPS Bricklet 2.0 timestamp
+
+-------------------------------------------------------------------
+Sun Jan  5 11:00:43 UTC 2020 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.11:
+- Make Thermal Imaging Bricklet image view detachable
+- Fix firmware auto-update for Co-MCU Bricklets
+- Avoid potential config file writing collision between two Brick Viewer
+  instances on Linux and macOS
+- Notarize Brick Viewer app to make it ready for macOS 10.15
+- Fix potential crash in WIFI Extension 2.0 firmware update detection logic
+- Fix exception hook for Python 3.8
+- Prefer hPa over mbar and Tesla over Gauss
+- Add Data Logger support for RS232 Bricklet 2.0 data reading
+- Add Server Monitoring support for Humidity Bricklet 2.0 temperature value
+- Lower Hardened Runtime restrictions to make ctypes work again on macOS
+- Fix encoding issues in Server Monitoring script
+- remove integrated upstream patches
+   0001-Support-to-use-local-iso-codes-and-mobile-providers-.patch
+   0002-Fix-shebang.patch
+
+-------------------------------------------------------------------
+Mon Oct 14 17:08:20 UTC 2019 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- fix review comment to use full path for source location
+- fix review comment to remove buildroot and defattr
+
+-------------------------------------------------------------------
+Mon Sep 30 18:00:37 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- added doc files
+
+-------------------------------------------------------------------
+Mon Sep 30 13:48:52 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- Remove shebang from files where not needed
+  (0002-Fix-shebang.patch)
+- Add support to overwrite iso codes and local providers
+  (0001-Support-to-use-local-iso-codes-and-mobile-providers-.patch)
+- Force UTF-8 for build scripts
+- Switch off source service
+
+-------------------------------------------------------------------
+Sat Sep 28 10:40:10 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- install udev rule
+- install desktop file
+
+-------------------------------------------------------------------
+Sat Sep 28 09:01:17 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- fix install command
+
+-------------------------------------------------------------------
+Sat Sep 28 08:28:50 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- use mobile providers list and iso codes provided by the distribution
+  (0001-SUSE-Use-local-providers-and-iso-codes.patch)
+- add requied python packages dependencies
+- use fdupes macro for cleanup duplicated files
+
+-------------------------------------------------------------------
+Wed Sep 25 16:47:31 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- intial version 2.4.9

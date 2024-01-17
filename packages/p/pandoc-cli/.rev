@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6da944eda46ccead9e8649a228989ef9</srcmd5>
+    <version>0.1.1</version>
+    <time>1680636322</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076158</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dfe3e953335c177a26225675c6ac7380</srcmd5>
+    <version>0.1.1</version>
+    <time>1681470775</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1079163</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c7a886799555cbe5baedda987eea7696</srcmd5>
+    <version>0.1.1.1</version>
+    <time>1690654222</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1101268</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>809cf45d2edf36bbe7184fe16fdbc0b2</srcmd5>
+    <version>3.1.11.1</version>
+    <time>1704919889</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1137782</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+Index: releases-2.1.1/tests/conftest.py
+===================================================================
+--- releases-2.1.1.orig/tests/conftest.py
++++ releases-2.1.1/tests/conftest.py
+@@ -1,5 +0,0 @@
+-from icecream import ic, install as install_ic
+-
+-
+-install_ic()
+-ic.configureOutput(includeContext=True)

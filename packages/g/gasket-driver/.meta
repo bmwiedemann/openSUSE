@@ -1,0 +1,10 @@
+<package name="gasket-driver" project="openSUSE:Factory">
+  <title>Coral Gasket Driver</title>
+  <description>The Coral Gasket Driver allows usage of the Coral EdgeTPU on Linux systems.
+
+The driver contains two modules: 
+- Gasket (Google ASIC Software, Kernel Extensions, and Tools) is a top level driver for lightweight communication with Google ASICs.
+- Apex refers to the EdgeTPU v1.</description>
+  <devel project="hardware" package="gasket-driver"/>
+  <url>https://github.com/google/gasket-driver</url>
+</package>

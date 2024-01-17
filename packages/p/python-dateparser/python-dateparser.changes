@@ -1,0 +1,251 @@
+-------------------------------------------------------------------
+Thu Dec  7 20:46:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * New ``PREFER_MONTH_OF_YEAR`` setting (#1146)
+  * Absolute years in Russian are no longer being treated as a
+    number of years in the past (#1129)
+  * Cleanups and internal improvements:
+  * Removed the use of ``datetime.utcnow``, deprecated on Python
+    3.12 (#1179)
+  * Applied Black formatting to the code base (#1158)
+  * Initial integration with OSSFuzz (#1198)
+  * Extended test cases (#1191)
+
+-------------------------------------------------------------------
+Sat Oct 14 00:54:16 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Thu Sep  7 07:09:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove unneeded GitPython dependency
+
+-------------------------------------------------------------------
+Fri Apr 21 12:24:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Sun Mar 26 20:00:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.8:
+  * Improved date parsing for Chinese
+  * Improved date parsing for Czech
+  * Reorder language by popularity
+  * Fix leak of memory in cache
+  * Add support for "\d units later"
+  * Move modification in CLDR data to yaml
+  * Add support to use timezone via settings to get
+    PREFER_DATES_FROM result
+
+-------------------------------------------------------------------
+Wed Feb 15 19:43:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.7:
+  * Add an “ago” synonym for Arabic
+  * Improved date parsing for Czech
+  * Improved date parsing for Indonesian
+
+-------------------------------------------------------------------
+Fri Jan 13 09:39:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.6:
+  * Fix the bug where Monday is parsed as a month
+  * Prevent ReDoS in Spanish sentence splitting regex
+
+-------------------------------------------------------------------
+Mon Jan  2 18:57:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.5:
+  * Parse short versions of day, month, and year
+  * Add a test for “in 1d”
+  * Update languages_info
+  * Add a workaround for zipimporter not having exec_module before Python
+    3.10
+  * Stabilize tests at midnight
+  * Add a test case for French
+  * Improved support for languages such as Slovak, Indonesian, Hindi, German
+    and Japanese
+  * Recursively create a model home
+  * Replace regex sub with simple string replace
+  * Add Python 3.10, 3.11 support
+  * Drop support for Python 3.5, 3.6 versions
+- drop incompatible-regex-pattern.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Nov  7 21:15:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.1.3
+  New features:
+  * Add support for fractional units (#876)
+  Improvements:
+  * Fix the returned datetime skipping a day with time+timezone input and PREFER_DATES_FROM = 'future' (#1002)
+  * Fix input translation breaking keep_formatting (#720)
+  * English: support "till date" (#1005)
+  * English: support “after” and “before” in relative dates (#1008)
+  Cleanups:
+  * Reorganize internal data (#1090)
+  * CI updates (#1088
+
+-------------------------------------------------------------------
+Thu Oct 27 22:51:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.1.2
+  * Added support for negative timestamp (#1060)
+  * Fixed PytzUsageWarning for Python versions >= 3.6 (#1062)
+  * Added support for dates with dots and spaces (#1028)
+  * Improved support for Ukrainian, Croatian and Russian (#1072, #1074, #1079, #1082, #1073, #1083)
+  * Added support for parsing Unix timestamps consistently regardless of timezones (#954)
+  * Improved tests (#1086)
+
+-------------------------------------------------------------------
+Thu Aug 18 16:25:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean requirements: no code coverage
+
+-------------------------------------------------------------------
+Tue May 31 07:52:04 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Do not collect test_search.py
+  * https://github.com/scrapinghub/dateparser/issues/1053
+
+-------------------------------------------------------------------
+Tue May 24 18:05:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.1.1:
+  - Improvements:
+    - Fixed issue with regex library by pinning dependencies to
+      an earlier version
+    - Extended support for Russian language dates starting with
+      lowercase
+    - Allowed to use_given_order for languages too
+    - Fixed link to settings section
+    - Defined UTF-8 encoding for Windows
+    - Fixed directories creation error in CLI utils
+- Update to 1.1.0:
+  - New features:
+    - Support language detection based on langdetect, fastText,
+      or a custom implementation
+    - Add support for 'by '
+    - Sort default language list by internet usage
+  - Improvements:
+    - Improved support of Chinese
+    - Improvements in search_dates
+    - Make order of previous locales deterministic
+    - Fix parsing with trailing space
+    - Consider RETURN_TIME_AS_PERIOD for timestamp times
+    - Exclude failing regex version
+    - Ongoing work multithreading support
+    - Add demo URL
+  - QA:
+    - Migrate pipelines from Travis CI to Github Actions
+    - Use versioned CLDR data
+    - Add a script to update table of supported languages and
+      locales
+    - Sort 'skip' keys in yaml files
+    - Improve test coverage
+    - Code cleanup
+- Add patches:
+  - incompatible-regex-pattern.patch (gh#scrapinghub/dateparser#1052)
+  - mark-network-tests.patch (gh#scrapinghub/dateparser#1059)
+
+-------------------------------------------------------------------
+Thu Mar 17 09:59:26 UTC 2022 - pgajdos@suse.com
+
+- python-mock is actually not required for build
+
+-------------------------------------------------------------------
+Wed Apr  7 06:37:13 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.0:
+  * Breaking changes:
+    + Drop support for Python 2.7 and pypy (see #727, #744, #748, #749, #754, #755, #758, #761, #763, #764, #777 and #783)
+    + Now ``DateDataParser.get_date_data()`` returns a ``DateData`` object instead of a ``dict`` (see #778).
+    + From now wrong ``settings`` are not silenced and raise ``SettingValidationError`` (see #797)
+    + Now ``dateparser.parse()`` is deterministic and doesn't try previous locales. Also, ``DateDataParser.get_date_data()`` doesn't try the previous locales by default (see #781)
+    + Remove the ``'base-formats'`` parser (see #721)
+    + Extract the ``'no-spaces-time'`` parser from the ``'absolute-time'`` parser and make it an optional parser (see #786)
+    + Remove ``numeral_translation_data`` (see #782)
+    + Remove the undocumented ``SKIP_TOKENS_PARSER`` and ``FUZZY`` settings (see #728, #794)
+    + Remove support for using strings in ``date_formats`` (see #726)
+    + The undocumented ``ExactLanguageSearch`` class has been moved to the private scope and some internal methods have changed (see #778)
+    + Changes in ``dateparser.utils``: ``normalize_unicode()`` doesn't accept ``bytes`` as input and ``convert_to_unicode`` has been deprecated (see #749)
+  * New features:
+    + Add Python 3.9 support (see #732, #823)
+    + Detect hours separated with a period/dot (see #741)
+    + Add support for "decade" (see #762)
+    + Add support for the hijri calendar in Python ≥ 3.6 (see #718)
+    + Fix leap years when ``PREFER_DATES_FROM`` is set (see #738)
+    + Fix ``STRICT_PARSING`` setting in ``no-spaces-time`` parser (see #715)
+    + Consider ``RETURN_AS_TIME_PERIOD`` setting for ``relative-time`` parser (see #807)
+    + Parse the 24hr time format with meridian info (see #634)
+- Remove extranous %dir for egg-info.
+
+-------------------------------------------------------------------
+Thu Jul 30 01:41:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.6:
+  * Rename ``scripts`` to ``dateparser_scripts`` to avoid name collisions
+    with modules from other packages or projects
+  * Add Python 3.8 support
+  * Implement a ``REQUIRE_PARTS`` setting
+  * Add support for subscript and superscript numbers
+  * Extended French support
+  * Extended German support
+- Switch from nose to pytest.
+
+-------------------------------------------------------------------
+Thu Apr  2 09:44:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.7.4
+  * Fixed Python 2.7 tests
+  * Extended Norwegian support
+  * Implement a PARSERS setting
+  * Add support for `PREFER_DATES_FROM` in relative/freshness parser
+  * Add support for `PREFER_DAY_OF_MONTH` in base-formats parser
+  * Added UTC -00:00 as a valid offset
+  * Fix support for “one”
+  * Fix tokenizer for non recognized characters
+  * Prevent installing regex 2019.02.19
+  * Added Hungarian language.
+  * Added setting, `STRICT_PARSING` to ignore incomplete dates.
+  * More simplifications for Russian and Ukrainian languages.
+
+-------------------------------------------------------------------
+Sat Sep 21 19:14:39 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more precise in %file section
+
+- update to version 0.7.2:
+  * Features:
+    + Extended Czech support
+    + Added time to valid periods
+    + Added timezone information to dates found with search_dates()
+    + Support strings as date formats
+  * Improvements:
+    + Fixed Collections ABCs depreciation warning
+    + Fixed dates with trailing colons not being parsed
+    + Fixed date format override on any settings change
+    + Fixed parsing current weekday as past date, regardless of
+      settings
+    + Added UTC -2:30 as a valid offset
+    + Added Python 3.7 to supported versions, dropped support for
+      Python 3.3 and 3.4
+    + Moved to importlib from imp where possible
+    + Improved support for Catalan
+    + Documentation improvements
+
+-------------------------------------------------------------------
+Fri Sep 13 12:39:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix license
+- Format with spec-cleaner
+- Remove py2 only parts
+
+-------------------------------------------------------------------
+Wed Apr  3 10:33:33 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.7.1

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>641ac2654911aadac3db0fd6da013bd7</srcmd5>
+    <version>0.5</version>
+    <time>1506340672</time>
+    <user>dimstar_suse</user>
+    <comment>Required by the latest version of python-pyramid</comment>
+    <requestid>527065</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>705b4477ba9b79c66743c2fe0e21c6e5</srcmd5>
+    <version>1.0</version>
+    <time>1558351103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704093</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bafcf560d8c61e9ae0bb94b046bb739c</srcmd5>
+    <version>1.0</version>
+    <time>1578867855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763381</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0b89060a1b3c26019864be553c4c56f2</srcmd5>
+    <version>1.1.2</version>
+    <time>1670514708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041239</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>bd468d900020193d56f69bda5455e2ad</srcmd5>
+    <version>1.1.2</version>
+    <time>1686576345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092232</requestid>
+  </revision>
+</revisionlist>

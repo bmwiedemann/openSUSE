@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:34:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:45:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Wed Apr 20 11:24:07 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.0.1
+  3.0.1 (2022-01-11)
+  * Fix regression from 3.0.0: exception: 'in <string>' requires string as left operand, not type.
+  3.0.0 (2022-01-10)
+  * The :commit: role now outputs with an @ prefix.
+  * Add configuration options for changing prefixes.
+  * Allow {group} to be specified within issues_uri, issues_pr_uri, issues_commit_uri, and
+  2.0.0 (2022-01-01)
+  * Drop support for Python 2.7 and 3.5.
+  * Test against Python 3.8 to 3.10.
+  * Add :cwe: role for linking to CVEs on https://cwe.mitre.org. Thanks @hugovk for the PR.
+  * Add support for custom urls and separators Issue #93
+  * Allow custom titles for all roles Issue #116
+  * Added setting issues_default_group_project as future replacement of issues_github_path,
+     to reflect the now to universal nature of the extension
+
+-------------------------------------------------------------------
+Fri Mar 13 13:01:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Thu Jun  6 14:23:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reduce bit conditionals as it is not needed
+
+-------------------------------------------------------------------
+Fri Apr 26 13:05:20 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.2.0
+  1.?.?
+  * Add :commit: role for linking to commits.
+  * Add support for linking to external repos.
+  * Add :cve: role for linking to CVEs on https://cve.mitre.org.
+  * Add :pr: role. 
+  * Drop support for Python 3.4.
+  0.4.0
+  * Raise ValueError if neither issues_uri nor issues_github_path 
+    is set.
+  * Drop support for Python 2.6 and 3.3.
+- take GitHub tarball because of the tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:50 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Aug 27 20:39:13 UTC 2017 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Sat Aug 19 09:34:43 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

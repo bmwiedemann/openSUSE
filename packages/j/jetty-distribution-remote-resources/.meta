@@ -1,0 +1,5 @@
+<package name="jetty-distribution-remote-resources" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="jetty-distribution-remote-resources"/>
+</package>

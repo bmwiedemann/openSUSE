@@ -1,0 +1,617 @@
+-------------------------------------------------------------------
+Sat Dec 16 19:04:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.0:
+  * The read-only S3 file driver ('ros3') now accepts an AWS session
+    token as part of the credentials (:pr:`2301`). Pass session_token
+    when opening a :class:`.File` (along with the other S3 parameters).
+    This requires HDF5 1.14.2 or later, with the ROS3 feature built.
+  * Support for the HDF5 1.8 series was dropped, along with early 1.10
+    releases. The minimum required HDF5 version is now 1.10.4.
+  * Exposing HDF5 functions
+  * H5Pget_fapl_ros3_token & H5Pset_fapl_ros3_token
+  * Various nasty bugs when using nested compound and vlen data types
+    have been fixed (:pr:`2134`).
+  * Fixed an OverflowError in some cases when registering a filter
+    with :func:`h5z.register_filter`, especially on 32-bit
+    architectures (:pr:`2318`).
+  * Sequential slicing/indexing operations on a :class:`.VirtualSource`
+    object (e.g. source[:10][::2]) now raise an error, rather than
+    giving incorrect results (:pr:`2280`).
+
+-------------------------------------------------------------------
+Mon Oct 23 12:04:17 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
+Tue Aug 22 18:22:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.9.0
+  * This version of h5py requires Python 3.8 or above.
+  ## New features
+  * New out argument to read_direct_chunk() to allow passing the
+    output buffer (PR 2232).
+  * The objects from Dataset.asstr() and Dataset.astype() now
+    implement the __array__() method (PR 2269). This speeds up
+    access for functions that support it, such as np.asarray().
+  * Validate key types when creating groups and attributes, giving
+    better error messages when invalid types are used (PR 2266).
+  ## Deprecations & removals
+  * Using Dataset.astype() as a context manager has been removed,
+    after being deprecated in h5py 3.6. Read data by slicing the
+    returned object instead: dset.astype('f4')[:].
+  * Exposing HDF5 functions
+  * H5Pget_elink_acc_flags & H5Pset_elink_acc_flags as
+    h5py.h5p.PropLAID.get_elink_acc_flags() &
+    h5py.h5p.PropLAID.set_elink_acc_flags(): access the external
+    link file access traversal flags in a link access property list
+    (PR 2244).
+  * H5Zregister as h5py.h5z.register_filter(): register an HDF5
+    filter (PR 2229).
+  ## Bug fixes
+  * Group.__contains__ and Group.get now use the default link
+    access property list systematically (PR 2244).
+  * Removed various calls to the deprecated numpy.product function
+    (PR 2242 & PR 2273).
+  * Fix the IPython tab-completion integration in IPython 8.12 (PR
+    2256).
+  * Replacing attributes with AttributeManager.create() now deletes
+    the old attributes before creating the new one, rather than
+    using a temporary name and renaming the new attribute (PR
+    2274). This should avoid some confusing bugs affecting
+    attributes. However, failures creating an attribute are less
+    likely to leave an existing attribute of the same name in
+    place. To change an attribute value without changing its shape
+    or dtype, use modify() instead.
+  ## Building h5py
+  * When building with Parallel HDF5 support, the version of mpi4py
+    used on various Python versions is increased to 3.1.1, fixing
+    building with a newer setuptools (PR 2225).
+  * Some fixes towards compatibility with the upcoming Cython 3 (PR
+    2247).
+
+-------------------------------------------------------------------
+Thu Feb 16 10:05:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Clean up build and runtime requirements
+- Drop python-h5py-relax-dependency-versions.patch -- it has become
+  a noop at the last refresh.
+- Only build for supported pythons (>= 3.7)
+- PEP517 build
+
+-------------------------------------------------------------------
+Wed Feb  8 18:59:18 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * update patch
+
+- update to version 3.8.0:
+  * New features
+    + h5py now has pre-built packages for Python 3.11.
+    + h5py is compatible with HDF5 1.14 (:pr:`2187`). Pre-built
+      packages on PyPI still include HDF5 1.12 for now.
+    + :ref:`dataset_fancy` now accepts tuples, or any other sequence
+      type, rather than only lists and NumPy arrays. This also
+      includes range objects, but this will normally be less efficient
+      than the equivalent slice.
+    + New property :attr:`.Dataset.is_scale` for checking if the
+      dataset is a dimension scale (:pr:`2168`).
+    + :meth:`.Group.require_dataset` now validates maxshape for
+      resizable datasets (:pr:`2116`).
+    + :class:`.File` now has a meta_block_size argument and
+      property. This influences how the space for metadata, including
+      the initial header, is allocated.
+    + Chunk cache can be configured per individual HDF5 dataset
+      (:pr:`2127`). Use :meth:`.Group.create_dataset` for new datasets
+      or :meth:`.Group.require_dataset` for already existing
+      datasets. Any combination of the rdcc_nbytes, rdcc_w0, and
+      rdcc_nslots arguments is allowed. The file defaults apply to
+      those omitted.
+    + HDF5 file names for ros3 driver can now also be s3:// resource
+      locations (:pr:`2140`). h5py will translate them into AWS
+      path-style URLs for use by the driver.
+    + When using the ros3 driver, AWS authentication will be activated
+      only if all three driver arguments are provided. Previously AWS
+      authentication was active if any one of the arguments was set
+      causing an error from the HDF5 library.
+    + :meth:`.Dataset.fields` now implements the __array__() method
+      (:pr:`2151`). This speeds up accessing fields with functions
+      that expect this, like np.asarray().
+    + Low-level :meth:`h5py.h5d.DatasetID.chunk_iter` method that
+      invokes a user-supplied callable object on every written chunk
+      of one dataset (:pr:`2202`). It provides much better performance
+      when iterating over a large number of chunks.
+  * Exposing HDF5 functions
+    + H5Dchunk_iter as :meth:`h5py.h5d.DatasetID.chunk_iter`.
+    + H5Pset_meta_block_size and H5Pget_meta_block_size (:pr:`2106`).
+  * Bug fixes
+    + Fixed getting the default fill value (an empty string) for
+      variable-length string data (:pr:`2132`).
+    + Complex float16 data could cause a TypeError when trying to
+      coerce to the currently unavailable numpy.dtype('c4'). Now a
+      compound type is used instead (:pr:`2157`).
+    + h5py 3.7 contained a performance regression when using a boolean
+      mask array to index a 1D dataset, which is now fixed
+      (:pr:`2193`).
+  * Building h5py
+    + Parallel HDF5 can be built with Microsoft MS-MPI
+      (:pr:`2147`). See :ref:`build_mpi` for details.
+    + Some 'incompatible function pointer type' compile time warnings
+      were fixed (:pr:`2142`).
+    + Fix for finding HDF5 DLL in mingw (:pr:`2105`).
+
+-------------------------------------------------------------------
+Sun May 29 15:47:49 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.7.0:
+  * Provide the ability to use the Direct Virtual File Driver
+    (VFD) from HDF5 (Linux only).
+  * The :class:`.File` constructor contains two new parameters
+    alignment_threshold, and alignment_interval controling the
+    data alignment within the HDF5 file (gh#h5py/h5py#2040).
+  * :meth:`~.Group.create_dataset` and
+    :meth:`~.Group.require_dataset` now accept parameters
+    efile_prefix and virtual_prefix to set a filesystem path
+    prefix to use to find files for external datasets and for
+    virtual dataset sources (gh#h5py/h5py#2092). These only affect
+    the current access; the prefix is not stored in the file.
+  * Bugs fixed:
+    - Fix a deadlock which was possible when the same dataset was
+      accessed from multiple threads (gh#h5py/h5py#2064).
+    - New attributes are created directly, instead of via a
+      temporary attribute with subsequent renaming. This fixes
+      overwriting attributes with track_order=True.
+    - Fix for building with mpi4py on Python 3.10
+      (gh#h5py/h5py#2101).
+    - Fixed fancy indexing with a boolean array for a single
+      dimension (gh#h5py/h5py#2079).
+    - Avoid returning unitialised memory when reading from a
+      chunked dataset with missing chunks and no fill value
+      (gh#h5py/h5py#2076).
+    - Enable setting of fillvalue for datasets with variable
+      length string dtype (gh#h5py/h5py#2044).
+    - Closing a file or calling get_obj_ids() no longer re-enables
+      Python garbage collection if it was previously disabled
+      (gh#h5py/h5py#2020).
+- Refresh python-h5py-relax-dependency-versions.patch for updated
+  version.
+
+-------------------------------------------------------------------
+Fri Mar  4 11:43:46 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.6.0:
+  * Using :meth:`.Dataset.astype` as a context manager (with
+    dset.astype(t):) is deprecated. Slice the object returned by
+    astype instead (data = dset.astype(t)[:10]).
+  * Getting the value of h5py.get_config().default_file_mode now
+    issues a deprecation warning. This has been 'r' by default
+    from h5py 3.0, and cannot be changed since 3.3.
+- Rebase python-h5py-relax-dependency-versions.patch to apply
+  against updated version.
+- Also enforce %requires_eq on hdf5 to force rebuilds when hdf5
+  gets version updates in Factory (boo#1196682).
+- Skip tests marked with 'mpi_skip' when building with openmpi
+  flavours (see e.g., https://github.com/h5py/h5py/issues/1997).
+
+-------------------------------------------------------------------
+Thu Sep  9 16:08:42 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Correct order of definitions to generate multiple packages for
+  multiple builds.
+
+-------------------------------------------------------------------
+Sun Sep  5 16:38:52 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.4.0:
+  * New features
+    + The pre-built wheels now bundle HDF5 1.12.1 (:pr:`1945`).
+    + len() now works on dset.astype(), .asstr() and .fields()
+      wrappers (:pr:`1913`).
+  * Bug fixes
+    + Fix bug introduced in version 3.3 that did not allow the
+      creation of files using the flag "a" for certain drivers
+      (e.g. mpiio, core and stdio) (:pr:`1922`).
+    + Dataset indexing will now use the optimized fast path, which was
+      accidentally disabled in a previous version (:pr:`1944`).
+    + Fix an error building with Cython 3.0 alpha 8 (cpdef inside
+      functions) (:pr:`1923`).
+
+-------------------------------------------------------------------
+Wed Jun 23 09:37:01 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 3.3.0.
+  * New features
+    * Compatibility with the upcoming HDF5 1.12.1 and possibly 1.14.
+    * H5T_BITFIELD types will now be cast to their numpy.uint
+      equivalent by default (:issue:`1258`). This means that
+      no knowledge of mixed type compound dataset schemas is
+      required to read these types, and can simply be read as
+      follows: arr = dset[:]
+      Alternatively, 8-bit bitfields can still be cast to booleans
+      explicitly: arr = dset.astype(numpy.bool_)[:]
+    * Key types are validated when accessing groups, to give more
+      helpful errors when a group is indexed like a dataset.
+    * A new :meth:`.Group.build_virtual_dataset` method acting as
+      a context manager to assemble virtual datasets.
+    * If the source and target of a virtual dataset mapping have
+      different numbers of points, an error should now be thrown
+      when you make the mapping in the :class:`VirtualLayout`,
+      rather than later when writing this into the file. This
+      should make it easier to find the source of such errors.
+  * Deprecations
+    * The default_file_mode config option is deprecated, and setting
+      it to values other than 'r' (for read-only mode) is no longer
+      allowed. Pass the mode when creating a :class:`.File` object
+      instead of setting a global default.
+  * Bug fixes
+    * Trying to open a file in append mode ('a') should now give
+      clearer error messages when the file exists but can't be opened.
+    * Protect :func:`h5py.h5f.get_obj_ids` against garbage collection
+      invalidating HDF5 IDs while it is retrieving them.
+    * Make file closing more robust, including when closing files
+      while the interpreter is shutting down, by using lower-level
+      code to close HDF5 IDs of objects inside the file.
+- Updates for version 3.2.0.
+  * New features
+    * Added support to use the HDF5 ROS3 driver to access HDF5 files
+      on S3.
+    * Breaking changes & deprecations
+    * Setting the config option default_file_mode to values other
+      than 'r' is deprecated. Pass the desired mode when opening a
+      :class:`~.File` instead.
+  * Exposing HDF5 functions
+    * H5Pset_fapl_ros3 & H5Pget_fapl_ros3 (where HDF5 is built with
+      read-only S3 support).
+  * Bug fixes
+    * :exc:`OSError` exceptions raised by h5py should now have a
+      useful .errno attribute, where HDF5 provides this information.
+      Subclasses such as :exc:`FileNotFoundError` should also be
+      raised where appropriate.
+    * Fix reading data with a datatype of variable-length arrays of
+      fixed length strings.
+    * Fix :meth:`.Dataset.read_direct` and :meth:`.Dataset.write_direct`
+      when the source and destination have different shapes.
+    * Fix selecting data using integer indices in
+      :meth:`.Dataset.read_direct` and :meth:`.Dataset.write_direct`.
+    * Fix exception handling in :meth:`.Group.visititems`.
+    * Issue a warning when File(..., swmr=True) is specified with
+      any mode other than 'r', as the SWMR option is ignored in
+      these cases.
+    * Fix NumPy 1.20 deprecation warnings concerning the use of
+      None as shape, and the deprecated aliases np.float, np.int
+      and np.bool.
+  * 3.2.1 bug fix release
+    * Fix :attr:`.File.driver` when the read-only S3 driver is
+      available.
+- Rebase python-h5py-relax-dependency-versions.patch
+
+-------------------------------------------------------------------
+Thu Feb 18 19:40:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build. NumPy 1.20 in Tumbleweed dropped support for
+  Python 3.6 (NEP 29)
+- Fix sitearch handling between regular and mpi builds suitable for
+  singlespec with multiple python3 flavors
+- Refine requirement versions based on Python version
+
+-------------------------------------------------------------------
+Wed Jan 20 13:26:43 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add runtime dependency cached-property based on Python version
+
+-------------------------------------------------------------------
+Fri Dec 11 13:48:30 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Replace %__python3 usage by %python_exec.
+
+-------------------------------------------------------------------
+Fri Dec  4 03:15:34 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Enable parallel hdf5:
+  * Implement multibuild for different flavors of openmpi.
+  * Export env variables `HDF5_LIBDIR` and `HDF5_INCLUDEDIR`
+    pointing to the hdf library and headers location when enabling
+    openmpi flavored builds.
+  * Add BuildRequires: python-pytest-mpi for mpi tests.
+  * Replace python rpm macros with their expansions in most cases
+    to adapt to mpi paths.
+
+-------------------------------------------------------------------
+Thu Nov 26 14:55:53 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.0:
+  * See https://docs.h5py.org/en/latest/whatsnew/3.1.html for list
+    of changes.
+- Changes from version 3.0.0: See
+  https://docs.h5py.org/en/latest/whatsnew/3.0.html
+- Drop upstreamed patches:
+  * remove_unittest2.patch.
+  * no_include_opt.patch.
+- Add python-h5py-relax-dependency-versions.patch to allow building
+  against more recent versions of numpy than minimally required.
+- Python 2 is no longer supported; at least version 3.6 is
+  required.
+- Run all tests except:
+  * MPI based ones, as we build against the non-mpi version of
+    hdf5.
+  * Offset test which overflows on 32-bit.
+- Tests require python-cached-property for openSUSE <= 1500.
+- Fix `requires_eq` on libhdf5 (oS:F now has libhdf_hl103)
+  already.
+
+-------------------------------------------------------------------
+Mon May 11 07:45:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- ensure rebuild when hdf5 version changes (bsc#1150049)
+
+-------------------------------------------------------------------
+Fri Sep 13 13:12:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.10.0:
+  * no upstream changelog provided
+- Update patch remove_unittest2.patch
+- Remove upstream merged fix_failing_x86_test.patch
+
+-------------------------------------------------------------------
+Wed Jul 31 19:43:07 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Add fix_failing_x86_test.patch
+  Fixes spurious test failure on x86 platfomrs
+  See  gh#h5py/h5py#1163
+  From gh#h5py/h5py#1235
+
+-------------------------------------------------------------------
+Mon Mar 11 12:38:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Yodate to 2.9.0:
+  Changes from 2.8.0 are too numerous to list here, complete changelog
+  is available online at https://github.com/h5py/h5py/releases
+- Drop merged patch adjust_mapping_hdf5_error_codes.patch
+- Refresh remove_unittest2.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 02:51:00 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Use more reliable test invocation
+
+-------------------------------------------------------------------
+Fri Oct 12 15:00:53 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove valuerror-typerror-failing-tests.patch and replace it with
+  proper patch (https://github.com/tacaswell/h5py/commit/6653c65e8c8d0.patch)
+  in adjust_mapping_hdf5_error_codes.patch.
+
+-------------------------------------------------------------------
+Thu Oct 11 16:34:58 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Fix ldconfig syntax errors.
+
+-------------------------------------------------------------------
+Wed Oct 10 14:05:08 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Add valuerror-typerror-failing-tests.patch to make two tests pass.
+
+-------------------------------------------------------------------
+Mon Aug 13 08:55:13 UTC 2018 - mcepl@suse.com
+
+- Updated to 2.8.0
+  Changes from 2.7.1 are too numerous to list here, complete changelog
+  is available online at https://github.com/h5py/h5py/releases
+  Patch dont_reorder_compund.patch has been included upstream
+- Remove dependency on unittest2
+  Patch remove_unittest2.patch facilitates the change
+
+-------------------------------------------------------------------
+Thu Jan 25 22:04:22 UTC 2018 - toddrme2178@gmail.com
+
+- Add dont_reorder_compund.patch
+  Fixes builds with numpy 1.14. See:
+  https://github.com/h5py/h5py/issues/969
+  https://github.com/h5py/h5py/pull/970
+
+-------------------------------------------------------------------
+Sun Nov 12 17:01:49 UTC 2017 - arun@gmx.de
+
+- update patch
+
+- update to version 2.7.1:
+  * Bug fixes
+    + :issue:`903` Fixed critical issue with cyclic gc which resulted
+      in segfaults
+    + :issue:`904` Avoid unaligned access fixing h5py on sparc64
+    + :issue:`883` Fixed compilation issues for some library locations
+    + :issue:`868` Fix deadlock between phil and the import lock in
+      py2
+    + :issue:`841` Improve windows handling if filenames
+    + :issue:`874` Allow close to be called on file multiple times
+    + :issue:`867`, :issue:`872` Warn on loaded vs complied hdf5
+      version issues
+    + :issue:`902` Fix overflow computing size of dataset on windows
+    + :issue:`912` Do not mangle capitalization of filenames in error
+      messages
+    + :issue:`842` Fix longdouble on ppc64le
+    + :issue:`862`, :issue:`916` Fix compounds structs with
+      variable-size members
+
+-------------------------------------------------------------------
+Thu May 11 18:04:04 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Fix source URL
+- Update to version 0.2.7
+  * Python 3.2 is no longer supported
+  * Improved testing support
+  * Improved python compatibility
+  * Documentation improvements
+  * setup.py improvements
+  * Support for additional HDF5 features added
+  * Improvements to type system
+- Update to version 0.2.6
+  * Support for HDF5 Virtual Dataset API
+  * Add MPI Collective I/O Support
+  * Numerous build/testing/CI improvements
+  * Cleanup of codebase based on pylint
+  * Fixes to low-level API
+  * Documentation improvements
+- Add no_include_opt.patch to avoid including forbidden
+  directories.
+
+-------------------------------------------------------------------
+Tue Jul 28 10:34:21 UTC 2015 - toddrme2178@gmail.com
+
+- Fix hdf5 version ambiguity
+
+-------------------------------------------------------------------
+Fri Apr 10 14:15:27 UTC 2015 - toddrme2178@gmail.com
+
+- specfile:
+  * changed from 2to3 to six
+  * added build requirement for python3-pkgconfig
+  * added Cython requirement for install
+  * update copyright year
+- update to version 2.5.0:
+  * Experimental SWMR support
+  * Group and AttributeManager classes now inherit from the appropriate ABCs
+  * Fixed an issue with 64-bit float VLENS
+  * Cython warning cleanups related to "const"
+  * Entire code base ported to "six"; 2to3 removed from setup.py
+- update to version 2.4.0:
+  * This release incorporates a total re-write of the identifier
+    management system in h5py. As part of this refactoring, the entire
+    API is also now protected by threading locks.
+  * Files are now automatically closed when all objects within them
+    are unreachable. Previously, if File.close() was not explicitly
+    closed, files would remain open and "leaks" were possible if the
+    File object was lost.
+  * The entire API is now believed to be thread-safe (feedback
+    welcome!).
+  * External links now work if the target file is already
+    open. Previously this was not possible because of a mismatch in
+    the file close strengths.
+  * The options to setup.py have changed; a new top-level "configure"
+    command handles options like --hdf5=/path/to/hdf5 and
+    --mpi. Setup.py now works correctly under Python 3 when these
+    options are used.
+  * Cython (0.17+) is now required when building from source.
+  * The minimum NumPy version is now 1.6.1.
+
+-------------------------------------------------------------------
+Thu Jul 17 09:35:21 UTC 2014 - toddrme2178@gmail.com
+
+- Update download url
+- spec file cleanups
+
+-------------------------------------------------------------------
+Mon Jul 14 16:20:53 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 2.3.1
+  - Bugfix release which fixes a build issue when using the most
+    recent version of HDF5 (1.8.13), and some issues with Travis-CI.
+
+-------------------------------------------------------------------
+Thu May  8 11:23:35 UTC 2014 - toddrme2178@gmail.com
+
+- Update to version 2.3.0
+  - Support for arbitrary vlen data
+  - Improved exception messages
+  - Improved setuptools support
+  - Multiple low-level additions
+  - Improved support for MPI features
+  - Readonly files can now be opened in default mode
+  - Single-step build for HDF5 on Windows
+
+-------------------------------------------------------------------
+Mon Dec 16 13:56:43 UTC 2013 - toddrme2178@gmail.com
+
+- Update to version 2.2.1
+  + Critical bugfixes
+
+-------------------------------------------------------------------
+Tue Dec 10 14:28:44 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.2.0
+  + This version of h5py introduces support for MPI/Parallel HDF5,
+    using the mpi4py package.  Parallel HDF5 is the "native" method
+    in HDF5 for sharing files and objects across multiple processes,
+    in contrast to the "threading" package or "multiprocessing".
+    There is a guide to using Parallel HDF5 at the h5py web site:
+    http://www.h5py.org/docs/topics/mpi.html
+  + Support for Python 3.3
+  + Support for 16-bit "mini" floats
+  + Access to the HDF5 scale-offset filter
+  + Field names are now allowed when writing to a dataset
+  + Region references now preserve the shape of their selections
+  + File-resident "committed" types can be linked to datasets and attributes
+  + Make object mtime tracking optional
+  + A new "move" method on Group objects
+  + Many new options for Group.copy
+  + Access to HDF5's get_vfd_handle
+  + Many bug fixes
+- Remove depreciated %{py_requires}
+- Remove redundant %clen section
+- Remove useless %post/postun sections
+- Package ANN.rst, lzf/LICENSE.txt, lzf/README.txt and examples to
+  documentation directory
+
+-------------------------------------------------------------------
+Wed Apr 24 03:45:08 UTC 2013 - highwaystar.ru@gmail.com
+
+- update to version 2.1.3
+  - no changelog
+
+-------------------------------------------------------------------
+Sun Nov 25 11:34:42 UTC 2012 - toddrme2178@gmail.com
+
+- Update to 2.1.0
+  - No changelog
+
+-------------------------------------------------------------------
+Thu Apr 26 02:33:56 UTC 2012 - highwaystar.ru@gmail.com
+
+- python3 package added
+
+-------------------------------------------------------------------
+Sun Jan  8 00:47:03 UTC 2012 - toddrme2178@gmail.com
+
+- new version 2.0.1
+- cleaned up spec file
+- merged changes lists
+
+-------------------------------------------------------------------
+Thu Aug  4 02:44:19 UTC 2011 - highwaystar.ru@gmail.com
+
+- version bump to 2.0.0
+
+-------------------------------------------------------------------
+Sun May 29 00:00:00 UTC 2011 - werner.ho@gmx.de
+
+- fixed hdf5-devel package name change
+
+-------------------------------------------------------------------
+Thu Mar 17 00:00:00 UTC 2011 - werner.ho@gmx.de
+
+- new version 1.3.1
+
+-------------------------------------------------------------------
+Sun Sep 19 00:00:00 UTC 2010 - werner.ho@gmx.de
+
+- fixed libhdf5-dependancy
+
+-------------------------------------------------------------------
+Mon Jul  5 03:12:54 UTC 2010 - highwaystar.ru@gmail.com
+
+- fixed libhdf5-devel to hdf5-devel
+
+-------------------------------------------------------------------
+Mon Mar 22 08:39:48 UTC 2010 - highwaystar.ru@gmail.com
+
+- initial release for openSUSE
+- version 1.3.0
+
+-------------------------------------------------------------------
+Mon Mar 22 00:00:00 UTC 2010 - tomin@frame10
+
+- initial build for openSUSE

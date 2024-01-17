@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f2617dc406cf359135026007a8b4163</srcmd5>
+    <version>20140711</version>
+    <time>1415953124</time>
+    <user>dimstar_suse</user>
+    <comment>will be needed by yast2-fonts</comment>
+    <requestid>260230</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>234f45525db48fa761374eb3cd37add0</srcmd5>
+    <version>20141113</version>
+    <time>1416048114</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20141113
+  * monochrome fonts: black absorbs gray color 
+    on the pixel, not vice versa (forwarded request 261562 from pgajdos)</comment>
+    <requestid>261563</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55fe8bb41bb77d49b15aa1f8af101c72</srcmd5>
+    <version>20141202</version>
+    <time>1418251492</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>264566</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>586600df1eb3f8e7ae07e519946088c5</srcmd5>
+    <version>20150202</version>
+    <time>1422960040</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20150202
+  * do not treat unsuccessful LcdFilter setting
+    as a fatal error</comment>
+    <requestid>283771</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2d10009122ac89e2b8820c4b7174e8f3</srcmd5>
+    <version>20150202</version>
+    <time>1512734247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554693</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b157c0dc779feeb695a0fdfbab7ac1f2</srcmd5>
+    <version>20150202</version>
+    <time>1557404898</time>
+    <user>dimstar_suse</user>
+    <comment>- Install pkgconfig into libdir instead of datadir (forwarded request 701626 from olh)</comment>
+    <requestid>701666</requestid>
+  </revision>
+</revisionlist>

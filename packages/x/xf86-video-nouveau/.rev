@@ -1,0 +1,212 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9036fc13bcb8b7b9acd1e0ac20c0873</srcmd5>
+    <version>1.0.10</version>
+    <time>1389617544</time>
+    <user>coolo</user>
+    <comment>package renamed to xf86-video-nouveau</comment>
+    <requestid>211869</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3527256f3f106acb32cc6d4390ebdc2b</srcmd5>
+    <version>1.0.10</version>
+    <time>1398533704</time>
+    <user>coolo</user>
+    <comment>- Add missing BuildRequires (forwarded request 231332 from tobijk)</comment>
+    <requestid>231360</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3527256f3f106acb32cc6d4390ebdc2b</srcmd5>
+    <version>1.0.10</version>
+    <time>1409303710</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7015bb8ef5c4764f1836a4f0e8189319</srcmd5>
+    <version>1.0.10</version>
+    <time>1409583530</time>
+    <user>coolo</user>
+    <comment>- Don't install .la file.</comment>
+    <requestid>246887</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>26fa3eb644d73afd0cbee85e0e4536a7</srcmd5>
+    <version>1.0.11</version>
+    <time>1410080910</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.11
+  - Support for server managed fd's.
+  - Glamor support.
+  - Maxwell support.
+  - DRI3 and initial Present support.
+  - vsync'ed kms pageflip performance fixes when running on Linux 3.13+
+  - Multi-display vsync, vblank, swap scheduling, timestamping fixes.
+  - Multi x-screen support fixes.
+  - ZaphodHead support on for multiple outputs per x-screen.
+  - EXA nv-10 fixes.
+  - Enable sync of swaps to vblank by default (Option GLXVblank &quot;on&quot;).
+  - Disable pseudo-triplebuffering by default (Option SwapLimit &quot;1&quot;).
+- forward ported patch N_xf86-video-nouveau_nva3-noaccel-info.patch</comment>
+    <requestid>247670</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>77ff432e2754fdc0a26fa07f6fb6a26c</srcmd5>
+    <version>1.0.11</version>
+    <time>1422346145</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282820</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>32947b72493687feeceeb32c7722a2f5</srcmd5>
+    <version>1.0.11</version>
+    <time>1425891602</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288675</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>55548b422a370a45708e3df624fe31a5</srcmd5>
+    <version>1.0.11</version>
+    <time>1447766415</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed &quot;osc service localrun download_files&quot; run
+
+- updated to latest git commit 1ff13a9 of 2015-09-13, which removes
+  GLAMOR support among other things, which changed as well</comment>
+    <requestid>343978</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b2893e7493c4725224366cb69989dd68</srcmd5>
+    <version>1.0.12</version>
+    <time>1450471945</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.12
+  * New nouveau DDX release</comment>
+    <requestid>349002</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1170a1d5eaa9bafadc53c170381d2695</srcmd5>
+    <version>1.0.13</version>
+    <time>1474886111</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>429829</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>63f0069c0a87f44c5a7659bb76bec850</srcmd5>
+    <version>1.0.13</version>
+    <time>1478780058</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>439329</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>39ea23c4abcfb2ab846de139c572959a</srcmd5>
+    <version>1.0.14</version>
+    <time>1490025915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.14:
+  * exa: add GM10x acceleration support
+  * hwdefs: update nvc0_3d, add gm107_texture for new TIC format
+  * nvc0: make use of the new hwdefs for TEX_CB_INDEX
+  * nvc0: rename BEGIN_IMC0 to IMMED_NVC0
+  * nvc0: refactor TIC uploads to allow different specifics per generation
+  * copy: add maxwell/pascal copy engine classes
+  * recognize and accelerate GM20x
+  * Consider CRTCs disabled when DPMS is off</comment>
+    <requestid>479299</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9095b4d7b2409792a418ba3fe1202a9e</srcmd5>
+    <version>1.0.14</version>
+    <time>1492516026</time>
+    <user>dimstar_suse</user>
+    <comment>- SLE merge
+  * latest driver changes for sle12 (fate #315643-315645, 319159-319161, 319618)
+  * adding missing fate entry: FATE#316743</comment>
+    <requestid>487551</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>99579463a7b053b279d00a8da08fcbe4</srcmd5>
+    <version>1.0.15</version>
+    <time>1493363479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.15: 
+  * fix null pointer deref when building against &gt;=libdrm 2.4.78
+  * Add Pascal family support, identical to Maxwell
+  * Do not register hotplug without RandR</comment>
+    <requestid>490015</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c86139d5d43403664eed4a6e4e33e73e</srcmd5>
+    <version>1.0.15</version>
+    <time>1540447774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642930</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>1718fe073acef99b7bea1536ea1e367a</srcmd5>
+    <version>1.0.15</version>
+    <time>1545647718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660214</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1efeb52076177c21d5633d554d6e26fb</srcmd5>
+    <version>1.0.16</version>
+    <time>1591101175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>808851</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c23edf62e6f7acbe8c4da971030af11e</srcmd5>
+    <version>1.0.17</version>
+    <time>1612182312</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer set CFLAGS, because &quot;%optflags&quot; is already included in
+  %configure macro
+
+- update to 1.0.17:
+  * present: fix handling of drmWaitVBlank failures
+  * drmmode: make event handler leave a note that there are stuck events
+  * present: don't enable if there's no acceleration
+  * drmmode: fix screen resize without acceleration
+  * make error when failing to allocate surface more descriptive
+  * dri2,present: move in pixmap before getting addresses
+  * nv4/exa: tiling is unsupported pre-nv10, reduce alignment requirements
+  * Don't advertise any PRIME offloading capabilities without acceleration
+- spec-cleaner cleanups</comment>
+    <requestid>866587</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>b98de0ab2cf8feb183f7bad56d8a141b</srcmd5>
+    <version>1.0.17</version>
+    <time>1622839358</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer autoinstall the package depending on PCI ID; we have
+  modesetting driver for X since a long time now (boo#1186721)</comment>
+    <requestid>896889</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>c62171ca5c49b8485d39a0fb01b68eb0</srcmd5>
+    <version>1.0.17</version>
+    <time>1636662948</time>
+    <user>dimstar_suse</user>
+    <comment>- U_nouveau-fixup-driver-for-new-X-server-ABI.patch 
+  * fixes build aginst xorg-server 21.1</comment>
+    <requestid>927989</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>f9aa0d02f962899f8c438e5ec63ee7e5</srcmd5>
+    <version>1.0.17</version>
+    <time>1652717256</time>
+    <user>dimstar_suse</user>
+    <comment>- set SUSE_ZNOW to 0 (boo#1197994)</comment>
+    <requestid>977260</requestid>
+  </revision>
+</revisionlist>

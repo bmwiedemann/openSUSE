@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b6066ae5f1a63b5591ff2bc9a4cd601a</srcmd5>
+    <version>0.2.2</version>
+    <time>1367932414</time>
+    <user>coolo</user>
+    <comment>somebody decided to update libdvbpsi in multimedia:libs and create a new libdvbpsi-0 package; which is what is needed for now by VLC. Thus, introducing this (just renamed) package into Factory.</comment>
+    <requestid>174691</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b6066ae5f1a63b5591ff2bc9a4cd601a</srcmd5>
+    <version>0.2.2</version>
+    <time>1367935661</time>
+    <user>coolo</user>
+    <comment>somebody decided to update libdvbpsi in multimedia:libs and create a new libdvbpsi-0 package; which is what is needed for now by VLC. Thus, introducing this (just renamed) package into Factory.</comment>
+    <requestid>174691</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b6066ae5f1a63b5591ff2bc9a4cd601a</srcmd5>
+    <version>0.2.2</version>
+    <time>1379662931</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>b6066ae5f1a63b5591ff2bc9a4cd601a</srcmd5>
+    <version>0.2.2</version>
+    <time>1409301541</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

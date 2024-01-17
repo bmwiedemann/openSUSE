@@ -1,0 +1,77 @@
+Nur in reaim-7.0.1.13.new/src/: .deps.
+Nur in reaim-7.0.1.13.new/src/: Makefile.
+Nur in reaim-7.0.1.13.new/src/: Makefile.in.
+Index: osdl-aim-7/src/creat_clo.c
+===================================================================
+--- osdl-aim-7.orig/src/creat_clo.c
++++ osdl-aim-7/src/creat_clo.c
+@@ -450,11 +450,10 @@ static int exec_test(int argc, char **ar
+ 	while (n--) {
+ 		fval = fork();	/* fork the task off */
+ 		if (fval == 0) {	/* we're the child */
+-			status = execl("./scripts/true", "true", NULL);
++			status = execl(BASEDIR"/scripts/true", "true", NULL);
+ 			perror("\nexec_test");	/* tell more info */
+ 			fprintf(stderr,
+-				"Cannot execute `./scripts/true' (status = %d)\n",
+-				status);
++				"Cannot execute '%s/scripts/true' (status = %d)\n",BASEDIR,status);
+ 			exit(-1);	/* quit painlessly */
+ 		} else {
+ 			while (1) {	/* now wait for done */
+Index: osdl-aim-7/src/disk_funcs.c
+===================================================================
+--- osdl-aim-7.orig/src/disk_funcs.c
++++ osdl-aim-7/src/disk_funcs.c
+@@ -172,7 +172,7 @@ int create_fakeh()
+ 	char cmd[1024];		/* string for system function -holds tar */
+ 	char cwd[256];		/* working directory for tar */
+ 	char file_buffer[KILO];	/* tmp buffer for files */
+-	char *default_fakeh = "/usr/local/share/reaim";
++	char *default_fakeh = BASEDIR"/data";
+ 	char fn1[STRLEN];
+ 	/* tmp for naming */
+ 	int numdir = my_disk->numdirs;
+Index: osdl-aim-7/src/num_fcns.c
+===================================================================
+--- osdl-aim-7.orig/src/num_fcns.c
++++ osdl-aim-7/src/num_fcns.c
+@@ -1097,7 +1097,7 @@ static int shell_rtns_1(int argc, char *
+ 		return -1;
+ 	}
+ 
+-	sprintf(cmdline, "./scripts/aim_1.sh %d", bogo_load);
++	sprintf(cmdline, BASEDIR"/scripts/aim_1.sh %d", bogo_load);
+ 	COUNT_BUMP;
+ 
+ 	n = aim_system(cmdline);
+@@ -1123,7 +1123,7 @@ static int shell_rtns_2(int argc, char *
+ 		return -1;
+ 	}
+ 
+-	sprintf(cmdline, "./scripts/aim_2.sh %d", bogo_load);
++	sprintf(cmdline, BASEDIR"/scripts/aim_2.sh %d", bogo_load);
+ 	COUNT_BUMP;
+ 
+ 	n = aim_system(cmdline);
+@@ -1149,7 +1149,7 @@ static int shell_rtns_3(int argc, char *
+ 		return -1;
+ 	}
+ 
+-	sprintf(cmdline, "./scripts/aim_3.sh %d", bogo_load);
++	sprintf(cmdline, BASEDIR"/scripts/aim_3.sh %d", bogo_load);
+ 	COUNT_BUMP;
+ 
+ 	n = aim_system(cmdline);
+Index: osdl-aim-7/src/suite.h
+===================================================================
+--- osdl-aim-7.orig/src/suite.h
++++ osdl-aim-7/src/suite.h
+@@ -52,6 +52,7 @@
+ 
+ #define WORKLD		100
+ #define MAX_WORK	1024
++#define BASEDIR		"/usr/share/reaim"
+ #define WORKFILE	"/usr/share/reaim/workfile"
+ #define CONFIGFILE	"/usr/share/reaim/reaim.config"
+ #define LOGFILEPREFIX	"reaim"

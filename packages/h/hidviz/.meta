@@ -1,0 +1,9 @@
+<package name="hidviz" project="openSUSE:Factory">
+  <title>hidviz</title>
+  <description>Hidviz is a GUI application for in-depth analysis of USB HID class devices.
+The 2 main usecases of this application are reverse-engineering existing
+devices and developing new USB HID devices.
+</description>
+  <devel project="hardware" package="hidviz"/>
+  <url>https://hidviz.org</url>
+</package>

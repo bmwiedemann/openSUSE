@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3cf3b4678835dadb0617e34f1440fb9</srcmd5>
+    <version>2.6</version>
+    <time>1497274446</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-astropy (already in openSUSE:Factory).</comment>
+    <requestid>502744</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f152687b00e3bceb138ce211f03a0b5f</srcmd5>
+    <version>2.9</version>
+    <time>1548064115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664284</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fbe7aaf9fc91ca633c99cb539330534a</srcmd5>
+    <version>2.12</version>
+    <time>1580724774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768800</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e10e8aec84517e1c4b1647d50c415b06</srcmd5>
+    <version>2.14</version>
+    <time>1594383174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819734</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df85f96e853d85ebc26f953827ccb65a</srcmd5>
+    <version>2.15</version>
+    <time>1605783600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849266</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f8f50c5ecbda8fab476afc90b38b7ba0</srcmd5>
+    <version>2.15</version>
+    <time>1614001210</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874192</requestid>
+  </revision>
+</revisionlist>

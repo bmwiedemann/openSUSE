@@ -1,0 +1,23 @@
+Index: systemd/gpsdctl@.service.in
+===================================================================
+--- systemd/gpsdctl@.service.in
++++ systemd/gpsdctl@.service.in
+@@ -5,6 +5,18 @@ BindsTo=dev-%i.device
+ After=dev-%i.device
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectClock=false
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=oneshot
+ Environment="GPSD_SOCKET=@RUNDIR@/gpsd.sock"
+ EnvironmentFile=-/etc/default/gpsd

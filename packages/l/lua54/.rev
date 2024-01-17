@@ -1,0 +1,290 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bafa55801043a0945516ea599da66af2</srcmd5>
+    <version>5.4.0</version>
+    <time>1594228696</time>
+    <user>dimstar_suse</user>
+    <comment>Lua 5.4</comment>
+    <requestid>819392</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>89757f9c0b42b4c335f0a9d60a96ded0</srcmd5>
+    <version>5.4.0</version>
+    <time>1595576873</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches 7 &amp; 8
+- Add upstream-bugs.patch, upstream fixes from https://www.lua.org/bugs.html
+- files_test.patch: use proper check for 64-bit time_t
+- Amend list of 64bit architectures
+</comment>
+    <requestid>821867</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1cbd82405f60ed6536ea5fdd6b47be94</srcmd5>
+    <version>5.4.0</version>
+    <time>1597955251</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch for CVE-2020-15945, boo#1174540 (un-numbered)
+- Add upstream patches 9,10,11,12
+  * Patch 9: CVE-2020-24342, boo#1175339
+  * Patch 10: CVE-2020-24371, boo#1175449
+  * Patch 11: CVE-2020-24370, boo#1175448
+  * Patch 12: CVE-2020-24369, boo#1175447
+</comment>
+    <requestid>827619</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e06a15931f7063951c4fbeebf1d2dea6</srcmd5>
+    <version>5.4.0</version>
+    <time>1598651087</time>
+    <user>dimstar_suse</user>
+    <comment>- Add final part of patch for CVE-2020-15888, boo#1174367
+- Add upstream patch 13
+</comment>
+    <requestid>828560</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a7b60e7a856a71345a21a12a9b4b48eb</srcmd5>
+    <version>5.4.1</version>
+    <time>1602503198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4.1:
+  * Fixes bugs found in Lua 5.4.0
+- Removed upstream-bugs.patch: new release (no bugs found yet)
+</comment>
+    <requestid>840777</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>47d603edfa4d77fff62fcf4fa45b33ff</srcmd5>
+    <version>5.4.2</version>
+    <time>1607430220</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4.2:
+  * Fixes garbage collection bug
+- Add main_test.patch: fix bug in main.lua test
+</comment>
+    <requestid>853274</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d96282fd839a0b70ceee432d7cce7b03</srcmd5>
+    <version>5.4.2</version>
+    <time>1612466613</time>
+    <user>dimstar_suse</user>
+    <comment>- Move tests to separate build
+</comment>
+    <requestid>865991</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e8151815b362f007d40c4a6e7841efa9</srcmd5>
+    <version>5.4.2</version>
+    <time>1615802010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878379</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5c977a6f2b757b500787b71b6e4f3abc</srcmd5>
+    <version>5.4.3</version>
+    <time>1619031487</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream-bugs.patch and upstream-bugs-test.patch to fix
+  bugs 1,2,3 for build and tests respectively.</comment>
+    <requestid>886619</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7ae75a6440e0f7dea578e6a397991abf</srcmd5>
+    <version>5.4.3</version>
+    <time>1621269887</time>
+    <user>dimstar_suse</user>
+    <comment>- Add shared_link.patch: fix dynamic linking executable
+- Stop building static library
+</comment>
+    <requestid>891995</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>fd19955717a1af6b21b0bfea13f4de3d</srcmd5>
+    <version>5.4.3</version>
+    <time>1622536430</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix doc location (boo#1186233)
+</comment>
+    <requestid>895306</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>ca542ecb1bedbea4efda8016a4218abd</srcmd5>
+    <version>5.4.3</version>
+    <time>1627898656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update upstream-bugs.patch and upstream-bugs-test.patch to fix
+  bugs 4,5,6 for build and tests respectively.
+</comment>
+    <requestid>909226</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>e0427eea146f683d3fb8ce8c8ca2a587</srcmd5>
+    <version>5.4.3</version>
+    <time>1638480601</time>
+    <user>dimstar_suse</user>
+    <comment>- Update upstream-bugs.patch and upstream-bugs-test.patch to fix
+  bugs 7,8 for build and tests respectively.
+</comment>
+    <requestid>934303</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>41280bcbb95050368b7e9c9951b95a1b</srcmd5>
+    <version>5.4.3</version>
+    <time>1641203338</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable readline support in Lua, the way to do this changed
+  in Lua 5.4
+- Because we are linking with readline add GPLv3+ only to the
+  main package
+- Subsequently, update main_test.patch to ignore another test
+- Update upstream-bugs.patch and upstream-bugs-test.patch to fix
+  bugs 9,10,12 for build and tests respectively. Bug 11 changes
+  interface of luaD_pretailcall.
+</comment>
+    <requestid>943308</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>de5e1e047848390f3d56ee502d258062</srcmd5>
+    <version>5.4.4</version>
+    <time>1644099778</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure shared library is installed with executable bit set
+- Update to Lua 5.4.4:
+  * fixes all bugs found in Lua 5.4.3
+- Removed upstream-bugs.patch: new release (no bugs found yet)
+- Removed upstream-bugs-test.patch: new release (no bugs found yet)
+</comment>
+    <requestid>949765</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ded9b1b64cb57cb8a4a092cb356f445b</srcmd5>
+    <version>5.4.4</version>
+    <time>1647031182</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patches from upstream:
+  * luabugs1.patch
+  * luabugs2.patch
+- Adjust buildsystem so that it matches upstream git (testes??)
+- Drop the lua_docdir define, package docs in the standard
+  location. Instead just silently drop packaging the README with
+  the path that does not makes sense for a rpm package, but for a
+  source tarball install. Simpler solution to boo#1186233.
+</comment>
+    <requestid>960439</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>e6bddda909dbac0bd868e3eb32875b8e</srcmd5>
+    <version>5.4.4</version>
+    <time>1654506613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980769</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>7552468bb7878a9417c1d0eb37ae9d76</srcmd5>
+    <version>5.4.4</version>
+    <time>1656145454</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1192613, bsc#1194575</comment>
+    <requestid>984874</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>2339da595b36d80998860f5e5f5988f7</srcmd5>
+    <version>5.4.4</version>
+    <time>1656934692</time>
+    <user>dimstar_suse</user>
+    <comment>* luabugs4.patch (bsc#1201146, CVE-2022-33099)</comment>
+    <requestid>986624</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>49e16ab44b66e3286907d736d09a28ce</srcmd5>
+    <version>5.4.4</version>
+    <time>1662062963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000323</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>22b3e91157e2e654d87571b7879f8450</srcmd5>
+    <version>5.4.4</version>
+    <time>1671563980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043640</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>f30d4f6f09b4c453b7f41235e37a75b1</srcmd5>
+    <version>5.4.4</version>
+    <time>1674810912</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use complex dependencies on SLE12
+</comment>
+    <requestid>1060891</requestid>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>6a701e94fd321738ca09637b3f268c2e</srcmd5>
+    <version>5.4.4</version>
+    <time>1679520515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072836</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>b37e5a09a1c9394b62f6ba2577116767</srcmd5>
+    <version>5.4.4</version>
+    <time>1680789316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077316</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d83adc09a64d8bfc55fd9d81100f9881</srcmd5>
+    <version>5.4.6</version>
+    <time>1685632721</time>
+    <user>dimstar_suse</user>
+    <comment>- Library is always liblua5_4-5: due to SOVERSION leading digit
+  being 5
+- Final release of 5.4.6. No change in the changelog.
+- Experimenting with lua 5.4.6-rc1 (release 5.4.5 has been
+  effectively withdrawn).
+- Update to 5.4.5:
+  - this is a bug-fix release.
+  - Lua 5.4.5 also contains several internal improvements and
+    includes a revised reference manual
+- Remove upstreamed patches:
+  - luabugs1.patch
+  - luabugs10.patch
+  - luabugs11.patch
+  - luabugs2.patch
+  - luabugs3.patch
+  - luabugs4.patch
+  - luabugs5.patch
+  - luabugs6.patch
+  - luabugs7.patch
+  - luabugs8.patch
+  - luabugs9.patch
+</comment>
+    <requestid>1089611</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>0d2683c92a163ae679d1fe8f728975d8</srcmd5>
+    <version>5.4.6</version>
+    <time>1700250477</time>
+    <user>anag+factory</user>
+    <comment>- Add skip-tests_big-endian.patch to skip little-endian-only
+  tests (bsc#1216930).
+</comment>
+    <requestid>1126143</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>fb8e4184bf0c29b11eda48674a558311</srcmd5>
+    <version>5.4.6</version>
+    <time>1702158677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1131660</requestid>
+  </revision>
+</revisionlist>

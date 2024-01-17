@@ -1,0 +1,6 @@
+<package name="atkmm" project="openSUSE:Factory">
+  <title>C++ Binding for the ATK library</title>
+  <description>atkmm is the C++ binding for the ATK library.
+This module is part of the GNOME C++ bindings effort.</description>
+  <devel project="GNOME:Factory" package="atkmm"/>
+</package>

@@ -1,0 +1,25 @@
+From: Robert Luberda <robert@debian.org>
+Date: Sat, 1 Sep 2018 09:12:11 +0200
+Subject: Fix x32 compilation
+
+Check for __IPL32__ together with __x86_64__ as documented in
+https://wiki.debian.org/X32Port to fix compilation on x32
+architecture.
+---
+ acc/acc_arch.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/acc/acc_arch.h b/acc/acc_arch.h
+index 8f83583..caeca81 100644
+--- a/acc/acc_arch.h
++++ b/acc/acc_arch.h
+@@ -41,6 +41,9 @@
+ #if (ACC_OS_DOS16 || ACC_OS_OS216 || ACC_OS_WIN16)
+ #  define ACC_ARCH_IA16             1
+ #  define ACC_INFO_ARCH             "ia16"
++#elif defined(__ILP32__) && defined(__x86_64__)
++#  define ACC_ARCH_IA32             1
++#  define ACC_INFO_ARCH             "x32"
+ #elif defined(__amd64__) || defined(__x86_64__) || defined(_M_AMD64)
+ #  define ACC_ARCH_AMD64            1
+ #  define ACC_INFO_ARCH             "amd64"

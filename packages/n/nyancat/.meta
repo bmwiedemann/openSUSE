@@ -1,0 +1,5 @@
+<package name="nyancat" project="openSUSE:Factory">
+  <title>Nyancat rendered in your terminal</title>
+  <description>Nyancat in your terminal, rendered through ANSI escape sequences. Includes a telnet server.</description>
+  <devel project="games" package="nyancat"/>
+</package>

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Aeon FirstBoot Setup
+Comment=Sets up Aeon Correctly On FirstBoot
+Exec=/usr/bin/aeon-firstboot
+Icon=org.gnome.Terminal
+Type=Application
+Categories=Utility;System;
+Name[en_GB]=startup

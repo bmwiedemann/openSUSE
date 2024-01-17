@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a17984903f87287b2ae7ce2d8c219d5f</srcmd5>
+    <version>2.1</version>
+    <time>1685904080</time>
+    <user>dimstar_suse</user>
+    <comment>Submit Agama Ruby part to Factory.</comment>
+    <requestid>1090517</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>470df7efecfa05d4f6fe43b2f3023915</srcmd5>
+    <version>3.devel43</version>
+    <time>1691508353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102704</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02910ebb3e26dcfc9fedc56b97bb490d</srcmd5>
+    <version>4</version>
+    <time>1696014797</time>
+    <user>anag+factory</user>
+    <comment>submit new version 4</comment>
+    <requestid>1113829</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dc9a0679f54e430f25a4bf0776e72e39</srcmd5>
+    <version>5</version>
+    <time>1698097284</time>
+    <user>anag+factory</user>
+    <comment>submit new version 5</comment>
+    <requestid>1119697</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1f5e2361682190ccf13cf8b9d65ee65c</srcmd5>
+    <version>6</version>
+    <time>1701462418</time>
+    <user>anag+factory</user>
+    <comment>submit new version 6</comment>
+    <requestid>1130248</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2d8f2150dc33e73ffdf58843b902a00b</srcmd5>
+    <version>7</version>
+    <time>1703281333</time>
+    <user>anag+factory</user>
+    <comment>submit new version 7</comment>
+    <requestid>1134622</requestid>
+  </revision>
+</revisionlist>

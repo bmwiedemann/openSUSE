@@ -1,0 +1,6 @@
+<package name="patch2mail" project="openSUSE:Factory">
+  <title>Patch and package update notification via mail</title>
+  <description>patch2mail checks for available updates and sends a mail to root
+if any patches or updated packages (configureable) are available.</description>
+  <devel project="system:packagemanager" package="patch2mail"/>
+</package>

@@ -1,0 +1,15 @@
+Index: osdl-aim-7/src/suite.h
+===================================================================
+--- osdl-aim-7.orig/src/suite.h
++++ osdl-aim-7/src/suite.h
+@@ -52,8 +52,8 @@
+ 
+ #define WORKLD		100
+ #define MAX_WORK	1024
+-#define WORKFILE	"/usr/local/share/reaim/workfile.short"
+-#define CONFIGFILE	"/usr/local/share/reaim/reaim.config"
++#define WORKFILE	"/usr/share/reaim/workfile"
++#define CONFIGFILE	"/usr/share/reaim/reaim.config"
+ #define LOGFILEPREFIX	"reaim"
+ #define STROKES		50	/* baud rate per user typing */
+ #define MAXITR		10	/* max number of iteration */

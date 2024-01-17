@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1947b76a91c54a794bab584bc79bd084</srcmd5>
+    <version>0.1.8</version>
+    <time>1335190171</time>
+    <user>coolo</user>
+    <comment>spec clean up. See .changes</comment>
+    <requestid>114929</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1947b76a91c54a794bab584bc79bd084</srcmd5>
+    <version>0.1.8</version>
+    <time>1340183244</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c3bf69f0f9dc96aa4edd67c9e23efdc</srcmd5>
+    <version>0.1.12</version>
+    <time>1351873933</time>
+    <user>coolo</user>
+    <comment>Update to 0.1.12 (forwarded request 139986 from posophe)</comment>
+    <requestid>139991</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4c3bf69f0f9dc96aa4edd67c9e23efdc</srcmd5>
+    <version>0.1.12</version>
+    <time>1359108761</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eb9c9dd50486ef911c26db6981c7effd</srcmd5>
+    <version>0.1.14</version>
+    <time>1366983582</time>
+    <user>coolo</user>
+    <comment>Update to 0.1.14 - Fixes weird conflicts in Factory (forwarded request 172987 from dimstar)</comment>
+    <requestid>173295</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b647cded917c9b390a456045814cdec9</srcmd5>
+    <version>0.2.0</version>
+    <time>1379076262</time>
+    <user>scarabeus_factory</user>
+    <comment>Minor cleanup of Coolos update to 0.2.0, PLEASE ack and FORWARD to factory asap as it fixes build there (forwarded request 197928 from Zaitor)</comment>
+    <requestid>198777</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9465658bdebfb59a347acedbf2ac0610</srcmd5>
+    <version>0.2.0</version>
+    <time>1379316831</time>
+    <user>coolo</user>
+    <comment>Whoops, I noticed now that coolo had added a new dependency and not mentioned it in his .changes
+
+
+From previous SR
+
+-Version:        0.1.14
++Version:        0.2.0
+ Release:        0
+ Summary:        Tools for the Hughski Colorimeter
+ License:        GPL-2.0+
+@@ -26,9 +26,10 @@
+ Source0:        http://people.freedesktop.org/~hughsient/releases/%{name}-%{version}.tar.xz
+ BuildRequires:  docbook-utils
+ BuildRequires:  intltool
++BuildRequires:  itstool
+ BuildRequires:  update-desktop-files
+ BuildRequires:  xz (forwarded request 198831 from Zaitor)</comment>
+    <requestid>199107</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>9465658bdebfb59a347acedbf2ac0610</srcmd5>
+    <version>0.2.0</version>
+    <time>1379662135</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>be3d87de68edbb6a0dd06af1d911c636</srcmd5>
+    <version>0.2.1</version>
+    <time>1392789234</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.2.1:
+
+NOTE: The target devel project contains a STALE VERSION of colord, thus masking
+the build failure in Factory. I created a deleterequest for the same.
+
+This package builds in my branch against PURE Factory. (forwarded request 221339 from dimstar)</comment>
+    <requestid>221386</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>be3d87de68edbb6a0dd06af1d911c636</srcmd5>
+    <version>0.2.1</version>
+    <time>1409300664</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>154602b2170b2d687430293bc70b907c</srcmd5>
+    <version>0.2.2</version>
+    <time>1410967502</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.2.2
+  - This release requires colord &gt;= 1.2.3
+ 
+  New Features:
+  - Load the colorhug-spectro-utils data file from a GResource
+  - Support ColorHug2 in colorhug-ccmx and colorhug-flash
+  - Support getting and setting the DAC value on ColorHug+
+  Bugfixes:
+  - Do not use deprecated widgets in the spectro tool
+  - Don't set the multiplier or integral on v2 hardware
+  - Fix autogen failure with new gettexts
+  - Remove suspicious usage of sizeof with a numeric constant
+  - Use ch_device_check_firmware() to verify the firmware
+- drop colorhug-client-colorhug_plus.patch, upstream</comment>
+    <requestid>249230</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cc02bbc45408e0b8efb66705994c2991</srcmd5>
+    <version>0.2.3</version>
+    <time>1416347240</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262124</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ac9e7d03a1513aa6ee73af55d088b030</srcmd5>
+    <version>0.2.5</version>
+    <time>1419159899</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.2.5
+  New Features:
+  - Add a simple man page and AppData file for colorhug-refresh
+    (Richard Hughes)
+  Bugfixes:
+  - Add keywords to the various desktop files (Richard Hughes)
+  - Do not install the bash-completion files in /etc (Richard Hughes)
+  
+- Update to version 0.2.4
+  New Features:
+  - Add a NSI script to build the Windows installer (Richard Hughes)
+  - Add colorhug-refresh for measuring display latency and refresh
+    rates (Richard Hughes)
+  - Add windows resource files for all executables (Richard Hughes)
+    
+  Bugfixes:
+  - Do not use deprecated libgusb API (Richard Hughes)
+  - Don't install Linux-only content when compiling with MinGW
+    (Richard Hughes)
+  - Make libcanberra-gtk3 optional (Richard Hughes)
+  - Remove colorhug-inhx32-to-bin and move functionality into
+    colorhug-cmd (Richard Hughes)
+  - Support the ColorHug2 in the example code (Richard Hughes)</comment>
+    <requestid>265911</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1c1b0b3d0f9a138bb81a997c3bb07aaf</srcmd5>
+    <version>0.2.7</version>
+    <time>1430132738</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>304143</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6fb240ae972b5c64402bd8020ca90a3a</srcmd5>
+    <version>0.2.8</version>
+    <time>1510045264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539215</requestid>
+  </revision>
+</revisionlist>

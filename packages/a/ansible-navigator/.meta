@@ -1,0 +1,5 @@
+<package name="ansible-navigator" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:ansible" package="ansible-navigator"/>
+</package>

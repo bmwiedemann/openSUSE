@@ -1,0 +1,7 @@
+<package name="pbm2l7k" project="openSUSE:Factory">
+  <title>Driver for Lexmark Printers 7000, 7200, and 5700</title>
+  <description>A driver for Lexmark printers 7000, 7200, and 5700. This driver
+translates PBM (Portable Bitmap) into the printer protocol for the
+Lexmark printers 7000, 7200, and 5700.</description>
+  <devel project="Printing" package="pbm2l7k"/>
+</package>

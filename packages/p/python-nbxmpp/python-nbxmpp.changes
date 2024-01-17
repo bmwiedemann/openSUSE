@@ -1,0 +1,449 @@
+-------------------------------------------------------------------
+Sat Nov 25 14:25:50 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.5.3:
+  * Websocket: Make TLS properties available.
+  * SASL2: Make login test mode work.
+  * Websocket: Set user agent.
+
+-------------------------------------------------------------------
+Mon Nov  6 23:19:27 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru
+
+- Update to version 4.5.2 (changes since 4.5.0):
+  * SASL: Add back lost ANONYMOUS auth mechanism.
+  * PubSub: Narrow accepted message types.
+
+-------------------------------------------------------------------
+Tue Oct 24 19:33:02 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru
+
+- Update to version 4.5.0:
+  * Support XEP-0440 SASL Channel-Binding Type Capability.
+
+-------------------------------------------------------------------
+Sun Oct 22 20:06:40 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru
+
+- Update to version 4.4.0:
+  * Add DiscoInfo.has_identity().
+  * JID: Add JID.from_iri().
+  * JID: Improve compliance when generating IRIs.
+  * Chatstates: Accept chatstates with delay tag.
+
+-------------------------------------------------------------------
+Fri Sep  1 14:18:08 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3.3:
+  * JID: Allow comparisons against any object.
+  * DiscoInfo: Improve discovery if subject is allowed to be
+    modified.
+  * Don’t expect localpart for bare JIDs.
+
+-------------------------------------------------------------------
+Mon Aug  7 23:17:29 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3.2:
+  * SecurityLabels: Add get_label_hash().
+  * JID: Add sqlite3 adapter magic method.
+  * MessageProperties: Add origin_id attribute.
+  * MessageProperties: Add remote_jid attribute.
+  * Client: Return only copy of ignored errors.
+  * CommonError: Add "by" attribute.
+  * Moderation: Parse more data.
+  * HTTP: Add set_accept_certificate().
+
+-------------------------------------------------------------------
+Sun May 28 21:40:08 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3.1:
+  * HTTP: Abort correctly on content overflow.
+  * Websocket: Always set peer certificate.
+
+-------------------------------------------------------------------
+Fri May 26 19:23:13 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3.0:
+  * Add option to force http1.
+  * Add method to generate XMPP IRIs.
+  * Lower log level for missing GSSAPI dependency.
+  * OMEMO: Add device id and namespace to OMEMOBundle.
+  * Don’t delete session object in cleanup().
+  * HTTP: Don’t accept content encoding.
+
+-------------------------------------------------------------------
+Sun Mar 26 19:06:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.2:
+  * HTTP: Reset attributes on redirect
+
+-------------------------------------------------------------------
+Thu Mar 23 15:00:22 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.2.1:
+  * HTTP: Make sure streams are closed only once.
+
+-------------------------------------------------------------------
+Sun Feb  5 21:37:26 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.2.0:
+  * Add support for XEP-0461: Message Replies.
+  * Add SASLprep profile.
+  * Require PyGObject 3.42.0.
+
+-------------------------------------------------------------------
+Mon Jan 23 23:28:52 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.1.0:
+  * Port package to pyproject.toml.
+  * Handle race condition when cancelling request.
+
+-------------------------------------------------------------------
+Fri Jan 13 21:41:22 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.0.1:
+  * HTTP: Parse uri with correct flags.
+
+-------------------------------------------------------------------
+Fri Jan  6 14:14:26 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.0.0:
+  * Add message reactions (XEP-0444) support.
+  * Add HTTP module.
+  * Raise required python version to 3.10.
+  * Remove example client.
+  * Port to libsoup3.
+  * XEP-0392: Update to 0.8.0.
+
+-------------------------------------------------------------------
+Mon Oct 31 11:23:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.2.5:
+  * Add support for XEP-0421.
+  * MUC: Check correctly for muc subject.
+  * Client: Don’t override modified certification errors.
+
+-------------------------------------------------------------------
+Sat Oct  8 14:46:00 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.2.4:
+  * Tasks: Track timeouts within the task.
+  * MUC: Relax definition of MUC config change.
+
+-------------------------------------------------------------------
+Thu Sep 29 17:39:59 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.2.3:
+  * TCP: Improve detection of broken connection.
+
+-------------------------------------------------------------------
+Tue Sep 13 19:30:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.2.2:
+  * Expose TLS version and ciphersuite.
+  * Add stringprep implementation.
+  * Add packaging as dependency.
+  * Use stringprep instead of precis for JID validation.
+  * Add missing __init__.py to examples.
+  * You can set the env variable NBXMPP_USE_PRECIS to revert back
+    to the old behaviour.
+
+-------------------------------------------------------------------
+Mon Aug 29 16:38:46 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.2.1:
+  * Prepare domain names with UTS46.
+
+-------------------------------------------------------------------
+Sun Aug 28 19:20:09 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.2.0:
+  * Add support for Extensible SASL Profile (XEP-0388).
+  * Set timeout for host-meta http query.
+
+-------------------------------------------------------------------
+Wed Jul 27 21:40:35 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.1.1:
+  * Add more datetime test cases.
+  * Use cache when calling JID.new_as_bare().
+  * Allow handlers to connect to presence type available.
+
+-------------------------------------------------------------------
+Sat May 28 20:17:01 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.1.0:
+  * Client: Disconnect after stream restart in Login mode.
+  * Examples: Allow to connect with different modes.
+
+-------------------------------------------------------------------
+Fri May 20 20:27:06 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.0.2:
+  * Roster: Raise exception if a full jid is found.
+  * AdHoc: Don’t raise on empty nodes.
+  * Roster: Don’t fail when no roster attribute is found.
+  * Remove redundant wheel dependency.
+
+-------------------------------------------------------------------
+Sat May 14 21:39:58 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.0.1 (changes since 2.0.6):
+  * Add Roster module.
+  * Add Last Activity module.
+  * Add EntityTime module.
+  * Bookmarks: Add extensions support.
+  * Add Message Moderation.
+  * Implement SCRAM-SHA-512.
+  * AdHoc: Improve XEP-0050 Compliance.
+  * Correctly handle RSM count request.
+  * Correction: Ignore messages where message id == replace id.
+  * Blocking: Don’t abort processing after parsing unblocks.
+  * Handle multiple stanza-id elements.
+  * Many breaking changes to methods and structs.
+- The minimal required version of Python is 3.9.
+
+-------------------------------------------------------------------
+Sun Mar 27 11:14:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.6:
+  * Fix bookmarks compat namespace
+  * Resolve websocket uri only via https
+
+-------------------------------------------------------------------
+Sat Nov 13 20:27:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.4:
+ * Ignore messages with incorrect id
+ * AdHoc: Make parsing AdHoc commands more compliant
+ * Correctly handle RSM count request
+ * Improve XEP-0050 Compliance
+ * GSSAPI: Catch OSError
+
+-------------------------------------------------------------------
+Tue Oct 26 08:56:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Version the typelib(Soup) BuildRequires to stick to 2.4: this is
+  what the code explicitly checks for (avoid choice with newer Soup
+  tyeplibs).
+
+-------------------------------------------------------------------
+Tue May 18 12:27:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Make running tests verbose
+
+-------------------------------------------------------------------
+Mon May 17 18:16:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Enable testing
+  * Use gitlab sources, pypi.org package does not contain the test files
+- Skip not supported python flavors (< 3.7)
+
+-------------------------------------------------------------------
+Mon May 17 15:40:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.0.2
+  * New
+    * Properties: is_from_us() Method
+    * New JID object
+    * Add JID Escaping (XEP-0106) support
+    * Add VCard4 (XEP-0292) support
+    * Make module calls generator based
+    * Add GSSAPI support (XEP-0233)
+    * Simplify and harmonize module API
+  * Bugfixes
+    * Fix handling invalid websocket uris
+    * Add get_text() for Error Base class
+    * Client: Remove GSSAPI from default mechanisms
+    * Presence: Fix is_nickname_changed check
+    * UserAvatar: Add default argument
+  
+-------------------------------------------------------------------
+Thu Sep  3 07:44:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.0.2 (bsc#1176101):
+  * Client: Expose more information about the connection
+  * Client: set_ignored_tls_errors() allow to pass None
+  * Add method to disable stream management
+  * TCP: Set input/output closed on finalize()
+  * TCP: Catch Runtime error
+  * Perform UTS46 mapping on domain names
+  * Add XEP-0377 support
+  * MUC: Return message id when using inivite()
+  * OMEMO: Correctly parse prekey value
+  * Client: Determine protocol and type correctly if a custom host is used
+  * Smacks: Don't fail on saving error replies
+  * Library rewritten in most parts
+  * Replace BOSH with Websocket
+  * Add new example client
+  * Many other improvements
+  * Currently no Client Cert support
+
+-------------------------------------------------------------------
+Thu May 23 05:21:13 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.10:
+  * Add support for domain based name in features for GSSAPI
+  * Fix usage of BOSH
+  * Fix Jingle hash namespace
+
+-------------------------------------------------------------------
+Thu Jan 31 07:51:28 UTC 2019 - mvetter@suse.com
+
+- Update to version 0.6.9 (boo#1123247):
+  * Always bind after SM failed Fixes #64
+  * Dont try and guess system language
+
+-------------------------------------------------------------------
+Mon Nov 19 12:42:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.6.8 (changes since 0.6.6):
+  * Raise default TLS version to 1.2.
+  * Remove DIGEST-MD5 from the default auth mechs.
+  * Add STANZA RECEIVED Event (some servers send more than one
+    stanza in one packet).
+  * Add alternative locations to load TLS certs from.
+  * Reset SM counter after receiving <enabled>.
+  * Issue event when SM resume fails.
+
+-------------------------------------------------------------------
+Tue May 22 08:43:58 UTC 2018 - tchvatal@suse.com
+
+- Use setuptools not devel to reduce dependency requirements
+
+-------------------------------------------------------------------
+Tue May 22 08:30:59 UTC 2018 - mvetter@suse.com
+
+- Update to 0.6.6:
+  * Record all SSL errors instead of only the first
+  * Pass arguments to plugin/plugout methods
+  * Allow the Roster to be initalized without requesting it from the server
+
+-------------------------------------------------------------------
+Fri May 11 20:54:02 UTC 2018 - tbro@opensuse.org
+
+- Update to version 0.6.5 (30 April 2018)
+ * Fix BOSH usage (don't set ALPN)
+ * Better handling of certificate files
+ * needed for newest gajim version 1.0.2, as it broke with 0.6.4
+
+-------------------------------------------------------------------
+Mon Mar 17 19:32:02 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.6.4 (changes since 0.6.1):
+  * Correctly load client certs.
+  * Warn on any error in the certificate chain.
+  * Fixed a traceback loop.
+  * Add ALPN and SNI support for when using DirectTLS.
+  * Fix SOCKS5 usage.
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Wed Dec 13 08:14:32 UTC 2017 - frede@b1-systems.de
+
+- Update to version 0.6.1
+  * Add new getStanzaIDAttrs method
+  * Fix BOSH connexion
+  * stop using PyOpenSSL for random generator
+
+-------------------------------------------------------------------
+Sun Nov  5 16:38:49 UTC 2017 - vilene@posteo.net
+
+- Update to version 0.6.0:
+  * Add new getOriginID/SetOriginID method for Messages
+  * Add new getJid() method for Protocol
+  * getTagAttr() accepts now a namespace argument
+  * Add new `protocol` argument for getTag()
+  * Add new XEP Namespaces
+  * Support XEP-0198 Version 1.5.2
+
+-------------------------------------------------------------------
+Wed May 17 13:12:21 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.5.5:
+  * Add some namespaces.
+  * Some cleanup.
+- Update for the multipython build.
+
+-------------------------------------------------------------------
+Thu Oct 13 12:02:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.5.4:
+  * Fix SCRAM authentication.
+  * Fix BOSH connection with UTF-8 messages.
+  * Fix smacks implementation.
+  * Use uuid in stanza ids.
+
+-------------------------------------------------------------------
+Sun May  8 07:03:11 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * updated source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Thu Sep  3 11:21:45 UTC 2015 - toddrme2178@gmail.com
+
+- Shouldn't be noarch in SLE 11
+
+-------------------------------------------------------------------
+Mon Jul 20 11:52:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.5.3:
+  * Fix issue with pyopenssl 0.15.1.
+  * Fix decoding issues.
+
+-------------------------------------------------------------------
+Sat Jan 10 13:20:09 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.5.2:
+  * Fix BOSH HTTP requests.
+  * Fix handling of binary SASL data for mechanism GSSAPI.
+  * Update MAM namespace.
+
+-------------------------------------------------------------------
+Fri Oct 17 15:56:20 UTC 2014 - p.drouand@gmail.com
+
+- Correct Group is Development/Languages/Python
+- Remove depreciated %py_requires
+- Do not pass -O1 --skip-build options
+- Call python instead of python2
+
+-------------------------------------------------------------------
+Sat Oct 11 10:40:25 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 0.5.1 (changes since 0.2):
+  * Fix printing network errors in a non-utf-8 console
+  * Support both python2 and python3
+  * Fix storing server certificate when there is no error
+  * Ability to configure TLS protocol version
+  * Add support for SCRAM-SHA-1-PLUS
+  * Security improvements
+  * Improve security level
+  * Ability to configure cipher list
+  * Store only depth 0 SSL certificate
+
+-------------------------------------------------------------------
+Sun Dec  8 14:10:06 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.2
+  + Add some namespace
+  + do TLS handshake without blocking
+  + store all SSL errors instead of only last one
+- Set correct Group : Devel/Languages/Python
+- Use download Url as source
+- Remove unwanted comments in specfile
+- Package the two directories in /doc to avoid providing epydoc build
+  configuration file
+
+-------------------------------------------------------------------
+Thu Aug 15 16:53:31 UTC 2013 - dap.darkness@gmail.com
+
+- Heads up: Python2 / Python3 parallel installation.
+  %fdupes will not work if files are installed via %doc.
+
+-------------------------------------------------------------------
+Sat Apr 20 14:59:16 UTC 2013 - dap.darkness@gmail.com
+
+ - Fixed up to submit.
+
+-------------------------------------------------------------------
+Sat Apr  6 19:52:54 UTC 2013 - nekolayer@yandex.ru
+
+ - Initial package.

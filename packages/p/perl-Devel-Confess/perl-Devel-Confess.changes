@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Tue Feb 21 06:23:37 UTC 2017 - coolo@suse.com
+
+- updated to 0.009004
+   see /usr/share/doc/packages/perl-Devel-Confess/Changes
+
+  0.009004 - 2017-02-14
+    - prevent handlers from recursing, such as if our handlers are wrapped by other
+      code.  IO::All for example will do this.
+
+-------------------------------------------------------------------
+Sat Nov 19 06:21:29 UTC 2016 - coolo@suse.com
+
+- updated to 0.009003
+   see /usr/share/doc/packages/perl-Devel-Confess/Changes
+
+  0.009003 - 2016-11-18
+    - more complete prereq list
+    - fix inf handling
+    - work around UNIVERSAL::isa and UNIVERSAL::can
+
+-------------------------------------------------------------------
+Mon Sep  5 05:15:10 UTC 2016 - coolo@suse.com
+
+- updated to 0.009002
+   see /usr/share/doc/packages/perl-Devel-Confess/Changes
+
+  0.009002 - 2016-09-04
+    - fix test failures on perl 5.10.0
+    - fix regex warnings in perl 5.6
+    - work around threads issue in Carp in Safe compartments
+    - don't skip dump test on Carp versions that use Carp::Heavy
+    - test diagnostic and formatting improvements
+    - avoid triggering overloads when checking for exception existence
+
+-------------------------------------------------------------------
+Sat Aug 20 05:15:09 UTC 2016 - coolo@suse.com
+
+- updated to 0.009001
+   see /usr/share/doc/packages/perl-Devel-Confess/Changes
+
+  0.009001 - 2016-08-19
+    - fix handling of infinite options (dump, source, evalsource)
+    - fix evalsource test by running with the debugger
+  
+  0.009000 - 2016-08-18
+    - documentation fixes and improvements
+    - more accurate handling of existing %SIG handlers
+    - updated option parsing to allow setting specific values, such as color=force
+    - stop relying on . being in @INC in tests
+    - source option now accepts a number of lines of context to show
+    - added evalsource option, which shows the source only of string evals
+    - fix adding redundant trace information when errors are rethrown
+    - improved warning messages when source option can't find source to display
+
+-------------------------------------------------------------------
+Sat Jun 27 08:29:54 UTC 2015 - coolo@suse.com
+
+- updated to 0.008000
+   see /usr/share/doc/packages/perl-Devel-Confess/Changes
+
+  0.008000 - 2015-06-26
+    - if dump option is used, bare references and objects without stringify
+      overloads will be dumpered when being output to the screen
+    - stack trace properly attached to bare references are rethrown and will be
+      output to the screen
+    - avoid Test::More in threads test to limit code run as much as possible
+    - other test cleanups
+    - fix DEBUGGING detection in newer perls
+    - protect tests against DEVEL_CONFESS_OPTIONS set in environment
+
+-------------------------------------------------------------------
+Thu Apr 16 20:03:13 UTC 2015 - coolo@suse.com
+
+- updated to 0.007012
+   see /usr/share/doc/packages/perl-Devel-Confess/Changes
+
+  0.007012 - 2015-03-30
+    - avoid re-throwing errors during END on debugging perls
+
+-------------------------------------------------------------------
+Sat Feb  7 16:23:04 UTC 2015 - coolo@suse.com
+
+- updated to 0.007011
+   - avoid triggering overloads when CLONEing
+ 
+ 0.007010 - 2015-01-29
+   - fix incorrect version check that prevented using better names option
+   - fix removing hooks when unimport called
+   - fix stringifying refs in stack trace inside a Safe compartment on old perl
+   - avoid updating stored refaddrs when they haven't changed
+   - less noise when checking for broken threads
+   - prevent leaking namespaces even in broken threads
+   - fix version check for broken threads
+ 
+ 0.007009 - 2015-01-23
+   - prevent segfaults on perl 5.10.0 and 5.8.9 with threads
+   - fix leaking exception objects if another is thrown or a thread created
+ 
+ 0.007008 - 2015-01-20
+   - don't attempt threading tests if threading is broken
+ 
+ 0.007007 - 2015-01-19
+   - fatal warnings in destructors can cause segfaults, so disable them
+   - protect against losing information during global destruction and then
+     triggering our own errors
+   - improve stack trace formatting when generated during global destruction
+ 
+ 0.007006 - 2015-01-08
+   - don't delete packages that exceptions are currently blessed as
+   - protect tests against other loaded modules effecting hooks
+   - add test for warning passing fix from 0.007005
+ 
+ 0.007005 - 2014-12-16
+   - fix how we pass options on to other warn/die handlers (RT#100951)
+   - minor pod cleanups
+   - improve diagnostics for bad options in DEVEL_CONFESS_OPTIONS
+ 
+ 0.007004 - 2014-09-22
+   - make sure unwanted debugging flags are disabled as early as possible,
+
+-------------------------------------------------------------------
+Tue Sep 16 08:30:33 UTC 2014 - coolo@suse.com
+
+- initial package 0.007003
+    * created by cpanspec 1.78.08
+

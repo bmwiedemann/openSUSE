@@ -1,0 +1,20 @@
+Index: gluegen-v2.3.0/make/build.xml
+===================================================================
+--- gluegen-v2.3.0.orig/make/build.xml
++++ gluegen-v2.3.0/make/build.xml
+@@ -1000,11 +1000,11 @@
+                               depends="init, android-launcher.package, gluegen.build.java, gluegen.build.c" />
+ 
+   <target name="all.no_junit" description="Release build" depends="init, base.compile, tag.build, android.package, developer-zip-archive" />
+-  <target name="all" description="Release build" depends="init, base.compile, tag.build, junit.compile, android.package, developer-zip-archive" />
++  <target name="all" description="Release build" depends="init, base.compile, tag.build, android.package, developer-zip-archive" />
+ 
+-  <target name="all.debug" description="Debug build" depends="init.debug, base.compile, tag.build, junit.compile, developer-zip-archive" />
++  <target name="all.debug" description="Debug build" depends="init.debug, base.compile, tag.build, developer-zip-archive" />
+ 
+-  <target name="all.ide" description="Debug IDE build including all junit tests, but don't tag the build or create archives" depends="init.debug, base.compile, tag.build, junit.compile" />
++  <target name="all.ide" description="Debug IDE build including all junit tests, but don't tag the build or create archives" depends="init.debug, base.compile, tag.build" />
+ 
+   <target name="clean" depends="init">
+     <delete includeEmptyDirs="true">
+

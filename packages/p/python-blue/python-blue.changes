@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Wed Nov 22 07:48:48 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Make compatible with latest python-flake8 and python-black
+  bsc#1217371
+  - Add patch flake8-v6-compatibility.patch, gh#grantjenks/blue#96
+  - Remove patch flake8-v5-compatibility.patch
+  - Refresh patch python-blue.changes
+
+-------------------------------------------------------------------
+Thu May  4 12:02:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add black-23.3.patch to make it compatible with latest python-black
+  version. gh#grantjenks/blue#97
+
+-------------------------------------------------------------------
+Sat Jan 28 12:58:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.1:
+  * blue is incompatible with flake8 v5 (GH#78) due to changes in the way
+    flake8 parses its config files. For now, pin the flake8 dependency <5.0.0
+  * Add support for testing against Python 3.10 and 3.11 in tox.ini, and fix an
+    incompatibility with the rstcheck command line.
+  * Bump copyright years. 
+- drop unpin-black.patch (obsolete)
+- update flake8-v5-compatibility.patch to unpin flake8 again
+
+-------------------------------------------------------------------
+Mon Sep 19 10:14:39 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add flake8-v5-compatibility.patch wich makes it work with flake8 v5
+  gh#grantjenks/blue#78
+
+-------------------------------------------------------------------
+Wed May  4 17:28:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.9.0:
+  - Fix test suite failures due to a confluence of problems
+  - Upgrade dependency on Black to 22.1.0 to support Python 3.10
+  - Add link to demo site at https://iblueit.dev
+
+-------------------------------------------------------------------
+Sat Apr 23 18:57:58 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update unpin-tomli.patch to work with the current black package.
+- Skip failing tests (gh#grantjenks/blue#72)
+
+-------------------------------------------------------------------
+Sat Mar 19 10:29:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.0
+  * Fix compatibility with flake8 v4 (GH#58)
+- Drop support-new-flake8.patch fixed upstream
+- Add unpin-black.patch and unpin-tomli.patch
+- Clean requirements
+
+-------------------------------------------------------------------
+Wed Jan 12 07:25:55 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.0:
+  * Upgrade dependency on black to 21.7b0  
+- Add patch support-new-flake8.patch:
+  * Support backwards incompatiable changes with flake8 4.0
+
+-------------------------------------------------------------------
+Wed Mar 17 04:05:48 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.0:
+  * Add bullet about default line length of 79 characters
+  * Run blue over docs/ directory
+  * Fix formatting in docs/conf.py
+  * Preserve whitespace before hash mark on hanging comments (#31)
+  * Use flake8 to parse project and user configs for blue
+  * Patch the config param's callback
+  * Fixes for static analysis
+  * Format keys for Click's default_map
+  * Add pytest for testing
+  * Format tests/test_blue.py in blue and bluecheck commands
+  * Add tests for config parsing
+  * Update docs requirements to match setup.py
+  * Add note to README and changelog.
+  * Fix --version option handling and add test cases
+  * Move coverage switches on pytest to separate sections
+
+-------------------------------------------------------------------
+Mon Jan 18 08:23:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.5.2:
+  - fixed building of documentation (gh#grantjenks/blue#26)
+
+-------------------------------------------------------------------
+Sun Jan 17 22:49:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for blue 0.5.1

@@ -1,0 +1,11 @@
+--- scsi_linux.c
++++ scsi_linux.c
+@@ -19,6 +19,8 @@
+  * it from using SCSI_IOCTL_SEND_COMMAND to using the SCSI generic interface.
+  */
+ 
++#include <sys/param.h>
++
+ #ifndef HZ
+ #warning "HZ is not defined, mtx might not work correctly!"
+ #define HZ 100	  /* Jiffys for SG_SET_TIMEOUT */

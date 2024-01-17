@@ -1,0 +1,10 @@
+<package name="openjpeg2" project="openSUSE:Factory">
+  <title>The OpenJPEG library is an open-source JPEG 2000 library developed in order to promote the use of JPEG 2000</title>
+  <description>The main part of the project consists in a JPEG 2000 codec compliant with the Part 1 of the standard (Class-1 Profile-1 compliance).
+
+The OpenJPEG library is written in C language, released under the BSD license and targets Win32, Unix and Mac OS platforms.
+
+The library is developed by the Communications and Remote Sensing Lab (TELE) of the Université catholique de Louvain (UCL), with the support of the CS company, the CNES and the intoPIX company.</description>
+  <devel project="graphics" package="openjpeg2"/>
+  <url>http://www.openjpeg.org/</url>
+</package>

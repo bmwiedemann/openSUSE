@@ -1,0 +1,10 @@
+<package name="perl-Set-IntSpan" project="openSUSE:Factory">
+  <title>Perl module for managing sets of integers</title>
+  <description>Set::IntSpan manages sets of integers. It is optimized for sets that
+have long runs of consecutive integers.
+
+Authors
+Steven McDougall &lt;swmcd@world.std.com&gt;</description>
+  <devel project="devel:languages:perl" package="perl-Set-IntSpan"/>
+  <url>http://search.cpan.org/dist/Set-IntSpan/</url>
+</package>

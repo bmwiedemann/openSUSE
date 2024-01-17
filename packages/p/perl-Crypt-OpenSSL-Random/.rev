@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>079686e2a250460b08ad750428290ba3</srcmd5>
+    <version>0.04</version>
+    <time>1232682749</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>95ee5cf3f4cf3561817b4794d6c0c9af</srcmd5>
+    <version>0.04</version>
+    <time>1263301122</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Crypt-OpenSSL-Random based on submit request 29211 from user coolo
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6ecbc8b5f1d245ea110279856614b339</srcmd5>
+    <version>0.04</version>
+    <time>1268925405</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>6ecbc8b5f1d245ea110279856614b339</srcmd5>
+    <version>0.04</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>6ecbc8b5f1d245ea110279856614b339</srcmd5>
+    <version>0.04</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>74d386d62aa0be144a1f6a794b3261c0</srcmd5>
+    <version>0.04</version>
+    <time>1287485486</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50969 from user coolo
+</comment>
+    <requestid>50969</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>1d98d53efc56e255587f5d6684b35d51</srcmd5>
+    <version>0.04</version>
+    <time>1287485491</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50969
+</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>4c84d419e9c46599476dd8331589f375</srcmd5>
+    <version>0.04</version>
+    <time>1291743783</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54931 from user coolo
+</comment>
+    <requestid>54931</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>04d9e741aa3781acac312e92f0d79235</srcmd5>
+    <version>0.04</version>
+    <time>1291743791</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54931
+</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>04d9e741aa3781acac312e92f0d79235</srcmd5>
+    <version>0.04</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>04d9e741aa3781acac312e92f0d79235</srcmd5>
+    <version>0.04</version>
+    <time>1319182253</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>ce310819df198f1e4370b7ff228313ef</srcmd5>
+    <version>0.04</version>
+    <time>1321630755</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92131</requestid>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>f035d961231074c17d4abc2c7831e595</srcmd5>
+    <version>0.04</version>
+    <time>1339352325</time>
+    <user>coolo</user>
+    <comment>license update: GPL-1.0+ or Artistic-1.0
+SPDX format (forwarded request 123849 from babelworx)</comment>
+    <requestid>123888</requestid>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>f035d961231074c17d4abc2c7831e595</srcmd5>
+    <version>0.04</version>
+    <time>1340183818</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>f035d961231074c17d4abc2c7831e595</srcmd5>
+    <version>0.04</version>
+    <time>1359109631</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="24">
+    <srcmd5>f035d961231074c17d4abc2c7831e595</srcmd5>
+    <version>0.04</version>
+    <time>1379663606</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="26">
+    <srcmd5>f035d961231074c17d4abc2c7831e595</srcmd5>
+    <version>0.04</version>
+    <time>1409302225</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8cf9c8ea15ae8d1625d3ce188d98c0a2</srcmd5>
+    <version>0.10</version>
+    <time>1423668686</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.10
+         - fix LIBS argument, fatal on Windows. thanks to kmx
+ 
+ 0.09  2015-02-04 rurban
+         - add missing hints/MSWin32.pl (kmx, RT #56455)
+         - add a couple of distro tests
+         - fix gcov target
+ 
+ 0.08  2015-02-03 rurban
+         - remove Devel::CheckLib which does not work for 2 required libs
+         - replace DynaLoader by XSLoader
+ 
+ 0.07  2015-02-03 rurban
+        - Bump version to publish an official release
+ 
+ 0.06  rurban
+        - Typo in doc (dsteinbrunner)
+ 
+ 0.05  2013-04-02 14:31:30 rurban
+        - Add inc/Devel/CheckLib, improve POD, add README and some helper targets
+        - Better diagnostics when the openssl libraries are not found
+        - Support INCDIR= and LIBDIR= arguments to Makefile.PL
+        - Add MSWin32 hints to find the openssl libraries
+         - Autocreate README
+        - Fix some -Wpointer-sign warnings
+        - Remove wrong Crypt::OpenSSL::RSA package names in docs and errmsg</comment>
+    <requestid>284701</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>63e0e8764c25b273c5c4bdefd7eabf2f</srcmd5>
+    <version>0.11</version>
+    <time>1504617192</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520418</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>989d3cb40af07adcc5d2bb35eee9ac52</srcmd5>
+    <version>0.15</version>
+    <time>1539590722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640383</requestid>
+  </revision>
+</revisionlist>

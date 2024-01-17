@@ -1,0 +1,15 @@
+<package name="x11-japanese-bitmap-fonts" project="openSUSE:Factory">
+  <title>Japanese Fixed Fonts for the X Window System</title>
+  <description>This Package contains Japanese fixed-width fonts for X11.
+
+It contains the fonts knj10, kaname-alter, shinonome12, shinonome16,
+k14goth, Kappa20, kanji32, and marumoji.
+
+On top of that, it also contains bold, italic, and bold-italic versions
+of the popular Japanese fonts usually found in the
+/usr/lib/X11/fonts/misc directory of the standard X11 distribution and
+bold, italic, and bold-italic versions of iso-8859-1 fonts which fit
+nicely in style and width to the Japanese fonts.
+</description>
+  <devel project="M17N:fonts" package="x11-japanese-bitmap-fonts"/>
+</package>

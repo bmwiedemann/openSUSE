@@ -1,0 +1,10 @@
+<package name="vsqlite++" project="openSUSE:Factory">
+  <title>A well designed and portable SQLite3 Wrapper for C++</title>
+  <description>VSQLite++ - A well designed and portable SQLite3 Wrapper for C++
+(C) 2006-2012 by virtuosic bytes  - vinzenz.feenstra@gmail.com
+
+Author: Vinzenz Feenstra
+
+License:BSD-3</description>
+  <devel project="server:database" package="vsqlite++"/>
+</package>

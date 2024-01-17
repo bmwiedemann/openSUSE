@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9ce0dad213e88b83133db6c342d9291</srcmd5>
+    <version>1.1.2</version>
+    <time>1593904413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813319</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>32d200875c65675168237360b00291b5</srcmd5>
+    <version>1.1.2</version>
+    <time>1600277794</time>
+    <user>dimstar_suse</user>
+    <comment>- Demote Recommends to Suggests.</comment>
+    <requestid>834728</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36641453e2fcdcc99b6616954a0521e6</srcmd5>
+    <version>1.1.4</version>
+    <time>1604779369</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>846830</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>018ab09c05dcaa25a47855e06ccecab5</srcmd5>
+    <version>1.1.6</version>
+    <time>1618223832</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.6</comment>
+    <requestid>884439</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e239b5f363ce94fbab2cd42f8e7dacf4</srcmd5>
+    <version>1.1.8</version>
+    <time>1622536720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896118</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0a27d74a12e8892caf39910b2175fb41</srcmd5>
+    <version>1.1.9</version>
+    <time>1656053156</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.9</comment>
+    <requestid>984770</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d1f318df890b946dd0e9ef0551f8e963</srcmd5>
+    <version>1.1.9</version>
+    <time>1657015793</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop -msse/-msse2, CPUID guards do not help.</comment>
+    <requestid>986748</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4b3011067aabd6b41c9ad97f1229997c</srcmd5>
+    <version>1.1.11</version>
+    <time>1669289120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.11</comment>
+    <requestid>1037784</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>19dfb163e5d6de1a96f4d55b25d1bfdd</srcmd5>
+    <version>1.1.11</version>
+    <time>1679417016</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Add-missing-standard-library-includes-fix-build-with.patch to make gcc 13 happy.</comment>
+    <requestid>1073381</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f6382193dba3a17b53bd635a32264bd8</srcmd5>
+    <version>1.1.12</version>
+    <time>1705353648</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.12:
+  * fix crash when FluidSynth soundfont cannot be loaded
+  * fix velocities and volume on MUS input
+  * updated embedded libraries to new versions
+- drop 0001-Add-missing-standard-library-includes-fix-build-with.patch
+  (upstream) (forwarded request 1138814 from dirkmueller)</comment>
+    <requestid>1138826</requestid>
+  </revision>
+</revisionlist>

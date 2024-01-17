@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23c0ec758d901dcf23ccadcd477317b1</srcmd5>
+    <version>1.6.8</version>
+    <time>1613774943</time>
+    <user>dimstar_suse</user>
+    <comment>Rename php7-lzf to php-lzf</comment>
+    <requestid>873878</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a0063570614578aa55c4fe965d527066</srcmd5>
+    <version>1.7.0</version>
+    <time>1642029759</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7.0
+  * drop support for PHP 7.1 and older
+  * add type hinting
+</comment>
+    <requestid>945928</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>96eee022d90b31aee8c76719d6a8a161</srcmd5>
+    <version>1.7.0</version>
+    <time>1670703525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041975</requestid>
+  </revision>
+</revisionlist>

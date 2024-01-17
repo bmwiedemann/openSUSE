@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e384edd52f860e70856104a73b688a1b</srcmd5>
+    <version>1.3.4</version>
+    <time>1535122946</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain yder in Factory</comment>
+    <requestid>628429</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>94a4babd07c5767140c8ca445f18cb24</srcmd5>
+    <version>1.3.4</version>
+    <time>1535367537</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631409</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>457ecc00a684de4b69b6e00e4973e00d</srcmd5>
+    <version>1.4.4</version>
+    <time>1546946845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662498</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cdbbe058be5000626e3bbe8031972eb8</srcmd5>
+    <version>1.4.6</version>
+    <time>1562591502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713851</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ccc9e2097bc3f342604dc99221d60153</srcmd5>
+    <version>1.4.7</version>
+    <time>1563914155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717663</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d215e3d39bb5c8ce0d12b5423b297421</srcmd5>
+    <version>1.4.8</version>
+    <time>1570557446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735821</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3f64969bef0014aa91e8664bb2df82de</srcmd5>
+    <version>1.4.9</version>
+    <time>1579463855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765576</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>943bca86c1d6a9614350d4a8d8e68260</srcmd5>
+    <version>1.4.10</version>
+    <time>1584446951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785592</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c7877d9bad7b3b91cc8948be612b22f9</srcmd5>
+    <version>1.4.11</version>
+    <time>1594045912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818945</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2e5866d15eb60400749cfbefe385c170</srcmd5>
+    <version>1.4.12</version>
+    <time>1599343444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832386</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>eec0367b32f20049e63d7c55971f5ecd</srcmd5>
+    <version>1.4.13</version>
+    <time>1617131408</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876405</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9c662dd68be6e232f6948dc1fa217eb6</srcmd5>
+    <version>1.4.14</version>
+    <time>1623268322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.14
+  * Bugfix release</comment>
+    <requestid>898847</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6a20b77a33aa4b4572179070dd0537a6</srcmd5>
+    <version>1.4.15</version>
+    <time>1647282943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961649</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a77540f203a242508282f2a9694c444b</srcmd5>
+    <version>1.4.17</version>
+    <time>1653907438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979710</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f82887be28fd57f063408de73e619625</srcmd5>
+    <version>1.4.18</version>
+    <time>1666011498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1012008</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8dba01c264be8048734d77bd27b392aa</srcmd5>
+    <version>1.4.19</version>
+    <time>1673559908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057943</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6a5054cd667f0590ff5a4caa420e9362</srcmd5>
+    <version>1.4.20</version>
+    <time>1695327244</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112554</requestid>
+  </revision>
+</revisionlist>

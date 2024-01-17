@@ -1,0 +1,6 @@
+<package name="icecream-monitor" project="openSUSE:Factory">
+  <title>Monitor Program for the icecream Compile Farm</title>
+  <description>icecream is the next generation distcc. This package provides a monitor
+program.</description>
+  <devel project="devel:tools:building" package="icecream-monitor"/>
+</package>

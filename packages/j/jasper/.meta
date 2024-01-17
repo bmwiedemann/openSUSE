@@ -1,0 +1,5 @@
+<package name="jasper" project="openSUSE:Factory">
+  <title>An Implementation of the JPEG-2000 Standard, Part 1</title>
+  <description>This package contains an implementation of the image compression standard, JPEG-2000, Part 1. It consists of tools for conversion to and from the JP2 and JPC formats.</description>
+  <devel project="graphics" package="jasper"/>
+</package>

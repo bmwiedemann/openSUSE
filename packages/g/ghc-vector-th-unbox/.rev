@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07c7f408d6a37c191de51d7c732edc5b</srcmd5>
+    <version>0.2.1.6</version>
+    <time>1532527825</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>624467</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b81d34f470d1ed8aafa2e581a0142de</srcmd5>
+    <version>0.2.1.6</version>
+    <time>1540451226</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643490</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7fa755b412293e927b3a549f80908cce</srcmd5>
+    <version>0.2.1.7</version>
+    <time>1571402121</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>737226</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b73502ee49ea8ca4718a44fcffb78c91</srcmd5>
+    <version>0.2.1.7</version>
+    <time>1577451545</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759558</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2cb72b36abd67a3a1320ff2a944fc9b3</srcmd5>
+    <version>0.2.1.7</version>
+    <time>1589197011</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801065</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>c187ebf5ec2f2b10897271c92d1fc874</srcmd5>
+    <version>0.2.1.7</version>
+    <time>1592580058</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815215</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>7d0bac2af38b067fb04c30b93cd71d2f</srcmd5>
+    <version>0.2.1.7</version>
+    <time>1598643655</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829484</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>4a7d3dd82b55ab6ba3adcb91eecba8f4</srcmd5>
+    <version>0.2.1.7</version>
+    <time>1599509068</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832338</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>ced277e7878c420d872b4cd13f214ada</srcmd5>
+    <version>0.2.1.7</version>
+    <time>1608634125</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857649</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8173705adfc43b97a17f172a9b2ac149</srcmd5>
+    <version>0.2.1.9</version>
+    <time>1615362956</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>877686</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>52758a6c2d7f4b6686399b2c02e7b1b9</srcmd5>
+    <version>0.2.2</version>
+    <time>1636663068</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>930451</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9906d169e7879fcc7d1ca90939e085cd</srcmd5>
+    <version>0.2.2</version>
+    <time>1639931657</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>932802</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>a19758fe50150e1810782e30c89d8772</srcmd5>
+    <version>0.2.2</version>
+    <time>1665668615</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008546</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>a578ab660fdd3aab289eec2fc827f3e5</srcmd5>
+    <version>0.2.2</version>
+    <time>1680636272</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076114</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>08157909633cfae1dbe79287bc42be75</srcmd5>
+    <version>0.2.2</version>
+    <time>1697657168</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1118493</requestid>
+  </revision>
+</revisionlist>

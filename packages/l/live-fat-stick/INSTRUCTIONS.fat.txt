@@ -1,0 +1,37 @@
+If --isohybrid option is used then it removes all existing data and creates
+new partitions.
+
+Run this command as root (su -, not sudo)
+    live-fat-stick isopath stickpartition
+e.g.: 
+    live-fat-stick /home/geeko/openSUSE-Edu-li-f-e-42.2-1-x86_64.iso /dev/sdXY
+
+To add various distribution iso to the stick, run the following:
+    For openSUSE: live-fat-stick --suse /path/to/openSUSE-filename.iso /dev/sdXY
+    For openSUSE with persistence    : live-fat-stick --suse-persistent /path/to/openSUSE-filename.iso /dev/sdXY
+    For Ubuntu clones     : live-fat-stick --ubuntu /path/to/ubuntu-filename.iso /dev/sdXY
+    For Ubuntu clones with persistence      : live-fat-stick --ubuntu-persistent /path/to/ubuntu-filename.iso /dev/sdXY
+    For Mint: live-fat-stick --mint /path/to/mint-filename.iso /dev/sdXY
+    For Fedora: live-fat-stick --fedora /path/to/fedora-filename.iso /dev/sdXY
+    For iPXE: live-fat-stick --ipxe /path/to/ipxe.iso /dev/sdXY
+    For isohybrid: live-fat-stick --isohybrid /path/to/isohybridimage.iso /dev/sdX
+
+isopath should be full absolute path of iso image and the device should be 
+actual partition on the stick like /dev/sdb1, /dev/sdc1,/dev/sdc2...
+
+The stick partition has to be vfat/fat32 format if the image is not isohybrid.
+
+Persistent option requires minimum 500M free space on the USB device apart from
+the spare needed by iso image. To allocate more space for cow file use cowfile
+variable like this example: "export cowsize=1000M" before running the script
+
+Please note that using isohybrid option will remove all existing data on the
+USB device and create new partitions. Also note that /dev/sdX is used
+
+Run live-fat-stick -l(or --list) to list the possible usb storage devices available.
+
+It is possible to boot multiple distributions and iso images from same device, 
+should work with all recent openSUSE or Ubuntu live iso images. Fedora iso is
+not copied but is extracted as it does not support booting from iso.
+This tool creates multi-boot capable USB stick/hard disk images with
+whole ISOs on a FAT32 partition, keeping existing data untouched.

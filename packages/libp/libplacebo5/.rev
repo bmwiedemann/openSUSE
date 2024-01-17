@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78280b6a61901038e7b7ebddeb15c796</srcmd5>
+    <version>5.264.1</version>
+    <time>1690987681</time>
+    <user>dimstar_suse</user>
+    <comment>Changes from last SR: Fixes plplay conflict
+
+Required by ffmpeg-6 after https://build.opensuse.org/request/show/1101501 makes it into Factory. Don't merge until the ffmpeg changes are in Factory. </comment>
+    <requestid>1101928</requestid>
+  </revision>
+</revisionlist>

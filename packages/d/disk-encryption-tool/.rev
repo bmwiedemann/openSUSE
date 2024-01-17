@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b939ca406eb29fe56f8cb09d1fa9792</srcmd5>
+    <version>1+git20231114.702dff6</version>
+    <time>1700250567</time>
+    <user>anag+factory</user>
+    <comment>new package</comment>
+    <requestid>1126895</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4c57e094f2cf410ae49f0103ed603327</srcmd5>
+    <version>1+git20231214.1708e01</version>
+    <time>1702673243</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20231214.1708e01:
+  * Add ExclusiveArch for 64-bit EFI architectures
+  * Don't set rw systems ro (forwarded request 1133049 from lnussel)</comment>
+    <requestid>1133050</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7656639fb0fa39a5655e8f77cdbc40e9</srcmd5>
+    <version>1+git20231221.d2e7fe6</version>
+    <time>1703281249</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20231221.d2e7fe6:
+  * Fix setting separate crypt password (forwarded request 1134499 from lnussel)</comment>
+    <requestid>1134500</requestid>
+  </revision>
+</revisionlist>

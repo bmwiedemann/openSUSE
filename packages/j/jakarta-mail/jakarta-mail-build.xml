@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="jakarta.mail-api" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property name="project.groupId" value="jakarta.mail"/>
+  <property name="project.artifactId" value="jakarta.mail-api"/>
+  <property name="project.version" value="2.1.0"/>
+  
+  <property name="spec.version" value="2.1"/>
+  <property name="mail.version" value="${project.version}"/>
+
+  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*"/>
+    </fileset>
+  </path>
+  <path id="build.test.classpath">
+    <fileset dir="lib">
+      <include name="**/*"/>
+    </fileset>
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <copy todir="${build.srcDir}">
+      <fileset dir="${build.resourceDir}"/>
+    </copy>
+    <javac destdir="${build.outputDir}" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="${compiler.target}" 
+           verbose="false" 
+           fork="false" 
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+	  <exclude name="**/module-info.java"/>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <javac destdir="${build.outputDir}" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="9" 
+           verbose="false" 
+           fork="false" 
+           source="9">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+	  <include name="**/module-info.java"/>
+      <classpath refid="build.classpath"/>
+	  <modulepath refid="build.classpath"/>
+    </javac>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}" 
+             packagenames="*" 
+             destdir="${reporting.outputDirectory}/apidocs" 
+             access="protected" 
+             verbose="false" 
+             encoding="UTF-8" 
+             version="true" 
+             use="true" 
+             author="true" 
+             splitindex="false" 
+             nodeprecated="false" 
+             nodeprecatedlist="false" 
+             notree="false" 
+             noindex="false" 
+             nohelp="false" 
+             nonavbar="false" 
+             serialwarn="false" 
+             charset="UTF-8" 
+             linksource="false" 
+             breakiterator="false" 
+             source="${compiler.source}">
+      <classpath refid="build.classpath"/>
+      <header>&lt;![CDATA[&lt;a href=&quot;https://reload4j.qos.ch&quot;&gt;
+          &lt;img src=&quot;https://reload4j.qos.ch/images/logos/reload4j.jpg&quot; height=&quot;40&quot;/&gt;&lt;/a&gt;]]&gt;</header>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${build.outputDir}" 
+         excludes="**/package.html">
+      <manifest>
+		<attribute name="Bundle-Description" value="Jakarta Mail API 2.1 Specification API"/>
+		<attribute name="Bundle-DocURL" value="https://www.eclipse.org"/>
+		<attribute name="Bundle-License" value="http://www.eclipse.org/legal/epl-2.0,http://www.eclipse.org/org/documents/edl-v10.php,https://www.gnu.org/software/classpath/license.html"/>
+		<attribute name="Bundle-ManifestVersion" value="2"/>
+		<attribute name="Bundle-Name" value="Jakarta Mail API"/>
+		<attribute name="Bundle-SymbolicName" value="jakarta.mail-api"/>
+		<attribute name="Bundle-Vendor" value="Eclipse Foundation"/>
+		<attribute name="Bundle-Version" value="${project.version}"/>
+		<attribute name="Export-Package" value="jakarta.mail.event;version=&quot;${project.version}&quot;;uses:=&quot;jakarta.mail&quot;,jakarta.mail.internet;version=&quot;${project.version}&quot;;uses:=&quot;jakarta.activation,jakarta.mail&quot;,jakarta.mail.search;version=&quot;${project.version}&quot;;uses:=&quot;jakarta.mail&quot;,jakarta.mail.util;version=&quot;${project.version}&quot;;uses:=&quot;jakarta.activation,jakarta.mail.internet&quot;,jakarta.mail;version=&quot;${project.version}&quot;;uses:=&quot;jakarta.activation,jakarta.mail.event,jakarta.mail.search,jakarta.mail.util&quot;"/>
+		<attribute name="Extension-Name" value="jakarta.mail"/>
+		<attribute name="Implementation-Build-Id" value="false"/>
+		<attribute name="Implementation-Title" value="Jakarta Mail API"/>
+		<attribute name="Implementation-Vendor" value="Eclipse Foundation"/>
+		<attribute name="Import-Package" value="jakarta.activation;version=&quot;[2.1,3)&quot;,jakarta.mail.event;version=&quot;[2.1,3)&quot;,jakarta.mail.internet;version=&quot;[2.1,3)&quot;,jakarta.mail.search;version=&quot;[2.1,3)&quot;,jakarta.mail.util;version=&quot;[2.1,3)&quot;,jakarta.mail;version=&quot;[2.1,3)&quot;"/>
+		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.8))&quot;"/>
+		<attribute name="Specification-Title" value="Jakarta Mail Specification"/>
+		<attribute name="Specification-Vendor" value="Eclipse Foundation"/>
+		<attribute name="Specification-Version" value="${spec.version}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>

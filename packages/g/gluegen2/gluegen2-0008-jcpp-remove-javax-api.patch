@@ -1,0 +1,1262 @@
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/Argument.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/Argument.java
+@@ -20,7 +20,6 @@ import java.io.IOException;
+ import java.util.ArrayList;
+ import java.util.Iterator;
+ import java.util.List;
+-import javax.annotation.Nonnull;
+ 
+ /**
+  * A macro argument.
+@@ -35,11 +34,11 @@ import javax.annotation.Nonnull;
+         this.expansion = null;
+     }
+ 
+-    public void addToken(@Nonnull Token tok) {
++    public void addToken( Token tok) {
+         add(tok);
+     }
+ 
+-    /* pp */ void expand(@Nonnull Preprocessor p)
++    /* pp */ void expand( Preprocessor p)
+             throws IOException,
+             LexerException {
+         /* Cache expansion. */
+@@ -49,7 +48,7 @@ import javax.annotation.Nonnull;
+         }
+     }
+ 
+-    @Nonnull
++    
+     public Iterator<Token> expansion() {
+         return expansion.iterator();
+     }
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/CppReader.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/CppReader.java
+@@ -20,7 +20,6 @@ import java.io.Closeable;
+ import java.io.IOException;
+ import java.io.Reader;
+ 
+-import javax.annotation.Nonnull;
+ 
+ import static com.jogamp.gluegen.jcpp.Token.CCOMMENT;
+ import static com.jogamp.gluegen.jcpp.Token.CPPCOMMENT;
+@@ -41,7 +40,7 @@ public class CppReader extends Reader im
+     private String token;
+     private int idx;
+ 
+-    public CppReader(@Nonnull final Reader r) {
++    public CppReader( final Reader r) {
+         cpp = new Preprocessor(new LexerSource(r, true) {
+             @Override
+             public String getName() {
+@@ -53,7 +52,7 @@ public class CppReader extends Reader im
+         idx = 0;
+     }
+ 
+-    public CppReader(@Nonnull Preprocessor p) {
++    public CppReader( Preprocessor p) {
+         cpp = p;
+         token = "";
+         idx = 0;
+@@ -62,7 +61,7 @@ public class CppReader extends Reader im
+     /**
+      * Returns the Preprocessor used by this CppReader.
+      */
+-    @Nonnull
++    
+     public Preprocessor getPreprocessor() {
+         return cpp;
+     }
+@@ -72,7 +71,7 @@ public class CppReader extends Reader im
+      *
+      * This is a convnience method.
+      */
+-    public void addMacro(@Nonnull String name)
++    public void addMacro( String name)
+             throws LexerException {
+         cpp.addMacro(name);
+     }
+@@ -82,7 +81,7 @@ public class CppReader extends Reader im
+      *
+      * This is a convnience method.
+      */
+-    public void addMacro(@Nonnull String name, @Nonnull String value)
++    public void addMacro( String name,  String value)
+             throws LexerException {
+         cpp.addMacro(name, value);
+     }
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/DefaultPreprocessorListener.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/DefaultPreprocessorListener.java
+@@ -16,8 +16,6 @@ package com.jogamp.gluegen.jcpp;
+  * or implied. See the License for the specific language governing
+  * permissions and limitations under the License.
+  */
+-import javax.annotation.Nonnegative;
+-import javax.annotation.Nonnull;
+ 
+ import com.jogamp.gluegen.Logging;
+ import com.jogamp.gluegen.Logging.LoggerIf;
+@@ -46,17 +44,17 @@ public class DefaultPreprocessorListener
+         warnings = 0;
+     }
+ 
+-    @Nonnegative
++    
+     public int getErrors() {
+         return errors;
+     }
+ 
+-    @Nonnegative
++    
+     public int getWarnings() {
+         return warnings;
+     }
+ 
+-    protected void print(@Nonnull final String msg) {
++    protected void print( final String msg) {
+         LOG.info(msg);
+     }
+ 
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/FileLexerSource.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/FileLexerSource.java
+@@ -20,7 +20,6 @@ import java.io.BufferedReader;
+ import java.io.File;
+ import java.io.FileReader;
+ import java.io.IOException;
+-import javax.annotation.Nonnull;
+ 
+ /**
+  * A {@link Source} which lexes a file.
+@@ -39,7 +38,7 @@ public class FileLexerSource extends Lex
+      *
+      * Preprocessor directives are honoured within the file.
+      */
+-    public FileLexerSource(@Nonnull File file, String path)
++    public FileLexerSource( File file, String path)
+             throws IOException {
+         super(
+                 new BufferedReader(
+@@ -54,17 +53,17 @@ public class FileLexerSource extends Lex
+         this.path = path;
+     }
+ 
+-    public FileLexerSource(@Nonnull File file)
++    public FileLexerSource( File file)
+             throws IOException {
+         this(file, file.getPath());
+     }
+ 
+-    public FileLexerSource(@Nonnull String path)
++    public FileLexerSource( String path)
+             throws IOException {
+         this(new File(path), path);
+     }
+ 
+-    @Nonnull
++    
+     public File getFile() {
+         return file;
+     }
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/LexerSource.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/LexerSource.java
+@@ -19,7 +19,6 @@ package com.jogamp.gluegen.jcpp;
+ import java.io.IOException;
+ import java.io.Reader;
+ 
+-import javax.annotation.Nonnull;
+ 
+ import static com.jogamp.gluegen.jcpp.Token.*;
+ 
+@@ -241,7 +240,7 @@ public class LexerSource extends Source
+     }
+ 
+     /* Consumes the rest of the current line into an invalid. */
+-    @Nonnull
++    
+     private Token invalid(StringBuilder text, String reason)
+             throws IOException,
+             LexerException {
+@@ -254,7 +253,7 @@ public class LexerSource extends Source
+         return new Token(INVALID, text.toString(), reason);
+     }
+ 
+-    @Nonnull
++    
+     private Token ccomment()
+             throws IOException,
+             LexerException {
+@@ -279,7 +278,7 @@ public class LexerSource extends Source
+         return new Token(CCOMMENT, text.toString());
+     }
+ 
+-    @Nonnull
++    
+     private Token cppcomment()
+             throws IOException,
+             LexerException {
+@@ -371,7 +370,7 @@ public class LexerSource extends Source
+         }
+     }
+ 
+-    @Nonnull
++    
+     private Token character()
+             throws IOException,
+             LexerException {
+@@ -418,7 +417,7 @@ public class LexerSource extends Source
+                 text.toString(), Character.valueOf((char) d));
+     }
+ 
+-    @Nonnull
++    
+     private Token string(char open, char close)
+             throws IOException,
+             LexerException {
+@@ -472,7 +471,7 @@ public class LexerSource extends Source
+         }
+     }
+ 
+-    @Nonnull
++    
+     private Token _number_suffix(StringBuilder text, NumericValue value, int d)
+             throws IOException,
+             LexerException {
+@@ -536,7 +535,7 @@ public class LexerSource extends Source
+     }
+ 
+     /* Either a decimal part, or a hex exponent. */
+-    @Nonnull
++    
+     private String _number_part(StringBuilder text, int base, boolean sign)
+             throws IOException,
+             LexerException {
+@@ -557,7 +556,7 @@ public class LexerSource extends Source
+     }
+ 
+     /* We do not know whether know the first digit is valid. */
+-    @Nonnull
++    
+     private Token number_hex(char x)
+             throws IOException,
+             LexerException {
+@@ -582,7 +581,7 @@ public class LexerSource extends Source
+         return _number_suffix(text, value, d);
+     }
+ 
+-    private static boolean is_octal(@Nonnull String text) {
++    private static boolean is_octal( String text) {
+         if (!text.startsWith("0"))
+             return false;
+         for (int i = 0; i < text.length(); i++)
+@@ -593,7 +592,7 @@ public class LexerSource extends Source
+ 
+     /* We know we have at least one valid digit, but empty is not
+      * fine. */
+-    @Nonnull
++    
+     private Token number_decimal()
+             throws IOException,
+             LexerException {
+@@ -663,7 +662,7 @@ public class LexerSource extends Source
+      * floating constants when FLT_RADIX is a power of 2, the result is
+      * correctly rounded.
+      */
+-    @Nonnull
++    
+     private Token number()
+             throws IOException,
+             LexerException {
+@@ -687,7 +686,7 @@ public class LexerSource extends Source
+         return tok;
+     }
+ 
+-    @Nonnull
++    
+     private Token identifier(int c)
+             throws IOException,
+             LexerException {
+@@ -706,7 +705,7 @@ public class LexerSource extends Source
+         return new Token(IDENTIFIER, text.toString());
+     }
+ 
+-    @Nonnull
++    
+     private Token whitespace(int c)
+             throws IOException,
+             LexerException {
+@@ -728,7 +727,7 @@ public class LexerSource extends Source
+     }
+ 
+     /* No token processed by cond() contains a newline. */
+-    @Nonnull
++    
+     private Token cond(char c, int yes, int no)
+             throws IOException,
+             LexerException {
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/MacroTokenSource.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/MacroTokenSource.java
+@@ -20,7 +20,6 @@ import java.io.IOException;
+ import java.util.Iterator;
+ import java.util.List;
+ 
+-import javax.annotation.Nonnull;
+ 
+ import static com.jogamp.gluegen.jcpp.Token.*;
+ 
+@@ -35,7 +34,7 @@ import static com.jogamp.gluegen.jcpp.To
+ 
+     private Iterator<Token> arg;	/* "current expansion" */
+ 
+-    /* pp */ MacroTokenSource(@Nonnull Macro m, @Nonnull List<Argument> args) {
++    /* pp */ MacroTokenSource( Macro m,  List<Argument> args) {
+         this.macro = m;
+         this.tokens = m.getTokens().iterator();
+         this.args = args;
+@@ -43,7 +42,7 @@ import static com.jogamp.gluegen.jcpp.To
+     }
+ 
+     @Override
+-    /* pp */ boolean isExpanding(@Nonnull Macro m) {
++    /* pp */ boolean isExpanding( Macro m) {
+         /* When we are expanding an arg, 'this' macro is not
+          * being expanded, and thus we may re-expand it. */
+         if (/* XXX this.arg == null && */this.macro == m)
+@@ -52,7 +51,7 @@ import static com.jogamp.gluegen.jcpp.To
+     }
+ 
+     /* XXX Called from Preprocessor [ugly]. */
+-    /* pp */ static void escape(@Nonnull StringBuilder buf, @Nonnull CharSequence cs) {
++    /* pp */ static void escape( StringBuilder buf,  CharSequence cs) {
+         if (buf == null)
+             throw new NullPointerException("Buffer was null.");
+         if (cs == null)
+@@ -78,14 +77,14 @@ import static com.jogamp.gluegen.jcpp.To
+         }
+     }
+ 
+-    private void concat(@Nonnull StringBuilder buf, @Nonnull Argument arg) {
++    private void concat( StringBuilder buf,  Argument arg) {
+         for (Token tok : arg) {
+             buf.append(tok.getText());
+         }
+     }
+ 
+-    @Nonnull
+-    private Token stringify(@Nonnull Token pos, @Nonnull Argument arg) {
++    
++    private Token stringify( Token pos,  Argument arg) {
+         StringBuilder buf = new StringBuilder();
+         concat(buf, arg);
+         // System.out.println("Concat: " + arg + " -> " + buf);
+@@ -101,7 +100,7 @@ import static com.jogamp.gluegen.jcpp.To
+ 
+     /* At this point, we have consumed the first M_PASTE.
+      * @see Macro#addPaste(Token) */
+-    private void paste(@Nonnull Token ptok)
++    private void paste( Token ptok)
+             throws IOException,
+             LexerException {
+         StringBuilder buf = new StringBuilder();
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/NumericValue.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/NumericValue.java
+@@ -18,10 +18,6 @@ package com.jogamp.gluegen.jcpp;
+ 
+ import java.math.BigDecimal;
+ import java.math.BigInteger;
+-import javax.annotation.CheckForNull;
+-import javax.annotation.CheckForSigned;
+-import javax.annotation.Nonnegative;
+-import javax.annotation.Nonnull;
+ 
+ public class NumericValue extends Number {
+ 
+@@ -46,17 +42,17 @@ public class NumericValue extends Number
+         this.integer = integer;
+     }
+ 
+-    @Nonnegative
++    
+     public int getBase() {
+         return base;
+     }
+ 
+-    @Nonnull
++    
+     public String getIntegerPart() {
+         return integer;
+     }
+ 
+-    @CheckForNull
++    
+     public String getFractionalPart() {
+         return fraction;
+     }
+@@ -65,12 +61,12 @@ public class NumericValue extends Number
+         this.fraction = fraction;
+     }
+ 
+-    @CheckForSigned
++    
+     public int getExponentBase() {
+         return expbase;
+     }
+ 
+-    @CheckForNull
++    
+     public String getExponent() {
+         return exponent;
+     }
+@@ -93,7 +89,7 @@ public class NumericValue extends Number
+      * precision numbers is nontrivial, and this routine gets it wrong
+      * in many important cases.
+      */
+-    @Nonnull
++    
+     public BigDecimal toBigDecimal() {
+         int scale = 0;
+         String text = getIntegerPart();
+@@ -110,7 +106,7 @@ public class NumericValue extends Number
+         return new BigDecimal(unscaled, scale);
+     }
+ 
+-    @Nonnull
++    
+     public Number toJavaLangNumber() {
+         int flags = getFlags();
+         if ((flags & F_DOUBLE) != 0)
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/Preprocessor.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/Preprocessor.java
+@@ -32,8 +32,6 @@ import java.util.Set;
+ import java.util.Stack;
+ import java.util.TreeMap;
+ 
+-import javax.annotation.CheckForNull;
+-import javax.annotation.Nonnull;
+ 
+ import static com.jogamp.gluegen.jcpp.PreprocessorCommand.*;
+ import static com.jogamp.gluegen.jcpp.Token.*;
+@@ -149,7 +147,7 @@ public class Preprocessor implements Clo
+         this.listener = null;
+     }
+ 
+-    public Preprocessor(@Nonnull final Source initial) {
++    public Preprocessor( final Source initial) {
+         this();
+         addInput(initial);
+     }
+@@ -157,7 +155,7 @@ public class Preprocessor implements Clo
+     /** Equivalent to
+      * 'new Preprocessor(new {@link FileLexerSource}(file))'
+      */
+-    public Preprocessor(@Nonnull final File file)
++    public Preprocessor( final File file)
+             throws IOException {
+         this(new FileLexerSource(file));
+     }
+@@ -165,14 +163,14 @@ public class Preprocessor implements Clo
+     /**
+      * Sets the VirtualFileSystem used by this Preprocessor.
+      */
+-    public void setFileSystem(@Nonnull final VirtualFileSystem filesystem) {
++    public void setFileSystem( final VirtualFileSystem filesystem) {
+         this.filesystem = filesystem;
+     }
+ 
+     /**
+      * Returns the VirtualFileSystem used by this Preprocessor.
+      */
+-    @Nonnull
++    
+     public VirtualFileSystem getFileSystem() {
+         return filesystem;
+     }
+@@ -184,7 +182,7 @@ public class Preprocessor implements Clo
+      * The listener is notified of warnings, errors and source
+      * changes, amongst other things.
+      */
+-    public void setListener(@Nonnull final PreprocessorListener listener) {
++    public void setListener( final PreprocessorListener listener) {
+         this.listener = listener;
+         Source s = source;
+         while (s != null) {
+@@ -198,7 +196,7 @@ public class Preprocessor implements Clo
+      * Returns the PreprocessorListener which handles events for
+      * this Preprocessor.
+      */
+-    @Nonnull
++    
+     public PreprocessorListener getListener() {
+         return listener;
+     }
+@@ -208,7 +206,7 @@ public class Preprocessor implements Clo
+      *
+      * This set may be freely modified by user code.
+      */
+-    @Nonnull
++    
+     public Set<Feature> getFeatures() {
+         return features;
+     }
+@@ -216,14 +214,14 @@ public class Preprocessor implements Clo
+     /**
+      * Adds a feature to the feature-set of this Preprocessor.
+      */
+-    public void addFeature(@Nonnull final Feature f) {
++    public void addFeature( final Feature f) {
+         features.add(f);
+     }
+ 
+     /**
+      * Adds features to the feature-set of this Preprocessor.
+      */
+-    public void addFeatures(@Nonnull final Collection<Feature> f) {
++    public void addFeatures( final Collection<Feature> f) {
+         features.addAll(f);
+     }
+ 
+@@ -238,7 +236,7 @@ public class Preprocessor implements Clo
+      * Returns true if the given feature is in
+      * the feature-set of this Preprocessor.
+      */
+-    public boolean getFeature(@Nonnull final Feature f) {
++    public boolean getFeature( final Feature f) {
+         return features.contains(f);
+     }
+ 
+@@ -247,7 +245,7 @@ public class Preprocessor implements Clo
+      *
+      * This set may be freely modified by user code.
+      */
+-    @Nonnull
++    
+     public Set<Warning> getWarnings() {
+         return warnings;
+     }
+@@ -255,14 +253,14 @@ public class Preprocessor implements Clo
+     /**
+      * Adds a warning to the warning-set of this Preprocessor.
+      */
+-    public void addWarning(@Nonnull final Warning w) {
++    public void addWarning( final Warning w) {
+         warnings.add(w);
+     }
+ 
+     /**
+      * Adds warnings to the warning-set of this Preprocessor.
+      */
+-    public void addWarnings(@Nonnull final Collection<Warning> w) {
++    public void addWarnings( final Collection<Warning> w) {
+         warnings.addAll(w);
+     }
+ 
+@@ -270,7 +268,7 @@ public class Preprocessor implements Clo
+      * Returns true if the given warning is in
+      * the warning-set of this Preprocessor.
+      */
+-    public boolean getWarning(@Nonnull final Warning w) {
++    public boolean getWarning( final Warning w) {
+         return warnings.contains(w);
+     }
+ 
+@@ -279,7 +277,7 @@ public class Preprocessor implements Clo
+      *
+      * Inputs are processed in the order in which they are added.
+      */
+-    public void addInput(@Nonnull final Source source) {
++    public void addInput( final Source source) {
+         source.init(this);
+         inputs.add(source);
+     }
+@@ -289,7 +287,7 @@ public class Preprocessor implements Clo
+      *
+      * @see #addInput(Source)
+      */
+-    public void addInput(@Nonnull final File file)
++    public void addInput( final File file)
+             throws IOException {
+         addInput(new FileLexerSource(file));
+     }
+@@ -300,7 +298,7 @@ public class Preprocessor implements Clo
+      * If a PreprocessorListener is installed, it receives the
+      * error. Otherwise, an exception is thrown.
+      */
+-    protected void error(final int line, final int column, @Nonnull final String msg)
++    protected void error(final int line, final int column,  final String msg)
+             throws LexerException {
+         if (listener != null)
+             listener.handleError(source, line, column, msg);
+@@ -316,7 +314,7 @@ public class Preprocessor implements Clo
+      *
+      * @see #error(int, int, String)
+      */
+-    protected void error(@Nonnull final Token tok, @Nonnull final String msg)
++    protected void error( final Token tok,  final String msg)
+             throws LexerException {
+         error(tok.getLine(), tok.getColumn(), msg);
+     }
+@@ -327,7 +325,7 @@ public class Preprocessor implements Clo
+      * If a PreprocessorListener is installed, it receives the
+      * warning. Otherwise, an exception is thrown.
+      */
+-    protected void warning(final int line, final int column, @Nonnull final String msg)
++    protected void warning(final int line, final int column,  final String msg)
+             throws LexerException {
+         if (warnings.contains(Warning.ERROR))
+             error(line, column, msg);
+@@ -345,7 +343,7 @@ public class Preprocessor implements Clo
+      *
+      * @see #warning(int, int, String)
+      */
+-    protected void warning(@Nonnull final Token tok, @Nonnull final String msg)
++    protected void warning( final Token tok,  final String msg)
+             throws LexerException {
+         warning(tok.getLine(), tok.getColumn(), msg);
+     }
+@@ -357,7 +355,7 @@ public class Preprocessor implements Clo
+      * and the expansion.
+      * @throws IOException
+      */
+-    public void addMacro(@Nonnull final Macro m) throws LexerException, IOException {
++    public void addMacro( final Macro m) throws LexerException, IOException {
+         // System.out.println("Macro " + m);
+         final String name = m.getName();
+         /* Already handled as a source error in macro(). */
+@@ -373,7 +371,7 @@ public class Preprocessor implements Clo
+      * The String value is lexed into a token stream, which is
+      * used as the macro expansion.
+      */
+-    public void addMacro(@Nonnull final String name, @Nonnull final String value)
++    public void addMacro( final String name,  final String value)
+             throws LexerException {
+         try {
+             final Macro m = new Macro(name);
+@@ -400,7 +398,7 @@ public class Preprocessor implements Clo
+      * This is a convnience method, and is equivalent to
+      * <code>addMacro(name, "1")</code>.
+      */
+-    public void addMacro(@Nonnull final String name)
++    public void addMacro( final String name)
+             throws LexerException {
+         addMacro(name, "1");
+     }
+@@ -409,7 +407,7 @@ public class Preprocessor implements Clo
+      * Sets the user include path used by this Preprocessor.
+      */
+     /* Note for future: Create an IncludeHandler? */
+-    public void setQuoteIncludePath(@Nonnull final List<String> path) {
++    public void setQuoteIncludePath( final List<String> path) {
+         this.quoteincludepath = path;
+     }
+ 
+@@ -418,7 +416,7 @@ public class Preprocessor implements Clo
+      *
+      * This list may be freely modified by user code.
+      */
+-    @Nonnull
++    
+     public List<String> getQuoteIncludePath() {
+         return quoteincludepath;
+     }
+@@ -427,7 +425,7 @@ public class Preprocessor implements Clo
+      * Sets the system include path used by this Preprocessor.
+      */
+     /* Note for future: Create an IncludeHandler? */
+-    public void setSystemIncludePath(@Nonnull final List<String> path) {
++    public void setSystemIncludePath( final List<String> path) {
+         this.sysincludepath = path;
+     }
+ 
+@@ -436,7 +434,7 @@ public class Preprocessor implements Clo
+      *
+      * This list may be freely modified by user code.
+      */
+-    @Nonnull
++    
+     public List<String> getSystemIncludePath() {
+         return sysincludepath;
+     }
+@@ -445,7 +443,7 @@ public class Preprocessor implements Clo
+      * Sets the Objective-C frameworks path used by this Preprocessor.
+      */
+     /* Note for future: Create an IncludeHandler? */
+-    public void setFrameworksPath(@Nonnull final List<String> path) {
++    public void setFrameworksPath( final List<String> path) {
+         this.frameworkspath = path;
+     }
+ 
+@@ -455,7 +453,7 @@ public class Preprocessor implements Clo
+      *
+      * This list may be freely modified by user code.
+      */
+-    @Nonnull
++    
+     public List<String> getFrameworksPath() {
+         return frameworkspath;
+     }
+@@ -464,7 +462,7 @@ public class Preprocessor implements Clo
+      * Returns the Map of Macros parsed during the run of this
+      * Preprocessor.
+      */
+-    @Nonnull
++    
+     public Map<String, Macro> getMacros() {
+         return macros;
+     }
+@@ -498,7 +496,7 @@ public class Preprocessor implements Clo
+      * While you can modify the returned object, unexpected things
+      * might happen if you do.
+      */
+-    @CheckForNull
++    
+     public Macro getMacro(final String name) {
+         return macros.get(name);
+     }
+@@ -510,7 +508,7 @@ public class Preprocessor implements Clo
+      * This does not include any {@link Source} provided to the constructor
+      * or {@link #addInput(java.io.File)} or {@link #addInput(Source)}.
+      */
+-    @Nonnull
++    
+     public List<? extends VirtualFile> getIncludes() {
+         return includes;
+     }
+@@ -544,7 +542,7 @@ public class Preprocessor implements Clo
+      * @see #push_source(Source,boolean)
+      * @see #pop_source()
+      */
+-    // @CheckForNull
++    // 
+     public Source getSource() {
+         return source;
+     }
+@@ -555,7 +553,7 @@ public class Preprocessor implements Clo
+      * @see #getSource()
+      * @see #pop_source()
+      */
+-    protected void push_source(@Nonnull final Source source, final boolean autopop) {
++    protected void push_source( final Source source, final boolean autopop) {
+         source.init(this);
+         source.setParent(this.source, autopop);
+         // source.setListener(listener);
+@@ -572,7 +570,7 @@ public class Preprocessor implements Clo
+      * @see #getSource()
+      * @see #push_source(Source,boolean)
+      */
+-    @CheckForNull
++    
+     protected Token pop_source(final boolean linemarker)
+             throws IOException {
+         if (listener != null)
+@@ -605,7 +603,7 @@ public class Preprocessor implements Clo
+         pop_source(false);
+     }
+ 
+-    @Nonnull
++    
+     private Token next_source() {
+         if (inputs.isEmpty())
+             return new Token(EOF);
+@@ -619,8 +617,8 @@ public class Preprocessor implements Clo
+ 
+     /* XXX Make this include the NL, and make all cpp directives eat
+      * their own NL. */
+-    @Nonnull
+-    private Token line_token(final int line, @CheckForNull final String name, @Nonnull final String extra) {
++    
++    private Token line_token(final int line,  final String name,  final String extra) {
+         final StringBuilder buf = new StringBuilder();
+         buf.append("#line ").append(line)
+                 .append(" \"");
+@@ -633,7 +631,7 @@ public class Preprocessor implements Clo
+         return new Token(P_LINE, line, 0, buf.toString(), null);
+     }
+ 
+-    @Nonnull
++    
+     private Token source_token()
+             throws IOException,
+             LexerException {
+@@ -913,8 +911,8 @@ public class Preprocessor implements Clo
+      * Expands an argument.
+      */
+     /* I'd rather this were done lazily, but doing so breaks spec. */
+-    @Nonnull
+-    /* pp */ List<Token> expand(@Nonnull final List<Token> arg)
++    
++    /* pp */ List<Token> expand( final List<Token> arg)
+             throws IOException,
+             LexerException {
+         final List<Token> expansion = new ArrayList<Token>();
+@@ -1124,7 +1122,7 @@ public class Preprocessor implements Clo
+         return tok;	/* NL or EOF. */
+     }
+ 
+-    @Nonnull
++    
+     private Token undef()
+             throws IOException,
+             LexerException {
+@@ -1150,7 +1148,7 @@ public class Preprocessor implements Clo
+      * User code may override this method to implement a virtual
+      * file system.
+      */
+-    protected boolean include(@Nonnull final VirtualFile file)
++    protected boolean include( final VirtualFile file)
+             throws IOException,
+             LexerException {
+         // System.out.println("Try to include " + ((File)file).getAbsolutePath());
+@@ -1166,7 +1164,7 @@ public class Preprocessor implements Clo
+     /**
+      * Includes a file from an include path, by name.
+      */
+-    protected boolean include(@Nonnull final Iterable<String> path, @Nonnull final String name)
++    protected boolean include( final Iterable<String> path,  final String name)
+             throws IOException,
+             LexerException {
+         for (final String dir : path) {
+@@ -1181,8 +1179,8 @@ public class Preprocessor implements Clo
+      * Handles an include directive.
+      */
+     private void include(
+-            @CheckForNull final String parent, final int line,
+-            @Nonnull final String name, final boolean quoted, final boolean next)
++             final String parent, final int line,
++             final String name, final boolean quoted, final boolean next)
+             throws IOException,
+             LexerException {
+         if (name.startsWith("/")) {
+@@ -1235,7 +1233,7 @@ public class Preprocessor implements Clo
+         error(line, 0, buf.toString());
+     }
+ 
+-    @Nonnull
++    
+     private Token include(final boolean next)
+             throws IOException,
+             LexerException {
+@@ -1299,7 +1297,7 @@ public class Preprocessor implements Clo
+         }
+     }
+ 
+-    protected void pragma_once(@Nonnull final Token name)
++    protected void pragma_once( final Token name)
+             throws IOException, LexerException {
+         final Source s = this.source;
+         if (!onceseenpaths.add(s.getPath())) {
+@@ -1310,7 +1308,7 @@ public class Preprocessor implements Clo
+         }
+     }
+ 
+-    protected void pragma(@Nonnull final Token name, @Nonnull final List<Token> value)
++    protected void pragma( final Token name,  final List<Token> value)
+             throws IOException,
+             LexerException {
+         if (getFeature(Feature.PRAGMA_ONCE)) {
+@@ -1322,7 +1320,7 @@ public class Preprocessor implements Clo
+         warning(name, "Unknown #" + "pragma: " + name.getText());
+     }
+ 
+-    @Nonnull
++    
+     private Token pragma()
+             throws IOException,
+             LexerException {
+@@ -1391,7 +1389,7 @@ public class Preprocessor implements Clo
+     }
+ 
+     /* For #error and #warning. */
+-    private void error(@Nonnull final Token pptok, final boolean is_error)
++    private void error( final Token pptok, final boolean is_error)
+             throws IOException,
+             LexerException {
+         final StringBuilder buf = new StringBuilder();
+@@ -1419,7 +1417,7 @@ public class Preprocessor implements Clo
+     /* This bypasses token() for #elif expressions.
+      * If we don't do this, then isActive() == false
+      * causes token() to simply chew the entire input line. */
+-    @Nonnull
++    
+     private Token expanded_token()
+             throws IOException,
+             LexerException {
+@@ -1439,7 +1437,7 @@ public class Preprocessor implements Clo
+         }
+     }
+ 
+-    @Nonnull
++    
+     private Token expanded_token_nonwhite()
+             throws IOException,
+             LexerException {
+@@ -1451,10 +1449,10 @@ public class Preprocessor implements Clo
+         return tok;
+     }
+ 
+-    @CheckForNull
++    
+     private Token expr_token = null;
+ 
+-    @Nonnull
++    
+     private Token expr_token()
+             throws IOException,
+             LexerException {
+@@ -1510,7 +1508,7 @@ public class Preprocessor implements Clo
+         return tok;
+     }
+ 
+-    private void expr_untoken(@Nonnull final Token tok)
++    private void expr_untoken( final Token tok)
+             throws LexerException {
+         if (expr_token != null)
+             throw new InternalException(
+@@ -1519,7 +1517,7 @@ public class Preprocessor implements Clo
+         expr_token = tok;
+     }
+ 
+-    private int expr_priority(@Nonnull final Token op) {
++    private int expr_priority( final Token op) {
+         switch (op.getType()) {
+             case '/':
+                 return 11;
+@@ -1723,8 +1721,8 @@ public class Preprocessor implements Clo
+         return lhs;
+     }
+ 
+-    @Nonnull
+-    private Token toWhitespace(@Nonnull final Token tok) {
++    
++    private Token toWhitespace( final Token tok) {
+         final String text = tok.getText();
+         final int len = text.length();
+         boolean cr = false;
+@@ -1762,7 +1760,7 @@ public class Preprocessor implements Clo
+                 new String(cbuf));
+     }
+ 
+-    @Nonnull
++    
+     private Token _token()
+             throws IOException,
+             LexerException {
+@@ -2113,7 +2111,7 @@ public class Preprocessor implements Clo
+         }
+     }
+ 
+-    @Nonnull
++    
+     private Token token_nonwhite()
+             throws IOException,
+             LexerException {
+@@ -2131,7 +2129,7 @@ public class Preprocessor implements Clo
+      * @throws LexerException if a preprocessing error occurs.
+      * @throws InternalException if an unexpected error condition arises.
+      */
+-    @Nonnull
++    
+     public Token token()
+             throws IOException,
+             LexerException {
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/PreprocessorCommand.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/PreprocessorCommand.java
+@@ -5,8 +5,6 @@
+  */
+ package com.jogamp.gluegen.jcpp;
+ 
+-import javax.annotation.CheckForNull;
+-import javax.annotation.Nonnull;
+ 
+ /**
+  *
+@@ -34,8 +32,8 @@ public enum PreprocessorCommand {
+         this.text = text;
+     }
+ 
+-    @CheckForNull
+-    public static PreprocessorCommand forText(@Nonnull String text) {
++    
++    public static PreprocessorCommand forText( String text) {
+         for (PreprocessorCommand ppcmd : PreprocessorCommand.values())
+             if (ppcmd.text.equals(text))
+                 return ppcmd;
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/PreprocessorListener.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/PreprocessorListener.java
+@@ -16,7 +16,6 @@
+  */
+ package com.jogamp.gluegen.jcpp;
+ 
+-import javax.annotation.Nonnull;
+ 
+ /**
+  * A handler for preprocessor events, primarily errors and warnings.
+@@ -34,8 +33,8 @@ public interface PreprocessorListener {
+      * implementation. It may simply record the error message, or
+      * it may throw an exception.
+      */
+-    public void handleWarning(@Nonnull Source source, int line, int column,
+-            @Nonnull String msg)
++    public void handleWarning( Source source, int line, int column,
++             String msg)
+             throws LexerException;
+ 
+     /**
+@@ -45,8 +44,8 @@ public interface PreprocessorListener {
+      * implementation. It may simply record the error message, or
+      * it may throw an exception.
+      */
+-    public void handleError(@Nonnull Source source, int line, int column,
+-            @Nonnull String msg)
++    public void handleError( Source source, int line, int column,
++             String msg)
+             throws LexerException;
+ 
+     public enum SourceChangeEvent {
+@@ -54,6 +53,6 @@ public interface PreprocessorListener {
+         SUSPEND, PUSH, POP, RESUME;
+     }
+ 
+-    public void handleSourceChange(@Nonnull Source source, @Nonnull SourceChangeEvent event);
++    public void handleSourceChange( Source source,  SourceChangeEvent event);
+ 
+ }
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/ResourceFileSystem.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/ResourceFileSystem.java
+@@ -9,7 +9,6 @@ import java.io.BufferedReader;
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.io.InputStreamReader;
+-import javax.annotation.Nonnull;
+ 
+ /**
+  *
+@@ -19,7 +18,7 @@ public class ResourceFileSystem implemen
+ 
+     private final ClassLoader loader;
+ 
+-    public ResourceFileSystem(@Nonnull ClassLoader loader) {
++    public ResourceFileSystem( ClassLoader loader) {
+         this.loader = loader;
+     }
+ 
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/Source.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/Source.java
+@@ -20,9 +20,6 @@ import java.io.Closeable;
+ import java.io.IOException;
+ import java.util.Iterator;
+ 
+-import javax.annotation.CheckForNull;
+-import javax.annotation.Nonnegative;
+-import javax.annotation.Nonnull;
+ 
+ import static com.jogamp.gluegen.jcpp.Token.CCOMMENT;
+ import static com.jogamp.gluegen.jcpp.Token.CPPCOMMENT;
+@@ -135,7 +132,7 @@ public abstract class Source implements
+      * it will ask the parent Source, and so forth recursively.
+      * If no Source on the stack is a FileLexerSource, returns null.
+      */
+-    @CheckForNull
++    
+     public String getPath() {
+         final Source parent = getParent();
+         if (parent != null)
+@@ -146,7 +143,7 @@ public abstract class Source implements
+     /**
+      * Returns the human-readable name of the current Source.
+      */
+-    @CheckForNull
++    
+     public String getName() {
+         final Source parent = getParent();
+         if (parent != null)
+@@ -157,7 +154,7 @@ public abstract class Source implements
+     /**
+      * Returns the current line number within this Source.
+      */
+-    @Nonnegative
++    
+     public int getLine() {
+         final Source parent = getParent();
+         if (parent == null)
+@@ -180,7 +177,7 @@ public abstract class Source implements
+      *
+      * This is used to prevent macro recursion.
+      */
+-    /* pp */ boolean isExpanding(@Nonnull final Macro m) {
++    /* pp */ boolean isExpanding( final Macro m) {
+         final Source parent = getParent();
+         if (parent != null)
+             return parent.isExpanding(m);
+@@ -219,7 +216,7 @@ public abstract class Source implements
+      *
+      * @see Token
+      */
+-    @Nonnull
++    
+     public abstract Token token()
+             throws IOException,
+             LexerException;
+@@ -239,7 +236,7 @@ public abstract class Source implements
+      *	remainder of the line.
+      * @return the NL token.
+      */
+-    @Nonnull
++    
+     public Token skipline(final boolean white)
+             throws IOException,
+             LexerException {
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/TokenType.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/TokenType.java
+@@ -8,9 +8,6 @@ package com.jogamp.gluegen.jcpp;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+-import javax.annotation.CheckForNull;
+-import javax.annotation.Nonnegative;
+-import javax.annotation.Nonnull;
+ 
+ import static com.jogamp.gluegen.jcpp.Token.*;
+ 
+@@ -22,18 +19,18 @@ import static com.jogamp.gluegen.jcpp.To
+ 
+     private static final List<TokenType> TYPES = new ArrayList<TokenType>();
+ 
+-    private static void addTokenType(@Nonnegative int type, @Nonnull String name, @CheckForNull String text) {
++    private static void addTokenType( int type,  String name,  String text) {
+         while (TYPES.size() <= type)
+             TYPES.add(null);
+         TYPES.set(type, new TokenType(name, text));
+     }
+ 
+-    private static void addTokenType(@Nonnegative int type, @Nonnull String name) {
++    private static void addTokenType( int type,  String name) {
+         addTokenType(type, name, null);
+     }
+ 
+-    @CheckForNull
+-    public static TokenType getTokenType(@Nonnegative int type) {
++    
++    public static TokenType getTokenType( int type) {
+         try {
+             return TYPES.get(type);
+         } catch (IndexOutOfBoundsException e) {
+@@ -41,8 +38,8 @@ import static com.jogamp.gluegen.jcpp.To
+         }
+     }
+ 
+-    @Nonnull
+-    public static String getTokenName(@Nonnegative int type) {
++    
++    public static String getTokenName( int type) {
+         if (type < 0)
+             return "Invalid" + type;
+         TokenType tokenType = getTokenType(type);
+@@ -51,8 +48,8 @@ import static com.jogamp.gluegen.jcpp.To
+         return tokenType.getName();
+     }
+ 
+-    @CheckForNull
+-    public static String getTokenText(@Nonnegative int type) {
++    
++    public static String getTokenText( int type) {
+         TokenType tokenType = getTokenType(type);
+         if (tokenType == null)
+             return null;
+@@ -113,17 +110,17 @@ import static com.jogamp.gluegen.jcpp.To
+     private final String name;
+     private final String text;
+ 
+-    /* pp */ TokenType(@Nonnull String name, @CheckForNull String text) {
++    /* pp */ TokenType( String name,  String text) {
+         this.name = name;
+         this.text = text;
+     }
+ 
+-    @Nonnull
++    
+     public String getName() {
+         return name;
+     }
+ 
+-    @CheckForNull
++    
+     public String getText() {
+         return text;
+     }
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/VirtualFile.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/VirtualFile.java
+@@ -17,8 +17,6 @@
+ package com.jogamp.gluegen.jcpp;
+ 
+ import java.io.IOException;
+-import javax.annotation.CheckForNull;
+-import javax.annotation.Nonnull;
+ 
+ /**
+  * An extremely lightweight virtual file interface.
+@@ -28,18 +26,18 @@ public interface VirtualFile {
+     // public String getParent();
+     public boolean isFile();
+ 
+-    @Nonnull
++    
+     public String getPath();
+ 
+-    @Nonnull
++    
+     public String getName();
+ 
+-    @CheckForNull
++    
+     public VirtualFile getParentFile();
+ 
+-    @Nonnull
++    
+     public VirtualFile getChildFile(String name);
+ 
+-    @Nonnull
++    
+     public Source getSource() throws IOException;
+ }
+--- a/jcpp/src/main/java/com/jogamp/gluegen/jcpp/VirtualFileSystem.java
++++ b/jcpp/src/main/java/com/jogamp/gluegen/jcpp/VirtualFileSystem.java
+@@ -16,16 +16,15 @@
+  */
+ package com.jogamp.gluegen.jcpp;
+ 
+-import javax.annotation.Nonnull;
+ 
+ /**
+  * An extremely lightweight virtual file system interface.
+  */
+ public interface VirtualFileSystem {
+ 
+-    @Nonnull
+-    public VirtualFile getFile(@Nonnull String path);
++    
++    public VirtualFile getFile( String path);
+ 
+-    @Nonnull
+-    public VirtualFile getFile(@Nonnull String dir, @Nonnull String name);
++    
++    public VirtualFile getFile( String dir,  String name);
+ }
+--- a/jcpp/src/test/java/com/jogamp/gluegen/jcpp/CppReaderTest.java
++++ b/jcpp/src/test/java/com/jogamp/gluegen/jcpp/CppReaderTest.java
+@@ -5,7 +5,6 @@ import java.io.IOException;
+ import java.io.StringReader;
+ import java.util.Collections;
+ 
+-import javax.annotation.Nonnull;
+ 
+ import org.junit.FixMethodOrder;
+ import org.junit.Test;
+@@ -19,7 +18,7 @@ import static org.junit.Assert.assertEqu
+ @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+ public class CppReaderTest extends SingletonJunitCase {
+ 
+-    public static String testCppReader(@Nonnull final String in, final Feature... f) throws Exception {
++    public static String testCppReader( final String in, final Feature... f) throws Exception {
+         final String inclpath = BuildEnvironment.gluegenRoot + "/jcpp/src/test/resources" ;
+ 
+         System.out.println("Testing " + in);

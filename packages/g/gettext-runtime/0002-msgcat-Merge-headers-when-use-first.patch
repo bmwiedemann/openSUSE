@@ -1,0 +1,304 @@
+From df4aef6209615bdd44cd45208acfe7367451a8fe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mark=C3=A9ta=20Cal=C3=A1bkov=C3=A1?=
+ <meggy.calabkova@gmail.com>
+Date: Thu, 9 Jan 2020 14:45:49 +0100
+Subject: [PATCH 2/2] msgcat: Merge headers when --use-first
+
+Merging headers line by line is especially useful when
+one header line is present only in the second file.
+For example when Plural-Forms: is present only in the second file,
+msgcat could create an invalid output file.
+We also return error when Plural-Forms: values do not match.
+---
+ gettext-tools/src/message.c     |   2 -
+ gettext-tools/src/msgl-cat.c    |   5 ++
+ gettext-tools/src/msgl-header.c | 155 +++++++++++++++++++++++++++++---
+ gettext-tools/src/msgl-header.h |   8 ++
+ 4 files changed, 157 insertions(+), 13 deletions(-)
+
+Index: gettext-0.20.1/gettext-tools/src/message.c
+===================================================================
+--- gettext-0.20.1.orig/gettext-tools/src/message.c
++++ gettext-0.20.1/gettext-tools/src/message.c
+@@ -411,7 +411,6 @@ message_list_insert_at (message_list_ty
+ }
+ 
+ 
+-#if 0 /* unused */
+ void
+ message_list_delete_nth (message_list_ty *mlp, size_t n)
+ {
+@@ -431,7 +430,6 @@ message_list_delete_nth (message_list_ty
+       mlp->use_hashtable = false;
+     }
+ }
+-#endif
+ 
+ 
+ void
+Index: gettext-0.20.1/gettext-tools/src/msgl-cat.c
+===================================================================
+--- gettext-0.20.1.orig/gettext-tools/src/msgl-cat.c
++++ gettext-0.20.1/gettext-tools/src/msgl-cat.c
+@@ -40,6 +40,7 @@
+ #include "msgl-age.h"
+ #include "msgl-ascii.h"
+ #include "msgl-equal.h"
++#include "msgl-header.h"
+ #include "msgl-iconv.h"
+ #include "xalloc.h"
+ #include "xmalloca.h"
+@@ -286,6 +287,10 @@ catenate_msgdomain_list (string_list_ty
+         }
+     }
+ 
++  /* Merge headers, please. */
++  if (use_first)
++    msgdomain_lists_merge_headers (mdlps, nfiles);
++
+   /* Create list of resulting messages, but don't fill it.  Only count
+      the number of translations for each message.
+      If for a message, there is at least one non-fuzzy, non-empty translation,
+Index: gettext-0.20.1/gettext-tools/src/msgl-header.c
+===================================================================
+--- gettext-0.20.1.orig/gettext-tools/src/msgl-header.c
++++ gettext-0.20.1/gettext-tools/src/msgl-header.c
+@@ -26,9 +26,12 @@
+ #include <string.h>
+ 
+ #include "xalloc.h"
++#include "xerror.h"
++#include "xvasprintf.h"
++#include "gettext.h"
+ 
+ #define SIZEOF(a) (sizeof(a) / sizeof(a[0]))
+-
++#define _(str) gettext (str)
+ 
+ /* The known fields in their usual order.  */
+ static const struct
+@@ -50,6 +53,98 @@ known_fields[] =
+     { "Content-Transfer-Encoding:", sizeof ("Content-Transfer-Encoding:") - 1 }
+   };
+ 
++void
++msgdomain_lists_merge_headers (msgdomain_list_ty **mdlps,
++				size_t nfiles)
++{
++  message_list_list_ty * headers = message_list_list_alloc ();
++  char * plur = "Plural-Forms:";
++  char * plurals[nfiles];
++  int plur_index = 0;
++  /* First, find all header entries and cut them to lines. */
++  for (int n = 0; n < nfiles; n++)
++    {
++      msgdomain_list_ty *mdlp = mdlps[n];
++      for (size_t k = 0; k < mdlp->nitems; k++)
++        {
++          message_list_ty * chopped = message_list_header_list (mdlp->item[k]->messages);
++          if (chopped) message_list_list_append (headers, chopped);
++        }
++
++      /* Set plural to NULL by default. */
++      plurals[n] = NULL;
++    }
++  /* While there are some messages remaining, take the first one. */
++  while (headers->nitems > 0)
++    {
++      message_ty * field = headers->item[0]->item[0];
++      /* Let us save plurals for later use. */
++      if (strcmp(field->msgid, plur) == 0)
++        {
++          plurals[0] = XNMALLOC (field->msgstr_len+1, char);
++          strcpy (plurals[0], field->msgstr);
++          for (int i = 1; i < headers->nitems; i++)
++            {
++              message_ty * mp = message_list_search (headers->item[i], NULL, plur);
++              if (mp!=NULL)
++                {
++                  plurals[i] = XNMALLOC (mp->msgstr_len+1, char);
++                  strcpy (plurals[i], mp->msgstr);
++                }
++            }
++        }
++      /* Set the header field and delete all the occurences of the field. */
++      msgdomain_list_set_header_field (mdlps[0], field->msgid, field->msgstr);
++      for (int i = 1; i < headers->nitems; i++)
++        {
++          message_ty * mp = message_list_search (headers->item[i], NULL, field->msgid);
++          if (mp != NULL)
++            {
++              /* If needed, fix line numbering in advance. */
++              if (mp != headers->item[i]->item[0])
++                for (int l = mp->pos.line_number - headers->item[i]->item[0]->pos.line_number + 1; l < headers->item[i]->nitems; l++)
++                  headers->item[i]->item[l]->pos.line_number--;
++              message_list_delete_nth (headers->item[i], mp->pos.line_number - headers->item[i]->item[0]->pos.line_number);
++            }
++        }
++      message_list_delete_nth (headers->item[0], 0);
++      /* If the first header is empty, start to process next nonempty header. */
++      while (headers->nitems > 0 && headers->item[0]->nitems == 0)
++        {
++          message_list_free (headers->item[0], 0);
++          for (int i = 0; i < headers->nitems - 1; i++)
++            headers->item[i] = headers->item[i+1];
++          headers->nitems--;
++        }
++    }
++
++  /* Some plural manipulation. */
++  char *res = NULL;
++  char *prevres = NULL;
++  prevres = plurals[0];
++  /* The prevres is the value currently in the output header,
++   * res is the value just read. So if res == NULL we just
++   * continue, which is correct. */
++  for (int n = 1; n < nfiles; n++)
++    {
++      res = plurals[n];
++      if (res != NULL)
++        {
++          if (prevres == NULL)
++            {
++              msgdomain_list_set_header_field (mdlps[0], plur, res);
++              prevres = res;
++            }
++          else if (strcmp (res, prevres) != 0)
++            {
++              multiline_error (xstrdup (""),
++                               xasprintf (_("\
++Input po files have different Plural-Forms. Invalid output file was created. \n\
++Please, fix the plurals.\n")));
++            }
++        }
++    }
++}
+ 
+ void
+ msgdomain_list_set_header_field (msgdomain_list_ty *mdlp,
+@@ -81,8 +176,8 @@ msgdomain_list_set_header_field (msgdoma
+           {
+             message_ty *mp = mlp->item[j];
+ 
+-            /* Modify the header entry.  */
+-            const char *header = mp->msgstr;
++            /* Modify the header entry (it does not have to be present). */
++            const char *header = (mp->msgstr != NULL) ? mp->msgstr : "\0";
+             char *new_header =
+               XNMALLOC (strlen (header) + 1
+                         + strlen (field) + 1 + strlen (value) + 1 + 1,
+@@ -230,14 +325,14 @@ message_list_read_header_field (message_
+   size_t field_len = strlen (field);
+   size_t j;
+ 
++  *where_ptr = NULL;
++
+   /* Search the header entry.  */
+   for (j = 0; j < mlp->nitems; j++)
+     if (is_header (mlp->item[j]) && !mlp->item[j]->obsolete)
+       {
+-	/* We found the correct message. */
++        /* We found the correct message. */
+         message_ty *mp = mlp->item[j];
+-
+-        /* Tag the header entry.  */
+         const char *header = mp->msgstr;
+ 
+         /* Test whether the field occurs in the header entry.  */
+@@ -247,7 +342,7 @@ message_list_read_header_field (message_
+           {
+             if (strncmp (h, field, field_len) == 0)
+               break;
+-	    /* Jump by lines. */
++            /* Jump by lines. */
+             h = strchr (h, '\n');
+             if (h == NULL)
+               break;
+@@ -257,15 +352,57 @@ message_list_read_header_field (message_
+           {
+             /* We found it and it is nonempty. Read the value of the field.  */
+             h += field_len + 1;
+-	    char *enh = strchr (h, '\n');
+-	    if (enh != NULL && *enh != '\0')
++            char *enh = strchr (h, '\n');
++            if (enh != NULL && *enh != '\0')
+ 	      {
+ 	        *where_ptr = (char *)XNMALLOC (((enh - h) + 1), char);
+                 memcpy (*where_ptr, h, enh - h);
+-	        /* Make the string null-terminated. */
++                /* Make the string null-terminated. */
+                 (*where_ptr)[enh-h] = '\0';
+-	      }
++              }
+           }
+       }
+ }
+ 
++message_list_ty *
++message_list_header_list (message_list_ty *mlp)
++{
++  size_t j;
++
++  /* Search the header entry.  */
++  for (j = 0; j < mlp->nitems; j++)
++    if (is_header (mlp->item[j]) && !mlp->item[j]->obsolete)
++      {
++        /* We found the correct message. */
++        message_ty *mp = mlp->item[j];
++        const char *h = mp->msgstr;
++        message_list_ty * header = message_list_alloc (false);
++        int ctr = 0;
++
++        while (*h != '\0')
++          {
++            char *enh = strchr (h, ':');
++            enh++;
++            char * msgid = (char *)XNMALLOC (((enh - h) + 1), char);
++            memcpy (msgid, h, enh - h);
++            /* Make the string null-terminated. */
++            (msgid)[enh-h] = '\0';
++            h = enh + 1;
++
++            enh = strchr (h, '\n');
++            if (enh != NULL)
++              {
++                char * msgstr = (char *)XNMALLOC (((enh - h) + 1), char);
++                memcpy (msgstr, h, enh - h);
++                /* Make the string null-terminated. */
++                msgstr[enh-h] = '\0';
++                lex_pos_ty pos = {NULL, ctr++};
++                message_list_append (header, message_alloc (NULL, msgid, NULL, msgstr, enh - h, &pos));
++                h = enh + 1;
++              }
++            else return NULL;
++          }
++        return header;
++      }
++  return NULL;
++}
+Index: gettext-0.20.1/gettext-tools/src/msgl-header.h
+===================================================================
+--- gettext-0.20.1.orig/gettext-tools/src/msgl-header.h
++++ gettext-0.20.1/gettext-tools/src/msgl-header.h
+@@ -33,6 +33,11 @@ extern "C" {
+ extern void
+        msgdomain_list_set_header_field (msgdomain_list_ty *mdlp,
+                                         const char *field, const char *value);
++/* Merge headers of po files.
++ */
++extern void
++       msgdomain_lists_merge_headers (msgdomain_list_ty **mdlps,
++                                size_t nfiles);
+ 
+ /* Remove the given field from the header.
+    The FIELD name ends in a colon.  */
+@@ -46,6 +51,9 @@ extern void
+        message_list_read_header_field (message_list_ty *mlp,
+                                          const char *field, char **where_ptr);
+ 
++/* List all the headers from a po file. */
++extern message_list_ty *
++       message_list_header_list (message_list_ty *mlp);
+ 
+ #ifdef __cplusplus
+ }

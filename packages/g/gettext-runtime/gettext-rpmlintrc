@@ -1,0 +1,12 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("gettext-tools.* postun-without-ldconfig")
+addFilter("gettext-tools.* postin-without-ldconfig")
+addFilter("gettext.* shlib-policy-missing-suffix")
+addFilter("gettext-tools.* devel-file-in-non-devel-package")
+addFilter("gettext-csharp.* package-with-huge-docs")
+addFilter("gettext.* non-devel-buildrequires")
+addFilter("gettext-csharp.* no-binary")
+addFilter("gettext.* percent-in-provides")
+addFilter("gettext.* percent-in-obsoletes")

@@ -1,0 +1,6 @@
+<package name="perl-SQL-Abstract-Pg" project="openSUSE:Factory">
+  <title>PostgreSQL features for SQL::Abstract</title>
+  <description>SQL::Abstract::Pg extends SQL::Abstract with a few PostgreSQL features used by Mojo::Pg.</description>
+  <devel project="devel:languages:perl" package="perl-SQL-Abstract-Pg"/>
+  <url>https://metacpan.org/pod/SQL::Abstract::Pg</url>
+</package>

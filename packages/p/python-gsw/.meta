@@ -1,0 +1,9 @@
+<package name="python-gsw" project="openSUSE:Factory">
+  <title>Gibbs Seawater Oceanographic Package of TEOS-10</title>
+  <description>Python implementation of the Thermodynamic Equation of
+Seawater 2010 (TEOS-10).
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-gsw"/>
+  <url>https://github.com/TEOS-10/GSW-python</url>
+</package>

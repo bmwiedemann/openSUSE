@@ -1,0 +1,13 @@
+Index: gnome-desktop-40.alpha.0/libgnome-desktop/default-input-sources.h
+===================================================================
+--- gnome-desktop-40.alpha.0.orig/libgnome-desktop/default-input-sources.h
++++ gnome-desktop-40.alpha.0/libgnome-desktop/default-input-sources.h
+@@ -35,7 +35,7 @@ static DefaultInputSource default_input_
+   { "hi_IN",    "ibus",         "m17n:hi:inscript" },
+   { "id_ID",    "xkb",          "us" },
+   { "it_IT",    "xkb",          "it" },
+-  { "ja_JP",    "ibus",         "anthy" },
++  { "ja_JP",    "ibus",         "Japanese (Mozc)" },
+   { "kn_IN",    "ibus",         "m17n:kn:kgp" },
+   { "ko_KR",    "ibus",         "hangul" },
+   { "mai_IN",   "ibus",         "m17n:mai:inscript" },

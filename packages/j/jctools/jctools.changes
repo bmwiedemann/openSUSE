@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Thu Oct 26 05:21:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jctools-javadoc.patch
+    + work around javadoc breakages with jdk 21
+
+-------------------------------------------------------------------
+Sat Sep  9 14:21:06 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Wed Mar 23 17:18:30 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Thu Mar 10 11:43:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.3.0
+  * API Changes:
+    + Removed MpscLinkedQueue7 and MpscLinkedQueue8 and consolidated
+      into parent. This removes the need for the builder method on
+      MpscLinkedQueue.
+    + Deprecated QueueFactory and spec package classes. These are
+      not used by any users AFAICT and are only used for testing
+      internally.
+    + Removed some internal classes and reduced visibility of
+      internal utilities where practical. The @InternalAPI
+      tagging annotation is also used more extensively to discourage
+      dependency.
+    + #226: XADD unbounded mpsc/mpmc queue: highly scalable linked
+      array queues
+    + New blocking consumer MPSC
+  * Bug fixes:
+    + #334 NBHMLong iterators do not remove NO_KEY
+    + #335 NBHM/Long/Identity iterators only removes keys if values
+      have not changed. Now follow JDK convention.
+    + #336 MpscBlockingConsumerArrayQueue: fix race writing to
+      blocked field
+    + #339 'fill' wakeup call can spin forever (or until a consumer
+      is blocked again) on MpscBlockingConsumerArrayQueue
+    + #319 Relying on test cases provided by #328 we apply the fix
+      used for #205 to 'NonBlockingHashMapLong' and
+      'NonBlockingIdentityHashMap' to provide 'getAndSet' like
+      semantics for put and remove.
+    + #330 Fix a 'NonBlockingIdentityHashMap' 'replace' bug. During
+      this fix some further work was done to bring the code closer
+      in line to the current state of 'NonBlockingHashMap'
+    + Use byte fields for padding (avoid upcoming false sharing
+      problem in JDK 15+ where field ordering has changed)
+    + #289 Add Automatic-Module-Name header to MANIFEST.MF
+    + #292 Fix inconsistent isEmpty/poll/peek/offer dynamics for
+        SpscLinkedQueue
+    + Fixed potential for negative queue size for indexed queues and
+      similar issue with isEmpty
+    + #296 Fix peek/relaxedPeek race with poll/offer in MC queues
+    + #297 Fix inconsistent size of FF based queues causing
+        potential size() > capacity()
+    + #316 Fix MpscBlockingConsumerArrayQueue::poll(TimeUnit,timeout)
+    + #310 Fix MpmcUnboundedXaddArrayQueue::peek/relaxedPeek
+      can load "future" elements
+    + #209: On Arm7, non-volatile long can have unaligned address
+      leading to error
+    + #216: Size of SpscGrowableArrayQueue can exceeds max capacity
+    + #241: Protect the producer index in case of OutOfMemoryError
+    + #244: Long NBHM AssertionError when replacing missing key
+    + Fix argument checks on fill/drain methods
+    + Fix LGTM warning, potential int overflow bug
+  * Enhancements:
+    + #326 Xadd queues consumers can help producers
+    + #323 Update to latest JCStress (thanks @shipilev )
+  * Improvements:
+    + Don't mark generated linked atomic queues as final
+    + #211: Implement batching methods on MpmcArrayQueue
+    + #228: Iterator for MpscArrayQueue and MpscUnboundedArrayQueue
+    + Iterator support also available for the *ArrayQueue classes
+    + #208: MpscLinkedAtomicQueue can be made not final
+    + #237: Add scale to exception message to help debug
+      netty/netty#8916
+  * New features:
+    + #340 MpscBlockingConsumerArrayQueue
+    + After long incubation and following a user request (see #321),
+      we move counters into core
+    + Merging some experimental utils and a #264 we add a
+      'PaddedAtomicLong'
+    + #314 MpscBlockingConsumerArrayQueue::offerIfBelowThreshold is
+      added
+- Added patch:
+  * imports.patch
+    + Fix bug in adding of imports that broke build with
+      javaparser >= 2.15.0
+
+-------------------------------------------------------------------
+Tue Oct  1 13:40:55 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of jctools 2.1.2

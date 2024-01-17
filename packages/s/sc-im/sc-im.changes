@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Wed Jul 12 03:53:18 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Added gnuplot, fixed build prefix, changed package group.
+
+-------------------------------------------------------------------
+Mon Jul 10 03:56:58 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Mixture of adjustments to specfile from self and some sourced
+  from home:onlyJak0b's alternate specfile
+
+-------------------------------------------------------------------
+Mon Mar  6 23:43:56 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.8.3:
+  Added:
+  * Added multi-sheet support.
+  * Added :newsheet, :nextsheet, :prevsheet, :delsheet
+  * Added new colors types SHEET, CURRENT_SHEET and FILENM
+  * Added default_open_file_under_cursor_cmd configuration value
+  Changes:
+  * Marks now consider sheet
+  * Renamed auto_justify to auto_fit
+  * `gt` command of NORMAL_MODE renamed to `go`
+  * Copy alignment of strings when doing `Pf`.
+  * Backslash double quotes in cpaste.
+  * Inform old value and new value when changing configuration
+    variable
+  * UI optimizations
+  * Simplify clipboard code
+  * Added D command on EDIT mode.
+  * ESC in EDIT_MODE also confirm changes.
+  * Reeval when pasting from clipboard and autocalc is set
+  Fixes:
+  * fix horizontal scroll when editing cells with long strings
+    (wider than screen)
+  * Avoid reading passed maxcols maxrows when shifting left or up
+    over last sheet column/row.
+  * fix in Pv when pasting over same place where data was yanked.
+  * fix in paste_yanked_ents: calloc didnt count that yanked cells
+    could share dependencies.
+  * fix a bug when refreshing grid when autowrap operates.
+    Issue 578.
+  * Avoid segfault in autobackup when no current file is set.
+  * fix in cw dw c$ d$ commands of EDIT_MODE
+  * fix leak in del_selected_cells
+  * fix when using C-r in INSERT_MODE
+  * fix arguments reversed on sc.colrow2a
+  * fix in delete_filters that caused SEGFAULT. Issue 637.
+  * fix in unformat. call to copy_to_undostruct with wrong
+    parameters.
+  * fix swapped arguments on lsetform
+  * added string functions to dep graph
+  * Issue #697: do not allow to override nocurses config variable
+  * fix #694: csv import and export / LaTex export
+  * fix #700: '{' '}' normal mode commands reset cmd_multiplier
+
+-------------------------------------------------------------------
+Mon Nov 28 19:56:41 UTC 2022 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.8.2:
+  * New motions in edit mode
+  * Simple mouse support. Can handle selection of single cells
+    and scroll.
+  * Added markdown and latex export.
+  * Add support for italic attribute to be appled to cells.
+  * Added digraphs.
+  * Added EXECUTE command.
+  * Added --export_csv --export_tab --export_txt parameters.
+  * New input_bar_bottom config variable.
+  * New underline_grid config variable.
+  * Added filename in status bar (filename_with_mode config
+    variable).
+  * Added option to truncate cells.
+  * Added xlsx sheet parameter.
+  * New @fact function.
+  * Braille support
+
+-------------------------------------------------------------------
+Fri Feb 19 08:38:28 UTC 2021 - dmacvicar@suse.com
+
+- Update to version 0.7.0:
+  * Add new command p and P in visual mode. Paste into the visual
+    area. Repeating the yanked area. p is normal paste P is like
+    Pc adjust the cell references
+  * Don't save empty cellcolor strings
+  * Make saving DEFAULT_COLOR values work.
+  * Ensure spaces between items when writing colors to a file
+  * Added documentation for the :strtonum function.
+  * should be "with mode", as status is whole line
+  * make filename display configurable
+  * Added new command :strtonum Converts Labels to Numbers Todo
+    add it ti the undo chain
+  * Solved an issue when copy pasting with ccopy and cpaste When
+    copy pasting with tab delimiter from one sc file to another
+    sc file. I noticed that my numbers where copied as string. So
+    fixed this with first trimming the token and then check for
+    isnumeric If not use the non-trimmed token as string.
+
+-------------------------------------------------------------------
+Fri Feb 15 23:11:26 UTC 2019 - Duncan Mac-Vicar <dmacvicar@suse.de>
+
+- Initial package for 0.7.0
+

@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76b5cf6dfd080b32f367a6916446c79a</srcmd5>
+    <version>1.0.5</version>
+    <time>1336470980</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115334</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>76b5cf6dfd080b32f367a6916446c79a</srcmd5>
+    <version>1.0.5</version>
+    <time>1340183341</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>76b5cf6dfd080b32f367a6916446c79a</srcmd5>
+    <version>1.0.5</version>
+    <time>1359108894</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>76b5cf6dfd080b32f367a6916446c79a</srcmd5>
+    <version>1.0.5</version>
+    <time>1379662371</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>76b5cf6dfd080b32f367a6916446c79a</srcmd5>
+    <version>1.0.5</version>
+    <time>1409300908</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5d18200dee97b5964e7c517a8df6fc8a</srcmd5>
+    <version>1.0.6</version>
+    <time>1420619923</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>279970</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ce3c835ad4d8949fa878195d91575117</srcmd5>
+    <version>1.0.7</version>
+    <time>1665185012</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.0.7
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * Use memcpy() instead of memmove() when buffers are known not to overlap
+  * Convert sources to standard X.Org code style
+  * EmitBitmap: declare maskTab as const
+  * Reduce scope of some variables
+  * AddQuotes: mark input as const
+  * Store strlen() results in size_t instead of unsigned int
+  * Simplify printing of warning header
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1008368</requestid>
+  </revision>
+</revisionlist>

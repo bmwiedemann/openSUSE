@@ -1,0 +1,128 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1df5e9da1641b3de54d726075b2db21c</srcmd5>
+    <version>2.4.4</version>
+    <time>1545376901</time>
+    <user>dimstar_suse</user>
+    <comment>Fix the first submission request.</comment>
+    <requestid>660005</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>db90670601eb1595adf0cf0c5517110a</srcmd5>
+    <version>2.4.4</version>
+    <time>1548335673</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim filler wording from descriptions.
+</comment>
+    <requestid>667877</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>43789a29b88bcf522158094bdf503e8f</srcmd5>
+    <version>2.9.0</version>
+    <time>1584531657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785944</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ed5011d069b185bd5ec760ac444990d6</srcmd5>
+    <version>2.10.0</version>
+    <time>1585262107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788591</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7d6421fd81107218e6b90aa5e26f81fb</srcmd5>
+    <version>2.13.0</version>
+    <time>1594228366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.13.0:
+  * Added
+   + Added `SpotifyImplicitGrant` as an auth manager option. It provides
+     user authentication without a client secret but sacrifices the ability
+     to refresh the token without user input. (However, read the class
+     docstring for security advisory.)
+   + Added built-in verification of the `state` query parameter
+   + Added two new attributes: error and error_description to `SpotifyOauthError` exception class to show
+   + authorization/authentication web api errors details.
+   + Added `SpotifyStateError` subclass of `SpotifyOauthError`
+   + Allow extending `SpotifyClientCredentials` and `SpotifyOAuth`
+   + Added the market paramter to `album_tracks`
+   + Added a method to update the auth token.
+   + Support for shows/podcasts and episodes
+   + Added CONTRIBUTING.md
+  * Deprecated
+   + Deprecated `util.prompt_for_user_token` in favor of `spotipy.Spotify(auth_manager=SpotifyOAuth())`
+  * Fixed
+   + Logging regression due to the addition of `logging.basicConfig()` which was unneeded.
+   + Issue where using `http://localhost` as redirect_uri would cause the authorization process to hang.
+   + Fixed miscellaneous issues with parsing of callback URL
+   + Close session when Spotipy object is unloaded
+   + Propagate refresh token error
+  * Changed
+   + Updated the documentation to give more details on the authorization
+   + process and reflect 2020 Spotify Application jargon and practices.
+   + The local webserver is only started for localhost redirect_uri which specify a port,
+   + i.e. it is started for `http://localhost:8080` or `http://127.0.0.1:8080`, not for `http://localhost`.
+   + Client retry logic has changed as it now uses urllib3's `Retry` in conjunction with requests `Session`
+   + The session is customizable as it allows for:
+      - status_forcelist
+      - retries
+      - status_retries
+      - backoff_factor
+   + Spin up a local webserver to auto-fill authentication URL
+   + Use session in SpotifyAuthBase
+   + Logging used instead of print statements
+- Skip one test that requires external internet access</comment>
+    <requestid>819125</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b3da72a7da4d35766bface53546aae6c</srcmd5>
+    <version>2.16.1</version>
+    <time>1603979582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844848</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4b47a8f1fbc042ba78646afc700b004a</srcmd5>
+    <version>2.19.0</version>
+    <time>1650466506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970764</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>afc50d265e2ce9e2e41a63735f77c871</srcmd5>
+    <version>2.20.0</version>
+    <time>1664553479</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007083</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5e77ba2b1a356884d13471188716e8c8</srcmd5>
+    <version>2.21.0</version>
+    <time>1668271264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035256</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ad64bd459e04377135d7a7f3dbf9264d</srcmd5>
+    <version>2.22.0</version>
+    <time>1671128687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042865</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>53cddb9a3d2e793bb310732ded552744</srcmd5>
+    <version>2.23.0</version>
+    <time>1702673438</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1133445</requestid>
+  </revision>
+</revisionlist>

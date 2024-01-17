@@ -1,0 +1,29 @@
+Index: osdl-aim-7/src/driver.c
+===================================================================
+--- osdl-aim-7.orig/src/driver.c
++++ osdl-aim-7/src/driver.c
+@@ -1263,6 +1263,7 @@ int read_config_file(char *cfname, struc
+ 	int brf;
+ 	int n;
+ 	unsigned int i;
++	struct stat tmpstat;
+ 
+ 	fp = fopen(cfname, "r");	/* open config file */
+ 	if (fp == NULL) {	/* if error, stop here */
+@@ -1312,6 +1313,16 @@ int read_config_file(char *cfname, struc
+ 				printf("\nUsing disk directory <%s>",
+ 				       my_disk->dkarr[numd]);
+ 			}
++			/* check existence of dir */
++			if(-1 == stat(my_disk->dkarr[numd],&tmpstat)) {
++				if(inv->verbose)
++					printf("\nCreating disk dir %s",
++						my_disk->dkarr[numd]);
++				if(-1 == mkdir(my_disk->dkarr[numd], 0755)) {
++					perror("creating disk dir");
++					exit(2);
++				}
++			}
+ 			numd++;
+ 			break;
+ 		case 'E':

@@ -1,0 +1,13 @@
+<package name="perl-HTTP-Tiny" project="openSUSE:Factory">
+  <title>A small, simple, correct HTTP/1.1 client</title>
+  <description>This is a very simple HTTP/1.1 client, designed primarily for doing simple
+GET requests without the overhead of a large framework like
+LWP::UserAgent.
+It is more correct and more complete than HTTP::Lite. It supports proxies
+(currently only non-authenticating ones) and redirection. It also
+correctly resumes after EINTR.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-HTTP-Tiny"/>
+  <url>http://search.cpan.org/dist/HTTP-Tiny</url>
+</package>

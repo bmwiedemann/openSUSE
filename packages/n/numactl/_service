@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/numactl/numactl</param>
+    <param name="revision">HEAD</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.g%h</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="localonly"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

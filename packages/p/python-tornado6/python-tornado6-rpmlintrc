@@ -1,0 +1,2 @@
+# keep the empty javascript resource for the demo
+addFilter("zero-length .*demos/facebook/static/facebook.js")

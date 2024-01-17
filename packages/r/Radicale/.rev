@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cda302b33579233c15c3aad3fc806486</srcmd5>
+    <version>3.0.6</version>
+    <time>1629795272</time>
+    <user>dimstar_suse</user>
+    <comment>New package Radicale. See https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/WE6JSMDNGTNZAZZTPNEQKNIFLGXFDUC3/</comment>
+    <requestid>913536</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7b44821022cb9d2e5fb3fea97a492efb</srcmd5>
+    <version>3.0.6</version>
+    <time>1633038204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922228</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cedb8957f1d62deefb1988bbfce06d7b</srcmd5>
+    <version>3.1.0</version>
+    <time>1641855191</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>945255</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2498e0058f36ea0b49f0c58d7b81a9eb</srcmd5>
+    <version>3.1.4</version>
+    <time>1644435575</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>952827</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>76c9ec1d172044663c627c42616ae190</srcmd5>
+    <version>3.1.5</version>
+    <time>1645221793</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>955944</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>166192793d50a3e4759b3e5e2058d954</srcmd5>
+    <version>3.1.6</version>
+    <time>1650466513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970767</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>33cbe230503a3e3edabf20d0c51ab688</srcmd5>
+    <version>3.1.7</version>
+    <time>1651501537</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>974280</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f320565727cf66339608cb12fd8f04b7</srcmd5>
+    <version>3.1.7</version>
+    <time>1656587906</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985937</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8a3c3a687d039d329e5a6c2af43f2c52</srcmd5>
+    <version>3.1.8</version>
+    <time>1658510478</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990602</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e4d620a9dfcef10f3b03bad402b93ef8</srcmd5>
+    <version>3.1.8</version>
+    <time>1674495086</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1060254</requestid>
+  </revision>
+</revisionlist>

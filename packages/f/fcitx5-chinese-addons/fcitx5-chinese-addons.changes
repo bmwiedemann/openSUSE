@@ -1,0 +1,181 @@
+-------------------------------------------------------------------
+Tue Oct  3 07:57:32 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.1
+  * Allow compose key to be used for table/pinyin
+  * Fix exact matching mode for table
+  * fix resolving some scel file
+  * improve the case that cloud pinyin candidate position
+    is the first one. 
+
+-------------------------------------------------------------------
+Sat Sep 30 05:08:53 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- fix build on leap, gcc7 doesn't have charconv
+
+-------------------------------------------------------------------
+Sun Aug 20 06:08:34 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.0
+  * new custom phrase feature
+  * new punctuation feature that allows punctuation to be shown
+    as a candidate list
+
+-------------------------------------------------------------------
+Mon May 22 09:55:26 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.0.17
+  * pinyin dictionary manager now have a button open the user dictionary
+    directory
+  * hide shuang pin option in pinyin config
+  * table allow keypad key as selection key
+
+-------------------------------------------------------------------
+Sun Nov 20 10:24:34 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.16
+  * Allow change the behavior when  switch input method for Pinyin
+  * Update emoji pinyin data
+  * If input is partially selected, press enter will also commit the
+    selected part, instead of just raw pinyin.
+- Remove obsolete patch
+  * fcitx5-chinese-addons-qt-5.9.patch
+
+-------------------------------------------------------------------
+Tue Sep 20 13:22:25 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update to 5.0.15
+  * table: Add prediction support for table
+  * pinyin: Add support for disabling a set of character in extb and beyond
+- switch source to _dict variant.
+- drop
+  * fcitx5-chinese-addons-no-download.patch
+  * py_table-20121124.tar.gz
+  * py_stroke-20121124.tar.gz  
+
+-------------------------------------------------------------------
+Tue Jul  5 11:29:27 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.14
+  * moving the cursor will filter the candidates to show only text till
+    the cursor in Pinyin. This allows you to easily select a prefix of the
+    sentence result, instead of selecting every single word till the point
+    you want to change.
+  * allow you to learn phrases with other phrases in the table engine.
+  * ng/gn option is renamed to common typo and includes more auto
+    correction. See libime changelog for more details on this change.
+- BuildRequires libime-devel >= 1.0.12 (gh#fcitx/fcitx5-chinese-addons#93)
+
+-------------------------------------------------------------------
+Sat Mar 12 09:35:07 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.12
+  * Add more icon with smaller size
+  * Set component for misc files
+  * Set component config for some files
+  * Do not load failed to open shuangpin profile
+
+-------------------------------------------------------------------
+Sun Feb 13 15:44:59 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- split subpackage fcitx5-pinyindictmanager
+  * GNOME users complain that there is too much usage on Qt, the
+    Qt depends will be reduced a lot with this split
+
+-------------------------------------------------------------------
+Sat Jan 29 15:08:16 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- resolve file conflicts with fcitx
+
+-------------------------------------------------------------------
+Tue Jan 25 13:39:15 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.10
+  * Partial shuangpin support. It's a new option
+
+-------------------------------------------------------------------
+Sat Jan 15 05:07:54 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- fix requirements
+
+-------------------------------------------------------------------
+Wed Dec 15 11:44:52 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.9
+  * Adjust some default options
+
+-------------------------------------------------------------------
+Sat Nov  6 18:39:32 UTC 2021 - J <hj@powersnail.com>
+
+- update to version 5.0.8
+  * Support show a marker for auto phrase
+  * Fix keypad and table engine
+  * Fix key event leaking for certain cases
+  * Show shuangpin profile name in the information 
+
+-------------------------------------------------------------------
+Wed May  5 07:49:22 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.6
+  * Fix missing dependencies in cmake
+  * Relax the possible corruption file checkin
+- changes in version 5.0.5
+  * Add gui support for punctuation customization
+  * Fix 2nd 3rd selection key detection
+
+-------------------------------------------------------------------
+Tue Mar 16 05:45:47 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.4
+  * reduce the memory by make pinyin helper
+    data load on-demand
+  * change the default punctuation mapping
+    for * from multiple sign to *.
+
+-------------------------------------------------------------------
+Sun Jan 31 04:03:27 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.3
+  * Add fcitx4's AutoEng like functionality to pinyin, e.g. type "www."
+will enter quickphrase mode.
+  * Add support for regular expression to trigger auto select in table.
+Right now this is used by Erbi for code started with u/v.
+  * Add support for switching to quickphrase mode in the table engine
+for certain texts, e.g. uppercase will make Wubi enter quickphrase
+mode now.
+  * Add support for deleting any word in the table engine, including
+the one in main dict.
+  * Add support for proxy to cloudpinyin
+  * In Pinyin, ng will now also look up for "n g", e.g. 那个
+  * Fix libime_tabledict conversion for user dictionary.
+
+-------------------------------------------------------------------
+Sun Dec  6 05:24:37 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.2
+
+-------------------------------------------------------------------
+Tue Nov 10 04:00:17 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.1
+
+-------------------------------------------------------------------
+Fri Sep  4 03:30:38 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 4.99.0+git20200903.9ef492e
+
+-------------------------------------------------------------------
+Wed Mar  4 03:05:30 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- update to version git20200212.3dae7a2
+  * Use new candidate list api
+  * Update license header
+  * Use standard library string_view
+  * Don't toggle punctuation in irrelevant im
+
+-------------------------------------------------------------------
+Sun Sep 16 06:56:30 UTC 2018 - i@marguerite.su
+
+- initial package
+- add fcitx5-chinese-addons-no-download.patch, OBS VM has no network
+ 

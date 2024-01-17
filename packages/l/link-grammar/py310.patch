@@ -1,0 +1,11 @@
+--- configure~	2021-09-07 12:34:04.169994637 -0500
++++ configure	2021-09-07 13:00:06.399200492 -0500
+@@ -21400,7 +21400,7 @@
+ 	# all done!
+ 	#
+ 
+-	test -n "$lg_python_unusable" && PythonFound=no
++	test -n "$lg_python_unusable" && PythonFound=yes
+ 	if test x$PythonFound = xyes; then
+ 		PythonFound=$PYTHON_VERSION
+ 		lg_display_PYTHON=" ($PYTHON)"

@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6531238f935cda0e2c544350a28b1308</srcmd5>
+    <version>1.2.50</version>
+    <time>1608918643</time>
+    <user>dimstar_suse</user>
+    <comment>Required for new version of python-Fanficfare.</comment>
+    <requestid>858557</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c317ed7c850e0f24eb101f33b4b16a63</srcmd5>
+    <version>1.2.52</version>
+    <time>1610965732</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>863725</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f728c69591d01e8eebd50c8e3acbb905</srcmd5>
+    <version>1.2.56</version>
+    <time>1613774730</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.2.56:
+  Arm race continues!
+  Not supporting Python 2 any more.
+- Use tarball from GitHub, the one on PyPI doesn't have tests. :'(
+</comment>
+    <requestid>873718</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fec5e1740369756a83ba5141733b90d9</srcmd5>
+    <version>1.2.58</version>
+    <time>1620240002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.58:
+  - Cloudflare changing minor things that broke the regex.
+  - Changed debug to support non printable UTF-8
+</comment>
+    <requestid>890634</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d00f085b49d76d8bf0ccab8e98b14743</srcmd5>
+    <version>1.2.58</version>
+    <time>1620937111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892562</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6fff5a0a7c3ae5aa42ba4c080496b1ef</srcmd5>
+    <version>1.2.58</version>
+    <time>1636729163</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a broken test.</comment>
+    <requestid>931000</requestid>
+  </revision>
+</revisionlist>

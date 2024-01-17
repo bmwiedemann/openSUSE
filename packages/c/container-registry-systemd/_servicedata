@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/openSUSE/container-registry-systemd.git</param>
+    <param name="changesrevision">70601f6ad3222239b271de93f6ccf8bed86a6864</param>
+ </service>
+</servicedata>

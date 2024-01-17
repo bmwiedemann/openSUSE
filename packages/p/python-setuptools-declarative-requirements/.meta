@@ -1,0 +1,5 @@
+<package name="python-setuptools-declarative-requirements" project="openSUSE:Factory">
+  <title></title>
+  <description>File support for setuptools declarative setup.cfg</description>
+  <devel project="devel:languages:python" package="python-setuptools-declarative-requirements"/>
+</package>

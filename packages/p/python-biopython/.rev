@@ -1,0 +1,156 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1898bd33debcf7dbc99760d66686a5f0</srcmd5>
+    <version>1.71</version>
+    <time>1527605250</time>
+    <user>dimstar_suse</user>
+    <comment>computational molecular biology for python</comment>
+    <requestid>605802</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>589d6f9d815d99238552fe2e4037cdaa</srcmd5>
+    <version>1.73</version>
+    <time>1548063989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662924</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9c198eb3473202f4807c189ca3c2eb37</srcmd5>
+    <version>1.74</version>
+    <time>1564155207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717711</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>474313d25bff3181f26a7dd5fe8d6a08</srcmd5>
+    <version>1.75</version>
+    <time>1574337562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750003</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0e956213942689ef500561e3521d360b</srcmd5>
+    <version>1.77</version>
+    <time>1594228707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819448</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5ac516a8884eaae0309eab3516732bbd</srcmd5>
+    <version>1.77</version>
+    <time>1604510812</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ridiculously wide find commands in %prep, which break a lot
+  (binary) files.
+</comment>
+    <requestid>845786</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>abd1b5d7f5c62174849bda77c5fb6685</srcmd5>
+    <version>1.78</version>
+    <time>1613942071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874102</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>59cbf06136a168be2024ec15b53c1d52</srcmd5>
+    <version>1.79</version>
+    <time>1649014271</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>966669</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>22b6b89ce7ff3d8c93e46350e725aca6</srcmd5>
+    <version>1.80</version>
+    <time>1672851227</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.80:
+  * This release of Biopython supports Python 3.7, 3.8, 3.9, 3.10, 3.11. It
+    has also been tested on PyPy3.7 v7.3.5.
+  * Functions ``read``, ``parse``, and ``write`` were added to ``Bio.Align``
+    to read and write ``Alignment`` objects.
+  * Because dict retains the item order by default since Python3.6, all
+    instances of ``collections.OrderedDict`` have been replaced by either standard
+    ``dict`` or where appropriate by ``collections.defaultsdict``.
+  * The ``Bio.motifs.jaspar.db`` now returns ``tf_family`` and ``tf_class``
+    as a string array since the JASPAR 2018 release.
+  * The Local Composition Complexity functions from ``Bio.SeqUtils`` now
+    uses base 4 log instead of 2 as stated in the original reference Konopka
+    (2005), * Sequence Complexity and Composition.  https://doi.org/10.1038/npg.els.0005260
+  * Append mode is now supported in ``Bio.bgzf`` (and a bug parsing blocked
+    GZIP files with an internal empty block fixed).
+  * The experimental warning was dropped from ``Bio.phenotype`` (which was
+    new in Biopython 1.67).
+  * Sequences now have a ``defined`` attribute that returns a boolean
+    indicating if the underlying data is defined or not.
+  * The ``Bio.PDB`` module now includes a structural alignment module, using
+    the combinatorial extension algorithm of Shindyalov and Bourne, commonly
+    known as CEAlign. The module allows for two structures to be aligned based solely
+    on their 3D conformation, ie. in a sequence-independent manner. The method
+    is particularly powerful when the structures shared a very low degree of
+    sequence similarity. The new module is available in ``Bio.PDB.CEAligner`` with an
+    interface similar to other 3D superimposition modules.
+  * A new module ``Bio.PDB.qcprot`` implements the QCP superposition
+    algorithm in pure Python, deprecating the existing C implementation. This leads to a
+    slight performance improvement and to much better maintainability. The
+    refactored ``qcprot.QCPSuperimposer`` class has small changes to its API, to better</comment>
+    <requestid>1055870</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c6e0053b5a25f0c9e5734a0c118c20d3</srcmd5>
+    <version>1.81</version>
+    <time>1676562946</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.81:
+  * The API documentation and the `Biopython Tutorial and
+    Cookbook` have been updated to better annotate use and
+    application of the ``Bio.PDB.internal_coords`` module.
+  * ``Bio.Phylo`` now supports ``Alignment`` and
+    ``MultipleSeqAlignment`` objects as input.
+  * Several improvements and bug fixes to the snapgene parser</comment>
+    <requestid>1065974</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ce7cc729a80faafcdae5209ad31ea71f</srcmd5>
+    <version>1.82</version>
+    <time>1703800876</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.82:
+  * The ``inplace`` argument of ``complement`` and
+    ``reverse_complement`` in ``Bio.Seq`` now always default to
+    ``False`` both for ``Seq`` and ``MutableSeq`` objects.
+    To modify a ``MutableSeq`` in-place, use ``inplace=True``.
+  * A new class ``CodonAligner`` was added to ``Bio.Align``. A
+    ``CodonAligner`` object can align a nucleotide sequence to the
+    amino acid sequence it encodes, using a dynamic programming
+    algorithm modeled on ``PairwiseAligner`` to take frame shifts
+    into account. The ``CodonAligner`` returns ``Alignment``
+    objects.
+  * By calling the new ``mapall`` method on an ``Alignment``
+    object storing a multiple sequence alignment of amino acid
+    sequences, with nucleotide-to-amino acid alignments generated
+    by ``CodonAligner`` as the argument, a codon-by-codon
+    multiple sequence alignment of nucleotide sequences can be
+    obtained. The new submodule ``Bio.Align.analysis`` provides
+    functions to estimate synonymous and nonsynonymous mutations
+    and to perform the McDonald-Kreitman test on the codon
+    multiple sequence alignments. Together, this provides the
+    same functionality as the ``Bio.codonalign`` module, but uses
+    the standard ``Alignment`` class, and does not rely on regular
+    expression searching to align a nucleotide sequence to
+    an amino acid sequence.
+  * The ``hmmer3-text`` SearchIO format now also extracts the
+    similarity string of the parsed alignments.
+  * HMMER results with the full path to the hmmer executable in
+    the banner are now parsed correctly.
+  * We now have basic type hint annotations in various modules
+    including ``Seq``, ``SeqRecord``, and ``SeqIO``.</comment>
+    <requestid>1135235</requestid>
+  </revision>
+</revisionlist>

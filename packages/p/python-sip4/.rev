@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bd45c8803fbfac8ebb076b269b4cec9</srcmd5>
+    <version>4.19.24</version>
+    <time>1605450359</time>
+    <user>dimstar_suse</user>
+    <comment>Legacy version of SIP for packages requiring the old build approach</comment>
+    <requestid>846182</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de67dd61601a5a366ca322fb07e19a38</srcmd5>
+    <version>4.19.24</version>
+    <time>1605644749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848897</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>46903b6ef630459999eea3839884943d</srcmd5>
+    <version>4.19.25</version>
+    <time>1614373348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875508</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d0b3186d2583b5510cc51744f89b874e</srcmd5>
+    <version>4.19.25</version>
+    <time>1614684742</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875593</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d3d8608e9c251121c043e0a75f0e82f7</srcmd5>
+    <version>4.19.25</version>
+    <time>1625675414</time>
+    <user>dimstar_suse</user>
+    <comment>- compile even when older python-rpm-macros don't have the
+  python_compileall macro</comment>
+    <requestid>904287</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>3a57867f4d83276c6fd2df212a6e268d</srcmd5>
+    <version>4.19.25</version>
+    <time>1630265649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914894</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>816bca9fecf519bf4ecedb08e317d19d</srcmd5>
+    <version>4.19.25</version>
+    <time>1660144459</time>
+    <user>dimstar_suse</user>
+    <comment>- Override install location to platformdir for distutils hijacked
+  by setuptools 60+</comment>
+    <requestid>994183</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>7eea744583f5a12bb4cb539d38b7835e</srcmd5>
+    <version>4.19.25</version>
+    <time>1676911520</time>
+    <user>dimstar_suse</user>
+    <comment>not compatible with python311</comment>
+    <requestid>1066654</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>884062ba605e19af62dd8902d6c6c9fb</srcmd5>
+    <version>4.19.25</version>
+    <time>1688246310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096289</requestid>
+  </revision>
+</revisionlist>

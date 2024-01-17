@@ -1,0 +1,20 @@
+Index: gluegen-v2.3.1/src/junit/com/jogamp/common/util/TestTempJarCache.java
+===================================================================
+--- gluegen-v2.3.1.orig/src/junit/com/jogamp/common/util/TestTempJarCache.java
++++ gluegen-v2.3.1/src/junit/com/jogamp/common/util/TestTempJarCache.java
+@@ -193,6 +193,7 @@ public class TestTempJarCache extends Si
+         Assert.assertEquals(f0, f1);
+     }
+ 
++    @org.junit.Ignore    
+     @Test
+     public void testTempJarCache02AddNativeLibs() throws IOException, IllegalArgumentException, URISyntaxException {
+         if(AndroidVersion.isAvailable) { System.err.println("n/a on Android"); return; }
+@@ -227,6 +228,7 @@ public class TestTempJarCache extends Si
+         Assert.assertTrue(f.exists());
+     }
+ 
++    @org.junit.Ignore
+     @Test
+     public void testTempJarCache04aSameClassLoader() throws IOException {
+         assertTempFileCachesIndividualInstances(true, TempJarCache.getTempFileCache(), TempJarCache.getTempFileCache());

@@ -1,0 +1,399 @@
+From a079538e51c6c6e9855d9e7bde1519eaa59bb94d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mark=C3=A9ta=20Cal=C3=A1bkov=C3=A1?=
+ <meggy.calabkova@gmail.com>
+Date: Thu, 9 Jan 2020 14:40:25 +0100
+Subject: [PATCH 1/2] msgcat: Add feature to use the newest po file.
+
+When concatenating po files, it is often useful to prefer strings from
+the newest file regardless their ordering on the command line.
+---
+ gettext-tools/src/Makefile.am   |  4 +-
+ gettext-tools/src/message.c     |  6 +++
+ gettext-tools/src/message.h     |  4 ++
+ gettext-tools/src/msgcat.c      | 10 ++++
+ gettext-tools/src/msgl-age.c    | 96 +++++++++++++++++++++++++++++++++
+ gettext-tools/src/msgl-age.h    | 36 +++++++++++++
+ gettext-tools/src/msgl-cat.c    | 15 ++++++
+ gettext-tools/src/msgl-cat.h    |  1 +
+ gettext-tools/src/msgl-header.c | 47 ++++++++++++++++
+ gettext-tools/src/msgl-header.h |  6 +++
+ 10 files changed, 223 insertions(+), 2 deletions(-)
+ create mode 100644 gettext-tools/src/msgl-age.c
+ create mode 100644 gettext-tools/src/msgl-age.h
+
+Index: gettext-0.21/gettext-tools/src/Makefile.am
+===================================================================
+--- gettext-0.21.orig/gettext-tools/src/Makefile.am
++++ gettext-0.21/gettext-tools/src/Makefile.am
+@@ -43,7 +43,7 @@ noinst_HEADERS = \
+   write-catalog.h write-po.h write-properties.h write-stringtable.h \
+   dir-list.h file-list.h po-gram-gen.h po-gram-gen2.h cldr-plural.h \
+   cldr-plural-exp.h locating-rule.h its.h search-path.h \
+-  msgl-charset.h msgl-equal.h msgl-iconv.h msgl-ascii.h msgl-cat.h msgl-header.h \
++  msgl-age.h msgl-charset.h msgl-equal.h msgl-iconv.h msgl-ascii.h msgl-cat.h msgl-header.h \
+   msgl-english.h msgl-check.h msgl-fsearch.h msgfmt.h msgunfmt.h \
+   plural-count.h plural-eval.h plural-distrib.h \
+   read-mo.h write-mo.h \
+@@ -174,7 +174,7 @@ FORMAT_SOURCE += \
+ libgettextsrc_la_SOURCES = \
+ $(COMMON_SOURCE) read-catalog.c \
+ write-catalog.c write-properties.c write-stringtable.c write-po.c \
+-msgl-ascii.c msgl-iconv.c msgl-equal.c msgl-cat.c msgl-header.c msgl-english.c \
++msgl-age.c msgl-ascii.c msgl-iconv.c msgl-equal.c msgl-cat.c msgl-header.c msgl-english.c \
+ msgl-check.c file-list.c msgl-charset.c po-time.c plural-exp.c plural-eval.c \
+ plural-table.c quote.h sentence.h sentence.c \
+ $(FORMAT_SOURCE) \
+Index: gettext-0.21/gettext-tools/src/message.c
+===================================================================
+--- gettext-0.21.orig/gettext-tools/src/message.c
++++ gettext-0.21/gettext-tools/src/message.c
+@@ -356,6 +356,12 @@ message_list_append (message_list_ty *ml
+       abort ();
+ }
+ 
++void
++message_list_append_list (message_list_ty *mlp, message_list_ty *mlp2)
++{
++	for (int i = 0; i < mlp2->nitems; i++)
++		message_list_append (mlp,mlp2->item[i]);
++}
+ 
+ void
+ message_list_prepend (message_list_ty *mlp, message_ty *mp)
+Index: gettext-0.21/gettext-tools/src/message.h
+===================================================================
+--- gettext-0.21.orig/gettext-tools/src/message.h
++++ gettext-0.21/gettext-tools/src/message.h
+@@ -24,6 +24,7 @@
+ #include "mem-hash-map.h"
+ 
+ #include <stdbool.h>
++#include <time.h>
+ 
+ 
+ #ifdef __cplusplus
+@@ -269,6 +270,8 @@ extern void
+ extern void
+        message_list_append (message_list_ty *mlp, message_ty *mp);
+ extern void
++       message_list_append_list (message_list_ty *mlp, message_list_ty *mlp2);
++extern void
+        message_list_prepend (message_list_ty *mlp, message_ty *mp);
+ extern void
+        message_list_insert_at (message_list_ty *mlp, size_t n, message_ty *mp);
+@@ -350,6 +353,7 @@ struct msgdomain_list_ty
+   size_t nitems_max;
+   bool use_hashtable;
+   const char *encoding;         /* canonicalized encoding or NULL if unknown */
++  time_t msgage;
+ };
+ 
+ extern msgdomain_list_ty *
+Index: gettext-0.21/gettext-tools/src/msgcat.c
+===================================================================
+--- gettext-0.21.orig/gettext-tools/src/msgcat.c
++++ gettext-0.21/gettext-tools/src/msgcat.c
+@@ -88,6 +88,7 @@ static const struct option long_options[
+   { "to-code", required_argument, NULL, 't' },
+   { "unique", no_argument, NULL, 'u' },
+   { "use-first", no_argument, NULL, CHAR_MAX + 1 },
++  { "use-newest", no_argument, NULL, CHAR_MAX + 9 },
+   { "version", no_argument, NULL, 'V' },
+   { "width", required_argument, NULL, 'w' },
+   { "more-than", required_argument, NULL, '>' },
+@@ -141,6 +142,7 @@ main (int argc, char **argv)
+   more_than = 0;
+   less_than = INT_MAX;
+   use_first = false;
++  use_newest = false;
+ 
+   while ((optchar = getopt_long (argc, argv, "<:>:D:eEf:Fhino:pPst:uVw:",
+                                  long_options, NULL)) != EOF)
+@@ -277,6 +279,11 @@ main (int argc, char **argv)
+         message_print_style_filepos (filepos_comment_none);
+         break;
+ 
++      case CHAR_MAX + 9: /* --use-newest */
++	use_newest = true;
++	use_first = true;
++	break;
++
+       default:
+         usage (EXIT_FAILURE);
+         /* NOTREACHED */
+@@ -428,6 +435,9 @@ Output details:\n"));
+       --use-first             use first available translation for each\n\
+                               message, don't merge several translations\n"));
+       printf (_("\
++      --use-newest            use the most up-to-date available translation\n\
++                              for each message, don't merge several translations\n"));
++      printf (_("\
+       --lang=CATALOGNAME      set 'Language' field in the header entry\n"));
+       printf (_("\
+       --color                 use colors and other text attributes always\n\
+Index: gettext-0.21/gettext-tools/src/msgl-age.c
+===================================================================
+--- /dev/null
++++ gettext-0.21/gettext-tools/src/msgl-age.c
+@@ -0,0 +1,96 @@
++/* Message list header time simple parser.
++   Copyright (C) 2019 Free Software Foundation, Inc.
++   Written by Markéta Calábková <mcalabkova@suse.cz>, 2019.
++
++   This program is free software: you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
++
++#ifdef HAVE_CONFIG_H
++# include "config.h"
++#endif
++
++#include <string.h>
++#include <time.h>
++
++#include "xalloc.h"
++#include "error.h"
++#include "xerror.h"
++#include "xvasprintf.h"
++
++#include "msgl-header.h"
++#include <stdlib.h>
++#include <stdio.h>
++#include "gettext.h"
++
++#include "msgl-age.h"
++
++#define _(str) gettext (str)
++
++void
++msgdomain_sort_by_ages (msgdomain_list_ty **mdlps, size_t nfiles)
++{
++	qsort (mdlps, nfiles, sizeof(msgdomain_list_ty*), msgdomain_compare_ages);
++}
++
++int
++msgdomain_compare_ages (const void * p1, const void * p2)
++{
++  if (difftime((*(msgdomain_list_ty **)p2)->msgage, (*(msgdomain_list_ty **)p1)->msgage) > 0)
++    return 1;
++  else
++    return 0;
++}
++
++void
++msgdomain_read_ages (msgdomain_list_ty *mdlp)
++{
++  time_t times[mdlp->nitems];
++  const char * field = "PO-Revision-Date:";
++  char * where;
++
++  for (int i = 0; i < mdlp->nitems; i++)
++    {
++      message_list_ty *mlp = mdlp->item[i]->messages;
++
++      message_list_read_header_field (mlp, field, &where);
++    }
++  struct tm tmptm;
++  char *trail;
++  memset (&tmptm, 0, sizeof(struct tm));
++  if ((trail = strptime (where, "%Y-%m-%d %H:%M:%S%z", &tmptm)) != NULL)
++    mdlp->msgage = mktime (&tmptm);
++  else if ((trail = strptime (where, "%Y-%m-%d %H:%M:%S", &tmptm)) != NULL)
++    mdlp->msgage = mktime (&tmptm);
++  else if ((trail = strptime (where, "%Y-%m-%d %H:%M%z", &tmptm)) != NULL)
++    mdlp->msgage = mktime (&tmptm);
++  else if ((trail = strptime (where, "%Y-%m-%d %H:%M", &tmptm)) != NULL)
++    mdlp->msgage = mktime (&tmptm);
++  else
++  {
++    /* There is probably no creation date. Assign 0 and throw warning. */
++    mdlp->msgage = 0;
++    multiline_warning (xasprintf (_("warning: ")),
++    xasprintf (_("\
++PO-Revision-Date has no or invalid value, assuming it is old.\n\
++")));
++    return;
++  }
++  if ((*trail != '\n') && (*trail != '\0'))
++    multiline_warning (xasprintf (_("warning: ")),
++    xasprintf (_("\
++Unknown trailing characters after PO-Revision-Date, ignoring.\n\
++")));
++}
++
++
++
+Index: gettext-0.21/gettext-tools/src/msgl-age.h
+===================================================================
+--- /dev/null
++++ gettext-0.21/gettext-tools/src/msgl-age.h
+@@ -0,0 +1,36 @@
++/* Message list header time simple parser.
++   Copyright (C) 2019 Free Software Foundation, Inc.
++   Written by Markéta Calábková <mcalabkova@suse.cz>, 2019.
++
++   This program is free software: you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
++
++#ifndef _MSGL_AGE_H
++#define _MSGL_AGE_H
++
++#include "message.h"
++
++/* Helper function to compare the ages, needed by qsort. */
++int
++       msgdomain_compare_ages (const void *, const void *);
++
++/* Simple function to modify intern ordering of files 
++ * such that the newer file comes first. In fact it just calls qsort. */
++void
++       msgdomain_sort_by_ages (msgdomain_list_ty **, size_t);
++
++/* Parse dates in PO-Revision-Date: and store them inside the structure. */
++void
++       msgdomain_read_ages (msgdomain_list_ty *);
++
++#endif
+Index: gettext-0.21/gettext-tools/src/msgl-cat.c
+===================================================================
+--- gettext-0.21.orig/gettext-tools/src/msgl-cat.c
++++ gettext-0.21/gettext-tools/src/msgl-cat.c
+@@ -37,6 +37,7 @@
+ #include "message.h"
+ #include "read-catalog.h"
+ #include "po-charset.h"
++#include "msgl-age.h"
+ #include "msgl-ascii.h"
+ #include "msgl-equal.h"
+ #include "msgl-iconv.h"
+@@ -57,6 +58,11 @@ int less_than;
+    If false, merge all available translations into one and fuzzy it.  */
+ bool use_first;
+ 
++/* If true, sort all the translation according to their age and let
++   use_first finish the job.
++   If false, keep the order of translations. */
++bool use_newest;
++
+ /* If true, merge like msgcomm.
+    If false, merge like msgcat and msguniq.  */
+ bool msgcomm_mode = false;
+@@ -123,6 +129,15 @@ catenate_msgdomain_list (string_list_ty
+   for (n = 0; n < nfiles; n++)
+     mdlps[n] = read_catalog_file (files[n], input_syntax);
+ 
++  /* --use-newest case -- sort messages by time and then let --use-first finish the job */
++  if (use_newest)
++  {
++	  for (n = 0; n < nfiles; n++)
++		msgdomain_read_ages (mdlps[n]);
++
++	  msgdomain_sort_by_ages (mdlps, nfiles);
++  }
++
+   /* Determine the canonical name of each input file's encoding.  */
+   canon_charsets = XNMALLOC (nfiles, const char **);
+   for (n = 0; n < nfiles; n++)
+Index: gettext-0.21/gettext-tools/src/msgl-cat.h
+===================================================================
+--- gettext-0.21.orig/gettext-tools/src/msgl-cat.h
++++ gettext-0.21/gettext-tools/src/msgl-cat.h
+@@ -37,6 +37,7 @@ extern DLL_VARIABLE int less_than;
+ /* If true, use the first available translation.
+    If false, merge all available translations into one and fuzzy it.  */
+ extern DLL_VARIABLE bool use_first;
++extern DLL_VARIABLE bool use_newest;
+ 
+ /* If true, merge like msgcomm.
+    If false, merge like msgcat and msguniq.  */
+Index: gettext-0.21/gettext-tools/src/msgl-header.c
+===================================================================
+--- gettext-0.21.orig/gettext-tools/src/msgl-header.c
++++ gettext-0.21/gettext-tools/src/msgl-header.c
+@@ -222,3 +222,50 @@ message_list_delete_header_field (messag
+           }
+       }
+ }
++
++void
++message_list_read_header_field (message_list_ty *mlp,
++                                  const char *field, char **where_ptr)
++{
++  size_t field_len = strlen (field);
++  size_t j;
++
++  /* Search the header entry.  */
++  for (j = 0; j < mlp->nitems; j++)
++    if (is_header (mlp->item[j]) && !mlp->item[j]->obsolete)
++      {
++	/* We found the correct message. */
++        message_ty *mp = mlp->item[j];
++
++        /* Tag the header entry.  */
++        const char *header = mp->msgstr;
++
++        /* Test whether the field occurs in the header entry.  */
++        const char *h;
++
++        for (h = header; *h != '\0'; )
++          {
++            if (strncmp (h, field, field_len) == 0)
++              break;
++	    /* Jump by lines. */
++            h = strchr (h, '\n');
++            if (h == NULL)
++              break;
++            h++;
++          }
++        if (h != NULL && *h != '\0')
++          {
++            /* We found it and it is nonempty. Read the value of the field.  */
++            h += field_len + 1;
++	    char *enh = strchr (h, '\n');
++	    if (enh != NULL && *enh != '\0')
++	      {
++	        *where_ptr = (char *)XNMALLOC (((enh - h) + 1), char);
++                memcpy (*where_ptr, h, enh - h);
++	        /* Make the string null-terminated. */
++                (*where_ptr)[enh-h] = '\0';
++	      }
++          }
++      }
++}
++
+Index: gettext-0.21/gettext-tools/src/msgl-header.h
+===================================================================
+--- gettext-0.21.orig/gettext-tools/src/msgl-header.h
++++ gettext-0.21/gettext-tools/src/msgl-header.h
+@@ -40,6 +40,12 @@ extern void
+        message_list_delete_header_field (message_list_ty *mlp,
+                                          const char *field);
+ 
++/* Read the given field from the header.
++   The FIELD name ends in a colon.  */
++extern void
++       message_list_read_header_field (message_list_ty *mlp,
++                                         const char *field, char **where_ptr);
++
+ 
+ #ifdef __cplusplus
+ }

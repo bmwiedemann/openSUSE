@@ -1,0 +1,81 @@
+Index: osdl-aim-7/src/num_fcns.c
+===================================================================
+--- osdl-aim-7.orig/src/num_fcns.c
++++ osdl-aim-7/src/num_fcns.c
+@@ -365,6 +365,9 @@ static int num_rtns_1(int argc, char **a
+ 	int n, i64, itemp1;
+ 	double d1, d2, dtemp1;
+ 
++	double arg_tmp1, arg_tmp2;
++	/*There is problem with double-used macro POS in one expression.*/
++
+ 	COUNT_START;
+ 
+ 	/*
+@@ -383,17 +386,38 @@ static int num_rtns_1(int argc, char **a
+ 	 */
+ 	for (n = 0; n < i64; n++) {
+ 		if (debug_l < 10) {
+-			compiler_fake_out1 =
++			/*compiler_fake_out1 =
+ 			    floor(exp(ARG)) + ceil(log10(POS));
++			*/ /*There is problem with double-used macro POS in one expression.*/
++			arg_tmp1=ARG;
++			arg_tmp2=POS;
++			compiler_fake_out1 =
++			    floor(exp(arg_tmp1)) + ceil(log10(arg_tmp2));
++
++			/*compiler_fake_out2 =
++			    modf(log(POS), &dtemp1) + frexp(NEG, &itemp1);*/
++			arg_tmp1=POS;
++			arg_tmp2=NEG;
+ 			compiler_fake_out2 =
+-			    modf(log(POS), &dtemp1) + frexp(NEG, &itemp1);
++			    modf(log(arg_tmp1), &dtemp1) + frexp(arg_tmp2, &itemp1);
+ 			/* don't want ARG, because of "smallest" */
+-			compiler_fake_out3 =
++
++			/*compiler_fake_out3 =
+ 			    ldexp(ARG,
+-				  abs(-itemp1)) + fabs(fmod(ARG * 5, POS));
++				  abs(-itemp1)) + fabs(fmod(ARG * 5, POS));*/
++			arg_tmp1=ARG;
++			arg_tmp2=ARG;
++			compiler_fake_out3 =
++			    ldexp(arg_tmp1,
++				  abs(-itemp1)) + fabs(fmod(arg_tmp2 * 5, POS));
+ 			/* try to get 1st fmod() arg larger than second */
+-			compiler_fake_out4 = sqrt(pow(POS, ARG));
++
++			/*compiler_fake_out4 = sqrt(pow(POS, ARG));*/
++			arg_tmp1=POS;
++			arg_tmp2=ARG;
++			compiler_fake_out4 = sqrt(pow(arg_tmp1, arg_tmp2));
+ 			/* pow() will always return pos value */
++
+ 			srand(itemp1);
+ 			compiler_fake_out5 = labs((long) (-rand() + n));
+ 			/*
+@@ -508,6 +532,9 @@ static int trig_rtns(int argc, char **ar
+ {
+ 	int n, i64;
+ 
++	double arg_tmp1, arg_tmp2;
++	/*There is problem with double-used macro POS in one expression.*/
++
+ 	COUNT_START;
+ 	/*
+ 	 * First, get args
+@@ -536,7 +563,11 @@ static int trig_rtns(int argc, char **ar
+ 			 */
+ 			compiler_fake_out2 = tanh(atan(tan(ARG)));
+ 			/* atan can legally use any output of tan; no bound on tanh arg */
+-			compiler_fake_out3 = atan2(sinh(ARG), cosh(ARG));
++
++			/*compiler_fake_out3 = atan2(sinh(ARG), cosh(ARG));*/
++			arg_tmp1=ARG;
++			arg_tmp2=ARG;
++			compiler_fake_out3 = atan2(sinh(arg_tmp1), cosh(arg_tmp2));
+ 			/* no bound on sinh & cosh arg; cosh always returns pos # */
+ 		} else {
+ 			double d1, d2;

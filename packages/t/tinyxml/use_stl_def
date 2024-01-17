@@ -1,0 +1,5 @@
+#ifdef TIXML_USE_STL
+    #undef TIXML_USE_STL
+#endif
+
+#define TIXML_USE_STL 1

@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/traefik/traefik.git</param>
+              <param name="changesrevision">0a7964300166d167f68d5502bc245b3b9c8842b4</param></service></servicedata>

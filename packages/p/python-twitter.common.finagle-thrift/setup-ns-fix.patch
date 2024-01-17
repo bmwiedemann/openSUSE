@@ -1,0 +1,11 @@
+--- twitter.common.finagle-thrift-0.3.9-orig/setup.py	2016-10-18 03:52:06.000000000 +0700
++++ twitter.common.finagle-thrift-0.3.9/setup.py	2020-01-14 08:28:32.225386394 +0700
+@@ -16,7 +16,7 @@
+     'namespace_packages': ['gen', 'gen.twitter', 'gen.twitter.finagle'],
+     'package_data': {   },
+     'package_dir': {   '': 'src'},
+-    'packages': [   '.',
++    'packages': [
+                     'gen',
+                     'gen.twitter',
+                     'gen.twitter.finagle',

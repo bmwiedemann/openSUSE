@@ -1,0 +1,6 @@
+<package name="tei-roma" project="openSUSE:Factory">
+  <title>TEI Schema or DTD Generator</title>
+  <description>Roma is a shell script and XSL stylesheets for building a customized
+TEI schema or DTD.  It uses xsltproc, trang, and Perl.</description>
+  <devel project="Publishing" package="tei-roma"/>
+</package>

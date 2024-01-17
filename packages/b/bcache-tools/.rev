@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2cfe907622fb5c16c7afcbc0f5c9c3a1</srcmd5>
+    <version>0.1.g45</version>
+    <time>1372740247</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>181222</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d1f6201972c2107a3333a2f17eca79e2</srcmd5>
+    <version>0.1.g71</version>
+    <time>1376295349</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to new snapshot 0.1.g71
+* Support for superblocks up to version 4</comment>
+    <requestid>186340</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d1f6201972c2107a3333a2f17eca79e2</srcmd5>
+    <version>0.1.g71</version>
+    <time>1379662028</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e6e970cecdde353b97e36539a07d5f76</srcmd5>
+    <version>0.1.g71</version>
+    <time>1395404913</time>
+    <user>coolo</user>
+    <comment>- Move bcache rule from position 61 to position 74
+  (bnc#868938) (forwarded request 226714 from oneukum)</comment>
+    <requestid>226716</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c64f0f977dde870c52e5469200bdf793</srcmd5>
+    <version>0.9</version>
+    <time>1397387667</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>229747</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>107a37487ab5ff1289b78427287220be</srcmd5>
+    <version>0.9</version>
+    <time>1408524663</time>
+    <user>lnussel</user>
+    <comment>- removed unnecessary openssl-devel buildrequires (forwarded request 245089 from msmeissn)</comment>
+    <requestid>245091</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>107a37487ab5ff1289b78427287220be</srcmd5>
+    <version>0.9</version>
+    <time>1409300555</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c4369b7df7cfffd8752daa66a5cfbcd</srcmd5>
+    <version>1.0.8</version>
+    <time>1427736807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.0.8</comment>
+    <requestid>293585</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9b4f29de1e6914e003fbac77e4a73a3f</srcmd5>
+    <version>1.0.9</version>
+    <time>1540447736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642704</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>78de53d9515a4243c04ee06974ec5a22</srcmd5>
+    <version>1.0.8+suse5</version>
+    <time>1566893866</time>
+    <user>dimstar_suse</user>
+    <comment>- Shift the version number to 1.0.8+suse5 because there has never
+  been a 1.0.9 release.</comment>
+    <requestid>725414</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ac4010fec5d1c3989e38057fab194222</srcmd5>
+    <version>1.1</version>
+    <time>1579792114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tag 1.1</comment>
+    <requestid>765450</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4aa3fceed369ddb941ed0e0a5bb0541b</srcmd5>
+    <version>1.1</version>
+    <time>1599770873</time>
+    <user>dimstar_suse</user>
+    <comment>- Cure fallout from %_libexecdir change [boo#1174075, boo#1176244]</comment>
+    <requestid>832982</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e76be2d966621027b17fdc61287d16b0</srcmd5>
+    <version>1.1</version>
+    <time>1604322281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845049</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>983e70cbf45925c59bc3c39cee09814e</srcmd5>
+    <version>1.1</version>
+    <time>1606141833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848736</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>05dfff0859628d43186ff6db55d5bde4</srcmd5>
+    <version>1.1</version>
+    <time>1610303890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860499</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>192caf12e497f93755dea8c1a13422ee</srcmd5>
+    <version>1.1</version>
+    <time>1615362488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875788</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>f7a168cdb6006deb1f2817447d66425c</srcmd5>
+    <version>1.1</version>
+    <time>1677878656</time>
+    <user>dimstar_suse</user>
+    <comment>- bcache-tools: improve is_zoned_device() (bsc#1208425)
+  0029-bcache-tools-improve-is_zoned_device.patch (forwarded request 1068623 from colyli)</comment>
+    <requestid>1068637</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ef988a2c198d3c33309e203c1168e88d</srcmd5>
+    <version>1.1+git37.a5e3753</version>
+    <time>1699615739</time>
+    <user>anag+factory</user>
+    <comment>- Update to snapshot 1.1+git37.a5e3753</comment>
+    <requestid>1124427</requestid>
+  </revision>
+</revisionlist>

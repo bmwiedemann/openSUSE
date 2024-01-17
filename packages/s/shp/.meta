@@ -1,0 +1,11 @@
+<package name="shp" project="openSUSE:Factory">
+  <title>The SHP Hypertext Preprocessor</title>
+  <description>Like PHP, except you write your script in the bash shell scripting language instead of PHP.
+
+SHP parses and executes SHP scripts in the manner of PHP, except nested
+scripts are written in shell scripting language instead of the PHP lan-
+guage. SHP outputs its script file, with nested &lt;?shp ... ?&gt; blocks exe-
+cuted as shell scripts.
+</description>
+  <devel project="utilities" package="shp"/>
+</package>

@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Oct 26 04:52:05 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
+Wed Sep 13 06:14:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Wed Mar 30 09:53:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules inconditionally
+
+-------------------------------------------------------------------
+Wed Mar 23 23:36:59 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone jaxb-api on distributions where JDK
+  does not contain the JavaEE classes
+
+-------------------------------------------------------------------
+Sun Apr 12 19:00:39 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Initial package
+

@@ -1,0 +1,17 @@
+# /lib/systemd/system/zramswap.service
+#
+# Copyright (c) 2012-2018 Malcolm J Lewis <malcolmlewis@opensuse.org>
+#
+
+[Unit]
+Description=Service enabling compressing RAM with zRam
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/zramswapon
+ExecStop=/usr/sbin/zramswapoff
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

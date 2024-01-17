@@ -1,0 +1,13 @@
+--- src/ssg/ssgLoadOBJ.cxx
++++ src/ssg/ssgLoadOBJ.cxx
+@@ -220,8 +220,8 @@
+ 			*strrchr(mtl_filename, '/') = 0;
+ 		if(NULL!=strrchr(mtl_filename, '\\'))
+ 			*strrchr(mtl_filename, '\\') = 0;
+-		strncat(mtl_filename, "\\", 1024);
+-		strncat(mtl_filename, fname, 1024);
++		strncat(mtl_filename, "\\", sizeof(mtl_filename)-strlen(mtl_filename)-1);
++		strncat(mtl_filename, fname, sizeof(mtl_filename)-strlen(mtl_filename)-1);
+ 
+ 		filein = fopen (mtl_filename,"r") ;
+ 		if ( filein == 0 )

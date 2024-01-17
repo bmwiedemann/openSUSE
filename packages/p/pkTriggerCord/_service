@@ -1,0 +1,17 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/asalamon74/pktriggercord</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionformat">@PARENT_TAG@+git.%cd</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

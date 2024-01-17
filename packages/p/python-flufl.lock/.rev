@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>055c2af4bf6e6714be34110fe380209f</srcmd5>
+    <version>3.2</version>
+    <time>1575382816</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>752903</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0d474d2027e52441e9a3a89a16fac5e2</srcmd5>
+    <version>5.0.4</version>
+    <time>1613427338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871409</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d16e72f11c56628c611e12cfb75d8f20</srcmd5>
+    <version>6.0</version>
+    <time>1637372365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.0
+  * Added a default_timeout argument to the Lock constructor,
+    which can be used in the context manager syntax as well.
+  * When a Lock uses a lock file that already exists and does
+    not appear to be a lock file (i.e. because its contents are
+    ill-formatted), do a better job of not clobbering that file.
+  * Improve some QA by re-adding diff-cover, Gitlab SAST during
+    CI, and testing on Python 3.10 beta (except for Windows)
+  * Added a py.typed file to satisfy type checkers.
+- Update to version 5.0.5
+  * Blued code.
+</comment>
+    <requestid>932548</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22fd88d07ba537f22cde36fc01c1117c</srcmd5>
+    <version>7.0</version>
+    <time>1643926594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948287</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fdfb0b8c87a251630fcd9bfdacfda74f</srcmd5>
+    <version>7.0</version>
+    <time>1662063089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000582</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b6a12ac8370484e2132350a4fde63893</srcmd5>
+    <version>7.1.1</version>
+    <time>1664468001</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006740</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f5234b9c650b6c83a2c4e58dffcc80bf</srcmd5>
+    <version>7.1.1</version>
+    <time>1671722593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044213</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>a245d91811496b3b64bbbab260ca91b0</srcmd5>
+    <version>7.1.1</version>
+    <time>1686927302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093375</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8c878414a2c4a34acea2c43c5dd25709</srcmd5>
+    <version>8.0.2</version>
+    <time>1704562870</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.0.2:
+  * Update dependencies.
+  * Other minor improvements and cleanups.
+  * Minor documentation fix.
+  * Drop Python 3.7 support (GL#34)
+  * Added a claimfile property to Lock objects
+  * Switch to pdm- ackend (GL#33)
+  * Use ruff for linting, since its much faster.
+
+  * Update all dependencies eagerly.</comment>
+    <requestid>1137121</requestid>
+  </revision>
+</revisionlist>

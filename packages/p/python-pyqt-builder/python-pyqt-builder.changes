@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Sun Oct 15 13:48:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.15.3
+  * Added the '--apple-universal2' command line option to the build
+    tools to specify a universal build on macOS.
+
+-------------------------------------------------------------------
+Wed Sep 27 08:56:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.15.2
+  * Bundle the QML libraries for QtCharts and QtDataVisualization
+  * Bundle qtscript translations with Qt5 as they are a hidden
+    requirement.
+  * Bundle the Qt6 qtconnectivity translations.
+
+-------------------------------------------------------------------
+Sat Jun 10 10:08:56 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu Jun  1 20:13:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.1:
+  * Added support for bundling the QtLabs QML packages.
+
+-------------------------------------------------------------------
+Mon Apr 24 20:12:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.15.0
+  * Added support for QtSpatialAudio for PyQt6.
+  * A bug fix release.
+
+-------------------------------------------------------------------
+Tue Jan 24 18:51:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.14.1
+  * Support different patch versions for Qt v5.15.
+- Drop pyqt-builder-add-timeline5.15.patch
+
+-------------------------------------------------------------------
+Thu Jan 12 21:14:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add pyqt-builder-add-timeline5.15.patch for Qt3D 5.15.8
+
+-------------------------------------------------------------------
+Thu Jan 12 11:22:21 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to support python 3.6 needed by SLE:
+  * support-python3.6.patch
+
+-------------------------------------------------------------------
+Mon Oct  3 17:16:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.14.0
+  * Added support for QtPdf, QtPdfWidgets and QtTextToSpeech for
+    PyQt6.
+  * SIP v6.7 is now required.
+
+-------------------------------------------------------------------
+Mon Jun 20 21:19:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.13.0
+  * The default ABI versions are now v12.11 and v13.4 so that
+    wrapped classes can be used by sip.array.
+  * Removed support for bundling version of Qt older than v5.15.
+  * Removed support for Python v3.6.
+
+-------------------------------------------------------------------
+Fri Oct 29 15:02:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.12.2
+  * Bug fix release related to Apple Silicon and Arm64 Qt wheels
+
+-------------------------------------------------------------------
+Sat Oct 16 16:00:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.12.1
+  * Build universal2 wheels for Qt v6.2 and later when using
+    Python v3.10 and later.
+  * Added the '--arch' command line option to pyqt-bundle to
+    specify a particular architecture (x86_64 or arm64) to
+    bundle on macOS.
+
+-------------------------------------------------------------------
+Sun Oct  3 12:33:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.11.0
+  * Added support for bundling Qt v6.2.
+  * Added support for PyQt6-WebEngine to pyqt-bundle.
+
+-------------------------------------------------------------------
+Thu Aug 19 09:32:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't write mtime-based init pyc file during import test
+  (boo#1047218)
+
+-------------------------------------------------------------------
+Sun Jul  4 13:42:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.10.3
+  * minor bug fixes for Qt v6.1.2
+
+-------------------------------------------------------------------
+Tue Jun 15 13:03:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.10.1
+  * The default sip module ABI version is now the minimum required
+    by current PyQt versions rather than the latest available from
+    SIP.
+
+-------------------------------------------------------------------
+Thu May 13 18:20:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.10.0
+  * Added support for bundling Qt v6.1.
+  * Added support for PyQt6-Charts to pyqt-bundle.
+  * Added support for PyQt6-DataVisualization to pyqt-bundle.
+
+-------------------------------------------------------------------
+Thu Mar 11 19:48:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.9.1
+  * Handle the changed Qt installation directory used by PyQt5 
+    v5.15.4 and later, and PyQt6 v6.0.3 and later. 
+
+-------------------------------------------------------------------
+Thu Feb 25 11:07:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.9.0
+  * Added support for PyQtNetworkAuth.
+  * Added support for creating Qt5 wheels.
+  * The default minimum glibc version for Qt6 is now v2.28.
+
+-------------------------------------------------------------------
+Fri Feb 19 19:56:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.8.0
+  * Added the (as yet undocumented) pyqt-qt-wheel utility.
+  * chrpath and install_name_tool are no longer required when
+    bundling Qt v5.15 or later.
+- Changes in v1.7.0
+  * Added support for PyQt6, PyQt6-3D and PyQt6-NetworkAuth to
+    pyqt-bundle.
+
+-------------------------------------------------------------------
+Tue Nov 24 14:54:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.6.0
+  * Appropriate defaults are now provided for the 'abi-version' and
+    'sip-module' options.
+  * Added the 'jobs' builder option and corresponding '--jobs'
+    command line option to sip-build, sip-install and sip-wheel.
+- Update License tag
+
+-------------------------------------------------------------------
+Sun Aug 30 17:28:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.5.0
+  * Added the 'android-abis' project option and corresponding
+    '--android-abi' command line option to sip-build, sip-install
+    and sip-wheel.
+  * Added 'PYQTBUILD_VERSION' and 'PYQTBUILD_VERSION_STR' to the
+    'pyqtbuild' module API.
+  * Added support for bundling QtTextToSpeech.
+
+-------------------------------------------------------------------
+Sat Aug 29 19:35:57 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Specify noarch
+- Provide python-PyQt-builder in case packagers search for the
+  official Qt/PyPI name 
+- It actually needs the python-sip-devel package
+
+-------------------------------------------------------------------
+Sat Aug 29 09:07:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Initial specfile version 1.4.0 

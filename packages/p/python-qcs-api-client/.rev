@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f6a197b49c65bb5dbfdb6e7211297a6</srcmd5>
+    <version>0.21.1</version>
+    <time>1660924578</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package for 0.21.1</comment>
+    <requestid>998073</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1212cb519ac9dcf8ac4cbdb7937b172d</srcmd5>
+    <version>0.21.3</version>
+    <time>1675095063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061986</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>272b4c119fa426f63da833d628854a6a</srcmd5>
+    <version>0.23.1</version>
+    <time>1702488961</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.1:
+  * Upgrade: relax attrs dependency version
+  * Breaking: trigger release with no changes
+  * Breaking: move internal client to qcs_api_client_internal
+    module
+  * Chore: QCS Schema [auto: qcs-api-docs]
+  * Update: Fix CI and regenerate clients
+  * Fix: token decoding without validation
+  * Update: regenerate client</comment>
+    <requestid>1132835</requestid>
+  </revision>
+</revisionlist>

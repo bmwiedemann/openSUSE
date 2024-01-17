@@ -1,0 +1,18 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">git://c9x.me/qbe.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="revision">master</param>
+    <param name="versionrewrite-pattern">(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
+  </service>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+</services>
+

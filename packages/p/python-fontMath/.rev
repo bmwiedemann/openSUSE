@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df0da9dc182e1506605b854545932f19</srcmd5>
+    <version>0.6.0</version>
+    <time>1590780079</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808942</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cdd53a8b7f058ce2e4c5855a2cf36dc4</srcmd5>
+    <version>0.6.0</version>
+    <time>1613427486</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python36 (no FontTools as it requires scipy)</comment>
+    <requestid>871619</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e0254443b6b18dc39ab7e84bd9f255f5</srcmd5>
+    <version>0.6.0</version>
+    <time>1618240229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880872</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>25ce69539ba0cf3ef5f54312dfda25f0</srcmd5>
+    <version>0.8.1</version>
+    <time>1639781671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941188</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>770b7a8953a2ca8ac68a20a1e0e0ee46</srcmd5>
+    <version>0.9.1</version>
+    <time>1645054269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955424</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9f27e6c378c4e6289ea6ec15a6c3d30e</srcmd5>
+    <version>0.9.2</version>
+    <time>1664210919</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.9.2
+  * Start testing python 3.10 by @benkiel in #269
+  * improve FilterRedundantPointPen when starting points are differently set by
+    @typemytype in #277
+</comment>
+    <requestid>1006091</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4c7c36e294f62a0b097529de4a95c4ba</srcmd5>
+    <version>0.9.3</version>
+    <time>1671023473</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+
+- Update to version 0.9.3 
+  * What's Changed
+  Pass &quot;strict&quot; flag down to copies, so strict remains strict. By @justvanrossum in #305, as required to fix googlefonts/fontmake#961</comment>
+    <requestid>1042823</requestid>
+  </revision>
+</revisionlist>

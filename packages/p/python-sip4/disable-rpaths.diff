@@ -1,0 +1,12 @@
+diff --git a/siputils.py b/siputils.py
+index a29300d..df58650 100644
+--- a/siputils.py
++++ b/siputils.py
+@@ -927,6 +927,7 @@ class Makefile:
+         rpaths is the cannonical list of rpaths.
+         """
+         flags = []
++        return flags
+         prefix = self.optional_string("RPATH")
+ 
+         if prefix == "":

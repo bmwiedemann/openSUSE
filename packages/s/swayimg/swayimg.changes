@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Wed Jan  3 16:04:45 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.0
+  * Added support for multiple exec commands;
+  * Added custom zoom/move step in key bindings;
+  * Added support for animated PNG and AVIFS;
+  * Added new scaling modes: fill, fit with and height;
+  * Automatic reloading image when it changes;
+  * Replaced anti-aliasing algorithm;
+  * Added double buffering for output, fixed scaling glitches;
+  * Added help (F1);
+  * Some minor bugfix and improvements.
+  * Note: the configuration file is incompatible with previous
+    versions.
+- Add pkgconfig(libavif) BuildRequires: Needed to build v2.0
+
+-------------------------------------------------------------------
+Tue Jul 25 09:56:59 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Remove ldconfig scriptlets
+
+-------------------------------------------------------------------
+Mon Jul 24 11:59:49 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Initial package for openSUSE
+

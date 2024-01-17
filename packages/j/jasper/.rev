@@ -1,0 +1,332 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c73e3800d524afdeac67b7a8fb7d406</srcmd5>
+    <version>2.0.19</version>
+    <time>1595950017</time>
+    <user>dimstar_suse</user>
+    <comment>Jasper again! With all CVEs fixed!</comment>
+    <requestid>823122</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>306592d2cabccebeb40937e779897346</srcmd5>
+    <version>2.0.21</version>
+    <time>1600879515</time>
+    <user>dimstar_suse</user>
+    <comment>- Add jasper-2.0.21-glut.patch: Fix glut.h detection
+  See https://github.com/jasper-software/jasper/issues/247
+
+- Update to 2.0.21:
+  * Fix ZDI-15-529
+    https://github.com/jasper-software/jasper/pull/245
+  * Fix CVE-2018-19541 in decoder
+    https://github.com/jasper-software/jasper/pull/244
+
+- Update to 2.0.20:
+  * Fixed several ISO/IEC 15444-4 conformance bugs
+  * Fixed new variant of CVE-2016-9398
+  * Disabled the MIF codec by default for security reasons (but it is still
+    included in the library);
+    in a future release, the MIF codec may also be excluded from the
+    library by default
+  * Added documentation for the I/O streams library API
+  * Improved adherance to specification
+- Move to GitHub repo https://github.com/jasper-software/jasper
+- Update URL to https://jasper-software.github.io/jasper</comment>
+    <requestid>836230</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b7a2a3189e8a3450af2aea3546015c1</srcmd5>
+    <version>2.0.22</version>
+    <time>1601997007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.22:
+  * Update manual
+  * Remove JPEG dummy codec
+  * Fix test suite build failure regarding disabled MIF codec (#249)
+  * Fix OpenGL/glut detection (#247)
+- Remove jasper-2.0.21-glut.patch: upstreamed</comment>
+    <requestid>839698</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>98accd5e2912fcc3b60ed8796763e161</srcmd5>
+    <version>2.0.23</version>
+    <time>1607430285</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.23:
+  * Fix CVE-2020-27828, heap-overflow in cp_create() in jpc_enc.c (#252)</comment>
+    <requestid>853711</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>23ebff1682a46c202932770eff72946f</srcmd5>
+    <version>2.0.24</version>
+    <time>1609783724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.24:
+  * Add JAS_VERSION_MAJOR, JAS_VERSION_MINOR, JAS_VERSION_PATCH
+    for easier access to the JasPer version.
+  * Fixes stack overflow bug on Windows, where variable-length
+    arrays are not available. (#256)</comment>
+    <requestid>860103</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>753392fd18d49cd223ff0811929f0bfd</srcmd5>
+    <version>2.0.25</version>
+    <time>1612901769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.25:
+  * Fix memory-related bugs in the JPEG-2000 codec resulting from
+    attempting to decode invalid code streams. (#264, #265)
+  * Fix wrong return value under some compilers (#260)
+  * Fix bsc#1181483 CVE-2021-3272 heap buffer overflow
+    in jp2_decode (#259)</comment>
+    <requestid>870221</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>14d9f70ea6a48881947454f34083f657</srcmd5>
+    <version>2.0.26</version>
+    <time>1615061932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.26:
+  * Fix JP2 decoder bug that can cause a null pointer dereference
+    for some invalid CDEF boxes. (#268)</comment>
+    <requestid>877263</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>702b84d56b6241803d14affdb027883d</srcmd5>
+    <version>2.0.27</version>
+    <time>1616104516</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.27:
+  * Check for an image containing no samples in the PGX
+    decoder. (#271, #272, #273, #274, #275, #276, #281)
+  * Check for dimensions of zero in the JPC and JPEG decoders.
+  * Fix an arguably incorrect type for an integer literal
+    in the PGX decoder. (#270)
+  * Check for an invalid component reference in the
+    JP2 decoder. (#269)
+  * Check on integer size in JP2 decoder. (#278)</comment>
+    <requestid>879870</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>735916f96477bd3070fd82c3a029226d</srcmd5>
+    <version>2.0.28</version>
+    <time>1617279436</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.0.28:
+  * Fix potential null pointer dereference in the JP2/JPC decoder.
+    (#269)
+  * Fix ignoring of JAS_STREAM_FILEOBJ_NOCLOSE at stream close time.
+    (#286)
+  * Fix integral type sizing problem in JP2 codec. (#284)</comment>
+    <requestid>882023</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ab83c81fa44933af8a0aa51c27caf53f</srcmd5>
+    <version>2.0.32</version>
+    <time>1618859185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.32:
+  * Between 2.0.29 and 2.0.32 were only experiments with
+    GitHub Actions
+
+- Update to 2.0.29:
+  * Loosen some overly tight restrictions on JP2 codestreams,
+    which caused some valid codestreams to be rejected. (#289)</comment>
+    <requestid>886663</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d85501500a6cde4b4f4120a83aa2262</srcmd5>
+    <version>2.0.33</version>
+    <time>1629269745</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.0.33:
+  * Fix a JP2/JPC decoder bug (#291)
+  * Fix a build issue impacting some platforms (#296)</comment>
+    <requestid>912351</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>eeeac507e7a51d8e252f80673ece46ee</srcmd5>
+    <version>2.0.33</version>
+    <time>1643720579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950416</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>54821056f1e58677e22876462f78fd65</srcmd5>
+    <version>3.0.0</version>
+    <time>1644273503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952210</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>93a3f711718001e37ca65f5a20e4f256</srcmd5>
+    <version>3.0.1</version>
+    <time>1644707736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Fix some build/portability issues (e.g., #317, #318).
+- Drop jasper-cmake-warnings.patch: contained in upstream release</comment>
+    <requestid>953963</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>35f9892429176b5e3a8f8c942629737e</srcmd5>
+    <version>3.0.2</version>
+    <time>1644874587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * Fix a build issue that occurs when a cross-compiler is
+    used (e.g., #319).</comment>
+    <requestid>954338</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>830477d6ab225e9c62ebd66740c084c3</srcmd5>
+    <version>3.0.2</version>
+    <time>1644965846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954679</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>06a8c2c3e787d32f260560050f528f41</srcmd5>
+    <version>3.0.3</version>
+    <time>1647458506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.3:
+  * Fix some portability issues in a few scripts.</comment>
+    <requestid>962246</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d86b42f15cd4a23a53c33d6ec25a746e</srcmd5>
+    <version>3.0.4</version>
+    <time>1654378007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.4:
+  * Eliminate some bogus calls to abort.
+  * Fix a typo in jas_safeui64_div (#323).
+  * Add some additional logging messages.
+  * Fix the source of a potential compiler warning (#321).</comment>
+    <requestid>980633</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>64f7e692bc1d00bed5a4aec1f4b1050b</srcmd5>
+    <version>3.0.5</version>
+    <time>1656053107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.5:
+  * Fix a minor build issue (#328).</comment>
+    <requestid>984730</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0ddad7571b7ad133429db192775bf43f</srcmd5>
+    <version>3.0.6</version>
+    <time>1658161970</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 3.0.6:
+  * Fix bug in manual deployment script.</comment>
+    <requestid>989093</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0c2c89f0c6648f6634960823daa5e970</srcmd5>
+    <version>3.0.6</version>
+    <time>1663438212</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+  * CVE-2022-2963 [bsc#1202642]
+    + jasper-CVE-2022-2963.patch</comment>
+    <requestid>1004089</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d5686e3d22c1a8d56bd50d0ef81fb998</srcmd5>
+    <version>4.0.0</version>
+    <time>1667825481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0:
+  * Improve static linking (##336).
+  * Fix path relocation in mingw environment (#335).
+  * Improve logging and build scripts.
+  * Improve JPEG-2000 conformance test results.
+  * Enable PIC by default.
+  * Fix memory leaks in function cmdopts_parse (#332) (CVE-2022-2963).
+  * imgcmp:
+    + Add quiet (-q) option.
+    + Add debug-level option.
+    + Fix memory leak.
+    imginfo:
+    + Add quiet (-q) option.
+  * Fix bug in parsing PGX header.
+  * Fix integer overflow bug (#345) (CVE-2022-40755).
+- Remove jasper-CVE-2022-2963.patch</comment>
+    <requestid>1033833</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d88e252ab5ac4f0cdd8bb189e1e21767</srcmd5>
+    <version>4.0.0</version>
+    <time>1698780307</time>
+    <user>anag+factory</user>
+    <comment>    (#269) (CVE-2021-3443) bsc#1184798
+    for some invalid CDEF boxes. (#268) (CVE-2021-3467) bsc#1184757
+    This fix is associated with CVE-2021-26926 bsc#1182105 and
+    bsc#1182104 CVE-2021-26927.
+    bsc#1179748
+  * CVE-2021-27845 bsc#1188437
+    https://github.com/mdadams/jasper/issues/194 (part 1)
+  * Fix CVE-2016-9399 bsc#1010980, CVE-2017-13751
+  * Fix CVE-2017-5503 bsc#1020456, CVE-2017-5504 bsc#1020458, CVE-2017-5505 bsc#1020460
+  * Fix CVE-2018-9252 bsc#1088278
+  * Fix CVE-2018-19139 bsc#1115637
+  * Fix CVE-2018-19543 bsc#1117328, CVE-2017-9782 bsc#1045450
+  * Fix CVE-2018-20570 bsc#1120807
+  * Fix CVE-2018-20622 bsc#1120805
+  * Fix CVE-2016-9398 bsc#1010979
+  * Fix CVE-2017-14132 bsc#1057152
+  * Fix CVE-2017-5499 bsc#1020451
+  * Fix CVE-2018-18873 bsc#1114498
+  * Fix assertion failure JPC_NOMINALGAIN (CVE-2016-9396) (#50) bsc#1010783</comment>
+    <requestid>1121278</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>690e020e7208e7843635431450b90280</srcmd5>
+    <version>4.1.0</version>
+    <time>1699301622</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.0:
+  * Add support for building several JasPer application programs for
+    WebAssembly target with WASI support.
+
+- Update to 4.0.1:
+  * Fix integer overflow bug in PNM decoder (#353).
+  * Fix a few minor build issues.</comment>
+    <requestid>1123411</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9507bb7c9cf3f0ffa91aaf344410a9cc</srcmd5>
+    <version>4.1.1</version>
+    <time>1701377961</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.1:
+  * Disallow in-source builds by default #364
+  * Fix a potential integer overflow problem in the
+    jas_get_total_mem_size function (for the Windows platform) #363</comment>
+    <requestid>1129748</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e16491b5f312a59050d6813161fde39e</srcmd5>
+    <version>4.1.2</version>
+    <time>1705099493</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.2:
+  * Fix invalid memory write bug (#367) (CVE-2023-51257).
+  * Fix missing range check in the JPC encoder (#368).</comment>
+    <requestid>1138151</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>ea2f9a64591a43048b6faefd68af2cce</srcmd5>
+    <version>4.1.2</version>
+    <time>1705353326</time>
+    <user>anag+factory</user>
+    <comment>  * Fix invalid memory write bug (#367) bsc#1218802 (CVE-2023-51257).</comment>
+    <requestid>1138803</requestid>
+  </revision>
+</revisionlist>

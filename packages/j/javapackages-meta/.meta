@@ -1,0 +1,5 @@
+<package name="javapackages-meta" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="javapackages-meta"/>
+</package>

@@ -1,0 +1,204 @@
+--- configure.in
++++ configure.in
+@@ -36,7 +36,7 @@
+ AC_PROG_CXX
+ AC_PROG_CXXCPP
+ AC_PROG_INSTALL
+-AC_PROG_RANLIB
++AC_PROG_LIBTOOL
+ 
+ dnl Command line arguments
+ 
+--- src/fnt/Makefile.am
++++ src/fnt/Makefile.am
+@@ -1,10 +1,10 @@
+ if BUILD_FNT
+ 
+-lib_LIBRARIES = libplibfnt.a
++lib_LTLIBRARIES = libplibfnt.la
+ 
+ include_HEADERS = fnt.h
+ 
+-libplibfnt_a_SOURCES = fnt.cxx fntTXF.cxx fntLocal.h fntBitmap.cxx
++libplibfnt_la_SOURCES = fnt.cxx fntTXF.cxx fntLocal.h fntBitmap.cxx
+ 
+ INCLUDES = -I$(top_srcdir)/src/sg -I$(top_srcdir)/src/util
+ 
+--- src/js/Makefile.am
++++ src/js/Makefile.am
+@@ -1,10 +1,10 @@
+ if BUILD_JS
+ 
+-lib_LIBRARIES = libplibjs.a
++lib_LTLIBRARIES = libplibjs.la
+ 
+ include_HEADERS = js.h
+ 
+-libplibjs_a_SOURCES = js.cxx jsLinux.cxx jsLinuxOld.cxx jsMacOS.cxx \
++libplibjs_la_SOURCES = js.cxx jsLinux.cxx jsLinuxOld.cxx jsMacOS.cxx \
+                              jsMacOSX.cxx jsWindows.cxx jsBSD.cxx   \
+                              jsNone.cxx
+ 
+--- src/net/Makefile.am
++++ src/net/Makefile.am
+@@ -1,11 +1,11 @@
+ if BUILD_NET
+ 
+-lib_LIBRARIES = libplibnet.a
++lib_LTLIBRARIES = libplibnet.la
+ 
+ include_HEADERS = netBuffer.h netChannel.h netChat.h netMessage.h \
+ 	netMonitor.h netSocket.h net.h
+ 
+-libplibnet_a_SOURCES = netBuffer.cxx netChannel.cxx netChat.cxx \
++libplibnet_la_SOURCES = netBuffer.cxx netChannel.cxx netChat.cxx \
+ 	netMessage.cxx netMonitor.cxx netSocket.cxx
+ 
+ INCLUDES = -I$(top_srcdir)/src/util
+--- src/psl/Makefile.am
++++ src/psl/Makefile.am
+@@ -1,11 +1,11 @@
+ 
+ if BUILD_PSL
+ 
+-lib_LIBRARIES = libplibpsl.a
++lib_LTLIBRARIES = libplibpsl.la
+ 
+ include_HEADERS = psl.h
+ 
+-libplibpsl_a_SOURCES = psl.cxx pslCodeGen.cxx pslContext.cxx \
++libplibpsl_la_SOURCES = psl.cxx pslCodeGen.cxx pslContext.cxx \
+                        pslCompiler.cxx pslSymbols.cxx pslToken.cxx \
+                        pslExpression.cxx pslProgram.cxx pslDump.cxx \
+                        pslError.cxx pslFileIO.cxx pslCompiler.h \
+--- src/puAux/Makefile.am
++++ src/puAux/Makefile.am
+@@ -1,10 +1,10 @@
+ if BUILD_PUAUX
+ 
+-lib_LIBRARIES = libplibpuaux.a
++lib_LTLIBRARIES = libplibpuaux.la
+ 
+ include_HEADERS = puAux.h puAuxLocal.h
+ 
+-libplibpuaux_a_SOURCES = puAux.cxx                  \
++libplibpuaux_la_SOURCES = puAux.cxx                  \
+                          puAuxBiSlider.cxx          \
+                          puAuxBiSliderWithEnds.cxx  \
+                          puAuxComboBox.cxx          \
+--- src/pui/Makefile.am
++++ src/pui/Makefile.am
+@@ -1,10 +1,10 @@
+ if BUILD_PUI
+ 
+-lib_LIBRARIES = libplibpu.a
++lib_LTLIBRARIES = libplibpu.la
+ 
+ include_HEADERS = pu.h puGLUT.h puFLTK.h puSDL.h puNative.h puPW.h
+ 
+-libplibpu_a_SOURCES = \
++libplibpu_la_SOURCES = \
+         pu.cxx            puBox.cxx       puButton.cxx puButtonBox.cxx    \
+         puArrowButton.cxx puDialogBox.cxx puFrame.cxx  puGroup.cxx        \
+         puInput.cxx       puInterface.cxx puLocal.h    puMenuBar.cxx      \
+--- src/pw/Makefile.am
++++ src/pw/Makefile.am
+@@ -1,10 +1,10 @@
+ if BUILD_PW
+ 
+-lib_LIBRARIES = libplibpw.a
++lib_LTLIBRARIES = libplibpw.la
+ 
+ include_HEADERS = pw.h
+ 
+-libplibpw_a_SOURCES = pw.cxx pwX11.cxx pwWindows.cxx pwMacOSX.cxx
++libplibpw_la_SOURCES = pw.cxx pwX11.cxx pwWindows.cxx pwMacOSX.cxx
+ 
+ INCLUDES = -I$(top_srcdir)/src/util
+ 
+--- src/sg/Makefile.am
++++ src/sg/Makefile.am
+@@ -1,10 +1,10 @@
+ if BUILD_SG
+ 
+-lib_LIBRARIES = libplibsg.a
++lib_LTLIBRARIES = libplibsg.la
+ 
+ include_HEADERS = sg.h
+ 
+-libplibsg_a_SOURCES = sg.cxx sgd.cxx \
++libplibsg_la_SOURCES = sg.cxx sgd.cxx \
+                       sgIsect.cxx sgdIsect.cxx \
+                       sgPerlinNoise.cxx
+ 
+--- src/sl/Makefile.am
++++ src/sl/Makefile.am
+@@ -1,16 +1,16 @@
+ if BUILD_SL
+ 
+-lib_LIBRARIES = libplibsl.a libplibsm.a
++lib_LTLIBRARIES = libplibsl.la libplibsm.la
+ 
+ include_HEADERS = sl.h slPortability.h sm.h
+ 
+-libplibsl_a_SOURCES = \
++libplibsl_la_SOURCES = \
+ 	slDSP.cxx slSample.cxx slEnvelope.cxx \
+ 	slPlayer.cxx slMODPlayer.cxx slSamplePlayer.cxx \
+         slScheduler.cxx slMODdacio.cxx slMODfile.cxx \
+         slMODinst.cxx slMODnote.cxx slMODPrivate.h slMODfile.h
+ 
+-libplibsm_a_SOURCES = slPortability.h smMixer.cxx
++libplibsm_la_SOURCES = slPortability.h smMixer.cxx
+ 
+ INCLUDES = -I$(top_srcdir)/src/util
+ 
+--- src/ssg/Makefile.am
++++ src/ssg/Makefile.am
+@@ -1,10 +1,10 @@
+ if BUILD_SSG
+ 
+-lib_LIBRARIES = libplibssg.a
++lib_LTLIBRARIES = libplibssg.la
+ 
+ include_HEADERS = ssg.h ssgconf.h ssgMSFSPalette.h ssgKeyFlier.h pcx.h
+ 
+-libplibssg_a_SOURCES = ssg.cxx ssgAnimation.cxx ssgBase.cxx \
++libplibssg_la_SOURCES = ssg.cxx ssgAnimation.cxx ssgBase.cxx \
+ 	ssgBaseTransform.cxx ssgBranch.cxx ssgContext.cxx ssgCutout.cxx \
+ 	ssgDList.cxx ssgEntity.cxx ssgIsect.cxx ssgLeaf.cxx ssgList.cxx \
+ 	ssgLoadDOF.cxx ssgLoadAC.cxx \
+--- src/ssgAux/Makefile.am
++++ src/ssgAux/Makefile.am
+@@ -1,6 +1,6 @@
+ if BUILD_SSGAUX
+ 
+-lib_LIBRARIES = libplibssgaux.a
++lib_LTLIBRARIES = libplibssgaux.la
+ 
+ include_HEADERS = ssgAux.h             \
+                   ssgaShapes.h         \
+@@ -13,7 +13,7 @@
+                   ssgaFire.h           \
+                   ssgaBillboards.h
+ 
+-libplibssgaux_a_SOURCES = ssgAux.cxx               \
++libplibssgaux_la_SOURCES = ssgAux.cxx               \
+                           ssgaShapes.cxx           \
+                           ssgaPatch.cxx            \
+                           ssgaParticleSystem.cxx   \
+--- src/util/Makefile.am
++++ src/util/Makefile.am
+@@ -1,10 +1,10 @@
+ if BUILD_UL
+ 
+-lib_LIBRARIES = libplibul.a
++lib_LTLIBRARIES = libplibul.la
+ 
+ include_HEADERS = ul.h ulRTTI.h
+ 
+-libplibul_a_SOURCES = ul.cxx ulClock.cxx ulError.cxx ulLinkedList.cxx \
++libplibul_la_SOURCES = ul.cxx ulClock.cxx ulError.cxx ulLinkedList.cxx \
+         ulList.cxx ulLocal.h ulRTTI.cxx
+ 
+ endif

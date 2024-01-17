@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22b525ead81545ea5489868817c1f237</srcmd5>
+    <version>0.4.2</version>
+    <time>1686335829</time>
+    <user>dimstar_suse</user>
+    <comment>New package d2 version 0.4.2 is a declarative diagramming language and CLI tool implemented in Go. https://d2lang.com/</comment>
+    <requestid>1091339</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e2b5e51bcae2f1fa258c7fc1eb933c50</srcmd5>
+    <version>0.5.1</version>
+    <time>1686506129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1: (forwarded request 1092021 from jfkw)</comment>
+    <requestid>1092023</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7d65ec93020350cb278c3330e5880f41</srcmd5>
+    <version>0.6.0</version>
+    <time>1691947075</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.0:
+  * Variables and substitutions are implemented. See docs. #1473
+  * Configure timeout value with D2_TIMEOUT env var #1392
+  * Scale renders and disable fit to screen with --scale flag #1413
+  * null keyword can be used to un-declare. See docs #1446
+  * Develop multi-board diagrams in watch mode (links to layers/scenarios/steps work in --watch) #1503
+  * Glob patterns have been implemented. See docs. #1479
+  * Display version on CLI help invocation #1400
+  * Improved readability of connection labels when they overlap another connection #447
+  * Error message when shape is given a composite #1415
+  * Improved rendering and text measurement for code shapes #1425
+  * The autoformatter moves board declarations to the bottom of its scope #1424
+  * All font styles in sketch mode use a consistent font-family #1463
+  * Tooltip and link icons are positioned on shape border #1466
+  * Tooltip and link icons are always rendered over shapes #1467
+  * Boards with no objects are considered folders #1504
+  * DEBUG environment variable ignored if set incorrectly #1505
+  * Fixes edge case in compiler using dots in quotes #1401
+  * Fixes grid label font size for TALA #1412
+  * Fixes person shape label positioning with multiple or 3d #1478
+- _service tar_scm disable changesgenerate. Upstream uses small
+  incremental commits and the automated changelog is overly long.
+  Use GitHub release summary instead. (forwarded request 1103630 from jfkw)</comment>
+    <requestid>1103633</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>29ec437ff99f462afa9397f09a5d8d2d</srcmd5>
+    <version>0.6.0</version>
+    <time>1693383669</time>
+    <user>anag+factory</user>
+    <comment>- Adjust license to cover also redistributed vendor/github.com/* files (forwarded request 1107982 from lkocman)</comment>
+    <requestid>1107983</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e4607fb726308e2393c2c76b180950a</srcmd5>
+    <version>0.6.1</version>
+    <time>1696760281</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.1:
+  * The globs feature underwent a major rewrite and is now almost finalized
+  * UTF-16 files are automatically detected and supported #1525
+  * Grid diagrams can now have simple connections between top-level cells #1586
+  * Globs are lazily-evaluated #1552
+  * Latex blocks includes Mathjax's ASM extension #1544
+  * font-color works on Markdown #1546
+  * font-color works on arrowheads #1582
+  * CLI failure message includes input path #1617
+  * d2 fmt formats all files passed as arguments rather than just the first non-formatted (thank you @maxbrunet) #1523
+  * Fixes Markdown cropping last element in mixed-element blocks (e.g. em and strong) #1543
+  * Adds compiler error for non-blockstring empty labels #1590
+  * Prevents multiple constant nears overlapping in some cases #1591
+  * Fixes crash from empty nested grid #1594
+  * d2fmt with variable substitution mid-string is formatted correctly #1611
+  * Fixes certain shape IDs not working with dagre #1610
+  * Fixes font-size adjustments missing from rendered code shape #1614 (forwarded request 1116078 from jfkw)</comment>
+    <requestid>1116079</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5467e8c72045e2f6b29582c5c6a558d3</srcmd5>
+    <version>0.6.2</version>
+    <time>1701972698</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.2:
+  * ELK routes sql_table edges to the exact columns (ty @landmaj) #1681
+  * Unfilled triangle arrowhead is available. #1711
+  * Grid containers customize label positions. #1715
+  * A single board from a multi-board diagram can be rendered with --target flag. #1725
+  * Grid cells can contain nested edges #1629
+  * Edges can go across constant nears, sequence diagrams, and grids, including nested ones. #1631
+  * All vars defined in a scope are accessible everywhere in that scope, i.e., an object can use a var defined after itself. #1695
+  * Encoding API switches to standard zlib encoding so that decoding doesn't depend on source. #1709
+  * currentcolor is accepted as a color option to inherit parent colors. (ty @hboomsma) #1700
+  * Grid containers can be sized with width/height even when using a layout plugin without that feature. #1731
+  * Watch mode watches for changes in both the input file and imported files #1720
+  * Fixes a bug calculating grid height with only grid-rows and different horizontal-gap and vertical-gap values. #1646
+  * Grid layout accounts for each cell's outside labels and icons #1624
+  * Grid layout accounts for labels wider or taller than the shape and fixes default label positions for image grid cells. #1670
+  * Fixes a panic with a spread substitution in a glob map #1643
+  * Fixes use of null in sql_table constraints (ty @landmaj) #1660
+  * Fixes ELK growing shapes with width/height set #1679
+  * Adds a compiler error when accidentally using an arrowhead on a shape #1686
+  * Correctly reports errors from invalid values set by globs. #1691
+  * Fixes panic when spread substitution referenced a nonexistant var. #1695
+  * Fixes incorrect appendix icon numbering. #1704
+  * Fixes crash when using --watch and navigating to an invalid board path #1693
+  * Fixes edge case where nested edge globs were creating excess shapes #1713
+  * Fixes a panic with a connection to a grid cell that is a container in TALA #1729
+  * Fixes incorrect grid cell positioning when the grid has a shape set and fixes content sometimes escaping circle shapes. #1734
+  * Fixes content sometimes escaping cloud shapes. #1736
+  * Fixes panic using a glob filter (e.g. &amp;a) outside globs. #1748
+  * Fixes glob keys with import values (e.g. user*: @lib/user). #1755 (forwarded request 1131541 from jfkw)</comment>
+    <requestid>1131649</requestid>
+  </revision>
+</revisionlist>

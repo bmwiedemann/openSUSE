@@ -1,0 +1,9 @@
+<package name="python-dqsegdb" project="openSUSE:Factory">
+  <title>Client library for DQSegDB</title>
+  <description>python-dqsegdb provides the python bindings and the client tools to
+connect to LIGO/VIRGO DQSEGDB server instances.
+
+</description>
+  <devel project="science" package="python-dqsegdb"/>
+  <url>http://www.lsc-group.phys.uwm.edu/daswg/</url>
+</package>

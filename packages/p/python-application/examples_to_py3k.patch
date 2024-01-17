@@ -1,0 +1,48 @@
+---
+ examples/config.py       |    2 +-
+ examples/debug.py        |    2 +-
+ examples/notification.py |    2 +-
+ examples/process.py      |    2 +-
+ examples/singleton.py    |    2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+--- a/examples/config.py
++++ b/examples/config.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ """Example of reading application settings from a configuration file"""
+ 
+--- a/examples/debug.py
++++ b/examples/debug.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ """Example of using the debug facilities of python-application"""
+ 
+--- a/examples/notification.py
++++ b/examples/notification.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ from time import time
+ from zope.interface import implements
+--- a/examples/process.py
++++ b/examples/process.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ """Example of controlling the process behavior using the process module"""
+ 
+--- a/examples/singleton.py
++++ b/examples/singleton.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ from application.python.types import Singleton
+ 

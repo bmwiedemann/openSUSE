@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4af438120bd902ac94f584cc121d0b5d</srcmd5>
+    <version>1.2</version>
+    <time>1396158993</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>228107</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4af438120bd902ac94f584cc121d0b5d</srcmd5>
+    <version>1.2</version>
+    <time>1409302957</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b4d021f13c8b883caab0862ccb25853d</srcmd5>
+    <version>1.3.1</version>
+    <time>1466326171</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402456</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52978a132ba11adac0ae5c0da40abfca</srcmd5>
+    <version>1.4rc1</version>
+    <time>1497274089</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497925</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>df3d0e20dab99d541e7655599a0216b1</srcmd5>
+    <version>1.4rc1</version>
+    <time>1502629185</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516126</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>01aaaba88ef1bb97b8eee9fe09b695ea</srcmd5>
+    <version>1.5</version>
+    <time>1558037162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702872</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b2ed47d2a03cc7d1ef2b127b6fd1b31e</srcmd5>
+    <version>1.6</version>
+    <time>1601296198</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6:
+ - Add Python 3.8 support
+ - Drop Python 2.7 support
+ - Update to SWIG 4.0.1</comment>
+    <requestid>838243</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4f460cac90832de122784ea003538421</srcmd5>
+    <version>1.7</version>
+    <time>1634943018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7:
+  - Drop Python 3.6 support
+  - Add Python 3.9 support
+  - Require Graphviz 2.42+, (Graphviz 2.46+ recommended)
+  - Improve installation process and documentation
+  - Switch from nose to pytest
+  - Remove old Python 2 code
+  - AGraph.eq includes attribute comparison (PR #246)
+</comment>
+    <requestid>926418</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>122c1d41e7072c2749ad565edf0b3e19</srcmd5>
+    <version>1.9</version>
+    <time>1660924414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997995</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e8f4e423dfb8f59bed03ec344ff2543b</srcmd5>
+    <version>1.10</version>
+    <time>1677878660</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1068667</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>87378150fcb810e8f3b231e125f4ac59</srcmd5>
+    <version>1.10</version>
+    <time>1686927106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093037</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e7699c45adf3ce5be15c9ced461a7570</srcmd5>
+    <version>1.11</version>
+    <time>1688147887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095994</requestid>
+  </revision>
+</revisionlist>

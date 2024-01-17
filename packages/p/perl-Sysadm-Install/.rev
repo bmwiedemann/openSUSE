@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49fabb1f57db59fd0bb50efb189103ee</srcmd5>
+    <version>0.33</version>
+    <time>1260976083</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Sysadm-Install based on submit request 26215 from user computersalat
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5f54f832eb98ebec5857774c0aa40b0b</srcmd5>
+    <version>0.33</version>
+    <time>1268925612</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5f54f832eb98ebec5857774c0aa40b0b</srcmd5>
+    <version>0.33</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5f54f832eb98ebec5857774c0aa40b0b</srcmd5>
+    <version>0.33</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a98bd9f454584aaa2c4dedf37be9f21c</srcmd5>
+    <version>0.35</version>
+    <time>1281403196</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Sysadm-Install based on submit request 45185 from user computersalat
+</comment>
+    <requestid>45185</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c3fe4718dd75453738e5674d1d5ea6b0</srcmd5>
+    <version>0.35</version>
+    <time>1291583967</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54653 from user coolo
+</comment>
+    <requestid>54653</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b5f2773eb5f26a0c75a562af25ee3718</srcmd5>
+    <version>0.35</version>
+    <time>1291583972</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54653
+</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>b5f2773eb5f26a0c75a562af25ee3718</srcmd5>
+    <version>0.35</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>086154f7b4d8340f98ad5b5d2dc25158</srcmd5>
+    <version>0.36</version>
+    <time>1306917435</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72099</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>141511a824ed0a40c1accd7a31b1701b</srcmd5>
+    <version>0.36</version>
+    <time>1306917445</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72099
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dce14774230481e3e86533441e7467d1</srcmd5>
+    <version>0.38</version>
+    <time>1316447862</time>
+    <user>lrupp</user>
+    <comment>- new upstream version &lt;0.38&gt;
+   (ms) Fixed Win32 test in 012tap.t
+   (ms) [rt.cpan.org #68095] Applied fix by Kai von Thadden for
+         tap's raise_error option and added test case.</comment>
+    <requestid>82405</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>dce14774230481e3e86533441e7467d1</srcmd5>
+    <version>0.38</version>
+    <time>1319182308</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>063259e7fdd4e3308438ce530a7f4ffc</srcmd5>
+    <version>0.38</version>
+    <time>1323193671</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>063259e7fdd4e3308438ce530a7f4ffc</srcmd5>
+    <version>0.38</version>
+    <time>1340183923</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>063259e7fdd4e3308438ce530a7f4ffc</srcmd5>
+    <version>0.38</version>
+    <time>1359109803</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d49ddce5424b37db6c3a508f1759b5f2</srcmd5>
+    <version>0.43</version>
+    <time>1371814378</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 179036 from coolo)</comment>
+    <requestid>179058</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d49ddce5424b37db6c3a508f1759b5f2</srcmd5>
+    <version>0.43</version>
+    <time>1379663853</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>d49ddce5424b37db6c3a508f1759b5f2</srcmd5>
+    <version>0.43</version>
+    <time>1409302496</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>725527c7bbf7d878bdd08a8a9e5be776</srcmd5>
+    <version>0.44</version>
+    <time>1410967570</time>
+    <user>coolo</user>
+    <comment>- updated to 0.44
+    (ms) replaced bin_find() implementation by File::Which
+    (ms) tap() with raise_error option set now dies with stderr output, 
+         because $! isn't set on failed close().</comment>
+    <requestid>249508</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a065087d00417697647482dbafc10afd</srcmd5>
+    <version>0.45</version>
+    <time>1433845506</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311230</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>56a66ab2a6febc8df767b6e9a04b9b14</srcmd5>
+    <version>0.46</version>
+    <time>1435652294</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314106</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5debd49d28e9b8ddcd120a77f96b23d0</srcmd5>
+    <version>0.47</version>
+    <time>1465129246</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399315</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c6ef259142609a35197d5ab73b47a4e2</srcmd5>
+    <version>0.48</version>
+    <time>1479502955</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440740</requestid>
+  </revision>
+</revisionlist>

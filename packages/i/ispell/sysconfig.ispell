@@ -1,0 +1,18 @@
+## Path:        Applications/Ispell
+## Description: Define ispell dictionary for english
+## Type:        string
+## Default:     "system american british"
+## Config:      ispell
+## Command:     /usr/lib/ispell/update
+#
+# SuSEconfig.ispell maintains a symbolic link from the `english' (default)
+# dictionary to either `american' or `british'. In case only one of
+# `ispell-american' and `ispell-british' are installed, then the link will
+# point to this one. If both are installed, then the whitespace separated
+# value of ENGLISH_DICTIONARY takes effect. The magic word `system' expands
+# to the system's default language (as defined in /etc/sysconfig/language's
+# RC_LANG) if it's one of the English languages, and expands to the empty
+# string otherwise. The symlink will point to the first installed dictionary
+# in the list.
+#
+ENGLISH_DICTIONARY="system american british"

@@ -1,0 +1,5 @@
+<package name="libusb-1_0" project="openSUSE:Factory">
+  <title>USB Library</title>
+  <description>Libusb is a library that allows userspace access to USB devices.</description>
+  <devel project="hardware" package="libusb-1_0"/>
+</package>

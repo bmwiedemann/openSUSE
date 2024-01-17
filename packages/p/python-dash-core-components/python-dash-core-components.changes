@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Tue Jun  7 20:14:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.0.0
+  * As of Dash 2, the development of dash-core-components has been
+    moved to the main Dash repo
+  * This package exists for backward compatibility as Dash still
+    lists it as requirement. It has no further functionality than
+    displaying a deprecation message.
+
+-------------------------------------------------------------------
+Fri Apr  9 21:02:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.16.0
+  * #863 Adds a new Download component. Along with this several 
+    utility functions are added to help construct the appropriate 
+    data format:
+      dcc.send_file - send a file from disk
+      dcc.send_data_frame - send a DataFrame, using one of its 
+      writer methods
+      dcc.send_bytes - send a bytestring or the result of a 
+      bytestring writer
+      dcc.send_string - send a string or the result of a string 
+      writer
+  * #923 Set autoComplete to off in dcc.Dropdown. This fixes #808
+  * #930 Fixed a bug #867 with DatePickerRange that would 
+    sometimes shift the allowed dates by one day.
+  * #934 Fixed a bug in EnhancedTab component that ignored 
+    disabled_className property
+- Release 1.15.0
+  * #905 Make sure the figure prop of dcc.Graph receives updates 
+    from user interactions in the graph, by using the same layout 
+    object as provided in the prop rather than cloning it. Fixes 
+    #879.
+  * #903 Part of fixing dash import bug
+    https://github.com/plotly/dash/issues/1143
+  * #911, #906
+    Upgraded Plotly.js to 1.58.4
+       Patch Release 1.58.4
+       Patch Release 1.58.3
+  * #888 Adds a drag_value prop to dcc.Sliderto be able to fire
+    callbacks from dragging and releasing the slider.
+- Skip python36 buildrequire for pandas tests: No numpy, no pandas 
+  (we don't test it right now anyway)
+
+-------------------------------------------------------------------
+Sun Jan  3 17:42:34 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.14.1 -- #898
+  * Patch Release 1.58.2
+- Changes in 1.14.0 -- #889, #893
+  * Upgraded Plotly.js to 1.58.1
+    + Patch Release 1.58.1
+    + Feature release of Plotly.js 1.58.0 which:
+      - Add ticklabelposition attribute to cartesian axes and 
+        colorbars #5275
+      - Add "strict" autotypenumbers to axes and layout #5240
+      - Add itemwidth to legends #5212
+      - Add root.color attribute to sunburst and treemap traces
+        #5232, #5245
+      - Enable fast image rendering for all linear axes #5307
+      - Rework matches and scaleanchor so they work together
+        #5287
+- Changes in 1.13.0
+  * Added #871
+    Add Julia syntax highlighting support for dcc.Markdown
+  * Fixed #878 
+    Fixed #751, a bug that causes dcc.Slider and 
+    dcc.RangerSlider tooltips to be visible even if the 
+    slider component isn't visible (e.g. overflow),
+  * Updated #875
+    - Upgraded Plotly.js to 1.57.1 (Patch release 1.57.1)
+  * Feature release of Plotly.js 1.57.0 which:
+    - Add "domain" axis references in layout images, shapes
+      and annotations #5014
+    - Add rotation attribute to sunburst traces #5171, #5201
+    - Add computed margins in "full-json" export #5203
+  * Feature release of Plotly.js 1.56.0 which:
+    - Introduce period positioning attributes on date axes 
+      in various cartesian traces #5074, #5175
+    - Add minexponent attribute to improve control over SI 
+      prefixes in axis tick labels #5121,
+    - Add sort attribute to sunburst and treemap traces to 
+      disable automatic sort #5164
+    - Handle rgba colors in colorscale of surface traces #5166
+  * Patch release 1.55.2
+- Run simple test
+- Remove dependency on dash itself (build dependency cycle)
+
+-------------------------------------------------------------------
+Wed Nov 11 15:44:30 UTC 2020 - Marketa Calabkova <mmachova@suse.com>
+
+- update to version 1.12.1
+  * Upgraded Plotly.js to 1.55.1
+  * Add new options
+
+-------------------------------------------------------------------
+Sat Apr 18 20:51:50 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 1.9.1:
+  * Changed
+    + #740 Keep components that are loading in the DOM, but not
+       visible, as opposed to removing them entirely. This will ensure
+       that the size of the component's container does not shrink or
+       expand when the component goes into the loading state.
+  * Fixed
+    + #740 Fixed bug in which mapbox uirevision was not behaving when
+       inside a dcc.Loading component
+
+- changes from version 1.9.0:
+  * Changed
+    + #766 Update from React 16.8.6 to 16.13.0
+    + #768 Added title property to dcc.Link
+    + #776 Update dcc.Link to set href as children if children not
+       defined. Makes href a required prop as well.
+    + #767 Updated dcc.Link to respond to click modifiers, and added a
+       target prop.
+    + #774 Fixed dcc.Location firing callbacks for wrong property.
+    + 772 Modified dcc.Link to work with absolute paths if
+      refresh=True.
+  * Updated
+    + #784 Feature release of Plotly.js 1.53.0 which contains:
+      o rangebreaks on date axes #4614
+      o (x|y) unified hovermode #4620
+      o "hovered data" mode to spikesnap #4665
+      o "full-json" export format to Plotly.toImage and
+        Plotly.dowloadImage #4593
+      o node.customdata and link.customdata in sankey traces #4621
+      o opacityscale for surface traces #4480
+
+-------------------------------------------------------------------
+Tue Mar 31 08:26:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests for now as selenium explodes
+
+-------------------------------------------------------------------
+Tue Mar 31 07:29:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Install license and docs
+- Remove unneeded deps
+- Add required deps
+- Run tests
+
+-------------------------------------------------------------------
+Mon Mar 30 02:47:04 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.8.1

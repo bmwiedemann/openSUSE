@@ -1,0 +1,5 @@
+<package name="python-biopython" project="openSUSE:Factory">
+  <title></title>
+  <description>The Biopython Project is an international association of developers of freely available Python tools for computational molecular biology.</description>
+  <devel project="devel:languages:python:numeric" package="python-biopython"/>
+</package>

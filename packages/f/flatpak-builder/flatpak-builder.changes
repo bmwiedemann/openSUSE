@@ -1,0 +1,431 @@
+-------------------------------------------------------------------
+Fri Dec 29 01:27:57 UTC 2023 - Luna D Dragon <luna.dragon@suse.com>
+
+- Update to version 1.4.0
+  + Deprecate SHA1 and MD5 hashes for sources
+  + Remove all usage of libsoup (bumps GLib requirement to 2.66)
+  + Fix errors in included manifests not being fatal
+  + Fix crash on empty manifests or incorrect JSON type
+  + Various updates to the JSON Schema
+  + Add meson buildsystem;
+  + Set the HTTP Referer header on file/archive Sources
+  + Fix no-autodownload in extensions incorrectly setting autodelete
+  + Reduce verbosity of unzip usage
+  + Ignore $schema properties in manifests
+  + Change git usage to be more forgiving about submodules
+  + Add installed_tests option to meson project
+  + Fix libglnx meson subproject when built from autotools dist
+  + Fix tests not running in parallel under meson
+  + Replace appstream-glib with libappstream
+  + Run tests in parallel respecting number of jobs set
+  + Add missing secret-env and secret-opts keys to the JSON schema
+  + Improve parsing of git submodules
+  + Meson build fixes
+  + Add rename-mime-file and rename-mime-icons properties
+  + Re-implement support for data: URIs
+  + Set download speed timeout for HTTP downloads
+  + Enabled compressed HTTP downloads
+  + Use meson setup with meson buildsystem to avoid warning
+  + Fix libappstream not handling ID's ending with .desktop
+  + Fix ostree deployment on 64-bit inode filesystems
+- remove 0001-builder-Fix-silent-truncation-of-gt-32-bit-inodes.patch
+- Add patch fusermount3.diff to enforce usage of fuse v3
+- Switch to meson build system
+- remove libsoup as a dependency
+- bump min glib version
+- Add dependency on Appstream & Appstream-compose 
+
+-------------------------------------------------------------------
+Mon Aug 28 17:21:44 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix corrupted files when using a large
+  fs with 64-bit inodes (boo#1214708):
+  * 0001-builder-Fix-silent-truncation-of-gt-32-bit-inodes.patch
+
+-------------------------------------------------------------------
+Thu Feb  9 16:32:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add explicit pkgconfig(gio-2.0), pkgconfig(gio-unix-2.0) and
+  pkgconfig(libxml-2.0) BuildRequires: Align with what configure
+  checks for.
+
+-------------------------------------------------------------------
+Sun Dec  4 15:44:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.2.3:
+  + This is a minor bug-fix release that fixes cloning `file://`
+    URIs with git 2.38.1 or newer.
+
+-------------------------------------------------------------------
+Thu Apr 14 10:34:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use system debugedit on TW
+  + Add BuildRequires debugedit.
+  + Add Requires debugedit.
+
+-------------------------------------------------------------------
+Fri Apr  8 12:03:24 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure flatpak >= 1.12.4 is a build and runtime dependency.
+- Update url in description.
+
+-------------------------------------------------------------------
+Tue Jan 18 20:55:23 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.2.2:
+  + CVE-2022-21682: flatpak-builder --mirror-screenshots-url
+    commands to be allowed to create directories outside the build
+    directory boo#1194611
+  + uses a new option --nofilesystem=host:reset to cancel out
+    filesystem permissions in the application manifest and
+    overrides with Flatpak >= 1.12.4
+  + show "Unexpected filesystem suffix reset, ignoring" warning
+    in other cases
+  + Make FUSE 2 optimizations opt-in
+  + Make the JSON schema introduced in 1.2.1 more complete
+
+-------------------------------------------------------------------
+Mon Jan 17 21:43:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.2.1:
+  + Fix debuginfo being re-processed multiple times in a manifest
+  + Change manifest parsing issues from warnings to fatal errors
+  + Add .tar.zst archive support
+  + Fix auto-detection of .7z archives
+  + Install a JSON schema for manifest format
+  + Documentation updates
+
+-------------------------------------------------------------------
+Fri Oct  8 14:53:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.0:
+  + Add missing newlines in some output
+  + Fix missing error check in the new inline data support
+  + Updated documentation.
+- Changes from version 1.1.2:
+  + New secret-opts feature lets you pass e.g. CI secrets into the
+    build.
+  + Support content-encoding when downloading.
+  + New inline data source allowing easy creation of files from
+    embedded content from the manifest.
+- Changes from version 1.1.1:
+  + We now use the external debugedit project instead of using an
+    internal copy.
+  + The system version can be used, or if not an internal version
+    is used built using git submodules.
+  + Note, this needs libdw 0.172, which may not be available on
+    older distributions.
+- Replace old and no longer used libdwarf-devel with the correct
+  pkgconfig(libdw) BuildRequires (and stop passing header to
+  configure).
+
+-------------------------------------------------------------------
+Mon Jul  5 20:35:20 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 1.0.14.
+  * Ensure that sources cannot create files outside the build
+    directory.
+  * If --sandbox is enabled, ensure sources can't real files
+    outside the manifest directory.
+- Update for version 1.0.13.
+  * Fix a bug where git submodules were bundled even when disabled
+    (whereas in the previous release this issue was fixed for the
+    extraction phase)
+  * For bundled extensions, use the specified version as the branch
+    rather than using the branch of the parent app
+
+-------------------------------------------------------------------
+Wed Mar  3 16:31:08 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 1.0.12.
+  * Make --run work if manifest has --metadata in build-finish.
+  * Don't try to extract git submodules if they were disabled.
+
+-------------------------------------------------------------------
+Sat Aug 22 13:16:01 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.11:
+  + Use brz instead of bzr fom bzr repos (if available).
+  + Fix run-tests with --sandbox and empty test-args.
+- Changes from version 1.0.10:
+  + Support for 7zip archives.
+  + Allow overriding archive type.
+  + Support --token-type option.
+
+-------------------------------------------------------------------
+Mon Oct 21 19:16:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.9:
+  + More detailed commandline output with --verbose enabled.
+  + Support for including yaml module snippets.
+  + Support the CCACHE_DIR environment variable.
+  + New option disable-submodules for git sources.
+  + New commandline option --show-manifest.
+  + Multiple modules with the same name in the same manifest is now
+    supported.
+
+-------------------------------------------------------------------
+Wed Sep 11 17:17:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.8:
+  + Support multiple instances of --install-dep-from.
+  + Ensure shallow git mirrors are updated when the git ref
+    changes.
+  + Improved error reporting.
+
+-------------------------------------------------------------------
+Wed May 29 07:18:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.7:
+  + Use the new die-with-parent feature of HostCommand when build
+    to run in a flatpak.
+  + Fix some details in how we create platform commits to fix font
+    cache mtime issues.
+- Changes from version 1.0.6:
+  + Pass --noninteractive when installing for flatpak >= 1.2.0.
+  + Doc fixes.
+- Changes from version 1.0.5:
+  + Due to a change in the output of "flatpak info" the support for
+    loading default build options from the sdk regressed with
+    flatpak 1.2.x. This is fixed and everyone who built flatpaks
+    with 1.2.x are recommended to update to this release and
+    re-build.
+- Changes from version 1.0.4:
+  + Add --add/remove-tag options
+  + Allow using a full ref as sdk and use the branch from that.
+
+-------------------------------------------------------------------
+Wed Feb 13 08:20:04 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Switch from Requires to Recommends for bzr. bzr only works for
+  python2 and on a python3 only system, bzr is not available
+  (bsc#1082696)
+
+-------------------------------------------------------------------
+Mon Jan 28 21:04:56 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.0.3:
+  + Compress changes in cache, fixing the build of large
+    applications like libreoffice in some cases.
+  + Add new default-branch manifest option to allow overridable
+    branch name.
+- Changes from version 1.0.2:
+  + Print a warning when a YAML document has a float-like string
+    value.
+  + Handle .txz archive suffixes.
+  + Set SOURCE_DATE_EPOCH to the mtime of the manifest in the
+    build.
+  + Update python post-processor to handle python 3.7 pyc files.
+  + Allow unsetting env vars in the build options by setting them
+    to null.
+  + Documentation improvements.
+
+-------------------------------------------------------------------
+Wed Dec 19 21:45:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.0.1:
+  + Run appstream-util mirror-screenshots in the sandbox, rather
+    than on the host, as the host might not have a new enough
+    appstream-glib.
+  + Fix build cache when a module has uncommon characters in the
+    name.
+
+-------------------------------------------------------------------
+Mon Aug 27 09:04:39 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.0.0:
+  + Respect no-parallel-make with ninja.
+  + Fixed regression in data: uris.
+  + Warn about deprecated cmake property.
+  + Make X-Flatpak-RenamedFrom a list.
+  + Fix handling of mirror uris with no terminating slash.
+  + Take arch into account for --skip-if-unchanged.
+  + Fix --run when run inside a flatpak sandbox.
+  + Ensure GIT commiter env var is set when applying git patches.
+  + Keep x-* properties in the manifest when creating
+    manifest.json.
+  + New property paths in patch source to apply multiple patches.
+
+-------------------------------------------------------------------
+Mon Aug 13 21:23:01 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.99.3:
+  + Add X-Flatpak-RenamedFrom key to renamed desktop files.
+  + Set FLATPAK_BUILDER_BUILDDIR when building module.
+  + Handle large downloads better.
+  + Make p2p code non-optional.
+- Changes from version 0.99.2:
+  + Fix --install not working due to asking for confirmation.
+  + Fix builds with latest libsoup.
+  + New option git-init for archives.
+  + New option use-git-am for patches.
+- Changes from version 0.99.1:
+  + New libdir build option.
+  + Support loading default options from sdk.
+  + Add support for overriding c/cpp/ld/etc flags in a module.
+  + Now uses libcurl to download things instead of soup, which
+    means we now support ftp urls.
+  + Don't prune build caches when building with
+    --{export,finish}-only.
+  + rename-desktop-file now handles launchables in the appdata.
+  + Archive sources support dest-filename.
+  + Archive and file sources now support mirror-urls to list extra
+    urls in case of network problems.
+- Add pkgconfig(libcurl) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Sun Jul  1 10:06:36 UTC 2018 - tbechtold@suse.com
+
+- Add "BuildRequires pkgconfig(yaml-0.1)" in flatpak-builder.spec
+  to enable yaml manifest file support. This is needed to build
+  flatpaks when flatpak manifest files are written in yaml (instead
+  of json).
+
+-------------------------------------------------------------------
+Wed May  2 05:54:26 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.10.10:
+  + We now support yaml manifest as well as json.
+  + New source type "svn" to download subversion checkouts.
+  + New source type "dir" for local directories.
+  + Set FLATPAK_BUILDER_N_JOBS in environment during build.
+  + If not using ccache, enforce it of. This helps builds with
+    meson as they pick up ccache by default, which makes no
+    sense when there is no persistent storage for ccache to use.
+  + New options prepend--path similar to the existing append--path
+    ones, but prepending instead.
+  + New argument --no-shallow-clone which disables any shallow
+    clone optimizations.
+  + New inherit-sdk-extensions property similar to
+    inherit-extensions, but is not inherited in the platform.
+  + We now ignore json keys starting with "//" and "__" allowing
+    these to be used for comments.
+  + Fixed a bug that caused --install to not work properly.
+  + New argument --extension-tag for using the new tagged extension
+    feature.
+  + The build metadata now records which extensions were produced
+    as part of a build.
+  + New property add-build-extensions allows creating exension
+    points that can be used during the build.
+  + flatpak-builder --run now also binds /run/build-runtime to the
+    builds, allowing it to work when building runtimes.
+
+-------------------------------------------------------------------
+Mon Mar  5 16:25:40 UTC 2018 - fcrozat@suse.com
+
+- Update to version 0.10.9:
+  + Support -y argument, which passes it on to flatpak install, etc.
+  + Fix build on glibc 2.27.
+- Changes from version 0.10.8:
+  + Fix build on recent glibc.
+- Changes from version 0.10.7:
+  + Add support for --socket=fallback-x11.
+  + Fix assert in --install.
+  + Fix --disable-updates for git sources.
+  + When mirroring git repos, use a temporary download dir.
+  + Support running flatpak-builder inside a flatpak sandbox.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:25:30 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Dec 20 11:06:23 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.10.6:
+  + New checksum types for file/archive sources: md5, sha1, sha512.
+  + Support including source snippets from another file, similar to
+    how module includes are supported.
+  + The app id renaming in the appdata file is now more careful to
+    avoid renaming other parts.
+  + The cache default repo format for new caches is now
+    bare-user-only which means building with flatpak-builder works
+    on filesystems that don't support xattrs.
+  + New --install argument will install the finished build using
+    the new flatpak install install-directly-from-local-repo
+    feature. This makes it easier to test local builds.
+
+-------------------------------------------------------------------
+Mon Nov 27 09:16:01 UTC 2017 - adrien.plazas@suse.com
+
+- Update to version 0.10.5:
+  + Add support for running tests during the build (disable with
+    --disable-tests).
+  + New build-option append-pkg-config to append to
+    PKG_CONFIG_PATH.
+  + --state-dir option lets you reuse a single directory instead of
+    scattered .flatpak-builder dirs for builds, downloads and cache
+    data.
+  + git: Allow updates with non-fastforwarded branched.
+  + Don't fail if app ships both appdata and metainfo file.
+  + Support --log-system/session-bus in --run.
+
+-------------------------------------------------------------------
+Mon Nov 13 20:34:43 UTC 2017 - jengelh@inai.de
+
+- Adjust RPM groups.
+
+-------------------------------------------------------------------
+Tue Nov  7 08:05:13 UTC 2017 - adrien.plazas@suse.com
+
+- Update to version 0.10.4:
+  + Fixed source bundling of git repos with older versions of git.
+  + Allow git sources to use "HEAD" branch.
+  + Fixed crashes in some cases of git failure.
+
+-------------------------------------------------------------------
+Thu Nov 02 10:30:15 UTC 2017 - aplazas@suse.com
+
+- Update to version 0.10.3:
+  + Yet more fixed or older versions of git. In particular, we
+    disable fsck during transfer when doing a shallow clone and the
+    git version is less than 1.8.3.2.
+- Changes from version 0.10.2:
+  + Even more fixes for shallow git clones with older versions of
+    git.
+  + New property for git sources, disable-shallow-clone which falls
+    back to cloning the entire remote.
+- Changes from version 0.10.1:
+  + Fix handling of shallow git clones with older versions of git.
+  + Fix issue where flatpak-builder --run could exit if some thread
+    in the parent process exited, exposeb by e.g. gnome-builder.
+- Changes from version 0.10.0:
+  + We now do shallow clones of git repos when downloading if
+    possible.
+  + The way the cache works internally was slightly tweaked which
+    will cause all existing caches to be rebuilt.
+- Changes from version 0.9.99:
+  + Fix git source bundling on older git version.
+  + New property: appdata-license lets you easily modify the
+    appstream license field.
+  + New source type "extra-data" which makes it easier to use
+    extra-data apps.
+  + We now automatically compress debuginfo unless the
+    no-debuginfo-compression option is specified.
+  + Appstream files called .metainfo.xml are now recognized.
+  + New prepare-platform-commands property, similar
+    to cleanup-platform-commands, but run before importing all the
+    changes from the SDK.
+  + We now apply all the deletions that happened in the SDK on the
+    base when creating the platform.
+- Changes from version 0.9.98:
+  + build cache hits are now faster.
+  + git sources have a new property "tag" which works the same as
+    "branch", but improves readability when referencing a git tag.
+  + flatpak-builder --run now passes --with-appdir which is useful
+    when testing uninstalled builds.
+  + When bundling git repos in .Sources we now make a shallow clone
+    which uses a lot less space.
+  + .Locale extensions now always set the new locale-subset
+    property.
+  + locale-subset is supported in the add-extension property.
+  + build-options now also supports make-args and make-install
+    args, which allows per-arch make flags.
+- Bump pkgconfig(flatpak) BuildRequires to 0.10.0.
+- Bump pkgconfig(ostree-1) BuildRequires to 2017.12.
+
+-------------------------------------------------------------------
+Wed Sep 13 15:31:15 UTC 2017 - zaitor@opensuse.org
+
+- Initial build for openSUSE, version 0.9.11.

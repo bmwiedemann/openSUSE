@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Wed May 31 07:26:55 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix wrong tarball by redownloading
+
+-------------------------------------------------------------------
+Tue May 30 14:07:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix version reporting and do not use glob for file list
+
+-------------------------------------------------------------------
+Mon May 15 18:35:34 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Mon May  8 04:52:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE
+
+-------------------------------------------------------------------
+Mon May  1 11:57:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package ansible-navigator: A text-based user interface (TUI)
+  for Ansible

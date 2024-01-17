@@ -1,0 +1,111 @@
+Index: nss/coreconf/Linux.mk
+===================================================================
+--- nss.orig/coreconf/Linux.mk
++++ nss/coreconf/Linux.mk
+@@ -136,7 +136,7 @@ OS_CFLAGS		= $(DSO_CFLAGS) $(OS_REL_CFLA
+ ifeq ($(KERNEL),Linux)
+ 	OS_CFLAGS	+= -DLINUX -Dlinux
+ endif
+-OS_LIBS			= $(OS_PTHREAD) -ldl -lc
++OS_LIBS			= $(OS_PTHREAD) -ldl -lc -ljitterentropy
+ 
+ ifeq ($(OS_TARGET),Android)
+ 	OS_LIBS		+= -llog
+Index: nss/lib/freebl/drbg.c
+===================================================================
+--- nss.orig/lib/freebl/drbg.c
++++ nss/lib/freebl/drbg.c
+@@ -6,6 +6,8 @@
+ #include "stubs.h"
+ #endif
+ 
++#include <jitterentropy.h>
++
+ #include <unistd.h>
+ 
+ #include "prerror.h"
+@@ -107,6 +109,45 @@ typedef struct RNGContextStr RNGContext;
+ static RNGContext *globalrng = NULL;
+ static RNGContext theGlobalRng;
+ 
++/* Jitterentropy */
++#define JITTER_FLAGS JENT_FORCE_FIPS
++static struct rand_data *jitter;
++
++static ssize_t
++FIPS_jent_get_entropy (void *dest, ssize_t len)
++{
++    int result = -1;
++
++    /* Ensure that the jitterentropy generator is initialized */
++
++    if (!jitter)
++    {
++        if (jent_entropy_init_ex (1, JITTER_FLAGS))
++            goto out;
++
++        jitter = jent_entropy_collector_alloc (1, JITTER_FLAGS);
++        if (!jitter)
++            goto out;
++    }
++
++    /* Get some entropy */
++
++    result = jent_read_entropy_safe (&jitter, dest, len);
++
++out:
++    return result;
++}
++
++static void
++FIPS_jent_deinit (void)
++{
++    if (jitter)
++    {
++        jent_entropy_collector_free (jitter);
++        jitter = NULL;
++    }
++}
++
+ /*
+  * The next several functions are derived from the NIST SP 800-90
+  * spec. In these functions, an attempt was made to use names consistent
+@@ -180,7 +221,7 @@ static PRCallOnceType coRNGInitEntropy;
+ static PRStatus
+ prng_initEntropy(void)
+ {
+-    size_t length;
++    ssize_t length;
+     PRUint8 block[PRNG_ENTROPY_BLOCK_SIZE];
+     SHA256Context ctx;
+ 
+@@ -203,8 +244,8 @@ prng_initEntropy(void)
+     /* For FIPS 140-2 4.9.2 continuous random number generator test,
+      * fetch the initial entropy from the system RNG and keep it for
+      * later comparison. */
+-    length = RNG_SystemRNG(block, sizeof(block));
+-    if (length == 0) {
++    length = FIPS_jent_get_entropy(block, sizeof(block));
++    if (length < 1) {
+         coRNGInitEntropy.status = PR_FAILURE;
+         __sync_synchronize ();
+         coRNGInitEntropy.initialized = 1;
+@@ -244,8 +285,8 @@ prng_getEntropy(PRUint8 *buffer, size_t
+      * iteratively fetch fixed sized blocks from the system and
+      * compare consecutive blocks. */
+     while (total < requestLength) {
+-        size_t length = RNG_SystemRNG(block, sizeof(block));
+-        if (length == 0) {
++        ssize_t length = FIPS_jent_get_entropy(block, sizeof(block));
++        if (length < 1) {
+             rv = SECFailure; /* error is already set */
+             goto out;
+         }
+@@ -792,6 +833,7 @@ RNG_RNGShutdown(void)
+     /* clear */
+     prng_freeRNGContext(globalrng);
+     globalrng = NULL;
++    FIPS_jent_deinit ();
+     /* reset the callonce struct to allow a new call to RNG_RNGInit() */
+     coRNGInit = pristineCallOnce;
+ }

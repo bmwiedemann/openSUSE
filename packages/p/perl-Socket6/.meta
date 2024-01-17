@@ -1,0 +1,6 @@
+<package name="perl-Socket6" project="openSUSE:Factory">
+  <title>IPv6 Sockets (Perl Module)</title>
+  <description>The IPv6 related part of the C socket.h defines and structure
+manipulators.</description>
+  <devel project="devel:languages:perl" package="perl-Socket6"/>
+</package>

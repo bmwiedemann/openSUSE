@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12c65602953e40a679d32f89bdacb87a</srcmd5>
+    <version>1.0.2</version>
+    <time>1359467161</time>
+    <user>coolo</user>
+    <comment>New package for Factory; see http://lists.opensuse.org/opensuse-factory/2013-01/msg00433.html</comment>
+    <requestid>149728</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>12c65602953e40a679d32f89bdacb87a</srcmd5>
+    <version>1.0.2</version>
+    <time>1379664676</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>12c65602953e40a679d32f89bdacb87a</srcmd5>
+    <version>1.0.2</version>
+    <time>1409303363</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

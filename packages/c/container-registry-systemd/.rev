@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e20762677c476da69e6c3d21a875527</srcmd5>
+    <version>0.0+git20191017.60afa44</version>
+    <time>1571402201</time>
+    <user>dimstar_suse</user>
+    <comment>Wrapper scripts to setup and run a local registry</comment>
+    <requestid>739528</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>af76499cd81bb6ba90b327ac3fd95b44</srcmd5>
+    <version>0.0+git20191022.f65282e</version>
+    <time>1571751976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20191022.f65282e:
+  * Make registry auth-server container image configureable via sysconfig
+
+- Update to version 0.0+git20191021.8dc6fa1:
+  * Fix name of required service
+  * Fix path of container registry image to the official location</comment>
+    <requestid>741701</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>38a24a09ebec8dc1252cf4daade2365e</srcmd5>
+    <version>0.0+git20191102.b2b9ebf</version>
+    <time>1572780238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20191102.b2b9ebf:
+  * Fix syntax errors in if statements</comment>
+    <requestid>744896</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ffbc6937876717aee69d7c2244501539</srcmd5>
+    <version>0.0+git20191222.b00b515</version>
+    <time>1577137607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20191222.b00b515:
+  * Disable auth_server if no auth is wanted
+  * Abort if unknown options are given
+  * Only run after network is online</comment>
+    <requestid>758990</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>659608f6d70780689fb52d8a37ca23aa</srcmd5>
+    <version>0.0+git20191229.fbbe884</version>
+    <time>1577705671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20191229.fbbe884:
+  * Add re-generation of certificates</comment>
+    <requestid>759895</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6424b9230915e08285999a3cd8979987</srcmd5>
+    <version>0.0+git20200115.5e372f5</version>
+    <time>1579195282</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200115.5e372f5:
+  * Ignore if pull fails, continue with old image in that case</comment>
+    <requestid>764731</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0ac6e63a51803e6e0772a81864545eb8</srcmd5>
+    <version>0.0+git20200228.a79d477</version>
+    <time>1582899710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200228.a79d477:
+  * README: Add section about pull-through cache
+  * README: Add link to configuration reference</comment>
+    <requestid>780193</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>533cb3a25fa7ea7144fd3395a815e506</srcmd5>
+    <version>0.0+git20200526.1d9ce7b</version>
+    <time>1590650014</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.0+git20200526.1d9ce7b:
+  * Monitor container with conmon pid file (#2)</comment>
+    <requestid>809052</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>611ed5fe08a142f22054ff5712341c76</srcmd5>
+    <version>0.0+git20210412.85b4fd5</version>
+    <time>1618240248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20210412.85b4fd5:
+  * Fix name of config file
+  * Update service files with new layout
+- Use etc/default instead of sysconfig for configuration file</comment>
+    <requestid>884689</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9fe65542712ae4e7a1b69ef6b1c5819c</srcmd5>
+    <version>0.0+git20220131.00931d2</version>
+    <time>1643666244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220131.00931d2:
+  * Use type notify instead of forking
+
+- Update to version 0.0+git20220131.f427d35:
+  * Adjust timing for start limits in case of errors</comment>
+    <requestid>950222</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b1195c8ab6df525d9a20b544f7ae7ac9</srcmd5>
+    <version>0.0+git20220603.70601f6</version>
+    <time>1655245978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220603.70601f6:
+  * Fix missing sdnotify argument and NotifyAccess statement (issue #3)</comment>
+    <requestid>982566</requestid>
+  </revision>
+</revisionlist>

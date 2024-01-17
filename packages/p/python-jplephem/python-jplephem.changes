@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Sun Feb 21 19:36:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: With NumPy 1.20, python36-numpy is no
+  longer available in Tumbleweed (NEP 29)
+- Drop unused test files de405.bsp de421.bsp
+
+-------------------------------------------------------------------
+Mon Nov 16 14:06:39 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- update to 2.15
+  * Add "Type N" to each ephemeris segment description
+  * Remove a couple of unused imports
+
+-------------------------------------------------------------------
+Thu Jul  9 11:44:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 2.14
+  * Fall back to plain file I/O on platforms that support 
+    fileno() but that don’t support mmap(), like the Pyodide 
+    platform.
+- Update to 2.13
+  * The exception raised when a segment is given a Julian date 
+    outside the segment’s date range is now an instance of the 
+    ValueError subclass OutOfRangeError that reminds the caller 
+    of the range of dates supported by the SPK segment, and 
+    carries an array attribute indicating which input dates were 
+    at fault.
+
+-------------------------------------------------------------------
+Thu Jan 30 15:00:28 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.12
+  * Replaced use of NumPy ``flip()`` with a reverse slice ``[::-1]`` after
+    discovering the function was a recent addition that some user installs
+    of NumPy do not support.
+- Update to 2.11
+  * Reverse the order in which Chebyshev polynomials are computed to
+    slightly increase speed, to simplify the code, and in one case
+    (comparing PCK output to NASA) to gain a partial digit of extra
+    precision.
+- Update to 2.10
+  * Document and release support for ``.bcp`` binary PCK kernel files
+    through the new ``jplephem.pck`` module.
+
+-------------------------------------------------------------------
+Thu Jan 10 00:31:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for summary.
+
+-------------------------------------------------------------------
+Fri Jan  4 16:33:04 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.9
+  * add load_array()
+- Update to 2.8
+  * single memory map instead of many
+- Update to 2.7
+  * Slight tweaks to the documentation
+  * Add messages during excerpt operation
+  * Add excerpt to the command line
+  * Add subcommand for printing comment area
+  * Add test for “daf” subcommand
+  * Add subcommands to jplephem command line
+  * Read as little during excerpting as possible
+  * Start work on excerpt()
+  * Two tweaks to write DAF files more accurately
+  * Better test: array can take up only part of record
+  * Slight tweaks to code
+  * To fix the build,bid a fond farewell to Python 2.6
+  * Git ignore tmp*.py experimental scripts
+  * Full tests of DAF from BytesIO and from real file
+  * Start writing a comprehensive test of DAF class
+  * Avoid antipattern of attribute that shows up later
+  * Add routine for writing a new DAF file summary
+  * Switch DAF class to cached Struct objects 
+  * Introduce the idea of simply read()ing floats, too
+  * Mark `ephem.py` as deprecated
+  * Remove unused import
+  * Make README test instructions more complete
+  * Add note to README about how to run the tests
+  * Add link to Skyfield to README 
+
+-------------------------------------------------------------------
+Wed May 24 16:36:53 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

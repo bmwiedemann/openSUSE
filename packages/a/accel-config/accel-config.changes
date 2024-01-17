@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Wed Aug 30 15:47:17 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 4.1:
+  * add missing libssl-dev dependency
+  * Skip configuring ats_disable if the attribute is not present
+  * Add config-user-default command
+  * Add option "-c <config_file>" to load default configurations from
+    the file
+  * Disable default configured WQs and devices
+  * Add "-n <wq_name>" to specify WQ name for disabling WQs
+  * Add user_default_profile.conf
+  * Add doumentation for new command "config-user-default"
+
+
+-------------------------------------------------------------------
+Fri Apr 28 08:53:40 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 4.0:
+  * use buildflags.mk, remove hardcoded CFLAGS
+  * debian/accel-config-test.install fix path on copy
+  * convert all magic number for 1<<12 to PAGE_SIZE
+  * fix madvise() call to unmap pages
+  * add updated idxd.h definition from kernel source
+  * Remove redundant -f 0x0 in iaa_user_test_runner.sh
+  * Fix dedicated mode wq size 1 failure
+  * Modify incorrect print information
+  * Modify block_on_fault in 2g2q_user_2.conf
+  * Move get_random_value() to accel_test.c
+  * Add algorithm to do Zcompress8
+  * Add test code of operation Zcompress8
+  * Modify script for executing Zcompress8 test
+  * Add algorithm to do Zdecompress8
+  * Add test code of operation Zdecompress8
+  * Modify script for executing Zdecompress8 test
+  * Add algorithm to do both Encrypt and Decrypt
+  * Add test code of operation Encrypt
+  * Modify script for executing Encrypt test
+  * Add test code of operation Decrypt
+  * Modify script for executing Decrypt test
+  * Modify struct in idxd.h for IAA Translation Fetch
+  * Add test code of IAA Translation Fetch
+  * Modify script for executing IAA Translation Fetch test
+  * Add helping information for new parameters
+  * Add openssl package installation details
+  * Fix bug of Zcompress8 about input size less 128
+  * Remove ats_disable config for iax tests
+  * Add identification for IAA1.0/2.0 platform
+  * add per-wq prs disable tests
+  * Update format bitmask attrs to match driver
+  * Add new API to set and get wq op_config
+  * Add option to config-wq to set op_config
+  * Change json listing format of bitmasks
+  * Add load, save and list config support for op_config
+  * Update config-wq doc with op_config details
+  * Add unit test for op_config configuration
+  * Fix segmentation fault during list cmd in SPR
+  * Add API to retrieve iaa_cap when available
+  * Add group->desc_progress_limit support
+  * Add group->batch_progress_limit support
+  * Add wq->prs_disable support
+  * Add device->event_log_size support
+  * Do not set traffic class in tests
+  * Skip op_config test if feature not present
+  * Include IAA support in README
+  * Fix bug in return value of pasid enabled check
+  * add DIX Generate operation support
+  * add translation fetch operation support
+  * Remove traffic config for iax tests
+  * Fix dsa_test segmentation fault when do 2G tests
+- Update to version 3.5.3:
+  * Fix bug of setting max destination size
+  * Remove some leftover references to mdev
+  * Remove text about installing kernel headers
+  * Remove uninitialized local variable warning
+  * Remove read_buffers 0 settings from configs
+
+-------------------------------------------------------------------
+Tue Dec 27 23:01:03 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.5.2:
+  * Bug fix in help system
+  * Remove mdev implementation
+
+-------------------------------------------------------------------
+Fri Nov 18 14:34:25 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.5.0:
+  * Fix static code analysis warnings
+  * Fix lintian errors
+  * Move test program and related configs to /usr/lib
+  * Move contrib/configs/* to /etc
+  * Some code cleanup
+
+-------------------------------------------------------------------
+Mon Oct 10 18:22:08 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.4.8
+  * Changes in accel-config test
+
+-------------------------------------------------------------------
+Wed Sep 14 09:11:38 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.4.7:
+  * No relevant changes
+- Update to version 3.4.6.5:
+  * Add Zcompress32, Zdecompress32, Compress and Decompress test
+  * Add Zcompress16 and Zdecompress16 to IAA test
+  * Add operation CRC64 into IAA test
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon May 16 09:24:48 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.4.6.4:
+  * Init IAA test and add No-op operation
+  * Separate common codes from DSA source code file
+  * Bug fixes
+
+-------------------------------------------------------------------
+Thu Apr 21 21:40:01 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.4.6.3:
+  * Allow use of config files with driver_name attr with older drivers
+
+-------------------------------------------------------------------
+Wed Mar 30 08:11:22 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.4.6.2:
+  * Allow driver_name to be configured in guest
+  * Disable mdev tests
+  * Update driver_name in unit test configs
+  * Improve error message in config attr failures
+- Update to version 3.4.6.1:
+  * Bug fix in wq driver name configuration
+  * Test configs add driver name attr
+- Update to version 3.4.6:
+  * Support new "read_buffer" attributes that replace "token" attributes
+  * Deprecate attributes with "token" names
+  * Add support for driver_name attr to get wq driver name
+  * Fix a read buffer length related bug
+  * Add opcode operation support
+- Build exclusively on x86_64, as kernel module idxd.ko cannot be
+  found on i586
+
+-------------------------------------------------------------------
+Thu Dec 30 15:11:29 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.4.4:
+  * Add -e/--enable and -f/--force features to load-config command
+  * Add more sample configuration files for different usages
+  * Add multi-descriptor support
+- Update to version 3.4.3:
+  * Remove redundant dependencies (kmod and udev)
+  * Bug fixes and code cleanup
+  * DSA test adds device and wq selection
+  * DSA test adds no opcode operation support
+
+-------------------------------------------------------------------
+Fri Oct  8 13:28:16 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.4.2
+  * Add feature to skip tests based on feature availability
+  * Skip tests requiring shared memory if feature not available
+  * Add API to retrieve wq occupancy attribute
+
+-------------------------------------------------------------------
+Thu Sep  9 10:18:17 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.4.1
+  * Bug fixes related to traffic-class
+  * Add per-wq ATS disable support
+  * Add extended error status reporting
+  * Created local copy of UAPI header file idxd.h from /usr/include
+  * Update driver name changes
+  * Rewrite unit test removing hardcoding and other enhancements
+  * Bug fixes
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jun 29 10:23:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.2
+  * Add support for new device bind paths retaining compatibility
+    with older kernels
+  * Add support for UACCE interface to access char devices
+  * Fixed several issues in filtering, config and listing code
+  * Support all 256 bits of op_cap
+  * Fix incorrect return values
+  * Made removing all mdevs more intuitive
+
+-------------------------------------------------------------------
+Mon Apr 26 09:57:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.1
+  * Improved error messages and return values
+  * Fix incorrect error return value from tool
+  * Allow -1 special value for wq->groupid and fix related error
+    messages
+  * Fix incorrect manpage text for config-wq
+  * Remove reference to non-interface header in interface header
+  * Remove non-interface header from packaging
+  * Use portable data types and fix build issues in 32 bit targets
+- Dropped upstream merged v3.0.1-use-portable-data-types.patch
+
+-------------------------------------------------------------------
+Fri Feb 12 13:09:35 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
+
+- Update to v3.0.1 (jsc#SLE-13348)
+  - Added IAX support
+  - Added implementation and support for new mdev types
+  - Removed uuid type mdevs
+  - Introduced a new wq API to set max batch and transfer size
+  - Added new GPL2 and LGPL-2.1 license files
+  - Library license changed to LGPL-2.1
+  - Fixed static code analysis bugs
+- Enhanced Description
+- Added dependency on the idxd kernel driver
+- Restricted architecture to x86 - DSA is embedded
+  into Intel CPUs
+- Added patch: v3.0.1-use-portable-data-types.patch
+
+-------------------------------------------------------------------
+Tue Sep 22 09:28:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Initial packaging of v2.8 (jsc#SLE-15021)

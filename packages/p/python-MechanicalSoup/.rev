@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5cae72cdbe89df86060af143a4d08525</srcmd5>
+    <version>0.10.0</version>
+    <time>1526371976</time>
+    <user>dimstar_suse</user>
+    <comment>Automating interaction with websites</comment>
+    <requestid>606012</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6c8531d7e93836adf6e31cfbf81f02c3</srcmd5>
+    <version>0.10.0</version>
+    <time>1527582680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610488</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1f0399beac909871a002a80366efdbfd</srcmd5>
+    <version>0.10.0</version>
+    <time>1548334952</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659276</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9d339af7ff0f41ac594c58f71e2a9e8</srcmd5>
+    <version>0.11.0</version>
+    <time>1552380735</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with beautifulsoup4-4.7+:
+  * bs4-47.patch
+
+- Update to 0.11.0:
+  * Constructing a Form instance from a bs4.element.Tag whose tag name is not form will now emit a warning, and may be deprecated in the future. [#228]
+  * Breaking Change: LinkNotFoundError now derives from Exception instead of BaseException. While this will bring the behavior in line with most people's expectations, it may affect the behavior of your code if you were heavily relying on this implementation detail in your exception handling. [#203]
+  * Improve handling of button submit elements. Will now correctly ignore buttons of type button and reset during form submission, since they are not considered to be submit elements. [#199]
+  * Do a better job of inferring the content type of a response if the Content-Type header is not provided. [#195]
+  * Improve consistency of query string construction between MechanicalSoup and web browsers in edge cases where form elements have duplicate name attributes. This prevents errors in valid use cases, and also makes MechanicalSoup more tolerant of invalid HTML. [#158]</comment>
+    <requestid>681856</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6eaff1d5595e9b212207e6d659a1d234</srcmd5>
+    <version>0.12.0</version>
+    <time>1567849937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728560</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c512b06c57085edfde3b04e322d46e5b</srcmd5>
+    <version>0.12.0</version>
+    <time>1584447136</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Leap</comment>
+    <requestid>785889</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bdbcbe00e68c3d5129455bde97ef495e</srcmd5>
+    <version>1.0.0</version>
+    <time>1610381632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0
+  * Added support for Python 3.8 and 3.9.
+  * ``StatefulBrowser`` has new properties ``page``, ``form``, and ``url``,
+    which can be used in place of the methods ``get_current_page``,
+    ``get_current_form`` and ``get_url`` respectively
+  * ``StatefulBrowser.form`` will raise an ``AttributeError`` instead of
+    returning ``None`` if no form has been selected yet.
+  * Decompose ``&lt;select&gt;`` elements with the same name when adding a new
+    input element to a form.
+  * The ``params`` and ``data`` kwargs passed to ``submit`` will now properly
+    be forwarded to the underlying request for GET methods (whereas previously
+    ``params`` was being overwritten by ``data``).</comment>
+    <requestid>862170</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d3ac10e51ea3cb42fe180c86e19f8506</srcmd5>
+    <version>1.2.0</version>
+    <time>1665592006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010200</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b90703e78883cc5b810cfd7ce9343ab3</srcmd5>
+    <version>1.2.0</version>
+    <time>1680018696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074963</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>51f94f02367f69e56faa27990d90f704</srcmd5>
+    <version>1.3.0</version>
+    <time>1702071121</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0 (bsc#1213006, CVE-2023-34457):
+  * To prevent malicious web servers from reading arbitrary files
+    from the  client, files must now be opened explicitly by the
+    user in order to upload their contents in form submission.
+    This remediates CVE-2023-34457
+  * Added support for Python 3.11.
+  * Allow submitting a form with no submit element. This can be
+    achieved by passing ``submit=False`` to
+    ``StatefulBrowser.submit_selected``. Thanks @alexreg! [#480]
+
+- Update to version 1.2.0
+    Add support for HTML form-associated elements
+    which exposed more local information than users may have been expecting. [#375]</comment>
+    <requestid>1131724</requestid>
+  </revision>
+</revisionlist>

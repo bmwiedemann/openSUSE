@@ -1,0 +1,10 @@
+<package name="wbxml2" project="openSUSE:Factory">
+  <title>WBXML parser and compiler library</title>
+  <description>wbxml2 is a library that includes a WBXML parser and a WBXML compiler.
+Unlike wbxml, it does not depend on libxml2 but on expat, making it
+faster and more portable. WBXML Library contains a library and its
+associated tools to Parse, Encode and Handle WBXML documents. The WBXML
+(Wireless Binary XML) format is a binary representation of XML, and it
+has been defined by the Wap Forum.</description>
+  <devel project="mobile:synchronization:FACTORY" package="wbxml2"/>
+</package>

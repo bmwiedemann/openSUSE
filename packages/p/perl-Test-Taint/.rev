@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ffba87a9e0ac3e4e905528f99c98d30</srcmd5>
+    <version>1.04</version>
+    <time>1306920742</time>
+    <user>saschpe</user>
+    <comment>dependency for www-mechanize</comment>
+    <requestid>72115</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2847162556463682d606364a6086dae5</srcmd5>
+    <version>1.04</version>
+    <time>1306920752</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72115
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2847162556463682d606364a6086dae5</srcmd5>
+    <version>1.04</version>
+    <time>1319182314</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>edeecccae664d6707244c853f64dea8c</srcmd5>
+    <version>1.04</version>
+    <time>1323193721</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>edeecccae664d6707244c853f64dea8c</srcmd5>
+    <version>1.04</version>
+    <time>1340183936</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>edeecccae664d6707244c853f64dea8c</srcmd5>
+    <version>1.04</version>
+    <time>1359109822</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>57e88f6fd87f916b516fd14a784061fd</srcmd5>
+    <version>1.06</version>
+    <time>1370519791</time>
+    <user>coolo</user>
+    <comment>- updated to 1.06
+       [ENHANCEMENTS]
+       tainted() now localizes $SIG{__DIE__} before performing the
+       taint check.  If the calling program has its own $SIG{__DIE__},
+       we don't want to use it.  Thanks, Pete Krawczyk.
+       https://rt.cpan.org/Ticket/Display.html?id=23507
+       [FIXES]
+       Checks for undef before opening files when trying to create
+       some taint. Thanks Frédéric Buclin.
+       https://rt.cpan.org/Ticket/Display.html?id=51246 (forwarded request 177498 from coolo)</comment>
+    <requestid>177523</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>57e88f6fd87f916b516fd14a784061fd</srcmd5>
+    <version>1.06</version>
+    <time>1379663883</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>57e88f6fd87f916b516fd14a784061fd</srcmd5>
+    <version>1.06</version>
+    <time>1409302527</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>28da9b18da3bd23ed4c4572c3d9acb08</srcmd5>
+    <version>1.06</version>
+    <time>1539251863</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch to prevent random test failures:
+  Test-Taint-1.06-Test-taintedness-on-X-instead-of-environment-variabl.patch
+</comment>
+    <requestid>640972</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>175d07056024b877b8399cc1c0c3545e</srcmd5>
+    <version>1.08</version>
+    <time>1560537771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709927</requestid>
+  </revision>
+</revisionlist>

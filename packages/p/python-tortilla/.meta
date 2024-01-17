@@ -1,0 +1,9 @@
+<package name="python-tortilla" project="openSUSE:Factory">
+  <title>A library for creating wrappers around web APIs</title>
+  <description>Wrapping web APIs made easy.
+A tiny library for creating wrappers around web APIs.
+
+</description>
+  <devel project="devel:languages:python" package="python-tortilla"/>
+  <url>https://github.com/jcarbaugh/python-tortilla</url>
+</package>

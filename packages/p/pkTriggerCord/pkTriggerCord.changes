@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Mon Dec 19 07:02:01 UTC 2022 - jslaby@suse.cz
+
+- Update to version 0.85.00+git.20220806:
+  * handle retval of write()
+  * Makefile: remove external target
+  * comment out dangerous setting
+- remove (they are upstream)
+  * 0001-Makefile-remove-external-target.patch
+  * 0001-comment-out-dangerous-setting.patch
+  * 0001-handle-retval-of-write.patch
+
+-------------------------------------------------------------------
+Tue Jul 26 05:52:56 UTC 2022 - jslaby@suse.cz
+
+- Update to version v0.85.00+git.20220716:
+  * Testing K-3III support
+  * Fixed function name plsr_set_expose_compensation -> pslr Fixed a few sign-unsigned comparison issues
+  * Allow specifying filename counter start in CLI
+  * Introducing pslr_utils
+  * Fixing mistakenly renamed function
+  * Enhance logging
+  * Method renames as preparation for libpktriggercord
+  * Added set_aperture to servermode ( #66 )
+- switch to obs_scm
+- add
+  * 0001-comment-out-dangerous-setting.patch
+  * 0001-handle-retval-of-write.patch
+
+-------------------------------------------------------------------
+Thu Nov 21 08:23:14 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- update to 0.85.00
+ * K-1 battery fields fix
+ * K-70: read one push bracketing field
+ * Using one push bracketing field in command line
+ * Print out command line in debug mode
+ * K-70 bulb mode bugfix
+ * --settings
+ * K-1 bulb mode bugfix (testing)
+ * --dangerous no longer required for K-70
+ * bulb_mode setting reading for K-70, K-50, K-01
+ * better handling of unknown and n/a settings
+ * K-x settings parser (very simple)
+ * Checking both both /dev/block and /dev
+ * Android: using gradle instead of ant
+ * Android: nicer image download indicator
+ * GUI ISO table bugfix
+ * Updating lens info database ( exiftool 10.70 )
+ * Android: better support of landscape mode
+ * GTK code cleanup
+ * Requires at least gtk+ 2.18
+ * GTK status info/status hex bugfix
+ * Using command 0x02 0x00 for buffer mask (K-70, K-3II)
+ * Possibility to specify stdout as output file using -
+ * Default mode prints out status info instead of taking a picture
+ * using_aperture_ring setting reading for K-70
+ * shake_reduction setting reading for K-70
+ * astrotracer setting reading for K70, K-3II
+ * horizon_correction setting reading for K-70
+ * astrotracer timer sec setting reading for K-3II
+ * K-3II bulb mode bugfix (testing)
+ * Restore bulb_timer, astrotracer fields after bulb
+ * CLI: Support for single buffer mode mode (K-70)
+ * GUI: Settings info
+ * GUI: Support for single buffer mode mode (K-70)
+ * Testing support for KP
+ * K-70 GUI image save bugfixes
+ * Android: Better error message if root access is missing.
+ * GUI ISO table simplification
+ * GUI Preview image bugfix
+ * Filename extension bugfixes
+ * Avoid double unrecognized option error message
+ * Show error message if servermode is specified in Windows
+ * Human readable selected/focused af point (for 11 AF points)
+ * K-70 AF selection mode reading hack
+ * K-70 reading selected af point
+ * --select_af_point also accepts raw numerical values
+ * Testing support for K-1 II
+- add 0001-Makefile-remove-external-target.patch to fix build
+- add 0001-rules-handle-permissions-by-uaccess.patch to switch from
+  groups to uaccess (bnc#1157352) -- dropped setcap mess
+
+-------------------------------------------------------------------
+Fri May 11 12:52:00 UTC 2018 - jslaby@suse.com
+
+- update to 0.84.04
+  * about/version code cleanup
+  * Testing suport for K-70
+  * K-70, K-1 selected_af_point hack
+  * K-1 bufmask testing
+  * GUI: Status hexdump
+  * New status field: auto_bracket_picture_counter
+  * GUI: Editable bulb exposure time
+  * GUI: Hide AF points if camera has more than 11
+  * K-S1 bugfix
+  * K-70 battery field reading bugfix
+  * Handling two new jpeg image tones: CrossProcessing, Flat, Auto
+  * Handling new white balance modes: MultiAuto, Manual2, Manual3, Kelvin1,
+    Kelvin2, Kelvin3
+  * Fixing incorrectly recognized exposure submodes
+  * Handling new exposure submodes: Forest, NightSceneHDR, BacklightSilhouette,
+    BlueSky
+  * Renaming exposure submode to scene mode
+  * Avoid infinite loop if green button fails
+  * Adding bufmask field to --status printing
+  * Handling higher ISO values in the GUI
+  * GUI: Avoid thumbnail reading, downscale preview instead
+  * Possibility to read lens database from latest exiftool
+  * Updating lens info database ( exiftool 10.300 )
+  * Testing support for K-1
+  * Small speedup
+  * servermode subcommand: set_shutter_speed, set_iso, usleep
+  * servermode: avoid segmentation fault if camera is not connected
+  * K-500 support
+  * Limited K-3 II support (Testing)
+  * K-3 support
+  * Eliminate GTK settings window closing warning
+  * Limited K-S1, K-S2 support
+  * Eliminate segmentation fault (non-root Linux usage)
+  * autosave, save as dialog cancel bugfix
+  * Linux/Android: driveinfo bugfix
+
+-------------------------------------------------------------------
+Tue Jul  5 18:09:04 UTC 2016 - toddrme2178@gmail.com
+
+- Change Group tag.
+
+-------------------------------------------------------------------
+Mon Dec  7 12:12:05 UTC 2015 - jslaby@suse.com
+
+- update to 0.82.04
+  * More debug messages
+  * jpeg contrast/hue/sharpness/saturation GUI bugfix
+  * Image tone bugfix (thx Mike Protts)
+  * Disable muted jpeg image tone for K-x because it's not working correctly
+  * Android build fixes
+  * Disable jpeg hue change for old cameras without jpeg hue setting
+  * Makefile code cleanup
+  * Project moved to github.com
+  * Update/addition of dlls to windows port
+  * Servermode documentation
+- switch to new URL
+
+-------------------------------------------------------------------
+Tue Nov 24 08:12:36 UTC 2015 - jslaby@suse.com
+
+- initial package (0.82.02)

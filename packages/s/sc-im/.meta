@@ -1,0 +1,8 @@
+<package name="sc-im" project="openSUSE:Factory">
+  <title>An ncurses spreadsheet program for terminal</title>
+  <description>SC-IM is Spreadsheet Calculator Improvised -- An ncurses spreadsheet program for terminal.
+
+</description>
+  <devel project="utilities" package="sc-im"/>
+  <url>https://github.com/andmarti1424</url>
+</package>

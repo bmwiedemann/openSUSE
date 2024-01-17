@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Mon Oct  2 09:23:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5:
+  * We newly provide build_manpages.build_py and build_manpages.install
+    command classes that are re-usable from pyproject.toml.
+    No need to provide setup.py because of argparse-manpage.
+  * The prog= specifier (in setup.py/setup.cfg/pyproject.toml) is
+    now better handled so it doesn't conflict with
+    ArgumentParser(prog=..).
+
+-------------------------------------------------------------------
+Thu Jun 15 09:42:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.3:
+  * The pyproject.toml parsing feature now depends on tomli
+  * Support for pyproject.toml specification of manpages added.
+  * Support for pre-written man pages (the --manfile option)
+  * Incorrect dict access for --include support fixed.
+- Add patch skip-pip-install.patch:
+  * Skip pip install tests for now.
+
+-------------------------------------------------------------------
+Sun Apr 16 17:02:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1:
+  * A new `--include` feature, inspired by `help2man --include`.
+  * Allow overriding build date with SOURCE_DATE_EPOCH
+    environment variable in order to make builds reproducible.
+
+-------------------------------------------------------------------
+Mon Nov  7 20:46:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v4
+  News in v4
+  The manual page generator logic is now separated from the 'build_manpages'
+  module (which provides setup.py integration helpers). Therefore the
+  argparse-manpage doesn't necessarily have to depend on setuptools.
+  Projects that want to integrate using 'setup.py' should though place a new
+  "extra" named 'argparse-manpage[setuptools]' into their set of build
+  requirements in project.toml file.
+
+  The old 'build_manpage' command (!= 'build_manpages') is now more
+  isolated from the rest of the code, likely never loaded.
+
+  the Manpage class API was changed in v3 so it required an additional
+  constructor 'data' argument. This change was reverted, and the only
+  argument is again the ArgumentParser object.
+
+  The 'version' and 'description' options were fixed.
+
+  New options 'manual_section' and 'manual_title' were added.
+
+  The manual page now automatically generates a current date in headers.
+
+  Several groff escaping issues were fixed.
+
+-------------------------------------------------------------------
+Thu Oct 20 09:13:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed dep python-six
+
+-------------------------------------------------------------------
+Thu Aug  4 11:18:38 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
+
+- Update to 3
+  * New man page format: single-commands-section
+  * Add CLI and conf options for setting the output format
+  * Add CLI and conf options to explicitly specify %prog value
+  * Skip showing commands with help == SUPPRESS
+  * Avoid rendering docs for command aliases
+  * Print program name in upper case in header and footer
+  * The --author CLI option has changed, and takes arbitrary string
+    (typically 'Author Name <the@example.com>'), and newly can be specified
+    multiple times.  Therefore, it now replaces the '--author-email' option.
+    The --author-email option is kept, but is just an alias to the --author
+    option.
+  * All CLI options can be specified also in setup.cfg
+  * Don't render AUTHORS and DISTRIBUTION if they would contain undefined values
+  * Remove '... was written by' from AUTHORS
+  * Fixed the testsuite against the setuptools v60+
+  * Output manual pages should be built reproducibly, no matter the current
+    size of the terminal.
+  * Methods build_manpages, get_build_py_cmd, get_install_cmd are now
+    provided in top-level module.
+  * More portable opening and parsing given by python file name.
+  * Split out options by generic argument groups, not only predefined
+    "positional arguments", "options", and Subparsers.
+  * Drop python3-six requirement.
+  * Properly highligh all option argument METAVARs.
+
+- spec changes:
+  * BuildArch set to noarch
+  * Add build dependency on pip module
+
+-------------------------------------------------------------------
+Tue Apr 20 12:44:31 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.5
+  * fixed testsuite for Python 3.9
+  * The "epilog" from argparse object is dumped to "COMMENTS" sections.
+
+-------------------------------------------------------------------
+Thu Aug 20 15:43:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Resubmit for SLE (jsc#SLE-12826)
+
+-------------------------------------------------------------------
+Tue Apr 14 14:52:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
+Fri Jan 31 17:44:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python-setuotools: /usr/bin/argparse-manpage does
+  from pkg_resources import load_entry_point.
+
+-------------------------------------------------------------------
+Fri Jan 17 12:37:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.3
+  * drop additional .br tag from paragraphs so the multiline text is nicer
+  * provide argparse-manpage via entry_point
+
+-------------------------------------------------------------------
+Fri Sep 13 12:41:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.2:
+  * More complete release tarball, including tests.
+  * Fixed shebang in /bin/argparse-manpage script so it works on
+    Debian/Ubuntu as well as on Fedora.
+  * LICENSE file included in release tarball.
+  * Command-line executable now takes an optional '--output' argument.
+
+-------------------------------------------------------------------
+Tue May  7 06:59:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github tarball
+  - Enable tests
+  - Get license file
+- Run fdupes
+- Add support for older distros than Tumbleweed
+
+-------------------------------------------------------------------
+Fri Oct 12 14:29:54 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Repair grammar issues in description.
+
+-------------------------------------------------------------------
+Thu Oct 11 15:04:42 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

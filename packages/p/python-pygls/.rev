@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>31497ea36607806a1c1727ebf1fd7176</srcmd5>
+    <version>1.1.2</version>
+    <time>1699301684</time>
+    <user>anag+factory</user>
+    <comment>ok</comment>
+    <requestid>1123608</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0df8cac55391c25bdb66a2d7fecae906</srcmd5>
+    <version>1.2.1</version>
+    <time>1701462375</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.1:
+  - handle ResponseErrors correctly by @dimbleby in #416
+- Update to 1.2.0:
+  - Remove dependency on typeguard by @karthiknadig in #411
+  - Simplify vscode-playground setup and fix Python discovery by
+    @alcarney in #374</comment>
+    <requestid>1130169</requestid>
+  </revision>
+</revisionlist>

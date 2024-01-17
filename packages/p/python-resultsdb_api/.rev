@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa8604f97d8111cdf4327a3f5e70a6d2</srcmd5>
+    <version>2.0.0</version>
+    <time>1532774726</time>
+    <user>dimstar_suse</user>
+    <comment>new package, dependency of avocado</comment>
+    <requestid>625805</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>35bfe6fc8c1a8a3018db84a268d04fd6</srcmd5>
+    <version>2.1.3</version>
+    <time>1584446917</time>
+    <user>dimstar_suse</user>
+    <comment>- Set version requirements based on upstream
+- Try to enable tests, and fail because upstream has them broken
+
+- Update to version 2.1.3:
+  * No changelog available</comment>
+    <requestid>785624</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6432c96fc1d2b9199e32a314493bb981</srcmd5>
+    <version>2.1.5</version>
+    <time>1667825507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034087</requestid>
+  </revision>
+</revisionlist>

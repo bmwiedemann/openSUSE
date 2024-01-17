@@ -1,0 +1,15 @@
+---
+ testes/attrib.lua |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/testes/attrib.lua
++++ b/testes/attrib.lua
+@@ -269,7 +269,7 @@ local p = ""   -- On Mac OS X, redefine
+ local st, err, when = package.loadlib(DC"lib1", "*")
+ if not st then
+   local f, err, when = package.loadlib("donotexist", p.."xuxu")
+-  assert(not f and type(err) == "string" and when == "absent")
++  assert(not f and type(err) == "string" and when == "open")
+   ;(Message or print)('\n >>> cannot load dynamic library <<<\n')
+   print(err, when)
+ else

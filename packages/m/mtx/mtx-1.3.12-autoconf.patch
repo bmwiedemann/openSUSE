@@ -1,0 +1,24 @@
+--- configure.in
++++ configure.in
+@@ -10,10 +10,10 @@
+ AC_PREFIX_DEFAULT(/usr/local)
+ 
+ case "$host_os" in
+-  *linux*) AC_DEFINE(LINUX)
++  *linux*) AC_DEFINE([LINUX], [], [LINUX])
+ 	TARGET=linux
+     ;;
+-  *solaris*) AC_DEFINE(SOLARIS)
++  *solaris*) AC_DEFINE([SOLARIS], [], [SOLARIS])
+ 	TARGET=solarissparc
+ 	;;
+   *sunos*)  TARGET=solarissparc
+@@ -28,7 +28,7 @@
+      ;;
+   *HP*) TARGET=hpux
+      ;;
+-  *sequent*) AC_DEFINE(SEQUENT) 
++  *sequent*) AC_DEFINE([SEQUENT], [],[SEQUENT]) 
+ 	;;
+   *MINGW*) TARGET=mingw
+      ;;

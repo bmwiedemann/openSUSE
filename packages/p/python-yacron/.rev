@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd417195a6ab042bf91b94a854f3f995</srcmd5>
+    <version>0.9.0</version>
+    <time>1569588561</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>731438</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4bdbfab5d286b00c8f2cca83cc642ab0</srcmd5>
+    <version>0.10.0</version>
+    <time>1583833146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783226</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fe93a7ea18fdcbbafcf87cdd5b2501ea</srcmd5>
+    <version>0.10.0</version>
+    <time>1589660834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805899</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>55521632aed86e3c5c6c5d97f3ef252f</srcmd5>
+    <version>0.13.0</version>
+    <time>1628675229</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.13.0:
+  - Add ability for one config file to include another one
+  - Add shell command reporting ability
+  - web: don't crash when receiving a web request without Accept header
+  - add env_file configuration option (Alessandro Romani, )
+  - email: add missing Date header
+  - Add back a self contained binary, this time based on PyInstaller
+  - Fix email reporting when multiple recipients given
+  - reporting: add a failure reason line at the top of sentry/email
+  - mail: new tls, startls, username, and password options
+  - allow jobs to run as a different user
+  - Support timezone schedule
+</comment>
+    <requestid>911188</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9f75473a445b6991d2172459fc730f72</srcmd5>
+    <version>0.13.0</version>
+    <time>1638480629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935237</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7dc54f1fe138291c43ae370b4dab12c2</srcmd5>
+    <version>0.17.0</version>
+    <time>1662063159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000741</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>af17b58ac06c1cb29c56f3c422806d55</srcmd5>
+    <version>0.19.0</version>
+    <time>1704281068</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.19.0:
+  * Add ability to configure yacron's own logging (#81 #82 #83,
+  * Add config value for SMTP(validate_certs=False) (David
+    Batley)
+  * fixes &quot;Job is always executed immediately on yacron start&quot;
+    (#67)
+  * add an `enabled` option in jobs (#73)
+  * give a better error message when no configuration file is
+    provided or exists (#72)</comment>
+    <requestid>1135636</requestid>
+  </revision>
+</revisionlist>

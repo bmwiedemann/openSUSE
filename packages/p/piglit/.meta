@@ -1,0 +1,17 @@
+<package name="piglit" project="openSUSE:Factory">
+  <title>OpenGL driver testing framework</title>
+  <description>Piglit is a collection of automated tests for OpenGL and OpenCL
+implementations.
+
+The goal of Piglit is to help improve the quality of open source
+OpenGL drivers by providing developers with means to perform
+regression tests.
+
+It contains the Glean tests, some tests adapted from Mesa, as well as
+some specific regression tests for certain bugs. HTML summaries can
+be generated, including the ability to compare different test runs.
+
+</description>
+  <devel project="benchmark" package="piglit"/>
+  <url>http://cgit.freedesktop.org/piglit</url>
+</package>

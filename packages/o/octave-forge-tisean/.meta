@@ -1,0 +1,6 @@
+<package name="octave-forge-tisean" project="openSUSE:Factory">
+  <title></title>
+  <description>TISEAN stands for TIme SEries ANalysis.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-tisean"/>
+</package>

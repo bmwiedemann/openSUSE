@@ -1,0 +1,9 @@
+<package name="ctre" project="openSUSE:Factory">
+  <title>Compile time regular expressions library</title>
+  <description>A compile-time regular expressions with support for
+matching/searching/capturing during compile-time or runtime.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="ctre"/>
+  <url>https://github.com/hanickadot/compile-time-regular-expressions/</url>
+</package>

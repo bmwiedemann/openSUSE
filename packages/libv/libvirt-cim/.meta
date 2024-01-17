@@ -1,0 +1,8 @@
+<package name="libvirt-cim" project="openSUSE:Factory">
+  <title>CMPI-based CIM provider implementing DMTF SVPC model</title>
+  <description>Libvirt-cim is a CMPI CIM provider that implements the DMTF SVPC
+virtualization model. The goal is to support most of the features
+exported by libvirt itself, enabling management of multiple platforms
+with a single provider.</description>
+  <devel project="systemsmanagement:wbem" package="libvirt-cim"/>
+</package>

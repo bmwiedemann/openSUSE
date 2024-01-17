@@ -1,0 +1,13 @@
+Index: glyr-1.0.9/lib/glyr.c
+===================================================================
+--- glyr-1.0.9.orig/lib/glyr.c
++++ glyr-1.0.9/lib/glyr.c
+@@ -253,7 +253,7 @@ GlyrMemCache * glyr_cache_copy (GlyrMemC
+ __attribute__ ( (visibility ("default") ) )
+ const char * glyr_version (void)
+ {
+-    return "Version "GLYR_VERSION_MAJOR"."GLYR_VERSION_MINOR"."GLYR_VERSION_MICRO" ("GLYR_VERSION_NAME") of ["BUILD_DATE"] compiled at ["BUILD_TIME"]";
++    return "Version "GLYR_VERSION_MAJOR"."GLYR_VERSION_MINOR"."GLYR_VERSION_MICRO" ("GLYR_VERSION_NAME") compiled for openSUSE";
+ }
+ 
+ /////////////////////////////////

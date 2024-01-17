@@ -1,0 +1,6 @@
+<package name="python-twitter.common.finagle-thrift" project="openSUSE:Factory">
+  <title>python-twitter.common.finagle-thrift</title>
+  <description>Thrift stubs for zipkin rpc tracing support in finagle</description>
+  <devel project="devel:languages:python" package="python-twitter.common.finagle-thrift"/>
+  <url>https://github.com/twitter/commons</url>
+</package>

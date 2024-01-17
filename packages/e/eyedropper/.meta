@@ -1,0 +1,14 @@
+<package name="eyedropper" project="openSUSE:Factory">
+  <title></title>
+  <description>An application to pick and format colors.
+
+Features:
+- Pick a Color
+- Enter a color in Hex-Format
+- Parse RGB/RGBA/ARGB Hex-Colors
+- View colors in formats
+- Customize which formats appear as well as their order
+- Generate a palette of different shades</description>
+  <devel project="graphics" package="eyedropper"/>
+  <url>https://github.com/FineFindus/eyedropper</url>
+</package>

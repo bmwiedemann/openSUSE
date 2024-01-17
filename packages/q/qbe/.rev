@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d4b38e0ed1cc17ac3ea6bdbacf4627d</srcmd5>
+    <version>1.0</version>
+    <time>1675357723</time>
+    <user>dimstar_suse</user>
+    <comment>I want to add qbe to openSUSE:Factory</comment>
+    <requestid>1062561</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8c88124ac2106976009c58a2f3bcd0d4</srcmd5>
+    <version>1.1</version>
+    <time>1676225667</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1064443</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0efa59b17a1392bbfe2faf437c164b1f</srcmd5>
+    <version>1.1+24</version>
+    <time>1699616001</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124788</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e28cc7c3e910258e27b85fcb9680cb74</srcmd5>
+    <version>1.1+24</version>
+    <time>1700250654</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1127295</requestid>
+  </revision>
+</revisionlist>

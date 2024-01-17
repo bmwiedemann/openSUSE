@@ -1,0 +1,282 @@
+-------------------------------------------------------------------
+Thu Dec  7 06:22:00 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.2:
+  * ELK routes sql_table edges to the exact columns (ty @landmaj) #1681
+  * Unfilled triangle arrowhead is available. #1711
+  * Grid containers customize label positions. #1715
+  * A single board from a multi-board diagram can be rendered with --target flag. #1725
+  * Grid cells can contain nested edges #1629
+  * Edges can go across constant nears, sequence diagrams, and grids, including nested ones. #1631
+  * All vars defined in a scope are accessible everywhere in that scope, i.e., an object can use a var defined after itself. #1695
+  * Encoding API switches to standard zlib encoding so that decoding doesn't depend on source. #1709
+  * currentcolor is accepted as a color option to inherit parent colors. (ty @hboomsma) #1700
+  * Grid containers can be sized with width/height even when using a layout plugin without that feature. #1731
+  * Watch mode watches for changes in both the input file and imported files #1720
+  * Fixes a bug calculating grid height with only grid-rows and different horizontal-gap and vertical-gap values. #1646
+  * Grid layout accounts for each cell's outside labels and icons #1624
+  * Grid layout accounts for labels wider or taller than the shape and fixes default label positions for image grid cells. #1670
+  * Fixes a panic with a spread substitution in a glob map #1643
+  * Fixes use of null in sql_table constraints (ty @landmaj) #1660
+  * Fixes ELK growing shapes with width/height set #1679
+  * Adds a compiler error when accidentally using an arrowhead on a shape #1686
+  * Correctly reports errors from invalid values set by globs. #1691
+  * Fixes panic when spread substitution referenced a nonexistant var. #1695
+  * Fixes incorrect appendix icon numbering. #1704
+  * Fixes crash when using --watch and navigating to an invalid board path #1693
+  * Fixes edge case where nested edge globs were creating excess shapes #1713
+  * Fixes a panic with a connection to a grid cell that is a container in TALA #1729
+  * Fixes incorrect grid cell positioning when the grid has a shape set and fixes content sometimes escaping circle shapes. #1734
+  * Fixes content sometimes escaping cloud shapes. #1736
+  * Fixes panic using a glob filter (e.g. &a) outside globs. #1748
+  * Fixes glob keys with import values (e.g. user*: @lib/user). #1755
+
+-------------------------------------------------------------------
+Fri Oct  6 14:30:23 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.1:
+  * The globs feature underwent a major rewrite and is now almost finalized
+  * UTF-16 files are automatically detected and supported #1525
+  * Grid diagrams can now have simple connections between top-level cells #1586
+  * Globs are lazily-evaluated #1552
+  * Latex blocks includes Mathjax's ASM extension #1544
+  * font-color works on Markdown #1546
+  * font-color works on arrowheads #1582
+  * CLI failure message includes input path #1617
+  * d2 fmt formats all files passed as arguments rather than just the first non-formatted (thank you @maxbrunet) #1523
+  * Fixes Markdown cropping last element in mixed-element blocks (e.g. em and strong) #1543
+  * Adds compiler error for non-blockstring empty labels #1590
+  * Prevents multiple constant nears overlapping in some cases #1591
+  * Fixes crash from empty nested grid #1594
+  * d2fmt with variable substitution mid-string is formatted correctly #1611
+  * Fixes certain shape IDs not working with dagre #1610
+  * Fixes font-size adjustments missing from rendered code shape #1614
+
+-------------------------------------------------------------------
+Tue Aug 29 16:22:59 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Adjust license to cover also redistributed vendor/github.com/* files
+
+-------------------------------------------------------------------
+Sat Aug 12 19:01:23 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.6.0:
+  * Variables and substitutions are implemented. See docs. #1473
+  * Configure timeout value with D2_TIMEOUT env var #1392
+  * Scale renders and disable fit to screen with --scale flag #1413
+  * null keyword can be used to un-declare. See docs #1446
+  * Develop multi-board diagrams in watch mode (links to layers/scenarios/steps work in --watch) #1503
+  * Glob patterns have been implemented. See docs. #1479
+  * Display version on CLI help invocation #1400
+  * Improved readability of connection labels when they overlap another connection #447
+  * Error message when shape is given a composite #1415
+  * Improved rendering and text measurement for code shapes #1425
+  * The autoformatter moves board declarations to the bottom of its scope #1424
+  * All font styles in sketch mode use a consistent font-family #1463
+  * Tooltip and link icons are positioned on shape border #1466
+  * Tooltip and link icons are always rendered over shapes #1467
+  * Boards with no objects are considered folders #1504
+  * DEBUG environment variable ignored if set incorrectly #1505
+  * Fixes edge case in compiler using dots in quotes #1401
+  * Fixes grid label font size for TALA #1412
+  * Fixes person shape label positioning with multiple or 3d #1478
+- _service tar_scm disable changesgenerate. Upstream uses small
+  incremental commits and the automated changelog is overly long.
+  Use GitHub release summary instead.
+
+-------------------------------------------------------------------
+Sat Jun 10 14:38:45 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.5.1:
+  * d2ir: Fix for windows
+
+-------------------------------------------------------------------
+Sat Jun 10 14:35:48 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.5.0:
+  * D2 files have the ability to import from other D2 files #1371
+  * sql_table alternatively takes an array of constraints instead of being limited to a single one #1245
+  * Use shape-specific sizing for grid containers #1294
+  * Grid diagrams support nested shapes or grid diagrams #1309
+  * grid-gap, vertical-gap, and horizontal-gap apply to padding on grid diagrams #1309
+  * Watch mode browser uses an error favicon to easily indicate compiler errors #1240
+  * Grid layout performance improved when there are many similarly sized shapes #1315
+  * Connections and labels are adjusted for shapes with 3d or multiple #1340
+  * Constraints in sql_table render even if they have no matching abbreviation #1372
+  * Constraints in sql_table sheds their excessive letter-spacing and is padded from the end consistently #1372
+  * Duplicate image URLs in icons are only fetched once #1373
+  * In watch mode, images are cached by default across compiles. Can be disabled with flag --img-cache=0. #1373
+  * Common invalid array separator , usage in class arrays returns a helpful error message #1376
+  * Invalid constraint usage is met with an error message, preventing a common mistake of omitting shape: sql_table #1379
+  * Connections no longer obscure outside labels #1381
+  * Container connections in dagre are more balanced #1384
+  * Connections that go through shape labels are now masked translucently #1383
+  * Shadow is no longer cut off when --pad is 0. Thank you @LeonardsonCC ! #1326
+  * Fixes grid layout overwriting label placements for nested objects #1345
+  * Fixes fonts not rendering correctly on certain platforms #1356
+  * Fixes folders not rendering in animations (--animate-interval) #1357
+  * Fixes panic using reserved keywords as containers #1358
+  * When multiple classes are change different attributes of arrowheads, all are applied instead of only the last one #1362
+  * Prevent empty block strings #1364
+  * Fixes dagre mis-aligning a nested shape's connection #1370
+  * Fixes a bug in grids sometimes putting a shape on the next row/column #1380
+  * @xyz is now reserved as a pattern for imports
+
+-------------------------------------------------------------------
+Tue May  2 18:31:14 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.4.2:
+  * update get point at distance
+  * fix reparsing flags
+  * add logseq plugin
+  * add md block info
+  * fix elk issue when container named root
+  * add d2sketch in ci
+  * fix e2e profile passing args
+  * fast attempt with debt balancing + skip bad rows
+  * add maximum attempts
+  * improve grid expand evenly
+  * search for white index
+  * fix gif pallete
+  * add profiling for e2e tests
+  * implement arrays for classes
+  * add more detailed error msg
+  * account for non-orthogonal connection segments
+  * arrowhead refactor
+  * fix generate unique number id
+  * model_order cycle breaking elk
+  * fix elk self loop spacing
+  * d2oracle: don't modify classes
+  * Update japan.d2
+  * enforce min size for text shapes
+  * remove border-radius percent tests, add border-radius pill (with a big value) test
+  * feat: revert percentage border-radius. Accept higher border-radius value and limit it to half of the smaller shape side to be rendered as a pill
+  * feat: check border-radius value value before checking its decimals. New rx and ry compute method.
+  * feat: add possiblity to set shape border-radius with percentage value
+
+-------------------------------------------------------------------
+Tue Apr 18 02:00:30 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.4.1:
+  * [ci-force] add japan example
+  * [ci-base] add d2 pptx example
+  * remove d2graph edge.MinWidth MinHeight
+  * adjust label positioning for arrowhead
+  * update bounding box for arrowhead labels
+  * position arrowhead labels
+  * render with arrowhead dimensions
+  * set arrowhead label dimensions
+  * pptx board path
+  * refactor boardType
+  * refactor ppt
+  * remove import
+  * show message while generating gif
+  * navbar on pptx
+  * add example
+  * add constants
+  * navbar on pdfs
+  * Update lib/xgif/xgif.go
+  * export root
+  * package docs
+  * export gifs
+  * Fixing typos
+  * refactor d2graph.Attributes
+  * relative paths
+  * refactor LabelWidth and LabelHeight to LabelDimensions
+  * convert png boards to gif
+  * Update generate_png.js
+  * add exportExtension
+  * add dark terrastruct flagship theme
+  * e2etests: Add ent2d2 test case
+  * don't increase font size for md text if container
+  * update markdown text measurement and rendering to use font-size
+  * rename to horizontal-gap and vertical-gap
+  * fix grid panic with insuffient objects
+  * if storing int and casting float64 each use
+  * set scale when generating png
+  * use grid-gap values for layout
+  * add grid-gap keywords
+  * handdrawn semibold
+  * custom semibold font option
+  * using semibold
+  * add SourceCodePro-Semibold font
+  * measure with semibold
+  * use semibold font instead of font-weight: 600
+  * setting up semibold font
+  * add SourceSansPro-Semibold font
+  * support multiboard rendering in e2e tests
+  * changelog and ci
+  * return svg
+  * move to a single file
+  * generate files from templates
+  * fix layout of grid in constant near
+  * move xml to templates
+  * fix links in keynote
+  * [ci-force] update contributing
+  * add links to pptx
+  * fix urls in changelogs
+  * fix image resizing
+  * minor fixes for MS PowerPoint
+  * fix image size
+  * rename and docs
+  * update title
+  * slide title
+  * fix size and position
+  * add pptx export
+  * base ppt export
+
+-------------------------------------------------------------------
+Sun Apr  9 02:38:41 UTC 2023 - jkowalczyk@suse.com
+
+- Initial package version 0.4.0:
+  * update link to tree-sitter grammar
+  * add text-transform as keyword
+  * fix watch mode
+  * Add `text-transform` attribute to the `style` block
+  * fix solo near
+  * markdown class has to have diagramHash targeting
+  * Lifeline should inherit the stroke style from the actor
+  * fix empty layer
+  * fix: attach objects of tempGraph
+  * Add d2-filter as community plugin
+  * update keywords rows -> grid-rows
+  * new method for placing nodes across rows
+  * fix inheritence bug
+  * rename to grid diagram
+  * validate descendants
+  * layout evenly with rows and columns
+  * center container if growing to fit label
+  * validate edges
+  * add padding between dagre labels
+  * fixing rows creation
+  * finish column logic
+  * more dynamic grid sizing according to node sizes
+  * evenly size grid nodes
+  * values must be positive
+  * layout with grids
+  * Truncate to 32-bit precision to avoid floating-point arithmetic divergence between platforms
+  * docs(readme): add golang queue library as example.
+  * chore: feature description doc
+  * fixes #1104
+  * namespace transitions
+  * fix builds on 32bit
+  * have watch mode parse svg message correctly
+  * fix: find outer near contaienr
+  * fix: validation for near obj connect to outside
+  * fix: a clean spilit for temp graph
+  * d2parser: Fix #322
+  * fix: validateNear outside connection
+  * fix: nil labelPosition
+  * fix: calc labelPosition
+  * fix: delete redundant file
+  * fix: use method instead of attribute
+  * fix: delete redundant variable
+  * fix: delete redundant return value
+  * fix: ignore objects inside near container when calc boundingBox
+  * fix: calc labelDimension
+  * fix: integrate logic of construct sub graph inside WithoutConstantNears
+  * fix: add validation for near connectioins
+  * fix: compile_test testcase
+  * fix: revert near_bad_connected compile_test
+  * fix: delete redundant testcases
+  * feat: descendants now is allowed for container with near attribute

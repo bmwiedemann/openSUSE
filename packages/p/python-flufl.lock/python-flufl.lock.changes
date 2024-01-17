@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Fri Jan  5 17:22:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.2:
+  * Update dependencies.
+  * Other minor improvements and cleanups.
+  * Minor documentation fix.
+  * Drop Python 3.7 support (GL#34)
+  * Added a claimfile property to Lock objects
+  * Switch to pdm- ackend (GL#33)
+  * Use ruff for linting, since its much faster.
+
+-------------------------------------------------------------------
+Mon Jun 12 06:54:25 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Wed Dec 21 21:51:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix requirements
+- Remove coverage flags from testsuite
+
+-------------------------------------------------------------------
+Wed Sep 28 15:32:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 7.1.1 (2022-09-03)
+  * Improvements to the GitLab CI integration.
+
+- Update to 7.1 (2022-08-27)
+  * Add support for Python 3.11.
+  * Update to pdm 1.3.
+  * Update all dependencies eagerly.
+
+-------------------------------------------------------------------
+Wed Aug 31 16:29:35 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Fix build dependencies
+
+-------------------------------------------------------------------
+Thu Jan 20 18:33:51 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 7.0:
+  - Fix spurious log messages when not breaking the lock.
+  - Use modern package management by adopting pdm and
+    pyproject.toml, and dropping setup.py and setup.cfg.
+  - Build the docs with Python 3.8.
+  - Update to version 3.0 of Sybil.
+  - Adopt the Furo documentation theme.
+  - Add a favicon and logos to the published documentation.
+  - Use importlib.metadata.version() as a better way to get the
+    package version number for the documentation.
+  - Drop Python 3.6 support.
+  - Update copyright years.
+- Remove now irrelevant patch python-flufl.lock-fix-setup.patch.
+
+-------------------------------------------------------------------
+Wed Nov 17 09:13:16 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 6.0
+  * Added a default_timeout argument to the Lock constructor,
+    which can be used in the context manager syntax as well.
+  * When a Lock uses a lock file that already exists and does
+    not appear to be a lock file (i.e. because its contents are
+    ill-formatted), do a better job of not clobbering that file.
+  * Improve some QA by re-adding diff-cover, Gitlab SAST during
+    CI, and testing on Python 3.10 beta (except for Windows)
+  * Added a py.typed file to satisfy type checkers.
+
+-------------------------------------------------------------------
+Tue May 25 16:11:12 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 5.0.5
+  * Blued code.
+
+-------------------------------------------------------------------
+Fri Feb 12 07:54:17 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- The package Requires python-typing_extensions
+
+-------------------------------------------------------------------
+Thu Feb 11 19:06:49 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing python-typing_extensions BuildRequires for tests
+
+-------------------------------------------------------------------
+Thu Feb 11 07:45:45 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 5.0.4
+  * https://gitlab.com/warsaw/flufl.lock/-/blob/5.0.4/docs/NEWS.rst
+- Removed LICENSE (part of the tarball now)
+- Added python-flufl.lock-fix-setup.patch
+
+-------------------------------------------------------------------
+Mon Dec  2 10:47:12 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep 26 10:46:46 UTC 2019 - pgajdos@suse.com
+
+- initial version 3.2, required by python-mailman [SLE-7686]
+

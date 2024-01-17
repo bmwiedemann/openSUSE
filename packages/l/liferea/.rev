@@ -1,0 +1,172 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>68cfc222ebd602097b17acf73439feed</srcmd5>
+    <version>1.12.6</version>
+    <time>1578950512</time>
+    <user>dimstar_suse</user>
+    <comment>Reintroduce liferea - build has been fixed</comment>
+    <requestid>763914</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b9654793944ed117bd90651802e36a92</srcmd5>
+    <version>1.12.6</version>
+    <time>1580511382</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768623 from dimstar)</comment>
+    <requestid>768684</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9da107b62d65a4d7c72341d0a57db91c</srcmd5>
+    <version>1.12.6</version>
+    <time>1589491671</time>
+    <user>dimstar_suse</user>
+    <comment>- Export WEBKIT_DISABLE_COMPOSITING_MODE=1 on Leap 15.2 build</comment>
+    <requestid>805617</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ed31b921202ea2e8b32e18ba8d15f444</srcmd5>
+    <version>1.12.8</version>
+    <time>1592246052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.8:
+  * Fixes #734: crash when selecting empty nodes
+  * Fixes #727: Out-dated documentation on Firefox live bookmarks
+  * Fixes headline large images/videos or images with margins
+    causing horizontal scrolling in headline view
+  * Fixes #840: OPML source subfolders not working
+  * Update of French translation (forwarded request 814167 from tux93)</comment>
+    <requestid>814732</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>748aef39385f96d3badf0eac8a2e49d9</srcmd5>
+    <version>1.12.9</version>
+    <time>1609253619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.9:
+  * Fix embedded youtube video bug
+  * Fix translations not applied to application menu bar and tool bar (forwarded request 859033 from polslinux)</comment>
+    <requestid>859193</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a92165c42356e85972a76557e20b18f3</srcmd5>
+    <version>1.13.6</version>
+    <time>1621439344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13.6:
+  * Change reader mode toggle from item view icon to toggle entry in item view context menu.
+  * #343: UX redesign of the update message in the status bar. Now shows a update counter of the feeds being in update.
+  * #964: Added pane position fix plugin providing a workaround for pane position issues when using the headerbar
+  * #983: Use GtkFileChooserNative to allow selecting local files when run in sandbox.
+  * Fixes #780: Improve date formatting when in locale en_GB
+  * Fixes #944: Broken RTL text direction in feed content view
+  * Fixes #949: Regression in notification plugin that caused it to show non-new items 
+  * Fixes #963: Checking for git command in plugin installer -&gt; warn user
+  * Fixes #973: Broken CSS in Webkit2Gtk &gt;= 2.32
+  * Updated Albanian translation
+  * Updated French translation
+  * Updated Italian translation
+  * Updated German translation
+  * #907: Add new search folder property that allows hiding read items
+  * Now always shows the unread count of a search folder (instead of the item count) in the feed list
+  * Now search folders are automatically rebuild when rules are changed
+  * Adds a new simple focus plugin that adds transparency on the feed list when it is not focussed.
+  * Add F10 hotkey to headerbar plugin to allow triggering the hamburger menu
+  * Update Flatpak AppData with release dates
+  * Make several plugins support gettext
+  * Fixes #192: wrong button order of media player in RTL locales
+  * Fixes #343: Usability of update infos in status bar. Now a total count is displayed on mass-updates and a per-feed info on single feed updates
+  * Fixes #809: Usability of feed fetching errors.
+  * Updated Polish translation
+  * Updated German translation
+  * Prevent endless loop on favicon discovery
+  * #903: Prevent endless loop in feed autodiscovery
+  * #912: Allow mutiple feed in same libnotify notification
+  * Further favicon discovery improvements: now detects all types of Apple Touch Icons, MS Tile Images and Safari Mask Icons Fixes #440 (forwarded request 891616 from fusionfuture)</comment>
+    <requestid>893948</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9003ec2b6a532fd2c15cc6c92fea686b</srcmd5>
+    <version>1.13.6</version>
+    <time>1626299930</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix missing python3-gobject-Gdk runtime dependency (boo#1187936) (forwarded request 906090 from tux93)</comment>
+    <requestid>906287</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>78d9d36c4633eb6e14e08ae47bffd16c</srcmd5>
+    <version>1.13.6</version>
+    <time>1642273506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946550</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a317ade900bb34de578afa8e79f76a6e</srcmd5>
+    <version>1.14.0</version>
+    <time>1674232759</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the properly boostrapped release tarball from upstream.
+- Drop libtool BuildRequires and no longer run autogen.sh.
+
+- Update to version 1.14.0
+  + New 'Reader mode' preference that allows stripping all web
+    content
+  + Implement support for Webkits Intelligent Tracking Protection
+  + New progress bar when loading websites
+  + Youtube videos from media:video can be embedded now with a
+    click on the video preview picture.
+  + Changes to UserAgent handling: same UA is now used for both
+    feed fetching and internal browsing.
+  + New view mode 'Automatic' which switches between 'Normal' and
+    'Wide' mode based on the window proportions.
+  + Liferea now supports the new GTK dark theme logic, where in
+    the GTK/GNOME preferences you define wether you &quot;prefer&quot; dark
+    mode or light mode
+  + Favicon discovery improvements: now detects all types of Apple
+    Touch Icons, MS Tile Images and Safari Mask Icons
+  + Increase size of stored favicons to 128x128px to improve icon
+    quality in 3-pane wide view.
+  + Make several plugins support gettext
+  + Allow mutiple feed in same libnotify notification
+  + Redesign of the update message in the status bar. It now shows
+    a update counter of the feeds being in update.
+  + You can now export a feed to XML file
+  + Added an option to show news bins in reduced feed list
+  + Added menu option to send item per mail
+  + Default to https:// instead of http:// when user doesn't
+    provide protocol on subscribing feed</comment>
+    <requestid>1059942</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9de80f0c145f495c077757585430b5a3</srcmd5>
+    <version>1.14.1</version>
+    <time>1678814224</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.14.1 point release.</comment>
+    <requestid>1071305</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6a076733fd228b629345290a78ee0aea</srcmd5>
+    <version>1.14.3</version>
+    <time>1680290164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076442</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aa5423a2168fb1b0b7f4d5b250abfc4f</srcmd5>
+    <version>1.14.4</version>
+    <time>1680370345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076646</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8b83120092ae6fefa25ec8181acebebe</srcmd5>
+    <version>1.14.5</version>
+    <time>1681470793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079258</requestid>
+  </revision>
+</revisionlist>

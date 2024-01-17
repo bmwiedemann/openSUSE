@@ -1,0 +1,2 @@
+addFilter("devel-file-in-non-devel-package .*/cmpi/lib.*\.so")
+addFilter("shlib-policy-name-error .*")

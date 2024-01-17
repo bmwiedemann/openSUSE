@@ -1,0 +1,28 @@
+Index: texlive-cjk-latex-extras-20070515/README.SUSE
+===================================================================
+--- texlive-cjk-latex-extras-20070515.orig/README.SuSE
++++ texlive-cjk-latex-extras-20070515/README.SuSE
+@@ -10,7 +10,7 @@ changed it a little bit, because I added
+ 
+ To fully utilize CJK-LaTeX, please also install:
+ 
+-  * freetype-tools to use TrueType fonts with CJK (ttf2pk and ttf2tfm).
++  * texlive-ttfutils to use TrueType fonts with CJK (ttf2pk and ttf2tfm).
+ 
+ 
+ To use a CJK-TrueType font with CJK-LaTeX you need:
+Index: texlive-cjk-latex-extras-20070515/cjk-latex-config
+===================================================================
+--- texlive-cjk-latex-extras-20070515.orig/cjk-latex-config
++++ texlive-cjk-latex-extras-20070515/cjk-latex-config
+@@ -16,8 +16,8 @@ if ($UID != 0 && $ENV{USER} !~ /root/) {
+     exit 1;
+ }
+ 
+-if (system ("rpm -q freetype-tools >/dev/null 2>&1") != 0) {
+-  print "freetype-tools package missing, exiting.\n";
++if (system ("stat /usr/bin/ttf2tfm >/dev/null 2>&1") != 0) {
++  print "/usr/bin/ttf2tfm (package texlive-ttfutils-bin) missing, exiting.\n";
+   exit 1;
+ }
+ 

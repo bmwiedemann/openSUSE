@@ -1,0 +1,12 @@
+<package name="enchive" project="openSUSE:Factory">
+  <title>Long-term archive encryption tool</title>
+  <description>Enchive is a tool to encrypt files to yourself for long-term archival.
+It's a focused, simple alternative to more complex solutions such as
+GnuPG or encrypted filesystems.
+
+Files are secured with ChaCha20, Curve25519, and HMAC-SHA256.
+
+</description>
+  <devel project="utilities" package="enchive"/>
+  <url>https://github.com/skeeto/enchive</url>
+</package>

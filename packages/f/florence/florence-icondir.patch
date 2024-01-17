@@ -1,0 +1,26 @@
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -131,7 +131,7 @@ AC_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK
+ AC_CHECK_FUNCS([setlocale memset memchr sscanf strcmp strrchr strchr strstr strcpy strncpy strcat atoi putenv fopen fclose fgets fputs lstat opendir readdir closedir])
+ 
+ # Files generated
+-ICONDIR=${prefix}/share/pixmaps
++ICONDIR=${prefix}/share/icons/hicolor/scalable/apps
+ if test "x$prefix" = "xNONE"; then
+ 	ICONDIR=/usr/local/share/pixmaps
+ fi
+Index: data/Makefile.am
+===================================================================
+--- data/Makefile.am.orig
++++ data/Makefile.am
+@@ -13,7 +13,7 @@ desktop_DATA=$(desktop_in_files:.desktop
+ $(desktop_in_files): $(desktop_in_files:.desktop.in=.desktop.in.in)
+ 	sed -e "s|\@ICONDIR\@|$(ICONDIR)|" $< > $@
+ 
+-iconsdir=$(datadir)/pixmaps
++iconsdir=$(datadir)/icons/hicolor/scalable/apps
+ icons_DATA=florence.svg
+ 
+ gtkbuilderdir=$(datadir)/florence

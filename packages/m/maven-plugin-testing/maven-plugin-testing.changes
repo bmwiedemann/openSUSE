@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon Mar 21 04:32:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
+Tue May 11 15:22:13 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the legacy guava20 package any more
+
+-------------------------------------------------------------------
+Mon Apr 26 14:55:13 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * maven-plugin-testing-blocked.patch
+    + Fix build against newer maven
+
+-------------------------------------------------------------------
+Thu Nov 21 16:23:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-invoker-3.0.1 that has a new dependency
+  on maven-shared-utils
+
+-------------------------------------------------------------------
+Tue Mar 26 09:44:56 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial pakaging of maven-plugin-testing 3.3.0
+- Generate and customize the ant build files

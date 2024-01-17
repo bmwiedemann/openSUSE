@@ -1,0 +1,10 @@
+<package name="lshw" project="openSUSE:Factory">
+  <title>HardWare LiSter</title>
+  <description>lshw (Hardware Lister) is a small tool to provide detailed informaton on the hardware configuration of the machine. It can report exact memory configuration, firmware version, mainboard configuration, CPU version and speed, cache config uration, bus speed, etc. on DMI-capable x86 systems and on some PowerPC machines (PowerMac G4 is known to work).
+
+Information can be output in plain text, XML or HTML.
+
+For detailed information on lshw features and usage, please see the included documentation or go to the lshw Web page, http://www.ezix.org/software/lshw.html</description>
+  <devel project="hardware" package="lshw"/>
+  <url>http://ezix.org/project/wiki/HardwareLiSter</url>
+</package>

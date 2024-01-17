@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>10e256f5f4b9ee86a9198357422068b8</srcmd5>
+    <version>1.7.9</version>
+    <time>1592578902</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>814938</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13a2a27fdeebb02c2c158dd6814ca2e0</srcmd5>
+    <version>1.7.9</version>
+    <time>1598643242</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829322</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ec00b12f1d119506d4a0558ae2048afd</srcmd5>
+    <version>1.7.9</version>
+    <time>1599508974</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832290</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f4c6be6a7fe9c4720e442c51a56c40fa</srcmd5>
+    <version>1.7.10</version>
+    <time>1605783520</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>849157</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a5ac03bf134b491c243e382bcb113cfb</srcmd5>
+    <version>1.7.10</version>
+    <time>1608633697</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857423</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>0bcd75ce824ed13955f3e0cd0dc5245b</srcmd5>
+    <version>1.7.10</version>
+    <time>1610123913</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>861601</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5e1372c9805e084607ad0b8cd2f6a007</srcmd5>
+    <version>1.7.11</version>
+    <time>1616008537</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update of haskell stack</comment>
+    <requestid>879162</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5717c791fab472232105ad886e8d9d7e</srcmd5>
+    <version>1.7.12</version>
+    <time>1636663057</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>930437</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bcc7784aa188ebc5398ac48eb7f60745</srcmd5>
+    <version>1.7.12</version>
+    <time>1680636059</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075932</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,22 @@
+Index: presage-0.8.9.beta20130208/resources/arpa/Makefile.am
+===================================================================
+--- presage-0.8.9.beta20130208.orig/resources/arpa/Makefile.am
++++ presage-0.8.9.beta20130208/resources/arpa/Makefile.am
+@@ -33,7 +33,7 @@ arpa_en.vocab:	../the_picture_of_dorian_
+ 	$(TEXT2WFREQ) < $< | $(WFREQ2VOCAB) -top 20000 > $@
+ 
+ arpa_en.idngram:	 ../the_picture_of_dorian_gray.txt arpa_en.vocab
+-	$(TEXT2IDNGRAM) -n 3 -vocab arpa_en.vocab -temp . < $< > $@
++	$(TEXT2IDNGRAM) -idngram arpa_en.idngram -vocab arpa_en.vocab < $< > $@
+ 
+ arpa_en.arpa:	arpa_en.idngram arpa_en.vocab
+ 	$(IDNGRAM2LM) -idngram arpa_en.idngram -vocab arpa_en.vocab -arpa arpa_en.arpa 
+@@ -42,7 +42,7 @@ arpa_it.vocab:	../the_picture_of_dorian_
+ 	$(TEXT2WFREQ) < $< | $(WFREQ2VOCAB) -top 20000 > $@
+ 
+ arpa_it.idngram:	 ../the_picture_of_dorian_gray.txt arpa_it.vocab
+-	$(TEXT2IDNGRAM) -n 3 -vocab arpa_it.vocab -temp . < $< > $@
++	$(TEXT2IDNGRAM) -idngram arpa_it.idngram -vocab arpa_it.vocab < $< > $@
+ 
+ arpa_it.arpa:	arpa_it.idngram arpa_it.vocab
+ 	$(IDNGRAM2LM) -idngram arpa_it.idngram -vocab arpa_it.vocab -arpa arpa_it.arpa 

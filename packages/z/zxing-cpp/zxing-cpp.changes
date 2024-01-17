@@ -1,0 +1,237 @@
+-------------------------------------------------------------------
+Thu Nov 30 14:32:19 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add back %{optflags} in c++ flags
+  This was unintentionally disabled when c++17 was forced
+
+-------------------------------------------------------------------
+Fri Oct  6 06:01:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.0:
+  * Considerable performance improvements in linear symbol detection (up to 2x speedup in select use cases of ReadBarcodes)
+  * QRCode: major improvement in detection of high version symbols (see e.g. here)
+  * DMDetector: reduce runtime overhead of c++-20 builds 
+  * Refactor Python wrapper so the sdist includes the core library code 
+  * wasm wrapper: add function to reader to scan multiple barcode 
+  * Added a C wrapper
+  * Python: improve error reporting
+  * DMDetector: fix potential dead-lock
+  * DMDecoder: support 144x144 symbols in legacy and compliant variants
+- Remove the %check section since we are not building the tests.
+
+-------------------------------------------------------------------
+Wed Aug  9 15:07:38 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Restore support for building on SLE12
+- Build with gcc7-c++ or gcc-c++ >= 7 because of C++17 requirements
+- Added patch:
+  * cmake.patch
+    + allow building with cmake 3.5 on SLE12SP5
+
+-------------------------------------------------------------------
+Tue Apr 25 08:56:24 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop support for building on SLE12.
+
+-------------------------------------------------------------------
+Wed Jan 25 14:01:00 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.0:
+  * Switch to UTF8 based API and remove deprecated UTF16 one
+    (Result::text())
+  * Remove all API deprecated in 1.4
+  * Adding a wrapper for iOS
+  * New Aztec detector implementation to support arbitrary rotation
+    and position of the symbol
+  * Support multi-symbol detection in Aztec detector
+  * Replace all Qt originated ECI/CharacterSet conversion code with
+    a new implementation
+  * Require c++17 to build library and client code
+  * New DecodeHints::textMode() and Result::text(TextMode) API to
+    specify how bytes are rendered into text
+  * HRI (human readable interpretation) is the new default for the
+    TextMode (has been for most cases before, but not all)
+  * New DecodeHits::tryInvert() feature to test for inverted
+    symbols (white on black background)
+- Changes from version 1.4.0:
+  * Note: this is an intermediary release on the way to 2.0. This
+    code is (supposed to be) API compatible (via the ReadBarcode.h
+    interface) with v1.3.0 but contains quite a few additional
+    deprecations. It still has SO number 1, which is as wrong as it
+    was for release v1.3.0 and it is not ABI compatible with 1.3
+    either. 2.0 will be basically 1.4 but with all deprecated API
+    removed and the final fix for #333.
+  * Reader support for Micro QRCode by @corbers
+  * Prepared switch from std::wstring based utf16 to std::string
+    based utf8 results, use new ZX_USE_UTF8 macro to transition to
+    the upcoming 2.0 API
+  * Much improved 'binary' data support via new Result::bytes()
+    API, see #334 for a detailed background discussion.
+  * New Result::contentType() API returning information about the
+    type of content (like text vs. binary, etc.)
+  * Better standards conformance with respect to ECI handling, see
+    Results::bytesECI()
+  * Support for proper ECI handling across structured append
+    symbols (see MergeStructuredAppendResults())
+  * New Result::error() API with improved error handling, see also
+    DecodeHints::returnErrors()
+  * Removed all internal header files from the installed set, so
+    only the ReadBarcode.h based APIs are supported from here on
+    out
+  * Removed all sample images from the 'source' distribution
+    zip/tar balls (much reduced size)
+  * Python read_barcode returns None if no symbol was found (might
+    break existing code if not checked for None before)
+- Changes from version 1.3.0:
+  * Multi-barcode reading with the new std::vector<Result>
+    ReadBardcodes(...) function. Does not work for Aztec,
+    DataMatrix and Maxicode, yet.
+  * Multi-resolution scanning that can automatically downscale the
+    input to substantially increase the detection rate on high
+    resolution scans, see DecodeHints::tryDownscale, currently only
+    enabled in the ReadBardcodes function
+  * New Result::symbologyIdentifier property
+  * Updated and improved android wrapper
+- Drop patches fixed upstream:
+  * 269.patch
+  * 0001-test-update-to-libfmt-v9.0.0.patch
+  * cmake-check-system-first.patch
+- Bump sover to 3 following upstream changes.
+
+-------------------------------------------------------------------
+Tue Sep 20 07:10:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add fmt 9.0 compatibility patch (boo#1202273):
+  * 0001-test-update-to-libfmt-v9.0.0.patch
+
+-------------------------------------------------------------------
+Mon Dec 13 14:14:53 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update stb_image/stb_image_write to include the fixes for
+  the following CVEs:
+  CVE-2021-28021, bsc#1191743
+  CVE-2021-42715, bsc#1191942
+  CVE-2021-42716, bsc#1191944
+  * 269.patch
+
+-------------------------------------------------------------------
+Fri Nov  5 11:58:38 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Do not build examples to avoid a cycle with QT5Multimedia
+
+-------------------------------------------------------------------
+Wed Nov  3 14:42:33 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Use the updated cmake3-full package instead of cmake on SLE12
+- Do not build examples on SLE12
+- Only build blackbox tests on TW
+
+-------------------------------------------------------------------
+Sat May 29 10:37:28 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.2.0
+  * new BarcodeFormat names, old ones are deprecated
+  * new ZXingQtCamReader demo app based on QtMultimedia and QtQuick
+  * new QRCode reader, faster and better support for rotated symbols
+  * added Structured Append support for DataMatrix, Aztec and MaxiCode
+  * added DMRE support for DataMatrix
+  * switch to the reimplemented 1D detectors, about 5x faster
+  * a lot faster and more capable isPure detection for all 2D codes
+  * 20% faster ReedSolomon error correcting
+  * PDF417 is faster and supports flipped symbols
+  * reduced false positive rate for UPC/EAN barcodes and improved
+    Add-On symbol handling
+  * proper ECI handling in all 2D barcodes
+  * much improved python wrapper
+  * deprecate the use of ResultMetadata
+- Add cmake-check-system-first.patch
+- Drop upstream merged 0001-Fix-build-with-GCC-11.patch
+
+-------------------------------------------------------------------
+Tue Feb  9 07:50:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.1.1. No changelog available.
+- Drop fix-pkg-config-file.patch. Merged upstream
+- Add 0001-Fix-build-with-GCC-11.patch to fix GCC 11 build
+  issues (boo#1181915)
+
+-------------------------------------------------------------------
+Fri Jan 15 00:29:36 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Use %cmake_build instead of %make_jobs
+- Shouldn't need -DBUILD_SHARED_LIBRARY=ON
+
+-------------------------------------------------------------------
+Fri Oct 23 08:33:47 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Fri Sep  4 07:16:43 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add fix for pkg-config file so the version and library are set properly
+  in the resulting .pc file:
+  * fix-pkg-config-file.patch
+
+-------------------------------------------------------------------
+Sun Aug 16 19:19:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.1.0
+  * Add Python binding
+  * Bug fixes from upstream XZing project
+  * Many performance improvements for 1D readers
+  * More meta-data exported when reading specific format
+  * Minor bug fixes and improvements for corner cases
+  * Improve DataMatrix encoder
+  * Add interface to simplify basic usage
+  * WASM API to support pixels array as input
+  * Few minor bug fixes
+  * A new and (hopefully) 'future proof' single ReadBarcode entry point
+    into the decoding functionality.
+  * The LuminanceSource based API is now deprecated but still compiles.
+  * A new BarcodeFormats flag type to specify the set of barcodes to look for.
+  * Deprecated unrelyable Result::resultPoints in favor of well defined
+    Result::position.
+  * Deprecated Result::metadata() -> ORIENTATION in favor
+    of Result::orientation.
+  * New Binarizer enum in DecodeHints to specify the binarizer for
+    the ReadBarcode API.
+  * New DecodeHints::isPure property to speed up detection for
+    'pure' input use-cases.
+  * New 'unified' CMake structure to build (most) of the project from
+    the top-level project.
+  * New ZXingReader and ZXingWriter example code also meant for distributing.
+  * New simplified and consistent Python API (breaking change)
+  * ReedSolomon error detection code 2x speedup.
+  * Enable basic MaxiCode support.
+  * Fix coutry-code metatdata decoding for UPC/EAN codes.
+  * Slightly improved QRCode detection for rotated symbols.
+  * Faster PDF417 decoder.
+  * Lots of minor code readability and general cleanup improvements.
+- Drop patches:
+  * add-missing-includes-of-stdexcept-header.patch
+  * fix-library-installation-and-versioning.patch
+
+-------------------------------------------------------------------
+Thu Dec  5 08:57:46 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add add-missing-includes-of-stdexcept-header.patch
+  in order to fix boo#1158377.
+
+-------------------------------------------------------------------
+Thu May 23 12:11:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim metadata redundancies from description.
+
+-------------------------------------------------------------------
+Wed May 22 05:06:25 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Fixup URL and Source
+
+-------------------------------------------------------------------
+Fri May 17 05:22:57 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package for openSUSE
+- Add upstream patch to add proper installability and library
+  versioning:
+  * fix-library-installation-and-versioning.patch

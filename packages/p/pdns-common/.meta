@@ -1,0 +1,5 @@
+<package name="pdns-common" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:dns" package="pdns-common"/>
+</package>

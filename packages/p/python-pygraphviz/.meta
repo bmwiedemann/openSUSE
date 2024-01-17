@@ -1,0 +1,14 @@
+<package name="python-pygraphviz" project="openSUSE:Factory">
+  <title>Python interface to Graphviz</title>
+  <description>A Python wrapper for the Graphviz Agraph data structure.
+pygraphviz can be used to create and draw networks and graphs with Graphviz.
+
+Author:
+--------
+    Aric Hagberg &lt;hagberg@lanl.gov&gt;
+
+
+</description>
+  <devel project="devel:languages:python" package="python-pygraphviz"/>
+  <url>http://networkx.lanl.gov/pygraphviz</url>
+</package>

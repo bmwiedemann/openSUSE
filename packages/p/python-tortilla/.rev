@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9fde63da38c55d25375b4e89b83e531e</srcmd5>
+    <version>0.5.0</version>
+    <time>1580373673</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>767039</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cc84f60cbaa594e05c76d1f9804a436a</srcmd5>
+    <version>0.5.0</version>
+    <time>1687980810</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on six.</comment>
+    <requestid>1095756</requestid>
+  </revision>
+</revisionlist>

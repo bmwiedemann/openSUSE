@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efda6dda0ef2c2c8057d01b70ae35a61</srcmd5>
+    <version>1.0</version>
+    <time>1410508992</time>
+    <user>coolo</user>
+    <comment>please accept to Factory, devel package state looks ok to me</comment>
+    <requestid>248307</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>583ad0c6caeb2588dad3e128896157f5</srcmd5>
+    <version>1.0</version>
+    <time>1650657308</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build, regenerate autoconf files
+- clean spec (forwarded request 972190 from dsterba)</comment>
+    <requestid>972197</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,395 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76a9ab9259b775fa56af8ae72c68870b</srcmd5>
+    <version>3.2.0</version>
+    <time>1450084401</time>
+    <user>coolo</user>
+    <comment>This is Andy from the Haxe Foundation, which is the organisation behind Haxe and NekoVM.
+We're in the process of easing the installation process across different Linux distros. We have already packaged and submitted to Debian and Fedora, and we would like to maintain a package for openSUSE Factory.</comment>
+    <requestid>343738</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>71b87c7ab1b7f6957e208ca7768e653e</srcmd5>
+    <version>3.2.1</version>
+    <time>1452611553</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 3.2.1.
+- Moved the haxe standard library files to _datadir.
+- Generate man pages using help2man.
+- Spec file clean-up.
+  * Clarified license.
+  * Manually cp files instead of using &quot;make install&quot;.
+  * Added BuildRoot as suggested in openSUSE specfile guidelines.</comment>
+    <requestid>352642</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5d726980aa6da24bd08bc3f528c4a53f</srcmd5>
+    <version>3.4.0</version>
+    <time>1486635507</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 3.4.0
+  * Backward compatible to Haxe 3.2.
+  * Improvements and new features:
+    + Three new targets: 1. HashLink, 2. Lua, 3. PHP7
+    + Major improvements to compiler services for IDE support
+    + Improved C++ output.
+    + Improved static code analysis.
+    + New language additions: Any, import.hx, @:structInit, etc.
+  * Detail available at https://haxe.org/blog/haxe-3.4-release/</comment>
+    <requestid>455450</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e7cd3847542f8efe053ad24fb88b6bf9</srcmd5>
+    <version>3.4.2</version>
+    <time>1490318611</time>
+    <user>dimstar_suse</user>
+    <comment>Updated Haxe from 3.4.0 to 3.4.2, which is a minor release with no backward incompatible changes.</comment>
+    <requestid>482160</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>74f87236eef701b475739771ca34a426</srcmd5>
+    <version>3.4.3</version>
+    <time>1506453385</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 3.4.3
+  * Backward compatible to Haxe 3.4.2.
+  * Various fixes, mostly related to php output.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.3/extra/CHANGES.txt#L1-L20</comment>
+    <requestid>528744</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e32c3d0a3887f0260648f018fbed2644</srcmd5>
+    <version>3.4.3</version>
+    <time>1507065502</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530624</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5b86254b8c7938c4ea90007bcf98a579</srcmd5>
+    <version>3.4.4</version>
+    <time>1507571223</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 3.4.4
+  * Backward compatible to Haxe 3.4.3.
+  * Fix flash target broken when compiled with OCaml 4.05.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.4/extra/CHANGES.txt#L1-L8
+- Trim filler wording from description.
+- Updated to 3.4.3
+  * Backward compatible to Haxe 3.4.2.
+  * Various fixes, mostly related to php output.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.3/extra/CHANGES.txt#L1-L20
+- Updated to 3.4.2
+  * Backward compatible to Haxe 3.4.0.
+  * Improvements:
+    + Various fixes in cpp and php7 output.
+    + Added source maps generation for php7.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.2/extra/CHANGES.txt#L1-L35
+- Updated to 3.4.0
+  * Backward compatible to Haxe 3.2.
+  * Improvements and new features:
+    + Three new targets: 1. HashLink, 2. Lua, 3. PHP7
+    + Major improvements to compiler services for IDE support
+    + Improved C++ output.
+    + Improved static code analysis.
+    + New language additions: Any, import.hx, @:structInit, etc.
+  * Detail available at https://haxe.org/blog/haxe-3.4-release/
+- Updated to 3.2.1.
+- Moved the haxe standard library files to _datadir.
+- Generate man pages using help2man.
+- Spec file clean-up.
+  * Clarified license.
+  * Manually cp files instead of using &quot;make install&quot;.
+  * Added BuildRoot as suggested in openSUSE specfile guidelines.
+- Fix haxelib shell script to properly pass arguments
+- Updated to 4.2.0:
+  * New features:
+    + all: added @:noPrivateAccess to re-enable access
+      restrictions within @:privateAccess
+    + cpp: some support for @:nativeGen metadata
+  * Bugfixes:
+    + all: @:generic classes with constructor constraints detection
+    + all: variable initialization check issue in loop condition
+    + all: pattern matching on @:enum abstracts via field access
+    + all: missing implicit casts in Map literals (#4100)
+    + all: various minor issues in haxe.xml.Parser
+    + all: class path issue when HAXE_STD_PATH is set (#4163)
+    + js: DCE issue related to printing enums (#4197)
+    + js: various issues with the new Bytes implementation
+    + php: EOF handling in FileInput.readByte (#4082)
+    + cs/java: Math.fround implementation (#4177)
+    + cs/java: some cases of Std.parseInt failing (#4132)
+    + cpp: compilation without -main (#4199)
+  * General improvements and optimizations:
+    + all: --macro keep no longer causes types to be included
+      for compilation
+    + php: support interpolation in php code
+    + js: added variable number of arguments support
+      in js.html.* classes
+    + js: refined new HTML externs
+  * Macro features and changes:
+    + macro: [breaking] synced FClosure and FInstance
+      with the compiler updates
+- %install section refactoring.
+- general spec file clean-up.
+- Added missing files to resolve builds issue.
+- Fixed various warnings.
+- imported package from dmacvicar
+- update to version 3.1.3
+</comment>
+    <requestid>532617</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0277059741814396d8b585fcbe55e9df</srcmd5>
+    <version>3.4.5</version>
+    <time>1517932086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.5
+  * Backward compatible to Haxe 3.4.4.
+  * Bugfixes and improvements to php and js targets as well as dce.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.5/extra/CHANGES.txt#L1-L16
+- Compile haxelib as a valid binary using `nekotools boot -c ...`.</comment>
+    <requestid>572527</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>035d9b478cc7a475f616c4677fd71b20</srcmd5>
+    <version>3.4.7</version>
+    <time>1519396295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.7
+  * Backward compatible to Haxe 3.4.5.
+  * Fixed compiler cannot find std lib when executed by another
+    program.
+  * Fixed compiler failure for some output directories.
+  * Bugfixes to php, as3 targets as well as code completion.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.7/extra/CHANGES.txt#L1-L18</comment>
+    <requestid>579334</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7c91e88cfc69ed1c4b7b26f2b2153dcd</srcmd5>
+    <version>3.4.7</version>
+    <time>1571951403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742471</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4d0f9cb72c9b95f88c66d74613809a08</srcmd5>
+    <version>4.0.1</version>
+    <time>1573339103</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Haxe 4.0.1. See haxe.changes for detail.</comment>
+    <requestid>746632</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e76e36e590ec7747d1487803efca6e21</srcmd5>
+    <version>4.0.2</version>
+    <time>1573556184</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Haxe 4.0.2.</comment>
+    <requestid>747464</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>704ff943f9885ad4b6b382a34d089145</srcmd5>
+    <version>4.0.3</version>
+    <time>1575282622</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Haxe 4.0.3. See haxe.changes for detail.</comment>
+    <requestid>752526</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>257d2bed214e13901ede0a9e54a4b77d</srcmd5>
+    <version>4.0.5</version>
+    <time>1576927840</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Haxe 4.0.5.</comment>
+    <requestid>758208</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0e9c5247b4f2ed323782118838abac8b</srcmd5>
+    <version>4.1.0</version>
+    <time>1590506396</time>
+    <user>maxlin_factory</user>
+    <comment>update haxe to 4.1.0</comment>
+    <requestid>808099</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>148d658a273886a187856487e8335084</srcmd5>
+    <version>4.1.1</version>
+    <time>1590650182</time>
+    <user>maxlin_factory</user>
+    <comment>Update to haxe 4.1.1</comment>
+    <requestid>809451</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>81db2f83e78fa063cfc64d17a9e2f2b2</srcmd5>
+    <version>4.1.2</version>
+    <time>1593292972</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>817383</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>eeca281f3df41bd00ef4a1bcb1e0dfd7</srcmd5>
+    <version>4.1.5</version>
+    <time>1610381756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.5
+  * added an error on `return` outside of a function
+  * php/python: support @:native(&quot;&quot;) for extern classes
+  * allowed `Any` as type parameter in `catch(e:SomeType&lt;Any&gt;)`
+  * improved compilation speed for `try..catch` expressions
+  * added an argument to `haxe.CallStack.exceptionStack` to return
+    full stack up to the topmost call
+  * compatibility with PHP 8
+  * Various bug fixes detailed in
+    https://github.com/HaxeFoundation/haxe/blob/4.1.5/extra/CHANGES.txt</comment>
+    <requestid>862264</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>80a61b047f618a8aa1902ab5a7fe5c6b</srcmd5>
+    <version>4.2.1</version>
+    <time>1620653958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.1
+  * Added &quot;classic&quot; abstract classes and functions
+  * Added module-level static declarations
+  * Added rest arguments with `haxe.Rest` type
+  * Added per-thread event loops `sys.thread.Thread.events`
+  * Support method overloading for extern methods
+  * Added `EIs` constructor to `haxe.macro.Expr`
+  * Treat `Any` as `Dynamic` in variance unification
+  * eval : added libuv bindings under `eval.luv` package
+  * Various bug fixes detailed in
+    https://github.com/HaxeFoundation/haxe/blob/4.2.1/extra/CHANGES.txt</comment>
+    <requestid>891989</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9998da5a5598ced52e2aacf12dad3e67</srcmd5>
+    <version>4.2.4</version>
+    <time>1635801662</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.4
+  * hl : add clipboard support in hl 1.12
+  * eval : added `%` operator to `eval.numbers.Int64` and `UInt64`
+  * macro : support maps in `haxe.macro.Context.makeExpr`
+  * js : added `-D js-global=globalThis` to customize global object name
+  * php : added more externs for PHP buildins
+  * Various bug fixes detailed in
+    https://github.com/HaxeFoundation/haxe/blob/4.2.4/extra/CHANGES.txt</comment>
+    <requestid>928582</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>470079c7c2d87ec7f978cba60597d791</srcmd5>
+    <version>4.2.5</version>
+    <time>1649274712</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>967253</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e95ccdeacb5ae806a53371c1207b7367</srcmd5>
+    <version>4.3.0</version>
+    <time>1681387832</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.0
+  * New features:
+    * support defaults for type parameters
+    * support @:op(a()) on abstracts
+    * support abstract keyword to reference the abstract
+    * support static var at expression-level
+    * support ?. safe navigation operator
+    * added ?? null coalescing operator
+    * add -w compiler option to configure warnings
+    * added new error reporting modes
+    * support custom metadata and defines
+  * Standard Library:
+    * added atomic operations to several targets
+    * added Vector.fill
+    * added sys.thread.Condition and Semaphore
+    * added Http.getResponseHeaderValues to deal with multiple values of same key
+    * make Sys.environment consistent between targets
+    * consistent way to unset environment variables with Sys.putEnv
+  * Various improvements and bug fixes detailed in
+    https://github.com/HaxeFoundation/haxe/blob/4.3.0/extra/CHANGES.txt
+  * Update haxelib to 4.1.0
+    * Added support for documenting custom defines and metadata (#573)
+    * Fixed a segmentation fault on Linux systems</comment>
+    <requestid>1078735</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0d5f739b25a645671d85e6e5eb672242</srcmd5>
+    <version>4.3.0</version>
+    <time>1683111412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084124</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>46ffd900012cbc342a1fc9cdb899221a</srcmd5>
+    <version>4.3.1</version>
+    <time>1684846418</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086031</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>b0e0328c4951e6407ebb6443564ce042</srcmd5>
+    <version>4.3.1</version>
+    <time>1685562861</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089877</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5582ef59a1b120bc2f2147bb839f5a4d</srcmd5>
+    <version>4.3.2</version>
+    <time>1694808294</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1111390</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1f13c2d3878664f89a40c6944f6cb141</srcmd5>
+    <version>4.3.3</version>
+    <time>1700511578</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.3.3
+  * General improvements:
+    + all : improve extra field error range
+    + all : better error messages for --connect
+    + hl : improve error message when hl_version is missing
+    + hl/c : compiler now adds hlc define when targeting hl/c
+    + macro : update macro API restriction warnings when using -D haxe-next
+  * Bugfixes:
+    + all : handle non existing files for positions in pretty errors
+    + all : metadata support for local static vars
+    + all : catch trailing invalid syntax in string interpolation
+    + eval : fix Array.resize retaining values
+    + eval/hl : fix catching haxe.ValueException
+    + hl : make genhl respect Meta.NoExpr
+    + hl : don't add bindings for non existing methods
+    + hl/c : add missing I64 mod support
+    + hl/c : rework reserved keywords
+    + hl/c : fix Int64 unsigned right shift overflow
+    + java/cs: fix stack overflow from closures constraints
+    + js : DOMElement insertAdjacentElement should not be pure
+    + macro : catch trailing invalid syntax in Context.parseInlineString
+    + macro : fix TDAbstract without flags in haxe.macro.Printer</comment>
+    <requestid>1127571</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>fe2edba19245cd38645cefa88ec462cf</srcmd5>
+    <version>4.3.3</version>
+    <time>1705099631</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138379</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Tue Mar 14 13:12:03 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Initial package version 1.9.3
+  * Version specified in kubernetes-1.26 https://github.com/kubernetes/kubernetes/blob/v1.26.2/build/dependencies.yaml 

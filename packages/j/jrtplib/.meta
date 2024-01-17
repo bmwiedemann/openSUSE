@@ -1,0 +1,10 @@
+<package name="jrtplib" project="openSUSE:Factory">
+  <title>An object-oriented RTP library written in C++</title>
+  <description>JRTPLIB, an object-oriented library written in C++ which aims to help
+developers in using the Real-time Transport Protocol (RTP) as described
+in RFC 3550.
+
+</description>
+  <devel project="network:telephony" package="jrtplib"/>
+  <url>http://research.edm.uhasselt.be/jori/page/CS/Jrtplib.html</url>
+</package>

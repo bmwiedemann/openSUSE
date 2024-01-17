@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/lnussel/disk-encryption-tool.git</param>
+              <param name="changesrevision">702dff62d37b74244b58b41f78b41cd2befe581b</param></service><service name="tar_scm">
+                <param name="url">https://github.com/openSUSE/disk-encryption-tool.git</param>
+              <param name="changesrevision">d2e7fe6e0781b71a19f35ca4fd27bca559c31fd7</param></service></servicedata>

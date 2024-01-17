@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Thu Jun 13 05:38:41 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.08
+   see /usr/share/doc/packages/perl-Test-Taint/Changes
+
+  1.08    Wed Jun 12 15:01:48 CDT 2019
+          [FIXES]
+          Fixed intermittent failures in the test suite.  Thanks, Petr
+          Pisar. (RT #119897)
+- obsoletes Test-Taint-1.06-Test-taintedness-on-X-instead-of-environment-variabl.patch
+
+-------------------------------------------------------------------
+Wed Oct 10 08:20:33 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add patch to prevent random test failures:
+  Test-Taint-1.06-Test-taintedness-on-X-instead-of-environment-variabl.patch
+
+-------------------------------------------------------------------
+Tue Jun  4 15:09:35 UTC 2013 - coolo@suse.com
+
+- updated to 1.06
+       [ENHANCEMENTS]
+       tainted() now localizes $SIG{__DIE__} before performing the
+       taint check.  If the calling program has its own $SIG{__DIE__},
+       we don't want to use it.  Thanks, Pete Krawczyk.
+       https://rt.cpan.org/Ticket/Display.html?id=23507
+
+       [FIXES]
+       Checks for undef before opening files when trying to create
+       some taint. Thanks Frédéric Buclin.
+       https://rt.cpan.org/Ticket/Display.html?id=51246
+
+-------------------------------------------------------------------
+Mon May 30 15:32:02 UTC 2011 - coolo@novell.com
+
+- regenerate with newest cpanspec
+
+-------------------------------------------------------------------
+Fri Apr 22 09:26:47 UTC 2011 - jw@novell.com
+
+- initial pull from CPAN with cpanspec_obs
+
+-------------------------------------------------------------------
+Fri Apr 22 09:26:23 UTC 2011 - jw@novell.com
+
+- initial package 1.04
+    * created by cpanspec 1.78.04
+

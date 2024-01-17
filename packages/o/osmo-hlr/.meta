@@ -1,0 +1,5 @@
+<package name="osmo-hlr" project="openSUSE:Factory">
+  <title>osmo-hlr</title>
+  <description></description>
+  <devel project="network:telephony" package="osmo-hlr"/>
+</package>

@@ -1,0 +1,17 @@
+[org.gnome.software]
+install-bundles-system-wide = false
+enable-repos-dialog = false
+
+[org.gnome.shell]
+favorite-apps=['org.mozilla.firefox.desktop', 'org.gnome.Software.desktop', 'org.gnome.Nautilus.desktop']
+
+[org.gnome.desktop.interface]
+color-scheme='prefer-dark'
+clock-show-weekday=true
+show-battery-percentage=true
+font-antialiasing='rgba'
+
+[org.gnome.desktop.background]
+picture-uri='file:///usr/share/wallpapers/aeonwallpaper.png'
+picture-uri-dark='file:///usr/share/wallpapers/aeonwallpaper.png'
+

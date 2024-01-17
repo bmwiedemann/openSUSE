@@ -1,0 +1,5 @@
+<package name="php-lzf" project="openSUSE:Factory">
+  <title>LZF compression</title>
+  <description>This package handles LZF de/compression.</description>
+  <devel project="server:php:extensions" package="php-lzf"/>
+</package>

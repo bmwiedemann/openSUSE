@@ -1,0 +1,14 @@
+<package name="libdvbpsi-0" project="openSUSE:Factory">
+  <title>Library for Decoding and Generating MPEG TS and DVB PSI Tables</title>
+  <description>This package is based on the package 'libdvbpsi' from project 'openSUSE:Factory'.
+
+libdvbpsi is a simple library designed for decoding and generating
+   MPEG TS and DVB PSI tables. Current features: * Program
+   Association Table (PAT), decoder and generator.
+
+* Program Map Table (PMT), decoder and generator.
+
+* All MPEG 2 descriptors, decoders and generators.
+</description>
+  <devel project="multimedia:libs" package="libdvbpsi-0"/>
+</package>

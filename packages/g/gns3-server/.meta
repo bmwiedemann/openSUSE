@@ -1,0 +1,7 @@
+<package name="gns3-server" project="openSUSE:Factory">
+  <title>The GNS3 server manages emulators such as Dynamips, VirtualBox or Qemu/KVM</title>
+  <description>The GNS3 server manages emulators such as Dynamips, VirtualBox or Qemu/KVM. Clients like the GNS3 GUI controls the server using a JSON-RPC API over Websockets.
+
+You will need the new GNS3 GUI (gns3-gui repository) to control the server.</description>
+  <devel project="Education" package="gns3-server"/>
+</package>

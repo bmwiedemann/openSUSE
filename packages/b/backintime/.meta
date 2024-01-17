@@ -1,0 +1,15 @@
+<package name="backintime" project="openSUSE:Factory">
+  <title>Back In Time is a simple backup system for GNOME/KDE4 desktop</title>
+  <description>Back In Time is a simple backup system for GNOME/KDE4 desktop inspired from
+&quot;flyback project&quot; and &quot;TimeVault&quot;. The backup is done by taking snapshots
+of a specified set of directories.
+
+All you have to do is configure:
+
+	* Where to save snapshot
+	* What directories to backup
+	* When backup should be done (manual,
+	  every hour, every day, every week, every month)</description>
+  <devel project="Archiving:Backup" package="backintime"/>
+  <url>http://www.le-web.org/back-in-time/</url>
+</package>

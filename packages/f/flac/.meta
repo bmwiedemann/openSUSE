@@ -1,0 +1,5 @@
+<package name="flac" project="openSUSE:Factory">
+  <title>Free Lossless Audio Codec</title>
+  <description>FLAC is an open source lossless audio codec developed by Josh Coalson.</description>
+  <devel project="multimedia:libs" package="flac"/>
+</package>

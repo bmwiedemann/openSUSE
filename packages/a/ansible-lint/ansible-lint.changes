@@ -1,0 +1,1498 @@
+-------------------------------------------------------------------
+Thu Nov 30 09:36:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.22.1:
+  * Bugfixes
+    - Look for ansible binary in the same path as we are (#3903)
+      @FliegenKLATSCH
+    - Avoid stacktrace with broken ansible.cfg files (#3916)
+      @ssbarnea
+    - Avoid jinja[invalid] with ansible.builtin.mandatory filter
+      (#3917) @ssbarnea
+    - Remove support for deprecated include (#3722) @ssbarnea
+    - Fix use of versioned github action (#3762) @karl-johan-grahn
+    - Fix few URLs in README.md (#3915) @ssbarnea
+    - Correct some usage examples for package_latest (#3914)
+      @pablomh
+    - Add option to allow running with missing plugins and
+      collection dependencies (#3913) @ssbarnea
+    - Avoid warnings from loading of deprecated modules (#3715)
+      @ssbarnea
+    - Log ignored exception details to debug log (#3900) @bluecmd
+    - GitHub Action: properly respect the working_directory
+      argument (#3905) @ptoscano
+    - Allow to set max_fail_percentage as templated integer (#3901)
+      @rebtoor
+    - Fix setuptools-scm versioning (#3887) @ssbarnea
+    - Add Fedora 39 to meta.json (#3893) @jsf9k
+    - Use python 3.10 as primary version target (#3886) @ssbarnea
+
+-------------------------------------------------------------------
+Tue Nov  7 11:31:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+-update to 6.22.0:
+  * Minor Changes
+    - Enable YAML 1.2 support for non-ansible files (#3809)
+      @ssbarnea
+  * Bugfixes
+    - Require ruamel.yaml >= 0.18.5 (#3880) @ssbarnea
+    - Improve logging regarding to yaml loading and dumping (#3875)
+      @ssbarnea
+    - Avoid creating new load method in our custom formatter
+      (#3874) @ssbarnea
+    - Support `ruamel-yaml >= 0.18.2` (#3869) @hswong3i
+
+-------------------------------------------------------------------
+Fri Oct 20 04:57:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.21.1:
+  * Bugfixes
+    - Avoid exception caused by accidental unloading of core rules
+      (#3857) @ssbarnea
+    - Document pre-commit access to ansible community bundle
+      (#3856) @ssbarnea
+    - Fix bug with auto-fix ending too soon (#3855) @ssbarnea
+
+-------------------------------------------------------------------
+Thu Oct 19 05:51:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.21.0:
+  * Minor Changes
+    - Allow linting plugin EXAMPLES as playbooks (#3309) @Qalthos
+  * Bugfixes
+    - Add support for Rocky (#3843) @facorazza
+    - Update supported Ubuntu versions in meta.json (#3845)
+      @mcdonnnj
+    - Avoid false positives for handler in roles handlers directory
+      (#3838) @ajinkyau
+    - Hide stacktrace when loading invalid yaml (#3844) @ajinkyau
+    - Add some platforms to meta.json (#3841) @mcdonnnj
+    - Temporary avoid auto-fixing YAML files not owned by ansible
+      (#3837) @ssbarnea
+    - Add environment variable for skipping schema update (#3835)
+      @ajinkyau
+    - Avoid creating temporary YAML files inside source tree
+      (#3819) @Qalthos
+    - Document environment variables (#3833) @ssbarnea
+    - Update schemas (#3832) @ssbarnea
+    - Support complex requirements in argument_specs.yml (#3823)
+      @tapetersen
+    - Fix SARIF-formatter severity levels (#3824) @4ch1m
+    - Add play level autofix for key-order rule (#3815) @ajinkyau
+    - Add support for python 3.12 (#3813) @ssbarnea
+    - Update SPDX license list (#3814) @ssbarnea
+    - Use checkout action in install docs (#3810) @gma
+    - Fix actions-tagger arguments (#3808) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Oct  4 09:41:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.20.3:
+  * Bugfixes
+    - Fix wget command arguments in github action (#3806) @ssbarnea
+    - Update some platform versions in meta.json (#3800)
+      @masoud-maghsoudi
+
+-------------------------------------------------------------------
+Mon Oct  2 05:31:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.20.2:
+  * Bugfixes
+    - Do not use github action path for running ansible lint
+      (#3798) @ReenigneArcher
+    - Correct listing of autofix rules in documentation (#3797)
+      @ssbarnea
+    - Make the autofix rule list dynamic in documentation (#3785)
+      @shatakshiiii
+    - Fix documentation links to autofix page (#3796) @ssbarnea
+    - Bump test dependencies (#3795) @ssbarnea
+    - Correct documentation regarding CLI argument precedence
+      (#3792) @ssbarnea
+    - Document autofix ability for rules that supports it (#3791)
+      @ssbarnea
+    - Accept underline prefix when checking var-naming (#3789)
+      @ssbarnea
+    - Correct regression with use of --fix (#3783) @ssbarnea
+
+-------------------------------------------------------------------
+Fri Sep 29 08:48:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.20.1:
+  * Bugfixes
+    - Fix detection of play roles vars missing prefix (#3765)
+      @cavcrosby
+    - Prune reported errors after autofix (#3774) @cidrblock
+    - `--fix` will now default to `all` (#3777) @ajinkyau
+    - Avoid false error caused by TypeError with jinja rule (#3773)
+      @ssbarnea
+    - Sanity Rule Ignore Additions and Updates (#3766) @alisonlhart
+    - Update rulebook schema (name is now required) (#3776)
+      @ssbarnea
+    - Expose rules that have autofix capability in docs (#3770)
+      @shatakshiiii
+    - List all the fixable rules in CLI via `--list-rules` (#3737)
+      @shatakshiiii
+    - Include level in SARIF results (#3758) @ssbarnea
+    - Meta runtime supported version update (#3755) @alisonlhart
+
+-------------------------------------------------------------------
+Wed Sep 20 05:30:20 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.20.0:
+  * Minor Changes
+    - Respect cgroup CPU limits when running inside containers
+      (#3749) @ssbarnea
+    - Rename --write option to --fix (#3748) @ssbarnea
+    - Add auto-fixing implementation for `no-free-form` rule
+      (#3725) @ajinkyau
+    - Add auto-fixing implementation for `partial-become` rule
+      (#3692) @shatakshiiii
+    - Add auto-fixing implementation for `no-jinja-when` rule
+      (#3721) @shatakshiiii
+  * Bugfixes
+    - Fix the detection of role vars missing role prefix (#3750)
+      @cavcrosby
+    - Clarify auto-fix arguments use (#3751) @ssbarnea
+    - Avoid IndexError exception with jinja transform (#3747)
+      @ssbarnea
+    - Fix docs typo (#3746) @ssbarnea
+    - Add /bin/bash executable to example correct code for pipefail
+      rule (#3731) @Perdu
+    - Properly avoid `pipx` venv path to be included in altered
+      path warning (#3730) @chrysle
+    - Fix transform exception with local_action with old syntax
+      (#3743) @ssbarnea
+    - Support only_upgrade (#3734) @soroshsabz
+
+-------------------------------------------------------------------
+Wed Sep  6 15:49:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- check/add/modify BuildRequires and Requires
+- update to 6.19.0:
+  * Minor Changes
+    - Add auto transform for no-log-password rule (#3708) @ajinkyau
+    - Add auto-fixing implementation for key-order[task] rule
+      (#3705) @ajinkyau
+    - Add auto-fixing implementation for `jinja[spacing]` rule
+      (#3691) @ajinkyau
+    - Make schema validation messages more explicit (#3701)
+      @ssbarnea
+    - Transform for deprecated-local-action rule (#3689) @ajinkyau
+  * Bugfixes
+    - Require ansible-compat>=4.1.10 (#3723) @ssbarnea
+    - Skip altered path warning for `ansible-lint` installed by
+      `pipx` (#3720) @chrysle
+    - Update transform for `key-order` rule (#3719) @ajinkyau
+    - Allow installation of pre-release collection version as
+      dependencies (#3716) @ssbarnea
+    - Avoid deprecated-bare-vars false positive with file paths
+      (#3709) @ssbarnea
+    - Limit sequence-of-sequence indents to a single space (#3671)
+      @Qalthos
+    - Avoid no-handlers false positives (#3702) @ssbarnea
+    - Add missing word to risky-shell-pipe docs (#3704) @roock
+    - Avoid yamllint truthy violations with github workflows
+      (#3698) @ssbarnea
+    - Avoid false positive with var-name rule on roles (#3697)
+      @ssbarnea
+    - Include links to documentation for schema validation errors
+      (#3684) @ssbarnea
+    - Schema update (#3693) @cidrblock
+    - Use yaml.load_all for multiple yaml document (#3679)
+      @shatakshiiii
+    - Ignore user configured value for any_unparsed_is_failed
+      (#3680) @ssbarnea
+    - Update rulebook schema (#3681) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Sep  6 15:48:25 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.18.0:
+  * Minor Changes
+    - Limit the maximum block depth (#3602) @Ruchip16
+    - Transform functionality for command_instead_of_shell  (#3675)
+      @ajinkyau
+    - Add rule to check the number of tasks (#3156) @Ruchip16
+  * Bugfixes
+    - Clarify loop-var-prefix rule and code snippet (#3642)
+      @schwarmco
+    - Update `version_added` for complexity rule (#3623) @ajinkyau
+    - Ensure that single space between tasks is preserved when
+      using --write (#3641) @shatakshiiii
+    - Update ansible-compat used for testing (#3664) @ssbarnea
+    - Document `yaml[line-length]` rule (#3653) @shatakshiiii
+    - Prevent use of spdx-tools 0.8.0 due to breaking changes
+      (#3649) @ssbarnea
+    - fixes dead marketplace link (#3631) @wookietreiber
+    - Improve profile information on summary line (#3637)
+      @ziegenberg
+    - command-instead-of-module: allow `git rev-parse` (#3610)
+      @JohnVillalovos
+    - Include filepaths starting from $HOME in lintables (#3621)
+      @shatakshiiii
+    - Update _mockings.py to fix bug created in #3390 (#3614)
+      @karcaw
+    - Allow to set gather_facts as templated boolean (#3606)
+      @noonedeadpunk
+    - Add dependency version check for collection metadata (#3601)
+      @ajinkyau
+    - Fix installation of dependencies when run as an action
+      (#3592) @ssbarnea
+
+-------------------------------------------------------------------
+Thu Jun 22 13:29:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.17.2:
+  * Bugfixes
+    - Allow use as a reusable github action (#3513) @ssbarnea
+    - Add action and args properties to task class (#3576)
+      @ssbarnea
+    - Fixed error when sarif file option is provided (#3587)
+      @ajinkyau
+    - Add NetBSD as a recognized platform (#3586) @he32
+    - Display ansible-compat version alongwith with other deps
+      (#3584) @ajinkyau
+    - Refactored syntax-checking (#3568) @ssbarnea
+    - Avoid app reinitialization during syntax-check (#3563)
+      @ssbarnea
+    - Allow config file to have `.yaml` extension (#3559) @bdsoha
+    - Allow lists of lists of strings for vars_files (#3561)
+      @ajinkyau
+
+-------------------------------------------------------------------
+Tue Jun 13 16:51:19 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.17.1:
+  * Bugfixes
+    - Update guess install method check (#3553) @ajinkyau
+    - Fix exclude logic bug that can cause cause partial linting
+      (#3552) @ssbarnea
+    - Make profile information on summary line more clear (#3545)
+      @ssbarnea
+    - Avoid adding pip related messages if installation method is
+      different (#3551) @ajinkyau
+    - Avoid false positive with var-naming[no-role-prefix] (#3550)
+      @ssbarnea
+    - Make refresh_schemas handle firewalls that cut the file
+      transfer midway (#3546) @sverrehu
+    - Rename marketplace action (#3548) @ssbarnea
+    - Fix action name (#3536) @coaxial
+    - Handling of exclude paths with trailing slashs (#3527)
+      @hille721
+    - Ensure that rules collections use Runtime in offline mode
+      (#3526) @ssbarnea
+    - Avoid using get_app() from inside the rule (#3525) @ssbarnea
+    - Avoid dependency error from rich (#3517) @ssbarnea
+
+-------------------------------------------------------------------
+Thu Jun  1 05:33:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.17.0:
+  * Minor Changes
+    - fqcn[deep]: detect deep plugins (#3502) @ssbarnea
+  * Bugfixes
+    - Reimplement file exclusion logic (#3507) @ssbarnea
+    - Check validity of 'become_method' values from code (#3499)
+      @ajinkyau
+    - Fix role_name_ prefix include_role var name error (#3500)
+      @ajinkyau
+    - Hide pip error if not present (#3494) @Et7f3
+    - Update formatter to avoid reporting paths with .. (#3496)
+      @ssbarnea
+    - Remove false positive on 'cacheable' property of set_fact
+      (#3490) @ajinkyau
+    - Add missing become_method plugins to the schema (#3484)
+      @ajinkyau
+    - Add support for ansible-builder v3 schema (#3480) @ajinkyau
+    - Add Github Marketplace Action (#3476) @ssbarnea
+    - Add oracle linux 8.8 (#3479) @facorazza
+    - Revert ansible-compat vendoring (#3478) @ssbarnea
+    - Updated file or dir not found message (#3474) @ajinkyau
+    - Check for included role prefix instead of current one (#3473)
+      @ssbarnea
+
+-------------------------------------------------------------------
+Mon May 22 05:39:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.16.2:
+  * Bugfixes
+    - Update test dependencies (#3470) @ssbarnea
+    - Fix and document installing of requirements.yml files (#3471)
+      @ssbarnea
+    - Do not ever exclude files given as arguments (#3468)
+      @ssbarnea
+    - Ensure we return error if argument gives are not present
+      (#3467) @ssbarnea
+    - Allow rules to expose all tags they can produce (#3464)
+      @ssbarnea
+    - Enable var-name rule to detect read-only variables (#3462)
+      @ssbarnea
+    - Add Oracle Enterprise Linux 7.* (#3463) @Rylon
+    - Fix for var-naming rule to not break on include_tasks and
+      vars (#3458) @ajinkyau
+    - var-naming now prevents use of Ansible reserved names (#3460)
+      @ssbarnea
+    - Ensure that we also lint files from git submodules (#3431)
+      @ssbarnea
+    - Adding 2.16 to the list of allowed ansible-core versions in
+      meta-runtime rule (#3455) @alisonlhart 
+
+-------------------------------------------------------------------
+Wed May 17 09:06:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- adjust BuildRequires and Requires to actual requirements,
+  especially python-ansible-compat >= 4.0.1
+- properly set the version, so 'ansible-lint --version' gives the
+  right information
+
+-------------------------------------------------------------------
+Tue May 16 09:10:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.16.1:
+  * Bugfixes
+    - Update lock file to use ansible-core 2.15.0 (#3449) @ssbarnea
+    - Install requirements from galaxy.yml and
+      tests/requirements.yml (#3446) @ssbarnea
+    - Add Kali Linux as a supported platform (#3448) @mcdonnnj
+    - Do not trigger no_handler upon complex conditions (#3437)
+      @klaus-tux
+    - Hide warning about unique filter originating from core
+      (#3436) @ssbarnea
+    - Relax ruamel-yaml requirements (#3433) @ssbarnea
+    - Suggest correct alternative for `with_filetree` (#3432)
+      @ErwinJanssen
+    - Upgrade var-naming rule to include role name prefix (#3422)
+      @ssbarnea
+    - Fix exception when using reformatting on scalars (#3423)
+      @ssbarnea
+    - Find and lint imported playbooks (#3413) @ajinkyau
+
+-------------------------------------------------------------------
+Mon May 15 12:25:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Tue May  9 10:55:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.16.0:
+  * Minor Changes
+    - Capture python warnings and report some of them as matches
+      (#3324) @ssbarnea
+    - Capture and hide ansible core warnings by default (#3361)
+      @ssbarnea
+    - Remove progressive mode (#3350) @ssbarnea
+    - Enforce use of lineno variable name inside the library
+      (#3326) @ssbarnea
+  * Bugfixes
+    - Add Amazon Linux 2023 as a supported platform (#3405)
+      @artis3n
+    - Capture python warnings and report some of them as matches
+      (#3324) @ssbarnea
+    - Fix missing required arguments issue from args rule (#3402)
+      @ajinkyau
+    - Change matchtask to receive a Task instance (#3403) @ssbarnea
+    - Require ruamel.yaml>=0.17.24 (#3406) @ssbarnea
+    - Avoid exception when trying to load invalid text files
+      (#3399) @ssbarnea
+    - Fix ansible collection path detection (#3398) @ssbarnea
+    - ruff: Address FBT002 (#3389) @shatakshiiii
+    - More pathlib adoption (#3390) @ssbarnea
+    - Avoid dropping comments on YAML transformation (#3392)
+      @ssbarnea
+    - Correct docs on navigator schema location (#3394) @yajo
+    - Fix changelog schema for connection plugins (#3388) @Qalthos
+    - Migrate from os.path to pathlib (#3384) @ssbarnea
+    - Remove resolvelib from requirements lock (#3387) @ssbarnea
+    - Make cwd use pathlib (#3383) @ssbarnea
+    - ruff: Address PGH (#3380) @ssbarnea
+    - ruff: Address A (#3379) @ssbarnea
+    - ruff: Address B (#3377) @ssbarnea
+    - ruff: Address SLF (#3372) @ssbarnea
+    - ruff: Address `SIM` (#3373) @shatakshiiii
+    - ruff: Address EXE (#3367) @ssbarnea
+    - ruff: Address BLE (#3368) @shatakshiiii
+    - ruff: Address INP and PLW (#3366) @ssbarnea
+    - Add initial handling of submodules to contribution docs
+      (#3362) @klaus-tux
+    - ruff: Address T and RET (#3364) @ssbarnea
+    - Find "changed" not only in first "when" condition (#3358)
+      @klaus-tux
+    - ruff: fix S rule (#3363) @ssbarnea
+    - Make MatchError a dataclass (#3345) @ssbarnea
+    - Remove `EM` from ruff ignores (#3356) @shatakshiiii
+    - Mock jinja filters to prevent templating errors (#3355)
+      @ssbarnea
+    - Update schema files (#3354) @ssbarnea
+    - Add Fedora 38 to meta.json schema file (#3353)
+      @Marek-Mantaj-Mobica
+    - Remove `RUF` from ruff ignores (#3346) @ajinkyau
+    - Remove `G` from ruff ignores (#3332) @shatakshiiii
+    - Remove `ISC` from ruff ignores (#3342) @shatakshiiii
+    - Remove `C` from ruff ignores (#3343) @ajinkyau
+    - Make linter configuration a dataclass (#3334) @ssbarnea
+    - Remove `N` from ruff ignores (#3328) @shatakshiiii
+    - Remove useless . from additional_dependencies in pre-commit
+      hook (#3327) @trallnag
+
+-------------------------------------------------------------------
+Fri May  5 07:16:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE
+
+-------------------------------------------------------------------
+Fri Apr 21 12:54:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.15.0:
+  * Minor Changes
+    - Add ability to auto-fix fcqn rule violations (#3316)
+      @MarkusTeufelberger
+    - Document how to avoid vault related errors (#3313) @ssbarnea
+    - Require at least one known subfolder for roles (#3303)
+      @ssbarnea
+  * Bugfixes
+    - Ensure that JSON output does not contain newlines (#3315)
+      @ssbarnea
+    - Improve description of task names (#3314) @ssbarnea
+    - Fix config path detection logic (#3312) @ssbarnea
+    - Improve tests related to vault processing (#3306) @ssbarnea
+    - Avoid running args rule if we encounter a windows module
+      (#3305) @ajinkyau
+    - Ensure non zero exit code when no files are linted (#3302)
+      @ssbarnea
+    - Refactor exit codes to use an enum (#3300) @ssbarnea
+    - Ensure profile rules do not have experimental or opt-in tag
+      (#3299) @ssbarnea
+    - Change logging to use rich output (#3297) @ssbarnea
+    - Refactor project root directory detection code (#3295)
+      @ssbarnea
+    - Remove flake8 and pyupgrade (#3292) @ssbarnea
+    - Extend ruff checks (#3291) @ssbarnea
+    - Send GHA annotations to stderr (#3288) @ssbarnea
+    - Fix Schema validation for variables in tasks/vars directory
+      (#3289) @ajinkyau
+    - Recognize ansible collections installed at system level
+      (#3286) @ssbarnea
+
+-------------------------------------------------------------------
+Fri Apr 21 11:53:19 UTC 2023 - pgajdos@suse.com
+
+- python-six is not required
+  (dependency removed in ead51323d85be09d5a96a4a5b328f404aaac6a8e)
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+
+-------------------------------------------------------------------
+Thu Apr 13 10:15:21 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.6:
+  * Bugfixes
+    - Update schema to add some of the missing rules (#3274)
+      @shatakshiiii
+    - Use temporary playbooks to check role syntax (#3280)
+      @ssbarnea
+    - Enable ruff linter (#3276) @ssbarnea
+    - Use fqcn[canonical] in place of fqcn[action-redirect] (#3273)
+      @shatakshiiii
+    - Refactor tests (#3271) @ssbarnea
+    - Refactor no-relative-paths tests (#3270) @ssbarnea
+    - Minor fixes for no-handler rule (#3269) @ssbarnea
+    - name[casing]: Add transform to automatically fix this during
+      --write (#3268) @ssbarnea
+    - Remove meta-no-info rule due to being covered by schema[meta]
+      (#3267) @ssbarnea
+    - Ignore unknown sections under changes key on changelogs
+      (#3262) @ssbarnea
+    - Add current FreeBSD and OpenBSD versions (#3260) @rkrieger
+    - Ensure playbook path is absolute (#3250) @ssbarnea
+    - Updated 'kind' message if file kind is unknown (#3247)
+      @ajinkyau
+    - Rename arg-spec schema file to clarify it applies to roles
+      only (#3243) @ssbarnea
+
+-------------------------------------------------------------------
+Thu Apr 13 06:52:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.5:
+  * Bugfixes
+    - Use fqcn[canonical] in place of fqcn[action-redirect] (#3273)
+      @shatakshiiii
+    - Refactor tests (#3271) @ssbarnea
+    - Refactor no-relative-paths tests (#3270) @ssbarnea
+    - Minor fixes for no-handler rule (#3269) @ssbarnea
+    - name[casing]: Add transform to automatically fix this during
+      --write (#3268) @ssbarnea
+    - Remove meta-no-info rule due to being covered by schema[meta]
+      (#3267) @ssbarnea
+    - Ignore unknown sections under changes key on changelogs
+      (#3262) @ssbarnea
+    - Add current FreeBSD and OpenBSD versions (#3260) @rkrieger
+    - Ensure playbook path is absolute (#3250) @ssbarnea
+    - Updated 'kind' message if file kind is unknown (#3247)
+      @ajinkyau
+    - Rename arg-spec schema file to clarify it applies to roles
+      only (#3243) @ssbarnea
+
+-------------------------------------------------------------------
+Mon Apr  3 11:03:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.4:
+  * Bugfixes
+    - Document that no-changed-when also applies to handlers
+      (#3237) @ssbarnea
+    - Update navigator schema (#3236) @ssbarnea
+    - Update no-handler rule to accept 'not changed' (#3230)
+      @jpopelka
+    - Fix link for usage.md (Linting playbooks and roles) (#3224)
+      @ziegenberg
+    - Skip PATH checking when pyenv virtualenv is present (#3219)
+      @ajinkyau
+    - Require yamllint 1.30.3 or newer (#3220) @ssbarnea
+
+-------------------------------------------------------------------
+Sat Mar 25 06:41:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.3:
+  * Bugfixes
+    - Refactor task iterator (part 2) (#3212) @ssbarnea
+    - Document fix for literal_compare `== False` (#3207)
+      @jemand771
+    - docs: Provide more information about the dangers of run_once
+      (#3187) @bendem
+    - Fix sarif output to use 'match.details' in result object,
+      instead of 'match.message' (#3163) @4ch1m
+    - Allow templated boolean for any_errors_fatal (#3205) @sathieu
+    - Refactor task iterator to return an object (#3195) @ssbarnea
+    - Update SPDX license list (#3193) @ssbarnea
+    - Fix tilde interpolation in PATH (#3185) @fclaerho
+    - Fix "helpUri" assignment for SARIF output (#3176) @4ch1m
+    - docs: fix link for rule galaxy[no-runtime] (#3175)
+      @ziegenberg
+
+-------------------------------------------------------------------
+Thu Mar  9 18:26:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.2:
+  * Bugfixes
+    - Ignore risky-shell-pipe with pwsh (#3166) @ssbarnea
+    - Implement galaxy[no-runtime] check for meta/runtime.yml file
+      (#3162) @ssbarnea
+    - Fixed args rule error for synchronize module (#3158)
+      @ajinkyau
+    - Avoid test ... require a dictionary error with jinja rule
+      (#3157) @ssbarnea
+
+-------------------------------------------------------------------
+Tue Mar  7 15:09:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.1:
+  * Bugfixes
+    - Avoid "unable to evaluate string as dictionary" with args
+      rule (#3150) @ssbarnea
+    - Avoid 'Unrecognized type' errors with jinja rule
+      (#3149) @ssbarnea
+    - Allow 'use' parameter with service module (args)
+      (#3147) @ssbarnea
+    - Change schema $id to be a valid URL (#3146) @ssbarnea
+    - Document skip_ansible_lint does not work with yamllint rule
+      (#3144) @ssbarnea
+    - Update schema '$id' (#3137) @dericcrago
+    - Ensure ignored matches are reports as minor in codeclimate
+      output (#3131) @ssbarnea
+    - Remove unused rules_as_docs (#3130) @ssbarnea
+    - Remove deprecated nested_items (#3129) @ssbarnea
+    - Avoid undefined errors from jinja rule (#3127) @ssbarnea
+    - Refactor processing of module args (#3125) @ssbarnea
+
+-------------------------------------------------------------------
+Fri Mar  3 13:08:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.0
+  * Minor Changes
+    - Add rulebook schema (#3103) @ssbarnea
+    - Add sanity rule with check for bad and disallowed ignores
+      (#3102) @alisonlhart
+    - Remove support for python 3.8 (#3051) @ssbarnea
+  * Bugfixes
+    - Adding 2.9 ignore allow-list for sanity rule (#3118)
+      @alisonlhart
+    - Generalize args rule exception handling (#3113) @ajinkyau
+    - Remove duplicate deprecated-command-syntax rule (#3119)
+      @ssbarnea
+    - Allow schema refresh to run without installing app (#3117)
+      @ssbarnea
+    - Removed unused code (#3116) @ajinkyau
+    - Allow custom rules specific configuration with
+      ansible-lint-config JSON Schema (#3080) @ssato
+    - Ensure SPDX license list is in sync (#3111) @ssbarnea
+    - Added support for raw booleans when using complex_conditional
+      (#3109) @ajinkyau
+    - Make git errors fatal when strict mode is active (#3064)
+      @ssbarnea
+    - Fix for skipped rules key in yaml rule (#3097) @ajinkyau
+    - Allow manifest field on galaxy file schema (#3100) @ssbarnea
+    - Simplify logic for meta-runtime rule (#3089) @ajinkyau
+    - Removed lines not required for code coverage (meta-no-info
+      rule) (#3094) @ajinkyau
+    - Remove "mode: preserve" from risky file perms doc, add copy
+      example (#3078) @jamescooke
+    - Improved ignore file handling (#3075) @4ch1m
+    - fix exclude-path test (#3071) @4ch1m
+    - Avoid jinja rule triggering with mutually exclusive arguments
+      (#3060) @ssbarnea
+    - Avoid reformatting of strings with line feeds and no jinja
+      (#3059) @ssbarnea
+    - Change CodeClimate severity to expose error or warning levels
+      (#3057) @ssbarnea
+    - Avoid 'not defined' with jinja rule (#3056) @ssbarnea
+    - Avoid 'is undefined' error with jinja rule (#3055) @ssbarnea
+    - Document output formats (#3054) @ssbarnea
+    - Allow /dev/null to be passed as config file (#3053) @ssbarnea
+- BuildRequire python3.9 or higher
+- BuildRequire/Require ansible-core 2.14 or higher
+
+-------------------------------------------------------------------
+Fri Feb 17 12:09:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.13.1:
+  * Bugfixes
+    - Improve no-changed-when rule (#3050) @ssbarnea
+    - Fix ignore file generation (#3046) @jcgruenhag
+
+-------------------------------------------------------------------
+Wed Feb 15 17:26:41 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.13.0:
+  * Minor Changes
+    - Removed experimental flag from multiple rules (#3037) @ssbarnea
+    - Allow only use of quoted octals (#3030) @ssbarnea
+    - Load rule ignores from external text file (#3004) @ssbarnea
+  * Bugfixes
+    - Improve jinja error line number identification (#3044) @ssbarnea
+    - profiles: include all rules when listing all rules or tags (#3043) @ziegenberg
+    - Improve documentation on var-naming (#3042) @ssbarnea
+    - Improve loop-var-prefix checking (#3041) @ssbarnea
+    - Ignore known problematic modules from args rule (#3040) @ssbarnea
+    - Improve jinja2 rule error handling (#3039) @ssbarnea
+    - Enable syntax-check on roles (#3035) @ssbarnea
+    - Recognize role-name[path] also inside roles block (#3034) @ssbarnea
+    - Allow {% in schema full-jinja check (#3029) @ssbarnea
+    - Update ansible-compat (#3025) @ssbarnea
+    - Recognize systemctl kill as a valid command (#3024) @konstruktoid
+    - Mark syntax-check as unskippable (#3020) @ssbarnea
+    - Fixes no-tabs issue with fqcn actions (#3021) @ssbarnea
+    - Move empty-playbook to syntax-check (#3019) @ssbarnea
+    - Ensure that rule import failures are not ignored (#2983) @ssbarnea
+    - Increase the test coverage (#3014) @ssbarnea
+
+-------------------------------------------------------------------
+Sun Feb 12 07:15:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.12.2:
+  * Bugfixes
+    - Use XDG_CACHE_HOME instead of XDG_CONFIG_CACHE (#3009) @gangefors
+    - Adding galaxy[tag] check for required tags (#3006) @alisonlhart
+    - Fix playbook/rulebook detection (#3005) @apatard
+    - Improved documentation building (#3007) @ssbarnea
+    - Rename meta-unsupported-ansible to meta-runtime and correct its logic (#3000) @alisonlhart
+    - Avoid stack trace caused by bad filename matching pattern (#3001) @ssbarnea
+    - Embed ansible_compat in linter (#2994) @ssbarnea
+    - Bump cryptography to 39.0.1 (#2996) @ssbarnea
+    - Keep jinja2 leading spaces (#2993) @ssbarnea
+    - Add schema[moves] messages for moved plugins (#2992) @ssbarnea
+    - Updated galaxy rule imports and improved code coverage (#2985) @ajinkyau
+
+-------------------------------------------------------------------
+Sat Feb  4 12:29:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.12.1:
+  * Bugfixes
+    - Make no-jinja-when also detect list conditions (#2975) @ssbarnea
+    - Fix exception related to include_tasks (#2974) @ssbarnea
+    - Allow noqa comments without colons (#2971) @ssbarnea
+
+-------------------------------------------------------------------
+Thu Feb  2 07:10:20 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.12.0:
+  * Minor Changes
+    - Extend fqcn rule to complain on `collections` keyword (#2825) @jcgruenhage
+    - Determine if passed arguments are playbooks or not (#2912) @ssbarnea
+  * Bugfixes
+    - Avoid caching on role_name regex (#2876) (#2876) @DanInProgress
+    - Change the way rules are listed from command line (#2940 (#2940) @ssbarnea
+    - Added example for skip list on command line (#2964) (#2964) @ajinkyau
+    - Do not install collection locally in offline mode (#2926) (#2926) @jensrudolf
+    - Improved coverage for empty string compare and galaxy rules (#2963) @ajinkyau
+    - Add support for Ansible 2.15 (#2960 (#2960) @ssbarnea
+    - Rename warning[raw-non-string] to no-free-form[raw-non-string] (#2956) @ssbarnea
+    - Correct run-once rule identifier and related examples (#2952) @ajinkyau
+    - Fix typo in doc site name (#2954) @utoddl
+    - Replace sphinx with mkdocs (#2942) @ssbarnea
+    - Remove rich markdown header override (#2938) @ssbarnea
+    - Fixing OpenWrt name; Adding OpenWrt 22.03 (#2928) @sscheib
+    - Ignore args rule finding if value for choice has jinja template (#2929) @klaus-tux
+    - Allow warnings to be skipped (#2925) @ssbarnea
+    - Fix spacing in option help strings (#2920) @thomwiggers
+    - Allow dumping of SARIF files (#2921) @ssbarnea
+    - Change treatment of files that fail to load structured data (#2919) @ssbarnea
+    - Fix github archives metadata (#2914) @ssbarnea
+    - Fix print leak with meta-unsupported-ansible (#2913) @ssbarnea
+
+-------------------------------------------------------------------
+Fri Jan 20 10:04:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.11.0:
+  * Minor Changes
+    - Remove opt-in and experimental tags from metadata rule (#2906) @ssbarnea
+    - Remove opt-in and experimental tags from galaxy rule (#2905) @ssbarnea
+    - Add galaxy[no-changelog] check to galaxy rule (#2832) @alisonlhart
+  * Bugfixes
+    - Fix typo in installing.md (#2901) @wgroenewold
+    - Fix 'location' attribute for CodeclimateJSONFormatter (#2897) @4ch1m
+    - Avoid dubious ownership errors with newer versions of git (#2890) @ssbarnea
+    - Clarify effects of --offline flag (#2896) @Andeye
+    - Fix infinite hang on schema refresh by adding timeout parameter (#2895) @Andeye
+    - schema: detect invalid space in meta runtime (#2873) @ssbarnea
+    - Docs: issue #2864 update urls (#2865) @oraNod
+
+-------------------------------------------------------------------
+Thu Jan  5 14:05:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.10.2:
+  * Bugfixes
+    - Make git a runtime dependency (#2860) @ssbarnea
+    - Disable version check when running as a pre-commit hook (#2858) @ssbarnea
+    - Avoid checking var-names on non ansible files (#2856) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Jan  4 15:57:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.10.1:
+  * Bugfixes
+    - Avoid TypeError NoneType with lookups (#2852) @ssbarnea
+    - Add the missing github_branch meta field (#2847) @triplepoint
+    - name[template]: only trigger on word characters after the template (#2836) @evgeni
+    - Update documentation of `run_once` rule (#2823) @shatakshiiii
+    - Fix line number on var-naming error for 'register' (#2840) @zigarn
+    - Add SLES15SP4 to schema (#2841) @johanneskastl
+    - src/ansiblelint/schemas/meta.json: add openSUSE 15.5 (#2842) @johanneskastl
+    - Complete schema for Antsibull changelogs (#2834) @shatakshiiii
+
+-------------------------------------------------------------------
+Fri Dec 16 12:46:39 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- convert from setup.cfg to pyproject.toml
+- update to 6.10.0:
+  * Minor Changes
+    - Add schema for Antsibull changelogs (#2814) @ssbarnea
+    - Add a rule to validate module options (#2749) @ganeshrn
+    - Add meta-unsupported-ansible rule for checking requires_ansible values (#2770) @alisonlhart
+  * Bugfixes
+    - Avoid running lookup filters while evaluating jinja2 (#2821) @ssbarnea
+    - Update schema to accept a list for 'listen' (#2817) @zigarn
+    - Update changelog schema etag (#2818) @ssbarnea
+    - Fix args validation with setup module (#2813) @ssbarnea
+    - Adopt PEP-621 packaging (#2807) @ssbarnea
+    - Restore classic behavior of offline mode (#2806) @ssbarnea
+    - Avoid false positive with name[casing] (#2800) @ssbarnea
+    - Use JSON Schema to validate own config file (#2797) @ssbarnea
+    - Add has_jinja and has_glob to text module (#2794) @ssbarnea
+    - Update schema etags (#2791) @ssbarnea
+    - Fix redirected links (#2790) @ssbarnea
+    - Correct schema refresh logic (#2785) @ssbarnea
+    - Add OracleLinux to supported platforms and include version 8.7 and 9.1 (#2783) @facorazza
+
+-------------------------------------------------------------------
+Mon Dec  5 09:14:15 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.9.1:
+  * Bugfixes
+    - Allow var_naming_pattern in linter config schema (#2776) @ssbarnea
+    - Fix multiline jinja pattern in schema (#2775) @ssbarnea
+    - schema: allow jinja in diff keyword (#2774) @ssbarnea
+    - Assimilate schemas project (#2769) @ssbarnea
+    - Allow a prefix in subtasks names (#2740) @shatakshiiii
+    - Refactor risky-octal and improve its messaging (#2759) @ssbarnea
+    - Deprecate running under py38 (#2760) @ssbarnea
+    - Restore offline mode functionality (#2761) @ssbarnea
+    - Fix badge linking to rules (#2746) @motlib
+    - Upgrade linters and fix reported issues (#2752) @ssbarnea
+    - Improve RPM Packaging (#2745) @gotmax23
+    - Refactor only-builtins to have less code duplication (#2739) @evgeni
+    - Treat ansible.legacy the same way ansible.builtin (#2727) @evgeni
+    - Allow additional modules in only-builtins (#2732) @evgeni
+    - Fix deannotate function (#2733) @ssbarnea
+    - Correct packaging metadata (#2734) @ssbarnea
+
+-------------------------------------------------------------------
+Fri Nov 25 07:12:13 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec file to define %ansible_python version, which is the
+  python version, that ansible is built against, as well as
+  %ansible_python_sitelib
+- add explicit Requires for python*-subprocess-tee, that is not being added
+  automatically
+- Add Requires for python-filelock
+- Add Requires for python-bracex
+- Add version constraint for python-ruamel.yaml
+
+-------------------------------------------------------------------
+Thu Nov 24 16:00:09 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.9.0:
+  * Minor Changes
+    - Enable dynamic schema refresh (#2703) @ssbarnea
+    - Allow additional collections in only-builtins (#2710) @evgeni
+  * Bugfixes
+    - Avoid Object of type PosixPath is not JSON serializable with jinja2 (#2724) @ssbarnea
+    - Expand ~ in PATH and warn user (#2723) @ssbarnea
+    - Fix only builtins fail test (#2719) @evgeni
+    - Allow profile to be set in config file (#2720) @shatakshiiii
+    - Decouple profile listing from profile selecting on CLI (#2721) @ssbarnea
+    - Update url in docs (#2718) @ssbarnea
+    - Prevent installation on Windows (#2712) @ssbarnea
+    - Respect warn_list and skip_list (#2706) @rekup
+    - Avoid version checking when version info is absent (#2714) @ssbarnea
+    - Improve installation documentation (#2707) @oraNod
+    - Docs: usage content edits (#2682) @oraNod
+    - Sort dependencies (#2711) @ssbarnea
+    - Fix loop_var_prefix message list in the docs (#2709) @evgeni
+    - Clarify progressive mode documentation (#2708) @MarcinWieczorek
+
+-------------------------------------------------------------------
+Mon Nov 21 09:24:01 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.7:
+  * Bugfixes:
+    - Refactor get_app (#2656) @ssbarnea
+    - Bump minimal requirements (#2704) @ssbarnea
+    - Docs: configuration content edits (#2675) @oraNod
+    - Improve documentation on custom rules (#2685) @oraNod
+    - Docs: lint profiles (#2666) @oraNod
+    - Require ansible-compat>=2.2.5 (#2694) @ssbarnea
+    - Updated schemas (#2698) @ssbarnea
+    - Disable cspell allowCompoundWords (#2660) @shatakshiiii
+    - Print fatal matches first in GitHub Actions (#2689) @xfix
+    - Make SARIF output specification compliant (#2668) @atiterlea
+    - Perform mocking before installing dependencies (#2691) @ssbarnea
+    - Update schemas (#2692) @ssbarnea
+    - Fix broken test (#2676) @ssbarnea
+
+-------------------------------------------------------------------
+Tue Nov 15 15:36:21 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.6:
+  * Bugfixes:
+    - Fix offline mode (#2647) @ssbarnea
+
+-------------------------------------------------------------------
+Tue Nov  1 07:16:16 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.5:
+  * Bugfixes
+    - Fix offline mode (#2643) @ssbarnea
+    - Delay app initialization (#2642) @ssbarnea
+    - Fix pip version check (#2641) @ssbarnea
+    - Fix progressive mode exit code (#2638) @ssbarnea
+    - role-name[path]: Now detects use of paths when including roles (#2532) @ssbarnea
+    - Avoid altering severity based on level on codeclimate output (#2637) @ssbarnea
+    - Do not emit fqcn[action-core] when ansible.legacy is used for builtin modules (#2634) @felixfontein
+    - Avoid upgrade recommendation for bleeding edge users (#2630) @ssbarnea
+
+-------------------------------------------------------------------
+Sat Oct 29 07:44:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify _service to no longer use the tar_scm service,
+  as the resulting tarball is not as expected
+
+-------------------------------------------------------------------
+Sat Oct 29 07:29:21 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to 6.8.4:
+  * Bugfixes
+    - Add experimental rule for run_once (#2626) @ajinkyau
+    - Fix package name in pip upgrade instructions (#2625) @davedittrich
+    - Docs: wrap loop var tag (#2610) @oraNod
+    - Prevent pip exception with version check (#2624) @ssbarnea
+
+-------------------------------------------------------------------
+Sat Oct 29 07:27:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version v6.8.3:
+  * Bugfixes
+    -  Add warning message about outdated linter version (#2615) @ssbarnea
+    -  Detect ScannerError while searching for skipped rules (#2619) @felixfontein
+    -  Fix merging of command line options with configuration (#2616) @ssbarnea
+    -  Refactor fqcn to recommend use of canonical names (#2604) @ssbarnea
+    -  Allow toggling strict in the config file (#2603) @hemberger
+
+-------------------------------------------------------------------
+Fri Oct 14 04:52:59 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.2:
+  * Bugfixes
+    - Fix strict mode (#2601) @ssbarnea
+    - Fix config file outside project_dir bug (#2600) @ssbarnea
+    - Add win_command/win_shell to no-free-form modules (#2596) @nre-ableton
+    - Docs: Add MD for var-naming (#2594) @oraNod
+    - Fix role-name correct code example (#2591) @branic
+
+-------------------------------------------------------------------
+Tue Oct 11 05:00:12 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.1:
+  * Bugfixes
+    - Improve errors with invalid yaml files (#2589) @ssbarnea
+    - Avoid jinja[invalid] with vars on task (#2588) @ssbarnea
+    - Fix rules selection by profile (#2587) @ssbarnea
+    - Soften no-free-form occurences (#2586) @ssbarnea
+    - Ensure all rich tags are closed (#2585) @ssbarnea
+    - Docs: Add MD for role name rule (#2583) @oraNod
+    - Avoid warnings with empty role meta files (#2580) @ssbarnea
+    - Update schemas (#2582) @ssbarnea
+    - Docs: Add MD for risky shell pipe (#2577) @oraNod
+    - Include help url with JSON output format (#2578) @ssbarnea
+    - Docs: Add MD for risky-octal rule (#2574) @shatakshiiii
+
+-------------------------------------------------------------------
+Mon Oct 10 06:12:47 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.0:
+  * Minor Changes
+    - Add no-shorthand rule as experimental (#2527) @ssbarnea
+    - Adds summary stats about found violations (#2495) @ssbarnea
+    - Upgrade fqcn-builtins rule into fqcn (#2505) @ssbarnea
+    - Changed success/failure message (#2567) @ssbarnea
+  * Bugfixes
+    - Add extra documentation (#2503 #2511 #2546 #2551 #2552 #2554 #2555 #2559 #2560 #2561) @ssbarnea @oraNod
+    - Refactor the rendering of errors and warnings (#2566) @ssbarnea
+    - Fixed regex for pipefail rule (#2564) @ajinkyau
+    - Ensure we detect templating errors (#2558) @ssbarnea
+    - Remove enrich as a dependency (#2557) @ssbarnea
+    - Implement strict mode (#2533) @ssbarnea
+    - Avoid extra space when building task names (#2531) @ssbarnea
+    - Refactor parsing of ansible syntax check (#2529) @ssbarnea
+    - Allow var_files to be null, string and list of strings (#2528) @ssbarnea
+    - Fix bug which prevented run of rules on tasks doing imports (#2526) @ssbarnea
+    - Resolved documentation redirects (#2523) @ssbarnea
+    - Document lack of module_defaults support (#2519) @ssbarnea
+    - Allow file attribute with ansible.builtin.include_tasks (#2518) @ssbarnea
+    - Update schemas (#2517) @ssbarnea
+    - Replace template-instead-of-copy with avoid-implicit[copy-content] (#2512) @ssbarnea
+    - Fix path expansion when outside user home (#2515) @ssbarnea
+    - var-naming: also recognize vars with set_fact module (#2496) @nishipy
+    - Fix rich exception with tasks containing square brackets (#2510) @ssbarnea
+    - Fix exception with vars_prompt (#2500) @ssbarnea
+    - Fix project_dir detect with .config configs (#2499) @ssbarnea
+    - Avoid implicit templating if not play/task (#2498) @ssbarnea
+    - Fixed few profile rule name errors (#2497) @ssbarnea
+    - Rename no-shorthand to no-free-form (#2548) @ssbarnea
+    - Avoid reporting matches for files outside project_dir (#2547) @ssbarnea
+    - Allow fqcn with more than 2 dots (#2544) @ssbarnea
+    - no-shorthand: Avoid false positive with raw (#2541 #2542) @ssbarnea
+    - Fix project directory detection with config inside .config (#2540) @ssbarnea
+
+-------------------------------------------------------------------
+Thu Oct  6 08:39:49 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- check/verify/update build and runtime dependencies
+
+-------------------------------------------------------------------
+Thu Oct  6 07:09:51 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix wrong source URLs
+
+-------------------------------------------------------------------
+Sun Sep 25 12:28:22 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.7.0:
+  * Minor Changes
+    - name[template]: recommend to use templating as suffix on names (#2483) @vineethreddykaturu
+  * Bugfixes
+    - Refactor no-loop-var-prefix rule (#2470) @oraNod
+    - key-order: now sorts block/rescue/always to the bottom (#2454) @ssbarnea
+    - Ensure we do not return relative paths outside the project (#2492) @ssbarnea
+    - fix: use ansible-compat to install collections (#2466) @mnaser
+    - Change rich markdown theme/colors (#2486) @ssbarnea
+    - schema: allow listen key on handlers (#2484) @ssbarnea
+    - Ensure that symlinked arguments are resolved (#2476) @ssbarnea
+    - Document No hosts matched the subscripted pattern (#2481) @ssbarnea
+    - Use site.getuserbase() to detect ansible executable (#2477) @ssbarnea
+
+-------------------------------------------------------------------
+Sun Sep 25 12:21:32 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.6.1:
+  * Bugfixes
+    - meta: allow empty meta schema files (#2472) @ssbarnea
+    - schema: correct documentation (#2471) @ssbarnea
+    - Fix jinja[invalid] false positive (#2465) @ssbarnea
+    - Update schemas (#2467) @ssbarnea
+    - Docs: yamllint rule (#2450) @oraNod
+    - Refactor: remove obsolete odict class alias (#2452) @ssbarnea
+    - Refactor some constants into specific module (#2451) @ssbarnea
+    - Docs: no handler rule doc update (#2446) @oraNod
+    - Fix bug with user action (#2448) @ssbarnea
+    - api: enable matchtask() to return list[MatchError] (#2445) @ssbarnea
+
+-------------------------------------------------------------------
+Sun Sep 25 11:44:27 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.6.0:
+  * Minor Changes
+    - Replace no-jinja-nesting with jinja[invalid] (#2436) @ssbarnea
+    - Create template_instead_of_copy.py (#2346) @GhostLyrics
+    - Add rule to verify that galaxy.yml collection version is present and >= 1.0.0 (#2383) @KB-perByte
+  * Bugfixes
+    - Mark galaxy rule as required only for shared profile (#2441) @ssbarnea
+    - Improve noqa comment detection (#2440) @ssbarnea
+    - Update schemas (#2439) @ssbarnea
+    - Fix bug parsing inline skips with tags: (#2438) @ssbarnea
+    - Fix bug in skip_list parsing with lists of integers (#2437) @ssbarnea
+    - Update meta schema to require standalone property (#2435) @ssbarnea
+    - Fix identification of inline noqa skips (#2300) @ssbarnea
+    - Docs: no handler rule (#2406) @oraNod
+    - Docs: updates to schema rule (#2431) @oraNod
+    - Make links to rule docs relative (#2432) @ssbarnea
+    - Fix include load in blocks (#2398) @kostyaplis
+    - Docs: Update the fqcn builtin rule docs for legacy shell (#2430) @oraNod
+    - Docs: literal compare rule (#2415) @oraNod
+    - Docs: inline env var rule (#2414) @oraNod
+    - docs: exclude_list => exclude_paths (#2428) @ltalirz
+    - Document metadata rules (#2416) @oraNod
+    - Clean-up documentation theme (#2425) @ssbarnea
+    - Change ansible-lint logo to bracket-dot from codicons (#2424) @ssbarnea
+    - Docs: empty string compare rule (#2400) @oraNod
+    - Docs: ignore errors rule (#2413) @oraNod
+    - no-changed-when: add documentation (#2417) @oraNod
+    - Docs: Minor edits to rule docs (#2418) @oraNod
+    - schema: add documentation (#2421) @ssbarnea
+    - fqcn-builtins: add documentation (#2412) @oraNod
+    - no-log-password: add documentation (#2409) @oraNod
+    - Update schemas (#2411) @ssbarnea
+    - no-jinja-when: add documentation (#2408) @oraNod
+    - Update schemas (#2410) @ssbarnea
+    - Suspend git output in progressive mode (#2369) @kostyaplis
+    - Do not parse excluded files (#2395) @sathieu
+    - docs: replace wrong occurrences of ignore_list with skip_list in rules (#2388) @karras
+
+-------------------------------------------------------------------
+Wed Sep  7 13:22:09 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- disable set_version service, as it only writes 1.md into the spec version
+
+-------------------------------------------------------------------
+Wed Sep  7 13:21:24 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.5.2:
+  * Bugfixes
+    - Correct example of selecting profile from cli (#2380) @ssbarnea
+    - refactored runner.is_exclude and MatchError to use Lintable (#2379) @ssbarnea
+    - jinja[spacing]: use black for formatting (#2375) @ssbarnea
+    - deprecated-module: add documentation (#2377) @oraNod
+    - latest: include filename on rule match (#2378) @ssbarnea
+    - Correct documentation icons (#2373) @ssbarnea
+    - Avoid resource leak warning with multiprocessing Semaphore (#2365) @ssbarnea
+    - Use lockfile feature only when not in offline mode (#2371) @ssbarnea
+    - Replace git-latest and hg-latest with latest rule (#2366) @ssbarnea
+    - Increase lock timeout to 120s (#2370) @ssbarnea
+    - Move ansible-lint config schema inside our repo (#2367) @ssbarnea
+    - Added extra checks regarding rule listing (#2368) @ssbarnea
+    - Refactor rule loading so we can correctly load markdown help files (#2362) @ssbarnea
+    - Handle FileNotFoundError caused by processing new file in progressive mode (#2364) @kostyaplis
+    - name[play]: now also correctly works with import_playbook blocks (#2359) @apatard
+    - deprecated-local-action: add documentation (#2361) @ssbarnea
+    - deprecated-command: add documentation (#2360) @ssbarnea
+    - command-instead-of-module: improve documentation (#2356) @ssbarnea
+    - command-instead-of-module: improve documentation (#2355) @ssbarnea
+    - key-order: improve documentation (#2354) @ssbarnea
+    - Include links to documentation for default output (#2353) @ssbarnea
+    - Documentation refactoring (#2352) @ssbarnea
+    - Make use of libyaml when possible (#2350) @ssbarnea
+    - name[casing]: now applies only to scripts supporting uppercase (#2347) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Sep  7 13:19:28 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.5.1:
+  * Bugfixes
+    - jinja[spacing]: Include in default warn_list until it matures (#2336) @ssbarnea
+    - jinja[spacing]: Recognize keywords with implicit templating (#2334) @ssbarnea
+    - jinja[spacing]: Ensure ~ is correctly spaced (#2331) @ssbarnea
+    - jinja[spacing]: Avoid evaluating noqa comments (#2329) @ssbarnea
+    - jinja[spacing]: Fix negative numbers inside arrays (#2328) @ssbarnea
+    - command-instead-of-module: allow `systemctl --version` (#2327) @JohnVillalovos
+    - Fix subprocess.run for progressive mode (#2319) @kostyaplis
+    - Raise name[play] for plays missing a name (#2295) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Sep  7 13:15:09 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.5.0:
+  * Minor Changes
+    - Add ability to process multi-document YAML files (#2290) @ssbarnea
+    - Standardize task MatchError enrichment (#2277) @cognifloyd
+    - Add name[casing] to identify wrongly capitalized task names (#2274) @ssbarnea
+    - Rename var-spacing rule to jinja[spacing] (#2259) @ssbarnea
+  * Bugfixes
+    - Reimplement jinja[spacing] to avoid use of regex (#2306) @ssbarnea
+    - Allow use of jinja with no_log (#2311) @ssbarnea
+    - Avoid erroring with empty vars files (#2310) @ssbarnea
+    - Avoid early of splitting shorthand string (#2308) @ssbarnea
+    - Remove pytest from default dependencies (#2307) @ssbarnea
+    - Fix ansible-lint pre-commit hook (#2303) @ssbarnea
+    - Change meta rules to use matchyaml instead of matchplay (#2296) @ssbarnea
+    - Make ruamel.yaml annotation implicit for yaml (#2299) @ssbarnea
+    - Prevent other rules from running on invalid yaml files (#2287) @ssbarnea
+    - Prevent duplicate warnings about deprecated tags (#2293) @ssbarnea
+    - Allow single letter role names (#2292) @ssbarnea
+    - Prevent occasional FileNotFoundError when removing the .lock file (#2291) @ssbarnea
+    - Standardize task MatchError enrichment (#2277) @cognifloyd
+    - Ensure rules are checked in specific order (#2284) @ssbarnea
+    - Prevent finding playbooks inside tasks folders (#2278) @ssbarnea
+    - Replacing os.system with subprocess functions (#2273) @jpodivin
+    - Reimplement unamed-task rule as name[missing] (#2263) @ssbarnea
+    - Implement file locking on cache directory (#2270) @ssbarnea
+    - Improve errors with invalid galaxy.yml files (#2262) @ssbarnea
+    - Fix: Progressive mode has no effect (#2261) @kostyaplis
+
+-------------------------------------------------------------------
+Thu Jul 28 20:05:19 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.4.0:
+  * Minor Changes
+    - Add initial support for rule profiles (#2245) @ssbarnea
+    - deprecated-local-action: refactor to use matchtask()  (#2238) @nishipy
+    - Add support for Python 3.11 (#2239) @ssbarnea
+  * Bugfixes
+    - Upgrade jsonschema to 4.8.0 (#2252) @ssbarnea
+    - Add ability to use use sub-rule matches on skip or warn lists (#2251) @ssbarnea
+    - Improve argument_specs matching pattern (#2249) @ssbarnea
+    - Update schemas (#2250) @ssbarnea
+    - deprecated-local-action: refactor to use matchtask()  (#2238) @nishipy
+    - no-same-owner: refactor to use matchtask() (#2233) @nishipy
+    - Add cleanup step for empty mocked role folders (#2235) @zhan9san
+    - Allow yaml extension for inventory and requirements (#2225) @netsandbox
+    - no-loop-var-prefix: refactor to use matchtask() (#2218) @nishipy
+    - Update schemas (#2223) @jeefberkey
+  * Deprecations
+    - deprecated-local-action: refactor to use matchtask()  (#2238) @nishipy
+
+-------------------------------------------------------------------
+Mon Jul 18 15:51:37 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.3.0:
+  * Minor Changes
+    - Improve bare variable detection (#2203) @ssbarnea
+    - Modify VariableHasSpacesRule to check for spaces around filters (#2180) @nirmal-j-patel
+  * Bugfixes
+    - Updated schemas (#2206) @ssbarnea
+    - Avoid load-failure with nested task imports (#2202) @ssbarnea
+    - Mark load-failure violation as unskippable (#2201) @ssbarnea
+    - Require jsonschema>=4.6.0 (#2200) @ssbarnea
+    - Ensure we require ansible-compat>=2.1.0 (#2199) @ssbarnea
+    - Update dependencies (#2193) @ssbarnea
+    - Don't yield only-builtins on nested tasks like block (#2187) @evgeni
+    - Update schemas (#2192) @ssbarnea
+- update to 6.2.2:
+  * Bugfixes
+    - Accept shell when executable is set (#2176) @nkakouros
+    - Updated JSON Schemas (#2177) @ssbarnea
+    - Avoid runtime warnings from ansible-playbook --syntax-check (#2167) @ssbarnea
+    - Fix duplicated is_nested_task() (#2162) @nishipy
+- update to 6.2.1:
+  * Bugfixes
+    - Avoid using meta schema on ansible-test integration tests (#2156) @felixfontein
+    - Update schemas (#2158, #2160) @ssbarnea
+- update to 6.2.0:
+  * Minor Changes
+    - Add rule to check key order (#2108) @jeefberkey
+    - Improve yamllint messages and documentation (#2148) @ssbarnea
+    - Convert rules documentation to markdown (#2144) @ssbarnea
+    - schema: enable validation of playbook and tasks files (#2133) @ssbarnea
+    - schema: add validation of argument_specs.yml files (#2131) @ssbarnea
+    - schema: add support for ansible-navigator config files (#2128) @ssbarnea
+    - schema: add ability to recognize ansible-lint config files (#2127) @ssbarnea
+    - schema: add ability to recognize yaml inventory files (#2126) @ssbarnea
+    - schema: add ability to recognize meta/runtime.yml files (#2125) @ssbarnea
+    - schema: add support for execution-environments (#2124) @ssbarnea
+  * Bugfixes
+    - Properly raise load-failure when utf-8 decoding fails (#2152) @ssbarnea
+    - Fix codeclimate description output (#2149) @ssbarnea
+    - Recognize tower requirements.txt files (#2147) @ssbarnea
+    - Bump test dependencies (#2145) @ssbarnea
+    - Update to append skipped rules for nested task (#2113) @nishipy
+    - Convert main README to markdown (#2141) @ssbarnea
+    - Include schemas inside the wheel (#2142) @ssbarnea
+    - Convert documentation to markdown (#2137) @ssbarnea
+    - Change custom yamllint config logging to debug (#2139) @ssbarnea
+    - Update JSON Schemas (#2138 #2146) @ssbarnea
+    - Avoid altering PATH when not needed (#2129) @ssbarnea
+    - Fix offline mode (#2115) @ssbarnea
+    - Allow use of empty files as valid config files (#2119) @ssbarnea
+- update to 6.1.0:
+  * Minor Changes
+    - Implement JSON Schema verification for several known file types (#2035) @ssbarnea
+    - Improve cli argument handling (#2099) @ziegenberg
+    - Add no-prompting rule as experimental (#2093) @ziegenberg
+    - Add only-builtins rule to check compatibility with core (#2060) @evgeni
+    - Add native SARIF output support (#2062) @yongyan-gh
+    - --write: Optionally pass rule names to --write in cli (#2051) @cognifloyd
+    - --write: Allow Transforms to mark MatchErrors as fixed (#2041) @cognifloyd
+  * Bugfixes
+    - Fix support for block tasks in unnamed-task rule (#2107) @nishipy
+    - Make sure all tasks get evaluated by matchtask including block/always/rescue and nested tasks (#2031) @nishipy
+    - Ensure tags are escaped when printed (#2096) @ssbarnea
+    - Detect role argument_specs files as a lintable kind (#2091) @ziegenberg
+    - Fix var-naming rule to show line numbers and apply noqa (#2090) @notok
+    - --write: Do not rewrite zero 0 as octal 00 (#2092) @ziegenberg
+    - Relax the yamllint rules on spaces inside braces for flow mappings (#2077) @ziegenberg
+    - Update test and typing deps and remove special code paths for py < 3.8 (#2087) @ziegenberg
+    - Update package metadata for setuptools (#2086) @ziegenberg
+    - Apply var-spacing tests to vars files (#2063) @notok
+    - Add philosophy section to the documentation (#2017) @ssbarnea
+    - Propagate error message to user on systemexit (#2058) @wbh1
+    - Fix loading ansible-lint.yml in git projects (#2059) @evgeni
+
+-------------------------------------------------------------------
+Wed Jun 22 18:00:04 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- change BuildRequires/Requires for ansible to 2.12 which is only provided
+  by the new ansible-core package
+- remove patch deprecated-pytest-hook.patch
+
+-------------------------------------------------------------------
+Sun May 29 11:07:05 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Add deprecated-pytest-hook.patch to fix a test fail.
+
+-------------------------------------------------------------------
+Tue Feb 15 09:21:58 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- disable the tests test_co and test_call_from_outside_venv, they expect the ansible-lint executable in /usr/bin/
+  see https://github.com/ansible-community/ansible-lint/issues/1885
+
+-------------------------------------------------------------------
+Sun Feb 13 08:42:03 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove obsolete fix-discover_lintables.patchs
+- Update to version 5.4.0:
+ - Minor Changes
+  - Neuter min space requirement for inline comments (#1821) @ssbarnea
+  - Allow rules to request original raw task data (#1834) @cognifloyd
+  - Add utils.nested_items_path and Deprecate utils.nested_items (#1824) @cognifloyd
+  - MatchError's should include the filename (#1806) @cognifloyd
+ - Bugfixes
+  - Allow use without activation of virtualenv (#1860) @ssbarnea
+  - Avoid running code on ansiblelint.config import (#1870) @ssbarnea
+  - Avoid false positive with git lfs command (#1859) @ssbarnea
+  - Strip ./ from discover_lintables results (#1837) @sebix
+  - Correcting formatting of sample .ansible-lint config (#1841) @IronTooch
+  - Move ansiblelint.testing.RunFromText import into test code (#1827) @cognifloyd
+  - Allow noqa to be used in more lintable kinds (#1819) @SirUli
+  - Recursively extract tasks from blocks (#1809) @cognifloyd
+
+-------------------------------------------------------------------
+Sat Jan 29 08:57:07 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add fix-discover_lintables.patch to fix a test fail.
+- refactor specfile, remove multipython, this is an application only.
+- Update to version 5.3.2:
+ - Too many changes to list here, see https://github.com/ansible-community/ansible-lint/releases
+
+-------------------------------------------------------------------
+Fri Nov 23 13:58:39 UTC 2018 - Jon Brightwell <jon.brightwell@zpg.co.uk>
+
+- added python-pyyaml and python-six dependencies as listed in setup.py (L22)
+- made the post-build test conditional as requires python2
+
+- update to 3.5.1
+  + Use yaml.safe_load for loading the configuration fil
+  - 3.5.0
+  + New ids and tags, add doc generator. Old tag names remain backwardly compatible (awcrosby)
+  + Add more package formats to PackageIsNotLatestRule (simon04)
+  + Improve handling of meta/main.yml dependencies (MatrixCrawler)
+  + Correctly handle role argument trailing slash (zoredache)
+  + Handle include_task and import_task (zeot)
+  + Add a new rule to detect jinja in when clauses (greg-hellings)
+  + Suggest replace as another alternative to sed (inponomarev)
+  + YAML syntax highlighting for false positives (gundalow)
+
+
+-------------------------------------------------------------------
+Tue Sep 11 09:44:47 UTC 2018 - lars@linux-schulserver.de
+
+- update to 3.4.23
+  + Fix bug with using comma-separated skip_list arguments
+  + Allow include_role and import_role (willthames)
+  + Support arbitrary number of exclude flags (KellerFuchs)
+  + Fix task has name check for empty name fields (ekeih)
+  + Allow vault encrypted variables in YAML files (mozz)
+  + Octal permission check improvements - readability, test 
+    coverage and bug fixes (willthames)
+  + Fix very weird bug with line numbers in some test environments (kouk)
+  + Python 3 fixes for octal literals in tests (willthames)
+
+-------------------------------------------------------------------
+Mon May  7 11:05:23 UTC 2018 - lars@linux-schulserver.de
+
+- update to 3.4.21:
+  + Update test that allows directories to have execute but not 
+    read bit set
+  + new playbook_import statement is now also recognized
+  + Allow directories to have execute but not read bit set
+  + Update test coverage
+  + Fix typos in rules description
+  + Fix normal sentence seen as title
+  + ansible-lint accepts multiple playbooks in cmdlne
+
+-------------------------------------------------------------------
+Mon Jan 22 14:47:45 UTC 2018 - boris@steki.net
+
+- updated to latest release 3.4.20
+  + fixed rpm check build to use only python2 for now
+  + Fix for Python 2.6
+  + added stdin to expected vars for command module
+  + added testcase
+  + made test >2.4 specific
+  + fixed wrong test-playbook
+  + Adding feature for issue #283, adding the ability to use a .ansible-lint
+    yaml configuration file in the working directory instead of command line
+    arguments.
+  + Adding CLI flag for specifying configuration file.  Also adding guard
+    test to confirm that configuration file properties can be overriden by
+    command line.
+  + Adding 'merge' behavior to config file and CLI options.  The 'True'
+    value will be preferred in the case of simple flags, while lists will be
+    merged.
+  + Fixing 3.4 issue with errs not able to be concatenated with a string
+  + Clarifying that -F is a path to file in the documentation.  Also
+    expanding unnecessarily contracted line
+  + Updating config file to use -c to make it clear it is a configuration
+    file being specified.
+  + added include_tasks and import_tasks to utils
+  + updated example rule
+  + Add supervisorctl and systemd module support
+  + Add template/lineinfile module support
+  + Although how bin/ansible-lint works has changed significantly,
+    it should still exist so docs are accurate and for testing.
+  + Handle the 'cmd' argument in command/shell
+
+-------------------------------------------------------------------
+Wed Sep  6 08:18:15 UTC 2017 - boris@steki.net
+
+- update to 3.4.15 
+
+-------------------------------------------------------------------
+Mon Mar 20 00:00:00 UTC 2017 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.12-1
+
+- Update to 3.4.12 version
+
+
+-------------------------------------------------------------------
+Mon Feb 13 00:00:00 UTC 2017 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.11-1
+
+- Update to 3.4.11
+
+
+-------------------------------------------------------------------
+Mon Jan 16 00:00:00 UTC 2017 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.10-1
+
+- Update to 3.4.10
+
+
+-------------------------------------------------------------------
+Thu Dec 22 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.9-1
+
+- Update to 3.4.9
+
+
+-------------------------------------------------------------------
+Fri Dec 16 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.8-1
+
+- Update to 3.4.8
+
+
+-------------------------------------------------------------------
+Mon Dec  5 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.7-1
+
+- Update to 3.4.7
+
+
+-------------------------------------------------------------------
+Tue Nov 15 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.4-1
+
+- Update to 3.4.4
+
+
+-------------------------------------------------------------------
+Tue Nov  8 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.3-1
+
+- Update to 3.4.3
+
+
+-------------------------------------------------------------------
+Fri Oct 28 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.1-1
+
+- Update to 3.4.1
+
+
+-------------------------------------------------------------------
+Fri Sep 30 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.3.3-1
+
+- Update to 3.3.3
+
+
+-------------------------------------------------------------------
+Fri Jul 15 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.1.3-1
+
+- Upstream release 3.1.3
+
+
+-------------------------------------------------------------------
+Fri Jun 24 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.0.1-1
+
+- Update to 3.0.1 release
+
+
+-------------------------------------------------------------------
+Thu Jun 23 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.0.0-1
+
+- Update to 3.0.0 release
+
+
+-------------------------------------------------------------------
+Sat May 21 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 2.6.2-1
+
+- Update to 2.6.2
+- use %license macro
+- disable tests
+
+
+-------------------------------------------------------------------
+Fri Dec  5 00:00:00 UTC 2014 - Parag Nemade <pnemade AT redhat DOT com> - 2.0.1-1
+
+- Update to 2.0.1
+
+
+-------------------------------------------------------------------
+Mon Oct 27 00:00:00 UTC 2014 - Parag Nemade <pnemade AT redhat DOT com> - 1.0.4-1
+
+- rename to ansible-lint
+- new upstream 1.0.4 release which added LICENSE file.
+
+
+-------------------------------------------------------------------
+Sat Oct 25 00:00:00 UTC 2014 - Parag Nemade <pnemade AT redhat DOT com> - 1.0.2-2
+
+- Better add upstream LICENSE file, not present in tarball
+
+
+-------------------------------------------------------------------
+Wed Sep 24 00:00:00 UTC 2014 - Parag Nemade <pnemade AT redhat DOT com> - 1.0.2-1
+
+- Initial packaging
+
+

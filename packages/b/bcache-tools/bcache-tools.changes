@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Thu Nov  9 11:29:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.1+git37.a5e3753
+  * support ``bcache show -d`` for nvdimm-meta device
+- Abolish /usr/bin/env [boo#1216370]
+- Delete (merged):
+  0001-bcache-tools-set-zoned-size-aligned-data_offset-on-b.patch
+  0002-bcache-tools-add-is_zoned_device.patch
+  0003-bcache-tools-convert-writeback-to-writethrough-mode-.patch
+  0004-bcache-tools-add-struct-cache_sb_disk-into-bcache.h.patch
+  0005-bcache-tools-bitwise.h-more-swap-bitwise-for-differe.patch
+  0006-bcache-tools-list.h-only-define-offsetof-when-it-is-.patch
+  0007-bcache-tools-add-to_cache_sb-and-to_cache_sb_disk.patch
+  0008-bcache-tools-define-separated-super-block-for-in-mem.patch
+  0009-bcache-tools-upgrade-super-block-versions-for-featur.patch
+  0010-bcache-tools-add-large_bucket-incompat-feature.patch
+  0011-bcache-tools-add-print_cache_set_supported_feature_s.patch
+  0012-bcache-tools-Fix-potential-coredump-issues.patch
+  0013-bcache-tools-Export-CACHED_UUID-and-CACHED_LABEL.patch
+  0014-bcache-tools-Remove-the-dependency-on-libsmartcols.patch
+  0015-bcache-tools-make-permit-only-one-cache-device-to-be.patch
+  0016-bcache-tools-add-bcache-status.patch
+  0017-bcache-tools-add-man-page-bcache-status.8.patch
+  0018-Makefile-install-bcache-status.patch
+  0019-bcache.h-fix-typo-from-SUUP-to-SUPP.patch
+  0020-bcache-tools-only-call-set_bucket_size-for-cache-dev.patch
+  0021-bcache.h-add-BCH_FEATURE_INCOMPAT_LARGE_BUCKET-to-BC.patch
+  0022-bcache-tools-check-incompatible-feature-set.patch
+  0023-bcache-tools-introduce-BCH_FEATURE_INCOMPAT_LOG_LARG.patch
+  0024-bcache-tools-display-obsoleted-bucket-size-configura.patch
+  0025-bcache-tools-recover-the-missing-sb.csum-for-showing.patch
+  0026-bcache-tools-only-call-to_cache_sb-for-bcache-device.patch
+  0027-bcache-tools-improve-column-alignment-for-bcache-sho.patch
+  0028-bcache-tools-Update-super-block-version-in-bch_set_f.patch
+  0029-bcache-tools-improve-is_zoned_device.patch
+
+-------------------------------------------------------------------
+Thu Mar  2 07:58:54 UTC 2023 - Coly Li <colyli@suse.com>
+
+- bcache-tools: improve is_zoned_device() (bsc#1208425)
+  0029-bcache-tools-improve-is_zoned_device.patch
+
+-------------------------------------------------------------------
+Wed Feb 24 14:00:08 UTC 2021 - Coly Li <colyli@suse.com>
+
+- bcache-tools: Update super block version in bch_set_feature_*
+  routines (jsc#SLE-9807)
+  0028-bcache-tools-Update-super-block-version-in-bch_set_f.patch
+
+-------------------------------------------------------------------
+Tue Jan  5 14:20:48 UTC 2021 - Coly Li <colyli@suse.com>
+
+- bcache.h: fix typo from SUUP to SUPP (jsc#SLE-9807)
+  0019-bcache.h-fix-typo-from-SUUP-to-SUPP.patch
+- bcache-tools: only call set_bucket_size() for cache device
+  (jsc#SLE-9807)
+  0020-bcache-tools-only-call-set_bucket_size-for-cache-dev.patch
+- bcache.h: add BCH_FEATURE_INCOMPAT_LARGE_BUCKET to
+  BCH_FEATURE_INCOMPAT_SUPP (jsc#SLE-9807)
+  0021-bcache.h-add-BCH_FEATURE_INCOMPAT_LARGE_BUCKET-to-BC.patch
+- bcache-tools: check incompatible feature set (jsc#SLE-9807)
+  0022-bcache-tools-check-incompatible-feature-set.patch
+- bcache-tools: introduce BCH_FEATURE_INCOMPAT_LOG_LARGE_BUCKET_SIZE
+  for large bucket (jsc#SLE-9807)
+  0023-bcache-tools-introduce-BCH_FEATURE_INCOMPAT_LOG_LARG.patch
+- bcache-tools: display obsoleted bucket size configuration
+  (jsc#SLE-9807)
+  0024-bcache-tools-display-obsoleted-bucket-size-configura.patch
+- bcache-tools: recover the missing sb.csum for showing bcache device
+  super block (jsc#SLE-9807)
+  0025-bcache-tools-recover-the-missing-sb.csum-for-showing.patch
+- bcache-tools: only call to_cache_sb() for bcache device
+  in may_add_item() (jsc#SLE-9807)
+  0026-bcache-tools-only-call-to_cache_sb-for-bcache-device.patch
+- bcache-tools: improve column alignment for "bcache show
+  -m" output (jsc#SLE-9807)
+  0027-bcache-tools-improve-column-alignment-for-bcache-sho.patch
+
+-------------------------------------------------------------------
+Sun Nov 15 15:58:35 UTC 2020 - Coly Li <colyli@suse.com>
+
+- Makefile: install bcache-status (jsc#SLE-9807, bsc#1178725)
+  0018-Makefile-install-bcache-status.patch
+- bcache-tools.spec: add '_sbindir/bcache-status' for the new added
+  bcache-status python script (jsc#SLE-9807, bsc#1178725)
+
+-------------------------------------------------------------------
+Tue Oct 13 04:32:51 UTC 2020 - Coly Li <colyli@suse.com>
+
+- Remove dependence of smartcols bcache-tools.spec, bcache-tools
+  code doesn't need it now. (jsc#SLE-9807)
+- Remove 1001-udev-do-not-rely-on-DRIVER-variable.patch because
+  we have 0013-bcache-tools-Export-CACHED_UUID-and-CACHED_LABEL.patch
+  to provide static UUIDs. (jsc#SLE-9807)
+- bcache-tools: add man page bcache-status.8 (jsc#SLE-9807)
+  0017-bcache-tools-add-man-page-bcache-status.8.patch
+- bcache-tools: add bcache-status (jsc#SLE-9807)
+  0016-bcache-tools-add-bcache-status.patch
+- bcache-tools: make: permit only one cache device to be
+  specified (jsc#SLE-9807)
+  0015-bcache-tools-make-permit-only-one-cache-device-to-be.patch
+- bcache-tools: Remove the dependency on libsmartcols
+  (jsc#SLE-9807)
+  0014-bcache-tools-Remove-the-dependency-on-libsmartcols.patch
+- bcache-tools: Export CACHED_UUID and CACHED_LABEL
+  (jsc#SLE-9807)
+  0013-bcache-tools-Export-CACHED_UUID-and-CACHED_LABEL.patch
+- bcache-tools: Fix potential coredump issues (jsc#SLE-9807)
+  0012-bcache-tools-Fix-potential-coredump-issues.patch
+- bcache-tools: add print_cache_set_supported_feature_sets()
+  in lib.c (jsc#SLE-9807)
+  0011-bcache-tools-add-print_cache_set_supported_feature_s.patch
+- bcache-tools: add large_bucket incompat feature (jsc#SLE-9807)
+  0010-bcache-tools-add-large_bucket-incompat-feature.patch
+- bcache-tools: upgrade super block versions for feature sets
+  (jsc#SLE-9807)
+  0009-bcache-tools-upgrade-super-block-versions-for-featur.patch
+- bcache-tools: define separated super block for in-memory and
+  on-disk format (jsc#SLE-9807)
+  0008-bcache-tools-define-separated-super-block-for-in-mem.patch
+- bcache-tools: add to_cache_sb() and to_cache_sb_disk()
+  (jsc#SLE-9807)
+  0007-bcache-tools-add-to_cache_sb-and-to_cache_sb_disk.patch
+- bcache-tools: list.h: only define offsetof() when it is
+  undefined (jsc#SLE-9807)
+  0006-bcache-tools-list.h-only-define-offsetof-when-it-is-.patch
+- bcache-tools: bitwise.h: more swap bitwise for different
+  CPU endians (jsc#SLE-9807)
+  0005-bcache-tools-bitwise.h-more-swap-bitwise-for-differe.patch
+- bcache-tools: add struct cache_sb_disk into bcache.h (jsc#SLE-9807)
+  0004-bcache-tools-add-struct-cache_sb_disk-into-bcache.h.patch
+- bcache-tools: convert writeback to writethrough mode for zoned
+  backing device (jsc#SLE-9807)
+  0003-bcache-tools-convert-writeback-to-writethrough-mode-.patch
+- bcache-tools: add is_zoned_device() (jsc#SLE-9807)
+  0002-bcache-tools-add-is_zoned_device.patch
+- bcache-tools: set zoned size aligned data_offset on backing device
+  for zoned devive (jsc#SLE-9807)
+  0001-bcache-tools-set-zoned-size-aligned-data_offset-on-b.patch
+
+-------------------------------------------------------------------
+Tue Sep  8 11:58:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Cure fallout from %_libexecdir change [boo#1174075, boo#1176244]
+
+-------------------------------------------------------------------
+Tue Jan 14 19:27:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag 1.1
+  * add blkdiscard for cache dev
+  * add 'label' field
+  * allow users to set label for device
+
+-------------------------------------------------------------------
+Thu Aug 22 20:00:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add a _service file for the tarball from outer space.
+- Shift the version number to 1.0.8+suse5 because there has never
+  been a 1.0.9 release.
+
+-------------------------------------------------------------------
+Fri Sep 14 07:27:58 UTC 2018 - colyli@suse.com
+
+- Update bcache-tools to 1.0.9, this is required by yast2 bcache module
+  development. In this version a new program named "bcache" is added,
+  by this program people may avoid many operations on sysfs entries.
+  (bsc#1109460)
+- Remove the following patche since it is in upstream,
+  - 0001-build-remove-inline-keyword-from-crc64.patch
+- Rename prefix of
+  0001-udev-do-not-rely-on-DRIVER-variable.patch
+  to a SUSE specific patch prefix
+  1001-udev-do-not-rely-on-DRIVER-variable.patch
+
+-------------------------------------------------------------------
+Fri Mar 27 18:02:05 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.0.8
+* bcache-register is now a C program
+- Add 0001-udev-do-not-rely-on-DRIVER-variable.patch to entirely
+  disable /dev/bcache symlinks for now, rather than have it
+  half-working [bnc#880858]
+
+-------------------------------------------------------------------
+Mon Aug 18 14:59:41 UTC 2014 - meissner@suse.com
+
+- removed unnecessary openssl-devel buildrequires
+
+-------------------------------------------------------------------
+Fri Apr  4 07:57:33 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.9
+* Run probe-bcache a little later in the udev rule sequence
+  (moving from position 61 to 69), fixing a machine hang on
+  bcache reassemble (bnc#868938)
+- Add 0001-build-remove-inline-keyword-from-crc64.patch, this is
+  a build fix.
+
+-------------------------------------------------------------------
+Wed Mar 19 10:22:13 UTC 2014 - oneukum@suse.com
+
+- Move bcache rule from position 61 to position 74
+  (bnc#868938)
+
+-------------------------------------------------------------------
+Wed Aug  7 22:02:31 UTC 2013 - jengelh@inai.de
+
+- Update to new snapshot 0.1.g71
+* Support for superblocks up to version 4
+
+-------------------------------------------------------------------
+Wed Jun 26 21:30:55 UTC 2013 - jengelh@inai.de
+
+- Move udev rules to /usr/lib/udev/rules.d
+
+-------------------------------------------------------------------
+Tue Feb 26 09:07:16 UTC 2013 - jengelh@inai.de
+
+- Update to new current snapshot
+  42c182c6ab1530b5e3b18893f284da3eaec46e74 (0.1.g45)
+
+-------------------------------------------------------------------
+Mon Feb 21 13:58:10 UTC 2011 - ro@suse.de
+
+- create package

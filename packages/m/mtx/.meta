@@ -1,0 +1,5 @@
+<package name="mtx" project="openSUSE:Factory">
+  <title>A Program for Controlling the Robotic Mechanism in DDS Auto Loaders</title>
+  <description>A program for controlling the robotic mechanism in DDS auto loaders.</description>
+  <devel project="hardware" package="mtx"/>
+</package>

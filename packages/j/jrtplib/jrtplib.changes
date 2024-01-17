@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sat Mar  3 00:25:01 UTC 2018 - jengelh@inai.de
+
+- Add missing ownership of %_libdir/cmake.
+  Fixup description to say what it does now, not what it aims to do.
+
+-------------------------------------------------------------------
+Sat Feb 24 10:00:03 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 3.11.1

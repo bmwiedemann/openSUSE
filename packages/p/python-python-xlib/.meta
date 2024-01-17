@@ -1,0 +1,5 @@
+<package name="python-python-xlib" project="openSUSE:Factory">
+  <title>python-xlib</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="devel:languages:python" package="python-python-xlib"/>
+</package>

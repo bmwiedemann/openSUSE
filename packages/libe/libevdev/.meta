@@ -1,0 +1,11 @@
+<package name="libevdev" project="openSUSE:Factory">
+  <title>Wrapper library for evdev devices</title>
+  <description>
+    Provides API for the common tasks when dealing with evdev devices
+    thus avoiding erroneous ioctls, etc.
+    This package contains the development headers for the library found
+    in libevdev.
+  </description>
+  <devel project="X11:XOrg" package="libevdev"/>
+  <url>http://freedesktop.org/wiki/Software/libevdev/</url>
+</package>

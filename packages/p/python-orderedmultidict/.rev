@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22c0275be17107e21e81cd6f776a2864</srcmd5>
+    <version>1.0</version>
+    <time>1553263260</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v1.0
+</comment>
+    <requestid>682231</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ef8b8d81dfd0f7c5a1c57ab9b6b4e0c8</srcmd5>
+    <version>1.0.1</version>
+    <time>1564301872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * Imports overhaul
+  * py 3.8 support
+  * More tests</comment>
+    <requestid>717900</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>330e03b62debb110b876bdc6f94ca9ad</srcmd5>
+    <version>1.0.1</version>
+    <time>1622536455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895726</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c9ad1cfb25ebfec0703770c9f58b9b64</srcmd5>
+    <version>1.0.1</version>
+    <time>1682193593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081848</requestid>
+  </revision>
+</revisionlist>

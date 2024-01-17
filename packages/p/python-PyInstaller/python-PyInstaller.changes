@@ -1,0 +1,312 @@
+-------------------------------------------------------------------
+Tue Jul 11 12:38:14 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.13.0
+  * Allow controlling the build log level (--log-level) via a 
+    PYI_LOG_LEVEL environment variable.
+  * Fixes an issue with gi shared libraries not being packaged if 
+    they don’t have version suffix and are in a special location 
+    set by LD_LIBRARY_PATH instead of a typical library path.
+  * The deprecated PEP-302 find_module() and load_module() methods 
+    have been removed from PyInstaller’s FrozenImporter.
+  * Compile the collected GLib schema files using glib-schema-compiler 
+    instead of collecting the pre-compiled gschemas.compiled.
+  * The archive_viewer utility has been rewritten with modified 
+    command-line interface (--log has been renamed to --list) and 
+    with changed output formatting. 
+  * Extend PySide6 hooks for PySide6 6.5.0 compatibility.
+  * Ensure that binaries that are manually specified in the .spec file 
+    (or via corresponding --add-binary or --collect-binaries 
+    command-line switches) undergo the binary dependency analysis, 
+    so their dependencies are automatically collected. 
+  * Remove the use of the TOC class in the analysis / build process, 
+    and use plain list instances instead. 
+  * Attempt to fix compatibility of PyInstaller’s PyiFrozenImporter 
+    with importlib.util.LazyLoader.
+  * Add support for Python 3.12.
+  * Limit the import of collected packages prior to performing binary 
+    dependency analysis to only Windows, where it is actually useful.
+
+-------------------------------------------------------------------
+Mon May  8 07:30:04 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Mon Nov  7 20:29:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 5.6.2
+  * Bugfix
+   (Linux, macOS) Fix the regression in shared library collection, where the shared library would end up collected under its fully-versioned .
+   so name (e.g., libsomething.so.1.2.3) instead of its originally referenced name (e.g., libsomething.so.1) due to accidental symbolic link resolution. (#7189)
+
+- Update to 5.6.1 
+  Bugfix
+  * (macOS) Fix regression in macOS app bundle signing caused by a typo made in #7180. (#7184)
+
+-------------------------------------------------------------------
+Thu Oct 27 20:51:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 5.6
+  Features
+  - Add official support for Python 3.11. (Note that PyInstaller v5.5 is also expected to work but
+  - has only been tested with a pre-release of Python 3.11.) (#6783)
+
+  Implement a new hook utility function, collect_delvewheel_libs_directory(), intended for dealing with external shared
+  library in delvewheel-enabled PyPI wheels for Windows. (#7170)
+  Bugfix
+  - (macOS) Fix OpenCV (cv2) loader error in generated macOS .app bundles, caused by the relocation of package’s source .py files. (#7180)
+  - (Windows) Improve compatibility with scipy 1.9.2, whose Windows wheels switched to delvewheel, and therefore have shared
+    libraries located in external .libs directory. (#7168)
+  - (Windows) Limit the DLL parent path preservation behavior from #7028 to files collected from site-packages directories
+    (as returned by site.getsitepackages() and site.getusersitepackages()) instead of all paths in sys.path, to avoid unintended
+    behavior in corner cases, such as sys.path containing the drive root or user’s home directory. (#7155)
+  - Fix compatibility with PySide6 6.4.0, where the deprecated Qml2ImportsPath location key is not available anymore;
+    use the new QmlImportsPath key when it is available. (#7164)
+  - Prevent PyInstaller runtime hook for setuptools from attempting to override distutils with setuptools-provided
+    version when setuptools is collected and its version is lower than 60.0. This both mimics the unfrozen behavior and
+    prevents errors on versions between 50.0 and 60.0, where we do not explicitly collect setuptools._distutils. (#7172)
+
+  Incompatible Changes
+  - (macOS) In generated macOS .app bundles, the collected source .py files are not relocated from Contents/MacOS to Contents/Resources anymore,
+    to avoid issues when the path to a .py file is supposed to resolve to the same directory as adjacent binary extensions.
+    On the other hand, this change might result in regressions w.r.t. bundle signing and/or notarization. (#7180)
+
+  Bootloader
+  - (Windows) Update the bundled zlib sources to v1.2.13. (#7166)
+
+- Update to 5.5  
+  Features
+  - (Windows) Support embedding multiple icons in the executable. (#7103)
+  Bugfix
+  - (Windows) Fix a regression introduced in PyInstaller 5.4 (#6925), where incorrect copy of python3.dll
+    (and consequently an additional, incorrect copy of python3X.dll from the same directory) is collected when additional python
+    installations are present in PATH. (#7102)
+  - (Windows) Provide run-time override for ctypes.util.find_library that searches sys._MEIPASS in addition to directories specified in PATH. (#7097)
+  - Fix the problem with pywin32 DLLs not being found when importing pywin32 top-level extension modules, caused by the DLL directory structure
+    preservation behavior introduced in #7028. Introduce a new bootstrap/loader module that adds the pywin32_system32 directory,
+    if available, to both sys.path and the DLL search paths, in lieu of having to provide a runtime hook script for every single top-level
+    extension module from pywin32. (#7110)
+  - Hooks
+    Fix an error raised by the matplotlib.backends hook when trying to specify the list of backends to collect via the hooks configuration. (#7091)
+
+-------------------------------------------------------------------
+Fri Sep 30 08:41:35 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.4.1
+  * Many changes, see upstream changelog
+  * Issue an error report if a .spec file will not be generated, but 
+    command-line options specific to that functionality are given
+  * The `PyInstaller.utils.hooks.get_module_attribute` function now 
+    returns the actual attribute value instead of its string representation.
+  * The matplotlib.backends hook no longer collects all available matplotlib 
+    backends, but rather tries to auto-detect the used backend(s) by default.
+  * Drop support for Python 3.6.
+  * Make the error handing of `~PyInstaller.utils.hooks.collect_submodules` 
+    configurable.
+  * Detect if an icon file (.ico or .icns) is of another image type but has 
+    been mislabelled as a native icon type via its file suffix then either 
+    normalise to a genuinely native image type if pillow is installed or 
+    raise an error.
+  * Implement a mechanism for controlling the collection mode of modules and 
+    packages, with granularity ranging from top-level packages to individual 
+    sub-modules.
+  * Add support for setuptools-provided distutils, available since 
+    setuptools >= 60.0.
+
+-------------------------------------------------------------------
+Thu Nov 18 15:23:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.7:
+  - Fix a bug since v4.6 where certain Unix system directories
+    were incorrectly assumed to exist and resulted in a
+    FileNotFoundError.
+  - Update sphinx hook for compatibility with latest version
+    (4.2.0).
+  - Replace use of PyRun_SimpleString with
+    PyRun_SimpleStringFlags.
+  - Add support for Python 3.10.
+  - Implement basic resource reader for accessing on-filesystem
+    resources (data files) via importlib.resources (python >=
+    3.9) or importlib_resources (python <= 3.8).
+  - Ship precompiled wheels for musl-based Linux distributions
+    (such as Alpine or OpenWRT) on x86_64 and aarch64.
+  - Fix sys.executable pointing to the external package file
+    instead of the executable when in package side-load mode
+    (pkg_append=False).
+  - Fix a runaway glob which caused
+    ctypes.util.find_library("libfoo") to non-deterministically
+    pick any library matching libfoo* to bundle instead of
+    libfoo.so.
+  - Fix compatibility with with MIPS and loongarch64
+    architectures.
+  - Fix the FrozenImporter.get_source() to correctly handle the
+    packages’ __init__.py source files. This in turn fixes
+    missing-source-file errors for packages that use pytorch JIT
+    when the source .py files are collected and available (for
+    example, kornia).
+  - Fix the location of the generated stand-alone pkg file when
+    using the side-load mode (pkg_append=False) in combination
+    with onefile mode. The package file is now placed next to the
+    executable instead of next to the .spec file.
+  - When generating spec files, avoid hard-coding the spec
+    file’s location as the pathex argument to the Analysis.
+  - Add a hook for pandas.plotting to restore compatibility with pandas 1.3.0 and later.
+  - Add a hook for QtOpenGLWidgets for PyQt6 and PySide6 to
+    collect the new QtOpenGLWidgets module introduced in Qt6
+  - Add hooks for QtPositioning and QtLocation modules of the
+    Qt5-based packages (PySide2 and PyQt5) to ensure that
+    corresponding plugins are collected.
+  - Fix compatibility with PyQt5 5.9.2 from conda’s main channel.
+  - Prevent potential error in hooks for Qt-based packages that
+    could be triggered by a partial PyQt6 installation.
+  - Update QtNetwork hook for PyQt6 and PySide6 to collect the
+    new tls plugins that were introduced in Qt 6.2.
+  - Update the gi.repository.GtkSource hook to accept a
+    module-versions hooksconfig dict in order to allow the hook
+    to be used with GtkSource versions greater than 3.0.
+  - Update the Linux bootloader cross compiler Dockerfile to
+    allow using the official PyPA base images in place of the
+    dockcross ones.
+
+-------------------------------------------------------------------
+Thu Sep 16 11:25:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.5.1: large number of changes, see packaged CHANGES.rst for
+  the complete list.
+- Remove glibc233.patch (included upstream)
+
+-------------------------------------------------------------------
+Thu Apr  1 13:27:23 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Automagically skip matplotlib tests because matplotlib dropped python36
+- Add glibc233.patch to fix recent test failure (gh#pyinstaller/pyinstaller#5540)
+
+-------------------------------------------------------------------
+Wed Mar 18 07:22:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable functional tests as it takes ages and basic checks
+  are okay with unittests
+
+-------------------------------------------------------------------
+Tue Mar 10 09:31:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use xdist for test execution as otherwise it takes ages
+
+-------------------------------------------------------------------
+Fri Jan 17 13:33:04 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Requires python-devel, as `pyinstaller` cannot be used without it
+
+-------------------------------------------------------------------
+Fri Jan 17 10:56:23 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Temporary disabled of tests test_egg* and test_nspkg1*
+
+-------------------------------------------------------------------
+Thu Jan 16 16:26:53 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 3.6
+  * See changelog at https://github.com/pyinstaller/pyinstaller/blob/v3.6/doc/CHANGES.rst
+- Add %bcond_with python2
+
+-------------------------------------------------------------------
+Mon Sep 23 07:19:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner, fix license
+
+-------------------------------------------------------------------
+Fri Sep 20 03:37:50 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Delete upstream bootloaders from the source distribution, forcing
+  re-compilation of bootloader for all platforms, removing 'noarch'
+- Lightly update spec, year and https
+- Update to v3.5
+  * See changelog at https://github.com/pyinstaller/pyinstaller/blob/v3.5/doc/CHANGES.rst
+
+-------------------------------------------------------------------
+Wed Oct 18 16:45:57 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 3.3
+  * See changelog at https://github.com/pyinstaller/pyinstaller/blob/v3.3/doc/CHANGES.rst
+
+-------------------------------------------------------------------
+Mon Jan 23 04:44:34 UTC 2017 - termim@gmail.com
+
+- use update-alternatives
+
+- update to 3.2.1
+  * New, updated and fixed hooks: botocore (#2094), gi (#2347), jira (#2222),
+    PyQt5.QtWebEngineWidgets (#2269), skimage (#2195, 2225), sphinx (#2323,)
+    xsge_gui (#2251).
+  * Don't fail if working directory already exists (#1994)
+  * Avoid encoding errors in main script (#1976)
+  * Fix hasher digest bytes not str (#2229, #2230)
+  * (Windows) Fix additional dependency on the msvcrt10.dll (#1974)
+  * (Windows) Correctly decode a bytes object produced by pefile (#1981)
+  * (Windows) Package ``pefile`` with pyinstaller.  This partially
+    undoes some changes in 3.2 in which the packaged pefiles were
+    removed to use the pypi version instead.  The pypi version was
+    considerably slower in some applications, and still has a couple
+    of small issues on PY3. (#1920)
+  * (OS X) PyQt5 packaging issues on MacOS (#1874)
+  * (OS X) Replace run-time search path keyword (#1965)
+  * (OS X) (Re-) add argv emulation for OSX, 64-bit (#2219)
+  * (OS X) use decode("utf-8") to convert bytes in getImports_macholib() (#1973)
+  * (Bootloader) fix segfaults (#2176)
+  * (setup.py) pass option --no-lsb on GNU/Linux only (#1975)
+  * Updates and fixes in documentation, manuals, et al. (#1986, 2002, #2153,
+    #2227, #2231)
+- update to version 3.2:
+  * Even the “main” script is now byte-compiled (#1847, #1856)
+  * The manual is on readthedocs.io now (#1578)
+  * On installation try to compile the bootloader if there is none for
+    the current plattform (#1377)
+  * (Unix) Use objcopy to create a valid ELF file (#1812, #1831)
+  * (Linux): Compile with _FORTIFY_SOURCE (#1820)
+  * New, updated and fixed hooks: CherryPy (#1860), Cryptography
+    (#1425, #1861), enchant (1562), gi.repository.GdkPixbuf (#1843),
+    gst (#1963), Lib2to3 (#1768), PyQt4, PyQt5, PySide (#1783, #1897,
+    #1887), SciPy (#1908, #1909), sphinx (#1911, #1912), sqlalchemy
+    (#1951), traitlets wx.lib.pubsub (#1837, #1838),
+  * For windowed mode add isatty() for our dummy NullWriter (#1883)
+  * Suppress “Failed to execute script” in case of SystemExit (#1869)
+  * Do not apply Upx compressor for bootloader files (#1863)
+  * Fix absolute path for lib used via ctypes (#1934)
+  * (OSX) Fix binary cache on NFS (#1573, #1849)
+  * (Windows) Fix message in grab_version (#1923)
+  * (Windows) Fix wrong icon paramter in Windows example (#1764)
+  * (Windows) Fix win32 unicode handling (#1878)
+  * (Windows) Fix unnecessary rebuilds caused by rebuilding
+    winmanifest (#1933)
+  * (Cygwin) Fix finding the Python library for Cygwin 64-bit (#1307,
+    #1810, #1811)
+  * (OSX) Fix compilation issue (#1882)
+  * (Windows) No longer bundle pefile, use package from for windows
+    (#1357)
+  * (Windows) Provide a more robust means of executing a Python script
+  * AIX fixes.
+  * Update waf to version 1.8.20 (#1868)
+  * Fix excludedimports, more predictable order how hooks are applied
+    #1651
+  * Internal impovements and code clean-up (#1754, #1760, #1794,
+    #1858, #1862, #1887, #1907, #1913)
+  * Clean-ups fixes and improvements for the test suite
+  * Known Issues
+    + Apps built with Windows 10 and Python 3.5 may not run on Windows
+      versions earlier than 10 (#1566).
+    + The multipackage (MERGE) feature (#1527) is currently broken.
+    + (OSX) Support for OpenDocument events (#1309) is broken.
+- updated to version 3.1.1:
+  * Fix problems with setuptools 19.4 (#1772, #1773, #1790, #1791)
+  * 3.1 does not collect certain direct imports (#1780)
+  * Git reports wrong version even if on unchanged release (#1778)
+  * Don’t resolve symlinks in modulegraph.py (#1750, #1755)
+  * ShortFileName not returned in win32 util (#1799)
+
+-------------------------------------------------------------------
+Sat Jan 16 17:57:42 UTC 2016 - termim@gmail.com
+
+- Initial check in v3.1
+

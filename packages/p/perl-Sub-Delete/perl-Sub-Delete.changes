@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Jul  4 14:17:46 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Set license in cpanspec.yml to Artistic-1.0 OR GPL-1.0-or-later.
+
+-------------------------------------------------------------------
+Fri Apr 17 08:28:08 UTC 2015 - coolo@suse.com
+
+- updated to 1.00002
+   see /usr/share/doc/packages/perl-Sub-Delete/Changes
+
+-------------------------------------------------------------------
+Fri Apr 17 08:28:07 UTC 2015 - coolo@suse.com
+
+- updated to 1.00002
+   see /usr/share/doc/packages/perl-Sub-Delete/Changes
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:45 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:00:54 UTC 2010 - coolo@novell.com
+
+- called spec2changelog
+
+-------------------------------------------------------------------
+Tue Sep  1 00:00:00 UTC 2009 - jw@suse.de - 0.02
+
+- initial Package
+

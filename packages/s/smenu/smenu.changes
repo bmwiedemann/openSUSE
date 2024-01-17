@@ -1,0 +1,432 @@
+-------------------------------------------------------------------
+Tue Aug 22 12:00:46 UTC 2023 - Pierre Gentile <p.gen.progs@gmail.com>
+
+- Version 1.3.0                                                                  
+* Fixes:                                                                         
+  * Correction of an error in the calculation of the size of the longest word.   
+  * Corrects the calculation of the space taken by the first direct access       
+    numbers when it is explicitly specified.                                     
+  * Increase the size of the buffer to store the scancode to prevent it          
+    being truncated.                                                             
+  * Make decoding the column or row number more robust in command line analysis. 
+  * Prevents the introduction of colours outside the range supported by          
+    the terminal.                                                                
+* Improvements:                                                                  
+  * Add the -sb|-sbw|-show_blank_words option to help display all words          
+    composed entirely of spaces.                                                 
+  * Allow selection intervals to have no start or end number.                    
+  * In column mode, words can now be aligned left/right or centred.              
+  * When numbering is active, unnumbered words are now always filled in with     
+    blanks in col/line/tab mode.                                                 
+  * The -start_pattern option has been extended so that all words matching       
+    the pattern can be searched directly using the Next/previous keys,           
+    without having to enter search mode.                                         
+  * The order in which -C/-R elements appear on the command line is now          
+    taken into account.                                                          
+  * In column mode, columns and/or rows can have their own colour                
+    and/or style.                                                                
+ Miscellaneous:                                                                  
+  * Corrections and improvements to the manual.                                  
+  * Removal of dead code.                                                        
+  * Addition of an FAQ entry on alignments.                                      
+  * The memory consumption has been reduced. 
+  * Removal of files mistakenly left in the package. 
+
+-------------------------------------------------------------------
+Sun Jan  8 16:24:59 UTC 2023 - Pierre Gentile <p.gen.progs@gmail.com>
+
+ Version 1.2.0                                                                  
+* Fixes:                                                                         
+  * Correction of word selections with the mouse in long lines.                  
+  * Fixed support for the double-click mouse delay setting.                      
+  * Prevention of spurious commands being sent by the mouse paste function.      
+  * Allowed compilation with old glibc versions.                                 
+* Improvements:                                                                  
+  * Redesign of the multiple selection mechanism with the possibility to undo.   
+  * Improved initialization of mouse tracking modes.                             
+* Miscellaneous:                                                                 
+  * Corrections and improvements to the manual.                                  
+  * Removal of dead code. 
+
+-------------------------------------------------------------------
+Fri Oct 14 20:43:04 UTC 2022 - Pierre Gentile <p.gen.progs@gmail.com>
+
+- Version 1.1.0
+* Fixes:
+  * Fix and improve the instant help (?) display.
+  * Fix and improve the substitution code.
+  * Fix and simplify the "End" key management code.
+* Improvements:
+  * Add mouse support.
+  * Allows to shift the window's content horizontally without moving the cursor.
+  * Small adjustments in UTF-8 symbols and comments.
+  * Improve the documentation.
+* Miscellaneous:
+  * Various code simplifications. 
+
+-------------------------------------------------------------------
+Tue Aug  9 06:33:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Fix and improve the content of the integrated help system.
+  * Allow multiple instances of the "-limits" option.
+
+-------------------------------------------------------------------
+Fri May 20 09:41:20 UTC 2022 - Pierre Gentile <p.gen.progs@gmail.com>
+
+- Version 1.0.0.RC1
+* Fixes:
+  * Fix configure.ac for autoconf >= 2.70.
+  * Fixed a bug in the bash example in the README.
+  * Synchronization with the commit 9ddac73 of ctxopt on github.
+  * Use the right format to print size_t values (C99).
+  * Add a missing break.
+  * Fix a potential segfault when allocating .ini paths.
+  * Fixed color and attribute parsing.
+  * Fix some tests.
+* Improvements:
+  * Update to autoconf 2.71.
+  * Added "invisible" style attribute (n).
+  * Prevent smenu from running in the background.
+  * Catch and handle SIGPIPE signal.
+  * Improve the manual.
+* Miscellaneous:
+  * Various code simplifications.
+  * Removal of some unnecessary parameter.
+  * Removal of unnecessary code.
+  * Fixed typos in the README file.
+
+-------------------------------------------------------------------
+Sat Dec 11 19:45:51 UTC 2021 - Pierre Gentile <p.gen.progs@gmail.com>
+
+- Version 0.9.19
+* Fixes:
+  * Prevent an attempt to free memory that has already been freed.
+  * Prevent memory leaks when requesting help.
+  * Correctly handle the order of invocation of -i/-e options.
+  * Apply a PR from h1z1 with a small correction.
+  * Fix the UTF-8 byte sequence generation from a given UCS-4 codepoint.
+  * Many small fixes.
+* Improvements:
+  * Improve the documentation.
+  * Improve compatibility with some older compilers.
+  * Added the ability to set a global inactivity timeout.
+  * Improve the reliability of the code.
+* Miscellaneous:
+  * Removed the generation of the SUSE specific specfile.
+  * Many typos have been corrected.
+  * Various code simplifications.
+
+-------------------------------------------------------------------
+Mon Jun  7 18:26:29 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.18:
+  Fixes:
+  * A mismatch between signed and unsigned chars has been corrected.
+  * A fatal error in the direct access code has been corrected.
+  * A logic error that could cause a crash has been fixed.
+  Improvements:
+  * The user manual has been updated.
+  * An early substitution option -ES similar to -S has been added.
+  * Special levels are now considered when displaying searched words.
+  * An option to change the behaviour of the multi-selection mode has
+    been added.
+  * 4 more special levels (-6, -7, -8 and -9) are now available.
+  * The missing blink attribute has been added.
+  * The possibility to overload initial limits has been added.
+  * A new search session now starts from scratch by default.
+  * The integer checking function is now more reliable.
+  * A better code for validating UTF-8 byte sequences is now used.
+  * Tests have been added.
+  Misc:
+  * A missing licence reminder in the usage.c file has been added.
+  * An example in the README file has been added.
+  * Error messages are now more consistent.
+
+-------------------------------------------------------------------
+Sat Jan 30 16:20:37 UTC 2021 - Pierre Gentile <p.gen.progs@gmail.com>
+
+- Version 0.9.17                                                                 
+* Fixes:                                                                     
+  - The method to get the cursor location has been fixed and improved.           
+  - A display problem when the title takes too many lines has been fixed.        
+  - A failure when reopening /dev/tty is now fatal.                              
+  - Interesting signals are now trapped only when needed.                        
+  - The refresh mechanism when resizing the terminal has been fixed              
+    and improved.                                                                
+  - \U does not need too be escaped anymore.                                     
+* Improvements:                                                                  
+  - The -Q|-ignore_quotes option has been added to provide a way to              
+    ignore quotes when splitting the input stream/file into words.               
+  - The -!|-int|-int_string option has been added to define a string to
+    be displayed on stdout when ^C is entered during a smenu session.
+  - The usage text is now displayed in case of an error on the command
+    line.
+  - The code to create include/exclude RE patterns has been simplified.          
+  - smenu now mimics the Unix shell signal processing.                           
+* Misc:                                                                          
+  - The availability of str(n)dup is now checked at compile time.                
+  - Tests for RE patterns/inv. character have bee added.                         
+  - The obsolete autogen.sh script has been removed.                             
+  - github's ctxopt commit f779fb8 is now used.                                  
+  - The code is now a little more readable. 
+
+-------------------------------------------------------------------
+Fri Sep 18 18:11:31 UTC 2020 - Pierre Gentile <p.gen.progs@gmail.com>
+
+- Version 0.9.16
+  Fixes:
+  * The SIGINT handling has been fixed.
+  * The lvm_menu example is fixed.
+  * Some memory allocation issues have been corrected.
+  * The last example in the man page now works correctly.
+  * The manual has been cleaned and corrected.
+  * Missing headers has been added.
+  * The List management code has been corrected and improved.
+  * Invalid UTF-8 sequences entered using \u are now handled
+    correctly.
+  * Unreachable code has been removed.
+  * As xwcscasecmp is missing in C99, a local version is now used.
+  * The search timeout now works correctly.
+  Improvements:
+  * Option management has been completely rewritten to use a new,
+    more flexible system (github.com/p-gen/ctxopt).
+  * The horizontal and vertical scrolling symbols are now visually
+    consistent.
+  * An updated version of autotools is now used.
+  * Wide mode is now allowed in column mode.
+  * Line delimiters can now be defined to break lines in
+    tabulation mode.
+  * A set of UTF-8 characters can now be ignored as input.
+  * Substitution character for non-printable characters can now be
+    changed.
+  * -N and -U options can now have multiple arguments.
+  * Fuzzy and substring searches now ignore leading and
+    trailing blanks.
+  * Unicode codepoints can now be entered using the new \U
+    notation.
+  * smenu has been optimized to support networks with high latency.
+  Misc:
+  * A note in the README to thank the packagers has been added.
+  * The code has been adjusted to conform to C99.
+  * The code has been cleaned up in many places.
+
+-------------------------------------------------------------------
+Sat Mar 30 17:57:59 UTC 2019 - Pierre Gentile <p.gen.progs@gmail.com>
+
+- Version 0.9.15
+* Bug fixes:
+  + An ending pattern search was not correctly highlighted
+  + An highlighting issue when hitting the HOME key during a search
+    in numbered mode has been fixed
+  + The PgUp/PgDn moves have been fixed and improved in the presence of
+    excluded words
+  + The height of the windows when a message is present is now correctly
+    calculated
+  + The SIGINT signal handling is working properly now
+  + A vt100 terminal is assumed when the environment variable TERM
+    is unset
+* Improvements:
+  + The 'o' sub-option of the -D option has been enhanced
+  + The documentation has been improved and enhanced
+  + An example of a hierarchical menu interpreter has been added
+  + The message (title) appearance can now be changed with the -a option
+  + An empty line has been added after the message (title) for clarity
+  + The .spec file has been updated to support older SUSE/RH versions
+  + An issue opening /dev/tty is now clearly signaled
+  + The argument of the -n option is now optional and defaults to 0
+    (full height)
+  + It is now possible to directly move the cursor to the start/end of
+    the current line
+* Misc:
+  + The code has been split into several files
+  + The pull request #15 from sumbach/patch-1 has been merged
+  + The pull request #12 from jonnydubowsky/patch-1 has been merged
+  + More tests for the automatic regressions checking have been added
+  + UTF-8 string length processing has been optimized
+  + Help and usage messages are now printed on stdout
+  + A FAQ has been added
+  + Compiler warnings have been silenced
+
+-------------------------------------------------------------------
+Tue Sep 18 13:45:58 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Use %license for COPYRIGHT
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep 13 18:17:46 UTC 2018 - p.gen.progs@gmail.com
+
+- Delete forgotten debug files in the 'examples' directory
+- Fix some rpmlint warnings and errors
+
+-------------------------------------------------------------------
+Wed Sep 12 20:01:08 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and history lesson from description.
+
+-------------------------------------------------------------------
+Tue Sep 04 21:09:11 UTC 2018 - p.gen.progs@gmail.com
+
+- Version 0.9.14
+* Rework the search system (major change)
+  + Add a substring and a fuzzy (fzf inspired) search mode
+  + Enlighten the current search pattern in the matching words
+  + Remove the search mode timeout
+  + Introduce ENTER/ESC as a way to exit search mode
+  + Add the prefix/suffix affinity when searching
+  + Allow to tag/un-tag all the matching words
+  + add a -/ option to affect a search method to the / command
+  + Add 'T' and 'U' commands to tag/un-tag all the matching words
+* Improve the direct access mechanism
+  + [-D] Add a 's' (start) sub-option
+  + [-D] Add a 'h' (head) sub-option
+* Add a "full window" option value to -n
+* Improve the test system and add tests
+* Improve the documentation
+* Update the README.rst file and mention the wiki on GitHub
+* Fix an OpenBSD compatibility issue
+* Fix and improve the color mechanism
+* Fix the cursor display after an ESC hit
+* Fix the tag attribute display
+* Fix some compilation warnings
+* Fix a missing message when the terminal is too small
+* Fix a lot of other small and not-so-small bugs
+
+-------------------------------------------------------------------
+Mon May 22 22:01:00 UTC 2018 - p.gen.progs@gmail.com
+
+- Version 0.9.13
+* Add the first roll of an automated testing system
+* Add the subpackage '-tests' in the specfile
+* Fix a FreeBSD compatibility issue
+* [-a] Add a missing setting for cursor_on_tag (ct)
+* [-b] Fix a bug about non-printable characters
+* [-V] Output version on standard output
+* [-D] Add a 'decorate' directive
+* [-D] Handle multiple instances of the same directive
+* Fix a logic error in the direct access code
+* Fix an horizontal scrolling issue when going to the last word
+* Clean up the allocated gutter array before leaving in case of error
+* Add some more terminfo sequences
+* Fix the right margin and add a degraded method to display it
+* Improve the manual
+* Various other small bug fixes
+
+-------------------------------------------------------------------
+Sun Apr 08 18:32:24 UTC 2018 - p.gen.progs@gmail.com
+
+- Version 0.9.12
+* Fix the cursor restoration
+* Fix a Solaris incompatibility
+* Fix italic handling
+* Fix the replacement of subexpressions (-S,-I,-E)
+* Fix a bug in the columns inclusion logic
+* Fix the impossibility to use the letter 't' in search mode
+* Fix possible display errors when the terminal is resized
+* Make sure that the timers does not alter the redrawing of the window
+* Add word numbering to allow direct access through their number (-N,-U,-F,-D)
+* Improve The manual
+* Allow the \u notation for UTF-8 characters in more places
+* Improve the -T option and add the related -P option
+* Add the -p for use with the -P and -T options
+* The gutter option (-g) now accepts a parameter
+* Adopt the NO_COLOR standard (http://no-color.org)
+* Improve the navigation by understanding more keys and key combinations
+* Understand CTRL+L to redraws the window in case of corruption
+* Exit from search mode when a direction key is hit
+* Adjust some values of timers
+* Remove deprecated directives in -C and -L
+* Various other small fixes and improvements
+
+-------------------------------------------------------------------
+Fri Jan 26 16:07:00 UTC 2018 - p.gen.progs@gmail.com
+
+- Version 0.9.11
+* Introduce the new \u notation for UTF-8 hex sequences
+* Non-printable characters with an escape form are expanded
+* Keep non selectable blank words to allow special effects
+* Fix the wide option when in column or tabulation mode
+* The last word is always the last of its line (-g)
+* Improve message (-m) placement in centered mode
+* Manage substitutions leading to empty strings
+* Hopefully fix the placement of the scroll bar in all cases
+* The gutter can now be displayed in column mode
+* Various other small fixes
+
+-------------------------------------------------------------------
+Thu Dec 13 22:47:00 UTC 2017 - p.gen.progs@gmail.com
+
+- Version 0.9.10
+* The words acquisition is rewritten and splitted in multiple phases
+* Add the capacity to (de)select rows an columns containing regexes
+* -i, -e, -C and -R can be used more than once and have a cumulative effect
+* Bugfix: -s is able to jump to non selectable words
+* Bugfix: The attributes are not overloaded when reading configuration files
+* Bugfix: the right bar is too far right in some cases.
+* Bugfix: the right shift indicator is omitted in some cases
+* Add a -x|-X option to set a timeout in seconds
+* Add a -f option to select an alternative configuration file
+* Add a -a option to set the attributes of the displayed elements
+* Add more controls in the selection parser
+* smenu can now read words directly from a file given as parameter
+* Rewrite the replace function used by -S/-I/-E with a more sed-like one
+* Searches should always consider the visual aspect of words (-S/-I/-E)
+
+-------------------------------------------------------------------
+Thu Dec 22 20:48:17 UTC 2016 - p.gen.progs@gmail.com
+
+- Version 0.9.9
+* New UTF8 validation routine
+* Man page cleanup
+* Code cleanup and improvement
+* Improved configuration process
+* Add code to detect the host system at compile time
+* Compilation is now possible on BSD system derivatives
+* Bug fix: ignore EOF when a scancode contains an escape sequence.
+* Fix the cursor appearance on tagged words
+
+-------------------------------------------------------------------
+Sun Dec 11 20:00:20 UTC 2016 - p.gen.progs@gmail.com
+
+- Version 0.9.8
+* Change the cursor aspect when the selected word is tagged
+* Add a small animated gif demo
+* Fix a potential infinite loop
+* Use custom fgetc/ungetc to be able to safely push back more than one byte
+* Add libtinfo in the searched libraries an regenerate configure
+* Manage conflicts between -C, -R, -c, -l, and -t
+* Improve and fix the help line display
+* Add a -T option to enable a tagging (multi-selections) mode
+* Add the -? option to only display the synopsys
+* Adjust the code so that it can be compiled with an ansi compiler
+* Put the searched line in the middle of the displayed window if possible
+* Add a -k option to prevent trimming spaces
+* Fix the -s option
+* When not in search mode, any key except '?' should quit the help mode
+* Add a new example: yesno
+* Fix an off-by-one error when using -c and -w together
+* And many other minor changes and fixes
+
+-------------------------------------------------------------------
+Sun Mar 13 09:28:52 UTC 2016 - p.gen.progs@gmail.com
+
+- Version 0.9.1
+* Use the GNU autotools
+* Fix a lot of small and not so small bugs
+* Change the -s option semantic
+* Improve help and man page
+* Introduce some new options - see the man page for more
+* Also rework some options - see the man page for more
+* Add more configurable colors
+* Add the notion of non-selectable words
+* Add the notion of special words
+* Add a (de)selection by rows and/or columns
+* Interpret quotations in the input stream and ignore empty words
+* Add an option to center the output window
+* And many other minor changes
+
+-------------------------------------------------------------------
+Sun Aug 9 23:00:59 UTC 2015 - p.gen.progs@gmail.com
+
+- Initial version - 0.9

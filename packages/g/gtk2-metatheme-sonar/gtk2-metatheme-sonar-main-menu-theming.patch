@@ -1,0 +1,16 @@
+Index: Sonar/gtk-2.0/gtkrc
+===================================================================
+--- Sonar.orig/gtk-2.0/gtkrc
++++ Sonar/gtk-2.0/gtkrc
+@@ -391,10 +391,7 @@ style "sonar-gdm-combo-workaround" = "so
+ }
+ 
+ 
+-widget "*slab-main-menu-panel-button-bottom*" style "theme-panelbutton"
+-widget "*slab-main-menu-panel-button-top*" style "theme-panelbutton"
+-widget "*slab-main-menu-panel-button-left*" style "theme-panelbutton"
+-widget "*slab-main-menu-panel-button-right*" style "theme-panelbutton"
++widget "*slab-main-menu-panel-button*" style "theme-panelbutton"
+ 
+ widget "*PanelWidget*" style "theme-panel"
+ widget "*PanelApplet*" style "theme-panel"

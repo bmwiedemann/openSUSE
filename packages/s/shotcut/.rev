@@ -1,0 +1,590 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7bd28906c50fdf6206cf24c846fdb54</srcmd5>
+    <version>17.02</version>
+    <time>1488408202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>458911</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bea259b35f2a20b12d2e340e8e3f8825</srcmd5>
+    <version>17.03</version>
+    <time>1489345250</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 17.03</comment>
+    <requestid>476977</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d026a74dc57e11651fd28f57c726a5e5</srcmd5>
+    <version>17.05</version>
+    <time>1494088256</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 17.05 and enable reproducible builds</comment>
+    <requestid>493011</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d63c6c3c0f15f5b2db1cda56ccb8d667</srcmd5>
+    <version>17.05</version>
+    <time>1494346203</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493626</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>04760b44a2b2f00d5e3d2a6bee41d937</srcmd5>
+    <version>17.08</version>
+    <time>1503593689</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517960</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2308e017ffd8bcd8bcb0190ef927a54b</srcmd5>
+    <version>17.10</version>
+    <time>1507065622</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530847</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9b7f2effa2962b6451bddb85de7c6fae</srcmd5>
+    <version>17.11</version>
+    <time>1510045099</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538931</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b0400109fbbbb487dc838570f9edbc0d</srcmd5>
+    <version>17.11</version>
+    <time>1512734445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555012</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d2c56e044a439c68c1d6451fb6f8e74</srcmd5>
+    <version>17.12</version>
+    <time>1512847980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555545</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4f7614ff0fb0f7687d2da19fcd182811</srcmd5>
+    <version>18.01</version>
+    <time>1515110606</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 18.01
+Upstream changes:
+  *Add a Mask video filter.
+  *Add support for size and italics of font.
+  *Add Audio Spectrum Visualization filter.
+  *Fix duration on image clips with in point &gt; 0.
+  *Fix memory leak calling Mlt::Playlist::replace_with_blanks().
+  *Fix regression in Fix #474 changing properties of color clip
+   changes duration. broke trimmed avformat clips.
+  *Fix checkbox on low free space dialog not working.
+  *Fix #474 changing properties of color clip changes duration.
+  *Fix states for showing convert clip dialog.
+  *Fix #431 multi-line text may cause export to hang.
+</comment>
+    <requestid>561573</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>182ea73a3c6a4ea0c7f6cc4c68f30ade</srcmd5>
+    <version>18.03</version>
+    <time>1520329720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 18.03
+- Upstream changes:
+  *Add Estonian translation.
+  *Fix existing mask filter loading incorrect values.
+  *Fix #500 add transition by trimming may shift a clip.
+  *Fix #362 Size filter not using correct decimal symbol.
+  *Fix #503 crash setting Video Mode after New.
+  *Swap role of Alt+Wheel for timeline scroll.
+  *Improve timeline track pad behavior.
+  *Fix #497 mouse wheel/trackpad scrolling.
+  *Fix #344 shortcut not working with undocked Timeline.
+  *Fix #486 JACK transport glitches.
+  *Fix #361 JACK client connects itself.
+  *Fix #487 split validation off by one frame.
+  *Avformat properties improvements.
+</comment>
+    <requestid>583169</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0f7fae480327836da4385743f11034bf</srcmd5>
+    <version>18.03.06</version>
+    <time>1524643353</time>
+    <user>dimstar_suse</user>
+    <comment>Update to bug fix release 18.03.06
+Upstream changes:
+  *Fix multiply handled KeyEvent regression in Fix #344 shortcut
+   not working with undocked Timeline.Fix multiply handled KeyEvent
+   regression in Fix #344 shortcut not working with undocked
+   Timeline.
+  *Fix added Fade Out Volume shows incorrect on Timeline.
+  *Fix track name not editable regression in Fix #344 shortcut not
+   working with undocked Timeline.
+  *Add Mosaic filter.
+</comment>
+    <requestid>600678</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7c4a48bec5a8273ee82e5128792f6cfe</srcmd5>
+    <version>18.05.08</version>
+    <time>1526220310</time>
+    <user>dimstar_suse</user>
+    <comment>Update to bug fix release 18.05.08
+Upstream changes:
+  *Fix QML producer object not updated before loading filter UI.
+  *Fix fade out filters incorrect after changing out point.
+  *Fix broken fade out control on Timeline.
+  *Fix Fade Out Audio raises volume.
+  *Fix endOfStream signal off by one frame.
+- Update to release 18.05 and rebased shotcut-noupdatecheck.patch.
+- Upstream changes:
+  *Added Keyframe support with a new Keyframes panel.
+  *Added 5.1 Surround Sound.
+  *Added Finnish translation.
+  *Restored GIF Animation for Export.
+  *Reduced memory footprint (especially for the Rotate and Size and
+   Position filters).
+  *Changed default Export settings to reduce output size by
+   increasing GOP and number of B frames.
+  *See https://shotcut.org/blog/new-release-1805/
+</comment>
+    <requestid>605721</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>38409f0f40a81aee29340197323aa35f</srcmd5>
+    <version>18.06.02</version>
+    <time>1530304142</time>
+    <user>dimstar_suse</user>
+    <comment>Update to release 18.06.02 and rebased patches.
+Fixes build against latest qt5 with shotcut-QAction.patch.
+</comment>
+    <requestid>617539</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7f039b5bbb6e7792c537402daae18d9f</srcmd5>
+    <version>18.07</version>
+    <time>1531135709</time>
+    <user>dimstar_suse</user>
+    <comment>Removed all trace of droid fonts
+Update to release 18.07.</comment>
+    <requestid>621128</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2a4c0dfe398619dd4930bf15389f09f7</srcmd5>
+    <version>18.08.14</version>
+    <time>1535705265</time>
+    <user>dimstar_suse</user>
+    <comment>Ensure that %prep fails when droid fonts aren't present in the source.
+Update to bugfix release 18.08.14
+Upstream changes:
+  Fix loading existing Text filter with animation.
+  Fix changing Speed, Duration, or track deletes Comments.
+  Fix selecting clip with speed change corrupts XML.</comment>
+    <requestid>632260</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3c7ab509cddfbd69b4c87a1bb2d4ae06</srcmd5>
+    <version>18.10.08</version>
+    <time>1540447974</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 18.10.08
+Droid fonts are no longer present.
+Rebased shotcut-QAction.patch and shotcut-noupdatecheck.patch.
+Replace Droid font with Liberation due to incompatible license.
+</comment>
+    <requestid>642582</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>10d0e9b4a70e7f6def9e3a72a2a09d24</srcmd5>
+    <version>18.11.04</version>
+    <time>1542012291</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 18.11.04</comment>
+    <requestid>648214</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c5b2451deeb7650a1b389054d969892a</srcmd5>
+    <version>18.11.13</version>
+    <time>1542580216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649181</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>10a38fa2e39147f2d4c98a31c37831c0</srcmd5>
+    <version>18.12.15</version>
+    <time>1545141532</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 18.12.15. Package newly installed man page.</comment>
+    <requestid>658862</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>19bc4e8261596141df7016f122f86b15</srcmd5>
+    <version>18.12.23</version>
+    <time>1545996866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661247</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ac33712ff6f5b9fd85af23a9d484cf39</srcmd5>
+    <version>19.01.19</version>
+    <time>1548065262</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.01.19 and remove shotcut-QAction.patch which is no longer relevant.</comment>
+    <requestid>667311</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>175fdbc86b08d5ed7bc9779905f0ff77</srcmd5>
+    <version>19.01.27</version>
+    <time>1551024701</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671027</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>25f422440c75d7b2a06281027dff3456</srcmd5>
+    <version>19.02.28</version>
+    <time>1551883682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681746</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0c88b20ae15885f2ff860819f140cee1</srcmd5>
+    <version>19.04.30</version>
+    <time>1557404905</time>
+    <user>dimstar_suse</user>
+    <comment>set minimum qt version to 5.9.0
+Update to release 19.04.30.</comment>
+    <requestid>701729</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e729174c17892d40d0c7f4606c4cd94a</srcmd5>
+    <version>19.07.07</version>
+    <time>1562843804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release version 19.07.07</comment>
+    <requestid>714075</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2f7034705b79d167caaa0cb10abdee95</srcmd5>
+    <version>19.08.05</version>
+    <time>1565362432</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 19.08.05</comment>
+    <requestid>721779</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e768c21125f6c7d90bdf6af565b17c4a</srcmd5>
+    <version>19.08.16</version>
+    <time>1566464330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725222</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>545faff05c71b05e63a44e3b5ac50dfb</srcmd5>
+    <version>19.09.14</version>
+    <time>1569393083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732843</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cbf509ca7b11898ab7b6eb5b5739c093</srcmd5>
+    <version>20.02.17</version>
+    <time>1583007863</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release version 20.02.17
+- Upstream changes:
+  - Fixes:
+    - Fixed dropping multiple files to Playlist in a new project (broken in v19.12.31).
+    - Fixed some broken keyboard shortcuts in the Turkish translation.
+    - Fixed Properties &gt; Speed not working after a project file repair.
+    - Fixed clip selection after Insert Track or Remove Track.
+    - Fixed Playlist &gt; Add Selected to Timeline creates corrupt clips (broken in v19.12.31).
+    - Fixed Settings &gt; Display Method &gt; Software (Mesa) on Windows (broken in v19.12.31).
+    - Fixed creating a Project folder with leading or trailing spaces.
+    - Fixed saving the length property in MLT XML as a time value independent of frame rate.
+    - Fixed starting Text: Simple video filter with &quot;@&quot; shows &quot;0&quot;.
+    - Fixed seeking previous &amp; next on the first track in Keyframes where you trim a filter or use simple keyframes.
+    - Fixed an unexpected transition is created when moving a clip rightward adjacent to the next clip in Timeline (regression in v19.12.16).
+    - Fixed drag-n-drop from Source player to Timeline left player in an inconsistent state (broken in v19.09.14).
+    - Fixed an inconsistent colorspace conversion when accessing a cached image.
+    - Fixed Playlist &gt; Copy followed by a change in Properties incorrectly changes the playlist item.
+    - Fixed clicking on the rectangle control may change its size.
+    - Fixed using the LUT (3D) filter with file with extended characters in its file path on Windows.
+    - Fixed a crash when using a transition on every track at the same time.
+  - Changes:
+    - Improved the reliability of Timeline &gt; Select None.
+    - Changed Timeline &gt; Master &gt; Properties &gt; Frame rate to show 6 decimal digits.
+    - Reduced the latency of scrubbing (regression in v19.12.31).
+    - Changed the video-overlay rectangle control used in some filters to allow changing the position by dragging from anywhere inside the rectangle.
+    - To enable, one must first double-click the center circle to put it into a positioning-locked mode. Otherwise, you would be prevented from dragging the clip out of the Source player.
+    - Changed the Filters panel on macOS to prevent floating to avoid a frequently reported problem of the Filters window appearing blank/black.
+    - Changed Timeline &gt; clip context menu &gt; Detach Audio to not seek afterwards.
+    - Improved mouse wheel and trackpad behavior in Timeline.
+    - Now, you do not need to ensure the mouse pointer is over a clip, speed is reduced, and zoom keeps focal point in view. The new zoom behavior does not apply when using the option Center the Playhead in the timeline menu.</comment>
+    <requestid>780301</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>158808eafe75ed4ad74ce4b00147a902</srcmd5>
+    <version>20.04.12</version>
+    <time>1588324531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799294</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>d8acb852d7f3791dce40dbae933f70d5</srcmd5>
+    <version>20.04.12</version>
+    <time>1591558495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811844</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>724c0d71f23c306724c5b27a8d0bf05f</srcmd5>
+    <version>20.07.11</version>
+    <time>1597221288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825812</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>486a0ebf885517fb6d5147dc7d9c2e78</srcmd5>
+    <version>20.09.13</version>
+    <time>1600801961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835963</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2cb4137a0f4d3c925d461610994ca826</srcmd5>
+    <version>20.09.27</version>
+    <time>1602073075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839819</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>154c7b4158321b8a11a6b22cc70d5671</srcmd5>
+    <version>20.10.31</version>
+    <time>1604412951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845370</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f022d2e0b36b65929387835d737b3d83</srcmd5>
+    <version>20.11.28</version>
+    <time>1610051060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860963</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>95555fa3d4c471bf082b24f37d73b8c2</srcmd5>
+    <version>20.11.28</version>
+    <time>1611348716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865323</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c7ea598649eb988dc9a511923c794577</srcmd5>
+    <version>21.01.29</version>
+    <time>1612378558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868797</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7c84fb10750b8ab7f8ef3dd0d1209ee7</srcmd5>
+    <version>21.02.27</version>
+    <time>1614684902</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875963</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8b767c5ff70a53b7b09deeeb5200a19f</srcmd5>
+    <version>21.03.21</version>
+    <time>1617910326</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883545</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>abe388400ab9b93c66cadee94a1b17d1</srcmd5>
+    <version>21.03.21</version>
+    <time>1618223833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884451</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>88b153183df7b8e434a704fef8e2c221</srcmd5>
+    <version>21.05.18</version>
+    <time>1623268309</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 21.05.18:</comment>
+    <requestid>894532</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>c9fd07abf41f00753f1b30ad3d517596</srcmd5>
+    <version>21.05.18</version>
+    <time>1624813168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902639</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7d292f3977384ce9e968d04a12c38528</srcmd5>
+    <version>21.06.29</version>
+    <time>1625950473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905310</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ad694ed7b1f3d22bd03ad410d2e8f624</srcmd5>
+    <version>21.08.29</version>
+    <time>1630525042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915481</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8ee47112c6712c40b836706655d3aafc</srcmd5>
+    <version>21.09.13</version>
+    <time>1632173569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920032</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a3e89d08196810fc01d0ec076227345d</srcmd5>
+    <version>22.01.30</version>
+    <time>1643731953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950467</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6694a8d8b6d2c066183409d5b4a23803</srcmd5>
+    <version>22.04.25</version>
+    <time>1655972717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984662</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>dd20d4af75e2636d08930c859184afec</srcmd5>
+    <version>22.06.23</version>
+    <time>1656511307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985707</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>917bff2a3872b5f1763379a5c8e8ed71</srcmd5>
+    <version>22.10.25</version>
+    <time>1667740779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033794</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0b170ff234d94c83f0b3020d3c3aed0a</srcmd5>
+    <version>22.11.25</version>
+    <time>1669715634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038725</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>4b87d6656019710940e680afc66d160d</srcmd5>
+    <version>22.12.21</version>
+    <time>1673650987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058163</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>dac7d06c077336b756b47f1fd31c15c2</srcmd5>
+    <version>22.12.21</version>
+    <time>1679416817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072941</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>fd0f5f03cbd64595ba8e7a6433b2eba6</srcmd5>
+    <version>23.04.03</version>
+    <time>1681058436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 23.04.03 equal to 23.04 Beta
+- Build 15.5 with gcc12-c++ it fails with 7
+- Now builds with Qt6 &gt;= 6.4</comment>
+    <requestid>1078111</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>0e0cc0f7865e19290b3d4b43496192de</srcmd5>
+    <version>23.05.14</version>
+    <time>1684846493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088540</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5e8317fdab124959502479bce9428223</srcmd5>
+    <version>23.06.14</version>
+    <time>1687550015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094849</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>c74209c6165497121bc20a95870a1f19</srcmd5>
+    <version>23.07.29</version>
+    <time>1690809902</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1101465</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ce94a1072857e136a4212cdde64f7550</srcmd5>
+    <version>23.09.29</version>
+    <time>1696451448</time>
+    <user>anag+factory</user>
+    <comment>- Update to 23.09.29 Needs libmlt version 7.18.0 See sr#1114770</comment>
+    <requestid>1114781</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>03d692ea4a6742627606719b4d003fc4</srcmd5>
+    <version>23.11.29</version>
+    <time>1701632964</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130549</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>b8355e68844cc960285b3c34e135c492</srcmd5>
+    <version>23.12.15</version>
+    <time>1703102536</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134136</requestid>
+  </revision>
+</revisionlist>

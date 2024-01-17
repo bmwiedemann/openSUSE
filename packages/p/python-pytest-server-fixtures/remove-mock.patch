@@ -1,0 +1,73 @@
+Index: a/tests/integration/test_xvfb_server.py
+===================================================================
+--- a/tests/integration/test_xvfb_server.py
++++ b/tests/integration/test_xvfb_server.py
+@@ -4,7 +4,11 @@ import time
+ 
+ from itertools import chain, repeat
+ 
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
++
+ import pytest
+ from pytest import raises
+ 
+Index: a/tests/unit/serverclass/test_docker_unit.py
+===================================================================
+--- a/tests/unit/serverclass/test_docker_unit.py
++++ b/tests/unit/serverclass/test_docker_unit.py
+@@ -1,4 +1,8 @@
+-from mock import sentinel, patch, Mock
++try:
++    from unittest.mock import sentinel, patch, Mock
++except ImportError:
++    from mock import sentinel, patch, Mock
++
+ 
+ from pytest_server_fixtures.serverclass.docker import DockerServer
+ 
+Index: a/tests/unit/serverclass/test_thread_unit.py
+===================================================================
+--- a/tests/unit/serverclass/test_thread_unit.py
++++ b/tests/unit/serverclass/test_thread_unit.py
+@@ -1,4 +1,8 @@
+-from mock import sentinel, patch, Mock
++try:
++    from unittest.mock import sentinel, patch, Mock
++except ImportError:
++    from mock import sentinel, patch, Mock
++
+ 
+ from pytest_server_fixtures import CONFIG
+ from pytest_server_fixtures.serverclass.thread import ThreadServer
+Index: a/tests/unit/test_server_unit.py
+===================================================================
+--- a/tests/unit/test_server_unit.py
++++ b/tests/unit/test_server_unit.py
+@@ -1,4 +1,8 @@
+-from mock import create_autospec, sentinel, call, patch, Mock
++try:
++    from unittest.mock import create_autospec, sentinel, call, patch, Mock
++except ImportError:
++    from mock import create_autospec, sentinel, call, patch, Mock
++
+ 
+ from pytest_server_fixtures.base import TestServer as _TestServer  # So that pytest doesnt think this is a test case
+ 
+Index: tests/unit/test_server_v2_unit.py
+===================================================================
+--- a/tests/unit/test_server_v2_unit.py
++++ b/tests/unit/test_server_v2_unit.py
+@@ -1,4 +1,8 @@
+-from mock import create_autospec, sentinel, call, patch, Mock
++try:
++    from unittest.mock import create_autospec, sentinel, call, patch, Mock
++except ImportError:
++    from mock import create_autospec, sentinel, call, patch, Mock
++
+ 
+ from pytest_server_fixtures.base2 import TestServerV2 as _TestServerV2 # TODO: why as _TestServerV2?
+ 

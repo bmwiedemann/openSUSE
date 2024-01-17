@@ -1,0 +1,24 @@
+## Path:	Hardware/GPS
+## Description:	GPS Daemon
+
+## Type:	yesno
+## Default:     no
+#
+# Whether or not to start gpsd automatically on plugin event
+#
+GPSD_STARTBYUDEV="no"
+
+## Type:	integer
+## Default:     2947
+#
+# Use different port for the daemon
+#
+GPSD_PORT=
+
+## Type:	string
+## Default:     ""
+#
+# Further options to gpsd
+#
+GPSD_OPTIONS=""
+

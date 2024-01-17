@@ -1,0 +1,13 @@
+Index: florence-0.6.3/src/Makefile.am
+===================================================================
+--- florence-0.6.3.orig/src/Makefile.am
++++ florence-0.6.3/src/Makefile.am
+@@ -16,7 +16,7 @@ florence_CPPFLAGS = -I$(top_srcdir) -DIC
+    -DDATADIR="\"$(datadir)/florence\"" $(DEPS_CFLAGS) $(GTK3_CFLAGS)\
+    $(LIBGNOME_CFLAGS) $(LIBNOTIFY_CFLAGS) $(XTST_CFLAGS) $(AT_SPI2_CFLAGS) $(INCLUDES)
+ florence_LDADD = $(DEPS_LIBS) $(LIBM) $(X11_LIBS) $(LIBGNOME_LIBS) $(LIBNOTIFY_LIBS)\
+-   $(XTST_LIBS) $(AT_SPI2_LIBS) $(GTK3_LIBS) -lflorence-1.0
++   $(XTST_LIBS) $(AT_SPI2_LIBS) $(GTK3_LIBS) libflorence-1.0.la
+ 
+ libflorence_1_0_la_SOURCES = lib/florence.c
+ library_includedir=$(includedir)/florence-1.0

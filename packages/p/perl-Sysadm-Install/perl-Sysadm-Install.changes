@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Thu Nov 17 07:13:14 UTC 2016 - coolo@suse.com
+
+- updated to 0.48
+   see /usr/share/doc/packages/perl-Sysadm-Install/Changes
+
+  0.48  (2016/11/15)
+      (ms) Applied typo fix submitted by Salvatore Bonaccorso in
+           [rt.cpan.org #114826]
+      (ms) Reopening stderr now after password_read prompt to tty closed it.
+
+-------------------------------------------------------------------
+Tue May 31 11:09:33 UTC 2016 - coolo@suse.com
+
+- updated to 0.47
+   see /usr/share/doc/packages/perl-Sysadm-Install/Changes
+
+  0.47  (2016/05/29)
+      (ms) password_read() now writes the prompt to STDERR (instead of STDOUT), and
+           optionally to /dev/tty if specified. This allows for redirecting STDOUT 
+           (and even STDERR) to a file without losing the password prompt.
+
+-------------------------------------------------------------------
+Sat Jun 27 08:59:12 UTC 2015 - coolo@suse.com
+
+- updated to 0.46
+   see /usr/share/doc/packages/perl-Sysadm-Install/Changes
+
+  0.46  (2015/06/23)
+      (ms) ask() and pick() now support getting the user's response on the 
+           tty, instead of stdin, so they can be used from within a pipe.
+
+-------------------------------------------------------------------
+Sun Jun  7 09:03:23 UTC 2015 - coolo@suse.com
+
+- updated to 0.45
+   see /usr/share/doc/packages/perl-Sysadm-Install/Changes
+
+  0.45  (2015/05/25)
+      (ms) Alexandr Ciornii fixed manifest and tests for the Windows platform
+
+-------------------------------------------------------------------
+Tue Sep 16 08:07:56 UTC 2014 - coolo@suse.com
+
+- updated to 0.44
+    (ms) replaced bin_find() implementation by File::Which
+    (ms) tap() with raise_error option set now dies with stderr output, 
+         because $! isn't set on failed close().
+
+-------------------------------------------------------------------
+Sat Jun 15 06:04:10 UTC 2013 - coolo@suse.com
+
+- updated to 0.43
+     (ms) Using binmode() now for slurp/blurt for compatibility with Win32
+          systems.
+ 
+     (ms) No longer silently removing directories that are in the way 
+          before untar().
+     (ms) Better error diagnosis on failing untar() tests
+ 
+     (ms) Added home_dir() function returning user's home directory.
+     (ms) tap() now supports stdout_limit and stderr_limit options to 
+          limit log verbosity
+ 
+     (ms) Applied pull request by ks0608 to fix Cwd problem on Win32/Mac
+          (https://github.com/mschilli/sysadm-install-perl/pull/1)
+ 
+     (ms) Fixed bin_find, to omit directories
+     (ms) Added cdback() with reset option
+
+-------------------------------------------------------------------
+Tue Aug 30 00:00:00 CET 2011 - detlef@links2linux.de
+
+- new upstream version <0.38>
+   (ms) Fixed Win32 test in 012tap.t
+   (ms) [rt.cpan.org #68095] Applied fix by Kai von Thadden for
+         tap's raise_error option and added test case.
+
+-------------------------------------------------------------------
+Mon May 23 10:59:14 UTC 2011 - coolo@novell.com
+
+- updated to 0.36
+    (ms) Added owner_cp() to copy uid and gid of a file or directory.
+    (ms) Added raise_error option for tap()
+    (ms) snip() now returns original string (with unprintables replaced) 
+         if the data length is shorter than $maxlen.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:26 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Aug  9 14:50:17 UTC 2010 - chris@computersalat.de
+
+- update to 0.35
+  * [RT 54885] Merged with github fork by Thomas Lenz, fixing 
+    blurt_atomic on Win32.
+  * Fixed local caller_depth increments
+  * Fixed printable() bug masking '-'.
+0.34  (2010/02/21)
+  * Added github repository link to Makefile.PL
+  * [RT 53324] bin_find fix for Windows using $Config::Config{path_sep}
+  * [RT 54555] Fixed test suite errors on Win32
+- recreated by cpanspec 1.78
+  o changed to Build.PL
+- noarch pkg
+
+-------------------------------------------------------------------
+Thu Dec 10 20:27:47 UTC 2009 - chris@computersalat.de
+
+- update to 0.33
+  * utf8_available() now uses eval"" to check for Encode module, 
+    Sysadm::Install therefore no longer requires Encode to be installed.
+  * Got rid of LWP::Simple because of its env_proxy() call at 
+    compile time, which freaks out on env variables like "use_proxy"
+    when set to numeric values. Using LWP::UserAgent instead.
+- cleanup spec
+  * added header
+  * sorted Tags
+  * fixed deps
+  * fixed description
+  * added author
+  * moved changelog to .changes
+- added perl-macros
+  * perl_gen_filelist
+
+-------------------------------------------------------------------
+Sun Aug 30 23:38:50 CET 2009 - detlef@links2linux.de
+
+- new upstream release <0.32>-<0.pm.1>
+
+-------------------------------------------------------------------
+Fri Mar 29 21:45:18 CET 2008 - detlef@links2linux.de
+
+- new upstream release <0.27>-<0.pm.1>
+
+-------------------------------------------------------------------
+Sat Jan 09 03:09:56 CET 2008 - detlef@links2linux.de
+
+- new upstream release <0.25>-<0.pm.1>
+
+-------------------------------------------------------------------
+Mon Dec 31 12:53:45 CET 2007 - detlef@links2linux.de
+
+- new upstream release <0.24>-<0.pm.1>
+
+-------------------------------------------------------------------
+Fri Apr 13 14:41:21 CET 2007 - detlef@links2linux.de
+
+- new upstream release <0.23>-<0.pm.1>
+
+-------------------------------------------------------------------
+Sun Oct 15 07:53:33 CET 2006 - detlef@links2linux.de
+
+- initial build for packman
+

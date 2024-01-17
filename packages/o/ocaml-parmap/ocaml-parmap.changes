@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Tue Jan 16 16:16:16 UTC 2024 - ohering@suse.de
+
+- Remove usage of dune.configurator because ocamlfind names which
+  contain a dot are not considered valid anymore with dune 3.13
+
+-------------------------------------------------------------------
+Sun Jan  1 01:01:01 UTC 2023 - ohering@suse.de
+
+- Update to version 1.2.5
+  Add support for OCaml 5.0
+
+-------------------------------------------------------------------
+Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
+
+- Update to version 1.2.4
+  fix naked pointers
+
+-------------------------------------------------------------------
+Sun May  2 21:22:23 UTC 2021 - ohering@suse.de
+
+- Update to version 1.2.3
+  follow upstream versioning
+
+-------------------------------------------------------------------
+Sun Apr 25 22:22:22 UTC 2021 - ohering@suse.de
+
+- Update to version 20210423.2800b78
+  avoid corruption on 32bit architectures
+  add support for returning results in the right order
+
+-------------------------------------------------------------------
+Thu Feb 20 20:20:20 UTC 2020 - ohering@suse.de
+
+- Require current ocaml-rpm-macros
+- Update to version 20200124.526acc4 (1.1.1)
+  merged our changes for dune and recent ocaml versions
+
+-------------------------------------------------------------------
+Fri Nov  1 12:34:56 UTC 2019 - ohering@suse.de
+
+- Require current dune macros
+- Update to 20191021.1b17a5d from dune branch
+
+-------------------------------------------------------------------
+Wed Oct  9 05:48:16 UTC 2019 - ohering@suse.de
+
+- Update to version 20191002.803edbb (1.0-rc11)
+
+-------------------------------------------------------------------
+Tue Oct  1 07:50:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Mon Sep 23 16:35:39 UTC 2019 - ohering@suse.de
+
+- Update to version 20190330.8d19c66
+  Fix for ocaml 4.06
+
+-------------------------------------------------------------------
+Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
+
+- Use Group: Development/Languages/OCaml
+
+-------------------------------------------------------------------
+Mon Jul 17 20:24:18 UTC 2017 - ohering@suse.de
+
+- Update to version 20170223.c9b0ee7
+  Only wait for the children started by parmap
+  Prevent at_exit handlers registered in the parent from running in the child
+  handle EINTR errors in wait_for_pids
+  added get_ncores
+  Gc.compact needs to be called only inside of spawn_many
+  added get_rank so that worker processes can know at which rank they were forked out of the master process
+
+-------------------------------------------------------------------
+Mon Jul 17 12:48:58 UTC 2017 - ohering@suse.de
+
+- Wrap specfile conditionals to fix quilt setup
+
+-------------------------------------------------------------------
+Mon Jul 17 10:48:58 UTC 2017 - ohering@suse.de
+
+- Remove autodeps for pre openSUSE 12.1 releases
+
+-------------------------------------------------------------------
+Wed May 31 07:07:33 UTC 2017 - olaf@aepfle.de
+
+- Replace tabs with spaces in generated _oasis file
+
+-------------------------------------------------------------------
+Sat Jun  4 19:52:34 UTC 2016 - jeffm@suse.com
+
+- Handle racing mkdirs
+
+-------------------------------------------------------------------
+Tue May 24 12:01:41 UTC 2016 - olaf@aepfle.de
+
+- Initial version 20160512.7598fb9 for coccinelle
+

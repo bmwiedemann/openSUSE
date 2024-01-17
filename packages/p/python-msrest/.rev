@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>206a69504c769b92c1d247524414c775</srcmd5>
+    <version>0.4.4</version>
+    <time>1485939049</time>
+    <user>dimstar_suse</user>
+    <comment>- Include in SLE 12 (fate#322171, bsc#1014478)</comment>
+    <requestid>445813</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d6541edba714223c4b164cd1e0ae0cf5</srcmd5>
+    <version>0.4.11</version>
+    <time>1500456084</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510104</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0d6307e01db13dc4c673898693bcac1f</srcmd5>
+    <version>0.4.11</version>
+    <time>1505920384</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527378</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60c80bb7cd59d23d91507bbd35cea455</srcmd5>
+    <version>0.4.25</version>
+    <time>1518596838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571126</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>269cb9fa34d21479d3f3a0fd037b06e8</srcmd5>
+    <version>0.4.28</version>
+    <time>1526220223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601547</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d69ab996918653be6abb2372c5184b9</srcmd5>
+    <version>0.5.5</version>
+    <time>1537971372</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>638007</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c45082d0766298471e5ca7b0b506755f</srcmd5>
+    <version>0.6.6</version>
+    <time>1557833949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694350 from glaubitz)</comment>
+    <requestid>694563</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6ddd42d32d76389dfa121c4c75cee71a</srcmd5>
+    <version>0.6.10</version>
+    <time>1570710727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735270 from glaubitz)</comment>
+    <requestid>735764</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6dc68d9218941318cf4a9b391f33f565</srcmd5>
+    <version>0.6.11</version>
+    <time>1585760972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790243</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0541fa9610ec824ed10e5b8485fa0086</srcmd5>
+    <version>0.6.16</version>
+    <time>1592398374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815304</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff55ada524171718222df7485c3c5a66</srcmd5>
+    <version>0.6.18</version>
+    <time>1601652185</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.18
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 830777 from glaubitz)</comment>
+    <requestid>830913</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>04efc36fcf7a9a36032d37faf2df362f</srcmd5>
+    <version>0.6.19</version>
+    <time>1602155580</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.19
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 839805 from glaubitz)</comment>
+    <requestid>839868</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a72aca3763e153a4a0e912a346b1f87e</srcmd5>
+    <version>0.6.19</version>
+    <time>1607548886</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854019</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>05613e350f34b301f24431269633288c</srcmd5>
+    <version>0.6.21</version>
+    <time>1618235372</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.21
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 881909 from glaubitz)</comment>
+    <requestid>881989</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a7c6c0a150f1774b74d2a279730010fc</srcmd5>
+    <version>0.7.1</version>
+    <time>1660586320</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.7.1
+  + For detailed information about changes see the
+    README.rst file provided with this package
+- Switch source archive format to ZIP
+- Update Requires from setup.py (forwarded request 995152 from glaubitz)</comment>
+    <requestid>995156</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,15 @@
+<constraints>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <arch>ppc64le</arch>
+      <arch>s390x</arch>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">8</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

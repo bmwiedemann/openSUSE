@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51191409ef65ed98257dea27c6c5fa8b</srcmd5>
+    <version>1.2.0</version>
+    <time>1546946745</time>
+    <user>dimstar_suse</user>
+    <comment>New package needed by the soon-to-be new package mchange-commons</comment>
+    <requestid>660485</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4fb1c6941c5e329d9c52f281e1edf29</srcmd5>
+    <version>1.3.0</version>
+    <time>1618859181</time>
+    <user>dimstar_suse</user>
+    <comment>needed for security fixes</comment>
+    <requestid>886660</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>50b78eda6a42c8d7176e77d2a5744d81</srcmd5>
+    <version>1.4.1</version>
+    <time>1619031588</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 1.4.1</comment>
+    <requestid>886896</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>991ffa7f8c3adc5605fc82623ee89a45</srcmd5>
+    <version>1.4.1</version>
+    <time>1627492810</time>
+    <user>dimstar_suse</user>
+    <comment>Build with java 8, since source/target level 8 is requested</comment>
+    <requestid>908816</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e67100bf081100978f4848849f13b525</srcmd5>
+    <version>1.4.1</version>
+    <time>1648575937</time>
+    <user>dimstar_suse</user>
+    <comment>fix doclint errors</comment>
+    <requestid>965732</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>57a6065c494f821b76d535428dbc6d24</srcmd5>
+    <version>1.4.1</version>
+    <time>1650466490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970690</requestid>
+  </revision>
+</revisionlist>

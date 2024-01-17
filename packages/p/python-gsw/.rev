@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>024be8f0c9981858c651d176144bf295</srcmd5>
+    <version>3.2.0</version>
+    <time>1520415204</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.0
+ * no changelog available
+- remove check boundary condition
+- use %license macro
+- convert to singlespec and deactivate python2
+- use fdupes
+- Initial version
+</comment>
+    <requestid>582170</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8cf723c36e78f945d3f7b788004913e8</srcmd5>
+    <version>3.2.1</version>
+    <time>1530304059</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.1, no changelog available, listing
+  relevant git commits:
+ * Fix bug in pchip_interp utility function. (#27)
+   A smoke test has been added for this function.
+   The function is an additional wrapper around the wrapped ufunc,
+   the core of which is in C, and it is not used internally.
+ * Make the code c/c++ compatible; eliminate source duplication. (#28)
+ * Cleanup: warnings and last reference to src2. (#32)
+  * This is a minor cleanup of the code generators and associated C.
+</comment>
+    <requestid>617162</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>58339551c7d0356e50628dc739883201</srcmd5>
+    <version>3.2.1</version>
+    <time>1532681851</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off test_check_function[cfcf71], which fails on 32bit archs
+  (https://github.com/TEOS-10/GSW-Python/issues/40).
+- Clean SPEC
+- Remove gsw_licence.html (license is inside the distribution tarball)
+- Add tests.tar.gz with tests from the upstream git repository and
+  enable tests
+</comment>
+    <requestid>625435</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>02e83bc6fb1bc31cfa3f83c2ce364421</srcmd5>
+    <version>3.2.1</version>
+    <time>1551024963</time>
+    <user>coolo</user>
+    <comment>- Update to 3.3.0:
+  * Adds functions SP_salinometer, O2sol, and O2sol_SP_pt by
+    updating the C source. 
+  * Fixes a bug in handling of p_ref in geostrophy.
+  * Fixes a bug in distance when the pressure argument is
+    omitted.
+- Actually gh#TEOS-10/GSW-Python#40 can be worked around by
+  adding -ffloat-store to CFLAGS. Which I do now for i586 and
+  armv7l platforms.
+- Switch off test_check_function[cfcf71], which fails on 32bit archs
+  (gh#TEOS-10/GSW-Python#40).
+- Clean SPEC
+- Remove gsw_licence.html (license is inside the distribution tarball)
+- Add tests.tar.gz with tests from the upstream git repository and
+  enable tests
+- update to version 3.2.1, no changelog available, listing
+  relevant git commits:
+ * Fix bug in pchip_interp utility function. (#27)
+   A smoke test has been added for this function.
+   The function is an additional wrapper around the wrapped ufunc,
+   the core of which is in C, and it is not used internally.
+ * Make the code c/c++ compatible; eliminate source duplication. (#28)
+ * Cleanup: warnings and last reference to src2. (#32)
+  * This is a minor cleanup of the code generators and associated C.
+- update to version 3.2.0
+ * no changelog available
+- remove check boundary condition
+- use %license macro
+- convert to singlespec and deactivate python2
+- use fdupes
+- Initial version
+</comment>
+    <requestid>677742</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>88bff11610eb0ae4cea58cdd892dffe6</srcmd5>
+    <version>3.3.0</version>
+    <time>1554189641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0:
+  * Adds functions SP_salinometer, O2sol, and O2sol_SP_pt by
+    updating the C source. 
+  * Fixes a bug in handling of p_ref in geostrophy.
+  * Fixes a bug in distance when the pressure argument is
+    omitted.</comment>
+    <requestid>687595</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>16ac62ace29517673df73c41fb2f9371</srcmd5>
+    <version>3.3.1</version>
+    <time>1556621942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697374</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>37dd3b695c7b81e96a5f2c4db76d2cfa</srcmd5>
+    <version>3.3.1</version>
+    <time>1597955505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828080</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e194b2682e3ac8d2fe191138cf59acfc</srcmd5>
+    <version>3.4.0</version>
+    <time>1605290379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848217</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>af2ba7bd47502f38317c48113fa366e1</srcmd5>
+    <version>3.4.0</version>
+    <time>1611068574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864173</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>6d404d8d8fa09710608fdbb0364fa697</srcmd5>
+    <version>3.4.0</version>
+    <time>1614001203</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874188</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ec38872130cdb1c102704a21a687f2d5</srcmd5>
+    <version>3.6.16</version>
+    <time>1665754912</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1010420 from Guillaume_G
+
+- Update to 3.6.16:
+    * Update underlying c code to v3.06.16 #107
+  - Skipped update to 3.4.2:
+    * add DOI by @ocefpaf in #72
+    * Use GitHub Actions for the tests by @ocefpaf in #73
+    * build wheel for Python 3.9 by @ocefpaf in #79
+    * Wrap longitude, 0-360, where it is used directly. by @efiring in #86
+    * Add link to new xarray wrapper gsw-xarray by @rcaneill in #87
+    * Add py310 test to the test matrix... by @ocefpaf in #88
+    * needs to avoid globing them before the autidwheel by @ocefpaf in #80
+    * add pre-commit by @ocefpaf in #77
+    * publish docs with GHA by @ocefpaf in #89
+    * use micromamba in tests by @ocefpaf in #93
+    * Fix teos 10 url by @ocefpaf in #94
+    * Correct Nsquared unit by @rcaneill in #91
+    * use np.expand_dims instead of np.newaxis by @rcaneill in #96
+    * Add consts to PyUFuncGenericFunction declarations by @hoodmane in #99
+    * Move to cibuildwheels by @ocefpaf in #100
+    * remove unused file by @ocefpaf in #102
+    * Rename master to main in the CIs by @ocefpaf in #105
+    * update README by @ocefpaf in #104
+    * Run every PR but publish only when tags by @ocefpaf in #106
+  - Skipped update to 3.4.1:
+    * Add DOI
+  - Enable again tests skipped on aarch64 since fixed upstream</comment>
+    <requestid>1010450</requestid>
+  </revision>
+</revisionlist>

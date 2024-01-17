@@ -1,0 +1,13 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionformat">3.3</param>
+    <param name="url">http://github.com/icecc/icemon.git</param>
+    <param name="revision">refs/tags/v3.3</param>
+    <param name="scm">git</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

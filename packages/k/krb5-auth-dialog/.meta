@@ -1,0 +1,9 @@
+<package name="krb5-auth-dialog" project="openSUSE:Factory">
+  <title>Kerberos 5 ticket monitoring tray applet</title>
+  <description>krb5-auth-dialog is a tray applet that monitors and refreshes your
+Kerberos ticket. It pops up reminders when the ticket is about to
+expire.
+
+It features ticket autorenewal and supports pkinit.</description>
+  <devel project="GNOME:Apps" package="krb5-auth-dialog"/>
+</package>

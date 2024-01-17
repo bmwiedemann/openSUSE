@@ -1,0 +1,5 @@
+<package name="python-pytest-server-fixtures" project="openSUSE:Factory">
+  <title>python-pytest-server-fixtures</title>
+  <description>Extensible server fixures for py.test</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-server-fixtures"/>
+</package>

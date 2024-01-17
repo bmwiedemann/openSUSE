@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Sat Jan 20 06:47:51 UTC 2018 - coolo@suse.com
+
+- updated to 0.008001
+   see /usr/share/doc/packages/perl-Log-Contextual/Changes
+
+  0.008001  2018-01-19 09:14:55-08:00 America/Los_Angeles
+   - Ensure new slog functions are exportable (Thanks Dan Book!)
+
+-------------------------------------------------------------------
+Sat Nov 25 06:34:05 UTC 2017 - coolo@suse.com
+
+- updated to 0.008000
+   see /usr/share/doc/packages/perl-Log-Contextual/Changes
+
+  0.008000  2017-11-24 08:40:15-08:00 America/Los_Angeles
+   - Add slog for logging strings without a code block
+     (Thanks Christian Walde!)
+   - Fix exporting into classes that subclass from users of Log::Contextual.
+     (Thanks Graham Knop!)
+
+-------------------------------------------------------------------
+Thu May 25 06:29:35 UTC 2017 - coolo@suse.com
+
+- updated to 0.0070001
+
+  - Stop testing exact bytes produced by Data::Dumper::Concise
+    (Thanks for reporting Errietta Kostal)
+    (Fixes GH#11)
+  - Add some documentation about exceptions
+    (Thanks Kent Fredric!)
+  
+-------------------------------------------------------------------
+Tue Apr 12 13:45:29 UTC 2016 - coolo@suse.com
+
+- updated to 0.007000
+   see /usr/share/doc/packages/perl-Log-Contextual/Changes
+
+  0.007000  2016-04-11 21:35:41-07:00 America/Los_Angeles
+   - Add `has_logger` predicate to avoid setting logger twice
+     (Thanks Wes Malone!  Thwes!)
+
+-------------------------------------------------------------------
+Tue Apr 14 17:43:45 UTC 2015 - coolo@suse.com
+
+- updated to 0.006005
+   see /usr/share/doc/packages/perl-Log-Contextual/Changes
+
+  0.006005  2015-03-14 12:54:46-05:00 America/Chicago
+   - Fix performance (and arguably duplicate side effects!) in multilogger setups
+     (Good catch and fix Christian Walde!)
+   - Fix warning introduced in 5.21.x
+  
+  0.006004  2014-07-15 21:50:41-05:00 America/Chicago
+   - Various POD fixes (Karent Etheridge, Florian Schlichting)
+
+-------------------------------------------------------------------
+Mon Feb 24 08:50:02 UTC 2014 - coolo@suse.com
+
+- updated to 0.006003
+  - Stop depending on XS module Sub::Identify
+  - Fix missing POD
+  - Fix warnings caused by importing more than once
+
+-------------------------------------------------------------------
+Fri Oct  4 09:11:24 UTC 2013 - coolo@suse.com
+
+- updated to 0.006000
+  - Add Log::Contextual::Easy::Default for simple LC usage (Jakob Voß)
+  - Add Log::Contextual::Easy::Package for more different simple LC usage
+  - Fix minimum version of Exporter::Declare
+  - Dep on a newer version of Moo for multiple role composition
+
+-------------------------------------------------------------------
+Wed Jul 24 07:28:31 UTC 2013 - coolo@suse.com
+
+- updated to 0.005003
+   - Yell loudly if a user tries to use Log::Contextual::set_logger() or                                                                                                                                                                     
+     Log::Contextual::with_logger() (aka internals that don't work anymore)                                                                                                                                                                  
+     directly                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                             
+ 0.005002 2013-02-14 (♥)                                                                                                                                                                                                                     
+   - Fix RT#83267 (Tyler Riddle)                                                                                                                                                                                                             
+                                                                                                                                                                                                                                             
+ 0.005001 2013-02-07                                                                                                                                                                                                                         
+   - No changes from previous dev release                                                                                                                                                                                                    
+                                                                                                                                                                                                                                             
+ 0.005000_03 2013-01-16                                                                                                                                                                                                                      
+   - merge unpushed 0.004300 into master (frew--, Tyler Riddle++)                                                                                                                                                                            
+                                                                                                                                                                                                                                             
+ 0.005000_02 2013-01-15                                                                                                                                                                                                                      
+  - add missing changelog entry (derp)                                                                                                                                                                                                       
+                                                                                                                                                                                                                                             
+ 0.005000_01 2013-01-11                                                                                                                                                                                                                      
+   - significant changes in the way Log::Contexual works, but the upshot of it is                                                                                                                                                            
+     that Log::Contextual is now much less global than before, and applications                                                                                                                                                              
+     using Log::Contextual can guard against modules using set_logger (or                                                                                                                                                                    
+     something like that) and changing their logger.  See the new
+     Log::Contextual::Role::Router for more information
+ 
+ 0.004300 2012-10-03
+   - add a way to set default import tags
+ 
+ 0.004202 2012-08-04
+   - correct the caller_level passed into coderef, and document "both" uses of
+     caller_level
+ 
+ 0.004201 2012-07-21
+   - The smallest pod fix ever
+ 
+ 0.004200 2012-07-20
+   - Improve information passed to logger coderef
+   - Significant doc improvements
+   - Fix warning in test suite in Perl 5.16
+ 
+ 0.004100 2012-03-29
+   - Log::Contextual::WarnLogger now supports customized log levels via the
+     'levels' constructor argument (Karen Etheridge)
+
+-------------------------------------------------------------------
+Mon Jan  9 08:47:06 UTC 2012 - coolo@suse.com
+
+- update to 0.004001 
+  - Fix version of Exporter::Declare that we dep on
+  - Support Log::Contextual subclasses for default import options
+  - Allow custom log levels
+  - Fix regression that caused D* subs to dumper even if the log level was off
+
+-------------------------------------------------------------------
+Tue Apr 12 04:36:16 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.00304
+    * created by cpanspec 1.78.04
+

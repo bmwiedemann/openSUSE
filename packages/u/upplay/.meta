@@ -1,0 +1,5 @@
+<package name="upplay" project="openSUSE:Factory">
+  <title>upplay</title>
+  <description>Qt5-based UPnP AV / OpenHome audio Control Point</description>
+  <devel project="multimedia:apps" package="upplay"/>
+</package>

@@ -1,0 +1,17 @@
+<package name="qsyncthingtray" project="openSUSE:Factory">
+  <title>Qt-based Traybar Application for Syncthing</title>
+  <description>A Traybar Application for Syncthing written in Qt.
+
+Features:
+ * Show number of connections at a glance.
+ * Traffic statistics and graphs about throughput and connections.
+ * Launch Syncthing and Syncthing-Inotify if specified.
+ * Quickly pause Syncthing with one click.
+ * Last Synchronised Files - Quickly see the recently synchronised files and open their directory.
+ * Quick Access to all shared directories.
+ * Present Syncthing UI in a separate view instead of using the browser.
+ * Support authenticated HTTPS connections.
+ * Use System Notifications about current connection status.
+ * A toggle for monochrome icon.</description>
+  <devel project="network" package="qsyncthingtray"/>
+</package>

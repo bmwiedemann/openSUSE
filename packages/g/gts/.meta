@@ -1,0 +1,9 @@
+<package name="gts" project="openSUSE:Factory">
+  <title>GNU Triangulated Surface Library</title>
+  <description>
+GTS is an Open Source Free Software Library intended to provide
+a set of useful functions to deal with 3D surfaces meshed with
+interconnected triangles.
+</description>
+  <devel project="graphics" package="gts"/>
+</package>

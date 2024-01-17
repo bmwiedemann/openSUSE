@@ -1,0 +1,762 @@
+# HG changeset patch
+# User M. Sirringhaus <msirringhaus@suse.de>
+# Date 1590413430 -7200
+#      Mon May 25 15:30:30 2020 +0200
+# Node ID 2d4483f4a1259f965f32ff4c65436e92aef83be7
+# Parent  3f4d682c9a1e8b3d939c744ee249e23179db5191
+imported patch nss-fips-approved-crypto-non-ec.patch
+
+Index: nss/lib/freebl/deprecated/alg2268.c
+===================================================================
+--- nss.orig/lib/freebl/deprecated/alg2268.c
++++ nss/lib/freebl/deprecated/alg2268.c
+@@ -16,6 +16,8 @@
+ #include <stddef.h> /* for ptrdiff_t */
+ #endif
+ 
++#include "../fips.h"
++
+ /*
+ ** RC2 symmetric block cypher
+ */
+@@ -119,6 +121,7 @@ static const PRUint8 S[256] = {
+ RC2Context *
+ RC2_AllocateContext(void)
+ {
++    IN_FIPS_RETURN(NULL);
+     return PORT_ZNew(RC2Context);
+ }
+ SECStatus
+@@ -133,6 +136,8 @@ RC2_InitContext(RC2Context *cx, const un
+ #endif
+     PRUint8 tmpB;
+ 
++    IN_FIPS_RETURN(SECFailure);
++
+     if (!key || !cx || !len || len > (sizeof cx->B) ||
+         efLen8 > (sizeof cx->B)) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+@@ -204,7 +209,11 @@ RC2Context *
+ RC2_CreateContext(const unsigned char *key, unsigned int len,
+                   const unsigned char *iv, int mode, unsigned efLen8)
+ {
+-    RC2Context *cx = PORT_ZNew(RC2Context);
++    RC2Context *cx;
++
++    IN_FIPS_RETURN(NULL);
++
++    cx = PORT_ZNew(RC2Context);
+     if (cx) {
+         SECStatus rv = RC2_InitContext(cx, key, len, iv, mode, efLen8, 0);
+         if (rv != SECSuccess) {
+@@ -456,7 +465,11 @@ RC2_Encrypt(RC2Context *cx, unsigned cha
+             unsigned int *outputLen, unsigned int maxOutputLen,
+             const unsigned char *input, unsigned int inputLen)
+ {
+-    SECStatus rv = SECSuccess;
++    SECStatus rv;
++
++    IN_FIPS_RETURN(SECFailure);
++
++    rv = SECSuccess;
+     if (inputLen) {
+         if (inputLen % RC2_BLOCK_SIZE) {
+             PORT_SetError(SEC_ERROR_INPUT_LEN);
+@@ -490,7 +503,11 @@ RC2_Decrypt(RC2Context *cx, unsigned cha
+             unsigned int *outputLen, unsigned int maxOutputLen,
+             const unsigned char *input, unsigned int inputLen)
+ {
+-    SECStatus rv = SECSuccess;
++    SECStatus rv;
++
++    IN_FIPS_RETURN(SECFailure);
++
++    rv = SECSuccess;
+     if (inputLen) {
+         if (inputLen % RC2_BLOCK_SIZE) {
+             PORT_SetError(SEC_ERROR_INPUT_LEN);
+Index: nss/lib/freebl/arcfour.c
+===================================================================
+--- nss.orig/lib/freebl/arcfour.c
++++ nss/lib/freebl/arcfour.c
+@@ -13,6 +13,7 @@
+ 
+ #include "prtypes.h"
+ #include "blapi.h"
++#include "fips.h"
+ 
+ /* Architecture-dependent defines */
+ 
+@@ -162,7 +163,9 @@ RC4_InitContext(RC4Context *cx, const un
+ RC4Context *
+ RC4_CreateContext(const unsigned char *key, int len)
+ {
+-    RC4Context *cx = RC4_AllocateContext();
++    RC4Context *cx;
++
++    cx = RC4_AllocateContext();
+     if (cx) {
+         SECStatus rv = RC4_InitContext(cx, key, len, NULL, 0, 0, 0);
+         if (rv != SECSuccess) {
+Index: nss/lib/freebl/deprecated/seed.c
+===================================================================
+--- nss.orig/lib/freebl/deprecated/seed.c
++++ nss/lib/freebl/deprecated/seed.c
+@@ -17,6 +17,8 @@
+ #include "seed.h"
+ #include "secerr.h"
+ 
++#include "../fips.h"
++
+ static const seed_word SS[4][256] = {
+     { 0x2989a1a8, 0x05858184, 0x16c6d2d4, 0x13c3d3d0,
+       0x14445054, 0x1d0d111c, 0x2c8ca0ac, 0x25052124,
+@@ -301,6 +303,8 @@ SEED_set_key(const unsigned char rawkey[
+     seed_word K0, K1, K2, K3;
+     seed_word t0, t1;
+ 
++    IN_FIPS_RETURN();
++
+     char2word(rawkey, K0);
+     char2word(rawkey + 4, K1);
+     char2word(rawkey + 8, K2);
+@@ -349,6 +353,8 @@ SEED_encrypt(const unsigned char s[SEED_
+     seed_word L0, L1, R0, R1;
+     seed_word t0, t1;
+ 
++    IN_FIPS_RETURN();
++
+     char2word(s, L0);
+     char2word(s + 4, L1);
+     char2word(s + 8, R0);
+@@ -385,6 +391,8 @@ SEED_decrypt(const unsigned char s[SEED_
+     seed_word L0, L1, R0, R1;
+     seed_word t0, t1;
+ 
++    IN_FIPS_RETURN();
++
+     char2word(s, L0);
+     char2word(s + 4, L1);
+     char2word(s + 8, R0);
+@@ -419,6 +427,8 @@ SEED_ecb_encrypt(const unsigned char *in
+                  size_t inLen,
+                  const SEED_KEY_SCHEDULE *ks, int enc)
+ {
++    IN_FIPS_RETURN();
++
+     if (enc) {
+         while (inLen > 0) {
+             SEED_encrypt(in, out, ks);
+@@ -445,6 +455,8 @@ SEED_cbc_encrypt(const unsigned char *in
+     unsigned char tmp[SEED_BLOCK_SIZE];
+     const unsigned char *iv = ivec;
+ 
++    IN_FIPS_RETURN();
++
+     if (enc) {
+         while (len >= SEED_BLOCK_SIZE) {
+             for (n = 0; n < SEED_BLOCK_SIZE; ++n) {
+@@ -528,6 +540,7 @@ SEED_cbc_encrypt(const unsigned char *in
+ SEEDContext *
+ SEED_AllocateContext(void)
+ {
++    IN_FIPS_RETURN(NULL);
+     return PORT_ZNew(SEEDContext);
+ }
+ 
+@@ -536,6 +549,8 @@ SEED_InitContext(SEEDContext *cx, const
+                  unsigned int keylen, const unsigned char *iv,
+                  int mode, unsigned int encrypt, unsigned int unused)
+ {
++    IN_FIPS_RETURN(SECFailure);
++
+     if (!cx) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return SECFailure;
+@@ -567,10 +582,14 @@ SEEDContext *
+ SEED_CreateContext(const unsigned char *key, const unsigned char *iv,
+                    int mode, PRBool encrypt)
+ {
+-    SEEDContext *cx = PORT_ZNew(SEEDContext);
+-    SECStatus rv = SEED_InitContext(cx, key, SEED_KEY_LENGTH, iv, mode,
+-                                    encrypt, 0);
++    SEEDContext *cx;
++    SECStatus rv;
++
++    IN_FIPS_RETURN(NULL);
+ 
++    cx = PORT_ZNew(SEEDContext);
++    rv = SEED_InitContext(cx, key, SEED_KEY_LENGTH, iv, mode,
++                          encrypt, 0);
+     if (rv != SECSuccess) {
+         PORT_ZFree(cx, sizeof *cx);
+         cx = NULL;
+@@ -595,6 +614,8 @@ SEED_Encrypt(SEEDContext *cx, unsigned c
+              unsigned int maxOutLen, const unsigned char *in,
+              unsigned int inLen)
+ {
++    IN_FIPS_RETURN(SECFailure);
++
+     if (!cx) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return SECFailure;
+@@ -635,6 +656,8 @@ SEED_Decrypt(SEEDContext *cx, unsigned c
+              unsigned int maxOutLen, const unsigned char *in,
+              unsigned int inLen)
+ {
++    IN_FIPS_RETURN(SECFailure);
++
+     if (!cx) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return SECFailure;
+Index: nss/lib/freebl/fips.h
+===================================================================
+--- nss.orig/lib/freebl/fips.h
++++ nss/lib/freebl/fips.h
+@@ -8,9 +8,21 @@
+ #ifndef FIPS_H
+ #define FIPS_H
+ 
++#include "hasht.h"
++#include "secerr.h"
++
++#define IN_FIPS_RETURN(rv) \
++    do { \
++	if (FIPS_mode_allow_tests()) { \
++	    PORT_SetError(SEC_ERROR_INVALID_ALGORITHM); \
++	    return rv; \
++	} \
++    } while (0)
++
+ int	FIPS_mode(void);
+ int	FIPS_mode_allow_tests(void);
+ char*	FIPS_rngDev(void);
++PRBool	FIPS_hashAlgApproved(HASH_HashType hashAlg);
+ 
+ #endif
+ 
+Index: nss/lib/freebl/md2.c
+===================================================================
+--- nss.orig/lib/freebl/md2.c
++++ nss/lib/freebl/md2.c
+@@ -13,6 +13,8 @@
+ 
+ #include "blapi.h"
+ 
++#include "fips.h"
++
+ #define MD2_DIGEST_LEN 16
+ #define MD2_BUFSIZE 16
+ #define MD2_X_SIZE 48  /* The X array, [CV | INPUT | TMP VARS] */
+@@ -66,7 +68,9 @@ SECStatus
+ MD2_Hash(unsigned char *dest, const char *src)
+ {
+     unsigned int len;
+-    MD2Context *cx = MD2_NewContext();
++    MD2Context *cx;
++
++    cx = MD2_NewContext();
+     if (!cx) {
+         PORT_SetError(PR_OUT_OF_MEMORY_ERROR);
+         return SECFailure;
+@@ -81,7 +85,9 @@ MD2_Hash(unsigned char *dest, const char
+ MD2Context *
+ MD2_NewContext(void)
+ {
+-    MD2Context *cx = (MD2Context *)PORT_ZAlloc(sizeof(MD2Context));
++    MD2Context *cx;
++
++    cx = (MD2Context *)PORT_ZAlloc(sizeof(MD2Context));
+     if (cx == NULL) {
+         PORT_SetError(PR_OUT_OF_MEMORY_ERROR);
+         return NULL;
+@@ -226,6 +232,7 @@ MD2_End(MD2Context *cx, unsigned char *d
+         unsigned int *digestLen, unsigned int maxDigestLen)
+ {
+     PRUint8 padStart;
++
+     if (maxDigestLen < MD2_BUFSIZE) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return;
+Index: nss/lib/freebl/md5.c
+===================================================================
+--- nss.orig/lib/freebl/md5.c
++++ nss/lib/freebl/md5.c
+@@ -15,6 +15,8 @@
+ #include "blapi.h"
+ #include "blapii.h"
+ 
++#include "fips.h"
++
+ #define MD5_HASH_LEN 16
+ #define MD5_BUFFER_SIZE 64
+ #define MD5_END_BUFFER (MD5_BUFFER_SIZE - 8)
+@@ -215,7 +217,9 @@ MD5Context *
+ MD5_NewContext(void)
+ {
+     /* no need to ZAlloc, MD5_Begin will init the context */
+-    MD5Context *cx = (MD5Context *)PORT_Alloc(sizeof(MD5Context));
++    MD5Context *cx;
++
++    cx = (MD5Context *)PORT_Alloc(sizeof(MD5Context));
+     if (cx == NULL) {
+         PORT_SetError(PR_OUT_OF_MEMORY_ERROR);
+         return NULL;
+@@ -226,7 +230,8 @@ MD5_NewContext(void)
+ void
+ MD5_DestroyContext(MD5Context *cx, PRBool freeit)
+ {
+-    memset(cx, 0, sizeof *cx);
++    if (cx)
++        memset(cx, 0, sizeof *cx);
+     if (freeit) {
+         PORT_Free(cx);
+     }
+Index: nss/lib/freebl/nsslowhash.c
+===================================================================
+--- nss.orig/lib/freebl/nsslowhash.c
++++ nss/lib/freebl/nsslowhash.c
+@@ -13,6 +13,7 @@
+ #include "plhash.h"
+ #include "nsslowhash.h"
+ #include "blapii.h"
++#include "fips.h"
+ 
+ struct NSSLOWInitContextStr {
+     int count;
+@@ -69,6 +70,15 @@ NSSLOWHASH_NewContext(NSSLOWInitContext
+ {
+     NSSLOWHASHContext *context;
+ 
++#if 0
++    /* return with an error if unapproved hash is requested in FIPS mode */
++    /* This is now handled by the service level indicator */
++    if (!FIPS_hashAlgApproved(hashType)) {
++	PORT_SetError(SEC_ERROR_INVALID_ALGORITHM);
++	return NULL;
++    }
++#endif
++
+     if (post_failed) {
+         PORT_SetError(SEC_ERROR_PKCS11_DEVICE_ERROR);
+         return NULL;
+Index: nss/lib/freebl/rawhash.c
+===================================================================
+--- nss.orig/lib/freebl/rawhash.c
++++ nss/lib/freebl/rawhash.c
+@@ -10,6 +10,7 @@
+ #include "hasht.h"
+ #include "blapi.h" /* below the line */
+ #include "secerr.h"
++#include "fips.h"
+ 
+ static void *
+ null_hash_new_context(void)
+@@ -190,7 +191,11 @@ const SECHashObject SECRawHashObjects[]
+ const SECHashObject *
+ HASH_GetRawHashObject(HASH_HashType hashType)
+ {
+-    if (hashType <= HASH_AlgNULL || hashType >= HASH_AlgTOTAL) {
++    /* We rely on the service level indicator for algorithm approval now, so
++     * the FIPS check here has been commented out */
++
++    if (hashType <= HASH_AlgNULL || hashType >= HASH_AlgTOTAL
++        /* || (!FIPS_hashAlgApproved(hashType)) */) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return NULL;
+     }
+Index: nss/lib/softoken/pkcs11c.c
+===================================================================
+--- nss.orig/lib/softoken/pkcs11c.c
++++ nss/lib/softoken/pkcs11c.c
+@@ -4821,6 +4821,9 @@ NSC_GenerateKey(CK_SESSION_HANDLE hSessi
+         goto loser;
+     }
+ 
++    key->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_GEN_MECHANISM, key);
++    session->lastOpWasFIPS = key->isFIPS;
++
+     /*
+      * handle the base object stuff
+      */
+@@ -4835,6 +4838,7 @@ NSC_GenerateKey(CK_SESSION_HANDLE hSessi
+     if (crv == CKR_OK) {
+         *phKey = key->handle;
+     }
++
+ loser:
+     PORT_Memset(buf, 0, sizeof buf);
+     sftk_FreeObject(key);
+@@ -5751,11 +5755,11 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
+      * created and linked.
+      */
+     crv = sftk_handleObject(publicKey, session);
+-    sftk_FreeSession(session);
+     if (crv != CKR_OK) {
+         sftk_FreeObject(publicKey);
+         NSC_DestroyObject(hSession, privateKey->handle);
+         sftk_FreeObject(privateKey);
++        sftk_FreeSession(session);
+         return crv;
+     }
+     if (sftk_isTrue(privateKey, CKA_SENSITIVE)) {
+@@ -5799,13 +5803,19 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
+         sftk_FreeObject(publicKey);
+         NSC_DestroyObject(hSession, privateKey->handle);
+         sftk_FreeObject(privateKey);
++        sftk_FreeSession(session);
+         return crv;
+     }
+ 
++    publicKey->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_PAIR_GEN_MECHANISM, publicKey);
++    privateKey->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_PAIR_GEN_MECHANISM, privateKey);
++    session->lastOpWasFIPS = privateKey->isFIPS;
++
+     *phPrivateKey = privateKey->handle;
+     *phPublicKey = publicKey->handle;
+     sftk_FreeObject(publicKey);
+     sftk_FreeObject(privateKey);
++    sftk_FreeSession(session);
+ 
+     return CKR_OK;
+ }
+@@ -7510,7 +7520,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+             } else {
+                 /* now allocate the hash contexts */
+                 md5 = MD5_NewContext();
+-                if (md5 == NULL) {
++                if (md5 == NULL && !isTLS) {
+                     PORT_Memset(crsrdata, 0, sizeof crsrdata);
+                     crv = CKR_HOST_MEMORY;
+                     break;
+@@ -7899,6 +7909,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+                 PORT_Assert(i <= sizeof key_block);
+             }
+ 
++            session->lastOpWasFIPS = key->isFIPS;
+             crv = CKR_OK;
+ 
+             if (0) {
+Index: nss/lib/freebl/desblapi.c
+===================================================================
+--- nss.orig/lib/freebl/desblapi.c
++++ nss/lib/freebl/desblapi.c
+@@ -18,6 +18,8 @@
+ #include <stddef.h>
+ #include "secerr.h"
+ 
++#include "fips.h"
++
+ #if defined(NSS_X86_OR_X64)
+ /* Intel X86 CPUs do unaligned loads and stores without complaint. */
+ #define COPY8B(to, from, ptr) \
+@@ -145,12 +147,14 @@ DES_InitContext(DESContext *cx, const un
+                 unsigned int unused)
+ {
+     DESDirection opposite;
++
+     if (!cx) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return SECFailure;
+     }
+     cx->direction = encrypt ? DES_ENCRYPT : DES_DECRYPT;
+     opposite = encrypt ? DES_DECRYPT : DES_ENCRYPT;
++
+     switch (mode) {
+         case NSS_DES: /* DES ECB */
+             DES_MakeSchedule(cx->ks0, key, cx->direction);
+@@ -201,8 +205,11 @@ DES_InitContext(DESContext *cx, const un
+ DESContext *
+ DES_CreateContext(const BYTE *key, const BYTE *iv, int mode, PRBool encrypt)
+ {
+-    DESContext *cx = PORT_ZNew(DESContext);
+-    SECStatus rv = DES_InitContext(cx, key, 0, iv, mode, encrypt, 0);
++    DESContext *cx;
++    SECStatus rv;
++
++    cx = PORT_ZNew(DESContext);
++    rv = DES_InitContext(cx, key, 0, iv, mode, encrypt, 0);
+ 
+     if (rv != SECSuccess) {
+         PORT_ZFree(cx, sizeof *cx);
+@@ -225,7 +232,6 @@ SECStatus
+ DES_Encrypt(DESContext *cx, BYTE *out, unsigned int *outLen,
+             unsigned int maxOutLen, const BYTE *in, unsigned int inLen)
+ {
+-
+     if ((inLen % 8) != 0 || maxOutLen < inLen || !cx ||
+         cx->direction != DES_ENCRYPT) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+@@ -242,7 +248,6 @@ SECStatus
+ DES_Decrypt(DESContext *cx, BYTE *out, unsigned int *outLen,
+             unsigned int maxOutLen, const BYTE *in, unsigned int inLen)
+ {
+-
+     if ((inLen % 8) != 0 || maxOutLen < inLen || !cx ||
+         cx->direction != DES_DECRYPT) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+Index: nss/lib/softoken/fips_algorithms.h
+===================================================================
+--- nss.orig/lib/softoken/fips_algorithms.h
++++ nss/lib/softoken/fips_algorithms.h
+@@ -58,18 +58,35 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
+ #define RSA_FB_STEP 1
+ #define RSA_LEGACY_FB_KEY 1024, 1792 /* min, max */
+ #define RSA_LEGACY_FB_STEP 256
+-#define DSA_FB_KEY 2048, 4096 /* min, max */
++#define DSA_FB_KEY 2048, 3072 /* min, max */
+ #define DSA_FB_STEP 1024
+-#define DH_FB_KEY 2048, 4096 /* min, max */
++#define DH_FB_KEY 2048, 8192 /* min, max */
+ #define DH_FB_STEP 1024
+ #define EC_FB_KEY 256, 521 /* min, max */
+ #define EC_FB_STEP 1       /* key limits handled by special operation */
+-#define AES_FB_KEY 128, 256
++#define AES_FB_KEY 128, 512
+ #define AES_FB_STEP 64
+     { CKM_RSA_PKCS_KEY_PAIR_GEN, { RSA_FB_KEY, CKF_KPG }, RSA_FB_STEP, SFTKFIPSNone },
++#if 0
+     { CKM_RSA_PKCS_PSS, { RSA_FB_KEY, CKF_SGN }, RSA_FB_STEP, SFTKFIPSRSAPSS },
++    /* Non-approved */
+     { CKM_RSA_PKCS_OAEP, { RSA_FB_KEY, CKF_ENC }, RSA_FB_STEP, SFTKFIPSNone },
+     { CKM_RSA_PKCS_PSS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSRSAPSS },
++#endif
++
++    { CKM_SHA_1_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA224_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA256_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA384_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA512_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA512_224_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA512_256_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
++
++    { CKM_SHA3_224_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA3_256_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA3_384_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA3_512_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
++    
+     /* -------------- RSA Multipart Signing Operations -------------------- */
+     { CKM_SHA224_RSA_PKCS, { RSA_FB_KEY, CKF_SGN }, RSA_FB_STEP, SFTKFIPSNone },
+     { CKM_SHA256_RSA_PKCS, { RSA_FB_KEY, CKF_SGN }, RSA_FB_STEP, SFTKFIPSNone },
+@@ -88,13 +105,12 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
+     { CKM_SHA384_RSA_PKCS_PSS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSRSAPSS },
+     { CKM_SHA512_RSA_PKCS_PSS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSRSAPSS },
+     /* ------------------------- DSA Operations --------------------------- */
+-    { CKM_DSA_KEY_PAIR_GEN, { DSA_FB_KEY, CKF_KPG }, DSA_FB_STEP, SFTKFIPSNone },
+-    { CKM_DSA, { DSA_FB_KEY, CKF_SGN }, DSA_FB_STEP, SFTKFIPSNone },
+-    { CKM_DSA_PARAMETER_GEN, { DSA_FB_KEY, CKF_KPG }, DSA_FB_STEP, SFTKFIPSNone },
+-    { CKM_DSA_SHA224, { DSA_FB_KEY, CKF_SGN }, DSA_FB_STEP, SFTKFIPSNone },
+-    { CKM_DSA_SHA256, { DSA_FB_KEY, CKF_SGN }, DSA_FB_STEP, SFTKFIPSNone },
+-    { CKM_DSA_SHA384, { DSA_FB_KEY, CKF_SGN }, DSA_FB_STEP, SFTKFIPSNone },
+-    { CKM_DSA_SHA512, { DSA_FB_KEY, CKF_SGN }, DSA_FB_STEP, SFTKFIPSNone },
++
++    { CKM_DSA_SHA224, { DSA_FB_KEY, CKF_VERIFY }, DSA_FB_STEP, SFTKFIPSNone },
++    { CKM_DSA_SHA256, { DSA_FB_KEY, CKF_VERIFY }, DSA_FB_STEP, SFTKFIPSNone },
++    { CKM_DSA_SHA384, { DSA_FB_KEY, CKF_VERIFY }, DSA_FB_STEP, SFTKFIPSNone },
++    { CKM_DSA_SHA512, { DSA_FB_KEY, CKF_VERIFY }, DSA_FB_STEP, SFTKFIPSNone },
++
+     /* -------------------- Diffie Hellman Operations --------------------- */
+     /* no diffie hellman yet */
+     { CKM_DH_PKCS_KEY_PAIR_GEN, { DH_FB_KEY, CKF_KPG }, DH_FB_STEP, SFTKFIPSDH },
+@@ -102,7 +118,10 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
+     /* -------------------- Elliptic Curve Operations --------------------- */
+     { CKM_EC_KEY_PAIR_GEN, { EC_FB_KEY, CKF_KPG }, EC_FB_STEP, SFTKFIPSECC },
+     { CKM_ECDH1_DERIVE, { EC_FB_KEY, CKF_KEA }, EC_FB_STEP, SFTKFIPSECC },
++#if 0
++    /* Doesn't consider hash algo. Non-approved */
+     { CKM_ECDSA, { EC_FB_KEY, CKF_SGN }, EC_FB_STEP, SFTKFIPSECC },
++#endif
+     { CKM_ECDSA_SHA224, { EC_FB_KEY, CKF_SGN }, EC_FB_STEP, SFTKFIPSECC },
+     { CKM_ECDSA_SHA256, { EC_FB_KEY, CKF_SGN }, EC_FB_STEP, SFTKFIPSECC },
+     { CKM_ECDSA_SHA384, { EC_FB_KEY, CKF_SGN }, EC_FB_STEP, SFTKFIPSECC },
+@@ -112,8 +131,11 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
+     { CKM_AES_KEY_GEN, { AES_FB_KEY, CKF_GEN }, AES_FB_STEP, SFTKFIPSNone },
+     { CKM_AES_ECB, { AES_FB_KEY, CKF_ENC }, AES_FB_STEP, SFTKFIPSNone },
+     { CKM_AES_CBC, { AES_FB_KEY, CKF_ENC }, AES_FB_STEP, SFTKFIPSNone },
++#if 0
++    /* Non-approved */
+     { CKM_AES_MAC, { AES_FB_KEY, CKF_SGN }, AES_FB_STEP, SFTKFIPSNone },
+     { CKM_AES_MAC_GENERAL, { AES_FB_KEY, CKF_SGN }, AES_FB_STEP, SFTKFIPSNone },
++#endif
+     { CKM_AES_CMAC, { AES_FB_KEY, CKF_SGN }, AES_FB_STEP, SFTKFIPSNone },
+     { CKM_AES_CMAC_GENERAL, { AES_FB_KEY, CKF_SGN }, AES_FB_STEP, SFTKFIPSNone },
+     { CKM_AES_CBC_PAD, { AES_FB_KEY, CKF_ENC }, AES_FB_STEP, SFTKFIPSNone },
+@@ -123,8 +145,11 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
+     { CKM_AES_KEY_WRAP, { AES_FB_KEY, CKF_ENC }, AES_FB_STEP, SFTKFIPSNone },
+     { CKM_AES_KEY_WRAP_PAD, { AES_FB_KEY, CKF_ENC }, AES_FB_STEP, SFTKFIPSNone },
+     { CKM_AES_KEY_WRAP_KWP, { AES_FB_KEY, CKF_ENC }, AES_FB_STEP, SFTKFIPSNone },
++#if 0
++    /* Not approved in FIPS mode */
+     { CKM_AES_XCBC_MAC_96, { 96, 96, CKF_SGN }, 1, SFTKFIPSNone },
+     { CKM_AES_XCBC_MAC, { 128, 128, CKF_SGN }, 1, SFTKFIPSNone },
++#endif
+     /* ------------------------- Hashing Operations ----------------------- */
+     { CKM_SHA224, { 0, 0, CKF_HSH }, 1, SFTKFIPSNone },
+     { CKM_SHA224_HMAC, { 112, 224, CKF_SGN }, 1, SFTKFIPSNone },
+@@ -139,41 +164,56 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
+     { CKM_SHA512_HMAC, { 256, 512, CKF_SGN }, 1, SFTKFIPSNone },
+     { CKM_SHA512_HMAC_GENERAL, { 256, 512, CKF_SGN }, 1, SFTKFIPSNone },
+     /* --------------------- Secret Key Operations ------------------------ */
+-    { CKM_GENERIC_SECRET_KEY_GEN, { 8, 256, CKF_GEN }, 1, SFTKFIPSNone },
++    { CKM_GENERIC_SECRET_KEY_GEN, { 112, 512, CKF_GEN }, 1, SFTKFIPSNone },
+     /* ---------------------- SSL/TLS operations ------------------------- */
+     { CKM_SHA224_KEY_DERIVATION, { 112, 224, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_SHA256_KEY_DERIVATION, { 128, 256, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_SHA384_KEY_DERIVATION, { 192, 384, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_SHA512_KEY_DERIVATION, { 256, 512, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_TLS12_MASTER_KEY_DERIVE, { 384, 384, CKF_KDF }, 1, SFTKFIPSNone },
+-    { CKM_TLS12_MASTER_KEY_DERIVE_DH, { DH_FB_KEY, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_TLS12_MASTER_KEY_DERIVE_DH, { 384, 384, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_TLS12_KEY_AND_MAC_DERIVE, { 384, 384, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_TLS_PRF_GENERAL, { 8, 512, CKF_SGN }, 1, SFTKFIPSNone },
+-    { CKM_TLS_MAC, { 8, 512, CKF_SGN }, 1, SFTKFIPSNone },
++    { CKM_TLS_MAC, { 112, 512, CKF_SGN }, 1, SFTKFIPSNone },
++
++    { CKM_NSS_TLS_PRF_GENERAL_SHA256, { 8, 512, CKF_SGN }, 1, SFTKFIPSNone },
++    { CKM_TLS_MASTER_KEY_DERIVE, { 384, 384, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_NSS_TLS_MASTER_KEY_DERIVE_SHA256, { 128, 384, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_TLS_MASTER_KEY_DERIVE_DH, { 384, 384, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_NSS_TLS_MASTER_KEY_DERIVE_DH_SHA256, { 384, 384, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_TLS_KEY_AND_MAC_DERIVE, { 384, 384, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_NSS_TLS_KEY_AND_MAC_DERIVE_SHA256, { 128, 384, CKF_KDF }, 1, SFTKFIPSNone },
++
++    { CKM_SSL3_PRE_MASTER_KEY_GEN, { 128, 512, CKF_GEN }, 1, SFTKFIPSNone },
++    { CKM_TLS_PRE_MASTER_KEY_GEN, { 128, 512, CKF_GEN }, 1, SFTKFIPSNone },
++
+     /* sigh, is this algorithm really tested. ssl doesn't seem to have a
+      * way of turning the extension off */
+     { CKM_NSS_TLS_EXTENDED_MASTER_KEY_DERIVE, { 192, 1024, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_NSS_TLS_EXTENDED_MASTER_KEY_DERIVE_DH, { 192, 1024, CKF_DERIVE }, 1, SFTKFIPSNone },
+ 
+     /* ------------------------- HKDF Operations -------------------------- */
++#if 0
++    /* Only approved in the context of TLS 1.3 */
+     { CKM_HKDF_DERIVE, { 8, 255 * 64 * 8, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_HKDF_DATA, { 8, 255 * 64 * 8, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_HKDF_KEY_GEN, { 160, 224, CKF_GEN }, 1, SFTKFIPSNone },
+     { CKM_HKDF_KEY_GEN, { 256, 512, CKF_GEN }, 128, SFTKFIPSNone },
++#endif
+     /* ------------------ NIST 800-108 Key Derivations  ------------------- */
+-    { CKM_SP800_108_COUNTER_KDF, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
+-    { CKM_SP800_108_FEEDBACK_KDF, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
+-    { CKM_SP800_108_DOUBLE_PIPELINE_KDF, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
+-    { CKM_NSS_SP800_108_COUNTER_KDF_DERIVE_DATA, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
+-    { CKM_NSS_SP800_108_FEEDBACK_KDF_DERIVE_DATA, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
+-    { CKM_NSS_SP800_108_DOUBLE_PIPELINE_KDF_DERIVE_DATA, { 0, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_SP800_108_COUNTER_KDF, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_SP800_108_FEEDBACK_KDF, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_SP800_108_DOUBLE_PIPELINE_KDF, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_NSS_SP800_108_COUNTER_KDF_DERIVE_DATA, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_NSS_SP800_108_FEEDBACK_KDF_DERIVE_DATA, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_NSS_SP800_108_DOUBLE_PIPELINE_KDF_DERIVE_DATA, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSNone },
+     /* --------------------IPSEC ----------------------- */
+-    { CKM_NSS_IKE_PRF_PLUS_DERIVE, { 8, 255 * 64, CKF_KDF }, 1, SFTKFIPSNone },
+-    { CKM_NSS_IKE_PRF_DERIVE, { 8, 64, CKF_KDF }, 1, SFTKFIPSNone },
+-    { CKM_NSS_IKE1_PRF_DERIVE, { 8, 64, CKF_KDF }, 1, SFTKFIPSNone },
+-    { CKM_NSS_IKE1_APP_B_PRF_DERIVE, { 8, 255 * 64, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_NSS_IKE_PRF_PLUS_DERIVE, { 112, 255 * 64, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_NSS_IKE_PRF_DERIVE, { 112, 112, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_NSS_IKE1_PRF_DERIVE, { 112, 112, CKF_KDF }, 1, SFTKFIPSNone },
++    { CKM_NSS_IKE1_APP_B_PRF_DERIVE, { 112, 255 * 64, CKF_KDF }, 1, SFTKFIPSNone },
+     /* ------------------ PBE Key Derivations  ------------------- */
+-    { CKM_PKCS5_PBKD2, { 1, 256, CKF_GEN }, 1, SFTKFIPSNone },
++    { CKM_PKCS5_PBKD2, { 112, 256, CKF_GEN }, 1, SFTKFIPSNone },
+     { CKM_NSS_PKCS12_PBE_SHA224_HMAC_KEY_GEN, { 224, 224, CKF_GEN }, 1, SFTKFIPSNone },
+     { CKM_NSS_PKCS12_PBE_SHA256_HMAC_KEY_GEN, { 256, 256, CKF_GEN }, 1, SFTKFIPSNone },
+     { CKM_NSS_PKCS12_PBE_SHA384_HMAC_KEY_GEN, { 384, 384, CKF_GEN }, 1, SFTKFIPSNone },
+Index: nss/lib/softoken/pkcs11u.c
+===================================================================
+--- nss.orig/lib/softoken/pkcs11u.c
++++ nss/lib/softoken/pkcs11u.c
+@@ -2242,6 +2242,12 @@ sftk_AttributeToFlags(CK_ATTRIBUTE_TYPE
+         case CKA_NSS_MESSAGE | CKA_VERIFY:
+             flags = CKF_MESSAGE_VERIFY;
+             break;
++        case CKA_KEY_GEN_MECHANISM:
++            flags = CKF_GENERATE;
++            break;
++        case CKA_KEY_PAIR_GEN_MECHANISM:
++            flags = CKF_GENERATE_KEY_PAIR;
++            break;
+         default:
+             break;
+     }
+@@ -2462,18 +2468,35 @@ sftk_operationIsFIPS(SFTKSlot *slot, CK_
+     if (!sftk_isFIPS(slot->slotID)) {
+         return PR_FALSE;
+     }
+-    if (source && !source->isFIPS) {
+-        return PR_FALSE;
+-    }
+     if (mech == NULL) {
+         return PR_FALSE;
+     }
+-
+     /* now get the calculated values */
+     opFlags = sftk_AttributeToFlags(op);
+     if (opFlags == 0) {
+         return PR_FALSE;
+     }
++    if (source && !source->isFIPS
++        && !((mech->mechanism == CKM_DSA_SHA224
++              || mech->mechanism == CKM_DSA_SHA256
++              || mech->mechanism == CKM_DSA_SHA384
++              || mech->mechanism == CKM_DSA_SHA512))) {
++        return PR_FALSE;
++    }
++
++    if (mech->mechanism == CKM_PKCS5_PBKD2) {
++        CK_PKCS5_PBKD2_PARAMS *pbkd2_params = (CK_PKCS5_PBKD2_PARAMS *) mech->pParameter;
++
++        if (!pbkd2_params
++            || !pbkd2_params->ulPasswordLen
++            || *pbkd2_params->ulPasswordLen < 20
++            || pbkd2_params->saltSource != CKZ_SALT_SPECIFIED
++            || pbkd2_params->ulSaltSourceDataLen < 128 / 8
++            || pbkd2_params->iterations < 1000) {
++            return PR_FALSE;
++        }
++    }
++
+     keyLength = sftk_getKeyLength(source);
+ 
+     /* check against our algorithm array */
+Index: nss/lib/util/pkcs11t.h
+===================================================================
+--- nss.orig/lib/util/pkcs11t.h
++++ nss/lib/util/pkcs11t.h
+@@ -576,6 +576,7 @@ typedef CK_ULONG CK_JAVA_MIDP_SECURITY_D
+ 
+ /* CKA_KEY_GEN_MECHANISM is new for v2.11 */
+ #define CKA_KEY_GEN_MECHANISM 0x00000166UL
++#define CKA_KEY_PAIR_GEN_MECHANISM 0x00000167UL
+ 
+ #define CKA_MODIFIABLE 0x00000170UL
+ 
+Index: nss/lib/softoken/pkcs11.c
+===================================================================
+--- nss.orig/lib/softoken/pkcs11.c
++++ nss/lib/softoken/pkcs11.c
+@@ -557,17 +557,17 @@ static const struct mechanismList mechan
+     { CKM_TLS_MASTER_KEY_DERIVE, { 48, 48, CKF_DERIVE }, PR_FALSE },
+     { CKM_TLS12_MASTER_KEY_DERIVE, { 48, 48, CKF_DERIVE }, PR_FALSE },
+     { CKM_NSS_TLS_MASTER_KEY_DERIVE_SHA256,
+-      { 48, 48, CKF_DERIVE },
++      { 16, 48, CKF_DERIVE },
+       PR_FALSE },
+-    { CKM_TLS_MASTER_KEY_DERIVE_DH, { 8, 128, CKF_DERIVE }, PR_FALSE },
+-    { CKM_TLS12_MASTER_KEY_DERIVE_DH, { 8, 128, CKF_DERIVE }, PR_FALSE },
++    { CKM_TLS_MASTER_KEY_DERIVE_DH, { 48, 48, CKF_DERIVE }, PR_FALSE },
++    { CKM_TLS12_MASTER_KEY_DERIVE_DH, { 48, 48, CKF_DERIVE }, PR_FALSE },
+     { CKM_NSS_TLS_MASTER_KEY_DERIVE_DH_SHA256,
+-      { 8, 128, CKF_DERIVE },
++      { 48, 48, CKF_DERIVE },
+       PR_FALSE },
+     { CKM_TLS_KEY_AND_MAC_DERIVE, { 48, 48, CKF_DERIVE }, PR_FALSE },
+     { CKM_TLS12_KEY_AND_MAC_DERIVE, { 48, 48, CKF_DERIVE }, PR_FALSE },
+     { CKM_NSS_TLS_KEY_AND_MAC_DERIVE_SHA256,
+-      { 48, 48, CKF_DERIVE },
++      { 16, 48, CKF_DERIVE },
+       PR_FALSE },
+     { CKM_NSS_TLS_EXTENDED_MASTER_KEY_DERIVE,
+       { 48, 128, CKF_DERIVE },

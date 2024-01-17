@@ -1,0 +1,464 @@
+#!/bin/bash
+# live-fat-stick
+#
+# Copyright (c) 2012 CyberOrg Info
+# Copyright (c) 2014 Mindaugas Baranauskas
+
+# This program is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation; either version 2 of the License, or (at your option) any later
+# version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+#
+# Original authors:      Jigish Gohil <cyberorg@opensuse.org>
+# Contributors:          Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>
+#
+# This script creates bootable openSUSE, Fedora or Ubuntu(or clones)
+# live usb stick on fat partition
+#
+# To get POT file for localization, execute:
+# bash --dump-po-strings live-fat-stick > live-fat-stick.pot
+
+PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin
+ionice -c3 -p$$
+umount_everything () {
+	sync
+	if [[ $distroname != isohybrid ]]; then
+                umount $isomount &>/dev/null             
+                umount $stickdevpart &>/dev/null
+		rmdir $isomount &>/dev/null || echo "unable to remove $isomount, please remove manually"
+                umount $stickmount &>/dev/null
+		while $(mount | grep $stickmount &>/dev/null); do
+			umount $stickdevpart &>/dev/null
+			sleep 2
+		done
+		rmdir $stickmount &>/dev/null || echo "unable to remove $stickmount, please remove manually"
+                if [[ -f $liveusbgui ]]; then
+                        rm $liveusbgui &>/dev/null
+                fi
+                if [[ -h $iso_symlink ]]; then
+                        rm "$iso_symlink" &>/dev/null
+                fi
+	fi
+}
+clean_up () {
+	if [[ $1 == user_killed ]] ; then
+		echo "aborting and cleaning up"
+		umount_everything
+		exit 1
+	else
+		echo "cleaning up"
+		umount_everything
+		echo "Your bootable usb stick is now ready"
+		echo "have a lot of fun..."
+	fi
+}
+trap "clean_up user_killed" SIGINT SIGTERM
+need_help() {
+	cat <<EOF
+        Create multi boot USB stick/hard disk with whole iso/s on vfat/fat32 partition
+        keeping existing data untouched.
+
+        Note: File size greater than 4G is not usable on vfat/fat32 partition so the
+        live CD/DVD iso file should not exceed this limit. Use live-grub-stick on
+	grub supported non-vfat partition for image size greater than 4G such as 
+	openSUSE installation DVD.
+
+        Note2: Install 32bit/x86 iso on the stick first if creating multiboot with both
+        x86 and x86_64 arch images.
+
+        Note3: Requires: syslinux and dd_rescue/ddrescue installed on the system running this.
+
+        Run this command as root (su -, not sudo)
+                live-fat-stick isopath stickpartition
+        e.g.: 
+                live-fat-stick /home/geeko/openSUSE-Edu-li-f-e-12.2-1-i686.iso /dev/sdXY
+
+        To add various distribution iso to the stick, run the following:
+                For openSUSE    : live-fat-stick --suse /path/to/openSUSE-filename.iso /dev/sdXY
+                For openSUSE with persistence    : live-fat-stick --suse-persistent /path/to/openSUSE-filename.iso /dev/sdXY
+                For Ubuntu clones     : live-fat-stick --ubuntu /path/to/ubuntu-filename.iso /dev/sdXY
+                For Ubuntu clones with persistence      : live-fat-stick --ubuntu-persistent /path/to/ubuntu-filename.iso /dev/sdXY
+                For Mint        : live-fat-stick --mint /path/to/mint-filename.iso /dev/sdXY
+                For Fedora      : live-fat-stick --fedora /path/to/fedora-filename.iso /dev/sdXY
+                For iPXE        : live-fat-stick --ipxe /path/to/ipxe.iso /dev/sdXY
+
+                For isohybrid   : live-fat-stick --isohybrid /path/to/isohybridimage.iso /dev/sdX
+
+        isopath should be full absolute path of iso image and the device should be 
+        actual partition on the stick like /dev/sdb1, /dev/sdc1,/dev/sdc2...
+
+        The stick partition has to be vfat/fat32 format if the image is not isohybrid.
+
+        Persistent option requires minimum 500M free space on the USB device apart from the spare needed by iso image.
+        To allocate more space for cow file use cowsize variable like this example: "export cowsize=1000M" before running the script
+
+        Please note that using isohybrid option will remove all existing data on the USB device
+        and create new partitions.
+
+        Run live-fat-stick -l(or --list) to list the possible usb storage devices available.
+
+        openSUSE users can install it via 1-click from here:
+        http://software.opensuse.org/package/live-fat-stick
+
+EOF
+}
+if [[ $(id -u) != 0 ]]; then
+	echo "run this command as root"
+	need_help
+	exit 1
+fi
+while [ $# -gt 2 ]; do
+        case $1 in
+                --fedora)
+                distroname=fedora
+                ;;
+                --suse|--opensuse)
+                distroname=suse
+                ;;
+                --ubuntu|--mint)
+                distroname=ubuntu
+                ;;
+                --suse-persistent|--opensuse-persistent)
+                distroname=suse
+		PERSISTENT_IMAGE=true
+                ;;
+                --ubuntu-persistent|--mint-persistent)
+                distroname=ubuntu
+                PERSISTENT_IMAGE=true
+                ;;                
+		--isohybrid)
+		distroname=isohybrid
+		;;
+                --ipxe)
+                distroname=ipxe
+                ;;
+                *)
+                echo "invalid arg -- $1, check spelling or if the distribution is supported"
+		need_help
+                exit 1
+                ;;
+        esac
+        shift
+done
+if [ "$1" == "-h" -o "$1" == "--help" ]; then
+        need_help
+        exit
+fi
+if [ "$1" == "-l" -o "$1" == "--list" ]; then
+        echo "Here is the list of possible usb storage devices on your computer,"
+        echo "use the correct one, usually the one with a number at the end:"
+        echo "$(for i in $(find /dev/disk/by-path/ |grep usb); do readlink -f $i;done)"
+        exit
+fi
+if [[ x"$1" == x ]]; then
+	echo "Requires first argument as iso image path"
+	need_help
+	exit 1
+fi
+if [[ x"$2" == x ]]; then
+	echo "Requires second arguement as device partition path, /dev/sdb1 for example"
+	need_help
+	echo "Here is the list of possible usb storage devices on your computer, "
+	echo "use the correct one, usually the one with a number at the end: "
+	echo "$(for i in $(find /dev/disk/by-path/ |grep usb); do readlink -f $i;done)"
+	exit 1
+fi
+if [[ ! -e /usr/bin/syslinux ]]; then
+	echo "syslinux not found, please install syslinux package"
+	exit 1
+fi
+if [[ ! -e $(which qemu-img) ]]; then
+       	echo "qemu-img not found, please install qemu-tools package"
+       	exit 1
+fi
+if [[ ! -e $1 ]]; then
+	echo "File $1 does not exist"
+	exit 1
+fi
+if [[ ! -e $2 ]]; then
+        echo "Device $2 does not exist"
+        exit 1
+fi
+
+#variables
+distroname=${distroname:-suse}
+isomount=$(mktemp -d)
+isopath=$(readlink -f "$1")
+isosize=$(stat -c%s "$isopath")
+iso_symlink=$(mktemp) ; rm $iso_symlink ; ln -s "$isopath" $iso_symlink
+stickmount=$(mktemp -d)
+stickdevice=$(echo $2 | sed 's/[0-9]*//g')
+stickbase=$(basename $2)
+isoname=$(basename "$1")
+isonametr=$(echo $isoname | tr " " _)
+isonameshort=$(echo $isoname | cut -d "-" -f 1,2,3 | tr " " _)
+#stickuuid=$(ls -l /dev/disk/by-uuid/ |grep $stickbase | cut -d " " -f 9)
+stickuuid=$(blkid -s UUID -o value $2)
+stickpart=$(basename $2 | sed 's/[a-z]*//g')
+syslinuxpath=$stickmount/boot/syslinux
+stickdevpart=$2
+liveusbgui=/tmp/liveusbgui
+benice="nice ionice -c3"
+cowsize=${cowsize:-500M}
+if [[ $distroname != isohybrid ]]; then
+	if [[ $isosize -gt 4187593113 ]]; then
+		echo "ISO size is larger than that allowed on vfat partition"
+		echo "Use live-grub-stick script on grub supported partition format"
+	        exit 1
+	fi
+fi
+if [[ $isoname != $isonametr ]]; then
+	echo "removing space/s from iso name copied to the destination disk"
+	export isoname=$isonametr
+fi
+
+if [[ ! -h /dev/disk/by-uuid/$stickuuid ]]; then
+        echo "wrong uuid detected, please file bug with output of: blkid $2"
+fi
+
+if echo $isoname | grep -qi "Li-f-e" | grep -qi "suse"; then
+	isonameshort=openSUSE-Li-f-e
+fi
+are_you_sure ()  {
+        echo  -n "$1 [$2/$3]? "
+        while true; do
+                read answer
+                case $answer in
+                        y | Y | yes | YES ) answer="y"; break;;
+                        n | N | no | NO ) exit;;
+                        *) echo "Please answer (y)es or (n)o.";;
+                esac
+        done
+}
+try_cp_with_progress () {
+	sync
+        if [ -x /usr/bin/dd_rescue ]; then
+        	$benice dd_rescue -A -b 4M -y 4M "$iso_symlink" "$2"
+	elif [ -x /usr/bin/ddrescue ]; then
+		$benice ddrescue --force -b 4M "$iso_symlink" "$2"
+	else
+		echo "dd_rescue or ddrescue not found, please install one of them, using dd for now"
+		$benice dd if="$iso_symlink" of="$2" bs=4M
+	fi
+}
+copy_kernel_initrd () {
+	mount -o loop $isopath $isomount &>/dev/null
+	echo "copying kernel and initrd from iso image to $stickdevpart"
+	if [[ $distroname == suse ]]; then
+		if [[ $PERSISTENT_IMAGE == true ]]; then
+                        echo "Creating image file for persistent data"
+			if ! qemu-img create $stickmount/boot/$isonameshort-cowfile $cowsize &>/dev/null;then
+				echo "Can't create cow file"
+			else
+				persistopts="kiwi_cowdevice=/dev/disk/by-uuid/$stickuuid kiwi_cowsystem=/boot/$isonameshort-cowfile"
+			fi
+		fi	
+		rm $stickmount/syslinux.cfg &>/dev/null
+		if [[ ! -f $stickmount/fatstick ]]; then
+			cp -r $isomount/boot $stickmount/
+			mv $stickmount/boot/*/loader $syslinuxpath
+			mv $syslinuxpath/linux $syslinuxpath/linux-$isonameshort
+			mv $syslinuxpath/initrd $syslinuxpath/initrd-$isonameshort
+		fi
+		cp $isomount/boot/*/loader/linux $syslinuxpath/linux-$isonameshort
+		cp $isomount/boot/*/loader/initrd $syslinuxpath/initrd-$isonameshort
+                if [[ -e $isomount/boot/x86_64/loader/linux ]]; then
+                        isoarch=x86_64
+                else
+                        isoarch=ix86
+                fi
+                if [[ -e $isomount/LiveOS/squashfs.img ]]; then
+			appendsection="append initrd=initrd-$isonameshort iso-scan/filename=/$isoname root=live:CDLABEL=$isolabel loader=syslinux splash=silent  $persistopts quiet showopts"
+		else
+			appendsection="append initrd=initrd-$isonameshort isofrom=/dev/disk/by-uuid/$stickuuid:/$isoname isofrom_device=/dev/disk/by-uuid/$stickuuid isofrom_system=/$isoname loader=syslinux splash=silent  $persistopts quiet showopts"
+		fi
+		isolinux_msg="display isolinux.msg"
+		ui="ui gfxboot bootlogo isolinux.msg"
+	fi
+	if [[ $distroname == ubuntu ]]; then
+                if [[ $PERSISTENT_IMAGE == true ]]; then
+			cowfolder=$isonameshort-cow
+			mkdir -p $stickmount/$cowfolder
+                        echo "Creating image file for persistent data"
+                        if ! qemu-img create $stickmount/$cowfolder/casper-rw $cowsize &>/dev/null;then
+                                echo "Can't create cow file"
+			else
+				echo "Creating filesystem for persistent data"
+				mkfs.ext4 -F -O^has_journal -L casper-rw $stickmount/$cowfolder/casper-rw
+				persistopts="persistent persistent-path=/$cowfolder/"
+                        fi
+		fi
+		mkdir -p $syslinuxpath
+		if [[ -e $isomount/casper/vmlinuz ]]; then
+			cp $isomount/casper/vmlinuz $syslinuxpath/linux-$isonameshort
+		else
+			cp $isomount/casper/vmlinuz.efi $syslinuxpath/linux-$isonameshort
+		fi
+		cp $isomount/casper/initrd.lz $syslinuxpath/initrd-$isonameshort
+		appendsection="append initrd=initrd-$isonameshort boot=casper iso-scan/filename=/$isoname  $persistopts quiet splash"
+	fi
+	if [[ $distroname == fedora ]]; then
+		mkdir -p "$syslinuxpath"
+		mkdir -p "$stickmount/$isonameshort"
+		echo "copying the content of iso image, this may take a while"
+		$benice cp -r "$isomount"/* "/$stickmount/$isonameshort/"
+		mv "$stickmount/$isonameshort"/isolinux/initrd0.img $syslinuxpath/initrd-$isonameshort
+		mv "$stickmount/$isonameshort"/isolinux/vmlinuz0 $syslinuxpath/linux-$isonameshort
+		appendsection="append initrd=initrd-$isonameshort root=UUID=$stickuuid rootfstype=vfat rd.live.dir=/$isonameshort/LiveOS/ ro rd.live.image rd.luks=0 rd.md=0 rd.dm=0 quiet rhgb"
+	fi
+	if [[ $distroname == ipxe ]]; then
+		mkdir -p $syslinuxpath
+		cp $isomount/ipxe.krn $syslinuxpath/linux-$isonameshort
+	fi
+	umount $isomount &>/dev/null
+}
+syslinux_stuff () {
+	echo "installing syslinux on $stickdevpart"
+	syslinux -i $stickdevpart
+	echo "replacing mbr of $stickdevice with syslinux mbr.bin"
+	if [[ -e /usr/share/syslinux/mbr.bin ]]; then
+		dd if=/usr/share/syslinux/mbr.bin of=$stickdevice &>/dev/null
+	elif [[ -e /usr/lib/syslinux/mbr/mbr.bin ]]; then
+                dd if=/usr/lib/syslinux/mbr/mbr.bin of=$stickdevice &>/dev/null
+	else
+		dd if=/usr/lib/syslinux/mbr.bin of=$stickdevice &>/dev/null
+	fi
+	echo "setting $stickdevice partition $stickpart active"
+	parted $stickdevice set $stickpart boot on &>/dev/null
+	copy_kernel_initrd
+}
+add_harddisk_section () {
+	if ! grep -q localboot $syslinuxpath/syslinux.cfg; then
+	        cat <<EOF >>$syslinuxpath/syslinux.cfg
+
+label harddisk
+  	localboot 0x80
+EOF
+	fi
+}
+add_menu_section_suse () {
+	if echo $isoname | grep -qi "Li-f-e"; then
+	cat <<EOF >>$syslinuxpath/syslinux.cfg
+label install
+	kernel linux-$isonameshort
+	$appendsection liveinstall
+
+label Gnome
+	kernel linux-$isonameshort
+	$appendsection gnome
+
+label memtest
+	kernel memtest
+
+EOF
+	fi
+	add_harddisk_section
+
+}
+create_syslinux_cfg() {
+        if [[ $distroname == suse ]]; then
+        	cat <<EOF >$syslinuxpath/syslinux.cfg
+implicit 1
+prompt   1
+timeout  100
+$isolinux_msg
+$ui
+default $isonameshort
+
+EOF
+	else
+	if [[ -e /usr/share/syslinux/vesamenu.c32 ]]; then
+		cp /usr/share/syslinux/vesamenu.c32 $syslinuxpath/ || echo "vesamenu.c32 cannot be copied"
+	elif [[ -e /usr/lib/syslinux/modules/bios/vesamenu.c32 ]]; then
+                cp /usr/lib/syslinux/modules/bios/* $syslinuxpath/ || echo "vesamenu.c32 cannot be copied"
+	else
+		cp -r /usr/lib/syslinux/* $syslinuxpath/ || echo "vesamenu.c32 is missing or cannot be copied"
+	fi
+                cat <<EOF >$syslinuxpath/syslinux.cfg
+default vesamenu.c32
+ONTIMEOUT $isonameshort
+ALLOWOPTIONS 0
+PROMPT 0
+IMPLICIT 1
+OPTIONS 1
+TIMEOUT 100
+
+EOF
+
+	fi
+}
+add_menu_section () {
+        cat <<EOF >>$syslinuxpath/syslinux.cfg
+
+LABEL $isonameshort
+        kernel linux-$isonameshort
+        $appendsection 
+
+EOF
+	if [[ $distroname == suse ]]; then
+		add_menu_section_suse
+	fi
+}
+
+echo "Please make sure the following information is correct:"
+echo "iso name: $isoname distro: $distroname stick device: $stickdevice"
+echo "stick uuid: /dev/disk/by-uuid/$stickuuid stick partition: $stickpart"
+if [[ ! -f $liveusbgui ]]; then
+	are_you_sure "continue ?" "y" "n"
+fi
+if [[ $distroname == isohybrid ]];then
+	try_cp_with_progress "$1" "$2"
+else
+	mkdir $isomount $stickmount &>/dev/null
+	if mount | grep $stickdevpart &>/dev/null; then
+		if ! umount $stickdevpart &>/dev/null; then
+			echo "$stickdevpart in use, please umount it before continuing"
+			exit 1
+		fi
+	fi
+	if ! mount $2 $stickmount &>/dev/null; then
+		echo "unable to mount the usb stick partition"
+		exit 1
+	fi
+	if [[ -e $stickmount/$isoname ]];then
+		isopath=$stickmount/$isoname
+		echo "using existing $isoname on the stick"
+	else
+		isopath=$iso_symlink
+		if [[ $distroname != fedora ]]; then
+			echo "copying $isoname to usb stick"
+			try_cp_with_progress "$1" "$stickmount/$isoname"
+			if [[ $isosize != $(stat -c%s "$stickmount/$isoname") ]]; then
+				echo "Source and destination image does not match"
+				exit 1
+			fi
+		fi
+	fi
+	if [[ -f $stickmount/fatstick ]]; then
+		echo "the stick is already bootable stick"
+		if ! grep -q $isonameshort $syslinuxpath/syslinux.cfg; then
+			copy_kernel_initrd
+			echo "adding new image to boot menu"
+			add_menu_section
+		fi
+	else
+		syslinux_stuff
+		echo "creating menu entries"
+		create_syslinux_cfg
+		add_menu_section
+	fi
+	touch $stickmount/fatstick
+	thisscript=$(readlink -f $0)
+	cp $thisscript $stickmount/ &>/dev/null || true
+fi
+clean_up
+

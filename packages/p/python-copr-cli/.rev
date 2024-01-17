@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>914f0bb93355c2a7659074027a30787e</srcmd5>
+    <version>1.90</version>
+    <time>1608640535</time>
+    <user>dimstar_suse</user>
+    <comment>copr tools</comment>
+    <requestid>849377</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>af4e260cac824a47c2a9456310daac17</srcmd5>
+    <version>1.100</version>
+    <time>1650657305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.100 (changes for all copr packages, not only copr-cli):
+  - Bugfixes
+  - Kerberos/GSSAPI authentication for API and copr-cli
+  - Copr-cli re-tries connections with Copr Frontend
+  - Large queue improvements
+  - More copr-cli options for editing chroots
+  - Signing packages with SHA256
+  - Remote refs in committish
+  - Removing unused tarballs
+  - More human-readable validation errors in APIv3
+  - Basic build tagging
+  - Webhook rebuilds are background jobs now
+  - Searching by attributes
+  - APIv3 /monitor route
+  - The “Rebuild all” packages feature enhanced
+  - Builder VMs priority
+  - Query built RPM results via API
+  - Pull request CoprDirs are automatically deleted after inactivity
+  - Showing two latest Copr-related articles
+  - Specify copr-cli output format
+  - IPv6 support
+  - Isolation configuration per-chroot
+  - Submit build with excluded chroots
+  - EOL chroot management
+  - Disabling modules in buildroot
+  - New mock –isolation option
+  - EOL repository management
+  - Searching by build ID
+</comment>
+    <requestid>972179</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a58d49abfce072465401e1a96f1434db</srcmd5>
+    <version>1.103</version>
+    <time>1664302457</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006372</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32a9ecac5792c1daf6be78426c406348</srcmd5>
+    <version>1.104</version>
+    <time>1670588287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.104: 
+  - move to GitHub home page
+  - add parameter for custom method repos 
+</comment>
+    <requestid>1041747</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f463bbe942b4aa5df90d7727b9cde5b7</srcmd5>
+    <version>1.105</version>
+    <time>1676036160</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.105:
+  * More understandable module hotfixes description
+  * Add options to download only built RPMs/spec files
+  * Use the --dirname parameter for copr-cli monitor
+  * Disable appstream by default</comment>
+    <requestid>1064202</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>960063cb2c98845f0450826725815161</srcmd5>
+    <version>1.105</version>
+    <time>1676149072</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove-simplejson.patch (gh#fedora-copr/copr#2539).
+</comment>
+    <requestid>1064371</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f94b52fbfc79c8b91db0c07cfd7a89b8</srcmd5>
+    <version>1.110</version>
+    <time>1694200550</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.110:
+  * No upstream changelog.
+- Fiddle with {Build,}Requires as appropiate.
+- Switch to pyproject macros.
+- Refresh patch remove-simplejson.patch</comment>
+    <requestid>1109655</requestid>
+  </revision>
+</revisionlist>

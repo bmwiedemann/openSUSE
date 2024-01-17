@@ -1,0 +1,2 @@
+# The file name does start with a \%, ignore false-positive
+addFilter("mypaint-brushes.* unexpanded-macro")

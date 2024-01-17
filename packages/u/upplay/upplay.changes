@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Sat Dec 23 14:50:04 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- added use-webengine.patch to force use of Qt5WebEngine
+- update to 1.7.2
+  * Unicast search the last used renderer at startup (depending on lib version).
+- update to 1.7.1
+  * Add preference to use libupnpp extra URL quoting which is now non-default.
+- update to 1.7.0
+  * Avoid most ways that a stuck renderer could freeze the GUI.
+  * Windows: hopefully full support for keyboard traversal and screen
+    readers.
+  * Add menu for playlist mode settings (repeat, shuffle etc.). These were
+    not accessible with a keyboard otherwise.
+  * Fix playlist drag and drop: drag to first position is now possible.
+  * Avoid phantom track appearing in the playlist when connecting to
+    stopped upmpdcli in UPnP/AV mode
+  * Misc improvements and fixes.
+- update to 1.6.5
+  * Disabled non-functional last.FM interface (last.FM changed their
+    authentication method to something which would be complicated to support)
+- update to 1.6.4    
+  * Fix potential crash when removing tracks from UPnP/AV playlist
+
+-------------------------------------------------------------------
+Sat Aug 13 10:46:11 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- add upstream signing key and validate source signature
+- update to 1.6.3
+  * Fix dir browser display in cases (search string overlapping first result entry)
+  * Avoid having to restart after changing lower lib log level
+- update to 1.6.2
+  * Fix playlist drag and drop
+- update to 1.6.1
+  * New alternative tabbed compact interface for small displays
+  * Hopefully better scaling
+
+-------------------------------------------------------------------
+Fri Apr 22 16:21:39 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.6.0
+  * New alternative tabbed compact interface for small displays
+  * Hopefully better scaling
+- update to 1.5.2
+  * Implement minimal MPRIS interface on Linux, mostly so that
+    media keys work on the Gnome desktop
+  * Small miscellaneous improvements in directory browser display
+  * Cache album covers
+  * Option to poll for volume changes, for renderers which generate no volume events
+
+-------------------------------------------------------------------
+Thu Apr 15 12:46:31 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.4.10
+  * Make the renderer selection dialog dynamic: it will react to a
+    renderer appearing on the network
+  * When the connection with a renderer is lost, try to reconnect
+    instead of asking the user what to do
+  * Improve device restart detection and renew subscriptions when needed
+  * Small fixes in colors in system dark theme
+  * Small fixes in Webengine version
+- removed dark-theme-fix.patch and browser-back-mouse-button-support.patch
+  now in upstream  
+
+-------------------------------------------------------------------
+Mon Nov 30 10:59:38 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.4.7
+  * Fix "close to tray" not working on Linux KDE
+  * Clean up exit when tray is not available
+  * Compilation warnings
+- added dark-theme-fix.patch
+- added browser-back-mouse-button-support.patch
+- remove duplicates icons with fdupes  
+
+-------------------------------------------------------------------
+Sun Nov 15 21:53:15 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to upstream version 1.4.6
