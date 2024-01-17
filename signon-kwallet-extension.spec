@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           signon-kwallet-extension
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        KWallet integration for signon framework
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf5-filesystem
+BuildRequires:  extra-cmake-modules
 BuildRequires:  signon-plugins-devel
 BuildRequires:  signond-libs-devel
 BuildRequires:  cmake(KF5Wallet)
@@ -45,11 +45,11 @@ KWallet integration for signon framework.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
 %files
 %license COPYING
