@@ -23,7 +23,7 @@ Summary:        Image Viewer for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/EyeOfGnome
-Source0:        https://download.gnome.org/sources/eog/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 BuildRequires:  libjpeg-devel
@@ -109,7 +109,7 @@ developing eog plugins.
 
 %files devel
 %doc AUTHORS ChangeLog HACKING MAINTAINERS TODO
-%doc %{_datadir}/gtk-doc/html/%{name}/
+%doc %{_datadir}/gtk-doc/
 %{_includedir}/%{name}-3.0/
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/%{name}/gir-1.0/
