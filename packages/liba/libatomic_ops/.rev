@@ -153,4 +153,12 @@
     <comment>- Update to release 7.8.2</comment>
     <requestid>1133559</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>7ef93f8ca40810ffe441866c7051ff49</srcmd5>
+    <version>7.8.2</version>
+    <time>1705526099</time>
+    <user>anag+factory</user>
+    <comment>- Enable testsuite on qemu build (forwarded request 1139161 from Andreas_Schwab)</comment>
+    <requestid>1139163</requestid>
+  </revision>
 </revisionlist>

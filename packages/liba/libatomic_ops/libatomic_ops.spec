@@ -1,7 +1,7 @@
 #
 # spec file for package libatomic_ops
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,9 +64,7 @@ rm -fv "%buildroot/%_libdir"/*.la
 cp -av ChangeLog "%buildroot/%_docdir/%name/"
 
 %check
-%if !0%{?qemu_user_space_build:1}
 %make_build check
-%endif
 
 %files devel
 %_libdir/libatomic_ops*.a

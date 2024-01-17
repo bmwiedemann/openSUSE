@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 15 14:55:48 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Enable testsuite on qemu build
+
+-------------------------------------------------------------------
 Fri Dec 15 21:54:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.8.2
