@@ -17,16 +17,13 @@
 
 
 Name:           rofi-wayland
-Version:        1.7.5+wayland2+git.1690115482.ff2338c
+Version:        1.7.5+wayland2+git.1697052256.5cd1e3c
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/lbonn/rofi
 Source:         rofi-%{version}.tar.gz
-# Source:         https://github.com/lbonn/rofi/releases/download/%%{version}/rofi-%%{version}.tar.xz
-# PATCH-FEATURE-UPSTREAM Use-xdg-terminal-instead-of-the-proprietary-solution.patch mcepl@suse.com
-Patch0:         Use-xdg-terminal-instead-of-the-proprietary-solution.patch
 BuildRequires:  bison
 BuildRequires:  cairo-devel
 BuildRequires:  check-devel
