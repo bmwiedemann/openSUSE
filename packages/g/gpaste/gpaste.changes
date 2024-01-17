@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 17 07:41:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(mutter-clutter-13) BuildRequires: no longer needed
+  since version 45.
+
+-------------------------------------------------------------------
 Sun Sep 17 12:35:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45:

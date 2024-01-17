@@ -1,7 +1,7 @@
 #
 # spec file for package gpaste
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Simone Tolotti, <simone.tolotti@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -52,7 +52,6 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-13)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vapigen) >= 0.42
 BuildRequires:  pkgconfig(x11)
