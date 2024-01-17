@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Jan 17 07:41:55 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.19 matching go.mod
+
+-------------------------------------------------------------------
+Wed Jan 17 05:24:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 0.180.0 
