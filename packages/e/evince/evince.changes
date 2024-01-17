@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 16 17:35:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Mon Nov 27 15:33:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
