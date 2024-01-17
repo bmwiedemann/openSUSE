@@ -1,0 +1,5 @@
+<package name="vala-panel-appmenu" project="openSUSE:Factory">
+  <title>AppMenu plugin for xfce4-panel, mate-panel and vala-panel</title>
+  <description>This is Global Menu plugin for using with Xfce Panel, MATE Panel and Vala Panel.</description>
+  <devel project="X11:Unity" package="vala-panel-appmenu"/>
+</package>

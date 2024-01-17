@@ -1,0 +1,97 @@
+From 6cf25e17064cb213ef8c3a9c84ab787dd2852f2a Mon Sep 17 00:00:00 2001
+From: Michal Marek <mmarek@suse.cz>
+Date: Wed, 5 Mar 2014 15:02:44 +0100
+Subject: [PATCH 4/6] modprobe: Implement --allow-unsupported-modules
+
+References: fate#316971
+Patch-mainline: never
+---
+ Makefile.am                   |    4 +++-
+ libkmod/libkmod-unsupported.c |    9 +++++++++
+ libkmod/libkmod-unsupported.h |    8 ++++++++
+ tools/modprobe.c              |    8 +++++++-
+ 4 files changed, 27 insertions(+), 2 deletions(-)
+ create mode 100644 libkmod/libkmod-unsupported.c
+ create mode 100644 libkmod/libkmod-unsupported.h
+
+diff -u kmod-28.orig/Makefile.am kmod-28/Makefile.am
+--- kmod-28.orig/Makefile.am	2021-01-07 19:29:12.972438665 +0100
++++ kmod-28/Makefile.am	2021-01-28 12:59:16.613421834 +0100
+@@ -108,7 +108,9 @@
+ 	${libzstd_LIBS} ${liblzma_LIBS} ${zlib_LIBS} ${libcrypto_LIBS}
+ 
+ noinst_LTLIBRARIES += libkmod/libkmod-internal.la
+-libkmod_libkmod_internal_la_SOURCES = $(libkmod_libkmod_la_SOURCES)
++libkmod_libkmod_internal_la_SOURCES = $(libkmod_libkmod_la_SOURCES) \
++				      libkmod/libkmod-unsupported.c \
++				      libkmod/libkmod-unsupported.h
+ libkmod_libkmod_internal_la_LDFLAGS = $(AM_LDFLAGS) \
+ 	-Wl,--version-script=$(top_srcdir)/libkmod/libkmod.sym
+ libkmod_libkmod_internal_la_DEPENDENCIES  = $(libkmod_libkmod_la_DEPENDENCIES)
+Index: kmod-27/libkmod/libkmod-unsupported.c
+===================================================================
+--- /dev/null
++++ kmod-27/libkmod/libkmod-unsupported.c
+@@ -0,0 +1,9 @@
++#include "libkmod-internal.h"
++#include "libkmod-unsupported.h"
++
++void kmod_internal_allow_unsupported(struct kmod_ctx *ctx)
++{
++	struct kmod_config *config = (struct kmod_config *)kmod_get_config(ctx);
++
++	config->block_unsupported = 0;
++}
+Index: kmod-27/libkmod/libkmod-unsupported.h
+===================================================================
+--- /dev/null
++++ kmod-27/libkmod/libkmod-unsupported.h
+@@ -0,0 +1,8 @@
++#pragma once
++
++/*
++ * This function implements the --allow-unsupported-modules modprobe
++ * option. It is not part of the kmod API and not exported by the shared
++ * library
++ */
++void kmod_internal_allow_unsupported(struct kmod_ctx *ctx);
+Index: kmod-27/tools/modprobe.c
+===================================================================
+--- kmod-27.orig/tools/modprobe.c
++++ kmod-27/tools/modprobe.c
+@@ -38,6 +38,8 @@
+ 
+ #include "kmod.h"
+ 
++#include "libkmod/libkmod-unsupported.h"
++
+ static int log_priority = LOG_CRIT;
+ static int use_syslog = 0;
+ #define LOG(...) log_printf(log_priority, __VA_ARGS__)
+@@ -761,6 +763,7 @@ static int do_modprobe(int argc, char **
+ 	const char *dirname = NULL;
+ 	const char *root = NULL;
+ 	const char *kversion = NULL;
++	int allow_unsupported = 0;
+ 	int use_all = 0;
+ 	int do_remove = 0;
+ 	int do_show_config = 0;
+@@ -852,7 +855,7 @@ static int do_modprobe(int argc, char **
+ 			kversion = optarg;
+ 			break;
+ 		case 128:
+-			/* --allow-unsupported-modules does nothing for now */
++			allow_unsupported = 1;
+ 			break;
+ 		case 's':
+ 			env_modprobe_options_append("-s");
+@@ -925,6 +928,9 @@ static int do_modprobe(int argc, char **
+ 
+ 	log_setup_kmod_log(ctx, verbose);
+ 
++	if (allow_unsupported)
++		kmod_internal_allow_unsupported(ctx);
++
+ 	kmod_load_resources(ctx);
+ 
+ 	if (do_show_config)

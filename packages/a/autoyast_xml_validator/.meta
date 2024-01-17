@@ -1,0 +1,9 @@
+<package name="autoyast_xml_validator" project="openSUSE:Factory">
+  <title>Cross distribution and cross architecture autoyast XML syntax checker</title>
+  <description>Developing autoyast XML files for autoinstallation, this checker comes in really handy.
+It can compatibility check XML files and validate against all recent released SUSE distributions.
+Avoid time consuming fiddling and trial on error approaches.
+When you already have valid autoyast configuration files and you want to install more recent distributions, use this tool to verify that your XML syntax is still backward compatible.
+Use this validator to make your XML autoyast files more robust and stable before even starting an auto-installation.</description>
+  <devel project="systemsmanagement" package="autoyast_xml_validator"/>
+</package>

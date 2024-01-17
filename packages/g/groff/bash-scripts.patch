@@ -1,0 +1,45 @@
+From e3d8901a5e24e11e1fa8a80329309295a20eb47f Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Thu, 2 Jan 2014 13:13:09 +0000
+Subject: The *2graph scripts use $RANDOM, which is bash-specific
+
+Forwarded: https://lists.gnu.org/archive/html/groff/2014-01/msg00008.html
+Last-Update: 2018-03-05
+
+Patch-Name: bash-scripts.patch
+---
+ contrib/eqn2graph/eqn2graph.sh   | 2 +-
+ contrib/grap2graph/grap2graph.sh | 2 +-
+ contrib/pic2graph/pic2graph.sh   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/contrib/eqn2graph/eqn2graph.sh b/contrib/eqn2graph/eqn2graph.sh
+index 3e9c37486..454754b52 100644
+--- a/contrib/eqn2graph/eqn2graph.sh
++++ b/contrib/eqn2graph/eqn2graph.sh
+@@ -1,4 +1,4 @@
+-#! /bin/sh
++#! /bin/bash
+ #
+ # eqn2graph -- compile EQN equation descriptions to bitmap images
+ #
+diff --git a/contrib/grap2graph/grap2graph.sh b/contrib/grap2graph/grap2graph.sh
+index 29df25bb1..062f2eecd 100644
+--- a/contrib/grap2graph/grap2graph.sh
++++ b/contrib/grap2graph/grap2graph.sh
+@@ -1,4 +1,4 @@
+-#! /bin/sh
++#! /bin/bash
+ #
+ # grap2graph -- compile graph description descriptions to bitmap images
+ #
+diff --git a/contrib/pic2graph/pic2graph.sh b/contrib/pic2graph/pic2graph.sh
+index b22991483..cc92ce075 100644
+--- a/contrib/pic2graph/pic2graph.sh
++++ b/contrib/pic2graph/pic2graph.sh
+@@ -1,4 +1,4 @@
+-#! /bin/sh
++#! /bin/bash
+ #
+ # pic2graph -- compile PIC image descriptions to bitmap images
+ #

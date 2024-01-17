@@ -1,0 +1,8 @@
+# Go binaries are not currently understood by GNU strip
+addFilter("unstripped-binary-or-object")
+
+# Go binaries are statically linked
+addFilter("statically-linked-binary")
+
+# Go binaries are ELF objects but do not have DT_NEEDED entries
+addFilter("shared-lib-without-dependency-information")

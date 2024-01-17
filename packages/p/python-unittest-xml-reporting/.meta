@@ -1,0 +1,7 @@
+<package name="python-unittest-xml-reporting" project="openSUSE:Factory">
+  <title></title>
+  <description>unittest-xml-reporting is a unittest test runner that can save test results
+to XML files that can be consumed by a wide range of tools, such as build
+systems, IDEs and continuous integration servers.</description>
+  <devel project="devel:languages:python" package="python-unittest-xml-reporting"/>
+</package>

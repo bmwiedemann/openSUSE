@@ -1,0 +1,80 @@
+Index: b/font/devdvi/devdvi.am
+===================================================================
+--- a/font/devdvi/devdvi.am
++++ b/font/devdvi/devdvi.am
+@@ -81,9 +81,9 @@ font/devdvi/DESC: $(devdvi_srcdir)/DESC.
+ 	$(AM_V_GEN)$(MKDIR_P) `dirname $@` \
+ 	&& cat $(devdvi_srcdir)/DESC.in >$@ \
+ 	&& if test "$(PAGE)" = A4; then \
+-	     echo "papersize a4" >>$@; \
++	     echo "papersize locale a4" >>$@; \
+ 	   else \
+-	     echo "papersize letter" >>$@; \
++	     echo "papersize locale letter" >>$@; \
+ 	   fi \
+ 	&& (test -z '$(DVIPRINT)' \
+ 	    || echo print '$(DVIPRINT)' >>$@)
+Index: b/font/devlbp/devlbp.am
+===================================================================
+--- a/font/devlbp/devlbp.am
++++ b/font/devlbp/devlbp.am
+@@ -45,9 +45,9 @@ font/devlbp/DESC: $(devlbp_srcdir)/DESC.
+ 	$(AM_V_GEN)$(MKDIR_P) `dirname $@` \
+ 	&& cat $(devlbp_srcdir)/DESC.in >$@ \
+ 	&& if test "$(PAGE)" = A4; then \
+-	     echo "papersize a4" >>$@; \
++	     echo "papersize locale a4" >>$@; \
+ 	   else \
+-	     echo "papersize letter" >>$@; \
++	     echo "papersize locale letter" >>$@; \
+ 	   fi \
+ 	&& (test -z '$(LBPPRINT)' \
+ 	    || echo print '$(LBPPRINT)' >>$@)
+Index: b/font/devlj4/devlj4.am
+===================================================================
+--- a/font/devlj4/devlj4.am
++++ b/font/devlj4/devlj4.am
+@@ -90,9 +90,9 @@ font/devlj4/DESC: $(devlj4_srcdir)/DESC.
+ 	&& echo "unitwidth `expr 7620000 / $(LJ4RES)`" >>$@ \
+ 	&& cat $(devlj4_srcdir)/DESC.in >>$@ \
+ 	&& if test "$(PAGE)" = A4; then \
+-	     echo "papersize a4" >>$@; \
++	     echo "papersize locale a4" >>$@; \
+ 	   else \
+-	     echo "papersize letter" >>$@; \
++	     echo "papersize locale letter" >>$@; \
+ 	   fi \
+ 	&& (test -z '$(LJ4PRINT)' \
+ 	    || echo print '$(LJ4PRINT)' >>$@)
+Index: b/font/devpdf/devpdf.am
+===================================================================
+--- a/font/devpdf/devpdf.am
++++ b/font/devpdf/devpdf.am
+@@ -92,9 +92,9 @@ font/devpdf/DESC: $(devpdf_srcdir)/DESC.
+ 	&& cat $(devpdf_srcdir)/DESC.in \
+ 	  >$(top_builddir)/font/devpdf/DESC \
+ 	&& if test "$(PAGE)" = A4; then \
+-	     echo "papersize a4" >>$(top_builddir)/font/devpdf/DESC; \
++	     echo "papersize locale a4" >>$(top_builddir)/font/devpdf/DESC; \
+ 	   else \
+-	     echo "papersize letter" \
++	     echo "papersize locale letter" \
+ 	       >>$(top_builddir)/font/devpdf/DESC; \
+ 	   fi
+ 
+Index: b/font/devps/devps.am
+===================================================================
+--- a/font/devps/devps.am
++++ b/font/devps/devps.am
+@@ -144,9 +144,9 @@ font/devps/DESC: $(devps_srcdir)/DESC.in
+ 	&& cat $(devps_srcdir)/DESC.in >$@.tmp \
+ 	&& echo broken $(BROKEN_SPOOLER_FLAGS) >>$@.tmp \
+ 	&& if test "$(PAGE)" = A4; then \
+-	     echo "papersize a4" >>$@.tmp; \
++	     echo "papersize locale a4" >>$@.tmp; \
+ 	   else \
+-	     echo "papersize letter" >>$@.tmp; \
++	     echo "papersize locale letter" >>$@.tmp; \
+ 	   fi \
+ 	&& (test -z '$(PSPRINT)' \
+ 	    || echo print '$(PSPRINT)' >>$@.tmp)

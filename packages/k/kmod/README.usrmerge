@@ -1,0 +1,9 @@
+The Tumbleweed kmod and kernel are patched to install modules into
+/usr/lib/modules (the --with-module-directory configure argument.)
+
+This is not compatible with upstream kernel, and upstream rejected patch to
+make the kernel build system detect this. Suggested solution is to use
+
+make MODLIB='$(INSTALL_MOD_PATH)/usr/lib/modules/$(KERNELRELEASE)'
+
+when building the upstream kernel.

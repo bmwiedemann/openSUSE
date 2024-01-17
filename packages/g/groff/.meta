@@ -1,0 +1,12 @@
+<package name="groff" project="openSUSE:Factory">
+  <title>GNU troff Document Formatting System</title>
+  <description>The groff package provides compatible versions of troff, nroff, eqn,
+tbl, and other Unix text formatting utilities.
+
+Groff is used to &quot;compile&quot; man pages stored in groff or nroff format
+for different output devices, for example, displaying to a screen or in
+PostScript(tm) format for printing on a PostScript(tm) printer. Most
+programs store their man pages in either /usr/share/man/ or
+/usr/X11R6/man/.</description>
+  <devel project="M17N" package="groff"/>
+</package>

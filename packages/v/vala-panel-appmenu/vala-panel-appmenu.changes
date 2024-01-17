@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Sun Jul 30 20:46:22 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Fix systemd_user_post macro use.
+- Spec clean-up.
+
+-------------------------------------------------------------------
+Tue May  3 17:34:42 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to stable release 0.7.6
+  * Fix: Separators in dynamically updated Qt menus cause segfault
+  * Add alternative wnck backend
+  * libwnck: fix desktop
+
+-------------------------------------------------------------------
+Thu Jan 20 17:17:01 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add vala-panel-appmenu-LINGUAS.patch: Fix build by not listing
+  languages twice.
+
+-------------------------------------------------------------------
+Tue Mar  2 09:27:00 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- fix build for Tumbleweed
+
+-------------------------------------------------------------------
+Tue Sep 29 02:09:37 UTC 2020 - i@marguerite.su
+
+- Update to version 0.7.5~git20200915.1e8791e:
+  * importer: process events after layout parse. For #327
+  * importer: small fixes
+  * meson: fix budgie applet name
+  * ci: fixed release
+  * ci: use VERSION only when required
+  * ci: add VERSION
+  * all: fully switch to meson
+  * meson: make docs installation configurable
+  * meson: clarify or later
+  * Update .gitlab-ci.yml
+
+-------------------------------------------------------------------
+Mon Feb  3 16:47:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Thu Dec 19 04:52:21 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- fix tumbleweed build with pango 1.44
+
+-------------------------------------------------------------------
+Sat Oct 19 09:35:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the appmenu-qt requirement. appmenu-qt is unmaintained and
+  will be removed from Leap 15.2 and factory soon.
+
+-------------------------------------------------------------------
+Sat Oct 19 04:25:09 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- update version 0.7.3
+  * fixes blacklist and multimodule
+- changes in version 0.7.2
+  * Meson and various fixes
+
+-------------------------------------------------------------------
+Sun Apr 28 12:11:08 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Update spec file: new upstream Url
+
+-------------------------------------------------------------------
+Mon Sep 10 05:32:18 UTC 2018 - i@marguerite.su
+
+- update version 0.7.1
+  * see https://github.com/rilian-la-te/vala-panel-appmenu/releases
+- build appmenu-gtk-module along with vala-panel-appmenu.
+  appmenu-qt and appmenu-gtk-module are required for vala-panel-appmenu.
+  our KDE team has appmenu-qt built. we have no standalone appmenu-gtk-module
+  package yet, and no other package requires it indeed.
+  didn't build java support.
+- provides some package names that upstream chose in home:rilian-la-te
+
+-------------------------------------------------------------------
+Thu Apr 13 11:23:50 UTC 2017 - sor.alexei@meowr.ru
+
+- Initial package.

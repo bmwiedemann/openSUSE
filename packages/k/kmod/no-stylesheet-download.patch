@@ -1,0 +1,24 @@
+From 11979d01f72a0da574b795ad3029a52706c16f6d Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 6 Sep 2021 14:52:35 +0200
+Subject: [PATCH 9/9] Do not download the docbook stylesheet during build, use
+ local copy instead.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ man/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man/Makefile.am b/man/Makefile.am
+index f550091a216a..a8ddb8bfd0ed 100644
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -28,4 +28,4 @@ CLEANFILES = $(dist_man_MANS)
+ 		--nonet \
+ 		--stringparam man.output.quietly 1 \
+ 		--param funcsynopsis.style "'ansi'" \
+-		http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl -
++		/usr/share/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl -
+-- 
+2.42.0
+

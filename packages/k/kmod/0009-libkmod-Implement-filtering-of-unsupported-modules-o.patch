@@ -1,0 +1,105 @@
+From 4a36f4a8b16c7fd345f6aec973d926d4e429328a Mon Sep 17 00:00:00 2001
+From: Michal Marek <mmarek@suse.cz>
+Date: Wed, 5 Mar 2014 14:40:14 +0100
+Subject: [PATCH 3/6] libkmod: Implement filtering of unsupported modules (off
+ by default)
+
+References: fate#316971
+Patch-mainline: never
+---
+ libkmod/libkmod-config.c   |   12 ++++++++++--
+ libkmod/libkmod-internal.h |    1 +
+ libkmod/libkmod-module.c   |   31 +++++++++++++++++++++++++++++++
+ 3 files changed, 42 insertions(+), 2 deletions(-)
+
+Index: kmod-31/libkmod/libkmod-config.c
+===================================================================
+--- kmod-31.orig/libkmod/libkmod-config.c
++++ kmod-31/libkmod/libkmod-config.c
+@@ -708,8 +708,16 @@ static int kmod_config_parse(struct kmod
+ 			ERR(ctx, "%s: command %s is deprecated and not parsed anymore\n",
+ 								filename, cmd);
+ 		} else if (streq(cmd, "allow_unsupported_modules")) {
+-			/* dummy option for now */
+-			;
++			char *param = strtok_r(NULL, "\t ", &saveptr);
++
++			if (param == NULL)
++				goto syntax_error;
++			if (streq(param, "yes") || streq(param, "1"))
++				config->block_unsupported = 0;
++			else if (streq(param, "no") || streq(param, "0"))
++				config->block_unsupported = 1;
++			else
++				goto syntax_error;
+ 		} else {
+ syntax_error:
+ 			ERR(ctx, "%s line %u: ignoring bad line starting with '%s'\n",
+Index: kmod-31/libkmod/libkmod-internal.h
+===================================================================
+--- kmod-31.orig/libkmod/libkmod-internal.h
++++ kmod-31/libkmod/libkmod-internal.h
+@@ -130,6 +130,7 @@ struct kmod_config {
+ 	struct kmod_list *softdeps;
+ 
+ 	struct kmod_list *paths;
++	int block_unsupported;
+ };
+ 
+ int kmod_config_new(struct kmod_ctx *ctx, struct kmod_config **config, const char * const *config_paths) __attribute__((nonnull(1, 2,3)));
+Index: kmod-31/libkmod/libkmod-module.c
+===================================================================
+--- kmod-31.orig/libkmod/libkmod-module.c
++++ kmod-31/libkmod/libkmod-module.c
+@@ -781,6 +781,24 @@ KMOD_EXPORT const char *kmod_module_get_
+ 	return mod->name;
+ }
+ 
++static int check_module_supported(struct kmod_module *mod)
++{
++	char **strings;
++	int i, count;
++	struct kmod_elf *elf;
++
++	elf = kmod_file_get_elf(mod->file);
++	count = kmod_elf_get_strings(elf, ".modinfo", &strings);
++	if (count < 0)
++		return count;
++	for (i = 0; i < count; i++)
++		if (streq(strings[i], "supported=yes") ||
++		    streq(strings[i], "supported=external")) {
++			return 1;
++		}
++	return 0;
++}
++
+ /**
+  * kmod_module_get_path:
+  * @mod: kmod module
+@@ -959,6 +977,7 @@ KMOD_EXPORT int kmod_module_insert_modul
+ 	int err;
+ 	const char *path;
+ 	const char *args = options ? options : "";
++	const struct kmod_config *config = kmod_get_config(mod->ctx);
+ 
+ 	if (mod == NULL)
+ 		return -ENOENT;
+@@ -977,6 +996,18 @@ KMOD_EXPORT int kmod_module_insert_modul
+ 		}
+ 	}
+ 
++	if (config->block_unsupported) {
++		err = check_module_supported(mod);
++		if (err < 0)
++			return err;
++		else if (err == 0) {
++			ERR(mod->ctx, "module '%s' is unsupported\n", mod->name);
++			ERR(mod->ctx, "Use --allow-unsupported or set allow_unsupported_modules 1 in\n");
++			ERR(mod->ctx, "/etc/modprobe.d/10-unsupported-modules.conf\n");
++			return -EPERM;
++		}
++	}
++
+ 	err = do_finit_module(mod, flags, args);
+ 	if (err == -ENOSYS)
+ 		err = do_init_module(mod, flags, args);
