@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 11 07:38:12 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Use %_target_* for determining the compiler host triple (boo#1218701)
+
+-------------------------------------------------------------------
 Thu Nov 30 22:53:03 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 17.0.6.
