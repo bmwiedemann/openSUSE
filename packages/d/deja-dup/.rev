@@ -700,4 +700,20 @@ So preferably for 13.1 as well.</comment>
     <comment>- Drop upstream merged deja-dup-vala-fix.patch</comment>
     <requestid>1136699</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>1aed17e8f2b4bcea2a935055b255622c</srcmd5>
+    <version>45.2</version>
+    <time>1705526292</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 45.2:
+  + Fix not being prompted for packagekit installs during a
+    restore.
+  + Allow using the '~/' alias for the home dir in more text
+    entries.
+  + Add clearer error message when auto-backups can't be set in
+    flatpak mode.
+  + Fix compilation on non-glibc systems.
+  + Updated translations. (forwarded request 1139391 from dimstar)</comment>
+    <requestid>1139428</requestid>
+  </revision>
 </revisionlist>
