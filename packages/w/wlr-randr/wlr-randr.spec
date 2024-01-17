@@ -1,7 +1,7 @@
 #
 # spec file for package wlr-randr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           wlr-randr
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Utility to manage outputs of a Wayland compositor
 License:        MIT
 Group:          Productivity/Graphics/Other
 URL:            https://git.sr.ht/~emersion/wlr-randr
-Source:         https://git.sr.ht/~emersion/wlr-randr/refs/download/v0.3.0/wlr-randr-%{version}.tar.gz
+Source:         https://git.sr.ht/~emersion/wlr-randr/refs/download/v0.3.1/wlr-randr-%{version}.tar.gz
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(wayland-client)
