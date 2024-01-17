@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Thu Apr 20 12:44:44 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 4.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Fri Jun  3 08:42:12 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 3.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Wed Mar 23 08:21:51 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Wed Jan 26 10:24:57 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Mon Dec 13 10:33:09 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Wed Mar 17 13:42:13 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1
+
+-------------------------------------------------------------------
+Thu Dec 17 14:26:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
+Mon May  4 10:31:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+
+-------------------------------------------------------------------
+Fri Oct  4 12:14:20 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.2.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Drop patch to support older versions of setuptools as
+  SLE-12 is now shipping with a recent enough version
+  + ama_drop-compatible-releases-operator.patch
+
+-------------------------------------------------------------------
+Thu Apr 11 11:59:51 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Bump minimum version for namespace packages
+  to 3.0.0 in BuildRequires and Requires
+- Remove python-devel package from BuildRequires
+- Run fdupes to hardlink duplicate files
+  + Add fdupes to BuildRequires
+  + Add %fdupes invocation to %install
+
+-------------------------------------------------------------------
+Mon Mar  5 15:07:15 UTC 2018 - adrian.glaubitz@suse.com
+
+- New upstream release
+  + Version 0.1.1
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Move LICENSE.txt from %doc to %license section
+
+-------------------------------------------------------------------
+Thu Jan 25 12:22:57 UTC 2018 - adrian.glaubitz@suse.com
+
+- Initial build
+  + Version 0.1.0
+- Add patch to drop compatible releases operator from setup.py,
+  required for SLES12 as the setuptools version is too old
+  + ama_drop-compatible-releases-operator.patch

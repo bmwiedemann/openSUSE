@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a1697261beddf9981df3ea90be01d6a</srcmd5>
+    <version>4.0.0b1</version>
+    <time>1570710844</time>
+    <user>dimstar_suse</user>
+    <comment>- Resubmit with extra LICENSE.txt removed</comment>
+    <requestid>735805</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0dd67077c020ea24297b82871ba79ace</srcmd5>
+    <version>4.1.0</version>
+    <time>1601651879</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename changelog.md to CHANGELOG.md in %files section
+- Update Requires from setup.py (forwarded request 830745 from glaubitz)</comment>
+    <requestid>830862</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d497fd6b39dd1d8eda160d177d0a78f8</srcmd5>
+    <version>4.2.0</version>
+    <time>1605290312</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 848160 from glaubitz)</comment>
+    <requestid>848194</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ef2bff4ecc24b118c19e0f890549cffd</srcmd5>
+    <version>4.2.0</version>
+    <time>1607548514</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853864</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>96a7ef08a5b61f2cabc77a945daad5d4</srcmd5>
+    <version>4.3.0</version>
+    <time>1653417109</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 978895 from glaubitz)</comment>
+    <requestid>978948</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c26132592956b6f804a9289b2d006ed5</srcmd5>
+    <version>4.3.1</version>
+    <time>1677258516</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.3.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1067532 from glaubitz)</comment>
+    <requestid>1067597</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7675aa10d5c6dc80c76c6e8ab12562f1</srcmd5>
+    <version>4.4.0</version>
+    <time>1686665373</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1092516 from glaubitz)</comment>
+    <requestid>1092660</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>07dbe1a352856b2e73d6c26755e0a4cc</srcmd5>
+    <version>4.5.0</version>
+    <time>1692045364</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1103832 from glaubitz)</comment>
+    <requestid>1103873</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ada72b7bf8dd5cc3b4f3c1ec48ebbd3c</srcmd5>
+    <version>4.5.1</version>
+    <time>1694808351</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.5.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1111508 from glaubitz)</comment>
+    <requestid>1111565</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,531 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>52b48395019ffea0c7d79f5559ea465b</srcmd5>
+    <version>2.8.6</version>
+    <time>1453416110</time>
+    <user>dimstar_suse</user>
+    <comment>Note boo#953020.</comment>
+    <requestid>346502</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a29dd6803b6e0057c770db0580c3feb5</srcmd5>
+    <version>2.8.7</version>
+    <time>1458120907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>369585</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5d14fcb8e6330e0ee37cdb82d0b1483b</srcmd5>
+    <version>3.0.0</version>
+    <time>1462051764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>391524</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9a3644b8dc45556cf62ffcc7da7cab02</srcmd5>
+    <version>3.0.1</version>
+    <time>1463124263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>395022</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>049a9c9f118c3f463b7e762f75e82120</srcmd5>
+    <version>3.0.2</version>
+    <time>1464014374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>397262</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73e041ab7bd254aedbeb480c7ebdd9ac</srcmd5>
+    <version>3.0.3</version>
+    <time>1464484312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>397767</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b8951763a8ff3fe48e43e9a96ce4a0cf</srcmd5>
+    <version>3.0.5</version>
+    <time>1464853194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>399489</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0be3bf842999a2dc84aa8c10bcedef3a</srcmd5>
+    <version>3.0.6</version>
+    <time>1466814234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>404349</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d4fb7590a1fa7aef6b8cfe98ec0f9c86</srcmd5>
+    <version>3.0.6</version>
+    <time>1475242371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>430568</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>27bf87b1bb36fdbeb8827a8b85c9daaa</srcmd5>
+    <version>3.2.0</version>
+    <time>1479229236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>439963</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5f81b23ad11c35ebf4462341acb1dce7</srcmd5>
+    <version>3.2.2</version>
+    <time>1484041327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>446521</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>37e36fc3a9f5f7e155c3dc3a20c55f84</srcmd5>
+    <version>3.4.2</version>
+    <time>1495883593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>498031</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>10af3a6271417ccf3922bbd1c3c15226</srcmd5>
+    <version>3.4.3</version>
+    <time>1498120849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>505538</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2a46e7273dfb845773e4e63402fa7d89</srcmd5>
+    <version>3.4.4</version>
+    <time>1498485408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>506200</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>44fa0847281c5d266234e9614d5acced</srcmd5>
+    <version>3.4.5</version>
+    <time>1498742270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>506910</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c289679dc6e6387fd5958cbc6544a6c6</srcmd5>
+    <version>3.4.6</version>
+    <time>1500275583</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>510591</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c30d17b282d84f173d37b68e0cd919f4</srcmd5>
+    <version>3.4.7</version>
+    <time>1503393053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>518012</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c329483da81ad25d0e40cf7de31d1807</srcmd5>
+    <version>3.6.2</version>
+    <time>1510322156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538174</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>64d9d764090be56685248e511a30f43f</srcmd5>
+    <version>3.6.2</version>
+    <time>1510578211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541132</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>94bcfa20275b99ce12ef0d7382706f29</srcmd5>
+    <version>3.6.3</version>
+    <time>1511086372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542730</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a5001c3cb9e0700a692ba3de70634432</srcmd5>
+    <version>3.6.4</version>
+    <time>1511274920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544088</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>474cac50ad0ed3adf3e2817ce7e2b383</srcmd5>
+    <version>3.6.5</version>
+    <time>1514569818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559723</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bb63474dc884d921334313499faa70fb</srcmd5>
+    <version>3.8.0</version>
+    <time>1524400827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599365</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a5c0fbecd1ed133e11d226634ebf1a6f</srcmd5>
+    <version>3.8.2</version>
+    <time>1526023061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606144</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>03077e1d6c62af29769e7c67746df490</srcmd5>
+    <version>3.8.3</version>
+    <time>1529402641</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617245</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6dc77beaf7a5d669a36c8bb61003ec01</srcmd5>
+    <version>3.8.4</version>
+    <time>1531592711</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>622474</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>28a59bdfc27cea1313dbeec85e5b159a</srcmd5>
+    <version>3.8.5</version>
+    <time>1532293549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624430</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6b2de5cc395abcb47007159ddb78cb30</srcmd5>
+    <version>3.8.6</version>
+    <time>1537787498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.6.</comment>
+    <requestid>636730</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>175fe4ac5dc0a8c3a1d91d35acb6d382</srcmd5>
+    <version>4.2.0</version>
+    <time>1563455944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713816</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8460629de8268312953d96d541447283</srcmd5>
+    <version>4.2.1</version>
+    <time>1563790866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717340</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d4c92affc101fb39add7cd2e45a95334</srcmd5>
+    <version>4.2.2</version>
+    <time>1564414142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719322</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ef33898c348459584b6bd1d8a9a631fd</srcmd5>
+    <version>4.4.2</version>
+    <time>1586248070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.2 
+  * meson.build: Disable GLib deprecation warnings 
+  * file-operations: fix copying from the trash 
+  * list view: Don't remove the dummy (Loading) entry except during post-loading updates. 
+  * nemo-tree-sidebar.c: Don't free the NemoFile after setting up the context menu for showing, it is owned by the tree model. 
+  * Remove tracker 
+  * nemo-icon-canvas-item.c: Don't hyphenate long filenames 
+  * eel-editable-label.c: Don't hyphenate long filenames 
+  * nemo-program-choosing.c: Remove unused variable that was causing a warning during the build. 
+  * Use meson for pango-1.44 check
+</comment>
+    <requestid>790940</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>b62097695bd00ec32c4b3bd957a6adb7</srcmd5>
+    <version>4.4.2</version>
+    <time>1591743223</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable -fcommon which is not default with GCC10.
+</comment>
+    <requestid>813031</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>90a6583d70fa23a7db57d098e63942c7</srcmd5>
+    <version>4.6.5</version>
+    <time>1601044520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837237</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>c1b741fec87cf9d60903463a888e32de</srcmd5>
+    <version>4.6.5</version>
+    <time>1602073103</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>839892</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a5a8c1af8440f11604c8786b21f6906b</srcmd5>
+    <version>4.8.0</version>
+    <time>1607876997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.0.
+  * Misc cleanup
+  * data/nemo.desktop.in: fix icon
+  * Add option to preview files up to 64GB
+  * Drop Debian menu file
+  * Fixed small copy-paste bug.
+  * small improves to debian/copyright and debian/not-installed
+  * Removed unused variables in pathbar function (#2549)
+  * Remove uft8 colon-like char in datetime strings
+  * Add XAppFavorites support.
+  * Fix for #2513. Avoid single quote escape by checkng for QUOTE_TYPE_SINGLE and QUOTE_TYPE_DOUBLE.
+  * nemo-action.c: Fix build from previous commit typo.
+  * make sure pango development files are installed
+  * Fixes #942. Uses g_content_type_get_description for when mime type is NULL.
+  * Fixing small memory leak. Freeing volume_monitor per GIO documentation.
+  * Fixes #2499. Changes the option from -x to -- when using gnome-terminal
+  * nemo-connect-dialog: Remove Help button (#2562)
+  * nemo-mime-actions.c: Don't show mime button if the activation URI is null (#2559)
+  * l10n: Update POT
+  * l10n: Generate files
+</comment>
+    <requestid>855377</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8951d122508343381e473a22d32ba33c</srcmd5>
+    <version>4.8.2</version>
+    <time>1609532011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.2.
+  * Fix some leaks revealed by valgrind.
+  * nemo-directory-async.c: Fix an issue with the idle favorite 
+    check.
+  * nemo-places-sidebar.c: Remove favorites signal listener when 
+    the sidebar is destroyed.
+- Updates for version 4.8.1
+  * Removed unused variable
+  * nemo-window.c: Blocks operations while renaming. Fixes #1854
+  * build: Update some dependencies.
+  * change favorites icon
+  * Fixes 276. Remove type-ahead search on mouse click
+  * Remove Send by Email action
+  * Hide some menu items when running as root
+- Remove explicit-lib-dependency libcinnamon-desktop-data.
+</comment>
+    <requestid>859465</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8785972f60ecc1ad02d0d9aa78290c50</srcmd5>
+    <version>4.8.3</version>
+    <time>1610381556</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.3.
+  * file-operation: Prevent recursion to speed up emptying trash
+  * file-operations: auto-escape filenames on native ntfs mounts
+  * file-operations: auto-escape filenames on fuseblk mounts
+  * file-operations: don't auto-escape semicolon
+  * nemo-file-operations: Remove a toplevel folder from favorites 
+    during a delete operation.
+  * nemo-file.c: Check if a favorite:///file is a symbolic link 
+    before trying to look up its target uri.
+  * nemo-file.c: nemo_file_set_is_favorite - always set metadata, 
+    not just when a file is a symlink.
+  * nemo-file.c: nemo_file_is_local - Use the target file uri to 
+    decide if a file in the favorites:/// view should be considered
+    local.
+  * nemo-view.c: Hide the 'move to trash' menu items for recent and
+    favorites, and hide the 'delete' item in favorites.
+  * nemo-view.c: Fix visibility check for the trash menu item.
+  * favorites: Accept dnd to places-sidebar item to add favorites,
+    refactor existing dnd in list and icon views.
+  * nemo-file.c: Check for a broken symbolic link before trying to 
+    get a favorite's target uri.
+  * nemo-file-conflict-dialog.c: Fix hidpi scaling of the file 
+    icons.
+  * nemo-file.c: Allow the favorites folder to better respect the 
+    various thumbnailing settings.
+  * Add escaping for percent sign in action Exec
+  * build: fix typelibdir in libnemo-extension/meson.build.
+  * nemo-desktop-manager.c: Recreate the desktop when the primary 
+    monitor's scale factor changes.
+</comment>
+    <requestid>862011</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0065a8db6534d8d4539d62e2ddbffc26</srcmd5>
+    <version>4.8.4</version>
+    <time>1611262654</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>865388</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4a52af9af339cadf21060a9c3d7054dd</srcmd5>
+    <version>4.8.5</version>
+    <time>1615061928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877258</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>62821f3be8710fbf22a853e80a81e4e2</srcmd5>
+    <version>4.8.6</version>
+    <time>1619107431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887347</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>64265ce5e83fa053ea75c6f7bca1a153</srcmd5>
+    <version>5.0.1</version>
+    <time>1624387497</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>900702</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>faf710cd5af98dd4d2177851f6ee3f8d</srcmd5>
+    <version>5.0.3</version>
+    <time>1626557805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906785</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5d7ca6453294c36ada5e2cde37c52950</srcmd5>
+    <version>5.0.5</version>
+    <time>1636319348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929986</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>02c42fb1320c35f43ee328741ccbddf8</srcmd5>
+    <version>5.2.0</version>
+    <time>1637970685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933955</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c2d324f065cdba9c3b379614e64b41f3</srcmd5>
+    <version>5.2.2</version>
+    <time>1643666241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950147</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>41c8e6dad2c7c8b83fde52a07cf04e93</srcmd5>
+    <version>5.6.0</version>
+    <time>1670333011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040429</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d97727a1898501a81ab4eb0797105b1d</srcmd5>
+    <version>5.6.1</version>
+    <time>1673724710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058314</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>7ab6313f92f1224e2e72d185d2597300</srcmd5>
+    <version>5.6.2</version>
+    <time>1674324665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060064</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8efba7dab86e567c413e8f9ead6b2189</srcmd5>
+    <version>5.6.3</version>
+    <time>1674997859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061806</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c55227ac733b2f97410bf7338459c851</srcmd5>
+    <version>5.6.4</version>
+    <time>1679520649</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.4:
+  * nemo-view-dnd.c: Fix the check for a web link's title, and
+    use the url if it's missing.
+  * nemo-mime-actions.c: Prioritize an http link to open in a
+    browser, regardless of the mimetype of the link's target.
+  * Fix for List View thumbnail scaling at HiDPI
+  * list-view: Scale the thumbnail correctly when applying
+    emblems, and fix the emblem sanity checks everywhere.
+  * file info: Use generic methods for attributes that aren't
+    guaranteed to be supported by the filesystem.</comment>
+    <requestid>1073642</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0931bb9882d93c6e81373bda6b099b06</srcmd5>
+    <version>6.0.0</version>
+    <time>1701533605</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.0:
+  * nemo-window-slot.c: Update the drop zone target each time the
+    location changes, not just when the view type changes.
+  * Fix some leaks, g_object_unref safety.
+  * Use `activation_uri` as a second choice in `nemo_file_get_local_uri`
+  * nemo-desktop-link.c: Fix warning when toggling the Trash icon
+    in desktop settings.
+  * Fix some style/icon problems.
+  * search: Relax folder restrictions to allow gvfs locations.
+  * compact view: Improve text and selection highlight alignment.
+  * eel-gtk-extensions.c: (Wayland) Fix menu popup positioning,
+    popup
+  * nemo-file.c: Update hard-coded value for size of thumbnails.
+  * Update issue template with a link to open and closed issues.
+  * eel-gtk-extensions: Make wayland display check reusable.
+  * nemo-view.c: Use an admin:/// uri for the 'Open as Root'
+    action when running under Wayland.
+  * nemo-window-slot: Set up dnd against the slot itself instead
+    of updating the target data each time the location changes.
+  * Fix issue when generating video thumbnails from network
+    shares
+  * nemo-thumbnails: Use g_file_peek_path to simplify network-to-
+    local uri conversion.
+  * Emphasize checking for duplicate existing issues in the bug
+    report form.
+  * nemo-window-slot.c: Disable drop bar, until circular
+    reference can be resolved.
+  * nemo-window.c: Don't update saved window state if the window
+    is tiled when closing it.
+  * Fix trying the same filename when moving a file with</comment>
+    <requestid>1130390</requestid>
+  </revision>
+</revisionlist>

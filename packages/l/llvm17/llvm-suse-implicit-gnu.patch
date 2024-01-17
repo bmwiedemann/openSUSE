@@ -1,0 +1,14 @@
+diff --git a/llvm/include/llvm/TargetParser/Triple.h b/llvm/include/llvm/TargetParser/Triple.h
+index 59513fa..4de99ae 100644
+--- a/llvm/include/llvm/TargetParser/Triple.h
++++ b/llvm/include/llvm/TargetParser/Triple.h
+@@ -567,7 +567,8 @@ public:
+            Env == Triple::GNUABI64 || Env == Triple::GNUEABI ||
+            Env == Triple::GNUEABIHF || Env == Triple::GNUF32 ||
+            Env == Triple::GNUF64 || Env == Triple::GNUSF ||
+-           Env == Triple::GNUX32;
++           Env == Triple::GNUX32 ||
++           (Env == Triple::UnknownEnvironment && getVendor() == Triple::SUSE);
+   }
+ 
+   bool isOSContiki() const {

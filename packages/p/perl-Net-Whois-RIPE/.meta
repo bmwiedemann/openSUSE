@@ -1,0 +1,6 @@
+<package name="perl-Net-Whois-RIPE" project="openSUSE:Factory">
+  <title>A pure-Perl implementation of the RIPE Database client</title>
+  <description>It intends to provide a cleaner, simpler, and complete implementation
+of a RIPE Database client.</description>
+  <devel project="devel:languages:perl" package="perl-Net-Whois-RIPE"/>
+</package>
