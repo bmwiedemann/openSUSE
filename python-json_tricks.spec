@@ -16,9 +16,8 @@
 #
 
 
-%bcond_without python2
 Name:           python-json_tricks
-Version:        3.17.1
+Version:        3.17.3
 Release:        0
 Summary:        Extra features for Python's JSON
 License:        BSD-3-Clause
@@ -37,15 +36,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-%if %{with python2}
-BuildRequires:  python-enum34
-BuildRequires:  python-pathlib
-%endif
 # /SECTION
-%ifpython2
-Requires:       python-pathlib
-Recommends:     python-enum34
-%endif
 %python_subpackages
 
 %description

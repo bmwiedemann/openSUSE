@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:24:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.3:
+  * drop python 2 support
+  * datetime fixes
+
+-------------------------------------------------------------------
 Sat Jun 17 18:40:58 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 
 - Update to 3.17.1
