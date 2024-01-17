@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bfd4ccca1a63a1ccca2bc4aa20f6bf60</srcmd5>
+    <version>0.1.0</version>
+    <time>1579032440</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain kImageAnnotator in Factory</comment>
+    <requestid>764020</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bfbc6263fd48d1fc1527ae7d78ce2543</srcmd5>
+    <version>0.2.0</version>
+    <time>1581694854</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>774315</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cfd7144c1f247e5cdf04bf95677b7057</srcmd5>
+    <version>0.2.1</version>
+    <time>1582899686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780176</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a609411e3a6742e65b32cf346b49202c</srcmd5>
+    <version>0.2.1</version>
+    <time>1587071055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794532</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8c393ce4cff9b39d27665c14bc09ed6c</srcmd5>
+    <version>0.3.0</version>
+    <time>1592676765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815964</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d8909240a94d6a7983eb7f88e5eab7fa</srcmd5>
+    <version>0.3.1</version>
+    <time>1593292969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817373</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3916eeda9d51a1b3df731c4ed2170131</srcmd5>
+    <version>0.3.2</version>
+    <time>1596457075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824067</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d3f54d5b34b87e0f7d336c0a90ab7de1</srcmd5>
+    <version>0.3.2</version>
+    <time>1600079383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834107</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>50c0b427fbc74a7410199d2a74773d71</srcmd5>
+    <version>0.4.0</version>
+    <time>1608729682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858107</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>14608d49c395a9d25beec924b31567c6</srcmd5>
+    <version>0.4.2</version>
+    <time>1618061182</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881844</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b442e868d20963e0a641bea1c27cb193</srcmd5>
+    <version>0.5.1</version>
+    <time>1623618323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898142</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1873bc1f6739e47e445fe4cc13ed779b</srcmd5>
+    <version>0.5.2</version>
+    <time>1632685684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920288</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>db849340d495cb06888c99663405d2a7</srcmd5>
+    <version>0.5.3</version>
+    <time>1638831562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935191</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3a81f62a23e6aae2d55d981e2197ecca</srcmd5>
+    <version>0.6.0</version>
+    <time>1653583438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979187</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4426a503b734b9c3de13b6fb2d075b61</srcmd5>
+    <version>0.6.1</version>
+    <time>1679667355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073542</requestid>
+  </revision>
+</revisionlist>

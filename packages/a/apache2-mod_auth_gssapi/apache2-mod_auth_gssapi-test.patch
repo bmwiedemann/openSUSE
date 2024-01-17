@@ -1,0 +1,62 @@
+From 07daec17066ff9871c09bc83045c106266b7e578 Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Mon, 17 Jul 2023 07:38:48 +0200
+Subject: [PATCH] patch tests for openSUSE
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ tests/httpd.conf  | 2 ++
+ tests/magtests.py | 9 +++++++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/tests/httpd.conf b/tests/httpd.conf
+index 4672cde..cfa5afd 100644
+--- a/tests/httpd.conf
++++ b/tests/httpd.conf
+@@ -71,7 +71,9 @@ LoadModule userdir_module modules/mod_userdir.so
+     LoadModule version_module modules/mod_version.so
+ </IfModule>
+ LoadModule vhost_alias_module modules/mod_vhost_alias.so
++<IfModule !prefork.c>
+ LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
++</IfModule>
+ LoadModule proxy_module modules/mod_proxy.so
+ LoadModule proxy_http_module modules/mod_proxy_http.so
+ 
+diff --git a/tests/magtests.py b/tests/magtests.py
+index 7316788..e0c7c07 100755
+--- a/tests/magtests.py
++++ b/tests/magtests.py
+@@ -417,6 +417,11 @@ def setup_http(testdir, so_dir, wrapenv):
+     if not os.path.exists(moddir):
+         distro = "Debian"
+         moddir = "/usr/lib/apache2/modules"
++    if not os.path.exists(moddir):
++        distro = "SUSE"
++        moddir = "/usr/lib64/apache2"
++        if not os.path.exists(moddir):
++            moddir = "/usr/lib/apache2"
+     if not os.path.exists(moddir):
+         raise ValueError("Could not find Apache module directory!")
+     os.symlink(moddir, os.path.join(httpdir, 'modules'))
+@@ -443,7 +448,7 @@ def setup_http(testdir, so_dir, wrapenv):
+         'MALLOC_PERTURB_': str(random.randint(0, 32767) % 255 + 1),
+     })
+ 
+-    httpd = "httpd" if distro == "Fedora" else "apache2"
++    httpd = "httpd" if (distro == "Fedora") or (distro == "SUSE") else "apache2"
+     log = open(httpdstdlog, 'a')
+     httpproc = subprocess.Popen([httpd, '-DFOREGROUND', '-f', config],
+                                 stdout=log, stderr=log,
+@@ -460,7 +465,7 @@ def kinit_user(testdir, kdcenv):
+     })
+ 
+     with (open(testlog, 'a')) as logfile:
+-        kinit = subprocess.Popen(["kinit", USR_NAME],
++        kinit = subprocess.Popen(["kinit", "-V", USR_NAME],
+                                  stdin=subprocess.PIPE,
+                                  stdout=logfile, stderr=logfile,
+                                  env=testenv, preexec_fn=os.setsid)
+-- 
+2.41.0
+

@@ -1,0 +1,5 @@
+<package name="bitlbee-steam" project="openSUSE:Factory">
+  <title>Steam protocol plugin for BitlBee</title>
+  <description>Steam protocol plugin for BitlBee</description>
+  <devel project="server:irc" package="bitlbee-steam"/>
+</package>

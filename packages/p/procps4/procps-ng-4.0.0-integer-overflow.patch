@@ -1,0 +1,26 @@
+---
+ library/meminfo.c |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+--- library/meminfo.c
++++ library/meminfo.c	2022-03-29 09:50:45.076823155 +0000
+@@ -710,7 +710,9 @@ static int meminfo_read_failed (
+     mHr(derived_mem_used) = (unsigned long)mem_used;
+ 
+     if (mHr(HighFree) < mHr(HighTotal))
+-         mHr(derived_mem_hi_used) = mHr(HighTotal) - mHr(HighFree);
++        mHr(derived_mem_hi_used) = mHr(HighTotal) - mHr(HighFree);
++    else
++        mHr(derived_mem_hi_used) = 0;
+ 
+     if (0 == mHr(LowTotal)) {
+         mHr(LowTotal) = mHr(MemTotal);
+@@ -718,6 +720,8 @@ static int meminfo_read_failed (
+     }
+     if (mHr(LowFree) < mHr(LowTotal))
+         mHr(derived_mem_lo_used) = mHr(LowTotal) - mHr(LowFree);
++    else
++        mHr(derived_mem_lo_used) = 0;
+ 
+     if (mHr(SwapFree) < mHr(SwapTotal))
+         mHr(derived_swap_used) = mHr(SwapTotal) - mHr(SwapFree);

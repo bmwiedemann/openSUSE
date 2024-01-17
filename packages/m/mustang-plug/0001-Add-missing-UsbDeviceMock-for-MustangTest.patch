@@ -1,0 +1,31 @@
+From db01f0ca6dc31cc0fec965e5b056cda4fbe82ac8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 18 Jul 2022 22:52:18 +0200
+Subject: [PATCH] Add missing UsbDeviceMock for MustangTest
+
+When the test is linked with -Wl,--no-undefined, LD detects the missing
+`plug::com::usb::Device::receive(unsigned char, unsigned long)` and
+similar, required from UsbComm.
+
+(The test does not actually call any of the missing functions, but the
+linker is not able to detect this, in general. With LTO, the undefined
+but unused symbols are removed completely.)
+---
+ test/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index b61a3ef..38bbcb9 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -24,6 +24,7 @@ target_link_libraries(MustangTest PRIVATE
+                         plug-communication
+                         TestLibs
+                         LibUsbMocks
++                        UsbDeviceMock
+                         )
+ 
+ 
+-- 
+2.37.0
+

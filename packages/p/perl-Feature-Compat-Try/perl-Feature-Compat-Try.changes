@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Feb 21 03:07:31 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.05
+   see /usr/share/doc/packages/perl-Feature-Compat-Try/Changes
+
+  0.05    2022-02-20
+          [CHANGES]
+           * Support `finally {}` blocks on perl 5.35.9 or via SKT 0.27
+
+-------------------------------------------------------------------
+Wed Apr 28 14:56:23 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Add manual summary
+
+-------------------------------------------------------------------
+Wed Apr 14 14:56:07 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Initial submission

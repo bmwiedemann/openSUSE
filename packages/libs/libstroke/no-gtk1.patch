@@ -1,0 +1,56 @@
+diff -ru libstroke-0.5.1.orig/configure.in libstroke-0.5.1/configure.in
+--- libstroke-0.5.1.orig/configure.in	2001-08-07 08:08:05.000000000 +0200
++++ libstroke-0.5.1/configure.in	2005-04-18 16:44:05.000000000 +0200
+@@ -81,16 +81,7 @@
+ [  --with-mouse-footprints  Draw mouse footprints in X],
+ [AC_DEFINE(STROKE_MOUSE_FOOTPRINTS)])
+ 
+-dnl check for GTK
+-dnl we won't build libgstroke if it's not found
+-AC_MSG_CHECKING(gtk+ library)
+-AM_PATH_GTK(1.2.7, HAVE_LIBGTK=yes
+-  AC_DEFINE(HAVE_LIBGTK, 1, [Define if libgtk is available]),
+-  AC_MSG_WARN(
+-***** NOTE: The GNOME stroke support won't be built
+-)
+-  HAVE_LIBGTK=no,
+-)
++HAVE_LIBGTK=no
+ AM_CONDITIONAL(HAVE_LIBGTK,        test "x$HAVE_LIBGTK" = "xyes")
+ 
+ 
+diff -ru libstroke-0.5.1.orig/tests/Makefile.am libstroke-0.5.1/tests/Makefile.am
+--- libstroke-0.5.1.orig/tests/Makefile.am	2001-08-07 08:03:39.000000000 +0200
++++ libstroke-0.5.1/tests/Makefile.am	2005-04-18 16:57:06.000000000 +0200
+@@ -14,7 +14,7 @@
+ gnome_stroke_test_SOURCES = gnome_stroke_test.c
+ 
+ INCLUDES = -I$(top_srcdir)/libstroke -I$(top_srcdir)/libgstroke \
+-		@X_CFLAGS@ @GTK_CFLAGS@
++		@X_CFLAGS@ 
+ 
+ stroke_test_LDADD = ../libstroke/libstroke.la @X_LDFLAGS@
+ gnome_stroke_test_LDADD = ../libgstroke/libgstroke.la @GTK_LIBS@
+libstroke-0.5.1/testsだけに発見: Makefile.am.~1~
+diff -ru libstroke-0.5.1.orig/tests/Makefile.in libstroke-0.5.1/tests/Makefile.in
+--- libstroke-0.5.1.orig/tests/Makefile.in	2001-08-07 08:10:35.000000000 +0200
++++ libstroke-0.5.1/tests/Makefile.in	2005-04-18 16:54:16.000000000 +0200
+@@ -62,9 +62,6 @@
+ AS = @AS@
+ CC = @CC@
+ DLLTOOL = @DLLTOOL@
+-GTK_CFLAGS = @GTK_CFLAGS@
+-GTK_CONFIG = @GTK_CONFIG@
+-GTK_LIBS = @GTK_LIBS@
+ LD = @LD@
+ LIBTOOL = @LIBTOOL@
+ LN_S = @LN_S@
+@@ -86,7 +83,7 @@
+ stroke_test_SOURCES = stroke_test.c  #gstroke_conf.c
+ gnome_stroke_test_SOURCES = gnome_stroke_test.c
+ 
+-INCLUDES = -I$(top_srcdir)/libstroke -I$(top_srcdir)/libgstroke 		@X_CFLAGS@ @GTK_CFLAGS@
++INCLUDES = -I$(top_srcdir)/libstroke -I$(top_srcdir)/libgstroke 		@X_CFLAGS@ 
+ 
+ 
+ stroke_test_LDADD = ../libstroke/libstroke.la @X_LDFLAGS@

@@ -1,0 +1,285 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90a8640a43fc0b7e6418e25988307024</srcmd5>
+    <version>1.13.0</version>
+    <time>1475242171</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425274</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c059c44ea81acbaf54817d17babbef0d</srcmd5>
+    <version>1.13.0</version>
+    <time>1480786057</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Deal-with-CONF.config_dir-correctly.patch
+
+- switch to stable/newton tarball in _service</comment>
+    <requestid>443168</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6339403446459d9075ef9d9aa1c6cb16</srcmd5>
+    <version>1.13.1</version>
+    <time>1486773603</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.13.1:
+  * Update .gitreview for stable/newton
+  * [Backport] Ignore timeout error when receiving message</comment>
+    <requestid>447506</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac104ed5a194aa73d334aabdbcaeec8a</srcmd5>
+    <version>1.16.0</version>
+    <time>1487680994</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.16.0:
+  - Don't use deprecated method logger.warn
+  - Update reno for stable/newton
+  - modify the home-page info with the developer documentation
+  - Updated from global requirements
+  - Add Constraints support
+  - Ignore timeout error when receiving message from sockect
+  - Show team and repo badges on README
+  - Report underlying integer for unknown capabilities
+  - Imported Translations from Zanata
+  - Enable release notes translation
+  - Add Python 3.5 classifier and venv
+  - Deal with CONF.config_dir correctly
+- Remove 0001-Deal-with-CONF.config_dir-correctly.patch . Applied upstream.</comment>
+    <requestid>456732</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1e7943dd68887c41ffa390a773598a2c</srcmd5>
+    <version>1.22.0</version>
+    <time>1503927088</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.22.0
+  - Preserve all LogRecord fields from privileged side
+  - Remove log translations
+  - Update URLs in documents according to document migration
+  - Use iterable object for 'args' in log record
+  - rearrange existing documentation to follow the new standard layout
+  - add sphinx instructions to build API reference docs
+  - [Fix gate]Update test requirement
+  - Enable some off-by-default checks
+  - Remove references to Python 3.4
+  - switch from oslosphinx to openstackdocstheme
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Update reno for stable/ocata
+  - Remove pbr warnerrors in favor of sphinx check
+  - Updated from global requirements
+  - Add test to verify log record can be formatted
+  - Using assertIsNone(xxx) instead of assertEqual(None, xxx)</comment>
+    <requestid>514995</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0013d1843c3157b231e19057cdba759d</srcmd5>
+    <version>1.26.0</version>
+    <time>1516804072</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.26.0
+  - Remove -U from pip install
+  - Expose caps values/names as int enum
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Imported Translations from Zanata
+  - Avoid tox_install.sh for constraints support
+  - add bandit to pep8 job
+  - Updated from global requirements
+  - Update capabilities from current kernel source</comment>
+    <requestid>567277</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7177a1f649bbe3585a32c2fcc8d19b67</srcmd5>
+    <version>1.27.0</version>
+    <time>1521498974</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template
+
+- update to version 1.27.0 (bsc#1078607)
+  - Update .gitreview for stable/queens
+  - msgpack-python has been renamed to msgpack
+
+- update to version 1.26.0 (bsc#1078607)</comment>
+    <requestid>583345</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c83ccf7c8c7dd28cd0f2cb166224a355</srcmd5>
+    <version>1.29.0</version>
+    <time>1536327542</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633105</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4f956f03309d8cd945e575e36a3c8dd7</srcmd5>
+    <version>1.29.2</version>
+    <time>1553084302</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.29.2
+  - Update UPPER_CONSTRAINTS_FILE for stable/rocky
+  - Switch to stestr
+  - Avoids calling ffi.dlopen(None) on Windows
+  - Update .gitreview for stable/rocky
+  - import zuul job settings from project-config</comment>
+    <requestid>682297</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b9e5d1355e82156e0e2cf0887c03fdef</srcmd5>
+    <version>1.32.1</version>
+    <time>1556916154</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.32.1
+  - Remove PyPI downloads
+  - Switch to stestr
+  - Update mailinglist from dev to discuss
+  - Use template for lower-constraints
+  - import zuul job settings from project-config
+  - Add that 'Release Notes' in README
+  - Add futures as a requirement for Python 2
+  - Added example blogposts
+  - Update reno for stable/rocky
+  - Don't quote {posargs} in tox.ini
+  - add python 3.6 unit test job
+  - add lib-forward-testing-python3 test job
+  - Expose privsep options for config-generator
+  - Set unicode_errors handler to 'surrogateescape' in msgpack
+  - Trivial: Update pypi url to new url
+  - Replace assertRaisesRegexp with assertRaisesRegex
+  - Avoids calling ffi.dlopen(None) on Windows
+  - fix tox python3 overrides
+  - Update hacking version
+  - Clean up .gitignore references to personal tools
+  - Use threads to process target function
+  - add python 3.7 unit test job</comment>
+    <requestid>692862</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9685a2f31391819e5296c42838d1a26b</srcmd5>
+    <version>1.33.3</version>
+    <time>1582018893</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.33.3
+  - Pass correct arguments to six.reraise
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - OpenDev Migration Patch
+  - Convert dict keys received in _ClientChannel from byte to str
+  - Move doc related modules to doc/requirements.txt
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add more usage documentation
+  - Self-resetting PrivContext
+  - Add sample_default for thread_pool_size Opt
+  - Update master for stable/stein
+  - Add Python 3 Train unit tests
+  - Reno for SIGHUP fix</comment>
+    <requestid>774918</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a72f0dfaa1aaf26b2ba3cdf29110adbc</srcmd5>
+    <version>1.33.3</version>
+    <time>1585085568</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- added 0001-Disable-logger-validation-during-unit-testing.patch
+
+- switch to python 3.x only build</comment>
+    <requestid>787446</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4c99cffeea9e32a966be5f197d8db33e</srcmd5>
+    <version>2.1.1</version>
+    <time>1591380893</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803596</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3dee7f2b8fc4252062ffcab47de0da55</srcmd5>
+    <version>2.4.0</version>
+    <time>1603725420</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841214</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5e8a98ce68507f20b97dba2f6c248e6a</srcmd5>
+    <version>2.5.0</version>
+    <time>1620653860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889996</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2cbf2c7ef7fc0cecd273563014d05ea9</srcmd5>
+    <version>2.6.2</version>
+    <time>1639267055</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.6.2
+  - Fix requirements issues.
+  - Allow finer grained log levels
+  - Changed minversion in tox to 3.18.0
+  - Use TOX_CONSTRAINTS_FILE
+  - Add Python3 xena unit tests
+  - Add except path with exception debug to send_recv
+  - Add timeout to PrivContext and entrypoint_with_timeout decorator
+  - Use py3 as the default runtime for tox
+  - setup.cfg: Replace dashes with underscores
+  - Upgrade the pre-commit-hooks version
+  - Update master for stable/wallaby</comment>
+    <requestid>939537</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bdefe51ca646ece5156d018c40365d0b</srcmd5>
+    <version>2.8.0</version>
+    <time>1652475818</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.8.0
+  - Fix formatting of release list
+  - Add note explaining max_buffer_size value
+  - Update master for stable/yoga
+  - Remove unnecessary unicode prefixes
+  - Bump max_buffer_size for Deserializer
+  - Add Python3 yoga unit tests
+  - Add Python3 zed unit tests
+  - Remove six
+  - Update master for stable/xena</comment>
+    <requestid>977079</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>168bb5e4cbfc443ebe774f5c0934349c</srcmd5>
+    <version>2.8.0</version>
+    <time>1653503675</time>
+    <user>dimstar_suse</user>
+    <comment>- remove unneded mock dependency</comment>
+    <requestid>979076</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a5804cdd810ea2e1ecc2acec224bd8fb</srcmd5>
+    <version>3.0.1</version>
+    <time>1664797586</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.1
+  - Remove logic for Python &lt; 3.8
+  - Drop python3.6/3.7 support in testing runtime</comment>
+    <requestid>1007554</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e8058d1a38a5bd0c849463707f723e8d</srcmd5>
+    <version>3.2.0</version>
+    <time>1703800925</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.2.0
+  - Update master for stable/2023.1
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - setgid should be called before setuid
+  - Imported Translations from Zanata
+
+- update to version 3.1.0
+  - Add Python3 antelope unit tests
+  - Setup logging without fixing evenlet logging
+  - Update master for stable/zed</comment>
+    <requestid>1135325</requestid>
+  </revision>
+</revisionlist>

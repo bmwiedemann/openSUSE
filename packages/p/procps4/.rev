@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>898d5f41a0befa9e7b2e2d08891c4e73</srcmd5>
+    <version>4.0.2</version>
+    <time>1670954104</time>
+    <user>dimstar_suse</user>
+    <comment>New test with 4.0.2</comment>
+    <requestid>1042391</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a304a6c79b048e3d132468f298a7890e</srcmd5>
+    <version>4.0.2</version>
+    <time>1672851195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055781</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e1af6bbe53371df27d244d915b3ed1d7</srcmd5>
+    <version>4.0.3</version>
+    <time>1676911616</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to procps-ng-4.0.3
+  * library
+    Only changes were in copyright headers and tests
+  * docs: Don't install English manpages twice
+  * pgrep: Add -H match on userspace signal handler        merge #165
+  * pgrep: make --terminal respect other criteria
+  * ps: c flag shows command name again                    Debian #1026326
+  * ps.1: Match drs description from top.1                 merge #156
+  * skill: Match on -p again                               Debian #1025915
+  * top: E/P-core toggle ('5' key) added to help
+  * vmstat: Referesh memory statistics                     Debian #1027963
+  * vmstat: Fix initial si,so,bi,bo,in &amp; cs values         issue #15
+                                                           Debian #668580
+  * vmstat: Fix conversion errors due to precision         merge #75
+  * w: Add --pids option                                   merge #159
+  * watch: Pass through beep                               issue #104
+  * watch: -r option to not re-exec on SIGWINCH            merge #125
+  * watch: find eol with --no-linewrap                     merge #157
+- Drop patches now upstream
+  * linguas.patch
+  * 82d8e3fa.patch
+- Port patches
+  * procps-ng-3.3.10-errno.patch
+  * procps-ng-3.3.10-slab.patch
+  * procps-ng-3.3.10-xen.dif
+  * procps-ng-3.3.11-pmap4suse.patch
+  * procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-readeof.patch
+  * procps-ng-3.3.8-vmstat-terabyte.dif</comment>
+    <requestid>1066826</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b1d56c7cf998ab16e263e84675d2d97a</srcmd5>
+    <version>4.0.3</version>
+    <time>1692294282</time>
+    <user>anag+factory</user>
+    <comment>- Add patch CVE-2023-4016.patch
+  * CVE-2023-4016: ps buffer overflow (bsc#1214290)</comment>
+    <requestid>1104338</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3122c601706fa2d609a92339676ec750</srcmd5>
+    <version>4.0.3</version>
+    <time>1692379748</time>
+    <user>anag+factory</user>
+    <comment>- Modify patch procps-ng-3.3.9-w-notruncate.diff
+  to real to not truncate output of w with option -n
+
+- procps-ng-4.0.3-logind.patch: Backport from 4.x git, prefer 
+  logind over utmp (jsc#PED-3144)
+- procps-ng-3.3.9-w-notruncate.diff: Rebase</comment>
+    <requestid>1104662</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d160448480af365d8c649aeef237c9ec</srcmd5>
+    <version>4.0.4</version>
+    <time>1694545443</time>
+    <user>anag+factory</user>
+    <comment>- Update to procps-ng-4.0.4
+  * library (API &amp; ABI unchanged)
+    increment revision: 0:2:0
+    tolerates all potential 'cpuinfo' formats              issue #272
+    restore the proper main thread tics valuations         issue #280
+    Remove myself from proc count                          merge #193
+    Refactor the escape code                               Debian #1035649
+  * free: -L one line output                               issue #156
+  * pgrep: Use only --signal option for signal             Debian #1031765
+  * pgrep: suppress &gt;15 warning if using regex             Debian #1037450
+  * pidof: Add -t option to show threads                   merge #190
+  * pmap: Reset totals between processes                   issue #298
+  * ps: fixed missing or corrupted fields with -m option   Debian #1036631, issue #279
+  * ps: Fix buffer overflow in -C option CVE-2023-4016     Debian #1042887, issue #297
+  * ps: Add --signames to show signal names in masks       merge #98
+  * sysctl: -N show names                                  merge #198, RH #2222056
+  * tests: dont compare floats with ==                     issue #271
+  * tests: skips tests if maps missing                     merge #197, Gentoo #583036
+  * top: bad command line arguments yield EXIT_FAILURE     issue #273
+  * top: avoids keystroke induced '%Cpu' distortions
+  * top: includes VM (guest) tics in 'system' overhead     issue #274
+  * top: includes VM (guest) tics with '!' toggle          merge #179
+  * top: lessen summary cpu distortions on first display   merge #180
+  * top: better backspace handling wtth line edits         issue #278
+  * vmstat: Print guest time in non-wide mode
+  * w: Fix musl UT_HOSTSIZE issue
+- Remove patches now upstream
+  * CVE-2023-4016.patch
+  * procps-ng-4.0.3-logind.patch
+- Port patches</comment>
+    <requestid>1110606</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>146d610d324a73656d300849ebfd25df</srcmd5>
+    <version>4.0.4</version>
+    <time>1699994532</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream commit as patch 79042e07.patch (boo#1216719)
+- Port patch procps-ng-3.3.9-w-notruncate.diff</comment>
+    <requestid>1125582</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ce34cfaa12e06ac82ce56a843f171b1b</srcmd5>
+    <version>4.0.4</version>
+    <time>1700079025</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126623</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>9dbccfdc43fdd0d0093d42587aeb1311</srcmd5>
+    <version>4.0.4</version>
+    <time>1700772052</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1128164</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>4d6ca073b5a59b6c3e32b5aa5f97c2da</srcmd5>
+    <version>4.0.4</version>
+    <time>1702673280</time>
+    <user>anag+factory</user>
+    <comment>- Add patch procps-ng-4.0.4-ignore-sysctl_conf.patch
+  * ignore dangling symlink to missing /etc/sysctl.conf file
+    [bsc#1217990] (Backport of the patch of Thorsten Kukuk)</comment>
+    <requestid>1133115</requestid>
+  </revision>
+</revisionlist>

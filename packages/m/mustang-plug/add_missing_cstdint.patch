@@ -1,0 +1,21 @@
+From 79bdcbc2ed1209761d9a29795384b39b0dba5ca8 Mon Sep 17 00:00:00 2001
+From: offa <bm-dev@yandex.com>
+Date: Wed, 1 Feb 2023 16:50:22 +0100
+Subject: [PATCH] Add missing include (#268)
+
+---
+ include/com/Packet.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/com/Packet.h b/include/com/Packet.h
+index 6d8830f..0d0392a 100644
+--- a/include/com/Packet.h
++++ b/include/com/Packet.h
+@@ -24,6 +24,7 @@
+ #include <algorithm>
+ #include <string>
+ #include <string_view>
++#include <cstdint>
+ 
+ namespace plug::com
+ {

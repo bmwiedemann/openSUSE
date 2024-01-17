@@ -1,0 +1,206 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a1ec5aae6052cb63d7314d1ca4b5a7e8</srcmd5>
+    <version>0.1.0</version>
+    <time>1338582628</time>
+    <user>coolo</user>
+    <comment>This library is already used by libreoffice. There are plans to use it
+also in GIO. Hence, it would make sense to have it in the official openSUSE
+product.
+
+The author of the library, Cedric Bosdonnat, works in the LibreOffice team
+for SUSE. So, we need not be afraid of maintenance and licesne :-)
+
+This is second submit request with corrected license (bnc#764478)</comment>
+    <requestid>123174</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a1ec5aae6052cb63d7314d1ca4b5a7e8</srcmd5>
+    <version>0.1.0</version>
+    <time>1340183240</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4385d825b74c8bf1d5db4595a40a1d16</srcmd5>
+    <version>0.2.1</version>
+    <time>1347618115</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134062</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29a58317375725bf794c20b5baa43488</srcmd5>
+    <version>0.3.0</version>
+    <time>1349240811</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135574</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>29a58317375725bf794c20b5baa43488</srcmd5>
+    <version>0.3.0</version>
+    <time>1359108755</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>689280ffc94b7f7a963760923cca04ca</srcmd5>
+    <version>0.3.0</version>
+    <time>1359451804</time>
+    <user>coolo</user>
+    <comment>- Fix libcmis-c-devel dependency over itself. (forwarded request 149921 from scarabeus_iv)</comment>
+    <requestid>149937</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8326375798924b14a446c02b94687ea6</srcmd5>
+    <version>0.3.1</version>
+    <time>1359707697</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>150604</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2de13fe9f31ffc5590ba0416d39f356c</srcmd5>
+    <version>0.3.1</version>
+    <time>1371544168</time>
+    <user>coolo</user>
+    <comment>- Build with large file support in 32 bit archs, no good 
+ will come mixing LFS-aware executables and non-LFS libraries. (forwarded request 178444 from elvigia)</comment>
+    <requestid>178452</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>2de13fe9f31ffc5590ba0416d39f356c</srcmd5>
+    <version>0.3.1</version>
+    <time>1379662123</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d794fe355377c711ca84ba207fba1771</srcmd5>
+    <version>0.4.1</version>
+    <time>1388435231</time>
+    <user>coolo</user>
+    <comment>As we have half of lo 4.2 libs already in factory just accept this too.
+I will finish it up hopefully soon after new year. Easier than figuring
+which all stuff is needed to be reverted for 4.1 to still build.
+
+- Whitespace cleanup here&amp;there.
+
+- Set RPM groups of shlib packages to what we normally use
+- Make a note in the description about what &quot;CMIS&quot; is
+- Require boost-1.42 (first one to have the mandatory uuid.hpp)
+
+- Update to version 0.4.1
+  + 0.4.0
+      + Support for Google Drive protocol as a binding
+      + Support for Alfresco in the cloud
+      + Added OAuth2 authentication support
+      + Added API to configure HTTP proxy
+      + Handle invalid SSL certificate problems
+      + Added API for renditions
+      + Moved the CMIS Atom binding unit tests to use libcurl mockup
+      + Added repository capabilities support (still missing
+        capabilityCreatablePropertyTypes and capabilityNewTypeSettableAttributes)
+  + 0.4.1
+      + Don't install the libcmis-mockup library: only for testing purpose</comment>
+    <requestid>212458</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6f8651e0b88ed1f997ed6333def6991b</srcmd5>
+    <version>0.4.1</version>
+    <time>1394103193</time>
+    <user>coolo</user>
+    <comment>- 433fad3-Fix-int-bool-confusion-on-big-endian-architectures.patch
+  Fix problem with big endian architectures. bnc#866716 (forwarded request 224660 from cbosdonnat)</comment>
+    <requestid>224674</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>57023460c92e00905f2282094c859a0a</srcmd5>
+    <version>0.4.1</version>
+    <time>1406177915</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241826</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>57023460c92e00905f2282094c859a0a</srcmd5>
+    <version>0.4.1</version>
+    <time>1409300655</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d33364938ec347d6b92bcb725ee3196d</srcmd5>
+    <version>0.5.0</version>
+    <time>1420755639</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266801</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b470bd9e604b7eebc5fbe37ca9fe3370</srcmd5>
+    <version>0.5.0</version>
+    <time>1431248054</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305631</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>28e5177b1e2f8fe0be7dfc6f75758c69</srcmd5>
+    <version>0.5.0</version>
+    <time>1448400080</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345455</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d61f6efd538256c1807ebcd65423e407</srcmd5>
+    <version>0.5.1</version>
+    <time>1457179524</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>365931</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>185d5dc004d1c4095aca0f239330b6d5</srcmd5>
+    <version>0.5.1</version>
+    <time>1463124113</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify autoreconf call and add patch to mark Makefile as foreign:
+  * declare-automake-foreign.patch</comment>
+    <requestid>394225</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>0c97b9b8f32cccac57e13b763f69b3bc</srcmd5>
+    <version>0.5.1</version>
+    <time>1486546867</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453825</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>7b49bf3298267204bb0a812db04540c0</srcmd5>
+    <version>0.5.1</version>
+    <time>1486773174</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455479</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>2cd447ebcdf02dd19114ea186972d1c2</srcmd5>
+    <version>0.5.1</version>
+    <time>1536147779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629831</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8a3d30b1971f36ddd6c5f89c49835262</srcmd5>
+    <version>0.5.2</version>
+    <time>1565473513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714046</requestid>
+  </revision>
+</revisionlist>

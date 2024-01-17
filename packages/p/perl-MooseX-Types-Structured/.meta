@@ -1,0 +1,15 @@
+<package name="perl-MooseX-Types-Structured" project="openSUSE:Factory">
+  <title>Structured Type Constraints for Moose</title>
+  <description>A structured type constraint is a standard container Moose type
+constraint, such as an ArrayRef or HashRef, which has been enhanced to
+allow you to explicitly name all the allowed type constraints inside the
+structure.
+
+This type library enables structured type constraints. It is built on top
+of the MooseX::Types library system, so you should review the
+documentation for that if you are not familiar with it.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-MooseX-Types-Structured"/>
+  <url>http://search.cpan.org/dist/MooseX-Types-Structured</url>
+</package>

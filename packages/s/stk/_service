@@ -1,0 +1,59 @@
+<services>
+    <service name="tar_scm" mode="disabled">
+        <param name="scm">git</param>
+        <param name="url">https://github.com/thestk/stk</param>
+        <param name="revision">4.6.2</param>
+        <param name="versionformat">@PARENT_TAG@</param>
+        <!-- Patent issue (boo#761147) -->
+        <param name="exclude">/include/BeeThree.h</param>
+        <param name="exclude">/include/BlowHole.h</param>
+        <param name="exclude">/include/Bowed.h</param>
+        <param name="exclude">/include/Brass.h</param>
+        <param name="exclude">/include/Clarinet.h</param>
+        <param name="exclude">/include/FM.h</param>
+        <param name="exclude">/include/FMVoices.h</param>
+        <param name="exclude">/include/Flute.h</param>
+        <param name="exclude">/include/HevyMetl.h</param>
+        <param name="exclude">/include/Mandolin.h</param>
+        <param name="exclude">/include/Mesh2D.h</param>
+        <param name="exclude">/include/PercFlut.h</param>
+        <param name="exclude">/include/Plucked.h</param>
+        <param name="exclude">/include/Rhodey.h</param>
+        <param name="exclude">/include/Saxofony.h</param>
+        <param name="exclude">/include/Sitar.h</param>
+        <param name="exclude">/include/StifKarp.h</param>
+        <param name="exclude">/include/TubeBell.h</param>
+        <param name="exclude">/include/Twang.h</param>
+        <param name="exclude">/include/Wurley.h</param>
+        <param name="exclude">/projects/ragamatic/Drone.cpp</param>
+        <param name="exclude">/projects/ragamatic/Drone.h</param>
+        <param name="exclude">/src/BeeThree.cpp</param>
+        <param name="exclude">/src/BlowHole.cpp</param>
+        <param name="exclude">/src/Bowed.cpp</param>
+        <param name="exclude">/src/Brass.cpp</param>
+        <param name="exclude">/src/Clarinet.cpp</param>
+        <param name="exclude">/src/FM.cpp</param>
+        <param name="exclude">/src/FMVoices.cpp</param>
+        <param name="exclude">/src/Flute.cpp</param>
+        <param name="exclude">/src/Guitar.cpp</param>
+        <param name="exclude">/src/HevyMetl.cpp</param>
+        <param name="exclude">/src/Mandolin.cpp</param>
+        <param name="exclude">/src/Mesh2D.cpp</param>
+        <param name="exclude">/src/PercFlut.cpp</param>
+        <param name="exclude">/src/Plucked.cpp</param>
+        <param name="exclude">/src/Plucked.cpp</param>
+        <param name="exclude">/src/Rhodey.cpp</param>
+        <param name="exclude">/src/Saxofony.cpp</param>
+        <param name="exclude">/src/Sitar.cpp</param>
+        <param name="exclude">/src/StifKarp.cpp</param>
+        <param name="exclude">/src/TubeBell.cpp</param>
+        <param name="exclude">/src/Twang.cpp</param>
+        <param name="exclude">/src/Wurley.cpp</param>
+        <param name="exclude">/src/include/soundcard.h</param>
+    </service>
+    <service name="recompress" mode="disabled">
+        <param name="file">*.tar</param>
+        <param name="compression">xz</param>
+    </service>
+    <service name="set_version" mode="disabled"/>
+</services>

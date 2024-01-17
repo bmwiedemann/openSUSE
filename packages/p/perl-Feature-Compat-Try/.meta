@@ -1,0 +1,14 @@
+<package name="perl-Feature-Compat-Try" project="openSUSE:Factory">
+  <title>make try/catch syntax available</title>
+  <description>This module is written in preparation for when perl will gain true native syntax support for try/catch control flow.
+
+Perl added such syntax in the development version 5.33.7, which is enabled by
+
+use feature 'try';
+
+On that version of perl or later, this module simply enables the core feature equivalent to using it directly. On such perls, this module will install with no non-core dependencies, and requires no C compiler.
+
+On older versions of perl before such syntax is available, it is currently provided instead using the Syntax::Keyword::Try module, imported with a special set of options to configure it to recognise exactly and only the same syntax as the core perl feature, thus ensuring that any code using it will still continue to function on that newer perl.</description>
+  <devel project="devel:languages:perl" package="perl-Feature-Compat-Try"/>
+  <url>https://metacpan.org/pod/Feature::Compat::Try</url>
+</package>

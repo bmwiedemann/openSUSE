@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fedca2ef896379452baa953d1263eb66</srcmd5>
+    <version>1.2</version>
+    <time>1517234254</time>
+    <user>dimstar_suse</user>
+    <comment>It is a compatibility module that allows projects to use the new result type defined in OCaml &gt;= 4.03 while staying compatible with older version of OCaml.
+
+It is a dependency of the next version of Haxe (v4.0.0).</comment>
+    <requestid>568455</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>331d010638441eb94d3808477e3386ef</srcmd5>
+    <version>1.4</version>
+    <time>1567849968</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4:
+  * Support for OCaml 4.08.
+  * Switch to dune.
+- Changes from version 1.3:
+  * Switch to jbuilder.</comment>
+    <requestid>728576</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ff6cd533828303d4db2b239c519b102a</srcmd5>
+    <version>1.4</version>
+    <time>1571950931</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>735920</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5b4f1b50a2796c7b91c30e6b2067a596</srcmd5>
+    <version>1.4</version>
+    <time>1573473676</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>747296</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb9a9daaae72dd327086b88a199beb31</srcmd5>
+    <version>1.5</version>
+    <time>1611770261</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5
+  Make Result an alias of Stdlib.Result on OCaml &gt;= 4.08.</comment>
+    <requestid>866884</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>babe7517653d41798faccaabc8ba00c5</srcmd5>
+    <version>1.5</version>
+    <time>1649274687</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with ocaml-dune-bootstrap</comment>
+    <requestid>967079</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>86103017c148d3f15cbb0182f68bf51e</srcmd5>
+    <version>1.5</version>
+    <time>1649792996</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove usage of ocaml-dune-bootstrap, following changes in ocaml-dune</comment>
+    <requestid>968053</requestid>
+  </revision>
+</revisionlist>

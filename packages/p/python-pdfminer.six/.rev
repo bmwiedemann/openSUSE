@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d04ed2d30d755a5c632effc7107d7f6a</srcmd5>
+    <version>20200124</version>
+    <time>1582035529</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>775058</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a77482dffe5b071e91b4f356f554ffc1</srcmd5>
+    <version>20200124</version>
+    <time>1590506219</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807651</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f157fd1b5883bc8631be95542ce97a3e</srcmd5>
+    <version>20200726</version>
+    <time>1599667295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833065</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b0206c15f4098715e06c7cf9fa34b470</srcmd5>
+    <version>20200726</version>
+    <time>1636498493</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pytest to run the testsuite.
+- Add patch import-from-non-pythonpath-files.patch:
+  * Allow the test suite to find modules not shipped as modules.</comment>
+    <requestid>930278</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ed817c10ad7e3f818fe1e1874ebacc16</srcmd5>
+    <version>20200726</version>
+    <time>1681296685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078500</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>e0dd4596e1b03f57a288edf7503ff6a5</srcmd5>
+    <version>20200726</version>
+    <time>1693235624</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105949</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4972641bff45ab2c9561e3f58111e823</srcmd5>
+    <version>20221105</version>
+    <time>1702587820</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133035</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ed602ac4fc69944fc1ff55a1e5e047ce</srcmd5>
+    <version>20231228</version>
+    <time>1704753874</time>
+    <user>anag+factory</user>
+    <comment>- update to 20231228:
+  * Removed Support for Python 3.6 and 3.7
+  * Output converter for the hOCR format
+  * Font name aliases for Arial, Courier New and Times New Roman
+  * Documentation on why special characters can sometimes not be
+    extracted
+  * Storing Bezier path and dashing style of line in LTCurve
+  * Broken CI/CD pipeline by setting upper version limit for
+    black, mypy, pip and setuptools
+  * `flake8` failures
+  * `ValueError` when bmp images with 1 bit channel are decoded
+  * `ValueError` when trying to decrypt empty metadata values
+  * Sphinx errors during building of documentation
+  * `TypeError` when getting default width of font
+  * Installing typing-extensions on Python 3.6 and 3.7
+  * `TypeError` in cmapdb.py when parsing null characters
+  * Color &quot;convenience operators&quot; now (per spec) also set color
+    space
+  * `ValueError` when extracting images, due to breaking changes
+    in Pillow
+  * Small typo's and issues in the documentation
+  * Ignore non-Unicode cmaps in TrueType fonts
+  * Using non-hardcoded version string and setuptools-git-
+    versioning to enable installation from source and building on
+    Python 3.12
+  * Usage of `if __name__ == &quot;__main__&quot;` where it was only
+    intended for testing purposes
+- drop import-from-non-pythonpath-files.patch (upstream)
+
+  - Option to disable boxes flow layout analysis when using pdf2txt</comment>
+    <requestid>1137442</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="ghc-integer-conversion" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-integer-conversion"/>
+</package>
