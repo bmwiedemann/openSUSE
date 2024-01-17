@@ -103,4 +103,13 @@
 </comment>
     <requestid>1130464</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>58819c2ec81390b1250098baf3846c8e</srcmd5>
+    <version>17.0.6</version>
+    <time>1705526058</time>
+    <user>anag+factory</user>
+    <comment>- Use %_target_* for determining the compiler host triple (boo#1218701)
+</comment>
+    <requestid>1138185</requestid>
+  </revision>
 </revisionlist>

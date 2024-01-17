@@ -1,7 +1,7 @@
 #
 # spec file for package llvm17
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,15 +69,15 @@
 # Figure out the host triple.
 %ifarch armv6hl
 # See https://build.opensuse.org/request/show/968066.
-%define host_cpu armv6kz
+%define target_cpu armv6kz
 %else
-%define host_cpu %{_host_cpu}
+%define target_cpu %{_target_cpu}
 %endif
 
 %ifarch %{arm}
-%define host_triple %{host_cpu}-%{_host_vendor}-%{_host_os}-gnueabihf
+%define host_triple %{target_cpu}-%{_target_vendor}-%{_target_os}-gnueabihf
 %else
-%define host_triple %{host_cpu}-%{_host_vendor}-%{_host_os}
+%define host_triple %{target_cpu}-%{_target_vendor}-%{_target_os}
 %endif
 
 # By default, build everything.
@@ -1675,8 +1675,8 @@ fi
 %{_libdir}/libomptarget-nvptx-*.bc
 %ifarch aarch64 ppc64le x86_64
 %{_libdir}/libomptarget.devicertl.a
-%{_libdir}/libomptarget.rtl.{%{host_cpu},amdgpu,cuda}.so
-%{_libdir}/libomptarget.rtl.{%{host_cpu},amdgpu,cuda}.so.%{_soname}
+%{_libdir}/libomptarget.rtl.{%{target_cpu},amdgpu,cuda}.so
+%{_libdir}/libomptarget.rtl.{%{target_cpu},amdgpu,cuda}.so.%{_soname}
 %endif
 %endif
 %{_libdir}/cmake/openmp
