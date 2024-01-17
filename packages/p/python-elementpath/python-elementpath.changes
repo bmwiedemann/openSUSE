@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Wed Aug  9 07:43:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.5:
+  * Fix typed value of ElementNode() if self.elem.text is None
+
+-------------------------------------------------------------------
+Sat Jul  1 20:32:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.4:
+  * Fix select of prefixed names
+  * Fix zero length *xs:base64Binary*
+
+-------------------------------------------------------------------
+Sun Jun 25 18:47:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.3:
+  * Fix XP30+ fn:path
+  * Fix weak tests
+
+-------------------------------------------------------------------
+Fri May 12 05:56:30 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove BuildRequire xmlschema to avoid dependency cycle
+
+-------------------------------------------------------------------
+Wed May 10 09:18:23 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 4.1.2:
+  * Add support for Python 3.12
+  * Fix self shortcut operator (adding is_schema_node() to node classes)
+- 4.1.1:
+  * Simplify type annotations for XSD datatypes
+  * Full test coverage of sequence type functions with bugfixes
+- 4.1.0:
+  * Refactor XPath function call (context=None only as keyword argument)
+  * Add external function support (issue #60)
+  * Some fixes to string representation and source property of tokens
+  * Extend documentation and tests
+  * Clean XSD datatypes hierarchy
+- 4.0.1:
+  * Fix packaging: include py.typed in package data
+  * Revert to comparison between xs:QName instances and strings
+  * Fix atomization with XSD typed data (list types have to be atomized)
+- 4.0.0:
+  * First XPath 3.1 implementation (without UCA collation support)
+
+-------------------------------------------------------------------
+Fri Apr 21 12:24:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Tue Sep 27 19:18:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to v3.0.2 (2022-08-12)
+  * Extend root concept to subtrees used as root (e.g. XSD 1.1 assertions)
+  * Begin XPath 3.1 implementation adding XPathMap and XPathArray
+- update to v3.0.1 (2022-07-23)
+  * Fix of descendant path operator (issue #51)
+  * Add support for Python 3.11
+- update to v3.0.0 (2022-07-16)
+  * Transition to full XPath node implementation (more memory usage but better control and overall faster)
+  * Add etree.py module with a safe XML parser (ported from xmlschema) 
+
+-------------------------------------------------------------------
+Sat Jun  4 14:00:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.3:
+  * Fix unary path step operator (issue #46)
+  * Fix sphinx warnings *'reference target not found'* (issue #45)
+  * Include PR #43 with fixes for `XPathContext.iter_siblings()` (issues #42 and #44)
+  * Fix for failed floats equality tests (issue #41)
+  * Static typing tested with mypy==0.950
+
+-------------------------------------------------------------------
+Sat Mar 26 21:23:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * Add XPath 3.0 support
+  * Better use of lxml.etree features
+  * Full coverage of W3C tests
+  * Drop support for Python 3.6
+
+-------------------------------------------------------------------
+Mon Nov 29 11:24:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Fix type annotations and going strict on parsers and other public classes
+  * Add XPathConstructor token class (subclass of XPathFunction)
+  * Last release for Python 3.6
+
+-------------------------------------------------------------------
+Sat Oct 16 21:51:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.2:
+  * Make ElementProtocol and LxmlElementProtocol runtime checkable
+  * Type annotations for all package public APIs
+  * Add LxmlElementProtocol
+  * Add pytest env to tox.ini (test issue #39)
+  * Add inline type annotations check support
+  * Add structural Protocol based type checks
+  * Add Python 3.10 in Tox and CI tests
+  * Apply __slots__ to TDOP and regex classes
+
+-------------------------------------------------------------------
+Tue May 18 21:45:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * Fix issue sissaschool/xmlschema#243 (assert with xsi:nil usage)
+  * First implementation of XPath 3.0 fn:format-integer
+  * Add function signatures at token registration
+  * Some fixes to XPath tokens and more XPath 3.0 implementations
+  * Optimize TDOP parser's tokenizer
+  * Resolve ambiguities with operators and statements that are also names
+  * Merge with XPath 3.0/3.1 develop (to be completed)
+  * Add tests and apply small fixes to TDOP parser
+  * Fix wildcard selection of attributes (issue #35) 
+
+-------------------------------------------------------------------
+Mon Feb  1 22:10:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.3:
+  * Extend tests for XPath 2.0 with minor fixes
+  * Fix fn:round-half-to-even (issue #33)
+  * Extend tests for XPath 1.0/2.0 with minor fixes
+  * Fix for +/- prefix operators
+  * Fix for regex patterns anchors and binary datatypes
+  * Fix for issue #32 (test failure on missing locale setting)
+  * Extend tests for XPath 1.0 with minor fixes
+  * Create custom class hierarchy for XPath nodes that replaces named-tuples
+  * Bind attribute nodes, text nodes and namespace nodes to parent element (issue #31)
+  * Increase the speed of path step selection on large trees
+  * More tests and small fixes to XSD builtin datatypes
+
+-------------------------------------------------------------------
+Mon Nov  9 15:01:31 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.0.4:
+  * Lazy tokenizer for parser classes in order to minimize import time
+
+-------------------------------------------------------------------
+Wed Oct  7 04:05:09 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.3:
+  * Fix context handling in cycle statements
+  * Change constructor's label to 'constructor function'
+  * Add regex translator to package API
+  * More than 99% of W3C XPath 2.0 tests pass
+  * Add regex transpiler (for XPath/XQuery and XML Schema regular expressions)
+  * Hotfix for issue #30
+  * Extensive testing with W3C XPath 2.0 tests (~98% passed)
+  * Split context variables from in-scope variables (types)
+  * Add other XSD builtin atomic types 
+
+-------------------------------------------------------------------
+Wed Jun 24 03:51:04 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.6:
+  * Fix XPathContext to let the subclasses replace the XPath nodes iterator function
+  * Fix tokenizer and parsers for ambiguities between symbols and names
+  * Improve XPath context and axes processing
+  * Integrate pull requests and fix bug on predicate selector 
+
+-------------------------------------------------------------------
+Mon Apr  6 08:06:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4.3
+  * Fix PyPy 3 tests on xs:base64Binary and xs:hexBinary
+  * Separated the tests of schema proxy API and other schemas based tests
+  * Multiple XSD type associations on a token
+  * Extend xs:untypedAtomic type usage
+  * Increase the tests coverage to 95%
+
+-------------------------------------------------------------------
+Thu Feb  6 10:53:28 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4.1
+  * Remove Python 2 support
+  * Add TextNode node type
+  * fixed: test_datatypes.(Duration|Timezone)TypesTest.test_hashing fails on 32bit arches
+
+-------------------------------------------------------------------
+Wed Oct 30 12:32:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.3.1:
+  * Improved schema proxy
+  * Improved XSD type matching using paths
+  * Cached parent path for XPathContext (only Python 3)
+  * Improve typed selection with TypedAttribute and TypedElement named-tuples
+  * Add iter_results to XPathContext
+  * Remove XMLSchemaProxy from package
+  * Fix descendant shortcut operator '//'
+  * Fix text() function
+  * Fix typed select of '(name)' token
+  * Fix 24-hour time for DateTime
+
+-------------------------------------------------------------------
+Mon Sep  9 18:33:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip test_hashing to fix 32bit builds
+
+-------------------------------------------------------------------
+Mon Sep  9 14:24:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit needed by python-xmlschema

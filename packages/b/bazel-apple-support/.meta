@@ -1,0 +1,6 @@
+<package name="bazel-apple-support" project="openSUSE:Factory">
+  <title>bazel-apple-support</title>
+  <description>Bazel rules to support Apple platforms</description>
+  <devel project="devel:tools:building" package="bazel-apple-support"/>
+  <url>https://github.com/bazelbuild/apple_support</url>
+</package>

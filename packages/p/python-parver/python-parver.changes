@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Wed Dec 20 21:41:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5:
+  * Added support for Python 3.12
+  * Removed support for Python 3.7
+
+-------------------------------------------------------------------
+Mon Mar 20 09:30:41 UTC 2023 - pgajdos@suse.com
+
+- version update to 0.4
+   Added
+    Type hints.
+  Removed
+    Support for Python 2.7, 3.5, and 3.6.
+    __version__, __author__, and __email__ attributes from parver
+    module. Use :mod:`importlib.metadata` instead.
+
+-------------------------------------------------------------------
+Wed Dec  8 22:33:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Skip build for python 2 to fix build on Leap
+  * hypothesis is not python 2 compatible anymore, so either no
+    tests or no build with python2.
+
+-------------------------------------------------------------------
+Fri Jan 22 09:28:08 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.3.1
+  * Grammar is parsed when first used to improve import time.
+  * The minimum attrs version is now 19.2.
+  * Errors raised for keyword-only argument errors on Python 3 did
+    not have the right error message.
+
+-------------------------------------------------------------------
+Fri Mar  6 09:34:34 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.3.0
+ * Version.truncate method to remove trailing zeros from the release segment
+ * Version.bump_epoch method.
+ * Version now validates each item in the release sequence.
+ * Add by keyword argument to bump_pre, bump_post, and bump_dev methods
+ * The Version constructor now uses an empty string to represent an implicit
+    zero instead of None
+ * Version.clear is no longer necessary.
+
+-------------------------------------------------------------------
+Tue Feb 12 10:21:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Feb 12 01:58:45 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate Python 2 support
+- Activate %check
+- Use %license
+- Remove unnecessar build dependency on python-devel
+- Remove inappropriate Suggests for build related packages
+- Add minimum versions for all dependencies
+
+-------------------------------------------------------------------
+Sun Jan 20 17:30:32 UTC 2019 - Niels Abspoel <aboe76@gmail.com>
+
+- Update to parver-0.2.1
+
+-------------------------------------------------------------------
+Sat Dec  8 15:44:05 UTC 2018 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to parver-0.2.0
+
+-------------------------------------------------------------------
+Thu Jul  5 12:52:53 UTC 2018 - aboe76@gmail.com
+
+- Initial package python-parver

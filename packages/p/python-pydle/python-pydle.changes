@@ -1,0 +1,164 @@
+-------------------------------------------------------------------
+Wed May 31 16:13:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- poetry-core is sufficient for build system
+
+-------------------------------------------------------------------
+Fri Feb 24 09:58:23 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Delete python-pydle-poetry-syntax.patch
+- Skip python 310 and python 311, pydle doesn't python 3.10
+  gh#Shizmob/pydle#162, There's a WIP PR but looks like it's not good
+  enough yet to be applied gh#Shizmob/pydle#180
+- Update to version 1.0.1
+  * [Docs] Document Dropping of 3.5 by @Rixxan in #179
+  * Adjust python version inequality string for Poetry by @txtsd in #182
+  * bump version to 1.0.1 by @theunkn0wn1 in #183
+
+-------------------------------------------------------------------
+Wed Nov  2 12:11:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add python-pydle-poetry-syntax.patch: Fix version limiation in
+  pyprojects.toml. NOTE: I changed to < 3.11 even though upstream
+  declares < 3.10; but since this limiation was simply ignored by
+  poetry < 1.2 and we provide already packages for python 3.10
+  (which seem to work?) this seemed most suitable workaround for
+  now (https://github.com/Shizmob/pydle/issues/181).
+
+-------------------------------------------------------------------
+Thu Sep 29 18:44:37 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to version 1.0.0
+  Major changes:
+  * API change, monitor and unmonitor are now async def functions
+    gh#Shizmob/pydle#144
+  * Drop support for Python < 3.5
+    gh#Shizmob/pydle#165
+
+  Bug fixes:
+  * Fix parsing IRCv3 tags with missing/empty values
+    gh#Shizmob/pydle#149
+  * Fixup irccat.py example
+    gh#Shizmob/pydle#152
+  * WHOIS uses deprecated @asyncio.coroutine
+    Backward compatable as the interface did not effectively change
+    gh#Shizmob/pydle#161
+  * Fix Missing Awaits in various files
+    Some internal methods were made async. As these methods are
+    internal, they are not covered by SEMVER.
+    gh#Shizmob/pydle#164
+  * Add Missing awaits in coroutine calls
+    gh#Shizmob/pydle#170
+
+  Features:
+  * Enable RplWhoisHostSupport implementation
+    gh#Shizmob/pydle#156
+  * Implement decorator-based event handler registration
+    gh#Shizmob/pydle#165
+
+
+-------------------------------------------------------------------
+Sun Jan 24 08:21:02 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Fix package build by providing executable alternatives
+
+-------------------------------------------------------------------
+Tue Jul  7 16:06:37 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Enable unit tests
+- Update to version 0.9.4
+  Fixes:
+  * on_part will now be called prior to channel / user destruction
+  * disconnecting client pools should work again
+
+  New features:
+  * Add optional support for REPL_WHOISHOST, an UnrealIRCd feature.
+
+-------------------------------------------------------------------
+Tue Feb 11 16:28:35 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to verssion 0.9.4rc1
+  Bug fixes:
+  * Ping timeout bugs
+  * Fixes towards broken TLS verify
+  * Client/server parting channel exceptions
+
+  New features:
+  * Handling of IRCv3 tags
+
+  Changes from 0.9.2 to 0.9.3:
+  * pydle.BasicClient.PING_TIMEOUT is now deprecated and has been
+    replaced with pydle.BasicClient.READ_TIMEOUT to the same effect
+  * a proxy read-write property pydle.BasicClient.PING_TIMEOUT has
+    been added to preserve reverse compatibility, however may be
+    removed in a later release.
+
+-------------------------------------------------------------------
+Mon Aug  5 05:23:32 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 0.9.2
+  Bug fixes:
+  * Resolved some missing await calls in registration
+  * Resolved some issues in the CTCP implementation
+  * Resolved incompatibility with non-compliant hostmasks.
+
+-------------------------------------------------------------------
+Mon Feb  4 09:30:06 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 0.9.1
+  Breaking:
+  * pydle.async library removed in its entirety.
+    replaced by asyncio components where appropriate.
+
+  Major:
+  * Pydle now uses Asyncio as its async framework.
+    Tornado is no longer a dependency nor is it supported.
+  * All pydle event callbacks are proper coroutines,
+    and must be awaited.
+  * Minimum Python version increased to 3.5
+
+  Features:
+  * Python 3.7 support
+  * Added IRCv3.2 account-tag , message-tag echo_message and
+    invite-notify support.
+  * added IRCv3.3 message-tags support
+  * added SASL-External authentication
+  * raw irc messages are now logged at level logging.DEBUG
+
+  Fixes:
+  * Fixed various reconnection issues
+  * Fixed any tornado-related issues by removing the tornado
+    from the house.
+  * Pydle will once again connect to password-protected servers.
+  * Resolve deadlock issues relating to .whois and other blocking
+    IRC methods
+
+-------------------------------------------------------------------
+Mon Dec 24 11:36:44 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 0.8.5
+  * Python 3.7 support
+  * Removal of pydle.async entirely
+    - pydle.coroutine and pydle.Future are now just
+      forward-references to asyncio.coroutine and asyncio.Future
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:05 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Jun 29 00:53:04 UTC 2018 - 9+suse@cirno.systems
+
+- Update to version 0.8.4
+  * Explicit dependency on python-tornado 4.5.3 -- Future versions
+    of pydle will use asyncio instead, hence no effort is being
+    made to support newer versions of Tornado.
+  * Normalize everything related to whois/whowas
+  * Fix typo where self.channels was using the self.users dict
+  * Fix reconnecting
+
+-------------------------------------------------------------------
+Fri Dec  1 22:15:30 UTC 2017 - 9@cirno.systems
+
+- Init, v0.8.3

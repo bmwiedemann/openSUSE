@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>ec4f91a51feb2e7aaa3b04a48ef47943</srcmd5>
+    <version>0.0.1</version>
+    <time>1222262235</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>7f523dee2591a77cb686319698033653</srcmd5>
+    <version>0.0.1</version>
+    <time>1245259487</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>7f523dee2591a77cb686319698033653</srcmd5>
+    <version>0.0.1</version>
+    <time>1245259487</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>b0c7ca9b3f51400a697669b001075f58</srcmd5>
+    <version>0.0.1</version>
+    <time>1268923387</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>b0c7ca9b3f51400a697669b001075f58</srcmd5>
+    <version>0.0.1</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>b0c7ca9b3f51400a697669b001075f58</srcmd5>
+    <version>0.0.1</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>b0c7ca9b3f51400a697669b001075f58</srcmd5>
+    <version>0.0.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>b1b19e1b10a914e9b175698178a7acab</srcmd5>
+    <version>0.0.1</version>
+    <time>1316766254</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83286 from jengelh)</comment>
+    <requestid>84368</requestid>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>b1b19e1b10a914e9b175698178a7acab</srcmd5>
+    <version>0.0.1</version>
+    <time>1319181854</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>87fac95e28361b47bb7d63bc9a7234f1</srcmd5>
+    <version>0.0.1</version>
+    <time>1332999702</time>
+    <user>coolo</user>
+    <comment>license update: W3C
+SPDX (forwarded request 110716 from babelworx)</comment>
+    <requestid>111343</requestid>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>87fac95e28361b47bb7d63bc9a7234f1</srcmd5>
+    <version>0.0.1</version>
+    <time>1340183288</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="21">
+    <srcmd5>87fac95e28361b47bb7d63bc9a7234f1</srcmd5>
+    <version>0.0.1</version>
+    <time>1359108823</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="22">
+    <srcmd5>561b57a101e808e2e2851acf2414654f</srcmd5>
+    <version>0.0.1</version>
+    <time>1377430349</time>
+    <user>scarabeus_factory</user>
+    <comment>- disable javadoc subpackage
+  * drop dom2-core-tests-explicit-javadoc.patch</comment>
+    <requestid>196100</requestid>
+  </revision>
+  <revision rev="14" vrev="23">
+    <srcmd5>daf13f5b853d5405032005a48f4f4aef</srcmd5>
+    <version>0.0.1</version>
+    <time>1378899547</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198268</requestid>
+  </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>daf13f5b853d5405032005a48f4f4aef</srcmd5>
+    <version>0.0.1</version>
+    <time>1379662246</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>6d079618f0b5e01464ec46f7cdd2f1de</srcmd5>
+    <version>0.0.1</version>
+    <time>1384517670</time>
+    <user>coolo</user>
+    <comment>- remove org/w3c/domts/JUnitRunner.java not compatible with junit 4</comment>
+    <requestid>206886</requestid>
+  </revision>
+  <revision rev="17" vrev="28">
+    <srcmd5>6d079618f0b5e01464ec46f7cdd2f1de</srcmd5>
+    <version>0.0.1</version>
+    <time>1409300782</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="29">
+    <srcmd5>22e6567c4121eda4d37d9dac52a2d060</srcmd5>
+    <version>0.0.1</version>
+    <time>1505507498</time>
+    <user>dimstar_suse</user>
+    <comment>Remove dependency on java-gcj-compat</comment>
+    <requestid>526283</requestid>
+  </revision>
+  <revision rev="19" vrev="30">
+    <srcmd5>c01bf89b878f9419b91c644a0c21d549</srcmd5>
+    <version>0.0.1</version>
+    <time>1530993599</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620786</requestid>
+  </revision>
+</revisionlist>

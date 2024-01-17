@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96a6471e01ddb91783594cf385624ca2</srcmd5>
+    <version>0.2.3</version>
+    <time>1649949936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970076</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cf074bddde515d7d33525fe844ab4203</srcmd5>
+    <version>0.2.3</version>
+    <time>1655821954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984042</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>86ea5f328cba3c0eac14f7db4bf4f549</srcmd5>
+    <version>0.2.4</version>
+    <time>1665185027</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008720</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>623c637f93bb872ab4388ec7713895af</srcmd5>
+    <version>0.2.4</version>
+    <time>1670863162</time>
+    <user>dimstar_suse</user>
+    <comment>- fix typo in _service file</comment>
+    <requestid>1042198</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Wed May 16 11:52:32 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+
+-------------------------------------------------------------------
+Fri Sep 15 07:46:31 UTC 2017 - fstrba@suse.com
+
+- Don't hardcode dependency on java-gcj-compat
+  * use java-devel >= 1.6 instead
+- Specify java source and target levels 1.6 in order to allow
+  building with jdk9
+
+-------------------------------------------------------------------
+Thu Nov 14 12:22:56 UTC 2013 - mvyskocil@suse.com
+
+- remove org/w3c/domts/JUnitRunner.java not compatible with junit 4
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:38 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Fri Aug 23 07:50:29 UTC 2013 - mvyskocil@suse.com
+
+- disable javadoc subpackage
+  * drop dom2-core-tests-explicit-javadoc.patch
+
+-------------------------------------------------------------------
+Fri Mar 23 08:42:49 UTC 2012 - cfarrell@suse.com
+
+- license update: W3C
+  SPDX
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Thu Sep 11 10:44:13 CEST 2008 - mvyskocil@suse.cz
+
+- Used a gcj instead of java-devel to prevent of an bootstrapping problem with
+  openjdk
+
+-------------------------------------------------------------------
+Tue Sep  2 16:00:47 CEST 2008 - mvyskocil@suse.cz
+
+- Initial packaging ov 0.0.1 (based on Jpackage 1.7) 
+

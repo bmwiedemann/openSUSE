@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b26352923ae802a5e842b828a2c7111</srcmd5>
+    <version>1.1.2</version>
+    <time>1623098656</time>
+    <user>dimstar_suse</user>
+    <comment>For python-google-cloud-storage</comment>
+    <requestid>897430</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1d89912eb37ada1977e0df5dc54982d0</srcmd5>
+    <version>1.3.0</version>
+    <time>1649370487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.0
+  Features
+  * add support for Python 3.10 (#116)
+- from version 1.2.0
+  Features
+  * build wheels using CIBuildWheel (#103)
+  Documentation
+  * update list of supported wheel platforms / architectures (#105)
+- from version 1.1.5
+  Bug Fixes
+  * revert to silent fallback to pure-Python build (#93)
+  * fix segfault on MacOS 11 (&quot;Big Sur&quot;) for Python &lt; 3.9 (#93)
+- from version 1.1.4
+  Bug Fixes
+  * advise setting 'CRC32C_PURE_PYTHON' after build failure (#84)
+  * restore building 'manylinux1' wheels (#87)
+  * use correct Python 3.10 specifier (#88)
+- from version 1.1.3
+  Performance Improvements
+  * replace CFFI with a native C extension (#76) (forwarded request 967467 from glaubitz)</comment>
+    <requestid>967479</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>064d7c3a7cbc6acbcc714467406f8908</srcmd5>
+    <version>1.5.0</version>
+    <time>1662541595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001656</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5a875141fd136eeaa245cd1915bbaf38</srcmd5>
+    <version>1.5.0</version>
+    <time>1702845139</time>
+    <user>anag+factory</user>
+    <comment>- use modern python stack for sle15</comment>
+    <requestid>1133641</requestid>
+  </revision>
+</revisionlist>

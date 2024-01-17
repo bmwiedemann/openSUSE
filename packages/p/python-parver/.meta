@@ -1,0 +1,5 @@
+<package name="python-parver" project="openSUSE:Factory">
+  <title></title>
+  <description>parver allows parsing and manipulation of PEP 440 version numbers.</description>
+  <devel project="devel:languages:python" package="python-parver"/>
+</package>

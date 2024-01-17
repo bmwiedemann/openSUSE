@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa1dd0218306f0db71471aa160aec1b6</srcmd5>
+    <version>unknown</version>
+    <time>1692795422</time>
+    <user>anag+factory</user>
+    <comment>🤖: initial submission of rmt-nginx-image</comment>
+    <requestid>1105177</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7d967927a66a06c974227236dd5bf1f0</srcmd5>
+    <version>unknown</version>
+    <time>1696269888</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114205</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c68ea54d061bc0783e8bb82818d3093b</srcmd5>
+    <version>unknown</version>
+    <time>1704281533</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1136366</requestid>
+  </revision>
+</revisionlist>

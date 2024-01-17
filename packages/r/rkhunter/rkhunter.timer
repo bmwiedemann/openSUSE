@@ -1,0 +1,10 @@
+[Unit]
+Description=rkhunter timer
+
+[Timer]
+Unit=rkhunter.service
+OnBootSec=15m
+OnUnitActiveSec=2d
+
+[Install]
+WantedBy=timers.target

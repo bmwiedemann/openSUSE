@@ -1,0 +1,5 @@
+<package name="scrypt" project="openSUSE:Factory">
+  <title>A simple password-based encryption utility is available as a demonstration of the scrypt key derivation function</title>
+  <description>A simple password-based encryption utility is available as a demonstration of the scrypt key derivation function</description>
+  <devel project="security" package="scrypt"/>
+</package>

@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>66d4196d11f8e99594d324142eb06668</srcmd5>
+    <version>2.0.2</version>
+    <time>1649093232</time>
+    <user>dimstar_suse</user>
+    <comment>dependency for new ansible-lint</comment>
+    <requestid>965773</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3185d454b9dd96e82389720c051bacb8</srcmd5>
+    <version>2.0.2</version>
+    <time>1649450789</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>967898</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd88524e401d4b59b9610d823827d86c</srcmd5>
+    <version>2.0.4</version>
+    <time>1653907418</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>979651</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>17339368f2bc1d260717c1652501333a</srcmd5>
+    <version>2.1.0</version>
+    <time>1655972619</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>984255</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0f054b13d925a1aef6e6616c8c81f766</srcmd5>
+    <version>2.2.0</version>
+    <time>1659721832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>991659</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>df17df1d4f07a63d58bb77bcb742edf2</srcmd5>
+    <version>2.2.1</version>
+    <time>1665184992</time>
+    <user>RBrownFactory</user>
+    <comment>update to 2.2.1</comment>
+    <requestid>1008323</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>84e6eb99bac2c6604cdae31af33f9e78</srcmd5>
+    <version>2.2.3</version>
+    <time>1667579678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033159</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6d6afb21391b6214623827cf1aa453bd</srcmd5>
+    <version>2.2.4</version>
+    <time>1668702274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036287</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5ec3fa8eb20917261d3bdc628496c7bc</srcmd5>
+    <version>2.2.5</version>
+    <time>1668782660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036630</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2a23e0b306618fa7a56fa99f77585d0a</srcmd5>
+    <version>2.2.6</version>
+    <time>1669983214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039503</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>700755c7ea9f20e7e4e3379a4ca78a50</srcmd5>
+    <version>2.2.7</version>
+    <time>1670863179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042256</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>6a813bf66a6d05394e5e78b1dab7bcc8</srcmd5>
+    <version>2.2.7</version>
+    <time>1671455278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043660</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>49afbab058542105b40b7e7cdbc643eb</srcmd5>
+    <version>3.0.1</version>
+    <time>1675792150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063493</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f0c11434e3c925cfa0bcc2df498d03f8</srcmd5>
+    <version>3.0.2</version>
+    <time>1681470843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079368</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f63435f87edca9bd04a6a726e11243bd</srcmd5>
+    <version>4.0.5</version>
+    <time>1684846442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088377</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e5ede8c5d9c1e5ba1b79a660a22bc5e9</srcmd5>
+    <version>4.1.1</version>
+    <time>1685562900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089988</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0669ed6bc17f0173cd50157749bfb517</srcmd5>
+    <version>4.1.2</version>
+    <time>1686752973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092922</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6256e10e9df628a15d2742ae2172dad0</srcmd5>
+    <version>4.1.5</version>
+    <time>1690215952</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100222</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dc8d9a5e6784128ec2dd86e4202f29ba</srcmd5>
+    <version>4.1.10</version>
+    <time>1694114012</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109447</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6ccbe1debbfda91879eba55fa673d558</srcmd5>
+    <version>4.1.10</version>
+    <time>1700865308</time>
+    <user>anag+factory</user>
+    <comment>
+fix build
+
+- disable pytest's test name check
+  https://github.com/ansible/ansible-compat/issues/340</comment>
+    <requestid>1128568</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fd47056dc01a1006fc8c99b9bd5cbd31</srcmd5>
+    <version>4.1.11</version>
+    <time>1705255374</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138453</requestid>
+  </revision>
+</revisionlist>

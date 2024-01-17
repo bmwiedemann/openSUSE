@@ -1,0 +1,289 @@
+-------------------------------------------------------------------
+Fri Dec  8 16:14:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.2:
+  * Improve the performance of ``SingleFileStorage``. :gh:`818`
+  * Properly document some caveats of the Google Contacts
+    storage.
+  * Fix crash when using auth certs. :gh:`1033`
+  * The ``filesystem`` storage can be specified with ``type =
+  * "filesystem/icalendar"`` or ``type = "filesystem/vcard"``.
+    This has not functional impact, and is merely for forward
+    compatibility with the Rust implementation of vdirsyncer.
+  * Python 3.10 and 3.11 are officially supported.
+  * Instructions for integrating with Google CalDav/CardDav have
+    changed.
+  * Applications now need to be registered as "Desktop
+    applications". Using "Web application" no longer works due
+    to changes on Google's side.
+  * Fixed crash when operating on Google Contacts. :gh:`994`
+  * The ``HTTP_PROXY`` and ``HTTPS_PROXY`` are now respected.
+  * Instructions for integrating with Google CalDav/CardDav have
+    changed.
+  * Applications now need to be registered as "Web Application".
+  * Various documentation updates.
+
+-------------------------------------------------------------------
+Thu Jul 27 14:34:41 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add missing dependency
+
+-------------------------------------------------------------------
+Thu May  4 23:56:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- fix and reenable tests
+
+-------------------------------------------------------------------
+Sun Dec 18 22:01:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.19.0:
+
+  - Add "shell" password fetch strategy to pass command string to
+    a shell.
+  - Add "description" and "order" as metadata.
+    These fetch the CalDAV: calendar-description,
+    ``CardDAV:addressbook-description`` and
+    ``apple-ns:calendar-order`` properties respectively.
+  - Add a new ``showconfig`` status. This prints *some*
+    configuration values as JSON. This is intended to be used by
+    external tools and helpers that interact with ``vdirsyncer``,
+    and considered experimental.
+  - Update TLS-related tests that were failing due to weak MDs.
+  - ``pytest-httpserver`` and ``trustme`` are now required for
+    tests.
+  - ``pytest-localserver`` is no longer required for tests.
+  - Multithreaded support has been dropped. The
+    ``"--max-workers`` has been removed.
+  - A new ``asyncio`` backend is now used. So far, this shows
+    substantial speed improvements in ``discovery`` and
+    ``metasync``, but little change in `sync`. This will likely
+    continue improving over time. :gh:`906`
+  - The ``google`` storage types no longer
+    require ``requests-oauthlib``, but require
+    ``python-aiohttp-oauthlib`` instead.
+  - Vdirsyncer no longer includes experimental support for
+    `EteSync <https://www.etesync.com/>`_. The existing
+    integration had not been supported for a long time and
+    no longer worked. Support for external storages may be
+    added if anyone is interested in maintaining an EteSync
+    plugin. EteSync users should consider using `etesync-dav`_.
+  - The ``plist`` for macOS has been dropped. It was broken and
+    homebrew generates their own based on package metadata. macOS
+    users are encouraged to use that as a reference.
+  - Changes to SSL configuration:
+    - Support for ``md5`` and ``sha1`` certificate fingerprints
+      has been dropped. If you're validating certificate
+      fingerprints, use ``sha256`` instead.
+    - When using a custom ``verify_fingerprint``, CA validation
+      is always disabled.
+    - If ``verify_fingerprint`` is unset, CA verification is
+      always active. Disabling both features is insecure and no
+      longer supported.
+    - The ``verify`` parameter no longer takes boolean values, it
+      is now optional and only takes a string to a custom CA for
+      verification.
+    - The ``verify`` and ``verify_fingerprint`` will likely be
+      merged into a single parameter in future.
+
+-------------------------------------------------------------------
+Sat Jul 10 11:56:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.18.0:
+  This release is a maintenance-focused one and mostly addresses
+  compatibility with newer Python versions and newer dependencies.
+
+  Note: Version 0.17 has some alpha releases but ultimately was never finalised.
+  0.18 actually continues where 0.16 left off.
+
+  - Support for Python 3.5 and 3.6 has been dropped. This release mostly focuses
+    on keeping vdirsyncer compatible with newer environments.
+  - Python 3.9 is now supported.
+  - click 8 and click-threading 0.5.0 are now required.
+  - For those using `pipsi`, we now recommend using `pipx`, it's successor.
+  - Our Debian/Ubuntu build scripts have been updated. New versions should be
+    pushed to those repositories soon.
+- Remove obsolete patches:
+  - python-vdirsyncer-shift-deadline.patch
+  - deprecated_getiterator.patch
+- Temporarily switch off tests (gh#pimutils/vdirsyncer#654).
+
+-------------------------------------------------------------------
+Mon May 31 15:07:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add deprecated_getiterator.patch (.getiterator() in
+  etree.Element is obsolete, use just plain iter())
+  gh#pimutils/vdirsyncer#880
+
+-------------------------------------------------------------------
+Tue Apr 12 06:56:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove ifpython3 macro guarding the Provides/Obsoletes
+
+-------------------------------------------------------------------
+Fri Mar 12 19:57:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Set up update-alternatives for systemd unit files.
+
+-------------------------------------------------------------------
+Sun Feb 28 22:24:56 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix source references
+
+-------------------------------------------------------------------
+Tue Sep  1 15:11:22 UTC 2020 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+-fix compatibility with latest click - patch taken directly from upstream git
+ * 3eb9ce5ae4320d52e6c876874511ff96a8a45f51.patch
+
+-------------------------------------------------------------------
+Thu Jul 23 09:16:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.16.8
+  * Support Python 3.7 and 3.8.
+  * Vdirsyncer will now warn if there's a string without quotes in your config.
+- Drop python-vdirsyncer-fix-tests.patch
+
+-------------------------------------------------------------------
+Sun Jun  7 21:35:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add missing BR python-atomicwrites
+
+-------------------------------------------------------------------
+Mon May 18 09:10:46 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Wed Apr 29 12:51:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip failing test due to changed quoting in click:
+  * test_verbosity
+
+-------------------------------------------------------------------
+Mon Feb  3 15:57:42 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Wed Jun  5 07:15:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make the deadline for tests even larger, on slow obs bots
+  it takes 1300:
+  * python-vdirsyncer-shift-deadline.patch
+
+-------------------------------------------------------------------
+Thu May 16 22:35:41 UTC 2019 - ranand@suse.com
+
+- Skip flaky test test_legacy_status
+
+-------------------------------------------------------------------
+Tue May  7 05:47:52 UTC 2019 - pgajdos@suse.com
+
+- added patches
+  default deadline (200ms) is too short for obs
+  + python-vdirsyncer-shift-deadline.patch
+
+-------------------------------------------------------------------
+Mon May  6 13:36:29 UTC 2019 - pgajdos@suse.com
+
+- fix tests again https://github.com/pimutils/vdirsyncer/issues/793
+- modified patches
+  % python-vdirsyncer-fix-tests.patch (extended)
+
+-------------------------------------------------------------------
+Sat Apr  6 22:18:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Wrap description.
+
+-------------------------------------------------------------------
+Fri Mar 29 13:31:30 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.16.7
+  Fixes for Python 3.7
+- added patches
+  https://github.com/pimutils/vdirsyncer/pull/779
+  + python-vdirsyncer-fix-tests.patch
+
+-------------------------------------------------------------------
+Wed Jul 18 08:05:01 UTC 2018 - mimi.vx@gmail.com
+
+- fix vdirsyncer.timer service
+
+-------------------------------------------------------------------
+Wed Jul  4 06:23:48 UTC 2018 - dmacvicar@suse.de
+
+- Add systemd unit and timer from upstream git
+- Make package python3 only
+- Update to version 0.16.6
+  * Documentation building no longer needs a working installation
+    of vdirsyncer.
+- Changes from version 0.16.5
+  * click-log 0.3 is required.
+  * All output will now happen on stderr (because of the upgrade of ``click-log``).
+- Changes from version 0.16.4
+  * Fix tests for new Hypothesis version. (Literally no other change included)
+- Changes from version 0.16.3
+  * First version with custom Debian and Ubuntu packages. See :gh:`663`.
+  * Remove invalid ASCII control characters from server responses. See :gh:`626`.
+  * Python 3.3 is no longer supported. See :ghpr:`674`.
+- Changes from version 0.16.2
+  * Fix crash when using daterange or item_type filters in
+    :storage:`google_calendar`, see :gh:`657`.
+  * Fixes for new version ``0.2.0`` of ``click-log``. The version
+    requirements for the dependency ``click-log`` changed.
+- Changes from version 0.16.1
+  * Removed remoteStorage support, see :gh:`647`.
+  * Fixed test failures caused by latest requests version, see :gh:`660`.
+
+-------------------------------------------------------------------
+Tue Jul  4 12:30:14 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.16.0
+  * Strip METHOD:PUBLISH added by some calendar providers, see
+    :gh:`502`.
+  * Fix crash of Google storages when saving token file.
+  * Make DAV discovery more RFC-conformant, see :ghpr:`585`.
+  * Vdirsyncer is now tested against Xandikos, see :ghpr:`601`.
+  * Subfolders with a leading dot are now ignored during
+    discover for filesystem storage. This makes it easier to combine
+    it with version control.
+  * Statuses are now stored in a sqlite database. Old data is
+    automatically migrated. Users with really large datasets should
+    encounter performance improvements. This means that sqlite3 is
+    now a dependency of vdirsyncer.
+  * Vdirsyncer is now licensed under the 3-clause BSD license,
+    see :gh:`610`.
+  * Vdirsyncer now includes experimental support for EteSync,
+    see :ghpr:`614`.
+  * Vdirsyncer now uses more filesystem metadata for determining
+    whether an item changed. You will notice a possibly heavy CPU/IO
+    spike on the first sync after upgrading.
+  * Packagers: Reference systemd.service and systemd.timer unit
+    files are provided. It is recommended to install these as
+    documentation if your distribution is systemd-based.
+
+- Provides vdirsyncer only for python3.
+
+-------------------------------------------------------------------
+Fri Jun 30 16:34:31 UTC 2017 - aloisio@gmx.com
+
+- Update to 0.15.0 (see changelog.rst)
+- Renamed to python-vdirsyncer
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Fri Feb 26 13:16:42 UTC 2016 - tbechtold@suse.com
+
+- Require python-python-dateutil. package was renamed
+
+-------------------------------------------------------------------
+Wed Nov  5 09:40:34 UTC 2014 - seiler@b1-systems.de
+
+- added needed python-requests-toolbelt dependency
+
+-------------------------------------------------------------------
+Tue Nov  4 14:24:36 UTC 2014 - seiler@b1-systems.de
+
+- initial commit
+

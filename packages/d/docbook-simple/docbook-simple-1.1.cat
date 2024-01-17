@@ -1,0 +1,11 @@
+-- BEGIN OASIS TR 9401:1997 catalog for docbook-simple V1.1 --
+OVERRIDE YES
+PUBLIC "-//OASIS//DTD Simplified DocBook XML V1.1//EN" "@XML_DTD_DIR@/sdocbook.dtd"
+PUBLIC "-//OASIS//DTD Simplified DocBook XML Customization V1.1//EN" "@XML_DTD_DIR@/sdocbook-custom.dtd"
+PUBLIC "-//OASIS//DTD Simplified DocBook RefEntry XML V1.1//EN" "@XML_DTD_DIR@/sdocbookref.dtd"
+PUBLIC "-//OASIS//DTD Simplified DocBook RefEntry XML CustomizationV1.1//EN" "@XML_DTD_DIR@/sdocbookref-custom.dtd"
+SYSTEM "http://www.oasis-open.org/docbook/xml/simple/1.1/sdocbook.dtd" "@XML_DTD_DIR@/sdocbook.dtd"
+SYSTEM "http://www.oasis-open.org/docbook/xml/simple/1.1/sdocbook-custom.dtd" "@XML_DTD_DIR@/sdocbook-custom.dtd"
+SYSTEM "http://www.oasis-open.org/docbook/xml/simple/1.1/sdocbookref.dtd" "@XML_DTD_DIR@/sdocbookref.dtd"
+SYSTEM "http://www.oasis-open.org/docbook/xml/simple/1.1/sdocbookref-custom.dtd" "@XML_DTD_DIR@/sdocbookref-custom.dtd"
+-- END OASIS TR 9401:1997 catalog for docbook-simple V1.1 --

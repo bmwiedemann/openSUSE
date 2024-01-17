@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Sat Jan  6 13:10:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.0:
+  * Improved JSON field migration performance
+  * Introduce configuration to request POST only requests for
+    social authentication
+  * Updated list of supported Django and Python versions
+  * Uses Django native JSON field
+  * Removed support for Django<3.2
+  * Fixed missing migration issue
+  * Compatibility with recent Django and Python versions
+  * Coding style improvements
+  * Improved error handling in SocialAuthExceptionMiddleware
+
+-------------------------------------------------------------------
+Tue Mar 28 03:56:09 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Add dependency python-jose
+
+-------------------------------------------------------------------
+Wed Apr 20 10:53:40 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
+Wed Aug 11 11:53:52 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 5.0.0
+  * Removed compat shims for obsolete Django versions
+  * Switch from deprecated django.conf.urls.url to django.urls.path
+  * Drop support for Python 2
+  * Django generic JSONField support
+  * Django 3.2+ compatibility
+
+-------------------------------------------------------------------
+Wed Aug 19 09:42:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build on leap as we require too new django for py2
+
+-------------------------------------------------------------------
+Wed Jul  1 12:27:13 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 4.0.0
+  * Dropped support for older Django versions (1.8, 1.9, 1.10, 2.0)
+  * Fix `TypeError` when continuing a pipeline in Django 2.1
+
+-------------------------------------------------------------------
+Tue Jun  2 03:13:01 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove merged pr_197.patch
+- Update to version 3.4.0
+  *  Correct release mechanism
+- from v3.3.0
+  *Updated release and tests mechanism
+- from v3.2.0
+  * Increase social-core dependency version to 3.3.0
+  * Implement `get` and `delete` class methods for `DjangoNonceMixin`
+  * Added `created` and `modified` fields to `UserSocialAuth` model
+
+-------------------------------------------------------------------
+Wed Apr 24 12:19:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Export lang to fix build with older openSUSE releases
+
+-------------------------------------------------------------------
+Wed Apr 10 13:42:21 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add pr_197.patch to fix bug with Django 2.2
+
+-------------------------------------------------------------------
+Fri Nov 30 10:20:04 UTC 2018 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 3.1.0
+  * Updated JSONField.from_db_value signature to support multiple
+    Django versions by accepting just the needed parameters.
+- Changes from version 3.0.0
+  * Reduce log level of exceptions to INFO if messages app is installed
+  * Encode association secret with encodebytes if available
+  * Decode association secret for proper storage
+  * Remove obsolete code from JSONField
+  * Pass user as keyword argument to do_complete
+  * Cleanup username when using email as username
+  * Drop Python 3.3 support
+  * Correct spelling errors
+  * Correct version that renamed field.rel
+  * Reduce error logs in SocialAuthExceptionMiddleware
+
+-------------------------------------------------------------------
+Wed Aug  1 13:39:01 UTC 2018 - tchvatal@suse.com
+
+- Build properly with python2
+- Sort out with spec-cleaner to have unified look
+
+-------------------------------------------------------------------
+Wed Jul 25 18:06:09 UTC 2018 - sean.marlow@suse.com
+
+- Remove devel module dependency.
+- Move license in spec.
+
+-------------------------------------------------------------------
+Wed Jan 25 16:57:23 UTC 2018 - sean.marlow@suse.com
+
+- Initial release. v2.1.0

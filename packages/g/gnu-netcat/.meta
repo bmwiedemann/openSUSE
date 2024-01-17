@@ -1,0 +1,5 @@
+<package name="gnu-netcat" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:utilities" package="gnu-netcat"/>
+</package>

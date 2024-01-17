@@ -1,0 +1,304 @@
+-------------------------------------------------------------------
+Wed Jan 10 19:27:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.1.11:
+  * Bugfixes
+    - Allow more control over verbosity when calling ansible-galaxy (#278) @ziegenberg
+    - Fix collection installation with custom project_dir (#343) @ssbarnea
+    - Fix collection installation bug when having custom config (#344) @ssbarnea
+    - Add support for python 3.12 (#336) @ssbarnea
+    - Remove isolated option while adding sys.path (#335) @shatakshiiii
+
+-------------------------------------------------------------------
+Fri Nov 24 13:03:50 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- disable pytest's test name check
+  https://github.com/ansible/ansible-compat/issues/340
+
+-------------------------------------------------------------------
+Wed Sep  6 15:25:15 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix BuildRequires and Requires
+- ignore 4 new checks that need internet connectivity
+  * test_scan_sys_path[isolatedT-scanT-raises_not_foundT]
+  * test_scan_sys_path[isolatedT-scanF-raises_not_foundT]
+  * test_scan_sys_path[isolatedF-scanT-raises_not_foundF]
+  * test_scan_sys_path[isolatedF-scanF-raises_not_foundT]
+- update to 4.1.10:
+  * Bugfixes
+    - Catch empty collection lists (#332) @lod
+
+-------------------------------------------------------------------
+Wed Sep  6 14:55:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.9:
+  * Bugfixes
+    - Automatically add --pre when installing collections from git
+      repositories @ssbarnea
+
+-------------------------------------------------------------------
+Wed Sep  6 06:01:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.8:
+  * Bugfixes
+    - Revise site packages collection search test (#325) @cidrblock
+    - Add only those sys.paths which contain an ansible_collections
+      directory path (#322) @ajinkyau
+    - Allow git dependencies in galaxy.yml files (#321) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Sep  6 05:44:29 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.7:
+  * Bugfixes
+    - Add `sys.path` to collection paths (#318) @cidrblock
+
+-------------------------------------------------------------------
+Wed Sep  6 05:39:12 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.6:
+  * Bugfixes
+    - Fix logic on prepare environment (#310) @ssbarnea
+    - Add smoke testing with ansible-lint (#312) @ssbarnea
+    - Adapt collection install test to pass with ansible-core
+      2.15.3 changes (#313) @ssbarnea
+    - Support meta main yaml extension (#304) @zhan9san
+
+-------------------------------------------------------------------
+Fri Jul 21 12:08:15 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- releases 4.1.3 and 4.1.4 were yanked
+- update to 4.1.5:
+  * Bugfixes
+    - Fix find roles inside collection repository (#297) @ajinkyau
+    - Enable packit rpm packaging (#292) @ssbarnea
+
+-------------------------------------------------------------------
+Fri Jul 21 07:02:13 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on setuptools_scm_git_archive.
+- Do not use a glob in %files
+
+-------------------------------------------------------------------
+Thu Jun  1 12:53:48 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.2:
+  * Bugfixes
+    - Avoid stdout pollution cause by ansible logging (#287)
+      @ajinkyau
+
+-------------------------------------------------------------------
+Tue May 30 11:44:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.1:
+  * Bugfixes
+    - Disable Ansible debug mode for sub-commands (#284) @ssbarnea
+    - Log retry attempt only when doing retries (#283) @ssbarnea
+
+-------------------------------------------------------------------
+Wed May 24 14:05:34 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.0:
+  * Minor Changes
+    - Enable access to available plugins (#277) @ssbarnea
+  * Bugfixes
+    - Avoid creating ~/.ansible/collections (#280) @ssbarnea
+
+-------------------------------------------------------------------
+Mon May 22 05:42:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.0.5:
+  * Bugfixes
+    - Improve requirements.yml detection (#275) @ssbarnea
+- update to 4.0.4:
+  * Bugfixes
+    - Allow use of * version on dependencies (#268) @ssbarnea
+- update to 4.0.3:
+  * Bugfixes
+    - Automatically install tests/requirements.yml when found
+      (#266) @ssbarnea
+    - Also install requirements from galaxy.yml files (#265)
+      @ssbarnea
+    - Include original message in AnsibleWarning (#264) @ssbarnea
+- update to 4.0.2:
+  * Bugfixes
+    - Revert to previous behavior for ansible_collections_path
+      (#261) @ajinkyau
+- update to 4.0.1 (4.0.0 does not exist):
+  * Major Changes
+    - Rename Runtime.exec to Runtime.run (#256) @ssbarnea
+    - Introduce use of JSON recursive type (#253) @ssbarnea
+    - ruff: Make optional arguments keyword-only (#251) @ssbarnea
+    - Finish pathlib migration (#245) @ssbarnea
+    - Make Runtime.project_dir use Path (#244) @ssbarnea
+    - Migrate some functions to use Path (#243) @ssbarnea
+    - Make Runtime.cache_dir use Path (#240) @ssbarnea
+    - Remove support for py38 (#239) @ssbarnea
+  * Minor Changes
+    - Monkeypatch ansible core Display.warning (#238) @ssbarnea
+  * Bugfixes
+    - Use YAML safe loader instead of full loader (#255) @ssbarnea
+    - Use dataclass sorting for json schema errors (#254) @ssbarnea
+    - ruff: Address more skips (#249) @ssbarnea
+    - ruff: address TRY and T201 (#248) @ssbarnea
+    - ruff: Address EM (#247) @ssbarnea
+    - Convert more code to pathlib (#242) @ssbarnea
+
+-------------------------------------------------------------------
+Fri May 19 07:25:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE
+
+-------------------------------------------------------------------
+Tue May 16 09:43:46 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework %if condition to work with new sle15_python_module_pythons
+  macro on SLES15/Leap15
+
+-------------------------------------------------------------------
+Fri Apr 14 06:54:22 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 3.0.2:
+  * Change install_collection to avoid use of -p (#233) @ssbarnea
+  * Correct documentation links (#232) @ssbarnea
+  * Avoid using -p option with ansible-galaxy install (#230)
+    @ssbarnea
+  * Fix collection loading (#223) @apatard
+
+-------------------------------------------------------------------
+Tue Jan 31 15:05:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 3.0.0:
+  * Major Changes
+    - Require ansible-core 2.12 or newer (#215) @ssbarnea
+  * Minor Changes
+    - Address ansible 2.15 compatibility related to AnsibleCollectionConfig (#213) @ssbarnea
+  * Bugfixes
+    - Required subprocess-tee>=0.4.1 (#211) @ssbarnea
+- update to 3.0.1:
+  * Bugfixes
+    - Avoid double initialization of ansible runtime (#218) @ssbarnea
+    - Update README.md for 3.0.0 release (#217) @ianw
+
+-------------------------------------------------------------------
+Sun Dec 18 20:51:46 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- ignore deprecation warning for 'There is no current event loop'
+
+-------------------------------------------------------------------
+Sat Dec 10 16:53:30 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.7:
+  * Bugfixes
+    - Restore offline more functionality (#201) @ssbarnea
+
+-------------------------------------------------------------------
+Thu Dec  1 05:48:32 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.6:
+  * Bugfixes
+    - Adopt PEP-621 for packaging (#195) @ssbarnea
+    - Revert "Avoid running galaxy on offline mode (#180)" (#192) @ssbarnea
+
+-------------------------------------------------------------------
+Fri Nov 25 07:12:13 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec file to define %pythons to python310 for Leap15 and SLES15,
+  using the python version 3.10 that ansible is built against
+- add explicit Requires for python*-subprocess-tee, that is not being added
+  automatically
+
+-------------------------------------------------------------------
+Fri Nov 18 06:37:34 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.5:
+  * Bugfixes
+    - Make galaxy installation verbose (#190) @ssbarnea
+    - Log current directory before running galaxy install (#188) @ssbarnea
+    - Update build-system dependency for setuptools-scm to >= 7.0.0 (#186) @dvzrv
+    - Update devtools repo url (#185) @ssbarnea
+
+-------------------------------------------------------------------
+Tue Nov 15 15:40:25 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.4:
+  * Bugfixes
+    - Avoid running galaxy on offline mode (#180) @ssbarnea
+
+-------------------------------------------------------------------
+Mon Oct 31 13:04:54 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.3:
+  * Bugfixes
+    - Correct offline cli arg support check (#178) @ssbarnea
+
+-------------------------------------------------------------------
+Mon Oct 31 11:52:08 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.2:
+  * Bugfixes
+    - Add packaging to dependencies (#173) @ssbarnea
+    - Pass offline argument to galaxy command when needed (#172) @ssbarnea
+
+-------------------------------------------------------------------
+Sun Sep 25 12:50:57 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.1:
+  * Bugfixes
+    - Avoid galaxy install failure with already symlinked collections (#166) @ssbarnea
+    - Avoid python warning about unknown warning category (#164) @ssbarnea
+
+-------------------------------------------------------------------
+Thu Jul 28 20:45:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.0:
+  * Minor Changes
+    - Allow installation of pre-released collections (#157) @ssbarnea
+    - Add support for python 3.11 (#155) @ssbarnea
+  * Bugfixes
+    - Refactor schema testing (#152) @ssbarnea
+    - Use jsonschema 4.6.0 (#153) @ssbarnea
+    - Avoid CryptographyDeprecationWarning from paramiko (#150) @ssbarnea
+
+-------------------------------------------------------------------
+Tue Jun 14 21:02:38 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.1.0:
+ - Minor Changes
+  - Add module to work with schemas (#143) @ssbarnea
+ - Bugfixes
+  - Expose role_name_check in prepare_environment (#147) @zhan9san
+  - Install role in cache dir (#135) @zhan9san
+  - Prevent occasional FileExistsError with symlink recreation (#145) @ssbarnea
+
+-------------------------------------------------------------------
+Sun May 22 10:21:20 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.0.4:
+ - Add support for tower requirements (#140)
+ - Add offline option to prepare_environment (#138)
+   Fixes: #137
+
+-------------------------------------------------------------------
+Fri Apr  1 18:50:42 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Add missing build dependency setuptools_scm.
+
+-------------------------------------------------------------------
+Tue Mar 29 20:14:16 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.0.2:
+ - Ensure get_cache_dir works with relative paths (#131)
+ - Make cache_key portable (#127)
+   This will help getting the behavior more portable across different
+   systems, as the cache key for specific project name should be the
+   same, regardless location of user home directory or the source code
+   location.
+ - Correct pylint version (#128)
+   We previously used unreleased version of pylint.
+
+-------------------------------------------------------------------
+Tue Mar 15 20:51:08 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Initial package for version 2.0.0.

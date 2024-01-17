@@ -1,0 +1,350 @@
+-------------------------------------------------------------------
+Fri Jan 12 07:27:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.1:
+  Bug Fixes:
+  * Offset widths in grid mode with utf8 filenames
+  * Format the code
+  * Unformat the code where needed
+  * Format the code correctly this time
+  * Redo everything from scratch
+  * Stack overflow when '-laaR' are used
+  * Stack overflow when '-laaR' is used
+  Features:
+  * Add Fortran icons
+
+-------------------------------------------------------------------
+Wed Dec 13 17:13:28 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  Breaking changes:
+  * Extend the +<FORMAT> custom time style, accept an optional
+    ...<newline><FORMAT_2> to support setting a different custom time
+    style for recent files.
+    The behavior changes if the previous format string
+    already contains <newline>. Previously <newline>s are used as-is,
+    now the first newline will be interpreted as separation for non-recent
+    and recnet format; any content after the second newline, if any, are
+    simply ignored.
+    The implementation rejects some previously accepted
+    inputs, primarily empty non-recent format string. --time-style=+
+    and --time-style='+<newline>' will now get a panic message.
+  Bug Fixes:
+  * Add color scale mode to the bash completions
+  * Add color scale mode to the fish completions
+  * Quote symbolic links correctly when their destinations contain spaces
+  Documentation:
+  * Modify documentation about custom time style
+  Features:
+  * Add BSD file flags
+  * Add Windows file attributes
+  * [breaking] Support different custom time style for non-recent/recent files
+
+-------------------------------------------------------------------
+Thu Dec  7 06:53:42 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.3:
+  * Add bare git_repos fn if feature git is disabled
+  * Fixing color of size unit
+  * Color-scale broked size for colors
+
+-------------------------------------------------------------------
+Fri Dec  1 07:18:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.2:
+  * Calculate width correctly when using grid icons & classify
+  * Fix the windows build
+
+-------------------------------------------------------------------
+Thu Nov 23 07:24:18 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.1:
+  Bug Fixes:
+  * Don't panic with todo!() on inaccessible dir
+  * Don't panic if the btime of a file is Err
+  * Lifetime annotations and manpage/shell completion nits
+  * Reflow help
+  Features:
+  * Handle formatting and display of binary extended attributes.
+  * Add netbsd and freebsd support for extended attributes
+
+-------------------------------------------------------------------
+Thu Nov 16 10:33:26 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  Bug Fixes:
+  * [breaking] Remove Repo column when using --git-repos when no git repo
+  * Fix cross compilation
+  * Snap requires a base
+  * Move --smart-group to long view options
+  * Colo[u]r-scale didn't have a base value
+  * Fix snapcraft.yaml formatting
+  Documentation:
+  * Add comments for bzip variants
+  * Added the fact that total-size is unix only
+  Features:
+  * Add some file extensions
+  * Abort on panic (saving 0.1 M)
+  * Add powertest
+- Switch from ~ to + in version
+
+-------------------------------------------------------------------
+Fri Nov 10 19:24:36 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.3:
+  Bug Fixes:
+  * Changed quote in --almost-all completion
+  * Reformat help.rs
+  * Allow unused macro rule arms
+  Documentation:
+  * Improve CONTRIBUTING.md, README.md
+  * Improve README.md
+  * Introduce INSTALL.md
+  Features:
+  * Create EZA_ICONS_AUTO environment variable
+  * Create EZA_ICONS_AUTO environment variable
+  * Demo gif and gif generation recipe
+  * Add ocaml icon filetypes
+  * Add PRQL
+  * Add --color-scale
+
+-------------------------------------------------------------------
+Thu Nov  2 09:52:43 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.2:
+  * Correct width when --no-quotes is used
+  * Clippy lint and add option to grid-details
+  * --smart-group only worked for current user
+  * Add Typst to the recognized files
+
+-------------------------------------------------------------------
+Thu Oct 26 14:47:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * Fmt, windows, and nix fixes
+  * Reverted autofmt changes
+  * Don’t display target’s size if we’re not dereferencing
+  * Updated match indents
+  * Changed flag name
+  * Only store top-level recursive dir size
+  * Changed windows methods
+  * Underscored unused windows variables
+  * Added device for filesystem to hashmap
+  * Display offset for filenames with spaces
+  * Fix clippy warnings
+  * Fix doc-tests on RecursiveSize
+  * Fix dead_code warnings on Windows
+  * Added flag to readme
+  * Added flag to man
+  * Fix doc-tests formatting and address other documentation review requests
+  * Added recursive directory parser
+  * Added flag to completions
+  * Add a new filetype for source code files
+  * Add a new icons for source code files and other files
+  * Support for displaying blocksize on directories
+- Drop fix-offset-for-filenames-with-spaces.patch
+
+-------------------------------------------------------------------
+Wed Oct 25 22:46:05 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add fix-offset-for-filenames-with-spaces.patch. Fixes ugly offset
+
+-------------------------------------------------------------------
+Thu Oct 19 14:48:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.0:
+  * Reenable debug symbols in debug builds
+  * Clippy lint
+  * Merge conflict with main
+  * Correct color option spellings
+  * Add option --smart-group
+  * Add completions, man for --smart-group
+  * Add icons=always,auto,never. dont display icons in a tty|piped
+  * Fix auto value for colors and icons + documentation
+  * [breaking] Remove --no-icons in favor of --icons=always,auto,never
+    default is auto
+
+-------------------------------------------------------------------
+Fri Oct 13 07:25:31 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.2:
+  * Comment out redundant static musl build
+  * Refactor sed command to build manpages
+  * Update additional completions for help, almost-all, dereference
+  * Fix zsh completions
+  * Add missing options to man page and CLI --help info
+  * Add missing nu shell completions
+  * Adding the EZA_OVERRIDE_GIT env var
+
+-------------------------------------------------------------------
+Sun Oct  8 10:41:21 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.1:
+  * Replace left-over exa in fish completion
+  * Diabling static linked binaries due to segfault
+  * Make os error 13 fail loud
+  * Adjust change width calculations for hyperlink and classify
+  * Root group not painted as expected when eza used by root
+  * Add basic nushell completion file
+
+-------------------------------------------------------------------
+Mon Oct  2 13:28:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.14.0:
+  * BREAKING CHANGES:
+    + "un" does no longer set color for root user use "uR" instead
+    + "gn" does no longer set color for root group use "gR" instead
+    + This is a change in behaviour from before, and so we
+      have marked it as breaking. In practice, it probably won't break
+      anything except if you're doing something really weird.
+  * We now have --time-style, for date like time formatting
+  * Add quotations around filenames with spaces. exa pr#1165
+  * Added statically linked binaries
+  * Add header to colors-explanation page
+  * Some new icons
+
+-------------------------------------------------------------------
+Mon Sep 25 14:21:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  Bug Fixes:
+  * Typo this -> that
+  * Error for missed semicolon
+  * More than 3 bools in a struct
+  * Major and minor device on MacOS
+  * Linux uses u32 for major/minor device numbers
+  * Respect spec on Windows and make it for with Konsole
+  * Don’t show color when color is disabled
+  * Enable rustfmt by removing .rustfmt.toml which disables it
+  * Replace rustfmt::skip on expressions because experimental
+  * Remove unnecessary rustfmt::skip's in windows code
+  * Add src/options/flags.rs to rustfmt.excludes
+  * Left-over merge conflict in src/output/table
+  Documentation:
+  * Update README.md
+  * Update --mounts option to include MacOS
+  * Documenting --only-files
+  Features:
+  * Listing files only using '--only-files' flag
+    Add EXA_COLOR bindings for un-themed items
+  * Add EZA_ environment variables with fallback to EXA_
+  * Add rustfmt check to unit-tests workflow
+  Miscellaneous Tasks:
+  * Add completion for --only-fies (zsh,fish)
+
+-------------------------------------------------------------------
+Mon Sep 18 18:45:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  Features:
+  * Add completion files in deb packaging script
+  * Adds filtering for Windows hidden files
+  * Support --mount option on Mac
+  * Lazy loading of a files extended attributes and absolute path
+  Bug Fixes:
+  * Crate can't contain broken symlink
+  * Remove executable flag from fish completion file
+  * Use proc_mounts only on linux
+  * Hotfix harmful documentation
+  * Fix hyperlinks on Windows
+  * Nix flake check also builds the package
+  * [breaking] Change number_huge and unit_huge to match the man page short codes
+
+-------------------------------------------------------------------
+Fri Sep 15 09:45:17 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Add version to provides/obsoletes
+
+-------------------------------------------------------------------
+Fri Sep 15 05:31:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  Bug Fixes:
+  * Expand --all help
+  * RUSTSEC-2020-0071
+  * Generalize gitignore to ignore all eza deb packages
+  * Canonicalize errors when the destination of a symbolic link is bad
+  * Handle other canonicalize errors in hyperlinks and git
+  * Fix windows build when canonicalize returns an error
+  * Change trycmd config to use test/itest folder for testing
+  * Revert to old apt install command suggestion and add hint
+  * Remove stray backslashes
+  * Is_some_and is an unstable Rust feature until 1.70
+  * Revert "Support for Windows Hidden Files"
+  * Shellcheck warnings
+  * Revert "Support for Windows Hidden Files"
+  * Shellcheck warnings
+  * Exit 13 on os error 13
+  * Rewrite comment
+  * Improve trace strings
+  * Tracing typo
+  Documentation:
+  * Expand --all documentation
+  * Add pthorpe92 gist
+  * Remove xtests section from readme
+  * Add deprecation warning to xtests/readme
+  * Add deprecation warning to just xtest commands
+  * Add deprecation warning to vagrantfile
+  * Add MacPorts install info
+  * Add gentoo
+  * Fix gentoo install
+  * Add docs for --git-repos & --git-repos-no-status
+  * Fix gpg armor flag for deb release in readme
+  * Add better explanation of git repos + no status
+  * Add scoop install info
+  * Remove color specifications. change unknown git repo status to ~
+  * Fix missing color specification from man page
+  Features
+  * Add audit workflow
+  * Add trycmd as dev-dependency
+  * Add minimal trycmd binary
+  * Add a few trycmd tests as example
+  * Document and change output for --git-repos
+  * Add apt installation workflow
+  * Adds filtering on Windows hidden files
+  * Adds filtering on Windows hidden files
+  * Adds filtering on Windows hidden files
+  * Added shellcheck to treefmt
+  * Adds filtering on Windows hidden files
+  * Add PERMISSION_DENIED exit code
+
+-------------------------------------------------------------------
+Mon Sep 11 10:39:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Add Provides/Obsoletes exa
+  Since exa seems not maintained and eza wants to continue
+  its work
+
+-------------------------------------------------------------------
+Mon Sep 11 09:10:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.1:
+  Bug Fixes:
+  * Add vendored-libgit2 feature to git2 dependency
+  * Filename escaping (last character lost sometimes, no hyperlink)
+  * Build for Windows with chrono
+  Documentation:
+  * Explain vendored-libgit2
+  * Add homebrew, misc fixes
+  * Fix code of conduct link
+  * Update archlinux
+  * Add star history
+  * Add informaton about lazy_static
+  * Remove broken dependabot link
+  * Add bright color options in man pages
+  * Add bright color support in readme changelog
+  Features:
+  * Add highlighting of mounted directories (Linux only)
+  * Add backlog of icons from various exa pull requests and others
+  * Mark .git as ignored, which hides it when using --git-ignore
+  * Add backlog of icons from various exa issues
+  * Expose git2 feature vendored-libgit2
+  * Add build commands to deb-package.sh
+  * Support the MSRV of Rust (1.65.0)
+  * Add bright colour options, change punctuation default
+  * Use chrono crate to handle datetime-related features
+
+-------------------------------------------------------------------
+Thu Sep  7 17:42:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package for eza 0.11.0 for openSUSE

@@ -1,0 +1,2 @@
+# Ignore the following warnings in the source package
+addFilter("bazel-apple-support-source.* suse-filelist-forbidden-fhs23")

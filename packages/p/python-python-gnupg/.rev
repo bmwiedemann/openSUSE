@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c61ba04f643dee82caf6e309bc995fe</srcmd5>
+    <version>0.4.1</version>
+    <time>1506453254</time>
+    <user>dimstar_suse</user>
+    <comment>Rename python-gnupg to follow python package naming rules</comment>
+    <requestid>521752</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>74d5c9c28f11136ac417efd4be134d61</srcmd5>
+    <version>0.4.1</version>
+    <time>1507896974</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533144</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8bd037c2fb07f0ba8646fd93d2658b6d</srcmd5>
+    <version>0.4.3</version>
+    <time>1529402376</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616620</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>357af976ade8f4a7a8ae2cb8db63588f</srcmd5>
+    <version>0.4.3</version>
+    <time>1545648154</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659613</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>16c2594af6f1cb3759e5a2e015409c34</srcmd5>
+    <version>0.4.4</version>
+    <time>1548452651</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests
+
+- Update to 0.4.4:
+  * Changed how any return value from the ``on_data`` callable is processed. In
+    earlier versions, the return value was ignored. In this version, if the
+    return value is ``False``, the data received from ``gpg`` is not buffered.
+    Otherwise (if the value is ``None`` or ``True``, for example), the data is
+    buffered as normal. This functionality can be used to do your own
+    buffering, or to prevent buffering altogether.  The ``on_data`` callable is
+    also called once with an empty byte-string to signal the end of data from
+    ``gpg``.
+  * Added an additional attribute ``check_fingerprint_collisions`` to
+    ``GPG`` instances, which defaults to ``False``. It seems that ``gpg`` is
+    happy to have duplicate keys and fingerprints in a keyring, so we can't be
+    too strict. A user can set this attribute of an instance to ``True`` to
+    trigger a check for collisions.
+  * With GnuPG 2.2.7 or later, provide the fingerprint of a signing key for a
+    failed signature verification, if available.
+  * For verification where multiple signatures are involved, a mapping of
+    signature_ids to fingerprint, keyid, username, creation date, creation
+    timestamp and expiry timestamp is provided.
+  * Added a check to disallow certain control characters ('\r', '\n', NUL) in
+    passphrases.</comment>
+    <requestid>668267</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dc59ac14b7ef2f5e8198451798a9018a</srcmd5>
+    <version>0.4.4</version>
+    <time>1549017927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669857</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>54c7dc54937c82703598a2eebc46c3b9</srcmd5>
+    <version>0.4.4</version>
+    <time>1555574176</time>
+    <user>dimstar_suse</user>
+    <comment>Switch to pytest runner, which seems to be a way more stable in
+providing the results. (forwarded request 695023 from mcepl)</comment>
+    <requestid>695024</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>421d829598189247c8dc86c61de9d036</srcmd5>
+    <version>0.4.5</version>
+    <time>1568190968</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.5:
+  * various bugfixes</comment>
+    <requestid>729817</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a0440bb5d552d7c72ba0d76b160556c5</srcmd5>
+    <version>0.4.6</version>
+    <time>1596652203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824526</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ccef9457a7d898b55870bc65678bd2cf</srcmd5>
+    <version>0.4.7</version>
+    <time>1628108901</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.7:
+  * Added support for no passphrase during key generation.
+  * Improved permission-denied test. 
+  * Updated logging to only show partial results.
+  * Allowed a passphrase to be passed to import_keys().</comment>
+    <requestid>909590</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>158f84bae79179c1c246c1d662ef4124</srcmd5>
+    <version>0.4.8</version>
+    <time>1639075502</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.8:
+  * Return gpg's return code in all result instances.
+  * Add check for invalid file objects.
+  * Provide more useful status message when a secret key is absent.
+  * Added a get_recipients() API to find the recipients of an encrypted
+    message without decrypting it.</comment>
+    <requestid>934532</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>67d7ea1292ca7cb2f2de50be38df7ac5</srcmd5>
+    <version>0.4.9</version>
+    <time>1654506629</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.9:
+  * Added a status attribute to the returned object from gen_key()
+  * Provide the ability to add subkeys. 
+  * Add keygrip values to the information collected when keys are listed.
+  * Added extra_args keyword argument to send_keys(), recv_keys() and
+    search_keys() to allow passing options relating to key servers.</comment>
+    <requestid>980771</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>66463982d56cd31f689efeaf05f0bfcd</srcmd5>
+    <version>0.5.0</version>
+    <time>1663438248</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * Fixed #181: Added the ability to pass file paths to encrypt_file, decrypt_file,
+    sign_file, verify_file, get_recipients_file and added import_keys_file.
+  * Fixed #183: Handle FAILURE and UNEXPECTED conditions correctly. Thanks to sebbASF for
+    the patch.
+  * Fixed #185: Handle VALIDSIG arguments more robustly.
+  * Fixed #188: Remove handling of DECRYPTION_FAILED from Verify code, as not required
+    there. Thanks to sebbASF for the patch.
+  * Fixed #190: Handle KEY_CREATED more robustly.
+  * Fixed #191: Handle NODATA messages during verification.
+  * Fixed #196: Don't log chunk data by default, as it could contain sensitive
+    information (during decryption, for example).
+  * Added the ability to pass an environment to the gpg executable. Thanks to Edvard
+    Rejthar for the patch.</comment>
+    <requestid>1004263</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>115edff8e0af238778cc6dd315d1db60</srcmd5>
+    <version>0.5.0</version>
+    <time>1683403753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085088</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b1336b46d7919685adf3de15692240a0</srcmd5>
+    <version>0.5.1</version>
+    <time>1701533580</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.1:
+  * Added ``TRUST_EXPIRED`` to ``trust_keys``. Thanks to Leif Liddy
+    for the patch.
+  * Fix #206: Remove deprecated ``--always-trust`` in favour of
+    ``--trust-model always``
+  * Fix #208: Add ``status_detail`` attribute to result objects which
+  * is populated when the status is ``'invalid recipient'``
+    (encryption/decryption) or ``'invalid signer'``
+    (signing). This attribute will be set when the result object's
+    ``status`` attribute is set to ``invalid recipient`` and will
+    contain more information about the failure in the form of
+    ``reason:ident`` where ``reason`` is a text description of the
+    reason, and ``ident`` identifies the recipient key.
+  * Add ``scan_keys_mem()`` function to scan keys in a string. Thanks
+    to Sky Moore for the patch.
+  * Fix #214: Handle multiple signatures when one of them is invalid
+    or unverified.
+  * A ``problems`` attribute was added which holds problems reported
+    by ``gpg`` during verification. This is a list of dictionaries,
+    one for each reported problem. Each dictionary will have
+    ``status`` and ``keyid`` keys indicating
+    the problem and the corresponding key; other information in the
+    dictionaries will be error specific.
+  * Fix #217: Use machine-readable interface to query the ``gpg``
+    version.
+  * Added the ability to export keys to a file.
+
+  * Provide the ability to add subkeys.
+    search_keys() to allow passing options relating to key servers.
+  * Improved permission-denied test.</comment>
+    <requestid>1130337</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ecc77be9abc367d8a93462d82551ca5c</srcmd5>
+    <version>0.5.2</version>
+    <time>1702673299</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.2:
+  * Fix #228: Clarify documentation for encryption/decryption.
+  * Make I/O buffer size configurable via ``buffer_size`` attribute
+    on a ``GPG`` instance.</comment>
+    <requestid>1133187</requestid>
+  </revision>
+</revisionlist>

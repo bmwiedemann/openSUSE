@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Apr 30 14:11:54 UTC 2018 - jengelh@inai.de
+
+- Trim filler wording and metadata repetitions from description.
+
+-------------------------------------------------------------------
+Mon Apr 23 22:37:06 UTC 2018 - astieger@suse.com
+
+- License is GPL-2.0-or-later
+- Use %license (boo#1082318)
+- remove gpg-offline dependency, part of source validator now
+- use source URLs
+
+-------------------------------------------------------------------
+Wed May 14 09:06:31 UTC 2014 - sleep_walker@suse.cz
+
+- conflict with netcat-openbsd
+
+-------------------------------------------------------------------
+Tue May 13 17:38:51 UTC 2014 - sleep_walker@suse.cz
+
+- set proper category
+
+-------------------------------------------------------------------
+Tue May 13 17:31:18 UTC 2014 - sleep_walker@suse.cz
+
+- run spec file through spec-cleaner
+
+-------------------------------------------------------------------
+Tue May 13 12:49:52 UTC 2014 - sleep_walker@suse.cz
+
+- let there be gnu-netcat!
+

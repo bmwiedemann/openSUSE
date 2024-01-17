@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:09:08 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Jan 10 07:24:46 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xml-hamlet to version 0.5.0.2.
+  ## 0.5.0.2
+
+  * Compat with TH 2.18 [#172](https://github.com/snoyberg/xml/pull/172)
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Sep 15 13:09:58 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 4GB disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:43 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:14 UTC 2020 - psimons@suse.com
+
+- Add xml-hamlet at version 0.5.0.1.
+

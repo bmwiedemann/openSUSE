@@ -1,0 +1,13 @@
+Index: rkhunter-1.4.2/files/rkhunter
+===================================================================
+--- rkhunter-1.4.2.orig/files/rkhunter
++++ rkhunter-1.4.2/files/rkhunter
+@@ -7416,7 +7416,7 @@ do_i18n_update() {
+ 			fi
+ 
+ 			if [ -s "${DB_PATH}/i18n/${LANGFILE}" ]; then
+-				PROG_VERS=`grep ${GREP_OPT} '^[Vv]ersion:[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$' "${DB_PATH}/i18n/${LANGFILE}" 2>/dev/null | tail ${TAIL_OPT}1 | cut -d: -f2`
++				PROG_VERS=`grep --text ${GREP_OPT} '^[Vv]ersion:[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$' "${DB_PATH}/i18n/${LANGFILE}" 2>/dev/null | tail ${TAIL_OPT}1 | cut -d: -f2`
+ 
+ 				if [ -z "${PROG_VERS}" ]; then
+ 					PROG_VERS=0

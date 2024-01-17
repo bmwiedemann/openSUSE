@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5977e5c55b652083f620b50cba9cd71</srcmd5>
+    <version>0.7.1</version>
+    <time>1400173867</time>
+    <user>coolo</user>
+    <comment>let's add gnu netcat to openSUSE Factory
+
+changes since last SR:
+ - package now conflicts with netcat-openbsd</comment>
+    <requestid>233851</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c5977e5c55b652083f620b50cba9cd71</srcmd5>
+    <version>0.7.1</version>
+    <time>1409301053</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>16c3af1d3cb501159a4c6684bc9e7e45</srcmd5>
+    <version>0.7.1</version>
+    <time>1524576918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600384</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>89f4c9c3bc5d14cf0502e8adceb88eed</srcmd5>
+    <version>0.7.1</version>
+    <time>1525343681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603393</requestid>
+  </revision>
+</revisionlist>

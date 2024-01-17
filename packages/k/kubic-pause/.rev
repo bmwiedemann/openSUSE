@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>733b9dfa2dbc29e7b2cc8d3c818d5609</srcmd5>
+    <version>0.9</version>
+    <time>1548452663</time>
+    <user>dimstar_suse</user>
+    <comment>Initial commit. Yes, the static linking is intentional - it will save us a lot of unneeded full rebuilds of the kubic-pause-image as it does not need zypper/etc.</comment>
+    <requestid>668299</requestid>
+  </revision>
+</revisionlist>

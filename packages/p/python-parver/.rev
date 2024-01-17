@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ca10276843e5720d020d69400b85395</srcmd5>
+    <version>0.2.1</version>
+    <time>1551024856</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>674353</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c2a41442f440936c853bba4cf4f7c13d</srcmd5>
+    <version>0.3.0</version>
+    <time>1583702558</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0
+ * Version.truncate method to remove trailing zeros from the release segment
+ * Version.bump_epoch method.
+ * Version now validates each item in the release sequence.
+ * Add by keyword argument to bump_pre, bump_post, and bump_dev methods
+ * The Version constructor now uses an empty string to represent an implicit
+    zero instead of None
+ * Version.clear is no longer necessary.</comment>
+    <requestid>782054</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>37a8165e86f00fbc8bcd58f722129c56</srcmd5>
+    <version>0.3.1</version>
+    <time>1611770219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865913</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>575e506746e44c266a839fdb2a701f2e</srcmd5>
+    <version>0.3.1</version>
+    <time>1639340830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939015</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>02cd8f233e3ba9d32e5cfa7e37336bf4</srcmd5>
+    <version>0.4</version>
+    <time>1679416881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073084</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0b1efedf1aac5f312ef7b77b29ae02e9</srcmd5>
+    <version>0.5</version>
+    <time>1703198305</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5:
+  * Added support for Python 3.12
+  * Removed support for Python 3.7
+
+  * Errors raised for keyword-only argument errors on Python 3 did</comment>
+    <requestid>1134331</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sun Dec 11 18:24:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- fix typo in _service file 
+
+-------------------------------------------------------------------
+Thu Oct  6 18:42:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim descriptions for size (and drop the filler words).
+
+-------------------------------------------------------------------
+Thu Oct  6 13:35:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.4:
+  * python: Fix missing argument from build_query_tree
+  * python: Use setuptools to build python library
+  * python: Add python files to gitignore
+  * python: Add unit tests
+  * Run tests on github actions
+  * Python: Expose C++ argument to python bindings
+  * ci: Improve github actions
+  * result: make captures public
+
+-------------------------------------------------------------------
+Mon Jun 20 03:30:05 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Tue May 24 06:34:31 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Thu Apr 14 08:25:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Initial package (0.2.3) 

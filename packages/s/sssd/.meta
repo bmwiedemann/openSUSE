@@ -1,0 +1,9 @@
+<package name="sssd" project="openSUSE:Factory">
+  <title>System Security Services Daemon</title>
+  <description>Provides a set of daemons to manage access to remote directories and
+authentication mechanisms. It provides an NSS and PAM interface toward
+the system and a pluggable backend system to connect to multiple different
+account sources. It is also the basis to provide client auditing and policy
+services for projects like FreeIPA.</description>
+  <devel project="network:ldap" package="sssd"/>
+</package>

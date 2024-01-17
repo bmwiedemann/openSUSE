@@ -1,0 +1,5 @@
+<package name="ksshaskpass5" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="ksshaskpass5"/>
+</package>

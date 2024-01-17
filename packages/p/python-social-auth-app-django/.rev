@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb33d084cf1fe3d1802a719054f2c4f7</srcmd5>
+    <version>2.1.0</version>
+    <time>1533292616</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by weblate</comment>
+    <requestid>626910</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cbc507497c9435ccb122b50945a5af11</srcmd5>
+    <version>3.1.0</version>
+    <time>1543828352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653426</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>adf79bfdcef46de92c0d0c9c5b187107</srcmd5>
+    <version>3.1.0</version>
+    <time>1554977859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693002</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>02e5a41b8ae264b4d79c1f48f7339601</srcmd5>
+    <version>3.1.0</version>
+    <time>1556621836</time>
+    <user>dimstar_suse</user>
+    <comment>- Export lang to fix build with older openSUSE releases</comment>
+    <requestid>697475</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>21785e1f330557664c65ffde2838e321</srcmd5>
+    <version>3.4.0</version>
+    <time>1591101751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810766</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>29da0b6e3b65e885bd18ed3308a20be3</srcmd5>
+    <version>4.0.0</version>
+    <time>1593727971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818314</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ef2edfa4a13fcde55dce80a03f248e93</srcmd5>
+    <version>4.0.0</version>
+    <time>1597856326</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on leap as we require too new django for py2</comment>
+    <requestid>827811</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c577f38a3af2e016dd88d8e8f3f83d2</srcmd5>
+    <version>5.0.0</version>
+    <time>1629101361</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911557</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>24aeccb9121c16647e1891994e53ca76</srcmd5>
+    <version>5.0.0</version>
+    <time>1650548557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971273</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>6ff87035cea4f0c908f47ad37f50b417</srcmd5>
+    <version>5.0.0</version>
+    <time>1680018628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074815</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7a303f8ada99f3105e0335d09ce07191</srcmd5>
+    <version>5.4.0</version>
+    <time>1704558626</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.0:
+  * Improved JSON field migration performance
+  * Introduce configuration to request POST only requests for
+    social authentication
+  * Updated list of supported Django and Python versions
+  * Uses Django native JSON field
+  * Removed support for Django&lt;3.2
+  * Fixed missing migration issue
+  * Compatibility with recent Django and Python versions
+  * Coding style improvements
+  * Improved error handling in SocialAuthExceptionMiddleware
+
+    Django versions by accepting just the needed parameters.</comment>
+    <requestid>1137244</requestid>
+  </revision>
+</revisionlist>
