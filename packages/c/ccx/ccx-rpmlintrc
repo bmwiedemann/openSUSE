@@ -1,0 +1,2 @@
+# Zero length reference files
+addFilter("ccx-examples.noarch:.*zero-length /usr/share/ccx-examples-.*/.*.ref")

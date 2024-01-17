@@ -1,0 +1,17 @@
+<services>
+	<service name="tar_scm" mode="localonly">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/impallari/Cabin</param>
+		<param name="filename">google-cabin-fonts</param>
+		<param name="versionformat">3.001+git%ct.%h</param>
+		<param name="revision">70efa8c3179359cc50b01ca184fec8a694156140</param>
+		<param name="exclude">sources</param>
+		<param name="exclude">fonts/TTF</param>
+		<param name="exclude">fonts/VF</param>
+	</service>
+	<service name="set_version" mode="localonly"/>
+	<service name="recompress" mode="localonly">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+</services>

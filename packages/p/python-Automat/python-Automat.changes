@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Tue Sep 19 11:48:17 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- remove unneded six from setup.py 
+
+-------------------------------------------------------------------
+Fri Apr 21 12:19:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:10 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Tue Jan 10 11:21:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 22.10.0
+  * Fix _test_visualize.py twisted import errors
+  * Fix #17: Allow enter to have a default
+  * Use CodeType.replace() in copycode for Python > 3.8
+
+-------------------------------------------------------------------
+Thu Dec  9 17:40:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't buildrequire unmaintained m2r
+
+-------------------------------------------------------------------
+Tue Feb 18 16:58:24 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 20.2.0
+ * Fix attrs warnings
+
+-------------------------------------------------------------------
+Mon Nov 25 03:40:42 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 0.8.0:
+  * Retrieve the version from the installed distribution.
+  * Add support for Python 3.8
+  * Remove support for 3.4
+
+-------------------------------------------------------------------
+Thu Mar  7 09:09:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add mulitbuild to make sure we do not cycle
+
+-------------------------------------------------------------------
+Tue Mar  5 12:01:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to version 0.7.0:
+  * test updates
+  * pep fixes
+- Run tests
+
+-------------------------------------------------------------------
+Tue Jul  4 04:45:19 UTC 2017 - tbechtold@suse.com
+
+- update to version v0.6.0
+  * use version-specific travis environments
+  * tox/travis: enable tests on py3.5
+  * add a comment: this check doesn't catch non-None returns
+  * improve function-is-empty test to work on py3.6 too
+  * add more metadata to setup
+  * graphviz() -> asDigraph()
+  * Use inspect.getfullargspec on Py3 to avoid deprecation warnings with inspect.getargspec
+  * add tracing API, with docs
+  * Conform author metadata to `distutils.core` API
+  * tracer can return a callable to see Output invocations
+  * Make hashable classes frozen for attrs 17.1.0 (fixes #62).
+  * Assert that 'input' function bodies are empty, to avoid surprises.
+  * reject duplicate transitions (same starting state and input)
+  * tox/travis: enable tests on py3.6
+  * improve tests: more cases, make pyflakes-clean
+  * sigh, add more code to attain full test coverage
+  * make setTrace a private API, document cautions about its use
+  * cover the specimen functions in tests, remove ordify()
+  * cleanup: s/assert_no_code/assertNoCode/
+- convert to singlespec
+- fix Source url
+
+-------------------------------------------------------------------
+Tue Jan 24 23:48:39 UTC 2017 - termim@gmail.com
+
+- Initial check in version 0.4.0
+

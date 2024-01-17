@@ -1,0 +1,5 @@
+<package name="chmlib" project="openSUSE:Factory">
+  <title>A library for dealing with ITSS/CHM files</title>
+  <description>CHMLIB is a library for dealing with Microsoft ITSS/CHM format files.</description>
+  <devel project="X11:common:Factory" package="chmlib"/>
+</package>

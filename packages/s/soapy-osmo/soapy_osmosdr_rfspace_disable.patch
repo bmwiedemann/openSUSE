@@ -1,0 +1,27 @@
+From 7f55458cea166f7be1bc374ea881b654d071248f Mon Sep 17 00:00:00 2001
+From: Josh Blum <josh@joshknows.com>
+Date: Sat, 1 Jun 2019 13:03:31 -0500
+Subject: [PATCH] Disable SoapyOsmo rfspace by default in favor of SoapyNetSDR
+
+---
+ CMakeLists.txt | 6 +++++-
+ Changelog.txt  | 1 +
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0750edb..c114261 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -379,7 +379,11 @@ endif(ENABLE_BLADERF)
+ ########################################################################
+ # Setup RFSPACE component
+ ########################################################################
+-GR_REGISTER_COMPONENT("RFSPACE Receivers" ENABLE_RFSPACE)
++
++#https://github.com/pothosware/SoapyNetSDR/wiki
++option(USE_OSMO_RFSPACE "Use netsdr through SoapyNetSDR" OFF)
++
++GR_REGISTER_COMPONENT("RFSPACE Receivers" ENABLE_RFSPACE;USE_OSMO_RFSPACE)
+ if(ENABLE_RFSPACE)
+ GR_INCLUDE_SUBDIRECTORY(rfspace)
+ endif(ENABLE_RFSPACE)

@@ -1,0 +1,7 @@
+<package name="bitcoin" project="openSUSE:Factory">
+  <title>Bitcoin P2P Cryptocurrency</title>
+  <description>
+Bitcoin P2P Cryptocurrency
+  </description>
+  <devel project="network:cryptocurrencies" package="bitcoin"/>
+</package>

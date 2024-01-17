@@ -1,0 +1,28 @@
+From 107ce67661c517d1c0b63c31ed1dbe34573de445 Mon Sep 17 00:00:00 2001
+From: "FeRD (Frank Dana)" <ferdnyc@gmail.com>
+Date: Thu, 11 Jul 2019 21:20:23 -0400
+Subject: [PATCH] Correct port short-opt to -p (not -n)
+
+The getopt_long arguments specified the short option for `--port` as
+`-n`, which was not handled by the case statement, making both `-p`
+(invalid argument) and `-n` (ignored) unusable to set the port.
+---
+ src/chm_http.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/chm_http.c b/src/chm_http.c
+index 237e85a..6ae00cc 100644
+--- a/src/chm_http.c
++++ b/src/chm_http.c
+@@ -87,7 +87,7 @@ int main(int c, char **v)
+     while (1) 
+     {
+         int o;
+-        o = getopt_long (c, v, "n:b:h", longopts, &optindex);
++        o = getopt_long (c, v, "p:b:h", longopts, &optindex);
+         if (o < 0) 
+         {
+             break;
+-- 
+2.21.0
+

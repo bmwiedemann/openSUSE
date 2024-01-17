@@ -1,0 +1,5 @@
+<package name="mbedtls" project="openSUSE:Factory">
+  <title>Open Source embedded SSL/TLS cryptographic library</title>
+  <description>Open Source embedded SSL/TLS cryptographic library</description>
+  <devel project="security:tls" package="mbedtls"/>
+</package>

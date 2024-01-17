@@ -1,0 +1,78 @@
+From 472396d694ae1d8b77f8b349ab13e387b9eae629 Mon Sep 17 00:00:00 2001
+From: "FeRD (Frank Dana)" <ferdnyc@gmail.com>
+Date: Thu, 11 Jul 2019 21:16:43 -0400
+Subject: [PATCH] Print URL for server, quiet option suppresses
+
+This will display a line of text on stdout immediately after
+binding to the configured address and port:
+`Server running at http://<address>:<port>/`
+An option `-q` / `--quiet` is added, to suppress the output.
+---
+ src/chm_http.c | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/src/chm_http.c b/src/chm_http.c
+index 237e85a..84304f9 100644
+--- a/src/chm_http.c
++++ b/src/chm_http.c
+@@ -51,13 +51,14 @@
+ 
+ int config_port = 8080;
+ char config_bind[65536] = "127.0.0.1";
++char config_quiet = 0;
+ 
+ static void usage(const char *argv0)
+ {
+ #ifdef CHM_HTTP_SIMPLE
+-    fprintf(stderr, "usage: %s <filename>\n", argv0);
++    fprintf(stderr, "usage: %s [--quiet] <filename>\n", argv0);
+ #else
+-    fprintf(stderr, "usage: %s [--port=PORT] [--bind=IP] <filename>\n", argv0);
++    fprintf(stderr, "usage: %s [--quiet] [--port=PORT] [--bind=IP] <filename>\n", argv0);
+ #endif
+     exit(1);
+ }
+@@ -80,6 +81,7 @@ int main(int c, char **v)
+     {
+         { "port", required_argument, 0, 'p' },
+         { "bind", required_argument, 0, 'b' },
++        { "quiet", no_argument, 0, 'q' },
+         { "help", no_argument, 0, 'h' },
+         { 0, 0, 0, 0 }
+     };
+@@ -87,7 +89,7 @@ int main(int c, char **v)
+     while (1) 
+     {
+         int o;
+-        o = getopt_long (c, v, "p:b:h", longopts, &optindex);
++        o = getopt_long (c, v, "p:b:qh", longopts, &optindex);
+         if (o < 0) 
+         {
+             break;
+@@ -109,6 +111,10 @@ int main(int c, char **v)
+                 config_bind[65535] = '\0';
+                 break;
+ 
++            case 'q':
++                config_quiet = 1;
++                break;
++
+             case 'h':
+                 usage (v[0]);
+                 break;
+@@ -182,6 +188,12 @@ static void chmhttp_server(const char *filename)
+         exit(3);
+     }
+ 
++    /* Display URL for server */
++    if (!config_quiet)
++    {
++        printf("Server running at http://%s:%d/\n", config_bind, config_port);
++    }
++
+     /* listen for connections */
+     listen(server.socket, 75);
+     addrLen = sizeof(struct sockaddr);
+-- 
+2.21.0
+

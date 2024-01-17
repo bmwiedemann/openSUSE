@@ -1,0 +1,7 @@
+<package name="littleb" project="openSUSE:Factory">
+  <title>LittleB: Bluetooth Low Energy Library</title>
+  <description>LittleB aims to create a clean, modern and easy to use Bluetooth Low Energy API. LittleB exposes the BLE GATT API for Pure C using BlueZ over SD-Bus.
+
+</description>
+  <devel project="hardware" package="littleb"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-django-rest-framework-client" project="openSUSE:Factory">
+  <title></title>
+  <description>Python client for a Django REST Framework based web site</description>
+  <devel project="devel:languages:python:django" package="python-django-rest-framework-client"/>
+</package>

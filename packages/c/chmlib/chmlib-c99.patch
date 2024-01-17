@@ -1,0 +1,36 @@
+Avoid implicit function declarations, for C99 compatibility
+
+Include <arpa/inet.h> for inet_addr, <unistd.h> for close,
+write. Define _LARGEFILE64_SOURCE so that <unistd.h> defines pread64.
+
+This avoids build failures with future compilers which do not support
+implicit function declarations by default.
+
+Submitted upstream: <https://github.com/jedwing/CHMLib/pull/17>
+
+diff --git a/src/chm_http.c b/src/chm_http.c
+index dd2787c52dece02b..08afb24db15830f9 100644
+--- a/src/chm_http.c
++++ b/src/chm_http.c
+@@ -43,6 +43,8 @@
+ #include <sys/socket.h>
+ #include <sys/types.h>
+ #include <netinet/in.h>
++#include <arpa/inet.h>
++#include <unistd.h>
+ 
+ /* threading includes */
+ #include <pthread.h>
+diff --git a/src/chm_lib.c b/src/chm_lib.c
+index ffd213c4f66d4319..9eb9d1b915364e60 100644
+--- a/src/chm_lib.c
++++ b/src/chm_lib.c
+@@ -48,6 +48,8 @@
+  *                                                                         *
+  ***************************************************************************/
+ 
++#define _LARGEFILE64_SOURCE /* for pread64 */
++
+ #include "chm_lib.h"
+ 
+ #ifdef CHM_MT

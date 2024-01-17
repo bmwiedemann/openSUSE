@@ -1,0 +1,481 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>04a81dfdeff8a249f0637dfd5ceb26bd</srcmd5>
+    <version>3.7.2</version>
+    <time>1547130042</time>
+    <user>dimstar_suse</user>
+    <comment>- fix tarball: use the one from PyPI...
+- Update to 3.7.2
+  - Resolved issues
+    * GH#242: Fixed compilation problem on ARM platforms.
+- Update to 3.7.1
+  - New features
+    * Added type stubs to enable static type checking with mypy.
+      Thanks to Michael Nix.
+    * New ``update_after_digest`` flag for CMAC.
+  - Resolved issues
+    * GH#232: Fixed problem with gcc 4.x when compiling
+      ``ghash_clmul.c``.
+    * GH#238: Incorrect digest value produced by CMAC after cloning
+      the object.
+    * Method ``update()`` of an EAX cipher object was returning the
+      underlying CMAC object, instead of the EAX object itself.
+    * Method ``update()`` of a CMAC object was not throwing an
+      exception after the digest was computed (with ``digest()`` or
+      ``verify()``).
+- checked in python-pycrytodomex as separate package on request of
+  Dirk Müller
+- fixed source url
+- Update to 3.7.0
+  - New features
+    * Added support for Poly1305 MAC (with AES and ChaCha20 ciphers
+      for key derivation).
+    * Added support for ChaCha20-Poly1305 AEAD cipher.
+    * New parameter output for Crypto.Util.strxor.strxor, 
+      Crypto.Util.strxor.strxor_c, encrypt and decrypt methods in 
+      symmetric ciphers (Crypto.Cipher package). output is a 
+      pre-allocated buffer (a bytearray or a writeable memoryview) 
+      where the result must be stored. This requires less memory for 
+      very large payloads; it is also more efficient when encrypting 
+      (or decrypting) several small payloads.
+  - Resolved issues
+    * GH#266: AES-GCM hangs when processing more than 4GB at a time
+      on x86 with PCLMULQDQ instruction.
+  - Breaks in compatibility
+    * Drop support for Python 3.3.
+    * Remove Crypto.Util.py3compat.unhexlify and
+      Crypto.Util.py3compat.hexlify.
+    * With the old Python 2.6, use only ctypes (and not cffi) to
+      interface to native code.
+- Clean up spec
+- pycryptodomex package spec added
+- remove pycryptodomex copy in this package container
+- Update to 3.6.6
+  - Resolved issues:
+    * Fix vulnerability on AESNI ECB with payloads smaller than 
+      16 bytes.
+- Update to 3.5.5
+  - Resolved issues
+    * Fixed incorrect AES encryption/decryption with AES 
+      acceleration on x86 due to gcc’s optimization and strict 
+      aliasing rules.
+    * More prime number candidates than necessary where discarded 
+      as composite due to the limited way D values were searched 
+      in the Lucas test.
+    * Fixed ResouceWarnings and DeprecationWarnings.
+- Update to 3.5.4
+  - New features:
+    * Build Python 3.7 wheels on Linux, Windows and Mac.
+  - Resolved issues:
+    * More meaningful exceptions in case of mismatch in IV length 
+      (CBC/OFB/CFB modes).
+- Update to 3.6.3 (21 June 2018)
+  - Resolved issues
+    * GH#175: Fixed incorrect results for CTR encryption/decryption
+      with more than 8 blocks.
+- Update to 3.6.2 (19 June 2018)
+  - New features
+    * ChaCha20 accepts 96 bit nonces (in addition to 64 bit nonces)
+      as defined in RFC7539.
+    * Accelerate AES-GCM on x86 using PCLMULQDQ instruction.
+    * Accelerate AES-ECB and AES-CTR on x86 by pipelining AESNI
+      instructions.
+    * As result of the two improvements above, on x86 (Broadwell):
+      - AES-ECB and AES-CTR are 3x faster
+      - AES-GCM is 9x faster
+  - Resolved issues
+    * On Windows, MPIR library was stilled pulled in if renamed to
+      ``gmp.dll``.
+  - Breaks in compatibility
+    * In ``Crypto.Util.number``, functions ``floor_div`` and
+      ``exact_div`` have been removed. Also, ``ceil_div`` is limited
+      to non-negative terms only.
+- suggesting libgmp10 and python-cffi
+- add license file tag
+- Provide/obsolete also python-crypto for py2 package
+- fix condition to act as drop in replacement for python-pycrypto
+- Update to 3.6.1 (15 April 2018)
+  - New features
+    * Added Google Wycheproof tests (https://github.com/google/wycheproof)
+      for RSA, DSA, ECDSA, GCM, SIV, EAX, CMAC.
+    * New parameter ``mac_len`` (length of MAC tag) for CMAC.
+  - Resolved issues
+    * In certain circumstances (at counter wrapping, which happens on average after
+      32 GBi) AES GCM produced wrong ciphertexts.
+    * Method ``encrypt()`` of AES SIV cipher could be still called,
+      whereas only ``encrypt_and_digest()`` should be allowed.
+- Update to 3.6.0 (8 April 2018)
+  - New features
+    * Introduced ``export_key`` and deprecated ``exportKey`` for DSA and RSA key
+      objects.
+    * Ciphers and hash functions accept ``memoryview`` objects in input.
+    * Added support for SHA-512/224 and SHA-512/256.
+  - Resolved issues
+    * Reintroduced `Crypto.__version__` variable as in PyCrypto.
+    * Fixed compilation problem with MinGW.
+- Update to 3.5.1 (8 March 2018)
+  - Resolved issues
+    * GH#142. Fix mismatch with declaration and definition of addmul128.
+- Update to 3.5.0 (7 March 2018)
+  - New features
+    * Import and export of ECC curves in compressed form.
+    * The initial counter for a cipher in CTR mode can be a byte string
+      (in addition to an integer).
+    * Faster PBKDF2 for HMAC-based PRFs (at least 20x for short passwords,
+      more for longer passwords). Thanks to Christian Heimes for pointing
+      out the implementation was under-optimized.
+    * The salt for PBKDF2 can be either a string or bytes (GH#67).
+    * Ciphers and hash functions accept data as `bytearray`, not just
+      binary strings.
+    * The old SHA-1 and MD5 hash functions are available even when Python's
+      own `hashlib` does not include them.
+  - Resolved issues
+    * Without libgmp, modular exponentiation (since v3.4.8) crashed
+      on 32-bit big-endian systems.
+  - Breaks in compatibility
+    * Removed support for Python &lt; 2.6.
+- Update to 3.4.12 (5 February 2018)
+  - Resolved issues
+    * GH#129. pycryptodomex could only be installed via wheels.
+- Update to 3.4.11 (5 February 2018)
+  - Resolved issues
+    * GH#121. the record list was still not correct due to PEP3147
+      and __pycache__ directories. Thanks again to John O'Brien.
+- Update to 3.4.10 (2 February 2018)
+  - Resolved issues
+    * When creating ElGamal keys, the generator wasn't a square residue:
+      ElGamal encryption done with those keys cannot be secure under
+      the DDH assumption. Thanks to Weikeng Chen.
+- Update to 3.4.9 (1 February 2018)
+  - New features
+    * More meaningful error messages while importing an ECC key.
+  - Resolved issues
+    * GH#123 and #125. The SSE2 command line switch was not always passed on
+      32-bit x86 platforms.
+    * GH#121. The record list (--record) was not always correctly filled for
+      the pycryptodomex package. Thanks to John W. O'Brien.
+- Update to 3.4.8 (27 January 2018)
+  - New features
+    * Added a native extension in pure C for modular exponentiation, optimized
+      for SSE2 on x86.
+      In the process, we drop support for the arbitrary arithmetic library MPIR
+      on Windows, which is painful to compile and deploy.
+      The custom  modular exponentiation is 130% (160%) slower on an Intel CPU
+      in 32-bit (64-bit) mode, compared to MPIR. Still, that is much faster
+      that CPython's own `pow()` function which is 900% (855%) slower than MPIR.
+      Support for the GMP library on Unix remains.
+    * Added support for *manylinux* wheels.
+    * Support for Python 3.7.
+  - Resolved issues
+    * The DSA parameter 'p' prime was created with 255 bits cleared
+      (but still with the correct strength).
+    * GH#106. Not all docs were included in the tar ball.
+      Thanks to Christopher Hoskin.
+    * GH#109. ECDSA verification failed for DER encoded signatures.
+      Thanks to Alastair Houghton.
+    * Human-friendly messages for padding errors with ECB and CBC.
+- provide python-crypto 2.6.1
+- Initial version
+</comment>
+    <requestid>663335</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>749661823e3f9c59dc4b0c92ba14b235</srcmd5>
+    <version>3.8.1</version>
+    <time>1558516296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702873</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1661847a4375a7a74e72ee3630678998</srcmd5>
+    <version>3.8.2</version>
+    <time>1559837746</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.8.2:
+  * GH#291: fix strict aliasing problem, emerged with GCC 9.1.</comment>
+    <requestid>707124</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9427b2bb24dfcea8eb9ae4a50f03764e</srcmd5>
+    <version>3.9.0</version>
+    <time>1568191027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.0:
+  * Add support for loading PEM files encrypted with AES256-CBC.
+  * Add support for XChaCha20 and XChaCha20-Poly1305 ciphers.
+  * Add support for bcrypt key derivation function (Crypto.Protocol.KDF.bcrypt).
+  * Add support for left multiplication of an EC point by a scalar.
+  * Add support for importing ECC and RSA keys in the new OpenSSH format.</comment>
+    <requestid>729868</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fb5d467cc57cc24070f13d70fc0239f7</srcmd5>
+    <version>3.9.0</version>
+    <time>1568379516</time>
+    <user>lnussel_factory</user>
+    <comment>- Add export LC_ALL=en_US.UTF-8 to %build, %install and %check to
+  fix the build on older distros</comment>
+    <requestid>730127</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f8bd09c0bc91260bf66682d358fb6568</srcmd5>
+    <version>3.9.2</version>
+    <time>1573473705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747324</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a8b4d600bad48aa0032c3bbf31c42a39</srcmd5>
+    <version>3.9.2</version>
+    <time>1573504392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747355</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fa50d3fc8e665b67a8e5318c24931dce</srcmd5>
+    <version>3.9.7</version>
+    <time>1583226924</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.9.7:
+* GH#381: Make notarization possible again on OS X when using wheels.
+    Thanks to Colin Atkinson.
+  * RSA OAEP decryption was not verifying that all ``PS`` bytes are zero.
+  * GH#372: fixed memory leak for operations that use memoryviews when `cffi` is not installed.
+  * Fixed wrong ASN.1 OID for HMAC-SHA512 in PBE2.
+  * GH#341: Prevent ``key_to_english`` from creating invalid data when fed with
+    keys of length not multiple of 8. Thanks to vstoykovbg.
+  * GH#347: Fix blocking RSA signing/decryption when key has very small factor.
+    Thanks to Martijn Pieters.
+  * GH#308: Align stack of functions using SSE2 intrinsics to avoid crashes,
+    when compiled with gcc on 32-bit x86 platforms.</comment>
+    <requestid>780395</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>09abe2d5ade5f0135a33309adad12412</srcmd5>
+    <version>3.9.8</version>
+    <time>1596565544</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.9.8:
+  * GH#426: The Shamir's secret sharing implementation is not actually compatible with ``ssss``.
+  Added an optional parameter to enable interoperability.
+  * GH#427: Skip altogether loading of ``gmp.dll`` on Windows.
+  * GH#420: Fix incorrect CFB decryption when the input and the output are the same buffer.
+  * Speed up Shamir's secret sharing routines. Thanks to ncarve.</comment>
+    <requestid>824345</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7fd27e351fbd2f52c467821f7909d03c</srcmd5>
+    <version>3.9.9</version>
+    <time>1606913896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852356</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ae100f307531b45073c606f38d880eac</srcmd5>
+    <version>3.10.1</version>
+    <time>1619193036</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.10.1:
+  * Python 3 wheels use ``abi3`` ABI tag.
+  * Remove Appveyor CI.
+  
+  3.10.0 (6 February 2021)
+  ++++++++++++++++++++++++
+  
+  Resolved issues
+  ---------------
+  * Fixed a potential memory leak when initializing block ciphers.
+  * GH#466: ``Crypto.Math.miller_rabin_test()`` was still using the system random
+    source and not the one provided as parameter.
+  * GH#469: RSA objects have the method ``public_key()`` like ECC objects.
+    The old method ``publickey()`` is still available for backward compatibility.
+  * GH#476: ``Crypto.Util.Padding.unpad()`` was raising an incorrect exception
+    in case of zero-length inputs. Thanks to Captainowie.
+  * GH#491: better exception message when ``Counter.new()`` is called with an integer
+    ``initial_value`` than doesn't fit into ``nbits`` bits.
+  * GH#496: added missing ``block_size`` member for ECB cipher objects. Thanks to willem.
+  * GH#500: ``nonce`` member of an XChaCha20 cipher object was not matching the original nonce.
+    Thanks to Charles Machalow.
+  
+  Other changes
+  -------------
+  * The bulk of the test vectors have been moved to the separate
+    package ``pycryptodome-test-vectors``. As result, packages ``pycryptodome`` and
+    ``pycryptodomex`` become significantly smaller (from 14MB to 3MB).
+  * Moved CI tests and build service from Travis CI to GitHub Actions.
+  
+  Breaks in compatibility</comment>
+    <requestid>887878</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b59f627cd5ca7381267f2e9ee9678575</srcmd5>
+    <version>3.11.0</version>
+    <time>1634587149</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.11.0:
+  * GH#512: Especially for very small bit sizes, ``Crypto.Util.number.getPrime()`` was
+    occasionally generating primes larger than given the bit size.
+  * GH#552: Correct typing annotations for ``PKCS115_Cipher.decrypt()``.
+  * GH#555: ``decrypt()`` method of a PKCS#1v1.5 cipher returned a ``bytearray`` instead of ``bytes``.
+  * GH#557: External DSA domain parameters were accepted even when the modulus (``p``) was not prime.
+    This affected ``Crypto.PublicKey.DSA.generate()`` and ``Crypto.PublicKey.DSA.construct()``.
+  * Added cSHAKE128 and cSHAKE256 (of SHA-3 family).
+  * GH#558: The flag RTLD_DEEPBIND passed to ``dlopen()`` is not well supported by
+    `address sanitizers &lt;https://github.com/google/sanitizers/issues/611&gt;`_.
+    It is now possible to set the environment variable ``PYCRYPTDOME_DISABLE_DEEPBIND``
+    to drop that flag and allow security testing.</comment>
+    <requestid>925768</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ac7229ea1a92410fef5d6a86589824d2</srcmd5>
+    <version>3.12.0</version>
+    <time>1639267072</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.12.0:
+  * ECC keys in the SEC1 format can be exported and imported.
+  * Add support for KMAC128, KMAC256, TupleHash128, and TupleHash256 (NIST SP-800 185).
+  * Add support for KangarooTwelve.
+  * GH#563: An asymmetric key could not be imported as a ``memoryview``.
+  * GH#566: cSHAKE128/256 generated a wrong output for customization strings
+  * GH#582: CBC decryption generated the wrong plaintext when the input and the output were the same buffer.</comment>
+    <requestid>939978</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d88a972f1cf274116f3eada26e2a7a42</srcmd5>
+    <version>3.14.1</version>
+    <time>1644965842</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.14.1:
+  * GH#595: Fixed memory leak for GMP integers.
+  * Add support for curve NIST P-192.
+  * Add support for curve NIST P-224.
+  * GH#590: Fixed typing info for ``Crypto.PublicKey.ECC``.
+  * Relaxed ECDSA requirements for FIPS 186 signatures and accept any SHA-2 or
+  * SHA-3 hash.  ``sign()`` and ``verify()`` will be performed even if the hash is stronger
+    than the ECC key.</comment>
+    <requestid>954657</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>375921ec64e5a40a3545ccbcba9c33ec</srcmd5>
+    <version>3.14.1</version>
+    <time>1647031284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961034</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>555471957e319b54bbfd2b2b85530c6f</srcmd5>
+    <version>3.15.0</version>
+    <time>1656511309</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.15.0:
+  * Add support for curves Ed25519 and Ed448, including export and import of keys.
+  * Add support for EdDSA signatures.
+  * Add support for Asymmetric Key Packages (RFC5958) to import private keys.
+  * GH#620: for Crypto.Util.number.getPrime , do not sequentially scan numbers searching for a prime.</comment>
+    <requestid>985713</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8987b8217c644da683769f5dffd81ec2</srcmd5>
+    <version>3.16.0</version>
+    <time>1670430894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040741</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>13b1f2257c3aab1893a582a211587961</srcmd5>
+    <version>3.18.0</version>
+    <time>1685743640</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.18.0:
+  * Added support for DER BOOLEAN encodings.
+  * The library now compiles on Windows ARM64. Thanks to Niyas
+    Sait.
+  * Resolved issues
+  * GH#722: ``nonce`` attribute was not correctly set for
+    XChaCha20_Poly1305 ciphers. Thanks to Liam Haber.
+  * GH#728: Workaround for a possible x86 emulator bug in Windows
+    for ARM64.
+  * GH#739: OID encoding for arc 2 didn't accept children larger
+    than 39. Thanks to James.
+  * Correctly check that the scalar matches the point when
+    importing an ECC private key.
+
+- update to 3.17.0:
+  * Added support for the Counter Mode KDF defined in SP 800-108
+    Rev 1.
+  * Reduce the minimum tag length for the EAX cipher to 2 bytes.
+  * An RSA object has 4 new properties for the CRT coefficients:
+    ``dp``, ``dq``, ``invq`` and ``invq`` (``invp`` is the same
+    value  as the existing ``u``).
+  * GH#526: improved typing for ``RSA.construct``.
+  * GH#534: reduced memory consumption when using a large number
+    of cipher objects.
+  * GH#598: fixed missing error handling for
+    ``Util.number.inverse``.
+  * GH#629: improved typing for ``AES.new`` and the various
+    mode-specific types it returns. Thanks to Greg Werbin.
+  * GH#653: added workaround for an alleged GCC compiler bug
+    that affected Ed25519 code compiled for AVX2.</comment>
+    <requestid>1090382</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ca3e4c99137e95d01b4636b97bea4e1e</srcmd5>
+    <version>3.18.0</version>
+    <time>1687900684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095663</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e229f0293fad4621b96116ce2690c24e</srcmd5>
+    <version>3.19.0</version>
+    <time>1701121480</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.19.0:
+  * The ``update()`` methods of TupleHash128 and TupleHash256
+    objects can now hash multiple items (byte strings) at once.
+  * Added support for ECDH, with ``Crypto.Protocol.DH``.
+  * GH#754: due to a bug in ``cffi``, do not use it on Windows
+    with Python 3.12+.
+
+- Update to 3.16.0
+    * New parameter output for Crypto.Util.strxor.strxor,
+      Crypto.Util.strxor.strxor_c, encrypt and decrypt methods in
+      symmetric ciphers (Crypto.Cipher package). output is a
+      pre-allocated buffer (a bytearray or a writeable memoryview)
+      where the result must be stored. This requires less memory for
+      very large payloads; it is also more efficient when encrypting
+    * Fix vulnerability on AESNI ECB with payloads smaller than
+    * Fixed incorrect AES encryption/decryption with AES
+      acceleration on x86 due to gcc’s optimization and strict
+    * More prime number candidates than necessary where discarded
+      as composite due to the limited way D values were searched
+    * More meaningful exceptions in case of mismatch in IV length</comment>
+    <requestid>1129189</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cc202f45377e2ea8e9bdecb96cd77506</srcmd5>
+    <version>3.19.1</version>
+    <time>1704281144</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.19.1:
+  * Fixed a side-channel leakage with OAEP decryption that could be
+    exploited to carry out a Manger attack. Thanks to Hubert
+    Kario.</comment>
+    <requestid>1136276</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1dbd0f170ec2aaa98ef24a6810bab975</srcmd5>
+    <version>3.19.1</version>
+    <time>1704829895</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.19.1 (bsc#1218564, CVE-2023-52323)</comment>
+    <requestid>1137746</requestid>
+  </revision>
+</revisionlist>
