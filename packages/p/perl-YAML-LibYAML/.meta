@@ -1,0 +1,14 @@
+<package name="perl-YAML-LibYAML" project="openSUSE:Factory">
+  <title>YAML::LibYAML Perl module</title>
+  <description>Kirill Siminov's libyaml is arguably the best YAML implementation. The C
+library is written precisely to the YAML 1.1 specification. It was originally
+bound to Python and was later bound to Ruby.
+
+This module is a Perl XS binding to libyaml which offers Perl the best YAML
+support to date.
+
+This module exports the functions Dump and Load. These functions are intended
+to work exactly like YAML.pm's corresponding functions.</description>
+  <devel project="devel:languages:perl" package="perl-YAML-LibYAML"/>
+  <url>http://search.cpan.org/dist/YAML-LibYAML/</url>
+</package>

@@ -1,0 +1,6 @@
+<package name="ibus-table-chinese" project="openSUSE:Factory">
+  <title>Various Chinese input method table for IBus framework</title>
+  <description>ibus-table-chinese is provides the infrastructure for Chinese input methods.
+Input tables themselves are in sub-packages.</description>
+  <devel project="M17N" package="ibus-table-chinese"/>
+</package>

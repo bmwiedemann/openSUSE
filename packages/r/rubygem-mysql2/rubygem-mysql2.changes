@@ -1,0 +1,335 @@
+-------------------------------------------------------------------
+Fri Nov  3 07:46:49 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 0.5.5:
+
+# New
+* Support for Ruby GC compaction (#1192)
+* Add `--with-openssl-dir` option for improved linking with OpenSSL (#1303)
+
+# Changed
+* Lock on the current Fiber rather than current Thread (#1284)
+* Improve SSL support on MySQL 5.6.36+ and MariaDB Connector/C 3.0+ (#1304, #1306)
+* Additional search paths to find MySQL libraries by Homebrew (#1278)
+* README: Improve docs for SSL/TLS (#1142, #1306)
+* CI: Upgrade RuboCop and run in its own CI step (#1259, #1268, #1295)
+* CI: Update runtime environments (#1290, #1291, #1292, #1298, #1299)
+
+Full Changelog: https://github.com/brianmario/mysql2/compare/0.5.4...0.5.5
+
+
+
+-------------------------------------------------------------------
+Sun May 15 15:41:53 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+
+- updated to version 0.5.4
+
+  * The taint mechanism will be deprecated in Ruby 2.7 by @kamipo in #1083
+  * Made argument types strict for ruby 2.7 by @nobu in #1096
+  * Update rake (and rake-compiler) to suppress the warning. by @junaruga in #1099
+  * Fix crash if a Mysql2::Client object is allocated but never connected by @sodabrew in #1101
+  * Remove Enumerable include from Statement class by @adamcrown in #1104
+  * Add project metadata to the gemspec by @orien in #1089
+  * Don't call mysql_close if mysql_init wasn't called. by @fimmtiu in #1111
+  * Client session tracking by @insom in #1092
+  * Avoid a hash object allocation per each query/execute call by @kamipo in #1112
+  * Implementing type reflection from mysql result by @danhuynhdev in #1068
+  * Register C global variables to Ruby GC to avoid problems with GC.compact by @casperisfine in #1115
+  * Clarify Rails 4.2.11 support in Readme by @muzfuz in #1131
+  * Improve Homebrew compatibility by @stefansundin in #1135
+  * Tiny README syntax markup for consistency by @fwolfst in #1164
+  * Add GitHub Actions. by @junaruga in #1154
+  * Run GC.verify_compaction_references on CI by @casperisfine in #1155
+  * GitHub Actions: Add CentOS/Fedora cases. by @junaruga in #1168
+  * Random SEGV in do_send_query() by @unak in #1150
+  * GitHub Actions: Add macOS cases. by @junaruga in #1170
+  * Add GitHub Actions badges. by @junaruga in #1172
+  * Rename .travis_* files to ci/*. by @junaruga in #1171
+  * Make the benchmarks group optional. by @junaruga in #1173
+  * Verify the testing database before running tests. by @junaruga in #1174
+  * Rename the before/after hooks's symbol on RSpec 2 to the one on RSpec 3. by @junaruga in #1177
+  * Refactor CI yaml files by @junaruga in #1176
+  * Fix test failures on MariaDB by @junaruga in #1193
+  * Fix some typos [ci skip] by @kamipo in #1195
+  * Travis: Remove the command to pin Rubygems. by @junaruga in #1188
+  * Make Result#fields return interned strings in Ruby 3+ by @casperisfine in #1181
+  * Can't enable SSL with MariaDB driver library. (#1182) by @vakuum in #1183
+  * Fix broken URL [ci skip] by @gaurish in #1207
+  * Dynamically set Homebrew-installed OpenSSL flag by @olivierlacan in #1204
+  * Setup default CA path if not provided by @dbussink in #1206
+  * Allow setting VERIFY_IDENTITY for MariaDB by @dbussink in #1205
+  * Fix session tracking tests by @insom in #1222
+  * Update Mysql2::Result spec for Ruby 3.1 by @casperisfine in #1219
+  * pdate DATETIME casting tests for mysql 8.0 by @casperisfine in #1221
+  * Fix syntax by @tenderlove in #1223
+  * Fix more builds by @tenderlove in #1224
+  * Fix a mismatching size warning by @casperisfine in #1227
+  * Move rubocop to a separate CI job by @casperisfine in #1225
+  * improve ConnectionError mapping by @ThomasSevestre in #1215
+  * Undefine T_DATA allocators for Ruby 3.2 compatibility by @casperisfine in #1236
+  * Add Ruby 3.1 to the CI matrix by @casperisfine in #1235
+  * Fix to build with MySQL 5.1 by @arika in #1197
+  * fix typo in README by @nealharris in #1247
+  * Add signing key for MySQL 5.7.37 / 8.0.28 and higher by @sodabrew in #1254
+  * Remove ubuntu-16.04 from workflows by @mishina2228 in #1257
+  * Update GitHub Actions workflows by @mishina2228 in #1253
+
+-------------------------------------------------------------------
+Fri Nov 27 15:25:47 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update workaround_mysql_config_libs.patch:
+  only set rpath if it is not the standard libdir
+
+-------------------------------------------------------------------
+Thu Nov 26 17:42:58 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add workaround_mysql_config_libs.patch: (boo#1179289)
+  this should be fixed in mysql_config but for now lets sanitize
+  the path here
+
+-------------------------------------------------------------------
+Wed Nov 27 17:37:31 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- updated to version 0.5.3
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Jul  6 17:15:32 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.5.2
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Apr 11 03:41:10 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.5.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Mar 21 05:30:01 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.5.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Nov 15 08:27:31 UTC 2017 - mschnitzer@suse.com
+
+- updated to version 0.4.10
+  no changelog entry found for version 0.4.10
+
+  Fixes bsc#1067881
+
+-------------------------------------------------------------------
+Fri Aug 11 06:05:33 UTC 2017 - mschnitzer@suse.com
+
+- updated to version 0.4.9
+  # Bug Fixes
+    - Fixed enable_cleartext_plugin mode (#874)
+    - Prepared statements should handle booleans properly (#871)
+
+-------------------------------------------------------------------
+Thu Aug  3 10:16:21 UTC 2017 - cbruckmayer@suse.com
+
+- updated to version 0.4.8
+  see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Jul  3 15:27:50 UTC 2017 - mrueckert@suse.de
+
+- updated to version 0.4.7
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue May 23 10:04:10 UTC 2017 - coolo@suse.com
+
+- updated to version 0.4.6
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Oct 23 04:39:33 UTC 2016 - coolo@suse.com
+
+- updated to version 0.4.5
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Apr 20 04:32:48 UTC 2016 - coolo@suse.com
+
+- updated to version 0.4.4
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Feb 25 05:36:51 UTC 2016 - coolo@suse.com
+
+- updated to version 0.4.3
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Jan 21 13:21:29 UTC 2016 - mrueckert@suse.de
+
+- drop patch 569aa3d996a794073b0704771e45f78c7dba2182.patch:
+  included in version update
+
+-------------------------------------------------------------------
+Thu Nov 26 05:33:34 UTC 2015 - coolo@suse.com
+
+- updated to version 0.4.2
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Nov 25 14:58:56 UTC 2015 - mrueckert@suse.de
+
+- added patch for memory leak in client close method
+  569aa3d996a794073b0704771e45f78c7dba2182.patch
+
+-------------------------------------------------------------------
+Thu Sep 17 04:30:44 UTC 2015 - coolo@suse.com
+
+- updated to version 0.4.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Sep  9 04:29:48 UTC 2015 - coolo@suse.com
+
+- updated to version 0.4.0
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Aug 26 04:30:02 UTC 2015 - coolo@suse.com
+
+- updated to version 0.3.20
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Jul 31 04:31:15 UTC 2015 - coolo@suse.com
+
+- updated to version 0.3.19
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Apr  3 13:17:17 UTC 2015 - mrueckert@suse.de
+
+- add rpmlintrc
+
+-------------------------------------------------------------------
+Tue Feb 17 05:29:23 UTC 2015 - coolo@suse.com
+
+- updated to version 0.3.18
+
+-------------------------------------------------------------------
+Mon Feb  9 06:46:39 UTC 2015 - coolo@suse.com
+
+- updated to version 0.3.17, no changelog
+
+-------------------------------------------------------------------
+Wed Oct 22 07:50:03 UTC 2014 - coolo@suse.com
+
+- update to new rubygem packaging
+
+-------------------------------------------------------------------
+Sun May 18 09:04:44 UTC 2014 - coolo@suse.com
+
+- updated to version 0.3.16
+
+-------------------------------------------------------------------
+Thu Feb  6 11:56:39 UTC 2014 - coolo@suse.com
+
+- updated to version 0.3.15, no changelog maintained
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:30 UTC 2013 - coolo@suse.com
+
+- updated to version 0.3.14, no changelog maintained
+
+-------------------------------------------------------------------
+Sat Jul 20 10:49:53 UTC 2013 - coolo@suse.com
+
+- updated to version 0.3.13, changelog dropped upstream
+
+-------------------------------------------------------------------
+Fri Mar 23 11:26:13 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Thu Jan  5 01:22:36 UTC 2012 - mrueckert@suse.de
+
+- update to 0.3.11
+  see /usr/lib*/ruby/gems/1.8/gems/mysql2-0.3.11/CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Sep 21 03:17:37 UTC 2011 - mrueckert@suse.de
+
+- update to 0.3.7
+  see /usr/lib*/ruby/gems/1.8/gems/mysql2-0.3.7/CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Dec  9 19:38:47 UTC 2010 - chris@computersalat.de
+
+- update to 0.2.6
+  * version bump since the 0.2.5 win32 binary gems were broken
+- 0.2.5 (October 19th, 2010)
+  * fixes for easier Win32 binary gem deployment for targeting 1.8 and
+    1.9 in the same gem
+  * refactor of connection checks and management to avoid race
+    conditions with the GC/threading to prevent the unexpected loss
+    of connections
+  * update the default flags during connection
+  * add support for setting wait_timeout on AR adapter
+  * upgrade to rspec2
+  * bugfix for an edge case where the GC would clean up a Mysql2::Client
+    object before the underlying MYSQL pointer had been initialized
+  * fix to CFLAGS to allow compilation on SPARC with sunstudio compiler
+    - Anko painting anko.com+github@gmail.com
+- 0.2.4 (September 17th, 2010)
+  * a few patches for win32 support from Luis Lavena - thanks man!
+  * bugfix from Eric Wong to avoid a potential stack overflow during
+    Mysql2::Client#escape
+  * added the ability to turn internal row caching on/off via the
+    :cache_rows => true/false option
+  * a couple of small patches for rbx compatibility
+  * set IndexDefinition#length in AR adapter
+    - Kouhei Yanagita yanagi@shakenbu.org
+  * fix a long-standing data corruption bug - thank you thank you
+    thank you to @joedamato (http://github.com/ice799)
+  * bugfix from calling mysql_close on a closed/freed connection
+    surfaced by the above fix
+- 0.2.3 (August 20th, 2010)
+  * connection flags can now be passed to the constructor via the
+    :flags key
+  * switch AR adapter connection over to use FOUND_ROWS option
+  * patch to ensure we use DateTime objects in place of Time for
+    timestamps that are out of the supported range on
+    32bit platforms < 1.9.2
+- 0.2.2 (August 19th, 2010)
+  * Change how AR adapter would send initial commands upon connecting
+    ** we can make multiple session variable assignments in a single
+    query
+  * fix signal handling when waiting on queries
+  * retry connect if interrupted by signals
+- 0.2.1 (August 16th, 2010)
+  * bring mysql2 ActiveRecord adapter back into gem
+- 0.2.0 (August 16th, 2010)
+  * switch back to letting libmysql manage all
+    allocation/thread-state/freeing for the connection
+  * cache various numeric type conversions in hot-spots of the code
+    for a little speed boost
+  * ActiveRecord adapter moved into Rails 3 core ** Don't worry
+    2.3.x users! We'll either release the adapter as a separate gem,
+    or try to get it into 2.3.9
+  * Fix for the "closed MySQL connection" error (GH #31)
+  * Fix for the "can't modify frozen object" error in 1.9.2 (GH #37)
+  * Introduce cascading query and result options (more info in README)
+  * Sequel adapter pulled into core (will be in the next release
+    - 3.15.0 at the time of writing)
+  * add a safety check when attempting to send a query before a result
+    has been fetched
+- fix license
+  o MIT-LICENSE
+
+-------------------------------------------------------------------
+Wed Jul 28 12:26:29 UTC 2010 - mrueckert@suse.de
+
+- initial package 0.1.9
+

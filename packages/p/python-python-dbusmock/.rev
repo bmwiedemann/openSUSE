@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7bc86b28039154f89a5a52f7e6494214</srcmd5>
+    <version>0.18.1</version>
+    <time>1548064031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663326</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>85253ef9771492d958a5e1dec65c0d6f</srcmd5>
+    <version>0.18.1</version>
+    <time>1549017863</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary. Trim description, it is not a manual.
+- Update URL to new home:
+  * https://github.com/martinpitt/python-dbusmock
+</comment>
+    <requestid>668147</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3d8d81420d586ed5a68495a92c8b4b0</srcmd5>
+    <version>0.18.3</version>
+    <time>1574414339</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.3:
+  - Fix timeouts for loaded machines and parallel tests
+  - Fix tests for Python 3.8</comment>
+    <requestid>741463</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a7759660aa8f7e7d192bbfdc2a8b975e</srcmd5>
+    <version>0.18.3</version>
+    <time>1580991551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769869</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d3402c7f31cd50aae352167b7fc1ad22</srcmd5>
+    <version>0.19</version>
+    <time>1585265279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786924</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73b9fa124df8581175aae9ad1cd74408</srcmd5>
+    <version>0.24.1</version>
+    <time>1639685957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.1:
+  * Do not register standard D-Bus service directories (Thanks Benjamin Berg)
+  * templates: Add IIO Sensors Proxy support (Thanks Marco Trevisan)
+  * Fix importlib module import (Thanks Marco Trevisan)
+  * Clean up code for most recent pylint version
+  * Add Add power-profiles-daemon template (Thanks Bastien Nocera)
+  * logind: Implement Inhibit and ListInhibitors (Thanks to Benjamin Berg)
+  * Fix new complaints from pylint 2.9
+  * Fix tests for Python 3.10
+  * DBusMockObject: Add UpdateProperties() method (Thanks to Jonas Ådahl)
+  * DBusTestCase: Add bus override argument to spawn_server_template, to use
+    templates on either system or session bus; add corresponding --session CLI
+    option
+  * bluez template: Implement Pair() method on the Device interface and the
+    AgentManager1 interface (Thanks to Bastien Nocera)
+  * polkit template: Implement RegisterAuthenticationAgent() (Thanks to
+    Jonas Ådahl)
+  * Add accountsservice template (Thanks to Marco Trevisan)
+  * NetworkManager template: Fix connecting to wifi
+  * NetworkManager template: Add Reload() method
+  * tests: Replace nose test runner with standard unittest
+  * setup.py: Drop deprecated `test_suite`, run tests through
+    `python3 -m unittest` directly
+  * Add type annotations to the whole API
+  * Drop obsolete ConsoleKit and bluez4 templates/tests
+  * upower template: Drop support for 0.9 API
+  * NetworkManager template: Handle NetworkingEnable
+  * NetworkManager template: AddConnectionUnsaved
+  * Drop support for Python 2 
+- Add python-dataclasses to {Build,}Requires</comment>
+    <requestid>940130</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cb02004fc3982b01969f3d193e1954c4</srcmd5>
+    <version>0.24.1</version>
+    <time>1681387817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078647</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>30d9f07fc943ce5c93022cf73bcfa350</srcmd5>
+    <version>0.24.1</version>
+    <time>1682522637</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed not needed sle15modernpython macro
+</comment>
+    <requestid>1082656</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>b95f01513cfa302177aaa49883a78227</srcmd5>
+    <version>0.24.1</version>
+    <time>1698952798</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116817</requestid>
+  </revision>
+</revisionlist>

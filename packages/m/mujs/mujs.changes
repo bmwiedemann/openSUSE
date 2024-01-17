@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Fri May 19 08:58:10 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 1.3.3
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.3
+
+-------------------------------------------------------------------
+Sat Mar 11 09:32:09 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Allow build on leap
+
+-------------------------------------------------------------------
+Sat Jan 14 11:41:55 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.3.2
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.2
+  * 1.3.2 patch release for UAF bug fix.
+  * Bug 706057: Fix use-after-free in getOwnPropertyDescriptor.
+  * Set length of output array Array.prototype.map.
+- Update to 1.3.1
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.1
+  * Make a patch release for important iterator bug fix.
+  * Issue #166: Use special iterator for string and array indices.
+  * Enable choice of library version for shell
+  * Use $(@D) instead of $(dir $@)
+- Update to 1.3.0
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.0
+  * Avoid freeing buffer twice in case of error.
+  * Fast path for "simple" arrays.
+  * Bug 705775: Fix double fclose in pretty-printing tool.
+  * Makefile: fix parallel builds
+  * Guard state initialization with try to avoid panic in initialization.
+  * Add js_isbooleanobject and js_isdateobject functions.
+  * Issue #161: Cope with empty programs in mujs-pp.
+  * Issue #161: Don't fclose a FILE that is NULL.
+  * Issue #162: Check stack overflow during regexp compilation.
+  * Bug 705052: Don't use private STACK/TOP macros in jsstate.c
+  * Add "console" object to mujs shell.
+  * Issue #156: Fix check for duplicate formal parameters when strict.
+  * Some minor optimizations to Ap_join.
+  * array join: avoid strcat, speedup from O(N^2) to O(N)
+- Drop mujs-1.2.0-stack-exhaustion.patch because now in upstream.
+
+-------------------------------------------------------------------
+Wed May 18 15:45:51 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Added mujs-1.2.0-stack-exhaustion.patch (CVE-2022-30974, boo#1199678).
+
+-------------------------------------------------------------------
+Mon Feb 15 13:12:21 UTC 2022 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 1.2.0
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.2.0
+  * Fixed heap buffer overflow (CVE-2021-45005, boo#1195954).
+
+-------------------------------------------------------------------
+Sun Jun 27 11:43:00 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 1.1.3
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.1.3
+  * Fixed error in Array.prototype.toString().
+
+-------------------------------------------------------------------
+Mon May 17 11:36:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update mujs 1.1.2
+  * Check for overflow when reading floating point exponent
+  * Fix use-after-free in regexp source property access.
+
+-------------------------------------------------------------------
+Wed Apr 14 22:08:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update mujs 1.1.1
+  * Fix: Always create new scope for eval()
+  * Don't redefine/reset existing vars in script code
+  * Fix: RegExp.prototype should be a regular expression object
+  * Throw when redefining non-configurable/readonly properties
+  * Array:  Fix crash when length is negative
+  * fix split doesn't convert context to string if no argument is passed
+  * Parse integers with floats to support large numbers.
+  * Optimize array construction bytecode.
+  * Fix: Expose type of value as an enum with js_type()
+  * Fixed js_strtol: Prevent negative table indexing in
+- Update mujs 1.1.0
+  * Don't allow creating new properties on transient objects.
+  * Fixed escape characters in regex parser
+  * Handle NaN in Date accessors
+  * Handle undefined argument to Error constructor
+- Fixed RPM error because of missing RPM group
+
+-------------------------------------------------------------------
+Thu Mar 11 12:50:28 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Initialization mujs 1.0.9.

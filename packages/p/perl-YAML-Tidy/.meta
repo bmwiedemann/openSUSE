@@ -1,0 +1,8 @@
+<package name="perl-YAML-Tidy" project="openSUSE:Factory">
+  <title>Tidy YAML files</title>
+  <description>yamltidy can automatically tidy formatting in your YAML files, for example adjust indentation and remove trailing spaces.
+
+For more information, see https://github.com/perlpunk/yamltidy</description>
+  <devel project="devel:languages:perl" package="perl-YAML-Tidy"/>
+  <url>https://metacpan.org/pod/YAML::Tidy</url>
+</package>

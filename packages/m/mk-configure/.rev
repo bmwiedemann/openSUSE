@@ -1,0 +1,196 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40402eee7d65bcb4fbe0c8e4403bdebc</srcmd5>
+    <version>0.28.0</version>
+    <time>1411987205</time>
+    <user>coolo</user>
+    <comment>mk-configure is a lightweight replacement for GNU autotools, written in bmake (portable version of NetBSD make), POSIX shell and 
+POSIX utilities.</comment>
+    <requestid>250700</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>798e29ec855f8452b09f3f8ef1dd9f29</srcmd5>
+    <version>0.29.0</version>
+    <time>1417643308</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263808</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7cd7eeab0e1d4f6ee4a57bab7b6ea33</srcmd5>
+    <version>0.29.1</version>
+    <time>1453280079</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354439</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2e7fcfb9bb7bf36ed5b8bdb67783d84c</srcmd5>
+    <version>0.29.1</version>
+    <time>1464690285</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398808</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2719b21e77939fc977aabe96f0b4b217</srcmd5>
+    <version>0.30.0</version>
+    <time>1533627908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627778</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a7861b231500148cbe4505d0098c0fa6</srcmd5>
+    <version>0.31.0</version>
+    <time>1555322005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694135</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0b0d2ea3bce78e97e8da10ef0166635c</srcmd5>
+    <version>0.32.1</version>
+    <time>1578320582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761061</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eae0805edd61d128e2b452e6835a288d</srcmd5>
+    <version>0.34.0</version>
+    <time>1584446979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785633</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1a46cc916c3223ae7b2a7c6b423c8339</srcmd5>
+    <version>0.34.0</version>
+    <time>1584744916</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix MKC_SYSCONFDIR (/usr/etc). Now it is /etc
+- Use &quot;bmkdep&quot; as a default &quot;build dependencies&quot; tool
+  instead of &quot;makedepend&quot;.
+</comment>
+    <requestid>786723</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ba2e35cc1d00a73e30703713b8314801</srcmd5>
+    <version>0.34.1</version>
+    <time>1587581791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796154</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0c1801055145474cc8676f1d6e7e941d</srcmd5>
+    <version>0.35.0</version>
+    <time>1606913886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mk-configure-0.35.0
+  Add the following new features: arc4random, bswap, dprintf, efun,
+  errc, fparseln, fts, posix_getopt, raise_default_signals,
+  reallocarray, strsep and vis.
+  See mk-configure.7 for details.
+  Fixes: 
+    * mkc_check_decl: fix &quot;prototype&quot; mode. Extraction of function name
+      was incorrect.  Add one more regression test for this case in
+      tests/os_NetBSD.
+    * Avoid multiple repetition of MKC_COMMON_DEFINES in CPPFLAGS
+    * Fix target &quot;depend&quot; that failed if SRCS contains full path to
+      source code.
+  Move -Wreturn-type from CFLAGS.warns.{clang,gcc}.2 to
+  CFLAGS.warns.{clang,gcc}.1 and make it an error for C++
+  CC_TYPE and CXX_TYPE are correctly set if MKC_CHECK_CUSTOM is set.
+  Use .error bmake command for checking MKC_REQD.  Also, move
+  appropriate check to mkc_imp.preinit.mk, so it is checked in the
+  very beginning.  Documentation and error message are slightly
+  updated.
+  Rename variable DISTCLEANFILES to CLEANDIRFILES, DISTCLEANFILES is
+  considered deprecated.
+  Rename variable DISTCLEANDIRS to CLEANDIRDIRS, DISTCLEANDIRS is
+  considered deprecated.
+  Add support for latest Intel C/C++ compiler.  We have to always add
+  -we10006 option to it in order it fail when invalid option is used.
+  Adapt some features for using functions implementation from
+  libnbcompat and libbsd libraries.
+  Use .depend_${.CURDIR:T} instead .depend to support MAKEOBJDIR.
+  New tests and examples.
+- Update to mk-configure-0.34.2
+  Do not pass *all* CFLAGS flags to CXXFLAGS.  This fixes builds
+  where, for example, clang is used as a C compile and gcc is used as
+  a C++ compiler. Also, MKC_CHECK_* variables update MKC_CPPFLAGS
+  instead of MKC_CFLAGS.
+  Avoid &quot;install -d /&quot; if there is nothing to install.  This fixes
+  some failures on some systems/conditions and improves support for
+  foreign install(1) programs, e.g., (UCB install on Solaris)
+  Fixes for CFLAGS containing -O2 and -D_FORTIFY_SOURCE=n
+  main.mk: clean-ups for target &quot;cleandir&quot; and &quot;clean&quot;
+</comment>
+    <requestid>852333</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>92f9431642a346951ee4c76f92f2c9db</srcmd5>
+    <version>0.36.0</version>
+    <time>1610051067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860972</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ed10673502ffd0e43f09bf9ae471dd0f</srcmd5>
+    <version>0.37.0</version>
+    <time>1618235377</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884613</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>44f6863998a5fef3322bb5504f3530a4</srcmd5>
+    <version>0.37.0</version>
+    <time>1620840715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892335</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>98dc94b3dd958b6cb3c0182d4c790285</srcmd5>
+    <version>0.37.0</version>
+    <time>1623443451</time>
+    <user>dimstar_suse</user>
+    <comment>- Move macros.mkcmake from /etc/rpm to %{_rpmmacrodir}
+  (boo#1185657).
+</comment>
+    <requestid>899481</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4374fb28dafde7193958c7451d7eb508</srcmd5>
+    <version>0.38.2</version>
+    <time>1670430917</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1040791</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>30716c6f15d4e5d70b21b07e2a65837c</srcmd5>
+    <version>0.38.3</version>
+    <time>1701727309</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.38.3
+  Fix #27 by adding a compiler triplet to config file name
+  Introduce special value &quot;force&quot; for MKCOMPILERSETTINGS variable. If
+  it is set, compiler configuration file is always regenarated.
+  Regenerate compiler configuration file (~/.mkcmake) when
+  MKCOMPILERSETTINGS=yes and
+  mkc_imp.cxx/cc_${CC_TYPE}-${CC_VERSION}.mk is older than system-wide
+  one. Do the same for C++ compiler.
+  mkc_compiler_settings: detect whether linker supports -rdynamic
+  Update mk-configure.7 man page
+  mkc_check_funclib: ignore stdout of linker and redirect it to stderr
+  Fixes in examples/ (Solaris-11 and latest versions of NetBSD and
+  OpenBSD)
+</comment>
+    <requestid>1130703</requestid>
+  </revision>
+</revisionlist>

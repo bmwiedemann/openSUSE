@@ -1,0 +1,627 @@
+-------------------------------------------------------------------
+Thu Dec 28 13:09:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Added support for reading Apple MacOS universal binaries.
+  * Added callers access to certain fields from object files
+    (for all three supported object formats), and
+  * added the --print-machine-arch option to dwarfdump to show the
+    fields.
+  * Three functions were added to the API, see the Changes section
+    of the latest documentation or in libdwarf.pdf in the release.
+    No functions were deleted or had their meaning changed.
+  * Vulnerabilities found by fuzzing were fixed.
+  * See https://www.prevanders.net/dwarfbug.html for vulnerability
+    details.
+
+-------------------------------------------------------------------
+Sat Nov 18 17:11:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * The release fixes many vulnerabilities from corrupt DWARF
+    and/or corrupt Elf. Two new functions are added for DWARF Frame
+    access to get the correct sign of an argument (the pre-existing
+    functions remain in place and working avoiding any need for
+    recompilation or relinking of user code).
+
+-------------------------------------------------------------------
+Mon May 29 19:21:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * The release fixes more than 50 vulnerabilities from corrupt
+    DWARF and/or corrupt Elf.
+  * Elf section counts can exceed 16 bits (on linux see man 5 elf)
+    so some function prototype members of struct
+    Dwarf_Obj_Access_Methods_a_s changed.  Specifically,
+    om_get_section_info() om_load_section(), and om_relocate_a_section()
+    now pass section indexes as Dwarf_Unsigned instead of Dwarf_Half.
+  * Two functions have been removed from libdwarf.h and the library:
+    dwarf_dnames_abbrev_by_code() and dwarf_dnames_abbrev_form_by_index().
+  * dwarf_dnames_abbrev_by_code() is slow and pointless. Use either
+    dwarf_dnames_name() or dwarf_dnames_abbrevtable() instead,
+    depending on what you want to accomplish.
+  * dwarf_dnames_abbrev_form_by_index() is not needed, was difficult
+    to call due to argument list requirements, and never worked.
+
+-------------------------------------------------------------------
+Mon Feb 27 21:29:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  Fixes for Denial Of Service (possible libdwarf crash):
+  * The dealloc required for dwarf_offset_list() was incorrect,
+    possibly leading to a crash.
+  * The function prototype for dwarf_dietype_offset() changed so
+    it can work correctly on DWARF4 objects.
+  * A memory leak from dwarf_load_loclists() has been fixed.
+  * The function dwarf_get_pubtypes() changed, Dwarf_Type no longer
+    exists, correcting a library design mistake made in 1993.
+    The function applied to DWARF3 and DWARF4 objects.
+  * The set of functions using Dwarf_Type are gone, use Dwarf_Global
+    instead.  An object with DW_FORM_strx3 (DWARF5) could result in
+    the library either crashing or returning an inappropriate error.
+    DW_FORM_strx3 is now handled
+  * https://newreleases.io/github/davea42/libdwarf-code?version=v0.6.0
+
+-------------------------------------------------------------------
+Fri Dec  2 19:23:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * libdwarf-0.5.0 improves library performance reading
+    DWARF DIEs by several percent (with no change in API).
+  * It adds functions allowing acess to the .debug_addr
+    section independent of other sections.
+    dwarfdump has a new option to show that
+    section.
+  * Corrects the handling of some aspects of
+    reading the .debug_names section.
+  * Enhances dwarf_get_globals() to return
+    all globals that .debug_pubnames and .debug_names
+    refer to (no change in the API except adding
+    a function to return the DW_TAG of any globals
+    derived from .debug_names)
+
+-------------------------------------------------------------------
+Mon Oct  3 15:23:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.2:
+  * memory leak fixes
+  * How to deal with a dwarf_init*() call
+    that fails (DW_DLV_ERROR) in a simple way is finally
+    documented in libdwarf.pdf and in the on-line html.
+
+-------------------------------------------------------------------
+Fri Jul 15 19:11:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.1 (bsc#1200899, CVE-2022-34299):
+  * Two places where a carefully corrupted object file
+    could result in libdwarf crashing a caller due to
+    referencing memory outside the intended read area
+    have been fixed (DW202205-001 and DW202206-001).
+    One related to DW_FORM_ref_sig8, the other to
+    the .debug_pubnames section.
+  * The library now accepts DW_AT_entry_pc in a CU DIE as a base address
+    when DW_AT_low_pc is missing (an extension used by
+    a current compiler).
+  * Added function dwarf_suppress_debuglink_crc() to allow
+    callers to turn off doing a CRC calculation
+    reading GNU debuglink data (saves time for library
+    users accessing near-identical builds).
+- drop fix-CVE-2022-32200.patch (upstream)
+
+-------------------------------------------------------------------
+Tue Jun  7 16:24:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add fix-CVE-2022-32200.patch (bsc#1200291, CVE-2022-32200)
+
+-------------------------------------------------------------------
+Wed Apr 27 12:25:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libdwarf1.x86_64: E:
+  shlib-policy-name-error SONAME: libdwarf.so.0, expected package
+  suffix: 0"
+
+-------------------------------------------------------------------
+Sun Apr 24 20:07:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.0:
+  * Removed the unused Dwarf_Error argument from dwarf_return_empty_pubnames()
+    as the function can only return DW_DLV_OK. dwarf_xu_header_free() renamed
+    to dwarf_dealloc_xu_header().  dwarf_gdbindex_free() renamed
+    to dwarf_dealloc_gdbindex(). dwarf_loc_head_c_dealloc renamed to
+    dwarf_dealloc_loc_head_c().
+  * dwarf_get_location_op_value_d() renamed to dwarf_get_location_op_value_c(),
+    and 3 pointless arguments removed. The dwarf_get_location_op_value_d
+    version and the three arguments were added for DWARF5 in libdwarf20210528
+    but the change was a mistake. Now reverted to the previous version.
+  * The .debug_names section interfaces have changed. Added
+    dwarf_dnames_offsets() to provide details of facts useful in problems
+    reading the section. dwarf_dnames_name() now does work
+    and the interface was changed to make it easier to use.
+
+-------------------------------------------------------------------
+Mon Feb 21 11:11:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- replace symlink by directory with hardlinks (bsc#1196198)
+
+-------------------------------------------------------------------
+Sun Feb 13 20:39:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.3:
+  * Release fixes a n assign offset = offset;
+  * Fixes a bug in LEB value reading of some values in the very rare case the
+    compiler has emitted padding in the LEB
+  * Has improvements in detecting corrupt object files (Elf, MachO, and PE) and
+    one new function that is only significant for those using an LLVM feature
+    for Heterogenous Debugging. Passes Coverity Scan with zero issues.
+- drop libdwarf-gcc11.patch, libdwarf-gcc11-fixup.patch: upstream
+
+-------------------------------------------------------------------
+Wed Jun 16 09:58:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libdwarf-gcc11-fixup.patch
+    + fix missing return and double define mistake in the upstream
+      patch
+
+-------------------------------------------------------------------
+Tue Jun 15 23:51:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- libdwarf-gcc11.patch: refresh with upstream patch
+
+-------------------------------------------------------------------
+Tue Jun 15 10:12:29 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libdwarf-gcc11.patch
+    + skip correctly DW_FORM_implicit_const in
+      _dwarf_formudata_internal (bsc#1187336)
+
+-------------------------------------------------------------------
+Fri Jun 11 10:18:23 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- update to 20210528:
+  corrects libdwarf's handling of DWARF5 line table header DW_LNCT
+  entries. Dwarfdump now prints DW_OP_bra and DW_OP_skip correctly
+  and correctly validates the target of these operators.
+  adds summary information on attribute/form-class uses and
+  attribute/forms use to the existing option -ku summary on tags
+  and attributes. Dwarfdump verifies many attribute references are
+  usable and prints a little from the target DIE, including with
+  DW_FORM_ref_sig8 references. Now dwarf.h shows many more
+  extensions (added by compiler developers) to the TAGs and
+  ATtributes defines. Alongide releases is a pdf,
+  libdwarf2.1xl.pdf (xl.pdf as it is extra-large), that is the
+  same as the latest libdwarf2.1.pdf but with the
+  table-of-contents at the front, not the back, of the pdf.
+  Created an experiment, it is around 15MB so seemed too large to
+  place it in the release or to do multiple versions. Later
+  updates will just replace it on prevanders.net.
+
+-------------------------------------------------------------------
+Wed Apr 21 09:11:06 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Hardening: link as PIE (bsc#1185057).
+
+-------------------------------------------------------------------
+Fri Jan 29 22:02:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20201201:
+  dwarfdump now prints DWARF expression operators each on
+  its own line.  This makes viewing DWARF expressions much
+  nicer given the increased use of much longer expressions.
+  Those expression operators that reference DIES are now
+  followed, verified, and the target DW_TAG and DW_AT_name
+  are printed.  A new dwarfdump.conf command 'option:' lets
+  one specify option: --format-expr-ops-joined in case you
+  want the old style DWARF expression operators-on-one-line.
+  Where the DWARF DIE children nest > nine-deep dwarfdump
+  switches from indentation by spaces to a nest-level number.
+
+-------------------------------------------------------------------
+Mon Oct 26 08:29:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20201020:
+  * Fix various read and write outside bounds found via fuzzing
+
+-------------------------------------------------------------------
+Fri Sep  4 08:28:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- move libdwarf headers back to the old location
+
+-------------------------------------------------------------------
+Wed Sep  2 18:02:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20200825 (bsc#1142609, CVE-2019-14249)
+  libdwarf now reads .debug_gnu_pubtypes & pubnames
+  (non-standard but gcc creates them in DWARF5)
+  via a small number of new functions
+  and dwarfdump  --print-debug-gnu prints both sections.
+  Verifying the .debug_info offsets is not yet done.
+  Dwarfdump now dumps DWARF5 .debug_rnglists and
+  .debug_loclists.  To handle DWARF5 there are
+  a small number of new functions. All existing
+  functions are still supported, but
+  to read DWARF5 some small changes are required.
+  In libdwarf see libdwarf2.1.pdf and also see
+  dwarfdump now takes much less malloc() to work, as measured
+  by valgrind --tool=massif  and massif-visualizer.
+  A dwarfdump run that did 2.2Gib of malloc/free before the changes
+  now does 1.4GiB.
+  libdwarf and dwarfdump now support DWARF5 .debug_rnglists.
+  The new interfaces are documented in libdwarf/libdwarf2.1.pdf.
+  The new option to dwarfdump is "--print-raw-rnglists".
+  The code (dwarfdump/libdwarf), regressiontests,
+  and readelfobj directories and all their tests
+  are known to work on Linux(Ubuntu on x86_64 and i686),
+  FreeBSD, MacOS Catalina (with Apple Command Line Tools),
+  and IBM s390 (Big Endian!) running Ubuntu Linux.
+  On Windows-MinGW the full regression tests
+  have not been tested, but 'make check' works
+  for dwarfdump/libdwarf (the current dwarfdump
+  make check actually does run dwarfdump and
+  checks that dwarfdump basically works).
+  Now a --disable-libelf configure/build of libdwarf/dwarfdump
+  can read elf, mach-o DSYM, and PE executable/dll object files.
+  Such a build will not need or use libelf or elf.h .
+  The dwarfdump options that display Elf section headers
+  or relocation record data are not available in a
+  --disable-libelf build.
+  Nor is dwarfdump's support of reading archive files
+  available in a --disable-libelf build.
+  This libdwarf detects corrupt Elf object files much sooner
+  than before, but does not explain what the corruption
+  really is. Use GNU readelf (or readelfobj, a project
+  on sourceforge) to get more detail about the problems found.
+  See https://www.prevanders.net/dwarf.html for the git clone
+  command for readelfobj.
+  With --disable-libelf the --enable-dwarfgen option
+  does not work: the dwarfgen build will fail.
+  For building on machines without a usable elf.h or libelf
+  but possibly with a libelf.h visible, --disable-libelf
+  ensures the build won't use libelf or elf.h anywhere.
+  -lz will be done if zlib.h is visible, independent of
+  libelf, libelf.h, and elf.h
+  If one has a standard Bourne shell (sh) available
+  (such as sh on MacOS and sh in MinGW on Windows)
+  one may be able to build libdwarf and dwarfdump natively
+  and they can read Mach-o dSYM and PE object files
+  to access DWARF information.
+  This has NOT been tested under MacOS, so will likely
+  fail on MacOS.
+  No elf.h, libelf.h or zlib.h should be present.
+  For example, the following
+  is known to work under MinGW and this general plan
+  applies to all builds including all builds with elf.h
+  and libelf:
+    mkdir test
+    cd test
+    #(copy the source tree into test, if from git
+    #the name of the top level will likely be 'code')
+    cd code
+   The pre-build dwarf_names.[hc] and the tag related
+  files are now part of the standard build so there is
+  no longer any two-stage aspect of the build.
+  The build simply compiles files in the distribution.
+  If you use git to access the source be sure to
+  sh scripts/FIX-CONFIGURE-TIMES
+  to adjust the file timestamps as having timestamps
+  in the right relationships is vital and git
+  does not maintain timestamps.
+  The script is always safe to run. It takes about 30 seconds.
+  The complicated process of building certain .c and .h
+  files has been relegated to the few people updating
+  files libdwarf/libdwarf.h.in, libdwarf/dwarf_errmsg_list.h,
+  dwarfdump/tag_attr_ext.list,dwarfdump/tag_attr.list,
+  dwarfdump/tag_tree_ext.list, and dwarfdump/tag_tree.list.
+  For everyone else the build is simply compiling
+  the .c and .h files in the distribution. Simpler.
+    sh scripts/buildstandardsource.sh
+  creates these files.
+  dwarfdump can now dump mach-o (MacOS) dSYM dwarf.
+  All the usual libdwarf interfaces work.
+  A new libdwarf initialization call dwarf_init_path()
+  may be convenient for you to use.
+
+-------------------------------------------------------------------
+Fri Aug  2 07:05:36 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Thu Feb 22 14:19:19 UTC 2018 - p.drouand@gmail.com
+
+- Update to version 20180129
+  + Fixes libdwarf/dwarfdump vulnerabilities related to detecting
+    corrupt DWARF and includes other small improvements
+- Changes from version 20170709
+  + Fixes a libdwarf vulnerability
+- Changes from version 20170416
+  + Begins to support the DWARF5 .debug_names section and other DWARF5 changes.
+    (not tested, no test cases yet available).
+  + Now supports DWARF5 split dwarf sensibly.
+    The few new function interfaces can be ignored by those not needing split
+    dwarf support.
+  + The tools can now be built with cmake (the default build is still
+    with configure)
+
+-------------------------------------------------------------------
+Mon Jan  2 14:23:36 UTC 2017 - dmueller@suse.com
+
+- add missing splitrequires
+- revert rpm groups messup
+
+-------------------------------------------------------------------
+Mon Jan  2 13:35:40 UTC 2017 - jengelh@inai.de
+
+- Fixup RPM groups and summaries. Drop redundant PreReq.
+- Put static in separate package.
+
+-------------------------------------------------------------------
+Mon Jan  2 12:53:22 UTC 2017 - dmueller@suse.com
+
+- update to 20161124 (bsc#1012823, bsc#1001133,
+  CVE-2016-9480, CVE-2016-7410, CVE-2016-7511, CVE-2016-5028,
+  CVE-2016-5029, CVE-2016-5030, CVE-2016-5031, CVE-2016-5032,
+  CVE-2016-5033, CVE-2016-5034, CVE-2016-5035, CVE-2016-5036,
+  CVE-2016-5037, CVE-2016-5038, CVE-2016-5039, CVE-2016-5040,
+  CVE-2016-5041, CVE-2016-5042, CVE-2016-5043, CVE-2016-5044 ):
+  * removes libdwarf-fix-parallel-build.diff
+- use shared library policy, main package removed and libdwarf1 added
+
+-------------------------------------------------------------------
+Wed Jan 21 13:42:01 UTC 2015 - matz@suse.com
+
+- Add libdwarf-fix-parallel-build.diff.
+
+-------------------------------------------------------------------
+Mon Jan 19 13:51:47 UTC 2015 - matz@suse.com
+
+- Update to new upstream release 20150115:
+* New checking options added to dwarfdump
+  (-ku -kuf -kD -kG -O file=<path>).
+* Deal better with internal errors (invalid ELF files/DWARF
+  sections or out of memory) (fixes boo#911839).
+* Remove dwarfdump2: it had no advantages over dwarfdump anymore.
+
+-------------------------------------------------------------------
+Thu Oct 23 13:05:00 UTC 2014 - idonmez@suse.com
+
+- Package COPYING and related license files.
+
+-------------------------------------------------------------------
+Wed Oct 15 13:25:37 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 20140805
+* A mistake in handling DW_OP_GNU_const_type could lead to a
+  libdwarf coredump at times.
+* Added AARCH64 relocation support.
+* Adds GNU-specific DW_FORM codes so recent gcc objects can be
+  read usefully.
+* Adds new functions to libdwarf for new DWARF reference types.
+* Libdwarf now follows the DWARF2 standard properly in reading
+  DW_FORM_ref_addr.
+* Source incompatibility for users of producer code:
+  dwarf_producer_init() now has a new interface and a sensible way
+  to select the output ABI/ISA for relocation numbers. Part of
+  preparation to emit DWARF3,4,5.
+* The reader code now handles DebugFission, called Split Dwarf
+  objects in the draft DWARF5 standard.
+* The reader now can get the content of .gdbindex and
+  .debug_cu_index and .debug_tu_index sections and dwarfdump -I
+  can print them. Support is incomplete for the cu,tu sections:
+  They exist in a .dwp object (GNU Debug Fission, to be in DWARF5)
+  which is not yet properly handled.
+- Enable parallel build and remove ancient specfile tags and sections
+
+-------------------------------------------------------------------
+Thu Dec  6 13:31:20 UTC 2012 - jw@suse.com
+
+- dwarfdump2 does not build on SLE_11_SP1, skipping.
+- removed libdwarf-relocation-support.patch,
+  assumed upstream as a different implementation.
+
+-------------------------------------------------------------------
+Thu Dec  6 11:42:44 UTC 2012 - jw@suse.com
+
+- updated to 20121130
+  which fixes http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=681748
+  dwarfdump ERROR:  dwarf_loclist:  DW_DLE_LOC_EXPR_BAD (128)
+- enabled dwarfdump2 in specfile
+
+-------------------------------------------------------------------
+Mon Feb 13 10:48:34 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Sep 19 11:22:53 UTC 2010 - jengelh@medozas.de
+
+- Update to newer libdwarf (20100808), because the "perf" package
+  needs a version >= 20100214. Fixes include:
+* dwarfdump was counting eh_frame low-pc as a duplicate of
+  .debug_frame low-pc
+* Fixes some CFA_expression handling in libdwarf and allows some
+  compiler mistakes a bit more leeway in dwarfdump (so the dump
+  continues in the face of certain errors).
+* ARM and MIPS64BE handling
+- Stripped changelog from .spec file, since it is already in
+  .changes.
+
+-------------------------------------------------------------------
+Wed Oct  8 14:25:17 CEST 2008 - dgollub@suse.de
+
+- added libdwarf-dwarf3-dw_attributes.patch:
+  Allow attribute DW_AT_const_value in dwarf_add_AT_targ_address_b().
+  GCC generates code which has DW_AT_const_value with DW_FORM_addr.
+
+  Additional DWARF3 enhancments:
+   - allow DW_AT_entry_pc in dwarf_add_AT_targ_address_b()
+   - allow DW_AT_call_column, DW_AT_call_file, DW_AT_call_line in
+     dwarf_add_AT_unsigned_const
+
+-------------------------------------------------------------------
+Wed Oct  1 14:09:54 CEST 2008 - dgollub@suse.de
+
+- added libdwarf-relocation-support.patch:
+  initial ELF relocation support for libdwarf
+
+-------------------------------------------------------------------
+Wed Oct  1 13:19:52 CEST 2008 - dgollub@suse.de
+
+- removed dwarfextract from libdwarf-tools package
+  (got split into seperated package: dwarfextract)
+- reenabled static build of libdwarf
+
+-------------------------------------------------------------------
+Fri Aug 22 22:25:22 CEST 2008 - bwalle@suse.de
+
+- update to 20080818
+  Minor improvements: dwarfdump print_reloc.c referred to
+  sym_data_entry_count in one place where sym_data_64_entry_count
+  should have been tested. DW_DLA_PUBTYPE_CONTEXT was a typo,
+  DW_DLE_PUBTYPE_CONTEXT was intended. Fixed indentation and
+  removed some tabs in favor of spaces (in five files). A couple
+  files had a couple lines with CR-LF line endings, the CR is now
+  gone. Corrected minor typographical errors in libdwarf2p.1.mm and
+  libdwarf2.1.mm and regenerated the pdfs.
+
+-------------------------------------------------------------------
+Tue Aug 12 09:35:26 CEST 2008 - bwalle@suse.de
+
+- update dwarfextract: fold dwarf-dwarfextract4.patch into
+  (from LKCD CVS) libdwarf-add-dwarfextract
+
+-------------------------------------------------------------------
+Tue Jun 17 14:19:09 CEST 2008 - bwalle@suse.de
+
+- update to 20080615
+  fixed wrong directory name in tarball (20060813 -> 20080815)
+
+-------------------------------------------------------------------
+Mon Jun 16 16:40:25 CEST 2008 - bwalle@suse.de
+
+- update to 20080613
+  Removed __SGI_FAST_LIBELF code, no one could use it anyway.
+  Fixed an off-by-one in dwarfdump which could reference off the
+  end of an array in a specfic circumstance and verify string table
+  index refers to inside the table when printing relocations.
+  Corrected return code from libdwarf when there is no dwarf
+  information. Thanks to Carlos Alberto Enciso for noticing the
+  bugs. Fixed indentation and removed some tabs in favor of
+  spaces (in a few files).
+
+-------------------------------------------------------------------
+Wed Jun 11 11:48:34 CEST 2008 - bwalle@suse.de
+
+- update to 20080125
+  In the producer library code dwarf_die_link() is now O(1) where
+  it was O(N) before. Thanks to Daniel Gollub for finding this
+  performance improvement. dwarf_die_link() now back-links siblings
+  (in its internal lists) correctly. The back link bug had no
+  (known) effect on dwarf generated by libdwarf.
+
+- update to 20080208
+  Due to a typo, calling _dwarf_fde_section_offset() (a interface
+  which is still supported) would lead to an infinite loop in
+  libdwarf-20071209 and libdwarf-20080125. The libdwarf producer
+  forms code now allows more of the newer attributes (so is more
+  complete). Alloca is no longer used anywhere (it was really only
+  used one place). The libdwarf producer code controlling the
+  offset-size is more sensible: standard DWARF (32 bit offsets) is
+  the default, use configure --enable-dwarf-format-sgi-irix to get
+  IRIX 64bit offsets. See the libdwarf README and libdwarf2p.1.pdf
+  for details. Thanks to Carlos Alberto Enciso and Melanie Zumwalde
+  for noticing some of these errors.
+
+- update to 20080228
+  This changes the libdwarf-internal implementation of reading libelf
+  so that the reader is not directly tied to libelf or even elf.
+  Meaning a libdwarf can be built that reads other object file types
+  or that uses some library other than libelf to do the reading
+  (subject only to simple constraints, see libdwarf.h). Thanks to
+  Josh Fuhs for designing and implementing the object-file-reader
+  revisions.
+
+- update to 20080409
+  A giant a.out exposed an inflexible (slow) handling of
+  abbreviations in libdwarf as well as showing that one (internal)
+  field was too small to accommodate over 64K abbreviations in one
+  compilation unit. The relevant hash table adapts now and the field
+  is 'large enough'. Added -H and -n options to dwarfdump. Added a
+  dwarfdump -ka new check for correctness.
+
+-------------------------------------------------------------------
+Fri Jan 25 19:58:15 CET 2008 - dgollub@suse.de
+
+- removed README.SUSE, which contained obsolate information about
+  shared library and versioning.
+
+- update to 20080125
+  o producer interface:
+    dwarf_die_link() is now O(1) where it was O(N) before.
+
+-------------------------------------------------------------------
+Tue Dec 11 13:58:31 CET 2007 - dgollub@suse.de
+
+- building shared lib (instead of static)
+- added LD_LIBRARY_PATH to dwarfdump Makefile, since it runs
+  something within the build which is linked against libdwarf.
+
+- update to 20071209
+  o Renamed 4 functions so they are now exported by libdwarf as dwarf_*:
+    dwarf_fde_section_offset(), dwarf_cie_section_offset(),
+    dwarf_print_lines(), and dwarf_ld_sort_lines() are the new names.
+  o The old _dwarf_* names are still supported in libdwarf.h but anyone
+    building a shared library could choose to export only dwarf_* names
+    and dwarfdump will now compile and link successfully with that shared
+    library.
+  o Added acceptance of .eh_frame S augmentation
+  o Updated config.guess config.sub to latest (2006-11-15)
+  o Added configure tests and some code in dwarf_incl.h and globals.h
+    to define _GNU_SOURCE so that it will all compile with recent libelf.h
+    use of off64_t (yet still compile with earlier libelf.h)
+
+- updated to 20071016
+  o dwarf_siblingof() could try to access a byte past the
+    end of an Elf section leading to a coredump.
+  o The dwarf macro reading code could (in the DWARF_SIMPLE_MALLOC
+    case only) allocate and free memory inconsistently leading to
+    malloc arena corruption.
+
+(updated to 20071015)
+   o The special build macro DWARF_SIMPLE_MALLOC was incorrectly
+     implemented (now fixed): it could lead builds employing that
+     macro to coredump in libdwarf. Now (just before exit) dwarfdump
+     free()s some space it previously left mallocd.
+
+(updated to 20070904)
+   o Added qualifier for DWARF4 DW_AT_high_pc where applicable in
+     dwarfdump output.
+   o Added documentation of new producer functions in libdwarf.
+   o Misc: Updated FSF address everywhere. Deleted 2 files which
+     were never used.
+
+-------------------------------------------------------------------
+Sat Jul 21 20:45:18 CEST 2007 - bwalle@suse.de
+
+- add 'dwarfextract' from lkcdutils to libdwarf-tools since
+  we only distribute 'lcrash' from lkcdutils now
+
+-------------------------------------------------------------------
+Sat Jul 21 17:23:18 CEST 2007 - bwalle@suse.de
+
+- updated to 20070703
+  o Adding new libdwarf function dwarf_get_loclist_entry() to
+    extract CFA val_expression bytes usefully.
+  o dwarfdump now uses that info to print those expression bytes
+    with -v
+  o DW_CFA_val_expression was handled wrong in libdwarf leading
+    eventually to an invalid register number reading a GNU
+    .eh_frame section (dwarfdump reported an error).
+
+-------------------------------------------------------------------
+Mon Jun  4 17:15:41 CEST 2007 - bwalle@suse.de
+
+- initial package
+
+-------------------------------------------------------------------

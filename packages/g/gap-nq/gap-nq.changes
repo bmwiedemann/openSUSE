@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri Jan 12 10:17:39 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.11
+  * Janitorial changes only
+
+-------------------------------------------------------------------
+Tue Mar 28 09:32:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.10
+  * Some janitorial changes
+
+-------------------------------------------------------------------
+Sun Feb 12 10:33:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.9
+  * Don't abort certain computations just because an "unknown"
+    global option is on the GAP "Options Stack"
+
+-------------------------------------------------------------------
+Wed Jun  8 09:49:35 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.5.3
+* No changelog was provided
+
+-------------------------------------------------------------------
+Sat Mar 12 18:25:42 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.5.2
+* Metadata changes only (homepage URL)
+
+-------------------------------------------------------------------
+Fri Dec 12 13:08:59 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.5.1
+* Fix linker error on Unix systems other than Mac OS X
+* Remove GAP function NqBuildManual (use the makedoc.g
+  script instead)
+* Add GPL license file to make clear that nq is licensed under the
+  GPL (after discussion with Werner Nickel and getting his explicit
+  approval)
+* Moved the homepage to GitHub
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split nq (version 2.4) off the gap RPM package

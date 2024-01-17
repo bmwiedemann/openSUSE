@@ -1,0 +1,12 @@
+<package name="perl-libconfigfile" project="openSUSE:Factory">
+  <title>Parses simple configuration files</title>
+  <description>ConfigFile parses simple configuration files and store its values in an
+anonymous hash reference. The syntax of the configuration file is quite
+simple:
+
+1.  This is a comment VALUE_ONE = foo VALUE_TWO = $VALUE_ONE/bar
+VALUE_THREE = The value contains a \# (hash). # This is a comment.
+COMPOSED_VALUE[one] = The first component of a clustered value
+COMPOSED_VALUE[two] = The second component of a clustered value</description>
+  <devel project="devel:languages:perl" package="perl-libconfigfile"/>
+</package>

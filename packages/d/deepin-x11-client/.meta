@@ -1,0 +1,5 @@
+<package name="deepin-x11-client" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Deepin" package="deepin-x11-client"/>
+</package>

@@ -1,0 +1,281 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ebead58b20ccb1f2237696a647167ff</srcmd5>
+    <version>2.2.0</version>
+    <time>1525426290</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-PyChromecast required by mycroft-core</comment>
+    <requestid>603825</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>57c975fa6a88a6265fef238bb9d091b2</srcmd5>
+    <version>2.2.0</version>
+    <time>1526372013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606545</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2ca79735d03866bab84e40f01f398616</srcmd5>
+    <version>2.3.0</version>
+    <time>1548335016</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0:
+  * Updated spotify controller description (#232) @Nobyx
+  * Allow users to pass the force_launch flag when launching an app (#237) @marcosdiez
+  * Better YouTube controller (#236) @ur1katz
+  * Simple event listener example (#241) @hjmsw
+
+- Fix build failure: %{py_ver} doesn't work, %{py3_ver}
+  does.
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>662437</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c4b9fbac3994d19607776f5be35132eb</srcmd5>
+    <version>2.5.2</version>
+    <time>1551883806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.2:
+  * YouTube controller version update (#258) @ur1katz
+  * Add support for connecting to named service (#267) @emontnemery
+  * Exponential backoff of mdns service resolution retries (#268) @emontnemery
+  * Improve exponential backoff of mdns service resolution retries (#269) @emontnemery</comment>
+    <requestid>681900</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0ed8890a52d898879c7630dd79f1b8c6</srcmd5>
+    <version>3.2.2</version>
+    <time>1560862821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710551</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c7e2f84fd67f51b4e11d08d468eeee6</srcmd5>
+    <version>4.0.1</version>
+    <time>1569393551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.1:
+  * various small fixes
+  * support for home assistant cast</comment>
+    <requestid>732890</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3a4e37910ab1e23d8aff0ef76569098f</srcmd5>
+    <version>4.1.0</version>
+    <time>1579101473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764631</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ef5419c22d852c78c779fb764f7af47f</srcmd5>
+    <version>4.1.1</version>
+    <time>1581694730</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>774201</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d24c3ae95bc59ed19c3d708403c66648</srcmd5>
+    <version>4.2.0</version>
+    <time>1585342653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788890</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d48365580241742f58201904fe6cd024</srcmd5>
+    <version>5.0.0</version>
+    <time>1588697779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800250</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b3f89b7d634ba3ef500addc7a83134a7</srcmd5>
+    <version>5.2.0</version>
+    <time>1590650057</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 5.3.0:
+  * Handle zeroconf update_service (#364)
+  * Add ability to pass in a zeroconf instance to discovery (#362)
+  * Add discovery example (#361)
+  * Quick play &amp; Support for Yle Areena, Supla (#359)
+  * Log as info, not warning if connection re-established. (#358)</comment>
+    <requestid>809126</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c564cbc99b625fa42b7e76c59661adee</srcmd5>
+    <version>6.0.0</version>
+    <time>1591990973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814086</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>22dd5a03e4e14a6fda69c622bcbd7247</srcmd5>
+    <version>7.1.1</version>
+    <time>1594706359</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.1.1:
+  * Add debug prints (#390)
+  * Report host+port for discovered casts (#385)
+  * Fix plex controller (#389)
+  * Update list_chromecasts example (#382)
+  * BREAKING CHANGE Track services based on UUID instead of mDNS service
+    name (#380)
+  * Reset receiver controller on connection lost (#379)</comment>
+    <requestid>820588</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8c9a5420b03fa0222fb10a3e807dfb82</srcmd5>
+    <version>7.3.0</version>
+    <time>1600801925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.3.0:
+  * Add support for QUEUE_INSERT (#404)
+  * Fix get_chromecasts non blocking mode (#411)
+  * Ensure data parsed as JSON is a dict (#405)
+  * Add zeroconf debug option to example scripts (#401)
+  * Allow passing an already existing zeroconf object to additional
+    functions (#400) @emontnemery
+  * Ignore browser updates for *._sub._googlecast._tcp.local. (#400)
+  * Fix return type of get_listed_chromecasts (#400)
+  * Remove host and port from Chromecast object (#395)
+  * Keep previously known Chromecast in service listener (#399)
+  * Remove reboot function (#394)</comment>
+    <requestid>835960</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>142eeb5766231b2f1f940bd4f09923fe</srcmd5>
+    <version>7.5.0</version>
+    <time>1601488457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.5.0:
+  * Allow passing additional media information through to play_media
+  * Add support for lists, playQueues, and playlists to Plex controller
+  * Misc spelling changes</comment>
+    <requestid>838626</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>166587e2bcf71f23a0492c915789c3ef</srcmd5>
+    <version>7.7.1</version>
+    <time>1609783694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.7.1:
+  * Don't throw if socket is already closed when cleaning up (#438)
+  * Update local http API, re-add get_multizone_status (#437)
+  * Spotify quick play (again) (#430)
+  * Fix next/previous track (#436)
+  * Add support for BubbleUPNP (#428)</comment>
+    <requestid>860029</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c3b8df80a1d0ee70e95788b58fe34290</srcmd5>
+    <version>7.7.2</version>
+    <time>1611770287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.7.2:
+  * Use urllib.request instead of requests.
+- Drop python-requests from Requires.
+- Correct egg-info filename to build in the multi-python new world order.</comment>
+    <requestid>867026</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>47161fa46d1411406bc2a4eb0069071f</srcmd5>
+    <version>9.1.1</version>
+    <time>1615213127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.1.1:
+  * Add HostBrowser.update_hosts (#476)
+  * Handle audio groups removed from known host (#475)
+  * Remove useless pylint and flake8 directives (#472)
+  * BREAKING CHANGE: Update discovery to support a list of known hosts (#469)
+  * Catch errors thrown by select call (#471)
+  * Fix some strings mangled by black formatting (#470)
+  * Fix MultiZoneControllerListener (#468)
+  * Expose volume_control_type (#461)
+  * Move ReceiverController to its own module (#460)
+  * Infer contentType from playQueue items (#457) @maykar
+  * Remove unintended 'async' from listener interfaces (#453)
+  * Update BubbleUPNP example (#451)
+  * Refactor listeners and controllers as ABCs (#450)
+  * Add more google devices to consts (#448) @theychx
+  * Make current_time optional when loading or queing media (#446)</comment>
+    <requestid>877546</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>18b9fac4d2f888c35f2ab949ef84e719</srcmd5>
+    <version>12.1.2</version>
+    <time>1653313906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978571</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>08b8300efc9be2b520abcc8d2162585c</srcmd5>
+    <version>12.1.4</version>
+    <time>1660924589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998098</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>36874ff4345275f2a5b7654b7facad00</srcmd5>
+    <version>13.0.1</version>
+    <time>1670333027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040445</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0f37fbb03ec373eec4071e0edaed4cf6</srcmd5>
+    <version>13.0.4</version>
+    <time>1672754731</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 13.0.4:
+  * Correct timeout in call to poll.poll
+  * Adding support for reported unknown devices
+  * Add Chromecast Ultra and Chromecast HD to the recognised devices
+  * Fix error with select when python process exceeds 1024 open file descriptors
+  * Include URL and UUID in Home Assistant controller messages</comment>
+    <requestid>1046304</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a50ca8239c6010d5269eb45df66bbeba</srcmd5>
+    <version>13.0.7</version>
+    <time>1685632857</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 13.0.7:
+  * Wait longer when attempting to play media (#720) @emontnemery
+  * Fix socket leak
+  * Don't call launch callback on error
+  * Wait for response when stopping app
+  * Simplify request callback handling
+  * Make sure handler is unregistered after quickplay
+  * Fix lint issues
+  * Add SVS Pro SoundBase
+  * Add JBL Link 10, 20, 300, 500
+  * Fix poll/select for Windows
+  * Add Smart Soundbar 10</comment>
+    <requestid>1090244</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5451f2400811d9cdab5f80b21b668163</srcmd5>
+    <version>13.0.8</version>
+    <time>1702327879</time>
+    <user>anag+factory</user>
+    <comment>- update to 13.0.8:
+  * Change BBC Sounds app_id (#753) @blawford
+  * Dependency updates
+
+- Update to version 13.0.1
+- Update to 12.1.4
+  * Refactor handling of discovered casts and device info (#556)
+- Correct egg-info filename to build in the multi-python new world order.</comment>
+    <requestid>1132433</requestid>
+  </revision>
+</revisionlist>

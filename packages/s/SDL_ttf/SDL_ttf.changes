@@ -1,0 +1,183 @@
+-------------------------------------------------------------------
+Thu Jan  8 09:57:48 UTC 2015 - jengelh@inai.de
+
+- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway, remove redundant Requires.
+
+-------------------------------------------------------------------
+Thu Nov 20 14:24:16 UTC 2014 - olaf@aepfle.de
+
+- Remove self-obsoletes
+
+-------------------------------------------------------------------
+Tue Aug 13 12:04:26 UTC 2013 - jengelh@inai.de
+
+- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list, more robust make install call
+
+-------------------------------------------------------------------
+Tue Aug 13 11:31:29 UTC 2013 - prusnak@opensuse.org
+
+- updated to 2.0.11
+  * SDL_ttf is now under the zlib license
+  * Improved font glyph caching for non-latin languages
+  * Added API to get kerning info: TTF_GetFontKerningSize()
+  * Added Android.mk to build on the Android platform
+- updated to 2.0.10
+  * Find the Unicode or symbol character map if it's available in the font
+  * Set the appropriate font styles for bold and italic fonts
+  * Added font style TTF_STYLE_STRIKETHROUGH
+  * Fixed size calculations taking outline and underline into account
+  * Added API for font outlining: TTF_GetFontOutline()/TTF_SetFontOutline()
+  * Added API to disable kerning: TTF_GetFontKerning()/TTF_SetFontKerning()
+  * Fixed height calculation for fonts that extend below the font height
+  * Added access to font hinting: TTF_GetFontHinting()/TTF_SetFontHinting()
+  * Added TTF_GlyphIsProvided() to check whether a glyph is in a given font
+
+-------------------------------------------------------------------
+Thu Jan  3 02:06:00 UTC 2013 - crrodriguez@opensuse.org
+
+- Do not buildRequire metapackage xorg-x11-devel it is not
+  needed and adds significant bloat
+
+-------------------------------------------------------------------
+Tue May  8 14:08:05 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.1+
+  SPDX syntax - dropping Freetype license from spec file as no files found
+  under that license.
+
+-------------------------------------------------------------------
+Sat Sep 17 10:24:24 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Sep 16 18:24:34 UTC 2011 - jengelh@medozas.de
+
+- Add libSDL_ttf-devel to baselibs
+- Remove redundant tags
+
+-------------------------------------------------------------------
+Sat Jul  2 14:54:16 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+
+-------------------------------------------------------------------
+Wed Jan 27 02:45:00 CET 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Oct  7 14:52:42 CEST 2009 - prusnak@suse.cz
+
+- fix provides and obsoletes [bnc#544957]
+
+-------------------------------------------------------------------
+Fri May 29 17:40:32 CEST 2009 - prusnak@suse.cz
+
+- removed VisualC.zip, Watcom-OS2.zip, Xcode.tar.gz from upstream
+  tarball [bnc#508180]
+
+-------------------------------------------------------------------
+Wed May 20 17:17:46 CEST 2009 - prusnak@suse.cz
+
+- follow Shared Library Policy
+
+-------------------------------------------------------------------
+Sun Jul 13 22:44:32 CEST 2008 - crrodriguez@suse.de
+
+- remove unusable static libraries
+- SDL_ttf-devel requires SDL-devel
+
+-------------------------------------------------------------------
+Sun Dec 16 21:40:47 CET 2007 - sndirsch@suse.de
+
+- fixed BuildRequires for SUSE < 10.2
+
+-------------------------------------------------------------------
+Wed Jul 25 18:19:28 CEST 2007 - prusnak@suse.cz
+
+- updated to 2.0.9
+ * fixed rendering of fonts with 2 bit and 4 bit embedded graymaps
+ * fixed bug in solid bold glyph rendering
+ * fixed crash when passing NULL to TTF_CloseFont()
+
+-------------------------------------------------------------------
+Sun Jul 22 19:00:07 CEST 2007 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jun  7 16:27:46 CEST 2007 - prusnak@suse.cz
+
+- split devel subpackage
+
+-------------------------------------------------------------------
+Fri Mar  2 12:40:30 CET 2007 - prusnak@suse.cz
+
+- cleaned spec file
+
+-------------------------------------------------------------------
+Fri Jun 23 12:27:00 CEST 2006 - nadvornik@suse.cz
+
+- do not use freetype2 internals
+
+-------------------------------------------------------------------
+Fri Jan 27 10:35:12 CET 2006 - nadvornik@suse.cz
+
+- fixed BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 14:32:33 CET 2006 - nadvornik@suse.cz
+
+- fixed crash on nonexistant font file [#145040]
+
+-------------------------------------------------------------------
+Sat Jan 10 18:48:28 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Jan 06 12:57:04 CET 2004 - nadvornik@suse.cz
+
+- fixed to compile with new freetype
+
+-------------------------------------------------------------------
+Fri Jul 25 12:42:19 CEST 2003 - nadvornik@suse.cz
+
+- updated to 2.0.6
+- added buildroot
+
+-------------------------------------------------------------------
+Mon Dec 16 17:49:53 CET 2002 - ro@suse.de
+
+- fix build with automake, use "AUTOMAKE_OPTIONS = foreign"
+
+-------------------------------------------------------------------
+Mon Sep  2 14:43:55 CEST 2002 - uli@suse.de
+
+- use %_libdir (bug #18726)
+
+-------------------------------------------------------------------
+Thu Jun 13 14:31:45 CEST 2002 - uli@suse.de
+
+- update -> 2.0.5 (bugfixes, support for selecting individual font
+  faces, support for foreground/background color in showfont)
+
+-------------------------------------------------------------------
+Wed Jun 12 00:29:34 CEST 2002 - ro@suse.de
+
+- run autoreconf (fixes build on ppc64)
+
+-------------------------------------------------------------------
+Tue Jan 22 18:23:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <kdelibs-artsd> to <kdelibs3-artsd>
+
+-------------------------------------------------------------------
+Tue Aug  7 17:45:44 CEST 2001 - uli@suse.de
+
+- initial package
+
+

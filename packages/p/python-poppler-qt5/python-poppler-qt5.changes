@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Thu May  5 19:36:17 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 21.3.0:
+  Fix #43: Building 21.1.0 fails with unsupported function return type
+  by Ben Greiner
+- Drop patch merged upstream:
+  * python-poppler-qt5-mapqvector.patch
+- Drop support for sip4, which means only 15.4 and higher are now
+  supported (also solves boo#1198526)
+
+-------------------------------------------------------------------
+Tue Feb 23 17:10:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 21.1.0
+  * Most new Qt5 api methods added upto poppler-qt5 21.01 (WB)
+  * Deprecated C API calls updated (woodlandhunter)
+  * Add support for building with SIP v5 (#41, Dmitry Shachnev)
+- Drop patches merged upstream
+  * poppler-qt5-pr33-sip5.patch
+  * poppler-qt5-pr41-sip5.patch
+- Add python-poppler-qt5-mapqvector.patch
+  gh#frescobaldi/python-poppler-qt5#45
+- Reinstate the skip for python2
+
+-------------------------------------------------------------------
+Tue Feb 23 11:37:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Reinstate multiversion build. The only fix needed was
+  gh#frescobaldi/python-poppler-qt5#44
+
+-------------------------------------------------------------------
+Thu Feb  4 11:53:00 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Add not why we do not use multiversion for this package
+- Add note why we do not update to 21.1.0
+
+-------------------------------------------------------------------
+Thu Jan 21 10:49:11 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Limit build set to python3 (remove skip python2), so that the
+  package builds again. TODO: figure out how to deal with multi-
+  version python installation and usefulness for this package.
+
+-------------------------------------------------------------------
+Sat Oct 10 13:39:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Use SIP5
+  * poppler-qt5-pr33-sip5.patch
+    gh#frescobaldi/python-poppler-qt5#33
+  * poppler-qt5-pr41-sip5.patch
+    gh#frescobaldi/python-poppler-qt5#41
+- SIP5 creates files for SIP bindings and Qscintilla API
+  * new devel package
+
+-------------------------------------------------------------------
+Thu Sep 10 17:23:36 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix obsoletes to work with python singlespec
+- Enforce sip4 gh#frescobaldi/python-poppler-qt5#38 
+
+-------------------------------------------------------------------
+Fri Jan  3 11:08:29 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Add Obsoletes: python-poppler-qt5 to prevent file conflict in 
+  Leap 15.2
+
+-------------------------------------------------------------------
+Fri Dec 27 12:51:17 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.75.0:
+  * add LinkOCGState
+  * Enable C++11 support in setup.py (Alex Ball)
+  * Fix build error on MacOSX (Davide Liessi)
+  * Added more methods in Poppler Qt5 api (WB)
+- Switch back to official project, which is alive again
+- Update URLs to the official ones
+
+-------------------------------------------------------------------
+Sat Dec 15 11:53:51 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Require specific version of SIP (boo#1119580)
+
+-------------------------------------------------------------------
+Sat Dec 15 11:44:35 UTC 2018 - Cor Blom <cornelis@solcon.nl>
+
+- Require specific python-qt5 version (boo#1119580)
+
+-------------------------------------------------------------------
+Tue May 29 14:40:58 UTC 2018 - mcepl@suse.com
+
+- Clean SPEC file
+
+-------------------------------------------------------------------
+Thu Aug 24 13:49:38 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu Mar 23 15:07:23 UTC 2017 - cornelis@solcon.nl
+
+- Change RPM Group to Development/Languages/Python
+
+-------------------------------------------------------------------
+Wed Jan 25 08:31:03 UTC 2017 - cornelis@solcon.nl
+
+- Switch to the zehome fork, which is better maintained at the
+  moment and use released tarball.
+
+-------------------------------------------------------------------
+Tue Jan 24 19:27:12 UTC 2017 - cornelis@solcon.nl
+
+- Update to git to get necessary fixes
+
+-------------------------------------------------------------------
+Mon Jan 23 09:40:33 UTC 2017 - cornelis@solcon.nl
+
+- Initial package, replaces python-poppler-qt4
+
+

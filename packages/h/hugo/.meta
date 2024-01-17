@@ -1,0 +1,17 @@
+<package name="hugo" project="openSUSE:Factory">
+  <title>Hugo static site generator
+	</title>
+  <description>
+Hugo is a static HTML and CSS website generator written in Go. It is optimized
+for speed, ease of use, and configurability, and designed to work well for any
+kind of website including blogs, tumbles, and docs. Hugo takes a directory with
+Markdown and templates and renders them into a full HTML website, typically in a
+fraction of a second. You can run Hugo from any directory, which works well for
+shared hosts and other systems where you don’t have a privileged account. Hugo
+provides a Privacy Config that can assist with General Data Protection
+Regulation (GDPR) compliance issues.
+
+https://gohugo.io/
+	</description>
+  <devel project="devel:languages:go" package="hugo"/>
+</package>

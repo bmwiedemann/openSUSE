@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Jan 10 10:05:24 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Run tests using multibuild
+- Add google and google/cloud folders to package ownership
+
+-------------------------------------------------------------------
+Tue Jan  9 07:36:26 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Initial version 3.40.1

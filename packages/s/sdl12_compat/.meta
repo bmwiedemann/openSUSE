@@ -1,0 +1,5 @@
+<package name="sdl12_compat" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="games" package="sdl12_compat"/>
+</package>

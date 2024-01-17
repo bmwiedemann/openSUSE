@@ -1,0 +1,9 @@
+<package name="rubygem-pkg-config" project="openSUSE:Factory">
+  <title>A pkg-config Implementation for Ruby</title>
+  <description>pkg-config can be used in your extconf.rb to properly detect need
+libraries for compiling Ruby native extensions
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-pkg-config"/>
+  <url>http://github.com/rcairo/pkg-config</url>
+</package>

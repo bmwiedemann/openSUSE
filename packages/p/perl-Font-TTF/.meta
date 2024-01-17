@@ -1,0 +1,6 @@
+<package name="perl-Font-TTF" project="openSUSE:Factory">
+  <title>Perl module for TrueType Font hacking</title>
+  <description>This module allows you to do almost anything to a TrueType/OpenType Font
+including modify and inspect nearly all tables.</description>
+  <devel project="devel:languages:perl" package="perl-Font-TTF"/>
+</package>

@@ -1,0 +1,8 @@
+<package name="xosd" project="openSUSE:Factory">
+  <title>X On-Screen Display library</title>
+  <description>A tool for displaying a TV-like on-screen display in X
+
+</description>
+  <devel project="X11:Utilities" package="xosd"/>
+  <url>http://sourceforge.net/projects/libxosd</url>
+</package>

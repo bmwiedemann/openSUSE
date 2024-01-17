@@ -1,0 +1,5 @@
+<package name="xdelta3" project="openSUSE:Factory">
+  <title></title>
+  <description>Xdelta3 is a set of tools designed to compute changes between binary files.  These changes (delta files) are similar to the output of the &quot;diff&quot; program, in that they may be used to store and transmit only the changes between files.  The &quot;delta files&quot; that Xdelta3 manages are stored in RFC3284 (VCDIFF) format.</description>
+  <devel project="devel:tools" package="xdelta3"/>
+</package>

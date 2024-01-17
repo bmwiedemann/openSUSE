@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Wed Dec 27 15:55:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.11.13:
+  * Update release.yml
+  * Added PySimpleGUI versions 4 and 5 as a Framework
+  * Add Odoo 17 trove classifier
+
+-------------------------------------------------------------------
+Mon Oct 30 15:43:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2023.10.18:
+  * Add Framework :: Mkdocs classifier (#154)
+- update to 2023.10.17:
+  * Add the `NVIDIA CUDA :: 12 :: 12.2` classifier. (#155)
+  * Remove the accidental dangling whitespace from CUDA 12.
+- update to 2023.9.19:
+  * Add Trove classifier for Django 5.0 (#153)
+- update to 2023.8.7:
+  * Add Trove classifier for Python 3.13 (#150)
+- update to 2023.7.6:
+  * add Oceanography to Scientific/Engineering (#149)
+    This seemed to be the place to add a new one -- please let me
+    know if there's another way to propose a new classifier.
+      - Note: we could do something like:
+        Met/Ocean Science, but there is already Atmospheric
+        Science, I figured Oceanography made sense.
+- update to 2023.5.24:
+  * Add identifier "Programming Language :: Lua" (#145)
+- update to 2023.5.22:
+  * Add Plone 6.1 classifier (#147)
+
+-------------------------------------------------------------------
+Thu May  4 20:22:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.5.2:
+  * fix: incorrect specification of mypy section in pyproject.toml
+  * Add Pydantic :: 2 classifier.
+  * Add JSON and JSON Schema classifiers
+  * Add classifier for Wagtail 5
+  * Add `Environment :: WebAssembly` classifiers (#129)
+  * Add Django :: 4.2 classifier.
+  * Add Pycsou Framework trove-classifier
+
+-------------------------------------------------------------------
+Mon May  1 18:58:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Test in multibuild: pytest requires python-iniconfig which
+  cycles back as build requirement in any build involving hatchling
+
+-------------------------------------------------------------------
+Fri Apr 21 12:37:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Tue Apr 18 22:41:03 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to single spec version build for PSP
+
+-------------------------------------------------------------------
+Wed Dec  7 22:30:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v2022.12.1
+  * Add django CMS 4.1 (#122)
+
+-------------------------------------------------------------------
+Sat Oct 29 16:19:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v2022.10.19
+  * add cuda 11.8
+
+-------------------------------------------------------------------
+Tue Oct 11 16:14:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2022.9.26
+  * Add "Framework :: Odoo :: 16.0" classifier (#117)
+  * The Odoo 16.0 branch has been created and it will be released in October.
+
+-------------------------------------------------------------------
+Wed Jul 13 21:19:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v2022.6.26

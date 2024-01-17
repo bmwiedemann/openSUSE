@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sun Oct 15 20:37:38 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to v1.0.0
+  + Add a tab for ChromeOS protocols
+  + Add a tab for unknown protocol interfaces
+  + Add a search bar for quickly finding protocols
+  + Add a combo box to filter by implemented or unimplemented protocols
+  + Add explanatory tooltips to table headers
+  + Fix detection of the virtual pointer manager protocol
+  + Fix detection of the DRM lease protocol
+  + Fix warning on startup from the Qt desktop filename
+
+-------------------------------------------------------------------
+Thu Sep 28 19:59:06 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to v0.2.0
+  + Add KDE and Weston protocols
+  + Use a tabbed view with separate tables for each protocol group
+  + Fix contrast issues
+  + Update icon
+  + Prevent editing table cells
+  + Only allow selecting one cell at a time
+  + Fix icon not showing in window decorations on KDE Plasma
+
+-------------------------------------------------------------------
+Thu Sep 28 02:39:45 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
+
+- Initial packaging based on Fedora package

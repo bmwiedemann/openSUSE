@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="110">
+    <srcmd5>1b3d45ac53a7d6fb18af7688858cfa92</srcmd5>
+    <version>0.6</version>
+    <time>1336471808</time>
+    <user>coolo</user>
+    <comment>Moving M17N/lklug to M17N:fonts/lklug-fonts.</comment>
+    <requestid>116369</requestid>
+  </revision>
+  <revision rev="2" vrev="111">
+    <srcmd5>a2109d8c85c56957e62b424255065d37</srcmd5>
+    <version>0.6</version>
+    <time>1338017195</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122163</requestid>
+  </revision>
+  <revision rev="3" vrev="113">
+    <srcmd5>a2109d8c85c56957e62b424255065d37</srcmd5>
+    <version>0.6</version>
+    <time>1340183669</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="114">
+    <srcmd5>1e832910c4928106a9943dc53bd054f5</srcmd5>
+    <version>0.6</version>
+    <time>1347618582</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133965</requestid>
+  </revision>
+  <revision rev="5" vrev="116">
+    <srcmd5>1e832910c4928106a9943dc53bd054f5</srcmd5>
+    <version>0.6</version>
+    <time>1359109403</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="118">
+    <srcmd5>1e832910c4928106a9943dc53bd054f5</srcmd5>
+    <version>0.6</version>
+    <time>1379663171</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="120">
+    <srcmd5>1e832910c4928106a9943dc53bd054f5</srcmd5>
+    <version>0.6</version>
+    <time>1409301807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

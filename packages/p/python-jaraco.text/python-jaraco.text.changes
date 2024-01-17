@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Sun Dec 17 01:44:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.0:
+  * Require Python 3.8 or later.
+
+-------------------------------------------------------------------
+Sat Jun 10 09:20:42 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix build error.
+
+-------------------------------------------------------------------
+Thu Jun  1 20:38:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use python3 module python for sle15
+
+-------------------------------------------------------------------
+Tue May  9 21:30:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.1:
+  * Fixed ``EncodingWarnings`` when reading/writing text.
+
+-------------------------------------------------------------------
+Tue Dec  6 03:48:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.11.0
+  * Added strip-prefix script.
+
+-------------------------------------------------------------------
+Tue Oct 25 19:19:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.10.0:
+  - Prefer casefold in FoldedCase.
+
+-------------------------------------------------------------------
+Thu Aug 18 18:48:46 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v3.9.1
+  * #10: Fixed broken tests in ``read_newlines`` and
+  ``show-newlines``.
+- Release 3.9.0
+  * Add ``jaraco.text.show-newlines`` script.
+- Release 3.8.1
+  * Refreshed packaging.
+
+-------------------------------------------------------------------
+Tue Jun 28 14:33:21 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 3.8.0:
+  * Added ``layouts`` module and ``to-qwerty`` and ``to-dvorak`` scripts.
+  * Introducing ``yield_lines``, ``drop_comment``, and ``join_continuation``.
+- droping dependency to jaraco.base
+
+-------------------------------------------------------------------
+Tue Nov 16 08:37:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.6.0:
+  * Fixed DeprecationWarning in importlib.resources.read_text.
+  * #5: Fixed warning in docs builds.
+
+-------------------------------------------------------------------
+Sat May 15 17:25:42 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * skip python2
+
+- update to version 3.5.0:
+  * Rely on PEP 420 for namespace package.
+
+- changes from version 3.4.0:
+  * Added WordSet.trim* methods.
+
+- changes from version 3.3.0:
+  * Require Python 3.6 or later.
+
+-------------------------------------------------------------------
+Sat Mar 14 08:09:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build on older openSUSE releases as with py3.6 we need the
+  importlib_resources too
+
+-------------------------------------------------------------------
+Thu Jan 16 09:44:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.2.0:
+  * Added normalize_newlines function.
+  * Added wrap and unwrap functions and lorem_ipsum attribute containing the Lorem Ipsum sample text.
+
+-------------------------------------------------------------------
+Tue Mar 26 14:34:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0:
+  * Remove collections dependency to avoid buildcycle
+- Remove multibuild as per above
+
+-------------------------------------------------------------------
+Wed Feb 27 19:08:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use multibuild to avoid buildcycle
+
+-------------------------------------------------------------------
+Tue Feb 26 07:00:39 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add LICENSE
+- Compile manually due to switch to pkgutil namespace technique
+- Add fdupes
+- Remove bcond_with test, allowing tests suite to run
+- Add missing build dependency jaraco.collections
+- Remove undesirable build dependencies pytest-flake8, pytest-sugar and
+  collective.checkdocs
+- Add missing runtime dependencies six, jaraco.base, jaraco.collections
+  and jaraco.functools
+- Update to v2.0
+  * Switch to pkgutil namespace technique for the ``jaraco`` namespace.
+
+-------------------------------------------------------------------
+Thu Aug 23 10:51:49 UTC 2018 - dheidler@suse.de
+
+- Initial Package for v1.10.1

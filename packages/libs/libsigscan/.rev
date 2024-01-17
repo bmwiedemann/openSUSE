@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85dc6fed25eccd32d976608397c79b94</srcmd5>
+    <version>0~20150125</version>
+    <time>1427564318</time>
+    <user>dimstar_suse</user>
+    <comment>A new member of the libyal family of libraries.</comment>
+    <requestid>293184</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e508b492147a5261775540ba82b9d753</srcmd5>
+    <version>0~20150627</version>
+    <time>1439556414</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322695</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53d66dd258b12713b8a0775a66023166</srcmd5>
+    <version>0~20170124</version>
+    <time>1487681298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458573</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4fc4b2963d545bf1be14b7560e4d25b6</srcmd5>
+    <version>0~20170124</version>
+    <time>1507197480</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530608</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b230a6a65d4cd48dac1899e566623a01</srcmd5>
+    <version>0~20190103</version>
+    <time>1560337675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695351</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>05e28acfe57bead0f64d774a77840fab</srcmd5>
+    <version>0~20191221</version>
+    <time>1580724945</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest release 20191221.
+
+Required by recent python-dfVFS release</comment>
+    <requestid>769396</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3be3a9ed8b3a771a27cc03ca75597272</srcmd5>
+    <version>0~20191221</version>
+    <time>1588324332</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule 
+</comment>
+    <requestid>799062</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3f2c6b6afc328ad064997ecb76cae855</srcmd5>
+    <version>0~20201117</version>
+    <time>1608918664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858554</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>caf2d267ed5ebaf71df9ba28d34e230b</srcmd5>
+    <version>20210419</version>
+    <time>1623363503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898770</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5075e1af577ae84e91cba42b976e02ac</srcmd5>
+    <version>20220124</version>
+    <time>1643062197</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220124</comment>
+    <requestid>948370</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bda46e222b5a893aa9497ddb75f48c75</srcmd5>
+    <version>20220124</version>
+    <time>1660051740</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994024</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>65f3aa8773aa2609219a65853f65011e</srcmd5>
+    <version>20220124</version>
+    <time>1661863775</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999961</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0158be3ea54ea84a79f6c7f7b3e0fcb9</srcmd5>
+    <version>20221027</version>
+    <time>1666978311</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221027</comment>
+    <requestid>1031938</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>57620f9f772304586466bdf050f9b807</srcmd5>
+    <version>20221027</version>
+    <time>1669630005</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038491</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b6a17ea395f95944ba134ecc1820b753</srcmd5>
+    <version>20221218</version>
+    <time>1671389282</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221218</comment>
+    <requestid>1043615</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>4c141b4c5fc113debef4e727629cd903</srcmd5>
+    <version>20221218</version>
+    <time>1672851126</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046605</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8965c1a00f73a490e7e29b49a46e44d4</srcmd5>
+    <version>20230109</version>
+    <time>1673281436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230109</comment>
+    <requestid>1056987</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>69413697dd7bf29be4ecbe5419ef6442</srcmd5>
+    <version>20230109</version>
+    <time>1691594739</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103023</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>50a183ec9b55d47b0ec3e85948bc8969</srcmd5>
+    <version>20231201</version>
+    <time>1701462388</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231201</comment>
+    <requestid>1130191</requestid>
+  </revision>
+</revisionlist>

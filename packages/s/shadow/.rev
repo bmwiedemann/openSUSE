@@ -1,0 +1,967 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a6a001baa50e4d40cdb35fae60c4dbb</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1352357756</time>
+    <user>coolo</user>
+    <comment>FATE#314473: Replace pwdutils with shadow utilities</comment>
+    <requestid>139684</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c090086a388abac10e6be6c17245bb49</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1352823027</time>
+    <user>coolo</user>
+    <comment>- Fix default group value in /etc/default/useradd 
+  (useradd-default.diff)</comment>
+    <requestid>141094</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>975df009711882d0716a0736bb4f8338</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1352908941</time>
+    <user>coolo</user>
+    <comment>- Fix getdef default variables (getdef-new-defs.diff)</comment>
+    <requestid>141188</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>975df009711882d0716a0736bb4f8338</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1359110401</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>504e63a6a47bd623bbf543ca84059d29</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1360075593</time>
+    <user>coolo</user>
+    <comment>- Cleanup login.defs and enable ENCRYPT_METHOD [bnc#802006]</comment>
+    <requestid>151269</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>c3271fff6eaffa8b6e7615b42d338c08</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1379427550</time>
+    <user>coolo</user>
+    <comment>- Add some fixes from Fedora:
+  - shadow-4.1.5.1-backup-mode.patch: open backup file with correct
+    permissions.
+  - shadow-4.1.5.1-logmsg.patch: fix error message
+  - shadow-4.1.5.1-errmsg.patch: print error reason
+  - shadow-4.1.5.1-manfix.patch: fix manual page</comment>
+    <requestid>199398</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>c3271fff6eaffa8b6e7615b42d338c08</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1379664660</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>fdba2bba367067cdecc388756637a253</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1384270611</time>
+    <user>coolo</user>
+    <comment>- Add ENCRYPT_METHOD_NIS for pam_unix.so (encryption_method_nis.diff)</comment>
+    <requestid>206650</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>81330c366d403f8f9ca9285425b16b44</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1386932467</time>
+    <user>coolo</user>
+    <comment>- Stop any systemd user manager instance in case a user entry will
+  be deleted (bnc#849870).  Nevertheless a running process requires
+  the option --force for the userdel command.</comment>
+    <requestid>207925</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>2e592cfd6366399ac2566014af8f00fb</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1396770851</time>
+    <user>coolo</user>
+    <comment>- Add patch useradd-mkdirs.diff: fix for bnc#865563, create all parts
+  of the path (forwarded request 228508 from netsroth)</comment>
+    <requestid>228509</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>2e592cfd6366399ac2566014af8f00fb</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1409303358</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>f375af8cc9ac8a1461a1776b9f4c1192</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1437477920</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317069</requestid>
+  </revision>
+  <revision rev="13" vrev="16">
+    <srcmd5>7731ffd93bc129b458af715e6bcdd4cc</srcmd5>
+    <version>4.1.5.1</version>
+    <time>1453799657</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354525</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>647328ee7f833df551fe92007cf7667f</srcmd5>
+    <version>4.2.1</version>
+    <time>1467541100</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400383</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b0c20c99efcd1205a82b0f765df5dee3</srcmd5>
+    <version>4.2.1</version>
+    <time>1474115562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>427510</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>7035c8718a80c5e86b2c88e6586c30b6</srcmd5>
+    <version>4.2.1</version>
+    <time>1477219791</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436107</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>cf6948b029854626bf2b38dd25ae2c79</srcmd5>
+    <version>4.2.1</version>
+    <time>1478288978</time>
+    <user>dimstar_suse</user>
+    <comment>- add keyring, three public keys from https://pkg-shadow.alioth.debian.org/download.php</comment>
+    <requestid>438228</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>cfecfcea6921970ae3430d0f83d23c85</srcmd5>
+    <version>4.2.1</version>
+    <time>1488732513</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459646</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fa45f620a4e21fd6f7e78c55317714aa</srcmd5>
+    <version>4.5</version>
+    <time>1496392182</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 4.5
+- Refreshed patches:
+  * shadow-login_defs.patch
+  * chkname-regex.patch
+  * getdef-new-defs.patch
+  * useradd-mkdirs.patch
+- Upstreamed patches:
+  * shadow-4.1.5.1-manfix.patch
+  * shadow-4.1.5.1-errmsg.patch
+  * shadow-4.1.5.1-backup-mode.patch
+  * shadow-4.1.5.1-audit-owner.patch
+  * shadow-4.2.1-defs-chroot.patch
+  * shadow-4.2.1-merge-group.patch
+  * Fix-user-busy-errors-at-userdel.patch
+  * useradd-clear-tallylog.patch
+- shadow-4.1.5.1-pam_group.patch
+  dynamically added users via pam_group are not listed in groups
+  databases but are still valid
+- shadow.keyring: update keyring with current maintainer's keyid
+  only - Serge Hallyn 'F1D08DB778185BF784002DFFE9FEEA06A85E3F9D'
+- disable_new_audit_function.patch:
+  Disable newer libaudit functionality for older distributions</comment>
+    <requestid>497756</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>30cfd20807ac8168e64a829921770c40</srcmd5>
+    <version>4.5</version>
+    <time>1498202007</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502707</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>f644883c46b7c657965829d7cc48e621</srcmd5>
+    <version>4.5</version>
+    <time>1505502168</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1048645:
+  Set suid bit for newuidmap and newgimap
+- Revert the changes for bsc#1023895 back
+  Pulls in too many deps into ring0.
+  Next version of shadow plans to have no conditional man pages.
+- run spec-cleaner
+- bsc#1023895:
+  man page contained invalid options because they depend
+  on compile flags and we shipped pre built ones.
+  New BuildRequires: docbook-xsl-stylesheets docbook_4 xml2po
+  xsltproc
+</comment>
+    <requestid>526022</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>565b7dd0a7666f3734b7962cbb6f1e25</srcmd5>
+    <version>4.5</version>
+    <time>1508508802</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert accidentalied prerequisites.
+- Prequire group(shadow), group(root), user(root)
+- bsc#1061838:
+  Add Requires for group(mail)
+</comment>
+    <requestid>534237</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>443a1e9259ba3a6e005775ac594db002</srcmd5>
+    <version>4.5</version>
+    <time>1508946452</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert accidentalied prerequisites.
+  Use PreReq for permissions
+- Prequire group(shadow), group(root), user(root)
+- bsc#1061838:
+  Add Requires for group(mail)
+- boo#1048645:
+  Set suid bit for newuidmap and newgimap
+- Revert the changes for bsc#1023895 back
+  Pulls in too many deps into ring0.
+  Next version of shadow plans to have no conditional man pages.
+- run spec-cleaner
+- bsc#1023895:
+  man page contained invalid options because they depend
+  on compile flags and we shipped pre built ones.
+  New BuildRequires: docbook-xsl-stylesheets docbook_4 xml2po
+  xsltproc
+- Adjust requires (we need user/group root instead of aaa_base now)
+- New upstream version 4.5
+- Refreshed patches:
+  * shadow-login_defs.patch
+  * chkname-regex.patch
+  * getdef-new-defs.patch
+  * useradd-mkdirs.patch
+- Upstreamed patches:
+  * shadow-4.1.5.1-manfix.patch
+  * shadow-4.1.5.1-errmsg.patch
+  * shadow-4.1.5.1-backup-mode.patch
+  * shadow-4.1.5.1-audit-owner.patch
+  * shadow-4.2.1-defs-chroot.patch
+  * shadow-4.2.1-merge-group.patch
+  * Fix-user-busy-errors-at-userdel.patch
+  * useradd-clear-tallylog.patch
+- shadow-4.1.5.1-pam_group.patch
+  dynamically added users via pam_group are not listed in groups
+  databases but are still valid
+- shadow.keyring: update keyring with current maintainer's keyid
+  only - Serge Hallyn 'F1D08DB778185BF784002DFFE9FEEA06A85E3F9D'
+- disable_new_audit_function.patch:
+  Disable newer libaudit functionality for older distributions
+- useradd: call external program &quot;/sbin/pam_tally2&quot; to reset
+  failed login counter in &quot;/var/log/tallylog&quot;
+  (bsc#980486, useradd-clear-tallylog.patch)
+- add keyring, three public keys from https://pkg-shadow.alioth.debian.org/download.php
+- bsc#1002975: Use permissions according to permissions package
+  and dont try to manipulate them in %files section.
+- boo#994486: Include shadow.5 manpage
+  Previously this was provided by man-pages package in
+  the man-pages-addons tarball which got removed later on.
+- Add package dependency for aaa_base, fixing bnc#899409
+  (was done by tbehrens@suse.com but not submitted to Factory)
+- shadow 4.2.1 requested by fate#320422
+- bsc#979069: Dont include shadow-4.1.5.1-bug935203-manpage.patch
+- Dont set SUID bit yet. Once bsc#979282 is through, which will adapt the permissions package, we can enable the SUID bits.
+  Remove the files used to circumvent the check.
+- Remove:
+    * shadow-rpmlintrc
+    * shadow-subids
+    * shadow-subids.easy
+    * shadow-subids.secure
+    * shadow-subids.paranoid
+- Update to shadow-4.2.1:
+  - add support for subuids/subgids via newuidmap/newgidmap
+- Rename chkname-regex.diff to chkname-regex.patch
+- Rename encryption_method_nis.diff to encryption_method_nis.patch
+- Rename getdef-new-defs.diff to getdef-new-defs.patch
+- Rename shadow-login_defs.diff to shadow-login_defs.patch
+- Rename userdel-scripts.diff to userdel-script.patch
+- Rename useradd-script.diff to useradd-script.patch
+- Rename useradd-default.diff to useradd-default.patch
+- Rename useradd-mkdirs.diff to useradd-mkdirs.patch
+- Add fixes from Red Hat/Fedora:
+  - shadow-4.1.5.1-audit-owner.patch.patch:
+    - log owner changes for home directory
+  - shadow-4.1.5.1-userdel-helpfix.patch.patch:
+    - give a hint about what happens when you force the removal of a user
+  - shadow-4.2.1-defs-chroot.patch.patch:
+    - initialize uid_t uid_min and uid_t uid_max not before we need them
+  - shadow-4.2.1-merge-group.patch.patch:
+    - simplify by using a single call to snprintf()
+- Add upstream fix
+  - Fix-user-busy-errors-at-userdel.patch:
+    - call sub_uid_close()
+- Moved call from %verifyscript into %post:
+  * Caused call to %service_add_post shadow.service shadow.timer
+    during rpm -qV shadow
+- Add systemd unit files to continuously check password &amp; groupfile integrity
+  * Idea from Arch Linux
+  * pending request to systemd-presets-branding-openSUSE to enable by default
+- Add patch useradd-mkdirs.diff: fix for bnc#865563, create all parts
+  of the path
+- Stop any systemd user manager instance in case a user entry will
+  be deleted (bnc#849870).  Nevertheless a running process requires
+  the option --force for the userdel command.
+- Add ENCRYPT_METHOD_NIS for pam_unix.so (encryption_method_nis.diff)
+- Add some fixes from Fedora:
+  - shadow-4.1.5.1-backup-mode.patch: open backup file with correct
+    permissions.
+  - shadow-4.1.5.1-logmsg.patch: fix error message
+  - shadow-4.1.5.1-errmsg.patch: print error reason
+  - shadow-4.1.5.1-manfix.patch: fix manual page
+- Cleanup login.defs and enable ENCRYPT_METHOD [bnc#802006]
+- Fix getdef default variables (getdef-new-defs.diff)
+- Fix default group value in /etc/default/useradd 
+  (useradd-default.diff)
+- Implement CHARACTER_CLASS support
+  (chkname-regex.diff)
+- Add support for useradd.local
+  (useradd-script.diff)
+- Fix spec file
+- Adjust login.defs
+  (shadow-login_defs.diff)
+- Add userdel*.local script support and scrips
+  (userdel-scripts.diff)
+- Initial package [FATE#314473]
+</comment>
+    <requestid>536398</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>48f1dbb7b8c52585ffe3c05974da978f</srcmd5>
+    <version>4.5</version>
+    <time>1510760940</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1061838:
+  Revert: Requires: group(mail)
+  Introduced circular dependency</comment>
+    <requestid>539856</requestid>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>e00b15787c2d8a24e23901ee63471eb7</srcmd5>
+    <version>4.5</version>
+    <time>1519396054</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577204</requestid>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>a32ca01a6aa309e7b0eeeb44aeeccdb4</srcmd5>
+    <version>4.5</version>
+    <time>1519844135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580162</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8e8a0f55cf1ff9e9b1f864935a984cac</srcmd5>
+    <version>4.6</version>
+    <time>1527001072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.6:
+  * Newgrp: avoid unnecessary lookups
+  * Make language less binary
+  * Add error when turning off man switch
+  * Spelling fixes
+  * Make userdel work with -R
+  * newgidmap: enforce setgroups=deny if self-mapping a group
+  * Norwegian bokmål translation
+  * pwck: prevent crash by not passing O_CREAT
+  * WITH_TCB fixes from Mandriva
+  * Fix pwconv and grpconv entry skips
+  * Fix -- slurping in su
+  * add --prefix option
+- Remove CVE-2018-7169.patch: upstreamed
+- Remove shadow-4.1.5.1-pam_group.patch: upstreamed
+- Update userdel-script.patch: change due to prefix
+- Update useradd-mkdirs.patch: change due to prefix
+  Additionally changed in that patch:
+  * Test for strdup() failure
+  * Directory to 0755 instead 0777
+- Add shadow-4.6.0-fix-usermod-prefix-crash.patch:
+  Fixes crash in usermod when called with --prefix.
+  See https://github.com/shadow-maint/shadow/issues/110</comment>
+    <requestid>609804</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>f02719501f72e831858c90a93be7ea47</srcmd5>
+    <version>4.6</version>
+    <time>1542012487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646047</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>d47c588101653bdf4fb20647d4da2e99</srcmd5>
+    <version>4.6</version>
+    <time>1548769211</time>
+    <user>dimstar_suse</user>
+    <comment>- btrfs-subvolumes.patch: implement support for creating user home
+  directories on btrfs subvolumes (fate#316134)
+
+  Additionally changed in that patch (bsc#1106914):</comment>
+    <requestid>668288</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>63720b4cdf58f2708a999f4e17dbbf5b</srcmd5>
+    <version>4.6</version>
+    <time>1557653495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700977</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>a5d60274953ab9e912221aeb0bc6d1b9</srcmd5>
+    <version>4.6</version>
+    <time>1560337524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706602</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>19ef5446b7ed933eac4529d75f3013b8</srcmd5>
+    <version>4.7</version>
+    <time>1563017586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.7:
+  * Spawn: don't loop forever on ECHILD
+  * Do not fail locking if there is a stale lockfile (Tomas Mraz)
+  * Use lckpwdf if prefix not set (Tomas Mraz)
+  * Build: check correct DocBook version (Jan Tojnar)
+  * Usermod: Print 'no changes' to stdout, not stderr (Serge Hallyn)
+  * Add support for btrfs subvolumes for home (Adam Majer)
+  * Fix chpasswd long line handling (Nathan Ruiz)
+  * Use secure_getenv for gettime (Chris Lamb)
+  * Make sp_lstchg reproducible (Chris Lamb)
+  * Do not crash commonio_close if db file is not open (Tomas Mraz)
+  * Don't flush nscd and sssd cache in read-only mode (Charlie Vuillemez)
+  * French manpage update (Alban VIDAL)
+  * Fix manpage defaults for SUB_UID/GID_COUNT (Tomas Mraz)
+  * Sync po files from shadow.pot (Alban VIDAL)
+  * Usermod: guard against unsafe chown of homedir contents (Tomas Mraz)
+  * Add LASTLOG_UID_MAX to login.defs (Tomas Mraz)
+  * new[ug]idmap file capabilities support (Giuseppe Scrivano and Christian Brauner)
+  * Fix segfault in useradd (Tomas Mraz)
+  * Coverity issues (Tomas Mraz)
+  * Flush sssd caches (Jakub Hrozek)
+  * Log UID in nologin (Vladimir Ivanov)
+  * run pam_getenvlist after setup_env in su.c (Michael Vogt)
+  * Support systems with only utmpx (A. Wilcox)
+  * Fix unguarded ENABLE_SUBIDS code (Jan Chren (rindeal))
+  * Update po/zh_CN translation (Lion Yang)
+  * Create parent dirs for useradd -m (Michael Vetter)
+  * Prevent usermod segv
+  * Fix usermod crash (fariouche)
+- Remove btrfs-subvolumes.patch (fate#316134):</comment>
+    <requestid>709907</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>c22f28cef97aa70b58c2a7bfa371f640</srcmd5>
+    <version>4.7</version>
+    <time>1564996712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719471</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>9396807024abc29083e04ed419b86ca4</srcmd5>
+    <version>4.7</version>
+    <time>1567848429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727986</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>d6a96a5ed4642b0d21f823d3212f3d6e</srcmd5>
+    <version>4.7</version>
+    <time>1571751405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736424</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a4c101dd80f3c2c763d97e0027674fe9</srcmd5>
+    <version>4.8</version>
+    <time>1579954960</time>
+    <user>dimstar_suse</user>
+    <comment>- Set 0755 for chpasswd, groupadd, groupdel, groupmod, newusers,
+  useradd, userdel, usermod explicitly.
+
+- bsc#1160729: Make valid shell check only a warning
+  * Add shadow-4.8-shell-check.patch
+
+- Update to 4.8:
+  * Initial optional bcrypt support.
+  * Make build/install of 'su' optional.
+  * Fix for vipw not resuming correctly when suspended
+  * Sync password field descriptions in manpages
+  * Check for valid shell argument in useradd
+  * Allow translation of new strings through POTFILES.in
+  * Migrate to itstool for translations
+  * Migrate to new SELinux api
+  * Support --enable-vendordir
+  * pwck: Only check homedir if set and not a system user
+  * Support nonstandard usernames
+  * sget{pw,gr}ent: check for data at EOL
+  * Add YYY-MM-DD support in chage
+  * Fix failing chmod calls for suidubins
+  * Fix --sbindir and --bindir for binary installations
+  * Fix LASTLOG_UID_MAX in login.defs
+  * Fix configure error with dash
+- Remove because upstreamed:
+  * libeconf.patch
+  * shadow-usermod-variable.patch
+- Rebase:
+  * shadow-login_defs-unused-by-pam.patch
+  * chkname-regex.patch</comment>
+    <requestid>765745</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>fc355fbc9212c26863406f09a504f70c</srcmd5>
+    <version>4.8.1</version>
+    <time>1580842258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.8.1:
+  * selinux: include stdio
+  * man: don't suggest making groupmems user-writeable
+  * Makefile: bail out on error in for loops
+  * Adding logging of SSH_ORIGINAL_COMMAND to nologin
+  * add new HOME_MODE login.defs option
+  * Add tty logging to useradd
+  * Useradd: make non-executable shell check only a warning
+  * Update Dutch translation
+  * user_busy: Do not mistake a regular user process for a namespaced one
+  * Revert &quot;Honor --sbindir and --bindir for binary installation&quot;
+- Remove shadow-4.8-shell-check.patch: included
+- Remove shadow-4.8-selinux-include.patch: upstreamed</comment>
+    <requestid>767297</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>dcb2c6b0c353ad258783c69ce473af5a</srcmd5>
+    <version>4.8.1</version>
+    <time>1591879028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809695</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>b5951a28569e9bb7adcc30924845cc98</srcmd5>
+    <version>4.8.1</version>
+    <time>1600879128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834532</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>f2a82560a918341004f9e7c3d40c0c80</srcmd5>
+    <version>4.8.1</version>
+    <time>1602762227</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for /usr/etc/skel to useradd.local script (boo#1173321) 
+
+- shadow-login_defs-check.sh: Fix the regexp to get a real variable
+  list (boo#1164274).</comment>
+    <requestid>840431</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>63c2045199ae92ac19dc08772976f898</srcmd5>
+    <version>4.8.1</version>
+    <time>1604779253</time>
+    <user>dimstar_suse</user>
+    <comment>- Change again useradd.local script to let it work even for system
+  accounts and work together with SELinux (bsc#1178296)
+- Change patch useradd-script.patch to support the four arguments
+  used by the useradd.local script (bsc#1178296)</comment>
+    <requestid>845486</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>c4c61359c307d225c4d872546e662e34</srcmd5>
+    <version>4.8.1</version>
+    <time>1618498593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872327</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>b7f290fe98e57f374956063b6ee39fc4</srcmd5>
+    <version>4.8.1</version>
+    <time>1625607000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903625</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>502bd2ba87ee4c176b2bc9ce1c494fed</srcmd5>
+    <version>4.9</version>
+    <time>1632341566</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1190146: Fix empty subid range
+  Add shadow-4.9-useradd-subuid.patch
+  https://github.com/shadow-maint/shadow/pull/399
+
+- bsc#1190145: Fix double free in gpasswd:
+  Add shadow-4.9-sgent-free.patch upstreamed as
+  https://github.com/shadow-maint/shadow/pull/417
+
+- Fix shadow-login_defs-check.sh:
+  In the last update we switched from calling make to %make_build
+  macro. Using sed to adapt the spec file now.
+
+- libsubid-devel: add missing requires for libsubid3
+- Remove README.changes-pwdutils, all distros you can upgrade from
+  use already shadow
+
+- login.defs: Enable USERGROUPS_ENAB and CREATE_HOME to
+  be compatible with other Linux distros and the other tools
+  creating user accounts in use on openSUSE. Set HOME_MODE to 700
+  for security reasons and compatibility. [bsc#1189139] [bsc#1182850]
+
+- Update to 4.9:
+  * Updated translations
+  * Major salt updates
+  * Various coverity and cleanup fixes
+  * Consistently use 0 to disable PASS_MIN_DAYS in man
+  * Implement NSS support for subids and a libsubid
+  * setfcap: retain setfcap when mapping uid 0
+  * login.defs: include HMAC_CRYPTO_ALGO key
+  * selinux fixes</comment>
+    <requestid>920286</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>893a5e3f4bb7cc391f09a46e2d7d7900</srcmd5>
+    <version>4.9</version>
+    <time>1637535088</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix segfaults in newgrp and pwck
+  * Add shadow-4.9-newgrp-segfault.patch 
+    https://github.com/shadow-maint/shadow/pull/437
+  * Add shadow-4.9-pwck-segfault.patch
+    https://github.com/shadow-maint/shadow/pull/445
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * shadow.service
+
+- shadow-util-linux.patch:
+  * Remove the section patching lib/getdef.c in favor of the
+    upstream FOREIGNDEFS.
+  * Add LOGIN_KEEP_USERNAME to login.defs.
+  * Remove PREVENT_NO_AUTH from login.defs. Only used by the
+    unpackaged login and su.
+- shadow-login_defs-unused-by-pam.patch:
+  * Remove variables BCRYPT_MIN_ROUNDS, BCRYPT_MAX_ROUNDS,
+    YESCRYPT_COST_FACTOR, not supported by the current
+    configuratiton.
+- Update login_defs-support-for-pam symbol to version 1.5.2
+  (support for new variable HMAC_CRYPTO_ALGO).
+- Update login_defs-support-for-util-linux to version 2.37
+  (support for new variable LOGIN_KEEP_USERNAME).
+- Refresh shadow-login_defs-comments.patch and
+  shadow-login_defs-suse.patch.
+- Improve shadow-login_defs-check.sh:
+  * Add helper to import local new version in the parent dir.
+  * Fix spec editing sed expression.
+  * Add PREVENT_NO_AUTH to known unused variables.
+  * Update pam sed expression to find HMAC_CRYPTO_ALGO.</comment>
+    <requestid>932263</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>dc847fffcb6ef9eec3d9ec946b4e07b3</srcmd5>
+    <version>4.9</version>
+    <time>1639781660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935176</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>74e5ad8053cc7d283fc07b901ee64397</srcmd5>
+    <version>4.11.1</version>
+    <time>1642371482</time>
+    <user>dimstar_suse</user>
+    <comment>- The legacy code does not support /etc/login.defs.d used by YaST.
+  Enable libeconf to read it (bsc#1192954).
+
+- Update to 4.11.1:
+  * build: include lib/shadowlog_internal.h in dist tarballs
+
+- Update to 4.11:
+  * Handle possible TOCTTOU issues in usermod/userdel
+  	- (CVE-2013-4235)
+  	- Use O_NOFOLLOW when copying file
+  	- Kill all user tasks in userdel
+  * Fix useradd -D segfault
+  * Clean up obsolete libc feature-check ifdefs
+  * Fix -fno-common build breaks due to duplicate Prog declarations
+  * Have single date_to_str definition
+  * Fix libsubid SONAME version
+  * Clarify licensing info, use SPDX.
+
+- Update to 4.10:
+  * From this release forward, su from this package should be
+    considered deprecated. Please replace any users of it with su
+	from util-linux
+  * libsubid fixes
+  * Rename the test program list_subid_ranges to getsubids, write
+    a manpage, so distros can ship it.
+  * Add libeconf dep for new*idmap
+  * Allow all group types with usermod -G
+  * Avoid useradd generating empty subid range
+  * Handle NULL pw_passwd
+  * Fix default value SHA_get_salt_rounds</comment>
+    <requestid>946483</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a85b39b2f4b50b690cea10be2f9669b7</srcmd5>
+    <version>4.12.3</version>
+    <time>1661497683</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.12.3:
+  Revert removal of subid_init, which should have bumped soname.
+  So note that 4.12 through 4.12.2 were broken for subid users.
+
+- Update to 4.12.2:
+  * Address CVE-2013-4235 (TOCTTOU when copying directories) [bsc#916845]
+- Refresh useradd-userkeleton.patch:
+  LSTAT() was removed with https://github.com/shadow-maint/shadow/pull/545
+  Let's use fstatat() now.
+
+- Update to 4.12.1:
+  * Fix uk manpages
+- Remove shadow-4.12-remove-uk.patch: fixed upstream
+
+- Update to 4.12:
+  * Add absolute path hint to --root
+  * Various cleanups
+  * Fix Ubuntu release used in CI tests
+  * add -F options to userad
+  * useradd manpage updates
+  * Check for ownerid (not just username) in subid ranges
+  * Declare file local functions static
+  * Use strict prototypes
+  * Do not drop const qualifier for Basename
+  * Constify various pointers
+  * Don't return uninitialized memory
+  * Don't let compiler optimize away memory cleaning
+  * Remove many obsolete compatibility checks  and defines
+  * Modify ID range check in useradd
+  * Use &quot;extern &quot;C&quot;&quot; to make libsubid easier to use from C++</comment>
+    <requestid>999092</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>c4b39e6a87eb3147c02c4dba18ea22f9</srcmd5>
+    <version>4.12.3</version>
+    <time>1666780272</time>
+    <user>dimstar_suse</user>
+    <comment>- Add shadow-prefix-overflow.patch:
+  Fix buffer overflow when calling useradd with --prefix
+  See https://github.com/shadow-maint/shadow/pull/588</comment>
+    <requestid>1030965</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>9b76f5fb7a5b01962282553b55aa1e38</srcmd5>
+    <version>4.12.3</version>
+    <time>1667579483</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1204811: Fix chage date format string regression
+  * Add shadow-chage-format.patch</comment>
+    <requestid>1032849</requestid>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>eb5fc1a9eda57ac901a517e5df818f88</srcmd5>
+    <version>4.12.3</version>
+    <time>1667994954</time>
+    <user>dimstar_suse</user>
+    <comment>- Add shadow-copytree-usermod-fifo.patch:
+  Fix regression that prevented `usermod -m` to work when their
+  home directory contained at least one fifo
+  See https://github.com/shadow-maint/shadow/pull/565</comment>
+    <requestid>1034152</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>9ee398e9199ee774965440fd344457bd</srcmd5>
+    <version>4.13</version>
+    <time>1668271188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.13:
+  * useradd.8: fix default group ID
+  * Revert drop of subid_init()
+  * Georgian translation
+  * useradd: Avoid taking unneeded space: do not reset non-existent data
+    in lastlog
+  * relax username restrictions
+  * selinux: check MLS enabled before setting serange
+  * copy_tree: use fchmodat instead of chmod
+  * copy_tree: don't block on FIFOs
+  * add shell linter
+  * copy_tree: carefully treat permissions
+  * lib/commonio: make lock failures more detailed
+  * lib: use strzero and memzero where applicable
+  * Update Dutch translation
+  * Don't test for NULL before calling free
+  * Use libc MAX() and MIN()
+  * chage: Fix regression in print_date
+  * usermod: report error if homedir does not exist
+  * libmisc: minimum id check for system accounts
+  * fix usermod -rG x y wrongly adding a group
+  * man: add missing space in useradd.8.xml
+  * lastlog: check for localtime() return value
+  * Raise limit for passwd and shadow entry length
+  * Remove adduser-old.c
+  * useradd: Fix buffer overflow when using a prefix
+  * Don't warn when failed to open /etc/nsswitch.conf
+- Remove patches we took from upstream pre-release:
+  * shadow-copytree-usermod-fifo.patch
+  * shadow-chage-format.patch</comment>
+    <requestid>1034857</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>700ff53ff58afec7c86a9a660789cb8f</srcmd5>
+    <version>4.13</version>
+    <time>1671380543</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1205502: Fix useradd audit event logging of ID field
+  * Add shadow-audit-no-id.patch</comment>
+    <requestid>1043310</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>a3a1b6d07ba03ac917a65ababcbb20d9</srcmd5>
+    <version>4.13</version>
+    <time>1673801866</time>
+    <user>dimstar_suse</user>
+    <comment>- Add shadow-fix-print-login-timeout.patch:
+  Fix printing full login timeout message
+  See gh/shadow-maint/shadow#621
+
+  See gh/shadow-maint/shadow#606</comment>
+    <requestid>1058151</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>3d8c2a2c6a8367274c55c9c6611ddd2a</srcmd5>
+    <version>4.13</version>
+    <time>1676827118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update shadow-fix-print-login-timeout.patch
+- Reorder source files and patches
+
+- Remove scripts that claim to be config but are in /usr (boo#1191578)
+  * userdel-script.patch
+  * useradd-script.patch
+  * useradd.local
+  * userdel-post.local
+  * userdel-pre.local</comment>
+    <requestid>1066319</requestid>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>b646857809026ae5736bc65b6e6cc256</srcmd5>
+    <version>4.13</version>
+    <time>1681653998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079091</requestid>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>1564a427a22c0c0c558013fd3c0d76cc</srcmd5>
+    <version>4.13</version>
+    <time>1682079333</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1210507 (CVE-2023-29383):
+  Check for control characters
+- Add shadow-CVE-2023-29383.patch</comment>
+    <requestid>1080172</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a4f3d21f86d65255ac831887e66dc599</srcmd5>
+    <version>4.14.0</version>
+    <time>1692379618</time>
+    <user>anag+factory</user>
+    <comment>- Remove dependency on libbsd:
+  On Tumbleweed we have glibc 2.38 already thus string functions
+  like strlcpy will be present and won't be needed from libbsd.
+  `readpassphrase()` is then the only function from libbsd not present.
+  Upstream shadow has an in tree copy of it, that is used when the
+  `--without-libbsd` flag is passed along.
+  By relying on glibc 2.38 we don't need to add libbsd and libmd
+  to our ring0 but can't easily upgrade on SLE.
+
+- Update to 4.14.0:
+  * configure: add with-libbsd option
+  * Code cleanup
+  * Replace utmp interface #757 
+  * new option enable-logind #674
+  * shadow userdel: add the adaptation to the busybox ps in 01-kill_user_procs.sh
+  * chsh: warn if root sets a shell not listed in /etc/shells #535
+  * newgrp: fix potential string injection
+  * lastlog: fix alignment of Latest header
+  * Fix yescrypt support #748
+  * chgpasswd: Fix segfault in command-line options
+  * gpasswd: Fix password leak
+  * Add --prefix to passwd, chpasswd and chage #714 (bsc#1206627)
+  * usermod: fix off-by-one issues #701
+  * ch(g)passwd: Check selinux permissions upon startup #675
+  * sub_[ug]id_{add,remove}: fix return values
+  * chsh: Verify that login shell path is absolute #730
+  * process_prefix_flag: Drop privileges
+  * run_parts for groupadd and groupdel #706
+  * newgrp/useradd: always set SIGCHLD to default
+  * useradd/usermod: add --selinux-range argument #698</comment>
+    <requestid>1104351</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>b1b7cdc1f5cfa9f317b36f411d5f8c0c</srcmd5>
+    <version>4.14.0</version>
+    <time>1696269857</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114284</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>68b92c0ba4f0d23f34dddb054d60339d</srcmd5>
+    <version>4.14.1</version>
+    <time>1696619500</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.14.1:
+  Build system: Merge libshadow and libmisc into a single libshadow.
+  This fixes problems in the linker, which were reported at least
+  in Gentoo. #791
+- Add Alejandro Colomar (new stable branch maintainer) to shadow.keyring</comment>
+    <requestid>1115994</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>8a243ff8bccb53d0c601c0b313342358</srcmd5>
+    <version>4.14.2</version>
+    <time>1698780266</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.14.2:
+  * libshadow:
+    + Fix build with musl libc.
+    + Avoid NULL dereference.
+    + Update utmp at an initial login
+  * useradd(8):
+    + Set proper SELinux labels for def_usrtemplate
+  * Manual:
+    + Document --prefix in chage(1), chpasswd(8), and passwd(1)
+- Drop upstreamed shadow-4.14.0-selinux-labels.patch</comment>
+    <requestid>1121084</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>17e9008e60cfe8239c8a383aa851ca29</srcmd5>
+    <version>4.14.2</version>
+    <time>1705003471</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1199026 bsc#1203823:
+  Remove pam_keyinit from PAM configuration.
+  This was introduced for bsc#1144060.</comment>
+    <requestid>1137739</requestid>
+  </revision>
+</revisionlist>

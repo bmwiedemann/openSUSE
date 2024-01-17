@@ -1,0 +1,338 @@
+-------------------------------------------------------------------
+Mon Aug 28 07:48:39 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.98 (no changelog)
+
+-------------------------------------------------------------------
+Wed Jun 28 06:37:09 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.73 (no changelog)
+
+-------------------------------------------------------------------
+Fri Apr  7 09:10:08 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.49 (no changelog)
+- Add set_current_version.patch
+
+-------------------------------------------------------------------
+Wed Mar  8 07:09:00 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.30 (no changelog)
+
+-------------------------------------------------------------------
+Sat Jan 28 18:40:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Update to 5.2.16:
+  * no changes 
+
+-------------------------------------------------------------------
+Wed Jan 11 03:04:27 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.2.9
+
+- Update to version 5.2.9:
+  * no changes
+
+-------------------------------------------------------------------
+Wed Jan  4 11:26:35 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.6:
+  * Support for authentication headers with multiple challenges.
+  * Fixed various weaknesses within multipart decoding process.
+  * Fixed endless UDP transaction in a specific scenario.
+  * Fixed various crashes.
+
+-------------------------------------------------------------------
+Mon Dec  5 10:45:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.72:
+  * Allow multiple challenges in a single authenticate header as defined by rfc2616 
+
+-------------------------------------------------------------------
+Mon Oct 17 07:11:00 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.64 (no changelog).
+
+-------------------------------------------------------------------
+Sun Aug 14 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Remove RPATH to be able to build on Fedora
+
+-------------------------------------------------------------------
+Fri Jul  8 07:58:58 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.47:
+  * Close the file before calling stop callback to let cb to do file modifications like renaming.
+  * Do not return belle_sip_source_t when scheduling task on the main loop.
+  * Fix double free during certificate generation.
+
+-------------------------------------------------------------------
+Wed Jun  8 03:05:29 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.1.32
+
+- Update to version 5.1.32:
+  * Fixed userid not used in http auth
+  * Add methods to known whether a request can be created or not
+  * Avoid re-sending a BYE because of un-ACKed dialog if a BYE was sent already
+  * report io error to pending http transaction in case of provider stop
+  * Add test vectors from RFC7616 for digest auth
+  * Implement automatic retry of reINVITE upon 491 request pending response
+- revert license tag change
+
+-------------------------------------------------------------------
+Thu Mar 24 10:33:55 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.12:
+  * no changelog
+
+-------------------------------------------------------------------
+Tue Mar  1 15:27:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.0:
+  * Multipart boundaries are random and used-once.
+  * Avoid using V4MAPPED formatted IP addresses in CONNECT http requests,
+    because http proxies may not be always IPv6-capable.
+
+-------------------------------------------------------------------
+Tue Feb  1 20:46:09 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.67
+
+- Update to version 5.0.67:
+  * no changes
+- fix license tag
+
+-------------------------------------------------------------------
+Tue Jan 18 08:45:33 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.0.66:
+  * no changelog
+
+-------------------------------------------------------------------
+Sun Nov 21 01:41:39 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.53
+
+- Update to version 5.0.53:
+  * Fix a crash when receiving parsing a rtcp-fb attribute with just
+    fb-id but no value
+
+-------------------------------------------------------------------
+Mon Nov  8 07:13:22 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.49
+
+- Update to 5.0.49:
+  * no changes
+
+-------------------------------------------------------------------
+Tue Nov  2 23:12:21 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.46
+
+- Update to 5.0.46:
+  * Fix possible REGISTER endless loop when 200 OK from REGISTER is
+    not received through the same connection as the REGISTER
+
+-------------------------------------------------------------------
+Tue Oct 19 23:28:44 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.36
+
+- Update to 5.0.36:
+  * add option to deactivate potentially weak digest authentication schemes
+  * fix via header of CANCEL request
+  * fix null pointer crash when receiving an INVITE without from-tag
+  * fix prack auth
+  * fix special case dns resolver issue and add test
+  * fix cast warning
+  * implement UDP listening point without server socket
+
+-------------------------------------------------------------------
+Mon Aug 30 15:37:47 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.0
+
+- Move belr grammar files from belle-sip-devel to a new 
+  belle-sip-data package.
+
+-------------------------------------------------------------------
+Thu Jul 29 23:56:07 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.0
+
+- Update to 5.0.0:
+  * added SDP API for Capability Negociation headers (RFC5939).
+  * SDP parser no longer uses antlr, but belr.
+  * Fixed erroneous closing of file description 0, causing unexpected behaviors.
+  * Fixed crash when receiving invalid from header.
+- drop fix-build.patch
+- add belr-devel build requirement
+- drop antlr build requirement
+
+-------------------------------------------------------------------
+Sun Jul 4 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.5.20
+
+- fix several RPMLINT warning
+- Update to 4.5.20:
+  * Fix some GCC warning
+  * Fix crash while receiving some kind of invalid from header
+- Update to 4.5.15:
+  * Fix bellesip parser on IPV4 inside IPV6
+- Update to 4.5.10:
+  * Fix cast as causing belle_sip_uri_equals_with_omission to return false negatives
+
+-------------------------------------------------------------------
+Thu Apr 15 20:17:28 UTC 2021 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
+
+- Update to 4.5.3:
+  * Use DNSService framework on iOS, to workaround the local network permission request triggered on iOS >= 14
+  * Fix routing according to RFC3263: uri with a port number shall not be resolved with SRV.
+
+-------------------------------------------------------------------
+Wed Jul 29 14:46:36 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.4.0 (changes since 4.3.1):
+  * Now get custom well_known_port (either sip or sips) if set,
+    exported well known port getter and setter to be used in
+    public api.
+  * Introduce bufferising file body handler.
+  * Fix potential crashes when processing invalid responses or
+    requests.
+  * Add Session-Expires header support (from RFC 4028).
+  * Fix bad algorithm for channel selection.
+  * Add a new cppListToClist method on hybrid objects.
+  * Replace std::mem_fun by std::mem_fn, as the former is
+    deprecated.
+  * User body handler gets buffering too.
+  * Make received parameter in VIA header compatible with url
+    encoded IPv6 address
+    (https://tools.ietf.org/html/rfc5118#section-4.5)
+  * Print C++ object type names using typeid.
+  * Make belle_sip_main_loop_do_later() to be thread-safe.
+  * Clear all data of the control pipe on each main loop
+    iteration.
+  * Prevent bad behaviour when creating a belle_sip_source_t with a
+    timeout higher than UINT_MAX/2.
+
+-------------------------------------------------------------------
+Wed Apr 22 16:24:17 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3.1 (changes since 1.6.3):
+  * RFC3262 (100 rel) support.
+  * Use maddr for http uris.
+  * Install cmake config files into the correct path.
+  * Enable faster retry upon io/error.
+  * Add wakelocks counters to destroy powermanager only if there is
+    no more initialised wakelocks
+  * Send keepalive on channels that are in out state IDLE only +
+    add method to send a keep alive manually.
+  * Fix http provider auth using SHA-256.
+  * Use BcTooblox macros for source archive generation.
+  * Fix loop of REGISTER when the server replies 500 Internal
+    error.
+  * Export some functions related to escaped characters.
+  * Process 100rel for answers from 101 to 199.
+  * CMakeLists.txt: Introduce ENABLE_PACKAGE_SOURCE option.
+  * Improve prack behaviour in case of reliable response
+    retransmition.
+  * The licence is now GPLv3+.
+  * Remove some useless files.
+- Drop belle-sip-fix-dns-build.patch,
+  belle-sip-fix-pkgconfig.patch.
+
+-------------------------------------------------------------------
+Mon Nov 18 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- %make_jobs is depricated replaced by %cmake_build
+
+-------------------------------------------------------------------
+Thu Oct 17 14:32:41 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Tue Sep 10 08:36:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update RPM group and descriptions.
+
+-------------------------------------------------------------------
+Wed Sep  4 19:42:02 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add belle-sip-fix-dns-build.patch: Pass -Wno-override-init to the
+  compiler while building dns.c (commit 99dda3d1).
+
+-------------------------------------------------------------------
+Fri Jul 21 13:30:37 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.6.3 (changes since 1.6.1):
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed May 17 15:00:49 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.6.1:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Sat Sep 17 12:50:36 UTC 2016 - idonmez@suse.com
+
+- Remove reference to unneeded wakelock.h file (fix-build.patch) 
+
+-------------------------------------------------------------------
+Tue Sep 13 12:54:30 UTC 2016 - sor.alexei@meowr.ru
+
+- Switch to building with CMake.
+- Add belle-sip-fix-pkgconfig.patch: Fix up pkgconfig.
+
+-------------------------------------------------------------------
+Sun Sep 11 16:43:13 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.5.0:
+  * Move general purpose and encryption related functions to
+    bctoolbox, which becomes a mandatory dependency.
+  * mbedTLS support through bctoolbox.
+  * SUBSCRIBE/NOTIFY dialog improvements: can be created upon
+    reception of NOTIFY (as requested by RFC), automatic deletion
+    when dialog expires.
+  * Fix: Retransmit 200Ok of a reINVITE (was formely only done for
+    initial INVITE).
+  * Add support for zlib in body handling.
+
+-------------------------------------------------------------------
+Fri Nov  6 19:00:45 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.4.2:
+  * Support of Accept, Content-Disposition and Supported headers.
+  * Bug fixes.
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Jul 20 19:09:15 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.4.1
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon Mar 23 10:16:05 UTC 2015 - sor.alexei@meowr.ru
+
+- Switch from obsolete polarssl to mbedtls.
+
+-------------------------------------------------------------------
+Sun Mar 15 16:35:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.4.0 (changes since 1.3.0):
+  * DNS SRV weight selection.
+  * Support of multipart messages.
+  * Support of backslash escaped display name.
+  * Support of display names of type (token LWS)* instead of just
+    token.
+  * Support for absolute URIs.
+- Remove 0001-fix-license-headers.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Nov  6 16:09:07 UTC 2014 - tchvatal@suse.com
+
+- Use gpl2+ as is in the files not just gpl2
+- Fix build on factory
+- Run autoreconf to avoid double configure run
+- Disable silent rules
+- Disable Werror
+
+-------------------------------------------------------------------
+Thu Oct  9 22:56:44 UTC 2014 - fisiu@opensuse.org
+
+- Add 0001-fix-license-headers.patch: fix license header in files, to be GPLv2.
+
+-------------------------------------------------------------------
+Fri Aug 15 17:45:23 UTC 2014 - fisiu@opensuse.org
+
+- Enable tls with polarssl library.
+
+-------------------------------------------------------------------
+Wed Aug 13 20:06:58 UTC 2014 - fisiu@opensuse.org
+
+- Initial package at version 1.3.0.

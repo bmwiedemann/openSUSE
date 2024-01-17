@@ -1,0 +1,681 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdc418b51564de9f45bc49b1e7428b3e</srcmd5>
+    <version>1.3</version>
+    <time>1331124310</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>106261</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fdc418b51564de9f45bc49b1e7428b3e</srcmd5>
+    <version>1.3</version>
+    <time>1340184096</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1f0dd03794e32a2097418dfe3fb2e565</srcmd5>
+    <version>1.4</version>
+    <time>1340726579</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126138</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>741547aad11c5690d040e07a2e95eea3</srcmd5>
+    <version>1.4.2</version>
+    <time>1343634025</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.4.2:
+  + fix some tests which fail if /tmp is a symlink to some other place
+  + &quot;python setup.py test&quot; now runs tox tests via tox :)
+    also added an example on how to do it for your project.
+- Changes from version 1.4.1:
+  + fix issue41 better quoting on windows - you can now use &quot;&lt;&quot; and &quot;&gt;&quot; in
+    deps specifications, thanks Chris Withers for reporting</comment>
+    <requestid>129017</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>741547aad11c5690d040e07a2e95eea3</srcmd5>
+    <version>1.4.2</version>
+    <time>1359110132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b809fc6d041a048976563b8f47d630e7</srcmd5>
+    <version>1.4.3</version>
+    <time>1366709966</time>
+    <user>coolo</user>
+    <comment>Ok, I've tried to get the testsuite working, but it was too difficult removed bcond, so it's fixed (forwarded request 172826 from thomas-schraitle)</comment>
+    <requestid>172887</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d0da01604b3604256dd53eb30cd5c6e8</srcmd5>
+    <version>1.5.0</version>
+    <time>1372509354</time>
+    <user>coolo</user>
+    <comment>- update to 1.5.0:
+ - fix issue104: use setuptools by default, instead of distribute,
+   now that setuptools has distribute merged.
+ - make sure test commands are searched first in the virtualenv 
+ - re-fix issue2 - add whitelist_externals to be used in ``[testenv*]``
+   sections, allowing to avoid warnings for commands such as ``make``,
+   used from the commands value.
+ - fix issue97 - allow substitutions to reference from other sections
+   (thanks Krisztian Fekete)
+ - fix issue92 - fix {envsitepackagesdir} to actually work again
+ - show (test) command that is being executed, thanks 
+   Lukasz Balcerzak
+ - re-license tox to MIT license
+ - depend on virtualenv-1.9.1 
+ - rename README.txt to README.rst to make bitbucket happier (forwarded request 180860 from dirkmueller)</comment>
+    <requestid>180875</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>d0da01604b3604256dd53eb30cd5c6e8</srcmd5>
+    <version>1.5.0</version>
+    <time>1379664299</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>282171a263849f2fece52fca29686e9d</srcmd5>
+    <version>1.6.1</version>
+    <time>1379926702</time>
+    <user>coolo</user>
+    <comment>- (Build)Require python-argparse on SLE
+
+- Update to version 1.6.0:
+  + fix issue119: {envsitepackagesdir} is now correctly computed and has
+    a better test to prevent regression.
+  + fix issue116: make 1.6 introduced behaviour of changing to a 
+    per-env HOME directory during install activities dependent 
+    on &quot;--set-home&quot; for now.  Should re-establish the old behaviour
+    when no option is given.
+  + fix issue118: correctly have two tests use realpath(). Thanks Barry
+    Warsaw.
+  + fix test runs on environments without a home directory
+    (in this case we use toxinidir as the homedir)
+  + fix issue117: python2.5 fix: don't use ``--insecure`` option because 
+    its very existence depends on presence of &quot;ssl&quot;.  If you
+    want to support python2.5/pip1.3.1 based test environments you need 
+    to install ssl and/or use PIP_INSECURE=1 through ``setenv``. section.
+  + fix issue102: change to {toxinidir} when installing dependencies.
+    this allows to use relative path like in &quot;-rrequirements.txt&quot;.
+- Changes from version 1.6.0:
+  + fix issue35: add new EXPERIMENTAL &quot;install_command&quot; testenv-option to
+    configure the installation command with options for dep/pkg install.
+    Thanks Carl Meyer for the PR and docs.
+  + fix issue91: python2.5 support by vendoring the virtualenv-1.9.1 
+    script and forcing pip&lt;1.4. Also the default [py25] environment 
+    modifies the default installer_command (new config option)
+    to use pip without the &quot;--pre&quot; option which was introduced 
+    with pip-1.4 and is now required if you want to install non-stable 
+    releases.  (tox defaults to install with &quot;--pre&quot; everywhere).
+  + during installation of dependencies HOME is now set to a pseudo</comment>
+    <requestid>199717</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e545acb84495833792f30e4099f22b18</srcmd5>
+    <version>1.7.1</version>
+    <time>1405053938</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.7.1:
+  - fix issue162: don't list python 2.5 as compatibiliy/supported
+  - fix issue158 and fix issue155: windows/virtualenv properly works now:
+    call virtualenv through &quot;python -m virtualenv&quot; with the same 
+    interpreter which invoked tox.  Thanks Chris Withers, Ionel Maries Cristian.
+- Add tox-disable-env-tests.patch: Disable tests that need network-access
+  and that depend on /usr/bin/tox (which is only added via u-a in %post)
+- Remove tox-disable-network-accessing-tests.patch: Obsoleted by the above patch
+- Implement update-alternatives to allow parallel installation with python3-tox</comment>
+    <requestid>239439</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9808b88fddaf23562b2130ea3b77a810</srcmd5>
+    <version>1.7.2</version>
+    <time>1409118361</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246200</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>9808b88fddaf23562b2130ea3b77a810</srcmd5>
+    <version>1.7.2</version>
+    <time>1409303007</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>09d79e8501afc150b7af6a39b1bd2da1</srcmd5>
+    <version>1.9.2</version>
+    <time>1430891332</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305177</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c878d64ce30105d49feb928147702d70</srcmd5>
+    <version>2.1.1</version>
+    <time>1443684542</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331797</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a692693aa074f45765dfcd88a49f128a</srcmd5>
+    <version>2.3.1</version>
+    <time>1455190668</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358477</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f31f63ad1d70bc08b79f121f34faab3a</srcmd5>
+    <version>2.3.1</version>
+    <time>1460101183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>385467</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>5b5d8a4ba8eb345e0aaff967df6b07a3</srcmd5>
+    <version>2.3.1</version>
+    <time>1488408126</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>460740</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a2163ac8343b90b8888b3fc54a6e0959</srcmd5>
+    <version>2.7.0</version>
+    <time>1492618129</time>
+    <user>dimstar_suse</user>
+    <comment>- update for singlespec
+- update to 2.7.0
+
+please add to Staging:E, should fix the tox failure</comment>
+    <requestid>486542</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4ded7c9798ff59555e0792f7dd2ad611</srcmd5>
+    <version>2.7.0</version>
+    <time>1494345575</time>
+    <user>dimstar_suse</user>
+    <comment>Only one package should provide &quot;tox&quot;.</comment>
+    <requestid>493150</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7c887eea13b1a424e9ce457fd6136fff</srcmd5>
+    <version>2.9.1</version>
+    <time>1507391221</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530441</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>64d8b821b7e14451c88663851ccb00f2</srcmd5>
+    <version>2.9.1</version>
+    <time>1514907116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559371</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e4c038aa65de76c915638107de8188fc</srcmd5>
+    <version>3.1.2</version>
+    <time>1532033715</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 3.1.2:
+  * Many changes in the code, dropped support for py &lt;2.7 and &lt;3.3
+  * See CHANGELOG.rst
+- Do not build sphinx documentation, additional dependencies</comment>
+    <requestid>623448</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2585b92313b5802c86665a39f11f1339</srcmd5>
+    <version>3.3.0</version>
+    <time>1536833474</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 3.3.0:
+  - fix ``TOX_LIMITED_SHEBANG`` when running under python3 - by :user:`asottile` (`#931 &lt;https://github.com/tox-dev/tox/issues/931&gt;`_)
+  - `PEP-517 &lt;https://www.python.org/dev/peps/pep-0517/&gt;`_ source distribution support (create a
+    ``.package`` virtual environment to perform build operations inside) by :user:`gaborbernat` (`#573 &lt;https://github.com/tox-dev/tox/issues/573&gt;`_)
+  - `flit &lt;https://flit.readthedocs.io&gt;`_ support via implementing ``PEP-517`` by :user:`gaborbernat` (`#820 &lt;https://github.com/tox-dev/tox/issues/820&gt;`_)
+  - packaging now is exposed as a hook via ``tox_package(session, venv)`` - by :user:`gaborbernat` (`#951 &lt;https://github.com/tox-dev/tox/issues/951&gt;`_)
+  - Updated the VSTS build YAML to use the latest jobs and pools syntax - by :user:`davidstaheli` (`#955 &lt;https://github.com/tox-dev/tox/issues/955&gt;`_)
+  - ``--parallel--safe-build`` no longer cleans up its folders (``distdir``, ``distshare``, ``log``). - by :user:`gaborbernat` (`#849 &lt;https://github.com/tox-dev/tox/issues/849&gt;`_)
+  - Switch pip invocations to use the module ``-m pip`` instead of direct invocation. This could help
+    avoid some of the shebang limitations.  - by :user:`gaborbernat` (`#935 &lt;https://github.com/tox-dev/tox/issues/935&gt;`_)
+  - Ability to specify package requirements for the tox run via the ``tox.ini`` (``tox`` section under key ``requires`` - PEP-508 style): can be used to specify both plugin requirements or build dependencies. - by :user
+  :`gaborbernat` (`#783 &lt;https://github.com/tox-dev/tox/issues/783&gt;`_)
+  - Allow to run multiple tox instances in parallel by providing the
+    ``--parallel--safe-build`` flag. - by :user:`gaborbernat` (`#849 &lt;https://github.com/tox-dev/tox/issues/849&gt;`_)
+  - A caching issue that caused the ``develop-inst-nodeps`` action, which
+    reinstalls the package under test, to always run has been resolved. The
+    ``develop-inst-noop`` action, which, as the name suggests, is a no-op, will now
+    run unless there are changes to ``setup.py`` or ``setup.cfg`` files that have
+    not been reflected - by @stephenfin (`#909 &lt;https://github.com/tox-dev/tox/issues/909&gt;`_)</comment>
+    <requestid>635060</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>391f6cfbcb433d6897f6d48c1a17bc62</srcmd5>
+    <version>3.5.2</version>
+    <time>1541666881</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure the tests are executed
+
+- specfile:
+  * require filelock
+  * CHANGELOG.rst -&gt;changelog.rst, added CONTRIBUTORS CONTRIBUTING.rst to doc
+  * add fdupes
+- update to version 3.5.2:
+  * Bugfixes
+    + session packages are now put inside a numbered directory
+      (instead of prefix numbering it, because pip fails when wheels
+      are not named according to `PEP-491
+      &lt;https://www.python.org/dev/peps/pep-0491/#id9&gt;`_, and prefix
+      numbering messes with this) - by :user:`gaborbernat` (`#1042
+      &lt;https://github.com/tox-dev/tox/issues/1042&gt;`_)
+  * Features
+    + level three verbosity (&quot;-vvv&quot;) show the packaging output - by
+      :user:`gaborbernat` (`#1047
+      &lt;https://github.com/tox-dev/tox/issues/1047&gt;`_)
+- changes from version 3.5.1:
+  * Bugfixes
+    + fix regression with &quot;3.5.0&quot;: specifying &quot;--installpkg&quot; raises
+      &quot;AttributeError: 'str' object has no attribute 'basename'&quot;
+      (`#1042 &lt;https://github.com/tox-dev/tox/issues/1042&gt;`_)
+- changes from version 3.5.0:
+  * Bugfixes
+    + intermittent failures with &quot;--parallel--safe-build&quot;, instead of
+      mangling with the file paths now uses a lock to make the package
+      build operation thread safe and is now on by default
+      (&quot;--parallel--safe-build&quot; is now deprecated) - by
+      :user:`gaborbernat` (`#1026</comment>
+    <requestid>645896</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>380992a8f5c05b9f892d1e5dc89a74aa</srcmd5>
+    <version>3.7.0</version>
+    <time>1553888034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684335</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dab9b2ddb5067cbeae0efec45f53b2b5</srcmd5>
+    <version>3.8.1</version>
+    <time>1557653555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702058</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>58cd00eaaf8703cf7148ad53e589fc8b</srcmd5>
+    <version>3.11.1</version>
+    <time>1558036751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703496</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7f05604c58711efd4e6a2667bbd91590</srcmd5>
+    <version>3.12.1</version>
+    <time>1558938544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705207</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>405f0bd6bcf121cbddccc4cb3e2456b7</srcmd5>
+    <version>3.14.0</version>
+    <time>1569233889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.14.0:
+  * Fix PythonSpec detection of python3.10
+  * Fix regression failing to detect future and past py## factors
+  * Fix current_tox_py for pypy / pypy3
+  * Add support for minor versions with multiple digits
+  * Remove dependence on md5 hashing algorithm
+  * on venv cleanup: add explicit check for pypy venv to make it possible to recreate it 
+  * Fix isolated build double-requirement
+  * Replace pkg_resources with importlib_metadata for speed</comment>
+    <requestid>731289</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>61e43a0ecfe9675868729f8d0e70ef87</srcmd5>
+    <version>3.14.0</version>
+    <time>1574414712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749145</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>cb5f6903d5d4d039da048232c7b14a1a</srcmd5>
+    <version>3.14.3</version>
+    <time>1581801809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.14.3 bsc#1163043:
+  * Relax importlib requirement to allow either version 0 or 1 - by :user:`chyzzqo2` #1476</comment>
+    <requestid>771779</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d2160ca119284c9d0d75752dfaceff43</srcmd5>
+    <version>3.14.5</version>
+    <time>1585265267</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable spinner tests as the monkeypatch changed behaviour in pytest
+
+- version update to 3.14.5
+  - Add ``--discover`` (fallback to ``TOX_DISCOVER`` environment variable via path separator) to inject python executables
+    to try as first step of a discovery - note the executable still needs to match the environment by :user:`gaborbernat`.
+    `#1526 &lt;https://github.com/tox-dev/tox/issues/1526&gt;`_
+  - Bump minimal six version needed to avoid using one incompatible with newer
+    virtualenv. - by :user:`ssbarnea`
+    `#1519 &lt;https://github.com/tox-dev/tox/issues/1519&gt;`_
+  - Avoid pypy test failure due to undefined printout var. - by :user:`ssbarnea`
+    `#1521 &lt;https://github.com/tox-dev/tox/issues/1521&gt;`_</comment>
+    <requestid>786809</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>de95668ee77adb7e3ac872c938271b09</srcmd5>
+    <version>3.14.6</version>
+    <time>1587580939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794895</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>74b5ac9cd46d794240baa05153dc447a</srcmd5>
+    <version>3.15.1</version>
+    <time>1590649712</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807945</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b08ac4a635e1af7a648ceabbe41ca4cb</srcmd5>
+    <version>3.15.2</version>
+    <time>1593378247</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.15.2:
+  - Add an option to allow a process to suicide before sending the
+    SIGTERM.
+  - PyPy 7.3.1 on Windows uses the 'Script' folder instead of
+    'bin'.</comment>
+    <requestid>817143</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fb9e0bdc671c2d18cc3a503203bfc025</srcmd5>
+    <version>3.18.0</version>
+    <time>1603961267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841453</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ba9614e9ccae3db1efbf7cbd013ae47c</srcmd5>
+    <version>3.21.1</version>
+    <time>1610633151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863047</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>02e600f692d65874d2737c771f33d257</srcmd5>
+    <version>3.21.1</version>
+    <time>1610965814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863927</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>96022bbe7f5cf58f43051479a6c9d4ca</srcmd5>
+    <version>3.21.1</version>
+    <time>1614108044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874338</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>6cc0e6a820a2b61006e057d72bf90fbc</srcmd5>
+    <version>3.24.4</version>
+    <time>1632766129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.24.4:
+  - Fixed handling of -e ALL in parallel mode by ignoring the ALL
+    in subprocesses -- by :user:`guahki`. #2167
+  - Prevent tox from using a truncated interpreter when using
+    TOX_LIMITED_SHEBANG -- by :user:`jdknight`. #2208
+  - Enabled the use of the favicon in the Sphinx docs first
+    introduced in :pull:`764` but not integrated fully --
+    :user:`webknjaz` #2177
+  - --parallel reports now show ASCII OK/FAIL/SKIP lines when
+    full Unicode output is not available - by :user:`brettcs`
+    #1421
+  - Started enforcing valid references in Sphinx docs --
+    :user:`webknjaz` #2168
+  - include LC_ALL to implicit list of passenv variables - by
+    :user:`ssbarnea` #2162
+  - get_requires_for_build_sdist hook (PEP 517) is assumed to
+    return an empty list if left unimplemented by the backend
+    build system - by :user:`oczkoisse` #2130
+  - The documentation of install_command now also mentions that
+    you can provide arbitrary commands - by :user:`jugmac00`
+    #2081
+  - --devenv no longer modifies the directory in which the .tox
+    environment is provisioned - by :user:`isaac-ped` #2065
+  - Fix show config when the package names are not in canonical
+    form - by :user:`gaborbernat`. #2103
+  - Extended environment variables section - by :user:`majiang`
+    #2036
+  - tox no longer shows deprecation warnings for
+    distutils.sysconfig on Python 3.10 - by :user:`9999years`
+    #2100
+  - Distinguish between normal Windows Python and MSYS2 Python
+    when looking for virtualenv executable path. Adds os.sep to
+    :class:`~tox.interpreters.InterpreterInfo` - by
+    :user:`jschwartzentruber` #1982
+  - Fix a tox-conda isolation build bug - by :user:`AntoineD`.
+    #2056
+  - Update examples in the documentation to use setenv in the
+    [testenv] sections, not wrongly in the [tox] main section.
+    - by :user:`AndreyNautilus` #1999
+  - Enable building tox with setuptools_scm 6+ by :user:`hroncok`
+    #1984
+  - tox can now be invoked with a new --no-provision flag that
+    prevents provision, if :conf:`requires` or :conf:`minversion`
+    are not satisfied, tox will fail; if a path is specified as
+    an argument to the flag (e.g. as tox --no-provision
+    missing.json) and provision is prevented, provision metadata
+    are written as JSON to that path - by :user:`hroncok` #1921
+  - Unicode support in pyproject.toml - by :user:`domdfcoding`
+    #1940
+  - The value of the :conf:`requires` configuration option is now
+    exposed via the :class:`tox.config.Config` object - by
+    :user:`hroncok` #1918
+  - Adapt tests not to assume the easy_install command exists, as
+    it was removed from setuptools 52.0.0+ - by :user:`hroncok`
+    #1893
+  - Fix a killed tox (via SIGTERM) leaving the commands
+    subprocesses running by handling it as if it were
+    a KeyboardInterrupt - by :user:`dajose` #1772
+  - Newer coverage tools update the COV_CORE_CONTEXT environment
+    variable, add it to the list of environment variables that
+    can change in our pytest plugin - by :user:`gaborbernat`.
+    #1854
+</comment>
+    <requestid>921541</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>e20f5685bc2aff928c421d66a8313801</srcmd5>
+    <version>3.24.4</version>
+    <time>1640617638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942714</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f8aafe55ca89b0c5af6df9fe293c9fb5</srcmd5>
+    <version>3.25.1</version>
+    <time>1658857438</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 3.25.1:
+  * ``sitepackages = true`` will add user's site-package to the python path on Windows as expected
+  * Avoid importing ``pipes`` on Python 3.3+ to avoid ``DeprecationWarning`` on Python 3.11
+  * Fix ``isolated_build`` when the build process produces stderr at exit.
+  * Fixed failing isolated_build because setuptools warning was captured
+    in ``build_requires``.
+  * Avoid potential 30s delay caused by socket.getfqdn().
+  * Ignore missing commands if they are prefixed by ``-``</comment>
+    <requestid>990866</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e178921b556ee5bb6c57d6c207ee10e2</srcmd5>
+    <version>3.26.0</version>
+    <time>1665754900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010419</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>f51a7862d2d577e87da119c03d2d40c6</srcmd5>
+    <version>3.26.0</version>
+    <time>1666780297</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python2-related parts of the SPEC file.
+</comment>
+    <requestid>1031190</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>4c5ad0628391458a4a98fe03446adbdb</srcmd5>
+    <version>3.26.0</version>
+    <time>1674324744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060096</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>2ec78e8c1ba294cde09a91b7ee70f4e7</srcmd5>
+    <version>3.26.0</version>
+    <time>1682101034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081737</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2acfdc8f8fc5b150c0fae427e9f60bbf</srcmd5>
+    <version>4.5.1</version>
+    <time>1683916741</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.1:
+  The amount of changes is so huge, that user is kindly referred
+  to the packaged changelog.
+- Add mark-network-tests.patch to skip test which require network
+  access
+- Add optional_devpi_process.patch to make the package not depend
+  on devpi_process (which is rather expensive to build).
+- Add _constraints.
+</comment>
+    <requestid>1086768</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>2adb0e8040320e334f0714ce48b51f56</srcmd5>
+    <version>4.5.1</version>
+    <time>1685896565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090576</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>ab06177a746eb9e06d74b32d24a8f18c</srcmd5>
+    <version>4.5.1</version>
+    <time>1686576466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092492</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>bf0abcd083127b8415a833fd25412d7e</srcmd5>
+    <version>4.11.1</version>
+    <time>1694344199</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1109638 from mschreiner
+
+- Refresh mark-network-tests.patch for 4.11.1.
+  - Rewrite optional_devpi_process.patch for 4.11.1.
+  - Add explicit numpy built-time dependency, as the one pulled by
+    pytest-randomly was broken.
+  - Fix rpmlint warning: package was obsoleting itself.
+  - Update to 4.11.1.
+  - Please check the .changes file for a more complete changelog.</comment>
+    <requestid>1109766</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>fda838e1bd22b3553a833492f9ef8842</srcmd5>
+    <version>4.11.3</version>
+    <time>1696529113</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.11.3:
+  * docs(plugin): explain plugin registration
+  * Fix error caused by a bad `base_python` path
+  * Fix typos discovered by codespell
+  * Providing example to make CLI help more helpful for -x,--
+    override
+  * Remove stray colons in `config.rst` left over from #3111
+
+  * on venv cleanup: add explicit check for pypy venv to make it possible to recreate it
+  * --showconfig overhaul
+- Update to 2.1.1:
+  * fix issue258, fix issue248, fix issue253: for non-test commands
+  * fix issue247: tox now passes the LANG variable from the tox invocation
+    invocation environment to the test environment and on Windows
+    on unix additionally ``TMPDIR`` is passed.  If you need to pass
+    execute: the new per-venv &quot;platform&quot; setting allows to specify
+    If platform is set and doesn't match the platform spec in the test
+    for testenv sections.  Can be used from plugins through the
+    call virtualenv through &quot;python -m virtualenv&quot; with the same
+  + fix issue116: make 1.6 introduced behaviour of changing to a
+    per-env HOME directory during install activities dependent
+  + fix issue117: python2.5 fix: don't use ``--insecure`` option because
+    want to support python2.5/pip1.3.1 based test environments you need
+  + fix issue91: python2.5 support by vendoring the virtualenv-1.9.1
+    script and forcing pip&lt;1.4. Also the default [py25] environment
+    to use pip without the &quot;--pre&quot; option which was introduced
+    with pip-1.4 and is now required if you want to install non-stable
+ - make sure test commands are searched first in the virtualenv
+ - show (test) command that is being executed, thanks
+ - depend on virtualenv-1.9.1</comment>
+    <requestid>1115808</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>054c23abb500f926de62fd7e4cf4f077</srcmd5>
+    <version>4.11.3</version>
+    <time>1699562160</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1124399 from ecsos
+
+- Fix required versions for BuildRequires and Requieres to use
+    right version and to can build under Leap.</comment>
+    <requestid>1124422</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>845c35fbc45efd927ef277849183c483</srcmd5>
+    <version>4.11.4</version>
+    <time>1702158812</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.11.4:
+  * Fix `quickstart` command from requiring `root` positional
+    argument
+  * docs(config): fix default value for install_command
+  * Added Python 3.12 in installation docs
+  * Fix terminal size in tox commands (#2999)
+  * Use the new ruff formatter over black
+  * docs(config): Fix base_python default reference
+  * Fixed 'AppData' not passed to env by default (#3151)</comment>
+    <requestid>1132139</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,31 @@
+#
+# Please keep the list sorted (with `LC_ALL=C sort`).
+#
+%dir %{_sysconfdir}/systemd/journal-remote.conf.d
+%dir %{_sysconfdir}/systemd/journal-upload.conf.d
+%ghost %dir %{_localstatedir}/log/journal/remote
+%{_datadir}/systemd/gatewayd
+%{_datadir}/systemd/gatewayd/browse.html
+%{_mandir}/man5/journal-remote.conf.5.gz
+%{_mandir}/man5/journal-remote.conf.d.5.gz
+%{_mandir}/man5/journal-upload.conf.5.gz
+%{_mandir}/man5/journal-upload.conf.d.5.gz
+%{_mandir}/man8/systemd-journal-gatewayd.8.gz
+%{_mandir}/man8/systemd-journal-gatewayd.service.8.gz
+%{_mandir}/man8/systemd-journal-gatewayd.socket.8.gz
+%{_mandir}/man8/systemd-journal-remote.8.gz
+%{_mandir}/man8/systemd-journal-remote.service.8.gz
+%{_mandir}/man8/systemd-journal-remote.socket.8.gz
+%{_mandir}/man8/systemd-journal-upload.8.gz
+%{_mandir}/man8/systemd-journal-upload.service.8.gz
+%{_systemd_util_dir}/journal-remote.conf
+%{_systemd_util_dir}/journal-upload.conf
+%{_systemd_util_dir}/systemd-journal-gatewayd
+%{_systemd_util_dir}/systemd-journal-remote
+%{_systemd_util_dir}/systemd-journal-upload
+%{_sysusersdir}/systemd-remote.conf
+%{_unitdir}/systemd-journal-gatewayd.service
+%{_unitdir}/systemd-journal-gatewayd.socket
+%{_unitdir}/systemd-journal-remote.service
+%{_unitdir}/systemd-journal-remote.socket
+%{_unitdir}/systemd-journal-upload.service

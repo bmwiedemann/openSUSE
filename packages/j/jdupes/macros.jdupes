@@ -1,0 +1,4 @@
+%suse_symlink_dupes /usr/lib/rpm/jdupes_wrapper -b %{buildroot} -s
+%suse_hardlink_dupes jdupes -q -p -H -o name -L -r %1
+
+%fdupes /usr/lib/rpm/jdupes_wrapper -b %{buildroot}

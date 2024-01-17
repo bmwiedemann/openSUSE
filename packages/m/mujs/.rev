@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>05141662fa6affa8f4d856b1a3e4d486</srcmd5>
+    <version>1.0.9</version>
+    <time>1615552400</time>
+    <user>dimstar_suse</user>
+    <comment>Need for mpv for JS scripting support.</comment>
+    <requestid>878404</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>93fac5617dc8bf58763dfdbc56b81359</srcmd5>
+    <version>1.1.1</version>
+    <time>1618498670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885484</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>825a19616cb220f9bb900e72fcace91b</srcmd5>
+    <version>1.1.2</version>
+    <time>1621269931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893720</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d031e19231d658b933a3d3ca69345246</srcmd5>
+    <version>1.1.3</version>
+    <time>1624813163</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.1.3
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.1.3
+  * Fixed error in Array.prototype.toString().</comment>
+    <requestid>902621</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>23e1340df6358918b08a53db6120dc6e</srcmd5>
+    <version>1.2.0</version>
+    <time>1644874583</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.2.0
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.2.0</comment>
+    <requestid>954325</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>568b80ddc164cd8048830d31504d5160</srcmd5>
+    <version>1.2.0</version>
+    <time>1645054213</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.2.0
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.2.0
+  * Fixed heap buffer overflow (CVE-2021-45005, boo#1195954).</comment>
+    <requestid>954741</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6eb4615c092cabe1d23fa525b30bc604</srcmd5>
+    <version>1.2.0</version>
+    <time>1652993359</time>
+    <user>dimstar_suse</user>
+    <comment>Added mujs-1.2.0-stack-exhaustion.patch (CVE-2022-30974, boo#1199678).</comment>
+    <requestid>977973</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>02f482aa6e60441d1f9078699c9f90d5</srcmd5>
+    <version>1.3.2</version>
+    <time>1673724753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.2
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.2
+  * 1.3.2 patch release for UAF bug fix.
+  * Bug 706057: Fix use-after-free in getOwnPropertyDescriptor.
+  * Set length of output array Array.prototype.map.
+- Update to 1.3.1
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.1
+  * Make a patch release for important iterator bug fix.
+  * Issue #166: Use special iterator for string and array indices.
+  * Enable choice of library version for shell
+  * Use $(@D) instead of $(dir $@)
+- Update to 1.3.0
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.0
+  * Avoid freeing buffer twice in case of error.
+  * Fast path for &quot;simple&quot; arrays.
+  * Bug 705775: Fix double fclose in pretty-printing tool.
+  * Makefile: fix parallel builds
+  * Guard state initialization with try to avoid panic in initialization.
+  * Add js_isbooleanobject and js_isdateobject functions.
+  * Issue #161: Cope with empty programs in mujs-pp.
+  * Issue #161: Don't fclose a FILE that is NULL.
+  * Issue #162: Check stack overflow during regexp compilation.
+  * Bug 705052: Don't use private STACK/TOP macros in jsstate.c
+  * Add &quot;console&quot; object to mujs shell.
+  * Issue #156: Fix check for duplicate formal parameters when strict.
+  * Some minor optimizations to Ap_join.
+  * array join: avoid strcat, speedup from O(N^2) to O(N)
+- Drop mujs-1.2.0-stack-exhaustion.patch because now in upstream.</comment>
+    <requestid>1058365</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7f4c75caf863faa7f276a41d395d2d42</srcmd5>
+    <version>1.3.2</version>
+    <time>1678555452</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow build on leap</comment>
+    <requestid>1070845</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>803f9b84c943a6897233c1191c9b2845</srcmd5>
+    <version>1.3.3</version>
+    <time>1684688892</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.3.3
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.3</comment>
+    <requestid>1087926</requestid>
+  </revision>
+</revisionlist>

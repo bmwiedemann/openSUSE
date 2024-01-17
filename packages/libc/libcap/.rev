@@ -1,0 +1,557 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>562b2c366c7c0f24ca57d8ac9636898f</srcmd5>
+    <version>1.10</version>
+    <time>1166567041</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>824dffaeff3a6b83acc8586a74e780df</srcmd5>
+    <version>1.10</version>
+    <time>1169645978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="12">
+    <srcmd5>d8ef3081d466026344cc0543a8c5c3f9</srcmd5>
+    <version>1.10</version>
+    <time>1176763006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="72">
+    <srcmd5>9446804c9103fb2c3e636557e6cc5329</srcmd5>
+    <version>1.10</version>
+    <time>1207830188</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e4c8441cb7fefa45cc1a43769d525662</srcmd5>
+    <version>2.08</version>
+    <time>1209941663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>130e295a88d6fc13cf939f4b4640ba04</srcmd5>
+    <version>2.10</version>
+    <time>1214096468</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>07ac716ce8fd509b504040ea18a0bc7c</srcmd5>
+    <version>2.10</version>
+    <time>1217804297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>63dcf71d0f7295580bfe19f7c61e5b09</srcmd5>
+    <version>2.11</version>
+    <time>1218064944</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ef24ef5d56d86d0a84a08cf607079bea</srcmd5>
+    <version>2.11</version>
+    <time>1224717123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>011fc87817348d9af58b76aee18d70b5</srcmd5>
+    <version>2.16</version>
+    <time>1231780390</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3d959844b2ba4362255eaa1256df0723</srcmd5>
+    <version>2.16</version>
+    <time>1237304051</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>3dd1cab8b03a93c1d4a94318c5c11ec2</srcmd5>
+    <version>2.16</version>
+    <time>1237916095</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>3dd1cab8b03a93c1d4a94318c5c11ec2</srcmd5>
+    <version>2.16</version>
+    <time>1237916095</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>f89973f194e9cd8040b328528b1c881b</srcmd5>
+    <version>2.16</version>
+    <time>1261826262</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libcap based on submit request 27550 from user coolo
+</comment>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>8c3b135576c9a57bfec267d6cc214461</srcmd5>
+    <version>2.16</version>
+    <time>1268924514</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>edc07ccffb9e7e62cab515c9a9b9b0d6</srcmd5>
+    <version>2.16</version>
+    <time>1276244748</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libcap based on submit request 41330 from user dirkmueller
+</comment>
+    <requestid>41330</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>edc07ccffb9e7e62cab515c9a9b9b0d6</srcmd5>
+    <version>2.16</version>
+    <time>1278667357</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>edc07ccffb9e7e62cab515c9a9b9b0d6</srcmd5>
+    <version>2.16</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>7254ab37a12c24de472efa6f72efc733</srcmd5>
+    <version>2.16</version>
+    <time>1279897941</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libcap based on submit request 43692 from user coolo
+</comment>
+    <requestid>43692</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>24633b6938622e1f894aea940108c3c5</srcmd5>
+    <version>2.19</version>
+    <time>1294652177</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57581 from user msmeissn
+</comment>
+    <requestid>57581</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>ec6fe650095d4df5770a3a4b36dadba7</srcmd5>
+    <version>2.19</version>
+    <time>1294652191</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57581
+</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>ec6fe650095d4df5770a3a4b36dadba7</srcmd5>
+    <version>2.19</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4c7ece9b380d1bdfef602d9b37d0e30b</srcmd5>
+    <version>2.22</version>
+    <time>1316617785</time>
+    <user>saschpe</user>
+    <comment>Update to 2.22</comment>
+    <requestid>84079</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>4c7ece9b380d1bdfef602d9b37d0e30b</srcmd5>
+    <version>2.22</version>
+    <time>1319182075</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>13c906db47e958277300300066ba4d62</srcmd5>
+    <version>2.22</version>
+    <time>1323192166</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>13c906db47e958277300300066ba4d62</srcmd5>
+    <version>2.22</version>
+    <time>1340183567</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>13c906db47e958277300300066ba4d62</srcmd5>
+    <version>2.22</version>
+    <time>1359109246</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>e6423e0aee43955884d5b6020db90b54</srcmd5>
+    <version>2.22</version>
+    <time>1362773737</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157659</requestid>
+  </revision>
+  <revision rev="29" vrev="11">
+    <srcmd5>e6423e0aee43955884d5b6020db90b54</srcmd5>
+    <version>2.22</version>
+    <time>1379662909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="12">
+    <srcmd5>e755de0fe9291fac2b73aad82ea38051</srcmd5>
+    <version>2.22</version>
+    <time>1403615742</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238159</requestid>
+  </revision>
+  <revision rev="31" vrev="14">
+    <srcmd5>e755de0fe9291fac2b73aad82ea38051</srcmd5>
+    <version>2.22</version>
+    <time>1409301512</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1b6e49d1f481ec2dcf7aab51293e9925</srcmd5>
+    <version>2.25</version>
+    <time>1473102654</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423834</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>2f7a2466dc7af7370a6cc2e14958141d</srcmd5>
+    <version>2.25</version>
+    <time>1484818420</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448456</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>d6aa08cd3b66ce01eb9848ef75c1abdb</srcmd5>
+    <version>2.25</version>
+    <time>1486305915</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453788</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>1b31c8ae7df1712b4f68793ccadfd707</srcmd5>
+    <version>2.25</version>
+    <time>1519844115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580150</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>1314551817ae72e5682388eee29ebc96</srcmd5>
+    <version>2.25</version>
+    <time>1576928431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757384</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>65fc549a4ed6ab430c1ec4090e4e6c57</srcmd5>
+    <version>2.32</version>
+    <time>1582299562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774610</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b39966304c1df1bb00aaae0ccd324050</srcmd5>
+    <version>2.42</version>
+    <time>1597658399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.42:
+  * Closed a potential issue with &quot;libcap/psx&quot; Go package and errno
+  * Documentation updates
+  * Minor optimization for cap_to_text() and (*cap.Set).String()
+  * Discovered and added a missing function (*cap.Set).SetNSOwner() to achieve parity with libcap
+  * Multiple fixes
+  * Support Go module abstraction
+  * A new kernel capability: CAP_BPF
+  * Better support for cross-compilation
+  * pam_cap now honors PAM_REINITIALIZE_CRED
+  * implements cap_launch functionality</comment>
+    <requestid>825941</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5ef01b1a14304960de14f2ed6fc2e579</srcmd5>
+    <version>2.43</version>
+    <time>1599598513</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.43
+  * Linus' kernel tree defines CAP_CHECKPOINT_RESTORE (40) so support it.
+  * Fix the creation of the $(FAKEROOT)$(LIBDIR) for split install targets
+  * Clean up a binary from the distribution
+  * Added some more release time checks for non-git tracked files.
+  * Fix a deadlock in libpsx that surfaced with a set of compiler optimizations by removing the psx wrapping harder.</comment>
+    <requestid>831514</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5db95baf1d2511db1a051dedc1e111d3</srcmd5>
+    <version>2.44</version>
+    <time>1608542506</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853758</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>356a93b3e23bb10e840ef9755aabb964</srcmd5>
+    <version>2.46</version>
+    <time>1611348530</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.46:
+  * The bulk of this release concerns fixes and improvements to libpsx
+  * Fix the capsh == argument handling and add a test case 
+  * Added build support for systems that do not support libpthread
+  * Added build support for not building shared libraries</comment>
+    <requestid>860344</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2de27d618e145db35348ce9e54c9a6e0</srcmd5>
+    <version>2.47</version>
+    <time>1612707215</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.47:
+  * Restructured gowns to default to uid base of getuid().
+  * Augment NOPRIV libcap mode with the sticky NO_NEW_PRIVS prctl bit.
+  * Improve the usage and diagnostic message for setcap
+  * Documentation fixes, license declarations, example updates</comment>
+    <requestid>867074</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ff06811638f76843a1f38432b7f32a83</srcmd5>
+    <version>2.48</version>
+    <time>1613511297</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.48:
+  * More uniform use of $(MAKE) in Makefiles
+  * No longer include symlinks in the git tree 
+  * Provide support for make GOLANG=no ...
+  * Provide support for pointing at a specific build of the go binary
+  * camelCase the contrib/seccomp/explore.go program
+  * A number of documentation fixes to man pages and source code comments
+  * Last use of GO major version 0</comment>
+    <requestid>870717</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>faf3a5c82b56cb500e95b152dcb6579b</srcmd5>
+    <version>2.49</version>
+    <time>1617722920</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2.49:
+  * Implement cap_func_launcher() and cap.FuncLauncher().
+  * More robust &quot;psx&quot; redirection for nocgo compilation - the documentation for
+    the cgo implementation is now included in the nocgo one because the go.dev
+    automated documentation builds the docs from the nocgo version.
+  * Lots of documentation cleanups and added a few man pages: for IAB and
+    Launching.
+  * Some general no-op License changes that might cause folk to notice but only
+    for formatting reasons. These were initially inspired by some lawyerly
+    interactions, but I ended up rolling back half of them because they
+    confused automated software infrastructure.</comment>
+    <requestid>880541</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>34ee79f451f4fb27dbb12ebe6257affd</srcmd5>
+    <version>2.49</version>
+    <time>1618859145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886057</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>7019569a288921f06cf343abaf9dec5c</srcmd5>
+    <version>2.49</version>
+    <time>1622928674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896907</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2b4665ded2be921ea1a5f3b92a70ce29</srcmd5>
+    <version>2.51</version>
+    <time>1626887129</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.51:
+  * Fix capsh installation
+  * Add an autoauth module flag to pam_cap.so
+  * Unified libcap/cap (Go) and libcap (C) default generation of external format binary data
+  * API enhancement cap_fill() and (*cap.Set).Fill() - to permit copying one
+    capability flag to another.
+  * --explain=cap_foo: describe what cap_foo does
+  * --suggest=phrase: search all the cap descriptions and describe those that match the phrase
+  * Add &quot;keepcaps&quot; module argument support to pam_cap.so (reported by Zoltan Fridrich. Bug 212945)
+  * extend libcap to include cap_prctl() and cap_prctlw() functions to regain
+    feature parity with Go &quot;cap&quot; package. These are only needed when linking
+    against -lpsx for keepcaps POSIX semantics.
+  * this likely requires substantial application changes to make Ambient
+    capability support usable in general, but doing our part for the admin.
+  * Add a test case for recent kernel fix
+  * Go pragma fix for convenience functions in &quot;cap&quot; module</comment>
+    <requestid>906773</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b5b20b34433f1eb8fc3b29c5a0fee430</srcmd5>
+    <version>2.59</version>
+    <time>1633723470</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>922320</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>a2f1a06c769f67c1d809830a21ab67d2</srcmd5>
+    <version>2.61</version>
+    <time>1638480602</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934430</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f7eb5e46bc36639b867c46b450a835b3</srcmd5>
+    <version>2.62</version>
+    <time>1641135984</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.62:
+  * Bug fix for Go package &quot;cap&quot; and launching
+  * Build cleanups
+  * Documentation updates: cap_max_bits has a man page entry
+  * Recognize default securebits as a libcap mode: HYBRID</comment>
+    <requestid>943181</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>90eaaecd9630f4dfb77211eca3fde06e</srcmd5>
+    <version>2.63</version>
+    <time>1643926576</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.63:
+  * restore errno to zero by the time main() is executed
+  * Consistent psx handling (a panic) for syscalls that return thread dependent
+    status Inconsistend behavior noticed by Lorenz Bauer
+  * Add a test case for a deadlock under investigation in golang
+  * Trim some of the #include file use to make the tree compile more
+    efficiently</comment>
+    <requestid>950291</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>f6e7a90859083d944cab42aa406c5578</srcmd5>
+    <version>2.63</version>
+    <time>1645998160</time>
+    <user>dimstar_suse</user>
+    <comment>Merged some changes and metadata over from the SLE side.
+
+- Use &quot;or&quot; in the license tag to avoid confusion (bsc#1180073)
+- Update to version 2.30 (jsc#SLE-17092, jsc#ECO-3460): (forwarded request 957541 from msmeissn)</comment>
+    <requestid>957551</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>34fd0b08b7ad817e54b2eb68b60b7e85</srcmd5>
+    <version>2.64</version>
+    <time>1650232173</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.64:
+  * Fix memory leak in libpsx at program exit.
+  * Be more resilient to CGo configuration with Go compiler when building tests.
+  * Fix cap_*prctl() return code/errno handling.
+  * Minor clarification to cap_get_pid() man page concerning pid value within namespaces.</comment>
+    <requestid>969556</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>960836f8fd1494fa48d2001136459b93</srcmd5>
+    <version>2.65</version>
+    <time>1659301207</time>
+    <user>favogt_factory</user>
+    <comment>- update to 2.65:
+  * Fix syntax error in DEBUG build of protected code in setcap.c.
+  * Prevent bash from reading the wrong startup files when the capsh --user=xxx
+    argument is used to invoke a shell as the user xxx. This is done by capsh now
+    changing the USER and HOME environment variables when --user is specified.
+    The argument --noenv can be used to suppress this behavior to what used to be
+    the problematic default. (Bug: 215926)
+  * Improved documentation</comment>
+    <requestid>990728</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>78b2f0a11f3be2f798804ce637af0347</srcmd5>
+    <version>2.66</version>
+    <time>1664797482</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.66:
+  * Fix documentation typos in cap_from_text.3
+  * Some getpcaps code clean up and a fix for PID argument parsing from Jakub
+    Wilk.
+  * Slightly more robust Makefiles to address an error with make -j48 test observed
+  * Include a simple Go program, captrace, to trace kernel capability validation
+    checks
+  * This program can be used to figure out what capabilities a program needs to
+    operate.
+  * captrace (a wrapper for bpftrace) uses BPF kprobes to monitor the kernel for
+    capability checks and whether or not they succeed for the system, a specific
+    PID or a program's direct execution.
+  * Trim down the default file capabilities for contrib/sucap/su to those actually
+    needed and set USER and HOME environment variables so bash doesn't complain
+    about a sourcing error.</comment>
+    <requestid>1007104</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8ffc77891f742ea80efce0ac8bf65635</srcmd5>
+    <version>2.67</version>
+    <time>1676389344</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1064421</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>f7136907a7e5e51148762c6a1c9805ec</srcmd5>
+    <version>2.67</version>
+    <time>1680125148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074160</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>fd599bf3f555c61c7d8750384138d9f5</srcmd5>
+    <version>2.68</version>
+    <time>1680536721</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.68:
+  * Force libcap internal functions to be hidden outside the library
+  * Expanded the list of man page (links) to all of the supported API
+    functions.
+  * fixed some formatting issues with the libpsx(3) manpage.
+  * Add support for a markdown preamble and postscript when generating
+    .md versions of the man pages (Bug 217007)
+  * psx package clean up
+  * fix some copy-paste errors with TestShared()
+  * added a more complete psx testing into this test as well
+  * cap package clean up
+  * drop an unnecessary use of &quot;, _&quot; in the sources
+  * cleaned up cap.NamedCount documentation
+  * Converted goapps/web/README to .md format and fixed the
+    instructions to indicate go mod tidy is needed.
+  * cap_compare test binary now cleans up after itself (Bug 217018)
+  * Figured out how to cross compile Go programs for arm (i.e. RPi) that
+    use C code, don't use cgo but do use the psx package
+  * Eliminate use of vendor directory</comment>
+    <requestid>1075562</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>8094aa139aa09ddc1d38217ff9aeaba1</srcmd5>
+    <version>2.69</version>
+    <time>1684596202</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.69
+  - An audit was performed on libcap and friends by https://x41-dsec.de/ (blog) . The audit (final report, 2023-05-10) was sponsored by the the Open Source Technology Improvement Fund, https://ostif.org/ (blog). Five issues were found. Four of them are addressed in this release. Each issue was labeled in the audit results as follows:
+    - LCAP-CR-23-01 (SEVERITY) LOW (CVE-2023-2602) - found by David Gstir (bsc#1211418)
+    - LCAP-CR-23-02 (SEVERITY) MEDIUM (CVE-2023-2603) - found by Richard Weinberger (bsc#1211419)
+    - LCAP-CR-23-100 (SEVERITY) NONE
+    - LCAP-CR-23-101 (SEVERITY) NONE
+    - LCAP-CR-23-102 (SEVERITY) NONE
+  - Man page style improvement from Emanuele Torre (forwarded request 1087355 from msmeissn)</comment>
+    <requestid>1087357</requestid>
+  </revision>
+</revisionlist>

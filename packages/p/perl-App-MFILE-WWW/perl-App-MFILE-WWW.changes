@@ -1,0 +1,441 @@
+-------------------------------------------------------------------
+Thu Dec  7 06:03:08 UTC 2017 - coolo@suse.com
+
+- updated to 0.176
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+  
+  0.175 2017-11-14 17:24 CET
+  - js: core/start: pass resultLine to drowselectListen()
+  - js: core: implement "menu" prototype
+  - js: core/populate: handle undefined populateArray a little less stupidly
+  - js: core/init2: do not clobber miniMenu objects
+  
+  0.176 2017-11-27 11:22 CET
+  - js: core/html: unify usage of "&nbsp;" in dmenu and miniMenu; populate
+    mainarea with a placeholder
+  - build/ops: drop older versions of jquery, qunit, requirejs
+  - js: core/ajax: refactor; logout if session expires; always clear result line
+
+-------------------------------------------------------------------
+Tue Nov 14 06:03:18 UTC 2017 - coolo@suse.com
+
+- updated to 0.174
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+  
+  0.174 2017-11-13 11:43 CET
+  - Revert "Integrate D3 into the application"
+  - js: core/html: fix dmenu regression
+  - js: core/html: give minimenu div an id
+  - js: reflect appLib.fillUserBox() behavior change
+
+-------------------------------------------------------------------
+Sat Nov 11 12:53:41 UTC 2017 - ncutler@suse.com
+
+- updated to 0.173 
+
+  Highlights since 0.157 - for complete changelog see
+  /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+  0.158 2017-08-29 15:12 CEST
+  - add JavaScript functional tests
+  
+  0.159 2017-09-23 23:52 CEST
+  - js: core: migrate to JQuery 3.2.1
+  - js: core: upgrade to RequireJS 2.3.5
+  - doc: describe how to add new JavaScript functional tests
+  - expand JavaScript functional tests
+  
+  0.160 2017-09-25 17:33 CEST
+  - Provide way to specify result line when starting a target
+  - start.js: unify arguments taken by primitive start functions
+  
+  0.161 2017-09-28 11:42 CEST
+  - stack.js: implement restart() and pushWithoutStart() methods
+  - Eliminate dependency on App::MFILE distro
+  
+  0.162 2017-10-14 13:01 CEST
+  - js: core/lib: allow empty line to be first item in dform
+  - js: Implement form entry vetting feature
+  - js: concentrate form entries into a central module
+  - js: core/datetime: implement various date and time vetting functions
+  - js: core: add submitAction property to drowselect
+  - js: lib: enable displayError() to focus on arbitrary entry
+  - js: datetime: implement offset time ranges
+  - js: stack, start: make dform take an "inputId" option
+  
+  0.163 2017-10-19 23:19 CEST
+  - js: lib: add isArray() from Crockford, Douglas
+  - js: datetime: enable vetting of special Dochazka time ranges
+  - js: core: use minified jQuery
+  - Resource: use onNodeCreated to display RequireJS module loading info
+  - js: core: use keydown instead of keypress (for Chrome)
+  
+  0.164 2017-10-20 22:41 CEST
+  - js: core/start: implement non-interactive async populate feature
+  - js: start: clear result line when displaying dmenu
+  - js: stack: implement unwindToType()
+  - Dispatch: fix App::CELL constructor
+  - js: datetime: add intToDay(), monthToInt(), and tsrangeToTimeRange()
+  
+  0.165 2017-10-21 12:02 CEST
+  - js: start: vet populate property more carefully in dform
+  - js: start: log an error if entry has bad populate property
+  - js: refactor ajax.js and populate.js
+  
+  0.166 2017-10-22 07:17 CEST
+  - js: html: implement "hidden entries" feature in dform
+  - js: start: ESC is "Back" in dmenu and dform
+  
+  0.167 2017-10-27 23:07 CEST
+  - start.js: add "populate" option to dform
+  - Add .ignore file for ag
+  - js: stack/start: disable logout-via-ESC
+  
+  0.168 2017-10-29 12:25 CET
+  - js: core/lib: add uniq() function, eliminates duplicates from array
+  - js: core/html: let entries have size attribute different from maxlen
+  
+  0.169 2017-10-29 17:57 CET
+  - js: core/ajax: display failure message with displayError()
+  - js: core/loggout: propagate result line message
+  
+  0.170 2017-10-31 12:00 CET
+  - js: core/start: vet all writable dform entries when submitting
+  - js: core/start: populate object regardless of target type
+  - js: core/stack: fix missing underscore in pop()
+  - js: core/stack: push opts onto stack
+  - js: core/stack: make unwindTo{Flag,Target} handle opts and respect _start
+  - js: core/start: make dmenu process opts and respect resultLine
+  
+  0.171 2017-11-02 20:14 CET
+  - js: core: implement dcallback widget
+  
+  0.172 2017-11-10 15:17 CET
+  - js: core/current-user: use jQuery to reset object
+  - js: core/lib: implement "nullify" function
+  - js: core/stack: add ability to unwind to target without starting
+  
+  0.173 2017-11-11 13:23 CET
+  - js: core/datetime: improve tab completion of months
+  - css, js/html: implement proper miniMenu indenting
+  - js: core: html/start: make menu entries start at 1
+
+-------------------------------------------------------------------
+Sat Aug 26 05:04:00 UTC 2017 - coolo@suse.com
+
+- updated to 0.157
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+  
+  0.157 2017-08-25 14:01 CEST
+  - doc: start documenting the JavaScript primitives
+  - Implement target stack feature (major refactor)
+  - lib.js: implement isObjEmpty()
+  - stack.js: handle undefined and null obj in push()
+  - start.js: dform restore state only if rememberState is true
+  - stack: unsetFoo functions take no argument
+  - stack: make unwindToTarget take an optional obj argument
+  - stack: implement grep function
+  - stack,start: cleanup
+
+-------------------------------------------------------------------
+Tue Mar  7 06:02:59 UTC 2017 - coolo@suse.com
+
+- updated to 0.156
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+  
+  0.155 2017-02-27 22:37 CET
+  - html.js: handle special entries in dbrowser, too
+  - lib.js: add shallowCopy function
+  - spam console log less (rightPadSpaces, current-user.js)
+  - current-user: refrain from spamming log
+  
+  0.156 2017-02-28 15:23 CET
+  - lib.js: add isStringNotEmpty function
+
+-------------------------------------------------------------------
+Wed Mar  1 06:02:34 UTC 2017 - coolo@suse.com
+
+- updated to 0.154
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+  
+  0.154 2017-02-27 15:40 CET
+  - build/ops: require recent versions of dependencies
+  - Cleanup session data display
+  - html.js: handle null entriesWrite array
+  - Implement a special divider dform entry, including rendering
+  - Implement a special dform entry that is just an empty line
+  - html: handle null elem.text in maxLength
+
+-------------------------------------------------------------------
+Sun Feb 26 06:02:01 UTC 2017 - coolo@suse.com
+
+- updated to 0.153
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+  
+  0.153 2017-02-25 09:30 CET
+  - Refrain from making a new Plack::Session object
+  - doc: tweak log messages
+  - Resource.pm: implement session and session_id methods
+  - script: store sessions in a dedicated directory in /tmp
+  - Display session data on all screens
+  - login: do not trigger page reload when bad credentials
+  - Dispatch.pm: remove dead code
+  - Control display of session data by config parameter
+  - doc: better description of MFILE_APPNAME config param
+  - Control display of session data via configuration parameter
+
+-------------------------------------------------------------------
+Thu Nov 10 06:02:49 UTC 2016 - coolo@suse.com
+
+- updated to 0.152
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+  
+  0.152 2016-11-05 21:18 CET
+  - core: prevent miniMenu entries from being undefined in start.js
+  - core: library function for displaying error messages
+  - core: improve display of empty table/rowselect in html.js
+  - core: display drowselect navigation only if rows > 1
+
+-------------------------------------------------------------------
+Sat Nov  5 06:02:38 UTC 2016 - coolo@suse.com
+
+- updated to 0.151
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+  
+  0.150 2016-11-03 19:22 CET
+  - Resource.pm: expose REST server URI to JavaScript side
+  - Resource.pm: export foreign site params only if defined
+  - js demo: dtable return to demoSubmenu instead of demoMenu
+  - js demo: implement a proper hook for dbrowser demo
+  - html.js: do not concatenate undefined entries
+  - html.js: use text prop to determine max length
+  - html.js: implement and use getObjStr()
+  - start.js: simplify dtable start/listen code
+  - Implement a drowselect target (widget)
+    - demo: plumb in the new "drowselect" widget
+    - demo: implement proper dtable, drowselect hooks
+    - html.js: initial HTML for drowselect widget
+    - start.js: add drowselect start and listen functions
+    - html.js: put spans around table/rowselect rows
+    - core: implement drowselect reverse video, arrow-key navigation
+    - html.js: remove potential code duplication (dtable/drowselect)
+  
+  0.151 2016-11-04 22:02 CET
+  - demo: storage and accessors for dbrowser data set
+  - demo: move rowselect demo to submenu
+  - demo: enable editing in dbrowser/drowselect demos
+  - core: refactor to eliminate code duplication (and fix a bug)
+
+-------------------------------------------------------------------
+Fri Sep 30 05:02:14 UTC 2016 - coolo@suse.com
+
+- updated to 0.149
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+  
+  0.146 2016-09-28 18:58 CEST
+  - Remove dbrowser "itemHook", bad idea
+  - js: export dbrowserListen and dbrowserState in start.js
+  - _load_config: make sitedir take priority
+  - build/ops: set OBS_PROJECT to Application:Dochazka
+  
+  0.147 2016-09-28 22:58 CEST
+  - dtable boilerplate
+  - dtable: everything except table rendering
+  - js: fix ACL profile property name in entry definitions
+  - build/ops: fix session management
+  - js: rename charsNeeded() to maxLength() and generalize
+  - dtable: finalize initial feature implementation
+  
+  0.148 2016-09-29 00:43 CEST
+  - html.js: handle null entries prop in miniMenu()
+  - js: take headings into account when calculating column widths
+  - js: grammatically correct "Displaying table" message
+  - js: add readableDate() function to core lib
+  
+  0.149 2016-09-29 01:09 CEST
+  - html.js: restore proper padding in dform
+  - js: make readableDate() take full "YYYY-MM-DD HH:DD:SS+TZ"
+
+-------------------------------------------------------------------
+Tue Sep 27 15:01:14 UTC 2016 - ncutler@suse.com
+
+- updated to 0.145
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+-------------------------------------------------------------------
+Mon Sep 19 10:46:47 UTC 2016 - ncutler@suse.com
+
+- updated to 0.143
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+-------------------------------------------------------------------
+Thu Sep 15 22:18:29 UTC 2016 - ncutler@suse.com
+
+- updated to 0.142
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+-------------------------------------------------------------------
+Mon Sep 12 08:18:00 UTC 2016 - ncutler@suse.com
+
+- updated to 0.141
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+-------------------------------------------------------------------
+Mon Sep  5 06:29:44 UTC 2016 - ncutler@suse.com
+
+- updated to 0.139
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+- dropped deprecated files from %doc in spec file
+
+-------------------------------------------------------------------
+Sun Sep  4 19:18:29 UTC 2016 - ncutler@suse.com
+
+- Fix _service file 
+
+-------------------------------------------------------------------
+Sun Sep  4 15:45:56 UTC 2016 - ncutler@suse.com
+
+- updated to 0.138
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+-------------------------------------------------------------------
+Sun Sep  4 15:44:20 UTC 2016 - ncutler@suse.com
+
+- Add _service file to automate version update in spec file
+
+-------------------------------------------------------------------
+Fri Sep  2 11:23:31 UTC 2016 - tampakrap@opensuse.org
+
+- updated to 0.137
+   see /usr/share/doc/packages/perl-App-MFILE-WWW/Changes
+
+-------------------------------------------------------------------
+Tue Oct 14 08:59:15 UTC 2014 - ncutler@suse.com
+
+- Update to 0.136
+
+-------------------------------------------------------------------
+Mon Oct 13 14:47:26 UTC 2014 - ncutler@suse.com
+
+- Update to 0.131
+
+-------------------------------------------------------------------
+Mon Oct 13 13:52:25 UTC 2014 - ncutler@suse.com
+
+- Update to 0.130
+
+-------------------------------------------------------------------
+Mon Oct 13 13:26:01 UTC 2014 - ncutler@suse.com
+
+- Update to 0.129
+
+-------------------------------------------------------------------
+Fri Oct 10 15:01:28 UTC 2014 - ncutler@suse.com
+
+- Update to 0.121
+
+-------------------------------------------------------------------
+Fri Oct 10 10:06:12 UTC 2014 - ncutler@suse.com
+
+- Update to 0.120
+
+-------------------------------------------------------------------
+Wed Sep 24 13:27:34 UTC 2014 - ncutler@suse.com
+
+- Update to 0.115
+
+-------------------------------------------------------------------
+Wed Sep 24 11:47:18 UTC 2014 - ncutler@suse.com
+
+- Update to 0.114
+
+-------------------------------------------------------------------
+Wed Sep 24 09:53:42 UTC 2014 - ncutler@suse.com
+
+- Update to 0.113
+
+-------------------------------------------------------------------
+Fri Sep 19 11:59:59 UTC 2014 - ncutler@suse.com
+
+- Update to 0.105
+
+-------------------------------------------------------------------
+Thu Sep 18 13:13:09 UTC 2014 - ncutler@suse.com
+
+- Update to 0.103
+
+-------------------------------------------------------------------
+Thu Sep 18 10:33:47 UTC 2014 - ncutler@suse.com
+
+- Update to 0.102
+
+-------------------------------------------------------------------
+Thu Sep 18 08:03:09 UTC 2014 - ncutler@suse.com
+
+- Update to 0.101
+
+-------------------------------------------------------------------
+Fri Sep 12 14:46:29 UTC 2014 - ncutler@suse.com
+
+- Update to 0.095
+
+-------------------------------------------------------------------
+Fri Sep 12 09:19:57 UTC 2014 - ncutler@suse.com
+
+- updated to 0.094, add Getopt::Long dependency
+
+-------------------------------------------------------------------
+Thu Sep 11 14:12:31 UTC 2014 - ncutler@suse.com
+
+- Update to 0.092
+
+-------------------------------------------------------------------
+Thu Sep 11 12:46:47 UTC 2014 - ncutler@suse.com
+
+- Update to 0.091
+
+-------------------------------------------------------------------
+Thu Sep 11 10:25:57 UTC 2014 - ncutler@suse.com
+
+- Update to 0.090
+
+-------------------------------------------------------------------
+Thu Sep 11 09:49:53 UTC 2014 - ncutler@suse.com
+
+- Update to 0.089
+
+-------------------------------------------------------------------
+Thu Sep 11 08:00:39 UTC 2014 - ncutler@suse.com
+
+- Update to 0.088, fix dependencies, capitalize summary
+
+-------------------------------------------------------------------
+Thu Sep 11 07:55:59 UTC 2014 - ncutler@suse.com
+
+- Update to 0.087
+
+-------------------------------------------------------------------
+Wed Sep 10 14:14:17 UTC 2014 - ncutler@suse.com
+
+- Update to 0.080
+
+-------------------------------------------------------------------
+Wed Sep 10 13:40:42 UTC 2014 - ncutler@suse.com
+
+- Update to 0.079
+
+-------------------------------------------------------------------
+Wed Sep 10 13:25:01 UTC 2014 - ncutler@suse.com
+
+- initial package 0.079
+    * created by cpanspec 1.78.08
+

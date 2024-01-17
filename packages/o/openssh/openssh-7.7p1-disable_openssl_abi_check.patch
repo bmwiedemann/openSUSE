@@ -1,0 +1,48 @@
+# HG changeset patch
+# Parent  b13da8c3e99081cb92ab226d2c512241a82cd0d5
+disable run-time check for OpenSSL ABI by version number as that is not a
+reliable indicator of ABI changes and doesn't make much sense in a
+distribution package
+
+Index: openssh-8.8p1/configure.ac
+===================================================================
+--- openssh-8.8p1.orig/configure.ac
++++ openssh-8.8p1/configure.ac
+@@ -5236,6 +5236,19 @@ AC_ARG_WITH([bsd-auth],
+ 	]
+ )
+ 
++# Whether we are using distribution (Open)SSL, so no runtime checks are necessary
++DISTRO_SSL=no
++AC_ARG_WITH([distro-ssl],
++	[  --with-distro-ssl       Disable runtime OpenSSL version checks (good for distributions)],
++	[
++		if test "x$withval" != "xno" ; then
++			AC_DEFINE([DISTRO_SSL], [1],
++                      [Define if you are using distribution SSL library and don;t expect its API/ABI to change])
++			DISTRO_SSL=yes
++		fi
++	]
++)
++
+ # Where to place sshd.pid
+ piddir=/var/run
+ # make sure the directory exists
+Index: openssh-8.8p1/entropy.c
+===================================================================
+--- openssh-8.8p1.orig/entropy.c
++++ openssh-8.8p1/entropy.c
+@@ -100,11 +100,13 @@ seed_rng(void)
+ 	/* Initialise libcrypto */
+ 	ssh_libcrypto_init();
+ 
++#ifndef DISTRO_SSL
+ 	if (!ssh_compatible_openssl(OPENSSL_VERSION_NUMBER,
+ 	    OpenSSL_version_num()))
+ 		fatal("OpenSSL version mismatch. Built against %lx, you "
+ 		    "have %lx", (u_long)OPENSSL_VERSION_NUMBER,
+ 		    OpenSSL_version_num());
++#endif
+ 
+ #ifndef OPENSSL_PRNG_ONLY
+ 	if (RAND_status() == 1)

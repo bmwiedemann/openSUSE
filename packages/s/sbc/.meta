@@ -1,0 +1,5 @@
+<package name="sbc" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="sbc"/>
+</package>

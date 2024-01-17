@@ -1,0 +1,8 @@
+<package name="fcitx-cloudpinyin" project="openSUSE:Factory">
+  <title></title>
+  <description>
+this is a standalone module for fcitx, it can use pinyin API on the internet
+to input.
+  </description>
+  <devel project="M17N" package="fcitx-cloudpinyin"/>
+</package>

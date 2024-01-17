@@ -1,0 +1,19 @@
+# HG changeset patch
+# Parent  5c1e122e31b601de64d81085294216af33f31aed
+# force PAM in defaullt install (this was removed from upstream in 3.8p1)
+# bnc#46749
+# --used to be called '-pam-fix2'
+
+Index: openssh-8.8p1/sshd_config
+===================================================================
+--- openssh-8.8p1.orig/sshd_config
++++ openssh-8.8p1/sshd_config
+@@ -79,7 +79,7 @@ AuthorizedKeysFile	.ssh/authorized_keys
+ # If you just want the PAM account and session checks to run without
+ # PAM authentication, then enable this but set PasswordAuthentication
+ # and KbdInteractiveAuthentication to 'no'.
+-#UsePAM no
++UsePAM yes
+ 
+ #AllowAgentForwarding yes
+ #AllowTcpForwarding yes

@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Jan 11 16:03:22 UTC 2018 - tchvatal@suse.com
+
+- Drop the test condition as whole to reduce the size; the tests
+  will never run in OBS
+
+-------------------------------------------------------------------
+Thu Jan 11 14:09:34 UTC 2018 - crrodriguez@opensuse.org
+
+- Buildrequire Mesa-devel and libpng, only
+  if tests are being built and ran.
+- devel package requires glm-devel
+
+-------------------------------------------------------------------
+Mon May 15 13:26:27 UTC 2017 - tchvatal@suse.com
+
+- Version update to 0.1.0 release
+  * Switched to Epoxy for Wayland
+
+-------------------------------------------------------------------
+Wed Feb  1 12:53:09 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Wed Apr 13 10:45:39 UTC 2016 - fvogt@suse.com
+
+- Update to libgltf-0.0.2 (LO 4.3.3+)
+    libgltf-0.0.1.tar.bz2 -> libgltf-0.0.2.tar.bz2
+
+-------------------------------------------------------------------
+Fri Sep 19 13:47:11 UTC 2014 - tchvatal@suse.com
+
+- Initial commit, package used by lo 4.3.1+
+

@@ -1,0 +1,10 @@
+<package name="ocaml-ppx_deriving" project="openSUSE:Factory">
+  <title>Type-driven code generation</title>
+  <description>ppx_deriving provides common infrastructure for generating
+code based on type definitions, and a set of useful plugins
+for common tasks.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ppx_deriving"/>
+  <url>https://opam.ocaml.org/packages/ppx_deriving</url>
+</package>

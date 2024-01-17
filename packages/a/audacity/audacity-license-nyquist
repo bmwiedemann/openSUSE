@@ -1,0 +1,33 @@
+There are a number of files under the nyquist subdirectory, which
+carry a non-commercial license :
+
+lib-src/libnyquist/nyquist/xlisp/xlcont.c
+lib-src/libnyquist/nyquist/xlisp/xldbug.c
+lib-src/libnyquist/nyquist/xlisp/xldmem.c
+lib-src/libnyquist/nyquist/xlisp/xleval.c
+lib-src/libnyquist/nyquist/xlisp/xlfio.c
+lib-src/libnyquist/nyquist/xlisp/xlftab.c
+lib-src/libnyquist/nyquist/xlisp/xlimage.c
+lib-src/libnyquist/nyquist/xlisp/xlinit.c
+lib-src/libnyquist/nyquist/xlisp/xlio.c
+lib-src/libnyquist/nyquist/xlisp/xlisp.c
+lib-src/libnyquist/nyquist/xlisp/xlisp.h
+lib-src/libnyquist/nyquist/xlisp/xlmath.c
+lib-src/libnyquist/nyquist/xlisp/xlobj.c
+lib-src/libnyquist/nyquist/xlisp/xlprin.c
+lib-src/libnyquist/nyquist/xlisp/xlread.c
+lib-src/libnyquist/nyquist/xlisp/xlstr.c
+lib-src/libnyquist/nyquist/xlisp/xlsys.c
+
+To clarify this licensing here is the response from David:
+
+"The copyright notices in the source code are intended to suggest that 
+non-commercial users need not contact me for permission. It is granted
+in the source code comments. Originally, commercial users needed 
+a license and in some cases paid a fee. Now, commercial use is governed 
+by a BSD-like license as you've mentioned. I guess I should at least 
+update my copies of the source files to say that but I have no control 
+over what is floating around the net.
+
+David Betz"
+

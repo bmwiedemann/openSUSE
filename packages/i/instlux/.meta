@@ -1,0 +1,8 @@
+<package name="instlux" project="openSUSE:Factory">
+  <title>Windows openSUSE installer</title>
+  <description>Find your place in the Linux world by upgrading your windows to a Linux
+system the easiest possible way: running an installer on your Windows.
+
+This package as meta package contains the instlux CD content.</description>
+  <devel project="system:install:head" package="instlux"/>
+</package>

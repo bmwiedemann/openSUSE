@@ -1,0 +1,6 @@
+<package name="ladspa-alienwah" project="openSUSE:Factory">
+  <title>LADSPA alienwah plugin</title>
+  <description>This package contains LADSPA alienwah plugin.</description>
+  <devel project="multimedia:libs" package="ladspa-alienwah"/>
+  <url>http://plugin.org.uk/releases/alienwah/</url>
+</package>

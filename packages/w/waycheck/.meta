@@ -1,0 +1,6 @@
+<package name="waycheck" project="openSUSE:Factory">
+  <title>Simple GUI that displays protocols implemented by a Wayland compositor</title>
+  <description>Simple GUI that displays protocols implemented by a Wayland compositor.</description>
+  <devel project="X11:Wayland" package="waycheck"/>
+  <url>https://gitlab.freedesktop.org/serebit/waycheck</url>
+</package>

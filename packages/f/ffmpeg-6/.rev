@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8742f0342452fa3f2db35ce3aa1c7e9b</srcmd5>
+    <version>6.0</version>
+    <time>1679766914</time>
+    <user>dimstar_suse</user>
+    <comment>added Conflicts ffmpeg-tools</comment>
+    <requestid>1072810</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>95a1e08d736ecb2919e250a1869cfc81</srcmd5>
+    <version>6.0</version>
+    <time>1681150624</time>
+    <user>dimstar_suse</user>
+    <comment>- Reset fixed leftover value for BUILD_ORIG</comment>
+    <requestid>1078242</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>30f8ee844c5fcfe1c8e1a45ee787e9dc</srcmd5>
+    <version>6.0</version>
+    <time>1690987680</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump required libplacebo version to v6.292.0 or newer for TW</comment>
+    <requestid>1101527</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5c823ff8669447ec19ea66b3ed68f9e5</srcmd5>
+    <version>6.0</version>
+    <time>1699615715</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+  to resolve a build failure on 15.4/15.5.</comment>
+    <requestid>1115602</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a418533f47104b284370ddacd8f06c21</srcmd5>
+    <version>6.0.1</version>
+    <time>1699910154</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.0.1:
+  * Updates and bugfixes to avcodecs, avformat and avfilters
+    mainly.
+- Drop patch fixed upstream:
+  * 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch (forwarded request 1124854 from iznogood)</comment>
+    <requestid>1125127</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7f423ad4b389cf9bc2cb96d319dd04a9</srcmd5>
+    <version>6.0.1</version>
+    <time>1701972609</time>
+    <user>anag+factory</user>
+    <comment>forward rq from iznogood:
+- Enable more decoders and encoders explicitly</comment>
+    <requestid>1131224</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1db102b2ef4805bfc633369d4d147327</srcmd5>
+    <version>6.1.1</version>
+    <time>1705437402</time>
+    <user>anag+factory</user>
+    <comment>Revert to building libjxl support only for Factory.
+I am sorry for the messy submission before. (forwarded request 1139042 from iDesmI)</comment>
+    <requestid>1139043</requestid>
+  </revision>
+</revisionlist>

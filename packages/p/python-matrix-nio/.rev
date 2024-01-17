@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ad6e10b371dd1e7ef78c45212504f3f8</srcmd5>
+    <version>0.19.0</version>
+    <time>1645137615</time>
+    <user>dimstar_suse</user>
+    <comment>Required for Matrix extending Python scripts.</comment>
+    <requestid>955507</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d94e194f0ab16b1e7754b2a14df8369b</srcmd5>
+    <version>0.20.2</version>
+    <time>1689786622</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.2:
+  - Miscellaneous Tasks
+    - Upgrade dependencies
+    - Various test, formatting, type hinting fixes
+    - Update GitHub Workflow Actions versions for CI
+    - [#384] Add content to built-with-nio
+    - Remove the usage of the imp module
+    - Fix our import order
+    - Fix a bunch of typos
+    - Remove key re-sharing
+    - Remove some unnecessary test code
+    - Add poetry to the test requirements
+    - Style fixes
+    - Sort our imports
+  - Bug Fixes
+    - [#335] Default to the configured request timeout when
+      syncing
+    - [#354] Fix first_sync_filter parameter of
+      AsyncClient.sync_forever
+    - [#357] Element exports keys without required fields
+    - [#396] Fix timeline-&gt;limited being required
+    - Fix Python 3.11 compatibility
+    - Fix import sequence errors.
+    - Exclude tests/data/ from pre-commit workflow.
+    - Only accept forwarded room keys from our own trusted
+      devices
+  - Documentation
+    - Mention that room key backups are unsupported.
+    - Add matrix-webhook to built-with-nio
+    - Add matrix-asgi to built-with-nio
+  - Features
+    - Add mxc URI parameter to AsyncClient.download and deprecate
+      server_name and media_id.
+  - Refactor
+    - Clean up and make a bunch of tests more consistent
+  - Styling
+    - Add config for pre-commit.
+    - Fix formatting using black and isort.
+    - Convert from str.format to f-strings.
+  - Testing
+    - Update test for AsyncClient.download.
+    - Fix our async tests
+</comment>
+    <requestid>1099402</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ee55f60d70b7e66dcdd4b7d439de4774</srcmd5>
+    <version>0.21.2</version>
+    <time>1693860796</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108788</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a323a7da0bf711ebb784592cb4b897c2</srcmd5>
+    <version>0.23.0</version>
+    <time>1700511620</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127711</requestid>
+  </revision>
+</revisionlist>

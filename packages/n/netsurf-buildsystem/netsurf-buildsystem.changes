@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sun Dec 31 04:38:23 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 1.10:
+  * RISC OS: push backtrace extensions into Makefile.gcc
+  * makefiles: move __postshared after all
+  * makefiles/Makefile.top: dependencies for PRE_ and POST_TARGETS
+  * makefiles: support building shared libs on Darwin
+  * RISC OS: support gnueabi as well as gnueabihf
+  * Tweak RISC OS host detection for new tooling
+  * makefiles: Use install -C by default
+
+-------------------------------------------------------------------
+Wed Aug 26 12:08:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not expect which to be in /bin:
+  * hardcoded.patch
+
+-------------------------------------------------------------------
+Tue Aug 25 15:32:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.9:
+  * openbsd support
+  * Enable sanitize target for new gccs and clang
+  * cope with Apple clang version
+  * Add support for INCLUDEDIR
+  * Fix Build/HOST confusion
+  * Fix quotation in case expansion for make selection
+
+-------------------------------------------------------------------
+Fri May 23 11:26:38 UTC 2014 - tchvatal@suse.com
+
+- Try to parse with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri May 23 10:33:46 UTC 2014 - fstrba@suse.com
+
+- Initial import of netsurf-buildsystem, inspired by Fedora package
+

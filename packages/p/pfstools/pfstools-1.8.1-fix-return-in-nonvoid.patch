@@ -1,0 +1,12 @@
+Index: pfstools-2.1.0/src/hdrhtml/hdrhtml.cpp
+===================================================================
+--- pfstools-2.1.0.orig/src/hdrhtml/hdrhtml.cpp
++++ pfstools-2.1.0/src/hdrhtml/hdrhtml.cpp
+@@ -197,6 +197,7 @@ public:
+     this->y_i = new float[lut_size];
+     own_y_i = true;
+     memcpy(this->y_i, other.y_i, lut_size * sizeof(float));
++   return *this;
+   }
+ 
+   ~UniformArrayLUT()

@@ -1,0 +1,17 @@
+# HG changeset patch
+# Parent  bad0c8b3b8d72abb6960ed85b57ee42352371738
+Do not write a PID file when not daemonizing (e.g. when running from systemd)
+
+Index: openssh-8.8p1/sshd.c
+===================================================================
+--- openssh-8.8p1.orig/sshd.c
++++ openssh-8.8p1/sshd.c
+@@ -2129,7 +2129,7 @@ main(int ac, char **av)
+ 		 * Write out the pid file after the sigterm handler
+ 		 * is setup and the listen sockets are bound
+ 		 */
+-		if (options.pid_file != NULL && !debug_flag) {
++		if (!no_daemon_flag && options.pid_file != NULL && !debug_flag) {
+ 			FILE *f = fopen(options.pid_file, "w");
+ 
+ 			if (f == NULL) {

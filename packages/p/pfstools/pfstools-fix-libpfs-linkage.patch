@@ -1,0 +1,30 @@
+From fffb017ed7a531d3d539445912a0e7832bbb9ac4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 21 Jan 2019 20:37:17 +0100
+Subject: [PATCH] Fix linkage of oct files
+
+Add missing dependency (fix failing parallel builds), and use the
+appropriate CMake generator expression to provide the directory for
+the pfs target to mkoctfile.
+---
+ src/octave/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/octave/CMakeLists.txt b/src/octave/CMakeLists.txt
+index 89d8369..b4af6f1 100644
+--- a/src/octave/CMakeLists.txt
++++ b/src/octave/CMakeLists.txt
+@@ -26,8 +26,8 @@ foreach(SRC ${SRC_OCT})
+ 	OUTPUT ${OCT_NAME}.oct
+ 	COMMAND ${MKOCTFILE} "${CMAKE_CURRENT_SOURCE_DIR}/${OCT_NAME}.cpp"
+ 	ARGS -I${HEADERS} -I${CMAKE_CURRENT_SOURCE_DIR}/help_files
+-	-L${PROJECT_BINARY_DIR}/src/pfs -lpfs
+-	DEPENDS ${OCT_NAME}.cpp
++	-L$<TARGET_LINKER_FILE_DIR:pfs> -lpfs
++	DEPENDS ${OCT_NAME}.cpp pfs
+ 	COMMENT "Generating ${OCT_NAME}.oct"
+ 	VERBATIM)
+ endforeach(SRC)
+-- 
+2.20.1
+

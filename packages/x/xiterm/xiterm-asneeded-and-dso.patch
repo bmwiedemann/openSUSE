@@ -1,0 +1,25 @@
+Index: iterm/unix/Xaw/src/Makefile.am
+===================================================================
+--- iterm.orig/unix/Xaw/src/Makefile.am
++++ iterm/unix/Xaw/src/Makefile.am
+@@ -1,6 +1,6 @@
+ bin_PROGRAMS	= xiterm
+ 
+-xiterm_LDADD	= -L$(libdir) @X_LIBS@ -lX11 -lXmu -lXaw -lXt -literm -lXiterm
++xiterm_LDADD	= -L$(libdir) @X_LIBS@ -lXiterm -lX11 -lXmu -lXaw -lXt -literm
+ xiterm_SOURCES	= popup_menu.c popup_menu.h  xiterm.c
+ 
+ CPPFLAGS        = -I$(includedir)
+Index: iterm/unix/gtk/src/Makefile
+===================================================================
+--- iterm.orig/unix/gtk/src/Makefile
++++ iterm/unix/gtk/src/Makefile
+@@ -8,7 +8,7 @@ all: $(TARGET)
+ $(OBJS): gtkiterm.c
+ 	$(CC) $(CFLAGS) -c -o $@  -I../lib `pkg-config --cflags gtk+-2.0`  $<
+ $(TARGET): $(OBJS) ../lib/libgtkiterm.a
+-	gcc $(CFLAGS) -o gtkiterm gtkiterm.c -I../lib `pkg-config --cflags --libs gtk+-2.0` ../lib/libgtkiterm.a -literm
++	gcc $(CFLAGS) -o gtkiterm gtkiterm.c -I../lib `pkg-config --cflags --libs gtk+-2.0` ../lib/libgtkiterm.a -literm -lgdk-x11-2.0 -lpango-1.0 -lglib-2.0
+ 
+ ../lib/libgtkiterm.a: ../lib/VTScreenView.c  ../lib/gtkiterm.c ../lib/VTScreenView.h  ../lib/gtkiterm.h
+ 	$(MAKE) -C ../lib

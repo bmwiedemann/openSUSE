@@ -1,0 +1,20 @@
+# HG changeset patch
+# Parent  0f731d0b541b8a919d24ac91098f560a49712822
+Suggest command line for removal of offending keys from known_hosts file
+
+Index: openssh-8.8p1/sshconnect.c
+===================================================================
+--- openssh-8.8p1.orig/sshconnect.c
++++ openssh-8.8p1/sshconnect.c
+@@ -1270,6 +1270,11 @@ check_host_key(char *hostname, const str
+ 		error("Offending %s key in %s:%lu",
+ 		    sshkey_type(host_found->key),
+ 		    host_found->file, host_found->line);
++		error("You can use following command to remove the offending key:");
++		if (host_found->file)
++			error("ssh-keygen -R %s -f %s", host, host_found->file);
++		else
++			error("ssh-keygen -R %s", host);
+ 
+ 		/*
+ 		 * If strict host key checking is in use, the user will have

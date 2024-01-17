@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Sep 11 07:07:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-future-requirement.patch, drop requirement on future
+- Switch to pyproject and autosetup macros
+- Remove skips, unneeded
+- Stop using greedy globs in %files
+
+-------------------------------------------------------------------
+Sat Feb 13 09:50:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (no scipy) 
+
+-------------------------------------------------------------------
+Wed Oct 21 03:10:01 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.12:
+  * Update setup.py
+  * ordered annotation keys 
+
+-------------------------------------------------------------------
+Wed Apr 15 07:45:33 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use pytest instead of nose 
+
+-------------------------------------------------------------------
+Thu Mar 26 11:11:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.0.9
+  * Small update with a fix for the removal of Orange.Table.extend
+
+-------------------------------------------------------------------
+Mon Jan 21 03:41:46 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

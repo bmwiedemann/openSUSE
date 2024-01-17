@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c6fcf2a7e9da1c493d29557122ba0a8e</srcmd5>
+    <version>26.4.10</version>
+    <time>1641203346</time>
+    <user>dimstar_suse</user>
+    <comment>Re-add galera to Factory</comment>
+    <requestid>943200</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>42f9ba076b9ca92a1daf4313629442eb</srcmd5>
+    <version>26.4.10</version>
+    <time>1641680579</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>944498</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3442708a2fc7152cb89055aedd905b1d</srcmd5>
+    <version>26.4.10</version>
+    <time>1643926545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950692</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fe702d0c5ae0647fffb8265bcbbd19d7</srcmd5>
+    <version>26.4.10</version>
+    <time>1645221762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955665</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>16a99ce87b0691f0782379e58ae03c40</srcmd5>
+    <version>26.4.11</version>
+    <time>1645629955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956824</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1be0e30c840f19cd05ac32a90dd8fe4e</srcmd5>
+    <version>26.4.11</version>
+    <time>1651272251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973596</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f2502fed4d9511cbb2ef7fe5760fdffb</srcmd5>
+    <version>26.4.12</version>
+    <time>1655493597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982047</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b3978844d072d4a58128c01bf111583c</srcmd5>
+    <version>26.4.13</version>
+    <time>1671209452</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042975</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2a0c5af4b259582b1f2208c76c0e7795</srcmd5>
+    <version>26.4.14</version>
+    <time>1683295026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 26.4.14:
+  - memory leak in the gcs gcomm backend fixed (tp_ object deleted
+    in GCommConn destructor)
+  - protonet.backend option deprecated since it only supports one
+    option, asio, and the option will be removed in future release.
+    Related, protonet.version is also deprecated
+  - deprecation message for socket.ssl_compression as SSL
+    compression cannot be enabled and the option will be removed in
+    future releases
+  - library could parse incorrect parameters as long as it had a
+    &quot;good&quot; prefix, i.e. evs.*, so fix prevents setting of invalid
+    option values
+  - parsing of ISO8601 durations previously accepted invalid
+    values, now fixed
+  - in addition to ISO8601 format, parsing durations now supports
+    real number representation</comment>
+    <requestid>1084718</requestid>
+  </revision>
+</revisionlist>

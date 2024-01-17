@@ -1,0 +1,203 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ad866bfb368a913f08c71de12c4624c</srcmd5>
+    <version>2.0.8</version>
+    <time>1168901427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>c0af712d6e6de05a883ccea90c34672a</srcmd5>
+    <version>2.0.8</version>
+    <time>1172929030</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="71">
+    <srcmd5>2fa96bf9e5dc211a4cd46b98647a03eb</srcmd5>
+    <version>2.0.8</version>
+    <time>1183052552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="76">
+    <srcmd5>9cd253ba8447c8f6405428829c8309e5</srcmd5>
+    <version>2.0.8</version>
+    <time>1185149991</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>178f117735c6c453f2cda1e7e79387ee</srcmd5>
+    <version>2.0.9</version>
+    <time>1185494979</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="46">
+    <srcmd5>76164475e269e0a138cc56b8177d1d2e</srcmd5>
+    <version>2.0.9</version>
+    <time>1197889529</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="133">
+    <srcmd5>b7487ec20f2061197feacff5391a0bc2</srcmd5>
+    <version>2.0.9</version>
+    <time>1219453425</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="151">
+    <srcmd5>7b4528b9db533838ce85bc0cec9cf7af</srcmd5>
+    <version>2.0.9</version>
+    <time>1243547345</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="152">
+    <srcmd5>7deb5560d823129de9a04b4918dda7a2</srcmd5>
+    <version>2.0.9</version>
+    <time>1243939405</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="153">
+    <srcmd5>27313b183c783b9f664f96c7b73a8456</srcmd5>
+    <version>2.0.9</version>
+    <time>1245277453</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="154">
+    <srcmd5>b14b7a851f45aabcbeefc6f1c82e5118</srcmd5>
+    <version>2.0.9</version>
+    <time>1254959759</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_ttf based on submit request 22005 from user prusnak
+</comment>
+  </revision>
+  <revision rev="12" vrev="156">
+    <srcmd5>b14b7a851f45aabcbeefc6f1c82e5118</srcmd5>
+    <version>2.0.9</version>
+    <time>1254959759</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_ttf based on submit request 22005 from user prusnak
+</comment>
+  </revision>
+  <revision rev="13" vrev="157">
+    <srcmd5>ccefc2d9191f3c21ba1a8b6ad2a73a9d</srcmd5>
+    <version>2.0.9</version>
+    <time>1264778935</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_ttf based on submit request 30808 from user coolo
+</comment>
+  </revision>
+  <revision rev="14" vrev="158">
+    <srcmd5>5ba7c2462c83016467e5b6ad3a00c87e</srcmd5>
+    <version>2.0.9</version>
+    <time>1268922827</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="160">
+    <srcmd5>5ba7c2462c83016467e5b6ad3a00c87e</srcmd5>
+    <version>2.0.9</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="161">
+    <srcmd5>5ba7c2462c83016467e5b6ad3a00c87e</srcmd5>
+    <version>2.0.9</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="164">
+    <srcmd5>5ba7c2462c83016467e5b6ad3a00c87e</srcmd5>
+    <version>2.0.9</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="165">
+    <srcmd5>5a30aec4dfac815b95493f8decdd9a72</srcmd5>
+    <version>2.0.9</version>
+    <time>1316439010</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+
+- Add libSDL_ttf-devel to baselibs
+- Remove redundant tags
+
+- Use %_smp_mflags for parallel building</comment>
+    <requestid>83188</requestid>
+  </revision>
+  <revision rev="19" vrev="167">
+    <srcmd5>5a30aec4dfac815b95493f8decdd9a72</srcmd5>
+    <version>2.0.9</version>
+    <time>1319181758</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="168">
+    <srcmd5>2c0a96d717bd3735797e7a1d2c54f10f</srcmd5>
+    <version>2.0.9</version>
+    <time>1336492921</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-2.1+
+SPDX syntax - dropping Freetype license from spec file as no files found under that license. (forwarded request 116754 from babelworx)</comment>
+    <requestid>116755</requestid>
+  </revision>
+  <revision rev="21" vrev="170">
+    <srcmd5>2c0a96d717bd3735797e7a1d2c54f10f</srcmd5>
+    <version>2.0.9</version>
+    <time>1340183157</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="171">
+    <srcmd5>9227d6545065b50904cc1890d33b5714</srcmd5>
+    <version>2.0.9</version>
+    <time>1357653606</time>
+    <user>coolo</user>
+    <comment>- Do not buildRequire metapackage xorg-x11-devel it is not 
+  needed and adds significant bloat (forwarded request 146874 from elvigia)</comment>
+    <requestid>147404</requestid>
+  </revision>
+  <revision rev="23" vrev="173">
+    <srcmd5>9227d6545065b50904cc1890d33b5714</srcmd5>
+    <version>2.0.9</version>
+    <time>1359108628</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6b35196b232663812346a47f224bb539</srcmd5>
+    <version>2.0.11</version>
+    <time>1377630685</time>
+    <user>coolo</user>
+    <comment>- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list, more robust make install call (forwarded request 195360 from jengelh)</comment>
+    <requestid>195363</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>6b35196b232663812346a47f224bb539</srcmd5>
+    <version>2.0.11</version>
+    <time>1379661928</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>6b35196b232663812346a47f224bb539</srcmd5>
+    <version>2.0.11</version>
+    <time>1409300449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>a5b62814ba091da15886ed9fe999adb6</srcmd5>
+    <version>2.0.11</version>
+    <time>1417160688</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263230</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>10c1f7faba3b1ce81953ee1f97151759</srcmd5>
+    <version>2.0.11</version>
+    <time>1420754601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>280336</requestid>
+  </revision>
+</revisionlist>

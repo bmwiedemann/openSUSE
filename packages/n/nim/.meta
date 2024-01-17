@@ -1,0 +1,5 @@
+<package name="nim" project="openSUSE:Factory">
+  <title>nim</title>
+  <description>Nim is a statically typed, imperative programming language that tries to give the programmer ultimate power without compromises on runtime efficiency.</description>
+  <devel project="devel:languages:misc" package="nim"/>
+</package>

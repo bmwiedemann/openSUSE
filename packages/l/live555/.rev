@@ -1,0 +1,308 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb2819003fd2d21ee8e3b05f84edfd81</srcmd5>
+    <version>2013.04.30</version>
+    <time>1367932576</time>
+    <user>coolo</user>
+    <comment>New addition: live555 demuxer: can be used by VLC</comment>
+    <requestid>174706</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bb2819003fd2d21ee8e3b05f84edfd81</srcmd5>
+    <version>2013.04.30</version>
+    <time>1379663169</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>bb2819003fd2d21ee8e3b05f84edfd81</srcmd5>
+    <version>2013.04.30</version>
+    <time>1409301806</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>edde72f4983c81ec929efc59452b2bfb</srcmd5>
+    <version>2014.09.22</version>
+    <time>1412533827</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253614</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>046a6efb1f5f88860514f160fafeb79a</srcmd5>
+    <version>2014.09.22</version>
+    <time>1415016668</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258933</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8ebc1909654efd4c83efe75c77c95dd0</srcmd5>
+    <version>2015.01.27</version>
+    <time>1423214227</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283913</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1dc10c7c9e79f1ed932147c289b4fb7d</srcmd5>
+    <version>2015.10.12</version>
+    <time>1445287955</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339475</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>882c79cfec7476429e9526bcc3f747d0</srcmd5>
+    <version>2016.10.11</version>
+    <time>1477134075</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435617</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>00401f6885dc1c5de3212760e6a9ed31</srcmd5>
+    <version>2017.06.04</version>
+    <time>1499880764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508982</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6a024b0c14685b13daa0b2983f2ae471</srcmd5>
+    <version>2017.06.04</version>
+    <time>1503589156</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515043</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5a38377b3866516a6063e06779945fd2</srcmd5>
+    <version>2017.10.28</version>
+    <time>1509820070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538277</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ebc07ea258e84ae2f8b03d2dd5ffa6f9</srcmd5>
+    <version>2018.10.17</version>
+    <time>1542012643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646703</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3c5d84e3988cd49bcaff383197b22837</srcmd5>
+    <version>2018.12.14</version>
+    <time>1549311496</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>666197</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>39755ecaa7bcf8e76dcb09f07218ce1f</srcmd5>
+    <version>2019.02.03</version>
+    <time>1549630123</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672138</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>fc86e2f4288cf52c5d90e62989904e7f</srcmd5>
+    <version>2019.02.03</version>
+    <time>1558340793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703463</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>d03f858c77c53c0e4cb2b3640590ca05</srcmd5>
+    <version>2019.02.03</version>
+    <time>1561645390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712054</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>95c4d5dc6f34d8ea0228d46849b76691</srcmd5>
+    <version>2019.06.28</version>
+    <time>1563366210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019.06.28, fixes boo#1127341 VUL-1:CVE-2019-9215: live555: malformed headers lead to invalid memory access in the parseAuthorizationHeader function.</comment>
+    <requestid>715479</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d2a10a07f3ed2e60a492ad71e2f1725d</srcmd5>
+    <version>2020.03.06</version>
+    <time>1586247814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790848</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>131ca2e3e6209889b7ae49b1aa2dec6e</srcmd5>
+    <version>2020.04.12</version>
+    <time>1586973241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793903</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3535ef8a831765b42dcc2a1af40e5ac2</srcmd5>
+    <version>2020.04.12</version>
+    <time>1588022978</time>
+    <user>dimstar_suse</user>
+    <comment>- Added pkgconfig(openssl) as a requirement for the devel package:
+  iveMedia/TLSState.hh #includes openssl/ssl.h.</comment>
+    <requestid>796439</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a6eba6cbcb2c4d5e53cdbfb943cbb106</srcmd5>
+    <version>2020.04.24</version>
+    <time>1588185857</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020.04.24:
+  + Fixed an apparent bug in &quot;RTSPClient&quot; that was causing it to
+    not always send an &quot;Authorization:&quot; header when sending a RTSP
+    &quot;OPTIONS&quot; command.</comment>
+    <requestid>798701</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e7c745f9ddef70f0c7ad1852c71d2db3</srcmd5>
+    <version>2020.05.15</version>
+    <time>1591653059</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2020.05.15</comment>
+    <requestid>811519</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>64ce0d1e02ca0376f8c6d8b7ad6a1a28</srcmd5>
+    <version>2020.08.19</version>
+    <time>1602349225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839542</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>335ea74a6b546869604315cee725ecb3</srcmd5>
+    <version>2020.10.16</version>
+    <time>1603369221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842413</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3c840e08256e0975dece464562aca32e</srcmd5>
+    <version>2021.05.22</version>
+    <time>1624551718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900593</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a58146bd376ad58c610ff8576b6f1192</srcmd5>
+    <version>2021.08.09</version>
+    <time>1629101344</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911953</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d15bf6a387708045baff997536207cf0</srcmd5>
+    <version>2021.08.23</version>
+    <time>1629917798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913854</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>fcd01afb23ff89a60f4504be0c42b707</srcmd5>
+    <version>2021.11.23</version>
+    <time>1638997717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936042</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>790c86a5540f208c64776426186693b6</srcmd5>
+    <version>2021.12.18</version>
+    <time>1640108419</time>
+    <user>dimstar_suse</user>
+    <comment>Udpate to 2021.12.18</comment>
+    <requestid>941655</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9549086d3285a3ae528d92ea5b34c856</srcmd5>
+    <version>2022.02.07</version>
+    <time>1645054211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955058</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d666541425d230b162ca01f1cca2be8a</srcmd5>
+    <version>2022.04.26</version>
+    <time>1651856292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975074</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d83aeb83cfaad74f5ed77ccc0022058b</srcmd5>
+    <version>2022.06.16</version>
+    <time>1656145435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984903</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8b625c8f74be066b5934225aa3ef79cb</srcmd5>
+    <version>2022.07.14</version>
+    <time>1658857334</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990763</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>62f7ba7be41825e8d3cb5b48b2de8646</srcmd5>
+    <version>2022.10.01</version>
+    <time>1664908612</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007620</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fe70588695b63e558e160bc901b6c9f1</srcmd5>
+    <version>2022.11.19</version>
+    <time>1669288950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037610</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9c0f6f17405cc0d93fab00ef6b46e963</srcmd5>
+    <version>2022.12.01</version>
+    <time>1670430862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040589</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f3a0c2a5400750586aea69156fb9ff14</srcmd5>
+    <version>2023.01.19</version>
+    <time>1674585746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060467</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>60fb036757953e4219740e5255b83b10</srcmd5>
+    <version>2023.05.10</version>
+    <time>1686074131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090929</requestid>
+  </revision>
+</revisionlist>

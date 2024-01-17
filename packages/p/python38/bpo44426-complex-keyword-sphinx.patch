@@ -1,0 +1,44 @@
+From 29b463879b71a3ade67541c34daafb2929269fc4 Mon Sep 17 00:00:00 2001
+From: Mark Dickinson <mdickinson@enthought.com>
+Date: Wed, 16 Jun 2021 18:43:49 +0100
+Subject: [PATCH] bpo-44426: Use of 'complex' as a C variable name confuses
+ Sphinx; change it to 'num'. (GH-26744) (cherry picked from commit
+ 7247f6f433846c6e37308a550e8e5eb6be379856)
+
+Co-authored-by: Mark Dickinson <mdickinson@enthought.com>
+---
+ Doc/c-api/complex.rst |    4 ++--
+ Doc/c-api/object.rst  |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+--- a/Doc/c-api/complex.rst
++++ b/Doc/c-api/complex.rst
+@@ -46,9 +46,9 @@ pointers.  This is consistent throughout
+    :c:type:`Py_complex` representation.
+ 
+ 
+-.. c:function:: Py_complex _Py_c_neg(Py_complex complex)
++.. c:function:: Py_complex _Py_c_neg(Py_complex num)
+ 
+-   Return the negation of the complex number *complex*, using the C
++   Return the negation of the complex number *num*, using the C
+    :c:type:`Py_complex` representation.
+ 
+ 
+--- a/Doc/c-api/object.rst
++++ b/Doc/c-api/object.rst
+@@ -483,12 +483,12 @@ Object Protocol
+    returned.  This is the equivalent to the Python expression ``len(o)``.
+ 
+ 
+-.. c:function:: Py_ssize_t PyObject_LengthHint(PyObject *o, Py_ssize_t default)
++.. c:function:: Py_ssize_t PyObject_LengthHint(PyObject *o, Py_ssize_t def_size)
+ 
+    Return an estimated length for the object *o*. First try to return its
+    actual length, then an estimate using :meth:`~object.__length_hint__`, and
+    finally return the default value. On error return ``-1``. This is the
+-   equivalent to the Python expression ``operator.length_hint(o, default)``.
++   equivalent to the Python expression ``operator.length_hint(o, def_size)``.
+ 
+    .. versionadded:: 3.4
+ 

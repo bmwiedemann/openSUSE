@@ -1,0 +1,8 @@
+<package name="bpftrace" project="openSUSE:Factory">
+  <title>bpftrace</title>
+  <description>BPFtrace is a high-level tracing language for Linux enhanced Berkeley Packet
+Filter (eBPF) available in recent Linux kernels. The BPFtrace language is
+inspired by awk and C, and predecessor tracers such as DTrace and SystemTap.
+BPFtrace was created by Alastair Robertson.</description>
+  <devel project="devel:tools" package="bpftrace"/>
+</package>

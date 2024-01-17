@@ -1,0 +1,11 @@
+<package name="python-gsm0338" project="openSUSE:Factory">
+  <title>Python Codec for 3GPP TS 23.038 / ETSI GSM 03.38</title>
+  <description>Python Codec for 3GPP TS 23.038 / ETSI GSM 03.38.
+The codec implements the encoding and decoding methods in the
+stateless codecs.Codec class. With loading the module the
+codec get's automatically registered.
+
+</description>
+  <devel project="devel:languages:python" package="python-gsm0338"/>
+  <url>https://github.com/dsch/gsm0338</url>
+</package>

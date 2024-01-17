@@ -1,0 +1,316 @@
+-------------------------------------------------------------------
+Mon Dec 11 08:26:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 13.0.8:
+  * Change BBC Sounds app_id (#753) @blawford
+  * Dependency updates
+
+-------------------------------------------------------------------
+Thu Jun  1 10:07:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 13.0.7:
+  * Wait longer when attempting to play media (#720) @emontnemery
+  * Fix socket leak
+  * Don't call launch callback on error
+  * Wait for response when stopping app
+  * Simplify request callback handling
+  * Make sure handler is unregistered after quickplay
+  * Fix lint issues
+  * Add SVS Pro SoundBase
+  * Add JBL Link 10, 20, 300, 500
+  * Fix poll/select for Windows
+  * Add Smart Soundbar 10
+
+-------------------------------------------------------------------
+Mon Jan  2 20:18:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 13.0.4:
+  * Correct timeout in call to poll.poll
+  * Adding support for reported unknown devices
+  * Add Chromecast Ultra and Chromecast HD to the recognised devices
+  * Fix error with select when python process exceeds 1024 open file descriptors
+  * Include URL and UUID in Home Assistant controller messages
+
+-------------------------------------------------------------------
+Mon Dec  5 19:29:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 13.0.1
+  * Make sure __version__ is consistent
+  * Make pylint happier
+  * Drop __version__
+
+- Update to version 13.0.0
+  * Adapt to pylint 2.15.5 (#670) @emontnemery
+  * Added three unknown models with cast-types (#658) @heikkih
+  * Revert "pin to protobuf v3" (#669) @emontnemery
+  * Pin github actions and add dependabot actions ecosystem (#655) @MartinHjelmare
+  * Improve output of discovery examples (#653) @emontnemery
+  * Update version_info in init (#640) @clach04
+
+-------------------------------------------------------------------
+Wed Aug 17 15:41:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 12.1.4
+  * Improve timeout logs (#637) @emontnemery
+  * pin to protobuf v3 (#625) @chapmanjacobd
+- Update to 12.1.3
+  * Add additional cast model (#628) @emontnemery
+  * Add additional cast model (#624) @emontnemery
+
+-------------------------------------------------------------------
+Sat May 21 20:53:58 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to 12.1.2:
+  * Breaking Changes: the media controller has been refactored in #607, which means:
+  * Controllers not included in the pychromecast repo may need some adjustments
+  * The `BbcIplayerController` and `BbcSoundsController` no longer have overridden `play_media` methods
+  * Refactor handling of discovered casts and device info (#556)
+
+-------------------------------------------------------------------
+Mon Mar  8 04:51:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 9.1.1:
+  * Add HostBrowser.update_hosts (#476)
+  * Handle audio groups removed from known host (#475)
+  * Remove useless pylint and flake8 directives (#472)
+  * BREAKING CHANGE: Update discovery to support a list of known hosts (#469)
+  * Catch errors thrown by select call (#471)
+  * Fix some strings mangled by black formatting (#470)
+  * Fix MultiZoneControllerListener (#468)
+  * Expose volume_control_type (#461)
+  * Move ReceiverController to its own module (#460)
+  * Infer contentType from playQueue items (#457) @maykar
+  * Remove unintended 'async' from listener interfaces (#453)
+  * Update BubbleUPNP example (#451)
+  * Refactor listeners and controllers as ABCs (#450)
+  * Add more google devices to consts (#448) @theychx
+  * Make current_time optional when loading or queing media (#446)
+
+-------------------------------------------------------------------
+Wed Jan 27 03:47:43 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.7.2:
+  * Use urllib.request instead of requests.
+- Drop python-requests from Requires.
+- Correct egg-info filename to build in the multi-python new world order.
+
+-------------------------------------------------------------------
+Mon Jan  4 04:44:17 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.7.1:
+  * Don't throw if socket is already closed when cleaning up (#438)
+  * Update local http API, re-add get_multizone_status (#437)
+  * Spotify quick play (again) (#430)
+  * Fix next/previous track (#436)
+  * Add support for BubbleUPNP (#428)
+
+-------------------------------------------------------------------
+Wed Sep 30 02:51:51 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.5.0:
+  * Allow passing additional media information through to play_media
+  * Add support for lists, playQueues, and playlists to Plex controller
+  * Misc spelling changes
+
+-------------------------------------------------------------------
+Tue Sep 22 04:34:34 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.3.0:
+  * Add support for QUEUE_INSERT (#404)
+  * Fix get_chromecasts non blocking mode (#411)
+  * Ensure data parsed as JSON is a dict (#405)
+  * Add zeroconf debug option to example scripts (#401)
+  * Allow passing an already existing zeroconf object to additional
+    functions (#400) @emontnemery
+  * Ignore browser updates for *._sub._googlecast._tcp.local. (#400)
+  * Fix return type of get_listed_chromecasts (#400)
+  * Remove host and port from Chromecast object (#395)
+  * Keep previously known Chromecast in service listener (#399)
+  * Remove reboot function (#394)
+
+-------------------------------------------------------------------
+Mon Jul 13 05:57:29 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.1.1:
+  * Add debug prints (#390)
+  * Report host+port for discovered casts (#385)
+  * Fix plex controller (#389)
+  * Update list_chromecasts example (#382)
+  * BREAKING CHANGE Track services based on UUID instead of mDNS service
+    name (#380)
+  * Reset receiver controller on connection lost (#379)
+
+-------------------------------------------------------------------
+Thu Jun 11 15:58:53 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 6.0.0:
+  * BREAKING CHANGE Refactor start_discovery to fix race (#370)
+  * Support zeroconf 0.27 (#368)
+  * Don't ignore zeroconf errors (#367)
+  * BREAKING CHANGE Add support to CastListener for service updates (#366)
+
+-------------------------------------------------------------------
+Wed May 27 05:35:16 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.3.0:
+  * Handle zeroconf update_service (#364)
+  * Add ability to pass in a zeroconf instance to discovery (#362)
+  * Add discovery example (#361)
+  * Quick play & Support for Yle Areena, Supla (#359)
+  * Log as info, not warning if connection re-established. (#358)
+
+-------------------------------------------------------------------
+Tue May  5 06:46:04 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
+
+- Update to 5.0.0
+  * remove .travis.yml
+  * extract test reqs
+  * Update test.yml
+  * Create test.yml
+  * Bump linters, run flake and black on examples (#355)
+  * Speed up SocketClient shutdown (#352)
+  * Improve debug messages (#353)
+  * Fix bugs in Chromecast.is_idle and ReceiverController.launch_app (#350)
+  * Improve examples and docstrings (#351)
+  * Remove blocking option from Chromecast (#349)
+  * Add helper function get_listed_chromecasts (#348)
+  * Correct mistake in PR#345 (#346)
+  * Lookup manufacturer, remove multizone helper. (#345)
+- Update python-zeroconf Require
+
+-------------------------------------------------------------------
+Thu Mar 26 16:24:27 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 4.2.0
+  * Add support for Lovelace dashboards
+  * Set up publish when we create a release.
+  * Update zeroconf requirement
+
+-------------------------------------------------------------------
+Thu Feb 13 15:38:57 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 4.1.1
+  * Update "add support to your favorite app" in the README
+  * Get ipaddress the same way as code examples in zeroconf
+  * Correct METADATA_TYPE in media.py
+
+-------------------------------------------------------------------
+Wed Jan 15 11:26:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.1.0
+  * Fix resettin status
+  * Add app icon to CastStatus
+
+-------------------------------------------------------------------
+Tue Sep 24 09:27:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.1:
+  * various small fixes
+  * support for home assistant cast
+
+-------------------------------------------------------------------
+Tue Jun 18 11:28:34 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.2.2
+  * Improve matching of spotify device to handle audio groups
+  * Fix broken attempt to update status during tear down
+  * Add google home mini as audio device
+  * Add support for queue_next / queue_prev
+  * Take expiration from login and pass to controller
+  * Add multizone controller and multizone manager
+  * Remove the filters feature from get_chromecasts
+
+-------------------------------------------------------------------
+Tue Mar  5 20:03:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.5.2:
+  * YouTube controller version update (#258) @ur1katz
+  * Add support for connecting to named service (#267) @emontnemery
+  * Exponential backoff of mdns service resolution retries (#268) @emontnemery
+  * Improve exponential backoff of mdns service resolution retries (#269) @emontnemery
+
+-------------------------------------------------------------------
+Wed Jan  2 12:09:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.3.0:
+  * Updated spotify controller description (#232) @Nobyx
+  * Allow users to pass the force_launch flag when launching an app (#237) @marcosdiez
+  * Better YouTube controller (#236) @ur1katz
+  * Simple event listener example (#241) @hjmsw
+
+-------------------------------------------------------------------
+Wed Dec 26 22:39:21 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Fix build failure: %{py_ver} doesn't work, %{py3_ver}
+  does.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:18 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri May 11 21:52:30 UTC 2018 - toddrme2178@gmail.com
+
+- Don't forget python_module workaround.
+
+-------------------------------------------------------------------
+Thu May  3 15:38:15 UTC 2018 - alarrosa@suse.com
+
+- Run spec_cleaner
+
+-------------------------------------------------------------------
+Thu May  3 08:30:37 UTC 2018 - alarrosa@suse.com
+
+- Update to version 2.2.0
+  * Spotify controller creation
+  * Fixed misplaced parenthesis
+
+- Update to version 2.1.0
+  * Fix not waiting with no tries set
+  * Add adjusted_current_time() function
+
+- Update to version 2.0.0
+  * Drop Python 2 support
+  * Fixes for discovery, FreeBSD Socket creation
+  * Fix Channel Close
+  * Add return for "uri" value, fix SSL issues on Windows
+  * Don't sleep when there are no tries remaining
+
+- Drop 0001-Dont-sleep-when-there-are-no-tries-remaining.patch
+
+-------------------------------------------------------------------
+Fri Jan  5 09:22:56 UTC 2018 - alarrosa@suse.com
+
+- Add 0001-Dont-sleep-when-there-are-no-tries-remaining.patch from
+  upstream
+
+- Update to version 1.0.3
+  * Catch OSError as well as socket.error
+  * Fix CAST_TYPES mapping
+  * Revert 184 socket client changes
+
+- Update to version 1.0.2
+  * Remove excess return value from get_device_status
+
+- Update to version 1.0.1
+  * Properly remove api_version now
+
+- Update to version 1.0.0
+  * Cast web pages with DashCast
+  * Fix get_device_status for newer cast firmwares
+  * Remove api_version from DeviceStatus
+
+-------------------------------------------------------------------
+Tue Sep  5 17:13:17 UTC 2017 - alarrosa@suse.com
+
+- Update to version 0.8.2
+  * Fix race in SocketClient.send_message
+  * Fix send message deadlock
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jun 12 09:59:27 UTC 2017 - alarrosa@suse.com
+
+- Initial release of python-PyChromecast 0.8.1
+

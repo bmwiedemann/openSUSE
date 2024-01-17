@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3467fdab4e939c688810b409ae49e8a7</srcmd5>
+    <version>0.2.0</version>
+    <time>1579101358</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain python-ffmpeg-python in Factory</comment>
+    <requestid>764476</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ca166b7b242623687f6a6421e92ec668</srcmd5>
+    <version>0.2.0</version>
+    <time>1584447084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785816</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0367f4737aae4261e5096a5729d906dd</srcmd5>
+    <version>0.2.0</version>
+    <time>1584745032</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Leap</comment>
+    <requestid>786746</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>232e1936cad83462447578b55055d9d8</srcmd5>
+    <version>0.2.0</version>
+    <time>1639075548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937779</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d4872b491bc7b8a021e548f2f7d59b3b</srcmd5>
+    <version>0.2.0</version>
+    <time>1642371499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946780</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>4de3221ce40067dbdfbbce134684dbfe</srcmd5>
+    <version>0.2.0</version>
+    <time>1671889940</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1045127 from bnavigator
+
+- Skip a test failing because of missing libopenh264 support</comment>
+    <requestid>1045132</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>2def791a8e474b8b652063307b8d4475</srcmd5>
+    <version>0.2.0</version>
+    <time>1694019565</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and autosetup macros.
+- Add patch remove-future-requirement.patch, reove future requirement.</comment>
+    <requestid>1109195</requestid>
+  </revision>
+</revisionlist>

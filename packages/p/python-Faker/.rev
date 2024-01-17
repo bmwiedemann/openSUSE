@@ -1,0 +1,610 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b2e58f9c3c2a24e413cfd8cddf6a0665</srcmd5>
+    <version>0.8.3</version>
+    <time>1506453249</time>
+    <user>dimstar_suse</user>
+    <comment>python-fake-factory has been renamed to python-Faker upstream.</comment>
+    <requestid>521749</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13723ed6b4ad8bbce751d9fb53d4f7e2</srcmd5>
+    <version>0.8.3</version>
+    <time>1507896887</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533132</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b526220a786ccead0aa1eaf94f4f913</srcmd5>
+    <version>0.8.6</version>
+    <time>1510150190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536025</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9ff09732545e84739fa52c57d3361c0c</srcmd5>
+    <version>0.8.7</version>
+    <time>1510837336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542037</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d9cf972ba53d423802501d631b31e7cd</srcmd5>
+    <version>0.8.8</version>
+    <time>1515623546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559161</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dd82d944e52ef549c516c85831f1e477</srcmd5>
+    <version>0.8.10</version>
+    <time>1516358835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566561</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9fd4ca2fba35128ed5a6e8ee7e019624</srcmd5>
+    <version>0.8.10</version>
+    <time>1544726652</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654047</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9ca500399cdf3cf3fb7677f62ebd3cd0</srcmd5>
+    <version>1.0.2</version>
+    <time>1551024880</time>
+    <user>coolo</user>
+    <comment>- Update to 1.0.10:
+  * Many changes to list see CHANGELOG.rst
+- Run tests</comment>
+    <requestid>676158</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8f48650df576e00674f92d556e2e6183</srcmd5>
+    <version>1.0.4</version>
+    <time>1553888153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685834</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bc4f6c8c77d12c75cd7c7ace6cff0a32</srcmd5>
+    <version>1.0.5</version>
+    <time>1556915713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698092</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9a2bac569b4f42d7413f4f0784c6b53d</srcmd5>
+    <version>1.0.7</version>
+    <time>1558938957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704961</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1dc09b135f56f4ab43760fa0a6ec1d42</srcmd5>
+    <version>2.0.0</version>
+    <time>1564996688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718191</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>38050ff49bffe8fcea06caba7c012a3d</srcmd5>
+    <version>2.0.2</version>
+    <time>1569851671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.2:
+  * Add nationalities for locale pt_PT. Thanks @tng10.
+  * Add ios() and android() to user_agent provider. Thanks @gsilvan.
+  * Update zh_CN provinces. Thanks @casen27.
+  * Fix typos, misspellings. Add locations, names, dates in hi_IN providers. Thanks @kathawala.
+  * Bump required version text-unidecode to 1.3. Thanks @moggers87.
+  * Bug fix for pyfloat going over max_value. Thanks @fgs-dbudwin.</comment>
+    <requestid>732881</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1b9f600da7a8195efec05a98bbbd57f5</srcmd5>
+    <version>3.0.0</version>
+    <time>1579194906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764065</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a9a6d8e5115a01d4b8022ef3be9e18fd</srcmd5>
+    <version>3.0.1</version>
+    <time>1579464037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Add provider methods zip and tar for generating zip and tar files. Thanks @malefice.
+  * Add en-CA postcode_in_province() method. Thanks @oeuftete.
+  * Update Address and Automotive provider for Russian locale. Thanks @valestel.
+  * Add provider methods for dsv files: csv, tsv, psv and generic dsv. Thanks @malefice.
+  * Remove parenthesis from city name in de_DE address provider. Thanks @jerr0328.
+  * Add NIP generator in pl_PL. Thanks @IlfirinPL.
+  * Fix Faker.random_number intermittent exceptions. Thanks @Jengah.</comment>
+    <requestid>765159</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f5579920296d6a9d0189847e6833d6ca</srcmd5>
+    <version>4.0.2</version>
+    <time>1587325284</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete py2 dependencies
+
+- update to 4.0.2:
+  * Add more data for ``ko_KR`` address provider. Thanks @alstn2468.
+  * Improved ``pt_PT`` locale for address and bank. Thanks @mustakarhu.
+  * Add ``port_number`` method to internet provider. Thanks @pishchalnikov.
+  * Add color provider for ``fa_IR`` locale. Thanks @abtinmo.
+  * Add formatting options for ``pt_BR`` postcodes. Thanks @perssonsimon1 and @klaraesr.
+  * Add ``country_calling_code`` to ``phone_number`` provider. Thanks @perssonsimon1.
+  * Fix leap year issue. Thanks @mmcmahon.
+  * Add ``AutomotiveProvider`` for ``fr_FR`` locale. Thanks @clarissedescamps and @perssonsimon1.
+  * Fix ``cellphone_formats`` in ``pt_BR`` ``PhoneNumberProvider``. Thanks @rodrigondec.
+
+- update to 4.0.1:
+  * Provider improvements for Russian locale:
+      * added city suffixes, regions and country list
+      * regions converted into states for now
+      * street address formats and states expanded
+      * lists for street titles changed
+      * Fixed errors in Automotive Provider
+      * Fixed errors in Address Provider
+      * Bank Provider expanded:
+          * BIC added)
+          * Added list of banks
+      * Improved Company Provider
+      * Credit Card and Person Provider improvements
+      * Currency Provider improvements
+      * Date-Time Provider improvements
+      * translit fix</comment>
+    <requestid>785575</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>edd79d76d34f5e0f1244264c57573ebb</srcmd5>
+    <version>4.0.3</version>
+    <time>1588609986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800000</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bf45c8c10cce5604c95701b93c183de9</srcmd5>
+    <version>4.1.0</version>
+    <time>1591879521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0:
+  * Add pytest plugin. Thanks @malefice.
+  * Fix phone numbers for es_ES. Thanks @pablofm.
+  * Fix uuid provider to return a uuid4 object when cast_to is set to None. Thanks @rodrigondec.
+  * Update names for es_ES person provider. Thanks @mondeja.
+  * Add provider for sk_SK birth_number. Thanks @eumiro.
+  * Add day_of_week and month_name for de_DE provider. Thanks @eumiro.</comment>
+    <requestid>812811</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f4e7f7e79916493ada72b81f07a1479d</srcmd5>
+    <version>4.1.1</version>
+    <time>1594807486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.1
+ * Add date_time providers for cs_CZ, de_AT, es_ES, it_IT, sk_SK, tr_TR.
+ * Add prefix support to BarcodeProvider.
+ * Fix company format for hy_AM provider.
+ * Add .uk email providers and TLDs for en_GB.
+ * Add language_name generator.
+ * Add pytimezone generator returning tzinfo objects.
+ * Add es_ES currency provider.</comment>
+    <requestid>819620</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ab28ad7bb6555322826bf25909c946f8</srcmd5>
+    <version>4.1.2</version>
+    <time>1599209967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830016</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>26b89dffde9c58ab8540f85d4e1319ca</srcmd5>
+    <version>4.14.2</version>
+    <time>1604926585</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.14.2:
+  * Fix generation of names ending with spaces. Thanks @edomora97.
+  * Add relative frequencies for japanese last names. Thanks @TianyiShi2001.
+  * Add Swiss bank provider locales. Thanks @mondeja.
+  * Split first names into male and female on pt_PT provider. Thanks @gplgps.
+  * Geo provider added for tr_TR locale. Thanks @iamnotagentleman.
+  * Add sk_SK Job provider. Thanks @pipozzz.
+  * Add date_time provider for pt_PT. Thanks @gplgps.
+  * Add .unique() for unique values. Thanks @coiax.
+  * Add automotive provider for tr_TR. Thanks @molcay.
+  * Add province list and add 2 new district to ne_NP. Thanks @iamsauravsharma.
+  * Add Currency provider for sv_SE. Thanks @frangiz.
+  * Add pt_PT credit card provider. Thanks @rubenandre.
+  * Added Company Provider for tr_TR locale. Thanks @iamnotagentleman.
+  * Add job providers for tr_TR. Thanks @molcay.
+  * Implement color provider for sk_SK locale. Thanks @pipozzz.
+  * Fix hu_HU color provider inheritance. Thanks @n1ngu.
+  * Bigger zipcode ranges for VA, TX and MD in en_US. Thanks @Antetokounpo.
+  * Add new style pt_PT automotive plates. Thanks @gplgps.
+  * Remove duplicate jobs from the pt_PT provider (#1282). Thanks @gplgps.
+  * Use &quot;Belarus&quot; instead of &quot;Vitryssland&quot; for sv_SE. Thanks @Majsvaffla.
+  * Added bank provider for tr_TR locale. Thanks @iamnotagentleman.
+  * Improve VAT generation for IT provider. Thanks @LordGordonQ.
+  * Use non-zero number for first digit of Swedish postal codes. Thanks @Majsvaffla.
+  * Add es_ES autonomous communities (Spanish regions). Thanks @mondeja.
+  * Add JSON and Fixed Width argument group and parser support. Thanks @johnbrandborg.
+  * Update zh_CN ssn provider to support gender. Thanks @mapoor.
+  * Fix typo in de_DE job provider. Thanks @datadominik.
+  * or_IN Odia person's name added. Thanks @soumendrak.
+  * Remove datetime_safe shim subclass in favor of native Python datetime.datetime. Thanks @samcrang.</comment>
+    <requestid>846365</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a0526d3989df27898b379c0ea4002334</srcmd5>
+    <version>5.3.0</version>
+    <time>1609959395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3.0:
+  * json and fixed_width now allow for strings to be fixed or pinned to a
+    static value by prepending @. Thanks @johnbrandborg.
+  * Add en_IN address + phone number provider. Thanks @pulkitgupta2k.
+  * Add en_IN person provider. Thanks @pulkitgupta2k.
+  * Remove invalid surname in nl_NL. Thanks @TheoSinnige.
+  * th_TH strftime: normalize output for unsupported directive on musl-based
+    Linux. Thanks @bact.
+  * Drop support for Python 3.5. Thanks @cclaus.
+  * Add support for Python 3.9. Thanks @cclaus.
+  * Add date_time and bank providers for th_TH. Thanks @bact.
+  * Correct spelling errors in city names for de_DE. Thanks @AnjaGer.
+  * Add name pairs to get matched representation in ja_JP person provider.
+    Thanks @yu-ichiro.
+  * Add SSN, company name, address, and license plate providers for th_TH.
+    Thanks @bact.
+  * Add postcode format, country names, person prefix weights, and update
+    phone number format for th_TH. Thanks @bact. 
+- Update changelog filename in the specfile</comment>
+    <requestid>860569</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d6e6cb5cb21fa74db997bb00e563253c</srcmd5>
+    <version>6.3.0</version>
+    <time>1613677302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873424</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d8ed5823f7ae8403c25ac658aa8de7a0</srcmd5>
+    <version>8.1.4</version>
+    <time>1621201323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893471</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e5a6f23d089f50370520db3c1adc675e</srcmd5>
+    <version>8.11.0</version>
+    <time>1629101469</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911581</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>912c0d6fc89e48f375961a64b8571891</srcmd5>
+    <version>8.12.1</version>
+    <time>1630432513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915040</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>84b0fd35be740621be952919f43aea2a</srcmd5>
+    <version>10.0.0</version>
+    <time>1639340822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>938243</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>ae80df6c63dbd6bfcb022dda56199227</srcmd5>
+    <version>10.0.0</version>
+    <time>1641203343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943293</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2334d8d9c1563a65e96647567b107c0b</srcmd5>
+    <version>13.15.1</version>
+    <time>1659470996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992358</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6cc4b17df91e9c95f368f9dc805cf233</srcmd5>
+    <version>14.2.0</version>
+    <time>1663935316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005484</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>40ec2955b80f252ca29675dfe1a83093</srcmd5>
+    <version>14.2.1</version>
+    <time>1665591958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010156</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b781debcea2737caf5ad09baf82a274b</srcmd5>
+    <version>15.1.1</version>
+    <time>1667067394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032044</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>072ef25ce5d8dde97ea4da420a9e8db2</srcmd5>
+    <version>15.2.0</version>
+    <time>1667908353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034471</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e96c211a5d2d55d568ae7e6afd792bc8</srcmd5>
+    <version>15.3.1</version>
+    <time>1669992449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039549</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ae845d53ea6c78d6fdd247aeb19e611c</srcmd5>
+    <version>15.3.4</version>
+    <time>1670514649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041185</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>d137330165c4656d261336cf7c62f370</srcmd5>
+    <version>15.3.4</version>
+    <time>1675458272</time>
+    <user>dimstar_suse</user>
+    <comment>- drop python 3.7 specific dependencies - not in any existing SUSE
+  distribution anymore</comment>
+    <requestid>1062542</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b681f9d8e8eb0b4f3299e589c2dcd4f9</srcmd5>
+    <version>16.8.1</version>
+    <time>1676148957</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 16.8.1:
+  * Sort and add new Arabic words in `ar_AA` and `ar_PS`.
+  * Add `emoji` provider.
+  * Fix `name_female` and `name_male` mixed names for `en_GB`.
+  * Add method to generate JSON as bytes.
+  * Fix `siret` and `siren` generation for `fr_FR` locale company
+    information.
+  * Add `fr_CA` address provider.
+  * Add `zipcode`, `postcode` and `postalcode` to `pl_PL`.
+  * Update phone number formats for `es_ES` locale.
+  * Add new `fr_BE` and `nl_BE` `Person` providers.
+  * Add `fr_CA` date time provider.
+  * Allow passing optional json encoder in `json` provider.
+  * Fix missing comma in `en_NZ` address provider.
+  * Fix amount and layout of sample data.</comment>
+    <requestid>1064201</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0edf7b96a4a2d14a0ba5bb27c282fd88</srcmd5>
+    <version>17.0.0</version>
+    <time>1676827125</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17.0.0:
+  * Remove deprecated placeimg image provider. Thanks @Wonskcalb.
+  * Add `truth_probability` argument to `pybool` generator.</comment>
+    <requestid>1066268</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c05247ee9fef48a8f6c6db60997d3d4c</srcmd5>
+    <version>18.4.0</version>
+    <time>1682368252</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.4.0:
+  * Add currency symbols for all listed currencies.
+  * Ensure `pyfloat` honors min and max values.
+  * Use correct union type for provider argument (#1840).
+  * Fix determinism in `state_abbr()` for `en_US`.
+  * Separate freely-associated states &amp; US territories.
+  * Fix value error formatting.
+  * Add lorem provider for `nl_BE`.
+  * Add `nl_BE` automotive provider.
+  * Add `nl_BE` company provider.
+  * Add territory zip codes for `en_US`.
+  * Add `nl_BE` bank provider.
+  * Fix North Macedonia entry in `uk_UA` provider.
+  * Add SBN provider.
+  * Use the official name for North Macedonia due to the name
+    change in 2019.
+  * Add `zh_TW` `date_time` provider.
+  * Add support for latvian `ssn` generation.
+  * Add argument validation to `pybool()`.</comment>
+    <requestid>1082313</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>87ae98ca58e4ffd1377d02a4a1081af6</srcmd5>
+    <version>18.5.1</version>
+    <time>1682618392</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.5.1:
+  * Fix release.
+  * Add `de_DE` `swift_location_codes`. Thanks @MiloniAtal.
+
+- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1083104</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>461d518ac536da490ecb253007b0b425</srcmd5>
+    <version>18.6.0</version>
+    <time>1683630354</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.6.0:
+  * Add a separate `basic_phone_number` for `en_US`. Thanks
+    @dlwrnc.</comment>
+    <requestid>1084848</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>809fa19a74a5d2a572c02b2d18cc3b98</srcmd5>
+    <version>18.7.0</version>
+    <time>1684162439</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.7.0:
+  * Add `license_plate` for `zh_CN` and `zh_TW`.
+  *  Improve accuracy of departments in `fr_FR` provider
+    `postcode`.
+  * Fix `ssn` provider for `zh_TW`.</comment>
+    <requestid>1087106</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8b19d5f9d8225ad46f93cf9052037a74</srcmd5>
+    <version>18.9.0</version>
+    <time>1685393253</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.9.0:
+  * Add `xml` provider
+  * Add `zh_CN` bank locale</comment>
+    <requestid>1089351</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>2a8e3062870b6f6c490dee9eaf3e2632</srcmd5>
+    <version>18.10.1</version>
+    <time>1687379841</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.10.1:
+  * Fix handling leap year in `en_US` Passport provider.
+  * Add `passport` Provider and `en_US` Implementation.
+  * Fix `fr_FR` `postcode` length.</comment>
+    <requestid>1094144</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a272a384cfb0a04c04f0b6bb8443d903</srcmd5>
+    <version>18.11.1</version>
+    <time>1687796131</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.11.1:
+  * Update Ukraine Country Code in `phone_number`
+  * Add digit-above-two type to numerify function</comment>
+    <requestid>1095231</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a04ddbb8dc668c57b1c4a7a033025d98</srcmd5>
+    <version>19.10.0</version>
+    <time>1697657111</time>
+    <user>anag+factory</user>
+    <comment>- Update to 19.10.0:
+  - Update names and phone numbers for cs_CZ. Thanks @george0st.
+  - Revert &quot;fix type error in pyfloat when max_value is None&quot;
+    from v19.6.2.
+  - Use DE base for de_CH AddressProvider. Thanks @nchiapol.
+  - Fix person Latvian provider.
+  - Add Gender support for Latvian (lv_LV) names. Thanks
+    @OskarsPakers.
+  - Add MAC Address Multicast. Thanks @d3vyce.
+  - fix type error in pyfloat when max_value is None. Thanks
+    @HugoJP1.
+  - Bump actions/checkout from 3 to 4 (#1909). Thanks
+    @dependabot[bot].
+  - Add addresses for en_BD. Thanks @aamibhoot.
+  - Add color_rgb, color_rgb_float, color_hsv and
+    color_hsl. Thanks @fdemmer.
+  - Add schemes and deep argument to uri method.
+  - Remove spurious space in uk_UA first_name. Thanks @Romissevd.
+  - Add weighting to dynamic providers. Thanks @pauldechorgnat.
+  - Add support for South African Zulu (zu_ZA) names and last
+    names. Thanks @iamkhaya.
+  - Add ja_JP locale for datetime. Thanks @cyanghsieh.
+  - Drop support for Python 3.7
+  - Drop support for 32 bit systems.
+  - Add elector_code for es_MX SSN provider. Thanks
+    @edgarrmondragon.
+  - Add .optional proxy that may or may not return a fake
+    value. Thanks @ligne.
+  - Add fake automotive vin number function. Thanks @cyanghsieh.
+  - Fix area codes for fr_FR mobile phone numbers. Thanks</comment>
+    <requestid>1118367</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>82e613d5f8e8db1589d27a16293f9d7f</srcmd5>
+    <version>21.0.0</version>
+    <time>1702844944</time>
+    <user>anag+factory</user>
+    <comment>- update to 21.0.0:
+  * Fix: random sign in `pyfloat` when `positive=False`.
+  * Add company provider and NUSS for `es_ES` locale.
+  * Add official support for Python 3.12.
+  * Make `unix_time` always return floats.
+  * Fix `pydecimal` crash on float `min_value` or `max_value`.
+  * Fix type hint for `unix_time`.
+  * Support platform-specific second precision. Thanks @cknv.
+  * Add more entries in `cs_CZ`'s geo
+  * Fix latest days of the month as birth day in italian SSN.
+  * Add `geo` provider for `cs_CZ`
+  * Fix handling for finnish ssn where `min_age` and `max_age`
+    are the same
+  * Add a few street names to `cs_CZ`
+  * Add words to lorem for `cs_CZ`
+  * Add color for `cs_CZ`
+
+  distribution anymore
+  * Add banks for en_IN locale. Thanks @ChiragMangukia.
+- Update to v15.1.1
+  * automotive: add de_CH license plates. Thanks @gsilvan.
+- Update to 6.3.0:
+    phone number format for th_TH. Thanks @bact.
+  * Remove datetime_safe shim subclass in favor of native Python datetime.datetime. Thanks @samcrang.
+  * Breaking change: Only allow providers to use OrderedDict s, to
+  * Remove some validations from Faker and delegate it to an
+  * Add min and max values for ``pyfloat`` and ``pydecimal``.</comment>
+    <requestid>1133656</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>84b03f7500ccc448a807cd31cd922571</srcmd5>
+    <version>22.0.0</version>
+    <time>1704659951</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.0.0:
+  * Remove dot from `file_name` when `extention` is the empty
+    string.
+  * Allow extension in `file_path` to take a list of allowed
+    extensions, or empty for &quot;no extension&quot;.
+  * Fix typo in `ru_RU` company names.</comment>
+    <requestid>1137275</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2fc463fc9a3efd54e99345e6bf032730</srcmd5>
+    <version>22.1.0</version>
+    <time>1704829747</time>
+    <user>anag+factory</user>
+    <comment>- update to 22.1.0:
+  * Add support for multiple file systems path rules.</comment>
+    <requestid>1137642</requestid>
+  </revision>
+</revisionlist>

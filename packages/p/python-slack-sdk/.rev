@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdd91b0fb624f66fc901c324ae819c17</srcmd5>
+    <version>3.18.1</version>
+    <time>1659554194</time>
+    <user>dimstar_suse</user>
+    <comment>Inital release, 3.18.1</comment>
+    <requestid>992456</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2a6447a353878ebf9cb5bfee12dd021c</srcmd5>
+    <version>3.18.3</version>
+    <time>1665185179</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 3.18.3 
+  Changes
+  * #1262 Fix #1261 blocks/attachments as str for chat. API calls should be clearly supported - Thanks @seratch
+  * #1259 Fix #1258 Tuple value for blocks argument does not work for Web API calls - Thanks @tommasobertoni
+  * #1253 Minor update: max elements in ActionsBlock to 25 - Thanks @YSaxon
+  * #1249 #1251 Add in timezone property for timepicker element - Thanks @hello-ashleyintech
+</comment>
+    <requestid>1008879</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>03dcb29109020f4d5943fa79f626b590</srcmd5>
+    <version>3.19.1</version>
+    <time>1667217866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032431</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5153879a014ba79cc4cfdf4bfff61ef9</srcmd5>
+    <version>3.19.2</version>
+    <time>1668271262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035246</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6488528a2d7ceece033e7a9db4dfd379</srcmd5>
+    <version>3.19.3</version>
+    <time>1670058238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039745</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6ea94d40404d21dc4088031865e79a10</srcmd5>
+    <version>3.19.5</version>
+    <time>1673651018</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1058292</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b982dd460999e4fcb1e55a3ababf40f8</srcmd5>
+    <version>3.21.3</version>
+    <time>1685632776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.21.3:
+  * #1361 Fix #1356 files_upload_v2 filename required even though content
+    provided
+  * #1354 Fix a bug where SQLAlchemy based InstallationStore is missing
+    client_id in queries
+  * #1352 Improve the default OAuth page content renderer not to embed
+    external parameters as-is
+  * Update Audit Logs API response class to have newly added properties
+  * #1349 Add five admin API supports to Web API clients (admin.roles.*,
+    admin.conversations.convertToPublic, admin.conversations.lookup)
+  * #1345 Add team parameter support to the authorize URL generators
+  * #1343 Fix #1342 files_upload_v2 fails to share files in a channel
+  * #1334 Fix #1333 Enable using RetryHandler for 200 OK response patterns
+  * #1335 Fix #1327 OAuth module: SQLAlchemy v2 compatibility
+  * #1311 Fix #1310 Add admin.conversations.bulk{Archive|Delete|Move} API
+    method support
+  * #1332 Fix #1322 Remove file_annotation parameter from chat.postMessage
+    method
+  * #1317 Add include_categories to emoji.list API args
+- Switch to pyproject macros.</comment>
+    <requestid>1090102</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>07dcfa98fc5bf662c15ea689f8287e1e</srcmd5>
+    <version>3.26.1</version>
+    <time>1702071218</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.26.1:
+  * #1441 #1442 Built-in InstallationStores fail to resolve a
+    valid bot token when both bot and user-only installations co-
+    exist in database tables - Thanks @kulmatitskiy @seratch
+  * #1440 Fix a bug on the aiohttp-based Socket Mode client's
+    exception handling - Thanks @ifmcnichols
+  * #1438 Add new `force` argument to `conversations.invite` API
+    method - Thanks @filmaj
+  * #1435 Enable testing for Python 3.12 and PyPy 3.10 on CI -
+  * #1432 Add functions.completeSuccess/Error APIs for remote
+    functions - Thanks @seratch @WilliamBergamin
+  * #1433 Add RichTextBlock to Block.parse() targets - Thanks
+    @seratch
+  * #1430 Fix #1427 Add apps.manifest.* &amp; tooling.tokens.rotate
+    API support - Thanks @seratch
+  * #1431 Fix #1428 Add rich_text classes to slack_sdk.models
+    module - Thanks @seratch @tj-smith47
+  * #1425 Fix #1424 Add file input block element support - Thanks
+    @seratch
+  * #1423 Fix #1421 Update SlackApiError exception handling for
+    web client - Thanks @vinceta
+  * #1418 Add new arguments to admin.users.list API method -
+    Thanks @seratch
+  * #1409 Make next_cursor extraction logic even more robust (ref
+    #1407) - Thanks @seratch
+  * #1406 Add `RichTextInputElement` to `slack_sdk.models` -
+  * #1408 Update `files.upload` v2 method in correspondence with
+    server-side changes - Thanks @seratch
+  * Since this version, developers no longer need `files:read`
+    permission for `files_upload_v2` method. To learn more about</comment>
+    <requestid>1132105</requestid>
+  </revision>
+</revisionlist>

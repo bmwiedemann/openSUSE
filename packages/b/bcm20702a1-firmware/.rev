@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>974c24006bfaf6b25c924128d0e3b5a4</srcmd5>
+    <version>1201650</version>
+    <time>1468360236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>378612</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3d845346f897550247af4e0730240b93</srcmd5>
+    <version>1201650</version>
+    <time>1487261155</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457179</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a202897484a6f1a9e0903b96e762df73</srcmd5>
+    <version>1201650</version>
+    <time>1540988222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645483</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>26afe7eb8887ea899a92ad9e5f4ea931</srcmd5>
+    <version>1201650</version>
+    <time>1572443027</time>
+    <user>dimstar_suse</user>
+    <comment>- Use https to fetch the archive bsc#1154083</comment>
+    <requestid>743731</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>836fbddf7e8c7723c459f44a97530bc6</srcmd5>
+    <version>1201650</version>
+    <time>1593006608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816804</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>a2cc8df23db99c21c79b4f407763d5e9</srcmd5>
+    <version>1201650</version>
+    <time>1609783753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860167</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>7c8f3517998ddf058e65f01e12b19a3a</srcmd5>
+    <version>1201650</version>
+    <time>1615802149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878944</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3274e3bf13e343502589db6aa17401cd</srcmd5>
+    <version>1201650</version>
+    <time>1617034918</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>881727</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>771f2cf17801dba95f3c7ae98e45be78</srcmd5>
+    <version>1201650</version>
+    <time>1650922559</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop superfluous dependency on kernel-firmware (bsc#1198795)</comment>
+    <requestid>972638</requestid>
+  </revision>
+</revisionlist>

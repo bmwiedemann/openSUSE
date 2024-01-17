@@ -1,0 +1,193 @@
+-------------------------------------------------------------------
+Mon Nov 27 15:40:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * Fix ClientPin usage for Authenticators that do not
+    support passing a PIN.
+  * Fix: Handle correct CTAP response codes in
+    authenticatorSelection.
+
+-------------------------------------------------------------------
+Tue Jul  4 13:10:41 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon May  8 18:03:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Bugfix: Don't set length for largeBlob when offset is 0.
+  * Bugfix: Remove print statement in webauthn parsing.
+
+-------------------------------------------------------------------
+Thu Dec 15 09:48:26 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-six dependency
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
+Mon Dec  5 09:06:02 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- drop python-fido2-no-mock.patch
+- Update to version 1.1.0
+  * Bugfix: Fix name of "crossOrigin" in CollectedClientData.create().
+  * Bugfix: Some incorrect type hints in the MDS3 classes were fixed.
+  * Stricter checking of dataclass field types.
+  * Add support for JSON-serialization of WebAuthn data classes.
+    This changes the objects dict representation to align with new additions in the
+    WebAuthn specification. As this may break compatibility, the new behavior
+    requires explicit opt-in until python-fido2 2.0 is released.
+  * Update server example to use JSON serialization.
+  * Server: Add support for passing RegistrationResponse/AuthenticationResponse (or
+    their deserialized JSON data) to register_complete/authenticate_complete.
+  * Add new "hybrid" AuthenticatorTransport.
+  * Add new AuthenticatorData flags, and use 2-letter names as in the WebAuthn spec
+    (long names are still available as aliases).
+
+- version 1.0.0
+  * Release Candidate 1 of first stable release.
+  * Require Python 3.7 or later.
+  * APIs have updated to align with WebAuthn level 2.
+  * Several CTAP 2.1 features have been implemented.
+
+-------------------------------------------------------------------
+Mon Mar 21 10:44:41 UTC 2022 - pgajdos@suse.com
+
+- do not require mock for build
+- added patches
+  fix https://github.com/Yubico/python-fido2/issues/135
+  + python-fido2-no-mock.patch
+
+-------------------------------------------------------------------
+Sat Jan 15 17:34:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.3:
+  * Don't fail device discovery when hidraw doesn't support HIDIOCGRAWUNIQ
+  * Support the latest Windows webauthn.h API (included in Windows 11).
+  * Add product name and serial number to HidDescriptors.
+  * Remove the need for the uhid-freebsd dependency on FreeBSD.
+- drop 0001-Don-t-use-enum.auto-Python-2.patch
+       0001-Skip-tests-on-older-Cryptography-versions.patch (upstream)
+
+-------------------------------------------------------------------
+Tue May 25 11:09:25 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Thu May  6 14:23:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9.1
+  * Add new CTAP error codes and improve handling of unknown codes.
+  * Client: API changes to better support extensions.
+  * Client.make_credential now returns a AuthenticatorAttestationResponse,
+    which holds the AttestationObject and ClientData, as well as any
+    client extension results for the credential.
+  * Client.get_assertion now returns an AssertionSelection object,
+    which is used to select between multiple assertions
+  * Renames: The CTAP1 and CTAP2 classes have been renamed to
+    Ctap1 and Ctap2, respectively.
+  * ClientPin: The ClientPin API has been restructured to support
+    multiple PIN protocols, UV tokens, and token permissions.
+  * CTAP 2.1 PRE: Several new features have been added for CTAP 2.1
+  * HID: The platform specific HID code has been revamped
+- Add 0001-Don-t-use-enum.auto-Python-2.patch from upstream
+- Add 0001-Skip-tests-on-older-Cryptography-versions.patch from
+  upstream
+
+-------------------------------------------------------------------
+Mon Apr 20 12:42:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Sun Dec  8 23:05:47 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Version 0.8.1 (released 2019-11-25)
+  * Bugfix: WindowsClient.make_credential error when resident key requirement is unspecified.
+
+- Version 0.8.0 (released 2019-11-25)
+  * New fido2.webauthn classes modeled after the W3C WebAuthn spec introduced.
+  * CTAP2 send_cbor/make_credential/get_assertion and U2fClient request/authenticate timeout arguments replaced with event used to cancel a request.
+  * Fido2Client:
+    - make_credential/get_assertion now take WebAuthn options objects.
+    - timeout is now provided in ms in WebAuthn options objects. Event based cancelation also available by passing an Event.
+  * Fido2Server:
+    - ATTESTATION, USER_VERIFICATION, and AUTHENTICATOR_ATTACHMENT enums have been replaced with fido2.webauthn classes.
+    - RelyingParty has been replaced with PublicKeyCredentialRpEntity, and name is no longer optional.
+    - Options returned by register_begin/authenticate_begin now omit unspecified values if they are optional, instead of filling in default values.
+    - Fido2Server.allowed_algorithms now contains a list of PublicKeyCredentialParameters instead of algorithm identifiers.
+    - Fido2Server.timeout is now in ms and of type int.
+  * Support native WebAuthn API on Windows through WindowsClient.
+
+- Version 0.7.3 (released 2019-10-24)
+  j Bugfix: Workaround for size of int on Python 2 on Windows.
+
+- Version 0.7.2 (released 2019-10-24)
+  * Support for the TPM attestation format.
+  * Allow passing custom challenges to register/authenticate in Fido2Server.
+  * Bugfix: CTAP2 CANCEL command response handling fixed.
+  * Bugfix: Fido2Client fix handling of empty allow_list.
+  * Bugfix: Fix typo in CTAP2.get_assertions() causing it to fail.
+
+- Version 0.7.1 (released 2019-09-20)
+  * Support for FreeBSD.
+  * Enforce canonical CBOR on Authenticator responses by default.
+  * PCSC: Support extended APDUs.
+  * Server: Verify that UP flag is set.
+  * U2FFido2Server: Implement AppID exclusion extension.
+  * U2FFido2Server: Allow custom U2F facet verification.
+  * Bugfix: U2FFido2Server.authenticate_complete now returns the result.
+
+-------------------------------------------------------------------
+Mon Jun 17 15:26:45 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Version 0.7.0 (released 2019-06-17)
+  * Add support for NFC devices using PCSC.
+  * Add support for the hmac-secret Authenticator extension.
+  * Honor max credential ID length and number of credentials to Authenticator.
+  * Add close() method to CTAP devices to explicitly release their resources.
+
+-------------------------------------------------------------------
+Fri May 10 19:45:22 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Version 0.6.0 (released 2019-05-10)
+  * Don't fail if CTAP2 Info contains unknown fields.
+  * Replace cbor loads/dumps functions with encode/decode/decode_from.
+  * Server: Add support for AuthenticatorAttachment.
+  * Server: Add support for more key algorithms.
+  * Client: Expose CTAP2 Info object as Fido2Client.info.
+- Changed source URL to official release tarball
+- Verifying signature of release tarball
+
+-------------------------------------------------------------------
+Fri Dec 21 14:05:31 UTC 2018 - Karol Babioch <kbabioch@suse.de>
+
+- Version 0.5.0 (released 2018-12-21)
+  * Changes to server classes, some backwards breaking.
+  * Add ability to authenticate U2F credentials by using the appid extension.
+  * Make verification of attestation more explicit.
+  * Add support for Android SafetyNet attestation.
+  * Make it easier to work with U2F/CTAP1 data formats.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:58 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Sep 27 19:12:54 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Version 0.4.0 (released 2018-09-27)
+  - Add classes for implementing a server.
+  - Various small changes, some affecting backwards compatibility.
+
+-------------------------------------------------------------------
+Sat Apr 21 20:45:38 UTC 2018 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Tue Apr 17 09:57:23 UTC 2018 - kbabioch@suse.com
+
+- Initial packaging of version 0.3.0

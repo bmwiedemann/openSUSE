@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7375c059907ab66557b6fac8e08bb749</srcmd5>
+    <version>0.5.6</version>
+    <time>1520415539</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-num2words, required by mycroft-core</comment>
+    <requestid>583652</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2d1a5eb0f4a28dd169a3a2653027a0d9</srcmd5>
+    <version>0.5.6</version>
+    <time>1545648395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660016</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eed20eb379797d41453b0caab333c408</srcmd5>
+    <version>0.5.9</version>
+    <time>1557141903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694215</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3a352944d97b3d198d14debec13be00f</srcmd5>
+    <version>0.5.10</version>
+    <time>1560459697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707632</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4ad8faa1865b10c2d23759fbcd2789c6</srcmd5>
+    <version>0.5.10</version>
+    <time>1590649925</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808046</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5f0bbbfa6013797114b1c708738046c8</srcmd5>
+    <version>0.5.12</version>
+    <time>1665034949</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008232</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0a22d6667387e078312ea02efb64b45a</srcmd5>
+    <version>0.5.13</version>
+    <time>1702071107</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.13:
+  * Fix a problem in Brazilian Portuguese code referred to
+    thousands when the hundreds are exact. (#421)
+  * Fix issue with the hundreds of millions, billions, ... when
+    the hundreds of those are exact. (#436)
+  * Fix negative number problem (#477)
+  * Fix lang_DK issues (#366)
+  * Norwegian uplift (#484)
+  * BYN to EU and RU (#439)
+  * Add support for Azerbaijani language (#495)
+  * Add Icelandic (#380)
+  * Hebrew long-form spelling, gender, ordinals, fractions,
+    maxval=1e66, construct forms (#490)
+  * Fix 15, 16, 17, 18, 19 issue (#505)
+  * Added support for the Nigerian Naira (#507)
+  * Fix several issues with num2words in Arabic (#512)
+  * Guatemalan currency support (#510)
+  * Fix #508: Handle string inputs in Italian to_ordinal (#518)
+  * Add Slovak language support (#533)
+  * Add gender and morphological cases support for Ukrainian
+  * Adding genders for Russian language (#503)
+  * Lang By Added (#506)
+  * Add Saudi Riyal to english (#531)
+
+ [ES] Added missing accents (&quot;dieciséis&quot;, &quot;dólar&quot;, &quot;dólares&quot;, &quot;veintiún&quot;), improved currency gender handling, fixed pound cent names (#443)
+- update to 0.5.10
+- Initial release of python-num2words 0.5.6</comment>
+    <requestid>1131692</requestid>
+  </revision>
+</revisionlist>

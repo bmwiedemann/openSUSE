@@ -1,0 +1,6 @@
+<package name="enigma" project="openSUSE:Factory">
+  <title>An Excellent Oxyd Clone</title>
+  <description>Enigma is similar to the well known game Oxyd.
+</description>
+  <devel project="games" package="enigma"/>
+</package>

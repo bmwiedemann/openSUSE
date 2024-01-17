@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Mon Oct 30 14:42:29 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.6.0
+  * This adds support for Qt v6.6.
+
+-------------------------------------------------------------------
+Wed Jun 28 13:51:47 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Apr 24 20:15:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.5.0
+  * Added support for Qt v6.5.
+
+-------------------------------------------------------------------
+Wed Mar 15 14:08:48 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to support python 3.6 in order to build for SLE/Leap:
+  * support-python3.6.patch
+
+-------------------------------------------------------------------
+Mon Oct  3 17:51:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.4.0
+  *  Added support for Qt v6.4.
+
+-------------------------------------------------------------------
+Tue Jun 21 10:15:28 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.1
+  * Added qWebEngineVersion(), qWebEngineChromiumVersion(), and
+    qWebEngineChromiumSecurityPatchVersion().
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed Apr 13 08:27:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.0
+  * Added support for Qt v6.3.
+  * Bug fixes.
+- Remove concatenate workaround
+
+-------------------------------------------------------------------
+Sat Apr  9 10:19:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Exclude 32-bit platforms because QtWebengine 6.3.0 does not
+  support them.
+
+-------------------------------------------------------------------
+Fri Oct 29 15:15:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.2.1
+  * Bug Fixes
+
+-------------------------------------------------------------------
+Sun Oct  3 13:21:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for release 6.2.0 

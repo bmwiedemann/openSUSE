@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3a13c3570d119055ea4b4c2ee49b0524</srcmd5>
+    <version>2.0.6</version>
+    <time>1551386361</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>674599</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a34504ed298b0c7fe6c9e245264a799</srcmd5>
+    <version>2.0.6</version>
+    <time>1570180901</time>
+    <user>dimstar_suse</user>
+    <comment>Unnecessary log4j dependency</comment>
+    <requestid>734289</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f2d224d78cb97cde62b4117353e888d6</srcmd5>
+    <version>2.0.6</version>
+    <time>1624999417</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2021-33813</comment>
+    <requestid>903078</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8a7ccbc5451cd491ee70f117fbe8026a</srcmd5>
+    <version>2.0.6.1</version>
+    <time>1642548909</time>
+    <user>dimstar_suse</user>
+    <comment>2.0.6.1</comment>
+    <requestid>947124</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f59c483a7e8623509d804278e06f4c92</srcmd5>
+    <version>2.0.6.1</version>
+    <time>1693482150</time>
+    <user>anag+factory</user>
+    <comment>Reduce drastically the dependencies</comment>
+    <requestid>1108066</requestid>
+  </revision>
+</revisionlist>

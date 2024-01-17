@@ -1,0 +1,5 @@
+<package name="wesnoth" project="openSUSE:Factory">
+  <title>Battle for Wesnoth</title>
+  <description>A turn-based strategy game with a fantasy theme.</description>
+  <devel project="games" package="wesnoth"/>
+</package>

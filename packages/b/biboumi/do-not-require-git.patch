@@ -1,0 +1,50 @@
+diff -Nur biboumi-9.0/CMakeLists.txt new/CMakeLists.txt
+--- biboumi-9.0/CMakeLists.txt	2020-09-22 22:50:04.000000000 +0200
++++ new/CMakeLists.txt	2021-04-18 19:29:24.221380325 +0200
+@@ -290,22 +290,26 @@
+ #
+ ## Add a rule to download the catch unit test framework
+ #
+-include(ExternalProject)
+-ExternalProject_Add(catch
+-  GIT_REPOSITORY "https://lab.louiz.org/louiz/Catch.git"
+-  PREFIX "external"
+-  UPDATE_COMMAND ""
+-  CONFIGURE_COMMAND ""
+-  BUILD_COMMAND ""
+-  INSTALL_COMMAND ""
++pkg_check_modules(Catch2 catch2)
++if (Catch2_FOUND)
++	include_directories("${Catch2_INCLUDEDIR}/catch2")
++elseif (NOT Catch2_FOUND AND NOT EXISTS ${CMAKE_SOURCE_DIR}/tests/catch.hpp)
++  include(ExternalProject)
++  ExternalProject_Add(catch
++    GIT_REPOSITORY "https://lab.louiz.org/louiz/Catch.git"
++    PREFIX "external"
++    UPDATE_COMMAND ""
++    CONFIGURE_COMMAND ""
++    BUILD_COMMAND ""
++    INSTALL_COMMAND ""
+   )
+-set_target_properties(catch PROPERTIES EXCLUDE_FROM_ALL TRUE)
+-ExternalProject_Get_Property(catch SOURCE_DIR)
+-if(NOT EXISTS ${CMAKE_SOURCE_DIR}/tests/catch.hpp)
++  set_target_properties(catch PROPERTIES EXCLUDE_FROM_ALL TRUE)
++  ExternalProject_Get_Property(catch SOURCE_DIR)
+   target_include_directories(test_suite
+     PUBLIC "${SOURCE_DIR}/single_include/"
+     )
+   add_dependencies(test_suite catch)
++  add_dependencies(dist catch)
+ endif()
+ 
+ #
+@@ -372,7 +376,7 @@
+   )
+ add_custom_target(dist
+   DEPENDS ${ARCHIVE_NAME}.tar.xz
+-  DEPENDS catch)
++  )
+ 
+ add_custom_target(rpm
+   DEPENDS dist

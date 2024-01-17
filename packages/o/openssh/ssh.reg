@@ -1,0 +1,18 @@
+#############################################################################
+#
+# OpenSLP registration file
+#
+# register SSH daemon
+#
+#############################################################################
+
+# Register the usual sshd, if it is running
+service:ssh://$HOSTNAME:22,en,65535
+tcp-port=22
+description=Secure Shell Daemon
+
+# ssh can get used to copy files with konqueror using the fish:/ protocol
+service:fish://$HOSTNAME:22,en,65535
+tcp-port=22
+description=KDE file transfer via SSH
+

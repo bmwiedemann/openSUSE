@@ -1,0 +1,8 @@
+<package name="osmo-bts" project="openSUSE:Factory">
+  <title>Osmocom BTS-Side code (Abis, scheduling)</title>
+  <description>Osmocom BTS-Side code (Abis, scheduling).
+
+</description>
+  <devel project="network:telephony" package="osmo-bts"/>
+  <url>https://osmocom.org/projects/osmobts/wiki/Wiki</url>
+</package>

@@ -1,0 +1,2 @@
+addFilter("lib-theme.* branding-requires-unversioned")
+addFilter("lib-theme-resources.* branding-requires-specific-flavor")

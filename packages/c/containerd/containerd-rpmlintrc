@@ -1,0 +1,2 @@
+addFilter ("^containerd(-kubic)?.*: W: statically-linked-binary /usr/sbin/containerd-shim")
+addFilter ("^containerd(-kubic)?-test.noarch: [WE]: (hidden-file-or-dir|script-without-shebang|devel-file-in-non-devel-package|env-script-interpreter).* /usr/src/containerd/.*")

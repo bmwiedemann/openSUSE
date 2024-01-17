@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>46077305773eb347034b2d8d02653e9b</srcmd5>
+    <version>1</version>
+    <time>1531379943</time>
+    <user>dimstar_suse</user>
+    <comment>p-u-i is the successor to pk-update-icon, it will replace it after some more tests in Factory</comment>
+    <requestid>621941</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cae72868a13220ef7fc7a7915637e594</srcmd5>
+    <version>2</version>
+    <time>1555488557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694719</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>09a96fe5c7c8df15f2cd8615c3c12ea9</srcmd5>
+    <version>2</version>
+    <time>1556312068</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697795</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fef1beaa1544455de83d6b59940a05ba</srcmd5>
+    <version>4</version>
+    <time>1564414149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719369</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b9e5410058cd896e61ccee4a95daeeaf</srcmd5>
+    <version>5</version>
+    <time>1567679687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728044</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b89891b040b69b1beee39e179176b3e1</srcmd5>
+    <version>5</version>
+    <time>1591880072</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding patch org.guido-berhoerster.code.package-update-indicator.desktop.in.patch 
+  fixing package-update-indicator should not start within 
+  Gnome or KDE (boo#1172623)
+</comment>
+    <requestid>813464</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eeb57a72d615c5644532ed8496feafdf</srcmd5>
+    <version>6</version>
+    <time>1598726441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830050</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3c6ad5db63705406df619093717bd923</srcmd5>
+    <version>7</version>
+    <time>1605783666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849318</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>630d32768624dc34583629bed1572ba1</srcmd5>
+    <version>8</version>
+    <time>1664112896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005628</requestid>
+  </revision>
+</revisionlist>

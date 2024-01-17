@@ -1,0 +1,175 @@
+<revisionlist>
+  <revision rev="1" vrev="391">
+    <srcmd5>fa5b6a198018d3a62d5d41aa3249da8e</srcmd5>
+    <version>1.03ii</version>
+    <time>1168903905</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="517">
+    <srcmd5>fa5b6a198018d3a62d5d41aa3249da8e</srcmd5>
+    <version>1.03ii</version>
+    <time>1168903905</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="518">
+    <srcmd5>daf23225cb650bfc60e10a790f777ffb</srcmd5>
+    <version>1.03ii</version>
+    <time>1245277027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="520">
+    <srcmd5>daf23225cb650bfc60e10a790f777ffb</srcmd5>
+    <version>1.03ii</version>
+    <time>1245277027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="521">
+    <srcmd5>61e6a52bd1aeca96019546c90f284af6</srcmd5>
+    <version>1.03ii</version>
+    <time>1263222565</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-SGMLS based on submit request 28962 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="522">
+    <srcmd5>c1725681baca2fc9a129bcfd166afb09</srcmd5>
+    <version>1.03ii</version>
+    <time>1263485663</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-SGMLS based on submit request 29578 from user anicka
+</comment>
+  </revision>
+  <revision rev="7" vrev="523">
+    <srcmd5>487da89970f991e4870946a0b275dfc6</srcmd5>
+    <version>1.03ii</version>
+    <time>1268925599</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="525">
+    <srcmd5>487da89970f991e4870946a0b275dfc6</srcmd5>
+    <version>1.03ii</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="526">
+    <srcmd5>487da89970f991e4870946a0b275dfc6</srcmd5>
+    <version>1.03ii</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="527">
+    <srcmd5>110d445d6deb84e5d1cf980cc4941a03</srcmd5>
+    <version>1.03ii</version>
+    <time>1287486751</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51023 from user coolo
+</comment>
+    <requestid>51023</requestid>
+  </revision>
+  <revision rev="11" vrev="528">
+    <srcmd5>10f2bb76c02f3bc0c35ab774cf0d7338</srcmd5>
+    <version>1.03ii</version>
+    <time>1287486756</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51023
+</comment>
+  </revision>
+  <revision rev="12" vrev="529">
+    <srcmd5>411993f87c3228489292383d88fee322</srcmd5>
+    <version>1.03ii</version>
+    <time>1294239374</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57076 from user coolo
+</comment>
+    <requestid>57076</requestid>
+  </revision>
+  <revision rev="13" vrev="530">
+    <srcmd5>17ab3da33891221596a4098de4ee792f</srcmd5>
+    <version>1.03ii</version>
+    <time>1294239388</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57076
+</comment>
+  </revision>
+  <revision rev="14" vrev="533">
+    <srcmd5>17ab3da33891221596a4098de4ee792f</srcmd5>
+    <version>1.03ii</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="535">
+    <srcmd5>17ab3da33891221596a4098de4ee792f</srcmd5>
+    <version>1.03ii</version>
+    <time>1319182302</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="536">
+    <srcmd5>5411c5cb22d7e960e61157a5a248639e</srcmd5>
+    <version>1.03ii</version>
+    <time>1321875922</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92282</requestid>
+  </revision>
+  <revision rev="17" vrev="537">
+    <srcmd5>c8a7c8b861ff68c0d23f7ae8d69d0e87</srcmd5>
+    <version>1.03ii</version>
+    <time>1323193626</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="539">
+    <srcmd5>c8a7c8b861ff68c0d23f7ae8d69d0e87</srcmd5>
+    <version>1.03ii</version>
+    <time>1340183911</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="541">
+    <srcmd5>c8a7c8b861ff68c0d23f7ae8d69d0e87</srcmd5>
+    <version>1.03ii</version>
+    <time>1359109788</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="542">
+    <srcmd5>bb103ef4801ece5fc1cef6de2fd71e35</srcmd5>
+    <version>1.03ii</version>
+    <time>1366178584</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164080 from namtrac)</comment>
+    <requestid>164102</requestid>
+  </revision>
+  <revision rev="21" vrev="544">
+    <srcmd5>bb103ef4801ece5fc1cef6de2fd71e35</srcmd5>
+    <version>1.03ii</version>
+    <time>1379663829</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="546">
+    <srcmd5>bb103ef4801ece5fc1cef6de2fd71e35</srcmd5>
+    <version>1.03ii</version>
+    <time>1409302468</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c5a2284ce386a57fa4db5c6f5dd2967d</srcmd5>
+    <version>1.1</version>
+    <time>1539590749</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix downgrade issue due to uncommon version name
+- update to version 1.1
+   Updated the package to use Module::Build. This should help
+   distribution packagers who commonly patched the old Makefile
+   to rearrange the install.
+   Applied Ardo van Rangelrooij's debian patches
+- Cleaned spec file with spec-cleaner
+</comment>
+    <requestid>640406</requestid>
+  </revision>
+</revisionlist>

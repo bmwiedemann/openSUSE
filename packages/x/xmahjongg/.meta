@@ -1,0 +1,5 @@
+<package name="xmahjongg" project="openSUSE:Factory">
+  <title></title>
+  <description>Real Mah Jongg is a social game that originated in China thousands of years ago. Four players, named after the four winds, take tiles from a wall in turn. The best tiles are made of ivory and wood; they click pleasantly when you knock them together. Computer Solitaire Mah Jongg (xmahjongg being one of the sillier examples) is nothing like that but it's fun, or it must be, since there are like 300 shareware versions available for Windows. This is for X11 and it's free.</description>
+  <devel project="games" package="xmahjongg"/>
+</package>

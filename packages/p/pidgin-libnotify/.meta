@@ -1,0 +1,5 @@
+<package name="pidgin-libnotify" project="openSUSE:Factory">
+  <title>Pidgin plugin for notifications using libnotify</title>
+  <description>Provides an interface to libnotify for Pidgin notifications.</description>
+  <devel project="network:pidgin" package="pidgin-libnotify"/>
+</package>

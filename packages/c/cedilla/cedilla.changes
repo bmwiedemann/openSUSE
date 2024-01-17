@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Mon Mar 28 22:50:20 UTC 2016 - dvaleev@suse.com
+
+- ExcludeArch POWER64 architecture, no clisp available
+
+-------------------------------------------------------------------
+Fri Aug  2 09:57:28 UTC 2013 - i@marguerite.su
+
+- update version 0.7
+  • Changed the format of data.lisp so it doesn't depend on the syntax
+    of characters.
+  • Ported to CCL; this involved fixing a number of minor bugs caught
+    by CCL's compiler.
+  • Regenerated data.lisp against Unicode 6.1.
+  • Implemented search paths for resources.
+  • Rewrote the sample config file to use search paths and to be
+    compatible with the latest version of Debian's TeTeX. 
+- rework cedilla-config.lisp.patch to cedilla-0.7-resources-path.patch
+
+-------------------------------------------------------------------
+Mon Apr 23 12:23:44 CEST 2007 - ro@suse.de
+
+- require texlive instead of tetex 
+
+-------------------------------------------------------------------
+Thu Jul 20 15:56:54 CEST 2006 - mfabian@suse.de
+
+- fix paths to the TeX fonts.
+
+-------------------------------------------------------------------
+Thu Jul 20 12:35:11 CEST 2006 - mfabian@suse.de
+
+- update to 0.6
+  • Fixed support for ZapfDingbats and the Omega fonts.
+  • Updated AFM paths to point at the new version of teTeX.
+  • Added Symbol and ZapfDingbats to the Omega fontsets.
+  • Added Delta as an alternate name for Deltagreek.
+  • More complete support for OmegaSerif Cyrillic.
+  • Added entries for the Nimbus fonts to the config file.
+  • Implemented magic types :lowercase, :rotate-right and :simplify.
+  • Added /whitesquare to the built-in font.
+  • Added a number of new fallbacks, including Kalaallisut kra.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:59 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 29 00:26:41 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Wed Dec 29 15:15:23 CET 2004 - mfabian@suse.de
+
+- update to 0.5.
+
+-------------------------------------------------------------------
+Tue Aug 17 11:45:10 CEST 2004 - mfabian@suse.de
+
+- adjust "Requires:"
+  XFree86-fonts-scalable --> xorg-x11-fonts-scalable
+
+-------------------------------------------------------------------
+Mon Feb 17 17:44:16 CET 2003 - mfabian@suse.de
+
+- new package: cedilla 0.3

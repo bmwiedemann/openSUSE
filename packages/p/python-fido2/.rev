@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4d9be61c837b738ef6441924cd648481</srcmd5>
+    <version>0.3.0</version>
+    <time>1524742695</time>
+    <user>dimstar_suse</user>
+    <comment>fix licenses</comment>
+    <requestid>600090</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>82611085f9892b47738988e4c2201a16</srcmd5>
+    <version>0.4.0</version>
+    <time>1538374680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638846</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ae890f7e6ef7b819e5540a684962a485</srcmd5>
+    <version>0.4.0</version>
+    <time>1544726665</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654052</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>719996117c5c6ac06823bf071ac2824d</srcmd5>
+    <version>0.5.0</version>
+    <time>1545648435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660557</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b0bc87aa5fcfd97f5562ec2ad25f3fd7</srcmd5>
+    <version>0.6.0</version>
+    <time>1559375495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706153</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a47f105e4f0323441c593af88bb272d6</srcmd5>
+    <version>0.7.0</version>
+    <time>1560800101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710380</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3a410de46178b79136242fb62f6fcb4f</srcmd5>
+    <version>0.8.1</version>
+    <time>1575923713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755092</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>516b11f97b33e18b290975613cacee10</srcmd5>
+    <version>0.8.1</version>
+    <time>1587467465</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795826</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ce3374d7bee8e1f4cc9562764e2b5b5f</srcmd5>
+    <version>0.9.1</version>
+    <time>1620398753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891243</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b82d4b59462c49f17d875ec2e7d30513</srcmd5>
+    <version>0.9.1</version>
+    <time>1622536542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895354</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bad451dcc4e325b0b64ca38c74b4c812</srcmd5>
+    <version>0.9.3</version>
+    <time>1642375366</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.3:
+  * Don't fail device discovery when hidraw doesn't support HIDIOCGRAWUNIQ
+  * Support the latest Windows webauthn.h API (included in Windows 11).
+  * Add product name and serial number to HidDescriptors.
+  * Remove the need for the uhid-freebsd dependency on FreeBSD.
+- drop 0001-Don-t-use-enum.auto-Python-2.patch
+       0001-Skip-tests-on-older-Cryptography-versions.patch (upstream)</comment>
+    <requestid>946688</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0fb829e45f9aa3ffa999bb4163799bb4</srcmd5>
+    <version>0.9.3</version>
+    <time>1648062943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963719</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c7f4e4aac006b778cbe39521374d0b3b</srcmd5>
+    <version>1.1.0</version>
+    <time>1670332989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040395</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3dba4117281f593b62733e30e112302a</srcmd5>
+    <version>1.1.0</version>
+    <time>1671128742</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-six dependency
+- More specific python_sitelib in %files
+</comment>
+    <requestid>1043084</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>48a4721111b90d4ef907dccca0a8c97f</srcmd5>
+    <version>1.1.1</version>
+    <time>1683630506</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1:
+  * Bugfix: Don't set length for largeBlob when offset is 0.
+  * Bugfix: Remove print statement in webauthn parsing.</comment>
+    <requestid>1085558</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>8e8cc9dc7ad73da93919c318738f8291</srcmd5>
+    <version>1.1.1</version>
+    <time>1688563853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096815</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a67dc91cd68ca97b859bf4ad9cad3ef4</srcmd5>
+    <version>1.1.2</version>
+    <time>1701121479</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.2:
+  * Fix ClientPin usage for Authenticators that do not
+    support passing a PIN.
+  * Fix: Handle correct CTAP response codes in
+    authenticatorSelection.
+
+  * Client: Expose CTAP2 Info object as Fido2Client.info.
+- Initial packaging of version 0.3.0</comment>
+    <requestid>1129174</requestid>
+  </revision>
+</revisionlist>

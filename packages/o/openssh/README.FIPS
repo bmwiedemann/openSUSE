@@ -1,0 +1,64 @@
+Notes on FIPS mode and OpenSSH
+
+---
+
+SUSE OpenSSH comes with FIPS 140-2 support, and certain versions have been
+certified as FIPS compliant by NIST. Apart from other things, this standard
+puts restrictions on cryptographic algorithms that may be used.
+
+Important notice: FIPS is not only a matter of functionality. If you want to
+claim having a FIPS certified service, you *must* use the certified binaries.
+Even binaries built from the same sources in the same environment and running
+on a certified system, yet from a package lacking the certification, are
+formally not considered to be fulfilling the requirements.
+
+The certified binaries (ssh, sshd, sftp-server) perform mandatory selfcheck at
+startup and proceed only when the checks succeed (non-certified binaries may
+skip the check). These checks require the cryptographic hashes contained in the
+openssh-fips subpackage.
+
+The FIPS mode for OpenSSH is enabled in two ways - either:
+
+1) /proc/sys/crypto/fips_enabled contains a single character '1' - this is a
+system-wide setting controlled bu the fips kernel parameter; or
+
+2) the environment variable SSH_FORCE_FIPS - if set (to any value), the
+binaries behave as if they were running on a system in FIPS mode.
+
+Since FIPS 140-2 only allows use of certain cryptographic algorithms, both the
+client and server will fail if they are requested to use non-approved
+algorithms while in FIPS mode. This means that working configurations for FIPS
+mode form a proper subset of all working (generic) configurations. Some
+configurations may even prevent the binaries from starting at all.
+
+This however should be viewed in the context of FIPS being a security policy
+tool - it is not of much use to run the same system both in FIPS mode and
+outside of it, since that would defeat the main purpose of FIPS having
+guaranteeing standardised minimum restrictions on cryptographic algorithms
+(and thus on the overall security of the system).
+
+Unless you specify what cryptographic algorithms you wish to use, both the
+client and server should work out of the box in FIPS mode.
+
+For sshd, you can use the `-t` option to check whether the configuration file
+is working. Setting the above mentioned environment variable allows testing of
+behaviour in FIPS mode (checksum files for both OpenSSH and OpenSSL must be
+installed).
+
+In addition to cryptographic algorithms restrictions, sshd performs periodic
+PRNG re-seeding. The seed is read from entropy source either /dev/urandom or
+/dev/random. By default, the former is used, unless the environment variable
+SSH_USE_STRONG_RNG is set to a non-zero value or the binary is running in FIPS
+mode. This has two important implications:
+
+1) the selected entropy source must be available, i.e. when running in a
+changeroot the device files need to be present there.
+
+2) /dev/random is a blocking interface - unless enough randomness is available,
+the process stops until the entropy pool is replenished. Thus on systems where
+a long running processes are expected, one should make sure there is always
+enough entropy for sshd. Sporadically this may also cause sshd to aborted,
+since some versions of OpenSSL (the underlying cryptographic engine) don't
+handle gracefully being interrupted while trying to read entropy from the
+system source.
+

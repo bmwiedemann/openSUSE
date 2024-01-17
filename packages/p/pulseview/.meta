@@ -1,0 +1,10 @@
+<package name="pulseview" project="openSUSE:Factory">
+  <title>Qt-based GUI for sigrok</title>
+  <description>The sigrok project aims at creating a portable, cross-platform,
+Free/Libre/Open-Source logic analyzer software that supports various
+logic analyzer hardware products.
+
+PulseView is a Qt-based GUI for sigrok.</description>
+  <devel project="electronics" package="pulseview"/>
+  <url>http://sigrok.org</url>
+</package>

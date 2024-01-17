@@ -1,0 +1,8 @@
+<package name="Botan" project="openSUSE:Factory">
+  <title>A C++ Crypto Library</title>
+  <description>Botan is a C++ library that provides support for many common
+cryptographic operations, including encryption, authentication, and
+X.509v3 certificates and CRLs. A wide variety of algorithms is
+supported, including RSA, DSA, DES, AES, MD5, and SHA-1.</description>
+  <devel project="devel:libraries:c_c++" package="Botan"/>
+</package>

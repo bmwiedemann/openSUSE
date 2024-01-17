@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>086f019e1ba8c3067176a5a0afa1d728</srcmd5>
+    <version>0.007</version>
+    <time>1678380421</time>
+    <user>dimstar_suse</user>
+    <comment>We might want to use that for openQA related tooling</comment>
+    <requestid>1070433</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f4dfc2c52917068dfccf70fc2a626db8</srcmd5>
+    <version>0.8.0</version>
+    <time>1704660000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137315</requestid>
+  </revision>
+</revisionlist>

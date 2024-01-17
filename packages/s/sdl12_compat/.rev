@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c43f1566509b1b97e0967990dedf1b93</srcmd5>
+    <version>1.2.52</version>
+    <time>1655048306</time>
+    <user>dimstar_suse</user>
+    <comment>provides (no obsol, confl should be good)</comment>
+    <requestid>981107</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4e75fd9f6a8f2c8a36d474f5568d8d2</srcmd5>
+    <version>1.2.52</version>
+    <time>1655493511</time>
+    <user>dimstar_suse</user>
+    <comment>- Require x11 and xorgproto just like SDL-devel.
+- Depend on the actual libSDL2 library which is being dlopen()'ed.
+- Require pkgconfig(gl) and pkgconfig)glu) from the devel package,
+  as our headers include GL/gl.h and GL/glu.h (boo#1200562).</comment>
+    <requestid>982792</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a8772af4e5141c63c03accfab9a66703</srcmd5>
+    <version>1.2.52</version>
+    <time>1660235477</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Use-SDL_PIXELFORMAT_RGB888-for-24-bit-surfaces.patch
+  to rectify BGR order in older schismtracker.</comment>
+    <requestid>994185</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>10e1334fd183c0c857cddf4c34e3a201</srcmd5>
+    <version>1.2.60</version>
+    <time>1669378287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.60</comment>
+    <requestid>1037902</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>020bb6074b9071021e13f318718afcc8</srcmd5>
+    <version>1.2.64</version>
+    <time>1685889684</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1090453</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>15f3ff27db5200ce5708b409c6b4a688</srcmd5>
+    <version>1.2.68</version>
+    <time>1696014787</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.2.68</comment>
+    <requestid>1113762</requestid>
+  </revision>
+</revisionlist>

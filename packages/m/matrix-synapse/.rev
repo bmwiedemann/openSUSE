@@ -1,0 +1,883 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>419f69bc7492c836372d2d206b7f1d5d</srcmd5>
+    <version>1.4.0</version>
+    <time>1570180931</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmission of matrix-synapse -- the build failure has been fixed (txacme is
+an optional dependency, only used when synapse is set up to manage its own ACME
+certificates -- which is a very common setup, but it's better to have a
+mostly-working synapse than nothing at all) and the package has been update to
+1.4.0.</comment>
+    <requestid>734848</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a4add3cfb718d58ca283534207f355a</srcmd5>
+    <version>1.4.0</version>
+    <time>1570198023</time>
+    <user>dimstar_suse</user>
+    <comment>Add entry for boo#1153017.</comment>
+    <requestid>734955</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>13d20582c6c13cd357e9d6910af56b10</srcmd5>
+    <version>1.4.1</version>
+    <time>1571653716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741125</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bc22363887c084e393b526364821fa9e</srcmd5>
+    <version>1.5.0</version>
+    <time>1572443258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743953</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e8589b5211b6e33de8e4234198586c75</srcmd5>
+    <version>1.5.1</version>
+    <time>1574104289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749296</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>85fe1fb266e13d5facab69f58261dceb</srcmd5>
+    <version>1.6.1</version>
+    <time>1575039561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751695</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a531af5513e1de313d5995fbccf8c5cb</srcmd5>
+    <version>1.7.0</version>
+    <time>1576505970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757178</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>539de94b5ecc708144169efcaa98d2c4</srcmd5>
+    <version>1.7.1</version>
+    <time>1576676832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757738</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e48a87e59e21205fbd87458ac08030fb</srcmd5>
+    <version>1.7.2</version>
+    <time>1576928085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758663</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e04478f585fd7eb1b9079a9516241521</srcmd5>
+    <version>1.7.3</version>
+    <time>1577887188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760201</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dec49b3680496b6450a32a98a241fb53</srcmd5>
+    <version>1.8.0</version>
+    <time>1578750148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762916</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c76a3e9b5765bcb291e92ba760f8a73e</srcmd5>
+    <version>1.9.0</version>
+    <time>1579867925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766659</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>451a80d041ef36cac1d2b95aef654b1d</srcmd5>
+    <version>1.9.1</version>
+    <time>1581456367</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.1</comment>
+    <requestid>773516</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>da9c6e8ea1cb01f65a8b30258ce86661</srcmd5>
+    <version>1.10.0</version>
+    <time>1581585153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773873</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dd26708c17108fb66264c677d9d6f5fe</srcmd5>
+    <version>1.11.0</version>
+    <time>1582299797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777960</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>33fa880de5f6eefe7daa7ee32157c2bd</srcmd5>
+    <version>1.11.1</version>
+    <time>1583949082</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>783556</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bed2f1ceb40b79166b7c889b1d0e3e26</srcmd5>
+    <version>1.17.0</version>
+    <time>1594894464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821170</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>547e0c879df3853bacc4fbe02b6250d3</srcmd5>
+    <version>1.18.0</version>
+    <time>1596203793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823649</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0ace892c53961119a8e8170bc1a28a75</srcmd5>
+    <version>1.19.1</version>
+    <time>1598726701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830381</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0fba45510b535cad04320c1020f78fa1</srcmd5>
+    <version>1.20.0</version>
+    <time>1600956915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836433</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b9ef4dff83fb15031bcba4363477b56e</srcmd5>
+    <version>1.20.1</version>
+    <time>1601044555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837221</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ddf8ef99ebb055231b486394827a5782</srcmd5>
+    <version>1.21.2</version>
+    <time>1602857619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21.2</comment>
+    <requestid>841979</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>58ec6891b742b60474df46439c01dfad</srcmd5>
+    <version>1.22.0</version>
+    <time>1603875603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844459</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a510252e5dea2c206228d8d29ebc5b96</srcmd5>
+    <version>1.22.1</version>
+    <time>1604306563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845154</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9d49ba79186419bb9dffda672b5fdf1d</srcmd5>
+    <version>1.24.0</version>
+    <time>1607548356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854270</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1224430e7f02472556af78b6806d08d0</srcmd5>
+    <version>1.26.0</version>
+    <time>1611865363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867336</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1a4a99ac6d5316663b91588aa9b42b4e</srcmd5>
+    <version>1.27.0</version>
+    <time>1613581945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873007</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>abd882c3e3e8325e3d7c3e4170e25ad8</srcmd5>
+    <version>1.28.0</version>
+    <time>1614373344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875468</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3e89333bc4e26e7dec1c405b2c436bdf</srcmd5>
+    <version>1.30.1</version>
+    <time>1616925410</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881588</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>bc980e0b5598ef553fef1e6109dd58d7</srcmd5>
+    <version>1.31.0</version>
+    <time>1617910309</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883465</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>968d7013f5e946b3bdbbed8341c5ae28</srcmd5>
+    <version>1.32.0</version>
+    <time>1619031611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887114</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c021b3e0d1d24cf3324b4840d84f664f</srcmd5>
+    <version>1.32.1</version>
+    <time>1619107442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887396</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a9576ad02d8db44475015651a55bba6a</srcmd5>
+    <version>1.32.2</version>
+    <time>1619447969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888389</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>fb58cbb40a8573780c951248421086f9</srcmd5>
+    <version>1.33.2</version>
+    <time>1620767040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892262</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2ac99be4ee199a38dc50a2683518d9ef</srcmd5>
+    <version>1.34.0</version>
+    <time>1621439376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894288</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7c5de616bd0be94a63b20132fcc7a030</srcmd5>
+    <version>1.35.1</version>
+    <time>1622839474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897555</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d2448c6ed1f7e138e4c27eb6e1327dc3</srcmd5>
+    <version>1.36.0</version>
+    <time>1623868502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900301</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f384415510b2aa04fcdfce15cfab708d</srcmd5>
+    <version>1.37.0</version>
+    <time>1624999415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903072</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>97127a2a427435267650aebc026535fa</srcmd5>
+    <version>1.37.1</version>
+    <time>1625225217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903377</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f006037fd5eb074ced16fa584017db41</srcmd5>
+    <version>1.40.0</version>
+    <time>1628751682</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911335</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>69c0b12948b577cba900f71630ac7758</srcmd5>
+    <version>1.41.0</version>
+    <time>1629917882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914069</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4b367b153ed1156af393c93942d32e2f</srcmd5>
+    <version>1.41.1</version>
+    <time>1630432552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915283</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ebaeff5b8210168b22432f5d79a54a89</srcmd5>
+    <version>1.42.0</version>
+    <time>1631129815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917567</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>861e56abdc54a702377e9d916c6b7c9a</srcmd5>
+    <version>1.43.0</version>
+    <time>1632431037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921053</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>16958f1991ea88188ff246ac6ec00661</srcmd5>
+    <version>1.45.1</version>
+    <time>1635438687</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927966</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c9dd519febe20147c17cbae5577cbcbe</srcmd5>
+    <version>1.46.0</version>
+    <time>1636577185</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930548</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1598ea0307a8199b1524829e68ab647a</srcmd5>
+    <version>1.47.1</version>
+    <time>1637701843</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.47.1 (boo#1193005)</comment>
+    <requestid>933297</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>65ddefb26638186e99ae46dce4ac417f</srcmd5>
+    <version>1.47.1</version>
+    <time>1638203310</time>
+    <user>dimstar_suse</user>
+    <comment>- bump ijson to make it clear that we really need 3.1
+  https://github.com/matrix-org/synapse/pull/11439</comment>
+    <requestid>934407</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>50c4e2013bde9135e899b16621fdb400</srcmd5>
+    <version>1.48.0</version>
+    <time>1638310567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.48.0</comment>
+    <requestid>934737</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>0c87f41b9174188f81bdeb08092afa49</srcmd5>
+    <version>1.49.0</version>
+    <time>1640030777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941592</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>182c38520f9eb6e4a4ce93cc89ef51f1</srcmd5>
+    <version>1.49.2</version>
+    <time>1640115739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.49.2
+  - Bugfixes
+    - Fix a performance regression in /sync handling, introduced in
+      1.49.0. (#11583)
+  - Internal Changes
+    - Work around a build problem on Debian Buster. (#11625)</comment>
+    <requestid>941923</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>67366f535f96228d589d4a074ae1b9e5</srcmd5>
+    <version>1.50.2</version>
+    <time>1643062214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.50.2</comment>
+    <requestid>948431</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>66058c21d4aa77d661b26eb08c8ecac8</srcmd5>
+    <version>1.51.0</version>
+    <time>1644531142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953151</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>1888801fb8c250fcc5eac131eb4f183f</srcmd5>
+    <version>1.52.0</version>
+    <time>1644874588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.52.0</comment>
+    <requestid>954351</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>4ab5b9c93e00f093751385fad354a4f3</srcmd5>
+    <version>1.53.0</version>
+    <time>1645820718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.53.0</comment>
+    <requestid>957624</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>c53ccb1fbabd49a7f3332b9c1934a110</srcmd5>
+    <version>1.54.0</version>
+    <time>1647101736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.54.0</comment>
+    <requestid>961311</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>e3ca55c1e4ec2eb2190c799fdfa40cbe</srcmd5>
+    <version>1.55.2</version>
+    <time>1648241676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.55.2</comment>
+    <requestid>964740</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>01d3b66d75ee727584452743e1a78b2f</srcmd5>
+    <version>1.56.0</version>
+    <time>1649713750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.56.0</comment>
+    <requestid>969160</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>250201bf549203ea06a9832942655614</srcmd5>
+    <version>1.57.1</version>
+    <time>1650922574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.57.1</comment>
+    <requestid>972690</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>fadb271bc7267b3319662391a8d5a560</srcmd5>
+    <version>1.58.0</version>
+    <time>1651605569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974668</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>d5587fcb53bac6150895e6fef41eebac</srcmd5>
+    <version>1.58.1</version>
+    <time>1652389265</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>976930</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>bf20d276a5b6dfca813b41bae227f42f</srcmd5>
+    <version>1.59.1</version>
+    <time>1653061854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978220</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>6a639338f8443050c00eecdd5cf67535</srcmd5>
+    <version>1.60.0</version>
+    <time>1654097678</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.60.0</comment>
+    <requestid>980134</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>652b5984123cd5fd7e7fbca6493946e7</srcmd5>
+    <version>1.61.0</version>
+    <time>1656056712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982651</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>dc44ee2a47b73ac318d6522be11a1b24</srcmd5>
+    <version>1.61.1</version>
+    <time>1656511294</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985628</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>a156104957b1e79a40284f60db933836</srcmd5>
+    <version>1.62.0</version>
+    <time>1657885937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989126</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>83f510f2f31307dc53667c7cd0dded39</srcmd5>
+    <version>1.63.1</version>
+    <time>1659034719</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>991402</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>67c453053c1b7f9a3b1edb16e198aec3</srcmd5>
+    <version>1.64.0</version>
+    <time>1660319185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.64.0</comment>
+    <requestid>994786</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>3b6f57826ead9003c315e8f0ad043b6b</srcmd5>
+    <version>1.66.0</version>
+    <time>1662148600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000774</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>90d8a2c4a1041253a8a69880fa3b0981</srcmd5>
+    <version>1.67.0</version>
+    <time>1663764165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005075</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>166bb4626f46a20f5a76bdbc26251a9c</srcmd5>
+    <version>1.68.0</version>
+    <time>1665844644</time>
+    <user>dimstar_suse</user>
+    <comment>- Add workaround for poetry &gt;= 1.3.0 (boo#1204312)
+  Also add the unnormalized name to the Metadata so that the
+  checks inside synapse work correctly.
+
+- Reduce BuildRequires footprint with poetry-core instead of poetry
+
+- added https://patch-diff.githubusercontent.com/raw/matrix-org/synapse/pull/13952.patch 
+  this prevents setuptools-rust being enforced as a runtime
+  dependency. Drop dependency in the package again.
+
+- synapse checks for setuptools-rust as a runtime dep. add this
+  until we figured out a better solution 
+
+- Update to 1.68.0</comment>
+    <requestid>1010937</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>cfe0fe03a4b897a8e7ff5386a1ccb008</srcmd5>
+    <version>1.69.0</version>
+    <time>1666274520</time>
+    <user>dimstar_suse</user>
+    <comment>- As 14221.patch is modified to skip the parts we dont need
+  (changelog snippets) remove the url from the spec file.
+
+- All the shebang line fixing should skip the vendor directory so
+  that we do not break the checksum checks in cargo.
+
+- Added https://patch-diff.githubusercontent.com/raw/matrix-org/synapse/pull/14221.patch 
+  Same fix for the cache_memory as for url_preview
+
+- python-six is not required
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+
+- Update to 1.69.0
+  Please note that legacy Prometheus metric names are now
+  deprecated and will be removed in Synapse 1.73.0. Server
+  administrators should update their dashboards and alerting rules
+  to avoid using the deprecated metric names. See the upgrade notes
+  for more details.
+  - Features
+    - Allow application services to set the origin_server_ts of a
+      state event by providing the query parameter ts in PUT
+      /_matrix/client/r0/rooms/{roomId}/state/{eventType}/{stateKey},
+      per MSC3316. Contributed by @lukasdenk. (#11866)
+    - Allow server admins to require a manual approval process
+      before new accounts can be used (using MSC3866). (#13556)
+    - Exponentially backoff from backfilling the same event over
+      and over. (#13635, #13936)
+    - Add cache invalidation across workers to module API. (#13667,
+      #13947)
+    - Experimental implementation of MSC3882 to allow an existing</comment>
+    <requestid>1030137</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>3a17fa8ee49b8cbb0160e47e572dc758</srcmd5>
+    <version>1.71.0</version>
+    <time>1668086506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.71.0</comment>
+    <requestid>1034845</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>b9bee9b6d998c9239b165c7e2b7cbbb5</srcmd5>
+    <version>1.72.0</version>
+    <time>1670333058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040550</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>fabb3f4fc5d5427f794e568930ced9d1</srcmd5>
+    <version>1.73.0</version>
+    <time>1670863176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042241</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>235820f97874ad0112174ad676490f44</srcmd5>
+    <version>1.74.0</version>
+    <time>1672851165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046631</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>03dc1d82382f653f36e2fa191ad1adc1</srcmd5>
+    <version>1.75.0</version>
+    <time>1675095055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.75.0</comment>
+    <requestid>1061962</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>70822cff61dd7a1a4c2f4385fc592da7</srcmd5>
+    <version>1.76.0</version>
+    <time>1675265963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.76.0</comment>
+    <requestid>1062352</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>05d684bb472effaf72d04e7b01a60dbd</srcmd5>
+    <version>1.77.0</version>
+    <time>1676401694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.77.0</comment>
+    <requestid>1065776</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>92738b0de4e0d7d84cc2d473d3c5b8bd</srcmd5>
+    <version>1.77.0</version>
+    <time>1676911613</time>
+    <user>dimstar_suse</user>
+    <comment>- lock matrix-synapse until frozendict can enable python 3.11
+  support</comment>
+    <requestid>1066823</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>4f3e68933ccbf5bb061ce2b68fd7e9b2</srcmd5>
+    <version>1.85.2</version>
+    <time>1688849200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.85.2
+  - Bugfixes
+    - Fix regression where using TLS for HTTP replication between
+      workers did not work. Introduced in v1.85.0. (#15746)
+
+- Update to 1.85.1
+  Note: this release only fixes a bug that stopped some deployments
+  from upgrading to v1.85.0. There is no need to upgrade to v1.85.1
+  if successfully running v1.85.0.
+  - Bugfixes
+    - Fix bug in schema delta that broke upgrades for some
+      deployments. Introduced in v1.85.0. (#15738, #15739)
+
+- make use that the pythons define and use_python do not diverge by
+  moving them closer to each other.
+
+- Update to 1.85.0
+  - Security
+    - GHSA-26c5-ppr8-f33p / CVE-2023-32682 — Low Severity It may be
+      possible for a deactivated user to login when using uncommon
+      configurations. (boo#1212055)
+    - GHSA-98px-6486-j7qc / CVE-2023-32683 — Low Severity A
+      discovered oEmbed or image URL can bypass the
+      url_preview_url_blacklist setting potentially allowing server
+      side request forgery or bypassing network policies. Impact is
+      limited to IP addresses allowed by the
+      url_preview_ip_range_blacklist setting (by default this only
+      allows public IPs). (boo#1212054) 
+  - Features
+    - Improve performance of backfill requests by performing</comment>
+    <requestid>1097110</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>d5f0cd85a55470e62dd65c1f3e0078e8</srcmd5>
+    <version>1.88.0</version>
+    <time>1690575595</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to _multibuild
+
+- Update to 1.88.0
+  This release
+  - raises the minimum supported version of Python to 3.8, as
+    Python 3.7 is now end-of-life, and
+  - removes deprecated config options related to worker deployment.
+  See the upgrade notes for more information.
+  https://github.com/matrix-org/synapse/blob/release-v1.88/docs/upgrade.md#upgrading-to-v1880
+  - Features
+    - Add not_user_type param to the list accounts admin API.
+      (#15844)
+  - Bugfixes
+    - Revert &quot;Stop writing to column user_id of tables profiles and
+      user_filters&quot;, which was introduced in Synapse 1.88.0rc1.
+      (#15953)
+    - Pin pydantic to ^=1.7.4 to avoid backwards-incompatible API
+      changes from the 2.0.0 release. Contributed by @PaarthShah.
+      (#15862)
+    - Correctly resize thumbnails with pillow version &gt;=10.
+      (#15876)
+  - Improved Documentation
+    - Fixed header levels on the Admin API &quot;Users&quot; documentation
+      page. Contributed by @sumnerevans at @beeper. (#15852)
+    - Remove deprecated worker_replication_host,
+      worker_replication_http_port and worker_replication_http_tls
+      configuration options. (#15872)
+  - Deprecations and Removals
+    - Remove deprecated worker_replication_host,
+      worker_replication_http_port and worker_replication_http_tls</comment>
+    <requestid>1101105</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>8d7be271f4645c33b9fa55b25a38b5a5</srcmd5>
+    <version>1.90.0</version>
+    <time>1693235906</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107016</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>a251c6dca1ec50319977f0f2f5e6d8eb</srcmd5>
+    <version>1.91.2</version>
+    <time>1694113974</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.91.2</comment>
+    <requestid>1109346</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>8a45177617448441d15584c662a0b2ad</srcmd5>
+    <version>1.93.0</version>
+    <time>1695853502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.93.0
+  The following issues are fixed in 1.93.0 (and RCs).
+  GHSA-4f74-84v3-j9q5 / CVE-2023-41335 — Low Severity
+  https://github.com/matrix-org/synapse/security/advisories/GHSA-4f74-84v3-j9q5
+  Temporary storage of plaintext passwords during password changes.
+  GHSA-7565-cq32-vx2x / CVE-2023-42453 — Low Severity
+  https://github.com/matrix-org/synapse/security/advisories/GHSA-7565-cq32-vx2x
+  Improper validation of receipts allows forged read receipts.
+  See the advisories for more details. If you have any questions, email security@matrix.org.</comment>
+    <requestid>1113708</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>36550f1494c5183103ad2938809c1323</srcmd5>
+    <version>1.94.0</version>
+    <time>1696964478</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.94.0 (forwarded request 1116682 from darix)</comment>
+    <requestid>1116700</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>e63919d7f5b309e4b65147a86327892b</srcmd5>
+    <version>1.94.0</version>
+    <time>1697061373</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.94.0 (boo#1216126 CVE-2023-45129)
+  GHSA-5chr-wjw5-3gq4 / CVE-2023-45129 — Moderate Severity
+  A malicious server ACL event can impact performance temporarily
+  or permanently leading to a persistent denial of service.
+  Homeservers running on a closed federation (which presumably do
+  not need to use server ACLs) are not affected.</comment>
+    <requestid>1116889</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>9bc43e76a5b1318068c6b5e2e51262e3</srcmd5>
+    <version>1.95.0</version>
+    <time>1698249781</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.95.0</comment>
+    <requestid>1120125</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>915f050151cff6187a242dbf227eb679</srcmd5>
+    <version>1.95.1</version>
+    <time>1698872987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.95.1
+  - Security:
+    - GHSA-mp92-3jfm-3575 / CVE-2023-43796 — Moderate Severity
+      Cached device information of remote users can be queried from
+      Synapse. This can be used to enumerate the remote users known
+      to a homeserver.</comment>
+    <requestid>1121497</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>8e1bc6180f3f7abf7a563c40ee5d6193</srcmd5>
+    <version>1.95.1</version>
+    <time>1698952858</time>
+    <user>anag+factory</user>
+    <comment>add missing bugnumber</comment>
+    <requestid>1122657</requestid>
+  </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>e28ae544dcf6805e7de9c58a263f6e35</srcmd5>
+    <version>1.95.1</version>
+    <time>1699388834</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123893</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>7affe1a43fef0183d3b2d7fdc7530ca8</srcmd5>
+    <version>1.96.1</version>
+    <time>1700421339</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.96.0</comment>
+    <requestid>1127380</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>00f8582c5b0d5c62bc235c0639b4144f</srcmd5>
+    <version>1.97.0</version>
+    <time>1701206430</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.97.0</comment>
+    <requestid>1129637</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>295f3f2930f709514c38f58022b0b53b</srcmd5>
+    <version>1.98.0</version>
+    <time>1702488925</time>
+    <user>anag+factory</user>
+    <comment>1.98.0</comment>
+    <requestid>1132776</requestid>
+  </revision>
+</revisionlist>

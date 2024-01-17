@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb34c43fa8813a6924a8b21148ca9af8</srcmd5>
+    <version>20090423</version>
+    <time>1334216497</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>112179</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e99f491e5b7268fed68298627544b05e</srcmd5>
+    <version>20090423</version>
+    <time>1338017218</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122168</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e99f491e5b7268fed68298627544b05e</srcmd5>
+    <version>20090423</version>
+    <time>1340183705</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>70cf9be99bb7cfe4549ba8a5ab7c1657</srcmd5>
+    <version>20090423</version>
+    <time>1347618676</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133971</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>70cf9be99bb7cfe4549ba8a5ab7c1657</srcmd5>
+    <version>20090423</version>
+    <time>1359109453</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>70cf9be99bb7cfe4549ba8a5ab7c1657</srcmd5>
+    <version>20090423</version>
+    <time>1379663302</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>70cf9be99bb7cfe4549ba8a5ab7c1657</srcmd5>
+    <version>20090423</version>
+    <time>1409301910</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>595acb9ab1439446b2c55ca5dafbbd20</srcmd5>
+    <version>20170722</version>
+    <time>1554115147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690039</requestid>
+  </revision>
+</revisionlist>

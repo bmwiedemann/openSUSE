@@ -1,0 +1,5 @@
+<package name="googler" project="openSUSE:Factory">
+  <title></title>
+  <description>Google Search, Google Site Search, Google News from the terminal.</description>
+  <devel project="network:utilities" package="googler"/>
+</package>

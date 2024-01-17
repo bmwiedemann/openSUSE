@@ -1,0 +1,635 @@
+-------------------------------------------------------------------
+Fri Nov  3 09:32:56 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 0.24.0:
+  Features:
+  * Add environment variable BAT_PAGING, see #2629
+  * Add opt-in (--features lessopen) support for LESSOPEN and
+    LESSCLOSE. See #1597, #1739, #2444, #2602, and #2662
+  Bugfixes:
+  * Fix more not being found on Windows when provided via
+    BAT_PAGER, see #2570, #2580, and #2651
+  * Switched default behavior of --map-syntax to be case
+    insensitive #2520
+  * Updated version of serde_yaml to 0.9. See #2627
+  * Fix arithmetic overflow in LineRange::from and
+    LineRange::parse_range, see #2674, #2698
+  * Fix paging not happening when stdout is interactive but stdin
+    is not, see #2574
+  * Make -pp override --paging and vice versa when passed as a
+    later argument, see #2660
+  Other:
+  * Output directory for generated assets (completion, manual) can
+    be customized, see #2515
+  * Use the is-terminal crate instead of atty, see #2530
+  * Add Winget Releaser workflow, see #2519
+  * Bump MSRV to 1.70, see #2651
+  Syntaxes:
+  * Associate os-release with bash syntax, see #2587
+  * Associate Containerfile with Dockerfile syntax, see #2606
+  * Replaced quotes with double quotes so fzf integration example
+    script works on windows and linux. see #2095
+  * Associate ksh files with bash syntax, see #2633
+  * Associate sarif files with JSON syntax, see #2695
+  * Associate ron files with rust syntax, see #2427
+  * Add support for WebGPU Shader Language, see #2692
+  * Add .dpkg-new and .dpkg-tmp to ignored suffixe, see #2595
+  * fix: Add syntax mapping *.jsonl => json, see #2539
+  * Update Julia syntax, see #2553
+  * add NSIS support, see #2577
+  * Update ssh-config, see #2697
+
+-------------------------------------------------------------------
+Sat Mar 25 22:44:24 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.23.0:
+  Features:
+  * Implemented -S and --chop-long-lines flags as aliases for
+    --wrap=never. See #2309
+  * Breaking change: Environment variables can now override config
+    file settings (but command-line arguments still have the highest
+    precedence), see #1152, #1281, and #2381
+  * Implemented --nonprintable-notation=caret to support showing
+    non-printable characters using caret notation. See #2429
+  Bugfixes:
+  * Fix bat cache --clear not clearing the --target dir if specified. See #2393
+  Other:
+  * Various bash completion improvements, see #2310
+  * Disable completion of cache subcommand, see #2399
+  * Signifigantly improve startup performance on macOS, see #2442
+  * Bump MSRV to 1.62, see #2496
+  Syntaxes:
+  * Added support for Ada, see #1300 and #2316
+  * Added todo.txt syntax, see #2375
+  * Improve Manpage.sublime-syntax. See #2364 and #2461
+  * Added a new requirements.txt syntax, see #2361
+  * Added a new VimHelp syntax, see #2366
+  * Associate pdm.lock with TOML syntax, see #2410
+  * Todo.txt: Fix highlighting of contexts and projects at beginning
+    of done.txt, see #2411
+  * cmd-help: overhaul scope names (colors) to improve theme
+    support; misc syntax improvements. See #2419
+  * Added support for Crontab, see #2509
+
+-------------------------------------------------------------------
+Wed Nov 30 22:20:13 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Add shell completion packages
+- Install manpage
+
+-------------------------------------------------------------------
+Fri Oct 14 01:15:46 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update vendored dependencies
+- Add _constraints to prevent OBS workers randomly failing
+
+-------------------------------------------------------------------
+Tue Sep 13 15:51:54 UTC 2022 - jorik.cronenberg@suse.com
+
+- Update to version 0.22.1:
+  - v0.22.1
+    * Bugfixes
+      - Bring back pre-processing of ANSI escape characters to so that some
+        common bat use cases starts working again. See #2308 (@Enselic)
+
+  - v0.22.0
+    * Features
+      - Make the default macOS theme depend on Dark Mode.
+        See #2197, #1746 (@Enselic)
+      - Support for separate system and user config files.
+        See #668 (@patrickpichler)
+    * Bugfixes
+      - Prevent fork nightmare with PAGER=batcat. See #2235 (@johnmatthiggins)
+      - Make --no-paging/-P override --paging=... if passed as a later arg,
+        see #2201 (@themkat)
+      - --map-syntax and --ignored-suffix now works together, see #2093 (@czzrr)
+      - Strips byte order mark from output when in non-loop-through mode.
+        See #1922 (@dag-h)
+    * Other
+      - Relaxed glibc requirements on amd64, see #2106 and #2194 (@sharkdp)
+      - Improved fish completions. See #2275 (@zgracem)
+      - Stop pre-processing ANSI escape characters. Syntax highlighting on ANSI
+        escaped input is not supported. See #2185 and #2189 (@Enselic)
+    * Syntaxes
+      - NSE (Nmap Scripting Engine) is mapped to Lua, see #2151 (@Cre3per)
+      - Correctly color fstab dump and pass fields, see #2246 (@yuvalmo)
+      - Update Command Help syntax, see #2255
+      - Julia: Fix syntax highlighting for function name starting with struct,
+        see #2230
+      - Minor update to LiveScript, see #2291
+      - Associate .mts and .cts files with the TypeScript syntax.
+        See #2236 (@kidonng)
+      - Fish history is mapped to YAML. See #2237 (@kidonng)
+    * bat as a library
+      - Make bat::PrettyPrinter::syntaxes() iterate over new bat::Syntax struct
+        instead of &syntect::parsing::SyntaxReference. See #2222 (@Enselic)
+      - Clear highlights after printing, see #1919 and #1920 (@rhysd)
+
+-------------------------------------------------------------------
+Mon May 30 17:48:40 UTC 2022 - Jan Baier <jbaier@suse.com>
+
+- Update to version 0.21.0:
+  * assets/create.sh
+  * Bump to v0.21.0
+  * Make `INI` syntax register as handler of `.inf` files
+  * release-checklist.md: Don't recommend `--allow-dirty` to cargo publish
+  * release-checklist.md: Recommend looking at the tip of master for `-h` and `man`
+  * release-checklist.md: Recommend `--locked` for `cargo install`
+  * release-checklist.md: Recommend a single git grep command for MSRV
+  * CHANGELOG.md: Clean up and tweak
+  * Bump to syntect 5.0.0 to e.g. start lazy-loading syntaxes (#2181)
+  * Simplify release-checklist.md by printing `-h`, `--help` and `man` in CI (#2183)
+  * Bump assets/syntaxes/02_Extra/Zig from `87ecbca` to `1a4a384` (#2136)
+  * Add `--relative` to `batdiff` in README.md (#2172)
+  * printer.rs: De-duplicate code to highlight long lines
+  * Limit nix features
+  * Add a --style=default option (#2119)
+  * Bump assets/syntaxes/02_Extra/Nginx from `15a1db1` to `65f5a63`
+  * Skip syntax highlighting for long lines (#2165)
+  * Add support for BusyBox less as pager (#2162)
+  * Bump nix from 0.23.1 to 0.24.1
+  * Bump flate2 from 1.0.22 to 1.0.23
+  * Bump thiserror from 1.0.30 to 1.0.31
+  * Run `cargo clippy --fix --all-targets --all-features` with Rust 1.60
+  * Add mapping for Unix mail spool (#2156)
+  * Bump assets/syntaxes/02_Extra/Fish from `cd95616` to `98316d4`
+  * Syntax: add cmd-help (#2148)
+  * bug_report.md template: Explicitly ask for steps
+  * bug_report.md template: Mention some already reported bugs
+  * Print info about custom assets in --diagnostics
+  * Lock regex crate at min 1.5.5 for CVE-2022-24713
+  * Allow configuring show_nonprintable from PrettyPrinter
+  * Bump git2 from 0.14.1 to 0.14.2
+  * Bump once_cell from 1.9.0 to 1.10.0
+  * Bump regex from 1.5.4 to 1.5.5
+  * Bump semver from 1.0.6 to 1.0.7
+  * Bump assets/syntaxes/02_Extra/Fish from `2c254cc` to `cd95616`
+  * Syntax: [Log] highlight escape characters in double quoted strings
+  * Include contents of custom assets `metadata.yaml` in `--diagnostics`
+  * Bump shell-words from 1.0.0 to 1.1.0
+  * Bump git2 from 0.13.25 to 0.14.1
+  * Updated test names
+  * correctly handle multiple tabs in one line
+  * add show_all_tabstops_long integration test
+  * add show_all_tabstops integration test
+  * Correctly render tab stops
+  * Syntax: add clang-format (#2076)
+  * Bump serial_test from 0.5.1 to 0.6.0
+  * Bump semver from 1.0.4 to 1.0.6
+  * Bump predicates from 2.1.0 to 2.1.1
+  * release-checklist: Remind where to push tags in forks
+
+-------------------------------------------------------------------
+Mon Apr 18 14:50:14 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.20.0
+  * New style component header-filesize to show size of the displayed
+    file in the header.
+  * Use underline for line highlighting on ANSI
+  * Fix bash completion on bash 3.x and bash-completion 1.x.
+- Update to version 0.19.0
+  * Reduce startup time in loop-through mode by 90%.
+  * Load themes lazily to make bat start 25% faster when disregarding
+    syntax load time.
+  * Python syntax highlighting no longer suffers from abysmal performance
+    in specific scenarios.
+  * Fix for poor performance when ANSI escape sequences are piped to bat
+  * Fix for incorrect handling of ANSI escape sequences when
+    using --wrap=never
+  * Load custom assets as fast as integrated assets
+  * Support for x:-delta (minus) syntax in line ranges
+  * Support for --ignored-suffix argument.
+  * $BAT_CONFIG_DIR is now a recognized environment variable. It has
+    precedence over $XDG_CONFIG_HOME
+  * Support for x:+delta syntax in line ranges (e.g. 20:+10)
+  * Add new --acknowledgements option that gives credit to theme and
+    syntax definition authors
+  * Fix: First line not shown in diff context.
+  * Fix: Do not ignore syntaxes that handle file names with
+    a *.conf extension.
+
+-------------------------------------------------------------------
+Thu Sep 30 03:53:34 UTC 2021 - william.brown@suse.com
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
+Wed Aug 18 09:03:43 UTC 2021 - mvetter@suse.com
+
+- Update to f3d53b to fix build on Tumbleweed because of Rust 1.54
+    See https://github.com/sharkdp/bat/issues/1796
+  * Update git2 dependency to fix incompatibility with Rust 1.54
+  * Reduce startup time in loop-through mode with 80%-90%
+  * HighlightingAssets: Move out fn get_integrated_*set() to module scope
+  * Support a hidden arg --no-custom-assets that skips loading assets from the cache
+  * HighlightingAssets: Make .syntaxes() and syntax_for_file_name() failable
+  * HighlightingAssets::get_extension_syntax(): Split up into smaller methods
+  * Make loading of cached assets closer in performance to integrated assets
+  * Add Enselic in FUNDING.yml
+  * Update battest.py
+  * Add `rs` identifier for Rust code blocks in Markdown
+  * Update CHANGELOG
+  * Add groff syntax
+  * Add custom FUNDING.yml
+  * HighlightingAssets: Introduce private fn new() helper
+  * HighlightingAssets: Encapsulate syntax_set behind a getter
+  * De-duplicate some themes.bin and syntaxes.bin related code
+  * Fix typo in README
+
+-------------------------------------------------------------------
+Wed Aug 18 07:31:12 UTC 2021 - mvetter@suse.com
+
+- Update to version 0.18.2:
+  * Add note on vulnerability reporting, closes #1473
+  * Upgrade CHANGELOG with security vulnerability notice
+  * Update Julia syntax test
+  * Update Julia syntax, closes #1692
+  * Update assets
+  * Run cargo fmt
+  * Bump version to v0.18.2
+  * Use resolved path for --diagnostic as well
+  * Fix for Windows: do not run binaries from CWD
+  * Bump assets/syntaxes/02_Extra/CMake from `7d6231c` to `ab6ef4e`
+  * Bump ansi_colours from 1.0.2 to 1.0.4
+  * Bump globset from 0.4.6 to 0.4.8
+  * Add CHANGELOG entry for #1687
+  * Abort ignored filename suffix stripping early on unworkable filenames
+  * Simplify ignored filename suffix stripping
+  * Add syntax tests for ignored filename suffixes
+  * Find syntax ignoring known backup/template filename suffixes
+  * CICD: sync with pastel, minor changes
+  * Add some more options to bash completion
+  * Bump assert_cmd from 1.0.4 to 1.0.5
+  * Fix missing config/cache arguments in Zsh completion
+  * Document --generate-config-file in manual
+  * Add change log entry for bash completion
+  * Depend on scop/bash-completion
+  * Add missing comment about --theme arg escaping
+  * Add bash completion
+  * pretty_printer.rs: Don't use a URL as an example Input title
+  * Update README.md
+  * Update README.md
+  * Modify Linguist overrides
+  * Spelling fixes
+  * Highlight mtab files with fstab highlighting
+  * README.md: List compatibility as another advantage to 3-bit themes
+  * README.md: Mention that PAGER is ignored if set to more or most
+  * Bump nix from 0.20.0 to 0.21.0
+  * Bump assert_cmd from 1.0.3 to 1.0.4
+  * Update `CHANGELOG.md` for #1668
+  * Add Verilog syntax test file
+  * Add varlink syntax test file
+  * Add TypeScriptReact syntax test file
+  * Add Stylus syntax test file
+  * Add Strace syntax test file
+  * Add Robot Framework syntax test file
+  * Add Rego syntax test file
+  * Add Puppet syntax test file
+  * Add NAnt Build File syntax test file
+  * Add Literate Haskell syntax test file
+  * Add jsonnet syntax test file
+  * Add Java Server Page (JSP) syntax test file
+  * Add 'NOTICE' to list of file names to skip
+  * Add Fortran Namelist syntax test file
+  * Add Fortran (Fixed Form) syntax test file
+  * Add Fortran (Modern) syntax test file
+  * Add F# syntax test file
+  * Add CoffeeScript syntax test file
+  * Add Cabal syntax test file
+  * CHANGELOG.md: Apply DotENV syntax also for .env.default and .env.defaults
+  * DotENV.sublime-syntax: Re-exported after .tmLanguage update
+  * Bump assets/syntaxes/02_Extra/DotENV from `a1c9176` to `58201ba`
+  * Refactor "Use `matches` macro"
+  * Update `CHANGELOG.md` for #1661
+  * Use the functional update syntax
+  * Implement `From<..>` instead of `Into<..>`
+  * Use the functional update syntax
+  * Use `matches` macro
+  * Use `!theme.is_empty()`
+  * ja: add section about integration with fzf
+  * ja: fix typo
+  * Update CHANGELOG for #1655
+  * Add XAML test file
+  * Add dash test file
+  * Update CHANGELOG for #1654
+  * Add support for XAML files
+  * Add support for dash shebang
+  * Fix broken img link
+  * Update and polish Korean translation
+
+-------------------------------------------------------------------
+Sun Jun 13 19:33:37 UTC 2021 - idesmi@protonmail.com
+
+- Update to version 0.18.1:
+  * Update binary assets
+  * Bump version, update dependencies
+  * Updated CHANGELOG
+  * Bump assets/syntaxes/02_Extra/Lean from `824213d` to `29a03a8`
+  * Bump serde from 1.0.124 to 1.0.125
+  * Bump bugreport from 0.3.0 to 0.4.0
+  * Bump assets/syntaxes/02_Extra/FSharp from `c18616d` to `9e4645c`
+  * add warning highlighting to log file syntax definition
+  * add word boundaries to log syntax highlighting
+  * Add independent log syntax
+  * improve syslog syntax
+  * replace Syslog dependency with a custom syntax
+  * add example syslog file for highlighting tests
+  * Revert "Update of themes.bin that adds Dark+"
+  * Update of themes.bin that adds Dark+
+  * Add "Visual Studio Dark+" theme to vec of themes
+  * Add Dark+ theme
+
+-------------------------------------------------------------------
+Thu Mar 25 12:02:19 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 0.18.0
+  * Features
+    - Use a pager when bat --list-languages is called, see #1394 (@stku1985)
+  * Bugfixes
+    - If the last line doesn't end with a newline character,
+      don't add it if --style=plain, see #1438 (@Enselic)
+    - Only print themes hint in interactive mode (bat --list-themes),
+      see #1439 (@rsteube)
+    - VimL syntax highlighting fix, see #1450 (@esensar)
+    - Print an 'Invalid syntax theme settings' error message if a custom
+       theme is broken, see #614 (@Enselic)
+    - If plain mode is set and wrap is not explicitly opted in,
+      long lines will no be truncated, see #1426
+    - If PAGER (but not BAT_PAGER or --pager) is more or most,
+      silently use less instead to ensure support for colors, see #1063 (@Enselic)
+    - If PAGER is bat, silently use less to prevent recursion.
+      For BAT_PAGER or --pager, exit with error, see #1413 (@Enselic)
+    - Manpage highlighting fix, see #1511 (@keith-hall)
+    - BAT_CONFIG_PATH ignored by bat if non-existent, see #1550 (@sharkdp)
+  * Other
+    - Performance improvements, see #1421 (@LovecraftianHorror)
+    - Added a new --diagnostic option to collect information for
+      bug reports, see #1459 (@sharkdp)
+    - Modified default theme colors to differentiate between a JSON key
+      and a string value, see #1400 (@keith-hall)
+    - Upped min required Rust version to 1.42
+  * Syntaxes
+    - Added Zig syntax, see #1470 (@paulsmith)
+    - Added Lean syntax, see #1446 (@Julian)
+    - Added .resource extension for Robot Framework files, see #1386
+    - Added gnuplot syntax, see #1431 (@sharkdp)
+    - Highlight *.pac (Proxy auto-config) files as JavaScript, see #1515 (@sharkdp)
+  * New themes
+    - ansi replaces ansi-dark and ansi-light, see #1104 and #1412 (@mk12).
+      Breaking change: users that were previously using one of the ansi-*
+      themes should switch to ansi.
+    - The Gruvbox theme has been updated, see #1291 (@j0hnmeow).
+      Breaking change: users that were previously using gruvbox or gruvbox-white
+      should update and use gruvbox-dark/gruvbox-light instead.
+  * bat as a library
+    - The following PrettyPrinter methods have been removed
+      (they were previously deprecated):
+      + input_stdin_with_name
+      + input_from_bytes_with_name
+      + input_from_reader_with_name
+      + vcs_modification_markers (if the git feature is not enabled)
+
+Mon Dec  7 20:42:00 UTC 2020 - Gordon Schulz <gordon@gordonschulz.de>
+
+- Update to 0.17.1
+  * Features
+    - Added a new --style value, rule, which adds a simple horizontal
+      ruled line between files, see #1276 (@tommilligan)
+    - Pass -S ("chop long lines") to less if --wrap=never is set in
+      bat, see #1255 (@gahag)
+    - Added support for the NO_COLOR environment variable, see #1021
+      and #1031 (@eth-p)
+    - Added -P short flag to disable paging, see #1075 and #1082
+      (@LordFlashmeow)
+    - Added --force-colorization/-f flag to provide an alias for
+      forced color and decoration output, see #1141
+      (@alexanderkarlis)
+  * Bugfixes
+    - Running bat without arguments fails ("output file is also
+      an input"), see #1396
+    - Detect infinite loop when input and output are the same, see
+      #1193 and #1197 (@niklasmohrin)
+    - Throw an error when bat is being used as pager, see #1343
+      (@adrian-rivera)
+    - Bash syntax highlighting not selected for *.ebuild and *.eclass
+      files, see #1292 (@sharkdp)
+    - Fix zsh completion when using -p, see #1320 (@xzfc)
+    - Fixed non-printable characters display for redirected output,
+      see #1061 (@gsomix)
+    - Handle file extension conflicts in --list-languages, see #1076
+      and #1135 (@Kienyew)
+  * Other
+    - Add note to refer to see detailed help with --help (and vice
+      versa with -h), see #1215 (@henil)
+    - Add a Contributors section to README, see #1348
+      (@adrian-rivera)
+    - Switched to "·" (U+00B7) Middle Dot from "•" (U+2022) Bullet
+      for non-printing spaces, see #1056 and #1100 (@LordFlashmeow)
+    - Added zsh shell completion script, see #1136 (@Kienyew)
+    - Improved --help text (@sharkdp)
+    - Added custom languages/themes sections to manpage (@eth-p)
+  * Syntaxes
+    - Manpage syntax highlighting has been improved, see #1315
+      (@keith-hall)
+    - Add Svelte file syntax, see #1285 (@kjmph)
+    - Update AsciiDoc syntax, see #1034 (@rxt1077)
+    - GLSL (@caioalonso)
+    - Add Nginx and Apache config file syntax, see #1137 (@kjmph,
+      @niklasmohrin)
+    - Use fstab syntax for crypttab files, see #1073 (@sharkdp)
+    - Support syntax highlighting for files in $XDG_CONFIG_HOME/git/,
+      see #1191 (@ahmedelgabri)
+  * New themes
+    - Coldark, see #1329 (@ArmandPhilippot)
+    - Gruvbox, see #1069 (@KyleOndy)
+    - base16-256 for base16-shell users, see #1111 (@mk12)
+  * bat as a library
+    - Add APIs to provide Input descriptions with InputDescription (@eth-p)
+    - Add function to directly provide Inputs to PrettyPrinter (@eth-p)
+    - Breaking: Input::theme_preview_file is no longer available. (@eth-p)
+  * Packaging
+    - Package maintainers: note that we now include zsh shell completion files
+    - Removed build dependency on liquid (@sharkdp).
+
+-------------------------------------------------------------------
+Mon Jun  1 14:01:29 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.15.4
+  * Added missing Solarized themes
+  * Fixed highlighting bug in Haskell source files
+  * Cannot run bat with relative paths
+  * bat mishighlights Users that start with digits in SSH config
+  * --map-syntax doesn't work with names provided through --file-name
+  * Fix syntax detection for files called 'rails'
+  * Fix potential errors with syntax detection for symlinked files
+  * Fix highlighting of Markdown files
+
+-------------------------------------------------------------------
+Mon May  4 14:55:12 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to version 0.15.0
+  * Features
+    - This release adds a new --diff/-d option that can be used to
+      only show lines surrounding Git changes, i.e. added, removed
+      or modified lines. The amount of additional context can be
+      controlled with --diff-context=N. See #23 and #940
+  * Bugfixes
+    - Error message printed in the middle of the output for another
+      file, see #946
+      Performance improvements when using custom caches (via bat
+      cache --build): the bat startup time should now be twice as
+      fast.
+  * Themes
+    - Updated version of the Solarized dark/light themes, see #941
+  * bat as a library
+    - There are a few changes in the "low level" API (the Config
+      struct has changed andthe error handler needs a new &mut dyn
+      Write argument). The high-level API is not affected.
+
+- Changes from version 0.14.0
+  * Features
+    - Added a new --file-name <name>… option to overwrite the
+      displayed filename(s) in the header. This is useful when
+      piping input into bat. See #654 and #892.
+    - Added a new --generate-config-file option to create an
+      initial configuration file at the right place. See #870.
+  * Bugfixes
+    - Performance problems with C# source code have been fixed, see
+      #677
+    - Performance problems with Makefiles have been fixed, see #750
+    - Fix bug when highlighting Ruby files with unindented heredocs
+      , see #914
+    - A highlighting problem with Rust source code has been fixed,
+      see #924
+    - --highlight-line did not work correctly in combination with
+      --tabs=0 and --wrap=never, see #937
+  * Other
+    - When saving/reading user-provided syntaxes or themes, bat
+      will now maintain a metadata.yaml file which includes
+      information about the bat version which was used to create
+      the cached files. When loading cached files, we now print an
+      error if they have been created with an incompatible version.
+      See #882
+    - Updated liquid dependency to 0.20, see #880
+  * bat as a library
+    - A completely new "high level" API has been added that is much
+      more convenient to use. See the examples folder for the
+      updated code. It is recommended to only use the new
+      "high level" API, if possible. Note that this should still
+      be considered a "beta" release of bat-as-a-library.
+      For more details and some screenshots of the example
+      programs, see #936.
+    - Stripped out a lot of binary-only dependencies, see #895 and
+      #899
+    - Allow using the library with older syntect, see #896 and #898
+  * New syntaxes
+    - Rego, see #872
+    - Stylo, see #917
+
+-------------------------------------------------------------------
+Thu Apr  9 09:09:04 UTC 2020 - Dany Marcoux <dmarcoux@suse.com>
+
+- Update to version 0.13.0
+  * Beginning with this release, bat can be used as a library
+  * (Breaking change) Glob-based syntax mapping
+  * Many bugfixes and new syntaxes
+  * And more... see upstream
+- Pass "no-track" option to "cargo install" to avoid generating
+  ".crates2.json"
+
+-------------------------------------------------------------------
+Tue Oct 15 12:59:38 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
+
+- Instruct packager to install cargo directly from the cargo package
+
+-------------------------------------------------------------------
+Tue Oct  1 19:06:41 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Use `pwd`/.cargo for vendor config so that CARGO_HOME export is
+  not required.
+
+-------------------------------------------------------------------
+Tue Sep 24 14:49:11 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
+
+- Update to version 0.12.1
+  * Features
+    Binary file content can now be viewed with bat -A
+    bat can now be used as a man pager
+    Add new style component to separate multiple '--line-range'
+    Added '-L' as an alias for '--list-languages'
+  * Bugfixes
+    Output looks unbalanced when using '--style=grid,numbers' without 'header'
+    Issues with filenames starting with "cache"
+    '--terminal-width -10' is parsed incorrectly
+  * New syntaxes
+    Emacs Org mode
+    requirements.txt
+    DotENV '.env'
+    SSH config
+    And more... see upstream
+- Set directory for 'git clone' in README.packager
+- Add 'clang' to build dependencies
+
+-------------------------------------------------------------------
+Wed May 15 21:22:44 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
+
+- Update to version 0.11.0
+  * Features
+    New color themes: ansi-light, ansi-dark and base16
+    The -p/--plain option can be used twice (typically -pp). First -p switches --style to "plain", second disables pager.
+  * Bugfixes
+    Do not replace arguments to less when using --pager
+    Empty files are (once again) printed with a single header line
+    --terminal-width=0 is now disallowed
+  * New syntaxes
+    Fish
+    Update for F#
+
+-------------------------------------------------------------------
+Tue Apr 30 13:08:18 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
+
+- Run spec-cleaner
+- Remove double %setup macro
+- Simplify tar command in README.packager
+
+-------------------------------------------------------------------
+Mon Feb 11 22:15:10 UTC 2019 - Dany Marcoux <dmarcoux@posteo.de>
+
+- Add README.packager for instructions on how to generate vendor.tar.xz
+- Update to version 0.10.0
+  * Features
+    New option --highlight-line <N>
+    New option -A/--show-all to show and highlight non-printable characters (in analogy to GNU cats option)
+    New option --pager to configure the pager
+    Support for a configuration file (https://github.com/sharkdp/bat#format)
+    Support for custom config file path via --config-file option or BAT_CONFIG_PATH environment variable
+    Support for custom syntax mappings via the -m/--max-syntax option
+    Support pager command-line arguments in PAGER and BAT_PAGER
+    The --terminal-width option can now also accept offsets
+    Support for multiple --line-range arguments
+    Encoding support for UTF-16LE and UTF-16BE
+  * Changes
+    Completely disabled the generation of shell completion files
+    Report the name of missing files
+    Don't start pager if file doesn't exist
+    Rename bat cache --init to bat cache --build
+    Move the --config-dir and --cache-dir options from bat cache to bat and hide them from the help text
+    The default tab-width has been set to 4
+  * New syntaxes supported
+    Robot framework, Twig, .desktop files, AsciiDoc, Assembly, Jsonnet,
+    Log files, Protobuf and ProtobufText, Terraform and Varlink
+
+-------------------------------------------------------------------
+Tue Oct  2 09:40:07 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix the description's grammar.
+
+-------------------------------------------------------------------
+Mon Sep 24 22:33:10 UTC 2018 - dmarcoux@posteo.de
+
+- Update to version 0.7.1
+
+-------------------------------------------------------------------
+Sat Aug 25 22:00:00 UTC 2018 - viktor.saevars@gmail.com
+
+ - Inital packaging @ 0.5.0

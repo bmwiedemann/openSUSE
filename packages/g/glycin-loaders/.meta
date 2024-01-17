@@ -1,0 +1,8 @@
+<package name="glycin-loaders" project="openSUSE:Factory">
+  <title>Sandboxed image rendering</title>
+  <description>Sandboxed and extendable image decoding.
+
+</description>
+  <devel project="GNOME:Factory" package="glycin-loaders"/>
+  <url>https://gitlab.gnome.org/sophie-h/glycin</url>
+</package>

@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e3d80c5553fe6df3291148a7af777e8</srcmd5>
+    <version>0.6.3</version>
+    <time>1618498648</time>
+    <user>dimstar_suse</user>
+    <comment>Ready to bring Deepin Desktop to openSUSE offical</comment>
+    <requestid>884788</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>486b398b80f49a9634b84f3d776fb54e</srcmd5>
+    <version>0.6.3</version>
+    <time>1621721176</time>
+    <user>dimstar_suse</user>
+    <comment>- Keep golang verion on 1.15 on Tumbleweed, the project does not support 
+  golang 1.16+ (forwarded request 894950 from hillwood)</comment>
+    <requestid>894965</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>740f4ef755522fc4ed5eb197192e21d7</srcmd5>
+    <version>0.6.3</version>
+    <time>1643666206</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Leap 15.4+</comment>
+    <requestid>950162</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4eebb9ff06c35fd07273330e8318054b</srcmd5>
+    <version>0.6.3</version>
+    <time>1646671585</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>959472</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cb3ca195f4f6cb96f13921dee532ea0d</srcmd5>
+    <version>0.6.9</version>
+    <time>1650657240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971799</requestid>
+  </revision>
+</revisionlist>

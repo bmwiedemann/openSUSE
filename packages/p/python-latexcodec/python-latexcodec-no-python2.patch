@@ -1,0 +1,291 @@
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..f9662ce
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,5 @@
++*~
++*.pyc
++/.idea
++/venv
++/.pytest_cache
+diff --git a/latexcodec/codec.py b/latexcodec/codec.py
+index b9b19f6..57aeaad 100644
+--- a/latexcodec/codec.py
++++ b/latexcodec/codec.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+     LaTeX Codec
+     ~~~~~~~~~~~
+@@ -58,11 +57,7 @@
+ # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ # OTHER DEALINGS IN THE SOFTWARE.
+ 
+-from __future__ import print_function
+-
+ import codecs
+-from six import string_types, text_type
+-from six.moves import range
+ 
+ from latexcodec import lexer
+ 
+@@ -616,20 +611,20 @@ def register_all(self):
+             package='textcomp')
+         # \=O and \=o will be translated into Ō and ō before we can
+         # match the full latex string... so decoding disabled for now
+-        self.register(u'Ǭ', text_type(r'\textogonekcentered{\=O}'),
++        self.register(u'Ǭ', r'\textogonekcentered{\=O}',
+                       decode=False)
+-        self.register(u'ǭ', text_type(r'\textogonekcentered{\=o}'),
++        self.register(u'ǭ', r'\textogonekcentered{\=o}',
+                       decode=False)
+-        self.register(u'ℕ', text_type(r'\mathbb{N}'), mode='math')
+-        self.register(u'ℕ', text_type(r'\mathbb N'), mode='math', decode=False)
+-        self.register(u'ℤ', text_type(r'\mathbb{Z}'), mode='math')
+-        self.register(u'ℤ', text_type(r'\mathbb Z'), mode='math', decode=False)
+-        self.register(u'ℚ', text_type(r'\mathbb{Q}'), mode='math')
+-        self.register(u'ℚ', text_type(r'\mathbb Q'), mode='math', decode=False)
+-        self.register(u'ℝ', text_type(r'\mathbb{R}'), mode='math')
+-        self.register(u'ℝ', text_type(r'\mathbb R'), mode='math', decode=False)
+-        self.register(u'ℂ', text_type(r'\mathbb{C}'), mode='math')
+-        self.register(u'ℂ', text_type(r'\mathbb C'), mode='math', decode=False)
++        self.register(u'ℕ', r'\mathbb{N}', mode='math')
++        self.register(u'ℕ', r'\mathbb N', mode='math', decode=False)
++        self.register(u'ℤ', r'\mathbb{Z}', mode='math')
++        self.register(u'ℤ', r'\mathbb Z', mode='math', decode=False)
++        self.register(u'ℚ', r'\mathbb{Q}', mode='math')
++        self.register(u'ℚ', r'\mathbb Q', mode='math', decode=False)
++        self.register(u'ℝ', r'\mathbb{R}', mode='math')
++        self.register(u'ℝ', r'\mathbb R', mode='math', decode=False)
++        self.register(u'ℂ', r'\mathbb{C}', mode='math')
++        self.register(u'ℂ', r'\mathbb C', mode='math', decode=False)
+ 
+     def register(self, unicode_text, latex_text, mode='text', package=None,
+                  decode=True, encode=True):
+@@ -650,7 +645,7 @@ def register(self, unicode_text, latex_text, mode='text', package=None,
+             self.register(unicode_text, u'$' + latex_text + u'$', mode='text',
+                           package=package, decode=decode, encode=encode)
+             self.register(unicode_text,
+-                          text_type(r'\(') + latex_text + text_type(r'\)'),
++                          r'\(' + latex_text + r'\)',
+                           mode='text', package=package,
+                           decode=decode, encode=encode)
+             # XXX for the time being, we do not perform in-math substitutions
+@@ -768,8 +763,8 @@ def _get_latex_chars_tokens_from_char(self, c):
+                     "latex codec does not support {0} errors"
+                     .format(self.errors))
+ 
+-    def get_latex_chars(self, unicode_, final=False):
+-        if not isinstance(unicode_, string_types):
++    def get_latex_chars(self, unicode_: str, final=False):
++        if not isinstance(unicode_, str):
+             raise TypeError(
+                 "expected unicode for encode input, but got {0} instead"
+                 .format(unicode_.__class__.__name__))
+diff --git a/latexcodec/lexer.py b/latexcodec/lexer.py
+index 8939728..d23541b 100644
+--- a/latexcodec/lexer.py
++++ b/latexcodec/lexer.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+     LaTeX Lexer
+     ~~~~~~~~~~~
+@@ -54,7 +53,6 @@
+ import codecs
+ import collections
+ import re
+-from six import add_metaclass, binary_type, string_types
+ import unicodedata
+ 
+ 
+@@ -79,8 +77,7 @@ def __init__(cls, name, bases, dct):
+         cls.regexp = re.compile(regexp_string, re.DOTALL)
+ 
+ 
+-@add_metaclass(MetaRegexpLexer)
+-class RegexpLexer(codecs.IncrementalDecoder):
++class RegexpLexer(codecs.IncrementalDecoder, metaclass=MetaRegexpLexer):
+ 
+     """Abstract base class for regexp based lexers."""
+ 
+@@ -371,10 +368,10 @@ def decode(self, bytes_, final=False):
+         """
+         if self.binary_mode:
+             try:
+-                # in python 3, the token text can be a memoryview
++                # the token text can be a memoryview
+                 # which do not have a decode method; must cast to
+                 # bytes explicitly
+-                chars = self.decoder.decode(binary_type(bytes_), final=final)
++                chars = self.decoder.decode(bytes(bytes_), final=final)
+             except UnicodeDecodeError as e:
+                 # API requires that the encode method raises a ValueError
+                 # in this case
+@@ -421,11 +418,11 @@ def setstate(self, state):
+         """
+         self.buffer = state
+ 
+-    def get_unicode_tokens(self, unicode_, final=False):
++    def get_unicode_tokens(self, unicode_: str, final=False):
+         """Split unicode into tokens so that every token starts with a
+         non-combining character.
+         """
+-        if not isinstance(unicode_, string_types):
++        if not isinstance(unicode_, str):
+             raise TypeError(
+                 "expected unicode for encode input, but got {0} instead"
+                 .format(unicode_.__class__.__name__))
+diff --git a/test/test_latex_codec.py b/test/test_latex_codec.py
+index f0ecabf..0ffce2d 100644
+--- a/test/test_latex_codec.py
++++ b/test/test_latex_codec.py
+@@ -4,8 +4,9 @@
+ from __future__ import print_function
+ 
+ import codecs
++from io import BytesIO
++
+ import pytest
+-from six import text_type, binary_type, BytesIO, PY2
+ from unittest import TestCase
+ 
+ import latexcodec
+@@ -34,7 +35,7 @@ def test_latex_incremental_decoder_setstate():
+ 
+ def split_input(input_):
+     """Helper function for testing the incremental encoder and decoder."""
+-    if not isinstance(input_, (text_type, binary_type)):
++    if not isinstance(input_, (str, bytes)):
+         raise TypeError("expected unicode or bytes input")
+     if input_:
+         for i in range(len(input_)):
+@@ -59,7 +60,7 @@ def decode(self, text_utf8, text_latex, inputenc=None):
+ 
+     def test_invalid_type(self):
+         with pytest.raises(TypeError):
+-            codecs.getdecoder("latex")(object())
++            codecs.getdecoder("latex")(object())  # type: ignore
+ 
+     def test_invalid_code(self):
+         with pytest.raises(ValueError):
+@@ -252,12 +253,8 @@ def decode(self, text_utf8, text_latex, inputenc=None):
+         self.assertEqual(text_utf8, reader.read())
+ 
+     # in this test, BytesIO(object()) is eventually called
+-    # this is valid on Python 2, so we skip this test there
+     def test_invalid_type(self):
+-        if PY2:
+-            pytest.skip("test not relevant for Python 2")
+-        else:
+-            TestDecoder.test_invalid_type(self)
++        TestDecoder.test_invalid_type(self)
+ 
+ 
+ class TestIncrementalDecoder(TestDecoder):
+diff --git a/test/test_latex_lexer.py b/test/test_latex_lexer.py
+index a65d686..e45beff 100644
+--- a/test/test_latex_lexer.py
++++ b/test/test_latex_lexer.py
+@@ -4,7 +4,6 @@
+ 
+ import pytest
+ from unittest import TestCase
+-import six
+ 
+ from latexcodec.lexer import (
+     LatexLexer,
+@@ -16,39 +15,39 @@
+ 
+ class MockLexer(LatexLexer):
+     tokens = (
+-        ('chars', u'mock'),
+-        ('unknown', u'.'),
++        ('chars', 'mock'),
++        ('unknown', '.'),
+         )
+ 
+ 
+ class MockIncrementalDecoder(LatexIncrementalDecoder):
+     tokens = (
+-        ('chars', u'mock'),
+-        ('unknown', u'.'),
++        ('chars', 'mock'),
++        ('unknown', '.'),
+         )
+ 
+ 
+ def test_token_create_with_args():
+-    t = Token('hello', u'world')
++    t = Token('hello', 'world')
+     assert t.name == 'hello'
+-    assert t.text == u'world'
++    assert t.text == 'world'
+ 
+ 
+ def test_token_assign_name():
+     with pytest.raises(AttributeError):
+-        t = Token('hello', u'world')
++        t = Token('hello', 'world')
+         t.name = 'test'
+ 
+ 
+ def test_token_assign_text():
+     with pytest.raises(AttributeError):
+-        t = Token('hello', u'world')
++        t = Token('hello', 'world')
+         t.text = 'test'
+ 
+ 
+ def test_token_assign_other():
+     with pytest.raises(AttributeError):
+-        t = Token('hello', u'world')
++        t = Token('hello', 'world')
+         t.blabla = 'test'
+ 
+ 
+@@ -79,18 +78,18 @@ def test_null(self):
+ 
+     def test_hello(self):
+         self.lex_it(
+-            u'hello!  [#1] This \\is\\   \\^ a \ntest.\n'
+-            u'    \nHey.\n\n\\# x \\#x',
+-            six.u(r'h|e|l|l|o|!| | |[|#1|]| |T|h|i|s| |\is|\ | | |\^| |a| '
+-                  '|\n|t|e|s|t|.|\n| | | | |\n|H|e|y|.|\n|\n'
+-                  r'|\#| |x| |\#|x').split(u'|'),
++            'hello!  [#1] This \\is\\   \\^ a \ntest.\n'
++            '    \nHey.\n\n\\# x \\#x',
++            r'h|e|l|l|o|!| | |[|#1|]| |T|h|i|s| |\is|\ | | |\^| |a| '
++            '|\n|t|e|s|t|.|\n| | | | |\n|H|e|y|.|\n|\n'
++            r'|\#| |x| |\#|x'.split('|'),
+             final=True
+         )
+ 
+     def test_comment(self):
+         self.lex_it(
+-            u'test% some comment\ntest',
+-            u't|e|s|t|% some comment|\n|t|e|s|t'.split(u'|'),
++            'test% some comment\ntest',
++            't|e|s|t|% some comment|\n|t|e|s|t'.split(u'|'),
+             final=True
+         )
+ 
+@@ -230,9 +229,9 @@ def test_hello(self):
+         self.lex_it(
+             u'hello!  [#1] This \\is\\   \\^ a \ntest.\n'
+             u'    \nHey.\n\n\\# x \\#x',
+-            six.u(r'h|e|l|l|o|!| |[|#1|]| |T|h|i|s| |\is|\ |\^|a| '
+-                  r'|t|e|s|t|.| |\par|H|e|y|.| '
+-                  r'|\par|\#| |x| |\#|x').split(u'|'),
++            r'h|e|l|l|o|!| |[|#1|]| |T|h|i|s| |\is|\ |\^|a| '
++            r'|t|e|s|t|.| |\par|H|e|y|.| '
++            r'|\par|\#| |x| |\#|x'.split(u'|'),
+             final=True
+         )
+ 
+--- latexcodec-2.0.1.orig/requirements.txt
++++ latexcodec-2.0.1/requirements.txt
+@@ -1 +0,0 @@
+-six>=1.4.1
+\ No newline at end of file

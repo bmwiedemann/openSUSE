@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Thu Aug 11 05:40:14 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch python-schema-no-mock.patch:
+  * Replaced by the below path.
+- Add patch remove-old-python-support.patch:
+  * Remove support for old Python versions as well mock and contextlib2.
+- Clean up {Build,}Requires as a result.
+
+-------------------------------------------------------------------
+Wed May  4 09:07:11 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.7.5
+  * Full subclass support for nested schemas.
+  * Don't double-format errors. fixes #240 (#247) [Leif Ryge]
+  * Fix "Unknown format code" in Python 3.8 (#245) [Denis Blanchette]
+  * JSON Schema: Allow using $ref when schema is not a dict (#244) [Denis Blanchette]
+  * JSON Schema: Set additionalProperties true when dict contains str as key (#243) [Denis Blanchette]
+- do not require python-mock for build
+- added patches
+  fix https://github.com/keleshev/schema/pull/273
+  + python-schema-no-mock.patch
+
+-------------------------------------------------------------------
+Thu Sep 10 12:17:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.7.3
+  * JSON Schema: Support schemas where the root is not a dict.
+  * Do not drop previous errors within an Or criterion.
+
+- Update to 0.7.2
+  * Set the contextlib dependency as a minimum, rather than fixed.
+
+-------------------------------------------------------------------
+Thu Mar 26 12:29:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.7.1
+  * JSON Schema: Fix allOf and oneOf with only one condition
+  * JSON Schema: Fix using falsy values as default
+  * Add 3.7 to "schema is tested with..." list
+  * JSON schema now rendering using references
+
+-------------------------------------------------------------------
+Tue Mar 26 16:29:04 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.7.0
+  * Add an is_valid method to the schema
+  * Fix typo in schema.py: vaidated->validated
+  * Fix callable check under PyPy2
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:17 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue May 15 18:39:20 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.6.7
+  * Implement Const validator to keep data unchanged
+  * Implement Forbidden.
+  * added __hash__ and __eq__ based on sub-schema to Optional
+- Use license tag
+
+-------------------------------------------------------------------
+Fri Oct 20 16:18:26 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

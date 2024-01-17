@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Wed Mar 11 03:15:23 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.011
+   see /usr/share/doc/packages/perl-MooX-StrictConstructor/Changes
+
+  0.011     2020-03-10 09:38:39-07:00 America/Los_Angeles
+  
+          - Switched from Carp::confess to die in order to avoid leaking
+            sensitive data via stack traces. The previous behavior can be
+            enabled in an application by using Carp::Always.  Thanks
+            @jrubinator!
+
+-------------------------------------------------------------------
+Fri Apr  6 06:12:59 UTC 2018 - coolo@suse.com
+
+- updated to 0.010
+   see /usr/share/doc/packages/perl-MooX-StrictConstructor/Changes
+
+  0.010     2018-03-25 10:15:40-07:00 America/Los_Angeles
+  
+          - Undo the previous "fix" for the minimum perl version.
+            The basic requirement is for 5.004 but the tests require
+            5.006.
+
+-------------------------------------------------------------------
+Sun Mar 25 05:35:44 UTC 2018 - coolo@suse.com
+
+- updated to 0.009
+   see /usr/share/doc/packages/perl-MooX-StrictConstructor/Changes
+
+  0.009     2018-03-24 14:12:47-07:00 America/Los_Angeles
+  
+          - Built using current Dist::Zilla, so various things
+            are better, e.g. includes a LICENSE.
+          - A couple of things that are only used in xt tests
+            used to be test requirements, now their develop
+            requirements.
+          - No longer includes explicit dependencies on a handful
+            of modules (e.g. indirect) that Moo's use of strictures
+            used to require.
+          - Now only includes a Makefile.PL.
+          - The build now includes a cpanfile in the repo.
+          - The minimum perl version is now consistent between the
+            Makefile.PL and the META.{yml,json} files.
+
+-------------------------------------------------------------------
+Wed May 13 12:40:58 UTC 2015 - coolo@suse.com
+
+- updated to 0.008
+   see /usr/share/doc/packages/perl-MooX-StrictConstructor/Changes
+
+  0.008     2015-05-11 08:22:24-07:00 America/Los_Angeles
+  
+          - Improve the POD about bugs and incompatibilities.
+  
+  0.007     2015-05-03 15:01:45-07:00 America/Los_Angeles
+  
+          - Ask dzil to build me a Makefile.PL too.
+          - Include Tim Bunce's efficiency and error messaging
+            patch.
+          - Typos in POD and README.
+
+-------------------------------------------------------------------
+Tue Feb 17 13:41:25 UTC 2015 - coolo@suse.com
+
+- initial package 0.006
+    * created by cpanspec 1.78.08
+

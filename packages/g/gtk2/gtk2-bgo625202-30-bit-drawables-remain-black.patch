@@ -1,0 +1,84 @@
+From fb01c5ea4c5b9f0c2b0d2b2d9c926cf1caea27c0 Mon Sep 17 00:00:00 2001
+From: Damien Leone <dleone@nvidia.nvidia.com>
+Date: Mon, 12 Sep 2011 09:53:00 -0700
+Subject: [PATCH] Bug 625202 - 30-bit drawables remain black
+
+This patch adds support for 10-10-10 bitmask BGR conversion at
+depths 30 and 32 by preventing gdk_rgb_select_conv() from failing
+back to the gdk_rgb_convert_32_generic() conversion function.
+
+Since GdkImage codes R, G and B channels in a char, we replicate
+the two most significant bits to the two least significant ones
+such that all 10 bits are used (i.e. all bits are set to 1 for
+white color).
+---
+ gdk/gdkrgb.c |   47 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 files changed, 47 insertions(+), 0 deletions(-)
+
+diff --git a/gdk/gdkrgb.c b/gdk/gdkrgb.c
+index 6e32bab..93ef6ab 100644
+--- a/gdk/gdkrgb.c
++++ b/gdk/gdkrgb.c
+@@ -2242,6 +2242,48 @@ gdk_rgb_convert_8880_br (GdkRgbInfo *image_info, GdkImage *image,
+     }
+ }
+ 
++static void
++gdk_rgb_convert_0AAA_br (GdkRgbInfo *image_info, GdkImage *image,
++			 gint x0, gint y0, gint width, gint height,
++			 const guchar *buf, int rowstride,
++			 gint x_align, gint y_align, GdkRgbCmap *cmap)
++{
++  int y, w;
++  guchar *obuf, *p;
++  gint bpl;
++  const guchar *bptr, *bp2;
++  guchar r, g, b;
++
++  bptr = buf;
++  bpl = image->bpl;
++  obuf = ((guchar *)image->mem) + y0 * bpl + x0 * 4;
++
++  for (y = 0; y < height; y++)
++	{
++	  bp2 = bptr;
++	  p = obuf;
++	  w = width;
++	  while (w--)
++		{
++		  r = *bp2++;
++		  g = *bp2++;
++		  b = *bp2++;
++
++		  /* Since the R, G and B channels are coded in a char, we
++		   * replicate the two most significant bits to the two least
++		   * significant ones. */
++		  *((guint32*)p) = 0x3 << 30 |
++			b << 22 | (b >> 6) << 20 |
++			g << 12 | (g >> 6) << 10 |
++			r << 2	| (r >> 6);
++
++		  p += 4;
++		}
++	  bptr += rowstride;
++	  obuf += bpl;
++	}
++}
++
+ /* Generic truecolor/directcolor conversion function. Slow, but these
+    are oddball modes. */
+ static void
+@@ -3195,6 +3237,11 @@ gdk_rgb_select_conv (GdkRgbInfo *image_info)
+ #endif
+     }
+ #endif
++  else if (bpp == 32 && (depth == 30 || depth == 32) &&
++		   vtype == GDK_VISUAL_TRUE_COLOR &&
++		   (red_mask == 0x3ff && green_mask == 0xffc00 &&
++			blue_mask == 0x3ff00000 && byte_order == GDK_LSB_FIRST))
++	conv = gdk_rgb_convert_0AAA_br;
+   else if (vtype == GDK_VISUAL_TRUE_COLOR && byte_order == GDK_LSB_FIRST)
+     {
+       conv = gdk_rgb_convert_truecolor_lsb;
+-- 
+1.7.5.4

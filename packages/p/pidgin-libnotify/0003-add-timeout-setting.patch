@@ -1,0 +1,55 @@
+From 8a2e9a5d973242dce35ee3a7f2977482eff353fe Mon Sep 17 00:00:00 2001
+From: Antony Dovgal <tony@daylessday.org>
+Date: Fri, 14 Oct 2011 00:46:25 +0400
+Subject: [PATCH 3/5] add timeout setting
+
+---
+ src/pidgin-libnotify.c |   18 ++++++++++++++++--
+ 1 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/src/pidgin-libnotify.c b/src/pidgin-libnotify.c
+index 27f81a0..20736b4 100644
+--- a/src/pidgin-libnotify.c
++++ b/src/pidgin-libnotify.c
+@@ -63,8 +63,20 @@ get_plugin_pref_frame (PurplePlugin *plugin)
+ 	purple_plugin_pref_frame_add (frame, ppref);
+ 
+ 	ppref = purple_plugin_pref_new_with_name_and_label (
+-                            "/plugins/gtk/libnotify/newconvonly",
+-                            _("Only new conversations"));
++                            "/plugins/gtk/libnotify/newmsgtxt",
++                            _("Show new messages text"));
++	purple_plugin_pref_frame_add (frame, ppref);
++
++
++	if (purple_prefs_get_int("/plugins/gtk/libnotify/timeout") == 0) {
++		/* 3 seconds is the default timeout */
++		purple_prefs_set_int("/plugins/gtk/libnotify/timeout", 3000);
++	}
++
++	ppref = purple_plugin_pref_new_with_name_and_label (
++                            "/plugins/gtk/libnotify/timeout",
++                            _("Display timeout (msec), disable/enable the plugin for the setting to take effect"));
++	purple_plugin_pref_set_bounds(ppref, 100, 100000);
+ 	purple_plugin_pref_frame_add (frame, ppref);
+ 
+ 	ppref = purple_plugin_pref_new_with_name_and_label (
+@@ -281,6 +293,7 @@ notify (const gchar *title,
+ 
+ 	if (notification != NULL) {
+ 		notify_notification_update (notification, title, tr_body, NULL);
++		notify_notification_set_timeout(notification, purple_prefs_get_int("/plugins/gtk/libnotify/timeout"));
+ 		/* this shouldn't be necessary, file a bug */
+ 		notify_notification_show (notification, NULL);
+ 
+@@ -325,6 +338,7 @@ notify (const gchar *title,
+ 
+ 	notify_notification_add_action (notification, "show", _("Show"), action_cb, NULL, NULL);
+ 
++	notify_notification_set_timeout(notification, purple_prefs_get_int("/plugins/gtk/libnotify/timeout"));
+ 	if (!notify_notification_show (notification, NULL)) {
+ 		purple_debug_error (PLUGIN_ID, "notify(), failed to send notification\n");
+ 	}
+-- 
+1.7.3.4
+

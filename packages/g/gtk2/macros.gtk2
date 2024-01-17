@@ -1,0 +1,35 @@
+# RPM macros for packages installing a GTK+ IM module
+#
+###
+#
+# When a package installs a GTK+ IM module, it should use all
+# three macros:
+#
+#  - %gtk2_immodule_requires in the preamble
+#  - %gtk2_immodule_post in %post
+#  - %gtk2_immodule_postun in %postun
+#
+###
+
+%gtk2_immodule_requires                                  \
+Requires(post): gtk2-tools >= 2.24.20                    \
+Requires(postun): gtk2-tools >= 2.24.20
+
+# On install, update the cache
+%gtk2_immodule_post                                      \
+%if "%_lib" == "lib64"                                   \
+  %{_bindir}/gtk-query-immodules-2.0-64 --update-cache   \
+%else                                                    \
+  %{_bindir}/gtk-query-immodules-2.0 --update-cache      \
+%endif
+
+# On uninstall, update the cache. Note: we ignore upgrades (already
+# handled in %post of the new package).
+%gtk2_immodule_postun                                    \
+if [ $1 -eq 0 ]; then                                    \
+  %if "%_lib" == "lib64"                                 \
+    %{_bindir}/gtk-query-immodules-2.0-64 --update-cache \
+  %else                                                  \
+    %{_bindir}/gtk-query-immodules-2.0 --update-cache    \
+  %endif                                                 \
+fi

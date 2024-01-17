@@ -1,0 +1,6 @@
+<package name="libgooglepinyin" project="openSUSE:Factory">
+  <title></title>
+  <description>
+	  A fork from google pinyin on android  </description>
+  <devel project="M17N" package="libgooglepinyin"/>
+</package>

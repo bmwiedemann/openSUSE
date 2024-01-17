@@ -1,0 +1,216 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aef5839e528ca5a5bbd142d86a4c758f</srcmd5>
+    <version>0.20110409</version>
+    <time>1306919760</time>
+    <user>saschpe</user>
+    <comment>Schism Tracker is a free reimplementation of Impulse Tracker.</comment>
+    <requestid>67641</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>318e616f9d5a955ff4c9e39c110bced1</srcmd5>
+    <version>0.20110409</version>
+    <time>1306919770</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67641
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6053c4b526cc18a82b5b2bb57f9e40ca</srcmd5>
+    <version>0.20110409</version>
+    <time>1317546873</time>
+    <user>lrupp</user>
+    <comment>- Add schismtracker-link.patch to link with new ld</comment>
+    <requestid>85421</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6053c4b526cc18a82b5b2bb57f9e40ca</srcmd5>
+    <version>0.20110409</version>
+    <time>1319182452</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b4030410769ea543c0e375da63045736</srcmd5>
+    <version>0.20120105</version>
+    <time>1328890798</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 20120105
+* Shift-F10 now provides a dialog if the orderlist is empty
+* Fix loop points when deleting last point in envelope
+* Instrument list: Alt-Shift-A on trans table now copies sample
+  name as well as assigning sample numbers
+* Less picky sample-replacement checking for pattern-to-sample
+  rendering
+* Pattern editor: enter key now does channel search for instrument
+  number if none is under the cursor
+* Add hidden option for inverted (more FT2-like) home/end key
+  behavior in the pattern editor
+* Fix garbage writing when swapping portamento to the volume column</comment>
+    <requestid>103446</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b4030410769ea543c0e375da63045736</srcmd5>
+    <version>0.20120105</version>
+    <time>1340184197</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>b4030410769ea543c0e375da63045736</srcmd5>
+    <version>0.20120105</version>
+    <time>1359110381</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>b4030410769ea543c0e375da63045736</srcmd5>
+    <version>0.20120105</version>
+    <time>1379664625</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>b4030410769ea543c0e375da63045736</srcmd5>
+    <version>0.20120105</version>
+    <time>1409303328</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f86b43a7c62bb5467aa728df08043af</srcmd5>
+    <version>20140419</version>
+    <time>1412590001</time>
+    <user>coolo</user>
+    <comment>- Update to new snapshot 20140419</comment>
+    <requestid>254087</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>22e3cb776607fe69b3f045ddbca40ac1</srcmd5>
+    <version>20150409</version>
+    <time>1428652506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 20150409</comment>
+    <requestid>295248</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4e03ecd5865d4c84a4b99331b42efb6f</srcmd5>
+    <version>20170910</version>
+    <time>1518426876</time>
+    <user>dimstar_suse</user>
+    <comment>- Get rid of BuildRequires: xorg-x11-devel.
+- Update to new upstream release 20170910</comment>
+    <requestid>574285</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>683c5e8b2ea11e31c873d94b177c9d87</srcmd5>
+    <version>20190805</version>
+    <time>1566243690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20190805</comment>
+    <requestid>724394</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>84bf1135d2bde4add354182a9498ec51</srcmd5>
+    <version>20200412</version>
+    <time>1593904609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20200412</comment>
+    <requestid>818403</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>65851b9513939dcd8dc4398d07443fa2</srcmd5>
+    <version>20210525</version>
+    <time>1624735535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20210525</comment>
+    <requestid>902485</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>82bf06d600454bf67bdf8f91a285fc27</srcmd5>
+    <version>20211116</version>
+    <time>1637228011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20211116</comment>
+    <requestid>931933</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c663c9ec603d92186a540c27f3594ce5</srcmd5>
+    <version>20220125</version>
+    <time>1650548565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971341</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6467a61c6bb370284af9b431ca335dce</srcmd5>
+    <version>20220506</version>
+    <time>1651856415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220506</comment>
+    <requestid>975452</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>6b1bf043d9c00de8266a9634fc4fb0d8</srcmd5>
+    <version>20220506</version>
+    <time>1652801075</time>
+    <user>dimstar_suse</user>
+    <comment>- Employ pkgconfig(sdl) to allow pulling in sdl12_compat.</comment>
+    <requestid>977670</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>2d3f2f79b2a246d35b5497702420152b</srcmd5>
+    <version>20220506</version>
+    <time>1655972703</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-configure.ac-Accept-SDL-1.2.50.patch</comment>
+    <requestid>984615</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2757f18d725c9131c30067b9a1291c0f</srcmd5>
+    <version>20220807</version>
+    <time>1659890050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220807</comment>
+    <requestid>993617</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>76552bf899cc2dfb678ae8ffeb900538</srcmd5>
+    <version>20220905</version>
+    <time>1662462060</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220905</comment>
+    <requestid>1001319</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bc464f499c869afc460d4ec5cbfe9318</srcmd5>
+    <version>20221020</version>
+    <time>1666361974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221020</comment>
+    <requestid>1030231</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>682d93599a1512448f4322bc15f53d80</srcmd5>
+    <version>20221201</version>
+    <time>1669983193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221201</comment>
+    <requestid>1039388</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d2ece8ed577afeea3cc5910031f1eba3</srcmd5>
+    <version>20230906</version>
+    <time>1694114019</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20230906</comment>
+    <requestid>1109458</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>304118e8c37cbb0a84fdc912b5965c65</srcmd5>
+    <version>20231029</version>
+    <time>1698604902</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2013102</comment>
+    <requestid>1120939</requestid>
+  </revision>
+</revisionlist>

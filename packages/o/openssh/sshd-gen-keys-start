@@ -1,0 +1,9 @@
+#!/bin/sh
+
+test -f /etc/sysconfig/ssh && . /etc/sysconfig/ssh
+
+if [ "x$SSHD_AUTO_KEYGEN" != "xno" ]; then
+    echo "Checking for missing server keys in /etc/ssh"
+    test -d /etc/ssh || mkdir -p /etc/ssh
+    ssh-keygen -A
+fi

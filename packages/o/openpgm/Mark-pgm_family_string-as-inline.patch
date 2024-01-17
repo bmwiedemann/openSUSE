@@ -1,0 +1,24 @@
+Author: Luca Boccassi <bluca@debian.org>
+Description: Mark pgm_family_string as 'inline'
+ Functions defined in headers need to be 'static inline', otherwise the compiler
+ will generate an unused-function warning for every program that includes the
+ header but doesn't use the function.
+
+ In file included from /usr/include/pgm-5.3/pgm/skbuff.h:39,
+                  from /usr/include/pgm-5.3/pgm/msgv.h:33,
+                  from /usr/include/pgm-5.3/pgm/pgm.h:44,
+                  from src/ip.cpp:53:
+ /usr/include/pgm-5.3/pgm/socket.h:207:1: error: 'const char* pgm_family_string(int)' defined but not used [-Werror=unused-function]
+   207 | pgm_family_string (
+       | ^~~~~~~~~~~~~~~~~
+--- pgm.orig/include/pgm/socket.h
++++ pgm/include/pgm/socket.h
+@@ -202,7 +202,7 @@ int pgm_wsapoll_info (pgm_sock_t*const restrict, WSAPOLLFD*const restrict, ULONG
+ int pgm_epoll_ctl (pgm_sock_t*const, const int, const int, const int);
+ #endif
+
+-static
++static inline
+ const char*
+ pgm_family_string (
+ 	const int       family

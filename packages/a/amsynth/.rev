@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a72c195288f89ef1adf94512350dae8a</srcmd5>
+    <version>1.7.0</version>
+    <time>1485382779</time>
+    <user>dimstar_suse</user>
+    <comment>New package: Analog Modelling SYNTHesizer</comment>
+    <requestid>440541</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>567c16bc0251f30bf87296ed3df5c4f7</srcmd5>
+    <version>1.7.1</version>
+    <time>1492714481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.1:</comment>
+    <requestid>487775</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>372c5fc04bb697d87c3ac076498033af</srcmd5>
+    <version>1.8.0</version>
+    <time>1498638991</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506382</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4ec58bd6d0ed5c0a03d33d958b57c616</srcmd5>
+    <version>1.8.0</version>
+    <time>1523886345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593191</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb7527dfea2ee59d40f1c3d5b5aa7bb8</srcmd5>
+    <version>1.9.0</version>
+    <time>1560337826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697034</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c4ae228eee1e796c838c06e392e8a6fd</srcmd5>
+    <version>1.9.0</version>
+    <time>1573044734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739497</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2c99b81ee6ce3938c73c4d7ab6111801</srcmd5>
+    <version>1.10.0</version>
+    <time>1591862726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813104</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8eb7cc66f986021618bfa5d047ff36cc</srcmd5>
+    <version>1.11.0</version>
+    <time>1600802058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835998</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>980a7ad555d3bbe7e17a39e6b7201087</srcmd5>
+    <version>1.12.0</version>
+    <time>1605012427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847466</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ba90a0d082142543d9b4176480926a4f</srcmd5>
+    <version>1.12.1</version>
+    <time>1605644724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848833</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9cbb9202ebfba0f2ad81d1464c66d3c1</srcmd5>
+    <version>1.12.2</version>
+    <time>1606913877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852077</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0330e4bf0938810fbfba828079f032a2</srcmd5>
+    <version>1.12.2</version>
+    <time>1631310088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917933</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2388bd5bf8fc42682cb1c93945ee56d2</srcmd5>
+    <version>1.12.4</version>
+    <time>1641765014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945018</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d75ebef6dfe4e45b72f8dbf9289d20f0</srcmd5>
+    <version>1.12.4</version>
+    <time>1648241708</time>
+    <user>dimstar_suse</user>
+    <comment>- skip pandoc for arm 32bit platforms as well 
+</comment>
+    <requestid>964931</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>166c8b18fe5f677c1904ebd42c621605</srcmd5>
+    <version>1.13.0</version>
+    <time>1658162063</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989676</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>daf1f19326969913211a8cf835a78909</srcmd5>
+    <version>1.13.1</version>
+    <time>1674495168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060382</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>9c9a53395266ddee32ba1c6b9d420428</srcmd5>
+    <version>1.13.1</version>
+    <time>1674927908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061681</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9a221aaf258a4d70775ee8881659c0cc</srcmd5>
+    <version>1.13.2</version>
+    <time>1676464853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065871</requestid>
+  </revision>
+</revisionlist>

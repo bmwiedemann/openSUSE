@@ -1,0 +1,10 @@
+--- ant-contrib/build.properties	2006-11-02 17:46:26.000000000 +0100
++++ ant-contrib/build.properties	2017-09-06 20:13:43.067914247 +0200
+@@ -3,5 +3,5 @@
+ jar.name=${project.name}.jar
+ jar.name.versioned=${project.name}-${project.version}.jar
+ ivy.deliver.revision=${project.version}
+-jdk.source=1.4
+-jdk.target=1.4
++jdk.source=8
++jdk.target=8

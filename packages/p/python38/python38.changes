@@ -1,0 +1,2531 @@
+-------------------------------------------------------------------
+Wed Sep  6 06:09:33 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.8.18 (bsc#1214692):
+  - gh-108310: Fixed an issue where instances of ssl.SSLSocket were
+    vulnerable to a bypass of the TLS handshake and included
+    protections (like certificate verification) and treating sent
+    unencrypted data as if it were post-handshake TLS encrypted data.
+    Security issue reported as CVE-2023-40217 by Aapo Oksman. Patch by
+    Gregory P. Smith.
+  - gh-107845: tarfile.data_filter() now takes the location of
+    symlinks into account when determining their target, so it will no
+    longer reject some valid tarballs with
+    LinkOutsideDestinationError.
+  - gh-107565: Update multissltests and GitHub CI workflows to use
+    OpenSSL 1.1.1v, 3.0.10, and 3.1.2.
+
+-------------------------------------------------------------------
+Thu Aug  3 14:53:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- IT MEANS THAT bsc#1210638 STILL HAS NOT BEEN FIXED!
+- Add Revert-gh105127-left-tests.patch (gh#python/cpython!106941)
+  partially reverting CVE-2023-27043-email-parsing-errors.patch,
+  because of the regression in gh#python/cpython#106669.
+- (bsc#1210638, CVE-2023-27043) Add
+  CVE-2023-27043-email-parsing-errors.patch, which detects email
+  address parsing errors and returns empty tuple to indicate the
+  parsing error (old API). (The patch is faulty,
+  gh#python/cpython#106669, but upstream decided not to just
+  revert it).
+
+-------------------------------------------------------------------
+Wed Jun 28 16:57:46 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.17:
+  - gh-103142: The version of OpenSSL used in Windows and
+    Mac installers has been upgraded to 1.1.1u to address
+    CVE-2023-2650, CVE-2023-0465, CVE-2023-0466, CVE-2023-0464,
+    as well as CVE-2023-0286, CVE-2022-4303, and CVE-2022-4303
+    fixed previously in 1.1.1t (gh-101727).
+  - gh-102153: urllib.parse.urlsplit() now strips leading C0
+    control and space characters following the specification for
+    URLs defined by WHATWG in response to CVE-2023-24329
+    (bsc#1208471).
+  - gh-99889: Fixed a security in flaw in uu.decode() that could
+    allow for directory traversal based on the input if no
+    out_file was specified.
+  - gh-104049: Do not expose the local on-disk
+    location in directory indexes produced by
+    http.client.SimpleHTTPRequestHandler.
+  - gh-103935: trace.__main__ now uses io.open_code() for files
+    to be executed instead of raw open().
+  - gh-102953: The extraction methods in tarfile, and
+    shutil.unpack_archive(), have a new filter argument that
+    allows limiting tar features than may be surprising or
+    dangerous, such as creating files outside the destination
+    directory. See Extraction filters for details (fixing
+    CVE-2007-4559, bsc#1203750).
+- Remove upstreamed patches:
+  - CVE-2023-24329-blank-URL-bypass.patch
+  - CVE-2007-4559-filter-tarfile_extractall.patch
+
+-------------------------------------------------------------------
+Sat May  6 17:31:35 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add 99366-patch.dict-can-decorate-async.patch fixing
+  gh#python/cpython#98086 (backport from Python 3.10 patch in
+  gh#python/cpython!99366), fixing bsc#1211158.
+
+-------------------------------------------------------------------
+Wed May  3 14:09:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2007-4559-filter-tarfile_extractall.patch to fix
+  CVE-2007-4559 (bsc#1203750) by adding the filter for
+  tarfile.extractall (PEP 706).
+
+-------------------------------------------------------------------
+Tue Apr 18 05:00:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use python3 modules to build the documentation. 
+
+-------------------------------------------------------------------
+Wed Mar  1 14:43:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2023-24329-blank-URL-bypass.patch (CVE-2023-24329,
+  bsc#1208471) blocklists bypass via the urllib.parse component
+  when supplying a URL that starts with blank characters
+
+-------------------------------------------------------------------
+Tue Feb 21 11:34:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add provides for readline and sqlite3 to the main Python
+  package.
+
+-------------------------------------------------------------------
+Fri Jan 27 15:00:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable NIS for new products, it's deprecated and gets removed
+
+-------------------------------------------------------------------
+Fri Jan 13 08:04:11 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Suppress warnings for Sphinx 6.0+.
+
+-------------------------------------------------------------------
+Thu Dec  8 10:32:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.16:
+  - python -m http.server no longer allows terminal
+    control characters sent within a garbage request to be
+    printed to the stderr server log.
+    This is done by changing the http.server
+    BaseHTTPRequestHandler .log_message method to replace control
+    characters with a \xHH hex escape before printing.
+  - Avoid publishing list of active per-interpreter
+    audit hooks via the gc module
+  - The IDNA codec decoder used on DNS hostnames by
+    socket or asyncio related name resolution functions no
+    longer involves a quadratic algorithm. This prevents a
+    potential CPU denial of service if an out-of-spec excessive
+    length hostname involving bidirectional characters were
+    decoded. Some protocols such as urllib http 3xx redirects
+    potentially allow for an attacker to supply such a
+    name (CVE-2022-45061).
+  - Update bundled libexpat to 2.5.0
+  - Port XKCP’s fix for the buffer overflows in SHA-3
+    (CVE-2022-37454).
+  - The deprecated mailcap module now refuses to inject
+    unsafe text (filenames, MIME types, parameters) into shell
+    commands. Instead of using such text, it will warn and act
+    as if a match was not found (or for test commands, as if the
+    test failed).
+- Removed upstream patches:
+  - CVE-2022-37454-sha3-buffer-overflow.patch
+  - CVE-2022-45061-DoS-by-IDNA-decode.patch
+
+-------------------------------------------------------------------
+Wed Nov  9 18:31:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2022-45061-DoS-by-IDNA-decode.patch to avoid
+  CVE-2022-45061 (bsc#1205244) allowing DoS by IDNA decoding
+  extremely long domain names.
+
+-------------------------------------------------------------------
+Fri Oct 28 19:43:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2022-37454-sha3-buffer-overflow.patch to fix
+  bsc#1204577 (CVE-2022-37454, gh#python/cpython#98517) buffer
+  overflow in hashlib.sha3_* implementations (originally from the
+  XKCP library).
+
+-------------------------------------------------------------------
+Fri Oct 21 10:14:03 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 98437-sphinx.locale._-as-gettext-in-pyspecific.patch to
+  allow building of documentation with the latest Sphinx 5.3.0
+  (gh#python/cpython#98366).
+
+-------------------------------------------------------------------
+Thu Oct 20 11:49:44 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add platlibdir-in-sys.patch to provide sys.platlibdir attribute. This is used
+  by python-setuptools in distutils.sysconfig.get_python_lib bsc#1204395
+
+-------------------------------------------------------------------
+Wed Oct 19 07:12:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.15:
+  - Fix multiplying a list by an integer (list *= int): detect
+    the integer overflow when the new allocated length is close
+    to the maximum size.
+  - Fix a shell code injection vulnerability in the
+    get-remote-certificate.py example script. The script no
+    longer uses a shell to run openssl commands. (originally
+    filed as CVE-2022-37460, later withdrawn)
+  - Fix command line parsing: reject -X int_max_str_digits option
+    with no value (invalid) when the PYTHONINTMAXSTRDIGITS
+    environment variable is set to a valid limit.
+  - When ValueError is raised if an integer is larger than the
+    limit, mention the sys.set_int_max_str_digits() function in
+    the error message.
+  - Update bundled libexpat to 2.4.9
+  - Fixes a potential buffer overrun in msilib.
+
+-------------------------------------------------------------------
+Sun Sep 11 09:07:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.14:
+  - (CVE-2020-10735, bsc#1203125). Converting between int
+    and str in bases other than 2 (binary), 4, 8 (octal), 16
+    (hexadecimal), or 32 such as base 10 (decimal) now raises a
+    ValueError if the number of digits in string form is above a
+    limit to avoid potential denial of service attacks due to the
+    algorithmic complexity.
+    This new limit can be configured or disabled by environment
+    variable, command line flag, or sys APIs. See the integer
+    string conversion length limitation documentation. The
+    default limit is 4300 digits in string form.
+  - (CVE-2021-28861, bsc#1202624) http.server: Fix an open
+    redirection vulnerability in the HTTP server when an URI path
+    starts with //. Vulnerability discovered, and initial fix
+    proposed, by Hamza Avvan.
+  - Also other bugfixes:
+    - Fix contextvars HAMT implementation to handle iteration
+      over deep trees. The bug was discovered and fixed by Eli
+      Libman. See MagicStack/immutables#84 for more details.
+    - Fix ensurepip environment isolation for subprocess running
+      pip.
+    - Raise ProgrammingError instead of segfaulting on recursive
+      usage of cursors in sqlite3 converters. Patch by Sergey
+      Fedoseev.
+    - Add a new gh role to the documentation to link to GitHub
+      issues.
+    - Pin Jinja to a version compatible with Sphinx version
+      2.4.4.
+    - test_ssl is now checking for supported TLS version and
+      protocols in more tests.
+    - Fix test case for OpenSSL 3.0.1 version. OpenSSL 3.0 uses
+      0xMNN00PP0L.
+- Removed upstreamed patches:
+  - CVE-2021-28861-double-slash-path.patch
+- Readjusted patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - sphinx-update-removed-function.patch
+
+-------------------------------------------------------------------
+Sat Sep  3 02:20:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1196784, CVE-2022-25236) Add patch
+  support-expat-CVE-2022-25236-patched.patch to allow working
+  with different versions of libexpat.
+
+-------------------------------------------------------------------
+Thu Sep  1 04:20:04 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch CVE-2021-28861-double-slash-path.patch:
+  * http.server: Fix an open redirection vulnerability in the HTTP server
+    when an URI path starts with //. (bsc#1202624, CVE-2021-28861)
+
+-------------------------------------------------------------------
+Wed Aug 31 08:47:57 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add bpo34990-2038-problem-compileall.patch making compileall.py
+  compliant with year 2038 (bsc#1202666, gh#python/cpython#79171),
+  backport of fix to Python 3.8.
+- Add conditional for requiring rpm-build-python, so we should be
+  compilable on SLE/Leap.
+
+-------------------------------------------------------------------
+Thu Jul 21 14:19:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch from %primary_interpreter to prjconf-defined
+  %primary_python (gh#openSUSE/python-rpm-macros#127).
+
+-------------------------------------------------------------------
+Thu May  5 14:34:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch primary_interpreter from python38 to python310
+
+-------------------------------------------------------------------
+Sat Mar 26 21:59:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.13:
+Core and Builtins
+    bpo-46794: Bump up the libexpat version into 2.4.6
+    bpo-46985: Upgrade pip wheel bundled with ensurepip (pip 22.0.4)
+    bpo-46932: Update bundled libexpat to 2.4.7
+    bpo-46811: Make test suite support Expat >=2.4.5
+    bpo-46784: Fix libexpat symbols collisions with user
+      dynamically loaded or statically linked libexpat in embedded
+      Python.
+    bpo-46400: expat: Update libexpat from 2.4.1 to 2.4.4
+    bpo-46474: In importlib.metadata.EntryPoint.pattern, avoid
+      potential REDoS by limiting ambiguity in consecutive
+      whitespace.
+    bpo-44849: Fix the os.set_inheritable() function on FreeBSD
+      14 for file descriptor opened with the O_PATH flag: ignore
+      the EBADF error on ioctl(), fallback on the fcntl()
+      implementation.
+    bpo-41028: Language and version switchers, previously
+      maintained in every cpython branches, are now handled by
+      docsbuild-script.
+    bpo-45195: Fix test_readline.test_nonascii(): sometimes, the
+      newline character is not written at the end, so don’t
+      expect it in the output.
+    bpo-44949: Fix auto history tests of test_readline:
+      sometimes, the newline character is not written at the end,
+      so don’t expect it in the output.
+    bpo-45405: Prevent internal configure error when running
+      configure with recent versions of clang.
+- Remove upstreamed patches:
+  - support-expat-245.patch
+
+-------------------------------------------------------------------
+Tue Feb 22 05:53:06 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-expat-245.patch:
+  * Support Expat >= 2.4.5 
+
+-------------------------------------------------------------------
+Mon Nov 29 00:17:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove shebangs from from python-base libraries in _libdir
+  (bsc#1193179).
+- Readjust patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - decimal.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+
+-------------------------------------------------------------------
+Tue Oct 12 12:22:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire rpm-build-python: The provider to inject python(abi)
+  has been moved there. rpm-build pulls rpm-build-python
+  automatically in when building anything against python3-base, but
+  this implies that the initial build of python3-base does not
+  trigger the automatic installation.
+
+-------------------------------------------------------------------
+Tue Aug 31 01:18:08 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.8.12
+  * Complete list of changes is available at
+    https://docs.python.org/release/3.8.12/whatsnew/changelog.html
+  * Security
+    - bpo-42278: Replaced usage of tempfile.mktemp() with
+      TemporaryDirectory to avoid a potential race condition.
+    - bpo-44394: Update the vendored copy of libexpat to 2.4.1
+      (from 2.2.8) to get the fix for the CVE-2013-0340 “Billion
+      Laughs” vulnerability. This copy is most used on Windows and
+      macOS.
+    - bpo-43124: Made the internal putcmd function in smtplib
+      sanitize input for presence of \r and \n characters to avoid
+      (unlikely) command injection.
+    - bpo-36384: ipaddress module no longer accepts any leading
+      zeros in IPv4 address strings. Leading zeros are ambiguous
+      and interpreted as octal notation by some libraries. For
+      example the legacy function socket.inet_aton() treats leading
+      zeros as octal notation. glibc implementation of modern
+      inet_pton() does not accept any leading zeros. For a while
+      the ipaddress module used to accept ambiguous leading zeros.
+- Refreshed patch:
+  * decimal-3.8.patch
+
+-------------------------------------------------------------------
+Fri Aug 27 12:00:12 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add decimal-3.8.patch to add building with --with-system-libmpdec
+  option (bsc#1189356).
+
+-------------------------------------------------------------------
+Thu Aug 26 12:00:25 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- test_faulthandler is still problematic under qemu linux-user emulation,
+  disable it there
+- Reenable profileopt with qemu emulation, test_faulthandler is no longer
+  run during profiling
+
+-------------------------------------------------------------------
+Tue Aug 10 00:25:26 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.8.11
+  * Security
+    - bpo-44022 (boo#1189241): mod:http.client now avoids
+      infinitely reading potential HTTP headers after a 100
+      Continue status response from the server.
+    - bpo-43882: The presence of newline or tab characters in parts
+      of a URL could allow some forms of attacks.
+      Following the controlling specification for URLs defined by
+      WHATWG urllib.parse() now removes ASCII newlines and tabs
+      from URLs, preventing such attacks.
+    - bpo-42800: Audit hooks are now fired for frame.f_code,
+      traceback.tb_frame, and generator code/frame attribute
+      access.
+  * Core and Builtins
+    - bpo-44070: No longer eagerly makes import filenames absolute,
+      except for extension modules, which was introduced in 3.8.10.
+  * Library
+    - bpo-44061: Fix regression in previous release when calling
+      pkgutil.iter_modules() with a list of pathlib.Path objects
+
+-------------------------------------------------------------------
+Mon Aug  2 12:35:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use versioned python-Sphinx to avoid dependency on other
+  version of Python (bsc#1183858).
+
+-------------------------------------------------------------------
+Fri Jun 18 22:45:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add bpo44426-complex-keyword-sphinx.patch allowing generating
+  documentation with Sphinx 4 (bpo#44426).
+
+-------------------------------------------------------------------
+Tue Jun  8 11:18:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- allow building against sphinx 3.x+ 
+
+-------------------------------------------------------------------
+Fri May 21 15:13:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Stop providing "python" symbol (bsc#1185588), which means
+  python2 currently.
+
+-------------------------------------------------------------------
+Wed May  5 15:29:30 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.10:
+  - Security
+    - bpo-43434: Creating a sqlite3.Connection object now also
+      produces a sqlite3.connect auditing event. Previously this
+      event was only produced by sqlite3.connect() calls. Patch
+      by Erlend E. Aasland.
+    - bpo-43472: Ensures interpreter-level audit hooks receive
+      the cpython.PyInterpreterState_New event when called
+      through the _xxsubinterpreters module.
+    - bpo-43075: Fix Regular Expression Denial of Service (ReDoS)
+      vulnerability in urllib.request.AbstractBasicAuthHandler.
+      The ReDoS-vulnerable regex has quadratic worst-case
+      complexity and it allows cause a denial of service when
+      identifying crafted invalid RFCs. This ReDoS issue is on
+      the client side and needs remote attackers to control the
+      HTTP server.
+  - Core and Builtins
+    - bpo-43105: Importlib now resolves relative paths when
+      creating module spec objects from file locations.
+    - bpo-42924: Fix bytearray repetition incorrectly copying
+      data from the start of the buffer, even if the data is
+      offset within the buffer (e.g. after reassigning a slice at
+      the start of the bytearray to a shorter byte string).
+  - Library
+    - bpo-43993: Update bundled pip to 21.1.1.
+    - bpo-43937: Fixed the turtle module working with non-default
+      root window.
+    - bpo-43930: Update bundled pip to 21.1 and setuptools to
+      56.0.0
+    - bpo-43920: OpenSSL 3.0.0: load_verify_locations() now
+      returns a consistent error message when cadata contains no
+      valid certificate.
+    - bpo-43607: urllib can now convert Windows paths with \\?\
+      prefixes into URL paths.
+    - bpo-43284: platform.win32_ver derives the windows version
+      from sys.getwindowsversion().platform_version which in turn
+      derives the version from kernel32.dll (which can be of
+      a different version than Windows itself). Therefore change
+      the platform.win32_ver to determine the version using the
+      platform module’s _syscmd_ver private function to return an
+      accurate version.
+    - bpo-42248: [Enum] ensure exceptions raised in _missing__
+      are released
+    - bpo-43799: OpenSSL 3.0.0: define OPENSSL_API_COMPAT 1.1.1
+      to suppress deprecation warnings. Python requires OpenSSL
+      1.1.1 APIs.
+    - bpo-43794: Add ssl.OP_IGNORE_UNEXPECTED_EOF constants
+      (OpenSSL 3.0.0)
+    - bpo-43789: OpenSSL 3.0.0: Don’t call the password callback
+      function a second time when first call has signaled an
+      error condition.
+    - bpo-43788: The header files for ssl error codes are now
+      OpenSSL version-specific. Exceptions will now show correct
+      reason and library codes. The make_ssl_data.py script has
+      been rewritten to use OpenSSL’s text file with error codes.
+    - bpo-43655: tkinter dialog windows are now recognized as
+      dialogs by window managers on macOS and X Window.
+    - bpo-43534: turtle.textinput() and turtle.numinput() create
+      now a transient window working on behalf of the canvas
+      window.
+    - bpo-43522: Fix problem with hostname_checks_common_name.
+      OpenSSL does not copy hostflags from struct SSL_CTX to
+      struct SSL.
+    - bpo-42967: Allow bytes separator argument in
+      urllib.parse.parse_qs and urllib.parse.parse_qsl when
+      parsing str query strings. Previously, this raised
+      a TypeError.
+    - bpo-43176: Fixed processing of a dataclass that inherits
+      from a frozen dataclass with no fields. It is now correctly
+      detected as an error.
+    - bpo-34463: Fixed discrepancy between traceback and the
+      interpreter in formatting of SyntaxError with lineno not
+      set (traceback was changed to match interpreter).
+    - bpo-41735: Fix thread locks in zlib module may go wrong in
+      rare case. Patch by Ma Lin.
+    - bpo-26053: Fixed bug where the pdb interactive run command
+      echoed the args from the shell command line, even if those
+      have been overridden at the pdb prompt.
+    - bpo-36470: Fix dataclasses with InitVars and replace().
+      Patch by Claudiu Popa.
+    - bpo-28577: The hosts method on 32-bit prefix length
+      IPv4Networks and 128-bit prefix IPv6Networks now returns
+      a list containing the single Address instead of an empty
+      list.
+    - bpo-32745: Fix a regression in the handling of ctypes’
+      ctypes.c_wchar_p type: embedded null characters would cause
+      a ValueError to be raised. Patch by Zackery Spytz.
+  - Documentation
+    - bpo-43959: The documentation on the PyContextVar C-API was
+      clarified.
+    - bpo-43938: Update dataclasses documentation to express that
+      FrozenInstanceError is derived from AttributeError.
+    - bpo-43739: Fixing the example code in
+      Doc/extending/extending.rst to declare and initialize the
+      pmodule variable to be of the right type.
+  - Tests
+    - bpo-43842: Fix a race condition in the SMTP test of
+      test_logging. Don’t close a file descriptor (socket) from
+      a different thread while asyncore.loop() is polling the
+      file descriptor. Patch by Victor Stinner.
+    - bpo-43811: Tests multiple OpenSSL versions on GitHub
+      Actions. Use ccache to speed up testing.
+    - bpo-43791: OpenSSL 3.0.0: Disable testing of legacy
+      protocols TLS 1.0 and 1.1. Tests are failing with
+      TLSV1_ALERT_INTERNAL_ERROR.
+  - IDLE
+    - bpo-43655: IDLE dialog windows are now recognized as
+      dialogs by window managers on macOS and X Window.
+  - C API
+    - bpo-43962: _PyInterpreterState_IDIncref() now calls
+      _PyInterpreterState_IDInitref() and always increments
+      id_refcount. Previously, calling
+      _xxsubinterpreters.get_current() could create an
+      id_refcount inconsistency when
+      a _xxsubinterpreters.InterpreterID object was deallocated.
+      Patch by Victor Stinner.
+- Reapplied patches:
+  - CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  - F00102-lib64.patch
+  - SUSE-FEDORA-multilib.patch
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+
+-------------------------------------------------------------------
+Sun May  2 09:20:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Make sure to close the import_failed.map file after the exception
+  has been raised in order to avoid ResourceWarnings when the
+  failing import is part of a try...except block.
+
+-------------------------------------------------------------------
+Wed Apr 28 17:32:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.9:
+  - bpo#42988 (bsc#1183374) CVE-2021-3426: Remove the getfile
+    feature of the pydoc module which could be abused to read
+    arbitrary files on the disk (directory traversal
+    vulnerability). Moreover, even source code of Python modules
+    can contain sensitive data like passwords. Vulnerability
+    reported by David Schwörer.
+  - bpo-43285: ftplib no longer trusts the IP address value
+    returned from the server in response to the PASV command by
+    default. This prevents a malicious FTP server from using the
+    response to probe IPv4 address and port combinations on the
+    client network.
+  - Code that requires the former vulnerable behavior may set
+    a trust_server_pasv_ipv4_address attribute on their
+    ftplib.FTP instances to True to re-enable it.
+  - bpo-43439: Add audit hooks for gc.get_objects(),
+    gc.get_referrers() and gc.get_referents(). Patch by Pablo
+    Galindo.
+  - bpo-43660: Fix crash that happens when replacing sys.stderr
+    with a callable that can remove the object while an exception
+    is being printed. Patch by Pablo Galindo.
+  - bpo-35883: Python no longer fails at startup with a fatal
+    error if a command line argument contains an invalid Unicode
+    character. The Py_DecodeLocale() function now escapes byte
+    sequences which would be decoded as Unicode characters
+    outside the [U+0000; U+10ffff] range.
+  - bpo-43406: Fix a possible race condition where
+    PyErr_CheckSignals tries to execute a non-Python signal
+    handler.
+  - bpo-35930: Raising an exception raised in a “future” instance
+    will create reference cycles.
+  - bpo-43577: Fix deadlock when using ssl.SSLContext debug
+    callback with ssl.SSLContext.sni_callback().
+  - bpo-43423: subprocess.communicate() no longer raises an
+    IndexError when there is an empty stdout or stderr IO buffer
+    during a timeout on Windows.
+  - bpo-27820: Fixed long-standing bug of smtplib.SMTP where
+    doing AUTH LOGIN with initial_response_ok=False will fail.
+    The cause is that SMTP.auth_login _always_ returns a password
+    if provided with a challenge string, thus non-compliant with
+    the standard for AUTH LOGIN. Also fixes bug with the test for
+    smtpd.
+  - bpo-43399: Fix ElementTree.extend not working on iterators
+    when using the Python implementation
+  - bpo-43316: The python -m gzip command line application now
+    properly fails when detecting an unsupported extension. It
+    exits with a non-zero exit code and prints an error message
+    to stderr.
+  - bpo-43260: Fix TextIOWrapper can not flush internal buffer
+    forever after very large text is written.
+  - bpo-42782: Fail fast in shutil.move() to avoid creating
+    destination directories on failure.
+  - bpo-37193: Fixed memory leak in socketserver.ThreadingMixIn
+    introduced in Python 3.7.
+  - bpo-43199: Answer “Why is there no goto?” in the Design and
+    History FAQ.
+  - bpo-43407: Clarified that a result from time.monotonic(),
+    time.perf_counter(), time.process_time(), or
+    time.thread_time() can be compared with the result from any
+    following call to the same function - not just the next
+    immediate call.
+  - bpo-27646: Clarify that ‘yield from <expr>’ works with any
+    iterable, not just iterators.
+  - bpo-36346: Update some deprecated unicode APIs which are
+    documented as “will be removed in 4.0” to “3.12”. See PEP 623
+    for detail.
+  - bpo-37945: Fix test_getsetlocale_issue1813() of test_locale:
+    skip the test if setlocale() fails. Patch by Victor Stinner.
+  - bpo-41561: Add workaround for Ubuntu’s custom OpenSSL
+    security level policy.
+  - bpo-43631: Update macOS, Windows, and CI to OpenSSL 1.1.1k.
+  - bpo-43617: Improve configure.ac: Check for presence of
+    autoconf-archive package and remove our copies of M4 macros.
+  - bpo-41837: Update macOS installer build to use OpenSSL
+    1.1.1j.
+  - bpo-42225: Document that IDLE can fail on Unix either from
+    misconfigured IP masquerage rules or failure displaying
+    complex colored (non-ascii) characters.
+  - bpo-43283: Document why printing to IDLE’s Shell is often
+    slower than printing to a system terminal and that it can be
+    made faster by pre-formatting a single string before
+    printing.
+
+-------------------------------------------------------------------
+Fri Feb 19 16:40:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.8:
+  - bpo#42938 (bsc#1181126): Avoid static buffers when computing
+    the repr of ctypes.c_double and ctypes.c_longdouble
+    values. This issue was assigned CVE-2021-3177.
+  - bpo#42967 (bsc#1182379): Fix web cache poisoning
+    vulnerability by defaulting the query args separator to &,
+    and allowing the user to choose a custom separator. This
+    issue was assigned CVE-2021-23336.
+- Remove bsc1167501-invalid-alignment.patch and
+  CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch, which were included
+  into the upstream tarball.
+
+-------------------------------------------------------------------
+Tue Feb  9 01:37:01 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add Obsoletes for python3-base when primary interpreter is set to
+  properly replace it during upgrades. (bsc#1181324)
+
+-------------------------------------------------------------------
+Fri Feb  5 15:35:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Provide %have_<flavor> for all python flavors
+  gh#openSUSE/python-rpm-macros#96
+- Add %python3_default and %default_python3 for the primary python3
+  flavor
+
+-------------------------------------------------------------------
+Fri Jan 29 17:22:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
+  bsc#1181126 (CVE-2021-3177) buffer overflow in PyCArg_repr in
+  _ctypes/callproc.c, which may lead to remote code execution.
+
+-------------------------------------------------------------------
+Tue Jan  5 09:15:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1180125) We really don't Require python-rpm-macros package.
+  Unnecessary dependency.
+
+-------------------------------------------------------------------
+Tue Dec 22 08:27:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.7:
+  - bugfix release
+  - multiple patches realigned:
+    - F00102-lib64.patch
+    - SUSE-FEDORA-multilib.patch
+    - bpo-31046_ensurepip_honours_prefix.patch
+    - skip_random_failing_tests.patch
+
+-------------------------------------------------------------------
+Thu Dec 10 00:26:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Last try before this results in an editwar:
+  * remove importlib_resources and importlib-metadata 
+    provides/obsoletes
+  * import importlib_resources is not the same as
+    import importlib.resources, same for metadata
+  * The backport packages from PyPI needed for older flavors are
+    specified as such for setuptools or in pyproject.toml. If a
+    package requires them they typically add them with a python
+    version qualifier and the packages have their own version
+    numbers.
+
+-------------------------------------------------------------------
+Sat Dec  5 16:55:12 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add patch sphinx-update-removed-function.patch to no longer call
+  a now removed function and to make documentation build independent of
+  the Sphinx version (bsc#1179630, gh#python/cpython#13236).
+
+-------------------------------------------------------------------
+Wed Dec  2 10:57:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add importlib_resources provide/obsolete as it is integral
+  part of the lang since 3.7 release 
+
+-------------------------------------------------------------------
+Fri Nov 20 14:40:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- The Python stdlib >= does not provide importlib_metadata or
+  importlib_resources but importlib.metadata and importlib.resources.
+  If a package specifically asks for importlib_*, they actually
+  require the dedicated package with extended API.
+
+-------------------------------------------------------------------
+Mon Nov  9 10:51:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.6, which contains various bug fixes including security
+  fix of included pip and setuptools (bpo#41490, bsc#1176262,
+  CVE-2019-20916). Full list of changes is available at
+  https://docs.python.org/release/3.8.6/whatsnew/changelog.html#python-3-8-6
+- Revert previous patch, and readd bpo-31046_ensurepip_honours_prefix.patch.
+
+-------------------------------------------------------------------
+Fri Oct 30 17:49:32 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace ensurepip with simple script instructing to install
+  packaged pip (bsc#1176262).
+- Remove bpo-31046_ensurepip_honours_prefix.patch, which is not
+  necessary anymore.
+
+-------------------------------------------------------------------
+Fri Oct  9 16:05:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.16: error: bare words are no longer
+  supported, please use "...":  x86 == ppc.
+
+-------------------------------------------------------------------
+Fri Sep 25 06:58:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Buildrequire timezone only for general flavor. It's used in this
+  flavor for the test suite.
+
+-------------------------------------------------------------------
+Tue Sep  1 10:16:34 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Just cleanup and reordering items to synchronize with python39
+
+-------------------------------------------------------------------
+Mon Jul 20 17:46:54 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 3.8.5:
+  - bpo-39603: Prevent http header injection by rejecting control
+    characters in http.client.putrequest(…).
+  - bpo-41295: Resolve a regression in CPython 3.8.4 where defining
+    “__setattr__” in a multi-inheritance setup and calling up the
+    hierarchy chain could fail if builtins/extension types were
+    involved in the base types.
+  - bpo-41288: Unpickling invalid NEWOBJ_EX opcode with the
+    C implementation raises now UnpicklingError instead of
+    crashing.
+  - bpo-39017: Avoid infinite loop when reading specially crafted
+    TAR files using the tarfile module (CVE-2019-20907, bsc#1174091).
+  - bpo-37703: Updated Documentation to comprehensively elaborate
+    on the behaviour of gather.cancel()
+  - bpo-41302: Enable building Python 3.8 with libmpdec-2.5.0 to
+    ease maintenance for Linux distributions. Patch by Felix Yan.
+  - bpo-41300: Save files with non-ascii chars. Fix regression
+    released in 3.9.0b4 and 3.8.4.
+- This release also fixes CVE-2020-26116 (bsc#1177211).
+
+-------------------------------------------------------------------
+Fri Jul 17 06:39:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Few minor fixes for the non-primary-interpreter option found
+  in py3.9
+
+-------------------------------------------------------------------
+Wed Jul 15 10:05:28 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Minor spec file fixes
+
+-------------------------------------------------------------------
+Wed Jul 15 09:10:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix minor issues found in the staging.
+
+-------------------------------------------------------------------
+Tue Jul 14 20:27:24 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.4:
+  - Assignment expressions (PEP-572)
+  - Positional-only parameters (PEP-570)
+  - Parallel filesystem cache for compiled bytecode files
+    (PYTHONPYCACHEPREFIX variable)
+  - Debug build uses the same ABI as release build
+  - f-strings support = for self-documenting expressions
+    and debugging
+  - Python Runtime Audit Hooks (PEP-578)
+  - Python Initialization Configuration (PEP-587)
+  - Vectorcall: a fast calling protocol for CPython (PEP-590)
+  - Pickle protocol 5 with out-of-band data buffers (PEP-574)
+  - Many other smaller bug fixes
+- Removed OBS_dev-shm.patch: contained in upstream
+- Removed bpo40784-Fix-sqlite3-deterministic-test.patch:
+  contained in upstream
+- Changed bpo-31046_ensurepip_honours_prefix.patch: to be
+  compatible with new version
+
+-------------------------------------------------------------------
+Mon Jul 13 11:19:08 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fix %py3_compile being incorrectly defined 
+
+-------------------------------------------------------------------
+Fri Jul 10 10:55:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update pre_checkin.sh and regenerate
+
+-------------------------------------------------------------------
+Fri Jul 10 10:11:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Convert few dependencies to their pkgconfig counterparts
+
+-------------------------------------------------------------------
+Fri Jul 10 10:08:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove release requirement on libpython, it is not really needed
+  to be equal as the abi changes with versions
+
+-------------------------------------------------------------------
+Fri Jul 10 10:07:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add provides python3-bla on all the subpkgs in case we are
+  primary provider of the functionality
+
+-------------------------------------------------------------------
+Fri Jul 10 10:02:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove unversioned files from devel subpkg too
+- Remove main python3 files from -base based whether we are
+  primary interpreter or not
+- Fix idle to be co-installable
+- Add condition to be primary to provide/obsolete python3-*
+- Fix doc to build in versioned folder so the pythons can be
+  installed next to each other
+
+-------------------------------------------------------------------
+Fri Jul 10 07:57:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Revert the full versioning of calls on the macros. These
+  are generic so they should really just call python3 X
+
+-------------------------------------------------------------------
+Fri Jul 10 07:56:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- For the doc package we can build with generic flavor, we don't
+  need the our-interpreter based one
+
+-------------------------------------------------------------------
+Fri Jul 10 07:18:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add provides for pytohn3X-typing/etc to allow BR on those still
+  to work when needed
+
+-------------------------------------------------------------------
+Fri Jul 10 07:14:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Change macros.python3 to use full versioned 3.8 instead of just 3
+  for python interpreter
+
+-------------------------------------------------------------------
+Wed Jul  1 11:50:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reduce some now unused conditionals
+
+-------------------------------------------------------------------
+Wed Jul  1 11:00:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Redux the -base dependencies to match up pre-merge layout
+
+-------------------------------------------------------------------
+Wed Jul  1 09:24:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Generate baselibs in pre-checkin too
+
+-------------------------------------------------------------------
+Wed Jul  1 09:14:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Generate the importlib-failed using pre_checking again
+- Add back the information about skipped tests on the pre_checkin
+  output
+
+-------------------------------------------------------------------
+Tue Jun 30 07:11:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use %python_pkg_name instead of hardcoding python3 where
+  applicable
+- Sort out preamble with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jun 29 14:36:10 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Calculate required variables instead of relying on their continuous manual update
+
+-------------------------------------------------------------------
+Thu Jun 25 10:44:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the -base module build again to generate only the deps
+  we need
+
+-------------------------------------------------------------------
+Wed Jun 17 18:42:51 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace OBS_dev-shm.patch with the upstream PR#20944
+
+-------------------------------------------------------------------
+Thu Jun 10 14:30:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use the %{python_pkg_name} on more places to allow easier
+  multiversioning
+- Switch to _multibuild approach for easier maintenance of this
+  package. All is now in one spec file with 3 conditionals:
+  * bcond_with base
+  * bcond_with doc
+  * bcond_with general
+
+-------------------------------------------------------------------
+Mon Jun  8 14:26:00 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- add requires python3-base on libpython subpackage (bsc#1167008)
+
+-------------------------------------------------------------------
+Fri Jun  5 06:08:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- build against Sphinx 2.x until python is compatible with
+  Sphinx 3.x (see gh#python/cpython#19397, bpo#40204)
+
+-------------------------------------------------------------------
+Fri May 29 19:59:01 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build with SQLite 3.32 (bpo#40783)
+  add bpo40784-Fix-sqlite3-deterministic-test.patch
+
+-------------------------------------------------------------------
+Sun May 17 15:37:35 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 3.8.3:
+  - Complete list of changes is available at
+    https://docs.python.org/release/3.8.3/whatsnew/changelog.html#python-3-8-3-final,
+    but most of them are just bugfixes.
+  - Removed patch CVE-2020-8492-urllib-ReDoS.patch: contained in upstream
+
+-------------------------------------------------------------------
+Thu Apr 16 12:06:01 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add #!BuildIgnore: gdk-pixbuf-loader-rsvg to python3 SPEC
+
+-------------------------------------------------------------------
+Thu Mar 26 15:36:55 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add patch bsc1167501-invalid-alignment.patch
+  (bsc#1167501, bpo#40052) to fix alignment in abstract.h header file.
+
+-------------------------------------------------------------------
+Wed Mar 11 11:09:41 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update list of skipped tests for qemu linux-user build, test_setegid
+  (test.test_os.PosixUidGidTests) is confusing it
+
+-------------------------------------------------------------------
+Thu Mar  5 18:40:29 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.2:
+  - Complete list of changes is available at
+    https://docs.python.org/release/3.8.2/whatsnew/changelog.html#python-3-8-2-final,
+    but most of them are just bugfixes.
+  - Updated patches:
+    - F00102-lib64.patch
+    - OBS_dev-shm.patch
+    - SUSE-FEDORA-multilib.patch
+    - subprocess-raise-timeout.patch
+
+-------------------------------------------------------------------
+Sun Feb  9 00:14:24 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2020-8492-urllib-ReDoS.patch fixing the security bug
+  "Python urrlib allowed an HTTP server to conduct Regular
+  Expression Denial of Service (ReDoS)" (bsc#1162367)
+
+-------------------------------------------------------------------
+Sat Feb  8 22:21:10 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add Requires: libpython%{so_version} == %{version}-%{release}
+  to python3-base to keep both packages always synchronized
+  (bsc#1162224).
+
+-------------------------------------------------------------------
+Mon Feb  3 20:27:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in bluez in base again, explain the cycle,
+  it needs to be solved by bluez maintainer for us by providing
+  just the headers separately
+
+-------------------------------------------------------------------
+Mon Feb  3 19:54:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reame idle icons to idle3 in order to not conflict with python2
+  variant of the package
+  * renamed the icons
+  * renamed icon load in desktop file
+
+-------------------------------------------------------------------
+Thu Jan 16 09:50:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add importlib_resources provide/obsolete as it is integral
+  part of the lang since 3.7 release
+
+-------------------------------------------------------------------
+Mon Jan 13 11:10:47 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -fno-semantic-interposition as it brings speed up:
+  https://fedoraproject.org/wiki/Changes/PythonNoSemanticInterpositionSpeedup
+
+-------------------------------------------------------------------
+Thu Dec 19 16:25:26 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.1:
+  - This is mainly bugfix release and no significant changes to
+    API are expected. The full changelog is available on
+    https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-1
+  - Remove bpo-38688_shutil.copytree_prevent-infinite-recursion.patch,
+    which is included in the upstream tarball.
+
+-------------------------------------------------------------------
+Thu Dec 19 14:57:32 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add bpo-31046_ensurepip_honours_prefix.patch which makes
+  ensurepip to honour the value of $(prefix). Proposed fix for
+  bpo#31046..
+
+-------------------------------------------------------------------
+Tue Dec 10 11:07:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Move bluez-devel dependency to base as it is needed for
+  socket.AF_BLUETOOTH and otherwise does not work
+
+-------------------------------------------------------------------
+Mon Dec  2 16:52:32 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Reintroduce QtHelp with the help of the new BR
+  python-sphinxcontrib-qthelp.
+
+-------------------------------------------------------------------
+Mon Oct 21 18:51:00 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix SUSE-FEDORA-multilib.patch, the platform agnostic infix for
+  library installation is "lib", not "dir".
+
+-------------------------------------------------------------------
+Thu Oct 17 14:19:20 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Move idle subpackage build from python3-base to python3.
+  appstream-glib required for packaging introduces considerable
+  extra dependencies and a build loop via rust/librsvg.
+- Correct installation of idle IDE icons:
+  + idle.png is not the target directory
+  + non-GNOME-specific icons belong into icons/hicolor
+- Add required Name key to idle3 desktop file
+
+-------------------------------------------------------------------
+Tue Oct 15 16:39:12 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to the final release 3.8.0. .
+  - New Features:
+    - Assignment expressions
+    - Positional-only parameters
+    - Parallel filesystem cache for compiled bytecode files
+    - Debug build uses the same ABI as release build
+    - f-strings support = for self-documenting expressions and
+      debugging
+    - PEP 578: Python Runtime Audit Hooks
+    - PEP 587: Python Initialization Configuration
+    - Vectorcall: a fast calling protocol for CPython
+    - Pickle protocol 5 with out-of-band data buffers
+  - New modules:
+    - importlib.metadata
+  - Improved modules:
+    - ast asyncio, builtins, collections, curses, ctypes,
+      datetime, functools, gc, gettext, gzip, idelib and IDLE,
+      inspect, io, json.tool, math, mmap, multiprocessing, os,
+      os.path, pathlib, pickle, plistlib, py_compile, shlex,
+      shutil, socket, ssl, statistics, sys, tarfile, threading,
+      tokenize, tkinter, time, typing, unicodedata, unittest,
+      venv, weakref, xml
+  - C API improvements
+  - bdist_winnst command has been deprecated (use bdist_wheel)
+- https://docs.python.org/3.8/whatsnew/3.8.html remains rest of
+  changes including documentation on how to port your programs to
+  the current version of Python.
+
+-------------------------------------------------------------------
+Mon Oct 14 15:02:08 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add idle3.appdata.xml and idle3.desktop (originally from
+  Fedora) to make Idle3 full GUI desktop application.
+  (bsc#1153830)
+
+-------------------------------------------------------------------
+Wed Oct  9 19:09:16 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Drop intltool from BuildRequires. Doesn't appear to be used.
+
+-------------------------------------------------------------------
+Wed Oct  9 10:37:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add folder version to allow tarball downloads even for beta/rc
+  releases
+
+-------------------------------------------------------------------
+Tue Oct  8 14:53:54 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Revert patches from Fedora (F00102-lib64.patch and
+  F00251-change-user-install-location.patch) into their original
+  prisitine Fedora versions, SUSE-FEDORA-multilib.patch refreshed
+  accordingly.
+
+-------------------------------------------------------------------
+Mon Oct  7 14:33:30 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Correct quotation of platsubdir in Lib/distutils/command/install.py
+
+-------------------------------------------------------------------
+Thu Oct  3 13:59:57 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace python-3.6.0-multilib.patch with two patches from
+  Fedora (F00102-lib64.patch and
+  F00251-change-user-install-location.patch), and our own
+  SUSE-FEDORA-multilib.patch to allow better cooperation with
+  Fedora and better upstreaming.
+- Add OBS_dev-shm.patch fixing bpo#38377
+
+-------------------------------------------------------------------
+Thu Oct  3 08:39:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Pull in just gettext and let solver to sort out between:
+  gettext-runtime-mini and gettext-runtime
+
+-------------------------------------------------------------------
+Wed Oct  2 15:00:09 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0rc1. Overall changes from 3.7:
+  - PEP 572, Assignment expressions
+  - PEP 570, Positional-only arguments
+  - PEP 587, Python Initialization Configuration (improved
+    embedding)
+  - PEP 590, Vectorcall: a fast calling protocol for CPython
+  - PEP 578, Runtime audit hooks
+  - PEP 574, Pickle protocol 5 with out-of-band data
+  - Typing-related: PEP 591 (Final qualifier), PEP 586 (Literal
+    types), and PEP 589 (TypedDict)
+  - Parallel filesystem cache for compiled bytecode
+  - Debug builds share ABI as release builds, also the 'm' ABI
+    tag was removed (irrelevant since 3.4), bpo#36707
+  - f-strings support a handy = specifier for debugging
+  - continue is now legal in finally: blocks
+  - on Windows, the default asyncio event loop is now
+    ProactorEventLoop
+  - on macOS, the spawn start method is now used by default in
+    multiprocessing
+  - multiprocessing can now use shared memory segments to avoid
+    pickling costs between processes
+  - typed_ast is merged back to CPython
+  - LOAD_GLOBAL is now 40% faster
+  - pickle now uses Protocol 4 by default, improving performance
+- Refreshed patches:
+  -  CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  -  python-3.3.0b1-fix_date_time_compiler.patch
+  -  python-3.6.0-multilib.patch
+  -  subprocess-raise-timeout.patch
+
+-------------------------------------------------------------------
+Wed Sep 25 09:46:41 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add bpo36302-sort-module-sources.patch (boo#1041090)
+
+-------------------------------------------------------------------
+Tue Sep 10 13:43:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Try harder obsoleting importlib-metadata
+
+-------------------------------------------------------------------
+Sat Aug 31 00:16:47 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0b4:
+  Many bugfixes, full list on
+  https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-0-beta-4
+
+-------------------------------------------------------------------
+Thu Aug 29 06:28:15 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Re-enable test_threading on aarch64
+
+-------------------------------------------------------------------
+Sat Aug 17 13:21:15 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove xrpm from subpackage tk description
+
+-------------------------------------------------------------------
+Tue Aug  6 14:24:55 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0b3:
+  Many bugfixes, full list on
+  https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-0-beta-3
+- Patches reapplied:
+  - python-3.3.0b1-fix_date_time_compiler.patch
+  - python-3.3.0b1-test-posix_fadvise.patch
+  - python-3.6.0-multilib.patch
+  - subprocess-raise-timeout.patch
+
+-------------------------------------------------------------------
+Tue Jul 23 13:20:49 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add Provides: python3-importlib-metadata
+
+-------------------------------------------------------------------
+Sun Jul  7 19:08:48 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0b2:
+  Many bugfixes, full list on
+  https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-0-beta-2
+- Patches included in upstream:
+  - bpo-37169_PyObject_IsFreed.patch
+- Patches reapplied:
+  - 00251-change-user-install-location.patch
+  - distutils-reproducible-compile.patch
+  - python-3.3.0b1-localpath.patch
+  - python-3.6.0-multilib.patch
+
+-------------------------------------------------------------------
+Tue Jul  2 09:03:04 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Update list of skipped tests for qemu linux-user build
+- Don't do profiling in qemu linux-user build
+
+-------------------------------------------------------------------
+Wed Jun  5 12:19:09 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0b1 (changes since 3.7.*):
+  - PEP 572, Assignment expressions
+  - PEP 570, Positional-only arguments
+  - PEP 587, Python Initialization Configuration (improved embedding)
+  - PEP 590, Vectorcall: a fast calling protocol for CPython
+  - PEP 578, Runtime audit hooks
+  - PEP 574, Pickle protocol 5 with out-of-band data
+  - Typing-related: PEP 591 (Final qualifier), PEP 586 (Literal
+    types), and PEP 589 (TypedDict)
+  - Parallel filesystem cache for compiled bytecode
+  - Debug builds share ABI as release builds
+  - f-strings support a handy = specifier for debugging
+  - continue is now legal in finally: blocks
+  - multiprocessing can now use shared memory segments to avoid
+    pickling costs between processes
+  - typed_ast is merged back to CPython
+  - LOAD_GLOBAL is now 40% faster
+  - pickle now uses Protocol 4 by default, improving performance 
+- Remove patches which were included in the upstream:
+  - 00251-change-user-install-location.patch
+  - 00316-mark-bdist_wininst-unsupported.patch
+  - CVE-2019-9947-no-ctrl-char-http.patch
+  - raise_SIGING_not_handled.patch
+
+-------------------------------------------------------------------
+Wed May 22 10:53:03 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Set _lto_cflags to nil as the package is using LTO via --enable-lto.
+  That will prevent to propage LTO for Python modules that are
+  built in a separate package.
+
+-------------------------------------------------------------------
+Sat May  4 21:29:20 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0.a3:
+  - PEP 572: Assignment Expressions.
+  - Other (mostly small) changes are on
+    https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-0-alpha-3
+
+-------------------------------------------------------------------
+Mon Apr 29 15:40:34 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- bsc#1130840 (CVE-2019-9947): add CVE-2019-9947-no-ctrl-char-http.patch
+  Address the issue by disallowing URL paths with embedded
+  whitespace or control characters through into the underlying
+  http client request. Such potentially malicious header
+  injection URLs now cause a ValueError to be raised.
+
+-------------------------------------------------------------------
+Wed Apr 10 10:22:58 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Fix metadata of patches.
+- Rename boo1071941-make-install-in-sep-loc.patch to
+  00251-change-user-install-location.patch which is the original
+  name, so it can be looked up in the Fedora VCS.
+
+-------------------------------------------------------------------
+Tue Apr  9 04:55:24 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Mark distutils bdist_wininst command unsupported
+  with 00316-mark-bdist_wininst-unsupported.patch
+- Remove Windows bdist_wininst executables from runtime package
+
+-------------------------------------------------------------------
+Tue Apr  9 01:21:45 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.7.3, which is the maintenance release without any
+  significant changes in API.
+  - Updated patches:
+    - CVE-2019-5010-null-defer-x509-cert-DOS.patch
+    - distutils-reproducible-compile.patch
+    - python-3.3.0b1-fix_date_time_compiler.patch
+    - python-3.6.0-multilib.patch
+    - raise_SIGING_not_handled.patch
+
+------------------------------------------------------------------
+Wed Mar 20 14:59:58 UTC 2019 - Matěj Cepl <mcepl@suse.com>
+
+- Remove building of Qt Develop help files.
+
+-------------------------------------------------------------------
+Fri Mar 15 15:10:30 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Return distutils-reproducible-compile.patch which is still
+  missing (still unfinished bpo#29708).
+
+-------------------------------------------------------------------
+Mon Feb 25 23:30:56 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0a2:
+    * List of all (mostly small) changes are on
+      https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-0-alpha-2
+
+-------------------------------------------------------------------
+Tue Feb 12 10:25:52 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Build nis module again.
+
+-------------------------------------------------------------------
+Tue Feb 12 10:06:17 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0a1:
+    * The most visible change so far is probably the
+      implementation of PEP 572: Assignment Expressions. For
+      a detailed list of changes, see:
+      https://docs.python.org/3.8/whatsnew/changelog.html
+    * Recover building of nis module properly in python3 package
+- Update patches:
+    * CVE-2019-5010-null-defer-x509-cert-DOS.patch
+    * python-3.3.0b1-fix_date_time_compiler.patch
+    * python-3.3.0b1-test-posix_fadvise.patch
+    * python-3.6.0-multilib.patch
+    * raise_SIGING_not_handled.patch
+
+-------------------------------------------------------------------
+Wed Jan 30 18:07:49 CET 2019 - mcepl@suse.com
+
+- Put LICENSE file where it belongs (bsc#1121852)
+
+-------------------------------------------------------------------
+Sat Jan 19 16:19:38 CET 2019 - mcepl@suse.com
+
+- bsc#1122191: add CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  fixing bpo-35746.
+  An exploitable denial-of-service vulnerability exists in the
+  X509 certificate parser of Python.org Python 2.7.11 / 3.7.2.
+  A specially crafted X509 certificate can cause a NULL pointer
+  dereference, resulting in a denial of service. An attacker can
+  initiate or accept TLS connections using crafted certificates
+  to trigger this vulnerability.
+
+-------------------------------------------------------------------
+Tue Jan  8 12:51:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not require full gettext in order to avoid pulling in the
+  glib2 as a dependency
+
+-------------------------------------------------------------------
+Tue Jan  8 12:25:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.7.2:
+  * bugfix release:
+    https://docs.python.org/3.7/whatsnew/changelog.html#changelog
+
+-------------------------------------------------------------------
+Wed Jan  2 12:51:48 CET 2019 - mcepl@suse.com
+
+- Stop applying python-3.6.0-multilib-new.patch (which is still
+  WIP), and apply the old proven python-3.6.0-multilib.patch
+  instead.
+
+-------------------------------------------------------------------
+Wed Dec 19 19:29:44 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Use upstream-recommended %{_rpmconfigdir}/macros.d directory
+  for the rpm macros.
+
+-------------------------------------------------------------------
+Mon Dec 17 17:24:49 CET 2018 - mcepl@suse.com
+
+- Upgrade to 3.7.2rc1:
+    * bugfix release, for the full list of all changes see
+      https://docs.python.org/3.7/whatsnew/changelog.html#changelog 
+- Make run of the test suite more verbose
+
+-------------------------------------------------------------------
+Tue Dec 11 01:52:45 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Write summaries without em dashes.
+
+-------------------------------------------------------------------
+Mon Dec  3 13:27:54 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Remove python-3.3.0b1-curses-panel.patch it is unnecessary anymore.
+- Add boo1071941-make-install-in-sep-loc.patch to make pip and
+  distutils in user environment install into separate location
+  (boo#1071941)
+
+  Set values of prefix and exec_prefix in distutils install
+  command to /usr/local if executable is /usr/bin/python* and RPM
+  build is not detected to make pip and distutils install into
+  separate location
+- Remove finally python-3.3.3-skip-distutils-test_sysconfig_module.patch
+- Remove distutils-reproducible-compile.patch which doesn't make
+  really much difference in reproducibility (see
+  gh#python/cpython#8057 and discussion there).
+
+-------------------------------------------------------------------
+Sat Dec  1 00:14:28 CET 2018 - mcepl@suse.com
+
+- Rename Stop_hash-based_invalidation_w_SOURCE_DATE_EPOCH.patch
+  to bpo34022-stop_hash-based_invalidation_w_SOURCE_DATE_EPOCH.patch
+
+-------------------------------------------------------------------
+Wed Nov  7 12:10:41 CET 2018 - mcepl@suse.com
+
+- Add dependency on bluez-devel to build support for Bluetooth
+  (boo#1109998)
+
+-------------------------------------------------------------------
+Tue Nov  6 13:52:45 CET 2018 - mcepl@suse.com
+
+- Add devhelp subpackage and split qthelp into another
+  subpackage.
+
+-------------------------------------------------------------------
+Wed Oct 24 12:38:00 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Remove python-3.0b1-record-rpm.patch and
+  Python-3.0b1-record-rpm.patch, as they are not needed anymore
+
+-------------------------------------------------------------------
+Tue Oct 23 14:14:16 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Switch off test_threading for optimization builds.
+
+-------------------------------------------------------------------
+Mon Oct 22 14:41:59 CEST 2018 - mcepl@suse.com
+
+- Update to python-3.7.1. This is just a brief overview, complete
+  changelog available at
+  https://docs.python.org/3.7/whatsnew/changelog.html#python-3-7-1-final:
+    Library
+        bpo-34970: Protect tasks weak set manipulation in asyncio.all_tasks()
+- Patches already accepted upstream are removed:
+    * 00307-allow-to-call-Py_Main-after-Py_Initialize.patch
+    * 00308-tls-1.3.patch
+- New patches added:
+    * Stop_hash-based_invalidation_w_SOURCE_DATE_EPOCH.patch
+    * raise_SIGING_not_handled.patch
+- All other patches refreshed via quilt.
+
+-------------------------------------------------------------------
+Mon Oct 22 12:22:19 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Add raise_SIGING_not_handled.patch to fix bsc#1094814
+
+-------------------------------------------------------------------
+Wed Oct 17 14:04:35 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix importlib return types:
+  * python3-imp-returntype.patch
+
+-------------------------------------------------------------------
+Mon Oct 15 13:46:32 CEST 2018 - mcepl@suse.com
+
+- bpo-34022 still not completely fixed, so we have to keep
+  excluding test_cmd_line_script,
+  test_multiprocessing_main_handling, and test_runpy from the
+  test suite.
+
+-------------------------------------------------------------------
+Sun Oct 14 15:57:24 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Update to python 3.7.1~rc2:
+    Core and Builtins
+        bpo-34879: Fix a possible null pointer dereference in
+            bytesobject.c. Patch by Zackery Spytz.
+        bpo-34854: Fixed a crash in compiling string annotations
+            containing a lambda with a keyword-only argument that
+            doesn’t have a default value.
+        bpo-34320: Fix dict(od) didn’t copy iteration order of
+            OrderedDict.
+    Library
+        bpo-34769: Fix for async generators not finalizing when event
+            loop is in debug mode and garbage collector runs in another
+            thread.
+        bpo-34922: Fixed integer overflow in the digest() and
+            hexdigest() methods for the SHAKE algorithm in the hashlib
+            module.
+        bpo-34900: Fixed unittest.TestCase.debug() when used to call
+            test methods with subtests. Patch by Bruno Oliveira.
+        bpo-34871: Fix inspect module polluted sys.modules when parsing
+            __text_signature__ of callable.
+        bpo-34872: Fix self-cancellation in C implementation of
+            asyncio.Task
+        bpo-34819: Use a monotonic clock to compute timeouts in
+            Executor.map() and as_completed(), in order to prevent
+            timeouts from deviating when the system clock is adjusted.
+        bpo-34334: In QueueHandler, clear exc_text from LogRecord to
+            prevent traceback from being written twice.
+        bpo-6721: Acquire the logging module’s commonly used internal
+            locks while fork()ing to avoid deadlocks in the child
+            process.
+        bpo-34172: Fix a reference issue inside multiprocessing.Pool
+            that caused the pool to remain alive if it was deleted
+            without being closed or terminated explicitly.
+    Documentation
+        bpo-32174: chm document displays non-ASCII charaters properly on
+            some MBCS Windows systems.
+    Tests
+        bpo-32962: Fixed test_gdb when Python is compiled with flags
+            -mcet -fcf-protection -O0.
+    C API
+        bpo-34910: Ensure that PyObject_Print() always returns -1 on
+            error. Patch by Zackery Spytz.
+
+-------------------------------------------------------------------
+Fri Oct 12 20:46:58 CEST 2018 - mcepl@suse.com
+
+- Add Stop_hash-based_invalidation_w_SOURCE_DATE_EPOCH.patch to
+  fix problems with SOURCE_DATE_EPOCH variable (bpo-34022)
+
+-------------------------------------------------------------------
+Mon Sep 17 09:44:02 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with tls1.3 supported openssl
+  * 00308-tls-1.3.patch
+- Add patch to fix Py_Main calls after Py_initialize
+  * 00307-allow-to-call-Py_Main-after-Py_Initialize.patch
+
+-------------------------------------------------------------------
+Mon Sep  3 15:22:42 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Add -fwrapv to OPTS, which is default for python3 anyway
+  See for example https://github.com/zopefoundation/persistent/issues/86
+  for bugs which are caused by avoiding it.
+
+-------------------------------------------------------------------
+Tue Jul 10 11:12:32 UTC 2018 - mcepl@suse.com
+
+- Fix ownership of _contextvars, _queue, and _xxtestfuzz
+
+-------------------------------------------------------------------
+Tue Jul  3 15:04:48 UTC 2018 - mcepl@suse.com
+
+- Switch off LTO for distros with older GCC
+- Fix %files
+
+-------------------------------------------------------------------
+Fri Jun 29 14:20:03 UTC 2018 - tchvatal@suse.com
+
+- Add dependency over libuuid-devel
+
+-------------------------------------------------------------------
+Thu Jun 28 10:42:15 UTC 2018 - mimi.vx@gmail.com
+
+- update to python 3.7.0
+    Complete overview of changes is available on
+    https://docs.python.org/3/whatsnew/3.7.html, these are just
+    highlights:
+    * PEP 563, postponed evaluation of type annotations.
+    * async and await are now reserved keywords.
+    * New library modules:
+        contextvars: PEP 567 – Context Variables
+        dataclasses: PEP 557 – Data Classes
+        importlib.resources
+    * New built-in features:
+        PEP 553, the new breakpoint() function.
+    * Python data model improvements:
+        PEP 562, customization of access to module attributes.
+        PEP 560, core support for typing module and generic types.
+        the insertion-order preservation nature of dict objects
+        has been declared to be an official part of the Python
+        language spec.
+    * Significant improvements in the standard library:
+        The asyncio module has received new features, significant
+        usability and performance improvements.
+        The time module gained support for functions with
+        nanosecond resolution.
+    * CPython implementation improvements:
+        Avoiding the use of ASCII as a default text encoding:
+            PEP 538, legacy C locale coercion
+            PEP 540, forced UTF-8 runtime mode
+        PEP 552, deterministic .pycs
+        the new development runtime mode
+        PEP 565, improved DeprecationWarning handling
+    *   C API improvements:
+        PEP 539, new C API for thread-local storage
+    * Documentation improvements:
+        PEP 545, Python documentation translations
+        New documentation translations: Japanese, French, and Korean.
+- drop python3-sorted_tar.patch
+- drop 0001-allow-for-reproducible-builds-of-python-packages.patch
+- refresh python-3.6.0-multilib-new.patch
+- refresh subprocess-raise-timeout.patch
+ * new C API for thread-local storage
+ * Deterministic pyc files
+ * Built-in breakpoint()
+ * Data Classes
+ * Core support for typing module and generic types
+ * Customization of access to module attributes
+ * Postponed evaluation of annotations
+ * Time functions with nanosecond resolution
+ * Improved DeprecationWarning handling
+ * Context Variables
+ * Avoiding the use of ASCII as a default text encoding
+    (PEP 538, legacy C locale coercion and PEP 540, forced UTF-8 runtime mode)
+ * The insertion-order preservation nature of dict objects is now
+    an official part of the Python language spec.
+ * Notable performance improvements in many areas.
+
+-------------------------------------------------------------------
+Thu May 17 18:26:42 UTC 2018 - hpj@urpla.net
+
+- disable lto with gcc versions below 7 (results in link failures)
+
+-------------------------------------------------------------------
+Mon Apr 30 15:23:24 UTC 2018 - jengelh@inai.de
+
+- Use faster find subcommand execution strategies.
+
+-------------------------------------------------------------------
+Fri Apr 20 16:17:29 UTC 2018 - tchvatal@suse.com
+
+- Do not mention the testsuite disabling in opts as it was moved to
+  main pkg so base is test-free
+
+-------------------------------------------------------------------
+Tue Apr 17 08:36:08 UTC 2018 - tchvatal@suse.com
+
+- As we run in main python package do not generate the pre_checkin
+  from both now
+
+-------------------------------------------------------------------
+Mon Apr 16 14:11:56 UTC 2018 - tchvatal@suse.com
+
+- Move the tests from base to generic package wrt bsc#1088573
+  * We still fail the whole distro if python3 is not build
+  * The other archs than x86_64 took couple of hours to unblock
+    build of other software, this way we work around the issue
+- Some tests are still run in -base for the LTO tweaking, but at
+  least it is not run twice
+
+-------------------------------------------------------------------
+Sat Mar 31 19:41:12 UTC 2018 - mimi.vx@gmail.com
+
+- update to 3.6.5
+  * bugfix release
+  * see Misc/NEWS for details
+- drop ctypes-pass-by-value.patch
+- drop fix-localeconv-encoding-for-LC_NUMERIC.patch
+- refresh python-3.6.0-multilib-new.patch
+
+------------------------------------------------------------------
+Wed Mar  7 09:16:39 UTC 2018 - adam@mizerski.pl
+
+- Created %so_major and %so_minor macros
+- Put Tools/gdb/libpython.py script into proper place and ship it with devel
+  subpackage.
+
+-------------------------------------------------------------------
+Tue Feb 20 15:04:56 UTC 2018 - schwab@suse.de
+
+- ctypes-pass-by-value.patch: Fix pass by value for structs on aarch64
+
+-------------------------------------------------------------------
+Tue Feb 20 14:28:00 UTC 2018 - bwiedemann@suse.com
+
+- Add python3-sorted_tar.patch (boo#1081750)
+
+-------------------------------------------------------------------
+Tue Feb 20 14:08:57 UTC 2018 - tchvatal@suse.com
+
+- Drop python3-tk and python3-idle recommends to reduce python3
+  always pulling X stack bsc#1081751
+
+-------------------------------------------------------------------
+Wed Feb  7 09:10:03 UTC 2018 - tchvatal@suse.com
+
+- Add patch to fix glibc 2.27 fail bsc#1079761:
+  * fix-localeconv-encoding-for-LC_NUMERIC.patch
+
+-------------------------------------------------------------------
+Mon Feb  5 17:14:43 UTC 2018 - normand@linux.vnet.ibm.com
+
+- Update skip_random_failing_tests.patch (for PowerPC)
+  to avoid test_call_later failure
+
+-------------------------------------------------------------------
+Wed Jan 24 14:35:58 UTC 2018 - jmatejek@suse.com
+
+- move XML modules and python3-xml provide to python3-base
+  (fixes bsc#1077230)
+- move ensurepip to base
+
+-------------------------------------------------------------------
+Thu Jan 18 12:31:47 UTC 2018 - normand@linux.vnet.ibm.com
+
+- Add skip_random_failing_tests.patch only for PowerPC
+
+-------------------------------------------------------------------
+Wed Jan  3 12:18:51 UTC 2018 - jmatejek@suse.com
+
+- update to 3.6.4
+  * bugfix release, over a hundred bugs fixed
+  * see Misc/NEWS for details
+- drop upstreamed python3-ncurses-6.0-accessors.patch
+- drop PYTHONSTARTUP hooks that cause spurious startup errors
+  * fixes bsc#1070738
+  * the relevant feature (REPL history) is now built into Python itself
+
+-------------------------------------------------------------------
+Sat Dec  2 11:11:46 UTC 2017 - dimstar@opensuse.org
+
+- Install 2to3-%{python_version} executable (override defattr of
+  the -tools package). 2to3 (unversioned) is a symlink and does not
+  carry permissions (bsc#1070853).
+
+-------------------------------------------------------------------
+Thu Nov 16 11:02:18 UTC 2017 - mimi.vx@gmail.com
+
+- move 2to3 to python3-tools package
+
+-------------------------------------------------------------------
+Wed Oct 11 13:15:23 UTC 2017 - jmatejek@suse.com
+
+- update to 3.6.3
+  * bugfix release, over a hundred bugs fixed
+  * see Misc/NEWS for details
+- drop upstreamed 0001-3.6-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-3093.patch
+
+-------------------------------------------------------------------
+Wed Sep 20 09:54:05 UTC 2017 - dmueller@suse.com
+
+- drop python-2.7-libffi-aarch64.patch: this patches the intree
+  copy of libffi which is unused/deleted in the line afterwards
+- fix build against system libffi: include flags weren't set
+  so it actually used the in-tree libffi headers.
+
+-------------------------------------------------------------------
+Thu Sep 14 13:23:10 UTC 2017 - vcizek@suse.com
+
+- Fix test broken with OpenSSL 1.1 (bsc#1042670)
+  * add 0001-3.6-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-3093.patch
+
+-------------------------------------------------------------------
+Tue Sep  5 11:47:05 UTC 2017 - jengelh@inai.de
+
+- Update RPM group for python documentation.
+
+-------------------------------------------------------------------
+Thu Aug 31 08:39:31 UTC 2017 - schwab@suse.de
+
+- fix missing %{?armsuffix}
+
+-------------------------------------------------------------------
+Wed Aug 30 13:41:38 UTC 2017 - jmatejek@suse.com
+
+- distutils-reproducible-compile.patch: ensure distutils order files
+  before compiling, which works around bsc#1049186
+
+-------------------------------------------------------------------
+Thu Aug 17 08:59:05 CEST 2017 - kukuk@suse.de
+
+- Add libnsl-devel build requires for glibc obsoleting libnsl
+
+-------------------------------------------------------------------
+Thu Aug  3 16:09:26 UTC 2017 - jmatejek@suse.com
+
+- update to 3.6.2
+  * bugfix release, over a hundred bugs fixed
+  * see Misc/NEWS for details
+- drop upstreamed test-socket-aead-kernel49.patch
+- add Provides: python3-typing (fixes bsc#1050653)
+- drop duplicate Provides: python3
+
+-------------------------------------------------------------------
+Mon Jun 26 12:10:07 UTC 2017 - jmatejek@suse.com
+
+- drop db-devel from requirements
+
+-------------------------------------------------------------------
+Tue Jun 20 09:26:52 UTC 2017 - asn@cryptomilk.org
+
+- Add missing link to python library in config dir (bsc#1040164)
+
+-------------------------------------------------------------------
+Thu Mar 23 12:42:59 UTC 2017 - jmatejek@suse.com
+
+- update to 3.6.1
+  * bugfix release, over a hundred bugs fixed
+  * never add import location's parent directory to sys.path
+  * switch to git for version control, build changes related to that
+  * fix "failed to get random numbers" on old kernels (bsc#1029902)
+  * several crashes and memory leaks corrected
+  * f-string are no longer accepted as docstrings
+
+-------------------------------------------------------------------
+Mon Mar 13 14:04:22 UTC 2017 - jmatejek@suse.com
+
+- prevent regenerating AST at build-time more robustly
+- add "--without profileopt" and "--without testsuite" options to python3-base
+  to allow short circuiting when working on the package
+
+-------------------------------------------------------------------
+Sat Feb 25 20:55:57 UTC 2017 - bwiedemann@suse.com
+
+- Add 0001-allow-for-reproducible-builds-of-python-packages.patch
+  upstream https://github.com/python/cpython/pull/296 
+
+-------------------------------------------------------------------
+Wed Feb  8 12:30:20 UTC 2017 - jmatejek@suse.com
+
+- reenable test_socket with AEAD patch (test-socket-aead-kernel49.patch)
+- reintroduce %py3_soflags macro (and better named %cpython3_soabi equivalent)
+
+-------------------------------------------------------------------
+Wed Jan 11 14:57:07 UTC 2017 - jmatejek@suse.com
+
+- update to 3.6.0
+  * PEP 498 Formated string literals
+  * PEP 515 Underscores in numeric literals
+  * PEP 526 Syntax for variable annotations
+  * PEP 525 Asynchronous generators
+  * PEP 530 Asynchronous comprehensions
+  * PEP 506 New "secrets" module for safe key generation
+  * less memory consumed by dicts
+  * dtrace and systemtap support
+  * improved asyncio module
+  * better defaults for ssl
+  * new hashing algorithms in hashlib
+  * bytecode format changed to allow more optimizations
+  * "async" and "await" are on track to be reserved words
+  * StopIteration from generators is deprecated
+  * support for openssl < 1.0.2 is deprecated
+  * os.urandom now blocks when getrandom() blocks
+  * huge number of new features, bugfixes and optimizations
+  * see https://docs.python.org/3.6/whatsnew/3.6.html for details
+- rework multilib patch: drop Python-3.5.0-multilib.patch, implement
+  upstreamable python-3.6.0-multilib-new.patch
+- refresh python-3.3.0b1-localpath.patch, subprocess-raise-timeout.patch
+- drop upstreamed Python-3.5.1-fix_lru_cache_copying.patch
+- finally drop python-2.6b1-canonicalize2.patch that was not applied in source
+  and only kept around in case we needed it in the future. (which we don't, as it seems)
+- update import_failed map and baselibs
+- build ctypes against system libffi
+  (buildrequire libffi-devel in python3-base)
+- add new key to keyring (signed by keys already in keyring)
+- introduced common configure section between python3 and python3-base
+- moved pyconfig.h and Makefile to devel subpackage as distutils no longer
+  need it at runtime
+- added python-rpm-macros dependency, regenerated macros file, drop macros.python3.py
+  because it is not used now
+- improve summaries and descriptions (fixes bsc#917607)
+- enabled Link-Time Optimization, see what happens
+- including skipped_tests.py in pre_checkin.sh run
+- run specs through spec-cleaner, rearrange sections
+
+-------------------------------------------------------------------
+Fri Apr 22 17:20:29 UTC 2016 - jmatejek@suse.com
+
+- move _hashlib and _ssl modules and tests to python3-base
+- recommend python3
+
+-------------------------------------------------------------------
+Tue Mar 15 15:05:23 UTC 2016 - schwab@suse.de
+
+- Skip test_asyncio under qemu_user_space_build
+
+-------------------------------------------------------------------
+Mon Mar  7 20:38:11 UTC 2016 - toddrme2178@gmail.com
+
+- Add  Python-3.5.1-fix_lru_cache_copying.patch
+  Fix copying the lru_cache() wrapper object.
+  Fixes deep-copying lru_cache regression, which worked on 
+  previous versions of python but fails on python 3.5.
+  This fixes a bunch of packages in devel:languages:python3.
+  See: https://bugs.python.org/issue25447
+
+-------------------------------------------------------------------
+Sun Jan 24 00:44:08 UTC 2016 - arichardson.kde@gmail.com
+
+- Build the docs in .qch format as well
+
+-------------------------------------------------------------------
+Wed Dec  9 07:35:20 UTC 2015 - toddrme2178@gmail.com
+
+- update to 3.5.1
+  * bugfix-only release, dozens of bugs fixed
+- Drop upstreamed Python-3.5.0-_Py_atomic_xxx-symbols.patch
+- "Python3" to "Python 3" in summary
+  * This seems cleaner and fixes and rpmlint warning
+
+-------------------------------------------------------------------
+Wed Oct 14 20:21:52 UTC 2015 - toddrme2178@gmail.com
+
+- Add Python-3.5.0-_Py_atomic_xxx-symbols.patch
+  This fixes a build error for many packages that use the Python,
+  C-API.
+  This patch is already accepted upstream and is slated to appear in
+  python 3.5.1.
+
+-------------------------------------------------------------------
+Tue Sep 29 15:53:24 UTC 2015 - jmatejek@suse.com
+
+- update to 3.5.0
+  * coroutines with async/await syntax
+  * matrix multiplication operator `@`
+  * unpacking generalizations
+  * new modules `typing` and `zipapp`
+  * type annotations
+  * .pyo files replaced by custom suffixes for optimization levels in __pycache__
+  * support for memory BIO in ssl module
+  * performance improvements in several modules
+  * and many more
+- removals and behavior changes
+  * deprecated `__version__` is removed
+  * support for .pyo files was removed
+  * system calls are auto-retried on EINTR
+  * bare generator expressions in function calls now cause SyntaxError
+    (change "f(x for x in i)" to "f((x for x in i))" to fix)
+  * removed undocumented `format` member of private `PyMemoryViewObject` struct
+  * renamed `PyMemAllocator` to `PyMemAllocatorEx`
+- redefine %dynlib macro to reflect that modules now have arch+os as part of name
+- module `time` is now built-in
+- dropped upstreamed patches:
+  python-3.4.1-fix-faulthandler.patch
+  python-3.4.3-test-conditional-ssl.patch
+  python-fix-short-dh.patch (also dropped dh2048.pem required for this patch)
+- updated patch Python-3.3.0b2-multilib.patch to Python-3.5.0-multilib.patch
+- python-ncurses-6.0-accessors.patch taken from python 2 to fix build failure
+  with new gcc + ncurses
+
+-------------------------------------------------------------------
+Wed Sep  9 11:51:22 UTC 2015 - dimstar@opensuse.org
+
+- Add python3-ncurses-6.0-accessors.patch: Fix build with
+  NCurses 6.0 and OPAQUE_WINDOW set to 1.
+
+-------------------------------------------------------------------
+Mon Aug 24 17:02:08 UTC 2015 - jmatejek@suse.com
+
+- improve import_failed hook to do the right thing when invoking
+  missing modules with "python3 -m modulename" (boo#942751)
+
+-------------------------------------------------------------------
+Thu Jul 23 22:08:10 UTC 2015 - fisiu@opensuse.org
+
+- Build with --enable-loadable-sqlite-extensions to make it works
+  as geospatial database.
+
+-------------------------------------------------------------------
+Wed Jul  1 07:07:26 UTC 2015 - dimstar@opensuse.org
+
+- Fix source list for previous change (add dh2048.pem).
+
+-------------------------------------------------------------------
+Wed Jun 24 06:54:30 UTC 2015 - meissner@suse.com
+
+- dh2048.pem: added generated 2048 dh parameter set to fix
+  ssl test (bsc#935856)
+- python-fix-short-dh.patch: replace the 512 bits dh parameter set
+  by 2048 bits to fix build with new openssl 1.0.2c (bsc#935856)
+
+-------------------------------------------------------------------
+Tue May 19 14:59:30 UTC 2015 - schwab@suse.de
+
+- ctypes-libffi-aarch64.patch: remove upstreamed patch
+- python-2.7-libffi-aarch64.patch: Fix argument passing in libffi for
+  aarch64
+
+-------------------------------------------------------------------
+Thu May 14 10:58:36 UTC 2015 - jmatejek@suse.com
+
+- drop the PDF subpackage
+  (removes the massive texlive dependency, and most likely nobody is
+  using the PDFs anyway)
+
+-------------------------------------------------------------------
+Thu May 14 09:53:29 UTC 2015 - jmatejek@suse.com
+
+- python-3.4.3-test-conditional-ssl.patch - restore tests failing because
+  test_urllib was unconditionally importing ssl (without really needing it)
+- restore functionality of multilib patch
+- drop libffi-ppc64le.diff because upstream completely changed everything
+  yet again (sorry ppc64 folks :| )
+
+
+-------------------------------------------------------------------
+Fri May  1 15:11:21 UTC 2015 - mailaender@opensuse.org
+
+- Update to version 3.4.3
+- Drop upstreamed CVE-2014-4650-CGIHTTPServer-traversal.patch
+  (bpo#21766)
+
+-------------------------------------------------------------------
+Wed Mar 25 10:57:28 UTC 2015 - rguenther@suse.com
+
+- Add python-3.4.1-fix-faulthandler.patch, upstream patch for bogus
+  faulthandler which fails with GCC 5.
+
+-------------------------------------------------------------------
+Sun Jan 11 13:01:30 UTC 2015 - p.drouand@gmail.com
+
+- asyncio has been merged in python3 main package; provide and
+  obsolete it
+- Remove obsolete AUTHORS section
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Sat Oct 18 20:14:54 UTC 2014 - crrodriguez@opensuse.org
+
+- Only pkgconfig(x11) is required for build, not the whole 
+  set of packages provided by xorg-x11-devel metapackage.
+
+-------------------------------------------------------------------
+Mon Oct 13 13:38:20 UTC 2014 - jmatejek@suse.com
+
+- add %python3_version rpm macro for Fedora compatibility
+- add missing argument in import_failed, rename Novell Bugzilla
+  to SUSE Bugzilla
+
+-------------------------------------------------------------------
+Thu Jul 31 17:24:59 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Wed Jul 23 16:31:02 UTC 2014 - jmatejek@suse.com
+
+- CVE-2014-4650-CGIHTTPServer-traversal.patch: CGIHTTPServer file
+  disclosure and directory traversal through URL-encoded characters
+  (CVE-2014-4650, bnc#885882)
+
+-------------------------------------------------------------------
+Tue Jul 22 13:55:57 UTC 2014 - jmatejek@suse.com
+
+- drop python-3.4.1-SUSE-ensurepip.patch for compatibility reasons,
+  reinstate bundled copies of pip and setuptools
+  (fixes bnc#885662)
+- add more files as sources to silence the validator
+
+-------------------------------------------------------------------
+Wed May 21 11:01:56 UTC 2014 - jmatejek@suse.com
+
+- update to 3.4.1
+    * bugfix-only release, over 300 bugs fixed
+- drop upstreamed python-3.4.0rc2-sqlite-3.8.4-tests.patch
+- drop upstreamed CVE-2014-2667-mkdir.patch
+- include Python release manager keyring and signature file
+  for the source archive (thus renumbering of source files)
+  (see https://www.python.org/download/#openpgp-public-keys )
+- move ensurepip to python3, because it transitively requires ssl
+
+-------------------------------------------------------------------
+Fri Apr  4 16:21:40 UTC 2014 - jmatejek@suse.com
+
+- CVE-2014-2667-mkdir.patch: race condition with reseting umask
+  in os.makedirs
+  (CVE-2014-2667, bnc#871152)
+- updated multilib patch to include ~/.local/lib64 (bnc#637176)
+
+-------------------------------------------------------------------
+Wed Mar 26 15:24:46 UTC 2014 - jmatejek@suse.com
+
+- raise timeout value for test_subprocess to 10s (might fix
+  intermittent build failures in OBS)
+
+-------------------------------------------------------------------
+Mon Mar 24 17:29:31 UTC 2014 - dmueller@suse.com
+
+- remove blacklisting of test_posix on aarch64: qemu bug is fixed 
+
+-------------------------------------------------------------------
+Mon Mar 17 18:26:58 UTC 2014 - jmatejek@suse.com
+
+- update to 3.4.0 final
+- drop upstreamed python-3.4rc2-importlib.patch
+
+-------------------------------------------------------------------
+Sun Mar 16 16:33:25 UTC 2014 - schwab@suse.de
+
+- Only build with profile-opt if profiling is enabled
+- Update test exclusion lists:
+  * test_ctypes no longer fails on arm
+  * test_io no longer fails on ppc*
+  * test_multiprocessing has been split in multiple tests
+  * test_posix and test_signal fail due to qemu bugs
+
+-------------------------------------------------------------------
+Fri Mar 14 20:26:03 UTC 2014 - andreas.stieger@gmx.de
+
+- Fix build with SQLite 3.8.4 [bnc#867887], fixing SQLite tests,
+  adding python-2.7.6-sqlite-3.8.4-tests.patch
+
+-------------------------------------------------------------------
+Thu Feb 27 14:08:40 UTC 2014 - jmatejek@suse.com
+
+- update to 3.4.0 rc2
+   * pre-release bugfixes
+   * improvements to asyncio library
+- drop upstreamed tracemalloc_gcov.patch
+- python-3.4rc2-importlib.patch fixes backwards-incompatibility
+  in the reworked importlib module that blocks build of vim
+
+-------------------------------------------------------------------
+Fri Jan 17 18:45:27 UTC 2014 - jmatejek@suse.com
+
+- initial commit of 3.4.0 beta 3
+    * new stdlib modules: pathlib, enum, statistics, tracemalloc
+    * asynchronous IO with new asyncio module
+    * introspection data for builtins
+    * subprocesses no longer inherit open file descriptors
+    * standardized metadata for packages
+    * internal hashing changed to SipHash
+    * new pickle protocol
+    * improved handling of codecs
+    * TLS 1.2 support
+    * major speed improvements for internal unicode handling
+    * many bugfixes and optimizations
+- see porting guide at:
+  http://docs.python.org/3.4/whatsnew/3.4.html#porting-to-python-3-4
+- moved several modules to -testsuite subpackage
+- updated list of binary extensions, refreshed patches
+- tracemalloc_gcov.patch fixes profile-based optimization build
+- updated packages and pre_checkin.sh to use ~-version notation
+  for prereleases
+- fix-shebangs part of build process moved to common %prep
+- drop python-3.3.2-no-REUSEPORT.patch (upstreamed)
+- update baselibs for new soname
+
+- TODOs:
+    * require python-pip, make ensurepip work with zypper
+
+-------------------------------------------------------------------
+Wed Dec  4 13:21:26 UTC 2013 - matz@suse.de
+
+- add ppc64le (ELFv2) support for libffi copy for ctypes module
+- Adjust Python-3.3.0b2-multilib.patch for ppc64le (make sys.lib be
+  "lib64").
+- added patches:
+  * libffi-ppc64le.diff
+-------------------------------------------------------------------
+Tue Dec  3 09:51:43 UTC 2013 - adrian@suse.de
+
+- add ppc64le rules
+
+-------------------------------------------------------------------
+Fri Nov 22 13:17:23 UTC 2013 - speilicke@suse.com
+
+- Add python-3.3.3-skip-distutils-test_sysconfig_module.patch:
+  + Disable global and distutils sysconfig comparison test, we deviate
+    from the default depending on optflags
+
+-------------------------------------------------------------------
+Tue Nov 19 14:28:41 UTC 2013 - jmatejek@suse.com
+
+- update to 3.3.3
+  * bugfix-only release
+  * many SSL-related fixes
+  * upstream fix for CVE-2013-4238
+  * upstream fixes for CVE-2013-1752
+- move example module xxlimited to python3-testsuite
+- drop CVE-2013-4238_py33.patch - it is upstreamed
+- remove --with-wide-unicode config option, it is now the default
+  (and only) choice
+- don't touch anything between make and makeinstall
+- drop python-3.2b2-buildtime-generate.patch - the issue was caused
+  by touching things between make and makeinstall
+- link pycache entries for import_failed hooks properly
+
+-------------------------------------------------------------------
+Tue Oct 15 17:44:08 UTC 2013 - crrodriguez@opensuse.org
+
+- build with -DOPENSSL_LOAD_CONF for the same reasons 
+  described in the python2 package.
+
+-------------------------------------------------------------------
+Fri Aug 16 11:35:15 UTC 2013 - jmatejek@suse.com
+
+- handle NULL bytes in certain fields of SSL certificates
+  (CVE-2013-4238, bnc#834601)
+
+-------------------------------------------------------------------
+Thu Aug  8 14:54:49 UTC 2013 - dvaleev@suse.com
+
+- Exclue test_faulthandler from tests on powerpc due to bnc#831629 
+
+-------------------------------------------------------------------
+Thu Jun 13 15:05:34 UTC 2013 - jmatejek@suse.com
+
+- update to 3.3.2
+  * bugfix-only release
+  * fixes several regressions introduced in 3.3.1
+- switch to xz compression
+- move _lzma module to python3-base
+- python-3.3.2-no-REUSEPORT.patch to fix build on kernels without SO_REUSEPORT
+
+-------------------------------------------------------------------
+Mon Apr 29 22:32:43 UTC 2013 - schwab@suse.de
+
+- Readd missing bits from ctypes-libffi-aarch64.patch
+
+-------------------------------------------------------------------
+Sat Apr 13 07:56:51 UTC 2013 - idonmez@suse.com
+
+- Update to version 3.3.1
+  * Fix the –enable-profiling configure switch.
+  * In IDLE, close the replace dialog after it is used.
+- Too many bugfixes to list here,
+  see See http://hg.python.org/cpython/file/v3.3.0/Misc/NEWS
+- Refresh Python-3.3.0b2-multilib.patch
+- Refresh python-3.2b2-buildtime-generate.patch
+- Drop upstream patches: ctypes-libffi-aarch64.patch,
+  python-3.2.3rc2-pypirc-secure.patch, python-3.3.0-getdents64.patch
+
+-------------------------------------------------------------------
+Mon Apr  8 11:25:30 UTC 2013 - speilicke@suse.com
+
+- Exclude sqlite/test and tk/test directories from the respective
+  sub-packages. These are owned by the testsuite sub-package already
+
+-------------------------------------------------------------------
+Fri Apr  5 12:59:20 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/title=SourceUrls
+
+-------------------------------------------------------------------
+Wed Apr  3 15:36:04 UTC 2013 - jmatejek@suse.com
+
+- remove spurious modification of python-3.3.0b1-localpath.patch
+  that would force installation into /usr/local.
+  this fixes bnc#809831
+
+-------------------------------------------------------------------
+Thu Mar 28 18:38:51 UTC 2013 - jmatejek@suse.com
+
+- replace broken movetogetdents64.diff patch with a correct one
+  from upstream repo (python-3.3.0-getdents64.patch)
+
+-------------------------------------------------------------------
+Fri Mar  1 07:42:21 UTC 2013 - dmueller@suse.com
+
+- add ctypes-libffi-aarch64.patch:
+  * import aarch64 support for libffi in _ctypes module
+- add aarch64 to the list of lib64 based archs 
+- add movetogetdents64.diff:
+  * port to getdents64, as SYS_getdents is not implemented everywhere
+
+-------------------------------------------------------------------
+Tue Feb 26 08:57:55 UTC 2013 - saschpe@suse.de
+
+- /etc/rpm/macros.python3 is no %config, it is not meant to be changed
+  by users.
+- Add rpmlintrc with some obvious filters
+
+-------------------------------------------------------------------
+Mon Jan 28 18:14:39 UTC 2013 - jmatejek@suse.com
+
+- update baselibs for new version of libpython3
+
+-------------------------------------------------------------------
+Thu Nov 29 17:02:37 UTC 2012 - jmatejek@suse.com
+
+- fix include path in macros (bnc#787526)
+- implement failed import handlers for modules that live in
+  subpackages - e.g. "import ssl" will now throw a sensible error
+  message telling you to install "python3"
+
+-------------------------------------------------------------------
+Wed Nov 28 17:02:07 UTC 2012 - jmatejek@suse.com
+
+- merge python3-xml into python3
+- merge python3-2to3 library into python3-base
+  and the 2to3 binary into python3-devel
+  (python3-devel is now in conflict with python-2to3, which
+  will be dropped)
+- enable --with-system-expat for python3, making the xml modules
+  (and thus python3) depend on expat
+- reconfigure tests to disable network and GUI resources, which
+  the upstream apparently thought is a good idea to enable by default.
+  this fixes build failures in Factory
+- add lzma-devel to build the _lzma module
+- moved %dynlib macro definition to common section
+
+-------------------------------------------------------------------
+Mon Nov  5 20:01:46 UTC 2012 - coolo@suse.com
+
+- buildrequire timezone for the test suite
+
+-------------------------------------------------------------------
+Mon Oct 29 18:21:45 UTC 2012 - dmueller@suse.com
+
+- disable more checks for qemu builds as they use syscalls not
+  implemented yet
+
+-------------------------------------------------------------------
+Thu Oct 25 08:14:36 UTC 2012 - Rene.vanPaassen@gmail.com
+
+- exclude test_math for SLE 11; math library fails on negative 
+  gamma function values close to integers and 0, probably
+  due to imprecision in -lm on SLE_11_SP2. 
+
+-------------------------------------------------------------------
+Tue Oct 16 12:15:34 UTC 2012 - coolo@suse.com
+
+- buildrequire libbz2-devel explicitly
+
+-------------------------------------------------------------------
+Mon Oct  8 14:33:08 UTC 2012 - jmatejek@suse.com
+
+- remove distutils.cfg (bnc#658604)
+  * this changes default prefix for distutils to /usr
+  * see ML for details:
+http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
+
+-------------------------------------------------------------------
+Mon Oct  1 08:53:03 UTC 2012 - idonmez@suse.com
+
+- Update to final 3.3.0 release
+  * See http://hg.python.org/cpython/file/v3.3.0/Misc/NEWS
+
+-------------------------------------------------------------------
+Thu Sep 27 12:35:01 UTC 2012 - idonmez@suse.com
+
+- Correct dependency for python3-testsuite, 
+  python3-tkinter -> python3-tk
+
+-------------------------------------------------------------------
+Thu Aug 23 13:08:11 UTC 2012 - jmatejek@suse.com
+
+- update to 3.3.0 RC1
+
+-------------------------------------------------------------------
+Fri Aug  3 12:09:34 UTC 2012 - jmatejek@suse.com
+
+- update to 3.3.0 beta 1
+    * flexible string representation, no longer distinguishing
+      between wide and narrow Unicode builds
+    * importlib-based import system
+    * virtualenv support in core
+    * namespace packages
+    * explicit Unicode literals for easier porting
+    * key-sharing dict implementation reduces memory footprint
+      of OO code
+    * hash randomization on by default
+    * many other new bugfixes and features, check NEWS for details
+
+- pre_checkin.sh now autofills various version strings in specs
+- ship hashlib's fallback modules - those uselessly take up space
+  when real _hashlib.so from python3 is present, but the space wasted
+  is only 114kB and it provides python3-base with a working hashlib
+  module.
+  (also, this fixes bnc#743787)
+
+-------------------------------------------------------------------
+Fri Jul 27 09:02:41 UTC 2012 - dvaleev@suse.com
+
+- skip test_io on ppc 
+- drop test_io ppc patch
+
+-------------------------------------------------------------------
+Thu Jun 28 07:57:58 UTC 2012 - saschpe@suse.de
+
+- Satisfy source_validator by uncommenting an otherwise unused "Patch"
+  line
+
+-------------------------------------------------------------------
+Tue Jun 12 15:39:08 UTC 2012 - adrian@suse.de
+
+- fix logic of checks exclusion
+
+-------------------------------------------------------------------
+Fri May 18 11:50:27 UTC 2012 - idonmez@suse.com
+
+- update to 3.2.3
+  * No changes since rc2
+
+-------------------------------------------------------------------
+Thu Mar 29 15:44:33 UTC 2012 - jmatejek@suse.com
+
+- update to 3.2.3rc2
+  * fixes several security issues:
+  * CVE-2012-0845, bnc#747125
+  * CVE-2012-1150, bnc#751718
+  * CVE-2011-4944, bnc#754447
+  * CVE-2011-3389, bnc#754677
+- fix for insecure .pypirc (CVE-2011-4944, bnc#754447)
+- disable test_gdb because it is broken by our gdb
+
+-------------------------------------------------------------------
+Thu Feb 16 12:33:12 UTC 2012 - dvaleev@suse.com
+
+- skip broken test_io test on ppc
+
+-------------------------------------------------------------------
+Wed Jan 18 15:49:47 UTC 2012 - jmatejek@suse.com
+
+- update to 3.2.2
+  * bugfix-only release
+  * reports "linux2" as sys.platform regardless of Linux kernel
+- added pre_checkin.sh to copy common spec sections to python3.spec
+- added PACKAGING-NOTES with some helpful info for packagers
+
+-------------------------------------------------------------------
+Sun Dec 25 13:25:01 UTC 2011 - idonmez@suse.com
+
+- Use system ffi, included one is broken see 
+  http://bugs.python.org/issue11729 and 
+  http://bugs.python.org/issue12081
+
+-------------------------------------------------------------------
+Fri Dec  9 17:19:55 UTC 2011 - jmatejek@suse.com
+
+- license.opensuse.org-compatible license headers
+
+-------------------------------------------------------------------
+Fri Dec  2 16:46:44 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Nov 24 12:42:25 UTC 2011 - agraf@suse.com
+
+- fix ARM build (exclude some test cases which break for us)
+
+-------------------------------------------------------------------
+Tue Aug 16 17:02:22 UTC 2011 - termim@gmail.com
+
+- use sysconfig module to get py3_incdir, py3_abiflags,
+  py3_soflags, python3_sitelib and python3_sitearch
+
+-------------------------------------------------------------------
+Mon Jul 18 16:22:31 UTC 2011 - jmatejek@novell.com
+
+- update to 3.2.1
+    * bugfix-only release, no major changes
+- fix build on linux3 platform
+- remove upstreamed pybench patch
+- install /usr/lib directories in all cases to prevent spurious
+  "directory not owned" in dependent packages
+
+-------------------------------------------------------------------
+Wed Jun 15 14:16:38 UTC 2011 - jmatejek@novell.com
+
+- replaced dynamic so version with manual so version, because
+  autobuild does not support autogeneration
+
+-------------------------------------------------------------------
+Tue May 24 13:39:06 UTC 2011 - jmatejek@novell.com
+
+- generate macros.python3 at compile-time with fixed values
+- don't include bogus values in pyconfig.h, as they can break
+  third-party packages (bnc#673071)
+
+-------------------------------------------------------------------
+Tue May 17 12:52:51 UTC 2011 - jmatejek@novell.com
+
+- added Obsoletes: python3 < 3.1 so that the transition from
+  non-split to split packages goes smoothly
+
+-------------------------------------------------------------------
+Fri May 13 12:38:19 UTC 2011 - jmatejek@novell.com
+
+- fixed RPM macros to use python3 instead of python
+- updated to build --with-wide-unicode (for compatibility with
+  fedora and our own python 2.x series)
+
+-------------------------------------------------------------------
+Thu Apr 21 03:39:25 UTC 2011 - termim@gmail.com
+
+- fix python3-base build failure due to pybench.py crash by
+  python-3.2-pybench.patch
+- move pyconfig.h from python3-devel to python3-base package to
+  make python3-base functional again
+
+-------------------------------------------------------------------
+Wed Mar 23 04:26:28 UTC 2011 - termim@gmail.com
+
+- update to python 3.2
+    * stable ABI, ABI-tagged .so files
+    * concurrent.futures and many other new or upgraded modules
+    * PYC repository directories ( __pycache__ )
+    * python WSGI 1.0.1
+    * Unicode 6.0.0 support
+    * a great number of bugfixes and assorted improvements
+
+-------------------------------------------------------------------
+Tue Feb  8 19:42:17 CET 2011 - matejcik@suse.cz
+
+- update to python 3.2 RC2
+- renamed python3-demo to python3-tools, because the demo part
+  became much smaller than the tools part
+- added rpm macros
+
+-------------------------------------------------------------------
+Tue Jan 18 14:13:04 UTC 2011 - jmatejek@novell.com
+
+- update to python 3.2 beta 2, see NEWS for details
+- split off -base package with less dependencies, and a shlib-policy
+  compliant libpython3 package
+- mostly rewritten the spec file with more detailed comments
+- cleaned up lists of patches
+

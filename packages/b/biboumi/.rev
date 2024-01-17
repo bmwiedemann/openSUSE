@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ef31d491c74400d1ab005f13ebcb6c4</srcmd5>
+    <version>7.2</version>
+    <time>1520778266</time>
+    <user>dimstar_suse</user>
+    <comment>add biboumi to openSUSE
+
+changes since last attempt:
+- added license to package
+- add some basic documentation)</comment>
+    <requestid>584648</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2a5d32897d94fb0882ae2d0e059b3779</srcmd5>
+    <version>8.3</version>
+    <time>1529501552</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617749</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9ff7307bb8ea5c75d8323185a5f3bc7b</srcmd5>
+    <version>8.5</version>
+    <time>1598726255</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.5:
+  * Fix a build failure with GCC 10
+  * Fix a possible crash that could be caused by a very well timed identd query</comment>
+    <requestid>829827</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29dd733142d0513c3478ba479ea8e011</srcmd5>
+    <version>9.0</version>
+    <time>1622664742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896906</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f8f7b5b0f9de2a8b959c8f19671a450c</srcmd5>
+    <version>9.0</version>
+    <time>1629269752</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912409</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2585562716e67acf1d2a6c6362d73a27</srcmd5>
+    <version>9.0</version>
+    <time>1656768873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986286</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>4534ab54b11a2c0866b93cc72964faf7</srcmd5>
+    <version>9.0</version>
+    <time>1666275186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030163</requestid>
+  </revision>
+</revisionlist>

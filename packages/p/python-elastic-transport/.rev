@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7741a1f6e2b722c53face7d7239cb8e7</srcmd5>
+    <version>8.1.2</version>
+    <time>1660924587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998087</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5c6d439124bdf6d112ebd992e5056411</srcmd5>
+    <version>8.4.0</version>
+    <time>1664638934</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006512</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ba74da3ffa3df4cca66c6f758f58a521</srcmd5>
+    <version>8.4.0</version>
+    <time>1670430824</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken test with latest urllib3 release
+  gh#elastic/elastic-transport-python#96 
+</comment>
+    <requestid>1040249</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>165185a2f4544a1960e90525a50dad0c</srcmd5>
+    <version>8.4.0</version>
+    <time>1682193673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081938</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>66bb0e522ef91d398f8c751378fa090d</srcmd5>
+    <version>8.4.0</version>
+    <time>1683728200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update python-urllib3 minimum requirement to build with latest
+  python-urllib3
+</comment>
+    <requestid>1085695</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d8508f6b1758fa22fe4f5552bbae1375</srcmd5>
+    <version>8.10.0</version>
+    <time>1701727162</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.10.0:
+  * Support urllib3 2.x in addition to urllib3 1.26.x (#121)
+  * Add 409 to `NOT_DEAD_NODE_HTTP_STATUSES` (#120)
+  * Fixed an issue where a large number of consecutive failures
+    to connect to a node would raise an `OverflowError`.
+  * Fixed an issue to ensure that `ApiResponse` can be pickled.
+
+  gh#elastic/elastic-transport-python#96
+  * Added method for clients to use default ports for URL scheme.</comment>
+    <requestid>1130493</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>36a73cb886445919f44a0c51508b127f</srcmd5>
+    <version>8.11.0</version>
+    <time>1702673210</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.11.0:
+  * Always set default HTTPS port to 443
+  * Drop support for Python 3.6
+  * Include tests in sdist
+  * Fix `__iter__` return type to Iterator</comment>
+    <requestid>1133054</requestid>
+  </revision>
+</revisionlist>

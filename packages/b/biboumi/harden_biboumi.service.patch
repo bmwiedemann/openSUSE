@@ -1,0 +1,24 @@
+Index: biboumi-9.0/unit/biboumi.service.cmake
+===================================================================
+--- biboumi-9.0.orig/unit/biboumi.service.cmake
++++ biboumi-9.0/unit/biboumi.service.cmake
+@@ -4,6 +4,19 @@ Documentation=man:biboumi(1) https://bib
+ After=network.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=${SYSTEMD_SERVICE_TYPE}
+ ExecStart=${CMAKE_INSTALL_PREFIX}/bin/biboumi /etc/biboumi/biboumi.cfg
+ ExecReload=/bin/kill -s USR1 $MAINPID

@@ -1,0 +1,16 @@
+Index: requirements-parser-0.5.0/pyproject.toml
+===================================================================
+--- requirements-parser-0.5.0.orig/pyproject.toml
++++ requirements-parser-0.5.0/pyproject.toml
+@@ -21,11 +21,6 @@ repository = "https://github.com/madpah/
+ packages = [
+     { include = "requirements" }
+ ]
+-include = [
+-    "AUTHORS.rst",
+-    "LICENSE",
+-    "README.md"
+-]
+ classifiers = [
+     # Trove classifiers - https://packaging.python.org/specifications/core-metadata/#metadata-classifier
+     # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers

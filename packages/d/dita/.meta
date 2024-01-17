@@ -1,0 +1,5 @@
+<package name="dita" project="openSUSE:Factory">
+  <title>OASIS Darwin Information Typing Architecture (DITA)</title>
+  <description>This package contains the DITA specifications, DTDs, and schemas.</description>
+  <devel project="Publishing" package="dita"/>
+</package>

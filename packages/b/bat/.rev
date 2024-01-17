@@ -1,0 +1,192 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40faa2d8c5170e3eba701ba2220fda4f</srcmd5>
+    <version>0.7.1</version>
+    <time>1539251375</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the description's grammar.
+- Update to version 0.7.1
+ - Inital packaging @ 0.5.0
+</comment>
+    <requestid>639562</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>009bfbd0b8c058752a5fc146863ae41d</srcmd5>
+    <version>0.10.0</version>
+    <time>1551284855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674149</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0207ed13e7d2155821a06555ad748a3b</srcmd5>
+    <version>0.11.0</version>
+    <time>1560970634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703434</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fe97f7c50eeca74290ea0a94ccd2f490</srcmd5>
+    <version>0.12.1</version>
+    <time>1571307608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734430</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d06e60154f1d7aeed9776d431bf7db40</srcmd5>
+    <version>0.12.1</version>
+    <time>1571838627</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>741844</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1b6c2de0d1f2328cf5380c3be02415ab</srcmd5>
+    <version>0.13.0</version>
+    <time>1587581136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792694</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cebb1eeedd9bdae61b1ef5b07b06eb77</srcmd5>
+    <version>0.15.0</version>
+    <time>1588697787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800243</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2c7d5ec9432bdac161d371e63bfbc57d</srcmd5>
+    <version>0.15.4</version>
+    <time>1591101738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810726</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2e448d64426e9db80452ca728d46dbd7</srcmd5>
+    <version>0.17.1</version>
+    <time>1607801429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853744</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7b68fa339cba43155443ed816c5ae961</srcmd5>
+    <version>0.18.0</version>
+    <time>1617279413</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881314</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>965de8f7c0556db01f02dc64aac40bdd</srcmd5>
+    <version>0.18.1</version>
+    <time>1623868508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900344</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8f5457d7d74d15366ecc90d1b1dbe45e</srcmd5>
+    <version>0.18.2</version>
+    <time>1629360069</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912888</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c34bc10c620f2b28cc92f2cc155bc709</srcmd5>
+    <version>0.18.2</version>
+    <time>1633365630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922952</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a592d25a49d99d1e407e3893f936739d</srcmd5>
+    <version>0.20.0</version>
+    <time>1650355113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970628</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1ce9607a564a103f7346903aaf589f46</srcmd5>
+    <version>0.21.0</version>
+    <time>1654691077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981159</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bca520813d4d383694d7e6c325d6e2b4</srcmd5>
+    <version>0.22.1</version>
+    <time>1663275475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003533</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>666a37ba4d665fd283dfb6120fd1edc9</srcmd5>
+    <version>0.22.1</version>
+    <time>1665754967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010617</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>dac5e7d3b257e18f3c1b81321d649cd1</srcmd5>
+    <version>0.22.1</version>
+    <time>1669911674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039254</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2e0956f58ada7e9328f02c076186d60c</srcmd5>
+    <version>0.23.0</version>
+    <time>1679854786</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.23.0:
+  Features:
+  * Implemented -S and --chop-long-lines flags as aliases for
+    --wrap=never. See #2309
+  * Breaking change: Environment variables can now override config
+    file settings (but command-line arguments still have the highest
+    precedence), see #1152, #1281, and #2381
+  * Implemented --nonprintable-notation=caret to support showing
+    non-printable characters using caret notation. See #2429
+  Bugfixes:
+  * Fix bat cache --clear not clearing the --target dir if specified. See #2393
+  Other:
+  * Various bash completion improvements, see #2310
+  * Disable completion of cache subcommand, see #2399
+  * Signifigantly improve startup performance on macOS, see #2442
+  * Bump MSRV to 1.62, see #2496
+  Syntaxes:
+  * Added support for Ada, see #1300 and #2316
+  * Added todo.txt syntax, see #2375
+  * Improve Manpage.sublime-syntax. See #2364 and #2461
+  * Added a new requirements.txt syntax, see #2361
+  * Added a new VimHelp syntax, see #2366
+  * Associate pdm.lock with TOML syntax, see #2410
+  * Todo.txt: Fix highlighting of contexts and projects at beginning
+    of done.txt, see #2411
+  * cmd-help: overhaul scope names (colors) to improve theme
+    support; misc syntax improvements. See #2419
+  * Added support for Crontab, see #2509</comment>
+    <requestid>1074361</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>17b9501bea25599d5f11f6949494c1ef</srcmd5>
+    <version>0.24.0</version>
+    <time>1699046461</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123215</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,314 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>10a66ca7e3c6c34542c7ea7c5db106e9</srcmd5>
+    <version>1.3.1</version>
+    <time>1539593172</time>
+    <user>dimstar_suse</user>
+    <comment>- Separate Azure Storage package into components</comment>
+    <requestid>641208</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>17b06fe0ae4263f97dd30d95cf810cb4</srcmd5>
+    <version>1.5.0</version>
+    <time>1557833928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694345 from glaubitz)</comment>
+    <requestid>694556</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ac46dd8148a71caaa366658a52fc8383</srcmd5>
+    <version>2.1.0</version>
+    <time>1570710718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735266 from glaubitz)</comment>
+    <requestid>735760</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7add923bfb97c677ad057e07d23e88d6</srcmd5>
+    <version>12.1.0</version>
+    <time>1580205420</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.1.0
+  + For detailed information about changes see the
+    HISTORY.md file provided with this package
+- Add unzip to BuildRequires
+- Add missing HISTORY.md to %files section
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename README.rst to README.md in %files section
+- Update Requires from setup.py
+- Update %description from README.md (forwarded request 767759 from glaubitz)</comment>
+    <requestid>767847</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b1e3b26b4215798500577b2e50c21bf6</srcmd5>
+    <version>12.3.1</version>
+    <time>1588971960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801201</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c2f97e690f69051186cc2390b40115d</srcmd5>
+    <version>12.4.0</version>
+    <time>1598726093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829772</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>65d11d202408c3e9edc6190012c7a0c4</srcmd5>
+    <version>12.5.0</version>
+    <time>1602155566</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 839802 from glaubitz)</comment>
+    <requestid>839865</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b9af90e8614ff6eefc0a91c58662a0f5</srcmd5>
+    <version>12.6.0</version>
+    <time>1606252688</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 850451 from glaubitz)</comment>
+    <requestid>850553</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b4f7c7754a9565db35515de64fa977e3</srcmd5>
+    <version>12.6.0</version>
+    <time>1607548862</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854006</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1c54386295f7b0f836346c52cd132358</srcmd5>
+    <version>12.7.0b1</version>
+    <time>1610051274</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.7.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 861362 from glaubitz)</comment>
+    <requestid>861444</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4912cc7753b6dc959508512c0ee8c65b</srcmd5>
+    <version>12.8.0</version>
+    <time>1618235366</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.8.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 881897 from glaubitz)</comment>
+    <requestid>881977</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d92ce08c50e333c660b37875f5ed4913</srcmd5>
+    <version>12.8.1</version>
+    <time>1620400532</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.8.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 891223 from glaubitz)</comment>
+    <requestid>891288</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0b7658e077bd0c782d2c6e49b46bd1a0</srcmd5>
+    <version>12.9.0</version>
+    <time>1633365644</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 923017 from glaubitz)</comment>
+    <requestid>923020</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cf84d31dceb4d11e0735b7b56147d788</srcmd5>
+    <version>12.10.0</version>
+    <time>1646948746</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.10.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 960758 from glaubitz)</comment>
+    <requestid>960814</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>50b2d771cf2a1a9d792eae671b922d95</srcmd5>
+    <version>12.11.0</version>
+    <time>1648570571</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.11.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 965619 from glaubitz)</comment>
+    <requestid>965647</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3c7a81e5832e4faeb0317cd7016b7718</srcmd5>
+    <version>12.12.0</version>
+    <time>1652389190</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.12.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 976235 from glaubitz)</comment>
+    <requestid>976372</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ce5f52ca8123977727597086eab5e496</srcmd5>
+    <version>12.13.0</version>
+    <time>1657378994</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.13.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 987810 from glaubitz)</comment>
+    <requestid>987930</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0655aec9589e63bba0ac8362a2918950</srcmd5>
+    <version>12.13.1</version>
+    <time>1659721895</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.13.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 993252 from glaubitz)</comment>
+    <requestid>993282</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>047cb5e33a3f64d1a6b17c8e78a1fe34</srcmd5>
+    <version>12.13.1</version>
+    <time>1661432978</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999229</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f9e179ca53a2a342802cecad55c2ffbd</srcmd5>
+    <version>12.14.0</version>
+    <time>1665668684</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.14.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1010241 from glaubitz)</comment>
+    <requestid>1010254</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b0c123801c0b8c31252a50b4ab4588a2</srcmd5>
+    <version>12.14.1</version>
+    <time>1666185190</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.14.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1029952 from glaubitz)</comment>
+    <requestid>1029963</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>705850df9b23e391c8d18d13c6a8bf91</srcmd5>
+    <version>12.15.0</version>
+    <time>1677166234</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.15.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1067365 from glaubitz)</comment>
+    <requestid>1067367</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fdf14cfaaf5836d849412fd781fee7bd</srcmd5>
+    <version>12.16.0</version>
+    <time>1681746105</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.16.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1079902 from glaubitz)</comment>
+    <requestid>1079906</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>899892322f6d7aecd821fac7de874766</srcmd5>
+    <version>12.16.0</version>
+    <time>1682691825</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct Requires on python-typing_extensions.</comment>
+    <requestid>1083380</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ef2004a7bf216853782859b571431024</srcmd5>
+    <version>12.17.0</version>
+    <time>1689346428</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.17.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1098417 from glaubitz)</comment>
+    <requestid>1098535</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0737401785a90eca2bde852791fec18e</srcmd5>
+    <version>12.18.0</version>
+    <time>1694808283</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.18.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1110875 from glaubitz)</comment>
+    <requestid>1111370</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d512ee0fcfa1848b23e49b438f5a5cfe</srcmd5>
+    <version>12.18.1</version>
+    <time>1696529026</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.18.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1114984 from glaubitz)</comment>
+    <requestid>1115597</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d6c77c374881d2ddeac9e8864894cc6c</srcmd5>
+    <version>12.18.3</version>
+    <time>1697061385</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.18.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1116859 from glaubitz)</comment>
+    <requestid>1116920</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>358fce03514d5446521f770148566bec</srcmd5>
+    <version>12.19.0</version>
+    <time>1699616027</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.19.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1124819 from glaubitz)</comment>
+    <requestid>1124839</requestid>
+  </revision>
+</revisionlist>

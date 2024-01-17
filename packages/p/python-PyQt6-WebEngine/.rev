@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c089c962a33150ec0ad6a435c4f0c10</srcmd5>
+    <version>6.2.0</version>
+    <time>1633959060</time>
+    <user>dimstar_suse</user>
+    <comment>new in Qt 6.2</comment>
+    <requestid>923597</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49b972b0add15a4d68770c764be45ad1</srcmd5>
+    <version>6.2.1</version>
+    <time>1635628433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928227</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7f83e7d335463c2a2cdf26f58329f0bd</srcmd5>
+    <version>6.2.1</version>
+    <time>1649544130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967993</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ba5c7c8c0fd23c72a7bcef996cc983ca</srcmd5>
+    <version>6.3.0</version>
+    <time>1650060856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970205</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a4e8414a3433fa1108ac83bf4bf7af3a</srcmd5>
+    <version>6.3.1</version>
+    <time>1655972611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984227</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6df86d78dc359df404147660cd483eb2</srcmd5>
+    <version>6.4.0</version>
+    <time>1664908660</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 6.4.0
+  *  Added support for Qt v6.4.
+</comment>
+    <requestid>1007753</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0d71c03b40b56b122517b47a0449d1a4</srcmd5>
+    <version>6.4.0</version>
+    <time>1679003860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072208</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>05695e52e821df5921c7f61c4a91bd15</srcmd5>
+    <version>6.5.0</version>
+    <time>1682618448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.5.0
+  * Added support for Qt v6.5.
+</comment>
+    <requestid>1083088</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bc884bb9f961cef5491dca2af93db054</srcmd5>
+    <version>6.5.0</version>
+    <time>1688147976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096075</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>de23ca08c4efe535f0c285966f273992</srcmd5>
+    <version>6.6.0</version>
+    <time>1698872991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.6.0
+  * This adds support for Qt v6.6.
+</comment>
+    <requestid>1121500</requestid>
+  </revision>
+</revisionlist>

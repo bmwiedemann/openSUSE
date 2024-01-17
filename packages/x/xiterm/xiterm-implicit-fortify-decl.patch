@@ -1,0 +1,12 @@
+Index: unix/gtk/lib/VTScreenView.c
+===================================================================
+--- unix/gtk/lib/VTScreenView.c.orig	2002-12-26 07:11:14.000000000 +0100
++++ unix/gtk/lib/VTScreenView.c	2008-10-15 00:57:59.000000000 +0200
+@@ -10,6 +10,7 @@
+ #include "VTScreenView.h"
+ #include "iterm/screen.h"
+ #include <stdio.h>
++#include <string.h>
+ #include <stdlib.h>
+ #include <gtk/gtk.h>
+ #include <pango/pango.h>

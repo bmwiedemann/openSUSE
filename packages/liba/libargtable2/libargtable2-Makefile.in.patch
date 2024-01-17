@@ -1,0 +1,27 @@
+--- Makefile.in.orig	2011-01-10 12:18:46.000000000 +0100
++++ Makefile.in	2016-05-09 00:58:03.130495061 +0200
+@@ -207,7 +207,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-SUBDIRS = src tests doc
++SUBDIRS = src tests
+ ACLOCAL_AMFLAGS = -I m4
+ pcfiledir = $(libdir)/pkgconfig
+ pcfile_DATA = argtable2.pc
+@@ -268,15 +268,6 @@
+ 
+ distclean-libtool:
+ 	-rm -f libtool config.lt
+-install-dist_exampleDATA: $(dist_example_DATA)
+-	@$(NORMAL_INSTALL)
+-	test -z "$(exampledir)" || $(MKDIR_P) "$(DESTDIR)$(exampledir)"
+-	@list='$(dist_example_DATA)'; for p in $$list; do \
+-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+-	  f=$(am__strip_dir) \
+-	  echo " $(dist_exampleDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(exampledir)/$$f'"; \
+-	  $(dist_exampleDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(exampledir)/$$f"; \
+-	done
+ 
+ uninstall-dist_exampleDATA:
+ 	@$(NORMAL_UNINSTALL)

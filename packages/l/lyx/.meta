@@ -1,0 +1,9 @@
+<package name="lyx" project="openSUSE:Factory">
+  <title>LaTeX-Based WYSIWYG Editor</title>
+  <description>LyX is a front-end for LaTeX under X11. It combines the comfortable use
+of a word processor with the high quality of LaTeX typesetting.
+Documents are displayed in a WYSIWYG-like way. User does not choose low
+level attributes (&quot;large italic&quot;) but high level layouts (styles) for
+each paragraph. Of course, low level formatting is still possible.</description>
+  <devel project="Publishing" package="lyx"/>
+</package>

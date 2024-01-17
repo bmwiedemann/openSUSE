@@ -1,0 +1,5 @@
+<package name="perl-Time-modules" project="openSUSE:Factory">
+  <title>Various Perl time modules</title>
+  <description>Perl modules providing various time functions.</description>
+  <devel project="devel:languages:perl" package="perl-Time-modules"/>
+</package>

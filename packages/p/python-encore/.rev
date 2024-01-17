@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b91639889141c009a607a5935b4c4250</srcmd5>
+    <version>0.7.0</version>
+    <time>1527582536</time>
+    <user>dimstar_suse</user>
+    <comment>Low-level core modules for building Python applications</comment>
+    <requestid>609900</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd95964eb3cc70595a14e8b09a4fe948</srcmd5>
+    <version>0.7.0</version>
+    <time>1587467485</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795827</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2ea7c0eee8ed73ac9b2ed47087bd5434</srcmd5>
+    <version>0.7.0</version>
+    <time>1621355232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894023</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5ca5e7f152962b59d207540cbbf15d85</srcmd5>
+    <version>0.7.0</version>
+    <time>1651501571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974411</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>55d2876c0f559155a255aaf386d79fcc</srcmd5>
+    <version>0.8.0</version>
+    <time>1674927936</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * This release brings build and distribution machinery up to date, adds
+    support for more recent Python 3 versions, and drops support for Python 2. 
+    We no longer support Python versions older than 3.6.
+  * Removed Python 2 compatibility code.
+  * Migrated CI from Travis CI and Appveyor to GitHub Actions.
+  * Updated copyright headers.
+  * Modernised build machinery.
+  * Updated documentation to use the Enthought Sphinx Theme.</comment>
+    <requestid>1061745</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,143 @@
+--- a/build.xml
++++ b/build.xml
+@@ -242,44 +242,14 @@ informix.jar = ../support/jdbc-4.10.12.jar
+             <filelist files="${informix.location} ${oracle.location}" />
+ 
+             <!-- Further database and Java EE-related JARs -->
+-            <filelist dir="${extlibs.dir}">
+-                <file name="servlet-api-2.5.jar" />
+-                <file name="mysql-connector-java-5.1.42-bin.jar" />
+-                <file name="postgresql-42.1.1.jre7.jar" />
+-            </filelist>
++            <fileset dir="${extlibs.dir}">
++                <include name="**/*"/>
++            </fileset>
+ 
+-            <!-- Other JARs (alphabetical) -->
+-            <filelist dir="${extlibs.dir}">
+-                <file name="antlr-complete-3.5.2.jar" /> <!-- ANTLR 3 until we upgrade parsing -->
+-                <file name="asm-9.3.jar" />
+-                <file name="asm-commons-9.3.jar" />
+-                <file name="asm-util-9.3.jar" />
+-                <file name="commons-compress-1.21.jar"/>
+-                <file name="failureaccess-1.0.1.jar" />
+-                <file name="guava-31.0.1-jre.jar" />
+-                <file name="icu4j-71.1.jar" />
+-                <file name="jffi-1.3.9.jar"/>
+-                <file name="java-sizeof-0.0.5.jar"/>
+-                <file name="jnr-constants-0.10.3.jar"/>
+-                <file name="jnr-ffi-2.2.12.jar"/>
+-                <file name="jnr-netdb-1.2.0.jar"/>
+-                <file name="jnr-posix-3.1.15.jar"/>
+-                <file name="jline-2.14.5.jar"/>
+-                <file name="netty-buffer-4.1.73.Final.jar"/>
+-                <file name="netty-codec-4.1.73.Final.jar"/>
+-                <file name="netty-common-4.1.73.Final.jar"/>
+-                <file name="netty-handler-4.1.73.Final.jar"/>
+-                <file name="netty-resolver-4.1.73.Final.jar"/>
+-                <file name="netty-transport-4.1.73.Final.jar"/>
+-            </filelist>
+         </path>
+ 
+         <path id="test.classpath">
+             <path refid="main.classpath"/>
+-            <filelist dir="${extlibs.dir}">
+-                <!-- Pin to 4.10 until dependency on hamcrest classes resolved. -->
+-                <file name="junit-4.10.jar" />
+-            </filelist>
+             <pathelement location="${exposed.dir}" />
+             <pathelement location="${compile.dir}" />
+             <pathelement location="${test.compile.dir}" />
+@@ -835,80 +805,13 @@ The text for an official release would continue like ...
+     </target>
+ 
+     <target name="jar-complete" depends="jar, pycompile">
+-        <taskdef name="jarjar" classname="org.pantsbuild.jarjar.JarJarTask">
++        <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask">
+             <classpath>
+-                <pathelement path="extlibs/jarjar-1.7.2.jar" />
+                 <path refid="main.classpath" />
+             </classpath>
+         </taskdef>
+         <jarjar destfile="${dist.dir}/${jython.deploy.jar}"  update="${jar.update}">
+             <zipfileset src="${dist.dir}/${jython.dev.jar}"/>
+-            <!-- pin to Antlr 3 until we upgrade parsing -->
+-            <zipfileset src="extlibs/antlr-runtime-3.5.2.jar"/>
+-            <rule pattern="org.antlr.runtime.**" result="org.python.antlr.runtime.@1"/>
+-            <zipfileset src="extlibs/asm-9.3.jar" excludes="module-info.class"/>
+-            <zipfileset src="extlibs/asm-commons-9.3.jar" excludes="module-info.class"/>
+-            <zipfileset src="extlibs/asm-util-9.3.jar" excludes="module-info.class"/>
+-            <rule pattern="org.objectweb.asm.**" result="org.python.objectweb.asm.@1"/>
+-            <zipfileset src="extlibs/bcpkix-jdk18on-1.71.jar" excludes="META-INF/**"/>
+-            <zipfileset src="extlibs/bcprov-jdk18on-1.71.jar" excludes="META-INF/**"/>
+-            <rule pattern="org.bouncycastle.**" result="org.python.bouncycastle.@1"/>
+-            <zipfileset src="extlibs/commons-compress-1.21.jar"/>
+-            <rule pattern="org.apache.commons.compress.**" result="org.python.apache.commons.compress.@1"/>
+-            <zipfileset src="extlibs/failureaccess-1.0.1.jar"/>
+-            <zipfileset src="extlibs/guava-31.0.1-jre.jar"/>
+-            <rule pattern="com.google.**" result="org.python.google.@1"/>
+-            <zipfileset src="extlibs/icu4j-71.1.jar"/>
+-            <rule pattern="com.ibm.icu.**" result="org.python.icu.@1"/>
+-            <zipfileset src="extlibs/netty-buffer-4.1.73.Final.jar" excludes="META-INF/**"/>
+-            <rule pattern="io.netty.**" result="org.python.netty.@1"/>
+-            <zipfileset src="extlibs/netty-codec-4.1.73.Final.jar" excludes="META-INF/**"/>
+-            <rule pattern="io.netty.**" result="org.python.netty.@1"/>
+-            <zipfileset src="extlibs/netty-common-4.1.73.Final.jar" excludes="META-INF/**"/>
+-            <rule pattern="io.netty.**" result="org.python.netty.@1"/>
+-            <zipfileset src="extlibs/netty-handler-4.1.73.Final.jar" excludes="META-INF/**"/>
+-            <rule pattern="io.netty.**" result="org.python.netty.@1"/>
+-            <zipfileset src="extlibs/netty-resolver-4.1.73.Final.jar" excludes="META-INF/**"/>
+-            <rule pattern="io.netty.**" result="org.python.netty.@1"/>
+-            <zipfileset src="extlibs/netty-transport-4.1.73.Final.jar" excludes="META-INF/**"/>
+-            <rule pattern="io.netty.**" result="org.python.netty.@1"/>
+-            <zipfileset src="${extlibs.dir}/java-sizeof-0.0.5.jar"/>
+-            <rule pattern="com.carrotsearch.sizeof.**" result="org.python.sizeof.@1"/>
+-            <!-- these stub jars are pre-built in https://github.com/jnr/jffi/tree/master/archive
+-                and rarely if ever change -->
+-            <zipfileset src="extlibs/jffi-aarch64-Linux.jar"/>
+-            <zipfileset src="extlibs/jffi-arm-Linux.jar"/>
+-            <zipfileset src="extlibs/jffi-Darwin.jar"/>
+-            <zipfileset src="extlibs/jffi-i386-FreeBSD.jar"/>
+-            <zipfileset src="extlibs/jffi-i386-Linux.jar"/>
+-            <zipfileset src="extlibs/jffi-i386-OpenBSD.jar"/>
+-            <zipfileset src="extlibs/jffi-i386-SunOS.jar"/>
+-            <zipfileset src="extlibs/jffi-i386-Windows.jar"/>
+-            <zipfileset src="extlibs/jffi-ppc64le-Linux.jar"/>
+-            <zipfileset src="extlibs/jffi-ppc-AIX.jar"/>
+-            <zipfileset src="extlibs/jffi-ppc-Linux.jar"/>
+-            <zipfileset src="extlibs/jffi-ppc64-Linux.jar"/>
+-            <zipfileset src="extlibs/jffi-s390x-Linux.jar"/>
+-            <zipfileset src="extlibs/jffi-sparc-SunOS.jar"/>
+-            <zipfileset src="extlibs/jffi-sparcv9-SunOS.jar"/>
+-            <zipfileset src="extlibs/jffi-x86_64-FreeBSD.jar"/>
+-            <zipfileset src="extlibs/jffi-x86_64-Linux.jar"/>
+-            <zipfileset src="extlibs/jffi-x86_64-OpenBSD.jar"/>
+-            <zipfileset src="extlibs/jffi-x86_64-SunOS.jar"/>
+-            <zipfileset src="extlibs/jffi-x86_64-Windows.jar"/>
+-            <!-- remainder of JNR, JFFI -->
+-            <zipfileset src="extlibs/jffi-1.3.9.jar"/>
+-            <zipfileset src="${extlibs.dir}/jnr-constants-0.10.3.jar"/>
+-            <zipfileset src="${extlibs.dir}/jnr-ffi-2.2.12.jar"/>
+-            <zipfileset src="${extlibs.dir}/jnr-netdb-1.2.0.jar"/>
+-            <zipfileset src="${extlibs.dir}/jnr-posix-3.1.15.jar"/>
+-            <zipfileset src="extlibs/xercesImpl-2.12.2.jar" excludes="META-INF/services/*"/>
+-            <rule pattern="org.apache.xml.**" result="org.python.apache.xml.@1"/>
+-            <rule pattern="org.apache.xerces.**" result="org.python.apache.xerces.@1"/>
+-            <rule pattern="org.apache.wml.**" result="org.python.apache.wml.@1"/>
+-            <rule pattern="org.apache.html.**" result="org.python.apache.html.@1"/>
+-            <zipfileset src="extlibs/jline-2.14.5.jar"/>
+-            <rule pattern="jline.**" result="org.python.jline.@1"/>
+             <manifest>
+                 <attribute name="Main-Class" value="org.python.util.jython" />
+                 <attribute name="Built-By" value="${user.name}" />
+--- a/src/org/python/core/PySystemState.java
++++ b/src/org/python/core/PySystemState.java
+@@ -55,7 +55,7 @@ import org.python.expose.ExposedType;
+ import org.python.modules.Setup;
+ import org.python.util.Generic;
+ 
+-import com.carrotsearch.sizeof.RamUsageEstimator;
++import org.apache.lucene.util.RamUsageEstimator;
+ 
+ import jnr.posix.util.Platform;
+ 

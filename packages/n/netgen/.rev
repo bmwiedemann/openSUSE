@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9bbc816515b99b978a5da8f1c7dbe890</srcmd5>
+    <version>6.2.1810</version>
+    <time>1554384123</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on ARM and PPC, only include immintrin.h when SSE is available
+- Correct License:, netgen has always been LGPL-2.1-only.
+- Package License file.
+- Remove boost BuildRequires:, it is not used at all.
+- Guard Requires: occt-devel in devel package with bcond, so it
+  does not get pulled in if netgen is built without OpenCascade.
+
+
+- switch to gcc7
+- Remove ldconfig calls since there are only dlopened plugins,
+  no standard libraries.
+- Wrap description.
+- Use convenient %make_install, and run fdupes.
+- update to version 6.2.1810
+  obsoletes:
+    allow_fine_curves.patch
+    occ-pi-constant.patch
+    do_stl_init.patch
+- switch to cmake, obsoletes AM_PROG_AR.patch
+- use obs_scm, obsoletes svnfetch.sh and netgen.sh
+- move include files into /usr/include/netgen/
+- use -fno-strict-aliasing
+- add some extra header wrapper files missed by FreeCAD
+- switch to OpenCASCADE 7.2.0
+- switch to OpenCASCADE 7.1.0 and newer boost
+- enable python for openSUSE Tumbleweed
+- Using source service to follow git master (pre-6.1)
+- use new oce instead of OpenCASCADE
+- enable openmpi
+- use fixes for rpath from Johannes Obermayer
+- Changed to upstream version
+- /usr/bin/netgen was a policy violation, -&gt; /usr/lib/netgen
+- Pulling git snapshot 5.1-dev, as the official 5.0.0 release only compiles 
+  with _MSC_VER; Ng_stl_Init() missing otherwise
+- added full autoconf tooling to spec-file, sigh...
+- renamed /usr/bin/netgen.sh to /usr/bin/netgen
+- update to 5.0.0
+  * upstream changelog is empty
+- obsolete fully upstreamed occ-6.5.0 patch
+- patching ng/Makefile to find -lTogl1.7
+- improved netgen.sh to allow parameters and preserve cwd.
+- allow_fine_curves.patch added, finer defaults, extended slider range
+ 
+- remove unneeded lam and lam-devel package requirement
+- new version 4.9.13
+- added patch occ-6.5.0.patch taken from debian package
+- fixed compiling errors on gcc44
+- new upstream version 4.9.11
+- new upstream version 
+</comment>
+    <requestid>688784</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eefc611968c7ee52f6f25f9f4c888cd9</srcmd5>
+    <version>6.2.2101</version>
+    <time>1616598694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876629</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f773104f73e2814db63d353a13608a53</srcmd5>
+    <version>6.2.2101</version>
+    <time>1620767063</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude all 32bit archs, no longer supported upstream (fails to
+  build).</comment>
+    <requestid>892227</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e0bda2b5cb9b92e8757ee47e8b9f73aa</srcmd5>
+    <version>6.2.2105</version>
+    <time>1643404360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949653</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a259a8900c89620c040af3e585d1f8a6</srcmd5>
+    <version>6.2.2105</version>
+    <time>1644435543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952283</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f95e58af174161f038eb0f13d74b2996</srcmd5>
+    <version>6.2.2105</version>
+    <time>1646671605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959752</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2c49acc7d7b1f1e83ae61b6e3fe5a70f</srcmd5>
+    <version>6.2.2203</version>
+    <time>1662148592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000530</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cbb044492b1e072d10648cf8e41378ea</srcmd5>
+    <version>6.2.2203</version>
+    <time>1663074576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003028</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>23312ef7e7e37bec3553704b82abf650</srcmd5>
+    <version>6.2.2204</version>
+    <time>1666689617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030983</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c0316466af0b22ff4a2229b6747f4b9c</srcmd5>
+    <version>6.2.2204</version>
+    <time>1670863168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042214</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ace7a7efeb6190ba70bff2db68e4bb0b</srcmd5>
+    <version>6.2.2301</version>
+    <time>1674927893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061665</requestid>
+  </revision>
+</revisionlist>

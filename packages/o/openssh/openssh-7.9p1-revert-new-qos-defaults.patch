@@ -1,0 +1,76 @@
+commit 101aa2f70c937abb428c9433c39ba0fd9a91fe6b
+Author: Hans Petter Jansson <hpj@cl.no>
+Date:   Thu Jun 20 23:54:11 2019 +0200
+
+    Revert IPQoS DSCP AF21/CS1 from upstream due to bugs in other software
+    
+    Reverts OpenBSD-Commit-ID: d11d2a4484f461524ef0c20870523dfcdeb52181
+
+Index: openssh-8.8p1/readconf.c
+===================================================================
+--- openssh-8.8p1.orig/readconf.c
++++ openssh-8.8p1/readconf.c
+@@ -2679,9 +2679,9 @@ fill_default_options(Options * options)
+ 	if (options->visual_host_key == -1)
+ 		options->visual_host_key = 0;
+ 	if (options->ip_qos_interactive == -1)
+-		options->ip_qos_interactive = IPTOS_DSCP_AF21;
++		options->ip_qos_interactive = IPTOS_LOWDELAY;
+ 	if (options->ip_qos_bulk == -1)
+-		options->ip_qos_bulk = IPTOS_DSCP_CS1;
++		options->ip_qos_bulk = IPTOS_THROUGHPUT;
+ 	if (options->request_tty == -1)
+ 		options->request_tty = REQUEST_TTY_AUTO;
+ 	if (options->session_type == -1)
+Index: openssh-8.8p1/servconf.c
+===================================================================
+--- openssh-8.8p1.orig/servconf.c
++++ openssh-8.8p1/servconf.c
+@@ -459,9 +459,9 @@ fill_default_server_options(ServerOption
+ 	if (options->permit_tun == -1)
+ 		options->permit_tun = SSH_TUNMODE_NO;
+ 	if (options->ip_qos_interactive == -1)
+-		options->ip_qos_interactive = IPTOS_DSCP_AF21;
++		options->ip_qos_interactive = IPTOS_LOWDELAY;
+ 	if (options->ip_qos_bulk == -1)
+-		options->ip_qos_bulk = IPTOS_DSCP_CS1;
++		options->ip_qos_bulk = IPTOS_THROUGHPUT;
+ 	if (options->version_addendum == NULL)
+ 		options->version_addendum = xstrdup("");
+ 	if (options->fwd_opts.streamlocal_bind_mask == (mode_t)-1)
+Index: openssh-8.8p1/ssh_config.5
+===================================================================
+--- openssh-8.8p1.orig/ssh_config.5
++++ openssh-8.8p1/ssh_config.5
+@@ -1182,11 +1182,9 @@ If one argument is specified, it is used
+ If two values are specified, the first is automatically selected for
+ interactive sessions and the second for non-interactive sessions.
+ The default is
+-.Cm af21
+-(Low-Latency Data)
++.Cm lowdelay
+ for interactive sessions and
+-.Cm cs1
+-(Lower Effort)
++.Cm throughput
+ for non-interactive sessions.
+ .It Cm KbdInteractiveAuthentication
+ Specifies whether to use keyboard-interactive authentication.
+Index: openssh-8.8p1/sshd_config.5
+===================================================================
+--- openssh-8.8p1.orig/sshd_config.5
++++ openssh-8.8p1/sshd_config.5
+@@ -903,11 +903,9 @@ If one argument is specified, it is used
+ If two values are specified, the first is automatically selected for
+ interactive sessions and the second for non-interactive sessions.
+ The default is
+-.Cm af21
+-(Low-Latency Data)
++.Cm lowdelay
+ for interactive sessions and
+-.Cm cs1
+-(Lower Effort)
++.Cm throughput
+ for non-interactive sessions.
+ .It Cm KbdInteractiveAuthentication
+ Specifies whether to allow keyboard-interactive authentication.

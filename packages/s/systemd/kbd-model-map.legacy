@@ -1,0 +1,7 @@
+# Additional layouts offered by YaST arabic and ir (Iran) have never had a
+# console layout, they are symlinks to 'us', but they are needed as YaST uses
+# the console layout as a primary key for picking the X11 layout
+
+arabic                 ara,us  pc105           -               terminate:ctrl_alt_bksp,grp:shift_toggle
+ara                    ara,us  pc105           -               terminate:ctrl_alt_bksp,grp:shift_toggle
+ir                     ir      pc105           -               terminate:ctrl_alt_bksp

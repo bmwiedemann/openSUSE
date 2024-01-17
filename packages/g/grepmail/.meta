@@ -1,0 +1,7 @@
+<package name="grepmail" project="openSUSE:Factory">
+  <title>Search Mailboxes for a Particular E-Mail</title>
+  <description>Grepmail searches a normal, gzipped, bzipped, or tzipped mailbox for a
+given regular expression, and returns any e-mails that match that
+expression. Piped input is allowed and date restrictions are supported.</description>
+  <devel project="server:mail" package="grepmail"/>
+</package>

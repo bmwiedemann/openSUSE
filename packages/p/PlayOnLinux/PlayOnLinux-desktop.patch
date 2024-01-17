@@ -1,0 +1,14 @@
+diff -Pdpru playonlinux.orig/etc/PlayOnLinux.desktop playonlinux/etc/PlayOnLinux.desktop
+--- playonlinux.orig/etc/PlayOnLinux.desktop	2017-05-30 23:38:39.000000000 +0200
++++ playonlinux/etc/PlayOnLinux.desktop	2017-06-13 20:29:06.462545243 +0200
+@@ -1,8 +1,9 @@
+ [Desktop Entry]
+ Version=1.0
+ Name=PlayOnLinux
++GenericName=PlayOnLinux
+ Comment=Front-end application for the wine
+ Type=Application
+ Exec=playonlinux %F
+ Icon=playonlinux
+-Categories=Utility;Emulator;
++Categories=System;Emulator;

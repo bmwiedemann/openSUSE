@@ -1,0 +1,39 @@
+From 4d25528b83ec577e1fdbf76d2631605404f72728 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 6 Jul 2022 23:23:08 +0200
+Subject: [PATCH] Avoid installation of Togl static library
+
+---
+ CMakeLists.txt            | 2 +-
+ ng/Togl2.1/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 20c01740..1d98b324 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -282,7 +282,7 @@ if (USE_GUI)
+        target_include_directories(netgen_gui INTERFACE ${TK_INCLUDE_PATH}/../xlib)
+     endif()
+ 
+-    target_link_libraries(nggui PUBLIC nglib togl PRIVATE "$<BUILD_INTERFACE:netgen_python>" )
++    target_link_libraries(nggui PUBLIC nglib PRIVATE togl "$<BUILD_INTERFACE:netgen_python>" )
+ 
+     if(WIN32)
+       target_compile_definitions(netgen_gui INTERFACE -DTOGL_WGL)
+diff --git a/ng/Togl2.1/CMakeLists.txt b/ng/Togl2.1/CMakeLists.txt
+index 5d149129..c2ec4115 100644
+--- a/ng/Togl2.1/CMakeLists.txt
++++ b/ng/Togl2.1/CMakeLists.txt
+@@ -7,7 +7,7 @@ endif(APPLE)
+ if(WIN32)
+     set(TOGL_LIBRARY_TYPE SHARED)
+ else(WIN32)
+-    set(TOGL_LIBRARY_TYPE STATIC)
++    set(TOGL_LIBRARY_TYPE OBJECT)
+ endif(WIN32)
+ 
+ add_library(togl ${TOGL_LIBRARY_TYPE} togl.c toglProcAddr.c toglStubInit.c)
+-- 
+2.36.1
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+HOTKEY=$1
+set $HOTKEY
+EVENT=$1   # "ibm/hotkey"
+ACPI=$2    # "HOTK"
+WHAT=$3    # "00000080"
+SERIAL=$4  # "0000100c" Fn+F12
+
+# bluetooth
+if [ "$WHAT" = "00000080" -a "$SERIAL" = "00001005" ]; then
+	ACTION="disable"
+	grep -q "disabled" "/proc/acpi/ibm/bluetooth" && ACTION="enable"
+	echo $ACTION > "/proc/acpi/ibm/bluetooth"
+fi
+

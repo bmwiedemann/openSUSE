@@ -1,0 +1,8 @@
+ README.SUSE
+-------------
+
+ Bootstrapping a server
+========================
+
+/usr/sbin/matrix-synapse-generate-config servername
+

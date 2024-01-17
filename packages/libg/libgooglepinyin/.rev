@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>baecfb3017721911eb14e70adb39b956</srcmd5>
+    <version>0.1.2</version>
+    <time>1329805919</time>
+    <user>coolo</user>
+    <comment>dependency for hillwood's ibus-googlepinyin and my later submit fcitx-googlepinyin</comment>
+    <requestid>104168</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>baecfb3017721911eb14e70adb39b956</srcmd5>
+    <version>0.1.2</version>
+    <time>1340183591</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c78150f9350c54938a5315032c1a4aab</srcmd5>
+    <version>0.1.2</version>
+    <time>1340719689</time>
+    <user>coolo</user>
+    <comment> (forwarded request 125888 from MargueriteSu)</comment>
+    <requestid>126042</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>28688fbb65933636fe24771dcd14ebd1</srcmd5>
+    <version>0.1.2</version>
+    <time>1348231194</time>
+    <user>coolo</user>
+    <comment> (forwarded request 134700 from hillwood)</comment>
+    <requestid>134701</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>28688fbb65933636fe24771dcd14ebd1</srcmd5>
+    <version>0.1.2</version>
+    <time>1359109282</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>28688fbb65933636fe24771dcd14ebd1</srcmd5>
+    <version>0.1.2</version>
+    <time>1379662965</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>28688fbb65933636fe24771dcd14ebd1</srcmd5>
+    <version>0.1.2</version>
+    <time>1409301578</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>cbb6b64423af4615ae9c9ef377f49930</srcmd5>
+    <version>0.1.2</version>
+    <time>1516222709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566520</requestid>
+  </revision>
+</revisionlist>

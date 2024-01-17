@@ -1,0 +1,11 @@
+diff -ur ant-contrib-1.0b3.orig/src/java/net/sf/antcontrib/antcontrib.properties ant-contrib-1.0b3/src/java/net/sf/antcontrib/antcontrib.properties
+--- ant-contrib-1.0b3.orig/src/java/net/sf/antcontrib/antcontrib.properties	2006-10-28 06:57:56.000000000 -0500
++++ ant-contrib-1.0b3/src/java/net/sf/antcontrib/antcontrib.properties	2015-03-12 17:33:48.000000000 -0500
+@@ -14,6 +14,7 @@
+ 
+ # Logic tasks
+ if=net.sf.antcontrib.logic.IfTask
++for=net.sf.antcontrib.logic.ForTask
+ foreach=net.sf.antcontrib.logic.ForEach
+ throw=net.sf.antcontrib.logic.Throw
+ trycatch=net.sf.antcontrib.logic.TryCatchTask

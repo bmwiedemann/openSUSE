@@ -1,0 +1,25 @@
+From 496a59fbaabded0395497ffedd79ff651b127c83 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 24 Jan 2021 11:29:10 +0100
+Subject: [PATCH] Set CXX_STANDARD 14 for Boost::Geometry
+
+Boost::Geometry requires C++14 since Boost 1.75.
+---
+ include/libnest2d/backends/clipper/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/libnest2d/backends/clipper/CMakeLists.txt b/include/libnest2d/backends/clipper/CMakeLists.txt
+index 031a0a0..38b2a88 100644
+--- a/include/libnest2d/backends/clipper/CMakeLists.txt
++++ b/include/libnest2d/backends/clipper/CMakeLists.txt
+@@ -9,6 +9,7 @@ require_package(Boost 1.58 REQUIRED)
+ 
+ if(TARGET Boost::boost)
+     target_link_libraries(clipperBackend INTERFACE Boost::boost )
++    target_compile_features(clipperBackend INTERFACE cxx_std_14)
+ elseif(Boost_INCLUDE_DIRS_FOUND)
+     target_include_directories(clipperBackend INTERFACE $<BUILD_INTERFACE:${Boost_INCLUDE_DIRS}> )
+ endif()
+-- 
+2.30.0
+

@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Tue Mar  9 16:06:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim future plans from description.
+
+-------------------------------------------------------------------
+Mon Mar  8 22:18:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove service file and fix source tarball checksum mismatch 
+
+-------------------------------------------------------------------
+Mon Mar  8 09:18:24 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to new major version 0.2.0:
+  - new features since 0.1.0:
+    * join and leave open chat rooms and private groups
+    * kick users from or invite users to private groups
+    * create new public channels or private groups
+    * open URLs from the chat in a configurable application
+    * upload and download file attachments
+    * see unread rooms upon startup (direct chats or rooms in which you have
+      been mentioned)
+    * configure the colors used via the INI file
+    * configure the key bindings via the INI file
+    * configures external scripts to be called via hooks in the INI file e.g.
+      to play a sound upon certain events
+    * some additional special message types are now processed as well
+    * overall stability should be better and bugs should be fewer
+
+-------------------------------------------------------------------
+Wed Feb 24 22:00:45 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Run spec-cleaner
+- Use python macros
+
+-------------------------------------------------------------------
+Wed Dec  9 09:15:17 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- initial package

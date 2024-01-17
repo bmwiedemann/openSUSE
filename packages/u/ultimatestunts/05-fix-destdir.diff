@@ -1,0 +1,32 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2012-11-25 17:12:40.870013467 +0100
+Status: sent to upstream
+
+build: resolve installation failure when DESTDIR is used
+
+make install DESTDIR="/tmp/foo" can fail because Makefile.am
+still tries to put files in /usr/share/ultimatestunts rather
+than /tmp/foo/usr/share/ultimatestunts.
+
+---
+ data/Makefile.am |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+Index: ultimatestunts-srcdata-0771/data/Makefile.am
+===================================================================
+--- ultimatestunts-srcdata-0771.orig/data/Makefile.am
++++ ultimatestunts-srcdata-0771/data/Makefile.am
+@@ -1,8 +1,8 @@
+ usdatadir=@usdatadir@
+ 
+ install:
+-	$(mkinstalldirs) ${usdatadir}
+-	cp -r cars environment lang misc music textures textures.dat tiles tracks ${usdatadir}
+-	chmod 644 ${usdatadir}/*.*
+-	chmod 644 ${usdatadir}/*/*.*
+-	chmod 644 ${usdatadir}/*/*/*.*
++	$(mkinstalldirs) ${DESTDIR}${usdatadir}
++	cp -r cars environment lang misc music textures textures.dat tiles tracks ${DESTDIR}${usdatadir}
++	chmod 644 ${DESTDIR}${usdatadir}/*.*
++	chmod 644 ${DESTDIR}${usdatadir}/*/*.*
++	chmod 644 ${DESTDIR}${usdatadir}/*/*/*.*

@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Fri Mar 18 09:34:22 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 0.1.5 → 0.1.6
+
+-------------------------------------------------------------------
+Fri Mar 18 09:32:19 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed unit tests
+
+  While fixing the unit tests I also saw that the error
+  handling for the environment check was inconsistent as
+  well as not all code got tested
+
+-------------------------------------------------------------------
+Fri Mar 18 08:59:31 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support nose and xunit style tests
+
+  The modifications in this commit allows the unit tests
+  to run on both, pytest 6.x (nose test layout) and the new
+  pytest 7.x (xunit test layout).
+
+-------------------------------------------------------------------
+Fri Mar 18 08:54:34 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed package build for debbuild
+
+  debbuild has changed and translate source tarball
+  names containing an '_' into a '-'
+
+-------------------------------------------------------------------
+Tue Nov 09 11:07:37 CET 2021 - Adrian Schröter <adrian@suse.de>
+
+- fix armv6 and armv7 case
+
+  Avoid calling initvm in privileged docker containers. This will fail, since we
+  would try to register a handler as non-root
+
+-------------------------------------------------------------------
+Mon May 10 11:05:45 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 0.1.4 → 0.1.5
+
+-------------------------------------------------------------------
+Mon May 10 11:05:03 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Follow up fix for last commit
+
+  Update unit tests to follow the last change
+
+-------------------------------------------------------------------
+Thu May 06 09:07:32 CEST 2021 - Adrian Schröter <adrian@suse.de>
+
+- drop qemu cleanup job
+
+  This must be done later (currently in editbootinstall) or later jobs
+  like building the initrd will fail.
+
+-------------------------------------------------------------------
+Thu Apr 15 10:03:36 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 0.1.3 → 0.1.4
+
+-------------------------------------------------------------------
+Thu Apr 15 10:02:01 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed target directory setup
+
+  To be compatible with the kiwi build command the sub path
+  below target-dir must be build/image-root/...
+
+-------------------------------------------------------------------
+Thu Apr 15 09:33:45 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 0.1.2 → 0.1.3
+
+-------------------------------------------------------------------
+Thu Apr 15 09:31:54 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Write exclude_files.yaml in kiwi metadata
+
+  Some of the prepared cross image build data should not be
+  synced to the final image. In order to provide that information
+  to the kiwi build process the metadata file image/exclude_files.yaml
+  exists. This commit makes sure to write the file for later
+  exclusion in the build process
+
+-------------------------------------------------------------------
+Thu Apr 15 08:38:11 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- For the moment don't push this to pypi
+
+  The plugin is designed to run in OBS. It was written to
+  be genericaly useful but it's too early to push it on the
+  python index
+
+-------------------------------------------------------------------
+Wed Apr 14 22:26:00 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Implemented QEMU binfmt preparation procedure
+
+-------------------------------------------------------------------
+Wed Apr 14 17:27:34 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added unit tests
+
+-------------------------------------------------------------------
+Wed Apr 14 17:20:42 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed mypy and tox targets
+
+-------------------------------------------------------------------
+Wed Apr 14 17:16:33 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added .coveragerc
+
+-------------------------------------------------------------------
+Wed Apr 14 17:14:46 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Setup initial plugin data structure
+

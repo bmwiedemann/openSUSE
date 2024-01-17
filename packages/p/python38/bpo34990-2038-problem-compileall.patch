@@ -1,0 +1,115 @@
+From 9d3b6b2472f7c7ef841e652825de652bc8af85d7 Mon Sep 17 00:00:00 2001
+From: "Miss Islington (bot)"
+ <31488909+miss-islington@users.noreply.github.com>
+Date: Tue, 24 Aug 2021 08:07:31 -0700
+Subject: [PATCH] [3.9] bpo-34990: Treat the pyc header's mtime in compileall
+ as an unsigned int (GH-19708)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+(cherry picked from commit bb21e28fd08f894ceff2405544a2f257d42b1354)
+
+Co-authored-by: Ammar Askar <ammar@ammaraskar.com>
+Co-authored-by: Stéphane Wirtel <stephane@wirtel.be>
+---
+ Lib/compileall.py                                                 |    4 -
+ Lib/test/test_compileall.py                                       |   23 +++++++++-
+ Lib/test/test_zipimport.py                                        |   17 ++++---
+ Misc/NEWS.d/next/Library/2020-04-24-20-39-38.bpo-34990.3SmL9M.rst |    2 
+ 4 files changed, 35 insertions(+), 11 deletions(-)
+ create mode 100644 Misc/NEWS.d/next/Library/2020-04-24-20-39-38.bpo-34990.3SmL9M.rst
+
+--- a/Lib/compileall.py
++++ b/Lib/compileall.py
+@@ -148,8 +148,8 @@ def compile_file(fullname, ddir=None, fo
+             if not force:
+                 try:
+                     mtime = int(os.stat(fullname).st_mtime)
+-                    expect = struct.pack('<4sll', importlib.util.MAGIC_NUMBER,
+-                                         0, mtime)
++                    expect = struct.pack('<4sLL', importlib.util.MAGIC_NUMBER,
++                                         0, mtime & 0xFFFF_FFFF)
+                     with open(cfile, 'rb') as chandle:
+                         actual = chandle.read(12)
+                     if expect == actual:
+--- a/Lib/test/test_compileall.py
++++ b/Lib/test/test_compileall.py
+@@ -54,9 +54,28 @@ class CompileallTestsBase:
+         with open(self.bc_path, 'rb') as file:
+             data = file.read(12)
+         mtime = int(os.stat(self.source_path).st_mtime)
+-        compare = struct.pack('<4sll', importlib.util.MAGIC_NUMBER, 0, mtime)
++        compare = struct.pack('<4sLL', importlib.util.MAGIC_NUMBER, 0,
++                              mtime & 0xFFFF_FFFF)
+         return data, compare
+ 
++    def test_year_2038_mtime_compilation(self):
++        # Test to make sure we can handle mtimes larger than what a 32-bit
++        # signed number can hold as part of bpo-34990
++        try:
++            os.utime(self.source_path, (2**32 - 1, 2**32 - 1))
++        except (OverflowError, OSError):
++            self.skipTest("filesystem doesn't support timestamps near 2**32")
++        self.assertTrue(compileall.compile_file(self.source_path))
++
++    def test_larger_than_32_bit_times(self):
++        # This is similar to the test above but we skip it if the OS doesn't
++        # support modification times larger than 32-bits.
++        try:
++            os.utime(self.source_path, (2**35, 2**35))
++        except (OverflowError, OSError):
++            self.skipTest("filesystem doesn't support large timestamps")
++        self.assertTrue(compileall.compile_file(self.source_path))
++
+     def recreation_check(self, metadata):
+         """Check that compileall recreates bytecode when the new metadata is
+         used."""
+@@ -75,7 +94,7 @@ class CompileallTestsBase:
+ 
+     def test_mtime(self):
+         # Test a change in mtime leads to a new .pyc.
+-        self.recreation_check(struct.pack('<4sll', importlib.util.MAGIC_NUMBER,
++        self.recreation_check(struct.pack('<4sLL', importlib.util.MAGIC_NUMBER,
+                                           0, 1))
+ 
+     def test_magic_number(self):
+--- a/Lib/test/test_zipimport.py
++++ b/Lib/test/test_zipimport.py
+@@ -34,14 +34,9 @@ raise_src = 'def do_raise(): raise TypeE
+ 
+ def make_pyc(co, mtime, size):
+     data = marshal.dumps(co)
+-    if type(mtime) is type(0.0):
+-        # Mac mtimes need a bit of special casing
+-        if mtime < 0x7fffffff:
+-            mtime = int(mtime)
+-        else:
+-            mtime = int(-0x100000000 + int(mtime))
+     pyc = (importlib.util.MAGIC_NUMBER +
+-        struct.pack("<iii", 0, int(mtime), size & 0xFFFFFFFF) + data)
++        struct.pack("<iLL", 0,
++                    int(mtime) & 0xFFFF_FFFF, size & 0xFFFF_FFFF) + data)
+     return pyc
+ 
+ def module_path_to_dotted_name(path):
+@@ -253,6 +248,14 @@ class UncompressedZipImportTestCase(Impo
+                  TESTMOD + pyc_ext: (NOW, badtime_pyc)}
+         self.doTest(".py", files, TESTMOD)
+ 
++    def test2038MTime(self):
++        # Make sure we can handle mtimes larger than what a 32-bit signed number
++        # can hold.
++        twenty_thirty_eight_pyc = make_pyc(test_co, 2**32 - 1, len(test_src))
++        files = {TESTMOD + ".py": (NOW, test_src),
++                 TESTMOD + pyc_ext: (NOW, twenty_thirty_eight_pyc)}
++        self.doTest(".py", files, TESTMOD)
++
+     def testPackage(self):
+         packdir = TESTPACK + os.sep
+         files = {packdir + "__init__" + pyc_ext: (NOW, test_pyc),
+--- /dev/null
++++ b/Misc/NEWS.d/next/Library/2020-04-24-20-39-38.bpo-34990.3SmL9M.rst
+@@ -0,0 +1,2 @@
++Fixed a Y2k38 bug in the compileall module where it would fail to compile
++files with a modification time after the year 2038.

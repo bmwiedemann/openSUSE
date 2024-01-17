@@ -1,0 +1,20 @@
+diff -upr django-nine-0.2.5.orig/src/django_nine/tests/test_context_processors.py django-nine-0.2.5/src/django_nine/tests/test_context_processors.py
+--- django-nine-0.2.5.orig/src/django_nine/tests/test_context_processors.py	2022-05-09 18:01:19.114938906 +0200
++++ django-nine-0.2.5/src/django_nine/tests/test_context_processors.py	2022-05-09 18:01:19.122938958 +0200
+@@ -1,5 +1,5 @@
+ # import unittest
+-# import mock
++# from unittest import mock
+ # # For Python3 >= 3.4
+ # try:
+ #     from importlib import reload
+diff -upr django-nine-0.2.5.orig/src/django_nine/tests/test_versions.py django-nine-0.2.5/src/django_nine/tests/test_versions.py
+--- django-nine-0.2.5.orig/src/django_nine/tests/test_versions.py	2022-05-09 18:01:19.114938906 +0200
++++ django-nine-0.2.5/src/django_nine/tests/test_versions.py	2022-05-09 18:01:19.122938958 +0200
+@@ -1,5 +1,5 @@
+ import unittest
+-import mock
++from unittest import mock
+ 
+ # For Python3 >= 3.4
+ try:

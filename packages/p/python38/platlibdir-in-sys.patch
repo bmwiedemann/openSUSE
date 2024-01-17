@@ -1,0 +1,124 @@
+---
+ Include/cpython/initconfig.h |    1 +
+ Lib/test/test_embed.py       |    1 +
+ Makefile.pre.in              |    5 +++++
+ Python/initconfig.c          |   21 +++++++++++++++++++++
+ Python/sysmodule.c           |    1 +
+ 5 files changed, 29 insertions(+)
+
+--- a/Include/cpython/initconfig.h
++++ b/Include/cpython/initconfig.h
+@@ -381,6 +381,7 @@ typedef struct {
+     wchar_t *base_prefix;       /* sys.base_prefix */
+     wchar_t *exec_prefix;       /* sys.exec_prefix */
+     wchar_t *base_exec_prefix;  /* sys.base_exec_prefix */
++    wchar_t *platlibdir;        /* sys.platlibdir */
+ 
+     /* --- Parameter only used by Py_Main() ---------- */
+ 
+--- a/Lib/test/test_embed.py
++++ b/Lib/test/test_embed.py
+@@ -382,6 +382,7 @@ class InitConfigTests(EmbeddingTestsMixi
+         'exec_prefix': GET_DEFAULT_CONFIG,
+         'base_exec_prefix': GET_DEFAULT_CONFIG,
+         'module_search_paths': GET_DEFAULT_CONFIG,
++        'platlibdir': sys.platlibdir,
+ 
+         'site_import': 1,
+         'bytes_warning': 0,
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -811,6 +811,11 @@ Python/sysmodule.o: $(srcdir)/Python/sys
+ 		$(MULTIARCH_CPPFLAGS) \
+ 		-o $@ $(srcdir)/Python/sysmodule.c
+ 
++Python/initconfig.o: $(srcdir)/Python/initconfig.c
++	$(CC) -c $(PY_CORE_CFLAGS) \
++		-DPLATLIBDIR='"$(platsubdir)"' \
++		-o $@ $(srcdir)/Python/initconfig.c
++
+ $(IO_OBJS): $(IO_H)
+ 
+ .PHONY: regen-grammar
+--- a/Python/initconfig.c
++++ b/Python/initconfig.c
+@@ -596,6 +596,7 @@ PyConfig_Clear(PyConfig *config)
+     CLEAR(config->base_prefix);
+     CLEAR(config->exec_prefix);
+     CLEAR(config->base_exec_prefix);
++    CLEAR(config->platlibdir);
+ 
+     CLEAR(config->filesystem_encoding);
+     CLEAR(config->filesystem_errors);
+@@ -834,6 +835,7 @@ _PyConfig_Copy(PyConfig *config, const P
+     COPY_WSTR_ATTR(base_prefix);
+     COPY_WSTR_ATTR(exec_prefix);
+     COPY_WSTR_ATTR(base_exec_prefix);
++    COPY_WSTR_ATTR(platlibdir);
+ 
+     COPY_ATTR(site_import);
+     COPY_ATTR(bytes_warning);
+@@ -935,6 +937,7 @@ config_as_dict(const PyConfig *config)
+     SET_ITEM_WSTR(base_prefix);
+     SET_ITEM_WSTR(exec_prefix);
+     SET_ITEM_WSTR(base_exec_prefix);
++    SET_ITEM_WSTR(platlibdir);
+     SET_ITEM_INT(site_import);
+     SET_ITEM_INT(bytes_warning);
+     SET_ITEM_INT(inspect);
+@@ -1336,6 +1339,14 @@ config_read_env_vars(PyConfig *config)
+         config->malloc_stats = 1;
+     }
+ 
++    if(config->platlibdir == NULL) {
++        status = CONFIG_GET_ENV_DUP(config, &config->platlibdir,
++                                    L"PYTHONPLATLIBDIR", "PYTHONPLATLIBDIR");
++        if (_PyStatus_EXCEPTION(status)) {
++            return status;
++        }
++    }
++
+     if (config->pythonpath_env == NULL) {
+         status = CONFIG_GET_ENV_DUP(config, &config->pythonpath_env,
+                                     L"PYTHONPATH", "PYTHONPATH");
+@@ -1786,6 +1797,14 @@ config_read(PyConfig *config)
+         }
+     }
+ 
++    if(config->platlibdir == NULL) {
++        status = CONFIG_SET_BYTES_STR(config, &config->platlibdir, PLATLIBDIR,
++                                      "PLATLIBDIR macro");
++        if (_PyStatus_EXCEPTION(status)) {
++            return status;
++        }
++    }
++
+     if (config->_install_importlib) {
+         status = _PyConfig_InitPathConfig(config);
+         if (_PyStatus_EXCEPTION(status)) {
+@@ -2565,6 +2584,7 @@ PyConfig_Read(PyConfig *config)
+         assert(config->exec_prefix != NULL);
+         assert(config->base_exec_prefix != NULL);
+     }
++    assert(config->platlibdir != NULL);
+     assert(config->filesystem_encoding != NULL);
+     assert(config->filesystem_errors != NULL);
+     assert(config->stdio_encoding != NULL);
+@@ -2715,6 +2735,7 @@ _Py_DumpPathConfig(PyThreadState *tstate
+     DUMP_SYS(_base_executable);
+     DUMP_SYS(base_prefix);
+     DUMP_SYS(base_exec_prefix);
++    DUMP_SYS(platlibdir);
+     DUMP_SYS(executable);
+     DUMP_SYS(prefix);
+     DUMP_SYS(exec_prefix);
+--- a/Python/sysmodule.c
++++ b/Python/sysmodule.c
+@@ -2981,6 +2981,7 @@ _PySys_InitMain(_PyRuntimeState *runtime
+     SET_SYS_FROM_WSTR("base_prefix", config->base_prefix);
+     SET_SYS_FROM_WSTR("exec_prefix", config->exec_prefix);
+     SET_SYS_FROM_WSTR("base_exec_prefix", config->base_exec_prefix);
++    SET_SYS_FROM_WSTR("platlibdir", config->platlibdir);
+ 
+     if (config->pycache_prefix != NULL) {
+         SET_SYS_FROM_WSTR("pycache_prefix", config->pycache_prefix);

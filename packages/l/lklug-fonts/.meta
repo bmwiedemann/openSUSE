@@ -1,0 +1,9 @@
+<package name="lklug-fonts" project="openSUSE:Factory">
+  <title>&quot;Lanka Linux User Group&quot; OpenType font for Sinhala</title>
+  <description>&quot;Lanka Linux User Group&quot; OpenType font for Sinhala copyright 2004 by
+Yannis Haralambous.  OTF tables added by Anuradha Ratnaweera an d
+Harshani Devadithya, and modified by Harshula Jayasuriya. &quot;Kunddaliya&quot;
+glyph Copyright (c) 2006 Harshula Jayasuriya
+</description>
+  <devel project="M17N:fonts" package="lklug-fonts"/>
+</package>

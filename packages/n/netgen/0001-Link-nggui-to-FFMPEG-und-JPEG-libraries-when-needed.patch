@@ -1,0 +1,40 @@
+From a1ca414a629699d09c690c5b3d92081d82e23095 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 6 Jul 2022 19:36:01 +0200
+Subject: [PATCH] Link nggui to FFMPEG und JPEG libraries when needed
+
+The nggui library calls functions from libav (ffmpeg) and libjpeg,
+and thus should link to it.
+
+Build fails otherwise when "-Wl,--no-undefined" is set.
+---
+ CMakeLists.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index caca0bfc..e1276ab4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -427,6 +427,9 @@ if (USE_JPEG)
+     find_package(JPEG REQUIRED)
+     add_definitions(-DJPEGLIB)
+     include_directories(${JPEG_INCLUDE_DIR})
++    if(USE_GUI)
++        target_link_libraries(netgen_gui INTERFACE ${JPEG_LIBRARIES})
++    endif()
+ endif (USE_JPEG)
+ 
+ #######################################################################
+@@ -434,6 +437,9 @@ if (USE_MPEG)
+     find_package(FFMPEG REQUIRED)
+     add_definitions(-DFFMPEG -D__STDC_CONSTANT_MACROS)
+     include_directories(${FFMPEG_INCLUDE_DIR})
++    if(USE_GUI)
++        target_link_libraries(netgen_gui INTERFACE ${FFMPEG_LIBRARIES})
++    endif()
+ endif (USE_MPEG)
+ 
+ #######################################################################
+-- 
+2.36.1
+

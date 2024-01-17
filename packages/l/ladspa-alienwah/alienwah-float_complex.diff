@@ -1,0 +1,21 @@
+--- aw.cpp-dist	2007-11-22 12:35:45.000000000 +0100
++++ aw.cpp	2007-11-22 12:41:41.000000000 +0100
+@@ -63,7 +63,7 @@
+ /*****************************************************************************/
+ 
+ #include <math.h>
+-#include <complex.h>
++#include <complex>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdio.h>
+@@ -96,6 +96,9 @@
+ #define PI (3.141592653589)
+ /*****************************************************************************/
+ 
++using namespace std;
++typedef complex<float> float_complex;
++
+ class AW {
+ private:
+ 

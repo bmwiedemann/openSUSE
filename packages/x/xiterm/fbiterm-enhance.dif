@@ -1,0 +1,916 @@
+--- unix/fbiterm/src/fb_true24.c-dist	2004-04-01 17:29:53.941573163 +0200
++++ unix/fbiterm/src/fb_true24.c	2004-04-01 19:45:32.966421735 +0200
+@@ -95,21 +95,43 @@ fb_true24_set_rendition (int bold, int b
+ 
+ void
+ fb_true24_draw_char (unsigned char *dst, int offset,
+-		     unsigned char *bits, int width, int height)
++		     unsigned char *bits, int cell_width,
++		     const xCharInfo *info,
++		     const TermFont *base)
+ {
+   int x, y;
++  int height;
++  unsigned int *dst24;
++
++  /**** FIXME ****
++   * this shouldn't work on some architectures because of word boundary!!
++   */
++
++  height = (int)base->ascent - (int)info->ascent;
++  for (y = 0; y < height; y++) {
++    for (x = 0; x < cell_width; x++) {
++      dst24 = (unsigned int *) (dst + offset + 3 * x);
++      *dst24 = bgcmap;
++    }
++    dst += pIterm->fb->line_length;
++  }
++
++  height = info->ascent + info->descent;
+   for (y = 0; y < height; y++)
+     {
+-      unsigned long c1, c2, c3, c4, c, cc;
++      unsigned int c1, c2, c3, c4, c, cc;
+       c1 = (*bits++ & 0x000000ff);
+       c2 = (*bits++ & 0x000000ff);
+       c3 = (*bits++ & 0x000000ff);
+       c4 = (*bits++ & 0x000000ff);
+       c = cc = (c1 << 24) + (c2 << 16) + (c3 << 8) + c4;
+-      for (x = 0; x < width; x++)
++      for (x = 0; x < info->leftSideBearing; x++) {
++	dst24 = (unsigned int *) (dst + offset + 3 * x);
++	*dst24 = bgcmap;
++      }
++      for (; x < info->rightSideBearing; x++)
+ 	{
+-	  unsigned long *dst24;
+-	  dst24 = (unsigned long *) (dst + offset + 3 * x);
++	  dst24 = (unsigned int *) (dst + offset + 3 * x);
+ 
+ 	  if ((pIterm->underline || pIterm->blink) && (height - y < 2))
+ 	    *(dst24) = fgcmap;
+@@ -134,8 +156,20 @@ fb_true24_draw_char (unsigned char *dst,
+ 	    }
+ 	  c <<= 1;
+ 	}
++      for (; x < cell_width; x++) {
++	dst24 = (unsigned int *) (dst + offset + 3 * x);
++	*dst24 = bgcmap;
++      }
+       dst += pIterm->fb->line_length;
+     }
++  height = base->descent - info->descent;
++  for (y = 0; y < height; y++) {
++    for (x = 0; x < cell_width; x++) {
++      dst24 = (unsigned int *) (dst + offset + 3 * x);
++      *dst24 = bgcmap;
++    }
++    dst += pIterm->fb->line_length;
++  }
+   return;
+ }
+ 
+@@ -147,6 +181,8 @@ fb_true24_draw_text (int col, int row, c
+   unsigned char *bits;
+   char *dst;
+   mbstate_t ps;
++  const xCharInfo *cinfo;
++  const TermFont *base;
+ 
+   if (pIterm->lock)
+     return;
+@@ -184,21 +220,25 @@ fb_true24_draw_text (int col, int row, c
+ 	  if (len == 1 && mbstring[i] < 0x7f)
+ 	    {
+ 	      codepoint = (int) (mbstring[i] & 0x000000ff);
+-	      bits = get_glyph (pIterm->asc_font, codepoint, &height);
++	      base = pIterm->asc_font;
++	      bits = get_glyph2 (pIterm->asc_font, codepoint, &height, &cinfo);
+ 	      w = pIterm->asc_font->cell_width;
+ 	    }
+ 	  else
+ 	    {
+ 	      mbrtowc (&wc, (char *) &mbstring[i], len, 0);
+-	      bits = get_glyph (pIterm->mb_font, wc, &height);
++	      base = pIterm->mb_font;
++	      bits = get_glyph2 (pIterm->mb_font, wc, &height, &cinfo);
+ 	      wlen = wcwidth (wc);
+ 	      w = pIterm->asc_font->cell_width * (wlen > 0 ? wlen : 1);
+ 	    }
+ 	}
++      else
++	      break;
+ 
+       i += len;
+       dst = (char *) (pIterm->fb->buf + starty);
+-      fb_true24_draw_char (dst, startx, bits, w, height);
++      fb_true24_draw_char (dst, startx, bits, w, cinfo, base);
+       startx += (3 * w);
+     }
+   return;
+--- unix/fbiterm/src/fbiterm.c-dist	2004-04-01 15:37:49.000000000 +0200
++++ unix/fbiterm/src/fbiterm.c	2004-04-02 13:08:32.023077503 +0200
+@@ -51,11 +51,12 @@ catchSignal ()
+ static void
+ iterm_usage (void)
+ {
+-  fprintf (stdout, "Usage: iterm [ -a <fontfile> ] [ -m <fontfile> ] [ -v ]\n\
++  fprintf (stdout, "Usage: fbiterm [-a <fontfile>] [-m <fontfile>] [-v] [-s <fontsize>] [cmds...]\n\
+ \n\
+ options:\n\
+   -a <fontfile>\tascii text font\n\
+   -m <fontfile>\tunicode text font\n\
++  -s\t\tspecify the font size (12,14,16,24)\n\
+   -v\t\tprint version information and exit\n\
+   -h\t\tthis help message\n");
+ 
+@@ -67,6 +68,8 @@ main (int argc, char *argv[])
+ {
+   unsigned char buf[BUFSIZ + 1], *ascfontname, *mbfontname;
+   int i;
++  int fontsize = 0;
++  char **prog_args;
+ 
+   setlocale (LC_ALL, "");
+ 
+@@ -90,23 +93,23 @@ main (int argc, char *argv[])
+       exit (1);
+     }
+ 
+-  ascfontname = DefaultAsc;
+-  mbfontname = DefaultMB;
+-  while ((i = getopt (argc, argv, "a:m:hv")) != EOF)
++  ascfontname = NULL;
++  mbfontname = NULL;
++  while ((i = getopt (argc, argv, "a:m:hvs:")) != EOF)
+     switch (i)
+       {
+       case 'a':
+ 	if (optarg != NULL)
+ 	  ascfontname = optarg;
+ 	else
+-	  ascfontname = DefaultAsc;
++	  ascfontname = NULL;
+ 	break;
+ 
+       case 'm':
+ 	if (optarg != NULL)
+ 	  mbfontname = optarg;
+ 	else
+-	  mbfontname = DefaultMB;
++	  mbfontname = NULL;
+ 	break;
+ 
+       case 'v':
+@@ -114,18 +117,37 @@ main (int argc, char *argv[])
+ 	exit (0);
+ 	break;
+ 
++      case 's':
++	fontsize = atoi(optarg);
++	break;
++
+       case 'h':
+       default:
+ 	iterm_usage ();
+ 	break;
+       }
+ 
+-  if (optind < argc)
+-    iterm_usage ();
++  prog_args = NULL;
++  if (optind < argc) {
++	  int i, j, num_args = argc - optind;
++	  prog_args = malloc(sizeof(char*) * (num_args + 1));
++	  if (! prog_args) {
++		  fprintf(stderr, "can't malloc args\n");
++		  exit(1);
++	  }
++	  for (i = 0, j = optind; j < argc; i++, j++)
++		  prog_args[i] = argv[j];
++	  prog_args[i] = NULL;
++  }
+ 
+   /* initialize font/framebuffer/terminal/VT/input */
+-  if (InitFont (ascfontname, mbfontname) < 0)
+-    exitFbiterm (FONT_ERROR_EXIT);
++  if (fontsize) {
++    if (InitFontWithSize (fontsize) < 0)
++      exitFbiterm (FONT_ERROR_EXIT);
++  } else {
++    if (InitFont (ascfontname, mbfontname) < 0)
++      exitFbiterm (FONT_ERROR_EXIT);
++  }
+ 
+   if (InitTerm () < 0)
+     exitFbiterm (TERM_ERROR_EXIT);
+@@ -135,7 +157,7 @@ main (int argc, char *argv[])
+     exitFbiterm (FB_ERROR_EXIT);
+   pIterm->fbInitialized = 1;
+   
+-  if (InitVt () < 0)
++  if (InitVt (prog_args) < 0)
+     exitFbiterm (VT_ERROR_EXIT);
+ 
+   if (InitInput () < 0)
+--- unix/fbiterm/src/fbiterm.h-dist	2004-04-01 17:09:59.294149629 +0200
++++ unix/fbiterm/src/fbiterm.h	2004-04-01 19:37:44.106428870 +0200
+@@ -53,10 +53,6 @@
+ #define FB_ENV    "FRAMEBUFFER"
+ #define FB_DEFDEV "/dev/fb0"
+ 
+-#define DefaultAsc	"/usr/lib/X11/fonts/misc/8x16.pcf.gz"
+-#define DefaultMB	"/usr/lib/X11/fonts/misc/unifont.pcf.gz"
+-#define DefaultFont	"/usr/local/share/iterm/fonts/8x16.pcf.gz"
+-
+ enum ITERM_RETCODE
+ {
+   ITERM_REPLACEFONT = 1,
+@@ -89,6 +85,8 @@ typedef struct _TermFont
+   FontRec *frec;		/* FontRec structure (defined by X11) */
+   int cell_width;		/* cell width per character */
+   int cell_height;		/* cell height per character */
++  int ascent;
++  int descent;
+ }
+ TermFont;
+ 
+@@ -137,9 +135,10 @@ Iterm;
+ 
+ /* function prototypes */
+ int InitFont (char *ascfont, char *mbfont);
++int InitFontWithSize (int fontsize);
+ int InitFb ();
+ int InitTerm ();
+-int InitVt ();
++int InitVt (char **prog_args);
+ int InitInput (void);
+ void exitFbiterm (int exitcode);
+ 
+@@ -193,7 +192,8 @@ extern void VTCore_set_direction ();
+ extern int
+ wcwidth (wint_t __c)
+   __THROW;
+-     extern unsigned char *get_glyph ();
++// extern unsigned char *get_glyph ();
++     extern unsigned char *get_glyph2 ();
+      extern Iterm *pIterm;
+ 
+ #endif /* __ITERM_H__ */
+--- unix/fbiterm/src/fb_true8.c-dist	2004-04-01 17:29:15.207340311 +0200
++++ unix/fbiterm/src/fb_true8.c	2004-04-01 19:38:11.825162859 +0200
+@@ -84,23 +84,37 @@ fb_true8_set_rendition (int bold, int bl
+ 
+ void
+ fb_true8_draw_char (unsigned char *dst, int offset,
+-		    unsigned char *bits, int width, int height)
++		    unsigned char *bits, int cell_width,
++		    const xCharInfo *info,
++		    const TermFont *base)
+ {
+   int x, y;
++  int height;
++  unsigned char *dst8;
+ 
++  height = (int)base->ascent - (int)info->ascent;
++  for (y = 0; y < height; y++) {
++    dst8 = (unsigned char *) (dst + offset);
++    for (x = 0; x < cell_width; x++)
++      *dst8++ = (char) bgcmap;
++    dst += pIterm->fb->line_length;
++  }
++
++  height = info->ascent + info->descent;
+   for (y = 0; y < height; y++)
+     {
+-      unsigned long c1, c2, c3, c4, c, cc;
++      unsigned int c1, c2, c3, c4, c, cc;
+       c1 = (*bits++ & 0x000000ff);
+       c2 = (*bits++ & 0x000000ff);
+       c3 = (*bits++ & 0x000000ff);
+       c4 = (*bits++ & 0x000000ff);
+       c = cc = (c1 << 24) + (c2 << 16) + (c3 << 8) + c4;
+-      for (x = 0; x < width; x++)
++      dst8 = (unsigned char *) (dst + offset);
++      for (x = 0; x < info->leftSideBearing; x++) {
++	*dst8++ = (char) bgcmap;
++      }
++      for (; x < info->rightSideBearing; x++, dst8++)
+ 	{
+-	  unsigned char *dst8;
+-	  dst8 = (unsigned char *) (dst + offset + x);
+-
+ 	  if (pIterm->underline && (height - y < 2))
+ 	    *(dst8) = fgcmap;
+ 	  else
+@@ -122,8 +136,17 @@ fb_true8_draw_char (unsigned char *dst, 
+ 	    }
+ 	  c <<= 1;
+ 	}
++      for (; x < cell_width; x++)
++	*dst8++ = (char) bgcmap;
+       dst += pIterm->fb->line_length;
+     }
++  height = base->descent - info->descent;
++  for (y = 0; y < height; y++) {
++    dst8 = (unsigned char *) (dst + offset);
++    for (x = 0; x < cell_width; x++)
++      *dst8++ = (char) bgcmap;
++    dst += pIterm->fb->line_length;
++  }
+   return;
+ }
+ 
+@@ -135,6 +158,8 @@ fb_true8_draw_text (int col, int row, ch
+   unsigned char *bits;
+   char *dst;
+   mbstate_t ps;
++  const xCharInfo *cinfo;
++  const TermFont *base;
+ 
+   if (pIterm->lock)
+     return;
+@@ -172,21 +197,25 @@ fb_true8_draw_text (int col, int row, ch
+ 	  if (len == 1 && mbstring[i] < 0x7f)
+ 	    {
+ 	      codepoint = (int) (mbstring[i] & 0x000000ff);
+-	      bits = get_glyph (pIterm->asc_font, codepoint, &height);
++	      base = pIterm->asc_font;
++	      bits = get_glyph2 (pIterm->asc_font, codepoint, &height, &cinfo);
+ 	      w = pIterm->asc_font->cell_width;
+ 	    }
+ 	  else
+ 	    {
+ 	      mbrtowc (&wc, (char *) &mbstring[i], len, 0);
+-	      bits = get_glyph (pIterm->mb_font, wc, &height);
++	      base = pIterm->mb_font;
++	      bits = get_glyph2 (pIterm->mb_font, wc, &height, &cinfo);
+ 	      wlen = wcwidth (wc);
+ 	      w = pIterm->asc_font->cell_width * (wlen > 0 ? wlen : 1);
+ 	    }
+ 	}
++      else
++	      break;
+ 
+       i += len;
+       dst = (char *) (pIterm->fb->buf + starty);
+-      fb_true8_draw_char (dst, startx, bits, w, height);
++      fb_true8_draw_char (dst, startx, bits, w, cinfo, base);
+       startx += w;
+     }
+   return;
+--- unix/fbiterm/src/font_stubs.c-dist	2004-04-01 17:28:58.374150309 +0200
++++ unix/fbiterm/src/font_stubs.c	2004-04-01 17:29:03.051091740 +0200
+@@ -22,14 +22,6 @@ init_fs_handlers ()
+ {
+ }
+ void
+-ceil ()
+-{
+-}
+-void
+-floor ()
+-{
+-}
+-void
+ ClientSignal ()
+ {
+ }
+--- unix/fbiterm/src/fb_true32.c-dist	2004-04-01 19:33:49.233517488 +0200
++++ unix/fbiterm/src/fb_true32.c	2004-04-01 19:37:34.718551031 +0200
+@@ -96,22 +96,37 @@ fb_true32_set_rendition (int bold, int b
+ 
+ void
+ fb_true32_draw_char (unsigned char *dst, int offset,
+-		     unsigned char *bits, int width, int height)
++		     unsigned char *bits, int cell_width,
++		     const xCharInfo *info,
++		     const TermFont *base)
+ {
+   int x, y;
++  int height;
++  unsigned int *dst32;
++
++  height = (int)base->ascent - (int)info->ascent;
++  for (y = 0; y < height; y++) {
++    dst32 = (unsigned int *) (dst + offset);
++    for (x = 0; x < cell_width; x++)
++      *dst32++ = bgcmap;
++    dst += pIterm->fb->line_length;
++  }
++
++  height = (int)info->ascent + (int)info->descent;
+   for (y = 0; y < height; y++)
+     {
+-      unsigned long c1, c2, c3, c4, c, cc;
++      unsigned int c1, c2, c3, c4, c, cc;
+       c1 = (*bits++ & 0x000000ff);
+       c2 = (*bits++ & 0x000000ff);
+       c3 = (*bits++ & 0x000000ff);
+       c4 = (*bits++ & 0x000000ff);
+       c = cc = (c1 << 24) + (c2 << 16) + (c3 << 8) + c4;
+-      for (x = 0; x < width; x++)
++      dst32 = (unsigned int *) (dst + offset);
++      for (x = 0; x < info->leftSideBearing; x++) {
++	*dst32++ = bgcmap;
++      }
++      for (; x < info->rightSideBearing; x++, dst32++)
+ 	{
+-	  unsigned int *dst32;
+-	  dst32 = (unsigned int *) (dst + offset + 4 * x);
+-
+ 	  if ((pIterm->underline || pIterm->blink) && (height - y < 2))
+ 	    *(dst32) = fgcmap;
+ 	  else
+@@ -135,8 +150,17 @@ fb_true32_draw_char (unsigned char *dst,
+ 	    }
+ 	  c <<= 1;
+ 	}
++      for (; x < cell_width; x++)
++	*dst32++ = bgcmap;
+       dst += pIterm->fb->line_length;
+     }
++  height = (int)base->descent - (int)info->descent;
++  for (y = 0; y < height; y++) {
++    dst32 = (unsigned int *) (dst + offset);
++    for (x = 0; x < cell_width; x++)
++      *dst32++ = bgcmap;
++    dst += pIterm->fb->line_length;
++  }
+   return;
+ }
+ 
+@@ -148,6 +172,8 @@ fb_true32_draw_text (int col, int row, c
+   unsigned char *bits;
+   char *dst;
+   mbstate_t ps;
++  const xCharInfo *cinfo;
++  const TermFont *base;
+ 
+   if (pIterm->lock)
+     return;
+@@ -185,21 +211,25 @@ fb_true32_draw_text (int col, int row, c
+ 	  if (len == 1 && mbstring[i] < 0x7f)
+ 	    {
+ 	      codepoint = (int) (mbstring[i] & 0x000000ff);
+-	      bits = get_glyph (pIterm->asc_font, codepoint, &height);
++	      base = pIterm->asc_font;
++	      bits = get_glyph2 (pIterm->asc_font, codepoint, &height, &cinfo);
+ 	      w = pIterm->asc_font->cell_width;
+ 	    }
+ 	  else
+ 	    {
+ 	      mbrtowc (&wc, (char *) &mbstring[i], len, 0);
+-	      bits = get_glyph (pIterm->mb_font, wc, &height);
++	      base = pIterm->mb_font;
++	      bits = get_glyph2 (pIterm->mb_font, wc, &height, &cinfo);
+ 	      wlen = wcwidth (wc);
+ 	      w = pIterm->asc_font->cell_width * (wlen > 0 ? wlen : 1);
+ 	    }
+ 	}
++      else
++	break;
+ 
+       i += len;
+       dst = (char *) (pIterm->fb->buf + starty);
+-      fb_true32_draw_char (dst, startx, bits, w, height);
++      fb_true32_draw_char (dst, startx, bits, w, cinfo, base);
+       startx += (4 * w);
+     }
+   return;
+--- unix/fbiterm/src/font.c-dist	2004-04-01 16:41:37.508753260 +0200
++++ unix/fbiterm/src/font.c	2004-04-01 19:39:57.556260303 +0200
+@@ -114,14 +114,14 @@ get_glyph_codepoint (TermFont * fs, int 
+ }
+ 
+ unsigned char *
+-get_glyph (TermFont * fs, int codepoint, unsigned int *height)
++get_glyph2 (TermFont * fs, int codepoint, unsigned int *height, const xCharInfo **metricp)
+ {
+   unsigned short firstCol, lastCol, firstRow, lastRow;
+   unsigned short col, row, numCols, numRows;
+   unsigned int can_num, codep;
+   int r, c, n;
+   unsigned char *bits;
+-  xCharInfo *metric;
++  const xCharInfo *metric;
+ 
+   BitmapFontPtr bp = (BitmapFontPtr) (fs->frec->fontPrivate);
+   CharInfoPtr cp = (CharInfoPtr) (bp->metrics);
+@@ -139,6 +139,7 @@ get_glyph (TermFont * fs, int codepoint,
+   bits = dp->bits;
+   metric = &(dp->metrics);
+   *height = (metric->ascent + metric->descent);
++  *metricp = metric;
+ 
+   can_num = codep = get_glyph_codepoint (fs, codepoint);
+ 
+@@ -160,14 +161,28 @@ get_glyph (TermFont * fs, int codepoint,
+ 	      bits = cp[n].bits;
+ 	      metric = &(cp[n].metrics);
+ 	      *height = (metric->ascent + metric->descent);
++	      *metricp = metric;
+ 	    }
+ 	  return bits;
+ 	}
+     }
++#if 0
++  fprintf(stderr, "code:%x, left=%d,right=%d,wid=%d,asc=%d,dsc=%d\n",
++	  codepoint, metric->leftSideBearing, metric->rightSideBearing, metric->characterWidth, metric->ascent, metric->descent);
++#endif
+ 
+   return bits;
+ }
+ 
++#if 0
++unsigned char *
++get_glyph (TermFont * fs, int codepoint, unsigned int *height)
++{
++  xCharInfo *dummy;
++  return get_glyph2(fs, codepoint, height, &dummy);
++}
++#endif
++
+ /* load font */
+ TermFont *
+ load_font (char *input_filename)
+@@ -228,6 +243,8 @@ load_font (char *input_filename)
+   pFs->cell_width = font->info.maxbounds.characterWidth;
+   pFs->cell_height =
+     font->info.maxbounds.ascent + font->info.maxbounds.descent;
++  pFs->ascent = font->info.maxbounds.ascent;
++  pFs->descent = font->info.maxbounds.descent;
+ 
+ #ifdef STRICT_DEF
+   /* check terminal font */
+@@ -265,9 +282,113 @@ load_font (char *input_filename)
+   return pFs;
+ }
+ 
++static char *ascii_fonts10[] = {
++  "/usr/share/fonts/misc/h10.pcf.gz",
++  "/usr/lib/X11/fonts/misc/h10.pcf.gz",
++  NULL
++};
++static char *mb_fonts10[] = {
++  "/usr/share/fonts/misc/b10.pcf.gz",
++  "/usr/share/fonts/misc/f10.pcf.gz",
++  "/usr/lib/X11/fonts/misc/b10.pcf.gz",
++  "/usr/lib/X11/fonts/misc/f10.pcf.gz",
++  NULL
++};
++
++static char *ascii_fonts12[] = {
++  "/usr/share/fonts/misc/6x12.pcf.gz",
++  "/usr/share/fonts/misc/h12.pcf.gz",
++  "/usr/lib/X11/fonts/misc/6x12.pcf.gz",
++  "/usr/lib/X11/fonts/misc/h12.pcf.gz",
++  NULL
++};
++static char *mb_fonts12[] = {
++  "/usr/share/fonts/misc/b12.pcf.gz",
++  "/usr/share/fonts/misc/f12.pcf.gz",
++  "/usr/lib/X11/fonts/misc/b12.pcf.gz",
++  "/usr/lib/X11/fonts/misc/f12.pcf.gz",
++  NULL
++};
++
++static char *ascii_fonts14[] = {
++  "/usr/share/fonts/misc/7x14.pcf.gz",
++  "/usr/share/fonts/misc/h14.pcf.gz",
++  "/usr/lib/X11/fonts/misc/7x14.pcf.gz",
++  "/usr/lib/X11/fonts/misc/h14.pcf.gz",
++  NULL
++};
++static char *mb_fonts14[] = {
++  "/usr/share/fonts/misc/b14.pcf.gz",
++  "/usr/share/fonts/misc/f14.pcf.gz",
++  "/usr/lib/X11/fonts/misc/b14.pcf.gz",
++  "/usr/lib/X11/fonts/misc/f14.pcf.gz",
++  NULL
++};
++
++static char *ascii_fonts16[] = {
++  "/usr/share/fonts/misc/8x16.pcf.gz",
++  "/usr/share/fonts/misc/h16.pcf.gz",
++  "/usr/lib/X11/fonts/misc/8x16.pcf.gz",
++  "/usr/lib/X11/fonts/misc/h16.pcf.gz",
++  "/usr/share/fbiterm/fonts/8x16.pcf.gz",
++  NULL
++};
++static char *mb_fonts16[] = {
++  "/usr/share/fonts/misc/unifont.pcf.gz",
++  "/usr/share/fonts/misc/b16.pcf.gz",
++  "/usr/share/fonts/misc/f16.pcf.gz",
++  "/usr/lib/X11/fonts/misc/unifont.pcf.gz",
++  "/usr/lib/X11/fonts/misc/b16.pcf.gz",
++  "/usr/lib/X11/fonts/misc/f16.pcf.gz",
++  "/usr/share/fbiterm/fonts/b16.pcf.gz",
++  NULL
++};
++
++static char *ascii_fonts24[] = {
++  "/usr/share/fonts/misc/12x24.pcf.gz",
++  "/usr/share/fonts/misc/h24.pcf.gz",
++  "/usr/lib/X11/fonts/misc/12x24.pcf.gz",
++  "/usr/lib/X11/fonts/misc/h24.pcf.gz",
++  NULL
++};
++static char *mb_fonts24[] = {
++  "/usr/share/fonts/misc/b24.pcf.gz",
++  "/usr/share/fonts/misc/f24.pcf.gz",
++  "/usr/lib/X11/fonts/misc/b24.pcf.gz",
++  "/usr/lib/X11/fonts/misc/f24.pcf.gz",
++  NULL
++};
++
++struct font_list {
++  int size;
++  char **ascii_fonts;
++  char **mb_fonts;
++};
++
++static struct font_list font_lists[] = {
++  { 10, ascii_fonts10, mb_fonts10 },
++  { 12, ascii_fonts12, mb_fonts12 },
++  { 14, ascii_fonts14, mb_fonts14 },
++  { 16, ascii_fonts16, mb_fonts16 },
++  { 24, ascii_fonts24, mb_fonts24 },
++  { 0, },
++};
++
++
++static char *search_font(char **list)
++{
++  struct stat sbuf;
++  for (; *list; list++) {
++    if (! stat(*list, &sbuf))
++      return *list;
++  }
++  return NULL;
++}
++
+ /* Load X font */
+-int
+-InitFont (char *ascfontfile, char *mbfontfile)
++static int
++do_init_font(char *ascfontfile, char *mbfontfile,
++	     char **ascii_fonts, char **mb_fonts)
+ {
+   struct stat sbuf;
+   int rc = 0;
+@@ -275,32 +374,24 @@ InitFont (char *ascfontfile, char *mbfon
+   char *mbfname = mbfontfile;
+ 
+   /* check mbfont first */
+-  if (stat (mbfname, &sbuf) < 0)
+-    {
+-      if (stat (DefaultMB, &sbuf) < 0)
+-	{
+-	  if (stat (DefaultAsc, &sbuf) < 0)
+-	    {
+-	      if (stat (DefaultFont, &sbuf) < 0)
+-		{
+-		  fprintf (stderr, "font file not found.\n");
+-		  return -1;
+-		}
+-	      else
+-		{
+-		  mbfname = DefaultFont;
+-		  rc |= ITERM_REPLACEFONT;
+-		}
+-	    }
+-	  else
+-	    {
+-	      mbfname = DefaultAsc;
+-	      rc |= ITERM_REPLACEFONT;
+-	    }
+-	}
+-      else
+-	mbfname = DefaultMB;
++  if (! mbfname || stat (mbfname, &sbuf) < 0) {
++    mbfname = search_font(mb_fonts);
++    if (! mbfname) {
++      mbfname = search_font(ascii_fonts);
++      if (! mbfname) {
++	fprintf (stderr, "font file not found.\n");
++	return -1;
++      }
++      rc |= ITERM_REPLACEFONT;
+     }
++  }
++  if (! ascfname || stat (ascfname, &sbuf) < 0) {
++    ascfname = search_font(ascii_fonts);
++    if (! ascfname) {
++	fprintf (stderr, "font file not found.\n");
++	return -1;
++      }
++  }
+ 
+   pIterm->mb_font = (TermFont *) load_font (mbfname);
+   if (pIterm->mb_font == NULL)
+@@ -309,23 +400,6 @@ InitFont (char *ascfontfile, char *mbfon
+       return -1;
+     }
+ 
+-  /* check ascii font */
+-  if (stat (ascfname, &sbuf) < 0)
+-    {
+-      if (stat (DefaultAsc, &sbuf) < 0)
+-	{
+-	  if (stat (DefaultFont, &sbuf) < 0)
+-	    {
+-	      fprintf (stderr, "ascii font file not found.\n");
+-	      return -1;
+-	    }
+-	  else
+-	    ascfname = DefaultFont;
+-	}
+-      else
+-	ascfname = DefaultAsc;
+-    }
+-
+   if (!strcmp (ascfname, mbfname))
+     pIterm->asc_font = pIterm->mb_font;
+   else
+@@ -365,3 +439,26 @@ InitFont (char *ascfontfile, char *mbfon
+     max (pIterm->asc_font->cell_height, pIterm->mb_font->cell_height);
+   return rc;
+ }
++
++/*
++ */
++
++int
++InitFont (char *ascfontfile, char *mbfontfile)
++{
++  /* choose 16pixel fonts */
++  return do_init_font(ascfontfile, mbfontfile, ascii_fonts16, mb_fonts16);
++}
++
++int
++InitFontWithSize (int fontsize)
++{
++  struct font_list *l;
++
++  for (l = font_lists; l->size; l++) {
++    if (l->size == fontsize)
++      return do_init_font(NULL, NULL, l->ascii_fonts, l->mb_fonts);
++  }
++  fprintf (stderr, "no matching font size found.\n");
++  return -1;
++}
+--- unix/fbiterm/src/fb_true16.c-dist	2004-04-01 17:29:39.349875880 +0200
++++ unix/fbiterm/src/fb_true16.c	2004-04-01 19:35:58.979192273 +0200
+@@ -94,22 +94,37 @@ fb_true16_set_rendition (int bold, int b
+ 
+ void
+ fb_true16_draw_char (unsigned char *dst, int offset,
+-		     unsigned char *bits, int width, int height)
++		    unsigned char *bits, int cell_width,
++		    const xCharInfo *info,
++		    const TermFont *base)
+ {
+   int x, y;
++  int height;
++  unsigned short *dst16;
++
++  height = (int)base->ascent - (int)info->ascent;
++  for (y = 0; y < height; y++) {
++    dst16 = (unsigned short *) (dst + offset);
++    for (x = 0; x < cell_width; x++)
++      *dst16++ = bgcmap;
++    dst += pIterm->fb->line_length;
++  }
++
++  height = (int)info->ascent + (int)info->descent;
+   for (y = 0; y < height; y++)
+     {
+-      unsigned long c1, c2, c3, c4, c, cc;
++      unsigned int c1, c2, c3, c4, c, cc;
+       c1 = (*bits++ & 0x000000ff);
+       c2 = (*bits++ & 0x000000ff);
+       c3 = (*bits++ & 0x000000ff);
+       c4 = (*bits++ & 0x000000ff);
+       c = cc = (c1 << 24) + (c2 << 16) + (c3 << 8) + c4;
+-      for (x = 0; x < width; x++)
++      dst16 = (unsigned short *) (dst + offset);
++      for (x = 0; x < info->leftSideBearing; x++) {
++	*dst16++ = bgcmap;
++      }
++      for (; x < info->rightSideBearing; x++, dst16++)
+ 	{
+-	  unsigned short *dst16;
+-	  dst16 = (unsigned short *) (dst + offset + 2 * x);
+-
+ 	  if ((pIterm->underline || pIterm->blink) && (height - y < 2))
+ 	    *(dst16) = fgcmap;
+ 	  else
+@@ -133,8 +148,17 @@ fb_true16_draw_char (unsigned char *dst,
+ 	    }
+ 	  c <<= 1;
+ 	}
++      for (; x < cell_width; x++)
++	*dst16++ = bgcmap;
+       dst += pIterm->fb->line_length;
+     }
++  height = (int)base->descent - (int)info->descent;
++  for (y = 0; y < height; y++) {
++    dst16 = (unsigned short *) (dst + offset);
++    for (x = 0; x < cell_width; x++)
++      *dst16++ = bgcmap;
++    dst += pIterm->fb->line_length;
++  }
+   return;
+ }
+ 
+@@ -146,6 +170,8 @@ fb_true16_draw_text (int col, int row, c
+   unsigned char *bits;
+   char *dst;
+   mbstate_t ps;
++  const xCharInfo *cinfo;
++  const TermFont *base;
+ 
+   if (pIterm->lock)
+     return;
+@@ -183,21 +209,25 @@ fb_true16_draw_text (int col, int row, c
+ 	  if (len == 1 && mbstring[i] < 0x7f)
+ 	    {
+ 	      codepoint = (int) (mbstring[i] & 0x000000ff);
+-	      bits = get_glyph (pIterm->asc_font, codepoint, &height);
++	      base = pIterm->asc_font;
++	      bits = get_glyph2 (pIterm->asc_font, codepoint, &height, &cinfo);
+ 	      w = pIterm->asc_font->cell_width;
+ 	    }
+ 	  else
+ 	    {
+ 	      mbrtowc (&wc, (char *) &mbstring[i], len, 0);
+-	      bits = get_glyph (pIterm->mb_font, wc, &height);
++	      base = pIterm->mb_font;
++	      bits = get_glyph2 (pIterm->mb_font, wc, &height, &cinfo);
+ 	      wlen = wcwidth (wc);
+ 	      w = pIterm->asc_font->cell_width * (wlen > 0 ? wlen : 1);
+ 	    }
+ 	}
++      else
++	      break;
+ 
+       i += len;
+       dst = (char *) (pIterm->fb->buf + starty);
+-      fb_true16_draw_char (dst, startx, bits, w, height);
++      fb_true16_draw_char (dst, startx, bits, w, cinfo, base);
+       startx += (2 * w);
+     }
+   return;
+--- unix/fbiterm/src/vt.c-dist	2004-04-01 15:45:10.948683658 +0200
++++ unix/fbiterm/src/vt.c	2004-04-01 16:15:54.931946454 +0200
+@@ -14,13 +14,17 @@
+ 
+ /* Initialize Terminal IO */
+ static TerminalIO *
+-init_io ()
++init_io ( char **program_args )
+ {
+-  char *defaultShell = "/bin/sh";
+   char *shell;
+-  char *program[] = { defaultShell, NULL };
++  char *program[] = { "/bin/sh", NULL };
+ 
+   putenv ("TERM=iterm");
++  if (program_args) {
++	  return (TerminalIO *) TtyTerminalIO_new (pIterm->cols, pIterm->rows,
++						   program_args[0], program_args);
++  }
++
+   shell = getenv ("SHELL");
+   if (shell != NULL && shell[0] != '\0')
+     program[0] = shell;
+@@ -31,7 +35,7 @@ init_io ()
+ 
+ /* Initialize VT machine */
+ int
+-InitVt ()
++InitVt (char **prog_args)
+ {
+   /* create screen view object */
+   pIterm->view = VTScreenView_new ();
+@@ -43,7 +47,7 @@ InitVt ()
+ 
+   /* create terminal IO object */
+   ioctl (0, TIOCSCTTY, 0);
+-  pIterm->tio = init_io (pIterm);
++  pIterm->tio = init_io (prog_args);
+   if (pIterm->tio == NULL)
+     {
+       fprintf (stderr, "init_io() failed.\n");
+--- /dev/null	2004-03-28 01:27:57.000000000 +0100
++++ unix/fbiterm/README.SUSE	2004-04-01 19:51:56.850602203 +0200
+@@ -0,0 +1,8 @@
++this version of fbiterm is enhanced to support the following features:
++
++- run a given command from the command line argument directly and quits
++- specify the font size with -s option (10,12,14,16,24 pixels)
++- automatic search of supported fonts
++- showing GNU unifonts correctly
++
++as default, 16bit font is used.

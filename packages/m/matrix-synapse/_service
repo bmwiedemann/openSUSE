@@ -1,0 +1,31 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="filename">matrix-synapse</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="url">https://github.com/matrix-org/synapse.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v1.98.0</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <!--
+    <param name="revision">v1.99.0rc1</param>
+    <param name="versionrewrite-pattern">v([\.\d]+)(rc.*)</param>
+    <param name="versionrewrite-replacement">\1~\2</param>
+    -->
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">synapse</param>
+    <!--
+    <param name="update">true</param>
+    -->
+  </service>
+  <service name="cargo_audit" mode="manual">
+    <param name="srcdir">synapse</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

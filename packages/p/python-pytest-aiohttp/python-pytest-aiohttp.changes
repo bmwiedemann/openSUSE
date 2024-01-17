@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Oct  2 14:49:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * Fix some compatibility with Pytest 7.
+- pytest72.patch dropped (upstream)
+
+-------------------------------------------------------------------
+Tue Jul  4 11:34:16 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed Nov 30 07:21:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add pytest72.patch to make it compatible with pytest 7.2.0
+  gh#aio-libs/pytest-aiohttp#49
+
+-------------------------------------------------------------------
+Sat Oct 15 09:17:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix dependencies: pytest-asyncio missing
+- Enable test suite
+
+-------------------------------------------------------------------
+Mon Oct 10 09:23:41 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.0.4
+  * Fix failure with aiohttp_client fixture usage when asyncio_mode=strict. #25
+- 1.0.3 (2022-01-03)
+  * Fix loop and proactor_loop fixtures. #22
+- 1.0.2 (2022-01-20)
+  * Restore implicit switch to asyncio_mode = auto if legacy mode is detected.
+- 1.0.1 (2022-01-20)
+  * Don't implicitly switch from legacy to auto asyncio_mode, the integration
+    doesn't work well.
+- 1.0.0 (2022-1-20)
+  * The plugin is compatible with pytest-asyncio now. It uses pytest-asyncio
+    for async tests running and async fixtures support, providing by itself
+    only fixtures for creating aiohttp test server and client.
+
+-------------------------------------------------------------------
+Tue Mar 26 12:28:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by autobahn

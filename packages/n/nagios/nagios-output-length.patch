@@ -1,0 +1,52 @@
+Index: nagios-4.4.2/cgi/extinfo.c
+===================================================================
+--- nagios-4.4.2.orig/cgi/extinfo.c
++++ nagios-4.4.2/cgi/extinfo.c
+@@ -58,7 +58,7 @@ extern hoststatus *hoststatus_list;
+ extern servicestatus *servicestatus_list;
+ 
+ 
+-#define MAX_MESSAGE_BUFFER		4096
++#define MAX_MESSAGE_BUFFER		262144
+ 
+ #define HEALTH_WARNING_PERCENTAGE       85
+ #define HEALTH_CRITICAL_PERCENTAGE      75
+Index: nagios-4.4.2/cgi/status.c
+===================================================================
+--- nagios-4.4.2.orig/cgi/status.c
++++ nagios-4.4.2/cgi/status.c
+@@ -65,7 +65,7 @@ extern servicestatus *servicestatus_list
+ 
+ static nagios_macros *mac;
+ 
+-#define MAX_MESSAGE_BUFFER		4096
++#define MAX_MESSAGE_BUFFER		262144
+ 
+ #define DISPLAY_HOSTS			0
+ #define DISPLAY_HOSTGROUPS		1
+Index: nagios-4.4.2/include/common.h
+===================================================================
+--- nagios-4.4.2.orig/include/common.h
++++ nagios-4.4.2/include/common.h
+@@ -508,7 +508,7 @@ extern const char *cmd_error_strerror(in
+ #define MAX_FILENAME_LENGTH			256	/* max length of path/filename that Nagios will process */
+ #define MAX_INPUT_BUFFER			1024	/* size in bytes of max. input buffer (for reading files, misc stuff) */
+ #define MAX_COMMAND_BUFFER                      8192    /* max length of raw or processed command line */
+-#define MAX_EXTERNAL_COMMAND_LENGTH             8192    /* max length of an external command */
++#define MAX_EXTERNAL_COMMAND_LENGTH             262144    /* max length of an external command */
+ 
+ #define MAX_DATETIME_LENGTH			48
+ 
+Index: nagios-4.4.2/include/nagios.h
+===================================================================
+--- nagios-4.4.2.orig/include/nagios.h
++++ nagios-4.4.2/include/nagios.h
+@@ -277,7 +277,7 @@ extern struct load_control loadctl;
+ 	   of MAX_EXTERNAL_COMMAND_LENGTH in common.h to allow for passive checks results received through the external
+ 	   command file. EG 10/19/07
+ 	*/
+-#define MAX_PLUGIN_OUTPUT_LENGTH                8192    /* max length of plugin output (including perf data) */
++#define MAX_PLUGIN_OUTPUT_LENGTH                262144    /* max length of plugin output (including perf data) */
+ 
+ 
+ 	/******************* STATE LOGGING TYPES **************/

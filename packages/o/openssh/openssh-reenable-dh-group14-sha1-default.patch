@@ -1,0 +1,41 @@
+Index: openssh-8.9p1/myproposal.h
+===================================================================
+--- openssh-8.9p1.orig/myproposal.h
++++ openssh-8.9p1/myproposal.h
+@@ -34,7 +34,8 @@
+ 	"diffie-hellman-group-exchange-sha256," \
+ 	"diffie-hellman-group16-sha512," \
+ 	"diffie-hellman-group18-sha512," \
+-	"diffie-hellman-group14-sha256"
++	"diffie-hellman-group14-sha256," \
++	"diffie-hellman-group14-sha1"
+ 
+ #define KEX_CLIENT_KEX KEX_SERVER_KEX
+ 
+Index: openssh-8.9p1/ssh_config.5
+===================================================================
+--- openssh-8.9p1.orig/ssh_config.5
++++ openssh-8.9p1/ssh_config.5
+@@ -1228,7 +1228,8 @@ sntrup761x25519-sha512@openssh.com,
+ diffie-hellman-group-exchange-sha256,
+ diffie-hellman-group16-sha512,
+ diffie-hellman-group18-sha512,
+-diffie-hellman-group14-sha256
++diffie-hellman-group14-sha256,
++diffie-hellman-group14-sha1
+ .Ed
+ .Pp
+ The list of available key exchange algorithms may also be obtained using
+Index: openssh-8.9p1/sshd_config.5
+===================================================================
+--- openssh-8.9p1.orig/sshd_config.5
++++ openssh-8.9p1/sshd_config.5
+@@ -996,7 +996,7 @@ ecdh-sha2-nistp256,ecdh-sha2-nistp384,ec
+ ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,
+ diffie-hellman-group-exchange-sha256,
+ diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,
+-diffie-hellman-group14-sha256
++diffie-hellman-group14-sha256,diffie-hellman-group14-sha1
+ .Ed
+ .Pp
+ The list of available key exchange algorithms may also be obtained using

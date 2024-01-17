@@ -1,0 +1,12 @@
+--- a/Lib/test/test_subprocess.py
++++ b/Lib/test/test_subprocess.py
+@@ -1147,7 +1147,8 @@ class ProcessTestCase(BaseTestCase):
+         self.assertIn("0.0001", str(c.exception))  # For coverage of __str__.
+         # Some heavily loaded buildbots (sparc Debian 3.x) require this much
+         # time to start.
+-        self.assertEqual(p.wait(timeout=3), 0)
++        # OBS might require even more
++        self.assertEqual(p.wait(timeout=10), 0)
+ 
+     def test_invalid_bufsize(self):
+         # an invalid type of the bufsize argument should raise

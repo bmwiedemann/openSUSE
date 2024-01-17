@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Wed Jan 17 02:34:24 UTC 2018 - i@marguerite.su
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Sep 17 20:08:07 CST 2012 - hillwood@linuxfans.org
+
+- Fix ibus-googlepinyin working in 64bit for openSUSE
+
+-------------------------------------------------------------------
+Sun Jun 24 18:53:01 UTC 2012 - i@marguerite.su
+
+- fix builds on fedora.
+
+-------------------------------------------------------------------
+Fri Jan 27 06:44:59 UTC 2012 - i@marguerite.su
+
+- Update Source to latest git
+  Fix builds, merge changelog
+
+-------------------------------------------------------------------
+Sat Sep 8 00:00:00 UTC 2011 - hillwood@linuxfans.org
+
+- first build

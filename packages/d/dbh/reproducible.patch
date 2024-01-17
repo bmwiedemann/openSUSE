@@ -1,0 +1,51 @@
+Index: libdbh2-5.0.19/configure.ac
+===================================================================
+--- libdbh2-5.0.19.orig/configure.ac
++++ libdbh2-5.0.19/configure.ac
+@@ -300,10 +300,10 @@ else
+   BYTESEX="little-endian"
+ fi
+ dnl Configuration date
+-AC_SUBST([CONFIG_DATE]) CONFIG_DATE="`date`"
++AC_SUBST([CONFIG_DATE]) CONFIG_DATE="`date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)}`"
+ 
+ dnl User doing the configuration
+-AC_SUBST([CONFIG_USER]) CONFIG_USER="`whoami`@`hostname`"
++AC_SUBST([CONFIG_USER]) CONFIG_USER="reproducible@reproducible"
+ if test -n "$ORGANIZATION"; then
+   CONFIG_USER="$CONFIG_USER at $ORGANIZATION"
+ fi
+@@ -351,7 +351,7 @@ AC_SUBST(THREAD_SAFE) THREAD_SAFE=yes
+ AC_SUBST(STATIC_SHARED)
+ AC_SUBST(ENABLE_SHARED)
+ AC_SUBST(ENABLE_STATIC)
+-AC_SUBST(UNAME_INFO) UNAME_INFO=`uname -a`
++AC_SUBST(UNAME_INFO) UNAME_INFO="reproducible"
+ 
+ if test "$enable_gtk_doc" = yes; then
+ dnl    AC_MSG_RESULT(Documentation will be produced with gtk-doc.)
+Index: libdbh2-5.0.19/configure
+===================================================================
+--- libdbh2-5.0.19.orig/configure
++++ libdbh2-5.0.19/configure
+@@ -16743,9 +16743,9 @@ if test "X$ac_cv_c_bigendian" = "Xyes";
+ else
+   BYTESEX="little-endian"
+ fi
+- CONFIG_DATE="`date`"
++ CONFIG_DATE="`date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)}`"
+ 
+- CONFIG_USER="`whoami`@`hostname`"
++ CONFIG_USER="reproducible@reproducible"
+ if test -n "$ORGANIZATION"; then
+   CONFIG_USER="$CONFIG_USER at $ORGANIZATION"
+ fi
+@@ -16788,7 +16788,7 @@ fi
+ 
+ 
+ 
+- UNAME_INFO=`uname -a`
++ UNAME_INFO="reproducible"
+ 
+ if test "$enable_gtk_doc" = yes; then
+      ENABLE_GTK_DOC=yes

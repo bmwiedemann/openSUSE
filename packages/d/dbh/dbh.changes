@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Fri Jun 28 14:27:01 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 5.0.22
+  * Added function  dbh_find_top(), variant for dbh_find()
+  * Added PKGBUILD for easy cross compilation from ArchLinux
+  * Fixes for mingw-w64 cross compilation on ArchLinux box.
+  * Fixes dbh_set_data() not updating data when growing record size
+  * Fixes strncmp() should be replaced by memcmp()
+  * Fixes Excessive syscalls with tiny read() calls
+  * This version reduces calls to read() from 3 to 1 when
+    maximum record size is less than 64KB, falling back to
+    5.0.21 behavior when dealing with records with greater size.
+- Remove buildfix.patch, was fixed Upstream
+
+-------------------------------------------------------------------
+Tue Jan 17 08:40:13 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to allow for reproducible builds
+  Add buildfix.patch to allow build on kernel versions containing fc
+
+-------------------------------------------------------------------
+Mon Mar 21 23:57:24 UTC 2016 - dvaleev@suse.com
+
+- Fix bigendian builds (dbh-bigendian.patch) 
+
+-------------------------------------------------------------------
+Mon Nov 16 12:48:38 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 5.0.19
+  * Build fixes. 
+  * Remove INVALIDATE flag from msync (not allowed with ASYNC in FreeBSD) 
+- Changes from version 5.0.17
+  * Minor bugfixes detected with Coverity analysis 
+  * Include performance test code and graphs in tarball
+
+-------------------------------------------------------------------
+Fri Jan  9 00:52:22 UTC 2015 - jengelh@inai.de
+
+- Specify upstream source URL and update package groups.
+  Drop --with-pic which is implicit anyway.
+
+-------------------------------------------------------------------
+Sun Jan  4 18:12:36 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 5.0.16
+  + fix a incorrect seleccion of temporary workdir location
+- Add dependencies to gtk-doc, libtool and pkg-config; new upstream
+  requirements
+- Add fdupes build require
+- Symlink redundant files with %fdupes -s
+- Bump SO name to 2
+- doc/*.html is not available anymore; do no perform %doc for this
+  directory
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+- Implement shlib policy
+
+-------------------------------------------------------------------
+Wed Jan 28 15:59:29 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+- -fPIC --> --with-pic 
+
+-------------------------------------------------------------------
+Mon Feb 19 12:08:40 CET 2007 - lmichnovic@suse.cz
+
+- compiling with fPIC, fixes build on S390
+
+-------------------------------------------------------------------
+Fri Jun 30 15:19:40 CEST 2006 - pnemec@suse.cz
+
+- update to 4.5.0
+  inspite of progresive version change it is just bugfix 
+  release
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 14 22:16:25 CEST 2005 - cthiel@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Wed May 18 11:49:35 CEST 2005 - cthiel@suse.de
+
+- update to 1.0.24
+
+-------------------------------------------------------------------
+Mon Apr 11 13:06:49 CEST 2005 - cthiel@suse.de
+
+- update to 1.0.22
+
+-------------------------------------------------------------------
+Wed May 12 12:13:43 CEST 2004 - ltinkl@suse.cz
+
+- fix packaging the *.pc files
+
+-------------------------------------------------------------------
+Wed May 12 11:06:45 CEST 2004 - ltinkl@suse.cz
+
+- initial version
+

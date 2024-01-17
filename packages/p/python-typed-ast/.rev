@@ -1,0 +1,233 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b688bf2e16cdbe6350d2208ec2808669</srcmd5>
+    <version>1.0.4</version>
+    <time>1501840709</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>508402</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>78aa3b8224641baf9f87e0e5da73dcc0</srcmd5>
+    <version>1.1.0</version>
+    <time>1502366774</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>515342</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>74cdb97f12ca68f83899181a8be8ba85</srcmd5>
+    <version>1.1.0</version>
+    <time>1537787512</time>
+    <user>dimstar_suse</user>
+    <comment>- Use license macro for license install</comment>
+    <requestid>636818</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f5ab0112089338d449761fbed1c673c6</srcmd5>
+    <version>1.2.0</version>
+    <time>1548537515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0:
+ * Fix conversions.py2to3 on unicode strings (#67)
+ * Fix remaining calls to Str without a kind (#68)
+ * Add &quot;Python :: 3.7&quot; to the classifiers list
+ * Some docs updates (#73)
+- Update to version 1.1.1:
+ * Add __version__ string and tweak versioning scheme
+ * Point to the Python 3.6 commits as examples of how to update typed_ast (
+ * Add section on development philosophy
+ * Add information about the release process.
+ * Document Google Cloud Storage artifact deployment
+ * Preserve string kind modifiers
+ * Add docs for Str.kind
+</comment>
+    <requestid>667870</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eab3b2fe69fbd88f6bd2cb24cdb004e6</srcmd5>
+    <version>1.3.1</version>
+    <time>1551215756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1:
+ * Disallow two type comments on one def
+ * Fix memory leaks caused by type comment parsing (#91)
+ * Fix some broken asserts relating to handling of async keyword (#92)
+ * Check NEW_TYPE_COMMENT calls for failure (#93)
+- Update to version 1.3.0:
+ * Fully incorporate the code from Python 3.7.2
+ * Fix some compiler warnings
+ * Add a kind field to Bytes as well (#83) 
+ * Fix await in functions with type comments (#86) 
+ * Put _ast3 and _ast27 in the typed_ast package (#85) 
+ * Fix f-string parsing to not think everything is a set (#87)
+</comment>
+    <requestid>679040</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>da5c64334760136ee720898a796809e7</srcmd5>
+    <version>1.3.5</version>
+    <time>1557263587</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %pytest_arch
+- Add missing fdupes call
+
+- version update to 1.3.5
+  *  Counteract PyTuple_SetItem stealing reference in _PyObject_FastCall
+     fallback (#104)
+- run tests
+
+- update to version 1.3.4:
+ * Oops: add the pgenheaders files to the depends lists
+- update to version 1.3.3:
+ * Don't rely on Python's pgenheaders.h (#101)
+- update to version 1.3.2:
+ * Fix two out-of-bounds array reads (#99)</comment>
+    <requestid>701279</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c1781281893012242495ddd561bdc78e</srcmd5>
+    <version>1.3.5</version>
+    <time>1557654221</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use the %pytest_arch call but expand it as the tests
+  seem to need more verbosity otherwise they fail sometimes
+  (fishy, but works)</comment>
+    <requestid>701990</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1cebb556f62acec2a9234e3cbdcc132f</srcmd5>
+    <version>1.4.0</version>
+    <time>1561195364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710325</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5b2bf9b18bcbb7c572989db450baed66</srcmd5>
+    <version>1.4.1</version>
+    <time>1580724634</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>767037</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>fa34c501b1da3ee3500464d3a8f96e8c</srcmd5>
+    <version>1.4.1</version>
+    <time>1590649677</time>
+    <user>maxlin_factory</user>
+    <comment>- disable tests 'test_ignores' and 'test_convert_strs', failing on ppc64, fixes bsc#1171573.
+</comment>
+    <requestid>807170</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>2c64260cc8906f8632dbc71aeafac6fe</srcmd5>
+    <version>1.4.1</version>
+    <time>1607196936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853096</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>84f6c103bfec3e5fd043c92aec33b87c</srcmd5>
+    <version>1.4.1</version>
+    <time>1609405135</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ast27-prefix-exported-symbols.patch from upstream PR#152 to fix ppc64 and
+  s390x builds/tests and run all tests again.
+</comment>
+    <requestid>859414</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a4b779a88e5ce8b3859b86fae2263db5</srcmd5>
+    <version>1.4.2</version>
+    <time>1610123655</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>861048</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>72aed04de622bda65a8eb53aaca46e33</srcmd5>
+    <version>1.4.3</version>
+    <time>1619447896</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>887094</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4574cf6f98e472202ddd51575ed34965</srcmd5>
+    <version>1.5.0</version>
+    <time>1636986382</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * Drop python 3.5 support
+  * Define _PyUnicode_DecodeUnicodeEscape even on Python 3.6+
+  * Recommend ast on Python 3.8+</comment>
+    <requestid>931291</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f0ad96d7b7c8ad9f195504942b09de02</srcmd5>
+    <version>1.5.0</version>
+    <time>1637535105</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch use-PyUnicode_DecodeUnicodeEscape.patch:
+  * Use PyUnicode_DecodeUnicodeEscape directly, rather than wrapping it.</comment>
+    <requestid>932053</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>125923928cc8127244cc8503e65c2d47</srcmd5>
+    <version>1.5.1</version>
+    <time>1639424512</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>940057</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>af8acda89fb006e966cec6a3e8d9e10e</srcmd5>
+    <version>1.5.2</version>
+    <time>1644188015</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>951374</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>22855ff4ad126391b92d33f432d2c0e3</srcmd5>
+    <version>1.5.3</version>
+    <time>1651180029</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>972928</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5174d145b09716c75cea5608624c02a5</srcmd5>
+    <version>1.5.4</version>
+    <time>1653907323</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>979649</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f181a02b4410de1fb2ce09f37a1b67b5</srcmd5>
+    <version>1.5.4</version>
+    <time>1683630551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085637</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>319fb0f5727725e7392bc600710c14e0</srcmd5>
+    <version>1.5.5</version>
+    <time>1696269892</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.5:
+  * update project to be end of life
+  * set dev status to inactive
+
+  * Use PyUnicode_DecodeUnicodeEscape directly, rather than wrapping it.
+  * Recommend ast on Python 3.8+
+ * Add a kind field to Bytes as well (#83)
+ * Fix await in functions with type comments (#86)
+ * Put _ast3 and _ast27 in the typed_ast package (#85)</comment>
+    <requestid>1114754</requestid>
+  </revision>
+</revisionlist>

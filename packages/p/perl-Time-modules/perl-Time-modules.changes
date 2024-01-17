@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Wed Sep 12 13:34:03 UTC 2018 - pmonrealgonzalez@suse.com
+
+- update to 2013.0912:
+   Pulled fix from Adam Schobelock that removes timezone offset
+   caching because it was creating incorrect behavior for Moscow.
+
+- Upstream changed the location of the project to:
+  https://metacpan.org/release/MUIR/Time-modules-2013.0912
+
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov  5 05:55:19 UTC 2012 - coolo@suse.com
+
+- explicit buildequire timezone for the test suite
+
+-------------------------------------------------------------------
+Wed May 16 15:18:05 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Permissive
+  Choose a license from the list linked at license.opensuse.org
+
+-------------------------------------------------------------------
+Wed May 18 09:54:57 UTC 2011 - vcizek@novell.com
+
+- update to 2011.0517
+	Bugfix from Sophie Hamilton: call tzset() when changing timezones.
+	Bugfix: bail out of tests cleanly when tzset doesn't work.
+- license changed
+
+-------------------------------------------------------------------
+Fri May 13 10:25:15 UTC 2011 - vcizek@novell.com
+
+- update to 2011.0505
+	Bugfix: make sure $ampm is defined so no undefined string warnings
+	are issued.
+	Honor the GMT flag when parsing time specs.  Patch from
+	kris at shannon.id.au.
+	Bugfix: RT#31477 noon & midnight would match in the middle of strings.
+	Added %v conversion for Time::CTime
+	Added tests to disprove invalid bug reports.
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:56 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:24 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 15:36:37 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Sep 13 11:16:42 CEST 2006 - anicka@suse.cz
+
+- update to 2006.0814
+ * A bugfix for negative offsets that overflowed
+ * Add a few more timezones
+ * Recognize fractional times counts like "1.5 minutes ago"
+ * Recognize Dow "before last"
+ * Change various __DATA__ to __END__
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:00 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Feb 26 14:54:10 CET 2004 - mjancar@suse.cz
+
+- update to 2003.1126
+
+-------------------------------------------------------------------
+Sun Jan 11 12:49:22 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 15:54:50 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Jul 24 14:49:25 CEST 2003 - mjancar@suse.cz
+
+- update to 2003.0211
+
+-------------------------------------------------------------------
+Tue Jul 15 16:28:57 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Tue May 20 12:40:59 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Fri Dec 27 18:40:42 CET 2002 - prehak@suse.cz
+
+- updated to version 2002.1001
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Fri Jun 28 13:53:06 CEST 2002 - prehak@suse.cz
+
+- new package perl-Time-modules version 101.062101
+
+

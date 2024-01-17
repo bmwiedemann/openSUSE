@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Sat Oct 15 19:43:03 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Depend on pkgconfig(catch2) < 3, as this is not compatible with
+  versions >= 3 yet.
+
+-------------------------------------------------------------------
+Thu Jun 30 11:22:41 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add Git-Clone URL
+
+-------------------------------------------------------------------
+Wed Aug 11 12:39:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_biboumi.service.patch
+
+-------------------------------------------------------------------
+Sun Apr 18 15:18:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 9.0:
+  * Messages reflections are now properly cut if the body was cut
+    befor being to sent to IRC
+  * Messages from unjoined resources are now rejected instead of
+    being accepted.
+  * All commands sent to IRC servers are now throttled to avoid
+    being disconnected for excess flood. The limit value can be
+    customized using the ad-hoc configuration form on a server JID.
+  * Support for XEP-0410 Self-Ping Optimization.
+  * SASL support has been added.
+  * SIGHUP is now caught and reloads the configuration like
+    SIGUSR1 and 2.
+  * Add a verify_certificate policy option that lets the admin
+    disable certificate validation per-domain.
+  * The WatchdogSec value in the biboumi.service file
+    now defaults to the empty string, which means “disabled”.
+- Added do-not-require-git.patch, use system Catch2
+- Enable tests
+
+-------------------------------------------------------------------
+Wed Aug 26 19:30:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.5:
+  * Fix a build failure with GCC 10
+  * Fix a possible crash that could be caused by a very well timed identd query
+
+-------------------------------------------------------------------
+Fri Jun  1 22:43:35 UTC 2018 - benedikt@g5r.eu
+
+- Update to biboumi 8.3
+
+  Changes in version 8.3
+  * The global ad-hoc configure command is now available on biboumi’s JID in
+  fixed_irc_server mode.
+
+  Changes in version 8.2
+  * The users are not able to bypass the fixed mode by just configuring a
+  different Address for the IRC server anymore.
+
+  Changes in version 8.1
+  * Fix a crash on a raw NAMES command
+
+  Changes in version 8.0
+  * GCC 4.9 or lower are not supported anymore. The minimal version is 5.0
+  * Add a complete='true' in MAM’s iq result when appropriate
+  * The archive ordering now only relies on the value of the ID, not the
+  date. This means that if you manually import archives in your database (or
+          mess with it somehow), biboumi will not work properly anymore, if you
+  don’t make sure the ID of everything in the muclogline table is
+  consistent.
+  * The “virtual” channel with an empty name (for example
+          %irc.freenode.net@biboumi) has been entirely removed.
+  * Add an “Address” field in the servers’ configure form. This lets
+  the user customize the address to use when connecting to a server.
+  See https://lab.louiz.org/louiz/biboumi/issues/3273 for more details.
+  * Messages id are properly reflected to the sender
+  * We now properly deal with a PostgreSQL server restart: whenever the
+  connection is lost with the server, we try to reconnect and re-execute the
+  query once.
+  * A Nick field has been added in the IRC server configuration form, to let
+  the user force a nickname whenever a channel on the server is joined.
+  * Multiple admins can now be listed in the admin field, separated with a colon.
+  * Missing fields in a data-form response are now properly interpreted as
+  an empty value, and not the default value. Gajim users were not able to
+  empty a field of type text-multi because of this issue.
+  * Fix an uncaught exception with botan, when policy does not allow any
+  available ciphersuite.
+  * When the connection gets desynchronized and tries to re-join while
+  biboumi thinks it has never left, biboumi now sends the whole standard
+  join sequence (history, user-list, etc).
+
+-------------------------------------------------------------------
+Fri Mar  9 09:11:42 UTC 2018 - sleep_walker@opensuse.org
+
+- add license file, add some basic documentation files
+
+-------------------------------------------------------------------
+Sun Mar  4 09:21:15 UTC 2018 - jengelh@inai.de
+
+- Trim redundancies in description.
+- Enable parallel build.
+
+-------------------------------------------------------------------
+Sun Feb 11 09:13:47 UTC 2018 - sleep_walker@opensuse.org
+
+- require Botan2 instead of Botan to enable TLS
+
+-------------------------------------------------------------------
+Tue Feb  6 13:52:32 UTC 2018 - sleep_walker@opensuse.org
+
+- let there be biboumi!

@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35f5189b6a2b128351abe9641452853b</srcmd5>
+    <version>2022.1</version>
+    <time>1690278596</time>
+    <user>dimstar_suse</user>
+    <comment>needed by https://build.opensuse.org/request/show/1099525</comment>
+    <requestid>1099728</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>40ce536737aa16c69607240a3522507f</srcmd5>
+    <version>2024.1</version>
+    <time>1705353469</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.1:
+  * Updated supported versions:
+    + Django 3.2, 4.2 and 5.0.
+    + Python 3.8+.
+  * Fixed form-control class issue with checkboxes.</comment>
+    <requestid>1138700</requestid>
+  </revision>
+</revisionlist>

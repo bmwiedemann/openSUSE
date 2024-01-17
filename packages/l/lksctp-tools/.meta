@@ -1,0 +1,10 @@
+<package name="lksctp-tools" project="openSUSE:Factory">
+  <title>Utilities for SCTP (Stream Control Transmission Protocol)</title>
+  <description>This package contains the SCTP base runtime library and command line
+tools.
+
+SCTP (Stream Control Transmission Protocol) is a message-oriented,
+reliable transport protocol with congestion control, support for
+transparent multihoming, and multiple ordered streams of messages.</description>
+  <devel project="network:utilities" package="lksctp-tools"/>
+</package>

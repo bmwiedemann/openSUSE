@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a5985b9cc6f115942ad7ef3b69126b4</srcmd5>
+    <version>1.20.2</version>
+    <time>1647031288</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.20.2:
+  - Interactive deletion now offers &quot;link set&quot; options too
+  - Interactive deletion now assumes 'a' when you just hit [ENTER]
+- add jdupes rpm macro for dropin %%fdupes replacement
+- run tests</comment>
+    <requestid>961045</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f642d3e21009621164686bad2273745a</srcmd5>
+    <version>1.20.2</version>
+    <time>1647974389</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>963793</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>574d1f1f624aa0e6f0c9b45b7c66727c</srcmd5>
+    <version>1.21.1</version>
+    <time>1670430921</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.21.1:
+  * Reinstate '-I/--isolate' by popular demand; use at your own risk!
+  * Expect to lose data if you use this feature. It is strongly susceptible
+    to the documented &quot;triangle problem&quot; and absolutely does not protect
+    files in each directory from matching with one another. Don't get mad at
+    me if you use it and see a cloud of smoke come out of your disk array.
+  * Remove '-I/--isolate' which has never worked correctly
+  * Fix compiling when NO_HARDLINKS and NO_SYMLINKS are both defined
+  * Increased stack size limits to enable deeper recursion without crashing
+  * Fixes to make compilation under Cygwin (instead of MSYS2 MinGW) work
+  * Remove the temporary '-X help' warning about changes in functionality
+  * Some minor under-the-hood changes for future enhancements</comment>
+    <requestid>1040814</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bb00d6ff97e806ab31527afd6bf010e9</srcmd5>
+    <version>1.21.3</version>
+    <time>1676036064</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.21.3:
+  * Major performance fix in the double traversal prevention tree
+    code
+  * Added undocumented '-9' benchmark option for testing traversal
+    code
+  * Extra error checks to try to finally solve a very rare crash
+    bug
+  * Tiny code size reduction by discarding unused xxHash code
+  * jody_hash re-added as a build-time option
+  * Many options/features/safety checks can now be selectively
+    compiled out
+  * New 'make BARE_BONES=1' option builds the most minimal jdupes
+    possible
+  * Fix exit behavior when no valid directories are given
+  * Only act on &quot;normal&quot; files and directories</comment>
+    <requestid>1064066</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c099529b3b26ac5655725fc9f2fee063</srcmd5>
+    <version>1.27.3</version>
+    <time>1693482147</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108046</requestid>
+  </revision>
+</revisionlist>

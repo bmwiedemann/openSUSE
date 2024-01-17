@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Wed Jul 12 09:33:01 UTC 2017 - dimstar@opensuse.org
+
+- Add explicit hostname BuildRequires: rpm-build's dependency on
+  net-tools (which pulled in hostname) has been eliminated.
+
+-------------------------------------------------------------------
+Sat Feb  7 16:23:00 UTC 2015 - coolo@suse.com
+
+- updated to 1.5
+  Improvements by Michiel Bejen <michiel.beijen@gmail.com>
+
+-------------------------------------------------------------------
+Wed Mar 27 14:22:12 UTC 2013 - rschweikert@suse.com
+
+- disable perl-macros as BuildRequires for openSUSE >= 12.2
+- change implemented by rusjako
+
+-------------------------------------------------------------------
+Wed Dec 14 12:20:04 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:46 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon May 24 13:43:14 UTC 2010 - coolo@novell.com
+
+- do not build noarch
+
+-------------------------------------------------------------------
+Wed Apr  7 22:51:54 UTC 2010 - chris@computersalat.de
+
+- cleanup spec
+  o fixed HEADER, TAGS, deps, macros, description
+- added perl-macros
+- moved changelog to changes file
+
+-------------------------------------------------------------------
+Fr Mär  3 10:42:51 UTC 2006 - dries@ulyssis.org
+
+- Initial package.
+
+

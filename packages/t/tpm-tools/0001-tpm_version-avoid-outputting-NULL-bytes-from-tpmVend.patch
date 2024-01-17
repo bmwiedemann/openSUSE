@@ -1,0 +1,51 @@
+From c927f67f36a4719bd15b8a535efb6980f1e87a6b Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <matthias.gerstner@suse.de>
+Date: Fri, 30 Nov 2018 12:48:37 +0100
+Subject: [PATCH] tpm_version: avoid outputting NULL bytes from tpmVendorID
+
+When the vendor ID contains null bytes then '^@' characters appear in
+the tpm_version output. This can confuse users and it also causes e.g.
+'grep' to treat the input as binary. Example:
+
+  TPM Vendor ID:       WEC\000
+
+This change copies the vendor ID bytes over into a local string object.
+This makes the code more independent of the vendor ID dimension and also
+avoids NULL bytes being printed.
+---
+ src/tpm_mgmt/tpm_version.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+Index: tpm-tools-1.3.9.1/src/tpm_mgmt/tpm_version.c
+===================================================================
+--- tpm-tools-1.3.9.1.orig/src/tpm_mgmt/tpm_version.c
++++ tpm-tools-1.3.9.1/src/tpm_mgmt/tpm_version.c
+@@ -133,6 +133,7 @@ int cmdVersion(const char *a_szCmd)
+ 		UINT64 offset;
+ 		TSS_RESULT uiResult;
+ 		TPM_CAP_VERSION_INFO versionInfo;
++		char vendor_id[sizeof(versionInfo.tpmVendorID)+1];
+ 		char *errbuf = NULL; // Buffer containing what was sent to stderr during getCapability.
+ 
+ 		/* Disable logging to of "Bad Mode" during this call. 
+@@ -169,15 +170,17 @@ int cmdVersion(const char *a_szCmd)
+ 			goto out_close;
+ 		}
+ 
++		// copy over the individual characters into a regular string.
++		// This avoids that null bytes are written to stdout.
++		snprintf ( vendor_id, sizeof(vendor_id), "%s", (const char*)versionInfo.tpmVendorID );
++
+ 		logMsg(_("  TPM 1.2 Version Info:\n"));
+ 		logMsg(_("  Chip Version:        %hhu.%hhu.%hhu.%hhu\n"),
+ 		       versionInfo.version.major, versionInfo.version.minor,
+ 		       versionInfo.version.revMajor, versionInfo.version.revMinor);
+ 		logMsg(_("  Spec Level:          %hu\n"), versionInfo.specLevel);
+ 		logMsg(_("  Errata Revision:     %hhu\n"), versionInfo.errataRev);
+-		logMsg(_("  TPM Vendor ID:       %c%c%c%c\n"),
+-		       versionInfo.tpmVendorID[0], versionInfo.tpmVendorID[1],
+-		       versionInfo.tpmVendorID[2], versionInfo.tpmVendorID[3]);
++		logMsg(_("  TPM Vendor ID:       %s\n"), vendor_id);
+ 
+ 		if (versionInfo.vendorSpecificSize) {
+ 			logMsg(_("  Vendor Specific data: "));

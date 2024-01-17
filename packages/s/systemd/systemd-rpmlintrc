@@ -1,0 +1,19 @@
+addFilter(".*filelist-forbidden-systemd-userdirs /etc/systemd/.*\.conf")
+addFilter(".*dbus-policy-allow-receive")
+addFilter(".*devel-file-in-non-devel-package.*udev.pc.*")
+addFilter("devel-file-in-non-devel-package.*/usr/share/pkgconfig/(udev|systemd)\.pc.*")
+addFilter(".*missing-call-to-setgroups-before-setuid.*")
+addFilter(".*systemd-service-without-service.*")
+addFilter("env-script-interpreter")
+addFilter(".*files-duplicate /usr/lib/systemd/.*")
+addFilter(".*files-duplicated-waste.*")
+addFilter(".*explicit-lib-dependency .*")
+addFilter(".*tmpfile-not-in-filelist .*")
+
+# shlib policy does not cover multibuilds
+addFilter("libsystemd0-mini\..*: E: shlib-policy-name-error SONAME: libsystemd.so.0.*")
+addFilter("libudev.*-mini\..*: E: shlib-policy-name-error SONAME: libudev.*")
+
+# These are NSS plugins and are not really subject to shlib policy.
+addFilter("systemd-container\..*: E: shlib-policy-name-error .* libnss_mymachines")
+addFilter("systemd-network\..*: E: shlib-policy-name-error .* libnss_resolve")

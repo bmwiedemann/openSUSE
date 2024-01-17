@@ -1,0 +1,9 @@
+<package name="audacity" project="openSUSE:Factory">
+  <title>A Free, Cross-Platform Digital Audio Editor</title>
+  <description>Audacity is a program that manipulates digital audio wave forms. In
+addition to recording sounds directly from within the program, it
+imports many sound file formats, including WAV, AIFF, AU, IRCAM, MP,
+and Ogg Vorbis.  With Audacity, you can edit wave data larger than the
+physical memory size of your computer.</description>
+  <devel project="multimedia:apps" package="audacity"/>
+</package>

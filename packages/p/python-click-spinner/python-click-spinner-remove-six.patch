@@ -1,0 +1,13 @@
+Index: click-spinner-0.1.10/tests/test_spinner.py
+===================================================================
+--- click-spinner-0.1.10.orig/tests/test_spinner.py
++++ click-spinner-0.1.10/tests/test_spinner.py
+@@ -2,7 +2,7 @@ import sys
+ import os
+ import time
+ import tempfile
+-from six import StringIO
++from io import StringIO
+ import click
+ from click.testing import CliRunner
+ 

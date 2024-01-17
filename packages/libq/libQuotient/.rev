@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>52306ac9a9628e3601761df6a1e86333</srcmd5>
+    <version>0.6.3</version>
+    <time>1610736345</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency of a soon-to-be-packaged KDE software, neochat</comment>
+    <requestid>860270</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7a58d3a4967dc42ae100e500930433d5</srcmd5>
+    <version>0.6.4</version>
+    <time>1610965728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863702</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>31d9f40b6e59b2240351af28152156ed</srcmd5>
+    <version>0.6.5</version>
+    <time>1614274057</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874747</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc4c7d0edca5160cd6aa99994fb22949</srcmd5>
+    <version>0.6.6</version>
+    <time>1616104504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879798</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>49e242826375a0222b32b1f8cdb28d2e</srcmd5>
+    <version>0.6.7</version>
+    <time>1626644706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906949</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a2c1c71036bc4899b77dc6a770740241</srcmd5>
+    <version>0.6.8</version>
+    <time>1629917875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913961</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>227a8030ceba993fa1853f3ce09dfe6e</srcmd5>
+    <version>0.6.9</version>
+    <time>1631470178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918507</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>627b1a1bfbc9634a10b26a878b767dff</srcmd5>
+    <version>0.6.10</version>
+    <time>1633365629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922944</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e87778db2bc775c308f4ade93d0bc26d</srcmd5>
+    <version>0.6.11</version>
+    <time>1633644371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923675</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9bb5fc38e6b2039c05843d8214c1bb56</srcmd5>
+    <version>0.7.0</version>
+    <time>1671635226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044004</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e87778db2bc775c308f4ade93d0bc26d</srcmd5>
+    <version>0.6.11</version>
+    <time>1672315781</time>
+    <user>dimstar_suse</user>
+    <comment>Rollback to version 0.6, because version 0.7 is not compatible yet with quaternion and breaks his build and use.</comment>
+    <requestid>1045705</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a1c77c94401caf9506da620888ba6d45</srcmd5>
+    <version>0.8.1.1</version>
+    <time>1692611140</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104921</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>51d229af4bfec4ccc154fef58fe599b2</srcmd5>
+    <version>0.8.1.1</version>
+    <time>1694545348</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110356</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3a02317d05fc5387db629712838fb73b</srcmd5>
+    <version>0.8.1.2</version>
+    <time>1694701527</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110936</requestid>
+  </revision>
+</revisionlist>

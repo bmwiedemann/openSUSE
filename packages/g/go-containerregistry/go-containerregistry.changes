@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Wed Dec 27 21:21:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * Validate index architectures match children
+  * Set Content-Length for blob uploads
+  * Don't wrap DefaultKeychain with refreshes
+  * Build releases with Go 1.21
+  * fix: mimic oci-layout in diskblobhandler
+  * tag: add command explanation to the long help
+  * feat: implement gc command
+  * feat: allow port and disk path to be overriden
+
+-------------------------------------------------------------------
+Sat Nov 25 19:39:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.1:
+  * bump deps using ./hack/bump-deps.sh
+  * Allow crane to export schema 1 images
+  * fixed a goroutine leak
+  * retry HTTP 522 errors by default
+  * Limit size of manifest
+  * Add crane auth token
+  * Bump codecov/codecov-action from 3.1.3 to 3.1.4
+  * Pass scopes through crane auth token
+  * fix: add bounds checking to addendum layer mutations to
+    prevent panic
+  * Surface better error messages in crane index
+  * crane: add missing name option in crane index commands
+  * crane: Respect cmd.OutOrStdout
+  * Make ErrSchema1 checkable via errors.Is()
+  * Don't load into daemon if the image already exists
+  * add --blobs-to-disk to 'crane registry serve'
+  * Correct crane registry help text
+  * Allow concurrent blob Sets, use RWMutex
+  * Use RWLock, limit scope of locking, write digest first
+  * Let the filesystem handle atomicity
+  * Don't try cross-origin mounting against dockerhub
+  * Drop localhost to support crane registry serve in a container
+  * Return OCI Index content-type for referrers response
+  * Allow crane edit to generate non-image artifacts
+  * Allow setting Content-Type in crane edit manifest
+  * Avoid v1.Manifest in crane edit config (#1583)
+  * Support for OCI 1.1+ referrers via API (#1546)
+  * Support for OCI 1.1+ referrers via fallback tag
+  * Update descriptor "data" field (when valid) during
+    "crane edit config" (#1584)
+  * Update release.yml (#1540)
+  * authn: also read mount secrets (#1560)
+  * bump deps using ./hack/bump-deps.sh (#1592)
+  * crane: add --flatten for index append (#1566)
+  * crane: add serve subcommand (#1586)
+  * crane: support --omit-digest-tags in crane ls
+  * fix(mutate): also set timestamps only present in
+    some formats (#1550)
+  * fix: Fix the crane release url and add more steps
+  * hash: use generic instantiation (#1538)
+  * replace manual slsa-verifier installation with
+    action (#1585)
+  * skip tls verification if default transport is used
+    with insecure option (#1559)
+  * tarball: pass imageToTags (#1563)
+
+-------------------------------------------------------------------
+Mon Jan  2 22:05:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Fix context.DeadlineExceeded comparison (#1488)
+  * Fix missing body.Close() in bearer auth (#1482)
+  * bump version of slsa generator (#1468)
+  * crane: add catalog argument use annotation (#1473)
+  * k8schain: Log and proceed if secret or SA are not found
+
+-------------------------------------------------------------------
+Tue Dec 13 11:01:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid file conflict on SLE15 and other older distributions
+
+-------------------------------------------------------------------
+Fri Oct 21 08:01:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Initial package

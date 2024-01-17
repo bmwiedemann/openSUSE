@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Jul 11 05:46:46 UTC 2016 - coolo@suse.com
+
+- remove Date-Tiny-format.patch, which is still upstream (9 years
+  should be enough to wait)
+
+-------------------------------------------------------------------
+Fri Jun 24 05:41:32 UTC 2016 - coolo@suse.com
+
+- updated to 1.07
+   see /usr/share/doc/packages/perl-Date-Tiny/Changes
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:49 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:00:14 UTC 2010 - coolo@novell.com
+
+- called spec2changelog
+
+-------------------------------------------------------------------
+Sat Dec 26 00:00:00 UTC 2009 - lars@linux-schulserver.de
+
+- update to 1.04
+- fixed most rpmlint errors
+- respooled Date-Tiny-format.patch
+
+-------------------------------------------------------------------
+Tue Dec 11 00:00:00 UTC 2007 - richard@radoeka.nl
+
+- Added patch Date-Tiny-format.patch, that's needed for ftree2.  The patch
+  has been sent to the upstream maintainer.
+
+-------------------------------------------------------------------
+Sun Dec  9 00:00:00 UTC 2007 - richard@radoeka.nl
+
+- Initial rpm build
+
+

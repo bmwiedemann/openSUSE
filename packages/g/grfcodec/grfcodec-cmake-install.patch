@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1450d7c..61631c8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -143,6 +143,7 @@ if(PNG_FOUND)
+ 	target_link_libraries(grfcodec PNG::PNG)
+ endif()
+ 
++install(TARGETS grfid grfstrip nforenum grfcodec DESTINATION bin)
+ 
+ # Add source files
+ add_subdirectory(src)

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ba1780b319c1321b0324e779cf9c332d</srcmd5>
+    <version>1.0.3</version>
+    <time>1646671666</time>
+    <user>dimstar_suse</user>
+    <comment>new package for rails 7</comment>
+    <requestid>959920</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>37c725f410d15a0d267ac142092c10e6</srcmd5>
+    <version>1.1.5</version>
+    <time>1660051596</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>993489</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1abf9f0ca386cc0803099a6096cd5753</srcmd5>
+    <version>1.2.3</version>
+    <time>1700078847</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123205</requestid>
+  </revision>
+</revisionlist>

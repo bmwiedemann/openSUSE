@@ -1,0 +1,19 @@
+diff --git a/src/org/python/core/PySystemState.java b/src/org/python/core/PySystemState.java
+index 1fb701d..ee9b38f 100644
+--- a/src/org/python/core/PySystemState.java
++++ b/src/org/python/core/PySystemState.java
+@@ -1278,9 +1278,11 @@ public class PySystemState extends PyObject
+         }
+         cachedir = new File(props.getProperty(PYTHON_CACHEDIR, CACHEDIR_DEFAULT_NAME));
+         if (!cachedir.isAbsolute()) {
+-            String prefixString = props.getProperty("user.dir", "");
+-            cachedir = new File(prefixString, cachedir.getPath());
+-            cachedir = cachedir.getAbsoluteFile();
++            File jythondir = new File(System.getProperty("user.home"), ".jython-cache");
++            if (!jythondir.isDirectory()) {
++                jythondir.mkdirs();
++            }
++            cachedir = new File(jythondir, cachedir.getPath());
+         }
+         logger.log(Level.CONFIG, "cache at {0}", cachedir);
+     }

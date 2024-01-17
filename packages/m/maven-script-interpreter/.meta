@@ -1,0 +1,5 @@
+<package name="maven-script-interpreter" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="maven-script-interpreter"/>
+</package>

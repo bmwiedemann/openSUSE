@@ -1,0 +1,198 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>33a5bd28fccfb99d3a6e173bbe7dec8e</srcmd5>
+    <version>1.6.0</version>
+    <time>1551386483</time>
+    <user>coolo</user>
+    <comment>New package</comment>
+    <requestid>677379</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f420b0eaadec193c91a95119cd77c1b</srcmd5>
+    <version>1.6.0</version>
+    <time>1558129412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703535</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9815c0ff7f8fd00ff1645943e174ddca</srcmd5>
+    <version>1.7.1</version>
+    <time>1563993403</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner
+- Use just python3 version of Sphinx
+
+- version update to 1.7.1
+  * Improvements for crawls targeting multiple domains
+  * A cleaner way to pass arguments to callbacks
+  * A new class for JSON requests
+  * Improvements for rule-based spiders
+  * New features for feed exports
+  see news.rst for details</comment>
+    <requestid>718179</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60851826988d30168ec3ae79a6fe02f2</srcmd5>
+    <version>1.7.3</version>
+    <time>1566665324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725773</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>819e8b763eb9221d6da732bfe0d19076</srcmd5>
+    <version>1.8.0</version>
+    <time>1579195440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765023</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc0469ff86bb5283c982749a722afe2d</srcmd5>
+    <version>2.0.1</version>
+    <time>1585842221</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * Python 2 support has been removed
+  * Partial coroutine syntax support and experimental asyncio support
+  * New Response.follow_all method
+  * FTP support for media pipelines
+  * New Response.certificate attribute
+  * IPv6 support through DNS_RESOLVER
+  * Response.follow_all now supports an empty URL iterable as input
+  * Removed top-level reactor imports to prevent errors about the wrong
+    Twisted reactor being installed when setting a different Twisted
+    reactor using TWISTED_REACTOR
+- Add zope-exception-test_crawler.patch, rewriting one testcase to pass
+  with our version of Zope.
+- Update BuildRequires based on test requirements.</comment>
+    <requestid>790737</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8a53aed94d21cd651b922f91c72e66bf</srcmd5>
+    <version>2.0.1</version>
+    <time>1589893092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807286</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5e951730cf269fc86c6e9524622a4095</srcmd5>
+    <version>2.2.0</version>
+    <time>1594228423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819355</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2f62a2480b6e34791cb8ca28d08c3f46</srcmd5>
+    <version>2.5.0</version>
+    <time>1619653113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889037</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2985f6df32ca7a9b283a7a30470a4f9d</srcmd5>
+    <version>2.5.0</version>
+    <time>1631221663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917717</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31562e34aee4ae43e7b42ff759a4f6a2</srcmd5>
+    <version>2.5.1</version>
+    <time>1633644390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924057</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5fdee10a41ab2a12b2dd493a204eaabe</srcmd5>
+    <version>2.5.1</version>
+    <time>1642455244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946882</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>341494638a5d95003eb4cca4a5dda195</srcmd5>
+    <version>2.6.1</version>
+    <time>1646349431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.6.1
+  * Security fixes for cookie handling (CVE-2022-0577 aka
+    bsc#1196638, GHSA-mfjm-vh54-3f96)
+  * Python 3.10 support
+  * asyncio support is no longer considered experimental, and works
+    out-of-the-box on Windows regardless of your Python version
+  * Feed exports now support pathlib.Path output paths and per-feed
+    item filtering and post-processing
+- Remove unnecessary patches:
+  - remove-h2-version-restriction.patch
+  - add-peak-method-to-queues.patch</comment>
+    <requestid>958587</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6f2ab61158500fbf8379a986e22a0a69</srcmd5>
+    <version>2.6.1</version>
+    <time>1646588923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959733</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>61eff196e04f1d556dc5f2917f24884b</srcmd5>
+    <version>2.6.2</version>
+    <time>1663002503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002736</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>78b8cc8216cf052270afdddc6843db7f</srcmd5>
+    <version>2.7.0</version>
+    <time>1667067407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032071</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e9b1027a06495a374d2ac04020b51be6</srcmd5>
+    <version>2.7.1</version>
+    <time>1667995009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034478</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>794c462aabf8774a76b4e6ce82ee336a</srcmd5>
+    <version>2.11.0</version>
+    <time>1704919972</time>
+    <user>anag+factory</user>
+    <comment>- Add patch twisted-23.8.0-compat.patch gh#scrapy/scrapy#6064
+- Update to 2.11.0:
+  - Spiders can now modify settings in their from_crawler methods,
+    e.g. based on spider arguments.
+  - Periodic logging of stats.
+  - Bug fixes.
+- 2.10.0:
+  - Added Python 3.12 support, dropped Python 3.7 support.
+  - The new add-ons framework simplifies configuring 3rd-party
+    components that support it.
+  - Exceptions to retry can now be configured.
+  - Many fixes and improvements for feed exports.
+- 2.9.0:
+  - Per-domain download settings.
+  - Compatibility with new cryptography and new parsel.
+  - JMESPath selectors from the new parsel.
+  - Bug fixes.
+- 2.8.0:
+  - This is a maintenance release, with minor features, bug fixes, and
+    cleanups.
+</comment>
+    <requestid>1137882</requestid>
+  </revision>
+</revisionlist>

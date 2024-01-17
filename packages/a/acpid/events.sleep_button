@@ -1,0 +1,5 @@
+# handle sleep button event
+
+event=button/sleep.*
+action=/usr/lib/acpid/sleep_button
+

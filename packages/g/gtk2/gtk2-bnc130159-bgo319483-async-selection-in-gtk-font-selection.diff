@@ -1,0 +1,267 @@
+Index: gtk+-2.16.0/gtk/gtkfontsel.c
+===================================================================
+--- gtk+-2.16.0.orig/gtk/gtkfontsel.c
++++ gtk+-2.16.0/gtk/gtkfontsel.c
+@@ -588,11 +588,24 @@ static void
+ gtk_font_selection_finalize (GObject *object)
+ {
+   GtkFontSelection *fontsel;
++  guint selection_timeout;
+   
+   g_return_if_fail (GTK_IS_FONT_SELECTION (object));
+   
+   fontsel = GTK_FONT_SELECTION (object);
+ 
++  selection_timeout = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (fontsel), "font-selection-timeout"));
++  if (selection_timeout)
++    g_source_remove (selection_timeout);
++
++  selection_timeout = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (fontsel), "style-selection-timeout"));
++  if (selection_timeout)
++    g_source_remove (selection_timeout);
++
++  selection_timeout = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (fontsel), "size-selection-timeout"));
++  if (selection_timeout)
++    g_source_remove (selection_timeout);
++
+   if (fontsel->font)
+     gdk_font_unref (fontsel->font);
+ 
+@@ -631,6 +644,9 @@ gtk_font_selection_reload_fonts (GtkFont
+       PangoFontDescription *desc;
+       desc = gtk_font_selection_get_font_description (fontsel);
+ 
++       /* Disable selection timeout */ 
++       g_object_set_data (G_OBJECT (fontsel), "immediate-selection", GUINT_TO_POINTER (1));
++ 
+       gtk_font_selection_show_available_fonts (fontsel);
+       gtk_font_selection_show_available_sizes (fontsel, TRUE);
+       gtk_font_selection_show_available_styles (fontsel);
+@@ -638,6 +654,9 @@ gtk_font_selection_reload_fonts (GtkFont
+       gtk_font_selection_select_font_desc (fontsel, desc, NULL, NULL);
+       gtk_font_selection_scroll_to_selection (fontsel);
+ 
++      /* Enable selection timeout */ 
++      g_object_set_data (G_OBJECT (fontsel), "immediate-selection", GUINT_TO_POINTER (0));
++
+       pango_font_description_free (desc);
+     }
+ }
+@@ -714,10 +733,10 @@ gtk_font_selection_scroll_on_map (GtkWid
+ }
+ 
+ /* This is called when a family is selected in the list. */
+-static void
+-gtk_font_selection_select_font (GtkTreeSelection *selection,
+-				gpointer          data)
++static gboolean
++gtk_font_selection_real_select_font (gpointer data)
+ {
++  GtkTreeSelection *selection;
+   GtkFontSelection *fontsel;
+   GtkTreeModel *model;
+   GtkTreeIter iter;
+@@ -725,7 +744,11 @@ gtk_font_selection_select_font (GtkTreeS
+   const gchar *family_name;
+ #endif
+ 
++  if (!g_object_get_data (G_OBJECT (data), "immediate-selection"))
++    GDK_THREADS_ENTER ();
++
+   fontsel = GTK_FONT_SELECTION (data);
++  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (fontsel->family_list));
+ 
+   if (gtk_tree_selection_get_selected (selection, &model, &iter))
+     {
+@@ -747,6 +770,40 @@ gtk_font_selection_select_font (GtkTreeS
+ 
+       g_object_unref (family);
+     }
++
++  g_object_set_data (G_OBJECT (fontsel), "font-selection-timeout", GUINT_TO_POINTER (0));
++
++  if (!g_object_get_data (G_OBJECT (fontsel), "immediate-selection"))
++    GDK_THREADS_LEAVE ();
++
++  /* Remove ourselves */
++  return FALSE;
++}
++
++static void
++gtk_font_selection_select_font (GtkTreeSelection *selection,
++				gpointer          data)
++{
++  GtkFontSelection *fontsel;
++  guint selection_timeout = 0;
++  guint immediate_selection = 0;
++
++  fontsel = GTK_FONT_SELECTION (data);
++  selection_timeout = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (fontsel), "font-selection-timeout"));
++  immediate_selection = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (fontsel), "immediate-selection"));
++
++  if (selection_timeout)
++    g_source_remove (selection_timeout);
++
++  if (immediate_selection)
++    {
++      gtk_font_selection_real_select_font (data);
++    }
++  else
++    {
++      selection_timeout = g_timeout_add (200, gtk_font_selection_real_select_font, data);
++      g_object_set_data (G_OBJECT (fontsel), "font-selection-timeout", GUINT_TO_POINTER (selection_timeout));
++    }
+ }
+ 
+ static int
+@@ -949,14 +1006,20 @@ gtk_font_selection_select_best_style (Gt
+ 
+ 
+ /* This is called when a style is selected in the list. */
+-static void
+-gtk_font_selection_select_style (GtkTreeSelection *selection,
+-				 gpointer          data)
++static gboolean
++gtk_font_selection_real_select_style (gpointer data)
+ {
+-  GtkFontSelection *fontsel = GTK_FONT_SELECTION (data);
++  GtkTreeSelection *selection;
++  GtkFontSelection *fontsel;
+   GtkTreeModel *model;
+   GtkTreeIter iter;
+   
++  if (!g_object_get_data (G_OBJECT (data), "immediate-selection"))
++    GDK_THREADS_ENTER ();
++
++  fontsel = GTK_FONT_SELECTION (data);
++  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (fontsel->face_list));
++
+   if (gtk_tree_selection_get_selected (selection, &model, &iter))
+     {
+       PangoFontFace *face;
+@@ -968,6 +1031,40 @@ gtk_font_selection_select_style (GtkTree
+ 
+   gtk_font_selection_show_available_sizes (fontsel, FALSE);
+   gtk_font_selection_select_best_size (fontsel);
++
++  g_object_set_data (G_OBJECT (fontsel), "style-selection-timeout", GUINT_TO_POINTER (0));
++
++  if (!g_object_get_data (G_OBJECT (fontsel), "immediate-selection"))
++    GDK_THREADS_LEAVE ();
++
++  /* Remove ourselves */
++  return FALSE;
++}
++
++static void
++gtk_font_selection_select_style (GtkTreeSelection *selection,
++				 gpointer          data)
++{
++  GtkFontSelection *fontsel;
++  guint selection_timeout = 0;
++  guint immediate_selection = 0;
++
++  fontsel = GTK_FONT_SELECTION (data);
++  selection_timeout = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (fontsel), "style-selection-timeout"));
++  immediate_selection = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (fontsel), "immediate-selection"));
++
++  if (selection_timeout)
++    g_source_remove (selection_timeout);
++
++  if (immediate_selection)
++    {
++      gtk_font_selection_real_select_style (data);
++    }
++  else
++   {
++      selection_timeout = g_timeout_add (200, gtk_font_selection_real_select_style, data);
++      g_object_set_data (G_OBJECT (fontsel), "style-selection-timeout", GUINT_TO_POINTER (selection_timeout));
++   }
+ }
+ 
+ static void
+@@ -1100,22 +1197,60 @@ gtk_font_selection_size_focus_out (GtkWi
+ }
+ 
+ /* This is called when a size is selected in the list. */
+-static void
+-gtk_font_selection_select_size (GtkTreeSelection *selection,
+-				gpointer          data)
++static gboolean
++gtk_font_selection_real_select_size (gpointer data)
+ {
++  GtkTreeSelection *selection;
+   GtkFontSelection *fontsel;
+   GtkTreeModel *model;
+   GtkTreeIter iter;
+   gint new_size;
+   
++  if (!g_object_get_data (G_OBJECT (data), "immediate-selection"))
++    GDK_THREADS_ENTER ();
++
+   fontsel = GTK_FONT_SELECTION (data);
+-  
++  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (fontsel->size_list));
++
+   if (gtk_tree_selection_get_selected (selection, &model, &iter))
+     {
+       gtk_tree_model_get (model, &iter, SIZE_COLUMN, &new_size, -1);
+       gtk_font_selection_set_size (fontsel, new_size * PANGO_SCALE);
+     }
++
++  g_object_set_data (G_OBJECT (fontsel), "size-selection-timeout", GUINT_TO_POINTER (0));
++
++  if (!g_object_get_data (G_OBJECT (fontsel), "immediate-selection"))
++    GDK_THREADS_LEAVE ();
++
++  /* Remove ourselves */
++  return FALSE;
++}
++
++static void
++gtk_font_selection_select_size (GtkTreeSelection *selection,
++				gpointer          data)
++{
++  GtkFontSelection *fontsel;
++  guint selection_timeout = 0;
++  guint immediate_selection = 0;
++
++  fontsel = GTK_FONT_SELECTION (data);
++  selection_timeout = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (fontsel), "size-selection-timeout"));
++  immediate_selection = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (fontsel), "immediate-selection"));
++
++  if (selection_timeout)
++    g_source_remove (selection_timeout);
++
++  if (immediate_selection)
++    {
++      gtk_font_selection_real_select_size (data);
++    }
++  else
++    {
++      selection_timeout = g_timeout_add (200, gtk_font_selection_real_select_size, data);
++      g_object_set_data (G_OBJECT (fontsel), "size-selection-timeout", GUINT_TO_POINTER (selection_timeout));
++    }
+ }
+ 
+ static void
+@@ -1449,6 +1584,9 @@ gtk_font_selection_select_font_desc (Gtk
+   if (!new_family)
+     return FALSE;
+ 
++   /* Disable selection timeout */ 
++   g_object_set_data (G_OBJECT (fontsel), "immediate-selection", GUINT_TO_POINTER (1));
++ 
+   if (pfamily)
+     *pfamily = new_family;
+   else
+@@ -1499,6 +1637,9 @@ gtk_font_selection_select_font_desc (Gtk
+ 
+   gtk_font_selection_set_size (fontsel, pango_font_description_get_size (new_desc));
+ 
++  /* Enable selection timeout */ 
++  g_object_set_data (G_OBJECT (fontsel), "immediate-selection", GUINT_TO_POINTER (0));
++
+   return TRUE;
+ }
+ 

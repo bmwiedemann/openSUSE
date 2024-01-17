@@ -1,0 +1,478 @@
+-------------------------------------------------------------------
+Tue Nov 28 08:14:45 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- New upstream release 1.5.6, see bundled NEWS
+
+-------------------------------------------------------------------
+Tue Nov 14 18:33:11 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- New upstream release 1.5.5, see bundled NEWS
+
+-------------------------------------------------------------------
+Wed Dec  7 11:29:44 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.5.1
+ see installed NEWS
+
+  == 1.5.1 - 2022-11-23
+  
+  === Improvements
+  
+    * Improved the default search path. "/usr" in "/usr/bin/pkg-config"
+      isn't used for buidling the default search path if "pkg-config
+      --variable=pc_path pkg-config" is available.
+      [Reported by Watson][GitHub:#22]
+  
+  == 1.5.0 - 2022-11-23
+  
+  === Improvements
+  
+    * Improved the default search path. "pkg-config --variable=pc_path
+      pkg-config" is used as the default search path if it's available.
+      [Reported by Watson][GitHub:#22]
+  
+
+-------------------------------------------------------------------
+Thu Aug  4 13:22:51 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.9
+ see installed NEWS
+
+  == 1.4.9 - 2022-07-31
+  
+  This is a bug fix release of 1.4.8. All 1.4.8 users should be upgraded
+  to 1.4.9.
+  
+  === Fixes
+  
+    * Fixed a regression bug in 1.4.8 that PkgConfig.have_package can't
+      detect nonexistent package.
+  
+  == 1.4.8 - 2022-07-30
+  
+  === Improvements
+  
+    * Added support for showing found package version.
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 07:19:26 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.7
+ see installed NEWS
+
+  == 1.4.7 - 2022-01-16
+  
+  === Improvements
+  
+    * Added support for RubyInstaller2 3.1 or later.
+      [Reported by golirev][GitHub:ruby-gnome/ruby-gnome#1457]
+  
+  === Thanks
+  
+    * golirev
+  
+
+-------------------------------------------------------------------
+Thu Jun 24 17:46:32 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.6
+ see installed NEWS
+
+  == 1.4.6 - 2021-04-12
+  
+  === Improvements
+  
+    * Improved support for .pc detection installed by Homebrew.
+      [Reported by Evan Shea][GitHub:rcairo/rcairo#66]
+  
+  === Thanks
+  
+    * Evan Shea
+  
+  == 1.4.5 - 2021-02-04
+  
+  === Improvements
+  
+    * Added support for macOS 11.2.
+      [Reported by Ludovic Moutury][GitHub:rcairo/rcairo#69]
+  
+  === Thanks
+  
+    * Ludovic Moutury
+  
+
+-------------------------------------------------------------------
+Fri Sep 25 14:39:21 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.4
+ see installed NEWS
+
+  == 1.4.4 - 2020-09-23
+  
+  === Fixes
+  
+    * Fixed a bug that NoMethodError instead of
+      PackageConfig::NotFoundError is raised.
+      [Fixed by kojix2][GitHub#21]
+  
+  === Thanks
+  
+    * kojix2
+  
+  == 1.4.3 - 2020-09-15
+  
+  === Improvements
+  
+    * Changed to use PackageConfig::NotFoundError instead of RuntimeError
+      for exception on no .pc is found.
+  
+  == 1.4.2 - 2020-08-10
+  
+  === Improvements
+  
+    * Added support for detecting pkgconfig path on RubyInstaller
+      without "ridk exec".
+  
+
+-------------------------------------------------------------------
+Mon Feb 10 15:24:25 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.4.1
+ see installed NEWS
+
+  == 1.4.1 - 2020-02-10
+  
+  === Improvements
+  
+    * Added support for cycled depended .pc such as freetype2.pc and
+      harfbuzz.pc on PLD Linux.
+      [Reported by Jakub Bogusz]
+  
+  === Thanks
+  
+    * Jakub Bogusz
+  
+  == 1.4.0 - 2019-10-24
+  
+  === Improvements
+  
+    * Improved Homebrew detection.
+  
+  == 1.3.9 - 2019-09-28
+  
+  === Improvements
+  
+    * Added support for absolute path in Requires.
+      [GitHub#18][Reported by Josh Huckabee]
+  
+  === Thanks
+  
+    * Josh Huckabee
+  
+  == 1.3.8 - 2019-08-13
+  
+  === Improvements
+  
+    * Added support for -framework on macOS.
+      [GitHub:ruby-gnome2/ruby-gnome2#1287][Reported by Viko]
+  
+  === Thanks
+  
+    * Viko
+
+-------------------------------------------------------------------
+Fri Mar 29 06:10:49 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.3.7
+ see installed NEWS
+
+  == 1.3.7 - 2019-03-17
+  
+  === Improvements
+  
+    * Added support for alphabet and _ only version.
+      [GitHub#17][Reported by xiejiangzhi]
+  
+  === Thanks
+  
+    * xiejiangzhi
+
+-------------------------------------------------------------------
+Thu Mar 14 11:01:19 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.3.6
+ see installed NEWS
+
+  == 1.3.6 - 2019-03-09
+  
+  === Improvements
+  
+    * Added support for Homebrew environment without pkg-config formula.
+  
+  == 1.3.5 - 2019-03-08
+  
+  === Fixes
+  
+    * Fixed MSYS2 detection installed at non standard folder.
+      [GitHub:ruby-gnome2/ruby-gnome2#1271][Reported by Simon Arnaud]
+  
+  === Thanks
+  
+    * Simon Arnaud
+
+-------------------------------------------------------------------
+Sat Mar  2 15:30:46 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.3.4
+ see installed NEWS
+
+  == 1.3.4 - 2019-02-19
+  
+  === Fixes
+  
+    * Fixed 32bit MinGW Ruby detection.
+      [GitHub:ruby-gnome2/ruby-gnome2#1274][Reported by noanoa07]
+  
+  === Thanks
+  
+    * noanoa07
+  
+  == 1.3.3 - 2019-02-10
+  
+  === Improvements
+  
+    * Improved MSYS2 detection on Windows.
+      [GitHub#16][Reported by dsisnero]
+  
+  === Thanks
+  
+    * dsisnero
+
+-------------------------------------------------------------------
+Thu Nov 22 05:27:21 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.3.2
+ see installed NEWS
+
+  == 1.3.2 - 2018-11-03
+  
+  === Improvements
+  
+    * Added support for Ruby installed by RubyInstaller for Windows with
+      MSYS2-Devkit.
+
+-------------------------------------------------------------------
+Sat Apr 28 04:12:34 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.3.1
+ see installed NEWS
+
+  == 1.3.1 - 2018-04-28
+  
+  === Improvements
+  
+    * Changed search order to find C flags.
+      [GitHub#6][Reported by HIGUCHI Daisuke]
+      * Before: Requires -> Requires.private
+      * After: Requires.private -> Requires
+  
+  === Thanks
+  
+    * HIGUCHI Daisuke
+
+-------------------------------------------------------------------
+Tue Apr 10 14:21:53 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.3.0
+ see installed NEWS
+
+  == 1.3.0 - 2018-04-10
+  
+  === Improvements
+  
+    * Added Ruby 2.0 on Ubuntu Trusty again.
+
+-------------------------------------------------------------------
+Thu Feb  8 06:19:51 UTC 2018 - coolo@suse.com
+
+- updated to version 1.2.9
+ see installed NEWS
+
+  == 1.2.9 - 2018-01-13
+  
+  === Improvements
+  
+    * Added more default paths for OpenBSD.
+      [GitHub#15][Reported by clintpachl]
+  
+  === Thanks
+  
+    * clintpachl
+
+-------------------------------------------------------------------
+Thu Oct 26 10:07:34 UTC 2017 - coolo@suse.com
+
+- updated to version 1.2.8
+ see installed NEWS
+
+  == 1.2.8 - 2017-10-19
+  
+  === Improvements
+  
+    * Improved macOS environment detection.
+      [Reported by Simeon Manolov]
+  
+  === Thanks
+  
+    * Simeon Manolov
+
+-------------------------------------------------------------------
+Mon Sep 11 12:46:53 UTC 2017 - coolo@suse.com
+
+- updated to version 1.2.7
+ see installed NEWS
+
+  == 1.2.7 - 2017-08-16
+  
+  === Improvements
+  
+    * Improved Homebrew repository detection.
+      [Reported by Wyatt Kirby]
+  
+  === Thanks
+  
+    * Wyatt Kirby
+  
+  == 1.2.6 - 2017-08-13
+  
+  === Improvements
+  
+    * Improved Homebrew repository detection.
+  
+  == 1.2.5 - 2017-08-10
+  
+  === Improvements
+  
+    * Supported Homebrew bundled .pc files.
+      [GitHub:rcairo/rcairo#49][Reported by choboy11]
+  
+  === Thanks
+  
+    * choboy11
+  
+  == 1.2.4 - 2017-08-07
+  
+  === Improvements
+  
+    * Added `pkg-config` 0.29 or later compatible result support.
+      [GitHub#13][Reported by HIGUCHI Daisuke]
+  
+    * test: Updated expected value for the latest cairo.
+      [GitHub#14][Patch by HIGUCHI Daisuke]
+  
+  === Thanks
+  
+    * HIGUCHI Daisuke
+
+-------------------------------------------------------------------
+Tue May 30 05:18:33 UTC 2017 - coolo@suse.com
+
+- updated to version 1.2.3
+ see installed NEWS
+
+  == 1.2.3 - 2017-05-29
+  
+  === Fixes
+  
+    * Supported *-mingw32 Rubies without MSYS2 again.
+  
+  == 1.2.2 - 2017-05-29
+  
+  === Improvements
+  
+    * Supported path normalization for MSYS2.
+  
+  == 1.2.1 - 2017-05-29
+  
+  === Improvements
+  
+    * Supported MSYS2.
+
+-------------------------------------------------------------------
+Tue May 23 10:10:15 UTC 2017 - coolo@suse.com
+
+- updated to version 1.2.0
+ see installed NEWS
+
+  == 1.2.0 - 2017-04-25
+  
+  === Improvements
+  
+    * Supported x32 environment. [GitHub#12][Reported by Elan Ruusamäe]
+  
+  === Thanks
+  
+    * Elan Ruusamäe
+  
+  == 1.1.9 - 2017-04-20
+  
+    * Supported C++ compiler.
+  
+  == 1.1.8 - 2017-04-19
+  
+    * Stopped to require mkmf.
+
+-------------------------------------------------------------------
+Thu Jan 21 05:43:30 UTC 2016 - coolo@suse.com
+
+- updated to version 1.1.7
+ see installed NEWS
+
+  == 1.1.7 - 2015-01-16
+  
+    * Added path for FreeBSD to default paths.
+      [Reported by Hajime UMEMOTO]
+  
+  === Thanks
+  
+    * Hajime UMEMOTO
+
+-------------------------------------------------------------------
+Mon Feb  9 06:47:33 UTC 2015 - coolo@suse.com
+
+- updated to version 1.1.6
+  * Supported Ruby 2.1.
+
+-------------------------------------------------------------------
+Wed Oct 15 09:31:53 UTC 2014 - coolo@suse.com
+
+- add gem2rpm.yml to fix requires
+
+-------------------------------------------------------------------
+Sun Oct 12 11:52:53 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Sun Jan  5 14:39:47 UTC 2014 - coolo@suse.com
+
+- updated to version 1.1.5
+
+-------------------------------------------------------------------
+Fri Aug  3 18:24:55 UTC 2012 - coolo@suse.com
+
+- updated to version 1.1.4
+  * Supported mswin64 as MSVC environment.
+
+-------------------------------------------------------------------
+Sat Jun 30 05:41:59 UTC 2012 - coolo@suse.com
+
+- update to 1.1.3, small bug fix for more stranger pkg-config files
+- require pkg-config for the real functionality
+
+-------------------------------------------------------------------
+Fri Oct 14 16:55:43 UTC 2011 - lazy.kent@opensuse.org
+
+- Initial package created - 1.1.2.
+

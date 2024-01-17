@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Sun Sep 17 08:33:37 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 0.15.1:
+  Fixed:
+  * Allow mmap in seccomp sandbox
+- Added systemd services from git contrib
+
+-------------------------------------------------------------------
+Fri Sep 15 20:03:33 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 0.15:
+  Added:
+  * Added bar orientation = horizontal | vertical
+  * Look for config file in /etc/wob/wob.ini
+  * New optional build dependency on cmocka (to run tests)
+  Changed:
+  * Replace inputting colors via stdin with styles
+
+-------------------------------------------------------------------
+Mon Nov 28 19:45:31 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to 0.14.2
+  * Replace command line options with .ini configuration file
+  * Add dependency on inih
+  * Change color format from #RRGGBBAA to RRGGBB[AA]
+  * Properly handle output disconnect
+  * Allow mprotect syscall for hardened malloc
+
+-------------------------------------------------------------------
+Mon Mar  7 09:57:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13:
+  * Print actual values in --help instead of just WOB_DEFAULT_*
+  * Don't require argument for -h
+  * Allow lseek syscall in seccomp sandbox
+  * Fix segmentation fault when -v (verbose) was used
+
+-------------------------------------------------------------------
+Mon Aug 16 06:58:43 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12:
+  Fixed:
+  * Allow munmap syscall to fix sandbox on musl libc #74
+  Changed:
+  * Change color format from #AARRGGBB to #RRGGBBAA #79 #81
+  Added:
+  * Allow overflow #67
+
+-------------------------------------------------------------------
+Mon Feb  8 09:00:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11:
+  * Seccomp related fixes ce6fea7, bc94ead
+  * Rename compilation flag -Dman-page (singular) to -Dman-pages
+    (plural) 8551da1
+
+-------------------------------------------------------------------
+Mon Aug 31 14:21:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10:
+  * NULL terminate color buffer string to prevent usage of uninitialised memory
+  * Correctly display colors with aplha value < 100%
+  * Short option -v no longer shows current version but increases debug level
+    instead.
+  * Enable seccomp rules by default if libseccomp is found.
+  * Long options (--border-color, --background-color, --bar-color).
+  * Log output. Use -v increase verbosity.
+
+-------------------------------------------------------------------
+Wed Jul 29 16:24:18 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Improve spec file
+  * Add RPM group
+  * Don't set default cflags explicitly, as %meson does it already
+
+-------------------------------------------------------------------
+Mon Jul 27 19:41:06 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Initial packaging of version 0.8 

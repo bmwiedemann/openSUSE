@@ -1,0 +1,7 @@
+<package name="perl-SGMLS" project="openSUSE:Factory">
+  <title>SGML/XML Parsers</title>
+  <description>SGMLSpm is a Perl script that reads ESIS output (from parsers like SP)
+and offers an event-based interface to the parser. As long as the
+parser can parse XML this also works for XML.</description>
+  <devel project="devel:languages:perl" package="perl-SGMLS"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="mk-configure" project="openSUSE:Factory">
+  <title></title>
+  <description>mk-configure is a lightweight replacement for GNU autotools, written in bmake (portable version of NetBSD make), POSIX shell and POSIX utilities.</description>
+  <devel project="devel:tools:building" package="mk-configure"/>
+</package>

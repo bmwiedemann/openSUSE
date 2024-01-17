@@ -1,0 +1,6 @@
+<package name="libao" project="openSUSE:Factory">
+  <title>A Cross-Platform Audio Output Library</title>
+  <description>Libao is a cross-platform audio output library.  It currently supports
+ESD, OSS, Solaris, and IRIX.</description>
+  <devel project="multimedia:libs" package="libao"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="libplacebo" project="openSUSE:Factory">
+  <title>Library for GPU-accelerated video/image rendering primitives</title>
+  <description>This library contains GPU-accelerated video/image rendering primitives, as well as a standalone vulkan-based image/video renderer. It is based on the core rendering algorithms and ideas of mpv.</description>
+  <devel project="multimedia:libs" package="libplacebo"/>
+</package>

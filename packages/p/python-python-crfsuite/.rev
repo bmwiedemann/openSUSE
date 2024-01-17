@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8bd4a8fe02fb719260da17c60500530b</srcmd5>
+    <version>0.9.6</version>
+    <time>1554458235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687631</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c4288f9d69c4cef7ac94a243d17b74c</srcmd5>
+    <version>0.9.7</version>
+    <time>1584964313</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.9.7
+  * Python 3.4 is no longer supported (it may work, but CI is disabled)
+  * Python 3.8 support
+  * fixed installation issues on OS X (thanks @kvinwang)
+  * make it easier for distributions to have a reproducible build
+    (thanks @bmwiedemann)</comment>
+    <requestid>787371</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f148767e538b12b8c40902e3c86fb164</srcmd5>
+    <version>0.9.7</version>
+    <time>1645461996</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch rebuild-extension.patch:
+  * Included sources now regenerated with a new version of Cython to
+    fix the build for Python 3.10.</comment>
+    <requestid>956261</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f4bb777fd7a281b4ef1ccec535e97962</srcmd5>
+    <version>0.9.9</version>
+    <time>1677584916</time>
+    <user>dimstar_suse</user>
+    <comment>- Delete rebuild-extension.patch
+- Update to 0.9.9
+  * Support for CPython 3.11
+- 0.9.8
+  * Support for 3.10 added
+</comment>
+    <requestid>1067998</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>437a8b66e92278d7dc7f3e684e86e92b</srcmd5>
+    <version>0.9.10</version>
+    <time>1703800851</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.10:
+  * Add support for python 3.12 and drop python 2.7 support
+
+    fix the build for Python 3.10.</comment>
+    <requestid>1135196</requestid>
+  </revision>
+</revisionlist>

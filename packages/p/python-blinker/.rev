@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ab70022799cb83ff4e2bf29ce230eca</srcmd5>
+    <version>1.1</version>
+    <time>1332239512</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>109153</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6ab70022799cb83ff4e2bf29ce230eca</srcmd5>
+    <version>1.1</version>
+    <time>1340184037</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45d60a432cd8375c2ecfd04269b685b4</srcmd5>
+    <version>1.2</version>
+    <time>1340725960</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126126</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4c5ff836757eb7ce9660f60cf97dcdb2</srcmd5>
+    <version>1.2</version>
+    <time>1345730738</time>
+    <user>namtrac</user>
+    <comment>python3 package added (forwarded request 130838 from HighwayStar)</comment>
+    <requestid>131003</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>95ff89b18e7bcb30548ca2e57d5cc79f</srcmd5>
+    <version>1.2</version>
+    <time>1354109559</time>
+    <user>coolo</user>
+    <comment>Removed openSUSE 11.4 spec file workarounds (forwarded request 142743 from TheBlackCat) (forwarded request 142790 from TheBlackCat)</comment>
+    <requestid>142802</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>95ff89b18e7bcb30548ca2e57d5cc79f</srcmd5>
+    <version>1.2</version>
+    <time>1359109998</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>45fd4d34651f01bab83e9c7eafc84226</srcmd5>
+    <version>1.2</version>
+    <time>1371652005</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179740</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>45fd4d34651f01bab83e9c7eafc84226</srcmd5>
+    <version>1.2</version>
+    <time>1379664133</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>45fd4d34651f01bab83e9c7eafc84226</srcmd5>
+    <version>1.2</version>
+    <time>1409302823</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ef1028e5dbe2545a65ba494f5b641b3f</srcmd5>
+    <version>1.3</version>
+    <time>1424779359</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287336</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e766851fa5877a71fc83ffdf8640f2d6</srcmd5>
+    <version>1.4</version>
+    <time>1458333684</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>372864</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3890a34f8561eae94dfa98f4ff5888e5</srcmd5>
+    <version>1.4</version>
+    <time>1474723690</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>429471</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>345480108d4d87aa1425cb135dbe9be2</srcmd5>
+    <version>1.4</version>
+    <time>1494442234</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493371</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>75bda85451bbcb8f5624d80e79c03970</srcmd5>
+    <version>1.4</version>
+    <time>1544726856</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call
+
+- Trim bias from description.
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655588</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>afe77c6f2e53be6933cb96cf5368c1db</srcmd5>
+    <version>1.4</version>
+    <time>1594807508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819672</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bc80d8e537ac20f6db7ca7ac0872bbb2</srcmd5>
+    <version>1.5</version>
+    <time>1663275469</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix documentation generation.
+- specfile:
+  * update copyright year
+  * remove patch python-blinker-remove-nose.patch; included upstream
+  * docs and license changed to .rst
+  * build docs using Sphinx
+- update to version 1.5:
+  * Support Python &gt;= 3.7 and PyPy. Python 2, Python &lt; 3.7, and Jython
+    may continue to work, but the next release will make incompatible
+    changes.
+</comment>
+    <requestid>1003549</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f78a5956fcf2ca25018b2fbd3fcb47cd</srcmd5>
+    <version>1.5</version>
+    <time>1682193706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081978</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>1972ddc4b56f5421d4478636977d178a</srcmd5>
+    <version>1.5</version>
+    <time>1682691744</time>
+    <user>dimstar_suse</user>
+    <comment>- move documentation into the main package for SLE15</comment>
+    <requestid>1083131</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bfcc595da0b3bf39c0b25306f6738e48</srcmd5>
+    <version>1.6.2</version>
+    <time>1683728179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.2:
+  * Type annotations are not evaluated at runtime. typing-extensions
+    is not a runtime dependency. :pr:`94`
+- 1.6.1:
+  * Ensure that py.typed is present in the distributions (to enable
+    other projects to use blinker's typing).
+  * Require typing-extensions &gt; 4.2 to ensure it includes ParamSpec.
+    :issue:`90`
+- 1.6:
+  * Add a muted context manager to temporarily turn off a signal.
+    :pr:`84`
+  * Allow int senders (alongside existing string senders). :pr:`83`
+  * Add a send_async method to the Signal to allow signals to send to
+    coroutine receivers. :pr:`76`
+  * Update and modernise the project structure to match that used by
+    the pallets projects. :pr:`77`
+  * Add an intial set of type hints for the project.
+</comment>
+    <requestid>1085626</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>584efd9991d371f323d16e0462062e8b</srcmd5>
+    <version>1.6.2</version>
+    <time>1690469392</time>
+    <user>anag+factory</user>
+    <comment>- Add no-stdpy-pyc.patch which makes Sphinx not to generate
+  *.pyc files for the Python interpreter it uses for generating
+  documentation.
+</comment>
+    <requestid>1100942</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>ac191b3b367e664568c08da3390a693c</srcmd5>
+    <version>1.6.2</version>
+    <time>1691232898</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove no-stdpy-pyc.patch
+- Call directly to the sphinx module with the specific python
+  interpreter to avoid the usage of default python, bsc#1213698.</comment>
+    <requestid>1102380</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b6a0d613fc81401328dee6075e3f1bd3</srcmd5>
+    <version>1.7.0</version>
+    <time>1700250514</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126823</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,71 @@
+From d8917666d6198873bca140c3c511ae230ee698ec Mon Sep 17 00:00:00 2001
+From: Jan Zerebecki <jan.suse@zerebecki.de>
+Date: Mon, 30 Aug 2021 17:31:31 +0200
+Subject: [PATCH] Fix instert of duplicate key into event_json
+
+When an incoming event id is present in event_json but not in events
+synapse fails trying to insert it with "psycopg2.errors.UniqueViolation:
+duplicate key value violates unique constraints", because it is only
+filtered based on those that are in events.
+
+I don't know why those become out of sync, but this happening was
+reported by others before.
+
+Fix this by using an upsert (which inserts or updates existing records)
+instead of a normal insert.
+
+Please verify that this is the safe and correct thing to do before
+merging this. Verify e.g. that it doesn't allow breaking history
+integrity or something like it. As I don't know enough to understand
+what this change entails.
+
+Fixes: https://github.com/matrix-org/synapse/issues/10718
+Signed-off-by: Jan Zerebecki <jan.suse@zerebecki.de>
+---
+ changelog.d/10719.bugfix                 |  1 +
+ synapse/storage/databases/main/events.py | 22 +++++++++++-----------
+ 2 files changed, 12 insertions(+), 11 deletions(-)
+ create mode 100644 changelog.d/10719.bugfix
+
+diff --git a/changelog.d/10719.bugfix b/changelog.d/10719.bugfix
+new file mode 100644
+index 00000000000..d928f74f6bf
+--- /dev/null
++++ b/changelog.d/10719.bugfix
+@@ -0,0 +1 @@
++Fix instert failure because of duplicate key when an incoming event id is present in the table event_json but not in events.
+diff --git a/synapse/storage/databases/main/events.py b/synapse/storage/databases/main/events.py
+index 40b53274fb3..830af72d5e6 100644
+--- a/synapse/storage/databases/main/events.py
++++ b/synapse/storage/databases/main/events.py
+@@ -1334,19 +1334,19 @@ def get_internal_metadata(event):
+ 
+             return im
+ 
+-        self.db_pool.simple_insert_many_txn(
++        self.db_pool.simple_upsert_many_txn(
+             txn,
+             table="event_json",
+-            values=[
+-                {
+-                    "event_id": event.event_id,
+-                    "room_id": event.room_id,
+-                    "internal_metadata": json_encoder.encode(
+-                        get_internal_metadata(event)
+-                    ),
+-                    "json": json_encoder.encode(event_dict(event)),
+-                    "format_version": event.format_version,
+-                }
++            key_names=["event_id"],
++            key_values=[[event.event_id] for event, _ in events_and_contexts],
++            value_names=["room_id", "internal_metadata", "json", "format_version"],
++            value_values=[
++                [
++                    event.room_id,
++                    json_encoder.encode(get_internal_metadata(event)),
++                    json_encoder.encode(event_dict(event)),
++                    event.format_version,
++                ]
+                 for event, _ in events_and_contexts
+             ],
+         )

@@ -1,0 +1,11 @@
+# This file has some openSUSE specific configuration for LyX.
+
+Format 1
+
+\serverpipe "~/.lyx/lyxpipe"
+
+# System directories for spellchecking and thesaurus dictionaries
+
+\thesaurusdir_path "/usr/share/mythes"
+\hunspelldir_path "/usr/share/myspell"
+

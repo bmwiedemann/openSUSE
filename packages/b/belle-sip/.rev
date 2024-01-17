@@ -1,0 +1,339 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>25e2dbbe5692f2996dbaa4fced45fd6f</srcmd5>
+    <version>1.3.0</version>
+    <time>1413464002</time>
+    <user>coolo</user>
+    <comment>Dependency for linphone.</comment>
+    <requestid>254932</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3497c2022bd8aab1a6d2902ab326f9ed</srcmd5>
+    <version>1.3.0</version>
+    <time>1416048262</time>
+    <user>dimstar_suse</user>
+    <comment>- Use gpl2+ as is in the files not just gpl2
+- Fix build on factory
+- Run autoreconf to avoid double configure run
+- Disable silent rules
+- Disable Werror</comment>
+    <requestid>260104</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>25cf6b6679979fa7dd0f3a0cbca29ecc</srcmd5>
+    <version>1.4.0</version>
+    <time>1426680292</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290901</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f25608e6ab8ff2c6a30aa2a751178104</srcmd5>
+    <version>1.4.0</version>
+    <time>1427983363</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292537</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0eabf6cec8a53423ce38c68883cc2e13</srcmd5>
+    <version>1.4.1</version>
+    <time>1437549598</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317800</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8e097fc060d8942599b23523e8093dbd</srcmd5>
+    <version>1.4.2</version>
+    <time>1448186407</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>343873</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f4cc923cdfaf23421784cdfbf862fdcb</srcmd5>
+    <version>1.5.0</version>
+    <time>1473798259</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426977</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f3af75ebe8f1bdd7eacda4568f91c902</srcmd5>
+    <version>1.5.0</version>
+    <time>1474370803</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove reference to unneeded wakelock.h file (fix-build.patch) 
+
+- Switch to building with CMake.
+- Add belle-sip-fix-pkgconfig.patch: Fix up pkgconfig.</comment>
+    <requestid>428380</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d22203570ea322bcd76053aca0efca1d</srcmd5>
+    <version>1.6.1</version>
+    <time>1499291715</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501061</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d1719fa90d54b4f3309c6535b5cc3947</srcmd5>
+    <version>1.6.3</version>
+    <time>1504102892</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512371</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>56c95fdb2325966b22231b658d8dd03c</srcmd5>
+    <version>1.6.3</version>
+    <time>1567849843</time>
+    <user>dimstar_suse</user>
+    <comment>- A build fix.</comment>
+    <requestid>728514</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>45ce4cce9174dba307bf270f52127364</srcmd5>
+    <version>1.6.3</version>
+    <time>1568191055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729881</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>ac4da2cafa6e87a02db3c055ac14fcfc</srcmd5>
+    <version>1.6.3</version>
+    <time>1573044879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739947</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>43612c962b4b1ab1957da37a6ac212bc</srcmd5>
+    <version>1.6.3</version>
+    <time>1574104263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749208</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>51298eb380bc09eed1c4e53800af6179</srcmd5>
+    <version>4.3.1</version>
+    <time>1591742423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.3.1.</comment>
+    <requestid>796708</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b7b11d636675672d2aca8660527447ef</srcmd5>
+    <version>4.4.0</version>
+    <time>1596456872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0.</comment>
+    <requestid>823431</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c0b5d174c017db51dbe708df41535f14</srcmd5>
+    <version>4.5.3</version>
+    <time>1619031585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886877</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>648ae740287183e94f2154240a99433c</srcmd5>
+    <version>5.0.0</version>
+    <time>1629269721</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>910387</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4ae38c66373bbe03cfc6a2c368946c38</srcmd5>
+    <version>5.0.0</version>
+    <time>1631129801</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>917153</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ff623f8fdb7372a8f4e341300d64c4b3</srcmd5>
+    <version>5.0.36</version>
+    <time>1635366072</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927657</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>87494349b0ce60ea81dd974c7d3bdc31</srcmd5>
+    <version>5.0.49</version>
+    <time>1637108009</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931476</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>769060be801abcf447bbb3be3e952c2f</srcmd5>
+    <version>5.0.53</version>
+    <time>1638131410</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934338</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0d8e9d48d9a6437014fa811b1047e866</srcmd5>
+    <version>5.0.66</version>
+    <time>1642548924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947218</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a2db2d7505fae28086d440ebfdae3d71</srcmd5>
+    <version>5.0.67</version>
+    <time>1643838063</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.67:
+  * no changes
+- fix license tag
+</comment>
+    <requestid>950585</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>830c9a7429f2477b9821553ce4b974b5</srcmd5>
+    <version>5.1.0</version>
+    <time>1646158022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0:
+  * Multipart boundaries are random and used-once.
+  * Avoid using V4MAPPED formatted IP addresses in CONNECT http requests,
+    because http proxies may not be always IPv6-capable.
+</comment>
+    <requestid>958305</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c594f0c4202364b7b91ae848bef9665a</srcmd5>
+    <version>5.1.12</version>
+    <time>1648159103</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.12:
+  * no changelog
+</comment>
+    <requestid>964623</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>118af182924e0a0d7d6c5036eb808cde</srcmd5>
+    <version>5.1.32</version>
+    <time>1655396400</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982686</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>323d4a52c167277fb8636c21e77097c4</srcmd5>
+    <version>5.1.47</version>
+    <time>1657281795</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.47:
+  * Close the file before calling stop callback to let cb to do file modifications like renaming.
+  * Do not return belle_sip_source_t when scheduling task on the main loop.
+  * Fix double free during certificate generation.
+</comment>
+    <requestid>987829</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>77558c11209c716862b8b973d6caf233</srcmd5>
+    <version>5.1.47</version>
+    <time>1660834137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997467</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>505369645b64e6e6cd44820c10f7883c</srcmd5>
+    <version>5.1.64</version>
+    <time>1666011493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.64 (no changelog).
+</comment>
+    <requestid>1012001</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2e964fd561cc359d35c25897dafdf777</srcmd5>
+    <version>5.1.72</version>
+    <time>1670259725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040246</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3adf411af285941a56c3f6d3d480aa52</srcmd5>
+    <version>5.2.6</version>
+    <time>1672851207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.6:
+  * Support for authentication headers with multiple challenges.
+  * Fixed various weaknesses within multipart decoding process.
+  * Fixed endless UDP transaction in a specific scenario.
+  * Fixed various crashes.
+</comment>
+    <requestid>1055795</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>58d977f033d3ec19fc7bccc043446fa9</srcmd5>
+    <version>5.2.9</version>
+    <time>1674043752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * no changes
+</comment>
+    <requestid>1059002</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>47ef28613c9b5da952f19d73cd533550</srcmd5>
+    <version>5.2.16</version>
+    <time>1674997888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061852</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3bd25dced838155f2959872f3e393c11</srcmd5>
+    <version>5.2.30</version>
+    <time>1678283622</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.30 (no changelog)
+</comment>
+    <requestid>1070097</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e5bf410eea06c9f57bb6ba897ff1c82b</srcmd5>
+    <version>5.2.49</version>
+    <time>1680884236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.49 (no changelog)
+- Add set_current_version.patch
+</comment>
+    <requestid>1077857</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>142ad0b738cec657f77061c69327456f</srcmd5>
+    <version>5.2.73</version>
+    <time>1687980808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.73 (no changelog)
+</comment>
+    <requestid>1095733</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ab0672e7a8dd5af81fc54ea8a0b07b3e</srcmd5>
+    <version>5.2.98</version>
+    <time>1693235807</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.98 (no changelog)
+</comment>
+    <requestid>1106248</requestid>
+  </revision>
+</revisionlist>

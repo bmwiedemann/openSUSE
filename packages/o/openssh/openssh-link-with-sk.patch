@@ -1,0 +1,15 @@
+Index: openssh-8.8p1/Makefile.in
+===================================================================
+--- openssh-8.8p1.orig/Makefile.in
++++ openssh-8.8p1/Makefile.in
+@@ -252,8 +252,8 @@ ssh-keyscan$(EXEEXT): $(LIBCOMPAT) libss
+ ssh-ldap-helper$(EXEEXT): $(LIBCOMPAT) libssh.a ldapconf.o ldapbody.o ldapmisc.o ldap-helper.o
+ 	$(LD) -o $@ ldapconf.o ldapbody.o ldapmisc.o ldap-helper.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh -lopenbsd-compat $(LIBS)
+ 
+-sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTPSERVER_OBJS)
+-	$(LD) -o $@ $(SFTPSERVER_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS)
++sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o $(SFTPSERVER_OBJS)
++	$(LD) -o $@ $(SFTPSERVER_OBJS) ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2)
+ 
+ sftp$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTP_OBJS)
+ 	$(LD) -o $@ $(SFTP_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(LIBEDIT)

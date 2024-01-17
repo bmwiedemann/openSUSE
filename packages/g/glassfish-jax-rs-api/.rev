@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de0899f87b8dd5e4646d93115a709b61</srcmd5>
+    <version>2.1.5</version>
+    <time>1573044954</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>744989</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>be166de7069e36b570b1452fbd2dab9c</srcmd5>
+    <version>2.1.5</version>
+    <time>1574783808</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750532</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>558a3ea75b3d0de58c2c56a627e4f4bf</srcmd5>
+    <version>2.1.5</version>
+    <time>1651784834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975170</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e48da75afc3792683dcfb57dad47d18d</srcmd5>
+    <version>2.1.6</version>
+    <time>1670332979</time>
+    <user>dimstar_suse</user>
+    <comment>2.1.6</comment>
+    <requestid>1040353</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>45fecb46f7be396c8d791205b0b51cea</srcmd5>
+    <version>2.1.6</version>
+    <time>1694344226</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109949</requestid>
+  </revision>
+</revisionlist>

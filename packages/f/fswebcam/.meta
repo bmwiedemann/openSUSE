@@ -1,0 +1,6 @@
+<package name="fswebcam" project="openSUSE:Factory">
+  <title>Tiny and flexible webcam program</title>
+  <description>A tiny and flexible webcam program for capturing images from a V4L1/V4L2 device, and overlaying a caption or image.</description>
+  <devel project="graphics" package="fswebcam"/>
+  <url>http://www.firestorm.cx/fswebcam/</url>
+</package>

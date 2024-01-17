@@ -1,0 +1,836 @@
+-------------------------------------------------------------------
+Mon Jan  8 21:00:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.1.0:
+  * Add support for multiple file systems path rules.
+
+-------------------------------------------------------------------
+Sat Jan  6 17:12:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.0.0:
+  * Remove dot from `file_name` when `extention` is the empty
+    string.
+  * Allow extension in `file_path` to take a list of allowed
+    extensions, or empty for "no extension".
+  * Fix typo in `ru_RU` company names.
+
+-------------------------------------------------------------------
+Sat Dec 16 21:17:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.0.0:
+  * Fix: random sign in `pyfloat` when `positive=False`.
+  * Add company provider and NUSS for `es_ES` locale.
+  * Add official support for Python 3.12.
+  * Make `unix_time` always return floats.
+  * Fix `pydecimal` crash on float `min_value` or `max_value`.
+  * Fix type hint for `unix_time`.
+  * Support platform-specific second precision. Thanks @cknv.
+  * Add more entries in `cs_CZ`'s geo
+  * Fix latest days of the month as birth day in italian SSN.
+  * Add `geo` provider for `cs_CZ`
+  * Fix handling for finnish ssn where `min_age` and `max_age`
+    are the same
+  * Add a few street names to `cs_CZ`
+  * Add words to lorem for `cs_CZ`
+  * Add color for `cs_CZ`
+
+-------------------------------------------------------------------
+Tue Oct 17 15:45:31 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 19.10.0:
+  - Update names and phone numbers for cs_CZ. Thanks @george0st.
+  - Revert "fix type error in pyfloat when max_value is None"
+    from v19.6.2.
+  - Use DE base for de_CH AddressProvider. Thanks @nchiapol.
+  - Fix person Latvian provider.
+  - Add Gender support for Latvian (lv_LV) names. Thanks
+    @OskarsPakers.
+  - Add MAC Address Multicast. Thanks @d3vyce.
+  - fix type error in pyfloat when max_value is None. Thanks
+    @HugoJP1.
+  - Bump actions/checkout from 3 to 4 (#1909). Thanks
+    @dependabot[bot].
+  - Add addresses for en_BD. Thanks @aamibhoot.
+  - Add color_rgb, color_rgb_float, color_hsv and
+    color_hsl. Thanks @fdemmer.
+  - Add schemes and deep argument to uri method.
+  - Remove spurious space in uk_UA first_name. Thanks @Romissevd.
+  - Add weighting to dynamic providers. Thanks @pauldechorgnat.
+  - Add support for South African Zulu (zu_ZA) names and last
+    names. Thanks @iamkhaya.
+  - Add ja_JP locale for datetime. Thanks @cyanghsieh.
+  - Drop support for Python 3.7
+  - Drop support for 32 bit systems.
+  - Add elector_code for es_MX SSN provider. Thanks
+    @edgarrmondragon.
+  - Add .optional proxy that may or may not return a fake
+    value. Thanks @ligne.
+  - Add fake automotive vin number function. Thanks @cyanghsieh.
+  - Fix area codes for fr_FR mobile phone numbers. Thanks
+    @QuentinFchx.
+- Remove unnecessary dependence on random2, ukpostcodeparser.
+
+-------------------------------------------------------------------
+Sun Jun 25 18:47:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.11.1:
+  * Update Ukraine Country Code in `phone_number`
+  * Add digit-above-two type to numerify function
+
+-------------------------------------------------------------------
+Tue Jun 20 17:41:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.10.1:
+  * Fix handling leap year in `en_US` Passport provider.
+  * Add `passport` Provider and `en_US` Implementation.
+  * Fix `fr_FR` `postcode` length.
+
+-------------------------------------------------------------------
+Sat May 27 21:11:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.9.0:
+  * Add `xml` provider
+  * Add `zh_CN` bank locale
+
+-------------------------------------------------------------------
+Sun May 14 15:22:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.7.0:
+  * Add `license_plate` for `zh_CN` and `zh_TW`.
+  *  Improve accuracy of departments in `fr_FR` provider
+    `postcode`.
+  * Fix `ssn` provider for `zh_TW`.
+
+-------------------------------------------------------------------
+Thu May  4 19:12:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.6.0:
+  * Add a separate `basic_phone_number` for `en_US`. Thanks
+    @dlwrnc.
+
+-------------------------------------------------------------------
+Wed Apr 26 06:22:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.5.1:
+  * Fix release.
+  * Add `de_DE` `swift_location_codes`. Thanks @MiloniAtal.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:20:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Wed Apr 19 09:47:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.4.0:
+  * Add currency symbols for all listed currencies.
+  * Ensure `pyfloat` honors min and max values.
+  * Use correct union type for provider argument (#1840).
+  * Fix determinism in `state_abbr()` for `en_US`.
+  * Separate freely-associated states & US territories.
+  * Fix value error formatting.
+  * Add lorem provider for `nl_BE`.
+  * Add `nl_BE` automotive provider.
+  * Add `nl_BE` company provider.
+  * Add territory zip codes for `en_US`.
+  * Add `nl_BE` bank provider.
+  * Fix North Macedonia entry in `uk_UA` provider.
+  * Add SBN provider.
+  * Use the official name for North Macedonia due to the name
+    change in 2019.
+  * Add `zh_TW` `date_time` provider.
+  * Add support for latvian `ssn` generation.
+  * Add argument validation to `pybool()`.
+
+-------------------------------------------------------------------
+Thu Feb 16 21:06:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 17.0.0:
+  * Remove deprecated placeimg image provider. Thanks @Wonskcalb.
+  * Add `truth_probability` argument to `pybool` generator.
+
+-------------------------------------------------------------------
+Fri Feb 10 10:01:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 16.8.1:
+  * Sort and add new Arabic words in `ar_AA` and `ar_PS`.
+  * Add `emoji` provider.
+  * Fix `name_female` and `name_male` mixed names for `en_GB`.
+  * Add method to generate JSON as bytes.
+  * Fix `siret` and `siren` generation for `fr_FR` locale company
+    information.
+  * Add `fr_CA` address provider.
+  * Add `zipcode`, `postcode` and `postalcode` to `pl_PL`.
+  * Update phone number formats for `es_ES` locale.
+  * Add new `fr_BE` and `nl_BE` `Person` providers.
+  * Add `fr_CA` date time provider.
+  * Allow passing optional json encoder in `json` provider.
+  * Fix missing comma in `en_NZ` address provider.
+  * Fix amount and layout of sample data.
+
+-------------------------------------------------------------------
+Wed Feb  1 20:31:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop python 3.7 specific dependencies - not in any existing SUSE
+  distribution anymore
+
+-------------------------------------------------------------------
+Wed Dec  7 14:05:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v15.3.4 - 2022-11-30
+  * Fix it_IT SSN generation with latin chars in name or surname. Thanks @panicofr.
+
+- Update to v15.3.3 - 2022-11-22
+  * Fix seeding with multiple locales. Thanks @johntmyers.
+
+- Update to v15.3.2 - 2022-11-14
+  * Fix implicit Optional issues. Thanks @palfrey.
+
+-------------------------------------------------------------------
+Thu Dec  1 17:52:47 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v15.3.1 - 2022-11-07
+  * Update the `word_list` for `pl_PL`. Thanks @BeRT2me.
+
+- Update to v15.3.0 - 2022-11-07
+  * Add color provider for `id_ID`. Thanks @rosdyana.
+
+-------------------------------------------------------------------
+Mon Nov  7 20:07:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v15.2.0
+  * Add banks for en_IN locale. Thanks @ChiragMangukia.
+
+-------------------------------------------------------------------
+Thu Oct 27 19:32:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v15.1.1
+  * Fix ImportError on python <3.7.2
+- Update to v15.1.0
+  * Add enum provider.
+- Update to v15.0.0
+  * Add support for Python 3.10. Thanks @uri-rodberg.
+  * Drop support for Python 3.6.
+
+-------------------------------------------------------------------
+Tue Oct 11 23:18:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version v14.2.1 - 2022-10-11
+  * Fix misspelled first name in da_DK locale. Thanks @filson1.
+
+-------------------------------------------------------------------
+Thu Sep 22 19:05:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v14.2.1
+  * Fix misspelled first name in da_DK locale. Thanks @filson1.
+- Update to 14.2.0
+  * Add support for prefix and suffix to pystr provider.Thanks @stefan6419846.
+- Update to 14.1.2
+  * Fix uk_UA postcode generation. Thanks @ajinkyac03.
+- Update to 14.1.1
+  * Relax minimum version of typing-extensions. Thanks @stefan6419846.
+- Update to 14.1.0
+  * Add providers for bn_BD: address, automotive, bank, color, company, currency, date_time, geo, internet, job, person, phone_number and ssn. Thanks @saanpritom.
+- Update to 14.0.0
+  * Fix Provider._parse_date_time to support timestamps. Thanks @mochi-moshi.
+- Update to 13.16.0
+  * automotive: add de_CH license plates. Thanks @gsilvan.
+
+-------------------------------------------------------------------
+Tue Aug  2 13:48:56 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to v13.15.1:
+  * change license_formats pt_BR to match Mercosul.
+- Changes from v13.15.0:
+  * Upgrade person, company, internet, currency providers for tr_TR.
+- Changes from v13.14.0:
+  * Fix vat and police id for el_GR.
+  * Add tin and ssn for el_GR.
+- Changes from v13.13.1:
+  * Fix area codes for fr_FR phone numbers.
+- Changes from v13.13.0:
+  * Add support for ISO 8601 timestamp profiles.
+- Changes from v13.12.1:
+  * Correct RUT range in es_CL.
+- Changes from v13.12.0:
+  * Add support for generating relative file paths.
+- Changes from v13.11.1:
+  * Fix firefox ua being nondeterministic with fixed seed.
+- Changes from v13.11.0:
+  * Add sq-AL automotive provider.
+- Changes from v13.10.0:
+  * Improve it_IT ssn provider to match real building rules.
+- Changes from v13.9.0:
+  * Add part-of-speech functionality for en_US.
+- Changes from v13.8.0:
+  * Add fr-FR datetime provider.
+  * Add no-NO datetime provider.
+  * Add zh-CN datetime provider.
+- Changes from v13.7.0:
+  * Add automotive provider for fi_FI, et_EE, lt_LT and vi_VN.
+- Changes from v13.6.0:
+  * Add ar_BH automotive provider.
+- Changes from v13.5.0:
+  * Add Mexican CLABE bank code for es_MX locale.
+- Changes from v13.4.0:
+  * Add it_IT automotive provider.
+- Changes from v13.3.5:
+  * Fix error in currency provider data.
+- Changes from v13.3.4:
+  * Bump actions/cache from 2 to 3 (#1631).
+- Changes from v13.3.3:
+  * Fix factory selection when Faker has been seeded.
+- Changes from v13.3.2:
+  * Bump actions/stale from 3 to 5 (#1629).
+- Changes from v13.3.1:
+  * Bump actions/setup-python from 2 to 3 (#1626).
+- Changes from v13.3.0:
+  * Add lorem provider for fa-ir language code.
+- Changes from v13.2.0:
+  * Add bn_BD Lorem Provider.
+- Changes from v13.1.0:
+  * Add lorem support for de_DE and de_AT.
+- Changes from v13.0.0:
+  * Use os.urandom in binary() if unseeded.
+- Changes from v12.3.3:
+  * Arabic improvements for names.
+- Changes from v12.3.2:
+  * Fix postcode format for es_ES locale.
+- Changes from v12.3.1:
+  * Prevent "non-integer arguments to randrange()" warnings on Python 3.10.
+- Changes from v12.3.0:
+  * Fix it_IT ssn() validity.
+- Changes from v12.2.0:
+  * Add cities to de_CH.
+- Changes from v12.1.0:
+  * Set correct language on provider when specific locale is requested.
+- Changes from v12.0.1:
+  * Remove empty string in Korean job list.
+- Changes from v12.0.0:
+  * Remove dependency from text-unidecode.
+- Changes from v11.4.0:
+  * Add geonames db of Italian cap-city-province and full match when generating full addresses.
+- Changes from v11.3.0:
+  * Add banks for fa-ir.
+- Changes from v11.2.0:
+  * Improve phone numbers for it_IT.
+- Changes from v11.1.0:
+  * Add providers for az_AZ locale.
+- Changes from v11.0.0:
+  * Replace lorempixel.com service with picsum.photos in image_url provider.
+  * Add placeholder_url argument to image_url.
+
+-------------------------------------------------------------------
+Mon Dec 27 17:51:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add missing typing-extensions requirement
+
+-------------------------------------------------------------------
+Thu Dec  9 09:24:06 UTC 2021 - pgajdos@suse.com
+
+- version update to 10.0.0
+  * deprecate positional `allowed_types`.
+  * Revert "deprecate positional `allowed_types`".
+  * deprecate positional `allowed_types` (#1573). Thanks @fcurella.
+  * Fix positional ``value_types``.
+  * Shorten IBANs for `pl_PL` to 28 chars. Fix #1568 (#1569). Thanks @fcurella.
+  * Relax ElementsType to admit e.g. Sets. Thanks @OJFord.
+  * Fix ``pydecimal`` with ``left_digits=0`` not setting the left digit to 0. Thanks @ndrwkim.
+  *  Add ``es_CO`` localized providers. Thank you @healarconr.
+  * Take into account area codes for French phone numbers. Thanks @nicarl.
+  * Add provider for French SSN. Thanks @nicarl.
+  * Add dynamic provider. Thanks @omri374.
+  *  Improve randomness of ``pydecimal`` for different scenarios. Thanks @antonioIrizar.
+  *  Limit ``typing_extensions`` dependency to Python < 3.8. Thanks @mgorny.
+  *  Add ``typing-extensions`` as dependency and pin ``mypy`` version. Thanks @nicarl.
+  * Add automotive provider for ``nl_NL``. Thanks @MarcelRobeer.
+  * Add Typing. Thanks @MarcelRobeer, @nicarl.
+  *  Change to secondary address format in ``en_AU`` locale to reflect the common usage. Thanks @deboraelkin2.
+  * Add ``currency``, ``automotive``, ``company`` and ``bank`` providers for ``el_GR``. Thanks @nikosmichas.
+  * Add ``color`` and ``date_time`` provider for ``el_GR``. Thanks @nikosmichas.
+  * Add currency provider for ``nl_NL``. Thanks @MarcelRobeer.
+  * Fix ``pydecimal`` returning ``min_value`` or ``max_value`` too frequently. Thanks @zivkovic.
+  * Change default email generator to use safe domain names. Thanks @errbufferoverfl.
+  * Add ``date_time`` provider for ``nl_NL``. Thanks @MarcelRobeer.
+  * Add ``bg_BG`` color provider. Thanks @iradonov.
+  * Fix bug in ``pydecimal`` when returning max/min. Thanks @wilbertom.
+  * Fix `pydecimal` precision. Thanks @joidegn.
+  * Add datetime provider for ``bn_BD``. Thanks @jabertuhin.
+  * Change ``fi_FI`` Provinces to Regions. Thanks @LKajan.
+  * ``uk_UA`` address provider - fix streets and cities names, added regions. Thanks @o-vasyliev.
+  * Fix missing underscores in ``mac_platform_token``. Thanks @iamkeyur.
+  *  Remove period/fullstop from ``en_GB`` prefixes. Thanks @stephengruppetta.
+  * Add missing diacritics in ``fr_FR`` ``person`` provider. Thanks @laowantong.
+
+-------------------------------------------------------------------
+Mon Aug 30 11:18:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.12.1
+  * Add missing diacritics in ``fr_FR`` ``person`` provider. Thanks @laowantong.
+- from version 8.12.0
+  * Added non-geo numbers and services phones format for ``pt_BR``. Thanks @leogregianin.
+  * Add datetime formats in ``pt_BR``. Thanks @leogregianin.
+  * Add currency formats in ``pt_BR``. Thanks @leogregianin.
+
+-------------------------------------------------------------------
+Thu Aug 12 11:41:54 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.11.0
+  * Add ``nic_handle``. Thanks @pishchalnikov.
+- from version 8.10.3
+  * Remove potentially offensive surname in ``it_IT``. Thanks @lordgordon.
+- from version 8.10.2
+  * Return list instead of tuple in ``choices_distribution``. Thanks @svisser.
+- from version 8.10.1
+  * enable faker instances to be unpickled (#1480). Thanks @fcurella.
+- from version 8.10.0
+  * Add ``ar_AE`` (UAE) phone numbers. Thanks @sshishov.
+- from version 8.9.1
+  * Skip UnsupportedFeature's on the command line. Thanks @therefromhere.
+- from version 8.9.0
+  * Add RIPE ID. Thanks @pishchalnikov.
+- from version 8.8.2
+  * Avoid collision for ``date`` in ``datetime`` provider. Thanks @mattshin.
+- from version 8.8.1
+  * Fix ``left_digits`` ignored if ``min_value`` is given. Thanks @OJFord.q
+- from version 8.8.0
+  * Add ``iana_id``, IANA Registrar ID. Thanks @pishchalnikov.
+- from version 8.7.0
+  * Add tlds for ``th_TH`` internet provider. Thanks @bact.
+- from version 8.6.0
+  * Add ``aba()`` method to generate ABA routing numbers. Thanks @mstellon.
+- from version 8.5.1
+  * Fix deepcopy for Faker instances.
+- from version 8.5.0
+  * Add ``image`` provider. Thanks @n1ngu.
+- from version 8.4.0
+  * Add license plates and language names for ``he_IL`` locale. Thanks @AndreyRub.
+- from version 8.3.0
+  * Add colors for ``he_IL``. Thanks @AndreyRub.
+- from version 8.2.1
+  * Add few more names in ``en_IN`` person provider. Thanks @Felix-Raj.
+- from version 8.2.0
+  * Add ``city_name()`` and cities to ``support .city()`` for ``th_TH``. Thanks @bact.
+
+-------------------------------------------------------------------
+Sun May 16 12:06:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.1.4:
+  * Support distant past dates on Windows. Thanks @prescod.
+  * Fixes #1439: Cast Path to a string for pkgutil.iter_modules
+    (#1441). Thanks @fcurella.
+  * Fix company suffix typo for th_TH. Thanks @bact.
+  * Remove gmail.co.uk from en_GB email Provider. Thanks @bact.
+  * Extend pl_PL Pesel To support greater range of dates. Thanks
+    @IlfirinPL.
+  * Fix CLI only giving 10 possible outputs. Thanks @andrewdotn.
+  * Fix faker module loader to use strings rather than Paths.
+    Thanks @mgorny.
+  * Make sure pyfloat fails when asked to produce more digits than
+    the system supports. Thanks @rossjones.
+  * Ensure pytuple returns the correct number of items. Thanks
+    @rossjones.
+  * Fix ro_RO phone numbers generation. Thanks @feketemihai.
+  * set uk_UA address street titles to proper language. Thanks
+    @fessua.
+  * Add address provider for ro_RO. Thanks @feketemihai.
+  * Fix a problem with pyfloat where it can return sys.epsilon
+    when right_digits=N and positive=True. Thanks @tomage.
+  * Replace es_MX RFC name initials when they are forbidden words.
+    Thanks @briferz.
+  * Add address provider for de_CH. Thanks @andre-dasilva.
+  * user_agent: bump platform versions. Thanks @gsilvan.
+  * Add cs_CZ lorem - word list. Thanks @jakubno.
+
+-------------------------------------------------------------------
+Thu Feb 18 13:32:16 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 6.3.0:
+  * Add sk_SK automotive provider.
+  * Add current_country, current_country_code and administrative_unit
+  * Fix pyfloat returning zeros when positive=True.
+  * Add currency names for th_TH.
+  * Add new currency provider pricetag()
+  * Update th_TH Lorem text provider's punctuations, reduce size of word list
+  * Synchronize cs_CZ and sk_SK address provider and split postcodes
+  * Add address, bank, geo and person provider for en_IE
+  * Add person provider for ga_IE
+  * Add elements caching and other optimizations.
+  * Add use_weighting parameter for improved performance.
+  * Add da_DK address provider.
+
+-------------------------------------------------------------------
+Wed Jan  6 04:50:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.3.0:
+  * json and fixed_width now allow for strings to be fixed or pinned to a
+    static value by prepending @. Thanks @johnbrandborg.
+  * Add en_IN address + phone number provider. Thanks @pulkitgupta2k.
+  * Add en_IN person provider. Thanks @pulkitgupta2k.
+  * Remove invalid surname in nl_NL. Thanks @TheoSinnige.
+  * th_TH strftime: normalize output for unsupported directive on musl-based
+    Linux. Thanks @bact.
+  * Drop support for Python 3.5. Thanks @cclaus.
+  * Add support for Python 3.9. Thanks @cclaus.
+  * Add date_time and bank providers for th_TH. Thanks @bact.
+  * Correct spelling errors in city names for de_DE. Thanks @AnjaGer.
+  * Add name pairs to get matched representation in ja_JP person provider.
+    Thanks @yu-ichiro.
+  * Add SSN, company name, address, and license plate providers for th_TH.
+    Thanks @bact.
+  * Add postcode format, country names, person prefix weights, and update
+    phone number format for th_TH. Thanks @bact.
+- Update changelog filename in the specfile
+
+-------------------------------------------------------------------
+Fri Nov  6 04:35:07 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.14.2:
+  * Fix generation of names ending with spaces. Thanks @edomora97.
+  * Add relative frequencies for japanese last names. Thanks @TianyiShi2001.
+  * Add Swiss bank provider locales. Thanks @mondeja.
+  * Split first names into male and female on pt_PT provider. Thanks @gplgps.
+  * Geo provider added for tr_TR locale. Thanks @iamnotagentleman.
+  * Add sk_SK Job provider. Thanks @pipozzz.
+  * Add date_time provider for pt_PT. Thanks @gplgps.
+  * Add .unique() for unique values. Thanks @coiax.
+  * Add automotive provider for tr_TR. Thanks @molcay.
+  * Add province list and add 2 new district to ne_NP. Thanks @iamsauravsharma.
+  * Add Currency provider for sv_SE. Thanks @frangiz.
+  * Add pt_PT credit card provider. Thanks @rubenandre.
+  * Added Company Provider for tr_TR locale. Thanks @iamnotagentleman.
+  * Add job providers for tr_TR. Thanks @molcay.
+  * Implement color provider for sk_SK locale. Thanks @pipozzz.
+  * Fix hu_HU color provider inheritance. Thanks @n1ngu.
+  * Bigger zipcode ranges for VA, TX and MD in en_US. Thanks @Antetokounpo.
+  * Add new style pt_PT automotive plates. Thanks @gplgps.
+  * Remove duplicate jobs from the pt_PT provider (#1282). Thanks @gplgps.
+  * Use "Belarus" instead of "Vitryssland" for sv_SE. Thanks @Majsvaffla.
+  * Added bank provider for tr_TR locale. Thanks @iamnotagentleman.
+  * Improve VAT generation for IT provider. Thanks @LordGordonQ.
+  * Use non-zero number for first digit of Swedish postal codes. Thanks @Majsvaffla.
+  * Add es_ES autonomous communities (Spanish regions). Thanks @mondeja.
+  * Add JSON and Fixed Width argument group and parser support. Thanks @johnbrandborg.
+  * Update zh_CN ssn provider to support gender. Thanks @mapoor.
+  * Fix typo in de_DE job provider. Thanks @datadominik.
+  * or_IN Odia person's name added. Thanks @soumendrak.
+  * Remove datetime_safe shim subclass in favor of native Python datetime.datetime. Thanks @samcrang.
+
+-------------------------------------------------------------------
+Thu Aug 27 13:52:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 4.1.2
+  * Extend Person Provider to support non-binary suffixes and prefixes. Thank you @crd.
+  * Add ``safe_domain_name`` generator. Thanks @crd.
+  * Fix max_value/positive ``pyfloat`` interaction. Thanks @coiax.
+  * Update ``bban_format`` for ``fi_FI`` locale. Thanks @ALMP-SallaH.
+  * Fix ``person.ja_JP`` kana and roman characters. Thanks @yameholo.
+  * Add ``json`` and ``fixed_width`` generators. Thank you @johnbrandborg.
+  * Add SWIFT code provider methods: ``swift``, ``swift8`` and ``swift11``. Thanks @malefice.
+  * Add ``es_ES`` internet provider. Thanks @mondeja.
+  * Update ``bban_format`` for ``fr_FR`` locale. Thanks @r3gis3r.
+  * Update ``fr_FR`` ``job`` provider. Thanks @mondeja.
+  * Add ``es_ES`` ``barcode`` provider. Thanks @mondeja.
+  * Add parser argument support. Thanks @johnbrandborg.
+
+-------------------------------------------------------------------
+Thu Jul  9 00:28:33 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 4.1.1
+ * Add date_time providers for cs_CZ, de_AT, es_ES, it_IT, sk_SK, tr_TR.
+ * Add prefix support to BarcodeProvider.
+ * Fix company format for hy_AM provider.
+ * Add .uk email providers and TLDs for en_GB.
+ * Add language_name generator.
+ * Add pytimezone generator returning tzinfo objects.
+ * Add es_ES currency provider.
+
+-------------------------------------------------------------------
+Tue Jun  9 07:53:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.1.0:
+  * Add pytest plugin. Thanks @malefice.
+  * Fix phone numbers for es_ES. Thanks @pablofm.
+  * Fix uuid provider to return a uuid4 object when cast_to is set to None. Thanks @rodrigondec.
+  * Update names for es_ES person provider. Thanks @mondeja.
+  * Add provider for sk_SK birth_number. Thanks @eumiro.
+  * Add day_of_week and month_name for de_DE provider. Thanks @eumiro.
+
+-------------------------------------------------------------------
+Mon May  4 08:37:02 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
+
+- update to 4.0.3:
+  * Fixed MSISDN for pt_BR  to return only mobile numbers. Thanks @rodrigondec.
+  * Added Domain Generator Algorithm by date. Thanks @pishchalnikov.
+  * Fixed issue where pydict provider was not returning the correct number of elements. Thanks @mstellon.
+  * Added support for Indian Aadhaar numbers. Thanks @curiousElf.
+  * Added company_vat for it_IT. Thanks @alitaker.
+  * Improved autodocumentation of providers. Thanks @malefice.
+  * Added provider for es_ES license plates. Thanks @mondeja.
+  * Implemented __dir__ method to Faker proxy for better autocompletion. Thanks @douglasfarinelli.
+  * Uppercased HEX colors for all localized color providers. Thanks @mondeja.
+  * Added bank provider for es_ES locale. Thanks @mondeja.
+  * Added support for UK counties. Thanks @neilav.
+  * Added color provider for no_NO license plates. Thanks @bjorskog.
+  * Made value_types a keyword argument in python provider. Thanks @slafs.
+
+-------------------------------------------------------------------
+Mon Mar 16 10:32:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove obsolete py2 dependencies
+
+-------------------------------------------------------------------
+Sat Mar 14 12:22:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * Add more data for ``ko_KR`` address provider. Thanks @alstn2468.
+  * Improved ``pt_PT`` locale for address and bank. Thanks @mustakarhu.
+  * Add ``port_number`` method to internet provider. Thanks @pishchalnikov.
+  * Add color provider for ``fa_IR`` locale. Thanks @abtinmo.
+  * Add formatting options for ``pt_BR`` postcodes. Thanks @perssonsimon1 and @klaraesr.
+  * Add ``country_calling_code`` to ``phone_number`` provider. Thanks @perssonsimon1.
+  * Fix leap year issue. Thanks @mmcmahon.
+  * Add ``AutomotiveProvider`` for ``fr_FR`` locale. Thanks @clarissedescamps and @perssonsimon1.
+  * Fix ``cellphone_formats`` in ``pt_BR`` ``PhoneNumberProvider``. Thanks @rodrigondec.
+
+-------------------------------------------------------------------
+Fri Feb 28 21:23:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.0.1:
+  * Provider improvements for Russian locale:
+      * added city suffixes, regions and country list
+      * regions converted into states for now
+      * street address formats and states expanded
+      * lists for street titles changed
+      * Fixed errors in Automotive Provider
+      * Fixed errors in Address Provider
+      * Bank Provider expanded:
+          * BIC added)
+          * Added list of banks
+      * Improved Company Provider
+      * Credit Card and Person Provider improvements
+      * Currency Provider improvements
+      * Date-Time Provider improvements
+      * translit fix
+
+    Thanks @valestel.
+  * Add Birth Number to czech locale. Thanks @Jengah.
+  * Add persons provider for ``fr_QC``. Thanks @Lionesk.
+
+-------------------------------------------------------------------
+Fri Jan 17 09:00:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.1:
+  * Add provider methods zip and tar for generating zip and tar files. Thanks @malefice.
+  * Add en-CA postcode_in_province() method. Thanks @oeuftete.
+  * Update Address and Automotive provider for Russian locale. Thanks @valestel.
+  * Add provider methods for dsv files: csv, tsv, psv and generic dsv. Thanks @malefice.
+  * Remove parenthesis from city name in de_DE address provider. Thanks @jerr0328.
+  * Add NIP generator in pl_PL. Thanks @IlfirinPL.
+  * Fix Faker.random_number intermittent exceptions. Thanks @Jengah.
+
+-------------------------------------------------------------------
+Mon Jan 13 15:18:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.0.0
+  * Breaking change: Add support for multiple locale data generation.
+  * Add Iranian credit card.
+  * Improve color provider.
+  * Drop python 3.4.
+  * Fix master card number generator.
+  * Add provider for Finnish IBAN numbers.
+  * Split first names into male/female for person/de_AT.
+  * Optimize IPv4 address generation.
+  * Add support for token-based string generation.
+  * Use the provider's RNG instead of the random module in invalid_ssn.
+  * More small fixes.
+
+-------------------------------------------------------------------
+Tue Sep 24 08:58:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.2:
+  * Add nationalities for locale pt_PT. Thanks @tng10.
+  * Add ios() and android() to user_agent provider. Thanks @gsilvan.
+  * Update zh_CN provinces. Thanks @casen27.
+  * Fix typos, misspellings. Add locations, names, dates in hi_IN providers. Thanks @kathawala.
+  * Bump required version text-unidecode to 1.3. Thanks @moggers87.
+  * Bug fix for pyfloat going over max_value. Thanks @fgs-dbudwin.
+
+-------------------------------------------------------------------
+Wed Jul 24 09:39:48 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 2.0.0
+  * Breaking change: Only allow providers to use OrderedDict s, to
+    avoid any more PYTHONHASHSEED problems.
+  * Remove some validations from Faker and delegate it to an
+    external library, validators.
+  * Add an "Invalid SSN" generator to the en_US SSN Provider.
+  * Loosen version restrictions on freezegun and random2.
+  * Add date_of_birth and sex argument to pesel Provider (pl_PL).
+  * Fix datetime parsing on environments with negative offsets.
+
+-------------------------------------------------------------------
+Fri Jul 19 20:16:51 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update ipaddress requirements.
+
+-------------------------------------------------------------------
+Thu May 23 08:28:50 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.0.7
+  * Remove dead url from ``image_placeholder_services``. Thanks @Monstrofil.
+  * Fix missing ``first_names`` in Romanian person provider. Thanks @xlotlu.
+  * Add Catalan, adds doi/nie/nif/cif to Spain ssn. Thanks @kingbuzzman.
+  * Add ``texts`` to generate list of texts. Thanks @pishchalnikov.
+  * Add provider for ``pl_PL`` automotive and Polish pesel number. Thanks @adwojak.
+  * Corrected behavior for ``pyfloat``. Thanks @ariksu.
+  * Add missing commas to company/nl_NL provider. Thanks @francoisfreitag.
+  * Add bounds to ``pyint``. Thanks @francoisfreitag.
+  * Accept step argument in ``random_int()``. Thanks @francoisfreitag.
+
+-------------------------------------------------------------------
+Fri Apr 26 06:26:07 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.0.5
+  * Add min and max values for ``pyfloat`` and ``pydecimal``.
+    Thanks @Lrcezimbra.
+  * Add ``months`` and ``M`` to the syntax for ``start_date`` and
+    ``end_date``. Thanks @anneclairebrld.
+  * Add support for ``PyInstaller``. Thanks @arossert.
+  * Add Dutch company names. Thanks @MathynS.
+  * Fix some invalid French phone numbers starting with ``+33 8x``.
+    Thanks @stephane.
+  * Add Armenian locale ``hy_AM``. Thanks @hovikman.
+- deleted patches
+  - ipaddress.patch (upstreamed)
+
+-------------------------------------------------------------------
+Fri Mar 15 13:15:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim duplicated name from summary.
+
+-------------------------------------------------------------------
+Fri Mar 15 12:02:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch ipaddress.patch to fix its runtime detection
+
+-------------------------------------------------------------------
+Thu Mar 14 14:26:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.4:
+  * Various small fixes, see CHANGELOG.rst
+- Merge patch faker-32bit.patch
+
+-------------------------------------------------------------------
+Tue Mar 12 09:24:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix 32bit builds:
+  * faker-32bit.patch
+
+-------------------------------------------------------------------
+Sun Mar 10 10:15:00 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove pre-existing bytecode files in the sdist, which were
+  being included in the runtime package and causing lint warnings
+  on Leap 42.3 & SLE 12 SP4, and they were breaking tests on Leap 15.
+
+-------------------------------------------------------------------
+Thu Feb 14 14:44:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.2:
+  * Many changes to list see CHANGELOG.rst
+- Run tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:53 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Jan 17 04:08:11 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 0.8.10:
+  * Pass python_requires argument to setuptools. Thanks @jdufresne.
+  * Remove some words from en_US lorem ipsum provider. Thanks @Pomax.
+
+- changes from version 0.8.9:
+  * Remove support for Python 3.3. Thanks @jdufresne.
+  * Allow past dates within a second. Thanks @DanEEstar.
+  * Added phone number formatting to en_GB localisation to ensure no
+    genuine phone numbers are generated. Thanks @TheSapper.
+  * Added en_GB localisation for SSN (UK National Insurance
+    Number). Thanks @TheSapper.
+  * Added ro_RO person Provider. Thanks @vasilesmartup.
+  * Added domain argument to email provider. Thanks @lcd1232.
+
+-------------------------------------------------------------------
+Thu Dec 21 18:32:37 UTC 2017 - arun@gmx.de
+
+- update to version 0.8.8:
+  * made seed_instance return self for chainability.
+  * Add en_US locale for lorem. Thanks @shacker.
+  * fi_FI gender specific data added. Thanks @mikkhola.
+  * fi_FI address and job lists updated. Thanks @mikkhola.
+  * Add iban provider. Thanks @cdaller.
+
+-------------------------------------------------------------------
+Wed Nov 15 07:07:39 UTC 2017 - arun@gmx.de
+
+- update to version 0.8.7:
+  * Corrected some issues with the Hungarian (hu_HU) providers, such
+    as incorrectly capitalized company suffixes, street/road type
+    names and place names. Thanks @chrisvoncsefalvay.
+  * The Hungarian locale's providers.job.job provider now returns
+    Hungarian job names, taken from the Hungarian National Statistical
+    Office (KSH)'s 2008 survey nomenclature of employment (FEOR
+    '08). Thanks @chrisvoncsefalvay.
+  * Added he_IL locale. Thanks @bjesus.
+  * Fix possible infinite loop in random_sample_unique. Thanks
+    @153957.
+  * Add aliases to make pt_BR address provider compatible with
+    en_US. Thanks @diegoholiveira.
+  * Fix ResourceWarning in setup.py. Thanks @jdufresne.
+  * Update test requirements.
+
+-------------------------------------------------------------------
+Sun Oct 22 18:45:48 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * added requirement for text-unidecode
+
+- update to version 0.8.6:
+  * Replace unidecode dependency in favor of text-unidecode. Faker now
+    requires text-unidecode.
+
+- changes from version 0.8.5:
+  * Add ASCII emails. Thanks @barseghyanartur.
+  * Add id_ID Providers. Thanks Sidi Ahmad.
+  * Fix date_time.time_series() to ensure start and end bounds are
+    inclusive. Thanks @bijanvakili.
+  * Create a provider to Brazilian license plates. Thanks
+    @diegoholiveira.
+  * Use a proper international format for Ukrainian phone
+    numbers. Thanks @illia-v.
+  * Faker now requires Unidecode.
+
+- changes from version 0.8.4:
+  * Move email_validator to test_requires and unpinned the version
+    number.
+  * Date feature parity with datetime. Thanks @noirbizarre.
+  * Add MSISDN in the phone_number provider. Thanks @patrickporto.
+  * Add Arabic locales. Thanks @ahmedaljazzar.
+  * Fix datetime issue on Windows. Thanks @kungfu71186.
+
+-------------------------------------------------------------------
+Mon Sep 11 15:22:34 UTC 2017 - jengelh@inai.de
+
+- Rewrite description to focus on the package.
+
+-------------------------------------------------------------------
+Wed Sep  6 16:41:21 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

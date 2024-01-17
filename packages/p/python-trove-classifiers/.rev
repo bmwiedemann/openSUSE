@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3f03525faf957d90cc01cab5342ab9a3</srcmd5>
+    <version>2022.6.26</version>
+    <time>1657885942</time>
+    <user>dimstar_suse</user>
+    <comment>Please put in openSUSE:Factory:Staging:adi:34</comment>
+    <requestid>989174</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e3639c1a7eeaa0964cf0454ef248609a</srcmd5>
+    <version>2022.8.31</version>
+    <time>1665591751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009903</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae617de4248d34ce24c9c22b2444cef2</srcmd5>
+    <version>2022.10.19</version>
+    <time>1667306466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032488</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fd046ef760a30e21e98eb0e331b2b033</srcmd5>
+    <version>2022.12.1</version>
+    <time>1670588203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041631</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d5304ee596fca51324cfb5d0c549c032</srcmd5>
+    <version>2022.12.1</version>
+    <time>1682193496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081732</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b939aaa81d7c8d573d05c811fb950a9e</srcmd5>
+    <version>2022.12.1</version>
+    <time>1683111378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083970</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a5079b43c2eb47840f20da404f570d95</srcmd5>
+    <version>2023.5.2</version>
+    <time>1683630366</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.5.2:
+  * fix: incorrect specification of mypy section in pyproject.toml 
+  * Add Pydantic :: 2 classifier.
+  * Add JSON and JSON Schema classifiers
+  * Add classifier for Wagtail 5 
+  * Add `Environment :: WebAssembly` classifiers (#129)
+  * Add Django :: 4.2 classifier.
+  * Add Pycsou Framework trove-classifier</comment>
+    <requestid>1084869</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9702c8f86dc40084cb90fcbc077d4fc2</srcmd5>
+    <version>2023.10.18</version>
+    <time>1698780309</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121288</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5889b9533dd69ef2fea16199e9af7515</srcmd5>
+    <version>2023.11.29</version>
+    <time>1703800494</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.11.13:
+  * Update release.yml
+  * Added PySimpleGUI versions 4 and 5 as a Framework
+  * Add Odoo 17 trove classifier
+
+  * fix: incorrect specification of mypy section in pyproject.toml
+  * Add classifier for Wagtail 5
+  * Add Pycsou Framework trove-classifier
+- Update to v2022.12.1
+- Update to v2022.10.19
+- Update to version 2022.9.26</comment>
+    <requestid>1135340</requestid>
+  </revision>
+</revisionlist>

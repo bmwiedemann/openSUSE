@@ -1,0 +1,320 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>0a14f7b7dcc2bd5ca936091a09c85413</srcmd5>
+    <version>0.8.6</version>
+    <time>1168903282</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="61">
+    <srcmd5>faebaba1278bf022acbfda2b808dff2f</srcmd5>
+    <version>0.8.6</version>
+    <time>1176762990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dc3619dd3edb8f39ac95736f2d7e0789</srcmd5>
+    <version>0.8.8</version>
+    <time>1186151621</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="81">
+    <srcmd5>a685721987b5f50d3caff3ee570a1039</srcmd5>
+    <version>0.8.8</version>
+    <time>1209392356</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="137">
+    <srcmd5>a685721987b5f50d3caff3ee570a1039</srcmd5>
+    <version>0.8.8</version>
+    <time>1209392356</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="138">
+    <srcmd5>2c86ebab3e7794f61935f31f1b0cd24e</srcmd5>
+    <version>0.8.8</version>
+    <time>1245365831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="140">
+    <srcmd5>2c86ebab3e7794f61935f31f1b0cd24e</srcmd5>
+    <version>0.8.8</version>
+    <time>1245365831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="141">
+    <srcmd5>64ef8458f7104ccec4b7f046895a9955</srcmd5>
+    <version>0.8.8</version>
+    <time>1261826255</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libao based on submit request 27451 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="9" vrev="142">
+    <srcmd5>fdd9ffb70095062ea9749fefe3e1b2bc</srcmd5>
+    <version>0.8.8</version>
+    <time>1268924493</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="144">
+    <srcmd5>fdd9ffb70095062ea9749fefe3e1b2bc</srcmd5>
+    <version>0.8.8</version>
+    <time>1278667357</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="145">
+    <srcmd5>fdd9ffb70095062ea9749fefe3e1b2bc</srcmd5>
+    <version>0.8.8</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f7ba3a3b44fbfd2cc72ae04fe084e672</srcmd5>
+    <version>1.0.0</version>
+    <time>1291995521</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55567 from user elvigia
+</comment>
+    <requestid>55567</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d058e16d02f23c02b92ced56cc9daa0a</srcmd5>
+    <version>1.0.0</version>
+    <time>1291995528</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55567
+</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f500fe7cb6582d60c1c1bee6990d7e3b</srcmd5>
+    <version>1.0.0</version>
+    <time>1292241007</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55645 from user elvigia
+</comment>
+    <requestid>55645</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>962ec991dbb072f216894d7d688d0bdc</srcmd5>
+    <version>1.0.0</version>
+    <time>1292241019</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55645
+</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>ceb7ce4e7a8f14c86cd181e840504340</srcmd5>
+    <version>1.0.0</version>
+    <time>1292768800</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56144 from user prusnak
+</comment>
+    <requestid>56144</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>c6d4fa760ef68a06a419cc7ea1aacb18</srcmd5>
+    <version>1.0.0</version>
+    <time>1292768806</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56144
+</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>cf2ed16f612a265aaa4170867558de52</srcmd5>
+    <version>1.0.0</version>
+    <time>1297507825</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60619 from user plater
+</comment>
+    <requestid>60619</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>4da97ed0574916b20d14f236c4cff1f2</srcmd5>
+    <version>1.0.0</version>
+    <time>1297507832</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60619
+</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>4da97ed0574916b20d14f236c4cff1f2</srcmd5>
+    <version>1.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>51bb35849dec28e5b4e93b3b4fe3dae8</srcmd5>
+    <version>1.1.0</version>
+    <time>1300180625</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62893 from user plater
+</comment>
+    <requestid>62893</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2a7820aa8b8403e71a43aaeee4010bde</srcmd5>
+    <version>1.1.0</version>
+    <time>1300180635</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62893
+</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>4c95ac9c35a6f323ade24cad2217c10c</srcmd5>
+    <version>1.1.0</version>
+    <time>1304581349</time>
+    <user>saschpe</user>
+    <comment>Added 32bit compatibility libraries (forwarded request 69463 from TheBlackCat)</comment>
+    <requestid>69612</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>b54034f0e4c4a3dcbd9c136494ef5490</srcmd5>
+    <version>1.1.0</version>
+    <time>1304581360</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69612
+</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>a77a3423a444e6a2336057f30ff53f98</srcmd5>
+    <version>1.1.0</version>
+    <time>1304925796</time>
+    <user>saschpe</user>
+    <comment>- fix provides/obsoletes (forwarded request 69728 from dirkmueller)</comment>
+    <requestid>69789</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>d8657d995233bdfa57f956791bbf50dd</srcmd5>
+    <version>1.1.0</version>
+    <time>1304925805</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69789
+</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>ca512ff5dd0f69df864f40bfaf2c2b41</srcmd5>
+    <version>1.1.0</version>
+    <time>1305702596</time>
+    <user>saschpe</user>
+    <comment>- fix missing obsoletes for 32bit baselibs package (forwarded request 70315 from dirkmueller)</comment>
+    <requestid>70486</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>6cd9e6e9269d8e7b2cc3f75b173aa312</srcmd5>
+    <version>1.1.0</version>
+    <time>1305702606</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70486
+</comment>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>6cd9e6e9269d8e7b2cc3f75b173aa312</srcmd5>
+    <version>1.1.0</version>
+    <time>1319182070</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>c42eec674dd77c9f703a253bda0a3c41</srcmd5>
+    <version>to_be_filled_by_service</version>
+    <time>1323192153</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="31" vrev="11">
+    <srcmd5>d48c3f0ba3511d4a7e1c6b3f92cbc9ac</srcmd5>
+    <version>1.1.0</version>
+    <time>1325007362</time>
+    <user>coolo</user>
+    <comment>- Use O_CLOEXEC in shared library 
+- Remove aRts plugin, which is dead since 2004.
+- remove _service file (forwarded request 98211 from elvigia)</comment>
+    <requestid>98212</requestid>
+  </revision>
+  <revision rev="32" vrev="13">
+    <srcmd5>d48c3f0ba3511d4a7e1c6b3f92cbc9ac</srcmd5>
+    <version>1.1.0</version>
+    <time>1340183562</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="15">
+    <srcmd5>d48c3f0ba3511d4a7e1c6b3f92cbc9ac</srcmd5>
+    <version>1.1.0</version>
+    <time>1359109239</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="16">
+    <srcmd5>daca04ad0026976642f7b1794645eec2</srcmd5>
+    <version>1.1.0</version>
+    <time>1365927519</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 163646 from m_meister)</comment>
+    <requestid>163649</requestid>
+  </revision>
+  <revision rev="35" vrev="18">
+    <srcmd5>daca04ad0026976642f7b1794645eec2</srcmd5>
+    <version>1.1.0</version>
+    <time>1379662895</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>04a77dc1b3d05184e52ddcea7dd453ad</srcmd5>
+    <version>1.2.0</version>
+    <time>1400301801</time>
+    <user>coolo</user>
+    <comment>- Version bump to 1.2.0:
+  - Added missing ao_file_extension() (see Trac #1841)
+  - Fixed memory leak in ao_shutdown() (see Trac #1799)
+  - Updated manpage libao.conf.5 (see Trac #1822)
+  - Corrected doc/ao_play.html (see Trac #1808)
+  - Latency adjustments
+  - Implement PulseAudio client_name (see Trac #1924)
+  - Other ALSA, Pulse, Roar, sndio and MacOS driver improvements
+- Disable esd module, Gnome is not using that for ages and moved to
+  pulse anyway.
+- Drop patch lib64.dif and replace it by simple sed that works
+  more straight-forward.</comment>
+    <requestid>234206</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>04a77dc1b3d05184e52ddcea7dd453ad</srcmd5>
+    <version>1.2.0</version>
+    <time>1409301498</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>51fc0095891cd446be87959b9f2a5909</srcmd5>
+    <version>1.2.2+git20180114.d522165</version>
+    <time>1519557611</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf to sources
+- Switch to _service as there are no real upstream releases for
+  long time
+- Update to version 1.2.2+git20180114.d522165:
+  * Check memory allocations for success
+  * Enable pulse build in travis
+  * pulse: fix missing include warning for nanosleep
+  * travis: Test on both linux and osx.
+  * Bump version and release date on docs
+  * Add an update-doc-version target
+  * Revert &quot;Insure that the alsa plugin links against libao, since the plugin calls ao_is_big_endian from libao.&quot;
+  * Drop the old debian/ directory
+  * Replace autogen.sh with a simple wrapper about autoreconf.
+  * Enable AM_SILENT_RULES when it's available.</comment>
+    <requestid>578373</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>04921e0bc40671bb49c5a80c0d1cbb08</srcmd5>
+    <version>1.2.2+git20180114.d522165</version>
+    <time>1519683830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579965</requestid>
+  </revision>
+</revisionlist>

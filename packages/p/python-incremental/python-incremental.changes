@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:26:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:03 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Sun Oct 16 17:53:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.10.0:
+  * Incremental now supports type-checking with Mypy (#69)
+
+-------------------------------------------------------------------
+Thu Dec 23 09:30:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use %{python_module …} for suggests, as this would suggest
+  all python flavors. Rather rely on the python singlespec macros
+  to rewrite as needed.
+
+-------------------------------------------------------------------
+Sun May  9 16:52:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.3.0:
+  - The output of incremental is now compatible with Black (#56, #60)
+  - Incremental now properly supports PEP 440-compliant dev, rc, post suffixes (#62)
+  - Incremental now properly supports PEP 440-compliant post releases (#37)
+  - Incremental will no longer attempt to read git or svn repositories to see if
+    the project is running from a checkout. (#30, #31, #32)
+
+-------------------------------------------------------------------
+Wed Apr 29 13:35:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip two tests that fail due to changes in pytest framework
+  needs to be fixed by upstream
+
+-------------------------------------------------------------------
+Thu Jun  6 15:38:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to avoid build cycle
+
+-------------------------------------------------------------------
+Wed Jun  5 06:14:13 UTC 2019 - pgajdos@suse.com
+
+- run the testsuite
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:17 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Jul  4 04:27:59 UTC 2017 - tbechtold@suse.com
+
+- Initial packaging (version 17.5.0)

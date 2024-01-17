@@ -1,0 +1,385 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cbf74713ba26ae414b4271cdf0e62789</srcmd5>
+    <version>1.12.6</version>
+    <time>1479150709</time>
+    <user>dimstar_suse</user>
+    <comment>Changes to sr#419235:
+Fixed changes to fulfill openSUSEs guidelines regarding format of changes-files.
+
+Original description:
+A model Open Source game.</comment>
+    <requestid>419637</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>63b92d953c48305959fb5d9229abc4dc</srcmd5>
+    <version>1.12.6</version>
+    <time>1486218132</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454385</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>42268d778d4ecc5d880bab32ec50edfb</srcmd5>
+    <version>1.12.6</version>
+    <time>1505139477</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch link-boost.patch that adds missing boost-system linkage.
+- Use cmake macro
+- Removed duplicated filesystem structure from fs subpackage.
+- spec file cleanup.
+- Added missing license (EPL-1.0 in 3rd-party source)</comment>
+    <requestid>522265</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>133c253a1cf29cff8c7b2ccf4b0b0c9f</srcmd5>
+    <version>1.14.1</version>
+    <time>1527582455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606842</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6279c86fea204c4c1967bb75403d8659</srcmd5>
+    <version>1.14.2</version>
+    <time>1527934220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613085</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ca61e7e08ab27b5222e54ca0b239960a</srcmd5>
+    <version>1.14.3</version>
+    <time>1529402199</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616327</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9f5b040dacfc30a25213d3f9e8a8b91e</srcmd5>
+    <version>1.14.4</version>
+    <time>1533045797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626510</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c0f0250e5a706bb442189ca5235f734d</srcmd5>
+    <version>1.14.5</version>
+    <time>1537883065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637908</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0e1330cb5d112aca392fd0e7e2c05d11</srcmd5>
+    <version>1.14.5</version>
+    <time>1544189801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655724</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1e4db94ba53db10345fddfa8e23ab202</srcmd5>
+    <version>1.14.5</version>
+    <time>1548064825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666986</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8ce811b9fe6e3d0722b61e7625bdedbb</srcmd5>
+    <version>1.14.6</version>
+    <time>1551114005</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678888</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>129309507661a0200bce91f6b2a036e8</srcmd5>
+    <version>1.14.6</version>
+    <time>1554372427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691004</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>10bc08e87f67f18b88e614d62e86d898</srcmd5>
+    <version>1.15.1</version>
+    <time>1566551408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725442</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f7cd4215da854c3c8ac918679fa71ba7</srcmd5>
+    <version>1.15.3</version>
+    <time>1584531726</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>785992</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>141e241981ad2dbf6e0afd2d74cd9764</srcmd5>
+    <version>1.15.4</version>
+    <time>1599771251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833506</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>600bcdb04f427f5cd71936c926fa4846</srcmd5>
+    <version>1.15.5</version>
+    <time>1600879534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836244</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8ec1e1aa6d3228562c257c17c8be0f34</srcmd5>
+    <version>1.15.6</version>
+    <time>1604510688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.6:
+  See https://raw.githubusercontent.com/wesnoth/wesnoth/1.15.6/changelog.md</comment>
+    <requestid>845301</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6c3e5b445f585f8a7c00966aa3b47166</srcmd5>
+    <version>1.15.7</version>
+    <time>1606143003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850151</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c0dc149178a1ad05793b59700b4bff34</srcmd5>
+    <version>1.15.8</version>
+    <time>1609344785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859310</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a71877926935d42056ae507b6205cd9b</srcmd5>
+    <version>1.15.9</version>
+    <time>1611068612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864296</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>566d73226ecbfc53ef4c2ddbddde1712</srcmd5>
+    <version>1.15.10</version>
+    <time>1614684917</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876029</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b9797db89ef5f02c672dd04c959f3063</srcmd5>
+    <version>1.15.11</version>
+    <time>1616598873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880677</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>65757ed6fcff63f663573f207f06d535</srcmd5>
+    <version>1.15.13</version>
+    <time>1623363467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896623</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>23564ad4ea3a40ca244e7cec5b25c65f</srcmd5>
+    <version>1.15.14</version>
+    <time>1626788379</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15.14:
+  * The Battle for Wesnoth team is proud to announce that 1.15.14 is the first
+    beta for 1.16!
+  * Full changes:
+    https://github.com/wesnoth/wesnoth/blob/1.15.14/changelog.md
+- remove fix-widgets.patch (upstream) 
+</comment>
+    <requestid>907263</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>29123956cbee01d53a50b2006867d4ec</srcmd5>
+    <version>1.15.15</version>
+    <time>1627492788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908587</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1aa3a69e3e4cc4be072761425576d28f</srcmd5>
+    <version>1.15.16</version>
+    <time>1630525038</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.16:
+  * Long list of fixes, see https://github.com/wesnoth/wesnoth/blob/1.15.16/changelog.md</comment>
+    <requestid>915457</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6b468a0265bfef104c25f835c624c4f0</srcmd5>
+    <version>1.15.17</version>
+    <time>1631543076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.17:
+  Campaigns:
+  * World Conquest is re-enabled.
+  Translations:
+  * Updated translations: British English, Polish
+  Miscellaneous and Bug Fixes:
+  * Messenger MAI: fixed bug of own units sometimes blocking the path
+    to a waypoint for the messenger
+  * A bug that would corrupt WML sent to the multiplayer and add-ons
+    server was fixed.</comment>
+    <requestid>918667</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ffa7c1ed2a3f70962d0857f903f39964</srcmd5>
+    <version>1.15.18</version>
+    <time>1634141178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.18:
+  Campaigns:
+  * Delfador’s Memoirs S07: Clarified objectives (issue #5608)
+  * Northern Rebirth Give Eryssa’s side a consistent team color (issue #5375)
+  * The Rise of Wesnoth Remove time-runs-out lose condition for final scenario (issue #6109)
+  * Under the Burning Suns
+    + Avoid a few possibilities where the Dust Devil could speak (issue #4892)
+    + Avoid dehydration status icon persisting into the next scenario (issue #5687)
+    + Correct Traveler’s Ring description (issue #6043)
+  Editor:
+  * Avoid rare crash situation after editing scenarios (issue #5883)
+  Translations:
+  * Updated translations: British English, Bulgarian, Czech, French, Italian, Portuguese (Brazil), Russian, Spanish.
+  * gettext plural forms now have caret prefixes stripped as well (PR #6094).
+  User interface:
+  * Steam cloud file is no longer listed in the Load Game dialog.
+  * Redefine green text in dialogs and tool-tips so they are no longer ‘too dark’ with recent Pango versions (issue #4348)
+  * Gave the main menu's Language button a label again, now displaying the current language.
+  * Tweaked margins around the main menu's bottom row.
+  * Difficulty no longer displayed in the Load Game dialog when it is not relevant to a save file (issue #5321)
+  Miscellaneous and Bug Fixes:
+  * Correct unit display adjustments on certain tiles when at zoom level other than 100% (issue #5974)</comment>
+    <requestid>925039</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8c810d22b07b9a8eb64e4185530528de</srcmd5>
+    <version>1.16.0</version>
+    <time>1635717349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928416</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>bbafe3753e8f34d7c54cd0f64dfc88cb</srcmd5>
+    <version>1.16.1</version>
+    <time>1636577219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930659</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a0f790656c125248d646256a30ad012a</srcmd5>
+    <version>1.16.2</version>
+    <time>1645998183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957827</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3362d94046a0cad143bcd5439f39f7fc</srcmd5>
+    <version>1.17.1</version>
+    <time>1646948753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.1:
+  * UtBS S08 Kromph and Dust Devil able to trigger Eloh's event #6428
+  * DM S14 Smooth undead appearance and add dialogue #6429
+  * TRoW S22 Fixed the possibility of a missplaced dialogue when a bridge was broken #6430
+  * Fix typo: &quot;with heavy loses&quot; -&gt; &quot;with heavy losses&quot; #6448
+  * Saurian sprites cleanup #6413
+  * [world conquest] Fix for HP glitch when picking up items/artifacts #6454
+  * HttT S04, S05b &amp; S06 Role code enhancement #6436
+  * Add a &quot;special notes&quot; section to terrain help pages #6400
+  * Use a less complicated implementation for the MAKE_ENUM of CONTROLLER. #6423
+  * SoF Proofread Pass and Campaign Prose edits torch in #6177
+  * Temporarily re-introduce the SPECIAL_NOTES macro #6463
+  * update codeblock projectfiles #6465
+  * various small sprite updates 01 in #6459
+  * Add /clear chat command #6457
+  * Add max_torch to about.cfg torch in #6480
+  * [world conquest] [artifact/abilities] Make banner stack with leadership ability. #6467
+  * Fix deprecation of [advancefrom], mark as already removed #6482
+  * Refactor the backstab unit test #6473
+  * Make the adhoc add-on download check more detailed. #6464
+  * forwardport #6477 01 in #6487
+  * Update credits #6481
+  * Add-ons manager: handle the selected add-on changing in small-screen mode #6499
+  * Change [filter_weapon] to not depend on attack_type::weapon_specials #6501
+  * [units] [Orcish Nightblade] Update Icon for the kick attack #6516
+  * reintroduced usage of time_cfg[current_time] in replace (local) schedule funtions #6495
+  * Replace deprecated share_maps and share_view with share_vision #6498
+  * Fix comment handling if the value is empty (fixes #6514) in #6522
+  * SoF: fix thursagan's arcanister advancement breaking in some cases #6484
+  * Upgrade to lua 5.4.4 #6527</comment>
+    <requestid>960835</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>d0494be0b6f3a063b898283f4cd78769</srcmd5>
+    <version>1.17.1</version>
+    <time>1647199519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961439</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4492c3e7f414c14b66858899c6e048be</srcmd5>
+    <version>1.17.12</version>
+    <time>1675516544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063151</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a4bf407854d755a4b255a9bf6dfe64dc</srcmd5>
+    <version>1.17.14</version>
+    <time>1679667596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073732</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b58b04be762a58a1a447c1636c3b88b8</srcmd5>
+    <version>1.17.16</version>
+    <time>1683637331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085700</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>113bfceb1626e3c8f4090052c0d24849</srcmd5>
+    <version>1.17.17</version>
+    <time>1689614612</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098851</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f75e188efc9941507c0afec5e3b93c0b</srcmd5>
+    <version>1.17.22</version>
+    <time>1699301669</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.17.22
+  See
+  https://github.com/wesnoth/wesnoth/blob/master/changelog.md#version-11722
+  for changes since 1.17.17
+</comment>
+    <requestid>1123594</requestid>
+  </revision>
+</revisionlist>

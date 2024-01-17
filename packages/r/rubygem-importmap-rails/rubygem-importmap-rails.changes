@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Fri Nov  3 07:39:21 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.2.3:
+
+## What's Changed
+* Fix using this gem outside of a Rails application by @rafaelfranca
+
+## New Contributors
+* @rafaelfranca made their first contribution in https://github.com/rails/importmap-rails/pull/201
+
+**Full Changelog**: https://github.com/rails/importmap-rails/compare/v1.2.2...v1.2.3
+
+1.2.2:
+
+## What's Changed
+* Add single quote support in `importmap.rb` by @vietqhoang in https://github.com/rails/importmap-rails/pull/198
+* Remove prepended forward slash when mapping.path is empty by @jsntv200 in https://github.com/rails/importmap-rails/pull/192
+
+## New Contributors
+* @vietqhoang made their first contribution in https://github.com/rails/importmap-rails/pull/198
+* @Rotario made their first contribution in https://github.com/rails/importmap-rails/pull/95
+* @jsntv200 made their first contribution in https://github.com/rails/importmap-rails/pull/192
+
+**Full Changelog**: https://github.com/rails/importmap-rails/compare/v1.2.1...v1.2.2
+
+1.2.1:
+
+## What's Changed
+
+* Add a packages command to get package info by @dkniffin in https://github.com/rails/importmap-rails/pull/178
+* Respect `config.enable_reloading` by @ghiculescu in https://github.com/rails/importmap-rails/pull/172
+* Add support for passing a custom importmap to the tag helper by @elia in https://github.com/rails/importmap-rails/pull/187
+
+## New Contributors
+* @dkniffin made their first contribution in https://github.com/rails/importmap-rails/pull/178
+* @ghiculescu made their first contribution in https://github.com/rails/importmap-rails/pull/172
+
+**Full Changelog**: https://github.com/rails/importmap-rails/compare/v1.1.6...v1.2.1
+
+1.1.6:
+
+## What's Changed
+
+* Update [ES Module Shims to 1.7.2](https://github.com/guybedford/es-module-shims/releases/tag/1.7.2) by @dhh
+* Allow single quotes in config/importmaps.rb by @UweKubosch in https://github.com/rails/importmap-rails/pull/147
+
+**Full Changelog**: https://github.com/rails/importmap-rails/compare/v1.1.5...v1.1.6
+
+
+
+-------------------------------------------------------------------
+Thu Aug  4 13:15:28 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.1.5
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Mar  7 12:49:01 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- initial package (version 1.0.3)

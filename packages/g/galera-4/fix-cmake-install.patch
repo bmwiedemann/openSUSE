@@ -1,0 +1,86 @@
+Index: galera-4-26.4.11/CMakeLists.txt
+===================================================================
+--- galera-4-26.4.11.orig/CMakeLists.txt
++++ galera-4-26.4.11/CMakeLists.txt
+@@ -12,6 +12,7 @@ include(CheckIncludeFile)
+ include(CheckIncludeFileCXX)
+ include(CheckCXXCompilerFlag)
+ include(CheckLibraryExists)
++include(GNUInstallDirs)
+ 
+ include_directories(
+   ${PROJECT_SOURCE_DIR}
+@@ -43,6 +44,9 @@ option(GALERA_GCS_SM_DEBUG
+ option(GALERA_GU_DEBUG_MUTEX "Enable mutex debug instrumentation" OFF)
+ option(GALERA_GU_DBUG_ON "Enable sync point macros (ON for Debug builds)" OFF)
+ 
++option(GALERA_SYSTEMD_UNITDIR "The directory where the systemd units will be installed"
++       ${CMAKE_INSTALL_LIBDIR}/systemd/system)
++
+ #
+ # Set cmake policies before doing any checks.
+ #
+@@ -112,9 +116,9 @@ if (NOT ${CMAKE_SYSTEM_NAME} MATCHES ".*
+     ${PROJECT_SOURCE_DIR}/AUTHORS
+     ${PROJECT_SOURCE_DIR}/COPYING
+     ${PROJECT_SOURCE_DIR}/README
+-    DESTINATION doc)
++    DESTINATION ${CMAKE_INSTALL_DOCDIR})
+   install(FILES ${PROJECT_SOURCE_DIR}/asio/LICENSE_1_0.txt
+-    DESTINATION doc
++    DESTINATION ${CMAKE_INSTALL_DOCDIR}
+     RENAME LICENSE.asio)
+ endif()
+ 
+Index: galera-4-26.4.11/galera/src/CMakeLists.txt
+===================================================================
+--- galera-4-26.4.11.orig/galera/src/CMakeLists.txt
++++ galera-4-26.4.11/galera/src/CMakeLists.txt
+@@ -112,7 +112,7 @@ endif()
+ 
+ target_link_libraries(galera_smm galera ${GALERA_LINK_OPTIONS})
+ 
+-install(TARGETS galera_smm DESTINATION lib)
++install(TARGETS galera_smm DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ # The following checks are guaranteed to work only
+ # Linux platform, we skip them on others.
+Index: galera-4-26.4.11/garb/CMakeLists.txt
+===================================================================
+--- galera-4-26.4.11.orig/garb/CMakeLists.txt
++++ galera-4-26.4.11/garb/CMakeLists.txt
+@@ -31,14 +31,18 @@ target_compile_options(garbd
+ target_link_libraries(garbd gcs4garb gcomm gcache
+   ${Boost_PROGRAM_OPTIONS_LIBRARIES})
+ 
+-install(TARGETS garbd DESTINATION bin)
++install(TARGETS garbd DESTINATION ${CMAKE_INSTALL_BINDIR})
+ if (NOT ${CMAKE_SYSTEM_NAME} MATCHES ".*BSD")
+   install(FILES
+     ${CMAKE_CURRENT_SOURCE_DIR}/files/garb.cnf
++    DESTINATION ${CMAKE_INSTALL_SYSCONFDIR})
++  install(FILES
+     ${CMAKE_CURRENT_SOURCE_DIR}/files/garb.service
++    DESTINATION ${GALERA_SYSTEMD_UNITDIR})
++  install(PROGRAMS
+     ${CMAKE_CURRENT_SOURCE_DIR}/files/garb-systemd
+-    DESTINATION share)
++    DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
+   install(FILES
+     ${PROJECT_SOURCE_DIR}/man/garbd.8
+-    DESTINATION man/man8)
++    DESTINATION ${CMAKE_INSTALL_MANDIR}/man8)
+ endif()
+Index: galera-4-26.4.11/garb/files/garb.service
+===================================================================
+--- galera-4-26.4.11.orig/garb/files/garb.service
++++ galera-4-26.4.11/garb/files/garb.service
+@@ -13,7 +13,7 @@ Alias=garbd.service
+ [Service]
+ User=garb
+ Group=garb
+-ExecStart=/usr/bin/garb-systemd start
++ExecStart=/usr/libexec/garb-systemd start
+ 
+ # Use SIGINT because with the default SIGTERM
+ # garbd fails to reliably transition to 'destroyed' state

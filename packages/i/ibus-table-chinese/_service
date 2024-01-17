@@ -1,0 +1,11 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/mike-fabian/ibus-table-chinese</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">856019f65574f73b4a87e71a0e90b862ab2d180c</param>
+    <param name="versionrewrite-pattern">Release (\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
