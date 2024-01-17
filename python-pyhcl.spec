@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyhcl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyhcl
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        HCL configuration parser for python
 License:        MPL-2.0
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description

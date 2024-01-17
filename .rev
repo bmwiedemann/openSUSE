@@ -23,4 +23,15 @@
     <comment>- Switch from python3_only to python_alternative for hcltool.</comment>
     <requestid>864191</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d8a88ae7735dc4d5cb68b85edb553515</srcmd5>
+    <version>0.4.5</version>
+    <time>1702673302</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.5:
+  * Python 3.12 support
+
+- Switch from python3_only to python_alternative for hcltool.</comment>
+    <requestid>1133191</requestid>
+  </revision>
 </revisionlist>
