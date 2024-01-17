@@ -1,0 +1,6 @@
+<package name="perl-HTML-TreeBuilder-XPath" project="openSUSE:Factory">
+  <title>Add XPath support to HTML::TreeBuilder</title>
+  <description>This module adds typical XPath methods to HTML::TreeBuilder, to make it easy to query a document.</description>
+  <devel project="devel:languages:perl" package="perl-HTML-TreeBuilder-XPath"/>
+  <url>https://metacpan.org/release/HTML-TreeBuilder-XPath</url>
+</package>

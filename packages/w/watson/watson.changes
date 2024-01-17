@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Tue May 24 11:29:29 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.0:
+  Added:
+  * The restart command now accepts the --gap/--no-gap options.
+  Fixed:
+  * Watson is now compatible with Click 8+
+
+-------------------------------------------------------------------
+Fri May 14 08:47:52 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.1:
+  * Ability to edit the current frame (#418)
+
+-------------------------------------------------------------------
+Wed Apr  7 07:33:44 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.0:
+  Added:
+  * The log command output can now be filtered to exclude projects and tags via --ignore-project and --ignore-tag (#395)
+  * Python 3.8 support (#402)
+  * Python 3.9 support (#402)
+  * Support for the TZ environment variable to specify the local time zone (#391)
+  Changed:
+  * Upgrade to major arrow release 1.0.0 (#407)
+  Fixed:
+  * Zsh completion (#379)
+  Removed
+  * Python 2.7 support (#305).
+  * Python 3.5 support (#407).
+
+-------------------------------------------------------------------
+Sun Jul  5 08:19:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Upddate to 1.10.0:
+  Added:
+  * Log output order can now be controlled via the --reverse/--no-reverse
+  flag and the reverse_log configuration option (#369)
+  * Add --at flag to the start and restart commands (#364).
+  * Add --color and --no-color flags to force output to be colored or not
+  respectively (#350).
+  Changed:
+  * Require latest Arrow version 0.15.6 to support ISO week dates (#380)
+  Fixed:
+  * Make after-edit-check ensure that edited time stamps are not in the
+  future (#381)
+- Remove watson-arrow-version.patch:
+  This release depends on python-arrow 0.15.6 anyways
+
+-------------------------------------------------------------------
+Fri Jun  5 12:00:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add Requires on python3-click-didyoumean
+- Add watson-arrow-version.patch:
+  We have a newer python-arrow version which still works
+
+-------------------------------------------------------------------
+Thu May 28 10:37:56 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Use Supplements: packageand(%{name}:bash) instead of Suggests
+
+-------------------------------------------------------------------
+Thu May 28 07:40:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Install bash, fish and zsh completions
+
+-------------------------------------------------------------------
+Thu May 28 07:21:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.0:
+  Added:
+  * Improve Arrow 0.15.0 support after changes in arrow.get() behavior
+  (#296)
+  * Watson now suggests correct command if users make small typo (#318)
+  Changed:
+  * Always show total time at bottom of report (#356)
+  * Use the default system newline character for CSV output (#366).
+  Fixed:
+  * Stylize prompt to create new project or tag (#310).
+  * Aggregate calculates wrong time if used with --current (#293)
+  * The start command now correctly checks if project is empty (#322)
+  * Aggregate ignores frames that crosses aggregate boundary (#248)
+  * The report and aggregate commands with --json option now correctly
+    encode Arrow objects (#329)
+
+-------------------------------------------------------------------
+Wed May 27 20:00:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove rhetorics from description. Use %autosetup.
+
+-------------------------------------------------------------------
+Wed May 27 15:06:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Create watson 1.8.0 package for openSUSE

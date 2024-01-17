@@ -1,0 +1,268 @@
+-------------------------------------------------------------------
+Sun Jan 14 09:53:45 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.11.0
+  * Update copyright year
+  * Make default notes names in singular form
+  * Start numbering the notes with 1
+  * Rework Xnp.Window.insert_note()
+  * Use separate icon for logo
+  * Make menu icon themed
+  * Notes path change: handle case when both apps are running
+  * Rework Xnp.Application.update_notes_path()
+  * Don't ask when deleting a group with one blank note
+  * Fix notebook tab prelight
+  * Focus previous notes window when hiding a window
+  * Rework Xnp.Application.show_hide_notes()
+  * Avoid focus loss when removing a group
+  * Avoid focus loss for note windows
+  * Store "skip-taskbar-hint" property in Xnp.Application
+  * Rewrite links processing code
+  * Switch to previous page after deleting current note
+  * Merge delete_note with delete_current_note
+  * Use separate icon names for panel, tray and application
+  * Switch to rDNS icon naming scheme
+  * Fix segfault when pressing Ctrl+W on empty group
+  * Use default values for externally created groups
+  * Rework notes window switching processing
+  * Handle empty group window titles
+  * Add notes path setting
+  * Slightly change the design of settings dialog
+  * Fix Xfconf "notes-path" property handling
+  * Fix background color of title bar when renaming a group
+  * Reduce frequency of saving windows configuration
+  * Undo/redo: make cursor position behavior natural
+  * Fix the logic of "move-cursor" signal detection
+  * Remember windows focus order
+  * Rework access to Xnp.Application.window_list from Xnp.Window
+  * Escape window title for markup parser
+  * Save windows configuration before group reloading
+  * Make transition to new version seemless
+  * Update tags immediately after loading a note
+  * Slightly improve undo/redo processing
+  * Simplify code
+  * Allow note tabs to be moved between groups
+  * New method: Xnp.Window.get_tab_evbox()
+  * New method: Xnp.Window.get_note()
+  * New property: Xnp.Window.current_note
+  * Rework Xnp.Window.n_pages
+  * Save windows configuration when in system tray mode
+  * Rework application termination sequence
+  * Simplify save_windows_configuration()
+  * Prevent possible data loss when saving notes
+  * Fix mouse cursor behavior after clicking on a link
+  * Refuse to create/delete notes on file system errors
+  * Handle errors when renaming a note
+  * Report errors when creating/deleting notes
+  * Select note before deletion request
+  * Delete note with middle mouse click on tab
+  * Handle errors when creating a group
+  * Handle errors when deleting a group
+  * Handle errors when renaming a group
+  * Add error popup if note could not be saved
+  * Save notes only when changed
+  * Overwrite windows configuration only when changed
+  * Save current note on page switching or focus loss
+  * Don't overwrite notes on program start up
+  * Add titles to dialog windows
+  * Make title text color independent of gtk theme
+  * Make title bar arrows respond to mouse scroll events
+  * Replace mouse button numbers with constants
+  * Set default icon name for application
+  * Use pure gtk style when selecting "GTK+" color
+  * Separate color css to a separate Gtk.CssProvider
+  * Make titlebar customized
+  * Simplify access to notebook pages
+  * Rename note with double click on tab
+  * Cleanup
+  * Add icons to dialog windows
+  * Fix notebook tab names for new notes
+  * Don't change the title label sensitivity
+  * Add a note about possibility of css customization
+  * Allow resizing notes window from the top border
+  * Change accelerators hexa values to symbolic names
+  * Reset timeout_background when timer reaches end
+  * Make 'GTK+' background color work
+  * Bring back the choice of background color
+  * Add support for ~/.config/gtk-3.0/gtk.css
+  * Fix background color of disabled arrow
+  * Get rid of ~/.config/xfce4/notes/xfce4-notes.css
+  * Rename gtk-main.css -> gtk.css
+  * Add support for system wide css customizations
+  * Unite update_css() and update_style_context()
+  * Move data files to $(datadir)/xfce4/notes
+  * Derive hypertext link color from theme
+  * Redraw main menu icon on mouse enter/leave events
+  * Allow user to customize main menu icon
+  * Add support for custom css
+  * Replace 'Remove' with 'Quit' in application menu
+  * Don't overwrite xfce4-notes.css without a need
+  * Reload css instead of adding it over and over again
+  * Move resource files to xfce4/notes subdirectory
+  * Auto create config directory
+  * Replace Gdk.Color with Gdk.RGBA
+  * Don't use stock gtk elements to create menu
+  * Simplify menu creation
+  * Gtk.Image.from_stock() -> Gtk.Image.from_icon_name()
+  * Bring menu icons back
+  * Change authors order
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Mar 19 07:51:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.10.0
+  * Add copyright notice to configure.ac
+  * Change maintainer
+  * Minor fixes to README
+  * Fix compilation warnings
+  * Fix double g_object_unref() on removing last note
+  * Fix double call to gtk_main_quit()
+  * Change default background color
+  * build: Silence compiler warnings for generated C code
+  * Update `.gitignore`
+  * Switch tabs on mouse wheel with no accelerators pressed
+  * Add ability to switch tabs with mouse scroll wheel
+  * Unmask scroll wheel events for window title
+  * Fix background color for panel plugin button
+  * Fix up intltool leaving .intltool-merge-cache.lock file behind
+  * Update COPYING
+  * Make note text darker and easier to see
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
+Sat Nov 20 18:34:02 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unused pkgconfig(unique-1.0) BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jan 19 09:13:28 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.9.0
+
+- Remove unused variable
+  - Update deprecated autotools macros
+  - Do not mark text with ':' after '://' as a link 
+    (gxo#panel-plugins/xfce4-notes-plugin#52)
+  - Add support for links with scheme other than HTTP 
+    (gxo#panel-plugins/xfce4-notes-plugin#52)
+  - Fix missing-prototypes
+  - Create README.md. Update configure.ac.in
+  - Add basic gitlab CI
+  - Fix "Disabled labels on context menu are dark yellow"
+  - Fix a few deprecation warnings
+  - Fix make distcheck
+  - Fix blinking image on panel
+  - Remove commented code
+  - Update build system
+  - Fix make distcheck
+  - Remove deprecated gtk stock usage
+  - Fix build system
+  - Continue the gtk3 port
+  - Update URLs from goodies.x.o to docs.x.o (bxo#16171)
+  - po: update POTFILES.in
+  - gtk3: update css style with required changes from 3.20
+  - gtk3: drop libunique leftover flags and code
+  - gtk3: Drop support for GTK+-2.0
+  - bump post release
+  - Translation Updates 
+
+-------------------------------------------------------------------
+Thu Jan  7 01:32:18 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed dependency requirements to GTK3
+
+-------------------------------------------------------------------
+Fri Aug 16 12:21:22 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Wed Jul 17 07:59:53 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Added bcond for git master builds
+- Use %license macro for COPYING
+
+-------------------------------------------------------------------
+Mon Jun 29 06:46:36 UTC 2015 - gber@opensuse.org
+
+- update to version 1.8.1
+  - provide graphics tabs/ for gtk-2.0 theme
+  - fit panel button inside a single panel row (for deskbar mode)
+
+-------------------------------------------------------------------
+Sun Apr 19 20:34:55 UTC 2015 - gber@opensuse.org
+
+- update to version 1.8.0
+  - Dependencies: match Xfce 4.10 requirements
+  - Vala: Compilation fixes, and fixed build for GTK2 and GTK3 to
+    work together.
+  - GTK3: Added support for GTK3 and theming through GtkCssProvider,
+    it's still missing features from GTK2 code, and doesn't build
+    a panel plugin. Build with --enable-gtk3 from Git (dist do not
+    permit to rebuild from Vala.)
+  - Settings: New hidden notes-path setting tweakable through
+    xfconf.
+  - Monitor: Add monitoring of notes files to allow hot-edition and
+    refresh in notes windows.
+  - Other misc fixes.
+  - Updated translations
+- drop obsolete
+  xfce4-panel-plugin-notes-create-unversioned-lib.patch and
+  xfce4-panel-plugin-notes-automake-1.13.patch
+
+-------------------------------------------------------------------
+Wed Mar 13 11:17:09 CET 2013 - pgajdos@suse.cz
+
+- builds with automake 1.13
+  * automake-1.13.patch
+
+-------------------------------------------------------------------
+Sat Aug 18 19:09:47 UTC 2012 - gber@opensuse.org
+
+- correct the name of the desktop file in order to prevent
+  migration issues (bxo#6993)
+
+-------------------------------------------------------------------
+Sun Apr 29 09:55:41 UTC 2012 - gber@opensuse.org
+
+- add dependency on exo-tools since exo-open is used
+
+-------------------------------------------------------------------
+Fri Apr 20 08:58:51 UTC 2012 - gber@opensuse.org
+
+- added documentation files
+- added xfce4-panel-plugin-notes-create-unversioned-lib.patch in
+  order to build the plugin module as an unversioned lib, also
+  install it in the default panel plugin module path
+- removed xfce4-panel-plugin-notes-1.7.7-fix-desktop-file.patch
+  which is obsoleted by the above
+
+-------------------------------------------------------------------
+Tue Apr 17 22:34:40 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Tue Apr  3 21:46:54 UTC 2012 - gber@opensuse.org
+
+- dropped unnecessary
+  xfce4-panel-plugin-notes-1.7.7-add-missing-vapi-files.patch
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Wed Jul 27 13:22:03 UTC 2011 - gber@opensuse.org
+
+- removed unnecessary dependency on vala
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

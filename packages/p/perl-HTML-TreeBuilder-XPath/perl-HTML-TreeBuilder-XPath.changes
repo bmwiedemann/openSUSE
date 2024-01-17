@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Tue Sep 14 19:20:09 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- refresh spec file
+
+-------------------------------------------------------------------
+Thu Apr 16 21:36:24 UTC 2015 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-HTML-TreeBuilder-XPath/Changes
+
+  version 0.14
+  date: 2011-09-20
+  # bug fix
+  fix:   comment() did not work, as the text was in {text} not {_text}
+         report and initial patch by perlover
+  
+  version 0.13
+  date: 2011-06-19
+  # minor improvement
+  added: make the link _parent a weakref
+         sent by Graham Barr https://rt.cpan.org/Public/Bug/Display.html?id=68896
+
+-------------------------------------------------------------------
+Thu Apr 16 21:36:23 UTC 2015 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-HTML-TreeBuilder-XPath/Changes
+
+  version 0.14
+  date: 2011-09-20
+  # bug fix
+  fix:   comment() did not work, as the text was in {text} not {_text}
+         report and initial patch by perlover
+  
+  version 0.13
+  date: 2011-06-19
+  # minor improvement
+  added: make the link _parent a weakref
+         sent by Graham Barr https://rt.cpan.org/Public/Bug/Display.html?id=68896
+
+-------------------------------------------------------------------
+Fri Jan 14 11:36:13 UTC 2011 - coolo@novell.com
+
+- recreated by cpanspec 1.78.03 to filter out HTML::Element provides
+
+-------------------------------------------------------------------
+Sat Dec 25 00:30:29 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.12)
+

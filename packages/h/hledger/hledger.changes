@@ -1,0 +1,535 @@
+-------------------------------------------------------------------
+Mon Jan  1 01:43:57 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.32.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-1.32.2/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Dec 14 19:03:52 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.32.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec  7 21:25:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.32.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.32.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sat Dec  2 05:12:23 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.32.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.32/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sun Sep  3 08:16:28 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.31.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-1.31/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sat Jul  1 17:07:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.28 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:09:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Dec  1 17:16:30 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.28.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.28/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sun Sep 18 19:41:56 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.27.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.27.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Fri Sep  2 01:32:53 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.27.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.27/src/CHANGES.md
+
+-------------------------------------------------------------------
+Mon Jul 11 09:36:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.26.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.26.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sat Jun  4 22:57:28 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.26.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.26/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sat Mar  5 06:11:20 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.25.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.25/src/CHANGES.md
+
+-------------------------------------------------------------------
+Fri Dec 10 22:55:31 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.24.99.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.24.99/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Oct  7 07:57:02 UTC 2021 - psimons@suse.com
+
+- Update hledger to version 1.23 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Sep 22 08:51:19 UTC 2021 - psimons@suse.com
+
+- Update hledger to version 1.23.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.23/src/CHANGES.md
+
+-------------------------------------------------------------------
+Tue Sep  7 18:44:16 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- relax dependency constraints on base-compat-batteries 
+
+-------------------------------------------------------------------
+Sun Aug  8 22:05:08 UTC 2021 - psimons@suse.com
+
+- Update hledger to version 1.22.2.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.22.2/src/CHANGES.md
+
+-------------------------------------------------------------------
+Wed Aug  4 08:17:38 UTC 2021 - psimons@suse.com
+
+- Update hledger to version 1.22.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.22.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Mon Jul 19 07:06:12 UTC 2021 - psimons@suse.com
+
+- Update hledger to version 1.22 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Jul 10 13:42:07 UTC 2021 - psimons@suse.com
+
+- Update hledger to version 1.22.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-1.22/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Mar 11 09:24:29 UTC 2021 - psimons@suse.com
+
+- Update hledger to version 1.21.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-1.21/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sun Jan 31 13:49:09 UTC 2021 - psimons@suse.com
+
+- Update hledger to version 1.20.4.
+  # 1.20.4 2021-01-29
+
+  - aregister: ignore a depth limit, as in 1.19 (#1468).
+    In 1.20-1.20.3, aregister had stopped showing transactions in subaccounts
+    below a depth limit. Now it properly shows all subaccount transactions,
+    ensuring that the register's final total matches a balance report with
+    similar arguments.
+
+-------------------------------------------------------------------
+Fri Jan 15 08:54:56 UTC 2021 - psimons@suse.com
+
+- Update hledger to version 1.20.3.
+  # 1.20.3 2021-01-14
+
+  - When searching for price chains during valuation/currency conversion:
+
+    - It no longer hangs when there are price loops. (And in case of
+      future bugs, it will give up rather than search forever.) (#1439)
+    - It now really finds the shortest path. (#1443)
+    - Useful progress info is displayed with `--debug=1` or `--debug=2`.
+
+  - balance, incomestatement: End-valued multi-period balance change
+    reports (eg: `bal -MV`) have been reverted to show value-of-change,
+    as in previous hledger versions, rather than change-of-value, for
+    now. (#1353, #1428) (Stephen Morgan)
+
+  - balance: End-valued balance change reports now choose the same final
+    valuation date and show consistent results whether single-period or
+    multi-period. (#1424) (Stephen Morgan)
+
+  - balance: the `--drop` option now works with `csv` and `html` output.
+    (#1456) (Ilya Konovalov)
+
+  - check: the `commodities` check, and `-s`/`--strict` mode, now ignore
+    the "AUTO" internal pseudo-commodity. (#1419) (Ilya Konovalov)
+
+  - register: Then-valued multi-period register reports
+    (eg: `register -M --value=then`) now calculate the correct values.
+    (#1449) (Stephen Morgan)
+
+  - roi: now shows a better error message when required prices are
+    missing. (#1446) (Dmitry Astapov)
+
+  - The no-symbol commodity's input number format can now be set by a
+    `commodity` directive, like other commodities. (#1461)
+
+-------------------------------------------------------------------
+Tue Dec 29 21:16:52 UTC 2020 - psimons@suse.com
+
+- Update hledger to version 1.20.2.
+  # 1.20.2 2020-12-28
+
+  - help: Fix loss of capitalisation in part of the hledger-ui manual.
+
+  - Fix the info manuals' node structure.
+
+  - Drop unused parsec dependency.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Wed Dec 16 17:26:23 UTC 2020 - psimons@suse.com
+
+- Update hledger to version 1.20.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-1.20.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sun Dec  6 13:36:27 UTC 2020 - psimons@suse.com
+
+- Update hledger to version 1.20.
+  # 1.20 2020-12-05
+
+  ## general
+
+  - strict mode: with -s/--strict, hledger requires that
+    all accounts and commodities are declared with directives.
+
+  - Reverted a stripAnsi change in 1.19.1 that caused a 3x slowdown of amount rendering
+    in terminal reports. (#1350)
+
+  - Amount and table rendering has been improved, so that stripAnsi is no longer needed.
+    This speeds up amount rendering in the terminal, speeding up some reports by 10% or more since 1.19.
+    (Stephen Morgan)
+
+  - Amount eliding no longer displays corrupted ANSI codes (#1352, Stephen Morgan)
+
+  - Eliding of multicommodity amounts now makes better use of available space,
+    avoiding unnecessary eliding (showing as many amounts as possible within
+    32 characters). (Stephen Morgan)
+
+  - Command line help for --no-elide now mentions that it also disables eliding of
+    multicommodity amounts.
+
+  - Query terms containing quotes (eg to match account names containing quotes)
+    now work properly. (#1368, Stephen Morgan)
+
+  - cli, journal: Date range parsing is more robust, fixing failing/incorrect cases such as: (Stephen Morgan)
+
+    - a hyphenated range with just years (`2017-2018`)
+    - a hyphenated date with no day in a hyphenated range (`2017-07-2018`)
+    - a dotted date with no day in a dotted range (`2017.07..2018.02`)
+
+  - Debug output is prettier (eg, in colour), using pretty-simple instead of pretty-show.
+
+  - csv, timedot, timeclock files now respect command line --alias options,
+    like journal files.  (#859)
+
+  - Market price lookup for value reports is now more robust, fixing several bugs
+    (and debug output is more informative).
+    There has been a slight change in functionality: when chaining prices,
+    we now prefer chains of all "forward" prices, even if longer, with chains
+    involving reverse prices being the last resort.
+    (#1402)
+
+  ## commands
+
+  - add: number style (eg thousands separators) no longer disturbs the value
+    that is offered as default. (#1378)
+
+  - bal: --invert now affects -S/--sort-amount, reversing the order. (#1283, #1379) (Stephen Morgan)
+
+  - bal: --budget reports no longer insert an extra space inside the brackets. (Stephen Morgan)
+
+  - bal, is, bs --change:
+    Valued multiperiod balance change reports now show changes of value,
+    rather than the value of changes. (#1353, Stephen Morgan)
+
+  - bal: improve budget, MultiBalanceReport debug output
+    Comply with debug levels policy, clarify some labels.
+
+  - bal: support CSV output for --budget reports (#1155)
+
+  - check: A new command which consolidating the various check-* commands.
+    It runs the default, strict, or specified checks and produces
+    no output and a zero exit code if all is well.
+
+  - check-dates: this command is deprecated and will be removed
+    in next release; use "hledger check ordereddates" instead.
+
+  - check-dupes: this command is deprecated and will be removed
+    in next release; use "hledger check uniqueleafnames" instead.
+
+  - import: The journal's commodity styles (declared or inferred) are now applied
+    to imported amounts, overriding their original number format.
+
+  - roi: TWR now handles same-day pnl changes and cashflows,
+    calculation failure messages have been improved, and
+    the documentation includes more detail and examples.
+    (#1398) (Dmitry Astapov)
+
+  ## journal format
+
+  - The journal's commodity styles are now applied to forecasted transactions. (#1371)
+
+  - journal, csv: commodity style is now inferred from the first amount, as documented,
+    not the last. This was "working wrongly" since hledger 1.12..
+
+  - A zero market price no longer causes "Ratio has zero denominator" error
+    in valued reports. (#1373)
+
+  ## csv format
+
+  - The new `decimal-mark` rule allows reliable number parsing
+    when CSV numbers contain digit group marks (eg thousands separators).
+
+  - The CSV reader's verbose "assignment" debug output is now at level 9.
+
+-------------------------------------------------------------------
+Tue Sep  8 02:00:34 UTC 2020 - psimons@suse.com
+
+- Update hledger to version 1.19.1.
+  # 1.19.1 2020-09-07
+
+  - Fix alignment of coloured numbers (#1345, #1349, Stephen Morgan)
+
+  - Fix a regression in account type autodetection for accounts with
+    capitalised names. (#1341)
+
+  - Allow megaparsec 9
+
+-------------------------------------------------------------------
+Thu Sep  3 02:00:39 UTC 2020 - psimons@suse.com
+
+- Update hledger to version 1.19.
+  # 1.19 2020-09-01
+
+  ## general
+
+  - When parsing dates, the year is now required to have at least four
+    digits. So eg we no longer accept `200/1/1` as a valid date, it
+    would need to be written `0200/1/1`. This was done for.. reasons,
+    and is experimental; let us know if it causes you trouble.
+
+  - The --color/--colour=WHEN command line option, support for the
+    NO_COLOR environment variable, and smarter autodetection of colour
+    terminals have been added (#1296)
+
+  - Command line options taking a numeric argument are now validated
+    more carefully, preventing issues with unexpected negatives or Int
+    overflow. (Stephen Morgan)
+
+  - In queries, you can now specify a quarter like `2020q1` or `q4`
+    (the q is case-insensitive). (#1247, Henning Thieleman, Stephen Morgan)
+
+  - In report intervals, `fortnightly` has been added as a synonym for
+    `biweekly`. (Stephen Morgan)
+
+  - -t and -l command line flags have been added as short forms of
+    --tree and --flat (#1286)
+
+  - All reports displaying accounts now choose flat mode by default
+    (Stephen Morgan)
+
+  - Reports now show at most 2 commodities of multicommodity amounts,
+    unless the --no-elide flag is used. This helps keep them readable by
+    default, since multicolumn, multicommodity balance reports otherwise
+    tend to become very wide, especially in tree mode.
+
+  - Numbers with more than 255 decimal places, which we do not support,
+    now give an error instead of silently misparsing. (#1326)
+
+  - Digit groups are now limited to at most 255 digits each. (#1326)
+
+  - Account aliases (on command line or in journal) containing a bad
+    regular expression now give a more detailed error message.
+
+  - A tab character could get parsed as part of a commodity symbol, with
+    confusing results. This no longer happens. (#1301, Dmitry Astapov)
+
+  - Debug output is now organised better by debug level.
+    The levels are:
+
+    0. normal command output only (no warnings)
+    1. useful warnings & most common troubleshooting info (valuation, eg)
+    2. common troubleshooting info, more detail
+    3. report options selection
+    4. report generation
+    5. report generation, more detail
+    6. input file reading
+    7. input file reading, more detail
+    8. command line parsing
+    9. any other rarely needed or more in-depth info
+
+  - Added a missing lower bound for aeson, making cabal installs more
+    reliable. (#1268)
+
+  - lib: parseAmountQueryTerm: allow whitespace around arg parts (#1312)
+    Whitespace around the operator, sign, or number is now tolerated.
+
+  ## commands
+
+  - account,bal,bs,cf,is: --drop now also works in tree mode (Stephen Morgan)
+
+  - add: fix an error in the command line help (arguments are inputs,
+    not a query)
+
+  - aregister: a new command showing a transaction-oriented account
+    register, like hledger-ui, hledger-web, or your bank statement.
+    Each line represents a whole transaction in one account, unlike
+    the register command which shows individual postings possibly from
+    multiple accounts. You might prefer aregister when reconciling
+    real-world asset/liability accounts, and register when reviewing
+    detailed revenues/expenses. (#1294)
+
+  - bal,bs,cf,is: boring parents are now elided by default in tabular
+    balance reports too, like single-column reports. (Stephen Morgan)
+
+  - bal,bs,cf,is: monthly column headings are no longer elided to just
+    the short month name, if multiple years are being displayed.
+
+  - bal --budget's column headings are now end dates rather than
+    periods when appropriate (ie with --cumulative or --historical).
+
+  - bs,cf,is: -%/--no-total no longer forces --no-total (Stephen Morgan)
+
+  - bs,cf,is: --no-total now hides subtotals as well as the grand total
+    (Stephen Morgan)
+
+  - codes: a new command for listing transaction codes
+
+  - print: a new `sql` output format has been added (Dmitry Astapov)
+
+  - roi: errors are now shown without a call stack
+
+  - tags: add --parsed flag, hide empties without --empty. With the
+    --parsed flag, all tags or values are shown in the order they are
+    parsed from the input data, including duplicates. With -E/--empty,
+    any blank/empty values will also be shown, otherwise they are
+    omitted.
+
+  ## journal format
+
+  - account directives can specify a new `Cash` account type. This is a
+    subtype of `Asset`, denoting accounts which should be displayed
+    in `cashflow` reports.
+
+  - The built-in regular expressions for choosing default account types
+    have been tweaked, and documentation for account types has been
+    improved.
+
+  ## csv format
+
+  - Inferring the appropriate default field separator based on file
+    extension (, for .csv, ; for .ssv, \t for .tsv) now works as
+    documented.
+
+  - Conditional rule patterns can now be grouped with the `&` (AND) operator,
+    allowing more powerful matching. (Michael Sanders)
+
+  - Invalid csv rules files now give clearer parse error messages.
+    (Dmitry Astapov)
+
+  - "If tables", a compact bulk format for conditional rules, have been
+    added. (Dmitry Astapov)
+
+  - csv conversion with a lot of conditional rules is now faster (Dmitry Astapov)
+
+-------------------------------------------------------------------
+Mon Aug 31 09:33:49 UTC 2020 - psimons@suse.com
+
+- Update hledger to version 1.18.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Aug 19 07:37:40 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:51 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Mon Jun 22 02:00:26 UTC 2020 - psimons@suse.com
+
+- Update hledger to version 1.18.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-1.18.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:17 UTC 2020 - psimons@suse.com
+
+- Add hledger at version 1.18.
+

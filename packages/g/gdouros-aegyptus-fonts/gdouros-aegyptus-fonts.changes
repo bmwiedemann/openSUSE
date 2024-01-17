@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Mon Apr 10 16:58:20 UTC 2017 - aloisio@gmx.com
+
+- Update to version 6.17
+- Switched tarball to original (versioned) archive
+- Added README-SUSE as separate source
+- Updated homepage URL
+
+-------------------------------------------------------------------
+Sun Jan 17 13:58:49 UTC 2016 - aloisio@gmx.com
+
+- Update to version 6.00
+  * new pdf documentation
+  * refreshed README-SUSE from the website 
+
+-------------------------------------------------------------------
+Sun Jun 21 15:13:51 UTC 2015 - aloisio@gmx.com
+
+- update to version 5.03
+  * added hinted variant
+  * added Nilus (version 6.00)
+- replaced licence file with a note from the website and
+  added official pdf description
+
+-------------------------------------------------------------------
+Tue Jan 21 13:53:15 UTC 2014 - pgajdos@suse.com
+
+- add Aegyptus.pdf
+
+-------------------------------------------------------------------
+Tue Jan 21 13:38:45 UTC 2014 - pgajdos@suse.com
+
+- updated to 5.01
+  * added Aegyptus bold typeface
+  * otherwise no upstream changelog
+  * leaving *.txt files from 3.13 version as upstream doesn't 
+    provide it anymore
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:59 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr 18 10:19:16 UTC 2012 - pgajdos@suse.com
+
+- SUSE-Permissive license
+
+-------------------------------------------------------------------
+Fri Dec 16 13:35:47 UTC 2011 - toms@suse.de
+
+- Renamed aegyptus-fonts -> gdouros-aegyptus-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Fri Jul  1 16:59:18 COT 2011 - bachinchi@gmail.com
+
+- Initial package for Aegyptus Fonts

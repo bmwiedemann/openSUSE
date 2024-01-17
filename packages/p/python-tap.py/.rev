@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>049db4c8fc6d788627131a6712d94f93</srcmd5>
+    <version>2.5</version>
+    <time>1553263821</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v2.5
+</comment>
+    <requestid>687394</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>daef9a609ef78ff423746c172868fba0</srcmd5>
+    <version>2.6.1</version>
+    <time>1569234755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.1:
+  * Fix to work with new releases of more-itertools</comment>
+    <requestid>731649</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>930c75409ecbeeb82a18bd2867dc29d5</srcmd5>
+    <version>3.0</version>
+    <time>1584643757</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>786183</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>24aadfe0c7c02ae3c9aa9a22157760a3</srcmd5>
+    <version>3.0</version>
+    <time>1589993073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807162</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5043f09d29e9179b5d1a819c8b1bcfd1</srcmd5>
+    <version>3.1</version>
+    <time>1650466507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970766</requestid>
+  </revision>
+</revisionlist>

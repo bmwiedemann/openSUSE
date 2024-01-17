@@ -1,0 +1,5 @@
+<package name="python-tap.py" project="openSUSE:Factory">
+  <title></title>
+  <description>Test Anything Protocol (TAP) tools</description>
+  <devel project="devel:languages:python" package="python-tap.py"/>
+</package>

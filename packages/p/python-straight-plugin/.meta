@@ -1,0 +1,15 @@
+<package name="python-straight-plugin" project="openSUSE:Factory">
+  <title>python-straight-plugin</title>
+  <description>straight.plugin is a Python plugin loader inspired by twisted.plugin with two
+important distinctions:
+
+ - Fewer dependencies
+ - Python 3 compatible
+
+The system is used to allow multiple Python packages to provide plugins within
+a namespace package, where other packages will locate and utilize. The plugins
+themselves are modules in a namespace package where the namespace identifies
+the plugins in it for some particular purpose or intent.
+</description>
+  <devel project="devel:languages:python" package="python-straight-plugin"/>
+</package>

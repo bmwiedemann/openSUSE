@@ -1,0 +1,9 @@
+<package name="python-recordclass" project="openSUSE:Factory">
+  <title>Library implementing a mutable variant of namedtuple</title>
+  <description>Mutable variant of namedtuple -- recordclass, which support assignments, and
+other memory saving variants.
+
+</description>
+  <devel project="devel:languages:python" package="python-recordclass"/>
+  <url>https://bitbucket.org/intellimath/recordclass</url>
+</package>

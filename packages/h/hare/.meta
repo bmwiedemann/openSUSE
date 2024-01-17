@@ -1,0 +1,6 @@
+<package name="hare" project="openSUSE:Factory">
+  <title>Hare Programming Language</title>
+  <description>The Hare Programming Language builder and stdlib components.</description>
+  <devel project="devel:tools:compiler" package="hare"/>
+  <url>https://harelang.org</url>
+</package>

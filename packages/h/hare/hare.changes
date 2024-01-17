@@ -1,0 +1,444 @@
+-------------------------------------------------------------------
+Thu Dec 28 12:11:52 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1703745713.f01c8eed:
+  * OpenBSD: rt fix munmap system call
+  * OpenBSD: fix CI
+
+-------------------------------------------------------------------
+Sat Dec 23 02:20:15 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1703237889.6c1a836c:
+  * correct inotify_event to use [*]u8
+  * make rt/+{arch}/restore.s platform-specific to +linux
+  * rt/: prepare for IBT support
+  * strings: Further simplify sub
+  * os: handle errors on file system iteration
+  * strconv::stof32 fix doc
+- Update specfile
+  * Always be specific with harec versions. Some hare versions won't
+    work if harec version is not specified.
+
+-------------------------------------------------------------------
+Sat Dec 16 01:10:17 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add filter to rpmlint
+  * filelist-forbidden-fhs23
+
+-------------------------------------------------------------------
+Sat Dec 16 01:03:47 UTC 2023 - Soc Virnyl Estela <contact@uncomfyhalomacro.pl>
+
+- Move SRCDIR and HAREPATHs to `/usr/src` instead from `/usr/lib`
+  or `/usr/lib64`. Respect defaults if possible.
+- Update to version 1702417101.ce67adb5:
+  * +libc: Avoid overriding the default linker script on other platforms
+  * FreeBSD: Fix build with +libc
+  * os fs.ha: s/errors::errno/fs_to_errno/
+  * OpenBSD: implement os::mkfifo and os::mkfile
+  * math: Accept types::signed instead of integer in absi
+  * cmd/{hare,haredoc}: remove unused imports
+  * cmd/{hare,haredoc}: Don't allocate tags
+  * haretype: use system architecture
+  * os: add arch type and functions
+  * cmd/haredoc: replace split with rtokenize
+  * io: improve seek and whence docs
+  * test: display special msg when no tests are run
+  * hare deps: print more intuitive msg when no deps
+  * os+linux: add mkfile
+  * os+linux: s/Unix/Unix-like/
+  * haredoc: submodules newline fixes
+  * hare build: fix order of flags
+  * getopt: improve docs
+  * all: always use tabs for indentation
+  * hare::parse::doc: add docs
+  * haredoc: error out when more than one arg supplied
+  * docs: rename hare-doc(5) to haredoc(5)
+  * os+openbsd: remove extra License: header
+  * rt+linux: fix some types
+  * hare::parse: improve assign expr error message
+  * strings: use type assertion in iter tests
+  * strings: test contains with no variadic arguments
+  * strings: test join with only one variadic argument
+  * strings: test concat with only one argument
+  * hare::ast: remove inaccurate comment
+  * path: mention fs::resolve in README
+  * docs/rfc-template: wrap at 72 columns
+  * memio+test: use defer for closing streams
+  * cmd/*: fix memory leaks
+  * ascii: add strlower_buf and strupper_buf
+  * hare::parse: disallow mixing @init, @fini, and @test
+  * hare::ast: s/constant/literal/g
+  * hare build: only overwrite executable files
+  * hare::parse+test: add labelled compound test
+  * hare::*: support for/switch/match labels
+  * all: update labelled loop syntax
+  * cmd::hare add comments and cleanup
+
+-------------------------------------------------------------------
+Fri Dec  8 14:27:46 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add README-suse-maint.md
+
+-------------------------------------------------------------------
+Fri Dec  8 13:25:24 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Enable checks.
+
+-------------------------------------------------------------------
+Fri Dec 08 13:20:23 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1701969360.dbd2d7a5:
+  * remove the fs::flag::TRUNC argument from os::create in cmd::hare
+  * crypto::aes check for AVX before using the native interface
+  * cmd::hare::build: separate tmpfile from lockfile
+  * FreeBSD: truncate files on creation by default
+  * scripts/moddirs: ignore configs/
+  * OpenBSD: add rt::unveil()
+  * OpenBSD: add rt::pledge()
+  * OpenBSD: rt:: sycalls introduce pathbuf1
+  * OpenBSD: truncate files on creation by default
+  * OpenBSD: arm64 is called aarch64 in hare
+  * OpenBSD: rt:: fix readlinkat, renameat
+  * strconv: Remove base restrictions from doc comment of integertosb
+  * OpenBSD: os::cpucount: Return the number of online CPUs
+
+-------------------------------------------------------------------
+Sat Dec 02 10:19:02 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update specfile
+- Update to version 1701471445.901444ae:
+  * scripts/genbootstrap: reset platformtags
+  * drop build status from readme
+  * configs/openbsd.mk remove my local path
+  * OpenBSD: add .builds/openbsd.yml
+  * OpenBSD: make bootstrap
+  * OpenBSD: unix::tty isatty() use fcntl(F_ISATTY)
+  * OpenBSD: os::exec update for checkless for loops
+  * MAINTAINERS: add Lorenz (xha) <me@xha.li> to OpenBSD
+  * OpenBSD: add genbootstrap
+  * OpenBSD: add net::unix
+  * OpenBSD: add net::udp
+  * OpenBSD: add net::tcp
+  * OpenBSD: add net::ip
+  * OpenBSD: add net
+  * OpenBSD: add crypto::random
+  * OpenBSD: add format::elf
+  * OpenBSD: add unix::resolveconf
+  * OpenBSD: add unix::hosts
+  * OpenBSD: add unix::poll
+  * OpenBSD: add unix::tty
+  * OpenBSD: add unix::signal
+  * OpenBSD: add unix
+  * OpenBSD: add os::exec
+  * OpenBSD: add os
+  * OpenBSD: add time::chrono
+  * OpenBSD: add time
+  * OpenBSD: add path
+  * OpenBSD: add io
+  * OpenBSD: add rt
+  * cmd::hare: add OpenBSD
+  * cmd::hare: introduce ctx.libc
+  * cmd::hare: introduce platform.ha for adding platform-specific setttings
+  * remove config.example.mk and add configs/<platform>.mk
+  * unix::tty: make openpty() platform-specific
+  * os::exec: make cmdfile platform-specific
+  * rt: make the signal test platform specific
+  * rt: make start* and initfini platform-specific
+  * rt: make linker scripts platform-specific
+  * cmd::hare arch add comment about values beeing overwritten
+  * math::complex: clarify isnan behavior
+  * wordexp: correctly handle string containing only whitespace
+  * test: hexdump non-printable ASCII
+  * cmd/hare: fix memory leaks
+  * bytes: improve tests style and add test
+  * bytes: replace if expressions with logical and
+  * bytes: simplify reverse
+  * strings: simplify ltrim and rtrim
+  * strings: remove pre-allocation
+  * strings: improve docstrings
+  * strings: simplify sub
+  * strings: remove duplicate allocation in multireplace
+  * strings: take direction into account in iterstr
+  * strings: consistently use fromutf8_unsafe
+  * strings: use static append where applicable
+  * strings: drop pad functions
+  * encoding::utf8: operate exclusively on byte slices
+  * hare cache: exit after printing usage text
+  * rt: simplify frame-walking functions
+  * crypto::sha1: document BLOCKSZ
+  * update for checkless for loops
+  * fmt: flesh out float formatting
+  * fmt: add center-alignment
+  * fmt: factor out format string iterator
+  * strconv::{ffmt, fflags}: improve default values
+  * bufio/scanner: fix slice or array access out of bounds
+  * wordexp: new module
+  * rt+freebsd fix getpriority
+  * time::date: add month and weekday constants
+  * types::c: add unterminatedstr
+  * unix::tty: Add README
+  * net::unix: remove unused buf
+  * linux::keyctl: Add chown and setperm
+  * io: add dup, dup2 functions
+  * hare::*: remove unused import forms
+
+-------------------------------------------------------------------
+Sat Nov 11 07:36:58 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Minor specfile change
+
+-------------------------------------------------------------------
+Fri Nov 10 12:26:57 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- change incorrect license in specfile
+- add groups section
+
+-------------------------------------------------------------------
+Fri Nov 10 06:52:24 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- adopt new config.mk
+
+-------------------------------------------------------------------
+Fri Nov 10 04:15:57 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1699559089.3d06f9d2:
+  * speed up crypto::argon2 a bit
+  * cmd/hare: Improve 'Command not found' error message in get_version
+  * crypto: use test::skip
+  * test: implement skip function
+  * test: disallow expectabort outside @test
+  * Move string comparison logic to sort::cmp::strs()
+  * all: style fix
+  * all: fix test failure memory leaks
+  * time::chrono: drop unused leapsecs parameter
+  * cmd/parsechk: initial commit
+
+-------------------------------------------------------------------
+Sun Aug 20 15:06:19 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove no-exec-stack.patch. Seems it's already in the latest commits
+
+-------------------------------------------------------------------
+Sun Aug 20 14:56:03 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add no-exec-stack.patch
+
+-------------------------------------------------------------------
+Sun Aug 20 14:48:25 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0+3206:
+  * crypto::ed25519: change api to take slices
+  * drop hare release
+  * pass -z noexecstack to ld
+  * Remove unused imports
+  * rt: remove syscallsarch+*.ha
+  * s/error/errors/ module name
+  * net::dns: remove obsolete reference in docs
+  * net::dns: fix off-by-one in encode_raw
+  * rt: add IPPROTO_ICMPV6
+  * strings: rename runes() to torunes()
+  * io: make io::writeall take const []u8
+  * MAINTAINERS: Add Conrad Hoffmann
+  * net::dns: support for basic DNSSEC RR types
+  * net::dns: support for OPT records (EDNS, RFC 6891)
+  * rt: fix off-by-one haredocs for AF_* and IPPROTO_*
+  * memio: truncate on reset()
+  * os::exec: fix TOCTOU
+  * os::exec+freebsd: only open() regular files
+  * rt+freebsd: add fstat, AT_EMPTY_PATH, S_IF*
+  * net::dns: enforce actual label size restriction
+  * net::dns: write label terminator in encode_labels
+  * path: fix capitalization of docstring
+  * malloc: improve wording in a comment
+  * cmd/haretype, cmd/ioctlgen: update for memio
+  * net::dns: add TSIG records and decoding
+  * net::dns: implement encoding of TXT records
+  * net::dns: add constants for DNS dynamic updates
+  * net::dns: retry over TCP on truncated response
+  * hare::*: remove unary +
+  * Stop using unary +
+  * test: reset environment before first test is run
+  * format::ini: fix and test error line numbering
+  * mime: fix compilation on +libc
+  * Don't rely on loose pointer assignability semantics
+  * strio,bufio: merge memstream implementation into memio
+  * hare::lex: add static assertion for bmap length
+  * hare::*: remove implicit const flag from functions
+  * Remove slices:: and strings::cap
+  * Use cap builtin
+  * hare::parse: allow return and yield in more places
+  * regex: Document when the caller must free the return value
+  * hare::parse: fix abort in name_list
+  * hare::parse: improve struct/union/enum comments
+  * hare::parse+test: add and use roundtrip_reparse
+  * net/uri: Always prefix path with a slash when there's a host
+  * math::checked: initial commit
+  * os::exec: only open() regular files
+  * bufio: elaborate on docs for scantok and scanline
+  * hkdf: add extract and expand functions
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
+Sat Jul 22 01:51:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to 0+3157:
+ * hare::ast: add README
+ * math::complex: add README
+ * hare::unparse: add README
+ * hare::unparse: add newline between imports and decls
+ * strconv: append ".0" when float is representable as integer
+ * strconv: remove zch variable
+ * strconv: improve error messages
+ * strconv: recognize - and + in stou*
+ * types::c: add nulstr
+ * Correctly convert strconv::base::DEC -> 10
+ * net::dns: fix opcode bitmask
+ * hare::parse::identstr: only parse full ident
+
+-------------------------------------------------------------------
+Thu Jun 22 12:51:08 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to 0+3145:
+  Alexey Yerin (3):
+        net: correct references of net::unix::prepfiles -> allocfiles
+        os::exec: fill utime and stime
+        +libc: include empty .init_array section
+
+  Armin Preiml (5):
+        mime: move test entries into a +test file
+        io::teestream: implement writer
+        add crypto::chachapoly
+        crypto: refactor authenc to use crypto::chachapoly
+        base64: avoid infite loop in decoder
+
+  Autumn! (3):
+        io: move fd-related functions into one file
+        all: rename 'flags' types to 'flag'
+        getopt: add subcommand context to errors
+
+  Bor Grošelj Simić (3):
+        rt: update abort for non-constant assert changes in harec
+        unify fixed and non-fixed abort paths
+        rt: mark platform_abort as @noreturn
+
+  Byron Torres (6):
+        time::date: new: use virtual interface
+        time::date: simplify observers
+        time::date: parse: fix scanners
+        time::date: add %e; update POSIX layout
+        time::chrono: fix $TZ causing TZ_LOCAL double-free
+        time::date: avoid tz() in tests, TZDB dependency
+
+  Carlos Une (1):
+        math::complex::tan: test huge arguments
+
+  Conrad Hoffmann (2):
+        net::dns: add support for PTR records
+        net::dns: add support for SSHFP records
+
+  Dmitry Matveyev (1):
+        unix::hosts: refactor into more general interface
+
+  Drew DeVault (2):
+        haredoc: set LESS to FRX if unset
+        docs/maintainers.md: document some maintainer bits
+
+  Ember Sawady (17):
+        Improve test runner
+        rt: fix platform_abort
+        rt/abort*.ha: add missing comma in reasons
+        rt+freebsd: _start: don't touch first arg
+        rt: update for @noreturn abort
+        fs+freebsd::readlink: return wrongtype on EINVAL
+        Improve +libc argv/argc/envp initialization
+        io+freebsd::fd_copy: return errors::unsupported
+        Get rid of rt/+test/ztos.ha
+        Rewrite malloc
+        linux/*: fix fully-qualified identifiers
+        hare::parse::want: unlex token on failure
+        hare::parse::ident: disallow empty identifier
+        os: add setenv and unsetenv
+        rt: make errno constants have type rt::errno
+        io+linux::fd_copy: simplify
+        Fix chachapoly compilation
+
+  Noah Altunian (1):
+        haredoc: update man page wording to be more clear
+
+  Pinghao Wu (1):
+        crypto::argon2: fix zeroing of h0
+
+  Sebastian (21):
+        os: use libc exit when linking with libc
+        os: move status type to separate file
+        hare::ast: add error_assert_expr
+        rt: implement shutdown
+        net: implement shutdown
+        types::c: add strings test
+        math::random: add assertions that n != 0
+        all: reorder tagged union fields to put error last
+        os::exec: split kill into kill and sig
+        ascii: allocate new string in strupper+strlower
+        ascii: consistent capitalization in docs
+        os::exec+freebsd: use unix::signal::signame
+        rt: fix typo
+        types::c: add limits
+        net: remove slices dependency
+        contributors.sh: read Co-authored-by
+        contributors.sh: use git ls-tree instead of find
+        unix::signal: replace signal type with sig enum
+        types::c: add tostrn and tostrn_unsafe
+        temp: require mode param for "file" and "named"
+        regex: add replacen and rawreplacen
+
+  Tom Lebreux (1):
+        bufio: allow borrowedread up to last byte
+
+  Vlad-Stefan Harbuz (1):
+        regex: improve README examples
+
+  illiliti (1):
+        crypto::salsa20: add hsalsa20
+
+-------------------------------------------------------------------
+Sun May 28 03:28:04 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove checks for now.
+
+-------------------------------------------------------------------
+Sat May 27 13:12:29 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to 0+3076:
+  * cmd/haredoc: close read end of pipe later
+  * time::chrono: use daydate, daytime; improve docs
+  * time: improve function parameter names
+  * time::date: rename datetime type to date
+  * time: rename datetime module in READMEs, docs
+  * cmd/haretype: fix compilation
+  * cmd/ioctlgen: fix compilation
+  * crypto/aes/*.s: use correct per-function sections
+  * net::unix: replace memcpy with slice assignment
+
+-------------------------------------------------------------------
+Mon Mar 20 12:02:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Configure LDFLAGS inside config.mk explicitly.
+
+-------------------------------------------------------------------
+Mon Mar 20 02:06:13 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Configure CFLAGS inside config.mk.
+
+-------------------------------------------------------------------
+Fri Mar 17 12:13:44 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Wed Mar  1 00:40:34 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for hare 0+git2848
