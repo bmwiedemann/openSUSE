@@ -80,7 +80,7 @@
  #if defined (__MSDOS__)
    if (_rl_read_init_file (filename, 0) == 0)
      return 0;
-@@ -1811,7 +1838,14 @@ rl_parse_and_bind (char *string)
+@@ -1809,7 +1836,14 @@ rl_parse_and_bind (char *string)
  	  rl_macro_bind (seq, &funname[1], _rl_keymap);
  	}
        else
@@ -96,7 +96,7 @@
  
        xfree (seq);
        return 0;
-@@ -1985,7 +2019,6 @@ typedef int _rl_sv_func_t (const char *)
+@@ -1983,7 +2017,6 @@ typedef int _rl_sv_func_t (const char *)
  /* Forward declarations */
  static int sv_region_start_color (const char *);
  static int sv_region_end_color (const char *);

@@ -1,7 +1,7 @@
 #
 # spec file for package readline
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,21 @@
 
 %define rl_major 8
 %define rextend %{nil}
+%define rversion 8.2
+%define rpatchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
 
 Name:           readline
-Version:        8.2
+Version:        %{rversion}.%{rpatchlvl}
 Release:        0
 Summary:        The readline library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/readline/
 # Git:          http://git.savannah.gnu.org/cgit/bash.git
-Source0:        https://ftp.gnu.org/gnu/readline/readline-%{version}%{rextend}.tar.gz
-Source1:        https://ftp.gnu.org/gnu/readline/readline-%{version}%{rextend}.tar.gz.sig
+Source0:        https://ftp.gnu.org/gnu/readline/readline-%{rversion}%{rextend}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/readline/readline-%{rversion}%{rextend}.tar.gz.sig
 Source2:        baselibs.conf
+Source3:        get_version_number.sh
 Source4:        https://tiswww.case.edu/php/chet/gpgkey.asc#/%{name}.keyring
 # signatures for official patches
 # official patches
@@ -40,6 +43,9 @@ Patch104:       readline82-004
 Patch105:       readline82-005
 Patch106:       readline82-006
 Patch107:       readline82-007
+Patch108:       readline82-008
+Patch109:       readline82-009
+Patch110:       readline82-010
 Source101:      readline82-001.sig
 Source102:      readline82-002.sig
 Source103:      readline82-003.sig
@@ -47,8 +53,11 @@ Source104:      readline82-004.sig
 Source105:      readline82-005.sig
 Source106:      readline82-006.sig
 Source107:      readline82-007.sig
+Source108:      readline82-008.sig
+Source109:      readline82-009.sig
+Source110:      readline82-010.sig
 # local patches
-Patch200:       readline-%{version}.dif
+Patch200:       readline-%{rversion}.dif
 Patch201:       readline-6.3-input.dif
 Patch202:       readline-5.2-conf.patch
 Patch203:       readline-6.2-metamode.patch
@@ -75,7 +84,8 @@ Summary:        The Readline Library
 Group:          System/Libraries
 Suggests:       readline-doc = %{version}
 Provides:       bash:/%{_lib}/libreadline.so.%{rl_major}
-Provides:       readline = %{version}
+Provides:       libreadline%{rl_major} = %{rversion}
+Provides:       readline = %{rversion}
 Obsoletes:      readline <= 6.3
 
 %description -n libreadline%{rl_major}
@@ -86,7 +96,8 @@ includes history and search functionality.
 %package devel
 Summary:        Development files for readline
 Group:          Development/Libraries/C and C++
-Requires:       libreadline%{rl_major} = %{version}
+Provides:       pkgconfig(readline) = %{rversion}
+Requires:       libreadline%{rl_major} >= %{rversion}
 Requires:       ncurses-devel
 Recommends:     readline-doc = %{version}
 
@@ -115,7 +126,7 @@ This package contains the documentation for using the readline library
 as well as programming with the interface of the readline library.
 
 %prep
-%setup -q -n readline-%{version}%{rextend}
+%setup -q -n readline-%{rversion}%{rextend}
 # official patches
 %patch -P101 -p0
 %patch -P102 -p0
@@ -124,6 +135,9 @@ as well as programming with the interface of the readline library.
 %patch -P105 -p0
 %patch -P106 -p0
 %patch -P107 -p0
+%patch -P108 -p0
+%patch -P109 -p0
+%patch -P110 -p0
 # local patches
 %patch -P201 -p2 -b .zerotty
 %patch -P202 -p2 -b .conf
@@ -240,7 +254,7 @@ LARGEFILE="$(getconf LFS_CFLAGS)"
 found=0
 for rl in %{_libdir}/libreadline.so.*.*
 do
-    test READLINE_${rl##/*.so.} = READLINE_%{version} && found=1
+    test READLINE_${rl##/*.so.} = READLINE_%{rversion} && found=1
 done
 if test $found = 0
 then
@@ -292,9 +306,9 @@ export CC_FOR_BUILD CFLAGS_FOR_BUILD LDFLAGS_FOR_BUILD CFLAGS LDFLAGS CC
 %files -n libreadline%{rl_major}
 %license COPYING
 %{_libdir}/libhistory.so.%{rl_major}
-%{_libdir}/libhistory.so.%{version}
+%{_libdir}/libhistory.so.%{rversion}
 %{_libdir}/libreadline.so.%{rl_major}
-%{_libdir}/libreadline.so.%{version}
+%{_libdir}/libreadline.so.%{rversion}
 
 %files devel
 %{_includedir}/readline/
