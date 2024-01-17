@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           yakuake
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        Drop-down terminal emulator based on Konsole technologies
 License:        GPL-2.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc10-PIE
 BuildRequires:  gcc10-c++
 %endif
-BuildRequires:  kf5-filesystem
+BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
