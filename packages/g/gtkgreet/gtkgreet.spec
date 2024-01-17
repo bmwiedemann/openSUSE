@@ -1,7 +1,7 @@
 #
 # spec file for package gtkgreet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           gtkgreet
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        GTK based greeter for greetd
 License:        GPL-3.0-only
 URL:            https://git.sr.ht/~kennylevinsen/gtkgreet
 Source:         %{name}-%{version}.tar.gz
-Patch0:         gtkgreet-glib-2.74.patch
 BuildRequires:  cmake
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  libjson-c-devel
@@ -39,21 +38,27 @@ Recommends:     greetd
 %description
 GTK based greeter for greetd, to be run under cage or similar.
 
+%lang_package
+
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 export CFLAGS="-Wno-sign-compare"
-%meson -Dlayershell=enabled
+%meson
 %meson_build
 
 %install
 %meson_install
+
+%find_lang %{name} %{?no_lang_C}
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 %{_mandir}/man?/%{name}*
+
+%files lang -f %{name}.lang
 
 %changelog

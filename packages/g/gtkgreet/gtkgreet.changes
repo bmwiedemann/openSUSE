@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 17 18:40:57 UTC 2024 - Denys Kondratenko <stdden@opensuse.org>
+
+- gtkgreet 0.8
+  * This release makes some changes to customization and adds French, 
+    Russian and Spanish translations.
+  * Update reference to deprecated constant
+  * Added support for i18n and spanish translation
+  * proto: Fix signed-ness error
+  * meson: Update version properly
+  * man: Elaborate on stylesheets a bit
+  * readme: Add discuss section
+  * Added french translation strings
+  * Made the greeter more customizable
+  * proto: use uint32_t offsets and message lengths
+  * feat: russian translation added, unnecessary translation removed
+  * fix: get translations to work
+- remove gtkgreet-glib-2.74.patch as it is fixed upsteam 
+
+-------------------------------------------------------------------
 Wed Oct 26 12:57:04 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gtkgreet-glib-2.74.patch: Fix build against glib 2.74.0.
