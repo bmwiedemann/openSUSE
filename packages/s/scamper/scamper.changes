@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jan 17 07:35:36 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20240117:
+ - scamper:
+  - fix crashes if a task is provided an apparent response, but the task
+ -   has not yet sent a packet in ping, sting, tbit, trace, tracelb.
+  - find and fix memory leaks in measurement command parsing code via
+ -   fuzzing.
+  - add udpprobe, http, dealias -m midarest, and dealias -m midardisc methods.
+ -   udpprobe and http do not currently have json output methods.
+  - remove -d dport, -s sport, and -t ttl dealias parameters.  these
+ -   were only valid for mercator, and can be specified in a probedef instead.
+  - record size of responses for dealias probes.
+  - modify all commands to be able to take human-friendly wait parameters --
+ -   e.g. trace -W 0.5s or trace -W 500ms instead of trace -W 50000.
+  - support transmitting raw packets on linux ppp interfaces
+  - add -b payload-size parameter to ping
+ - python interface:
+  - add python interface to most of scamper.  building this module requires
+ -   cython < 3.0.  to build, use something like:
+ -   PYTHON=/path/to/python CYTHON=/path/to/cython ./configure --with-python
+  - the documentation for this interface is available at
+ -   https://www.caida.org/catalog/software/scamper/python/
+  - the ubuntu PPA provides python3-scamper, and the FreeBSD port should
+ -   hopefully provide py-scamper shortly.  these sources may be useful
+ -   for getting the module packaged for other operating systems.
+ -   https://launchpad.net/~matthewluckie/+archive/ubuntu/scamper
+ - libscamperfile and libscamperctrl:
+  - improvements, bump versions
+ - tests:
+  - many new unit tests and fuzzing cradles for scamper components
+ - sc_pinger:
+  - add -l limit and -M move-dir options
+ - sc_remoted:
+  - no need to link against libscamperfile, remove dependency
+ - sc_attach, sc_filterpolicy, sc_prefixscan, sc_wartsfix:
+  - compile / link on windows.
+
+-------------------------------------------------------------------
 Fri Nov 10 15:00:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20230614d (bsc#1217032):

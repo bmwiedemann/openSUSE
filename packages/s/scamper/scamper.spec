@@ -1,7 +1,7 @@
 #
 # spec file for package scamper
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,21 @@
 
 
 Name:           scamper
-Version:        20230614d
+Version:        20240117
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
-URL:            https://www.caida.org/tools/measurement/scamper/
+URL:            https://www.caida.org/catalog/software/scamper/
 Source:         https://www.caida.org/tools/measurement/%{name}/code/%{name}-cvs-%{version}.tar.gz
 BuildRequires:  libopenssl-devel
-BuildRequires:  pkgconfig
+# for the Python module
+BuildRequires:  python3
+BuildRequires:  python3-Cython0
+# for sc_uptime
+BuildRequires:  pkgconfig(sqlite3)
+# for sc_hoiho
+BuildRequires:  pkgconfig(libpcre2-8)
 
 %description
 Scamper is a program that is able to conduct Internet measurement
@@ -42,7 +48,9 @@ fragmentation required message is not returned to establish the PMTU
 to the next point in the network, followed by a TTL limited search to
 infer where the failure appears to occur.
 
-%package -n libscamperfile6
+This also contains the Python module.
+
+%package -n libscamperfile8
 Summary:        File access library for scamper's binary dump format
 Group:          System/Libraries
 Obsoletes:      libscamperfile1 < %{version}
@@ -50,8 +58,9 @@ Obsoletes:      libscamperfile2 < %{version}
 Obsoletes:      libscamperfile3 < %{version}
 Obsoletes:      libscamperfile4 < %{version}
 Obsoletes:      libscamperfile5 < %{version}
+Obsoletes:      libscamperfile6 < %{version}
 
-%description -n libscamperfile6
+%description -n libscamperfile8
 Scamper is a program that is able to conduct Internet measurement
 tasks to large numbers of IPv4 and IPv6 addresses, in parallel, to
 fill a specified packets-per-second rate. Currently, it supports the
@@ -64,7 +73,7 @@ files that scamper can produce in certain modes.
 %package -n libscamperfile-devel
 Summary:        Development headers for scamper's binary dump file access library
 Group:          Development/Libraries/Other
-Requires:       libscamperfile6 = %{version}-%{release}
+Requires:       libscamperfile8 = %{version}-%{release}
 
 %description -n libscamperfile-devel
 Scamper is a program that is able to conduct Internet measurement
@@ -110,16 +119,17 @@ libscamperctrl library.
 %setup -q -n %{name}-cvs-%{version}
 
 %build
-%configure --disable-static --without-debugfile
+export PYTHON=%{_bindir}/python3
+%configure --disable-static --without-debugfile --with-pcre2 --enable-sc_hoiho --enable-sc_uptime --with-python
 make %{?_smp_mflags}
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libscamperfile6 -p /sbin/ldconfig
+%post   -n libscamperfile8 -p /sbin/ldconfig
 %post   -n libscamperctrl2 -p /sbin/ldconfig
-%postun -n libscamperfile6 -p /sbin/ldconfig
+%postun -n libscamperfile8 -p /sbin/ldconfig
 %postun -n libscamperctrl2 -p /sbin/ldconfig
 
 %files
@@ -128,8 +138,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/scamper
 %{_mandir}/man1/*
 %{_mandir}/man5/*
+%{python3_sitelib}/scamper.so
 
-%files -n libscamperfile6
+%files -n libscamperfile8
 %{_libdir}/libscamperfile.so.*
 
 %files -n libscamperfile-devel
