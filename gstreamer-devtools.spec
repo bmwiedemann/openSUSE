@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-devtools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name   gst-devtools
 
 Name:           gstreamer-devtools
-Version:        1.22.7
+Version:        1.22.8
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later
