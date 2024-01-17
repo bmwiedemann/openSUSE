@@ -1,0 +1,6 @@
+<package name="javazic" project="openSUSE:Factory">
+  <title>A time zone compiler for Java</title>
+  <description>This is a time zone compiler for opensource Java Virtual Machine
+derived from openjdk6 source code.</description>
+  <devel project="Java:Factory" package="javazic"/>
+</package>

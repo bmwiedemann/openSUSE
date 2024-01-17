@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>618383c3b1426e176694d2ecf9e76466</srcmd5>
+    <version>0.3.0</version>
+    <time>1575563691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754337</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>966ad34fe8decb7d1c5e4ccac04b76b5</srcmd5>
+    <version>0.4.1</version>
+    <time>1585676487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1
+  * Discover command if not in entry_points
+- Reapplied patch get-short-help.patch
+- No need to use upstream tarball, download PyPI tarball instead
+</comment>
+    <requestid>790188</requestid>
+  </revision>
+</revisionlist>

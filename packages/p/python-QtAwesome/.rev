@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8af159e49d9adc139d09c7218af50bd2</srcmd5>
+    <version>0.4.4</version>
+    <time>1502366635</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>512350</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b36f1e55e58e2ef6967c5a4245b7376a</srcmd5>
+    <version>0.4.4</version>
+    <time>1534940369</time>
+    <user>dimstar_suse</user>
+    <comment>- use singlespec'ed magic requires
+
+- Fix Requires:, refer to python2 packages from python2 package
+- Remove erroneously distributed __pycache__ file from sources
+- Spec cleanup:
+  * drop %defattr
+  * use %license for LICENSE</comment>
+    <requestid>630574</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>43ec062751b508e9dd9734c2dc77d103</srcmd5>
+    <version>0.4.4</version>
+    <time>1545223918</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659352</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>381f6b3176949e9d4def949d613b63a5</srcmd5>
+    <version>0.5.7</version>
+    <time>1552985901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.7:
+  * Issue 113 - Corrupted icons with PyQt 5.12
+
+- Update to 0.5.6:
+  * Too many changes to enumerate, see CHANGELOG.md
+- Run tests</comment>
+    <requestid>682826</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eef82c946bed6d279eca90a1c6f3f86e</srcmd5>
+    <version>0.6.0</version>
+    <time>1564414316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719537</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5ca9ed4d7ad2dd2608cc8c1eebf44823</srcmd5>
+    <version>0.6.0</version>
+    <time>1587659971</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not call python2:
+  * no-py2.patch</comment>
+    <requestid>796537</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f7d9a2464cedb644eeaa14c6ce650fa8</srcmd5>
+    <version>0.7.2</version>
+    <time>1595949947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2:
+  * Update release instructions for the 0.x branch, by @ccordoba12
+  * Do not call python directly in tests, by @scarabeusiv
+  * Remove warning for Python 2.7, by @dalthviz (140)
+  * al design icons to 4.9.95
+  * t class to display icons as widgets
+  * rowser
+  * Fix file lock (125)
+  * Update documentation and images (45)
+  * Use Github as the only CI provider
+  * Update MDI to 4.9.95
+  * Add IconWidget to display icon as widget
+  * Add an icon browser
+  * Improve sponsors section in readme
+  * Replace QtGui by QtWidgets in docs
+  * Update MDI to 4.5.95
+  * Update number of icons in Readme and docs
+- Drop no-py2.patch, merged upstream.
+- Add update-alternatives for new qta-browser binary</comment>
+    <requestid>823051</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bb6601ae8b699e9c06ef5d7baa808ca1</srcmd5>
+    <version>1.0.2</version>
+    <time>1617130969</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>870784</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5e996dbac84738ce0398d0ab47be7b16</srcmd5>
+    <version>1.0.3</version>
+    <time>1634417240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925645</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>01c1e5441b6c82dcbd92b71f66efa429</srcmd5>
+    <version>1.1.1</version>
+    <time>1661863742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999911</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0f1209392f406b6340530d391c1b1a28</srcmd5>
+    <version>1.2.1</version>
+    <time>1667067408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032072</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>6f0e182d3412074d416641d205894b2f</srcmd5>
+    <version>1.2.1</version>
+    <time>1686506141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092065</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9b1cdfad1b9831500c4d6ffb70c9f816</srcmd5>
+    <version>1.2.3</version>
+    <time>1702158814</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.3:
+  * Issue 227 - Import error when importing `PYSIDE6` while using
+    `QtPy` &lt;= 1.x (PR 228 by @dalthviz)
+  * PR 228 - PR: Change constants used to validate `PySide`
+    installation and update `PySide2` test environment to use
+    `QtPy`&lt;2.0.0, by @dalthviz (227)
+  * Issue 226 - Release QtAwesome 1.2.2
+  * Issue 223 - Memory leak when using spin animation class on
+    PyQt bindings (PR 224 by @dalthviz)
+  * Issue 213 - Add a contributing guide (PR 218 by @dalthviz)
+  * In this release 3 issues were closed.
+  * PR 224 - PR: Use currentThreadId to identify thread for PyQt
+    bindings, by @dalthviz (223)
+  * PR 218 - PR: Add contributing guide and fix macOS tests, by
+
+- Update to 1.1.1</comment>
+    <requestid>1132145</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>662e0e57025a42f2877e380a4420d1e2</srcmd5>
+    <version>1.3.0</version>
+    <time>1704281061</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Update Codicons (`msc`) to 0.0.35
+  * Update Material Design Icons (`mdi6`) to 6.9.96
+  * Improvements to the icon browser application
+  * Update `readthedocs` config to version 2
+  * Add API to start/stop animations to the Spin
+    class
+  * Provide icon size when creating an `IconWidget`
+  * Remove usage of deprecated codecov package and
+    move to GitHub Action variant</comment>
+    <requestid>1135633</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,335 @@
+#!/bin/sh
+
+function check_sysoper(){
+local SYSOPER=$(vmcp q sysoper | cut -f4 -d" ")
+local USERID=$(vmcp q userid | cut -f1 -d" ")"."
+if [ "${SYSOPER}" == "${USERID}" ]; then
+return 0
+else return 1
+fi
+}
+
+function check_disc(){
+local USERID=$(vmcp q userid | cut -f1 -d" ")
+local DISCONNECTED=$(vmcp q ${USERID} | cut -f2 -d-)
+if [ "${DISCONNECTED}" == " DSC" ]; then
+  return 1
+else return 0
+fi
+}
+
+function check_3270(){
+local CONMODE=$(vmcp q term | sed -n -e '/CONMODE/ {s/CONMODE \([0-9]*\), .*$/\1/;p}')
+if [ "${CONMODE}" == "3270" ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_graf(){
+local GRAF
+GRAF=$(vmcp -b 1048576 q v graf 2>/dev/null | grep -v "^CONS" | grep "ON LDEV" )
+if [ ${?} -eq 0 ] && [ -n "${GRAF}" ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_ascii_console(){
+local SYSASCII=$(vmcp q v sysascii 2>/dev/null | grep "not attached to you")
+if [ -z "${SYSASCII}" ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_tdisk(){
+local TDISK=$(vmcp -b 1048576 q v dasd 2>/dev/null | grep TEMP)
+if [ -n "${TDISK}" ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_ctc(){
+local CTC
+CTC=$(vmcp -b 1048576 q v ctc 2>/dev/null)
+if [ ${?} -eq 0 ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_dynamic_switch(){
+local SWCH
+SWCH=$(vmcp -b 1048576 q v switches 2>/dev/null)
+if [ ${?} -eq 0 ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_maint_mdisks(){
+local MDISKS
+MDISKS=$(vmcp -b 1048576 q v dasd | grep -E "0190|0191|0193|019D|019E")
+if [ -n "${MDISKS}" ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_wrkalleg(){
+local WRKALLEG
+WRKALLEG=$(vmcp -b 1048576 q wrkalleg | grep "is not simulated")
+if [ -z "${WRKALLEG}" ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_isolated_vswitch(){
+local ISOLATED=0
+local VSWITCH
+
+# Find out if we have any NICs coupled to any VSWITCH or not. If not, we're OK.
+VSWITCH=$(vmcp -b 1048576 q nic | sed -e '1~2 {N;s/\n//;}' | grep VSWITCH)
+if [ -z "${VSWITCH}" ]; then
+  return 1
+fi
+
+ISOLATED=$(vmcp -b 1048576 q nic | sed -e '1~2 {N;s/\n//;}' | \
+     grep VSWITCH | \
+     sed -e 's/^.* VSWITCH: //' | \
+     while read owner name
+	do VSWITCH=$(vmcp -b 1048576 q vswitch $name | grep RDEV)
+	   if [ -z "${VSWITCH}" ]; then
+		echo 1
+           fi
+       done)
+
+if [ "${ISOLATED}" == "1" ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_chpidvirt(){
+local CHPIDV
+CHPIDV=$(vmcp q chpidv 2>/dev/null | grep "CHPID Virtualization is on")
+if [ -z "${CHPIDV}" ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_pci_functions(){
+local PCIF
+local RETCODE
+PCIF=$(vmcp -b 1048576 q v pcif 2>/dev/null | grep "A PCI function was not found.")
+RETCODE=${?}
+if [ ${RETCODE} -eq 0 ] && [ -z "${PCIF}" ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_tape_assign(){
+local TAPES
+local RETCODE=1
+TAPES=$(vmcp -b 1048576 q v tapes 2>/dev/null | grep "Device TAPE does not exist")
+if [ -n "${TAPES}" ]; then
+  return 1
+fi
+
+TAPES=$(vmcp -b 1048576 q v tapes 2>/dev/null | grep "NOASSIGN")
+if [ -n "${TAPES}" ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_open_spool(){
+local QSPOOL
+local OPENSPOOL=0
+QSPOOL=$(vmcp -b 1048576 q pun \* all 2>/dev/null | grep "OPEN")
+if [ -n "${QSPOOL}" ]; then
+  let OPENSPOOL=1
+fi
+
+QSPOOL=$(vmcp -b 1048576 q prt \* all 2>/dev/null | grep "OPEN" | grep -v " CON ")
+if [ -n "${QSPOOL}" ]; then
+  let OPENSPOOL=1
+fi
+
+if [ ${OPENSPOOL} -eq 1 ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_xstore(){
+local XSTOR
+XSTOR=$(vmcp -b 1048576 q v xstor 2>/dev/null | grep "XSTORE = none")
+if [ -z "${XSTOR}" ]; then
+  return 0
+else return 1
+fi
+}
+
+function check_iucv(){
+local QIUCV
+QIUCV=$(vmcp -b 1048576 q iucv 2>/dev/null | grep -vE "^No IUCV paths exist|^Source| *MSG| *MSGALL")
+if [ -n "${QIUCV}" ]; then
+  return 0
+else return 1
+fi
+}
+
+function usage(){
+  echo "Usage: ${0} [ -f ] [ -h ] devno|busid"
+  echo "        -q      Don't generate any output, just set a return code."
+  echo "        -m      Suppress the check for local minidisks."
+  echo "                Only use this if you know for certain all minidisks for this"
+  echo "                guest are NOT local to this instance of z/VM."
+  echo "        -h      Display this help message."
+}
+
+ARCH="$(/bin/uname -m)"
+if [ "${ARCH}" != "s390x" ] && [ "${ARCH}" != "s390" ]; then
+  echo "This script is only useful on IBM mainframes."
+  exit 1
+fi
+
+HYPERVISOR=$(systemd-detect-virt)
+if [ "${HYPERVISOR}" != "zvm" ]; then
+  echo "This script is only useful for guests of the z/VM hypervisor."
+  exit 1
+fi
+
+MDISK_SUPPRESS=0
+msg="echo"
+
+############################################################
+# Parse the parameters from the command line
+#
+ARGS=$(getopt -a --options qhm -n "lgr_check" -- "$@")
+if [ $? -ne 0 ]; then
+  usage
+  exit 3
+fi
+
+eval set -- "${ARGS}"
+for ARG; do
+        case "${ARG}" in
+                -h) usage;
+		    exit 0
+		    ;;
+                -m) let MDISK_SUPPRESS=1;
+                    shift 1
+                    ;;
+                -q) msg="/bin/true"
+                    shift 1
+                    ;;
+                --) shift 1
+                    ;;
+                *) ${msg} "Extraneous input detected: ${1}"
+                   shift 1
+                   ;;
+        esac
+done
+
+
+let FAIL=0
+##let COLS=$(stty -a | sed -n -e '/columns/{s/^.*columns \([0-9]*\);.*$/\1/;p}')
+
+if [ ! -c /dev/vmcp ]; then
+  ${msg} "Cannot find /dev/vmcp to issue z/VM CP commands."
+  exit 1
+fi
+
+${msg} "Checking for conditions that might prevent Live Guest Relocation"
+
+if check_chpidvirt; then
+  ${msg} "This guest does not have CHPID Virtualization set for it in the CP directory."
+  ${msg} "Live Guest Relocation is absolutely not possible for this guest."
+  # exit 99
+  let FAIL=1
+fi
+if check_sysoper ; then
+  ${msg} "This guest is currently the z/VM system operator."
+  let FAIL=1
+fi
+let GUEST_CONN=0
+if check_disc; then
+  ${msg} "The guest is not running disconnected."
+  let GUEST_CONN=1
+  let FAIL=1
+fi
+if check_3270; then
+  ${msg} -n "The guest has a 3270 console, "
+  if [ ${GUEST_CONN} -eq 0 ]; then
+    ${msg} "but it is not currently in use."
+  else ${msg} "and it is currently in use."
+       let FAIL=1
+  fi
+fi
+if check_graf; then
+  ${msg} "The guest has a DIALED 3270 device in current use."
+  let FAIL=1
+fi
+if check_ascii_console; then
+  ${msg} "The guest has the ASCII console attached to it."
+  let FAIL=1
+fi
+if check_tdisk; then
+  ${msg} "The guest has a temporary disk (T-disk) attached to it."
+  let FAIL=1
+fi
+if check_ctc; then
+  ${msg} "The guest has a Channel-to-Channel device (CTC) attached to it."
+  let FAIL=1
+fi
+if check_dynamic_switch; then
+  ${msg} "The guest has a dynamic switching device attached to it."
+  let FAIL=1
+fi
+if check_wrkalleg; then
+  ${msg} "The guest is currently using virtual working allegiance."
+  let FAIL=1
+fi
+if [ ${MDISK_SUPPRESS} -eq 0 ] && check_maint_mdisks; then
+  ${msg} "The guest currently has one or more Minidisks that might be local to this instance of z/VM."
+  let FAIL=1
+fi
+if check_isolated_vswitch; then
+  ${msg} "The guest is currently coupled to an isolated VSWITCH."
+  let FAIL=1
+fi
+if check_pci_functions; then
+  ${msg} "The guest has PCI functions available to it."
+  let FAIL=1
+fi
+if check_tape_assign; then
+  ${msg} "The guest has potential problems with a tape."
+  let FAIL=1
+fi
+if check_open_spool; then
+  ${msg} "The guest has an open SPOOL file that is not from the virtual console."
+  let FAIL=1
+fi
+if check_xstore; then
+  ${msg} "The guest has Expanded Storage attached to it."
+  let FAIL=1
+fi
+if check_iucv; then
+  ${msg} "The guest has an IUCV connection to a z/VM system service or another z/VM user."
+  let FAIL=1
+fi
+
+if [ ${FAIL} == 1 ]; then
+  ${msg} "The guest is currently not eligible for Live Guest Relocation."
+  exit 1
+else ${msg} "As far as can be determined from within the guest, it is currently eligible for Live Guest Relocation."
+     ${msg} "This is not a guarantee.  Other factors that cannot be checked from within the guest may prevent it from being eligible for LGR."
+fi
+

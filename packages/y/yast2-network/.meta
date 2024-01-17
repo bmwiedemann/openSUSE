@@ -1,0 +1,5 @@
+<package name="yast2-network" project="openSUSE:Factory">
+  <title>YaST2 - Network Configuration</title>
+  <description>This package contains the YaST2 component for network configuration.</description>
+  <devel project="YaST:Head" package="yast2-network"/>
+</package>

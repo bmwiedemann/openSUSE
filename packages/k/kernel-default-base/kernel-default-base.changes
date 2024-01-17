@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Mon Jan  8 14:56:04 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- Add dm-crypt for encrypted hard disk support
+- Add dmi-sysfs for systemd to receive credentials via smbios
+
+-------------------------------------------------------------------
+Wed Dec 13 07:48:14 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add macvlan
+
+-------------------------------------------------------------------
+Mon Oct 30 09:43:01 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add dummy (boo#1216647)
+
+-------------------------------------------------------------------
+Thu Jun  8 13:30:19 UTC 2023 - Guilherme Moro <gmoro@suse.com>
+
+- Add ptp_kvm (bsc#1211969)
+
+-------------------------------------------------------------------
+Mon Apr 24 12:29:26 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Do not build on s390 (bsc#1210729)
+
+-------------------------------------------------------------------
+Tue Mar 28 15:17:18 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add exfat (boo#1208822)
+
+-------------------------------------------------------------------
+Fri Oct  7 09:42:28 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add _diag modules for included socket types (boo#1204042)
+
+-------------------------------------------------------------------
+Wed Mar  2 09:39:10 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add binfmt_misc (boo#1196373)
+
+-------------------------------------------------------------------
+Tue Mar  1 15:01:58 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add quota modules (bsc#1196585)
+- Add nfs layout modules
+
+-------------------------------------------------------------------
+Fri Oct  1 09:27:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add nls_utf8 module (boo#1190797)
+
+-------------------------------------------------------------------
+Wed Jun  2 08:49:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add nfsd for nfs server support (boo#1186363 bsc#1089118)
+
+-------------------------------------------------------------------
+Mon Feb 22 15:19:32 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add squashfs for kiwi installiso support (bsc#1182341)
+
+-------------------------------------------------------------------
+Mon Feb 22 10:48:16 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add fuse (boo#1182507)
+
+-------------------------------------------------------------------
+Thu Feb 11 09:06:20 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add modules which got lost when migrating away from supported.conf
+  (bsc#1182110):
+  * am53c974 had a typo
+  * cls_bpf, iscsi_ibft, libahci, libata, openvswitch, sch_ingress
+- Also add vport-* modules for Open vSwitch
+
+-------------------------------------------------------------------
+Thu Nov 26 07:59:32 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add wireguard (boo#1179225)
+
+-------------------------------------------------------------------
+Tue Oct 13 07:19:13 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Create the list of crypto modules dynamically, supersedes hardcoded
+  list of crc32 implementations (boo#1177577)
+
+-------------------------------------------------------------------
+Mon Oct  5 11:17:52 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add cifs
+
+-------------------------------------------------------------------
+Wed May 20 08:08:15 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add vxlan (bsc#1171903)
+
+-------------------------------------------------------------------
+Mon May 18 17:55:00 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Add usbhid and hid-generic for USB input devices (boo#1167749)
+
+-------------------------------------------------------------------
+Mon May  4 13:01:43 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add hardware-specific crc32c implementations (boo#1171065)
+
+-------------------------------------------------------------------
+Tue Apr 21 12:42:55 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Add qemu_fw_cfg needed by ignition (boo#1170069).
+
+-------------------------------------------------------------------
+Thu Feb 27 12:07:22 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add tcp_diag, needed by openslp
+
+-------------------------------------------------------------------
+Tue Feb 18 13:38:18 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add the brd module, used by the LTP testsuite and tiny
+
+-------------------------------------------------------------------
+Thu Jan  9 14:24:45 UTC 2020 - Guilherme Moro <gmoro@suse.com>
+
+- Remove iscsi_ibft (bsc#1157460)
+
+-------------------------------------------------------------------
+Fri Oct 25 10:21:46 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- Add efivarfs required by mokutil (bsc#1154858).
+
+-------------------------------------------------------------------
+Mon Oct 14 15:55:28 UTC 2019 - Guilherme Moro <gmoro@suse.com>
+
+- Add Ceph modules (bsc#1149605)
+
+-------------------------------------------------------------------
+Thu Aug 15 13:17:05 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Fix wildcard for ip6t_.*
+
+-------------------------------------------------------------------
+Thu Aug  8 21:35:08 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Shorten module list by using wildcards.
+
+-------------------------------------------------------------------
+Fri Jul 26 12:43:32 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add all netfilter and xfrm modules (boo#1142841)
+
+-------------------------------------------------------------------
+Thu Apr 11 19:27:52 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- dw_mmc-bluefield is not needed in kernel-default-base (bsc#1131574).
+
+-------------------------------------------------------------------
+Thu Apr  4 14:37:46 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Add dw_mmc-bluefield driver (bsc#1118752)
+
+-------------------------------------------------------------------
+Thu Apr  4 11:45:00 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add back bpfilter, got lost during split (boo#1106751)
+
+-------------------------------------------------------------------
+Wed Mar 27 09:22:05 UTC 2019 - lnussel@suse.de
+
+- Limit build architectures on SLE to the ones that actually have a kernel in
+  SLE (ie not i586).
+
+-------------------------------------------------------------------
+Fri Mar 15 21:23:24 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Separate kernel-deafult-base from kernel-default (FATE#326579,
+		jsc#SLE-4117, jsc#SLE-3853, bsc#1128910).

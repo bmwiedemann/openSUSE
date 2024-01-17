@@ -1,0 +1,9 @@
+<package name="s390-tools" project="openSUSE:Factory">
+  <title>S/390 tools like zipl and dasdfmt</title>
+  <description>This package contains the tools needed to use Linux on the S/390:
+dasdfmt  - low-level format tool for ECKD DASDs
+fdasd	 - partitions ECKD DASDs with z/OS compatible disk layout 
+zipl     - boot loader and dump DASD initializer
+zgetdump - tool to get Linux system dumps from DASD</description>
+  <devel project="Base:System" package="s390-tools"/>
+</package>

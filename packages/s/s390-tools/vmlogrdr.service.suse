@@ -1,0 +1,15 @@
+[Unit]
+Description=System startup script for the Linux - z/VM Log reader
+After=network-online.target remote-fs.target 
+Wants=network-online.target remote-fs.target
+ConditionPathExists=!/dev/vmlogrdr_LOGREC
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+ExecStart=/sbin/modprobe vmlogrdr
+ExecStop=/sbin/modprobe -r vmlogrdr
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,156 @@
+#!/bin/sh
+#
+# dasd_reload
+# $Id: dasd_reload,v 1.2 2004/05/26 15:17:09 hare Exp $
+#
+# Deconfigures all active DASDs, unloads the modules
+# and activates the configured DASDs again.
+# Needed to establish an identical device mapping
+# in the installation system and in the running system.
+# All DASD access need to be cancelled prior to running
+# this script.
+#
+# Usage:
+#    dasd_reload
+#
+# Return values:
+#   1  Cannot read /proc/modules
+#   2  Missing module programs
+#   3  /sys not mounted
+#   4  Failure on deactivate DASDs
+#
+
+if [ ! -r /proc/modules ]; then
+    echo "Cannot read /proc/modules"
+    exit 1
+fi
+
+if [ ! -x /sbin/rmmod -o ! -x /sbin/modprobe ]; then
+    echo "Missing module programs"
+    exit 2
+fi
+
+if [ ! -d /sys/bus ]; then
+    echo "sysfs not mounted"
+    exit 3
+fi
+
+let anymd=0
+if [ -f /proc/mdstat ]; then
+    for mddevice in $(grep active /proc/mdstat  | cut -f1 -d:); do
+	mdadm -S /dev/${mddevice}
+	let anymd=1
+    done
+    udevadm settle
+fi
+
+#
+#	Setting HyperPAV alias devices offline
+#
+dasd_alias=
+let EXITRC=0
+for dev in /sys/bus/ccw/devices/*; do
+    if [ -f ${dev}/use_diag ]; then
+	read _online < ${dev}/online
+	read _alias  < ${dev}/alias
+	if [ "$_online" -eq 1  -a "$_alias" -eq 1 ]; then
+	    echo "setting DASD HyperPAV alias $(basename ${dev}) offline"
+	    echo "0" > ${dev}/online
+	    read _online < ${dev}/online
+	    dasd_alias="${dasd_alias} $(basename ${dev})"
+	    if [ "$_online" -eq 1 ]; then
+		echo "failure on setting DASD HyperPAV alias $(basename ${dev}) offline !"
+		let EXITRC=4
+	    fi
+	fi
+    fi
+done
+
+#
+#	Setting "normal" DASD and HyperPAV base devices offline
+#
+dasd_base=
+for dev in /sys/bus/ccw/devices/*; do
+    if [ -f ${dev}/use_diag ]; then
+	read _online < ${dev}/online
+	read _alias  < ${dev}/alias
+	if [ "$_online" -eq 1  -a "$_alias" -eq 0 ]; then
+	    echo "setting DASD $(basename ${dev}) offline"
+	    echo "0" > ${dev}/online
+	    read _online < ${dev}/online
+	    dasd_base="${dasd_base} $(basename ${dev})"
+	    if [ "$_online" -eq 1 ]; then
+		echo "failure on setting DASD $(basename ${dev}) offline !"
+		let EXITRC=4
+	    fi
+	fi
+    fi
+done
+
+udevadm settle
+
+module_list=
+module_test_list="dasd_diag_mod dasd_eckd_mod dasd_fba_mod dasd_mod"
+for module in ${module_test_list}; do
+    if grep -q "${module}" /proc/modules; then
+	module_list="${module} ${module_list}"
+	: Unloading ${module}
+	/sbin/rmmod ${module}
+    fi
+done
+
+udevadm settle
+sleep 2
+
+if [ -d /etc/udev/rules.d ]; then
+    cd /etc/udev/rules.d
+#
+#	Re-activating "normal" DASD and HyperPAV base devices
+#
+#	We need to move all the DASD udev rules out from /etc/udev/rules.d
+#	because if we don't, then when the first DASD volume gets brought
+#	back online, they are all brought back online, in a non-deterministic
+#	order, not the numeric order we expect.
+#
+    mv -i 41-dasd-*.rules 51-dasd-*.rules /tmp
+    cd /tmp
+    for dasd in ${dasd_base}; do
+	for file in 41-dasd-*-${dasd}.rules 51-dasd-${dasd}.rules; do
+	    [ -f "${file}" ] || continue
+#
+#	Special handling is needed for old udev rules that start with 51-
+#	since the chzdev command won't look for that name
+#
+	    prefix="$(echo ${file} | cut -f1 -d-)"
+	    if [ "${prefix}" == "51" ]; then
+		if [ -h /sys/bus/ccw/drivers/dasd-eckd/${dasd} ]; then
+		    mv -i ${file} 41-dasd-eckd-${dasd}.rules
+		elif [ -h /sys/bus/ccw/drivers/dasd-fba/${dasd} ]; then
+		    mv -i ${file} 41-dasd-fba-${dasd}.rules
+		else echo "DASD volume ${dasd} is neither an ECKD or FBA device."
+		     let EXITRC=4
+		fi
+	    fi
+	    echo Activating ${dasd}
+	    mv -i "${file}" /etc/udev/rules.d/
+	    /sbin/chzdev dasd --apply --configured -q --no-root-update ${dasd}
+	    lsdasd
+	    break
+	done
+    done
+
+#
+#	Re-activating HyperPAV alias devices
+#
+    for dasd in ${dasd_alias}; do
+	for file in 41-dasd-*-${dasd}.rules 51-dasd-${dasd}.rules; do
+	    [ -f "${file}" ] || continue
+	    echo Activating ${dasd}
+	    mv -i "${file}" /etc/udev/rules.d/
+	    /sbin/chzdev dasd --apply --configured -q --no-root-update ${dasd}
+	    break
+	done
+    done
+fi
+
+exit ${EXITRC} 

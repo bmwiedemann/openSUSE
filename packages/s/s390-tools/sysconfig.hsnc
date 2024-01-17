@@ -1,0 +1,23 @@
+## Path:        Hardware/Network
+## Description: HiperSockets Network Concentrator Configuration
+## Type:        list(unicast,full)
+## Default:     unicast
+#
+#   unicast means, only unicast forwarded between the hsint's and osaint's.
+#       this is the default mode
+#   full means, unicast, multicast and broadcast are forwarded, if supported
+#       by the hardware
+#
+operating_mode="unicast"
+## Type:        string
+## Default:     ""
+#
+#	describes all HiperSockets interfaces involved in the HSN
+#
+hsi_int=""
+## Type:        string
+## Default:     ""
+#
+#	describes the OSA interface connecting to other LANs
+#
+osa_int=""

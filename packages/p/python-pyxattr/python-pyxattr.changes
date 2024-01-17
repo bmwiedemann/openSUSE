@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Sat Oct  7 21:18:10 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.8.1:
+  - Fix the pypi declared python versions
+  - Add some more documentation - a security policy, and a
+    contributing guide.
+  - Minor bugfix release, but due to lack of CI environments
+    supporting old Python versions, only Python 3.7+ is
+    supported. Otherwise:
+    - @Snape3058 found some refcount issues (see issue #35),
+      these have been fixed.
+    - Tested and enabled Python 3.10 support, dropped < 3.7.
+    - Move fully to setuptools (where available), in preparation
+      for 3.12 dropping distutils support.
+
+-------------------------------------------------------------------
+Thu Jul 27 12:54:45 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Nov 30 12:13:40 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.7.2
+
+  Minor release:
+
+  * Expand testing by adding better mixed-access checks (e.g. set via symlink and read on file) and by not leaking resources during tests.
+  * Enable testing with Python 3.9 and confirm compatibility with it.
+  * Fix documentation building with Sphinx 3.0+.
+
+-------------------------------------------------------------------
+Fri Nov 13 23:01:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix BuildRequires for multiple python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+- Use %pytest_arch
+
+-------------------------------------------------------------------
+Wed Feb 19 08:49:11 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.7.1
+
+  * Fix license to LGPL 2.1 and later
+  * Add keyring for source verification
+
+  Changelog:
+
+  Major change: drop compatibility with Python 2, which allows significant code
+  cleanups.
+
+  Other changes:
+
+  * Switch internal implementation of argument parsing to a built-in one
+    (`PyUnicode_FSConverter`), which brings automatic support for
+    path-like objects in Python 3.6+ (#20), and also a more uniform
+    handling of Unicode path arguments with respect to other Python code.
+  * Fix missing error check in list operations in `get_all` (#17).
+  * Switch test library to pytest; not that a reasonable recent version is
+    needed. Additionally, expand test coverage, although not directly
+    visible in actual coverage reports…
+
+-------------------------------------------------------------------
+Tue Jul 16 15:09:30 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Initial package version

@@ -1,0 +1,9 @@
+<package name="linux_logo" project="openSUSE:Factory">
+  <title>Prints the linux logo on the text console</title>
+  <description>The Linux logo on the text console, with colors and system information.
+Contains a number of built-in logos.
+
+</description>
+  <devel project="utilities" package="linux_logo"/>
+  <url>http://deater.net/weave/vmwprod/linux_logo/</url>
+</package>

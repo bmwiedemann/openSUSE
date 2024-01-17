@@ -1,0 +1,57 @@
+
+ls - Addons by SUSE
+
+	The following utility and its man page have been added to make it
+	easier to determine the machine type on which Linux is running.
+
+	* cputype
+	Usage: cputype
+
+	The following utilities and their man pages have been added by SUSE to
+	ease the activation and deactivation of devices. These scripts are also
+	used by YaST. Functionality not provided by these scripts cannot be
+	provided by YaST.
+	These scripts also create/delete the needed udev rules.
+	Detailed information on some parameters are in the
+	"Device Drivers, Features and Commands" for this release.
+
+	General parameters
+	  channel numbers are with lower letters
+	  parameters switching things on or off are
+	    1 for on and 0 for off
+
+	* ctc_configure
+	  Usage: /sbin/ctc_configure <read channel> <write channel> <online> [<protocol>]
+	  To configure CTC connections 
+	  Valid Parameters for the protocal are 0, 1 and 3
+	  For a detailed explanation please look in the Device Driver book
+
+	* dasd_configure
+	  Usage: dasd_configure  <ccwid> <online> <use_diag>
+	  To set DASDs online/offline
+	  The use_diag makes only sense under z/VM. In an
+	  LPAR just set it to 0
+
+	* iucv_configure
+	  Usage: /sbin/iucv_configure  <router> <online>
+	  To set an IUCV IP-network online/offline
+
+	* qeth_configure
+	  Usage: /sbin/qeth_configure [options] <read chan> <write chan> <control chan> <online>
+	  Set qeth, hipersocket adapter online/offline.
+	  options could be one of the following:
+
+	  -i      Configure IP takeover
+	  -l      Configure Layer2 support
+	  -p NAME QETH Portname to use
+	  -n 1/0  QETH port number to use
+	  
+
+	* zfcp_disk_configure
+	  Usage: /sbin/zfcp_disk_configure  <ccwid> <wwpn> <lun> <online>
+	  set a disk online/offline. This require that the repective
+	  Adapter is online. See command below.
+
+	* zfcp_host_configure
+	  Usage: /sbin/zfcp_host_configure  <ccwid> <online>
+	  Set a zfcp Adapter online/offline

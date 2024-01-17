@@ -1,0 +1,155 @@
+.TH ctc_configure "8" "July 2013" "s390-tools"
+.SH NAME
+ctc_configure \- Configures or deconfigures a Channel-to-Channel adapter (CTC) or LAN Channel Station adapter (LCS)
+.SH SYNOPSIS
+.B ctc_configure read_channel write_channel online [protocol]
+.SH DESCRIPTION
+.B ctc_configure
+is intended to make it easy to persistently add and remove IBM CTC and LCS adapters. In addition to bringing the adapter online or offline, it will also create or delete the necessary udev rules for the adapter.
+.SH PARAMETERS
+.IP read_channel
+The device number of the read channel of the adapter. Takes the form x.y.ssss.
+.IP write_channel
+The device number of the write channel of the adapter.Takes the form x.y.ssss.
+.RS
+
+where
+.RS
+.B x
+is always 0 until IBM creates something that uses that number.
+.RE
+.RS
+.B y
+is the logical channel subsystem (lcss) number. Most often this is 0, but it could be non-zero.
+.RE
+.RS
+.B ssss
+is the four digit subchannel address of the device, in hexidecimal, with leading zeros. If entered in upper/mixed case, this is automatically converted to lower case.
+.RE
+.RE
+.RS
+
+Keep in mind that for a CTC, the read channel needs to be coupled to the write channel of the peer, and vice versa. This does not apply to LCS adapters.
+.RE
+.RE
+.IP online
+Either a literal 1 to bring the adapter online or a literal 0 to take it offline
+.IP protocol
+.RS
+0 Compatibility with peers other than OS/390®, or z/OS, for example, a z/VM TCP service machine. This is the default.
+.RE
+.RS
+1 Enhanced package checking for Linux peers.
+.RE
+.RS
+3 For compatibility with OS/390 or z/OS peers.
+.RE
+.RS
+4 For MPC connections to VTAM on traditional mainframe operating systems.
+.RE
+.RS
+
+Not needed for LCS adapters.
+.SH FILES
+.I /etc/udev/rules.d/51-ctcm-<ccwid>.rules
+.RE
+.I /etc/udev/rules.d/51-lcs-<ccwid>.rules
+.RS
+These files provide the udev rules necessary to activate a specific CTC or LCS.
+.RE
+.SH ENVIRONMENT
+.IP DEBUG
+If set to "yes" some minimal debugging information is output during execution.
+.SH DIAGNOSTICS
+The following messages may be issued on stdout:
+.IP
+.B /sysfs not present
+.RS
+The sysfs file system could not be found in /proc/mounts, so there's nothing the script can 
+do. Return code 1 is set.
+.RE
+.IP
+.B Invalid device status ${ONLINE}
+.RS
+A value other than 0 or 1 was specified for the third parameter, online. Return code 2 is set.
+.RE
+.IP
+.B Device ${CTC_READ_CHAN} does not exist
+.RS
+A non-existent <ccwid> was specified for the first parameter. Remember the x.y.ssss format is necessary. Return code 3 is set.
+.RE
+.IP
+.B Device ${CTC_READ_CHAN} does not exist
+.RS
+A non-existent <ccwid> was specified for the second parameter. Remember the x.y.ssss format is necessary. Return code 4 is set.
+.RE
+.IP
+.B Not a valid CTC device (cu ${_cutype}, dev ${_devtype})
+.RS
+The device number specified does not correspond to a valid CTC or LCS device type. Return code 5 is st.
+.RE
+.IP
+.B CTC type mismatch (read: ${tmp_chan}, write: ${CCW_CHAN_GROUP})
+.RS
+The device number specified for the read channel has a different device type than the device number specified for the write channel. Return code 6 is set.
+.RE
+.IP
+.B Could not load module ${CCW_CHAN_GROUP}
+.RS
+The kernel module for the device type failed to load. Try "dmesg" to see if there is any indication why. Return code 7 is set.
+.RE
+.IP
+.B CCW devices grouped to different devices
+.RS
+The read and write channels are already grouped, but not within the same interface. Try again with different devices. Return code 8 is set.
+.RE
+.IP
+.B Could not group ${CCW_CHAN_GROUP} devices ${CTC_READ_CHAN}/${CTC_WRITE_CHAN}
+.RS
+The attempt to group the read and write channels into an interface failed. Try "dmesg" to see if there is any indication why. Return code 9 is set.
+.RE
+.IP
+.B Could not set device ${CCW_CHAN_ID} online
+.RS
+The attempt to bring the grouped devices online failed. Try "dmesg" to see if there is any indication why. Return code 10 is set.
+.RE
+.IP
+.B Could not set device ${CCW_CHAN_ID} offline
+.RS
+The attempt to take the grouped devices offline failed. Try "dmesg" to see if there is any indication why. Return code 11 is set.
+.RE
+
+If environment variable DEBUG is set to "yes," the following messages may be issued on stdout:
+.IP
+.B 
+Configuring CTC/LCS device ${CTC_READ_CHAN}/${CTC_WRITE_CHAN}
+.RS
+Just a little bit of verbosity, since it just indicates that we got past certain error checks and will now try to do something useful.
+.RE
+.IP
+.B Group is ${_ccw_groupdir}/drivers/${CCW_CHAN_GROUP}/group
+.RS
+Just a little bit of verbosity.
+.RE
+.IP
+.B Setting device online
+.RS
+Just a little bit of verbosity.
+.RE
+.IP
+.B Device ${CCW_CHAN_ID} is already online
+.RS
+An attempt was made to bring the adapter online when it was already online.
+.RE
+.IP
+.B Setting device offline
+.RS
+Just a little bit of verbosity.
+.RE
+.IP
+.B Device ${CCW_CHAN_ID} is already offline
+.RS
+An attempt was made to take the adapter offline when it was already offline.
+.RE
+.SH BUGS
+Gotta be some, I'm sure. If you find one, please open a bug report.

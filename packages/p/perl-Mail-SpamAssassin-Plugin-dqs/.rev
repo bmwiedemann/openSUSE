@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e082a471b048433407d61cb2e7a3d75</srcmd5>
+    <version>1.2.0</version>
+    <time>1644435578</time>
+    <user>dimstar_suse</user>
+    <comment>This package is very useful for all Spamhaus users as it's usage improves spam detection a lot.</comment>
+    <requestid>952863</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a553da06076af9e41311e4a0eec26d89</srcmd5>
+    <version>1.2.2</version>
+    <time>1668609853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036212</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b73ffd4689a986c4356ed2e781475a66</srcmd5>
+    <version>1.4.0</version>
+    <time>1673651014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058272</requestid>
+  </revision>
+</revisionlist>

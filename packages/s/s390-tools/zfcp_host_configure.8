@@ -1,0 +1,42 @@
+.TH zfcp_host_configure "8" "February 2013" "s390-tools"
+.SH NAME
+zfcp_host_configure \- Configures or deconfigures a zFCP host bus adapter (HBA).
+.SH SYNOPSIS
+.B zfcp_host_configure ccwid online
+.SH DESCRIPTION
+.B zfcp_host_configure
+is intended to make it easy to persistently add and remove IBM zFCP adapters. In addition to bringing the adapter online or offline, it will also create or delete the necessary udev rules for the adapter.
+.SH PARAMETERS
+.IP ccwid
+The device number of the zFCP adapter. Takes the form x.y.ssss where
+.RS
+.B x
+is always 0 until IBM creates something that uses that number.
+.RE
+.RS
+.B y
+is the subchannel set ID (SSID). Most often this is 0, but it could be non-zero.
+.RE
+.RS
+.B ssss
+is the four digit device address of the subchannel, in hexidecimal, with leading zeros. If entered in upper/mixed case, this is automatically converted to lower case.
+.RE
+.IP online
+Either a literal 1 to bring the adapter online or a literal 0 to take it offline
+.SH FILES
+Please see the documentation of
+.B chzdev.
+.RE
+.SH ENVIRONMENT
+.IP DEBUG
+If set to "yes" some minimal debugging information is output during execution.
+.SH DIAGNOSTICS
+Messages and return codes are determined by the
+.B chzdev
+command.
+If environment variable DEBUG is set to "yes," it shows the command line of the invoked
+.B chzdev.
+.SH BUGS
+Gotta be some, I'm sure. If you find one, please open a bug report.
+.SH SEE ALSO
+zfcp_disk_configure(8), zfcp_san_disc(8), chzdev(8)

@@ -1,0 +1,252 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12637c3b97e9a136d747a13593653bdd</srcmd5>
+    <version>MACRO</version>
+    <time>1553436289</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit - kernel/defaul-tbase order was wrong</comment>
+    <requestid>688001</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9e31770c7df4c87e5798a22ae2b328d3</srcmd5>
+    <version>MACRO</version>
+    <time>1554712224</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dw_mmc-bluefield driver (bsc#1118752)
+
+- Add back bpfilter, got lost during split (boo#1106751)</comment>
+    <requestid>691558</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b251a5b03e990340cfa0a9107b79b997</srcmd5>
+    <version>MACRO</version>
+    <time>1555588446</time>
+    <user>dimstar_suse</user>
+    <comment>Please build against 5.0.8+</comment>
+    <requestid>695443</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9ac70923922fb8ced7d4d6abbf6a0669</srcmd5>
+    <version>MACRO</version>
+    <time>1560337347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706192</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a1146777ddc53776adc00a7f93d454ae</srcmd5>
+    <version>MACRO</version>
+    <time>1565096911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719637</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>037912b338e37c6a8bc1aeadededc88b</srcmd5>
+    <version>MACRO</version>
+    <time>1565775431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722699</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>076c086ec0ed28c23b268d2db630ba00</srcmd5>
+    <version>MACRO</version>
+    <time>1566240789</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix wildcard for ip6t_.*</comment>
+    <requestid>723536</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>14baacfca0b1be41ad0acec5f52f8d3a</srcmd5>
+    <version>MACRO</version>
+    <time>1573222991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745513</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>455f0543eb1c7ace0100b54cd47980e5</srcmd5>
+    <version>MACRO</version>
+    <time>1578950253</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove iscsi_ibft (bsc#1157460)
+</comment>
+    <requestid>762790</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>1ff2756acdaafa54baeb142e8005b956</srcmd5>
+    <version>MACRO</version>
+    <time>1582555798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>776571</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>4624207e9ccf703afa6c8b3ebd0f0692</srcmd5>
+    <version>MACRO</version>
+    <time>1583311093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780880</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>b5ceaea2348b6745e5f675089c8910c5</srcmd5>
+    <version>MACRO</version>
+    <time>1587659369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796063</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>90a64c6e40d3308b6db7f60edd27198b</srcmd5>
+    <version>MACRO</version>
+    <time>1588856787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800335</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>3795dbeff9fc7574f199b1af7616747e</srcmd5>
+    <version>MACRO</version>
+    <time>1589992688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807731</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>8f098ee65d3298f42c8dd2beddca1513</srcmd5>
+    <version>MACRO</version>
+    <time>1602155345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839572</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>f794720d4804c03420ded312a96baf42</srcmd5>
+    <version>MACRO</version>
+    <time>1602762445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841507</requestid>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>4131a7a46b2dfdd8b8a4b4d485f0c4dd</srcmd5>
+    <version>MACRO</version>
+    <time>1606648795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850953</requestid>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>39bf0cda38cb9799848c7fd7af7ba9e7</srcmd5>
+    <version>MACRO</version>
+    <time>1613427114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871195</requestid>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>5d4b1a868b7a26a1b9de24d3a598b120</srcmd5>
+    <version>MACRO</version>
+    <time>1614792792</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874542</requestid>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>a19330c2555cad35477bc26c5b0fc37d</srcmd5>
+    <version>MACRO</version>
+    <time>1622236421</time>
+    <user>dimstar_suse</user>
+    <comment>Dummy CI-count bump</comment>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>fcebb3d44438ed254ad20e524f737bd8</srcmd5>
+    <version>MACRO</version>
+    <time>1623268280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897433</requestid>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>68a64e6c62adaf8552ec2b3f8d3e27ad</srcmd5>
+    <version>MACRO</version>
+    <time>1633644344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923172</requestid>
+  </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>c91b908a8ec82eb642910574ab3151ba</srcmd5>
+    <version>MACRO</version>
+    <time>1636577182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930474</requestid>
+  </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>c1e22b7c167949c5592a75e1e96dd7a5</srcmd5>
+    <version>MACRO</version>
+    <time>1646241630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958465</requestid>
+  </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>0df0996a0c5ac6caed8943f6f8724d02</srcmd5>
+    <version>MACRO</version>
+    <time>1665591818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009329</requestid>
+  </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>a3045e224010cae6e94d03095dde374e</srcmd5>
+    <version>MACRO</version>
+    <time>1680209436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075057</requestid>
+  </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>02e349545103770185b8ef96d13c0178</srcmd5>
+    <version>MACRO</version>
+    <time>1683111392</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build on s390 (bsc#1210729)</comment>
+    <requestid>1082550</requestid>
+  </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>f55c47e0d95f838e2c8c3f3df3cf35fc</srcmd5>
+    <version>MACRO</version>
+    <time>1688737562</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097149</requestid>
+  </revision>
+  <revision rev="29" vrev="29">
+    <srcmd5>882faa979cc03158c72bc85ba349361f</srcmd5>
+    <version>MACRO</version>
+    <time>1698872966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1121191</requestid>
+  </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>aa2bd355763845c2f03b2f9e4d83ab0b</srcmd5>
+    <version>MACRO</version>
+    <time>1702587755</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132867</requestid>
+  </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>ee59c1a37d98ebda1167dd838c057cc4</srcmd5>
+    <version>MACRO</version>
+    <time>1704919849</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137676</requestid>
+  </revision>
+</revisionlist>

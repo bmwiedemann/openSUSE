@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>483326469e7e2393d5e488be20807412</srcmd5>
+    <version>0.0402</version>
+    <time>1496822117</time>
+    <user>dimstar_suse</user>
+    <comment>needed by unpack</comment>
+    <requestid>501079</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>58236487f24d08f456973f61056ba1d4</srcmd5>
+    <version>0.0403</version>
+    <time>1527605389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611504</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a04b83a05f98ccdf7ae5ee90775960df</srcmd5>
+    <version>0.0404</version>
+    <time>1602155619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840036</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a7cb52bf937bb1b8b9f8f05d913400e</srcmd5>
+    <version>0.0405</version>
+    <time>1603725516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842990</requestid>
+  </revision>
+</revisionlist>

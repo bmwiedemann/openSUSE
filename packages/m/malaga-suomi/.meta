@@ -1,0 +1,5 @@
+<package name="malaga-suomi" project="openSUSE:Factory">
+  <title>Description of Finnish Morphology Written in Malaga</title>
+  <description>Suomi-Malaga is a description of Finnish morphology written in Malaga.</description>
+  <devel project="devel:libraries:c_c++" package="malaga-suomi"/>
+</package>

@@ -1,0 +1,19 @@
+We strongly recommend that you get your z/OS support teams involved before installing this package.
+
+The zdsfs command is a new feature provided by IBM with the s390-tools package in SLES12.  The zdsfs command allows Linux systems to mount z/OS DASD volumes as a Linux file system.  The zdsfs file system translates the z/OS data sets into Linux semantics.
+
+Through the zdsfs file system, applications on Linux can read z/OS physical sequential data sets (PS) and partitioned data sets (PDS) on the DASD. If implemented improperly, or without the knowledge and cooperation of the systems programmers and information security professionals responsible for the z/OS system, the zdsfs command represents a potentially very serious security and data integrity exposure.
+
+There are a number of factors to consider if you choose to install this package.  A necessarily incomplete list of these would be:
+- Through the zdsfs file system, whole DASD volumes are accessible to Linux
+- This access is not controlled or detectable by any z/OS security or auditing mechanisms.
+- This access is not controlled by any z/OS "locking" facility such as provided by ENQ, GRS, etc.
+- To avoid data inconsistencies, ensure the DASD volumes are offline to z/OS before you mount them in Linux.
+- To minimize security problems, you should dedicate the z/OS DASD volumes for the sole purpose of providing data to Linux.
+- To share z/OS data with Linux, copy it to a dataset on that separate volume.
+- Because the datasets will be accessed outside of z/OS, they will appear to have never been read after creation.
+- You should ensure the datasets that Linux is to access are on a separate volume that is not used for automatic dataset allocation and that is not under System Managed Storage (SMS) control.  This prevents dataset migration since they will appear to never be used (except when you update them), and it avoids unaudited access to datasets that are not intended for access by the Linux server.
+- When running Linux native in an LPAR, ensure that the LPAR has access only to the specific z/OS volumes that contain the data to be accessed by Linux.
+- By default, only the Linux user who mounts the zdsfs file system has access to it.
+
+By confirming this caution, you are acknowledging that you are aware there are potential data security and integrity exposures involved in the use of this package, and that you want to install it anyway.

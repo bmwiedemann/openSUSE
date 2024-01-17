@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f148fbb57cbf8febb11e56e1978f7cf</srcmd5>
+    <version>1.0.7</version>
+    <time>1529667010</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix /bin/bash path
+- Only replace env in nc_flash_window via sed
+- Recommend compton
+- Initial package in version 1.0.7 for openSUSE
+</comment>
+    <requestid>614892</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9be45a58a2c5331641b711aa2e59ad28</srcmd5>
+    <version>1.0.9</version>
+    <time>1536327684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.9:
+  * Improved test suite runtime 
+  * Fix uncaught AttributeError when RuleMatcher returns None 
+  * Fix bug which broke window flashing with transparent windows(#18) 
+  * Code refactoring</comment>
+    <requestid>633577</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec31e8efaa0891f977189155a163c197</srcmd5>
+    <version>1.1.1</version>
+    <time>1539758430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * Implemented flash-lone-windows configuration option
+    (see default config file for details)
+  * Added flash-lone-windows CLI option
+
+  * Improved test suite runtime
+  * Fix uncaught AttributeError when RuleMatcher returns None
+  * Fix bug which broke window flashing with transparent windows(#18)</comment>
+    <requestid>642045</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eb03bfae828076b4bc4fe5ecca790dec</srcmd5>
+    <version>1.2.0</version>
+    <time>1548335598</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * Added flash-lone-windows CLI option.
+  * Added: ability to set custom config file location with --config flag
+  * Fixed: Use marshmallow strict mode due to deprecation warning
+  * Fixed: Updated pyaml version in requirements due to security vulnerability</comment>
+    <requestid>667752</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>64078f6b4e871e54deccb4a77f0d8540</srcmd5>
+    <version>1.2.1</version>
+    <time>1548704970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  * Reverted Pyyaml requirement to &gt;3.0</comment>
+    <requestid>668989</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f2424e11ff3a2cd09224130182d9fb69</srcmd5>
+    <version>1.2.1</version>
+    <time>1549018023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670259</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2f863580c3c5f62ce5c14420141953b7</srcmd5>
+    <version>1.2.7</version>
+    <time>1559029440</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.7:
+  * Added support for marshmallow v3 which is in prerelease
+  * Set windows to default opacity even if they're not flashed (#25)
+
+- Update to 1.2.5:
+  * Stopped using the deprecated inspect.getargspec API in python3
+  * Bug fix (issue #25)</comment>
+    <requestid>705778</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1531a62ec866661308a7d3aec71798ed</srcmd5>
+    <version>2.0.5</version>
+    <time>1568805001</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.0.5:
+  * Add support for marshmallow v3
+- Does not work with i3/sway yet because we don't have i3ipc
+  packaged
+
+- Update to 2.0.3:
+  * Fix typo in marshmallow pin
+  * Add init.py to display_protocols submodule
+- Add flashfocus-2.0.3-no-i3ipc.patch
+
+- Update to 2.0.1:
+  * Temporarily pin marshmallow to v2
+  * Added sway support
+  * Dropped python2 support
+  * Increased minimum pyyaml version to 5.1
+  * Added i3ipc requirement</comment>
+    <requestid>731146</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>afca1f6f838af5b1aacce60b539d05eb</srcmd5>
+    <version>2.1.1</version>
+    <time>1569852185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  * Fixed: #39 Crashes when switching tags on dwm
+  * Handle null NET_WM_STATE when detecting fullscreen
+- Changes from 2.1.0:
+  * Added: flash-fullscreen/no-flash-fullscreen config options
+  * Fixed: Exit without traceback for non-supported wayland WMs
+  * Fixed: Cleaned up flakey tests</comment>
+    <requestid>734029</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cb6a92ecf038e81f43d8e5c7e978bcc8</srcmd5>
+    <version>2.1.2</version>
+    <time>1583784243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.2:
+  * (Hopefully) fixed: #43 - Error when setting rules in config
+  * Add support for Click 7.0</comment>
+    <requestid>782865</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ebf061febfa4f8d809a2954f61eb08d4</srcmd5>
+    <version>2.1.3</version>
+    <time>1585667769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.3:
+  * Fixed: #46 Accidental bump of required version of i3ipc
+- Refresh flashfocus-2.0.3-no-i3ipc.patch</comment>
+    <requestid>790006</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ec477a9ac680201c1a789ce07213b438</srcmd5>
+    <version>2.2.0</version>
+    <time>1591101462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * Added: --loglevel CLI option
+  * Fixed: Removed --opacity documentation in help</comment>
+    <requestid>810521</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c4c02a0e049215b931c7894ea199ef09</srcmd5>
+    <version>2.2.1</version>
+    <time>1594045965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.1:
+  * Fixed: Renamed (--loglevel/-l) param to (--verbosity/-v) due
+    to conflict with --flash-lone-windows</comment>
+    <requestid>818950</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>026e81a6c4d191ad6732ecf9879564a9</srcmd5>
+    <version>2.2.2</version>
+    <time>1597064539</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.2:
+  * Added: #55 Emit warning when flash-fullscreen: true in sway.</comment>
+    <requestid>825262</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6f84410b36aae09bca70d1f317741aea</srcmd5>
+    <version>2.2.4</version>
+    <time>1629269748</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.2.4:
+  * Fixed: Remove pytest from setup.py requirements (as it is not really required).
+
+- Update to 2.2.3:
+  * Bump click dependency to v9</comment>
+    <requestid>912363</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>fdd258095d6b9454e638cb4246074c74</srcmd5>
+    <version>2.2.4</version>
+    <time>1639169579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939168</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>181ef5ea4cdf28f6d527d0fe3981c62a</srcmd5>
+    <version>2.2.5</version>
+    <time>1657559370</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.5:
+  * Fixed: Relax PyYaml dependency</comment>
+    <requestid>988277</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4f63b1ed313184e2ec9a02fb0fabbe3d</srcmd5>
+    <version>2.3.0</version>
+    <time>1663074586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0:
+  * Added: #74 pyproject.toml config
+  * Fixed: #77 Rare race condition when detecting the current workspace
+  * Fixed: #78 Traceback when the current workspace is null
+  * Not user facing:
+    + #74 Misc. code cleanup/ linter fixes
+    + #75 Fix bug in Dockerfile
+    + #77 Add github action for running tests and fix some flakey tests
+    + #76 Add CODEOWNERS file</comment>
+    <requestid>1003078</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b164fc4b434bf85beaf468eb947132cc</srcmd5>
+    <version>2.3.1</version>
+    <time>1666610152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1:
+  * Fixed: #78 Fix error when the current workspace is null
+  * Not user facing: #79 Fixed a bunch of mypy warnings</comment>
+    <requestid>1030844</requestid>
+  </revision>
+</revisionlist>

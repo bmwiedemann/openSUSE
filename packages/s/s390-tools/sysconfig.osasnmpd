@@ -1,0 +1,14 @@
+## Path:	Network/SNMP/OSA Express SNMP agent
+## Description:	OSA Express SNMP agent parameters
+## Type:	string
+## Default:	""
+## ServiceRestart: snmpd
+#
+# OSA Express SNMP agent command-line parameters
+#
+# Enter the parameters you want to be passed on to the OSA Express SNMP
+# agent.
+#
+# Example: OSASNMPD_PARAMETERS="-l /var/log/my_private_logfile"
+#
+OSASNMPD_PARAMETERS=""

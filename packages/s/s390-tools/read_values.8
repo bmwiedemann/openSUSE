@@ -1,0 +1,50 @@
+.TH read_values "8" "March 2015" "s390-tools"
+.SH NAME
+read_values \- Read information from the /sys and /proc filesystems for SUSE Customer Center (SCC) and the like.
+.SH SYNOPSIS
+.B read_values [-s] [-u] [-c] [-a Attribute] [-L Keyword] [-d debug] [-h]
+.SH DESCRIPTION
+.B read_values
+is intended to make it easy to read values from the /sys and /proc filesystems. Those values may be at different places depending on the machine type and the kernel version.
+.SH PARAMETERS
+.IP -s
+Outputs the values needed by the SCC (SUSE Customer Center)
+.IP -u
+Creates a uuid for this system
+.IP -c
+Prints the CPU type of the current system
+.IP -a Attribute
+Prints the value of the
+.B Attribute
+.IP -L Keyword
+The
+.B Keyword
+may be
+.B Attribute
+or
+.B Recognised.
+With this option you get a list of all
+.B Attributes
+the programm can accept (
+.B Attribute
+) or a list of attributes which in turn can be used for the option -L (
+.B Recognised
+).
+.SH FILES
+.I /sys and /proc
+.SH DIAGNOSTICS
+The following messages may be issued on stderr:
+.IP
+.B Unable to open /proc/sysinfo
+or
+.B Unable to open sysinfo.zvm
+.RS
+The named file cannot be opened. This means the tool can't do anything useful.  Return code 99 is set.
+.RE
+.IP
+.B Only one of the options a, c, L, s or u can be specified.
+.RS
+Only one of the options a, c, L, s or u can be specified at a time. Return code 1 is set.
+.RE
+.SH BUGS
+Gotta be some, I'm sure. If you find one, please open a bug report.

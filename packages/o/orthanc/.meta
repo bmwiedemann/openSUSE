@@ -1,0 +1,5 @@
+<package name="orthanc" project="openSUSE:Factory">
+  <title>Advanced  RESTful DICOM server for healthcare and medical research</title>
+  <description></description>
+  <devel project="graphics" package="orthanc"/>
+</package>

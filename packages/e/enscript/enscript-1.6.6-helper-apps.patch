@@ -1,0 +1,16 @@
+---
+ docs/enscript.man |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- docs/enscript.man
++++ docs/enscript.man	2007-10-09 16:50:01.290749204 +0000
+@@ -394,6 +394,9 @@ generate RTF (Rich Text Format)
+ generate ANSI terminal control codes
+ .RE
+ .TP 8
++.B \-W \f2app\f1,\f2option\f3, \-\-language\f3=\f2app\f1,\f2option\f3
++pass the option \f2option\f3 to helper application \f2app\f3.
++.TP 8
+ .B \-X \f2name\f3, \-\-encoding=\f2name\f3
+ Use the input encoding \f2name\f1.  Currently \f3enscript\f1 supports
+ the following encodings:

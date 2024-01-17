@@ -1,0 +1,181 @@
+#! /bin/sh
+# Copyright (c) 2004 SUSE LINUX AG Nuernberg, Germany.
+#
+# Submit feedback to http://www.suse.de/feedback/
+#
+# System startup script for XPRAM device driver
+
+XPRAM_CONFIG_FILE=/etc/sysconfig/xpram
+
+read_config_file() {
+    if [ config_read = 1 ]; then
+	return 0
+    fi
+    file=$XPRAM_CONFIG_FILE
+    
+    if [ -s "$file" ]; then
+	source $file
+	config_read=1
+    else
+	echo -ne "Cannot read $file: empty or nonexistant! "
+	# Means not configured:
+	return 6
+    fi
+}
+
+prepare_xpram() {
+    if [ -z "$XPRAM_MNTPATH" -o -z "$XPRAM_DEVNODE" ]; then
+        echo -n "Cannot mkfs/mount XPRAM: Missing parameters! "
+         exit 6
+    fi
+    grep -q $XPRAM_DEVNODE /proc/mounts 2>&1 > /dev/null
+    if [ $? -eq 0 ] ; then
+        echo -n "$service: $XPRAM_DEVNODE already mounted! "
+        return
+    fi
+    current_fstype=`vol_id -t $XPRAM_DEVNODE 2> /dev/null`
+    if [ $? -ne 0 -o "$XPRAM_FORCE" = "yes" ]
+    then
+#		Does not contain a valid filesystem/swap space
+        if [ "$XPRAM_FSTYPE" = swap ]
+        then
+            mkswap $XPRAM_DEVNODE
+        else
+            mkfs -t "$XPRAM_FSTYPE" -b 4096 "$XPRAM_DEVNODE"
+        fi
+        sleep 1 # workaround
+        current_fstype=$XPRAM_FSTYPE
+    fi
+    if [ ! "$current_fstype" = "$XPRAM_FSTYPE" ]
+    then
+        echo
+        echo -n "Warning: current filessystem and configured filesystem are not the same!"
+        exit 6
+    fi
+    if [ "$XPRAM_FSTYPE" = swap ]
+    then
+        if [ "$XPRAM_SWAP_PRI" = "" ]
+        then
+            swapon $XPRAM_DEVNODE
+        else
+            swapon -p $XPRAM_SWAP_PRI $XPRAM_DEVNODE
+        fi
+    else
+        if [ ! -d "$XPRAM_MNTPATH" ]
+        then
+            mkdir -p "$XPRAM_MNTPATH"
+        fi
+        mount "$XPRAM_DEVNODE" "$XPRAM_MNTPATH"
+        if [ $? -ne 0 ]
+        then
+            echo -n "Mount failed with error code $?"
+            exit 6 
+        fi
+    fi
+}
+
+# Return values acc. to LSB for all commands but status:
+# 0 - success
+# 1 - generic or unspecified error
+# 2 - invalid or excess argument(s)
+# 3 - unimplemented feature (e.g. "reload")
+# 4 - insufficient privilege
+# 5 - program is not installed
+# 6 - program is not configured
+# 7 - program is not running
+# 
+# Note that starting an already running service, stopping
+# or restarting a not-running service as well as the restart
+# with force-reload (in case signalling is not supported) are
+# considered a success.
+
+check_config () {
+    if [ -z "$XPRAM_MODULE" ]; then
+	echo -n "$file: parameters XPRAM_MODULE missing! "
+	exit 6
+    fi
+}
+
+quit_disabled() {
+    if [ "$XPRAM_START" != "yes" ]; then
+	# Config file exists but xpram not enabled, do not complain,
+	# but note with exit status 6 that we are not configured.
+	echo "xpram not enabled"
+	exit 0
+    fi
+}
+
+service="xpram"
+case "$1" in
+    start)
+        # Read in configuration
+        read_config_file || exit 6
+
+	quit_disabled
+	check_config
+
+	echo -n "Creating $service device "
+	modprobe "$XPRAM_MODULE"
+	if [ $? -ne 0 ]; then
+	    echo -n "- failed to load $XPRAM_MODULE "
+	    exit 1
+	else
+	    prepare_xpram
+	fi
+
+	;;
+    stop)
+        # Read in configuration
+        read_config_file || exit 6
+
+	# check_enabled
+	# quit_disabled
+
+	echo -n "Removing $service device "
+
+	check_config
+
+	if [ "$XPRAM_DEVNODE" ]; then
+	    if grep -q $XPRAM_DEVNODE /proc/mounts; then
+		umount $XPRAM_DEVNODE
+	    fi
+	    if swapon -s | grep -q $XPRAM_DEVNODE; then
+		swapoff $XPRAM_DEVNODE
+	    fi
+	fi
+
+	if grep -q "$XPRAM_MODULE" /proc/modules; then
+		rmmod "$XPRAM_MODULE"
+	else
+		exit 7
+	fi
+
+	;;
+    status)
+	echo -n "Checking $service "
+
+	# Status has a slightly different meaning for the status command:
+	# 0 - service running
+	# 1 - service dead, but /var/run/  pid  file exists
+	# 3 - service not running
+
+        # Read in configuration
+        read_config_file || exit 3
+
+	check_config
+
+	lsmod | grep -q $XPRAM_MODULE 
+	if [ $? -eq 0 ]; then
+	    if [ "$XPRAM_DEVNODE" ]; then
+		if ! grep -q $XPRAM_DEVNODE /proc/mounts && ! swapon -s | grep -q $XPRAM_DEVNODE; then
+		    xpram_result=3
+		    echo -n "loaded, but $XPRAM_DEVNODE not used"
+		    exit 3
+		fi
+	    fi
+	else
+	    exit 3
+	fi
+
+	;;
+esac

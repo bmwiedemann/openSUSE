@@ -1,0 +1,392 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dfdf8ff8cb0c25cb6c9aa7c593acaac2</srcmd5>
+    <version>0.3.0</version>
+    <time>1641203396</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory</comment>
+    <requestid>943481</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f8307a100591d6552aad174197ccec82</srcmd5>
+    <version>0.4.0</version>
+    <time>1641555952</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.4.0
+  Highlights
+  - Adds hashed rekord type that can be used to upload signatures along with the hashed content signed (#501) (forwarded request 944479 from msmeissn)</comment>
+    <requestid>944481</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b0f3c8a6db1095e2affbb0a70a3b5a3a</srcmd5>
+    <version>0.4.0</version>
+    <time>1643128567</time>
+    <user>dimstar_suse</user>
+    <comment>Fix BUILD_DATE for reproducible build results (boo#1047218) (forwarded request 948951 from bmwiedemann)</comment>
+    <requestid>948953</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92c9101bc2d1a03c31a96908de372b43</srcmd5>
+    <version>0.5.0</version>
+    <time>1649014268</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to rekor 0.5.0
+  * Highlights
+    - Add Rekor logo to README (#650)
+    - update API calls to v5 (#591)
+    - Refactor helm type to remove intermediate state. (#575)
+    - Refactor the shard map parsing so we can pass it down into the API object. (#564)
+    - Refactor the alpine type to reduce intermediate state. (#573)
+  * Enhancements
+    - Add logic to GET artifacts via old or new UUID (#587)
+    - helpful error message for hashedrekord types (#605)
+    - Set Accept header in dynamic counter requests (#594)
+    - Add sharding package and update validators (#583)
+    - rekor-cli: show the url in case of error (#581)
+    - Enable parsing of incomplete minisign keys, to enable re-indexing. (#567)
+    - Cleanups on the TUF pluggable type. (#563)
+    - Refactor the RPM type to remove more intermediate state. (#566)
+    - Do some cleanups of the jar type to remove intermediate state. (#561)
+  * Others
+    - update version comments since dependabot doesn't do it (#617)
+    - Use workload identity provider instead of GitHub Secret for GCR access (#600)
+    - add OSSF scorecard action (#599)
+    - enable the sbom for rekor releases (#586)
+    - Point to the official website (instead of a 404) (#580)
+    - Add a Makefile target for the &quot;ko apply&quot; step. (#572)
+    - types/README.md: Corrected documentation link (#568)
+
+- enable server build too, as people might want to deploy rekor chain
+  themselves. (forwarded request 966623 from msmeissn)</comment>
+    <requestid>966624</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bea7cc96f6f848032f60df5e56cb021f</srcmd5>
+    <version>0.6.0</version>
+    <time>1650996939</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to rekor 0.6.0
+  - attempting to fix codeowners file by @bobcallaway in #653
+  - Update the warning text for the GA release. by @dlorenc in #654
+  - Add docs about API stability and deprecation policy by @priyawadhwa in #661
+  - update cross-build and dockerfile to use go 1.17.7 by @cpanato in #666
+  - Move k8s objects out of the default namespace by @k4leung4 in #674
+  - add securityContext to deployment. by @k4leung4 in #678
+  - Add intoto type documentation by @jspeed-meyers in #679
+  - create namespace for rekor config in yaml. by @k4leung4 in #680
+  - Set rekor-cli User-Agent header on requests by @bobcallaway in #684
+  - update security process link by @bobcallaway in #685
+  - explicitly set permissions for github actions by @k4leung4 in #687
+  - Add documentation about Alpine type by @jspeed-meyers in #697
+  - Add code coverage to pull requests. by @k4leung4 in #676
+  - Consistent parenthesis use in Makefile by @k4leung4 in #700
+  - Use logRangesFlag in API, route reads based on TreeID by @lkatalin in #671
+  - Generate release yaml for non-CI builds. by @k4leung4 in #702
+  - Mirror signed release images from GCR to GHCR as part of release by @k4leung4 in #701
+  - build trillian container to existing release. by @k4leung4 in #715
+  - Make the loginfo command a bit more future/backwards proof. by @dlorenc in #718
+  - Switch to using the swag library for pointer manipulation. by @dlorenc in #719
+  - Change TreeID to be of type string instead of int64 by @priyawadhwa in #712
+  - Add sharding e2e test to Github Actions by @priyawadhwa in #714
+  - fix merge conflict by @priyawadhwa in #720
+  - Clearer logging for createAndInitTree by @priyawadhwa in #724
+  - Return virtual index when creating and getting a log entry by @priyawadhwa in #725
+  - Fix copy/paste mistake in repo name. by @k4leung4 in #730
+  - Use reusuable release workflow in sigstore/sigstore by @k4leung4 in #729
+  - Get log proofs by Tree ID by @priyawadhwa in #733
+  - Refactor rekor-cli loginfo by @priyawadhwa in #734 (forwarded request 972808 from msmeissn)</comment>
+    <requestid>972809</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>50495467bd608b98b7c9ffa876b00419</srcmd5>
+    <version>0.8.1</version>
+    <time>1655732301</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to rekor 0.8.1
+  - Fix indexing bug for intoto attestations by @priyawadhwa in #870
+  - Allow an expired certificate chain to be uploaded and verified by @haydentherapper in #873
+- Updated to rekor 0.8.0
+  - Update go-tuf and sigstore/sigstore to non-vulnerable go-tuf version. by @dhaus67 in #847
+  - Configure rekor server in e2e tests via env variable by @priyawadhwa in #850
+  - update cross-builder image to use go1.17.11 and dockerfile base image by @cpanato in #860
+  - update go.mod to go1.17 by @cpanato in #861
+  - Improve error message when using ED25519 with HashedRekord type by @haydentherapper in #862
+  - Allow retrieving entryIDs or UUIDs via /api/v1/log/entries/retrieve endpoint by @priyawadhwa in #859
+  - Print total tree size, including inactive shards in rekor-cli loginfo by @priyawadhwa in #864
+- Updated to rekor 0.7.0
+  - remove URL fetch of keys/artifacts server-side by @bobcallaway in #735
+  - intoto: add index on materials digest of slsa provenance by @asraa in #793
+  - chore(deps): Included dependency review by @naveensrinivasan in #788
+  - Check if intoto hash is available before accessing it as an index key by @priyawadhwa in #800
+  - Move deprecated dependency: google/trillian/merkle to transparency-dev by @asraa in #807
+  - Retrieve shard tree length if it isn't provided in the config by @priyawadhwa in #810
+  - update release builder images to use go 1.17.10 and cosign image to 1.8.0 by @cpanato in #820
+  - update go to 1.17.10 in the dockerfile by @cpanato in #819
+  - Limit the number of certificates parsed in a chain by @haydentherapper in #823
+  - Breaking change: Remove timestamping authority by @haydentherapper in #813
+  - Add back owners for rfc3161 package type by @haydentherapper in #833
+  - all: remove dependency on deprecated github.com/pkg/errors by @zchee in #834
+  - name stored attestations by digest instead of UUID by @bobcallaway in #769 (forwarded request 983852 from msmeissn)</comment>
+    <requestid>983855</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>40d54306cad407fe12bb742307321077</srcmd5>
+    <version>0.8.1</version>
+    <time>1656587896</time>
+    <user>dimstar_suse</user>
+    <comment>- rekor-zypper-verify.sh: add a small script that verifies the on-system
+  zypper repo cache against rekor transparency log.</comment>
+    <requestid>985790</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a226a43247c9ee3957edc2371c557d16</srcmd5>
+    <version>0.9.1</version>
+    <time>1659034718</time>
+    <user>RBrownFactory</user>
+    <comment> (forwarded request 991394 from msmeissn)</comment>
+    <requestid>991395</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>27320a784cc8521ba7219a2e5452431d</srcmd5>
+    <version>0.12.0</version>
+    <time>1663275605</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 0.12.0 (jsc#SLE-23476):
+  - check supportedVersions list rather than directly reading from version map by @bobcallaway in #1003
+  - enable blocking specific pluggable type versions from being inserted into the log by @bobcallaway in #1004
+  - api.SearchLogQueryHandler thread safety by @cdris in #1006
+  - 'docker compose' to 'docker-compose' by @bobcallaway in #1009
+  - Intoto v0.0.2 by @pxp928 in #973
+  - Add bounds on number of elements in api/v1/log/entries/retrieve by @priyawadhwa in #1011
+  - Change Checkpoint origin to be &quot;Hostname - Tree ID&quot; by @haydentherapper in #1013
+  - feat: add verification functions by @asraa in #986
+  - Validate tree ID on calls to /api/v1/log/entries/retrieve by @priyawadhwa in #1017
+  - Include checkpoint (STH) in entry upload and retrieve responses by @haydentherapper in #1015
+  - fix: use entry uuid uniformly in return responses by @asraa in #1012
+  - remove /api/v1/version endpoint by @bobcallaway in #1022
+  - Fix rekor-cli backwards incompatibility &amp; run harness tests against HEAD by @priyawadhwa in #1030
+  - Fix harness tests @ main by @priyawadhwa in #1038
+  - Fetch all tags in harness tests by @priyawadhwa in #1039
+  - fix retrieve endpoint response code and add testing by @asraa in #1043
+- updated to rekor 0.11.0:
+  - Add rekor harness tests by @priyawadhwa in #945
+  - Persist and check attestations across harness tests by @priyawadhwa in #952
+  - Add harness test for getting all entries by UUID and EntryID by @priyawadhwa in #957
+  - api: fix inclusion proof verification flake by @asraa in #956
+  - change default value for rekor_server.hostname to server's hostname by @bobcallaway in #963
+  - fix nil-pointer error when artifact-hash is passed without artifact by @dsa0x in #965
+  - Add prometheus summary to track metric latency by @priyawadhwa in #966
+  - compute payload and envelope hashes upon validating intoto proposed entries by @bobcallaway in #967
+  - update field documentation on publicKey for hashedrekord by @bobcallaway in #969
+  - Allow sharding config to be written in yaml or json by @priyawadhwa in #974
+  - fix incorrect schema id for cose type by @bobcallaway in #979
+  - fix: make rekor verify work with sharded uuids by @asraa in #970 (forwarded request 1003862 from msmeissn)</comment>
+    <requestid>1003863</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9c08649be8605339a245717b7495035e</srcmd5>
+    <version>0.12.1</version>
+    <time>1664302471</time>
+    <user>RBrownFactory</user>
+    <comment>- updated to rekor 0.12.1 (jsc#SLE-23476):
+  - ** Rekor ** v0.12.1 comes with a breaking change to rekor-cli v0.12.1. Users of rekor-cli MUST upgrade to the latest version
+    The addition of the intotov2 created a breaking change for the rekor-cli
+  - What's Changed
+    - fix: fix harness tests with intoto v0.0.2 by @asraa in #1052
+    - feat: add file based signer and password by @asraa in #1049
+    - Adds new rekor metrics for latency and QPS. by @var-sdk in #1059</comment>
+    <requestid>1006397</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bc1f215f4c9f952e2cac3648e1c573e9</srcmd5>
+    <version>0.12.2</version>
+    <time>1664908695</time>
+    <user>RBrownFactory</user>
+    <comment>- updated to rekor 0.12.2 (jsc#SLE-23476):
+  - add description on /api/v1/index/retrieve endpoint
+  - Adding e2e test coverage
+  - export rekor build/version information
+  - Use POST instead of GET for /api/log/entries/retrieve metrics.
+  - Search through all shards when searching by hash (forwarded request 1007274 from msmeissn)</comment>
+    <requestid>1007909</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b82083202c0014f72608b6cbab2a3dd4</srcmd5>
+    <version>1.0.0</version>
+    <time>1666178282</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 1.0.0 (sc#SLE-23476):
+  - add description on /api/v1/index/retrieve endpoint by @bobcallaway in https://github.com/sigstore/rekor/pull/1073
+  - Adding e2e test coverage by @cdris in https://github.com/sigstore/rekor/pull/1071
+  - export rekor build/version information by @cpanato in https://github.com/sigstore/rekor/pull/1074
+  - Use POST instead of GET for /api/log/entries/retrieve metrics. by @var-sdk in https://github.com/sigstore/rekor/pull/1083
+  - Search through all shards when searching by hash by @priyawadhwa in https://github.com/sigstore/rekor/pull/1082
+  - verify: verify checkpoint's STH against the inclusion proof root hash by @asraa in https://github.com/sigstore/rekor/pull/1092
+  - add ability to enable/disable specific rekor API endpoints by @bobcallaway in https://github.com/sigstore/rekor/pull/1080
+  - enable configurable client retries with backoff in RekorClient by @bobcallaway in https://github.com/sigstore/rekor/pull/1096
+  - remove dead code around api-key and timestamp references by @bobcallaway in https://github.com/sigstore/rekor/pull/1098
+  - update swagger API version to 1.0.0 by @bobcallaway in https://github.com/sigstore/rekor/pull/1102
+  - remove unused RekorVersion API definition by @bobcallaway in https://github.com/sigstore/rekor/pull/1101
+  - install gocovmerge in hack/tools by @bobcallaway in https://github.com/sigstore/rekor/pull/1103
+  - add retry command line flag on rekor-cli by @bobcallaway in https://github.com/sigstore/rekor/pull/1097
+  - Add some info and debug logging to commonly used funcs by @priyawadhwa in https://github.com/sigstore/rekor/pull/1106 (forwarded request 1029932 from msmeissn)</comment>
+    <requestid>1029934</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9464caefa1476c7d52596c54d85aa061</srcmd5>
+    <version>1.0.1</version>
+    <time>1670259700</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 1.0.1 (jsc#SLE-23476):
+  - stop inserting envelope hash for intoto:0.0.2 types into index
+
+- updated to rekor 1.0.0 (jsc#SLE-23476): (forwarded request 1038886 from msmeissn)</comment>
+    <requestid>1040165</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f3d30477a252288ef18e0ef4e45f20b2</srcmd5>
+    <version>1.1.0</version>
+    <time>1680722913</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 1.1.0 (jsc#SLE-23476):
+  Functional Enhancements
+  - improve validation on intoto v0.0.2 type (#1351)
+  - add feature to limit HTTP request body length to process (#1334)
+  - add information about the file size limit (#1313)
+  - Add script to backfill Redis from Rekor (#1163)
+  - Feature: add search support for sha512 (#1142)
+  Quality Enhancements
+  - various fuzzing fixes
+  Bug Fixes
+  - remove goroutine usage from SearchLogQuery (#1407)
+  - drop log messages regarding attestation storage to debug (#1408)
+  - fix validation for proposed vs committed log entries for intoto v0.0.1 (#1309)
+  - fix: fix regex for multi-digit counts (#1321)
+  - return NotFound if treesize is 0 rather than calling trillian (#1311)
+  - enumerate slice to get sugared logs (#1312)
+  - put a reasonable size limit on ssh key reader (#1288)
+  - CLIENT: Fix Custom Host and Path Issue (#1306)
+  - do not persist local state if log is empty; fail consistency proofs from 0 size (#1290)
+  - correctly handle invalid or missing pki format (#1281)
+  - Add Verifier to get public key/cert and identities for entry type (#1210)
+  - fix goroutine leak in client; add insecure TLS option (#1238)
+  - Fix - Remove the force-recreate flag (#1179)
+  - trim whitespace around public keys before parsing (#1175)
+  - stop inserting envelope hash for intoto:0.0.2 types into index (#1171)
+  - Revert &quot;remove double encoding of payload and signature fields for intoto (#1150)&quot; (#1158)
+  - remove double encoding of payload and signature fields for intoto (#1150)
+  - fix SearchLogQuery behavior to conform to openapi spec (#1145)
+  - Remove pem-certificate-chain from client (#1138)
+  - fix flag type for operator in search (#1136) (forwarded request 1077454 from msmeissn)</comment>
+    <requestid>1077494</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d5a6610fead864b8f16c8b96368ec5f0</srcmd5>
+    <version>1.1.1</version>
+    <time>1683213023</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 1.1.1 (jsc#SLE-23476):
+  Functional Enhancements
+  - Refactor Trillian client with exported methods (#1454)
+  - Switch to official redis-go client (#1459)
+  - Remove replace in go.mod (#1444)
+  - Add Rekor OID info. (#1390)
+  Quality Enhancements
+  - remove legacy encrypted cosign key (#1446)
+  - swap cjson dependency (#1441)
+  - Update release readme (#1456) (forwarded request 1084326 from msmeissn)</comment>
+    <requestid>1084327</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>20647a3083db9e041029da400210e248</srcmd5>
+    <version>1.1.1</version>
+    <time>1683728235</time>
+    <user>dimstar_suse</user>
+    <comment>Security fixes:
+  - CVE-2023-30551: Fixed a potential denial of service (out of memory)
+    when processing JAR META-INF files or .SIGN/.PKINFO files in APK files.
+    (bsc#1211210 https://github.com/advisories/GHSA-2h5h-59f5-c5x9) (forwarded request 1085762 from msmeissn)</comment>
+    <requestid>1085763</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ad7425b6cdafb057fd6d5bc39c8d951b</srcmd5>
+    <version>1.2.1</version>
+    <time>1685476973</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 1.2.1 (jsc#SLE-23476):
+  Security fix:
+  - CVE-2023-33199: Fixed that malformed proposed intoto v0.0.2 entries can cause a panic (bsc#1211790)
+  Functional Enhancements
+  - add client method to generate TLE struct (#1498)
+  - add dsse type (#1487)
+  - support other KMS providers (AWS, Azure, Hashicorp) in addition to GCP (#1488)
+  - Add concurrency to backfill-redis (#1504)
+  - omit informational message if machine-parseable output has been requested (#1486)
+  - Publish stable checkpoint periodically to Redis (#1461)
+  - Add intoto v0.0.2 to backfill script (#1500)
+  - add new method to test insertability of proposed entries into log (#1410)
+  Quality Enhancements
+  - use t.Skip() in fuzzers (#1506)
+  - improve fuzzing coverage (#1499)
+  - Remove watcher script (#1484)
+  Bug Fixes
+  - Merge pull request from GHSA-frqx-jfcm-6jjr (CVE-2023-33199)
+  - Remove requirement of PayloadHash for intoto 0.0.1 (#1490)
+  - fix lint errors, bump linter up to 1.52 (#1485)
+  - Remove dependencies from pkg/util (#1469) (forwarded request 1089735 from msmeissn)</comment>
+    <requestid>1089753</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>862bba01a38183bd638f55cbbd93d480</srcmd5>
+    <version>1.3.0</version>
+    <time>1693685239</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 1.3.0 (jsc#SLE-23476):
+  - Update openapi.yaml (#1655)
+  - pass transient errors through retrieveLogEntry (#1653)
+  - return full entryID on HTTP 409 responses (#1650)
+  - feat: Support publishing new log entries to Pub/Sub topics (#1580)
+  - Change values of Identity.Raw, add fingerprints (#1628)
+  - Extract all subjects from SANs for x509 verifier (#1632)
+  - Fix type comment for Identity struct (#1619)
+  - Refactor Identities API (#1611)
+  - Refactor Verifiers to return multiple keys (#1601)
+  - Update checkpoint link (#1597)
+  - Use correct log index in inclusion proof (#1599)
+  - remove instrumentation library (#1595)
+- updated to rekor 1.2.2 (jsc#SLE-23476):
+  - pass down error with message instead of nil
+  - swap killswitch for 'docker-compose restart' (forwarded request 1108429 from msmeissn)</comment>
+    <requestid>1108430</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>63cdcafb058de8b5c4554c15eb1129d8</srcmd5>
+    <version>1.3.3</version>
+    <time>1700865337</time>
+    <user>anag+factory</user>
+    <comment>- updated to rekor 1.3.3 (jsc#SLE-23476):
+  - Update signer flag description
+  - update trillian to 1.5.3
+  - adds redis_auth
+  - Add method to get artifact hash for an entry
+  - make e2e tests more usable with docker-compose
+  - install go at correct version for codeql
+- updated to rekor 1.3.2 (jsc#SLE-23476):
+- updated to rekor 1.3.1 (jsc#SLE-23476):
+  New Features:
+  - enable GCP cloud profiling on rekor-server (#1746)
+  - move index storage into interface (#1741)
+  - add info to readme to denote additional documentation sources (#1722)
+  - Add type of ed25519 key for TUF (#1677)
+  - Allow parsing base64-encoded TUF metadata and root content (#1671)
+  Quality Enhancements:
+  - disable quota in trillian in test harness (#1680)
+  Bug Fixes:
+  - Update contact for code of conduct (#1720)
+  - Fix panic when parsing SSH SK pubkeys (#1712)
+  - Correct index creation (#1708)
+  - docs: fixzes a small typo on the readme (#1686)
+  - chore: fix backfill-redis Makefile target (#1685) (forwarded request 1128621 from msmeissn)</comment>
+    <requestid>1128622</requestid>
+  </revision>
+</revisionlist>
