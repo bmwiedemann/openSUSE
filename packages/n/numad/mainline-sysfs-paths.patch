@@ -1,0 +1,36 @@
+From 40f348eacb1c9a27f19e35341b373e351164a054 Mon Sep 17 00:00:00 2001
+From: Mel Gorman <mgorman@suse.de>
+Date: Wed, 22 May 2013 14:41:40 +0100
+Subject: [PATCH] Use sysfs configuration paths for mainline kernels
+Upstream: no
+
+The current recommended path for tuning THP is based on the RHEL kernel. Use
+the mainline sysfs filenames.
+
+Signed-off-by: Mel Gorman <mgorman@suse.de>
+---
+ numad.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/numad.c b/numad.c
+index 9262cab..c9c86f5 100644
+--- a/numad.c
++++ b/numad.c
+@@ -731,7 +731,7 @@ void check_prereqs(char *prog_name) {
+         exit(EXIT_FAILURE);
+     }
+     // Check on THP scan sleep time.
+-    char *thp_scan_fname = "/sys/kernel/mm/redhat_transparent_hugepage/khugepaged/scan_sleep_millisecs";
++    char *thp_scan_fname = "/sys/kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs";
+     int fd = open(thp_scan_fname, O_RDONLY, 0);
+     if (fd >= 0) {
+         int ms;
+@@ -748,7 +748,7 @@ void check_prereqs(char *prog_name) {
+                 fprintf(stderr, "Consider increasing the frequency of THP scanning,\n");
+                 fprintf(stderr, "by echoing a smaller number (e.g. 100) to %s\n", thp_scan_fname);
+                 fprintf(stderr, "to more aggressively (re)construct THPs.  For example:\n");
+-                fprintf(stderr, "# echo 100 > /sys/kernel/mm/redhat_transparent_hugepage/khugepaged/scan_sleep_millisecs\n");
++                fprintf(stderr, "# echo 100 > /sys/kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs\n");
+                 fprintf(stderr, "\n");
+             }
+         }

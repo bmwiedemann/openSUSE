@@ -1,0 +1,174 @@
+-------------------------------------------------------------------
+Wed Feb 15 18:27:00 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Add kdecoration-5.27.patch to fix build with Plasma 5.27
+- Increase version requirement for plasma and kdecoration to 5.27
+
+-------------------------------------------------------------------
+Sat Feb 12 16:43:41 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.11.1:
+  * Add missing version
+
+-------------------------------------------------------------------
+Sat Feb 12 11:50:06 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Uupdate to 0.11.0: 
+  * support Plasma 5.24 way of discovering themes from theme engines
+  * hide when preserveemptyspace is selected
+
+-------------------------------------------------------------------
+Wed Jan  5 13:48:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix installation (again) when using plasma-framework 5.89.
+
+-------------------------------------------------------------------
+Thu Nov  4 16:49:26 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.10.1:
+  * fix glitches with slide-in/out animations
+  * improve cpu and hard disk usage
+  * remove all workarounds related to faulty buttons painting
+  * respect and trust bug fixes in decorations provided with Plasma 5.23.2
+
+-------------------------------------------------------------------
+Thu Oct 21 12:58:27 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.10.0:
+  * Support Plasma 5.23
+  * Depend only on Plasma and KDecorations2 >=5.23
+  * drop option for plasma panels to disable decoration on maximized
+    windows
+- Remove fix-for-plasma-5.23.patch, part of this release
+
+-------------------------------------------------------------------
+Thu Oct 21 06:23:31 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Add fix-for-plasma-5.23.patch to fix build with Plasma 5.23
+- This means Plasma 5.23 (specifically kdecoration) 5.23 is now
+  the minumum requirement
+
+-------------------------------------------------------------------
+Sun Jul 18 08:41:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the %files section. plasma-framework >= 5.84 doesn't install
+  desktop files in %_kf5_servicesdir anymore.
+
+-------------------------------------------------------------------
+Tue May 11 18:32:19 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.9.0:
+  * support Plasma 5.18 and 5.21
+  * support aurorae monochrome icons with Latte auto-color functionality
+  * support aurorae restore button
+  * fix, do not hide buttons for AlwaysVisible
+  * fix, do not hide button in Latte edit mode
+  * fix, improve default based on Plasma values
+  * fix, preserve empty space for hidden states when needed
+  * remove no needed workarounds
+_ Remove fix-build-plasma-5.21.patch (part of release now)
+
+-------------------------------------------------------------------
+Wed Feb 24 09:12:45 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Add fix-build-plasma-5.21.patch to fix compilation with Plasma
+  5.21
+
+-------------------------------------------------------------------
+Thu Feb 13 15:21:26 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.8.1:
+  * fix compatibility with Plasma 5.18 (Rodrigo Pedra Brum)
+  * never hide buttons for AlwaysVisible visibility state
+
+-------------------------------------------------------------------
+Tue Jan 28 20:38:05 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update source URL
+
+-------------------------------------------------------------------
+Tue Jan 28 11:41:53 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.8.0:
+  * fix which plasma theme colors are used for buttons when
+    Colors:Plasma Theme is chosen
+  * do not show buttons that the current window has disabled them,
+    for example a window is NOT Closable; Close button becomes hidden in such case
+  * hide buttons when the last active maximized window is minimized
+    and there are no other shown windows
+  * improve configuration window texts
+  * create a new decoration only when it is really needed
+  * reduce filesystem trackers for scheme colors files
+  * use shared decoration between all buttons
+  * set an object name for the shared decoration in order to be
+    easily identified by KDecoration2 decorations
+
+-------------------------------------------------------------------
+Sun Nov 24 15:58:03 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.7.0:
+  * introduce a new Button Size percentage option and drop
+    thickness margin in order to set the buttons size
+  * introduce Hidden State in order for the user to choose how
+    buttons should behave when they should not be shown. Currently
+    two states are supported: Slide out and Preserve Empty Space
+  * introduce a new Color Scheme based on current Plasma Theme
+    used and make it also default
+  * live preview for changes in the settings window
+  * do not crash when the selected decoration does not exist in the
+    systemm, for example it was uninstalled
+  * update buttons for scheme changes
+
+-------------------------------------------------------------------
+Sun Sep  1 19:13:09 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update source URL
+
+-------------------------------------------------------------------
+Sun Sep  1 18:39:52 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.6.0:
+  * new visibility mode: At least one window is shown
+  * option to draw buttons in inactive state (for both c++ and
+    aurorae decorations)
+  * fix the current buttons decoration discovery, the user can now
+    change between different decorations and the buttons style is
+    updated runtime
+  * hide when the last maximized window is closed and the visibility
+    mode is ActiveMaximized
+  * fix multi-screens behavior for Latte panels
+  * fix typo that broke builds at some systems
+
+-------------------------------------------------------------------
+Fri Jul 12 21:49:19 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.5.0:
+  * provide a relevant background for window buttons in configuration
+    window to fix contrast issues
+  * support new Latte v0.9 Communicator API
+  * support new Latte v0.9 Windows Tracking interface when in Latte
+    dock/panel
+
+-------------------------------------------------------------------
+Sun Jun 30 10:13:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix grammar in descriptions.
+
+-------------------------------------------------------------------
+Mon May 20 00:35:05 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.4:
+  * add new KeepAbove button support (community contribution)
+  * merge different versions into a single one. One version for all Plasma versions >= 5.12
+  * close ComboBoxes after clicking
+- Lower plasma requirement to 5.12 (should now work)  
+
+-------------------------------------------------------------------
+Mon Mar  4 19:54:11 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.3.
+
+-------------------------------------------------------------------
+Sat Nov 17 23:11:01 UTC 2018 - Cor Blom <cornelis@solcon.nl>
+
+- Initial package

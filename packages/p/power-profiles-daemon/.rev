@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe2f4c0470b5b014a2a36784e84ba835</srcmd5>
+    <version>0.10.0</version>
+    <time>1634754231</time>
+    <user>dimstar_suse</user>
+    <comment>New package, GNOME 41 makes use of it if available - resub so we get a new staging with new rpmlint with the needed whitelistings</comment>
+    <requestid>926486</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f19006f32ef64029f2c978fadea85dce</srcmd5>
+    <version>0.10.1</version>
+    <time>1636388691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930161</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>039d4faf291e08c626095bc3012a37ba</srcmd5>
+    <version>0.10.1</version>
+    <time>1637535127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932771</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29b0442401e1b03b1c01e4d9234faed4</srcmd5>
+    <version>0.11</version>
+    <time>1651501537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974300</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>53930ef33c4a6ca313a62e84938f69e8</srcmd5>
+    <version>0.11.1</version>
+    <time>1652717320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977488</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7654a2134bae3bc67ae981ae02d7727d</srcmd5>
+    <version>0.12</version>
+    <time>1657281690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986798</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e2bbc7fce7866fe549328a5bbd1a00ef</srcmd5>
+    <version>0.13</version>
+    <time>1682691745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083162</requestid>
+  </revision>
+</revisionlist>

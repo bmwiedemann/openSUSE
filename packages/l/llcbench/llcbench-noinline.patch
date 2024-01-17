@@ -1,0 +1,58 @@
+Index: llcbench/blasbench/bb.c
+===================================================================
+--- llcbench.orig/blasbench/bb.c
++++ llcbench/blasbench/bb.c
+@@ -279,7 +279,7 @@ int compute_gemm_dimension(int maxmem, i
+ }
+ 
+ 
+-INLINE void do_saxpy(float *x, float *y, int iterations, int *limit)
++void do_saxpy(float *x, float *y, int iterations, int *limit)
+ {
+   REGISTER int i = 0;
+   extern int saxpy_();
+@@ -290,7 +290,7 @@ INLINE void do_saxpy(float *x, float *y,
+     }
+ }
+ 
+-INLINE void do_daxpy(double *x, double *y, int iterations, int *limit)
++void do_daxpy(double *x, double *y, int iterations, int *limit)
+ {
+   REGISTER int i = 0;
+   extern int daxpy_();
+@@ -301,7 +301,7 @@ INLINE void do_daxpy(double *x, double *
+     }
+ }
+ 
+-INLINE void do_sgemv(float *a, float *x, float *y, int iterations, int *limit, int *lda)
++void do_sgemv(float *a, float *x, float *y, int iterations, int *limit, int *lda)
+ {
+   REGISTER int i = 0;
+   extern int sgemv_();
+@@ -312,7 +312,7 @@ INLINE void do_sgemv(float *a, float *x,
+     }
+ }
+ 
+-INLINE void do_dgemv(double *a, double *x, double *y, int iterations, int *limit, int *lda)
++void do_dgemv(double *a, double *x, double *y, int iterations, int *limit, int *lda)
+ {
+   REGISTER int i = 0;
+   extern int dgemv_();
+@@ -323,7 +323,7 @@ INLINE void do_dgemv(double *a, double *
+     }
+ }
+ 
+-INLINE void do_sgemm(float *a, float *b, float *c, int iterations, int *limit, int *lda)
++void do_sgemm(float *a, float *b, float *c, int iterations, int *limit, int *lda)
+ {
+   REGISTER int i = 0;
+   extern int sgemm_();
+@@ -334,7 +334,7 @@ INLINE void do_sgemm(float *a, float *b,
+     }
+ }
+ 
+-INLINE void do_dgemm(double *a, double *b, double *c, int iterations, int *limit, int *lda)
++void do_dgemm(double *a, double *b, double *c, int iterations, int *limit, int *lda)
+ {
+   REGISTER int i = 0;
+   extern int dgemm_();

@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0fe61f370c4139299892388cd0ab65b7</srcmd5>
+    <version>8.92</version>
+    <time>1665504165</time>
+    <user>RBrownFactory</user>
+    <comment>A new package for compressing/decompressing APE (Monkey's Audio) lossless audio files.
+-- 
+Updated the way license is handled.</comment>
+    <requestid>1009573</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8505ebec1f696effe580ba43e9cf03a6</srcmd5>
+    <version>10.26</version>
+    <time>1699910466</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.26:
+  * Changed: Added decoding support for version 4.11 files. There
+    have been a couple reports of them. I don't know where they
+    came from, but they verify using the latest code. Please share
+    if you know about the origins.
+  * Changed: Made use of a new APE_INFO_MD5_MATCHES test during
+    quick verify. This way reading the MD5 is wrapped up nicely.
+  * NEW: Added APE_INFO_MD5 to the info object because a
+    third-party developer wanted it.
+  * Fixed: 32-bit ARM could crash because it was enabling an
+    intrinsic that was not available.
+  * Fixed: Little endian AIFF files would not encode properly.
+  * Changed: Updated to Visual Studio 17.7.4.
+  * Changed: Updated the copyrights to 2024.
+  * Changed: The check for AIFF / AIFC in file headers was
+    incorrectly allowing other things to pass.
+  * Changed: Added a License.txt file by the installer that gets
+    copied to the install path (also included in the SDK).
+  * Changed: Updated to Visual Studio 17.7.2.
+  * Changed: Added a license link to the help menu.
+  * Changed: Changed a few variables to have APE_ names because
+    JRiver was having compile problems (Objective C doesn't care
+    that things are in a namespace).
+  * NEW: Added the ability to convert tags to legacy ID3v1 in the
+    console program (my car stereo needs this).
+  * Changed: Switched to the three clause BSD license to simplify
+    inclusion of the source code.
+  * Fixed: Getting a large APE tag field could return a buffer size
+    that was too small so the next get would fail.
+  * Changed: Tuned the error handling a little more.</comment>
+    <requestid>1125181</requestid>
+  </revision>
+</revisionlist>

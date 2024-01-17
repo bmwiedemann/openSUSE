@@ -1,0 +1,13 @@
+Index: libsynce-0.15/lib/synce_types.h
+===================================================================
+--- libsynce-0.15.orig/lib/synce_types.h
++++ libsynce-0.15/lib/synce_types.h
+@@ -38,6 +38,8 @@ typedef uint64_t  ULARGE_INTEGER;
+ 
+ 
+ /* XXX: sizeof(double) must be 8 */
++//Python2.7 defines DATE as a macro in /usr/include/python2.7/pyconfig.h
++#undef DATE
+ typedef double    DATE;
+ 
+ /*

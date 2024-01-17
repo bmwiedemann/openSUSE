@@ -1,0 +1,10 @@
+<package name="gjiten" project="openSUSE:Factory">
+  <title>Japanese Dictionary Browser for GNOME/GTK+</title>
+  <description>Gjiten is a GNOME-based Japanese dictionary program. It uses some of
+the xjdic code written by Jim Breen and his dictionary files.  Gjiten
+also has a kanji dictionary. Any combination of stroke count, radicals,
+and search key can be used for kanji lookups.  It requires a working X
+input method (such as kinput2) for Japanese input.
+</description>
+  <devel project="Education" package="gjiten"/>
+</package>

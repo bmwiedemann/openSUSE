@@ -1,0 +1,26 @@
+Index: chemical-mime-data-0.1.94/icons/hicolor/Makefile.am
+===================================================================
+--- chemical-mime-data-0.1.94.orig/icons/hicolor/Makefile.am
++++ chemical-mime-data-0.1.94/icons/hicolor/Makefile.am
+@@ -26,7 +26,7 @@ if BOOL_HICOLOR_THEME
+ 		if test "x$(RSVG)" != "x" ; then \
+ 			$(RSVG) -w $${size} -h $${size} -f png $< $*_$${size}.png ; \
+ 		else \
+-			$(CONVERT) $< -resize $${size}x$${size} $*_$${size}.png ; \
++			$(CONVERT) $< -strip -resize $${size}x$${size} $*_$${size}.png ; \
+ 		fi \
+ 	done
+ 
+Index: chemical-mime-data-0.1.94/icons/hicolor/Makefile.in
+===================================================================
+--- chemical-mime-data-0.1.94.orig/icons/hicolor/Makefile.in
++++ chemical-mime-data-0.1.94/icons/hicolor/Makefile.in
+@@ -367,7 +367,7 @@ uninstall-am: uninstall-info-am
+ @BOOL_HICOLOR_THEME_TRUE@		if test "x$(RSVG)" != "x" ; then \
+ @BOOL_HICOLOR_THEME_TRUE@			$(RSVG) -w $${size} -h $${size} -f png $< $*_$${size}.png ; \
+ @BOOL_HICOLOR_THEME_TRUE@		else \
+-@BOOL_HICOLOR_THEME_TRUE@			$(CONVERT) $< -resize $${size}x$${size} $*_$${size}.png ; \
++@BOOL_HICOLOR_THEME_TRUE@			$(CONVERT) $< -strip -resize $${size}x$${size} $*_$${size}.png ; \
+ @BOOL_HICOLOR_THEME_TRUE@		fi \
+ @BOOL_HICOLOR_THEME_TRUE@	done
+ 

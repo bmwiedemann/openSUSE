@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Thu Jan  7 20:44:50 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Disable the static library and remove libtool metadata.
+- Link duplicate files.
+
+-------------------------------------------------------------------
+Tue Jan  5 21:02:38 UTC 2021 - Matthias Mailänder <matthias@mailaender.name>
+
+- Use https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Sep 18 17:03:59 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
+
+- Use -ffat-lto-objects when building static libraries.
+
+-------------------------------------------------------------------
+Sat Aug 27 10:00:23 UTC 2016 - jengelh@inai.de
+
+- Rectify RPM group classification
+
+-------------------------------------------------------------------
+Mon Apr 15 13:34:09 UTC 2013 - joop.boonen@opensuse.org
+
+- Added a gcc47 memcpy patch 
+
+-------------------------------------------------------------------
+Mon Nov 26 19:03:59 UTC 2012 - joop.boonen@opensuse.org
+
+- Using Debian libpng 1.5 patch
+
+-------------------------------------------------------------------
+Fri Nov 23 17:25:42 UTC 2012 - joop.boonen@opensuse.org
+
+- Fix build added missing directory in files
+
+-------------------------------------------------------------------
+Mon Apr 23 07:13:54 UTC 2012 - joop.boonen@opensuse.org
+
+- Requires name for devel package corrected
+  dependent packes couldn't be build anymore
+
+-------------------------------------------------------------------
+Sat Jul  2 11:55:09 UTC 2011 - jengelh@medozas.de
+
+- Remove conflicting %debug_package: OBS deals with that already
+- Remove unnecessary %clean section
+- Use %_smp_mflags
+- Move to .changes-style changelog
+
+-------------------------------------------------------------------
+Wed Dec  3 00:00:00 UTC 2008 - dominique-rpm@leuenberger.net
+
+- Changed spec to conform to SHLib policy
+- Provide / obsolete libSILLY by the new lib-package

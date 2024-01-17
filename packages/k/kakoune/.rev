@@ -1,0 +1,320 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24d693c5f1499934bbbcfe81e2b31a4b</srcmd5>
+    <version>0.0+git.20170125</version>
+    <time>1486306096</time>
+    <user>dimstar_suse</user>
+    <comment>hip new editor</comment>
+    <requestid>452980</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2ecf52b47e2092a09f06fe34cf2436f2</srcmd5>
+    <version>0.0+git.20170125</version>
+    <time>1486465538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update boost dependencies</comment>
+    <requestid>454784</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>05b61f655573cad07072ff2d68f8abbe</srcmd5>
+    <version>0.0+git.20170223</version>
+    <time>1488125390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git.20170223:</comment>
+    <requestid>460433</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>73f3210517ea25e792430199b9579c47</srcmd5>
+    <version>0.0+git.20170223</version>
+    <time>1493580278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492212</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee2a04842a665f3cd452453008346f47</srcmd5>
+    <version>0.0+git.20170513</version>
+    <time>1495442816</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495960</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3ce0f2a2a2728017c97d49d8e1470cb2</srcmd5>
+    <version>0.0+git.20170513</version>
+    <time>1500975603</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512147</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44c42e3de5ac92f16254f5994a23ef9b</srcmd5>
+    <version>0.0+git.20171017</version>
+    <time>1508434429</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git.20171017:</comment>
+    <requestid>535194</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>45b67c333c71462ea107003a6034e00b</srcmd5>
+    <version>0.0+git.20180228</version>
+    <time>1519844564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580781</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>990bdec1251e3d322085f7221e2d3c58</srcmd5>
+    <version>2018.04.13</version>
+    <time>1523956682</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove _service and _servicedata
+- Update to first official release 2018.04.13
+</comment>
+    <requestid>597108</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c267e690e95e27c18759d676b5d9e85d</srcmd5>
+    <version>2018.09.04</version>
+    <time>1536094668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2018.09.04:
+  This version contains a significant overhaul of various Kakoune features that can break user configuration
+  * %sh{...} strings are not reparsed automatically anymore, they need to go through an explicit evaluate-commands
+  * The -allow-override switch from define-command has been renamed -override.
+  * The search prompt uses buffer word completion so that fuzzy completion can be used to quickly search for a buffer word.
+  * The wrap highlighter can accept a new -marker &lt;marker_text&gt; switch.
+  * The command line syntax has changed to support robust escapin
+  * Escaping of ' in '...' and &quot; and % in &quot;...&quot; strings is done by doubling up ('', &quot;&quot; and %%) instead of using a backslash
+  * Bare words escaping has been tweaked.
+  * See :doc command-parsing.
+  * See :doc highlighters</comment>
+    <requestid>632963</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c37f677b749faf5899fbd9ad2d09e9dd</srcmd5>
+    <version>2018.10.27</version>
+    <time>1546535228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662272</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d464cacb1cbb5145889926f5721a2361</srcmd5>
+    <version>2019.01.20</version>
+    <time>1548335596</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to to 2019.01.20:
+  * auto_complete has been renamed to autocomplete for more
+    consistency.
+  * Start of a builtin key parser in the ncurses ui bypassing
+    the ncurses one. Can be favored by setting the ui option
+  * Right clicks extend the current selection, the control modifier allows
+    merging all the selections after extension.
+  * The regex highlighter now supports named capture groups to
+    ease readability.</comment>
+    <requestid>667750</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b9a04c08730f6d2dab3f618b9a41f7f6</srcmd5>
+    <version>2019.07.01</version>
+    <time>1562056782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2018.07.01:
+  * Re-organized bundled script files directory hierarchy.
+  * Introduced helpers to write/read from file in scripts with
+    %file{...} expansion and echo -to-file &lt;filename&gt;.
+  * Added ClientCreate and ClientClose hooks
+  * edit -scratch with no buffer name will create a new
+    scratch buffer with a unique autogenerated name.
+  * info -placement is now info -style and supports
+    menu and modal additional styles.
+  * completions option type docstring are now arbitrary
+    kakoune commands that are run on item select.
+  * InsertCompletionSelect hook has been removed as
+    completions commands now provides a similar feature.
+  * Introduced a module system using the provide-module and
+    require-module commands that allows for lazily loading language
+    support files with dependency resolution.
+  * Added a new hook ModuleLoaded which is run after a module is
+    loaded, allowing for module specific configuration.
+  * Shell quoting of lists is not automatic anymore, $kak_quoted_...
+    makes it opt-in, and works for all option types.
+  * Lower case function key syntax is not accepted anymore,
+    &lt;f1&gt; should be converted to &lt;F1&gt;.
+- Change to gnu++17 standard</comment>
+    <requestid>712982</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c61fd1f76e3290e607d8b035fdf23b4a</srcmd5>
+    <version>2019.12.10</version>
+    <time>1576014321</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019.12.10:
+  * Arrow keys and &lt;home&gt;, &lt;end&gt; are not normal mode commands
+    anymore but default key mappings.
+  * ModeChange hook parameter now takes push: or pop: prefix,
+    InsertBegin, InsertEnd, NormalBegin and NormalEnd were
+    removed.
+  * -verbatim switch in evaluate-commands for perfect command
+    forwarding to another context.
+  * WrapMarker face used by wrap -marker highlighter info supports
+    markup with the -markup switch
+  * rename-buffer gained -file and -scratch switches to support
+    converting buffer types.</comment>
+    <requestid>755569</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b5370e111cc8c36c85f7f8f55efcab04</srcmd5>
+    <version>2020.01.16</version>
+    <time>1579195409</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.01.16:
+  * Expose history tree through $kak_history and
+    $kak_uncommitted_modifications
+  * InsertCompletionHide parameter is the list of inserted ranges</comment>
+    <requestid>764978</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1924ff794a530ed65a5fb5411b6a9879</srcmd5>
+    <version>2020.08.04</version>
+    <time>1596565516</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.08.04:
+  * Introduce User hook support.
+  * The bold and italic faces are no longer built-in. Highlighters
+    are expected to use face attributes (+b and +i, respectively) to
+    decorate text.
+  * The lint-enable command no longer needs to be called to display
+    linting errors. The lint-disable command was renamed into
+    lint-hide-diagnostics.
+  * The +&lt;length&gt; part of a range-specs highlighter consistently
+    refers to the length of the target range.
+  * clients stdin is transferred to the server, making it possible
+    to pipe into kak -c &lt;session&gt;
+  * Faces can have an alpha channel, specified using the
+    rgba:RRGGBBAA format.
+  * replace-ranges highlighter now support empty and multi-lines ranges
+  * %val{...} now expands to list of strings, $kak_quoted_... now work
+    as expected with these.
+  * *SetOption hooks filter string will contain a value only for options
+    of int/str/bool types to avoid performance issue with generating those
+    on more complex option types.</comment>
+    <requestid>824335</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6e76355d4cf26fc6bd220365d80372cb</srcmd5>
+    <version>2020.09.01</version>
+    <time>1599088576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.09.01:
+  * Daemon mode (-d switch) does not fork anymore.
+  * Fix crash on completion.</comment>
+    <requestid>831368</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4ede80bbff7c13df0681b540e3b0193b</srcmd5>
+    <version>2020.09.01</version>
+    <time>1623098680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898148</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>02c0b5dcd63415bee1772d09a41cbfd2</srcmd5>
+    <version>2021.08.28</version>
+    <time>1630324524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2021.08.28:
+  * command and response fifo support
+  * Shell expansions only trim the last trailing newline instead of
+    all of them to make is possible to losslessly pass text through %sh{...}.
+  * set-option -remove support for subtracting/removing from option values
+  * Menu completions such as command name completion are now
+    auto-inserted on space
+  * write -atomic was replaced with write -method [replace|overwrite]
+    to make both write methods available explicitly
+  * write &lt;filename&gt; will fail if the given filename already exists
+    and is a regular file. Use the -force switch to override that behaviour.
+  * ncurses was replaced with a custom terminal escape sequence
+    backend, ncurses is not a dependency anymore.
+- Remove 0001-Add-missing-limits-includes.patch</comment>
+    <requestid>914969</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b1328da34ff732746b6e50ae83311d59</srcmd5>
+    <version>2021.10.28</version>
+    <time>1635956783</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2021.10.28:
+  * g and v do not auto lower case the next key, so GL needs to be
+    manually mapped to Gl for example.
+  * Fix flickering issues on some terminals such as the linux console</comment>
+    <requestid>928955</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>21d3f3ba81c826df69cfc9a4f86d1d9c</srcmd5>
+    <version>2021.11.08</version>
+    <time>1638740749</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2021.11.08:
+  * Support for curly and separately colored underlines
+  * Fixes for terminal flickering
+  * Fixes for command and response fifo corner cases</comment>
+    <requestid>935566</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>4450bd7da6a456c8e5ed2b807a9ae8dd</srcmd5>
+    <version>2021.11.08</version>
+    <time>1656422588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985586</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ba2fd396ad6dcf84371dbc6f147add12</srcmd5>
+    <version>2022.10.31</version>
+    <time>1667209518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.10.31:
+  * complete-command to specify and change how a command is completed
+  * p, P, ! and &lt;a-!&gt; commands now select the inserted text
+  * x now just extends the selection to contain full lines (as &lt;a-x&gt; did)
+    &lt;a-x&gt; trims partial lines from the selection (as &lt;a-X&gt; did)
+  * User mappings is now bound to &lt;space&gt; while keeping/removing main
+    selection moved to , and &lt;a-,&gt;
+  * Prompt history registers %reg{colon}, %reg{slash} and %reg{pipe}
+    now have reverse chronological order
+  * Executing user mode mappings no longer adds to prompt history registers.
+- Remove kakoune-2021.11.08-gcc-12.patch
+- Remove BR for libboost_regex, libxslt-tools, and ncurses:
+  not needed anymore
+- Require gcc &gt;= 12</comment>
+    <requestid>1032407</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>fbda21ff6d314dfbba920c60859a9613</srcmd5>
+    <version>2022.10.31</version>
+    <time>1681221282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078450</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>42a9acfdb57c80b1f0f8fd29f9c1da65</srcmd5>
+    <version>2023.07.29</version>
+    <time>1690809897</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1101490</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dac752fd5b8956d48b068cd0e86c041a</srcmd5>
+    <version>2023.08.05</version>
+    <time>1691414952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2023.08.05:
+  * Fix compilation errors on FreeBSD and MacOS using clang</comment>
+    <requestid>1102629</requestid>
+  </revision>
+</revisionlist>

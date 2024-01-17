@@ -1,0 +1,25 @@
+Index: trng4-4.25/CMakeLists.txt
+===================================================================
+--- trng4-4.25.orig/CMakeLists.txt
++++ trng4-4.25/CMakeLists.txt
+@@ -14,6 +14,7 @@ endif()
+ 
+ option(TRNG_ENABLE_TESTS "Enable/Disable the compilation of the TRNG tests" ON)
+ option(TRNG_ENABLE_EXAMPLES "Enable/Disable the compilation of the TRNG examples" ON)
++option(USE_EXTERNAL_CATCH "Use system installed Catch2" ON)
+ 
+ if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wmaybe-uninitialized")
+@@ -42,7 +43,11 @@ configure_package_config_file("cmake/Con
+ 
+ add_subdirectory(trng)
+ if(TRNG_ENABLE_TESTS)
+-  add_subdirectory(external/Catch2)
++  if(USE_EXTERNAL_CATCH)
++	  find_package(Catch2 2 REQUIRED)
++  else(USE_EXTERNAL_CATCH)
++    add_subdirectory(external/Catch2)
++  endif()
+   add_subdirectory(tests)
+ endif()
+ if(TRNG_ENABLE_EXAMPLES)

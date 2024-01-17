@@ -1,0 +1,10 @@
+<package name="wicked" project="openSUSE:Factory">
+  <title>Network configuration infrastructure</title>
+  <description>Wicked is a network configuration infrastructure incorporating a number
+of existing frameworks into a unified architecture, providing a DBUS
+interface to network configuration.
+
+</description>
+  <devel project="network:wicked:factory" package="wicked"/>
+  <url>https://github.com/openSUSE/wicked</url>
+</package>

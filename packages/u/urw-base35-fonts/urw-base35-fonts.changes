@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Thu Sep 21 12:59:48 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add confict with ghostscript-fonts-std-converted as similar
+  fonts overlapping name spaces are provided 
+
+-------------------------------------------------------------------
+Thu Sep 21 12:47:06 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to release 20200910
+  * Mainly to fix letter te (afii10084) in Nimbus Sans Bold(Italic) 
+- Add (61-)urw-postscript-aliases.conf
+  * Make Dingbats aka D050000l known as Zapf Dingbats
+  * Provide Symbol for Standard Symbols PS or Standard Symbols L
+- Merge common sub package as this breaks rpm db on directory
+  ownership of /usr/share/licenses
+- All sub packages now supplements the main package whereas the
+  main packages requires all sub packages
+
+-------------------------------------------------------------------
+Wed Sep 12 21:00:37 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to release 20170801.1
+  * The font files are unchanged
+  * The metadata has received several fixes and updates
+- Use correct correct SPDX exception for font license
+
+-------------------------------------------------------------------
+Fri Mar 16 20:04:54 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Use macros from fontpackages-devel for correct installation of
+  fontconfig files
+
+-------------------------------------------------------------------
+Thu Mar  1 20:43:13 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- initial version (20170801)

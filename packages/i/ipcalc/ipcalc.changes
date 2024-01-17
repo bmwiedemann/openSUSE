@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Tue Jun 27 15:11:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.3:
+  * When --no-decorate is given the default output will
+  * include no colors
+  * Correctly split networks with /31
+
+-------------------------------------------------------------------
+Mon Jan  2 20:43:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Fix ULA prefix generator to use only defined ULA range
+  * Corrected manpage generation
+
+-------------------------------------------------------------------
+Sat Oct 16 15:16:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  - The application will now build even without ronn
+  - Improved JSON output on single host input
+
+-------------------------------------------------------------------
+Sat Apr  3 20:54:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.0.0:
+  * Manpage was converted to markdown.
+- Switch to using meson for building; BuildRequires: meson >=
+  0.49.
+- Addtional BuildRequires now needed: pkgconfig(libmaxminddb),
+  rubygem(ronn).
+- Add ipcalc-disable-network-tests.patch: Disable tests requiring
+  network.
+- Run tests as part of %check section.
+- New upstream URL and Source URL.
+- Drop patch patch-queue: no longer needed.
+
+-------------------------------------------------------------------
+Tue Aug  4 10:07:35 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-clenaer
+
+-------------------------------------------------------------------
+Sun Jun 26 22:24:37 UTC 2011 - lazy.kent@opensuse.org
+
+- refreshed patch to fix build in openSUSE >= 11.3
+- splitted off rpm changelog to changes
+- corrected License tag
+- added Authors
+- formatted spec
+
+-------------------------------------------------------------------
+Sun Nov 18 00:00:00 UTC 2007 - guru@unixtech.be
+
+- moved to openSUSE Build Service
+- added minor patch
+
+-------------------------------------------------------------------
+Sun Oct 22 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new upstream version
+- rewrote spec file
+
+

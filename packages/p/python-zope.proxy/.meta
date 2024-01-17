@@ -1,0 +1,5 @@
+<package name="python-zope.proxy" project="openSUSE:Factory">
+  <title>Generic Transparent Proxies</title>
+  <description>Proxies are special objects which serve as mostly-transparent wrappers around another object, intervening in the apparent behavior of the wrapped object only when necessary to apply the policy (e.g., access checking, location brokering, etc.) for which the proxy is responsible.</description>
+  <devel project="devel:languages:python" package="python-zope.proxy"/>
+</package>

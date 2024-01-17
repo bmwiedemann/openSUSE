@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27bc59a26358e8b54535d0b1f310f3b4</srcmd5>
+    <version>0.41</version>
+    <time>1371645853</time>
+    <user>coolo</user>
+    <comment>Such an useful tool has to be part of any next-gen distro</comment>
+    <requestid>179561</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>27bc59a26358e8b54535d0b1f310f3b4</srcmd5>
+    <version>0.41</version>
+    <time>1379662676</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>27bc59a26358e8b54535d0b1f310f3b4</srcmd5>
+    <version>0.41</version>
+    <time>1409301238</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>0dd3039910a0f281069bf55117097b82</srcmd5>
+    <version>0.41</version>
+    <time>1438794872</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320495</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2cc1995d476d232405895af15f8f84de</srcmd5>
+    <version>1.0.0</version>
+    <time>1620653932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891857</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0edcba3e579dcc1edc33d387fdbbf79c</srcmd5>
+    <version>1.0.1</version>
+    <time>1635539671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928128</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e1980441f884ae77977dda7dda895da2</srcmd5>
+    <version>1.0.2</version>
+    <time>1675095092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062041</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c87cc2cca47a7e5665c4cf1da7450748</srcmd5>
+    <version>1.0.3</version>
+    <time>1688399010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096356</requestid>
+  </revision>
+</revisionlist>

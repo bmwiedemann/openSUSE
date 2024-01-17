@@ -1,0 +1,326 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d605835f9fcef1d089928e8a7815675</srcmd5>
+    <version>4.0.6</version>
+    <time>1500669939</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>506261</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb8d86b8cf4b98ccf61c0814fda19d1e</srcmd5>
+    <version>4.0.8</version>
+    <time>1500975590</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512073</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2f4a350351074f069899c8a4e597c9a5</srcmd5>
+    <version>4.0.8</version>
+    <time>1502562389</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514754</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fae2b15eb6478665ea0a2bf9858d1f31</srcmd5>
+    <version>4.0.10</version>
+    <time>1507570841</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530360</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>91e7fbd47b6ce034e93ecff976b6f170</srcmd5>
+    <version>4.0.11</version>
+    <time>1508197988</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534150</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bb09642e5bf30012e458ba1c91689c56</srcmd5>
+    <version>4.0.12</version>
+    <time>1509722777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538275</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5f9c106bea10af9260bd6ee0e1df0506</srcmd5>
+    <version>4.0.12</version>
+    <time>1513110164</time>
+    <user>dimstar_suse</user>
+    <comment>- Small package cleanup
+- Do not use scriplets on Factory where they are not needed anymore
+- Run tests during build
+
+- BuildRequire pkgconfig(x11) not xorg-x11-devel</comment>
+    <requestid>556008</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>33e43c9dfe34bc5bad87356682b4da33</srcmd5>
+    <version>4.0.13</version>
+    <time>1514745174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560766</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f1da1855e0c6fdee49be2d1c23bedb75</srcmd5>
+    <version>4.0.14</version>
+    <time>1516222683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566451</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>35e8408cc923bdbabeaf320719b9ab20</srcmd5>
+    <version>4.0.15</version>
+    <time>1516634448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568105</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a69753709c0d4f4840d26fdefe82eeba</srcmd5>
+    <version>4.0.16</version>
+    <time>1518426975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575494</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1f3c73029b84ecf86df38069e6955c10</srcmd5>
+    <version>4.0.17</version>
+    <time>1529402256</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616444</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d63d198a05b7f0fe38e66e9b2959af66</srcmd5>
+    <version>4.0.18</version>
+    <time>1534774959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630481</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2736ccd86fa49297347a8e2fab090e35</srcmd5>
+    <version>4.1.00</version>
+    <time>1549140592</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670526</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ad9d1f2b8a26931f62b3f4802c6eacbe</srcmd5>
+    <version>4.1.01</version>
+    <time>1550668469</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677600</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>10017625b0e80f286f0a5435ff9b635d</srcmd5>
+    <version>4.1.03</version>
+    <time>1560971288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710198</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e8c08fcba2d315a2074695757d5f69fd</srcmd5>
+    <version>4.1.04</version>
+    <time>1561049781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710982</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4a8996b0d9ed1807632392cafef58a0a</srcmd5>
+    <version>4.1.05</version>
+    <time>1562843690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713294</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>85ce20fa34db9925e558e55c40f4cec2</srcmd5>
+    <version>4.1.06</version>
+    <time>1563993356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718119</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4addb8e9c5c04bf57aa59830e37dc080</srcmd5>
+    <version>4.1.07</version>
+    <time>1565362464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721949</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8f54e53e5f97245f5289ba32e489ce2c</srcmd5>
+    <version>4.1.08</version>
+    <time>1566894479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726278</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a8d3f5dc20fb9c28ed3b42fec9aa0964</srcmd5>
+    <version>4.1.09</version>
+    <time>1579729541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766224</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>50cd828967b586f41481409fbe21936b</srcmd5>
+    <version>4.1.10</version>
+    <time>1585842226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790707</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5e8f14a94b2c23775f90798fbd8b6801</srcmd5>
+    <version>4.1.11</version>
+    <time>1585995914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791115</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>168cecc3206d9a9292a18b91f873e8ce</srcmd5>
+    <version>4.1.12</version>
+    <time>1587839306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796687</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f1086c2bf90f29675ee9433039d535e0</srcmd5>
+    <version>4.1.13</version>
+    <time>1590650424</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809691</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b158d9539a40ad8669a42675fa2ef281</srcmd5>
+    <version>4.1.14</version>
+    <time>1595577486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822164</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>83e91acf372ca4f863d49f6bb969c0f7</srcmd5>
+    <version>4.1.15</version>
+    <time>1604413328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845431</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0496944d10b03447d4de2a2538b97a16</srcmd5>
+    <version>4.1.16</version>
+    <time>1605959008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849703</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0fa4481fee8b13c243aa6ae483a9ce85</srcmd5>
+    <version>4.1.17</version>
+    <time>1607612343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854477</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>698390318cbd4381a5232b6e47f4737c</srcmd5>
+    <version>4.1.18</version>
+    <time>1612707659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869676</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e4084a92d56b4dbc7527af484264175a</srcmd5>
+    <version>4.1.19</version>
+    <time>1625338254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903827</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0d5285677af567d79b04a24964f5b7e6</srcmd5>
+    <version>4.1.20</version>
+    <time>1629269746</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912354</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d86479610735cb0e91b2f4acba491417</srcmd5>
+    <version>4.1.22</version>
+    <time>1652801083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977724</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5c25653eeced7259c03d754345c55b37</srcmd5>
+    <version>4.1.23</version>
+    <time>1656768854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986248</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d0d677fb1cdc1424133652514847999d</srcmd5>
+    <version>4.1.25</version>
+    <time>1677419458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067722</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>821c6605ee5636856d74f4bfcb534a2b</srcmd5>
+    <version>4.1.26</version>
+    <time>1679182248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072718</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e46e744898532df4abdff1962c514d2f</srcmd5>
+    <version>4.1.27</version>
+    <time>1690215960</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099897</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>46f718dd58cbd53f211d4971be8c1979</srcmd5>
+    <version>4.2.00</version>
+    <time>1693860810</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108821</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7a31d4ffbec9d90c536574774aa1a18e</srcmd5>
+    <version>4.2.03</version>
+    <time>1699301686</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123598</requestid>
+  </revision>
+</revisionlist>

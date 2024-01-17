@@ -1,0 +1,5 @@
+<package name="something-for-reddit" project="openSUSE:Factory">
+  <title>Something For Reddit</title>
+  <description>A Reddit Client For GNOME (with Gtk+ and Python)</description>
+  <devel project="GNOME:Apps" package="something-for-reddit"/>
+</package>

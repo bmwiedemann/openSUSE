@@ -1,0 +1,186 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ebb6cba0877c5a1430d7210992d513d8</srcmd5>
+    <version>1.5.1</version>
+    <time>1469081934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>412319</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a488eee3e2fcb29f0a8f08bee7f69bd7</srcmd5>
+    <version>1.5.2</version>
+    <time>1498638985</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.2
+  * disables old SSL methods
+  * fixed some hangs/crashes
+- fixes test failures in OBS
+- drop patches that are no longer needed:
+  * pyftpdlib-disable-error-0-ssl-unwrap.diff
+  * pyftpdlib-disable-incomplete-file-received.diff
+  * pyftpdlib-handle-missing-SSLv3.diff
+- convert to singlespec (forwarded request 505700 from matejcik)</comment>
+    <requestid>505701</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1ccd92f43625843c0b17c307deb5ffa8</srcmd5>
+    <version>1.5.2</version>
+    <time>1499754318</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508490</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fa7b63e7a9f464dd46f9a76247499627</srcmd5>
+    <version>1.5.3</version>
+    <time>1525779384</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.5.3:
+  * implemented SITE MFMT command which changes file modification time. (patch by Tahir Ijaz)
+  * add username and password command line options
+  * documentation moved to readthedocs: http://pyftpdlib.readthedocs.io
+  * fix duplicated output log. (path by PonyPC)
+  * Respond successfully to STOR only after closing file handle.</comment>
+    <requestid>603032</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b3b456f2127557b584fe0942d717f055</srcmd5>
+    <version>1.5.4</version>
+    <time>1525960180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605512</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>814f4d3284a6d63269e70bc856f9601a</srcmd5>
+    <version>1.5.4</version>
+    <time>1545648112</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659586</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bdf672a8874ce4be8157137e97acc224</srcmd5>
+    <version>1.5.5</version>
+    <time>1558939167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.5:
+  * Various minor fixes and documentation updates</comment>
+    <requestid>705393</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e93123c16a38d394d6390c1fb7b72704</srcmd5>
+    <version>1.5.5</version>
+    <time>1559375268</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not remove tests, other packages import them</comment>
+    <requestid>705885</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>194bc4d5c2b7d3c5bfda3691081f9445</srcmd5>
+    <version>1.5.6</version>
+    <time>1584531967</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.6:
+  - #467: added pre-fork concurrency model, spawn()ing worker processes to split
+    load.
+  - #520: directory LISTing is now 3.7x times faster.</comment>
+    <requestid>786119</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2f7271e40fb8b04575e179b315610028</srcmd5>
+    <version>1.5.6</version>
+    <time>1585342685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788921</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>6e0c6588f1d4603a79561fcdd0b620e3</srcmd5>
+    <version>1.5.6</version>
+    <time>1587467342</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795774</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>a734772d6601fed851348d51df7e5747</srcmd5>
+    <version>1.5.6</version>
+    <time>1590506250</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807662</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>ae6285283c8bc42103a5cc4f9d2e864a</srcmd5>
+    <version>1.5.6</version>
+    <time>1597756120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826978</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>b7730d5ec0fe5a2aa74d31a369b97701</srcmd5>
+    <version>1.5.6</version>
+    <time>1608729701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858115</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>2b126a2ee70ef0860236875ef14d922b</srcmd5>
+    <version>1.5.6</version>
+    <time>1620653899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891607</requestid>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>82b99645fbb65a53abcd3513b77cbebc</srcmd5>
+    <version>1.5.6</version>
+    <time>1635272029</time>
+    <user>dimstar_suse</user>
+    <comment>- Regenerate new private key/x509 certificate for the test suite.
+  (thanks, Jason!)</comment>
+    <requestid>927405</requestid>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>393c77fe5620d3795c27276040ae5e8f</srcmd5>
+    <version>1.5.6</version>
+    <time>1642724711</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off the test suite, it just doesn't work reliably
+  (gh#giampaolo/pyftpdlib#540).
+</comment>
+    <requestid>947432</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7d3f164d9e4211a3a26b33500ae94701</srcmd5>
+    <version>1.5.7</version>
+    <time>1667306468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032495</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>8af08a5f104ef5f70257b8f8b46b98ea</srcmd5>
+    <version>1.5.7</version>
+    <time>1682193475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081657</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>f8d0f1429796aca003ea68cd80378ffe</srcmd5>
+    <version>1.5.7</version>
+    <time>1695412021</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python-312.patch, support Python 3.12+
+- Stop using greedy globs in %files
+- Switch to autosetup and pyproject macros
+- Remove Python 2 leftovers
+- Enable running the tests again</comment>
+    <requestid>1112115</requestid>
+  </revision>
+</revisionlist>

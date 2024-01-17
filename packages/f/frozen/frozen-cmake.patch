@@ -1,0 +1,8 @@
+--- frozen-1.1.1/CMakeLists.txt	2023-08-07 11:47:45.414941013 +0200
++++ frozen-1.1.1/CMakeLists.txt	2023-08-07 11:48:18.458499303 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.5)
+ #
+ # Here we check whether frozen is being configured in isolation or as a component
+ # of a larger proeject. To do so, we query whether the `PROJECT_NAME` CMake

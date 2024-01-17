@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e7fe90b949c5158477c180c7f731e024</srcmd5>
+    <version>4.2.0rc1</version>
+    <time>1634331836</time>
+    <user>dimstar_suse</user>
+    <comment>Warewulf v4 combines ultra scalability, flexibility, and simplicity with being light weight, non-intrusive, and a great tool for scientists and seasoned system administrators alike. Warewulf empowers you to scalably and easily manage thousands of compute resources.</comment>
+    <requestid>925261</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c1de064eab4bbe64dde94a4871a20aa</srcmd5>
+    <version>4.2.0rc1</version>
+    <time>1634853338</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>926774</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f878096ef13f5a0e5421beb94309f90c</srcmd5>
+    <version>4.2.0</version>
+    <time>1635539684</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to findal release 4.2.0 with following bugs fix
+  * kernel modules are imported with the right path</comment>
+    <requestid>928160</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>94363c30095f765331c6f8e70f316c57</srcmd5>
+    <version>4.3.0rc2</version>
+    <time>1649949966</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v4.3.0rc2 with following major changes:
+  * Provision interface is not tied to 'eth0' any more. The provision interface
+    must be named 'default' now. The file `nodes.yaml' must be changed accordingly.
+  * Creating of '/etc/exports' can now be disabled, so that wwctl configure -a
+    wont overwrite a existing '/etc/exports'.
+  * All configurations files for the host (/etc/exports, /etc/dhcpd.conf,
+    /etc/hosts) are now populated from the
+    (OVERLAYDIR/host/etc/{exports|dhcpd|hosts}.ww . Also other configuration
+    files like prometheus.yml.ww or slurm.conf.ww which depend on the cluster
+    nodes can be placed. Also the new templated functions {{ abort }}, 
+    {{ IncludeBlock }} abd {{ no_backup }} are allowed now.
+  * nodes and profiles can now have multiple system and runtime overlays, as a
+    comma separated list.
+  * The overlays of the profile and the nodes are combined.
+  * Simple ipv6 support is now enabled. In warewulf.conf the option
+    ipaddr6/Ipv6net must be set to enable ipv6. If enabled on of these options
+    is set a node will get a derived ipv6 in the scheme ipv6net:ipaddr4. This
+    address can also be overwritten for every node
+  * Multiple files can now created from a single template.ww file with the {{ file FILENAME }}
+    command in the template. The command is expanded to the magic template command
+    {{ /* file FILENAME */}} which is picked up by wwctl and everything which comes after this
+    magic comment will be written to the file FILENAME. This mechanism is leveraged in the
+    configuration files for the network, see ifcfg.xml.ww and ifcgf.ww.
+  * Networks can now have arbitrary keys value pairs in the profiles and on the node, so that
+    things like bridges and mtu sizes can be set
+  * The yaml format for nodes has now sub-keys for ipmi and kernel, old nodes.conf files have to
+    to be changed accordingly
+  * uids and gids of a container now get synced at import time, so that at least users with the
+    same name have the same uid. This is not necessarily needed for warewulf, but services like
+    munge.
+  * backward compatibility for nodes.conf
+  * added file:// uri for importing archived containers
+- removed LocalStateDir-is-configureable-to-meet-FHS.patch as implemented upstream
+</comment>
+    <requestid>970201</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>398adf91e2e60e465c5466a1a35ad03f</srcmd5>
+    <version>4.3.0</version>
+    <time>1655821928</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.3.0
+  * fixed bug which for single node profile set
+- update to 4.3.0rc6 what should the final release candidate
+  * using compressed images again, as PXE else would fail
+</comment>
+    <requestid>983991</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b113f7cf27296a229163093b2ba3c8aa</srcmd5>
+    <version>4.3.0</version>
+    <time>1655972605</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed symlink dhcpd.conf collision 
+</comment>
+    <requestid>984217</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>39c9129a44bb4fed039217e0dda7eb5a</srcmd5>
+    <version>4.4.0</version>
+    <time>1674143067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.0 with following changes:
+  * chroots and overlays moved from /var/lib to /usr/share
+  * all boolean options need now to have the form --option=true|false
+    e.g. wwctl node set node01 --discoverable=true
+  * wwctl show --render shows overlay templates as they would be
+    rendered on a given target node
+- updated to version v4.4.0 with following changes:
+  * Changed internal interacation between the on disk YAML format and the in memory
+    format. This enables the command line options to be autogenerated from the datastructures.
+    Also this keeps the options for profiles and node set/add commands in strict sync.
+  * Added node edit/export/import where the edit command exposes the YAML config for the
+    given nodes in an editor. Nodes can also be added with this command. The export command
+    simply drops the YAML config for the given nodes. With the import command nodes can be
+    imported as YAML or as a CSV file. The CSV file must havr a header in where the first field
+    must always be the nodename, the rest of the fields are the same as the long commandline
+    options. Network device must have the form net.$NETNAME.$NETOPTION, which would e.g. be
+    net.default.ipaddr
+  * The default value (like kernel args) are no read in from the configuration file
+    defaults.conf. If this file couldn't be read built in default values will be used.
+  * Template files for NetworkManager are now present in the wwinit overlay. A interface must
+    have the type ethernet or infiniband that these will be brought up by NetworkManager
+  * Listings of container via wwctl container list will now show the creation,modification
+    date and the size.
+  * Initial cut of the warewulf API.
+</comment>
+    <requestid>1059572</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e63ed8505253cb5ab10738d69d2501d8</srcmd5>
+    <version>4.4.0</version>
+    <time>1674585843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060673</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>619664f5824cc4b668548d7f54228d39</srcmd5>
+    <version>4.4.0</version>
+    <time>1675873202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063772</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>c004a6f6db30e364ffa06c901f2ef957</srcmd5>
+    <version>4.4.0</version>
+    <time>1676563040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066185</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>8a5934ba15bd3aba635f306b372da169</srcmd5>
+    <version>4.4.0</version>
+    <time>1676648733</time>
+    <user>dimstar_suse</user>
+    <comment>Note: an updated vendor.tar.gz is also required (forwarded request 1066349 from mslacken)</comment>
+    <requestid>1066350</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>3a5482e44adcc9fe24aa0c8707f90682</srcmd5>
+    <version>4.4.0</version>
+    <time>1677794555</time>
+    <user>dimstar_suse</user>
+    <comment>- use the static dhpd configuration, which means known nodes will not
+  only be static configured, but also get their configured ip address
+  via dhcp (forwarded request 1068459 from mslacken)</comment>
+    <requestid>1068460</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>e87b03bbac94d74d484c9f486e1f50a1</srcmd5>
+    <version>4.4.0</version>
+    <time>1695327824</time>
+    <user>anag+factory</user>
+    <comment>- removed the upstream ipxe binaries</comment>
+    <requestid>1112815</requestid>
+  </revision>
+</revisionlist>

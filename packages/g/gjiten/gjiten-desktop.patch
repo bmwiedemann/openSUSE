@@ -1,0 +1,12 @@
+diff -ru gjiten-2.6.orig/gnome/gjiten.desktop.in gjiten-2.6/gnome/gjiten.desktop.in
+--- gjiten-2.6.orig/gnome/gjiten.desktop.in	2006-10-29 18:17:36.000000000 +0100
++++ gjiten-2.6/gnome/gjiten.desktop.in	2007-05-21 18:15:41.000000000 +0200
+@@ -3,7 +3,7 @@
+ _Name=Gjiten
+ _Comment=Japanese dictionary
+ Exec=gjiten
+-Icon=jiten.png
++Icon=jiten
+ StartupNotify=true
+ Terminal=false
+ Type=Application

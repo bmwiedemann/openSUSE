@@ -1,0 +1,6 @@
+<package name="mathml-dtd" project="openSUSE:Factory">
+  <title>MathML DTD</title>
+  <description>Contains the DTD &quot;Mathematical Markup Language&quot; (MathML) Version 2.0,
+W3C Recommendation 21 February 2001.</description>
+  <devel project="Publishing" package="mathml-dtd"/>
+</package>

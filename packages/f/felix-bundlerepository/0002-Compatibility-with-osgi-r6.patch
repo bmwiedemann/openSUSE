@@ -1,0 +1,45 @@
+From 6c8fc9626ef548192849fe8a4dc12f188614027b Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Fri, 18 Nov 2016 16:04:38 +0100
+Subject: [PATCH 2/2] Compatibility with osgi r6
+
+---
+ .../felix/bundlerepository/impl/OSGiRepositoryImpl.java  | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/src/main/java/org/apache/felix/bundlerepository/impl/OSGiRepositoryImpl.java b/src/main/java/org/apache/felix/bundlerepository/impl/OSGiRepositoryImpl.java
+index 38d9cab..9e523e0 100644
+--- a/src/main/java/org/apache/felix/bundlerepository/impl/OSGiRepositoryImpl.java
++++ b/src/main/java/org/apache/felix/bundlerepository/impl/OSGiRepositoryImpl.java
+@@ -42,7 +42,11 @@ import org.osgi.resource.Capability;
+ import org.osgi.resource.Namespace;
+ import org.osgi.resource.Requirement;
+ import org.osgi.service.repository.ContentNamespace;
++import org.osgi.service.repository.ExpressionCombiner;
+ import org.osgi.service.repository.Repository;
++import org.osgi.service.repository.RequirementBuilder;
++import org.osgi.service.repository.RequirementExpression;
++import org.osgi.util.promise.Promise;
+ 
+ class OSGiRepositoryImpl implements Repository
+ {
+@@ -179,4 +183,16 @@ class OSGiRepositoryImpl implements Repository
+         }
+         return sb.toString();
+     }
++
++    public Promise<Collection<org.osgi.resource.Resource>> findProviders(RequirementExpression re) {
++        throw new UnsupportedOperationException("Not supported yet.");
++    }
++
++    public ExpressionCombiner getExpressionCombiner() {
++        throw new UnsupportedOperationException("Not supported yet.");
++    }
++
++    public RequirementBuilder newRequirementBuilder(String string) {
++        throw new UnsupportedOperationException("Not supported yet.");
++    }
+ }
+-- 
+2.9.3
+

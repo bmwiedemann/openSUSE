@@ -1,0 +1,15 @@
+<package name="trng" project="openSUSE:Factory">
+  <title>Tina's Random Number Generator Library</title>
+  <description>TRNG is a modern C++ pseudo random number generator library.
+
+Key features:
+* fully compatible with the C++11 random number facility as defined in &lt;random&gt;
+* implements various pseudo random number algorithms
+* supports multiple streams of random numbers for parallel (multi-threaded) applications
+* does not depend on a specific parallelization technique, may be used with any threading library or MPI
+* pseudo random numbers can be sampled from many different distributions
+
+</description>
+  <devel project="devel:libraries:c_c++" package="trng"/>
+  <url>https://www.numbercrunch.de/trng/</url>
+</package>

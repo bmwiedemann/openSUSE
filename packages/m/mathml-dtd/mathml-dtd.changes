@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Thu Dec 24 12:58:59 UTC 2009 - aj@suse.de
+
+- Only remove file from catalog if it disappeared.
+
+- Do not use release numbers, they're not needed anymore.
+
+-------------------------------------------------------------------
+Thu Jan 11 15:35:20 CET 2007 - ke@suse.de
+
+- Remove /usr/share/xml from the files list.
+
+-------------------------------------------------------------------
+Wed Aug 16 15:44:39 CEST 2006 - ke@suse.de
+
+- Remove SuSEconfig call.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:56 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 11 16:55:01 CET 2004 - ke@suse.de
+
+- Move DTD files from %{xml_dir}/mathml/dtd to
+  %{xml_dir}/mathml/schema/dtd.
+
+-------------------------------------------------------------------
+Thu Feb  5 12:06:25 CET 2004 - hmacht@suse.de
+
+- added option # norootforbuild in specfile
+
+-------------------------------------------------------------------
+Fri Jan 30 14:31:39 CET 2004 - ke@suse.de
+
+- Update DTD to Version 2.0 (Second Edition), 2003-10-21.
+- Drop documentation (to be found at http://www.w3.org/TR/MathML2/).
+- Adjust directories according to FHS 2.3:
+  * Move XML DTDs to /usr/share/xml/mathml.
+  * Keep CATALOG.* files in /usr/share/sgml for the time being.
+  * Improve XML catalog (/etc/xml/mathml.xml).
+
+-------------------------------------------------------------------
+Fri Jun  6 13:06:21 CEST 2003 - ke@suse.de
+
+- Use edit-xml-catalog to register xml catalog fragments.
+- Use %postun instead of %preun for sgml catalog
+- Create absolute links.
+
+-------------------------------------------------------------------
+Mon Feb 24 13:53:26 CET 2003 - ke@suse.de
+
+- In %post drop brain dead file check which cause re-creation of an
+  empty xml catalog file; reported by Thomas Schraitle [# 24186].
+
+-------------------------------------------------------------------
+Thu Dec  5 15:24:58 CET 2002 - ke@suse.de
+
+- New package: MathML 2.0; cf. [# 12050].
+
+

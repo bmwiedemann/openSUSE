@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d231457c48d1ff047153a8bab191e516</srcmd5>
+    <version>1.1.5</version>
+    <time>1567423489</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>726865</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e65dad2263fdca4ef36bc2f9b97256e</srcmd5>
+    <version>1.1.5</version>
+    <time>1567849929</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>728546</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d4c3c60cdb927b41f1487369e76020d5</srcmd5>
+    <version>1.1.5</version>
+    <time>1610558663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862894</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2f9e1b5ea877eb82141af9729204c89c</srcmd5>
+    <version>1.1.5</version>
+    <time>1682095679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081717</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4837a6b71996f9d86a9b299600ec5237</srcmd5>
+    <version>2.0.2</version>
+    <time>1696529095</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.2:
+  * Fix broken documentation link at at pypi
+  * Restructure documentation into multiple pages
+  * Reverse sort changelog
+  * Removes Python 2.7 support
+  * Bumps minimum support Python to Python 3.7
+  * Switches to hatch for project management
+  * Fixes an invalid backslash escape sequence (#34)
+  * Automatically imports subpackages when importing zhon (#31)
+  * Updates documentation about combining diacritic marks (#29)</comment>
+    <requestid>1115781</requestid>
+  </revision>
+</revisionlist>

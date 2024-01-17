@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>197f3903ff1bb353d11b5821687afe95</srcmd5>
+    <version>5.0.6</version>
+    <time>1644531120</time>
+    <user>dimstar_suse</user>
+    <comment>fcitx5 libthai </comment>
+    <requestid>952953</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c869f966bca39ff748a87356a96a408d</srcmd5>
+    <version>5.0.7</version>
+    <time>1647532916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962420</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0bc6e9d7a0f53e4d47107beead2be156</srcmd5>
+    <version>5.0.10</version>
+    <time>1663850990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005230</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>365d9cd603dbfacab58696ec2926b1c5</srcmd5>
+    <version>5.0.11</version>
+    <time>1679182274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072802</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>813881c540ecae74af7593cb028e9acd</srcmd5>
+    <version>5.1.0</version>
+    <time>1692611091</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104893</requestid>
+  </revision>
+</revisionlist>

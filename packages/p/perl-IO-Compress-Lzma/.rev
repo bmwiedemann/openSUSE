@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb404eeaff694a4472229e4c787995a6</srcmd5>
+    <version>2.093</version>
+    <time>1605783480</time>
+    <user>dimstar_suse</user>
+    <comment>required for kanku to extract .xz images</comment>
+    <requestid>849045</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>791b14eddb1332463ad247314d1c7da7</srcmd5>
+    <version>2.204</version>
+    <time>1692294175</time>
+    <user>anag+factory</user>
+    <comment>- updated to 2.204
+   see /usr/share/doc/packages/perl-IO-Compress-Lzma/Changes
+
+- updated to 2.201
+   see /usr/share/doc/packages/perl-IO-Compress-Lzma/Changes
+    2.201 25 June 2022
+        * 2.201
+            Sat Jun 25 09:06:51 2022 +0100
+            3287f4e9f60e1bc04cf73ef66a73423e08e29acd
+        * Add perl 5.36
+            Sun Jun 5 13:37:53 2022 +0100
+            130eaba57953355c04b0c9a4945530416f05c6cf
+    2.103 3 April 2022
+        * No changes
+
+- updated to 2.101
+   see /usr/share/doc/packages/perl-IO-Compress-Lzma/Changes
+    2.101 20 February 2021
+        * fix version numbers in meta files
+
+- updated to 2.100
+   see /usr/share/doc/packages/perl-IO-Compress-Lzma/Changes</comment>
+    <requestid>1104211</requestid>
+  </revision>
+</revisionlist>

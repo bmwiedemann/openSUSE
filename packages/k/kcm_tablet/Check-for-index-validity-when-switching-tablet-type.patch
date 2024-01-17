@@ -1,0 +1,35 @@
+From ee670ec282e81998d2142c1986c963005fc3d264 Mon Sep 17 00:00:00 2001
+From: Valerii Malov <jazzvoid@gmail.com>
+Date: Thu, 2 Jul 2020 22:02:03 +0300
+Subject: [PATCH] Check for index validity when switching tablet type
+
+BUG 423420
+---
+ src/tabletfinder/dialog.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/tabletfinder/dialog.cpp b/src/tabletfinder/dialog.cpp
+index 75fe7e4..dee5c1c 100644
+--- a/src/tabletfinder/dialog.cpp
++++ b/src/tabletfinder/dialog.cpp
+@@ -405,7 +405,7 @@ void Dialog::onNormalTabletSet(bool enabled)
+ 
+ void Dialog::onParentTabletSet(bool enabled)
+ {
+-    if (enabled) {
++    if (enabled && m_ui->listTablets->currentIndex() != -1) {
+         Tablet t = m_tabletList.at(m_ui->listTablets->currentIndex());
+         t.isTouchSensor = false;
+         t.hasPairedID = true;
+@@ -418,7 +418,7 @@ void Dialog::onParentTabletSet(bool enabled)
+ 
+ void Dialog::onTouchSensorSet(bool enabled)
+ {
+-    if (enabled) {
++    if (enabled && m_ui->listTablets->currentIndex() != -1) {
+         Tablet t = m_tabletList.at(m_ui->listTablets->currentIndex());
+         t.isTouchSensor = true;
+         t.hasPairedID = false;
+-- 
+GitLab
+

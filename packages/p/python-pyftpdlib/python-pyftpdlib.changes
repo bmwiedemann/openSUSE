@@ -1,0 +1,169 @@
+-------------------------------------------------------------------
+Tue Sep 19 05:14:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-312.patch, support Python 3.12+
+- Stop using greedy globs in %files
+- Switch to autosetup and pyproject macros
+- Remove Python 2 leftovers
+- Enable running the tests again
+
+-------------------------------------------------------------------
+Fri Apr 21 12:30:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:43:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Fri Oct 28 20:09:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version: 1.5.7 - 2022-10-04
+  Enhancements
+  * #544: replace Travis with Github Actions for CI testing.
+  Bug fixes
+  * #481: fix [WinError 10038] an operation was attempted on something that is not a socket. (patch by Tailing Yuan)
+  * #578, [critical]: FTPS broke with PyOpenSSL version 22.1.0.
+
+- Update to Version: 1.5.6 - 2020-02-16
+  Enhancements
+  * #467: added pre-fork concurrency model, spawn()ing worker processes to split load.
+  * #520: directory LISTing is now 3.7x times faster. 
+
+-------------------------------------------------------------------
+Wed Jan 19 08:00:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch off the test suite, it just doesn't work reliably
+  (gh#giampaolo/pyftpdlib#540).
+
+-------------------------------------------------------------------
+Tue Oct 26 04:12:28 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Regenerate new private key/x509 certificate for the test suite.
+  (thanks, Jason!) 
+
+-------------------------------------------------------------------
+Fri May  7 23:13:10 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip masquerade tests failung because the newest Pythons don't
+  allow invalid addresses gh#giampaolo/pyftpdlib#550, bpo-43285
+- Remove script interpreter lines for test files and _compyt.py
+  (fix rpmlint warnings)
+
+-------------------------------------------------------------------
+Fri Dec 18 16:29:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- add ignore _build directories to pytest args to fix builds for
+  multiple pytest flavors gh#openSUSE/python-rpm-macros#66
+- fix tests failing locally because of gh#giampaolo/pyftpdlib#478
+
+-------------------------------------------------------------------
+Sun Aug 16 04:20:40 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-activate test suite, replacing nose with pytest
+
+-------------------------------------------------------------------
+Wed May 20 07:26:27 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Mon Apr 20 10:41:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Fri Mar 27 08:46:37 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not remove tests, other packages import them
+
+-------------------------------------------------------------------
+Wed Mar 18 09:21:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.5.6:
+  - #467: added pre-fork concurrency model, spawn()ing worker processes to split
+    load.
+  - #520: directory LISTing is now 3.7x times faster.
+
+-------------------------------------------------------------------
+Tue May 28 11:07:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not remove tests, other packages import them
+
+-------------------------------------------------------------------
+Sat May 25 09:29:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.5.5:
+  * Various minor fixes and documentation updates
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:12 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May  9 00:57:35 UTC 2018 - toddrme2178@gmail.com
+
+- Version update to 1.5.4
+  + Enhancements
+    * #463: FTPServer class can now be used as a context manager.
+  + Bug fixes
+    * #431: Ctrl-C doesn't exit `python -m pyftpdlib` on Windows.
+    * #436: ThreadedFTPServer.max_cons is evaluated threading.activeCount(). If
+      the user uses threads of its own it will consume the number of max_cons.
+    * #447: ThreadedFTPServer and MultiprocessFTPServer do not join() tasks which
+      are no longer consuming resources.
+- Disable tests since they randomly fail.
+  See https://github.com/giampaolo/pyftpdlib/issues/386
+
+-------------------------------------------------------------------
+Wed May  2 10:27:38 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.5.3:
+  * implemented SITE MFMT command which changes file modification time. (patch by Tahir Ijaz)
+  * add username and password command line options
+  * documentation moved to readthedocs: http://pyftpdlib.readthedocs.io
+  * fix duplicated output log. (path by PonyPC)
+  * Respond successfully to STOR only after closing file handle.
+
+-------------------------------------------------------------------
+Thu Jul  6 00:25:48 UTC 2017 - jengelh@inai.de
+
+- Trim exaggeration from descriptions.
+
+-------------------------------------------------------------------
+Thu Jun 22 14:14:51 UTC 2017 - jmatejek@suse.com
+
+- update to 1.5.2
+  * disables old SSL methods
+  * fixed some hangs/crashes
+- fixes test failures in OBS
+- drop patches that are no longer needed:
+  * pyftpdlib-disable-error-0-ssl-unwrap.diff
+  * pyftpdlib-disable-incomplete-file-received.diff
+  * pyftpdlib-handle-missing-SSLv3.diff
+- convert to singlespec
+
+-------------------------------------------------------------------
+Mon May  9 14:58:36 UTC 2016 - hpj@urpla.net
+
+- add patch to disable another failing test, related to icomplete
+  file receptions
+
+-------------------------------------------------------------------
+Mon May  9 13:14:32 UTC 2016 - hpj@urpla.net
+
+- add patch to test SSLv3 only, if available
+
+-------------------------------------------------------------------
+Mon May  9 10:34:42 UTC 2016 - hpj@urpla.net
+
+- add patch to disable a test, that triggers an error 0 in ssl
+
+-------------------------------------------------------------------
+Sun May  8 20:15:42 UTC 2016 - hpj@urpla.net
+
+- version 1.5.1: initial build
+

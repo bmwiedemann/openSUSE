@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0255adea7ef2bc82c2bbefd5095f52b</srcmd5>
+    <version>4.23</version>
+    <time>1605011988</time>
+    <user>dimstar_suse</user>
+    <comment>A modern C++ pseudo random number generator library</comment>
+    <requestid>845047</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e838596a58e75fcf4aa3dd3d7e2037ad</srcmd5>
+    <version>4.23.1</version>
+    <time>1613427528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872004</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>86b5af029fe9fa80f3abfc58c8531661</srcmd5>
+    <version>4.24</version>
+    <time>1617723017</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882805</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a3e631cf5579933a6740d51f772ba0eb</srcmd5>
+    <version>4.24</version>
+    <time>1642371511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946786</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8443a921f8620904a381f31fea899468</srcmd5>
+    <version>4.25</version>
+    <time>1698170933</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119900</requestid>
+  </revision>
+</revisionlist>

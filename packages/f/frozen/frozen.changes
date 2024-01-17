@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Aug  7 09:51:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * frozen-cmake.patch
+    + lower cmake version requirements in order to allow building on
+      sle12sp5
+
+-------------------------------------------------------------------
+Thu Jul 13 09:37:52 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Initial packaging of version 1.1.1

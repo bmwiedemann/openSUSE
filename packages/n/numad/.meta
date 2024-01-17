@@ -1,0 +1,5 @@
+<package name="numad" project="openSUSE:Factory">
+  <title>numad</title>
+  <description>numad is a userspace daemon that monitors NUMA usage and resource usage and attempts to configure workloads using cpusets to use a subset of CPUs and memory nodes to maximise the number local memory access for best performance. Alternatively, it can be used to give hints as to how workloads should be manually bound to CPUs and memory nodes. This daemon is primarily intended for scenarios where there are multiple processes each which fit within a NUMA node. Examples of such configurations are virtual machine instances where each VM is smaller than a NUMA node or running multiple JVMs where each instance fits within a NUMA node. If the workload is one process that spans two or more nodes such as a large database server or a single JVM instance then numad is likely to regress performance.</description>
+  <devel project="hardware" package="numad"/>
+</package>

@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Fri Mar  9 19:01:49 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:30:55 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Dec 14 22:11:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.0.20:
+  + Require glib 2.4, and change use of the _take_ownership
+    functions to _take_ functions.
+  + Support for GTK3.
+  + Names on properties and signals.
+
+-------------------------------------------------------------------
+Wed Dec 19 10:02:39 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.0.19:
+  + Print unreftors and destructors before calling parent finalize
+    and dispose as is the proper ordering.
+  + Do not output #line 0 statements.
+  + Fix empty file separator.
+
+-------------------------------------------------------------------
+Thu Dec 22 09:50:37 UTC 2011 - vuntz@opensuse.org
+
+- Explicitly list files we package.
+
+-------------------------------------------------------------------
+Fri Jan  7 17:46:08 CET 2011 - vuntz@opensuse.org
+
+- Update to version 2.0.18:
+  + Add %ctop{ %} to do what alltop does but only for the C file
+  + gob2.m4 exits if gob is not found (lp#317801)
+  + Escape minus signs in the webpage and fix some typos
+  + Clarify README as to the public domainness of the generated
+    code
+  + Build fixes for Cygwin
+- Improve summary and description.
+
+-------------------------------------------------------------------
+Tue Apr  6 12:51:24 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.0.17:
+  + Fix segfault when defining the finilize, dispose, and
+    constructor methods (deb#574542)
+  + Handle carriage returns in input files
+  + use -G_MAXFLOAT and -G_MAXDOUBLE for the default minima for
+    floating point numbers
+
+-------------------------------------------------------------------
+Thu Jul 23 20:15:06 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.0.16:
+  + add possibility of using function attributes such as
+    G_GNUC_PRINTF etc...
+  + *_get_type methods are G_GNUC_CONST
+  + move #line sections past opening brace of functions
+  + handle finalize, dispose, constructor just like init
+  + Add %afterdecls{ %} code block
+  + Minor fixes to docs
+- Remove AutoReqProv: it's default now.
+- Use configure, makeinstall macros.
+- Clean up file list.
+
+-------------------------------------------------------------------
+Fri Feb  1 12:47:06 CET 2008 - rodrigo@suse.de
+
+- Update to version 2.0.15:
+  * Fix --file-sep usage with respect to private headers
+  * Don't use /dev/null to help portability on non-unix
+  * Fix segfault on bad include statement (debian bug #443907)
+  * Fix my-person.gob example 
+
+-------------------------------------------------------------------
+Fri Mar 30 01:59:54 CEST 2007 - ro@suse.de
+
+- added flex,bison to buildreq 
+
+-------------------------------------------------------------------
+Mon Mar  6 14:18:31 CET 2006 - sbrabec@suse.cz
+
+- Removed bundled lexer.c (#151087).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:59 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 18:18:40 CET 2006 - lmichnovic@suse.cz
+
+- Updated to version 2.0.14 
+
+-------------------------------------------------------------------
+Wed Aug  3 15:19:04 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.0.12.
+
+-------------------------------------------------------------------
+Mon Feb 21 19:19:52 CET 2005 - sbrabec@suse.cz
+
+- Fixed files owner.
+
+-------------------------------------------------------------------
+Mon Feb 21 17:32:36 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.0.11.
+
+-------------------------------------------------------------------
+Mon Mar 22 19:06:32 CET 2004 - sbrabec@suse.cz
+
+- Fixed underquoted definition (#36604).
+- Added gnome-filesystem to neededforbuild.
+
+-------------------------------------------------------------------
+Tue Jul 22 02:29:34 CEST 2003 - hhetter@suse.de
+
+- fix PKG_CONFIG_PATH 
+
+-------------------------------------------------------------------
+Mon May 26 11:32:37 CEST 2003 - sbrabec@suse.cz
+
+- Initial SuSE version of GNOME2 port.
+

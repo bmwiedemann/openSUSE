@@ -1,0 +1,32 @@
+http://lists.beasts.org/pipermail/iftop-users/2014-March/000415.html
+
+Author: Roman Hoog Antink <rha@open.ch>
+Date:   Mon Mar 17 11:34:37 2014 +0100
+
+    support unlimited text output
+
+Index: iftop-1.0pre4/tui.c
+===================================================================
+--- iftop-1.0pre4.orig/tui.c
++++ iftop-1.0pre4/tui.c
+@@ -73,7 +73,7 @@ void tui_print() {
+   printf("\n");
+ 
+   /* Traverse the list of all connections */
+-  while((nn = sorted_list_next_item(&screen_list, nn)) != NULL && l < options.num_lines) {
++  while((nn = sorted_list_next_item(&screen_list, nn)) != NULL && (!options.num_lines || l < options.num_lines)) {
+     /* Increment the line counter */
+     l++;
+ 
+Index: iftop-1.0pre4/ui.c
+===================================================================
+--- iftop-1.0pre4.orig/ui.c
++++ iftop-1.0pre4/ui.c
+@@ -50,6 +50,7 @@
+ " < - sort by source name\n"\
+ " > - sort by dest name\n"\
+ " o - freeze current order\n"\
++" L # - print # lines in text output\n"\
+ "\n"\
+ "iftop, version " PACKAGE_VERSION
+ 
