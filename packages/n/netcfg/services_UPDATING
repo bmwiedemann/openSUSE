@@ -1,0 +1,10 @@
+bunzip2 services.bz2
+perl services-create.pl                      # creates services.new
+perl services-compare.pl > services.report   # changes (more reader friendly)
+bash services-compare.sh > services.diff     # differences (more precise)
+#... review services.diff and/or services.report
+rm services.report services.diff
+mv services.new services
+#... adjust services-suse.diff
+bzip2 services
+

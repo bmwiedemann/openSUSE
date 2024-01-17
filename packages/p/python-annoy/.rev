@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9435ce21f8e87e1a7f4101ff24246f75</srcmd5>
+    <version>1.12.0</version>
+    <time>1526371896</time>
+    <user>dimstar_suse</user>
+    <comment>search for points in space that are close to a given query point</comment>
+    <requestid>605870</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1302f9f7ab1604df5332912d42b541f8</srcmd5>
+    <version>1.12.0</version>
+    <time>1531470039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622023</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0be315fc1092c5b94f1384f0b29f2e4b</srcmd5>
+    <version>1.15.1</version>
+    <time>1551883942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.1:
+  * Various minor fixes
+  * Fixes to the Euclidean distance function (avoid catastrophic cancellation)
+  * Don't MAP_POPULATE by default
+  * dot products are now supported
+- Update patch reproducible.patch:
+  * expand to not screw with cflags either</comment>
+    <requestid>682131</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7ed7af00e3f91570b58ab7b4e45ab2b2</srcmd5>
+    <version>1.15.1</version>
+    <time>1552985939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685830</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aef8f3ac7128ff54b4c59b64967f6662</srcmd5>
+    <version>1.15.2</version>
+    <time>1557916461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702925</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2dc8b99f831be2d7026b869c6cf2bb0f</srcmd5>
+    <version>1.16.0</version>
+    <time>1568720237</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.16.0:
+  * Various warning fixes
+  * Cleanups
+- Rebase patch reproducible.patch</comment>
+    <requestid>730764</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>59d236d5680ebf37dccb629fdd741a6e</srcmd5>
+    <version>1.16.0</version>
+    <time>1570010451</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>734496</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39d9d7039877a33d8c518823606bbf1b</srcmd5>
+    <version>1.16.3</version>
+    <time>1579273581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765071</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c3fc381b85c3daa759965842ee8f420d</srcmd5>
+    <version>1.16.3</version>
+    <time>1583227084</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip one more test failing on 32bit</comment>
+    <requestid>780852</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5ea81d45e92681acd8c93390b2c7ae10</srcmd5>
+    <version>1.17.0</version>
+    <time>1611163766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865041</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bf192cd85286867ac21cfb94aebb850d</srcmd5>
+    <version>1.17.0</version>
+    <time>1618859151</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build on Python 3.6 due to no NumPy.</comment>
+    <requestid>886513</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>679a089d6dbe4b073b65aadb3256a591</srcmd5>
+    <version>1.17.1</version>
+    <time>1672673904</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.17.1:
+  * Add -fpermissive plus some other minor things</comment>
+    <requestid>1046206</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8eb0a61c0efb21161204b12b7705af4e</srcmd5>
+    <version>1.17.3</version>
+    <time>1702673421</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.17.3
+  update to 1.17.3:
+  * Essentially just #645 which fixes compilation on OS X
+  update to 1.17.2:
+  * Fixed memory leak reported in #633
+- drop unneeded denose.patch (they switched to pytest)
+</comment>
+    <requestid>1133419</requestid>
+  </revision>
+</revisionlist>

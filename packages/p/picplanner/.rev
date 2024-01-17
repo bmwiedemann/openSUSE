@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9c2b08b274e4eb82c344bb6cb215cc80</srcmd5>
+    <version>0.3.1</version>
+    <time>1664210917</time>
+    <user>dimstar_suse</user>
+    <comment>Useful GTK app for photographers similar to PhotoPills on Android.</comment>
+    <requestid>1006075</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c9eb8042ae0f73354940355ec64b9ae1</srcmd5>
+    <version>0.3.2</version>
+    <time>1670333049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040518</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d1f71f8cc66c74b3cd26522afb6e4c6</srcmd5>
+    <version>0.4.0</version>
+    <time>1682691862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Touch screen related fixes.
+</comment>
+    <requestid>1083491</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>751541103c8a4acb6e6cae32f38cbd3b</srcmd5>
+    <version>0.5.0</version>
+    <time>1700772152</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.0:
+  * Reduced input lag on touch screens significantly
+  * Complet UI redesign for a more compact view
+  * Add French translation
+  * Switch to the GNOME 45 runtime
+  * Rotate the information on the map if the map is rotated
+  * Fix a double scrolling bug which caused the map to be unresponsive
+  * App is now recognized as mobile friendly
+</comment>
+    <requestid>1128347</requestid>
+  </revision>
+</revisionlist>

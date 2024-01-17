@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Mon Oct 30 12:36:17 UTC 2023 - pgajdos@suse.com
+
+- update to version 1.17.3
+  update to 1.17.3:
+  * Essentially just #645 which fixes compilation on OS X
+  update to 1.17.2:
+  * Fixed memory leak reported in #633
+- drop unneeded denose.patch (they switched to pytest)
+
+-------------------------------------------------------------------
+Mon Jan  2 14:23:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.17.1:
+  * Add -fpermissive plus some other minor things
+
+-------------------------------------------------------------------
+Mon Apr 19 02:28:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Don't build on Python 3.6 due to no NumPy. 
+
+-------------------------------------------------------------------
+Wed Jan 20 15:12:43 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.17.0
+  * multithreaded building + misc more
+- Add denose.patch to get rid of nose
+
+-------------------------------------------------------------------
+Wed Jan 20 15:09:53 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip one test flaky on Python 3.6
+
+-------------------------------------------------------------------
+Mon Mar  2 08:39:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip one more test failing on 32bit
+
+-------------------------------------------------------------------
+Thu Jan 16 17:16:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.16.3
+  * some error message improvements
+  * doing more stack allocations instead of heap
+  * fixes to a few tests that were failing on other platforms
+- Rebase patch reproducible.patch
+
+-------------------------------------------------------------------
+Wed Sep 25 07:35:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip test test_distance_consistency that fails on 32bit
+
+-------------------------------------------------------------------
+Fri Sep 13 12:57:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.16.0:
+  * Various warning fixes
+  * Cleanups
+- Rebase patch reproducible.patch
+
+-------------------------------------------------------------------
+Tue May 14 17:27:38 UTC 2019 - svasudevan@suse.com
+
+- Update to 1.15.2
+  * Fix #379 error handling in save()
+  * Fix compile issue in linux
+  * Fix popcount #366
+  * rebased reproduceable.patch
+  * Some more misc
+
+-------------------------------------------------------------------
+Sat Mar 16 17:00:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Wed Mar  6 12:09:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.15.1:
+  * Various minor fixes
+  * Fixes to the Euclidean distance function (avoid catastrophic cancellation)
+  * Don't MAP_POPULATE by default
+  * dot products are now supported
+- Update patch reproducible.patch:
+  * expand to not screw with cflags either
+
+-------------------------------------------------------------------
+Tue Jul 10 05:06:28 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch to not depend on build system CPU (boo#1100677)
+
+-------------------------------------------------------------------
+Wed May  9 18:42:30 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 1.12.0
+  * Finally squashed a remaining issue with holes (see #295) and
+    together with a few other holes-related fixes it felt worthy of
+    bumping the minor version number.
+  * Fix more holes issues (this time causing the number of items to
+    be reported incorrectly)
+  * Fix angular index with holes
+  * This version features AVX instructions thanks to @ReneHollander
+  * Windows support now official – with CI pipeline to prove it.
+    Only tested on Python 3.6 so far
+  * Experimental Hamming distances
+- Use license tag
+
+-------------------------------------------------------------------
+Tue Nov  7 18:42:26 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bb89fcb8a974ab3e0cc6caa5f285a79</srcmd5>
+    <version>0.1.0</version>
+    <time>1579273719</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>765079</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>feddb74b622319fc8be8dd769384e313</srcmd5>
+    <version>0.2.0</version>
+    <time>1611668787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866034</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6d6ea5940f5b6572720497a3f57c8c87</srcmd5>
+    <version>0.2.0</version>
+    <time>1642548923</time>
+    <user>dimstar_suse</user>
+    <comment>- skip hanging socks test</comment>
+    <requestid>947209</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bb3a06a411d0b4876b486968ec3bbb38</srcmd5>
+    <version>0.3.0</version>
+    <time>1665591931</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1009950</requestid>
+  </revision>
+</revisionlist>

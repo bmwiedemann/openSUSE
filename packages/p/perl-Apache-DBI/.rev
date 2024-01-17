@@ -1,0 +1,207 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>291e75bc778d93599fb9dccf41407cf9</srcmd5>
+    <version>1.05</version>
+    <time>1168903780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fd16094e962154522db965ce5b7ad7fe</srcmd5>
+    <version>1.06</version>
+    <time>1175265079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>707b5b4ca856d977b2856476a96980b6</srcmd5>
+    <version>1.07</version>
+    <time>1214260005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="42">
+    <srcmd5>ed87e1d09d16921308739cf2fad97ae7</srcmd5>
+    <version>1.07</version>
+    <time>1245337065</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="44">
+    <srcmd5>ed87e1d09d16921308739cf2fad97ae7</srcmd5>
+    <version>1.07</version>
+    <time>1245337065</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="45">
+    <srcmd5>348e4dd2f54ca4384631f89e292992e2</srcmd5>
+    <version>1.07</version>
+    <time>1263303867</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Apache-DBI based on submit request 28914 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8e56782c938b55cec7384fec8a54ab14</srcmd5>
+    <version>1.08</version>
+    <time>1266974640</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Apache-DBI based on submit request 33261 from user anicka
+</comment>
+    <requestid>33261</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1822c5ccc0fda94d539fe286dc4e1f86</srcmd5>
+    <version>1.08</version>
+    <time>1268925359</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>1822c5ccc0fda94d539fe286dc4e1f86</srcmd5>
+    <version>1.08</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>1822c5ccc0fda94d539fe286dc4e1f86</srcmd5>
+    <version>1.08</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>36ecee3048705aac52f850d710f5fe76</srcmd5>
+    <version>1.09</version>
+    <time>1290099260</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53350 from user anicka
+</comment>
+    <requestid>53350</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>67e560d4623e96ef11d8cf131bb18e60</srcmd5>
+    <version>1.09</version>
+    <time>1290099266</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53350
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b258343fdb5429c52b92836a04bd9c22</srcmd5>
+    <version>1.09</version>
+    <time>1291158938</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54185 from user coolo
+</comment>
+    <requestid>54185</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>3f2dceb71a1cb03e3d0dd48979b7204e</srcmd5>
+    <version>1.09</version>
+    <time>1291158943</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54185
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>f544a79cf309a969b7143baf9556f1e4</srcmd5>
+    <version>1.09</version>
+    <time>1291769383</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54956 from user coolo
+</comment>
+    <requestid>54956</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>66c36e43952d9c01f24e1c2a7da36944</srcmd5>
+    <version>1.09</version>
+    <time>1291769398</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54956
+</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>42f23ec9e2ceb36bd49296aecfef652d</srcmd5>
+    <version>1.10</version>
+    <time>1297113292</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60196 from user vitezslav_cizek
+</comment>
+    <requestid>60196</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>8545fd830241fc7511a133b8b1eff93e</srcmd5>
+    <version>1.10</version>
+    <time>1297113298</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60196
+</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>8545fd830241fc7511a133b8b1eff93e</srcmd5>
+    <version>1.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>8545fd830241fc7511a133b8b1eff93e</srcmd5>
+    <version>1.10</version>
+    <time>1319182239</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cf29d9b71bfe37f86f6af4ba75ff4da3</srcmd5>
+    <version>1.11</version>
+    <time>1321273091</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>91034</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2bb1b92528595d48dad98e7142ec942d</srcmd5>
+    <version>1.11</version>
+    <time>1323193045</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>2bb1b92528595d48dad98e7142ec942d</srcmd5>
+    <version>1.11</version>
+    <time>1340183791</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>2bb1b92528595d48dad98e7142ec942d</srcmd5>
+    <version>1.11</version>
+    <time>1359109595</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>2bb1b92528595d48dad98e7142ec942d</srcmd5>
+    <version>1.11</version>
+    <time>1379663547</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>2bb1b92528595d48dad98e7142ec942d</srcmd5>
+    <version>1.11</version>
+    <time>1409302155</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c2ca00dbd3e74bbbb96789fd6a5f8427</srcmd5>
+    <version>1.12</version>
+    <time>1429346388</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.12
+   see /usr/share/doc/packages/perl-Apache-DBI/Changes
+  1.12 June 12, 2013
+  
+    - Fix detection of server startup in mod_perl 2, to avoid caching
+      connections in the parent process. Perrin Harkins
+      &lt;perrin@elem.com&gt;</comment>
+    <requestid>297278</requestid>
+  </revision>
+</revisionlist>

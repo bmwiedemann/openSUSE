@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Thu Mar  9 07:04:33 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add upstream patch gcc13-fix.patch in order to support GCC 13.
+
+-------------------------------------------------------------------
+Fri Mar 27 14:25:33 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Fix boo#1158318 by
+  gcc10-Fix-a-typo-in-wide-string-conversion-function-49.patch.
+
+-------------------------------------------------------------------
+Thu Jan 16 13:08:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.1 bsc#1164440:
+  * change correction finding order (fixes issue #28)
+  * require C++1y (C++14)
+  * observe ICU namespacing (fixes issue #42)
+
+-------------------------------------------------------------------
+Fri Apr 20 12:27:04 UTC 2018 - tchvatal@suse.com
+
+- Add hack for icu 61 and newer -DU_USING_ICU_NAMESPACE=1
+  * This needs to be removed when properly fixed upstream
+
+-------------------------------------------------------------------
+Fri Apr 20 12:19:28 UTC 2018 - tchvatal@suse.com
+
+- Version update to 0.5.0:
+  * rename hfst_ol namespace to hfst_ospell to avoid conflicts
+  * improve distinguishing between lemmas and tags in analysis
+  * fix issue #37
+  * avoid shadowing multicharacter ascii-beginning symbols
+  * use minimal XML parsing to get locale, title, and description for Voikko and other frontends
+
+-------------------------------------------------------------------
+Thu Jan 18 17:57:05 UTC 2018 - dimstar@opensuse.org
+
+- Add baselibs.conf: build libhfstospell10-32bit, which is required
+  by libvoikko1-32bit.
+
+-------------------------------------------------------------------
+Tue Apr 25 15:24:37 UTC 2017 - tchvatal@suse.com
+
+- Initial commit, required by libvoikko

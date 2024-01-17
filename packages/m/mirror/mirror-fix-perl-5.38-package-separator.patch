@@ -1,0 +1,1578 @@
+--- mirror-2.9/mirror.pl.orig	2023-12-01 22:13:27.000000000 +0100
++++ mirror-2.9/mirror.pl	2023-12-06 11:37:02.488395509 +0100
+@@ -51,7 +51,7 @@
+ # Allow strip_cr (from Andrew).
+ # More symlink handling...
+ # Set type for vms correctly.
+-# Changed response from ftp'delete, also corrected path used.
++# Changed response from ftp::delete, also corrected path used.
+ #
+ # Revision 2.4  1994/04/29  20:11:09  lmjm
+ # Use correct variable for hostname
+@@ -1054,10 +1054,10 @@
+ 
+ 	if( $debug ){
+ 		# Keep the ftp debugging lower than the rest.
+-		&ftp'debug( $debug - 1);
++		&ftp::debug( $debug - 1);
+ 	}
+ 	else {
+-		&ftp'debug( $verbose );
++		&ftp::debug( $verbose );
+ 	}
+ 
+ 	if( $recurse_hard ){
+@@ -1070,19 +1070,19 @@
+ 	}
+ 
+ 	if( ! $interactive ){
+-		$ftp'showfd = 'STDOUT';
++		$ftp::showfd = 'STDOUT';
+ 	}
+-	&ftp'set_timeout( $timeout );
+-	&ftp'set_signals( "main'msg" );
++	&ftp::set_timeout( $timeout );
++	&ftp::set_signals( "main::msg" );
+ 
+ 	# set passive ftp mode
+ 	if( $passive_ftp ){
+-		$ftp'use_pasv = 1;
++		$ftp::use_pasv = 1;
+ 	}
+ 
+ 	# Are we using the SOCKS version of perl?
+ 	if( $using_socks ){
+-		$chat'using_socks = 1;
++		$chat::using_socks = 1;
+ 	}
+ 
+ 	# Useful string in prints
+@@ -1217,13 +1217,13 @@
+ 	if( $con == 1 ){
+ 		&msg( "login as $remote_user\n" ) if $debug > 1;
+ 		$curr_remote_user = $remote_user;
+-		if( ! &ftp'login( $remote_user, $remote_password, $remote_account ) ){
++		if( ! &ftp::login( $remote_user, $remote_password, $remote_account ) ){
+ 			&msg( "Cannot login, skipping package\n" );
+ 			&disconnect();
+ 			&msg( "\n" );
+ 			return $exit_status;
+ 		}
+-		$can_restart = (&ftp'restart(0) == 1);
++		$can_restart = (&ftp::restart(0) == 1);
+ 		if( $debug > 1 ){
+ 			&msg( "Can " . ($can_restart ? '' : "not ") . "do restarts\n" );
+ 
+@@ -1234,7 +1234,7 @@
+ 		&msg( "Already connected to site $site\n" ) if $debug;
+ 	}
+ 
+-	if( ! &ftp'type( $text_mode ? 'A' : 'I' ) ){
++	if( ! &ftp::type( $text_mode ? 'A' : 'I' ) ){
+ 		&msg( "Cannot set type\n" );
+ 	}
+ 
+@@ -1245,16 +1245,16 @@
+ 	# setting the namemap functions.
+ 	if( $remote_fs =~ /vms/i ){
+ 		$vms = 1;
+-		&ftp'set_namemap( "main'unix2vms", "main'vms2unix" );
++		&ftp::set_namemap( "main::unix2vms", "main::vms2unix" );
+ 	}
+ 	else {
+ 		$vms = 0;
+ 		# No mapping necessary
+-		&ftp'set_namemap( '' );
++		&ftp::set_namemap( '' );
+ 	}
+ 
+ 	if( ! $get_file || $remote_idle ){
+-		local( @rhelp ) = &ftp'site_commands();
++		local( @rhelp ) = &ftp::site_commands();
+ 		$remote_has_chmod = grep( $_ eq 'CHMOD', @rhelp);
+ 		$remote_has_rename = grep( $_ eq 'RNFR', @rhelp) && grep( $_ eq 'RNTO', @rhelp);
+ 		$remote_has_idle = grep( $_ eq 'IDLE', @rhelp);
+@@ -1265,7 +1265,7 @@
+ 	}
+ 	
+ 	if( $remote_has_idle && $remote_idle ){
+-		if( ! &ftp'quote( "site idle $remote_idle" ) ){
++		if( ! &ftp::quote( "site idle $remote_idle" ) ){
+ 			&msg( "Cannot set remote idle\n" );
+ 		}
+ 		elsif( $debug > 2 ){
+@@ -1274,7 +1274,7 @@
+ 	}
+ 
+ 	if( $remote_group ){
+-		if( ! &ftp'quote( "site group $remote_group" ) ){
++		if( ! &ftp::quote( "site group $remote_group" ) ){
+ 			&msg( "Cannot set remote group\n" );
+ 		}
+ 		elsif( $debug > 2 ){
+@@ -1283,7 +1283,7 @@
+ 	}
+ 	
+ 	if( $remote_gpass ){
+-		if( ! &ftp'quote( "site gpass $remote_gpass" ) ){
++		if( ! &ftp::quote( "site gpass $remote_gpass" ) ){
+ 			&msg( "Cannot set remote gpass\n" );
+ 		}
+ 		elsif( $debug > 2 ){
+@@ -1497,11 +1497,11 @@
+ {
+ 	if( $connected ){
+ 		&msg( "disconnecting from $connected\n" ) if $debug;
+-		if( ! $ftp'fatalerror ){
+-			&ftp'close();
++		if( ! $ftp::fatalerror ){
++			&ftp::close();
+ 		}
+ 		else {
+-			&ftp'service_closed();
++			&ftp::service_closed();
+ 		}
+ 	}
+ 	$connected = '';
+@@ -1525,11 +1525,11 @@
+ 	&disconnect();
+ 
+ 	if( $proxy ){
+-	    $ftp'proxy = $proxy;
+-	    $ftp'proxy_gateway = $proxy_gateway;
+-	    $ftp'proxy_ftp_port = $proxy_ftp_port;
++	    $ftp::proxy = $proxy;
++	    $ftp::proxy_gateway = $proxy_gateway;
++	    $ftp::proxy_ftp_port = $proxy_ftp_port;
+ 	}
+-	$res = &ftp'open( $site, $ftp_port, $retry_call, $attempts );
++	$res = &ftp::open( $site, $ftp_port, $retry_call, $attempts );
+ 	if( $res == 1 ){
+ 		# Connected
+ 		$connected = $site;
+@@ -1545,7 +1545,7 @@
+ 	if( $debug > 2 ){
+ 		&msg( " prodding remote ftpd\n" );
+ 	}
+-	&ftp'pwd();
++	&ftp::pwd();
+ }
+ 
+ # checkout and fixup any regexps.
+@@ -1775,7 +1775,7 @@
+ 	$remote_type[ 0 ] = 0;
+ 	$remote_mode[ 0 ] = 0;
+ 
+-	if( $remote_fs !~ /cms/ && ! &ftp'cwd( $remote_dir ) ){
++	if( $remote_fs !~ /cms/ && ! &ftp::cwd( $remote_dir ) ){
+ 		if( $get_file ){
+ 			# no files to get
+ 			return 0;
+@@ -1784,8 +1784,8 @@
+ 		&msg( "Failed to change to remote directory ($remote_dir) trying to create it\n" );
+ 		&mkdirs( $remote_dir );
+ 
+-		if( ! &ftp'cwd( $remote_dir ) ){
+-			&msg( "Cannot change to remote directory ($remote_dir) because: $ftp'response\n" );
++		if( ! &ftp::cwd( $remote_dir ) ){
++			&msg( "Cannot change to remote directory ($remote_dir) because: $ftp::response\n" );
+ 			return 0;
+ 		}
+ 	}
+@@ -1814,7 +1814,7 @@
+ 			&msg( "Cannot open $dirtmp\n" );
+ 			return 0;
+ 		}
+-		$rls = "main'DIRTMP";
++		$rls = "main::DIRTMP";
+ 		# Now we don't want to overwrite our input... better test?
+ 		if( $local_ls_lR_file eq $storename ){
+ 			$storename = "/dev/null";
+@@ -1828,7 +1828,7 @@
+ 		}
+ 
+ 		&msg( " Getting directory listing from remote file $ls_lR_file\n" ) if $debug;
+-		if( ! &ftp'get( $ls_lR_file, $dirtmp, 0 ) ){
++		if( ! &ftp::get( $ls_lR_file, $dirtmp, 0 ) ){
+ 			&msg( "Cannot get dir listing file\n" );
+ 			return 0;
+ 		}
+@@ -1857,11 +1857,11 @@
+ 		}
+ 
+ 		open( DIRTMP, $dirtmp ) || die "Cannot open $dirtmp";
+-		$rls = "main'DIRTMP";
++		$rls = "main::DIRTMP";
+ 	}
+ 	else {
+ 		$use_ls = 1;
+-		if( ! &ftp'type( 'A' ) ){
++		if( ! &ftp::type( 'A' ) ){
+ 			&msg( "Cannot set type to ascii for dir listing, ignored\n" );
+ 			$type_changed = 0;
+ 		}
+@@ -1870,17 +1870,17 @@
+ 		}
+ 	}
+ 	
+-	$lsparse'fstype = $remote_fs;
+-	$lsparse'name = "$site:$package";
++	$lsparse::fstype = $remote_fs;
++	$lsparse::name = "$site:$package";
+ 	
+ 	if( $use_ls ){
+ 		local( $flags ) = $flags_nonrecursive;
+ 		if( $recursive && ! $recurse_hard ){
+ 			$flags = $flags_recursive;
+ 		}
+-		$lsparse'report_subdirs = (! $recurse_hard && $algorithm == 0);
+-	 	if( !&ftp'dir_open( $flags ) ){
+-			&msg( "Cannot get remote directory listing because: $ftp'response\n" );
++		$lsparse::report_subdirs = (! $recurse_hard && $algorithm == 0);
++	 	if( !&ftp::dir_open( $flags ) ){
++			&msg( "Cannot get remote directory listing because: $ftp::response\n" );
+ 			return 0;
+ 		}
+ 		
+@@ -1893,8 +1893,8 @@
+ 		# relative to the remote_dir
+ 		$rcwd = $remote_dir;
+ 	}
+-	$dateconv'use_timelocal = $use_timelocal;
+-	if( !&lsparse'reset( $rcwd ) ){
++	$dateconv::use_timelocal = $use_timelocal;
++	if( !&lsparse::reset( $rcwd ) ){
+ 		&msg( "$remote_fs: unknown fstype\n" );
+ 		return 0;
+ 	}
+@@ -1924,7 +1924,7 @@
+ 		# Could optimise this out - but it makes sure that
+ 		# the other end gets a command straight after a possibly
+ 		# long dir listing.
+-		if( ! &ftp'type( $text_mode ? 'A' : 'I' ) ){
++		if( ! &ftp::type( $text_mode ? 'A' : 'I' ) ){
+ 			local( $msg ) = "Cannot reset type after dir listing, ";
+ 			if( $type_changed ){
+ 				# I changed it before - so I must be able to
+@@ -1996,7 +1996,7 @@
+ 	while( 1 ){
+ 		while( !eof( $rls ) ){
+ 			( $path, $size, $time, $type, $mode ) =
+-				&lsparse'line( $rls );
++				&lsparse::line( $rls );
+ 			last if $path eq '';
+ 			if( $ls_fix_mappings ){
+ 				local( $old_path ) = $path;
+@@ -2087,9 +2087,9 @@
+ 		}
+ 
+ 		if( $use_ls ){
+-			if( ! &ftp'dir_close() ){
++			if( ! &ftp::dir_close() ){
+ 				&msg( "Failure at end of remote directory" .
+-				 " ($rdir) because: $ftp'response\n" );
++				 " ($rdir) because: $ftp::response\n" );
+ 				return 0;
+ 			}
+ 		}
+@@ -2099,9 +2099,9 @@
+ 			while( 1 ){
+ 				if( $#dir_list < 0 ){
+ 					# Make sure we end in the right directory.
+-					if( ! &ftp'cwd( $remote_dir ) ){
++					if( ! &ftp::cwd( $remote_dir ) ){
+ 						&msg( "Cannot change to remote directory" .
+-						 " ($rdir) because: $ftp'response\n" );
++						 " ($rdir) because: $ftp::response\n" );
+ 						return 0;
+ 					}
+ 					$done = 1;
+@@ -2112,9 +2112,9 @@
+ 				if( $debug > 2 ){
+ 					print "scanning: $remote_dir / $rcwd\n";
+ 				}
+-				if( ! &ftp'cwd( $rdir ) ){
++				if( ! &ftp::cwd( $rdir ) ){
+ 					&msg( "Cannot change to remote directory" .
+-					 " ($rdir) because: $ftp'response\n" );
++					 " ($rdir) because: $ftp::response\n" );
+ 					next;
+ 				}
+ 				last;
+@@ -2122,12 +2122,12 @@
+ 			if( $done ){
+ 				last;
+ 			}
+-		 	if( !&ftp'dir_open( $flags_nonrecursive ) ){
++		 	if( !&ftp::dir_open( $flags_nonrecursive ) ){
+ 				&msg( "Cannot get remote directory" .
+-				  	" listing because: $ftp'response\n" );
++				  	" listing because: $ftp::response\n" );
+ 				return 0;
+ 			}
+-			&lsparse'reset( $rcwd );
++			&lsparse::reset( $rcwd );
+ 			
+ 			# round the loop again.
+ 			next;
+@@ -2527,7 +2527,7 @@
+ 	
+ 	if( $external_mapping ){
+ 		$old_name = $name;
+-		local( $tmp ) = &extmap'map( $name );
++		local( $tmp ) = &extmap::map( $name );
+ 		if( $tmp ne $old_name ){
+ 			$name = $tmp;
+ 		}
+@@ -2688,11 +2688,11 @@
+ 			&transfer_file( $src_path, $dest_path,
+ 				       $attribs, $remote_time[ $srci ] );
+ 		if( $get_file && $newpath eq '' ){
+-			&msg( $log, "Failed to $XFER file $ftp'response\n" );
+-			if( $ftp'response =~ /timeout|timed out/i ){
++			&msg( $log, "Failed to $XFER file $ftp::response\n" );
++			if( $ftp::response =~ /timeout|timed out/i ){
+ 				$timeouts++;
+ 			}
+-			if( $ftp'fatalerror || $timeouts > $max_timeouts ){
++			if( $ftp::fatalerror || $timeouts > $max_timeouts ){
+ 				&msg( $log, "Fatal error talking to site, skipping rest of transfers\n" );
+ 				&disconnect();
+ 				return;
+@@ -2752,11 +2752,11 @@
+ 	}
+ 	
+ 	if( $vms ){
+-		&ftp'type( ($src_path =~ /$vms_xfer_text/i) ? 'A' : 'I' );
++		&ftp::type( ($src_path =~ /$vms_xfer_text/i) ? 'A' : 'I' );
+ 	}
+ 	
+ 	if( $remote_fs eq 'macos' && ! $get_file ){
+-		&ftp'type( 'A' );
++		&ftp::type( 'A' );
+ 	}
+ 	
+ 	if( ! $get_file ){
+@@ -2778,15 +2778,15 @@
+ 			$temp = $dest_path;
+ 		}
+ 
+-		if( ! &ftp'put( $src_file, $temp, $restart ) ){
+-			&msg( $log, "Failed to put $src_file: $ftp'response\n" );
++		if( ! &ftp::put( $src_file, $temp, $restart ) ){
++			&msg( $log, "Failed to put $src_file: $ftp::response\n" );
+ 			unlink( $comptemp ) if $comptemp;
+ 			return '';
+ 		}
+ 	
+ 		unlink( $comptemp ) if $comptemp;
+-		if( !$no_rename && ! &ftp'rename( $temp, $dest_path ) ){
+-			&msg( $log, "Failed to remote rename $temp to $dest_path: $ftp'response\n" );
++		if( !$no_rename && ! &ftp::rename( $temp, $dest_path ) ){
++			&msg( $log, "Failed to remote rename $temp to $dest_path: $ftp::response\n" );
+ 			return '';
+ 		}
+ 
+@@ -2810,11 +2810,11 @@
+ 	# it.
+ 
+ 	# Get a file
+-	&ftp'dostrip( $strip_cr );
++	&ftp::dostrip( $strip_cr );
+ 	$start_time = time;
+-	if( ! &ftp'get( $src_path, $temp, $restart ) ){
+-		if( !$failed_gets_excl || $ftp'response !~ /$failed_gets_excl/ ){
+-			&msg( $log, "Failed to get $src_path: $ftp'response\n" );
++	if( ! &ftp::get( $src_path, $temp, $restart ) ){
++		if( !$failed_gets_excl || $ftp::response !~ /$failed_gets_excl/ ){
++			&msg( $log, "Failed to get $src_path: $ftp::response\n" );
+ 		}
+ 
+ 		# Time stamp the temp file to allow for a restart
+@@ -2833,7 +2833,7 @@
+ 
+ 	# delete source file after successful transfer
+ 	if( $delete_source ){
+-		if( &ftp'delete( $src_path ) ){
++		if( &ftp::delete( $src_path ) ){
+ 			&msg( $log, "Deleted remote $src_path\n");
+ 		}
+ 		else {
+@@ -3185,7 +3185,7 @@
+ 			}
+ 			else {
+ 				&msg( $log, "delete DIR $del\n" );
+-				&ftp'delete( "$del" ) ||
++				&ftp::delete( "$del" ) ||
+ 					&msg( $log, "ftp delete DIR $del failed\n" );
+ 			}
+ 		}
+@@ -3209,7 +3209,7 @@
+ 		}
+ 		else {
+ 			&msg( $log, "delete FILE $del\n" );
+-			&ftp'delete( "$del" ) ||
++			&ftp::delete( "$del" ) ||
+ 				&msg( $log, "ftp delete FILE $del failed\n" );
+ 		}
+ 	}
+@@ -3355,12 +3355,12 @@
+ 	}
+ 	else {
+ 		# make a remote directory
+-		$val = &ftp'mkdir( $dir );
++		$val = &ftp::mkdir( $dir );
+ 
+ 		# The mkdir might have failed due to bad mode
+ 		# So try to chmod it anyway
+ 		if( $remote_has_chmod ){
+-			$val = &ftp'chmod( $dir, $mode );
++			$val = &ftp::chmod( $dir, $mode );
+ 		}
+ 	}
+ 
+@@ -3379,14 +3379,14 @@
+ 	}
+ 	else {
+ 		# check if remote directory exists
+-		local($old_dir) = &ftp'pwd();		
++		local($old_dir) = &ftp::pwd();		
+ 		
+-		$val = &ftp'cwd($dir);
++		$val = &ftp::cwd($dir);
+ 
+ 		# If I didn't manage to change dir should be where I was!
+ 		if( $val ){
+ 			# go back to the original directory
+-			&ftp'cwd($old_dir) || die "Cannot cd to original remote directory";
++			&ftp::cwd($old_dir) || die "Cannot cd to original remote directory";
+ 		}
+ 	}
+ 	return $val;
+@@ -3440,7 +3440,7 @@
+ 	else {
+ 		# change the remote file
+ 		if( $remote_has_chmod ){
+-			&ftp'chmod( $path, $mode );
++			&ftp::chmod( $path, $mode );
+ 		}
+ 	}
+ }
+--- mirror-2.9/dateconv.pl.orig	2023-12-01 22:13:27.000000000 +0100
++++ mirror-2.9/dateconv.pl	2023-12-06 11:37:07.655064763 +0100
+@@ -75,7 +75,7 @@
+ # input date and time string from ftp "ls -l", such as Mmm dd yyyy or
+ # Mmm dd HH:MM,
+ # return $time number via gmlocal( $string ).
+-sub main'lstime_to_time
++sub main::lstime_to_time
+ {
+ 	package dateconv;
+ 
+@@ -127,15 +127,15 @@
+ 	}
+ 
+ 	if( $use_timelocal ){
+-		return &'timelocal( $secs, $mins, $hours, $day, $month, $year );
++		return &::timelocal( $secs, $mins, $hours, $day, $month, $year );
+ 	}
+ 	else {
+-		return &'timegm( $secs, $mins, $hours, $day, $month, $year );
++		return &::timegm( $secs, $mins, $hours, $day, $month, $year );
+ 	}
+ }
+ 
+ # input time number, output GMT string as "dd Mmm YYYY HH:MM"
+-sub main'time_to_standard
++sub main::time_to_standard
+ {
+ 	package dateconv;
+ 
+--- mirror-2.9/lchat.pl.orig	2023-12-01 22:13:27.000000000 +0100
++++ mirror-2.9/lchat.pl	2023-12-06 11:37:18.528403542 +0100
+@@ -34,7 +34,7 @@
+ # Lots of changes.  See CHANGES since 2.8 file.
+ #
+ # Revision 2.3  1994/02/03  13:45:35  lmjm
+-# Correct chat'read (bfriesen@simple.sat.tx.us)
++# Correct chat::read (bfriesen@simple.sat.tx.us)
+ #
+ # Revision 2.2  1993/12/14  11:09:03  lmjm
+ # Only include sys/socket.ph if not already there.
+@@ -55,7 +55,7 @@
+ 	eval "use Socket";
+ }
+ else {
+-	unless( defined &'PF_INET ){
++	unless( defined &::PF_INET ){
+ 		eval "sub ATT { 0; } sub INTEL { 0; }";
+ 		do 'sys/socket.ph';
+ 	}
+@@ -63,20 +63,20 @@
+ 
+ # Get the correct magic numbers for socket work.
+ if( $] =~ /^5\.\d+$/ ){
+-	# Perl 5 has a special way of getting them via the 'use Socket'
++	# Perl 5 has a special way of getting them via the 'use Socket::
+ 	# above.
+-	$main'pf_inet = &Socket'PF_INET;
+-	$main'sock_stream = &Socket'SOCK_STREAM;
++	$main::pf_inet = &Socket::PF_INET;
++	$main::sock_stream = &Socket::SOCK_STREAM;
+ 	local($name, $aliases, $proto) = getprotobyname( 'tcp' );
+-	$main'tcp_proto = $proto;
++	$main::tcp_proto = $proto;
+ }
+-elsif( defined( &'PF_INET ) ){
++elsif( defined( &::PF_INET ) ){
+ 	# Perl 4 needs to have the socket.ph file created when perl was
+ 	# installed.
+-	$main'pf_inet = &'PF_INET;
+-	$main'sock_stream = &'SOCK_STREAM;
++	$main::pf_inet = &::PF_INET;
++	$main::sock_stream = &::SOCK_STREAM;
+ 	local($name, $aliases, $proto) = getprotobyname( 'tcp' );
+-	$main'tcp_proto = $proto;
++	$main::tcp_proto = $proto;
+ }
+ else {
+ 	# Whoever installed perl didn't run h2ph !!!
+@@ -84,9 +84,9 @@
+ 	#  last resort
+ 	# Use hardwired versions
+ 	# but who the heck would change these anyway? (:-)
+-	$main'pf_inet = 2;
+-	$main'sock_stream = 1; # Sigh... On Solaris set this to 2
+-	$main'tcp_proto = 6;
++	$main::pf_inet = 2;
++	$main::sock_stream = 1; # Sigh... On Solaris set this to 2
++	$main::tcp_proto = 6;
+ 	warn "lchat.pl: using hardwired in network constantants";
+ }
+ 
+@@ -108,7 +108,7 @@
+ }
+ 
+ 
+-## &chat'open_port("server.address",$port_number);
++## &chat::open_port("server.address",$port_number);
+ ## opens a named or numbered TCP server
+ sub open_port { ## public
+ 	local($server, $port) = @_;
+@@ -129,7 +129,7 @@
+ 		$serveraddr = $x[4];
+ 	}
+ 	$serverproc = pack($sockaddr, 2, $port, $serveraddr);
+-	unless (socket(S, $main'pf_inet, $main'sock_stream, $main'tcp_proto)) {
++	unless (socket(S, $main::pf_inet, $main::sock_stream, $main::tcp_proto)) {
+ 		($!) = ($!, close(S)); # close S while saving $!
+ 		return undef;
+ 	}
+@@ -197,7 +197,7 @@
+ ##############################################################################
+ 
+ 
+-## $return = &chat'expect($timeout_time,
++## $return = &chat::expect($timeout_time,
+ ## 	$pat1, $body1, $pat2, $body2, ... )
+ ## $timeout_time is the time (either relative to the current time, or
+ ## absolute, ala time(2)) at which a timeout event occurs.
+@@ -293,7 +293,7 @@
+ 		 		select($rmask, undef, undef, $endtime - time);
+ 			if ($nfound) {
+ 				$nread = sysread(S, $thisbuf, 1024);
+-				if( $chat'debug ){
++				if( $chat::debug ){
+ 					print STDERR "sysread $nread ";
+ 					print STDERR ">>$thisbuf<<\n";
+ 				}
+@@ -316,21 +316,21 @@
+ 	& $subname();
+ }
+ 
+-## &chat'print(@data)
++## &chat::print(@data)
+ sub print { ## public
+ 	print S @_;
+-	if( $chat'debug ){
++	if( $chat::debug ){
+ 		print STDERR "printed:";
+ 		print STDERR @_;
+ 	}
+ }
+ 
+-## &chat'close()
++## &chat::close()
+ sub close { ## public
+ 	close(S);
+ }
+ 
+-# &chat'read(*buf, $ntoread )
++# &chat::read(*buf, $ntoread )
+ # blocking read. returns no. of bytes read and puts data in $buf.
+ # If called with ntoread < 0 then just do the accept and return 0.
+ sub read { ## public
+--- mirror-2.9/ftp.pl.orig	2023-12-01 22:13:27.000000000 +0100
++++ mirror-2.9/ftp.pl	2023-12-06 11:37:30.048409311 +0100
+@@ -28,17 +28,17 @@
+ #  $ftp_port = 21;
+ #  $retry_call = 1;
+ #  $attempts = 2;
+-#  if( &ftp'open( $site, $ftp_port, $retry_call, $attempts ) != 1 ){
++#  if( &ftp::open( $site, $ftp_port, $retry_call, $attempts ) != 1 ){
+ #   die "failed to open ftp connection";
+ #  }
+-#  if( ! &ftp'login( $user, $pass ) ){
++#  if( ! &ftp::login( $user, $pass ) ){
+ #   die "failed to login";
+ #  }
+-#  &ftp'type( $text_mode ? 'A' : 'I' );
+-#  if( ! &ftp'get( $remote_filename, $local_filename, 0 ) ){
++#  &ftp::type( $text_mode ? 'A' : 'I' );
++#  if( ! &ftp::get( $remote_filename, $local_filename, 0 ) ){
+ #   die "failed to get file";
+ #  }
+-#  &ftp'close();
++#  &ftp::close();
+ #
+ #
+ # $Id: ftp.pl,v 2.9 1998/05/29 19:02:00 lmjm Exp lmjm $
+@@ -94,9 +94,9 @@
+ 
+ # This is a "global" it contains the last response from the remote ftp server
+ # for use in error messages
+-$ftp'response = "";
++$ftp::response = "";
+ 
+-# Also ftp'NS is the socket containing the data coming in from the remote ls
++# Also ftp::NS is the socket containing the data coming in from the remote ls
+ # command.
+ 
+ # The size of block to be read or written when talking to the remote
+@@ -115,12 +115,12 @@
+ $real_site = "";
+ 
+ # "Global" Where error/log reports are sent to
+-$ftp'showfd = 'STDERR';
++$ftp::showfd = 'STDERR';
+ 
+ # Should a 421 be treated as a connection close and return 99 from
+-# ftp'expect.  This is against rfc1123 recommendations but I've found
++# ftp::expect.  This is against rfc1123 recommendations but I've found
+ # it to be a wise default.
+-$ftp'drop_on_421 = 1;
++$ftp::drop_on_421 = 1;
+ 
+ # Name of a function to call on a pathname to map it into a remote
+ # pathname.
+@@ -131,7 +131,7 @@
+ $ftp_show = 0;
+ 
+ # Global set on a error that aborts the connection
+-$ftp'fatalerror = 0;
++$ftp::fatalerror = 0;
+ 
+ # Whether to keep the continuation messages so the user can look at them
+ $keep_continuations = 0;
+@@ -140,7 +140,7 @@
+ $read_in = undef;
+ 
+ # should we use the PASV extension to the ftp protocol?
+-$ftp'use_pasv = 0;    # 0=no (default), 1=yes
++$ftp::use_pasv = 0;    # 0=no (default), 1=yes
+ 
+ # Variable only used if proxying
+ $proxy = $proxy_gateway = $proxy_ftp_port = '';
+@@ -150,30 +150,30 @@
+ # (Normally set elsewhere - this is just a sensible default.)
+ # Is expected to take count and code as arguments and prompt
+ # for the secret key  with 'password:' on stdout and then print the password.
+-$ftp'keygen_prog = '/usr/local/bin/key';
++$ftp::keygen_prog = '/usr/local/bin/key';
+ 
+ # Uncomment to turn on lots of debugging.
+ # &debug( 10 );
+ 
+-# Limit how much data any one ftp'get can pull back
++# Limit how much data any one ftp::get can pull back
+ # Negative values cause the size check to be skipped.
+ $max_get_size = -1;
+ 
+ # Where I am connected to.
+ $connect_site = '';
+ 
+-# &ftp'debug( debugging_level )
++# &ftp::debug( debugging_level )
+ # Turn on debugging ranging from 1 = some to 10 = everything
+-sub ftp'debug
++sub ftp::debug
+ {
+ 	$ftp_show = $_[0];
+ 	if( $ftp_show > 9 ){
+-		$chat'debug = 1;
++		$chat::debug = 1;
+ 	}
+ }
+ 
+-# &ftp'set_timeout( seconds )
+-sub ftp'set_timeout
++# &ftp::set_timeout( seconds )
++sub ftp::set_timeout
+ {
+ 	local( $to ) = @_;
+ 	return if $to == $timeout;
+@@ -226,7 +226,7 @@
+ 			$connect_site = $site;
+ 			$connect_port = $ftp_port;
+ 		}
+-		if( ! &chat'open_port( $connect_site, $connect_port ) ){
++		if( ! &chat::open_port( $connect_site, $connect_port ) ){
+ 			if( $retry_call ){
+ 				print $showfd "Failed to connect\n" if $ftp_show;
+ 				next;
+@@ -240,7 +240,7 @@
+ 		$ret = &expect( $timeout,
+ 			2, 1 ); # ready for login to $site
+ 		if( $ret != 1 ){
+-			&chat'close();
++			&chat::close();
+ 			next;
+ 		}
+ 		return 1;
+@@ -264,21 +264,21 @@
+ }
+ 
+ # Setup a signal handler for possible errors.
+-sub ftp'set_signals
++sub ftp::set_signals
+ {
+ 	$ftp_logger = @_;
+-	$SIG{ 'PIPE' } = "ftp'ftp__sighandler";
++	$SIG{ 'PIPE' } = "ftp::ftp__sighandler";
+ }
+ 
+ # Setup a signal handler for user interrupts.
+-sub ftp'set_user_signals
++sub ftp::set_user_signals
+ {
+ 	$ftp_logger = @_;
+-	$SIG{ 'INT' } = "ftp'ftp__sighandler";
++	$SIG{ 'INT' } = "ftp::ftp__sighandler";
+ }
+ 
+-# &ftp'set_namemap( function to map outgoing name,  function to map incoming )
+-sub ftp'set_namemap
++# &ftp::set_namemap( function to map outgoing name,  function to map incoming )
++sub ftp::set_namemap
+ {
+ 	($mapunixout, $mapunixin) = @_;
+ 	if( $debug ) {
+@@ -286,12 +286,12 @@
+ 	}
+ }
+ 
+-# &ftp'open( hostname or address,
++# &ftp::open( hostname or address,
+ #            port to use,
+ #            retry on call failure,
+ #	     number of attempts to retry )
+ # returns 1 if connected, 0 otherwise
+-sub ftp'open
++sub ftp::open
+ {
+ 	local( $site, $ftp_port, $retry_call, $attempts ) = @_;
+ 
+@@ -318,9 +318,9 @@
+ 	return $ret;
+ }
+ 
+-# &ftp'login( user, password, account )
++# &ftp::login( user, password, account )
+ # the account part is optional unless the remote service requires one.
+-sub ftp'login
++sub ftp::login
+ {
+ 	local( $remote_user, $remote_password, $remote_account ) = @_;
+         local( $ret );
+@@ -357,11 +357,11 @@
+ 		# check for s/key challenge - eg, [s/key 994 ph29005]
+ 		# If we are talking to skey then use remote_password as the
+ 		# secret to generate a real password
+-		if( $ftp'response =~ m#\[s/key (\d+) (\w+)\]# ){
++		if( $ftp::response =~ m#\[s/key (\d+) (\w+)\]# ){
+ 			local( $count, $code ) = ($1, $2);
+ 
+ 			# TODO: report open failure & remove need for echo
+-			open( SKEY, "echo $remote_password | $ftp'keygen_prog $count $code |" );
++			open( SKEY, "echo $remote_password | $ftp::keygen_prog $count $code |" );
+ 			while( <SKEY> ){
+ 				if( ! /password:/ ){
+ 					chop( $remote_password = $_ );
+@@ -417,21 +417,21 @@
+ sub service_closed
+ {
+ 	$service_open = 0;
+-	&chat'close();
++	&chat::close();
+ }
+ 
+ # Close down the current ftp connecting in an orderly way.
+-sub ftp'close
++sub ftp::close
+ {
+ 	&quit();
+ 	$service_open = 0;
+-	&chat'close();
++	&chat::close();
+ }
+ 
+-# &ftp'cwd( directory )
++# &ftp::cwd( directory )
+ # Change to the given directory
+ # return 1 if successful, 0 otherwise
+-sub ftp'cwd
++sub ftp::cwd
+ {
+ 	local( $dir ) = @_;
+ 	local( $ret );
+@@ -466,7 +466,7 @@
+ sub pasv
+ {
+ 	# At some point I need to close/free S2, no?
+-	unless( socket( S2, $main'pf_inet, $main'sock_stream, $main'tcp_proto ) ){
++	unless( socket( S2, $main::pf_inet, $main::sock_stream, $main::tcp_proto ) ){
+ 		($!) = ($!, close(S2)); # close S2 while saving $!
+ 		return undef;
+ 	}
+@@ -503,7 +503,7 @@
+ 	}
+ 
+ 	# now need to connect() the new socket
+-	if( ! &chat'open_newport( $newhost, $newport, *S2 ) ){
++	if( ! &chat::open_newport( $newhost, $newport, *S2 ) ){
+ 		if( $retry_call ){
+ 			print $showfd "Failed to connect newport\n" if $ftp_show;
+ 			next;
+@@ -517,12 +517,12 @@
+ }
+ 
+ 
+-# &ftp'dir( remote LIST options )
++# &ftp::dir( remote LIST options )
+ # Start a list going with the given options.
+ # Presuming that the remote deamon uses the ls command to generate the
+ # data to send back then then you can send it some extra options (eg: -lRa)
+ # return 1 if sucessful, 0 otherwise
+-sub ftp'dir_open
++sub ftp::dir_open
+ {
+ 	local( $options ) = @_;
+ 	local( $ret );
+@@ -579,7 +579,7 @@
+ 
+ # Close down reading the result of a remote ls command
+ # return 1 if successful, 0 otherwise
+-sub ftp'dir_close
++sub ftp::dir_close
+ {
+ 	local( $ret );
+ 
+@@ -608,7 +608,7 @@
+ 
+ # Quit from the remote ftp server
+ # return 1 if successful and 0 on failure
+-#  Users should be calling &ftp'close();
++#  Users should be calling &ftp::close();
+ sub quit
+ {
+ 	local( $ret );
+@@ -693,20 +693,20 @@
+ 	return syswrite( NS, $ftpbuf, $ftpbufsize );
+ }
+ 
+-# &ftp'dostrip( true or false )
++# &ftp::dostrip( true or false )
+ # Turn on or off stripping of incoming carriage returns.
+-sub ftp'dostrip
++sub ftp::dostrip
+ {
+ 	($strip_cr ) = @_;
+ }
+ 
+-# &ftp'get( remote file, local file, try restarting where last xfer failed )
++# &ftp::get( remote file, local file, try restarting where last xfer failed )
+ # Get a remote file back into a local file.
+ # If no loc_fname passed then uses rem_fname.
+ # If $restart set and the remote site supports it then restart where
+ # last xfer left off.
+ # returns 1 on success, 0 otherwise
+-sub ftp'get
++sub ftp::get
+ {
+ 	local($rem_fname, $loc_fname, $restart ) = @_;
+ 	local( $ret );
+@@ -893,7 +893,7 @@
+ 	return $ret;
+ }
+ 
+-# &ftp'delete( remote filename )
++# &ftp::delete( remote filename )
+ # Delete a file from the remote site.
+ # returns 1 if successful, 0 otherwise
+ sub delete
+@@ -929,9 +929,9 @@
+     # RMD
+ }
+ 
+-# &ftp'put( local filename, remote filename, restart where left off )
++# &ftp::put( local filename, remote filename, restart where left off )
+ # Similar to get but sends file to the remote site.
+-sub ftp'put
++sub ftp::put
+ {
+ 	local( $loc_fname, $rem_fname ) = @_;
+ 	local( $strip_cr );
+@@ -1097,9 +1097,9 @@
+ 	return $ret;
+ }
+ 
+-# &ftp'restart( byte_offset )
++# &ftp::restart( byte_offset )
+ # Restart the next transfer from the given offset
+-sub ftp'restart
++sub ftp::restart
+ {
+ 	local( $restart_point, $ret ) = @_;
+ 
+@@ -1121,7 +1121,7 @@
+ 	return $ret;
+ }
+ 
+-# &ftp'type( 'A' or 'I' )
++# &ftp::type( 'A' or 'I' )
+ # set transfer type to Ascii or Image.
+ sub type
+ {
+@@ -1149,7 +1149,7 @@
+ @site_command_list = ();
+ 
+ # routine to query the remote server for 'SITE' commands supported
+-sub ftp'site_commands
++sub ftp::site_commands
+ {
+ 	local( $ret );
+ 	
+@@ -1189,7 +1189,7 @@
+ }
+ 
+ # return the pwd, or null if we can't get the pwd
+-sub ftp'pwd
++sub ftp::pwd
+ {
+ 	local( $ret, $cwd );
+ 
+@@ -1220,7 +1220,7 @@
+ 	return $cwd;
+ }
+ 
+-# &ftp'mkdir( directory name )
++# &ftp::mkdir( directory name )
+ # Create a directory on the remote site
+ # return 1 for success, 0 otherwise
+ sub mkdir
+@@ -1250,7 +1250,7 @@
+ 	return $ret;
+ }
+ 
+-# &ftp'chmod( pathname, new mode )
++# &ftp::chmod( pathname, new mode )
+ # Change the mode of a file on the remote site.
+ # return 1 for success, 0 for failure
+ sub chmod
+@@ -1280,10 +1280,10 @@
+ 	return $ret;
+ }
+ 
+-# &ftp'rename( old name, new name )
++# &ftp::rename( old name, new name )
+ # Rename a file on the remote site.
+ # returns 1 if successful, 0 otherwise
+-sub ftp'rename
++sub ftp::rename
+ {
+ 	local( $old_name, $new_name ) = @_;
+ 	local( $ret );
+@@ -1331,8 +1331,8 @@
+ }
+ 
+ 
+-# &ftp'quote( site command );
+-sub ftp'quote
++# &ftp::quote( site command );
++sub ftp::quote
+ {
+ 	local( $cmd ) = @_;
+ 	local( $ret );
+@@ -1370,7 +1370,7 @@
+ }
+ 
+ #
+-#  create the list of parameters for chat'expect
++#  create the list of parameters for chat::expect
+ #
+ #  expect( time_out, {value, return value} );
+ #  the last response is stored in $response
+@@ -1433,7 +1433,7 @@
+ 		if( $ftp_show > 9 ){
+ 			&printargs( $time_out, @expect_args );
+ 		}
+-		$ret = &chat'expect( $time_out, @expect_args );
++		$ret = &chat::expect( $time_out, @expect_args );
+ 	}
+ 
+ 	return $ret;
+@@ -1455,10 +1455,10 @@
+ 	
+ 	$sockaddr = 'S n a4 x8';
+ 
+-	($a,$b,$c,$d) = unpack( 'C4', $chat'thisaddr );
+-	$this = $chat'thisproc;
++	($a,$b,$c,$d) = unpack( 'C4', $chat::thisaddr );
++	$this = $chat::thisproc;
+ 	
+-	if( ! socket( S, $main'pf_inet, $main'sock_stream, $main'tcp_proto ) ){
++	if( ! socket( S, $main::pf_inet, $main::sock_stream, $main::tcp_proto ) ){
+ 		warn "socket: $!";
+ 		return 0;
+ 	}
+@@ -1511,7 +1511,7 @@
+ 		print $showfd "---> $sc\n";
+ 	}
+ 	
+-	&chat'print( "$send_cmd\r\n" );
++	&chat::print( "$send_cmd\r\n" );
+ }
+ 
+ sub accept
+--- mirror-2.9/lsparse.pl.orig	2023-12-01 22:13:27.000000000 +0100
++++ mirror-2.9/lsparse.pl	2023-12-06 11:37:35.268411925 +0100
+@@ -14,7 +14,7 @@
+ # This software is provided "as is" without express or implied warranty.
+ #
+ # Parse "ls -lR" type listings
+-# use lsparse'reset( dirname ) repeately
++# use lsparse::reset( dirname ) repeately
+ #
+ # By Lee McLoughlin <lmjm@icparc.ic.ac.uk>
+ #
+@@ -61,18 +61,18 @@
+ local( $match );
+ 
+ # The filestore type being scanned
+-$lsparse'fstype = 'unix';
++$lsparse::fstype = 'unix';
+ 
+ # Keep whatever case is on the remote system.  Otherwise lowercase it.
+-$lsparse'vms_keep_case = '';
++$lsparse::vms_keep_case = '';
+ 
+ # A name to report when errors occur
+-$lsparse'name = 'unknown';
++$lsparse::name = 'unknown';
+ 
+ # Wether to report subdirs when finding them in a directory
+ # or when their details appear.  (If you report early then mirro might
+ # recreate locally remote restricted directories.)
+-$lsparse'report_subdir = 0;	# Report when finding details.
++$lsparse::report_subdir = 0;	# Report when finding details.
+ 
+ 
+ # Name of routine to call to parse incoming listing lines
+@@ -81,7 +81,7 @@
+ # Set the directory that is being scanned and
+ # check that the scan routing for this fstype exists
+ # returns false if the fstype is unknown.
+-sub lsparse'reset
++sub lsparse::reset
+ {
+ 	$here = $currdir = $_[0];
+ 	$now = time;
+@@ -91,17 +91,17 @@
+ 	$vms_strip =~ s,^/+,,;
+ 	$vms_strip =~ s,/+$,,;
+ 
+-	$ls_line = "lsparse'line_$fstype";
++	$ls_line = "lsparse::line_$fstype";
+ 	return( defined( &$ls_line ) );
+ }
+ 
+ # See line_unix following routine for call/return details.
+ # This calls the filestore specific parser.
+-sub lsparse'line
++sub lsparse::line
+ {
+ 	local( $fh ) = @_;
+ 
+-	# ls_line is setup in lsparse'reset to the name of the function
++	# ls_line is setup in lsparse::reset to the name of the function
+ 	local( $path, $size, $time, $type, $mode ) =
+ 		eval "&$ls_line( \$fh )";
+ 
+@@ -119,7 +119,7 @@
+ # time is a Un*x time value for the file
+ # type is "f" for a file, "d" for a directory and
+ #         "l linkname" for a symlink
+-sub lsparse'line_unix
++sub lsparse::line_unix
+ {
+ 	local( $fh ) = @_;
+ 	local( $non_crud, $perm_denied );
+@@ -132,7 +132,7 @@
+ 
+ 	while( <$fh> ){
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ 		# Stomp on carriage returns
+ 		s/\015//g;
+@@ -168,7 +168,7 @@
+ 		if( $perm_denied ){
+ 			$perm_denied = "";
+ 			warn "Warning: input corrupted by 'Permission denied'",
+-				"errors, about line $. of $lsparse'name\n";
++				"errors, about line $. of $lsparse::name\n";
+ 			next;
+ 		}
+ 		# Not found's are like Permission denied's.  They can start part
+@@ -180,7 +180,7 @@
+ 		if( $not_found ){
+ 			$not_found = "";
+ 			warn "Warning: input corrupted by 'not found' errors",
+-				" about line $. of $lsparse'name\n";
++				" about line $. of $lsparse::name\n";
+ 			next;
+ 		}
+ 		
+@@ -196,7 +196,7 @@
+ 				next;
+ 			}
+ 
+-			local( $time ) = &main'lstime_to_time( $lsdate );
++			local( $time ) = &main::lstime_to_time( $lsdate );
+ 			local( $type ) = '?';
+ 			local( $mode ) = 0;
+ 
+@@ -316,7 +316,7 @@
+ # time is a Un*x time value for the file
+ # type is "f" for a file, "d" for a directory and
+ #         "l linkname" for a symlink
+-sub lsparse'line_dls
++sub lsparse::line_dls
+ {
+ 	local( $fh ) = @_;
+ 	local( $non_crud, $perm_denied );
+@@ -327,7 +327,7 @@
+ 
+ 	while( <$fh> ){
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ 		# Stomp on carriage returns
+ 		s/\015//g;
+@@ -350,7 +350,7 @@
+ 			}
+ 			else {
+ 				# a file
+-				$time = &main'lstime_to_time( $lsdate );
++				$time = &main::lstime_to_time( $lsdate );
+ 				$type = 'f';
+ 				$mode = 0444;
+ 			}
+@@ -400,7 +400,7 @@
+ # time is a Un*x time value for the file
+ # type is "f" for a file, "d" for a directory and
+ #         "l linkname" for a symlink
+-sub lsparse'line_netware
++sub lsparse::line_netware
+ {
+ 	local( $fh ) = @_;
+ 
+@@ -410,7 +410,7 @@
+ 
+ 	while( <$fh> ){
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ 		# Stomp on carriage returns
+ 		s/\015//g;
+@@ -435,7 +435,7 @@
+ 			if( $file eq '.' || $file eq '..' ){
+ 				next;
+ 			}
+-			local( $time ) = &main'lstime_to_time( $lsdate );
++			local( $time ) = &main::lstime_to_time( $lsdate );
+ 			local( $type ) = '?';
+ 			local( $mode ) = 0;
+ 
+@@ -509,7 +509,7 @@
+ # time is a Un*x time value for the file
+ # type is "f" for a file, "d" for a directory and
+ #         "l linkname" for a symlink
+-sub lsparse'line_vms
++sub lsparse::line_vms
+ {
+ 	local( $fh ) = @_;
+ 	local( $non_crud, $perm_denied );
+@@ -520,7 +520,7 @@
+ 
+ 	while( <$fh> ){
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ 		# Stomp on carriage returns
+ 		s/\015//g;
+@@ -543,7 +543,7 @@
+ 		}
+ 
+ 		# Upper case is so ugly
+-		if( ! $lsparse'vms_keep_case ){
++		if( ! $lsparse::vms_keep_case ){
+ 			tr/A-Z/a-z/;
+ 		}
+ 
+@@ -584,7 +584,7 @@
+ 		$size = 0;
+ 		
+ 		if( $got ){
+-			local( $time ) = &main'lstime_to_time( $lsdate );
++			local( $time ) = &main::lstime_to_time( $lsdate );
+ 			local( $type ) = 'f';
+ 			local( $mode ) = 0444;
+ 
+@@ -610,7 +610,7 @@
+ 				$mode = 0555;
+ 			}
+ 
+-			$lsparse'vers = $vers;
++			$lsparse::vers = $vers;
+ 
+ #print "file=|$file| match=|$match| vms_strip=|$vms_strip|\n";
+ 			$file =~ s,^,/,;
+@@ -653,7 +653,7 @@
+ # time is a Un*x time value for the file
+ # type is "f" for a file, "d" for a directory and
+ #         "l linkname" for a symlink
+-sub lsparse'line_dosftp
++sub lsparse::line_dosftp
+ {
+ 	local( $fh ) = @_;
+ 
+@@ -670,7 +670,7 @@
+ 			$_ = <$fh>;
+ 
+ 			# Store listing
+-			print main'STORE $_;
++			print main::STORE $_;
+ 
+ 			# Ignore the summary at the end and blank lines
+ 			if( /^\d+ files?\./ || /^\s+$/ ){
+@@ -691,7 +691,7 @@
+ 
+ 			# TODO: fix hacky 19$yr
+ 			local( $lsdate ) = "$day-$mon-19$yr $hrs:$min";
+-			local( $time ) = &main'lstime_to_time( $lsdate );
++			local( $time ) = &main::lstime_to_time( $lsdate );
+ 			local( $type ) = '?';
+ 			local( $mode ) = 0;
+ 
+@@ -736,7 +736,7 @@
+ # 03-08-94  07:17AM                 5504 article.xfiles.intro
+ # 02-28-94  11:44AM                 3262 article1.gillian.anderson
+ 
+-sub lsparse'line_dosish
++sub lsparse::line_dosish
+ {
+ 	local( $fh ) = @_;
+ 
+@@ -748,7 +748,7 @@
+ 		$_ = <$fh>;
+ 
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ 		# Ignore blank lines
+ 		if( /^\s+$/ ){
+@@ -775,7 +775,7 @@
+ 
+ 			# TODO: fix hacky 19$yr
+ 			local( $lsdate ) = "$day-$mon-19$yr $hrs:$min";
+-			local( $time ) = &main'lstime_to_time( $lsdate );
++			local( $time ) = &main::lstime_to_time( $lsdate );
+ 			local( $type ) = ($dir_or_size eq '<DIR>' ? 'd' : 'f');
+ 			local( $mode ) = 0;
+ 			local( $size ) = 0;
+@@ -842,7 +842,7 @@
+ # WPKIT1.EXE          960338      06/21/95        17:01
+ # CMT.CSV                  0      07/06/95        14:56
+ 
+-sub lsparse'line_supertcp
++sub lsparse::line_supertcp
+ {
+     local( $fh ) = @_;
+ 
+@@ -860,7 +860,7 @@
+ 	    $_ = <$fh>;
+ 
+ 	    # Store listing
+-	    print main'STORE $_;
++	    print main::STORE $_;
+ 
+ 	    # Ignore the summary at the end and blank lines
+ 	    if( /^\d+ files?\./ || /^\s+$/ ){
+@@ -885,7 +885,7 @@
+ 	    $pending = $5;
+ 
+ 	    local( $lsdate ) = "$day-$mon-$yr $time";
+-	    local( $time ) = &main'lstime_to_time( $lsdate );
++	    local( $time ) = &main::lstime_to_time( $lsdate );
+             local( $type ) = '?';
+ 	    local( $mode ) = 0;
+ 
+@@ -931,7 +931,7 @@
+ #               372      A          08-09-95   10:26  Aussie_1.bag
+ #            310992                 06-28-94   09:56  INSTALL.EXE
+ 
+-sub lsparse'line_os2
++sub lsparse::line_os2
+ {
+ 	local( $fh ) = @_;
+ 
+@@ -943,7 +943,7 @@
+ 		$_ = <$fh>;
+ 
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ 		# Ignore blank lines
+ 		if( /^\s+$/ ){
+@@ -971,7 +971,7 @@
+ 
+ 			# TODO: fix hacky 19$yr
+ 			local( $lsdate ) = "$day-$mon-19$yr $hrs:$min";
+-			local( $time ) = &main'lstime_to_time( $lsdate );
++			local( $time ) = &main::lstime_to_time( $lsdate );
+ 			local( $type ) = ($dir eq 'DIR' ? 'd' : 'f');
+ 			local( $mode ) = 0;
+ 
+@@ -999,7 +999,7 @@
+ # time is a Un*x time value for the file
+ # type is "f" for a file, "d" for a directory and
+ #         "l linkname" for a symlink
+-sub lsparse'line_chameleon
++sub lsparse::line_chameleon
+ {
+     local( $fh ) = @_;
+ 
+@@ -1038,7 +1038,7 @@
+ 	    $pending = $5;
+ 
+ 	    local( $lsdate ) = "$day-$mon-$yr $time";
+-	    local( $time ) = &main'lstime_to_time( $lsdate );
++	    local( $time ) = &main::lstime_to_time( $lsdate );
+             local( $type ) = '?';
+ 	    local( $mode ) = 0;
+ 
+@@ -1076,7 +1076,7 @@
+ # time is a Un*x time value for the file
+ # type is "f" for a file, "d" for a directory and
+ #         "l linkname" for a symlink
+-sub lsparse'line_macos
++sub lsparse::line_macos
+ {
+ 	local( $fh ) = @_;
+ 	local( $non_crud, $perm_denied );
+@@ -1087,7 +1087,7 @@
+ 
+ 	while( <$fh> ){
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ 		# Stomp on carriage returns
+ 		s/\015//g;
+@@ -1098,7 +1098,7 @@
+ 		if( /^([\-rwxd]{10}).*\s(\d+\s+)?(\S+)\s+\d+\s*(\w\w\w\s+\d+\s*(\d+:\d+|\d\d\d\d))\s+(.*)\n/ ){
+ 			local( $kind, $size, $lsdate, $file ) = ($1, $3, $4, $6);
+ 			
+-			local( $time ) = &main'lstime_to_time( $lsdate );
++			local( $time ) = &main::lstime_to_time( $lsdate );
+ 			local( $type ) = '?';
+ 			local( $mode ) = 0;
+ 
+@@ -1126,18 +1126,18 @@
+ 
+ 
+ # --------------------- parse lsparse log file format
+-# lsparse'line_lsparse() is for input in lsparse's internal form,
++# lsparse::line_lsparse() is for input in lsparse::s internal form,
+ # as it might have been written to a log file during a previous
+ # run of a program that uses lsparse.  The format is:
+ #     filename size time type mode
+ # where size and time are in decimal, mode is in decimal or octal,
+ # and type is one or two words.
+-sub lsparse'line_lsparse
++sub lsparse::line_lsparse
+ {
+ 	local( $fh ) = @_;
+ 
+-	if( $lsparse'readtime ){
+-		alarm( $lsparse'readtime );
++	if( $lsparse::readtime ){
++		alarm( $lsparse::readtime );
+ 	}
+ 
+ 	if( eof( $fh ) ){
+@@ -1147,7 +1147,7 @@
+ 
+ 	while( <$fh> ){
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ 		if( /^(\S+)\s+(\d+)\s+(\d+)\s+((l\s+)?\S+)\s+(\d+)\n$/ ){
+ 			# looks good.
+@@ -1174,12 +1174,12 @@
+ # This is the format used at sumex-aim.stanford.edu for the info-mac area.
+ # (see info-mac/help/all-files.txt.gz).
+ #
+-sub lsparse'line_infomac
++sub lsparse::line_infomac
+ {
+ 	local( $fh ) = @_;
+ 
+-	if( $lsparse'readtime ){
+-		alarm( $lsparse'readtime );
++	if( $lsparse::readtime ){
++		alarm( $lsparse::readtime );
+ 	}
+ 
+ 	if( eof( $fh ) ){
+@@ -1189,13 +1189,13 @@
+ 
+ 	while( <$fh> ){
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ 		next if /^;/;
+ 		if( /^([l-].)\s*(\d+)\s*(\w\w\w\s+\d+\s*(\d+:\d+|\d\d\d\d))\s+(.*)\n/ ){
+ 			local( $kind, $size, $lsdate, $file ) = ($1, $2, $3, $5);
+ 			
+-			local( $time ) = &main'lstime_to_time( $lsdate );
++			local( $time ) = &main::lstime_to_time( $lsdate );
+ 
+ 			# This should be a symlink
+ 			if( $kind =~ /^l/ && $file =~ /(.*) -> (.*)/ ){
+@@ -1226,12 +1226,12 @@
+ # +i8388621.48638,m848117771,r,s1336,     qmsmac.html
+ # +i8388621.88705,m850544954,/,   txt
+ #
+-sub lsparse'line_eplf
++sub lsparse::line_eplf
+ {
+ 	local( $fh ) = @_;
+ 
+-	if( $lsparse'readtime ){
+-		alarm( $lsparse'readtime );
++	if( $lsparse::readtime ){
++		alarm( $lsparse::readtime );
+ 	}
+ 
+ 	if( eof( $fh ) ){
+@@ -1243,7 +1243,7 @@
+ 		s/\015//g;
+ 
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ # +i8388621.48638,m848117771,r,s1336,     qmsmac.html
+ # +i8388621.88705,m850544954,/,   txt
+@@ -1272,12 +1272,12 @@
+ # --------------------- CTAN files list
+ #    22670 Mon Jul 20 12:36:34 1992 pub/tex/biblio/bibtex/contrib/aaai-named.bst
+ #
+-sub lsparse'line_ctan
++sub lsparse::line_ctan
+ {
+ 	local( $fh ) = @_;
+ 
+-	if( $lsparse'readtime ){
+-		alarm( $lsparse'readtime );
++	if( $lsparse::readtime ){
++		alarm( $lsparse::readtime );
+ 	}
+ 
+ 	if( eof( $fh ) ){
+@@ -1287,12 +1287,12 @@
+ 
+ 	while( <$fh> ){
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ 		if( /^\s*(\d+)\s+(\w\w\w\s+\w\w\w\s+\d+\s+\d+:\d+:\d+\s+\d+)\s+(.*)\n/ ){
+ 			local( $size, $lsdate, $file ) = ($1, $2, $3);
+ 			
+-			local( $time ) = &main'lstime_to_time( $lsdate );
++			local( $time ) = &main::lstime_to_time( $lsdate );
+ 
+ 			return( $file, $size, $time, 'f', 0444 );
+ 		}
+@@ -1317,12 +1317,12 @@
+ # time is a Un*x time value for the file -- this is good from the m/f
+ # type is always "f" for a file
+ 
+-sub lsparse'line_cms
++sub lsparse::line_cms
+ {
+ 	local( $fh ) = @_;
+ 
+-	if( $lsparse'readtime ){
+-		alarm( $lsparse'readtime );
++	if( $lsparse::readtime ){
++		alarm( $lsparse::readtime );
+ 	}
+ 
+ 	if( eof( $fh ) ){
+@@ -1331,21 +1331,21 @@
+ 	}
+ 	while( <$fh> ){
+ 		# Store listing
+-		print main'STORE $_;
++		print main::STORE $_;
+ 
+ 		chop;
+ 		next unless /\d+\/\d+\/\d+\s+\d+:\d+:\d+/;
+ 		s/^\s+//;
+ 
+ 		# Upper case is so ugly
+-		if( ! $lsparse'vms_keep_case ){
++		if( ! $lsparse::vms_keep_case ){
+ 			tr/A-Z/a-z/;
+ 		}
+ 
+ 		local( $fname, $ftype, $fdisk, $rectype, $lrecl, $recs,
+ 		      $blocks, $ldate, $tod ) = split(/\s+/, $_);
+ 		return( join('.', ($fname, $ftype, $fdisk)),
+-		       $lrecl * $recs, &main'lstime_to_time( "$ldate $tod" ),
++		       $lrecl * $recs, &main::lstime_to_time( "$ldate $tod" ),
+ 		       'f' );
+ 	}
+ 	alarm( 0 );

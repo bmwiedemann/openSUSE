@@ -1,0 +1,548 @@
+-------------------------------------------------------------------
+Sun Jan  7 22:04:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.3.3:
+  * fix pypi release
+- update to 7.3.0:
+  * Add support for NetBox v3.7 by @markkuleinio #596
+  * Updated test suite by @abhi1693
+
+-------------------------------------------------------------------
+Thu Sep  7 15:49:27 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.2.0
+  * Add support for NetBox v3.6.
+
+-------------------------------------------------------------------
+Wed Aug 30 09:18:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Tue Aug 29 15:03:55 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.1.0
+  * Add support for NetBox v3.5.
+
+-------------------------------------------------------------------
+Mon Jan 23 21:56:39 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.0.1
+  * Removed pre-NetBox 3.3 features.
+  * Fix custom_filed KeyError traceback.
+
+-------------------------------------------------------------------
+Mon Dec 12 18:06:33 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
+Sat Dec 10 20:46:27 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.0.0
+  BREAKING CHANGE
+  * Due to changes for a_terminations, b_terminations this version
+    only supports NetBox 3.3 and later.
+  Changes
+  * Enable available_ips for ip_ranges.
+  * Remove all Python2 related code.
+  * Do not skip plugins in endpoint URLs.
+  * Fix pickling exception with custom errors.
+  * Support NetBox 3.3 cabling models (breaking change).
+
+-------------------------------------------------------------------
+Wed Oct  5 14:22:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 6.6.2
+  * ci: test against the currently supported python versions by @raddessi in #446
+    Fix pickling exception with custom errors by @kingtong in #459
+
+-------------------------------------------------------------------
+Thu Apr  7 07:40:44 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
+Thu Feb 24 20:42:55 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.6.1
+  * Use devices as variable for example calls to nb.dcim.devices.
+  * Fixes #447: Remove extra self argument in Vlans.str().
+- Update to version 6.6.0
+  * Upgrade Black to the first non-beta release.
+  * Fix VirtualChassis.__str__(), make VirtualChassis.master a
+    Devices object.
+- Update to version 6.5.0
+  * Docstring updates: remove secrets from examples.
+  * Fixes #427: Adds support for available-vlans child endpoint
+    for VLAN groups.
+
+-------------------------------------------------------------------
+Mon Dec 27 10:54:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.4.1
+  * Adds support for HTTP 409 when allocation is unsuccessful.
+  * Set ObjectChanges.postchange_data and .prechange_data to
+    JsonField.
+- Update to version 6.4.0
+  * Use display field in Record.__str__() to support future models
+  * Update docstrings for DetailEndpoint and Prefixes.available_*
+  * Add wireless app (for NetBox 3.1+)
+
+-------------------------------------------------------------------
+Sun Dec  5 14:59:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.3.0
+  * Handle list results in DetailEndpoint.create().
+  * Define Permissions.constraints as JSON field to fix #398.
+  * Fixes manual pagination (#412) and argless filter.
+  * Makes .filter() with no args equivalent to .all(), 7.0 will
+    remove the latter.
+  * Add Api.create_token() (for NetBox 3.0+)
+  * Add custom model name lookup to fix.
+
+-------------------------------------------------------------------
+Sun Oct 31 10:10:38 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.2.0
+  * Fixes bulk update/delete on both Endpoint and RecordSet.
+
+-------------------------------------------------------------------
+Sun Aug  1 09:33:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.1.3
+  * Adds dash-separated plugin endpoint name support
+- Do not longer build for python2 (upsteam dropped support).
+
+-------------------------------------------------------------------
+Fri Apr 16 12:09:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.1.2
+  * Fixes issue giving Endpoint.create() a list of dicts.
+
+-------------------------------------------------------------------
+Fri Apr  9 09:36:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.1.1
+  * Fixes issue with duplicate returns when threading is enabled.
+  * Fixes updates to config_context data.
+  * Re-implements ValueError from Endpoint.get() when used with
+    kwargs and more than one result is found.
+- Update to version 6.1.0
+  * Adds a __next__ method to RecordSet objects.
+- Update to version 6.0.2
+  * Fix len() calls for empty RecordSet.
+
+-------------------------------------------------------------------
+Wed Apr  7 15:27:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.0.1
+  * Fixes broken DetailEndpoint.list().
+- Update to version 6.0.0
+  * BREAKING CHANGE Endpoint.all() and .filter() no longer return
+    lists, instead they return a ReturnSet object now. Iterating
+    over this object calls a generator which steps through
+    paginated results now as-needed.
+  * Endpoint.all() and .filter() now accept a limit kwarg that
+    controls the page size of paginated results.
+  * Fixes issue pickling responses from Endpoint.all() and
+    `.filter().
+  * Implemented integration tests against four previous major
+    NetBox releases.
+  * Ends python 2 support.
+
+-------------------------------------------------------------------
+Mon Jan  4 21:48:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.3.0
+  * Improves on Record._endpoint_from_url()'s path parsing to
+    avoid URL format issues.
+
+-------------------------------------------------------------------
+Wed Dec 30 16:14:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.2.1
+  * fix tests
+
+-------------------------------------------------------------------
+Wed Dec 30 08:10:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.2.0
+  * Adds support for the /dcim/interfaces/:id/trace endpoint via
+    the .trace() method on an interface record.
+  * Add support for /api/users/ endpoints in NetBox 2.9+.
+    Add Api.status() to be used with NetBox 2.10.0+.
+
+-------------------------------------------------------------------
+Sat Dec 26 21:03:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.1.2
+  * Fixes issue saving tags on NetBox 2.9+ instances (#311)
+
+-------------------------------------------------------------------
+Tue Dec 15 21:31:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.1.1
+  * Fixes bug with where URL was mangled calling .save()
+
+-------------------------------------------------------------------
+Thu Sep 24 18:40:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.1.0
+  * Add Basic plugins support (#290).
+
+-------------------------------------------------------------------
+Wed Sep  2 05:58:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.8
+  * Fixes malformed URL when calling .save() and .delete() on
+    nested objects.
+
+-------------------------------------------------------------------
+Sat Aug 22 22:03:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.7
+  * Implement Record.__getitem__()
+- Update to version 5.0.6
+  * Fixes issue when calling attributes by their dict keys where
+    we only returned the key's name instead of its value.
+
+-------------------------------------------------------------------
+Thu Jul 16 15:20:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.5
+  * Fixes issue with unchanged tags being reordered when .save()
+    is called that caused unnecessary updates to NetBox.
+
+-------------------------------------------------------------------
+Wed Jul  8 15:53:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.4
+  * Fixes issue saving local_config_context attribute on objects
+
+-------------------------------------------------------------------
+Mon Jul  6 18:38:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.3
+  * Fixes issue with threads overwriting Request.filters.
+
+-------------------------------------------------------------------
+Mon Jul  6 18:37:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 5.0.2
+  * Fixes Api.get_version() to use the session object.
+
+-------------------------------------------------------------------
+Fri Jun 26 08:08:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.1
+  * Fixes #240 by adding an Api.openapi() method that returns a
+    dictionary of the entire OpenAPI spec.
+  Breaking Changes
+  * Fixes #239, #229, #219, #209, #189, and #166 by allowing
+    Api.http_session to be overridden by user-supplied custom
+    requests.Session() objects to more precisely control certain
+    requests behavior. While this was possible before, it wasn't
+    applied to all requests. For example, getting session keys
+    was done in Api().__init__() which wouldn't respect a custom
+    http_session. This behavior has been changed and will now
+    only occur when the secrets endpoint is called.
+  * Note: this change removes the ssl_verify kwarg passed to
+    .api() that controlled certificate validation in previous
+    versions. Please see the docs for the new method.
+  * Fixes #241 where the same objects failed equality tests if one
+    was derived from a nested object vs directly from that endpoint
+  * Fixes an inconsistency noted in #224 by making Endpoint.get()
+    and Endpoint.filter() behave similarly (return None) when the
+    resource isn't found.
+  * Fixes #144 by returning proper objects from .create() on detail
+    endpoint routes like available-ips and available-prefixes.
+
+-------------------------------------------------------------------
+Sat Jun 13 10:50:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+
+- Use github source URL
+- Update to version 4.3.2
+  * Adds support for the rack elevation endpoint in NetBox 2.8
+- Update to version 4.3.1
+  * Makes config_contex on virtualization record objects a
+    JsonField.
+
+-------------------------------------------------------------------
+Mon Mar 23 14:49:20 UTC 2020 - pgajdos@suse.com
+
+- version update to 4.3.0
+  * Adds the ability to thread calls to NetBox from .filter() and
+    .all() methods. (PR #216)
+
+-------------------------------------------------------------------
+Tue Feb 11 06:39:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.5
+  * save() is not idempotent when dealing with choice objects
+    from NetBox 2.7
+
+-------------------------------------------------------------------
+Sun Jan 12 09:18:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.4
+  * Fixes Nested Record Write methods
+
+-------------------------------------------------------------------
+Tue Dec 10 18:37:10 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.2
+  * Fixes issues with hashing Record objects by adding name
+    attribute to Endpoint and __eq__ method to Record objects to
+    facilitate comparison.
+
+-------------------------------------------------------------------
+Wed Nov 27 07:16:18 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.1
+  * Fixes infinite loop when filtering with paginated results.
+
+-------------------------------------------------------------------
+Wed Nov 20 20:21:16 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.0
+  * Fix discrepancy in DetailEndpoint.create() and the docs where
+    calling w/o arguments resulted in an exception.
+  * Add method to return custom choices.
+
+-------------------------------------------------------------------
+Tue Nov 19 18:13:35 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.2
+  * Fixes URL in get_session_key
+
+-------------------------------------------------------------------
+Mon Nov 18 19:17:43 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.1
+  * Fix Endpoint.choices() by assigning http_session.
+
+-------------------------------------------------------------------
+Sat Nov 16 11:18:49 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.0
+  * Makes use of session in requests
+  * Adds Api.version property to query the NetBox version
+  * Adds .choices() method to endpoint objects that utilizes DRF's
+    OPTIONS method for discovering available choices for fields
+    that use it. This method will eventually replace App.choices()
+    when NetBox retires the /_choices endpoint.
+  * Adds count() method to Endpoint object.
+  * Use requests params to form URL parameters.
+  * Creates a custom model for ChangeObjects and sets its __str__
+    to request_id.
+  * Implements __hash__ method on Record.
+  * Implements JsonField object.
+  * Adds local_context_data field to device model as dict.
+
+-------------------------------------------------------------------
+Fri Sep 27 22:21:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.8
+  * Returns ContentError when 2XX response but not JSON.
+
+-------------------------------------------------------------------
+Mon Sep 16 21:49:19 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.7
+  * Returns AllocationError when NetBox responds with a 204 to
+    Allocation requests
+  * Makes App object pickleable
+
+- Update to version 4.0.6
+  * Fixes behavior where appending an existing VLAN object id to
+    tagged_vlans would cause .save() to still trigger a PATCH
+    operation.
+- Run testsuite
+
+-------------------------------------------------------------------
+Sat Dec 15 20:47:40 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.5
+  * Fixes list comparison issue in Record._diff.
+  * Returns None from Endpoint.get() when no items are found instead
+    of empty list from .filter().
+
+- Update to version 4.0.4
+  * Fixes IndexError introduced by fix for #127 when field is empty
+    list.
+
+- Update to version 4.0.3
+  * Fixes __iter__ method on Record object so that it properly returns
+    lists of record objects. Like tagged_vlans on for Interfaces.
+
+-------------------------------------------------------------------
+Fri Dec  7 06:47:50 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.2
+  * Fixes TypeError when calling save on interfaces Record with
+    tagged_vlans.
+
+-------------------------------------------------------------------
+Thu Dec  6 18:46:11 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.1
+  * Adds missing authentication credentials for .choices().
+
+-------------------------------------------------------------------
+Wed Dec  5 19:10:36 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.0
+  Enhancements
+  * Added cable endpoint support coming in NetBox 2.5.
+  * Added some detail to the ValueError raised when .get() returns
+    more than one object.
+  * Added reserved kwargs to .get() and .filter() ("id", "pk",
+    "limit", "offset").
+  * Made RequestError more verbose when the NetBox API returns a
+    json response. Also added more details when a 404 is returned
+    (e.g. misspelled endpoints).
+
+  API Changes
+  * Switch to using PATCH instead of PUTs for updates. Also added
+    an .update() method to Response objects that takes a dictionary
+    to update multiple values on the object.
+  * Add basic support for the _choices endpoint on each app by adding
+    a choices() method to the App object.
+  * - Return Record objects from .create().
+
+  Bug Fixes
+  * Raise an exception now if .filter() is passed no kwargs.
+  * Fixes some miscellaneous issues related to converting certain
+    Record object's fields into netaddr.IPNetwork objects. That feature
+    has been removed and it simply return strings now.
+
+-------------------------------------------------------------------
+Sat Dec  1 11:52:19 UTC 2018 - mardnh@gmx.de
+
+- Update to versino 3.4.11
+  * Bugfix release
+
+-------------------------------------------------------------------
+Thu Nov 29 19:41:49 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.10
+  * Should actually fix idempotent tags (#94) now.
+
+-------------------------------------------------------------------
+Tue Nov 27 16:59:34 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.9
+  * Fixes #94 where users were unable to use .append() to add a tag.
+    This converts tag lists to a set and back to a list when
+    serialize() is called so we don't send an update when we append
+    a tag that's already there.
+
+-------------------------------------------------------------------
+Tue Nov 27 16:55:17 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.8
+  * Fixes #106 by adding a units DetailEndpoint onto the Racks object
+    that lets users get the devices in a rack.
+    Calling netbox.dcim.racks.get(x).units.list() will return a list
+    of RU objects that have a device attribute populated with a Record
+    object of the device in that RU.
+  * Fixes #110 in serializer that failed to handle tagged_vlans field
+    correctly. This also added the ability for objects stored in lists
+    to be turned into Record objects requested in #92
+
+-------------------------------------------------------------------
+Wed Oct 10 18:42:42 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.7
+  * Fixes memory leak in endpoints.filter() by getting rid of
+    unused CACHE variable.
+
+- Update to version 3.4.6
+  * Fixes issue with the values of data and config_context being
+    turned into Record objects instead of
+
+- Update to version 3.4.5
+  * Fixes issue with IPRecord object throwing a ValueError when
+    trying to turn a string containing slashes in it into an IPNetwork
+    object.
+  * Adds custom IPRecord object for Circuit Terminations with a string
+    representation of the underlying circuit ID.
+
+-------------------------------------------------------------------
+Fri Jul 27 09:14:32 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.4
+  * Fixes issue with prefix and aggregate records not being
+    idempotent.
+  * Adds str and repr methods for Circuit Records so that .cid is
+    displayed by default.
+
+- Update to version 3.4.3
+  * Fixes issue with how non-ascii characters are handled in
+    NetBox return.
+
+- Update to version 3.4.2
+  * Fixes serialization issue with selection type custom fields
+  * Remove unused dependency.
+
+- Update to version 3.4.1
+  * Should fix issue introduced by switching to setuptools_scm
+    for versioning.
+
+- Update to version 3.4.0
+  * Adds the ability to toggle SSL verification.
+  * Sanitizes URL by removing a trailing front slash if it's present
+    in the url passed at instantiation.
+  * Moves to setuptools_scm for versioning.
+
+-------------------------------------------------------------------
+Thu Apr 26 16:15:09 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.3.1
+  * Fixes issue with special characters while building the URL.
+
+-------------------------------------------------------------------
+Fri Mar 30 07:46:40 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.3.0
+  * Adds support for napalm detail endpoint
+
+-------------------------------------------------------------------
+Fri Mar  9 16:35:48 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.2.0
+  * Adds VirtualMachines object that properly handles
+    primary_(ip|ip4|ip6) attributes.
+
+-------------------------------------------------------------------
+Wed Feb 28 19:42:08 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.1.0
+  * Adds proper support for virtual-chassis endpoint.
+  * Fixes issue with calling attributes with None value on Record
+    objects after .full_details() has run. (Issue #36)
+  * Adds example in docs for RequestError exceptions (Issue #28)
+
+-------------------------------------------------------------------
+Wed Feb  7 18:33:14 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.0.2
+  * fixed docstrings with old api style
+  * full_details doesn't add token
+
+-------------------------------------------------------------------
+Sun Nov 19 19:14:38 UTC 2017 - mardnh@gmx.de
+
+- Update to version 3.0.1
+  * Added python3 support
+  * Virtualization support was added
+  * Added available-ips as a property of Prefix objects
+  * available-prefixes was also added to Prefix objects,
+    and behaves similarly to available-ips
+
+-------------------------------------------------------------------
+Tue Oct 10 13:59:44 UTC 2017 - mardnh@gmx.de
+
+- Initial package, version 2.1.0

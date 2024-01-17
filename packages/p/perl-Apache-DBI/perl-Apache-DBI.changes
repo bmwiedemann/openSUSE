@@ -1,0 +1,195 @@
+-------------------------------------------------------------------
+Tue Apr 14 09:20:21 UTC 2015 - coolo@suse.com
+
+- updated to 1.12
+   see /usr/share/doc/packages/perl-Apache-DBI/Changes
+
+  1.12 June 12, 2013
+  
+    - Fix detection of server startup in mod_perl 2, to avoid caching
+      connections in the parent process. Perrin Harkins
+      <perrin@elem.com>
+
+-------------------------------------------------------------------
+Thu Oct 20 14:00:59 UTC 2011 - tabraham@novell.com
+
+- update to 1.11
+  * RT 69087, perl 5.14 'Using qw(...) as parentheses' fix
+
+-------------------------------------------------------------------
+Mon Feb  7 09:34:59 UTC 2011 - vcizek@novell.com
+
+- update to 1.10
+  - Add Apache2::RequestUtil for mp2 instances.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:38 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:17 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Nov 18 17:02:41 CET 2010 - anicka@suse.cz
+
+- update to 1.09
+  * Fix pod errors
+  * Adds PerlChildExitHandler to disconnect existing connections
+
+-------------------------------------------------------------------
+Tue Feb 23 16:23:09 CET 2010 - anicka@suse.cz
+
+- update to 1.08
+  * Fix bug to allow DBI in startup.pl etc again
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Jun 19 16:34:27 CEST 2008 - anicka@suse.cz
+
+- update to 1.07
+  * http://rt.cpan.org/Public/Bug/Display.html?id=31003
+  * http://rt.cpan.org/Public/Bug/Display.html?id=29209
+    PerlCleanupHandler doesn't get called with MP2
+  * http://rt.cpan.org/Public/Bug/Display.html?id=28824
+    Documentation Additions
+
+-------------------------------------------------------------------
+Fri Mar 30 16:04:12 CEST 2007 - anicka@suse.cz
+
+- update to 1.06
+  * MP2/AuthDBI: Fixed Apache::AuthDBI::debug() to 
+    actually work.
+  * Bump minium required perl version to 5.6.1 to match DBI
+
+-------------------------------------------------------------------
+Wed Dec 13 12:22:09 CET 2006 - anicka@suse.cz
+
+- update to 1.05
+  * MP2/AuthDBI: Add missing Apache2::Access
+  * MP1: Undefined subroutine &Apache2::Const::OK called at ....
+
+-------------------------------------------------------------------
+Wed Sep 13 11:27:10 CEST 2006 - anicka@suse.cz
+
+- update to 1.03
+  * three minor bugfixes
+
+-------------------------------------------------------------------
+Wed Jul 12 12:52:47 CEST 2006 - anicka@suse.cz
+
+- update to 1.01
+  * As DBI has supported only perl 5.6.0 since 2003
+    v1.38 Apache::DBI now requires perl 5.6.0 as well.
+  * Fix a plethora of uninitialized variable warnings,
+    general code cleanup, don't import unneeded symbols
+    from Carp, Digest::SHA1, and Digest::MD5
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 10 14:30:08 CET 2006 - anicka@suse.cz
+
+- update to 0.9901
+- fix #neededforbuild 
+
+-------------------------------------------------------------------
+Mon Aug  1 17:05:36 CEST 2005 - pth@suse.de
+
+- Fix file list
+
+-------------------------------------------------------------------
+Tue Jun 15 18:50:46 CEST 2004 - ro@suse.de
+
+- updated requires
+
+-------------------------------------------------------------------
+Wed May 05 12:03:08 CEST 2004 - mjancar@suse.cz
+
+- update neededforbuild
+
+-------------------------------------------------------------------
+Thu Feb 26 16:03:33 CET 2004 - mjancar@suse.cz
+
+- update to 0.94
+
+-------------------------------------------------------------------
+Thu Oct 30 17:06:50 CET 2003 - mjancar@suse.cz
+
+- update to 0.92
+
+-------------------------------------------------------------------
+Wed Sep 17 14:11:10 CEST 2003 - kukuk@suse.de
+
+- Add provides/obsoletes for package rename
+
+-------------------------------------------------------------------
+Fri Aug 22 11:52:57 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 21 12:39:47 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Mon Jun 23 11:22:41 CEST 2003 - mjancar@suse.cz
+
+- update to 0.91
+- rename to perl-Apache-DBI
+- fix filelist
+
+-------------------------------------------------------------------
+Tue May 20 12:42:03 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Mon Jul 22 16:16:34 CEST 2002 - prehak@suse.cz
+
+- doesn't require any specific apache version,
+  simply require apache [#16775]
+  
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Mon Nov  5 15:09:11 CET 2001 - poeml@suse.de
+
+- use apache-devel-packages macro in #neededforbuild
+  (expat.rpm is needed by apxs)
+
+-------------------------------------------------------------------
+Sun Aug 12 14:48:25 CEST 2001 - kukuk@suse.de
+
+- Fix path to perl interpreter
+
+-------------------------------------------------------------------
+Wed Mar 28 14:58:36 MEST 2001 - rolf@suse.de
+
+- update to 0.88
+
+-------------------------------------------------------------------
+Fri Feb 23 16:24:24 CET 2001 - ro@suse.de
+
+- changed neededforbuild <apache> to <apache apache-devel>
+
+-------------------------------------------------------------------
+Thu Nov 16 17:12:40 MET 2000 - rolf@suse.de
+
+- extracted from perlmod package
+
+

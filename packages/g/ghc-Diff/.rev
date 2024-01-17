@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3614930c58cfe010a2bf9007b93233e8</srcmd5>
+    <version>0.3.4</version>
+    <time>1532527658</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>624455</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c9c1b73b7938b5c2ffda188706cda580</srcmd5>
+    <version>0.3.4</version>
+    <time>1540448516</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643336</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>12d863da763c7f558eb5451d2dcb9cfc</srcmd5>
+    <version>0.4.0</version>
+    <time>1571402000</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>737182</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b7e24d501d749e59633a6e1fa3061910</srcmd5>
+    <version>0.4.0</version>
+    <time>1577451031</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759314</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c40c9fdbb0dec147f325ceb34a90de7a</srcmd5>
+    <version>0.4.0</version>
+    <time>1592579210</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815009</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>715cd22c38b182dfaebb98d5cb61392a</srcmd5>
+    <version>0.4.0</version>
+    <time>1598642615</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829147</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>78e010dec1458fbd55dfd547258780b5</srcmd5>
+    <version>0.4.0</version>
+    <time>1608633193</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857191</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c0dd35cce0430284ec672bedf442c787</srcmd5>
+    <version>0.4.1</version>
+    <time>1644617326</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953452</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>63bd0cb3691f7904316a2db23003b41f</srcmd5>
+    <version>0.4.1</version>
+    <time>1680635984</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075854</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Sat Dec  2 03:10:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.77
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.77  expected 2023-12-01  sbeck
+    -  NEW CODE(s)
+    -  Changed RELEASE_TESTING variable
+           Now use a release-specific testing variable rather than
+           RELEASE_TESTING. See GitHub #17 for details.
+
+-------------------------------------------------------------------
+Tue Sep  5 16:49:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.76
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.76  2023-09-05  sbeck
+    -  Fixed problem in distro
+           Accidentally created a distribution (3.75) that is broken. GitHub
+           #18
+
+  3.75  2023-09-01  sbeck
+    -  NEW CODE(s)
+
+-------------------------------------------------------------------
+Thu Jun  8 03:09:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.74
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.74  2023-06-07  sbeck
+    -  NEW CODE(s)
+
+-------------------------------------------------------------------
+Tue Mar  7 03:07:33 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.73
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.73  2023-03-06  sbeck
+    -  NEW CODE(s)
+    -  Fixed a problem with test failing on windows
+           Reported in GitHub #15
+
+-------------------------------------------------------------------
+Fri Sep  2 03:10:00 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.72
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.72  2022-09-01  sbeck
+    -  NEW CODE(s)
+
+-------------------------------------------------------------------
+Thu Jun  2 03:08:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.71
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.71  2022-06-01  sbeck
+    -  NEW CODE(s)
+
+-------------------------------------------------------------------
+Thu Mar  3 03:08:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.70
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.70  2022-03-02  sbeck
+    -  NEW CODE(s)
+
+-------------------------------------------------------------------
+Thu Dec  2 03:06:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.69
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.69  2021-12-01  sbeck
+    -  NEW CODE(s)
+
+-------------------------------------------------------------------
+Fri Sep  3 03:06:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.68
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.68  2021-09-02  sbeck
+    -  NEW CODE(s)
+           NOTE: no code changes on 2021-06-01 so no release made at that
+           time.
+
+    -  Added code2names
+           Also code2countrys, code2languages, etc. This allows you to see all
+           names and aliases that correspond to a code. My apologies for
+           making 'countrys' to be the plural of 'country', but because these
+           modules are all derived, I didn't want to put in an exception for
+           the strange pluralization.
+
+           Prompted by David Cantrell.
+
+-------------------------------------------------------------------
+Tue Mar  2 03:10:42 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.67
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.67  2021-03-01  sbeck
+    -  NEW CODE(s)
+
+-------------------------------------------------------------------
+Tue Dec  1 03:11:37 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.66
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.66  2020-12-01  sbeck
+    -  NEW CODE(s)
+
+-------------------------------------------------------------------
+Tue Nov  3 10:35:42 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- initial package 3.65
+ * created by cpanspec 1.79.01

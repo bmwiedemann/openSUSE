@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Wed Jul 19 12:12:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.5:
+  * k8s.io & go version bump (#393)
+  * Modify oh-my-zsh example (#346)
+  * fix go.sum tidy
+  * Fix README.md "alias" to "rename" (#375)
+  * Windows installation instructions (winget) (#365) (#381)
+  * Add prerequisite for completion to work after brew install
+    (#368)
+  * Bump golang.org/x/sys to fix compilation on M1 macs (#360)
+  * Windows installation instructions (Chocolatey) (#350)
+  * Run Go 1.17 mod tiny (#336)
+  * Fix typo on README.md (#341)
+  * add build cache to actions (#339)
+  * README.md: HTTP => HTTPS (#337)
+  * go mod tidy
+  * Bump Go to 1.17 in GHA (#335)
+  * overhaul the readme
+  * Make Completions Installable with Antibody (#263)
+  * Update README.md
+  * Wrap context names in single quotes to prevent completion
+    script to fail (#316)
+  * docs: fix starchart url (#306)
+  * Add s390x build (#270)
+  * Add interactive delete op (#304)
+
+-------------------------------------------------------------------
+Fri Jan 07 14:24:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.4:
+  * stop using XDG_CACHE_HOME as home directory (#299)
+  * add -V/--version flag to go implementations (#295)
+
+-------------------------------------------------------------------
+Tue Jun  1 11:25:56 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- Drop go BuildRequires, this is just a shell script 
+
+-------------------------------------------------------------------
+Thu May 20 05:30:42 UTC 2021 - kastl@b1-systems.de
+
+- Update to version 0.9.3:
+  * Provide binary release for darwin/arm64
+  * Bump up go-client to fix auth plugin panic (#281)
+  * Check correct variable after current namespace retrieval (#287)
+  * Update debian installation instructions
+  * Add license headers for 2021
+  * Fix color in kubens success message when using fzf (#228)
+  * make kubectx consistent with kubens wrt. KUBECTL environment variable (#274)
+  * fix: improve kubectx completion on fish (#269)
+  * Add Homebrew install for Linux (#261)
+  * Bump CI to Go 1.15 (#266)
+
+-------------------------------------------------------------------
+Tue May 18 20:28:41 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of kubens

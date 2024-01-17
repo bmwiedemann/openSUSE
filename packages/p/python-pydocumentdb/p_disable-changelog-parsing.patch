@@ -1,0 +1,18 @@
+diff -Nru pydocumentdb-2.3.5.orig/setup.py pydocumentdb-2.3.5/setup.py
+--- pydocumentdb-2.3.5.orig/setup.py	2019-10-01 02:29:56.000000000 +0200
++++ pydocumentdb-2.3.5/setup.py	2020-03-03 13:38:33.698263211 +0100
+@@ -7,13 +7,10 @@
+ with open("README.md", encoding="utf-8") as f:
+     README = f.read()
+ 
+-with open("changelog.md", encoding="utf-8") as f:
+-    CHANGELOG = f.read()
+-
+ setup(name='pydocumentdb',
+       version='2.3.5',
+       description='Azure DocumentDB Python SDK',
+-      long_description=README + "\n\n" + CHANGELOG,
++      long_description=README,
+       long_description_content_type="text/markdown",
+       author="Microsoft",
+       author_email="askdocdb@microsoft.com",

@@ -1,0 +1,5 @@
+<package name="yecht" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="yecht"/>
+</package>

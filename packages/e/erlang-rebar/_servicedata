@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://github.com/rebar/rebar.git</param>
+          <param name="changesrevision">8a2aca081780338330cd2145ab6cb86acde7c783</param></service></servicedata>

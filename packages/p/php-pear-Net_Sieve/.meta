@@ -1,0 +1,5 @@
+<package name="php-pear-Net_Sieve" project="openSUSE:Factory">
+  <title>Handles talking to a sieve server.</title>
+  <description>This package provides an API to talk to servers implementing the managesieve protocol. It can be used to install and remove sieve scripts, mark them active etc.</description>
+  <devel project="server:php:applications" package="php-pear-Net_Sieve"/>
+</package>

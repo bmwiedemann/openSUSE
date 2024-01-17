@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18de6e3ba55c71626719f37747e42583</srcmd5>
+    <version>2017.11.25</version>
+    <time>1527933459</time>
+    <user>dimstar_suse</user>
+    <comment>Python namespace class derived from OrderedDict,
+including tab-completion</comment>
+    <requestid>606180</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>93938e5ea26ddfbf2cad2b61182c950c</srcmd5>
+    <version>2017.11.25</version>
+    <time>1531135643</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620966</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>427bffb0eacf1cbd3cbcdbab5cc4e606</srcmd5>
+    <version>2017.11.25</version>
+    <time>1545648035</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659526</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0f8f82e22dad33421b9038c00dc56533</srcmd5>
+    <version>2018.6.26</version>
+    <time>1559837767</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2018.6.26:
+  * no upstream changelog</comment>
+    <requestid>707144</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>97daf458a8d4d76351e49f7a7ef5c6fd</srcmd5>
+    <version>2019.6.8</version>
+    <time>1563914451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2019.6.8:
+  * Jupyter/iPython pretty printing works even better than before. Everything lines up and is easier to read at a glance.
+  * Tab auto-completion now shows both class methods and data attribute. Previously it only showed data attributes.
+  * Full support for pickle serialization/deserialization.</comment>
+    <requestid>717901</requestid>
+  </revision>
+</revisionlist>

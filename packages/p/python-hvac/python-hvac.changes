@@ -1,0 +1,250 @@
+-------------------------------------------------------------------
+Sun Jan  7 20:00:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Add support for sys/policies endpoint (GH-1100)
+  * add quota support to system backend (GH-1092)
+  * Add support to PKI class to perform CRUD on issuers (GH-1102)
+  * `Client.write_data` - remove potentially dangerous default
+  * :pencil: Add HTTP/2+ use case into the advanced usage section
+  * update the KV documentation (GH-1122)
+  * Add support for sys/policies endpoint (GH-1100)
+  * fix readthedocs (RTD) public docsite, modernize some of the
+    docs build/testing (GH-1119)
+  * Add support to PKI class to perform CRUD on issuers (GH-1102)
+  * Update GCP secrets engine documentation (GH-1099)
+  * fix readthedocs (RTD) public docsite, modernize some of the
+    docs build/testing (GH-1119)
+  * Revamp integration tests, run in parallel (GH-1105)
+  * Add Vault 1.15.x to integration tests (GH-1103)
+- update to 2.0.0:
+  * This release makes a number of breaking changes. Most
+    notably, dropping support for Python 3.6 & 3.7, dropping
+    support for Vault versions 1.6.x through 1.10.x, and removing
+    previously deprecated methods and code paths. Most of the
+    other breaking changes are fairly minor or only affect
+    specific use cases, but please review all changes carefully.
+  * There are also several other deprecations and announcements
+    to be aware of. We hope to have a more rapid release schedule
+    going forward.
+  * In accordance with our supported Python version policy we
+    will continue to drop Python versions as they become end-of-
+    life. These may not be announced in advance, but will be done
+    in major versions.
+  * `Client.write` method breaking changes 2.0.0 (GH-1089)
+  * Drop support for Vault 1.6-1.10 (GH-1074)
+  * Changing default values for `sys.initialize` parameters
+    `secret_shares` and `secret_threshold` (GH-1063)
+  * Remove old deprecated `client` attributes (GH-1062)
+  * Remove MFA class (GH-1056)
+  * adapters: if `session` is user-supplied, do not overwrite
+    session options with `Client`/`Adapter` options (GH-1021)
+  * Make `pyhcl` optional again (GH-1060)
+  * Drop Python 3.6 & 3.7, Add Python 3.11, bump some
+    dependencies (GH-1048)
+  * Breaking changes coming to Adapters' use of custom sessions
+  * Breaking changes coming to `Client.write` method (GH-1034)
+  * The default value of `raise_on_deleted_version` will change
+    from `True` to `False` in `v3.0.0` (GH-955)
+  * The `certificate` parameter for `create_ca_certificate_role`
+    will stop accepting file paths in v3.0.0 (GH-914)
+  * Drop support for Vault 1.6-1.10 (GH-1074)
+  * Changing default values for `sys.initialize` parameters
+    `secret_shares` and `secret_threshold` (GH-1063)
+  * Fix typo in `safety_buffer` argument in AWS auth (GH-1068)
+  * Add support for Python 3.12 (GH-1073)
+  * Database Secrets Engine - add `rotate_static_credentials`
+    method, docs updates, unit tests (GH-1069)
+  * Make `plaintext` and `ciphertext` optional for batch
+    operations (GH-1049)
+  * Changing default values for `sys.initialize` parameters
+    `secret_shares` and `secret_threshold` (GH-1063)
+  * adapters: if `session` is user-supplied, do not overwrite
+    session options with `Client`/`Adapter` options (GH-1021)
+
+-------------------------------------------------------------------
+Fri Dec  1 16:57:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * This release fixes an inaccuracy in a warning message but
+    does not otherwise change functionality.
+  * Fix raise_on_deleted_version warning (GH-1045)
+  * ldap auth method - add missing `configure` params by vault
+    api names (GH-975) expand Vault CI matrix, announce
+    deprecation of Vault dynamic SSH keys (GH-1023)
+  * Breaking changes coming to `Client.write` method (GH-1034)
+  * Support for Python 3.6 & 3.7 will be dropped in `v2.0.0`
+  * Support for the Legacy MFA methods will be dropped from the
+    `MFA` class in `v2.0.0` (GH-1026)
+  * Breaking changes coming to Adapters' use of custom sessions
+  * ### 🚀 Features
+  * Add alias_name_source for Kubernetes Auth create_role
+  * add `Client.write_data` method (GH-1028)
+  * ldap auth method - add missing `configure` params by vault
+    api names (GH-975)
+  * Re-add arguments to create_or_update_role() from old API
+    (GH-842)
+  * Add new argument (conflicting_alias_ids_to_keep) to
+    merge_entities method (GH-968)
+  * Add impersonated account support to GCP secrets engine
+    (GH-1022)
+  * support "user_claim_json_pointer" in create_role() for
+    JWT/OIDC auth method (GH-1006)
+  * Add static account support to GCP secrets engine (GH-956)
+  * adding batch_input to transit.sign_data #988 (GH-990)
+  * Add a method to read static roles in the database engine
+    (GH-1009)
+  * feat: add support for `disable_local_ca_jwt` in the
+    Kubernetes auth method (GH-997)
+  * ### 🐛 Bug Fixes
+  * add `Client.write_data` method (GH-1028)
+  * Fix premature read on stream requests in the
+    `sys.take_raft_snapshot` method (GH-771)
+  * fix(`__getattr__`): non-existent attribute lookup (GH-982)
+  * ### 📚 Documentation
+  * docs(secrets-engines): Add database secrets engine docs
+    (GH-1036)
+  * docs: make OIDC Authorization URL Request example work again.
+    (GH-1010)
+  * ### 🧰 Miscellaneous
+  * add tests and docs to sdist, improve build testing (GH-1015)
+  * Bump certifi from 2022.9.14 to 2022.12.7 (GH-1013)
+
+-------------------------------------------------------------------
+Fri Mar 10 12:10:52 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.1.0
+  * python-six is not required
+  * drop python 2 support
+  * lot of changes, see CHANGELOG.md or
+    https://github.com/hvac/hvac/blob/develop/CHANGELOG.md
+- deleted patches
+  - remove-mock.patch (upstreamed)
+
+-------------------------------------------------------------------
+Tue Aug  2 05:50:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove patch python-hvac-no-mock.patch
+- Add patch remove-mock.patch, from upstream.
+- Remove unneeded BuildRequires on mock
+
+-------------------------------------------------------------------
+Mon May  2 17:28:37 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/hvac/hvac/issues/582
+  + python-hvac-no-mock.patch
+
+-------------------------------------------------------------------
+Sat Oct 16 19:12:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.2:
+  * Breakfix release to revert some unintended post-1.0 requirements changes.
+  * Revert `six` & `requests` Requirements Changes. GH-768
+
+-------------------------------------------------------------------
+Fri Jul 30 10:50:47 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.11.0
+  * This is intended to by the last hvac release supporting Python 2.7.
+  * Userpass: Add use_token param on login(), Accept passthrough **kwargs on create user.
+  * Support CA-related Environment Variables.
+  * Allow Omission of Password Argument on Userpass create_or_update_user().
+  * Add deprecation notices for some Client() methods.
+
+-------------------------------------------------------------------
+Thu Jun 17 21:17:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 0.10.14:
+  * Python 2.7: Drop Trailing Comma In `Cert.login()`.
+  * Refactor `Cert.login()` Conditional for Python 2.7 Syntax Support.
+  * Add default to `group_type` argument in `update_group` and `create_or_update_group_by_name`.
+  * Add Certificate Authentication Methods.
+  * Expand Transform class to include new(ish) tokenization methods.
+  * Add `delete_version_after` KvV2 Param - `configure()` / `update_metadata().
+
+-------------------------------------------------------------------
+Tue May 18 22:15:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.10:
+  - AWS Secrets Engine: Add support for iam_tags when creating roles. GH-684
+  - Add Active Directory generate credential capability. GH-657
+  - Add `policies` Parameter to Userpass `create_or_update_user()` Method. GH-562
+  - Add handling of unsupported HTTP methods inside adapter. GH-689
+  - Add Convenience `read_secret()` Method for KVv2 Class. GH-686
+  - Set daemon attribute instead of using setDaemon method that was deprecated in Python 3.10. GH-688
+  - Send AppRole generate_secret_id Method Metadata Parameter as String GH-68
+
+-------------------------------------------------------------------
+Thu Apr 22 20:22:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.8:
+  - K8s Auth: Allow wildcards for service account and namespace. GH-669
+  - Add token_type support to create_kubernetes_role. GH-664
+  - Support database secrets static roles. GH-662
+
+-------------------------------------------------------------------
+Mon Feb  1 18:05:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.6:
+  - Enable response wrapping of PKI secrets. GH-649
+  - Fix OIDC login and add working example. GH-638
+  - Add rabbitmq vhost_topics parameter. GH-626
+  - Expand auth_methods module to support AppRole. GH-637
+  - Template "auth method not implemented" error message. GH-651
+  - Fix health.py read_health_status GET method. GH-653
+  - Fix transit constants for "generate_data_key". GH-632
+  - Fix PUT method in secrets engine kv_v1 to use PUT instead of POST. GH-629
+  - Remove Erroneous json() Calls In rabbitmq Class. GH-624
+
+-------------------------------------------------------------------
+Tue Aug  4 16:11:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.5:
+  - Add JWT/OIDC Authentication Method Classes. GH-613
+  - Add Identity Tokens Methods and Documentation. GH-611
+  - Add P-521 to list of allowed key types. GH-608
+  - Add P-384 and RSA-3072 to list of allowed key types. GH-606
+  - Options not read by tune_mount_configuration. GH-603
+  - Add Autodoc Summaries. GH-612
+  - Correct Return Type Docstrings Within Transit Class. GH-609
+  - Transit engine docs for Encrypt Data now refer to encrypt_data. GH-601
+  - Update Vault version test matrix / Oldest Support Vault Version. GH-610
+
+-------------------------------------------------------------------
+Fri Jul 17 07:27:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.4:
+  - Extract "renew_self_token" from "renew_token". GH-598
+  - Add convenience step_down sys backend method. GH-597
+
+-------------------------------------------------------------------
+Mon Jun  8 13:37:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.3:
+  - Add Support For use_token_groups In LDAP Auth Method. GH-591
+  - Add Raft System Backend Methods. GH-594
+
+-------------------------------------------------------------------
+Tue Jun  2 16:18:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.2:
+  - Create_role_secret_id: add token_bound_cidrs parameter. GH-585
+  - Add vault rekey verification methods. GH-586
+  - Add request data to exception objects. GH-583
+  - Add marshaling_algorithm to sign/verify params. GH-584
+  - Add issuer to kubernetes configuration. GH-575
+  - Remove json() calls (unneeded following JSONAdapter addition) GH-589
+  - Fix format errors in contributing for HTML docs. GH-577
+
+-------------------------------------------------------------------
+Wed Apr  8 07:29:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.1:
+  * many various fixes all around
+
+-------------------------------------------------------------------
+Wed Feb  6 16:56:58 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
+

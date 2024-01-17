@@ -1,0 +1,6 @@
+<package name="perl-File-Which" project="openSUSE:Factory">
+  <title>Portable implementation of the `which' utility</title>
+  <description>File::Which was created to be able to get the paths to executable programs
+on systems under which the `which' program wasn't implemented in the shell.</description>
+  <devel project="devel:languages:perl" package="perl-File-Which"/>
+</package>

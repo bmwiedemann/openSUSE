@@ -1,0 +1,667 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38e619a06c323a4a29dcbd9f1fb6a5ea</srcmd5>
+    <version>0.9.2</version>
+    <time>1402947273</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>236718</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>38e619a06c323a4a29dcbd9f1fb6a5ea</srcmd5>
+    <version>0.9.2</version>
+    <time>1409303387</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d18e0fca5fa9c9920dc23c040e802c14</srcmd5>
+    <version>1.0.1</version>
+    <time>1566551322</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.0.1</comment>
+    <requestid>725367</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b12e59a4546ca2cb6d4e683965fdbf88</srcmd5>
+    <version>1.0.1</version>
+    <time>1568805246</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix icon theme for battery level
+  + Added 0001-data-fix-icon-theme-for-battery-level.patch
+- Fix battery status notifaction parsing
+  + Added 0005-notifications-fix-battery-status-notification-parsin.patch
+</comment>
+    <requestid>731587</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>87fa6bdeb0e109fa2d99c96d5b3bb29a</srcmd5>
+    <version>1.0.1</version>
+    <time>1569523244</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>733156</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>1bddeb843fea09f1694ea16654097b1e</srcmd5>
+    <version>1.0.1</version>
+    <time>1570104608</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Requries for python3-gobject-Gdk
+</comment>
+    <requestid>734754</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>beef363b5865deb499c41a7f36ad9f7a</srcmd5>
+    <version>1.0.2</version>
+    <time>1590506464</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.0.2
+- Removed 0001-Fix-reading-and-storing-DPI-in-config-settings.patch
+- Removed 0001-data-fix-icon-theme-for-battery-level.patch
+- Removed 0005-notifications-fix-battery-status-notification-parsin.patch
+</comment>
+    <requestid>808433</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1f254b38d6c6062c2017c3b88d9bf289</srcmd5>
+    <version>1.0.3</version>
+    <time>1596652116</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3
+  * Remove deprecated solaar-cli application.
+  * Don't install udev or autostart files from python (or pip).
+  * Solaar needs Python 3.6+ and probably needs kernel 5.2+
+  * Handle exceptions on dynamic settings when device is not connected.
+  * Fix inifinite loop on some low-level write errors
+  * Add support for EX100 keyboard/mouse and receiver (046d:c517)
+  * Add two settings for THUMB_WHEEL feature - inversion and reporting via HID++
+  * Update German translation
+  * Use REPORT RATE feature when available to determine polling rate.
+  * Improve config command speed when not printing all settings
+  * Improve config command handling and checking of arguments
+  * Add setting for CHANGE_HOST feature
+  * Add argument to settings for values that are not to persist
+  * Add argument to settings to not wait for reply when writing a value to device
+  * Add argument to not wait for reply from request to device
+  * Add settings for MULTIPLATFORM and DUALPLATFORM features
+  * Remove Logitech documents from documentation directory
+  * Change config command to not read all settings when only printing or showing one
+  * Display hosts info in 'solaar show' if device supports it
+  * Remove non-working smooth-scrool from M510 v1
+  * Add yapf and flake8 code style checks
+  * Fix feature k375s Fn inversion
+  * Update controls (keys and buttons) and tasks (actions)
+  * Improved way to specify feature settings.
+  * Don't abort on device notifications with unexpected device numbers, just warn.
+  * Keep track of non-features so as not to ask device multiple times.
+  * Implement KEYBOARD DISABLE KEYS feature.
+  * Don't create notifications for DJ device activity reports.
+  * Update a few special keys and actions.
+  * Add keyed choice settings in configuration panel.
+  * Support remappable keys from reprogrammable keys v4 feature.
+  * Add setting class for keyed choice.
+  * Only check for features once per device.
+  * Use settings interface to show feature values in solaar show if no special code for feature.
+  * Remove maximum window size.
+  * Process battery voltage notifications.
+  * Display battery voltage information in main window if regular battery information not available.
+  * Show next battery level where available.
+  * Update list of implemented features and provide information on how to implement features.
+  * Add c53d as a Lightspeed receiver.
+</comment>
+    <requestid>824448</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0229c1d01e27e2114cc38bbffff53620</srcmd5>
+    <version>1.0.4</version>
+    <time>1603448515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.4
+  * Support USB and BT connected devices that are not in descriptors.py
+  * Use FRIENDLY NAME for codename if needed and available.
+  * Extract manufacturer and product ID from Udev HID information.
+  * Add Bluetooth and USB product IDs to device descriptors records.
+  * Support Bluetooth-connected devices.
+  * Add model ID and unit ID to device identification.
+  * Support changing DPI by pressing DPI Switch button and sliding horizontally
+  * Add device-specific notification handlers.
+  * Add MX Vertical USB information.
+  * Udev rule adds seat permissions for all Logitech devices.
+  * Support USB-connected devices in GUI.
+  * Make probe and config work for USB-connected devices.
+  * Improve strings and display for settings.
+  * Correctly handle non-unifying connection notifications.
+  * Update GUI strings for several settings.
+  * Better support for EX100 and devices that connect to it.
+  * Partial support for feature GESTURE_2.
+  * Simplify interface for settings.
+  * Use DJ connection notifications to set device active status
+  * Udev rule sets seat write permissions for hidraw nodes for device as well as receivers.
+  * Handle USB devices that use HID++ protocol in CLI.
+  * Use device hidraw nodes where possible.
+  * Handle receivers with serial numbers that don't provide number of pairings.
+  * Ignore exceptions when setting locale.
+  * Correctly discover settings that share a name.
+  * Don't show pop-up notifications at startup.
+  * Keep battery voltage updated in GUI.
+  * Add Portugese translation.
+  * Update several translations.
+  * Add Lightspeed receivers c545 and c541.
+  * Reimplement REPROG_CONTROLS data structure.
+</comment>
+    <requestid>843454</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8d5bee0e7f2704921339225bd3459eb6</srcmd5>
+    <version>1.0.5</version>
+    <time>1614684753</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.0.5
+  * Update documentation on devices forgetting settings.
+  * Improve help messages
+  * Fix bug in finding receiver to pair
+  * Solaar config command can set keyed settings.
+</comment>
+    <requestid>875627</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>28e0812e107ac3774f53abc7be6bf023</srcmd5>
+    <version>1.0.5</version>
+    <time>1622664747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896965</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7eb80ec5c402aa9d8927579cce6d383a</srcmd5>
+    <version>1.0.6</version>
+    <time>1623098608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897895</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ff5277bebd71ffd48da5b8ce3670b163</srcmd5>
+    <version>1.0.7</version>
+    <time>1635438682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7
+  * https://github.com/pwr-Solaar/Solaar/blob/1.0.7/ChangeLog
+</comment>
+    <requestid>927872</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>76a00e86d8f0c38a138c7d7eb23de159</srcmd5>
+    <version>1.1.0</version>
+    <time>1638203323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0
+  * https://github.com/pwr-Solaar/Solaar/blob/1.1.0/ChangeLog
+- Add missing dependency to python3-PyYAML - bso#1193123
+</comment>
+    <requestid>934539</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1762ff09e0f6d33ca42411c63b297b00</srcmd5>
+    <version>1.1.1</version>
+    <time>1640808663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943043</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e5fef95d96f669330a48a1963e5df16d</srcmd5>
+    <version>1.1.2</version>
+    <time>1648665356</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing requirements
+- Use python macros in spec file
+- update to 1.1.2:
+  * Update documentation on supported devices and translations
+  * Include evdev as a dependency
+  * Try to use uinput for fake input if XTest extension not available
+  * Add Nano receiver C542 for M190 mice
+  * Broaden range of HID++ Bluetooth devices
+  * Add setting to divert gestures
+  * Rule editor can edit all rule components
+  * Configuation via solaar config takes effect in Solaar UI if it is running
+  * Add setting to disable Onboard Profiles and decouple from Polling Rate setting
+  * Add setting for PERSISTENT_REMAPPABLE_ACTION, common keyboard and mouse cases only
+  * Split Test rule condition into Test and TestBytes and support in rule editor
+  * Fix bug in speed-change setting
+  * Support Backlight3 feature
+  * Ensure that settings are pushed in resume
+  * Update German, Polish, and zh_CN translations
+  * Determine device number for direct-connected devices from protocol
+  * fix bug in add and delete button actions in rule editor
+  * dispose of no-op notifications quickly
+  * add rule condition for checking device settings
+  * use local file for conversion from key names to keysyms
+  * get keyboard group and use to get correct keycodes (X11 only)
+  * improve how rules work under Wayland
+  * add settings for M-Key LEDs and MR-Key LED
+  * fix bug in unpacking M and MR key notification
+  * add G815 keyboard and MX518 mouse
+  * add new special keys for recent keyboards
+  * track M and MR keys for use in rules
+  * make sure that device is online when searching for devices in solaar show
+  * don't check for device kind in dpi sliding setting
+  * fix problem with devices that report 0 DPI
+  * handle missing divert-setting in action RW for settings
+  * add id property (unitId or serial) and don't use ? for unknown serial
+  * fix contains for NamedInts and eliminate use of has_element
+  * check for xtest and disable modifier checking if not available
+  * improve determination of gesture information
+  * add Set rules to rule GUI
+  * add gesture params to Set rules
+  * hide system tray when there are no devices to control
+  * add G733 headset, G9 mouse, G502 Hero mouse
+  * Use greyscale solaar icon in tray when using symbolic icons
+  * Fix bugs in solaar config
+  * Use classes for settings to hep with modularity
+  * Accept '~' and Toggle for toggling boolean settings in cli and rules
+  * handle errors when writing to devices
+  * refactor config_panel.py to use classes for widgets
+  * add rules action to set Solaar settings
+  * decrease amount of logging at each debug level
+  * don't stretch toggles in settings
+  * use key structure for key remapping setting
+  * optimize ReprogrammableKey implementation
+  * keep track of settings that are absent from device
+  * add G512 keyboard and G402 mouse
+  * reformat descriptors.py
+  * use feature numbers for reprogrammable key versions
+  * don't use new_from_icon_set in menu as it is deprecated
+</comment>
+    <requestid>966034</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6a6b062ce37642d76d56ccdd4859b9a3</srcmd5>
+    <version>1.1.3</version>
+    <time>1651501569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.3:
+  * Update documentation files
+  * Lower remove python 3.7 constructs and lower python dependency to 3.6
+  * Fix bug in xtest mouse scrolling
+  * Allow mouse gesture setting for non-mice, e.g., trackballs
+  * Print message when there is another Solaar process running
+  * Fix determination of whether to force read before writing boolean setting
+  * Add recent diversion features to default list in rules UI
+  * Add setting to divert hires scroll wheel
+  * Don't use device kind to determine how to handle notifications
+  * Update Polish, Russian, and zh_CN translations
+  * Remove pggettext so as to not require Python 3.8
+  * Remove Python 2 unicode support
+  * Store keys in configuration file as int instead of str
+  * Use yaml for configuration file instead of json.
+  * Remove process-dependent rules from built-in rules.
+  * Handle situation where GTK application cannot be set up in CLI.
+  * Remove obsolete upower signals.
+  * Appinfo/metadata fixes including using correct APP_ID.
+  * Fix bugs in solaar config.
+  * Add full set of mouse buttons in persistent remappable actions setting.
+  * Improve rule behaviour under Wayland and when Xtest or X11 not available.
+  * Fix up and document dependencies (evdev, Python, ...).
+</comment>
+    <requestid>974406</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c1712690522177fee1912635c7366740</srcmd5>
+    <version>1.1.3</version>
+    <time>1652114644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975862</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c0b9b709039a0a2ecc86aca01999aa81</srcmd5>
+    <version>1.1.4</version>
+    <time>1657015767</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4:
+  * release 1.1.4
+  * po: Update Croatian translation
+  * po: Update Croatian translation
+  * release 1.1.4rc2
+  * settings: handle unusual values for persistent remappable action
+  * settings: remove unused class variables
+  * device: fix no-output values for persistent key mappings
+  * doc: improve documentation on library needed for system tray integration
+  * ui: remove blank lines from system tray popup
+  * po: update Polish translation
+</comment>
+    <requestid>986676</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>62ff44694f08eff9d683491a5b8245fd</srcmd5>
+    <version>1.1.5</version>
+    <time>1663275534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5:
+  * release 1.1.5
+  * docs: add several device descriptions
+  * device: add G213 Prodigy Gaming Keyboard
+  * po: Update Croatian translation (#1759)
+  * po: update zh_CN translation
+  * po: update Polish translation
+  * chore: clean a redundant space in a UI label
+  * release 1.1.5rc1
+  * po: Turkish translate completed (#1752)
+  * docs: move old device descriptions to new locations and fix up
+  * settings: increase minimum stopped time betweeen mouse movements
+  * rules: fix bug with non-recognized empty mouse movement
+  * docs: fix typos in Solaar options documentation
+  * ui: allow config panel to scroll
+  * doc: descriptions for K360 4004 and MX Master 4071
+  * doc: descriptions for Lightspeed Receiver C541 and G915 WIRELESS RGB Mechanical Gaming Keyboard 407E
+  * ui: change security tooltip for unencrypted wireless connections
+  * po: Norwegian Bokmal
+  * doc: add known issue for key presses and changing hosts
+  * docs: add known issue about diverted keys
+  * docs: state that the Solaar GUI should run continously
+  * cli: don't apply settings in solaar config
+  * settings: move rawXY patch to new code for both sliding dpi and mouse gestures
+  * ui: use device list in Active condition
+  * ui: add description of rule components to rule editor
+  * docs: add information on enhancement requests to add new devices
+  * settings: ignore first movement for mouse gestures when reprog controls version is 5 or more
+  * ui: add Active condition to rule editor
+  * docs: document Active rule condition
+  * rules: add rule condition to test whether a device is active
+  * docs: update ERGO M575 Trackball 4096 description
+  * docs: add Wireless Mobile Mouse MX Anywhere 2S 406A description
+  * cli: terminate iteration over receiver devices when all have been found
+  * rules: downgrade Set prolem messages from error to warning
+  * ui: log informational messages and above to a temporary file
+  * docs: add device information for ERGO M575 Trackball
+  * ui: don't produce warnings when editing rules in rule editor
+  * rules: save rules file even if there are no rules to save
+  * docs: device documentation for MX Keys Keyboard and Wireless Mouse Pebble M350
+  * device: get extended pairing information early and allow for unknown WPID
+  * receiver: return null values if no pairing information available
+  * receiver: use last_id as maximum device number not max_devices
+  * cli: show more registers in solaar probe
+  * docs: reflect change from json to yaml in capabilities documention
+  * cli: show features versions in solaar show (#1709)
+  * device: don't use field that may require communication with device in equality test
+  * device: fix exception when removing device not in instance list
+  * po: Use German word Gestentaste in translation
+  * docs: update device documentation for MX Keys Mini and MX Master 3S
+  * docs: update device directory documentation
+  * docs: remove superceeded device documentation files
+  * docs: update device documentation files
+  * docs: new conventions for device documentation files
+  * po: Added Serbian translation (#1687)
+  * device: add desccriptor for G935 headset
+  * device: add G502 Proteus Spectrum Optical Mouse
+  * device: keep track of feature versions
+  * po: update zh_TW translation (#1681)
+  * rules: require gtk 3.0
+  * rules: Fix circular import (#1673)
+  * rules: find devices using method in Device
+  * device: keep track of devices in list
+  * po: update zh_CN translation
+  * settings: convert old-style mouse gestures and dpi sliding settings to new style
+  * docs: document changed Smart Shift and Mouse Gestures processing
+  * settings: allow multiple keys for mouse gestures and dpi sliding
+  * Fix release date in io.github.pwr_solaar.solaar.metainfo.xml
+  * cli: explicitly save configuration at end of solaar config if no GUI running
+  * configuration: defer configuration file writes for up to 5 seconds
+  * device: use correct Solaar functions for unified and voltage battery functions
+  * settings: defensive check for missing keys array in mouse gestures setting
+  * device: compute approximate charge level for adc measurement feature
+  * device: fix bugs in battery notification processing
+  * ui: better presentation of battery information
+  * device: add support for ADC MEASUREMENT battery feature
+  * device: regularize and improve battery status gathering and reporting
+  * doc: add information on how to find divertable key names in solaar show output
+  * device: better warnings for feature call errors with reprogrammable key and gesture settings
+  * ui: increase entry size for ChoiceControlBig
+</comment>
+    <requestid>1003678</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d978b4ca1175d2703210a042eb77d18c</srcmd5>
+    <version>1.1.6</version>
+    <time>1666689619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.6:
+  * release 1.1.6
+  * docs: mention that fn-swap is saved on some devices
+  * docs: add Dell-branded mouse and keyboard
+  * ui: only update remaining pairings after sucessful pairing
+  * listener: check for presence of status attribute when resuming
+  * Update Croatian translation
+  * po: update Polish translation
+</comment>
+    <requestid>1031003</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>579769f749df9325501fb4d41049dd5f</srcmd5>
+    <version>1.1.7</version>
+    <time>1667901242</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.7:
+  * install: add depdendency on typing_extensions
+  * doc: add Wireless All-in-One Keyboard TK820
+  * release 1.1.7rc2
+  * relese 1.1.7rc2
+  * cli: don't defer saves in cli and don't require gtk in cli
+  * Update hr.po
+  * Update Croatian translation
+  * hidapi: be more permissive when recognizing HID++ report descriptors
+  * po: update Polish translation
+  * release 1.1.7rc1
+  * settings: set minimum ratchet speed to 1, not 0
+  * device: switch scroll ratcheting setting in response to scroll ratchet key notification
+  * settings: add setting to turn scroll ratchet on and off
+  * ui: eliminate visual glitch when updating range settings
+  * solaar: make hid-parser an optional dependency
+</comment>
+    <requestid>1034263</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>fa66756040118aa80796c84998ad925c</srcmd5>
+    <version>1.1.7</version>
+    <time>1668094834</time>
+    <user>dimstar_suse</user>
+    <comment>- Add require to python-hid-parser
+</comment>
+    <requestid>1035072</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fa1d5b098f9c3e27590d6f7fd5f41313</srcmd5>
+    <version>1.1.8</version>
+    <time>1671380553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.8:
+  * release 1.1.8
+  * docs: add description of G903
+  * po: update Polish translation
+  * release 1.1.8rc3
+  * docs: document parameter for thumb wheel rule tests
+  * ui: allow editing of rules with parameters
+  * rules: add argument to thumb_wheel rules
+  * po: fix name of Serbian translation file
+  * Update Polish translation (#1920)
+  * release 1.1.8rc2
+  * release 1.1.8rc1
+  * solaar: improve handling of wheel notifications
+  * settings: only record changes of scroll wheel ratchet
+  * settings: device errors don't eliminiate setting
+  * device: more robust access to keyword exception fields
+  * device: add support for config change feature
+  * solaar: clean up gtk code
+  * docs: add known issue with other device controllers
+  * docs: update mouse gestures rules documentation
+  * dist: update flake8 version
+  * solaar: fix tyop in ping_all
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * misc: update .pre-commit-config.yaml (#1891)
+  * misc: update yapf version
+  * misc: update isort to current version
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * dist: print Ubuntu PPA environment
+  * dist: get commit from Ubuntu PPA directory name if no git information
+  * dist: update pre-commit versions and python version
+  * dist: use separate data files for version and commit information
+  * Update about.py (Spanish)
+  * dist: use git describe to get git version information
+  * dist: fix flake8 URL
+  * docs: update installation instructions
+  * dist: add 8-character commit hash to version information
+  * dist: update solaar.desktop (#1857)
+  * dist: get release in setup.py by reading lib/solaar/__init__.py
+  * docs: remove version number from doc/_config.yml
+  * Update es.po
+  * misc: Update solaar.desktop (#1847)
+  * po: Update es.po (#1846)
+  * docs: update documentation on several devices
+  * docs: update documentation on several devices
+  * receiver: clarify status of C542 receiver
+  * doc: update devices directory
+  * receiver: show name of disconnecting receiver or device in disconnect warning
+  * docs: add description of several devices
+  * Fixed typo in capcbilities.md
+  * ui: reduce standard size of rule editor window
+  * install: remove unnecessary dependency on typing_extensions
+</comment>
+    <requestid>1043595</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ed7db6686defcd5feb65977436f759ce</srcmd5>
+    <version>1.1.9</version>
+    <time>1681296680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.9:
+  * device: add descriptior for EX110 keyboard
+  * release 1.1.9rc2
+  * device: Add support for G535 wireless gaming headset (#2034)
+  * docs: Fix punctuation and language in rules.md (#2032)
+  * po: updated greek translation (#2030)
+  * Fix sentences and punctuation in features.md (#2029)
+  * docs: Fix spelling and capitalisation in index.md (#2028)
+  * Fix punctuation and wording in capabilities.md
+  * Update Polish translation
+  * release 1.1.9rc1
+  * docs: add description for LIFT mouse
+  * ui: remove deprecated GTK code
+  * ui: zero exit code for kill interrupts
+  * docs: update information about MX Master 3 for Business
+  * rules: add Test condition for battery charging
+  * doc: add description of G304 Lightspeed Wireless Gaming Mouse
+  * device: get wpid for 28Mz devices from udev when enumerating
+  * ui: add editing of Device rule condition
+  * rules: add Device condition
+  * docs: add Logi Pop Keys description
+  * ui: don't show wireless link or battery information when unknown or not present
+  * ui: online devices with no battery information probably don't have a battery
+  * device: add desccriptor for G9x
+  * receiver: fix bug in determining kind of devices for 27Mz receivers
+  * device: add descriptor for LX7 mouse
+  * doc: update documentation for EX100 receiver
+  * doc: add description of Illuminated Keyboard with ID C318
+  * ui: ignore smooth scroll settings by default
+  * configuration: fix glitch when changing versions
+  * rules: add more debugging output for rules
+  * device: add descriptor for Illuminated Keyboard USB ID C318
+  * device: clean up pinging code
+  * device: put initial ping of direct-connected devices inside listener thread
+  * settings: read and check before write for range settings
+  * doc: update lightspeed receiver descriptions
+  * ui: mention compatability and non-connection in pairing window
+  * ui: improve determination of whether pairing possible
+  * receiver: count found devices when enumerating them and cut off when all found
+  * config: remove derived fields from config file when Solaar version changes
+  * device: allow device descriptors without name and codename
+  * ui: Filter and escape technical detail fields (#1953)
+  * settings: add setting for ADC power management
+  * docs: add description of G535 and N545
+  * device: correctly determine whether to ping with a long HID++ message
+  * device: add description for K470 keyboard from the MK470 combo (#1945)
+  * docs: add setting value for mouse gestures
+  * po: update German translation (#1940)
+  * Update French translation for 1.1.8 release
+  * tools: remove unnecessary clean.sh
+  * tools: remove non-working monitor.py
+  * ui: retry adding devices if permissions are wrong
+  * ui: better handling of IO errors at device creation
+  * ui: improve error pop-up for errors when creating devices
+  * ui: add KeyIsDown to list of conditions
+  * ui: allow editing of KeyIsDown conditions
+  * docs: document KeyIsDown rule condition
+  * rules: add KeyIsDown condition
+  * device: clean up device creation
+  * receiver: clean up receiver creation
+</comment>
+    <requestid>1078468</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e200cf431c68995501f6467b0d62a07f</srcmd5>
+    <version>1.1.10</version>
+    <time>1696619637</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.10:
+  * release 1.1.10
+  * pointer to NixOS flake package
+  * release 1.1.10.rc3
+  * release 1.1.10rc2
+  * tools: permit BT devices for hidconsole with hidpp
+  * device: add descriptor for Logitech MX Revolution Mouse M-RCL 124
+  * device: allow return device 00 for BT device ff
+  * device: improve determination of short or long messages
+  * device: add descriptor for G500s
+  * tools: fix bug in scan-registers
+  * rules: add single depress and release options for rule mouse click action
+  * rules: add rule condition for hostname
+  * tools: update keysym generation to current list of keysyms
+  * tools: allow device 0 in hidconsole
+  * Update Arch repository name and link
+  * doc: install recent version before opening issues
+  * device: upgrade messages when no supported device found
+  * Documentation update to mention the gnome extension to get rules working under Wayland (#2103)
+  * Remove udev-acl tag from udev rules
+  * Add support for process condition under wayland using solaar-gnome-extension (#2101)
+  * Updated German Translation
+  * po: update pot-file
+  * po: Update zh_TW Traditional Chinese locale
+  * hidapi: retry open several times with short wait to allow for delay in setting up permissions
+  * Update French translation
+  * Update French translation for 1.1.9 release
+  * Update about.py
+  * device: add new ID for G733 Headset
+  * misc: restore tools/clean.sh
+  * device: add bluetooth keyboard C714
+  * tools: update scan-registers.sh to fix a bug and scan pairing registers
+  * device: remove assertion on last byte of ping responses
+  * ui: add symbolic version of solaar icon
+  * docs: add description of several devices
+  * device: add MX Vertical mouse (#2053)
+  * device: when finding name or codename ping if not known to be online
+  * device: fix bug in decoding G keys notification
+  * docs: Standardise URLs and fix wording in i18n.md
+  * docs: Fix wording in installation.md (#2040)
+  * docs: Fix link and wording in devices.md (#2039)
+  * docs: Add missing word in usage.md (#2038)
+  * ui: put version in initial INFO logging message
+  * ui: rearrange code in tray.py
+- Ensure to only use one python version
+</comment>
+    <requestid>1115878</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>6701e745b6fcbb859ee413156a26aac3</srcmd5>
+    <version>1.1.10</version>
+    <time>1697748664</time>
+    <user>anag+factory</user>
+    <comment>- Add missing Require for dbus
+</comment>
+    <requestid>1119092</requestid>
+  </revision>
+</revisionlist>

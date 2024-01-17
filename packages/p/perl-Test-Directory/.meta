@@ -1,0 +1,12 @@
+<package name="perl-Test-Directory" project="openSUSE:Factory">
+  <title>Perl extension for maintaining test directories</title>
+  <description>Sometimes, testing code involves making sure that files are created and deleted as expected. This module simplifies maintaining test directories by tracking their status as they are modified or tested with this API, making it simple to test both individual files, as well as to verify that there are no missing or unknown files.
+
+Test::Directory implements an object-oriented interface for managing test directories. It tracks which files it knows about (by creating or testing them via its API), and can report if any files were missing or unexpectedly added.
+
+There are two flavors of methods for interacting with the directory. _Utility_ methods simply return a value (i.e. the number of files/errors) with no output, while the _Test_ functions use Test::Builder to produce the approriate test results and diagnostics for the test harness.
+
+The directory will be automatically cleaned up when the object goes out of scope; see the _clean_ method below for details.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Directory"/>
+  <url>https://metacpan.org/release/Test-Directory</url>
+</package>

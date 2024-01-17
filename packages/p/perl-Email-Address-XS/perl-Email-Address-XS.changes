@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Aug  8 03:08:40 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.05
+   see /usr/share/doc/packages/perl-Email-Address-XS/Changes
+
+  1.05  Sun Aug 07 15:21:35 2022
+  	- update dovecot parser from dovecot version 2.3.14
+  	- mark the last parsed object as invalid if input string contains trailing garbage
+  	  https://github.com/pali/Email-Address-XS/issues/5
+
+-------------------------------------------------------------------
+Sun Oct  7 19:54:07 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Created

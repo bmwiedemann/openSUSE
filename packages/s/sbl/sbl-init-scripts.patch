@@ -1,0 +1,16 @@
+Author: Tim Ehlers <tehlers@gwdg.de>
+Subject: Traditional init script and rc sym link for brld are missing
+
+Index: sbl-3.5.0.20130317.git7a75bc29/brld/Makefile
+===================================================================
+--- sbl-3.5.0.20130317.git7a75bc29.orig/brld/Makefile
++++ sbl-3.5.0.20130317.git7a75bc29/brld/Makefile
+@@ -40,6 +40,8 @@ install: brld $(LIBNAME)
+ 	ln -s $(LIBNAME) $(DESTDIR)$(LIBDIR)/$(LINKNAME)
+ 	install --directory $(DESTDIR)$(MANDIR)/man8
+ 	install ../man/brld.8 $(DESTDIR)$(MANDIR)/man8
++	install -m 744 ../config/brld $(DESTDIR)$(CONFDIR)/init.d
++	ln -sf $(CONFDIR)/init.d/brld $(DESTDIR)$(PREFIX)/sbin/rcbrld
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(SBINDIR)/brld

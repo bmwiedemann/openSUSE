@@ -1,0 +1,14 @@
+<package name="flashrom" project="openSUSE:Factory">
+  <title>A universal flash programming utility</title>
+  <description>flashrom is a utility for reading, writing, verifying and erasing flash ROM
+chips. It's often used to flash BIOS/EFI/coreboot/firmware images in-system
+using a supported mainboard, but it also supports flashing of network
+cards (NICs), SATA controller cards, and other external devices which can
+program flash chips.
+
+It supports a wide range of DIP32, PLCC32, DIP8, SO8/SOIC8, TSOP32, and
+TSOP40 chips, which use various protocols such as LPC, FWH, parallel flash,
+or SPI.</description>
+  <devel project="hardware" package="flashrom"/>
+  <url>http://www.flashrom.org/</url>
+</package>

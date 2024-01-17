@@ -1,0 +1,17 @@
+Index: efl-1.25.1/meson.build
+===================================================================
+--- efl-1.25.1.orig/meson.build
++++ efl-1.25.1/meson.build
+@@ -177,12 +177,6 @@ if get_option('native-arch-optimization'
+     config_h.set10('BUILD_SSE3', true)
+     native_arch_opt_c_args = [ '-msse3' ]
+     message('x86 build - MMX + SSE3 enabled')
+-  elif host_machine.cpu_family() == 'arm'
+-    cpu_neon = true
+-    config_h.set10('BUILD_NEON', true)
+-    add_project_arguments('-mfpu=neon', language: 'c')
+-    add_project_arguments('-ftree-vectorize', language: 'c')
+-    message('ARM build - NEON enabled')
+   elif host_machine.cpu_family() == 'aarch64'
+     cpu_neon = true
+     cpu_neon_intrinsics = true

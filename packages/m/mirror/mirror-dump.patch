@@ -1,0 +1,13 @@
+Index: mirror-2.9/mirror.pl
+===================================================================
+--- mirror-2.9.orig/mirror.pl
++++ mirror-2.9/mirror.pl
+@@ -657,7 +657,7 @@ while( $ARGV[ 0 ] =~ /^-/ ){
+ 		# THIS DOES NOT YET WORK!!!!!
+ 		$dumped_version = 1;
+ 		warn "Dumping perl\n";
+-		dump parse_args;
++		CORE::dump parse_args;
+ 	}
+ 
+ 	warn "Unknown arg $arg, skipping\n";

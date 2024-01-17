@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Thu Nov 23 13:41:52 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.0.1
+  * Add support for Python 3.11.
+  * Drop support for Python 3.6.
+- Add fix_tests.patch to fix tests one more time
+  * from the commit message: "Doctests were a bad idea."
+
+-------------------------------------------------------------------
+Fri Dec  2 09:54:28 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests.patch gh#mgedmin/restview@5033eacb1d55
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Use autosetup instead of setup + autopatch
+
+-------------------------------------------------------------------
+Thu Apr 14 07:20:58 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.0.0
+  3.0.0 (2022-01-12)
+  - Drop support for Python 2.7.
+  2.9.3 (2021-11-29)
+  - Fix incompatibility with docutils 0.18.1 that resulted in "Cannot embed
+    stylesheet" errors (`issue 61 <https://github.com/mgedmin/restview/pull/61>`_,
+    contributed by Sébastien Besson).
+  - Add support for Python 3.8, 3.9, and 3.10.
+  - Drop support for Python 3.5.
+- deleted patches
+  - false.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Apr  1 12:58:17 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add false.patch to fix recent build failure
+
+-------------------------------------------------------------------
+Wed Jan 13 11:07:59 UTC 2021 - pgajdos@suse.com
+
+- use %pytest macro
+
+-------------------------------------------------------------------
+Tue May 19 09:27:44 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Tue Sep 10 07:12:21 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use somewhat longer description from upstream.
+
+-------------------------------------------------------------------
+Fri Sep  6 03:53:30 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.9.2

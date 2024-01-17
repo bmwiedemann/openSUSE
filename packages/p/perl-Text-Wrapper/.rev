@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>824210815b443a434fd33662b7613989</srcmd5>
+    <version>1.04</version>
+    <time>1366709845</time>
+    <user>coolo</user>
+    <comment>needed by Twig</comment>
+    <requestid>172728</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>824210815b443a434fd33662b7613989</srcmd5>
+    <version>1.04</version>
+    <time>1379663897</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4b5a826c1e0c0fc3c3716abb648473c5</srcmd5>
+    <version>1.05</version>
+    <time>1390976194</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>215399</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4b5a826c1e0c0fc3c3716abb648473c5</srcmd5>
+    <version>1.05</version>
+    <time>1409302543</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

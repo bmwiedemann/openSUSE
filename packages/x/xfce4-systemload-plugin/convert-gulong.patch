@@ -1,0 +1,26 @@
+diff -rup xfce4-systemload-plugin-1.3.2.orig/panel-plugin/network.cc xfce4-systemload-plugin-1.3.2/panel-plugin/network.cc
+--- xfce4-systemload-plugin-1.3.2.orig/panel-plugin/network.cc	2022-02-16 19:57:05.000000000 +0100
++++ xfce4-systemload-plugin-1.3.2/panel-plugin/network.cc	2022-12-22 11:12:43.287510914 +0100
+@@ -114,6 +114,7 @@ read_netload_proc (gulong *bytes)
+ gint
+ read_netload (gulong *net, gulong *NTotal)
+ {
++    gulong tbytes[2];
+     static guint64 bytes[2];
+     static gint64 time[2];
+ 
+@@ -122,10 +123,12 @@ read_netload (gulong *net, gulong *NTota
+ 
+     time[1] = g_get_monotonic_time ();
+ 
+-    if (read_netload_proc (&bytes[1]) != 0)
+-        if (read_netload_libgtop (&bytes[1]) != 0)
++    if (read_netload_proc (&tbytes[1]) != 0)
++        if (read_netload_libgtop (&tbytes[1]) != 0)
+             return -1;
+ 
++    bytes[0] = tbytes[0];
++    bytes[1] = tbytes[1];
+     if (time[0] != 0 && G_LIKELY (time[1] > time[0]) && G_LIKELY (bytes[1] >= bytes[0]))
+     {
+         guint64 diff_bits = 8 * (bytes[1] - bytes[0]);

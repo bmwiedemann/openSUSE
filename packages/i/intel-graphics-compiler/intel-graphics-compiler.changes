@@ -1,0 +1,204 @@
+-------------------------------------------------------------------
+Wed Jan  3 14:14:10 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- 0001-Fix-PromotePredicate-to-keep-sequence-of-instruction.patch
+  * This patch makes the build deterministic.
+
+-------------------------------------------------------------------
+Tue Dec 19 10:20:50 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Don't specify the specific python3 version for Mako 
+
+-------------------------------------------------------------------
+Mon Dec 18 15:08:58 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.15136.4
+- Update opencl_clang to cf95b338d14685e4f3402ab1828bef31d48f1fd6
+- Update spirv-llvm-translator to 43baf90f96fb9df607595b63858fd9e85fbb2604
+- Update vc_intrinsics to v0.13.0
+-------------------------------------------------------------------
+Wed Aug 23 08:12:50 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.14062.11
+- Update llvm to llvmorg-14.0.5
+  * Removed 0001-llvm-needs-to-include-cstdio-for-gcc13.patch
+- Update opencl_clang to 78c5e3f59e49f337c6a9af7818f0c8b918bee4bf
+- Update spirv-llvm-translator to 23f398bf369093b1fd67459db8071ffcc6b92658
+
+-------------------------------------------------------------------
+Thu Jun 15 06:25:27 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.13822.6
+  * Fixes a segfault happening for certain GPUs (bsc#1212193)
+- Update spirv-llvm-translator to a4e58ffda317221a15149f9d0d4f73424c9584fb 
+
+-------------------------------------------------------------------
+Wed Jun 14 07:27:57 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.13822.6 (bsc#1212193)
+- Update spirv-llvm-translator to a4e58ffda317221a15149f9d0d4f73424c9584fb
+
+-------------------------------------------------------------------
+Mon May 29 11:55:23 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- 0001-libspriv-needs-to-include-cstdint-for-gcc13.patch no longer needed
+- 0001-Preinstalled-SPIRV-Tools-CMakeFile-target-fix.patch no longer needed
+
+-------------------------------------------------------------------
+Wed May 24 08:51:26 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.13700.14
+- Update opencl_clang to 10237c7109d613ef1161065d140b76d92133062f
+- Update spirv-llvm-translator to b23efa4f0400f8ee10f1db0cc9ff2e081b581ca1
+- Update vc_intrinsics v0.12.3 
+
+-------------------------------------------------------------------
+Fri Mar 31 06:37:32 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- 0001-Use-patch-instead-of-git-to-apply-opencl-clang-patch.patch makes it
+  possible to build without using git repos. 
+
+-------------------------------------------------------------------
+Tue Mar 28 11:11:37 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update opencl_clang to fd68f64b33e67d58f6c36b9e25c31c1178a1962a
+- Update spirv-llvm-translator to 4ef524240833abfeee1c5b9fff6b1bd53f4806b3
+- Don't compile with -Wno-dev. It breaks builds on Leap 15.4. 
+
+-------------------------------------------------------------------
+Mon Mar 27 13:34:07 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.13230.7
+  * Compile against prebuilt spirv-tools and spirv-headers 
+  * 0001-Preinstalled-SPIRV-Tools-CMakeFile-target-fix.patch fixes cmake
+    build issue with prebuild spirv-tools 
+
+-------------------------------------------------------------------
+Mon Mar 27 11:00:31 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Fix build issues for missing include of cstdio with gcc13
+  * 0001-llvm-needs-to-include-cstdio-for-gcc13.patch
+  * 0001-libspriv-needs-to-include-cstdint-for-gcc13.patch
+
+-------------------------------------------------------------------
+Fri Oct 29 10:04:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Thu Oct 21 17:08:55 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Compile with PIE flags
+- Use proper library names with SO-version included
+
+-------------------------------------------------------------------
+Thu Oct 21 12:05:20 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Split all shared libraries into their own packages
+- Only build for x86_64 
+
+-------------------------------------------------------------------
+Wed Oct  6 09:51:16 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Forgot to remove no longer needed Make-IGC-compile-with-gcc-11.patch 
+
+-------------------------------------------------------------------
+Tue Oct  5 14:19:03 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Build without vector compiler since it requires a checked out git repo
+- Build with -Wno-nonnull to fix build failure
+
+-------------------------------------------------------------------
+Tue Oct  5 11:11:15 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.8744 
+  * Initial implementation of INTEL Joint Matrix SPIR-V extension,
+  * Fix cross-compiling elf_packager,
+  * LLVM 13 build fixes,
+  * Continued work on DIModule SPIRV extension,
+  * Extend VC dumps with the debug info diagnostics,
+  * Other fixes and improvements.
+
+-------------------------------------------------------------------
+Tue Sep 28 08:49:22 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.8708
+  * Switch to LLVM11.1.0
+  * Part fix for buildbreak on LLVM12
+  * Part fix for buildbreak on LLVM13
+  * Fix for excessive stateless allocations
+  * Simplify extraction of DISubprogram node
+  * Support funnel shift intrinsics
+  * Enable madw use in i64 mul emulator.
+  * Forcing SIMD16 when there are too many memory access instructions
+  * Support for cl_khr_integer_dot_product
+  * Formatting fixes in DWARF emitters
+  * Other minor fixes and improvements.
+
+-------------------------------------------------------------------
+Fri Sep 17 15:36:34 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Add disk space constraints to support the llvm10 build
+- Limit number of jobs due to memory constraints when building llvm10 
+
+-------------------------------------------------------------------
+Tue Sep 14 16:45:11 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.8517 (jsc#SLE-20149)
+  * Fix compile output dumping when recompilation happens
+  * simplify extraction of DISubprogram nodes
+  * Apply WA on flag spill
+  * regsiter allocation support for NoMask WA
+  * Enable madw use in i64 mul emulator
+  * Fix the madw issue if the dst is not GRF-aligned or the stride is not 1.
+  * Enabling CustomPasses for OpenCL
+  * Calculate correct sub-reg offset for spilled destination when preload is skipped.
+  * Add missing check on argument type.
+  * Add support for FNeg instruction uniform analysis
+  * Prepare VCBE to handle standalone stack calls
+  * Parsing Options for internal options
+  * Add diagnostics to GenXLegalization
+  * Insert extra mov to avoid immediate source for BF_CVT instruction
+  * Change passing -debug option to finalizer
+  * Add diagnostics to GenXLegalization
+  * Refactor SPIRV builtins related to SPV_INTEL_subgroups extension
+  * Mark payload live-outs as busy for gtpin.
+  * Remove unecessary DebugFlag enum values
+  * Add PatternMatch support for FNeg instruction
+  * Mark setup inputs as PayloadLiveOut to avoid GTPin's issue
+  * Fix arguments kind rewriting in bindless promotion
+  * Enable optimization to skip redundant fill in RMW.
+  * Convert URB partial writes to full-mask writes
+  * Fix the src/dst regioning issue in emitSimdMediaBlockWrite().
+  * Autogenerate getTranslatedBuiltinOperands in CMCL
+  * Autogenerate getTranslatedBuiltinType in CMCL
+  * Add an assertion in GenXAggregatePseudoLowering
+  * Emit error for externs unresolved during lining
+  * Autogenerate IntrinsicForBuiltin array in CMCL
+  * Remove strinstream usage causing memory freeing issues
+  * Add support for LLVM 12 in Vector Compiler
+  * Support plain samplers for ze binary
+  * Fix predicate commonning in GenXCategory
+  * Add option for scheduling control
+  * Apply WA on flag spill
+  * Autogenerate BuiltinCallHandlers array in CMCL.
+  * Fix use-after-free in GenXSimdCFConformance
+  * Fix non-deterministic processing in GenXCisaBuilder
+  * Fix calculation of type size for function pointers
+  * Mark payload live-outs as busy for gtpin.
+  * Allow mid-thread pre-emption even when stack calls are used.
+  * Preserve memory ordering in GenXBaling
+  * Fix FixInvalidFuncName pass
+  * Adding numWorkgroupUsed
+  * ZEBIN ELF spec update.
+  * Support plain samplers for OCL binary
+  * Treat all memory-related operations as high-cost in baling
+  * Refactor CMCL builtin return type definition 
+- Add patch to fix compilation with GCC11
+- Build with vc-intrinsics
+
+-------------------------------------------------------------------
+Mon Mar 23 11:27:04 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial changelog entry for version 1.0.3041
+- Based on package by Jacek Danecki Jacek.Danecki@intel.com

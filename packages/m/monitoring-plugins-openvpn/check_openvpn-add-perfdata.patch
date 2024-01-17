@@ -1,0 +1,79 @@
+--- check_openvpn.pl.org	2011-02-17 18:45:05.103601051 +0100
++++ check_openvpn.pl	2011-02-17 19:14:22.431762875 +0100
+@@ -32,13 +32,13 @@
+ use utils qw(%ERRORS);
+ 
+ $PROGNAME = "check_openvpn";
+-$VERSION = '$Revision: 1.0 $';
++$VERSION = '$Revision: 1.1 $';
+ 
+ $ENV{'PATH'}='';
+ $ENV{'BASH_ENV'}=''; 
+ $ENV{'ENV'}='';
+ 
+-my ($opt_h, $opt_H, $opt_p, $opt_P, $opt_t, $opt_i, $opt_n, $opt_c, $opt_w, $opt_C, $opt_r);
++my ($opt_h, $opt_H, $opt_p, $opt_P, $opt_t, $opt_i, $opt_n, $opt_c, $opt_w, $opt_C, $opt_r, $opt_V);
+ 
+ sub print_help ();
+ sub print_usage ();
+@@ -55,12 +55,16 @@
+    "w" => \$opt_w, "warning" => \$opt_w,
+    "C=s" => \$opt_C, "common_name=s" => \$opt_C,
+    "r=s" => \$opt_r, "remote_ip=s" => \$opt_r,
++   "V"  => \$opt_V, "performance" => \$opt_V,
+   ) or exit $ERRORS{'UNKNOWN'};
+ 
+ # default values
+ unless ( defined $opt_t ) {
+    $opt_t = 10;
+ }
++unless ( defined $opt_V){
++   $opt_V=0;
++}
+ 
+ if ($opt_h) {print_help(); exit $ERRORS{'OK'};}
+ 
+@@ -102,7 +106,12 @@
+     }
+ }
+   if (defined $opt_i) {
++    @clients_ip=sort(@clients_ip);
+     print "OpenVPN OK: "."@clients_ip ";
++    if ( $opt_V ){
++        my $num=$#clients_ip+1;
++        print "| clients=".$num.";;;;";
++    }
+     exit $ERRORS{'OK'};
+   } elsif (defined $opt_r) {
+     if ( ! grep /\b$opt_r\b/, @clients_ip) {
+@@ -125,6 +134,8 @@
+   }
+ }
+ 
++@clients=sort(@clients);
++
+ if (defined $opt_C) {
+   if ( ! grep /\b$opt_C\b/, @clients) {
+     if (defined $opt_c) {
+@@ -140,10 +151,12 @@
+ 
+ if (defined $opt_n) {
+ print "OpenVPN OK: ".@clients." connected clients.";
++print "| clients=".@clients.";;;;" if ($opt_V);
+ exit $ERRORS{'OK'};
+ }
+ 
+ print "OpenVPN OK: "."@clients ";
++print "| clients=".@clients.";;;;" if ($opt_V);
+ exit $ERRORS{'OK'};
+ 
+ #######################################################################
+@@ -186,6 +199,8 @@
+ -n | --numeric
+   Prints the number of clients connected to the openvpn server.
+ 
++-V | --performance 
++  Prints the number of clients connected to the openvpn server as performance data.
+ 
+         Matching Parameters
+         ===================

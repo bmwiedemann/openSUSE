@@ -1,0 +1,13 @@
+<package name="perl-MooseX-Traits" project="openSUSE:Factory">
+  <title>Automatically Apply Roles at Object Creation Time</title>
+  <description>Often you want to create components that can be added to a class
+arbitrarily. This module makes it easy for the end user to use these
+components. Instead of requiring the user to create a named class with the
+desired roles applied, or apply roles to the instance one-by-one, he can
+just create a new class from yours with &quot;with_traits&quot;, and then
+instantiate that.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-MooseX-Traits"/>
+  <url>http://search.cpan.org/dist/MooseX-Traits</url>
+</package>

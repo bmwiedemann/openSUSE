@@ -1,0 +1,8 @@
+<package name="msmtp" project="openSUSE:Factory">
+  <title>Lightweight SMTP Client</title>
+  <description>msmtp is an SMTP client that can be used as a plug-in for Mutt and
+other mail user agents.  It forwards mail to an SMTP server that does
+the delivery.  msmtp supports multiple accounts.
+</description>
+  <devel project="server:mail" package="msmtp"/>
+</package>

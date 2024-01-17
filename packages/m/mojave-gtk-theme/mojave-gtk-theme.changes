@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Fri Aug  4 06:58:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20230804:
+  * Add NixOS icon #238
+
+-------------------------------------------------------------------
+Fri Jun 23 06:01:28 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20230613:
+  * Fixed gnome 44.0 issues
+  * Render and dpi enhancements #236
+
+-------------------------------------------------------------------
+Mon Oct 24 10:28:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20221021:
+  * Fixed libadwaita issues
+  * Fixed gnome-shell 43 issues
+
+-------------------------------------------------------------------
+Tue Jun  7 18:05:49 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20220607:
+  * Fixed #227 
+  * Update install.sh
+
+-------------------------------------------------------------------
+Tue May 24 11:07:02 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20220512:
+  * Fixed gnome 42 issues
+  * Rename all 'dark' to' Dark'
+  * Updates for Budgie desktop #214
+  * change shebang to #! /usr/bin/env bash to
+    improve portability #218
+  * Update README.md #221
+
+-------------------------------------------------------------------
+Wed Jul 21 07:06:59 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20210720:
+  * Fix gnome-shell 40.3 issues
+
+-------------------------------------------------------------------
+Wed Jun 23 09:03:40 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20210623:
+  * Several issues fixed
+  * Full gnome 40 support
+
+-------------------------------------------------------------------
+Mon Nov 30 08:34:20 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20201129:
+  * Fix gnome 3.38 issues
+
+-------------------------------------------------------------------
+Thu Mar 26 07:18:49 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20200324:
+  * Fix gnome-shell issues
+  * Add alt version back
+
+-------------------------------------------------------------------
+Thu Mar 19 09:40:14 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20200319:
+  * Fix gnome-shell 3.36 issues
+
+-------------------------------------------------------------------
+Tue Feb 25 12:25:33 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20200220:
+  * Switch to unison hovering
+  * Fix budgie issues 
+  * Update Firefox Theme
+  * Remove nav-bar's padding-left when window buttons are hidden 
+  * Fixed titlebutton backdrop hover icon issue
+  * Deeper shadow
+  * Fix thunar and tilix issues
+
+-------------------------------------------------------------------
+Mon Dec 16 11:50:39 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20191212:
+  * Fix several gnome 3.34 issues
+  * Add firefox theme
+
+-------------------------------------------------------------------
+Mon Sep  9 08:11:59 UTC 2019 - mvetter@suse.com
+
+- Update to 20190909:
+  * Fix several icon issues
+
+-------------------------------------------------------------------
+Fri Aug 23 18:06:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix grammar in summary.
+
+-------------------------------------------------------------------
+Wed Aug 21 08:26:47 UTC 2019 - mvetter@suse.com
+
+- Add mojave-gtk-theme-rpmlintrc as source to spec file
+
+-------------------------------------------------------------------
+Thu Mar 21 12:56:34 UTC 2019 - mvetter@suse.com
+
+- Initial package in version 20190102 for openSUSE

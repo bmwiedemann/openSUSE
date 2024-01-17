@@ -1,0 +1,35 @@
+Index: xorg-cf-files-1.0.8/gnu.cf
+===================================================================
+--- xorg-cf-files-1.0.8.orig/gnu.cf
++++ xorg-cf-files-1.0.8/gnu.cf
+@@ -21,7 +21,7 @@ XCOMM operating system:  OSName (OSMajor
+ 
+ #define GNUSourceDefines      -D_POSIX_C_SOURCE=199309L \
+                               -D_POSIX_SOURCE -D_XOPEN_SOURCE \
+-                              -D_BSD_SOURCE -D_SVID_SOURCE
++                              -D_DEFAULT_SOURCE
+ 
+ XCOMM XXXMB: What about _GNU_SOURCE, see Linux/UseInstalled?
+ 
+Index: xorg-cf-files-1.0.8/linux.cf
+===================================================================
+--- xorg-cf-files-1.0.8.orig/linux.cf
++++ xorg-cf-files-1.0.8/linux.cf
+@@ -242,7 +242,7 @@ InstallNamedTargetNoClobber(install,file
+ #if LinuxCLibMajorVersion >= 6
+ # define LinuxSourceDefines	-D_POSIX_C_SOURCE=199309L \
+ 				-D_POSIX_SOURCE -D_XOPEN_SOURCE \
+-				-D_BSD_SOURCE -D_SVID_SOURCE \
++				-D_DEFAULT_SOURCE \
+                                 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 \
+ 				LinuxAdditionalIncludes LinuxGnuSourceDefines \
+ 				LinuxLocaleDefines
+@@ -261,7 +261,7 @@ InstallNamedTargetNoClobber(install,file
+ # endif
+ #else
+ # define LinuxSourceDefines	-D_POSIX_SOURCE -D_POSIX_C_SOURCE=2 \
+-				-D_BSD_SOURCE -D_SVID_SOURCE \
++				-D_DEFAULT_SOURCE \
+ 				LinuxGnuSourceDefines LinuxLocaleDefines
+ # define XawI18nDefines		-DUSE_XWCHAR_STRING -DUSE_XMBTOWC
+ # ifndef HasLibCrypt

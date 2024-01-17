@@ -1,0 +1,20 @@
+--- sbl/Makefile
++++ sbl/Makefile
+@@ -22,7 +22,7 @@
+ BRLDEV = /dev/ttyS0
+ EXEC_PATH = ./
+ REINSTALL_PATH = ./
+-INSTALL_EXEC = --owner=root --group=root --mode=0744
++INSTALL_EXEC = --owner=root --group=root --mode=0755
+ 
+ # To compile in a.out (if you use ELF by default), you may be able to use
+ # `-b i486-linuxaout'; however, you may also need to use the -V flag, or
+@@ -71,7 +71,7 @@
+ 	install -m 644 ../brltbl/* $(DESTDIR)$(CONFDIR)/sbl/brltbl
+ 	install --directory $(DESTDIR)$(CONFDIR)/init.d
+ 	install -m 644 ../config/sbl.conf $(DESTDIR)$(CONFDIR)
+-	install -m 744 ../config/sbl $(DESTDIR)$(CONFDIR)/init.d
++	install -m 755 ../config/sbl $(DESTDIR)$(CONFDIR)/init.d
+ 	ln -sf $(CONFDIR)/init.d/sbl $(DESTDIR)$(PREFIX)/sbin/rcsbl
+ 	install --directory $(DESTDIR)/var/run
+ #	mkfifo $(DESTDIR)/var/run/sbl.fifo.in

@@ -1,0 +1,52 @@
+From 1eefbe38f6a7266e1489765317f4e89489856fc1 Mon Sep 17 00:00:00 2001
+From: Dan Rosen <mergeconflict@google.com>
+Date: Wed, 17 Apr 2019 15:44:59 -0400
+Subject: [PATCH 2/2] evwatch: fix race condition
+
+There was a race between event_base_loop and evwatch_new (adding a
+prepare/check watcher while iterating over the watcher list). Only
+release the mutex immediately before invoking each watcher callback,
+and reacquire it immediately afterwards (same as is done for normal
+event handlers).
+---
+ event.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/event.c b/event.c
+index 5e41ae04..c6eb175c 100644
+--- a/event.c
++++ b/event.c
+@@ -2012,11 +2012,12 @@ event_base_loop(struct event_base *base, int flags)
+ 		event_queue_make_later_events_active(base);
+ 
+ 		/* Invoke prepare watchers before polling for events */
+-		EVBASE_RELEASE_LOCK(base, th_base_lock);
+ 		prepare_info.timeout = tv_p;
+-		TAILQ_FOREACH(watcher, &base->watchers[EVWATCH_PREPARE], next)
++		TAILQ_FOREACH(watcher, &base->watchers[EVWATCH_PREPARE], next) {
++			EVBASE_RELEASE_LOCK(base, th_base_lock);
+ 			(*watcher->callback.prepare)(watcher, &prepare_info, watcher->arg);
+-		EVBASE_ACQUIRE_LOCK(base, th_base_lock);
++			EVBASE_ACQUIRE_LOCK(base, th_base_lock);
++		}
+ 
+ 		clear_time_cache(base);
+ 
+@@ -2033,10 +2034,11 @@ event_base_loop(struct event_base *base, int flags)
+ 
+ 		/* Invoke check watchers after polling for events, and before
+ 		 * processing them */
+-		EVBASE_RELEASE_LOCK(base, th_base_lock);
+-		TAILQ_FOREACH(watcher, &base->watchers[EVWATCH_CHECK], next)
++		TAILQ_FOREACH(watcher, &base->watchers[EVWATCH_CHECK], next) {
++			EVBASE_RELEASE_LOCK(base, th_base_lock);
+ 			(*watcher->callback.check)(watcher, &check_info, watcher->arg);
+-		EVBASE_ACQUIRE_LOCK(base, th_base_lock);
++			EVBASE_ACQUIRE_LOCK(base, th_base_lock);
++		}
+ 
+ 		timeout_process(base);
+ 
+-- 
+2.23.0
+

@@ -1,0 +1,17 @@
+---
+ pytest_verbose_parametrize.py |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/pytest_verbose_parametrize.py
++++ b/pytest_verbose_parametrize.py
+@@ -1,4 +1,9 @@
+-from collections import Iterable
++try:
++    from collections.abc import Iterable
++except ImportError:
++    from collections import Iterable
++except ModuleNotFoundError:
++    from collections import Iterable
+ from six import string_types, text_type
+ 
+ 

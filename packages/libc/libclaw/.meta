@@ -1,0 +1,5 @@
+<package name="libclaw" project="openSUSE:Factory">
+  <title></title>
+  <description>Claw (C++ Library Absolutely Wonderful) is a C++ library of various utility functions. In doesn't have a particular objective but being useful to anyone.</description>
+  <devel project="games" package="libclaw"/>
+</package>

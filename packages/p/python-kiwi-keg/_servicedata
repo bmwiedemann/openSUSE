@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git@github.com:SUSE-Enceladus/keg.git</param>
+              <param name="changesrevision">e3786bbfb8da578ff8315c044eebdfa770ed0165</param></service></servicedata>

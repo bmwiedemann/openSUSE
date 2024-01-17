@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d675f1fa2f1f1fdfae0e0c3176d6d309</srcmd5>
+    <version>0.4.1</version>
+    <time>1557142167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701009</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>980092f7daf442cdf8e7ab3609d4dde4</srcmd5>
+    <version>0.5.0</version>
+    <time>1585995938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791128</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f6440f1c163ebd7624509e80a39d3688</srcmd5>
+    <version>0.5.1</version>
+    <time>1600347165</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.1:
+  * Fixed package metadata removing 2.7 support
+  * Install pipenv only when asked for with extras</comment>
+    <requestid>835106</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8825cd0ff27edb1e07e32cd788ec8c43</srcmd5>
+    <version>0.6.1</version>
+    <time>1664467929</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.6.1
+  * Use non-deprecated ConfiParser method
+- update to 0.6.0
+  * Fork from upstream dparse that is unresponsive
+  * Rename package to dparse2
+  * Fix security issue for GHSL-2021-111https://github.com/pyupio/dparse/issues/50
+  * Drop support for Python &lt; 3.6 and add support for up to 3.10
+  * Drop support for updating requirements files
+  * format code with black, sort imports 
+</comment>
+    <requestid>1006957</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe3ad8259eaca47025bd8f44844115d0</srcmd5>
+    <version>0.6.2</version>
+    <time>1667067462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032191</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>969b2f40a0f45353470c2162401c6c6e</srcmd5>
+    <version>0.6.3</version>
+    <time>1688398934</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.3:
+  * Use the modern tomli/tomllib to parse TOML files.
+  * Drop Python 3.5 from our CI.</comment>
+    <requestid>1096324</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b1f4c7de31683f4dc1beffcdfe0b30ef</srcmd5>
+    <version>0.6.3</version>
+    <time>1705353602</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.
+- Add patch fix-configparser-parsing.patch:
+  * Use non-deprecated/removed functions from ConfigParser.</comment>
+    <requestid>1138750</requestid>
+  </revision>
+</revisionlist>

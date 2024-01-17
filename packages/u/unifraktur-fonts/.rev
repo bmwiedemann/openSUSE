@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8cde3fd89448a35afbdd64657a519b5a</srcmd5>
+    <version>0.20121019</version>
+    <time>1365140586</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>161730</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8cde3fd89448a35afbdd64657a519b5a</srcmd5>
+    <version>0.20121019</version>
+    <time>1379664883</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>422171efd3a1148633bc0c99514cdd33</srcmd5>
+    <version>0.20130825</version>
+    <time>1400355947</time>
+    <user>coolo</user>
+    <comment>Update to version 0.20130825 (forwarded request 234322 from MihailJP)</comment>
+    <requestid>234355</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac09daa60fc3c7af37cd8b66254bd1a4</srcmd5>
+    <version>0.20140706</version>
+    <time>1405931740</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241635</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ac09daa60fc3c7af37cd8b66254bd1a4</srcmd5>
+    <version>0.20140706</version>
+    <time>1409303571</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>890ed426eb251afc7c32d5df59a1d958</srcmd5>
+    <version>0.20170319</version>
+    <time>1553635950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687878</requestid>
+  </revision>
+</revisionlist>

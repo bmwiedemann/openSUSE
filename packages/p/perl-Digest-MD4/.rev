@@ -1,0 +1,164 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>737f6f986bc27dc124176fbe79621a51</srcmd5>
+    <version>1.5</version>
+    <time>1168903827</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="133">
+    <srcmd5>737f6f986bc27dc124176fbe79621a51</srcmd5>
+    <version>1.5</version>
+    <time>1168903827</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="134">
+    <srcmd5>846e6db4579f337ac2553bc184e62d9a</srcmd5>
+    <version>1.5</version>
+    <time>1245337343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="136">
+    <srcmd5>846e6db4579f337ac2553bc184e62d9a</srcmd5>
+    <version>1.5</version>
+    <time>1245337343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="137">
+    <srcmd5>7705aa7617e4d242964f4c426e256699</srcmd5>
+    <version>1.5</version>
+    <time>1263489382</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Digest-MD4 based on submit request 29541 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="138">
+    <srcmd5>69670d99b6c1b4dc8f91d91c8961a0b4</srcmd5>
+    <version>1.5</version>
+    <time>1268925436</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="140">
+    <srcmd5>69670d99b6c1b4dc8f91d91c8961a0b4</srcmd5>
+    <version>1.5</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="141">
+    <srcmd5>69670d99b6c1b4dc8f91d91c8961a0b4</srcmd5>
+    <version>1.5</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="142">
+    <srcmd5>c10afdc1ca73bf6b23a0252033d1e7ff</srcmd5>
+    <version>1.5</version>
+    <time>1287485612</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50977 from user coolo
+</comment>
+    <requestid>50977</requestid>
+  </revision>
+  <revision rev="10" vrev="143">
+    <srcmd5>89459be20e31d8b53410de69a03f5079</srcmd5>
+    <version>1.5</version>
+    <time>1287485623</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50977
+</comment>
+  </revision>
+  <revision rev="11" vrev="144">
+    <srcmd5>0a24df9e749bfb1465ee23ca6889f814</srcmd5>
+    <version>1.5</version>
+    <time>1291582118</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54522 from user coolo
+</comment>
+    <requestid>54522</requestid>
+  </revision>
+  <revision rev="12" vrev="145">
+    <srcmd5>7b296e11ade7786ce23e69752f334a1b</srcmd5>
+    <version>1.5</version>
+    <time>1291582122</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54522
+</comment>
+  </revision>
+  <revision rev="13" vrev="148">
+    <srcmd5>7b296e11ade7786ce23e69752f334a1b</srcmd5>
+    <version>1.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="150">
+    <srcmd5>7b296e11ade7786ce23e69752f334a1b</srcmd5>
+    <version>1.5</version>
+    <time>1319182261</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="151">
+    <srcmd5>ec43df658a234a35053d63d29db7633c</srcmd5>
+    <version>1.5</version>
+    <time>1321627600</time>
+    <user>coolo</user>
+    <comment>- regenerate with cpanspec 1.78.05</comment>
+    <requestid>92050</requestid>
+  </revision>
+  <revision rev="16" vrev="152">
+    <srcmd5>9dd727b4bff2acc7a47152ab7c66ec08</srcmd5>
+    <version>1.5</version>
+    <time>1323193242</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="153">
+    <srcmd5>5cc9eba14f389c453af3544c651664a7</srcmd5>
+    <version>1.5</version>
+    <time>1331986950</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>109664</requestid>
+  </revision>
+  <revision rev="18" vrev="155">
+    <srcmd5>5cc9eba14f389c453af3544c651664a7</srcmd5>
+    <version>1.5</version>
+    <time>1340183832</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="157">
+    <srcmd5>5cc9eba14f389c453af3544c651664a7</srcmd5>
+    <version>1.5</version>
+    <time>1359109651</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a0136ac77fcaa0acc2b38ae4dba061ed</srcmd5>
+    <version>1.9</version>
+    <time>1370581104</time>
+    <user>coolo</user>
+    <comment>- updated to 1.9
+  Fixed example output in doc in MD4.pm. Reported by jbwaters@gmail.com.
+  Removed defunct code that caused incorrect error message when building on 64 bit platforms, patch by
+  Fixed a test error in files.t. Corrected the comment to do with the reason in
+  Updated author and distribution location details to airspayce.com (forwarded request 177367 from coolo)</comment>
+    <requestid>177417</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>a0136ac77fcaa0acc2b38ae4dba061ed</srcmd5>
+    <version>1.9</version>
+    <time>1379663652</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>a0136ac77fcaa0acc2b38ae4dba061ed</srcmd5>
+    <version>1.9</version>
+    <time>1409302265</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

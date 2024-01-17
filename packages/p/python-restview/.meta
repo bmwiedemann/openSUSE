@@ -1,0 +1,5 @@
+<package name="python-restview" project="openSUSE:Factory">
+  <title>python-restview</title>
+  <description>ReStructuredText viewer</description>
+  <devel project="devel:languages:python" package="python-restview"/>
+</package>

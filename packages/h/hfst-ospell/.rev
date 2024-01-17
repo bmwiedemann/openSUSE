@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c565631d7784cf2afd0f9da364de0908</srcmd5>
+    <version>0.4.5</version>
+    <time>1495133127</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by new libvoikko</comment>
+    <requestid>491053</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>61d7838c2b95284adc26c336f8a56edc</srcmd5>
+    <version>0.4.5</version>
+    <time>1516546019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567518</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8514dd0bc336f19592f3340ceb4419a7</srcmd5>
+    <version>0.5.0</version>
+    <time>1526646379</time>
+    <user>dimstar_suse</user>
+    <comment>- Add hack for icu 61 and newer -DU_USING_ICU_NAMESPACE=1
+  * This needs to be removed when properly fixed upstream
+
+- Version update to 0.5.0:
+  * rename hfst_ol namespace to hfst_ospell to avoid conflicts
+  * improve distinguishing between lemmas and tags in analysis
+  * fix issue #37
+  * avoid shadowing multicharacter ascii-beginning symbols
+  * use minimal XML parsing to get locale, title, and description for Voikko and other frontends</comment>
+    <requestid>599294</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0bf16d5f17fd05cd32d9dd1f5f4c8baa</srcmd5>
+    <version>0.5.1</version>
+    <time>1579463605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  * change correction finding order (fixes issue #28)
+  * require C++1y (C++14)
+  * observe ICU namespacing (fixes issue #42)</comment>
+    <requestid>764972</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c82c4cb5d1a7471f6f646bf602d04174</srcmd5>
+    <version>0.5.1</version>
+    <time>1582206903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1 bsc#1164440:</comment>
+    <requestid>777624</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>398724f17a5f4a7540b37921fb2e2aa3</srcmd5>
+    <version>0.5.1</version>
+    <time>1585668723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789082</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>c920569511551792c53b2422fc6b018e</srcmd5>
+    <version>0.5.1</version>
+    <time>1678555371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070386</requestid>
+  </revision>
+</revisionlist>

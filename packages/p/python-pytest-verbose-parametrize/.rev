@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb797e0cead93f67d4e380d5278b2d69</srcmd5>
+    <version>1.5.1</version>
+    <time>1553263741</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v1.5.1
+</comment>
+    <requestid>687304</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>de604c2a5b7dd052549b0a637bca7dfe</srcmd5>
+    <version>1.7.0</version>
+    <time>1559581012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * support pytest 4</comment>
+    <requestid>707086</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>55d85aaff59c6d750520777f4f5f2601</srcmd5>
+    <version>1.7.0</version>
+    <time>1566479154</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip integration tests</comment>
+    <requestid>725258</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>645244db40a7a5ff59e062b9ce26abce</srcmd5>
+    <version>1.7.0</version>
+    <time>1641855230</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Iterable-collections.patch to avoid Python 3.10
+  incompatibility (gh#man-group/pytest-plugins#197).
+</comment>
+    <requestid>945369</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>22e477e83985e0e348df2026135a0d83</srcmd5>
+    <version>1.7.0</version>
+    <time>1647031277</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on mock.</comment>
+    <requestid>960961</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>cd6552904fe0d221b62a38f81165a624</srcmd5>
+    <version>1.7.0</version>
+    <time>1650657280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971976</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>62a2e27f42d4ed81f610293c1ec463bc</srcmd5>
+    <version>1.7.0</version>
+    <time>1670703477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041846</requestid>
+  </revision>
+</revisionlist>

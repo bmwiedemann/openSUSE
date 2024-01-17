@@ -1,0 +1,3 @@
+# libevent-devel-static is a proper name in this package, in analogy to
+# libevent-devel
+addFilter("libevent-devel-static.*: W: shlib-policy-missing-lib")

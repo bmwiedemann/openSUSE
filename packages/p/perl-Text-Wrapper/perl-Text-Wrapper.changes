@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sun Jan 26 15:26:46 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.05:
+  + no functional changes
+  + additional tests showing all possible breakpoints
+
+-------------------------------------------------------------------
+Mon Apr 22 07:12:05 UTC 2013 - coolo@suse.com
+
+- updated to 1.04
+    - restore compatibility with Perl 5.8.0 (RT#77386)
+      patch provided by Thomas Sibley
+    - add the wrap_after attribute
+    - now requires Perl 5.10.0 or later
+    - explicitly supports U+2000 - U+200B as breaking spaces
+    - now built with Dist::Zilla (includes v2 META.json)
+    - repository now publicly available on GitHub
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:51 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Dec 26 18:27:57 UTC 2009 - lars@linux-schulserver.de
+
+- initial version 1.02
+

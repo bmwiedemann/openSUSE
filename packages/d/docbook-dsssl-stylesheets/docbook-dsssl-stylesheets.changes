@@ -1,0 +1,331 @@
+-------------------------------------------------------------------
+Tue Feb  5 14:51:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old $RPM_* shell vars.
+
+-------------------------------------------------------------------
+Thu Jan 31 08:18:22 UTC 2019 - ke@suse.com
+
+- Do not install in /var/lib; bsc#1093345.
+
+-------------------------------------------------------------------
+Mon Nov 13 14:38:09 UTC 2017 - dimstar@opensuse.org
+
+- Rename README.SuSE to README.SUSE, adhering to the correct
+  spelling.
+- Add fdupes BuildRequires and eliminate duplictae files.
+
+-------------------------------------------------------------------
+Tue Jul 16 13:48:32 CEST 2013 - mls@suse.de
+
+- remove two wrong dir modifiers in filelist
+
+-------------------------------------------------------------------
+Mon Jun 25 08:25:11 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-XSL-Lint
+  Choose a license from http://www.spdx.org/licenses or from the list
+  linked at http://license.opensuse.org
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Sun Aug 30 20:04:53 CEST 2009 - coolo@novell.com
+
+- provide Patch0
+
+-------------------------------------------------------------------
+Mon May 29 16:41:22 CEST 2006 - ke@suse.de
+
+- Use %postun instead of %preun and check for the update case; reported
+  by Marcus Meissner.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:08 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 21 07:49:46 CET 2005 - aj@suse.de
+
+- Package symlink.
+
+-------------------------------------------------------------------
+Fri Nov  5 08:13:56 CET 2004 - ke@suse.de
+
+- Update to version 1.79 which also includes "bs" and "bg" localization
+  files.
+- Drop obsolete CVS ariginated patch.
+
+-------------------------------------------------------------------
+Tue Oct 12 14:59:28 CEST 2004 - ke@suse.de
+
+- Apply all current changes from CVS, only leave out "bs" and "bg"
+  localization files because building .ent files failed ATM.
+
+-------------------------------------------------------------------
+Mon Feb 23 11:45:41 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Wed Mar 26 14:12:27 CET 2003 - ke@suse.de
+
+- Update to version 1.78, which comes with all the patches applied on
+  2003-01-31; thus drop them here.
+
+-------------------------------------------------------------------
+Fri Jan 31 14:58:51 CET 2003 - ke@suse.de
+
+- Apply some fixes from the SF CVS:
+  - bookinfo-legal-product.diff: Fix HTML formatting when <productname>
+    occurs in legalinfo in bookinfo (from CVS 2003/01/21).
+  - indexterm-seealso.diff: Fix bin/collateindex.pl when indexterm has
+    two different seealso's (from CVS 2003/01/19).
+  - navig-level-chunk.diff: Fix PDF bookmark hierarchy (from CVS
+    2003/01/15); provided by Susanne Oberhauser.
+  - dbl1en-case-folding.diff: Fix some case folding of some English standard
+    phrases (from CVS 2002/12/20).
+  - db-html-dbgraph-syntax-fix.diff: Fix syntax in html/dbgraph.dsl,
+   append wants a list (from CVS 2003/01/20).
+
+-------------------------------------------------------------------
+Fri Nov 29 15:46:25 CET 2002 - ke@suse.de
+
+- Register catalog file using sgml-register-catalog.
+
+-------------------------------------------------------------------
+Fri Jul 12 16:36:48 MEST 2002 - mls@suse.de
+
+- fixed postinstall script
+
+-------------------------------------------------------------------
+Mon Jul  8 10:16:12 CEST 2002 - ke@suse.de
+
+- Update to version 1.77: Mostly a bug-fix release, but also includes a
+  few user-requested feature enhancements: footnote, list, title page
+  formatting and more.
+
+-------------------------------------------------------------------
+Fri Apr 26 11:20:43 CEST 2002 - ke@suse.de
+
+- Update to version 1.76 (patches added on 2002-03-16 and 2002-02-20 are
+  superfluous):
+  Bug fixes concerning formatting (lists) and index creation.
+
+-------------------------------------------------------------------
+Thu Mar 14 16:07:13 CET 2002 - ke@suse.de
+
+- Backport images from docbook-dsssl-1.76; or in other words: add PDF
+  and EPS.
+  Reported by Pavel Janik [# 14905].
+
+-------------------------------------------------------------------
+Wed Feb 20 12:16:24 CET 2002 - ke@suse.de
+
+- Apply docbook-dsssl-1.74b-lfr.diff to fix a quoting problem (for
+  French texts only); discussed on the DocBook Apps mailinglist by
+  Norman Walsh and camille [# 13501].
+
+-------------------------------------------------------------------
+Mon Dec  3 11:30:23 CET 2001 - ke@suse.de
+
+- Update to version 1.74b (bugfix release).
+
+-------------------------------------------------------------------
+Thu Nov 29 11:34:33 CET 2001 - ke@suse.de
+
+- Update to version 1.74:
+  - Better localization support.
+  - Enhancements (e.g., more line numberings; support glossary and index
+    in article correctly).
+  - Bug fixes (e.g., keep-with-next properties, callouts).
+- As announced for 8.0 remove convenience links.
+- Cleanup spec file.
+
+-------------------------------------------------------------------
+Thu Oct 18 13:22:50 CEST 2001 - ke@suse.de
+
+- For HTML output process "emphasis" elements correctly; apply
+  http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/docbook/dsssl/html/dbinline.dsl.diff?r1=1.5&r2=1.6.
+  Reported by Ulrich Windl [# 11886].
+
+-------------------------------------------------------------------
+Tue Aug  7 15:57:17 CEST 2001 - ke@suse.de
+
+- Update to version 1.72.
+
+-------------------------------------------------------------------
+Thu Jul 12 12:39:16 CEST 2001 - ke@suse.de
+
+- Update to version 1.71 (experimental).
+- Adjust .spec file (now we've proper .tar.gz files instead of .zip
+  files).
+- Provide an additional convenience link through %post.
+
+-------------------------------------------------------------------
+Thu Mar 29 01:10:47 CEST 2001 - ro@suse.de
+
+- tweaked postinstall again.
+
+-------------------------------------------------------------------
+Wed Mar 28 02:22:45 CEST 2001 - ro@suse.de
+
+- fixed postinstall
+- redefining version macro is dangerous.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:42:33 CEST 2001 - ke@suse.de
+
+- Rename package: docbkdsl -> docbook-dsssl-stylesheets.
+- Provide compatibility links.
+- Adjust README.SuSE.
+
+-------------------------------------------------------------------
+Mon Mar 19 13:56:59 CET 2001 - ke@suse.de
+
+- Update to version 1.64
+
+-------------------------------------------------------------------
+Thu Feb  1 13:57:47 CET 2001 - ke@suse.de
+
+- Update to version 1.62.
+
+-------------------------------------------------------------------
+Mon Dec 18 13:24:27 CET 2000 - ke@suse.de
+
+- Update to version 1.60 (to fix a TOC creation bug).
+
+-------------------------------------------------------------------
+Thu Nov  2 18:45:45 CET 2000 - ke@suse.de
+
+- Update to version 1.59.
+- spec file cleanup (more macros); reduce CATALOG file.
+
+-------------------------------------------------------------------
+Fri Sep 22 15:38:04 MEST 2000 - ke@suse.de
+
+- Update to version 1.57.
+
+-------------------------------------------------------------------
+Wed Aug 16 10:45:11 CEST 2000 - ke@suse.de
+
+- Update to version 1.56.
+- Require docbk30 and docbk_4.
+
+-------------------------------------------------------------------
+Tue May 30 12:01:38 CEST 2000 - ke@suse.de
+
+- Update to version 1.54.
+- Use %{_defaultdocdir}
+
+-------------------------------------------------------------------
+Fri Jan 28 19:20:13 CET 2000 - ke@suse.de
+
+- Update to version 1.52.
+- Add groupt tag.
+- User %version macro.
+- Apply patch from Norm Walsh to correct a typo.
+
+-------------------------------------------------------------------
+Fri Dec 17 13:19:27 CET 1999 - ke@suse.de
+
+- Update: 1.49 (bugfix release).
+
+-------------------------------------------------------------------
+Sun Oct 24 16:04:56 CEST 1999 - ke@suse.de
+
+- Update: 1.46 (bugfix release).
+- Mark the package as "noarch".
+
+-------------------------------------------------------------------
+Fri Oct  1 18:29:02 CEST 1999 - ke@suse.de
+
+- Update: 1.45.
+- Fix check marco.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Aug  9 12:00:48 MEST 1999 - ke@suse.de
+
+- Update: version 1.43.
+- Add `Check'.
+
+-------------------------------------------------------------------
+Mon Jul 12 10:41:16 MEST 1999 - ke@suse.de
+
+- Update: version 1.42 (bugfix release).
+
+-------------------------------------------------------------------
+Tue Jun 29 09:59:46 MEST 1999 - ke@suse.de
+
+- Update: version 1.41.
+
+-------------------------------------------------------------------
+Wed Apr 21 16:37:10 MEST 1999 - ke@suse.de
+
+- Update: version 1.40.
+
+-------------------------------------------------------------------
+Thu Apr  8 19:49:42 MEST 1999 - ke@suse.de
+
+- Update: version 1.38b.
+
+-------------------------------------------------------------------
+Sun Mar 28 16:42:57 MEST 1999 - ke@suse.de
+
+- Add the stylesheet ld2db.dsl from SGMLtools. 
+
+-------------------------------------------------------------------
+Sun Mar 21 11:46:54 MET 1999 - ke@suse.de
+
+- Update: version 1.37.
+
+-------------------------------------------------------------------
+Fri Mar 12 21:44:05 MET 1999 - ke@suse.de
+
+- Take care about usr/doc/packages/docbkdsl/* links (%post, &preun).
+- Don't install the broken index.html.
+
+-------------------------------------------------------------------
+Tue Dec  8 12:53:17 MET 1998 - ke@suse.de
+
+- Update: version 1.28.
+- Install the collateindex.pl library as a data file under .../share/...
+
+-------------------------------------------------------------------
+Tue Nov 24 19:20:20 MET 1998 - ke@suse.de
+
+- Update: version 1.24.
+- Update: dbtohtml.dsl.
+- Fix typo in CATALOG.docbkdsl (refer CATALOG.dokbk30).
+	
+-------------------------------------------------------------------
+Fri Nov 13 15:52:19 MET 1998 - bs@suse.de
+
+- removed trailing blanks (problem with new rpm)
+
+-------------------------------------------------------------------
+Fri Nov  6 09:38:22 MET 1998 - ke@suse.de
+
+- Update: version 1.23 (bug fix release).
+
+-------------------------------------------------------------------
+Thu Nov  5 18:32:10 MET 1998 - ke@suse.de
+
+- Update: version 1.22. 
+
+-------------------------------------------------------------------
+Mon Oct 26 10:00:31 MET 1998 - ke@suse.de
+
+- Formerly, this software was part of the package `dokbk30'.
+  Version 1.19.
+

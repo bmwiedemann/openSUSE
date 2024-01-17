@@ -1,0 +1,8 @@
+--- eg/startup.pl.orig	2011-10-20 14:02:32.000000000 -0400
++++ eg/startup.pl	2011-10-20 14:02:40.000000000 -0400
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl -w
++#!/usr/bin/perl -w
+ 
+ # to load this file when the server starts, add this to httpd.conf:
+ # PerlRequire /path/to/startup.pl

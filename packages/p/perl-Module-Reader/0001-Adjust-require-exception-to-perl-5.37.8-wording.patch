@@ -1,0 +1,90 @@
+From 4a20f97741b04d609ab4265fc8c6c1bdfc620daa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Fri, 4 Aug 2023 16:58:23 +0200
+Subject: [PATCH] Adjust require exception to perl 5.37.8 wording
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+With perl 5.38.0 t/memmory test fails on Regexp objects:
+
+    not ok 9 - regex fails the same as require
+    #   Failed test 'regex fails the same as require'
+    #   at t/memory.t line 99.
+    #          got: 'Can't locate object method "INC" via package "Regexp"'
+    #     expected: 'Can't locate object method "INC", nor "INCDIR" nor string overload via package "Regexp" in object hook in @INC'
+    not ok 10 - class without INC fails the same as require
+    #   Failed test 'class without INC fails the same as require'
+    #   at t/memory.t line 99.
+    #          got: 'Can't locate object method "INC" via package "NonHook"'
+    #     expected: 'Can't locate object method "INC", nor "INCDIR" nor string overload via package "NonHook" in object hook in @INC'
+
+This is probably caused by this perl commit which also changed the exception
+text:
+
+    commit 0d370d41c6e8fe1e36eb93a5561e6716ee3a7e3e
+    Author: Yves Orton <demerphq@gmail.com>
+    Date:   Sun Dec 18 18:48:51 2022 +0100
+
+	pp_ctl.c - Check if refs have overloads in @INC
+
+	If an object in @INC doesnt have a hook method, and it isnt a CODE ref
+	then check if it has string overloading, if it does not then die with a
+	helpful message, otherwise call the overload
+
+	This uses the nice new amagic_find() function.
+
+This patch adjustes Module::Reader::_open_ref() to emit a similar
+exception text. Though it does implement the missing features like
+handling INCDIR method or string overloading.
+
+With the new perl it's impossible to get the same exception text in
+a different way than by calling "require" function. Therefore
+in the long term, I recommend stop insisting on error-to-error parity
+and relaxing the tests instead.
+
+CPAN RT#148979
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ lib/Module/Reader.pm | 24 +++++++++++++++++++++---
+ 1 file changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/lib/Module/Reader.pm b/lib/Module/Reader.pm
+index cbab239..976d4ad 100644
+--- a/lib/Module/Reader.pm
++++ b/lib/Module/Reader.pm
+@@ -218,9 +218,27 @@ sub _open_ref {
+       main;
+     no strict 'refs';
+     no warnings 'uninitialized';
+-    @cb = defined Scalar::Util::blessed $inc ? $inc->INC($file)
+-        : ref $inc eq 'ARRAY'                ? $inc->[0]->($inc, $file)
+-                                             : $inc->($inc, $file);
++    if (defined(Scalar::Util::blessed $inc)) {
++        if ($^V < v5.37.8) {
++            @cb = $inc->INC($file);
++        } else {
++            if ($inc->can('INC')) {
++                @cb = $inc->INC($file);
++            }
++            # TODO: Handle INCDIR method
++            # TODO: Handle string overloading
++            else {
++                die "Can't locate object method \"INC\", nor" .
++                    " \"INCDIR\" nor string overload via" .
++                    " package \"" . ref($inc) . "\" in object hook" .
++                    " in \@INC";
++            }
++        }
++    } elsif (ref $inc eq 'ARRAY') {
++        @cb = $inc->[0]->($inc, $file);
++    } else {
++        @cb = $inc->($inc, $file);
++    }
+   }
+ 
+   return
+-- 
+2.41.0
+

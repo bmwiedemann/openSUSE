@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>231c3eb920ba991dddcb1f5adb1100ff</srcmd5>
+    <version>2.0.2</version>
+    <time>1675873208</time>
+    <user>dimstar_suse</user>
+    <comment>A tool to generate kiwi image descriptions based on YAML configuration</comment>
+    <requestid>1063685</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>86d9294b989b74f5fa2d45cf5e032112</srcmd5>
+    <version>2.0.3</version>
+    <time>1675956152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063899</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3b5c5bc58b6321761308a024b4ce918</srcmd5>
+    <version>2.1.0</version>
+    <time>1689000029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097930</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c8559436c86cd637337133d91e983cdf</srcmd5>
+    <version>2.1.1</version>
+    <time>1690654214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.1:
+  * Bump version: 2.1.0 → 2.1.1
+  * compose_kiwi_description: generate custom XML files
+  * compose_kiwi_description: fix JSON serialization error
+  * Provide python3-kiwi-keg only for primary flavor
+  * Improve publish-to-pypy GitHub CI workflow
+  * Improve GitHub CI testing workflow
+  * Makefile: minor fixes
+  * Restructure tox.ini
+  * Minor cleanup
+  * Regenerate docbook source (forwarded request 1101221 from jgleissner)</comment>
+    <requestid>1101243</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,265 @@
+-------------------------------------------------------------------
+Sat Dec  2 19:24:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Add Python 3.12 wheels
+  * KIP-117: Add support for AdminAPI `describe_cluster()` and
+    `describe_topics()`. (@jainruchir, #1635)
+  * KIP-430:
+  * Return authorized operations in Describe Responses.
+    (@jainruchir, #1635)
+  * KIP-516: Partial support of topic identifiers. Topic
+    identifiers in metadata response are available through the
+    new describe_topics function (#1645).
+  * KIP-396: completed the implementation with the addition of
+    `list_offsets` (#1576).
+  * Add `Rack` to the `Node` type, so AdminAPI calls can expose
+    racks for brokers
+  * Fix the Describe User Scram Credentials for Describe all
+    users or empty users list.
+  * confluent-kafka-python is based on librdkafka v2.3.0, see the
+    librdkafka release notes for a complete list of changes,
+    enhancements, fixes and upgrade considerations.
+
+-------------------------------------------------------------------
+Fri Dec  1 16:55:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * KIP-339
+  * IncrementalAlterConfigs API (#1517).
+  * KIP-554:
+  * User SASL/SCRAM credentials alteration and description
+    (#1575).
+  * Added documentation with an example of FIPS compliant
+    communication with Kafka cluster.
+  * Fixed wrong error code parameter name in KafkaError.
+
+-------------------------------------------------------------------
+Sun May  7 18:56:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Added a new ConsumerGroupState UNKNOWN. The typo state UNKOWN
+    is deprecated and will be removed in the next major version.
+  * Fix some Admin API documentation stating -1 for infinite
+    timeout incorrectly.
+  * Request timeout can't be infinite.
+  * Added `set_sasl_credentials`. This new method (on the
+    Producer, Consumer, and AdminClient) allows modifying the
+    stored SASL PLAIN/SCRAM credentials that will be used for
+    subsequent (new) connections to a broker
+  * Added support for Default num_partitions in CreateTopics
+    Admin API.
+  * Added support for password protected private key in
+    CachedSchemaRegistryClient.
+  * Add reference support in Schema Registry client.
+  * Added support for schema references.
+  * KIP-320: add offset leader epoch methods to the
+    TopicPartition and Message classes
+  * KIP-222 Add Consumer Group operations to Admin API.
+  * KIP-518 Allow listing consumer groups per state.
+  * KIP-396 Partially implemented: support for
+    AlterConsumerGroupOffsets.
+  * Added metadata to `TopicPartition` type and `commit()`
+  * Added `consumer.memberid()` for getting member id assigned to
+  * the consumer in a consumer group
+  * Implemented `nb_bool` method for the Producer, so that the
+    default (which uses len) will not be used.
+    This avoids situations where producers with
+    no enqueued items would evaluate to False
+  * Deprecated `AvroProducer` and `AvroConsumer`. Use
+    `AvroSerializer` and `AvroDeserializer` instead.
+  * Deprecated `list_groups`. Use `list_consumer_groups` and
+    `describe_consumer_groups` instead.
+  * Improved Consumer Example to show atleast once semantics.
+  * Improved Serialization and Deserialization Examples.
+  * Documentation Improvements.
+
+-------------------------------------------------------------------
+Mon Sep 26 23:24:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version 1.9.2:
+  v1.9.2 is a maintenance release with the following fixes and enhancements:
+
+ - Support for setting principal and SASL extensions in oauth_cb
+   and handle failures (@Manicben, #1402)
+ - Wheel for macOS M1/arm64
+ - KIP-140 Admin API ACL fix:
+   When requesting multiple create_acls or delete_acls operations,
+   if the provided ACL bindings or ACL binding filters are not
+   unique, an exception will be thrown immediately rather than later
+   when the responses are read. (#1370).
+ - KIP-140 Admin API ACL fix:
+   Better documentation of the describe and delete ACLs behavior
+   when using the MATCH resource patter type in a filter. (#1373).
+ - Avro serialization examples:
+   added a parameter for using a generic or specific Avro schema. (#1381).
+
+  confluent-kafka-python is based on librdkafka v1.9.2, see the
+  [librdkafka release notes](https://github.com/edenhill/librdkafka/releases/tag/v1.9.2)
+  for a complete list of changes, enhancements, fixes and upgrade considerations.
+
+- Update to Version v1.9.1:
+  There was no 1.9.1 release of the Python Client.
+
+- Update to Versino 1.9.0:
+  This is a feature release:
+ - OAUTHBEARER OIDC support
+ - KIP-140 Admin API ACL support
+ ### Fixes
+ - The warnings for `use.deprecated.format` (introduced in v1.8.2)
+   had its logic reversed, which result in warning logs to be emitted when
+   the property was correctly configured, and the log message itself also
+   contained text that had it backwards.
+   The warning is now only emitted when `use.deprecated.format` is set
+   to the old legacy encoding (`True`). #1265
+ - Use `str(Schema)` rather than `Schema.to_json` to prevent fastavro
+   from raising exception `TypeError: unhashable type: 'mappingproxy'`.
+   (@ffissore, #1156, #1197)
+ - Fix the argument order in the constructor signature for
+   AvroDeserializer/Serializer: the argument order in the constructor
+   signature for AvroDeserializer/Serializer was altered in v1.6.1, but
+   the example is not changed yet. (@DLT1412, #1263)
+ - Fix the json deserialization errors from `_schema_loads` for
+   valid primitive declarations. (@dylrich, #989)
+
+  confluent-kafka-python is based on librdkafka v1.9.0, see the
+  [librdkafka release notes](https://github.com/edenhill/librdkafka/releases/tag/v1.9.0)
+  for a complete list of changes, enhancements, fixes and upgrade considerations.
+
+- Update to Version v1.8.2:
+  v1.8.2 is a maintenance release with the following fixes and enhancements:
+
+ - **IMPORTANT**: Added mandatory `use.deprecated.format` to
+   `ProtobufSerializer` and `ProtobufDeserializer`.
+   See **Upgrade considerations** below for more information.
+ - **Python 2.7 binary wheels are no longer provided.**
+   Users still on Python 2.7 will need to build confluent-kafka from source
+   and install librdkafka separately, see [README.md](README.md#Prerequisites)
+   for build instructions.
+ - Added `use.latest.version` and `skip.known.types` (Protobuf) to
+   the Serializer classes. (Robert Yokota, #1133).
+ - `list_topics()` and `list_groups()` added to AdminClient.
+ - Added support for headers in the SerializationContext (Laurent Domenech-Cabaud)
+ - Fix crash in header parsing (Armin Ronacher, #1165)
+ - Added long package description in setuptools (Bowrna, #1172).
+ - Documentation fixes by Aviram Hassan and Ryan Slominski.
+ - Don't raise AttributeError exception when CachedSchemaRegistryClient
+   constructor raises a valid exception.
+
+  confluent-kafka-python is based on librdkafka v1.8.2, see the
+  [librdkafka release notes](https://github.com/edenhill/librdkafka/releases/tag/v1.8.2)
+  for a complete list of changes, enhancements, fixes and upgrade considerations.
+  **Note**: There were no v1.8.0 and v1.8.1 releases.
+  ## Upgrade considerations
+  ### Protobuf serialization format changes
+  Prior to this version the confluent-kafka-python client had a bug where
+  nested protobuf schemas indexes were incorrectly serialized, causing
+  incompatibility with other Schema-Registry protobuf consumers and producers.
+
+  This has now been fixed, but since the old defect serialization and the new
+  correct serialization are mutually incompatible the user of
+  confluent-kafka-python will need to make an explicit choice which
+  serialization format to use during a transitory phase while old producers and
+  consumers are upgraded.
+
+  The `ProtobufSerializer` and `ProtobufDeserializer` constructors now
+  both take a (for the time being) configuration dictionary that requires
+  the `use.deprecated.format` configuration property to be explicitly set.
+
+  Producers should be upgraded first and as long as there are old (<=v1.7.0)
+  Python consumers reading from topics being produced to, the new (>=v1.8.2)
+  Python producer must be configured with `use.deprecated.format` set to `True`.
+
+  When all existing messages in the topic have been consumed by older consumers
+  the consumers should be upgraded and both new producers and the new consumers
+  must set `use.deprecated.format` to `False`.
+
+  The requirement to explicitly set `use.deprecated.format` will be removed
+  in a future version and the setting will then default to `False` (new format).
+
+-------------------------------------------------------------------
+Sat Oct 30 20:34:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Add error_cb to confluent_cloud.py example
+  * Clarify that doc output varies based on method
+  * Docs say Schema when they mean SchemaReference
+  * Add documentation for NewTopic and NewPartitions
+
+-------------------------------------------------------------------
+Mon Apr 26 09:12:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.1:
+  * KIP-429 - Incremental consumer rebalancing support.
+  * OAUTHBEARER support.
+  * Add return_record_name=True to AvroDeserializer
+  * Fix deprecated schema.Parse call
+  * Make reader schema optional in AvroDeserializer
+  * Add **kwargs to legacy AvroProducer and AvroConsumer constructors to
+  * support all Consumer and Producer base class constructor arguments, such
+  * as logger
+  * Add bool for permanent schema delete
+  * The avro package is no longer required for Schema-Registry support
+  * Only write to schema cache once, improving performance
+  * Improve Schema-Registry error reporting
+  * producer.flush() could return a non-zero value without hitting the specified timeout.
+  * Bundles librdkafka v1.6.0 which adds support for Incremental rebalancing,
+  * Sticky producer partitioning, Transactional producer scalabilty improvements,
+  * and much much more. See link to release notes below.
+  * Rename asyncio.py example to avoid circular import
+  * The Linux wheels are now built with manylinux2010 (rather than manylinux1)
+  * since OpenSSL v1.1.1 no longer builds on CentOS 5. Older Linux distros may
+  * thus no longer be supported, such as CentOS 5.
+  * The in-wheel OpenSSL version has been updated to 1.1.1i.
+  * Added Message.latency() to retrieve the per-message produce latency.
+  * Added trove classifiers.
+  * Consumer destructor will no longer trigger consumer_close(),
+  * consumer.close() must now be explicitly called if the application
+  * wants to leave the consumer group properly and commit final offsets.
+  * Fix PY_SSIZE_T_CLEAN warning
+  * Move confluent_kafka/ to src/ to avoid pytest/tox picking up the local dir
+  * Added producer.purge() to purge messages in-queue/flight
+  * Added AdminClient.list_groups() API
+  * Rename asyncio.py example to avoid circular import
+
+-------------------------------------------------------------------
+Tue Oct 13 07:18:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Bundles librdkafka v1.5.0 - see release notes for all enhancements and fixes.
+  * Dockerfile examples
+  * List offsets example
+  * confluent-kafka-python is based on librdkafka v1.5.0, see the librdkafka
+  release notes for a complete list of changes, enhancements, fixes and
+  upgrade considerations.
+- no-license-as-datafile.patch (obsolete, replaced by rm in %install)
+
+-------------------------------------------------------------------
+Thu Oct 31 09:17:20 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * confluent-kafka-python is based on librdkafka v1.1.0, see the librdkafka v1.1.0 release notes for a complete list of changes, enhancements, fixes and upgrade considerations.
+
+  * ssl.endpoint.identification.algorithm=https (off by default) to validate the broker hostname matches the certificate. Requires OpenSSL >= 1.0.2(included with Wheel installations))
+  * Improved GSSAPI/Kerberos ticket refresh
+  * Confluent monitoring interceptor package bumped to v0.11.1 (#634)
+
+  New configuration properties:
+
+  * ssl.key.pem - client's private key as a string in PEM format
+  * ssl.certificate.pem - client's public key as a string in PEM format
+  * enable.ssl.certificate.verification - enable(default)/disable OpenSSL's builtin broker certificate verification.
+  * enable.ssl.endpoint.identification.algorithm - to verify the broker's hostname with its certificate (disabled by default).
+  * Add new rd_kafka_conf_set_ssl_cert() to pass PKCS#12, DER or PEM certs in (binary) memory form to the configuration object.
+  * The private key data is now securely cleared from memory after last use.
+
+  * SASL GSSAPI/Kerberos: Don't run kinit refresh for each broker, just per client instance.
+  * SASL GSSAPI/Kerberos: Changed sasl.kerberos.kinit.cmd to first attempt ticket refresh, then acquire.
+  * SASL: Proper locking on broker name acquisition.
+  * Consumer: max.poll.interval.ms now correctly handles blocking poll calls, allowing a longer poll timeout than the max poll interval.
+  * configure: Fix libzstd static lib detection
+
+-------------------------------------------------------------------
+Thu Nov 29 09:10:08 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 0.11.6)

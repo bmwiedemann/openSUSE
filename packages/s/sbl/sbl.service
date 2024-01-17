@@ -1,0 +1,11 @@
+[Unit]
+Description=suse-blinux
+Wants=network.target brld.service
+After=network.target brld.service
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/sbl
+
+[Install]
+WantedBy=multi-user.target

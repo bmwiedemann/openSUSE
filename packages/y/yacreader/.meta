@@ -1,0 +1,5 @@
+<package name="yacreader" project="openSUSE:Factory">
+  <title>YACReader</title>
+  <description>The best way for reading your comics.</description>
+  <devel project="multimedia:apps" package="yacreader"/>
+</package>

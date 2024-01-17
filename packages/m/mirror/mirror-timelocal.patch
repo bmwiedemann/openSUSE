@@ -1,0 +1,13 @@
+Index: mirror-2.9/dateconv.pl
+===================================================================
+--- mirror-2.9.orig/dateconv.pl
++++ mirror-2.9/dateconv.pl
+@@ -47,7 +47,7 @@ sub lstime_to_standard
+ }
+ 
+ 
+-require 'timelocal.pl';
++use Time::Local;
+ package dateconv;
+ 
+ # Use timelocal rather than gmtime.

@@ -1,0 +1,30 @@
+# Macros for erlang-rebar module building.
+#
+# Copyright: (c) 2013 Sascha Peilicke <saschpe@gmx.de>
+#
+
+# SUSE-style macros:
+
+%__rebar_vsn_cache_file %{_builddir}/vsn_cache_file
+%__rebar       /usr/bin/rebar
+
+%rebar_set_vsn_cache(v:p:) \
+REBAR_VSN_CACHE_FILE="%{__rebar_vsn_cache_file}" ; export REBAR_VSN_CACHE_FILE ; \
+echo "{{%{-v:%{-n*}}%{!-n:git}, \\"%{-p:%{-p*}}%{!-p:$PWD}\\"}, \\"%1\\"}." >> $REBAR_VSN_CACHE_FILE \
+%{nil}
+
+%rebar() \
+CFLAGS="${CFLAGS:-%optflags}" ; export CFLAGS ; \
+CXXFLAGS="${CXXFLAGS:-%optflags}" ; export CXXFLAGS ; \
+FFLAGS="${FFLAGS:-%optflags}" ; export FFLAGS ; \
+REBAR_DEPS_PREFER_LIBS=1 ; export REBAR_DEPS_PREFER_LIBS ; \
+%{__rebar} %* \
+%{nil}
+
+%rebar_compile() \
+%{rebar} compile -v %* \
+%{nil}
+
+# Fedora compat:
+
+%__rebar_compile %{rebar_compile}

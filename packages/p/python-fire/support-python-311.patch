@@ -1,0 +1,14 @@
+Index: fire-0.5.0/fire/test_components_py3.py
+===================================================================
+--- fire-0.5.0.orig/fire/test_components_py3.py
++++ fire-0.5.0/fire/test_components_py3.py
+@@ -57,8 +57,7 @@ def lru_cache_decorated(arg1):
+ 
+ class WithAsyncio(object):
+ 
+-  @asyncio.coroutine
+-  def double(self, count=0):
++  async def double(self, count=0):
+     return 2 * count
+ 
+ 

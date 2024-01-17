@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Mon Oct 17 12:04:35 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.11.0:
+  - New: `before_and_after` from `more_itertools` (#111)
+  - Removed: `loop` parameter is now removed from asyncio functions (#136)
+  - Docs: fixed docstring for `builtins.max` (#107)
+  - Docs: can now be built without installing package (#135)
+  - Python: Added support for Python 3.11 (#133)
+  - Python: Deprecated support for Python 3.6, to be removed in 0.12.0
+- from version 0.10.0:
+  - New `as_generated()` function for consuming multiple iterables (#99)
+- from version 0.10.0b1:
+  - New `as_generated()` function for consuming multiple iterables (#99)
+- from version 0.9.0:
+  - Python 3.10 support (#84, #97)
+  - Fixed: `as_completed()` will now cancel pending tasks when the timeout
+    threshold has been reached.
+  - Fixed: `zip()` will now gather all tasks correctly when exceptions are
+    raised, resulting in no pending tasks being unawaited.
+  - DEPRECATED: `loop` parameters to asyncio functions are ignored, and will
+    be removed entirely in v0.11.0. This is for 3.10 compatibility, as well
+    as to follow common practice and guidance around asyncio.
+- Drop patches for issues fixed upstream
+  - aioitertools-remove-loop.patch
+- Switch build system to pyproject.toml
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
+Thu Jan  6 22:21:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add aioitertools-remove-loop.patch for python310 compatibility
+  gh#omnilib/aioitertools#84
+
+-------------------------------------------------------------------
+Tue Aug 17 10:11:54 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.8.0:
+  - Added `builtins.any()` and `builtins.all()` (#44)
+  - `builtins.next()` takes an optional `default` parameter (#40, #41)
+  - `asyncio.gather()` now handles cancellation (#64)
+  - Better exception handling in `itertools.tee()` (#47)
+  - Removed dependency on typing_extensions for Python 3.8 and newer (#49)
+  - Improved documentation and formatting
+- Drop patches for issues fixed upstream
+  - stdlib-typing_extensions.patch
+
+-------------------------------------------------------------------
+Thu May 13 17:58:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.7.1:
+  - Fix groupby() not working with empty iterables (#39)
+- Add stdlib-typing_extensions.patch making typing_extensions
+  package just an optional requirement (gh#omnilib/aioitertools#49).
+
+-------------------------------------------------------------------
+Fri Jul  3 13:03:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Initial packaging (v0.7.0)

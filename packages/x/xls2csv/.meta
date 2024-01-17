@@ -1,0 +1,7 @@
+<package name="xls2csv" project="openSUSE:Factory">
+  <title>A script that recodes a spreadsheet's charset and saves as CSV</title>
+  <description>This script will recode a spreadsheet into a different character set and output the recoded data as a csv file.
+The script came about after many headaches from dealing with Excel spreadsheets from clients that were being received in various character sets.</description>
+  <devel project="Publishing" package="xls2csv"/>
+  <url>http://search.cpan.org/~ken/xls2csv-1.06/script/xls2csv</url>
+</package>

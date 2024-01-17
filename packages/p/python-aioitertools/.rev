@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9bddb46f62945efb9b8273d480781c5d</srcmd5>
+    <version>0.7.0</version>
+    <time>1595272133</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>821957</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>38ed2a394354d29f622148a518c5de0c</srcmd5>
+    <version>0.7.1</version>
+    <time>1620937129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  - Fix groupby() not working with empty iterables (#39)
+- Add stdlib-typing_extensions.patch making typing_extensions
+  package just an optional requirement (gh#omnilib/aioitertools#49).
+</comment>
+    <requestid>892943</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>de26604c002d25803bd6dc5d64a1cc06</srcmd5>
+    <version>0.8.0</version>
+    <time>1630182563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914749</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cdcbb92cf2a6173c2d52fbd5912130d6</srcmd5>
+    <version>0.8.0</version>
+    <time>1641555976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944565</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>69284b2ca03fc469e68351a5dfd338ae</srcmd5>
+    <version>0.11.0</version>
+    <time>1666011521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.0:
+  - New: `before_and_after` from `more_itertools` (#111)
+  - Removed: `loop` parameter is now removed from asyncio functions (#136)
+  - Docs: fixed docstring for `builtins.max` (#107)
+  - Docs: can now be built without installing package (#135)
+  - Python: Added support for Python 3.11 (#133)
+  - Python: Deprecated support for Python 3.6, to be removed in 0.12.0
+- from version 0.10.0:
+  - New `as_generated()` function for consuming multiple iterables (#99)
+- from version 0.10.0b1:
+  - New `as_generated()` function for consuming multiple iterables (#99)
+- from version 0.9.0:
+  - Python 3.10 support (#84, #97)
+  - Fixed: `as_completed()` will now cancel pending tasks when the timeout
+    threshold has been reached.
+  - Fixed: `zip()` will now gather all tasks correctly when exceptions are
+    raised, resulting in no pending tasks being unawaited.
+  - DEPRECATED: `loop` parameters to asyncio functions are ignored, and will
+    be removed entirely in v0.11.0. This is for 3.10 compatibility, as well
+    as to follow common practice and guidance around asyncio.
+- Drop patches for issues fixed upstream
+  - aioitertools-remove-loop.patch
+- Switch build system to pyproject.toml
+- Update BuildRequires from pyproject.toml (forwarded request 1012078 from glaubitz)</comment>
+    <requestid>1012087</requestid>
+  </revision>
+</revisionlist>
