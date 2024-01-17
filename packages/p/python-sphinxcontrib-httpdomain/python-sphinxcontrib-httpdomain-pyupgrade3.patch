@@ -1,0 +1,109 @@
+Index: httpdomain-1.8.1/sphinxcontrib/autohttp/bottle.py
+===================================================================
+--- httpdomain-1.8.1.orig/sphinxcontrib/autohttp/bottle.py
++++ httpdomain-1.8.1/sphinxcontrib/autohttp/bottle.py
+@@ -93,8 +93,7 @@ class AutobottleDirective(Directive):
+                 continue
+             
+             docstring = prepare_docstring(docstring)
+-            for line in http_directive(method, path, docstring):
+-                yield line
++            yield from http_directive(method, path, docstring)
+ 
+     def run(self):
+         node = nodes.section()
+Index: httpdomain-1.8.1/sphinxcontrib/autohttp/common.py
+===================================================================
+--- httpdomain-1.8.1.orig/sphinxcontrib/autohttp/common.py
++++ httpdomain-1.8.1/sphinxcontrib/autohttp/common.py
+@@ -9,8 +9,8 @@
+ 
+ """
+ import six
+-from six.moves import builtins
+-from six.moves import reduce
++import builtins
++from functools import reduce
+ 
+ def import_object(import_name):
+     module_name, expr = import_name.split(':', 1)
+@@ -24,10 +24,10 @@ def import_object(import_name):
+ 
+ def http_directive(method, path, content):
+     method = method.lower().strip()
+-    if isinstance(content, six.string_types):
++    if isinstance(content, str):
+         content = content.splitlines()
+     yield ''
+-    paths = [path] if isinstance(path, six.string_types) else path
++    paths = [path] if isinstance(path, str) else path
+     for path in paths:
+         yield '.. http:{method}:: {path}'.format(**locals())
+     yield ''
+Index: httpdomain-1.8.1/sphinxcontrib/autohttp/flask.py
+===================================================================
+--- httpdomain-1.8.1.orig/sphinxcontrib/autohttp/flask.py
++++ httpdomain-1.8.1/sphinxcontrib/autohttp/flask.py
+@@ -9,7 +9,6 @@
+     :license: BSD, see LICENSE for details.
+ 
+ """
+-from __future__ import absolute_import
+ 
+ import re
+ import itertools
+Index: httpdomain-1.8.1/sphinxcontrib/autohttp/flask_base.py
+===================================================================
+--- httpdomain-1.8.1.orig/sphinxcontrib/autohttp/flask_base.py
++++ httpdomain-1.8.1/sphinxcontrib/autohttp/flask_base.py
+@@ -90,7 +90,7 @@ def get_routes(app, endpoint=None, order
+     endpoints = []
+     for rule in app.url_map.iter_rules(endpoint):
+         url_with_endpoint = (
+-            six.text_type(next(app.url_map.iter_rules(rule.endpoint))),
++            str(next(app.url_map.iter_rules(rule.endpoint))),
+             rule.endpoint
+         )
+         if url_with_endpoint not in endpoints:
+@@ -126,9 +126,9 @@ def cleanup_methods(methods):
+ 
+ 
+ def quickref_directive(method, path, content, blueprint=None, auto=False):
+-    rcomp = re.compile("^\s*.. :quickref:\s*(?P<quick>.*)$")
++    rcomp = re.compile(r"^\s*.. :quickref:\s*(?P<quick>.*)$")
+     method = method.lower().strip()
+-    if isinstance(content, six.string_types):
++    if isinstance(content, str):
+         content = content.splitlines()
+     description = ""
+     name = ""
+@@ -154,7 +154,7 @@ def quickref_directive(method, path, con
+ 
+     row = {}
+     row['name'] = name
+-    row['operation'] = '      - `%s %s <#%s-%s>`_' % (
++    row['operation'] = '      - `{} {} <#{}-{}>`_'.format(
+         method.upper(), path, method.lower(), ref)
+     row['description'] = description
+ 
+@@ -311,5 +311,4 @@ class AutoflaskBase(Directive):
+                                              blueprint, auto=auto)
+                     yield row
+             else:
+-                for line in http_directive(method, paths, docstring):
+-                    yield line
++                yield from http_directive(method, paths, docstring)
+Index: httpdomain-1.8.1/sphinxcontrib/autohttp/tornado.py
+===================================================================
+--- httpdomain-1.8.1.orig/sphinxcontrib/autohttp/tornado.py
++++ httpdomain-1.8.1/sphinxcontrib/autohttp/tornado.py
+@@ -133,8 +133,7 @@ class AutoTornadoDirective(Directive):
+                 continue
+             
+             docstring = prepare_docstring(docstring)
+-            for line in http_directive(method, normalize_path(path), docstring):
+-                yield line
++            yield from http_directive(method, normalize_path(path), docstring)
+ 
+     def run(self):
+         node = nodes.section()

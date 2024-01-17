@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Mon May  8 03:06:29 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.52
+   see /usr/share/doc/packages/perl-PAR-Dist/Changes
+
+  0.52  2023-06-07
+
+  - change bugtracker to GitHub issues
+
+  - quote all version numbers in META.yml files in test *.par
+    files to avoid CPAN Testers failures like
+    http://www.cpantesters.org/cpan/report/973fa832-ec54-11ed-98b0-b3c3213a625c
+
+-------------------------------------------------------------------
+Tue Dec  1 03:13:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.51
+   see /usr/share/doc/packages/perl-PAR-Dist/Changes
+
+  0.51  2020-11-30
+
+  - Fix problem with Cwd::realpath()
+
+    Some versions of Cwd::realpath() must be called on an *existing* path,
+    otherwise they will return undef.
+
+-------------------------------------------------------------------
+Wed Nov 18 03:11:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.50
+   see /usr/share/doc/packages/perl-PAR-Dist/Changes
+
+-------------------------------------------------------------------
+Sat Jun  8 07:55:13 UTC 2013 - coolo@suse.com
+
+- updated to 0.49
+    * Fix RT #78194: PAR::Dist::parse_dist_name mis-parses par file name
+      Patch from KENO, thanks!
+
+-------------------------------------------------------------------
+Tue Nov 29 20:31:39 UTC 2011 - coolo@suse.com
+
+- update to 0.48
+   * Prefer MYMETA.yml over META.yml if possible.
+   * Try YAML implementations in different order (XS first).
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:36 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Sep  6 08:10:39 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Thu Aug 26 18:54:36 UTC 2010 - pascal.bleser@opensuse.org
+
+- rewrote auto-generated spec file
+- update to 0.47:
+  * POD fixes
+  * do not use Archive::Zip if its version is 1.28
+
+-------------------------------------------------------------------
+Sat Jul 25 19:41:18 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sat Jun 27 14:50:27 CEST 2009 - chris@computersalat.de
+
+- initial pkg 0.45
+

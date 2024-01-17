@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7667ded94b6b6754d97cb635a4c6a3e0</srcmd5>
+    <version>0.003</version>
+    <time>1324831183</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97588</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7667ded94b6b6754d97cb635a4c6a3e0</srcmd5>
+    <version>0.003</version>
+    <time>1340183950</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7667ded94b6b6754d97cb635a4c6a3e0</srcmd5>
+    <version>0.003</version>
+    <time>1359109844</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5ea0a723a802a1e35898857a8d4f99da</srcmd5>
+    <version>0.004</version>
+    <time>1371457011</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 179047 from coolo)</comment>
+    <requestid>179060</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5ea0a723a802a1e35898857a8d4f99da</srcmd5>
+    <version>0.004</version>
+    <time>1379663913</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>5ea0a723a802a1e35898857a8d4f99da</srcmd5>
+    <version>0.004</version>
+    <time>1409302562</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ecd80bb1cec29e09e78ad0b66785fcf7</srcmd5>
+    <version>1.003</version>
+    <time>1430165325</time>
+    <user>coolo</user>
+    <comment>- disable tesing 
+
+- updated to 1.003
+        - Fixed a bug where the module died when a network error occured
+        - Fixed the module and the tests to handle properly the case
+          when we reach the daily 10-pastes limit.
+        - Resurrected the module for use with App::Nopaste</comment>
+    <requestid>304116</requestid>
+  </revision>
+</revisionlist>

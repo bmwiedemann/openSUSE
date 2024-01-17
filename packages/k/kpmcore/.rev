@@ -1,0 +1,269 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c39466c0a81f9c474e793d912dd2f106</srcmd5>
+    <version>3.0.1</version>
+    <time>1485939069</time>
+    <user>dimstar_suse</user>
+    <comment>New package, needed by partitionmanager. Now version 3.0.1 and spec-cleaner ran.</comment>
+    <requestid>448710</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d9bd41e3d5ec03030df91c0bbcbf8025</srcmd5>
+    <version>3.0.3</version>
+    <time>1487260167</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455299</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a62bd36d5a47ec53f4ec6b4a48fab260</srcmd5>
+    <version>3.1.0</version>
+    <time>1496534452</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500767</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>77a4a1a51adb24fd1f84c966f0cf2604</srcmd5>
+    <version>3.1.1</version>
+    <time>1498046253</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505074</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ccfdcbd760e58fb3a49781a27a045cf</srcmd5>
+    <version>3.1.2</version>
+    <time>1499415429</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508417</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b9d0d146ca1f7468c89d87726d539a1e</srcmd5>
+    <version>3.2.0</version>
+    <time>1506956078</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner
+
+- Update to 3.2.0
+  * Added support for UDF file system (this change requires
+    util-linux 2.30). While adding support for UDF, the following
+    general improvements were made:
+    + KPM now supports setting label for file systems where it can
+      only be done during initial formating (e.g. nilfs2 or udf)
+    + File system label widget (QLineEdit) now validates its input
+      for certain file systems (at the moment only FAT and UDF),
+      not just maximum label length.
+  * Detection support for ISO9660 file system
+  * kpmcore now has lighter KDE Frameworks dependencies, KIO is no
+    longer necessary, KIconThemes dependency moved from kpmcore to
+    Partition Manager
+  * kpmcore now has its own fstab parser and writer. Before we
+    used to rely on glibc but it had no support for reading fstab
+    comments, etc.
+- Update build requirements</comment>
+    <requestid>530297</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>433bb4bf4638e210c38aba4fddce4faa</srcmd5>
+    <version>3.3.0</version>
+    <time>1513677429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557633</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>12acb177f4533a94e78c5d6f0290258a</srcmd5>
+    <version>3.3.0</version>
+    <time>1551024753</time>
+    <user>coolo</user>
+    <comment>- Use %license
+</comment>
+    <requestid>672268</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a14c3b447d56593e448fb1f3159c65cc</srcmd5>
+    <version>21.12.3</version>
+    <time>1646487845</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 21.12.3. Depends on SR#959235</comment>
+    <requestid>959253</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c91f35111372c5299ccddcc2d01d1819</srcmd5>
+    <version>21.12.3</version>
+    <time>1646848030</time>
+    <user>dimstar_suse</user>
+    <comment>Use %_libexecdir</comment>
+    <requestid>960094</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>337b593771a588d04a5fad7e447ac855</srcmd5>
+    <version>22.04.0</version>
+    <time>1650736015</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix soversion (forwarded request 972105 from wolfi323)</comment>
+    <requestid>972109</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>056be595cfa0a9ea0eb26a34502e4cfd</srcmd5>
+    <version>22.04.1</version>
+    <time>1652561771</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.1</comment>
+    <requestid>976840</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eec0a8a64bc0438136c38912ac2b3056</srcmd5>
+    <version>22.04.2</version>
+    <time>1655048360</time>
+    <user>dimstar_suse</user>
+    <comment>22.04.2 (forwarded request 981296 from cgiboudeaux)</comment>
+    <requestid>981719</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>75d3d699af6e67f653bebf1bf2431d4d</srcmd5>
+    <version>22.04.3</version>
+    <time>1657378931</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.3</comment>
+    <requestid>987652</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2bbb1d5871777b835c567b7a433bb79e</srcmd5>
+    <version>22.08.0</version>
+    <time>1660924510</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.0 (forwarded request 997667 from cgiboudeaux)</comment>
+    <requestid>997889</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>97339a042bf5f895c761dd016efbf889</srcmd5>
+    <version>22.08.1</version>
+    <time>1662740810</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.1</comment>
+    <requestid>1002080</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>86191775fd853dbd0d0f14e9bacbb65d</srcmd5>
+    <version>22.08.2</version>
+    <time>1665844586</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.08.2</comment>
+    <requestid>1010797</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>29982d2fda25b477256e0be40d704009</srcmd5>
+    <version>22.08.3</version>
+    <time>1667579793</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.3 (forwarded request 1032791 from cgiboudeaux)</comment>
+    <requestid>1033334</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0bd32dda9c35850e2e8b1478270d5539</srcmd5>
+    <version>22.12.0</version>
+    <time>1670601553</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.0 (forwarded request 1041224 from krop)</comment>
+    <requestid>1041541</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>50c7ea9c60258385e6b713a1997451d7</srcmd5>
+    <version>22.12.1</version>
+    <time>1673108325</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
+    <requestid>1056574</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>aa5f50afce208ca215be24c9b614c3b7</srcmd5>
+    <version>22.12.2</version>
+    <time>1675516482</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.2 (forwarded request 1062341 from krop)</comment>
+    <requestid>1062846</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9ed04849d2aca9776abf80119b85d515</srcmd5>
+    <version>22.12.3</version>
+    <time>1677878844</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
+    <requestid>1068873</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>10d35096cb7cd2b434fe681913788ba4</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282798</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
+    <requestid>1080667</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b4eb6d483d5bed08000dc8b84cdc0fc5</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916559</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086386</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e4d6326cce31b906616f2fe039502f86</srcmd5>
+    <version>23.04.2</version>
+    <time>1686335939</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.2 (forwarded request 1091225 from krop)</comment>
+    <requestid>1091611</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2ea54eab0628ea2f09fa73dd15d5e209</srcmd5>
+    <version>23.04.3</version>
+    <time>1688737624</time>
+    <user>favogt_factory</user>
+    <comment>KDE release gear 23.04.3 (forwarded request 1097054 from krop)</comment>
+    <requestid>1097322</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7021dfc112827157b137ef0899f5d438</srcmd5>
+    <version>23.08.0</version>
+    <time>1693482206</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.0 (forwarded request 1105409 from krop)</comment>
+    <requestid>1105753</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ae7eb4f51e4e8f90040ffaf32734b0b4</srcmd5>
+    <version>23.08.1</version>
+    <time>1694808140</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
+    <requestid>1111233</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c75cc7c97a7e7202547299c222db55c3</srcmd5>
+    <version>23.08.2</version>
+    <time>1697146825</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
+    <requestid>1117356</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>13a7d320701b4f5a8be3aad0abd4f664</srcmd5>
+    <version>23.08.3</version>
+    <time>1699615814</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.3 (forwarded request 1124079 from krop)</comment>
+    <requestid>1124618</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>80f4b1ab875b66bc50045303d1c657d6</srcmd5>
+    <version>23.08.4</version>
+    <time>1702158652</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
+    <requestid>1131911</requestid>
+  </revision>
+</revisionlist>

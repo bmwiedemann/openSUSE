@@ -1,0 +1,612 @@
+-------------------------------------------------------------------
+Tue Dec  5 14:20:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- No code change since 23.08.3
+
+-------------------------------------------------------------------
+Tue Nov  7 17:05:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- No code change since 23.08.2
+
+-------------------------------------------------------------------
+Tue Oct 10 18:27:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- No code change since 23.08.1
+
+-------------------------------------------------------------------
+Tue Sep 12 11:56:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- No code change since 23.08.0
+
+-------------------------------------------------------------------
+Sun Aug 20 13:59:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Fix reuse error.
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:11 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Remove slightly misleading comment.
+  * Add explicit moc includes to sources for moc-covered headers
+  * Fix building with Qt6.
+  * Obtain file system label from ID_FS_LABEL_ENC. (kde#471499)
+  * Use right kded interface in Plasma 6
+  * Fix undefined behaviour on 32-bit system.
+  * Improve human-friendliness and consistency of action text
+
+-------------------------------------------------------------------
+Tue Jul  4 10:20:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- No code change since 23.04.2
+
+-------------------------------------------------------------------
+Tue Jun  6 20:01:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- No code change since 23.04.1
+
+-------------------------------------------------------------------
+Tue May  9 10:47:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- No code change since 23.04.0
+
+-------------------------------------------------------------------
+Sat Apr 15 08:46:12 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:42:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:43:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Feb 28 09:46:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.3/
+
+-------------------------------------------------------------------
+Tue Jan 31 10:34:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.2/
+
+-------------------------------------------------------------------
+Tue Jan  3 10:20:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.1/
+
+-------------------------------------------------------------------
+Fri Dec  2 12:25:58 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.0/
+
+-------------------------------------------------------------------
+Sat Nov 26 16:45:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Nov 12 08:54:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Nov  1 11:21:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.3/
+
+-------------------------------------------------------------------
+Tue Oct 11 14:33:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.2/
+
+-------------------------------------------------------------------
+Tue Sep  6 15:20:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.1/
+
+-------------------------------------------------------------------
+Sun Aug 14 09:43:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.0/
+
+-------------------------------------------------------------------
+Fri Aug  5 12:11:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Jul 16 08:28:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Jul  5 17:03:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.3/
+
+-------------------------------------------------------------------
+Wed Jun  8 09:55:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.2/
+
+-------------------------------------------------------------------
+Tue May 10 16:30:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.1/
+
+-------------------------------------------------------------------
+Fri Apr 22 09:21:39 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Fix soversion
+
+-------------------------------------------------------------------
+Mon Apr 18 07:52:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:20:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * Fix infinite recursion in dummy backend. (kde#432704)
+  * Fix davfs entries being omitted from fstab file. (kde#447961)
+  * Add support for copying unknown partitions. (kde#447784)
+  * Switch to ntfsinfo to read NTFS usage. (kde#447248)
+  * Fix broken fstab when mount point includes space. (kde#446218)
+- Drop patches, now upstream:
+  * 0001-Add-new-job-to-change-permission-of-the-newly-create.patch
+  * 0001-Move-the-changePosixPermission-to-the-Filesystem.patch
+  * 0001-Add-posix-permissions-on-filesystems-used-in-posix-s.patch
+  * 0001-Allow-running-chmod-in-externalcommand-helper.patch
+  * 0001-Add-support-for-copying-unknown-partitions.patch
+  * 0001-Fix-davfs-entries-being-omitted-from-fstab-file.patch
+  * 0001-Changing-swap-labels-while-swap-is-active-does-not-s.patch
+  * 0001-Update-description-of-polkit-helper.patch
+  * 0001-Fix-a-typo-in-definition-of-MiB-constant.patch
+  * 0001-Set-false-as-the-default-return-value-and-change-it-.patch
+  * 0001-Add-a-few-more-comments-explaining-copy-direction.patch
+  * 0001-Rename-blockSize-to-chunkSize-to-avoid-confusion-wit.patch
+  * 0001-Restrict-CreateFile-method-to-WriteFstab-method-in-p.patch
+  * 0001-Rename-variables-into-more-appropriate-fstabPath-and.patch
+  * 0001-Add-a-comment-about-WriteOnly.patch
+
+-------------------------------------------------------------------
+Mon Mar  7 10:51:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %_libdir/libexec with %_libexecdir (boo#1174075)
+
+-------------------------------------------------------------------
+Wed Mar  2 09:26:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Do not repeatedly open and close file when reading from it.
+  * Do not repeatedly open and close file when writing to it.
+  * Make sure that path passed to WriteData is block device.
+  * Restrict CopyFileData to writing to already existing files.
+  * Rename CopyBlocks to CopyFileData.
+  * Check for relative paths in ExternalCommandHelper::CopyBlocks.
+  * Restrict QProcess::ProcessChannelMode to two used values.
+  * Be a bit more strict in root helper when checking path to /etc/fstab.
+- Drop patches, now upstream:
+  * 0001-Do-not-repeatedly-open-and-close-file-when-reading-f.patch
+  * 0001-Do-not-repeatedly-open-and-close-file-when-writing-t.patch
+  * 0001-Make-sure-that-path-passed-to-WriteData-is-block-dev.patch
+  * 0001-Restrict-CopyFileData-to-writing-to-already-existing.patch
+  * 0001-Rename-CopyBlocks-to-CopyFileData.patch
+  * 0001-Check-for-relative-paths-in-ExternalCommandHelper-Co.patch
+  * 0001-Restrict-QProcess-ProcessChannelMode-to-two-used-val.patch
+  * 0001-Be-a-bit-more-strict-in-root-helper-when-checking-pa.patch
+
+-------------------------------------------------------------------
+Thu Feb 24 11:13:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Backport more upstream changes:
+  *  0001-Restrict-CreateFile-method-to-WriteFstab-method-in-p.patch
+  *  0001-Add-a-comment-about-WriteOnly.patch
+  *  0001-Add-a-few-more-comments-explaining-copy-direction.patch
+  *  0001-Set-false-as-the-default-return-value-and-change-it-.patch
+  *  0001-Rename-blockSize-to-chunkSize-to-avoid-confusion-wit.patch
+  *  0001-Fix-a-typo-in-definition-of-MiB-constant.patch
+  *  0001-Rename-variables-into-more-appropriate-fstabPath-and.patch
+
+-------------------------------------------------------------------
+Wed Feb  9 12:18:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Backport upstream changes to address security issues
+  (contributes to boo#1178848)
+  *  0001-Add-new-job-to-change-permission-of-the-newly-create.patch
+  *  0001-Move-the-changePosixPermission-to-the-Filesystem.patch
+  *  0001-Add-posix-permissions-on-filesystems-used-in-posix-s.patch
+  *  0001-Allow-running-chmod-in-externalcommand-helper.patch
+  *  0001-Add-support-for-copying-unknown-partitions.patch
+  *  0001-Fix-davfs-entries-being-omitted-from-fstab-file.patch
+  *  0001-Changing-swap-labels-while-swap-is-active-does-not-s.patch
+  *  0001-Be-a-bit-more-strict-in-root-helper-when-checking-pa.patch
+  *  0001-Restrict-QProcess-ProcessChannelMode-to-two-used-val.patch
+  *  0001-Check-for-relative-paths-in-ExternalCommandHelper-Co.patch
+  *  0001-Rename-CopyBlocks-to-CopyFileData.patch
+  *  0001-Restrict-CopyFileData-to-writing-to-already-existing.patch
+  *  0001-Make-sure-that-path-passed-to-WriteData-is-block-dev.patch
+  *  0001-Do-not-repeatedly-open-and-close-file-when-writing-t.patch
+  *  0001-Do-not-repeatedly-open-and-close-file-when-reading-f.patch
+  *  0001-Update-description-of-polkit-helper.patch
+
+-------------------------------------------------------------------
+Sat Feb  5 09:12:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Fix infinite recursion in dummy backend. (kde#432704)
+
+-------------------------------------------------------------------
+Thu Jan 13 08:58:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.08.3:
+  * Fix broken fstab when mount point includes space. (kde#446218)
+  * Fix seek error when filling device with random data or zeroes.
+  * Do not destroy zfs pool when removing zfs partition.
+  * Bump minimal cmake version to 3.16
+  * Initialize all fields in Partition
+  * Clear attributes on new partition creation
+
+-------------------------------------------------------------------
+Sat Nov 13 16:52:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- No code change since 21.08.1
+
+-------------------------------------------------------------------
+Mon Sep  6 06:05:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- No code change since 21.08.0
+
+-------------------------------------------------------------------
+Fri Aug  6 14:18:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.04.2
+
+-------------------------------------------------------------------
+Fri Jun 25 08:50:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- No code change since 21.04.1
+
+-------------------------------------------------------------------
+Wed May 19 13:43:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.1
+- No code change since 21.04.0
+- Use GCC 10 on Leap
+
+-------------------------------------------------------------------
+Tue Apr 20 15:21:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+
+-------------------------------------------------------------------
+Tue Oct 27 13:32:06 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 4.2.0
+  * KAuth helper replaced with pure PolkitQt1 helper
+  * KDE Partition Manager (including KPMcore library) is now fully
+    REUSE 3.0 compliant
+  * Support for partitions with unknown file system
+  * Fixed and improved mount point and /etc/fstab handling
+  * Fixed a crash that was present for a long time but hard to
+    reproduce reliably
+  * KPMcore gained support for GPT partition attributes (It is not
+    yet wired in KDE Partition Manager)
+  * KPMcore has more support for setting GPT partition label and
+    UUID (Again, not yet wired in KDE Partition Manager)
+  * Port away from various deprecated Qt/KDE methods
+  * Workaround bad JSON output from sfdisk (will be fixed in
+    util-linux 2.37).
+  * Import partition flags when importing partition table
+  * Apply colour scheme to secondary (MBR logical) partitions
+
+-------------------------------------------------------------------
+Thu Aug 27 12:36:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %cmake_build instead of %make_jobs
+
+-------------------------------------------------------------------
+Mon Feb 10 09:01:08 UTC 2020 - wbauer@tmo.at
+
+- Update to 4.1.0
+  * Support for Minix file system
+  * Initial support for file system specific features although it's
+    not exposed via KDE Partition Manager GUI yet
+  * Some bug fixes, in particular Calamares installer should work
+    better than with 4.0
+
+-------------------------------------------------------------------
+Mon Oct  7 10:05:58 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.0.1
+  * Do not align partitions if they are mounted, moving data when
+    partitions are mounted is almost guaranteed to cause data loss
+    (kde#412575)
+
+-------------------------------------------------------------------
+Fri May 24 20:29:12 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.0.0
+  * Ported to KAuth to let the GUI run as unprivileged user
+  * KPMcore backend was ported away from libparted to sfdisk (part
+    of util-linux)
+  * Ported S.M.A.R.T. code away from unmaintained libatasmart to
+    smartmontools
+  * Better support for LUKS2
+  * Detection support for Apple's APFS filesystem and Microsoft's
+    Bitlocker
+  * Many of the KPMcore classes now use d-pointers, which in the
+    future releases will help us to maintain binary compatibility
+    (ABI) a bit better
+  * Use more modern C++ features
+  * Some bugfixes, in particular related to LVM
+- Relax versioned requirements to not violate the SLPP
+
+-------------------------------------------------------------------
+Tue Oct 16 19:40:49 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use %license
+
+-------------------------------------------------------------------
+Fri Dec 15 18:15:44 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.3.0
+  * some improvements for Btrfs, F2FS, NTFS file systems
+  * first bits of new LUKS2 on-disk format support, now KDE
+    Partition Manager can display LUKS2 labels. More LUKS2 work
+    will follow in KPM 3.4.
+  * There were changes in how LVM devices are detected which might
+    be interesting if you use Calamares installer. In that case,
+    you also need at least Calamares 3.1.8. Older versions will not
+    compile against KPMcore 3.3.
+  * KPMcore library now only depends on just three Tier 1
+    Frameworks (I18n, CoreAddons, WidgetsAddons) instead of Tier 3
+    (although, we will later require Tier 2 KAuth too)
+- Drop fix-build-with-older-parted.patch, it cannot be built on
+  Leap 42 anymore anyway because it needs newer Qt5 and blkid
+
+-------------------------------------------------------------------
+Sun Oct  1 18:25:52 UTC 2017 - fabian@ritter-vogt.de
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Oct  1 12:03:27 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.2.0
+  * Added support for UDF file system (this change requires
+    util-linux 2.30). While adding support for UDF, the following
+    general improvements were made:
+    + KPM now supports setting label for file systems where it can
+      only be done during initial formating (e.g. nilfs2 or udf)
+    + File system label widget (QLineEdit) now validates its input
+      for certain file systems (at the moment only FAT and UDF),
+      not just maximum label length.
+  * Detection support for ISO9660 file system
+  * kpmcore now has lighter KDE Frameworks dependencies, KIO is no
+    longer necessary, KIconThemes dependency moved from kpmcore to
+    Partition Manager
+  * kpmcore now has its own fstab parser and writer. Before we
+    used to rely on glibc but it had no support for reading fstab
+    comments, etc.
+- Update build requirements
+
+-------------------------------------------------------------------
+Wed Jul  5 15:22:01 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.1.2
+  * Fix a possible null pointer dereference when glibc's getlogin
+    function failed to return username of current user
+
+-------------------------------------------------------------------
+Mon Jun 19 14:03:29 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.1.1
+  * Disables plasma removable device automounting before doing any
+    tasks.
+
+-------------------------------------------------------------------
+Fri Jun  2 12:16:24 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.1.0
+  * Fix some crashes when attempting to run without admin
+    privileges
+  * Improve support for changing file system labels online
+  * Fix creation of LUKS volumes on some systems with NVMe disks
+  * Require Qt 5.7
+  * Detect Virtio KVM devices
+- Remove INSTALL file from the package to fix an rpmlint warning
+
+-------------------------------------------------------------------
+Sun Feb  5 22:34:16 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.3
+  * some fixes for LUKS encrypted LVM logical volumes
+
+-------------------------------------------------------------------
+Fri Jan  6 18:58:22 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.2
+  * some "used space" fixes that are essential for Calamares
+
+-------------------------------------------------------------------
+Wed Jan  4 12:09:33 UTC 2017 - fabian@ritter-vogt.de
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan  2 13:37:44 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.1
+  * fixes a bug in partition resizing widget that might lead to a
+    data loss
+
+-------------------------------------------------------------------
+Mon Dec 19 17:46:05 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 3.0.0
+- Update fix-build-with-older-parted.patch
+
+-------------------------------------------------------------------
+Fri Aug 26 13:44:28 UTC 2016 - wbauer@tmo.at
+
+- Update to 2.2.1
+- Adjust build requirements
+- Add fix-build-with-older-parted.patch to fix build on 13.2 and
+  Leap 42
+- Remove fix-build.diff, it's not needed anymore
+
+-------------------------------------------------------------------
+Sun Jun 19 06:53:18 UTC 2016 - jacobwinski@gmail.com
+
+- Update to 2.2.0.
+- Update shared library name in spec file to reflect SONAME.
+- Update spec description to fix desc shorter than summary error.
+- Update patch so that it applies to new version.
+
+-------------------------------------------------------------------
+Sun Apr  3 17:16:49 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 2.1.1
+
+-------------------------------------------------------------------
+Mon Jan 18 09:47:54 UTC 2016 - tittiatcoke@gmail.com
+
+- Initial version 2.0.0
+

@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Feb 24 20:35:21 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.0
+  * default to colours/formatting based on whether output is a TTY
+  * add verbose option to show all bytes (and not omit repeated
+    lines)
+  * add -h as an option to show usage
+  * fix misaligned output in case -w width doesn't divide BUFSIZ
+  * fix downcasting issue from off_t to a potentially smaller size
+
+-------------------------------------------------------------------
+Sat Feb 17 12:50:07 UTC 2018 - aloisio@gmx.com
+
+- Update to version 1.0.0 (no upstream changelog)
+
+- Switched to official tarball source and removed _service
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Mon Jun  5 16:48:47 UTC 2017 - mardnh@gmx.de
+
+- initial package, version 0.0.0+git.20170527

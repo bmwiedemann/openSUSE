@@ -1,0 +1,14 @@
+## Type: string
+## Default: "/etc/actkbd.conf"
+# Path to actkbd configuration file
+ACTKBD_CONFIG="/etc/actkbd.conf"
+
+## Type: string
+## Default: ""
+# Device we are wanting to listen on keypresses.
+# Usually we want just one device to control this (remote/...)
+# Check your /dev/input/event*
+# For testing purposes and to detect key-press values use:
+#  # actkbd -s -d /dev/input/event<MYDEVICENUMBER>
+# This variable must be populated for the daemon to work.
+ACTKBD_DEVICE=""

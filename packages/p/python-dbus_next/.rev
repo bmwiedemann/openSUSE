@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>885d8a100bf3b84612200731c3398a32</srcmd5>
+    <version>0.2.3</version>
+    <time>1632939557</time>
+    <user>dimstar_suse</user>
+    <comment>I want to update qtile package for opensuse, but need this package as a &quot;BuildRequires&quot; dependency to run test for qtile WM package in OBS.
+Update qtile package: https://build.opensuse.org/package/show/home:nyslay/qtile</comment>
+    <requestid>922206</requestid>
+  </revision>
+</revisionlist>

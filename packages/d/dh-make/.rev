@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>957c1a9b1051294f5985b5f84d3c9058</srcmd5>
+    <version>0.61</version>
+    <time>1349720888</time>
+    <user>coolo</user>
+    <comment>split the deb package. See http://lists.opensuse.org/opensuse-factory/2012-06/msg00963.html for context.
+Resubmit with License fix</comment>
+    <requestid>137271</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>957c1a9b1051294f5985b5f84d3c9058</srcmd5>
+    <version>0.61</version>
+    <time>1359108809</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>957c1a9b1051294f5985b5f84d3c9058</srcmd5>
+    <version>0.61</version>
+    <time>1379662223</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>957c1a9b1051294f5985b5f84d3c9058</srcmd5>
+    <version>0.61</version>
+    <time>1409300760</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d00381203dbc370e58cce04ee39f6a09</srcmd5>
+    <version>1.20140617</version>
+    <time>1421333920</time>
+    <user>dimstar_suse</user>
+    <comment>- Remember to mention dh-make-rpmlintrc in spec
+
+- Update to version 1.20140617
+  + New numbering scheme
+  + Updated to standards version 3.9.5 Closes: #748336
+  + fix lintian &quot;vcs-field-not-canonical&quot; warning Closes: #750005
+  + Update dh7 rules for dpkg &gt;= 1.16.1 Closes: #737520
+  + Remove redundant section in control Closes: #743223
+  + Added misc:depends to library control Closes: #702835
+  + Update template to use dh compat 9 Closes: #730741</comment>
+    <requestid>281089</requestid>
+  </revision>
+</revisionlist>

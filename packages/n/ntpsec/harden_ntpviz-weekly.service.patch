@@ -1,0 +1,21 @@
+Index: ntpsec-1.2.1/etc/ntpviz-weekly.service
+===================================================================
+--- ntpsec-1.2.1.orig/etc/ntpviz-weekly.service
++++ ntpsec-1.2.1/etc/ntpviz-weekly.service
+@@ -4,6 +4,16 @@ Description=Graph weekly information for
+ Requisite=ntpd.service
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++# end of automatic additions 
+ Type=simple
+ IOSchedulingClass=idle
+ ExecStart=@BINDIR@/ntpviz -w l -p 7 -o /var/www/localhost/htdocs/week

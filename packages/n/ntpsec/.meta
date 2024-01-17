@@ -1,0 +1,8 @@
+<package name="ntpsec" project="openSUSE:Factory">
+  <title>Improved implementation of Network Time Protocol</title>
+  <description>A more secure NTP. Derived from NTP Classic, Dave Mills’s original.
+
+</description>
+  <devel project="network:time" package="ntpsec"/>
+  <url>https://www.ntpsec.org/</url>
+</package>

@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e140d6fd520e3b57eda85d3ef8ffca0</srcmd5>
+    <version>1.11.3</version>
+    <time>1573772227</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748474</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2dd7cec3040cb3b235850f9548d34e44</srcmd5>
+    <version>1.11.3</version>
+    <time>1575282900</time>
+    <user>dimstar_suse</user>
+    <comment>increase memory constraint</comment>
+    <requestid>752787</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>60eddbdd9ce88456fa22078fafb3a5ef</srcmd5>
+    <version>1.11.3</version>
+    <time>1648159063</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964403</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7ecfd4507bbf7cf8c4c0dcc2b8b88015</srcmd5>
+    <version>1.11.3</version>
+    <time>1648665362</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone JavaEE inconditionally</comment>
+    <requestid>965937</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3d48415dba27743cd64535f410510dd8</srcmd5>
+    <version>1.11.3</version>
+    <time>1649274690</time>
+    <user>dimstar_suse</user>
+    <comment>Double the stack size for javadoc</comment>
+    <requestid>967119</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>6842dca9ef03d04e3be90a7fc28afeb4</srcmd5>
+    <version>1.11.3</version>
+    <time>1651784832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975159</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>65388098cb51cedf9f4cacabfb5de748</srcmd5>
+    <version>1.11.3</version>
+    <time>1653417213</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>978874</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>985e553fac70820bf013546773a10b58</srcmd5>
+    <version>1.11.3</version>
+    <time>1694630637</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1110608</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>d205b1d6d12f751b445a71455e14707f</srcmd5>
+    <version>1.11.3</version>
+    <time>1695209363</time>
+    <user>dimstar_suse</user>
+    <comment>Explicitely require maven-javadoc-plugin</comment>
+    <requestid>1112228</requestid>
+  </revision>
+</revisionlist>

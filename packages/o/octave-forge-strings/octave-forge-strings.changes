@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Oct 19 06:44:46 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.3.1:
+  * Update for pcre detection when no pkg-config available
+  * Bugfix pcregexp memory leaks
+
+-------------------------------------------------------------------
+Fri Jul  8 17:50:11 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.3.0:
+  * Update package to compile in GNU Octave 5+
+  * Add detection and use of pcre2 if available
+
+-------------------------------------------------------------------
+Thu Mar  7 18:10:46 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with current octave versions:
+  Substitute gripes.h -> errwarn.h, functions gripe_* -> err_*
+
+-------------------------------------------------------------------
+Tue Jun  9 19:20:26 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 1.2.0
+  * The following functions have been removed since they are part
+    of Octave core since 3.8: strjoin, strsort (use sort)
+  * The function editdistance has been almost rewritten and will
+    perform much faster.
+  * Compatibility with Octave 4.0.0.
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 1.1.0
+

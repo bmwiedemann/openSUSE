@@ -1,0 +1,5 @@
+<package name="python-interrogate" project="openSUSE:Factory">
+  <title></title>
+  <description>Interrogate a codebase for docstring coverage</description>
+  <devel project="devel:languages:python" package="python-interrogate"/>
+</package>

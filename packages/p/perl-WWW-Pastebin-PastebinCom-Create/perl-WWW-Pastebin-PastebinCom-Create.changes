@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Apr 27 05:17:56 UTC 2015 - coolo@suse.com
+
+- disable tesing 
+
+-------------------------------------------------------------------
+Sun Feb  9 13:34:25 UTC 2014 - coolo@suse.com
+
+- updated to 1.003
+        - Fixed a bug where the module died when a network error occured
+        - Fixed the module and the tests to handle properly the case
+          when we reach the daily 10-pastes limit.
+        - Resurrected the module for use with App::Nopaste
+
+-------------------------------------------------------------------
+Sat Jun 15 06:13:45 UTC 2013 - coolo@suse.com
+
+- updated to 0.004
+  Fixed an error in one of the test files
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:06 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Nov 26 22:11:25 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.003)
+
