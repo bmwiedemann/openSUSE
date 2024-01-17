@@ -1,7 +1,7 @@
 #
 # spec file for package xwayland
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        23.2.2
+Version:        23.2.4
 Release:        0
 URL:            http://xorg.freedesktop.org
 Summary:        Xwayland Xserver
@@ -33,10 +33,6 @@ Group:          System/X11/Servers/XF86_4
 Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
 Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
-
-Patch1217765:   U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
-Patch1217766:   U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch
-
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
