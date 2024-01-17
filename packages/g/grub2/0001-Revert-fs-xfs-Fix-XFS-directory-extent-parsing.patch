@@ -1,0 +1,107 @@
+From 664a8569c5c8c101879b384dbdaa81dc38cf2f68 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 17 Jan 2024 11:23:35 +0800
+Subject: [PATCH] Revert "fs/xfs: Fix XFS directory extent parsing"
+
+This reverts commit 07318ee7e11a00b9c1dea4c6b4edf62af35a511a.
+---
+ grub-core/fs/xfs.c | 52 +++++++++++++---------------------------------
+ 1 file changed, 14 insertions(+), 38 deletions(-)
+
+diff --git a/grub-core/fs/xfs.c b/grub-core/fs/xfs.c
+index bc2224dbb..9dfe3a2fa 100644
+--- a/grub-core/fs/xfs.c
++++ b/grub-core/fs/xfs.c
+@@ -228,12 +228,6 @@ struct grub_xfs_inode
+ /* Size of struct grub_xfs_inode v2, up to unused4 member included. */
+ #define XFS_V2_INODE_SIZE	(XFS_V3_INODE_SIZE - 76)
+ 
+-struct grub_xfs_dir_leaf_entry
+-{
+-  grub_uint32_t hashval;
+-  grub_uint32_t address;
+-} GRUB_PACKED;
+-
+ struct grub_xfs_dirblock_tail
+ {
+   grub_uint32_t leaf_count;
+@@ -900,8 +894,9 @@ grub_xfs_iterate_dir (grub_fshelp_node_t dir,
+ 	  {
+ 	    struct grub_xfs_dir2_entry *direntry =
+ 					grub_xfs_first_de(dir->data, dirblock);
+-	    int entries = -1;
+-	    char *end = dirblock + dirblk_size;
++	    int entries;
++	    struct grub_xfs_dirblock_tail *tail =
++					grub_xfs_dir_tail(dir->data, dirblock);
+ 
+ 	    numread = grub_xfs_read_file (dir, 0, 0,
+ 					  blk << dirblk_log2,
+@@ -912,27 +907,14 @@ grub_xfs_iterate_dir (grub_fshelp_node_t dir,
+ 	        return 0;
+ 	      }
+ 
+-	    /*
+-	     * Leaf and tail information are only in the data block if the number
+-	     * of extents is 1.
+-	     */
+-	    if (dir->inode.nextents == grub_cpu_to_be32_compile_time (1))
+-	      {
+-		struct grub_xfs_dirblock_tail *tail = grub_xfs_dir_tail (dir->data, dirblock);
+-
+-		end = (char *) tail;
+-
+-		/* Subtract the space used by leaf nodes. */
+-		end -= grub_be_to_cpu32 (tail->leaf_count) * sizeof (struct grub_xfs_dir_leaf_entry);
++	    entries = (grub_be_to_cpu32 (tail->leaf_count)
++		       - grub_be_to_cpu32 (tail->leaf_stale));
+ 
+-		entries = grub_be_to_cpu32 (tail->leaf_count) - grub_be_to_cpu32 (tail->leaf_stale);
+-
+-		if (!entries)
+-		  continue;
+-	      }
++	    if (!entries)
++	      continue;
+ 
+ 	    /* Iterate over all entries within this block.  */
+-	    while ((char *) direntry < (char *) end)
++	    while ((char *)direntry < (char *)tail)
+ 	      {
+ 		grub_uint8_t *freetag;
+ 		char *filename;
+@@ -952,7 +934,7 @@ grub_xfs_iterate_dir (grub_fshelp_node_t dir,
+ 		  }
+ 
+ 		filename = (char *)(direntry + 1);
+-		if (filename + direntry->len + 1 > (char *) end)
++		if (filename + direntry->len - 1 > (char *) tail)
+ 		  return grub_error (GRUB_ERR_BAD_FS, "invalid XFS directory entry");
+ 
+ 		/* The byte after the filename is for the filetype, padding, or
+@@ -966,17 +948,11 @@ grub_xfs_iterate_dir (grub_fshelp_node_t dir,
+ 		    return 1;
+ 		  }
+ 
+-		/*
+-		 * The expected number of directory entries is only tracked for the
+-		 * single extent case.
+-		 */
+-		if (dir->inode.nextents == grub_cpu_to_be32_compile_time (1))
+-		  {
+-		    /* Check if last direntry in this block is reached. */
+-		    entries--;
+-		    if (!entries)
+-		      break;
+-		  }
++		/* Check if last direntry in this block is
++		   reached.  */
++		entries--;
++		if (!entries)
++		  break;
+ 
+ 		/* Select the next directory entry.  */
+ 		direntry = grub_xfs_next_de(dir->data, direntry);
+-- 
+2.43.0
+
