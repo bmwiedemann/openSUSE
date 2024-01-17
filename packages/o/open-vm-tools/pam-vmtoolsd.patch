@@ -1,0 +1,11 @@
+--- a/open-vm-tools/services/vmtoolsd/Makefile.am
++++ b/open-vm-tools/services/vmtoolsd/Makefile.am
+@@ -81,7 +81,7 @@ install-data-hook:
+ install-exec-hook:
+ 	$(INSTALL) -d $(DESTDIR)/etc/vmware-tools
+ 	$(INSTALL) -d $(DESTDIR)/$(PAM_PREFIX)/pam.d/
+-	$(INSTALL) $(top_srcdir)/pam/generic $(DESTDIR)/$(PAM_PREFIX)/pam.d/vmtoolsd
++	$(INSTALL) $(top_srcdir)/pam/suse $(DESTDIR)/$(PAM_PREFIX)/pam.d/vmtoolsd
+ 
+ uninstall-hook:
+ 	rm -f $(DESTDIR)/$(PAM_PREFIX)/pam.d/vmtoolsd

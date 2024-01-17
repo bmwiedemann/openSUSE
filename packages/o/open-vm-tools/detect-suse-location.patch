@@ -1,0 +1,11 @@
+--- a/open-vm-tools/configure.ac
++++ b/open-vm-tools/configure.ac
+@@ -741,7 +741,7 @@ AC_DEFUN([AC_VMW_CONTAINERINFO_MSG],[
+    AC_SUBST(TASKS_PROTOPATH, $shared_prefix/containerd/containerd/api/services/tasks/v1)
+    AC_SUBST(DEP_PROTOPATH, $src_prefix)
+    AC_SUBST(CONTAINERD_PROTOPATH, $shared_prefix/containerd/containerd/api/services/containers/v1)
+-   AC_SUBST(GOGO_PROTOPATH, $shared_prefix/gogo/protobuf)
++   AC_SUBST(GOGO_PROTOPATH, $shared_prefix/containerd/containerd/vendor/github.com/gogo/protobuf)
+    AC_CHECK_FILE([${CONTAINERD_PROTOPATH}/containers.proto],
+                  [],
+                  [AC_VMW_CONTAINERINFO_MSG(["containerd package"])])
