@@ -1,7 +1,7 @@
 #
 # spec file for package libosinfo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -127,7 +127,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/Libosinfo-1.0.typelib
 
 %files devel
-%{_datadir}/gtk-doc/html/Libosinfo/
+%{_datadir}/gtk-doc/
 %{_includedir}/%{name}-1.0
 %{_libdir}/pkgconfig/%{name}-1.0.pc
 %{_libdir}/libosinfo-1.0.so
