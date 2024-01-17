@@ -1,7 +1,7 @@
 #
 # spec file for package intel-gpu-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,11 +32,6 @@ BuildRequires:  meson
 BuildRequires:  peg
 BuildRequires:  pkgconfig
 BuildRequires:  python3-docutils
-%if 0%{?suse_version} > 1600
-BuildRequires:  pkgconfig(libproc2)
-%else
-BuildRequires:  pkgconfig(libprocps)
-%endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dri2proto)
@@ -60,6 +55,11 @@ Conflicts:      xorg-x11-driver-video <= 7.6
 Provides:       igt-gpu-tools = %{version}
 # Intel GPU is only available on x86 and x86-64
 ExclusiveArch:  %{ix86} x86_64
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(libproc2)
+%else
+BuildRequires:  pkgconfig(libprocps)
+%endif
 
 %description
 This is a collection of tools for development and testing of the Intel
@@ -92,6 +92,9 @@ sed -i 's#/usr/bin/env python3#/usr/bin/python3#' \
 	%{buildroot}%{_bindir}/{code_cov_gather_on_test,intel-gfx-fw-info}
 
 %fdupes %{buildroot}%{_libexecdir}
+
+# These are only useful with the full source tree
+rm -v %{buildroot}%{_bindir}/code_cov_*
 
 %check
 %meson_test
