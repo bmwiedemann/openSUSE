@@ -1,7 +1,7 @@
 #
 # spec file for package focuswriter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015 Graeme Gott <graeme@gottcode.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           focuswriter
-Version:        1.8.5
+Version:        1.8.6
 Release:        0
 Summary:        A fullscreen, distraction-free writing program
 License:        GPL-3.0-or-later
@@ -92,7 +92,7 @@ back in.
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%{_datadir}/focuswriter/symbols1500.dat
+%{_datadir}/focuswriter/symbols1510.dat
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}

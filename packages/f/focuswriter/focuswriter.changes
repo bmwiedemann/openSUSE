@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 17 03:51:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.6:
+  * FIXED: Always incremented number for imported themes
+  * FIXED: Unable to update contents of theme background image
+  * FIXED: Modifying themes sometimes removed backgrounds
+  * FIXED: Decompression failed in Haiku
+  * Added shortcuts for selecting by paragraph
+  * Replaced deprecated code
+  * Updated Unicode symbols database
+  * Updated Windows dictionaries
+
+-------------------------------------------------------------------
 Wed Jun 28 06:32:37 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.5:
