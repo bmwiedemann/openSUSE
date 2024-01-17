@@ -1,5 +1,0 @@
-<package name="open-isns" project="openSUSE:Factory">
-  <title>The open-isns package</title>
-  <description>This is the open-isns package, from github.com:gonzoleeman/open-isns.git. This implements the iSNS protocol, and used to part of the open-iscsi package.</description>
-  <devel project="Base:System" package="open-isns"/>
-</package>

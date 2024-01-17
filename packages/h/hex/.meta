@@ -1,6 +1,0 @@
-<package name="hex" project="openSUSE:Factory">
-  <title>Yet Another Hex Dumper</title>
-  <description>A hex dumper that does CP/M and EBCDIC formatting and has
-internationalization support.</description>
-  <devel project="Base:System" package="hex"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="openSUSE-repos" project="openSUSE:Factory">
-  <title>openSUSE-repos</title>
-  <description>A definitions for openSUSE repository management via zypp-services</description>
-  <devel project="Base:System" package="openSUSE-repos"/>
-  <url>https://github.com/openSUSE/openSUSE-repos</url>
-</package>

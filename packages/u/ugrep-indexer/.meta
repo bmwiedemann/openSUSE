@@ -1,9 +1,0 @@
-<package name="ugrep-indexer" project="openSUSE:Factory">
-  <title>File indexer for accelerated search using ugrep</title>
-  <description>The ugrep-indexer utility recursively indexes files to accelerate recursive
-searching on file systems with ugrep.
-
-</description>
-  <devel project="utilities" package="ugrep-indexer"/>
-  <url>https://github.com/Genivia/ugrep-indexer</url>
-</package>

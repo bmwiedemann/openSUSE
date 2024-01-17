@@ -1,3 +1,0 @@
-# Silence rpmlint errors. okteta chose to use the abi version in the library
-# name and sets the soversion to 0
-addFilter("shlib-policy-name-error .*")

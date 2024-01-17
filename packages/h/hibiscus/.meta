@@ -1,5 +1,0 @@
-<package name="hibiscus" project="openSUSE:Factory">
-  <title>Hibiscus</title>
-  <description>Java online banking client using the HBCI standard.</description>
-  <devel project="Java:packages" package="hibiscus"/>
-</package>

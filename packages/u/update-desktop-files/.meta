@@ -1,6 +1,0 @@
-<package name="update-desktop-files" project="openSUSE:Factory">
-  <title>A Build Tool to Update Desktop Files</title>
-  <description>This package provides further translations and a shell script to update
-desktop files. It is used by the %suse_update_desktop_file rpm macro.</description>
-  <devel project="X11:common:Factory" package="update-desktop-files"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-pytest-svn" project="openSUSE:Factory">
-  <title></title>
-  <description>SVN repository fixture for pytest</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-svn"/>
-</package>

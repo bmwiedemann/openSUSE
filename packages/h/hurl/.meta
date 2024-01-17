@@ -1,6 +1,0 @@
-<package name="hurl" project="openSUSE:Factory">
-  <title>hurl</title>
-  <description>Hurl is a command line tool that runs HTTP requests defined in a simple plain text format.</description>
-  <devel project="network:utilities" package="hurl"/>
-  <url>https://hurl.dev</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-ptr" project="openSUSE:Factory">
-  <title>python-ptr</title>
-  <description>Parallel asyncio Python setup(cfg|py) test runner</description>
-  <devel project="devel:languages:python" package="python-ptr"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="hicolor-icon-theme" project="openSUSE:Factory">
-  <title>Fallback Icon Theme</title>
-  <description>This is the default fallback theme used by implementations of the icon
-theme specification.</description>
-  <devel project="GNOME:Factory" package="hicolor-icon-theme"/>
-</package>

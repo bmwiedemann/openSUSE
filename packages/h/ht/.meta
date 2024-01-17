@@ -1,6 +1,0 @@
-<package name="ht" project="openSUSE:Factory">
-  <title>Disassembler, object dumper and hex editor</title>
-  <description>This program is a file viewer, editor and analyzer for text, binary,
-and (especially) executable files.</description>
-  <devel project="devel:tools" package="ht"/>
-</package>

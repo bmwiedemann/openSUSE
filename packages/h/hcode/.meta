@@ -1,5 +1,0 @@
-<package name="hcode" project="openSUSE:Factory">
-  <title>Hangul Code Conversion Utilities (hcode, hdcode)</title>
-  <description>Hangul code conversion utilities (hcode, hdcode).</description>
-  <devel project="M17N" package="hcode"/>
-</package>

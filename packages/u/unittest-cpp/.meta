@@ -1,5 +1,0 @@
-<package name="unittest-cpp" project="openSUSE:Factory">
-  <title>UnitTest++</title>
-  <description>UnitTest++ is a unit testing framework for C++ designed for simplicity and portability. Features include no explicit test registration, good crash handling, fixtures, rich condition-checking functionality, minimal footprint for embedded environments</description>
-  <devel project="multimedia:libs" package="unittest-cpp"/>
-</package>

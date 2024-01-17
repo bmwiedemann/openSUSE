@@ -1,5 +1,0 @@
-<package name="python-jinja2-fsloader" project="openSUSE:Factory">
-  <title>python-jinja2-fsloader</title>
-  <description>Jinja2 template loader using PyFilesystem2</description>
-  <devel project="devel:languages:python" package="python-jinja2-fsloader"/>
-</package>

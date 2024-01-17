@@ -1,7 +1,0 @@
-<package name="uim" project="openSUSE:Factory">
-  <title>A multilingual input method library</title>
-  <description>Uim is a multilingual input method library. Uim's project goal is to
-provide secure and useful input method for all languages. Currently, it
-can input to applications which support gtk+'s immodule or XIM.</description>
-  <devel project="M17N" package="uim"/>
-</package>

@@ -1,3 +1,0 @@
-addFilter("non-executable-script .*/usr/share/homeshick/lib")
-addFilter("env-script-interpreter .*/usr/share/homeshick/lib")
-

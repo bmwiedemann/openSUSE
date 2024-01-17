@@ -1,8 +1,0 @@
-<package name="unpaper" project="openSUSE:Factory">
-  <title>Post-Processing Tool for Scanned Text Pages</title>
-  <description>The unpaper command line tool helps with post-processing scanned text
-pages, especially with	book pages scanned from photocopies. unpaper
-tries to remove dark edges, corrects the rotation (&quot;deskewing&quot;), and
-aligns the centering of pages.</description>
-  <devel project="graphics" package="unpaper"/>
-</package>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>HylaFAX</short>
-  <description>HylaFAX uses a protocol similar to FTP to open passive connections</description>
-  <port protocol="tcp" port="4559"/>
-  <helper name="hylafax"/>
-</service>

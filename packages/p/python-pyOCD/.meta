@@ -1,5 +1,0 @@
-<package name="python-pyOCD" project="openSUSE:Factory">
-  <title>pyOCD</title>
-  <description>On-chip debugger and flasher for ARM microcontrollers</description>
-  <devel project="devel:languages:python" package="python-pyOCD"/>
-</package>

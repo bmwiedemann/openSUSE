@@ -1,7 +1,0 @@
-<package name="python-olefile" project="openSUSE:Factory">
-  <title>Read and write Microsoft OLE2 files</title>
-  <description>Python package to parse, read and write Microsoft OLE2 files (Structured Storage or Compound Document, Microsoft Office) - Improved version of the OleFileIO module from PIL, the Python Image Library.
-
-</description>
-  <devel project="devel:languages:python" package="python-olefile"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="openbox-adwaita-ob-theme" project="openSUSE:Factory">
-  <title>Adwaita theme for Openbox</title>
-  <description>This package contains a theme designed to mimic GNOME's Adwaita theme.
-</description>
-  <devel project="X11:lxde" package="openbox-adwaita-ob-theme"/>
-</package>

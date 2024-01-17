@@ -1,6 +1,0 @@
-<package name="utox" project="openSUSE:Factory">
-  <title>The lightweight Tox client</title>
-  <description>Lightweight Tox client.
-</description>
-  <devel project="server:messaging" package="utox"/>
-</package>

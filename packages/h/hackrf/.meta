@@ -1,5 +1,0 @@
-<package name="hackrf" project="openSUSE:Factory">
-  <title>hackrf</title>
-  <description>Tools and drivers for HackRF, an open source hardware project to build a Software Defined Radio (SDR) peripheral.</description>
-  <devel project="hardware:sdr" package="hackrf"/>
-</package>

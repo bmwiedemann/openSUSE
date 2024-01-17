@@ -1,9 +1,0 @@
-========
-OVERVIEW
-
-This package is a dummy package that always depends on the
-version of corresponding openssl packages that openSUSE
-currently supports.
-
-There can be multiple openssl versions (newer or older) present
-for compatibility reasons.

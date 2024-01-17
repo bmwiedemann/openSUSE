@@ -1,7 +1,0 @@
-<package name="opencl-cpp-headers" project="openSUSE:Factory">
-  <title>OpenCL C++ headers</title>
-  <description>OpenCL is a royalty-free standard for cross-platform, parallel programming of modern processors found in personal computers, servers and handheld/embedded devices.
-
-This package provides the official C++ headers for OpenCL, which are wrappers around the C headers.</description>
-  <devel project="science" package="opencl-cpp-headers"/>
-</package>

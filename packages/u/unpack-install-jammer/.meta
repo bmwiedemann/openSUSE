@@ -1,5 +1,0 @@
-<package name="unpack-install-jammer" project="openSUSE:Factory">
-  <title></title>
-  <description>extracts InstallJammer executables</description>
-  <devel project="Archiving" package="unpack-install-jammer"/>
-</package>

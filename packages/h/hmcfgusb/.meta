@@ -1,5 +1,0 @@
-<package name="hmcfgusb" project="openSUSE:Factory">
-  <title>HM-CFG-USB{,2} linux utilities</title>
-  <description>hmland daemon and utilities to use the HM-CFG-USB(2) (HomeMatic USB Konfigurations-Adapter) from ELV on Linux/Unix by using libusb 1.0.</description>
-  <devel project="hardware" package="hmcfgusb"/>
-</package>

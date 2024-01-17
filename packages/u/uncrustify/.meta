@@ -1,5 +1,0 @@
-<package name="uncrustify" project="openSUSE:Factory">
-  <title>Uncrustify</title>
-  <description>Source Code Beautifier for C, C++, C#, ObjectiveC, D, Java, Pawn and VALA</description>
-  <devel project="devel:tools" package="uncrustify"/>
-</package>

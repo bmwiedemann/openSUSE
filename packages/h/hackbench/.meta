@@ -1,6 +1,0 @@
-<package name="hackbench" project="openSUSE:Factory">
-  <title>Performance, overhead, and scalability benchmark for the Linux scheduler</title>
-  <description>The hackbench test is a benchmark for measuring the performance,
-overhead, and scalability of the Linux scheduler.</description>
-  <devel project="benchmark" package="hackbench"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="udns" project="openSUSE:Factory">
-  <title>async-capable DNS stub resolver library</title>
-  <description>libudns0 package provides libudns shared library needed
-to run programs using it
-
-
-</description>
-  <devel project="network" package="udns"/>
-</package>

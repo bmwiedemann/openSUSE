@@ -1,8 +1,0 @@
-<package name="hfsutils" project="openSUSE:Factory">
-  <title>Tools Used for the Macintosh's Hierarchical File System</title>
-  <description>HFS is the Hierarchical File System used on modern Macintosh computers.
-With this package, you can read and write Macintosh-formatted media,
-such as floppy disks, CD-ROMs, and SCSI hard disks on most UNIX
-platforms. You can also format raw media into an HFS volume.</description>
-  <devel project="filesystems" package="hfsutils"/>
-</package>

@@ -1,6 +1,0 @@
--------------------------------------------------------------------
-Mon Dec 25 16:55:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
-
-- Initial specfile for 0.4.1
-- Required by libbgcode for PrusaSlicer
-  * CMake files in order to build it shared taken from there

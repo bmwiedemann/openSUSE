@@ -1,5 +1,0 @@
-<package name="libnetfilter_cttimeout" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="security:netfilter" package="libnetfilter_cttimeout"/>
-</package>

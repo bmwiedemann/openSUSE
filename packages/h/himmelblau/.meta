@@ -1,5 +1,0 @@
-<package name="himmelblau" project="openSUSE:Factory">
-  <title>Himmelblau</title>
-  <description>An interoperability suite for Microsoft Azure AD and Intune.</description>
-  <devel project="network:idm" package="himmelblau"/>
-</package>

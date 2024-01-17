@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Herbstluftwm
-Name[de]=Herbstluftwm Sitzung
-X-SuSE-translate=true
-Encoding=UTF-8
-Type=XSession
-Exec=herbstluftwm
-TryExec=herbstluftwm
-Comment=A manual Tiling window manager for X

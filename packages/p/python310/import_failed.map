@@ -1,7 +1,0 @@
-python310-curses: curses _curses _curses_panel
-python310-dbm: dbm _dbm _gdbm
-python310-idle: idlelib
-python310-testsuite: test _ctypes_test _testbuffer _testcapi _testinternalcapi _testimportmultiple _testmultiphase xxlimited
-python310-tk: tkinter _tkinter
-python310-tools: turtledemo
-python310: sqlite3 readline _sqlite3 nis

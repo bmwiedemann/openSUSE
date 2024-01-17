@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Wed Jan  3 17:31:36 UTC 2024 - ecsos <ecsos@opensuse.org>
-
-- Add %{?sle15_python_module_pythons}
-
--------------------------------------------------------------------
-Wed Aug 16 10:02:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
-
-- Initial packaging (v1.1.0), needed by jaraco.vcs

@@ -1,6 +1,0 @@
-<package name="hardinfo" project="openSUSE:Factory">
-  <title>Displays system information</title>
-  <description>HardInfo is a small application that displays information about your hardware and operating system.
-Currently it knows about PCI, ISA PnP, USB, IDE, SCSI, Serial and parallel port devices.</description>
-  <devel project="utilities" package="hardinfo"/>
-</package>

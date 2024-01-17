@@ -1,9 +1,0 @@
-<services>
-  <service name="download_files" mode="manual"/>
-  <service name="cargo_vendor" mode="manual">
-     <param name="update">true</param>
-     <param name="srctar">hyperfine*.tar.*</param>
-     <param name="compression">zst</param>
-  </service>
-</services>
-

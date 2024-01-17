@@ -1,5 +1,0 @@
-<package name="python-django-perf-rec" project="openSUSE:Factory">
-  <title></title>
-  <description>Keep detailed records of the performance of your Django code</description>
-  <devel project="devel:languages:python:django" package="python-django-perf-rec"/>
-</package>

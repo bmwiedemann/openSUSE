@@ -1,9 +1,0 @@
-<package name="hunspell" project="openSUSE:Factory">
-  <title>Hunspell - a spell checker and morphological analyzer library</title>
-  <description>Hunspell is a spell checker and morphological analyzer library and
-program designed for languages with rich morphology and complex word
-compounding or character encoding. Hunspell interfaces: Ispell-like
-terminal interface using Curses library, Ispell pipe interface,
-LibreOffice or OpenOffice.org UNO module.</description>
-  <devel project="devel:libraries:c_c++" package="hunspell"/>
-</package>

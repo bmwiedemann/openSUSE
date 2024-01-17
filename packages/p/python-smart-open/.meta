@@ -1,5 +1,0 @@
-<package name="python-smart-open" project="openSUSE:Factory">
-  <title></title>
-  <description>Python utils for streaming large files (S3, HDFS, gzip, bz2..)</description>
-  <devel project="devel:languages:python" package="python-smart-open"/>
-</package>

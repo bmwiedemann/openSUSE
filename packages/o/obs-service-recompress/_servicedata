@@ -1,6 +1,0 @@
-<servicedata>
- <service name="tar_scm">
-   <param name="url">git@github.com:openSUSE/obs-service-recompress.git</param>
-   <param name="changesrevision">c11e489efc15590506dba3736d84b6e9d9d0b739</param>
- </service>
-</servicedata>

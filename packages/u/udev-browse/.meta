@@ -1,5 +1,0 @@
-<package name="udev-browse" project="openSUSE:Factory">
-  <title>udev browsing tool</title>
-  <description>It's easy to get lost in /sys and not much fun typing long udevadm info command lines all the time. This is a little UI for exploring the udev/sysfs tree: udev-browse. This provides a little bit simpler access to the device tree</description>
-  <devel project="utilities" package="udev-browse"/>
-</package>

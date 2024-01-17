@@ -1,6 +1,0 @@
-<package name="hut" project="openSUSE:Factory">
-  <title></title>
-  <description>A CLI tool for sr.ht.</description>
-  <devel project="devel:tools:scm" package="hut"/>
-  <url>https://sr.ht/~emersion/hut/</url>
-</package>

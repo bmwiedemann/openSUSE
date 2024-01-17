@@ -1,8 +1,0 @@
-<package name="herbstluftwm" project="openSUSE:Factory">
-  <title>A manual tiling window manager</title>
-  <description>herbstluftwm is a manual tiling window manager for X11 using Xlib and Glib.
-
-</description>
-  <devel project="X11:windowmanagers" package="herbstluftwm"/>
-  <url>http://wwwcip.cs.fau.de/~re06huxa/herbstluftwm/index.html</url>
-</package>

@@ -1,9 +1,0 @@
-<package name="libnitrokey" project="openSUSE:Factory">
-  <title>Communicate with Nitrokey stick devices in a clean and easy manner</title>
-  <description>Libnitrokey is a project to communicate with Nitrokey Pro and Storage devices
-in a clean and easy manner.
-
-</description>
-  <devel project="security" package="libnitrokey"/>
-  <url>https://github.com/Nitrokey/libnitrokey</url>
-</package>

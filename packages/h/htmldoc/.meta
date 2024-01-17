@@ -1,7 +1,0 @@
-<package name="htmldoc" project="openSUSE:Factory">
-  <title>HTML Processor that Generates HTML, PostScript, and PDF Files</title>
-  <description>HTMLDOC converts HTML source files into indexed HTML, PostScript, or
-Portable Document Format (PDF) files that can be viewed online or
-printed.</description>
-  <devel project="Publishing" package="htmldoc"/>
-</package>

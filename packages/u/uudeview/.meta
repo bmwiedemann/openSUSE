@@ -1,8 +1,0 @@
-<package name="uudeview" project="openSUSE:Factory">
-  <title>The Nice and Friendly Decoder</title>
-  <description>The UUDeview package contains a very smart decoder and an encoder for
-Base64 (MIME), uuencoded, xxencoded, Binhex, and yEnc files. Its
-ultimate goal is to fully replace the &quot;standard&quot;, but dumb uudecode and
-uuencode utilities.</description>
-  <devel project="server:mail" package="uudeview"/>
-</package>

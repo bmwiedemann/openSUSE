@@ -1,6 +1,0 @@
-<package name="libregf" project="openSUSE:Factory">
-  <title>Library to access Windows Registry Files</title>
-  <description>Library to access Windows Registry Files.  Typically used by computer forensics applications.
-</description>
-  <devel project="security:forensics" package="libregf"/>
-</package>

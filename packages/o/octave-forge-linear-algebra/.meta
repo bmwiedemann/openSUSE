@@ -1,6 +1,0 @@
-<package name="octave-forge-linear-algebra" project="openSUSE:Factory">
-  <title></title>
-  <description>Additional linear algebra code, including general SVD and matrix functions.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-linear-algebra"/>
-</package>

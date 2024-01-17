@@ -1,8 +1,0 @@
-<package name="python-pyscard" project="openSUSE:Factory">
-  <title>python-pyscard</title>
-  <description>Python-pyscard consists of smartcard.scard, an extension module wrapping
-Windows smart card base components (also known as PCSC) on Windows and PCSC
-lite on linux and Mac OS X Tiger and Leopard, and smartcard, a higher level
-python framework built on top of the raw PCSC API.</description>
-  <devel project="security" package="python-pyscard"/>
-</package>

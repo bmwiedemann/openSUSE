@@ -1,8 +1,0 @@
-<package name="htop" project="openSUSE:Factory">
-  <title>An Interactive text-mode Process Viewer for Linux</title>
-  <description>htop is an interactive text-mode process viewer for Linux. It aims to
-be a better 'top' and requires ncurses. It is tested with Linux 2.6,
-but is also reported to work (and was originally developed) with the
-2.4 series.</description>
-  <devel project="Base:System" package="htop"/>
-</package>

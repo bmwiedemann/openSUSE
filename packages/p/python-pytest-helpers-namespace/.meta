@@ -1,5 +1,0 @@
-<package name="python-pytest-helpers-namespace" project="openSUSE:Factory">
-  <title></title>
-  <description>PyTest Helpers Namespace</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-helpers-namespace"/>
-</package>

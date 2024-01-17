@@ -1,5 +1,0 @@
-<package name="opencl-headers" project="openSUSE:Factory">
-  <title>OpenCL (Open Computing Language) headers</title>
-  <description>OpenCL is a royalty-free standard for cross-platform, parallel programming of modern processors found in personal computers, servers and handheld/embedded devices. This package provides the official Khronos Group OpenCL headers needed to compile programs that use OpenCL.</description>
-  <devel project="science" package="opencl-headers"/>
-</package>
