@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan 10 10:53:18 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240110.8329809:
+  * check_source.py: Use correct function for getting maintainer of the devel pkg
+  * Fix --osc-debug option with new osc
+
+-------------------------------------------------------------------
+Wed Jan 03 16:20:00 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240103.6ab1d35:
+  * Slightly more useful info logging for source changes
+  * use list comprehension instead of set comparison
+  * publish bci repo right away on package set changes
+  * Remove SP3 and SP4 BCI repos
+
+-------------------------------------------------------------------
+Wed Jan 03 11:05:55 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240103.6478168:
+  * Add timer to monitor release finished for SLE-Micro
+  * Create Staging pipelines for ALP Dolomite 1.0
+
+-------------------------------------------------------------------
 Wed Dec 13 07:17:56 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20231213.02b3886:
