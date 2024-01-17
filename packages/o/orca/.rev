@@ -1341,4 +1341,18 @@
     <comment>New stable release (forwarded request 1116037 from iznogood)</comment>
     <requestid>1116596</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>10db77a92d3728e6c5ae6e2f1712774b</srcmd5>
+    <version>45.2</version>
+    <time>1705526139</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 45.2:
+  + Web: Fix bug causing us to get stuck in menu bar during caret
+    navigation.
+  + General: Dump our cached information in response to
+    children-changed events so that we do not present stale
+    information.
+  + Updated translations. (forwarded request 1139294 from dimstar)</comment>
+    <requestid>1139300</requestid>
+  </revision>
 </revisionlist>
