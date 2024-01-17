@@ -3932,7 +3932,6 @@ unsorted:
   - ffmpeg-6-libswscale-devel 
   - ffmpeg-6-mini-devel 
   - ffmpeg-6-mini-libs 
-  - ffmpeg-6-private-devel 
   - ffmsindex 
   - ffnvcodec-devel 
   - ffsb 
@@ -13182,7 +13181,7 @@ unsorted:
   - libjulia1 
   - libjxl-devel 
   - libjxl-tools 
-  - libjxl0_8-32bit 
+  - libjxl0_9-32bit 
   - libjxrglue0 
   - libkadm5clnt7 
   - libkadm5srv8 
@@ -15870,7 +15869,6 @@ unsorted:
   - libvpl 
   - libvpl-devel 
   - libvpl-samples 
-  - libvpl2 
   - libvpx-devel 
   - libvpx8-32bit 
   - libvsapm-devel 
@@ -16185,6 +16183,7 @@ unsorted:
   - libxkbcommon-devel 
   - libxkbcommon-devel-32bit 
   - libxkbcommon-tools 
+  - libxkbcommon-tools-bash-completion 
   - libxkbcommon-x11-0-32bit 
   - libxkbcommon-x11-devel 
   - libxkbcommon-x11-devel-32bit 
@@ -22759,6 +22758,7 @@ unsorted:
   - python3-pysol-cards 
   - python3-pytest-ansible 
   - python3-pytest-cookies 
+  - python3-python-sql 
   - python3-rados 
   - python3-rbd 
   - python3-renderspec 
@@ -23568,7 +23568,6 @@ unsorted:
   - python310-base-32bit 
   - python310-base58 
   - python310-bashate 
-  - python310-basictracer 
   - python310-bcrypt 
   - python310-beartype 
   - python310-beautifulsoup4 
@@ -24949,6 +24948,11 @@ unsorted:
   - python310-openpyxl 
   - python310-openqa_client 
   - python310-opentelemetry-api 
+  - python310-opentelemetry-exporter-otlp 
+  - python310-opentelemetry-exporter-otlp-proto-common 
+  - python310-opentelemetry-exporter-otlp-proto-grpc 
+  - python310-opentelemetry-exporter-otlp-proto-http 
+  - python310-opentelemetry-proto 
   - python310-opentelemetry-sdk 
   - python310-opentelemetry-semantic-conventions 
   - python310-opentelemetry-test-utils 
@@ -25577,7 +25581,6 @@ unsorted:
   - python310-python-socketio 
   - python310-python-socks 
   - python310-python-sofa 
-  - python310-python-sql 
   - python310-python-stdnum 
   - python310-python-subunit 
   - python310-python-ternary 
@@ -27080,7 +27083,6 @@ unsorted:
   - python311-base-32bit 
   - python311-base58 
   - python311-bashate 
-  - python311-basictracer 
   - python311-beartype 
   - python311-beautifulsoup4 
   - python311-before-after 
@@ -28387,6 +28389,11 @@ unsorted:
   - python311-openpyxl 
   - python311-openqa_client 
   - python311-opentelemetry-api 
+  - python311-opentelemetry-exporter-otlp 
+  - python311-opentelemetry-exporter-otlp-proto-common 
+  - python311-opentelemetry-exporter-otlp-proto-grpc 
+  - python311-opentelemetry-exporter-otlp-proto-http 
+  - python311-opentelemetry-proto 
   - python311-opentelemetry-sdk 
   - python311-opentelemetry-semantic-conventions 
   - python311-opentelemetry-test-utils 
@@ -28983,7 +28990,6 @@ unsorted:
   - python311-python-socketio 
   - python311-python-socks 
   - python311-python-sofa 
-  - python311-python-sql 
   - python311-python-stdnum 
   - python311-python-subunit 
   - python311-python-ternary 
@@ -30506,7 +30512,6 @@ unsorted:
   - python39-base-32bit 
   - python39-base58 
   - python39-bashate 
-  - python39-basictracer 
   - python39-bcrypt 
   - python39-beartype 
   - python39-beautifulsoup4 
@@ -31883,6 +31888,11 @@ unsorted:
   - python39-openpyxl 
   - python39-openqa_client 
   - python39-opentelemetry-api 
+  - python39-opentelemetry-exporter-otlp 
+  - python39-opentelemetry-exporter-otlp-proto-common 
+  - python39-opentelemetry-exporter-otlp-proto-grpc 
+  - python39-opentelemetry-exporter-otlp-proto-http 
+  - python39-opentelemetry-proto 
   - python39-opentelemetry-sdk 
   - python39-opentelemetry-semantic-conventions 
   - python39-opentelemetry-test-utils 
@@ -32511,7 +32521,6 @@ unsorted:
   - python39-python-socketio 
   - python39-python-socks 
   - python39-python-sofa 
-  - python39-python-sql 
   - python39-python-stdnum 
   - python39-python-subunit 
   - python39-python-ternary 
