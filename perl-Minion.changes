@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 29 03:07:48 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 10.28
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.28  2023-11-217
+    - Improved repair and history performance in most cases.
+
+  10.27  2023-11-20
+    - Improved repair performance in cases where there are a lot of finished jobs with dependencies.
+
+-------------------------------------------------------------------
 Sat Nov 11 03:09:03 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 10.26
