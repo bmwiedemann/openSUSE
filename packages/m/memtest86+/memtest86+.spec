@@ -1,7 +1,7 @@
 #
 # spec file for package memtest86+
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           memtest86+
 Version:        6.20
 Release:        0
 Summary:        Memory Testing Image for x86 Architecture
-License:        BSD-3-Clause
+License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://www.memtest.org
 Source:         https://github.com/memtest86plus/memtest86plus/archive/v%{version}/%{name}-%{version}.tar.gz

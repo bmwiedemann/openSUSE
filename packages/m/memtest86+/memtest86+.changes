@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 15 10:58:15 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Change spec license to GPL-2.0-only
+* Outcome of legal review, requested by SUSE legal team-
+
+-------------------------------------------------------------------
 Sat May 13 10:30:43 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Revert change from Mon Mar 13, as this prevents the use of memtest
