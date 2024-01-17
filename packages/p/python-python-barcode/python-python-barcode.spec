@@ -1,8 +1,8 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2019 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2019-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%{?sle15_python_module_pythons}
 
 %define base_name python-barcode
 Name:           python-%{base_name}
