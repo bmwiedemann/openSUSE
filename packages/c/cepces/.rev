@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>9482f896d90c5decb99f66e3612fef1e</srcmd5>
+    <version>0.3.3</version>
+    <time>1625777370</time>
+    <user>dimstar_suse</user>
+    <comment>This is a dependency of Samba's Certificate Auto Enrollment. It extends certmonger to support auto enrollment to a Microsoft CA.</comment>
+    <requestid>905116</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f625623ce976db4611b726d276473b8</srcmd5>
+    <version>0.3.4</version>
+    <time>1626466372</time>
+    <user>dimstar_suse</user>
+    <comment>- v0.3.4: Allow overriding of parameters from the command line
+ - Removed upstreamed patch 0001-Added-Kerberos-delegation.patch
+ - Removed upstreamed patch 0001-Allow-overriding-of-server-auth-from-the-command-lin.patch
+ - Removed upstreamed patch 0001-add-SELinux-permissions-for-RHEL-6.patch
+</comment>
+    <requestid>906537</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b6132131129875e93d3f359c0abb33ab</srcmd5>
+    <version>0.3.4</version>
+    <time>1626788365</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix configuration missing global section.
+- Add a test runner for executing unittests, and github CI.
+</comment>
+    <requestid>907158</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e3a223b1bdb350ba8e3ebe0cb0f7de0e</srcmd5>
+    <version>0.3.4</version>
+    <time>1629471471</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>913201</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>da5e939a0493c921c8d0fcdf71bcf101</srcmd5>
+    <version>0.3.4</version>
+    <time>1633723498</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>923507</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>9bba1940c3596da49d0c77045844f17f</srcmd5>
+    <version>0.3.4</version>
+    <time>1653243956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977821</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>69297d4b41a72d0935d762d1bcdfb811</srcmd5>
+    <version>0.3.6</version>
+    <time>1666689527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030897</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c74833299aee8be6a288c7dd69d3aa02</srcmd5>
+    <version>0.3.7</version>
+    <time>1669983128</time>
+    <user>dimstar_suse</user>
+    <comment>Release v0.3.7:
+- Make the openssl security level configurable
+</comment>
+    <requestid>1039334</requestid>
+  </revision>
+</revisionlist>

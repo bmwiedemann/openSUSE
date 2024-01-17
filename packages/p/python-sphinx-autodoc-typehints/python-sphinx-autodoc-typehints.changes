@@ -1,0 +1,185 @@
+-------------------------------------------------------------------
+Fri Jul 21 12:06:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons, remove skip_python2
+
+-------------------------------------------------------------------
+Fri Oct  7 16:20:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.19.2 
+  * Fix incorrect domain used for collections.abc.Callable.
+  * Support for CPython 3.11, no longer adds Optional when the argument is default
+  
+-------------------------------------------------------------------
+Thu Jul 14 16:34:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.18.3
+  * Fix for new nptyping by @gaborbernat in #235
+- Remove requirement on old extra package pathlib
+
+-------------------------------------------------------------------
+Mon Jun  6 23:01:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.18.2:
+  - [pre-commit.ci] pre-commit autoupdate
+  - Support and require nptyping 2.1.1
+
+-------------------------------------------------------------------
+Wed May 11 10:08:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch to multibuild to break build cycles.
+
+-------------------------------------------------------------------
+Thu May  5 05:35:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 1.18.1:
+  - Fix mocked module import not working when used as guarded
+    import
+  - Support and require nptyping>=2
+  - Handle UnionType
+  - Mark it as requiring nptyping<2
+  - Add typehints_use_rtype option
+  - Handles TypeError when getting source code via inspect
+  - Add support for type subscriptions with multiple elements,
+    where one or more elements are tuples; e.g.,
+    nptyping.NDArray[(Any, ...), nptyping.Float]
+  - Fix bug for arbitrary types accepting singleton
+    subscriptions; e.g., nptyping.Float[64]
+  - Resolve forward references
+  - Expand and better handle TypeVar
+  - Add intershpinx reference link for ... to Ellipsis (as is
+    just an alias)
+  - Prevents reaching inner blocks that contains if TYPE_CHECKING
+  - Log a warning instead of crashing when a type guard import
+    fails to resolve
+  - When resolving type guard imports if the target module does
+    not have source code (such is the case for C-extension
+    modules) do nothing instead of crashing
+  - Fix fully_qualified should be typehints_fully_qualified
+  - Resolve type guard imports before evaluating annotations for
+    objects
+  - Remove set_type_checking_flag flag as this is now done by
+    default
+  - Fix crash when the inspect module returns an invalid python
+    syntax source
+  - Made formatting function configurable using the option
+    typehints_formatter
+  - Fixed normalize_source_lines() messing with the indentation
+    of methods with decorators that have parameters starting with
+    def.
+  - Handle ValueError or TypeError being raised when signature of
+    an object cannot be determined
+  - Fix KeyError being thrown when argument is not documented
+    (e.g. cls argument for class methods, and self for methods)
+  - Added typehints_defaults config option allowing to
+    automatically annotate parameter defaults.
+  - Fixed NewType inserts a reference as first argument instead
+    of a string
+  - Dropped Python 3.6 support
+  - Python 3.10 support
+  - Normalize async functions properly
+  - Allow py310 style annotations (PEP-563)
+
+-------------------------------------------------------------------
+Mon Dec 27 17:20:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python310: Not ready yet. Factory needs only the primary
+  python3 flavor
+
+-------------------------------------------------------------------
+Tue Aug  3 09:42:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.12.0:
+  - Dropped Python 3.5 support
+  - Added the simplify_optional_unions config option
+  - Fixed indentation of multiline strings
+  - Changed formatting of None to point to the Python stdlib docs
+  - Updated special dataclass handling
+
+-------------------------------------------------------------------
+Sat Apr 24 14:11:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove no-net-tests.patch as adding the fixed
+  python-sphinx-autodoc-typehints-system-object.inv.patch 
+  makes tests requiring network working
+  (gh#agronholm/sphinx-autodoc-typehints#174).
+
+-------------------------------------------------------------------
+Fri Apr 23 14:24:23 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add no-net-tests.patch which marks tests requiring network
+  (gh#agronholm/sphinx-autodoc-typehints#174).
+
+-------------------------------------------------------------------
+Wed Sep 23 13:29:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.11.0:
+  * Dropped support for Sphinx < 3.0
+  * Added support for alternative parameter names (``arg``, ``argument``, ``parameter``)
+  * Fixed import path for Signature (PR by Matthew Treinish)
+  * Fixed ``TypeError`` when formatting a parametrized ``typing.IO`` annotation
+  * Fixed data class displaying a return type in its ``__init__()`` method
+- remove python-sphinx-autodoc-typehints-system-object.inv.patch (breaks the build)
+
+-------------------------------------------------------------------
+Fri Mar  6 14:50:12 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.10.3
+  * Fixed ``TypeError`` (or wrong rendered class name) when an annotation is a generic class that has
+    a ``name`` property
+  * Fixed inner classes missing their parent class name(s) when rendered
+  * Fixed ``KeyError`` when encountering mocked annotations (``autodoc_mock_imports``)
+  * Rewrote the annotation formatting logic (fixes Python 3.5.2 compatibility regressions and an
+    ``AttributeError`` regression introduced in v1.9.0)
+  * Fixed decorator classes not being processed as classes
+  * Added support for typing_extensions_
+  * Added the ``typehints_document_rtype`` option (PR by Simon-Martin Schröder)
+  * Fixed metaclasses as annotations causing ``TypeError``
+  * Fixed rendering of ``typing.Literal``
+  * Fixed OSError when generating docs for SQLAlchemy mapped classes
+  * Fixed unparametrized generic classes being rendered with their type parameters
+    (e.g. ``Dict[~KT, ~VT]``)
+- added patches
+  fix use object.inv which comes with python-doc
+  + python-sphinx-autodoc-typehints-system-object.inv.patch
+
+-------------------------------------------------------------------
+Mon Sep 16 13:38:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.8.0:
+  * Fixed regression which caused TypeError or OSError when trying to set annotations due to PR #87
+  * Fixed unintentional mangling of annotation type names
+  * Added proper :py:data targets for NoReturn, ClassVar and Tuple
+  * Added support for inline type comments (like (int, str) -> None) (PR by Bernát Gábor)
+  * Use the native AST parser for type comment support on Python 3.8+
+
+-------------------------------------------------------------------
+Tue Sep 10 10:03:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.0:
+  * Fixed unwrapped local functions causing errors (PR by Kimiyuki Onaka)
+  * Fixed AttributeError when documenting the __init__() method of a data class
+  * Added support for type hint comments (PR by Markus Unterwaditzer)
+  * Added flag for rendering classes with their fully qualified names (PR by Holly Becker)
+- Remove merged patch sphinx21.patch
+
+-------------------------------------------------------------------
+Wed Jul  3 09:13:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with new sphinx:
+  * sphinx21.patch
+
+-------------------------------------------------------------------
+Thu Jun  6 13:41:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop not really needed devel dependency
+
+-------------------------------------------------------------------
+Sat Mar 23 14:37:28 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Remove patch setup-tests.patch, we are using pytest now.
+
+-------------------------------------------------------------------
+Wed Mar 20 21:12:28 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- initial package for version 1.6.0

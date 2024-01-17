@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.9.0 (changes since 0.6.2):
+  * Break compatibility with all system indicators before 0.8.0.
+  * Switch from autotools to CMake.
+  * GObject private API/ABI: Get rid of g_type_class_add_private()
+    and use DEFINE_TYPE_WITH_PRIVATE().
+  * Display IDO widgets/Use own action muxer/Allow IDO CSS styling.
+  * Make building of ayatana-indicator-loader3 optional.
+  * Display and connect the Indicator Messages widgets.
+  * Fix width of menu panes.
+  * Use ayatanamenuitemfactory.(c|h) from ayatana-ido.
+    Reduce code duplications. This also freeze renderer freezes on
+    some systems.
+  * libayatana-indicator/indicator-ng.c: Try to prevent cascading
+    failure if IDO creation fails.
+  * Rename Ayatana Indicators specific x-canonical-* attributes to
+    x-ayatana-* (esp. x-ayatana-type).
+    This makes Ayatana Indicators work on Ubuntu.
+  * Use ayatana-indicators.target (from libayatana-common) as the
+    systemd lifecycle unit, not ayatana-indicators-pre.target.
+  * Fix tests and deprecations.
+  * libayatana-indicator/indicator-ng.c: Resize open menus as items
+    change.
+  * Enable menu scrolling + reset offset on popup. Resolves display
+    problems with Indicator Messges consumers that provide too-long
+    of a list of unread messages (so that the scrolling kicks in in
+    the indicator's menu).
+  * Fix IDO insertion index in Indicator Messages with multiple
+    clients.
+  * Workaround for themes with scrolling arrows on the menu
+    borders: disable menu arrows.
+  * indicator-ng.c: Fix padding and spacing for hidden indicator
+    item labels.
+  * Fix duplicate location in the datetime indicator (and
+    potentially other duplicated menu item flaws).
+  * indicator-ng: Fix menu resizing for all themes.
+  * libayatana-indicator/indicator-ng.c: Only run
+    gtk_box_set_spacing() if object to operate on is a GTK_BOX.
+  * Fix unit tests during package build (properly wrap around Xvfb
+    and dbus-wrapper).
+  * src/indicator-ng.c: Make sure old menu item name is not NULL
+    before comparison.
+  * Scale icons when loading from filename.
+  * Update/add documentation.
+  * Rename library source folder to src/.
+  * tools/indicator-loader.c: Silence unused parameter
+    warnings/errors for various functions.
+  * Fix compiler warnings.
+-------------------------------------------------------------------
+
+- Drop libayatana-indicator-glib-2.58.patch: fixed upstream.
+- Drop libayatana-indicator-Wno-error-deprecated-declarations.patch:
+  no longer needed.
+- Drop libayatana-indicator-Wno-error-deprecated-declarations-for-tests.patch:
+  no longer needed.
+- Split gtk2 and gtk3 builds using _multibuild.
+
+-------------------------------------------------------------------
+Mon Mar 16 04:24:12 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- add libayatana-indicator-Wno-error-deprecated-declarations.patch
+  * add Wno-error=deprecated-declarations option to tools
+- add libayatana-indicator-glib-2.58.patch
+  * g_type_class_add_private was deprecated since glib 2.58
+    get rid of it and self-defined *_GET_PRIVATE() functions,
+    use G_DEFINE_TYPE_* and auto-generated *_get_instance_private()
+    instead.
+- drop libayatana-indicator-disable-werror.patch
+
+-------------------------------------------------------------------
+Wed Nov  6 04:19:48 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- add libayatana-indicator-Wno-error-deprecated-declarations-for-tests.patch
+  * the library is built with "Wno-error=deprecated-declarations",
+    but tests is built without such option
+
+-------------------------------------------------------------------
+Tue Jun 11 04:49:44 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Avoid mate-common for some openSUSE-specific reasons.
+
+-------------------------------------------------------------------
+Wed Mar 21 10:20:37 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.6.2:
+  * Makefile.am: Drop distcheck features.
+  * libayatana-indicator/indicator-ng.c: Type cast assignments from
+    g_object_ref_sink().
+
+-------------------------------------------------------------------
+Mon Mar 19 13:29:54 UTC 2018 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Mon Mar 12 12:43:56 UTC 2018 - sor.alexei@meowr.ru
+
+- Initial package.

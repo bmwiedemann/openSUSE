@@ -1,0 +1,8 @@
+<package name="ocaml-bisect_ppx" project="openSUSE:Factory">
+  <title>Code coverage for OCaml and Reason</title>
+  <description>Bisect_ppx is a code coverage tool for OCaml and Reason. It helps you test thoroughly by showing what's not tested.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-bisect_ppx"/>
+  <url>https://opam.ocaml.org/packages/bisect_ppx</url>
+</package>

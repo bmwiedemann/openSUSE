@@ -1,0 +1,9 @@
+diff -Nur old/run_uh.py new/run_uh.py
+--- old/run_uh.py	2020-06-01 12:00:03.468270151 +0200
++++ new/run_uh.py	2020-06-01 12:00:25.488432899 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ # ###################################################
+ # Copyright (C) 2008-2017 The Unknown Horizons Team

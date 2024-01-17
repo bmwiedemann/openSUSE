@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>68d5066c7c248d21d47a5ea17734b13e</srcmd5>
+    <version>0.5.0</version>
+    <time>1465480868</time>
+    <user>dimstar_suse</user>
+    <comment>Change packaging details as pointed out in previous SR rejection.Hopefully I got it right. Also split out test-server into separate sub-package.</comment>
+    <requestid>400017</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>242c8912e560ebee339e6c683dbfb85d</srcmd5>
+    <version>0.5.0</version>
+    <time>1487767848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459196</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>054cbb5116dcf113156666ef09853df1</srcmd5>
+    <version>0.6.0</version>
+    <time>1489241947</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478186</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ecc0432094660de51b36955f0dca6568</srcmd5>
+    <version>0.6.0</version>
+    <time>1510406239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539506</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f87113741d2c0f565e01436a41d1f0d5</srcmd5>
+    <version>0.6.0</version>
+    <time>1533214207</time>
+    <user>dimstar_suse</user>
+    <comment>- vrend: Increase VREND_MAX_CTX to 64. (bsc#1102749)
+  0002-1fdafd62-vrend-Increase-VREND_MAX_CTX-to-64.patch
+</comment>
+    <requestid>625740</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8e02500757fc9ba64920b722a796d89a</srcmd5>
+    <version>0.7.0</version>
+    <time>1538377584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637623</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>af06d1e1b04d8b36128cf8aac0712bd3</srcmd5>
+    <version>0.8.0</version>
+    <time>1575282685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751150</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>522c4d7900aaa967ec2196063ceed8ad</srcmd5>
+    <version>0.8.0</version>
+    <time>1577267663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758914</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e5f3cdcbb8e9b679e93763a3eb40b74d</srcmd5>
+    <version>0.8.1</version>
+    <time>1578867331</time>
+    <user>dimstar_suse</user>
+    <comment>- Update package to 0.8.1
+  Requires very recent libepoxy, which is currently only available
+  in Factory. Accordingly also switch to meson build, which also
+  excludes older releases.
+  Other highlights include:
+  + support emulating planar image sampling
+  + Add all formats to VIRGL_FORMAT that are referenced in Gallium
+  + deprecation of the autotools build system
+  + miscellaneous bug and performance fixes
+  + drop the following patches, which are included in this release:
+    0001-5d03711-vrend-Keep-the-max-texture-sizes-in-the-vrend_state.patch
+    0002-0d9a2c8-vrend-Check-resource-creation-more-thoroughly.patch
+    0003-24f67de-vrend-check-info-formats-in-blits.patch
+    0004-cbc8d8b-vrend-check-transfer-bounds-for-negative-values-too-.patch
+    0005-2abeb18-vrend-check-that-the-transfer-iov-holds-enough-data-.patch
+    0006-164d758-vrend-Add-an-assert-for-allocating-the-intermediate-.patch
+</comment>
+    <requestid>761654</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>8c1499fcb1f618468d575cb75e3e83e6</srcmd5>
+    <version>0.8.1</version>
+    <time>1581278533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770051</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>044f040b5b25e136ae9324ff65cabdfc</srcmd5>
+    <version>0.8.2</version>
+    <time>1582112352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773741</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3d814a0af7a6d5769a5ee5367ce7d948</srcmd5>
+    <version>0.9.0</version>
+    <time>1618061176</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update package to 0.9.0
+  Highlights include:
+  + multi-client support
+  + supports newer glsl version
+  + add ETC2 compressed formats
+  + performance improvements
+  + misc. bug fixes
+</comment>
+    <requestid>883891</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>319663e183736d327452fa52345bba6c</srcmd5>
+    <version>0.9.1</version>
+    <time>1619822770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889210</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a5f230b51240bb827379d329cc7dd1f6</srcmd5>
+    <version>0.9.1</version>
+    <time>1642936519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947915</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>ec2084a60b6bccf0513a9a74683003ad</srcmd5>
+    <version>0.9.1</version>
+    <time>1644188002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950889</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>af20e786a7179e654f5a01b26b0c6e62</srcmd5>
+    <version>1.0.0</version>
+    <time>1697748409</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118648</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>460ac1cb9fcb81e3d0cf7c267bfb6ad9</srcmd5>
+    <version>1.0.0</version>
+    <time>1700511515</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127272</requestid>
+  </revision>
+</revisionlist>

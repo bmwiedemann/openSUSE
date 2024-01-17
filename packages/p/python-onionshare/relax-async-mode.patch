@@ -1,0 +1,30 @@
+Index: onionshare-2.6/cli/onionshare_cli/web/web.py
+===================================================================
+--- onionshare-2.6.orig/cli/onionshare_cli/web/web.py
++++ onionshare-2.6/cli/onionshare_cli/web/web.py
+@@ -164,10 +164,10 @@ class Web:
+         elif self.mode == "chat":
+             if self.common.verbose:
+                 self.socketio = SocketIO(
+-                    async_mode="gevent", logger=True, engineio_logger=True
++                    logger=True, engineio_logger=True
+                 )
+             else:
+-                self.socketio = SocketIO(async_mode="gevent")
++                self.socketio = SocketIO()
+             self.socketio.init_app(self.app)
+             self.chat_mode = ChatModeWeb(self.common, self)
+ 
+Index: onionshare-2.6/desktop/pyproject.toml
+===================================================================
+--- onionshare-2.6.orig/desktop/pyproject.toml
++++ onionshare-2.6/desktop/pyproject.toml
+@@ -6,7 +6,7 @@ authors = ["Micah Lee <micah@micahflee.c
+ license = "GPLv3+"
+ 
+ [tool.poetry.dependencies]
+-python = ">=3.7,<3.11"
++python = ">=3.7"
+ onionshare_cli = {path = "../cli", develop = true}
+ PySide2 = "5.15.2.1"
+ qrcode = "*"

@@ -1,0 +1,10 @@
+<package name="xselection" project="openSUSE:Factory">
+  <title>Manipulate the XSelection</title>
+  <description>With this little tool, pipe the currently selected text under X into a
+file or vice versa.
+
+Help can be found by reading the man page with
+
+man xselection</description>
+  <devel project="X11:Utilities" package="xselection"/>
+</package>

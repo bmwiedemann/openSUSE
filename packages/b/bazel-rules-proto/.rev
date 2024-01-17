@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b0ebf08704c1f82f2803c79379420cb0</srcmd5>
+    <version>20190115</version>
+    <time>1549311075</time>
+    <user>coolo</user>
+    <comment>- Initial release 20190115
+</comment>
+    <requestid>671113</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c3c77a9d7ab6e13ae840f2b220ac03f0</srcmd5>
+    <version>20190719</version>
+    <time>1571951457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742606</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd064c9523a8906c623f6a7eff71adf0</srcmd5>
+    <version>20190801</version>
+    <time>1576928022</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 20190801
+  * Add CODEOWNERS for rules_proto
+  * [docs] Add reference to automatic buildifier fix
+  * Fix issues to get CI to green</comment>
+    <requestid>758516</requestid>
+  </revision>
+</revisionlist>

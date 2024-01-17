@@ -1,0 +1,21 @@
+From a05d7af729585bdaa4f71437167339ac67bf3327 Mon Sep 17 00:00:00 2001
+From: Saptak S <saptak013@gmail.com>
+Date: Sun, 9 Apr 2023 20:24:48 +0530
+Subject: [PATCH] Updates poetry build system to poetry-core
+
+---
+ cli/pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cli/pyproject.toml b/cli/pyproject.toml
+index d0f311b39..a3675a7a1 100644
+--- a/cli/pyproject.toml
++++ b/cli/pyproject.toml
+@@ -40,5 +40,5 @@ pytest = ">=7.2.0"
+ onionshare-cli = 'onionshare_cli:main'
+ 
+ [build-system]
+-requires = ["poetry>=0.12"]
+-build-backend = "poetry.masonry.api"
++requires = ["poetry-core"]
++build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,5 @@
+<package name="python-amqpstorm" project="openSUSE:Factory">
+  <title>Python AMQPStorm</title>
+  <description>Thread-safe Python RabbitMQ Client &amp; Management library.</description>
+  <devel project="devel:languages:python" package="python-amqpstorm"/>
+</package>

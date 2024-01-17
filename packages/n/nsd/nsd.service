@@ -1,0 +1,44 @@
+[Unit]
+Description=NSD DNS Server
+After=syslog.target network.target
+
+[Service]
+Type=simple
+PIDFile=/run/nsd/nsd.pid
+ExecStart=/usr/sbin/nsd -d -c /etc/nsd/nsd.conf
+ExecStopPost=/bin/rm -f /var/lib/nsd/xfrd.state
+User=_nsd
+Group=_nsd
+
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions
+
+# even more hardening options
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+PrivateTmp=yes
+NoNewPrivileges=yes
+MountFlags=private
+LockPersonality=yes
+KeyringMode=private
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+DevicePolicy=closed
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+SystemCallFilter=~ @clock @cpu-emulation @debug @keyring @module @mount @raw-io @reboot @swap @obsolete @resources @pkey
+
+[Install]
+WantedBy=multi-user.target

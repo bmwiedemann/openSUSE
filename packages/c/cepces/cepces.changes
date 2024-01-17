@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Thu Dec  1 14:44:33 UTC 2022 - David Mulder <dmulder@suse.com>
+
+Release v0.3.7:
+- Make the openssl security level configurable
+
+-------------------------------------------------------------------
+Thu Oct 20 12:15:15 UTC 2022 - David Mulder <dmulder@suse.com>
+
+Release v0.3.6:
+- Fix Bug #15 cepces.conf.dist: server should be pointed to actual CEP host
+- Replace old requests_kerberos with requests_gssapi
+- setup: Do not install example configs
+- setup: Respect the prefix the user specifies
+- Delete the spec file
+- Make Kerberos delegation configurable
+- Fix Bug #24 cepces-submit 'TypeError: option values must be strings'
+- Removed b755b56d25f3e54f8f15d9985fd0597b21c1051d.patch because
+  it is now upstream.
+
+-------------------------------------------------------------------
+Wed Jun 01 18:58:29 UTC 2022 - David Mulder <dmulder@suse.com>
+
+Release v0.3.5:
+- Added polling_interval which tells certmonger how long to wait in seconds before retrying.
+- Implemented Certificate authentication method.
+- Python 3.10 compatible.
+
+-------------------------------------------------------------------
+Tue May 10 19:19:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add b755b56d25f3e54f8f15d9985fd0597b21c1051d.patch
+
+-------------------------------------------------------------------
+Wed Oct  6 09:03:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Only install the selinux policy if necessary
+- Add missing dependency on the main package to the certmonger
+  subpackage
+- Use %license and move it to the common subpackage
+- Avoid bashisms
+- Fix file list for the python subpackage for 3.10+
+
+-------------------------------------------------------------------
+Tue Oct  5 14:28:05 UTC 2021 - David Mulder <david.mulder@suse.com>
+
+- Also disable selinux in 15.4, since it is still not supported.
+
+-------------------------------------------------------------------
+Thu Aug 19 14:39:17 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- Disable selinux where not supported; (jsc#SLE-18456).
+
+-------------------------------------------------------------------
+Mon Jul 19 14:32:34 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- Fix configuration missing global section.
+- Add a test runner for executing unittests, and github CI.
+
+-------------------------------------------------------------------
+Mon Jul 12 16:24:51 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- v0.3.4: Allow overriding of parameters from the command line
+ - Removed upstreamed patch 0001-Added-Kerberos-delegation.patch
+ - Removed upstreamed patch 0001-Allow-overriding-of-server-auth-from-the-command-lin.patch
+ - Removed upstreamed patch 0001-add-SELinux-permissions-for-RHEL-6.patch
+
+-------------------------------------------------------------------
+Tue Jun 29 16:31:16 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- v0.3.3: Initial submission of sources; (jsc#SLE-18457).
+
+-------------------------------------------------------------------
+Mon Jul 29 2019 - Daniel Uvehag <daniel.uvehag@gmail.com> - 0.3.3-2
+
+- Add missing log directory
+
+-------------------------------------------------------------------
+Mon Jul 29 2019 - Daniel Uvehag <daniel.uvehag@gmail.com> - 0.3.3-1
+
+- Update to version 0.3.3-1
+
+-------------------------------------------------------------------
+Mon Feb 05 2018 - Daniel Uvehag <daniel.uvehag@gmail.com> - 0.3.0-1
+
+- Update to version 0.3.0-1
+
+-------------------------------------------------------------------
+Thu Feb 01 2018 - Daniel Uvehag <daniel.uvehag@gmail.com> - 0.2.1-1
+
+- Update to version 0.2.1-1
+
+-------------------------------------------------------------------
+Mon Jun 27 2016 - Daniel Uvehag <daniel.uvehag@gmail.com> - 0.1.0-1
+
+- Initial package.
+

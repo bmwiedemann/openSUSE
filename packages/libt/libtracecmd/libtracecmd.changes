@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Thu Nov  9 15:23:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.0
+  * trace-cmd extract: Do not extract top level unless told to
+- Drop 0001-libtracecmd-Add-initial-support-for-meson.patch
+  0002-trace-cmd-Add-initial-support-for-meson.patch (merged)
+
+-------------------------------------------------------------------
+Tue Feb  7 13:40:37 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Sync meson build patch with latest upstream version
+  * Documentation is built via extra build target
+
+-------------------------------------------------------------------
+Sun Jan 22 00:15:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.1
+  * No changelog was provided
+- Delete static-assign.patch
+
+-------------------------------------------------------------------
+Wed Dec 28 07:45:24 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Build project with Meson
+  * add 0001-libtracecmd-Add-initial-support-for-meson.patch
+  * add 0002-trace-cmd-Add-initial-support-for-meson.patch
+
+-------------------------------------------------------------------
+Fri Dec 16 14:59:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.0
+  * Only set trace-cmd log level (not libtracefs nor libtraceevent)
+  * Fix function graph plugin updating the next record
+  * Use libtracefs tracefs_cpu() interface for recording
+    (requires libtracefs 1.6)
+
+-------------------------------------------------------------------
+Sat Dec  3 13:04:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * Process trace_clock for v7 trace.dat files
+  * Add network roles for time sync
+  * Have clock source TAI parse to seconds
+  * Use uncompressed size for file size
+  * Allow callers to save private data in tracecmd_input handlers
+  * Add filtering logic for iterating events
+  * Add man pages for iterator functions
+  * Add API for mapping between host and guests
+- Delete 0001-build-Only-consider-libtracecmd-documentation.patch,
+  0002-trace-cmd-library-Fix-decleration-of-msg_lseek.patch (merged)
+- Add static-assign.patch
+
+-------------------------------------------------------------------
+Mon Sep  5 10:38:26 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Drop previous added file extension glob on man pages. Whether it's
+  compressed or not is an implementation detail.
+
+-------------------------------------------------------------------
+Tue Aug 30 12:10:30 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Add file extension on glob in %files section for man pages
+- Set Group to Development/Libraries/C and C++
+
+-------------------------------------------------------------------
+Tue Aug 23 12:29:36 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Initial version libtracecmd 1.1.3
+  Split libtracecmd from trace-cmd into a separate package because
+  libracecmd has a different release cycle and doesn't allign with
+  trace-cmd.
+  - Add 0001-build-Only-consider-libtracecmd-documentation.patch
+  - Add 0002-trace-cmd-library-Fix-decleration-of-msg_lseek.patch

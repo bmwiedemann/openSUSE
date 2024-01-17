@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ef0c7c4621d452539f75388dfc4d7010</srcmd5>
+    <version>2.12</version>
+    <time>1636662951</time>
+    <user>dimstar_suse</user>
+    <comment>required by localslackirc</comment>
+    <requestid>928319</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2abb1e0700e5b086db077f5b91e527aa</srcmd5>
+    <version>2.18</version>
+    <time>1665591879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009900</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>142abe9e0ded0d992f004be7a95e9f0d</srcmd5>
+    <version>2.19</version>
+    <time>1667306530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032487</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e2406d165e0c1e473292050197bd6e53</srcmd5>
+    <version>2.26</version>
+    <time>1702488966</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.26:
+  * Update type hints file
+  * Improve performance for loading objects
+    (attrs/dataclasses/NamedTuple)
+  * Improve performance for loading dictionary keys that are
+    basic types
+  * Improve performance for loading dataclasses
+  * Switch performance tests to test against pydantic2
+  * Drop support to Python 3.7 (which has reached EOL)
+  * Make is_optional slightly faster
+  * Keep track of the index when loading iterables the first time
+  * It makes the normal case slightly slower, and gives massive
+    performance improvements when exceptions are raised.
+  * When loading a string into datetime.date/time/datetime, ISO
+    8601 is used
+  * When dumping, setting `isodates=True` dumps an ISO 8601
+    string instead of a list of ints. The previous behaviour is
+    now deprecated.
+  * Add support for datetime.timedelta. It is dumped as a float
+    representing seconds
+  * Deprecate dump handlers without type hints
+  * Improve performance for dumping, by carrying type hints
+  * Remove `jsons` and `dataclasses-json` from benchmarks.
+  * They were too slow to be a useful comparison.
+  * Improve loading time for literals
+  * Support attrs converter
+  * Drop support to Python 3.5 and 3.6
+  * Improve performance for dumping
+  * Generate pure python wheel
+  * Switch to setuptools</comment>
+    <requestid>1132841</requestid>
+  </revision>
+</revisionlist>

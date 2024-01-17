@@ -1,0 +1,231 @@
+-------------------------------------------------------------------
+Wed Nov 15 08:26:31 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Add pkgconfig(libva) BuildRequires: Enable support for hardware
+  video acceleration
+- Add pkgconfig(vulkan) BuildRequires: Enable support for venus on
+  Tumbleweed (build failed on leap)
+
+-------------------------------------------------------------------
+Wed Oct 18 09:30:37 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.0:
+  + Switch to Venus protocol version 1.0.0
+  + Drop experimental tag from Venus configuration flag and update
+    API.
+  + Support passing fences from guest to host for waiting
+    and inter-context fence sharing/syncing.
+- Drop virglrenderer-CVE-2022-0175.patch and
+  virglrenderer-CVE-2022-0135.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb  2 09:33:17 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- security update
+  * Fix OOB in read_transfer_data() (CVE-2022-0135 bsc#1195389)
+    Add virglrenderer-CVE-2022-0135.patch
+
+-------------------------------------------------------------------
+Fri Jan 21 10:45:13 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Pick up the full upstream patch for bsc#1194601, so we know from where it comes
+  * No functional change intended
+
+-------------------------------------------------------------------
+Mon Jan 17 07:47:07 UTC 2022 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2022-0175 [bsc#1194601], VUL-0: CVE-2022-0175: virglrenderer: Missing initialization of res->ptr
+  + virglrenderer-CVE-2022-0175.patch
+
+-------------------------------------------------------------------
+Thu Apr 29 07:31:09 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.1:
+  * Various small bugfixes
+
+-------------------------------------------------------------------
+Sun Apr  4 13:50:58 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Update package to 0.9.0
+  Highlights include:
+  + multi-client support
+  + supports newer glsl version
+  + add ETC2 compressed formats
+  + performance improvements
+  + misc. bug fixes
+
+-------------------------------------------------------------------
+Wed Feb 12 14:47:31 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Update package to 0.8.2
+  Release is all bug fixes it seems. It includes these patches in
+  the release tarball:
+  vrend-Don-t-free-resource-struct-in-_resource_alloca.patch
+  vrend-Don-t-try-launching-a-grid-if-no-CS-is-availab.patch
+  vrend-Use-the-original-context-to-delete-objects.patch
+  vrend-Don-t-switch-to-ctx0-when-deleting-ctx0.patch
+
+-------------------------------------------------------------------
+Tue Feb  4 15:46:04 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Avoid potential DoS in texture allocation (CVE-2020-8003
+  boo#1162521)
+  vrend-Don-t-free-resource-struct-in-_resource_alloca.patch
+- Avoid potential DoS if grid launched without prior Compute Shader
+  (CVE-2020-8002 boo#1162519)
+  vrend-Don-t-try-launching-a-grid-if-no-CS-is-availab.patch
+- Avoid deleting wrong object, in use by others
+  vrend-Use-the-original-context-to-delete-objects.patch
+- Avoid potential use after free when deleting context
+  vrend-Don-t-switch-to-ctx0-when-deleting-ctx0.patch
+
+-------------------------------------------------------------------
+Mon Jan  6 16:57:48 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Update package to 0.8.1
+  Requires very recent libepoxy, which is currently only available
+  in Factory. Accordingly also switch to meson build, which also
+  excludes older releases.
+  Other highlights include:
+  + support emulating planar image sampling
+  + Add all formats to VIRGL_FORMAT that are referenced in Gallium
+  + deprecation of the autotools build system
+  + miscellaneous bug and performance fixes
+  + drop the following patches, which are included in this release:
+    0001-5d03711-vrend-Keep-the-max-texture-sizes-in-the-vrend_state.patch
+    0002-0d9a2c8-vrend-Check-resource-creation-more-thoroughly.patch
+    0003-24f67de-vrend-check-info-formats-in-blits.patch
+    0004-cbc8d8b-vrend-check-transfer-bounds-for-negative-values-too-.patch
+    0005-2abeb18-vrend-check-that-the-transfer-iov-holds-enough-data-.patch
+    0006-164d758-vrend-Add-an-assert-for-allocating-the-intermediate-.patch
+
+-------------------------------------------------------------------
+Mon Dec 23 05:33:34 UTC 2019 - lma@suse.com
+
+- Add 5 security fixes
+* Check resource creation more thoroughly (CVE-2019-18388 bsc#1159479)
+  0001-5d03711-vrend-Keep-the-max-texture-sizes-in-the-vrend_state.patch
+  0002-0d9a2c8-vrend-Check-resource-creation-more-thoroughly.patch
+
+* check info formats in blits (CVE-2019-18390 bsc#1159478)
+  0003-24f67de-vrend-check-info-formats-in-blits.patch
+
+* check transfer bounds for negative values too (CVE-2019-18389 bsc#1159482)
+  0004-cbc8d8b-vrend-check-transfer-bounds-for-negative-values-too-.patch
+
+* check transfer iov holds enough data for the data upload (CVE-2019-18391 bsc#1159486)
+  0005-2abeb18-vrend-check-that-the-transfer-iov-holds-enough-data-.patch
+
+* Add an assert for allocating the intermediate texture (CVE-2019-18392 bsc#1159454)
+  0006-164d758-vrend-Add-an-assert-for-allocating-the-intermediate-.patch
+
+-------------------------------------------------------------------
+Tue Nov 26 21:42:29 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update package to 0.8.0
+  Note: not switching to meson build system yet since it would
+  exclude distos with older meson (seems meson v0.49+ is required)
+  Highlights include:
+  + guest support for GL 4.3 on hosts with GLES 3.2 + certain 
+    extensions,
+  + major performance improvements, and 
+  + lots of bug fixes.
+- The shared object (SO) version changes from 0 to 1 with this
+  package update
+
+-------------------------------------------------------------------
+Wed Sep 19 11:52:37 UTC 2018 - minava@t-online.de
+
+- Update package to 0.7.0
+- Brings the renderer up to GL4.3/GLES3.1 capability and most of GLES3.2
+- Make EGL optional at configure time
+- The following patches will be removed: 
+  0001-737c3350-renderer-fix-memory-leak-in-vertex-elements-state-cr.patch
+  0002-1fdafd62-vrend-Increase-VREND_MAX_CTX-to-64.patch
+  They are included in 0.7.0
+
+
+-------------------------------------------------------------------
+Thu Jul 26 16:13:35 CEST 2018 - vliaskovitis@suse.com
+
+- vrend: Increase VREND_MAX_CTX to 64. (bsc#1102749)
+  0002-1fdafd62-vrend-Increase-VREND_MAX_CTX-to-64.patch
+
+-------------------------------------------------------------------
+Wed Nov  1 15:32:54 UTC 2017 - mpluskal@suse.com
+
+- Clean up spec file with spec-cleaner
+- Use source url
+- Add gpg signature
+- Make building more verbose
+- Explicitly require python2
+
+-------------------------------------------------------------------
+Fri Mar 10 04:22:11 UTC 2017 - lma@suse.com
+
+- Fix memory leak in vertex elements state create (CVE-2017-6386 bsc#1027376)
+  0001-737c3350-renderer-fix-memory-leak-in-vertex-elements-state-cr.patch
+
+-------------------------------------------------------------------
+Thu Mar  2 09:24:22 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups
+
+-------------------------------------------------------------------
+Fri Feb 24 09:03:26 UTC 2017 - lma@suse.com
+
+- Update package to 0.6.0
+  The following patches will be removed:
+  0001-48f67f60-renderer-fix-NULL-pointer-deref-in-vrend_clear.patch
+  0002-40b0e781-renderer-fix-a-leak-in-resource-attach.patch
+  0003-6eb13f7a-vrend-fix-memory-leak-in-int-blit-context.patch
+  0004-114688c5-renderer-fix-heap-overflow-in-vertex-elements-state-.patch
+  0005-926b9b34-vrend-fix-a-stack-overflow-in-set-framebuffer-state.patch
+
+  All of the removed patches were already included in 0.6.0,
+  So we dont need them any more.
+
+-------------------------------------------------------------------
+Fri Feb 17 11:20:43 UTC 2017 - lma@suse.com
+
+- Address various security issues
+* Fix null pointer dereference in vrend_clear (CVE-2017-5937 bsc#1024232)
+  0001-48f67f60-renderer-fix-NULL-pointer-deref-in-vrend_clear.patch
+* Fix host memory leak issue in virgl_resource_attach_backing (CVE-2016-10214 bsc#1024244)
+  0002-40b0e781-renderer-fix-a-leak-in-resource-attach.patch
+* Fix memory leak in int blit context (CVE-2017-5993 bsc#1025505)
+  0003-6eb13f7a-vrend-fix-memory-leak-in-int-blit-context.patch
+* Fix heap overflow in vertex elements state create (CVE-2017-5994 bsc#1025507)
+  0004-114688c5-renderer-fix-heap-overflow-in-vertex-elements-state-.patch
+* Fix a stack overflow in set framebuffer state (CVE-2017-5957 bsc#1024993)
+  0005-926b9b34-vrend-fix-a-stack-overflow-in-set-framebuffer-state.patch
+
+-------------------------------------------------------------------
+Fri Jun  3 16:35:39 UTC 2016 - brogers@suse.com
+
+- Further tweaks to package layout, including splitting out
+  the test server into it's own package.
+
+-------------------------------------------------------------------
+Wed Jun  1 11:01:38 UTC 2016 - brogers@suse.com
+
+- Refine BuildRequires tags
+
+-------------------------------------------------------------------
+Thu Apr 14 02:45:57 UTC 2016 - brogers@suse.com
+
+- Fixed url in spec file
+
+-------------------------------------------------------------------
+Wed Apr 13 06:15:29 UTC 2016 - lma@suse.com
+
+- Fixed epoxy dependency
+
+-------------------------------------------------------------------
+Tue Apr 12 07:44:05 UTC 2016 - lma@suse.com
+
+- Initial package, based upon virglrenderer upstream sources
+  (git tag: 0.5.0)
+

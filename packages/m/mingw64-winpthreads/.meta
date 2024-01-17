@@ -1,0 +1,5 @@
+<package name="mingw64-winpthreads" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="windows:mingw:win64" package="mingw64-winpthreads"/>
+</package>

@@ -1,0 +1,1993 @@
+-------------------------------------------------------------------
+Sun Nov 19 17:27:58 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 1.20.0 (jsc#PED-5777, jsc#PED-5893, jsc#PED-5889)
+  - Core
+    - General bug fixes and code clean-up
+    - configure.ac: add extra check for 128 bit atomic support
+    - hmem/synapseai: Refine the error handling and warning
+    - Introduce FI_ENOMR
+    - hmem/cuda: fix a bug when calculating aligned size.
+    - Handle dmabuf for ofi_mr_cache* functions.
+    - Handle dmabuf flag in ofi_mr_attr_update
+    - Handle dmabuf for mr_map insert.
+    - man: Fix the description of virtual address when FI_MR_DMABUF is set
+    - man: Clarify the defition of FI_OPT_MIN_MULTI_RECV
+    - hmem/cuda: Add dmabuf fd ops functions
+    - include/ofi_atomic_queue: Properly align atomic values
+    - Define fi_av_set_user_id
+    - Support multiple auth keys per EP
+    - Simplify restricted-dl feature
+    - hmem: Only initalize synapseai if device exists
+    - Add "--enable-profile" option
+    - windows: Updated config.h
+    - Add environment variable for selective HMEM initialization
+    - Add restricted dlopen flag to configure options
+    - hmem: generalize the use of OFI_HMEM_DATA to non-cuda iface
+    - hmem: fail cuda_dev_register if gdrcopy is not enabled
+    - Add 1.7 ABI compat
+    - Define fi_domain_attr::max_ep_auth_key
+    - hmem: Add new op to hmem_ops for getting dmabuf fd
+    - hmem/cuda: Update cuda_gdrcopy_dev_register's signature
+    - mr_cache: Define ofi_mr_info::flags
+    - Add ABI compat for fi_cq_err_entry::src_addr
+    - Define fi_cq_err_entry::src_addr
+    - Add base_addr to fi_mr_dmabuf
+    - hmem: Set FI_HMEM_HOST_ALLOC for ze addr valid
+    - hmem: Support dev reg with FI_HMEM_ZE
+    - tostr: Added fi_tostr() for data type struct fi_cq_err_entry.
+    - hmem_ze: fix incorrect device id in copy function
+    - Introduce new profiling interface for low-level statistics
+    - hmem: Support dev reg with FI_HMEM_CUDA
+    - hmem: Support dev reg with FI_HMEM_ROCR
+    - hmem: Support dev reg with FI_HMEM_SYSTEM
+    - hmem: Define optimized HMEM memcpy APIs
+    - Implement memhooks atfork child handler
+    - hmem: Support ofi_hmem_get_base_addr with sys mem
+    - hmem: Add length field to ofi_hmem_get_base_addr
+    - mr_cache: Improve cache hit rate
+    - mr_cache: Purge dead regions in find
+    - mr_cache: Update find to remove invalid MR entries
+    - mr_cache: Update find with MM valid check
+    - Add direct support for dma-buf memory registration
+    - man/fi_tagged: Remove the peek for data ability
+    - indexer: Add byte idx abstraction
+    - Add missing FI_REMOTE_CQ_DATA for fi_inject_writedata
+    - Add configure flags for more sanitizers
+    - Fix fi_peer man page inconsistency
+    - include/fi_peer: Add cq_data to rx_entry, allow peer to modify on unexp
+    - Add XPMEM support
+  - EFA
+    - General bug fix and code clean-up
+    - Do not abort on all deprecated env vars
+    - Onboard fi_mr_dmabuf API in mem reg ops.
+    - Try registering cuda memory via dmabuf when checking p2p
+    - Introduce HAVE_EFA_DMABUF_MR macro in configure
+    - Add read nack protocol docs
+    - Receiver send NACK if runt read fails with ENOMR
+    - Sender switch to long CTS protocol if runt read fails with ENOMR
+    - Receiver send NACK if long read fails with ENOMR
+    - Update efa_rdm_rxe_map_remove to accept msg_id and addr
+    - Sender switch to long CTS protocol if long read fails with ENOMR
+    - Introduce new READ_NACK feature
+    - Use SHM's full inject size
+    - Add testing for small messages without inject
+    - Enable inject rdma write
+    - Use bounce buffer for 0 byte writes
+    - Onboard ofi_hmem_dev_register API
+    - Update cuda_gdrcopy_dev_register's signature
+    - Allocate pke_vec, recv_wr_vec, sge_vec from heap
+    - Close shm resource when it is disabled in ep
+    - Disable RUNTING for Neuron
+    - Move cuda-sync-memops from MR to EP
+    - Do not insert shm av inside efa progress engine
+    - Enable shm when FI_HMEM and FI_ATOMIC are requested
+    - Adjust posted receive size to pkt_size
+    - Do not create SHM peer when SHM is disabled
+    - Use correct threading model for shm
+    - Restrict RDMA read to compatible EFA devices
+    - Add EFA device version to handshake
+    - Add missing locks in efa_cntr_wait.
+    - Add writedata RNR fabtest
+    - Handle RNRs from RDMA writedata
+    - Check opt_len in efa_rdm_ep_getopt
+    - Use correct tx/rx op_flags for shm
+  - Hooks
+    - dmabuf: Initialize fd to supress compiler warning
+    - trace: Add log on FI_VAR_UNEXP_MSG_CNT when enabled.
+    - trace: Fixed trace log format on some attributes.
+  - OPX
+    - Fix compiler warnings
+  - PSM3
+    - Fix compiler warnings
+    - Update provider to sync with IEFS 11.5.1.1.1
+  - RXM
+    - Remove unused function
+    - Use gdrcopy in rma when emulating injection
+    - Use gdrcopy in eager send/recv
+    - Add hmem gdrcopy functions
+    - Remove unused dynamic rbuf support
+  - SHM
+    - General bug fixes and cleanup
+    - Add ofi_buf_alloc error handling
+    - Only copy header + msg on unexpected path
+    - Add FI_HMEM atomic support
+    - Add memory barrier before updating resp for atomic
+    - Add more error output
+    - Reduce atomic locking with ofi_mr_map_verify
+    - Only increment tx cntr when inject rma succeeded.
+    - Use peer cntr inc ops in smr_progress_cmd
+    - Allow for inject protocol to buffer more unexpected messages
+    - Change pending fs to bufpool to allow it to grow
+    - Add unexpected SAR buffering
+    - Use generic acronym for shm cap
+    - Move CMA to use the p2p infrastructure
+    - Add p2p abstraction
+    - Load DSA dependency dynamically
+    - Replace tx_lock with ep_lock
+    - Calculate comp vars when writing completion
+    - Move progress_sar above progress_cmd
+    - Rename SAR status enum to be more clear
+    - Make SAR protocol handle 0 byte transfer.
+    - Move selection logic to smr_select_proto()
+  - Sockets
+    - Fix compiler warnings
+    - Fix provider name and api version in returned fi_info struct
+  - TCP
+    - Add profiling interface support
+    - Pass through rdm_ep flags to msg eps
+    - Derive cq flags from op and msg flags
+    - Do not progress ep that is disconnected
+    - Set FI_MULTI_RECV for last completed RX slice
+    - Return an error if invalid sequence number received
+    - xnet_progress_rx() must only be called when connected
+    - Reset ep->rx_avail to 0 after RX queue is flushed
+    - Disable the EP if an error is detected for zero-copy
+    - Add debug tracking of transfer entries
+    - Negotiate support for rendezvous
+    - Add rendezvous protocol option
+    - Generalize xnet_send_ack
+    - Flatten protocol header definitions
+    - Remove unused dynamic rbuf support
+    - Define tcp specific protocol ops
+    - Remove unneeded and incorrect rx_entry init code
+  - UCX
+    - Add FI_HMEM support
+    - Initialize ep_flush to 1
+  - Util
+    - General bug fixes
+    - memhooks: Fix a bug when calculating mprotect region
+    - Check the return value of ofi_genlock_init()
+    - Update checks for FI_AV_AUTH_KEY
+    - Define domain primary and secondary caps
+    - Add profiling util functions
+    - Update util_cq to support err_data
+    - Update ofi_cq_readerr to use new memcpy
+    - Update ofi_cq_err_memcpy to handle err_data
+    - Zero util cancel err entry
+    - Move FI_REMOTE/LOCAL_COMM to secondary caps
+    - Alter domain max_ep_auth_key
+    - Add domain checks for max_ep_auth_key
+    - Revert util_cntr->ep_list_lock to ofi_mutex
+    - Add NIC FID functions to ofi.h
+    - Add EP and domain auth key checking
+    - Add bounds checks to ibuf get
+    - Define dlist_first_entry_or_null
+    - Update util_getinfo to dup auth_key
+    - Revert util_av, util_cq and util_cntr to mutex
+    - Add missing calls to (de)initialize monitor's mutexes
+    - Avoid attempting to cleanup an uninitialized MR cache
+    - Rename ofi_mr_info fields
+    - Add rv64g support to memory hooks
+  - Verbs
+    - Windows: Check error code from GetPrivateData
+    - Add missing lock to protect SRX
+    - Add synapseai dmabuf mr support
+    - Bug fix for matching domain name with device name
+    - Windows: Fetch rejected connection data
+    - Add support for DMA-buf memory registration
+    - Windows: Fix use-after-free in case of failure in fi_listen
+    - Windows: Map ND request type to ibverbs opcode
+    - Fix memory leak when creating EQ with unsupported wait object
+    - Track ep state to prevent duplicate shutdown events
+  - Fabtests
+    - Update man page
+    - pytests/efa: onboard dmabuf argument for test_mr
+    - pytest: make do_dmabuf_reg_for_hmem an cmdline argument
+    - Bump Libfabric API version.
+    - mr_test: Add dmabuf support
+    - Introduce ft_get_dmabuf_from_iov
+    - unexpected_msg: Use ft_reg_mr to register memory
+    - pytest: Allow registering mr with dmabuf
+    - Add dmabuf support to ft_reg_mr
+    - Add dmabuf ops for cuda.
+    - Test max inject size
+    - Add FI_HMEM support to fi_rdm_rma_event and fi_rdm tests
+    - memcopy-xe: Fix data verification error for device buffer
+    - dmabuf-rdma: Increase the number of NICs that can be tested
+    - dmabuf-rdma: Remove redundant libze_ops definition
+    - fi-mr-reg-xe: Skip native dmabuf reg test for system memory
+    - Check if fi_info is returned correctly in case of FI_CONNREQ
+    - cq_data: relax CQ data validation to cq_data_size
+    - Add ZE host alloc function
+    - Use common device host buffer for check_buf
+    - hmem_ze: allocate one cq and cl on init
+    - fi-mr-reg-xe: Add testing for dmabuf registration
+    - scripts: use yaml safe_load
+    - macos: Fix build error with clang
+    - multinode: Use FI_DELIVERY_COMPLETE for 'barrier'
+    - Handle partial read scenario for fi_xe_rdmabw test For cross node tests
+    - pytest/efa: add cuda memory marker
+    - pytest/efa: Skip some configuration for unexp msg test on neuron.
+    - runfabtests.py: ignore error due to no tests are collected.
+    - pytest/efa: extend unexpected msg test range
+    - pytest/shm: extend unexpected msg test range
+    - pytest: Allow running shm fabtests in parallel
+    - unexpected_msg.c: Allow running the test with FI_DELIVERY_COMPLETE
+    - runfabtests.sh: run fi_unexpected_msg with data validation
+    - pytest/shm: Extend test_unexpected_message
+    - unexpected_msg: Make tx/rx_size large enough
+    - pytest/shm: Extend shm's rma bw test
+    - Update shm.exclude
+
+-------------------------------------------------------------------
+Mon Sep  4 07:47:59 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 1.19.0
+  - Core
+    - General code cleanup and restructuring
+    - Add ofi_hmem_any_ipc_enabled()
+    - ofi_consume_iov allows 0-byte consume
+    - ofi_consume_iov consistency
+    - ofi_indexer: return error code when iterating
+    - getinfo: Add post filters for domain and fabric names
+    - Filter loopback device if iface is specified
+    - bsock: Fix error checking for -EAGAIN
+    - windows/osd: Remove unneeded check to silence coverity
+    - windows/osd: Move variable declaration to silence coverity
+    - Introduce gdrcopy awareness to hmem copy
+    - mr/cache: Fix fi_mr_info initialization
+    - hmem_cuda: remove gdrcopy from cuda hmem copy path
+    - iouring: Fix wrong indent in ofi_sockapi_accept_uring()
+    - Implement ofi_sockctx_uring_poll_add()
+    - hmem: introduce gdrcopy from/to cuda iov functions
+    - hmem: Deprecate `FI_HMEM_CUDA_ENABLE_XFER`
+    - hmem_cuda: Restrict CUDA IPC based on peer accessibility
+    - hmem_cuda: Log number of CUDA devices detected
+    - hmem_cuda: Refactor global variables
+    - tostr: Remove the extra dir "shared/" from "include/" and "src/" .
+    - hmem_ze: fix ZE is valid check
+    - hmem_rocr: fix offset calculation
+    - hmem_rocr: use ofi spinlock functions
+    - hmem_rocr: minor fixes
+    - hmem_neuron: convert warn to info for nrt_get_dmabuf_fd not found
+    - hmem_neuron: check existance of neuron devices during initialization
+    - tostr: Moved Windows functions in shared/ofi_str.c to windows/osd.h
+    - tostr: Add helper functions ofi_tostr_size() and ofi_tostr_count().
+  - EFA
+    - Onboard Peer API, use shm provider as a peer provider
+    - Uses util SRX framework in shared receive procedures.
+    - Register shm MR with hmem_data, allow shm to use gdrcopy for cuda data movement
+    - Finish the refactor for rxr squash.
+    - Use rdma-core WR API for send requests
+    - Check optlen in getopt call
+    - Fix the rdma-read support check in RMA and MSG operations
+    - Optimize ep lock usage
+    - Use an internal fi_mr_attr for memory registration
+  - Hooks
+    - Init field in mr_attr to silence coverity
+    - Add profiling hook provider
+    - Rename cq hooking functions' names
+    - Added trace for resource creation operations
+  - OPX
+    - Initialize ofi_mr_info
+    - Fix dput credit check
+    - Only allocate replay buffer if psn is valid
+    - Support SHM Intra-node communication between single server HFI devices
+    - Fix incorrect packet size in packet header when sending CTS packet
+    - Added check to address Coverity scan defect
+    - Add multi-entry caching to TID rendezvous
+    - Fall back to default domain name for TID fabric
+    - Properly handle multiple IOVs in fi_opx_tsendmsg
+    - Fix OPX Rzv RTS receive operation SHM error (DAOS-related)
+    - Fix non-tagged sends may incorrectly set FI_TAGGED in send completions
+    - Add more info to reliability IOV buffer validation check
+    - Move dput packet build functions to new inline include
+    - Use fi_mr_attr in fi_opx_mr
+    - Disable Pre-NAKing by default, throttle until all outstanding replays ACK'd
+    - Fix reliability bug when NAKing the last PSN
+    - Update HeaderQ Register more frequently
+    - No rbuf_wrap needed for expected receive (TID)
+    - Fixes for Coverity scan issues
+    - Enhanced tag matching
+    - Tune expected recv for unaligned buffers
+    - Observability: Add finer logging granularity
+    - Reduce RTS immediate data and fix packet estimate for odd TID lengths
+    - Add additional sources for FI_OPX_UUID
+  - Peer
+    - Add cq_data to rx_entry, allow peer to modify on unexp
+    - Introduce peer cntr API
+    - Add foreach_unspec_addr API
+    - Add size as an input of the get_tag 
+  - PSM3
+    - Sync with IEFS 11.5.0.0.172
+  - SHM
+    - Only poll IPC list when ROCR IPC is enabled
+    - Allow for SAR and inject protocol to buffer more unexpected messages
+    - Remove unused sar fields
+    - Make SAR protocol handle 0 byte transfer
+    - Load DSA dependency dynamically
+    - Change recv entry freestack into bufpool
+    - Remove shm signal
+    - Use util peer cntr implementation
+    - Make SHM default to domain level threading level
+    - Replace internal shared receive implementation with util_srx
+    - Lock entire progress loop
+    - Fix ROCR data coherency
+    - Add FI_LOCAL_COMM to shm attrs
+    - Handle empty freestack
+    - Fix bug in configure.m4 in atomics_happy assignment happy
+    - Add memory barrier before update resp->status for SAR
+    - Do not use inline/inject for read op
+    - Allow shm to use gdrcopy
+    - Refactor protocol selection code
+    - Init map fi addrs to FI_ADDR_NOTAVAIL
+  - TCP
+    - General code cleanups
+    - Restrict which EPs can be opened per domain
+    - Increase CM error debug output
+    - Avoid calling close() on an invalid socket after accept error
+    - Mark the EP as disconnected before flushing the queues
+    - Add assertion failures for xnet_{monitor,halt}_sock
+    - Disable ofi_dynpoll_wait() for non-blocking progress
+    - Move PEP pollin operations to io_uring
+    - Move EP poll operations to io_uring
+    - Early exit if ofi_bsock_flush() has operation in progress
+    - Implement pollin sockctx in bsock
+    - Add missing call to xnet_submit_uring()
+    - Add return error to xnet_update_pollflag()
+    - Remove the cancel sockctx from the EP structure
+    - Move io_uring cqe from the stack to progress struct
+    - Reduce stack size for epoll event array
+    - handle NULL av in xnet_freeall_conns()
+  - UCX
+    - Publish FI_LOCAL_COMM and FI_REMOTE_COMM capabilities
+    - Fix configure error with newer MOFED
+    - Fix segfault in unsignalled completions
+  - Util
+    - Add FI_PEER support to util counter
+    - Refactor the usage of cntrs
+    - Change util_ep to be a genlock
+    - Add util shared receive implementation
+    - Update log message for invalid AV type message
+    - Fix fi_mr_info initialization
+    - Add peer ID to MR cache
+    - Store hmem_data in ofi_mr_map
+    - Split the cq progress and reading entries in ofi_cq_readfrom
+  - Verbs
+    - Add event lock to EQ to serialize closing ep
+    - Remove saved_wc_list and use CQ directly
+    - Consolidate peer_mem and dmabuf support check
+    - Fix vrb_add_credits signature
+    - Introduce new progress engine structure
+    - Simplify (and correct) locking around progress operations
+    - General code restructuring
+  - Fabtests
+    - Fix reading addressing options
+    - Allow to change only the OOB address
+    - Allow to use FI_ADDR_STR with -F
+    - Fix bw buffer utilization
+    - Separate RX and RMA counters
+    - Fix tx counter with RMA
+    - Add FI_CONTEXT mode to rdm_cntr_pingpong
+    - Add HMEM support to fi_unexpected_msg test
+    - Fix array OOB during fabtest list parsing
+    - Enable shm tagged_peek test
+    - Fix windows build warnings
+    - Make tx_buf and rx_buf aligned to 64 bytes by default
+    - Fix windows build warnings for sscanf
+    - Use dummy ft_pin_core on macOS
+    - Fix some header includes
+    - sock_test: Do not use epoll if not available
+    - recv_cancel: initialize error entry
+    - Fix wrong size used to allocate tx_msg_buf
+    - unexpected: change defaults to support tcp
+    - unexpected: add unknown unexpected peer test
+    - Enable a list of arbitrary message sizes
+    - Enabled data validation for rma read & write
+    - bw_rma operates on distinct buffer offsets
+    - ft_post_rma issues reads from remote's tx_buf
+    - General code cleanup and restructuring
+    - rdm_tagged_peek: fix race condition synchronization
+    - Add FI_LOCAL_COMM/FI_REMOTE_COMM presence check to fi_getinfo_test
+    - Correct ft_exchange_keys in prefix-mode
+    - Make rdm_tagged_peek test more general
+    - Add unit test for fi_setopt
+
+-------------------------------------------------------------------
+Mon Aug  7 16:54:07 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete TrueScale (bsc#1212146)
+
+-------------------------------------------------------------------
+Mon Jul  3 16:15:56 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 1.18.1
+  - Core
+    - Fix build warning for ofi_dynpoll_get_fd
+  - EFA
+    - Handle 0-byte writes
+    - Apply byte_in_order_128_byte for all memory type
+    - Increase default shm_av_size to 256
+    - Force handshake before selecting rtm for non-system ifaces.
+    - Only select readbase_rtm when both sides support rdma-read
+    - Bugfix for initializing SHM offload
+    - Correct CPPFLAGS during configure
+    - Make setopt support sendrecv aligned 128 bytes
+    - Make data size to be 128 byte multiples for in-order aligned send/recv
+    - prepare local read pkt entry for in-order aligned send/recv.
+    - Disable gdrcopy and cudamemcpy for in-order aligned recv.
+    - Increase the pad size in rxr_pkt_entry
+    - Make readcopy pkt pool 128 byte aligned
+    - Introduce alignment to support in order aligned ops
+    - Fix a bug when calling ibv_query_qp_data_in_order
+    - RMA operations will ensure FI_ATOMIC cap
+    - RMA operations will ensure FI_RMA cap
+    - Unittest atomics without FI_ATOMIC cap.
+    - Unittest RMA without FI_RMA cap.
+    - Refactor pkt_entry assignment in poll_ibv loop
+    - Fixes for RDMA Write and Writedata
+  - RXM
+    - Revert rxm util peer CQ support
+    - Fix credit size parameter for flow ctrl
+  - SHM
+    - Fix DSA enable
+    - Assert read op and inject proto are mutually exclusive
+    - Fix ROCR data coherency
+    - Add FI_LOCAL_COMM to shm attrs
+    - Signal peer when peer is out of resources
+    - Handle empty freestack
+    - Fix bug in configure.m4 in atomics_happy assignment happy
+    - Add memory barrier before update resp->status for SAR
+    - Fix resource leak reported by coverity
+    - Switch cmd_ctx pool from freestack to bufpool
+    - Add iface parameter to smr_select_proto
+  - TCP
+    - Fix spinning on fi_trywait()
+    - Handle truncation of active message
+    - Handle prefetched data after reporting ETRUNC error
+    - Progress all ep's on unexp_msg_list when posting recv
+    - Removed unused saved_msg::ep field to fix assert
+    - Continue receiving after truncation error
+    - Create function to allocate internal msg buffer
+    - Add runtime setting for max saved message size
+    - Increase default max_saved value
+    - Dynamically allocate large saved Rx buffers
+    - Separate the max inject and recv buf size
+    - Remove 1-line xnet_cq_add_progress function
+    - Changed default wait object to epoll
+    - Handle case where epoll isn't natively supported
+    - Hold domain lock while deregistering memory
+    - Rename DL package from libnet to libtcp
+  - UCX
+    - Align the provider version with the libfabric version
+  - Verbs
+    - Delay device initialization to when fi_getinfo is called
+    - Consolidate peer_mem and dmabuf support check
+    - verbs_nd: Init len to 0 for WCSGetProviderPath call
+    - verbs_nd: Verify CQs are valid in rdma_create_qp
+    - verbs_nd: Initialize ibv_wc fields
+    - verbs_nd: Release lock in network direct error paths
+    - Fix vrb_add_credits signature
+    - Fix credit size parameter for flow ctrl
+    - Recover RXM connection from verbs QP in error state
+  - Fabtests
+    - Add ze-dlopen functions to component tests
+    - Call cudaSetDevice() for selected device
+    - pytest/efa: Adjust get_efa_devices()
+    - pytest/common: Support parallel neuron test
+    - pytest/common: Use different cuda device for parallel cuda set
+    - efa: Test_flood_peer.py increase timeout
+    - pytest/efa: Test to flood peer during startup
+    - fi-rdmabw-xe: Add option to set maximum message size
+    - fi-rdmabw-xe: Add option to set batch size
+
+-------------------------------------------------------------------
+Thu May  4 13:27:21 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Tue Apr 18 17:25:02 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 1.18.0
+  - Core
+    - rocr: fix offset calculation
+    - rocr: use ofi spinlock functions
+    - rocr: minor fixes
+    - neuron: convert warn to info for nrt_get_dmabuf_fd not found
+    - neuron: check existance of neuron devices during initialization
+    - neuron: Add support for neuron dma-buf
+    - ze: update ZE to support new driver index specification
+    - List variables read from config file
+    - Add switch to prefer system-config over environment
+    - Add basic system-config support for setting library variables
+    - Move peer provider defines into new header
+    - rocr: Support asynchronous memory copies
+    - rocr: Add support for ROCR IPC
+    - rocr: rename rocr data-structures
+    - synpaseai: return 0 for host_register and host_deregister
+    - fabric: Improve log level of provider mismatch
+    - cuda: Allow CUDA IPC when P2P disabled
+    - ze: add ZE command list pool to reuse command lists
+    - cuda: implement cuda_get_xfer_setting for non cuda build
+    - cuda: adjust FI_HMEM_CUDA_ENABLE_XFER behavior
+    - cuda.c: Add const to param to remove warning
+    - Add IFF_RUNNING check to indicate iface is up and running
+    - io_uring support enhancements
+  - EFA
+    - Implement CUDA support on instance types that do not support GPUDirect RDMA
+    - Implement fi_write using device's RDMA write capability
+    - Enrich error messages with debug and connection info
+    - Implement support for FI_OPT_EFA_USE_DEVICE_RDMA in fi_setopt
+    - Implement support for FI_OPT_CUDA_API_PERMITTED in fi_setopt
+    - Add support for neuron dma-buf
+    - Use gdrcopy to improve the intra-node CUDA communication performance for small messages
+    - Use shm provider's FI_AV_USER_ID support
+    - Fix bugs in efa provider’s shm info initialization procedure
+  - Hooks
+    - dmabuf_peer_mem: Handle IPC handle caching in L0
+    - trace: Add trace log for CM operation APIs
+    - trace: Change tag in trace log to hex format
+    - trace: Enhance trace log for data transfer API calls
+    - trace: Add trace log for API fi_cq_readerr()
+    - trace: Add trace log for CQ operation APIs
+    - Add tracing hook provider
+  - Net
+    - Net provider optimizations have been integrated into the tcp provider.
+    - Net provider has been removed as a reported provider.
+  - OPX
+    - Fixes for Coverity scan issues
+    - Enhanced tag matching
+    - Tune expected recv for unaligned buffers
+    - Add finer logging granularity
+    - Reduce RTS immediate data and fix packet estimate for odd TID lengths
+    - Add additional sources for FI_OPX_UUID
+    - Exclude opx from build if missing needed defines
+    - Move some logs to optimized builds
+    - Fix build warnings for unused return code from posix_memalign
+    - Add reliability sanity check to detect when send buffer is illegally altered
+    - SDMA Completion workaround for driver cache invalidation race condition
+    - Fix replay payload pointer increment
+    - Handle completion counter across multiple writes in SDMA
+    - Cleanup pointers after free()
+    - Modify domain creation to handle soft cache errors
+    - Two biband performance improvements
+    - Fixes based on Coverity Scan related to auto progress patch
+    - Changed poll many argument to rx_caps instead of caps
+    - Resync with server configured for Multi-Engines (DAOS CART Self Tests)
+    - Remove import_monitor as ENOSYS case
+    - Address memory leaks reported on OFIWG issues page
+    - General code cleanup
+    - Add replays over SDMA
+    - Implement basic TID Cache
+    - Revert work_pending check change
+    - Fix use_immediate_blocks
+    - Restore state after replay packet is NULL
+    - Fix memory leak from early arrival packets
+    - Fix segfault in SHM operations from uninitialized value in atomic path
+    - Prevent SDMA work entries from being reused with outstanding replays
+    - Set runtime as default for OPX_AV
+    - Fix RTS replay immediate data
+    - Fix errors caught by the upstream libfabric Coverity Scan
+    - fi_getInfo - Support multiple HFI devices
+    - Support OFI_PORT and Contiguous endpoint addresses for CART & Mercury
+    - Add fi_opx_tid.h to Makefile.include
+    - Fix progress checks and default domain
+    - Revert is_intranode simplification.
+    - Don't inline handle_ud_ping function
+    - Allow atomic fetch ops to use SDMA for sufficiently large counts
+    - Cleaned up FI_LOG_LEVEL=warn output
+    - Cleaned up unused macros for FI_REMOTE_COMM and FI_LOCAL_COMM
+    - Reset default progress to FI_PROGRESS_MANUAL
+    - Fixed GCC 10 build error with Auto Progress
+    - Add support for FI_PROGRESS_AUTO
+    - Use max allowed packet size in SDMA path when expected TID is off
+    - Expected receive (TID) rendezvous
+    - RMA Read/Write operations over SDMA
+    - Remove origin_rs from cts and dput packet header
+    - Fix for hang in DAOS CART tests
+    - Use single IOV for bounce buffer in SDMA requests.
+    - Check for FI_MULTI_RECV with bitwise OR instead of AND
+    - Fix for intermittent intra-node deadlock hang (DAOS CART tests)
+    - Fix to RPC transport error failure (DAOS CART tests)
+    - Fix for context->buf set to NULL
+    - Fix bad asserts
+    - Ensure atomicity of atomic ops
+    - fi_opx_cq_poll_inline count and head check fix
+    - Fix intermittent intra-node hang causing RPC timeouts (DAOS CART tests)
+  - PSM3
+    - Update provider to sync with IEFS 11.4.1.1.2
+    - Fix warnings from build
+    - Add oneapi ZE support to OFI configure
+  - RXD
+    - Ignore error path in av_close return
+  - RXM
+    - Handle NULL av in rxm_freeall_conns()
+    - Implement the FI_OPT_CUDA_API_PERMITTED option
+    - Write "len" field for remote write
+    - Ignore error path domain_close return
+    - Free coll_pool on ep close
+    - Update rxm to use util_cq FI_PEER support functions
+    - Fix incorrect CQ completion field
+    - Rename srx to msg_srx
+    - Disable FI_SOURCE if not requested
+    - Memory leaks removed
+    - Set offload_coll_mask based on actual configuration
+    - Report on coll offload capabilities with OFI_OFFLOAD_PROV_ONLY
+    - Fabric setups collective offload fabric
+    - Create eq for collective offload provider
+    - Close collective providers ep when rxm_ep is closed
+    - Fix incorrect use of OFI_UNUSED()
+    - Rework collective support to use collective provider(s)
+  - SHM
+    - Fix potential deadlock in smr_generic_rma()
+    - smr_generic_rma() wwrite error completion with positive errno
+    - Update SHM to use ROCR
+    - Fix incorrect discard call when cleaning up unexpected queues
+    - Separate smr_generic_msg into msg and tagged recv
+    - Fix start_msg call
+    - Implement the FI_OPT_CUDA_API_PERMITTED option
+    - Assert not valid atomic op
+    - Fix a bug in smr_av_insert
+    - Optimize locking on the SAR path
+    - Remove unneeded sar_cnt
+    - Optimize locking
+    - Enable multiple GPU/interface support
+    - Remove HMEM specific calls from atomic path
+    - Use util_cq FI_PEER support
+    - Import shm as device host memory
+    - Add HMEM flag to smr region
+    - Fix user_id support
+    - Write tx err comp to correct cq
+    - Fix index when setting FI_ADDR_USER_ID
+  - TCP
+    - Provider source has been replaced by net provider source
+    - Removed incorrect reporting of support for FI_ATOMIC
+    - Do not save unmatched messages until we have the peer's fi_addr
+    - Use internal flag for FI_CLAIM messages, versus a reserved tag bit
+    - Fix updating error counter when discarding saved messages
+    - Allow saved messages to be received after the underlying ep has been closed
+    - Enhanced debug logging in connection path
+    - Force CM progress on unconnected ep's when posting data transfers
+    - Support connect and accept calls with io_uring
+    - Fix segfault accessing an invalid fi_addr
+    - Add io_uring support for CM message exchange
+    - Move CM progress from fabric to EQ to improve multi-threaded performance
+    - Fix small memory leak destroying an EQ
+    - Fix race where same rx entry could be freed twice
+    - Handle NULL av in rdm ep cleanup
+    - Reduce stack use for epoll event array
+  - UCX
+    - New provider targeting Nvidia fabrics that layers over libucp
+  - Util
+    - Fix the behavior of cq_read for FI_PEER
+    - rocr: Fix compilation issue
+    - cuda: Use correct debug string calls
+    - Free cq->peer_cq on close
+    - Remove extra new line from av insert log
+    - Check for count = 0 in ofi_ip_av_insert
+    - rocr: Add support for ROCR IPC
+    - Add FI_PEER support to util_cq
+    - Disable FI_SOURCE if not requested
+    - Remove FID events from the EQ when closing endpoint
+    - Rework collective support to be a peer collective provider(s)
+    - Allow FI_PEER to pass CQ, EQ and AV attr checking
+    - Remove annoying WARNING message for FI_AFFINITY
+    - Add utility collective provider
+  - Verbs
+    - Implement the FI_OPT_CUDA_API_PERMITTED option
+    - Add support for ROCR IPC
+  - Fabtests
+    - Add fi_setopt_test unit test
+    - Update ze device registration calls
+    - fi-rdmabw-xe: Always use host buffer for synchronization
+    - Fix bug in posting RMA operation
+    - fi_cq_data: Extend test to fi_writedata
+    - fi_cq_data: Extend validation of completion data
+    - Rename fi_msg_inject tests to fi_inject_test to reflect its use
+    - fi_rdm_stress: Add count option to json key/pair options
+    - Add and fix OOB option handling in several tests
+    - fi_eq_test: Fix incorrect return value
+    - fi_rdm_multi_client: Increase the size of ep name buffer
+    - Add FI_MR_RAW to default mr_mode
+    - Support larger control messages needed by newer providers
+    - fi-rdmabw-xe: Update to work with the ucx provider
+    - fi_ubertest: Cleanup allocations in failure cases
+    - Change ft_reg_mr to not assume hmem iface & device
+    - fi_multinode: Bugfix multinode test for ze + verbs
+    - fi_multinode: Remove unused validation print
+    - fi_multinode: Skip tests for unsupported collective operations
+    - fi_ubertest: Fix data validation with device memory
+    - fi_peek_tagged: Restructure and expand test
+
+-------------------------------------------------------------------
+Mon Mar 20 09:03:29 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 1.17.1
+  - Core
+    - hmem_cuda Add const to param to remove warning
+    - Fix typos in fi_ext.h
+    - ofi_epoll: Remove unused hot_index struct member
+  - EFA
+    - Print local/peer addresses for RX write errors
+    - Unit test to verify no copy with shm for small host message
+    - Avoid unnecessary copy when sending data from shm
+    - Compare pci bus id in hints
+    - Fix double free in rxr endpoint init
+  - Hooks
+    - dmabuf_peer_mem: Handle IPC handle caching in L0
+  - OPX
+    - Exclude from build if missing needed defines
+    - Move some logs to optimized builds
+    - Fix build warnings for unused return code from posix_memalign
+    - Add reliability sanity check to detect when send buffer is illegally altered
+    - SDMA Completion workaround for driver cache invalidation race condition
+    - Fix replay payload pointer increment
+    - Handle completion counter across multiple writes in SDMA
+    - Cleanup pointers after free()
+    - Modify domain creation to handle soft cache errors
+    - Two biband performance improvements
+    - Fixes based on Coverity Scan related to auto progress patch
+    - Changed poll many argument to rx_caps instead of caps
+    - Resynch with server configured for Multi-Engines (DAOS CART Self Tests)
+    - Remove import_monitor as ENOSYS case
+    - Address memory leaks reported on OFIWG issues page
+    - Remove unused fields
+    - Fix unwanted print statement case
+    - Add replays over SDMA
+    - Implement basic TID Cache
+    - Revert work_pending check change
+    - Fix use_immediate_blocks
+    - Restore state after replay packet is NULL
+    - Fix memory leak from early arrival packets.
+    - Fix segfault in SHM operations from uninitialized value in atomic path.
+    - Prevent SDMA work entries from being reused with outstanding
+      replays pointing to bounce buf.
+    - Set runtime as default for OPX_AV
+    - Fix RTS replay immediate data
+    - Fix errors caught by the upstream libfabric Coverity Scan
+    - Support multiple HFI devices
+    - Support OFI_PORT and Contiguous endpoint addresses
+    - Update man pages
+  - Util
+    - util_cq: Remove annoying WARNING message for FI_AFFINITY
+
+-------------------------------------------------------------------
+Mon Dec 19 08:39:57 UTC 2022 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 1.17.0
+  - Core
+    - Add IFF_RUNNING check to indicate iface is up and running
+    - General code cleanups
+    - Add abstraction for common io_uring operations
+    - Support ROCR get_base_addr
+    - Add a 'flags' parameter to fi_barrier()
+    - Introduce new calls for opening domain and endpoint with flags
+    - Add ability to re-sort the fi_info list
+    - Allowing layering of rxm over net provider
+    - General cleanup of provider filtering functions
+    - Add io_uring operations to be used by sockapi
+    - Modify internal handling of async socket operations
+    - Sockets operations are moved to a common sockapi abstraction
+    - Add support for Ze host register/unregister
+    - Add new offload provider type
+    - Rename fi_prov_context and simplify its use
+    - Convert interface prefix string checks to exact checks
+  - EFA
+    - Code cleanups and various bug fixes
+    - Improved debug logging and warnings and assertions
+    - Do not ignore hints->domain_attr->name
+    - Fix the calculation of REQ header size for a packet entry
+    - Fix default value for host memory's max_medium_msg_size
+    - Add tracepoints to send/recv/read ops
+    - Simplified emulated read protocol
+    - Set use_device_rdma according to efa device id
+    - Fix shm initialization path on error
+    - Fix Implementation of FI_EFA_INTER_MIN_READ_MESSAGE_SIZE
+    - Do not enable rdma_read if rxr_env.use_device_rdma is false
+    - Remove de-allocated CUDA memory region during registration
+    - Fix the error handling path of efa_mr_reg_impl()
+    - Fix rxr_ep unit tests involving ibv_cq_ex
+    - Add check of rdma-read capability for synapseai
+    - Report correct default for runt_size parameter
+    - Toggle cuda sync memops via environment variable.
+  - Net
+    - Continued fork of tcp provider, will eventually merge changes back
+    - Fix inject support
+    - Fix memory leak in peek/claim path
+    - General code cleanups and bug fixes from initial fork
+    - Allow looking ahead in tcp stream to handle out-of-order messages
+    - Add message tracing ability
+    - Fetch correct ep when posting to a loopback connection
+    - Release lock in case of error in rdm_close
+    - Fix error path in xnet_enable_rdm
+    - Add missing progress lock in srx cleanup
+    - Code restructuring and enhancements with longer term goal of supporting io_uring
+    - Disable the progress thread in most situations
+    - Rename DL from libxnet-fi to libnet-fi
+    - Add missing initialization calls for DL provider
+    - Add support for FI_PEEK, FI_CLAIM, and FI_DISCARD
+    - Include source address with CQ entry
+    - Fix support for FI_MULTI_RECV
+  - OPX
+    - Bug fixes and general code cleanup
+    - Fix progress checks and default domain
+    - Allow atomic fetch ops to use SDMA for sufficiently large counts
+    - Cleaned up FI_LOG_LEVEL=warn output
+    - Reset default progress to FI_PROGRESS_MANUAL
+    - Fixed GCC 10 build error with Auto Progress
+    - Add support for FI_PROGRESS_AUTO
+    - Use max allowed packet size in SDMA path when expected TID is turned off
+    - Expected receive (TID) rendezvous
+    - RMA Read/Write operations over SDMA
+    - Remove origin_rs from cts and dput packet header.
+    - Fix for hang - unable to match inbound packets with receive
+  context->src_addr (DAOS CART tests)
+    - Use single IOV for bounce buffer in SDMA requests.
+    - Check for FI_MULTI_RECV with bitwise OR instead of AND
+    - Fix for intermittent intra-node deadlock hang (DAOS CART tests)
+    - Fix to RPC transport error failure (DAOS CART tests)
+    - Fix for context->buf set to NULL
+    - Fix bad asserts
+    - Ensure atomicity of atomic ops
+    - fi_opx_cq_poll_inline count and head check fix
+    - Fix intermittent intra-node hang causing RPC timeouts (DAOS CART tests)
+    - Temporarily reduce SDMA queue ring size for possible driver bug workaround
+    - Fix alignment issue and asserts
+    - Enable more parallel SDMA operations
+  - PSM3
+    - Synced to IEFS 11.4.0.0.198
+    - Tech Preview Ubuntu 22.04 Support
+    - Tech Preview Intel DSA Support
+    - Improved Intel GPU Support
+    - Various performance improvements
+    - Various bug fixes
+  - RxM
+    - Always use rendezvous protocol for ZE device memory send
+    - Code cleanup
+    - Add option to free resources on AV removal
+  - SHM
+    - Fix user_id support
+    - Write tx err comp to correct cq
+    - Fix index when setting FI_ADDR_USER_ID
+    - Remove extraneous ofi_cirque_next() call
+    - Add support for FI_AV_USER_ID
+    - Fix multi_recv messaging
+    - General code restructuring for maintainability
+    - Implement shared completion queues
+    - Decouple error processing from cq completion path to avoid switch
+    - Fix incorrect op passed into recv cancel operation
+    - Enhanced SHM implementation with DSA offload
+    - Use multiple SAR buffers per copy operation
+    - Fix ZE IPC race condition on startup
+  - TCP
+    - Minor updates in preparation for io_uring support (via net provider)
+  - Util
+    - Add option to free resources on AV removal
+    - Add 'flags' parameter to new fi_barrier2() call
+    - Add debugging in ofi_mr_map_verify
+    - Rename internal bitmask struct to include ofi prefix
+  - Verbs
+    - Add option to disable dmabuf support
+    - FI_SOCKADDR includes support of FI_SOCKADDR_IB
+  - Fabtests
+    - shared: Expand hmem support
+    - fi_loopback: Add support for tagged messages
+    - fi_mr_test: add support of hmem
+    - fi_rdm_atomic: Fix hmem support
+    - fi_rdm_tagged_peek: Read messages in order, code cleanup and fixes
+    - fi_multinode: Add performance and runtime control options, cleanups
+    - benchmarks: Add data verification to some bw tests
+    - fi_multi_recv: Fix possible crash in cleanup
+- Drop prov-net-fix-error-path-in-xnet_enable_rdm.patch which was merged upstream.
+
+-------------------------------------------------------------------
+Tue Nov  8 11:46:56 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add prov-net-fix-error-path-in-xnet_enable_rdm.patch to fix a deadlock
+  when no network interfaces are available (bsc#1205139)
+
+-------------------------------------------------------------------
+Mon Oct 10 06:47:42 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.16.1
+  - Core
+    - Fix windows implementation to remove fd from poll set
+  - PSM3
+    - Add missing files to release tarball
+  - Util
+    - Handle NULL address insertion to fi_av_insert
+- Drop prov-rxm-Disable-128-bit-atomics.patch which was merged upstream
+
+-------------------------------------------------------------------
+Thu Oct  6 16:06:29 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add prov-rxm-Disable-128-bit-atomics.patch to fix a potential
+  segfault on misaligned buffers.
+
+-------------------------------------------------------------------
+Fri Sep 30 11:44:45 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.16.0 (jsc#PED-351, jsc#PED-190)
+  - Core
+    - Added HMEM IPC cache
+    - Use exact string comparison checks for network interfaces
+    - Restructuring of poll/epoll abstraction
+    - Add ability to disable locks completely in debug builds
+    - Serialize access to modifying the logging calls
+    - Minor fixes to fi_tostr text formatting
+    - Add hmem interface checks to memory registration
+  - EFA
+    - Added support of Synapse AI memory.
+    - Improved error message
+  - Net
+    - Temporarily forked, optimized version of tcp provider
+    - Focused on improved performance and scalability over tcp sockets
+    - Fork ensures tcp provider stability while net provider is developed
+    - Shares the tcp provider protocol and base implementation for msg endpoints
+    - Integrates direct support for rdm endpoints, using a derivative from rxm
+    - Implements own protocol for rdm endpoints, separate from rxm;tcp
+  - OPX
+    - Added initial support for SDMA
+    - General performance enhancements
+    - Performance improvements to reliability protocol
+    - Improved deferred work pending complete
+    - Added support for OPX_AV=runtime
+    - Support iov memory registration ops
+    - Added DAOS RPC support
+    - Atomic ops enhancements
+    - Improved documentation
+    - Debug build enhancements
+    - Fixed compiler warnings
+    - Reduced time to compile prov/opx code
+    - General bug fixes
+    - Fixed PSN wrapping scaling
+    - Added intranode fence
+    - Addressed bugs discovered by coverity scan
+  - PSM2
+    - Fix sending CQ data in some instances of fi_tsendmsg
+  - PSM3
+    - Updated to match Intel Ethernet Fabric Suite (IEFS) 11.3 release
+  - RxM
+    - Update to read multiple completions at once from msg provider
+    - Move RxM AV implementation to util code to share with net provider
+    - Minor code cleanups
+  - SHM
+    - Implement and use ipc_cache
+    - Add log messages for debugging and error tracking
+    - Fix check for FI_MR_HMEM mr_mode
+    - Move shm signal handlers initialization to EP
+    - Added log messages for errors detected
+  - TCP
+    - Fix incorrect signaling of the CQ
+    - Increase max number of poll events to retrieve
+    - Acquire ep lock prior to flushing socket in shutdown
+    - Verify ep state prior to progressing socket data
+    - Read cm error data when receiving connreq response
+    - Log error on connect failure
+    - Fix assertion failure in CQ progress function
+  - Util
+    - Fix text in log of UFFD ioctl failure
+    - Introduce cuda ipc monitor
+    - Fix CQ memory leak handling overflow
+    - Fix MR mode bit check for ver 1.5 and greater
+    - Add max_array_size to track/check array overflow
+    - Always progress transfers when reading from a CQ
+    - Handle NULL address insertion
+    - Try IPv4 before IPv6 addresses when starting name server
+    - Fix IP util av default address length
+    - Fix util IP getinfo path to read hints->addr_format
+    - Fix debug print mismatch
+    - Fix return code when memory allocation fails.
+    - Fix build sign warning in ofi_bufpool_region_alloc
+    - Minor code cleanups
+    - Print warning if an addr is inserted into an AV again
+  - Verbs
+    - Fix support of FI_SOCKADDR_IB when requested by the application
+    - Ensure all posted receives are flushed to the application
+    - Update ofi_mr_cache_search API for hmem IPC support
+    - Reduce logging verbosity for "no active ports"
+    - Fix incorrect length used in memory registration
+    - Various minor bug fixes for test failures
+    - Fix a memory leak getting IB address
+    - Implement verbs provider on Windows over NetworkDirect API
+    - Set and check address format correctly
+    - Only close qp if it was initialized
+    - Portable detection of loopback device
+  - Fabtests
+    - multi_ep: Separate EP resources and fix MR registration
+    - multi_recv: Fix possible crash and check for valid buffer
+    - unexpected_msg: Fix printf compiler warning
+    - dgram_pingpong.c: Use out-of-band sync
+    - multinode: Make multinode tests platform agnostic, fix formatting
+    - ubertest: Fix string comparison to include length, fix writedata completion check
+    - av_test: add support for -e <ep_type>
+    - New tests:
+      - dmabuf-rdma: Component level test for dma-buf RDMA
+      - sock_test: Component level performance test of poll, epoll, and select
+      - rdm_stress: Multi-threaded, multi-process stress test for RDM endpoints
+      - sighandler_test: Regression test for signal handler restoration
+- Drop patches fixed upstream:
+  - prov-opx-Correctly-disable-OPX-if-unsupported.patch
+  - disable-flatten-attr.patch
+
+-------------------------------------------------------------------
+Mon Aug  1 20:01:18 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add disable-flatten-attr.patch that drops flatten attribute.
+  Note the flatten attribute results in huge compile time hog
+  in inliner (same the binary size would be huge).
+- Use %make_build and enable LTO (boo#1133235).
+- Synchronize used Patches.
+
+-------------------------------------------------------------------
+Thu Jun 23 10:36:09 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.15.1
+  - Core
+    - Fix fi_info indentation error in fi_tostr
+    - hmem_ze: Add runtime option to choose specific copy engine
+    - Cleanup of configure HMEM checks
+    - Fixed stringop-truncation in ofi_ifaddr_get_speed
+    - Add utility provider log suffix to make logs easier to read
+    - Fix truncation of ipv6 addressing
+    - hmem: add support for AWS Trainium devices
+    - Fix potential sscanf overflows
+    - hmem: pass through device and flags when querying memory interface
+    - Rework locking in several areas to convert spinlocks to mutexes
+    - Add new locking abstractions to select lock types at runtime
+    - Add new FI_PROTO_RXM_TCP for optimized rxm over tcp path
+    - Fix windows implementation to remove fd from poll set
+  - EFA
+    - Added windows support through efawin (https://github.com/aws/efawin)
+    - Added support of AWS neuron.
+    - Added support of using gdrcopy to copy data from host to device.
+    - Fixed a bug that cause 0 byte read to fail.
+    - Fixed a memory corruption issue that can caused forked process to crash.
+    - Extended testing coverage through new pytest based testing framework.
+  - HOOKS
+    - Add new hooking provider dmabuf_peer_mem
+    - Enable DL build of hooking providers
+    - Add HMEM memory registration hook
+  - OPX
+    - New provider supporting Cornelis Networks Omni-path hardware
+  - PSM3
+    - Updated psm3 to match IEFS 11.2.0.0 release
+    - Added support for sockets (TCP/UDP) via a runtime selectable Hardware
+  Abstraction Layer (HAL)
+    - Added support for IPv6 addressing in RoCE and sockets
+    - Added various NIC selection filtering options (wildcarded NIC name,
+      address format, wildcarded IP subnet, link speed)
+    - Performance tuning in conjunction with OneAPI and OneCCL
+    - Improved PSM3_IDENTIFY output
+    - Rename most internal symbols to psm3_
+    - Corrected vulnerabilities found during Coverity scans
+    - configure options refined and help text improved
+    - PSM3_MULTI_EP has been deprecated (recommend always enabled, default
+      is enabled [same default as previous releases])
+    - Various bug fixes
+  - RxM
+    - Add check that atomic size is valid
+    - Add support to passthru calls to tcp provider in specific
+  - TCP
+    - Add assert to verify RMA source/target msg sizes match
+    - Wake-up threads blocked on CQ to update their poll events
+    - Fix use of incorrect events in progress handler
+    - Fixes for various compile warnings, mostly on Windows
+    - Add support for FI_RMA_EVENT capability
+    - Add support for completion counters
+    - Fix check for CQ data in tagged messages
+    - Add cancel support to shared rx context
+    - Add src_addr receive buffer matching
+    - Add provider control to assign a src_addr with an ep
+    - Handle trecv with FI_PEEK flag
+    - Allow binding a CQ with an SRX
+    - Restructuring of code in source files
+    - Handle EWOULDBLOCK returned by send call
+    - Add hot (active) pollfd
+  - SHM
+    - Properly chain the original signal handlers
+    - Avoid uninitialized variable with invalid atomic parameters
+    - Fix 0 byte SAR read
+    - Initialize len parameter to accept
+    - Refactor and simplify protocol code
+    - Remove broken support for 128-bit atomics
+    - Fix FI_INJECT flag support
+    - Add assert to verify RMA source/target msg sizes match
+    - Set domain threading to thread safe
+    - Fix possible use of uninitiated var in av_insert
+  - Util
+    - Fix sign warning in ofi_bufpool_region_alloc
+    - Remove unused variable from ofi_bufpool_destroy
+    - Fix check for valid datatype in ofi_atomic_valid
+    - Return with error if util_coll_sched_copy fails
+    - Fix use of uninitialized variable in ofi_ep_allreduce
+    - Fix memory access in ip_av_insertsym
+    - Track ep per collective operation not with multicast
+    - Restructure collective av set creation/destruction
+    - Change most locks from spin locks to mutexes
+    - Allow selection of spinlocks for CQ and domain objects
+    - Fix AV default addrlen
+    - Update fi_getinfo checks to include hints->addr_
+    - Handle NULL address insertion to fi_av_insert
+  - Verbs
+    - Initial changes for compiling on Windows (via NetworkDirect)
+    - Add a failover path to dma-buf based memory registration
+    - Replace use of spin locks with mutexes
+    - Check for valid qp prior to cleanup
+    - Set and check for address format correct in fi_getinfo
+  - Fabtests
+    - hmem_cuda: used device allocated host buff to fill device buf
+    - Add python scripts to control test execution
+    - test_configs: include util provider in core config file
+    - Add option "--pin-core"
+    - Only call nrt_init once
+    - Fix a bug in ft_neuron_cleanup
+    - Correct help for unit test programs
+    - Remove duplicate help prints from fi_mcast
+    - configure.ac: fix --enable-debug=no not properly detected
+    - msg_inject: handle the case ft_tsendmsg return -FI_EAGAIN
+    - Add AWS Trainium device support
+    - fi_inj_complete: Add FI_INJECT to fabtests
+    - inj_complete.c: Make arguments align with the other tests
+    - dgram_pingpong: handle the error return of fi_recv
+    - recv_cancel: Remove requirement for unexpected msg handling
+    - poll: Fix crash if unable to allocate pollset
+    - ubertest: Add GPU testing and validation support
+    - Add HMEM options parsing support
+    - Update and re-enable fi_multi_ep test
+- Add prov-opx-Correctly-disable-OPX-if-unsupported.patch to disable
+  OPX compilation on non x86_64 systems
+
+-------------------------------------------------------------------
+Tue Apr 19 07:27:42 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.14.1
+  - Core
+    - Use non-shared memory allocations to use MADV_DONTFORK safely
+    - Fix incorrect use of gdr_copy_from_mapping
+    - Ensure proper timeout time for pollfds to avoid early exit
+  - EFA
+    - Handle read completion properly for multi_recv
+    - Use shm's inject write when possible
+    - Support 0 byte read
+  - RxM
+    - Ensure signaling the CQ fd after writing completion
+    - Fix inject path for sending tagged messages with cq data
+    - Negotiate credit based flow control support over CM
+    - Add PID to CM messages to detect stale vs duplicate connections
+    - Fix race handling unexpected messages from unknown peers
+    - Fix possible leak of stack data in cm_accept
+    - Restrict reported caps based on core provider
+    - Delay starting listen until endpoint fully initialized
+    - Verify valid atomic size
+  - Sockets
+    - Fix coverity reports on uninitialized data
+    - Check for NULL pointers passed to memcpy
+    - Add missing error return code from sock_ep_enable
+  - TCP
+    - Fix performance regression resulting from sparse pollfd sets
+    - Fix assertion failure in CQ progress function
+    - Do not generate error completions for inject msgs
+    - Fix use of incorrect event names in progress handler
+    - Fix check for CQ data in tagged messages
+    - Make start_op array a static to reduce memory
+    - Wake-up threads blocked on CQ to update their poll events
+  - Verbs
+    - Generate error completions for all failed transmits
+    - Set all fields in the fi_fabric_attr for FI_CONNREQ events
+    - Set proper completion flags for all failed transfer
+    - Ensure that all attributes are provided when opening an endpoint
+    - Fix error handling in vrb_eq_read
+    - Fix memory leak in error case in vrb_get_sib
+    - Work-around bug in verbs HW not reported correct send opcodes
+    - Only call ibv_reg_dmabuf_mr when kernel support exists
+    - Add a failover path to dma-buf based memory registration
+    - Negotiate credit based flow control support over CM
+
+-------------------------------------------------------------------
+Mon Nov 22 07:57:54 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.14.0
+  - Add time stamps to log messages
+  - Fix gdrcopy calculation of memory region size when aligned
+  - Allow user to disable use of p2p transfers
+  - Update fi_tostr print FI_SHARED_CONTEXT text instead of value
+  - Update fi_tostr to output field names matching header file names
+  - Fix narrow race condition in ofi_init
+  - Add new fi_log_sparse API to rate limit repeated log output
+  - Define memory registration for buffers used for collective operations
+  - EFA, SHM, TCP, RXM, and verbs fixes
+
+-------------------------------------------------------------------
+Wed Nov  3 07:53:20 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Enable PSM3 provider (jsc#SLE-18754)
+
+-------------------------------------------------------------------
+Fri Oct 29 11:13:43 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.13.2
+  - Sort DL providers to ensure consistent load ordering
+  - Update hooking providers to handle fi_open_ops calls to avoid crashes
+  - Replace cassert with assert.h to avoid C++ headers in C code
+  - Enhance serialization for memory monitors to handle external monitors
+  - EFA, SHM, TCP, RxM and vers fixes
+
+-------------------------------------------------------------------
+Wed Aug 25 07:41:46 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.13.1
+  - Enable loading ZE library with dlopen()
+  - Add IPv6 support to fi_pingpong
+  - EFA, PSM3 and SHM fixes
+
+-------------------------------------------------------------------
+Wed Jul  7 11:13:26 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.13.0
+  - Fix behavior of fi_param_get parsing an invalid boolean value
+  - Add new APIs to open, export, and import specialized fid's
+  - Define ability to import a monitor into the registration cache
+  - Add API support for INT128/UINT128 atomics
+  - Fix incorrect check for provider name in getinfo filtering path
+  - Allow core providers to return default attributes which are lower then
+    maximum supported attributes in getinfo call
+  - Add option prefer external providers (in order discovered) over internal
+    providers, regardless of provider version
+  - Separate Ze (level-0) and DRM dependencies
+  - Always maintain a list of all discovered providers
+  - Fix incorrect CUDA warnings
+  - Fix bug in cuda init/cleanup checking for gdrcopy support
+  - Shift order providers are called from in fi_getinfo, move psm2 ahead of
+    psm3 and efa ahead of psmX
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Fri Apr  2 07:30:34 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.12.1
+  - Fix initialization checks for CUDA HMEM support
+  - Fail if a memory monitor is requested but not available
+  - Adjust priority of psm3 provider to prefer HW specific providers,
+    such as efa and psm2
+  - EFA and PSM3 fixes
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Tue Mar  9 08:43:43 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.12.0
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Wed Dec 16 08:29:07 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.11.2 (bsc#1181983)
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Mon Oct 12 10:40:29 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.11.1 (jsc#SLE-13312)
+  - See NEWS.md for changelog
+-------------------------------------------------------------------
+Tue Aug 18 08:12:27 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.11.0
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Thu May 14 08:59:09 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.10.1
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Mon Apr 27 13:04:26 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.10.0
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Thu Mar 19 08:29:38 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.9.1 (bsc#1160275)
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Mon Nov 25 09:39:53 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.9.0 (jsc#SLE-8257)
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Tue Oct  1 05:57:27 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.8.1 (jsc#SLE-8257)
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Fri Sep  6 07:10:57 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.8.0
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Wed Apr 24 17:13:07 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133235).
+
+-------------------------------------------------------------------
+Tue Apr  9 06:46:41 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.7.1
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
+Mon Feb 11 10:34:29 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove silly Prefix: value, we do not support that in SUSE anyway.
+- Update summaries, make use of %make_install.
+
+-------------------------------------------------------------------
+Thu Feb  7 07:24:21 UTC 2019 - nmoreychaisemartin@suse.com
+
+- Update to v1.7.0
+  - fabtests and libfabric repos have been merged upstream
+  - Core
+    - Add ability to report NIC details with fi_info data
+    - Improve MR cache notification mechanisms
+    - Set sockaddr address format correctly
+    - Avoid possible null dereference in eq_read
+    - Handle FI_PEEK in CQ/EQ readerr
+    - Add debug messages to name server
+    - Feature and performance enhancements added to internal buffer pool
+    - Add support for huge pages
+    - Decrease memory use for idle buffer pools
+    - Refactor utility AV functionality
+    - Generic counter support enhancements
+    - Optimize EP and CQ locking based on application threading level
+    - Enhance common support for EQ error handling
+    - Add free/alloc memory notification hooks for MR cache support
+    - Fix memory monitor unsubscribe handling
+    - Add CQ fd wait support
+    - Add CQ overflow protection
+    - Enhance IPv6 addressing support for AVs
+    - Enhancements to support for AV address lookup
+    - Fixes for emulated epoll support
+    - Allow layering of multiple utility providers
+    - Minor bug fixes and optimization
+  - Hook
+    - Improved hooking infrastructure
+    - Add support for installing multiple hooks
+    - Support hooks provided by external libraries.
+  - GNI
+    - Fix CQ readfrom overwriting src_addr in case of multiple events
+    - Signal wait set if error entry is added to CQ
+    - Fix state data issue with SMSG buffers
+    - Enhance and fix possible misuse of default authorization key
+    - Add cancel support for SEP
+    - Rework SEP setup
+    - Suppress huge page counting for ARM
+    - Fix incorrect check of FI_SYNC_ERR flag
+  - PSM2
+    - Requires PSM2 library version 10.2.260 or later
+    - Clean up connection state in fi_av_remove
+    - Use psm2_info_query to read HFI device info
+    - Clean up CQ/counter poll list when endpoint is closed
+    - Support shared address vector
+    - Optimize CQ event conversion with psm2_mq_ipeek_dequeue_multi
+    - Lock optimization for FI_THREAD_DOMAIN
+    - Use new PSM2 fast path isend/irecv functions for large size RMA
+    - Support building with latest PSM2 source code (version 11.2.68)
+    - Support fabric direct
+  - RxD
+    - Initial release of RxD provider
+    - Provides reliable datagram semantics over unreliable datagram EPs
+    - Target is to improve scalability for very large clusters relative to RxM
+  - RxM
+    - Decrease memory use needed to maintain large number of connections
+    - Set correct op_context and flags on CQ error completions
+    - Fix file descriptor memory leaks
+    - Introduce new protocol optimized for medium message transfers
+    - Improve Rx software performance path
+    - Use shared receive contexts if required by underlying provider
+    - Handle addresses inserted multiple times into AV (for AV map)
+    - Performance optimizations for single-thread applications
+    - Rework deferred transmit processing
+    - Separate and optimize eager and rendezvous protocol processing.
+    - Fix passing incorrect addresses for AV insert/remove
+    - Fix CM address handling
+    - Fix race condition accessing connection handles
+    - Simplify small RMA code path
+    - Increment correct counter when processing FI_READ events
+    - Dynamically grow the number of connections that can be supported
+    - Fix padding in wire protocol structures
+    - Report correct fi_addr when FI_SOURCE is requested
+    - Fix truncating rendezvous messages
+    - Fix use after free error in Rx buffer processing
+    - Add support for manual progress
+    - Make Tx/Rx queue sizes independent of MSG EP sizes
+    - Decrease time needed to repost buffers to the MSG EP Rx queue.
+    - Miscellaneous bug fixes
+  - Sockets
+    - Enable MSG EPs when user calls fi_accept
+    - Fix fabric names to be underlying IP address
+    - Add connection timeout environment variable.
+    - Use size of addresses, not structures
+    - Add debug messages to display selected addresses
+    - Use loopback address in place of localhost
+    - Simplify listen paths
+    - Add support for IPv6
+    - Code restructuring
+    - Avoid unneeded address to string to address translations
+    - Check length of iovec entries prior to access buffers
+    - Fix segfault
+    - Avoid acquiring nested spinlocks resulting in hangs
+    - Fix use after free error in triggered op handling
+    - New connection manager for MSG EPs to reduce number of threads
+    - Avoid retrying recv operations if connection has been broken
+    - Fixes for Windows socket support
+  - TCP
+    - Initial release of optimized socket based tcp provider
+    - Supports MSG EPs, to be used in conjunction with RxM provider
+    - Targets eventual replacement of sockets provider
+  - Verbs
+    - Remove RDM EP support.  Use RxM and RxD for RDM EPs.
+    - Improve address handling and report in fi_getinfo
+    - Handle FI_PEER when calling CQ/EQ readerr functions
+    - Add support for XRC QPs.
+    - Ignore destination address when allocating a PEP
+    - Add workaround for i40iw incorrect return values when posting sends
+    - Fix completion handling for FI_SELECTIVE_COMPLETION EP setting
+    - Change format of fabric name to use hex instead of decimal values
+    - Fix handling of err_data with EQ readerr
+    - Report correct size of max_err_data
+    - Fast path performance improvements
+    - Improve progress under high system load
+    - Optimize completion processing when handling hidden completions
+    - Optimize RMA and MSG transfers by pre-formatting work requests
+    - Remove locks based on application threading model
+    - Add overflow support for CQ error events
+    - Minor cleanups and bug fixes
+
+-------------------------------------------------------------------
+Thu Oct 25 10:52:50 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to v1.6.2 (fate#325852)
+  - Core
+    - Cleanup of debug messages
+    - Fix compile issues with older compilers
+    - Check that all debug compiler flags are supported by compiler
+  - GNI
+    - Fix problems with Scalable Endpoint creation
+    - Fix interoperability problem with HPC toolkit
+    - Improve configuration check for kdreg
+  - PSM
+    - Enforce FI_RMA_EVENT checking when updating counters
+    - Fix race condition in fi_cq_readerr()
+    - Always try to make progress when fi_cntr_read is called
+  - PSM2
+    - Revert "Avoid long delay in psm2_ep_close"
+    - Fix memory corruption related to sendv
+    - Performance tweak for bi-directional send/recv on KNL
+    - Fix CPU detection
+    - Enforce FI_RMA_EVENT checking when updating counters
+    - Remove stale info from address vector when disconnecting
+    - Fix race condition in fi_cq_readerr()
+    - Adjust reported context numbers for special cases
+    - Always try to make progress when fi_cntr_read is called
+    - Support control functions related to MR mode
+    - Unblock fi_cntr_wait on errors
+    - Properly update error counters
+    - Fix irregular performance drop for aggregated RMA operations
+    - Reset Tx/Rx context counter when fabric is initialized
+    - Fix incorrect completion event for iov send
+    - Fix occasional assertion failure in psm2_ep_close
+    - Avoid long delay in psm2_ep_close
+    - Fix potential duplication of iov send completion
+    - Replace some parameter checking with assertions
+    - Check iov limit in sendmsg
+    - Avoid adding FI_TRIGGER caps automatically
+    - Avoid unnecessary calls to psmx2_am_progress()
+  - RXM
+    - Fix incorrect increments of error counters for small messages
+    - Increment write completion counter for small transfers
+    - Use FI_UNIVERSE_SIZE when defining MSG provider CQ size
+    - Make TX, RX queue sizes independent of MSG provider
+    - Make deferred requests opt-in
+    - Fill missing rxm_conn in rx_buf when shared context is not used
+    - Fix an issue where MSG endpoint recv queue got empty resulting
+  in a hang
+    - Set FI_ORDER_NONE for tx and rx completion ordering
+    - Serialize access to repost_ready_list
+    - Reprocess unexpected messages on av update
+    - Fix a bug in matching directed receives
+    - Fix desc field when postponing RMA ops
+    - Fix incorrect reporting of mem_tag format
+    - Don't include FI_DIRECTED_RECV, FI_SOURCE caps if they're not needed
+    - Fix matching for RMA I/O vectors
+    - Fix reading pointer after freeing it.
+    - Avoid reading invalid AV entry
+    - Handle deleting the same address multiple times
+    - Fix crash in fi_av_remove if FI_SOURCE wasn't enabled
+  - Sockets
+    - Increase maximum messages size as MPICH bug work-around
+    - Fix use after free error handling triggered ops.
+  - Verbs
+    - Detect string format of wildcard address in node argument
+    - Don't report unusable fi_info (no source IP address)
+    - Don't assert when a verbs device exposes unsupported MTU types
+    - Report correct rma_iov_limit
+    - Add new variable - FI_VERBS_MR_CACHE_MERGE_REGIONS
+    - eq->err.err must return a positive error code
+
+-------------------------------------------------------------------
+Thu Mar 15 06:51:08 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to v1.6.0
+  - Fixes stack smashing when using the verbs provider (bsc#1089190)
+  - Core
+    - Introduces support for performing RMA operations to persistent memory
+      See FI_RMA_PMEM capability in fi_getinfo.3
+    - Define additional errno values
+    - General code cleanups and restructuring
+    - Force provider ordering when using dynamically loaded providers
+    - Add const to fi_getinfo() hints parameter
+    - Improve use of epoll for better scalability
+    - Fixes to generic name service
+  - PSM
+    - Move environment variable reading out from fi_getinfo()
+    - Shortcut obviously unsuccessful fi_getinfo() calls
+    - Remove excessive name sever implementation
+    - Enable ordering of RMA operations
+  - PSM2
+    - Skip inactive units in round-robin context allocation
+    - Allow contexts be shared by Tx-only and Rx-only endpoints
+    - Use utility functions to check provider attributes
+    - Turn on FI_THREAD_SAFE support
+    - Make address vector operations thread-safe
+    - Move environment variable reading out from fi_getinfo()
+    - Reduce noise when optimizing tagged message functions
+    - Shortcut obviously unsuccessful fi_getinfo() calls
+    - Improve how Tx/Rx context limits are handled
+    - Support auto selection from two different tag layout schemes
+    - Add provider build options to debug output
+    - Support remote CQ data for tagged messages, add specialization.
+    - Support opening multiple domains
+    - Put trigger implementation into a separate file
+    - Update makefile and configure script
+    - Replace allocated context with reserved space in psm2_mq_req
+    - Limit exported symbols for DSO provider
+    - Reduce HW context usage for certain TX only endpoints
+    - Remove unnecessary dependencies from the configure script
+    - Refactor the handling of op context type
+    - Optimize the conversion between 96-bit and 64-bit tags
+    - Code refactoring for completion generation
+    - Remove obsolete feature checking code
+    - Report correct source address for scalable endpoints
+    - Allow binding any number of endpoints to a CQ/counter
+    - Add shared Tx context support
+    - Add alternative implementation for completion polling
+    - Change the default value of FI_PSM2_DELAY to 0
+    - Add an environment variable for automatic connection cleanup
+    - Abstract the completion polling mechanism
+    - Use the new psm2_am_register_handlers_2 function when available
+    - Allow specialization when FI_COMPLETION op_flag is set.
+    - Put Tx/Rx context related functions into a separate file
+    - Enable PSM2 multi-ep feature by default
+    - Add option to build with PSM2 source included
+    - Simplify the code for checking endpoint capabilities
+    - Simplify the handling of self-targeted RMA operations
+    - Allow all free contexts be used for scalable endpoints
+    - Enable ordering of RMA operations
+    - Enable multiple endpoints over PSM2 multi-ep support
+    - Support multiple Tx/Rx contexts in address vector
+    - Remove the virtual lane mechanism
+    - Less code duplication in tagged, add more specialization.
+    - Allow PSM2 epid be reused within the same session
+    - Turn on user adjustable inject size for all operations
+    - Use pre-allocated memory pool for RMA requests
+    - Add support for lazy connection
+    - Various bug fixes
+  - SHM
+    - Initial release of shared memory provider
+    - See the fi_shm.7 man page for details on available features and limitations
+  - Sockets
+    - Scalability enhancements
+    - Fix issue associating a connection with an AV entry that could result in
+      application hangs
+    - Add support for new persistent memory capabilities
+    - Fix fi_cq_signal to unblock threads waiting on cq sread calls
+    - Fix epoll_wait loop handling to avoid out of memory errors
+    - Add support for TCP keepalives, controllable via environment variables
+    - Reduce the number of threads allocated for handling connections
+    - Several code cleanups in response to static code analysis reports
+    - Fix reporting multiple completion events for the same request in error cases
+  - usNIC
+    - Minor adjustments to match new core MR mode bits functionality
+    - Several code cleanups in response to static code analysis reports
+  - Verbs
+    - Code cleanups and simplifications
+    - General code optimizations to improve performance
+    - Fix handling of wildcard addresses
+    - Check for fatal errors during connection establishment
+    - Support larger inject sizes
+    - Fix double locking issue
+    - Add support for memory registration caching (disabled by default)
+    - Enable setting thread affinity for CM threads
+    - Fix hangs in MPI closing RDM endpoints
+    - Add support for different CQ formats
+    - Fix RMA read operations over iWarp devices
+    - Optimize CM progress handling
+    - Several bug fixes
+
+-------------------------------------------------------------------
+Wed Dec 20 08:49:03 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to v1.5.3
+  - Core
+    - Handle malloc failures
+    - Ensure global lock is initialized on Windows
+    - Fix spelling and formatting errors in man pages
+  - PSM
+    - Fix print format mismatches
+    - Remove 15 second startup delay when no hardware is installed
+    - Preserve FI_MR_SCALABLE mode bit for backwards compatability
+  - PSM2
+    - Fix print format mismatches
+    - Allow all to all communication between scalable endpoints
+    - Preserve FI_MR_SCALABLE mode bit for backwards compatability
+    - Fix reference counting issue with opened domains
+    - Fix segfault for RMA/atomic operations to local scalable endpoints
+    - Fix resource counting related issues for Tx/Rx contexts
+    - Allow completion suppression when fi_context is non-NULL
+    - Use correct queue for triggered operations with scalable endpoints
+  - Sockets
+    - Fix check for invalid connection handle
+    - Fix crash in fi_av_remove
+  - Util
+    - Fix number of bits used for connection index
+  - Verbs
+    - Fix incorrect CQ entry data for MSG endpoints
+    - Properly check for errors from getifaddrs
+    - Retry getifaddr on failure because of busy netlink sockets
+    - Ack CM events on error paths
+- Remove 0001-prov-psm-Eliminate-psm2-compat-library-delay-with-hf.patch
+   as it was merged upstream
+
+-------------------------------------------------------------------
+Mon Nov 20 16:27:13 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to v1.5.2
+  - Core
+    - Fix Power PC 32-bit build
+  - Sockets
+    - Fix incorrect reporting of counter attributes
+  - Verbs
+    - Fix reporting attributes based on device limits
+    - Fix incorrect CQ size reported for iWarp NICs
+    - Update man page with known issues for specific NICs
+    - Fix FI_RX_CQ_DATA mode check
+    - Disable on-demand paging by default (can cause data corruption)
+    - Disable loopback (localhost) addressing (causing failures in MPI)
+
+-------------------------------------------------------------------
+Mon Oct  9 23:28:31 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Fix github issue #3393:
+  Add 0001-prov-psm-Eliminate-psm2-compat-library-delay-with-hf.patch
+
+-------------------------------------------------------------------
+Thu Oct  5 07:10:28 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to v1.5.1
+  - Core
+    - Fix initialization used by DL providers to avoid crash
+    - Add checks for null hints and improperly terminated strings
+    - Check for invalid core names passed to fabric open
+    - Provide consistent provider ordering when using DL providers
+    - Fix OFI_LIKELY definitions when GNUC is not present
+  - GNI
+    - Add ability to detect local PE rank
+    - Fix compiler/config problems
+    - Fix CQ read error corruption
+    - Remove tests of deprecated interfaces
+  - PSM
+    - Fix CQ corruption reporting errors
+    - Always generate a completion on error
+  - PSM2
+    - Fix CQ corruption reporting errors
+    - Always generate a completion on error
+    - Add checks to handle out of memory errors
+    - Add NULL check for iov in atomic readv/writev calls
+    - Fix FI_PEEK src address matching
+    - Fix bug in scalable endpoint address resolution
+    - Fix segfault bug in RMA completion generation
+  - Sockets
+    - Fix missing FI_CLAIM src address data on completion
+    - Fix CQ corruption reporting errors
+    - Fix serialization issue wrt out of order CPU writes to Tx ring buffer
+  - Verbs
+    - Allow modifying rnr retry timout to improve performance
+    - Add checks to handle out of memory errors
+    - Fix crash using atomic operations for MSG EPs
+- Fix dependency to libfabric1 for libfabric-devel in baselibs.conf
+
+-------------------------------------------------------------------
+Tue Sep  5 09:56:19 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update _service to allow auto updates from github
+
+-------------------------------------------------------------------
+Thu Aug 10 08:29:42 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to v1.5.0
+  * Authorization keys Authorization keys, commonly referred to as job keys,
+    are used to isolate processes from communicating with other processes
+    for security purposes.
+  * Multicast support Datagram endpoints can now support multicast communication.
+  * (Experimental) socket-like endpoint types New FI_SOCK_STREAM and FI_SOCK_DGRAM
+    endpoint types are introduced. These endpoint types target support of cloud
+    and enterprise based middleware and applications.
+  * Tagged atomic support Atomic operations can now target tagged receive
+    buffers, in addition to RMA buffers.
+  * (Experimental) deferred work queues Deferred work queues are enhanced triggerred
+    operations. They target support for collective-based operations.
+  * New mode bits: FI_RESTRICTED_COMP and FI_NOTIFY_FLAGS_ONLY These mode bits
+    support optimized completion processing to minimize software overhead.
+  * Multi-threaded error reporting Reading CQ and EQ errors now allow the application
+    to provide the error buffer, eliminating the need for the application to
+    synchronize between multiple threads when handling errors.
+  * FI_SOURCE_ERR capability This feature allows the provider to validate and
+    report the source address for any received messages.
+  * FI_ADDR_STR string based addressing Applications can now request and use
+    addresses provided using a standardized string format. This makes it easier
+    to pass full addressing data through a command line, or handle address exchange
+    through text files.
+  * Communication scope capabilities: FI_LOCAL_COMM and FI_REMOTE_COMM Used to
+    indicate if an application requires communication with peers on the same
+    node and/or remote nodes.
+  * New memory registration modes The FI_BASIC_MR and FI_SCALABLE_MR memory registration
+    modes have been replaced by more refined registration mode bits. This allows
+    applications to make better use of provider hardware capabilities when dealing
+    with registered memory regions.
+  * New mode bit: FI_CONTEXT2 Some providers need more than the size provided by the
+    FI_CONTEXT mode bit setting. To accomodate such providers, an FI_CONTEXT2 mode bit
+    was added. This mode bit doubles the amount of context space that an application
+    allocates on behalf of the provider.
+  * PSM provider notes
+    * Improve the name server functionality and move to the utility code
+    * Handle updated mr_mode definitions
+    * Add support of 32 and 64 bit atomic values
+  * PSM2 provider notes
+    * Add option to adjust the locking level
+    * Improve the name server functionality and move to the utility code
+    * Add support for string address format
+    * Add an environment vaiable for message inject size
+    * Handle FI_DISCARD in tagged receive functions
+    * Handle updated mr_mode definitions
+    * Add support for scalable endpoint
+    * Add support of 32 and 64 bit atomic values
+    * Add FI_SOURCE_ERR to the supported caps
+    * Improve the method of checking device existence
+  * Sockets provider notes
+    * Updated and enhanced atomic operation support.
+    * Add support for experimental deferred work queue operations.
+    * Fixed counter signaling when used with wait sets.
+    * Improved support on Windows.
+    * Cleaned up event reporting for destroyed endpoints.
+    * Fixed several possible crash scenarios.
+    * Fixed handling socket disconnect events which could hang the provider.
+  * UDP provider notes
+    * Add support for multicast data transfers
+  * Verbs provider notes
+    * Fix an issue where if the user requests higher values for tx, rx
+      context sizes than default it wasn't honored.
+    * Introduce env variables for setting default tx, rx context sizes and iov limits.
+    * Report correct completion ordering supported by MSG endpoints.
+- Fix rpmbuild warnings
+- libfabric-devel requires libfabric1, not libfabric
+- Fix baselibs.conf
+
+-------------------------------------------------------------------
+Tue Jul  4 09:21:35 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Enable build on all archs
+- Enable mlx build
+
+-------------------------------------------------------------------
+Fri Jun 30 07:42:15 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add x86 build without libpsm2
+
+-------------------------------------------------------------------
+Tue May 16 06:43:19 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to v1.4.2 (bsc#1036907).
+
+-------------------------------------------------------------------
+Thu May 11 18:14:41 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to v1.4.2-rc1 (bsc#1036907).
+- Update notes:
+ - Fix for OS X clock_gettime() portability issue.
+ - Updated default counter wait object for improved performance
+ - Fix multi-threaded RMA progress stalls
+ - Updated default counter wait object for improved performance
+ - Fix multi-threaded RMA progress stalls
+ - Fix error in fi_cq_sreadfrom aborting before timeout expires
+ - Set atomic iov count correct correctly inside fi_atomicv
+ - Fix handling of apps that call fork.  Move ibv_fork_init() before
+   calling any other verbs call.
+ - Fix crash in fi_write when connection is not yet established and
+   write data size is below inline threshold.
+ - Fix issues not handling multiple ipoib interfaces
+ - Reduce lock contention on buffer pools in send/completion handling
+   code.
+ 
+
+
+-------------------------------------------------------------------
+Wed Apr  5 10:19:28 UTC 2017 - josef.moellers@suse.com
+
+- This version fixes bnc#990184
+  (bnc#990184)
+
+-------------------------------------------------------------------
+Thu Mar 23 16:21:53 UTC 2017 - jengelh@inai.de
+
+- RPM group fix
+
+-------------------------------------------------------------------
+Fri Mar 10 15:58:55 UTC 2017 - josef.moellers@suse.com
+
+- PSM provider notes
+  - Defer initialization of the PSM library to allow runtime selection from
+    different versions of the same provider before fi_getinfo is called.
+- PSM2 provider notes
+  - Defer initialization of the PSM2 library to allow runtime selection from
+    different versions of the same provider before fi_getinfo is called.
+  - General bug fixes.
+- UDP provider notes
+  - Fix setting address format in fi_getinfo call.
+- usNIC provider notes
+  - Fixed compilation issues with newer versions of libibverbs.
+  (fate#321883)
+-------------------------------------------------------------------
+Mon Jan 16 13:12:14 CET 2017 - ndas@suse.de
+
+- Updated to version 1.4.0 for general stability(fate#321883)
+- Summary of changes as follow: 
+ - Add new options, `-f` and `-d`, to fi_info that can be used to
+  specify hints about the fabric and domain name. Change port to `-P`
+  and provider to `-p` to be more in line with fi_pingpong.
+
+ *GNI provider notes
+
+	- General bug fixes, plugged memory leaks, performance improvements,
+  	  improved error handling and warning messages, etc.
+	- Additional API support:
+    - FI_THREAD_COMPLETION
+    - FI_RMA_EVENT
+    - iov length up to 8 for messaging data transfers
+
+ *PSM provider notes
+
+	- General bug fixes
+	- Use utility provider for EQ, wait object, and poll set
+	- Allow multi-recv to post buffer larger than message size limit
+
+ *PSM2 provider notes
+
+	- General bug fixes
+    - Add support for multi-iov RMA read and aromic operations
+    - Allow multi-recv to post buffer larger than message size limit
+
+
+ *Verbs provider notes
+
+	- Add fork support. It is enabled by default and can be turned off by
+	setting the FI_FORK_UNSAFE variable to "yes". This can improve
+	performance of memory registrations but also makes fork unsafe. The
+	following are the limitations of fork support:
+  	- Fabric resources like endpoint, CQ, EQ, etc. should not be used in
+    the forked process.
+  	- The memory registered using fi_mr_reg has to be page aligned since
+    ibv_reg_mr marks the entire page that a memory region belongs to
+    as not to be re-mapped when the process is forked (MADV_DONTFORK).
+	- Fix a bug where source address info was not being returned in
+  	fi_info when destination node is specified.
+
+-------------------------------------------------------------------
+Fri May  6 12:51:41 CEST 2016 - nads@suse.de
+
+- Updated to version 1.3.0 for better PSM2 support as suggested by 
+  fate#319253, comment #9.
+  
+  [*libfabric-libtool.patch]
+
+  Summary of changes as follow: 
+	*PSM provider notes
+		- Remove PSM2 related code.
+	*PSM2 provider notes
+		- Add support for multi-iov send, tagged send, and RMA write.
+		- Use utility provider for EQ, wait object, and poll set.
+	*GNI provider notes
+		- General bug fixes, plugged memory leaks, etc.
+		- Added support for the following APIs:
+  			- fi_endpoint: fi_getopt, fi_setopt, fi_rx_size_left, fi_tx_size_left, fi_stx_context
+  			- fi_cq: fi_sread, fi_sreadfrom
+  			- fi_msg: FI_MULTI_RECV (flag)
+  			- fi_domain: FI_PROGRESS_AUTO (flag)
+  			- fi_direct: FI_DIRECT
+		- Added support for FI_EP_DGRAM (datagram endpoint):
+		- Memory registration improvements:
+		- Initial support for Cray Cluster Compatibility Mode (CCM)
+	*MXM provider notes
+		- Initial release
+	*Sockets provider notes
+		- Enable FABRIC_DIRECT
+		- Enable sockets-provider to run on FreeBSD
+		- Add support for fi_trywait
+		- Add support for map_addr in shared-av creation
+		- Add shared-av support on OSX
+		- General bug fixes 
+	*UDP provider notes
+		- Initial release
+	*usNIC provider notes
+		- Implement fi_recvv and fi_recvmsg for FI_EP_RDM. [PR #1594]
+		- Add support for FI_INJECT flag in the FI_EP_RDM implementation of fi_sendv.
+	  	[PR #1594]
+		- Handle FI_PEEK flag in fi_eq_sread. [PR #1758]
+		- Implement waitsets [PR #1893]
+		- Implement fi_trywait [PR #1893]
+		- Fix progress thread deadlock [PR #1893]
+		- Implement FD based CQ sread [PR #1893]
+	*Verbs provider notes
+	- Add support for fi_trywait
+	- verbs/RDM
+  		- Add support for RMA operations.
+  		- Add support for fi_cq_sread and fi_cq_sreadfrom
+  		- Rework connection management to make it work with fabtests and also allow
+    	connection to self.
+  	- Other bug fixes and performance improvements.
+
+-------------------------------------------------------------------
+Wed Apr  6 16:20:41 CEST 2016 - ndas@suse.de
+
+- Moved man pages to main package.
+- Fixed invalid library group.
+
+-------------------------------------------------------------------
+Wed Apr  6 15:40:25 CEST 2016 - ndas@suse.de
+
+- Packaging version 1.2.0 for fate#319253
+
+-------------------------------------------------------------------
+Fri Feb 12 10:18:49 CET 2016 - pth@suse.de
+
+- Use explicit file list instead of wildcards
+- Package fi_info.
+- Remove libtool.m4 from the package so that autoreconf installs
+  a current version.
+
+-------------------------------------------------------------------
+Thu Feb 11 10:18:41 CET 2016 - pth@suse.de
+
+- Initial package, based on the OFED specfile for libfabric
+- Add libfabric-libtool.patch to disable static builds by default.

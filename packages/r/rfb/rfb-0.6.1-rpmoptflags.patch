@@ -1,0 +1,78 @@
+Index: rfb-0.6.1/Makefile
+===================================================================
+--- rfb-0.6.1.orig/Makefile
++++ rfb-0.6.1/Makefile
+@@ -49,7 +49,7 @@ xplayfbs: librfb.a
+ rfbcat: librfb.a
+ 	cd rfbcat       &&  $(MAKE) -e $(ENVIRONMENT) $@
+ 
+-xvncconnect:
++xvncconnect: librfb.a
+ 	cd xvncconnect  &&  $(MAKE) -e $(ENVIRONMENT) $@
+ 
+ clean:
+Index: rfb-0.6.1/lib/Makefile
+===================================================================
+--- rfb-0.6.1.orig/lib/Makefile
++++ rfb-0.6.1/lib/Makefile
+@@ -23,7 +23,7 @@ USE_ZLIB=USE_ZLIB_WARREN
+ ZLIB=-lz
+ 
+ CXXFLAGS = -D$(USE_ZLIB) $(XCLASS_INCLUDE_PATH) \
+-           -I../include -finline-functions -funroll-loops -O3 -Wall
++           -I../include -finline-functions -funroll-loops $(RPM_OPT_FLAGS)
+ 
+ OBJECTSlibrfb = Connection.o \
+                 Framebuffer.o \
+Index: rfb-0.6.1/rfbcat/Makefile
+===================================================================
+--- rfb-0.6.1.orig/rfbcat/Makefile
++++ rfb-0.6.1/rfbcat/Makefile
+@@ -22,7 +22,7 @@ USE_ZLIB=USE_ZLIB_WARREN
+ ZLIB=-lz
+ 
+ CXXFLAGS = -D$(USE_ZLIB)\
+-           -I../include -finline-functions -funroll-loops -O3 -Wall
++           -I../include -finline-functions -funroll-loops $(RPM_OPT_FLAGS)
+ 
+ PROGRAM = rfbcat
+ OBJECTS = rfbcat.o FBStreamRecorder.o
+Index: rfb-0.6.1/x0rfbserver/Makefile
+===================================================================
+--- rfb-0.6.1.orig/x0rfbserver/Makefile
++++ rfb-0.6.1/x0rfbserver/Makefile
+@@ -22,7 +22,7 @@ USE_ZLIB=USE_ZLIB_WARREN
+ ZLIB=-lz
+ 
+ CXXFLAGS = -D$(USE_ZLIB) `xc-config --cflags` \
+-           -I../include -finline-functions -funroll-loops -O3 -Wall
++           -I../include -finline-functions -funroll-loops $(RPM_OPT_FLAGS)
+ 
+ OBJECTSx0rfbserver = OXServiceApplet.o \
+                      XUpdateScanner.o \
+Index: rfb-0.6.1/xrfbviewer/Makefile
+===================================================================
+--- rfb-0.6.1.orig/xrfbviewer/Makefile
++++ rfb-0.6.1/xrfbviewer/Makefile
+@@ -22,7 +22,7 @@ USE_ZLIB=USE_ZLIB_WARREN
+ ZLIB=-lz
+ 
+ CXXFLAGS = -D$(USE_ZLIB) `xc-config --cflags` \
+-           -I../include -finline-functions -funroll-loops -O3 -Wall
++           -I../include -finline-functions -funroll-loops $(RPM_OPT_FLAGS)
+ 
+ OBJECTSxrfbviewer = ConnectionInfo.o \
+                     FBStreamRecorder.o \
+Index: rfb-0.6.1/xvncconnect/Makefile
+===================================================================
+--- rfb-0.6.1.orig/xvncconnect/Makefile
++++ rfb-0.6.1/xvncconnect/Makefile
+@@ -23,7 +23,7 @@ PROG = xvncconnect
+ SRCS = xvncconnect.cc
+ 
+ CXX = g++
+-CXXFLAGS = `xc-config --cflags` -Wall
++CXXFLAGS = `xc-config --cflags` -Wall $(RPM_OPT_FLAGS)
+ 
+ LIBS = `xc-config --libs`
+ 

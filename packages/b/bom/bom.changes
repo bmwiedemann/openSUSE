@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Nov  9 19:48:26 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Update _service file as instructed by robot
+    - Set mode="localonly" for "obs_scm" service
+    - Invoked "osc service localrun"
+
+-------------------------------------------------------------------
+Wed Nov  3 21:33:31 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Update to release 1.0.1 
+  - Fixed bug when multi-byte sequence crossed input buffer boundary
+
+-------------------------------------------------------------------
+Sat Oct 16 22:33:18 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Initial release 1.0.0

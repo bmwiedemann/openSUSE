@@ -1,0 +1,47 @@
+From 18674ef8b6473aba5b5b2dee92edcf09a3bf715f Mon Sep 17 00:00:00 2001
+From: Markus Hackspacher <hackspacher@gmx.de>
+Date: Tue, 27 Aug 2019 01:04:23 +0200
+Subject: [PATCH] replace deprecated to distro package (#2910)
+
+---
+ requirements.txt | 1 +
+ setup.py         | 4 +++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index d870567..5a94a3c 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,6 +1,7 @@
+ coverage==4.4.1
+ coveralls==1.1
+ crayons==0.1.2
++distro
+ future==0.16.0
+ greenlet==0.4.12
+ isort==4.3.4
+diff --git a/setup.py b/setup.py
+index cccb7b9..64e69b9 100755
+--- a/setup.py
++++ b/setup.py
+@@ -32,6 +32,8 @@ from distutils.core import setup
+ from distutils.spawn import find_executable
+ from shutil import copytree, rmtree
+ 
++import distro
++
+ import horizons
+ from horizons.constants import VERSION
+ from horizons.ext import polib
+@@ -39,7 +41,7 @@ from horizons.ext import polib
+ # Ensure we are in the correct directory
+ os.chdir(os.path.realpath(os.path.dirname(__file__)))
+ 
+-if platform.dist()[0].lower() in ('debian', 'ubuntu'):
++if distro.linux_distribution(full_distribution_name=False)[0] in ('debian', 'mint', 'ubuntu'):
+ 	executable_path = 'games'
+ else:
+ 	executable_path = 'bin'
+-- 
+2.25.1
+

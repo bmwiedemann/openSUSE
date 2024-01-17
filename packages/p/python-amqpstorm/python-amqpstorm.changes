@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Sat Dec  2 19:54:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.7:
+  * Fixed bug with heartbeat interval on the client not sent
+    frequently enough [#127] - Thanks Ivan Héda.
+  * Added support for Python 3.12.
+  * Fixed deprecated warning when using Python 3.11.
+  * Added support for bulk removing users with the Management
+    Api.
+  * Added support to get the Cluster Name using the Management
+    Api.
+  * Fixed ConnectionUri to default to port 5761 when using ssl
+
+-------------------------------------------------------------------
+Mon May  9 04:55:21 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.10.4
+  * Fixed a potential deadlock when opening a channel with a broken connection [#97]
+  * Added support for custom Message implementations
+  * Added Pagination and Filtering support to Management list calls
+  * Updated to use pytest framework instead of nose for testing.
+  * Fixed bug with UriConnection not handling amqps:// properly.
+  * Fixed bad socket fd causing high cpu usage [#110]
+- Get new pamqp3.patch from https://github.com/eandersson/amqpstorm/pull/95,
+  which should be in v3 (which is somehow not tagged yet)
+  * rebased it to the new codestream
+- Do not require mock
+  * mock.patch
+
+-------------------------------------------------------------------
+Mon Apr 19 13:03:19 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.8.4
+  * Added getter/setter methods for Message properties expiration, message_type and user_id
+  * Fixed pip sdist circular dependency
+  * Fixed basic.consume argument type in documentation
+  * Fixed a bug in Message.create where it would mutate the properties dict
+- Create patch pamqp3.patch for better compatibility
+
+-------------------------------------------------------------------
+Tue Jul 28 06:12:20 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.8.1:
+  * Cleaned up documentation.
+  * Introduced a new channel function called check_for_exceptions.
+  * Fixed issue where a publish was successful but raised an error because
+    connection was closed
+  * Updated TLS handling to use the non-deprecated way of creating a TLS
+    Connection
+  * Enabled SNI for TLS connections by default
+
+-------------------------------------------------------------------
+Wed Jun 10 11:40:37 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
+Thu Jan 16 17:05:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.7.2
+  * Added ability to override client_properties
+
+-------------------------------------------------------------------
+Fri Sep 13 13:03:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.7.1:
+  * Fixed Connection close taking longer than intended when using SSL [#75]- Thanks troglas.
+  * Fixed an issue with closing Channels taking too long after the server initiated it.
+
+-------------------------------------------------------------------
+Fri Jul 19 10:19:40 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Fix build on SLE-12
+  + Add python to BuildRequires for suse_version < 1500
+
+-------------------------------------------------------------------
+Fri Jun  7 14:46:15 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.7.0
+  * Added support for passing your own ssl context
+  * Improved logging verbosity on connection failures
+  * Fixed occasional error message when closing a SSL connection
+
+-------------------------------------------------------------------
+Tue May  7 10:48:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch of randomly failing test:
+  * test_heartbeat_basic_raise_on_missed_heartbeats
+
+-------------------------------------------------------------------
+Tue Feb  5 19:16:21 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Remove max version requirement on pamqp.
+
+-------------------------------------------------------------------
+Tue Feb  5 00:31:23 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to 2.6.2
+  + Set default TCP Timeout to 10s on UriConnection to match
+    Connection.
+  + Internal RPC Timeout for Opening and Closing Connections are
+    now set to a fixed 30s.
+- Update to 2.6.1
+  + Fixed minor issue with the last channel id not being available.
+- Update to 2.6.0
+  + Re-use closed channel ids.
+  + Changed Poller Timeout to be a constant.
+  + Improved Connection Close performance.
+  + Channels is now a publicly available variable in Connections.
+- Update to 2.5.0
+  + Upgraded pamqp to v2.0.0.
+  + Properly wait until the inbound queue is empty when
+    break_on_empty is set.
+  + Fixed issue with Management queue/exchange declare when the
+    passive flag was set to True.
+
+-------------------------------------------------------------------
+Thu Sep 13 13:30:19 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not distribute generic examples folder
+
+-------------------------------------------------------------------
+Mon Sep 10 06:56:40 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.4.2:
+  * Install license file out of the box
+
+-------------------------------------------------------------------
+Wed Aug 29 13:47:38 UTC 2018 - tchvatal@suse.com
+
+- Install license file
+- Make sure we run unittests
+- State out all the requirements from setup.py and friends
+- Drop not really required devel dependency
+
+-------------------------------------------------------------------
+Tue Aug 28 22:14:56 UTC 2018 - sean.marlow@suse.com
+
+- Update to v2.4.1
+  + Added client/server negotiation to better determine the
+    maximum supported channels and frame size.
+  + We now raise an exception if the maximum allowed channel
+    count is ever reached.
+
+-------------------------------------------------------------------
+Wed Feb  7 16:34:51 UTC 2018 - sean.marlow@suse.com
+
+- Update to v2.4.0
+  + basic.consume now allows for multiple callbacks.
+- Update to v.2.3.0
+  + Added delivery_tag abd redelivered properties to message.
+  + Added support for Management Api Healthchecks.
+  + Fixed delivery_tag being set to None by default.
+  + Exposed requests verify and certs flags to Management API.
+
+-------------------------------------------------------------------
+Thu Dec  7 02:12:27 UTC 2017 - sean.marlow@suse.com
+
+- Intial release v2.2.2

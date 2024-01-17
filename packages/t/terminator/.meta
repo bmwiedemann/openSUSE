@@ -1,0 +1,5 @@
+<package name="terminator" project="openSUSE:Factory">
+  <title></title>
+  <description>Store and run multiple GNOME terminals in one window</description>
+  <devel project="X11:terminals" package="terminator"/>
+</package>

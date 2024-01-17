@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Feb 25 12:44:58 UTC 2011 - chris@computersalat.de
+
+- update to 1.18
+  - added push_attr() method
+  - tweaked glob dispatch for attr()
+- recreated by cpanspec 1.78.03
+- noarch pkg
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:08 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Nov 29 18:00:24 UTC 2010 - coolo@novell.com
+
+- called spec2changelog
+
+-------------------------------------------------------------------
+Tue Jun 20 00:00:00 UTC 2006 - jfunk@funktronics.ca
+
+- Update
+
+-------------------------------------------------------------------
+Fri Nov 11 00:00:00 UTC 2005 - jfunk@funktronics.ca
+
+- Initial release
+

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ab6a655f830bf27f448fa5db7131d39</srcmd5>
+    <version>7.0.0</version>
+    <time>1578502446</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>754042</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cd2208327075eca95c6c2b071547b34b</srcmd5>
+    <version>8.0.0</version>
+    <time>1616104527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 8.0.0</comment>
+    <requestid>879902</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e8203511696b7b1f0e92289681aca63f</srcmd5>
+    <version>9.0.0</version>
+    <time>1625950484</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>905552</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1cb32b63228df8635cb0a37ece5a179c</srcmd5>
+    <version>9.0.0</version>
+    <time>1632341580</time>
+    <user>dimstar_suse</user>
+    <comment>- Add arch-independent-package-contains-binary-or-object to rpmlintrc</comment>
+    <requestid>920849</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d2a4f54e28e4291bbc469206c9f45f82</srcmd5>
+    <version>10.0.0</version>
+    <time>1656422567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10</comment>
+    <requestid>985451</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>793376faa0d2084d0fe9a9ace7897fb3</srcmd5>
+    <version>11.0.1</version>
+    <time>1699910507</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1125431</requestid>
+  </revision>
+</revisionlist>

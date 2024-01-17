@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index d137250..4e67035 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -89,7 +89,7 @@ AC_HEADER_STDC
+ dnl Check for compiler features
+ AC_C_TYPEOF
+ 
+-LT_INIT
++LT_INIT([disable-static])
+ LT_OUTPUT
+ 
+ dnl dlopen support is optional

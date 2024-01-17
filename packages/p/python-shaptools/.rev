@@ -1,0 +1,173 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e9be00e0b1975876f2550c6f9a71829</srcmd5>
+    <version>0.1.0</version>
+    <time>1557321392</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove enum34 dependency from code 
+- Fix the package license to be in synch with repo license.
+- Improved the use of keystore access. When the key_name is informed,
+  the user_name/user_password is not needed.
+- Fix UT to check the inst formatting correctly
+- Move the comment to the right place
+- Enforce the HANA instance nr format.
+- Forces Intance nr always with 2 positions filled with 0
+- Forces right formating on HANA OS admin user.
+- First package version 
+</comment>
+    <requestid>698150</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>85472219f74ae719a4e3bc362071aec2</srcmd5>
+    <version>0.2.1</version>
+    <time>1560338263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709132</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a83a504179a4dfc99a148b3625b747d3</srcmd5>
+    <version>0.2.1</version>
+    <time>1560800043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709433</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c5d2f866152ee58f281fefcff45e7905</srcmd5>
+    <version>0.3.0</version>
+    <time>1563701619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716587</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f2c5cd0a0ae1584890fd1433cb03f6c0</srcmd5>
+    <version>0.3.1</version>
+    <time>1563914421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717873</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1da6a7b46b552d86aee9e2e93fae717a</srcmd5>
+    <version>0.3.1</version>
+    <time>1565179284</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for Power machines
+  (jsc#SLE-4031, jsc#SLE-4143, boo#1137989)</comment>
+    <requestid>721481</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d177c75af58c23cf573cd3ee1d2443f9</srcmd5>
+    <version>0.3.2</version>
+    <time>1572443206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743852</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0ee6d97928b3b6d30411ccb03c448993</srcmd5>
+    <version>0.3.3</version>
+    <time>1573648149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748026</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>741474a2a780ece5cfb750fa7ff7843d</srcmd5>
+    <version>0.3.4</version>
+    <time>1575923896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755360</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ca40df77e2e7834a65a5ece5fb8b3933</srcmd5>
+    <version>0.3.5</version>
+    <time>1578675106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762854</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ef841aa5e6b03f149d60dd821892f533</srcmd5>
+    <version>0.3.8</version>
+    <time>1589579554</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>805830</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e63d640e48fa2250b2b6e8f639550806</srcmd5>
+    <version>0.3.8+git.1591005605.6537616</version>
+    <time>1591101678</time>
+    <user>dimstar_suse</user>
+    <comment>New version of python-shaptools released</comment>
+    <requestid>810592</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a2d70db061a24390dac57e3865397b6f</srcmd5>
+    <version>0.3.9+git.1598342516.94e944d</version>
+    <time>1598642500</time>
+    <user>dimstar_suse</user>
+    <comment>New version of python-shaptools released</comment>
+    <requestid>829109</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>def35f9dcce35d8e525e3f7ec97a28c1</srcmd5>
+    <version>0.3.10+git.1600699158.46fca28</version>
+    <time>1600801704</time>
+    <user>dimstar_suse</user>
+    <comment>New version of python-shaptools released</comment>
+    <requestid>835846</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>385088cb6b3bf718a4076d91e92fedfd</srcmd5>
+    <version>0.3.10+git.1601275579.c59c61d</version>
+    <time>1601919666</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>839491</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ea8a1e60bcb92b52ed9b581a99e87ca7</srcmd5>
+    <version>0.3.11+git.1605798399.b036435</version>
+    <time>1605958975</time>
+    <user>dimstar_suse</user>
+    <comment>New version of python-shaptools released</comment>
+    <requestid>849525</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d6063221f9602c2ce49068dd2f5d1ce2</srcmd5>
+    <version>0.3.11+git.1612877404.cfeb51c</version>
+    <time>1613677210</time>
+    <user>dimstar_suse</user>
+    <comment>Fix spec file to build properly in openSUSE:Factory</comment>
+    <requestid>870564</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c98cd36e072d996da37ddf6673b1190c</srcmd5>
+    <version>0.3.11+git.1615795734.75f5f46</version>
+    <time>1615905887</time>
+    <user>RBrownSUSE</user>
+    <comment>New version of python-shaptools released</comment>
+    <requestid>879096</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f1f8e55177723be1ceab2b16b0fd6c76</srcmd5>
+    <version>0.3.12+git.1619007514.1951d23</version>
+    <time>1619031626</time>
+    <user>dimstar_suse</user>
+    <comment>Hotfix release for https://bugzilla.suse.com/show_bug.cgi?id=1185090</comment>
+    <requestid>887289</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f698166f6d43dc03e52d8bca4d9c5cab</srcmd5>
+    <version>0.3.13+git.1673855974.f208fad</version>
+    <time>1674495145</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1060349</requestid>
+  </revision>
+</revisionlist>

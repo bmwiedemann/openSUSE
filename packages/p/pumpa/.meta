@@ -1,0 +1,5 @@
+<package name="pumpa" project="openSUSE:Factory">
+  <title>A simple pump.io client written in C++/Qt</title>
+  <description>Pumpa is a simple pump.io client written in C++ and Qt and licensed under the GNU GPL 3.0 (or later).</description>
+  <devel project="network" package="pumpa"/>
+</package>
