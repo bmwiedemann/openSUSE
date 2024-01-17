@@ -1,7 +1,7 @@
 #
 # spec file for package python-empy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-empy
-Version:        3.3.4
+Version:        4.0.1
 Release:        0
-License:        LGPL-2.1-or-later
 Summary:        A templating system for Python
-Url:            http://www.alcyone.com/software/empy
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            http://www.alcyone.com/software/empy
 Source:         https://files.pythonhosted.org/packages/source/e/empy/empy-%{version}.tar.gz
-Source1:        https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,18 +49,27 @@ line options and embedded commands.
 
 %prep
 %setup -q -n empy-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/em.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%post
+%python_install_alternative em.py
+
+%postun
+%python_uninstall_alternative em.py
+
 %files %{python_files}
-%license lgpl-2.1.txt
-%doc README
-%{python_sitelib}/*
+%license LICENSE.md
+%doc README.md
+%python_alternative %{_bindir}/em.py
+%{python_sitelib}/em*.py
+%pycache_only %{python_sitelib}/__pycache__/em*
+%{python_sitelib}/empy-%{version}*-info
 
 %changelog
