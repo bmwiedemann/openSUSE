@@ -1,7 +1,7 @@
 #
 # spec file for package libgsf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,7 +136,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/libgsf-1
 %{_datadir}/gir-1.0/Gsf-1.gir
-%{_datadir}/gtk-doc/html/gsf/
+%{_datadir}/gtk-doc/
 
 %files lang -f %{name}.lang
 
