@@ -1,7 +1,7 @@
 #
 # spec file for package elfutils-debuginfod
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.189
+Version:        0.190
 Release:        0
 Summary:        Debuginfod server provided by elfutils
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://sourceware.org/elfutils/
 #Git-Clone:	git://sourceware.org/git/elfutils
-Source:         https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfutils-%{version}.tar.bz2
-Source1:        https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfutils-%{version}.tar.bz2.sig
+Source:         https://sourceware.org/elfutils/ftp/%{version}/elfutils-%{version}.tar.bz2
+Source1:        https://sourceware.org/elfutils/ftp/%{version}/elfutils-%{version}.tar.bz2.sig
 Source3:        elfutils.keyring
 Source4:        %{name}.sysusers
 Patch1:         harden_debuginfod.service.patch

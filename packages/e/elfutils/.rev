@@ -1096,4 +1096,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment>Conditionalize config(debuginfod-profile) Requires tag, narrowing it down to Tumbleweed only (forwarded request 1105124 from luc14n0)</comment>
     <requestid>1108893</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>0a9f2f0462ca510b6294221a8fbbf5ae</srcmd5>
+    <version>0.190</version>
+    <time>1705526051</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1139121</requestid>
+  </revision>
 </revisionlist>
