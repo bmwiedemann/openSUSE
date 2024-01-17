@@ -28,19 +28,19 @@
 # plugin for Ansible package
 %define pythons python3
 Name:           python-ara
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later
 URL:            https://github.com/ansible-community/ara
 Source:         https://files.pythonhosted.org/packages/source/a/ara/ara-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pbr}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cliff
-Requires:       python-pbr >= 2.0.0
+Requires:       python-pbr
 Requires:       python-requests >= 2.14.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -52,7 +52,7 @@ Recommends:     python-dynaconf
 Recommends:     python-whitenoise
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Django >= 2.1.5}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module ara >= %{version}}
 BuildRequires:  %{python_module django-cors-headers}
 BuildRequires:  %{python_module django-filter}
