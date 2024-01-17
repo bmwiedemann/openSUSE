@@ -1,0 +1,6 @@
+<package name="lua-luaterm" project="openSUSE:Factory">
+  <title>Terminal operations for Lua</title>
+  <description>Lua-term provides terminal operations for Lua</description>
+  <devel project="devel:languages:lua" package="lua-luaterm"/>
+  <url>https://github.com/hoelzro/lua-term</url>
+</package>

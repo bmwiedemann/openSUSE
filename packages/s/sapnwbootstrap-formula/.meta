@@ -1,0 +1,5 @@
+<package name="sapnwbootstrap-formula" project="openSUSE:Factory">
+  <title>sapnwbootstrap-formula</title>
+  <description></description>
+  <devel project="network:ha-clustering:sap-deployments:devel" package="sapnwbootstrap-formula"/>
+</package>

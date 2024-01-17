@@ -1,0 +1,27 @@
+--- socket.c.orig
++++ socket.c
+@@ -270,7 +270,6 @@ sock_hostname(struct host_info *host)
+         res = res->ai_next;
+     }
+ 
+-    freeaddrinfo (resbase);
+ 
+     if (res == NULL)
+     {
+@@ -279,6 +278,7 @@ sock_hostname(struct host_info *host)
+             host->name, 
+             inet_ntop2 (sin6->sin6_family, &sin6->sin6_addr));
+         strncpy(host->name, paranoid, sizeof(host->name));
++	freeaddrinfo (resbase);
+         return;
+     }
+ 
+@@ -289,7 +289,7 @@ sock_hostname(struct host_info *host)
+             host->name, res->ai_canonname,
+             inet_ntop2 (sin6->sin6_family, &sin6->sin6_addr));
+     }
+-    
++    freeaddrinfo (resbase);
+     return;
+ }
+ #else /* INET6 */

@@ -1,0 +1,10 @@
+<package name="jag" project="openSUSE:Factory">
+  <title>Arcade and Puzzle 2D Game in which you have to break all the target pieces</title>
+  <description>The aim of JAG is to break all of the target pieces on each level,
+and to do this before the time runs out. Keep doing this until you
+have beaten the last level and won the game.
+
+</description>
+  <devel project="games" package="jag"/>
+  <url>http://jag.xlabsoft.com/  </url>
+</package>

@@ -1,0 +1,67 @@
+--- rfc931.c.orig
++++ rfc931.c
+@@ -23,7 +23,7 @@ static char sccsid[] = "@(#) rfc931.c 1.
+ #include <setjmp.h>
+ #include <signal.h>
+ #include <string.h>
+-
++#include <unistd.h>
+ /* Local stuff. */
+ 
+ #include "tcpd.h"
+--- safe_finger.c.orig
++++ safe_finger.c
+@@ -19,13 +19,16 @@ static char sccsid[] = "@(#) safe_finger
+ #endif
+ 
+ /* System libraries */
+-
++#include <stdlib.h>
++#include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/wait.h>
+ #include <signal.h>
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <pwd.h>
++#include <fcntl.h>
+ 
+ extern void exit();
+ 
+--- tcpdchk.c.orig
++++ tcpdchk.c
+@@ -20,6 +20,7 @@ static char sccsid[] = "@(#) tcpdchk.c 1
+ 
+ /* System libraries. */
+ 
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #ifdef INET6
+@@ -33,6 +34,7 @@ static char sccsid[] = "@(#) tcpdchk.c 1
+ #include <errno.h>
+ #include <netdb.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ extern int errno;
+ extern void exit();
+--- tcpdmatch.c.orig
++++ tcpdmatch.c
+@@ -19,6 +19,7 @@ static char sccsid[] = "@(#) tcpdmatch.c
+ 
+ /* System libraries. */
+ 
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/socket.h>
+@@ -29,6 +30,7 @@ static char sccsid[] = "@(#) tcpdmatch.c
+ #include <syslog.h>
+ #include <setjmp.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ extern void exit();
+ extern int optind;

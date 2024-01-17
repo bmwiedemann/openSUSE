@@ -1,0 +1,5 @@
+<package name="rust-keylime" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="rust-keylime"/>
+</package>

@@ -1,0 +1,8 @@
+<package name="adobe-sourcecodepro-fonts" project="openSUSE:Factory">
+  <title>A set of OpenType fonts designed for coding environments</title>
+  <description>Source Code is a set of monospaced OpenType fonts that have been designed to work well with coding environments. This family of fonts is a complementary design to the Source Sans family.
+
+</description>
+  <devel project="M17N:fonts" package="adobe-sourcecodepro-fonts"/>
+  <url>http://sourceforge.net/projects/sourcecodepro.adobe</url>
+</package>

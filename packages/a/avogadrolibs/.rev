@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81cf487eb84bbdb9e66b7e31d21ce2ee</srcmd5>
+    <version>0.9.0</version>
+    <time>1496822093</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by kalzium</comment>
+    <requestid>494883</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>63f991418dcaa805eab349bede9ddf20</srcmd5>
+    <version>0.9.0</version>
+    <time>1510045473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539330</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7dced53550f0b0b081ce31224db88e7d</srcmd5>
+    <version>0.9.0</version>
+    <time>1528111350</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Fix-build-with-Qt-511.patch to fix build with Qt 5.11.
+</comment>
+    <requestid>613816</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>07376a4a792a86ec0cbda57c36718887</srcmd5>
+    <version>1.95.0</version>
+    <time>1630525017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915098</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0af6512e34a201f6c003725d12865fa8</srcmd5>
+    <version>1.95.1</version>
+    <time>1634587166</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925863</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e320692b32c35a7364d822ba8ec3fbaf</srcmd5>
+    <version>1.95.1</version>
+    <time>1634853328</time>
+    <user>dimstar_suse</user>
+    <comment>- Workaround for Arm/openGL ES, until overlayaxes fixed upstream
+  https://github.com/OpenChemistry/avogadrolibs/issues/810 (forwarded request 926305 from Guillaume_G)</comment>
+    <requestid>926677</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0f11fa855ec3941988a2654374d9675b</srcmd5>
+    <version>1.97.0</version>
+    <time>1663327941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003933</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d24ffc8dbea9fd2611482b2b32b02d8c</srcmd5>
+    <version>1.97.0</version>
+    <time>1670514721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041316</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e3eefec40e6205cf1ec22021b349225d</srcmd5>
+    <version>1.98.1</version>
+    <time>1702488882</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132731</requestid>
+  </revision>
+</revisionlist>

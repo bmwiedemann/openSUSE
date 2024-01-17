@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6286d82388b3159e469867987a30c3ce</srcmd5>
+    <version>0.7.5</version>
+    <time>1531232146</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial packaging based on Mageia package
+</comment>
+    <requestid>621714</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4ba7ca0397397722b16ede70cad31364</srcmd5>
+    <version>0.7.6</version>
+    <time>1531947416</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not manually specify dependencies which are automatically
+  generated
+- Make requirements of devel package less strict
+- Update to 0.7.6
+  + SHA-512 and SHA-512/128 support
+  + New default chunk checksum type SHA-512/128
+  + Automatic chunking moved into libzck and is now default
+  + New option to disable automatic chunking
+  + Bugfixes
+</comment>
+    <requestid>623614</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>81f0d485d476d9ca21427ad84cc60621</srcmd5>
+    <version>0.9.11</version>
+    <time>1539251273</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump meson build dependency to match meson.build requirement
+- Rebase to 0.9.11
+  + Fix small bug where creating a zck_dl context fails when zck
+    context is NULL
+  + Fix security bugs found by Coverity
+  + Fix test failures for zstd &lt;= 1.3.4
+  + Add gen_xml_dictionary to libexecdir with zck_ prefix
+  + Fix intermittent bug where auto-chunking wasn't deterministic
+  + ABI (but not API change) - Use bool from stdbool.h
+  + Allow specification of output file in zck
+  + Set minimum and maximum chunk sizes for both automatic and
+    manual chunking
+  + New error handling functions
+  + File format changes
+  + API changes
+- Make requirements between subpackages stricter to avoid issues
+  due to inter-subpackage ABI/API changes
+</comment>
+    <requestid>639072</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bfa15ea949ed21b67b33ce37c80c3eb3</srcmd5>
+    <version>0.9.13</version>
+    <time>1540988111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645358</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>30f206d11d9e11f621f1bf5c7e364d19</srcmd5>
+    <version>1.0.3</version>
+    <time>1548452718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3
+  + Fix some small bugs found by Coverity
+  + Fix memory leak and off-by-one errors
+  + Use hash table for finding identical chunks, speeding up process
+    considerably
+  + Add test case to verify that identical chunk checking is working
+  + Turn off some tests for big-endian architectures since zstd
+    isn't deterministic on them
+  + Add zck_gen_zdict binary to generate optimal zdict for a zchunk file
+  + Add functions to API to simplify extracting a single chunk
+  + Change default zstd compression to 9 for a 6x speed increase in
+    compression speed for a 5% increase in compression size
+  + Switch from optional flags to more robust optional elements
+  + Sanity check hex hashes passed in as an option
+</comment>
+    <requestid>668433</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8166d82d208be33a51a6a5cf3205e95a</srcmd5>
+    <version>1.1.0</version>
+    <time>1554371958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0
+  + Fix multipart boundary bug when dealing with lighttpd servers
+  + Optimize chunk matching while downloading, significantly reducing CPU usage
+</comment>
+    <requestid>690189</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6788b70caab4edf9dfdf8e86532c94c4</srcmd5>
+    <version>1.1.4</version>
+    <time>1577137307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757744</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1478bb2ff0353ae827ec76ec60de78c0</srcmd5>
+    <version>1.1.5</version>
+    <time>1579636634</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  + Handle write errors correctly</comment>
+    <requestid>765583</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>409212185a1f4859533fb39c776db5cc</srcmd5>
+    <version>1.1.5</version>
+    <time>1610123545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860162</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ecbc803513cc6343bcf400ea9b3747c2</srcmd5>
+    <version>1.1.9</version>
+    <time>1619729077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888805</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>701564cb139637845d1a67e70577b9b7</srcmd5>
+    <version>1.1.11</version>
+    <time>1620334291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890156</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b454f54fc24423bedbda20ae09cbc488</srcmd5>
+    <version>1.1.14</version>
+    <time>1621626567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894754</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>07feda917f54507bc6ed992fdab3854f</srcmd5>
+    <version>1.1.16</version>
+    <time>1624813096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901702</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6f8aa4479dc48f8b47849cd161bbae87</srcmd5>
+    <version>1.1.16</version>
+    <time>1641321447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943663</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>518dc87aff7edaf4d1b141bdcf8b319d</srcmd5>
+    <version>1.2.1</version>
+    <time>1650060797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970186</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dc2e028dea9b5f755b921ff3c41ce4dd</srcmd5>
+    <version>1.2.2</version>
+    <time>1650735899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971962</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c01e7abad63d2bd149a9f95eb7ebd309</srcmd5>
+    <version>1.2.3</version>
+    <time>1666689524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030885</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6eb9725b54dbf0be1ee3bc8314d6556f</srcmd5>
+    <version>1.2.4</version>
+    <time>1676911517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066630</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7a8d1c9a4e85095fc4ecc8b104716a8f</srcmd5>
+    <version>1.3.0</version>
+    <time>1680125203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074673</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b4e8385ee7e8bf96b32bd4bd48ee352a</srcmd5>
+    <version>1.3.1</version>
+    <time>1686576252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092350</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1b8e9fc687139ea6aed7db3db51801b3</srcmd5>
+    <version>1.3.2</version>
+    <time>1697488361</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117906</requestid>
+  </revision>
+</revisionlist>

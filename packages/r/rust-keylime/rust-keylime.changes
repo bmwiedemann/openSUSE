@@ -1,0 +1,612 @@
+-------------------------------------------------------------------
+Fri Dec 01 10:04:40 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.3+git.1701075380.a5dc985:
+  * build(deps): bump actix-rt from 2.8.0 to 2.9.0
+  * Bump version to 0.2.3
+  * build(deps): bump reqwest from 0.11.20 to 0.11.22
+  * Bump configuration version and fix enable_iak_idevid
+  * Enable test functional/iak-idevid-register-with-certificates
+  * Update packit plan with new tests
+  * Add certificates and certificate checking for IDevID and IAK keys (#669)
+
+-------------------------------------------------------------------
+Fri Nov 03 15:23:05 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.2+git.1697658634.9c7c6fa:
+  * build(deps): bump rustix from 0.37.11 to 0.37.25
+  * build(deps): bump tempfile from 3.6.0 to 3.8.0
+  * build(deps): bump base64 from 0.21.0 to 0.21.4
+  * build(deps): bump serde_json from 1.0.96 to 1.0.107
+  * build(deps): bump openssl from 0.10.55 to 0.10.57
+  * cargo: Bump serde to version 1.0.188
+  * tests: Fix tarpaulin issues with dropped -v option
+  * build(deps): bump signal-hook from 0.3.15 to 0.3.17
+  * build(deps): bump actix-web from 4.3.1 to 4.4.0
+  * build(deps): bump thiserror from 1.0.40 to 1.0.48
+  * Remove private_in_public
+  * Initial PR to add support for IDevID and IAK
+  * build(deps): bump uuid from 1.3.1 to 1.4.1
+  * build(deps): bump log from 0.4.17 to 0.4.20
+  * build(deps): bump reqwest from 0.11.16 to 0.11.20
+  * Do not use too specific version on cargo audit workflow
+  * Add workflow to run cargo-audit security audit
+  * README: update dependencies for Debian and Ubuntu
+  * Use latest versions of checkout/upload-artifacts
+  * docker: Add 'keylime' system user
+  * Use "currently" for swtpm emulator warning (#632)
+  * Update container workflow actions versions
+  * Build container image and push to quay.io
+  * README: update requirements
+
+-------------------------------------------------------------------
+Fri Jul 14 07:31:23 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.2+git.1689256829.3d2b627:
+  * Bump version to 0.2.2
+  * build(deps): bump tempfile from 3.5.0 to 3.6.0
+  * removing SIGINT stop signals from Dockerfiles and systemd service, as well as adding SIGTERM to IMA emulator as shutdown signal
+
+-------------------------------------------------------------------
+Wed Jul 12 14:17:39 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.1+git.1689167094.67ce0cf:
+  * cargo: Bump serde to version 1.0.166
+  * build(deps): bump libc from 0.2.142 to 0.2.147
+  * adding release Dockerfiles in 3 flavours: fedora, distroless and wolfi
+  * hash: add more configurable hash algorithm for public key digest
+  * cargo: Update clap to version 4.3.11
+  * cargo: Bump tokio crate version to 1.28.2
+  * Add an example of IMA policy
+  * main: Gracefully shutdown on SIGTERM or SIGINT
+  * cargo: Bump proc-macro2 crate version
+  * revocation: Parse revocation actions flexibly
+  * crypto: Add unit tests for x509 functions
+  * crypto: Make internal functions private
+  * config: Add unit test for the list to files mapping
+  * config: Make trusted_client_ca to accept lists
+  * lib: Implement parser for lists from config file
+  * build(deps): bump openssl from 0.10.48 to 0.10.55
+  * Add secure mount sanity test to packit testing.
+  * [packit] Do not let COPR project expire
+
+-------------------------------------------------------------------
+Wed Jun  7 09:08:22 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Recommends the IMA Policy subpackage only if SELinux is configured
+
+-------------------------------------------------------------------
+Mon Jun 05 08:41:33 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.1+git.1685699835.3c9d17c:
+  * Remove MOUNT_SECURE bool
+  * rpm: Remove unused directory and add dependency for mount
+  * keylime-agent/src: update API version to 2.1 to consistent with https://github.com/keylime/keylime/blob/master/docs/rest_apis.rst
+  * docker/fedora/keylime_rust.Dockerfile: add the logic of cloning and compiling rust-keylime
+  * [tests] Update test coverage task name regexp
+  * [tests] Simply coverage file URL parsing
+
+-------------------------------------------------------------------
+Thu Apr 27 09:34:45 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.1+git.1682587333.b497f1d:
+  * Bump version to 0.2.1
+  * Cargo: Update base64 to version 0.21
+  * build(deps): bump enumflags2 from 0.7.5 to 0.7.7
+  * build(deps): bump uuid from 1.3.0 to 1.3.1
+  * build(deps): bump libc from 0.2.141 to 0.2.142
+  * keylime-agent/src/common.rs: remove VTPM and IMA stub variables
+  * rpm/fedora: Use vendored dependencies for all versions
+  * packit: Enable building RPM on Copr for fedora-all
+  * rpm/fedora: Fix metadata patch
+  * build(deps): bump serde from 1.0.159 to 1.0.160
+  * build(deps): bump serde_json from 1.0.95 to 1.0.96
+  * cargo: Drop default features from actix-web
+  * cargo: Drop default features from reqwest crate
+  * cargo: Drop default features from config crate
+  * build(deps): bump tempfile from 3.4.0 to 3.5.0
+  * build(deps): bump libc from 0.2.140 to 0.2.141
+
+-------------------------------------------------------------------
+Fri Apr 14 07:42:55 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.0+git.1681457715.54484b7:
+  * build(deps): bump h2 from 0.3.14 to 0.3.17 (CVE-2023-26964,
+    bsc#1210344)
+  * build(deps): bump reqwest from 0.11.15 to 0.11.16
+
+-------------------------------------------------------------------
+Wed Apr 12 14:52:38 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.0+git.1681223954.646cf61:
+  * Allow setting measured boot log path for testing
+  * build(deps): bump base64 from 0.13.1 to 0.21.0
+  * build(deps): bump wiremock from 0.5.14 to 0.5.18
+  * Build Fedora and CentOS packages on Copr using packit
+  * build(deps): bump serde_json from 1.0.91 to 1.0.95
+  * build(deps): bump actix-rt from 2.7.0 to 2.8.0
+  * build(deps): bump base64 from 0.13.1 to 0.21.0
+  * build(deps): bump serde from 1.0.147 to 1.0.159
+  * build(deps): bump glob from 0.3.0 to 0.3.1
+  * Add missing test from keylime testsuite to e2e plan
+  * Fix typo in name of test for generating coverage
+  * build(deps): bump thiserror from 1.0.38 to 1.0.40
+  * build(deps): bump base64 from 0.13.1 to 0.21.0
+  * build(deps): bump actix-web from 4.2.1 to 4.3.1
+  * build(deps): bump serde from 1.0.145 to 1.0.147
+  * build(deps): bump libc from 0.2.139 to 0.2.140
+  * build(deps): bump futures from 0.3.25 to 0.3.27
+  * build(deps): bump reqwest from 0.11.12 to 0.11.15
+  * build(deps): bump config from 0.13.2 to 0.13.3
+  * build(deps): bump openssl from 0.10.45 to 0.10.48
+  * build(deps): bump tokio from 1.24.2 to 1.26.0
+  * Cargo: Update tempfile to 3.4.0 version
+
+-------------------------------------------------------------------
+Wed Mar 15 16:46:28 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add keylime-ima-policy subpackage to provide a better IMA policy
+
+-------------------------------------------------------------------
+Thu Mar 02 15:12:27 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.0+git.1677691779.f7edd9a:
+  * Disable e2e on Rawhide due to RHBZ#2171376
+  * Change number of required uploaded files
+  * Coverage for rust agent as github action.
+  * config: Skip validation of keylime_dir during tests
+
+-------------------------------------------------------------------
+Thu Mar  2 15:11:47 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Create the certificiate directory
+
+-------------------------------------------------------------------
+Wed Feb 22 09:07:12 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.0+git.1677002906.cf6c4f0:
+  * Bump version to 0.2.0
+  * packit: Remove workaround for Fedora BZ#2158598
+  * ima-emulator: Implement graceful shutdown
+  * Update tss-esapi in Cargo.toml
+  * packit: Re-enable tests on Fedora Rawhide
+  * Deprecate `with-zmq` and `legacy-python-actions` features
+
+-------------------------------------------------------------------
+Thu Feb 16 12:51:38 UTC 2023 - aplanas@suse.com
+
+- Drop zmq from the feature set
+- Remove already merged patches:
+  * 0001-keylime-agent-remove-const_err-deny.patch
+  * 0001-Cargo.toml-tss-esapi-bindings.patch
+- Update to version 0.1.0+git.1676549716.5382ed9:
+  * Cargo: Update clap minimum version to 3.2
+  * Cargo: Update uuid minimum version to 1.3
+  * Cargo: Update tokio minimum version to 1.24 and reduce features
+  * build(deps): bump tss-esapi from 7.1.0 to 7.2.0
+  * cargo deb: include shim.py in packaging
+  * build(deps): bump thiserror from 1.0.36 to 1.0.38
+  * keylime-agent.conf: Add comments on how to override options
+  * config: Fix overriding options with env vars
+  * Add missing e2e tests and reordering tests based on alphabetical order
+  * e2e tests: Fix test name
+  * Store associated U keys, auth tags, and payloads together
+  * Refactor ZeroMQ revocation listener to not block
+  * keylime-agent: Gracefully shutdown on SIGINT
+  * Refactor async code for keys and payloads
+  * main: Move payload related functions to payloads module
+  * main: Run ZeroMQ service in a separate task
+  * Remove unused option "openstack" for obtaining uuid
+  * algorithms: fix typo
+  * clippy: fix uninlined_format_args warnings
+  * clippy: fix needless_borrow warnings
+  * crypto, mTLS: allow certificate chain for trusted_client_ca
+  * build(deps): bump base64 from 0.13.0 to 0.13.1
+  * build(deps): bump serde_json from 1.0.85 to 1.0.91
+  * build(deps): bump libc from 0.2.133 to 0.2.139
+  * build(deps): bump bumpalo from 3.11.0 to 3.12.0
+  * build(deps): bump futures from 0.3.24 to 0.3.25
+  * Cargo.toml: tss-esapi bindings
+  * packit-ci: Disable Rawhide due to agent compilation issues
+  * packit-ci: Add hotfix for tpm2-tss Fedora BZ#2158598
+  * keylime-agent: remove const_err deny
+  * build(deps): bump tokio from 1.23.0 to 1.24.2
+
+-------------------------------------------------------------------
+Mon Jan 16 14:02:08 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1672681780.762cec8:
+  * build(deps): bump openssl from 0.10.41 to 0.10.45
+  * build(deps): bump tokio from 1.21.1 to 1.23.0
+  * Disable dnf-makecache.service to save RAM
+  * CI tests: Do not remove Fedora tag repository
+  * add support for cargo deb
+  * Pacify clippy::needless-borrow
+  * Move tpm.rs from keylime-agent to the library
+  * Split crates into library and applications
+- Add 0001-keylime-agent-remove-const_err-deny.patch
+- Fix "cargo install" with workspaces
+  https://github.com/rust-lang/cargo/issues/7599
+- Add 0001-Cargo.toml-tss-esapi-bindings.patch
+
+-------------------------------------------------------------------
+Fri Dec 09 13:10:40 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1670590616.e80c67a:
+  * main: only read uuid from KeylimeConfig
+  * Enabling more e2e tests in Packit CI
+  * systemd: start agent after network is online
+  * Cargo: Drop unused dependencies rust-ini and toml
+
+-------------------------------------------------------------------
+Tue Oct 25 08:16:33 UTC 2022 - aplanas@suse.com
+
+- Add cargo-audit service per policy
+- Update to version 0.1.0+git.1666019359.f5de47b:
+  * README: mark Rust agent as the official one, fix cargo run command
+
+-------------------------------------------------------------------
+Wed Oct 12 07:51:22 UTC 2022 - aplanas@suse.com
+
+- Drop bindgen.patch as is already upstream
+- Update to version 0.1.0+git.1664480840.0ea0492:
+  * Increase unit testing
+  * Test all features with cargo tarpaulin
+  * Cargo.toml: tss-esapi bindings
+
+-------------------------------------------------------------------
+Mon Sep 26 14:15:04 UTC 2022 - aplanas@suse.com
+
+- Rebase bindgen.patch and upstream the change
+- Rebase keylime-agent.conf.diff
+- Store the configuration file in /usr/etc/keylime/agent.conf
+- Fix keylime user creation
+- Drop webapp service port in firewall XML service file
+- Update to version 0.1.0+git.1663769444.6318234:
+  * Update comments in the configuration file
+  * config: Align config locations with the python components
+  * config: Add configuration file version
+  * config: Add back support for KEYLIME_DIR env var
+  * Change configuration format to TOML
+  * Add support for using passphrase protected key
+  * Do not try to load TPM data generated by another TPM
+  * Allow using existing key and certificate
+  * Remove the agent TPM data from the config struct
+  * Rename the configuration options
+  * Use password to generate EK when provided
+  * Add tpm_ownerpassword option to keylime.conf
+  * Add cargo audit to CI static tests
+  * Add agent and faked_measured_boot_log tests context
+  * Appease clippy
+
+-------------------------------------------------------------------
+Wed Aug 10 13:39:08 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1659977521.0186093:
+  * Fix display of mb measurement file path
+  * Add more helpful error when config file is not found
+  * Fix small comment about implementing TPM ownership
+  * main: die when cannot drop privileges
+  * keylime.conf: add run_as section
+  * Use Rust agent-specific config in Makefile
+  * Fix typo in listen_notifications option in keylime.conf
+  * tpm: Support pre-existing EK
+  * Set swtpm context which is later used for test filtering
+  * Add GitLeaks configuration to ignore RSA key used for testing
+  * Handle whitespace in keylime.conf
+- Rename keylime.conf.diff to keylime-agent.conf.diff
+- Drop 0001-main-die-when-cannot-drop-privileges.patch, as is already
+  merged upstream
+- Add bindgen.patch to add more architectures
+
+-------------------------------------------------------------------
+Tue Jul 12 09:20:39 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1657303637.5b9072a:
+  * keys_handler: Use scopes to drop mutexes before await
+  * Enable usage of Rust IMA emulator in E2E tests.
+  * ima_emulator: Support PCR hash algorithms other than SHA-1
+  * ima_entry: add IMA entry parser ported from Python Keylime
+  * algorithms: Add conversion between our hash algorithms and OpenSSL's
+  * Remove unused functions revocation_ip_get and revocation_port_get. Change String to &str.
+  * Adjust function usage comments to account for new parameters.
+  * Load config file less at startup in src/common.rs
+  * GNUmakefile: Make target dependencies explicit
+  * permissions: Set supplementary groups when dropping privileges
+  * main: Use more descriptive message for missing files error
+  * Show path when fail to load the certificate
+  * tpm: Add serialization functions for structures in quotes
+- Requires tpm2.0-abrmd dependency, as the kernel resource manager
+  could be not enough
+- Downgrade /var/run/keylime permissions
+- Set "run_as" parameter to "keylime:tss"
+- Create the keylime user via systemd
+- Fix keylime service home directory
+- Add 0001-main-die-when-cannot-drop-privileges.patch to avoid the
+  execution as root when the run_as user is missing in the system
+
+-------------------------------------------------------------------
+Wed Jun 22 08:45:20 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.1.0+git.1655384301.b834667:
+  * Update fmf plans to run test with IMA policy
+  * .github/dependabot.yml: prevent updates that require manifest change
+- Add logrotate configuration for the agent service
+- Requires libtss2-tcti-device0 to interact with the real device
+- Drop legacy Python subpackage and feature
+- Move conflicts into the Python version
+
+-------------------------------------------------------------------
+Wed Jun 15 09:52:48 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Drop CFSSL port from the keylime.xml firewalld rules
+
+-------------------------------------------------------------------
+Tue Jun 14 11:05:01 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1655143451.7c4121e:
+  * Add dependabot for automatic dependency updates
+  * config: remove unused options
+  * persist AK, NK and mTLS certificate to disk
+  * Update tokio minimum version
+  * Adjust CI test name according to keylime-tests PR#125
+  * Make wiremock an optional dependency
+  * Drop unused dependency flate2
+  * Drop unused dependency rustc-serialize
+  * Update clap dependency to 3.1.18
+  * add support for "hash_ek" UUID creation
+  * tpm: add and use EKResult struct as return value for create_ek(..)
+  * replace custom marshall functions with the offical one
+  * update to tss-esapi 7.1.0
+  * quotes_handler: Rewind measured boot log file
+  * Add test /functional/measured-boot-swtpm-sanity to Packit CI plan
+  * OpenSSL on deb family is now libssl-dev
+
+-------------------------------------------------------------------
+Tue May 24 14:10:38 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1653314004.ceda2ec:
+  * Skip serialization of optional fields
+  * Make support for legacy python revocation actions optional
+  * main: Do not try to load CA cert if mTLS is disabled
+  * CI: Add packit to run end-to-end tests
+  * GNUmakefile: Install shim.py
+  * Add service for secure mount
+  * secure_mount: Do not try to give ownership to root
+  * secure_mount: Rewrite check_mount()
+  * main: Ignore original ownership when unzipping files
+  * Drop privileges to run as normal user and group
+  * main: Mount secure mount before dropping the privileges
+  * main: Open files that require privilege at the beginning
+  * quotes_handler: Fix measured boot list encoding
+  * Fix typo in config_get()
+  * Add option to disable mTLS
+  * Update actix-web to 4, remove tokio 0.2 dependencies
+  * crypto: Add helper function to convert public key to PEM string
+  * Add ansasaki as maintainer
+
+-------------------------------------------------------------------
+Wed Apr 13 09:54:42 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1649449492.59856c2:
+  * errors_handler: Add handler for 404 error
+  * errors_handler: Add tests for error handlers
+  * main: Add handler for actix request parsing errors
+  * main: Add default handlers for each scope
+  * main: Use actix middleware to log requests
+  * common: Change status code type from u32 to u16
+  * common: Use trait ToString for status on JsonWrapper::error
+  * quotes_handler: Add used measured boot path to warning message
+  * common: Rename JsonWrapper::new as JsonWrapper::success
+  * Generalize error JSON wrapping
+  * main: Use scopes to organize API
+  * Use JSON wrapper on error responses
+  * quotes_handler: Simplify integrity quote structures
+  * quotes_handler: Improve query parameters parsing
+  * quotes_handler: Add missing log messages
+  * keys_handler: Add API to verify derived key
+  * keys_handler: Remove workaround for missing JSON Content-Type
+  * keys_handler: Fix test for 256-bits keys
+  * Use shared JSON wrapper for HTTP responses
+  * ima: Avoid using unwrap() or panic!()
+  * Apply changes suggested by cargo fmt and cargo clippy
+  * ima: Read IMA measurement list begining at n-th entry.
+  * ima: Get ima_ml_entry from HTTP request
+  * version_handler: Introduce /version REST endpoint (#313)
+  * main: Do not error if payload_script is not found
+  * Remove revocation actions naming restriction
+  * Revert API version to 2.0
+  * Set working directory via KEYLIME_DIR env variable
+
+-------------------------------------------------------------------
+Fri Mar  4 16:02:57 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add work_dir directory in /var/lib/keylime
+- Add subpackage rust-keylime-python to execute revocation payload in Python
+
+-------------------------------------------------------------------
+Tue Mar 01 14:21:35 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1645537954.2f1447d:
+  * Make zmq an optional dependency
+  * notifications_handler: Introduce /notifications/revocation REST endpoint
+  * revocation: Move out revocation message processing
+  * revocation: Make get_revocation_cert_path() public
+  * Install systemd unit file
+
+-------------------------------------------------------------------
+Tue Feb 22 12:34:16 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1645023877.811a869:
+  * Make clippy happy.
+  * Add a --help message.
+  * Depend on Rust-TSS-ESAPI 7.0.0 stable
+  * main: Return error on initialization if python shim is missing
+  * common: Add hardcoded config defaults for revocation
+  * main: Add execution permissions to revocation actions
+  * revocation: Log revocation actions output
+  * revocation: Fix get_revocation_cert_path() comment
+  * gitignore: Add filters for some temporary files
+  * revocation: Do not ignore revocation actions from config
+  * revocation: Implement python actions support
+  * tests: Implement proof-of-concept python shim
+  * revocation: Implement lookup_action() function
+  * common: Add revocation actions configurations
+  * revocation: Enforce local action naming restriction
+  * revocation: Remove duplicate logger initialization
+  * crypto: unfiy import_x509 and load_x509
+  * update Cargo.lock
+  * common: update API version to v2.0
+  * tpm: drop zlib compression in quotes
+  * run agent webserver with mTLS enabled and add mtls_cert to registrar
+  * crypto: load and generate X509 certificates, mTLS context generation
+  * keylime.conf: add setting for Keylime CA
+  * Bump tss-esapi crate to 7.0.0-beta.1
+  * Update to fix typo
+  * Use Path and PathBuf consistently to represent paths
+  * Bump versions of some dependencies
+  * quotes_handler: Check quotes in tests
+  * tpm: Remove hard-coded struct sizes with std::mem::size_of
+  * tpm: Let compiler to infer arch-dependent integer types
+  * Use CString as the first argument of libc::chown
+  * keys_handler: Add API to get public key (#284)
+  * crypto: Fix algorithms used for revocation signature (#275)
+  * revocation: Use revocation certificate set by configuration (#300)
+  * common: Add revocation_cert to the global configuration structure
+  * ima_emulator: Fix running hash calculation on resumption
+  * keys_handler: Add test with encrypted payload
+  * main: Use condition variable to wait for payload encryption key
+  * main: Use Option to represent a combined key
+  * main: Redefine KeySet as a vector
+  * keys_handler, main: Move crypto operations to crypto module
+  * keys_handler: Make use of type safe payload deserialization
+  * Remove unused imports
+  * Remove duplicate CODEOWNERS file
+  * Remove panic when running rev action
+  * move global configuration into a single struct
+  * Add codeowners
+
+-------------------------------------------------------------------
+Mon Jan 10 13:06:42 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1641587454.1248597:
+  * quotes_handler: send TPM2 event log for measured boot
+  * serialization: move serialization into separate module
+  * try to load AK from disk instead of always creating a new one
+  * update Cargo.lock file
+  * make hash, encryption and signing algorithm configurable
+  * tpm: remove get_sig_scheme(..) function
+  * hash: rename to algorithms and implement tss conversions
+  * cmd_exec: remove cmd_exec module
+  * secure_mount: fix mount of tmpfs for secure directory
+  * common: change default WORK_DIR to /var/lib/keylime
+  * tpm: remove special handling for PCR10
+
+-------------------------------------------------------------------
+Mon Dec 13 15:53:39 UTC 2021 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1639176416.fc90088:
+  * Code refactor to use updated tss-esapi
+- Drop add_property_tag_variant_for_maxcapbuffer.patch, included in
+  the upstream crate
+
+-------------------------------------------------------------------
+Wed Nov 24 13:48:07 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Conflict with keylime-agent, keylime-config and keylime-firewalld
+- Add keylime_ima_emulator tool
+- Add patch add_property_tag_variant_for_maxcapbuffer.patch
+
+-------------------------------------------------------------------
+Fri Nov 19 13:02:48 UTC 2021 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1637095429.d5a3191:
+  * Run Fedora tests on unified Keylime test container
+  * ima_emulator: Print error message when TCTI envvar is not set
+  * Add keylime_ima_emulator executable for testing
+  * Fix 0mq problem
+  * ci: Check unit test coverage with cargo tarpaulin (#216)
+  * config: merge with Python keylime.conf and remove unused entries
+  * Add support for contact ip and port
+  * common: move get env or from config into sperate function
+  * keys_handler: Add unit tests
+  * quotes_handler: Add unit tests (#265)
+  * Fix bugs that occur after a delete and re-add from the tenant
+  * Retain the main loop running after payload execution (#249)
+  * keys_handler: verify HMAC in constant-time (#248)
+  * build: Adjust package dependencies to compile in Fedora (#245)
+  * Generate Cargo.lock file
+  * Add Ueno as a maintainer and set codeowners
+  * Fix clippy errors, update to newest TSS-ESAPI
+- Drop generate-cargo-lock-file.patch (already in upstream)
+
+-------------------------------------------------------------------
+Mon Aug 16 14:23:13 UTC 2021 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1629114992.890e8c9:
+  * Add "v1.0" prefix to agent APIs
+- Update generate-cargo-lock-file.patch
+
+-------------------------------------------------------------------
+Wed Jul 28 08:56:33 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add generate-cargo-lock-file.patch to fix the build system in OBS
+- Add keylime.conf.diff to adjust the default config file
+- Adjust build requirements
+- Add firewalld XML rules
+- Add systemd keylime_agent.service
+- Fix license tag
+
+-------------------------------------------------------------------
+Thu Jul 22 09:20:38 UTC 2021 - aplanas@suse.com
+
+- Update to version 0.0.1+git.1626706730.a009476:
+  * libarchive-devel is needed to build on Fedora
+  * Accept sets of U and V keys; use new Key types
+  * Output mask info
+  * Fix for race condition bug
+  * Do not resend pubkey to CV after attestation
+  * Run payload script from a shell
+  * Write out data and run payload
+  * Decrypt payload after key handlers find symm key
+  * Add handler for U and V keys
+  * Add helper functions for handling U and V keys
+  * Some TPM fixes for IMA PCR validation
+  * Do not flush AK context as this causes an error
+  * Fix bug in revocation service
+  * Drop references to vmask
+  * Better documentation of consts
+  * Do not fail if EK cert is not present in TPM NV
+  * Add more verbose logging to better match Python agent
+  * Remove verify stub as we are not using it
+  * tests: Don't pass --allow-signing to swtpm_setup
+  * Fix typos
+  * Add dependency for libzmq3-dev / zeromq-devel
+  * Fix new clippy lints
+  * Add handling for Identity and Integrity quotes
+  * Add Quote functionality
+  * Add marshaling functions for TPM structs
+
+-------------------------------------------------------------------
+Tue Jun 08 11:59:11 UTC 2021 - aplanas@suse.com
+
+- Update to version 0.0.1+git.1620935374.4df2148:
+  * Add function to read PCR mask
+  * Small fixes in TPM functions
+  * Send quote data to actixweb handlers
+
+-------------------------------------------------------------------
+Tue May 04 12:23:18 UTC 2021 - aplanas@suse.com
+
+- Update to version 0.0.1+git.1618949271.f609525:
+  * Add more TPM helper functions
+  * Use PKeys consistently
+  * Rebase on tss-esapi 5.0
+  * Pass a PKeyRef to asym_verify
+  * Use #[[from] from thiserror
+  * Fix uppercase acronyms
+  * Add testing feature
+  * Remove port bindings for agent
+  * More verbose TPM and revocation error, verbose success
+  * Fix docker networking
+

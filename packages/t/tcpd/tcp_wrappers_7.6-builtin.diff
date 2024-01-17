@@ -1,0 +1,19 @@
+--- scaffold.c.orig
++++ scaffold.c
+@@ -20,6 +20,8 @@ static char sccs_id[] = "@(#) scaffold.c
+ #include <syslog.h>
+ #include <setjmp.h>
+ #include <string.h>
++#include <stdlib.h>
++
+ #if defined(INET6) && !defined(USE_GETIPNODEBY)
+ #include <resolv.h>
+ #endif
+@@ -28,7 +30,6 @@ static char sccs_id[] = "@(#) scaffold.c
+ #define	INADDR_NONE	(-1)		/* XXX should be 0xffffffff */
+ #endif
+ 
+-extern char *malloc();
+ 
+ /* Application-specific. */
+ 

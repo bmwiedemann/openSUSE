@@ -1,0 +1,364 @@
+--- Makefile.orig
++++ Makefile
+@@ -44,7 +44,7 @@ what:
+ #REAL_DAEMON_DIR=/usr/etc
+ #
+ # SysV.4 Solaris 2.x OSF AIX
+-#REAL_DAEMON_DIR=/usr/sbin
++REAL_DAEMON_DIR=/usr/sbin
+ #
+ # BSD 4.4
+ #REAL_DAEMON_DIR=/usr/libexec
+@@ -143,8 +143,9 @@ freebsd:
+ 
+ linux:
+ 	@make REAL_DAEMON_DIR=$(REAL_DAEMON_DIR) STYLE=$(STYLE) \
+-	LIBS= RANLIB=ranlib ARFLAGS=rv AUX_OBJ=setenv.o \
+-	NETGROUP= TLI= EXTRA_CFLAGS="-DBROKEN_SO_LINGER" all
++	LIBS= RANLIB=ranlib ARFLAGS=rv AUX_OBJ= \
++	NETGROUP=-DNETGROUP TLI= \
++	EXTRA_CFLAGS="-fPIC -DSYS_ERRLIST_DEFINED -DINET6=1 -Dss_family=__ss_family" all
+ 
+ # This is good for many SYSV+BSD hybrids with NIS, probably also for HP-UX 7.x.
+ hpux hpux8 hpux9 hpux10:
+@@ -229,7 +230,7 @@ tandem:
+ 
+ # Amdahl UTS 2.1.5 (Richard.Richmond@bridge.bst.bls.com)
+ uts215:
+-	@make REAL_DAEMON_DIR=$(REAL_DAEMON_DIR) STYLE=$(STYLE) \   
++	@make REAL_DAEMON_DIR=$(REAL_DAEMON_DIR) STYLE=$(STYLE) \
+ 	LIBS="-lsocket" RANLIB=echo \
+ 	ARFLAGS=rv AUX_OBJ=setenv.o NETGROUP=-DNO_NETGROUP TLI= all
+ 
+@@ -472,7 +473,7 @@ BUGS = -DGETPEERNAME_BUG -DBROKEN_FGETS
+ # If your system supports vsyslog(), comment out the following definition.
+ # If in doubt leave it in, it won't harm.
+ 
+-VSYSLOG	= -Dvsyslog=myvsyslog
++#VSYSLOG	= -Dvsyslog=myvsyslog
+ 
+ # End of the system dependencies.
+ #################################
+@@ -491,7 +492,7 @@ VSYSLOG	= -Dvsyslog=myvsyslog
+ # Uncomment the next definition to turn on the language extensions
+ # (examples: allow, deny, banners, twist and spawn).
+ # 
+-#STYLE	= -DPROCESS_OPTIONS	# Enable language extensions.
++STYLE	= -DPROCESS_OPTIONS	# Enable language extensions.
+ 
+ ################################################################
+ # Optional: Changing the default disposition of logfile records
+@@ -514,7 +515,7 @@ VSYSLOG	= -Dvsyslog=myvsyslog
+ #
+ # The LOG_XXX names below are taken from the /usr/include/syslog.h file.
+ 
+-FACILITY= LOG_MAIL	# LOG_MAIL is what most sendmail daemons use
++FACILITY= LOG_AUTHPRIV	# LOG_MAIL is what most sendmail daemons use
+ 
+ # The syslog priority at which successful connections are logged.
+ 
+@@ -531,7 +532,7 @@ SEVERITY= LOG_INFO	# LOG_INFO is normall
+ # and with Solaris < 2.4. APPEND_DOT will not work with hostnames taken
+ # from /etc/hosts or from NIS maps. It does work with DNS through NIS.
+ #
+-# DOT= -DAPPEND_DOT
++DOT= -DAPPEND_DOT
+ 
+ ##################################################
+ # Optional: Always attempt remote username lookups
+@@ -610,7 +611,7 @@ TABLES	= -DHOSTS_DENY=\"/etc/hosts.deny\
+ # Paranoid mode implies hostname lookup. In order to disable hostname
+ # lookups altogether, see the next section.
+ 
+-PARANOID= -DPARANOID
++#PARANOID= -DPARANOID
+ 
+ ########################################
+ # Optional: turning off hostname lookups
+@@ -649,7 +650,7 @@ HOSTNAME= -DALWAYS_HOSTNAME
+ # source-routed traffic in the kernel. Examples: 4.4BSD derivatives,
+ # Solaris 2.x, and Linux. See your system documentation for details.
+ #
+-# KILL_OPT= -DKILL_IP_OPTIONS
++#KILL_OPT= -DKILL_IP_OPTIONS
+ 
+ ## End configuration options
+ ############################
+@@ -659,12 +660,12 @@ HOSTNAME= -DALWAYS_HOSTNAME
+ SHELL	= /bin/sh
+ .c.o:;	$(CC) $(CFLAGS) -c $*.c
+ 
+-CFLAGS	= -O -DFACILITY=$(FACILITY) $(ACCESS) $(PARANOID) $(NETGROUP) \
++CFLAGS	= -O2 -pipe -DFACILITY=$(FACILITY) $(ACCESS) $(PARANOID) $(NETGROUP) \
+ 	$(BUGS) $(SYSTYPE) $(AUTH) $(UMASK) \
+ 	-DREAL_DAEMON_DIR=\"$(REAL_DAEMON_DIR)\" $(STYLE) $(KILL_OPT) \
+ 	-DSEVERITY=$(SEVERITY) -DRFC931_TIMEOUT=$(RFC931_TIMEOUT) \
+ 	$(UCHAR) $(TABLES) $(STRINGS) $(TLI) $(EXTRA_CFLAGS) $(DOT) \
+-	$(VSYSLOG) $(HOSTNAME)
++	$(VSYSLOG)
+ 
+ LIB_OBJ= hosts_access.o options.o shell_cmd.o rfc931.o eval.o \
+ 	hosts_ctl.o refuse.o percent_x.o clean_exit.o $(AUX_OBJ) \
+--- /dev/null
++++ README.ipv6
+@@ -0,0 +1,17 @@
++;; IPv6 patch for tcp_wrappers_7.6 1.6
++;; Aug 23, 1999 by Hajimu UMEMOTO <ume@mahoroba.org>
++;;
++;; This patch supports IPv4/IPv6 dual stack and IPv4-mapped IPv6 address.
++;; You can replace stock tcpd or libwrap.a with this.
++;; IPv6 address pattern is as a `[net]/prefixlen' pair.
++;; This patch was tested on KAME/FreeBSD, KAME/FreeBSD3, KAME/NetBSD,
++;; RedHat 5.1 with kernel 2.1.126, and RedHat 6.0 with kernel 2.2.10.
++;;
++;; CAUTION:
++;; Back out change for field separater.  Now, field separater is `:'
++;; not `|'.  To specify IPv6 address, enclose IPv6 address with `['
++;; and `]'.
++;;
++;; For Linux users:
++;; If your libc doesn't have sockaddr_storage, try target `linux-old'.
++
+--- hosts_access.c.orig
++++ hosts_access.c
+@@ -89,6 +90,33 @@ static int masked_match();
+ 
+ /* hosts_access - host access control facility */
+ 
++static int
++yp_get_default_domain (char **outdomain)
++{
++  static char __ypdomainname[1025] = "\0";
++  int result = 0;
++  *outdomain = NULL;
++
++  if (__ypdomainname[0] == '\0')
++    {
++      if (getdomainname (__ypdomainname, 1024))
++        result = 1;
++      else if (strcmp (__ypdomainname, "(none)") == 0)
++        {
++          /* If domainname is not set, some Systems will return "(none)" */
++          __ypdomainname[0] = '\0';
++          result = 1;
++        }
++      else
++        *outdomain = __ypdomainname;
++    }
++  else
++    *outdomain = __ypdomainname;
++
++  return result;
++}
++
++
+ int     hosts_access(request)
+ struct request_info *request;
+ {
+--- safe_finger.c.orig
++++ safe_finger.c
+@@ -31,7 +31,7 @@ extern void exit();
+ 
+ /* Local stuff */
+ 
+-char    path[] = "PATH=/bin:/usr/bin:/usr/ucb:/usr/bsd:/etc:/usr/etc:/usr/sbin";
++char    path[] = "PATH=/bin:/usr/bin:/usr/sbin";
+ 
+ #define	TIME_LIMIT	60		/* Do not keep listinging forever */
+ #define	INPUT_LENGTH	100000		/* Do not keep listinging forever */
+--- scaffold.c.orig
++++ scaffold.c
+@@ -180,10 +180,17 @@ struct request_info *request;
+ 
+ /* ARGSUSED */
+ 
+-void    rfc931(request)
+-struct request_info *request;
++void    rfc931(rmt_sin, our_sin, dest)
++#ifndef INET6
++struct sockaddr_in *rmt_sin;
++struct sockaddr_in *our_sin;
++#else
++struct sockaddr *rmt_sin;
++struct sockaddr *our_sin;
++#endif
++char   *dest;
+ {
+-    strcpy(request->user, unknown);
++    strcpy(dest, unknown);
+ }
+ 
+ /* check_path - examine accessibility */
+--- tcpd.h.orig
++++ tcpd.h
+@@ -4,6 +4,12 @@
+   * Author: Wietse Venema, Eindhoven University of Technology, The Netherlands.
+   */
+ 
++#ifdef __STDC__
++#include <stdio.h>
++#include <sys/types.h>
++#include <sys/socket.h>
++#endif
++
+ /* Structure to describe one communications endpoint. */
+ 
+ #define STRING_LENGTH	128		/* hosts, users, processes */
+@@ -61,11 +67,26 @@ extern char paranoid[];
+ /* Global functions. */
+ 
+ #if defined(TLI) || defined(PTX) || defined(TLI_SEQUENT)
++#ifdef __STDC__
++extern void fromhost(struct request_info *);
++#else
+ extern void fromhost();			/* get/validate client host info */
++#endif
+ #else
+ #define fromhost sock_host		/* no TLI support needed */
+ #endif
+ 
++#ifdef __STDC__
++extern int hosts_access(struct request_info *);
++extern void shell_cmd(char *);
++extern char *percent_x(char *, int, char *, struct request_info *);
++extern void rfc931(struct sockaddr *, struct sockaddr *, char *);
++extern void clean_exit(struct request_info *);
++extern void refuse(struct request_info *);
++extern char *xgets(char *, int, FILE *);
++extern char *split_at(char *, int);
++extern unsigned long dot_quad_addr(char *);
++#else
+ extern int hosts_access();		/* access control */
+ extern void shell_cmd();		/* execute shell command */
+ extern char *percent_x();		/* do %<char> expansion */
+@@ -75,6 +96,7 @@ extern void refuse();			/* clean up and
+ extern char *xgets();			/* fgets() on steroids */
+ extern char *split_at();		/* strchr() and split */
+ extern unsigned long dot_quad_addr();	/* restricted inet_addr() */
++#endif
+ 
+ /* Global variables. */
+ 
+@@ -117,28 +139,47 @@ extern struct request_info *request_set(
+   * host_info structures serve as caches for the lookup results.
+   */
+ 
++#ifdef __STDC__
++extern char *eval_user(struct request_info *);
++extern char *eval_hostname(struct host_info *);
++extern char *eval_hostaddr(struct host_info *);
++extern char *eval_hostinfo(struct host_info *);
++extern char *eval_client(struct request_info *);
++extern char *eval_server(struct request_info *);
++#else
+ extern char *eval_user();		/* client user */
+ extern char *eval_hostname();		/* printable hostname */
+ extern char *eval_hostaddr();		/* printable host address */
+ extern char *eval_hostinfo();		/* host name or address */
+ extern char *eval_client();		/* whatever is available */
+ extern char *eval_server();		/* whatever is available */
++#endif
+ #define eval_daemon(r)	((r)->daemon)	/* daemon process name */
+ #define eval_pid(r)	((r)->pid)	/* process id */
+ 
+ /* Socket-specific methods, including DNS hostname lookups. */
+ 
++#ifdef __STDC__
++extern void sock_host(struct request_info *);
++extern void sock_hostname(struct host_info *);
++extern void sock_hostaddr(struct host_info *);
++#else
+ extern void sock_host();		/* look up endpoint addresses */
+ extern void sock_hostname();		/* translate address to hostname */
+ extern void sock_hostaddr();		/* address to printable address */
++#endif
+ #define sock_methods(r) \
+ 	{ (r)->hostname = sock_hostname; (r)->hostaddr = sock_hostaddr; }
+ 
+ /* The System V Transport-Level Interface (TLI) interface. */
+ 
+ #if defined(TLI) || defined(PTX) || defined(TLI_SEQUENT)
++#ifdef __STDC__
++extern void tli_host(struct request_info *);
++#else
+ extern void tli_host();			/* look up endpoint addresses etc. */
+ #endif
++#endif
+ 
+  /*
+   * Problem reporting interface. Additional file/line context is reported
+@@ -178,42 +219,74 @@ extern struct tcpd_context tcpd_context;
+   * behavior.
+   */
+ 
++#ifdef __STDC__
++extern void process_options(char *, struct request_info *);
++#else
+ extern void process_options();		/* execute options */
++#endif
+ extern int dry_run;			/* verification flag */
+ 
+ /* Bug workarounds. */
+ 
+ #ifdef INET_ADDR_BUG			/* inet_addr() returns struct */
+ #define inet_addr fix_inet_addr
++#ifdef __STDC__
++extern long fix_inet_addr(char *);
++#else
+ extern long fix_inet_addr();
+ #endif
++#endif
+ 
+ #ifdef BROKEN_FGETS			/* partial reads from sockets */
+ #define fgets fix_fgets
++#ifdef __STDC__
++extern char *fix_fgets(char *, int, FILE *);
++#else
+ extern char *fix_fgets();
+ #endif
++#endif
+ 
+ #ifdef RECVFROM_BUG			/* no address family info */
+ #define recvfrom fix_recvfrom
++#ifdef __STDC__
++extern int fix_recvfrom(int, char *, int, int, struct sockaddr *, int *);
++#else
+ extern int fix_recvfrom();
+ #endif
++#endif
+ 
+ #ifdef GETPEERNAME_BUG			/* claims success with UDP */
+ #define getpeername fix_getpeername
++#ifdef __STDC__
++extern int fix_getpeername(int, struct sockaddr *, int *);
++#else
+ extern int fix_getpeername();
+ #endif
++#endif
+ 
+ #ifdef SOLARIS_24_GETHOSTBYNAME_BUG	/* lists addresses as aliases */
+ #define gethostbyname fix_gethostbyname
++#ifdef __STDC__
++extern struct hostent *fix_gethostbyname(char *);
++#else
+ extern struct hostent *fix_gethostbyname();
+ #endif
++#endif
+ 
+ #ifdef USE_STRSEP			/* libc calls strtok() */
+ #define strtok	fix_strtok
++#ifdef __STDC__
++extern char *fix_strtok(char *, char *);
++#else
+ extern char *fix_strtok();
+ #endif
++#endif
+ 
+ #ifdef LIBC_CALLS_STRTOK		/* libc calls strtok() */
+ #define strtok	my_strtok
++#ifdef __STDC__
++extern char *my_strtok(char *, char *);
++#else
+ extern char *my_strtok();
+ #endif
++#endif

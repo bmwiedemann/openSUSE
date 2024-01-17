@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90140f157c881441114f1134e014c727</srcmd5>
+    <version>1.0.13</version>
+    <time>1650657256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972205</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bfb245eb5ac56988037bda4ba004b294</srcmd5>
+    <version>1.0.19</version>
+    <time>1662063022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.0.19
+  * Add C-Style api to get video Thumbnail
+  * Fix bugs 
+
+- Update version to 1.0.15
+  * Fix bugs</comment>
+    <requestid>1000254</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d4e3625a28d441ce9b82b535dc9fa94a</srcmd5>
+    <version>1.0.19</version>
+    <time>1669289132</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace pkgconfig(opencv) with pkgconfig(opencv4) BuildRequires,
+  (use current version of opencv). (forwarded request 1037065 from iznogood)</comment>
+    <requestid>1037837</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3aef1aad79e68fa153a18365948b96f1</srcmd5>
+    <version>1.0.24</version>
+    <time>1681470852</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-gcc-13.patch, fix build by gcc 13 
+
+- Update version to 1.0.24
+  * Fix bugs (forwarded request 1079402 from hillwood)</comment>
+    <requestid>1079403</requestid>
+  </revision>
+</revisionlist>

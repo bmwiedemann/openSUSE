@@ -1,0 +1,11 @@
+diff -Nur image-editor-1.0.24/libimagevisualresult/src/utils.h image-editor-1.0.24-new/libimagevisualresult/src/utils.h
+--- image-editor-1.0.24/libimagevisualresult/src/utils.h	2022-11-29 10:21:28.000000000 +0800
++++ image-editor-1.0.24-new/libimagevisualresult/src/utils.h	2023-03-27 15:09:15.364447750 +0800
+@@ -8,6 +8,7 @@
+ #include <vector>
+ #include <map>
+ #include <string>
++#include <cstdint>
+ 
+ typedef std::vector<std::vector<uint8_t>>       lutData;
+ typedef std::map<std::string, lutData>          map_lut;

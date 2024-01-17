@@ -1,0 +1,5 @@
+<package name="flatpak-xdg-utils" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="flatpak-xdg-utils"/>
+</package>

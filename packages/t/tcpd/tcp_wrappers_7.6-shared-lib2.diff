@@ -1,0 +1,18 @@
+--- tcpd.h.orig
++++ tcpd.h
+@@ -126,10 +126,15 @@ extern int resident;			/* > 0 if residen
+   */
+ 
+ #ifdef __STDC__
++extern int hosts_access(struct request_info *request);
++extern int hosts_ctl(char *daemon, char *client_name, char *client_addr,
++                     char *client_user);
+ extern struct request_info *request_init(struct request_info *,...);
+ extern struct request_info *request_set(struct request_info *,...);
+ extern int hosts_ctl(char *daemon, char *client_name, char *client_addr, char *client_user);
+ #else
++extern int hosts_access();
++extern int hosts_ctl();
+ extern struct request_info *request_init();	/* initialize request */
+ extern struct request_info *request_set();	/* update request structure */
+ #endif

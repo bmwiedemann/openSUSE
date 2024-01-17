@@ -1,0 +1,7 @@
+<package name="tcpd" project="openSUSE:Factory">
+  <title>A security wrapper for TCP daemons</title>
+  <description>This package contains a small daemon program that can monitor and
+filter incoming requests for finger, ftp, telnet, rlogin, rsh, exec,
+tftp, talk, and other network services.</description>
+  <devel project="network:utilities" package="tcpd"/>
+</package>

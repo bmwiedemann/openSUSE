@@ -1,0 +1,198 @@
+-------------------------------------------------------------------
+Tue Dec 12 17:29:01 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.5.1.
+  ## 0.2.5.1
+
+    * Add `test/alerts.md` to extra-source-files in cabal file.
+
+-------------------------------------------------------------------
+Mon Dec 11 19:49:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.5.
+  ## 0.2.5
+
+    * Add support for alerts extension, supporting GitHub-style alerts (#132).
+      <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts>
+      New module Commonmark.Extensions.Alerts [API change].
+
+    * Do not accept footnote labels with line breaks (Michael Howell).
+
+    * Parse `[^ ]` and `[^]` as links (Michael Howell). This is consistent with
+      most other CommonMark parsers, even when they have support for footnotes turned on.
+
+-------------------------------------------------------------------
+Fri Oct 27 17:34:06 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.4.
+  ## 0.2.4
+
+    * Make `pipe_tables` extension treat backslash escapes like GH does (#112,
+      Michael Howell). This change essentially changes the way the text
+      `\\|` gets parsed inside a table. In the old version, the first backslash
+      escapes the second backslash, and then the pipe is treated as a cell
+      separator. In the new version, the pipe is still preceded by a backslash,
+      so it is still literal text. The escaping rule is documented in detail
+      in the spec for this extension. This change also aligns our escaping
+      of pipes with GitHub's.
+
+-------------------------------------------------------------------
+Wed Sep 13 23:22:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.3.6.
+  ## 0.2.3.6
+
+    * Fix pipe table parser so that `|`s don't interfere with
+      other block structures (Michael Howell, #111, fixing #52 and
+      #95). This parser is structured as a system that parses the
+      *second* line first, then parses the first line. That is, if
+      it detects a delimiter row as the second line of a
+      paragraph, it converts the paragraph into a table. This
+      seems counterintuitive, but it works better than trying to
+      convert a table into a paragraph, since it might need to be
+      something else.
+
+    * Improve parsing of inline math (#110).
+
+-------------------------------------------------------------------
+Wed Jul 12 02:52:32 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.3.5.
+  ## 0.2.3.5
+
+    - Resolve entities inside wikilinks (#105, Michał Kukieła).
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sat Mar  4 18:21:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.3.4.
+  ## 0.2.3.4
+
+    - Require whitespace after definition list marker (#104).
+      Otherwise we can inadvertently clobber strikeout or subscript.
+
+-------------------------------------------------------------------
+Thu Sep 29 04:40:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.3.3.
+  ## 0.2.3.3
+
+    - Fix definition_lists extension (#96). We were not properly consuming
+      indentation in definitions, which caused problems when the definitions
+      themselves contained lists.
+
+-------------------------------------------------------------------
+Tue May 31 18:23:50 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.3.2.
+  ## 0.2.3.2
+
+  - Update lower version bounds for commonmark (#93, David
+    Thrane Christiansen).
+
+-------------------------------------------------------------------
+Sat Apr  2 21:26:16 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.3.1.
+  ## 0.2.3.1
+
+  - `math` extension:  don't fail when display math contains
+    embedded inline math.  See jgm/pandoc#7942.
+  - Make math parsing more sophisticated.
+    Count embeddings inside `{..}`, since math can contain
+    e.g. `\text{...}` which itself contains math delimiters.
+  - Small improvement in pipe table parsing.
+    The old parser failed on some edge cases with extra whitespace
+    after pipes (which we should just ignore).
+  - `fancy_list` extension: improve list type ambiguity resolution (#89).
+
+-------------------------------------------------------------------
+Wed Jan 12 17:57:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.3.
+  ## 0.2.3
+
+  - Allow bare word attribute in fenced_divs (#84).  This follows a similar
+    change in pandoc (jgm/pandoc#7242).
+
+-------------------------------------------------------------------
+Mon Nov  1 08:43:02 UTC 2021 - psimons@suse.com
+
+- Add commonmark-extensions at version 0.2.2.1.
+
+-------------------------------------------------------------------
+Sun May 30 17:37:25 UTC 2021 - psimons@suse.com
+
+- Update commonmark-extensions to version 0.2.1.2.
+  ## 0.2.1.2
+
+  - Fix bug with absolute paths in rebase_relative_paths
+    extension on Windows.
+
+-------------------------------------------------------------------
+Sat May 29 15:59:04 UTC 2021 - psimons@suse.com
+
+- Update commonmark-extensions to version 0.2.1.1.
+  ## 0.2.1.1
+
+  - Fix bug in wikilinks extensions.
+
+  ## 0.2.1
+
+  - Add `rebase_relative_paths` extension.
+    New exported module Commonmark.Extensions.RebaseRelativePaths [API change].
+  - Add `wikilinks_title_before_pipe` and `wikilinks_title_after_pipe`
+    extensions (#69).
+    New exported module Commonmark.Extensions.Wikilinks [API change].
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sat Nov  7 15:35:27 UTC 2020 - psimons@suse.com
+
+- Update commonmark-extensions to version 0.2.0.4.
+  ## 0.2.0.4
+
+  - Add a test for autolinks (#66).
+  - Require commonmark 0.1.1.2 (otherwise autolinks don't work
+    properly).
+
+  ## 0.2.0.3
+
+  - Add some new test examples to the autolinks extension spec (#65).
+  - Allow interior `~` characters in autolinks (#65).
+
+-------------------------------------------------------------------
+Tue Nov  3 10:09:06 UTC 2020 - psimons@suse.com
+
+- Update commonmark-extensions to version 0.2.0.2.
+  ## 0.2.0.2
+
+  - Remove unnecessary Typeable constraint on `TaskList` and
+    `gfmExtensions` (#58).
+
+  - Fix bug in `footnote` extension:  multiple blocks in
+    a block container (e.g. block quote or list) inside
+    a footnote were being rendered in reverse order (#63,
+    Harald Gliebe).
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:22 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Aug  4 09:31:46 UTC 2020 - psimons@suse.com
+
+- Add commonmark-extensions at version 0.2.0.1.
+
+
+

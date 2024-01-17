@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73646267e5c9d7de4e9ef9883857464d</srcmd5>
+    <version>1.0.4</version>
+    <time>1619447957</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>888004</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>44b7070fcab140ba47d1d6ee7f5332e4</srcmd5>
+    <version>1.0.5</version>
+    <time>1648063046</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963567</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c381abb01db4af0978d97227813f9315</srcmd5>
+    <version>1.0.5</version>
+    <time>1658244007</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990254</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e37b942133294acb46e70f1c91f56ba2</srcmd5>
+    <version>1.0.5</version>
+    <time>1699388800</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123782</requestid>
+  </revision>
+</revisionlist>
