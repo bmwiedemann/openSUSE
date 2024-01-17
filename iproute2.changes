@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 30 22:40:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.6
+  * bridge: Add backup nexthop ID support
+  * tc: Classifier support for SPI field
+  * tc: support the netem seed parameter for loss and corruption
+    events
+  * tc: remove support for CBQ
+  * tc: remove support for RSVP classifier
+  * tc: remove tcindex classifier
+  * tc: remove dsmark qdisc
+  * tc: drop support for ATM qdisc
+
+-------------------------------------------------------------------
 Tue Sep 12 14:22:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.5
