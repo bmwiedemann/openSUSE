@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 25 19:13:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * fix(build, tests): move `have_gtk4` to the appropriate place
+  * Fix meson.build deprecations up to 0.56.0
+
+-------------------------------------------------------------------
 Tue Aug 29 13:36:01 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update to version 5.8.0
-  * GObject: Handle versions of GLib without GBindingGroup 
+  * GObject: Handle versions of GLib without GBindingGroup
   * switch to mozjs102
 
 -------------------------------------------------------------------
@@ -533,7 +540,7 @@ Wed Nov  5 08:18:34 UTC 2014 - i@marguerite.su
 Mon Jul 14 16:31:37 UTC 2014 - i@marguerite.su
 
 - update version 2.3.0
-  * prevent start-on-demand dbus service from working 
+  * prevent start-on-demand dbus service from working
 
 -------------------------------------------------------------------
 Thu Apr 17 05:08:32 UTC 2014 - i@marguerite.su

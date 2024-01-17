@@ -21,7 +21,7 @@
 %define typelib typelib-1_0-CjsPrivate-1_0
 %define __requires_exclude_from ^.*installed-tests.*$
 Name:           cjs
-Version:        5.8.0
+Version:        6.0.0
 Release:        0
 Summary:        JavaScript module used by Cinnamon
 License:        (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later) AND MIT
