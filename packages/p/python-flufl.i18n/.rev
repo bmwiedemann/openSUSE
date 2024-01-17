@@ -93,4 +93,12 @@
   * Add support for Python 3.11.</comment>
     <requestid>1137118</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>14de80bec0509019b6e4762dd990e1f9</srcmd5>
+    <version>5.0.2</version>
+    <time>1705526180</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139372</requestid>
+  </revision>
 </revisionlist>

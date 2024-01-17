@@ -24,13 +24,12 @@ Summary:        High level API for internationalizing Python libraries and appli
 License:        Apache-2.0
 URL:            https://gitlab.com/warsaw/flufl.i18n
 Source:         https://files.pythonhosted.org/packages/source/f/flufl.i18n/flufl_i18n-%{version}.tar.gz
-BuildRequires:  %{python_module pdm}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
-BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sybil}
