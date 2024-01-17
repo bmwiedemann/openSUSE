@@ -1,0 +1,216 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45c92ca6135c6065ec93ff72c6030358</srcmd5>
+    <version>3.1.1</version>
+    <time>1406645294</time>
+    <user>coolo</user>
+    <comment>This is one of the two main python packages for working with the HDF5 data format, one of the most critical data formats for scientific data.  The other package, python-h5py, is already in openSUSE:Factory.  The dependencies for this package are also already in openSUSE:Factory.</comment>
+    <requestid>242687</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>45c92ca6135c6065ec93ff72c6030358</srcmd5>
+    <version>3.1.1</version>
+    <time>1409303002</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6b4920628f8ab6b4a57117afb9bad522</srcmd5>
+    <version>3.2.0</version>
+    <time>1431981271</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307805</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>781263e4e9ee5e89c1999f1e6cd89a4a</srcmd5>
+    <version>3.2.2</version>
+    <time>1454491185</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357138</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>baaeea28ab770dad25b53ec76cb646e5</srcmd5>
+    <version>3.2.3.1</version>
+    <time>1473888891</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>422283</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79a6b8c4192a8db932401f05531f69a3</srcmd5>
+    <version>3.4.2</version>
+    <time>1495034255</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491161</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6d77fb11e50d42720b7ba3d7cf44e5a7</srcmd5>
+    <version>3.4.2</version>
+    <time>1519747172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580319</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>44ddee7d90728d70df97dbff128b2c6e</srcmd5>
+    <version>3.4.3</version>
+    <time>1525779451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604704</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>565c7e147ca33025f3d09c2d42c1f8ac</srcmd5>
+    <version>3.4.4</version>
+    <time>1530303969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>616600</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0c6eb985b56edc8e497937e2e3403f13</srcmd5>
+    <version>3.4.4</version>
+    <time>1534100054</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop python-unittest2 dependency it was needed only on py2.6</comment>
+    <requestid>628607</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>5ab8bcac0e1dd8b72abee1ea5c41377b</srcmd5>
+    <version>3.4.4</version>
+    <time>1550151374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674723</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>510366ed75f673eb6626f1ba7174d859</srcmd5>
+    <version>3.5.2</version>
+    <time>1563914180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717679</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>957f0fec3e78e4c0f17125927403e6f2</srcmd5>
+    <version>3.6.1</version>
+    <time>1573504350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747351</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>833616c75235ee0aafa9dc1dfb05e934</srcmd5>
+    <version>3.6.1</version>
+    <time>1589892601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807160</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>e8fd4637d3cc96ad49004c0cac9e3364</srcmd5>
+    <version>3.6.1</version>
+    <time>1609344776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859282</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>b69725519e1d6ec34b604a3873e90092</srcmd5>
+    <version>3.6.1</version>
+    <time>1613774630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873427</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>352c2a7373a30e49a593cf843ce84fee</srcmd5>
+    <version>3.7.0</version>
+    <time>1642371502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946787</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>52a017d598f63cacd151cef15165f770</srcmd5>
+    <version>3.7.0</version>
+    <time>1648665350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965820</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7a456eb869c9284e6f7def1660342259</srcmd5>
+    <version>3.8.0</version>
+    <time>1677498902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067858</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>193dcd28552a859be863019aae6c9d8d</srcmd5>
+    <version>3.8.0</version>
+    <time>1681296738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078561</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>912026ecc6e1047693629a886f6ab71b</srcmd5>
+    <version>3.8.0</version>
+    <time>1692379757</time>
+    <user>anag+factory</user>
+    <comment>- Add numpy-1.25.patch upstream patch
+  gh#PyTables/PyTables@337792561e59
+</comment>
+    <requestid>1104660</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>96bcdf50e59f0eebd6a22787d5be4c58</srcmd5>
+    <version>3.8.0</version>
+    <time>1692611154</time>
+    <user>anag+factory</user>
+    <comment>- Pin Cython to &lt; 3.</comment>
+    <requestid>1104946</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cd6b6b1a5236961c13cbfd4453a08f88</srcmd5>
+    <version>3.9.2</version>
+    <time>1701462360</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.9.2:
+  * Minimum supported version for Python is 3.9 (see gh-1062).
+  * New features
+    + Apply optimized slice read to Blosc2-compressed CArray and EArray
+    + Add basic API for column-level attributes as Col._v_col_attrs
+  * Bugfixes
+    + Fix the assembly of returned slice data in Blosc2 NDim optimized
+      slice reads by using Blosc2’s b2nd_copy_buffer
+    + Fix crash in Blosc2 optimized path with large tables
+    + Fix compatibility with NumExpr v2.8.5
+    + Fix ptrepack failures with external links
+    + Replace stderr messages with Python warnings
+    + Fix Cython slice indexing under Python 3.12
+    + Fix unsafe temporary file creation in benchmark
+  * Improvements
+    + PyTables wheels now use a threadsafe build of the HDF5 library
+    + Partial support for the future NumPy 2, with some tests still failing
+    + Relax the reading of Blosc2 NDim to cope with datasets stored with
+      other tools
+    + Use H5Dchunk_iter (when available) to speed up walking over many chunks
+      in a very large table, as well as with random reads
+    + Improve setup.py (now using pyproject.toml as per PEP 518) and
+      blosc2 discovery mechanism
+    + Enable compatibility with Cython 3
+    + Handle py-cpuinfo missing in some platforms
+    + Avoid NumPy &gt;= 1.25 deprecations, use numpy.all, numpy.any, etc. instead.
+  * Other changes
+    + Drop compatibility with the obsolete HDF5 1.8 API
+    + Require python-blosc2 &gt;= 2.3.0 or c-blosc2 &gt;= 2.11.0
+    + Assorted fixes to b2nd slicing optimization tips</comment>
+    <requestid>1130124</requestid>
+  </revision>
+</revisionlist>

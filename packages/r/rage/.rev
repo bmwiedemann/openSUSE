@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b65f3f1b3f25265dd480936c29cbdae3</srcmd5>
+    <version>0.1.4</version>
+    <time>1440337379</time>
+    <user>coolo</user>
+    <comment>Rage is a mplayer like media player with extra bells and whistles http://lists.opensuse.org/opensuse-factory/2015-08/msg00303.html</comment>
+    <requestid>324304</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>12fc88873da0154126535cad25556de5</srcmd5>
+    <version>0.2.0</version>
+    <time>1472731370</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage with efl</comment>
+    <requestid>423756</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8bf0ef2a9ae31e9b36f6f3bfe5f95fe6</srcmd5>
+    <version>0.2.1</version>
+    <time>1473349169</time>
+    <user>dimstar_suse</user>
+    <comment>0.2.1 with some minor new fixes</comment>
+    <requestid>425370</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d22c7e99c9007838f079e8638ec9bfa9</srcmd5>
+    <version>0.3.1</version>
+    <time>1586869804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793573</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e4fa5ba2e5fe2eb44b0fd2439525f149</srcmd5>
+    <version>0.4.0</version>
+    <time>1645820692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957189</requestid>
+  </revision>
+</revisionlist>

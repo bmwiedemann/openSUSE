@@ -1,0 +1,7 @@
+<package name="xapian-core" project="openSUSE:Factory">
+  <title>The Xapian Probabilistic Information Retrieval Library</title>
+  <description>Xapian is an Open Source Probabilistic Information Retrieval Library. It
+offers a highly adaptable toolkit that allows developers to easily add advanced
+indexing and search facilities to applications</description>
+  <devel project="server:search" package="xapian-core"/>
+</package>

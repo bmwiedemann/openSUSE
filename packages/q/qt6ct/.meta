@@ -1,0 +1,9 @@
+<package name="qt6ct" project="openSUSE:Factory">
+  <title>Qt 6 Configuration Tool</title>
+  <description>This program allows users to configure Qt6 settings (theme, font, icons,
+etc.) under DE/WM without Qt integration.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6ct"/>
+  <url>https://github.com/trialuser02/qt6ct</url>
+</package>

@@ -1,0 +1,1024 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ef19a10645920f2c04f13e6df974b769</srcmd5>
+    <version>0.9.2</version>
+    <time>1603203193</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory please</comment>
+    <requestid>842569</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f587c67db7e8de7f3f5fbac71f54ffec</srcmd5>
+    <version>0.12.0</version>
+    <time>1603284013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843194</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e7311df79f571a1e649732bdf147f30f</srcmd5>
+    <version>0.12.0</version>
+    <time>1603979539</time>
+    <user>dimstar_suse</user>
+    <comment>- revert _service and build changes in last update to use
+  the proper macros
+- set VERSION parameter properly (jsc#CAPS-105)
+- remove update-end-of-life-dates.patch
+
+- Require golang &gt;= 1.15 to fix EINTR read issues (jsc#CAPS-170)
+
+- add update-end-of-life-dates.patch</comment>
+    <requestid>844854</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>36d75130225803be0c01eba3a3ba5ac5</srcmd5>
+    <version>0.12.0</version>
+    <time>1604702737</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>846494</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4bdaeebcafba5677fe43e0040783376e</srcmd5>
+    <version>0.13.0</version>
+    <time>1606649270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.0:
+  * fix(oracle): handle ksplice advisories (#745)
+  * fix: version comparison (#740)
+  * updated Readme.md (#737)
+  * Add suse sles 15.2 to the EOL list as well (#734)
+  * Update README.md (#731)
+  * Warn when a user attempts to use trivy without a detectable lockfile (#729)
+  * Add back support for FreeBSD &amp; OpenBSD (#728)
+  * Add support for ppc64le architecture (#724)
+  * Skip packages from unsupported repository (remi) (#695)
+  * Skip downloading DB if a remote DB is not updated (#717)
+  * Sunsetting VendorVectors (#718)
+  * Add GitHub Container Registry to README (#712)
+  * update BUG_REPORT.md using H2 instead of bold formatting (#714)
+  * fix(ci/deb): do not remove old packages for EOL versions (#706)
+  * Add linter check support (#679)
+  * Optimize images (#696)
+  * Update triage.md (#701)
+- remove 0001-Add-suse-sles-15.2-to-the-EOL-list-as-well.patch (merged)</comment>
+    <requestid>851108</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>da80bcc1993961330dfccc63f5e92dbe</srcmd5>
+    <version>0.15.0</version>
+    <time>1611068504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861707</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a037ba664bb66f5e1735521aa696d618</srcmd5>
+    <version>0.17.2</version>
+    <time>1621269904</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.2:
+  * Upgrade fanal dependency (#976)
+  * docs: mention upx binaries (#974)
+  * Upgrade alpine to fix git and libcurl vulnerabilities in trivy docker image scan (#971)
+  * fix(fs): skip dirs (#969)
+  * chore(ci): replace GITHUB_TOKEN with ORG_GITHUB_TOKEN (#965)
+  * chore(ci): clone trivy-repo after releasing binaries (#963)
+  * docs: add golang support (#962)
+  * fix(table): skip zero vulnerabilities on java (#961)
+  * chore(ci): create a release discussion (#959)
+  * feat(go): support binary scan (#948)
+  * feat(java): support GitLab Advisory Database (#917)
+  * feat: show help message when the context's deadline passes (#955)
+  * chore(mkdocs): replace github token (#954)
+  * Update SARIF report template (#935)
+  * Update install docs to make commands consistent (#933)
+  * Docker multi-platform image build with `buildx`, using Goreleaser (#915)
+  * Fix JUnit template for AWS CodeBuild compatibility (#904)
+  * break(cli): use StringSliceFlag for skip-dirs/files (#916)
+  * docs: add white logo (#914)
+  * add package name in ruleID (#913)
+  * feat: gh-action for stale issues (#908)
+  * chore(triage): add lifecycle/active label (#909)
+  * feat: publish helm repository (#888)
+  * Fix Documentation Typo (#901)
+  * docs: migrate README to MkDocs (#884)
+  * refactor(internal): export internal packages (#887)
+  * feat: support plugins (#878)
+  * chore(ci): deploy dev docs only for the main branch (#882)
+  * add MkDocs implementation (#870)</comment>
+    <requestid>893510</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>359f3eec11d24fd85af1af071c213117</srcmd5>
+    <version>0.18.3</version>
+    <time>1623098706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18.3:
+  * chore(ci): change to more granular tokens (#1014)
+  * chore(ci): add Go scanning and update dependencies (#1001)
+  * docs: Add HIGH severity to Trivy command in GitLab CI example to match comment (#1013)
+  * fix(image): disable go.sum scanning (#1007)
+  * fix(gomod): handle go.sum with an empty line (#1006)
+  * feat: prepare for config scanning (#1005)
+  * Clarify that dev dependencies are excluded (#986)
+  * Include target value in Sarif template ruleID (#991)
+  * chore(mkdocs): allow workflow_dispatch (#989)
+  * fix(vuln) unique vulnerabilities from different data sources (#984)
+  * feat(go): added support of gomod analyzer (#978)</comment>
+    <requestid>898184</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1eadb782378b60a83b0df35a68bd32ae</srcmd5>
+    <version>0.18.3</version>
+    <time>1624136576</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>900585</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7b9764506f3f4363cac4cc0f60c283ed</srcmd5>
+    <version>0.20.2</version>
+    <time>1636577208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20.2:
+  * docs: update builtin.md (#1335)
+  * chore: fix issues with Homebrew formula (#1329)
+  * chore: bump GoReleaser to v0.183.0 (#1328)
+  * docs: update iac.md for a typo (#1326)
+  * docs: typo fix (#1308)
+  * Add new networking API features to Ingress (#1262)
+  * chore(release): bump up GoReleaser to v0.182.1 (#1299)
+  * fix(yarn): support quoted version (#1298)
+  * feat(custom-forward): Forward the extended advisory data (#1247)
+  * feat(javascript) : Initialize npm driver for javascript packages (#1289)
+  * fix(cli): fix incorrect comparision of DB metadata type. (#1286)
+  * docs: add footer to readme (#1281)
+  * feat(report): add package path (#1274)
+  * feat(command): add rootfs command (#1271)
+  * fix: update fanal (#1272)
+  * feat(commands): remove deprecated options (#1270)
+  * Aggregate jar result for table (#1269)
+  * BREAKING(report): migrate to new json schema (#1265)
+  * feat: improve --skip-dirs and --skip-files (#1249)
+  * fix(gobinary): skip large files (#1259)
+  * Disable library analyzer for OS only scan type (#1191)
+  * chore: update trivy version (#1252)
+  * refactor: move from io/ioutil to io and os package (#1245)
+  * fix: brew test command (#1253)
+  * fix:added layer info in packages (#1248)
+  * fix(go/binary): improve debug messages (#1244)
+  * Update db.go (#1199)
+  * fix(deps): fix CVE-2021-32760 for github.com/containerd/containerd (#1243)
+  * feat(debian): support the versions that reached EOL (#1237)</comment>
+    <requestid>930653</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>45d908ae577b9744050e032c73afb5d2</srcmd5>
+    <version>0.21.1</version>
+    <time>1638740780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.1:
+  * chore(mod): tidy (#1415)
+  * fix(rpc): fix nil layer transmit (#1410)
+  * Lang advisory order (#1409)
+  * chore: add support for s390x arch (#1304)
+  * fix(chart): ingress helm manifest-update trivy image (#1323)
+  * docs: Add comparison for cfsec (#1388)
+  * remove: delete unused functions in utils package (#1379)
+  * fix(sarif): fix validation errors (#1376)
+  * docs: add Bitbucket Pipelines (#1374)
+  * docs: add community integrations (#1361)
+  * Use a stable SARIF identifier (#1230)
+  * fix(python): fix parsing of requirements.txt with hash checking mode available in pip since version 8.0
+  * feat(iac): Add line information (#1366)
+  * feat(cloudformation): Adding support for cfsec IaC scanning (#1360)
+  * chore: send debug and info logs to stdout in install.sh, not stderr. (#1264)
+  * Update containerd to v1.5.7 and docker-cli to v20.10.9 (#1356)
+  * chore: update SBOM generation (#1349)</comment>
+    <requestid>935778</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>25331e648d633623b6514e96d12dfaba</srcmd5>
+    <version>0.21.3</version>
+    <time>1640108441</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.3:
+  * fix(docs): typo (#1488)
+  * feat(plugin): Add option to update plugin (#1462)
+  * fix: fixed skipFiles/skipDirs flags for relative path (#1482)
+  * feat (plugin): add list and info command for plugin (#1452)
+  * fix: set up a vulnerability severity (#1458)
+  * chore: add arm64 deb package (#1480)
+  * Link to trivy tutorial on Semaphore (#1449)
+  * refactor(helm): externalize env vars to configMap (#1345)
+  * docs: provide more information on scanning Google's GCR (#1426)
+  * docs(misconfiguration): added instruction for misconfiguration detection (#1428)
+  * Update git-repository.md (#1430)
+  * fix(hooks): exclude unrelated lib types from system files filtering (#1431)
+  * chore: run `go fmt` (#1429)
+  * fix(sarif): change `help` field in the sarif template. (#1423)
+  * Update fanal with cfsec version update (#1425)
+  * Replace deprecated option in goreleaser (#1406)
+  * feat(alpine): support 3.15 (#1422)
+  * chore: test the helm chart in the PR and used the commit hash (#1414)
+  * chore(deps): bump alpine from 3.14 to 3.15.0 (#1417)
+  * chore(release): add ubuntu older versions to deploy script (#1416)</comment>
+    <requestid>941786</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0604ee904bb62a2bb78be6f4d8dca4ac</srcmd5>
+    <version>0.22.0</version>
+    <time>1640693827</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.22.0:
+  * fix(java/pom): ignore unsupported requirements (#1514)
+  * feat(cli): warning for root command (#1516)
+  * BREAKING: disable JAR detection in fs/repo scanning (#1512)
+  * feat(scan): support --offline-scan option (#1511)
+  * fix: improve memory usage (#1509)
+  * feat(java): support pom.xml (#1501)
+  * docs: fixing rust link to security advisory (#1504)
+  * Add missing IacMetdata (#1505)
+  * feat(jar): add file path (#1498)
+  * feat(rpm): support NDB (#1497)
+  * feat: added misconfiguration field for html.tpl (#1444)</comment>
+    <requestid>942895</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4e8b7ae3dc0c79c7798845071418baf7</srcmd5>
+    <version>0.22.0</version>
+    <time>1641480668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.22.0 (jsc#SLE-18339):</comment>
+    <requestid>944093</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>945ccd2aa0538f9f7f93579ae9b3cb69</srcmd5>
+    <version>0.23.0</version>
+    <time>1643731187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950418</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ac590a525e78fe870dc4a5ecf4c9bec2</srcmd5>
+    <version>0.24.2</version>
+    <time>1646349574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959290</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ca259a7f00ec1999ff861d891a2cc089</srcmd5>
+    <version>0.24.3</version>
+    <time>1647532911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962469</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c17a7c8e330a3cacb154dd967b52c990</srcmd5>
+    <version>0.24.4</version>
+    <time>1647889895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963467</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>fdfed5ed4dfb70ef92eff8ace8ffbf1a</srcmd5>
+    <version>0.24.4</version>
+    <time>1647974418</time>
+    <user>dimstar_suse</user>
+    <comment>- tie to go.17 as 1.18 became available</comment>
+    <requestid>963901</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bf1d083851c12cb85820e6424ada3684</srcmd5>
+    <version>0.25.0</version>
+    <time>1648841772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966387</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5a52c27add0ac7f02dcfba641d6557dc</srcmd5>
+    <version>0.25.3</version>
+    <time>1649450739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967695</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>753f810506e1c07aa0d45702141b1a8d</srcmd5>
+    <version>0.26.0</version>
+    <time>1650355108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970622</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f9786adfb131782ef6ca2b1a0b69c047</srcmd5>
+    <version>0.27.0</version>
+    <time>1650996978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972935</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>569cdb78386f72aa700427d31802eddc</srcmd5>
+    <version>0.27.1</version>
+    <time>1651272367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973909</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>56cbe8ac1c88ac367360ccaeb1de8850</srcmd5>
+    <version>0.28.0</version>
+    <time>1653313916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.28.0 (bsc#1199760, CVE-2022-28946):
+  * fix: remove Highlighted from json output (#2131)
+  * fix: remove trivy-kubernetes replace (#2132)
+  * docs: Add Operator docs under Kubernetes section (#2111)
+  * fix(k8s): security-checks panic (#2127)
+  * ci: added k8s scope (#2130)
+  * docs: Update misconfig output in examples (#2128)
+  * fix(misconf): Fix coloured output in Goland terminal (#2126)
+  * docs(secret): Fix default value of --security-checks in docs (#2107)
+  * refactor(report): move colorize function from trivy-db (#2122)
+  * feat: k8s resource scanning (#2118)
+  * chore: add CODEOWNERS (#2121)
+  * feat(image): add `--server` option for remote scans (#1871)
+  * refactor: k8s (#2116)
+  * refactor: export useful APIs (#2108)
+  * docs: fix k8s doc (#2114)
+  * feat(kubernetes): Add report flag for summary (#2112)
+  * fix: Remove problematic advanced rego policies (#2113)
+  * feat(misconf): Add special output format for misconfigurations (#2100)
+  * feat:  add k8s subcommand (#2065)
+  * chore: fix make lint version (#2102)
+  * fix(java): handle relative pom modules (#2101)
+  * fix(misconf): Add missing links for non-rego misconfig results (#2094)
+  * feat(misconf): Added fs.FS based scanning via latest defsec (#2084)
+  * chore(deps): bump trivy-issue-action to v0.0.4 (#2091)
+  * chore(deps): bump github.com/twitchtv/twirp (#2077)
+  * chore(deps): bump github.com/urfave/cli/v2 from 2.4.0 to 2.5.1 (#2074)
+  * chore(os): updated fanal version and alpine distroless test (#2086)
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from 0.5.1 to 0.5.2 (#2075)
+  * chore(deps): bump github.com/samber/lo from 1.16.0 to 1.19.0 (#2076)</comment>
+    <requestid>978633</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2c4c1a951c9c69fd48a94c2d5c3d9ea6</srcmd5>
+    <version>0.29.1</version>
+    <time>1655972711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984654</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>dfa29646f17933a0d194a0a77263a9ef</srcmd5>
+    <version>0.29.2</version>
+    <time>1657281791</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.29.2:
+  * chore: skip Visual Studio Code project folder (#2379)
+  * fix(helm): handle charts with templated names (#2374)
+  * docs: redirect operator docs to trivy-operator repo (#2372)
+  * fix(secret): use secret result when determining Failed status (#2370)
+  * try removing libdb-dev
+  * run integration tests in fanal
+  * use same testing images in fanal
+  * feat(helm): add support for trivy dbRepository (#2345)
+  * fix: Fix failing test due to deref lint issue
+  * test: Fix broken test
+  * fix: Fix makefile when no previous named ref is visible in a shallow clone
+  * chore: Fix linting issues in fanal
+  * refactor: Fix fanal import paths and remove dotfiles
+  * chore: bump defsec version v0.68.1</comment>
+    <requestid>987818</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1e24215f0125f1c5bf3afa7a02fad32c</srcmd5>
+    <version>0.30.0</version>
+    <time>1658243967</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989979</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1f694c9f0c74e960e6f0a6ecb0c40746</srcmd5>
+    <version>0.30.2</version>
+    <time>1658510431</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990668</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c54d9d5e39a211c87b7bef6cea2feaaf</srcmd5>
+    <version>0.30.4</version>
+    <time>1659034713</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991385</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3b2d2561904b83c755fc6bcbabea40f5</srcmd5>
+    <version>0.31.0</version>
+    <time>1660662499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.31.0:
+  * fix(flag): add error when there are no supported security checks (#2713)
+  * fix(vuln): continue scanning when no vuln found in the first application (#2712)
+  * revert: add new classes for vulnerabilities (#2701)
+  * feat(secret): detect secrets removed or overwritten in upper layer (#2611)
+  * fix(cli): secret scanning perf link fix (#2607)
+  * chore(deps): bump github.com/spf13/viper from 1.8.1 to 1.12.0 (#2650)
+  * feat: Add AWS Cloud scanning (#2493)
+  * docs: specify the type when verifying an attestation (#2697)
+  * docs(sbom): improve SBOM docs by adding a description for scanning SBOM attestation (#2690)
+  * fix(rpc): scanResponse rpc conversion for custom resources (#2692)
+  * feat(rust): Add support for cargo-auditable (#2675)
+  * feat: Support passing value overrides for configuration checks (#2679)
+  * feat(sbom): add support for scanning a sbom attestation (#2652)
+  * chore(image): skip symlinks and hardlinks from tar scan (#2634)
+  * fix(report): Update junit.tpl (#2677)
+  * fix(cyclonedx): add nil check to metadata.component (#2673)
+  * docs(secret): fix missing and broken links (#2674)
+  * refactor(cyclonedx): implement json.Unmarshaler (#2662)
+  * chore(deps): bump github.com/aquasecurity/table from 1.6.0 to 1.7.2 (#2643)
+  * chore(deps): bump github.com/Azure/go-autorest/autorest (#2642)
+  * feat(kubernetes): add option to specify kubeconfig file path (#2576)
+  * docs:  follow Debian's &quot;instructions to connect to a third-party repository&quot; (#2511)
+  * chore(deps): bump github.com/google/licenseclassifier/v2 (#2644)
+  * chore(deps): bump github.com/samber/lo from 1.24.0 to 1.27.0 (#2645)
+  * chore(deps): bump github.com/Azure/go-autorest/autorest/adal (#2647)
+  * chore(deps): bump github.com/cheggaaa/pb/v3 from 3.0.8 to 3.1.0 (#2646)
+  * chore(deps): bump sigstore/cosign-installer from 2.4.1 to 2.5.0 (#2641)
+  * chore(deps): bump actions/cache from 3.0.4 to 3.0.5 (#2640)
+  * chore(deps): bump alpine from 3.16.0 to 3.16.1 (#2639)</comment>
+    <requestid>997334</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>acfe65d0e9c284fcc7cd29ea7a1a9edd</srcmd5>
+    <version>0.31.2</version>
+    <time>1660753008</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.31.2:
+  * fix: Correctly handle recoverable AWS scanning errors (#2726)
+  * docs: Remove reference to SecurityAudit policy for AWS scanning (#2721)
+
+- Update to version 0.31.1:
+  * fix: upgrade defsec to v0.71.7 for elb scan panic (#2720)</comment>
+    <requestid>997437</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>75c948547a7345f2858e59fbd192b6f0</srcmd5>
+    <version>0.31.3</version>
+    <time>1662405737</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.31.3:
+  * fix: handle empty OS family (#2768)
+  * fix: fix k8s summary report (#2777)
+  * fix: don't skip packages that don't contain vulns, when using --list-all-pkgs flag (#2767)
+  * chore: bump trivy-kubernetes (#2770)
+  * fix(secret): Consider secrets in rpc calls (#2753)
+  * fix(java): check depManagement from upper pom's (#2747)
+  * fix(php): skip `composer.lock` inside `vendor` folder (#2718)
+  * fix: fix k8s rbac filter (#2765)
+  * feat(misconf): skipping misconfigurations by AVD ID (#2743)
+  * chore(deps): Upgrade Alpine to 3.16.2 to fix zlib issue (#2741)
+  * docs: add MacPorts install instructions (#2727)
+  * docs: typo (#2730)</comment>
+    <requestid>1001263</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8674d3b9097c620ba613452ee02b8bd4</srcmd5>
+    <version>0.32.0</version>
+    <time>1663596204</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0:
+  * docs: add Rekor SBOM attestation scanning (#2893)
+  * chore: narrow the owner scope (#2894)
+  * fix: remove a patch number from the recommendation link (#2891)
+  * fix: enable parsing of UUID-only rekor entry ID (#2887)
+  * docs(sbom): add SPDX scanning (#2885)
+  * docs: restructure docs and add tutorials (#2883)
+  * feat(sbom): scan sbom attestation in the rekor record (#2699)
+  * feat(k8s): support outdated-api (#2877)
+  * chore(deps): bump github.com/moby/buildkit from 0.10.3 to 0.10.4 (#2815)
+  * fix(c): support revisions in Conan parser (#2878)
+  * feat: dynamic links support for scan results (#2838)
+  * chore(deps): bump go.uber.org/zap from 1.22.0 to 1.23.0 (#2818)
+  * docs: update archlinux commands (#2876)
+  * feat(secret): add line from dockerfile where secret was added to secret result (#2780)
+  * feat(sbom): Add unmarshal for spdx (#2868)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/config (#2827)
+  * fix: revert asff arn and add documentation (#2852)
+  * docs: batch-import-findings limit (#2851)
+  * chore(deps): bump golang from 1.19.0 to 1.19.1 (#2872)
+  * feat(sbom): Add marshal for spdx (#2867)
+  * build: checkout before setting up Go (#2873)
+  * chore: bump Go to 1.19 (#2861)
+  * docs: azure doc and trivy (#2869)
+  * fix: Scan tarr'd dependencies (#2857)
+  * chore(helm): helm test with ingress (#2630)
+  * feat(report): add secrets to sarif format (#2820)
+  * chore(deps): bump azure/setup-helm from 1.1 to 3.3 (#2807)
+  * refactor: add a new interface for initializing analyzers (#2835)
+  * chore(deps): bump github.com/aws/aws-sdk-go from 1.44.77 to 1.44.92 (#2840)</comment>
+    <requestid>1004582</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>49852ab9ebe0603f24071f09c995b3a7</srcmd5>
+    <version>0.32.1</version>
+    <time>1664467980</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.32.1:
+  * fix(java): use fields of dependency from dependencyManagement from upper pom.xml to parse deps (#2943)
+  * chore: expat lib and go binary deps vulns (#2940)
+  * wasm: Removes accidentally exported memory (#2950)
+  * fix(sbom): fix package name separation for gradle (#2906)
+  * docs(readme.md): fix broken integrations link (#2931)
+  * fix(image): handle images with single layer in rescan mergedLayers cache (#2927)
+  * fix(cli): split env values with ',' for slice flags (#2926)
+  * fix(cli): config/helm: also take into account files with `.yml` (#2928)
+  * fix(flag): add file-patterns flag for config subcommand (#2925)
+  * chore(deps): bump github.com/open-policy-agent/opa from 0.43.0 to 0.43.1 (#2902)</comment>
+    <requestid>1006699</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5815d3b69b56e882fabe0a093fa9ee48</srcmd5>
+    <version>0.33.0</version>
+    <time>1666780315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031258</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e489b5b644834a81b94cb1f832017211</srcmd5>
+    <version>0.34.0</version>
+    <time>1667825518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034128</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2d959ef865e31d84612b80bb5c054ee0</srcmd5>
+    <version>0.35.0</version>
+    <time>1669630044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038587</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>eb936340e5564b06d5643f086d796f15</srcmd5>
+    <version>0.36.0</version>
+    <time>1672668133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.36.0:
+  * docs: improve compliance docs (#3340)
+  * feat(deps): add yarn lock dependency tree (#3348)
+  * fix: compliance change id and title naming (#3349)
+  * feat: add support for mix.lock files for elixir language (#3328)
+  * feat: add k8s cis bench (#3315)
+  * test: disable SearchLocalStoreByNameOrDigest test for non-amd64 arch (#3322)
+  * revert: cache merged layers (#3334)
+  * feat(cyclonedx): add recommendation (#3336)
+  * feat(ubuntu): added support ubuntu ESM versions (#1893)
+  * fix: change logic to build relative paths for skip-dirs and skip-files (#3331)
+  * chore(deps): bump github.com/hashicorp/golang-lru from 0.5.4 to 2.0.1 (#3265)
+  * feat: Adding support for Windows testing (#3037)
+  * feat: add support for Alpine 3.17 (#3319)
+  * docs: change PodFile.lock to Podfile.lock (#3318)
+  * fix(sbom): support for the detection of old CycloneDX predicate type (#3316)
+  * feat(secret): Use .trivyignore for filtering secret scanning result (#3312)
+  * chore(go): remove experimental FS API usage in Wasm (#3299)
+  * ci: add workflow to add issues to roadmap project (#3292)
+  * fix(vuln): include duplicate vulnerabilities with different package paths in the final report (#3275)
+  * chore(deps): bump github.com/spf13/viper from 1.13.0 to 1.14.0 (#3250)
+  * feat(sbom): better support for third-party SBOMs (#3262)
+  * docs: add information about languages with support for dependency locations (#3306)
+  * feat(vm): add `region` option to vm scan to be able to scan any region's ami and ebs snapshots (#3284)
+  * chore(deps): bump github.com/Azure/azure-sdk-for-go from 66.0.0+incompatible to 67.1.0+incompatible (#3251)
+  * fix(vuln): change severity vendor priority for ghsa-ids and vulns from govuln (#3255)
+  * docs: remove comparisons (#3289)
+  * feat: add support for Wolfi Linux (#3215)
+  * ci: add go.mod to canary workflow (#3288)
+  * feat(python): skip dev dependencies (#3282)</comment>
+    <requestid>1046089</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ee671e9e649cacfe09fe65a7b3c3b076</srcmd5>
+    <version>0.36.1</version>
+    <time>1672927298</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.36.1:
+  * fix(deps): fix errors on yarn.lock files that contain local file reference (#3384)
+  * feat(flag): early fail when the format is invalid (#3370)
+  * chore(deps): bump github.com/aws/aws-sdk-go from 1.44.136 to 1.44.171 (#3366)
+  * docs(aws): fix broken links (#3374)
+  * chore(deps): bump actions/stale from 6 to 7 (#3360)
+  * chore(deps): bump helm/kind-action from 1.4.0 to 1.5.0 (#3359)
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from 0.6.0 to 0.7.0 (#2974)
+  * chore(deps): bump azure/setup-helm from 3.4 to 3.5 (#3358)
+  * chore(deps): bump github.com/moby/buildkit from 0.10.4 to 0.10.6 (#3173)
+  * chore(deps): bump goreleaser/goreleaser-action from 3 to 4 (#3357)
+  * chore(deps): bump github.com/containerd/containerd from 1.6.8 to 1.6.14 (#3367)
+  * chore(go): updates wazero to v1.0.0-pre.7 (#3355)
+  * chore(deps): bump golang.org/x/text from 0.4.0 to 0.5.0 (#3362)
+  * chore(deps): bump actions/cache from 3.0.11 to 3.2.2 (#3356)</comment>
+    <requestid>1056176</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4c9069496fb8154875bfc55cacf2ac7d</srcmd5>
+    <version>0.37.0</version>
+    <time>1675266002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.37.0:
+  * fix(image): close layers (#3517)
+  * refactor: db client changed (#3515)
+  * feat(java): use trivy-java-db to get GAV (#3484)
+  * docs: add note about the limitation in Rekor (#3494)
+  * docs: aggregate targets (#3503)
+  * deps: updates wazero to 1.0.0-pre.8 (#3510)
+  * docs: add alma 9 and rocky 9 to supported os (#3513)
+  * chore(deps): bump defsec to v0.82.9 (#3512)
+  * chore: add missing target labels (#3504)
+  * docs: add java vulnerability page (#3429)
+  * feat(image): add support for Docker CIS Benchmark (#3496)
+  * feat(image): secret scanning on container image config (#3495)
+  * chore(deps): Upgrade defsec to v0.82.8 (#3488)
+  * feat(image): scan misconfigurations in image config (#3437)
+  * chore(helm): update Trivy from v0.30.4 to v0.36.1 (#3489)
+  * feat(k8s): add node info resource (#3482)
+  * perf(secret): optimize secret scanning memory usage (#3453)
+  * feat: support aliases in CLI flag, env and config (#3481)
+  * fix(k8s): migrate rbac k8s (#3459)
+  * feat(java): add implementationVendor and specificationVendor fields to detect GroupID from MANIFEST.MF (#3480)
+  * refactor: rename security-checks to scanners (#3467)
+  * chore: display the troubleshooting URL for the DB denial error (#3474)
+  * docs: yaml tabs to spaces, auto create namespace (#3469)
+  * docs: adding show-and-tell template to GH discussions (#3391)
+  * fix: Fix a temporary file leak in case of error (#3465)
+  * fix(test): sort cyclonedx components (#3468)
+  * docs: fixing spelling mistakes (#3462)
+  * ci: set paths triggering VM tests in PR (#3438)
+  * docs: typo in --skip-files (#3454)</comment>
+    <requestid>1062442</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c5fc41c1b6715f2a463eb4ef3e84d2c4</srcmd5>
+    <version>0.37.1</version>
+    <time>1675357710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.37.1:
+  * fix(sbom): download the Java DB when generating SBOM (#3539)
+  * fix: use cgo free sqlite driver (#3521)
+  * ci: fix path to dist folder (#3527)</comment>
+    <requestid>1062489</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>be16d4801432a024026fca23eecc7345</srcmd5>
+    <version>0.37.2</version>
+    <time>1676036148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064170</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8842f183019312af18923e23bb4ddec0</srcmd5>
+    <version>0.37.3</version>
+    <time>1676464859</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.37.3 (bsc#1208091, CVE-2023-25165):
+  * chore(helm): update Trivy from v0.36.1 to v0.37.2 (#3574)
+  * chore(deps): bump github.com/spf13/viper from 1.14.0 to 1.15.0 (#3536)
+  * chore(deps): bump golang/x/mod to v0.8.0 (#3606)
+  * chore(deps): bump golang.org/x/crypto from 0.3.0 to 0.5.0 (#3529)
+  * chore(deps): bump helm.sh/helm/v3 from 3.10.3 to 3.11.1 (#3580)
+  * ci: quote pros in c++ for semantic pr (#3605)
+  * fix(image): check proxy settings from env for remote images (#3604)</comment>
+    <requestid>1065886</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8989163e818d9e88189783e7555755e7</srcmd5>
+    <version>0.38.0</version>
+    <time>1677683681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.38.0:
+  * fix(cli): pass integer to exit-on-eol (#3716)
+  * feat: add kubernetes pss compliance (#3498)
+  * feat: Adding --module-dir and --enable-modules (#3677)
+  * feat: add special IDs for filtering secrets (#3702)
+  * chore(deps): Update defsec (#3713)
+  * docs(misconf): Add guide on input schema (#3692)
+  * feat(go): support dependency graph and show only direct dependencies in the tree (#3691)
+  * feat: docker multi credential support (#3631)
+  * feat: summarize vulnerabilities in compliance reports (#3651)
+  * feat(python): parse pyproject.toml alongside poetry.lock (#3695)
+  * feat(python): add dependency tree for poetry lock file (#3665)
+  * fix(cyclonedx): incompliant affect ref (#3679)
+  * chore(helm): update skip-db-update environment variable (#3657)
+  * fix(spdx): change CreationInfo timestamp format RFC3336Nano to RFC3336 (#3675)
+  * fix(sbom): export empty dependencies in CycloneDX (#3664)
+  * docs: java-db air-gap doc tweaks (#3561)
+  * feat(go): license support (#3683)
+  * feat(ruby): add dependency tree/location support for Gemfile.lock (#3669)
+  * fix(k8s): k8s label size (#3678)
+  * fix(cyclondx): fix array empty value, null to [] (#3676)
+  * refactor: rewrite gomod analyzer as post-analyzer (#3674)
+  * feat: config outdated-api result filtered by k8s version (#3578)
+  * fix: Update to Alpine 3.17.2 (#3655)
+  * feat: add support for virtual files (#3654)
+  * feat: add post-analyzers (#3640)
+  * chore(deps): updates wazero to 1.0.0-pre.9 (#3653)
+  * chore(deps): bump github.com/go-openapi/runtime from 0.24.2 to 0.25.0 (#3528)
+  * chore(deps): bump github.com/containerd/containerd from 1.6.15 to 1.6.18 (#3633)
+  * feat(python): add dependency locations for Pipfile.lock (#3614)</comment>
+    <requestid>1068414</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>38ef23fcf54777bd9ad0ac8af1e4a176</srcmd5>
+    <version>0.38.1</version>
+    <time>1677794682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.38.1:
+  * feat(misconf): Add support to show policy bundle version (#3743)
+  * fix(python): fix error with optional dependencies in pyproject.toml (#3741)
+  * chore(deps): bump github.com/aws/aws-sdk-go from 1.44.210 to 1.44.212 (#3740)
+  * add id for package.json files (#3750)
+  * chore(deps): bump github.com/containerd/containerd from 1.6.18 to 1.6.19 (#3738)
+  * chore(deps): bump actions/cache from 3.2.4 to 3.2.6 (#3725)
+  * chore(deps): bump github.com/google/go-containerregistry (#3731)
+  * chore(deps): bump go.etcd.io/bbolt from 1.3.6 to 1.3.7 (#3732)
+  * chore(deps): bump alpine from 3.17.1 to 3.17.2 (#3723)</comment>
+    <requestid>1069011</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b0ae7db49bddc82dcca379ce536998d4</srcmd5>
+    <version>0.38.2</version>
+    <time>1678283653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.38.2:
+  * chore(deps): bump github.com/moby/buildkit from 0.11.0 to 0.11.4 (#3789)
+  * chore(deps): bump actions/add-to-project from 0.4.0 to 0.4.1 (#3724)
+  * fix(license): disable jar analyzer for licence scan only (#3780)
+  * bump trivy-issue-action to v0.0.0; skip `pkg` dir (#3781)
+  * fix: skip checking dirs for required post-analyzers (#3773)
+  * docs: add information about plugin format (#3749)
+  * fix(sbom): add trivy version to spdx creators tool field (#3756)</comment>
+    <requestid>1070155</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>0d3e4652ff35b695b25e98abae27f986</srcmd5>
+    <version>0.38.3</version>
+    <time>1678814249</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.38.3:
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/ec2 from 1.86.1 to 1.89.1 (#3827)
+  * fix(java): skip empty files for jar post analyzer (#3832)
+  * fix(docker): build healthcheck command for line without /bin/sh prefix (#3831)
+  * refactor(license): use goyacc for license parser (#3824)
+  * chore(deps): bump github.com/docker/docker from 23.0.0-rc.1+incompatible to 23.0.1+incompatible (#3586)
+  * fix: populate timeout context to node-collector (#3766)
+  * fix: exclude node collector scanning (#3771)
+  * fix: display correct flag in error message when skipping java db update #3808
+  * fix: disable jar analyzer for scanners other than vuln (#3810)
+  * fix(sbom): fix incompliant license format for spdx (#3335)
+  * fix(java): the project props take precedence over the parent's props (#3320)
+  * docs: add canary build info to README.md (#3799)
+  * docs: adding link to gh token generation (#3784)
+  * docs: changing docs in accordance with #3460 (#3787)</comment>
+    <requestid>1071463</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>c6495cf720c74612cef1e2460499d4bf</srcmd5>
+    <version>0.39.0</version>
+    <time>1680538273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.39.0:
+  * docs(cli): added makefile and go file to create docs (#3930)
+  * chore: Revert &quot;ci: add gpg signing for RPM packages (#3612)&quot; (#3946)
+  * chore: ignore gpg key (#3943)
+  * feat(cyclonedx): support dependency graph (#3177)
+  * chore(deps): Bump defsec to v0.85.0 (#3940)
+  * feat(rust): remove dev deps and find direct deps for Cargo.lock (#3919)
+  * feat(server): redis with public TLS certs support (#3783)
+  * feat(flag): Add glob support to `--skip-dirs` and `--skip-files`  (#3866)
+  * chore: replace make with mage (#3932)
+  * fix(sbom): add checksum to files (#3888)
+  * chore(deps): bump github.com/opencontainers/runc from 1.1.4 to 1.1.5 (#3928)
+  * chore: remove unused mount volumes (#3927)
+  * feat: add auth support for downloading OCI artifacts (#3915)
+  * refactor(purl): use epoch in qualifier (#3913)
+  * chore(deps): bump github.com/in-toto/in-toto-golang from 0.5.0 to 0.7.0 (#3727)
+  * feat(image): add registry options (#3906)
+  * feat(rust): dependency tree and line numbers support for cargo lock file (#3746)
+  * chore(deps): bump google.golang.org/protobuf from 1.29.0 to 1.29.1 (#3905)
+  * feat(php): add support for location, licenses and graph for composer.lock files (#3873)
+  * chore(deps): updates wazero to 1.0.0 (#3904)
+  * feat(image): discover SBOM in OCI referrers (#3768)
+  * docs: change cache-dir key in config file (#3897)
+  * fix(sbom): use release and epoch for SPDX package version (#3896)
+  * ci: add gpg signing for RPM packages (#3612)
+  * docs: Update incorrect comment for skip-update flag (#3878)
+  * refactor(misconf): simplify policy filesystem (#3875)
+  * feat(nodejs): parse package.json alongside yarn.lock (#3757)
+  * fix(spdx): add PkgDownloadLocation field (#3879)
+  * fix(report): try to guess direct deps for dependency tree (#3852)</comment>
+    <requestid>1077009</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>88ce53d7eac2670fa772a794b9172810</srcmd5>
+    <version>0.40.0</version>
+    <time>1681746061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.40.0:
+  * feat(flag): Support globstar for `--skip-files` and `--skip-directories` (#4026)
+  * chore(deps): bump actions/stale from 7 to 8 (#3955)
+  * fix: return insecure option to download javadb (#4064)
+  * fix(nodejs): don't stop parsing when unsupported yarn.lock protocols are found (#4052)
+  * ci: add gpg signing for RPM packages (#4056)
+  * fix(k8s): current context title (#4055)
+  * fix(k8s): quit support on k8s progress bar (#4021)
+  * chore: add a note about Dockerfile.canary (#4050)
+  * ci: fix path to canary binaries (#4045)
+  * fix(vuln): report architecture for debian packages (#4032)
+  * feat: add support for Chainguard's commercial distro (#3641)
+  * ci: bump goreleaser for Github Action from 1.4.1 to 1.16.2 (#3979)
+  * fix(vuln): fix error message for remote scanners (#4031)
+  * feat(report): add image metadata to SARIF (#4020)
+  * docs: fix broken cache link on Installation page (#3999)
+  * fix: lock downloading policies and database (#4017)
+  * fix: avoid concurrent access to the global map (#4014)
+  * feat(rust): add Cargo.lock v3 support (#4012)
+  * feat: auth support oci download server subcommand (#4008)
+  * chore(deps): bump github.com/docker/docker (#4009)
+  * chore: install.sh support for armv7 (#3985)
+  * chore(deps): bump github.com/Azure/go-autorest/autorest/adal (#3961)
+
+- Update to version 0.39.1:
+  * fix(rust): fix panic when 'dependencies' field is not used in cargo.toml (#3997)
+  * fix(sbom): fix infinite loop for cyclonedx (#3998)
+  * chore(deps): bump helm/chart-testing-action from 2.3.1 to 2.4.0 (#3954)
+  * fix: use warning for errors from enrichment files for post-analyzers (#3972)
+  * chore(deps): bump github.com/docker/docker (#3963)</comment>
+    <requestid>1079785</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>ef0e16b56ebcee9d5a168b125018e17c</srcmd5>
+    <version>0.41.0</version>
+    <time>1682691834</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.41.0:
+  * fix(spdx): add workaround for no src packages (#4118)
+  * test(golang): rename broken go.mod (#4129)
+  * feat(sbom): add supplier field (#4122)
+  * test(misconf): skip downloading of policies for tests #4126
+  * refactor: use debug message for post-analyze errors (#4037)
+  * feat(sbom): add VEX support (#4053)
+  * feat(sbom): add primary package purpose field for SPDX (#4119)
+  * fix(k8s): fix quiet flag (#4120)
+  * fix(python): parse of pip extras (#4103)
+  * feat(java): use full path for nested jars (#3992)
+  * feat(license): add new flag for classifier confidence level (#4073)
+  * feat: config and fs compliance support (#4097)
+  * chore(deps): bump sigstore/cosign-installer from 2.8.1 to 3.0.1 (#3952)
+  * feat(spdx): add support for SPDX 2.3 (#4058)
+  * fix: k8s all-namespaces support (#4096)
+  * perf(misconf): replace with post-analyzers (#4090)
+  * fix(helm): update networking API version detection (#4106)
+  * feat(image): custom docker host option (#3599)
+  * style: debug flag is incorrect and needs extra - (#4087)
+  * docs(vuln): Document inline vulnerability filtering comments (#4024)
+  * feat(fs): customize error callback during fs walk (#4038)
+  * fix(ubuntu): skip copyright files from subfolders (#4076)
+  * docs: restructure scanners (#3977)
+  * fix: fix `file does not exist` error for post-analyzers (#4061)</comment>
+    <requestid>1083465</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>f3878894261187610d5b8c00d58150bf</srcmd5>
+    <version>0.41.0</version>
+    <time>1683916664</time>
+    <user>dimstar_suse</user>
+    <comment>- actually create a PIE binary</comment>
+    <requestid>1086593</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>b2462b4cc537f91d1f910c0b54f24467</srcmd5>
+    <version>0.42.1</version>
+    <time>1686576448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.42.1:
+  * ci: remove 32bit packages (#4585)
+  * fix(misconf): deduplicate misconf results (#4588)
+  * fix(vm): support sector size of 4096 (#4564)
+  * fix(misconf): terraform relative paths (#4571)
+  * fix(purl): skip unsupported library type (#4577)
+  * fix(terraform): recursively detect all Root Modules (#4457)
+  * fix(vm): support post analyzer for vm command (#4544)
+  * fix(nodejs): change the type of the devDependencies field (#4560)
+  * fix(sbom): export empty dependencies in CycloneDX (#4568)
+  * refactor: add composite fs for post-analyzers (#4556)
+  * chore(deps): bump golangci/golangci-lint-action from 3.4.0 to 3.5.0 (#4554)
+  * chore(deps): bump helm/kind-action from 1.5.0 to 1.7.0 (#4526)
+  * chore(deps): bump github.com/BurntSushi/toml from 1.2.1 to 1.3.0 (#4528)
+  * chore(deps): bump github.com/alicebob/miniredis/v2 from 2.30.2 to 2.30.3 (#4529)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/ec2 (#4536)
+  * chore(deps): bump github.com/tetratelabs/wazero from 1.0.0 to 1.2.0 (#4549)
+  * chore(deps): bump github.com/spf13/cast from 1.5.0 to 1.5.1 (#4532)
+  * chore(deps): bump github.com/testcontainers/testcontainers-go (#4537)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.6.1 to 5.7.0 (#4530)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/config (#4534)
+  * chore(deps): bump github.com/sigstore/rekor from 1.2.0 to 1.2.1 (#4533)
+  * chore(deps): bump alpine from 3.17.3 to 3.18.0 (#4525)
+  * feat: add SBOM analyzer (#4210)
+  * fix(sbom): update logic for work with files in spdx format (#4513)
+  * feat: azure workload identity support (#4489)
+  * feat(ubuntu): add eol date for 18.04 ESM (#4524)
+  * fix(misconf): Update required extensions for terraformplan (#4523)
+  * refactor(cyclonedx): add intermediate representation (#4490)
+  * fix(misconf): Remove debug print while scanning (#4521)</comment>
+    <requestid>1092482</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>6a40307f15f59808b595f78e5cd55c05</srcmd5>
+    <version>0.42.1</version>
+    <time>1688052553</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/1 by dirkmueller</comment>
+    <requestid>1095924</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>d0f51b47aa24276e0e78578f2319e6e1</srcmd5>
+    <version>0.43.0</version>
+    <time>1688476916</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/3 by dirkmueller</comment>
+    <requestid>1096591</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f263e3f5111e1b177daba4adcc6c3782</srcmd5>
+    <version>0.43.1</version>
+    <time>1690278600</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.43.1
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/4 by dirkmueller)</comment>
+    <requestid>1099718</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>38eb14629e78f13a6b16a88a5ac9ff15</srcmd5>
+    <version>0.44.0</version>
+    <time>1691076644</time>
+    <user>dimstar_suse</user>
+    <comment>Update Trivy to 0.44.0
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/5 by dirkmueller)</comment>
+    <requestid>1102156</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>86edf02484dbaa97ff0ac86d40575b3d</srcmd5>
+    <version>0.44.1</version>
+    <time>1692294239</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.44.1
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/9 by dirkmueller)</comment>
+    <requestid>1104218</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>3fbb5a32ba6e3ebe6b63dbbeacc94cc6</srcmd5>
+    <version>0.47.0</version>
+    <time>1699478354</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.47.0
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/2 by dirkmueller)</comment>
+    <requestid>1124268</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>acdeca3aa5e7b7dc5426c85cf5af23a8</srcmd5>
+    <version>0.48.0</version>
+    <time>1701902927</time>
+    <user>anag+factory</user>
+    <comment>Update to trivy 0.48.0
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/3 by dirkmueller)</comment>
+    <requestid>1131309</requestid>
+  </revision>
+</revisionlist>

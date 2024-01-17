@@ -1,0 +1,9 @@
+<package name="perl-MooseX-Types-DateTime" project="openSUSE:Factory">
+  <title>DateTime related constraints and coercions for Moose</title>
+  <description>This module packages several Moose::Util::TypeConstraints with coercions,
+designed to work with the DateTime suite of objects.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-MooseX-Types-DateTime"/>
+  <url>http://search.cpan.org/dist/MooseX-Types-DateTime</url>
+</package>

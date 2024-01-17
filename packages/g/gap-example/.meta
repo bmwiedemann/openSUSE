@@ -1,0 +1,5 @@
+<package name="gap-example" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="science" package="gap-example"/>
+</package>

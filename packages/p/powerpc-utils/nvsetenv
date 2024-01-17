@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ "$1" = "--version" ]; then
+	echo This version of nvsetenv is just a wrapper to invoke nvram
+	exit 0
+fi
+if [ -z "$1" ]; then
+	nvram --print-config
+elif [ -z "$2" ]; then
+	nvram --print-config="$1"
+else
+	nvram --update-config "$1"="$2"
+fi
+exit $?

@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Jan  8 15:52:11 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.11:
+  + lots of cleanup of metadata.
+  + canonical git repository is now
+    https://github.com/moose/MooseX-LazyRequire.
+
+-------------------------------------------------------------------
+Wed Jun  5 18:53:45 UTC 2013 - coolo@suse.com
+
+- updated to 0.10
+  * use quotes around attribute name in error messages (David Precious)
+
+  * Invalid tests that failed on perl 5.17.6 have been fixed (they were always
+    invalid, but the changes to hash key ordering only now made the tests
+    start failing in an obvious way) (RT#81419)
+  * unnecessary dependency on MooseX::Types removed
+
+  * Convert uses of Test::Exception to Test::Fatal
+  * Add TODO test for RT#76054 (thanks for the report, ilyuha!)
+
+-------------------------------------------------------------------
+Tue Apr  5 07:18:42 UTC 2011 - coolo@novell.com
+
+- update to 0.07
+  * Allow this module to be used with attributes in roles when using Moose
+    1.9900+ (Dave Rolsky).
+
+-------------------------------------------------------------------
+Mon Jan 17 20:53:04 UTC 2011 - coolo@novell.com
+
+- initial package 0.06
+  * created by cpanspec 1.78.03
+

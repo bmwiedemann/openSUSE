@@ -1,0 +1,6 @@
+<package name="gnome-color-manager" project="openSUSE:Factory">
+  <title>Color management tools for GNOME</title>
+  <description>GNOME Color Manager is a session framework that makes it easy to manage,
+install and generate color profiles in the GNOME desktop.</description>
+  <devel project="GNOME:Factory" package="gnome-color-manager"/>
+</package>

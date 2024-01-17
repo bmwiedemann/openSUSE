@@ -1,0 +1,6 @@
+<package name="gitleaks" project="openSUSE:Factory">
+  <title>gitleaks</title>
+  <description>Scan git repos (or files) for secrets using regex and entropy</description>
+  <devel project="devel:tools:scm" package="gitleaks"/>
+  <url>https://github.com/zricethezav/gitleaks</url>
+</package>

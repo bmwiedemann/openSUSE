@@ -1,0 +1,5 @@
+<package name="sessreg" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:XOrg" package="sessreg"/>
+</package>

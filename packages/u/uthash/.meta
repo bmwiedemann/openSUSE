@@ -1,0 +1,11 @@
+<package name="uthash" project="openSUSE:Factory">
+  <title>Hash Table for C Structures</title>
+  <description>Any C structure can be stored in a hash table using uthash. Just add a
+UT_hash_handle to the structure and choose one or more fields in your structure
+to act as the key. Then use these macros to store, retrieve or delete items
+from the hash table. 
+
+</description>
+  <devel project="devel:libraries:c_c++" package="uthash"/>
+  <url>http://uthash.sourceforge.net/</url>
+</package>

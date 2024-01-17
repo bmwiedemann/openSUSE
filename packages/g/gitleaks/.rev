@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb5e57fc3c238bee0a04dc7981f80e4d</srcmd5>
+    <version>8.16.0</version>
+    <time>1678814197</time>
+    <user>dimstar_suse</user>
+    <comment>new package gitleaks: Protect and discover secrets using Gitleaks</comment>
+    <requestid>1071173</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8168239f97bdf5e9cd7660e430a2f8e1</srcmd5>
+    <version>8.18.1</version>
+    <time>1701023858</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.18.1:
+  * dont crash on 100gb files pls (#1292)
+  * remove secretgroup from default config (#1288)
+  * feat: Hashicorp Terraform fields for password (#1237)
+  * perf: avoid allocations with
+    `(*regexp.Regexp).MatchString` (#1283)
+  * refactor: more explicit rules (#1280)
+  * bugfix: reduce false positives for stripe tokens by
+    using word boundaries in regex (#1278)
+  * add Infracost API rule (#1273)
+  * refactor: simplify test asserts (#1271)
+  * Update Makefile
+  * refactor: change detect tests to t.Fatal instead of
+    log.Fatal (#1270)
+  * feat(rules): Add detection for Scalingo API Token
+    (#1262)
+  * feat(jwt): detect base64-encoded tokens (#1256)
+  * feat: add --ignore-gitleaks-allow cmd flag (#1260)
+  * switch out libs (#1259)
+  * fix: no-color option should also affect zerolog
+    (#1242)
+  * Fixed lineEnd indexing if the match is the whole line
+    (#1223)
+  * feat: Add optional redaction value, default 100
+    (#1229)
+  * fix(jwt): longer segment lengths (#1214)
+  * Added yarn.lock file to default allowlist paths
+    (#1258)
+  * Update README.md
+  * feat(rules): make case insensitivity optional (#1215)</comment>
+    <requestid>1128792</requestid>
+  </revision>
+</revisionlist>

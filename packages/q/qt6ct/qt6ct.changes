@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Sun Oct 29 16:10:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9:
+  * added Qt 6.6 compatibility
+  * added compatibility with QT_STYLE_OVERRIDE=qt5ct-style
+  * improved cmake build:
+  *   - make translations optional (Jonas Kvinge)
+  *   - enabled reproducible build by default
+  *   - other fixes and improvements (Jonas Kvinge)
+  * fixed crash on QML applications
+  * fixed parallel build using qmake
+  * fixed localization support
+  * updated Dutch translation (Heimen Stoffels)
+  * updated Polish translation (Marek Adamski)
+  * updated Russian translation
+  * updated French translation (Wallon)
+
+-------------------------------------------------------------------
+Tue Apr  4 14:58:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.8:
+  * added keywords entry to desktop file
+  * fixed compatibility with applications that use own stylesheet
+  * fixed font applying issue
+  * updated Japanese translation
+
+-------------------------------------------------------------------
+Sat Jan 28 14:05:30 UTC 2023 - kh Lai <dlshcbmuipmam@hotmail.com>
+
+- Update to 0.7
+  * fixed crash when loading default font
+  * changed font configuration format
+  * improved icon loader
+  * updated Czech translation
+
+-------------------------------------------------------------------
+Sat Oct  1 07:43:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.6
+  * added Qt 6.4 support
+  * added Qt version checking
+  * added xdgdesktopportal dialogs support
+  * improved warning about incorrect environment variable
+  * only prepend user stylesheet if it has changed
+  * removed Qt Concurrent dependency
+  * updated translations
+
+-------------------------------------------------------------------
+Mon Mar 14 14:44:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Init qt6ct

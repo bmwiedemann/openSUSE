@@ -1,0 +1,5 @@
+<package name="python-uvicorn" project="openSUSE:Factory">
+  <title></title>
+  <description>The lightning-fast ASGI server</description>
+  <devel project="devel:languages:python" package="python-uvicorn"/>
+</package>

@@ -1,0 +1,98 @@
+From 5d2e43bbf0804da52202f817f7f7fc5f18aafd11 Mon Sep 17 00:00:00 2001
+From: Laurent Dufour <ldufour@linux.ibm.com>
+Date: Tue, 2 May 2023 16:54:35 +0200
+Subject: [PATCH 2/3] lparstat: report mixed SMT state
+
+when SMT state is mixed like this one (CPU 4 is offline):
+
+$ ppc64_cpu --info
+Core   0:    0*    1*    2*    3*    4     5*    6*    7*
+Core   1:    8*    9*   10*   11*   12*   13*   14*   15*
+Core   2:   16*   17*   18*   19*   20*   21*   22*   23*
+Core   3:   24*   25*   26*   27*   28*   29*   30*   31*
+Core   4:   32*   33*   34*   35*   36*   37*   38*   39*
+Core   5:   40*   41*   42*   43*   44*   45*   46*   47*
+$ ppc64_cpu --smt
+SMT=7: 0
+SMT=8: 1-5
+
+ppc64_cpu --smt is handling that nicely but lparstat failed reporting the
+SMT state:
+$ /usr/sbin/lparstat
+Failed to get smt state
+
+System Configuration
+type=Dedicated mode=Capped smt=Capped lcpu=6 mem=65969728 kB cpus=0 ent=6.00
+
+%user  %sys %wait    %idle    physc %entc lbusy   app  vcsw phint
+----- ----- -----    -----    ----- ----- ----- ----- ----- -----
+ 0.02  0.01  0.00    99.97     3.41 56.83  0.02  0.00 4061778   156
+
+Makes lparstat reporting "smt=mixed" in that case.
+__do_smt is now returning 0 when the SMT state is mixed instead of -1 which
+is also reported when an error is detected.
+This doesn't change the call made by ppc64_cpu which is using
+print_smt_state=true and so is expecting a returned value equal to 0 or -1.
+
+With that patch applied, lparstat print that in the above case:
+$lparstat
+
+System Configuration
+type=Dedicated mode=Capped smt=Mixed lcpu=6 mem=65969728 kB cpus=0 ent=6.00
+
+%user  %sys %wait    %idle    physc %entc lbusy   app  vcsw phint
+----- ----- -----    -----    ----- ----- ----- ----- ----- -----
+ 0.01  0.01  0.00    99.97     3.43 57.17  0.02  0.00 4105654   156
+
+Signed-off-by: Laurent Dufour <ldufour@linux.ibm.com>
+---
+ src/common/cpu_info_helpers.c | 4 ++--
+ src/lparstat.c                | 4 +++-
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/common/cpu_info_helpers.c b/src/common/cpu_info_helpers.c
+index 925f220..c05d96d 100644
+--- a/src/common/cpu_info_helpers.c
++++ b/src/common/cpu_info_helpers.c
+@@ -245,7 +245,7 @@ int __do_smt(bool numeric, int cpus_in_system, int threads_per_cpu,
+ 			if (smt_state == 0)
+ 				smt_state = thread + 1;
+ 			else if (smt_state > 0)
+-				smt_state = -1; /* mix of SMT modes */
++				smt_state = 0; /* mix of SMT modes */
+ 		}
+ 	}
+ 
+@@ -257,7 +257,7 @@ int __do_smt(bool numeric, int cpus_in_system, int threads_per_cpu,
+ 			printf("SMT=1\n");
+ 		else
+ 			printf("SMT is off\n");
+-	} else if (smt_state == -1) {
++	} else if (smt_state == 0) {
+ 		for (thread = 0; thread < threads_per_cpu; thread++) {
+ 			if (CPU_COUNT_S(cpu_state_size,
+ 						cpu_states[thread])) {
+diff --git a/src/lparstat.c b/src/lparstat.c
+index eebba1f..a9e7bce 100644
+--- a/src/lparstat.c
++++ b/src/lparstat.c
+@@ -884,13 +884,15 @@ void get_smt_mode(struct sysentry *se, char *buf)
+ 	}
+ 
+ 	smt_state = parse_smt_state();
+-	if (smt_state < 0) {
++	if (smt_state == -1) {
+ 		fprintf(stderr, "Failed to get smt state\n");
+ 		return;
+ 	}
+ 
+ 	if (smt_state == 1)
+ 		sprintf(buf, "Off");
++	else if (smt_state == 0)
++		sprintf(buf, "Mixed");
+ 	else
+ 		sprintf(buf, "%d", smt_state);
+ }
+-- 
+2.40.1
+
