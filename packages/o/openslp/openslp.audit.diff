@@ -1,0 +1,33 @@
+--- ./common/slp_network.c.orig	2014-02-13 15:14:30.020870347 +0000
++++ ./common/slp_network.c	2014-02-13 15:36:48.344867978 +0000
+@@ -303,6 +303,8 @@ int SLPNetworkRecvMessage(sockfd_t sockf
+    {
+       /* Allocate the receive buffer as large as necessary. */
+       recvlen = PEEK_LENGTH(peek);
++      if (recvlen <= 0)
++         recvlen = 1;
+       *buf = SLPBufferRealloc(*buf, recvlen);
+       if (*buf)
+       {
+--- ./slpd/slpd_incoming.c.orig	2014-02-13 15:14:30.022870347 +0000
++++ ./slpd/slpd_incoming.c	2014-02-13 15:36:12.992868041 +0000
+@@ -241,6 +241,8 @@ static void IncomingStreamRead(SLPList *
+       if (bytesread > 0 && bytesread >= (*peek == 2? 5: 4))
+       {
+          recvlen = PEEK_LENGTH(peek);
++         if (recvlen <= 0)
++            recvlen = 1;
+ 
+          /* allocate the recvbuf big enough for the whole message */
+          sock->recvbuf = SLPBufferRealloc(sock->recvbuf, recvlen);
+--- ./slpd/slpd_outgoing.c.orig	2014-02-13 15:14:30.022870347 +0000
++++ ./slpd/slpd_outgoing.c	2014-02-13 15:34:49.984868188 +0000
+@@ -211,6 +211,8 @@ void OutgoingStreamRead(SLPList * sockli
+       {
+          /* allocate the recvbuf big enough for the whole message */
+          msglen = PEEK_LENGTH(peek);
++         if (msglen <= 0)
++            msglen = 1;
+ 
+          sock->recvbuf = SLPBufferRealloc(sock->recvbuf, msglen);
+          if (sock->recvbuf)

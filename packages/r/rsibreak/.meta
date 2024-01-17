@@ -1,0 +1,7 @@
+<package name="rsibreak" project="openSUSE:Factory">
+  <title>Assists in the Recovery and Prevention of Repetitive Strain Injury</title>
+  <description>Repetitive Strain Injury is an illness which can occur as a result of
+working with a mouse and keyboard. This utility can be used to remind
+you to take a break now and then.</description>
+  <devel project="KDE:Extra" package="rsibreak"/>
+</package>

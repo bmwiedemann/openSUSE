@@ -1,0 +1,210 @@
+--- canfield/cfscores/cfscores.c
++++ canfield/cfscores/cfscores.c
+@@ -123,10 +123,13 @@
+ 	struct betinfo total;
+ 	int i;
+ 
++/* useless test as pw_uid is an unsigned type */
++#if 0
+ 	if (pw->pw_uid < 0) {
+ 		printf("Bad uid %d\n", pw->pw_uid);
+ 		return;
+ 	}
++#endif
+ 	i = lseek(dbfd, pw->pw_uid * sizeof(struct betinfo), SEEK_SET);
+ 	if (i < 0)
+ 		warn("lseek %s", _PATH_SCORE);
+--- gomoku/makemove.c
++++ gomoku/makemove.c
+@@ -224,7 +224,7 @@
+ 	int i, f, r, r1, d, d1, n;
+ 	int a, b, bmask, bmask1;
+ 	struct spotstr *esp;
+-	char *str;
++	u_char *str;
+ 
+ 	esp = NULL;
+ 	for (r = 4; --r >= 0; ) {			/* for each direction */
+--- hunt/Makeconfig
++++ hunt/Makeconfig
+@@ -57,7 +57,7 @@
+ hunt_DEFS_SGI := -DINTERNET -DLOG -DBSD_RELEASE=43 -DTERMINFO -DSIGNAL_TYPE=void
+ hunt_DEFS_NEXT := $(DEFS_43) -bsd -traditional -Dconst= -DSIGNAL_TYPE=int
+ hunt_DEFS_OSF1 := -DINTERNET -DLOG -DBSD_RELEASE=43 -DSIGNAL_TYPE=void -D_BSD
+-hunt_DEFS_LINUX := -DINTERNET -DLOG -DBSD_RELEASE=44 -DUSE_CURSES -DSIGNAL_TYPE=void
++hunt_DEFS_LINUX := -DINTERNET -DLOG -DBSD_RELEASE=44 -DUSE_CURSES -DSIGNAL_TYPE=void -D_BSD_SOURCE
+ 
+ hunt_DEFS := $(hunt_GAME_PARAM) $(hunt_DEFS_LINUX) -DHUNTD=\"$(SBINDIR)/huntd\"
+ 
+--- hunt/hunt/hunt.c
++++ hunt/hunt/hunt.c
+@@ -423,7 +423,7 @@
+ 	u_short			port_num;
+ 	static SOCKET		test;
+ 	int			test_socket;
+-	int			namelen;
++	socklen_t		namelen;
+ 	char			local_name[MAXHOSTNAMELEN + 1];
+ 	static int		initial = TRUE;
+ 	static struct in_addr	local_address;
+--- hunt/huntd/answer.c
++++ hunt/huntd/answer.c
+@@ -56,7 +56,7 @@
+ 	static char		name[NAMELEN];
+ 	static char		team;
+ 	static int		enter_status;
+-	static int		socklen;
++	static socklen_t	socklen;
+ 	static u_long		machine;
+ 	static u_int32_t	uid;
+ 	static SOCKET		sockstruct;
+--- hunt/huntd/ctl.c
++++ hunt/huntd/ctl.c
+@@ -69,7 +69,7 @@
+ void
+ open_ctl() 
+ {
+-	int length;
++	socklen_t length;
+ 
+ 	ctl_addr.sin_port = 0;
+ 	ctl_addr.sin_addr = my_machine_addr;
+--- hunt/huntd/driver.c
++++ hunt/huntd/driver.c
+@@ -89,10 +89,10 @@
+ {
+ 	PLAYER	*pp;
+ # ifdef INTERNET
+-	u_short	msg;
+-	short	port_num, reply;
+-	int	namelen;
+-	SOCKET	test;
++	u_short		msg;
++	short		port_num, reply;
++	socklen_t	namelen;
++	SOCKET		test;
+ # endif
+ 	static FLAG	first = TRUE;
+ 	static FLAG	server = FALSE;
+@@ -258,11 +258,11 @@
+ static void
+ init()
+ {
+-	int	i;
++	int		i;
+ # ifdef	INTERNET
+-	SOCKET	test_port;
+-	int	msg;
+-	int	len;
++	SOCKET		test_port;
++	int		msg;
++	socklen_t	len;
+ # endif
+ 
+ # ifndef DEBUG
+@@ -901,11 +901,11 @@
+ static void
+ send_stats()
+ {
+-	IDENT	*ip;
+-	FILE	*fp;
+-	int	s;
+-	SOCKET	sockstruct;
+-	int	socklen;
++	IDENT		*ip;
++	FILE		*fp;
++	int		s;
++	SOCKET		sockstruct;
++	socklen_t	socklen;
+ 
+ 	/*
+ 	 * Get the output stream ready
+--- trek/cvntab.h
++++ trek/cvntab.h
+@@ -0,0 +1,49 @@
++/*	$NetBSD: cvntab.h,v 1.6 1999/09/08 21:18:01 jsm Exp $	*/
++
++/*
++ * Copyright (c) 1980, 1993
++ *	The Regents of the University of California.  All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. All advertising materials mentioning features or use of this software
++ *    must display the following acknowledgement:
++ *	This product includes software developed by the University of
++ *	California, Berkeley and its contributors.
++ * 4. Neither the name of the University nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ *
++ *	@(#)cvntab.h	8.1 (Berkeley) 5/31/93
++ */
++
++#ifndef CVNTAB_H
++#define CVNTAB_H
++
++typedef void (*cmdfun) __P((int));
++struct cvntab		/* used for getcodpar() paramater list */
++{
++	const char	*abrev;
++	const char	*full;
++	cmdfun	value;
++	int	value2;
++};
++#endif
+--- trek/getpar.h
++++ trek/getpar.h
+@@ -31,14 +31,7 @@
+  *	@(#)getpar.h	8.1 (Berkeley) 5/31/93
+  */
+ 
+-typedef void (*cmdfun)(int);
+-struct cvntab		/* used for getcodpar() parameter list */
+-{
+-	const char	*abrev;
+-	const char	*full;
+-	cmdfun	value;
+-	int	value2;
+-};
++#include "cvntab.h"
+ 
+ extern const struct cvntab	Skitab[];
+ extern const struct cvntab	Lentab[];
+--- trek/trek.h
++++ trek/trek.h
+@@ -43,6 +43,8 @@
+ **	zero.
+ */
+ 
++#include "cvntab.h"
++
+ /* external function definitions */
+ 
+ /*********************  GALAXY  **************************/
+@@ -204,6 +206,7 @@
+ 	unsigned char	x, y;		/* coordinates */
+ };
+ 
++struct cvntab;
+ 
+ /*
+  *	note that much of the stuff in the following structs CAN NOT

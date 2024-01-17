@@ -1,0 +1,156 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>38f7ecfe42f0d8db6a91ff5522e9fe59</srcmd5>
+    <version>0.1.3</version>
+    <time>1243306222</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4679ddd5b291bcb538353515af950fd8</srcmd5>
+    <version>0.1.4</version>
+    <time>1244903611</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d588599a34bbeb9fda0345eaeaaaa3b2</srcmd5>
+    <version>0.1.5</version>
+    <time>1248540809</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>246df83f0c4dc549dfae9b257b38e894</srcmd5>
+    <version>0.1.6</version>
+    <time>1249318382</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>246df83f0c4dc549dfae9b257b38e894</srcmd5>
+    <version>0.1.6</version>
+    <time>1249318382</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d423543c3774dcd21e4a91ad6acb9c5a</srcmd5>
+    <version>0.1.6</version>
+    <time>1256083080</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/taglib-extras based on submit request 22621 from user wstephenson
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>63203b549fa965536a99d7b4d9ab1493</srcmd5>
+    <version>1.0.1</version>
+    <time>1257331614</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/taglib-extras based on submit request 23812 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>73dc6f681b24cb7554a049399cbdbe87</srcmd5>
+    <version>1.0.1</version>
+    <time>1264780603</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/taglib-extras based on submit request 30819 from user llunak
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b60facec6d3fd592f94da43cecca7ec2</srcmd5>
+    <version>1.0.1</version>
+    <time>1268926290</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>b60facec6d3fd592f94da43cecca7ec2</srcmd5>
+    <version>1.0.1</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>b60facec6d3fd592f94da43cecca7ec2</srcmd5>
+    <version>1.0.1</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>b60facec6d3fd592f94da43cecca7ec2</srcmd5>
+    <version>1.0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>34f1199a129bb8918b6c38be026d8be0</srcmd5>
+    <version>1.0.1</version>
+    <time>1306744711</time>
+    <user>saschpe</user>
+    <comment>fix build on Evergreen_11.2 (forwarded request 70886 from pbleser)</comment>
+    <requestid>71816</requestid>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>0947a21113d7d82a0d6d5fa0f1048b66</srcmd5>
+    <version>1.0.1</version>
+    <time>1306744724</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71816
+</comment>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>0947a21113d7d82a0d6d5fa0f1048b66</srcmd5>
+    <version>1.0.1</version>
+    <time>1319182505</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>d1d32788d0f21769bc587b0297a5cb45</srcmd5>
+    <version>1.0.1</version>
+    <time>1323194833</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>d1d32788d0f21769bc587b0297a5cb45</srcmd5>
+    <version>1.0.1</version>
+    <time>1340184256</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>d1d32788d0f21769bc587b0297a5cb45</srcmd5>
+    <version>1.0.1</version>
+    <time>1359110461</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="20">
+    <srcmd5>d1d32788d0f21769bc587b0297a5cb45</srcmd5>
+    <version>1.0.1</version>
+    <time>1379664764</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="22">
+    <srcmd5>d1d32788d0f21769bc587b0297a5cb45</srcmd5>
+    <version>1.0.1</version>
+    <time>1409303447</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="23">
+    <srcmd5>5cf79c8313a2a733cf4e16f76a468e1e</srcmd5>
+    <version>1.0.1</version>
+    <time>1452377422</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352052</requestid>
+  </revision>
+  <revision rev="22" vrev="24">
+    <srcmd5>a46d11d7d578b5308309ec80f730f8d1</srcmd5>
+    <version>1.0.1</version>
+    <time>1554372158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690417</requestid>
+  </revision>
+</revisionlist>

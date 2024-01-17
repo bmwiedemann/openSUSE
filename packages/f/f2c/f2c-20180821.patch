@@ -1,0 +1,23 @@
+--- a/libf2c/makefile.u 2018-08-21 11:18:51.000000000 -0800
++++ b/libf2c/makefile.u 2018-08-21 11:17:43.000000000 -0800
+@@ -80,6 +80,7 @@ libf2c.a: $(OFILES)
+ ## must appear in the CFLAGS assignment when making libf2c.so.
+ ## Under Solaris, use -Kpic in CFLAGS and use "ld -G" instead
+ ## of "$(CC) -shared".
++
+ ## For MacOSX 10.4 and 10.5 (and perhaps other versions >= 10.3), use
+ ## "MACOSX_DEPLOYMENT_TARGET=10.3 libtool -dynamic -undefined dynamic_lookup -single_module"
+ ## instead of "$(CC) -shared", and when running programs linked against libf2c.so,
+@@ -91,10 +92,10 @@ libf2c.so: $(OFILES)
+ ### If your system lacks ranlib, you don't need it; see README.
+ 
+ f77vers.o: f77vers.c
+-	$(CC) -c f77vers.c
++	$(CC) -c -DSkip_f2c_Undefs $(CFLAGS) -o f77vers.o f77vers.c
+ 
+ i77vers.o: i77vers.c
+-	$(CC) -c i77vers.c
++	$(CC) -c -DSkip_f2c_Undefs $(CFLAGS) -o i77vers.o i77vers.c
+ 
+ # To get an "f2c.h" for use with "f2c -C++", first "make hadd"
+ hadd: f2c.h0 f2ch.add

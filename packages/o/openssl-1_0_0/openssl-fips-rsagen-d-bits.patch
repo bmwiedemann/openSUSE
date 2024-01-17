@@ -1,0 +1,39 @@
+Index: openssl-1.0.2h/crypto/rsa/rsa_gen.c
+===================================================================
+--- openssl-1.0.2h.orig/crypto/rsa/rsa_gen.c	2016-07-14 15:25:28.640174922 +0200
++++ openssl-1.0.2h/crypto/rsa/rsa_gen.c	2016-07-14 15:27:41.330349764 +0200
+@@ -234,6 +234,12 @@ static int FIPS_rsa_builtin_keygen(RSA *
+         goto err;
+     }
+ 
++    BN_copy(rsa->e, e_value);
++
++    if (!BN_is_zero(rsa->p) && !BN_is_zero(rsa->q))
++        test = 1;
++
++retry:
+     /* prepare approximate minimum p and q */
+     if (!BN_set_word(r0, 0xB504F334))
+         goto err;
+@@ -246,12 +252,6 @@ static int FIPS_rsa_builtin_keygen(RSA *
+     if (!BN_lshift(r3, r3, pbits - 100))
+         goto err;
+ 
+-    BN_copy(rsa->e, e_value);
+-
+-    if (!BN_is_zero(rsa->p) && !BN_is_zero(rsa->q))
+-        test = 1;
+-
+- retry:
+     /* generate p and q */
+     for (i = 0; i < 5 * pbits; i++) {
+  ploop:
+@@ -375,6 +375,8 @@ static int FIPS_rsa_builtin_keygen(RSA *
+     if (!BN_mod_inverse(rsa->d, rsa->e, pr0, ctx))
+         goto err;               /* d */
+ 
++    /* test 2^(bits/2) < d < LCM((p-1)*(q-1)) */
++    /* the LCM part is covered due to the generation by modulo above */
+     if (BN_num_bits(rsa->d) < pbits)
+         goto retry;             /* d is too small */
+ 

@@ -1,0 +1,6 @@
+<package name="grpc-httpjson-transcoding" project="openSUSE:Factory">
+  <title>grpc-httpjson-transcoding</title>
+  <description>Library for transcoding HTTP/JSON to gRPC</description>
+  <devel project="devel:libraries:c_c++" package="grpc-httpjson-transcoding"/>
+  <url>https://github.com/grpc-ecosystem/grpc-httpjson-transcoding</url>
+</package>

@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d734c97f4c874022038c4733b627b1e</srcmd5>
+    <version>1.0.0b2</version>
+    <time>1610051231</time>
+    <user>dimstar_suse</user>
+    <comment>- New Azure SDK package</comment>
+    <requestid>861426</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a67fca617c16f9f0bd903c3e26e0e8d5</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1618235352</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 881873 from glaubitz)</comment>
+    <requestid>881952</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1442bbc93c67860dafaed95bfa3869fb</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1620400516</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b3 (forwarded request 890929 from glaubitz)</comment>
+    <requestid>890976</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b4f0eb8fd5072dff03aeef567de851e7</srcmd5>
+    <version>2.0.0</version>
+    <time>1623767831</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py (forwarded request 898344 from glaubitz)</comment>
+    <requestid>898358</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9ac8bf982cc10c6c24529cbaa7ac7d4b</srcmd5>
+    <version>2.1.0</version>
+    <time>1698438521</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120725</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Tue Jan  2 20:37:25 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Add missing man pages for 7z / 7za / 7zr / 7zz.
+  This solves bsc#1204856.
+
+-------------------------------------------------------------------
+Tue Jul 18 02:01:41 UTC 2023 - Linnaea Lavia <linnaea@lavia.moe>
+
+- Enable ARM64 ASM introduced in 23.01
+
+-------------------------------------------------------------------
+Wed Jun 21 10:15:05 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 23.01:
+  * 7-Zip now can use new ARM64 filter for compression to 7z and xz archives.
+    ARM64 filter can increase compression ratio for data containing executable files
+    compiled for ARM64 (AArch64) architecture.
+  * Default section size for BCJ2 filter was changed from 64 MiB to 240 MiB. It
+    can increase compression ratio for executable files larger than 64 MiB.
+  * UDF: support was improved.
+  * cpio: support for hard links.
+  * Some changes and optimizations in WIM creation code.
+  * When new 7-Zip creates multivolume archive, 7-Zip keeps in open state only
+    volumes that still can be changed. Previous versions kept all volumes in open
+    state until the end of the archive creation.
+  * 7-Zip now can reduce the number of simultaneously open files, when
+    7-Zip opens, extracts or creates multivolume archive. It allows to avoid the
+    failures for cases with big number of volumes, bacause there is a limitation for
+    number of open files allowed for a single program in Linux.
+  * The bugs were fixed:
+    * ZIP archives: if multithreaded zip compression was performed with
+      more than one file to stdout stream (-so switch), 7-zip didn't write "data
+      descriptor" for some files.
+    * ext4 archives: 7-Zip couldn't correctly extract symbolic link to directory from ext4 archives.
+    * HFS and APFS archives: 7-Zip incorrectly decoded uncompressed blocks (64 KiB) in compressed forks.
+    * Some another bugs were fixed.
+- Refresh fix-compatib-with-p7zip.patch
+
+-------------------------------------------------------------------
+Mon Dec 12 21:18:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build for x86_64 subarchs the same way like for baseline 
+
+-------------------------------------------------------------------
+Wed Nov 30 10:47:14 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Enable ASM to increase performance in compression and decompression
+  bsc#1202197
+
+-------------------------------------------------------------------
+Fri Jul 22 21:16:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.01:
+  * UDF support was improved to UDF version 2.60.
+  * HFS and APFS support was improved. 
+
+-------------------------------------------------------------------
+Sun Jul  3 21:01:22 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 22.00: 
+  * 7-Zip now can extract APFS (Apple File System) images that can be used in DMG files.
+  * 7-Zip now can create TAR archives in POSIX (pax) tar format with the switches
+    -ttar -mm=pax or -ttar -mm=posix
+  * 7-Zip now can store additional file timestamps with high precision (1 ns in Linux) 
+    in tar/pax archives with the following switches:
+    -ttar -mm=pax -mtp=3 -mtc -mta
+  * New switches for Linux version for TAR archives:
+    -snoi : store owner/group ids in archive or set owner/group ids from archive to extracted files. 
+    -snon : store owner/group names in archive
+  * New -snz switch to propagate Zone.Identifier stream to extracted files (Windows).
+  * New option "Propagate Zone.Id stream" in Tools/Options/7-Zip menu.
+  * New "Options" window in "Add to archive" allows to select what metadata must be 
+    included to archive. Also it allows to select new option 
+    "Do not change source files last access time".
+  * Some bugs were fixed.
+
+-------------------------------------------------------------------
+Wed Jan 26 03:16:03 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix an incompatibility with p7zip which was breaking some downstreams
+  (e.g., GNOME's File-Roller). See bsc#1195041
+  * Add fix-compatib-with-p7zip.patch
+
+-------------------------------------------------------------------
+Wed Jan 12 16:45:41 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Replace p7zip with 7zip
+  * Add p7zip and p7zip.1
+
+-------------------------------------------------------------------
+Mon Jan  3 11:31:10 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 21.07:
+  * The sorting order of files in archives was slightly changed to be more
+    consistent for cases where the name of some directory is the same as the
+    prefix part of the name of another directory or file.
+  * TAR archives created by 7-Zip now are more consistent with archives
+    created by GNU TAR program.
+- Remove unneeded pach remove-rar-handler.patch
+- Use the tarball in place of the 7zip archive as Source
+
+-------------------------------------------------------------------
+Wed Dec 22 20:48:46 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Extract source archive with bsdtar instead of p7zip
+- Fixup line breaks of documentation files
+
+-------------------------------------------------------------------
+Tue Dec 21 21:13:09 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to version 21.06
+  * Bug in LZMA encoder in file LzmaEnc.c was fixed:
+    - LzmaEnc_MemEncode(), LzmaEncode() and LzmaCompress() could work
+      incorrectly, if size value for output buffer is smaller than size
+      required for all compressed data.
+    - LzmaEnc_Encode() could work incorrectly, if callback
+      ISeqOutStream::Write() doesn't write all compressed data.
+    - NCompress::NLzma::CEncoder::Code() could work incorrectly,
+      if callback ISequentialOutStream::Write() returns error code.
+  * Bug in versions 21.00-21.05 was fixed:
+    7-Zip didn't set attributes of directories during archive extracting.
+
+- update to version 21.04
+  * 7-Zip now reduces the number of working CPU threads for compression,
+    if RAM size is not enough for compression with big LZMA2 dictionary.
+  * 7-Zip now can create and check "file.sha256" and "file.sha1" text
+    files that contain the list of file names and SHA-1 / SHA-256
+    checksums in format compatible with sha1sum/sha256sum programs.
+
+- update to version 21.03
+  * The maximum dictionary size for LZMA/LZMA2 compressing was increased
+    to 4 GB (3840 MiB).
+  * Minor speed optimizations in LZMA/LZMA2 compressing.
+
+-------------------------------------------------------------------
+Tue Dec 21 00:07:36 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove more -W flags for the Leap 15.x build to succeed
+
+-------------------------------------------------------------------
+Tue Jul  6 14:36:25 UTC 2021 danilo.spinella@suse.com
+
+- Create initial version
+- Add remove-rar-handler.patch

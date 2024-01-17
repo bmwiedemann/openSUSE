@@ -1,0 +1,15 @@
+Author: Suren A. Chilingaryan <csa@dside.dyndns.org>
+
+Index: extract.c
+===================================================================
+--- extract.c.orig	2009-03-14 04:32:52.000000000 +0300
++++ extract.c	2010-07-07 17:29:52.000000000 +0400
+@@ -2596,7 +2596,7 @@ char *fnfilter(raw, space, size)   /* co
+      */
+ #   define UZ_FNFILTER_REPLACECHAR      '?'
+ # endif
+-        if (!isprint(*r)) {
++        if (*r < 32) { //(!isprint(*r)) {
+             if (*r < 32) {
+                 /* ASCII control codes are escaped as "^{letter}". */
+                 if (se != NULL && (s > (space + (size-4)))) {

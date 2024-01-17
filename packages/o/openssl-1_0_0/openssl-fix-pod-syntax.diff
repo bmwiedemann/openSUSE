@@ -1,0 +1,143 @@
+From jaenicke@openssl.net  Thu May 30 09:46:58 2013
+CC: Jonathan Liu <net147@gmail.com>
+Resent-Date: Thu, 30 May 2013 09:46:58 +0200
+X-Spam-Status: No, score=-2.3 required=5.0 tests=FREEMAIL_FROM, RCVD_IN_DNSWL_MED,T_DKIM_INVALID,T_TO_NO_BRKTS_FREEMAIL autolearn=ham version=3.3.2
+X-Mailer: git-send-email 1.8.3
+Message-ID: <1369887573-10819-1-git-send-email-net147@gmail.com>
+X-Received: by 10.68.65.134 with SMTP id x6mr5859535pbs.219.1369886755138; Wed, 29 May 2013 21:05:55 -0700 (PDT)
+Resent-To: rt-i12@openssl.net
+Received: by openssl.net (Postfix, from userid 29209) id 1548C1E0128; Thu, 30 May 2013 09:46:58 +0200 (CEST)
+Received: by openssl.net (Postfix, from userid 65534) id 852471E12CB; Thu, 30 May 2013 06:14:07 +0200 (CEST)
+Received: by openssl.net (Postfix, from userid 30009) id 6FF4D1E12CF; Thu, 30 May 2013 06:14:07 +0200 (CEST)
+Received: from master.openssl.org (openssl.org [194.97.152.144]) by openssl.net (Postfix) with ESMTP id B4F491E12CB for <rt@openssl.net>; Thu, 30 May 2013 06:14:00 +0200 (CEST)
+Received: by master.openssl.org (Postfix) id 53CEF1337D; Thu, 30 May 2013 06:14:00 +0200 (CEST)
+Received: from mail-pd0-f180.google.com (mail-pd0-f180.google.com [209.85.192.180]) by master.openssl.org (Postfix) with ESMTP id BD43A1337C for <rt@openssl.org>; Thu, 30 May 2013 06:13:59 +0200 (CEST)
+Received: by mail-pd0-f180.google.com with SMTP id 14so7525333pdc.39 for <rt@openssl.org>; Wed, 29 May 2013 21:13:58 -0700 (PDT)
+Received: from 60-242-179-244.static.tpgi.com.au (60-242-179-244.static.tpgi.com.au. [60.242.179.244]) by mx.google.com with ESMTPSA id gh9sm39937623pbc.37.2013.05.29.21.05.52 for <multiple recipients> (version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128); Wed, 29 May 2013 21:05:54 -0700 (PDT)
+Delivered-To: rt-i12@openssl.net
+Subject: [PATCH] Fix POD errors with pod2man from Perl 5.18.
+Resent-From: Lutz Jaenicke <jaenicke@openssl.net>
+Return-Path: <jaenicke@openssl.net>
+X-Original-To: rt-i12@openssl.net
+X-Original-To: jaenicke@localhost
+X-Original-To: rt@openssl.net
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113; h=from:to:cc:subject:date:message-id:x-mailer; bh=7+ASUI5nk0djFCejseoyvHdfe1CBnwkjfwtKd/NZiyk=; b=Z8nPd4yIaqDTqC2lMbn6p2B4+cFrVY1CLkKn7W9dJucX5NWdr9xJFx3uBZgzONU48L 24eHjFUMScQtRepL0UbNbWOeUlLsTFicuSlx9FaEyK7ZY7zVzmdESmGeedInheWRaaz1 A818XmhAGYTO09kxRTrt8lswyegygIMna7vvjV5vP7wdRPLBejxvtSj24xz+b6bEub51 CvG+wjG+5SZt3XYdGtE3Rff49BaZg4zjpcH92H64bPsKClFx0dOYP849mEMuMzDsrcAO /2ZtXsPfkOHXSJAgGvvxEo7KQTUJol5+VtHzNjY7rRnrpKmS7U0+U8sasp4yetFIuXSZ U+eg==
+Date: Thu, 30 May 2013 14:19:33 +1000
+X-Spam-Level: 
+X-Greylist: delayed 483 seconds by postgrey-1.33 at master.openssl.org; Thu, 30 May 2013 06:13:59 CEST
+X-Spam-Checker-Version: SpamAssassin 3.3.2 (2011-06-06) on openssl
+Resent-Message-ID: <20130530074658.GA13997@openssl.net>
+To: rt@openssl.org
+From: Jonathan Liu <net147@gmail.com>
+X-RT-Original-Encoding: ascii
+content-type: text/plain; charset="utf-8"
+Content-Length: 12835
+
+---
+ doc/apps/cms.pod                            |   12 ++++++------
+ doc/apps/smime.pod                          |   12 ++++++------
+ doc/apps/ts.pod                             |    6 +++---
+ doc/crypto/OPENSSL_ia32cap.pod              |    4 ++++
+ doc/crypto/rand.pod                         |   14 +++++++-------
+ doc/ssl/SSL_COMP_add_compression_method.pod |    4 ++--
+ doc/ssl/SSL_CTX_add_session.pod             |    4 ++--
+ doc/ssl/SSL_CTX_load_verify_locations.pod   |    4 ++--
+ doc/ssl/SSL_CTX_set_client_CA_list.pod      |    4 ++--
+ doc/ssl/SSL_CTX_set_session_id_context.pod  |    4 ++--
+ doc/ssl/SSL_CTX_set_ssl_version.pod         |    4 ++--
+ doc/ssl/SSL_CTX_use_psk_identity_hint.pod   |    2 +-
+ doc/ssl/SSL_accept.pod                      |    4 ++--
+ doc/ssl/SSL_clear.pod                       |    4 ++--
+ doc/ssl/SSL_connect.pod                     |    4 ++--
+ doc/ssl/SSL_do_handshake.pod                |    4 ++--
+ doc/ssl/SSL_read.pod                        |    2 +-
+ doc/ssl/SSL_session_reused.pod              |    4 ++--
+ doc/ssl/SSL_set_fd.pod                      |    4 ++--
+ doc/ssl/SSL_set_session.pod                 |    4 ++--
+ doc/ssl/SSL_set_shutdown.pod                |    2 +-
+ doc/ssl/SSL_shutdown.pod                    |    6 +++---
+ doc/ssl/SSL_write.pod                       |    2 +-
+ 23 files changed, 59 insertions(+), 55 deletions(-)
+
+Index: openssl-1.0.2a/doc/apps/ts.pod
+===================================================================
+--- openssl-1.0.2a.orig/doc/apps/ts.pod	2015-04-03 22:07:02.024077520 +0200
++++ openssl-1.0.2a/doc/apps/ts.pod	2015-04-03 22:07:04.830116325 +0200
+@@ -58,19 +58,19 @@ time. Here is a brief description of the
+ 
+ =over 4
+ 
+-=item 1.
++=item Z<>1.
+ 
+ The TSA client computes a one-way hash value for a data file and sends
+ the hash to the TSA.
+ 
+-=item 2.
++=item Z<>2.
+ 
+ The TSA attaches the current date and time to the received hash value,
+ signs them and sends the time stamp token back to the client. By
+ creating this token the TSA certifies the existence of the original
+ data file at the time of response generation.
+ 
+-=item 3.
++=item Z<>3.
+ 
+ The TSA client receives the time stamp token and verifies the
+ signature on it. It also checks if the token contains the same hash
+Index: openssl-1.0.2a/doc/crypto/rand.pod
+===================================================================
+--- openssl-1.0.2a.orig/doc/crypto/rand.pod	2015-04-03 22:07:02.025077534 +0200
++++ openssl-1.0.2a/doc/crypto/rand.pod	2015-04-03 22:07:04.830116325 +0200
+@@ -74,16 +74,16 @@ First up I will state the things I belie
+ 
+ =over 4
+ 
+-=item 1
++=item Z<>1
+ 
+ A good hashing algorithm to mix things up and to convert the RNG 'state'
+ to random numbers.
+ 
+-=item 2
++=item Z<>2
+ 
+ An initial source of random 'state'.
+ 
+-=item 3
++=item Z<>3
+ 
+ The state should be very large.  If the RNG is being used to generate
+ 4096 bit RSA keys, 2 2048 bit random strings are required (at a minimum).
+@@ -93,13 +93,13 @@ carried away on this last point but it d
+ a bad idea to keep quite a lot of RNG state.  It should be easier to
+ break a cipher than guess the RNG seed data.
+ 
+-=item 4
++=item Z<>4
+ 
+ Any RNG seed data should influence all subsequent random numbers
+ generated.  This implies that any random seed data entered will have
+ an influence on all subsequent random numbers generated.
+ 
+-=item 5
++=item Z<>5
+ 
+ When using data to seed the RNG state, the data used should not be
+ extractable from the RNG state.  I believe this should be a
+@@ -108,12 +108,12 @@ data would be a private key or a passwor
+ not be disclosed by either subsequent random numbers or a
+ 'core' dump left by a program crash.
+ 
+-=item 6
++=item Z<>6
+ 
+ Given the same initial 'state', 2 systems should deviate in their RNG state
+ (and hence the random numbers generated) over time if at all possible.
+ 
+-=item 7
++=item Z<>7
+ 
+ Given the random number output stream, it should not be possible to determine
+ the RNG state or the next random number.

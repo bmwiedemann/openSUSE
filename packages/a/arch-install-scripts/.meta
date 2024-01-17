@@ -1,0 +1,8 @@
+<package name="arch-install-scripts" project="openSUSE:Factory">
+  <title>Arch install scripts: genfstab, arch-chroot</title>
+  <description>This package provides helper scripts originating in Arch Linux that are useful during manual installation and recovery of any Linux system.
+
+* genfstab: Automatically generate an fstab file
+* arch-chroot: Set up bind mounts and chroot into the target system</description>
+  <devel project="utilities" package="arch-install-scripts"/>
+</package>

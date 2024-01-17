@@ -1,0 +1,15 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 28d73c7..e81e81b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -16,6 +16,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${SDLPoP_SOURCE_DIR}/..")
+ 
+ #set(SDL2 "/usr/local/Cellar/sdl2/2.0.5")
+ 
++find_package(SDL2 REQUIRED)
++include_directories(${SDL2_INCLUDE_DIRS})
++
++
+ if (NOT(WIN32) AND (DEFINED SDL2))
+     include_directories(${SDL2}/include)
+     link_directories(${SDL2}/lib)

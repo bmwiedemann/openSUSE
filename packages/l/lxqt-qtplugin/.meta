@@ -1,0 +1,14 @@
+<package name="lxqt-qtplugin" project="openSUSE:Factory">
+  <title>libqtlxqt - LXQt system integration plugin for Qt.</title>
+  <description>With this plugin, all Qt-based programs can adopt settings of
+LXQt, such as the icon theme.
+
+To use the plugin in Qt 5, we have to export the environment
+variable QT_QPA_PLATFORMTHEME=lxqt. Then every Qt5 program
+can load the theme plugin.
+If, for some unknown reasons, the plugin is not loaded, we can
+debug the plugin by exporting QT_DEBUG_PLUGINS=1.
+Then, Qt5 will print detailed information and error messages
+about all plugins in the console when running any Qt5 programs.</description>
+  <devel project="X11:LXQt" package="lxqt-qtplugin"/>
+</package>

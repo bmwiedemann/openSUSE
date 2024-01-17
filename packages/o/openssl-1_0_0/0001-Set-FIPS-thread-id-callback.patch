@@ -1,0 +1,39 @@
+From 0ab24083a16c8a4dd35833031bbeaeb0437a7219 Mon Sep 17 00:00:00 2001
+From: "Dr. Stephen Henson" <steve@openssl.org>
+Date: Fri, 18 Aug 2017 17:58:05 +0100
+Subject: [PATCH] Set FIPS thread id callback.
+
+Fixes #4180
+
+Reviewed-by: Rich Salz <rsalz@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/4192)
+---
+ crypto/cryptlib.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/crypto/cryptlib.c b/crypto/cryptlib.c
+index 1925428f5e..5fab45b2ec 100644
+--- a/crypto/cryptlib.c
++++ b/crypto/cryptlib.c
+@@ -469,11 +469,18 @@ void CRYPTO_THREADID_set_pointer(CRYPTO_THREADID *id, void *ptr)
+     }
+ }
+ 
++#ifdef OPENSSL_FIPS
++extern int FIPS_crypto_threadid_set_callback(void (*func) (CRYPTO_THREADID *));
++#endif
++
+ int CRYPTO_THREADID_set_callback(void (*func) (CRYPTO_THREADID *))
+ {
+     if (threadid_callback)
+         return 0;
+     threadid_callback = func;
++#ifdef OPENSSL_FIPS
++    FIPS_crypto_threadid_set_callback(func);
++#endif
+     return 1;
+ }
+ 
+-- 
+2.13.6
+

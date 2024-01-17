@@ -1,0 +1,5 @@
+<package name="7zip" project="openSUSE:Factory">
+  <title>7zip</title>
+  <description>File archivier supporting both its 7z format and various common ones (GZIP, TAR, XZ, ZIP, etc).</description>
+  <devel project="Archiving" package="7zip"/>
+</package>

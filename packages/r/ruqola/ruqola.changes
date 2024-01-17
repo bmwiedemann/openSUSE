@@ -1,0 +1,3187 @@
+-------------------------------------------------------------------
+Fri Dec 15 22:04:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
+Wed Oct  4 23:06:58 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.0.0
+  * bug fixes
+  * translation updates
+
+-------------------------------------------------------------------
+Mon Jul 24 13:18:25 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.9.2
+  * bug fixes
+  * translation updates
+- Remove allow_build_without_deprecated_method.patch,
+  is part of release
+
+-------------------------------------------------------------------
+Tue Mar 14 14:50:34 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add allow_build_without_deprecated_method.patch
+  Backport upstream fix for Qt 6.4 build failure
+
+-------------------------------------------------------------------
+Mon Feb  6 09:51:08 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.9.1
+  * Add translation engine
+  * bug fixes and code cleanup
+  * Translation updates
+
+-------------------------------------------------------------------
+Tue Oct 18 14:39:58 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.8.1
+  * bug fixes
+- Remove keep_tts_plugin.patch, plugin was re-enabled upstream
+
+-------------------------------------------------------------------
+Thu Sep  1 13:37:27 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.8.0
+  * Add full screen support
+  * Add Notification history
+  * Room avatars
+  * Video conferencing
+  * bug fixes and code cleanup
+- Add keep_tts_plugin.patch to keep the build of the TTS plugin enabled
+
+-------------------------------------------------------------------
+Mon Aug 15 13:59:59 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.7.4
+  * bug fixes
+
+-------------------------------------------------------------------
+Wed Jun 22 13:20:12 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.7.2
+  * bug fixes
+
+-------------------------------------------------------------------
+Tue May 10 18:44:21 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.7.1
+  * bug fixes
+
+-------------------------------------------------------------------
+Sat Apr  2 12:49:06 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.7.0
+  * Add support for 2FA
+  * Don't repeat the same avatar and sender in consecutive messages,
+    also skip the context for threaded messages if it's the same
+  * Allow to follow/unfollow messages and threads
+  * Implement Search History
+  * Allow to open specific messages from URL
+
+-------------------------------------------------------------------
+Fri Feb 25 17:52:14 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to version 1.6.3
+  * Fix double click on user
+  * Fix show roles in groups channel
+  * Disable action when it's not connected
+  * Fix emoji popup pos
+  * Avoid duplicate users when we create channel
+  * Use enum for defining type of createChannel info
+  * Fix delete team
+  * Fix create teams
+  * Use isValid()
+  * Reduce struct
+  * When we create a team member must use userId, but for channels
+    we need userNames
+  * Fix add users when we create new channel
+
+-------------------------------------------------------------------
+Wed Feb  9 19:14:52 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to version 1.6.2
+  * Fix emoji popup menu position
+  * Fix build with GCC 12
+  * Fix icon name
+  * Use SingleMainWindow=true
+  * Fix layout
+  * Remove debug
+  * Fix place holder
+  * Fix open direct message (we need to use username)
+  * Fix i18n
+  * Update list of emoji
+  * Fix following icon
+  * Fix warning
+  * Fix leaks reported by Asan
+  * Add missing QIcon
+  * Fix show icon when message is following
+- Add signature file and keyring
+
+-------------------------------------------------------------------
+Thu Dec 30 18:18:19 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.6.1
+  * No upstream changelog provided
+
+-------------------------------------------------------------------
+Tue Dec 14 19:09:51 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.6.0. No changelog.
+- Switch to release tarball
+
+-------------------------------------------------------------------
+Sun Oct 17 17:44:49 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.5.0+git.420.df7232b82:
+  * GIT_SILENT: Debug--
+  * Allow to add/get custom sound info
+  * Add autotest
+  * Prepare autotest
+  * Add select file
+  * GIT_SILENT: increase version
+  * GIT_SILENT: remove unused comment
+  * Reduce duplicate code
+  * Update log view
+  * Add support for register/unregister stream-stdout
+  * Allow to register/unregister method
+  * We need stream-stdout for showing update log
+  * GIT_SILENT: const'ify
+  * Reduce warning
+  * Add missing const'ref
+  * RC 4.0.2 was release, increase minimum RC version to 2.4.0
+  * Allow to edit user by doubleclick
+  * Make sure that index is valid
+  * GIT_SILENT: debug --
+  * Don't load roles each time that we open dialog
+  * Hide role column (we will display only roleStr)
+  * Fix show permission string
+  * Allow to modify roles by double click
+  * Remove warning about empty string
+  * GIT_SILENT: time to increase version
+  * Start to add custom sound manager
+  * Add missing stream-notify-logged element
+  * Add show license
+  * Fix debug
+  * Move in own directory
+  * Add comment
+  * Add licenseslist job
+  * Update custom sound list when we delete custom sound.
+  * Allow to remove custom sound
+  * Ask if we want to delete custom sound
+  * Add enum for licenses
+  * implement proxy model
+  * Continue to implement administrator custom sound
+  * We don't have it in RC >= 4.0
+  * Add a custom proxy model for sorting date
+  * Prepare to delete custom sound (no restapi => need to use ddpclient)
+  * Add support for delete custom sound
+  * Fix autotest
+  * Don't ignore message in direct channel. We can block user directly
+  * Remove otr from list when we close it
+  * Store otr
+  * Make as movable
+  * Now we can close otr + accept otr.
+  * Allow to accept otr
+  * Continue to implement otr support
+  * Add text
+  * Fix autotest
+  * Fix streamNotifyUserOtrEnd generate method
+  * Add action
+  * Add to layout
+  * GIT_SILENT: add qDebug
+  * Connect directly to signal
+  * GIT_SILENT: increase version
+  * Fix streamNotifyUserOtrEnd
+  * Add otrwidget
+  * Minor: Don't capitalize check box labels
+  * Fix generate method
+  * Add qdebug here
+  * Add Acknowledge ddpclient method
+  * Add comment
+  * Export symbole
+  * Fix autotest
+  * Export this class too
+  * Export class here too
+  * Fix export symbol
+  * Continue to impemment otr support
+  * Disable it for the moment
+  * Minor: Fix compiler warning under Clang 13.0.0
+  * Store public key
+  * Add streamNotifyUserOtrHandshake method
+  * Export otr element
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Add autotest for streamNotifyUserOtrHandshake
+  * add streamNotifyUserOtrHandshake support
+  * For generate ort end message
+  * Add ddpclient for otr end method
+  * Add autotests + signals
+  * Add buttons for refresh keys and close otr
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Improve generate otr message
+  * Add autotest
+  * We need a KMessageWidget for otr
+  * Prepare to generate otr ddpclient commands
+  * Const'ify variable
+  * Add account name in title
+  * Add icon
+  * Add rocketchat account support
+  * Prepare to activate Otr
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Move otr file in own directory
+  * Prepare to allow to cancel upload file
+  * Add switch when we activate action
+  * Add autotest
+  * Use directly otrnotificationjob
+  * improve job
+  * Add a notification otr job
+  * Add actions
+  * Add autotest
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Revert "Try to use  https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/linux.yml"
+  * Implement Otr::OtrType::Handshake knotification
+  * USe application-menu icon
+  * Try to use  https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/linux.yml
+  * Add operator==
+  * Show OTR notification
+  * We use by default ADD_REPLY_NOTIFICATION
+  * Fix autotest
+  * Start to add support to E2E
+  * Prepare to allow to configure E2E
+  * const'ify pointer
+  * Add qDebug
+  * Minor fix
+  * Finally it's stored as a QString
+  * Add notifyrc
+  * Get info from OTR
+  * Add message about encryption
+  * Time to increase version
+  * Fix parsing OTR
+  * OTR can be activated only on direct channel
+  * Look at how to implement OTR
+  * Add commnt
+  * Use std::find_if here
+  * Fix sort date time
+  * Fix sort date  time
+  * Cache datetime
+  * Add own proxy model for sorting date
+  * GIT_SILENT: fix description
+
+-------------------------------------------------------------------
+Sun Oct 03 22:10:23 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.5.0+git.288.682629358:
+  * Fix some cppcheck warning
+  * Remove unused method
+  * Add tooltip
+  * Use inactive text when user is offline
+  * comment for the moment as there is not restapi
+  * Remove unused variable
+  * GIT_SILENT: time to increase version
+  * Add support for OauthApps*
+  * Improve reconnect widget (not perfect yet)
+  * Add clear button here
+  * Use Breeze QStyle on Windows and macOS
+  * Disable it as we don't have rest api yet
+  * Make Ctrl+F trigger "Search Messages" action
+  * Minor: Fix compiler warnings
+  * Use refresh icon
+  * Remove not implement "save as" as we can do it when we "show log"
+  * Try to implement reconnect widget
+  * Fix build also when we have no HAVE_KUSERFEEDBACK defined
+  * Increase delay this more and more like RC+
+  * Allow to show reconnect widget
+  * Add ReconnectInfoWidget
+  * Update text when we display widget
+  * improve reconnect widget
+
+-------------------------------------------------------------------
+Sun Sep 26 20:16:34 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.5.0+git.265.26485511d:
+  * Rename variable/methods
+  * Add delay time
+  * Add tryReconnect signal + add autotest
+  * Start to implement a reconnectinfowidget
+  * GIT_SILENT: add comment
+  * GIT_SILENT: increase version
+  * Create dialog on stack
+  * Fix mem leak
+  * Store in tmp dir
+  * We depend against qt5.15 => we don't have overload signal/method now
+  * Create on stack here
+  * It's autogenerated
+  * Add icon
+  * Fix crash when we delete room
+  * Add support for search string for UsersListJob
+  * Add placeholder
+  * Add support for search string
+  * Add support for search string in customsoundlist
+  * Add support for search string in emoji
+  * Add search string support
+  * Use pattern here
+  * We need to use pattern
+  * Reduce number of rest api call. Update list only when we show it
+  * Assign icon directly
+  * Fix show icon in button
+  * Fix update avatar
+  * Fix update avatar cache
+  * Fix i18n
+  * Use export symbol
+  * Really fix autotest
+  * Allow to show avatar icon
+  * Fix autotest
+  * Fix typo
+  * Allow to show icon
+  * Fix i18n
+  * Debug--
+  * Allow to change avatar picture
+  * Fix show message error
+  * Allow to create new emoji
+  * Start to fix job we need to use qhttppart here
+  * Add emoji struct
+  * Fix debug
+  * Use createjob when we want to create emoji otherwise updatejob
+  * Show aliases too
+  * Add QJsonObject argument
+  * GIT_SILENT: time to increase version
+  * Fix export
+  * Add debug
+  * Update custom list model
+  * Show tooltip
+  * Fix comment
+  * Add update custom emoji support
+
+-------------------------------------------------------------------
+Mon Sep 20 15:08:01 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.5.0+git.213.a5469633c:
+  * Add support for adding custom emoji
+  * Rename file
+  * Improve autotest
+  * Add more autotest
+  * Fix autotest "delete custom emoji"
+  * Prepare to autotest
+
+-------------------------------------------------------------------
+Sun Sep 19 13:09:50 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.5.0+git.207.7fde3e2be:
+  * coding style + const'ify pointer
+  * emit signal when we changed custom emoji list
+  * Allow to delete emojicustom
+  * Implement delete custom emoji
+  * More autotest
+  * GIT_SILENT: it's default argument
+  * Prepare autotest
+  * Add method for updating custom emoji
+  * Use icon here
+  * GIT_SILENT: Use {} here
+  * Remove commented code
+  * improve autotest
+  * Fix mem leak
+  * Add autotest
+  * GIT_SILENT: add TODO
+  * Create a emoji custom delegate
+  * Fix mem leak
+  * Remove unused emoticonselectorwidget
+  * Use newemoticonlistview
+  * Fix mem leak
+  * Continue to implement add/update custom emoji
+  * Add emoticonlistview
+  * Fix crash when we quit rooms
+  * We need to implement update custom emoji too
+  * Start to add support for "deleteEmojiCustom"
+  * Show view log page only we have permission
+  * Do not eat the mouse press events
+  * Make sure that we are allow to modify permission
+  * Fix order
+  * don't show "direct message" if we don't have permission
+  * Make sure that we can open direct message
+  * GIT_SILENT: debug--
+  * Allow to filter proxy
+  * Add clear button
+  * Remove unused includes
+  * Add support for version as "4.0"
+  * GIT_SILENT: time to increase version
+  * adding myself as "original author", for lack of fantasy on better definitions. I'm happy to be named former maintainer or any other way which recognizes Laurent's awesome work in turning Ruqola into a real application. just not "founder" please, that'd be ridiculous 😉
+  * Allow to enable or not logging
+  * GIT_SILENT: add Q_REQUIRED_RESULT
+  * Remove unused include
+  * GIT_SILENT: debug--
+  * Implement local message logs
+  * RocketChatAccount::downloadFile: remove unused bool
+  * Mark channel as read when clicking on the lineedit
+  * Improve checkbox texts in the settings dialog
+  * Add missing files
+  * RocketChatRestApi::RestApiRequest -> RocketChatRestApi::Connection
+  * Fix the famous image-layout-bug, finally.
+  * Fix multiple connects between Room and MessageListView
+  * Fix wrong class name in debug statement
+  * Add JitsiEnabledTeams/JitsiEnabledChannels
+  * Fix jisti url
+  * Use link color for room which unread message
+  * GIT_SILENT: Remove not necessary variables
+  * GIT_SILENT: Time to increase version
+  * Update list of permissions
+  * Add edit dialog title + update treeview
+  * Start to implement load preview image (and not directly big image)
+  * Fix select item
+  * Set permission.
+  * Add autotest
+  * Fix autotest here too
+  * Fix autotest
+  * improve update permissions
+  * Use const'ref
+  * Improve permissionswidget
+  * Unbreak full-resolution image attachements
+  * First step for adding .kde-ci.yml
+  * Improve autotest
+  * Rename autotest
+  * Add edit dialog box here
+  * Use RolesComboBox
+  * Move in misc directory
+  * Fix roles items
+  * Fix warning text
+  * Fix minor typo
+  * Fix generate request
+  * Add message error
+  * Disable test about password
+  * Add rolesmodel autotest
+  * Fix autotest
+  * Use directly QStandardItemModel here
+  * Add missing ":"
+  * Add warning about missing message info
+  * improve autotest
+  * improve autotest
+  * Fix role name
+  * GIT_SILENT: time to increase version
+  * GIT_SILENT: remove unused forward declaration
+  * Not necessary to show horizontal scrollbar
+  * Add custom emoji model
+  * Rename variable
+  * not necessary to store pointer here
+  * Fix prune widget layout
+  * Not necessary to show menu if list is empty
+  * Use directly EmoticonModelFilterProxyModel
+  * Allow to sort command/emoti
+  * GIT_SILENT: minor
+  * Set by default not necessary to set it
+  * Add more TODO
+  * Add comment
+  * Load custom emoji in list of emoji
+  * Return list of custom emoji
+  * Rename methods
+  * Add debug category
+  * Add menu
+  * Add missing includes
+  * Improve permissionseditdialog
+  * Prepare to allow to edit roles
+  * Allow to sort permissions
+  * Add proxymodel
+  * GIT_SILENT: time to increase it
+  * Use directly qOverload
+  * Prepare to create menu
+  * Fix show all roles
+  * Give section header entries more space
+  * Add ctrl + up/down shortcuts to jump to the prev/next channel
+  * Skip section headers / unselectable items in channel list key nav
+  * Jump to top of channel list when pressing key down on last channel
+  * Only change foreground color in ChannelListDelegate
+  * debug--
+  * Don't parse settings value
+  * GIT_SILENT: time to increase version
+  * Load permissions
+  * Continue to implement permissions
+  * Add clear/count method
+  * Store identifier too
+  * Add permissions class
+  * Add missing Q_REQUIRED_RESULT
+  * Add missing Q_REQUIRED_RESULT + const variable
+  * Use specific enums here
+  * Start to create permissions model
+  * Fix export symbol
+  * Add TODO
+  * Build against last kf5
+  * Improve autotest + add lineEdit
+  * GIT_SILENT: remove unused forward declaration
+  * GIT_SILENT: increase version
+  * Add QTreeView here
+  * Continue to implement permissionswidget
+  * Add more autotest
+  * Make it compile with last api
+  * Implement permission update
+  * Fix permission
+  * Add roomIds to delete to job
+  * const'ify pointer + use std::chrono_literals
+  * Remove unused variable
+  * GIT_SILENT: time to increase version
+  * Add missing label
+  * Add team name
+  * Const'ify pointer
+  * Remove duplicate code
+  * Now we can use std::as_const
+
+-------------------------------------------------------------------
+Mon Aug 16 00:06:43 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.5.0+git.49.98f82520c:
+  * Add check about empty list
+  * Allow to delete channel too
+  * Continue to implement convert to channel
+  * roomlistheadingsproxymodel.cpp - restore missing semicolons
+  * GIT_SILENT: git-blame-ignore-revs
+  * GIT_SILENT: clang-tidy: one declaration per line; braces around statements
+  * Rename variables
+  * Use convert-team permission
+  * Add autotest
+  * Allow to save/load size
+  * Show 'convert team to channal'
+  * Debug--
+  * Prepare to convert to channel
+  * Show which rooms to delete
+  * Add label
+  * Fix enable/disable button
+  * Allow to return roomIds to remove
+  * Start to create "convert team to channel" support
+  * Allow to define roomId to delete
+  * continue to implement teamconverttochanneljob
+  * Fix enum
+  * Prepare to convert team to channel
+  * Add missing permission + fix typo
+  * Continue to implement permissions widget
+  * Prepare permission support
+  * GIT_SILENT: update comment
+  * Don't try to load translate list if we don't have right
+  * Fix show or not autotranslate
+  * Show created date
+  * Allow to show create date time for team too
+  * Allow to show last message
+  * Allow to modify element when we double click
+  * Fix click on react emoji.
+
+-------------------------------------------------------------------
+Fri Aug 06 17:39:37 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.5.0+git.10.10b05327a:
+  * Fix reply in notification for direct message
+  * include <QDateTime> to fix compile
+  * OBS updates for the 1.5.0 release
+  * Fix gif animation
+  * Try to fix query
+  * Add more autotest
+  * Use qCWarning
+  * Time to depend against new qt
+  * Now it's autogenerated
+  * Time to work on future 1.6.
+  * Time to create new 1.5.0
+  * Add autotest
+  * Fix typo
+  * Add warning
+  * Prepare to implement teamslistjob
+  * Fix autotest
+  * GIT_SILENT: time to increase version
+  * Allow to reply from notification
+  * GIT_SILENT: coding style
+  * RoomListHeadingsProxyModel: handle layoutChanged ourselves
+  * Add unittest for room moving between sections. Works, unfortunately :-)
+  * Use kformat for size info
+  * Fix some TODO
+  * GIT_SILENT: use debug categories
+  * Remove TODO
+  * GIT_SILENT: increase version
+  * Fix autotest
+  * Remove old TODO, implemented meanwhile
+  * Fix RoomListHeadingsProxyModelTest after recent changes
+  * Fix logic in RoomModel::section and unittest it
+  * Implement headings above room types
+  * Insert proxy model on top of RoomFilterProxyModel, no-op for now
+  * Split ChannelListView::model and ChannelListView::filterModel
+  * RoomModel::order() : fix conflict between favorite+mainTeam and unread
+  * unittests: fix -Wunused-result warnings due to addRoom()
+  * Add TODO
+  * GIT_SILENT: prepare new version
+  * Fix 2 warnings + 1 typo
+  * Allow to define install dir (need cmake 3.21)
+
+-------------------------------------------------------------------
+Thu Jul 29 11:32:52 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.1+git.489.54dac0a7b:
+  * Make it compile in release mode
+
+-------------------------------------------------------------------
+Mon Jul 19 07:33:30 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.1+git.488.47b3dc244:
+  * Continue to implement update emoji
+  * Continue to implement create emoji
+  * Allow to clear text
+  * Use context here
+  * Rename enum
+  * GIT_SILENT: increase version
+  * GIT_SILENT: fix comment
+  * Use directly managechannels
+  * Reduce duplicate code
+
+-------------------------------------------------------------------
+Sun Jul 11 21:58:38 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.1+git.479.372797776:
+  * Continue to implement managechannels
+  * Improve code
+  * Remove duplicate code
+  * Add rocketchataccount
+  * Extract code for open/join/ channels/groups
+  * Allow to open/join channel/group
+  * Allow to open channel
+  * GIT_SILENT: debug--
+  * Allow to save/load spellchecking settings
+  * Allow to open group too
+  * Show channel type
+  * GIT_SILENT: fix typo
+  * Add message info
+  * Move "hide channel" action before "quit channel"
+  * Assign info
+  * Return info
+  * Add autotest
+  * Update ok button
+  * GIT_SILENT: time to increase version
+  * GIT_SILENT: add clang support too
+  * Continue to implement emoji support
+  * Continue to implement create dialog
+  * Continue to implement widget
+  * Fix autotest
+  * continue to implement create dialog
+  * Add administratorcustomemojicreatedialog
+  * Add new "TeamsConvertToChannel"
+  * GIT_SILENT: time to increase version
+  * Add pattern + autotest
+  * initialize model
+  * Update list of emoji
+  * Allow to delete custom emoji
+  * Remove enum here
+  * Add support to customemojisinfo
+  * Add support for custom emoji
+  * Fix typo
+  * Add emojicustomall
+  * add emoji-custom.all
+  * Export symbol
+  * Show tooltip only when it's necessary
+  * Fix i18n
+  * Remove unused includes
+  * Clean forward declaration
+  * GIT_SILENT: ignore Testing/
+  * Fix show more/less topic/announcement
+  * Don't hide it
+  * Allow to resize header
+  * Use RoomHeaderLabel
+  * Add debug when we open direct user
+  * Fix warning about division by 0
+  * Add more autotest
+  * improve roomheaderlabel
+  * GIT_SILENT: coding style
+  * Improve label
+  * Start to implement roomheaderlabel for reducing header size
+  * Port to ChannelGroupBaseJob
+  * Reduce spacing
+  * Fix align top
+  * Port to ChannelGroupBaseJob
+  * Migrate++
+  * Port more job to ChannelGroupBaseJob
+  * Port to ChannelGroupBaseJob
+
+-------------------------------------------------------------------
+Mon Jun 28 07:27:09 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.1+git.417.d715e855e:
+  * Call this method only if thread is enabled
+  * Port to channelgroupbasejob
+  * Add autotest
+  * Move to toplevel
+  * Rename variable/methods
+  * Reduce duplicate code
+  * Add groupopenjob
+  * Add channelopen support
+  * Port away from KStatefulBrush::brush(const QWidget*)
+  * Honor KDE Kiosk setting lineedit_reveal_password
+  * Allow to remove room too
+  * GIt_SILENT: fix typo
+  * Debug--
+  * Update total when we remove user
+  * Fix generate url when channel name start with ruqola and we use ruqola
+  * Add failed autotests
+  * Remove duplicate code
+  * Allow to switch to team room (join doesn't work yet)
+  * Emit signal to open channel
+  * GIT_SILENT: increase version
+  * Try to open team room
+  * Rename method/struct
+  * Get room identifier
+  * Start to implement open team room
+
+-------------------------------------------------------------------
+Mon Jun 21 07:25:43 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.1+git.393.daadbf574:
+  * Use std::chrono_literals
+  * Use html line (need to parse line first)
+  * Add support for pattern
+  * Check Qt5Test only when we build tests
+  * Prepare to implemnt add custom sound
+  * Fix show team room type
+  * Fix hide columns
+  * Fix autotests
+  * Fix load room list
+  * Use more centric code
+  * Reduce duplicate code
+  * Get user Id
+  * Fix typo
+  * Improve autotest
+  * Add autotest
+  * Improve team name label
+  * Move code in teamnamelabel
+  * GIT_SILENT: increase version
+  * Fix autotest
+  * Use TeamNameLabel
+  * Add unity build cmake preset support
+  * Prepare to create specific teamname label
+  * Double to open team/rooms etc.
+  * Show room team info
+  * debug--
+  * Allow to define team name
+  * Allow to change team name
+  * Fix autotest
+  * Use directly {}
+  * Add team room name support
+  * We need to be able to add more element
+  * Use -1 as default value
+  * GIT_SILENT: fix coding style
+  * Add more comment
+  * Move server info in first tab
+  * Add todo
+  * inherite from DirectoryBaseFilterProxyModel
+  * Remove duplicate code
+  * Prepare to use reply in notification
+  * Add comment about rest api
+  * Prepare modify/add/remove custom sound
+  * Move to bottom after loading log
+  * Start to implement "add custom sound"
+  * Use proxy model here
+  * Remove duplicate code
+  * Remove unused signals
+  * Fix minor typo
+  * Not used here
+  * Rename as "Copy Link To Message"
+  * Parse custom sound
+  * improve custom sound widget
+  * Remove unused class now
+  * Continue to implement custom sound list
+  * Time to increase version
+  * improve custom sound model
+  * Rename methods
+  * Implement customsoundsinfo
+  * Add identifier/name
+  * Add autotest
+  * Add admincustomsoundmodel
+  * Add customsound info
+  * Continue to implement custom sound support
+  * Fix clazy warning
+  * Add label + improve autotest
+  * Rename variables
+  * Load log when we activate specific tab
+  * Add comment about parsing log
+  * Parse log
+  * Call initialize dialog => avoid to call job during autotest
+  * Load log
+  * Implement stdoutqueuejob
+  * Add view log widget
+  * Add QPlainTextEdit
+  * Add more autotest
+  * Start to add support for "stdout.queue"
+  * Start to implement show log view
+  * Add more debug
+  * Comment unused variable
+  * Fix get correct index
+  * Remove commented code
+  * Set/return roles
+  * GIT_SILENT: remove duplicate include
+  * Continue to implement edit user
+  * Allow to modify user
+  * Return QJsonObject when we create a new user
+  * Remove unused isValid
+  * We can't add rooms
+  * Clean up
+  * Add missing ','
+  * Fix update user
+  * Insert search type
+  * Implement load channel from type
+  * GIT_SILENT: increase version
+  * Use more warning here
+  * Fix autotest
+  * Hide identifier room
+  * Don't remove margins
+  * Fix enable/disable ok button
+  * Fix enabled/disable button
+  * Fix autotest
+  * Add autotest
+  * Fix add search widget
+  * Fix load rooms
+  * GIT_SILENT: Remove unused forward declaeation
+  * Use directly SearchTreeBaseWidget
+  * We need a specific json when we update users
+  * Migrate administratorroomswidget to searchtreebasewidget
+  * Rename createuserinfo + fix generate json
+  * Unbreak linking by using old ecm_qt_declare_logging_category API
+  * Fix combobox size
+  * Warning--
+  * Update total changed
+  * Confirm that we want to delete user
+  * Use json from createuserinfo
+  * Remove duplicate code
+  * implement debug
+  * Remove duplicate code
+  * Allow to edit user
+  * Add autotest for roleinfo
+  * Improve combobox role model
+  * Fix setuseractivestatusjobtest autotest
+  * Fix typo
+  * Fix autotests
+  * Continue to implement roles combobox
+  * Add roles combobox
+  * Allow to add selected roles
+  * Change mention color (red as in RC it's more easy to see them)
+  * improve load roles
+  * Remove debug
+  * Add password support too
+
+-------------------------------------------------------------------
+Sun Jun 06 22:28:20 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.1+git.263.7fa3fbeb3:
+  * Allow to define user info (when we want to edit user)
+  * Allow to delete element from model
+  * Fix argument
+  * We need to delete user from list too
+  * Fix disable user + implement delete user
+  * Allow to delete user
+  * Remove todo
+  * Implement create user
+  * Allow to return create info
+  * Start to parse elements
+  * We need a roleinfo class too
+  * Store info about new user
+  * Allow to change "activate" settings
+  * Allow to modify values
+  * Readd correct code
+  * We need a model for roles
+  * Return false
+  * Fix autotest
+  * Add widget
+  * Load roles
+  * Start to implement load list of roles
+  * Add autotest
+  * Rename method
+  * Add "release" build
+  * GIT_SILENT: time to increase version
+  * Continue to implement add user dialog
+  * Start to implement load roles from server
+  * Allow to show "add user" dialog
+  * Start to create "add user" dialog
+  * Add more settings for creating user
+  * Fix get user activate status
+  * Send result job
+  * Fix index
+  * Allow to hide columns
+  * Continue to implement change user active status
+  * Add support for activate users
+  * Allow to activate/disable user
+  * Export symbolExport symbolExport symbol
+  * improve autotest
+  * Rename enum + add autotest
+  * improve job
+  * Start to implement change useractive status
+  * Allow to translate status
+  * Allow to translate status info
+  * Use User::PresenceStatus
+  * Fix display roles
+  * Return status
+  * Not necessary
+  * Fix model
+  * Use QStringView(..).mid here
+  * Improve job
+  * Remove unused forward declaration
+  * Reduce duplicate code
+  * Allow to use parameters
+  * Improve widget
+  * Use directly SearchTreeBaseWidget
+  * Use searchtreebasewidget directly
+  * Allow to reduce duplicate code
+  * Make RestApiAbstractJob even when tests are not being built
+  * Use teamId directly (pb for joining. need to investigate)
+  * Allow to join channel
+  * Constantify
+  * Time to increase version
+  * Fix duplicate code
+  * Fix resize column
+  * Add autotest
+  * Remvoe decoration
+  * Improve adminusersmodel model (inherite from directoryusersmodel)
+  * Use a SearchWithDelayLineEdit
+  * Prepare to search pattern
+  * Fix show email/username
+  * Fix i18n
+  * Show expired or not
+  * Reserve element
+
+-------------------------------------------------------------------
+Sun May 30 22:01:56 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.1+git.189.b5aa26cee:
+  * Fix typo
+  * Allow to parse user
+  * Fix typo
+  * Improve directory user model
+  * We need support for list of user
+  * Fix typo
+  * Fix typo
+  * Continue to implement model
+  * Improve users model
+  * Add popup menu
+  * Hide identifier columns
+  * Allow to hide some specific columns
+  * Remove extra column
+  * Debug--
+  * Add more autotest
+  * Fix sorting order
+  * Allow to load more element
+  * Fix load in progress
+  * Allow to sort elements
+  * GIT_SILENT: increase version
+  * Fix sort order
+  * Prepare to load more elements
+  * Fix label text
+  * Fix total value
+  * Allow to show data info
+  * Improve autotest
+  * Load team info + continue to implement team tab
+  * Add support for roomCount
+  * Display room info
+  * Add headers
+  * Use virtual methods
+  * Improve model
+  * Clean up code
+  * Rename files
+  * Rename methods/variables
+  * Rename class
+  * Rename it
+  * Start to implement directory model
+  * Fix potential mem leak
+  * Add warning about invalid enum
+  * Fix autotest
+  * We can start job even if pattern is empty
+  * Rename enum
+  * Improve directory support
+  * Add more target centric cmake code
+  * Improve directorywidget
+  * Add action for showing directory dialog
+  * Add directory type
+  * Continue to implement directory widget
+  * Continue to implement directorywidget
+  * GIT_SILENT: improve it
+  * GIT_SILENT: Time to increase version
+  * Add team info support
+  * GIT_SILENT: Remove duplicate line
+  * Remove old settings
+  * Not necessary to use variable here
+  * Start to implement updatedSince argument
+  * Add teams support
+  * Add layout
+  * Continue to create directory dialog
+  * OBS updates for version 1.4.1
+  * Create new version 1.4.1
+
+-------------------------------------------------------------------
+Wed May 19 22:36:57 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.1+git.128.9743bc5fa:
+  * Start to implement "directory" support
+  * Fix order
+  * USe Q_DISABLE_COPY directly
+  * USe treeview here too
+  * It's better to use qtreeview directly
+  * Not necessary to call another rest api method
+  * Try to fix sort invite
+  * Increase version
+  * Use proxy model
+  * Add proxy model
+  * Allow to remove invite
+  * Try to implement delete invite
+  * Rename method + use model now.
+
+-------------------------------------------------------------------
+Mon May 17 07:31:38 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.0+git.118.9f76a9585:
+  * Use hasTeamRoom() directly
+  * Add more autotest
+  * Start to implement team name support
+  * Hide unused column
+  * Use tableview for list of invites
+  * Continue to implement model
+  * Add model
+  * Add test support
+  * Fix icon name
+  * Fix sorting order
+  * Add separator
+  * Use reserve here
+  * Code can't be empty => enable/disable ok button
+  * Fix sort order
+  * Disable pch support for autotests
+  * Allow to activate pch build
+  * Fix window title
+  * Use font for windows
+  * Add specific windows emoji font
+  * Use unique method to get emoji font name
+  * Fix some clazy warning
+  * Add more clazy check
+  * Parse create/expire datetime
+  * Remove unused variable
+  * Add autotest
+
+-------------------------------------------------------------------
+Sun May 09 21:43:41 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.0+git.92.743a5c4ef:
+  * Comment--
+  * Parse inviteInfo
+  * Remove old code
+  * Parse invite info
+  * Don't allow to Start a Private Conversation if we are in direct room
+  * Add clazy support
+  * Add create/expire date time
+  * Improve invite info
+  * Add messagebox for asking if we want to delete invite
+  * Remove not implemented methods
+  * Fix error message
+  * GIT_SILENT: time to increase version
+  * If room is in a team or is a team we can't convert to team
+  * Fix includes
+  * Allow to add room to team
+  * Remove debug
+  * Implement searchteamcompletionlineedit
+  * Comment--
+  * Fix enum name + variables
+  * Fix method name
+  * Continue to implement teamcompleter
+  * Add teamcompletermodel
+  * Add job
+  * Add autotest
+  * Start to implement search team dialog
+  * increase kf5 version
+  * Time to increase qt version.
+  * Fix typo
+  * Implement teamsautocomplete job
+  * Start to implement "move to team" support
+  * Show action only if team support is enabled
+  * Add QJsonObject here
+  * Implement convert to team
+  * Add groupsconverttoteamjob
+  * Add groupsConvertToTeam support
+  * Fix messagetest autotest
+  * Fix job
+  * Prepare to implement "convert to team"
+  * Fix tooltips
+  * Use directly TeamRoomsFilterProxyModel
+  * Remove unused method
+  * Fix cmake warning about missing extension
+  * Fix load attachment
+  * Add comment
+  * Add autotest for bug-435718
+  * Don't open dialog for selecting room to delete if list room is empty
+  * RoomsId can be empty
+  * Fix update  room
+  * Allow to debug room
+  * Add room-team update autotest
+
+-------------------------------------------------------------------
+Sun May 02 21:11:43 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.0+git.42.19fc0f3db:
+  * Modernize code
+  * Allow to delete rooms
+  * Debug--
+  * Allow to select room
+  * Initialize list of rooms
+  * Continue to implement teamselectdeletedroomdialog
+  * Trigger a re-connect of the websocket when attempting to manually login.
+  * Continue to implement dialog
+  * Continue to implement teamselectdeletedroomwidget
+  * Prepare to implement select room to delete from team
+  * Remove duplicate includes
+  * Add comment about deleting team room
+  * GIT_SILENT: Add comment
+  * Rename signal/slot
+  * GIT_SILENT: add comment
+  * It can't be null
+  * const'ify pointer here too
+  * Add autotest
+  * Fix comment
+  * Prepare teaminfo job
+  * Fix autotest
+  * GIT_SILENT: add copyright
+  * Add team delete support job
+  * Continue to implement inviteinfo
+  * Add inviteinfo
+  * Improve model
+  * We need a model for invite user url
+  * Add autotest
+
+-------------------------------------------------------------------
+Sun Apr 25 22:25:12 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.0+git.12.8f6561629:
+  * Make doctool optional
+  * Start to create channelsconverttoteam support
+  * Add more about data
+  * showimagewidget.cpp - QWheelEvent::posF() is gone since Qt5.14
+
+-------------------------------------------------------------------
+Fri Apr 23 19:54:56 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.4.0+git.8.05f1efbf3:
+  * Fix autotest
+  * Add method for changing room as team
+  * Fix compile with old qt version
+  * Fix export symbol
+  * Allow to change delay
+  * Fix i18n
+  * Fix compile with old qt version
+  * OBS updates for version 1.4.0
+  * Start to implement teamremovemembersjob
+  * 1.5 is open
+  * Create 1.4 version
+  * Add topic support + add autotest
+  * Prepare rc version
+  * Fix icon/order for team
+  * Add teams
+  * Continue to add permission support
+  * Add support for remove-team-channel
+  * Add confirm dialog
+  * Debug--
+  * Add icon
+  * Add separator
+  * update list of room
+  * Make job as public
+  * Add comment
+  * Allow to create room for specific team
+  * Add debug method
+  * Add teamId/broadcast/encrypted etc.
+  * Reduce duplicate code between create "room" job
+  * Add comment about extraData
+  * GIT_SILENT: time to increase version
+  * Allow to create teams
+  * Rename variable
+  * Improve teams create job
+  * Fix create team job
+  * Start to implement create team
+  * Fix update "create team"
+  * Debug--
+  * Reduce duplicate code
+  * Add timer for avoiding to call rest api too many
+  * Add teams support
+  * Minor optimization
+  * Don't send rest method when we clear lineedit
+  * Update list of room
+  * Start to fix update list of room when we add new rooms
+  * Add more autotest
+  * Allow to add existing room
+  * This widget can used for room type too
+  * Rename class
+  * Update model
+  * Improve widgets
+  * Add teamroomcompleter
+
+-------------------------------------------------------------------
+Sun Apr 18 22:27:32 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.3.1+git.557.66764401e:
+  * Continue to implement completer
+  * Rename methods/enum
+  * Add teamroomcompletermodel
+  * Implement completion
+  * Prepare to add rooms
+  * Add autotest
+  * Start to add teamsearchroomforteamwidget
+  * Add comment
+  * Return roomIds
+  * Add more autotest
+  * Time to increase version
+  * Rename
+  * Continue to implement team support
+  * Start to implement RoomsAutocompleteAvailableForTeamsJob
+  * Start to add support for rooms.autocomplete.availableForTeams
+  * Update directly model
+  * Update list
+  * Update team room
+  * Continue to implement team support
+  * Remove room from team
+  * Add teamremoveroomjob
+  * Continue to implement menu
+  * Allow to sort team channels
+  * Add combobox
+  * Signal when room is autojoin
+  * Fix autotests
+  * Add proxy model
+  * Debug--
+  * Add autotest
+  * USe only close button
+  * Store identifier
+  * Fix model
+  * Avoid to crash when we can't add room
+  * Add model here
+  * Improve teamroomsfilterproxymodel
+  * Improve model
+  * Continue to implement team widget
+  * Not necessary to initialize it as it's a const pointer
+  * Fix typo
+  * Use role directly
+  * Implement model
+  * Add team room model
+  * Start to implement team rooms model
+  * Improve team room support
+  * Add autotest
+  * Add team room support
+  * Add autojoin autotest
+  * Add support for autojoin
+  * Load room
+  * Add team UI
+  * Clear auth token on failed/invalid user or password
+  * Team support was implemented in 3.13.0
+  * Allow to return team info
+  * Add more debug about login failed
+  * Fix copyright
+  * Improve autotest
+  * Add more team rest api job
+  * Remove duplicate include
+  * Continue to implement team support
+  * showimagewidget: Enable smooth pixmap transform
+  * showimagewidget: Use a QGraphicsView
+  * testshowimage_gui: Allow to pass file name
+  * showimagewidget: Add "Fit to View" button
+  * Prepare to create team channels dialog
+  * Add todo
+  * Start to implement create team job
+  * Add autotest for room team
+  * Add teams permission
+  * Remove comment
+  * continue to implement team support
+  * Add teaminfo in room class
+  * Don't store if it's not valid
+  * Add rest api url for teams
+  * Add isValid method
+  * Allow to serialize/deserialize team info
+  * Add autotest for team info support
+  * RC3.13 has team support. We need to support it too
+  * Fix check version
+  * Prepare beta2
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * We need to parse it for invite link
+  * Fix image position. We can move it at same level as name
+  * It returns a QJsonDocument
+  * Prepare to remove invite link
+  * Start to fix load list invite
+  * Add autotests for administratorwidget
+  * Add autotest for administratorinviteswidget
+  * If we include an header not necessary to forward class too
+  * Remove duplicate includes
+  * Min RC client is now 2.0.0 (last version is 3.13.0)
+  * Clean up find_package(Qt5
+  * Add invitetreewidget
+  * Add separator
+  * Store dialog size with openStateConfig
+  * Fix removeinvitejob
+  * Implement removeInvite
+  * Start to implement invite support
+  * Use Room::RoomType directly
+  * Use permission support for deleting message/editing message
+  * We need to be able to delete resource too
+  * Fix typo
+  * Add autotest
+  * Fix api
+
+-------------------------------------------------------------------
+Mon Apr 05 22:10:08 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.3.1+git.454.1428561a3:
+  * Start to implement listinvite job
+  * Fix "Go to message" from search results.
+  * It's time to prepare a new version
+  * Simplify LoadRecentHistoryManager::generateNewStartTimeStamp
+  * We can remove this check it was for RC < 1.4.0
+  * Fix search in direct room
+  * Avoid unused warning
+  * Const'ify pointer
+  * Const'ify pointer
+  * Const'ify pointer
+  * Add icon for cancel action
+  * increase height
+  * Allow to use multilineedit for comment etc.
+  * Improve autotest
+  * Prepare to use messagetexteditor
+  * Fix api for setavatar as icon
+  * Fix porting to enum
+  * Fix check room Type
+  * Fix roommodel autotest
+  * Fix historyjob autotest
+  * Fix autotest
+  * Use an enum for channel type for avoiding errors
+  * Add missing Q_REQUIRED_RESULT
+  * Minor optimization
+  * GIT_SILENT: increase version
+  * Implement go to message
+  * Warning--
+  * Fix load history
+  * Fix load history
+  * Move to unread message
+  * Add missing Q_REQUIRED_RESULT
+  * Use roomType
+  * Move in own repository
+  * Add a default shortcut to the jump to next unread channel action.
+  * Hook the "jump to next unread channel" action into the channel menu.
+  * Provide an action to select the next unread channel.
+  * Implement jumping to the next unread channel in the channel list.
+  * Use new avatar widget
+  * Allow to reset avatar
+  * Fix job
+  * fix zoom in / zoom out with mouse
+  * Allow to scroll until unread element
+  * Disable ok button when room name is empty
+  * Add avatar widget in readonly settings too
+  * Add message error
+  * Fix crash due to creating an iterator on a temporary object
+
+-------------------------------------------------------------------
+Mon Mar 29 07:30:57 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.3.1+git.408.99fc45dfd:
+  * improve autotest
+  * Allow to use it without change image
+  * Export symbol
+  * Add inclusive/unread
+  * Fix autotests
+  * GIT_SILENT: time to increase version
+  * Allow to resert avatar
+  * Allow to show current avatar room image
+  * Continue to implement roomAvatar
+  * Store as qbyteArray
+  * Remove commented code
+  * Improve channel history
+  * Improve channel history loading
+  * Comment--
+  * Add debug
+  * Improve autotest
+  * Allow to save roomAvatar settings
+  * Add autotest
+  * Add roomavatarwidget
+  * Load icon
+  * Add filter
+  * Allow to load image
+  * Add roomavatarwidget autotest
+  * improve load messages until last unread message
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Start to implement "go to message" In progress
+  * GIT_SILENT: time to increase version
+  * Comment some code. + fix change retention parameters
+  * Add more autotest
+  * Fix autotest
+  * Add autotest
+  * Implement changearchivationstatejob
+  * Start to implement "rooms.changeArchivationState"
+  * Fix save settings
+  * Use directly GetMentionedMessagesJob
+  * Add getmentionedmessagesjob
+  * Start to implement "chat.getMentionedMessages"
+  * Add support for ReactWhenReadOnly
+  * Fix export symbol
+  * Add new roomavatarwidget
+  * Remove old code
+  * Add autotest
+  * Prepare code  for changing room avatar
+  * Add comment
+  * GIT_SILENT: time to increase version
+  * Start to create roomAvatar support
+  * Save more settings
+  * Add Ok/Cancel or close button
+  * Verify that info is valid
+  * Add more debug
+  * Prepare to save prune settings
+  * Continue to implement edit room settings
+  * Continue to implement channel info widget
+  * Add readonly support
+  * Start to save settings
+  * Fix crash
+  * Add autotest
+  * Continue to extract widget
+  * Extract code for channelinfoeditablewidget
+  * Extract read only widget
+  * Create channelinforeadonlywidget
+  * Call directly saveRoomSettingsInfo
+
+-------------------------------------------------------------------
+Sun Mar 21 20:58:34 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.3.1+git.346.a73371dac:
+  * Start to convert to dialog with ok/cancel
+  * Fix the completion popup not going away when clicking elsewhere.
+  * Add comment
+  * Improve job
+  * Start to implement upload avatar file
+  * Clean PlaceHolderText
+  * Fix typo
+  * Fix roomId argument in restapi
+  * Add settings flags
+  * Fix logic
+  * Look at to use saveRoomSettings job
+  * Fix typo
+  * const'ify
+  * Use auto directly
+  * Add message error when we can't find file
+  * Fix check module
+  * GIT_SILENT: add copyright
+  * Const'ify pointer here too
+  * Const'ify pointer
+  * Constify pointer
+  * Const'ify pointer
+  * Const'ify pointer
+  * Fix Bug 434534 - Need to click "Accept" when pasting an image
+  * Allow to edit when we double click on item
+  * Enable/disable actions
+  * Add worspace local too
+  * Add favorite support + qDebug
+  * Fix i18n
+  * Use settings changed flags
+  * We need to defined which settings will be updated
+  * Improve save room settings
+  * Look at to change systemmessages
+  * Start to implement restapi saveroomsettings
+  * Fix update lineedit when we cleared text
+  * Use directly ddp for calling "roomNameExist"
+  * We don't have restapi method for "roomNameExists"...
+  * Draw selected item
+  * Show error as red background
+  * Add i18n message
+  * Allow to check if a room name already exist
+
+-------------------------------------------------------------------
+Mon Mar 15 08:32:20 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.3.1+git.306.fc85c5f6d:
+  * GIT_SILENT: time to increase version
+  * Prepare to use directory job here too
+  * Continue to use directory job
+  * Remove unused method
+  * Prepare to use directory job for search channels
+  * Rename method
+  * Use DirectoryJob directly
+  * Allow to use directory job
+  * Improve directory support
+  * Verify that value is not null
+  * if blockEditingMessageInMinutes == 0 we can edit all the time.
+  * Fix message
+  * Fix generate query
+  * Add more autotests
+  * Fix autotests
+  * Prepare custom query
+  * We can have query support
+  * Improve directoryjob
+  * Add directoryjob autotest
+  * Remove unused code
+  * Add autotest
+  * Add directoryjob
+  * Start to implement "directory" support (spotlight shows only channels
+  * Allow to create discussion
+  * Activate createDiscussion code
+  * Fix show error message
+  * Remove duplicate includes
+  * Fix autotest
+  * Use directly channelsearchwidget
+  * Use ChannelSearchWidget directly
+  * Show result
+  * Implement channelsearchnamelineresultwidget
+  * Improve autotest
+  * Add completion
+  * Continue to implement channelsearchwidget
+  * Add warning about missing feature
+  * Mark the room as read first and mark the threads as read after
+  * Continue to implement search channel lineedit
+  * Allow to sort elements
+  * Create proxy
+  * Add channelcompleterfilterproxymodel
+  * Rename
+  * Fix placeholdertext
+  * Add a channel completer model
+  * Continue to implement channelsearchnamelineedit
+  * cmake: Search for KF5Solid in CONFIG mode
+  * cmake: Add hints how Solid needs to be configured
+  * .../downloadappslanguages/downloadappslanguagesinfo.cpp - fix compile
+  * Continue to implement search channel completion
+  * We need to be able to search specific channel
+  * Const'ify pointer here too
+  * Start to create specific qlineedit for searching if channel name already
+  * Add new permission for creating discussion
+  * Fix enable/disable button
+  * Const'ify pointer
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+
+-------------------------------------------------------------------
+Sun Mar 07 21:32:06 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.3.1+git.250.d5bd483e7:
+  * Const'ify pointer here too
+  * Automatically reconnect to the server after resume or network configuration change
+  * Continue to implement "create discussion"
+  * Fix clear model when we clear search lineedit
+  * Remove warning
+  * Add info when "no result found"
+  * Add license
+  * Add a searchchannellistview
+  * Remove not implemented method
+  * const'ify pointer
+  * Const'ify pointer
+  * Improve usersupdatejob
+  * Prepare autotests
+  * Implement update users
+  * const'ify pointer
+  * GIT_SILENT: add missing Q_REQUIRED_RESULT
+  * Time to increase version
+  * Make sure to send clear notification when we have roomId
+  * Fix minor typos
+  * Fix error i18n
+  * Use directly checkbox
+  * Remove comment
+  * Just to be sure
+  * Const'ify more pointer
+  * Zoom only when ctrl is pressed
+  * Align the image in the center
+  * Add autotest for the resetbutton
+  * Fit image into the dialog if it is too big
+  * Also mark all threads as read when typing in the room
+  * Mark unread threads as read when marking room as read
+  * Cleanup: Implement unimplemented RestApiRequest::getMessage
+  * Cleanup: Emit the roomId for getMessageDone
+  * Const'ify pointer
+  * Const'ify more pointer
+  * Const'ify
+  * const'ify pointer
+  * Debug--
+  * Use default destructor
+  * Add info about ASAN
+  * Remove some memory leak which created outside ruqola
+  * Fix mem leak
+  * Try to fix statusmodel
+  * Allow to hide avatar
+  * Allow to hide avatar in messagelist
+  * Clean up includes
+
+-------------------------------------------------------------------
+Sun Feb 28 18:30:49 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.3.1+git.205.96c50f01e:
+  * Add license
+  * GIT_SILENT: time to increase version
+  * Add missing Q_REQUIRED_RESULT
+  * Allow to hide roles
+  * Sync layout spacing with splitter handle width in main widget
+  * Normalize emojis before sending reactions
+  * Unbreak TextConverterTest::shouldConvertTextWithEmoji:quotedcode7
+  * Prepare to support hide role
+  * Reduce duplicate code
+  * Rename class
+  * Move data in own class
+  * Remove duplicate code
+  * It's not necessary to depend against ruqola
+  * Allow to show custom user status
+  * Use an unique model + proxy model
+  * Show only standard entry
+  * Start to create proxymodel
+  * Fix autotest
+  * Allow to generate doc too
+  * Allow to install po file
+  * We need a filter proxy model for it too
+  * Try to add license for each file
+  * Already done in usercombobox
+  * Clean up
+  * Add custom model
+  * Improve status model
+  * Prepare to load custom status in combobox
+  * Remove unused code
+  * Fix show custom text
+  * Fix assign custom status text
+  * Continue to implement model
+  * Improve debug
+  * Remove old comment
+  * Fix i18n
+  * Fix layout
+  * Hide info when text is empty
+  * Add separator
+  * Allow to initialize settings
+  * Add maximum age
+  * Add autotest
+  * Show it if we have permission
+  * fix warning
+  * Continue to implement prune messages
+  * Time to increase version
+  * OBS updates for release 1.3.1
+  * Allow to show the username when we quote message
+  * Add update room retention autotest
+  * Fix load retention info
+  * Serialize retention info
+  * Store quote info too
+  * Start to store quote message link
+  * Allow to store threadMessageId
+  * Allow to debug accountroomsettings
+  * Const'ify pointer
+  * Add retention autotest
+  * Use setReadOnly
+  * Use displayName here
+  * Fix autotest
+  * Const'ify pointer. Make sure that we can have an account name
+  * Make it compile with qt5.14
+  * 1.3.1
+  * We can mark as unread in thread not in list of starred message
+  * Add separator
+  * Add autotest here
+  * Stat to implement prune config support
+  * Normalize: use #pragma once everywhere
+  * Fix cursor position. + add support for block code
+  * Continue to implement retention support
+  * Add autotest
+  * Add retention support in room
+  * Add comparator
+  * Parse retention info values
+  * Start to implement retention message support
+  * Add missing ignoreDiscussion in roomscleanhistory job
+  * Use a QTabBar to implement the AccountsOverviewWidget
+  * Move the send-file button to the right of the message line edit
+  * GUI tweaking: move the status indicator to the toolbar
+  * Remove unused channel_info action from toolbar
+  * Remove unused forward declaration
+  * Use Q_UNUSED(...)
+  * Remove \" in hyperlink too
+  * Fix rendering problem
+  * Add more debug info
+  * Fix update send button
+  * Fix check
+  * Add label info
+  * Reactivate dnd
+  * Assign RocketChatAccount
+  * Fix create discussion
+  * Clean up
+  * Move mRoomId in roomwidgetbase
+  * Use new roomwidgetbase
+  * Continue to implement it
+  * Reactivate some code
+  * Add more autotest
+  * Add an unique widget for roomwidget
+  * Fix click on reaction
+  * Make sure to hide emoticon menu when we disabled emoticon support
+  * Add more info
+  * Show full date/time
+  * Fix crash in autotest when model is null
+  * Fix tooltip on edit symbol
+  * Fix warning about orderFix warning about orderFix warning about order
+
+-------------------------------------------------------------------
+Sun Feb 14 22:11:10 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.3.0+git.103.1d111c58:
+  * Const'ify pointer
+  * Reset filter
+  * connect to return pressed
+  * Const'ify pointer
+  * Use SearchWithDelayLineEdit
+  * Rename class
+  * Add support for coverage build
+  * GIT_SILENT: time to increase version
+  * Minor optimization
+  * Add icons
+  * Now we can change text format
+  * Add clear button here too
+  * Initialize systemmessagesmodel
+  * Load sysMess info
+  * Add missing override
+  * Fix i18n
+  * GIT_SILENT: ignore auto generated "compile_commands.json"
+  * not necessary to press enter for showing result now
+  * Add autotest
+  * Also use setAutoRaise on the tool buttons in the room header widet
+  * Beautify ruqola main widget by aligning a few items visually
+  * Enable setAutoRaise on message line widget tool buttons
+  * Reduce margins in main window layouts
+  * Improve autotest
+  * When mSearchLineEdit->text().isEmpty() and rowCount() == 0 => don't show
+  * Rename account->server
+  * Fix show tooltip
+  * Start to implement pch support (disable by default)
+  * Make sure that reaction is at the same place for each line
+  * Remove Q_PROPERTY as we don't need it now (qml support)
+  * Remove debug
+  * Add more autotest
+  * Improve systemmessagescombobox
+  * Improve model
+  * Implement systemmessagescombobox
+  * continue to implement systemmessagesmodel
+  * Make it compile with old qt
+  * Prepare model
+  * Create a systemmessagesmodel (for displaying type of system messages)
+  * Show room name
+  * Update tab visibility (It fixes autotest too)
+  * Allow to copy data
+  * Fix autotest
+  * Comment code for the moment.
+  * Fully qualify Q_PROPERTY types
+  * Use QFormLayout
+  * Add comment
+  * catch return key enter
+  * Remove unused return value
+  * Add missing Q_REQUIRED_RESULT. const'ify pointer
+  * Start to implement system messages combobox
+  * Minor optimization
+
+-------------------------------------------------------------------
+Mon Feb 08 10:02:44 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.3.0+git.50.cb7f89e7:
+  * Ask if we want to delete room
+  * Fix autotest here too
+  * Fix autotest
+  * make sure that pointer is not null
+  * Don't show emoji completion when we disabled it
+  * Implement convertAsciiEmoji support
+  * Implement useEmoji support
+  * Allow to change settings
+  * Add autotest
+  * Allow to configure 'useEmoji'/'convert emoji'
+  * Add more autotest
+  * Add autotest
+  * Start to implement enable/disable emoji
+  * Add more autotest
+  * Add support when link is not at start of line
+  * need to implement message_link
+  * Allow to update view when we load new message
+  * Const'ify pointer
+  * Remove comment
+  * Fix warning
+  * Allow to load old message too now
+  * Use messagecache
+  * Store pointer
+  * Move mMessageCache in rocketchataccount directly
+  * Store plugin not necessary to recreate it all the time
+  * Create pointer in constructor
+  * Fix debug
+  * Remove old TODO
+  * Rename method
+  * Continue to implement menu
+  * Fix update treewidgetitem
+  * Allow to refresh result
+  * Prepare removing element
+  * Make it compiles with old qt
+  * Make it compile with 5.67
+  * Make it compile with 5.67
+  * OBS updates for release 1.3.0
+  * ApplicationLauncherJob was created in kf5.69. We need to increase version
+  * Add new menu
+  * Prepare to implement menu
+  * Make it compiles with qt5.14
+  * Prepare to add menu
+  * Improve autotest
+  * Use autorcc directly
+  * Hide progressbar when we switch account
+  * Implement progress status widget
+  * Add uploadfileprogressstatuswidget
+  * Add uploadfileprogressstatuswidget
+  * USe new RocketChatRestApi::UploadFileJob::UploadStatusInfo
+  * Prepare to inform upload status
+  * 1.4 dev is open
+  * Create 1.3.0
+
+-------------------------------------------------------------------
+Sun Jan 31 17:16:31 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.2.2+git.299.6c0de6d2:
+  * It can have hasQueryParameterSupport
+  * Continue to implement administratoruserswidget
+  * Use KMessageWidget here too
+  * Use directly KMessageWidget
+  * Use auto directly
+  * Add mAuthenticationWidget before "login" button
+  * const'ify
+  * const'ify some pointer
+  * Show number of messages
+  * Rename method
+  * Const'ify pointer
+  * Add more autotest
+  * Prepare rc1
+  * revert for the moment as we can't edit in PM
+  * Don't install it
+  * Try to fix compile docker
+  * Add more permission
+  * Prepare delete user support
+  * Move it
+  * If you want git blame to ignore formatting revisions run:
+  * Run clang format
+  * Add clang-format
+  * Use  manage-sounds
+  * USe permission "edit-message"
+  * We can archive/unarchive if we have permission
+
+-------------------------------------------------------------------
+Mon Jan 25 08:49:26 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.2.2+git.274.74c66051:
+  * USe auto here too
+  * Time to prepare beta2
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * GIT_SILENT made messages (after extraction)
+  * const'ify
+  * Allow to make as read
+  * Add more status
+  * Const'ify pointer
+  * Don't create a UsersForRoomFilterProxyModel by room.
+  * Allow to implement filter by status
+  * Use new UsersInRoomComboBox (need to filter result now :) )
+  * GIT_SILENT: coding style
+  * Start to implement allow to filter by user status
+  * Show user info by double-click on item
+  * Add copy link support
+  * Fix autotest
+  * Assign qstring directly
+  * Make dialog as non modal
+  * Fix save/load size
+  * Use a fork of ktexttohtml as RC doesn't use same pattern for
+  * increase delay
+  * Add account name
+  * Allow to add password when we create/modify account
+  * Remove redundant Q_REQUIRED_RESULT
+  * Reserve QStringList
+  * Don't add "/" at the end of server url
+  * Use model
+  * Continue to implement admin user model
+  * Improve model
+  * Add enum here
+  * Start to implement adminusersmodel
+  * Remove comment
+  * Fix string
+  * Add autotest
+  * Fix crash
+  * Implement userslistjobImplement userslistjobImplement userslistjob
+  * Add missing includes
+  * Add tableview here
+  * Prepare to implement administrator users
+  * Fix i18n
+  * Time to increase version
+  * Allow to load more user in room
+  * Continue to implement load users
+  * Assign directly
+  * Allow to filer proxy
+
+-------------------------------------------------------------------
+Sun Jan 17 20:27:20 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.2.2+git.229.49030ede:
+  * USe QTEST_GUILESS_MAIN
+  * Add label
+  * Don't create big message preview
+  * Implement menu
+  * Continue to extract code
+  * Try to remove duplicate code
+  * Show icon too
+  * Show user list
+  * Continue to implement usersinroomwidget
+  * Avoid to have a very big list. Now we open it in external dialog
+  * Improve autotest
+  * Add autotest
+  * Prepare usersinroomdialog
+  * Fix sort attachment file
+  * Increase version
+  * Debug--
+  * store Accounts_LoginExpiration
+  * Implement quote widget
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Show ldap checkbox if server has support for it
+  * Add a login option to use LDAP
+  * Prepare autotest
+  * Use KStandardGuiItem
+  * Prepare widget info when we quote a message
+  * Add autotest
+  * Add parent
+  * Prepare autotest
+  * Extract widget
+  * Allow to build as profile
+  * Don't remove margin here
+  * other compile error
+
+-------------------------------------------------------------------
+Mon Jan 11 08:46:54 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.2.2+git.198.c8fb0a52:
+  * Fix compile error
+  * Add search line
+  * Add more info
+  * It's time to prepare new 1.3.0
+  * Set CMAKE_EXPORT_COMPILE_COMMANDS to ON by default
+  * Modernize code
+  * modernize use auto
+  * improve autotest
+  * Show commit info
+  * Prepare autotesting
+  * Parse more server info
+  * Add quote action in thread too
+  * Remove comment
+  * Add icon
+  * Use ServerInfo
+  * Simplify code, with autoremove false we don't need to transfer the tempdir anymore.
+  * Remove dead class
+  * Make the third button "Save As..." like in kmail.
+  * Use qCWarning instead of qWarning
+  * Fix previous commit: all callers of restApi()->downloadFile need to specify the dest URL
+  * Implement Open / Open With... / Save / Cancel for files
+  * Make sure having https:// in url
+  * Fix quote message
+  * Improve autotest
+  * GIT_SILENT: coding style
+  * Start to implement autotest
+  * Generate permalink
+  * Continue to implement quote message
+  * improve serverinfo support
+  * Authentication is not required by default but for getting
+  * Improve serverinfojob
+  * We need to be able to load server info as admin
+  * serverinfojob can be use in admin mode too
+  * Fix signal name
+  * Reduce scope for this variable
+  * Add more info
+  * We need to store info for displaying in administrator widget
+  * Expand before to update column size
+  * Time to increase version
+  * Add comment
+  * Start to prepare to implement "quote" support
+  * Show more server info
+  * Load more info
+  * Reduce duplicate code here too
+  * Remove duplicate code
+  * Reduce duplicate code
+  * Add more server info
+  * use new cmake-3.19.0 feature. cmake --preset=dev or other it will provide correct cmake settings
+  * Continue to load server info settings
+  * continue to implement infos
+  * Start to load infos
+  * Use permission "view-statistics"
+  * Remove comment
+  * Improve administratorserverinfowidget
+
+-------------------------------------------------------------------
+Sun Jan 03 20:58:51 UTC 2021 - tux93@opensuse.org
+
+- Update to version 1.2.2+git.144.aa2fcc00:
+  * GIT_SILENT: happy new year
+  * Prepare to parse info
+  * Start to implement show statistic
+  * Fix statisticsjob support
+  * Fix edit message in thread messageview
+  * Create edit action for thread room too. But it seems that there is still
+  * Add RestApiRequest::statistics need for administration support
+  * Improve widget
+  * GIT_SILENT: time to increase version
+  * Continue to implement administratorserverinfo
+  * Move in own repo
+  * Add server info statistics
+  * Fix typo
+  * Add support for attribute refresh
+  * continue to implent it
+  * Add statisticsjob
+  * Start to implement statistic method
+  * Class is unused
+  * Fix clazy warning
+  * Fix mem leak
+  * Fix generate error message
+  * Const'ify
+  * GIT_SILENT: fix "auto *" -> "auto "
+  * Move menu entry
+  * Time to increase version
+  * Not nullprt
+  * Show full thread
+  * GIT_SILENT: coding style
+  * Make sure that when we send message to clear edit mode. Otherwise
+  * Start to implement show full thread
+  * Save/load notification settings
+  * Save notifications
+  * Fill combobox
+  * Fix minor typo
+  * Start to initialize combobox
+  * Continue to implement notification
+  * Prepare to implement change email/desktop/mobile notification
+  * Cache colors
+  * Fix color
+  * Fix show editing mode
+  * Continue to implement show indicator around editing message
+  * GIT_SILENT: fix typo
+  * Add MessageInEditMode enum
+  * Start to implement "show message in editing mode"
+  * Reduce duplicate code
+  * Add missing slotFollowMessages
+  * Fix build with unify support
+  * Add support for building with cmake + unify. Speed up compile
+  * distro - follow the 1.2.2 release
+
+-------------------------------------------------------------------
+Mon Dec 14 08:49:45 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.2.2+git.94.0fde84e6:
+  * Add comment
+  * 1.2.2
+  * RC doesn't allow to mark as unread own message.
+  * Don't show warning when it's not necessary
+  * Generate attachement fields
+  * Generate table from attachment fields
+  * Don't try to read password if account is disabled
+  * Show account name
+  * GIT_SILENT: time to increase version
+  * Move in own repo
+  * operator+/- is disabled for QFlags in qt6
+  * Use qFuzzyCompare
+  * GIT_SILENT: const'ify text
+  * Fix selection mode
+  * Fix display text
+  * Debug--
+  * Announcement can have rich text
+  * Add missing override on destructor
+
+-------------------------------------------------------------------
+Mon Dec 07 19:06:24 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.2.1+git.80.4631bec4:
+  * Fix error message
+  * Use qt5.15 iso
+  * Fix room name when we have direct room
+  * in direct message not necessary to ignore user only block him
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Fix show error message
+  * Use displayFName for display room name
+  * distro - add distro packaging files
+  * Clear cache
+  * Fix LRUCache::clear() not working with unique_ptr
+  * We need to clear cache
+  * Allow to show ignored message
+  * Add icon for showing ignored message
+  * Allow to change "show ignored message" value
+  * Prepare to allow to show ignored message
+  * Extract method
+  * 1.2.1
+  * Make sure that it doesn't fail on release mode too
+  * Make sure that it doesn't fail on release mode too
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Add missing error message
+  * Start to implement icon for translated messsage
+  * Add icon for pinned message
+  * Rename methods
+  * Show starred message icon
+  * Don't store empty string
+  * Add missing signal
+  * Fix show ignored message
+  * Show error message
+  * Debug--
+  * Fix autotest
+  * Fix mem leak + bug when we open new room
+  * Allow to delete room
+  * Add new debug categories
+  * Remove TODO
+  * GIT_SILENT: coding style
+  * Show debug info
+  * Add missing error message
+  * Fix enable/disable ok button
+  * Fix crash when a new room is opened (need to investigate why it crashs
+  * Fix i18n
+  * Fix load permission
+  * Add autotest
+  * Add more autotest
+  * Fix loading permission. It can be a string or an array
+  * Add specific debug for command
+  * Add more debug
+  * Fix loading settings order
+  * Load more permission
+  * Continue to implement parse command
+  * Debug--
+  * We need rocketchataccount finally
+  * Start to implement support for permission on command
+  * Try to fix update avatar
+  * Load edit-room-avatar permission
+  * improve administratorcustomsoundswidget
+  * Remove unused debug
+  * Fix i18n + addStretch
+  * Continue to implement customsounds tree widget
+  * Disable button when we clicked on register
+  * Rename method
+  * Add missing error message
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Convert as raw string (scripted)
+  * GIT_SILENT: coding style
+  * Clean up auto (remove * when it's a pointer)
+  * Allow to reset topic/announcement/description
+  * Allow return empty value (clear text)
+  * Don't return <qt></qt> if text is empty
+  * Return mTopic for autotest and use displayTopic for roomheader =>
+  * Remove unused method
+  * Properly html-escape inline code blocks
+  * Properly handle escaping for code blocks
+  * Cleanup: make TextConverter a namespace
+  * Unify text-to-html conversion code - use TextConverter everywhere
+  * Add support for force-delete-message
+  * Fix autotest but not rendering in ruqola as a fix must be done in TextConverter::convertMessageText
+  * Add autotest about rendering problem
+  * Use permission 'auto-translate'
+  * 1.3.0 is open
+  * Create 1.2 branch
+  * Start to implement follow message
+  * Use clean-channel-history permission
+  * Use qwarning here
+  * Use "edit-room" permission
+  * Make sure that we update correct userid
+  * Update preferences
+  * Fix autotest
+  * Allow specifying the language for code blocks
+  * Use the code background color for inline code messages
+  * Don't rich-text format anything within inline code chunks
+  * Extract iteration over string regions into reusable function
+  * Move call to highlighting into addCodeChunk
+  * Properly handle ``` code chunks also when no highlighter is available
+  * Re-enable code highlighting theme auto detection
+  * Re-enable the smiley-in-quoted-code test
+  * Save highlight word
+  * Allow to set highlight words
+  * Use create-invite-links permission
+  * Implement Room::hasPermission
+  * GIT_SILENT: coding style
+  * Use permission for showing or not pin message action
+  * Add tooltip
+  * Use std::move here
+  * Fix hightlight word + url
+  * update version
+  * Store more permission
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Use permission (now we can activate "export message")
+  * Get roles for specific permission
+  * Continue to implement permission
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+
+-------------------------------------------------------------------
+Sun Nov 22 01:16:10 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.1~git.20201121:
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Add autotest
+  * Remove include
+  * Continue to implement permissions support
+  * Don't remove margins
+  * Fix export symbol
+  * Make it compile against qt5.12.x
+  * Add missing memory
+  * Fix compilation with Qt < 5.14 (hopefully)
+  * Add missing include <memory>
+  * Continue to implement permission support
+  * Fix show list of room
+  * Fix signal/slot
+  * Readd include. I hope that it will fix compile error
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Install clang11
+  * We need to check permission from server
+  * Continue to implement "permissionslistalljob"
+  * permissions.list was deprecated from RC 0.86
+  * We need to implement list permissions
+  * Continue to implement export message
+  * Fix autotest
+  * Add missing type
+  * Implement export message
+  * Modernize code
+  * Fix autotest
+  * Improve export messages
+  * Make enable by default
+  * Implement export as file
+  * Continue to implement export message
+  * Fix include
+  * Add exportmessagesdialog
+  * Start to implement export message
+  * GIT_SILENT: pedantic
+  * Update ok button
+  * Add placeholdertext
+  * Improve autotest
+  * Add layout
+
+-------------------------------------------------------------------
+Mon Nov 16 09:52:09 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.1~git.20201116:
+  * Add missing override
+  * Add more autotests
+  * Add autotest
+  * add missing override here too
+  * Use override
+  * Start to implement ExportMessages
+  * Continue to implement change avatar url
+  * Use detail for error message
+  * It's the default
+  * Fix i18n
+  * We can send directly an image or an url
+  * Add comment about reseting avatar
+  * Implement resetavatar
+  * Add resetAvatar
+  * Prepare beta2
+  * improve roomsexportjob
+  * Continue to improve roomsexportjob
+  * Continue to implement roomsexport job
+  * Fix layout
+  * Show info when we have an error during reading password
+  * Load hightlight words
+  * Add autotest
+  * Fix search exact word
+  * Search as insensitive case
+  * Fix autotest
+  * Add support for highlight words
+  * Load HighlightsWord
+  * Continue to implement hightlight word
+  * Const'ify
+  * Add missing QTEST_MAIN
+  * Keep margin + add strech
+  * Continue to implement ownuserpreferences
+  * Qt5Keychain is required now
+  * Add ownuserpreferences
+  * Implement info
+  * Start to implement room export job
+  * in 3.8.0 we can export message Start to implement it
+  * Use auto here too
+
+-------------------------------------------------------------------
+Mon Nov 09 08:49:33 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.1~git.20201109:
+  * Make sure to rename account even if name was empty
+  * Fix mem leak
+  * Const'ify pointer
+  * Fix update fname
+  * Use directly fname
+  * It's time to prepare 1.2.0
+  * Clear model when we reopen dialog
+  * Add placeHolderText
+  * hide encrypted when we remove private settings
+  * We can't encrypt a public channel
+  * Add more tooltip
+  * Fix click on url in an attachment text
+  * Add support for author_icon (not displayed yet)
+  * Add more autotest
+  * GIT_SILENT: coding style
+  * Add menu
+  * Debug--
+  * Const'ify
+  * Hide/show systemtray
+  * Prepare to hide/show systemtray
+  * Hide mainwindows when we click on "X"
+  * Use auto when it's possible (using clang-tidy)
+  * Fix fallback to "text"
+  * Remove duplicate check
+  * Add wordwrap here
+  * Debug--
+  * roleNames() was usefull in qml version. But qml version is dead
+  * Implement pending message
+  * Continue to implement show temporary message
+  * Const'ify
+  * Fix compile
+  * Don't leak the ruqola utils
+  * Prepare to show message after sending it
+  * Add more widget
+  * Fix text
+  * Add autotest
+  * Translate roles
+  * Add more autotest
+  * Add autotest
+  * Add more autotest
+  * time to increase version
+  * Add more widget
+  * Minor optimization
+  * Return correct room avatar for direct channel
+  * Rename signal/method
+  * Debug--
+  * Rename method
+  * const'ify
+  * Remove dead code
+  * Add more autotest
+  * GIT_SILENT: coding style
+  * Add more info
+  * Add autotest
+  * Don't leak rooms in RoomModel
+  * Return std::unique_ptr from factory function
+  * Don't leak the DDPAuthenticationManager
+  * Fix emoticonmodeltest
+  * Include emoji aliases in EmoticonModel
+  * Do not hardcode the size of unicode emojis
+  * Continue to implement custom emoji support
+  * Rename class
+  * Store line text settings when we switch account
+  * debug--
+  * Also replace ASCII smileys with unicode smileys
+  * Also parse ASCII aliases of unicode emoticons
+  * Optimize: mark UnicodeEmoticon as movable
+  * Remove KTextToHTML usage in Reaction::setReactionName
+  * Fix compiler warning about potentially uninitialized variable
+  * cleanup: reuse AutoTestHelper::loadJsonObject
+  * Don't Q_ASSERT statements with side effects
+  * Start to implement administratorcustomsounds
+  * Remove includes already defined in headers.
+  * Rename signal
+  * Rename files/class
+  * Add support for updateCustomSound
+  * USe close button here
+  * Add deleteCustomSound
+  * Add separator + remove comment
+  * Fix update customUserStatus
+  * Update list
+  * Fix add/Remove/update
+  * Initialize list of custom status
+  * Continue to implement customuserstatus
+  * Add menu
+  * Continue to implement user status
+  * Return status info
+  * Add widget
+  * GIT_SILENT: coding style
+  * Return customUserStatuses
+  * Move statuscombobox in misc directory
+  * Improve customuserstatuscreatedialog
+  * Add autotest
+  * Move in own directory
+  * Continue to implement job
+  * Implement customuserstatuscreate + autotest
+  * Implement customuser job
+  * Start to implement administratorcustomuserstatus
+  * Start to implement administratorcustomuserstatuswidget
+  * Add delete custom user autotest
+  * Fix update custom status user
+  * Autotest
+  * Move code to customuserstatuses so we can autotest it
+  * continue to implement update/delte customuserstatus
+  * Store CustomUserStatuses
+  * Start to implement updateCustomUserStatus/deleteCustomUserStatus
+  * Fix autotest
+  * Continue to implement customuserstatus
+  * GIT_SILENT: Time to increase version
+  * Improve status
+  * Start to implement custom user status
+  * Add email info
+  * Add more autotest + add support for email support
+  * create on stack
+  * Add missing include for CI
+  * Add more info
+  * Fix loading mentions order
+  * Add missing includes
+  * Display last login/created at
+  * Add support for lastlogin too
+  * Add support for createdAt
+  * Add autotest for parsing user from restapi
+  * Reactivate autotest
+  * GIT_SILENT: Coding style
+  * Remove not implement method (find by script)
+  * Add debug
+  * Hide custom status text if it's empty
+  * Show/hide roles
+  * Download custom status list. Need to parse it
+  * Fix display name
+  * Rename variable
+  * Allow to rename account name
+  * Rename variable
+  * Use AccountManagerInfo everywhere
+  * Start to implement rename account name
+  * Debug--
+  * GIT_SILENT: time to increase version
+  * Fix show avatar for group
+  * Add usernames support
+  * Implement uids support
+  * Modernize code
+  * Const'ify
+  * Add margin
+  * Add comment
+  * Fix autotest
+  * GIT_SILENT: coding style
+  * Add todo
+  * Fix join string
+  * Improve user info
+  * Use directly Utils::AvatarInfo + show room avatar
+  * Debug--
+  * Add support for avatar room
+  * Rename enum
+  * Use new mAvatarCacheManager
+  * Use avatarcachemanager
+  * continue to implement avatarcachemanager
+  * Move pixmapcache.cpp to misc repo
+  * Continue to implement room avatar support
+  * React only if it's a user avatar
+  * Implement update room avatar
+  * Start to implement room avatar
+  * Improve python example
+  * Exclude for building when we build python support
+  * Generate module for Ruqola class too
+  * Add accountinfo class
+  * Add debug
+  * Use Utils::AvatarInfo everywhere.
+  * Fix autotest
+  * Fix download avatar
+  * Fix logic
+  * Don't use getAvatar first as we know url (optimization)
+  * Rename variablt
+  * Fix test name
+  * Add more autotest
+  * Add support for  generating avatar url
+  * Add comment about url
+  * GIT_SILENT: coding style
+  * Add support for room_changed_avatar
+  * Implement avatarurl
+  * React when room avatar changed
+  * Fix pinned support
+  * Fix show/hide pin message
+  * Don't return warning when url is empty
+  * Clean up + add comment
+  * Update roomcounterinfowidget when new message comes
+  * Fix search channel
+  * Fix selection
+  * Add userscreate job
+  * Add delete user job
+  * Fix filter
+  * Add "All"
+  * Try to make filter working
+  * Continue to implement filters
+  * improve filter
+  * save config
+  * Use AdministratorRoomsSelectRoomTypeWidget
+  * Make autotest
+  * Add checkbox
+  * Time to increase version
+  * Add checkbox
+  * Add more enum
+  * Add support for highlights
+  * Add "reset avatar" support
+  * Fix placeholdertext
+
+-------------------------------------------------------------------
+Mon Oct 05 15:17:10 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.1~git.20201005:
+  * Fix create direct message
+  * Continue to implement it. Need to understand why it failed
+  * Fix update button, return usernames
+  * Rename methods
+  * Add label
+  * Start to implement "create direct messages"
+  * Direct messages can take several users
+  * Fix api
+  * Add info
+  * Fix i18n + add debug
+  * GIT_SILENT: coding style
+  * Add autotest
+  * Continue to implement configure avatar
+  * Show/hide avatar
+  * Add MyAccountProfileConfigureAvatarWidget
+  * Add autotest
+  * Add layout
+  * Start to implement myaccountprofileconfigureavatarwidget
+  * Fix usersupdatejob autotest
+  * Forward allowAvatarChanged
+  * Fix attachment test
+  * Add example
+  * Settings about changing avatar
+  * Allow to logout other instance
+  * Implement removeothertokensjob
+  * Don't generate empty QJSonObject
+  * Fix autotest
+  * Don't clear the cache. Only removing specific pixmap
+  * Debug--
+  * Add LRUCache::remove()
+  * Fix cppcheck warning
+  * Fix api
+  * Use UserBaseJob here. Fix api
+  * Update avatar
+  * Use UserBaseJob as class base
+  * Fix update avatar (need to clean cache I think)
+  * const'ify method + return new avatar config file
+  * Continue to implement update avatar
+  * Port to userbasejob as we can use userId or username
+  * Start to implement update avatar
+  * Continue to impelmment administratorroomsselectroomtypewidget
+  * Start to implement sort typo of channel
+  * improve autotest
+  * Improve job
+  * improve userssetpreferencesjob
+  * Add job + test
+  * Start to implement UsersSetPreferences
+  * Add autotest
+  * Start to implement preference
+  * Add ruqolacore python module
+  * Add comment + add warning
+  * Fix autotest
+  * Debug--
+  * Rename methods
+  * Use plurals
+  * Clean forward declaration
+  * This line crashs now. I need to verify it
+  * Remove roomwrapper
+  * Remove unused notificationoptionswrapper (only on qml) and it created mem
+  * Add NotificationOptions::operator!=
+  * Fix method name
+  * Use localTime
+
+-------------------------------------------------------------------
+Sun Sep 27 17:51:33 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.1~git.20200927:
+  * Use setVisible(false)
+  * Hide/show roomcounterinfowidget
+  * Continue to implement channelcounterinfowidget
+  * Use new RoomCounterInfoWidget
+  * Add isValid support
+  * Get channel counter only on channel not direct channel
+  * Fix indent
+  * Add attributes
+  * Start to implement roomcounterinfowidget
+  * Remove duplicate code
+  * Store ChannelCounterInfo in room
+  * Improve channelcounterinfo support
+  * Load mUnreadFrom
+  * Improve channelcounterinfo
+  * Add more autotest
+  * continue to implement channelcounterinfo
+  * Start to implement channelcounterinfo
+  * GIT_SILENT: indent
+  * Add comment
+  * Link against python3 lib
+  * Fix generate python lib
+  * Add support for generated class
+  * Start to implement rocketchatrestapi-qt5 python module
+
+-------------------------------------------------------------------
+Fri Sep 25 13:48:18 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.1~git.20200925:
+  * increase version
+  * Fix Bug 426953 - Building Ruqola v1.1 from source fails
+  * Fix compile in release mode
+  * Remove duplicate code
+  * Continue to implement channelgetcountersjob
+  * Remove unused file
+  * Start to implement channels counters
+  * Remove unused code
+  * Fix autotest
+  * Fix implement change password
+  * Add debug info
+
+-------------------------------------------------------------------
+Thu Sep 24 14:40:03 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.1~git.20200924:
+  * Comment for the moment as we don't load image from server
+  * Load custom emoji from local. We can't load it from server
+  * Debug--
+  * Const(ify
+  * Comment--
+  * Don't show vertical  header
+  * Fix i18n
+  * Fix change own info
+  * Fix generated ssha256. Now delete own account works
+  * Improve registeruser dialog
+  * Add comment
+  * Disable it for the moment
+  * Add autotest
+  * Fix typo
+  * Reduce duplicate code
+  * Debug--
+  * Add username support
+  * Rename variable
+  * Fix layout
+  * Use asktwoauthenticationpassworddialog
+  * Add autotest
+  * Use new TwoAuthenticationPasswordWidget
+  * GIT_SILENT: coding style
+  * Extract twoauthenticationpasswordwidget
+  * Start to implement asking two auth password
+  * Fix uninitialized variable
+  * GIT_SILENT: typo
+  * Implement support for author_name
+  * Add support for author_name
+  * Return attachment type
+  * Add support for  author_link
+  * Add autotest for preview image
+  * Fix typo in enable/disable email
+  * Add missing error message
+  * Fix column order
+  * Resize columns
+  * Fix sorting by column
+  * Add filter proxy
+  * Fix autotest
+  * Add channel type too
+  * Fix show rooms
+  * Don't  show grid
+  * Improve model/widget
+  * Add credit
+  * Unused variable
+  * debug--
+  * Remove comment
+  * Look at how to implement click on url (doesn't work yet)
+  * Clean up
+  * Fix text size
+  * Add proxy model
+  * GIT_SILENT: clean forward declaration
+  * const'ify
+  * Add model
+  * Fix warning
+  * Add bold but calcul textsize is not correct now
+  * Initialize underlinedFont when it's necessary
+  * Fix debug
+  * Continue to implement adminrooms support
+  * Debug--
+  * Fix debug
+  * Add app icons for Windows and Mac
+  * Fix layout
+  * Store attchmentType
+  * Fix typo + hide by default attachment text
+  * Fix show/hide text
+  * Remove unused message
+  * Implement show/hide text
+  * Add icon for showing text or not
+  * Fix autotest
+  * Move "show attachment" settings in messageattachment directly
+  * GIT_SILENT: coding style
+  * Add support for name
+  * Improve parsing
+  * Add missing qrequired_result
+  * Start to implement download avatar url
+  * Start to implement show/hide attachment
+  * Fix draw description for sound file too
+  * Fix draw description
+  * Reduce duplicate code
+  * Fix draw description
+  * continue to impelment roomsadmin parsing
+  * Move mDocumentCache in base class
+  * Fix update "administrator" action
+  * Constify pointer
+  * Fix draw multi attachment text position
+  * Rename class
+  * Rename method
+  * Move in own repo
+  * Start to implement room admin
+  * Add administratorserverinfo
+  * Don't add extra endline
+  * Start to implement  server info
+  * Add title here
+  * Prepare to add title
+  * Add todo
+  * Format text
+  * Clean up code
+  * Start to implement multi line support
+  * Move method in specific file
+  * We need a messageAttachmentId
+  * We will need a mDocumentCache as in MessageDelegateHelperText
+  * Clean up
+  * Don't duplicate preview text
+  * Fix crash (model was nullptr) after leaving a room
+  * Fix sizehint
+  * Add button for joining on channel.
+  * Don't duplicate preview text
+  * Fix crash (model was nullptr) after leaving a room
+  * Fix sizehint
+  * Add button for joining on channel.
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Fix compile
+  * Remove Q_INVOKABLE
+  * Add preference in systray
+  * Disable saveAs for the moment
+  * Autogenerate categories file
+  * We depend against 1.0.0
+  * We don't need kirigami
+  * Port away from KIconLoader
+  * Port away from deprecated KNotification ctor
+  * GIT_SILENT: remove unused include
+  * GIT_SILENT: clean forward declaration
+  * Move notification in ruqolamainwindow so now we can show/hide mainwindow
+  * Remove unused method
+  * We don't have ruqolaqml now
+  * Remove it
+  * We don't build against android
+  * Const'ify
+  * Minor fix
+  * Add missing Q_REQUIRED_RESULT
+  * Minor
+  * Add comment
+  * Const'ify pointer
+  * Allow to make server url clickable
+  * Fix crash when we search string which doesn't exist
+  * Assign message when it's necessary
+  * Assign message when it's necessary
+  * Remove last info about qml
+  * Add support for title
+  * Ruqola-qml is totally broken. Code still live in branch 1.1
+  * In master it's 1.1.40
+  * 1.1.0
+  * Const'ify QFontMetrics
+  * warning--
+  * GIT_SILENT: coding style
+  * const'ify pointer
+  * Add autotest
+  * Change as rc1
+  * Fix click on attachment
+  * Fix draw multi attachment
+  * Store icon
+  * fix show audio file/video file even if url is not downloaded
+  * Use DelegatePaintUtil::margin
+  * Update version
+  * const'ify
+  * Continue to implement administrator
+  * Don't store empty string
+  * Add missing Q_REQUIRED_RESULT
+  * const'ify
+  * Start to implement rooms administrator
+  * Disable it until  I implement it
+  * Remove it
+  * Remove enum about attachment type used in message. Now we use
+  * const'ify
+  * Implement delete own account
+  * Warning--
+  * Add support for multi attachment (pb ypos is not correct when multi
+  * Add support for multi attachment
+  * const'ify
+  * Ignore log file
+  * Start to add support for "collapsed" + fix clazy warning
+  * Add "administrator" dialogbox
+  * Draw title even if we can't download image
+  * Use Descendant sorting
+  * Add sorting
+  * Constify pointer
+  * Warning--
+  * Add tabwidget
+  * It uses username not userid
+  * Fix i18n
+  * Add info about cleaning history
+  * deleteMessageBulk is useful when we clean history. Need to implement it
+  * Add confirm dialogbox
+  * Fix autotest
+  * Rename as roomscleanhistory + fix prunne messages
+  * Fix enum
+  * Continue to implement usersupdatejob
+  * Fix autotest
+  * Make sure to use "AttachmentType::NormalText"
+  * Fix warning
+  * Make compile on CI
+  * Store/load fields
+  * Add debug support
+  * Continue to implement attachmentfield
+  * Start to implement field support
+  * Partiel revert here
+  * Const'ify pointer + using beginResetModel
+  * Rename file (as it's attachment helper)
+  * Add support for text attachment
+  * Start to implement change password
+  * Clear filter
+  * Return the number of messages
+  * Fix return number of attachments
+  * Add resetGroupType
+  * Allow to filter attachment type
+  * const'ify pointer
+  * Start to implement filter attachment type
+  * Assign directly text
+  * Move method to delegateutil
+  * GIT_SILENT: coding style
+  * Add comment
+  * Add support for pinnedBy
+  * Rename variable
+  * Allow to enable 2fA
+  * Load settings
+  * Add autotest
+  * Start to implement multi attachment support
+  * Add checkbox
+  * Return as normal text
+  * Add comment
+  * Make sure that we don't "hide" a specific type
+  * parse attachment in messageattachment directly
+  * Add new enum
+  * Move parsing code in messageattachment directly
+  * Add support for text attachment (attachment can be a file or a text)
+  * Fix typo
+  * Add emojimessage autotest
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * GIT_SILENT made messages (after extraction)
+  * Improve roomsadminjob + add autotest
+  * Remove duplicate code
+  * GIT_SILENT: remove comment
+  * Add optional element here
+  * Start to implement roomsadminjob
+  * Fix draw emoji as avatar
+  * Add include
+  * Add widget
+  * Draw emoji
+  * Continue to add emoji support
+  * Add layout
+  * Improve autotest
+  * Start to implement administrator dialog
+  * Start to add emoji support
+  * Start to implement administratordialog
+  * Hide mMyAccount2ProfileConfigureWidget if we can't modify it
+  * Add support for Accounts_AllowUserProfileChange
+  * Start to implement RoomsAdminRooms
+  * implement service password
+  * Fix clazy warning
+  * Add ServicePassword too
+  * USe passwordconfirmwidget
+  * Add method for verifying that confirm password is ok
+  * Add autotest
+  * Add passwordconfirmwidget.cpp
+  * Continue to implement myaccountprofile
+  * Fix generate date
+  * Fix autotest
+  * Add autotest
+  * Fix enable/disable ok button
+  * Improve autotest + fix typo
+  * Fix autotest
+  * Fix generate method
+  * Add ignorethread too
+  * Fix show/hide prune action
+  * Add support for administrator
+  * Debug--
+  * GIT_SILENT: coding style
+  * GIT_SILENT: fix typo
+  * Fix warning about invalid info
+  * Add more autotests
+  * Assign roomId
+  * improve prunemessages support
+  * Make CI happy
+  * initialize info
+  * Initialize CleanHistoryInfo
+  * Improve  prunemessageswidgettest
+  * Fix crash
+  * Improve CleanHistoryInfo
+  * Continue to implement clean history
+  * Assign text directly in constructor
+  * Add checkbox
+  * Add layout
+  * Add autotests
+  * Continue to implement prunemessages
+  * Fix show/hide attachment button
+  * There is a bug here. Need to fix soon
+  * Start to implement clean history
+  * Remove namespace
+  * GIT_SILENT: coding style
+  * Add passworddialog here
+  * Add info that it's not implemented yet
+  * Implement support for removing own account
+  * Use addMessages as it uses mini optimization
+  * Remove default boolean
+  * Add TypeGroup support
+  * Minor optimization: using addMessages
+  * Use addMessages method
+  * Add support for type group
+  * Try to fix order but don't work perhaps a bug in api
+  * Remove namespace
+  * Fix load order
+  * Add autotest
+  * Add autotest for ownuser
+  * GIT_SILENT: coding style
+  * Allow to change settings
+  * Make sure that we have an info to changed
+  * Add name too
+  * Load nickname too
+  * Add nickname too
+  * initialize value
+  * Port to enum
+  * Port jitsienabled
+  * Port boolean
+  * Port more boolean settings
+  * Port some bool to enum
+  * Continue to implement ownuser
+  * Add more info
+  * implement ownuser
+  * Move code in rocketchataccount directly
+  * Rename method
+  * Port allowMessageDeleting() to enum
+  * Port to enum
+  * forward serverConfigFeatureTypes
+  * GIT_SILENT: coding style
+  * Continue to implement using enum here
+  * Add autotest
+  * We need own info
+  * improve myaccount2faconfigurewidget
+  * Start to port to ServerConfigFeatureType
+  * Fix autotest
+  * Improve autotest
+  * Fix clazy warning
+  * Start to use flags for enable settings
+  * Fix save profile
+  * GIT_SILENT: coding style
+  * continue to implement myaccount
+  * Forward settings
+  * Start to implement "usersupdateownbasicinfo"
+  * Get server settings (allow_change*)
+  * Catch return in lineedit
+  * Improve config dialog
+  * Add autotest
+  * Fix enum
+  * Start to implement usersupdatejob
+  * improve myaccount
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * GIT_SILENT made messages (after extraction)
+  * add more autotest
+  * Improve autotest
+
+-------------------------------------------------------------------
+Sat Aug 01 14:53:36 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.1~git.20200731:
+  * Fix "alert()" usage
+  * Fix clazy warning
+  * Continue to implement "my account"
+  * Add autotest
+  * continue to implement my account support
+  * Add myaccountwidget
+  * Start to implement configure "my account"
+  * Store "Accounts_PasswordReset" settings
+  * Fix typo + add missing Q_REQUIRED_RESULT
+  * Remove not necessary lib
+  * GIT_SILENT: coding style
+  * Add missing destructor (reported by elf-dissector)
+  * Time to increase version
+  * Return info when register an user is a success
+  * We need to inform user that register user is a success
+  * Save/load dialog size
+  * Fix enable/disable action
+  * Allow to deleteOwnAccount
+  * Implement registeruser
+  * Add debug info about notification
+  * Don't create generated file in source dir
+  * silence debug output
+  * Allow to register user
+  * Fix enable/disabled. Fix me when we launch first
+  * Add check about "register user"
+  * Fix autotest
+  * Improve registeruserjob + add autotest
+  * Show in the GUI that we're connecting to the server
+  * improve dialog
+  * Return RocketChatRestApi::RegisterUserJob::RegisterUserInfo
+  * Improve registeruser
+  * Continue to implement "register new user"
+  * Add autotest
+  * Encrypt password
+  * GIT_SILENT: coding style
+  * Add struct
+  * Allow to delete own account
+  * implement deleteownaccountjob
+  * Start to implement 'allow delete own account'
+  * Add autotest
+  * Start to create dialog for registring new user
+  * Send alert() when we received a ping not for all notification
+  * Prepare to implement register new user
+  * Allow to send reset password
+  * Fix typo
+  * Allow to reset password
+  * MAke sure to allow to connect when we add invalid 2FA code
+  * Don't take two factor code when not necessary
+  * Add info when OTP is invalid
+  * Allow to request new password
+  * Remove dead code
+  * Time to increase version
+  * Add missing Q_REQUIRED_RESULT
+  * Add more autotests
+  * Ignore ssl error
+  * Use current language
+  * Improve autotest + allow to change language
+  * Fix translate params
+  * improve autotests
+  * Clean up
+  * Fix add description
+  * Allow to translate message
+  * Implement download apps languages
+  * Fix loading order
+  * GIT_SILENT: coding style
+  * Use server version too
+  * Allow to download languages file
+  * Add signal when file was parsed
+  * Remove debug
+  * Download languages file
+  * Improve downloadappslanguages file
+  * Fix build in release mode
+  * Allow to download file
+  * Continue to implement downloadappslanguages
+  * Continue to implement parsing languages
+  * Use QApplication::alert for making attention on windows.
+  * Fix logic
+  * Implement autotest
+  * Start implement autotest parsing
+  * Use LIBRUQOLACORE_TESTS_EXPORT here
+  * Continue to implement parsing
+  * Add more autotest
+  * Add manager
+  * Start to implement parser
+  * Add autotest
+  * Add support for using RC translate files (using for commands)
+  * Fix extract expiretoken
+  * Start to fix load expire token info
+  * Move to cpp file
+  * Implement dragging of selected text
+  * Repair completion when not at end of the complete line
+  * Update README + TODO file
+  * Remove nested eventloop crash when clicking on notification
+  * Open direct conversation when clicking on a user in list at top of chat room
+  * Fix clicking on images, download button etc.
+  * Fix send email code
+  * Repair and extend inputtextmanagertest
+  * Repair completion in the middle of the line
+  * Add button for sending new code
+  * Fix layout
+  * Allow to send email code
+  * Selection: don't open links when selecting, only when clicking with no selection
+  * Fix LMB-selection not copying the text when releasing the mouse over another message
+  * Only trigger completion at the end of a word.
+  * Completion: don't show a popup with exactly the same as the pattern
+  * GIT_SILENT fix "extra tokens" warning
+  * Repair completion
+  * Remove dead code after else+return, simplify output
+  * GIT_SILENT: Coding style
+  * Remove unused methods
+  * implement logout/login
+  * Allow to send 2FA email code
+  * Add missing Q_REQUIRED_RESULT
+  * Add PlaceholderText
+  * continue to implement rest authentication
+  * Add autotest
+  * Start to implement restauthenticationmanager
+  * Add warning when we don't build apps against qtkeychain
+  * Add support for resume
+  * Add 2FA support
+  * Autotest resume
+  * If resume is not empty we can send login method too
+  * improve login autotest
+  * Add autotest
+  * Add userOrEmail argument
+  * Start to implement user2fasendemailcodejob
+  * Implement enable/disable 2FA email
+  * Autotest: allow for one pixel rounding error: QSize(483, 967)
+  * Fix hidpi test failure
+  * Allow to display date
+  * Fix load font
+  * Fix change font
+  * Save fonts
+  * Add configure font widget
+  * Clean up 2FA
+  * Add page to configure dialog
+  * Add autotest
+  * Start to implement configure font
+  * Fix support 2FA
+  * Use qApp font by default in message list.
+  * Fix show 2fa
+  * Return info about 2FA
+  * Look at to implement 2fa support
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * GIT_SILENT made messages (after extraction)
+  * Move all code to unicodeemoticonmanager
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * GIT_SILENT made messages (after extraction)
+  * Move more code to unicodeemoticonmanager
+  * Not necessary to load unicode emoticon for each account as it's the same
+  * Extract code perhaps we will be able to use it for example animated
+  * Add warning if we can't delete file
+  * const'ify
+  * Fix show encrypted element
+  * Start to implement encrypted checkbox
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Rename class
+  * GIT_SILENT: time to increase version
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * GIT_SILENT made messages (after extraction)
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * GIT_SILENT made messages (after extraction)
+  * Add support for "replies" Now in thread we can know who replies it
+  * hi-dpi: fix position of description below image
+  * Revert increase qt version.
+
+-------------------------------------------------------------------
+Mon Jun 15 09:42:14 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.1~git.20200611:
+  * GIT_SILENT: time to increase version
+  * Create ruqola-qml.categories
+  * Fix file name
+  * Don't install qml version if we don't build it
+  * GIT_SILENT: coding style
+  * Make it compile without qml support
+  * Disable by default build of ruqola-qml, no changes from long time.
+  * GIT_SILENT: remove unused TODO
+  * Time to increase version
+  * Use KFormat here
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Add log restapi support
+  * GIT_SILENT: add more clazy check
+
+-------------------------------------------------------------------
+Fri Jun 05 09:36:32 UTC 2020 - tux93@opensuse.org
+
+- Update to version 1.1~git.20200605:
+  * i18n: fix message extraction
+  * Use margin from util class
+  * Add more check
+  * GIT_SILENT: Test clazy level1
+  * GIT_SILENT: coding style
+  * Disable mClearAlerts when account is disconnected
+  * Add emojimodel and commandmodel here too
+  * Allow to complet user/channel in threadmessagedialog
+  * Continue to fix completion in thread message dialog
+  * Clean includes
+  * Show a notice when replying to a thread
+  * Fix mem leak
+  * Add objectName
+  * Store mCurrentInputTextManager
+  * New fix for completion
+  * Fix warning
+  * Fix completion
+  * Show shortcut
+  * GIT_SILENT: Reduce compile error
+  * GIT_SILENT: launch even if it's not merge request
+  * GIT_SILENT: update .gitlab-ci.yml
+  * Fix execute command in thread message dialogbox
+  * Fix completion
+  * Fix reply in thread dialogbox. Before it cleared mThreadMessageId
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Allow to define if we want to show image by default or not
+  * Update credit
+  * SVN_SILENT made messages (.desktop file) - always resolve ours
+  * Avoid crash when we delete account
+  * Use mCurrentRocketChatAccount directly
+  * Minor optimization
+  * Minor optimization
+  * Allow copying text using Copy keyboard shortcut
+  * Allow to select channel when we click on icon
+  * Fix position
+  * Create layout delegate
+  * Remove duplicate code
+  * continue to implement searchchanneldelegate
+  * Start to Clean up "search channel" delegate
+  * Fix typing notification. Don't react on textchanged which
+  * Fix i18n
+  * Reduce singleStep value
+  * Fix duplicate code
+  * GIT_SILENT: add logo
+  * GIT_SILENT: Add .gitlab-ci.yml
+
+-------------------------------------------------------------------
+Wed May 20 11:58:51 UTC 2020 - tjyrinki@suse.com
+
+- Update to version 1.1~git.20200520:
+  * Fix another crash due to a null cursor.
+  * GIT_SILENT: time to increase it
+
+-------------------------------------------------------------------
+Tue May 19 12:13:45 UTC 2020 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Initial packaging, upstream version 7e6b96d5 including Hack Week work.

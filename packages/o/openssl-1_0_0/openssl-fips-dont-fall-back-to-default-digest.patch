@@ -1,0 +1,128 @@
+Index: openssl-1.0.2o/apps/dgst.c
+===================================================================
+--- openssl-1.0.2o.orig/apps/dgst.c	2018-03-27 15:54:46.000000000 +0200
++++ openssl-1.0.2o/apps/dgst.c	2018-08-01 15:32:02.335703669 +0200
+@@ -147,7 +147,7 @@ int MAIN(int argc, char **argv)
+     /* first check the program name */
+     program_name(argv[0], pname, sizeof(pname));
+ 
+-    md = EVP_get_digestbyname(pname);
++    md = EVP_get_digestbyname_fips_disabled(pname);
+ 
+     argc--;
+     argv++;
+@@ -235,7 +235,7 @@ int MAIN(int argc, char **argv)
+                 macopts = sk_OPENSSL_STRING_new_null();
+             if (!macopts || !sk_OPENSSL_STRING_push(macopts, *(++argv)))
+                 break;
+-        } else if ((m = EVP_get_digestbyname(&((*argv)[1]))) != NULL)
++        } else if ((m = EVP_get_digestbyname_fips_disabled(&((*argv)[1]))) != NULL)
+             md = m;
+         else
+             break;
+Index: openssl-1.0.2o/apps/apps.c
+===================================================================
+--- openssl-1.0.2o.orig/apps/apps.c	2018-03-27 15:54:46.000000000 +0200
++++ openssl-1.0.2o/apps/apps.c	2018-08-01 15:32:02.335703669 +0200
+@@ -3281,3 +3281,45 @@ int raw_write_stdout(const void *buf, in
+     return write(fileno_stdout(), buf, siz);
+ }
+ #endif
++
++
++const EVP_MD *EVP_get_digestbyname_fips_disabled(const char *name)
++	{
++	int saved_fips_mode = FIPS_mode();
++	EVP_MD *md;
++
++	if (saved_fips_mode)
++		FIPS_mode_set(0);
++
++	OpenSSL_add_all_digests();
++	md=EVP_get_digestbyname(name);
++
++	if (saved_fips_mode && !FIPS_mode_set(saved_fips_mode)) {
++		ERR_load_crypto_strings();
++		ERR_print_errors(BIO_new_fp(stderr,BIO_NOCLOSE));
++		EXIT(1);
++	}
++
++	return md;
++	}
++
++const EVP_CIPHER *EVP_get_cipherbyname_fips_disabled(const char *name)
++	{
++	int saved_fips_mode = FIPS_mode();
++	EVP_CIPHER *ciph;
++
++	if (saved_fips_mode)
++		FIPS_mode_set(0);
++
++	OpenSSL_add_all_ciphers();
++	ciph=EVP_get_cipherbyname(name);
++
++	if (saved_fips_mode && !FIPS_mode_set(saved_fips_mode)) {
++		ERR_load_crypto_strings();
++		ERR_print_errors(BIO_new_fp(stderr,BIO_NOCLOSE));
++		EXIT(1);
++	}
++
++	return ciph;
++	}
++
+Index: openssl-1.0.2o/apps/apps.h
+===================================================================
+--- openssl-1.0.2o.orig/apps/apps.h	2018-03-27 15:54:46.000000000 +0200
++++ openssl-1.0.2o/apps/apps.h	2018-08-01 15:32:02.335703669 +0200
+@@ -348,6 +348,9 @@ void print_cert_checks(BIO *bio, X509 *x
+ 
+ void store_setup_crl_download(X509_STORE *st);
+ 
++const EVP_MD *EVP_get_digestbyname_fips_disabled(const char *name);
++const EVP_CIPHER *EVP_get_cipherbyname_fips_disabled(const char *name);
++
+ # define FORMAT_UNDEF    0
+ # define FORMAT_ASN1     1
+ # define FORMAT_TEXT     2
+Index: openssl-1.0.2o/apps/enc.c
+===================================================================
+--- openssl-1.0.2o.orig/apps/enc.c	2018-03-27 15:54:46.000000000 +0200
++++ openssl-1.0.2o/apps/enc.c	2018-08-01 15:32:02.335703669 +0200
+@@ -162,7 +162,7 @@ int MAIN(int argc, char **argv)
+         do_zlib = 1;
+ #endif
+ 
+-    cipher = EVP_get_cipherbyname(pname);
++    cipher = EVP_get_cipherbyname_fips_disabled(pname);
+ #ifdef ZLIB
+     if (!do_zlib && !base64 && (cipher == NULL)
+         && (strcmp(pname, "enc") != 0))
+@@ -281,7 +281,7 @@ int MAIN(int argc, char **argv)
+         } else if (strcmp(*argv, "-non-fips-allow") == 0)
+             non_fips_allow = 1;
+         else if ((argv[0][0] == '-') &&
+-                 ((c = EVP_get_cipherbyname(&(argv[0][1]))) != NULL)) {
++                 ((c = EVP_get_cipherbyname_fips_disabled(&(argv[0][1]))) != NULL)) {
+             cipher = c;
+         } else if (strcmp(*argv, "-none") == 0)
+             cipher = NULL;
+@@ -336,6 +336,10 @@ int MAIN(int argc, char **argv)
+         argv++;
+     }
+ 
++    /* drop out of fips mode if we should allow non-fips algos */
++    if (non_fips_allow)
++        FIPS_mode_set(0);
++
+     e = setup_engine(bio_err, engine, 0);
+ 
+     if (cipher && EVP_CIPHER_flags(cipher) & EVP_CIPH_FLAG_AEAD_CIPHER) {
+@@ -350,7 +354,7 @@ int MAIN(int argc, char **argv)
+         goto end;
+     }
+ 
+-    if (md && (dgst = EVP_get_digestbyname(md)) == NULL) {
++    if (md && (dgst = EVP_get_digestbyname_fips_disabled(md)) == NULL) {
+         BIO_printf(bio_err, "%s is an unsupported message digest type\n", md);
+         goto end;
+     }

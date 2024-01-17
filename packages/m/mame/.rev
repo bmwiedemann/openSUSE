@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>91fbaccef25d5c297cb46ab05f1f2700</srcmd5>
+    <version>0.245</version>
+    <time>1659721831</time>
+    <user>dimstar_suse</user>
+    <comment>0.245</comment>
+    <requestid>992754</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9cebf4e50fe4967144ef1dcddd98360d</srcmd5>
+    <version>0.248</version>
+    <time>1664797531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.248
+  * see https://mametesters.org/changelog_page.php for notes</comment>
+    <requestid>1007452</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>647da21a399bfbbe642f0b001f6f7028</srcmd5>
+    <version>0.252</version>
+    <time>1680290120</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.252
+  * Refreshed spec-file via spec-cleaner and manual optimizations.
+  * Changed file use_thin_archives.patch.
+  * Added files: mame-fortify.patch and mame-bgfx.patch.
+  * Disabled LTO for all.
+  * https://mametesters.org/changelog_page.php</comment>
+    <requestid>1075623</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5b74170baf7cb7dfaab594dc21069fe0</srcmd5>
+    <version>0.253</version>
+    <time>1681150614</time>
+    <user>dimstar_suse</user>
+    <comment>- Dropped files mame-rpmlintrc mame.png mess.png mame-mess.appdata.xml mame.appdata.xml.
+- Added files mame.svg and mame-ppc64le.patch (fix build ppc64 and ppc64le archs).
+- Changed optflags macro flag -g to -g1 for all archs (boo#1210115).
+- Fixed build on Leap 15.4 and Leap 15.5 via gcc11 (boo#1210115).
+- Fixed incorrect cfg diroctory path (boo#1184490).
+- Updated to 0.253
+  * Dropped file _multibuild, mess subpackage and 32bit archs (random ld oom).
+  * Changed files _constraints mame-bgfx.patch.
+  * Switched to built-in lua (requires Lua compiled as C++).
+  * https://mametesters.org/changelog_page.php</comment>
+    <requestid>1078194</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9065aeef49203e98f30434f7c354746b</srcmd5>
+    <version>0.253</version>
+    <time>1681296719</time>
+    <user>dimstar_suse</user>
+    <comment>- Disabled gold and enabled 32bit and aarch64 archs with null optflags.</comment>
+    <requestid>1078541</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3a7103677c7c08b20e5f393e7092f0aa</srcmd5>
+    <version>0.254</version>
+    <time>1684596220</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.254
+  * Dropped file mame-ppc64le.patch.
+  * https://mametesters.org/changelog_page.php</comment>
+    <requestid>1088000</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f7dd8af1c79910c736b8f0ce27ff884f</srcmd5>
+    <version>0.257</version>
+    <time>1692611142</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.257
+  * https://mametesters.org/changelog_page.php</comment>
+    <requestid>1104924</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c1d4c25d229b4f5cd2edd94c44b93b7a</srcmd5>
+    <version>0.258</version>
+    <time>1693482342</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.258
+  * /usr/share/doc/packages/mame/whatsnew-0.258.txt</comment>
+    <requestid>1108085</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e2f02c0efdb4bd42cde125c58da060b0</srcmd5>
+    <version>0.259</version>
+    <time>1698097276</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.259
+  * /usr/share/doc/packages/mame/whatsnew-0.259.txt
+- Added file reproducible.patch for deterministic output order.</comment>
+    <requestid>1119693</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f81e78f72be9ee0664341d20087cb796</srcmd5>
+    <version>0.260</version>
+    <time>1699388878</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.260
+  * /usr/share/doc/packages/mame/whatsnew-0.260.txt
+  * Updated file mame-bgfx.patch.
+  * Excluded 32-bit architectures: i586 armv6hl armv7hl ppc.</comment>
+    <requestid>1123949</requestid>
+  </revision>
+</revisionlist>

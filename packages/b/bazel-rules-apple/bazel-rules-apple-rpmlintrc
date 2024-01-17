@@ -1,0 +1,5 @@
+# Ignore the following warnings in the source package
+addFilter("bazel-rules-apple-source.* devel-file-in-non-devel-package")
+addFilter("bazel-rules-apple-source.* hidden-file-or-dir")
+addFilter("bazel-rules-apple-source.* non-executable-script")
+addFilter("bazel-rules-apple-source.* suse-filelist-forbidden-fhs23")

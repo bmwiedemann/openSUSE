@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/bazelbuild/rules_apple</param>
+    <param name="scm">git</param>
+    <param name="filename">bazel-rules-apple</param>
+    <param name="versionformat">%cd</param>
+    <param name="revision">b869b0d3868d78a1d4ffd866ccb304fb68aa12c3</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

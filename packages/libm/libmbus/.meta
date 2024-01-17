@@ -1,0 +1,5 @@
+<package name="libmbus" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="libmbus"/>
+</package>

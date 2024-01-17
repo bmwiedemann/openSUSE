@@ -1,0 +1,925 @@
+--- ./common/slp_compare.c.orig	2012-12-12 19:12:43.000000000 +0000
++++ ./common/slp_compare.c	2014-04-10 14:54:49.730301497 +0000
+@@ -414,6 +414,16 @@ int SLPCompareNamingAuth(size_t srvtypel
+    if (namingauthlen == 0xffff)
+       return 0;            /* match all naming authorities */
+ 
++    /* skip "service:" */
++   if(srvtypelen > 8 && strncasecmp(srvtype, "service:", 8) == 0)
++   {   
++      srvtypelen -= 8;
++      srvtype += 8;
++   }   
++   dot = memchr(srvtype, ':', srvtypelen);
++   if (dot)
++      srvtypelen = dot - srvtype;
++
+    dot = memchr(srvtype, '.', srvtypelen);
+    if (!namingauthlen)
+       return dot? 1: 0;    /* IANA naming authority */
+--- ./common/slp_message.h.orig	2012-12-07 20:13:28.000000000 +0000
++++ ./common/slp_message.h	2014-04-10 14:54:49.730301497 +0000
+@@ -127,6 +127,11 @@
+ #define SLP_REG_SOURCE_LOCAL     2  /* from localhost or IPC */
+ #define SLP_REG_SOURCE_STATIC    3  /* from the slp.reg file */
+ 
++#define SLP_REG_WATCH_TCP        (1<<0)
++#define SLP_REG_WATCH_UDP        (1<<1)
++#define SLP_REG_WATCH_CHECKING   (1<<8)
++#define SLP_REG_WATCH_DEAD       (1<<9)
++
+ /** SLP Extension IDs */
+ 
+ /** @todo Deprecate the use of the experimental version of the PID watcher
+@@ -275,6 +280,8 @@ typedef struct _SLPSrvReg
+    SLPAuthBlock * autharray;
+    /* The following are used for OpenSLP specific extensions */
+    uint32_t pid;
++   int watchport;
++   int watchflags;
+    int source;    /*!< convenience */
+ } SLPSrvReg;
+ 
+--- ./common/slp_property.c.orig	2012-12-10 23:31:53.000000000 +0000
++++ ./common/slp_property.c	2014-04-10 14:54:49.730301497 +0000
+@@ -80,12 +80,17 @@ static SLPList s_PropertyList = {0, 0, 0
+ 
+ /** The (optional) application-specified property file - module static. */
+ static char s_AppPropertyFile[MAX_PATH] = "";
++static FILE *s_AppPropertyFp;
+ 
+ /** The (optional) environment-specified property file - module static. */
+ static char s_EnvPropertyFile[MAX_PATH] = "";
++static FILE *s_EnvPropertyFp;
+ 
+ /** The (optional) global property file - module static. */
+ static char s_GlobalPropertyFile[MAX_PATH] = "";
++static FILE *s_GlobalPropertyFp;
++
++static int s_UsePropertyFps = 0;
+ 
+ /** The database lock - module static. */
+ static SLPMutexHandle s_PropDbLock;
+@@ -285,9 +290,9 @@ static void InitializeMTUPropertyValue()
+  *
+  * @internal
+  */
+-static bool ReadFileProperties(char const * conffile)
++static bool ReadFileProperties(char const * conffile, FILE *conffp)
+ {
+-   FILE * fp;
++   FILE * fp = NULL;
+    char * alloced;
+    bool retval = false;
+ 
+@@ -297,8 +302,11 @@ static bool ReadFileProperties(char cons
+    if ((alloced = xmalloc(CONFFILE_RDBUFSZ)) == 0)
+       return false;
+ 
++   if (conffp)
++      rewind(conffp);
++
+    /* open configuration file for read - missing file returns false */
+-   if ((fp = fopen(conffile, "r")) != 0)
++   if ((fp = s_UsePropertyFps ? conffp : fopen(conffile, "r")) != 0)
+    {
+       /* read a line at a time - max 4k characters per line */
+       while (fgets(alloced, CONFFILE_RDBUFSZ, fp))
+@@ -356,7 +364,8 @@ static bool ReadFileProperties(char cons
+          if (*valuestart)
+             SLPPropertySet(namestart, valuestart, 0);
+       }
+-      fclose(fp);
++      if (!s_UsePropertyFps)
++         fclose(fp);
+       retval = true;
+    }
+    xfree(alloced);
+@@ -383,21 +392,32 @@ static int ReadPropertyFiles(void)
+    if (SetDefaultValues() != 0)
+       return -1;
+ 
++   if (s_UsePropertyFps == 1)
++   {
++      if (*s_GlobalPropertyFile)
++         s_GlobalPropertyFp = fopen(s_GlobalPropertyFile, "r");
++      if (*s_EnvPropertyFile)
++         s_EnvPropertyFp = fopen(s_EnvPropertyFile, "r");
++      if (*s_AppPropertyFile)
++         s_AppPropertyFp = fopen(s_AppPropertyFile, "r");
++      s_UsePropertyFps = 2;
++   }
++
+    /* read global, and then app configuration files */
+    if (*s_GlobalPropertyFile)
+-      if (ReadFileProperties(s_GlobalPropertyFile))
++      if (ReadFileProperties(s_GlobalPropertyFile, s_GlobalPropertyFp))
+          SLPPropertySet("net.slp.OpenSLPConfigFile",
+                s_GlobalPropertyFile, SLP_PA_READONLY);
+ 
+    /* read environment specified configuration file */
+    if (*s_EnvPropertyFile)
+-      if (ReadFileProperties(s_EnvPropertyFile))
++      if (ReadFileProperties(s_EnvPropertyFile, s_EnvPropertyFp))
+          SLPPropertySet("net.slp.EnvConfigFile",
+                s_EnvPropertyFile, SLP_PA_READONLY);
+ 
+    /* if set, read application-specified configuration file */
+    if (*s_AppPropertyFile)
+-      if (ReadFileProperties(s_AppPropertyFile))
++      if (ReadFileProperties(s_AppPropertyFile, s_AppPropertyFp))
+          SLPPropertySet("net.slp.AppConfigFile",
+                s_AppPropertyFile, SLP_PA_READONLY);
+ 
+@@ -865,6 +885,11 @@ int SLPPropertyInit(const char * gconffi
+    return sts;
+ }
+ 
++void SLPPropertyKeepFps()
++{
++   s_UsePropertyFps = 1;
++}
++
+ /** Release all globally held resources held by the property module.
+  *
+  * Free all associated property database memory, and destroy the database
+@@ -878,6 +903,14 @@ int SLPPropertyInit(const char * gconffi
+ void SLPPropertyExit(void)
+ {
+    SLPPropertyCleanup();
++   if (s_GlobalPropertyFp)
++      fclose(s_GlobalPropertyFp);
++   if (s_EnvPropertyFp)
++      fclose(s_EnvPropertyFp);
++   if (s_AppPropertyFp)
++      fclose(s_AppPropertyFp);
++   s_GlobalPropertyFp = s_EnvPropertyFp = s_AppPropertyFp = NULL;
++   s_UsePropertyFps = 0;
+    SLPMutexDestroy(s_PropDbLock);
+    s_PropertiesInitialized = false;
+ }
+--- ./common/slp_property.h.orig	2012-11-28 17:07:04.000000000 +0000
++++ ./common/slp_property.h	2014-04-10 14:54:49.730301497 +0000
+@@ -66,6 +66,7 @@ int SLPPropertySetAppConfFile(const char
+ int SLPPropertyReinit(void);
+ int SLPPropertyInit(const char * gconffile);
+ void SLPPropertyExit(void);
++void SLPPropertyKeepFps(void);
+ 
+ /*! Special function to access MTU configuration property value. This provides
+  *  fast access to the MTU value both in client libraries and server program.
+--- ./common/slp_spi.c.orig	2012-11-28 17:07:04.000000000 +0000
++++ ./common/slp_spi.c	2014-04-10 14:54:49.730301497 +0000
+@@ -426,6 +426,17 @@ int SLPSpiCanSign(SLPSpiHandle hspi, siz
+          spistrlen, spistr) != 0;
+ }
+ 
++void SLPSpiFill(SLPSpiHandle hspi)
++{
++   SLPSpiEntry* entry = (SLPSpiEntry*)hspi->cache.head;
++   while (entry)
++   {
++      if (entry->keytype != SLPSPI_KEY_TYPE_PRIVATE || hspi->cacheprivate)
++         entry->key = SLPSpiReadKeyFile(entry->keyfilename, entry->keytype);
++      entry = (SLPSpiEntry*)entry->listitem.next;
++   }
++}
++
+ #endif   /* ENABLE_SLPv2_SECURITY */
+ 
+ /*=========================================================================*/
+--- ./common/slp_spi.h.orig	2012-11-28 17:07:04.000000000 +0000
++++ ./common/slp_spi.h	2014-04-10 14:54:49.730301497 +0000
+@@ -106,6 +106,8 @@ int SLPSpiCanVerify(SLPSpiHandle hspi, s
+ 
+ int SLPSpiCanSign(SLPSpiHandle hspi, size_t spistrlen, const char * spistr);
+ 
++void SLPSpiFill(SLPSpiHandle hspi);
++
+ #endif   /* ENABLE_SLPv2_SECURITY */
+ 
+ /*! @} */
+--- ./libslp/libslp_findsrvs.c.orig	2012-11-28 17:07:04.000000000 +0000
++++ ./libslp/libslp_findsrvs.c	2014-04-10 14:54:49.731301477 +0000
+@@ -64,7 +64,7 @@
+  */
+ static SLPBoolean CollateToSLPSrvURLCallback(SLPHandle hSLP, 
+       const char * pcSrvURL, unsigned short sLifetime, 
+-      SLPError errorcode)
++      SLPError errorcode, void *peeraddr)
+ {
+    int maxResults;
+    SLPHandleInfo * handle = hSLP;
+@@ -110,13 +110,19 @@ static SLPBoolean CollateToSLPSrvURLCall
+    if (collateditem == 0)
+    {
+       collateditem = xmalloc(sizeof(SLPSrvUrlCollatedItem) 
+-            + strlen(pcSrvURL) + 1);
++            + strlen(pcSrvURL) + 1 + sizeof(struct sockaddr_storage));
+       if (collateditem)
+       {
+          memset(collateditem, 0, sizeof(SLPSrvUrlCollatedItem));
+          collateditem->srvurl = (char *)(collateditem + 1);
+          strcpy(collateditem->srvurl, pcSrvURL);
+          collateditem->lifetime = sLifetime;
++         if (((struct sockaddr_storage *)peeraddr)->ss_family == AF_INET)
++            memcpy(collateditem->srvurl + strlen(pcSrvURL) + 1, peeraddr, sizeof(struct sockaddr_in));
++         else if (((struct sockaddr_storage *)peeraddr)->ss_family == AF_INET6)
++            memcpy(collateditem->srvurl + strlen(pcSrvURL) + 1, peeraddr, sizeof(struct sockaddr_in6));
++         else
++            memset(collateditem->srvurl + strlen(pcSrvURL) + 1, 0, sizeof(struct sockaddr_storage));
+ 
+          /* Add the new item to the collated list. */
+          SLPListLinkTail(&handle->collatedsrvurls, 
+@@ -144,6 +150,37 @@ CLEANUP:
+    return SLP_FALSE;
+ }
+ 
++char * SLPAPI SLPGetPeer(SLPHandle hSLP, const char *pcURL)
++{
++   SLPHandleInfo * handle = hSLP;
++   SLPSrvUrlCollatedItem * collateditem;
++   struct sockaddr_storage addr;
++
++   /*------------------------------*/
++   /* check for invalid parameters */
++   /*------------------------------*/
++   if(handle == 0 || handle->sig != SLP_HANDLE_SIG
++        || pcURL == 0 || pcURL[0] == 0)
++      return 0;
++
++   collateditem = (SLPSrvUrlCollatedItem *)handle->collatedsrvurls.head;
++   while (collateditem)
++   {
++      if (strcmp(collateditem->srvurl, pcURL) == 0)
++      {
++          memcpy((char *)&addr, collateditem->srvurl + strlen(collateditem->srvurl) + 1, sizeof(struct sockaddr_storage));
++          if (addr.ss_family == AF_INET || addr.ss_family == AF_INET6)
++          {
++              char addr_str[INET6_ADDRSTRLEN];
++              return xstrdup(SLPNetSockAddrStorageToString(&addr, addr_str, sizeof(addr_str)));
++          }
++          return 0;
++      }
++      collateditem = (SLPSrvUrlCollatedItem*)collateditem->listitem.next;
++   }
++   return 0;
++}
++
+ /** SLPFindSrvs callback routine for NetworkRqstRply.
+  *
+  * @param[in] errorcode - The network operation error code.
+@@ -168,7 +205,7 @@ static SLPBoolean ProcessSrvRplyCallback
+ 
+    /* Check the errorcode and bail if it is set. */
+    if (errorcode != SLP_OK)
+-      return CollateToSLPSrvURLCallback(handle, 0, 0, errorcode);
++      return CollateToSLPSrvURLCallback(handle, 0, 0, errorcode, peeraddr);
+ 
+    /* parse the replybuf */
+    replymsg = SLPMessageAlloc();
+@@ -191,7 +228,7 @@ static SLPBoolean ProcessSrvRplyCallback
+                   continue; /* Authentication failed, skip this URLEntry. */
+ #endif
+                result = CollateToSLPSrvURLCallback(handle, urlentry[i].url, 
+-                     (unsigned short)urlentry[i].lifetime, SLP_OK);
++                     (unsigned short)urlentry[i].lifetime, SLP_OK, peeraddr);
+                if (result == SLP_FALSE)
+                   break;
+             } 
+@@ -210,7 +247,7 @@ static SLPBoolean ProcessSrvRplyCallback
+ #endif
+             result = CollateToSLPSrvURLCallback(handle, 
+                   replymsg->body.daadvert.url, SLP_LIFETIME_MAXIMUM, 
+-                  SLP_OK);
++                  SLP_OK, peeraddr);
+          }
+          else if (replymsg->header.functionid == SLP_FUNCT_SAADVERT)
+          {
+@@ -225,7 +262,7 @@ static SLPBoolean ProcessSrvRplyCallback
+ #endif
+             result = CollateToSLPSrvURLCallback(handle, 
+                   replymsg->body.saadvert.url, SLP_LIFETIME_MAXIMUM, 
+-                  SLP_OK);
++                  SLP_OK, peeraddr);
+          }
+       }
+       SLPMessageFree(replymsg);
+--- ./libslp/slp.h.orig	2012-11-28 17:07:04.000000000 +0000
++++ ./libslp/slp.h	2014-04-10 14:54:49.731301477 +0000
+@@ -606,6 +606,15 @@ SLPEXP SLPError SLPAPI SLPAssociateIP(
+       SLPHandle      hSLP, 
+       const char *   unicast_ip);
+ 
++/*=========================================================================
++ * SLPGetPeer() - return the peer info corresponding to a service url.
++ *                may only be called from SLPSrvURLCallback.
++ *                the returned memory needs to be freed with SLPFree()
++ */
++SLPEXP char * SLPAPI SLPGetPeer(
++      SLPHandle hSLP,
++      const char *pcURL);
++
+ #if __cplusplus
+ }
+ #endif
+--- ./libslpattr/libslpattr.c.orig	2012-12-10 23:31:53.000000000 +0000
++++ ./libslpattr/libslpattr.c	2014-04-10 14:54:49.731301477 +0000
+@@ -393,6 +393,9 @@ static char * unescape_into(char * dest,
+       (*cur)++;
+    }
+ 
++   if (type_guess == TYPE_UNKNOWN)
++      return 0;		/* parse error */
++
+    *type = type_guess;
+    return 1;
+ }
+--- ./slpd/slpd_database.c.orig	2012-12-10 23:31:53.000000000 +0000
++++ ./slpd/slpd_database.c	2014-04-10 14:54:49.731301477 +0000
+@@ -49,6 +49,7 @@
+ 
+ #define _GNU_SOURCE
+ #include <string.h>
++#include <dirent.h>
+ 
+ #include "../libslpattr/libslpattr.h"
+ #include "slpd_database.h"
+@@ -75,6 +76,9 @@
+ 
+ static IndexTreeNode *srvtype_index_tree = (IndexTreeNode *)0;
+ 
++extern char *reg_file_dir;
++static FILE *regfileFP;
++
+ #ifdef ENABLE_PREDICATES
+ /** A structure to hold a tag and its index tree
+  */
+@@ -793,6 +797,9 @@ static int SLPDDatabaseSrvRqstTestEntry(
+    /* entry reg is the SrvReg message from the database */
+    entryreg = &entry->msg->body.srvreg;
+ 
++   if ((entryreg->watchflags & SLP_REG_WATCH_DEAD) != 0)
++      return 0;
++
+    /* check the service type */
+    if (SLPCompareSrvType(srvrqst->srvtypelen, srvrqst->srvtype,
+          entryreg->srvtypelen, entryreg->srvtype) == 0
+@@ -1347,6 +1354,8 @@ int SLPDDatabaseSrvTypeRqstStart(SLPMess
+ 
+             /* entry reg is the SrvReg message from the database */
+             entryreg = &entry->msg->body.srvreg;
++            if ((entryreg->watchflags & SLP_REG_WATCH_DEAD) != 0)
++               continue;
+ 
+             if (SLPCompareNamingAuth(entryreg->srvtypelen, entryreg->srvtype,
+                      srvtyperqst->namingauthlen, srvtyperqst->namingauth) == 0
+@@ -1416,6 +1425,8 @@ static int SLPDDatabaseAttrRqstProcessEn
+    int i;
+ #endif
+ 
++   if ((entryreg->watchflags & SLP_REG_WATCH_DEAD) != 0)
++      return 0;
+    if (SLPCompareString(attrrqst->urllen, attrrqst->url,
+             entryreg->urlentry.urllen, entryreg->urlentry.url) == 0
+          || SLPCompareSrvType(attrrqst->urllen, attrrqst->url,
+@@ -1689,18 +1700,18 @@ void * SLPDDatabaseEnumStart(void)
+ SLPMessage * SLPDDatabaseEnum(void * eh, SLPMessage ** msg, SLPBuffer * buf)
+ {
+    SLPDatabaseEntry * entry;
+-   entry = SLPDatabaseEnum((SLPDatabaseHandle)eh);
+-   if (entry)
++
++   while ((entry = SLPDatabaseEnum((SLPDatabaseHandle)eh)) != 0)
+    {
++      if ((entry->msg->body.srvreg.watchflags & SLP_REG_WATCH_DEAD) != 0)
++         continue;
+       *msg = entry->msg;
+       *buf = entry->buf;
++      return *msg;
+    }
+-   else
+-   {
+-      *msg = 0;
+-      *buf = 0;
+-   }
+-   return *msg;
++   *msg = 0;
++   *buf = 0;
++   return 0;
+ }
+ 
+ /** End an enumeration started by SLPDDatabaseEnumStart.
+@@ -1826,7 +1837,10 @@ int SLPDDatabaseInit(const char * regfil
+ #endif /* ENABLE_PREDICATES */
+ 
+    /* Call the reinit function */
+-   return SLPDDatabaseReInit(regfile);
++   if (regfileFP)
++      fclose(regfileFP);
++   regfileFP = fopen(regfile, "r");
++   return SLPDDatabaseReInit();
+ }
+ 
+ /** Re-initialize the database with changed registrations from a regfile.
+@@ -1835,13 +1849,14 @@ int SLPDDatabaseInit(const char * regfil
+  *
+  * @return Zzero on success, or a non-zero value on error.
+  */
+-int SLPDDatabaseReInit(const char * regfile)
++int SLPDDatabaseReInit()
+ {
+    SLPDatabaseHandle dh;
+    SLPDatabaseEntry * entry;
+    SLPMessage * msg;
+    SLPBuffer buf;
+-   FILE * fd;
++   DIR * dirfp;
++   struct dirent * direntry;
+ 
+    /* open the database handle and remove all the static registrations
+       (the registrations from the /etc/slp.reg) file. */
+@@ -1861,26 +1876,170 @@ int SLPDDatabaseReInit(const char * regf
+    }
+ 
+    /* read static registration file if any */
+-   if (regfile)
++   if (regfileFP)
+    {
+-      fd = fopen(regfile, "rb");
+-      if (fd)
++      rewind(regfileFP);
++      while (SLPDRegFileReadSrvReg(regfileFP, &msg, &buf) == 0)
+       {
+-         while (SLPDRegFileReadSrvReg(fd, &msg, &buf) == 0)
++         if (SLPDDatabaseReg(msg, buf) != SLP_ERROR_OK)
+          {
+-            if (SLPDDatabaseReg(msg, buf) != SLP_ERROR_OK)
++            /* Only if the reg *didn't* succeed do we free the memory */
++            SLPMessageFree(msg);
++            SLPBufferFree(buf);
++         }
++      }
++   }
++   dirfp = opendir(reg_file_dir);
++   while (dirfp && (direntry = readdir(dirfp)) != 0)
++   {
++      if (direntry->d_name && direntry->d_name[0] != '.' )
++      {
++         FILE * fp;
++         char filename[1024];
++         snprintf( filename, 1023, "%s/%s", reg_file_dir, direntry->d_name );
++         if (strlen(filename)>4 &&
++            strcmp(filename+strlen(filename)-4, ".reg") == 0 &&
++            (fp = fopen(filename,"rb")) != 0)
++         {
++            while (SLPDRegFileReadSrvReg(fp, &msg, &buf) == 0)
+             {
+-               /* Only if the reg *didn't* succeed do we free the memory */
+-               SLPMessageFree(msg);
+-               SLPBufferFree(buf);
++               if (SLPDDatabaseReg(msg, buf) != SLP_ERROR_OK)
++               {
++                  /* Only if the reg *didn't* succeed do we free the memory */
++                  SLPMessageFree(msg);
++                  SLPBufferFree(buf);
++               }
+             }
++            fclose(fp);
+          }
+-         fclose(fd);
+       }
+    }
++   if (dirfp)
++      closedir(dirfp);
+    return 0;
+ }
+ 
++static void SLPDDatabaseWatcher_fd(int fd, int flag, unsigned char *porthash)
++{
++    SLPDatabaseHandle dh;
++    SLPDatabaseEntry * entry;
++    SLPSrvReg * srvreg;
++    char buf[4096], *p[6];
++    int l, o, i, j, k, c, n, port;
++
++    if (fd < 0)
++       return;
++    lseek(fd, (off_t)0, SEEK_SET);
++    o = 0;
++    while ((l = read(fd, buf + o, sizeof(buf) - o)) > 0) {
++       l += o;
++       n = 0;
++       for (;;) {
++           for (i = n; i < l; i++)
++               if (buf[i] == '\n')
++                   break;
++           if (i == l) {
++               if (l > n)
++                   memmove(buf, buf + n, l - n);
++               o = l > n ? l - n : 0;
++               break;
++           }
++           k = 0;
++           for (j = n; j < i; j++) {
++               c = buf[j];
++               if (!(c >= '0' && c <= '9') && !(c >= 'A' && c <= 'F') && !(c >= 'a' && c <= 'f'))
++                   buf[j] = 0;
++               else if ((j == n || buf[j - 1] == 0) && k < 6)
++                   p[k++] = buf + j;
++           }
++           n = i + 1;
++           if (k < 6 || strlen(p[1]) < 8)
++               continue;
++           if (strlen(p[1]) == 8 && strtol(p[1], (char **)0, 16) == htonl(0x7f000001))
++               continue;
++           if ((flag & SLP_REG_WATCH_TCP) != 0 && strtol(p[5], (char **)0, 16) != 10)
++               continue;
++           port = strtol(p[2], (char **)0, 16);
++           if (!(porthash[(port / 8) & 255] & (1 << (port & 7))))
++               continue;
++           dh = SLPDatabaseOpen(&G_SlpdDatabase.database);
++           while ((entry = SLPDatabaseEnum(dh)) != 0) {
++               srvreg = &(entry->msg->body.srvreg);
++               if (!(srvreg->watchflags & flag))
++                   continue;
++               if (port == srvreg->watchport)
++                   srvreg->watchflags &= ~SLP_REG_WATCH_CHECKING;
++           }
++           SLPDatabaseClose(dh);
++       }
++    }
++}
++
++void SLPDDatabaseWatcher(void)
++{
++    static int initialized = 0;
++    static int proctcp, procudp, proctcp6, procudp6;
++    unsigned char porthash[256];
++    int flags, port;
++    SLPDatabaseHandle dh;
++    SLPDatabaseEntry*   entry;
++    SLPSrvReg*          srvreg;
++
++    if (!initialized) {
++       proctcp = open("/proc/net/tcp_listen", O_RDONLY);
++       if (proctcp == -1)
++         proctcp = open("/proc/net/tcp", O_RDONLY);
++       procudp = open("/proc/net/udp", O_RDONLY);
++       proctcp6 = open("/proc/net/tcp6_listen", O_RDONLY);
++       if (proctcp6 == -1)
++         proctcp6 = open("/proc/net/tcp6", O_RDONLY);
++       procudp6 = open("/proc/net/udp6", O_RDONLY);
++       initialized = 1;
++    }
++    flags = 0;
++    memset(porthash,0,sizeof(porthash));
++    dh = SLPDatabaseOpen(&G_SlpdDatabase.database);
++    while ((entry = SLPDatabaseEnum(dh)) != 0) {
++       srvreg = &(entry->msg->body.srvreg);
++       if (!srvreg->watchflags)
++           continue;
++       flags |= srvreg->watchflags;
++       port = srvreg->watchport;
++       porthash[(port / 8) & 255] |= 1 << (port & 7);
++       srvreg->watchflags |= SLP_REG_WATCH_CHECKING;
++    }
++    SLPDatabaseClose(dh);
++    if ((flags & SLP_REG_WATCH_TCP) != 0) {
++       SLPDDatabaseWatcher_fd(proctcp, SLP_REG_WATCH_TCP, porthash);
++       SLPDDatabaseWatcher_fd(proctcp6, SLP_REG_WATCH_TCP, porthash);
++    }
++    if ((flags & SLP_REG_WATCH_UDP) != 0) {
++       SLPDDatabaseWatcher_fd(procudp, SLP_REG_WATCH_UDP, porthash);
++       SLPDDatabaseWatcher_fd(procudp6, SLP_REG_WATCH_UDP, porthash);
++    }
++    dh = SLPDatabaseOpen(&G_SlpdDatabase.database);
++    while ((entry = SLPDatabaseEnum(dh)) != 0) {
++       srvreg = &(entry->msg->body.srvreg);
++       if (!srvreg->watchflags)
++           continue;
++       switch (srvreg->watchflags & (SLP_REG_WATCH_CHECKING | SLP_REG_WATCH_DEAD)) {
++       case SLP_REG_WATCH_CHECKING:
++           srvreg->watchflags |= SLP_REG_WATCH_DEAD;
++           SLPDKnownDADeRegisterWithAllDas(entry->msg, entry->buf);
++           SLPDLogRegistration("port dead",entry);
++           break;
++       case SLP_REG_WATCH_DEAD:
++           srvreg->watchflags ^= SLP_REG_WATCH_DEAD;
++           SLPDKnownDARegisterWithAllDas(entry->msg, entry->buf);
++           SLPDLogRegistration("port living",entry);
++           break;
++       }
++       srvreg->watchflags &= ~SLP_REG_WATCH_CHECKING;
++    }
++    SLPDatabaseClose(dh);
++}
++
++
+ #ifdef DEBUG
+ /** Cleans up all resources used by the database.
+  */
+--- ./slpd/slpd_database.h.orig	2012-11-28 17:07:04.000000000 +0000
++++ ./slpd/slpd_database.h	2014-04-10 14:54:49.732301459 +0000
+@@ -103,7 +103,9 @@ SLPMessage * SLPDDatabaseEnum(void * eh,
+ void SLPDDatabaseEnumEnd(void * eh);
+ int SLPDDatabaseIsEmpty(void);
+ int SLPDDatabaseInit(const char * regfile);
+-int SLPDDatabaseReInit(const char * regfile);
++int SLPDDatabaseReInit();
++void SLPDDatabaseWatcher(void);
++
+ 
+ #ifdef DEBUG
+ void SLPDDatabaseDeinit(void);
+--- ./slpd/slpd_knownda.c.orig	2012-12-10 23:31:53.000000000 +0000
++++ ./slpd/slpd_knownda.c	2014-04-10 14:54:49.732301459 +0000
+@@ -1836,7 +1836,7 @@ void SLPDKnownDARegisterWithAllDas(SLPMe
+ /* Returns: None                                                           */
+ /*=========================================================================*/
+ {
+-   if (msg->header.functionid == SLP_FUNCT_SRVDEREG)
++   if (msg->header.functionid == SLP_FUNCT_SRVREG)
+    {
+       /* Simply echo the message through as is */
+       SLPDKnownDAEcho(msg, buf);
+--- ./slpd/slpd_log.c.orig	2012-11-28 17:07:04.000000000 +0000
++++ ./slpd/slpd_log.c	2014-04-10 14:54:49.732301459 +0000
+@@ -298,6 +298,7 @@ static void SLPDLogSrvTypeRqstMessage(SL
+ {
+    (void)srvtyperqst;
+    SLPDLog("Message SRVTYPERQST:\n");
++   SLPDLogBuffer("   scope = ", srvtyperqst->scopelistlen, srvtyperqst->scopelist);
+ }
+ 
+ /** Logs information about a SrvTypeReply message to the log file.
+--- ./slpd/slpd_main.c.orig	2012-12-10 23:31:53.000000000 +0000
++++ ./slpd/slpd_main.c	2014-04-10 14:54:49.732301459 +0000
+@@ -66,6 +66,8 @@ int G_SIGINT;     /* Signal being used f
+ int G_SIGUSR1;    /* Signal being used to dump information about the database */
+ #endif
+ 
++char *reg_file_dir = "/etc/slp.reg.d";
++
+ /** Configures fd_set objects with sockets.
+  *
+  * @param[in] socklist - The list of sockets that is being currently
+@@ -288,11 +290,13 @@ void HandleSigHup(void)
+ 
+ #ifdef ENABLE_SLPv2_SECURITY
+    /* Re-initialize SPI stuff*/
++#if 0	/* does not work in chroot, sorry */
+    SLPDSpiInit(G_SlpdCommandLine.spifile);
+ #endif
++#endif
+ 
+    /* Re-read the static registration file (slp.reg)*/
+-   SLPDDatabaseReInit(G_SlpdCommandLine.regfile);
++   SLPDDatabaseReInit();
+ 
+    /* Reopen listening sockets */
+    SLPDIncomingReinit();
+@@ -318,6 +322,7 @@ void HandleSigAlrm(void)
+    SLPDKnownDAStaleDACheck(SLPD_AGE_INTERVAL);
+    SLPDKnownDAActiveDiscovery(SLPD_AGE_INTERVAL);
+    SLPDDatabaseAge(SLPD_AGE_INTERVAL, G_SlpdProperty.isDA);
++   SLPDDatabaseWatcher();
+ }
+ 
+ #ifdef DEBUG
+@@ -487,11 +492,18 @@ static int DropPrivileges()
+    struct passwd * pwent = getpwnam("daemon");
+    if (pwent)
+    {
++      if (chroot(reg_file_dir))
++         return 1;
++      reg_file_dir = ".";
++
+       if (setgroups(1, &pwent->pw_gid) < 0 || setgid(pwent->pw_gid) < 0
+             || setuid(pwent->pw_uid) < 0)
+       {
+          /* TODO: should we log here and return fail */
++         return 1;
+       }
++   } else {
++       return 1;
+    }
+ #endif
+    return 0;
+@@ -639,6 +651,7 @@ int main(int argc, char * argv[])
+ #endif
+ 
+    /* initialize for the first time */
++   SLPPropertyKeepFps();  /* do not close file descriptors */
+    SLPDPropertyReinit();  /*So we get any property-related log messages*/
+    if (
+ #ifdef ENABLE_SLPv2_SECURITY
+@@ -653,6 +666,9 @@ int main(int argc, char * argv[])
+    if (G_SlpdProperty.port != SLP_RESERVED_PORT)
+       SLPDLog("Using port %d instead of default %d\n", G_SlpdProperty.port, SLP_RESERVED_PORT);
+ 
++   /* init watcher */
++   SLPDDatabaseWatcher();
++
+    /* drop privileges to reduce security risk */
+    if (DropPrivileges())
+       SLPDFatal("Could not drop privileges\n");
+--- ./slpd/slpd_property.c.orig	2012-11-28 17:07:04.000000000 +0000
++++ ./slpd/slpd_property.c	2014-04-10 14:55:49.894966122 +0000
+@@ -50,6 +50,24 @@
+  */
+ SLPDProperty G_SlpdProperty;
+ 
++static char *SLPDGetCanonHostname()
++{
++   char host[MAX_HOST_NAME];
++ 
++   if(gethostname(host, MAX_HOST_NAME) == 0)
++   {
++      struct addrinfo hints, * ifaddr;
++
++      memset(&hints, 0, sizeof(hints));
++      hints.ai_socktype = SOCK_STREAM;
++      hints.ai_family = AF_UNSPEC;
++      hints.ai_flags = AI_CANONNAME;
++      if (getaddrinfo(host, 0, &hints, &ifaddr) == 0 && ifaddr->ai_canonname && strchr(ifaddr->ai_canonname, '.') != 0)
++         return xstrdup(ifaddr->ai_canonname);
++   }
++   return xstrdup("localhost");
++}
++
+ /** Reinitialize the slpd property management subsystem.
+  *
+  * Clears and rereads configuration parameters from files into the system.
+@@ -226,6 +244,9 @@ void SLPDPropertyReinit(void)
+    G_SlpdProperty.nextActiveDiscovery = 0;   /* ensures xmit on first call to SLPDKnownDAActiveDiscovery() */
+    G_SlpdProperty.nextPassiveDAAdvert = 0;   /* ensures xmit on first call to SLPDKnownDAPassiveDiscovery()*/
+ 
++   /* set up hostname */
++   G_SlpdProperty.myHostname = SLPDGetCanonHostname();
++   G_SlpdProperty.myHostnameLen = strlen(G_SlpdProperty.myHostname);
+ }
+ 
+ /** Initialize the slpd property management subsystem.
+@@ -266,6 +287,7 @@ void SLPDPropertyDeinit(void)
+    xfree(G_SlpdProperty.ifaceInfo.iface_addr);
+    xfree(G_SlpdProperty.ifaceInfo.bcast_addr);
+ 
++   xfree(G_SlpdProperty.myHostname);
+    SLPPropertyExit();
+ }
+ 
+--- ./slpd/slpd_property.h.orig	2012-11-28 17:07:04.000000000 +0000
++++ ./slpd/slpd_property.h	2014-04-10 14:54:49.732301459 +0000
+@@ -73,6 +73,8 @@ typedef struct _SLPDProperty
+    uint16_t port;
+    size_t localeLen;
+    char * locale;
++   size_t myHostnameLen;
++   char * myHostname;
+ 
+    int indexingPropertiesSet;           /** Indexes are only maintained from startup,
+                                          *  and may not be switched on and off without
+--- ./slpd/slpd_regfile.c.orig	2012-12-10 23:31:53.000000000 +0000
++++ ./slpd/slpd_regfile.c	2014-04-10 14:54:49.732301459 +0000
+@@ -130,6 +130,7 @@ int SLPDRegFileReadSrvReg(FILE * fd, SLP
+ {
+    char * slider1;
+    char * slider2;
++   char * p;
+    char line[4096];
+ 
+    struct sockaddr_storage peer;
+@@ -154,6 +155,8 @@ int SLPDRegFileReadSrvReg(FILE * fd, SLP
+    unsigned char * attrauth = 0;
+    int attrauthlen = 0;
+ #endif
++   int watchport = 0;
++   int watchflags = 0;
+ 
+    /* give the out params an initial NULL value */
+    *buf = 0;
+@@ -180,8 +183,18 @@ int SLPDRegFileReadSrvReg(FILE * fd, SLP
+          result = SLP_ERROR_INTERNAL_ERROR;
+          goto CLEANUP;
+       }
++      /* replace "$HOSTNAME" string in url */
++      while ((p = strchr(url, '$')) && !strncmp(p, "$HOSTNAME", 9))
++      {
++         char *_url = xmalloc(strlen(url) - 9 + G_SlpdProperty.myHostnameLen + 1);
++         strncpy(_url, url, p - url);
++         strncpy(_url + (p - url), G_SlpdProperty.myHostname, G_SlpdProperty.myHostnameLen);
++         strcpy(_url + (p - url) + G_SlpdProperty.myHostnameLen, url + (p - url) + 9);
++         xfree(url);
++         url = _url;
++      }
+       urllen = strlen(url);
+-
++ 
+       /* derive srvtype from srvurl */
+       srvtype = strstr(slider1, "://");
+       if (srvtype == 0)
+@@ -313,6 +326,24 @@ int SLPDRegFileReadSrvReg(FILE * fd, SLP
+             }
+          }
+       }
++      else if(strncasecmp(slider1, "tcp-port", 8) == 0 || strncasecmp(slider1, "watch-port-tcp", 14) == 0)
++      {
++         slider2 = strchr(slider1,'=');
++         if (slider2)
++         {
++            watchport = atoi(slider2 + 1);
++            watchflags |= SLP_REG_WATCH_TCP;
++         }
++      }
++      else if(strncasecmp(slider1, "watch-port-udp", 14) == 0)
++      {
++         slider2 = strchr(slider1,'=');
++         if (slider2)
++         {
++            watchport = atoi(slider2 + 1);
++            watchflags |= SLP_REG_WATCH_UDP;
++         }
++      }
+       else
+       {
+          /* line contains an attribute (slow but it works)*/
+@@ -517,6 +548,8 @@ int SLPDRegFileReadSrvReg(FILE * fd, SLP
+    ((struct sockaddr_in *)&peer)->sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+    result = SLPMessageParseBuffer(&peer, &peer, *buf, *msg);
+    (*msg)->body.srvreg.source = SLP_REG_SOURCE_STATIC;
++   (*msg)->body.srvreg.watchflags = watchflags ? (watchflags | SLP_REG_WATCH_DEAD) : 0;
++   (*msg)->body.srvreg.watchport = watchport;
+ 
+ CLEANUP:
+ 
+--- ./slpd/slpd_spi.c.orig	2012-11-28 17:07:04.000000000 +0000
++++ ./slpd/slpd_spi.c	2014-04-10 14:54:49.733301445 +0000
+@@ -66,6 +66,8 @@ int SLPDSpiInit(const char * spifile)
+       G_SlpdSpiHandle = 0;
+    }
+    G_SlpdSpiHandle = SLPSpiOpen(spifile,1);
++   if (G_SlpdSpiHandle)
++      SLPSpiFill(G_SlpdSpiHandle);
+    return G_SlpdSpiHandle == 0;
+ }
+ 
+--- ./slptool/slptool.c.orig	2013-06-08 02:50:38.000000000 +0000
++++ ./slptool/slptool.c	2014-04-10 14:54:49.733301445 +0000
+@@ -187,7 +187,17 @@ static SLPBoolean mySrvUrlCallback(SLPHa
+    (void)cookie;
+ 
+    if (errcode == SLP_OK)
++   {
++      SLPToolCommandLine* cmdline = cookie;
++      if (cmdline->printpeerinfo)
++      {
++         char *peer = SLPGetPeer(hslp, srvurl);
++         printf("%s\t", peer ? peer : "?");
++         if (peer)
++	    SLPFree(peer);
++      }
+       printf("%s,%i\n", srvurl, lifetime);
++   }
+ 
+    return SLP_TRUE;
+ }
+@@ -218,7 +228,7 @@ void FindSrvs(SLPToolCommandLine * cmdli
+       }
+ #endif
+       result = SLPFindSrvs(hslp, cmdline->cmdparam1, cmdline->scopes,
+-                     cmdline->cmdparam2, mySrvUrlCallback, 0);
++                     cmdline->cmdparam2, mySrvUrlCallback, cmdline);
+       if (result != SLP_OK)
+          printf("errorcode: %i\n", result);
+       SLPClose(hslp);
+@@ -413,6 +423,11 @@ int ParseCommandLine(int argc, char * ar
+             return 1;
+       }
+ #endif
++      else if (strcasecmp(argv[i], "-p") == 0
++            || strcasecmp(argv[i], "--peerinfo") == 0)
++      {
++         cmdline->printpeerinfo = SLP_TRUE;
++      }
+       else if (strcasecmp(argv[i], "findsrvs") == 0)
+       {
+          cmdline->cmd = FINDSRVS;
+@@ -519,6 +534,7 @@ void DisplayUsage()
+ #ifndef UNICAST_NOT_SUPPORTED
+    printf("      -u (or --unicastifc) followed by a single interface.\n");
+ #endif
++   printf("      -p (or --peerinfo) also display the address of the answering server.\n");
+    printf("\n");
+    printf("   command-and-arguments may be:\n");
+    printf("      findsrvs service-type [filter]\n");
+--- ./slptool/slptool.h.orig	2012-11-28 17:07:04.000000000 +0000
++++ ./slptool/slptool.h	2014-04-10 14:54:49.733301445 +0000
+@@ -107,6 +107,7 @@ typedef struct _SLPToolCommandLine
+    const char * cmdparam1;
+    const char * cmdparam2;
+    const char * cmdparam3;
++   SLPBoolean printpeerinfo;
+ } SLPToolCommandLine;
+ 
+ void FindSrvs(SLPToolCommandLine * cmdline);

@@ -1,0 +1,13 @@
+--- slpd/slpd_predicate.c.orig	2019-06-06 14:12:09.025492155 +0000
++++ slpd/slpd_predicate.c	2019-06-06 14:12:56.605386533 +0000
+@@ -2111,6 +2111,10 @@ int SLPDPredicateTestTree(SLPDPredicateT
+    if (!parseTree)
+       return 1;
+ 
++   /* a NULL set of attribures is always false */
++   if (!slp_attr)
++      return 0;
++
+    err = treeFilter(parseTree, slp_attr);
+ 
+    return (err == FR_EVAL_TRUE);

@@ -1,0 +1,5 @@
+<package name="itextpdf" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="itextpdf"/>
+</package>

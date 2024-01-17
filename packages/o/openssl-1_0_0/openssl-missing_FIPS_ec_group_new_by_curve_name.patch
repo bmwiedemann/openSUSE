@@ -1,0 +1,15 @@
+Index: openssl-1.0.2a/crypto/ec/ec_curve.c
+===================================================================
+--- openssl-1.0.2a.orig/crypto/ec/ec_curve.c	2015-03-19 14:30:36.000000000 +0100
++++ openssl-1.0.2a/crypto/ec/ec_curve.c	2015-05-24 15:52:09.058151058 +0200
+@@ -3162,10 +3162,6 @@ EC_GROUP *EC_GROUP_new_by_curve_name(int
+     size_t i;
+     EC_GROUP *ret = NULL;
+ 
+-#ifdef OPENSSL_FIPS
+-    if (FIPS_mode())
+-        return FIPS_ec_group_new_by_curve_name(nid);
+-#endif
+     if (nid <= 0)
+         return NULL;
+ 

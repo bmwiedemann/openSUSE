@@ -1,0 +1,12 @@
+Index: openssl-1.0.2u/config
+===================================================================
+--- openssl-1.0.2u.orig/config
++++ openssl-1.0.2u/config
+@@ -708,6 +708,7 @@ case "$GUESSOS" in
+ 	    options="$options -march=k6"
+           fi
+         fi ;;
++  riscv64-*-linux?) OUT="linux-generic64" ;;
+   *-*-linux1) OUT="linux-aout" ;;
+   *-*-linux2) OUT="linux-generic32" ;;
+   sun4[uv]*-*-solaris2)

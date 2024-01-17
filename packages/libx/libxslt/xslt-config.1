@@ -1,0 +1,47 @@
+.mso www.tmac
+.TH XSLT-CONFIG 1 2011-06-24 GNOME "The XSLT C library for GNOME"
+
+.SH NAME
+xslt-config \- provides compilation or linking flags for programs using libxslt
+
+.SH SYNOPSIS
+.B xslt-config --cflags
+.br
+.B xslt-config --libs
+
+.SH DESCRIPTION
+.B xslt-config
+is a small shell script which is installed as part of 
+.B libxslt 
+usual install process which provides compilation or linking flags for programs using it.
+Use
+
+.IP
+.B xslt-config --cflags
+
+.PP
+to get the compilation flags and
+
+.IP
+.B xslt-config --libs
+
+.PP
+to get the linker flags. Usually this is done directly from the Makefile as:
+
+.IP
+.B CFLAGS=`xslt-config --cflags`
+.br
+.B LIBS=`xslt-config --libs`
+
+
+.SH NOTES
+If you use the 
+.SM EXSLT 
+extensions from the program then you should prepend 
+.B -lexslt 
+to the 
+.B LIBS 
+options
+
+.SH SEE ALSO
+.URL http://xmlsoft.org/XSLT/ "The XSLT C library for GNOME"

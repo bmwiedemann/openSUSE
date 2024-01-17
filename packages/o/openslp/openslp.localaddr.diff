@@ -1,0 +1,11 @@
+--- ./slpd/slpd_incoming.c.orig	2018-03-01 15:55:45.008171255 +0000
++++ ./slpd/slpd_incoming.c	2018-03-01 15:56:23.183054003 +0000
+@@ -354,7 +354,7 @@ static void IncomingSocketListen(SLPList
+             connsock->fd = fd;
+             memcpy(&connsock->peeraddr, &peeraddr,
+                   sizeof(struct sockaddr_storage));
+-            memcpy(&connsock->localaddr, &peeraddr,
++            memcpy(&connsock->localaddr, &sock->localaddr,
+                   sizeof(struct sockaddr_storage));
+             connsock->state = STREAM_READ_FIRST;
+ #ifndef _WIN32

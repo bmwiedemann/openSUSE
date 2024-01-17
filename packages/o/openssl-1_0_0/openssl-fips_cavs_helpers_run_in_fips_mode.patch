@@ -1,0 +1,17 @@
+Index: openssl-1.0.2j/crypto/fips/fips_aesavs.c
+===================================================================
+--- openssl-1.0.2j.orig/crypto/fips/fips_aesavs.c	2017-04-07 12:01:35.335422766 +0200
++++ openssl-1.0.2j/crypto/fips/fips_aesavs.c	2017-04-07 12:11:35.876483996 +0200
+@@ -870,7 +870,11 @@ int main(int argc, char **argv)
+     FILE *fp = NULL;
+     char fn[250] = "", rfn[256] = "";
+     int d_opt = 1;
+-    fips_algtest_init();
++    fips_algtest_init_nofips();
++    if(!FIPS_mode_set(1)) {
++        fprintf(stderr, "Can't set FIPS mode\n");
++        exit(1);
++    }
+ 
+     if (argc > 1)
+ 	{

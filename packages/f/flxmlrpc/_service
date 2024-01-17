@@ -1,0 +1,14 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://git.code.sf.net/p/fldigi/flxmlrpc</param>
+    <param name="scm">git</param>
+    <param name="revision">fd52fdeb8a091a39dc472bb5ef6c27e32498d749</param>
+    <param name="version">1.0.1</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

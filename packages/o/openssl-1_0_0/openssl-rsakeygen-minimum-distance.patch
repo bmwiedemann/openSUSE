@@ -1,0 +1,55 @@
+Index: openssl-1.0.2o/crypto/rsa/rsa_gen.c
+===================================================================
+--- openssl-1.0.2o.orig/crypto/rsa/rsa_gen.c	2018-08-01 15:31:30.231469757 +0200
++++ openssl-1.0.2o/crypto/rsa/rsa_gen.c	2018-08-01 15:31:30.395470952 +0200
+@@ -467,6 +467,19 @@ static int rsa_builtin_keygen(RSA *rsa,
+     bitsp = (bits + 1) / 2;
+     bitsq = bits - bitsp;
+ 
++    /* prepare a maximum for p and q */
++    /* 0xB504F334 is (sqrt(2)/2)*2^32 */
++    if (!BN_set_word(r0, 0xB504F334))
++        goto err;
++    if (!BN_lshift(r0, r0, bitsp - 32))
++        goto err;
++
++    /* prepare minimum p and q difference */
++    if (!BN_one(r3))
++        goto err;
++    if (!BN_lshift(r3, r3, bitsp - 100))
++        goto err;
++
+     /* We need the RSA components non-NULL */
+     if (!rsa->n && ((rsa->n = BN_new()) == NULL))
+         goto err;
+@@ -493,6 +506,8 @@ static int rsa_builtin_keygen(RSA *rsa,
+     for (;;) {
+         if (!BN_generate_prime_ex(rsa->p, bitsp, 0, NULL, NULL, cb))
+             goto err;
++        if (BN_cmp(rsa->p, r0) < 0)
++            continue;
+         if (!BN_sub(r2, rsa->p, BN_value_one()))
+             goto err;
+         ERR_set_mark();
+@@ -514,10 +529,17 @@ static int rsa_builtin_keygen(RSA *rsa,
+     if (!BN_GENCB_call(cb, 3, 0))
+         goto err;
+     for (;;) {
+-        do {
+-            if (!BN_generate_prime_ex(rsa->q, bitsq, 0, NULL, NULL, cb))
+-                goto err;
+-        } while (BN_cmp(rsa->p, rsa->q) == 0);
++        /* This function will take care of setting the topmost bit via BN_rand(..,1,1), so
++         * the maximum distance between p and q is less than 2^bitsq */
++        if(!BN_generate_prime_ex(rsa->q, bitsq, 0, NULL, NULL, cb))
++            goto err;
++        if (BN_cmp(rsa->q, r0) < 0)
++            continue;
++        /* check for minimum distance between p and q, 2^(bitsp-100) */
++        if (!BN_sub(r2, rsa->q, rsa->p))
++            goto err;
++        if (BN_ucmp(r2, r3) <= 0)
++            continue;
+         if (!BN_sub(r2, rsa->q, BN_value_one()))
+             goto err;
+         ERR_set_mark();

@@ -1,0 +1,6 @@
+name = NSS-FIPS
+nssLibraryDirectory = @NSS_LIBDIR@
+nssSecmodDirectory = @NSS_SECMOD@
+nssDbMode = readOnly
+nssModule = fips
+

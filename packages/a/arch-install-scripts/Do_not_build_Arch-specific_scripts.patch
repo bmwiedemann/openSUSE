@@ -1,0 +1,14 @@
+Remove an Arch-specific script that is useless on other distros and requires a working pacman install.
+
+--- a/Makefile
++++ b/Makefile
+@@ -7,9 +7,7 @@
+ 	genfstab \
+-	pacstrap
+ 
+ MANS = \
+ 	doc/arch-chroot.8 \
+ 	doc/genfstab.8 \
+-	doc/pacstrap.8
+ 
+ BASH = bash

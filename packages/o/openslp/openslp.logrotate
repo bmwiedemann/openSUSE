@@ -1,0 +1,14 @@
+/var/log/slpd.log {
+    compress
+    dateext
+    maxage 14
+    rotate 99
+    size +1024k
+    notifempty
+    missingok
+    create 600 root root
+    sharedscripts
+    postrotate
+        /etc/init.d/slpd restart
+    endscript
+}

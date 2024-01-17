@@ -1,0 +1,8 @@
+<package name="lzham_codec" project="openSUSE:Factory">
+  <title>Lossless data compression codec</title>
+  <description>Lossless data compression codec with LZMA-like ratios but optimized for decompression speed, C/C++.
+
+</description>
+  <devel project="Archiving" package="lzham_codec"/>
+  <url>https://github.com/richgel999/lzham_codec</url>
+</package>

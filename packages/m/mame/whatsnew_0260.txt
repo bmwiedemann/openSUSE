@@ -1,0 +1,970 @@
+0.260 2023-10-25
+----------------
+
+
+MAME Testers bugs fixed
+-----------------------
+- 08597: [Gameplay] a5200: Not possible to start a game in Pitfall 2. (AJR)
+- 08771: [DIP/Input] (misc/dgpix.cpp) btplay2k: Player controls are incorrect and incomplete. (Windy Fairy)
+- 08772: [Gameplay] (misc/gei.cpp) gtsers9: Category ROM in second position is not loaded correctly. (Nightvoice)
+
+
+New working systems
+-------------------
+Jack Use (Jackpot settings for Interflip slots machines) [Roberto Fresca, Grull Osgo]
+Solitaire (version 2.5) [Recreativas.org, Brito_cat]
+
+
+New working clones
+------------------
+Costa Brava (1 jackpot point, 77%) [Roberto Fresca, Grull Osgo]
+Costa Brava (2 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+Costa Brava (4 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+Costa Brava (8 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+Deluxe Trivia ? Whiz (6221-75, U5-0 Edition 5 Vertical) [Brian Troha, The Dumping Union]
+Demon's World / Horror Story (set 6) [Tonitox]
+Geo Storm (Japan, 026 custom sound CPU) [playero]
+Gorf (program 1, with French Language ROM) [René Balke]
+Hegener + Glaser Mephisto Almeria 16 Bit (v0.121) [Berger]
+New HUNTer [Taksangs]
+New HUNTer (bootleg, set 1) [Taksangs]
+Pack'n Bang Bang [twistedsymphony, hammy, ekorz, rtw]
+The Pit Boss (2214-07, U5-0) [Brian Troha, The Dumping Union]
+Sevilla (1 jackpot point, 77%) [Roberto Fresca, Grull Osgo]
+Sevilla (2 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+Sevilla (4 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+Sevilla (8 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+Tic Tac Trivia (6221-23, U5-0C, 07/07/86) [Brian Troha, The Dumping Union]
+Trivia ? Whiz (6221-05, U5-0C, Edition 3) [Brian Troha, The Dumping Union]
+Trivia ? Whiz (6221-10, U5-0A, Edition 4) [Brian Troha, The Dumping Union]
+Toledo (1 jackpot point, 79%) [Roberto Fresca, Grull Osgo]
+Toledo (2 jackpot points, 83%) [Roberto Fresca, Grull Osgo]
+Sum-eoitneun Deongdalireul Chat-ara! [Taksangs]
+Tandy Radio Shack Tandy 1000 TL [David Viens]
+
+
+Systems promoted to working
+---------------------------
+Baby Fruits (100 pts version) [Roberto Fresca, Grull Osgo]
+Casio CZ-101 [Devin Acker]
+Casio Loopy [Phil Bennett, Ryan Holtz]
+Costa Brava (2 jackpot points, 81%) [Roberto Fresca, Grull Osgo]
+Sevilla (2 jackpot points, 81%) [Roberto Fresca, Grull Osgo]
+Toledo (2 jackpot points, 87%) [Roberto Fresca, Grull Osgo]
+
+
+Clones promoted to working
+--------------------------
+Mahjong Vegas (Japan) [Sergio Galiano, hammy]
+
+
+New systems marked not working
+------------------------------
+Bingo Parade (main) (MDA-C0008E) [rtw, MetalliC]
+Gigabyte GA-6LA7 [The Retro Web]
+Go & Stop [Phil Bennett]
+Hanguk Pro Yagu 98 [WangDrum]
+Spin Fever [coolmod, The Dumping Union]
+unknown Yuvo Joy Stand game [hammy]
+
+
+New clones marked not working
+-----------------------------
+Bingo Galaxy (main) (MDA-C0039A) [rtw, MetalliC]
+Match'em Up (6221-51, U5-1) [Brian Troha, The Dumping Union]
+Multi Game (Italian, Versione 3.9.8 - 1.5.7, 01-JUL-98) [The Dumping Union]
+New HUNTer (bootleg, set 2) [Taksangs]
+Super Magic Card [The Dumping Union]
+Super Nove (Playmark, Euro currency) [The Dumping Union]
+
+
+New working software list items
+-------------------------------
+casloopy: Chakra-kun no Omajinai Paradise [Rachel Simone Weil]
+fmtowns_cd:
+  CONFIG-ROM [beanstalk]
+  Auto Demo '93 Fuyu, Heike Monogatari (Gekan), Hyper Planet Shiki Vol. 3, Many Colors II,
+  NHK Special - Ginga Uchuu Odyssey Vol. 2 - Choushinsei Bakuhatsu (FM Towns Marty version), Naomi Komaki for Janis,
+  Wing Commander (alt), Woman's Memory, Z's Staff Pro Towns [redump.org]
+  Drive Simulator - Home Navi V1.0 L01 [redump.org, cyo.the.vile]
+msx2_cart:
+  Gogoboom [ESP Soft]
+  Aleste (Woomb), Alien 8 Remake, Los Amores de Brunilda (v1.0), Los Amores de Brunilda (v1.01), Arkanoid 2 (Korea),
+  AshGuine - Fukushuu no Honoo (Japan, alt 2), Bomb Jack, Bomb Jack (alt), DIM X (demo), Daisenryaku MSX2 (Japan, alt),
+  Gekitotsu Pennant Race 2 (Japan, sample), Highway Fighter (demo), Hydlide 3 - The Space Memories (Woomb), Memory (v1.0),
+  Michelangelo II (Japan), No Ren-Sha (v0.13), O'Conner Among the Falling Walls, Operatión Brazil World Cup, Pengo (freeware),
+  Shift, Shift (alt), Street Fighter II, Super Lode Runner (Japan, alt), The Sword of Ianna (v1.0), The Sword of Ianna (v1.1),
+  The Sword of Ianna (v1.2), The Sword of Ianna (v1.2, alt), TestRAM, Who Dares Wins (remake), Word Processor (Arab),
+  Zanac EX (Japan, Woomb), Zevimodoki (v1.00), Zukkoke Yajikita Onmitsu Douchuu (Japan, alt 2) [file-hunter]
+  Manbow 2, Manbow 2 (alt) [file-hunter, AJR]
+  Police Force 2 (English), Police Force 2 (Spanish) [MRC MEGA-Challenge]
+  Bubble Dream [MRC Tenliner Challenge]
+  Booming Boy (demo) [MSX Area]
+  Barbarian the Duel, Lilly's Saga - The Stones of Evergreen (v1.0), Lilly's Saga - The Stones of Evergreen (v1.1),
+  Lilly's Saga - The Stones of Evergreen (v1.2), Memory (v1.1), Randoom (v1.0), Randoom (v1.1), Safari Kids (v1.0),
+  Safari Kids (v1.1), Shoulder Blade OVERDRIVE, Zevimodoki (v1.10) [MSXdev]
+  The Adventures of Moron van der Slut - Escape from Castro Castro, Inferno, Pointless Fighting [#msxdev Compo]
+  Gold Fan, Penpen Bubble [N.I]
+  CR3 [NabetaJisho]
+  Vectroids [norakomi]
+  La Sorpresa (Spanish), A Surpresa (Portuguese) [Oniric Factor]
+  Pac-Man Collection DX (demo) [Opcode Games]
+  The Bet [Orazio Cacciola]
+  Wild Puzzle, Wild Puzzle (alt), Wild Puzzle (alt 2) [Pac]
+  Equivocal (v1.0), Equivocal (v1.5), Jailbreak (alt), Jailbreak (alt 2), Jailbreak (v1.02) [Passion MSX2 Contest]
+  Pengo (demo) [Paxanga Soft]
+  Knight Lore Remake [Retroworks]
+
+
+New software list items marked not working
+------------------------------------------
+fmtowns_cd: Fujitsu Habitat V2.1 L13A, Hyper Dream [redump.org]
+gamegear: Pro Action Replay (v1.01) [Apocalypse]
+msx2_cart:
+  Ehagaki-yō Wāpuro (Japan), Life on Earth (demo), Super Mario World (advanced prototype), Super Mario World (demo 1),
+  Super Mario World (demo 2), Super Mario World (early prototype), Super Mario World (v1.0), Super Mario World (v1.1),
+  Super Rambo Special (Korea), The Goonies r Good Enough (Kralizec goodbye present) [file-hunter]
+  Mr. Balloon [#msxdev Compo]
+
+
+Translations added or modified
+------------------------------
+German [Sönke Joppien]
+Turkish [Kadir Ekşi]
+
+
+Merged pull requests
+--------------------
+- 11451: render/drawbgfx.cpp: Added initial support for Wayland on Linux. [Belegdol]
+- 11539: 3rdparty/bgfx: Cherry-picked upstream commits needed to support Wayland on Linux. [Belegdol]
+- 11551: seta/seta.cpp: Updated descriptions, machine configuration settings and input labels. [cam900]
+- 11552: seta/simple_st0016.cpp: Added subtitles to descriptions for Koi Koi Shimasho and Renju Kizoku. [cam900]
+- 11553: toaplan/toaplan2.cpp: Corrected DIP switch and jumper settings for bgaregga bootlegs. [cam900]
+- 11570: formats: Reduced compile-time dependencies in filesystem headers. [AJR]
+- 11574: docs: Removed a stray backtick character in examples for debugger gtime command. [Tom Cariello]
+- 11575: docs: Fixed many editing errors and spelling errors and an outdated link to the contributing guidelines. [Tom Cariello]
+- 11578: docs: Fixed a number of grammatical errors and editing errors. [Tom Cariello]
+- 11580: handheld/hh_tms1k.cpp: Added clickable keypad to internal artwork for bcheetah. [Golden Child]
+- 11582: sound/ks0164.cpp, cpu/ks0164, misc/dgpix.cpp: Improved KS0164 emulation, and switched to Flash memory device. [Windy Fairy]
+- 11583: amigaocs_flop.xml, megacdj.xml, megadriv.xml, vic10.xml: Replaced unnecessary abbreviations in descriptions. [ArcadeShadow]
+- 11584: nmk/ddealer.cpp, nmk/nmk16.cpp: Emulate microcontrollers, replacing simulation code. [Sergio Galiano, David Haywood, hammy]
+- 11586: docs: Fixed a title underline too short warning. [Firehawke]
+- 11590: seibu/wiz.cpp: Added preliminary protection simulation for kungfuta (avoids crash after bonus rounds). [David Haywood]
+- 11593: cpu/tms57002: Pasted generated content into header to work around GENie’s lack of dependency analysis. [David Haywood]
+- 11594: video/mc6847.cpp: Improved timings and cleaned up code (improves synchronization between CPU, CRTC and screen). [dave-br]
+- 11595: apple/apple2video.cpp: Fixed Apple II double high resolution graphics rendering in color/composite mode. [uraniumgun]
+- 11596: 3rdparty/bgfx: Fixed duplicate import of GL functions on Linux when using OpenGL ES 2.0. [Romain Tisserand]
+- 11597: Updated Turkish (Türkçe) UI translation. [Kadir Ekşi]
+- 11599: saturn.xml: Replaced unnecessary abbreviations in descriptions. [ArcadeShadow]
+- 11600: seta/seta.cpp: Added a Korean version of Triple Fun. [Taksangs, ClawGrip]
+- 11602: Updated Turkish (Türkçe) UI translation. [Kadir Ekşi]
+- 11603: subsino/subsino.cpp: Added a Korean version of Treasure Island called New HUNTer. [Taksangs, ClawGrip]
+- 11604: 3rdparty/portaudio: Updated to latest upstream version (resolves issues building with Visual Studio). [invertego]
+- 11605: subsino/subsino.cpp: Added a bootleg of New HUNTer. [Taksangs, ClawGrip]
+- 11606: msx2_cart.xml: Added 52 items (41 working). [Wilbert Pol]
+- 11609: heathkit/tlb.cpp: Re-added TODO comments about 49/50 row mode. [Mark Garlanger]
+- 11610: cpu/sh: Improved SH7021 system-on-a-chip emulation. [Ryan Holtz, Phil Bennett]
+- 11611: fmtowns_cd.xml: Added thirteen items (eleven working), and replaced four items with better dumps. [r09]
+- 11613: casio/cz101.cpp: Added µPD933 phase distortion synthesis and RAM cartridge, and promoted system to working. [Devin Acker]
+- 11614: Corrected grammar of several German UI message translations. [Sönke Joppien]
+- 11621: casio/casloopy.cpp: Emulated most features of the system, besides sound output and the printer. [Phil Bennett, Ryan Holtz]
+- 11623: misc/vamphalf.cpp: Added an arcade Solitaire card game. [Recreativas.org, Brito_cat, clawgrip]
+- 11624: subsino/subsino.cpp: Added another bootleg of New HUNTer (not working). [Taksangs, ClawGrip]
+- 11625: imagedev/midiin.cpp: Added support for MIDI system exclusive message (SysEx) files. [Devin Acker]
+- 11626: casio/ra3.cpp: Fill newly created RAM cartridge files with zeroes (avoids loud noise if empty patch is used). [Devin Acker]
+- 11641: subsino/subsino.cpp: Noted that PROMs were not dumped for the second New HUNTer bootleg. [ClawGrip]
+- 11642: msx2_cart.xml: Added 31 items (29 working). [Wilbert Pol]
+
+
+Source changes
+--------------
+-Inerflip electromechanical slots major rewrite. [Roberto Fresca, Grull Osgo] Hooked all devices, inputs, outputs, reels mechs,
+ internal layout with all parameters and working reels. Also added docs and technical notes. The machine is currently passing all
+ the tests. [Roberto Fresca]
+
+New systems marked not working
+------------------------------
+Jack Use (Jackpot settings for Interflip slots machines) [Roberto Fresca, Grull Osgo]
+
+-Internal layout for Interflip electromechanical slots. [Roberto Fresca]
+
+-multibyte.h: Fix shift count bug in 48-bit and 64-bit big-endian functions [AJR]
+
+-chdman.cpp, imgtool/modules: Use multibyte.h functions [AJR]
+
+-Minor #include cleanup [AJR]
+
+-Remove flopimg.h and fsmgr.h from floppy device header [AJR]
+
+-nubus/nubus_asntmc3b.cpp: Updates [R. Belmont]
+ * Updated and modernized, this was one of the first emulated NuBus cards and it showed.
+ * Fixed missing save state for the on-card RAM.
+ * Added Farallon EtherMac 30i-TH, an SE/30 PDS clone of these cards.
+ * Added notes about how these cards are a Mac-ified version of the NE2000.
+   - nubus/nubus.cpp: Allow PDS cards to choose their phantom NuBus slot. Cards have been observed impersonating slots 9, 0xC, and
+      0xE. [R. Belmont]
+   - apple/maciici.cpp, apple/rbv.cpp: Updates [R. Belmont]
+ * Made maciisi expansion more correct: it has a single slot that can be adapted to take either a NuBus or an SE/30 compatible PDS
+    card. The slot name is "siexp" and it now allows the use of any NuBus or SE/30 PDS card (tested with several video and Ethernet
+    cards).
+ * Modernized slot interrupt routing.
+
+-solomon.cpp: VBLANK interrupt modernization; PSG type correction [AJR]
+
+-funkybee.cpp: Remove PCB diagram (which belongs to the other skylncr); add note [AJR]
+
+-adsp2100: Fix a couple of disassembly regressions [AJR]
+
+-adsp2100: Fix one operation [AJR]
+
+-makefile: update some outdated stuff [hap]
+
+-bus/nubus/nubus.cpp: Support address mask for LC PDS. [R. Belmont]
+ * bus/nubus/nubus_asntmc3b.cpp: Add Asante MacCON i LC Ethernet card, another clone of this design. [R. Belmont]
+ * apple/maclc.cpp, maclc3.cpp, macquadra605.cpp: Add LC PDS slots to machines that have them. [R. Belmont]
+ * apple/sonora.cpp, apple/v8.cpp: Modernize slot/VIA2 IRQ inputs. [R. Belmont]
+
+-korg/korgm1.cpp: add memory card note [Angelo Salese]
+
+New systems marked not working
+------------------------------
+unknown Yuvo Joy Stand game [hammy]
+
+-korg/korgm1.cpp: identify some keys [angelosa]
+
+-hash/pc98.xml: QA checkpoint [angelosa]
+
+-korg/korgm1.cpp: workaround battery low detection [angelosa]
+
+-upd7220: wrap the line if pitch is smaller than aw [cracyc]
+
+-korg/korgm1.cpp: add more notes [angelosa]
+
+-korgm1.cpp: Fix build [AJR]
+
+-pc9801: fix a20 [cracyc]
+
+-Filesystem code refactoring (#11570) [ajrhacker]
+ * Separate fs::block_t and fs::filesystem_t to a new source file and header
+ * Remove inclusion of flopimg.h from fsmgr.h
+
+-Removed extra tick after gtime example in documentation (#11574) [Tom Cariello]
+
+New systems marked not working
+------------------------------
+Spin Fever [CoolMod, The Dumping Union]
+
+New working clones
+------------------
+Demon's World / Horror Story (set 6)  [Tonitox]
+
+-docs: Fixed many editing errors and spelling errors. (#11575) [Tom Cariello]
+ * Also fixed outdated link to contributing guidelines.
+
+-3rdparty/bgfx: Cherry-picked upstream commits needed to support Wayland on Linux. (#11539) [Julian Sikorski]
+
+-render/drawbgfx.cpp: Added initial support for Wayland on Linux. (#11451) [Julian Sikorski]
+
+-Miscellaneous change roll-up: [Vas Crabb]
+ * render/drawbgfx.cpp: Return an error if Wayland EGL surface can't be created for additional windows.
+ * emu/emucore.h: Added explicitly defaulted copy and move constructors for emu_fatalerror.
+ * Fixed apparent misunderstanding of const.  Returning const value types and casting to const value types is pointless outside very
+    narrow use cases.  Putting const value type parameters in interfaces just makes trouble.
+ * cpu/adsp2100: Use count_leading_ones_32 where it's simple rather than inverting and counting leading zeroes.
+ * util/multibyte.h: Don't pollute global namespace, constexpr implies inline, make narrowing casts explicit.
+ * imagedev/simh_tape_image.h: inline is implied for member functions with bodies supplied at declaration.
+ * Tidied up some ugly casts in various places.
+
+-hh_pic16,hh_tms1k: update serial notes [hap]
+
+-dnbanban: use pwm display device for the 7segs [hap]
+
+-dnbanban: better guess for irq frequency [hap]
+
+-chessking: sound is correct according to video [hap]
+
+-bigtrak: add note about soviet version [hap]
+
+New systems marked not working
+------------------------------
+Hanguk Pro Yagu 98 [WangDrum]
+
+-mu50: Add the db50xg roms.  They may even be the correct ones swp00: Add most of the AWM.  Missing the lpf and the meg.
+ [Olivier Galibert]
+
+-Interflip electromechanical slots driver improvements: [Roberto Fresca, Grull Osgo]
+ * Changed default Door Switch state.
+ * Added missing kbdc scan line mask to get the machine in working state.
+ * Added and hooked Hopper Device.
+ * Fixed reels symbol's positions in external artworks for all machines.
+ * Fixed reels symbol's positions for Toledo internal layout.
+ * Changed where possible logical operators with BIT function.
+ * Added coin-in sound sample.
+ * Added Lever mechanical rattle sound sample.
+ * Added and updated technical notes.
+ * Promoted to working machine.
+
+-Interflip electromechanical slots driver improvements: [Roberto Fresca, Grull Osgo]
+ * Corrected the notes about Costa Brava payment.
+ * Switch the system to game mode by default.
+
+New working clones
+------------------
+Deluxe Trivia ? Whiz (6221-75, U5-0 Edition 5 Vertical) [Brian Troha, The Dumping Union]
+The Pit Boss (2214-07, U5-0) [Brian Troha, The Dumping Union]
+Tic Tac Trivia (6221-23, U5-0C (07/07/86) [Brian Troha, The Dumping Union]
+Trivia ? Whiz (6221-05 U5-0C, Edition 3) [Brian Troha, The Dumping Union]
+
+New clones marked not working
+-----------------------------
+Match'em Up (6221-51, U5-1) [Brian Troha, The Dumping Union]
+
+-merit/merit.cpp updated: [Brian Troha]
+ * Added additional notes to some sets.
+ * Added a few missing dipswitch settings.
+ * Removed "Horizontal" from parent game descriptions as it's the standard version, leaving Vertical as the a defining seperator.
+ * Removed the "h" from Trivia ? Whiz 3 set names, was the only set to add h to ROM names.
+ * Ordered Phraze Craze from newest to oldest making Phraze Craze (6221-40, U5-3A Expanded Questions) the parent.
+ * Arranged Phraze Craze questions ROMs as found on actual ROM board.
+ * Several ROM name corrections.
+ * Dumped the KEY BPROM for Phraze Craze & Deluxe Trivia ? Whiz.
+
+-dgpix: Use intelfsh + improvements to sound emulation (#11582) [987123879113]
+ * sound/ks0164: Attempt to fix audio looping issues
+ * cpu/ks0164: swap bges and bles (fixes sound effects), fix some disasm issues, document a new opcode
+ * misc/dgpix: Refactor to use intelfsh, add controls for btplay2k and letsdnce, add sound banking for BMkey PCB
+
+-bcheetah: update notes [hap]
+
+New working clones
+------------------
+Gorf (program 1, with French Language ROM) [René Balke]
+
+-swp00: Add the lpf [Olivier Galibert]
+
+-bcheetah: correct K4 connection, increase mcu freq [hap]
+
+-amigaocs_flop.xml, megacdj.xml, megadriv.xml, vic10.xml: Various metadata cleanings (#11583) [ArcadeShadow]
+ * Renamed countries' abbreviations
+ * Lowercase on descriptive words
+
+New systems marked not working
+------------------------------
+Go & Stop [Phil Bennett]
+
+-acorn_dsk.cpp: Added Cumana DFS disk image format. [Nigel Barnes]
+
+-bus/electron/cumana: Added support for Cumana floppy format. [Nigel Barnes]
+
+-bus/bbc/modem/scsiaiv: cleanup, no functional changes. [Nigel Barnes]
+
+-docs: Fixed documentation compilation warning. (#11586) [Firehawke]
+ * Fixes a title underline too short warning.
+
+-docs: Fixed a number of grammatical errors and editing errors. (#11578) [Tom Cariello]
+
+-bcheetah.lay: add keypad (#11580) [goldnchild]
+
+-bcheetah.lay: black background, button panel at bottom, simpler implementation [hap]
+
+-macOS: Xcode 15 requires explicitly setting -rpath to find the SDL framework. [R. Belmont, Carbon]
+
+-swp00: small fixes to the lpf, may need more bits in the calculation though [Olivier Galibert]
+
+-chess*: add note about new game command, gtsers9: fix rom load typo [hap]
+
+-imagedev/floppy.cpp: Workaround for index timing regression [AJR]
+
+-misc/dgpix.cpp: Demoted Let's Dance and Beat Player 2000 to not working. [Vas Crabb]
+
+-merit/merit.cpp: Added PLD dumps to various games. [Brian Troha, caius, The Dumping Union]
+
+-a5200: Fix keypad scanning [AJR]
+
+-bus/a800: Fix class hierarchy for "a5200_2chips" ROM type [AJR]
+
+-pokey: Double-check to make sure timer IRQs are enabled before raising them [AJR]
+
+-cpu/sh: Explicitly #include prefix header (fixes GitHub #11591). [Vas Crabb]
+
+-seibu/wiz.cpp: Added preliminary protection simulation for kungfuta. (#11590) [David Haywood]
+ * Protection is similar to Wiz.  This simulates enough that the game doesn't crash after bonus rounds.
+
+-bridgeb: remove unnneeded assert, ktmnt2: add clarity check for sample 0 [hap]
+
+-koanmi/cougar.cpp: dumped ATA ID for the HDD [CoolMod, The Dumping Union]
+
+-konami/cougar.cpp: fix a couple notes [Angelo Salese]
+
+-dataeast/tumbleb.cpp: assumed fix for MT#07148, needs testing to confirm [angelosa]
+
+-Interflip electromechanical slots driver improvements: [Roberto Fresca, Grull Osgo]
+ * Improved the internal layouts, creating new ones for all the different games.
+ * Arranged the reels/symbols per machine.
+ * Improved the samples system.
+ * All games are now playable.
+
+-3rdparty/bgfx: Fixed duplicate import of GL functions on Linux when using GLES 2.0. (#11596) [Romain TISSERAND]
+ * From bkaradzic/bgfx@66d50eb721334d6538a7eccdfdabb997667af1db
+ * Fixes build when using GLES 2.0 and Wayland.
+
+-apple/apple2video.cpp: Fixed Apple II DHGR rendering in Color/Composite mode. (#11595) [uraniumgun]
+ * Fixes regression causing Video-7 RGB rendering to be used when (rgbmode == -1).
+
+-gmaster: update notes [hap]
+
+New working clones
+------------------
+Mephisto Almeria 16 Bit (v0.121) [Berger]
+
+-Updated Turkish (Türkçe) UI translation. (#11597) [Kadir Ekşi]
+
+New software list items marked not working
+------------------------------------------
+gamegear.xml: Pro Action Replay (v1.01) [Apocalypse]
+
+-elwro800.cpp: Replace address map bank devices with memory views [AJR]
+
+-saturn.xml: Replaced abbreviations in descriptions. (#11599) [ArcadeShadow]
+
+-seta/seta.cpp: Added a Korean version of Triple Fun. (#11600) [ClawGrip]
+ * Also reformatted single-line comments.
+
+New working clones
+------------------
+Sum-eoitneun Deongdalireul Chat-ara! [Taksangs]
+
+New working clones
+------------------
+Tandy 1000 TL [plgDavid]
+
+-igs/igspoker.cpp: moved the kungfu set to jackie.cpp, boots but has incorrect GFX and some missing controls [Ivan Vangelista]
+
+-igs/iqblock.cpp: consolidated driver in single file [Ivan Vangelista]
+
+-Dumped and added a new Korean "Treasure Island" clone named "New HUNTer" (#11603) [ClawGrip]
+
+New WORKING clone
+-----------------
+New HUNTer [Taksangs]
+
+-Also reformatted single line comments. [ClawGrip]
+ * mame.lst: Add 'newhunter'
+ * Uncommented the MCU ROM_LOAD (NO_DUMP)
+
+-mu50: correct default a/d level swp00: Add more bits to the sample values (24.8 instead of 16.0) swp00: Cleanups of the meg
+ registers [Olivier Galibert]
+
+-mu80: make the wave rom test pass [Olivier Galibert]
+
+-stupid git [AJR]
+
+-elwro800.cpp: Uglify code because old compilers are dumb [AJR]
+
+-Revert fb32ae8e8f88669620ba973845ef192fdc5ea26e [AJR]
+
+-misc/gms.cpp: added dip settings for the mahjong games [Dyq, Guru]
+
+-taito/undrfire.cpp: Fix assert failure in debug build [AJR]
+
+-Formats-related #include cleanup [AJR]
+ * Note that IMD is one of the default MFM formats, so there is no need to add it explicitly.
+
+-Floppy format API refinements [AJR]
+ * Add noexcept to format information overrides and several simple floppy_image accessors.
+ * Be more const-correct and use references instead of raw pointers wherever applicable. In particular, floppy_image_device::load
+    and floppy_image_device::save now take a reference to floppy_image rather than a pointer, const-qualified in the latter case.
+
+-3rdparty/portaudio: Updated to latest upstream version. (#11604) [invertego]
+ * Up-to-date with revision 24c8d575e588d557d28f4011becb753421346860.  Resolves issues building with Visual Studio.
+ * Enabled PortAudio when building with Visual Studio and clang-cl.
+ * docs: Removed note about duplicate GUID symbols in PortAudio when built with MSVC.
+
+New working clones
+------------------
+Pack'n Bang Bang [twistedsymphony, Hammy, ekorz, rtw]
+
+-sbrain: Rebuild character generator from CRT8002 datasheet [AJR]
+
+-Updated Turkish UI translation. (#11602) [Kadir Ekşi]
+
+-ikt5a: Add RS-232 port [AJR]
+
+-workaround compile issue with tms57002.h / tms57002.hxx (#11593) [mamehaze]
+ * Co-authored-by: David Haywood <hazemamewip@hotmail.com>
+
+-grfd2301.cpp: Add CRTC and map a few other peripherals [AJR]
+
+-epson/hx20.cpp: Use direct access handlers for RTC [AJR]
+
+-mc146818: Split non-direct read and write handlers into more hardware-accurate handlers for address writes and data reads/writes
+ [AJR]
+ * Note that address_r is not provided since the original IC makes no provision for reading data strobed with AS back. However, a
+    getter has been provided for some situations where this may be dubiously possible.
+
+-Add a few drivers inadvertently omitted from a455d0031a2862b969d13767e1bfb81ef8f1d7b4 [AJR]
+
+-bebox.cpp: Fix lane masks for big-endian space [AJR]
+
+-Major rewrite of Recreativos Franco  MCS48-based slots driver. [Roberto Fresca, Grull Osgo]
+ * Hooked all the remaining devices and worked on them to get the system working.
+ * Added missing RESET line to the MCS48 CPUs, needed for this system.
+ * Inputs and outputs from the scratch.
+ * Motors, projectors, and lots of improvements.
+ * Redesigned ASCII PCBs layers to be more readable.
+ * Designed an internal artwork that allow Baby Fruits to be playable.
+ * Promoted Baby Fruits (100 Pts) to working.
+ * Added technical notes.
+
+-Marked babyfrts25 as BAD_DUMP. Too many illegal opcodes and full of garbage. [Roberto Fresca]
+
+-Marked ajofrin as BAD_DUMP. Main CPU ROM is underdumped and duped halves. Seems to be a bad/dirty higher address pin. Needs a
+ redump. Added notes about these bad dumps in the driver. [Roberto Fresca]
+ * 2 of 3 sets of the driver are bad dumps....This starts to be annoying.
+
+-Marked bformula2 as BAD_DUMP. Main and audio CPU ROMs bits 2 & 5 are stuck to 0. Seems to be a dirty programmer socket since both
+ ROMS have the same failure. The device needs to be redumped. Added notes about these bad dumps in the driver. [Roberto Fresca]
+ * 3 of 4 sets we checked to work on them are bad dumps....Time to check all the jordigahan dumps before add them.
+
+-...reverting the mcs48 unneeded changes. [Roberto Fresca]
+
+-rfslotsmcs48: fix compile [hap]
+
+-fidelity eag: add self test checksum info [hap]
+
+New WORKING clones
+------------------
+Toledo (set 2, 2p83) [Roberto Fresca, Grull Osgo]
+Toledo (set 3, 1p79) [Roberto Fresca, Grull Osgo]
+
+-fex68k: add note about self test [hap]
+
+-Fix clang error: private field 'm_sound_p1' is not used [-Werror,-Wunused-private-field]
+
+-Toledo sets... Added notes about 1p & 2p meaning 1 or 2 jackpot points by coin. [Roberto Fresca]
+
+New WORKING clones
+------------------
+Sevilla (1 jackpot point, 77%) [Roberto Fresca, Grull Osgo]
+Sevilla (2 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+Sevilla (4 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+Sevilla (8 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+
+-Also renamed the toledo sets descriptions with jackpot points and percentages. [Roberto Fresca]
+
+-Interflip electromechanical slots: Added percentages in notes. [Roberto Fresca]
+
+New WORKING clones
+------------------
+Costa Brava (1 jackpot point, 77%) [Roberto Fresca, Grull Osgo]
+Costa Brava (2 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+Costa Brava (4 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+Costa Brava (8 jackpot points, 77%) [Roberto Fresca, Grull Osgo]
+
+-8042kbdc: Unbundle keyboard from device and make it optional [AJR]
+
+-Interflip electromechanical slots: Fix cbravad & sevillad sets. [Roberto Fresca]
+
+-funkball: Remove AT keyboard [AJR]
+
+-Interflip electromechanical slots improvements: [Roberto Fresca]
+ * New reels for Costa Brava sets with 77%.
+ * Created new layout for Costa Brava sets with 77%.
+ * Derived new machine config to cover specific sets.
+
+-merit/mtouchxl.cpp: Keep keyboard because BIOS wants one [AJR]
+
+-Interflip electromechanical slots improvements: [Roberto Fresca]
+ * New reels for Sevilla sets with 77%.
+ * Created new layout for Sevilla sets with 77%.
+ * Derived new machine config to cover specific sets.
+
+-subsino/subsino.cpp: Dumped and added a "New HUNTer" clone (#11605) [ClawGrip]
+
+New WORKING clone
+-----------------
+New HUNTer (bootleg) [Taksangs]
+
+-mame.lst: Add 'newhunterb' [ClawGrip]
+
+-Fix identation [ClawGrip]
+
+-Fix comments [ClawGrip]
+
+derived tisub and newhunterb maps from a common base map
+--------------------------------------------------------
+Co-authored-by: Ivan Vangelista <mesgnet@yahoo.it> [ClawGrip]
+
+-Interflip electromechanical slots improvements: [Roberto Fresca]
+ * New reels for Toledo sets with 83 & 79%.
+ * Created new layout for Sevilla sets with with 83 & 79%.
+ * Derived new machine config to cover specific sets.
+
+-merit/mtouchxl.cpp: Update CMOS definition so keyboard can be safely removed [AJR]
+
+-pc/pcat_dyn.cpp: Update CMOS so keyboard can be safely removed [AJR]
+
+-nubus/8lc.cpp: Add support for the RasterOps 8LC card for the original Macintosh LC. [R. Belmont]
+ * This card provides unaccelerated 1024x768 video, which isn't the greatest idea on a 68020.
+   - video/tms34061.h: Added accessors to get the horizontal and vertical visible resolution and totals. [R. Belmont]
+   - nubus/cards.cpp, apple/maclc.cpp: Support a list of cards for only the original Macintosh LC. [R. Belmont]
+
+-Add missing files from last commit. [R. Belmont]
+
+-dynax/royalmah.cpp: dumped internal ROMs for mjvegas and cafepara [Sergio Galiano, Recreativos Piscis, Hammy]
+
+Clones promoted to working
+--------------------------
+Mahjong Vegas (Japan) [Sergio Galiano, Recreativos Piscis, Hammy]
+
+-fmtowns_cd.xml: added 13 items (11 working), and replaced four items with better dumps. (#11611) [r09]
+ * Removed the floppy disk from the Deep set as it was a "fake" disk that didn't come with the game originally.
+ * Fixed and cleaned up some dump source comments.
+
+New working software list additions (fmtowns_cd.xml)
+----------------------------------------------------
+Auto Demo '93 Fuyu [redump.org]
+CONFIG-ROM [beanstalk]
+Drive Simulator - Home Navi V1.0 L01 [redump.org, cyo.the.vile]
+Heike Monogatari (Gekan) [redump.org]
+Hyper Planet Shiki Vol. 3 [redump.org]
+Many Colors II [redump.org]
+Naomi Komaki for Janis [redump.org]
+NHK Special - Ginga Uchuu Odyssey Vol. 2 - Choushinsei Bakuhatsu (FM Towns Marty version) [redump.org]
+Wing Commander (alt) [redump.org]
+Woman's Memory [redump.org]
+Z's Staff Pro Towns [redump.org]
+
+New not working software list additions (fmtowns_cd.xml)
+--------------------------------------------------------
+Fujitsu Habitat V2.1 L13A [redump.org]
+Hyper Dream [redump.org]
+
+Replaced software list items (fmtowns_cd.xml)
+---------------------------------------------
+Deep [redump.org]
+Flashback [redump.org]
+Kiwame [redump.org]
+That's Toukou - Natsu no Daitokushuu [redump.org]
+
+-msx2_cart.xml: Added 53 items (42 working). (#11606) [wilbertpol]
+
+New working software list items (msx2_cart.xml)
+-----------------------------------------------
+Zanac EX (Japan, Woomb) [file-hunter]
+Michelangelo II (Japan) [file-hunter]
+Super Lode Runner (Japan, alt) [file-hunter]
+Word Processor (Arab) [file-hunter]
+Zukkoke Yajikita Onmitsu Douchuu (Japan, alt 2) [file-hunter]
+The Adventures of Moron van der Slut - Escape from Castro Castro [#msxdev Compo]
+The Bet [Orazio Cacciola]
+CR3 [NabetaJisho]
+Gogoboom [ESP Soft]
+Memory (v1.1) [MSXdev]
+Memory (v1.0) [file-hunter]
+No Ren-Sha (v0.13) [file-hunter]
+O'Conner Among the Falling Walls [file-hunter]
+Operatión Brazil World Cup [file-hunter]
+Pac-Man Collection DX (demo) [Opcode Games]
+Pengo (freeware) [file-hunter]
+Pengo (demo) [Paxanga Soft]
+Penpen Bubble [N.I]
+Pointless Fighting [#msxdev Compo]
+Police Force 2 (English) [MRC MEGA-Challenge]
+Police Force 2 (Spanish) [MRC MEGA-Challenge]
+Princess Quest [Óscar Toledo Gutiérrez]
+Randoom (v1.1) [MSXdev]
+Randoom (v1.0) [MSXdev]
+Safari Kids (v1.1) [MSXdev]
+Safari Kids (v1.0) [MSXdev]
+Shift [file-hunter]
+Shift (alt) [file-hunter]
+Shoulder Blade OVERDRIVE [MSXdev]
+Street Fighter II [file-hunter]
+The Sword of Ianna (v1.2) [file-hunter]
+The Sword of Ianna (v1.2, alt) [file-hunter]
+The Sword of Ianna (v1.1) [file-hunter]
+The Sword of Ianna (v1.0) [file-hunter]
+TestRAM [file-hunter]
+Vectroids [norakomi]
+Who Dares Wins (remake) [file-hunter]
+Wild Puzzle [Pac]
+Wild Puzzle (alt) [Pac]
+Wild Puzzle (alt 2) [Pac]
+Zevimodoki (v1.10) [MSXdev]
+Zevimodoki (v1.00) [file-hunter]
+
+New NOT_WORKING software list additions
+---------------------------------------
+Super Rambo Special (Korea) [file-hunter]
+The Goonies r Good Enough (Kralizec goodbye present) [file-hunter]
+Manbow 2 [file-hunter]
+Manbow 2 (alt) [file-hunter]
+Mr. Balloon [#msxdev compo]
+Super Mario World (v1.1) [file-hunter]
+Super Mario World (v1.0) [file-hunter]
+Super Mario World (advanced prototype) [file-hunter]
+Super Mario World (early prototype) [file-hunter]
+Super Mario World (demo 2) [file-hunter]
+Super Mario World (demo 1) [file-hunter]
+
+-skeleton/cosmicos.cpp, dm7000.cpp, micronic.cpp, softbox.cpp, vp415.cpp, xor100.cpp, zorba.cpp: Consolidate drivers in one source
+ file each [AJR]
+ * skeleton/dm7000.cpp: Update optional logging calls to use logmacro
+
+-adam_ddp: Clean up code using device finder array for cassettes [AJR]
+
+-bus/mtx/sdx.cpp: Clean up code using device finder array [AJR]
+
+-bus/ql: Use device array finders to clean up code in floppy disk options [AJR]
+
+-ss50_dc5: Clean up code using device finder array [AJR]
+
+-vtech_fdc: Use device finder array for floppy drives [AJR]
+
+-abc_fd2, lux10828, lux21046: Clean up code using device finder arrays for floppy drives [AJR]
+
+-ep64_exdos, compis_fdc: Clean up code using device finder arrays for floppy drives [AJR]
+
+-c8280, hp9895: Use device finder arrays for floppy drives [AJR]
+
+-spectrum_opus: Use device finder array for floppy drives [AJR]
+
+-skeleton/xor100.cpp: Hook up INTRQ and DRQ callbacks (and hopefully fix Windows build) [AJR]
+
+-Move format #includes out of header files [AJR]
+
+-heathkit/tlb.cpp - add back in gp19 fix TODOs (#11609) [Mark Garlanger]
+
+New working clones
+------------------
+Trivia ? Whiz (6221-10, U5-0A Edition 4) [Brian Troha, The Dumping Union]
+
+-nmk/ddealer.cpp: replace MCU simulation in ddealer with emulated NMK-110 MCU (also tdragon1, hachamf, hachamfa in nmk16.cpp)
+ [Sergio Galiano, Recreativos Piscis, David Haywood, hammy] (#11584) [mamehaze]
+ * replace MCU simulation in ddealer with emulated NMK-110 MCU [Sergio Galiano, Recreativos Piscis, David Haywood, hammy]
+ * hooked up MCU for tdragon1 too
+ * added the nmk-113 dump to hachamf and hachamfa, this appears to be a multipurpose MCU, as it has multiple program paths depending
+    on a port.
+ * one of the config options in the 113 MCU is for Thunder Dragon, even if we use the 110
+ * 113 can also be used with Double Dealer in a specific config
+ * flip ddealer.cpp to more permissive license, with agreement from copyright holders
+
+load the 215 binary too, even if for emulation purposes it seems unimportant
+----------------------------------------------------------------------------
+Co-authored-by: DAVIDNEW\admin <hazemamewip@hotmail.com> [mamehaze]
+
+-dynax/royalmah.cpp: preliminary address map for cafepara [Ivan Vangelista]
+
+New clones marked not working
+-----------------------------
+Super Nove (Playmark, Euro currency) [The Dumping Union]
+
+New clones marked not working
+-----------------------------
+Super Magic Card [The Dumping Union]
+
+New clones marked not working
+-----------------------------
+Multi Game (Italian, Versione 3.9.8 - 1.5.7, 01-JUL-98) [The Dumping Union]
+
+-subsino.cpp, subsino2.cpp: Add some fake internal ROM to encrypted HD647180X games so the MMU can get set up properly [AJR]
+
+-rfslotsmcs48.cpp driver: Fix conditional requesting ay8910 data. [Roberto Fresca]
+
+-subsino.cpp, subsino2.cpp: Remove extraneous RAM from HD647180X memory maps where the MCU has some internal RAM [AJR]
+
+-Support MSX Sunrise SCC Flash cart type used in Manbow 2 [AJR]
+
+-cpu/sh: Improved SH7021 SoC emulation. (#11610) [Ryan Holtz, Phil Bennett]
+ * Added (rudimentary) SH7021 DMA, timers and GPIO, and logging for the rest.
+ * Fixed SH2 NMIs occurring in a delay slot when using the interpreter.
+ * Generally cleaned up code and renamed functions/macros/variables more conventionally.
+
+new NOT_WORKING machine
+-----------------------
+Bingo Parade (main) (MDA-C0008E) [rtw, MetalliC]
+
+new NOT_WORKING clone
+---------------------
+Bingo Galaxy (main) (MDA-C0039A) [rtw, MetalliC]
+
+-nubus/thunder4gx.cpp: Preliminary support for Radius Thunder IV GX video card. [R. Belmont]
+
+-casio/cz101.cpp: Added sound output and RAM cartridge, and promoted system to working. (#11613) [Devin Acker]
+ * casio/ra3.cpp: Added simple Casio RA-3 RAM cartridge device.
+ * sound/upd933.cpp: Emulated Casio/NEC uPD933 phase distortion synthesis chip.
+
+Systems promoted to working
+---------------------------
+Casio CZ-101 [Devin Acker]
+
+-Corrected grammar of several German UI message translations. (#11614) [Sönke Joppien]
+
+-misc/vamphalf.cpp: Dumped and added a new game: 'Solitaire' (#11623) [ClawGrip]
+
+misc/vamphalf.cpp: New working systems
+--------------------------------------
+Solitaire (version 2.5) [Recreativas.org, Brito_cat]
+
+-mame.lst: Add 'solitaire' [ClawGrip]
+
+-proper memory map and inputs [ClawGrip]
+ * may still do with intuitive input defaults and speedup funcs
+
+mame.lst: moved solitaire in alphabetical order [skip ci]
+---------------------------------------------------------
+Co-authored-by: Ivan Vangelista <mesgnet@yahoo.it> [ClawGrip]
+
+-casio/casloopy.cpp: Promoted system to working. (#11621) [Phil Bennett]
+ * Emulated most features of the system, with the exception of sound output and the thermal printer.
+ * bus/vboy/slot.cpp: Fixed loading loose software on big Endian hosts. [Vas Crabb]
+
+Systems promoted to working
+---------------------------
+Casio Loopy [Phil Bennett, Ryan Holtz]
+
+New working software list items (casloopy.xml)
+----------------------------------------------
+Chakra-kun no Omajinai Paradise [Rachel Simone Weil]
+
+-pc/pc.cpp: move ibm5550 to own driver [angelosa]
+
+New working clones
+------------------
+Geo Storm (Japan, 026 custom sound CPU) [playero]
+
+-dynax/royalmah.cpp: minor comments update [Ivan Vangelista]
+
+-cpu/sh/sh.cpp - Fix MAC_W regression [Philip Bennett]
+
+-casio_ra3_device: fill newly created image with zero instead of 0xff (#11626) [Devin Acker]
+
+-at_mb: Fix address map [AJR]
+
+-subsino/subsino.cpp: Dumped and added another New HUNTer set (as MNW) (#11624) [ClawGrip]
+ * subsino/subsino.cpp: Dumped and added another New HUNTer set (as MNW)
+
+New NOT_WORKING clone
+---------------------
+New HUNTer (bootleg, set 2) [Taksangs]
+
+-mame.lst: Add 'newhunterc' [ClawGrip]
+
+-Fix notes [ClawGrip]
+
+-nakajima/nakajies.cpp: added 2 bios dumps for the NTS DreamWriter 325: [Ivan Vangelista]
+ * v1.03 [Baracus]
+ * v2.0 [MrWaalkman]
+
+-subsino/subsino_crypt.cpp: added xors and bitswaps for the newly dumped newhunterc set. It still needs work on the driver side.
+ [Ivan Vangelista]
+
+-pc/quakeat.cpp: regen HDD geometry [angelosa]
+
+-ibm/ibm5550.cpp: implement preliminary NMI trap, add notes, denote it uses a GFX ROM for text drawing [angelosa]
+
+-subsino/subsino.cpp: Maked PROMs as BAD_DUMP for 'newhunterc' (#11641) [ClawGrip]
+ * As they weren't dumped from that PCB
+
+-render.cpp: Nuke previous scaler when releasing a render_texture in case it gets recycled later. This fixes occasional bad
+ downcasts in debug builds when trying to bring up the tilemap viewer in certain drivers. [AJR]
+
+-pokey: Latch current value of keyboard count when registering presses in non-debounce mode. Fixes start button not responding in
+ a5200:pitfall. [AJR]
+
+-Allow clone CHDs to use parent CHDs as parents. [Vas Crabb]
+ * util/chd.cpp: Allow caller to provide a helper for finding parent CHDs and expose (recursive) missing parent status.
+ * emu/romload.cpp: Search parent systems/devices/software for parent CHDs on encountering a delta CHD.
+ * emu/romload.cpp: Report error on delta CHDs when parent can't be found.
+ * emu/romload.cpp: Check parents for matching CHDs with different names for devices as well as systems and software.
+
+-machine/i82443bx_host.cpp: stub a 82443LX PAC variant [angelosa]
+
+New systems marked not working
+------------------------------
+Gigabyte GA-6LA7 [The Retro Web]
+
+-ibm/ibm5550.cpp: identify video format a bit [angelosa]
+
+-video/mc6847.cpp: Fix synchronization between MC6847 video display generator and screen device (#11594) [dave-br]
+
+-emu/romload.cpp: Don't search parent device search path for software media. [Vas Crabb]
+ * This was a piece of emergent behaviour in the original implementation of software media loading.  It was preserved in the last
+    big refactor of ROM loading, but it can be removed now to simplify the code.
+
+-docs: Updated for changes to media loading behaviour. [Vas Crabb]
+ * Bumped docs version since this now describes behaviour of the upcoming release.
+
+-spacezap: add note about older version, ddealer: correct typo in comment [hap]
+
+-advision,skywriter: fix cliprect bounds check [hap]
+
+-toaplan/toaplan2.cpp: Corrected DIP switch and jumper settings for bgaregga bootlegs. (#11553) [cam900]
+ * Corrected settings for bootlegs with hard-coded region (affects bonus life settings).
+ * Added transliterated Chinese titles for two bootlegs and noted that Melody is possibly the bootlegger’s name.
+
+-seta/simple_st0016.cpp: Added subtitles to descriptions for Koi Koi Shimasho and Renju Kizoku. (#11552) [cam900]
+ * Also corrected transliterations of titles in comments.
+
+-seta/seta.cpp: Updated descriptions, machine configuration settings, input labels. (#11551) [cam900]
+ * rezon: Made licensee configurable as boards showing Taito date with 1991 year have been seen, and made 1992 version the parent.
+ * rezon: Corrected label for tilt input displayed in service mode.
+ * zingzip: Default to English title only, and added transliterated Chinese title to description.
+
+-emu/romload.cpp: Tidy up some of the code a little. [Vas Crabb]
+
+-emu/romload.cpp: Removed apparently obsolete FIXME comment. [Vas Crabb]
+
+-midiin_device: support loading sysex dumps (#11625) [Devin Acker]
+
+-msx2_cart.xml: Added 31 items, 29 working. (#11642) [wilbertpol]
+ * msx2_cart.xml: Added 31 items, 29 working.
+
+New working software list items
+-------------------------------
+Aleste (Woomb) [file-hunter]
+Arkanoid 2 (Korea) [file-hunter]
+Ashguine - Fukushuu no Honoo (Japan, alt 2) [file-hunter]
+Daisenryaku MSX2 (Japan, alt) [file-hunter]
+Gekitotsu Pennant Race 2 (Japan, sample) [file-hunter]
+Hydlide 3 - The Space Memories (Woomb) [file-hunter]
+Alien 8 Remake [file-hunter]
+Los Amores de Brunilda (v1.01) [file-hunter]
+Los Amores de Brunilda (v1.0) [file-hunter]
+Barbarian the Duel [MSXdev]
+Bomb Jack [file-hunter]
+Bomb Jack (alt) [file-hunter]
+Booming Boy (demo) [MSX Area]
+Bubble Dream [MRC Tenliner Challenge]
+DIM X (demo) [file-hunter]
+Equivocal (v1.5) [Passion MSX2 Contest]
+Equivocal (v1.0) [Passion MSX2 Contest]
+Gold Fan [N.I]
+Highway Fighter (demo) [file-hunter]
+Inferno [msxdev Compo]
+Jailbreak (v1.02) [Passion MSX2 Contest]
+Jailbreak (alt) [Passion MSX2 Contest]
+Jailbreak (alt 2) [Passion MSX2 Contest]
+Knight Lore Remake [Retroworks]
+Lilly's Saga - The Stones of Evergreen (v1.2) [MSXdev]
+Lilly's Saga - The Stones of Evergreen (v1.1) [MSXdev]
+Lilly's Saga - The Stones of Evergreen (v1.0) [MSXdev]
+La Sorpresa (Spanish) [Oniric Factor]
+A Surpresa (Portuguese) [Oniric Factor]
+
+New NOT_WORKING software list additions
+---------------------------------------
+Ehagaki-yō wāpuro (Japan) [file-hunter]
+Life on Earth (demo) [file-hunter]
+
+-Fix capitalisations of Wāpuro and AshGuine [wilbertpol]
+
+-Normalize terminology for retitled bootlegs and hacks of arcade games, preferring "bootleg/hack of <title>" to "<title>
+ bootleg/hack", which might be confused with bootlegger names or regions. Label a few more sets as hacks. [AJR]
+
+-dataeast/dec0.cpp: updated ROM labels and positions for midres and clones [Guru]
+
+-srcclean in preparation for MAME 0.260 release branch [Vas Crabb]
+
+-merit/merit.cpp, msx1_cart.xml: Patched up some metadata. [Vas Crabb]

@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>62e63c7dd186b37ad8ed8800c6997aad</srcmd5>
+    <version>0.1.1</version>
+    <time>1636662947</time>
+    <user>dimstar_suse</user>
+    <comment>- moved cvt binary and cvt manual page to main package, since it 
+  violates the SLPP to have non-library files in a library package 
+
+- created package (needed since xorg-server 21.1.0)</comment>
+    <requestid>927933</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1eacb4c508b72445a37c0d8a6a20a94d</srcmd5>
+    <version>0.1.1</version>
+    <time>1636672140</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930985</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>883e306d43a194186bebf24e63822923</srcmd5>
+    <version>0.1.2</version>
+    <time>1658395956</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.1.2
+  * make xrandr report 1366x768 instead of 1360x768
+  * meson: Add initial darwin_versions</comment>
+    <requestid>990112</requestid>
+  </revision>
+</revisionlist>

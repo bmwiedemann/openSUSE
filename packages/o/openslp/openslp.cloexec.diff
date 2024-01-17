@@ -1,0 +1,211 @@
+--- ./common/slp_dhcp.c.orig	2014-02-17 18:16:57.883239271 +0000
++++ ./common/slp_dhcp.c	2014-02-17 18:20:16.386238920 +0000
+@@ -101,7 +101,7 @@ static sockfd_t dhcpCreateBCSkt(void * p
+    so_bool_t on = 1;
+ 
+    /* setup dhcp broadcast-to-server address structure */
+-   if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) != SLP_INVALID_SOCKET)
++   if ((sockfd = socket(AF_INET, SOCK_DGRAM|SOCK_CLOEXEC, 0)) != SLP_INVALID_SOCKET)
+    {
+       int addr = INADDR_ANY;
+       struct sockaddr_storage localaddr;
+@@ -355,7 +355,7 @@ static int dhcpGetAddressInfo(unsigned c
+    struct arpreq arpreq;
+    struct sockaddr_in * sin;
+ 
+-   if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) == SLP_INVALID_SOCKET)
++   if ((sockfd = socket(AF_INET, SOCK_DGRAM|SOCK_CLOEXEC, 0)) == SLP_INVALID_SOCKET)
+       return -1;
+ 
+    *hlen = 0;
+--- ./common/slp_iface.c.orig	2014-02-17 18:16:57.886239271 +0000
++++ ./common/slp_iface.c	2014-02-17 18:21:25.194238798 +0000
+@@ -457,7 +457,7 @@ static int GetV6Scope(struct sockaddr_in
+    family = AF_INET6;
+ 
+    /* Check if address is a global address and if it is then assign a scope ID as zero */
+-   fd = socket(AF_INET6, SOCK_STREAM, IPPROTO_TCP);
++   fd = socket(AF_INET6, SOCK_STREAM|SOCK_CLOEXEC, IPPROTO_TCP);
+    if (fd != INVALID_SOCKET)
+    {
+       if (addr != NULL )
+@@ -552,7 +552,7 @@ static int GetV6Scope(struct sockaddr_in
+       xfree(pAddr);
+ #else
+    sockfd_t fd;
+-   fd = socket(AF_INET6, SOCK_STREAM, IPPROTO_TCP);
++   fd = socket(AF_INET6, SOCK_STREAM|SOCK_CLOEXEC, IPPROTO_TCP);
+    if (fd != SLP_INVALID_SOCKET)
+    {
+       /* This loop attempts to find the proper scope value
+@@ -698,7 +698,7 @@ int SLPIfaceGetDefaultInfo(SLPIfaceInfo
+ #ifdef LINUX
+       SLPIfaceGetV6Addr(ifaceinfo);
+ #else
+-      fd = socket(AF_INET6, SOCK_DGRAM, 0);
++      fd = socket(AF_INET6, SOCK_DGRAM|SOCK_CLOEXEC, 0);
+       if (fd != -1)
+       {
+ #ifdef AIX
+@@ -739,7 +739,7 @@ int SLPIfaceGetDefaultInfo(SLPIfaceInfo
+ 
+    if ((family == AF_INET) || (family == AF_UNSPEC))
+    {
+-      fd = socket(AF_INET, SOCK_DGRAM, 0);
++      fd = socket(AF_INET, SOCK_DGRAM|SOCK_CLOEXEC, 0);
+       if (fd != -1)
+       {
+ #ifdef AIX
+@@ -813,7 +813,7 @@ int SLPIfaceGetDefaultInfo(SLPIfaceInfo*
+       SOCKET_ADDRESS_LIST * plist = 0;
+       int i;
+ 
+-      if ((fd = socket(AF_INET6, SOCK_DGRAM, 0)) != INVALID_SOCKET)
++      if ((fd = socket(AF_INET6, SOCK_DGRAM|SOCK_CLOEXEC, 0)) != INVALID_SOCKET)
+       {
+          /* We want to get a reasonable length buffer, so call empty first to fill in buflen, ignoring errors*/
+          WSAIoctl(fd, SIO_ADDRESS_LIST_QUERY, 0, 0, buffer, buflen, &buflen, 0, 0);
+@@ -850,7 +850,7 @@ int SLPIfaceGetDefaultInfo(SLPIfaceInfo*
+       SOCKET_ADDRESS_LIST * plist = 0;
+       int i;
+ 
+-      if ((fd = socket(AF_INET, SOCK_DGRAM, 0)) != INVALID_SOCKET)
++      if ((fd = socket(AF_INET, SOCK_DGRAM|SOCK_CLOEXEC, 0)) != INVALID_SOCKET)
+       {
+          /* We want to get a reasonable length buffer, so call empty first to fill in buflen, ignoring errors */
+          WSAIoctl(fd, SIO_ADDRESS_LIST_QUERY, 0, 0, buffer, buflen, &buflen, 0, 0);
+@@ -1054,7 +1054,7 @@ int SLPIfaceGetInfo(const char * useifac
+                {
+                   if (SLPNetIsIPV4() && ((family == AF_INET) || (family == AF_UNSPEC)))
+                   {
+-                     fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
++                     fd = socket(AF_INET, SOCK_STREAM|SOCK_CLOEXEC, IPPROTO_TCP);
+                      if (fd != SLP_INVALID_SOCKET)
+                      {
+                         v4addr.sin_family = AF_INET;
+--- ./common/slp_network.c.orig	2014-02-17 18:16:57.884239271 +0000
++++ ./common/slp_network.c	2014-02-17 18:21:48.434238757 +0000
+@@ -88,7 +88,7 @@ sockfd_t SLPNetworkConnectStream(void *
+    (void)timeout;
+    /** @todo Make the socket non-blocking so we can timeout on connect. */
+ 
+-   result = socket(a->sa_family, SOCK_STREAM, IPPROTO_TCP);
++   result = socket(a->sa_family, SOCK_STREAM|SOCK_CLOEXEC, IPPROTO_TCP);
+    if (result != SLP_INVALID_SOCKET)
+    {
+       if (connect(result, peeraddr, sizeof(struct sockaddr_storage)) == 0)
+@@ -127,7 +127,7 @@ sockfd_t SLPNetworkCreateDatagram(short
+      recvfrom will fail on some platforms*/
+    sockfd_t result;
+ 
+-   result = socket(family, SOCK_DGRAM, IPPROTO_UDP);
++   result = socket(family, SOCK_DGRAM|SOCK_CLOEXEC, IPPROTO_UDP);
+    if (result != SLP_INVALID_SOCKET)
+    {
+ #ifndef _WIN32
+--- ./common/slp_property.c.orig	2014-02-17 18:16:53.361239279 +0000
++++ ./common/slp_property.c	2014-02-17 18:23:39.306238561 +0000
+@@ -217,7 +217,7 @@ static void InitializeMTUPropertyValue()
+ #ifndef _WIN32
+    family = SLPPropertyAsBoolean("net.slp.useIPv4") ? AF_INET : AF_INET6;
+ 
+-   if ((sock = socket(family, SOCK_DGRAM, 0)) != SLP_INVALID_SOCKET)
++   if ((sock = socket(family, SOCK_DGRAM|SOCK_CLOEXEC, 0)) != SLP_INVALID_SOCKET)
+    {
+       if (getsockopt(sock, SOL_SOCKET, SO_RCVBUF, &value, &valSize) != -1)
+       {
+@@ -311,7 +311,7 @@ static bool ReadFileProperties(char cons
+       rewind(conffp);
+ 
+    /* open configuration file for read - missing file returns false */
+-   if ((fp = s_UsePropertyFps ? conffp : fopen(conffile, "r")) != 0)
++   if ((fp = s_UsePropertyFps ? conffp : fopen(conffile, "re")) != 0)
+    {
+       /* read a line at a time - max 4k characters per line */
+       while (fgets(alloced, CONFFILE_RDBUFSZ, fp))
+@@ -400,11 +400,11 @@ static int ReadPropertyFiles(void)
+    if (s_UsePropertyFps == 1)
+    {
+       if (*s_GlobalPropertyFile)
+-         s_GlobalPropertyFp = fopen(s_GlobalPropertyFile, "r");
++         s_GlobalPropertyFp = fopen(s_GlobalPropertyFile, "re");
+       if (*s_EnvPropertyFile)
+-         s_EnvPropertyFp = fopen(s_EnvPropertyFile, "r");
++         s_EnvPropertyFp = fopen(s_EnvPropertyFile, "re");
+       if (*s_AppPropertyFile)
+-         s_AppPropertyFp = fopen(s_AppPropertyFile, "r");
++         s_AppPropertyFp = fopen(s_AppPropertyFile, "re");
+       s_UsePropertyFps = 2;
+    }
+ 
+--- ./common/slp_spi.c.orig	2014-02-17 18:16:57.885239271 +0000
++++ ./common/slp_spi.c	2014-02-17 18:23:08.570238615 +0000
+@@ -124,7 +124,7 @@ static SLPCryptoDSAKey * SLPSpiReadKeyFi
+    FILE * fp;
+    SLPCryptoDSAKey * result = 0;
+ 
+-   fp = fopen(keyfile, "r");
++   fp = fopen(keyfile, "re");
+    if (fp)
+    {
+       if (keytype == SLPSPI_KEY_TYPE_PUBLIC)
+@@ -262,7 +262,7 @@ SLPSpiHandle SLPSpiOpen(const char * spi
+    SLPSpiHandle result = 0;
+    SLPSpiEntry * spientry;      
+ 
+-   fp = fopen(spifile,"r");
++   fp = fopen(spifile,"re");
+    if (fp)
+    {
+       result = xmalloc(sizeof(struct _SLPSpiHandle));
+--- ./common/slp_xcast.c.orig	2014-02-17 18:16:57.882239271 +0000
++++ ./common/slp_xcast.c	2014-02-17 18:22:40.010238666 +0000
+@@ -79,7 +79,7 @@ int SLPBroadcastSend(const SLPIfaceInfo
+       if (ifaceinfo[socks->sock_count].bcast_addr->ss_family == AF_INET)
+       {
+          socks->sock[socks->sock_count] = socket(ifaceinfo[socks->sock_count]
+-               .bcast_addr->ss_family, SOCK_DGRAM, 0);
++               .bcast_addr->ss_family, SOCK_DGRAM|SOCK_CLOEXEC, 0);
+ 
+          if (socks->sock[socks->sock_count] == SLP_INVALID_SOCKET)
+             return -1;  /* error creating socket */
+@@ -190,7 +190,7 @@ int SLPMulticastSend(const SLPIfaceInfo
+    {
+       int family = ifaceinfo->iface_addr[socks->sock_count].ss_family;
+ 
+-      socks->sock[socks->sock_count] = socket(family, SOCK_DGRAM, 0);
++      socks->sock[socks->sock_count] = socket(family, SOCK_DGRAM|SOCK_CLOEXEC, 0);
+       if((socks->sock[socks->sock_count] == SLP_INVALID_SOCKET) ||
+          (SetMulticastIF(family, socks->sock[socks->sock_count], &ifaceinfo->iface_addr[socks->sock_count]) ||
+          (SetMulticastTTL(family, socks->sock[socks->sock_count], SLPPropertyAsInteger("net.slp.multicastTTL")))))
+--- ./common/slp_xmalloc.c.orig	2014-02-17 18:16:57.884239271 +0000
++++ ./common/slp_xmalloc.c	2014-02-17 18:23:17.506238600 +0000
+@@ -292,7 +292,7 @@ void _xfree(const char * file, int line,
+ */
+ int xmalloc_init(const char * filename, size_t freemem)
+ {
+-   G_xmalloc_fh = fopen(filename, "w");
++   G_xmalloc_fh = fopen(filename, "we");
+    if (G_xmalloc_fh == 0)
+       return 0;
+    G_xmalloc_freemem = freemem;
+--- ./libslp/libslp_network.c.orig	2014-02-17 18:16:57.888239271 +0000
++++ ./libslp/libslp_network.c	2014-02-17 18:18:05.498239152 +0000
+@@ -1618,7 +1618,7 @@ SLPError NetworkMultiUcastRqstRply(
+     /*----------------------------------------*/
+     /* Create a UDP socket to use             */
+     /*----------------------------------------*/
+-    udp_socket = socket(AF_INET, SOCK_DGRAM, 0);
++    udp_socket = socket(AF_INET, SOCK_DGRAM|SOCK_CLOEXEC, 0);
+     if (udp_socket < 0)
+     {
+         result = SLP_NETWORK_ERROR;
+@@ -2092,7 +2092,7 @@ SLPError NetworkMultiUcastRqstRply(
+                 if (result == SLP_ERROR_RETRY_UNICAST)
+                 {
+                     result = SLP_OK;
+-                    pconn->socket = socket(AF_INET, SOCK_STREAM, 0);
++                    pconn->socket = socket(AF_INET, SOCK_STREAM||SOCK_CLOEXEC, 0);
+                     if (pconn->socket < 0)
+                     {
+                         result = SLP_NETWORK_ERROR;

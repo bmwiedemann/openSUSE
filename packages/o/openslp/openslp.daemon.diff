@@ -1,0 +1,11 @@
+--- ./slpd/slpd_main.c.orig	2014-02-17 18:14:08.220239572 +0000
++++ ./slpd/slpd_main.c	2014-02-17 18:14:37.546239520 +0000
+@@ -520,7 +520,7 @@ static int DropPrivileges()
+    /* TODO: warn if 'daemon' user has insufficient privileges and ipv6 requested.*/
+    /* TODO: allow different user to be specified as process owner. */
+ 
+-   struct passwd * pwent = getpwnam("daemon");
++   struct passwd * pwent = getpwnam("openslp");
+    if (pwent)
+    {
+       if (chroot(reg_file_dir))

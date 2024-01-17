@@ -1,0 +1,314 @@
+-------------------------------------------------------------------
+Fri Jan  4 20:31:03 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Switch to ncurses 6 wide char ABI 
+
+-------------------------------------------------------------------
+Wed Oct 26 14:44:38 CEST 2016 - kukuk@suse.de
+
+- Replace %pre section with prerequires of user and group games
+
+-------------------------------------------------------------------
+Wed Nov 25 10:14:09 UTC 2015 - dimstar@opensuse.org
+
+- Hack it up to get it to build:
+  + Drop cribbage mille robots
+- Do not build factor instead of building and then deleting it.
+
+-------------------------------------------------------------------
+Sun Nov 30 07:58:11 UTC 2014 - mailaender@opensuse.org
+
+- - Rename fish to fish-game to avoid conflict with fish (shell)
+
+-------------------------------------------------------------------
+Fri May  2 12:24:53 UTC 2014 - seife+obs@b1-systems.com
+
+- fix word list location for hangman and boggle
+
+-------------------------------------------------------------------
+Fri Oct  4 08:22:46 UTC 2013 - sleep_walker@suse.cz
+
+- remove /usr/games also from package description
+
+-------------------------------------------------------------------
+Fri Sep 27 15:13:11 UTC 2013 - sleep_walker@suse.cz
+
+- fix rot13 (bnc#827521)
+- rework /usr/games/ --> /usr/bin move
+
+-------------------------------------------------------------------
+Mon Sep 23 10:26:00 UTC 2013 - idonmez@suse.com
+
+- Create games user/group on demand. fate#314560 
+
+-------------------------------------------------------------------
+Fri May 31 14:08:49 UTC 2013 - varkoly@suse.com
+
+- Rename monop to monopoly to avoid conflict with mono-devel
+
+-------------------------------------------------------------------
+Wed Mar 27 14:07:06 UTC 2013 - meissner@suse.com
+
+- use Source URL.
+- remove factor as it exists in coreutils.
+
+-------------------------------------------------------------------
+Wed Jan 29 23:35:52 UTC 2013 - joop.boonen@opensuse.org
+
+- Fixed SLES build 
+
+-------------------------------------------------------------------
+Sun Jan 27 13:48:42 UTC 2013 - joop.boonen@opensuse.org
+
+- The binaries are now in /usr/bin like other games owned by root
+- A more secure attr setup that afik cant be exploited any more
+- Got rid of dm as it can cause a security issue, it not really
+  needed to play the games
+
+-------------------------------------------------------------------
+Fri Jan 18 15:25:59 CET 2013 - mhrusecky@suse.cz
+
+- dropping all permission scripts
+
+-------------------------------------------------------------------
+Wed Jan 16 20:09:07 UTC 2013 - joop.boonen@opensuse.org
+
+- run_permissions is obsolete, not supported in openSUSE > 12.2
+
+-------------------------------------------------------------------
+Wed Oct  5 12:51:00 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc, %__cxx macros
+
+-------------------------------------------------------------------
+Sat Sep 17 20:52:49 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Jun  2 14:30:22 CEST 2009 - coolo@novell.com
+
+- fix build with glibc 2.10
+- add rpmlintrc to silence warnings
+
+-------------------------------------------------------------------
+Fri Aug 22 15:24:54 CEST 2008 - lmichnovic@suse.cz
+
+- compiling with -I/usr/include/ncurses
+
+-------------------------------------------------------------------
+Fri Feb  8 11:21:27 CET 2008 - meissner@suse.de
+
+- replace name/host mismatch in utmpentry to fix gcc
+  warning (copy and pasto)
+
+-------------------------------------------------------------------
+Fri Oct 26 15:28:31 CEST 2007 - anicka@suse.cz
+
+- fix for gcc 4.3 
+
+-------------------------------------------------------------------
+Thu Aug  9 11:32:42 CEST 2007 - anosek@suse.cz
+
+- fixed build (compile.patch)
+
+-------------------------------------------------------------------
+Fri Aug  3 15:40:30 CEST 2007 - anosek@suse.cz
+
+- updated to version 2.17
+  - added new game dab (Dots and Boxes)
+  - bugfixes
+
+-------------------------------------------------------------------
+Fri Mar 30 15:40:22 CEST 2007 - rguenther@suse.de
+
+- add bison, flex and ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug 15 15:18:17 CEST 2006 - anosek@suse.cz
+
+- fixed Hunt not working on 64 bit [#199214] (hunt-64bit.patch)
+
+-------------------------------------------------------------------
+Sat May 27 20:04:50 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Fri Apr 14 13:00:47 CEST 2006 - mmarek@suse.cz
+
+- fix typo in last fix (-p1 vs. -p0)
+
+-------------------------------------------------------------------
+Wed Apr 12 12:05:26 CEST 2006 - mmarek@suse.cz
+
+- fix two buffer overflows in scanf() calls, one in sail which is
+  setgid games
+  [#165465] (overflow.diff)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 11 11:10:09 CEST 2005 - mmarek@suse.cz
+
+- Fix strict aliasing once again for gcc-4.1
+
+-------------------------------------------------------------------
+Thu May 12 16:51:40 CEST 2005 - meissner@suse.de
+
+- fixed buffer overflow on 64bit platforms.
+
+-------------------------------------------------------------------
+Thu May 12 15:34:53 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue Apr 12 15:52:59 CEST 2005 - pth@suse.de
+
+- And another incomplete declaration fixed.
+
+-------------------------------------------------------------------
+Mon Apr  4 14:19:04 CEST 2005 - pth@suse.de
+
+- Fix incomplete struct declaration and thus make it compile with gcc >= 4
+- Eliminate most compiler warnings.
+
+-------------------------------------------------------------------
+Sun Jan 23 18:09:51 CET 2005 - meissner@suse.de
+
+- fixed execl* calls
+
+-------------------------------------------------------------------
+Fri Nov 12 14:27:18 CET 2004 - ro@suse.de
+
+- fixed permission handling
+
+-------------------------------------------------------------------
+Tue Apr 27 09:37:18 CEST 2004 - mmj@suse.de
+
+- Fix strict aliasing
+
+-------------------------------------------------------------------
+Thu Oct 30 01:44:37 CET 2003 - ro@suse.de
+
+- don't build as root
+- package according to permissions.secure and call run_permissions
+
+-------------------------------------------------------------------
+Tue Sep 16 11:36:38 CEST 2003 - ltinkl@suse.cz
+
+- fix excessive setgid permissions (#30912)
+
+-------------------------------------------------------------------
+Tue May 27 16:44:00 CEST 2003 - pmladek@suse.cz
+
+- fixed installation of phantasia score files to do not produce
+  unpackaged files
+- uniffied the suffix of patches to .diff
+
+-------------------------------------------------------------------
+Tue Jul 30 16:36:39 CEST 2002 - kukuk@suse.de
+
+- use group games instead of game
+
+-------------------------------------------------------------------
+Thu Jul 11 00:27:24 CEST 2002 - olh@suse.de
+
+- add bsd-games-2.13-ppc64.diff, text is not a valid function name
+
+-------------------------------------------------------------------
+Wed Dec 12 15:03:51 CET 2001 - pmladek@suse.cz
+
+- updated to version 2.13
+- package renamed from bsdgames to bsd-games
+
+-------------------------------------------------------------------
+Fri May 25 09:12:51 CEST 2001 - pmladek@suse.cz
+
+- fixed includes on ia64 
+
+-------------------------------------------------------------------
+Tue May  8 18:32:23 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Mon Feb 12 07:10:22 CET 2001 - ro@suse.de
+
+- define timerclear if undef in huntd/ctl_transact 
+
+-------------------------------------------------------------------
+Sun Oct  1 17:33:51 CEST 2000 - kukuk@suse.de
+
+- Remove termcap from need for build
+- Fix sail for compiling with glibc 2.2
+
+-------------------------------------------------------------------
+Thu Jun  8 08:34:18 CEST 2000 - vinil@suse.cz
+
+- file list changed
+
+-------------------------------------------------------------------
+Fri Jun  2 11:49:17 CEST 2000 - vinil@suse.cz
+
+- fortune excluded
+- group and set-gid for games
+
+-------------------------------------------------------------------
+Tue May 23 09:06:08 CEST 2000 - vinil@suse.cz
+
+- update to version 2.11 (major file relocations, because of FHS)
+- buildroot added
+
+-------------------------------------------------------------------
+Fri Mar  3 12:54:01 CET 2000 - ro@suse.de
+
+- use macro for mandir
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Oct  2 12:33:54 MEST 1998 - ro@suse.de
+
+- adventure: no more -traditional-cpp
+- configure: use bsd-lib only if it's there
+- dm/dm.c:   dont try to include nlist for glibc
+- phantasia/phantglobs.h: dont redeclare strcpy et. al. for glibc
+- sail/extern.h:          dito
+
+-------------------------------------------------------------------
+Fri Sep 18 17:41:36 MEST 1998 - max@suse.de
+
+- added some files to the filelist
+
+-------------------------------------------------------------------
+Fri Oct 24 09:05:51 MEST 1997 - max@suse.de
+
+- moved from Version 1.3 to 1.5
+- prepared for autobuild
+- corrected some paths
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

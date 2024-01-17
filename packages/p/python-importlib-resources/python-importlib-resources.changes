@@ -1,0 +1,272 @@
+-------------------------------------------------------------------
+Mon Nov 27 19:08:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.1:
+  * Added missed stream argument in simple.ResourceHandle. Ref
+    python/cpython#111775.
+  * MultiplexedPath now expects Traversable paths. String
+    arguments to MultiplexedPath are now deprecated.
+  * Enabled support for resources in namespace packages in zip
+    files. (#287)
+
+-------------------------------------------------------------------
+Tue Aug  8 11:05:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.1:
+  * Bugfixes
+  * Restored Apache license. (#285)
+  * Deprecations and Removals
+  * Removed legacy functions deprecated in 5.3. (#80)
+  * Features
+  * Require Python 3.8 or later
+
+-------------------------------------------------------------------
+Mon May  8 04:51:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Thu May  4 15:21:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.12.0:
+  * importlib_resources (backport) now gives
+    precedence to built-in readers (file system, zip,
+    namespace packages), providing forward-compatibility
+    of behaviors like ``MultiplexedPath``.
+  * #280: Fixed one more ``EncodingWarning`` in test suite.
+  * #265: ``MultiplexedPath`` now honors multiple subdirectories
+    in ``iterdir`` and ``joinpath``.
+  * Packaging refresh, including fixing EncodingWarnings
+    and some tests cleanup.
+
+-------------------------------------------------------------------
+Thu Feb  2 18:51:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove obsolete cache compilation for tests
+  * fixes d:l:p:backports 15.4_py39 build failure.
+- Avoid building for not supported Python <= 3.6
+
+-------------------------------------------------------------------
+Mon Jan  2 19:11:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.10.2:
+  * Prefer ``write_bytes`` to context manager as
+  proposed in gh-100586.
+
+-------------------------------------------------------------------
+Tue Dec 13 15:37:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v5.10.1
+  * v5.10.1
+  #274: Fixed ResourceWarning in _common.
+
+-------------------------------------------------------------------
+Fri Oct 28 17:45:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v5.10.0
+  * #203: Lifted restriction on modules passed to files. Now modules need not be a package and if a non-package module is passed,
+    resources will be resolved adjacent to those modules, even for modules not found in any package. For example,
+    files(import_module('mod.py')) will resolve resources found at the root. The parameter to files was renamed from 'package' to 'anchor',
+    with a compatibility shim for those passing by keyword.
+  * #259: files no longer requires the anchor to be specified and can infer the anchor from the caller's scope (defaults to the caller's module).
+
+-------------------------------------------------------------------
+Tue Sep 13 06:45:26 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 5.9.0:
+  - #228: as_file now also supports a Traversable representing
+    a directory and (when needed) renders the full tree to a
+    temporary directory.
+  - #253: In MultiplexedPath, restore expectation that a compound
+    path with a non-existent directory does not raise an
+    exception.
+  - #250: Now Traversable.joinpath provides a concrete
+    implementation, replacing the implementation in .simple and
+    converging with the behavior in MultiplexedPath.
+  - #249: In simple.ResourceContainer.joinpath, honor names split
+    by posixpath.sep.
+  - #248: abc.Traversable.joinpath now allows for multiple
+    arguments and specifies that posixpath.sep is allowed
+    in any argument to accept multiple arguments, matching
+    the behavior found in zipfile.Path and pathlib.Path
+    simple.ResourceContainer now honors this behavior
+  - #244: Add type declarations in ABCs Require Python 3.7 or
+    later
+  - #243: Fix error when no __pycache__ directories exist when
+    testing update-zips.
+- Remove BR on python-zipp to break a dependency cycle; it is
+  strictly not needed for build (although it is Requires),
+  because ZipReader is not tested.
+
+-------------------------------------------------------------------
+Sat Nov  6 18:19:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.0:
+  * Test suite now relies entirely on the traversable API.
+  * Now raise a ``DeprecationWarning`` for all legacy
+    functions. Instead, users should rely on the ``files()``
+    API introduced in importlib_resources 1.3. See
+  * Updated readme to reflect current behavior and show
+    which versions correspond to which behavior in CPython.
+
+-------------------------------------------------------------------
+Mon Sep 20 10:47:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v5.2.2
+  * #234: Fix refleak in as_file caught by CPython tests.
+- Release v5.2.1
+  * bpo-38291: Avoid DeprecationWarning on typing.io.
+- Release v5.2.0
+  * #80 via #221: Legacy API (path, contents, ...) is now
+    supported entirely by the .files() API with a compatibility
+    shim supplied for resource loaders without that functionality.
+- Release v5.0.6
+  * bpo-38693: Prefer f-strings to .format calls.
+- Release v5.1.4
+  * #225: Require zipp 3.1.0 or later on Python prior to 3.10 to
+    incorporate those fixes.
+- Release v5.0.5
+  * #216: Make MultiplexedPath.name a property per the spec.
+- Release v5.1.3
+  * Refresh packaging and improve tests.
+  * #216: Make MultiplexedPath.name a property per the spec.
+- Release v5.1.2
+  * Re-release with changes from 5.0.4.
+- Release v5.0.4
+  * Fixed non-hermetic test in test_reader, revealed by GH-24670.
+- Release v5.1.1
+  * Re-release with changes from 5.0.3.
+- Release v5.0.3
+  * Simplified DegenerateFiles.Path.
+- Release v5.0.2
+  * #214: Added _adapters module to ensure that degenerate files
+    behavior can be made available for legacy loaders whose
+    resource readers don't implement it. Fixes issue where
+    backport compatibility module was masking this fallback
+    behavior only to discover the defect when applying changes to
+    CPython.
+- Release v5.1.0
+  * Added simple module implementing adapters from a low-level
+    resource reader interface to a TraversableResources interface.
+    Closes #90.
+- Release v5.0.1
+  * Remove pyinstaller hook for hidden 'trees' module.
+- Release v5.0.0
+  * Removed importlib_resources.trees, deprecated since 1.3.0.
+- Release v4.1.1
+  * Fixed badges in README.
+- Release v4.1.0
+  * #209: Adopt jaraco/skeleton.
+  * Cleaned up some straggling Python 2 compatibility code.
+  * Refreshed test zip files without .pyc and .pyo files.
+- Release v4.0.0
+  * #108: Drop support for Python 2.7. Now requires Python 3.6+.
+- Release v3.3.1
+  * Minor cleanup.
+
+-------------------------------------------------------------------
+Tue Nov 24 18:37:01 UTC 2020 - Markéta Machová <mmachova@suse.com>
+
+- Add Obsoletes: line to avoid conflicts with python-importlib_resources
+
+-------------------------------------------------------------------
+Fri Nov 20 12:24:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Reintroduce into Tumbleweed for python36 flavor
+- Update to 3.2.0
+  * #68: Resources in PEP 420 Namespace packages are now supported.
+- v3.1.1
+  * bpo-41490: contents is now also more aggressive about consuming
+    any iterator from the Reader.
+- v3.1.0
+  * #110 and bpo-41490: path method is more aggressive about
+    releasing handles to zipfile objects early, enabling use-cases
+    like certifi to leave the context open but delete the
+    underlying zip file.
+- v3.0.0
+  * Package no longer exposes importlib_resources.__version__.
+    Users that wish to inspect the version of importlib_resources
+    should instead invoke .version('importlib_resources') from
+    importlib-metadata ( stdlib or backport) directly. This change
+    eliminates the dependency on importlib_metadata. Closes #100.
+  * Package now always includes its data. Closes #93.
+  * Declare hidden imports for PyInstaller. Closes #101.
+- v2.0.1
+  * Select pathlib and contextlib imports based on Python version
+    and avoid pulling in deprecated [pathlib](https://pypi.org/
+    project/pathlib). Closes #97.
+- v2.0.0
+  * Loaders are no longer expected to implement the
+    abc.TraversableResources interface, but are instead expected to
+    return TraversableResources from their get_resource_reader
+    method.
+- v1.5.0
+  * Traversable is now a Protocol instead of an Abstract Base Class
+    (Python 2.7 and Python 3.8+).
+  * Traversable objects now require a .name property.
+- v1.4.0
+  * #79: Temporary files created will now reflect the filename of
+    their origin.
+- v1.3.1
+  * For improved compatibility, importlib_resources.trees is now
+    imported implicitly. Closes #88.
+- v1.3.0
+  * Add extensibility support for non-standard loaders to supply
+    Traversable resources. Introduces a new abstract base class
+    abc.TraversableResources that supersedes (but implements for
+    compatibility) abc.ResourceReader. Any loader that implements
+    (implicitly or explicitly) the TraversableResources.files
+    method will be capable of supplying resources with subdirectory
+    support. Closes #77.
+  * Preferred way to access as_file is now from top-level module.
+    importlib_resources.trees.as_file is deprecated and
+    discouraged. Closes #86.
+  * Moved Traversable abc to abc module. Closes #87.
+- v1.2.0
+  * Traversable now requires an open method. Closes #81.
+  * Fixed error on Python 3.5.{0,3}. Closes #83.
+  * Updated packaging to resolve version from package metadata.
+    Closes #82.
+
+-------------------------------------------------------------------
+Tue Aug 25 07:44:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing runtime dependencies bsc#1175707
+
+-------------------------------------------------------------------
+Sat Jun 13 21:38:55 CEST 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.1.0 (jsc#PM-1954 bsc#1172933):
+  - Add support for retrieving resources from subdirectories of
+    packages through the new files() function, which returns
+    a Traversable object with joinpath and read_* interfaces
+    matching those of pathlib.Path objects. This new function
+    supersedes all of the previous functionality as it provides
+    a more general-purpose access to a package’s resources.
+  - With this function, subdirectories are supported.
+  - The documentation has been updated to reflect that this
+    function is now the preferred interface for loading package
+    resources. It does not, however, support resources from
+    arbitrary loaders. It currently only supports resources from
+    file system path and zipfile packages (a consequence of the
+    ResourceReader interface only operating on Python packages).
+
+-------------------------------------------------------------------
+Wed Jul 31 12:49:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- This package is by default provided in python 3.7 and newer
+
+-------------------------------------------------------------------
+Thu Mar 21 15:48:41 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Simplify logic for typing dependency
+
+-------------------------------------------------------------------
+Tue Feb  5 14:35:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Jan 31 13:27:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by importlib-metadata

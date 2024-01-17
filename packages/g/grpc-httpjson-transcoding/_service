@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/grpc-ecosystem/grpc-httpjson-transcoding</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">grpc-httpjson-transcoding</param>
+    <param name="versionformat">%cd</param>
+    <param name="revision">82850792f42ab7ea7ee9b9c6bcbfc578bc3810c0</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

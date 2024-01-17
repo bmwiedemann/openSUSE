@@ -1,0 +1,51 @@
+Index: openssl-1.0.2b/doc/ssl/SSL_COMP_add_compression_method.pod
+===================================================================
+--- openssl-1.0.2b.orig/doc/ssl/SSL_COMP_add_compression_method.pod	2015-06-11 20:11:49.353667505 +0200
++++ openssl-1.0.2b/doc/ssl/SSL_COMP_add_compression_method.pod	2015-06-11 20:11:51.183689314 +0200
+@@ -47,6 +47,24 @@ of compression methods supported on a pe
+ If enabled during compilation, the OpenSSL library will have the
+ COMP_zlib() compression method available.
+ 
++And, there is an environment variable to switch the compression
++methods off and on. In default the compression is off to mitigate 
++the so called CRIME attack ( CVE-2012-4929). If you want to enable 
++compression again set OPENSSL_NO_DEFAULT_ZLIB to "no".
++
++The variable can be switched on and off at runtime; when this variable
++is set "no" compression is enabled, otherwise no, for example:
++
++in shell 'export OPENSSL_NO_DEFAULT_ZLIB=no'
++or in C to call
++int setenv(const char *name, const char *value, int overwrite); and
++int unsetenv(const char *name);
++
++Note: This reverts the behavior of the variable as it was before!
++
++And pay attention that this freaure is temporary, it maybe changed by
++the following updates.
++
+ =head1 WARNINGS
+ 
+ Once the identities of the compression methods for the TLS protocol have
+Index: openssl-1.0.2b/ssl/ssl_ciph.c
+===================================================================
+--- openssl-1.0.2b.orig/ssl/ssl_ciph.c	2015-06-11 20:11:49.353667505 +0200
++++ openssl-1.0.2b/ssl/ssl_ciph.c	2015-06-11 20:11:51.183689314 +0200
+@@ -478,10 +478,16 @@ static void load_builtin_compressions(vo
+ 
+         if (ssl_comp_methods == NULL) {
+             SSL_COMP *comp = NULL;
++            const char *nodefaultzlib;
+ 
+             MemCheck_off();
+             ssl_comp_methods = sk_SSL_COMP_new(sk_comp_cmp);
+-            if (ssl_comp_methods != NULL) {
++		/* The default is "no" compression to avoid CRIME/BEAST */
++	nodefaultzlib = getenv("OPENSSL_NO_DEFAULT_ZLIB");
++	if (	ssl_comp_methods != NULL &&
++			nodefaultzlib &&
++			strncmp( nodefaultzlib, "no", 2) == 0)
++		{
+                 comp = (SSL_COMP *)OPENSSL_malloc(sizeof(SSL_COMP));
+                 if (comp != NULL) {
+                     comp->method = COMP_zlib();

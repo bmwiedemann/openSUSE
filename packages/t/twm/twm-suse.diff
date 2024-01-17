@@ -1,0 +1,19 @@
+--- twm-1.0.4/src/system.twmrc.orig
++++ twm-1.0.4/src/system.twmrc
+@@ -15,11 +15,11 @@
+ NoGrabServer
+ RestartPreviousState
+ DecorateTransients
+-TitleFont "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+-ResizeFont "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+-MenuFont "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+-IconFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+-IconManagerFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*"
++TitleFont       "-gnu-unifont-medium-r-normal--16-*-*-*-*-*-iso10646-1,-*-helvetica-medium-r-*--17-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*,-*--16-*,*" 
++ResizeFont      "-gnu-unifont-medium-r-normal--16-*-*-*-*-*-iso10646-1,-*-helvetica-medium-r-*--17-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*,-*--16-*,*"
++MenuFont        "-gnu-unifont-medium-r-normal--16-*-*-*-*-*-iso10646-1,-*-helvetica-medium-r-*--17-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*,-*--16-*,*"
++IconFont        "-gnu-unifont-medium-r-normal--16-*-*-*-*-*-iso10646-1,-*-helvetica-medium-r-*--17-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*,-*--16-*,*"
++IconManagerFont "-gnu-unifont-medium-r-normal--16-*-*-*-*-*-iso10646-1,-*-helvetica-medium-r-*--17-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*,-*--16-*,*"
+ #ClientBorderWidth
+ 
+ Color

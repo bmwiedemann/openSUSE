@@ -1,0 +1,47 @@
+https://github.com/mamedev/mame/pull/11651
+
+Author: Bernhard M. Wiedemann <bernhard+gitcommit lsmod.de>
+Date:   Sun Oct 22 20:23:29 2023 +0200
+
+Make generation of has_*.h files deterministic
+
+Without this patch, order of entries in generated/has_{buses,cpus,formats,machines,sounds,videos}.h varied across builds.
+
+This patch was done while working on reproducible builds for openSUSE.
+
+
+Index: mame-mame0258/scripts/genie.lua
+===================================================================
+--- mame-mame0258.orig/scripts/genie.lua
++++ mame-mame0258/scripts/genie.lua
+@@ -1530,7 +1530,7 @@ function generate_has_header(hashname, h
+    file:write(string.format("#ifndef GENERATED_HAS_%s_H\n", hashname))
+    file:write(string.format("#define GENERATED_HAS_%s_H\n", hashname))
+    file:write("\n")
+-   for k, v in pairs(hash) do
++   for k, v in ipairs(hash) do
+ 	  if v then
+ 		 file:write(string.format("#define HAS_%s_%s\n", hashname, k))
+ 	  end
+Index: mame-mame0258/scripts/build/makedep.py
+===================================================================
+--- mame-mame0258.orig/scripts/build/makedep.py
++++ mame-mame0258/scripts/build/makedep.py
+@@ -432,7 +432,7 @@ class DriverFilter:
+             elif text:
+                 if (len(text) >= 2) and ((text[0] == '"') or (text[0] == "'")) and (text[0] == text[-1]):
+                     text = text[1:-1]
+-                paths = glob.glob(os.path.join(basepath, *text.split('/')))
++                paths = sorted(glob.glob(os.path.join(basepath, *text.split('/'))))
+                 if not paths:
+                     sys.stderr.write('%s:%s: Pattern "%s" did not match any source files\n' % (path, parser.input_line, text))
+                     sys.exit(1)
+@@ -1003,6 +1003,8 @@ def collect_sources(root, sources):
+         fullpath = os.path.join(root, source)
+         if os.path.isdir(fullpath):
+             for subdir, dirs, files in os.walk(fullpath):
++                dirs.sort()
++                files.sort()
+                 for candidate in files:
+                     if os.path.splitext(candidate)[1] == '.cpp':
+                         if subdir != fullpath:

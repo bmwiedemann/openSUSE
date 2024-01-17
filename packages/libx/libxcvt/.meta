@@ -1,0 +1,13 @@
+<package name="libxcvt" project="openSUSE:Factory">
+  <title>CVT standard timing modeline generator</title>
+  <description>libxcvt is a library providing a standalone version of the X server
+implementation of the VESA Coordinated Video Timings (CVT) standard
+timing modelines generator. libxcvt also provides a standalone
+version of the command line tool cvt copied from the Xorg
+implementation and is meant to be a direct replacement to the version
+provided by the Xorg server.
+
+</description>
+  <devel project="X11:XOrg" package="libxcvt"/>
+  <url>https://gitlab.freedesktop.org/xorg/lib/libxcvt</url>
+</package>

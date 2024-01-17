@@ -1,0 +1,11 @@
+--- ./common/slp_compare.c.orig	2016-10-12 11:44:17.925163946 +0000
++++ ./common/slp_compare.c	2016-10-12 11:50:22.658115399 +0000
+@@ -204,7 +204,7 @@ static int SLPFoldWhiteSpace(size_t len,
+       if (isspace(*p))
+       {
+          char * ws2p = ++p;         /* Point ws2p to the second ws char. */
+-         while (isspace(*p))        /* Scan till we hit a non-ws char. */
++         while (p < ep && isspace(*p)) /* Scan till we hit a non-ws char. */
+             p++;
+          len -= p - ws2p;           /* Reduce the length by extra ws. */
+          memmove(ws2p, p, ep - p);  /* Overwrite the extra white space. */

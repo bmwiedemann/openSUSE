@@ -1,0 +1,9 @@
+<package name="bsd-games" project="openSUSE:Factory">
+  <title>Several Text-Mode Games</title>
+  <description>This package copies these games into /usr/games: arithmetic, atc,
+backgammon, battlestar, bcd, bog, caesar, canfield, cfscores, cribbage,
+factor, fish, fortune, hangman, hunt, mille, monop, morse, number,
+paranoia, pom, ppt, primes, rain, robots, sail, snake, snscore,
+teachgammon, trek, wargames, worm, worms, and wump.</description>
+  <devel project="games" package="bsd-games"/>
+</package>

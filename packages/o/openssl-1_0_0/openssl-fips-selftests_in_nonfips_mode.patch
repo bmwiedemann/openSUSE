@@ -1,0 +1,74 @@
+Index: openssl-1.0.2g/crypto/fips/fips.c
+===================================================================
+--- openssl-1.0.2g.orig/crypto/fips/fips.c	2016-04-14 10:49:37.460170356 +0200
++++ openssl-1.0.2g/crypto/fips/fips.c	2016-04-14 10:49:47.270307813 +0200
+@@ -448,6 +448,44 @@ int FIPS_module_mode_set(int onoff, cons
+     return ret;
+ }
+ 
++/* In non-FIPS mode, the selftests must succeed if the
++ * checksum files are present
++ */
++void NONFIPS_selftest_check(void)
++    {
++        int rv;
++	char *hmacpath;
++        char path[PATH_MAX+1];
++
++        if (fips_selftest_fail)
++	     {
++                /* check if the checksum files are installed */
++                rv = get_library_path("libcrypto.so." SHLIB_VERSION_NUMBER, "FIPS_mode_set", path, sizeof(path));
++                if (rv < 0)
++                        OpenSSLDie(__FILE__,__LINE__, "FATAL FIPS SELFTEST FAILURE");
++
++                hmacpath = make_hmac_path(path);
++	        if (hmacpath == NULL)
++                        OpenSSLDie(__FILE__,__LINE__, "FATAL FIPS SELFTEST FAILURE");
++
++                if (access(hmacpath, F_OK))
++                    {
++                        /* no hmac file is present, ignore the failed selftests */
++                        if (errno == ENOENT)
++                            {
++                                free(hmacpath);
++                                return;
++                            }
++                        /* we fail on any other error */
++                    }
++                /* if the file exists, but the selftests failed
++                   (eg wrong checksum), we fail too */
++                free(hmacpath);
++                OpenSSLDie(__FILE__,__LINE__, "FATAL FIPS SELFTEST FAILURE");
++	     }
++        /* otherwise ok, selftests were successful */
++    }
++
+ static CRYPTO_THREADID fips_thread;
+ static int fips_thread_set = 0;
+ 
+Index: openssl-1.0.2g/crypto/fips/fips.h
+===================================================================
+--- openssl-1.0.2g.orig/crypto/fips/fips.h	2016-04-14 10:49:47.270307813 +0200
++++ openssl-1.0.2g/crypto/fips/fips.h	2016-04-14 10:50:45.867128848 +0200
+@@ -107,6 +107,7 @@ extern "C" {
+     int FIPS_selftest_drbg(void);
+     int FIPS_selftest_drbg_all(void);
+     int FIPS_selftest_cmac(void);
++    void NONFIPS_selftest_check(void);
+ 
+     void FIPS_get_timevec(unsigned char *buf, unsigned long *pctr);
+ 
+Index: openssl-1.0.2g/crypto/o_init.c
+===================================================================
+--- openssl-1.0.2g.orig/crypto/o_init.c	2016-04-14 10:49:47.270307813 +0200
++++ openssl-1.0.2g/crypto/o_init.c	2016-04-14 10:51:31.634770112 +0200
+@@ -87,6 +87,8 @@ static void init_fips_mode(void)
+      */
+ 
+     if (buf[0] != '1') {
++        /* abort if selftest failed and the module is complete */
++        NONFIPS_selftest_check();
+         /* drop down to non-FIPS mode if it is not requested */
+         FIPS_mode_set(0);
+     } else {

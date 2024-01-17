@@ -1,0 +1,5 @@
+<package name="ruqola" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Extra" package="ruqola"/>
+</package>

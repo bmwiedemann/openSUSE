@@ -1,0 +1,5 @@
+<package name="xmonad" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="xmonad"/>
+</package>

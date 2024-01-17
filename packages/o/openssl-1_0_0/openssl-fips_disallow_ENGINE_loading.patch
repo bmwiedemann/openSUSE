@@ -1,0 +1,16 @@
+Index: openssl-1.0.2g/crypto/engine/eng_all.c
+===================================================================
+--- openssl-1.0.2g.orig/crypto/engine/eng_all.c	2016-04-13 15:04:40.644190904 +0200
++++ openssl-1.0.2g/crypto/engine/eng_all.c	2016-04-13 15:06:04.092468490 +0200
+@@ -70,11 +70,6 @@ void ENGINE_load_builtin_engines(void)
+ #ifdef OPENSSL_FIPS
+     OPENSSL_init_library();
+     if (FIPS_mode()) {
+-        /* We allow loading dynamic engine as a third party
+-           engine might be FIPS validated.
+-           User is disallowed to load non-validated engines
+-           by security policy. */
+-        ENGINE_load_dynamic();
+         return;
+     }
+ #endif

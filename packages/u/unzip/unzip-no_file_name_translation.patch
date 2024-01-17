@@ -1,0 +1,97 @@
+Index: man/zipinfo.1
+===================================================================
+--- man/zipinfo.1.orig	2010-05-21 14:23:25.824590928 +0200
++++ man/zipinfo.1	2010-05-21 14:24:41.631590822 +0200
+@@ -114,7 +114,10 @@ useful in cases where the stored filenam
+ .TP
+ .B \-s
+ list zipfile info in short Unix ``\fCls \-l\fR'' format.  This is the default
+-behavior; see below.
++behavior; see \fB\-m option below.
++.TP
++.B \-S
++suppress the conversion of file name encodings.
+ .TP
+ .B \-m
+ list zipfile info in medium Unix ``\fCls \-l\fR'' format.  Identical to the
+Index: man/unzip.1
+===================================================================
+--- man/unzip.1.orig	2010-05-21 14:23:25.824590928 +0200
++++ man/unzip.1	2010-05-21 14:24:41.635590912 +0200
+@@ -25,7 +25,7 @@
+ unzip \- list, test and extract compressed files in a ZIP archive
+ .PD
+ .SH SYNOPSIS
+-\fBunzip\fP [\fB\-Z\fP] [\fB\-cflptTuvz\fP[\fBabjnoqsCDKLMOUVWX$/:^\fP]]
++\fBunzip\fP [\fB\-Z\fP] [\fB\-cflptTuvz\fP[\fBabjnoqsCDKLMOSUVWX$/:^\fP]]
+ \fIfile\fP[\fI.zip\fP] [\fIfile(s)\fP\ .\|.\|.]
+ [\fB\-x\fP\ \fIxfile(s)\fP\ .\|.\|.] [\fB\-d\fP\ \fIexdir\fP]
+ .PD
+Index: unzpriv.h
+===================================================================
+--- unzpriv.h.orig	2010-05-21 14:24:02.641090783 +0200
++++ unzpriv.h	2010-05-21 14:24:55.632590821 +0200
+@@ -3020,6 +3020,7 @@ char    *GetLoadPath     OF((__GPRO));
+  */
+ #ifndef Ext_ASCII_TO_Native
+ #  define Ext_ASCII_TO_Native(string, hostnum, hostver, isuxatt, islochdr) \
++    if (uO.no_conv_enc == FALSE) { \
+     if (((hostnum) == FS_FAT_ && \
+          !(((islochdr) || (isuxatt)) && \
+            ((hostver) == 25 || (hostver) == 26 || (hostver) == 40))) || \
+@@ -3028,7 +3029,7 @@ char    *GetLoadPath     OF((__GPRO));
+         _OEM_INTERN((string)); \
+     } else { \
+         _ISO_INTERN((string)); \
+-    }
++    }}
+ #endif
+ 
+ 
+Index: zipinfo.c
+===================================================================
+--- zipinfo.c.orig	2010-05-21 14:23:25.824590928 +0200
++++ zipinfo.c	2010-05-21 14:24:41.695590831 +0200
+@@ -527,6 +527,12 @@ int zi_opts(__G__ pargc, pargv)
+                     else
+                         uO.lflag = 3;
+                     break;
++	        case 'S':      /* suppress encoding conversion */
++                    if (negative)
++                        uO.no_conv_enc = FALSE, negative = 0;
++                    else
++                        uO.no_conv_enc = TRUE;
++                    break;
+                 case 't':      /* totals line */
+                     if (negative)
+                         tflag_2v = tflag_slm = FALSE, negative = 0;
+Index: unzip.c
+===================================================================
+--- unzip.c.orig	2010-05-21 14:23:25.824590928 +0200
++++ unzip.c	2010-05-21 14:24:41.727590745 +0200
+@@ -1689,6 +1689,13 @@ int uz_opts(__G__ pargc, pargv)
+                     else
+                         uO.S_flag = TRUE;
+                     break;
++#else
++                case ('S'):    /* suppress file name encoding conversions */
++                    if (negative)
++                        uO.no_conv_enc = FALSE, negative = 0;
++                    else
++                        uO.no_conv_enc = TRUE;
++                    break;
+ #endif /* VMS */
+                 case ('t'):
+                     if (negative)
+Index: unzip.h
+===================================================================
+--- unzip.h.orig	2010-05-21 14:23:25.824590928 +0200
++++ unzip.h	2010-05-21 14:24:41.731591035 +0200
+@@ -518,6 +518,7 @@ typedef struct _UzpOpts {
+ #if (defined(MSDOS) || defined(FLEXOS) || defined(OS2) || defined(WIN32))
+     int sflag;          /* -s: convert spaces in filenames to underscores */
+ #endif
++    int no_conv_enc;    /* -S: suppress encoding conversion */
+ #if (defined(NLM))
+     int sflag;          /* -s: convert spaces in filenames to underscores */
+ #endif

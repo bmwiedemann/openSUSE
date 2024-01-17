@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Tue Mar  7 09:23:22 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version v322
+  * Update translations
+  * Add support mate-dictionary in dictionary plugin
+  * Fix Firefox and Thunderbird database connection
+  * Add support for file://<local-hostname>/ URLs
+  * Add Firefox tags plugin
+  * Fix Thunderbird plugin 
+  * Add libvirt plugin - manage libvirt domains
+  * Add zeal plugin - quick search in zeal docsets
+  * Fix window plugin - don't break on Wayland, fix switching workspace
+  * Fix segfault on Wayland and newer version of libwnck
+
+-------------------------------------------------------------------
+Sat Sep 11 15:30:00 UTC 2021 - IBBoard <dev@ibboard.co.uk>
+
+- Fix Python XDG dependency so that Kupfer doesn't crash on start
+
+-------------------------------------------------------------------
+Wed Aug 18 07:54:01 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Require missed python3-libxml2 to get it build 
+
+-------------------------------------------------------------------
+Wed Jul 14 10:20:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python3 instead of python: this package moved to
+  py3 long ago and the 'python' symbol is python2.
+
+-------------------------------------------------------------------
+Tue Feb 25 01:32:02 UTC 2020 - wnereiz@member.fsf.org
+
+- Add dependency packages python-base to satisfy waf env setting 
+
+-------------------------------------------------------------------
+Sat Oct  6 12:30:20 UTC 2018 - wnereiz@member.fsf.org
+
+- Add dependency packages python3-cairo and python3-dbus-python
+  (bsc#1102282)
+- Some minor changes to satisfy spec-cleaner
+
+-------------------------------------------------------------------
+Sun Feb 18 18:53:02 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Sun Feb 18 14:00:20 UTC 2018 - wnereiz@kawashiro.org
+
+- Update to version v319, and fix .desktop file categories 
+
+-------------------------------------------------------------------
+Sun Feb 12 05:52:54 UTC 2017 - wnereiz@kawashiro.org
+
+- Updated to version v305. There're some big changes from upstream:
+  + Project home changed to github
+  + Switched to python3
+  + Gtk3 support
+  + other minor changes
+
+-------------------------------------------------------------------
+Tue Jan 17 16:45:38 UTC 2017 - mpluskal@suse.com
+
+- Correct rpm group
+- Enable parallel build
+- Update dependencies
+
+-------------------------------------------------------------------
+Sat Jul  9 14:00:41 UTC 2016 - wnereiz@kawashiro.org
+
+- Remove useless python-wnck dependency (for pushing to Leap) 
+
+-------------------------------------------------------------------
+Sat Jan  2 11:38:50 UTC 2016 - mimi.vx@gmail.com
+
+- spec-cleaned 
+
+-------------------------------------------------------------------
+* Thu Jun 6 2014 wnereiz <wnereiz@gmail.com>
+- Remove %clean since it is not needed anymore.
+
+* Thu Jun 5 2014 wnereiz <wnereiz@gmail.com>
+- Some changes based on rpmlint results
+  + Resolve standard-dir-owned-by-package problem 
+  + Change GPL version to spec standard.
+- Use %_libdir instead of hardcode in spec.
+
+* Thu Jan 2 2014 wnereiz <wnereiz@gmail.com>
+- Version 208
+- Build rpm form the upstream codes

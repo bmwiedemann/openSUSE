@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a1d43e4cdc1486717a343fc9f01d08d3</srcmd5>
+    <version>5.5.13.1</version>
+    <time>1594894642</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>821104</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>90c1eb798d5126de91eb77872d9f7cf1</srcmd5>
+    <version>5.5.13.2</version>
+    <time>1610977133</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build</comment>
+    <requestid>862840</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>466b37f091bfa236fc50a512e19f1a5b</srcmd5>
+    <version>5.5.13.3</version>
+    <time>1649450783</time>
+    <user>dimstar_suse</user>
+    <comment>misc. security fixes</comment>
+    <requestid>967872</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c146ac897f70e280e95d61c7c20a58a9</srcmd5>
+    <version>5.5.13.3</version>
+    <time>1694460145</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1110268</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c6054bf783bbe3c404c35f1bcb2cce86</srcmd5>
+    <version>5.5.13.3</version>
+    <time>1697748563</time>
+    <user>anag+factory</user>
+    <comment>Fix build with bouncycastle 1.75+</comment>
+    <requestid>1118821</requestid>
+  </revision>
+</revisionlist>

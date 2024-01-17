@@ -1,0 +1,16 @@
+Index: openssl-1.0.2h/crypto/o_init.c
+===================================================================
+--- openssl-1.0.2h.orig/crypto/o_init.c	2016-06-01 15:26:25.026937000 +0200
++++ openssl-1.0.2h/crypto/o_init.c	2016-06-01 16:23:24.980858697 +0200
+@@ -111,9 +111,9 @@ void __attribute__ ((constructor)) OPENS
+         return;
+     done = 1;
+ #ifdef OPENSSL_FIPS
+-    if (!FIPS_module_installed()) {
++    /*if (!FIPS_module_installed()) {
+         return;
+-    }
++    }*/
+     RAND_init_fips();
+     init_fips_mode();
+     if (!FIPS_mode()) {

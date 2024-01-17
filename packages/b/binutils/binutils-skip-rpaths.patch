@@ -1,0 +1,127 @@
+diff --git a/ld/emultempl/elf.em b/ld/emultempl/elf.em
+index 42c552b36e..dd0a6b1e60 100644
+--- a/ld/emultempl/elf.em
++++ b/ld/emultempl/elf.em
+@@ -135,6 +135,8 @@ if test x"$LDEMUL_BEFORE_ALLOCATION" != xgld"$EMULATION_NAME"_before_allocation;
+   if test x"${ELF_INTERPRETER_NAME}" = x; then
+     ELF_INTERPRETER_NAME=NULL
+   fi
++
++  libpath_nl=`echo ${NATIVE_LIB_DIRS// /\\\n}`
+ fragment <<EOF
+ 
+ /* This is called after the sections have been attached to output
+diff --git a/ld/ldelf.c b/ld/ldelf.c
+index 2e27cf48a8..7162d0cf91 100644
+--- a/ld/ldelf.c
++++ b/ld/ldelf.c
+@@ -1506,6 +1506,31 @@ ldelf_append_to_separated_string (char **to, char *op_arg)
+     }
+ }
+ 
++static int
++ldelf_is_contained (const char *path, const char *dc)
++{
++  while (*dc)
++    {
++      const char *pc = path;
++
++      while (*dc && *pc && *dc == *pc && *dc != '\n'
++            && *pc != ':' && *dc != '=')
++       {
++         dc++;
++         pc++;
++       }
++      if ((*pc == 0 || *pc == ':') && (*dc == '\n' || *dc == '=' || *dc == 0))
++       return 1;
++
++      while (*dc && *dc != '\n')
++       dc++;
++      if (*dc == '\n')
++       dc++;
++    }
++
++  return 0;
++}
++
+ /* This is called after the sections have been attached to output
+    sections, but before any sizes or addresses have been set.  */
+ 
+@@ -1513,7 +1538,7 @@ void
+ ldelf_before_allocation (char *audit, char *depaudit,
+ 			 const char *default_interpreter_name)
+ {
+-  const char *rpath;
++  char *rpath;
+   asection *sinterp;
+   bfd *abfd;
+   struct bfd_link_hash_entry *ehdr_start = NULL;
+@@ -1608,7 +1633,67 @@ ldelf_before_allocation (char *audit, char *depaudit,
+      by dynamic linking.  */
+   rpath = command_line.rpath;
+   if (rpath == NULL)
+-    rpath = (const char *) getenv ("LD_RUN_PATH");
++    rpath = getenv ("LD_RUN_PATH");
++
++  if (rpath != NULL && getenv ("SUSE_IGNORED_RPATHS"))
++    {
++      char *dirs = 0;
++      FILE *ldso = fopen (getenv ("SUSE_IGNORED_RPATHS"), "r");
++      if (ldso)
++       {
++         off_t endcur = 0;
++         fseek (ldso, 0, SEEK_END);
++         endcur = ftell (ldso);
++         fseek (ldso, 0, SEEK_SET);
++         dirs = xmalloc (endcur + 1);
++         if (fread (dirs, 1, endcur, ldso) != (size_t) endcur)
++           {
++             free (dirs);
++             dirs = NULL;
++           }
++	 else
++	   dirs[endcur] = '\0';
++       }
++      if (dirs)
++       {
++         char *cr;
++         rpath = xstrdup (rpath);
++         cr = rpath; /* cursor read */
++
++         while (*cr)
++            {
++             if (ldelf_is_contained (cr, dirs)
++                 || ldelf_is_contained (cr, "$libpath_nl"))
++               {
++                 char *cc = cr, *cw = cr;
++                 while (*cc && *cc != ':')
++                   cc++;
++                 if (*cc == ':')
++                    {
++                     cc++;
++                     for (; *cc; cc++, cw++)
++                       *cw = *cc;
++                    }
++                  else if (cw > rpath)
++                     cw[-1] = 0;
++
++                 *cw = 0;
++               }
++             else
++               {
++                 while (*cr && *cr != ':')
++                   cr++;
++                 if (*cr == ':')
++                   cr++;
++               }
++           }
++         if (*rpath == '\0')
++           {
++             free (rpath);
++             rpath = NULL;
++           }
++       }
++    }
+ 
+   for (abfd = link_info.input_bfds; abfd; abfd = abfd->link.next)
+     if (bfd_get_flavour (abfd) == bfd_target_elf_flavour)

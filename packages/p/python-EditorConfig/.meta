@@ -1,0 +1,9 @@
+<package name="python-EditorConfig" project="openSUSE:Factory">
+  <title>File Locator and Interpreter for Python</title>
+  <description>EditorConfig Python Core provides the same functionality as the
+EditorConfig C Core. EditorConfig Python core can be used as a
+command line program or as an importable library.
+
+</description>
+  <devel project="devel:languages:python" package="python-EditorConfig"/>
+</package>

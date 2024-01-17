@@ -1,0 +1,289 @@
+-------------------------------------------------------------------
+Thu Dec  7 22:11:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.5:
+  * Rebuild C sources with Cython 0.29.36 to support Python 3.12.
+
+-------------------------------------------------------------------
+Sat Sep 23 09:27:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Limit to Cython 0: gh#mpi4py/mpi4py#383
+- PEP517: build wheel instead of deprecated setup.py install
+
+-------------------------------------------------------------------
+Thu Nov 10 11:56:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable current broken tests for i586. gh#mpi4py/mpi4py#279
+- Increase memory size in constraints
+
+-------------------------------------------------------------------
+Thu Nov 10 08:49:41 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add rpmlintrc as source in the spec file
+
+-------------------------------------------------------------------
+Thu Nov 10 08:42:14 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove exec perms from demo/python-config
+- Add python-mpi4py-rpmlintrc to filter no-binary erros for devel, common-devel
+  and doc subpackages
+
+-------------------------------------------------------------------
+Tue Nov  8 12:27:26 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove pml/ob1 option for tests, bsc#1205139
+- Remove python_module macro definition
+- Update shebang string replacement
+
+-------------------------------------------------------------------
+Mon Nov  7 16:19:58 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use pml/ob1 for tests
+- Update to 3.1.4
+  * Rebuild C sources with Cython 0.29.32 to support Python 3.11.
+  * Fix contiguity check for DLPack and CAI buffers.
+  * Workaround build failures with setuptools v60.
+
+-------------------------------------------------------------------
+Mon Oct 17 05:39:51 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-numpy-1.22.patch:
+  * Support NumPy 1.22+
+
+-------------------------------------------------------------------
+Sun Jan  2 21:06:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.3
+  * Add missing support for MPI.BOTTOM to generalized all-to-all
+    collectives.
+- Release 3.1.2
+  * mpi4py.futures: Add _max_workers property to MPIPoolExecutor.
+  * mpi4py.util.dtlib: Fix computation of alignment for predefined
+    datatypes.
+  * mpi4py.util.pkl5: Fix deadlock when using ssend() + mprobe().
+  * mpi4py.util.pkl5: Add environment variable
+    MPI4PY_PICKLE_THRESHOLD.
+  * mpi4py.rc: Interpret "y" and "n" strings as boolean values.
+  * Fix/add typemap/typestr for MPI.WCHAR/MPI.COUNT datatypes.
+  * Minor fixes and additions to documentation.
+  * Minor fixes to typing support.
+  * Support for local version identifier (PEP-440).
+- skip io tests on i586: gh#mpi4py/mpi4py#105
+
+-------------------------------------------------------------------
+Thu Sep 30 12:04:19 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Use openmpi macros to always build with the default openmpi version (bsc#1190810)
+
+-------------------------------------------------------------------
+Sun Sep 26 13:11:39 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.1.1
+  + Warning
+  + This is the last release supporting Python 2.
+    * Fix typo in Requires-Python package metadata.
+    * Regenerate C sources with Cython 0.29.24.
+
+- Update to 3.1.0
+  + Warning
+  + This is the last release supporting Python 2.
+    * New features:
+    * mpi4py.util: New package collecting miscellaneous utilities.
+    * Enhancements:
+    * Add pickle-based Request.waitsome() and Request.testsome().
+    * Add lowercase methods Request.get_status() and
+      Request.cancel().
+    * Support for passing Python GPU arrays compliant with the
+      DLPack data interchange mechanism (link) and the
+      __cuda_array_interface__ (CAI) standard (link) to uppercase
+      methods. This support requires that mpi4py is built against
+      CUDA-aware MPI implementations. This feature is currently
+      experimental and subject to future changes.
+    * mpi4py.futures: Add support for initializers and canceling
+      futures at shutdown. Environment variables names now follow
+      the pattern MPI4PY_FUTURES_*, the previous MPI4PY_* names are
+      deprecated.
+    * Add type annotations to Cython code. The first line of the
+      docstring of functions and methods displays a signature
+      including type annotations.
+    * Add companion stub files to support type checkers.
+    * Support for weak references.
+    * Miscellaneous:
+    * Add a new mpi4py publication (link) to the citation listing.
+
+- Minor packaging cleanups
+- Disable Python2 builds
+
+-------------------------------------------------------------------
+Sat Sep 18 01:29:32 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Reactivate test_msgspec, disable test_spawn
+
+-------------------------------------------------------------------
+Fri Sep 17 00:28:00 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Build against openmpi4
+
+-------------------------------------------------------------------
+Thu Feb 25 18:03:42 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Skip python 3.6 because numpy no longer support it.
+
+-------------------------------------------------------------------
+Tue Nov 19 20:50:31 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.3
+  * Regenerate Cython wrappers to support Python 3.8.
+- Drop upstream-included fix_window_size.patch
+
+-------------------------------------------------------------------
+Sun Aug  4 14:16:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Add fix_window_size.patch
+  Fixes unit tests
+  See: https://bitbucket.org/mpi4py/mpi4py/issues/137/
+
+-------------------------------------------------------------------
+Wed Jul 31 02:30:19 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.2
+  * Bug fixes:
+    + Fix handling of readonly buffers in support for Pytho
+      2 legacy buffer interface. The issue triggers only when using
+      a buffer-like object that is readonly and does not export
+      the new Python 3 buffer interface.
+    + Fix build issues with Open MPI 4.0.x series related to
+      removal of many MPI-1 symbols deprecated in MPI-2 and removed
+      in MPI-3.
+    + Minor documentation fixes.
+
+-------------------------------------------------------------------
+Wed Feb 27 01:36:38 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use openmpi2 for releases that support it.
+
+-------------------------------------------------------------------
+Mon Feb 25 09:24:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.1:
+  * Bug fixes:
+    + Fix ``Comm.scatter()`` and other collectives corrupting input send
+      list. Add safety measures to prevent related issues in global
+      reduction operations.
+    + Fix error-checking code for counts in ``Op.Reduce_local()``.
+  * Enhancements:
+    + Map size-specific Python/NumPy typecodes to MPI datatypes.
+    + Allow partial specification of target list/tuple arguments in the
+      various ``Win`` RMA methods.
+    + Workaround for removal of ``MPI_{LB|UB}`` in Open MPI 4.0.
+    + Support for Microsoft MPI v10.0.
+- Add numpy as build dependency used in tests
+
+-------------------------------------------------------------------
+Thu Nov 15 04:50:38 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Use openmpi3 for releases that support it.
+
+-------------------------------------------------------------------
+Wed Jun 13 16:00:41 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 3.0.0
+  * New features:
+    + `mpi4py.futures`: Execute computations asynchronously using a pool
+      of MPI processes. This package is based on ``concurrent.futures``
+      from the Python standard library.
+    + `mpi4py.run`: Run Python code and abort execution in case of
+      unhandled exceptions to prevent deadlocks.
+    + `mpi4py.bench`: Run basic MPI benchmarks and tests.
+  * Enhancements:
+    + Lowercase, pickle-based collective communication calls are now
+      thread-safe through the use of fine-grained locking.
+    + The ``MPI`` module now exposes a ``memory`` type which is a
+      lightweight variant of the builtin ``memoryview`` type, but
+      exposes both the legacy Python 2 and the modern Python 3 buffer
+      interface under a Python 2 runtime.
+    + The ``MPI.Comm.Alltoallw()`` method now uses ``count=1`` and
+      ``displ=0`` as defaults, assuming that messages are specified
+      through user-defined datatypes.
+    + The ``Request.Wait[all]()`` methods now return ``True`` to match
+      the interface of ``Request.Test[all]()``.
+    + The ``Win`` class now implements the Python buffer interface.
+  * Backward-incompatible changes:
+    + The ``buf`` argument of the ``MPI.Comm.recv()`` method is
+      deprecated, passing anything but ``None`` emits a warning.
+    + The ``MPI.Win.memory`` property was removed, use the
+      ``MPI.Win.tomemory()`` method instead.
+    + Executing ``python -m mpi4py`` in the command line is now
+      equivalent to ``python -m mpi4py.run``. For the former behavior,
+      use ``python -m mpi4py.bench``.
+    + Python 2.6 and 3.2 are no longer supported. The ``mpi4py.MPI``
+      module may still build and partially work, but other pure-Python
+      modules under the ``mpi4py`` namespace will not.
+    + Windows: Remove support for legacy MPICH2, Open MPI, and DeinoMPI.
+- Switch to recommended openmpi2 for distributions that support it.
+
+-------------------------------------------------------------------
+Wed Oct 25 12:47:13 UTC 2017 - junghans@votca.org
+
+- adapt to new openlmi package - source mpivars.h during build
+
+-------------------------------------------------------------------
+Tue May 23 15:49:20 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Fix source URL.
+- Package docs
+
+-------------------------------------------------------------------
+Wed Jan 25 08:57:15 UTC 2017 - jengelh@inai.de
+
+- Update description. Drop redundant %clean.
+
+-------------------------------------------------------------------
+Tue Jan 24 15:52:06 UTC 2017 - junghans@votca.org
+
+- install LICENSE.rst as suggest in request#445611
+
+-------------------------------------------------------------------
+Sun Dec 11 17:16:46 UTC 2016 - junghans@votca.org
+
+- Update to version 2.0.0
+  * Support for MPI-3 features.
+  * Support for MPI-2 features not included in previous releases.
+  * New scalable implementation of reduction operations for Python objects.
+
+-------------------------------------------------------------------
+Thu Oct 24 17:48:30 UTC 2013 - toddrme2178@gmail.com
+
+- Update to version 1.3.1
+  * Regenerate C wrappers with Cython 0.19.1 to support Python 3.3.
+  * Install ``*.pxd`` files in ``<site-packages>/mpi4py`` to ease the
+    support for Cython's ``cimport`` statement in code requiring to
+    access mpi4py internals.
+  * As a side-effect of using Cython 0.19.1, ancient Python 2.3 is no
+    longer supported. If you really need it, you can install an older
+    Cython and run ``python setup.py build_src --force``.
+
+-------------------------------------------------------------------
+Tue May 22 12:15:04 UTC 2012 - toddrme2178@gmail.com
+
+- Update to version 1.3
+- Add Python 3 package
+
+-------------------------------------------------------------------
+Sat Feb 25 23:26:20 UTC 2012 - scorot@free.fr
+
+- fix build for SLE-11
+
+-------------------------------------------------------------------
+Fri Jan  6 17:28:34 UTC 2012 - toddrme2178@gmail.com
+
+- Update to version 1.2.2
+- Clean up spec file
+- Switch to .changes file
+
+-------------------------------------------------------------------
+Tue May  5 00:00:00 UTC 2009 - felix.richter2@uni-rostock.de
+
+- Initial specfile generated by python distutils,
+- adapted for SUSE Build Service

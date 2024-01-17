@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a22b64415249973fe43dbaf6cdafa9f4</srcmd5>
+    <version>0.3.2</version>
+    <time>1653907387</time>
+    <user>dimstar_suse</user>
+    <comment>I need this package for yast2-sap-ha</comment>
+    <requestid>977738</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>024e63201c78ac72c872ac2446581bee</srcmd5>
+    <version>0.3.3</version>
+    <time>1700078894</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126452</requestid>
+  </revision>
+</revisionlist>

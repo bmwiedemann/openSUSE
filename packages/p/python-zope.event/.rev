@@ -1,0 +1,176 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a484f33d6c29112018edef8a928abed6</srcmd5>
+    <version>4.0.2</version>
+    <time>1363900380</time>
+    <user>coolo</user>
+    <comment>Replaces python-zope-event</comment>
+    <requestid>160209</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>af4ec529cde2198cf3cd6a018d6aa7d6</srcmd5>
+    <version>4.0.2</version>
+    <time>1372064708</time>
+    <user>coolo</user>
+    <comment>remove duplicated spec file</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>24336dcc08f1e5bbbcc901cdff1f1f66</srcmd5>
+    <version>4.0.2</version>
+    <time>1375365788</time>
+    <user>coolo</user>
+    <comment>spell out upstream URL in Source: (forwarded request 184933 from frispete)</comment>
+    <requestid>185042</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>24336dcc08f1e5bbbcc901cdff1f1f66</srcmd5>
+    <version>4.0.2</version>
+    <time>1379664322</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>f7558ab53807f10a5b9b7adc4a5ab006</srcmd5>
+    <version>4.0.2</version>
+    <time>1382693808</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204693</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>f7558ab53807f10a5b9b7adc4a5ab006</srcmd5>
+    <version>4.0.2</version>
+    <time>1409303031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e6fbb26716dcf06de8edae471fbeafb2</srcmd5>
+    <version>4.0.3</version>
+    <time>1431982841</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.3
+- obsolete previous versions of python-zope-event, not current
+- rename CHANGES.txt to CHANGES.rst: changed upstream
+- rename README.txt to README.rst: changed upstream (forwarded request 307314 from benoit_monin)</comment>
+    <requestid>307499</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d9bd85e2b2fde20119469e7b0a89e642</srcmd5>
+    <version>4.2.0</version>
+    <time>1498638779</time>
+    <user>dimstar_suse</user>
+    <comment>- use only python3-Sphinx for doc build
+- drop %sitelib redefinition which makes no sense with python-rpm-macros
+
+- Update to 4.2.0:
+ * Add support for Python 3.5.
+ * Drop support for Python 2.6 and 3.2.
+- Prevent duplicate doc package generation
+- Cleanup duplicates in build tree
+
+- Update to 4.1.0:
+  * Require 100% branch (as well as statement) coverage.
+  * Add a simple class-based handler implementation.
+
+- Convert package to singlespec</comment>
+    <requestid>505418</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>aaf8f278738a7daf18d61a085c7bbb27</srcmd5>
+    <version>4.2.0</version>
+    <time>1544094895</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654089</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>2307bae3a59971971254e998d5f89085</srcmd5>
+    <version>4.2.0</version>
+    <time>1544816747</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>655597</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b426439a3e7807792c6384452a25d255</srcmd5>
+    <version>4.4</version>
+    <time>1554833803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691708</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>aef0dd7883f3b74d0fa04f9092714cc4</srcmd5>
+    <version>4.4</version>
+    <time>1586973878</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in py2 package on doc subpkg</comment>
+    <requestid>792440</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b0b7d7072e128c3843b5330fa23761f9</srcmd5>
+    <version>4.5.0</version>
+    <time>1626466351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905640</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8382659ffbd9d3290d17e4ee84fdadbe</srcmd5>
+    <version>4.5.0</version>
+    <time>1632849379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921317</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3f1361a7bc8fe3751849b9236ad7cfec</srcmd5>
+    <version>4.6</version>
+    <time>1676827138</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1066381</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>52ba4458a0cb0ea65f3bdc59a1a21965</srcmd5>
+    <version>4.6</version>
+    <time>1682193482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081716</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>5081acc49f60214f321f04e614e1f56b</srcmd5>
+    <version>4.6</version>
+    <time>1683212986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084328</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>356707da2a402e8658d484269584045a</srcmd5>
+    <version>4.6</version>
+    <time>1685632748</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch documentation to be within the main package.</comment>
+    <requestid>1089854</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>485ee0a8dbdcd4d3fac47c2d49fb5106</srcmd5>
+    <version>4.6</version>
+    <time>1690469399</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100788</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b13dfdb6946718cd8377ea6411d661bc</srcmd5>
+    <version>5.0</version>
+    <time>1694200500</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0:
+  * Drop support for Python 2.7, 3.5, 3.6.</comment>
+    <requestid>1109515</requestid>
+  </revision>
+</revisionlist>

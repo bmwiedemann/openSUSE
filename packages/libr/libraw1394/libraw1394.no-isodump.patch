@@ -1,0 +1,17 @@
+---
+ doc/Makefile.am |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,8 +1,8 @@
+-EXTRA_DIST = testlibraw.1.in sendiso.1.in dumpiso.1.in isodump.5.in \
++EXTRA_DIST = testlibraw.1.in sendiso.1.in dumpiso.1.in \
+ 	libraw1394.sgml
+ 
+ # man files for testlibraw
+-man_MANS = testlibraw.1 sendiso.1 dumpiso.1 isodump.5
++man_MANS = testlibraw.1 sendiso.1 dumpiso.1
+ 
+ # libraw1394 docbook documentation
+ 

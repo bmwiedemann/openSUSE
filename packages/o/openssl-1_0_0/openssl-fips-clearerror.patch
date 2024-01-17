@@ -1,0 +1,12 @@
+Index: openssl-1.0.2g/crypto/o_init.c
+===================================================================
+--- openssl-1.0.2g.orig/crypto/o_init.c	2016-04-14 10:54:05.763929573 +0200
++++ openssl-1.0.2g/crypto/o_init.c	2016-04-14 10:59:08.366168879 +0200
+@@ -91,6 +91,7 @@ static void init_fips_mode(void)
+         NONFIPS_selftest_check();
+         /* drop down to non-FIPS mode if it is not requested */
+         FIPS_mode_set(0);
++        ERR_clear_error();
+     } else {
+         /* abort if selftest failed */
+         FIPS_selftest_check();

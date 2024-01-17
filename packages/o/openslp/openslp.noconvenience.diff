@@ -1,0 +1,210 @@
+--- ./common/slp_auth.c.orig	2016-09-12 14:33:58.923718969 +0000
++++ ./common/slp_auth.c	2016-09-12 14:35:19.660448155 +0000
+@@ -237,6 +237,7 @@ static int SLPAuthSignDigest(int spistrl
+    curpos += spistrlen;
+ 
+    /* sign the digest and put it in the authblock */
++   memset(curpos, 0, signaturelen);
+    if (SLPCryptoDSASign(key, digest, SLPAUTH_SHA1_DIGEST_SIZE, 
+          curpos, &signaturelen))
+    {
+--- ./common/slp_crypto.c.orig	2016-09-12 14:30:13.053476772 +0000
++++ ./common/slp_crypto.c	2016-09-12 14:31:32.443210397 +0000
+@@ -153,6 +153,20 @@ int SLPCryptoDSASign(SLPCryptoDSAKey * k
+ int SLPCryptoDSAVerify(SLPCryptoDSAKey * key, const unsigned char * digest,
+       int digestlen, const unsigned char * signature, int signaturelen)
+ {
++   /* newer openssl versions need the exact size. trim down. */
++   if (signaturelen > 2 && *signature == 0x30)
++   {
++     int l = 0;
++     if (signature[1] < 128)
++        l = 2 + signature[1];
++     else if (signature[1] == 129)
++        l = 3 + signature[2];
++     else if (signature[1] == 130)
++        l = 4 + (signature[2] << 8 | signature[3]);
++     if (l && l < signaturelen)
++        signaturelen = l;
++   }
++
+    /* it does not look like the type param is used? */
+    /* broken DSA_verify() declaration */
+    return DSA_verify(0, digest, digestlen, (unsigned char *)signature,
+--- ./common/slp_v2message.c.orig	2016-09-12 10:51:36.284400063 +0000
++++ ./common/slp_v2message.c	2016-09-12 10:55:19.553648752 +0000
+@@ -150,13 +150,6 @@ static int v2ParseUrlEntry(SLPBuffer buf
+    }
+    urlentry->opaquelen = buffer->curpos - urlentry->opaque;
+ 
+-   /* Terminate the URL string for caller convenience - we're overwriting 
+-    * the first byte of the "# of URL auths" field, but it's okay because
+-    * we've already read and stored it away.
+-    */
+-   if(urlentry->url)
+-      ((uint8_t *)urlentry->url)[urlentry->urllen] = 0;
+-
+    return 0;
+ }
+ 
+@@ -543,12 +536,6 @@ static int v2ParseAttrRply(SLPBuffer buf
+       }
+    }
+ 
+-   /* Terminate the attr list for caller convenience - overwrites the
+-    * first byte of the "# of AttrAuths" field, but we've processed it. 
+-    */
+-   if(attrrply->attrlist)
+-      ((uint8_t *)attrrply->attrlist)[attrrply->attrlistlen] = 0;
+-
+    return 0;
+ }
+ 
+@@ -643,13 +630,6 @@ static int v2ParseDAAdvert(SLPBuffer buf
+       }
+    }
+ 
+-   /* Terminate the URL string for caller convenience - we're overwriting 
+-    * the first byte of the "Length of <scope-list>" field, but it's okay 
+-    * because we've already read and stored it away.
+-    */
+-   if(daadvert->url)
+-      ((uint8_t *)daadvert->url)[daadvert->urllen] = 0;
+-
+    return 0;
+ }
+ 
+@@ -749,14 +729,6 @@ static int v2ParseSrvTypeRply(SLPBuffer
+    if (buffer->curpos > buffer->end)
+       return SLP_ERROR_PARSE_ERROR;
+ 
+-   /* Terminate the service type list string for caller convenience - while 
+-    * it appears that we're writing one byte past the end of the buffer here, 
+-    * it's not so - message buffers are always allocated one byte larger than 
+-    * requested for just this reason.
+-    */
+-   if(srvtyperply->srvtypelist)
+-      ((uint8_t *)srvtyperply->srvtypelist)[srvtyperply->srvtypelistlen] = 0;
+-
+    return 0;
+ }
+ 
+@@ -825,13 +797,6 @@ static int v2ParseSAAdvert(SLPBuffer buf
+       }
+    }
+ 
+-   /* Terminate the URL string for caller convenience - we're overwriting 
+-    * the first byte of the "Length of <scope-list>" field, but it's okay 
+-    * because we've already read and stored it away.
+-    */
+-   if(saadvert->url)
+-      ((uint8_t *)saadvert->url)[saadvert->urllen] = 0;
+-
+    return 0;
+ }
+ 
+--- ./libslp/libslp_findattrs.c.orig	2016-09-12 10:57:02.363303412 +0000
++++ ./libslp/libslp_findattrs.c	2016-09-12 10:58:41.416970996 +0000
+@@ -98,6 +98,9 @@ static SLPBoolean ProcessAttrRplyCallbac
+                return SLP_TRUE;  /* Authentication failure. */
+             }
+ #endif
++            /* TRICKY: null terminate the attrlist by setting the authcount to 0 */
++            ((char*)(attrrply->attrlist))[attrrply->attrlistlen] = 0;
++
+             /* Call the user's callback function. */
+             result = handle->params.findattrs.callback(handle,
+                   attrrply->attrlist, (SLPError)(-attrrply->errorcode), 
+--- ./libslp/libslp_findsrvs.c.orig	2016-09-12 10:57:07.995284521 +0000
++++ ./libslp/libslp_findsrvs.c	2016-09-12 11:26:08.220430148 +0000
+@@ -227,6 +227,9 @@ static SLPBoolean ProcessSrvRplyCallback
+                      && SLPAuthVerifyUrl(handle->hspi, 1, &urlentry[i]))
+                   continue; /* Authentication failed, skip this URLEntry. */
+ #endif
++               /* TRICKY: null terminate the url by setting the authcount to 0 */
++               ((char*)(urlentry[i].url))[urlentry[i].urllen] = 0;
++
+                result = CollateToSLPSrvURLCallback(handle, urlentry[i].url, 
+                      (unsigned short)urlentry[i].lifetime, SLP_OK, peeraddr);
+                if (result == SLP_FALSE)
+@@ -245,6 +248,9 @@ static SLPBoolean ProcessSrvRplyCallback
+                return SLP_TRUE;
+             }
+ #endif
++            /* TRICKY: null terminate the url by setting the scope list length to 0 */
++            ((char *)replymsg->body.daadvert.url)[replymsg->body.daadvert.urllen] = 0;
++
+             result = CollateToSLPSrvURLCallback(handle, 
+                   replymsg->body.daadvert.url, SLP_LIFETIME_MAXIMUM, 
+                   SLP_OK, peeraddr);
+@@ -260,6 +266,9 @@ static SLPBoolean ProcessSrvRplyCallback
+                return SLP_TRUE;
+             }
+ #endif
++            /* TRICKY: null terminate the url by setting the scope list length to 0 */
++            ((char *)replymsg->body.saadvert.url)[replymsg->body.saadvert.urllen] = 0;
++
+             result = CollateToSLPSrvURLCallback(handle, 
+                   replymsg->body.saadvert.url, SLP_LIFETIME_MAXIMUM, 
+                   SLP_OK, peeraddr);
+--- ./libslp/libslp_findsrvtypes.c.orig	2016-09-12 10:57:15.275260063 +0000
++++ ./libslp/libslp_findsrvtypes.c	2016-09-12 11:03:41.863964662 +0000
+@@ -175,8 +175,13 @@ static SLPBoolean ProcessSrvTypeRplyCall
+       {
+          SLPSrvTypeRply * srvtyperply = &replymsg->body.srvtyperply;
+          if (srvtyperply->srvtypelistlen)
++         {
++            /* TRICKY: null terminate the srvtypelist by setting the last byte 0 */
++            ((char*)(srvtyperply->srvtypelist))[srvtyperply->srvtypelistlen] = 0;
++
+             result = CollateToSLPSrvTypeCallback((SLPHandle)handle, 
+                   srvtyperply->srvtypelist, srvtyperply->errorcode * -1);
++         }
+       }
+       SLPMessageFree(replymsg);
+    }
+--- ./libslp/libslp_knownda.c.orig	2016-09-12 10:57:21.083240529 +0000
++++ ./libslp/libslp_knownda.c	2016-09-12 11:07:26.178207707 +0000
+@@ -335,6 +335,8 @@ static SLPBoolean KnownDADiscoveryCallba
+       {
+          SLPParsedSrvUrl * srvurl;
+ 
++         /* TRICKY: NULL terminate the DA url */
++         ((char*)(replymsg->body.daadvert.url))[replymsg->body.daadvert.urllen] = 0;
+          if (SLPParseSrvUrl(replymsg->body.daadvert.urllen,
+                             replymsg->body.daadvert.url, &srvurl) == 0)
+          {
+@@ -993,14 +995,22 @@ void KnownDAProcessSrvRqst(SLPHandleInfo
+       {
+          SLPBoolean cb_result;
+          SLPDatabaseEntry * entry = SLPDatabaseEnum(dh);
++         char tmp;
+          if (!entry)
+             break;
+ 
++         /* TRICKY temporary null termination of DA url */
++         tmp = entry->msg->body.daadvert.url[entry->msg->body.daadvert.urllen];
++         ((char*)(entry->msg->body.daadvert.url))[entry->msg->body.daadvert.urllen] = 0;
++
+          /* Call the SrvURLCallback. */
+          cb_result = handle->params.findsrvs.callback(handle,
+                entry->msg->body.daadvert.url, SLP_LIFETIME_MAXIMUM,
+                SLP_OK, handle->params.findsrvs.cookie);
+ 
++         /* TRICKY: undo temporary null termination of DA url */
++         ((char*)(entry->msg->body.daadvert.url))[entry->msg->body.daadvert.urllen] = tmp;
++
+          /* Does the caller want more? */
+          if (cb_result == SLP_FALSE)
+             break;
+--- ./slpd/slpd_regfile.c.orig	2016-09-12 11:12:02.353273706 +0000
++++ ./slpd/slpd_regfile.c	2016-09-12 14:29:17.611662818 +0000
+@@ -657,7 +657,7 @@ int SLPDRegFileWriteSrvReg(FILE * fd, SL
+ 
+    if (fd)
+    {
+-      fprintf(fd, "%s,%s,%d\n", msg->body.srvreg.urlentry.url, msg->header.langtag, msg->body.srvreg.urlentry.lifetime);
++      fprintf(fd, "%.*s,%s,%d\n", (int)(msg->body.srvreg.urlentry.urllen), msg->body.srvreg.urlentry.url, msg->header.langtag, msg->body.srvreg.urlentry.lifetime);
+       if (msg->body.srvreg.source == SLP_REG_SOURCE_PULL_PEER_DA)
+          fprintf(fd, "slp-source=pulled-from-da-%s\n", SLPNetSockAddrStorageToString(&msg->peer, addr_str, sizeof(addr_str)));
+       else if (msg->body.srvreg.source == SLP_REG_SOURCE_LOCAL)

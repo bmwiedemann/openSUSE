@@ -1,0 +1,10 @@
+<package name="python-python-whois" project="openSUSE:Factory">
+  <title>Whois querying and parsing of domain registration information</title>
+  <description>A simple importable Python module which will produce parsed WHOIS data for a given domain.
+Able to extract data for all the popular TLDs (com, org, net, ...)
+Query a WHOIS server directly instead of going through an intermediate web service like many others do.
+
+</description>
+  <devel project="devel:languages:python" package="python-python-whois"/>
+  <url>https://bitbucket.org/richardpenman/pywhois</url>
+</package>

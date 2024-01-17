@@ -1,0 +1,77 @@
+Index: fileio.c
+===================================================================
+--- fileio.c.orig	2009-04-20 02:03:44.000000000 +0200
++++ fileio.c	2010-06-25 18:32:49.960030697 +0200
+@@ -71,6 +71,11 @@
+ #include "crc32.h"
+ #include "crypt.h"
+ #include "ttyio.h"
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++
++
+ 
+ /* setup of codepage conversion for decryption passwords */
+ #if CRYPT
+@@ -270,6 +275,7 @@ int open_input_file(__G)    /* return 1
+ int open_outfile(__G)           /* return 1 if fail */
+     __GDEF
+ {
++    int fd;
+ #ifdef DLL
+     if (G.redirect_data)
+         return (redirect_outfile(__G) == FALSE);
+@@ -448,23 +454,48 @@ int open_outfile(__G)           /* retur
+         return 1;   /* with "./" fix in checkdir(), should never reach here */
+     }
+ #endif /* NOVELL_BUG_FAILSAFE */
+-    Trace((stderr, "open_outfile:  doing fopen(%s) for writing\n",
+-      FnFilter1(G.filename)));
+     {
+ #if defined(ATH_BE_UNX) || defined(AOS_VS) || defined(QDOS) || defined(TANDEM)
+         mode_t umask_sav = umask(0077);
+ #endif
++
++#if defined(SYMLINKS) || defined(QLZIP)
++        fd = open(G.filename, O_RDWR | O_LARGEFILE | O_CREAT,
++                  /* 0644 in portable POSIX notation: */
++                  S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
++#else
++        fd = open(G.filename, O_WRONLY | O_LARGEFILE | O_CREAT,
++                  /* 0644 in portable POSIX notation: */
++                  S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
++#endif
++        Trace((stderr, "open_outfile:  open(%s, O_WRONLY | O_LARGEFILE | O_CREAT) returned %d\n",
++          FnFilter1(G.filename), fd));
++
++        if (fd < 0) {
++            Info(slide, 0x401, ((char *)slide, LoadFarString(CannotCreateFile),
++              FnFilter1(G.filename), strerror(errno)));
++            return 1;
++        }
+ #if defined(SYMLINKS) || defined(QLZIP)
+         /* These features require the ability to re-read extracted data from
+            the output files. Output files are created with Read&Write access.
+          */
+-        G.outfile = zfopen(G.filename, FOPWR);
++
++        G.outfile = zfdopen(fd, FOPWR);
++
++        Trace((stderr, "open_outfile:  doing fdopen(%s, FOPWR) returned %p\n",
++              G.outfile));
+ #else
+-        G.outfile = zfopen(G.filename, FOPW);
++        G.outfile = zfdopen(fd, FOPW);
++
++        Trace((stderr, "open_outfile:  doing fdopen(%s, FOPW) returned %p\n",
++              G.outfile));
+ #endif
+ #if defined(ATH_BE_UNX) || defined(AOS_VS) || defined(QDOS) || defined(TANDEM)
+         umask(umask_sav);
+ #endif
++        if (G.outfile == NULL && fd != 0)
++            unlink(G.filename);
+     }
+     if (G.outfile == (FILE *)NULL) {
+         Info(slide, 0x401, ((char *)slide, LoadFarString(CannotCreateFile),

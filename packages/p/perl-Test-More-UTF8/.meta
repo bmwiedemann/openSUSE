@@ -1,0 +1,5 @@
+<package name="perl-Test-More-UTF8" project="openSUSE:Factory">
+  <title>perl-Test-More-UTF8</title>
+  <description>Enhancing Test::More for UTF8-based projects</description>
+  <devel project="devel:languages:perl" package="perl-Test-More-UTF8"/>
+</package>

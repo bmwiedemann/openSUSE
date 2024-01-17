@@ -1,0 +1,2104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95e3e01587f5a76450be8b3e8060ca24</srcmd5>
+    <version>0.8.3</version>
+    <time>1430891322</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>298786</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>14129e15fca89d6de8736727bdb01e99</srcmd5>
+    <version>0.9.1</version>
+    <time>1430980153</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305585</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84e415cbad4892b92301adbb0eb16535</srcmd5>
+    <version>0.9.2</version>
+    <time>1432888794</time>
+    <user>dimstar_suse</user>
+    <comment>- Try to fix build for both Factory and packman
+  * We neeed to sync this up
+
+- Version bump to 0.9.2:
+  * Various opengl fixes
+  * Fulscreen behaviour fixes for some WMs
+  * Various other small fixes
+
+- Sync buildrequires with packman spec-file
+
+- Sync with packman spec-file
+
+- Update to 0.9.1</comment>
+    <requestid>308899</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7e8fa726733f3c443088f8ee13cfe8fa</srcmd5>
+    <version>0.10.0</version>
+    <time>1441726776</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version of WAF to match upstream
+
+- Update to v0.10.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.10.0
+    for the complete changelog.</comment>
+    <requestid>328892</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a5e3fdc649f29d2950fe7aa5d431cca</srcmd5>
+    <version>0.11.0</version>
+    <time>1443068155</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333098</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8a4bda9599c0c6a4b1ecd974f7b22299</srcmd5>
+    <version>0.13.0</version>
+    <time>1447587994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.13.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.13.0
+    for the complete changelog.
+
+- Update to v0.12.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.12.0
+    for the complete changelog.
+
+- Add a 265x256 resolution app icon</comment>
+    <requestid>343512</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e94d8734b9b71c0f3f939b41a7814421</srcmd5>
+    <version>0.13.0</version>
+    <time>1449687061</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347385</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39fbaac6c9c4f29d1c165d7a69e2c6fe</srcmd5>
+    <version>0.14.0</version>
+    <time>1450284178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.14.0
+    for the complete changelog.
+
+- Remove mpg123 as dependency, thus losing need of being on packman.
+  We use the mad implementation anyway if we had FPU and everything
+  we support has to have it anyway.
+
+- Sort out the ffmpeg deps to reduce conditionals</comment>
+    <requestid>348806</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e0ef71d9294837a9e7cb4a2a12e8aa93</srcmd5>
+    <version>0.14.0</version>
+    <time>1451674047</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide and obsolete mplayer2 as per packman discussion</comment>
+    <requestid>350672</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f652cad85ed347e22c999f61c8fc665</srcmd5>
+    <version>0.15.0</version>
+    <time>1453508213</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the --enable-gpl3 options and revert the license to GPL-2.0+ 
+
+- Backported commit 5053f4c to fix hang problem with smplayer
+  (bug ref. #2729) mpv-0.15.0_fix_NULL_ptr.patch
+
+- Update to v0.15.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.15.0
+    for the complete changelog.
+- Install mpv.conf &amp; input.conf
+
+- Set license to GPL-3.0+ so we can enable more OpenGL functionality.
+- Add pkgconfig(gl) build dependency.</comment>
+    <requestid>355373</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8596060f52bd6e538c137d8ee9dbc365</srcmd5>
+    <version>0.15.0</version>
+    <time>1456242896</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a mpv_gpl3 condition to build mpv as GPL-3.0+ on Packman.</comment>
+    <requestid>359453</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>09c7dfac3120243e65701425b3f88b07</srcmd5>
+    <version>0.16.0</version>
+    <time>1456821907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.16.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.16.0
+    for the complete changelog.
+- Drop mpv-0.15.0_fix_NULL_ptr.patch, fixed upstream.
+- Don't install mpv.png as upstream now ships a mpv.svg</comment>
+    <requestid>362822</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4e0e374307b22dc9d9f7da342d353485</srcmd5>
+    <version>0.17.0</version>
+    <time>1460632020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies of desktop and icon handling scriplets
+
+- Update to version 0.17.0
+  * See https://github.com/mpv-player/mpv/releases/tag/v0.17.0 
+    for full changelog</comment>
+    <requestid>387891</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a9829dedfdcbf2e158d5db07b606cdb5</srcmd5>
+    <version>0.18.0</version>
+    <time>1466977957</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404788</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>63bcc6eaf1a01cad049c60e1c17dc4d9</srcmd5>
+    <version>0.18.1</version>
+    <time>1468580000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update waf to 1.9.1
+
+- Force rebuilding with every minor update of ffmpeg
+
+- Update to version 0.18.1
+  * Note: Running mpv with different versions of the 
+    FFmpeg/Libav libraries than it was compiled with
+    is no longer supported. Even supposedly ABI-compatible
+    versions have been a source of trouble, and it creates 
+    far too much complexity with little to no benefit,
+    coupled with absurd and unusable FFmpeg API artifacts.
+    Instead, mpv will exit with an error when such a 
+    situation is detected.
+    This simply means that mpv needs to be rebuilt whenever 
+    FFmpeg libraries change.
+  New Features:
+  * d3d: implement screenshots for --hwdec=d3d11va
+  * vo_opengl: add output_size uniform to custom shader
+  * vo_opengl: implement the Panasonic V-Log function 
+    (#3157)
+  * vo_opengl: implement ARIB STD-B68 (HLG) HDR TRC
+  Options and oommands:
+  * command: pack sub image data in overlay-add command
+  * options: deprecate --heartbeat-cmd
+  * audio: deprecate --softvol
+  * audio: drop --softvol=no and --softvol=auto (#3322)
+  Fixes and minor enhancements:
+  * video: fix deinterlace filter handling on pixel 
+    format changes
+  * x11: silence xdg-screensaver</comment>
+    <requestid>408289</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c4e9ae6c543166e050015380715b05ad</srcmd5>
+    <version>0.19.0</version>
+    <time>1471428349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419506</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>65bd598062d634cecf74be5701c9ce44</srcmd5>
+    <version>0.20.0</version>
+    <time>1472379489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>423269</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>f986d7baae22c811c6c8c84f4cb092a5</srcmd5>
+    <version>0.20.0</version>
+    <time>1473241556</time>
+    <user>dimstar_suse</user>
+    <comment>- Add exact dependency on all libav* packages not just libavcodec.</comment>
+    <requestid>424433</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e35cb24c556ada007c419deffdff3145</srcmd5>
+    <version>0.21.0</version>
+    <time>1477219898</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436479</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>11fd64453c4444c9b3d79b1f4dfc45cd</srcmd5>
+    <version>0.21.0</version>
+    <time>1478289741</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not require equal libav soname version we were built with
+  OBS rebuilds packages as needed and it is over the head
+  * mpv-make-ffmpeg-version-check-non-fatal.patch</comment>
+    <requestid>438681</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>176a1afa2a4c59f740ddc0916b7db7fa</srcmd5>
+    <version>0.22.0</version>
+    <time>1479734769</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441086</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>403ee011079b1a077aa1601b416ebb24</srcmd5>
+    <version>0.22.0</version>
+    <time>1480693298</time>
+    <user>dimstar_suse</user>
+    <comment>  OBS rebuilds packages as needed and it is over the head bsc#1012600</comment>
+    <requestid>442715</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f4a02cfa3368fcccae3f87ee84383b6a</srcmd5>
+    <version>0.23.0</version>
+    <time>1483048345</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to version 0.23.0
+  * Now requires at least FFmpeg 3.2.2.
+  Changed features:
+  * vo_rpi: partially undeprecate
+  Added features:
+  * vo_opengl: hwdec_cuda: Support P016 output surfaces
+  Removed features:
+  * charset_conv: drop enca and libguess support in favor of
+    uchardet
+  * vf_vdpaurb: remove this filter in favor of --hwdec=vdpau-copy
+  Added options and commands:
+  * TOOLS/autoload: allow disabling through script-opts
+  * demux, stream: add --access-references to prevent opening
+    referenced files
+  Deprecated options and commands:
+  * options: deprecate codec family selection in --vd/--ad
+  Removed options and commands
+  * options: remove deprecated sub-option handling for --vo
+    and --ao
+  Fixes and minor enhancements:
+  * Windows: window styles improvements (allow minimizing
+    borderless/fullscreen window) (#2229, #2451)
+  * ad_spdif: Fix crash when spdif muxer is not available
+  * audio: fix --audio-stream-silence with ao_alsa
+  * audio: fix --audio-stream-silence with ao_wasapi
+  * build: drop build-time dependency on Perl
+  * build: support linking ANGLE (previously loaded dynamically)
+  * d3d11va: unconditionally load D3D DLLs (#3348)
+  * demux_mkv: fix seeking in some broken files (#3920)
+  * hwdec_cuda: allow building without CUDA SDK (load CUDA
+    dynamically)
+  * osc: don't hide playlist buttons, just disable
+  * osc: fix possible race condition in right timecode
+  * osc: topbar: use same styles as bottombar
+  * player: don't print format detection error when aborting
+    loading
+  * vdpau: fix vaapi probing if libvdpau-va-gl1 is present
+  * video: use demuxer-signaled duration for last video
+    frame (#3924)</comment>
+    <requestid>447915</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>cc104de9dcdbbdb6f74ffb6e2e86ec1b</srcmd5>
+    <version>unknown</version>
+    <time>1485512012</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451555</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>439fd884087f866d0a4dda74c2d878ef</srcmd5>
+    <version>unknown</version>
+    <time>1486968710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456497</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>412706a554986a74f36c52330f781e67</srcmd5>
+    <version>unknown</version>
+    <time>1489345529</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478667</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>bb1eb5d9942a8e8a69313017fcce202e</srcmd5>
+    <version>unknown</version>
+    <time>1491469264</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482740</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>d8d52683a6ba7e24f0d7bb2e8e952c8e</srcmd5>
+    <version>unknown</version>
+    <time>1492011391</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486711</requestid>
+  </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>c84794289d61af04b55db64d6e00a76e</srcmd5>
+    <version>unknown</version>
+    <time>1495010897</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh patch mpv-make-ffmpeg-version-check-non-fatal.patch
+  * Rather delete the warning as whole, in OBS concept we detect
+    abi changes and it misleads the users of stable distributions
+    to worry something broke
+
+- Remove the pdf build, it is same as manpage
+- Switch to python3 subpkgs as we use python3 anyway (Fixes TW build)
+
+- Dropped openal. It's pointless these days and it creates
+  a problem when used with pulse (gh#mpv-player/mpv#4311)
+- Removed portaudio requirement (support was dropped in
+  0.8.0!)
+
+- Update to version 0.25.0
+  * Support for some optical media functionality (DVD/CD) is now 
+    disabled by default.
+  * More parts of the player are now licensed under LGPL. In 
+    particular:
+      + OSD symbol font
+      + ass_mp, sd_ass
+      + common.h
+      + demux/packet
+      + demux_mkv (with minor exceptions), ebml, matroska.h
+      + sd_lavc
+      + sub/osd
+    Thanks to all contributors who have agreed to relicensing of 
+    their changes! See #2033 for details.
+  * Starting with this release, releases will be tagged on the 
+    master branch. The release/current branch is thus abandoned.
+  Added features:</comment>
+    <requestid>493786</requestid>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>2e503bd9ac6c81b8297e54a356efdb4d</srcmd5>
+    <version>unknown</version>
+    <time>1495637411</time>
+    <user>dimstar_suse</user>
+    <comment>- Depend on lua-5.1 as 5.3 is incompatible wrt bsc#1040034</comment>
+    <requestid>497159</requestid>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>147b07a0bdf20146c344d9e323856c70</srcmd5>
+    <version>unknown</version>
+    <time>1502974953</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517162</requestid>
+  </revision>
+  <revision rev="32" vrev="10">
+    <srcmd5>58bd67df52ee9fe9e1251eb923c1fd0f</srcmd5>
+    <version>unknown</version>
+    <time>1503308267</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517779</requestid>
+  </revision>
+  <revision rev="33" vrev="11">
+    <srcmd5>530be52a03915c0a90923fd56946a915</srcmd5>
+    <version>unknown</version>
+    <time>1503393009</time>
+    <user>dimstar_suse</user>
+    <comment>- Build only against luajit and not lua where possible
+- Comment on why we depend on lua (for bash_completion generating)</comment>
+    <requestid>517935</requestid>
+  </revision>
+  <revision rev="34" vrev="12">
+    <srcmd5>8d63c5ab221925882cd0863e1b039a14</srcmd5>
+    <version>unknown</version>
+    <time>1503482089</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly enable libsmbclient</comment>
+    <requestid>518116</requestid>
+  </revision>
+  <revision rev="35" vrev="13">
+    <srcmd5>9a5c4c3960931b15db3fbb20dc9dcff8</srcmd5>
+    <version>unknown</version>
+    <time>1503593746</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518388</requestid>
+  </revision>
+  <revision rev="36" vrev="14">
+    <srcmd5>7cd59456f9e18f45355d79fa73faea18</srcmd5>
+    <version>unknown</version>
+    <time>1505335022</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523894</requestid>
+  </revision>
+  <revision rev="37" vrev="15">
+    <srcmd5>d4ce6e8d71bed2579866ad3a4a6282ff</srcmd5>
+    <version>unknown</version>
+    <time>1508946480</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536484</requestid>
+  </revision>
+  <revision rev="38" vrev="16">
+    <srcmd5>547e177a3ad6dabf8eb466260dd19d1a</srcmd5>
+    <version>unknown</version>
+    <time>1509722872</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly use python3 when building
+- Enable libva on wayland
+</comment>
+    <requestid>538353</requestid>
+  </revision>
+  <revision rev="39" vrev="17">
+    <srcmd5>8a5c370b82b2671e4dbfb1bf842634b9</srcmd5>
+    <version>unknown</version>
+    <time>1510660828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541532</requestid>
+  </revision>
+  <revision rev="40" vrev="18">
+    <srcmd5>fa4809fe53f8c62e8aecf04d252a80b4</srcmd5>
+    <version>unknown</version>
+    <time>1510912639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542497</requestid>
+  </revision>
+  <revision rev="41" vrev="19">
+    <srcmd5>834c6e2664e915e3fdc8b28a2e6e589b</srcmd5>
+    <version>unknown</version>
+    <time>1511817470</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>545754</requestid>
+  </revision>
+  <revision rev="42" vrev="20">
+    <srcmd5>9e37aedc27a0789aa35f492acab5dd22</srcmd5>
+    <version>unknown</version>
+    <time>1513677106</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>548113</requestid>
+  </revision>
+  <revision rev="43" vrev="21">
+    <srcmd5>6dc6614291a34edb2dfe82101e7a554a</srcmd5>
+    <version>unknown</version>
+    <time>1518282020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575224</requestid>
+  </revision>
+  <revision rev="44" vrev="22">
+    <srcmd5>32b703eeee7db1253ac24be2367cb48c</srcmd5>
+    <version>unknown</version>
+    <time>1518697556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576483</requestid>
+  </revision>
+  <revision rev="45" vrev="23">
+    <srcmd5>c110b9d086167af5373b3d4df5b634a1</srcmd5>
+    <version>unknown</version>
+    <time>1521579673</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not enable smbclient twice, it is in normal opts too</comment>
+    <requestid>589033</requestid>
+  </revision>
+  <revision rev="46" vrev="24">
+    <srcmd5>ebc6821ce13738a49edeb7ec3bfd6ab5</srcmd5>
+    <version>unknown</version>
+    <time>1530002221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613658</requestid>
+  </revision>
+  <revision rev="47" vrev="25">
+    <srcmd5>9ac8c3f414d75b13afdba448a38e5999</srcmd5>
+    <version>unknown</version>
+    <time>1532361732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624655</requestid>
+  </revision>
+  <revision rev="48" vrev="26">
+    <srcmd5>72c9e376b7cc5b4875ed3284de9d8cb0</srcmd5>
+    <version>unknown</version>
+    <time>1538672466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.29.1
+  Fixes and minor enhancements:
+  * af_rubberband: Fix for A-V drift on seeking.
+  * ao_alsa: Fixes to remove spam during pausing and end-of-file.
+  * ao_jack: Fix for mpv attempting to connect to non-standard devices such as MIDI.
+  * ao_openal: Drop support for Apple's bundled OpenAL due to lack of features to successfully build.
+  * ao_pulse: Fix for audio buffer length calculation.
+  * demux_lavf: Fix EDL playback of certain DASH streams.
+  * demux_lavf: Mark v4l streams as not seekable.
+  * demux_raw: Fix for gapless playback from raw audio input.
+  * drm_atomic: Fix to enable video output with devices without a video overlay plane.
+  * encode: Fix for crashes in case of failure to write to output.
+  * encode: Fix for encoding when utilizing lavfi-complex.
+  * Fix to strip HDR peak metadata if attached to SDR video (#6111)
+  * manpage: Misc fixups.
+  * stream_{smb,file}: Fix for partial writes to buffers.
+  * stream_libarchive: Fix hang when an out-of-bound seek happens.
+  * stream_smb: Fix for crashes due to libsmbclient and threading (#5936).
+  * vo_gpu: Fix for corruption when multiple compute shaders override each others' block sizes (#6083).
+  * ytdl_hook: Always load &quot;ytdl://&quot; URLs with ytdl_hook first.
+  * ytdl_hook: Fix audio streams not being picked up for some sites.
+</comment>
+    <requestid>639655</requestid>
+  </revision>
+  <revision rev="49" vrev="27">
+    <srcmd5>ffcdbe81b2f4c95f60b95096e98439f1</srcmd5>
+    <version>unknown</version>
+    <time>1540819316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644890</requestid>
+  </revision>
+  <revision rev="50" vrev="28">
+    <srcmd5>13989aacaf3481951b773c076cec40d0</srcmd5>
+    <version>unknown</version>
+    <time>1543224382</time>
+    <user>dimstar_suse</user>
+    <comment>- Add vulkan dependency per bsc#1115120</comment>
+    <requestid>651041</requestid>
+  </revision>
+  <revision rev="51" vrev="29">
+    <srcmd5>30119f6bdaf286c9ced351c13cd50236</srcmd5>
+    <version>unknown</version>
+    <time>1566479103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725238</requestid>
+  </revision>
+  <revision rev="52" vrev="30">
+    <srcmd5>7e1cc37a0f0b048c45b6c950b040b0e7</srcmd5>
+    <version>unknown</version>
+    <time>1567581164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727819</requestid>
+  </revision>
+  <revision rev="53" vrev="31">
+    <srcmd5>9ad4df3465fc2c4a6e07a875d971c78e</srcmd5>
+    <version>unknown</version>
+    <time>1568805202</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731544</requestid>
+  </revision>
+  <revision rev="54" vrev="32">
+    <srcmd5>f4f97dfa11020ffc40d1935418e1bc13</srcmd5>
+    <version>unknown</version>
+    <time>1569392357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732737</requestid>
+  </revision>
+  <revision rev="55" vrev="33">
+    <srcmd5>01a41a5c27a15b6c2d58db435ce3d24e</srcmd5>
+    <version>unknown</version>
+    <time>1569852038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733933</requestid>
+  </revision>
+  <revision rev="56" vrev="34">
+    <srcmd5>356ad3d3bede2fb907cfed69b580ba4b</srcmd5>
+    <version>unknown</version>
+    <time>1570448922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735617</requestid>
+  </revision>
+  <revision rev="57" vrev="35">
+    <srcmd5>851c1307d8cd8bd79f2785cb493d7e25</srcmd5>
+    <version>unknown</version>
+    <time>1571049687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737640</requestid>
+  </revision>
+  <revision rev="58" vrev="36">
+    <srcmd5>72882911d0f2b3a4401ba7b2837e55c9</srcmd5>
+    <version>unknown</version>
+    <time>1571653737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741202</requestid>
+  </revision>
+  <revision rev="59" vrev="37">
+    <srcmd5>641d22546407f3358388ba3168c3bf70</srcmd5>
+    <version>unknown</version>
+    <time>1572180125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743302</requestid>
+  </revision>
+  <revision rev="60" vrev="38">
+    <srcmd5>0f079392b64c6d43183b9e0a7226ec53</srcmd5>
+    <version>unknown</version>
+    <time>1573422548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747194</requestid>
+  </revision>
+  <revision rev="61" vrev="39">
+    <srcmd5>f84089501f3b26be2932ddce4e71230e</srcmd5>
+    <version>unknown</version>
+    <time>1576585813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757460</requestid>
+  </revision>
+  <revision rev="62" vrev="40">
+    <srcmd5>fd91fef0071abf0189dc380cea12af46</srcmd5>
+    <version>unknown</version>
+    <time>1577451673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759657</requestid>
+  </revision>
+  <revision rev="63" vrev="41">
+    <srcmd5>97d4f49a67164a806192ed6eb403956e</srcmd5>
+    <version>unknown</version>
+    <time>1577630989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759813</requestid>
+  </revision>
+  <revision rev="64" vrev="42">
+    <srcmd5>3843ad888f87f05969ddc0a8ff002262</srcmd5>
+    <version>unknown</version>
+    <time>1578867844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763371</requestid>
+  </revision>
+  <revision rev="65" vrev="43">
+    <srcmd5>87f470a15e446a9888d9fdfc91785ae4</srcmd5>
+    <version>unknown</version>
+    <time>1579463812</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner
+- Conflict with broken versions of mpv-plugin-mpris
+</comment>
+    <requestid>765455</requestid>
+  </revision>
+  <revision rev="66" vrev="44">
+    <srcmd5>39c2e0210cb3e05aa0c7ccdcdd992c1e</srcmd5>
+    <version>0.32.0+git.1580083289.cbfcd3e703</version>
+    <time>1580205270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.1580083289.cbfcd3e703:
+  * See https://github.com/mpv-player/mpv/compare/01de2a9bd5..cbfcd3e703
+    for the complete changelog.
+  * mpv now generates its own bash-completion file</comment>
+    <requestid>767600</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>e0764c3217038b4ba2822922a377c548</srcmd5>
+    <version>0.32.0+git.1580606151.f304a79935</version>
+    <time>1580724879</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.1580606151.f304a79935:
+  * See https://github.com/mpv-player/mpv/compare/cbfcd3e703..f304a79935
+    for the complete changelog.</comment>
+    <requestid>769331</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>8c711a753858c9f9e2627c308c6302c1</srcmd5>
+    <version>0.32.0+git.20200203T191344.cbee577d0a</version>
+    <time>1580842661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770010</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>bae5d24fc6bc37aa631bc857aa76ac76</srcmd5>
+    <version>0.32.0+git.20200208T095058.6799f8e0e9</version>
+    <time>1581368030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200208T095058.6799f8e0e9:
+  * See https://github.com/mpv-player/mpv/compare/cbee577d0a..6799f8e0e9
+    for the complete changelog.</comment>
+    <requestid>772447</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>faa5b902e6e1cdc58ddfcb052f14795d</srcmd5>
+    <version>0.32.0+git.20200213T013258.5bf433b16f</version>
+    <time>1581694642</time>
+    <user>okurz-factory</user>
+    <comment>- Update to version 0.32.0+git.20200213T013258.5bf433b16f:
+  * See https://github.com/mpv-player/mpv/compare/6799f8e0e9..5bf433b16f
+    for the complete changelog.</comment>
+    <requestid>774138</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>d08ac28caf4e8db10b9d2f5d61c857ef</srcmd5>
+    <version>0.32.0+git.20200217T003119.36ca0e0030</version>
+    <time>1582018734</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200217T003119.36ca0e0030:
+  * See https://github.com/mpv-player/mpv/compare/5bf433b16f..36ca0e0030
+    for the complete changelog.</comment>
+    <requestid>774879</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>7b32e23d6c96f2372b77ff6a767e347a</srcmd5>
+    <version>0.32.0+git.20200222T142106.ee6ad403a7</version>
+    <time>1582555892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200222T142106.ee6ad403a7:
+  * See https://github.com/mpv-player/mpv/compare/36ca0e0030..ee6ad403a7
+    for the complete changelog.</comment>
+    <requestid>778319</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>42076c4be8cb66845670fcff5a14b434</srcmd5>
+    <version>0.32.0+git.20200301T004003.e7bab0025f</version>
+    <time>1583094519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200301T004003.e7bab0025f:
+  * See https://github.com/mpv-player/mpv/compare/ee6ad403a7..e7bab0025f
+    for the complete changelog.</comment>
+    <requestid>780755</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>423f78b9a874de4417ed253942445015</srcmd5>
+    <version>0.32.0+git.20200307T135520.28ea1ed296</version>
+    <time>1583613742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200307T135520.28ea1ed296:
+  * See https://github.com/mpv-player/mpv/compare/e7bab0025f..28ea1ed296
+    for the complete changelog.
+- Remove smbclient BR, samba support is now provided via ffmpeg</comment>
+    <requestid>782543</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>ebfb6b27530970a95402ecb8938a48ff</srcmd5>
+    <version>0.32.0+git.20200402T120653.5824ac7d36</version>
+    <time>1585995690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200402T120653.5824ac7d36:
+  * See https://github.com/mpv-player/mpv/compare/28ea1ed296..5824ac7d36
+    for the complete changelog.</comment>
+    <requestid>790924</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>3bb465d9dfcfe9bb94e435b390fea1c8</srcmd5>
+    <version>0.32.0+git.20200418T001652.a09c7691d7</version>
+    <time>1587467491</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200418T001652.a09c7691d7:
+  * See https://github.com/mpv-player/mpv/compare/5824ac7d36..a09c7691d7
+    for the complete changelog.</comment>
+    <requestid>795829</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>c69a8c08541a2809be7e6897832898aa</srcmd5>
+    <version>0.32.0+git.20200418T001652.a09c7691d7</version>
+    <time>1587581807</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BR on pkgconfig(ffnvcodec) to enable CUDA support</comment>
+    <requestid>796211</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>69af2b16f3d292cd0fc15ce9ee6060ec</srcmd5>
+    <version>0.32.0+git.20200426T233854.027ae815ec</version>
+    <time>1588105852</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200426T233854.027ae815ec:
+  * See https://github.com/mpv-player/mpv/compare/a09c7691d7..027ae815ec
+    for the complete changelog.</comment>
+    <requestid>798508</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>d0a20399024c6d36ea8fbdb495254d7f</srcmd5>
+    <version>0.32.0+git.20200501T204851.cae2ffb6eb</version>
+    <time>1588450733</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200501T204851.cae2ffb6eb:
+  * See https://github.com/mpv-player/mpv/compare/027ae815ec..cae2ffb6eb
+    for the complete changelog.</comment>
+    <requestid>799615</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>233b3df457d3e1a385056a69a40b6d8d</srcmd5>
+    <version>0.32.0+git.20200518T015720.82ded968aa</version>
+    <time>1589892350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200518T015720.82ded968aa:
+  * See https://github.com/mpv-player/mpv/compare/cae2ffb6eb..82ded968aa
+    for the complete changelog.</comment>
+    <requestid>806768</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>b8d0ac9d8508d68dc35e55bdd29462ca</srcmd5>
+    <version>0.32.0+git.20200525T015437.b83bdd1d17</version>
+    <time>1590506530</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.32.0+git.20200525T015437.b83bdd1d17:
+  * See https://github.com/mpv-player/mpv/compare/82ded968aa..b83bdd1d17
+    for the complete changelog.</comment>
+    <requestid>808571</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>fb163de5946d052db4119534a8bb8d08</srcmd5>
+    <version>0.32.0+git.20200609T164905.d5de79d10f</version>
+    <time>1591862644</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200609T164905.d5de79d10f:
+  * See https://github.com/mpv-player/mpv/compare/b83bdd1d17..d5de79d10f
+    for the complete changelog.</comment>
+    <requestid>813096</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>24a7f47dd94ea59572dc9573d4cc34d7</srcmd5>
+    <version>0.32.0+git.20200610T171643.c7fe4ae73a</version>
+    <time>1592245767</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200610T171643.c7fe4ae73a:
+  * vo_gpu: move coherent specifier to the correct location
+  * player: make unpausing directly after seek work with --keep-open (again)</comment>
+    <requestid>814562</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>a574677cf8e5e829fe5a90d957d39f17</srcmd5>
+    <version>0.32.0+git.20200701T004440.8fbc4b1737</version>
+    <time>1594045973</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200701T004440.8fbc4b1737:
+  * ci: add d3d11 to mingw build
+  * vo_gpu: vulkan: add ability to disable events
+  * player: warn if both proper and compat. config directories exist
+  * path: do not use old_home for win32 exe dir
+  * path: switch back to using non-XDG config dir by default
+  * vo_gpu: fix typo in struct name
+  * manpage: --demuxer-seekable-cache is useless
+  * ci: replace mingw build scripts
+  * vo_gpu: use highp float if available for GLES
+  * vo_gpu: add better gamut clipping option
+  * vo_gpu: fix scaler/window validation to allow unsetting
+  * vo_x11: partially restore operation on bad endian systems
+  * video: some concessions to big endian hosts
+  * test: update to new ffmpeg pixfmts
+  * video: alias IMGFMT_RGB30 to AV_PIX_FMT_X2RGB10
+  * repack: handle endian in a more general way
+  * img_format: fight ffmpeg pixdesc some more
+  * audio: don't lock ao_control for pull mode drivers
+  * vo_gpu: placebo: add fallback code for stride mismatch
+  * vo_gpu: add BT.2390 tone-mapping
+  * vo_gpu: reinterpret SDR white levels based on ITU-R BT.2408</comment>
+    <requestid>818953</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>d68e1aa2cd25c92d2fa46412f8b79d50</srcmd5>
+    <version>0.32.0+git.20200802T170651.fb55ee99e3</version>
+    <time>1596565523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200802T170651.fb55ee99e3:
+  * See https://github.com/mpv-player/mpv/compare/8fbc4b1737..fb55ee99e3
+    for the complete changelog.</comment>
+    <requestid>824330</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>ca2140613c9cc9c64e938b820a5be33a</srcmd5>
+    <version>0.32.0+git.20200816T162900.486516f723</version>
+    <time>1597744818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200816T162900.486516f723:
+  * See https://github.com/mpv-player/mpv/compare/fb55ee99e3..486516f723
+    for the complete changelog.</comment>
+    <requestid>827389</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>f2126a6d00955d08d3846a2acb923666</srcmd5>
+    <version>0.32.0+git.20200820T203717.b16a6cb6c6</version>
+    <time>1598030225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200820T203717.b16a6cb6c6:
+  * client API: note about libswscale corrupting memory
+  * wayland: conditionally commit surface on resize
+  * player: add --subs-with-matching-audio option
+  * wayland: refactor geometry/window handling
+  * stream: Implement slice:// for reading slices of streams
+  * wayland: reset geometry on reconfig if fullscreen
+  * wayland: soften GNOME warning</comment>
+    <requestid>828460</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>49f71689f5231527de6781d82840290a</srcmd5>
+    <version>0.32.0+git.20200827T184057.fc6c209cbd</version>
+    <time>1598726514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200827T184057.fc6c209cbd:
+  * f_demux_in: log EOF &quot;recovery&quot;
+  * f_decoder_wrapper: pass through EOF after EOF
+  * player: fix video paused condition on VO creation
+  * filter: add a helper
+  * audio: clarify set_pause() documentation
+  * audio: adjust frame clipping for spdif formats
+  * audio: remove unused ring.h includes
+  * player: fix swapped debug output
+  * vo_gpu: EGL: fix transparency on X11/EGL/Mesa
+  * vo_gpu: EGL: slightly better debug logging of EGL configs
+  * ao/pulse: create the stream corked
+  * wayland: always update sbc for presentation time
+  * Revert &quot;demux_lavf: always give libavformat the filename when probing&quot;
+  * audio: remove delay debug logging
+  * wayland: simplify presentation time
+  * demux_mf: actually report errors
+  * player: do not loop if there's nothing to loop
+  * options: do not accept &quot;:&quot; as separator anymore in key/value lists
+  * cocoa-cb: force layer update on resize
+  * mac: add icc profile and ambient light sensor support
+  * mac: use config cache und wakeup for mac option runtime changes
+  * mac: make ontop level runtime changeable
+  * mac: properly guard and unwrap an optional value
+  * cocoa-cb: generalisation of backend independent parts</comment>
+    <requestid>830193</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>07cdc1bf79801e2a4f64794f39979721</srcmd5>
+    <version>0.32.0+git.20200904T003159.f57b90b069</version>
+    <time>1599507241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200904T003159.f57b90b069:
+  * options: fix a flags field
+  * ao_alsa: make partial writes an error message
+  * audio: fix stream-silence with push AOs (somewhat)
+  * encode: propagate errors to exit status properly
+  * ao_lavc: slightly simplify filter use
+  * client API: inactivate the opengl_cb API
+  * encode: disable unsupported media types automatically
+  * encode: remove early EOF failure handling
+  * audio: slightly simplify audio_start_ao()
+  * audio: reduce excessive logging of delayed audio start
+  * ao_alsa: log more information on short writes
+  * audio: do not show audio draining message when it does not make sense
+  * audio: do not wake up player when waiting for audio state and paused
+  * audio: fix AVFrame allocation (crash with opus encoding)
+  * DOCS/interface-changes: remove encoding mode deprecation entry
+  * player/playloop.c: reorder included headers per contribute.md
+  * ao_openal: restore working condition with new push API
+  * ao: remove unused field
+  * audio: fix inefficient behavior with ao_alsa, remove period_size field
+  * encode: undeprecate
+  * ring: remove this
+  * audio_buffer: remove this
+  * audio: refactor how data is passed to AO
+  * DOCS: fix minor issue on the --video-latency-hacks explanation
+  * Update compile-windows.md
+  * manpage: reorder sentence
+  * f_async_queue: add various helper functions
+  * f_async_queue: don't count EOF frames as samples
+  * f_async_queue: change reset behavior</comment>
+    <requestid>832587</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>b5ec814492986c0b40b256c960ef822e</srcmd5>
+    <version>0.32.0+git.20200912T130313.49f5c9b482</version>
+    <time>1600079632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200912T130313.49f5c9b482:
+  * command: add property track-list/N/main-selection
+  * player: fix inconsistent AO pause state in certain situations
+  * player: some minor code golf
+  * vo_vdpau: remove an unused variable
+  * player: clamp relative seek base time to nominal duration
+  * manpage: &quot;fix&quot; some formatting
+  * terminal-unix: attempt to support more CTRL
+  * vo_vdpau: remove deprecated/inactive --vo-vdpau-deint option
+  * command: add read-only focused property
+  * manpage: fix typo</comment>
+    <requestid>834225</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>ade2b12a760e2d0403491167c960add5</srcmd5>
+    <version>0.32.0+git.20200922T130339.c535dfed66</version>
+    <time>1600802185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200922T130339.c535dfed66:
+  * travis: fix macOS 10.12 legacy build
+  * wayland: only render if we have frame callback
+  * player: add pause state to playback start message
+  * terminal: fix segfault when backgrounding
+  * f_decoder_wrapper: make log prefix less verbose
+  * audio: take paused state into account in ao_start()
+  * audio: move start() calls outside of lock
+  * mac: add an option to change the App activation policy
+  * mac: add ontop window level for desktop
+  * options: simplify --android-surface-size handling
+  * build: disable GLX
+  * manpage: fix console keybindings punctuation
+  * msg: make --msg-time show time in seconds
+  * build: sort dependencies (to make build deterministic)
+  * command, demux: make drop-buffers reset state even harder
+  * terminal: attempt to handle the ESC key
+  * client API: update alignment requirements for software rendering
+  * sws_utils: work around libswscale corrupting memory yet again
+  * manpage: refer to --sub-color for colors
+  * manpage: mark file-local-options as writable
+  * stream_slice: interpret `end` as offset if it starts with '+'</comment>
+    <requestid>836077</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>38f55312ce9403ffdba5cf83f7ca32b6</srcmd5>
+    <version>0.32.0+git.20201001T111222.34b8adc456</version>
+    <time>1601919637</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20201001T111222.34b8adc456:
+  * wayland: set an opaque region
+  * options: fix --cover-art-file typo
+  * player: cosmetically change around some code
+  * player: add automatic loading of external cover art files
+  * player: let frontend decide whether to use cover-art mode
+  * ci: fix spirv-cross build in mingw scripts
+  * mac: add support for the focused property
+  * mac: add an option to prevent focusing of the window on open</comment>
+    <requestid>839302</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>9fe2fe93ccebfb819034211162bd0c77</srcmd5>
+    <version>0.32.0+git.20201008T111710.16b44d93f7</version>
+    <time>1602282592</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20201008T111710.16b44d93f7:
+  * Revert &quot;demux: add a POS&quot;
+  * player: fix another nightmarish corner case
+  * demux: add a POS
+  * Revert &quot;wayland: add wayland-display-socket option&quot;
+  * wayland: add wayland-display-socket option
+  * screenshot: add --screenshot-sw option</comment>
+    <requestid>840419</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>22cbaedc4822aab180a0b51f14fbbd12</srcmd5>
+    <version>0.32.0+git.20201016T174805.cbbdb3fae4</version>
+    <time>1603203049</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20201016T174805.cbbdb3fae4:
+  * stats: display hw pixel format too
+  * command: expose underlying pixfmt for hwdec
+  * manpage: Document behaviour of *nix configuration directories
+  * build: bump waf to 2.0.20
+  * stream_lavf: enable SRT protocol support through FFmpeg
+  * vo_gpu: fix segfault when updating render opts
+  * vo_gpu: EGL: hack for alpha on different platforms
+  * wayland: update opaque region on runtime
+  * vo_gpu: update render options on runtime
+  * wayland: be less strict about when to render
+  * docs: fix simple typo, unminimze -&gt; unminimize
+  * DOCS: fix typo on sub-filter-regex-enable
+  * manpage: reference standard for configuration file location</comment>
+    <requestid>842552</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>ed1b021b85e25f6483271b23229960c0</srcmd5>
+    <version>0.32.0+git.20201116T202958.24d6961833</version>
+    <time>1605644822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20201116T202958.24d6961833:
+  * command: mouse: generate MOUSE_{ENTER,LEAVE} if required
+  * docs/input.rst: document the mouse-pos property
+  * command: mouse-pos property: add field &quot;hover&quot;
+  * lua/js: mp.get_mouse_pos: use the mouse-pos property
+  * command: new property: mouse-pos
+  * command: add internal INPUT_PROCESSED event
+  * path: do not use old_home for win32 exe dir
+  * js: report scripts CPU/memory usage statistics
+  * ci: fix mingw build by adding harfbuzz
+  * command: make subtitle time properties observable
+  * manpage: properties fixes
+  * manpage: document the property-change event
+  * manpage: document video-frame-info sub-properties
+  * manpage: remove redundant &quot;Return(s) &quot;
+  * manpage: document demuxer-cache-state better
+  * manpage: be consistent with booleans
+  * vo_sixel: Add fallback terminal width and height
+  * vo_sixel: Add checks to prevent null pointer dereferencing.
+  * ao_alsa: handle -EPIPE XRUNs from snd_pcm_status
+  * ao_alsa: always initialize state if passed
+  * wayland: fix buffer overrun in get_mods
+  * wayland: check for modifier keys on pointer events
+  * Revert &quot;wayland: conditionally commit surface on resize&quot;
+  * DOCS: correct interface-changes.rst
+  * mac: make focus property observable
+  * video/out/vo_sixel.c: Implement sixel as a output device
+  * manpage: document av1 addition to --hwdec-codecs default setting
+  * vd_lavc: add AV1 to the default allowed hwdec codec list
+  * player: fix external cover file prioritization</comment>
+    <requestid>849062</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>8fe23ebd403d9f1a77cee5b4b92af537</srcmd5>
+    <version>0.33.0+git.20201122T184820.fa7afc3e19</version>
+    <time>1606142764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.0+git.20201122T184820.fa7afc3e19:
+  * Update VERSION
+  * Release 0.33.0
+  * file2string: remove question mark from safe chars
+  * Revert &quot;options: disable vsfilter blur compat by default&quot;
+  * build: always run waf with python3
+  * build: fix macOS arm builds
+  * vo_sixel: draw osd on the output frame
+  * vo_sixel: return -1 instead of SIXELSTATUS on failure
+  * vo_sixel: set --vo-sixel-fixedpalette=yes by default
+  * vo_sixel: Add aspect ratio based output centering
+  * vo_sixel: rename all user options with opt_ prefix
+  * vo_sixel: set output resolution based on terminal_get_size2
+  * osdep/terminal: Add function to get terminal pixel dimensions
+  * doc: split BNF definitions of &lt;command&gt; and &lt;argument&gt; in separate lines
+  * manpage: document improved --playlist security</comment>
+    <requestid>850003</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>dc40508020ab29df1eb10c85f05de892</srcmd5>
+    <version>0.33.0+git.20201129T160245.f16c6472a1</version>
+    <time>1606828952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.0+git.20201129T160245.f16c6472a1:
+  * travis: use newer 10.15 VM with newer xcode
+  * travis: fix macOS 10.13 build
+  * vo_sixel: don't leak the frame reference
+  * vo_tct: don't leak the frame reference
+  * vo_tct: remove unused variable
+  * player: allow vo to be switched at runtime
+  * demux: add function to refresh a track without (de-)selecting it
+  * vo_sixel: use draw_frame instead of draw_image
+  * vo_sixel: skip testdither init in fixed palette
+  * vo_sixel: Update libsixel constant values
+  * matroska.py: remove python2 support
+  * bootstrap.py: remove all python2 support
+  * vo_sixel: change default dither to &quot;auto&quot;
+  * vo_sixel: fix the image corruption with mlterm
+  * vo_sixel: support --vo-sixel-exit-clear[=yes]
+  * terminal: process input when foregrounded</comment>
+    <requestid>851822</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>0167e37ed9338e3ee7e5168ee2345115</srcmd5>
+    <version>0.33.0+git.20201220T105748.1ba5dc84ca</version>
+    <time>1608634291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.0+git.20201220T105748.1ba5dc84ca:
+  * wayland: support multiple modifiers
+  * mac: fix type mismatch Int instead of Int32
+  * mac: use visible frame rectangle for window geometry calculation
+  * mac: fix a window positioning bug when exiting fullscreen
+  * appveyor: use MSYS2 shaderc package
+  * vo_wlshm: support presentation time
+  * wayland: unify frame/presentation callback code
+  * x11: update geometry/autofit opts on runtime
+  * wayland: update geometry/autofit opts on runtime
+  * console: use wl-paste on Wayland
+  * wayland: remove unused function declaration
+  * auto_profiles: fix compile_cond on lua 5.1
+  * build: recognize Lua 5.1 on Arch Linux
+  * manpage: document background transparency
+  * manpage: clarify that you can prefetch m3u8 urls
+  * wayland: handle multiple outputs more correctly
+  * vo_gpu: revert 8a09299 and conditionally clear framebuffer again
+  * mac: support screen-name and fs-screen-name opts
+  * wayland: support fs-screen-name option
+  * x11: support screen-name and fs-screen-name opts
+  * player: add --screen-name and --fs-screen-name
+  * manpage: clarify profile-cond requires underscores
+  * build: restore support for non-pkgconfig zlib
+  * build: use pkg-config for zlib
+  * vo_gpu: placebo: update for upstream API changes
+  * vo_sixel: don't divide by zero on small terminal
+  * vo_sixel: re-fit image on terminal resize
+  * vo_sixel: refactor of resize, reconfig (no-op)
+  * vo_sixel: Update description string of vo driver</comment>
+    <requestid>857839</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>382494d30bbc01d2d214539488307b74</srcmd5>
+    <version>0.33.0+git.20210103T120530.1251f7bbf9</version>
+    <time>1609783672</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.0+git.20210103T120530.1251f7bbf9:
+  * manpage: rename OS X references to macOS
+  * vo_gpu: don't segfault if 3DLUT texture fails uploading
+  * input.conf syntax: support custom quotes !XstringX!
+  * input.rst: fix typo commands -&gt; arguments
+  * csputils: add mappings for DCI-P3 (ST.431-2) and P3-D65 (ST.432-1)
+  * vd_lavc: add VP8 to the default allowed hwdec codec list
+  * vo_gpu: cast bvecN to vecN for mix() on older GLSL
+  * bootstrap: log caught URLError
+  * Revert &quot;build: recognize Lua 5.1 on Arch Linux&quot;
+  * build: fail configure if --lua is specified and Lua isn't found</comment>
+    <requestid>859998</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>4ada11defaa3659a0682430099563e64</srcmd5>
+    <version>0.33.0+git.20210223T124404.09d7c75bfe</version>
+    <time>1614274197</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.33.0+git.20210223T124404.09d7c75bfe:
+  * vo_gpu: libplacebo: require v2.72.0
+  * appveyor: Use MSYS2's spirv-cross package instead of building it
+  * appveyor: use latest build image for fixed MSYS2 installation
+  * msg: fix really-quiet option to only affect terminal output
+  * mac: add ability to toggle visibility on all workspaces from menubar
+  * command: add label for on-all-workspaces command
+  * mac: support --on-all-workspaces option
+  * vo_gpu: don't abort() if plane tex creation fails
+  * filters/auto_filters: switch from scaletempo to scaletempo2
+  * af_scaletempo2: fix crash for speed &gt;= 16
+  * travis: fix macOS VMs with older homebrew versions
+  * mac: only update touch bar items when necessary
+  * mac: use custom touch bar item and slider instead of a touch bar slider
+  * vo_gpu: vaapi: export plane pitch properly
+  * DOCS: fix cplugins information in libmpv.rst.
+  * demuxer/demux_mf: add support for more image codecs
+  * man: update deband-threshold default
+  * vo_gpu: lower default deband threshold
+  * vo_wlshm: support big endian systems
+  * README: update libass dependency harfbuzz as non-optional
+  * manpage: fix PDF build
+  * docs: Fix an old style parameter reference
+  * umpv: remove unused imports
+  * stream_lavf: support rtsps
+  * player: make resetting of track selection to &quot;auto&quot; work
+  * mac: fix dangling pointers
+  * mac: drop build support for swift versions earlier than version 4.1
+  * mac: fix usage of temporary pointers
+  * manpage: document off-by-one loop-file behavior</comment>
+    <requestid>874983</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>979a573a802976c2bbadb156cfb6a99c</srcmd5>
+    <version>0.33.0+git.20210223T124404.09d7c75bfe</version>
+    <time>1615802150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878951</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>17421dbd875e7671f948b8db7f2320a5</srcmd5>
+    <version>0.33.0+git.20210321T171820.6265724f33</version>
+    <time>1616598919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.0+git.20210321T171820.6265724f33:
+  * vo_gpu: placebo: keep track of texture sample mode
+  * stats.lua: include a filter's @label when displaying filters on page 1
+  * ao_oss: add this audio output again
+  * audio: prevent uninit_audio_out during encoding
+  * stream_lavf: add support for Gopher over TLS.
+  * ao/pulse: signal the mainloop when ops are done
+  * player/command: add albumart argument to video-add
+  * player/{core,loadfile}: make cover art loading more explicit
+  * ao/pulse: wait for command completion when setting volume or mute
+  * ytdl_hook: fix crash on missing track bitrate
+  * umpv: Use generator expression for files
+  * wayland: no mouse dragging in fullscreen/maximized
+  * manpage: mention rotate limitations with hwdec
+  * vd_lavc: wrap use of deprecated AVCodecContext.thread_safe_callbacks in #if
+  * manpage: video-rotate supports arbitrary steps
+  * mac: fix traditional fullscreen on macOS 11
+  * mac: remove an unused variable</comment>
+    <requestid>880726</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>551dd8f36f674c3d44e2190af21af234</srcmd5>
+    <version>0.33.1+git.20210412T140928.74f5d4940e</version>
+    <time>1618387861</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.1+git.20210412T140928.74f5d4940e:
+  * wayland: support the display-hidpi-scale property
+  * demux: undeprecate --cache-secs
+  * audio/aframe: reuse data buffer if less than 8 channels
+  * stream: turn stream_info.open2's args argument const
+  * stream_slice: fix use-after-free if inner stream fails to open
+  * player/scripting: fix use-after-free when loading script folders
+  * stream_mf: set correct stream origin
+  * demux_mf: improve format string processing
+  * manpage: fix a typo in the --aid option note
+  * vo_gpu: adjust interpolation_threshold's default
+  * options: Add validation macro for int type
+  * demux: Move demuxer help to new standard mechanism
+  * options: Make validation and help possible for all option types</comment>
+    <requestid>884888</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>6fa4973d3f8c4652e826ce14257a49c9</srcmd5>
+    <version>0.33.1+git.20210511T222233.ded36a4470</version>
+    <time>1621034667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.1+git.20210511T222233.ded36a4470:
+  * options: add some entries to --display-tags defaults
+  * ytdl_hook: expose some JSON fields as tags
+  * edl: add a way to add tags
+  * zsh completion: perform globbing on binary path
+  * vo_gpu: fix trivial memory leak
+  * Revert &quot;vo_gpu: revert 8a09299 and conditionally clear framebuffer again&quot;
+  * vf_sub: restore OSD if removed
+  * options: extend --replaygain-preamp range
+  * audio: fix replaygain being completely broken
+  * Revert &quot;audio: set audio chain ao on reinit&quot;
+  * mac: add support for display-width/display-height property
+  * command: add display-width/display-height property
+  * DOCS/input.rst: clarify --no-input-default-keybindings docs
+  * filter_kernels: fix quadric window
+  * DOCS/lua.rst: fix docs for utils.file_info
+  * build: address AVCodec, AVInputFormat, AVOutputFormat const warnings
+  * scripting (lua/js): utils.getpid: make wrapper of pid property
+  * command: new property: pid (process id)
+  * DOCS: clarify how client/script names work
+  * command: osd-dimensions: return ints and doc fixes
+  * audio: add two minor log messages
+  * ao/pulse: fix incorrect state reported after reset
+  * osc: reset margins when using boxvideo with showfullscreen/showwindowed
+  * wayland: ignore toplevel listener if geometry is 0
+  * osc: display immediately when visibility changes from never to always
+  * mac: fix window geometry calculation on secondary screens
+  * stream_file: add new identifier for macOS FUSE filesystems
+  * DOCS: mpv.rst: minor escaping clarifications
+  * win32: fit_window_on_screen: simplify, add comments</comment>
+    <requestid>893106</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>abe0ead8cdbb1d6cdcea2126aef65fd4</srcmd5>
+    <version>0.33.1+git.20210528T161101.d7f3d1fff7</version>
+    <time>1622536717</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.1+git.20210528T161101.d7f3d1fff7:
+  * wayland: refactor dispatching events
+  * manpage: mention cover-art-auto
+  * README: fix link to feature-request issues
+  * player: load cover art with the media filename
+  * win32: support the property 'focused'
+  * osc: re-initialize when chapter list changes
+  * recorder: fix codec_tag / codec_id confusion
+  * recorder: clear codec_tag if no target format support
+  * af_scaletempo2: use gcc vectors to speed up inner loop
+  * vo_gpu: replace --icc-contrast by --icc-force-contrast
+  * wayland: shuffle around the render loop again
+  * wayland: send VO_EVENT_DPI on output event as well
+  * command: add a missing comma to MP_EVENT_WIN_STATE
+  * vo_gpu: fix extreme clipping with --gamut-clipping for HDR outputs
+  * wayland: simplify render loop
+  * player/command: add secondary-sub-text property
+  * sub/osd: hide secondary subtitles if secondary-sub-visibility is false
+  * vo_gpu: hwdec_vaapi: silence errors while probing
+  * stream_lavf: remove uninitialized http_like array
+  * osxbundle: fix slow and wasteful memory allocation
+  * stream_file: disable read ahead for remote files on macOS
+  * build: move mingw jobs to Github actions
+  * build: move website rebuild into Linux/clang travis job</comment>
+    <requestid>896117</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>4c8746ecf0a0120742141085ef658fa2</srcmd5>
+    <version>0.33.1+git.20210613T225337.bc9d556f3a</version>
+    <time>1623767862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.1+git.20210613T225337.bc9d556f3a:
+  * js: add mp.utils.append_file
+  * vo_gpu: vulkan: displayvk: Fix handling of unconnected planes
+  * vo_gpu: vulkan: implement a VkDisplayKHR backed context
+  * vo_gpu: vulkan: provide a helper to access device name option
+  * vo_rpi: fix argument name
+  * github/issue_template: irc -&gt; IRC
+  * {ci,docs,README}: update IRC references to new network
+  * docs: fix leftover reference to the now defunct --video-sync-adrop-size option
+  * ytdl_hook: improve handling of json parsing errors</comment>
+    <requestid>899999</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>66f7db957d0b99ed438555c71c7cfbe8</srcmd5>
+    <version>0.33.1+git.20210630T163736.f2afae55e9</version>
+    <time>1625225214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.1+git.20210630T163736.f2afae55e9:
+  * wayland: refactor surface scaling
+  * sub: fix subs/lyrics on music files with sub-past-video-end=no
+  * wayland: fix wl_surface_set_buffer_scale usage
+  * wayland: always be sure to initially try to render
+  * wayland: remove unused includes
+  * wayland: handle app id option less stupidly
+  * wayland: reorganize wayland common code
+  * stats.lua: add scaled resolution
+  * DOCS: fix typo on seekbarkeyframes
+  * TOOLS/lua/autoload: load files even if current file is hidden
+  * TOOLS/lua/autoload: add ignore_hidden option
+  * player: fix property name
+  * lua: idle observers: ensure timers are up-to-date
+  * lua: timers: don't block forever with slow callbacks
+  * sub: by default, don't render timestamps after video EOF
+  * player: change cover-art-auto behavior
+  * js: idle-observers: minor performance improvement
+  * osc: seekbar hover/drag: display target chapter at the title
+  * manpage: add article in fuzzy explanation
+  * player: remove unnecessary check
+  * player: fix segfault
+  * osc: ensure tick after any mouse-event
+  * osc: don't initialize while mouse-down over an element
+  * osc: update chapter marker positions when duration changes</comment>
+    <requestid>903355</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>d1d53214be999face57eb0635c1d0c8a</srcmd5>
+    <version>0.34.0+git.20211101T154439.9ca9066d05</version>
+    <time>1637794466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933395</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>f15fed07757432b8e38839b477ba3684</srcmd5>
+    <version>0.34.1+git.20220117T134844.22b0bac28e</version>
+    <time>1642724732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947638</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>c4eade7a83ec601e08328424c1a2ae33</srcmd5>
+    <version>0.34.1+git.20220203T182214.5d31c7310c</version>
+    <time>1644273492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952064</requestid>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>ecd9d842fd665312dcaf4a42ec804016</srcmd5>
+    <version>0.34.1+git.20220203T182214.5d31c7310c</version>
+    <time>1654776713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981389</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>556a64e5c67ca88d39d5a2778bd9c108</srcmd5>
+    <version>0.35+git.20221118.d3a61cfe</version>
+    <time>1668877772</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Meson for build where possible as waf will be dropped in a
+  future version
+- Refresh mpv-make-ffmpeg-version-check-non-fatal.patch
+- _service: obs_scm -&gt; obs_tar
+- Do not require libsixel and mujs where no appropriate versions
+  are packaged
+- Vulkan requires recent libplacebo; disable on Leap &lt;= 15.3
+- Update to version 0.35+git.20221118.d3a61cfe:
+  * wayland: also log refresh rate on surface entrance
+  * drm: remove legacy API
+  * wayland: add support for content-type protocol
+  * player/video: add VOCTRL_CONTENT_TYPE
+  * player/main: log libplacebo version if built with it
+  * common/av_log: move general FFmpeg version before library versions
+  * vo: hwdec: remove legacy_names
+  * player: add --force-render option
+  * wayland: error out if essential protocol support is missing
+  * meson: fix capitalization of &quot;OpenGL&quot;
+  * ao_pipewire: log version information and metadata
+  * DOCS: update release policy to match reality
+- Update to version 0.35+git.20221112.2f747341:
+  * Update VERSION
+  * Release 0.35.0
+  * meson: fix macos-touchbar check
+  * github/workflows: force deletion of existing upstream python symlinks on macOS
+  * vo_gpu_next: add tunable shader parameters
+  * vo_gpu: mark --gamma-factor and --gamma-auto with deprecation warnings
+  * wayland, x11: fix possibly unsafe bstr usage
+  * ao_pipewire: reload ao on stream disconnect
+  * ao_pipewire: explicitly remove stream hook
+  * ao_pipewire: log generic stream errors
+  * Revert &quot;ao/audiounit: include AVAudioSession buffer in latency calc&quot;
+  * vo_dmabuf_wayland: improve error handling exporting VA surface
+  * hwdec_vaapi: only set VADisplay resource if entire init process has succeeded
+  * github/workflows: remove seccomp disablement
+  * github/workflows: bump linux jobs to Ubuntu 22.04 base VM
+  * github/workflows: move all build jobs to checkout V3
+  * github/workflows: remove xcode 13.0 to xcode 13.1 override
+  * github/workflows: remove macOS 10.15 image usage
+  * sd_ass: never mangle colours on RGB video
+  * meson: move dmabuf-wayland specific files under the right check
+  * gpu/context: properly guard wldmabuf context
+  * console: add history deduplication
+  * github/workflows: remove pip usage in mingw CI
+  * vo_gpu_next: set background transparency
+  * ci: upload resulting binary of mingw64 build
+  * ci/mingw64: refresh build scripts
+  * ytdl_hook: reverse order of tracks
+  * demux/codec_tags: support more WAVEFORMATEXTENSIBLE tags
+  * wayland_common: always zero out presentation context when destroying it
+  * wayland: correct braindead comment (no-op)
+  * wayland: hack around presentation_feedback weirdness
+  * wayland: free dmabuf_feedback object
+  * test: update to reflect that Vulkan is a generic format again
+  * filters/f_hwtransfer: remove VAAPI &lt;-&gt; Vulkan mapping for now
+  * build: add an additional check for wayland-protocols 1.24
+  * meson: add more hardcoded values to configuration
+  * meson: use 'dl' instead of 'libdl' in find_library
+  * ci: use meson setup build instead of meson build
+  * ao_coreaudio: specify UTF-8 as text encoding for CFString conversions
+  * options: log profile name if there is no restore data
+  * console: respect the top margin shared script property
+  * vo_dmabuf_wayland: use special ra_ctx_create_by_name
+  * vo_dmabuf_wayland: load all hwdecs in preinit
+  * wayland: always do a display_roundtrip at the end of init
+  * github/workflows: print error logs on freebsd
+  * ci/build-freebsd.sh: remove nonexistent option
+  * vo_dmabuf_wayland: fix DRM builds with no VAAPI
+  * video/out/wayland_common: adjust decoration disagreement log level
+  * video/out/wayland_common: clear decoration request even if compositor disagrees
+  * video/out/wayland_common: don't pass a negative of border flag into ternary
+  * video/out/wayland_common: make decoration state usage explicit
+  * ao_pipewire: compatibility for libpipewire 0.3.19
+  * ci: require pipewire to be enabled for Tumbleweed Linux builds
+  * wayland: bump dmabuf protocol to version 4
+  * vo_vaapi_wayland: remove, as it is superceded by vo_dmabuf_wayland
+  * vo_dmabuf_wayland: wayland VO displaying dmabuf buffers
+  * wayland: clean wp_presentation_feedback in discard callback to avoid leak
+  * build_image_converter - use full image format list to create hw_upload
+  * mp_imgfmt: move DRMPRIME format to end of enum
+  * DOCS: document E to cycle through Editions
+  * ao: promote ao_pipewire
+  * ao_pipewire: test for session to contain audio sinks
+  * ao_pipewire: init_boilerplate(): simplify errorhandling
+  * TOOLS/lua/autoload: fix incorrect duplicate file loading behavior
+  * audio/format: fix Type 'struct entry' has incompatible definitions in different translation units
+  * vo_gpu/hwdec: add NULL check for legacy_name
+  * hwdec_aimagereader: fix incorrect return values
+  * demux_mkv: add AVS2 and AVS3 to tag list
+  * wscript: remove some bogus configure options
+  * demux_mf: add support for QOI, PHM and HDR images
+  * f_hwtransfer: allow hw uploads to implicitly convert formats
+  * f_hwtransfer: accept non-power-of-2 hw uploads
+  * hwdec/dmabuf_interop_gl: work-around implicit rgba swizzling
+  * f_hwtransfer: get rid of the shit list
+  * hwdec/vaapi: improve probing of supported sw formats
+  * vo_gpu_next: fix crash on uninit after startup failure
+  * sd_ass: improve handling of subtitles with unknown duration
+  * DOCS: fix minor typo with keep-open description
+  * draw_bmp: fix out of bounds access in mark_rect
+  * vo_gpu/hwdec: rename and introduce legacy names for some interops
+  * x11: fix --on-all-workspaces option
+  * vo_gpu_next: vulkan: libplacebo: unify log prefix
+  * github/workflows: explicitly install Xinerama on FreeBSD
+  * x11: fix a couple of memory leaks
+  * ao_pipewire: allow specification of remote name
+  * ao_pipewire: small cleanups and restructring
+  * osc: scale rendered aspect ratio with window aspect ratio
+  * wayland: correctly handle non-CLOCK_MONOTONIC clocks
+  * vulkan: remove --vulkan-disable-events
+  * vo: hwdec_aimagereader: add missing image format specifier
+  * vo_gpu: hwdec: add Android hwdec utilizing AImageReader
+  * DOCS: deprecate --gamma-factor and --gamma-auto
+  * vo_gpu_next: respect --blend-subtitles=&lt;yes/no&gt;
+  * ao_pipewire: don't try to lock nonexistent loop
+  * ao_pipewire: use target.object
+  * mp_image: strip DoVi metadata that requires an EL
+  * manpage: document bt.2390 parameter
+  * vo_gpu_next: fix screenshots of rotated sources
+  * DOCS/man/vf.rst : replace the outdated syntax
+  * vo_gpu_next: use static assert for array size
+  * vo_gpu_next: update render_info for upstream API change
+  * vo_gpu_next: implement --video-output-levels
+  * TOOLS/lua/autoload: add various extra file extensions
+  * TOOLS/lua/autoload: alphebatize auto-loaded file extensions
+  * ytdl_hook: use subtitle `name` as title if available
+  * af_scaletempo2: fix crash when the number of channels increases
+  * build: update waf to 2.0.24
+  * f_hwtransfer: mp_image_pool: support HW -&gt; HW mapping
+  * f_autoconvert: f_hwtransfer: support HW -&gt; HW uploads
+  * filters: lavfi: allow hwdec_interop selection for filters
+  * filters: support loading new hwdec_interops from filters
+  * vo: hwdec: do hwdec interop lookup by image format
+  * demux_lavf: extract is_image function
+  * demux_lavf: detect avif images
+  * DOCS/man/options.rst: replace some legacy single-hyphen syntax
+  * vo_gpu_next: support error diffusion dithering
+  * sub: use Unicode linebreaking for non-ASS subs and OSD
+  * ao_audiounit: get the channel layout from the AU itself
+  * mac: avoid unnecessary unsafe conversions; fixes crash in debug builds
+  * TOOLS/lua/autoload: add `m2ts` extension * `.m2ts` used for the Blu-ray disc container file format
+  * ytdl_hook: simplify exclude option parsing
+  * vo_gpu_next: only require full pixel byte alignment
+  * vo_gpu_next: implement ICC 3DLUT caching
+  * vo_gpu_next: use correct pixel size when mapping formats
+  * ao_pipewire: listen to hotplug events
+  * ao_pipewire: use proper hotplug init APIs
+  * ao_pipewire: create is_sink_node helper
+  * audio: list devices for all AOs with hotplug_init
+  * audio: try to use playback AO as hotplug AO first
+  * ta: increase size of names printed
+  * ao_pipewire: handle AOCONTROL_UPDATE_MEDIA_ROLE
+  * audio: add AOCONTROL_UPDATE_MEDIA_ROLE
+  * ao_pipewire: fix indent
+  * repack: add repacker for ccc16x16 formats
+  * mpv.metainfo.xml: add XDG appstream metadata manifest
+  * DOCS: Mention &quot;mono&quot; audio channels option
+  * DOCS/libmpv: fix typo in linkage section
+  * w32: fix typo in F23 mapping
+  * vo_gpu_next: fix typo affecting --target-trc option
+  * macos: add support for F13-F20 keys
+  * w32: add support for F13-F24 keys
+  * x11: add support for F13-F24 keys
+  * wayland: add support for F13-F24 keys
+  * input: add function keys F13-F24
+  * ad_lavc: strip non-normalized floats
+  * vo_gpu_next: display subtitles without video stream
+  * DOCS/options: update vd-lavc-skiploopfilter, skipidct and related descriptions
+  * DOCS/mpv: remove spaces at EOL, ensure 80 cols
+  * DOCS/mpv: added COMMAND INTERFACE refs to INTERACTIVE CONTROL
+  * ao_pipewire: for_each_sink(): report errors
+  * meson: fix condition for enabling vaapi-egl
+  * meson: fix libplacebo check
+  * audio: fix lack of reinitialization on format change with pull AOs
+  * player/audio: remove explicit drain on EOF
+  * ao_pipewire: make sure not to exceed the available buffer
+  * audio: don't try to drain non-existent AO
+  * vo_gpu_next: pass GL get_proc_addr pointer to libplacebo
+  * ao_pipewire: test on FreeBSD
+  * mpv.desktop: add RIST protocol to desktop entry
+  * osxbundle: add RIST protocol support to app metadata
+  * stream_lavf: enable RIST protocol support via ffmpeg
+  * ao_pipewire: restructure logic a bit
+  * ao_pipewire: only try to read requested data
+  * ao_pipewire: report all available info about chunk
+  * ytdl_hook: improve track detection
+  * misc/random: add xoshiro random number implementation
+  * meson: fix the build-date option
+  * meson: fix building without gl
+  * meson: consistently use feature['foo']
+  * meson: refactor generating config.h
+  * meson: disable dvdnav by default
+  * meson: reduce dictionary usage
+  * meson: add comment clarifying windows-internal-pthreads
+  * ytdl_hook: consistant behavior for single format
+  * wayland: add support for configure bounds
+  * x11: fix display-{width,height} calculation
+  * DOCS/options: correct wayland-disable-vsync option
+  * ytdl_hook: fix default track for single format
+  * github/workflows: auto-update freebsd-vm within major version
+  * drm_common: remove hard dependency on drmIsKMS()
+  * context_drm_egl: skip page flip wait on error
+  * gpu/hwdec: reorder `drmprime` below `drmprime_drm`
+  * video/drmprime: fix use-after-free
+  * hwdec/drmprime: fix build
+  * hwdec/dmabuf_interop: Properly prefix `priv` struct
+  * hwdec/drmprime: Fix small issues
+  * audio: drain ao on EOF
+  * hwdec/drmprime: add drmprime hwdec-interop
+  * ao_pipewire: tell audio server about number of queued samples
+  * man: remove unhelpful language
+  * ao_pipewire: use mpv logging
+  * hwdec/dmabuf_interop_gl: support basic multi-plane formats
+  * hwdec/dmabuf_interop: use AVDRMFrameDescriptor to describe dmabufs
+  * hwdec/dmabuf_interop: refactor out hwdec_vaapi dependencies
+  * hwdec/vaapi: rename interops to reflect more general use
+  * af_rubberband: add new engine option in rubberband 3.0.0
+  * drm_common: skip cards that don't support KMS for autodetection
+  * drm: avoid drmModeAtomicCommit races by blocking
+  * video: remove unnecessary code
+  * ytdl_hook: fix playlist index extraction
+  * ci: bump macos runner version
+  * wayland: add missing newline in wayland_common
+  * hwdec_vaapi_pl: support simple multi-plane image formats
+  * vo_gpu_next: fix screenshots on single-frame files
+  * vo_gpu/d3d11: fix VRAM leak
+  * osc.lua: add osc-tcspace script option
+  * osc.lua: add osc-unicodeminus script option
+  * vo_gpu_next: don't crash on !frame-&gt;current
+  * ytdl_hook: always set HTTP headers
+  * libplacebo: fix compatibility with libplacebo &gt;= 5
+  * github/workflows: upgrade FreeBSD to 13.1
+  * vo_gpu: fix 3DLUT precision
+  * ao_pipewire: prevent deprecation warning for pw_stream_get_time()
+  * ao_pipewire: pipewire uses linear volume
+  * ao_pipewire: don't access core after disconnect
+  * ao_pipewire: zero listeners
+  * ao_pipewire: support ao-volume on non-stereo channel layouts
+  * DOCS/encoding: remove the legacy option syntax
+  * drm_prime: fix newline in error message
+  * meson: fix rst2html command
+  * context_x11egl: remove supposed transparency fix
+  * DOCS: fix typo
+  * DOCS/osc: fix option &quot;showidlescreen&quot; -&gt; &quot;idlescreen&quot; This option was added in mpv-player@ec236f7, but its name in the document description is incorrect
+  * meson: add a summary at the end of configuration
+  * vo_gpu_next: implement --cscale
+  * swresample: don't forcibly clip on every conversion
+  * js: key bindings: ensure priorities for same-key - again
+  * x11: avoid XPresent API calls when it's not needed
+  * lua: command_native_async: make the callback optional
+  * lua: command_native_async: always callback a-sync
+  * x11: add --x11-present option
+  * x11: add nouveau to the xpresent whitelist
+  * x11: correct provider detection logic
+  * vo_vaapi_wayland: remove vaapi format query as formats are never used
+  * meson: remove pointless d3d11 dictionary
+  * x11: replace strcasestr usage with bstr
+  * github/workflows: install libxpresent on freebsd
+  * x11: support xorg present extension
+  * x11: use xrandr providers for driver detection
+  * vo: move wayland presentation to separate files
+  * meson: use require when checking for vdpau
+  * ci/build: Do not manually install Meson in openSUSE container
+  * meson: rearrange library dependency order to avoid crash with fontconfig
+  * vo_vaapi_wayland: only attach solid buffer once to main surface, on creation
+  * vo_vaapi_wayland: remove unnecessary subsurface sync/desync in resize
+  * ci/build-mingw64: enable test building
+  * ci/build-mingw64: bump dependencies
+  * ci/build-mingw64: switch to fossils directory for zlib
+  * ci/build-tumbleweed: attempt to enable unit tests in CI
+  * test/chmap: start adding AVChannelLayout unit tests
+  * audio/chmap: add mp_iterate_builtin_layouts
+  * f_lavfi: switch to AVChannelLayout when available
+  * ad_lavc: switch to AVChannelLayout when available
+  * af_lavcac3enc: switch to AVChannelLayout when available
+  * af_lavcac3enc: refactor chmap adding into its own function
+  * ao_lavc: switch to AVChannelLayout when available
+  * demux_lavf: switch to AVChannelLayout when available
+  * common/av_common: switch to AVChannelLayout when available
+  * audio/aframe: switch to AVChannelLayout when available
+  * audio: add AVChannelLayout helpers to convert from/to mp_chmap
+  * wayland: set appid before initial surface commit
+  * wayland_gl: fix a typo
+  * wayland_gl: wait until resize to create egl_window
+  * DOCS/options: fix incorrect labelling of hr-seek default
+  * sub: jsre filter: abort init early on empty filter list
+  * ci/mingw64: add git libplacebo for gpu-next
+  * github/workflows: move mingw CI to ubuntu 22.04
+  * ci/mingw64: make meson crossfile global
+  * wayland_gl: use wl-&gt;scaling when creating egl_window
+  * wayland: rearrange initialization logic
+  * player: add tiff/tif (TIFF) to list of image extensions
+  * player: add jxl (JPEG XL) to list of image extensions
+  * wayland: remove some unneeded lines from reconfig
+  * vo_gpu_next: fix OSD rendering of screenshots
+  * meson: add internal arg to wayland-protocols' get_variable()
+  * osc.lua: add idlescreen and osc-idlescreen
+  * video/out/dither: remove custom index_t typedef
+  * wayland: force vo_vaapi_wayland scaling to 1
+  * DOCS/interface-changes: mention vaapi-wayland vo
+  * vo: move allocate_memfd method to wayland_common
+  * vo_vaapi_wayland/wayland_common: code style fixes
+  * wayland: use mp_tag_str not drm_format_string
+  * vo: allow vaapi_wayland and vaapi_x11 to coexist
+  * wayland: don't depend on the order of global announcements
+  * vo: add new vaapi-wayland driver
+  * demux: stop iterating over demuxers as soon as a match is found
+  * osc.lua: fix crash when calling osc-tracklist while idle
+  * player: check for argv before printing help text
+  * player: set EOF when seeking to end with keep-open
+  * various: remove trailing whitespace
+  * wayland: use wl_output v4 for display-names
+  * lua: avoid rare memory leak in mp.join_path
+  * client API: always export symbols on windows
+  * stream_lavf: add support for ipfs and ipns
+  * meson: compile mpv.exe as a win32 gui application
+  * context_drm_egl: support monitor par
+  * github/workflows: add macOS 12 build
+  * video/image_writer: tag colorspace in AVCodecContext
+  * DOCS/input: fix typo &quot;NANME&quot; -&gt; &quot;NAME&quot;
+  * console.lua: don't render a 2nd cursor on the OSC
+  * video/image_writer: fix high-depth JPEG XL screenshots
+  * build: add avcodec jpegxl dependency versions
+  * demux: add support for r128 replaygain tags
+  * DOCS/ao: remove only usage of git.io link shortening service
+  * wayland: use wl_surface_damage_buffer
+  * DOCS/options: properly capitalize JPEG XL
+  * video/image_writer: add Jpeg XL screenshots
+  * various: fix typos
+  * vo_gpu_next: avoid 0x0 resizes
+  * github/workflows: workaround git permissions error
+  * DOCS/options: update the --load-osd-console documentation
+  * DOCS/input: update the ASS tags documentation URL
+  * options: make --cover-art-auto=exact the default
+  * player: add cover-art-whitelist option
+  * DOCS: fix the typo of --sub-justify
+  * DOCS: correct --sub-shadow-color
+  * DOCS/{mpv,options}: document the watch later functionality
+  * vo_wlshm: use draw_frame instead of draw_image
+  * mpv.desktop: add japanese translation
+  * ci: switch Tumbleweed build to openSUSE container registry
+  * vd_lavc: fixup unchecked usage of AV_CODEC_EXPORT_DATA_FILM_GRAIN
+  * vd_lavc: fix decoder initialization when no VO is available
+  * vd_lavc: remove duplicate vd_ffmpeg_ctx pointer from init_avctx
+  * wayland: use wl_output v4 for --fs-screen-name
+  * x11: avoid wasteful rendering when possible
+  * player: rearrange video sync opts/enums/defines
+  * wayland: unify visibility checking code
+  * vo_gpu/d3d11: add message ID based log level mapping
+  * vo_gpu/d3d11: mimic libplacebo backbuffer usage
+  * vo_gpu/d3d11: enable receival of color depth without active backbuffer
+  * vo_gpu/d3d11: add helper function to get ra_format from DXGI_FORMAT
+  * vo_gpu_next: switch to unpooled hwdec mapping
+  * x11: fix screen-name option
+  * mpv.desktop: add turkish translation
+  * options.lua: remove unused function
+  * options: add osd-playing-msg-duration
+  * egl_helpers: request at least 8 alpha bits if necessary
+  * DOCS/input: mark chapter-list as writable
+  * drm: context_drm_egl: add support for enabling VRR
+  * vd_lavc: add vo caps and option to set GPU film grain application
+  * vo_gpu_next: apply film grain if such metadata is present
+  * vf_format: support forwarding/stripping film grain metadata
+  * mp_image: support film grain parameters
+  * vd_lavc: hide a deprecation warning in already handled compatible code
+  * sub/osd: use atomic for osd_state.force_video_pts
+  * osdep/atomic: add mp_atomic_double
+  * Revert &quot;vo_gpu_next: remove unnecessary dependency&quot;
+  * ao_pipewire: Do not hold thread lock during loop stop
+  * ao_pipewire: fix resource lifetimes
+  * vo_gpu_next: remove unnecessary dependency
+  * lua: use correct chunkname when loading script files
+  * vo_gpu[_next]: hwdec: fix logging regression when probing
+  * common/av_log: explicitly include version.h for required libraries
+  * vo_gpu_next: also include stride alignment in DR size
+  * vulkan: correctly inherit proc_addr pointer
+  * ao_sndio: fix parentheses warning
+  * client API: also export mpv_stream_cb_add_ro
+  * vo_gpu: hwdec_vaapi: Improve logging when probing surface formats
+  * DOCS/options.rst DOCS/vo.rst: Update discussion of hwdec usage
+  * vo_gpu_next: fix crash when disabling DR at runtime
+  * vo_gpu_next: don't leak mpi on failed upload
+  * vo_gpu_next: properly keep track of DR allocations
+  * hwdec: warn on unsupported hwdec option value
+  * vo_gpu_next: don't allocate dr_buf as part of the AVBufferRef
+  * hwdec: fix out-of-date preprocessor variable name
+  * ytdl_hook.lua: consider any subprocess status != 0 as error
+  * vo_gpu_next: add D3D11 RA texture wrapping/unwrapping for hwdec
+  * vo_gpu_next: add support for hardware decoding
+  * manpage: add vo_gpu_next wiki link to manpage
+  * vo_gpu_next: configure the VO queue size dynamically
+  * vo_gpu_next: expose EGLDisplay to pl_gpu
+  * vo_gpu: move hwdec loading code to common helper
+  * hwdec: release images as soon as possible after mapping
+  * hwdec_vaapi_vk: rename to vaapi_pl
+  * hwdec_vaapi_gl: properly zero initialize priv struct
+  * filters: Re-add vavpp deinterlacing auto-filter
+  * ytdl_hook: fix url_is_safe to match URL protocols properly
+  * vo_gpu_next: remove/simplify plane flipping hacks
+  * vo_gpu_next: avoid rendering subtitles as HDR/wide gamut
+  * mp_image: fix mp_image_plane_w/h
+  * stats.lua: page 2 - frame timing: use fixed display order
+  * stats.lua: graphs: fix bad rendering due to division by 0
+  * vo_gpu_next: refactor subtitle rendering
+  * options: add always to stop-screensaver
+  * DOCS/input: document subprocess more clearly
+  * DOCS/input: fix typo
+  * vo_gpu: hwdec: load hwdec interops on-demand by default
+  * ao_pipewire: fix ao-volume handling
+  * vo_gpu_next: don't crash on negative plane strides
+  * vo_gpu: d3d11_helpers: don't create UNORDERED_ACCESS backbuffers in Win7
+  * meson: remove horrifying macos luajit hack
+  * github/workflows: use lua 5.1 on macos
+  * DOCS/mpv: improve vf=rotate examples
+  * wayland: partially fix drag and drop handling
+  * ao_pipewire: validate pod creation
+  * ao_pipewire: add support for device selection
+  * vo_gpu_next/context: get graphics API-specific contexts from pl_gpu
+  * vf_format: simplify frame type checking after addition of DoVi option
+  * vo_gpu: hwdec_vaapi: Don't probe formats for irrelevant endpoints
+  * ci/appveyor: fix package install line
+  * osc.lua: seekbar hover: speed-up chapter access
+  * js: utils.get_user_path: make wrapper of expand-path
+- Change source from cpio/tar to tar.xz to reduce the source code
+  size by a factor of 4.
+- Update waf to version 2.0.24
+- Set rubberband to version 3.0.0 which is need for optional dependencies.
+- Remove --enable-pipewire because it is now autodetected.
+  You can now only disable.
+- Disable pipwire under Leap because of build error.
+- Enable openal, sixel.
+- Enable mujs for Leap &gt;= 15.4.
+- Enable wayland for Leap &gt;= 15.4.
+- If libavif is installed default at build time it must have version &gt;= 0.11.1
+- Fix rpmlint filename-too-long-for-joliet.
+</comment>
+    <requestid>1036749</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>6e885a6c2653657a73d45fb671d055da</srcmd5>
+    <version>0.35+git.20221220.d5c3b9d9</version>
+    <time>1671564062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.35+git.20221220.d5c3b9d9:
+  * man/vo: Typo
+  * man/vo: Correct --vo-sixel-buffered
+  * vo_sixel: Implement write() loop
+  * vo_sixel: Rename draw-clear -&gt; config-clear
+  * osdep/terminal.h: Rename screen buffer controls
+  * vo_sixel: Alias/deprecate exit-clear -&gt; alt-screen
+  * vo_sixel: Make buffering optional
+  * man/vo: Fix rendering error due to non-printables
+  * DOCS/interface-changes: Add --vo-sixel-draw-clear
+  * Revert &quot;ao_pipewire: deactivate stream at end of playback&quot;
+  * vo_sixel: Buffer full output sequence
+  * vo_sixel: Use write(2) on POSIX platforms
+  * vo_tct: Use newer options API
+  * vo_sixel: Move user options to struct
+  * vo_sixel: Add option to skip clear while drawing
+  * osdep/terminal: Move common esc codes to terminal.h
+  * vo_sixel: Use the alternate buffer to restore term
+  * vo_tct: Use the alternate buffer to restore term
+  * ao_pipewire: deactivate stream at end of playback
+  * ao_pipewire: clean up when hotplug_init fails
+  * ao_pipewire: destroy context on connection failure
+  * ao_pipewire: free properties on failure
+  * vd_lavc: Set AV_HWACCEL_FLAG_UNSAFE_OUTPUT flag
+  * hwdec_drmprime: support yuv420p format
+  * ao_coreaudio: use device's nominal sample rate for latency properties
+  * player: add window-id property
+  * ffmpeg: update to handle deprecation of `av_init_packet`
+  * sws_utils: update to handle deprecation of `avcodec_enum_to_chroma_pos`
+  * vd_lavc: update to handle deprecation of `pkt_duration`</comment>
+    <requestid>1043893</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>c2c69d6ad8d012894147956aab9f9cb5</srcmd5>
+    <version>0.35+git.20221222.657fd280</version>
+    <time>1671889931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.35+git.20221222.657fd280:
+  * audio: reset pull AO at end of file
+  * vo_kitty: Introduce modern sixel alternative
+  * external_files: set log level for potential files to trace
+  * hwdec/d3d11va: fix a possible memory leak
+  * filter_kernels: fix kaiser</comment>
+    <requestid>1045065</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>992e67d315d800f4d394894f79389ebb</srcmd5>
+    <version>0.35.1+git.20230128.140ec21c</version>
+    <time>1676149012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064254</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>50519659c5689abb603331a265eb84f3</srcmd5>
+    <version>0.35.1+git.20230315.e1727553</version>
+    <time>1679182310</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.35.1+git.20230315.e1727553:
+  * test: update format refs to ffmpeg 6
+  * github/workflows: fix failure conditions
+  * common/av_common: clean up mp_lavc_set_extradata
+  * sub/sd_lavc: properly fill avctx with codecpar values at init
+  * sub/lavc_conv: properly fill avctx with codecpar values at init
+  * common/av_common: constify mp_codec_params related getters
+  * demux_mkv: support ARIB captions
+  * player/command: fix mem leak in user-data property; closes #11436
+  * vo_gpu_next: compatibility with libplacebo v6.265
+  * wayland: make wayland-edge-pixels-pointer default to 16
+  * wayland: use correct x/y coordinates for the cursor
+  * screenshot: fix segfault when taking a screenshot without video
+  * wayland: fix client side resize
+  * vo_gpu_next: compatibility with PL_API_VER &gt;= 254
+  * vo_gpu_next: use inverse mapping functions to tag screenshots
+  * video/out/placebo/utils: add mappings from pl enums to mpv enums
+  * video: add missing libplacebo colorspace enums
+  * mp_image: assert if src and dst are different in copy_attributes
+  * mp_image: copy side data in mp_image_copy_attributes
+  * ao_pipewire: use realtime scheduling for data thread
+  * loadfile: strongly prefer that all streams are from the same program
+  * command: expose hls-bitrate and program-id as track-list subproperties
+  * loadfile: report hls_bitrate and program_id in struct track
+  * demux: propagate hls_bitrate and program_id in generated caption tracks
+  * demux_lavf: report program_id
+  * ytdl_hook: only log error when no fallback url available
+  * ytdl_hook: init fragment requires other fragments
+  * vo: fix race condition with redraw requests
+  * ci: separate meson tests and reorganize build steps</comment>
+    <requestid>1072771</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>ce27508783624fcf4dbb99222f895a8d</srcmd5>
+    <version>0.36.0+git.20230723.60a26324</version>
+    <time>1690469443</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100906</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>fb51bbe9acbd546dc82c58c85f2c1553</srcmd5>
+    <version>0.36.0+git.20230730.1bbc7a2c</version>
+    <time>1691076454</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove waf build: removed upstream
+- Make meson a hard requirement now
+- Bump libplacebo requirement to 6.292.0 for Tumbleweed
+- Add patch 0001-Revert-meson-bump-required-version-to-0.62.patch
+  to lower meson requirement for Leap
+- Update to version 0.36.0+git.20230730.1bbc7a2c:
+  * ao_sndio: use sio_flush() to improve controls responsiveness
+  * draw_bmp: fix overflowing coordinates in mark_rcs
+  * Revert &quot;audio: add AOCONTROL_UPDATE_MEDIA_ROLE&quot;
+  * Revert &quot;ao_pipewire: handle AOCONTROL_UPDATE_MEDIA_ROLE&quot;
+  * meson: look for linux/input-event-codes.h with libwayland flags
+  * version.py: fix build date
+  * options: restore old default sub selection behavior
+  * vo_gpu_next: fix assertion on wayland
+  * vo_gpu_next: delay swapchain submit until flip_frame()
+  * path-win: move state directory to %LOCALAPPDATA%
+  * path-win: add subdirectory for cache
+  * Revert &quot;ci/msys2: double down on running meson through python3.11&quot;
+  * ad_spdif: fix segfault due to early deallocation
+  * test: enhance libmpv test
+  * player/video: check for track and decoder existence
+  * video_writer: fix gamma for YUV screenshots
+  * image_writer: log pixfmt conversion
+  * encode_lavc: fix leak of codecpar
+  * zimg: fix abort on subsampled input with odd heights
+  * demux_mkv: add missing space to log msg
+  * build: remove unneeded libdl requirement for vaapi
+  * build: refactor vaapi handling
+  * ci/mingw: reduce git clone depth to 1
+  * ci/mingw: use ccache
+  * ci/mingw: disable fail-fast
+  * ci/mingw: check if binary is runnable before packaging
+  * language-posix: as a fallback, treat &quot;C&quot; as &quot;en&quot;
+  * msg: print MSGL_WARN and higher error messages to stderr
+  * build: vaapi-x-egl is not used anywhere, remove it
+  * build: vaapi-egl should explicitly depend on egl
+  * build: vaapi-drm and vaapi-wayland do not depend on egl
+  * ci/mingw: update luajit to fix i686 crashes
+  * wayland: restore xkb_keysym_to_utf8 handling
+  * build: internally rename gl-wayland to egl-wayland
+  * waf: remove waf as a build system
+</comment>
+    <requestid>1101532</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>ef4da2b0c2d219d921a90930a285ad69</srcmd5>
+    <version>0.36.0+git20230826.83c0e980</version>
+    <time>1693235739</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106135</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>5411074b07c748b6972b7e051bea02e8</srcmd5>
+    <version>0.36.0+git20230923.140d0185</version>
+    <time>1695664961</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113232</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>975cbd37aeb1b18c25a99d6327d84e36</srcmd5>
+    <version>0.37.0+git20231121.2a57a6ee</version>
+    <time>1700675678</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127982</requestid>
+  </revision>
+</revisionlist>

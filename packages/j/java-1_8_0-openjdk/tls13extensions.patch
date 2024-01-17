@@ -1,0 +1,20 @@
+--- openjdk/jdk/src/share/classes/sun/security/ssl/SSLExtension.java	2021-05-21 08:10:00.830159018 +0200
++++ openjdk/jdk/src/share/classes/sun/security/ssl/SSLExtension.java	2021-05-21 08:11:40.258772361 +0200
+@@ -198,7 +198,7 @@
+ 
+     CH_SIGNATURE_ALGORITHMS_CERT (0x0032, "signature_algorithms_cert",
+                                 SSLHandshake.CLIENT_HELLO,
+-                                ProtocolVersion.PROTOCOLS_12_13,
++                                ProtocolVersion.PROTOCOLS_OF_13,
+                                 CertSignAlgsExtension.chNetworkProducer,
+                                 CertSignAlgsExtension.chOnLoadConsumer,
+                                 null,
+@@ -319,7 +319,7 @@
+ 
+     CH_SUPPORTED_VERSIONS   (0x002B, "supported_versions",
+                                 SSLHandshake.CLIENT_HELLO,
+-                                ProtocolVersion.PROTOCOLS_TO_13,
++                                ProtocolVersion.PROTOCOLS_OF_13,
+                                 SupportedVersionsExtension.chNetworkProducer,
+                                 SupportedVersionsExtension.chOnLoadConsumer,
+                                 null,

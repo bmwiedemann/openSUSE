@@ -1,0 +1,214 @@
+--- ./slpd/slpd_database.c.orig	2014-02-19 18:04:09.926934782 +0000
++++ ./slpd/slpd_database.c	2014-02-19 18:04:34.553934738 +0000
+@@ -50,6 +50,10 @@
+ #define _GNU_SOURCE
+ #include <string.h>
+ #include <dirent.h>
++#include <sys/socket.h>
++#include <linux/netlink.h>
++#include <linux/inet_diag.h>
++#include <sched.h>
+ 
+ #include "../libslpattr/libslpattr.h"
+ #include "slpd_database.h"
+@@ -1919,6 +1923,168 @@ int SLPDDatabaseReInit()
+    return 0;
+ }
+ 
++enum {
++   SS_UNKNOWN,
++   SS_ESTABLISHED,
++   SS_SYN_SENT,
++   SS_SYN_RECV,
++   SS_FIN_WAIT1,
++   SS_FIN_WAIT2,
++   SS_TIME_WAIT,
++   SS_CLOSE,
++   SS_CLOSE_WAIT,
++   SS_LAST_ACK,
++   SS_LISTEN,
++   SS_CLOSING,
++   SS_MAX
++};
++
++#define SS_ALL ((1<<SS_MAX)-1)
++
++static int reconnect_nl(int *fd)
++{
++   int new_fd = socket(AF_NETLINK, SOCK_RAW, NETLINK_INET_DIAG);
++   close (*fd);
++   if (new_fd < 0)
++      return errno;
++   *fd = new_fd;
++   return 0;
++}
++
++static void SLPDDatabaseWatcher_nl(int *fd, int flag, unsigned char *porthash)
++{
++    char buf[8192];
++    int port, status = 0;
++    SLPDatabaseHandle dh;
++
++    struct sockaddr_nl nladdr = {
++       .nl_family = AF_NETLINK
++    };
++
++    struct {
++       struct nlmsghdr nlh;
++       struct inet_diag_req r;
++    } req = {
++       .nlh = {
++           .nlmsg_len = sizeof(req),
++           .nlmsg_type = TCPDIAG_GETSOCK,
++           .nlmsg_flags = NLM_F_ROOT|NLM_F_MATCH|NLM_F_REQUEST,
++           .nlmsg_pid = 0,
++           .nlmsg_seq = 123456,
++       },
++       .r = {
++           .idiag_family = AF_INET,
++           .idiag_states = 1 << SS_LISTEN,
++           .idiag_ext = ((1 << (INET_DIAG_INFO - 1)) |
++                         (1 << (INET_DIAG_VEGASINFO - 1)) |
++                         (1 << (INET_DIAG_CONG - 1))),
++       }
++    };
++
++    struct iovec iov = {
++       .iov_base = &req,
++       .iov_len = sizeof(req),
++    };
++
++    struct msghdr msg = {
++       .msg_name       = (void *)&nladdr,
++       .msg_namelen    = sizeof(nladdr),
++       .msg_iov        = &iov,
++       .msg_iovlen     = 1,
++    };
++    struct in_addr ipv4_loopback = { htonl(INADDR_LOOPBACK) };
++    struct in6_addr ipv6_loopback = IN6ADDR_LOOPBACK_INIT;
++    int retries;
++
++    /* If the socket shuts down for whatever reason, we need to
++     * reopen it. Since we can't listen to a socket for which we have
++     * made a request, we reissue the request and listen again. */
++retry_sendmsg:
++    retries = 2;
++    while (retries-- > 0) {
++       if (sendmsg(*fd, &msg, 0) >= 0)
++           break;
++
++       if (reconnect_nl(fd)) {
++           SLPDLog("Lost TCPDIAG netlink connection and attempts to "
++                   "re-establish have failed. Falling back to /proc/net/tcp "
++                   "for dead/alive updates.\n");
++           *fd = -1;
++           return;
++       }
++       sched_yield();
++    }
++
++    iov.iov_base = buf;
++    iov.iov_len = sizeof(buf);
++
++    dh = SLPDatabaseOpen(&G_SlpdDatabase.database);
++    while (!status) {
++       struct nlmsghdr *h;
++
++       status = recvmsg(*fd, &msg, 0);
++       if (status < 0) {
++           if (errno == EINTR)
++               continue;
++           goto retry_sendmsg;
++       }
++
++       /* Socket has shut down */
++       if (status == 0)
++           goto retry_sendmsg;
++
++       for (h = (struct nlmsghdr *) buf; NLMSG_OK(h, status);
++            h = NLMSG_NEXT(h, status)) {
++           SLPDatabaseEntry *entry;
++           struct inet_diag_msg *r = NLMSG_DATA(h);
++
++           if (h->nlmsg_seq != 123456)
++               continue;
++
++           if (h->nlmsg_type == NLMSG_DONE)
++               goto close;
++
++           if (h->nlmsg_type == NLMSG_ERROR) {
++               struct nlmsgerr *err = NLMSG_DATA(h);
++               if (h->nlmsg_len >= NLMSG_LENGTH(sizeof(*err)))
++                   status = EINVAL;
++               else
++                   status = -err->error;
++               break;
++           }
++
++           if (r->idiag_family != AF_INET && r->idiag_family != AF_INET6)
++               continue;
++
++           if (r->idiag_family == AF_INET &&
++               ipv4_loopback.s_addr == r->id.idiag_src[0])
++               continue;
++
++           if (r->idiag_family == AF_INET6 &&
++               !memcmp(ipv6_loopback.s6_addr32, r->id.idiag_src,
++                       sizeof(ipv6_loopback)))
++               continue;
++
++           port = ntohs(r->id.idiag_sport);
++           if (!(porthash[(port / 8) & 255] & (1 << (port & 7))))
++               continue;
++
++           SLPDatabaseRewind(dh);
++
++           while ((entry = SLPDatabaseEnum(dh)) != 0) {
++               SLPSrvReg *srvreg = &(entry->msg->body.srvreg);
++               if (!(srvreg->watchflags & flag))
++                   continue;
++               if (port == srvreg->watchport)
++                   srvreg->watchflags &= ~SLP_REG_WATCH_CHECKING;
++           }
++       }
++    }
++
++close:
++    SLPDatabaseClose(dh);
++}
++
+ static void SLPDDatabaseWatcher_fd(int fd, int flag, unsigned char *porthash)
+ {
+     SLPDatabaseHandle dh;
+@@ -1978,7 +2144,7 @@ static void SLPDDatabaseWatcher_fd(int f
+ void SLPDDatabaseWatcher(void)
+ {
+     static int initialized = 0;
+-    static int proctcp, procudp, proctcp6, procudp6;
++    static int proctcp, procudp, proctcp6, procudp6, inet_diag = -1;
+     unsigned char porthash[256];
+     int flags, port;
+     SLPDatabaseHandle dh;
+@@ -1986,6 +2152,7 @@ void SLPDDatabaseWatcher(void)
+     SLPSrvReg*          srvreg;
+ 
+     if (!initialized) {
++       inet_diag = socket(AF_NETLINK, SOCK_RAW, NETLINK_INET_DIAG);
+        proctcp = open("/proc/net/tcp_listen", O_RDONLY);
+        if (proctcp == -1)
+          proctcp = open("/proc/net/tcp", O_RDONLY);
+@@ -2010,8 +2177,12 @@ void SLPDDatabaseWatcher(void)
+     }
+     SLPDatabaseClose(dh);
+     if ((flags & SLP_REG_WATCH_TCP) != 0) {
+-       SLPDDatabaseWatcher_fd(proctcp, SLP_REG_WATCH_TCP, porthash);
+-       SLPDDatabaseWatcher_fd(proctcp6, SLP_REG_WATCH_TCP, porthash);
++       if (inet_diag >= 0)
++          SLPDDatabaseWatcher_nl(&inet_diag, SLP_REG_WATCH_TCP, porthash);
++       if (inet_diag < 0) { /* Fallback if _nl fails */
++          SLPDDatabaseWatcher_fd(proctcp, SLP_REG_WATCH_TCP, porthash);
++          SLPDDatabaseWatcher_fd(proctcp6, SLP_REG_WATCH_TCP, porthash);
++       }
+     }
+     if ((flags & SLP_REG_WATCH_UDP) != 0) {
+        SLPDDatabaseWatcher_fd(procudp, SLP_REG_WATCH_UDP, porthash);

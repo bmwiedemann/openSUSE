@@ -1,0 +1,1289 @@
+-------------------------------------------------------------------
+Sat Jan 13 11:22:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.114.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.114.0
+- No code change since 5.113.0
+
+-------------------------------------------------------------------
+Tue Dec  5 11:18:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- No code change since 5.112.0
+
+-------------------------------------------------------------------
+Mon Nov  6 09:14:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.112.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.112.0
+- No code change since 5.111.0
+
+-------------------------------------------------------------------
+Mon Oct  9 20:21:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- No code change since 5.110.0
+
+-------------------------------------------------------------------
+Wed Sep  6 12:24:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.110.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.110.0
+- No code change since 5.109.0
+
+-------------------------------------------------------------------
+Tue Aug  8 17:43:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.109.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.109.0
+- Changes since 5.108.0:
+  * Add explicit moc includes to sources for moc-covered headers
+
+-------------------------------------------------------------------
+Mon Jul  3 07:02:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.108.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.108.0
+- Changes since 5.107.0:
+  * Remove qt6 CI builds
+
+-------------------------------------------------------------------
+Mon Jun  5 07:44:11 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- No code change since 5.106.0
+
+-------------------------------------------------------------------
+Sat May  6 14:01:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- No code change since 5.105.0
+
+-------------------------------------------------------------------
+Sat Apr  1 17:00:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- No code change since 5.104.0
+
+-------------------------------------------------------------------
+Mon Mar  6 09:08:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- No code change since 5.103.0
+
+-------------------------------------------------------------------
+Wed Feb  8 09:13:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- No code change since 5.102.0
+
+-------------------------------------------------------------------
+Thu Jan 12 08:19:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * kwallet replace "DCOP" with "D-Bus"
+  * Add qca to .kde-ci.yml
+  * Don't install kwalletd5 service file for KF6
+
+-------------------------------------------------------------------
+Tue Dec  6 20:11:03 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * Port away from deprecated KWindowSystem API
+
+-------------------------------------------------------------------
+Tue Nov  8 08:35:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Changes since 5.99.0:
+  * mark some binaries as non-gui
+  * Add support for plain transfer algorithm to Secret Service API (kde#458341)
+  * Change naming and order of FreedesktopSecret members to match the spec
+  * Add Qt6 windows CI support
+
+-------------------------------------------------------------------
+Sat Oct  1 15:56:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- No code change since 5.98.0
+
+-------------------------------------------------------------------
+Tue Sep  6 07:17:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Don't register dummy org.freedesktop.secrets service when api is disabled (kde#458069)
+  * Add FreeBSD Qt6 CI support
+  * Only build kwallet-query's manpage if it's enabled
+  * Don't build blowfishtest with -DBUILD_KWALLET=FALSE
+  * Add missing cerrno header
+  * backendpersisthandler parentheses around assignment used as truth value
+
+-------------------------------------------------------------------
+Sun Aug  7 22:27:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Remove duplicate header between cpp/h
+  * Do not try to rename label twice in entryRenamed()
+  * Do not create EntryLocation with empty key
+  * Introduce Secret Service API
+
+-------------------------------------------------------------------
+Sun Jul  3 11:56:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * KNewWalletDialogGpg: code cleanup
+  * Use cmakedefine01
+
+-------------------------------------------------------------------
+Fri Jun 10 14:12:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- No code change since 5.94.0
+
+-------------------------------------------------------------------
+Tue May 10 08:18:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Add windows CI
+
+-------------------------------------------------------------------
+Sun Apr  3 10:47:28 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Require unittests to pass for CI jobs to pass
+
+-------------------------------------------------------------------
+Mon Mar  7 09:27:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- No code change since 5.91.0
+
+-------------------------------------------------------------------
+Sun Feb  6 10:17:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Add CI qt6 support
+  * Fix install headers
+  * Change the build system to enable building with Qt6
+  * Port away from KToolInvocation::startServiceByDesktopName()
+
+-------------------------------------------------------------------
+Mon Jan  3 12:47:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Add desktop file for kwalletd
+  * Properly apply KAboutData
+  * Fix notifyrc name
+
+-------------------------------------------------------------------
+Sat Dec  4 22:56:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * MAC_USE_OSXKEYCHAIN: Fix compilation errors
+  * MAC_USE_OSXKEYCHAIN: Link against CoreFoundation
+
+-------------------------------------------------------------------
+Sun Nov  7 09:13:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:08:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Add FreeBSD CI
+
+-------------------------------------------------------------------
+Sun Oct  3 20:34:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Add Gitlab CI configuration
+
+-------------------------------------------------------------------
+Wed Sep 15 08:24:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:22:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Changes since 5.85.0:
+  * replace "MacOSX" with "macOS"
+
+-------------------------------------------------------------------
+Fri Aug  6 12:13:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * Don't use gpgme.h
+  * Update ECM URL
+
+-------------------------------------------------------------------
+Sun Jul  4 07:45:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Use Qt logging instead of printf
+- Remove patch:
+  * 0001-Use-Qt-logging-instead-of-printf.patch
+- Only install the license files once
+
+-------------------------------------------------------------------
+Wed Jun 16 20:43:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid polluting stdout (boo#1182531):
+  * 0001-Use-Qt-logging-instead-of-printf.patch
+
+-------------------------------------------------------------------
+Sat Jun  5 11:59:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Bump required CMake version to 3.16
+  * Call ki18n_install() unconditionally
+
+-------------------------------------------------------------------
+Sat May  1 16:41:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * Fix build after disabling deprecated API in 5.15
+
+-------------------------------------------------------------------
+Mon Apr  5 07:12:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * Un-overload OrgKdeKWalletInterface::walletClosed(int) signal
+
+-------------------------------------------------------------------
+Sun Mar  7 09:27:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Changes since 5.79.0:
+  * Add .git-blame-ignore-revs file
+  * Run clang-format
+  * Avoid unneeded multiline strings
+  * Add clang-format configuration
+  * Add missing include
+  * Fix i18n
+
+-------------------------------------------------------------------
+Mon Feb  8 08:46:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- No code change since 5.78.0
+
+-------------------------------------------------------------------
+Wed Jan  6 10:48:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- No code change since 5.77.0
+
+-------------------------------------------------------------------
+Mon Dec  7 17:14:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- No code change since 5.76.0
+
+-------------------------------------------------------------------
+Sat Nov  7 21:35:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Various fixes
+  * Documentation fixes: Use more entities and some punctuation
+
+-------------------------------------------------------------------
+Mon Oct  5 08:33:37 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Initialize variable in header
+
+-------------------------------------------------------------------
+Sun Sep  6 12:50:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Avoid clash with a macro in ctype.h from OpenBSD
+  * Remove obsolete COPYING files
+  * KWallet: Convert copyright statements to SPDX expressions
+
+-------------------------------------------------------------------
+Sun Aug  2 07:13:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * use better Name and follow HIG
+  * Use KF-standardized Qt logging categories
+  * Use camelcase include. (scripted)
+  * Mark API as deprecated also in D-Bus interface description
+  * Add copy of org.kde.KWallet.xml without deprecated API
+
+-------------------------------------------------------------------
+Sun Jul  5 07:55:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Introduce three new methods that return all "entries" in a folder
+
+-------------------------------------------------------------------
+Sun Jun  7 08:07:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * KWallet: fix compilation with -Werror=undef
+
+-------------------------------------------------------------------
+Sun May  3 09:40:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * [KWallet] Port last usage of QRegExp to QRegularExpression
+
+-------------------------------------------------------------------
+Sun Apr  5 19:45:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- No code change since 5.68.0
+
+-------------------------------------------------------------------
+Sun Mar  8 09:18:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::.
+  * Use ecm_qt_install_logging_categories over manual categories file
+
+-------------------------------------------------------------------
+Sun Feb  2 18:07:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:33:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * Revert readEntryList() to use QRegExp::Wildcard
+  * Fix QRegularExpression::wildcardToRegularExpression() usage
+- Drop patches:
+  * d4980443755f5df63b6a13f662df169797f2684f.patch
+  * 02ab54ea6fe8b61a4e474070061d6e41aebc71a0.patch
+
+-------------------------------------------------------------------
+Tue Jan 21 12:05:27 UTC 2020 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Add upstream patch to fix twice anchored regexp's
+  * d4980443755f5df63b6a13f662df169797f2684f.patch
+- Add upstream patch to revert QRegExp::Wildcard to solve problem with
+  listing of entries using QRegularExpression::wildcardToRegularExpression
+  * 02ab54ea6fe8b61a4e474070061d6e41aebc71a0.patch
+
+-------------------------------------------------------------------
+Sun Jan  5 09:02:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * Replace endl by "\n" + flush when it's necessary
+  * KWallet: Port QRegExp to QRegularExpression
+  * Update the obsolete projects.kde.org URL
+
+-------------------------------------------------------------------
+Sun Dec  8 11:18:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- No code change since 5.64.0
+
+-------------------------------------------------------------------
+Sun Nov  3 15:47:16 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * Port away from KF5 deprecated API: use setWindowIcon
+
+-------------------------------------------------------------------
+Sun Oct  6 13:26:58 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.63.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.63.0.php
+- Changes since 5.62.0:
+  * Fix compiler warning about while (a = b)
+  * HiDPI support
+  * Port from KIconLoader to QIcon::fromTheme
+  * Port away from deprecated QDesktopWidget.
+
+-------------------------------------------------------------------
+Sat Sep  7 20:37:09 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Port to non-deprecated KWindowSystem::setMainWindow overload
+  * Remove unused includes
+  * KWallet: fix starting kwalletmanager, the desktop file name has a '5' in it
+- Replace foo-devel with cmake(KF5Foo) in build requirements
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:48 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Move kwalletd initialization earlier (kde#410020) 
+  * Do not try to install no longer existing file 
+  * Remove kde4 migration agent completely
+
+-------------------------------------------------------------------
+Fri Jul 19 11:45:19 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+- Drop conditionals for no longer supported distribution versions
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:39 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:13 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:18 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Fix add_test command
+  * Set correct kwalletd_bin_path
+  * Export path of kwalletd binary for kwallet_pam
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * [kwallets] compile without foreach
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Remove deprecated method
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:17 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * delete copy constructor and assignment operator of some internal classes
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * No code changes since 5.53.0
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use new syntax
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Remove unused variable
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:39 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:38 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Log wallet open failure errors
+  * Use QString's multi-arg with multiple string args
+  * Avoid potential detach on range-loops with non-const Qt containers
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Move example from techbase to own repo
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:26 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Use more nullptr
+  * Use more override
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * None
+
+-------------------------------------------------------------------
+Sun May 13 21:03:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Use override
+  * Warning--
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:06 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Remove not necessary QtCore and co
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:42 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:10 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:21 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Use cmake variable kwallet_xml for specifing org.kde.KWallet.xml
+  * Use correct service executable path for installing kwalletd dbus service on Win32
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:49 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Fix some clazy warning
+  * Port to qCDebug
+  * Remove some remove_definition
+  * Port to qCDebug
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:15 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Add explicit keyword
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:44 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * tests/kwalletd/CMakeLists.txt - requires KF5ConfigWidgets now
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:18 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Do not leak symbols of pimpl classes, protect with Q_DECL_HIDDEN
+  * Don't use find_file for finding files in our own source dir
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:39 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * More nullptr
+  * API dox: use official name "D-Bus" consistently
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:02 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Replace kwalletd4 after migration has finished
+  * Signal completion of migration agent
+  * Whitespace fixup
+  * Only start timer for migration agent if necessary
+  * Check for unique applicaton instance as early as possible
+
+-------------------------------------------------------------------
+Mon May 15 13:53:14 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:56 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:51:08 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Fix -Wdocumentation warning
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Mar  9 23:19:25 UTC 2017 - wbauer@tmo.at
+
+- Build against libqgpgme-devel on openSUSE and SLE13 to enable GPG
+  encryption, gpgmepp5 is not supported any more
+
+-------------------------------------------------------------------
+Thu Feb  9 09:34:13 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Wed Feb  1 11:56:37 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sun Jan  8 23:44:02 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 02:04:59 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 22:11:57 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * If Gpgmepp is not found, try to use KF5Gpgmepp
+  * Use Gpgmepp from GpgME-1.7.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  9 13:00:27 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * Check whether kwallet is enabled in Wallet::isOpen(name)
+    (kde#358260)
+  * Add missing boost header
+  * Remove duplicate search for KF5DocTools
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+- Drop upstreamed fix-isOpen-crash-when-wallet-disabled.patch
+
+-------------------------------------------------------------------
+Thu Oct  6 14:48:04 UTC 2016 - wbauer@tmo.at
+
+- Add fix-isOpen-crash-when-wallet-disabled.patch to fix a crash in
+  drkonqi (and maybe other applications) if kwallet is disabled
+  (kde#358260)
+
+-------------------------------------------------------------------
+Tue Sep  6 20:54:04 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Move kwallet-query docbook to correct subdir
+  * Fix wording an -> one
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:57:22 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:06:35 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:28:03 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * KWalletd migration: fix error handling, stops the migration
+    from happening on every single boot.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:34:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Disable seession restore for kwalletd5
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:22:37 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 10:02:35 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Make sure KDocTools is looked-up
+  * Don't pass a negative number to dbus, it asserts in libdbus
+  * Clean cmake files
+  * KWallet::openWallet(Synchronous): don't time out after 25 seconds
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 18:07:37 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Duplicate the file descriptor while opening the file to read the env
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Mon Feb  1 18:01:58 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Enable gpgmepp5 integration on Leap also
+
+-------------------------------------------------------------------
+Sat Jan  2 17:45:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * kwalletd: Fix FILE* leak
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:10:16 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * Correctly handle the case where the user deactivated us
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 17:04:43 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Use KDE_INSTALL_DBUSINTERFACEDIR to install dbus interfaces
+  * Fixed KWallet configuration file warnings on login (kde#351805)
+  * Prefix the kwallet-pam output properly
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * No longer automatically close on last use
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+- Enable gpgmepp integration with openSUSE > 13.2
+
+-------------------------------------------------------------------
+Tue Sep  8 17:13:34 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:46 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Fix Windows build
+  * Print a warning with error code when opening the wallet by
+    PAM fails
+  * Return the backend error code rather than -1 when opening a
+    wallet failed
+  * Make the backend's "unknown cipher" a negative return code
+  * Watch for PAM_KWALLET5_LOGIN for KWallet5
+  * Fix crash when MigrationAgent::isEmptyOldWallet() check fails
+  * KWallet can now be unlocked by PAM using kwallet-pam module
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:45:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Imported and improved the kwallet-query command-line tool.
+  * Support to overwrite maps entries.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:47:23 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * Migration agent now also check old wallet is empty
+    before starting (kde#346498)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:49 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+- Drop no longer needed Requires of the devel subpackage:
+  kconfig-devel and kwindowsystem-devel
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:49 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+- Drop 0001-Retrofitting-the-fix-for-a-bug-found-in-Applications.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Wed Feb 18 01:48:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added 0001-Retrofitting-the-fix-for-a-bug-found-in-Applications.patch
+  (kde#343718)
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:22 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Automatically detect and convert old ECB wallets to CBC
+  * Fixed the CBC encryption algorithm
+  * Ensured wallet list gets updated when a wallet file gets
+    removed from disk
+  * Remove stray </p> in user-visible text
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:23 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:44 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:19 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * Emit 'walletListDirty' signal when the 'kwalletd'
+    directory is deleted
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:44 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+- Let new kwalletd5-lang subpackage be recommended by kwalletd5 subpackage
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:30 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:13 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+
+-------------------------------------------------------------------
+Fri Jul 11 09:48:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add baselibs.conf
+-------------------------------------------------------------------
+Sun May  4 01:41:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:53 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+- Added libgcrypt-devel >= 1.5.0 BuildRequires
+
+-------------------------------------------------------------------
+Tue Mar  4 16:39:29 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:19:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kwallet package
+

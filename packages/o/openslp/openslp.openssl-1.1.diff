@@ -1,0 +1,106 @@
+--- a/openslp/common/slp_crypto.c
++++ b/openslp/common/slp_crypto.c
+@@ -53,6 +53,80 @@
+ #include "slp_crypto.h"
+ #include "slp_message.h"
+   
++/* 1.1.0 -> 1.0.x compatibility layer
++ * See https://wiki.openssl.org/index.php/OpenSSL_1.1.0_Changes#Compatibility_Layer
++ * for details and additiona compatibility routines if needed in the future.
++ */
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++static void DSA_get0_pqg(const DSA *d, const BIGNUM **p, const BIGNUM **q, const BIGNUM **g)
++{
++    if (p != NULL)
++        *p = d->p;
++    if (q != NULL)
++        *q = d->q;
++    if (g != NULL)
++        *g = d->g;
++}
++
++static int DSA_set0_pqg(DSA *d, BIGNUM *p, BIGNUM *q, BIGNUM *g)
++{
++    /* If the fields p, q and g in d are NULL, the corresponding input
++     * parameters MUST be non-NULL.
++     */
++    if ((d->p == NULL && p == NULL)
++            || (d->q == NULL && q == NULL) 
++            || (d->g == NULL && g == NULL))
++        return 0;
++
++    if (p != NULL)
++    {
++        BN_free(d->p);
++        d->p = p;
++    }
++    if (q != NULL)
++    {
++        BN_free(d->q);
++        d->q = q;
++    }
++    if (g != NULL)
++    {
++        BN_free(d->g);
++        d->g = g;
++    }
++    return 1;
++}
++
++static void DSA_get0_key(const DSA *d, const BIGNUM **pub_key, const BIGNUM **priv_key)
++{
++    if (pub_key != NULL)
++        *pub_key = d->pub_key;
++    if (priv_key != NULL)
++        *priv_key = d->priv_key;
++}
++
++static int DSA_set0_key(DSA *d, BIGNUM *pub_key, BIGNUM *priv_key)
++{
++    /* If the field pub_key in d is NULL, the corresponding input
++     * parameters MUST be non-NULL.  The priv_key field may
++     * be left NULL.
++     */
++    if (d->pub_key == NULL && pub_key == NULL)
++        return 0;
++
++    if (pub_key != NULL)
++    {
++        BN_free(d->pub_key);
++        d->pub_key = pub_key;
++    }
++    if (priv_key != NULL)
++    {
++        BN_free(d->priv_key);
++        d->priv_key = priv_key;
++    }
++    return 1;
++}
++#endif
++
+ /** Generate a SHA1 digest for the specified block data.
+  *
+  * @param[in] data - The data block to be hashed.
+@@ -88,11 +162,17 @@
+    result =  DSA_new();
+    if (result)
+    {
+-      result->p = BN_dup(dsa->p);
+-      result->q = BN_dup(dsa->q);
+-      result->g = BN_dup(dsa->g);
+-      result->priv_key = BN_dup(dsa->priv_key);
+-      result->pub_key = BN_dup(dsa->pub_key);
++      const BIGNUM *p, *q, *g;
++      const BIGNUM *priv_key, *pub_key;
++
++      DSA_get0_pqg(dsa, &p, &q, &g);
++      DSA_get0_key(dsa, &pub_key, &priv_key);
++
++      /* would be nice to check return values,
++       * but original code didn't do that either...
++       */
++      DSA_set0_pqg(result, BN_dup(p), BN_dup(q), BN_dup(g));
++      DSA_set0_key(result, BN_dup(pub_key), BN_dup(priv_key));
+    }
+    return result;
+ }

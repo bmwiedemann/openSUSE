@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5dbf664e92dc46d3667e93ffefadbabc</srcmd5>
+    <version>0.9.5</version>
+    <time>1524144539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596320</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ea39c787b900774075e809916849328e</srcmd5>
+    <version>0.9.5</version>
+    <time>1545648376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659827</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45fc6aa4b81da56ce19c4788601fe6e8</srcmd5>
+    <version>0.9.6</version>
+    <time>1556622258</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.6:
+  * Python 3.7 compatibility</comment>
+    <requestid>697923</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1e359f60d899be9352248192f9629256</srcmd5>
+    <version>2.0.0</version>
+    <time>1582643172</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.0.0
+  * compat module is no longer needed
+  * Enable Travis CI
+  * Define long_description_content_type
+  * Drop &quot;setup.py release&quot; macro
+  * Add get_version() to setup.py
+  * Add project_urls to setup.py
+  * isort'ize
+  * Add .gitignore
+  * Fix author_email
+  * Drop py27 and py34 support
+  * Bump version
+  * Remove buildout
+  * Fix seqdiag is not universal package
+  * Fix flake8 violations
+  * Stop to use deprecated APIs
+- Stop building python2 version. No longer supported upstream</comment>
+    <requestid>778944</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5405cc224321cc90e5189d6ea3c67c2b</srcmd5>
+    <version>2.0.0</version>
+    <time>1589893112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807289</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d204dabed65b5fc867552ec19e2f943e</srcmd5>
+    <version>3.0.0</version>
+    <time>1654378044</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Drop python3.6 support
+  * Use funcparserlib-1.0.0a0 or newer to support new python versions
+  * Allow to write multiline string via triple quotes (&quot;&quot;&quot; ... &quot;&quot;&quot;)
+  * Add &quot;edge_label_margin&quot; attribute to edges
+  * Fix bugs
+    - Fix #147: file existence disclosure using svg renderer
+    - Separator does not support both default_fontsize and default_textcolor</comment>
+    <requestid>980777</requestid>
+  </revision>
+</revisionlist>

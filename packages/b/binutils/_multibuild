@@ -1,0 +1,26 @@
+<multibuild>
+  <flavor>aarch64</flavor>
+  <flavor>hppa</flavor>
+  <flavor>hppa64</flavor>
+  <flavor>arm</flavor>
+  <flavor>i386</flavor>
+  <flavor>x86_64</flavor>
+  <flavor>s390</flavor>
+  <flavor>s390x</flavor>
+  <flavor>ppc</flavor>
+  <flavor>ppc64</flavor>
+  <flavor>ppc64le</flavor>
+  <flavor>ia64</flavor>
+  <flavor>sparc</flavor>
+  <flavor>sparc64</flavor>
+  <flavor>spu</flavor>
+  <flavor>avr</flavor>
+  <flavor>pru</flavor>
+  <flavor>mips</flavor>
+  <flavor>m68k</flavor>
+  <flavor>epiphany</flavor>
+  <flavor>rx</flavor>
+  <flavor>riscv64</flavor>
+  <flavor>xtensa</flavor>
+  <flavor>bpf</flavor>
+</multibuild>

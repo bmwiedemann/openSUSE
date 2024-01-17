@@ -1,0 +1,15 @@
+diff -Pdpru mame-mame0252.orig/src/osd/sdl/sdlprefix.h mame-mame0252/src/osd/sdl/sdlprefix.h
+--- mame-mame0252.orig/src/osd/sdl/sdlprefix.h	2023-02-21 20:59:53.000000000 +0300
++++ mame-mame0252/src/osd/sdl/sdlprefix.h	2023-03-30 01:39:49.234387890 +0300
+@@ -73,11 +73,6 @@ struct _IO_FILE {};  //_IO_FILE is an op
+ #define SDLMAME_ANDROID 1
+ #endif
+ 
+-// fix for Ubuntu 8.10
+-#ifdef _FORTIFY_SOURCE
+-#undef _FORTIFY_SOURCE
+-#endif
+-
+ // nasty hack to stop altivec #define vector/bool/pixel screwing us over
+ #if defined(__ALTIVEC__) && !defined(__APPLE_ALTIVEC__)
+ #define __APPLE_ALTIVEC__ 1

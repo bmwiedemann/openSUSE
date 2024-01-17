@@ -1,0 +1,56 @@
+Change default common-page-size to 64K on aarch64.  This enables the use
+of RELRO since we are using 64K pages.
+
+Index: binutils-2.41/bfd/elfnn-aarch64.c
+===================================================================
+--- binutils-2.41.orig/bfd/elfnn-aarch64.c	2023-07-03 01:00:00.000000000 +0200
++++ binutils-2.41/bfd/elfnn-aarch64.c	2023-08-16 16:31:51.238779641 +0200
+@@ -10251,7 +10251,7 @@ const struct elf_size_info elfNN_aarch64
+ #define ELF_ARCH			bfd_arch_aarch64
+ #define ELF_MACHINE_CODE		EM_AARCH64
+ #define ELF_MAXPAGESIZE			0x10000
+-#define ELF_COMMONPAGESIZE		0x1000
++#define ELF_COMMONPAGESIZE		0x10000
+ 
+ #define bfd_elfNN_bfd_free_cached_info		\
+   elfNN_aarch64_bfd_free_cached_info
+Index: binutils-2.41/gold/aarch64.cc
+===================================================================
+--- binutils-2.41.orig/gold/aarch64.cc	2023-07-03 01:00:00.000000000 +0200
++++ binutils-2.41/gold/aarch64.cc	2023-08-16 16:28:35.959450565 +0200
+@@ -3555,7 +3555,7 @@ const Target::Target_info Target_aarch64
+   "/lib/ld.so.1",	// program interpreter
+   0x400000,		// default_text_segment_address
+   0x10000,		// abi_pagesize (overridable by -z max-page-size)
+-  0x1000,		// common_pagesize (overridable by -z common-page-size)
++  0x10000,		// common_pagesize (overridable by -z common-page-size)
+   false,                // isolate_execinstr
+   0,                    // rosegment_gap
+   elfcpp::SHN_UNDEF,	// small_common_shndx
+@@ -3584,7 +3584,7 @@ const Target::Target_info Target_aarch64
+   "/lib/ld.so.1",	// program interpreter
+   0x400000,		// default_text_segment_address
+   0x10000,		// abi_pagesize (overridable by -z max-page-size)
+-  0x1000,		// common_pagesize (overridable by -z common-page-size)
++  0x10000,		// common_pagesize (overridable by -z common-page-size)
+   false,                // isolate_execinstr
+   0,                    // rosegment_gap
+   elfcpp::SHN_UNDEF,	// small_common_shndx
+@@ -3613,7 +3613,7 @@ const Target::Target_info Target_aarch64
+   "/lib/ld.so.1",	// program interpreter
+   0x400000,		// default_text_segment_address
+   0x10000,		// abi_pagesize (overridable by -z max-page-size)
+-  0x1000,		// common_pagesize (overridable by -z common-page-size)
++  0x10000,		// common_pagesize (overridable by -z common-page-size)
+   false,                // isolate_execinstr
+   0,                    // rosegment_gap
+   elfcpp::SHN_UNDEF,	// small_common_shndx
+@@ -3642,7 +3642,7 @@ const Target::Target_info Target_aarch64
+   "/lib/ld.so.1",	// program interpreter
+   0x400000,		// default_text_segment_address
+   0x10000,		// abi_pagesize (overridable by -z max-page-size)
+-  0x1000,		// common_pagesize (overridable by -z common-page-size)
++  0x10000,		// common_pagesize (overridable by -z common-page-size)
+   false,                // isolate_execinstr
+   0,                    // rosegment_gap
+   elfcpp::SHN_UNDEF,	// small_common_shndx

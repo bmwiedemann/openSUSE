@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:09:04 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Sep 14 17:41:13 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update X11 to version 1.10.3.
+  ## 1.10.3 (2022-09-14)
+
+    * Added `cWX`, `cWY`, `cWWidth`, `cWHeight` constants (`AttributeMask`) (#82)
+
+    * Added `FocusChangeEvent` to `data Event` (#81)
+
+    * Added `setWMNormalHints` (#83)
+
+-------------------------------------------------------------------
+Mon Nov  1 08:26:39 UTC 2021 - psimons@suse.com
+
+- Update X11 to version 1.10.2.
+  ## 1.10.2 (2021-10-24)
+
+    * Restored compatibility with GHC 7.10 (and possibly even older) (#80)
+
+-------------------------------------------------------------------
+Mon Aug 16 07:21:44 UTC 2021 - psimons@suse.com
+
+- Update X11 to version 1.10.1.
+  ## 1.10.1 (2021-08-15)
+
+    * Fixed possible high CPU usage of some blocking calls with the threaded RTS (#78)
+
+-------------------------------------------------------------------
+Tue Jun  1 12:33:42 UTC 2021 - psimons@suse.com
+
+- Update X11 to version 1.10.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 25 09:04:06 UTC 2020 - psimons@suse.com
+
+- Update X11 to version 1.9.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:43:53 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:13:40 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:15:12 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Sun Sep 29 07:57:19 UTC 2019 - psimons@suse.com
+
+- Update X11 to version 1.9.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Tue Jul 31 14:10:02 UTC 2018 - psimons@suse.com
+
+- Add X11 at version 1.9.

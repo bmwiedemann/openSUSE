@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7743d790eb2a6e22aa053ca6b6a68bce</srcmd5>
+    <version>0.4.3</version>
+    <time>1698700279</time>
+    <user>anag+factory</user>
+    <comment>new package kubectl-tree: kubectl plugin to browse Kubernetes object hierarchies as a tree</comment>
+    <requestid>1121213</requestid>
+  </revision>
+</revisionlist>
