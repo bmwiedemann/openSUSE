@@ -1,7 +1,7 @@
 #
 # spec file for package spdlog
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           spdlog
-%define lname	libspdlog1_12
-%define sover	1.12
-Version:        1.12.0
+%define lname	libspdlog1_13
+%define sover	1.13
+Version:        1.13.0
 Release:        0
 Summary:        C++ logging library
 License:        MIT
@@ -27,7 +27,7 @@ URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/refs/tags/v%{version}.tar.gz
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM 2827.patch -- Added missing square bracket to fix the level_to_string_view
-Patch0:         https://patch-diff.githubusercontent.com/raw/gabime/spdlog/pull/2827.patch
+#Patch0:         https://patch-diff.githubusercontent.com/raw/gabime/spdlog/pull/2827.patch
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 8
