@@ -1,0 +1,5 @@
+<package name="libplist" project="openSUSE:Factory">
+  <title>Library for handling Apple Binary and XML Property Lists</title>
+  <description>libplist is a library for handling Apple Binary and XML Property Lists.</description>
+  <devel project="hardware" package="libplist"/>
+</package>

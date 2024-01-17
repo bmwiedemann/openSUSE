@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Sun Feb 20 19:52:22 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add 002-drop-deprecated-arguments.patch 
+
+-------------------------------------------------------------------
+Fri Oct  8 21:06:53 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add 000-drop-gsettings-schema.patch
+- Add 001-dark-mode-support.patch
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Sep  9 16:09:52 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.3:
+  * fix: removed ubuntu installations post scripts
+  * fix: houston ci node version
+  * fix: transparent icons on changing desktops
+  * fix: fast double click (issue #293)
+  * fix: black backdrop on Fedora (issue #297)
+  * Translations Added and Updated
+
+-------------------------------------------------------------------
+Mon Jan 13 21:33:31 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.2:
+  * Merge pull request #281 from JoshStrobl/vala_compilation_fix
+  * Merge pull request #279 from UbuntuBudgie/itemviewcleanup
+  * Merge pull request #278 from UbuntuBudgie/photoopen
+  * Fix compilation against Vala 0.46
+  * Remove unnecessary separators from note menu
+  * Remove unneeded window parent from menuitemcolor
+  * Fix crash due to null parent window
+  * Fix padding for color menu item to be consistent with other
+    menu items
+  * Make FolderWindow menu consistent with other submenus
+  * Remove unnecessary separate for photo menu
+  * Recombine panel properties menu options
+  * Reorganise menu to combine actions
+  * Add double click on photo to open in default viewer #277
+  * Add popup option to open photo in default viewer
+  * Merge pull request #274 from UbuntuBudgie/autostart
+  * Let GSD handle starting/not starting desktopfolder via
+    autostart
+  * Merge branch 'master' of
+    https://github.com/spheras/desktopfolder
+  * close #272
+  * Update fr.po
+  * Merge pull request #259 from UbuntuBudgie/vala44
+  * Fix compilation issues with vala 0.44
+- Drop desktopfolder-1.1.1-vala-0.44.patch
+- Drop desktopfolder-1.1.1-vala-0.46.patch
+
+-------------------------------------------------------------------
+Wed Oct 30 23:53:11 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add desktopfolder-1.1.1-vala-0.46.patch
+
+-------------------------------------------------------------------
+Wed Aug  7 04:47:15 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add OnlyShowIn=Pantheon to *.autostart.desktop
+
+-------------------------------------------------------------------
+Sun May 12 23:02:41 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add desktopfolder-1.1.1-vala-0.44.patch
+
+-------------------------------------------------------------------
+Mon Mar 11 18:05:59 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.1:
+  * appdata updated
+
+-------------------------------------------------------------------
+Mon Feb 18 14:36:03 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.0:
+  * header custom style bugfix
+  * removing debug lines
+  * folder search bugfixing
+  * dragdrop optimization
+  * minor right window resize bugfixing
+  * close issue #250
+  * close issue #244
+  * issue #211, improved desktop panel position taking into
+    account docks like plank
+  * first version of multiselection, reference #118 issue
+  * fix issue #240 check whether the item could be executable or not
+  * possible solution to issue #238
+  * show loading outside thread
+  * delete key to remove panels commented (I feel it is too
+    drastic)
+  * Merge pull request #235 from lvitals/fix_new_folder
+  * Fix problem by creating new folders
+  * Give travis intltool to chew on
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Nov 11 12:57:18 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.10:
+  * Removed first folder setting. Not needed due to desktop panel
+    condition. #121
+  * issue #136, allow change icon for everything
+  * Merge pull request #137 from UbuntuBudgie/svg
+  * Full path icon display and SVG choose icon support #135
+  * moving debian to deb-packaging branch
+  * uncrustifying
+  * Fix typos that check-all-the-things reported
+  * Resolve appstreamcli validate issues
+  * menu item color right space
+  * issue #131 - magic numbers
+  * Allow desktop configuration apps to stop showing
+    desktopfolder #126
+  * updated to Gtk+3.22, replacing old deprecated methods
+  * close #123 open wallpaper settings for pantheon and gnome
+    derivatives
+  * removed deprecated gtk functions <3.12
+  * adjusting note title label margins
+  * Ensure all source files have an up-to-date copyright statement
+
+-------------------------------------------------------------------
+Mon Oct 22 21:11:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in descriptions.
+
+-------------------------------------------------------------------
+Tue Oct 16 17:33:16 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.9:
+  * minor bugfixing
+
+-------------------------------------------------------------------
+Mon Oct  8 11:35:35 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.7:
+  * Change Wallpaper from Desktop right click
+  * Dutch Translation by @Vistaus
+  * Improved Russian Translation by @ingumsky
+  * Updated project for GTK 3.22 and Elementary Juno
+  * Minor Bugfixing
+
+-------------------------------------------------------------------
+Fri Mar  2 19:22:18 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.6:
+  * version parameter
+  * custom desktop folder name
+  * changes:~ files ignored improved saving performance
+  * italian language
+
+-------------------------------------------------------------------
+Sat Jan  6 01:58:44 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.5:
+  * fake desktop update status automatically bugfixing
+  * existent setting property bugfixing
+  * fake desktop removed when property changed
+  * note back and top bugfixing
+  * Note rename popup bugfixing
+  * issue #90 - Drag & drop breaks after dragging & dropping an
+    item between panels
+  * Update lt.po
+  * properties dialog modal #87 lock panel -header bugfix
+  * improved notes and photos json modifications
+  * Add libjson-glib-dev to dependency list in README
+  * updated authors and changelog
+
+-------------------------------------------------------------------
+Tue Nov  7 20:54:18 UTC 2017 - avvissu@yandex.by
+
+- Initial package
+

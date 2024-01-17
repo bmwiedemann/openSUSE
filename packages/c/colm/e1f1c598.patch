@@ -1,0 +1,50 @@
+From e1f1c598d5bf66484e4dccccddd420a8ed1ebc84 Mon Sep 17 00:00:00 2001
+From: Adrian Thurston <thurston@colm.net>
+Date: Sat, 30 Oct 2021 09:05:06 -0700
+Subject: [PATCH] C codegen: decide char signedness based on value of CHAR_MIN
+
+Decide signedness of "char" on at runtime (probably compile time) using a check
+on CHAR_MIN. This should work with cross compiling setups.
+
+With this approach, if you plan to use "char" on ARM you cannot literally
+specify outside the range 0-127 using decimal/hex. If you need that you can use
+"signed char" or "unsigned char".
+---
+ src/libfsm/common.cc | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/src/libfsm/common.cc b/src/libfsm/common.cc
+index 9ebbd9052..b46cc5714 100644
+--- a/src/libfsm/common.cc
++++ b/src/libfsm/common.cc
+@@ -41,18 +41,18 @@ const char *defaultOutFnC( const char *inputFileName )
+ 
+ HostType hostTypesC[] =
+ {
+-	{ "char",      0,      "char",    true,   true,  false,  CHAR_MIN,  CHAR_MAX,   0, 0,          sizeof(char) },
+-	{ "signed",   "char",  "char",    true,   true,  false,  CHAR_MIN,  CHAR_MAX,   0, 0,          sizeof(char) },
+-	{ "unsigned", "char",  "uchar",   false,  true,  false,  0, 0,                  0, UCHAR_MAX,  sizeof(unsigned char) },
+-	{ "short",     0,      "short",   true,   true,  false,  SHRT_MIN,  SHRT_MAX,   0, 0,          sizeof(short) },
+-	{ "signed",   "short", "short",   true,   true,  false,  SHRT_MIN,  SHRT_MAX,   0, 0,          sizeof(short) },
+-	{ "unsigned", "short", "ushort",  false,  true,  false,  0, 0,                  0, USHRT_MAX,  sizeof(unsigned short) },
+-	{ "int",       0,      "int",     true,   true,  false,  INT_MIN,   INT_MAX,    0, 0,          sizeof(int) },
+-	{ "signed",   "int",   "int",     true,   true,  false,  INT_MIN,   INT_MAX,    0, 0,          sizeof(int) },
+-	{ "unsigned", "int",   "uint",    false,  true,  false,  0, 0,                  0, UINT_MAX,   sizeof(unsigned int) },
+-	{ "long",      0,      "long",    true,   true,  false,  LONG_MIN,  LONG_MAX,   0, 0,          sizeof(long) },
+-	{ "signed",   "long",  "long",    true,   true,  false,  LONG_MIN,  LONG_MAX,   0, 0,          sizeof(long) },
+-	{ "unsigned", "long",  "ulong",   false,  true,  false,  0, 0,                  0, ULONG_MAX,  sizeof(unsigned long) },
++	{ "char",      0,      "char",    (CHAR_MIN != 0), true,  false,  SCHAR_MIN, SCHAR_MAX,  0, UCHAR_MAX,  sizeof(char) },
++	{ "signed",   "char",  "char",    true,            true,  false,  CHAR_MIN,  CHAR_MAX,   0, 0,          sizeof(char) },
++	{ "unsigned", "char",  "uchar",   false,           true,  false,  0, 0,                  0, UCHAR_MAX,  sizeof(unsigned char) },
++	{ "short",     0,      "short",   true,            true,  false,  SHRT_MIN,  SHRT_MAX,   0, 0,          sizeof(short) },
++	{ "signed",   "short", "short",   true,            true,  false,  SHRT_MIN,  SHRT_MAX,   0, 0,          sizeof(short) },
++	{ "unsigned", "short", "ushort",  false,           true,  false,  0, 0,                  0, USHRT_MAX,  sizeof(unsigned short) },
++	{ "int",       0,      "int",     true,            true,  false,  INT_MIN,   INT_MAX,    0, 0,          sizeof(int) },
++	{ "signed",   "int",   "int",     true,            true,  false,  INT_MIN,   INT_MAX,    0, 0,          sizeof(int) },
++	{ "unsigned", "int",   "uint",    false,           true,  false,  0, 0,                  0, UINT_MAX,   sizeof(unsigned int) },
++	{ "long",      0,      "long",    true,            true,  false,  LONG_MIN,  LONG_MAX,   0, 0,          sizeof(long) },
++	{ "signed",   "long",  "long",    true,            true,  false,  LONG_MIN,  LONG_MAX,   0, 0,          sizeof(long) },
++	{ "unsigned", "long",  "ulong",   false,           true,  false,  0, 0,                  0, ULONG_MAX,  sizeof(unsigned long) },
+ };
+ 
+ const HostLang hostLangC = {

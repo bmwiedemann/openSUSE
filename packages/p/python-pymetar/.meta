@@ -1,0 +1,6 @@
+<package name="python-pymetar" project="openSUSE:Factory">
+  <title>pymetar</title>
+  <description>This library downloads the weather report for a given station ID, decodes
+it and provides easy access to all the data found in the report.</description>
+  <devel project="devel:languages:python" package="python-pymetar"/>
+</package>

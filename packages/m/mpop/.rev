@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf09de2b4ed8f093a010da13c540a440</srcmd5>
+    <version>1.4.14</version>
+    <time>1636498454</time>
+    <user>dimstar_suse</user>
+    <comment>Fix license and info generation</comment>
+    <requestid>930240</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4d6da2fd0458899c1d71964c275fc283</srcmd5>
+    <version>1.4.14</version>
+    <time>1637970662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933931</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9d5a446ced11a2b482c98785daa2cd90</srcmd5>
+    <version>1.4.16</version>
+    <time>1654506654</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>980931</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>55299584cb8c2163b69845660f62fbb3</srcmd5>
+    <version>1.4.17</version>
+    <time>1663155887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003384</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>401a4ecd13772095ca78e28d0474cb7f</srcmd5>
+    <version>1.4.18</version>
+    <time>1678380343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070267</requestid>
+  </revision>
+</revisionlist>

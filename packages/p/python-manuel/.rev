@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c39bac94afb4c79e2ef5ea3f558b8c88</srcmd5>
+    <version>1.7.2</version>
+    <time>1380217995</time>
+    <user>coolo</user>
+    <comment>needed by python-ZODB3, which replaced now-deleted python-zodb3</comment>
+    <requestid>200307</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c39bac94afb4c79e2ef5ea3f558b8c88</srcmd5>
+    <version>1.7.2</version>
+    <time>1409302914</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0f7e000acc89a2ece24191646fe2f134</srcmd5>
+    <version>1.8.0</version>
+    <time>1431247602</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305762</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f5ed12377b894f785bbcecd7c65085ad</srcmd5>
+    <version>1.8.0</version>
+    <time>1499510088</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>508462</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b878a6054400abdb78d0091ebed815bb</srcmd5>
+    <version>1.9.0</version>
+    <time>1523956705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597177</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ea9b8bc91ae1ed915bc84a005b2025c4</srcmd5>
+    <version>1.10.1</version>
+    <time>1546535316</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.1:
+  * Support for pypy3
+  * Support for python 3.7</comment>
+    <requestid>662438</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ad1a3f329a0615a1a2e9354c51dbd330</srcmd5>
+    <version>1.10.1</version>
+    <time>1547211879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664275</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9a9b949cbd1253ddd41e7953967db9f4</srcmd5>
+    <version>1.10.1</version>
+    <time>1572883847</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>743989</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>9174fa39c65981f1812aa2ebf40a5a64</srcmd5>
+    <version>1.10.1</version>
+    <time>1607196928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853080</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>fbab24e637e8140c3ca0a94371ec2ad8</srcmd5>
+    <version>1.10.1</version>
+    <time>1623443389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896357</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>860fb7cf6b2786c7311ae5a6d16211c3</srcmd5>
+    <version>1.12.4</version>
+    <time>1664797447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007030</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2ca8adc4e687084cd479012973039956</srcmd5>
+    <version>1.12.4</version>
+    <time>1666089864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1012058</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>693b683cb2464caeb1cc10760c4af72d</srcmd5>
+    <version>1.12.4</version>
+    <time>1672927187</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix doc build: primary python not in buildset for backports
+  15.4_py39
+- Move to PEP517 (forwarded request 1046638 from bnavigator)</comment>
+    <requestid>1046639</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>ce0837116997f40b67f42acb7798591e</srcmd5>
+    <version>1.12.4</version>
+    <time>1683111361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083999</requestid>
+  </revision>
+</revisionlist>

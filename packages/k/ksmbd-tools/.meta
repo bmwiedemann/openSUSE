@@ -1,0 +1,5 @@
+<package name="ksmbd-tools" project="openSUSE:Factory">
+  <title>ksmbd-tools</title>
+  <description>cifsd kernel server userspace utilities </description>
+  <devel project="network:samba:STABLE" package="ksmbd-tools"/>
+</package>

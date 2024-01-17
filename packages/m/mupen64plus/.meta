@@ -1,0 +1,11 @@
+<package name="mupen64plus" project="openSUSE:Factory">
+  <title>Plugin-Based Nintendo 64 Emulator</title>
+  <description>Mupen64Plus is a plugin-based N64 emulator which is capable of accurately
+playing many games. It includes four MIPS R4300 CPU emulators, with dynamic
+recompilers for 32-bit x86 and 64-bit amd64 systems.  It supports plugins for
+audio, graphical rendering (RDP), the signal co-processor (RSP), and input.
+
+</description>
+  <devel project="Emulators" package="mupen64plus"/>
+  <url>https://mupen64plus.org</url>
+</package>

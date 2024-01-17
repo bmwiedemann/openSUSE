@@ -1,0 +1,87 @@
+diff -Nru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-audio-sdl/projects/unix/Makefile mupen64plus-bundle-src-2.5.9/source/mupen64plus-audio-sdl/projects/unix/Makefile
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-audio-sdl/projects/unix/Makefile	2019-02-10 19:25:31.000000000 +0100
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-audio-sdl/projects/unix/Makefile	2019-04-10 08:17:50.787318336 +0200
+@@ -96,7 +96,7 @@
+ # base CFLAGS, LDLIBS, and LDFLAGS
+ OPTFLAGS ?= -O3 -flto
+ WARNFLAGS ?= -Wall
+-CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -ffast-math -fno-strict-aliasing -fvisibility=hidden -I../../src
++CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -fno-strict-aliasing -fvisibility=hidden -I../../src
+ LDFLAGS += $(SHARED)
+ 
+ # Since we are building a shared library, we must compile with -fPIC on some architectures
+diff -Nru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-core/projects/unix/Makefile mupen64plus-bundle-src-2.5.9/source/mupen64plus-core/projects/unix/Makefile
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-core/projects/unix/Makefile	2019-02-10 19:25:29.000000000 +0100
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-core/projects/unix/Makefile	2019-04-10 08:18:03.379436469 +0200
+@@ -136,7 +136,7 @@
+ # base CFLAGS, LDLIBS, and LDFLAGS
+ OPTFLAGS ?= -O3 -flto
+ WARNFLAGS ?= -Wall
+-CFLAGS += -ffast-math -fno-strict-aliasing -fvisibility=hidden -I../../src -I../../src/asm_defines -DM64P_PARALLEL
++CFLAGS += -fno-strict-aliasing -fvisibility=hidden -I../../src -I../../src/asm_defines -DM64P_PARALLEL
+ CXXFLAGS += -fvisibility-inlines-hidden
+ LDLIBS +=  -lm
+ 
+diff -Nru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-input-sdl/projects/unix/Makefile mupen64plus-bundle-src-2.5.9/source/mupen64plus-input-sdl/projects/unix/Makefile
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-input-sdl/projects/unix/Makefile	2019-02-10 19:25:31.000000000 +0100
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-input-sdl/projects/unix/Makefile	2019-04-10 08:18:17.007564319 +0200
+@@ -93,7 +93,7 @@
+ # base CFLAGS, LDLIBS, and LDFLAGS
+ OPTFLAGS ?= -O3 -flto
+ WARNFLAGS ?= -Wall
+-CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -ffast-math -fno-strict-aliasing -fvisibility=hidden -I../../src -D_GNU_SOURCE=1
++CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -fno-strict-aliasing -fvisibility=hidden -I../../src -D_GNU_SOURCE=1
+ LDFLAGS += $(SHARED)
+ LDLIBS += -lm
+ 
+diff -Nru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-rsp-hle/projects/unix/Makefile mupen64plus-bundle-src-2.5.9/source/mupen64plus-rsp-hle/projects/unix/Makefile
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-rsp-hle/projects/unix/Makefile	2019-02-10 19:25:32.000000000 +0100
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-rsp-hle/projects/unix/Makefile	2019-04-10 08:18:35.683739529 +0200
+@@ -130,7 +130,7 @@
+ # base CFLAGS, LDLIBS, and LDFLAGS
+ OPTFLAGS ?= -O3 -flto
+ WARNFLAGS ?= -Wall
+-CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -ffast-math -fno-strict-aliasing -fvisibility=hidden -I../../src
++CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -fno-strict-aliasing -fvisibility=hidden -I../../src
+ LDFLAGS += $(SHARED)
+ 
+ # Since we are building a shared library, we must compile with -fPIC on some architectures
+diff -Nru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/projects/unix/Makefile mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/projects/unix/Makefile
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/projects/unix/Makefile	2019-02-10 19:25:35.000000000 +0100
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/projects/unix/Makefile	2019-04-10 08:19:37.404318580 +0200
+@@ -134,15 +134,11 @@
+ # base CFLAGS, LDLIBS, and LDFLAGS
+ OPTFLAGS ?= -O3 -flto
+ WARNFLAGS ?= -Wall -Wno-unused-function
+-CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -ffast-math -fno-strict-aliasing -fvisibility=hidden -I../../src -I../../src/Glitch64/inc -DGCC
++CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -fno-strict-aliasing -fvisibility=hidden -I../../src -I../../src/Glitch64/inc -DGCC
+ CXXFLAGS += -fvisibility-inlines-hidden -std=gnu++0x
+ LDFLAGS += $(SHARED)
+ BOOST_SUFFIX ?=
+ 
+-ifeq ($(CPU), X86)
+-  CFLAGS +=  -mmmx -msse
+-endif
+-
+ # Since we are building a shared library, we must compile with -fPIC on some architectures
+ # On 32-bit x86 systems we do not want to use -fPIC because we don't have to and it has a big performance penalty on this arch
+ ifeq ($(PIC), 1)
+diff -Nru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-rice/projects/unix/Makefile mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-rice/projects/unix/Makefile
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-rice/projects/unix/Makefile	2019-02-10 19:25:33.000000000 +0100
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-rice/projects/unix/Makefile	2019-04-10 08:19:01.863985145 +0200
+@@ -120,14 +120,10 @@
+ # base CFLAGS, LDLIBS, and LDFLAGS
+ OPTFLAGS ?= -O3 -flto
+ WARNFLAGS ?= -Wall
+-CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -ffast-math -fno-strict-aliasing -fvisibility=hidden -I../../src
++CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -fno-strict-aliasing -fvisibility=hidden -I../../src
+ CXXFLAGS += -fvisibility-inlines-hidden
+ LDFLAGS += $(SHARED)
+ 
+-ifeq ($(CPU), X86)
+-  CFLAGS += -msse
+-endif
+-
+ # Since we are building a shared library, we must compile with -fPIC on some architectures
+ # On 32-bit x86 systems we do not want to use -fPIC because we don't have to and it has a big performance penalty on this arch
+ ifeq ($(PIC), 1)

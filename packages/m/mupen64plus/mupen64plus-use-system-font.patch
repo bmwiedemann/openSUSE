@@ -1,0 +1,36 @@
+diff -Nru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-core/src/osd/osd.c mupen64plus-bundle-src-2.5.9/source/mupen64plus-core/src/osd/osd.c
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-core/src/osd/osd.c	2019-02-10 19:25:29.000000000 +0100
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-core/src/osd/osd.c	2019-04-10 08:25:37.475697341 +0200
+@@ -38,7 +38,7 @@
+ #include "api/m64p_vidext.h"
+ #include "api/callbacks.h"
+ 
+-#define FONT_FILENAME "font.ttf"
++#define FONT_FILENAME "/usr/share/fonts/truetype/DejaVuSans.ttf"
+ 
+ typedef void (APIENTRYP PTRGLACTIVETEXTURE)(GLenum texture);
+ static PTRGLACTIVETEXTURE pglActiveTexture = NULL;
+@@ -210,7 +210,6 @@
+ // public functions
+ void osd_init(int width, int height)
+ {
+-    const char *fontpath;
+     int i;
+ 
+     osd_list_lock = SDL_CreateMutex();
+@@ -225,13 +224,11 @@
+         return;
+     }
+ 
+-    fontpath = ConfigGetSharedDataFilepath(FONT_FILENAME);
+-
+-    l_font = OGLFT_Monochrome_create(fontpath, (float) height / 35.f);  // make font size proportional to screen height
++    l_font = OGLFT_Monochrome_create(FONT_FILENAME, (float) height / 35.f);  // make font size proportional to screen height
+ 
+     if (!l_font || !OGLFT_Face_isValid(l_font))
+     {
+-        DebugMessage(M64MSG_ERROR, "Could not construct face from %s", fontpath);
++        DebugMessage(M64MSG_ERROR, "Could not construct face from %s", FONT_FILENAME);
+         return;
+     }
+ 

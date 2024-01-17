@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14a491af464a1f00d989a8bd4301ac82</srcmd5>
+    <version>0.13.0.3</version>
+    <time>1467359901</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for new version of &quot;ragel&quot; package</comment>
+    <requestid>404233</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>016885afa51032c84796d4ebed5fcb7e</srcmd5>
+    <version>0.13.0.4</version>
+    <time>1480693305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.13.0.4</comment>
+    <requestid>442738</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>70cda2da4c964e88559a48589e64f7a9</srcmd5>
+    <version>0.13.0.5</version>
+    <time>1505238837</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.13.0.5
+  * No changelog was provided</comment>
+    <requestid>522360</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a9a74e36a71197746e67015cdb5cc04e</srcmd5>
+    <version>0.13.0.6</version>
+    <time>1540819323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.13.0.6</comment>
+    <requestid>644913</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9e624d2a5050c786624d89d21cdd0e85</srcmd5>
+    <version>0.13.0.7</version>
+    <time>1566551361</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.13.0.7</comment>
+    <requestid>725394</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>60395aa45543eed38264787445ba1f10</srcmd5>
+    <version>0.13.0.7</version>
+    <time>1588324430</time>
+    <user>dimstar_suse</user>
+    <comment>- Add reproducible.diff</comment>
+    <requestid>799165</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>63813116a672ad0ea0fa3eb1a0ccc5e7</srcmd5>
+    <version>0.13.0.7</version>
+    <time>1598651120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Git URL. Trim old specfile constructs.</comment>
+    <requestid>829734</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c8b70da69119402a14fbd258e23faa99</srcmd5>
+    <version>0.14.7</version>
+    <time>1619729209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.7</comment>
+    <requestid>889328</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>99cc7f154376e3d65d9cf92530a1e8a0</srcmd5>
+    <version>0.14.7</version>
+    <time>1657379085</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport patches to fix signed/unsigned char usage on Arm:</comment>
+    <requestid>988029</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a61de511525c3686d41629cb2b8fea1c</srcmd5>
+    <version>5.7.4</version>
+    <time>1619447956</time>
+    <user>dimstar_suse</user>
+    <comment>Bring Deepin Desktop Environment to openSUSE</comment>
+    <requestid>886210</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>36f6237b3812cfffb3f6993ea31e12e9</srcmd5>
+    <version>5.7.4</version>
+    <time>1623098615</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop owning directories provided by filesystem and other packages
+  (every dir should only have one owner) (bsc#1184786) (forwarded request 897912 from hillwood)</comment>
+    <requestid>897920</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>976a355ea1a80f6dc07c407d88875276</srcmd5>
+    <version>5.7.8</version>
+    <time>1624300560</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix broken release date in appdata
+
+- Update to version 5.7.8
+  * Bugfix release
+- Use find_lang macro (forwarded request 900403 from hillwood)</comment>
+    <requestid>901178</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>021817f2fdbd34624c93214b8a6ac36e</srcmd5>
+    <version>5.7.11</version>
+    <time>1629269729</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.7.11
+  * Update translations
+  * Fix bugs (forwarded request 910687 from hillwood)</comment>
+    <requestid>910903</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e3b42c150e4d76cb3f542a99cc47bb6</srcmd5>
+    <version>5.8.2</version>
+    <time>1643666203</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.8.2
+  * Add ocr feature
+  * fix bugs</comment>
+    <requestid>950155</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>19840f347b06ca0b81664e8dd94bc0e0</srcmd5>
+    <version>5.8.13</version>
+    <time>1650657226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971784</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c220fdd8738c4f252848fe1af52e621e</srcmd5>
+    <version>5.9.4</version>
+    <time>1662148598</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1000769</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fa67ce04cb8b056f93c2e571f7c86f1e</srcmd5>
+    <version>5.9.9</version>
+    <time>1674927923</time>
+    <user>dimstar_suse</user>
+    <comment>- Add update-libraw-api.patch, update api for libraw 
+
+- Update version to 5.9.9
+  * Fix bugs 
+
+- Update version to 5.9.7
+  * Fix bugs
+- Drop fix-library-link.patch (forwarded request 1061715 from hillwood)</comment>
+    <requestid>1061716</requestid>
+  </revision>
+</revisionlist>

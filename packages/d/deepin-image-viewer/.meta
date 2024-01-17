@@ -1,0 +1,5 @@
+<package name="deepin-image-viewer" project="openSUSE:Factory">
+  <title>Deepin Image Viewer</title>
+  <description>Deepin Image Viewer is Deepin Desktop Environment Image Viewer.</description>
+  <devel project="X11:Deepin" package="deepin-image-viewer"/>
+</package>

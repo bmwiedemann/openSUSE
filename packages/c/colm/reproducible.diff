@@ -1,0 +1,38 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-04-30 09:54:51.189316671 +0200
+
+Pointers are subject to ASLR. Since colm already uses a global
+counter, just extend the idea to all emitted pointer values.
+
+---
+ src/compiler.cc |    2 +-
+ src/declare.cc  |    3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+Index: colm-0.13.0.7/src/compiler.cc
+===================================================================
+--- colm-0.13.0.7.orig/src/compiler.cc
++++ colm-0.13.0.7/src/compiler.cc
+@@ -960,7 +960,7 @@ void Compiler::initEmptyScanner( RegionS
+ 		reg->impl->wasEmpty = true;
+ 
+ 		static int def = 1;
+-		String name( 64, "__%p_DEF_PAT_%d", reg, def++ );
++		String name(64, "__0_DEF_PAT_%d", def++);
+ 
+ 		LexJoin *join = LexJoin::cons( LexExpression::cons( BT_Any ) );
+ 
+Index: colm-0.13.0.7/src/declare.cc
+===================================================================
+--- colm-0.13.0.7.orig/src/declare.cc
++++ colm-0.13.0.7/src/declare.cc
+@@ -503,7 +503,8 @@ void Compiler::makeIgnoreCollectors()
+ {
+ 	for ( RegionSetList::Iter regionSet = regionSetList; regionSet.lte(); regionSet++ ) {
+ 		if ( regionSet->collectIgnore->zeroLel == 0 ) {
+-			String name( 128, "_ign_%p", regionSet->tokenIgnore );
++			static unsigned long ctr;
++			String name(128, "_ign_%lu", ctr++);
+ 			LangEl *zeroLel = new LangEl( rootNamespace, name, LangEl::Term );
+ 			langEls.append( zeroLel );
+ 			zeroLel->isZero = true;
