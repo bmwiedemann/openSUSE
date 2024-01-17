@@ -1,0 +1,7 @@
+<package name="cabextract" project="openSUSE:Factory">
+  <title>A Program to Extract Microsoft Cabinet Files</title>
+  <description>Cabinet (.CAB) files are a form of archive, which Microsoft uses to
+distribute their software and things like Windows Font Packs.
+cabextract can be used to unpack these files.</description>
+  <devel project="Archiving" package="cabextract"/>
+</package>

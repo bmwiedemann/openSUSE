@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d72800bf7b114a510cf6242346406b88</srcmd5>
+    <version>1.11.1</version>
+    <time>1527933551</time>
+    <user>dimstar_suse</user>
+    <comment>A linter for YAML files</comment>
+    <requestid>612034</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44b2c5590af3052ae16ebaa3ab629fc5</srcmd5>
+    <version>1.11.1</version>
+    <time>1544726748</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654079</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>30dd201c0ae7261d97ade345ba013af9</srcmd5>
+    <version>1.13.0</version>
+    <time>1546246032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662050</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee67c99fd0c46c5ac077c431950299c4</srcmd5>
+    <version>1.15.0</version>
+    <time>1551113481</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676266</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ac00e19a4ce22e225c30ba9fdf4a3e7</srcmd5>
+    <version>1.16.0</version>
+    <time>1560537782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709965</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6d337f178797c78dc9a98dd4ce02e81e</srcmd5>
+    <version>1.17.0</version>
+    <time>1567679644</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.0:
+  * Simplify installation instructions in the README
+  * Add OpenBSD installation instructions
+  * Make YAML file extensions configurable</comment>
+    <requestid>724508</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a4f7286f07c8fa21ed0ba3fe09022218</srcmd5>
+    <version>1.18.0</version>
+    <time>1572542285</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.0:
+  * Lint .yamllint config file by default
+  * Also read config from .yamllint.yml and .yamllint.yaml
+  * Improve documentation for yaml-files
+  * Update documentation for pre-commit
+  * Explicitly disable empty-values and octal-values rules</comment>
+    <requestid>744156</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>744b3427a63d51c0335aad378899e321</srcmd5>
+    <version>1.20.0</version>
+    <time>1580928110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770066</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4e881badfa4d87377940d119a5a22f03</srcmd5>
+    <version>1.22.1</version>
+    <time>1587071004</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.22.1:
+  * Fix quoted-strings rule with only-when-needed on corner cases
+  * Add check-keys option to the truthy rule
+  * Fix quoted-strings rule not working on sequences items
+  * Sunset Python 2
+  * Fix new-lines rule on Python 3 with DOS line endings
+  * Fix quoted-strings rule not working for string values matching scalars
+  * Add required: only-when-needed option to the quoted-strings rule</comment>
+    <requestid>794473</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ec21255d66258a7c0b8b45b79d2b5a18</srcmd5>
+    <version>1.23.0</version>
+    <time>1594228361</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to 1.23.0:
+  * Allow rules to validate their configuration
+  * Add options extra-required and extra-allowed to quoted-strings</comment>
+    <requestid>819117</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e77006226f4cb6e7b573d18e4054e74a</srcmd5>
+    <version>1.24.2</version>
+    <time>1595339476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822075</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>83e2b2740b62f39c511ff924225b8f54</srcmd5>
+    <version>1.26.3</version>
+    <time>1649880928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969174</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>291cad4b7794c10e9a972f6a23454f6f</srcmd5>
+    <version>1.27.1</version>
+    <time>1658243977</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990024</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4ab4f9eb277435e4086e8a09938edd8b</srcmd5>
+    <version>1.28.0</version>
+    <time>1665754863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010327</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>eb189bec46c6b0142029691049bbb49b</srcmd5>
+    <version>1.28.0</version>
+    <time>1683630509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085585</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>53188ee3143a37611d4a19cae872d381</srcmd5>
+    <version>1.31.0</version>
+    <time>1684415966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087691</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>458e351215601db4d81afb4a31a28d64</srcmd5>
+    <version>1.32.0</version>
+    <time>1685632873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090262</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b8b370e86167585a6625c38d6acb167d</srcmd5>
+    <version>1.33.0</version>
+    <time>1702845103</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.33.0:
+  * Add support for Python 3.12, drop support for Python 3.7
+  * Rule ``document-end``: fix spurious &quot;missing document end&quot;
+  * Rule ``empty-values``: add ``forbid-in-block-sequences``
+    option</comment>
+    <requestid>1133548</requestid>
+  </revision>
+</revisionlist>

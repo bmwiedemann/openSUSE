@@ -1,0 +1,6 @@
+<package name="mousetweaks" project="openSUSE:Factory">
+  <title>Tweak mouse settings in GNOME</title>
+  <description>The Mousetweaks package provides mouse accessibility enhancements for
+the GNOME desktop.</description>
+  <devel project="GNOME:Factory" package="mousetweaks"/>
+</package>

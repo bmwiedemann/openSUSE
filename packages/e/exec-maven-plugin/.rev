@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bcae173f53e3ddcf40066de538b25e82</srcmd5>
+    <version>1.6.0</version>
+    <time>1555053295</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>692023</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60ca11f30a8ff0221e5124939037cc99</srcmd5>
+    <version>3.0.0</version>
+    <time>1648159067</time>
+    <user>dimstar_suse</user>
+    <comment>3.0.0</comment>
+    <requestid>964406</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>55e518866adcdd5da2de59b58b63cf95</srcmd5>
+    <version>3.0.0</version>
+    <time>1657712726</time>
+    <user>dimstar_suse</user>
+    <comment>appease darix</comment>
+    <requestid>988611</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>33ecbe941a9d7c140a65c1b8714a7d5f</srcmd5>
+    <version>3.0.0</version>
+    <time>1666780289</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with plexus-utils 3.5.0</comment>
+    <requestid>1031162</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>c6cd8323ad72d88c6081f780d99ff923</srcmd5>
+    <version>3.0.0</version>
+    <time>1676036128</time>
+    <user>dimstar_suse</user>
+    <comment>This works with java 8 too</comment>
+    <requestid>1064158</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Mon Sep 25 09:12:40 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.1
+  * Fix missing typing_extensions and mypy_extensions dependencies.
+
+-------------------------------------------------------------------
+Thu Sep 21 14:25:27 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.0
+  * Added plugins architecture image to plugins docs.
+  * Fix wrongly return True when a comparison returns
+    NotImplemented.
+  * Log number of hosts to run on correctly.
+
+-------------------------------------------------------------------
+Tue Jul  5 07:46:50 UTC 2022 - Daniel García Moreno <dani@danigm.net>
+
+- Update to version 3.3.0 
+  * Remove not needed dependencies
+  * Remove tests that requires nornir-utils
+
+-------------------------------------------------------------------
+Wed Mar 17 16:53:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't use setup.py from somewhere, but proper poetry toolchain
+  (yes, we need full poetry package for poetry.masonry).
+
+-------------------------------------------------------------------
+Sat Feb 15 15:10:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update o version 2.4.0
+  * Netconf connection plugin does not respect ssh config
+  * Added napalm_ping.py plugin
+  * Replace multiprocessing.dummy with concurrent.futures
+  * Ansible Inventory - NornirNoValidInventoryError Exception
+  * Minor Typing updates to appease mypy
+  * Update to support Netmiko 3.x.x
+  * Add netconf plugins
+  * Fix KeyError when setting a “False” val in defaults
+  * Add Netbox inventory plugin to documentation
+  * Add netconf_capabilities plugin
+  * Fix netbox unnamed devices
+
+-------------------------------------------------------------------
+Mon Oct 14 09:03:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add missing buildtime requirement: colorama >= 0.4.1
+
+-------------------------------------------------------------------
+Sat Oct 12 10:55:32 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Use tarball from github
+- Run testsuite
+- Add setup.py from pypi. It's not shipped in the github archive
+  since upstream uses the poetry package manager.
+
+-------------------------------------------------------------------
+Sat Sep 21 19:28:03 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+
+-------------------------------------------------------------------
+Thu Sep 19 19:52:10 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.2.0

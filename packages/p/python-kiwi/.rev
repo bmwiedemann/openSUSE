@@ -1,0 +1,2298 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2be8f3913864cdeafc72fef781a087a0</srcmd5>
+    <version>9.3.3</version>
+    <time>1489653713</time>
+    <user>dimstar_suse</user>
+    <comment>Single spec version replacing python3-kiwi</comment>
+    <requestid>479094</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00d15ecb1220565e262f39f4dbc459b1</srcmd5>
+    <version>9.4.0</version>
+    <time>1490026136</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.3.3 → 9.4.0
+  
+
+  
+- Allow https location as repository source
+  
+
+  
+- Refactor RootImport to keep images with a default name
+  
+  RootImport has been refactored so the image is kept with a known
+  name that can be obtained with the Defaults class.
+  
+
+  
+- Added SLE13 distribution matcher
+  
+
+  
+- Update distribution matcher in spec file
+  
+
+  
+- Refactor ContainerBuilder
+  
+  Use Checksum instance to run a checksum match
+  Check for existence of base image at earliest opportunity
+  when constructing a ContainerBuilder</comment>
+    <requestid>479991</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c9ef76b8d00da3c20e4e58136ee32a61</srcmd5>
+    <version>9.4.10</version>
+    <time>1492714640</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>488974</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a35621f144494208b014102d09eb6aa7</srcmd5>
+    <version>9.6.0</version>
+    <time>1493903114</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492691</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b70006017da28530d498bdf4f0c36650</srcmd5>
+    <version>9.6.2</version>
+    <time>1496225757</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>497894</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ea8c20206571cd3740e1e0bdb7b3bb8</srcmd5>
+    <version>9.7.0</version>
+    <time>1496534408</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.6.2 → 9.7.0
+
+  
+- Make sure all required yum repo options are set
+  
+  enabled and gpgcheck parameters has to be set for any
+  configured yum repository
+  
+
+  
+- Fixup repository setup for yum
+  
+  Yum cannot handle spaces between the key and the value.
+  This patch provides a method to tell ConfigParser to use
+  no spaces for the '=' delimiter and thus Fixes #357
+  
+
+  
+- Reactivate warnings report in pytest
+  
+
+  
+- Fixup kernel name lookup
+  
+  If multiple abi compatible kernel module packages are installed
+  the kernel version of the boot kernel could be different from
+  the kernel module versions. In order to find the boot kernel
+  all kernel versions found must be checked. Fixes #355</comment>
+    <requestid>500565</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>434724775011f389d788e3522f8c1d80</srcmd5>
+    <version>9.7.2</version>
+    <time>1497687757</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504203</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e6ec12877cc5a043880b1476fb2107a8</srcmd5>
+    <version>9.7.4</version>
+    <time>1498639053</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>506514</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2e217ed32ee194e2f5808b460e0ea890</srcmd5>
+    <version>9.11.2</version>
+    <time>1505331244</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.11.1 → 9.11.2
+
+  
+- Rebuild online schema documentation
+  
+
+  
+- Bump version: 9.11.0 → 9.11.1
+  
+
+  
+- Fixed kernelList function
+  
+  The kernelList function searches for the installed kernels
+  and applies the corresponding initrd name. The information the
+  method provides is used in case of a custom initrd which should
+  be used instead of the result of dracut. When requesting the use
+  of the kiwi firsboot initrd also in the system via the
+  &lt;oem-kiwi-initrd&gt; element, the information from the list is
+  used to correctly link the kiwi initrd named initrd.vmx to the
+  expected name of the system as dracut would create it. The
+  creation of the list was broken which lead to an empty list
+  and the after effect that the system was not able to reboot.
+  This Fixes #483
+  
+
+  
+- Update oemboot/rhel-07.0 due to isolinux changes</comment>
+    <requestid>523261</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>92206fadce58eb0135474bfdde42e3ba</srcmd5>
+    <version>9.11.8</version>
+    <time>1507197212</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.11.7 → 9.11.8
+  
+
+  
+- Changed permissions of /srv/tftpboot to be readable (bsc#940608)
+  
+
+  
+- Bump version: 9.11.6 → 9.11.7
+  
+
+  
+- Also handle multiple error conditions
+  
+
+  
+- Allow to ignore certain isohybrid warnings
+  
+  kiwi treates warning from isohybrid as fatal errors becuase in
+  most cases they are fatal. However some of them are kind of
+  historical and should be ignored like the one described here:
+  http://www.syslinux.org/archives/2015-March/023306.html
+  
+
+  
+- Bump version: 9.11.5 → 9.11.6
+  
+
+  
+- Make sure xz options are used with pxe tarball</comment>
+    <requestid>529934</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>98aeee953fe02163fac63ed153c3c009</srcmd5>
+    <version>9.11.14</version>
+    <time>1509036112</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.11.13 → 9.11.14
+  
+
+  
+- Cleanup SLE12 boot image descriptions
+  
+
+  
+- Bump version: 9.11.12 → 9.11.13
+  
+
+  
+- Cleanup SLE boot image descriptions
+  
+  Don't use packages which does not exist on SLE, Fixes #523
+  
+
+  
+- Improve coding style to make flake8 happy
+  
+  This commit includes the exact Exception class that the 'except' statement
+  catches. According to the new flake8 3.5.0 version it should be explicit
+  rather than implicit.
+  
+
+  
+- Add OCI reference in skopeo copy call and umoci config call
+  
+  Skopeo, since v1.24, does no longer assume 'latest' as the default
+  tag/reference and requires explicit tag or reference in skopeo</comment>
+    <requestid>536422</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2ed76a664e10a2bda49329e1e0717792</srcmd5>
+    <version>9.11.16</version>
+    <time>1509787466</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>538128</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1d5a1ee5ad136d4ddee14948a3da13d5</srcmd5>
+    <version>9.11.17</version>
+    <time>1510837090</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.11.16 → 9.11.17
+  
+
+  
+- Delete atftp from SLE15 boot descriptions
+  
+  atftp will not be part of SLE15 per fate#323633.
+  This Fixes #543
+  
+
+  
+- Fixed blocksize setup in losetup
+  
+  The -L option was used to set the blocksize value for losetup
+  However there is an option name clash between suse util-linux
+  and upstream which now leads to the problem that option -L
+  has changed its meaning and actually means --nooverlap which
+  completely breaks the call in kiwi. This patch changes the
+  call to use the long form --logical-blocksize.
+  This Fixes bsc#1066873
+  
+
+  
+- Code cleaning and enhancing variables names
+  
+
+  
+- Use usr/lib/rpm if present instead of var/lib/rpm
+  
+  With this commit OEM recovery tries to backup usr/lib/rpm if present,</comment>
+    <requestid>541767</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>32c475d65b98bae7200de434a912f0c9</srcmd5>
+    <version>9.11.22</version>
+    <time>1511517133</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.11.21 → 9.11.22
+  
+
+  
+- Fixed typo in spec file
+  
+  The use of the suse_version macro from the last change
+  introduced a syntax error which caused the package build
+  to fail in obs
+  
+
+  
+- Bump version: 9.11.20 → 9.11.21
+  
+
+  
+- package: Prepare for Tumbleweed moving to suse_version 1550
+  
+
+  
+- Bump version: 9.11.19 → 9.11.20
+  
+
+  
+- Only add package manager on image package requests (#550)
+  
+  If an image description only contains package requests
+  from a bootstrap section but no image packages, it's not
+  required to install a package manager package into the
+  system</comment>
+    <requestid>544423</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c8c9131cbdcd020fb6e630697145dd35</srcmd5>
+    <version>9.11.24</version>
+    <time>1512291976</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>546692</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>847222e58e5c88be15e0ce97a047a30e</srcmd5>
+    <version>9.11.30</version>
+    <time>1516091785</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.11.29 → 9.11.30
+  
+
+  
+- Deleted syslinux from ppc/oemboot/suse-SLES15
+  
+  syslinux is not provided for ppc. This Fixes bsc#1073310
+  
+
+  
+  [boot] fix double quote in grub menu which makes kernel updates for CentOS / RHEL / Fedora break grub.cfg
+  
+
+  
+- Omit kiwi-repart dracut module in oemboot initrd
+  
+  KIWI's oemboot initrd with initrd_system=&quot;dracut&quot; together with
+  installiso=&quot;true&quot; requires to have dracut-kiwi-oem-repart package
+  installed in the system, thus it ends up also being included in the
+  recreated dracut initrd after booting the oemboot initrd from the
+  installation iso. This kiwi-repart module causes a boot failure in that
+  case since no .profile file is present, moreover, it has no sense to
+  run it at that stage, since the disk is already reparted by the
+  oemboot code.
+  
+  This commit allows installiso=&quot;true&quot; and initrd_system=&quot;dracut&quot; to
+  play well together.</comment>
+    <requestid>563059</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d65e043a0d093ec93982565561ff2064</srcmd5>
+    <version>9.12.6</version>
+    <time>1517323132</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.12.5 → 9.12.6
+  
+
+  
+- Fixed kiwi dracut config for the final system
+  
+  Once the image has been deployed on the target and the
+  system is up and running some of the kiwi dracut modules
+  used for deployment are no longer needed and should not be
+  taken into account when another dracut call happens on the
+  system.
+  
+
+  
+- Bump version: 9.12.4 → 9.12.5
+  
+
+  
+- Make sure there are no busy devices on reboot
+  
+  If the dracut kiwi-repart module skips the repartition step
+  because the disk was already repartitioned it leaves devices
+  in busy state which leads to a rescue shell at the system
+  mount stage
+  
+
+  
+- uboot-setup-panda.tgz was readded by mistake as boot hooks are no longer needed</comment>
+    <requestid>570609</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f0b0690499461996f2aa4653088e3d68</srcmd5>
+    <version>9.12.8</version>
+    <time>1518187412</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.12.7 → 9.12.8
+  
+
+  
+- Exclude install source device from target list
+  
+
+  
+- Fixed kiwi-dump timing issue
+  
+  The install code needs to wait in the pre-udev phase for
+  the device containing the installation data to become ready
+  before proceeding with the actual installation code.
+  
+
+  
+- Fixed dialog size of install confirmation dialog
+  
+  The size was too small to show device names which causes a
+  line break to be displayed in the next line
+  
+
+  
+- Cleanup misleading method name
+  
+
+  
+- Fixed coverage report setup
+  
+  Latest version of the coverage module requires a report setup</comment>
+    <requestid>573218</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a066cd62e6c17776e46589d0c707752f</srcmd5>
+    <version>9.12.9</version>
+    <time>1518813540</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.12.8 → 9.12.9
+  
+
+  
+- Update .virtualenv.dev-requirements.txt
+  
+  sphinx 1.7.0 is not compatible with travis-sphinx
+  thus we stick with 1.6.7 until travis-sphinx followed
+  the sphinx changes
+  
+
+  
+- Add restrictions to Path.remove_hierarchy
+  
+  When an iso file is used as repo, this iso will be loop mounted on
+  the host and bind mounted into the image root as long as the image
+  builds. When the mount is released a recursive cleanup of the complete
+  path happens. This is done by calling Path.remove_hierarchy. However
+  if a sub path of the mount path contains a system root directory
+  which is mandatory for the Linux root system it is not allowed
+  to be deleted even if it is empty at the time of the mount cleanup.
+  Thus this patch adds a lookup for protected directory names and
+  only runs the recursive deletion as long as no protected member
+  is part of the path. This fixes bsc#1080301
+  
+
+  
+- Initial support for building Debian/Ubuntu packages in spec
+  
+  This adds support for producing the main kiwi package as well as the</comment>
+    <requestid>576012</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3446c10e9691093fdd94c8073ba4ebd7</srcmd5>
+    <version>9.13.0</version>
+    <time>1519218623</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.12.9 → 9.13.0
+  
+
+  
+- Fixup grub2 theme setup
+  
+  The presence of a background file was mandatory for kiwi to
+  use the theme. But the background information is optional
+  
+
+  
+- Deleted obsolete boot descriptions
+  
+  The custom kiwi boot descriptions has been moved into
+  the kiwi-descriptions github repo and builds the compat
+  package kiwi-boot-descriptions from there. The build
+  of the boot image(initrd) is done by dracut and the
+  dracut module packages provided by kiwi. The classic
+  custom boot descriptions can still be used as alternative
+  method if the above package is installed. Related to
+  Issue #576
+  
+
+  
+- Create compatible boot options
+  
+  The boot option root=install:CDLABEL= is mandatory for install
+  images which uses the dracut initrd system. But for the custom
+  kiwi oemboot descriptions this is causing a problem when detecting
+  the install device. Thus the above boot option is only applied</comment>
+    <requestid>578322</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9f7aeeca3512919f71e80a899d773429</srcmd5>
+    <version>9.13.1</version>
+    <time>1519902051</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.13.0 → 9.13.1
+  
+
+  
+- Only delete sub path if not empty
+  
+
+  
+- Fixed package lists for azure and ec2 build tests
+  
+
+  
+- Reference commit for bugzilla
+  
+  With regards to the changes done in Issue #637 this commit
+  just creates a reference to a related bug bsc#1082163
+  
+
+  
+- Cleanup config functions shell coding
+  
+
+  
+- Delete obsolete/unused methods
+  
+
+  
+- Add functions.sh to shellcheck</comment>
+    <requestid>580511</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d0367475c31267e5beba4b949020c73b</srcmd5>
+    <version>9.13.5</version>
+    <time>1520502981</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.13.4 → 9.13.5
+  
+
+  
+- Fixed btrfs search path in earlyboot script
+  
+  If kiwi generates its own efi image for the boot process
+  it does not setup the btrfs relative path setup in the
+  earlyboot script embedded into the generated efi image.
+  This has a bad impact on the file search because the
+  btrfs setup done in kiwi puts root below the @ volume
+  which we then need to specify of the relative lookup
+  is not activated. Fixes bsc#1082155
+  
+
+  
+- Bump version: 9.13.3 → 9.13.4
+  
+
+  
+- Use LABEL for the swap partition
+  
+  If multipath and device maps are active the fstab entry should use
+  the LABEL reference. Systemd calls swapon and it only works properly
+  with multipath devices when LABEL reference is used or calling directly
+  on the /dev/dm-* device file.
+  
+
+  
+- Bump version: 9.13.2 → 9.13.3</comment>
+    <requestid>583474</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a8ce05cefb0f250523e544b2164cde5e</srcmd5>
+    <version>9.14.0</version>
+    <time>1522317091</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.13.9 → 9.14.0
+  
+
+  
+- Rebuild online schema documentation
+  
+
+  
+- XSL Auto update descriptions due to schema change
+  
+
+  
+- Delete obsolete hybrid attribute from type
+  
+  Any iso image we create will be a hybrid image. That was
+  already the default for any install iso image and was a
+  configuration option for live images. The optional selection
+  only existed for systems which do not provide tools to
+  make an iso hybrid. All distributions kiwi supports provides
+  this capabilities and there is no good reason why a live
+  or install iso should not be hybrid and bootable as iso
+  and as disk. Also the boot in disk mode became the preferred
+  boot method for the majority of our users which requires
+  to provide a hybrid iso
+  
+
+  
+- Add efiparttable type attribute
+  
+  This commit allows to choose the partition table type for efi firmwares</comment>
+    <requestid>591104</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>f7be7903c897443251622330b57507bf</srcmd5>
+    <version>9.13.5</version>
+    <time>1522439321</time>
+    <user>dimstar_suse</user>
+    <comment>Revert, trouble with iso as usb drive</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4489d10bd8936193def208fc8603654a</srcmd5>
+    <version>9.14.2</version>
+    <time>1523956246</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.14.1 → 9.14.2
+  
+
+  
+- Fix default initrd_system values
+  
+  This commit fixes the default initrd_system value for some image
+  types. Since this value is included in profile and potentially
+  taken into account for some of the config script functions, it is
+  important to have consistent values even when the image type
+  has no initrd choice or it doesn't have initrd at all.
+  
+  Related to #689
+  
+
+  
+- Check partition table after cow part creation
+  
+  Proceed with the persistent write partition setup only
+  if the cow partition could have been created successfully
+  
+
+  
+- Fixed detection of disk node in live iso images
+  
+  If the live iso is booted as disk the initrd code needs to
+  find the correct disk node pointing to the iso image. This
+  was formerly done by checking if the populated disk devices
+  contains an iso header with an application id. The information
+  was obtained using the isoinfo tool. isoinfo is a tool</comment>
+    <requestid>595114</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2e966f691d43305fe7afb6da906172a8</srcmd5>
+    <version>9.14.7</version>
+    <time>1525779140</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.14.6 → 9.14.7
+  
+
+  
+- Fixed check for volume group in use
+  
+  The former implementation evaluates the output of the vgs
+  command and set the volume group as in use if one of the
+  listed volume groups on the host contains the group name
+  set by the image description. This would also match if the
+  group name set in the image description is e.g 'System' and
+  the a volume group on the host with name 'SystemVG' exists.
+  However a conflict only exists on exact match of the name.
+  The proposed fix is to use the --select feature from vgs
+  and let it show information on exact match of the vg_name
+  field. The code in kiwi then just evaluates if the selection
+  by vgs has a value or not. This Fixes #721
+  
+
+  
+- Fix setup of kiwi_lvm profile variable
+  
+  kiwi_lvm was always set to true if a volume management system
+  is in use. However it should only be set to true if the
+  selected volume management system is lvm. The same applies
+  to the kiwi_lvmgroup variable which also only makes sense
+  if the lvm volume management system is used.
+  This Fixes bsc#1090427</comment>
+    <requestid>604053</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0e4bfd0fbe6fd5014a1b89d555ffd1d1</srcmd5>
+    <version>9.15.1</version>
+    <time>1526219684</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.15.0 → 9.15.1
+  
+
+  
+- Add a chapter for uninstall package requests in docs (#726)
+  
+  Add a chapter for uninstall package requests in docs
+  
+
+  
+- Update arm integration test
+  
+  Existing panda build was outdated and non functional.
+  Move the test to a more popular target and write the
+  image description to use technology matching the
+  suse arm development effort. Target is now Rpi(64bit)
+  
+
+  
+- Use latest version of sphinx
+  
+  Formerly sphinx==1.6.7 was used because travis-sphinx failed
+  with latest sphinx. Now travis-sphinx fails with 1.6.7 and
+  I hope using latest sphinx will fix that
+  
+
+  
+- Bump version: 9.14.7 → 9.15.0</comment>
+    <requestid>605755</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cde5152cfb6d463433e6564269e3f280</srcmd5>
+    <version>9.15.2</version>
+    <time>1527084355</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.15.1 → 9.15.2
+  
+
+  
+- Fix zypper add lock operations
+  
+  This commit fixes the arguments passed to zypper in add lock
+  operations.
+  
+
+  
+- Add correct GPL-3.0-or-later license
+  
+  Add the correct license reference in the spec License field
+  
+  Fixes #732
+  
+
+  
+- Make container compression a configuration option
+  
+  Change the ContainerBuilder class to evaluate on the
+  configuration options to decide if the container archive
+  should be compressed or not. By default the archive will
+  be compressed, thus there is no change to the former behavior
+  but can be setup in ~/.config/kiwi/config.yml as follows:
+  
+  container:
+- compress: none|xz</comment>
+    <requestid>609805</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ce68714f642e6db84e5d9cdcd6035691</srcmd5>
+    <version>9.16.2</version>
+    <time>1531469519</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620926</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e066ba161245cea7879b24e2e9a42681</srcmd5>
+    <version>9.16.6</version>
+    <time>1533627628</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.16.5 → 9.16.6
+  
+
+  
+- Fix result bundle command
+  
+  This commits fixes a regression introduced in 98c9c77a
+  
+
+  
+- Bump version: 9.16.4 → 9.16.5
+  
+
+  
+- Fixup validation of boottimeout attribute
+  
+  If boottimeout is set to zero it is evaluated as &quot;not set&quot;
+  and the default applies. However it's a fairly well approach
+  to set a zero second boot timeout. This Fixes #789
+  
+
+  
+- Do not replace version from the image name
+  
+  This commit makes sure that replacing version to version plus the
+  build id on resulting files happens only on version suffixes. Before
+  that if image name was including the version string it, this part was
+  also replaced.
+  
+  Fixes #787 (bsc#1102868)</comment>
+    <requestid>626923</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9df55e35807ab9f19e78458ebce0107d</srcmd5>
+    <version>9.16.12</version>
+    <time>1535963590</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631954</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>bb707e2bb85824c1077cee3eaeaa2e20</srcmd5>
+    <version>9.16.18</version>
+    <time>1538501971</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.16.17 → 9.16.18
+  
+
+  
+- Create parent qgroup when snapper is present
+  
+  This commit creates a new parent quota group (1/0) of level 1 when
+  btrfs_quota_groups is enabled and snapper present into the image
+  root tree.
+  
+  Related to bsc#1093518 and #812
+  
+
+  
+- Bump version: 9.16.16 → 9.16.17
+  
+
+  
+- Fixup make build target
+  
+  Don't include auto generated schema docs into the source
+  tarball. Also cleanup MANIFEST.in from files no longer
+  present in the repository
+  
+
+  
+- Bump version: 9.16.15 → 9.16.16</comment>
+    <requestid>638661</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>38dbaac332068eee6bc601bd7b2e40ea</srcmd5>
+    <version>9.16.27</version>
+    <time>1540319764</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.16.26 → 9.16.27
+  
+
+  
+- Use %{ix86} rather than %ix86 in spec template
+  
+  Clear macro annotation prevents clarity issues
+  
+
+  
+- Fixed spec file for gfxboot requires
+  
+  Require gfxboot but only for the x86 architecture
+  
+
+  
+- Bump version: 9.16.25 → 9.16.26
+  
+
+  
+- Move the default rpm database path into Defaults class
+  
+
+  
+- Handle default uri mime type in Defaults class
+  
+
+  
+- Add a hardcoded rpm database path to import trusted keys</comment>
+    <requestid>643192</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>73e01e318c0aeb0319bdbfa53c8a421e</srcmd5>
+    <version>9.17.1</version>
+    <time>1544441126</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653664</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>26a4b58c293cb8751c7a5fa472bb1399</srcmd5>
+    <version>9.17.7</version>
+    <time>1547554416</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.17.6 → 9.17.7
+  
+
+  
+- Fix use of SysConfig objects
+  
+  objects of that class did not provide a get method but
+  overload the bracket [] operator. Using the get() method
+  failed. This Fixes #910
+  
+
+  
+- Use chkstat to verify and fix file permissions
+  
+  Call chkstat in system mode which reads /etc/sysconfig/security
+  to determine the configured security level and applies the
+  appropriate permission definitions from the /etc/permissions*
+  files. It's possible to provide those files as overlay files
+  in the image description to apply a certain permission setup
+  when needed. Otherwise the default setup as provided on the
+  package level applies. It's required that the image root system
+  has chkstat installed. If not present KIWI skips this step
+  and continuous with a warning. This Fixes #895
+  
+
+  
+- Allow setting the protocol for exposed ports
+  
+  With this commit it is possible to set tcp or upd (e.g. &quot;80/tcp&quot;) for
+  exposed container ports. If no protocol is provided OCI defaults are</comment>
+    <requestid>663362</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>f6b4d7544eb08f51d7b943a884c12fd3</srcmd5>
+    <version>9.17.1</version>
+    <time>1548339516</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to previous kiwi version - boo#1122799</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>77726e3654f276b7b7462700b9e763bd</srcmd5>
+    <version>9.17.15</version>
+    <time>1549623990</time>
+    <user>coolo</user>
+    <comment>- Bump version: 9.17.14 → 9.17.15
+  
+- Changed default value for bundler compression
+  
+  If no compression is configured in the kiwi config file
+  the default was set to: False. However this lead to big
+  trouble on the obs side for images which has fixed
+  storage disk sizes configured, e.g Azure images which
+  requests 30G disk size per instance. Thus the default
+  for the bundler compression has changed to be: True</comment>
+    <requestid>670306</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>588cca02185d2b8e39fa9302a5fd9da1</srcmd5>
+    <version>9.17.31</version>
+    <time>1553699474</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.17.30 → 9.17.31
+
+- Update the documentation regarding vagrant boxes
+  Extend the documentation on how to build VirtualBox vagrant boxes
+  All this was done by Dan Čermák &lt;dcermak@suse.com&gt;
+
+- Refactor incremental changelog update
+  The creation of the package changelog is based on a reference file.
+  However that reference file contained log information in a specific
+  timezone which requires to hardcode the region of that timezone
+  in the code to correctly run date/time calculations. This can
+  be done better from a conceptual point of view. This patch changes
+  the handling in a way that the reference file is a git log
+  excerpt including the dates as git log lists them. The dates
+  contains complete numeric time/date/zone information and can be
+  used for calculations. The changelog helper tool converts the
+  result data to match the requirements of rpm changelog files
+  and prints the time/date information localized to the callers
+  timezone or as UTC if the --utc switch is given. By default the
+  user local timezone settings applies. That way the setup of
+  the local timezone is immaterial to the changelog processor
+  and the workaround in the gitlab-ci rpm stage can be deleted
+  too.
+
+- Fix derived docker images build
+  This commit fixes the derived docker images when the base image is a
+  compressed file. After the refactor in #998 the decompression of the
+  base image and the skopeo call to import the decompressed image happened
+  in absolutely independent scopes. NamedTemporaryFile python class by
+  default deletes the created temporary file when the class instance is</comment>
+    <requestid>685857</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>41e7359fb2aca72470c19b0660b8f77e</srcmd5>
+    <version>9.17.15</version>
+    <time>1553764132</time>
+    <user>dimstar_suse</user>
+    <comment>https://github.com/SUSE/kiwi/issues/1030</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>edcdd09cfbf18901cf7df37a0534b8ea</srcmd5>
+    <version>9.17.35</version>
+    <time>1554977706</time>
+    <user>dimstar_suse</user>
+    <comment>Update kiwi - the current version in TW is two months old!</comment>
+    <requestid>692540</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3c0f622fe6e9a3c6a4699ec5da2b3a20</srcmd5>
+    <version>9.17.37</version>
+    <time>1555488318</time>
+    <user>dimstar_suse</user>
+    <comment>Needed to fix image building.</comment>
+    <requestid>693276</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9e22598c9e3a948342aa531a6aedfbfa</srcmd5>
+    <version>9.17.39</version>
+    <time>1558938519</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.17.38 → 9.17.39
+
+- Update obs docs per review by Tom
+
+- Disable check-valid-until with repository_gpgcheck
+  This commit is two fold:
+  * From one side fixes a wrong use of the `trusted` option for
+  apt repositories. `trusted=no` does not force to run the gpg checks
+  it just forces the repository to be considered untrusted regardless
+  the result of the security checks.
+  * From the other side it disables the option `check-valid-until` in
+  case gpg checks are disabled using the `repository_gpgcheck`. It
+  works at repository level. This enables using unmaintained or
+  expired repositories for the build.
+  Fixes #1028
+
+- Simplify shell pipe expression with shell builtin
+  Replace &quot;echo $var | sed ...&quot; expression with ${var//SEARCH/REPLACE}
+  shell builtin as suggested by Codacy
+
+- Make mediacheck runtime check arch independent
+  The check_mediacheck_only_for_x86_arch runtime check fails on
+  non x86 architectures but the tagmedia toolchain exists independent
+  of the platform architecture. This Fixes #1091
+
+- Set home as protected path
+  Along with adding home to the protection list, cleanup
+  the prepare instance cleanup code in a way that it only
+  runs if a root_bind object exists which needs to call
+  its cleanup path</comment>
+    <requestid>705193</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>05457081c07803f932c4f73218de589f</srcmd5>
+    <version>9.17.41</version>
+    <time>1562590831</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.17.40 → 9.17.41
+
+- Update Boot From Hard Disk method
+  Instead of searching for an efi binary to boot, use the exit method
+  that exits from grub and let the firmware choose the next entry
+  in the device list
+
+- Do not crash on missing HOME
+
+- Added live ISO integration tests for arm
+
+- Consolidate syslinux file names and search paths
+  Handle those file names and search path in the Defaults space
+  and only once in the code
+
+- Remove '^' which break BaseStripFirmware function (boo#1132455)
+
+- Do not supress output for dracut call
+  This commit adds a stderr_to_stdout option to Command.run method to
+  redirect stderr to stdout.
+  Additionally this commit also includes to the debug log the dracut
+  call output, including both, stderr and stdout.
+  Fixes #1114
+
+- Fixed path_test unit test
+  The code there checked for the message of an exception
+  but recent changes in pytest did not allow to do it that
+  way anymore.
+
+- Fixed zipl bootloader setup</comment>
+    <requestid>713571</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>bc1d2ac3da059705f36005b84eff217f</srcmd5>
+    <version>9.17.42</version>
+    <time>1563366185</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>715449</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>190a75d69d30805b7167e8d20506e209</srcmd5>
+    <version>9.18.9</version>
+    <time>1565179011</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.18.8 → 9.18.9
+
+- Fixed left over import of six module
+  The use of the six compat module was needed to support py2
+  With the drop of py2 support all of six was no longer needed.
+  However this one was overlooked.
+
+- 99-kiwi-lib requires rmdir, install it
+  Fixes bsc#1143033
+
+- Bump version: 9.18.7 → 9.18.8
+
+- Added multiconsole setup to Fedora build test
+
+- Allow multiple values for grub terminal setup
+  With regards to the grub documentation from
+  https://www.gnu.org/software/grub/manual/grub/grub.html#terminal_005finput
+  multiple terminal consoles can be active. This patch allows
+  to specify terminal collection between serial, console and gfxterm
+  This Fixes #1123
+
+- Bump version: 9.18.6 → 9.18.7
+
+- Fixed use of Command calls in destructors
+  The Command class creates namedtuple to store the result
+  of the call. That tuple is created inside of the Command
+  namespace. If called inside of a __del__ destructor which
+  is often the case in kiwi classes I recently observed an
+  exception from python saying:
+  File &quot;/usr/lib64/python3.6/collections/__init__.py&quot;, line 429, in namedtuple</comment>
+    <requestid>720209</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8d6660260885e63e1c0d0a1b80e0eaea</srcmd5>
+    <version>9.18.10</version>
+    <time>1565775390</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>722592</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9b7e7fac395793253447fe60ac4abf89</srcmd5>
+    <version>9.18.12</version>
+    <time>1567423059</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>726411</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>92b09acc0e4f761e513e5f76a9eb4dfa</srcmd5>
+    <version>9.18.13</version>
+    <time>1568190194</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>728721</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>15a16f18f359628ed4c615c2e0978466</srcmd5>
+    <version>9.18.16</version>
+    <time>1569851500</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>732926</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a1e9006b09df64908485d3b772357d63</srcmd5>
+    <version>9.18.29</version>
+    <time>1572775201</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.18.28 → 9.18.29
+
+- Update Host/Image support matrix
+  Update documentation about the Host vs. Image support and
+  compatibility matrix with regards to the SLES target.
+
+- Add default /etc/kiwi.yml file
+  Provide a comment only etc/kiwi.yml file that contains all
+  parameters we support so far including a short description
+  This Fixes #1232
+
+- Bump version: 9.18.27 → 9.18.28
+
+- Delete left over print statement from unit test
+
+- Enable BLS configuration if is supported
+  Fedora now uses a BLS configuration by default, but this is not supported
+  by all distributions. So check if is supported by the grub2-mkconfig tool
+  and only enable the option if that's the case.
+  Fixes: #1248
+
+- Bump Fedora x86 build test to Fedora30
+
+- Bump version: 9.18.26 → 9.18.27
+
+- Fix btrfs_root_is_snapshot
+  This commit makes sure the chrooted operations of over a loop device
+  including btrfs subvolumes and root as an snapshot include the
+  `/.snapshots` subvolume mount. This is necessary for certain operations
+  that depend on the layout, e.g. grub configuration using `grub2-mkconfig`.</comment>
+    <requestid>743848</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>15a16f18f359628ed4c615c2e0978466</srcmd5>
+    <version>9.18.16</version>
+    <time>1572883049</time>
+    <user>dimstar_suse</user>
+    <comment>Reverting, breaks live image boot on uefi: https://openqa.opensuse.org/tests/1075724#step/bootloader_uefi/3</comment>
+    <requestid>745220</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>c6edbabbf4f3046e15c3b0ae12fea769</srcmd5>
+    <version>9.18.31</version>
+    <time>1573473616</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.18.30 → 9.18.31
+
+- Fix gitlab CI pipeline
+  Ensure the gitlab CI includes make package for docs generation
+
+- Ensure grub.cfg is copied in EFI/BOOT folder
+  This commit fixes the live images in efi mode. Grub configuration file
+  is copied to the correct location in &lt;boot_dir&gt;/EFI/BOOT.
+  Fixes bsc#1155815
+
+- Bump version: 9.18.29 → 9.18.30
+
+- fix kernel module handling for xz compressed modules
+  and firmware files to fix issue #1256
+
+- Bump version: 9.18.28 → 9.18.29
+
+- Update Host/Image support matrix
+  Update documentation about the Host vs. Image support and
+  compatibility matrix with regards to the SLES target.
+
+- Add default /etc/kiwi.yml file
+  Provide a comment only etc/kiwi.yml file that contains all
+  parameters we support so far including a short description
+  This Fixes #1232
+
+- Bump version: 9.18.27 → 9.18.28
+
+- Delete left over print statement from unit test</comment>
+    <requestid>746311</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>599e613b6518a9287191c43230fa71fb</srcmd5>
+    <version>9.19.7</version>
+    <time>1576062251</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.19.6 → 9.19.7
+
+- Fixed swap setup if btrfs is used
+  In case of a volume manager the simplified variant of the
+  device name is used in the fstab file to reference the
+  swap device. However this is only correct for the lvm
+  volume management but not for btrfs. In case of btrfs
+  the swap space is not a subvolume but a real partition
+  and thus the simplified device spec in fstab puts in the
+  loop mapped device which is wrong. This patch fixes it
+
+- Exclude 'Recommends: kiwi-man-pages' for EL7 and older in the spec
+
+- Fixed xz options syntax in default kiwi.yml
+  xz options are passed as a string and splitted in code
+  but not handled as yml list
+
+- Fixed scope of kiwi-man-pages sub package
+  The kiwi-man-pages package provided data that belongs to
+  the main package, e.g the completion as well as the
+  license information. In addition kiwi-man-pages should
+  not be a requirement.
+
+- Fixed result map for OEM pxe install
+  The result map for OEM images with installpxe enabled
+  contained a wrong file name. Thus the result bundler
+  was not able to fetch the tarball
+
+- Open image files in UTF-8
+  Post image build metadata like the packages file which are</comment>
+    <requestid>755480</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>4b68d3b92059f342cd676fd50c0d19c3</srcmd5>
+    <version>9.19.8</version>
+    <time>1577887024</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.19.7 → 9.19.8
+
+- Update libyui-ncurses-pkg10 to libyui-ncurses-pkg11
+  In Tumbleweed there is no longer the libyui-ncurses-pkg10 its been
+  superseded by libyui-ncurses-pkg11.
+  This fixes the test-image-qcow-openstack integration test
+
+- Reference commit for SUSE maintenance
+  This commit adds a reference to Issue #1301 and the report in bugzilla
+  bsc#1159538. The issue was fixed in commit 7d96d19c
+
+- Fix grub2 configuration for shim fallback setup
+  If shim fallback setup is enabled the grub.cfg is copied to the EFI
+  partition. This commit makes sure that the grub.cfg is copied to the EFI
+  partition according to the efi mount point.
+  Fixes bsc#1159235
+
+- Ensure no swap volume is added on btrfs
+  When the selected filesystem is btrfs the volume manager is not LVM.
+  In that case the swap partition is not volume, it is a completely
+  independent partition. So that we cannot add and additional volume
+  for swap when swap is specified in the description file.
+  This patch fixes #1301 and fulfills #1297
+
+- Fixed installation chapter in the documentation
+  The chapter still outlines multipython support but we
+  dropped support for python2 some time ago</comment>
+    <requestid>758475</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>9e760284e7002b2645d561cafa66dc9d</srcmd5>
+    <version>9.19.10</version>
+    <time>1579463460</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.19.9 → 9.19.10
+
+- Follow up fix for kernel version lookup
+
+  When using custom kiwi boot images a shell method named
+  baseCreateCommonKernelFile was used to create a common
+  kernel file name in the boot image to allow a simpler
+  search code in the builder. The search code in the builder
+  however uses the standard kernel naming schema and with
+  the latest changes to the kernel version lookup the
+  common name did not match the matching pattern anymore.
+  The use of such a common kernel file is obsolete and
+  the shell method can finally be deleted.
+
+- Bump version: 9.19.8 → 9.19.9
+
+- Refactor kernel version lookup
+
+  For the lookup of the kernel version kiwi provided a small
+  C program that reads the first bytes of the kernel binary
+  and extracts the version information. Given the various
+  compression formats and also the problem of kernel files
+  that contains the decompressor code which could be anything
+  it has turned out to be difficult to provide a stable tool
+  to read the version from the binary. Therefore the code in
+  kiwi was refactored to read the version via regexp match
+  from the filename which also makes kversion an obsolete
+  tool. This Fixes #1308</comment>
+    <requestid>764217</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>a582b5f72973d36a885e14c379570e7f</srcmd5>
+    <version>9.19.16</version>
+    <time>1582112372</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>774133</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>7b81e11e213d7fdd42c26cd36c2878df</srcmd5>
+    <version>9.20.1</version>
+    <time>1583007624</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>779546</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>24f4d0084faaceb769e269f875f0986e</srcmd5>
+    <version>9.20.4</version>
+    <time>1585264827</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>784048</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>e3db0bff95028b3afe17bd45ba51bce2</srcmd5>
+    <version>9.20.5</version>
+    <time>1586112587</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>791150</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f801fc1474442834352ad2ed51e65d87</srcmd5>
+    <version>9.20.6</version>
+    <time>1586869723</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>792963</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>783e3f0b1ce623a92961f461a5846aa5</srcmd5>
+    <version>9.20.9</version>
+    <time>1588023025</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>797077</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>6512d1d2c2e96cd47ea35faf81dbdb9f</srcmd5>
+    <version>9.20.16</version>
+    <time>1591380314</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>810758</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>d968c6e4b286122d61f4497b6077ce3d</srcmd5>
+    <version>9.21.1</version>
+    <time>1592939036</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>815953</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>4d3b71fc27cf61a7f35af28cb80f5cb3</srcmd5>
+    <version>9.20.16</version>
+    <time>1593090001</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1173356</comment>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>98dffea5c0373926bfbb0b5348bf79af</srcmd5>
+    <version>9.21.3</version>
+    <time>1594293370</time>
+    <user>dimstar_suse</user>
+    <comment>Bump to 9.21.3</comment>
+    <requestid>818264</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>25d8fe39adec28b9e1477fd24682b34c</srcmd5>
+    <version>9.21.7</version>
+    <time>1598167144</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>827565</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>c4609563b52329cb4f90b1d0ea5fbaad</srcmd5>
+    <version>9.21.14</version>
+    <time>1601744088</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838771</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>dd957e3ac61d262ebecdf35bf9d72ed0</srcmd5>
+    <version>9.21.17</version>
+    <time>1602682684</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>841287</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>dbe9e8f06855c4921a28e60b7e9e8277</srcmd5>
+    <version>9.21.23</version>
+    <time>1604702655</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.21.22 → 9.21.23
+
+- Move usrmerge package out of the bootstrap section
+  Currently bootstrap phase on APT package manager makes use of the
+  debootstrap tool. However debootstrap is limited to execute  the
+  bootstrap using a single repository. This is causes several limitations
+  in OBS builds, such as the impossibility of using update repositories or
+  the inclusion of any package that is not part of the standard OBS
+  repository.
+  Usrmerge package is part of the universe repository in OBS which is not
+  te one used by debootstrap, so it can't be installed on bootstrap phase.
+
+- Bump version: 9.21.21 → 9.21.22
+
+- Fixed package manager api inconsistency
+  The method post_process_install_requests_bootstrap in the
+  zypper package manager was missing an argument
+
+- Bump version: 9.21.20 → 9.21.21
+
+- Fixed regexp for grub rootdev substitution
+  The regular expression to match the grub root device
+  used a lazy glob match &quot;.*?&quot;. This however matches a
+  too long part depending on the rest of the content.
+  This commit fixes the expression to be strict on
+  the allowed characters and makes sure the anchor
+  characters are not part of the matching character
+  class. This Fixes #1607
+
+- Fix quick start guide build command</comment>
+    <requestid>846180</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>1726b4987662db2a9dbf237549861cd5</srcmd5>
+    <version>9.21.26</version>
+    <time>1606428603</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.21.25 → 9.21.26
+
+- Fixed dnf plugin config setup
+  Only create a dnf plugin config if the plugin config directory
+  to store that file exists in the system
+
+- Set --releasever=0 for microdnf
+  To allow microdnf to work from an empty root directory
+  we need to set the release version to zero
+
+- Use custom varsdir for dnf builds
+
+- Partially revert dcounter.c flaw report
+  I could not find a problem with this read call
+  it does check on the buffer boundaries and it
+  only writes the bytes that read returns until
+  read returns &lt;= 0
+
+- Fixed dcounter.c flaw report
+  Check buffer boundaries if used in a loop
+
+- Fixed dcounter.c flaw report
+  Variable scope can be reduced and useless value assignment.
+
+- Fixed microdnf support
+  The installroot argument must be used together with --config
+  and additionally with --noplugins, as well as --setopt for
+  cachedir, reposdir and varsdir. Related to #1625
+
+- Move tools README to ReST</comment>
+    <requestid>849700</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>9f839dd77b93d223d2931369e3a61d22</srcmd5>
+    <version>9.22.1</version>
+    <time>1607801228</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.22.0 → 9.22.1
+
+- Fixed validation of bool value in dracut module
+  The oem-multipath-scan setup results in a bool variable inside
+  of the initrd code. The variable kiwi_oemmultipath_scan is
+  therefore either set to &quot;true&quot; or &quot;false&quot;. A check in code
+  of the form [ -n ... ] is stupid since the variable always
+  contains text. This commit fixes the validation to make use
+  of the bool() method provided for these type of variables
+
+- Bump version: 9.21.26 → 9.22.0
+
+- Omit multipath module by default
+  The plain installation of the multipath toolkit activates the
+  dracut multipath code. The setup if the target image runs in a
+  multipath environment or not should however be decided explicitly
+  in the image description via &lt;oem-multipath-scan&gt; and not
+  implicitly by the presence of tools
+
+- Fixed multipath disk device assignment in kiwi lib
+  The former lookup of the multipath mapped disk device contained
+  a race condition. If the lookup of the device mapper files happened
+  before multipathd has finished the initialization, kiwi continues
+  with the unix node name and fails when the device mapper keeps
+  a busy state on it. This commit changes the code such that in case
+  of an explicit request to use multipath the lookup of the mapped
+  device becomes a mandatory process that runs until the
+  DEVICE_TIMEOUT is reached. Default timeout is set to 60 sec.
+  This references Issue SUSE-Enceladus/azure-li-services#255
+
+- Fixed PackageManager decorator in unit test
+  Implement patch decorators for factories consistently
+
+- Refactor Repository
+  This commit refactors the Repository class and turns it into a
+  proper factory class and also includes type hints to facilitate
+  it's use from an API POV. Related to #1498
+
+- Add DNF as a proper dependency for openSUSE
+  This is required so that OBS can build openSUSE containers and appliances
+  using DNF as the package manager.
+
+- Fixed spec file microdnf requirement
+  SUSE/SLES doesn't provide microdnf within the official channels yet
+
+- Refactor Partitioner
+  This commit refactors the Partitioner class and turns it into a
+  proper factory class and also includes type hints to facilitate
+  it's use from an API POV. Related to #1498
+
+- Avoid using generators in pre-mount hooks
+  This commit deletes the generator that was creating the sysroot.mount
+  unit for ramdisk deployments. Generators, specially the sysroot.mount is
+  expected to be created on very early stages of the boot procedure as
+  this has impact on relevant targets such as initrd-root-fs.target, which
+  does not depend on sysroot.mount if the unit is not there.
+  In ramdisk deployments some data is known on pre-mount stage as
+  as it is downloaded from the PXE server. At this stage it is not safe to
+  generate a sysroot.mount unit that depends on initrd-root-fs.target as
+  the target is close to finalize or even finalized already and could
+  potentially skip sysroot.mount exection.
+  Instead we include a mount hook which is only executed on ramdisk
+  deployments that simply runs the mount command to mount /sysroot.
+  This fixes bsc#1178670
+
+- Refactor PackageManager
+  This commit refactors the PackageManager class and turns it into
+  a proper factory class which also include type hints to facilitate
+  it's use from an API POV. Related to #1498
+
+- Refactor Markup
+  This commit refactors the Markup class and turns it into a proper
+  factory class which also include type hints to facilitate it's
+  use from an API POV. Related to #1498</comment>
+    <requestid>854171</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>4d3024cd42edf50bded7d3a774e03b4a</srcmd5>
+    <version>9.23.5</version>
+    <time>1612011362</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.4 → 9.23.5
+
+- Update contributing link in README
+
+- Bump version: 9.23.3 → 9.23.4
+
+- Fixes the rpmdb bootstrap management for DNF on SUSE
+  This commit makes sure that the compatibility symlink for
+  /var/lib/rpm is created when the host rpmdb path is set to something
+  different. This fixes a mismatch on bootstrapping SUSE using DNF.
+  Fixes #1669
+
+- Bump version: 9.23.2 → 9.23.3
+
+- Modify lsblk flags for a consistent output across distros
+  This commit modifies the lsblk flags to make use of the list format
+  instead of raw output. `--list` flag seams to keep the geometry order
+  and produces a consistent output in several distros.
+
+- Bump version: 9.23.1 → 9.23.2
+
+- Update kiwi-systemdeps-image-validation
+  Make python anymarkup to be only recommended. The package
+  does not exist on all distributions, e.g suse does not
+  provide it and for kiwi it's an optional plugin
+
+- Fixed missing provides tag
+  When building WSL images the image type is set to appx.
+  Therefore obs is looking for what provides kiwi-image:appx
+  This provides tag was missing</comment>
+    <requestid>863255</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>0bb4b7fe9bf0a23be139993a6b1359da</srcmd5>
+    <version>9.23.12</version>
+    <time>1612466559</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.11 → 9.23.12
+
+- Added aaa_base to s390 TW build tests
+  On s390 TW aaa_base is not pulled in by a dependency in obs.
+  It looks like the package is pulled in by a file provides which
+  is not resolved by obs. Thus the package needs to be added
+  explicitly
+
+- Bump version: 9.23.10 → 9.23.11
+
+- Follow up fix, creating custom grub EFI images
+  Make sure custom EFI grub image is copied to the media
+  directory if this is different from the root directory
+  e.g on creation of live images
+
+- Bump version: 9.23.9 → 9.23.10
+
+- Follow up fix, creating custom grub images
+  Moving the grub mkimage call as chroot operation also broke
+  the creation of image builds that uses the legacy custom kiwi
+  boot image feature instead of dracut. This commit fixes it
+
+- Added leap box to be shown by build_status helper
+
+- Added decorators to help with API management
+  The lifetime of API methods could be limited due to
+  the development of kiwi. To allow for a deprecation
+  process the following helper methods has been added
+
+- Bump version: 9.23.8 → 9.23.9</comment>
+    <requestid>868394</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>1856bf629ff66b5c142196ce9755e536</srcmd5>
+    <version>9.23.16</version>
+    <time>1614107913</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.15 → 9.23.16
+
+- Fix lsblk flags to get sorted output
+  This commit modifies the lsblk command flags to get a sorted output
+  according to the disk layout.
+  This is related to 176c7eab commita and it fixes bsc#1182264
+
+- Fixed kiwi-systemdeps-filesystems requires
+  The filesystems requires list also contains low level
+  tools to manage partitions, loops and subsystems. The tools
+  to manage LUKS(cryptsetup) are missing and imho belongs there
+  along with the LVM tools which are listed
+
+- Add strong typing for filesystem classes
+  This commit strong typing for FileSystem* classes.
+  Part of #1644
+
+- Added ca-certificates-mozilla to build tests
+  ca-certificates-mozilla provides the issuer CERT to allow
+  for https repo connections. The standard ca-certificates is
+  not enough on suse/leap/sles based integration tests
+
+- Fixed packaging metadata for pypi
+  Include the README as long description in the metadata
+  for pypi. The change causes the description on pypi.org
+  to show the ReST rendered README instead of a message
+  that the author of the module hasn't provided a description
+
+- Delete legacy oem build test from leap
+  The legacy custom kiwi boot test will only continue</comment>
+    <requestid>873030</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>fc25bd9f65c5bf1d6136e788862e2227</srcmd5>
+    <version>9.23.20</version>
+    <time>1615905790</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>879187</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>db2a7fbbdedc09684bbb56fe7d9bcbfc</srcmd5>
+    <version>9.23.22</version>
+    <time>1617034876</time>
+    <user>RBrownSUSE</user>
+    <comment>- Bump version: 9.23.21 → 9.23.22
+
+- Refactor building of root cmdline setting
+  Creating the root= cmdline parameter was based on methods
+  that deals with the uuid. However, it's also possible to
+  use a label information for the root= cmdline. To support
+  this kiwi issued a 'blkid --uuid' command but that requires
+  udev device names to be present on the host. The open
+  buildservice workers do not run udev and fails apart the
+  standard. This commit refactors the root cmdline setup
+  to work with the device node as it exists during build
+  time such that the blkid call runs against that device
+  node.
+
+- Bump version: 9.23.20 → 9.23.21
+
+- Delete yum from packagemanager in schema
+  Auto convert yum to dnf if set as packagemanager. This allows
+  to delete the yum handling from code parts in kiwi where this
+  was still present. In addition this fixes the inclusion of yum
+  into the packagelist. This Fixes #1768
+
+- Add Strong Typing to builder APIs
+
+- This PR add APIs Strong Typing to the repository APIs
+  Strong Typing has been added to the following files:
+  repository/base.py
+  repository/pacman.py
+  repository/apt.py
+  repository/dnf.py</comment>
+    <requestid>880676</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>15ea056afdc3e7a89e2564af79a8ce45</srcmd5>
+    <version>9.23.25</version>
+    <time>1619298394</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>887366</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>29074aa2e41fd82d05fa36b2c0ed2e10</srcmd5>
+    <version>9.23.28</version>
+    <time>1621113356</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>892684</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>a31daa7d64e02bb1547a562e4751c7bc</srcmd5>
+    <version>9.23.31</version>
+    <time>1622664622</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>895411</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>241fb66a025172eea6c4a7edf2cab4d1</srcmd5>
+    <version>9.23.43</version>
+    <time>1626045887</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.42 → 9.23.43
+
+- Re-add suseImportBuildKey
+  suseImportBuildKey is not required during the image build as kiwi imports the
+  correct keys by itself. However, the created images lack the repository signing
+  keys and any `zypper` commands will thus fail.
+  This fixes https://github.com/OSInside/kiwi/issues/1876
+
+- Bump version: 9.23.41 → 9.23.42
+
+- Fixed fedora integration test builds
+  Maintain the repos in the obs prj config which prevents
+  the weird &quot;nothing provides kernel-obs-build&quot; error
+
+- Bump version: 9.23.40 → 9.23.41
+
+- Remove util-linux-systemd &amp; util-linux Requires from dracut-kiwi-overlay
+  These dependencies are pulled in via dracut-kiwi-lib.
+
+- Add missing util-linux-systemd Requires to dracut-kiwi-[live,libs]
+
+- Fixed test-image-orthos integration test
+  The test was missing btrfs_root_is_snapshot which is required
+  when using btrfs on tumbleweed.
+
+- Fixed test-image-disk-legacy integration test
+  The test did not set a device filter for ramdisk devices but
+  activates unattended mode. In this mode the first device in
+  the list is taken and this is a ramdisk device which is
+  by default too small to be used for the installation. Thus</comment>
+    <requestid>905081</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>9027feb31aef69850e433bc1a6f3cba4</srcmd5>
+    <version>9.23.49</version>
+    <time>1628282667</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.48 → 9.23.49
+
+- Fixed fstab entry for swap on LVM
+  If an LVM setup is used together with a swapspace the
+  swap is created as a volume in the volume group. The
+  required fstab entry to activate swap was not using
+  the LVM exposed device but the UUID of the low level
+  block layer. This low level device is not created
+  by udev because LVM takes over precedence in this
+  case.
+
+- Bump version: 9.23.47 → 9.23.48
+
+- Fixed LVM get_volumes
+  Due to the change on the temporary directory yet another
+  error in the volume manager classes for LVM got exposed.
+
+- Bump version: 9.23.46 → 9.23.47
+
+- Fixed LVM/btrfs volume based image builds
+  Due to the change on the temporary directory an error
+  in the volume manager classes for LVM and btrfs was
+  exposed. There was code which uses a sub-part of the
+  volume mount point directory which is a tempdir based
+  directory name. The sub-part was choosen by an index
+  based path split which worked for /tmp but no longer for
+  /var/tmp. With tempdir now being also a commandline
+  option this code has to become more robust.
+
+- Bump version: 9.23.45 → 9.23.46</comment>
+    <requestid>910293</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>6d440f5eb11b045d567598e78785019d</srcmd5>
+    <version>9.23.54</version>
+    <time>1631543052</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.53 → 9.23.54
+
+- Fixed condition for GRUB_DISABLE_LINUX_UUID=&quot;true&quot;
+  The grub config parameter GRUB_DISABLE_LINUX_UUID must only
+  be set if the device persistence setting is not UUID. However,
+  in kiwi UUID device names are the default and doesn't have to
+  be expressed explicitly. Therefore the condition to check
+  for different than 'by-uuid' is wrong for the default case were
+  no device persistence setting exists. This results in a wrong
+  grub option to be set. This commit fixes it in a way to disable
+  UUID device names in grub if the only other device persistency
+  setting in kiwi named: 'by-label' is explicitly configured.
+  This Fixes #1842
+
+- Added force_trailing_slash argument to sync_data
+  A speciality of the rsync tool is that it behaves differently
+  if the given source_dir ends with a '/' or not. If it ends
+  with a slash the data structure below will be synced to the
+  target_dir. If it does not end with a slash the source_dir
+  and its contents are synced to the target_dir. For example:
+  source
+  └── some_data
+  1. $ rsync -a source target
+  target
+  └── source
+  └── some_data
+  2. $ rsync -a source/ target
+  target
+  └── some_data
+  The parameter force_trailing_slash in the DataSync::sync_data</comment>
+    <requestid>917454</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>bda34dfe7a0aae14500505a22a951b22</srcmd5>
+    <version>9.23.56</version>
+    <time>1632251538</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>919900</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>784d16a8458c50678f133da14329de48</srcmd5>
+    <version>9.24.0</version>
+    <time>1634417212</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>925203</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>cbdcc8c0e7711798a7d0fc8f385fd56d</srcmd5>
+    <version>9.24.1</version>
+    <time>1635023624</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>926893</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>2a8d9a007296b8546f3cdc5b756c024e</srcmd5>
+    <version>9.24.6</version>
+    <time>1637618636</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>932597</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>b3b2ec1498aa1ca5826afc9ba7913e26</srcmd5>
+    <version>9.24.10</version>
+    <time>1638387985</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934738</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>e46a92c02a120ebcfbc3df5ae695eb29</srcmd5>
+    <version>9.24.14</version>
+    <time>1639685959</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>940169</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>19bf8938a6f040644206cd86ec54d9d5</srcmd5>
+    <version>9.24.16</version>
+    <time>1642198347</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.24.15 → 9.24.16
+
+- Fixed regression in compression detection
+  The change from 282529de8f612dee32d54ee868c2365dcd829220
+  Introduced a bad regression. The assumption was made that the
+  xz tool could be used to detect if a file is compressed or not.
+  However, this requires the file to be locally present. In the
+  scope of the method call is_compressed() and within a remote
+  deployment e.g PXE this is not the case. Therefore the former
+  way to &quot;detect&quot; the compression according to the .xz postfix
+  of the source filename was restored. In addition the function
+  name was changed to is_xz_compressed() because that's what the
+  method can do and not more. This Fixes #2015
+
+- Added debug option --debug-run-scripts-in-screen
+  Instead of running scripts in screen if the --debug switch is
+  set, we allow to explicitly switch on this behavior via
+  a new option. This Fixes #2010
+
+- Change packages target for bootincludes
+  Packages marked with bootinclude=&quot;true&quot; will be added to the
+  referenced kiwi boot image description if the initrd_system
+  is set to &quot;kiwi&quot; instead of &quot;dracut&quot;. The package marked was
+  primarily added to the type=&quot;image&quot; section and got only
+  added to the type=&quot;bootstrap&quot; section if no image type section
+  existed. However, it has turned out that this approach has
+  the disadvantage that packages which must be installed as
+  part of the bootstraping (e.g certificates) cannot be handled.
+  This commit changes the behavior of the bootinclude to include
+  the package always to the type=&quot;bootstrap&quot; section.</comment>
+    <requestid>946017</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>f2b2194e5b20dabb3d5452e36bba1a4a</srcmd5>
+    <version>9.24.14</version>
+    <time>1642235829</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:python-kiwi revision:88, using expand</comment>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>a4e5bf2099df82ae055e0a2a2cc7c074</srcmd5>
+    <version>9.24.16</version>
+    <time>1642239523</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:python-kiwi revision:89, using expand</comment>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>191b3c737615d31a5a2254acd368d4d2</srcmd5>
+    <version>9.24.21</version>
+    <time>1644188042</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.24.20 → 9.24.21
+
+- Fixed UUID used in grub early boot script
+  In case the system is luks encrypted the UUID of the root
+  partition was used in the grub early boot script. However,
+  this condition is only correct if in addition to the luks
+  encryption the boot area is on crypto too. If boot is not
+  on crypto the UUID must be the boot partition and not root.
+  Only if root AND boot is on crypto the kiwi created early
+  boot script includes the grub cryptomount calls.
+
+- Bump version: 9.24.19 → 9.24.20
+
+- Followup fix for force deleting debian packages
+  The force uninstall deletes pre scripts prior removal
+  because if they fail the package will not be removed.
+  For a force uninstall we consider this ok. However,
+  the deletion of the scripts did not happen in the
+  image root. This patch fixes it
+
+- Followup fix for force deleting debian packages
+  Pass --force-depends to allow uninstall even if the
+  dependency checker complains
+
+- Fix use of xattrs for container sync
+  when syncing data for containers only a subset of xattr
+  attributes can be applied. This Fixes #2009
+
+- Bump version: 9.24.18 → 9.24.19</comment>
+    <requestid>951342</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>55b18bf03a9153f9874155b9cf3fa9b1</srcmd5>
+    <version>9.24.23</version>
+    <time>1645054191</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>954398</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>71447b6f2cf11a20358c159b2c2bc1f4</srcmd5>
+    <version>9.24.29</version>
+    <time>1647806071</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>962539</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>ab46c14a56a8575c6afe6018053956ad</srcmd5>
+    <version>9.24.31</version>
+    <time>1650060800</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.24.30 → 9.24.31
+
+- Fix LABEL detection (#2112)
+  When only &quot;root=&quot; is specified on the kernel command line the match is
+  located in the first group. Loop through the groups upon mtach to find
+  what we are looking for.
+
+- Preserve LABEL setting (#2108)
+  Preserve the LABEL= setting when the grub config file is re-generated.
+  the GRUB_ENABLE_LINUX_LABEL setting does not exists upstream and
+  not in any SUSE distribution. Set the grub setting such that LABEL
+  is preserved on SUSE distros. (bsc#1197616)
+
+- Fix test_setup_default_grub_empty_kernelcmdline
+  The unit test exists to check that GRUB_CMDLINE_LINUX_DEFAULT
+  is not set depending on the provided cmdline. The test exists
+  for reasons explained in Issue #1650
+
+- Don't compress .appx containers (#2106)
+  The container is actually inside and already compressed.
+
+- Added new CloneDevice class
+  Added CloneDevice class to the storage interface.
+  The class allows to create clone(s) from a given source
+  block device into a list of target block devices.
+  The target block devices are clones of the source but
+  prevents device naming conflicts for unique identifiers
+  like the UUID. This is requires to still allow to boot
+  from images containing device clones and needs to be
+  handled by tools that might work on top of the cloned</comment>
+    <requestid>969537</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>58f336b359a4919ed7478c20430f2cf8</srcmd5>
+    <version>9.24.35</version>
+    <time>1652801013</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>977387</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>7366788a7a4c17b9c696a36c71bd58c9</srcmd5>
+    <version>9.24.36</version>
+    <time>1653417068</time>
+    <user>dimstar_suse</user>
+    <comment>Bump to v9.24.36</comment>
+    <requestid>978738</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>32a06b51e067a01efa1ebc939b784575</srcmd5>
+    <version>9.24.41</version>
+    <time>1655582720</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982951</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>29583835a9dfb87420baa675dfa8adfe</srcmd5>
+    <version>9.24.45</version>
+    <time>1659612191</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990087</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>ccc55238990439d4f4d4e2e716b32972</srcmd5>
+    <version>9.24.47</version>
+    <time>1660924382</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>997596</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>c767d6ab3e4262557bc26fab0ba03407</srcmd5>
+    <version>9.24.48</version>
+    <time>1661962118</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1000211</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>c0b2cb10853594773befa79ed07a3e57</srcmd5>
+    <version>9.24.49</version>
+    <time>1666871584</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.24.48 → 9.24.49
+
+- Fixed test-image-vagrant
+  virtualbox-guest-tools obsoletes virtualbox-guest-x11
+
+- ignore the type check on the Result class
+  With an update of mypy the bound TypeVar is no longer allowed.
+  In newer versions of python we could use the &quot;Self&quot; type or
+  import annotations from the future module. Unfortunately in
+  older python versions which we still support (3.6) there is
+  no non intrusive change which allows us to handle that type
+  annotation. Thus this commit ignores the return type spec
+  for Result.load() for the moment.
+
+- Stop copying /dev files statically into the OCI container
+  In containers (nspawn) where part of the /dev filesystem is bind-mounted
+  from outside system, kiwi fails to do the rsync (in creation of the
+  nodes).
+  There is no reason to actually copy whole tree inside so let's just
+  not do it (as it does not seem to be needed at all).
+
+- List riscv64 as a valid architecture in the schemas
+  This is needed so that architecture filters on riscv64 specifics can
+  be defined.
+
+- Support DM integrity legacy options
+  Add a new attribute integrity_legacy_hmac=&quot;true|false&quot; which
+  allows to use old flawed HMAC calculation (does not protect superblock).
+  Add a new attribute integrity_legacy_padding=&quot;true|false&quot; which
+  allows to use inefficient legacy padding. Do not use these attributes</comment>
+    <requestid>1031379</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>5b93474979bfffc7d84349c50068db87</srcmd5>
+    <version>9.24.55</version>
+    <time>1672221253</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1045322</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>80dad31f4c40980746116b79cc86a78d</srcmd5>
+    <version>9.24.57</version>
+    <time>1676827132</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1066322</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>4b93634206e89aa6bc2a4adb1d36df45</srcmd5>
+    <version>9.24.61</version>
+    <time>1685124857</time>
+    <user>dimstar_suse</user>
+    <comment>Bumping to v9.24.61, this includes small spec file changes required in ALP
+</comment>
+    <requestid>1088796</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>d61972f309ef8115e5d34639036e9ba1</srcmd5>
+    <version>9.25.12</version>
+    <time>1692188190</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 9.25.11 → 9.25.12
+
+- Fix double grub entries in hybrid ISO images
+  As consequence of using the &quot;source&quot; grub command instead
+  of the &quot;configfile&quot; command to load the grub config we now
+  see double loading of the same file on ISO media. The reason
+  here is that kiwi ISO media is always hybrid which means it
+  embeds an MBR into the ISO for which the &quot;source&quot; command now
+  can read the same file through two different device paths.
+  This does not happen with the &quot;configfile&quot; grub command.
+  Thus this patch uses &quot;configfile&quot; if we produce an ISO image
+  and &quot;source&quot; for all other image types. The commit also fixes
+  the custom grub template used for ISO images in a way that
+  we only set the &quot;serial&quot; command if there is a serial
+  configuration provided along with the image description.
+
+- Update x86/tumbleweed/test-image-systemd-boot
+  systemd package has been splitted and provides
+  systemd-boot in an extra package now
+
+- Limit scope of grub _fix method
+  Only apply _fix_grub_to_support_dynamic_efi_and_bios_boot for
+  the x86_64 or ix86 architectures. This Fixes #2343</comment>
+    <requestid>1103984</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>ae2d51170681e9d63b27b84eabac6d53</srcmd5>
+    <version>9.25.17</version>
+    <time>1697566956</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 9.25.16 → 9.25.17
+
+- Fixed argument processing of config.bootoptions
+  Instead of adding an extra space to make the subsequent reading
+  to work, use an awk script that does it without nasty workarounds
+
+- Allow test-image-disk-ramdisk to be build locally
+
+- Bump version: 9.25.15 → 9.25.16
+
+- Fixed doc search field
+  The search in the documentation is broken with the rtd
+  schema and latest sphinx. Stick with sphinx 5.0.0 for the
+  moment which fixes the issue
+
+- Bump version: 9.25.14 → 9.25.15
+
+- Make codacy happy
+
+- Support release version in signkey URLs
+  Using one of the $releasever/${releasever} variable placeholders
+  in an URL as part of a &lt;signing key=&quot;...&quot;/&gt; element did not replace
+  the placeholder with the value of the &lt;release-version&gt; element.
+  This commit fixes this and also makes sure that the result list
+  for downloading signing keys is unique. This Fixes #2381
+
+- Bump version: 9.25.13 → 9.25.14
+
+- Update pypi release to trusted workflow</comment>
+    <requestid>1118210</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>96b4ba0cc02fbdd340074bd79df99fa5</srcmd5>
+    <version>9.25.19</version>
+    <time>1702158549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update test-image-MicroOS
+  Incorporate latest changes from upstream MicroOS and
+  also add an encrypted profile build for testing
+
+- Bump version: 9.25.18 → 9.25.19
+
+- Fix typo in workflow overview doc section
+
+- Add missing documentation for oem-unattended-id
+
+- Allow install disk overwrite from cmdline
+  Add rd.kiwi.oem.installdevice=DEVICE. Configures the disk device
+  that should be used in an OEM installation. This overwrites any
+  other oem device setting, e.g device filter or maxdisk and just
+  continues the installation on the given device. However, the
+  device must exist and must be a block special.
+  This Fixes jira#PED-7180
+
+- Update mailmap
+
+- Replace the regex-based loader entry fix with string parsing (#2388)
+  A user building RHEL images ran into issues with the initrd.
+  It turns out that RHEL uses some patches that mean the
+  initrd/linux files in RHEL are not installed to /boot, which trips
+  up the original regex. The new fix doesn't rely on matching the
+  path in boot, instead just finding the initrd/linux files and rewriting
+  them in place.
+  This change also adds the pre-and-post fix loader entries to the debug logs.
+  Reference: https://bugzilla.suse.com/1208701
+  Fixes suse bsc#1208701</comment>
+    <requestid>1132074</requestid>
+  </revision>
+</revisionlist>

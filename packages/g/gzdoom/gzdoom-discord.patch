@@ -1,0 +1,39 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2022-06-12 10:37:00.984596068 +0200
+
+Unbundle discord-rpc.
+---
+ CMakeLists.txt                          |    6 +++---
+ libraries/discordrpc/src/CMakeLists.txt |    2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: gzdoom-g4.11.3/CMakeLists.txt
+===================================================================
+--- gzdoom-g4.11.3.orig/CMakeLists.txt
++++ gzdoom-g4.11.3/CMakeLists.txt
+@@ -356,9 +356,9 @@ if (HAVE_VULKAN)
+ endif()
+ 
+ add_subdirectory( libraries/discordrpc EXCLUDE_FROM_ALL )
+-set( DRPC_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libraries/discordrpc/include" )
+-set( DRPC_LIBRARIES discord-rpc )
+-set( DRPC_LIBRARY discord-rpc )
++set( DRPC_INCLUDE_DIR "-I/ignore" )
++set( DRPC_LIBRARIES -ldiscord-rpc )
++set( DRPC_LIBRARY -ldiscord-rpc )
+ 
+ if( HAVE_VM_JIT AND UNIX )
+ 	check_symbol_exists( "backtrace" "execinfo.h" HAVE_BACKTRACE )
+Index: gzdoom-g4.11.3/libraries/discordrpc/src/CMakeLists.txt
+===================================================================
+--- gzdoom-g4.11.3.orig/libraries/discordrpc/src/CMakeLists.txt
++++ gzdoom-g4.11.3/libraries/discordrpc/src/CMakeLists.txt
+@@ -28,7 +28,7 @@ endif(${BUILD_SHARED_LIBS})
+ if(WIN32)
+     add_definitions(-DDISCORD_WINDOWS)
+     set(BASE_RPC_SRC ${BASE_RPC_SRC} connection_win.cpp discord_register_win.cpp)
+-    add_library(discord-rpc ${BASE_RPC_SRC})
++    add_library(discord-rpc STATIC ${BASE_RPC_SRC})
+     if (MSVC)
+         if(USE_STATIC_CRT)
+             foreach(CompilerFlag

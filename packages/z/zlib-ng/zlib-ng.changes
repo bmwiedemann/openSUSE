@@ -1,0 +1,267 @@
+-------------------------------------------------------------------
+Mon Jan 15 10:03:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.6:
+  * This release also improves on the functable implementation,
+    and also moves its initialization to happen in deflateInit()
+    and inflateInit(). We also have some optimizations for RVV
+    and ARM.
+  * Fix inflateCopy corruption caused by change in 2.1.4 #1628
+  * This is a regression caused by a change introduced in 2.1.4
+  * Initialize functable without TLS, using atomics #1609
+  * Initialize functable early, during DeflateInit and
+    InflateInit #1613
+  * Add FAR macro to zlib-compat headers to improve compatibility
+  * Improve performance of crc32_acle on 32-bit ARM #1397
+  * Add support for __attribute__((__target__(...))) to overcome
+    limitations of -march=native #1620
+  * Remove tab character in ACLE uqsub16 assembly #1627
+  * Optimize adler32_fold_copy using RVV #1597
+  * Simplify AVX2 and AVX512 adler32_fold_copy by removing
+    templates #1599
+  * Don't attempt ARMv6 detection on AARCH64 #1617
+  * Prevent tests writing into source directory #1604
+  * CMake: Fix clang-cl warnings #1591
+  * CMake: Export cmake target #1601 #1611
+  * CMake: Remove duplicate enable tests option #1610
+  * CMake: Fix reading version information from zlib.h.in #1614
+  * CMake: Check whether compiler supports -march=native or
+    -mcpu=native #1618
+  * CMake: Always run compiler feature tests without LTO #1622
+  * CMake: Make sure uqsub16 check doesn't get optimized away
+    with LTO #1619
+  * CMake: Update to GoogleTest 1.12.1 #1623
+  * Don't disable GoogleTest because of old CMake version #1623
+    #1638
+- update filelists
+
+-------------------------------------------------------------------
+Sun Dec  3 20:27:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.5:
+  * This is a hotfix release, fixing an issue where certain
+    applications would fail with a checksum error during inflate
+    (decompression).
+  * Fix bug with Z_FINISH handling with no window. #1602
+  * This was detected by libgit2 unit tests Issue #1600
+  * Added unit test for inflate with Z_FINISH and no window #1603
+  * Fix CMake handling of CMAKE_INSTALL_INCLUDEDIR #1593
+  * Fix pkgconfig support for WITH_GZFILEOP #1595 #1598
+  * Github Actions update #1590
+  * Readme Update #1594
+
+-------------------------------------------------------------------
+Sun Nov 12 09:43:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.4:
+  * This is a stable release, with several minor improvements and
+    one fix for a possible buffer overrun while using
+    inflateCopy().
+  * Zlib-ng's zlib-compat mode is now targeting zlib 1.3
+    compatibility.
+  * Of note, we have new optimizations for ARM and Risc-V RVV,
+    and a lot of fixes and improvements to the buildsystem.
+  * Fix: inflateCopy() allocate window with padding #1583
+  * Pull zlib 1.3 changes #1563
+  * Deprecate ZLIBNG_VER_STATUS, use ZLIBNG_VER_STATUSH #1581
+  * Optimize slide_hash for ARMv6 #1538
+  * Handle ARM64EC #1539
+  * Remove inert check for HAVE_ACLE_FLAG in
+    check_acle_compiler_flag #1554
+  * Clean up ARM detection and allow ACLE on all ARM archs #1567
+  * Initial loongarch port #1537
+  * Fix building benchmarks on 32-bit PowerPC #1588
+  * Optimize adler32 using rvv #1532
+  * Optimize chunkset #1568
+  * Support RVV hwcap detect at runtime #1585
+  * Move the AVX compatibility functions into a separate file
+  * Clean up SSE4.2 support, fixes compile issues under docker/VM
+
+-------------------------------------------------------------------
+Wed Jul 19 11:46:35 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Fix build on riscv64
+- Build with %{optflags}
+
+-------------------------------------------------------------------
+Sun Jul 16 11:56:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.3:
+  * Fix endless loop bug in chunkcopy_safe. #1526
+  * Support using distro-supplied Gtest #1519
+  * Minor code cleanup of deflate.c #1500
+  * Improve buildsystem detection of ARM Cortex #1521
+  * Cross-compiling and little-endian fixes #1518 #1520
+  * Optimize compare256 using RVV #1498
+  * Optimize slide_hash using RVV #1522
+- drop 1526.patch (upstream)
+
+-------------------------------------------------------------------
+Tue Jun 27 08:11:40 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix boo#1212735:
+  * 1526.patch
+
+-------------------------------------------------------------------
+Thu Jun 22 08:21:11 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1.2:
+  * Many improvements to the CMake scripts.
+  * Improved support for detecting memory alignment functions.
+  * Improved support for unaligned access by letting the compiler promote code to unaligned if supported by the CPU.
+  * Remove x86 cpu feature detection for TZCNT, safely fallback to BSF.
+  * Enable using AVX512 intrinsics with GCC <9.
+  * Decompression is a lot faster (56% faster measured on AVX2-capable x86-64)
+  * Compresson is improved for Level 9, at the cost of a little performance.
+  * Compression is improved for Level 3, by switching from deflate_fast to deflate_medium.
+  * Levels 3 and 4 have been reconfigured to provide a better gradual tradeoff for speed/compression between levels 2 and 5.
+  * Deflate_quick (Level 1) has been improved to default to a bigger windowsize and support changing the window size like the other levels.
+  * Deflate_rle has been optimized with its own compare_256 implementation.
+  * Adler32 implementation using AVX512, AVX512-VNNI, VMX.
+  * CRC32-B implementation using VPCLMULQDQ & IBM-Z.
+  * Slide hash implementation using VMX.
+  * Compare256 implementations using SSE2, Neon, & POWER9.
+  * Inflate chunk copying using SSSE3 & VSX.
+
+-------------------------------------------------------------------
+Thu Apr  6 10:21:43 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.0.7:
+  * Fix CVE-2022-37434 #1328
+  * Fix chunkmemset #1196
+  * Fix deflateBound too small #1236
+  * Fix Z_SOLO #1263
+  * Fix ACLE variant of crc32 #1274
+  * Fix inflateBack #1311
+  * Fix deflate_quick windowsize #1431
+  * Fix DFLTCC bugs related to adler32 #1349 and #1390
+  * Fix warnings #1194 #1312 #1362
+  * MacOS build fix #1198
+  * Add invalid windowBits handling #1293
+  * Support for Force TZCNT #1186
+  * Support for aligned_alloc() #1360
+  * Minideflate improvements #1175 #1238
+  * Dont use unaligned access for memcpy #1309
+  * Build system #1209 #1233 #1267 #1273 #1278 #1292 #1316 #1318 #1365
+  * Test improvements #1208 #1227 #1241 #1353
+  * Cleanup #1266
+  * Documentation #1205 #1359
+  * Misc improvements #1294 #1297 #1306 #1344 #1348
+  * Backported zlib fixes
+  * Backported CI workflows from Develop branch
+- Drop upstream patches:
+  * 1297.patch
+  * 0001-Add-one-extra-byte-to-return-value-of-compressBound-.patch
+
+-------------------------------------------------------------------
+Thu Dec 22 13:22:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-Add-one-extra-byte-to-return-value-of-compressBound-.patch
+  fixes a data corruption regression in 2.0.6
+
+-------------------------------------------------------------------
+Mon Dec 12 10:15:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- make systemtap dependency optional - it is only used in the s390
+  case and entirely optional (just for profiling hooks)
+
+-------------------------------------------------------------------
+Mon Aug  1 09:52:31 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Tue Jun 21 09:46:29 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport https://github.com/zlib-ng/zlib-ng/pull/1297 to fix
+  boo#1200578:
+  * 1297.patch
+
+-------------------------------------------------------------------
+Mon May  9 04:48:04 UTC 2022 - Lubos Lunak <l.lunak@centrum.cz>
+
+- Add 'Provides: zlib-devel' to the compat package
+- Remove useless mis-typed '-DWITH_SANITIZERS=ON'
+
+-------------------------------------------------------------------
+Thu Mar 17 08:58:41 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.0.6:
+  * Fix hangs on macOS #1031
+  * Fix minideflate write buffers being overwritten #1060
+  * Fix deflateBound and compressBound returning too small size estimates #1049 #1071
+  * Fix incorrect function declaration warning #1080
+  * Fix build problems when building outside of source dir #1049
+  * Fix build problems on arm2-7 #1030
+  * Fixed some compile warnings #1020 #1036 #1037 #1048
+  * Improved posix memalign support #888
+  * Improvements to testing #637 #1026 #1032 #1035 #1049 #1051 #1056 #1063 #1067
+  * Improvements for integration into other projects #1022 #1042
+  * Code style fixes #637 #1040 #1050 #1075
+
+-------------------------------------------------------------------
+Thu Jul  1 14:22:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.0.5
+  * Fix inflate corruption on aarch64
+  * Minor chunkset improvements
+
+-------------------------------------------------------------------
+Tue Jun 22 15:32:22 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add 'compat' flavor which can be used as a drop-in replacement
+  of libz
+
+-------------------------------------------------------------------
+Mon Jun 21 13:34:43 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.0.4:
+  * Fix inflate corruption #982
+  * Minor code cleanup #983 #984
+  * Fix mpicc compilation #959
+  * Fix build on NetBSD #964
+  * Fix build on OpenBSD #970
+  * Fix build on Cygwin #972 #974
+  * Fix linter warnings in configure #975
+  * Spelling fixes #961
+  * Improve unistd.h handling #960
+  * Remove stdarg.h detection #976
+  * CI/Test improvements #977 #981 #985
+  * Cmake improvements #980 #989
+- Log from 2.0.3:
+  * Include porting guide in release packages #917
+  * Documentation improvements #913 #949
+  * Added Windows ARM binaries in release packages #916
+  * Fix crash on ARMv7 #927
+  * Fix building on FreeBSD #921
+  * Fix building with musl on aarch64 #936
+  * Fix ARM float-abi detection #918
+  * Fix cmake detection of risc-v architectures #942
+  * Minor buildsystem fixes #922 #924 #933 #938 #950
+  * Improve zlib-compat build #915 #944
+  * CI/Test improvements #926 #929 #927 #937 #939 #940
+- Log from 2.0.2:
+  * #897 Fix rare corruption detected by fuzzing.
+  * #899 Fix compilation on FreeBSD older than version 12.
+  * #898 Fix compilation on aarch64 using cmake.
+  * #882 Fix pkgconfig file generation.
+  * #885 #891 Cmake: Add detection of install dirs from command line.
+  * #900 Cmake: Add warning message for too old MSVC.
+  * #889 Add warning message when including zlib-ng.h and zlib.g in the same compilation unit.
+  * #879 Cleanups for cmake.
+  * #896 #893 #892 Minor changes to CI/tests.
+
+-------------------------------------------------------------------
+Fri Mar 26 09:07:48 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on armv6 and armv7
+
+-------------------------------------------------------------------
+Tue Mar 23 14:58:50 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Tue Mar 23 13:15:56 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Initial version 2.0.1

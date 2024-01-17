@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb075998ca0a5bda57a20303bafbadde</srcmd5>
+    <version>5.14.0</version>
+    <time>1579463634</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.0</comment>
+    <requestid>756372</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0bee1649563e824e31b124e46b204432</srcmd5>
+    <version>5.14.1</version>
+    <time>1580511300</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768118</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7898c138c32780c4cce390d48e2d0fd7</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779695</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809392</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5a2a9258df91eb6770eab0d32c31ca6f</srcmd5>
+    <version>5.15.1</version>
+    <time>1600179800</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833651</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b0b2978acfd6e2207013b4b98b7e9ef6</srcmd5>
+    <version>5.15.2</version>
+    <time>1606428797</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2</comment>
+    <requestid>850027</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ce9ea3d3b56f6bd1143889d3da011f9</srcmd5>
+    <version>5.15.2+kde3</version>
+    <time>1624735520</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2 + KDE patch collection</comment>
+    <requestid>902352</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dcc61b3c7e25e5a73d7e021d4a1abe92</srcmd5>
+    <version>5.15.5+kde0</version>
+    <time>1656511271</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985486</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c6f97749a0f16031e6bf0ee6982f7f26</srcmd5>
+    <version>5.15.6+kde0</version>
+    <time>1664467920</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 5.15.6, untested. (forwarded request 1006197 from Vogtinator)</comment>
+    <requestid>1006225</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8f12f71297e4150ab19e5a1c4c93f14f</srcmd5>
+    <version>5.15.7+kde0</version>
+    <time>1667579649</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.7, untested (forwarded request 1033058 from favogt)</comment>
+    <requestid>1033109</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>492037e1a541531dd7db108092c217d2</srcmd5>
+    <version>5.15.8+kde0</version>
+    <time>1673444078</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.8, untested as usual. qtdoc not included yet. (forwarded request 1057153 from Vogtinator)</comment>
+    <requestid>1057235</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bf08de7a3a2a9226706f4d3e2077b4eb</srcmd5>
+    <version>5.15.9+kde0</version>
+    <time>1682282871</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
+    <requestid>1082080</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d55dc8686a349af6056bff560acc6d9a</srcmd5>
+    <version>5.15.10+kde0</version>
+    <time>1686927143</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.10, fixed libqt5-qtscript (forwarded request 1092905 from favogt)</comment>
+    <requestid>1092941</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7b82bdc48acce88b5f69a698228feb47</srcmd5>
+    <version>5.15.11+kde0</version>
+    <time>1696760298</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.11. Not fully built yet, qtlocation needed a fix. (forwarded request 1116057 from favogt)</comment>
+    <requestid>1116119</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c683f3fb2a4de27f649be5efe8b6eece</srcmd5>
+    <version>5.15.12+kde0</version>
+    <time>1704380272</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.12 (+ some .16), untested (forwarded request 1135706 from favogt)</comment>
+    <requestid>1136115</requestid>
+  </revision>
+</revisionlist>

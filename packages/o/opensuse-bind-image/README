@@ -1,0 +1,5 @@
+The command to run this container is:
+
+podman run -d --rm -v /srv/bind:/data --name bind -p 53:53/tcp -p 53:53/udp registry.opensuse.org/opensuse/bind
+
+Configuration files should be stored in /srv/bind/etc

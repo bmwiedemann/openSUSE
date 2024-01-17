@@ -1,0 +1,10 @@
+--- tmp/Makefile.old	2014-01-27 14:07:44.000000000 +0100
++++ tmp/Makefile	2014-01-27 14:08:23.000000000 +0100
+@@ -42,7 +42,6 @@
+ 
+ src_vipa.sh:
+ 	echo '#!/bin/bash' > src_vipa.sh
+-	echo 'export LD_LIBRARY_PATH=$(LIBDIR):$$LD_LIBRARY_PATH' >> src_vipa.sh
+ 	echo 'export LD_PRELOAD=$(LIBDIR)/src_vipa.so' >> src_vipa.sh
+ 	echo 'exec $$@' >> src_vipa.sh
+ 	chmod 755 src_vipa.sh

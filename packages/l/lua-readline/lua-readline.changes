@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
+Fri Dec 17 19:32:30 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add Requires lua-luaposix >= 30
+
+-------------------------------------------------------------------
+Tue Jun  8 18:03:52 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add Source Url
+
+-------------------------------------------------------------------
+Wed May 19 13:48:18 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Initial packaging version 3.0
+

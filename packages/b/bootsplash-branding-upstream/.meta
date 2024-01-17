@@ -1,0 +1,5 @@
+<package name="bootsplash-branding-upstream" project="openSUSE:Factory">
+  <title>Unbranded Bootsplash Theme</title>
+  <description>This package contains a theme without trademarked logos.</description>
+  <devel project="Base:System" package="bootsplash-branding-upstream"/>
+</package>

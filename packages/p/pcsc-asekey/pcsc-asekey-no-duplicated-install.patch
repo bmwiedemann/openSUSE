@@ -1,0 +1,12 @@
+Index: asekey-3.7/Makefile
+===================================================================
+--- asekey-3.7.orig/Makefile
++++ asekey-3.7/Makefile
+@@ -28,7 +28,6 @@ clean:
+ 
+ install:	all
+ 	install -c -d "${DRIVER_DIR}/Contents/${KERNEL_NAME}"
+-	install -c -m 0755 libASEKey.so "${DRIVER_DIR}"
+ 	install -c -m 0644 Info.plist "${DRIVER_DIR}/Contents/"
+ 	install -c -m 0755 libASEKey.so "${DRIVER_DIR}/Contents/${KERNEL_NAME}"
+ 	install -c -d "${UDEV_DIR}"

@@ -1,0 +1,200 @@
+-------------------------------------------------------------------
+Thu Aug 17 16:04:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Suggest primary python package -- boo#1214354
+
+-------------------------------------------------------------------
+Wed Jul 19 20:53:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Unpin jsonschema: nbformat has been fixed, jupyter-events could
+  be unpinned
+
+-------------------------------------------------------------------
+Tue Jul 18 07:13:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Pin to jsonschema < 4.18 in order to fix rpm build resolver
+  issues
+
+-------------------------------------------------------------------
+Tue May  9 20:31:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to python v3.2.1
+  * Fixed incorrect exit code submission when succesfully closing
+    web tools.
+
+-------------------------------------------------------------------
+Sun Apr 23 20:15:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to python v3.2.0 / jupyter 6.2.0 / jupyterlab 2.2.0
+  * no upstream release notes.
+
+-------------------------------------------------------------------
+Thu Feb  2 14:47:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Package current master commit as version 3.1.1.27.g2da614b
+  * generated sdist with networked machine capable of running npm
+- Notable PRs included:
+  * Remove usage of ipython_genutils #618
+  * Jupyter server 2.0 compatability fixes #649
+  * Compatible with asynchronous contentsmanager #596
+  * Update typescript #641
+  * Update cell marker format to use bold correctly #648
+
+-------------------------------------------------------------------
+Thu Dec 29 20:15:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Modernize jupyter packaging: alternatives, config, provides
+
+-------------------------------------------------------------------
+Sat Nov 13 15:34:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to python 3.1.1 / jupyter 6.1.2 / jupyterlab 2.1.1
+  * Removed py2 compatibility code.
+  * Fixed issue with certain output diffs in web view.
+- Fixes CVE-2021-41134, CWE-75, CWE-80, boo#1192355
+  * Improper handling of user controlled input caused a stored
+    cross-site scripting (XSS) vulnerability. All previous versions
+    of nbdime are affected.
+
+-------------------------------------------------------------------
+Sat Apr 17 15:22:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to python 3.0.0 / jupyter 6.1.0 / jupyterlab 2.1.0
+  * Added support for JupyterLab 3. This includes compatability
+    with jupyter_server (notebook is still supported as well).
+  * Basic functionality for working with cell ids introduced in
+    notebook format spec 4.5. Full utilization of this for diffing/
+    merging functionality is planned for a later release.
+  * Fixed some issues with inline merging1
+
+-------------------------------------------------------------------
+Thu Feb  4 11:03:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.0 / jupyterlab extension 2.0.1
+  * Dropped Python 3.5 support.
+  * Optimize comparison of large stream outputs.
+  * Fixed an error when merging a file that were concurrently added 
+    in two branches with git.
+  * Fixed a config bug where ignore configs written in a file was
+    not taken into account.
+  * Fixed compatibility with JupyterLab 2.2
+- Changes in 2.0.0
+  * Dropped Python 2 support, and Python 3.4 support.
+  * Made web apps (e.g. nbdiff-web) work properly offline.
+  * Fix for git driver with renamed files.
+- Fix new wheel location for %pyproject_install
+
+-------------------------------------------------------------------
+Thu Apr 23 10:42:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- As py2 support is dropped remove py2 dependencies
+
+-------------------------------------------------------------------
+Sat Jan 11 14:10:51 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pyproject_install macro (boo#1094323)
+- Do not rewrite source artifact
+
+-------------------------------------------------------------------
+Tue Nov 12 17:38:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 support due to python-notebook dropping python2 support
+
+-------------------------------------------------------------------
+Tue Aug 20 14:38:49 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Tests require jsonschema 3.
+
+-------------------------------------------------------------------
+Sun Aug 11 03:39:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.1.0
+  * Add rest API for server extension for handling pure git diffs
+    of notebooks. This allows for a cleaner call without prefixing
+    the filename etc. This is currently only available on the
+    server extension, but can be moved to the main server if there
+    is demand.
+- Update to 1.0.7
+  * Fixes an issue using config files (PR #476).
+  * Upgrades to using lab 1.0 components, which also allows lab
+    extension to support lab 1.0.
+- Update to 1.0.6
+  * Fixed a styling regression from 1.0.5, where the web text panes
+    had incorrect styling (most notably incorrect widths).
+
+-------------------------------------------------------------------
+Thu May 16 19:08:20 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Specify which version number is being used to avoid conflicts.
+
+-------------------------------------------------------------------
+Wed May 15 15:56:00 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Add conflicts to jupyter subpackage to more explicitly handle
+  file overlaps with old naming scheme.
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.0.5
+  * Fixed filename encoding issue with git diff on Python 2.
+  * Fixes for deploying nbdime on a non-localhost server.
+  * Web: Fixed issue where unchanged cells would not show correctly if unhidden.
+  * Various other fixes and adjustments.
+- Rename to to match jupyter package naming guidelines.
+
+-------------------------------------------------------------------
+Sat Dec 22 07:11:41 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.0.4
+  * Fix git diffing failure with older versions of git. Now, an older version of git will simply prevent integration with git filters.
+  * Allow for two-way merge by making the base notebook argument to `nbmerge` optional. It will now default to an empty notebook.
+- Update to version 1.0.3
+  * Web: Fix issues with hiding unchanged cells. Make hiding unchanged cells configurable and on by default.
+  * Options of the console printing can now be configured. Mainly the `--no-color` flag disables ANSI color escapes.
+  * Web: Fixed MathJax math rendering.
+  * Various other fixes and adjustments.
+
+-------------------------------------------------------------------
+Thu Aug  2 18:14:08 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 1.0.2
+  * Diff: Optimized diffing of large texts (e.g. big cells).
+  * Config: Fixed several issues with the config system.
+  * Lab extension: Updated to latest jupyterlab. All npm packages are now using ES6 features.
+  * Web: Fixed keyboard tabbing / focusing issues.
+- Update to version 1.0.1
+  * Web: Fix output rendering of outputs with a period in MIME type name.
+  * Config: Add configuration option for front-end extensions.
+  * Merging: Fix handling of corner case for inline merge strategy.
+  * Various other fixes and adjustments.
+
+-------------------------------------------------------------------
+Sun Jun 10 11:02:54 UTC 2018 - jengelh@inai.de
+
+- Use find "+" strategy.
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Fri May 18 14:53:54 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 1.0.0
+  * Added ability for git diff driver to integrate with git filters.
+  * Improved/fixed merge resolution for similar cell insertions.
+  * Added config system to allow for configuring the various entrypoints. Especially useful for customizing which keys to ignore when diffing.
+  * Added control to web view of outputs to select which MIME type to render, and to enable trusting of outputs for full rendering.
+  * Added jupyterlab extension. Frontend/server extensions are now enabled by default on installation.
+  * Various fixes and adjustments.
+- Switch to wheel-based install
+
+-------------------------------------------------------------------
+Fri May 18 08:34:04 UTC 2018 - tchvatal@suse.com
+
+- Remove python3-jupyter_vega3 requires as we never had this pkg
+  present in the d:l:py, it is not mentioned in the setup.py
+- Run the tests
+
+-------------------------------------------------------------------
+Fri Apr 20 22:08:22 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

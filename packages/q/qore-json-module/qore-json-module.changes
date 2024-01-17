@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Sat Jul 22 11:00:41 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.orh>
+
+- Update %{module_api} for json api checks
+
+-------------------------------------------------------------------
+Fri Jan  6 17:09:09 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 1.8.2 because of updated qore
+  * Updates to allow the module to build with qpp from Qore 1.12.4+
+
+-------------------------------------------------------------------
+Tue Jun 14 11:12:55 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 1.8.1 because of qore-doc requirement
+  * eliminated excess whitespace from compact JSON 
+    serialization (refs qorelanguage/qore#4459)
+
+-------------------------------------------------------------------
+Thu Oct 28 09:28:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.8 for Qore 1.0.10
+  * Fixed module loading
+  * Fixed module namespace paths
+
+-------------------------------------------------------------------
+Wed May 19 01:04:28 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.8 for Qore 0.9.15
+  * added support for new ConnectionProvider
+  * fixed parsing JSON numbers with exponents
+  * fixed output of noisy floating-point values
+  * fixed JsonRpcHandler related to Qore
+  * Support QoreValue API
+  * https://github.com/qorelanguage/module-json/compare/v1.7...release-0.9.15
+- Use cmake macros
+
+-------------------------------------------------------------------
+Sun Aug 16 21:00:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7:
+  * deprecated support for the non-published JSON-RPC 1.1 protocol
+  * added support for JSON-RPC 2.0
+  * added the JsonRpcConnection user module
+  * improved argument error messages with RPC calls in the JsonRpcHandler module (issue 2573)
+  * fixed date serialization to use ISO-8601 format (instead of near-ISO-8601 format: issue 2655)
+  * parse_json() now ignores UTF-8 and Unicode BOMs at the start of passed JSON string (issue 1398)
+  * fixed a bug in request logging in the JsonRpcHandler module (issue 1487)
+  * fixed a bug serializing hash keys with embedded quotes (issue 2242)
+  * serialize binary values as base64-encoded strings
+  * user modules moved to top-level qore module directory from version-specific module directory since they are valid for multiple versions of qore
+  * serialize nan, +/-inf as null according to the JSON spec
+  * added detection for invalid JSON-RPC calls and added a more user-friendly error message in the JsonRpcHandler module
+  * new functions added conforming to Qore's function naming convention, old camel-case functions deprecated
+  * JSON tests ported to QUnit
+  * Qore 0.8.12 required as a minimum to build
+  * JSON output is more compact; less extraneous whitespace is used
+- remove 0001-set-64bit-for-other-architectures.patch: upstream
+
+-------------------------------------------------------------------
+Mon Apr 30 13:18:41 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Remove -m32 and -m64 options except for x86* and ppc*
+
+-------------------------------------------------------------------
+Mon Dec 22 11:48:55 UTC 2014 - dimstar@opensuse.org
+
+- Don't start fdupes over docs: it can cause build failures if the
+  link is not in the direction expected.
+
+-------------------------------------------------------------------
+Mon Aug  4 22:53:37 UTC 2014 - dvaleev@suse.com
+
+- Set 64bit for powerpc64, aarch64 and s390x 
+
+- added patches:
+  * 0001-set-64bit-for-other-architectures.patch
+-------------------------------------------------------------------
+Tue Jul 30 14:20:50 UTC 2014 - petr@yarpen.cz
+
+- migrated to OBS file layout
+

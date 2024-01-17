@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>53032d4aadb5f4efea3338c5d6c938c0</srcmd5>
+    <version>1.0.0</version>
+    <time>1588971953</time>
+    <user>dimstar_suse</user>
+    <comment>- New package part of teh Azure SDK</comment>
+    <requestid>801199</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d627f6cbc9d6ed5fa81ea9c0ff7ad046</srcmd5>
+    <version>1.0.0</version>
+    <time>1607548854</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854002</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8c4658683da24a9a1c9ab24d0cc6c8a3</srcmd5>
+    <version>1.0.0</version>
+    <time>1611348682</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issues with Python multi-flavor builds
+  + Create directories using %pythond_expand in %install section
+  + Use canonical %{python_sitelib} path in %files section (forwarded request 864359 from glaubitz)</comment>
+    <requestid>864415</requestid>
+  </revision>
+</revisionlist>

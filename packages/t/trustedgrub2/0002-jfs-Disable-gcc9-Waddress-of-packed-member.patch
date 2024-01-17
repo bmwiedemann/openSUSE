@@ -1,0 +1,55 @@
+From 4f4128defdec0958f7a38736e2c9be2368a5a6da Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 11 Apr 2019 17:14:03 +0800
+Subject: [PATCH 2/8] jfs: Disable gcc9 -Waddress-of-packed-member
+
+Disable the -Wadress-of-packaed-member diagnostic for the
+grub_jfs_getent function since the result is found to be false postive.
+
+The leaf is read into memory as continous chunks in size of 32 bytes and
+the pointer to its base is aligned, which also guarentee its member
+leaf->namepart is aligned.
+
+[   60s] ../grub-core/fs/jfs.c: In function 'grub_jfs_getent':
+[   60s] ../grub-core/fs/jfs.c:557:44: error: taking address of packed member of 'struct grub_jfs_leaf_dirent' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[   60s]   557 |   le_to_cpu16_copy (filename + strpos, leaf->namepart, len < diro->data->namecomponentlen ? len
+[   60s]       |                                        ~~~~^~~~~~~~~~
+[   60s] ../grub-core/fs/jfs.c:570:48: error: taking address of packed member of 'struct grub_jfs_leaf_next_dirent' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[   60s]   570 |  le_to_cpu16_copy (filename + strpos, next_leaf->namepart, len < 15 ? len : 15);
+[   60s]       |                                       ~~~~~~~~~^~~~~~~~~~
+[   60s] cc1: all warnings being treated as errors
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/fs/jfs.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/grub-core/fs/jfs.c b/grub-core/fs/jfs.c
+index 09bc5608d..d5a6d6527 100644
+--- a/grub-core/fs/jfs.c
++++ b/grub-core/fs/jfs.c
+@@ -505,6 +505,10 @@ le_to_cpu16_copy (grub_uint16_t *out, grub_uint16_t *in, grub_size_t len)
+     *out++ = grub_le_to_cpu16 (*in++);
+ }
+ 
++#if __GNUC__ >= 9
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Waddress-of-packed-member"
++#endif
+ 
+ /* Read in the next dirent from the directory described by DIRO.  */
+ static grub_err_t
+@@ -582,6 +586,9 @@ grub_jfs_getent (struct grub_jfs_diropen *diro)
+   return 0;
+ }
+ 
++#if __GNUC__ >= 9
++#pragma GCC diagnostic pop
++#endif
+ 
+ /* Read LEN bytes from the file described by DATA starting with byte
+    POS.  Return the amount of read bytes in READ.  */
+-- 
+2.16.4
+

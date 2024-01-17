@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Jun 20 03:24:45 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Tue May 24 06:38:14 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Tue Apr  5 05:31:41 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Mon Mar 14 06:37:35 UTC 2022 - william.brown@suse.com
+
+- Update to resolve bsc#1196972 CVE-2022-24713 - Regex DOS
+
+-------------------------------------------------------------------
+Wed Mar  9 04:51:15 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Use cargo lock2rpmprovides to fix LICENSE string
+
+-------------------------------------------------------------------
+Wed Mar 09 03:56:43 UTC 2022 - danilo.spinella@suse.com
+
+- Update to version 2.0.0~git0.5b3eac1:
+  * chore: bump version in Cargo.toml to 2.0.0 2022
+  * docs: add Usage from help in README
+  * feat: add version in help message
+  * feat: make bonsai pot gray and bold
+  * feat: add error if passed with old -xmas arg
+  * BREAKING CHANGE: use double hyphen for long args
+  * feat: add help message
+  * feat: make bonsai tree smaller
+  * use nested if statement
+  * restored bonsai tree
+
+-------------------------------------------------------------------
+Tue Dec 14 08:49:41 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Initial packaging of version 1.2.0
+

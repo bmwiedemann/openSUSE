@@ -1,0 +1,244 @@
+-------------------------------------------------------------------
+Sat Feb 11 16:38:19 UTC 2023 - maurizio.galli@suse.com
+
+- Update to version 3.0+git94.9840b6b:
+  * Gnome 43: Improve popovers appearance
+  * Gnome 43: Fix treeviews header appearance
+  * Gnome 43: Improve nautilus pathbar appearance
+  * Gnome 43: Fix spacing in nautilus list rows
+  * Xfce v4.18: Fix odd transparency in panel items
+  * Gnome-shell v43: Improve sliders appearance
+  * Xfce v4.18: Fix invisible items in thunar sidebar
+  * Gnome 43: Fix background color of tab bar and action bar
+  * Gnome-shell v43: Quick-settings - Improve toggle buttons appearance
+  * Gnome-shell: Fix page navigation arrow appearance
+
+-------------------------------------------------------------------
+Mon Jan 09 10:07:32 UTC 2023 - maurizio.galli@gmail.com
+
+- Update to version 3.0+git88.b64d36a:
+  * Xfce v4.18: Fix invisible items in thunar sidebar
+  * Gnome 43: Fix background color of tab bar and action bar
+  * Gnome-shell v43: Quick-settings - Improve toggle buttons appearance
+  * Gnome-shell: Fix page navigation arrow appearance
+  * Gnome 43: Fix nautilus sidebar appearance
+  * Gnome 43: Fix nautilus pathbar appearance
+  * Gnome-shell v43: Add styles for quick settings menu
+  * Gnome 42: Fix nautilus path bar buttons appearance in hover state
+  * KDE: Plasma-solid - Update tasks indicator appearance
+  * Gnome 42: Fix nautilus path bar buttons appearance
+  * Xfce: Thunar - Reduce padding in sidebar items to prevent scrolling
+  * KDE: Plasma - Update tasks indicator appearance
+  * Cinnamon: Nemo -  Improve appearance of highlighted items in sidebar
+  * Gnome-shell: Fix app folders dialog appearance in Zorin OS
+  * KDE: Kvantum - Update sliders color
+  * Gnome-shell: Fix visual issues in Zorin OS
+- Define explicit Provides/Obsoletes for the various subpackages
+
+-------------------------------------------------------------------
+Sat Sep 24 10:22:33 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Split dracula-gtk-theme into flavours subpackages:
+  * metatheme-dracula-common
+  * kde-theme-dracula
+  * gtk2-metatheme-dracula
+  * gtk3-metatheme-dracula
+  * gtk4-metatheme-dracula
+  * gnome-shell-theme-dracula
+  * cinnamon-theme-dracula
+  * metacity-theme-dracula
+  * xfwm4-theme-dracula 
+
+-------------------------------------------------------------------
+Sat Sep 24 10:08:35 UTC 2022 - maurizio.galli@gmail.com
+
+- Update to version 3.0+git72.2452278:
+  * Cinnamon: Fix workspace switcher (as buttons) appearance
+  * Cinnamon: Fix cutted text in search bar
+  * Elementary OS: Fix missing highlight color in task switcher
+  * feature request added
+  * bug report added
+  * Gnome-shell v42: Improve notifications appearance on hover state
+  * Gnome-shell v42: Remove odd shadow in calendar area
+  * KDE: Sddm - Improve focused text entries appearance
+  * Update min_prelight
+  * Restore shell theme
+  * Gnome: Improve window control buttons visibility
+  * Gnome-shell v42: Improve prompt dialog appearance
+  * Gnome-shell v42: Fix media control buttons appearance
+  * Gnome: Fix flickering above Chrome URL bar, Fix #201. Fix #195
+  * KDE: Sddm - Improve general appearance
+  * Xfce: Fix thunar appearance
+  * Cinnamon: Fix grouped window list visibility issue
+  * KDE: Sddm - Fix missing spacing around text entries
+  * Gnome-shell v42: Improve notifications appearance
+  * Gnome-shell v42: Fix some visual issues
+  * KDE: Sddm - Improve input appearance
+  * Fix background hovering effect on Dash to Dock
+  * Gnome-shell v42: Improve calendar area appearance
+  * Gnome-shell:  Add specific styles for dash-to-dock
+  * Gnome-shell v42: Fix wasted space in calendar area
+  * Gnome-shell v42: Fix styling issues in popups
+  * KDE: Sddm - Fix shrink buttons/entries
+  * Gnome-shell: Improve popups appearance
+  * KDE: SDDM - Improve button appearance
+  * Gnome-shell-v42: Fix issue with app folders
+  * Gnome-shell-v42: Remove odd border in message list
+  * Gnome-shell-v42: Fix issue with calendar
+  * Gnome-shell-v42: Fix issue with popovers
+  * Gnome-shell: Fix issue with page indicator
+  * Gnome-shell: Update text entries appearance
+  * KDE: Sddm - Fix small font size
+  * Gnome: Fix appearance of linked buttons in headerbar
+
+-------------------------------------------------------------------
+Thu Apr 14 01:42:35 UTC 2022 - maurizio.galli@gmail.com
+
+- Update to version 3.0+git32.3029205:
+  * Rebuild cinnamon theme
+  * Cinnamon: Improve popups/menus appearance
+  * Cinnamon: Improve slider appearance
+  * Cinnamon: Change highlight color in grouped windows list
+  * KDE: LAF- Update full screen preview
+  * Gnome-shell: Improve entries appearance
+  * Gnome-shell: Improve modal dialogs appearance
+  * Cinnamon: Theme now uses system font family/size
+  * Update theme name to avoid issues in mate DE
+  * KDE: Kvantum - Update entries appearance
+  * :memo: Update readme
+  * Gnome: Fix sharp window corners
+  * Gnome: Improve sidebar items appearance
+  * Gnome-shell: Improve window close button appearance
+  * KDE: LAF -  Optimize image files
+  * Gnome-shell: Improve sliders appearance
+  * Gnome-shell: Improve notifications appearance
+  * Gnome-shell: Improve buttons appearance
+  * Gnome-shell: Improve some widgets appearance
+  * KDE: Sddm - Improve  user list appearance
+  * Gnome-shell: Add popup separators, related to #171
+  * Gnome-shell: Remove weird border inside popup sub menus
+  * KDE: Plasma - Improve entries visibility
+
+-------------------------------------------------------------------
+Fri Feb 04 18:13:26 UTC 2022 - maurizio.galli@gmail.com
+
+- Update to version 3.0+git9.18bb561:
+  * Gnome-shell: Fix switch button appearance
+  * Gnome-shell: Improve text entry appearance
+  * KDE: Kvantum - Fix appearance of sliders in active state
+  * Gnome: Fix cut text in header bar buttons, fixes #169
+  * Gnome-shell v40+: Increase font size to avoid blurry icons, fix #150
+  * KDE: LAF - Improve logout screen appearance
+  * Gnome-shell v40+: Fix misaligned 'Do no disturb' button
+  * KDE: LAF - Update splashscreen preview
+  * Remove extra space
+  * KDE: LAF - Update splash screen appearance
+  * KDE: LAF - Add cursors theme as dependencie
+  * KDE: Add cursors theme
+  * Gtk-4.0: Fix extra padding inside maximized windows
+  * Gtk-4.0: Fix extra gap in search bars, fixes #160
+  * KDE: Plasma - Improve highlight color to be easy on the eyes
+  * Gnome: Fix theme parsing errors, Fix #157
+  * Gtk-4.0: Fix overshoot indicator color
+  * Gtk-4: Fix popovers style
+  * Gtk-4: Fix theme parsing erros and warnings
+  * Gtk-4: Fix missing separator in lists rows
+  * Gtk-4: Fix no visual separation between windows
+  * Gtk-4: Fix border-color of focused entries
+  * Gtk-4: Fix menubar item style
+  * Gtk-4: Fix error buttons style
+  * Gtk-4: Fix window control buttons appearance
+  * Gtk-4: Fix outlined style in all elements
+  * Gtk-4.0: Add initial support to gtk v4
+  * Cinnamon: Fix panel icons squished and background issue with transparent panels
+  * KDE: Plasma - Update scrollbars appearance
+  * Gnome-shell: Improve levelbar color in osd
+  * KDE: Plasma - Enable adaptive transparency
+  * Elementary: Fix appearance of colors in file-menager context menu, Fixes #61
+  * KDE: Plasma -  Update checkbox style
+  * Gnome-shell: Improve hover color in icon grid
+  * KDE: Update lockscreen input to match plasma theme
+
+-------------------------------------------------------------------
+Tue Nov 02 07:36:19 UTC 2021 - maurizio.galli@gmail.com
+
+- Update to version 2.0+git59.cf9d6aa:
+  * Gnome-shell: Fix no hover effect in search results item
+  * KDE: Improve input appearance
+  * Gnome: Fix tabs color in chrome, fixes #126
+  * KDE: Improve sddm input appearance
+  * Gnome-shell: Fix dark text in entries placeholders, fixes #48
+  * KDE: Update sddm theme
+  * KDE: Remove unnecessary file in sddm theme
+  * Gnome-shell: Fix white popups on shell theme, fixes #137, fixes #119, fixes #97
+  * Gnome-shell: Fix color of horizontal workspace switcher, fix #133
+  * KDE: Fix KeyboardLayoutButton in LockScreen
+  * KDE: Update osd tyle, fixes #114
+  * Gnome-shell v40: Fix visual glithes in calendar and icon grid
+  * Rebuild gtk theme
+  * Fix missing bracket
+  * KDE: Colorscheme -  Improve alternate background color
+  * Update _xfce.scss
+  * Update _xfce.scss
+  * Update _thunar.scss
+  * Gnome-shell: Add syles for pop-os/cosmic
+  * KDE: Fix low contrast in logout screen
+  * Gnome-shell v40: Improve window caption appearance
+  * KDE: Fix color inconsistency in some widgets
+  * Gnome-shell: Fix padding bug on selected window preview at activities window
+  * Gnome: Add initial support to v40
+
+-------------------------------------------------------------------
+Tue Jun 08 01:58:24 UTC 2021 - maurizio.galli@gmail.com
+
+- Update to version 2.0+git34.2413487:
+  * Cinnamon: Add visual differentiation for inactive pane in Nemo
+  * KDE: Update splashscreen preview
+  * Move thumbnail
+  * Cinnamon: Add gtk-3.0 thumbnail to show theme preview
+  * Gnome: Fix weird font in context menus
+  * Mate: Improve caja fle manager appearance
+  * KDE: Improve lockscreen input appearance
+  * KDE: Fix color inconsistency in checkboxes
+  * Fix css warning
+  * Mate: Fix text cursor color while renaming file in caja
+  * Revert b99589e
+  * Gnome: Fix low text contrast in calendar events widget
+  * Gnome-shell: Theme now uses system font related to #84
+  * Gnome: Fix transparent separator in headerbar
+  * KDE: Update splasscreen appearance
+  * Cinnamon: Improve nemo file manager appearance
+  * Gnome: Fix odd shadow appearing when headerbar button is selected
+
+-------------------------------------------------------------------
+Tue Jan 05 09:26:08 UTC 2021 - maurizio.galli@gmail.com
+
+- Update to version 2.0+git17.d3b3d53:
+  * Xfce: Improve thunar appearance
+  * Cinnamon: Fix top border appearing when window is maximized
+  * Gnome-shell: Improve searchbar appearance
+  * KDE: Update logout screen buttons appearance
+  * Gnome-shell: Fix color of month back/forward arrows
+  * KDE: Update full screen preview
+  * Mate: Fix active indicator in volume and brightness popup
+  * Gnome: Fix shell log because of double values for box-shadow
+  * Gnome-shell: Fix calendar and workspace-switcher issues in gnome v3.38
+
+-------------------------------------------------------------------
+Tue Nov 03 03:49:23 UTC 2020 - maurizio.galli@gmail.com
+
+- Update to version 2.0+git8.9dde49c:
+  * Gnome-shell: Fix calendar issues in gnome v3.38 related to #82
+  * KDE: Improve logout screen appearance
+  * Gnome: Fix dark background in gnucash entries
+  * Xfce: Fix panel background issue
+  * KDE: Fix misplaced password input on lockscreen
+  * Feat: add icons download link
+  * Cinnamon: Fix invisible screenshot area grab related to #77
+  * Add cinnamon DE support
+  * Pantheon desktop: Redefine color variables to avoid issues with some apps
+
+-------------------------------------------------------------------
+Tue Nov  3 03:42:46 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Initial package at version 2.0 

@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Mon Dec 18 01:34:37 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2: 
+  * Added Django 5.0, Python 3.12.
+  * Fixed building with hatchling 1.19.
+- Stop using globs in %files, specify the path directly
+
+-------------------------------------------------------------------
+Wed Nov 29 11:54:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1:
+  * Added Django 4.1, 4.2 and Python 3.11 to the CI.
+  * Removed the pytz dependency from the tests.
+  * Dropped Python < 3.8, Django < 3.2 from the CI.
+  * Switched to hatchling and ruff.
+
+-------------------------------------------------------------------
+Sat Sep  3 02:25:21 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unneeded changes-in-Django.patch
+- Update to v2.0
+  * Raised the minimum supported versions of Python to 3.6, Django to 2.2.
+  * Replaced the explicit configuration of whether static() should be used
+    or not with automatic configuration. The static argument is still
+    accepted but ignored and will be removed at a later time.
+  * Added support for boolean attributes when using Django 4.1 or better.
+
+-------------------------------------------------------------------
+Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Tumbleweed Python 3.6 incompatible with Django 4
+
+-------------------------------------------------------------------
+Fri Sep 11 13:42:52 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add upstream patch changes-in-Django.patch to fix tests
+
+-------------------------------------------------------------------
+Fri May 24 12:28:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github tarball for tests
+- Execute tests
+
+-------------------------------------------------------------------
+Thu May  2 09:23:41 UTC 2019 - Martin Herkt <9@cirno.systems>
+
+- Init, 1.2.2

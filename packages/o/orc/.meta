@@ -1,0 +1,9 @@
+<package name="orc" project="openSUSE:Factory">
+  <title>The Oil Runtime Compiler</title>
+  <description>Orc is a library and set of tools for compiling and executing very simple
+programs that operate on arrays of data.  The “language” is a generic
+assembly language that represents many of the features available in SIMD
+architectures, including saturated addition and subtraction, and many
+arithmetic operations.</description>
+  <devel project="multimedia:libs" package="orc"/>
+</package>

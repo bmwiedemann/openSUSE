@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Fri Jun  4 10:58:51 UTC 2021 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Rename grafana-sleha-cluster-provider subpackage to grafana-sleha-provider 
+
+-------------------------------------------------------------------
+Mon Nov  9 16:41:51 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Release 1.1.0
+  * Split provider file to own package
+
+-------------------------------------------------------------------
+Wed Sep 16 13:24:29 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- Release 1.0.3 (jsc#SLE-10545)
+  * don't use require grafana, use recommends
+  * fix permissions accordingly
+  * fix minor typo on dashboard spec file
+
+-------------------------------------------------------------------
+Wed Aug  5 11:33:51 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Release 1.0.2
+  * update title and description
+
+-------------------------------------------------------------------
+Tue Jul 14 13:47:20 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Release 1.0.1
+  * fixed datasource variable initialization
+  * minor Grafana 7 compatibility fixes
+
+
+-------------------------------------------------------------------
+Fri Jun 12 10:39:33 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- First release

@@ -1,0 +1,16 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/intel/safestringlib.git</param>
+    <param name="changesrevision">5da1badd337e68c1334fb232c778166f46f6d9f9</param>
+ </service>
+  <service name="tar_scm">
+    <param name="url">git@github.com:intel/tinycbor.git</param>
+    <param name="changesrevision">755f9ef932f9830a63a712fd2ac971d838b131f1</param>
+ </service> 
+  <service name="tar_scm">
+    <param name="url">git@github.com:secure-device-onboard/client-sdk-fidoiot.git</param>
+    <param name="changesrevision">c8ef7576afa1b250ff9460b519238f32711ef175</param>
+ </service> 
+<service name="tar_scm">
+                <param name="url">git@github.com:intel/safestringlib.git</param>
+              <param name="changesrevision">5da1badd337e68c1334fb232c778166f46f6d9f9</param></service></servicedata>

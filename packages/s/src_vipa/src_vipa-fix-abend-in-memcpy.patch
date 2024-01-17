@@ -1,0 +1,35 @@
+From dda5d7f265c382fa1cedd34b6e45e378e1b0c99a Mon Sep 17 00:00:00 2001
+From: Karsten Graul <kgraul@linux.ibm.com>
+Date: Wed, 17 Jul 2019 11:07:39 +0200
+Subject: src_vipa: Fix abend in memcpy
+References: bsc#1141887 bsc#1142048 bsc#1192860
+
+Customer encountered an abend in memcpy().
+get_src_ip_entry() calls dm_hash_val() which itself calls memcpy
+to copy a sockaddr structure into local storage, but the specified
+length is longer than the length of the sockaddr structure.
+The fix is to use the correct length for the respective address family.
+
+Signed-off-by: Karsten Graul <kgraul@linux.ibm.com>
+---
+ src_vipa.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src_vipa.c b/src_vipa.c
+index 78b2825..776f9d3 100644
+--- a/src_vipa.c
++++ b/src_vipa.c
+@@ -706,7 +706,9 @@ unsigned int dm_hash_val(struct sockaddr_storage *s, int masklen)
+ {
+ 	struct sockaddr_storage var;
+ 	
+-	memcpy(&var,s,sizeof(struct sockaddr_storage));
++	memcpy(&var,s,(s->ss_family == AF_INET)
++			? sizeof(struct sockaddr_in)
++			: sizeof(struct sockaddr_in6));
+ 	return (s->ss_family == AF_INET)
+ 		? dm_hash_val_ip4(&(((struct sockaddr_in *)&var)->sin_addr), masklen)
+ 		: dm_hash_val_ip6(&(((struct sockaddr_in6 *)&var)->sin6_addr), masklen);
+-- 
+2.22.0.windows.1
+

@@ -1,0 +1,43 @@
+From 8f3d84ba19a45411f08bae13ee4dcd8329aa9438 Mon Sep 17 00:00:00 2001
+From: Andy Ross <andyross@google.com>
+Date: Thu, 7 Dec 2023 09:17:57 -0800
+Subject: [PATCH] nhlt: Revert SSP_ANALOG device_type field
+
+This partially reverts commit 3a47ef2487ed ("topology: nhlt: intel:
+support more device types and directions"), which changed the default
+device_type in the endpoint descriptor from zero to SSP_ANALOG.
+
+This change breaks the Linux kernel NHLT parser (which AFAICT doesn't
+recognize SSP_ANALOG at all), producing errors like:
+
+  [56458.583812] sof-audio-pci-intel-mtl 0000:00:1f.3: no matching blob for sample rate: 48000 sample width: 32 channels: 2
+  [56458.583833] sof-audio-pci-intel-mtl 0000:00:1f.3: failed to prepare widget dai-copier.SSP.SSP0-Codec.playback
+  [56458.583840] sof-audio-pci-intel-mtl 0000:00:1f.3: Failed to prepare connected widgets
+  [56458.583847] sof-audio-pci-intel-mtl 0000:00:1f.3: error: failed widget list set up for pcm 1 dir 0
+  [56458.583853] sof-audio-pci-intel-mtl 0000:00:1f.3: ASoC: error at snd_soc_pcm_component_hw_params on 0000:00:1f.3: -22
+
+Revert for compatibility.
+
+Fixes: https://github.com/alsa-project/alsa-utils/pull/248
+Signed-off-by: Andy Ross <andyross@google.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ topology/nhlt/intel/ssp/ssp-process.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/topology/nhlt/intel/ssp/ssp-process.c b/topology/nhlt/intel/ssp/ssp-process.c
+index 17b88d2b712b..d8fbba43f4c7 100644
+--- a/topology/nhlt/intel/ssp/ssp-process.c
++++ b/topology/nhlt/intel/ssp/ssp-process.c
+@@ -783,7 +783,7 @@ int ssp_get_params(struct intel_nhlt_params *nhlt, int dai_index, uint32_t *virt
+ 	if (ssp->ssp_prm[dai_index].quirks & SSP_INTEL_QUIRK_BT_SIDEBAND)
+ 		*device_type = NHLT_DEVICE_TYPE_SSP_BT_SIDEBAND;
+ 	else
+-		*device_type = NHLT_DEVICE_TYPE_SSP_ANALOG;
++		*device_type = 0;
+ 	if (ssp->ssp_prm[dai_index].quirks & SSP_INTEL_QUIRK_RENDER_FEEDBACK) {
+ 		if (*direction == NHLT_ENDPOINT_DIRECTION_RENDER)
+ 			*direction = NHLT_ENDPOINT_DIRECTION_RENDER_WITH_LOOPBACK;
+-- 
+2.35.3
+

@@ -1,0 +1,188 @@
+--- a/include/instrumentation/events/btrfs.h
++++ b/include/instrumentation/events/btrfs.h
+@@ -13,6 +13,10 @@
+ #include <../fs/btrfs/accessors.h>
+ #endif
+ 
++#if (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(6,3,0))
++#include <../fs/btrfs/extent-tree.h>
++#endif
++
+ #ifndef _TRACE_BTRFS_DEF_
+ #define _TRACE_BTRFS_DEF_
+ struct btrfs_root;
+@@ -1963,7 +1967,26 @@ LTTNG_TRACEPOINT_EVENT_INSTANCE(btrfs__r
+ 
+ #endif /* #else #if (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(4,10,0)) */
+ 
+-#if (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(5,10,0) || \
++#if (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(6,3,0))
++LTTNG_TRACEPOINT_EVENT_MAP(find_free_extent,
++
++	btrfs_find_free_extent,
++
++	TP_PROTO(const struct btrfs_root *root,
++		const struct find_free_extent_ctl *ffe_ctl),
++
++	TP_ARGS(root, ffe_ctl),
++
++	TP_FIELDS(
++		ctf_array(u8, fsid, root->lttng_fs_info_fsid, BTRFS_UUID_SIZE)
++		ctf_integer(u64, root_objectid, root->root_key.objectid)
++		ctf_integer(u64, num_bytes, ffe_ctl->num_bytes)
++		ctf_integer(u64, empty_size, ffe_ctl->empty_size)
++		ctf_integer(u64, flags, ffe_ctl->flags)
++	)
++)
++
++#elif (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(5,10,0) || \
+ 	LTTNG_KERNEL_RANGE(5,9,5, 5,10,0) || \
+ 	LTTNG_KERNEL_RANGE(5,4,78, 5,5,0) || \
+ 	LTTNG_UBUNTU_KERNEL_RANGE(5,8,18,44, 5,9,0,0))
+@@ -2102,7 +2125,40 @@ LTTNG_TRACEPOINT_EVENT_MAP(find_free_ext
+ )
+ #endif
+ 
+-#if (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(5,5,0))
++#if (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(6,3,0))
++LTTNG_TRACEPOINT_EVENT_CLASS(btrfs__reserve_extent,
++
++	TP_PROTO(const struct btrfs_block_group *block_group,
++		const struct find_free_extent_ctl *ffe_ctl),
++
++	TP_ARGS(block_group, ffe_ctl),
++
++	TP_FIELDS(
++		ctf_array(u8, fsid, block_group->lttng_fs_info_fsid, BTRFS_UUID_SIZE)
++		ctf_integer(u64, bg_objectid, block_group->start)
++		ctf_integer(u64, flags, block_group->flags)
++		ctf_integer(u64, start, ffe_ctl->search_start)
++		ctf_integer(u64, len, ffe_ctl->num_bytes)
++	)
++)
++
++LTTNG_TRACEPOINT_EVENT_INSTANCE(btrfs__reserve_extent, btrfs_reserve_extent,
++
++	TP_PROTO(const struct btrfs_block_group *block_group,
++		const struct find_free_extent_ctl *ffe_ctl),
++
++	TP_ARGS(block_group, ffe_ctl)
++)
++
++LTTNG_TRACEPOINT_EVENT_INSTANCE(btrfs__reserve_extent, btrfs_reserve_extent_cluster,
++
++	TP_PROTO(const struct btrfs_block_group *block_group,
++		const struct find_free_extent_ctl *ffe_ctl),
++
++	TP_ARGS(block_group, ffe_ctl)
++)
++
++#elif (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(5,5,0))
+ LTTNG_TRACEPOINT_EVENT_CLASS(btrfs__reserve_extent,
+ 
+ 	TP_PROTO(const struct btrfs_block_group *block_group, u64 start,
+--- a/include/instrumentation/events/skb.h
++++ b/include/instrumentation/events/skb.h
+@@ -61,6 +61,21 @@ LTTNG_TRACEPOINT_EVENT_MAP(kfree_skb,
+ )
+ #endif
+ 
++#if (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(6,3,0))
++LTTNG_TRACEPOINT_EVENT_MAP(consume_skb,
++
++	skb_consume,
++
++	TP_PROTO(struct sk_buff *skb, void *location),
++
++	TP_ARGS(skb, location),
++
++	TP_FIELDS(
++		ctf_integer_hex(void *, skbaddr, skb)
++		ctf_integer_hex(void *, location, location)
++	)
++)
++#else
+ LTTNG_TRACEPOINT_EVENT_MAP(consume_skb,
+ 
+ 	skb_consume,
+@@ -73,6 +88,7 @@ LTTNG_TRACEPOINT_EVENT_MAP(consume_skb,
+ 		ctf_integer_hex(void *, skbaddr, skb)
+ 	)
+ )
++#endif
+ 
+ LTTNG_TRACEPOINT_EVENT(skb_copy_datagram_iovec,
+ 
+--- a/include/lttng/events-internal.h
++++ b/include/lttng/events-internal.h
+@@ -9,6 +9,7 @@
+ #define _LTTNG_EVENTS_INTERNAL_H
+ 
+ #include <wrapper/compiler_attributes.h>
++#include <wrapper/uuid.h>
+ 
+ #include <lttng/events.h>
+ 
+@@ -289,7 +290,7 @@ struct lttng_metadata_cache {
+ 	atomic_t producing;		/* Metadata being produced (incomplete) */
+ 	struct kref refcount;		/* Metadata cache usage */
+ 	struct list_head metadata_stream;	/* Metadata stream list */
+-	uuid_le uuid;			/* Trace session unique ID (copy) */
++	guid_t uuid;			/* Trace session unique ID (copy) */
+ 	struct mutex lock;		/* Produce/consume lock */
+ 	uint64_t version;		/* Current version of the metadata */
+ };
+@@ -463,7 +464,7 @@ struct lttng_kernel_session_private {
+ 	struct list_head events;		/* Event list head */
+ 	struct list_head list;			/* Session list */
+ 	unsigned int free_chan_id;		/* Next chan ID to allocate */
+-	uuid_le uuid;				/* Trace session unique ID */
++	guid_t uuid;				/* Trace session unique ID */
+ 	struct lttng_metadata_cache *metadata_cache;
+ 	unsigned int metadata_dumped:1,
+ 		tstate:1;			/* Transient enable state */
+--- a/include/wrapper/mm.h
++++ b/include/wrapper/mm.h
+@@ -13,6 +13,22 @@
+ 
+ #include <lttng/kernel-version.h>
+ 
++#if (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(6,3,0))
++static inline
++void wrapper_vm_flags_set(struct vm_area_struct *vma,
++		vm_flags_t flags)
++{
++	vm_flags_set(vma, flags);
++}
++#else
++static inline
++void wrapper_vm_flags_set(struct vm_area_struct *vma,
++		vm_flags_t flags)
++{
++	vma->vm_flags |= flags;
++}
++#endif
++
+ #if (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(4,6,0) \
+ 		|| LTTNG_UBUNTU_KERNEL_RANGE(4,4,25,44, 4,5,0,0))
+ 
+--- a/src/lib/ringbuffer/ring_buffer_mmap.c
++++ b/src/lib/ringbuffer/ring_buffer_mmap.c
+@@ -17,6 +17,8 @@
+ #include <ringbuffer/frontend.h>
+ #include <ringbuffer/vfs.h>
+ 
++#include <wrapper/mm.h>
++
+ /*
+  * fault() vm_op implementation for ring buffer file mapping.
+  */
+@@ -113,7 +115,7 @@ static int lib_ring_buffer_mmap_buf(stru
+ 		return -EINVAL;
+ 
+ 	vma->vm_ops = &lib_ring_buffer_mmap_ops;
+-	vma->vm_flags |= VM_DONTEXPAND;
++	wrapper_vm_flags_set(vma, VM_DONTEXPAND);
+ 	vma->vm_private_data = buf;
+ 
+ 	return 0;

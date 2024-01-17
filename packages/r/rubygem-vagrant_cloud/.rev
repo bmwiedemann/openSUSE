@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>169f3cb8bc18555c6e2d86bedb5725f9</srcmd5>
+    <version>2.0.1</version>
+    <time>1543224345</time>
+    <user>dimstar_suse</user>
+    <comment>dependency for vagrant 2.2.x</comment>
+    <requestid>650613</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3c362b2765246c5b2120f10a5f631f1e</srcmd5>
+    <version>2.0.2</version>
+    <time>1548064443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666050</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>daebb76cc0c043b62f7861a8a69eb23d</srcmd5>
+    <version>2.0.3</version>
+    <time>1571307718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738837</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4aaccc8fef6a8966494a8014e2174fcb</srcmd5>
+    <version>2.0.3</version>
+    <time>1581585118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773681</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b5825f08b46df36b488bbee6f90c0d1b</srcmd5>
+    <version>3.0.0</version>
+    <time>1601919305</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838092</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>37ac11cbcf751826f6d12daabb8d6557</srcmd5>
+    <version>2.0.3</version>
+    <time>1602155667</time>
+    <user>dimstar_suse</user>
+    <comment>Revert sr#837782</comment>
+    <requestid>840197</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c4c9421458769dcfd325273e823e863</srcmd5>
+    <version>3.0.2</version>
+    <time>1607801515</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 3.0.2
+# v3.0.2 (October 30, 2020)
+* Raise custom exception on request error [GH-67](https://github.com/hashicorp/vagrant_cloud/pull/67)
+# v3.0.1 (October 27, 2020)
+* Fixes on authentication related client methods [GH-65](https://github.com/hashicorp/vagrant_cloud/pull/65)
+* Prevent frozen data modifications on deletions [GH-65](https://github.com/hashicorp/vagrant_cloud/pull/65)
+* Update direct upload callback behaviors [GH-65](https://github.com/hashicorp/vagrant_cloud/pull/65)
+# v3.0.0 (September 21, 2020)
+* Refactor library implementation [GH-59](https://github.com/hashicorp/vagrant_cloud/pull/59)
+* Add support for direct storage uploads [GH-62](https://github.com/hashicorp/vagrant_cloud/pull/62)
+_NOTE_: This release includes breaking changes and is not backwards compatible
+</comment>
+    <requestid>854951</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8d1ab815cfcf04a89054cde8d6fb9569</srcmd5>
+    <version>3.0.4</version>
+    <time>1618061153</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882513</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5de76c1000f69c9db83fd5660f32aa65</srcmd5>
+    <version>3.0.5</version>
+    <time>1628751650</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910162</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7a43a5f5d375bd270054174b1e76c56c</srcmd5>
+    <version>3.0.5</version>
+    <time>1643486501</time>
+    <user>dimstar_suse</user>
+    <comment>Build gem for all Ruby versions</comment>
+    <requestid>943728</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Thu Jan  4 12:46:01 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Fri Dec  8 16:43:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.0:
+  * Added `tempLib` property to Font, Layer and Glyph (like
+    defcon's)
+  * raise appropriate error when extras not installed
+  * Bring guideline invariants up to spec
+  * Made lazily loaded ufoLib2.Font objects pickleable by
+    automatically un-lazifying them in custom `__getstate__`
+    method (e0f3d6af).
+  * Added optional support for de/serializing all ufoLib2 objects
+    from/to JSON or MessagePack.
+  * This uses ``cattrs`` custom converters to
+    unstructure/structure ufoLib2 objects to/from basic
+    serializable data structures.
+  * See docstring in ``ufoLib2.serde::serde`` or #230 for
+    examples.
+
+-------------------------------------------------------------------
+Tue Oct 11 16:42:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.13.1
+  * Hotfix release to support cattrs v1.10.0 and set it as the minimum required version. It changed the name of a "omit if default"
+    parameter that is relevant for our converters.
+
+-------------------------------------------------------------------
+Thu Dec 16 11:13:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.12.1
+  * Require Python 3.7+ by @madig in #178
+  * Removed legacy Font(path), use Font.open(path) instead by
+    @anthrotype in #176
+- Release 0.11.4
+  * Fix Font's explicit data and images kwarg converters.
+- Release 0.11.3
+  * Ensure data and image stores are unlazified for direct
+    comparisons (#165).
+- Release 0.11.2
+  * Internal change: Don't compare private Font attributes,
+    cleaning up pytest assert displays (#160).
+  * Internal change: Do not require wheel for all setuptools
+    operations (#158).
+- No setup.py: Build system now uses PEP517
+
+-------------------------------------------------------------------
+Mon Feb 22 15:44:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to v0.11.1
+ * Component.move: apply delta to offset directly rather than
+   translating, which fixes moving of flipped components.
+ * Typing: add GlyphSet protocol. More elegant than referring to
+   Layer and Glyph explicitly, which nicely avoids circular
+   imports.
+ * Some small typing fixes to circumvent microsoft/pyright#1297.
+ * Add APIs Font.object_lib(obj) and Glyph.object_lib(obj) to
+   explicitly handle the new public.objectLibs mechanism of
+   attaching libs to anchors, guidelines, contours, components and
+   points.
+- Reinstate python36 build. FontTools does not need scipy anymore.
+
+-------------------------------------------------------------------
+Sat Feb 13 10:17:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build (no FontTools as it needs scipy)
+
+-------------------------------------------------------------------
+Thu Jul 23 12:03:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.8.0
+  * Added bounds and controlPointBounds properties to Layer and Font objects, like in defcon API.
+
+-------------------------------------------------------------------
+Wed May 20 10:04:35 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-ufoLib2

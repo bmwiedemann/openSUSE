@@ -1,0 +1,26 @@
+From 0ea968fc046b72b2a5855c848e96eebecd08f942 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 18 Jun 2021 17:30:28 +0200
+Subject: [PATCH 2/2] Replace obsoleted
+ asio::basic_stream_socket::get_io_service
+
+---
+ src/osgPlugins/RestHttpDevice/server.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/osgPlugins/RestHttpDevice/server.cpp b/src/osgPlugins/RestHttpDevice/server.cpp
+index e01555a..cf113bc 100644
+--- a/src/osgPlugins/RestHttpDevice/server.cpp
++++ b/src/osgPlugins/RestHttpDevice/server.cpp
+@@ -22,7 +22,7 @@ server::server(const std::string& address, const std::string& port,
+     request_handler_(doc_root)
+ {
+   // Open the acceptor with the option to reuse the address (i.e. SO_REUSEADDR).
+-  asio::ip::tcp::resolver resolver(acceptor_.get_io_service());
++  asio::ip::tcp::resolver resolver(acceptor_.get_executor());
+   asio::ip::tcp::resolver::query query(address, port);
+   asio::ip::tcp::endpoint endpoint = *resolver.resolve(query);
+   acceptor_.open(endpoint.protocol());
+-- 
+2.32.0
+

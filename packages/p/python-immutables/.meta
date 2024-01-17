@@ -1,0 +1,5 @@
+<package name="python-immutables" project="openSUSE:Factory">
+  <title></title>
+  <description>Immutable collections for Python</description>
+  <devel project="devel:languages:python" package="python-immutables"/>
+</package>

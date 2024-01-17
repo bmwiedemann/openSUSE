@@ -1,0 +1,24 @@
+From 5bd2d3b144e57112402bf8b887e0d1e78dc60702 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 1 Jun 2021 23:31:58 +0200
+Subject: [PATCH] Fix build with GCC 11
+
+---
+ src/Implicit/impSurface.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Implicit/impSurface.h b/src/Implicit/impSurface.h
+index 41fab81..027587f 100644
+--- a/src/Implicit/impSurface.h
++++ b/src/Implicit/impSurface.h
+@@ -25,6 +25,7 @@
+ #ifdef WIN32
+ 	#include <windows.h>
+ #endif
++#include <cstddef>
+ #include <vector>
+ #include <GL/gl.h>
+ 
+-- 
+2.31.1
+

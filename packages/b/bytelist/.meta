@@ -1,0 +1,5 @@
+<package name="bytelist" project="openSUSE:Factory">
+  <title>A java library for lists of bytes</title>
+  <description>A small java library for manipulating lists of bytes.</description>
+  <devel project="Java:packages" package="bytelist"/>
+</package>

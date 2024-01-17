@@ -1,0 +1,9 @@
+<package name="hwdata" project="openSUSE:Factory">
+  <title>Hardware identification and configuration data</title>
+  <description>hwdata contains various hardware identification and configuration data,
+such as the pci.ids and usb.ids databases.
+
+</description>
+  <devel project="devel:openSUSE:Factory" package="hwdata"/>
+  <url>https://github.com/vcrhonek/hwdata</url>
+</package>

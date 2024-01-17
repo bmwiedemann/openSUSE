@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Wed Dec 27 13:52:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.6:
+  * issue #124: handle `BaseException` in pools' workers
+
+-------------------------------------------------------------------
+Sun Dec 10 21:37:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.5:
+  * issue #123: do not raise exception when returned from workers
+  * issue #122: slightly improve type hints
+  * issue #122: add type hints to decorator functions
+
+-------------------------------------------------------------------
+Tue Nov 15 21:50:22 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 5.0.3
+  * issue #111: reinstate `Pool.schedule` function in place of
+    `Pool.submit`.
+
+-------------------------------------------------------------------
+Mon Oct 10 11:29:15 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 5.0.2
+ * issue #108: fix build tag enforcing Python 3.6 as minimum
+   compatible version.
+
+-------------------------------------------------------------------
+Thu Oct  6 07:29:26 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 5.0.1
+  * Improvements:
+   + issue #105: run callbacks after process termination on timeout or
+     task cancellation
+
+-------------------------------------------------------------------
+Tue Sep 13 11:09:36 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 5.0.0
+  * Backward incompatible changes:
+   + issue #93: Python 2 is no longer compatible. Minimum supported
+     version is now 3.7.
+
+  * Deprecations:
+   + issue #90: pools `schedule` method is now deprecated, use `submit`
+     instead.
+
+  * Features:
+   + issue #90: pools are now compatible with asyncio APIs.
+   + issue #94: asynchronous function decorators
+   + issue #102: type hints have been added to all functionalities
+   + issue #103: support alternative multiprocessing.context
+     implementations
+
+  * Fixes:
+   + issue #99: fix deadlock when closing a full pipe on Windows in pool
+- Require Python >= 3.7.
+- Drop Python 2 support.
+
+-------------------------------------------------------------------
+Tue Aug 16 23:32:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 4.6.3
+   + issue #84: fix import bug on Windows
+- Update to 4.6.2
+  * Fixes:
+   + issue #82: fix issue with poll mechanism in MAC OS Mojave (@sam-harding)
+   + Fix polling timeout resolution (@sam-harding)
+
+- Update to 4.6.1
+  * Improvements:
+   + issue #76: allow spawning processes within `ProcessPool` workers
+   + Few minor improvements
+
+  * Fixes:
+   + issues #75: fix error when cancelling futures in Python >= 3.8
+   + issue #80: fix error when using decorators without @pie notation
+   + Several minor fixes on MAC OS
+
+  * Tests:
+   + Add Windows and MAC OS test automation support
+
+-------------------------------------------------------------------
+Thu Jan 14 03:53:26 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.6.0
+  * Features:
+    + issue #73: allow passing `multiprocessing.context` object
+      as `concurrent.process` and `ProcessPool` parameter
+  * Fixes:
+    + issues #34, #35: rework Pool termination logic to silence Windows errors
+    + issue #68: use fully qualified function name in `concurrent.process`
+      decorator trampoline to handle class inheritance in Windows
+    + issue #69: correctly propagate the timeout in pool's map method
+    + issue #64: rework versioning logic
+
+-------------------------------------------------------------------
+Wed May  6 15:47:22 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Bump to 4.5.2:
+  - Fix issue #58: handle pool connection teardown in Python 3.8
+
+-------------------------------------------------------------------
+Mon Apr 20 11:18:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Thu Mar 26 16:16:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.5.1
+  * add daemon parameter to decorator
+  * travis: add Python 3.8 tests
+
+-------------------------------------------------------------------
+Wed Jan 15 10:59:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.4.1
+  * use poll in channel implementation instead of select
+  * handle pickling errors in ProcessPool
+  * add test cases
+
+-------------------------------------------------------------------
+Mon Oct  7 15:00:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.4.0:
+  * Various doc and test fixes
+
+-------------------------------------------------------------------
+Sat Aug 24 05:59:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use description from upstream.
+
+-------------------------------------------------------------------
+Sun Aug 11 03:51:46 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

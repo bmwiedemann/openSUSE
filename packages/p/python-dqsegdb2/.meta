@@ -1,0 +1,10 @@
+<package name="python-dqsegdb2" project="openSUSE:Factory">
+  <title>Simplified python interface to the DQSEGDB API</title>
+  <description>DQSEGDB2 is a simplified Python implementation of the DQSEGDB API
+as defined in LIGO-T1300625, providing a query interface for GET
+requests to DQSEGDB.
+
+</description>
+  <devel project="science" package="python-dqsegdb2"/>
+  <url>https://github.com/duncanmmacleod/dqsegdb2</url>
+</package>

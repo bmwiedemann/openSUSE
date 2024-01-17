@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>seafile.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Seafile</name>
+  <summary>Seafile cloud storage desktop client</summary>
+  <description>
+    <p>
+    Seafile is a next-generation open source cloud storage system, with
+    advanced support for file syncing, privacy protection and teamwork.
+  </p>
+    <p>
+    Seafile allows users to create groups with file syncing, wiki, and discussion
+    to enable easy collaboration around documents within a team.
+  </p>
+  </description>
+  <screenshots>
+    <screenshot height="444" width="790" type="default">
+      <image>https://comzeradd.fedorapeople.org/screenshots/seafile.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://www.seafile.com</url>
+  <url type="bugtracker">https://forum.seafile.de/</url>
+  <url type="help">https://www.seafile.com/en/help/</url>
+  <update_contact>daniel_dot_pan_at_seafile_dot_com</update_contact>
+  <project_license>Apache-2.0</project_license>
+  <developer_name>Seafile Ltd</developer_name>
+  <translation type="qt"/>
+</component>

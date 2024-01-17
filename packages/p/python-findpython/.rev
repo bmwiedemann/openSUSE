@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6bbc5a92e1fa465f568e70c973d5105c</srcmd5>
+    <version>0.1.6</version>
+    <time>1655493649</time>
+    <user>dimstar_suse</user>
+    <comment>Initial release of 0.1.6</comment>
+    <requestid>982696</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fef8dcec0be629d050f8385d97278726</srcmd5>
+    <version>0.2.1</version>
+    <time>1660662470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>995831</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c15c2de1025b92ef62979f466d49eb1</srcmd5>
+    <version>0.2.2</version>
+    <time>1667908353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034474</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1e2a6e89f15b1ee570bff59a6637fe7a</srcmd5>
+    <version>0.2.3</version>
+    <time>1674232785</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.3:
+  * Strip the local part in python version Fix #12</comment>
+    <requestid>1059956</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bdf141f46d324ef93580cc6d07512d4c</srcmd5>
+    <version>0.2.4</version>
+    <time>1675265949</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.4:
+  * Check path access before is_dir to prevent PermissionError exceptions</comment>
+    <requestid>1062290</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>388f4b20772b9d86e9c09d89d310ae23</srcmd5>
+    <version>0.2.5</version>
+    <time>1683801225</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.5:
+  * UTF-8 encoding of shell command output on Windows
+  * Findpython failed if PATH env contains folder
+    with restricted access</comment>
+    <requestid>1086128</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5e2537911362390a780238e0f48c2374</srcmd5>
+    <version>0.2.5</version>
+    <time>1686927295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093357</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b41d8f6215350418c28be211f831993b</srcmd5>
+    <version>0.4.1</version>
+    <time>1702327873</time>
+    <user>anag+factory</user>
+    <comment>- Update 0.4.1:
+  * feat: provider selector by @frostming in #20
+  * feat: add support for RyeProvider
+  * feat: Add way to filter providers by @bluss in #18
+  * feat: add register_provider function and change ALL_PROVIDERS to a map
+  * fix: don't import site-packages when running in-process scripts
+  * Make GET_VERSION_TIMEOUT settable via env vars
+  * Support allow_prereleases option
+- Add patch revert-back-to-pdm-pep517.patch:
+  * We need to use pdm-pep517, to avoid circular requirements.</comment>
+    <requestid>1132417</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bcfb4946b0c2f4a637bf436868a9d355</srcmd5>
+    <version>0.4.1</version>
+    <time>1704562874</time>
+    <user>dimstar_suse</user>
+    <comment>- drop revert-back-to-pdm-pep517.patch:
+  try to resolve build cycle differently
+
+- Update to 0.2.2
+- Initial packaging for findpython 0.1.6.</comment>
+    <requestid>1137128</requestid>
+  </revision>
+</revisionlist>

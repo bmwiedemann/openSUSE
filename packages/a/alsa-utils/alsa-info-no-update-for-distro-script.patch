@@ -1,0 +1,24 @@
+From: Takashi Iwai <tiwai@suse.de>
+Subject: alsa-info: Suppress the automatic update
+Patch-mainline: Never, distro specific
+References: bsc#1185280
+
+We don't want to modify the script distributed in the standard package.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+
+---
+--- a/alsa-info/alsa-info.sh
++++ b/alsa-info/alsa-info.sh
+@@ -720,11 +720,6 @@ if [ -s "$TEMPDIR/alsa-usbmixer.tmp" ]; then
+ 	echo "" >> $FILE
+ fi
+ 
+-#If no command line options are specified, then run as though --with-all was specified
+-if [ -z "$1" ]; then
+-	update
+-fi
+-
+ fi # proceed
+ 
+ #loop through command line arguments, until none are left.

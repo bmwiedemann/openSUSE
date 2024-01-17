@@ -1,0 +1,8 @@
+<package name="pangomm1_4" project="openSUSE:Factory">
+  <title>C++ interface for pango</title>
+  <description>pangomm provides a C++ interface to the pango library.
+
+</description>
+  <devel project="GNOME:Factory" package="pangomm1_4"/>
+  <url>http://www.gtkmm.org</url>
+</package>

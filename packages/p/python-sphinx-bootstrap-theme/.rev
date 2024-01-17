@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>31da3d35d9307e4de3a7df15571532e4</srcmd5>
+    <version>0.6.5</version>
+    <time>1546535339</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for weblate</comment>
+    <requestid>662481</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>914dcb1a146913f712472bb56cdf030d</srcmd5>
+    <version>0.7.1</version>
+    <time>1556475265</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698576</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fc62e77e330a340004daf024ca2eed1a</srcmd5>
+    <version>0.8.1</version>
+    <time>1645629968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957002</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d6b60e92d3fa66342395fe6356b3e0e5</srcmd5>
+    <version>0.8.1</version>
+    <time>1679854744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074161</requestid>
+  </revision>
+</revisionlist>

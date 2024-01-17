@@ -1,0 +1,5 @@
+<package name="rss-glx" project="openSUSE:Factory">
+  <title>Really Slick Screensavers Port to GLX</title>
+  <description>Cool collection of 3D screensavers. Linux port of Really Slick Screensavers</description>
+  <devel project="X11:Utilities" package="rss-glx"/>
+</package>

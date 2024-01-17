@@ -1,0 +1,16 @@
+<package name="perl-Text-Diff" project="openSUSE:Factory">
+  <title>Perform Diffs on Files and Record Sets</title>
+  <description>&quot;diff()&quot; provides a basic set of services akin to the GNU &quot;diff&quot;
+utility. It is not anywhere near as feature complete as GNU &quot;diff&quot;, but
+it is better integrated with Perl and available on all platforms. It is
+often faster than shelling out to a system's &quot;diff&quot; executable for small
+files, and generally slower on larger files.
+
+Relies on Algorithm::Diff for, well, the algorithm. This may not produce
+the same exact diff as a system's local &quot;diff&quot; executable, but it will
+be a valid diff and comprehensible by &quot;patch&quot;. We haven't seen any
+differences between Algorithm::Diff's logic and GNU diff's, but we have
+not examined them to make sure they are indeed identical.
+</description>
+  <devel project="devel:languages:perl" package="perl-Text-Diff"/>
+</package>

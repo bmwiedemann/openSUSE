@@ -1,0 +1,6 @@
+<package name="libdaemon" project="openSUSE:Factory">
+  <title>Lightweight C library That Eases the Writing of UNIX Daemons</title>
+  <description>libdaemon is a lightweight C library that eases the writing of UNIX
+daemons.</description>
+  <devel project="devel:libraries:c_c++" package="libdaemon"/>
+</package>

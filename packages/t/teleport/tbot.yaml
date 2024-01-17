@@ -1,0 +1,15 @@
+#
+# Example tbot.yaml
+# please see https://github.com/gravitational/teleport/tree/master/examples/systemd/machine-id
+# for details
+
+# auth_server: "auth.example.com:3025"
+# onboarding:
+#   join_method: "token"
+#   token: "00000000000000000000000000000000"
+#   ca_pins:
+#   - "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+# storage:
+#   directory: /var/lib/teleport/bot
+# destinations:
+#   - directory: /opt/machine-id

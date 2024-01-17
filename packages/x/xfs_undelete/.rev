@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f950c9dade1e5e93b25f9953806efd1</srcmd5>
+    <version>12.0</version>
+    <time>1670332993</time>
+    <user>dimstar_suse</user>
+    <comment>xfs_undelete comes in handy when you accidentally have deleted some
+files on a xfs filesystem. It would be great to have this package in Factory.
+Works and is safe to use.</comment>
+    <requestid>1040397</requestid>
+  </revision>
+</revisionlist>

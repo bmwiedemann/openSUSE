@@ -1,0 +1,21 @@
+<package name="python-healpy" project="openSUSE:Factory">
+  <title>Python library to handle pixelated data on the sphere based on HEALPix</title>
+  <description>healpy is a Python package to handle pixelated data on the sphere. It is based
+on the Hierarchical Equal Area isoLatitude Pixelization (HEALPix) scheme and
+bundles the HEALPix C++ library.
+
+healpy provides utilities to:
+* convert between sky coordinates and pixel indices in HEALPix nested and ring schemes
+* find pixels within a disk, a polygon or a strip in the sky
+* apply coordinate transformations between Galactic, Ecliptic and Equatorial reference frames
+* apply custom rotations either to vectors or full maps
+* read and write HEALPix maps to disk in FITS format
+* upgrade and downgrade the resolution of existing HEALPix maps
+* visualize maps in Mollweide, Gnomonic and Cartographic projections
+* transform maps to Spherical Harmonics space and back using multi-threaded C++ routines
+* compute Auto and Cross Power Spectra from maps and create map realizations from spectra
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-healpy"/>
+  <url>https://github.com/healpy/healpy</url>
+</package>

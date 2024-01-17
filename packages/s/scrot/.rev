@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3fd660becd854939b59f043075ad128b</srcmd5>
+    <version>0.8</version>
+    <time>1415636886</time>
+    <user>dimstar_suse</user>
+    <comment>Scrot - screenshot capture utility</comment>
+    <requestid>258689</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>19bf76a6d4510d6a1732412b1e9d6c71</srcmd5>
+    <version>0.8</version>
+    <time>1436888664</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316288</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8f832c91da146fcc2f9f7e50ae6ad44</srcmd5>
+    <version>1.3</version>
+    <time>1589403406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805294</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d13039d73baad2f4c399d81903ef220c</srcmd5>
+    <version>1.4</version>
+    <time>1595586575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822601</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e2686215e639c6ae0e4677fd3715393d</srcmd5>
+    <version>1.5</version>
+    <time>1613427412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871458</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2dbc9e25911460b50e936a2694e7b85c</srcmd5>
+    <version>1.6</version>
+    <time>1628023721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909878</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1922ed5081029f86325265af40df47d3</srcmd5>
+    <version>1.7</version>
+    <time>1639424692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940211</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a3bf38c81017d062673564e8c18677dc</srcmd5>
+    <version>1.7</version>
+    <time>1646150613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958211</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fd4d1e04f29a7c9ef4560d8f23cf5d92</srcmd5>
+    <version>1.8</version>
+    <time>1673444100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057652</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9852cba84a32807c0941a2c3a5547673</srcmd5>
+    <version>1.8.1</version>
+    <time>1675177783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062183</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a6bf9c50196cb6ad957902e8c1861349</srcmd5>
+    <version>1.10</version>
+    <time>1694808322</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111468</requestid>
+  </revision>
+</revisionlist>

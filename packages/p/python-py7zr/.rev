@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ebabe6637b99026d897b8048ccb10dce</srcmd5>
+    <version>0.11.3</version>
+    <time>1614373142</time>
+    <user>dimstar_suse</user>
+    <comment>New package, needed for calibre &gt;= 5.10.0</comment>
+    <requestid>866548</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d13c69213730657f340e2296b2d91e3b</srcmd5>
+    <version>0.11.3</version>
+    <time>1617723069</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883194</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>edaae7f5fa8585771fdb93332e4f6ac9</srcmd5>
+    <version>0.11.3</version>
+    <time>1657885964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989323</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6c6ce5a01b5b853de398ff3f3b5c59dc</srcmd5>
+    <version>0.20.2</version>
+    <time>1671889890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.2
+  * Fix error with good path data, when detecting wrong path with
+    new canonical_path(), and drop resolve() call on path.
+- Release 0.20.1
+  ## Security
+  * Fix sanity check for path traversal attack(#480)
+  * Add path checker in writef() and writestr() methods that
+    ignores evil pass.
+    - When pass arcname as evil path such as
+      &quot;../../../../tmp/evil.sh&quot;
+    - it raises ValueError
+  * Check symlink and junction is under target folder when
+    extraction
+- Release 0.20.0
+  * Support enhanced deflate compression.(#472)
+  * Bump setuptools@63 and setuptools_scm@7 (#473)
+  * Deprecate Python 3.6 support (#473)
+- Fixes boo#1206141 CVE-2022-44900
+- Update to version 0.19.0
+  * big changelog
+- Move tests to multibuild
+</comment>
+    <requestid>1044224</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>049a3a838e5392d7519bc3e2c0c40c18</srcmd5>
+    <version>0.20.5</version>
+    <time>1683295079</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.5:
+  * Remove root reference from file names (#513)
+  * fix typo in the readme (#510)
+  * Drop manual GC to improve performance when many files are
+    handled. (#489, #490)
+  * Fix mypy error
+  * Skip deflate64 compression/decompression test on pypy
+  * There is an issue in dependency inflate64 library that causes
+    SIGABORT and SIGSEGV on pypy</comment>
+    <requestid>1084851</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>df784cfab8f6e01b9c21b0760821585a</srcmd5>
+    <version>0.20.5</version>
+    <time>1687380032</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094348 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1094470</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a69272b074760603b1bd1bc2111967bb</srcmd5>
+    <version>0.20.7</version>
+    <time>1702673377</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.20.7:
+    * Support Python 3.12
+- update to 0.20.6
+    * fix: sanitize path when write (#525)
+    * fix: allow specify target path in relative path (#530)
+    * Avoid AttributeError on OpenBSD (#521)
+    * Error appending file: KeyError: 'lastwritetime' (#517)
+    * Fixing a string quote in user_guide document(#524)</comment>
+    <requestid>1133368</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b5109f228a31a78538afb2f5f15deb76</srcmd5>
+    <version>0.20.8</version>
+    <time>1704380298</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1136541</requestid>
+  </revision>
+</revisionlist>

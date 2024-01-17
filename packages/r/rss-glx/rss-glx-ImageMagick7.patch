@@ -1,0 +1,115 @@
+Index: rss-glx_0.9.1/configure.in
+===================================================================
+--- rss-glx_0.9.1.orig/configure.in	2017-03-27 13:34:31.042941813 +0200
++++ rss-glx_0.9.1/configure.in	2017-03-27 13:34:31.050941977 +0200
+@@ -75,7 +75,7 @@ fi
+ AC_CHECK_FUNCS(random_r nrand48)
+ 
+ # Check for ImageMagick.
+-PKG_CHECK_MODULES(Wand, Wand >= 6.4)
++PKG_CHECK_MODULES(MagickWand, MagickWand >= 6.4)
+ 
+ if test -d src/skyrocket_sounds ; then
+ 	AC_ARG_ENABLE(sound, [  --disable-sound         Don't compile with sound.])
+Index: rss-glx_0.9.1/src/Makefile.am
+===================================================================
+--- rss-glx_0.9.1.orig/src/Makefile.am	2010-01-04 01:44:04.000000000 +0100
++++ rss-glx_0.9.1/src/Makefile.am	2017-03-27 13:36:06.468859903 +0200
+@@ -12,8 +12,8 @@ colorfire_LDADD = @BZIP2@
+ cyclone_SOURCES = driver.c cyclone.cpp rgbhsl.h rgbhsl.cpp rsRand.h
+ cyclone_LDADD = -LrsMath -lrsMath
+ drempels_SOURCES = driver.h driver.c drempels.cpp gpoly.h gpoly.cpp TexMgr.h TexMgr.cpp rgbhsl.h rgbhsl.cpp noise1234.h noise1234.c
+-drempels_CXXFLAGS = @Wand_CFLAGS@
+-drempels_LDADD = @PTHREAD_LIBS@ @Wand_LIBS@
++drempels_CXXFLAGS = @MagickWand_CFLAGS@
++drempels_LDADD = @PTHREAD_LIBS@ @MagickWand_LIBS@
+ euphoria_SOURCES = driver.h driver.c euphoria.cpp euphoria_textures.h euphoria_textures.c rgbhsl.h rgbhsl.cpp
+ euphoria_LDADD = -LrsMath -lrsMath @BZIP2@
+ feedback_SOURCES = driver.c feedback.cpp rgbhsl.h rgbhsl.cpp
+@@ -34,8 +34,8 @@ lattice_LDADD = @BZIP2@
+ lorenz_SOURCES = driver.c lorenz.cpp
+ lorenz_LDADD = -LrsMath -lrsMath
+ matrixview_SOURCES = driver.c matrixview.c matrixview_textures.c
+-matrixview_CFLAGS = @Wand_CFLAGS@
+-matrixview_LDADD = @BZIP2@ @PTHREAD_LIBS@ @Wand_LIBS@
++matrixview_CFLAGS = @MagickWand_CFLAGS@
++matrixview_LDADD = @BZIP2@ @PTHREAD_LIBS@ @MagickWand_LIBS@
+ plasma_SOURCES = driver.c plasma.cpp rsDefines.h rsRand.h
+ pixelcity_SOURCES = driver.c
+ pixelcity_LDADD = @quesoglc_LIBS@ -LPixelCity -lPixelCity
+Index: rss-glx_0.9.1/src/matrixview.c
+===================================================================
+--- rss-glx_0.9.1.orig/src/matrixview.c	2010-01-05 03:54:55.000000000 +0100
++++ rss-glx_0.9.1/src/matrixview.c	2017-03-27 13:52:50.828843964 +0200
+@@ -84,8 +84,8 @@ float *pts;
+ float *texcoords;
+ unsigned char *colors;
+ 
+-#include <magick/api.h>
+-#include <wand/magick-wand.h>
++#include <magick/MagickCore.h>
++#include <wand/MagickWand.h>
+ #include <dirent.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -102,7 +102,7 @@ void loadNextImageFromDisk() {
+ 	ExceptionInfo exception;
+ 	int dirLoop = 0;
+ 
+-	GetExceptionInfo (&exception);
++	ClearMagickException (&exception);
+ 
+ 	int imageLoaded = 0;
+ 	do {
+@@ -215,7 +215,7 @@ void loadNextImage ()
+ 		Image *image = NULL, *scaled_image;
+ 		ImageInfo *image_info;
+ 
+-		GetExceptionInfo (&exception);
++		ClearMagickException (&exception);
+ 
+ 		if (!pics)
+ 			LOAD_TEXTURE (pics, cpics, cpics_compressedsize, cpics_size)
+@@ -227,10 +227,17 @@ void loadNextImage ()
+ 			image_info = CloneImageInfo ((ImageInfo *) NULL);
+ 			image_info->size = AcquireMagickMemory(sizeof("90x70"));
+ 			strcpy(image_info->size, "90x70");
++#if MagickLibVersion >= 0x700
++			image = AcquireImage(image_info, &exception);
++#else
+ 			image = AcquireImage(image_info);
++#endif
+ 
++#if MagickLibVersion >= 0x700
++			ImportImagePixels(image, 0, 0, 90, 70, "I", CharPixel, (unsigned char *)(pics + ((random () & 15) * (90 * 70))), &exception);
++#else
+ 			ImportImagePixels(image, 0, 0, 90, 70, "I", CharPixel, (unsigned char *)(pics + ((random () & 15) * (90 * 70))));
+-
++#endif
+ 			scaled_image = ScaleImage (image, text_x, text_y, &exception);
+ 
+ 			ExportImagePixels (scaled_image, 0, 0, text_x, text_y, "I", CharPixel, pic, &exception);
+Index: rss-glx_0.9.1/src/TexMgr.cpp
+===================================================================
+--- rss-glx_0.9.1.orig/src/TexMgr.cpp	2009-05-19 20:10:43.000000000 +0200
++++ rss-glx_0.9.1/src/TexMgr.cpp	2017-03-27 13:34:31.050941977 +0200
+@@ -25,8 +25,8 @@
+ #endif
+ #include <cstdlib>
+ 
+-#include <magick/api.h>
+-#include <wand/magick-wand.h>
++#include <magick/MagickCore.h>
++#include <wand/MagickWand.h>
+ #include <dirent.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -258,7 +258,7 @@ void TexMgr::loadNextImageFromDisk() {
+ 	ExceptionInfo exception;
+ 	int dirLoop = 0;
+ 
+-	GetExceptionInfo (&exception);
++	ClearMagickException (&exception);
+ 
+ 	int imageLoaded = 0;
+ 	do {

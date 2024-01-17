@@ -1,0 +1,31 @@
+--- netkit-ntalk-0.17/talkd/talkd.c.orig	1999-09-29 02:04:15 +0400
++++ netkit-ntalk-0.17/talkd/talkd.c	2004-09-05 19:20:50 +0400
+@@ -68,6 +68,7 @@ char talkd_rcsid[] = 
+ 
+ #define TIMEOUT 30
+ #define MAXIDLE 120
++#define MINUDPSRCPORT 1024
+ 
+ #if !defined(MAXHOSTNAMELEN)
+ #define	MAXHOSTNAMELEN	64
+@@ -167,6 +168,7 @@ do_one_packet(void)
+ 	struct sockaddr_in sn;
+ 	int cc, i, ok;
+ 	socklen_t addrlen;
++ 	int theirport;
+ 
+ 	addrlen = sizeof(sn);
+ 	cc = recvfrom(0, inbuf, sizeof(inbuf), 0,
+@@ -194,6 +196,12 @@ do_one_packet(void)
+ 		return;
+ 	}
+ 
++ 	theirport = ntohs(sn.sin_port);
++ 	if (theirport < MINUDPSRCPORT) {
++		syslog(LOG_WARNING, "%d: bad port", theirport);
++		return;
++	}
++
+ 	/* 
+ 	 * If we get here we have an address we can reply to, although
+ 	 * it may not be good for much. If possible, reply to it, because

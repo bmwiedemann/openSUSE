@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7731f09054b02d11996c80aa3c370096</srcmd5>
+    <version>1.10.99.901</version>
+    <time>1336471574</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115480</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9cadaba7e9ec66631f3cc3f3ca868d4d</srcmd5>
+    <version>1.11</version>
+    <time>1339362830</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.11</comment>
+    <requestid>124039</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9cadaba7e9ec66631f3cc3f3ca868d4d</srcmd5>
+    <version>1.11</version>
+    <time>1340184377</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>9cadaba7e9ec66631f3cc3f3ca868d4d</srcmd5>
+    <version>1.11</version>
+    <time>1359110668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9cadaba7e9ec66631f3cc3f3ca868d4d</srcmd5>
+    <version>1.11</version>
+    <time>1379665100</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>9cadaba7e9ec66631f3cc3f3ca868d4d</srcmd5>
+    <version>1.11</version>
+    <time>1409303786</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b307d555749aa10e5e3fb6d430f03264</srcmd5>
+    <version>1.12</version>
+    <time>1649181315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12 
+  * autogen.sh: use quoted string variables
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * autogen.sh: Honor NOCONFIGURE=1
+  * autogen: add default patch prefix
+  * configure: Drop AM_MAINTAINER_MODE
+  * nextfullreldate is clearly not 2013
+  * Set generate.consistent.ids in xsl stylesheets for more repeatable builds
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues</comment>
+    <requestid>966847</requestid>
+  </revision>
+</revisionlist>

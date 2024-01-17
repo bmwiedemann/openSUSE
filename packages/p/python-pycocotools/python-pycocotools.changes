@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Apr 23 04:51:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
+Tue Feb 25 10:13:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial pkg, dataset for object detection

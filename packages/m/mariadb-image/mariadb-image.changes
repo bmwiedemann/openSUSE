@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sat Jan  6 10:44:23 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- use openssl to generate passwords securely
+
+-------------------------------------------------------------------
+Tue Jan  2 08:26:58 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- update year to 2024
+
+-------------------------------------------------------------------
+Wed Dec 20 15:05:17 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- set mariadbd as PID 1 in container
+- add pwgen for MARIADB_RANDOM_ROOT_PASSWORD support
+
+-------------------------------------------------------------------
+Mon Oct 16 09:06:38 UTC 2023 - SUSE Update Bot <bci-internal@suse.de>
+
+- First version of the MariaDB Server BCI

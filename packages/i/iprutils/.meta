@@ -1,0 +1,6 @@
+<package name="iprutils" project="openSUSE:Factory">
+  <title>Utilities for the IBM Power Linux RAID Adapters</title>
+  <description>Provides a suite of utilities to manage and configure SCSI devices
+supported by the ipr SCSI storage device driver.</description>
+  <devel project="Base:System" package="iprutils"/>
+</package>

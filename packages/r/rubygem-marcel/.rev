@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bce0b8098e9a3b7c97edb662a6792bdf</srcmd5>
+    <version>0.3.2</version>
+    <time>1531947136</time>
+    <user>dimstar_suse</user>
+    <comment>for adi:68</comment>
+    <requestid>621547</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f479ba92967a1750e77f28612eeb06fd</srcmd5>
+    <version>0.3.3</version>
+    <time>1537787535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636867</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bf656477da389ecb68a2ee9334d39eec</srcmd5>
+    <version>1.0.1</version>
+    <time>1619031604</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 887022 from mschnitzer)</comment>
+    <requestid>887027</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f479ba92967a1750e77f28612eeb06fd</srcmd5>
+    <version>0.3.3</version>
+    <time>1621626608</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1185213</comment>
+    <requestid>894758</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>bf656477da389ecb68a2ee9334d39eec</srcmd5>
+    <version>1.0.1</version>
+    <time>1625225274</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 1.0.1
+  * Fixes identifying OpenDocument files by magic. 1.0.0 imprecisely identified them as application/zip. (#38)
+  * Fixes identifying .docx, .pptx, and .xlsx files exported from Google Sheets by magic. (#36)
+  * Identifies vCard files as text/vcard rather than text/x-vcard. (27fac74)
+  * Identifies .otf, .woff, and .woff2 files aș font/otf, font/woff, and font/woff2, respectively. (#37)</comment>
+    <requestid>903601</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aca87b145d232ba1d830ef5c9db15d54</srcmd5>
+    <version>1.0.2</version>
+    <time>1633959093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924367</requestid>
+  </revision>
+</revisionlist>

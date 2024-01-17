@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51474c87ae77a46eefa23e234b7a1bf9</srcmd5>
+    <version>1.17.3</version>
+    <time>1554458323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689291</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>36f1e81aed655c518ac996492066bbeb</srcmd5>
+    <version>1.17.5</version>
+    <time>1578320676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.5
+  * Much saner method of setting up logging.
+- Update to 1.17.4
+  * Adding better error messages for incorrectly-subclassed loaded plugins.
+  * Updating LICENSE year range.
+- Drop python2 support due to dependency dropping python2</comment>
+    <requestid>761143</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>62337b96c73dfb275df5ef3b96dd04f2</srcmd5>
+    <version>2.0.7</version>
+    <time>1579791262</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.7: too many changes, and no good changelog</comment>
+    <requestid>766439</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>179b87164cc88184de29068235caed1a</srcmd5>
+    <version>2.2.0</version>
+    <time>1582643164</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0, partial changelog:
+  * Fixes a bug in which search results from search_users were not being displayed. (Issue #61)
+  * Fixes another field deletion/addition problem relating to Issue #59
+  * Fixes a bug preventing the match subcommand from being able to properly obtain field values. (Issue #60)
+  * Fixes several minor bugs relating to issue previews including:
+  * In certain situations, the preview automatic change detection would become stuck in a loop causing the page to refresh continuously.
+  * Preview document was not delivered with an UTF-8 charset, so non-latin-1 characters would be mangled.
+  * Changes to Jira fields would not be refreshed when rendering preview after submitting changes.
+  * Insufficient whitespace between comments may cause Jira to misinterpret headers as part of a previous comment's bulleted list.
+  * Fixes bug that would cause an unhelpful traceback to be displayed if you were to run Jirafs commands outside of a ticketfolder.
+  * Fixes to various bugs relating to merging upstream changes from Jira with un-pushed local changes.
+  * User is now warned about conflicts were they to occur when merging-in upstream changes.
+  * Conflicts are displayed on the status display should they exist, including instructions about how to resolve them.
+  * Additional polish for 'preview' function including:
+  * Fixes to exception display in-console for harmless errors resulting from clients navigating away.
+  * Defaulting behavior such that server will automatically self-terminate when the user navigates away. If this behavior is not desired, a command-line argument --serve-forever is available.
+  * Adding display of comments for 'all' preview mode.
+  * Adds links allowing you to jump to the specific section you're interested in when in the 'all' preview mode.
+  * Macro reversal changes for comments.read_only.jira: No longer will macros be reversed for read-only files given that the content of historical comments cannot be changed.
+  * Users can now set a preferred date format by setting a configuration value main.date_format.
+  * Obsolete and undocumented &quot;Clone&quot; functionality allowing you to clone a Jira ticketfolder from a git repository (instead of directly from a Jira issue) was removed.
+  * Jira server URL inference when cloning by using an issue number instead of a ticket URL is improved to be more foolproof.
+- Refreshed patch capitalization.patch
+- Removed {Build,}Requires on six, not required
+- Tighten Requires on python-jira</comment>
+    <requestid>778911</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>12f2d0f28476c786aa0ab2a1bbe1f642</srcmd5>
+    <version>2.2.1</version>
+    <time>1606649217</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove capitalization.patch, as capitalisation of names does not
+  prevent setuptools from finding installed packages
+- Remove upper pins on dependency versions
+- Add missing dependencies and specify minimum versions
+- Switch to PyPI sdist
+- Activate test suite, and remove unnecessary build dependency tox
+- Update to v2.2.1
+  * Fallback to displayName if name is not available for
+    comment author
+</comment>
+    <requestid>851342</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e98163a34cc30f84a4cf9d58430ace68</srcmd5>
+    <version>2.2.1</version>
+    <time>1615212991</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python_alternative for the jirafs script.</comment>
+    <requestid>867350</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8af577d737f727ee5ea392aa3ca6c3a8</srcmd5>
+    <version>2.3.0</version>
+    <time>1646150631</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * updates to the latest version of 'jira' plugin.
+    Should now be directly-installable from pypi.
+  * Reformats repository using 'black'</comment>
+    <requestid>958243</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9a58d6357c1f8befaaa24a942b61d04c</srcmd5>
+    <version>2.3.0</version>
+    <time>1648159071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964394</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c29956b86a9d8fae545c11478ac01174</srcmd5>
+    <version>2.3.1</version>
+    <time>1685743653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1:
+  Fix a serialization/deserialization problem caused by issue options
+  found in modern versions of the jira python plugin.
+- Add patch remove-mock.patch.</comment>
+    <requestid>1090427</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f0fe32ce99e05b4529a70e2685269a5e</srcmd5>
+    <version>2.3.1</version>
+    <time>1705099530</time>
+    <user>anag+factory</user>
+    <comment>- Refresh remove-mock.patch from upstream to also support Python 3.12.</comment>
+    <requestid>1138195</requestid>
+  </revision>
+</revisionlist>

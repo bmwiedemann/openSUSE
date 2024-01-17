@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c685db851b70fec9b612c4db4ec09eb1</srcmd5>
+    <version>2.1.0</version>
+    <time>1651272311</time>
+    <user>dimstar_suse</user>
+    <comment>Necessary for building xonsh documentation.</comment>
+    <requestid>973588</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b44863f521fda5dbc2ceebbee74c667f</srcmd5>
+    <version>2.1.0</version>
+    <time>1662541562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001474</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>76a1a4d8930b25e06d2792b998e783ea</srcmd5>
+    <version>2.2.0</version>
+    <time>1678380327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070245</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4918055c084ddd37e70bfd776adff1f7</srcmd5>
+    <version>2.2.0</version>
+    <time>1683630404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085071</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>59998df7bcaa5a37fbcb91f82618a6c9</srcmd5>
+    <version>3.0.0</version>
+    <time>1700771912</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.0:
+  * drop python 3.7 support
+  * Update from upstream markdown-it 12.2.0 to 13.0.0
+    - A key change is the addition of a new Token type, text_special,
+      which is used to represent HTML entities and backslash escaped
+      characters.
+    - This ensures that (core) typographic transformation rules are not
+      incorrectly applied to these texts.
+    - The final core rule is now the new text_join rule, which joins
+      adjacent text/text_special tokens, and so no text_special tokens
+      should be present in the final token stream.
+    - Any custom typographic rules should be inserted before text_join.
+    - A new linkify rule has also been added to the inline chain, which
+      will linkify full URLs (e.g. https://example.com), and fixes
+      collision of emphasis and linkifier (so
+      http://example.org/foo._bar_-_baz is now a single link, not
+      emphasized).
+    - Emails and fuzzy links are not affected by this.
+  * REFACTOR: Replace most character code use with strings
+    - The use of StateBase.srcCharCode is deprecated (with
+      backward-compatibility), and all core uses are replaced by
+      StateBase.src.
+    - Conversion of source string characters to an integer
+      representing the Unicode character is prevalent in the upstream
+      JavaScript implementation, to improve performance. However, it
+      is unnecessary in Python and leads to harder to read code and
+      performance deprecations (during the conversion in the StateBase
+      initialisation).
+  * Centralise indented code block tests
+    - For CommonMark, the presence of indented code blocks prevent any
+      other block element from having an indent of greater than 4
+      spaces.
+    - Certain Markdown flavors and derivatives, such as mdx and djot,
+      disable these code blocks though, since it is more common to use
+      code fences and/or arbitrary indenting is desirable.
+    - Previously, disabling code blocks did not remove the indent
+      limitation, since most block elements had the 3 space limitation
+      hard-coded.
+    - This change centralised the logic of applying this limitation
+      (in StateBlock.is_code_block), and only applies it when indented
+      code blocks are enabled.
+  * Maintenance changes
+    - Strict type annotation checking has been applied to the whole
+      code base, ruff is now used for linting, and fuzzing tests have
+      been added to the CI, to integrate with Google OSS-Fuzz testing,
+      thanks to @DavidKorczynski.
+</comment>
+    <requestid>1128266</requestid>
+  </revision>
+</revisionlist>

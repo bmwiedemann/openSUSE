@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d55d25f0ffed746f5370819360b4e3ca</srcmd5>
+    <version>0.4.0</version>
+    <time>1575382853</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>752909</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f75bd7b801676913fdcc24e1af421d29</srcmd5>
+    <version>0.4.0</version>
+    <time>1636388679</time>
+    <user>dimstar_suse</user>
+    <comment>- explicitly add six for testsuite</comment>
+    <requestid>930136</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c45aeb4f33a6d46321315dd29c9de8ca</srcmd5>
+    <version>0.4.0</version>
+    <time>1687207845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093762</requestid>
+  </revision>
+</revisionlist>

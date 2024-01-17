@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Wed Oct  4 23:12:42 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.16.6:
+  * Support for Python 3.12.
+- Split out -devel package containing C++ headers/sources.
+
+-------------------------------------------------------------------
+Mon Sep  4 16:40:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.16.5:
+  * No documented changes.
+- Changes from vesion 1.16.4:
+  * Updated HEALPix C++ to fix compilation issue, no actual
+    changes to the library (gh#healpy/healpy#875).
+  * Fix support for latest Cython (gh#healpy/healpy#862).
+  * Minor changes to packaging and actions (gh#healpy/healpy#872,
+    gh#healpy/healpy#865, gh#healpy/healpy#864,
+    gh#healpy/healpy#863).
+- Changes from version 1.16.3:
+  * Drop support for Python 3.7 (gh#healpy/healpy#821).
+  * Added wheels for aarch64 under emulation in Github Actions
+    (gh#healpy/healpy#819).
+  * Allow pixelfunc.get_interp_val to operate on multiple maps
+    (gh#healpy/healpy#816).
+  * Add healpy-specific HealpyDeprecationWarning instead of using
+    astropy's (gh#healpy/healpy#822).
+  * Bugfix in Rotator in rmul (gh#healpy/healpy#810).
+- Use wheel macros to package; new BuildRequires:
+  python-setuptools_scm, python-pip, python-wheel.
+
+-------------------------------------------------------------------
+Wed May 31 08:31:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.2:
+  * Add `resize_alm` function to change a Alm array to a
+    different ell max
+  * Build wheels for Python 3.11
+  * Instructions on how to build an optimized package for healpy
+
+-------------------------------------------------------------------
+Tue Oct 11 10:18:41 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.16.1
+  * Updated CFITSIO included in `healpy` to 4.1.0, necessary for
+    compatibility with Apple ARM chips
+- Changes from versions 1.16.0:
+  * Update HEALPix C++ sources to revision 1206
+  * Do not normalize binary arrays
+  * Fix unncessary log warning message in plots
+  * Fixed double application of `margins` in visualization
+    functions when using subplot syntax and implemented
+    `margins` parameter for `mollview`, `orthview`, and
+    `azeqview` when subplot syntax is not used
+  * Fixed `reuse_axes=True` for `cartview` and `gnomview`
+  * New features in `projview`: subplots, remove monopole-dipole,
+    labels, tickmarks, graticule, Planck and WMAP colormaps
+  * Fixed the CFITSIO version mismatch warning
+  * Added colorbar ticks and normalization
+- python-six is not required
+
+-------------------------------------------------------------------
+Tue Jul 12 00:16:21 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.15.2:
+  * Update HEALPix C++ sources after update of ABI
+    (gh#healpy/healpy#746).
+- Changes from versions 1.15.1:
+  * New function hp.blm_gauss to generate alm of a gaussian beam
+    (gh#healpy/healpy#735).
+  * Implement rotation in the graticule of projview
+    (gh#healpy/healpy#732).
+  * Explain how to create a local datapath for pixel weights
+    (gh#healpy/healpy#720).
+  * Improvement on is_seq to avoid synalm breaking on JAX input
+    arrays, added unit tests (gh#healpy/healpy#716).
+  * Upgraded HEALPix C++ sources to HEALPix 3.8.1, fixing
+    incompatibility with CFITSIO 4 (gh#healpy/healpy#727) and
+    (gh#healpy/healpy#743).
+
+-------------------------------------------------------------------
+Wed Aug 18 12:35:01 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.15.0:
+  * Write_map keeps dtype of input map array instead of float32
+    (gh#healpy/healpy#688).
+  * Read_map keeps dtype of FITS file instead of upcasting to
+    float64 (gh#healpy/healpy#688).
+  * Write_cl uses dtype of input cl instead of float64
+    (gh#healpy/healpy#688).
+  * Changed all warnings to using the logging module, deprecated
+    all verbose keywords (gh#healpy/healpy#693).
+  * Experimental projview function to plot maps using projections
+    from matplotlib (gh#healpy/healpy#695).
+  * Flip sign for spin-0 alm2map_spin and map2alm_spin
+    (gh#healpy/healpy#707).
+  * Support transparency in plotting with the alpha parameter
+    (gh#healpy/healpy#696).
+  * Removed the note that we will change order of cl in synfast
+    and synalm, we will leave new=False default
+    (gh#healpy/healpy#687).
+  * Added convenice functions order2npix and npix2order
+    (gh#healpy/healpy#685).
+  * Support nested maps hp.smoothing (gh#healpy/healpy#678).
+  * Improvements of the build system (gh#healpy/healpy#660).
+  * Automatically build wheels for Linux/MacOS on Github actions
+    (gh#healpy/healpy#656).
+  * Drop support for Python 2.7-3.5 (gh#healpy/healpy#658).
+  * Allow OBJECT FITS header not to be a string
+    (gh#healpy/healpy#665).
+  * Fixed indexing issue in bl2beam (gh#healpy/healpy#667).
+  * Fixed map2alm_spin bug for masked input
+    (gh#healpy/healpy#651).
+  * Minor bugfixes:
+    - Accept None for cls in synalm (gh#healpy/healpy#711)
+    - Get nside from length of array in read_map
+      (gh#healpy/healpy#710).
+    - Fix spin 0 transforms in alm2map_spin
+      (gh#healpy/healpy#708).
+    - Raise exception for rotate_alm with complex64 inputs
+      (gh#healpy/healpy#704).
+    - Replace deprecated numpy aliases (gh#healpy/healpy#698).
+- New BuildRequires: python-Cython.
+- Drop python-healpy-drop-pytest-runner.patch: Upstream no longer
+  requires pytest-runner for its tests.
+
+-------------------------------------------------------------------
+Thu Jan 21 15:32:02 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36 because astropy is python >= 3.7
+
+-------------------------------------------------------------------
+Sun Aug 16 11:13:22 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-healpy-drop-pytest-runner.patch: Drop pytest-runner
+  which is unnecessary when running tests via pytest directly
+  (gh#healpy/healpy#649).
+
+-------------------------------------------------------------------
+Sun Aug 16 09:19:36 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package

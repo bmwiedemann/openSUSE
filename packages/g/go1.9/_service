@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://git.llvm.org/git/compiler-rt.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+	<!-- [boo#1052528] Always make sure this is kept up to date with src/runtime/race/README. -->
+    <param name="versionformat">g%H</param>
+    <param name="revision">68e1532492f9b3fce0e9024f3c31411105965b11</param>
+  </service>
+  <service name="download_files" mode="disabled">
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">compiler-rt-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

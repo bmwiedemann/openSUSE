@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20e733c9a361a9709574f3a8032211b5</srcmd5>
+    <version>15~rc1</version>
+    <time>1664908653</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007825</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>75dce7d213f4abe6f555c6d6dd70192b</srcmd5>
+    <version>15~rc2</version>
+    <time>1665420204</time>
+    <user>favogt_factory</user>
+    <comment>- Update to 15~rc2
+  * https://www.postgresql.org/about/news/p-2521/
+  * Reverting the &quot;optimized order of GROUP BY keys&quot; feature.</comment>
+    <requestid>1008564</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c1955188c4f2e3cfa1006964a9f58e2</srcmd5>
+    <version>15.0</version>
+    <time>1667656002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 15.0:
+  * https://www.postgresql.org/about/news/p-2526/ 
+  * https://www.postgresql.org/docs/15/release-15.html
+- Move pg_upgrade from *-contrib to *-server.
+- Drop support for the 9.x versioning scheme.</comment>
+    <requestid>1033574</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b09c23dde1ef5acef67b86fbfd34e56c</srcmd5>
+    <version>15.1</version>
+    <time>1668271243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 15.1:
+  * https://www.postgresql.org/about/news/2543/
+  * https://www.postgresql.org/docs/15/release-15-1.html</comment>
+    <requestid>1035223</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9d1847a39e32e2951d488db1e108486b</srcmd5>
+    <version>15.2</version>
+    <time>1676036030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 15.2:
+  * CVE-2022-41862, bsc#1208102: memory leak in libpq
+  * https://www.postgresql.org/about/news/2592/
+  * https://www.postgresql.org/docs/15/release-15-2.html
+- Bump latest_supported_llvm_ver to 15.</comment>
+    <requestid>1064054</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>70aad61f78345e8f61d5f82890a21cda</srcmd5>
+    <version>15.2</version>
+    <time>1681387793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078576</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>62ff2cc42124980bcbd45507c9ced679</srcmd5>
+    <version>15.2</version>
+    <time>1682193431</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1210303: Stop using the obsolete internal %_restart_on_update
+  macro and drop support for sysv init to simplify the scriptlets.</comment>
+    <requestid>1081145</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>69e4b9ca81eb8790ceace129b43fe495</srcmd5>
+    <version>15.3</version>
+    <time>1683916349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 15.3:
+  * bsc#1211228, CVE-2023-2454:
+    Prevent CREATE SCHEMA from defeating changes in search_path
+  * bsc#1211229, CVE-2023-2455: Enforce row-level security
+    policies correctly after inlining a set-returning function
+  * https://www.postgresql.org/about/news/2637/
+  * https://www.postgresql.org/docs/15/release-15-3.html</comment>
+    <requestid>1086554</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5886245924633592a8ac3f6b162812ab</srcmd5>
+    <version>15.4</version>
+    <time>1692110362</time>
+    <user>dimstar_suse</user>
+    <comment>Restore _multibuild
+
+- Update to 15.4:
+  * bsc#1214059, CVE-2023-39417: Disallow substituting a schema or
+    owner name into an extension script if the name contains a
+    quote, backslash, or dollar sign.
+  * bsc#1214061, CVE-2023-39418: Fix MERGE to enforce row security
+    policies properly.
+  * https://www.postgresql.org/docs/15/release-15-4.html
+
+- Restore the independence of mini builds from the main build after
+  the -mini name change from April 4, 2023.
+- Adjust icu handling to prepare for PostgreSQL 16.
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- Change the unix domain socket location from /var/run to /run.</comment>
+    <requestid>1103837</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>cea93f3878073b95a3e875f5f38553cd</srcmd5>
+    <version>15.4</version>
+    <time>1695208855</time>
+    <user>dimstar_suse</user>
+    <comment>- The libs and mini package are now provided by postgresql16.</comment>
+    <requestid>1111592</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>06176c5440881921df640be2291b8ee9</srcmd5>
+    <version>15.4</version>
+    <time>1698333100</time>
+    <user>anag+factory</user>
+    <comment>- boo#1216022: Call install-alternatives from the devel subpackage
+  as well, otherwise the symlink for ecpg might be missing.
+
+- Also buildignore the postgresql*-implementation symbols: this is
+  needed in order to bootstrap when no postgresql version currently
+  has valid symbols provided. Once the packages are built, OBS
+  could translate this to the pgname-* packages and accept the
+  ignores; during bootstrap though, there is nothing providing the
+  symbol and the existing buildignores do not suffice.</comment>
+    <requestid>1120249</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>12ff36e14bcf0341204e3977f1bb7d7a</srcmd5>
+    <version>15.4</version>
+    <time>1698952836</time>
+    <user>anag+factory</user>
+    <comment>Revert last change and make the devel package independend</comment>
+    <requestid>1121435</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8cbd55f3e8e89e75b939734b801f3d4d</srcmd5>
+    <version>15.5</version>
+    <time>1699615742</time>
+    <user>anag+factory</user>
+    <comment>November 2023 Security Updates</comment>
+    <requestid>1124708</requestid>
+  </revision>
+</revisionlist>

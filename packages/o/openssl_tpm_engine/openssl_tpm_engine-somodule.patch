@@ -1,0 +1,16 @@
+Index: configure.in
+===================================================================
+--- configure.in.orig
++++ configure.in
+@@ -45,7 +45,10 @@ AC_ARG_WITH(openssl,
+ 	 AC_SUBST(OPENSSL_INCLUDE_DIR)])
+ 
+ AC_DISABLE_STATIC
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AM_PROG_CC_C_O
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AC_PROG_LIBTOOL
+ 
+ CFLAGS="$CFLAGS -Wall"

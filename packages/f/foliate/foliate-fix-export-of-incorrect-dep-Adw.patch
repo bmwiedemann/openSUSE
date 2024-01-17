@@ -1,0 +1,12 @@
+diff '--color=auto' -rub a/src/app.js b/src/app.js
+--- a/src/app.js	2023-11-17 09:15:25.627026590 +0600
++++ b/src/app.js	2023-11-17 10:57:36.993547832 +0600
+@@ -31,7 +31,7 @@
+ - Foliate ${pkg.version}
+ - GJS ${getGJSVersion()}
+ - GTK ${getImportVersion(Gtk)}
+-- Adwaita ${getImportVersion(imports.gi.Adw)}
++- Adwaita ${getImportVersion(Adw)}
+ - GLib ${getImportVersion(GLib)}
+ - WebKitGTK ${getImportVersion(WebKit)}
+ 

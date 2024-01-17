@@ -1,0 +1,5 @@
+<package name="dracula-gtk-theme" project="openSUSE:Factory">
+  <title>dracula-gtk-theme</title>
+  <description>This is a dark theme for GTK-3 and GTK-2 based desktop environments like Gnome, XFCE, Mate, Cinnamon, etc. Also provides support for KDE plasma.</description>
+  <devel project="X11:common:Factory" package="dracula-gtk-theme"/>
+</package>

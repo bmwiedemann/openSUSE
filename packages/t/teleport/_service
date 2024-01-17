@@ -1,0 +1,35 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/gravitational/teleport</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="exclude">.git</param>
+    <param name="revision">v14.3.3</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">disable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="match-tag">v*</param>
+  </service>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/gravitational/webassets</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="exclude">.git</param>
+    <param name="filename">webassets</param>
+    <param name="without-version">yes</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">teleport</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="go_modules" mode="manual">
+  </service>
+</services>

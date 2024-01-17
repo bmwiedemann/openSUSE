@@ -1,0 +1,7 @@
+<package name="accounts-qml-module" project="openSUSE:Factory">
+  <title>QML bindings for libaccounts-qt + libsignon-qt</title>
+  <description>This QML module provides an API to manage the user's online accounts and get their authentication data. It's a tiny wrapper around the Qt-based APIs of libaccounts-qt and libsignon-qt.
+</description>
+  <devel project="KDE:Applications" package="accounts-qml-module"/>
+  <url>https://gitlab.com/accounts-sso/accounts-qml-module</url>
+</package>

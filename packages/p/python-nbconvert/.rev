@@ -1,0 +1,411 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f4d51ced2085f31590adb6d1802625c1</srcmd5>
+    <version>5.5.0</version>
+    <time>1558516351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.5.0:
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+- Add conflicts to jupyter subpackage to more explicitly handle file overlaps with old naming scheme.</comment>
+    <requestid>703199</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>99f275165f96534c48c0a0a0db4d45f7</srcmd5>
+    <version>5.6.0</version>
+    <time>1565721205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722422</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7d059363ba52108f6a0c56e4e0f4bba2</srcmd5>
+    <version>5.6.1</version>
+    <time>1575039371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747936</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9dabf880b09d880466ae140ef1a302f4</srcmd5>
+    <version>5.6.1</version>
+    <time>1583829638</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783178</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dd99927f53a4bc922d3bea7529bcd18d</srcmd5>
+    <version>6.0.7</version>
+    <time>1614373191</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.7:
+  - 6.0.7
+    - Primarly a release addressing template extensions issues reported
+      since 6.0 launched.
+  - 6.0.6
+    - A range of bug fixes for webpdf exports
+  - 6.0.5
+    - Revert networkidle2 change which caused custom cdn-fetched widgets
+      in webpdf
+  - 6.0.4
+    - Bugfixes only
+  - 6.0.3
+    - Execute preprocessor no longer add illegal execution counts to
+      markdown cells :ghpull:`1396`:
+  - 6.0.2
+    - A patch for a few minor issues raised out of the 6.0 release.
+  - 6.0.1
+    - A quick patch to fix an issue with get_exporter :ghpull:`1367`:
+  - 6.0
+    - Nbconvert 6.0 is a major release of nbconvert which includes many
+      significant changes.
+      - Python 2 support was dropped. Currently Python 3.6-3.8 is
+        supported and tested by nbconvert. However, nbconvert 6.0
+        provides limited support for Python 3.6. nbconvert 6.1 will drop
+        support for Python 3.6. Limited support means we will test and
+        run CI on Python 3.6.12 or higher. Issues that are found only
+        affecting Python 3.6 are not guaranteed to be fixed. We
+        recommend all users of nbconvert use Python 3.7 and higher.
+      - Unlike previous versions, nbconvert 6.0 relies on the nbclient
+        package for the execute preprocessor, which allows for
+        asynchronous kernel requests.
+      - template_path has become template_paths. If referring to a 5.x
+        style .tpl template use the full path with the template_file
+        argument to the file. On the command line the pattern is
+        --template-file=&lt;path/to/file.tpl&gt;.
+      - Nbconvert 6.0 includes a new &quot;webpdf&quot; exporter, which renders
+        notebooks in pdf format through a headless web browser, so that
+        complex outputs such as HTML tables, or even widgets are
+        rendered in the same way as with the HTML exporter and a web
+        browser.
+      - The default template applied when exporting to HTML now produces
+        the same DOM structure as JupyterLab, and is styled using
+        JupyterLab's CSS. The pygments theme in use mimics JupyterLab's
+        codemirror mode with the same CSS variables, so that custom
+        JupyterLab themes could be applied. The classic notebook styling
+        can still be enabled with
+      - jupyter nbconvert --to html --template classic
+      - Nbconvert 6.0 includes a new system for creating custom
+        templates, which can now be installed as packages. A custom
+        &quot;foobar&quot; template is installed in Jupyter's data directory under
+        nbconvert/templates and has the form of a directory containing
+        all resources. Templates specify their base template as well as
+        other configuration parameters in a conf.json at the root of the
+        template directory.
+      - The &quot;slideshow&quot; template now makes use of RevealJS version 4. It
+        can now be used with the HTML exporter with
+      - jupyter nbconvert --to html --template reveal
+      - The --to slides exporter is still supported for convenience.
+      - Inkscape 1.0 is now supported, which had some breaking changes
+        that prevented 5.x versions of nbconvert from converting
+        documents on some systems that updated.
+- Add skip_network_tests.patch to skip tests requiring network
+  access (gh#jupyter/nbconvert#1526).
+</comment>
+    <requestid>875241</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b94df2d557dfbea94e1a3fe8d35cae63</srcmd5>
+    <version>6.0.7</version>
+    <time>1614684885</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875931</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>66edbc88c1f892853013eaa4a04e3b6e</srcmd5>
+    <version>6.0.7</version>
+    <time>1618061220</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>884007</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>ad71442220739e6e855c4e99a83b94f3</srcmd5>
+    <version>6.0.7</version>
+    <time>1635628443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928304</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>8114b082793b072aa4e510f299f15a04</srcmd5>
+    <version>6.0.7</version>
+    <time>1641203365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943335</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>76b1f6d0c084bd59519db6e4f30584b5</srcmd5>
+    <version>6.4.0</version>
+    <time>1641680598</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build on Python 3.6 (SLE/Leap backports safeguard) (forwarded request 944833 from bnavigator)</comment>
+    <requestid>944834</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>680f042ea44a7fed67cbd90427746386</srcmd5>
+    <version>6.4.2</version>
+    <time>1645461970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956041</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5db2a8f66316d77f44b753bfd6e31403</srcmd5>
+    <version>6.4.4</version>
+    <time>1647199512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961349</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1d7f9fb7de670d85e7695dc226225e46</srcmd5>
+    <version>6.5.0</version>
+    <time>1654457314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980880</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7888c1f104c75f9b64535ebec31f7256</srcmd5>
+    <version>6.5.3</version>
+    <time>1660235581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994560</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>68be5c7565b7b5a534d0001da7df8bff</srcmd5>
+    <version>7.0.0</version>
+    <time>1664210882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.0.0
+  * Update to Mistune 2.0.2 by @TiagodePAlves in #1764
+  * Clean up markdown parsing by @blink1073 in #1774
+  * Switch to hatch build backend by @blink1073 in #1777
+  * switch from entrypoints to importlib-metadata by @konstin in
+    #1782
+  * Add recursive flag for glob notebook search by @paoloalba in
+    #1785
+  * Updates for sphinx 5.0 support by @blink1073 in #1788
+  * Fixed unique div ids in lab template, fixed #1759 by @veghdev
+    in #1761
+  * WebPDFExporter: Emulate media print by @martinRenou in #1791
+  * Fix fonts overriden by user stylesheet by inheriting styles by
+    @dakoop in #1793
+  * Fix lab template output alignment by @dakoop in #1795
+  * Add qtpdf and qtpng exporters by @davidbrochart in #1611
+  * Fix linters by @martinRenou in #1825
+  * Remove downloaded CSS from repository by @martinRenou in #1827
+  * escape_html: prevent escaping quotes on widgets JSON reprs
+    (#1829) by @martinRenou in #1830
+  * Remove tests from bdist by @TiagodePAlves in #1822
+  * Encode SVG image data as UTF-8 before calling lxml cleaner
+    (fixes #1836) by @emarsden in #1837
+  * Handle nbformat 5.5 by @blink1073 in #1841
+- Drop nbconvert-vendorize-mistune.patch and mistune 0.8.4 sources.</comment>
+    <requestid>1005929</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7ecdfa4d9a4481e04b5c0a8b6489878b</srcmd5>
+    <version>7.2.2</version>
+    <time>1666787150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.2.2
+  * Fix default config test #1885 (@blink1073)
+  * Add ensure label workflow #1884 (@blink1073)
+  * Add release workflows #1883 (@blink1073)
+  * Maintenance cleanup #1881 (@blink1073)
+- Release 7.2.1
+  * Fix version handling #1878 (@blink1073)
+- Release 7.2.0
+  * Prep for jupyter releaser #1877 (@blink1073)
+  * Add support for jupyter_client 8 #1867 (@blink1073)
+- Release 7.1.0
+  * Fix markdown table not render bug by @Neutree in #1853
+  * Replace lxml.html.clean_html with bleach; drop lxml dependency
+    by @akx in #1854
+  * Remove CircleCI badge from README by @akx in #1857
+  * Added support for section (slide) &quot;data-*&quot; attributes by
+    @bouzidanas in #1861
+- Drop ignore-bleach-deprecation-test.patch</comment>
+    <requestid>1031313</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f0850def56f090584ddbd3aeaf865794</srcmd5>
+    <version>7.2.7</version>
+    <time>1672138497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.2.7
+  * Fix Hanging Tests on Linux #1924 (@blink1073)
+- Release 7.2.6
+  * Include all templates in sdist #1916 (@blink1073)
+- Release 7.2.5
+  * Fix for webpdf print margins #1907 (@JWock82)
+- Release 7.2.4
+  * Handle jupyter core warning #1905 (@blink1073)
+  * Add Py-typed marker. #1898 (@Carreau)
+- Release 7.2.3
+  * clean_html: allow SVG tags and SVG attributes #1890 (@akx) (forwarded request 1045433 from bnavigator)</comment>
+    <requestid>1045434</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1fb37046db953ecfac222f15f56a5e66</srcmd5>
+    <version>7.2.8</version>
+    <time>1674495090</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.2.8
+  * always pass relax_add_props=True when validating #1936 (@minrk)
+</comment>
+    <requestid>1060263</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>66148f91f2587021e2a313b15706f3d9</srcmd5>
+    <version>7.2.9</version>
+    <time>1676302844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064697</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>46b8f6336d4f504d6c5f405d46c3eb7e</srcmd5>
+    <version>7.2.10</version>
+    <time>1679416824</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.2.10
+  * Add cell-id anchor for cell identification #1897 (@krassowski)
+  * Do not import pyppeteer for installation check #1947
+    (@krassowski)</comment>
+    <requestid>1072951</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f0eae79cadce10bcbd0cde921b7a8a19</srcmd5>
+    <version>7.3.1</version>
+    <time>1682368267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.3.1
+  * Remove overwriting of default KernelManager #1972 (@tuncbkose)
+- Release 7.3.0
+  * Allow pattern in output_base #1967 (@JeppeKlitgaard)
+  * Make date configurable in latex/PDF #1963 (@achimgaedke)
+  * Update jupyterlab CSS #1960 (@martinRenou) (forwarded request 1082318 from bnavigator)</comment>
+    <requestid>1082319</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ddde2f1a95db536b709c0688ec23a2b9</srcmd5>
+    <version>7.3.1</version>
+    <time>1683037132</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a test broken by ipython 8.13
+  * test_errors_print_traceback: gh#jupyter/nbconvert#1985
+</comment>
+    <requestid>1083898</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9e82ceace96c7351d0e01bd42dc131f4</srcmd5>
+    <version>7.4.0</version>
+    <time>1686576394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092410</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a105662c56ac7d262dbc14f8d84db044</srcmd5>
+    <version>7.6.0</version>
+    <time>1687379956</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.6.0
+  * Update to Mistune v3 #1820 (@TiagodePAlves)
+- Release 7.5.0
+  * Add mermaidjs 10.2.3 #1957 (@bollwyvl)
+  * Fix pdf conversion with explicitly relative paths #2005
+    (@tuncbkose)
+  * Ensure TEXINPUTS is an absolute path #2002 (@tuncbkose)
+</comment>
+    <requestid>1094160</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>300163f4947839970ce9bdbe8cf1504f</srcmd5>
+    <version>7.7.3</version>
+    <time>1691414935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102581</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>e384d35787277b57e0f39ba6a5cda36e</srcmd5>
+    <version>7.7.3</version>
+    <time>1692379709</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104447</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>116756554bb69a5b350303000c78fdf6</srcmd5>
+    <version>7.8.0</version>
+    <time>1695664999</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.8.0
+  * MermaidJS 10.3.1, accessibility features, handle MIME #2034
+    (@bollwyvl)
+  * Fix: Prevent error from all whitespace lang string #2036
+    (@Adamtaranto)
+- Update to 7.7.4
+  * Give main tag a height of 100% in css for reveal html #2032
+    (@lkeegan)
+</comment>
+    <requestid>1113304</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6825a3bb957ee02b8576cfae8793ae43</srcmd5>
+    <version>7.9.2</version>
+    <time>1696964422</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.9.2
+  * Restore ResourcesDict to the public API #2055 (@blink1073)
+- Release 7.9.1
+  * Include tests in sdist #2053 (@blink1073)
+- Release 7.9.0
+  * Update to mermaidjs 10.5.0 #2051 (@bollwyvl)
+  * Update typing for traitlets 5.11 #2050 (@blink1073)
+  * Fixup typings #2048 (@blink1073)</comment>
+    <requestid>1116519</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>51804e45a3bf52cd041c0ba78c34b543</srcmd5>
+    <version>7.12.0</version>
+    <time>1702845126</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.12.0:
+  * Allow to load config from env.
+  * Use ruff on notebooks and update typings
+  * update Python version support in docs
+  * Support es modules in js includes
+  * Clean up lint handling and list generics
+  * Remove not needed pytest-dependency test requirement
+  * Update to mermaid 10.6.0, docs keyboard navigation
+  * Fix typing for traitlets 5.13
+  * Adopt ruff format
+  * Update typings and remove dead link
+  * Update to mermaid 10.6.0, docs keyboard navigation
+
+- Remove the doc package
+  * New kernel_manager_class configuration option for allowing systems to be set up to resolve kernels in different ways.
+  * Kernel errors now will be logged for debugging purposes when executing notebooks.</comment>
+    <requestid>1133611</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d668dcf169fef386c7079294fab4e8a1</srcmd5>
+    <version>7.13.1</version>
+    <time>1703801022</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.13.1
+  * Restore removed import #2086 (@blink1073)
+- Release 7.13.0
+  * Add table, td, tr to allowed list of tags #2083 (@yuvipanda)</comment>
+    <requestid>1135497</requestid>
+  </revision>
+</revisionlist>

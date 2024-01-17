@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>1d20d101f4e1c738785804fff31eed70</srcmd5>
+    <version>0.04</version>
+    <time>1290441963</time>
+    <user>darix</user>
+    <comment>Accepted submit request 52856 from user computersalat
+</comment>
+    <requestid>52856</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>44a9e2dc783114ea7210ecf168b96e38</srcmd5>
+    <version>0.04</version>
+    <time>1290441969</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 52856
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2779084a8aa8fb0f0013bb2378e1d79d</srcmd5>
+    <version>0.04</version>
+    <time>1291583894</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54645 from user coolo
+</comment>
+    <requestid>54645</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5d94cddd46ad6ead80a796a234420793</srcmd5>
+    <version>0.04</version>
+    <time>1291583900</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54645
+</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>5d94cddd46ad6ead80a796a234420793</srcmd5>
+    <version>0.04</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>5d94cddd46ad6ead80a796a234420793</srcmd5>
+    <version>0.04</version>
+    <time>1319182307</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>e809699de3923e4a5de7e07a795e4404</srcmd5>
+    <version>0.04</version>
+    <time>1321875973</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92255</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>56f04b5008bdd5c1beb226cb4b8cba93</srcmd5>
+    <version>0.04</version>
+    <time>1323193649</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>56f04b5008bdd5c1beb226cb4b8cba93</srcmd5>
+    <version>0.04</version>
+    <time>1340183920</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>56f04b5008bdd5c1beb226cb4b8cba93</srcmd5>
+    <version>0.04</version>
+    <time>1359109800</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>56f04b5008bdd5c1beb226cb4b8cba93</srcmd5>
+    <version>0.04</version>
+    <time>1379663847</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="20">
+    <srcmd5>56f04b5008bdd5c1beb226cb4b8cba93</srcmd5>
+    <version>0.04</version>
+    <time>1409302489</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>abc5d673856da2ce0949a4ae7a1965e9</srcmd5>
+    <version>0.10</version>
+    <time>1429108014</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296687</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c000cb163b5013571c8c923be7f93375</srcmd5>
+    <version>0.11</version>
+    <time>1441726983</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329204</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>710f86f414f6817c8bb6d51a9d5617d6</srcmd5>
+    <version>0.12</version>
+    <time>1441955076</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330332</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b4666622f6a1a5fe979f793dab0cb274</srcmd5>
+    <version>0.13</version>
+    <time>1491907314</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486139</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a640f0a59f3dcfbfb643dfe3d291091e</srcmd5>
+    <version>0.14</version>
+    <time>1492714062</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487651</requestid>
+  </revision>
+</revisionlist>

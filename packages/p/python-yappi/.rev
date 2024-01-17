@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e10494143536ea983dfe6e7a9b5dd76a</srcmd5>
+    <version>1.0</version>
+    <time>1551687739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680738</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b5ec88192dba50043c88ce75e31043fb</srcmd5>
+    <version>1.2.3</version>
+    <time>1583837724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783259</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>eea20ba33c41d546cc58961175f0642b</srcmd5>
+    <version>1.2.3</version>
+    <time>1584446890</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip two flaky tests</comment>
+    <requestid>785238</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5ef1f2702d908278a76a31ea902500e6</srcmd5>
+    <version>1.2.3</version>
+    <time>1584531928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786089</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d37b66fac2378ef6aa22d34cc639196a</srcmd5>
+    <version>1.2.3</version>
+    <time>1589660831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805898</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d70ee06e496eff5ae638d9c56777a52a</srcmd5>
+    <version>1.2.5</version>
+    <time>1591742768</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.5:
+  * Fix tag/ctx_id filtering on get_func_stats
+  * Add filter_callback to get_func_stats() for filtering function/module descriptors
+  * FIX: issues related to invalid conversion from long-&gt;ptr in Win32
+  * Optimize tstate-&gt;dict retrieval
+  * Various other fixes</comment>
+    <requestid>810925</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d5c39cdffd2346d7d39cca310a39769a</srcmd5>
+    <version>1.2.5</version>
+    <time>1597668001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827178</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>062ac5ba4ac277510dbe5cf25a940667</srcmd5>
+    <version>1.3.0</version>
+    <time>1604926674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.0:
+  * Add support for profiling gevent applications
+  * A new API has been defined: `set_context_backend` which accepts `greenlet`
+    as a backend.
+  * Fix various issues</comment>
+    <requestid>847008</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f5ba3832a67c76fd35e8471e872180e4</srcmd5>
+    <version>1.3.0</version>
+    <time>1616008577</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off build for python 3.6.
+</comment>
+    <requestid>879498</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>aba893e40f05e1215bfbbde811ef0b43</srcmd5>
+    <version>1.3.2</version>
+    <time>1619298514</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.2:
+  - Add support for Python 3.10</comment>
+    <requestid>887876</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0e0e39f32e2101ccbf56001a56e58a66</srcmd5>
+    <version>1.3.3</version>
+    <time>1634417259</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.3:
+  * further python 3.10 fixes</comment>
+    <requestid>925742</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ec64ac7910b99d1fb1dcb1e44de776ca</srcmd5>
+    <version>1.3.5</version>
+    <time>1654378041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.5:
+  * Use PyEval_GetLocals for getting locals in Py3.10 and up. 
+  * Fix cp-&gt;coroutines becomes NULL when head is removed 
+  * Remove pypistats dw count</comment>
+    <requestid>980765</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a8f59629f2631836389854f73aeba28f</srcmd5>
+    <version>1.3.6</version>
+    <time>1663596247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004649</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>48884a12a23ece3ab3c193ac3b9cbd91</srcmd5>
+    <version>1.4.0</version>
+    <time>1668432538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035576</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3c12560ddf6fd633144f82239f478c4f</srcmd5>
+    <version>1.4.0</version>
+    <time>1670514649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041184</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>432492046810330c2d7dcfcdd4e9624a</srcmd5>
+    <version>1.6.0</version>
+    <time>1702845105</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.0:
+  * Drop support 2.7-3.5 and clean backward compatible code
+  * Add Python 3.12 wheels
+- update to 1.5.1:
+  * Add support for Python 3.12
+  * Fix child callgrind functions disappear
+
+- Update to 1.4.0
+- update to 1.3.6:
+  * Use PyEval_GetLocals for getting locals in Py3.10 and up.
+  * Fix cp-&gt;coroutines becomes NULL when head is removed
+  - Add support for Python 3.10
+  * Fix various issues</comment>
+    <requestid>1133551</requestid>
+  </revision>
+</revisionlist>

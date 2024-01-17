@@ -1,0 +1,10 @@
+<package name="goocanvas2" project="openSUSE:Factory">
+  <title>A cairo-based canvas widget for GTK+</title>
+  <description>GooCanvas is similar in many ways to GnomeCanvas and FooCanvas. But it
+uses cairo for rendering, has an optional model/view split, and uses
+interfaces for items &amp; models (so you can easily turn any application
+object into a canvas item or model).
+
+</description>
+  <devel project="GNOME:Factory" package="goocanvas2"/>
+</package>

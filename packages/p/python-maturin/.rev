@@ -1,0 +1,997 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>874cf4c65dc861b767d6c912bdf7bd2a</srcmd5>
+    <version>0.10.3</version>
+    <time>1619107473</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency of python-adblock, recommended by qutebrowser</comment>
+    <requestid>887549</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>800eed3910023660a15890f575f4f1f5</srcmd5>
+    <version>0.10.4</version>
+    <time>1620504471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.4
+  * Interpreter search now uses python 3.6 to 3.12
+    gh#PyO3/maturin#495
+  * Consider requires-python when searching for interpreters
+    gh#PyO3/maturin#495
+  * Support Rust extension as a submodule in mixed Python/Rust
+    project  gh#PyO3/maturin#489
+</comment>
+    <requestid>891567</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>509695542ec31ec87e3a562c3e93344a</srcmd5>
+    <version>0.10.6</version>
+    <time>1621721185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.6
+  * Fix build with the “upload” feature disabled by ravenexp
+    gh#PyO3/maturin#548
+- Changes in 0.10.5:
+  * Add manylinux_2_27 support
+    gh#PyO3/maturin#521
+  * Add support for Windows arm64 target
+    gh#PyO3/maturin#524
+  * Always output PEP 600 platform tags
+    gh#PyO3/maturin#525
+  * Fix missing PyInit_&lt;module_name&gt; warning with Rust submodule
+    gh#PyO3/maturin#528
+  * Better cross compiling support for PyO3 binding on Unix
+    gh#PyO3/maturin#454
+  * Fix s390x architecture support
+    gh#PyO3/maturin#530
+  * Fix auditwheel panic with s390x wheels
+    gh#PyO3/maturin#532
+  * Support uploading heterogenous wheels by ravenexp
+    gh#PyO3/maturin#544
+  * Warn about pyproject.toml missing maturin version constraint
+    gh#PyO3/maturin#545</comment>
+    <requestid>894986</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>97e8d2a250c258124fd4f6b5c2041273</srcmd5>
+    <version>0.11.1</version>
+    <time>1626045900</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.1
+  * Fix sdist error when VCS has uncommitted renamed files
+    gh#PyO3/maturin#585
+  * Add `maturin completions &lt;shell&gt;` command to generate shell
+    completions
+    gh#PyO3/maturin#586
+- Changes in 0.11.0:
+  * Add support for reading metadata from PEP 621 project table in
+    `pyproject.toml`
+    gh#PyO3/maturin#555
+  * Users should migrate away from the old
+    `[package.metadata.maturin]` table of `Cargo.toml` to this new
+    `[project]` table of `pyproject.toml`
+  * Add PEP 656 musllinux support
+    gh#PyO3/maturin#543
+  * `--manylinux` is now called `--compatibility` and supports
+    musllinux
+  * The pure rust install layout changed from just the shared
+    library to a python module that reexports the shared library.
+    This should have now observable consequences for users of the
+    created wheel expect that `my_project.my_project` is now also
+    importable (and equal to just `my_project`)
+  * Add support for packaging type stubs in pure Rust project
+    layout
+    gh#PyO3/maturin#567
+  * `Cargo.toml`'s `authors` field is now optional per Rust
+    RFC 3052
+    gh#PyO3/maturin#573
+  * Allow dotted keys in `Cargo.toml` by switch from `toml_edit` to
+    `toml` crate
+    gh#PyO3/maturin#577
+</comment>
+    <requestid>905643</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>88305f0b015ec615552478c15c1f27c4</srcmd5>
+    <version>0.11.2</version>
+    <time>1628023726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.2
+  * Use UTF-8 encoding when reading `pyproject.toml`
+    gh#PyO3/maturin#588
+  * Use Cargo's `repository` field as `Source Code` in project URL
+    gh#PyO3/maturin#590
+  * Fold long header fields in Python metadata
+    gh#PyO3/maturin#594
+  * Fix `maturin develop` for PyPy on Unix
+    gh#PyO3/maturin#596
+</comment>
+    <requestid>909889</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f1d3808bbcca0f1ef3343b22f1ff4a1</srcmd5>
+    <version>0.11.4</version>
+    <time>1633120144</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.4
+  * Autodetect PyPy executables
+    gh#PyO3/maturin#617
+  * auditwheel: add `libz.so.1` to whitelisted libraries
+    gh#PyO3/maturin#625
+  * auditwheel: detect musl libc
+    gh#PyO3/maturin#629
+  * Fixed Python 3.10 and later versions detection on Windows
+    gh#PyO3/maturin#630
+  * Install entrypoint scripts in `maturin develop` command
+    gh#PyO3/maturin#633
+    gh#PyO3/maturin#634
+  * Add support for installing optional dependencies in
+    `maturin develop` command
+    gh#PyO3/maturin#635
+  * Fixed build error when `manylinux`/`compatibility` options is
+    specified in `pyproject.toml`
+    gh#PyO3/maturin#637
+- Changes in 0.11.3:
+  * Add path option for Python source
+    gh#PyO3/maturin#584
+  * Add auditwheel support for musllinux
+    gh#PyO3/maturin#597
+  * `[tool.maturin]` options from `pyproject.toml` will be used
+    automatically
+    gh#PyO3/maturin#605
+  * Skip unavailable Python interpreters from pyenv
+    gh#PyO3/maturin#609
+
+- Replace rust-packaging with cargo-packaging</comment>
+    <requestid>922513</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0f17b2573f077ad0516925644fd9a498</srcmd5>
+    <version>0.11.4</version>
+    <time>1637535129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932766</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a1f92a7e0ee884614310b748ae58f114</srcmd5>
+    <version>0.12.5</version>
+    <time>1640278425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.5
+  * Fix docs for new and init commands in maturin --help
+    gh#PyO3/maturin#734
+  * Fix undefined auditwheel policy panic
+    gh#PyO3/maturin#740
+  * Fix upload::canonicalize_name() regex subst
+    gh#PyO3/maturin#741
+  * Bump serde from 1.0.130 to 1.0.131
+    gh#PyO3/maturin#745
+  * Bump sha2 from 0.9.8 to 0.10.0
+    gh#PyO3/maturin#746
+  * Add Cargo.lock to sdist when --locked or --frozen specified
+    gh#PyO3/maturin#749
+  * Implement auditwheel repair with patchelf
+    gh#PyO3/maturin#742
+  * Support pyo3 abi3-py310 feature
+    gh#PyO3/maturin#750
+- Changes in 0.12.4:
+  * Bump anyhow from 1.0.50 to 1.0.51
+    gh#PyO3/maturin#717
+  * init: new command similar to cargo init
+    gh#PyO3/maturin#719
+  * Don't package non-path-dep crates in sdist for workspaces
+    gh#PyO3/maturin#720
+  * Update keyring to 1.0.0
+    gh#PyO3/maturin#721
+  * Reorganize upload feature
+    gh#PyO3/maturin#726
+  * Allow pip warnings in maturin develop command
+    gh#PyO3/maturin#732
+  * Add a Python import hook
+    gh#PyO3/maturin#729
+- Changes in 0.12.3:
+  * Use platform tag from sysconfig.platform on non-portable Linux
+    gh#PyO3/maturin#709
+  * Warn missing cffi package dependency
+    gh#PyO3/maturin#711
+  * new: include function example for PyO3 bindings
+    gh#PyO3/maturin#713
+- Changes in 0.12.2:
+  * Add a maturin new command for bootstrapping new projects
+    gh#PyO3/maturin#705
+  * Add docs for maturin new command
+    gh#PyO3/maturin#707
+- Changes in 0.12.1:
+  * Add support for cross compiling PyPy wheels
+    gh#PyO3/maturin#687
+  * Add a runnable field to PythonInterpreter
+    gh#PyO3/maturin#691
+- Changes in 0.12.0:
+  * Add PEP 660 support
+    gh#PyO3/maturin#648
+  * Refactor develop command to act identical to PEP 660 editable
+    wheels
+    gh#PyO3/maturin#653
+  * Bump anyhow from 1.0.44 to 1.0.45
+    gh#PyO3/maturin#664
+  * Upgrade pyo3 to 0.15 in test crates
+    gh#PyO3/maturin#665
+  * Fix typos discovered by codespell
+    gh#PyO3/maturin#666
+  * Add mdbook based user guide
+    gh#PyO3/maturin#658
+  * Allow building for non-abi3 pypy wheels when the abi3 feature
+    is enabled
+    gh#PyO3/maturin#678
+  * Bump serde_json from 1.0.69 to 1.0.70
+    gh#PyO3/maturin#683
+  * Bump keyring from 0.10.1 to 0.10.4
+    gh#PyO3/maturin#682
+- Changes in 0.11.5:
+  * Fix typo in Readme
+    gh#PyO3/maturin#638
+  * Re-export __doc__ in __init__.py for pure Rust project
+    gh#PyO3/maturin#639
+  * Fix musllinux auditwheel wrongly detects libc forbidden link
+    gh#PyO3/maturin#643
+  * Fix Win32 Conda Python Interpreters by @formlogic-robert in
+    gh#PyO3/maturin#644
+  * Upgrade python-pkginfo to 0.5.0
+    gh#PyO3/maturin#645
+  * Fix cross compilation for Python 3.10
+    gh#PyO3/maturin#646
+</comment>
+    <requestid>942187</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e8364be6a6ac105c8df3815b8303272d</srcmd5>
+    <version>0.12.6</version>
+    <time>1643666233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.6
+* Add support for repairing cross compiled linux wheels
+  gh#PyO3/maturin#754
+* Add support for `manylinux_2_28` and `manylinux_2_31`
+  gh#PyO3/maturin#755
+* Remove existing so file first in `maturin develop` command to
+  avoid triggering SIGSEV in running process
+  gh#PyO3/maturin#760</comment>
+    <requestid>950093</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>197fc210ea370edbb7b6cc6f703c85cf</srcmd5>
+    <version>0.12.9</version>
+    <time>1644707723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.9
+  * Don't require `pyproject.toml` when cargo manifest is not
+    specified
+    gh#PyO3/maturin#806
+- Changes in 0.12.8
+  * Add missing `--version` flag from clap 3.0 upgrade
+- Changes in 0.12.7
+  * Add support for using `zig cc` as linker for easier cross
+    compiling and manylinux compliance
+    gh#PyO3/maturin#756
+  * Switch from reqwest to ureq to reduce dependencies
+    gh#PyO3/maturin#767
+  * Fix missing Python submodule in wheel
+    gh#PyO3/maturin#772
+  * Add support for specifying cargo manifest path in
+    pyproject.toml
+    gh#PyO3/maturin#781
+  * Add support for passing arguments to pep517 command via
+    `MATURIN_PEP517_ARGS` env var
+    gh#PyO3/maturin#786
+  * Fix auditwheel `No such file or directory` error when
+    `LD_LIBRARY_PATH` contains non-existent paths
+    gh#PyO3/maturin#794</comment>
+    <requestid>953842</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a4843077d95c42269e65717a01d9906a</srcmd5>
+    <version>0.12.15</version>
+    <time>1652389195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976386</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>96d3103e36bc812c18ee6b0d13fdabab</srcmd5>
+    <version>0.12.15</version>
+    <time>1653417094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978816</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>7ebd1d198fda28984c7ae62b3d0a4f89</srcmd5>
+    <version>0.12.15</version>
+    <time>1655732296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983848</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>efa7fecf557f9abadb5b5ec1a28cc805</srcmd5>
+    <version>0.13.1</version>
+    <time>1659941099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.13.1
+  * Add 64-bit RISC-V support
+    gh#PyO3/maturin#1001
+  * Run tests on CI with cargo-nextest
+    gh#PyO3/maturin#1004
+  * Add support for invoking with python3 -m maturin
+    gh#PyO3/maturin#1008
+  * Consider pyproject.toml features when detecting pyo3
+    gh#PyO3/maturin#1014
+  * Respect user specified Rust target in maturin develop
+    gh#PyO3/maturin#1016
+  * Use cargo rustc --crate-type cdylib on Rust nightly/dev channel
+    gh#PyO3/maturin#1020
+  * Use cargo-nextest in test-alpine
+    gh#PyO3/maturin#1021
+-  Update to v0.13.0
+  * Drop python 3.6 by @konstin in #945
+  * Add support for building with multiple binary targets by
+    @messense in #948
+  * Add a --target option to maturin list-python command by
+    @messense in #957
+  * Add support for using bundled python sysconfigs for PyPy when
+    abi3 feature is enabled by @messense in #958
+  * Filter cargo targets by kind instead of crate_types by
+    @messense in #959
+  * Don't build sdist by default in maturin build command by
+    @messense in #955
+  * Add support for cross compiling PyPy wheels when abi3 feature
+    is enabled by @messense in #963
+  * Update actions/checkout and actions/setup-python versions by
+    @messense in #965
+  * Add --find-interpreter option to build and publish commands by
+    @messense in #964
+  * Infer target triple from ARCHFLAGS for macOS by @messense in
+    #967
+  * Add bootstrap from sdist test to CI by @messense in #968
+  * Upload wheel artifacts in bootstrap test for inspection by
+    @messense in #971
+  * Expose commonly used Cargo CLI options in maturin build command
+    by @messense in #972
+  * Add support for wasm32-unknown-emscripten target by @messense
+    in #974
+  * Allow overriding platform release version using env var by
+    @messense in #975
+  * Don't warn if package not listed in cargo metadata is a
+    dependency of Rust std by @messense in #976
+  * Fix Emscripten CI: Pyodide packages.json was moved to
+    repodata.json by @hoodmane in #977
+  * Emscripten: Use -Z link-native-libraries=no and remove emcc
+    wrapper by @hoodmane in #978
+  * Fix maturin develop for arm64 Python on M1 Mac when default
+    toolchain is x86_64 by @messense in #980
+  * Improvements to Emscripten/Pyodide CI by @hoodmane in #983
+  * Setup Pyodide with nox for easier local testing by @messense in
+    #984
+  * Remove -Zbuild-std for Emscripten target by @messense in #986
+  * Add --repository option to upload command by @messense in #987
+  * Only lookup bundled Python sysconfig when interpreters aren't
+    specified as file path by @messense in #988
+  * Align some maturin build options with cargo by @messense in
+    #991
+  * Find CPython upper to 3.12 and PyPy upper to 3.10 by @messense
+    in #993
+  * Add aliases for maturin build and develop subcommands by
+    @messense in #994
+  * Update zbus to 1.9.3 to fix GHSA-76w9-p8mg-j927 and
+    GHSA-wgrg-5h56-jg27 by @messense in #996
+  * Update to Rust 1.62 for Docker image by @messense in #997
+  * Upgrade setuptools-rust to 1.4.0 by @messense in #998
+  * Bump openssl-src from 111.21.0+1.1.1p to 111.22.0+1.1.1q by
+    @dependabot in #1000
+  * Update user guide for the upcoming 0.13 release by @messense in
+    #973
+- Release 0.12.20
+  * Fix incompatibility with cibuildwheel for 32-bit Windows in
+    #951
+  * Don't require pip error messages to be utf-8 encoding in #953
+  * Compare minimum python version requirement between
+    requires-python and bindings crate in #954
+  * Set PYO3_PYTHON env var for PyPy when abi3 is enabled in #960
+  * Add sysconfigs for x64 Windows PyPy in #962
+  * Add support for Linux armv6l in #966
+  * Fix auditwheel bundled shared libs directory name in #969
+- Release 0.12.19
+  * Fix Windows Store install detection in #949
+  * Filter Python interpreters by target pointer width on Windows
+    in #950
+- Release 0.12.18
+  * Add support for building bin bindings wheels with multiple
+    platform tags in #928
+  * Skip auditwheel for non-compliant linux environment
+    automatically in #931
+  * Fix abi3 wheel build issue when no Python interpreters found on
+    host in #933
+  * Add Python 3.11 sysconfigs for Linux, macOS and Windows in #934
+  * Add Python 3.11 sysconfig for arm64 Windows in #936
+  * Add network proxy support to upload command in #939
+  * Fix python interpreter detection on arm64 Windows in #940
+  * Fallback to py -X.Y when pythonX.Y cannot be found on Windows
+    in #943
+  * Auto-detect Python Installs from Microsoft Store in #944
+  * Add bindings detection to bin targets in #938
+- Release 0.12.17
+  * Don't consider compile to i686 on x86_64 Windows cross
+    compiling in #923
+  * Accept -i x.y and -i python-x.y in maturin build command in
+    #925
+- Release 0.12.16
+  * Add Linux armv7l python sysconfig in #901
+  * Add NetBSD python sysconfig in #903
+  * Update 'replace_needed' to reduce total calls to 'patchelf' in
+    #905
+  * Add wheel data support in #906
+  * Allow use python interpreters from bundled sysconfig when not
+    cross compiling in #907
+  * Use setuptools-rust for bootstrapping in #909
+  * Allow setting the publish repository URL via
+    MATURIN_REPOSITORY_URL in #913
+  * Allow stubs-only mixed project layout in #914
+  * Allow setting the publish user name via MATURIN_USERNAME in
+    #915
+  * Add Windows python sysconfig in #917
+  * Add support for generate-import-lib feature of pyo3 in #918
+  * Integrate cargo-xwin for cross compiling to Windows MSVC
+    targets in #919
+- Fix runtime requirements
+</comment>
+    <requestid>991319</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>797167ef6fcfa1662ac7079ca758181a</srcmd5>
+    <version>0.13.2</version>
+    <time>1660586291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.13.2
+  * Add Linux mips64el architecture support
+    gh#PyO3/maturin#1023
+  * Add Linux mipsel architecture support
+    gh#PyO3/maturin#1024
+  * Add Linux 32-bit powerpc architecture support
+    gh#PyO3/maturin#1026
+  * Add Linux sparc64 architecture support
+    gh#PyO3/maturin#1027
+  * Bump anyhow from 1.0.58 to 1.0.59
+    gh#PyO3/maturin#1031
+  * Bump serde from 1.0.140 to 1.0.141
+    gh#PyO3/maturin#1032
+  * Bump clap from 3.2.15 to 3.2.16
+    gh#PyO3/maturin#1033
+  * Bump tracing from 0.1.35 to 0.1.36
+    gh#PyO3/maturin#1035
+  * Bump dialoguer from 0.10.1 to 0.10.2
+    gh#PyO3/maturin#1034
+  * Add PEP 440 local version identifier support
+    gh#PyO3/maturin#1037
+  * Fix path search upon python3 -m maturin
+    gh#PyO3/maturin#1038
+  * Update cargo-zigbuild to 0.12.0
+    gh#PyO3/maturin#1042
+  * Fix inconsistent Cargo.toml and pyproject.toml path handling
+    gh#PyO3/maturin#1043
+  * Clarify sdist build error due to missing pyproject.toml
+    gh#PyO3/maturin#1045
+  * Find python module next to pyproject.toml if pyproject.toml
+    exists
+    gh#PyO3/maturin#1044
+  * Add python-source option to [tool.maturin] section of
+    pyproject.toml
+    gh#PyO3/maturin#1046
+  * Deprecate support for specifying python metadata in Cargo.toml
+    gh#PyO3/maturin#1048
+  * Change python-source to be relative to the file specifies it
+    gh#PyO3/maturin#1049
+  * Change data to be relative to the file specifies it
+    gh#PyO3/maturin#1051
+  * Update Pyodide to 0.21.0
+    gh#PyO3/maturin#1056
+  * Find pyproject.toml in parent directories of Cargo.toml
+    gh#PyO3/maturin#1054
+  * Deprecate manylinux2010 support
+    gh#PyO3/maturin#858
+</comment>
+    <requestid>995047</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2ceff2deb9aab51a968ce6e783c830c6</srcmd5>
+    <version>0.13.5</version>
+    <time>1664553453</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to v0.13.5
+  * Fix resolving crate name bug
+    gh#PyO3/maturin#1142
+- Changes in v0.13.4:
+  * Fix Cargo.toml in new project template
+    gh#PyO3/maturin#1109
+  * Fix maturin develop on Windows when using Python installed
+    from msys2
+    gh#PyO3/maturin#1112
+  * Fix duplicated Cargo.toml of local dependencies in sdist
+    gh#PyO3/maturin#1114
+  * Add support for Cargo workspace dependencies inheritance
+    gh#PyO3/maturin#1123
+  * Add support for Cargo workspace metadata inheritance
+    gh#PyO3/maturin#1131
+  * Use goblin instead of shelling out to patchelf to get rpath
+    gh#PyO3/maturin#1139
+- Changes in v0.13.3:
+  * Allow user to override default Emscripten settings
+    gh#PyO3/maturin#1059
+  * Enable --crate-type cdylib on Rust 1.64.0
+    gh#PyO3/maturin#1060
+  * Update MSRV to 1.59.0
+    gh#PyO3/maturin#1071
+  * Fix abi3 wheel build when no Python interpreters found
+    gh#PyO3/maturin#1072
+  * Add zig ar support
+    gh#PyO3/maturin#1073
+  * Fix sdist build for optional path dependencies
+    gh#PyO3/maturin#1084</comment>
+    <requestid>1007049</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4ca370376ed117ceb00b4042999b0b0a</srcmd5>
+    <version>0.13.6</version>
+    <time>1666689585</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.13.6:
+  - Add cargo-deny integration
+  - Fix maturin develop in Windows conda virtual environment
+  - Filter out unwanted Cargo target kinds when determine bridge
+    model
+  - Add maturin develop test case for conda
+  - Bump console from 0.15.1 to 0.15.2
+  - Bump thiserror from 1.0.36 to 1.0.37
+  - [StepSecurity] ci: Harden GitHub Actions
+  - Downgrade indicatif to fix build on some 32-bit platforms
+  - Allow rustix dependency now that Alpine removed thumb-mode on
+    armv7l
+  - Bump textwrap from 0.15.0 to 0.15.1
+  - Replace pretty_env_logger with tracing-subscriber
+  - Include Cargo.lock by default in source distribution
+</comment>
+    <requestid>1030882</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>18ad026c1be85b07cae95ffb5fb70bd3</srcmd5>
+    <version>0.14.0</version>
+    <time>1668970030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.0:
+* Breaking Change: Remove support for specifying python package
+  metadata in `Cargo.toml`
+  Python package metadata should be specified in the `project`
+  section of `pyproject.toml` instead as PEP 621 specifies.
+  gh#PyO3/maturin#1200
+* Initial support for shipping bin targets as wasm32-wasi binaries
+  that are run through wasmtime
+  Note that wasmtime currently only support the five most popular
+  platforms and that wasi binaries have restrictions when
+  interacting with the host.
+  Usage is by setting `--target wasm32-wasi`.
+  gh#PyO3/maturin#1107
+* Add support for python first `src` project layout
+  gh#PyO3/maturin#1185
+* Add `--src` option to generate src layout for mixed Python/Rust
+  projects
+  gh#PyO3/maturin#1189
+* Add Python metadata support for `license-file` field of
+  `Cargo.toml`
+  gh#PyO3/maturin#1195
+* Upgrade to clap 4.0
+  This bumps MSRV to 1.61.0.
+  gh#PyO3/maturin#1197
+* Remove `workspace.members` in `Cargo.toml` from sdist if there
+  isn't any path dependency
+  in #[1227](https://github.com/PyO3/maturin/pull/1227)
+* Fix auditwheel `libpython` check on Python 3.7 and older
+  versions
+  gh#PyO3/maturin#1229</comment>
+    <requestid>1036879</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6a3b1eb61fe5f634998c32ffafc9b598</srcmd5>
+    <version>0.14.2</version>
+    <time>1669378377</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.2:
+  * Tighten src-layout detection logic
+    gh#PyO3/maturin#1282
+  * Update cargo_metadata to 0.15.2
+    gh#PyO3/maturin#1284
+  * Tell people about setting RUST_LOG=maturin=debug when making
+    bug reports
+    gh#PyO3/maturin#1286
+  * Fix generating pep517 sdist for src-layout
+    gh#PyO3/maturin#1288
+  * Deprecate python-source option in Cargo.toml
+    gh#PyO3/maturin#1291
+  * Fix auditwheel with read-only libraries
+    gh#PyO3/maturin#1292
+  * CI: Try nextest double spawn feature
+    gh#PyO3/maturin#1294
+  * Update wasmtime dependency version to 3.0.0
+    gh#PyO3/maturin#1295
+- Changes in v0.14.1:
+  * Downgrade cargo_metadata to 0.15.0
+    gh#PyO3/maturin#1279</comment>
+    <requestid>1038001</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bb846af9bbfcb1dfa3bbab50902294b2</srcmd5>
+    <version>0.14.3</version>
+    <time>1669983189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.3:
+  * Bump MSRV to 1.62.0
+    gh#PyO3/maturin#1297
+  * CI: Run ruff in lint jobs
+    gh#PyO3/maturin#1298
+  * Fix build error when required features of bin target isn't
+    enabled
+    gh#PyO3/maturin#1299
+  * Build and publish armv6l wheels for maturin
+    gh#PyO3/maturin#1300
+  * Fix wrong platform tag when building in i386 docker container
+    on x86_64 host
+    gh#PyO3/maturin#1301
+  * Fix wrong platform tag when building in armv7 docker container
+    on aarch64 host
+    gh#PyO3/maturin#1303
+  * CI: Stop caching test crates target directory
+    gh#PyO3/maturin#1302
+  * refactor: Use clap_complete_command
+    gh#PyO3/maturin#1304
+  * Remove human-panic dependency
+    gh#PyO3/maturin#1305
+  * chore: cargo update to remove rustix 0.35.x
+    gh#PyO3/maturin#1307
+  * chore: cargo update cargo-zigbuild and cargo-xwin
+    gh#PyO3/maturin#1314</comment>
+    <requestid>1039390</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c25f45a4e86a5022a4218c0b08f3dc23</srcmd5>
+    <version>0.14.5</version>
+    <time>1670954115</time>
+    <user>dimstar_suse</user>
+    <comment>- Manually override outdated ahash dependency of chumsky crate
+  in vendor tarball to hopefully facilitate reproducible builds
+  Adds vendor-update-ahash-dependency.patch
+  boo#1206342
+- Update to v0.14.5:
+  * Support SOURCE_DATE_EPOCH environment variable in wheel building
+    gh#PyO3/maturin#1334
+  * Fix sdist when all Cargo workspace members are excluded
+    gh#PyO3/maturin#1343
+- Changes in v0.14.4:
+  * Bump sigstore/gh-action-sigstore-python from 0.0.11 to 0.1.0
+    gh#PyO3/maturin#1317
+  * Refactor Target::get_platform_tag to use standard osname-release-machine fallback representation
+    gh#PyO3/maturin#1318
+  * Better error message when upload failed with status code 403
+    gh#PyO3/maturin#1323
+  * Warn about patchelf version requirement
+    gh#PyO3/maturin#1327
+  * Refactor compile to take cargo targets with bridge model
+    gh#PyO3/maturin#1328</comment>
+    <requestid>1042453</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>61ddec3989c37ab3b39b969261d849e1</srcmd5>
+    <version>0.14.7</version>
+    <time>1671722521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.7:
+  * Update uniffi_bindgen to 0.22.0
+    gh#PyO3/maturin#1359
+  * Add workspace lock file to sdist as a fallback
+    gh#PyO3/maturin#1362
+- Changes in v0.14.6:
+  * Allow Rust crate to be placed outside of the directory
+    containing pyproject.toml
+    gh#PyO3/maturin#1347
+  * Disallow uniffi bin bindings
+    gh#PyO3/maturin#1353
+  * Update bundled Python sysconfigs for Linux and macOS
+    gh#PyO3/maturin#1355
+</comment>
+    <requestid>1044089</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f3ca5dda07a506e273e67914358be636</srcmd5>
+    <version>0.14.8</version>
+    <time>1673281415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.8:
+  * Add support for packaging multiple pure Python packages
+    gh#PyO3/maturin#1378
+  * Fallback to sysconfig interpreters for pyo3 bindings
+    gh#PyO3/maturin#1381</comment>
+    <requestid>1056955</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6fad8bd9fd25c1c680a4a5a4606a326c</srcmd5>
+    <version>0.14.9</version>
+    <time>1673559874</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't pass MACOSX_DEPLOYMENT_TARGET when query default value from
+  rustc
+  gh#PyO3/maturin#1395</comment>
+    <requestid>1057818</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>dcc97611cf2fb302e56a7c30e16152aa</srcmd5>
+    <version>0.14.10</version>
+    <time>1673724754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.10
+  * Use module name specified by [package.metadata.maturin]
+    gh#PyO3/maturin#1409</comment>
+    <requestid>1058366</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c5fc86024741be3b511ea5a0a7ec32be</srcmd5>
+    <version>0.14.15</version>
+    <time>1679182269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.15:
+  * Add sdist and sccache support to generate-ci command
+- Changes in v0.14.14:
+  * Add support for Emscripten in generate-ci command
+    gh#PyO3/maturin#1484
+  * Use default ext_suffix for Emscripten target if not provided in
+    PYO3_CONFIG_FILE
+    gh#PyO3/maturin#1491
+  * Deprecate package.metadata.maturin.data in favor of
+    tool.maturin.data in pyproject.toml
+    gh#PyO3/maturin#1492
+
+- Update to v0.14.13:
+  * maturin develop now looks for a virtualenv .venv in the current
+    or any parent directory if no virtual environment is active
+    gh#PyO3/maturin#1462
+  * Add a new generate-ci command to generate CI configuration
+    gh#PyO3/maturin#1456
+  * Deprecate --univeral2 in favor of universal2-apple-darwin
+    target
+    gh#PyO3/maturin#1457
+  * Raise an error when Cargo.toml contains removed python package
+    metadata
+    gh#PyO3/maturin#1471
+  * Use extension_name instead of module_name for CFFI extensions
+    in develop mode
+    gh#PyO3/maturin#1476
+- Changes in v0.14.12:
+  * Keep dev-dependencies in sdist when there are no path
+    dependencies</comment>
+    <requestid>1072766</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>576c9d2b615f00376d5776f0d7461dd6</srcmd5>
+    <version>0.14.16</version>
+    <time>1680125236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.16:
+  * Deprecate package.metadata.maturin.name in favor of
+    tool.maturin.module-name in pyproject.toml
+    gh#PyO3/maturin#1531</comment>
+    <requestid>1075083</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2420ab760ab7dfa9a67d7bf04b8df867</srcmd5>
+    <version>0.14.17</version>
+    <time>1681058468</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.17:
+  * Fix wrong EXT_SUFFIX when cross compiling musllinux wheels for
+    Python 3.11
+    gh#PyO3/maturin#1560
+- Drop vendor-update-ahash-dependency.patch</comment>
+    <requestid>1078139</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6d092a127de4d56de0195732c6703507</srcmd5>
+    <version>0.15.1</version>
+    <time>1683559485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.15.1:
+  * Use shlex to split MATURIN_SETUP_ARGS
+    gh#PyO3/maturin#1595
+  * Fix finding interpreters from bundled sysconfigs
+    gh#PyO3/maturin#1598
+- Changes in v0.15.0:
+  * Feature gate zig and xwin based cross compiling
+    gh#PyO3/maturin#1324
+  * Feature gate maturin new and maturin init commands
+    gh#PyO3/maturin#1330
+  * Build with --no-default-features
+    gh#PyO3/maturin#1333
+  * Support SOURCE_DATE_EPOCH environment variable in wheel
+    building
+    gh#PyO3/maturin#1334
+  * Remove deprecated config options
+    gh#PyO3/maturin#1335
+  * cargo deny multiple crate versions
+    gh#PyO3/maturin#1336
+  * Replace rpassword with dialoguer
+    gh#PyO3/maturin#1338
+  * Fix sdist when all Cargo workspace members are excluded
+    gh#PyO3/maturin#1343
+  * Update normpath to 1.0.0
+    gh#PyO3/maturin#1348
+  * Update bundled Linux sysconfig
+    gh#PyO3/maturin#1349
+  * Allow Rust crate to be placed outside of the directory
+    containing pyproject.toml
+    gh#PyO3/maturin#1347</comment>
+    <requestid>1085456</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0e818be4ebe22e63f9f80bf65bca6075</srcmd5>
+    <version>0.15.3</version>
+    <time>1684688946</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.15.3:
+  * Fix cross-compile to Apple universal2 in the other platform
+    gh#PyO3/maturin#1613
+  * Remove serde(flatten) to improve error messages
+    gh#PyO3/maturin#1616
+  * Allow syn 2.0
+    gh#PyO3/maturin#1617
+  * describe the need for module-name
+    gh#PyO3/maturin#1604
+  * Add PEP 517 config_settings support
+    gh#PyO3/maturin#1619
+  * Keep file mode on Unix
+    gh#PyO3/maturin#1622
+- Changes in v0.15.2:
+  * Remove bors
+    gh#PyO3/maturin#1602
+  * When determining the python module name, use pyproject.toml
+    project.name over Cargo.toml package.name.
+    gh#PyO3/maturin#1608
+  * Warn on missing python-source contents
+    gh#PyO3/maturin#1607
+  * Fix rewriting dev-dependencies in sdist
+    gh#PyO3/maturin#1610</comment>
+    <requestid>1088131</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f5a7a0cc28b87eb24767153be000f724</srcmd5>
+    <version>1.0.1</version>
+    <time>1685294626</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.0.1:
+  * Add Python 3.12 sysconfigs
+    gh#PyO3/maturin#1629
+  * refactor: generate well known sysconfigs in code
+    gh#PyO3/maturin#1633
+  * Upgrade dirs to 5.0
+    gh#PyO3/maturin#1634
+  * Fix panicking when no cargo build targets are selected
+    gh#PyO3/maturin#1635
+  * Upgrade platform-info to 2.0, base64 to 0.21
+    gh#PyO3/maturin#1631
+- Changes in v1.0.0:
+  * Add support for multiple --config-settings in PEP517 backend
+    gh#PyO3/maturin#1624
+  * Remove deprecated --universal2 cli option
+    gh#PyO3/maturin#1620</comment>
+    <requestid>1089420</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>8ace99b1ba6bd05d227257fa3b8cf792</srcmd5>
+    <version>1.1.0</version>
+    <time>1686506136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092127</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5b02ed314845a5134dd2fe1ce9321a14</srcmd5>
+    <version>1.3.0</version>
+    <time>1696963928</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116536</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>990de21a3809be62657da2ae338fdf4d</srcmd5>
+    <version>1.3.1</version>
+    <time>1699388709</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.1
+  * Use external uniffi-bindgen if no root package is configured
+    gh#PyO3/maturin#1797
+  * Add trusted publishing section to the user guide
+    gh#PyO3/maturin#1800
+  * Fix wheel filename for GraalPy
+    gh#PyO3/maturin#1802
+  * Pytest skeleton in mixed template
+    gh#PyO3/maturin#1807
+  * Keep trailing newlines from templates
+    gh#PyO3/maturin#1808
+  * Bump rustix from 0.37.23 to 0.37.25
+    gh#PyO3/maturin#1809
+  * Auto detect Python 3.13
+    gh#PyO3/maturin#1810
+  * Fix missing workspace.members in sdist
+    gh#PyO3/maturin#1811
+  * Don't set MACOSX_DEPLOYMENT_TARGET for editable builds
+    gh#PyO3/maturin#1815</comment>
+    <requestid>1123696</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c473ebb09525a4b17853a5a17b06b815</srcmd5>
+    <version>1.3.2</version>
+    <time>1700078818</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.2
+  * Switch to Ruff formatter
+    gh#PyO3/maturin#1817
+  * Upgrade ring to 0.17
+    gh#PyO3/maturin#1819
+  * Un-deprecate MATURIN_PEP517_ARGS env var
+    gh#PyO3/maturin#1820
+  * Add support for uniffi library mode
+    gh#PyO3/maturin#1729
+  * Fix missing member in Cargo.toml for sdist of nested workspace
+    layout
+    gh#PyO3/maturin#1828
+  * Metadata: escape display name in email addresses
+    gh#PyO3/maturin#1832
+  * Fix rewriting workspace Cargo.toml in sdist
+    gh#PyO3/maturin#1841
+  * Fix glob workspace members matching in sdist
+    gh#PyO3/maturin#1846
+  * Add sdist tests for well-known downstream repositories
+    gh#PyO3/maturin#1849</comment>
+    <requestid>1126453</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9208a793b1c90184409b5134376acea3</srcmd5>
+    <version>1.4.0</version>
+    <time>1702327804</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.0
+  * Fix two tiny typos in README.md!
+    gh#PyO3/maturin#1853
+  * Bump MSRV to 1.67
+    gh#PyO3/maturin#1847
+  * Tiny tweak: Use Rust markdown block
+    gh#PyO3/maturin#1855
+  * Recommend using pipx to install maturin
+    gh#PyO3/maturin#1859
+  * [pre-commit.ci] pre-commit autoupdate
+    gh#PyO3/maturin#1860
+  * Update cargo-options to 0.7.1
+    gh#PyO3/maturin#1862
+  * Add support for cross compiling with cross
+    gh#PyO3/maturin#1865
+  * Bump the crates-io group with 8 updates
+    gh#PyO3/maturin#1866
+  * [pre-commit.ci] pre-commit autoupdate
+    gh#PyO3/maturin#1867
+  * Bump openssl from 0.10.59 to 0.10.60
+    gh#PyO3/maturin#1868
+  * Bump actions/github-script from 6 to 7
+    gh#PyO3/maturin#1873
+  * Bump conda-incubator/setup-miniconda from 2 to 3
+    gh#PyO3/maturin#1872
+  * Bump mymindstorm/setup-emsdk from 12 to 13
+    gh#PyO3/maturin#1871
+  * Update rustls-pemfile to 2.0.0
+    gh#PyO3/maturin#1874</comment>
+    <requestid>1132505</requestid>
+  </revision>
+</revisionlist>

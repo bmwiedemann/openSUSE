@@ -1,0 +1,8 @@
+<package name="tls" project="openSUSE:Factory">
+  <title>Tcl Binding for the OpenSSL Library</title>
+  <description>This extension provides a generic binding for Tcl to OpenSSL, utilizing
+the new Tcl_StackChannel API for Tcl 8.2 and higher. The sockets behave
+exactly the same as channels created using Tcl's built-in socket
+command with additional options for controlling the SSL session.</description>
+  <devel project="devel:languages:tcl" package="tls"/>
+</package>

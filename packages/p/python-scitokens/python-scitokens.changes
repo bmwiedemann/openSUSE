@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Wed Apr 12 04:56:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.4:
+  * Remove aud enforcement from deserialize function
+  * Reduce length of comment line
+  * Update minimum pyjwt
+  * Remove use of six 
+- Drop patch python-scitokens-no-six.patch, included upstream
+- Add patch use-importlib-metadata.patch:
+  * Use importlib.metadata, rather than pkg_resources.
+
+-------------------------------------------------------------------
+Mon Nov 14 08:47:39 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/scitokens/scitokens/issues/169
+  + python-scitokens-no-six.patch
+
+-------------------------------------------------------------------
+Sat Oct 29 00:55:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.7.2 
+  * Documentation changes release.
+
+-------------------------------------------------------------------
+Sat Oct 29 00:53:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.7.1 
+  * Add license to metadata by @duncanmmacleod in #150
+  * Update badges in README by @duncanmmacleod in #152
+  * Miscellaneous documentation fixes by @duncanmmacleod in #155
+  * Update setup.py by @duncanmmacleod in #156
+  * Adding codacy github action by @djw8605 in #158
+  * Attempt to fix codacy in github actions by @djw8605 in #159
+  * Add pyproject.toml file for PEP 517 builds by @lpsinger in #162
+  * Install requires setuptools by @lpsinger in #163
+
+-------------------------------------------------------------------
+Thu Sep  1 00:45:32 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not use python_module for Requires. 
+
+-------------------------------------------------------------------
+Sun May  1 22:27:16 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.7.0:
+  * Reference test files using relative paths
+    [gh#citokens/scitokens#128].
+  * Use shutil.move instead of os.rename
+    [gh#citokens/scitokens#136].
+  * Add error message for when SciToken.discover doesn't find a
+    token [gh#citokens/scitokens#138].
+  * SciToken.serialize: fix str/bytes mismatch
+    [gh#citokens/scitokens#137].
+  * Add rpmbuild github actions workflow
+    [gh#citokens/scitokens#134].
+  * Update the bogus url used in the tests
+    [gh#citokens/scitokens#140].
+  * Fix bug decoding a token with no audience
+    [gh#citokens/scitokens#141].
+  * Use unittest.mock to check UnableToCreateCache
+    [gh#citokens/scitokens#139].
+  * Add obsoletes for smoother Yum updates on EL7
+    [gh#citokens/scitokens#127].
+  * Update algorithm used to test UnsupportedKeyException
+    [gh#citokens/scitokens#142].
+  * Run test suite using pytest during rpmbuild
+    [gh#citokens/scitokens#135].
+  * Update pyjwt version in requirements.txt
+    [gh#citokens/scitokens#131].
+  * Typo fix in readme [gh#citokens/scitokens#144].
+  * Default cached public keys set to 4 days
+    [gh#citokens/scitokens#145].
+
+-------------------------------------------------------------------
+Fri Feb  4 10:44:00 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- initial commit of the python SciTokens interface 

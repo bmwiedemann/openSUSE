@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/wercker/stern</param>
+              <param name="changesrevision">94f4ffb3b98a9dcd34aedf00f8a7e95b623b25d3</param></service><service name="tar_scm">
+                <param name="url">https://github.com/stern/stern</param>
+              <param name="changesrevision">9763d953d86d8f60cf9a5e5da3531e6a1aa47c5c</param></service></servicedata>

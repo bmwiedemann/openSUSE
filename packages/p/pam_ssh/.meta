@@ -1,0 +1,8 @@
+<package name="pam_ssh" project="openSUSE:Factory">
+  <title>PAM Module for SSH Authentication</title>
+  <description>This module provides single sign-on behavior. The user types a
+passphrase when logging in and is allowed in if it decrypts the user s
+SSH private key. An ssh-agent is started and keys are added. For the
+entire session, the user types no more passwords.</description>
+  <devel project="Linux-PAM" package="pam_ssh"/>
+</package>

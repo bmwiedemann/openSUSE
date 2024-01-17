@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Nov 18 18:11:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.9
+  * Fix error in BaseChangeOrthogonalBilinear over large fields
+
+-------------------------------------------------------------------
+Sat Jul 30 01:09:25 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.8
+  * This version optimizes the computation of base change
+    matrices, making it faster by several orders of magnitude for
+    large inputs.
+
+-------------------------------------------------------------------
+Wed Nov 14 22:11:54 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.2.5
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Sat Dec 23 16:32:08 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.2.4
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Tue Dec  8 09:43:28 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.2.3
+* No changelog was provided
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split forms (version 1.2.2) off the gap RPM package

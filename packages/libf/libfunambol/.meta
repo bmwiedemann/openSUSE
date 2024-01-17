@@ -1,0 +1,8 @@
+<package name="libfunambol" project="openSUSE:Factory">
+  <title>C++ SyncML Client Engine</title>
+  <description>Libfunambol allows to integrate a SyncML stack in a C++ application on a
+variety of platforms. Currently, Windows, Windows Mobile and Linux, Mac OS X,
+iPhone and Symbian are actively supported, but you can easily build it on other
+Unixes or other mobile/embedded platforms.</description>
+  <devel project="devel:libraries:c_c++" package="libfunambol"/>
+</package>

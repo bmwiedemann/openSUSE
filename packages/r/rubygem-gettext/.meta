@@ -1,0 +1,7 @@
+<package name="rubygem-gettext" project="openSUSE:Factory">
+  <title>Ruby-GetText-Package is a libary and tools to localize messages</title>
+  <description>Ruby-GetText-Package is a GNU GetText-like program for Ruby.
+The catalog file(po-file) is same format with GNU GetText.
+So you can use GNU GetText tools for maintaining.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-gettext"/>
+</package>

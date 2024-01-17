@@ -1,0 +1,10 @@
+--- go/src/make.bash.orig	2021-05-07 06:29:38.144723482 +0000
++++ go/src/make.bash	2021-05-07 06:29:41.740763279 +0000
+@@ -162,6 +162,7 @@
+ 	exit 1
+ fi
+ rm -f cmd/dist/dist
++export GO111MODULE=off
+ GOROOT="$GOROOT_BOOTSTRAP" GOOS="" GOARCH="" "$GOROOT_BOOTSTRAP/bin/go" build -o cmd/dist/dist ./cmd/dist
+ 
+ # -e doesn't propagate out of eval, so check success by hand.

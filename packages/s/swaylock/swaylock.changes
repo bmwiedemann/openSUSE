@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Tue May  2 15:06:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix version information: drop "v" prefix.
+
+-------------------------------------------------------------------
+Sun Jan 29 07:47:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.2:
+  * Wait for the locked event
+
+-------------------------------------------------------------------
+Fri Jan 27 12:42:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.1:
+  * Parse `--debug` parameter before forking
+  * Fix option parsing without --debug after #261
+  * Remove overridden surface attachment
+  * Estimate buffer size in advance for render_frame
+  * Remove unused fields in swaylock_surface
+
+-------------------------------------------------------------------
+Mon Jan 16 13:37:35 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d. 
+
+-------------------------------------------------------------------
+Tue Nov 29 18:49:48 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1.7:
+  * Unlock the screen on SIGUSR1
+  * Use mlock for password buffer
+  * Delete whole utf8 character on backspace
+  * Use shm_open instead of mkstemp
+  * Check for existence of subcompositor
+  * renderer: work with current buffer locally
+  * Ensure that ext_session_lock_v1.unlock_and_destroy is processed.
+  * shadow: make the result of crypt() const
+  * Fix loss of clarity with odd-sized centered image
+  * bash-completion: localize variables
+  * wayland-scanner: use native version to support cross-compilation
+  * Drop xdg-output requirement
+
+-------------------------------------------------------------------
+Tue Mar  8 08:31:37 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6:
+  * Support for the new ext-session-lock-v1 protocol
+  * Add --indicator-{x,y}-position CLI options
+  * Support for key repeat
+  * Fix a potential use-after-free
+  * Fix indicator buffer not resizing after display powers off
+  * Prevent attaching and committing the surface twice
+- Remove swaylock-version.patch: fixed
+
+-------------------------------------------------------------------
+Thu Jan 23 08:56:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5:
+  * Add option to show indicator even if idle
+  * fish-completion: use the correct fallback directory
+  * Submit password by pressing Ctrl+m
+  * Fix indicator position
+  * Add option to adjust ring position via CLI arguments and the config file
+  * Add fixed font-size option for indicator
+  * Fix, clean up and sync docs and completions
+  * Bug fixes
+- Refresh swaylock-version.patch
+  See https://github.com/swaywm/swaylock/pull/128
+- Mark pam.d/swaylock a config file
+- Update fish path
+
+-------------------------------------------------------------------
+Thu May 23 06:07:09 UTC 2019 - mvetter@suse.com
+
+- Update to 1.4:
+  * Decouple the drawing of the background from drawing the indicator.
+  * Allow spaces in image file path
+  * Display xkb layout while typing
+  * Submit password by pressing Ctrl+m (close #75)
+  * Fix lock indicator position on hidpi screens.
+  * Do not exit if no outputs are present
+  * Fix minor typo in man page
+  * Set version in project file
+  * Added hide keyboard layout option
+  * Described hide-keyboard-layout option in swaylock.1.scd
+  * Fix --version when building from tarball
+- Update swaylock-version.patch
+
+-------------------------------------------------------------------
+Thu Feb  7 10:37:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update RPM groups.
+
+-------------------------------------------------------------------
+Thu Feb  7 07:51:26 UTC 2019 - mvetter@suse.com
+
+- Put bash/fish/zsh completion in their own packages
+
+-------------------------------------------------------------------
+Tue Feb  5 13:01:01 UTC 2019 - mvetter@suse.com
+
+- Update to 1.3:
+  * Implement logging and remove wlroots dependency
+  * Remove VLAs
+  * Log error and exit if swaylock is suid with PAM backend.
+  * Handle alloc failures.
+  * Make setuid error clearer.
+  * Sleep on incorrect password with shadow backend.
+  * Allow setting both background image and colour
+  * Add option show-failed-attempts
+  * Remove references to pango
+  * Fix swaylock.h include directive
+  * Allow image file paths to contain colons
+  * Add a pam Meson option
+  * Make sure we can't restore root after setuid
+  * shadow: fix return in initialize_pw_backend
+  * Move PAM into a child process
+  * loop: fix loop_add_fd when called multiple times
+  * Check password without blocking
+  * Add Meson feature options
+  * Simplify XDG_CONFIG_HOME handling
+  * Fix vertical align of text inside the circle
+
+-------------------------------------------------------------------
+Tue Feb  5 12:11:02 UTC 2019 - mvetter@suse.com
+
+- Add swaylock-version.patch:
+  * Set version
+  * Fix include path
+
+-------------------------------------------------------------------
+Mon Feb  4 09:50:12 UTC 2019 - mvetter@suse.com
+
+- Initial package of swaylock 1.2 for openSUSE

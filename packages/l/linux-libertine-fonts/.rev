@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>036c5a6e313f615e94256e0dd2b4b350</srcmd5>
+    <version>5.1.3</version>
+    <time>1325787234</time>
+    <user>coolo</user>
+    <comment>Fixed source URL</comment>
+    <requestid>99154</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>69a68fc5101cd50f037f73093126d64d</srcmd5>
+    <version>5.1.3</version>
+    <time>1326796441</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0-with-font-exception or OFL-1.1
+The GPL in the package has a font exception. Also, the relationship between the licenses is a choice - i.e use the ^or^ operator (forwarded request 98769 from jnweiger)</comment>
+    <requestid>100192</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c9de66bfd6f62c0f792ba87cd0d4d120</srcmd5>
+    <version>5.1.3</version>
+    <time>1338017191</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122162</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>c9de66bfd6f62c0f792ba87cd0d4d120</srcmd5>
+    <version>5.1.3</version>
+    <time>1340183667</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6d428a5a3d4a0e018fdd99fbef0d81f9</srcmd5>
+    <version>5.3.0</version>
+    <time>1344109435</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0 (forwarded request 129724 from adra)</comment>
+    <requestid>129732</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>09a016ffd61abc8f6e26df66c116c12b</srcmd5>
+    <version>5.3.0</version>
+    <time>1350680158</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138358</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>09a016ffd61abc8f6e26df66c116c12b</srcmd5>
+    <version>5.3.0</version>
+    <time>1359109400</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>09a016ffd61abc8f6e26df66c116c12b</srcmd5>
+    <version>5.3.0</version>
+    <time>1379663166</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>09a016ffd61abc8f6e26df66c116c12b</srcmd5>
+    <version>5.3.0</version>
+    <time>1409301801</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

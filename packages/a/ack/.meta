@@ -1,0 +1,7 @@
+<package name="ack" project="openSUSE:Factory">
+  <title>Grep-Like Text Finder</title>
+  <description>ack is a grep-like tool tailored to working with large trees of source code.
+</description>
+  <devel project="utilities" package="ack"/>
+  <url>http://petdance.com/ack/</url>
+</package>

@@ -1,0 +1,45 @@
+commit b7987f6aa4211df3df03dcfc55a00b2ce7472e0a
+Author: Peter Pentchev <roam@debian.org>
+Date:   Tue Feb 15 18:52:20 2022 +0200
+
+    Fix a couple of C compiler warnings.
+
+diff --git a/applydeltarpm.c b/applydeltarpm.c
+index 36d6125..5b08192 100644
+--- a/applydeltarpm.c
++++ b/applydeltarpm.c
+@@ -1575,7 +1575,7 @@ main(int argc, char **argv)
+ 	  exit(1);
+ 	}
+       rpmMD5Update(&wrmd5, d.h->intro, 16);
+-      strncpy((char *)d.h->dp + d.payformatoff, "cpio", 4);
++      memcpy((char *)d.h->dp + d.payformatoff, "cpio", 4);
+       if (fwrite(d.h->data, 16 * d.h->cnt + d.h->dcnt, 1, ofp) != 1)
+ 	{
+ 	  fprintf(stderr, "write error\n");
+diff --git a/deltarpmmodule.c b/deltarpmmodule.c
+index 40ea60f..5e505b1 100644
+--- a/deltarpmmodule.c
++++ b/deltarpmmodule.c
+@@ -45,7 +45,7 @@ PyObject *createDict(struct deltarpm d)
+   /* Sequence */
+   if (d.seq) {
+     char *tmp = calloc(d.seql * 2 + 1, sizeof(char));
+-    int i;
++    unsigned int i;
+ 
+     if(tmp == NULL) {
+       PyErr_SetFromErrno(PyExc_SystemError);
+diff --git a/md5.c b/md5.c
+index 0f3b9c2..69aaae1 100644
+--- a/md5.c
++++ b/md5.c
+@@ -161,7 +161,7 @@ void rpmMD5Final(unsigned char digest[16], struct MD5Context *ctx)
+     if (ctx->doByteReverse)
+ 	byteReverse((unsigned char *) ctx->buf, 4);
+     memcpy(digest, ctx->buf, 16);
+-    memset(ctx, 0, sizeof(ctx));	/* In case it's sensitive */
++    memset(ctx, 0, sizeof(*ctx));	/* In case it's sensitive */
+ }
+ 
+ /* The four core functions - F1 is optimized somewhat */

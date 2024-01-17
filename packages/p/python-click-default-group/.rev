@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b14b753909258d88afa70b1c6a1fc96</srcmd5>
+    <version>1.2.2</version>
+    <time>1598274871</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>828877</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6319098486076b5ad873f43d520c539d</srcmd5>
+    <version>1.2.2</version>
+    <time>1628751691</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add compatibility-click-8.patch to fix compatiblity with
+  click 8 (gh#click-contrib/click-default-group#18).
+</comment>
+    <requestid>911425</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9750e428d04d0b5c441c96c57652679f</srcmd5>
+    <version>1.2.4</version>
+    <time>1701462400</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.4:
+  * README, test updates
+  * packaging updates
+- drop compatibility-click-8.patch (upstream)</comment>
+    <requestid>1130213</requestid>
+  </revision>
+</revisionlist>

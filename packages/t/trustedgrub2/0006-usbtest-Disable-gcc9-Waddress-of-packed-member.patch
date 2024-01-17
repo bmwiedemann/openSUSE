@@ -1,0 +1,51 @@
+From 85e08e174e15c497c4387c16e92243e6ed05feb6 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 11 Apr 2019 17:14:07 +0800
+Subject: [PATCH 6/8] usbtest: Disable gcc9 -Waddress-of-packed-member
+
+Disable the -Wadress-of-packaed-member diagnostic for the
+grub_usb_get_string function since the result is false postive. The
+descstrp->str is found to be aligned in the buffer allocated for 'struct
+grub_usb_desc_str'.
+
+[  229s] ../../grub-core/commands/usbtest.c: In function 'grub_usb_get_string':
+[  229s] ../../grub-core/commands/usbtest.c:104:58: error: taking address of packed member of 'struct grub_usb_desc_str' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[  229s]   104 |   *grub_utf16_to_utf8 ((grub_uint8_t *) *string, descstrp->str,
+[  229s]       |                                                  ~~~~~~~~^~~~~
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/commands/usbtest.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/grub-core/commands/usbtest.c b/grub-core/commands/usbtest.c
+index 01cdca934..2c6d93fe6 100644
+--- a/grub-core/commands/usbtest.c
++++ b/grub-core/commands/usbtest.c
+@@ -63,6 +63,11 @@ static const char *usb_devspeed[] =
+     "High"
+   };
+ 
++#if __GNUC__ >= 9
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Waddress-of-packed-member"
++#endif
++
+ static grub_usb_err_t
+ grub_usb_get_string (grub_usb_device_t dev, grub_uint8_t index, int langid,
+ 		     char **string)
+@@ -108,6 +113,10 @@ grub_usb_get_string (grub_usb_device_t dev, grub_uint8_t index, int langid,
+   return GRUB_USB_ERR_NONE;
+ }
+ 
++#if __GNUC__ >= 9
++#pragma GCC diagnostic pop
++#endif
++
+ static void
+ usb_print_str (const char *description, grub_usb_device_t dev, int idx)
+ {
+-- 
+2.16.4
+

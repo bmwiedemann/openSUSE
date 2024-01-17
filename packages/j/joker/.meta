@@ -1,0 +1,5 @@
+<package name="joker" project="openSUSE:Factory">
+  <title>Joker</title>
+  <description>Joker is a small Clojure interpreter, linter and formatter written in Go.</description>
+  <devel project="devel:languages:clojure" package="joker"/>
+</package>

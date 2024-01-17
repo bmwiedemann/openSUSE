@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>874d17659fd12494a11ebca2f800dbdb</srcmd5>
+    <version>2.7</version>
+    <time>1505139494</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-libarchive-c</comment>
+    <requestid>522400</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6f948bce49e663279d82c7f861d4021b</srcmd5>
+    <version>2.8</version>
+    <time>1529402699</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617352</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1b4facbd5a4db03a389450cbefd86f0b</srcmd5>
+    <version>2.8</version>
+    <time>1545647956</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659475</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f2e3adbfcbca8bba764697db9efce09a</srcmd5>
+    <version>2.9</version>
+    <time>1586973426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794192</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78d02d553b05f03211cf7469e27121dc</srcmd5>
+    <version>4.0</version>
+    <time>1648159055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964382</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e9d2c4c0110df2ca662923d33743a28c</srcmd5>
+    <version>4.0</version>
+    <time>1654378014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980641</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7f4b88f43d9d5669e1161b486525e88e</srcmd5>
+    <version>5.0</version>
+    <time>1702071120</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0:
+  * It is now possible to specify a codec for archive entry
+    metadata (`pathname`, `linkpath`, `uname` and `gname`)
+  * **BREAKING:** If you use the `archive_read_class` and
+    `archive_write_class` arguments, the classes you provide will
+    receive a codec name as a second positional argument.
+  * The `timestamp_nsec` arguments of the legacy
+    `ArchiveEntry.set_{a,c,m}time` methods are now optional
+  * Removed obsolete dependencies (`mock` and `six`) from
+    `tox.ini` (#119).
+  * Always use `UTF-8` when reading the `PKG-INFO` and
+    `README.rst` files (#120).
+  * Replaced `pytest-xdist` with `pytest-forked` in `tox.ini`
+- drop python-libarchive-c-no-mock.patch (upstream)
+
+    BREAKING &amp; SECURITY: The archive extraction functions now pass 3 security flags (SECURE_NODOTDOT, SECURE_NOABSOLUTEPATHS</comment>
+    <requestid>1131722</requestid>
+  </revision>
+</revisionlist>

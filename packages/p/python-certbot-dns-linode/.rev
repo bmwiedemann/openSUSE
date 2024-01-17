@@ -1,0 +1,263 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0171a71d693806f0f671b84f71c15be4</srcmd5>
+    <version>0.37.2</version>
+    <time>1568190807</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>729671</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5de7910490fce9f00ffe038c75996479</srcmd5>
+    <version>0.38.0</version>
+    <time>1568379556</time>
+    <user>lnussel_factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>730169</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6c6fd25d1abaeb3439e9511bf06efc6b</srcmd5>
+    <version>0.39.0</version>
+    <time>1570020988</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.39.0
+  * Support for Python 3.8 was added to Certbot and all of its components.</comment>
+    <requestid>734582</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>20ba9172fba182d2b4b1f97830f340f1</srcmd5>
+    <version>0.39.0</version>
+    <time>1572542062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739163</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51aea60b21f3824adb8b36b98c5f3966</srcmd5>
+    <version>0.40.1</version>
+    <time>1573773994</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>748672</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0316d6c3f1f15ddde38b88132932a987</srcmd5>
+    <version>1.0.0</version>
+    <time>1578069554</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.0
+  * Sync with main certbot package.</comment>
+    <requestid>760658</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1aa091e28e59465512e8c62d12d55d54</srcmd5>
+    <version>1.1.0</version>
+    <time>1579636935</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>766015</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b2b47d28c8154b4cd7f3200a071ec79b</srcmd5>
+    <version>1.2.0</version>
+    <time>1582725790</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>778044</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1dfb39b1c7f53041b7cbdbe37efebed9</srcmd5>
+    <version>1.3.0</version>
+    <time>1583949312</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>783854</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>399e0dd586eb0a9e5d3e1061daa9f44f</srcmd5>
+    <version>1.4.0</version>
+    <time>1589491618</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>805540</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c69a865234e797a1bc6b7729f33f9469</srcmd5>
+    <version>1.5.0</version>
+    <time>1591881361</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>813515</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cfb89b5d61971c145bcd750232dd7312</srcmd5>
+    <version>1.6.0</version>
+    <time>1594818148</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>820656</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ef0f0ee6bbaf8c2cb674465c8c57de78</srcmd5>
+    <version>1.7.0</version>
+    <time>1598030052</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.7.0
+  * The Linode DNS plugin now waits 120 seconds for DNS propagation, instead of 1200.</comment>
+    <requestid>828470</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eae9926c87d9380210b5e7ac6fbc2446</srcmd5>
+    <version>1.9.0</version>
+    <time>1602073155</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>839990</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>490eb373103f9aea035c6d95f742dd60</srcmd5>
+    <version>1.11.0</version>
+    <time>1610123948</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>861647</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>42e23105502708f92402c94691615f34</srcmd5>
+    <version>1.13.0</version>
+    <time>1615213183</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>877602</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9ea9f27d674a676316ba6e2b98004c2a</srcmd5>
+    <version>1.14.0</version>
+    <time>1618498667</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>885414</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>09dd5367c6644e29363a38a327de013c</srcmd5>
+    <version>1.15.0</version>
+    <time>1620840757</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>892485</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b101418086337a0ad5b468e92e941a84</srcmd5>
+    <version>1.16.0</version>
+    <time>1624551768</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>901686</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>a4013dfe737df098e97a00096397f9f4</srcmd5>
+    <version>1.16.0</version>
+    <time>1627313895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908376</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>71f57b0483b4bda65bb49411a99a0651</srcmd5>
+    <version>1.17.0</version>
+    <time>1627680132</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>909357</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>190148e02c91869d1c647b035453fd49</srcmd5>
+    <version>1.18.0</version>
+    <time>1628751687</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911384</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bf8e479c4032a2209fc8d9d721310a18</srcmd5>
+    <version>1.22.0</version>
+    <time>1640115742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941945</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>76e970e9b61f8f51c8009610f95fbf90</srcmd5>
+    <version>1.26.0</version>
+    <time>1649450766</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>967768</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6e689e7fcb73cb8a886f6cd42751ea53</srcmd5>
+    <version>1.27.0</version>
+    <time>1653907477</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>979820</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d0ff83cc23e51bb29a19bd24aae5c7f5</srcmd5>
+    <version>1.28.0</version>
+    <time>1656145489</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.28.0</comment>
+    <requestid>984961</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f1974d60f2c3ed3b60f6f913ea303aae</srcmd5>
+    <version>1.29.0</version>
+    <time>1657559427</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.29.0:
+  * --allow-subset-of-names will now additionally retry in cases where domains
+    are rejected while creating or finalizing orders. This requires subproblem
+    support from the ACME server
+  * The show_account subcommand now uses the &quot;newAccount&quot; ACME endpoint to
+    fetch the account data, so it doesn't rely on the locally stored account URL.
+    This fixes situations where Certbot
+    would use old ACMEv1 registration info with non-functional account URLs.
+  * The generated Certificate Signing Requests are now generated as version 1
+    instead of version 3. This resolves situations in where strict enforcement
+    of PKCS#10 meant that CSRs that were generated as version 3 were rejected</comment>
+    <requestid>988441</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f18111dda95120f17d643bbdb99f8630</srcmd5>
+    <version>1.30.0</version>
+    <time>1663851006</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>1005271</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2ac8018392de05d8a1de7ec2db0531bf</srcmd5>
+    <version>1.31.0</version>
+    <time>1666871686</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>1031489</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ebc005c7f62d9bf908ebeaefa675f724</srcmd5>
+    <version>2.6.0</version>
+    <time>1686172096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091319</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1929ba79085a3e9c93cb2a73ec346f2e</srcmd5>
+    <version>2.8.0</version>
+    <time>1702587778</time>
+    <user>anag+factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>1133007</requestid>
+  </revision>
+</revisionlist>

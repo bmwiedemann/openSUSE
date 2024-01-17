@@ -1,0 +1,9 @@
+diff -Nur dde-calendar-5.8.16/schedule-plugin/CMakeLists.txt dde-calendar-5.8.16-new/schedule-plugin/CMakeLists.txt
+--- dde-calendar-5.8.16/schedule-plugin/CMakeLists.txt	2021-10-21 16:30:20.000000000 +0800
++++ dde-calendar-5.8.16-new/schedule-plugin/CMakeLists.txt	2021-10-28 14:22:21.241170251 +0800
+@@ -84,4 +84,4 @@
+ )
+ 
+ # Install files
+-install(TARGETS ${PROJECT_NAME} DESTINATION /usr/lib/deepin-aiassistant/serivce-plugins)
++install(TARGETS ${PROJECT_NAME} DESTINATION ${LIB_INSTALL_DIR}/deepin-aiassistant/serivce-plugins)

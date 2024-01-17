@@ -1,0 +1,21 @@
+diff -Nru X11-Protocol-0.56/Auth.pm X11-Protocol-patched/Auth.pm
+--- X11-Protocol-0.56/Auth.pm	2012-02-14 12:16:07.230868807 +0100
++++ X11-Protocol-patched/Auth.pm	2012-02-14 12:15:46.169630003 +0100
+@@ -102,7 +102,7 @@
+     my($host, $fam, $dpy) = @_;
+     if ($host eq "localhost" or $host eq "127.0.0.1") {
+ 	require Sys::Hostname;
+-	$host = Sys::Hostname::hostname();
++	$host = $main::ENV{"XAUTHLOCALHOSTNAME"} || Sys::Hostname::hostname();
+     }
+     my($addr);
+     $addr = gethostbyname($host) if $fam eq "Internet";
+@@ -113,7 +113,7 @@
+ 	next unless $fam eq $d->[0] or ($fam eq "Internet"
+ 					and $d->[0] eq "Local");
+ 	if ($fam eq "Internet" or $fam eq "Local") {
+-	    if ($addr && $d->[1] eq $addr or $d->[1] eq $host) {
++	    if ($addr && $d->[1] eq $addr or $d->[1] eq $host or $d->[1] eq "localhost" or $d->[1] eq "127.0.0.1") {
+ 		return ($d->[3], $d->[4]);
+ 	    }
+ 	}

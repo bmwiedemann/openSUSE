@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b648808a1759ba15035b04cfb889a36a</srcmd5>
+    <version>4.4.0</version>
+    <time>1673888338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058676</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>518950b40f5502c361c7b8fcf0254bfb</srcmd5>
+    <version>4.4.1</version>
+    <time>1702673249</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.4.1:
+  * Update dependencies
+  * Make minor changes to appease revive (linter)</comment>
+    <requestid>1132917</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d4a29e72b6bee752b3e58a82e0b3c4f0</srcmd5>
+    <version>4.4.2</version>
+    <time>1702845127</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.4.2:
+  * Bump chroma to newest version
+  * Remove plan9 support due to build failure
+  * Upgrade to yaml.v3</comment>
+    <requestid>1133591</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Wed Sep 13 05:18:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Thu May  4 11:57:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Tue Apr  7 09:42:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * languagetool-4.8-lucene-8.patch
+    + Port to lucene >= 8
+    + Apply only if building with lucene >= 8
+
+-------------------------------------------------------------------
+Mon Mar 30 06:26:00 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of languagetool 4.8
+- Added patches:
+  * languagetool-descriptor.patch
+    + fix build with newer maven versions
+  * languagetool-hunspell.patch
+    + revert to 4.7 version of system hunspell loading instead of
+      using a dependency-rich com.gitlab.dumonts:hunspell library
+      for tasks that can be done in a much more simple way
+  * languagetool-xgboost-predictor.patch
+    + fix double/float mismatch
+- Added patch template:
+  * languagetool-system-hunspell.patch.in
+    + patch the system hunspell loading to load the exact hunspell
+      library that we built against

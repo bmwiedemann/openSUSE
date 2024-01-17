@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Jul 15 22:25:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.4.0
+  * No upstream changelog provided
+  * Fonts are now generated with fontforge
+- Add Source URL
+- Added extra-cmake-modules and kf5-filesystem BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep  2 17:08:58 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to latest git snapshot
+
+-------------------------------------------------------------------
+Thu Aug 30 07:46:19 UTC 2012 - i@marguerite.su
+
+- initial version 0.2 
+  * changelog see commit log:
+    https://projects.kde.org/projects/playground/artwork/oxygen-fonts

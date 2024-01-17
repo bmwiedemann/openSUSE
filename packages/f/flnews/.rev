@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1ef56db54f01b5a83e0d3ee5dd8ea6c3</srcmd5>
+    <version>0.18</version>
+    <time>1609253348</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain flnews in Factory</comment>
+    <requestid>851882</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b86852d7456d63d6c1ba4511a749756e</srcmd5>
+    <version>0.18</version>
+    <time>1609405182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859516</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d9b589ecd59ab787a84daf51177af671</srcmd5>
+    <version>1.0.0</version>
+    <time>1621113391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893345</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>57facd160052077b643b56cb08259f28</srcmd5>
+    <version>1.1.0</version>
+    <time>1653769010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979574</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>473defe6edeccbc48a48368a244ca39f</srcmd5>
+    <version>1.2.0</version>
+    <time>1694808277</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111355</requestid>
+  </revision>
+</revisionlist>

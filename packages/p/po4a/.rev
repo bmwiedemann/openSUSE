@@ -1,0 +1,277 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d62df1f3b7d7ce5054661e7c769f3bef</srcmd5>
+    <version>0.41</version>
+    <time>1329823450</time>
+    <user>coolo</user>
+    <comment>please review, needed for software-center</comment>
+    <requestid>104769</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e6a0f40a921b97cf4265cf7a651497c0</srcmd5>
+    <version>0.41</version>
+    <time>1332416313</time>
+    <user>coolo</user>
+    <comment>add %perl_requires, libxslt1 for Factory and move ca and pl mandir directory to -lang</comment>
+    <requestid>110417</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>876c3b3346d435a0fa0be4ed46b927a9</srcmd5>
+    <version>0.41</version>
+    <time>1332752680</time>
+    <user>coolo</user>
+    <comment>Reflect changes on libxslt package (-tool subpackage created) (forwarded request 110848 from elchevive)</comment>
+    <requestid>110851</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d95eb151f3d3c1d516146f5836ca4fe2</srcmd5>
+    <version>0.42</version>
+    <time>1337578192</time>
+    <user>coolo</user>
+    <comment>update to new version released today (forwarded request 121308 from elchevive)</comment>
+    <requestid>121309</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d95eb151f3d3c1d516146f5836ca4fe2</srcmd5>
+    <version>0.42</version>
+    <time>1340184008</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>d95eb151f3d3c1d516146f5836ca4fe2</srcmd5>
+    <version>0.42</version>
+    <time>1359109935</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e809d16e9dce845719dc5b8f9934e4aa</srcmd5>
+    <version>0.44</version>
+    <time>1359466311</time>
+    <user>coolo</user>
+    <comment>- do not buildrequire texlive (forwarded request 150030 from coolo)</comment>
+    <requestid>150031</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>997b977ab923814af4036cbac886d2ba</srcmd5>
+    <version>0.44</version>
+    <time>1366183454</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164054 from namtrac)</comment>
+    <requestid>164075</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1310fb2e549662a165378f9b70b2ec7d</srcmd5>
+    <version>0.44</version>
+    <time>1372145856</time>
+    <user>coolo</user>
+    <comment>Fix build errors for perl &gt; 5.18 and now mentioning the patch added on .changes file.</comment>
+    <requestid>180786</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>1310fb2e549662a165378f9b70b2ec7d</srcmd5>
+    <version>0.44</version>
+    <time>1379664043</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>1310fb2e549662a165378f9b70b2ec7d</srcmd5>
+    <version>0.44</version>
+    <time>1409302720</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d3c7974696880c44eabf8a6cb7e5f0bb</srcmd5>
+    <version>0.45</version>
+    <time>1416824346</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262442</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3566b43196f76d69ff33d796a74ad830</srcmd5>
+    <version>0.48</version>
+    <time>1484132179</time>
+    <user>dimstar_suse</user>
+    <comment>another attempt to update po4a 0.48</comment>
+    <requestid>449398</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9717c0d7ae6ca712217fc96ec6217798</srcmd5>
+    <version>0.52</version>
+    <time>1504520487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519561</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f223bdb156f0263d749592fcfe7c6422</srcmd5>
+    <version>0.54</version>
+    <time>1534774652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628996</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ea76f1c1018bd265c45a2617ebf34b03</srcmd5>
+    <version>0.55</version>
+    <time>1549286621</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670632</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>54198ae3f8d4dfdadec444befee17db3</srcmd5>
+    <version>0.56</version>
+    <time>1561405714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709124</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2548e6727403fd6449c385cf5e2fcb7c</srcmd5>
+    <version>0.57</version>
+    <time>1575282472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750391</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>83e0c0dee0849b423d9fa85093db09d2</srcmd5>
+    <version>0.61</version>
+    <time>1597955215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.61
+po4a tool:
+ * Robustify --srcdir and --destdir: When building the schroot package,
+ these paths happen to be soft links to the same directory, making po4a
+ believe that the POT file is specified twice (to the same value). po4a
+ is now ignoring these dups.
+ 
+Translations:
+Updated: Chinese, Czech, Dutch, French, German, Portuguese, Portuguese
+(Brazil), Serbian and Ukrainian.
+- Update to version 0.60
+Asciidoc:
+ * Introduce &quot;compat&quot; option to parse like asciidoc or asciidoctor.
+Text (and Markdown):
+ * Fix the support of nested lists.
+Other:
+ * Remove the experimental C extension that was never built, distributed,
+ tested nor modified since 2007.
+ 
+XML:
+ * Provide a meaningful message when the translators butcher the &lt;placeholder&gt;
+ attributes instead of truncating the file.
+ 
+Translations:
+Updated: Chinese, Croatian, Dutch, French, German, Norwegian Bokmål, Portuguese
+(Brazil), Serbian and Ukrainian.
+</comment>
+    <requestid>827371</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>2040902ea803d9793d0dcb8d2444afa5</srcmd5>
+    <version>0.61</version>
+    <time>1599421030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831690</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>ad9108dd6e14fb5c0efb43cf0a7932e8</srcmd5>
+    <version>0.61</version>
+    <time>1604412931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845035</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>83e0d498b3d95d3523a5ac380b63d07f</srcmd5>
+    <version>0.61</version>
+    <time>1605290050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847427</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9318bdf4d4bebd4f7a75a8ec594cc32d</srcmd5>
+    <version>0.62</version>
+    <time>1607612170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853839</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>dd5f5e6daef4ab2ad10304f07fa6db9a</srcmd5>
+    <version>0.63</version>
+    <time>1615489665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877959</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>24d17a6135d94cdbc18cfb7814b4135e</srcmd5>
+    <version>0.63</version>
+    <time>1624813101</time>
+    <user>dimstar_suse</user>
+    <comment>- Make po4a buildable on Debian and Ubuntu. This is required for GitHub Actions,
+which only provide Ubuntu machines as workers.
+Uyuni has GH Actions to automagically convert the English AsciiDoc files to
+gettext, commit to the uyuni-docs repository and then openSUSE WebLate will
+pull the gettext files.
+</comment>
+    <requestid>902207</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>8cca90fc135c9607ca9bac2de06072a6</srcmd5>
+    <version>0.63</version>
+    <time>1626466354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905844</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c530efe9680b3e494407d8383c449202</srcmd5>
+    <version>0.64</version>
+    <time>1631826881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919534</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a492918143c58e91dd56c1c578383805</srcmd5>
+    <version>0.64</version>
+    <time>1636038984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928583</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f7d298c69cfb252ac02f342fbeca96ee</srcmd5>
+    <version>0.66</version>
+    <time>1642198367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945897</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5141091cd1ad31837fd81515b679052f</srcmd5>
+    <version>0.67</version>
+    <time>1659106008</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989679</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3dcbb8c7ef83075dc4cc06de068d41e0</srcmd5>
+    <version>0.69</version>
+    <time>1673973289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058695</requestid>
+  </revision>
+</revisionlist>

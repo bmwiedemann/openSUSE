@@ -1,0 +1,5 @@
+<package name="python-certbot-dns-linode" project="openSUSE:Factory">
+  <title>Certbot DNS Linode automation</title>
+  <description></description>
+  <devel project="devel:languages:python:certbot" package="python-certbot-dns-linode"/>
+</package>

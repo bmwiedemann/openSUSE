@@ -1,0 +1,8 @@
+<package name="kpeoplevcard" project="openSUSE:Factory">
+  <title>A vCard plugin for KPeople</title>
+  <description>Kpeoplevcard provides a datasource plugin for KPeople that reads vCard files
+from the local filesystem.
+
+</description>
+  <devel project="KDE:Extra" package="kpeoplevcard"/>
+</package>

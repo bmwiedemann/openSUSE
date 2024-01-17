@@ -1,0 +1,11 @@
+<package name="gqrx" project="openSUSE:Factory">
+  <title>Software defined radio receiver</title>
+  <description>Gqrx is an experimental software defined radio receiver implemented using
+GNU Radio and the Qt GUI toolkit. Currently it works on Linux and Mac and it
+can use the Funcube Dongle, RTL2832U-based DVB-T dongles, OsmoSDR devices and
+USRP devices as input source.
+
+</description>
+  <devel project="hardware:sdr" package="gqrx"/>
+  <url>http://gqrx.dk/</url>
+</package>

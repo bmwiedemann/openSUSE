@@ -1,0 +1,14 @@
+/var/log/minidlna/*.log {
+    su minidlna minidlna
+    compress
+    dateext
+    notifempty
+    missingok
+    nocreate
+    copytruncate
+
+    maxage 60
+    rotate 99
+    size 4M
+}
+

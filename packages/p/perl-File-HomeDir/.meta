@@ -1,0 +1,48 @@
+<package name="perl-File-HomeDir" project="openSUSE:Factory">
+  <title>Find your home and other directories on any platform</title>
+  <description>*File::HomeDir* is a module for locating the directories that are &quot;owned&quot;
+by a user (typicaly your user) and to solve the various issues that arise
+trying to find them consistently across a wide variety of platforms.
+
+The end result is a single API that can find your resources on any
+platform, making it relatively trivial to create Perl software that works
+elegantly and correctly no matter where you run it.
+
+This module provides two main interfaces.
+
+The first is a modern the File::Spec manpage-style interface with a
+consistent OO API and different implementation modules to support various
+platforms. You are *strongly* recommended to use this interface.
+
+The second interface is for legacy support of the original 0.07 interface
+that exported a 'home()' function by default and tied the '%~' variable.
+
+It is generally not recommended that you use this interface, but due to
+back-compatibility reasons they will remain supported until at least 2010.
+
+The '%~' interface has been deprecated. Documentation was removed in 2009,
+Unit test were removed in 2011, usage will issue warnings from 2013, and
+the interface will be removed entirely in 2015 (in line with the general
+Perl toolchain convention of a 10 year support period for legacy APIs that
+are potentially or actually in common use).
+
+Platform Neutrality
+    In the Unix world, many different types of data can be mixed together
+    in your home directory (although on some Unix platforms this is no
+    longer the case, particularly for &quot;desktop&quot;-oriented platforms).
+
+    On some non-Unix platforms, separate directories are allocated for
+    different types of data and have been for a long time.
+
+    When writing applications on top of *File::HomeDir*, you should thus
+    always try to use the most specific method you can. User documents
+    should be saved in 'my_documents', data that supports an application
+    but isn't normally editing by the user directory should go into
+    'my_data'.
+
+    On platforms that do not make any distinction, all these different
+    methods will harmlessly degrade to the main home directory, but on
+    platforms that care *File::HomeDir* will always try to Do The Right
+    Thing(tm).</description>
+  <devel project="devel:languages:perl" package="perl-File-HomeDir"/>
+</package>

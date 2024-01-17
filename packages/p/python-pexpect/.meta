@@ -1,0 +1,6 @@
+<package name="python-pexpect" project="openSUSE:Factory">
+  <title>Pure Python Expect-like module</title>
+  <description>Pexpect is a pure Python module for spawning child applications;
+controlling them; and responding to expected patterns in their output.</description>
+  <devel project="devel:languages:python" package="python-pexpect"/>
+</package>

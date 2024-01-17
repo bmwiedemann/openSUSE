@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14e1de750ba3bc01f703588d0b52465e</srcmd5>
+    <version>4.9.0</version>
+    <time>1594894317</time>
+    <user>dimstar_suse</user>
+    <comment>New packages for architectures where eclipse is not supported</comment>
+    <requestid>818532</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>252d5cd16190d69aafa35d76fdf38683</srcmd5>
+    <version>4.9.0</version>
+    <time>1637136882</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on some misdetected 32-bit architectures</comment>
+    <requestid>931894</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>005e89c2cdfaae9bbb9b62485321e4ed</srcmd5>
+    <version>4.9.0</version>
+    <time>1650657290</time>
+    <user>dimstar_suse</user>
+    <comment>Fake provide to make swtchart installable</comment>
+    <requestid>972024</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>168ed71c65ea86e2bf8d996383583f11</srcmd5>
+    <version>4.9.0</version>
+    <time>1653690485</time>
+    <user>dimstar_suse</user>
+    <comment>build gtk3 part too + Fix bug, where bitness was not correctly detected</comment>
+    <requestid>979394</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>35a32688d515b3b9502a973ac6f1f322</srcmd5>
+    <version>4.9.0</version>
+    <time>1655582790</time>
+    <user>dimstar_suse</user>
+    <comment>fix JNI calls</comment>
+    <requestid>983621</requestid>
+  </revision>
+</revisionlist>

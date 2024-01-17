@@ -1,0 +1,5 @@
+<package name="go1.20" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:go" package="go1.20"/>
+</package>

@@ -1,0 +1,1018 @@
+-------------------------------------------------------------------
+Tue Nov 14 14:45:36 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 7.0.8:
+
+
+## Active Support
+
+*   Fix `TimeWithZone` still using deprecated `#to_s` when `ENV` or `config` to
+    disable it are set.
+
+    *Hartley McGuire*
+
+*   Fix CacheStore#write_multi when using a distributed Redis cache with a connection pool.
+
+    Fixes [#48938](https://github.com/rails/rails/issues/48938).
+
+    *Jonathan del Strother*
+
+
+
+## Active Model
+
+*   No changes.
+
+
+
+## Active Record
+
+*   Fix `change_column` not setting `precision: 6` on `datetime` columns when
+    using 7.0+ Migrations and SQLite.
+
+    *Hartley McGuire*
+
+*   Fix unscope is not working in specific case
+
+    Before:
+    ```ruby
+    Post.where(id: 1...3).unscope(where: :id).to_sql # "SELECT `posts`.* FROM `posts` WHERE `posts`.`id` >= 1 AND `posts`.`id` < 3"
+
+    ```
+
+    After:
+    ```ruby
+    Post.where(id: 1...3).unscope(where: :id).to_sql # "SELECT `posts`.* FROM `posts`"
+    ```
+
+    Fixes #48094.
+
+    *Kazuya Hatanaka*
+
+*   Fix associations to a STI model including a `class_name` parameter
+
+    ```ruby
+    class Product < ApplicationRecord
+      has_many :requests, as: :requestable, class_name: "ProductRequest", dependent: :destroy
+    end
+
+    # STI tables
+    class Request < ApplicationRecord
+      belongs_to :requestable, polymorphic: true
+
+      validate :request_type, presence: true
+    end
+
+    class ProductRequest < Request
+      belongs_to :user
+    end
+    ```
+
+    Accessing such association would lead to:
+
+    ```
+    table_metadata.rb:22:in `has_column?': undefined method `key?' for nil:NilClass (NoMethodError)
+    ```
+
+    *Romain Filinto*
+
+*   Fix `change_table` setting datetime precision for 6.1 Migrations
+
+    *Hartley McGuire*
+
+*   Fix change_column setting datetime precision for 6.1 Migrations
+
+    *Hartley McGuire*
+
+
+## Action View
+
+*   Fix `form_for` missing the hidden `_method` input for models with a
+    namespaced route.
+
+    *Hartley McGuire*
+
+*   Fix `render collection: @records, cache: true` inside `jbuilder` templates
+
+    The previous fix that shipped in `7.0.7` assumed template fragments are always strings,
+    this isn't true with `jbuilder`.
+
+    *Jean Boussier*
+
+
+## Action Pack
+
+*   Fix `HostAuthorization` potentially displaying the value of the
+    X_FORWARDED_HOST header when the HTTP_HOST header is being blocked.
+
+    *Hartley McGuire*, *Daniel Schlosser*
+
+
+
+## Active Job
+
+*   Fix Active Job log message to correctly report a job failed to enqueue
+    when the adapter raises an `ActiveJob::EnqueueError`.
+
+    *Ben Sheldon*
+
+
+
+## Action Mailer
+
+*   No changes.
+
+
+
+## Action Cable
+
+*   No changes.
+
+
+
+## Active Storage
+
+*   No changes.
+
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+
+## Action Text
+
+*   No changes.
+
+
+
+## Railties
+
+*   Omit `webdrivers` gem dependency from `Gemfile` template
+
+    *Sean Doyle*
+
+
+
+
+7.0.7.2:
+
+No changes between this and 7.0.7.2.  This release was just to fix file permissions in the previous release.
+
+7.0.7.1:
+
+
+## Active Support
+
+*   Use a temporary file for storing unencrypted files while editing
+
+    [CVE-2023-38037]
+
+
+
+## Active Model
+
+*   No changes.
+
+
+
+## Active Record
+
+*   No changes.
+
+
+
+## Action View
+
+*   No changes.
+
+
+
+## Action Pack
+
+*   No changes.
+
+
+
+## Active Job
+
+*   No changes.
+
+
+
+## Action Mailer
+
+*   No changes.
+
+
+
+## Action Cable
+
+*   No changes.
+
+
+
+## Active Storage
+
+*   No changes.
+
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+
+## Action Text
+
+*   No changes.
+
+
+
+## Railties
+
+*   No changes.
+
+
+
+
+7.0.7:
+
+
+## Active Support
+
+*   Fix `Cache::NullStore` with local caching for repeated reads.
+
+    *fatkodima*
+
+*   Fix `to_s` with no arguments not respecting custom `:default` formats
+
+    *Hartley McGuire*
+
+*   Fix `ActiveSupport::Inflector.humanize(nil)` raising ``NoMethodError: undefined method `end_with?' for nil:NilClass``.
+
+    *James Robinson*
+
+*   Fix `Enumerable#sum` for `Enumerator#lazy`.
+
+    *fatkodima*, *Matthew Draper*, *Jonathan Hefner*
+
+*   Improve error message when EventedFileUpdateChecker is used without a
+    compatible version of the Listen gem
+
+    *Hartley McGuire*
+
+
+
+## Active Model
+
+*   Error.full_message now strips ":base" from the message.
+
+    *zzak*
+
+*   Add a load hook for `ActiveModel::Model` (named `active_model`) to match the load hook for
+    `ActiveRecord::Base` and allow for overriding aspects of the `ActiveModel::Model` class.
+
+
+
+## Active Record
+
+*   Restores functionality to the missing method when using enums and fixes.
+
+    *paulreece*
+
+*   Fix `StatementCache::Substitute` with serialized type.
+
+    *ywenc*
+
+*   Fix `:db_runtime` on notification payload when application have multiple databases.
+
+    *Eileen M. Uchitelle*
+
+*   Correctly dump check constraints for MySQL 8.0.16+.
+
+    *Steve Hill*
+
+*   Fix `ActiveRecord::QueryMethods#in_order_of` to include `nil`s, to match the
+    behavior of `Enumerable#in_order_of`.
+
+    For example, `Post.in_order_of(:title, [nil, "foo"])` will now include posts
+    with `nil` titles, the same as `Post.all.to_a.in_order_of(:title, [nil, "foo"])`.
+
+    *fatkodima*
+
+*   Revert "Fix autosave associations with validations added on `:base` of the associated objects."
+
+    This change intended to remove the :base attribute from the message,
+    but broke many assumptions which key these errors were stored.
+
+    *zzak*
+
+*   Fix `#previously_new_record?` to return true for destroyed records.
+
+    Before, if a record was created and then destroyed, `#previously_new_record?` would return true.
+    Now, any UPDATE or DELETE to a record is considered a change, and will result in `#previously_new_record?`
+    returning false.
+
+    *Adrianna Chang*
+
+*   Revert breaking changes to `has_one` relationship deleting the old record before the new one is validated.
+
+    *zzak*
+
+*   Fix support for Active Record instances being uses in queries.
+
+    As of `7.0.5`, query arguments were deep duped to avoid mutations impacting
+    the query cache, but this had the adverse effect to clearing the primary key when
+    the query argument contained an `ActiveRecord::Base` instance.
+
+    This broke the `noticed` gem.
+
+    *Jean Boussier*
+
+
+
+## Action View
+
+*   Fix `render collection: @records, cache: true` to cache fragments as bare strings
+
+    Previously it would incorrectly cache them as Action View buffers.
+
+    *Jean Boussier*
+
+*   Don't double-encode nested `field_id` and `field_name` index values
+
+    Pass `index: @options` as a default keyword argument to `field_id` and
+    `field_name` view helper methods.
+
+    *Sean Doyle*
+
+
+
+## Action Pack
+
+*   No changes.
+
+
+
+## Active Job
+
+*   No changes.
+
+
+
+## Action Mailer
+
+*   No changes.
+
+
+
+## Action Cable
+
+*   No changes.
+
+
+
+## Active Storage
+
+*   No changes.
+
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+
+## Action Text
+
+*   No changes.
+
+
+
+## Railties
+
+*   Update default scaffold templates to set 303 (See Other) as status code
+    on redirect for the update action for XHR requests other than GET or POST
+    to avoid issues (e.g browsers trying to follow the redirect using the
+    original request method resulting in double PATCH/PUT)
+
+    *Guillermo Iguaran*
+
+
+
+
+
+7.0.6:
+
+## Active Support
+
+*   Fix `EncryptedConfiguration` returning incorrect values for some `Hash`
+    methods
+
+    *Hartley McGuire*
+
+*   Fix arguments being destructed `Enumerable#many?` with block.
+
+    *Andrew Novoselac*
+
+*   Fix humanize for strings ending with id.
+
+    *fatkodima*
+
+
+
+## Active Model
+
+*   No changes.
+
+
+
+## Active Record
+
+*   Fix autosave associations with validations added on `:base` of the associated objects.
+
+    *fatkodima*
+
+*   Fix result with anonymous PostgreSQL columns of different type from json.
+
+    *Oleksandr Avoiants*
+
+*   Preserve timestamp when setting an `ActiveSupport::TimeWithZone` value to `timestamptz` attribute.
+
+    *fatkodima*
+
+*   Fix where on association with has_one/has_many polymorphic relations.
+
+    Before:
+    ```ruby
+    Treasure.where(price_estimates: PriceEstimate.all)
+    #=> SELECT (...) WHERE "treasures"."id" IN (SELECT "price_estimates"."estimate_of_id" FROM "price_estimates")
+    ```
+
+    Later:
+    ```ruby
+    Treasure.where(price_estimates: PriceEstimate.all)
+    #=> SELECT (...) WHERE "treasures"."id" IN (SELECT "price_estimates"."estimate_of_id" FROM "price_estimates" WHERE "price_estimates"."estimate_of_type" = 'Treasure')
+    ```
+
+    *Lázaro Nixon*
+
+*   Fix decrementing counter caches on optimistically locked record deletion
+
+    *fatkodima*
+
+*   Ensure binary-destined values have binary encoding during type cast.
+
+    *Matthew Draper*
+
+*   Preserve existing column default functions when altering table in SQLite.
+
+    *fatkodima*
+
+*   Remove table alias added when using `where.missing` or `where.associated`.
+
+    *fatkodima*
+
+*   Fix `Enumerable#in_order_of` to only flatten first level to preserve nesting.
+
+    *Miha Rekar*
+
+
+
+## Action View
+
+*   No changes.
+
+
+
+## Action Pack
+
+*   No changes.
+
+
+
+## Active Job
+
+*   Fix error Active Job passed class with `permitted?`.
+
+    *Alex Baldwin*
+
+
+
+## Action Mailer
+
+*   No changes.
+
+
+
+## Action Cable
+
+*   Fix Action Cable Redis configuration with sentinels.
+
+    *Dmitriy Ivliev*
+
+
+
+## Active Storage
+
+*   Fix retrieving rotation value from FFmpeg on version 5.0+.
+
+    In FFmpeg version 5.0+ the rotation value has been removed from tags.
+    Instead the value can be found in side_data_list. Along with
+    this update it's possible to have values of -90, -270 to denote the video
+    has been rotated.
+
+    *Haroon Ahmed*
+
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+
+## Action Text
+
+*   No changes.
+
+
+
+## Railties
+
+*   Avoid escaping paths when editing credentials.
+
+    *Jonathan Hefner*
+
+
+
+-------------------------------------------------------------------
+Tue Jun 27 19:31:11 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 7.0.5.1
+  * https://rubyonrails.org/2023/6/26/Rails-Versions-7-0-5-1-6-1-7-4-have-been-released
+
+-------------------------------------------------------------------
+Mon Jun 26 19:12:31 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 7.0.5
+  * https://rubyonrails.org/2023/5/24/Rails-7-0-5-has-been-released
+
+-------------------------------------------------------------------
+Fri Apr 21 11:21:17 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 7.0.4.3:
+  https://rubyonrails.org/2023/3/13/Rails-7-0-4-3-and-6-1-7-3-have-been-released
+  https://rubyonrails.org/2023/1/24/Rails-7-0-4-2-and-6-1-7-2-have-been-released
+
+-------------------------------------------------------------------
+Fri Jan 27 11:35:52 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- updated to version 7.0.4.1
+  see installed CHANGELOG.md 
+  fix CVE-2022-44566 (bsc#1207450)
+  
+  ## Rails 7.0.4.1 (January 17, 2023) ##
+  
+  *   Make sanitize_as_sql_comment more strict
+  
+      Though this method was likely never meant to take user input, it was
+      attempting sanitization. That sanitization could be bypassed with
+      carefully crafted input.
+  
+      This commit makes the sanitization more robust by replacing any
+      occurrances of "/*" or "*/" with "/ *" or "* /". It also performs a
+      first pass to remove one surrounding comment to avoid compatibility
+      issues for users relying on the existing removal.
+  
+      This also clarifies in the documentation of annotate that it should not
+      be provided user input.
+  
+      [CVE-2023-22794]
+  
+  *   Added integer width check to PostgreSQL::Quoting
+  
+      Given a value outside the range for a 64bit signed integer type
+      PostgreSQL will treat the column type as numeric. Comparing
+      integer values against numeric values can result in a slow
+      sequential scan.
+  
+      This behavior is configurable via
+      ActiveRecord::Base.raise_int_wider_than_64bit which defaults to true.
+  
+      [CVE-2022-44566]
+-------------------------------------------------------------------
+Mon Oct 10 12:54:17 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   Symbol is allowed by default for YAML columns
+  
+      *Étienne Barrié*
+  
+  *   Fix `ActiveRecord::Store` to serialize as a regular Hash
+  
+      Previously it would serialize as an `ActiveSupport::HashWithIndifferentAccess`
+      which is wasteful and cause problem with YAML safe_load.
+  
+      *Jean Boussier*
+  
+  *   Add `timestamptz` as a time zone aware type for PostgreSQL
+  
+      This is required for correctly parsing `timestamp with time zone` values in your database.
+  
+      If you don't want this, you can opt out by adding this initializer:
+  
+      ```ruby
+      ActiveRecord::Base.time_zone_aware_types -= [:timestamptz]
+      ```
+  
+      *Alex Ghiculescu*
+  
+  *   Fix supporting timezone awareness for `tsrange` and `tstzrange` array columns.
+  
+      ```ruby
+      # In database migrations
+      add_column :shops, :open_hours, :tsrange, array: true
+      # In app config
+      ActiveRecord::Base.time_zone_aware_types += [:tsrange]
+      # In the code times are properly converted to app time zone
+      Shop.create!(open_hours: [Time.current..8.hour.from_now])
+      ```
+  
+      *Wojciech Wnętrzak*
+  
+  *   Resolve issue where a relation cache_version could be left stale.
+  
+      Previously, when `reset` was called on a relation object it did not reset the cache_versions
+      ivar. This led to a confusing situation where despite having the correct data the relation
+      still reported a stale cache_version.
+  
+      Usage:
+  
+      ```ruby
+      developers = Developer.all
+      developers.cache_version
+  
+      Developer.update_all(updated_at: Time.now.utc + 1.second)
+  
+      developers.cache_version # Stale cache_version
+      developers.reset
+      developers.cache_version # Returns the current correct cache_version
+      ```
+  
+      Fixes #45341.
+  
+      *Austen Madden*
+  
+  *   Fix `load_async` when called on an association proxy.
+  
+      Calling `load_async` directly an association would schedule
+      a query but never use it.
+  
+      ```ruby
+      comments = post.comments.load_async # schedule a query
+      comments.to_a # perform an entirely new sync query
+      ```
+  
+      Now it does use the async query, however note that it doesn't
+      cause the association to be loaded.
+  
+      *Jean Boussier*
+  
+  *   Fix eager loading for models without primary keys.
+  
+      *Anmol Chopra*, *Matt Lawrence*, and *Jonathan Hefner*
+  
+  *   `rails db:schema:{dump,load}` now checks `ENV["SCHEMA_FORMAT"]` before config
+  
+      Since `rails db:structure:{dump,load}` was deprecated there wasn't a simple
+      way to dump a schema to both SQL and Ruby formats. You can now do this with
+      an environment variable. For example:
+  
+      ```
+      SCHEMA_FORMAT=sql rake db:schema:dump
+      ```
+  
+      *Alex Ghiculescu*
+  
+  *   Fix Hstore deserialize regression.
+  
+      *edsharp*
+  
+  
+
+-------------------------------------------------------------------
+Thu Aug  4 12:52:32 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.3.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.3.1 (July 12, 2022) ##
+  
+  *   Change ActiveRecord::Coders::YAMLColumn default to safe_load
+  
+      This adds two new configuration options The configuration options are as
+      follows:
+      
+      * `config.active_storage.use_yaml_unsafe_load`
+      
+      When set to true, this configuration option tells Rails to use the old
+      "unsafe" YAML loading strategy, maintaining the existing behavior but leaving
+      the possible escalation vulnerability in place.  Setting this option to true
+      is *not* recommended, but can aid in upgrading.
+      
+      * `config.active_record.yaml_column_permitted_classes`
+      
+      The "safe YAML" loading method does not allow all classes to be deserialized
+      by default.  This option allows you to specify classes deemed "safe" in your
+      application.  For example, if your application uses Symbol and Time in
+      serialized data, you can add Symbol and Time to the allowed list as follows:
+      
+      ```
+      config.active_record.yaml_column_permitted_classes = [Symbol, Date, Time]
+      ```
+  
+      [CVE-2022-32224]
+  
+  
+
+-------------------------------------------------------------------
+Sun May 15 15:19:24 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.3
+
+  *   Some internal housekeeping on reloads could break custom `respond_to?`
+      methods in class objects that referenced reloadable constants. See
+      [#44125](https://github.com/rails/rails/issues/44125) for details.
+
+      *Xavier Noria*
+
+  *   Fixed MariaDB default function support.
+
+      Defaults would be written wrong in "db/schema.rb" and not work correctly
+      if using `db:schema:load`. Further more the function name would be
+      added as string content when saving new records.
+
+      *kaspernj*
+
+  *   Fix `remove_foreign_key` with `:if_exists` option when foreign key actually exists.
+
+      *fatkodima*
+
+  *   Remove `--no-comments` flag in structure dumps for PostgreSQL
+
+      This broke some apps that used custom schema comments. If you don't want
+      comments in your structure dump, you can use:
+
+      ```ruby
+      ActiveRecord::Tasks::DatabaseTasks.structure_dump_flags = ['--no-comments']
+      ```
+
+      *Alex Ghiculescu*
+
+  *   Use the model name as a prefix when filtering encrypted attributes from logs.
+
+      For example, when encrypting `Person#name` it will add `person.name` as a filter
+      parameter, instead of just `name`. This prevents unintended filtering of parameters
+      with a matching name in other models.
+
+      *Jorge Manrubia*
+
+  *   Fix quoting of `ActiveSupport::Duration` and `Rational` numbers in the MySQL adapter.
+
+      *Kevin McPhillips*
+
+  *   Fix `change_column_comment` to preserve column's AUTO_INCREMENT in the MySQL adapter
+
+      *fatkodima*
+
+-------------------------------------------------------------------
+Thu Apr 28 05:14:19 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.4 (April 26, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Thu Mar 10 13:21:47 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.2.3
+
+  * no changes
+
+-------------------------------------------------------------------
+Tue Feb 15 07:12:06 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.2 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2.1 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2 (February 08, 2022) ##
+  
+  *   Fix `PG.connect` keyword arguments deprecation warning on ruby 2.7.
+  
+      *Nikita Vasilevsky*
+  
+  *   Fix the ability to exclude encryption params from being autofiltered.
+  
+      *Mark Gangl*
+  
+  *   Dump the precision for datetime columns following the new defaults.
+  
+      *Rafael Mendonça França*
+  
+  *   Make sure encrypted attributes are not being filtered twice.
+  
+      *Nikita Vasilevsky*
+  
+  *   Dump the database schema containing the current Rails version.
+  
+      Since https://github.com/rails/rails/pull/42297, Rails now generate datetime columns
+      with a default precision of 6. This means that users upgrading to Rails 7.0 from 6.1,
+      when loading the database schema, would get the new precision value, which would not match
+      the production schema.
+  
+      To avoid this the schema dumper will generate the new format which will include the Rails
+      version and will look like this:
+  
+      ```
+      ActiveRecord::Schema[7.0].define
+      ```
+  
+      When upgrading from Rails 6.1 to Rails 7.0, you can run the `rails app:update` task that will
+      set the current schema version to 6.1.
+  
+      *Rafael Mendonça França*
+  
+  *   Fix parsing expression for PostgreSQL generated column.
+  
+      *fatkodima*
+  
+  *   Fix `Mysql2::Error: Commands out of sync; you can't run this command now`
+      when bulk-inserting fixtures that exceed `max_allowed_packet` configuration.
+  
+      *Nikita Vasilevsky*
+  
+  *   Fix error when saving an association with a relation named `record`.
+  
+      *Dorian Marié*
+  
+  *   Fix `MySQL::SchemaDumper` behavior about datetime precision value.
+  
+      *y0t4*
+  
+  *   Improve associated with no reflection error.
+  
+      *Nikolai*
+  
+  *   Fix PG.connect keyword arguments deprecation warning on ruby 2.7.
+  
+      Fixes #44307.
+  
+      *Nikita Vasilevsky*
+  
+  *   Fix passing options to `check_constraint` from `change_table`.
+  
+      *Frederick Cheung*
+  
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 06:24:56 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.1 (January 06, 2022) ##
+  
+  *   Change `QueryMethods#in_order_of` to drop records not listed in values.
+  
+      `in_order_of` now filters down to the values provided, to match the behavior of the `Enumerable` version.
+  
+      *Kevin Newton*
+  
+  *   Allow named expression indexes to be revertible.
+  
+      Previously, the following code would raise an error in a reversible migration executed while rolling back, due to the index name not being used in the index removal.
+  
+      ```ruby
+      add_index(:settings, "(data->'property')", using: :gin, name: :index_settings_data_property)
+      ```
+  
+      Fixes #43331.
+  
+      *Oliver Günther*
+  
+  *   Better error messages when association name is invalid in the argument of `ActiveRecord::QueryMethods::WhereChain#missing`.
+  
+      *ykpythemind*
+  
+  *   Fix ordered migrations for single db in multi db environment.
+  
+      *Himanshu*
+  
+  *   Extract `on update CURRENT_TIMESTAMP` for mysql2 adapter.
+  
+      *Kazuhiro Masuda*
+  
+  *   Fix incorrect argument in PostgreSQL structure dump tasks.
+  
+      Updating the `--no-comment` argument added in Rails 7 to the correct `--no-comments` argument.
+  
+      *Alex Dent*
+  
+  *   Fix schema dumping column default SQL values for sqlite3.
+  
+      *fatkodima*
+  
+  *   Correctly parse complex check constraint expressions for PostgreSQL.
+  
+      *fatkodima*
+  
+  *   Fix `timestamptz` attributes on PostgreSQL handle blank inputs.
+  
+      *Alex Ghiculescu*
+  
+  *   Fix migration compatibility to create SQLite references/belongs_to column as integer when migration version is 6.0.
+  
+      Reference/belongs_to in migrations with version 6.0 were creating columns as
+      bigint instead of integer for the SQLite Adapter.
+  
+      *Marcelo Lauxen*
+  
+  *   Fix joining through a polymorphic association.
+  
+      *Alexandre Ruban*
+  
+  *   Fix `QueryMethods#in_order_of` to handle empty order list.
+  
+      ```ruby
+      Post.in_order_of(:id, []).to_a
+      ```
+  
+      Also more explicitly set the column as secondary order, so that any other
+      value is still ordered.
+  
+      *Jean Boussier*
+  
+  *   Fix `rails dbconsole` for 3-tier config.
+  
+      *Eileen M. Uchitelle*
+  
+  *   Fix quoting of column aliases generated by calculation methods.
+  
+      Since the alias is derived from the table name, we can't assume the result
+      is a valid identifier.
+  
+      ```ruby
+      class Test < ActiveRecord::Base
+        self.table_name = '1abc'
+      end
+      Test.group(:id).count
+      # syntax error at or near "1" (ActiveRecord::StatementInvalid)
+      # LINE 1: SELECT COUNT(*) AS count_all, "1abc"."id" AS 1abc_id FROM "1...
+      ```
+  
+      *Jean Boussier*
+  
+  
+
+-------------------------------------------------------------------
+Mon Dec 27 11:24:50 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Don't limit building to specific ruby versions
+
+-------------------------------------------------------------------
+Tue Dec 21 22:09:13 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Rails 7.0 has been released
+
+  https://edgeguides.rubyonrails.org/7_0_release_notes.html
+
+-------------------------------------------------------------------
+Sun Dec 12 22:00:58 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

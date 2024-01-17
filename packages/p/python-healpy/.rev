@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d047023ca4bdc76ba57573333cb34972</srcmd5>
+    <version>1.14.0</version>
+    <time>1608317974</time>
+    <user>dimstar_suse</user>
+    <comment>Python module for calculations on the sphere, based on the C++ library HEALPix</comment>
+    <requestid>856721</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5c9e17af1f80ec40f3cbfab5eeb8df91</srcmd5>
+    <version>1.14.0</version>
+    <time>1611348725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865506</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>187a0ca57785ed9010d0ba2a1b7a70b3</srcmd5>
+    <version>1.15.0</version>
+    <time>1629360077</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912923</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>320b553db28ad1dc9f362af1afdafa32</srcmd5>
+    <version>1.15.2</version>
+    <time>1657617169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988542</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bea4e1557302e5b6a2bcc4d31f3838bf</srcmd5>
+    <version>1.16.1</version>
+    <time>1665504214</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009795</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>13d3a7e139b4eae56aed7343b4806f64</srcmd5>
+    <version>1.16.2</version>
+    <time>1685562889</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.16.2:
+  * Add `resize_alm` function to change a Alm array to a
+    different ell max
+  * Build wheels for Python 3.11
+  * Instructions on how to build an optimized package for healpy</comment>
+    <requestid>1089962</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bd3984fc65bff61668e0f2fc168ae95e</srcmd5>
+    <version>1.16.5</version>
+    <time>1694019417</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108999</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c9497212a28ad4001fb7838388f13bbf</srcmd5>
+    <version>1.16.6</version>
+    <time>1696619641</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115889</requestid>
+  </revision>
+</revisionlist>

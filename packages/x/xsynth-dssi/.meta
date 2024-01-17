@@ -1,0 +1,14 @@
+<package name="xsynth-dssi" project="openSUSE:Factory">
+  <title>Xsynth an analog-style (VCAs-VCF-VCO) synth plugin</title>
+  <description>The xsynth-dssi  package contains the Xsynth-DSSI plugin,
+a classic-analog (VCOs-VCF-VCA) style software synthesizer
+with an editor GUI. Xsynth-DSSI was written by Sean Bolton,
+and was based on Steve Brooke's Xsynth code, but has since
+aquired polyphonic operation, band-limited oscillators,
+a better filter mode, and velocity-sensitive envelopes.
+
+Author:
+--------
+    Sean Bolton &lt;sean@smbolton.com&gt;</description>
+  <devel project="multimedia:libs" package="xsynth-dssi"/>
+</package>

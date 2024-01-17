@@ -1,0 +1,8 @@
+<package name="sqtop" project="openSUSE:Factory">
+  <title>'top' for Squid proxy process</title>
+  <description>Console applicaton to display information about currently active client connections for a Squid proxy in a convenient way.
+
+</description>
+  <devel project="server:proxy" package="sqtop"/>
+  <url>https://github.com/paleg/sqtop</url>
+</package>

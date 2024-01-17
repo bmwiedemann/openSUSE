@@ -1,0 +1,5 @@
+<package name="f2fs-tools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems" package="f2fs-tools"/>
+</package>

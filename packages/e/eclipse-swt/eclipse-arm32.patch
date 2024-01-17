@@ -1,0 +1,13 @@
+--- "eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh"	2018-08-21 14:03:55.000000000 +0200
++++ "eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh"	2020-03-24 21:41:03.246157639 +0100
+@@ -112,6 +112,10 @@
+ 		SWT_ARCH=x86
+ 		AWT_ARCH=i386
+ 		;;
++	"arm")
++		SWT_ARCH=arm
++		AWT_ARCH=aarch32
++		;;
+ 	*)
+ 		SWT_ARCH=$MODEL
+ 		AWT_ARCH=$MODEL

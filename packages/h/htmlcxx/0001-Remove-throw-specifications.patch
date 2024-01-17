@@ -1,0 +1,41 @@
+From 4df6af4271924cb85166c14a9c012966143f5272 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 1 Jun 2021 21:59:57 +0200
+Subject: [PATCH] Remove throw specifications
+
+C++ throw specifications were deprecated in C++11 and
+dropped in C++17.
+---
+ html/CharsetConverter.cc | 2 +-
+ html/CharsetConverter.h  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/html/CharsetConverter.cc b/html/CharsetConverter.cc
+index 4cf50c7..f0358fc 100644
+--- a/html/CharsetConverter.cc
++++ b/html/CharsetConverter.cc
+@@ -7,7 +7,7 @@
+ using namespace std;
+ using namespace htmlcxx;
+ 
+-CharsetConverter::CharsetConverter(const string &from, const string &to) throw (Exception)
++CharsetConverter::CharsetConverter(const string &from, const string &to)
+ {
+ 	mIconvDescriptor = iconv_open(to.c_str(), from.c_str());
+ 	if (mIconvDescriptor == (iconv_t)(-1))
+diff --git a/html/CharsetConverter.h b/html/CharsetConverter.h
+index e5d21d5..11fa909 100644
+--- a/html/CharsetConverter.h
++++ b/html/CharsetConverter.h
+@@ -17,7 +17,7 @@ namespace htmlcxx
+ 						: std::runtime_error(arg) {}
+ 			};
+ 			
+-			CharsetConverter(const std::string &from, const std::string &to) throw (Exception);
++			CharsetConverter(const std::string &from, const std::string &to);
+ 			~CharsetConverter();
+ 			
+ 			std::string convert(const std::string &input);
+-- 
+2.31.1
+

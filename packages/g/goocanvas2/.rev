@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55d0568cffcd864d861bb48d843103c8</srcmd5>
+    <version>2.0.4</version>
+    <time>1613511574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872830</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>743f10010677aa4ecfb958a8057802d1</srcmd5>
+    <version>2.0.4</version>
+    <time>1632251592</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920420 from sbrabec)</comment>
+    <requestid>920583</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1a0ca3c0e4b6b1c54bf8971e0db47cab</srcmd5>
+    <version>2.0.4</version>
+    <time>1705437574</time>
+    <user>anag+factory</user>
+    <comment>Own gtk-doc dir structure (forwarded request 1139236 from dimstar)</comment>
+    <requestid>1139261</requestid>
+  </revision>
+</revisionlist>

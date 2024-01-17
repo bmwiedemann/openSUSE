@@ -1,0 +1,239 @@
+-------------------------------------------------------------------
+Wed Dec 20 21:54:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.12:
+  * Update `markdown-in-html` extra to handle markdown on same
+    line as HTML (#546)
+  * Fix tables with trailing whitespace not being recognized
+  * Fix multiple instances of strong emphasis (`**`)
+    in one line (#541)
+  * Fix incorrect parsing of links after square
+    brackets (#552)
+
+-------------------------------------------------------------------
+Thu Dec  7 22:51:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.11:
+  * [pull #524] Fix angles being escaped in style blocks (issue
+    #523)
+  * [pull #527] Fix base64 images being corrupted in safe mode
+    (issue #526)
+  * [pull #529] Add `breaks` extra with ability to hard break on
+    backslashes (issue #525)
+  * [pull #532] Fix #493 persisting when `code-friendly` extra
+    enabled
+  * [pull #535] Update `_slugify` to use utf-8 encoding (issue
+    #534)
+  * [pull #536] Maintain order of appearance in footnotes
+  * [pull #538] Include HTML headers in TOC
+  * [pull #540] Add mechanism to prevent header ID counter
+    resetting (issue #530)
+  * [pull #520] Allow more relative links in safe mode (issue
+    #517)
+  * [pull #521] Always restore hashed HTML blocks (issue #185)
+  * [pull #522] Add `middle-word-em` extra
+  * [pull #500] Add `<thead>` tag to html-classes extra
+  * [pull #501] Fix link patterns extra matching against internal
+    hashes
+  * [pull #502] Replace deprecated `optparse` with `argparse`
+  * [pull #506] Fix `_uniform_outdent` failing with empty strings
+    (issue #505)
+  * [pull #509] Fix HTML elements not unhashing correctly (issue
+    508)
+  * [pull #511] Remove deprecated `imp` module (issue #510)
+  * [pull #512] Allow link patterns to be passed via extras dict
+  * [pull #513] Fix relative links not working in safe mode
+    (issue #254)
+  * [pull #499] Fix images not being procesed correctly (#498)
+  * [pull #483] Fix hashing nested HTML blocks
+  * [pull #486] Fix backslash being unable to escape raw HTML
+    tags
+  * [pull #482] Add support for telegram spoiler in extras
+  * [pull #485] mermaid support
+  * [pull #487] Fix escaping ampersands in hrefs
+  * [pull #490] Fix indented codeblocks inside fences (#489)
+  * [pull #490] Remove `code-color` extra
+
+-------------------------------------------------------------------
+Tue Nov  8 17:20:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to versino 2.4.6
+  [pull #477] Feature wavedrom support
+  [pull #480] Fix mixing ordered and un-ordered lists combining into single list type
+
+-------------------------------------------------------------------
+Thu Sep 29 15:51:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- python-markdown2 2.4.5
+  [pull #466] Add optional dependencies to setup.py
+- python-markdown2 2.4.4
+  [pull #439] Fix TypeError if html-classes extra is None
+  [pull #441] Remove Python2 support
+  [pull #445] Replace <strike> with <s> in strike extra
+  [pull #446] Fix link patterns extra applying within links
+  [pull #443] create proper entry point
+  [pull #449] Codespans inside link text issue344
+  [pull #451] Underline and HTML comments
+  [pull #453] Links with brackets
+  [pull #454] Fix emacs local variable one-liners
+  [pull #457] Example of the current mixed-paragraph mode behavior in lists
+  [pull #455] Fix code block indentation in lists
+  [pull #434] Fix filter bypass leading to XSS (#362)
+  [pull #464] Fix html-classes extra not applying to code spans
+  [pull #462] Fix pygments block matching
+  [pull #462] Fix pyshell blocks in blockquotes
+  [pull #463] Fix multilevel lists
+  [pull #468] Remove _uniform_outdent_limit function
+  [pull #470] Add support for ordered lists that don't start at 1. (#469)
+  [pull #472] Fix AssertionError with lazy numbered lists (issue #471)
+  [pull #475] Add <ul> and <ol> tags to html-classes extra (#352)
+  [pull #473] XSS test and fix
+- python-markdown2 2.4.3
+  [pull #413] Fix meta indentation
+  [pull #414] Fix code surrounded by blank lines inside blockquote fenced code blocks
+  [pull #417] Fix inline code pipe symbol within tables (issue #399)
+  [pull #418] Fix code block parsing error (issue #327)
+  [pull #419] Fix hr block created when not supposed to (issue #400)
+  [pull #421] Fix backslashes removed by adjacent code blocks (issues #369 and #412)
+  [pull #420] Fix md5-* in resulting HTML when several code blocks follow one by one (issue #355)
+  [pull #422] Fix excessive <br> tags in lists using break-on-newline extra (issue #394)
+  [pull #424] Standardize key and value definitions for metadata extra (issue #423)
+  [pull #427] Fix fenced code blocks breaking lists (issue #426)
+  [pull #429] Fix catastrophic backtracking (Regex DoS) in pyshell blocks.
+  [pull #431] Fix incorrect indentation of fenced code blocks within lists
+  [pull #436] RST admonitions
+  [pull #430] Improve error message if link_patterns forgotten
+  [pull #437] fix compatibility with pygments 2.12
+
+-------------------------------------------------------------------
+Sat Mar 26 18:36:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.2:
+  - [pull #408] Fix for fenced code blocks issue #396
+  - [pull #410] Be more strict on auto linking urls, RE DOS fix
+  - [pull #389] Tables extra: allow whitespace at the end of the underline row
+  - [pull #392] Pyshell extra: enable syntax highlighting if `fenced-code-blocks` is loaded.
+  - [pull #402] Regex DOS bandaid fix
+
+-------------------------------------------------------------------
+Wed Jan 27 23:10:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.4.0 (bsc#1181270):
+  - [pull #377] Fixed bug breaking strings elements in metadata lists
+  - [pull #380] When rendering fenced code blocks, also add the
+    language-LANG class
+  - [pull #387] Regex DoS fixes (CVE-2021-26813, bsc#1183171)
+- Switch off failing tests (gh#trentm/python-markdown2#388),
+  ignore failing test suite.
+
+-------------------------------------------------------------------
+Mon Aug 17 07:51:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.3.9:
+  - [pull #335] Added header support for wiki tables
+  - [pull #336] Reset _toc when convert is run
+  - [pull #353] XSS fix
+  - [pull #350] XSS fix
+- remove 0001-Fix-for-issue-348-incomplete-tags-with-punctuation-a.patch,
+  0002-Fixed-code-highlighting-unit-tests.patch (upstream)
+
+-------------------------------------------------------------------
+Thu May  7 14:35:38 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Add patch to fix unsanitized input for cross-site scripting (boo#1171379)
+  0001-Fix-for-issue-348-incomplete-tags-with-punctuation-a.patch
+- Add patch to fix faling unit test
+  0002-Fixed-code-highlighting-unit-tests.patch
+
+-------------------------------------------------------------------
+Wed Jul 24 08:02:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.3.8:
+  * [pull #317] Temporary fix to issue #150
+  * [pull #319] Stop XML escaping the body of a link
+  * [pull #322] Don't auto link patterns surrounded by triple quotes
+  * [pull #324] Add class configurability to the enclosing tag
+  * [pull #328] Accept [X] as marked task
+- Drop merged patch fix-build.patch
+
+-------------------------------------------------------------------
+Fri Apr  5 12:17:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.3.7:
+  [pull #282] Add TOC depth option
+  [pull #283] Fix to add TOC html to output via CLI
+  [pull #284] Do not remove anchors in safe_mode
+  [pull #288] fixing cuddled-lists with a single list item
+  [pull #292] Fix Wrong rendering of last list element
+  [pull #295] link-patterns fix
+  [pull #300] Replace a deprecated method
+  [pull #301] DeprecationWarning: invalid escape sequence
+  [pull #302] Fix "make test" in Python 3
+  [pull #303] Fix CVE-2018-5773
+  [pull #306] Drop support for legacy Python versions
+  [pull #307] Fix syntax highlighting test cases that depend on Pygments output
+  [pull #308] Add support for Python 3.7
+  [pull #304] Add Wheel package support
+  [pull #312] Fix toc_depth initialization regression
+  [pull #315] XSS fix
+- Drop merged patch:
+  * disable-failing-tests.patch
+- Add patch from upstream to fix build command:
+  * fix-build.patch
+
+-------------------------------------------------------------------
+Sun Jul 29 12:03:40 UTC 2018 - jengelh@inai.de
+
+- Ensure accuracy of description.
+
+-------------------------------------------------------------------
+Wed Jun  6 11:54:36 UTC 2018 - petr@cervinka.net
+
+- Update to version 2.3.5
+  * [pull #238] Fenced code blocks lang with leading space
+  * [pull #260] Search for items only within metadata header
+  * [pull #264] highlightjs language class support
+  * [pull #265] FIPS compliance
+  * [pull #274] Fix for double amp replacement inside link title
+- Update description from upstream
+- Add pygments to BuildRequires
+- Replace devel BuildRequires by base
+- Apply spec-cleaner
+- Add patch disable-failing-tests.patch to disable failing tests,
+  upstream has no fix yet https://github.com/trentm/python-markdown2/issues/281
+
+
+-------------------------------------------------------------------
+Wed Aug 16 14:17:07 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 2.3.4
+  * [pull #243] task list extra visual changes
+  * [pull #245] Don't let "target-blank-lines" break footnotes
+  * [pull #247] Translatable footnote titles
+  * [pull #252] Add pipe escaping in table extension
+- Update to version 2.3.3
+  * [pull #236] Fix for safe_mode links regression
+  * [pull #235] Fix for overgreedy regex in metadata
+  * [pull #237] Fix for header-ids extra non-alpha character issue
+- Update to version 2.3.2
+  * [pull #204] toc extra Python 3 error
+  * [pull #207] Performance improvements
+  * [pull #210] Leading paragraph with fenced code blocks
+  * [pull #212] Target blank links extra
+  * [pull #215] Optional metadata fences
+  * [pull #218] Github style task list
+  * [pull #220] Numbering extra
+  * [pull #224] Metadata in blocks
+  * [pull #230] safe_mode changes
+- Update to version 2.3.1
+  * [pull #131] Markdown "spoiler" extra
+  * [pull #170] html-classes support for table tags
+  * [pull #190] "strike" extra
+  * [pull #201] Allow empty table cells
+
+-------------------------------------------------------------------
+Wed Apr 29 15:45:41 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

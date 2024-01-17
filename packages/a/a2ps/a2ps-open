@@ -1,0 +1,115 @@
+#!/bin/bash
+#
+#   a2ps-open based on xdg-open, see below
+#
+#   The changes are
+#   Copyright 2009, Werner Fink <werner@suse.de>
+#
+#---------------------------------------------
+#   xdg-open
+#
+#   Utility script to open a URL in the registered default application.
+#
+#   Refer to the usage() function below for usage.
+#
+#   Copyright 2006, Kevin Krammer <kevin.krammer@gmx.at>
+#   Copyright 2006, Jeremy White <jwhite@codeweavers.com>
+#
+#   LICENSE:
+#
+#   Permission is hereby granted, free of charge, to any person obtaining a
+#   copy of this software and associated documentation files (the "Software"),
+#   to deal in the Software without restriction, including without limitation
+#   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+#   and/or sell copies of the Software, and to permit persons to whom the
+#   Software is furnished to do so, subject to the following conditions:
+#
+#   The above copyright notice and this permission notice shall be included
+#   in all copies or substantial portions of the Software.
+#
+#   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+#   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+#   THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+#   OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+#   ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+#   OTHER DEALINGS IN THE SOFTWARE.
+#
+#---------------------------------------------
+
+#--------------------------------------
+# Checks for known desktop environments
+# set variable DE to the desktop environments name, lowercase
+
+DE=generic
+detectDE()
+{
+    if test "$KDE_FULL_SESSION" = "true" ; then DE=kde;
+    elif test -n "$GNOME_DESKTOP_SESSION_ID" ; then DE=gnome;
+    elif xprop -root _DT_SAVE_MODE | grep ' = \"xfce4\"$' &>/dev/null ; then DE=xfce;
+    fi
+    case "$DE" in
+    kde)    ;;
+    gnome)  type -p kioclient &>/dev/null || DE=generic ;;
+    xfce)   type -p exo-open &>/dev/null || DE=generic ;;
+    esac
+}
+
+#----------------------------------------------------------------------------
+# kfmclient exec/openURL can give bogus exit value in KDE <= 3.5.4
+# It also always returns 1 in KDE 3.4 and earlier
+# Simply return 0 in such case
+
+kfmclient_fix_exit_code()
+{
+    local -i major minor release
+    local IFS
+    IFS=.
+    read -t 1 major minor release < <(kde-config --version 2>/dev/null |
+	sed -nr '/^KDE:/ {s/KDE:[[:blank:]]+([0-9]*\.[0-9]+\.[0-9]*).+/\1/p;}')
+    ((major > 3))   && return $1
+    ((minor > 5))   && return $1
+    ((release > 4)) && return $1
+    return 0
+}
+
+open_kde()
+{
+    if type -p kioclient &>/dev/null ; then
+	kioclient exec ${1+"$@"}
+    else
+	kfmclient exec ${1+"$@"}
+	kfmclient_fix_exit_code $?
+    fi
+    test $? -eq 0 || exit 1
+}
+
+open_gnome()
+{
+    gnome-open ${1+"$@"}
+    test $? -eq 0 || exit 1
+}
+
+open_xfce()
+{
+    exo-open ${1+"$@"}
+    test $? -eq 0 || exit 1
+}
+
+open_generic()
+{
+    gv ${1+"$@"}
+    test $? -eq 0 || exit 1
+}
+
+detectDE
+
+GS_DEVICE=x11alpha
+GS_OPTIONS=-dNOPLATFONTS
+export GS_DEVICE GS_OPTIONS
+case "$DE" in
+    kde)    open_kde	    ${1+"$@"} ;;
+    gnome)  open_gnome	    ${1+"$@"} ;;
+    xfce)   open_xfce	    ${1+"$@"} ;;
+    *)	    open_generic    ${1+"$@"}
+esac

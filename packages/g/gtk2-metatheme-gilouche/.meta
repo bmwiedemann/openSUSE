@@ -1,0 +1,6 @@
+<package name="gtk2-metatheme-gilouche" project="openSUSE:Factory">
+  <title>openSUSE themes and metathemes for gtk2 and metacity</title>
+  <description>OpenSUSE themes and metathemes for gtk2 and metacity contains several
+themes in openSUSE look: Gilouche, GreyGilouche and Synchonicity.</description>
+  <devel project="GNOME:Factory" package="gtk2-metatheme-gilouche"/>
+</package>

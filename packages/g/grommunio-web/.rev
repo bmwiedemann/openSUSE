@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>905655f9822d2ca48a6b34439df30941</srcmd5>
+    <version>3.1.182.52d9180</version>
+    <time>1674043885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059028</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>51438cb8b8e4880524d6f2c43a90313e</srcmd5>
+    <version>3.1.182.52d9180</version>
+    <time>1674737925</time>
+    <user>dimstar_suse</user>
+    <comment>- Run %post's ipcrm with user privileges [boo#1207487]</comment>
+    <requestid>1061088</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f3d8e6c8d1eaefe32db3397b5673b7a</srcmd5>
+    <version>3.2.43.7ebf7d9</version>
+    <time>1683111397</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 3.2.43.7ebf7d9</comment>
+    <requestid>1084206</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>456a04aa03e075b166f6ed697527bbc1</srcmd5>
+    <version>3.3.0.f7738a0</version>
+    <time>1695664965</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.3</comment>
+    <requestid>1113239</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>03f015865ed3b5628b5b2791d5ee19b5</srcmd5>
+    <version>3.5.1.31715c1e</version>
+    <time>1699616025</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1124816</requestid>
+  </revision>
+</revisionlist>

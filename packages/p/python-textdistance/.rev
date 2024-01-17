@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4455d1bc5798cc0f9a420ffceaef9c09</srcmd5>
+    <version>4.2.0</version>
+    <time>1608729714</time>
+    <user>dimstar_suse</user>
+    <comment>requirement for spyder</comment>
+    <requestid>858234</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>51a9d89ddc9f278392b3292da49575d9</srcmd5>
+    <version>4.2.0</version>
+    <time>1609705636</time>
+    <user>dimstar_suse</user>
+    <comment>- Add extend-timeout.patch switching off timeout on failing test.
+</comment>
+    <requestid>859964</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>556dad7908dcc748daadcd109c9db324</srcmd5>
+    <version>4.2.0</version>
+    <time>1613774645</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 build (no numpy)</comment>
+    <requestid>873578</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1ca1bf7587c424dea8d8657da2545b34</srcmd5>
+    <version>4.2.1</version>
+    <time>1646150645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958292</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7848bca005747d765efcea7575288f23</srcmd5>
+    <version>4.2.1</version>
+    <time>1655582795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983627</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d6a476a25447c1924bad318231cb74d0</srcmd5>
+    <version>4.5.0</version>
+    <time>1675873218</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.0:
+  * Run Python 3.10 tests on CI
+  * Type annotations
+  * Add new DamerauLevenshtein... classes
+  * update rapidfuzz
+  * Ensure that maximum normalised distance is &lt;= 1
+  * Ensure editex parameters are sensible
+  * Ignore inconsistent timings on some comparison tests
+  * add support for rapidfuzz
+- Fix up the download URL due to upstream dropping v.</comment>
+    <requestid>1063712</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44814ff4c3f16c253cd17ef597beb3da</srcmd5>
+    <version>4.6.0</version>
+    <time>1702488958</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.0:
+  * Drop abydos
+  * Remove executable bit from filesystem permissions of
+    README.md
+  * Replace deprecated license_file with license_files in
+    setup.cfg
+
+- skip python 3.6 build (no numpy)
+- required by spyder 4.2.1</comment>
+    <requestid>1132831</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>28205f0ce998eaa1416e07ca6d823212</srcmd5>
+    <version>4.6.1</version>
+    <time>1705353447</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.1:
+  * Remove abydos references from libraries.json</comment>
+    <requestid>1138586</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,50 @@
+--- languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/hunspell/Hunspell.java	2020-01-07 09:39:21.808484761 +0100
++++ languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/hunspell/Hunspell.java	2020-01-07 09:43:30.277876693 +0100
+@@ -87,44 +87,13 @@
+      */
+     protected Hunspell(String libDir) throws UnsatisfiedLinkError, UnsupportedOperationException {
+ 
+-        libFile = libDir != null ? libDir+"/"+libName() : libNameBare();
++        libFile = "@LIBHUNSPELL@";
+         try {	   
+             hsl = (HunspellLibrary)Native.loadLibrary(libFile, HunspellLibrary.class);
+         } catch (UnsatisfiedLinkError urgh) {
+ 
+-            // Oh dear, the library was not found in the file system, let's try the classpath
+-            libFile = libName();
+-            InputStream is = Hunspell.class.getResourceAsStream("/"+libFile);
+-            if (is == null) {
+-                throw new UnsatisfiedLinkError("Can't find "+libFile+
+-                        " in the filesystem nor in the classpath\n"+
+-                        urgh);
+-  }
+-
+-            // Extract the library from the classpath into a temp file.
+-            File lib;
+-            FileOutputStream fos = null;
+-    try {
+-                lib = File.createTempFile("jna", "."+libFile);
+-                lib.deleteOnExit();
+-                fos = new FileOutputStream(lib);
+-                int count;
+-                byte[] buf = new byte[1024];
+-                while ((count = is.read(buf, 0, buf.length)) > 0) {
+-                    fos.write(buf, 0, count);
+-                }
+-
+-    } catch (IOException e) {
+-                throw new Error("Failed to create temporary file for "+libFile, e);
+-
+-            } finally {
+-                try { is.close(); } catch(IOException e) { }
+-                if (fos != null) {
+-                    try { fos.close(); } catch(IOException e) { }
+-                }
+-            }
+-            //System.out.println("Loading temp lib: "+lib.getAbsolutePath());
+-            hsl = (HunspellLibrary)Native.loadLibrary(lib.getAbsolutePath(), HunspellLibrary.class);
++            // Oh dear, the library was not found in the file system
++            urgh.printStackTrace();
+         }
+     }
+ 

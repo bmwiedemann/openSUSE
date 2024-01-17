@@ -1,0 +1,5 @@
+addFilter("hidden-file-or-dir.*components")
+addFilter("script-without-shebang.*components")
+addFilter("non-executable-script.*components")
+addFilter("zero-length.*components.*js")
+addFilter("env-script-interpreter.*components.*node")

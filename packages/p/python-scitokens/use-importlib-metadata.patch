@@ -1,0 +1,61 @@
+From 8f909b3d81fa21af91e1e96a85168e7643faf9d3 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 12 Apr 2023 13:57:02 +1000
+Subject: [PATCH] Use importlib.metadata rather than pkg_resources
+
+pkg_resources is a deprecated API, and a rather heavyweight one. Since
+Python 3.8, the standard library has included importlib.metadata, which
+can do the same functionality we're looking for here. Since we continue
+to support older versions of Python, fallback to importlib_metadata if
+required.
+---
+ requirements.txt                |  1 +
+ setup.py                        |  1 +
+ src/scitokens/utils/keycache.py | 11 ++++++++---
+ 3 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index d767b78..4e260fe 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,2 +1,3 @@
+ cryptography
++importlib_metadata;python_version<'3.8'
+ PyJWT>=2.2.0
+diff --git a/setup.py b/setup.py
+index ad046e6..0ad28c7 100644
+--- a/setup.py
++++ b/setup.py
+@@ -66,6 +66,7 @@ def find_version(path, varname="__version__"):
+     install_requires=[
+         'cryptography',
+         'PyJWT>=1.6.1',
++        "importlib_metadata;python_version<'3.8'",
+         'setuptools'
+     ],
+     extras_require={
+diff --git a/src/scitokens/utils/keycache.py b/src/scitokens/utils/keycache.py
+index 398980f..56385f9 100644
+--- a/src/scitokens/utils/keycache.py
++++ b/src/scitokens/utils/keycache.py
+@@ -6,12 +6,17 @@
+ import os
+ import sqlite3
+ import time
+-import pkg_resources  # part of setuptools
+ import re
+ import logging
++
++try:
++    import importlib.metadata as import_meta
++except ImportError:
++    import importlib_metadata as import_meta
++
+ try:
+-    PKG_VERSION = pkg_resources.require("scitokens")[0].version
+-except pkg_resources.DistributionNotFound as error:
++    PKG_VERSION = import_meta.version("scitokens")
++except import_meta.PackageNotFoundError:
+     # During testing, scitokens won't be installed, so requiring it will fail
+     # Instead, fake it
+     PKG_VERSION = '1.0.0'

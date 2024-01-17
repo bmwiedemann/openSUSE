@@ -1,0 +1,5 @@
+<package name="qore-json-module" project="openSUSE:Factory">
+  <title>Qore JSON Module</title>
+  <description>Provides JSON and JSON-RPC capabilities to Qore; split off from the main Qore library as of v0.8.1.</description>
+  <devel project="devel:languages:misc" package="qore-json-module"/>
+</package>

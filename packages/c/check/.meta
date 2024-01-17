@@ -1,0 +1,10 @@
+<package name="check" project="openSUSE:Factory">
+  <title>Unit Test Framework for C</title>
+  <description>Check is a unit test framework for C. It features a simple interfacefor
+defining unit tests, limitating the developer the less possible. Tests
+are run in a separate address space, so Check cancatch both, assertion
+failures and code errors that cause segmentationfaults or other
+signals. The output of unit tests can be used within source code
+editors and IDEs.</description>
+  <devel project="GNOME:Factory" package="check"/>
+</package>

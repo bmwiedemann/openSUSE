@@ -1,0 +1,6 @@
+[Unit]
+Description=searches for relevant entries in mail log, generates a daily report from this data, and sends them in a (human) readable to specified user
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/lib/postgrey/postgrey_daily_greylist

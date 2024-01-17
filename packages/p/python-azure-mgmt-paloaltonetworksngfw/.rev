@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a34fde68ce9f99c2ecb09eba0e557cd</srcmd5>
+    <version>1.0.0~b1</version>
+    <time>1683213076</time>
+    <user>dimstar_suse</user>
+    <comment>another azure-sdk package</comment>
+    <requestid>1084602</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>21f41deb7f880c292da1c5825f3d31b7</srcmd5>
+    <version>1.0.0~b2</version>
+    <time>1683566648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085286</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>20446840eebd28fa906d3debf9183ab9</srcmd5>
+    <version>1.0.0</version>
+    <time>1689341775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098674</requestid>
+  </revision>
+</revisionlist>

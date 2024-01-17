@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Oct 11 16:08:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to version 0.7.0 
+  * Added support for error handles
+  * Fixed conversion of the German eszett char 
+
+-------------------------------------------------------------------
+Sat May  1 18:38:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * add python 3.9 support 
+
+-------------------------------------------------------------------
+Wed Mar 11 10:05:10 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.5.2
+  - Install package with setuptools
+  - Add python_requires to prevent installation with Python 2 packages
+  - Complete coverage of the Vietnamese alphabet
+  - Removed Python 2 support
+
+-------------------------------------------------------------------
+Thu Apr 18 15:51:20 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Convert to single spec
+- Add %license
+- Update to v0.4.0
+  * Added Python 3 compatibility
+
+-------------------------------------------------------------------
+Mon Jul 23 11:10:34 UTC 2012 - saschpe@suse.de
+
+- Initial version for v0.3
+

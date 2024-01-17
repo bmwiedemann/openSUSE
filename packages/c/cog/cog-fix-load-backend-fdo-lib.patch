@@ -1,0 +1,65 @@
+Index: cog/platform/drm/cog-platform-drm.c
+===================================================================
+--- cog.orig/platform/drm/cog-platform-drm.c
++++ cog/platform/drm/cog-platform-drm.c
+@@ -1360,7 +1360,7 @@ cog_drm_platform_setup(CogPlatform *plat
+ 
+     init_config(COG_DRM_PLATFORM(platform), shell, params);
+ 
+-    if (!wpe_loader_init ("libWPEBackend-fdo-1.0.so")) {
++    if (!wpe_loader_init ("libWPEBackend-fdo-1.0.so.1")) {
+         g_set_error_literal (error,
+                              COG_PLATFORM_WPE_ERROR,
+                              COG_PLATFORM_WPE_ERROR_INIT,
+Index: cog/platform/gtk4/cog-platform-gtk4.c
+===================================================================
+--- cog.orig/platform/gtk4/cog-platform-gtk4.c
++++ cog/platform/gtk4/cog-platform-gtk4.c
+@@ -666,7 +666,7 @@ cog_gtk4_platform_setup(CogPlatform *pla
+ {
+     g_assert_nonnull(platform);
+ 
+-    wpe_loader_init("libWPEBackend-fdo-1.0.so");
++    wpe_loader_init("libWPEBackend-fdo-1.0.so.1");
+     if (!gtk_init_check()) {
+         g_set_error_literal(error, COG_PLATFORM_EGL_ERROR, 0,
+             "GTK initialization failed");
+Index: cog/platform/headless/cog-platform-headless.c
+===================================================================
+--- cog.orig/platform/headless/cog-platform-headless.c
++++ cog/platform/headless/cog-platform-headless.c
+@@ -72,7 +72,7 @@ cog_headless_platform_setup(CogPlatform*
+ {
+     CogHeadlessPlatform *self = COG_HEADLESS_PLATFORM(platform);
+ 
+-    wpe_loader_init("libWPEBackend-fdo-1.0.so");
++    wpe_loader_init("libWPEBackend-fdo-1.0.so.1");
+     wpe_fdo_initialize_shm();
+ 
+     if (params && params[0] != '\0') {
+Index: cog/platform/wayland/cog-platform-wl.c
+===================================================================
+--- cog.orig/platform/wayland/cog-platform-wl.c
++++ cog/platform/wayland/cog-platform-wl.c
+@@ -2490,7 +2490,7 @@ cog_wl_platform_setup(CogPlatform *platf
+ {
+     g_return_val_if_fail (COG_IS_SHELL (shell), FALSE);
+ 
+-    if (!wpe_loader_init ("libWPEBackend-fdo-1.0.so")) {
++    if (!wpe_loader_init ("libWPEBackend-fdo-1.0.so.1")) {
+         g_set_error_literal (error,
+                              COG_PLATFORM_WPE_ERROR,
+                              COG_PLATFORM_WPE_ERROR_INIT,
+Index: cog/platform/x11/cog-platform-x11.c
+===================================================================
+--- cog.orig/platform/x11/cog-platform-x11.c
++++ cog/platform/x11/cog-platform-x11.c
+@@ -772,7 +772,7 @@ cog_x11_platform_setup(CogPlatform *plat
+     s_display = calloc (sizeof (struct CogX11Display), 1);
+     s_window = calloc (sizeof (struct CogX11Window), 1);
+ 
+-    if (!wpe_loader_init ("libWPEBackend-fdo-1.0.so")) {
++    if (!wpe_loader_init ("libWPEBackend-fdo-1.0.so.1")) {
+         g_set_error_literal (error,
+                              COG_PLATFORM_WPE_ERROR,
+                              COG_PLATFORM_WPE_ERROR_INIT,

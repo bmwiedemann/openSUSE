@@ -1,0 +1,84 @@
+diff -purN libs/imap/imapd.dist.in libs/imap/imapd.dist.in
+--- libs/imap/imapd.dist.in	2021-03-01 13:29:08.000000000 +0100
++++ libs/imap/imapd.dist.in	2021-03-02 08:28:34.862607943 +0100
+@@ -21,7 +21,7 @@
+ #
+ # ADDRESS=127.0.0.1
+ 
+-ADDRESS=0
++ADDRESS=127.0.0.1
+ 
+ ##NAME: PORT:1
+ #
+@@ -57,7 +57,7 @@ MAXDAEMONS=40
+ #
+ #  Maximum number of connections to accept from the same IP address
+ 
+-MAXPERIP=4
++MAXPERIP=20
+ 
+ ##NAME: PIDFILE:0
+ #
+@@ -480,7 +480,7 @@ HEADERFROM=X-IMAP-Sender
+ # The default setting is going to be NO, so you'll have to manually flip
+ # it to yes.
+ 
+-IMAPDSTART=NO
++IMAPDSTART=YES
+ 
+ ##NAME: MAILDIRPATH:0
+ #
+diff -purN libs/imap/imapd-ssl.dist.in libs/imap/imapd-ssl.dist.in
+--- libs/imap/imapd-ssl.dist.in	2021-03-01 13:29:07.000000000 +0100
++++ libs/imap/imapd-ssl.dist.in	2021-03-02 08:30:10.370603684 +0100
+@@ -72,7 +72,7 @@ SSLLOGGEROPTS="-name=imapd-ssl"
+ #
+ #  Whether or not to start IMAP over SSL on simap port:
+ 
+-IMAPDSSLSTART=NO
++IMAPDSSLSTART=YES
+ 
+ ##NAME: IMAPDSTARTTLS:0
+ #
+@@ -313,7 +313,7 @@ TLS_VERIFYPEER=NONE
+ # automatically created, TLS_CACHESIZE bytes long, and used as a cache
+ # buffer.
+ 
+-TLS_CACHEFILE=@localstatedir@/couriersslimapcache
++TLS_CACHEFILE=@localstatedir@/cache/courier-imap/sslimapcache
+ TLS_CACHESIZE=524288
+ 
+ ##NAME: TLS_ALPN:0
+diff -purN libs/imap/pop3d.dist.in libs/imap/pop3d.dist.in
+--- libs/imap/pop3d.dist.in	2021-03-01 13:29:08.000000000 +0100
++++ libs/imap/pop3d.dist.in	2021-03-02 08:31:18.846600632 +0100
+@@ -146,7 +146,7 @@ LOGGEROPTS="-name=pop3d"
+ # with enough platforms so that people get annoyed with having to flip it to
+ # YES every time.
+ 
+-POP3DSTART=NO
++POP3DSTART=YES
+ 
+ ##NAME: POP3_LOG_DELETIONS:0
+ #
+diff -purN libs/imap/pop3d-ssl.dist.in libs/imap/pop3d-ssl.dist.in
+--- libs/imap/pop3d-ssl.dist.in	2021-03-01 13:29:07.000000000 +0100
++++ libs/imap/pop3d-ssl.dist.in	2021-03-02 08:32:03.754598629 +0100
+@@ -61,7 +61,7 @@ SSLLOGGEROPTS="-name=pop3d-ssl"
+ #
+ #  Whether or not to start POP3 over SSL on spop3 port:
+ 
+-POP3DSSLSTART=NO
++POP3DSSLSTART=YES
+ 
+ ##NAME: POP3_STARTTLS:0
+ #
+@@ -310,7 +310,7 @@ TLS_VERIFYPEER=NONE
+ # problems with SSL clients.  Disable SSL caching by commenting out the
+ # following settings:
+ 
+-TLS_CACHEFILE=@localstatedir@/couriersslpop3cache
++TLS_CACHEFILE=@localstatedir@/cache/courier-imap/sslpop3cache
+ TLS_CACHESIZE=524288
+ 
+ ##NAME: TLS_ALPN:0

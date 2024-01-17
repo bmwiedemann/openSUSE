@@ -1,0 +1,8 @@
+<package name="clicfs" project="openSUSE:Factory">
+  <title>Compressed Loop Image Container</title>
+  <description>Clic FS is a FUSE file system to mount a Compressed Loop Image
+Container. It has several features that make it a good choice for live
+systems. It will compress a Loop Image and export it as read write,
+creating a copy on write behaviour.</description>
+  <devel project="filesystems" package="clicfs"/>
+</package>

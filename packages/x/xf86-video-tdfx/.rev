@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70116834d37672f94b158aa535488636</srcmd5>
+    <version>1.4.4</version>
+    <time>1336471402</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115442</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>70116834d37672f94b158aa535488636</srcmd5>
+    <version>1.4.4</version>
+    <time>1340184350</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2e9a19370fe245f662140dced7a22ee5</srcmd5>
+    <version>1.4.5</version>
+    <time>1347723069</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134021</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>2e9a19370fe245f662140dced7a22ee5</srcmd5>
+    <version>1.4.5</version>
+    <time>1359110616</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>93869c0086164a5f2d69d3706e517958</srcmd5>
+    <version>1.4.5</version>
+    <time>1363953941</time>
+    <user>coolo</user>
+    <comment>- Add mibstore.patch, fixes build with xorg-server 1.14 
+
+- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333)</comment>
+    <requestid>160464</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>684ca0637fac0e04255cab35344257ef</srcmd5>
+    <version>1.4.5</version>
+    <time>1377248994</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195919</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>684ca0637fac0e04255cab35344257ef</srcmd5>
+    <version>1.4.5</version>
+    <time>1379665032</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>684ca0637fac0e04255cab35344257ef</srcmd5>
+    <version>1.4.5</version>
+    <time>1409303715</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>5e483012f11f49724c64585d9846b998</srcmd5>
+    <version>1.4.5</version>
+    <time>1423595833</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Rename-XSERVER_PCIACCESS-to-XSERVER_LIBPCIACCESS.patch/
+  U_dri-Stop-uselessly-initializing-the-ValidateTree-hoo.patch
+  * fixes build against xorg-server 1.17</comment>
+    <requestid>284478</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ac4ffb228f211367d0c48e1c1d17e510</srcmd5>
+    <version>1.4.6</version>
+    <time>1424779349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.6:
+  * Remove mibstore.h
+  * dri: Stop (uselessly) initializing the ValidateTree hooks
+  * Define local PCI IDs instead of using xf86PciInfo.h
+  * Rename XSERVER_PCIACCESS to XSERVER_LIBPCIACCESS
+  * Use new pci_device_(un)map_range functions instead of deprecated ones
+  * Remove unreachable breaks after return statements
+  * Use the PCI ID macros instead of hardcoded values
+  * Unmap MMIO ranges for all chips
+  * Add more PCI IDs for supported chips
+- supersedes U_Remove-mibstore.h.patch, 
+  U_Rename-XSERVER_PCIACCESS-to-XSERVER_LIBPCIACCESS.patch,
+  U_dri-Stop-uselessly-initializing-the-ValidateTree-hoo.patch</comment>
+    <requestid>287323</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>aa36017208236d5c1369d36ffe777414</srcmd5>
+    <version>1.4.6</version>
+    <time>1480693386</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+  * Adapt Block/WakeupHandler signature for ABI 23</comment>
+    <requestid>442928</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9d4a46993d2f0ee4cc5e9adb56c4f7d4</srcmd5>
+    <version>1.4.7</version>
+    <time>1485250507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.6
+  * Adapt Block/WakeupHandler signature for ABI 23
+- supersedes U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch</comment>
+    <requestid>451385</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>289e39364500441163140bffa7d45d2f</srcmd5>
+    <version>1.5.0</version>
+    <time>1550573964</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.5.0
+  * This is a maintenance release of 3dfx DDX for X.Org X Server.
+    The DDX compiles cleanly without compilation warnings on 
+    X Server 1.19.6.</comment>
+    <requestid>676840</requestid>
+  </revision>
+</revisionlist>

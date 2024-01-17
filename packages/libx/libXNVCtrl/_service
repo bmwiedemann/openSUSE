@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/NVIDIA/nvidia-settings.git</param>
+    <param name="revision">510.47.03</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="subdir">src/libXNVCtrl</param>
+    <param name="filename">libXNVCtrl</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>

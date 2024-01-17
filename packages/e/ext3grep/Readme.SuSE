@@ -1,0 +1,7 @@
+1. Calculate when the files were deleted - e.g. to restore files that were deleted on 27th May 2008 on sda9:
+
+$ perl -e 'use POSIX; print strftime("%s", 0, 0, 0, 26, 5, 2008-1900); print "\n"'
+
+2. Run ext3grep:
+
+$ ext3grep /dev/sda9 --restore-all --after=1214431200

@@ -1,0 +1,40 @@
+.TH ethersrv-linux 8 "December 30, 2020" etherdfs-server
+.SH NAME
+ethersrv-linux \- Ethernet DOS Filesystem server
+.SH SYNOPSIS
+.B ethersrv-linux
+.RB [ \-f ]
+.I iface
+.I directory
+.RI [ directory ...]
+.SH DESCRIPTION
+.B ethersrv-linux
+serves the named
+.I directories
+over the interface
+.IR iface .
+.PP
+The first exported directory will be mapped to C:, the second to D:,
+etc.
+.SH OPTIONS
+.TP
+.B \-f
+stay in the foreground (do not daemonize the process).
+.SH NOTES
+.B ethersrv-linux
+needs the
+.B CAP_NEW_RAW
+system capability, which usually means that it needs to be run as
+root.
+.PP
+The exported directories
+.I should
+reside on FAT filesystems; this ensures that FAT attributes and
+mixed-case filenames are handled correctly, and that '.' and '..'
+appear in the expected order.
+.SH AUTHORS
+.B ethersrv-linux
+was written by Mateusz Viste.
+This manual page was adapted from the provided documentation by
+Stephen Kitt, for the Debian GNU/Linux system (but it may be used by
+others).

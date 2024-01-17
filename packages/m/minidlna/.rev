@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6c7ac259396318db62b18983716056c7</srcmd5>
+    <version>1.2.1</version>
+    <time>1540451323</time>
+    <user>dimstar_suse</user>
+    <comment>Proposal to have a dlna server in Factory</comment>
+    <requestid>643710</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9f096644afe698164fd1825f6e2af6c7</srcmd5>
+    <version>1.2.1</version>
+    <time>1544539669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656760</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>abc09de8e5bf70c6449d67946b2b1cc6</srcmd5>
+    <version>1.2.1</version>
+    <time>1591654018</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch minidlna-multiple_definition.patch to fix
+  multiple definition linker errors with recent gcc 
+  (from https://706916.bugs.gentoo.org/attachment.cgi?id=641058) (forwarded request 812494 from oertel)</comment>
+    <requestid>812495</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>011bc20ad08651df906e390869568e24</srcmd5>
+    <version>1.3.0</version>
+    <time>1606913888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852342</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5fd6ebc3be29a6b96de50508904bddc3</srcmd5>
+    <version>1.3.0</version>
+    <time>1607349740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853577</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>37db4af3166aa6f6bdd6e23fa515da43</srcmd5>
+    <version>1.3.0</version>
+    <time>1633959100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924520</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>535cb7b968d06e89b8458e05915b938a</srcmd5>
+    <version>1.3.1</version>
+    <time>1646671645</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.3.1 (bsc#1196814)
+  - Fixed a potential crash in SSDP request parsing.
+  - Fixed a configure script failure on some platforms.
+  - Protect against DNS rebinding attacks. (CVE-2022-26505)
+  - Fix an socket leakage issue on some platforms.
+  - Minor bug fixes.
+- added patch minidlna-1.3.0-1.3.1.patch as the new version
+  was not tagged or released upstream
+- added BR for automake to fix build and readd autogen call
+- drop patch minidlna-multiple_definition.patch (upstreamed)
+- add &quot;su minidlna minidlna&quot; to the logrotate config</comment>
+    <requestid>959869</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1360533dc6dc250ead766093dfae4513</srcmd5>
+    <version>1.3.2</version>
+    <time>1664797610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007621</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1e619799d1cd4026d6424ef3a7093fa7</srcmd5>
+    <version>1.3.3</version>
+    <time>1692795492</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105290</requestid>
+  </revision>
+</revisionlist>

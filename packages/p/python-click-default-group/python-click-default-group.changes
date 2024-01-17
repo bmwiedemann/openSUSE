@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Fri Dec  1 11:46:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.4:
+  * README, test updates
+  * packaging updates
+- drop compatibility-click-8.patch (upstream)
+
+-------------------------------------------------------------------
+Wed Aug 11 10:57:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add compatibility-click-8.patch to fix compatiblity with
+  click 8 (gh#click-contrib/click-default-group#18).
+
+-------------------------------------------------------------------
+Sun Aug 23 17:02:56 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activated test suite
+
+-------------------------------------------------------------------
+Mon Jan  6 08:24:05 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.2.2

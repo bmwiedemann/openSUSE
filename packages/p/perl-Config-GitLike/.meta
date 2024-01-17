@@ -1,0 +1,10 @@
+<package name="perl-Config-GitLike" project="openSUSE:Factory">
+  <title>Git-compatible config file parsing</title>
+  <description>This module handles interaction with configuration files of the style used
+by the version control system Git. It can both parse and modify these
+files, as well as create entirely new ones.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Config-GitLike"/>
+  <url>http://search.cpan.org/dist/Config-GitLike</url>
+</package>

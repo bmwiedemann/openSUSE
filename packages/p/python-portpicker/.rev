@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1859c2c2267a6b28ecbb44592a7d36fc</srcmd5>
+    <version>1.1.0</version>
+    <time>1449686957</time>
+    <user>dimstar_suse</user>
+    <comment>- New dependency for google-cloud-sdk</comment>
+    <requestid>347021</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>36ee2c7f9ee10c67419f96634cef350e</srcmd5>
+    <version>1.3.1</version>
+    <time>1558532469</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.3.1
+  * Fix a race condition in `pick_unused_port()` involving the free ports set.
+  * Adds an optional `portserver_address` parameter to `pick_unused_port()` so
+    that callers can specify their own regardless of `os.environ`.
+  * `pick_unused_port()` now raises `NoFreePortFoundError` when no available port
+    could be found rather than spinning in a loop trying forever.
+  * Fall back to `socket.AF_INET` when `socket.AF_UNIX` support is not available
+    to communicate with a portserver.
+  * Introduced `add_reserved_port()` and `return_port()` APIs to allow ports to
+    be recycled and allow users to bring ports of their own.
+  * Changed default port range to 15000-24999 to avoid ephemeral ports.
+  * Portserver bugfix.
+- convert to single spec
+- run test</comment>
+    <requestid>704702</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b59ae16809d4be622ade8f1023365549</srcmd5>
+    <version>1.3.1</version>
+    <time>1589892559</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
+    <requestid>807043</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a601a76fcbb985b5a0be4f11145a2730</srcmd5>
+    <version>1.5.0</version>
+    <time>1642371499</time>
+    <user>dimstar_suse</user>
+    <comment>- update to to 1.5.0:
+  * python 3.10 support</comment>
+    <requestid>946778</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1e8c4efd3fd69137936c2031d3e32681</srcmd5>
+    <version>1.5.0</version>
+    <time>1649370469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967390</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>586357032007704f2e999ee82fd4e910</srcmd5>
+    <version>1.5.2</version>
+    <time>1658243997</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.5.2:
+  * Do not re-pick a known used (not-yet-returned) port when running stand alone
+    without a portserver.
+  * When not using a portserver *(you really should)*, try the `bind(0)`
+    approach before hunting for random unused ports. More reliable per</comment>
+    <requestid>990215</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>821995b454048f0a4298269270d342c7</srcmd5>
+    <version>1.6.0</version>
+    <time>1704919928</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.0:
+  * Resolve an internal source of potential flakiness on the
+    bind/close port
+  * checks when used in active environments by calling
+    `.shutdown()` before `.close()`.
+  * Add `-h` and `--help` text to the command line tool.
+  * The command line interface now defaults to associating the
+    returned port with its parent process PID (usually the calling
+    script) when no argument was given as that makes more sense.
+  * When portpicker is used as a command line tool from a
+    script, if a port is chosen without a portserver it can now
+    be kept bound to a socket by a child process for a user
+    specified timeout. When successful, this helps
+    minimize race conditions as subsequent portpicker CLI
+    invocations within the timeout window cannot choose the same
+    port.
+  * Some pylint based refactorings to portpicker and
+    portpicker\_test.
+  * Drop 3.6 from our CI test matrix and metadata. It probably
+    still works there, but expect our unittests to include
+    3.7-ism's in the future. We'll *attempt* to avoid modern
+    constructs in portpicker.py itself but zero
+    guarantees. Using an old Python? Use an old portpicker.</comment>
+    <requestid>1137821</requestid>
+  </revision>
+</revisionlist>

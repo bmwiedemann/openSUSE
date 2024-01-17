@@ -1,0 +1,5 @@
+<package name="python-click-default-group" project="openSUSE:Factory">
+  <title></title>
+  <description>Extends click.Group to invoke a command without explicit subcommand name</description>
+  <devel project="devel:languages:python" package="python-click-default-group"/>
+</package>

@@ -1,0 +1,38 @@
+commit 8615731637a116f7b9299c6122a0e058d43a4f6d
+Author: Dominique Leuenberger <dimstar@opensuse.org>
+Date:   Tue Dec 19 13:28:29 2023 +0100
+
+    cmake: Ensure git exists before executing it
+    
+    CMake 3.28 has turned stricter when executing string(REPLACE …) and
+    expects four or more commands. In case of distro package builds from
+    tarball, it happens that git is not present. CTags.cmake tries to
+    catch that by veriying the exit status of the command, but as there
+    is in fact git | awk, awk returns 0 even when git does not exist.
+    
+    Ensure that the variable submodules has been defined before trying
+    to replace substrings in this variable.
+    
+    Signed-off-by: Dominique Leuenberger <dimstar@opensuse.org>
+
+diff --git a/cmake/modules/CTags.cmake b/cmake/modules/CTags.cmake
+index c3e1b3799b0..772f647f947 100644
+--- a/cmake/modules/CTags.cmake
++++ b/cmake/modules/CTags.cmake
+@@ -3,13 +3,14 @@ find_program(CTAGS_EXECUTABLE ctags)
+ function(add_tags name)
+   cmake_parse_arguments(TAGS "" "SRC_DIR;TAG_FILE" "EXCLUDE_OPTS;EXCLUDES" ${ARGN})
+   set(excludes ${TAGS_EXCLUDES})
++  find_package(Git)
+   if(TAGS_EXCLUDE_OPTS)
+     # always respect EXCLUDES_OPTS
+     list(APPEND excludes ${TAGS_EXCLUDE_OPTS})
+-  else()
++  elseif(Git_FOUND)
+     # exclude the submodules under SRC_DIR by default
+     execute_process(
+-      COMMAND git config --file .gitmodules --get-regexp path
++      COMMAND ${GIT_EXECUTABLE} config --file .gitmodules --get-regexp path
+       COMMAND awk "/${TAGS_SRC_DIR}/ { print $2 }"
+       WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+       RESULT_VARIABLE result_code

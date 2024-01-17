@@ -1,0 +1,44 @@
+diff --git a/check_apcupsd b/check_apcupsd
+index 77f5ccd..a9fb663 100644
+--- a/check_apcupsd
++++ b/check_apcupsd
+@@ -85,6 +85,7 @@ usage()
+ 	echo "    linefreq = input line frequency, measured in Hertz"
+ 	echo "    battdate = battery replacement date"
+ 	echo "    model    = model"
++	echo "    status = power status"
+ 	echo "    maxlinev = max input voltage, measured in Volts"
+ 	echo "    minlinev = min input voltage, measured in Volts"
+ 	exit 3
+@@ -122,6 +123,7 @@ done
+ if [ "$ARG" != "bcharge" -a "$ARG" != "itemp" -a "$ARG" != "loadpct" \
+ 	-a "$ARG" != "timeleft" -a "$ARG" != "linev" -a "$ARG" != "outputv" \
+ 	-a "$ARG" != "battv" -a "$ARG" != "battdate" -a "$ARG" != "model" \
++        -a "$ARG" != "status" \
+ 	-a "$ARG" != "maxlinev" -a "$ARG" != "minlinev" -a "$ARG" != "linefreq" ]; then
+ 	usage
+ fi
+@@ -176,6 +178,9 @@ battdate)
+ model)
+ 	VALUE=`echo $VALUE | cut -d ' ' -f 3-`
+ 	;;
++status)
++	VALUE=`echo $VALUE | cut -d ' ' -f 3-`
++	;;
+ *)
+ 	VALUE=`echo $VALUE | sed 's/.*:  *\([0-9.][0-9.]*\)[^0-9.].*/\1/'`
+ 	if [ "$VALUE" != "0" ]; then
+@@ -306,6 +311,13 @@ linefreq)
+ 	fi
+ 	echo "OK - Input frequency: $VALUE Hz"
+ 	;;
++status)
++	if [ "$VALUE" != "ONLINE" ]; then
++	        echo "CRITICAL - Power Status: $VALUE"
++    	        exit 2
++	fi
++	echo "OK - Power Status: $VALUE"
++	;;
+ battdate)
+ 	echo "Battery replacement date: $VALUE"
+ 	;;

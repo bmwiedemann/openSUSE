@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>28cc325eacac2ff3e778a3fe386dff0d</srcmd5>
+    <version>7.0.0</version>
+    <time>1665754917</time>
+    <user>dimstar_suse</user>
+    <comment>New package, which could be interesting.</comment>
+    <requestid>1010461</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ad0edb47108f3be4568da68ed11daaad</srcmd5>
+    <version>7.0.0</version>
+    <time>1704281577</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136468</requestid>
+  </revision>
+</revisionlist>

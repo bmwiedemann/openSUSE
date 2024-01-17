@@ -1,0 +1,33 @@
+<project name="SWT" default="buildSWTFromSources" basedir=".">
+
+  <macrodef name="build">
+    <attribute name="bundleName"/>
+
+    <sequential>
+      <delete dir="eclipse.platform.swt.binaries/bundles/@{bundleName}/@dot"/>
+      <delete dir="eclipse.platform.swt.binaries/bundles/@{bundleName}/temp.folder"/>
+      <delete file="eclipse.platform.swt.binaries/bundles/@{bundleName}/swt.jar"/>
+
+      <ant antfile="buildSWT.xml" dir="eclipse.platform.swt/bundles/org.eclipse.swt" target="build_libraries">
+        <property name="swt.os" value="linux"/>
+        <property name="swt.ws" value="gtk"/>
+        <property name="swt.arch" value="${swt.arch}"/>
+      </ant>	  
+      <ant dir="eclipse.platform.swt.binaries/bundles/@{bundleName}"/>
+      <property file="eclipse.platform.swt.binaries/bundles/@{bundleName}/build.properties" prefix="@{bundleName}."/>
+      <echo message="bundling ${@{bundleName}.bin.includes}"/>
+      <jar jarfile="@{bundleName}.jar" compress="false">
+        <zipfileset src="eclipse.platform.swt.binaries/bundles/@{bundleName}/swt.jar"/>
+        <fileset dir="eclipse.platform.swt.binaries/bundles/@{bundleName}" includes="${@{bundleName}.bin.includes}"/>
+      </jar>
+
+      <delete dir="eclipse.platform.swt.binaries/bundles/@{bundleName}/@dot"/>
+      <delete dir="eclipse.platform.swt.binaries/bundles/@{bundleName}/temp.folder"/>
+      <delete file="eclipse.platform.swt.binaries/bundles/@{bundleName}/swt.jar"/>
+    </sequential>
+  </macrodef>
+
+  <target name="buildSWTFromSources">
+    <build bundleName="org.eclipse.swt.gtk.linux.${swt.arch}"/>
+  </target>
+</project>

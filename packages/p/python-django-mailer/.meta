@@ -1,0 +1,11 @@
+<package name="python-django-mailer" project="openSUSE:Factory">
+  <title>A reusable Django app for queuing the sending of email</title>
+  <description>A reusable Django app for queuing and throttling of email sending, scheduled sending,
+consolidation of multiple notifications into single emails and logging of mail failures.
+
+Author:
+--------
+    James Tauber &lt;jtauber@jtauber.com&gt;
+</description>
+  <devel project="devel:languages:python:django" package="python-django-mailer"/>
+</package>

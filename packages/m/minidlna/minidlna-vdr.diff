@@ -1,0 +1,20 @@
+Index: minidlna-1.3.2/utils.c
+===================================================================
+--- minidlna-1.3.2.orig/utils.c
++++ minidlna-1.3.2/utils.c
+@@ -404,6 +404,7 @@ is_video(const char * file)
+ #ifdef TIVO_SUPPORT
+ 		ends_with(file, ".TiVo") ||
+ #endif
++                ends_with(file, ".vdr") ||
+ 		ends_with(file, ".mov") || ends_with(file, ".3gp") ||
+ 		ends_with(file, ".rm") || ends_with(file, ".rmvb") ||
+ 		ends_with(file, ".webm"));
+@@ -418,6 +419,7 @@ is_audio(const char * file)
+ 		ends_with(file, ".m4a") || ends_with(file, ".aac")  ||
+ 		ends_with(file, ".mp4") || ends_with(file, ".m4p")  ||
+ 		ends_with(file, ".wav") || ends_with(file, ".ogg")  ||
++		ends_with(file, ".vdr") ||
+ 		ends_with(file, ".pcm") || ends_with(file, ".3gp")  ||
+ 		ends_with(file, ".dsf") || ends_with(file, ".dff"));
+ }

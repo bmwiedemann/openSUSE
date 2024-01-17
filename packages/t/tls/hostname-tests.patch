@@ -1,0 +1,107 @@
+Author: Sergei Golovan
+Description: Patch makes the client socket to connect to localhost
+ instead of [info hostname] to prevent intermittent test failures
+ inside pbuilder or sbuild chroots. Also, account for a change in
+ error message "unsupported protocol" instead of "wron version number".
+Last-Modified: Thu, 18 Jul 2019 14:58:04 +0300
+
+--- a/tests/tlsIO.test
++++ b/tests/tlsIO.test
+@@ -428,7 +428,7 @@
+ 	package require tls
+ 	set timer [after 2000 "set x done"]
+     }
+-    puts $f "set f \[tls::socket -server accept -certfile $serverCert -cafile $caCert -keyfile $serverKey -myaddr [info hostname] 8831 \]"
++    puts $f "set f \[tls::socket -server accept -certfile $serverCert -cafile $caCert -keyfile $serverKey -myaddr localhost 8831 \]"
+     puts $f {
+ 	proc accept {sock addr port} {
+             global x
+@@ -445,7 +445,7 @@
+     set f [open "|[list $::tcltest::tcltest script] 2> /dev/null" r]
+     gets $f x
+     if {[catch {tls::socket -certfile $clientCert -cafile $caCert \
+-	-keyfile $clientKey [info hostname] 8831} sock]} {
++	-keyfile $clientKey localhost 8831} sock]} {
+         set x $sock
+     } else {
+         puts $sock hello
+@@ -635,7 +635,7 @@
+ 	set done 1
+     }
+     set cs [tls::socket -certfile $clientCert -cafile $caCert \
+-	-keyfile $clientKey [info hostname] 8830]
++	-keyfile $clientKey localhost 8830]
+     close $cs
+ 
+     vwait done
+@@ -1042,7 +1042,7 @@
+     }
+     set s1 [tls::socket \
+ 	-certfile $clientCert -cafile $caCert -keyfile $clientKey \
+-    	[info hostname] 8823]
++    	localhost 8823]
+     set timer [after 10000 "set x timed_out"]
+     vwait x
+     after cancel $timer
+@@ -1095,7 +1095,7 @@
+     }
+     set s1 [tls::socket \
+ 	    -certfile $clientCert -cafile $caCert -keyfile $clientKey \
+-	    -async [info hostname] 8830]
++	    -async localhost 8830]
+     # when doing an in-process client/server test, both sides need
+     # to be non-blocking for the TLS handshake  Also make sure to
+     # return the channel to line buffering mode (TLS sets it to 'none').
+@@ -1139,7 +1139,7 @@
+ 	    -server accept 8831]
+     set c [tls::socket \
+ 	    -certfile $clientCert -cafile $caCert -keyfile $clientKey \
+-	    [info hostname] 8831]
++	    localhost 8831]
+     # This differs from socket-9.1 in that both sides need to be
+     # non-blocking because of TLS' required handshake
+     fconfigure $c -blocking 0
+@@ -1186,7 +1186,7 @@
+ 	    -server accept 8832]
+     set c [tls::socket \
+ 	    -certfile $clientCert -cafile $caCert -keyfile $clientKey \
+-	    [info hostname] 8832]
++	    localhost 8832]
+     fconfigure $c -blocking 0 -trans lf -buffering line
+     set count 0
+     puts $c hello
+@@ -1247,7 +1247,7 @@
+ 	    -server accept 8833]
+     set c [tls::socket \
+ 	    -certfile $clientCert -cafile $caCert -keyfile $clientKey \
+-	    [info hostname] 8833]
++	    localhost 8833]
+     fconfigure $c -blocking 0 -buffering line -translation lf
+     fileevent $c readable "count_to_eof $c"
+     set timer [after 2000 timerproc]
+@@ -2019,7 +2019,7 @@
+ 	    -server accept 8831]
+     set c [tls::socket \
+ 	    -certfile $clientCert -cafile $caCert -keyfile $clientKey \
+-	    [info hostname] 8831]
++	    localhost 8831]
+     # only the client gets tls::import
+     set res [tls::unimport $c]
+     list $res [catch {close $c} err] $err \
+@@ -2050,13 +2050,14 @@
+     set c [tls::socket -async \
+                -cafile $caCert \
+                -request 0 -require 0 -ssl2 0 -ssl3 0 -tls1 1 -tls1.1 0 -tls1.2 0 \
+-               [info hostname] 8831]
++               localhost 8831]
+     fconfigure $c -blocking 0
+     puts $c a ; flush $c
+     after 5000 [list set ::done timeout]
+     vwait ::done
+     switch -exact -- $::done {
+-        "handshake failed: wrong ssl version" {
++        "handshake failed: wrong ssl version" -
++        "handshake failed: unsupported protocol" {
+             set ::done "handshake failed: wrong version number"
+         }
+     }

@@ -1,0 +1,27 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-11-03 10:46:06.423636287 +0100
+
+VkSurfaceKHR is an alias to `struct something *` on 64-bit platforms, but to
+`uint64_t` on 32-bit. Using {} will clear it without running into a type error:
+
+[   88s] sdlglvideo.cpp:294:54: error: cannot convert 'std::nullptr_t' to
+'VkSurfaceKHR' {aka 'long long unsigned int'} in initialization
+[   88s]   294 |                         VkSurfaceKHR surfacehandle = nullptr;
+
+---
+ src/common/platform/posix/sdl/sdlglvideo.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: gzdoom-g4.11.3/src/common/platform/posix/sdl/sdlglvideo.cpp
+===================================================================
+--- gzdoom-g4.11.3.orig/src/common/platform/posix/sdl/sdlglvideo.cpp
++++ gzdoom-g4.11.3/src/common/platform/posix/sdl/sdlglvideo.cpp
+@@ -291,7 +291,7 @@ DFrameBuffer *SDLVideo::CreateFrameBuffe
+ 				builder.RequireExtension(names[i]);
+ 			auto instance = builder.Create();
+ 
+-			VkSurfaceKHR surfacehandle = nullptr;
++			VkSurfaceKHR surfacehandle = {};
+ 			if (!I_CreateVulkanSurface(instance->Instance, &surfacehandle))
+ 				VulkanError("I_CreateVulkanSurface failed");
+ 

@@ -1,0 +1,6 @@
+<package name="bmkdep" project="openSUSE:Factory">
+  <title>NetBSD version of mkdep utility</title>
+  <description>mkdep constructs Makefile dependency list. It takes a set of flags for the C compiler and a list of C source files as arguments and constructs a set of include file dependencies which are written into the file &quot;.depend&quot;.
+</description>
+  <devel project="devel:tools" package="bmkdep"/>
+</package>

@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b1340e58a67d3184befef7ede1ba381</srcmd5>
+    <version>1.6.2</version>
+    <time>1644273513</time>
+    <user>dimstar_suse</user>
+    <comment>Correcting the package name.</comment>
+    <requestid>952267</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3e07ed239301c092ef546ab7fcc93faa</srcmd5>
+    <version>1.7.0</version>
+    <time>1651501531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974277</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4d2237d9185418814c3e6aa08682947b</srcmd5>
+    <version>1.7.0</version>
+    <time>1662063073</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use python_module for Requires.</comment>
+    <requestid>1000526</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53f9aaa36be8dde22e9fc83582f437a3</srcmd5>
+    <version>1.7.2</version>
+    <time>1667217867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032432</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>cab11cd858674afe6567781e986a75a5</srcmd5>
+    <version>1.7.2</version>
+    <time>1668514723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035662</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4977a2d4ac4d407b88d5b89a7a6b8bb9</srcmd5>
+    <version>1.7.4</version>
+    <time>1681296730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.4:
+  * Remove aud enforcement from deserialize function
+  * Reduce length of comment line
+  * Update minimum pyjwt
+  * Remove use of six 
+- Drop patch python-scitokens-no-six.patch, included upstream
+- Add patch use-importlib-metadata.patch:
+  * Use importlib.metadata, rather than pkg_resources.</comment>
+    <requestid>1078556</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,183 @@
+-------------------------------------------------------------------
+Tue Nov  8 12:48:45 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
+
+- build separate xfs_undelete.changes file
+- spec file cleanup
+- convert env shebang in spec file
+
+-------------------------------------------------------------------
+Sun Oct  2 00:00:00 UTC 2022 - Jan Kandziora <jjj@gmx.de>
+
+- v12.0 release:
+  * added time range function to the -t and -T options
+  * bugfix: be less picky about the magic string of deleted inodes
+
+-------------------------------------------------------------------
+Wed Nov 11 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v11.0 release:
+  * added the -T option to limit the files recovered to those
+    modified since a given date.
+  * bugfix: script failed if LANG was unset
+  * added openSUSE and Arch Linux packages link to README
+  * markdown and manpage fixes in README
+  * manpage fixes
+
+-------------------------------------------------------------------
+Tue Jul 14 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v10.0 release:
+  * added --no-remount-readonly option
+
+-------------------------------------------------------------------
+Tue Jul 14 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v9.1 release:
+  * bugfix: be less picky about mount error messages
+
+-------------------------------------------------------------------
+Wed Jun 10 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v9.0 release:
+  * added -s option for specifying a start inode
+
+-------------------------------------------------------------------
+Wed Apr 15 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v8.1 release:
+  * manpage fixes
+
+-------------------------------------------------------------------
+Wed Apr 15 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v8.0 release:
+  * added automatic trimming of trailing zeroes for certain
+    filetypes
+  * added support for wildcard file extension and mimetype
+    matching
+
+-------------------------------------------------------------------
+Fri Apr 10 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v7.2 release:
+  * allow working as an ordinary user on a previously
+    umounted/read-only-mounted filesystem
+
+-------------------------------------------------------------------
+Wed Apr  8 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v7.1 release:
+  * bugfix: added a workaround against a problem with Arch
+    Linux' dd
+
+-------------------------------------------------------------------
+Sun Mar 22 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v7.0 release:
+  * added a manpage
+  * added more sanity checks on command line parameters
+  * added -m option for alternative magic files passed to the
+    file utility
+  * added -l option for listing understood file extensions
+  * changed the -r and -i options to accept comma instead of
+    space-separated lists
+
+-------------------------------------------------------------------
+Thu Mar 12 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v6.2 release:
+  * bugfix: agcount wasn't updated from filesystem data
+
+-------------------------------------------------------------------
+Sun Feb 16 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v6.1 release:
+  * fixed progress message
+
+-------------------------------------------------------------------
+Sat Feb 15 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v6.0 release:
+  * added -i and -r options to recover only selected file types;
+    skip "bin" files by default
+  * agnore all files without any extent starting at loffset
+    zero. These are most likely bogus.
+
+-------------------------------------------------------------------
+Sun Feb  9 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v5.0 release:
+  * added guessing the correct file extension; added file deletion
+    time to filename
+
+-------------------------------------------------------------------
+Sun Feb  9 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v4.2 release:
+  * bugfix: progress status showed wrong inode number.
+
+-------------------------------------------------------------------
+Sun Feb  9 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v4.1 release:
+  * bugfix: remounting a busy filesystem ro may have failed
+    silently and left it rw.
+
+-------------------------------------------------------------------
+Sun Feb  9 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v4.0 release:
+  * achieved a factor 400 speed up by traversing the inode
+    B+trees instead of mindlessly checking all filesystem blocks.
+  * dropped the -s start block option because of this.
+
+-------------------------------------------------------------------
+Sat Feb  8 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v3.1 release:
+  * bugfix: results of binary scan have to be unsigned values
+
+-------------------------------------------------------------------
+Sat Feb  8 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v3.0 release:
+  * removed dependency on xfs_progs in favour of parsing the
+    superblock ourselves.
+
+-------------------------------------------------------------------
+Tue Feb  4 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v2.1 release:
+  * Silently ignore extents even a 64-bit dd cannot handle. These
+    are most likely bogus.
+
+-------------------------------------------------------------------
+Mon Jan 20 00:00:00 UTC 2020 - Jan Kandziora <jjj@gmx.de>
+
+- v2.0 release:
+  * added the -t option to limit the files recovered to those
+    deleted since a given date.
+
+-------------------------------------------------------------------
+Sat Sep 21 00:00:00 UTC 2019 - Jan Kandziora <jjj@gmx.de>
+
+- v1.3 release:
+  * bugfix: do not fail on errors within dd, ignore those
+    extents instead.
+  * bugfix: do not truncate recovered files if extents are
+    not ordered.
+
+-------------------------------------------------------------------
+Thu Jul  4 00:00:00 UTC 2019 - Jan Kandziora <jjj@gmx.de>
+
+- v1.2 release:
+
+-------------------------------------------------------------------
+Thu Jul  4 00:00:00 UTC 2019 - Jan Kandziora <jjj@gmx.de>
+
+- v1.1 release:
+
+-------------------------------------------------------------------
+Thu Jul  4 00:00:00 UTC 2019 - Jan Kandziora <jjj@gmx.de>
+
+- v1.0 release:

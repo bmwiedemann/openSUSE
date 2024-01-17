@@ -1,0 +1,174 @@
+--- configure.in
++++ configure.in
+@@ -2,11 +2,11 @@
+ [
+ 	AC_MSG_CHECKING([for (n)curses])
+ 
+-	if      test -f /usr/lib/libncurses.so
++	if      test -f /usr/lib*/libncurses.so
+ 	then
+ 		curses=ncurses
+ 
+-	elif    test -f /usr/lib/libcurses.so
++	elif    test -f /usr/lib*/libcurses.so
+ 	then
+ 		curses=curses
+ 	else
+@@ -26,7 +26,7 @@
+ AC_PROG_CXX
+ AC_PROG_CC
+ AM_PROG_LIBTOOL
+-AM_INIT_AUTOMAKE(xbsql, "0.10")
++AM_INIT_AUTOMAKE(xbsql, "0.11")
+ 
+ AC_CHECK_CURSES
+ 
+--- test/Makefile.am
++++ test/Makefile.am
+@@ -1,9 +1,6 @@
+-DEBUG			= -g
+-CC			= g++
+-CFLAGS			= -UNO_READLINE -I/usr/local/include $(DEBUG)
+-CXXFLAGS		= -UNO_READLINE -I/usr/local/include $(DEBUG)
+-LDFLAGS			= $(DEBUG)
+-INCLUDE			= -I/usr/local/include
++AM_CFLAGS			= -UNO_READLINE -I../xbsql/
++AM_CXXFLAGS		= -UNO_READLINE -I../xbsql/
++INCLUDE			= -I../xbsql/
+ 
+ bin_PROGRAMS		= S003_multi
+ 
+--- xbsql/Makefile.am
++++ xbsql/Makefile.am
+@@ -1,8 +1,7 @@
+-DEBUG			= -g
+-CC			= g++
+-CFLAGS			= -UNO_READLINE -I/usr/local/include $(DEBUG)
+-CXXFLAGS		= -UNO_READLINE -I/usr/local/include $(DEBUG)
+-LDFLAGS			= $(DEBUG)
++
++CC	= g++
++AM_CFLAGS			= -UNO_READLINE -I/usr/local/include
++AM_CXXFLAGS		= -UNO_READLINE -I/usr/local/include
+ INCLUDE			= -I/usr/local/include
+ 
+ lib_LTLIBRARIES		= libxbsql.la
+@@ -17,7 +16,7 @@
+ 			  xb_assignlist.cpp xb_create.cpp \
+ 			  xbsql.tab.c xb_datetime.cpp
+ 
+-libxbsql_la_LDFLAGS	= -lxbase $(DEBUG)
++libxbsql_la_LDFLAGS	= -lxbase
+ 
+ xql_SOURCES		= xql.cpp
+ xql_LDADD		= -lxbase -lreadline -l$(CURSES) ./libxbsql.la
+--- xbsql/xql.cpp
++++ xbsql/xql.cpp
+@@ -202,7 +202,7 @@
+ 
+ 	for (int f = 0 ; f < nf ; f += 1)
+ 		if (w[f] > 100)
+-		{	fprintf	(stderr, "Trunc col %3d from %d\n") ;
++		{	fprintf	(stderr, "Trunc col %3d from %d\n", w[f], 100);
+ 			w[f] = 100 ;
+ 		}
+ 
+--- xbsql/xbsql.l	2002-10-16 20:19:23.000000000 +0000
++++ xbsql/xbsql.l	2008-02-29 20:00:33.000000000 +0000
+@@ -10,7 +10,7 @@
+ %%
+ 
+ \'			{
+-			string	('\'')		;
++			tstring	('\'')		;
+ 			return	T_STRING	;
+ 			}
+ 
+@@ -116,7 +116,7 @@
+ #define	HASHMSK	(HASHSIZ-1)
+ static	KEYWORD	*hashtab[HASHSIZ] ;
+ 
+-static	void	string
++static	void	tstring
+ 	(	int	qch
+ 	)
+ {
+--- xbsql/xbsql.y	2003-05-20 14:22:46.000000000 +0000
++++ xbsql/xbsql.y	2008-02-29 19:57:17.000000000 +0000
+@@ -11,7 +11,7 @@
+ 
+ extern	void		yyerror	(const char *, ...) ;
+ extern	int		yylex	()	;
+-static	void		string	(int)	;
++static	void		tstring	(int)	;
+ static	int		nextChar()	;
+ static	int		nextData(char *,  int, int) ;
+ static	char		*textp		;
+
+--- xbsql/xb_fieldset.cpp	2003-03-28 19:07:31.000000000 +0000
++++ xbsql/xb_fieldset.cpp	2008-02-29 20:09:30.000000000 +0000
+@@ -58,10 +58,12 @@
+ 	if ((fldno < 0) || (fldno >= fieldSet.getNumFields()))
+ 		return	XBSQL::IndexNone	;
+ 
+-	char	buff[255]	;
+-	strncpy	(buff, tabname,		    sizeof(buff)) ;
+-	strncat	(buff, "_",		    sizeof(buff)) ;
+-	strncat	(buff, getFieldName(fldno), sizeof(buff)) ;
++	char	buff[255];
++        int     bufflen = sizeof(buff);
++	strncpy	(buff, tabname,		    bufflen) ;
++        bufflen -= strlen(tabname);
++	strncat	(buff, "_",		    bufflen--) ;
++	strncat	(buff, getFieldName(fldno), bufflen) ;
+ 
+ 	const char *path = xbase->getPath (buff, "ndx")	;
+ 	int	fd	 = open (path, O_RDONLY)	;
+--- xbsql/xbsql.cpp	2003-03-28 19:07:31.000000000 +0000
++++ xbsql/xbsql.cpp	2008-02-29 20:11:27.000000000 +0000
+@@ -378,7 +378,7 @@
+ 
+ 			strncpy	(name, table,			sizeof(name)) ;
+ 			strncat	(name, "_",   			sizeof(name)) ;
+-			strncat	(name, schema[idx].FieldName,	sizeof(name)) ;
++			strncat	(name, schema[idx].FieldName,	sizeof(name) - strlen(table) - 1) ;
+ 
+ 			path	= getPath (name, "ndx") ;
+ 			idxflag	= index[idx] == XBSQL::IndexUnique ?
+@@ -465,11 +465,11 @@
+ 
+ 	for (int idx = 0 ; idx < fSet.getNumFields() ; idx += 1)
+ 	{
+-		char	name[256]	;
++		char	name[256];
+ 
+ 		strncpy	(name, table,			sizeof(name)) ;
+ 		strncat	(name, "_",			sizeof(name)) ;
+-		strncat	(name, fSet.getFieldName (idx),	sizeof(name)) ;
++		strncat	(name, fSet.getFieldName (idx),	sizeof(name) - strlen(table) - 1) ;
+ 
+ 		path	= getPath (name, "ndx") ;
+ #ifndef _WIN32
+@@ -875,10 +875,10 @@
+ 
+ 			strncpy	(_oldName, oldName, sizeof(_oldName)) ;
+ 			strncat	(_oldName, "_",     sizeof(_oldName)) ;
+-			strncat	(_oldName, fname,   sizeof(_oldName)) ;
++			strncat	(_oldName, fname,   sizeof(_oldName) - strlen(oldName) - 1) ;
+ 			strncpy	(_newName, newName, sizeof(_newName)) ;
+ 			strncat	(_newName, "_",	    sizeof(_newName)) ;
+-			strncat	(_newName, fname,   sizeof(_newName)) ;
++			strncat	(_newName, fname,   sizeof(_newName) - strlen(newName) - 1) ;
+ 
+ 			oldAnon	= getPath (_oldName, "ndx") ;
+ 			newAnon	= getPath (_newName, "ndx") ;
+@@ -958,7 +958,7 @@
+ 
+ 			strncpy	(_idxName, table, sizeof(_idxName)) ;
+ 			strncat	(_idxName, "_",   sizeof(_idxName)) ;
+-			strncat	(_idxName, fname, sizeof(_idxName)) ;
++			strncat	(_idxName, fname, sizeof(_idxName) - strlen(table) - 1) ;
+ 
+ 			tabAnon	= getPath (_idxName, "ndx") ;
+ 
+

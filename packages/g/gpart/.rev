@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="509">
+    <srcmd5>5326d310f9337fe79fac79a59f4b52e6</srcmd5>
+    <version>0.1h</version>
+    <time>1168902929</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="565">
+    <srcmd5>e41837a573c225706bb0f16294fe46d1</srcmd5>
+    <version>0.1h</version>
+    <time>1196601902</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="618">
+    <srcmd5>e41837a573c225706bb0f16294fe46d1</srcmd5>
+    <version>0.1h</version>
+    <time>1196601902</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="619">
+    <srcmd5>1b4ec7ca78391a4391a6c4da99bbd48b</srcmd5>
+    <version>0.1h</version>
+    <time>1245365461</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="621">
+    <srcmd5>1b4ec7ca78391a4391a6c4da99bbd48b</srcmd5>
+    <version>0.1h</version>
+    <time>1245365461</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="622">
+    <srcmd5>4653f19e10e7dfec0b2e5cc22bdfc933</srcmd5>
+    <version>0.1h</version>
+    <time>1268923854</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="623">
+    <srcmd5>3c5cbe86554d763b55f8161ddb855b1c</srcmd5>
+    <version>0.1h</version>
+    <time>1271979083</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpart based on submit request 38505 from user puzel
+</comment>
+    <requestid>38505</requestid>
+  </revision>
+  <revision rev="8" vrev="625">
+    <srcmd5>3c5cbe86554d763b55f8161ddb855b1c</srcmd5>
+    <version>0.1h</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="626">
+    <srcmd5>3c5cbe86554d763b55f8161ddb855b1c</srcmd5>
+    <version>0.1h</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="627">
+    <srcmd5>7504c7e168e47b4b164fef0fcac0d20e</srcmd5>
+    <version>0.1h</version>
+    <time>1288701426</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51871 from user coolo
+</comment>
+    <requestid>51871</requestid>
+  </revision>
+  <revision rev="11" vrev="628">
+    <srcmd5>79fb4268fdbfd68183b166e7f5c31dd3</srcmd5>
+    <version>0.1h</version>
+    <time>1288701431</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51871
+</comment>
+  </revision>
+  <revision rev="12" vrev="631">
+    <srcmd5>79fb4268fdbfd68183b166e7f5c31dd3</srcmd5>
+    <version>0.1h</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="632">
+    <srcmd5>ebda8e99c9ac4fdf8529ca3d14eeacf9</srcmd5>
+    <version>0.1h</version>
+    <time>1317909767</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86389 from uli_suse)</comment>
+    <requestid>86867</requestid>
+  </revision>
+  <revision rev="14" vrev="634">
+    <srcmd5>ebda8e99c9ac4fdf8529ca3d14eeacf9</srcmd5>
+    <version>0.1h</version>
+    <time>1319181938</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="635">
+    <srcmd5>4b6b454e331c05da1e4a6ba3d64a63f4</srcmd5>
+    <version>0.1h</version>
+    <time>1323191743</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="637">
+    <srcmd5>4b6b454e331c05da1e4a6ba3d64a63f4</srcmd5>
+    <version>0.1h</version>
+    <time>1340183407</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="639">
+    <srcmd5>4b6b454e331c05da1e4a6ba3d64a63f4</srcmd5>
+    <version>0.1h</version>
+    <time>1359108994</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="640">
+    <srcmd5>b782e408bc406f810caf72556a440f14</srcmd5>
+    <version>0.1h</version>
+    <time>1364472947</time>
+    <user>coolo</user>
+    <comment>Can you please verify if the url to the sources are trustworthy? Upstream I could only find gpart-0.1f. Thank you (forwarded request 161381 from m_meister)</comment>
+    <requestid>161453</requestid>
+  </revision>
+  <revision rev="19" vrev="642">
+    <srcmd5>b782e408bc406f810caf72556a440f14</srcmd5>
+    <version>0.1h</version>
+    <time>1379662544</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="644">
+    <srcmd5>b782e408bc406f810caf72556a440f14</srcmd5>
+    <version>0.1h</version>
+    <time>1409301085</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="645">
+    <srcmd5>2bdd3cecbd86979f87fdcc9730a93a52</srcmd5>
+    <version>0.1h</version>
+    <time>1430594947</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304670</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>faa7ffa2688da30ed024da7f90648958</srcmd5>
+    <version>0.2.2</version>
+    <time>1448400703</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345040</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>98f8da1224473e7f5eb2a0d025cc846c</srcmd5>
+    <version>0.3</version>
+    <time>1454491036</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356271</requestid>
+  </revision>
+</revisionlist>

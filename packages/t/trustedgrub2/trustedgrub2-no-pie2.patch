@@ -1,0 +1,101 @@
+commit b53f595b3ed989335d7cd1618a5502270cdb26de
+Author: Vladimir Serbinenko <phcoder@gmail.com>
+Date:   Mon Jan 30 14:38:50 2017 +0100
+
+    Fix -nopie/-nopie check.
+    
+    We don't use lgcc_s but missing lgcc_s or another library cause test to fail.
+    So use -nostdlib.
+    We need to use -Werror to avoid warning-generated case to be accepted.
+    Clang uses -nopie rather than -no-pie. Check both and use whichever one works.
+    Additionally android clang passes -pie to the linker even though it doesn't
+    define __PIE__. So if compilation without no-pie logic fails add -nopie/-no-pie
+    even if __PIE__ is not defined.
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index 7884c1bb5..78cdf6e1d 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -390,12 +390,29 @@ else
+ [fi]
+ ])
+ 
++AC_DEFUN([grub_CHECK_LINK_PIE],[
++[# Position independent executable.
++link_nopie_needed=no]
++AC_MSG_CHECKING([whether linker needs disabling of PIE to work])
++AC_LANG_CONFTEST([AC_LANG_SOURCE([[]])])
++
++[if eval "$ac_compile -Wl,-r,-d -nostdlib -Werror -o conftest.o" 2> /dev/null; then]
++  AC_MSG_RESULT([no])
++  [# Should we clear up other files as well, having called `AC_LANG_CONFTEST'?
++  rm -f conftest.o
++else
++  link_nopie_needed=yes]
++  AC_MSG_RESULT([yes])
++[fi]
++])
++
++
+ dnl Check if the Linker supports `-no-pie'.
+ AC_DEFUN([grub_CHECK_NO_PIE],
+ [AC_MSG_CHECKING([whether linker accepts -no-pie])
+ AC_CACHE_VAL(grub_cv_cc_ld_no_pie,
+ [save_LDFLAGS="$LDFLAGS"
+-LDFLAGS="$LDFLAGS -no-pie"
++LDFLAGS="$LDFLAGS -no-pie -nostdlib -Werror"
+ AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[]])],
+ 	       [grub_cv_cc_ld_no_pie=yes],
+ 	       [grub_cv_cc_ld_no_pie=no])
+@@ -408,6 +425,23 @@ if test "x$grub_cv_cc_ld_no_pie" = xyes ; then
+ fi
+ ])
+ 
++AC_DEFUN([grub_CHECK_NO_PIE_ONEWORD],
++[AC_MSG_CHECKING([whether linker accepts -nopie])
++AC_CACHE_VAL(grub_cv_cc_ld_no_pie_oneword,
++[save_LDFLAGS="$LDFLAGS"
++LDFLAGS="$LDFLAGS -nopie -nostdlib -Werror"
++AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[]])],
++	       [grub_cv_cc_ld_no_pie_oneword=yes],
++	       [grub_cv_cc_ld_no_pie_oneword=no])
++LDFLAGS="$save_LDFLAGS"
++])
++AC_MSG_RESULT([$grub_cv_cc_ld_no_pie_oneword])
++nopie_oneword_possible=no
++if test "x$grub_cv_cc_ld_no_pie_oneword" = xyes ; then
++  nopie_oneword_possible=yes
++fi
++])
++
+ dnl Check if the C compiler supports `-fPIC'.
+ AC_DEFUN([grub_CHECK_PIC],[
+ [# Position independent executable.
+diff --git a/configure.ac b/configure.ac
+index 33146b41a..8f527544b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1202,13 +1202,21 @@ CFLAGS="$TARGET_CFLAGS"
+ # Position independent executable.
+ grub_CHECK_PIE
+ grub_CHECK_NO_PIE
++grub_CHECK_NO_PIE_ONEWORD
++grub_CHECK_LINK_PIE
+ [# Need that, because some distributions ship compilers that include
+ # `-fPIE' or '-fpie' and '-pie' in the default specs.
+ if [ x"$pie_possible" = xyes ]; then
+   TARGET_CFLAGS="$TARGET_CFLAGS -fno-PIE -fno-pie"
+ fi
+-if [ x"$nopie_possible" = xyes ] &&  [ x"$pie_possible" = xyes ]; then
+-  TARGET_LDFLAGS="$TARGET_LDFLAGS -no-pie"
++
++if [ x"$link_nopie_needed" = xyes ] || [ x"$pie_possible" = xyes ]; then
++  if [ x"$nopie_possible" = xyes ]; then
++    TARGET_LDFLAGS="$TARGET_LDFLAGS -no-pie"
++  fi
++  if [ x"$nopie_oneword_possible" = xyes ]; then
++    TARGET_LDFLAGS="$TARGET_LDFLAGS -nopie"
++  fi
+ fi]
+ 
+ CFLAGS="$TARGET_CFLAGS"

@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Sun Oct 29 16:08:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lucid to version 2.11.20230408 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Apr  8 12:47:40 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lucid to version 2.11.20230408.
+  ## 2.11.20230408
+
+  * Don't expect Control.Monad to be re-exported from mtl anymore
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Sep 27 20:18:07 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lucid to version 2.11.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun May  8 10:49:30 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lucid to version 2.11.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/lucid-2.11.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Nov 10 10:02:26 UTC 2021 - psimons@suse.com
+
+- Update lucid to version 2.11.0 revision 1.
+  ## 2.11.0
+
+  * Change internal attributes to `Seq Attribute`. This preserves
+    ordering. Attributes are merged in a left-biased way, preserving the
+    key order as first encountered.
+
+-------------------------------------------------------------------
+Tue Oct 19 07:21:39 UTC 2021 - psimons@suse.com
+
+- Update lucid to version 2.10.0.
+  ## 2.9.13
+
+  * Change internal attributes representation from HashMap to Map. This
+    introduces stable ordering, at a negligible performance cost for
+    realistic element sizes. This may affect some test suites.
+  * doctype no longer accepts attributes. You can use `with` with
+    `doctypeHtml` now, if needed.
+
+-------------------------------------------------------------------
+Tue Mar  2 09:33:12 UTC 2021 - psimons@suse.com
+
+- Update lucid to version 2.9.12.1.
+  ## 2.9.12.1
+
+  * Allow different orderings of attributes in test-suite
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
+
+- Update lucid to version 2.9.12 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:22 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:21 UTC 2020 - psimons@suse.com
+
+- Add lucid at version 2.9.12.
+

@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c3732a87347955658b993cf6fc11646</srcmd5>
+    <version>0.12.0</version>
+    <time>1508876613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>535998</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4f8527895390e6dca034ae9ca168daad</srcmd5>
+    <version>0.13.0</version>
+    <time>1530304214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * Set informa version to 0.13.0
+  * CMake: Prevent in-source builds
+  * fixed authors and bump the year (#8)
+  * fixed lxde mention (#7)
+</comment>
+    <requestid>618038</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>72fdc511e8d6cb86aafdd48cb4bd39dd</srcmd5>
+    <version>0.14.0</version>
+    <time>1551113383</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.0:
+  * Set cmake_minimum_required to 3.1.0
+  * Set informal version to 0.14.0
+</comment>
+    <requestid>670397</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fefcbc80fcc99d64cbd359a1f8ea8070</srcmd5>
+    <version>0.15.0</version>
+    <time>1588610083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798538</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>681187696c8ff87a4ab706054c3202ec</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Added the themes Clearlooks, Leech and Kvantum.</comment>
+    <requestid>846011</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c9fc071f922124d531e8c2fb2714c4b5</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Added alternate background color to the calendar widget in some themes.</comment>
+    <requestid>885949</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b9fa787fda0c4894c91a3479a6c63458</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Two new themes (Silver and Arch-colors) are added.
+  * Many problems are fixed in most themes, especially with dark widgets styles.</comment>
+    <requestid>930114</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>18a995150315bbf3442c2d101c4d62bf</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * New wallpapers are added and all wallpapers are put inside a
+    single directory.
+  * A new theme is added (Valendas).
+  * Palettes that match some LXQt themes are added. They can be
+    applied in LXQt Appearance Configuration → Widget Style → Qt Palette.
+  * Several fixes are made in all themes.
+  * Menu arrows are added for RTL layouts.
+</comment>
+    <requestid>973863</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9f86d8bde4ae205722c3d02d9ee5977e</srcmd5>
+    <version>1.2.0</version>
+    <time>1667734960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033808</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a56bcf8cf823c5c57b9cbdb01ac25da2</srcmd5>
+    <version>1.3.0</version>
+    <time>1681996436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079669</requestid>
+  </revision>
+</revisionlist>

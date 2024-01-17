@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>08208e57af96d216ab5cd35f39df2e0b</srcmd5>
+    <version>0.0.1</version>
+    <time>1695665025</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113376</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7622aa5977b8c7d588ee94400b598297</srcmd5>
+    <version>0.0.1</version>
+    <time>1699388896</time>
+    <user>anag+factory</user>
+    <comment>- build against newer python stack on sle15</comment>
+    <requestid>1123993</requestid>
+  </revision>
+</revisionlist>

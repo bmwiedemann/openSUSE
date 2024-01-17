@@ -1,0 +1,11 @@
+--- "eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_custom.h"	2020-06-04 09:40:50.445771866 +0200
++++ "eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_custom.h"	2020-06-04 09:41:22.105960640 +0200
+@@ -162,7 +162,7 @@
+ glong g_utf8_offset_to_utf16_offset(const gchar*, glong);
+ 
+ // Cached JVM pointer: see bug 521487.
+-JavaVM *cached_jvm;
++extern JavaVM *cached_jvm;
+ 
+ #ifndef NO_SwtFixed
+ 

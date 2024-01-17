@@ -1,0 +1,175 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>897781073202c05bb07eab5b4635d7cf</srcmd5>
+    <version>MACRO</version>
+    <time>1581368153</time>
+    <user>dimstar_suse</user>
+    <comment>libbpf package with a shared library. It's needed by bpftrace. After this SR gets accepted, I will also use it for building bpftool.</comment>
+    <requestid>772922</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>27e4059442e52c9a2469fade2c54f59e</srcmd5>
+    <version>MACRO</version>
+    <time>1591742925</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python3 as a build dependency. (forwarded request 812755 from mrostecki)</comment>
+    <requestid>812756</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7a00dfc61948d7fd1bf4127aa4feccf2</srcmd5>
+    <version>0.4.0</version>
+    <time>1626887142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907038</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cb44da3aa736c77d72adc44f8c112048</srcmd5>
+    <version>0.4.0</version>
+    <time>1629269706</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910804</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8fe5e7c0ec949bae658d1b65d6982191</srcmd5>
+    <version>0.4.0</version>
+    <time>1629795256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913292</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>332307fabacc0c474c7fc07f20cdbf0f</srcmd5>
+    <version>0.4.0</version>
+    <time>1632522908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920620</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e46abb78b109d5a9d714f07996a33ebd</srcmd5>
+    <version>0.5.0</version>
+    <time>1633038183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921812</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7d3cdf1318e66d6623cc991d3cb9031a</srcmd5>
+    <version>0.7.0</version>
+    <time>1646676278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959732</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>620b246c4606d29bf2aa58cf613beaac</srcmd5>
+    <version>0.7.0</version>
+    <time>1647282909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961212</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>48f1402d6da57e62cc93464043bb7748</srcmd5>
+    <version>0.8.0</version>
+    <time>1653061818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978029</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a8408d99729775b1251e597a1681edef</srcmd5>
+    <version>0.8.1</version>
+    <time>1659721817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992723</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>335dd99adbc2cb1bd13de2f96520d4c0</srcmd5>
+    <version>1.0.1</version>
+    <time>1666535554</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1010116</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1cedbd9be0c0e36f034b6dad97421383</srcmd5>
+    <version>1.0.1</version>
+    <time>1667994966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034423</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>165d098fc81447544a1576ef202371dc</srcmd5>
+    <version>1.1.0</version>
+    <time>1672394894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045707</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d026a8ba307c5d69f15729049c96e58e</srcmd5>
+    <version>1.1.0</version>
+    <time>1673021097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056130</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4144248e62c573c6def0ad57299d4481</srcmd5>
+    <version>1.2.0</version>
+    <time>1683212967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084196</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e49be9f55363d2a4a82456b3a750d08e</srcmd5>
+    <version>1.2.2</version>
+    <time>1689455699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098588</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5ad0069fdaebedbd5600cf43e0d94436</srcmd5>
+    <version>1.3.0</version>
+    <time>1701023798</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * support for `netfilter` programs is added
+    `SEC(&quot;netfilter&quot;)` is now available
+  * API function `bpf_program__attach_netfilter()` is now
+    available
+  * support for `tcx` BPF programs is added:
+  * the following new SEC definitions are now available:
+    SEC(&quot;tc/egress&quot;), SEC(&quot;tc/ingress&quot;), SEC(&quot;tcx/egress&quot;),
+    SEC(&quot;tcx/ingress&quot;)
+  * the following SEC definitions are now considered legacy:
+    SEC(&quot;tc&quot;), SEC(&quot;action&quot;), SEC(&quot;classifier&quot;)
+  * functions `bpf_prog_attach_opts()` and
+    `bpf_prog_query_opts()` are extended to work with `tcx`
+    programs, plus two new API functions are added:
+  * the following new SEC definitions are now available:
+    SEC(&quot;uprobe.multi&quot;), SEC(&quot;uprobe.multi.s&quot;),
+    SEC(&quot;uretprobe.multi&quot;), SEC(&quot;uretprobe.multi.s&quot;)
+  * support for section `SEC(&quot;usdt.s&quot;)` is added for sleepable
+    `usdt` programs;
+  * support for Unix domain socket cgroup BPF programs is added
+    the following new SEC definitions are now available:
+     SEC(&quot;cgroup/connect_unix&quot;),SEC(&quot;cgroup/sendmsg_unix&quot;),
+     SEC(&quot;cgroup/recvmsg_unix&quot;), SEC(&quot;cgroup/getpeername_unix&quot;),
+     SEC(&quot;cgroup/getsockname_unix&quot;)
+  * new `LIBBPF_OPTS_RESET()` utility macro;
+  * new `bpf_object__unpin()` function to complement existing
+    `bpf_object__pin()`;
+  * new API functions for work with ring buffers
+  * uprobe SEC matcher extended to allow golang symbols;
+  * uprobe support for symbols versioning;</comment>
+    <requestid>1128704</requestid>
+  </revision>
+</revisionlist>

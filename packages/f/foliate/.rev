@@ -1,0 +1,426 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e627abf94d1a036f531ca894d683cd42</srcmd5>
+    <version>1.5.3</version>
+    <time>1574783551</time>
+    <user>dimstar_suse</user>
+    <comment>Add foliate, maintained by the GNOME Team</comment>
+    <requestid>747646</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a8c5511f9fc7cc278b20c38fdfe6cdac</srcmd5>
+    <version>1.5.3</version>
+    <time>1575563632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754119</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>54a74982bde5b59f859fc181ffa1be9f</srcmd5>
+    <version>1.5.3+54</version>
+    <time>1575923663</time>
+    <user>dimstar_suse</user>
+    <comment>See debate in sr 754119
+
+- Update to version 1.5.3+54:
+  * Right align doesn't work well with tables
+  * Update package info
+  * Update Indonesian translation (#182)
+  * Fix glyph clipping in WebKit (#179)
+  * Set WebKit default font size
+  * Flatpak: prevent X11 access in Wayland
+  * Remove unnecessary global variables for TTS, footnotes, images
+  * Initial change to WebKitUserContentManager for messaging
+  * Add copy to selection options (#172)
+  * Set vendored code for Linguist
+  * Updated Dutch (Netherlands) translation (#169)
+  * Add link to wiki in README.md
+  * Update French translation (#163)
+  * Fix unable to add bookmark when section not found
+  * Fix stuff not escaped for Pango markup
+  * Move constant out of the loop
+  * Show author in headerbar
+  * Fallback when unable to get section
+  * Show chapter name in bookmarks list
+  * Update Brazilian Portuguese translation (#160)
+  * Fix wrong Wiktionary link when looking up again due to capitalization
+  * Fix Wikipedia lookup broken after previous commit
+  * Make internal links work in footnote popover
+  * Make TTS available for selection
+  * Fix wrong popover position in continous scrolling mode
+  * Make navbar buttons flat
+  * Temporary fix for invisible popovers due to wrong position values
+  * Fix internal link broken when popup footnote is disabled
+  * Add continuous scrolling option
+  * Support getting current chapter for TOC items with anchors
+  * Update translations
+  * Improve HTML to Pango markup conversion
+  * Don't push to history if the location doesn't change
+  * Fix empty state padding
+  * Suppress promise rejection warnings
+  * Change &quot;chapter&quot; to &quot;section&quot;
+  * Add option to go to CFI
+  * Extract code for getting popover position to a function
+  * Move util functions forward and main functions to the end
+  * Add some comments
+  * Move wheel and keyboard event code to more sensible location
+  * Make it possible to select across pages
+  * Fix pt_BR.po
+  * Update Brazilian Portuguese translation (#153)
+  * Lint assets
+  * Lint main.js
+  * Cleanup HTML and txt export code
+  * Fix ampersand troubles
+  * Use markup for Wikipedia extract
+  * Fix soft hyphens confusing Festival
+  * Add translation info to AppData
+  * Update French translation (#151)
+  * Update Dutch translation (#150)
+  * Update README.md (forwarded request 754483 from iznogood)</comment>
+    <requestid>754977</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>88bf096a91f94cacc40b7389b4472611</srcmd5>
+    <version>2.0.0</version>
+    <time>1586248262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791769</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>116fd154c12d63d2c3bed9552ab71f23</srcmd5>
+    <version>2.1.1</version>
+    <time>1586555632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.1:
+  * Fixed wrong version number.
+- Update to version 2.1.0:
+  * New and improved icon
+  * Option to disable turn page on tap
+  * A menu on the welcome screen for opening recent files
+  * Restored shortcuts for showing ToC, annotations, and bookmarks
+  * Fixed application not translated.
+</comment>
+    <requestid>792946</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b61cf75fb7710e8a6ccae13d97d5949d</srcmd5>
+    <version>2.2.0</version>
+    <time>1590780237</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 2.2.0:
+  * Library:
+    - A library view showing recent books and reading progress
+    - Search books by metadata
+    - E-book discovery with OPDS
+  * New supported formats:
+    - FictionBook (.fb2, .fb2.zip) (#128)
+    - Comic book archive (.cbr, .cbz, .cbt, .cb7)
+    - Plain text (.txt) (#226)
+    - Unpacked EPUB files
+  * Layout:
+    - Option to set maximum page width
+    - The &quot;Automatic&quot; layout will now show four columns 
+      when the page width is wide
+  * Image viewer:
+    - Improved image viewer, with new shortcuts and the ability 
+      to rotate and invert images
+    - Option to disable image viewer, or to open images on double, 
+      middle, or right click
+  * Text-to-speech:
+    - Improved text-to-speech configuration UI
+    - Ability to set text-to-speech voice based on book language
+  * Annotations
+    - Import annotations from JSON
+    - Search in annotations
+    - Annotations are now sorted in the same order as they appear 
+      in the book
+  * Security:
+    - &quot;Allow Unsafe Content&quot; now only enables JavaScript; external 
+      content will no longer be loaded. This is an important 
+      security fix. If you are running an old version of Foliate 
+      and cannot upgrade, you should disable 
+      &quot;Allow Unsafe Content&quot;.
+    - WebKit processes are now sandboxed
+  * Other featues and fixes:
+    - Improved support for vertical and right-to-left books
+    - Support for StarDict dictionaries
+    - Fixed current location not preserved when resizing
+    - Fixed auto-hiding header bar under some themes
+    - Command-line options for showing version and adding books 
+      to library
+    - Option to clear or disable cache
+    - When an HTML page contains invalid self-closing anchor tags, 
+      it is now parsed as XHTML
+- Add fdupes BuildRequires and macro call, remove duplicate files.
+</comment>
+    <requestid>810176</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e491a030e1fd2eba205df492835ff76d</srcmd5>
+    <version>2.2.1</version>
+    <time>1591880449</time>
+    <user>dimstar_suse</user>
+    <comment>- Filter &quot;typelib(Handy) = 1&quot; dependency. We use handy 0.0. (forwarded request 813436 from dimstar)</comment>
+    <requestid>813498</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f6b5912928fe660ea0e2605bfdebbe5c</srcmd5>
+    <version>2.3.0</version>
+    <time>1593292953</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0:
+  * OPDS catalogs:
+    - Catalogs are now opened in the main library window (#403)
+    - View current location
+    - Go to catalog start page
+    - Reload catalog
+    - Add current feed to catalogs
+    - HTTP authentication support (#421)
+  * Other changes:
+    - Fixed unique identifier extraction for 
+      FictionBook (.fb2, .fb2.zip) files (#462)
+    - Fixed newlines being ignored when copying text (#463)
+    - “Turn page on tap” is now disabled in 
+      non-paginated layouts (#464)
+    - Opening a book from the library view now closes the 
+      library window (#446)
+    - Language and publication dates in metadata are now parsed 
+      and formatted
+    - Export annotations from the library view
+</comment>
+    <requestid>817303</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7796228431bacb157afa3a062cafa64e</srcmd5>
+    <version>2.4.0</version>
+    <time>1593728101</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.4.0 (forwarded request 818269 from Dead_Mozay)</comment>
+    <requestid>818347</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>16176a4cb9ec679ff2f8c61dff3a721a</srcmd5>
+    <version>2.4.2</version>
+    <time>1594387864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.2:
+  * Fixed unable to open some EPUB files (forwarded request 818960 from Dead_Mozay)</comment>
+    <requestid>819929</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a204034ee77968609235cde1305263b4</srcmd5>
+    <version>2.5.0</version>
+    <time>1602762713</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.5.0 (forwarded request 841834 from Dead_Mozay)</comment>
+    <requestid>841895</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f313a2da870bd95e773bae4afb72ac92</srcmd5>
+    <version>2.5.0</version>
+    <time>1606828928</time>
+    <user>dimstar_suse</user>
+    <comment>Filter out obsolete typelib instead of current upstream version (forwarded request 851405 from iznogood)</comment>
+    <requestid>851786</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>0a94f613b6aacc4572a09bc90ebd22f1</srcmd5>
+    <version>2.5.0</version>
+    <time>1616599003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880975</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>35b7d0146aaa6160a6ce3717b2d85cf9</srcmd5>
+    <version>2.6.2</version>
+    <time>1618223777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>881495</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ba99c5658004d48b2996aa7fae9aa7a9</srcmd5>
+    <version>2.6.3</version>
+    <time>1618498640</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.3:
+  * Fixed a performance issue with zipped files (including EPUB files) (forwarded request 882526 from Dead_Mozay)</comment>
+    <requestid>884642</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e97e10f1f1c2e5fecaceb89ba8b39d03</srcmd5>
+    <version>2.6.3</version>
+    <time>1620767028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892059</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>8a4ee5c7accc245e9cf6c7feba2e60ed</srcmd5>
+    <version>2.6.3</version>
+    <time>1624887219</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed gjs dependency issue (boo#1187328). (forwarded request 900710 from qkzhu)</comment>
+    <requestid>902741</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>14784e3f08354c68a050c423571b9345</srcmd5>
+    <version>2.6.3</version>
+    <time>1634331856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925419</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>1d75c3fae1eb63cbc20a3356221e89dd</srcmd5>
+    <version>2.6.3</version>
+    <time>1636729177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931148</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fcc1bcc8427c90356681fc4f7f537e20</srcmd5>
+    <version>2.6.4</version>
+    <time>1642112495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.4:
+  * Fixed various bugs.
+  * Remove foliate-WebKit-version.patch: Patch in the release. 
+</comment>
+    <requestid>946194</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ef70698dee41dafea459b5c0b1c3d953</srcmd5>
+    <version>2.6.4</version>
+    <time>1642273505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946549</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>42e966a69a18c6ee6a37085990201f48</srcmd5>
+    <version>3.0.0</version>
+    <time>1700421325</time>
+    <user>anag+factory</user>
+    <comment>- Fixed export of incorrect dependencies 'typelib(Adw)})'.
+  Patch added foliate-fix-export-of-incorrect-dep-Adw.patch.
+- Update to version 3.0.0
+  * UI changes:
+    - The library and the e-book viewer are unified in a single 
+      window.
+    - The library now loads more books as you scroll, no longer
+      requiring clicks to load more items.
+    - Table of contents, annotations, bookmarks are now in a sidebar,
+      which is docked to the side by default, but can also be set 
+      to be always folded (overlaid on top of content when revealed).
+    - The &quot;Add Bookmark&quot; button is moved to the header bar, 
+      and the page will show a ribbon when bookmarked.
+    - Removed &quot;turn page on tap&quot;; use swiping instead.
+    - Removed option for skeuomorphic shadows.
+    - Removed experimental traditional titlebar option.
+  * Book rendering:
+    - It no longer loads the entire file into memory, 
+      greatly reducing startup time and memory usage,
+      and it no longer loads every item in the TOC,
+      further improving startup time.
+    - Reloading now properly reloads the file, rather than merely 
+      re-rendering.
+    - Mobipocket and Kindle files are no longer extracted on disk; 
+      they are processed entirely in memory.
+    - Mobipocket files are now divided into sections at 
+      &lt;mbp:pagebreak&gt; tags, which greatly improves performance 
+      as it no longer requires rendering the whole book at once. 
+      Unfortunately this also means existing annotations for 
+      this format will not be displayed correctly.
+    - When a page is not valid XHTML, it will be processed as HTML.
+    - It no longer tries to override fonts with CSS. Instead, 
+      you can now configure the default serif, sans-serif, 
+      and monospace fonts, as well as setting the minimum font size.
+    - Added support for obfuscated fonts.
+    - Added support for user stylesheet.
+    - FB2: fixed infinite recursion bug (#935) and comments 
+      are now correctly ignored.
+    - Added experimental support for PDF files.
+    - Removed support for CBR, CBT, and CB7 files 
+      (CBZ is still supported).
+  * Layout:
+    - Paginated mode now has animation and 1:1 touchscreen 
+      and touchpad swipe gestures.
+    - Paginated mode supports more than two columns. 
+      The number of columns is controlled by a maximum width 
+      setting. As the window gets wider, it will add more columns 
+      to prevent lines from getting too long.
+    - Margins are now relative to the viewport size.
+    - It is now possible to configure both max width and max height.
+    - The page reflows faster when resizing, and reliably stays 
+      at the same location without flashing.
+    - Switching between paginated and scrolled layouts is faster 
+      and can be done with a shortcut (Ctrl+M).
+    - Removed continuous scrolling mode, as the new renderer does 
+      not support it (yet).
+  * Locations:
+    - Locations are now calculated from raw byte size instead 
+      of character count. The progress slider and reading time 
+      estimates are available instantly when you first open a book,
+      and locations are no longer cached. Old .json files in the
+      cache directory can be deleted.
+    - The progress slider now turns pages as you drag, 
+      and can be used with keyboard and mouse wheel.
+    - Page-list and landmarks are now supported and can be 
+      accessed from the location popover.
+  * Find in book:
+    - Results are now shown in the sidebar.
+    - Added option to ignore diacritics and to match whole words only.
+    - Added shortcuts for going to next and previous matches 
+      (Ctrl+G and Ctrl+Shift+G).
+  * Image viewer:
+    - Images are opened with double click by default; 
+      removed options for single, right, and middle click.
+    - Images are now copied and saved in their original format 
+      (previously, they were always converted to PNG).
+  * Narration:
+    - Text-to-speech now uses Speech Dispatcher, 
+      and supports pausing, skipping, word highlighting, 
+      SSML, and speed and pitch controls.
+    - Added support for EPUB Media Overlays.
+  * Copying:
+    - Selected text can now be copied with HTML formatting.
+    - Added &quot;Copy with Citation&quot;, which adds the author and title 
+      info to the copied text.
+    - Added &quot;Copy Identifier&quot;, which copies the CFI of 
+      the text fragment.
+  * Security:
+    - The WebView no longer has unlimited file access.
+  * Other changes:
+    - Added underline option for annotations.
+    - Annotations are now saved with timestamps.
+    - Added the ability to print chapters and selections.
+    - WebKit's inspector is always enabled, and can be accessed 
+      from the menu, or by pressing F12.
+  * Added BuildRequires:
+    - gtk4
+    - libadwaita
+    - webkitgtk-6.0
+    - desktop-file-utils (forwarded request 1127202 from Dead_Mozay)</comment>
+    <requestid>1127344</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>285312a8edf791eee6c7c3dae7a87cc3</srcmd5>
+    <version>3.0.1</version>
+    <time>1700675675</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127886</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2196054e129f8ca73b075c96eac98a16</srcmd5>
+    <version>3.1.0</version>
+    <time>1704753935</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137505</requestid>
+  </revision>
+</revisionlist>

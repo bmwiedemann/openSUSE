@@ -1,0 +1,7 @@
+<package name="openssl_tpm_engine" project="openSUSE:Factory">
+  <title>OpenSSL TPM interface engine plugin</title>
+  <description>This package contains a plugin a for OpenSSL which connects it with the
+Trusted Platform Module found on newer machines and a create_tpm_key
+helper binary to create and extract a TPM key.</description>
+  <devel project="security:tls" package="openssl_tpm_engine"/>
+</package>

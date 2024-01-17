@@ -1,0 +1,6 @@
+<package name="bazel-rules-apple-0_32" project="openSUSE:Factory">
+  <title>bazel-rules-apple-0_32</title>
+  <description>Bazel rules to build software for Apple platforms (version: 0.32)</description>
+  <devel project="devel:tools:building" package="bazel-rules-apple-0_32"/>
+  <url>https://github.com/bazelbuild/rules_apple</url>
+</package>

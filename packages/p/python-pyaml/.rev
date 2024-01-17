@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c7893f1d6920a6f86414e7bf175c904</srcmd5>
+    <version>17.10.0</version>
+    <time>1515623393</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 17.10.0:
+  * README: add link to ruamel.yaml module as a parser counterpart
+- changes from version 17.8.0:
+  * Represent numpy arrays as lists, as per #24
+- changes from version 17.7.2:
+  * allow line width to be passed in throguh cli
+- Initial version
+</comment>
+    <requestid>540456</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>043aafb97880065d9f616814b9c24333</srcmd5>
+    <version>17.12.1</version>
+    <time>1535963671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632475</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ed313aaaf65a40f7530e40ec63de08f3</srcmd5>
+    <version>17.12.1</version>
+    <time>1537436499</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634884</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e080e63174a084868cdd8542a05c66a</srcmd5>
+    <version>19.4.1</version>
+    <time>1558037332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703228</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c00f69d650f1a94e1327b58033fadbda</srcmd5>
+    <version>20.3.1</version>
+    <time>1585265242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786408</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5acb4b68f4e4d4e9bf3c99c9508ebb2b</srcmd5>
+    <version>20.4.0</version>
+    <time>1622536453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895718</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c1f05507c392a8a5d60e2b077bf3873</srcmd5>
+    <version>21.10.1</version>
+    <time>1639424497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939572</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d362f649172a27e1674ec0ca4e61194d</srcmd5>
+    <version>23.12.0</version>
+    <time>1704919921</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.12.0:
+  * no upstream changelog</comment>
+    <requestid>1137820</requestid>
+  </revision>
+</revisionlist>

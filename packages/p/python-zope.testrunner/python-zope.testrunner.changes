@@ -1,0 +1,255 @@
+-------------------------------------------------------------------
+Sat Jan 13 22:52:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Run the test suite with itself like it is meant to be
+  * fixes Python 3.12 test failures
+- Setuptools is a runtime requirement (for egg testing support)
+
+-------------------------------------------------------------------
+Tue Jan  2 21:42:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.1:
+  * Work around Python 3.12.1+ no longer calling startTest for
+    skipped tests
+
+-------------------------------------------------------------------
+Mon Dec 11 08:13:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2:
+  * Add support for Python 3.12.
+  * Update code and tests to ``python-subunit >= 1.4.3`` thus
+    requiring at least this version.
+
+-------------------------------------------------------------------
+Fri Jun  9 12:39:26 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Apr  3 09:15:42 UTC 2023 - pgajdos@suse.com
+
+- version update to 6.0
+  * - Drop support for Python 2.7, 3.5, 3.6.
+- python-six is not required
+
+-------------------------------------------------------------------
+Tue Dec 13 17:47:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.6
+  * Add support for Python 3.11.
+  * Inline a small part of random.Random.shuffle which was deprecated in Python 3.9 and removed in 3.11 (#119).
+  * Don’t trigger post mortem debugger for skipped tests. ( #141).
+
+-------------------------------------------------------------------
+Sat Dec  3 03:06:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 5.5.1
+   * Fix: let --at-level=level with level <= 0 run the tests at all levels (rather than at no level) #138.
+
+-------------------------------------------------------------------
+Mon Sep 19 15:46:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- updated spec to include
+  Requires(post): update-alternatives
+  Requires(postun):update-alternatives
+
+-------------------------------------------------------------------
+Fri Sep 16 19:30:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 5.5.0
+  * Use sys._current_frames (rather than threading.enumerate) as base for new thread detection, fixes #130.
+  * New option --gc-after-test. It calls for a garbage collection after each test and can be used to track down
+    ResourceWarning``s and cyclic garbage. With ``rv = gc.collect(), ! is output on verbosity level 1 when rv is
+    non zero (i.e. when cyclic structures have been released), [``*rv*]`` on higher verbosity levels and a detailed
+    cyclic garbage analysis on verbosity level 4+. For details, see #133.
+  * Allow the filename for the logging configuration to be specified via the envvar ZOPE_TESTRUNNER_LOG_INI.
+    If not defined, the configuration continues to be locked for in file log.ini of the current working directory.
+    Remember the logging configuration file in envvar ZOPE_TESTRUNNER_LOG_INI to allow spawned child processes to
+    recreate the logging configuration. For details, see #134.
+
+- version update to 5.4.0
+   * Improve --help documentation for --package-path option (#121).
+   * Do not disable existing loggers during logsupport initialization (#120).
+   * Fix tests with testtools >= 2.5.0 (#125).
+   * Add support for Python 3.10.
+
+-------------------------------------------------------------------
+Tue Oct  5 10:30:48 UTC 2021 - pgajdos@suse.com
+
+- version update to 5.3.0
+  - Add support for Python 3.9.
+  - Fix `package init file missing` warning
+    (`#112 <https://github.com/zopefoundation/zope.testrunner/pull/112>`_).
+  - Make standard streams provide a `buffer` attribute on Python 3 when using
+    `--buffer` or testing under subunit.
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Tue Jul 21 08:53:11 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 5.2
+  * Add support for Python 3.8.
+  * When a layer is run in a subprocess, read its stderr in a thread to avoid
+    a deadlock if its stderr output (containing failing and erroring test IDs)
+    overflows the capacity of a pipe
+
+-------------------------------------------------------------------
+Wed Oct 30 12:13:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 5.1:
+  * Recover more gracefully when layer setUp or tearDown fails, producing useful subunit output.
+  * Prevent a spurious warning from the --require-unique option if the --module option was not used.
+  * Add optional buffering of standard output and standard error during tests, requested via the --buffer option or enabled by default for subunit.
+  * Fix incorrect failure counts in per-layer summary output, broken in 4.0.1.
+
+-------------------------------------------------------------------
+Mon Apr  8 13:02:40 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 5.0
+  * Fix test failures and deprecation warnings occurring when
+    using Python 3.8a1.
+  * Drop support for Python 3.4.
+  4.9*
+  * Fix AssertionError in _DummyThread.isAlive on Python 3.
+  * Drop support for Python 3.3.
+  * Add support for Python 3.7.
+  * Remove untested support for the --pychecker option.
+  * Update the command line interface to use argparse instead of
+    optparse.
+  * Use ipdb instead of pdb for post-mortem debugging if available.
+  * Add a –require-unique option to check for duplicate test IDs.
+  * Reintroduce optional support for subunit.
+  * Handle string in exception values when formatting chained
+    exceptions.
+  4.8*
+  * Enable DeprecationWarning earlier, when discovering test
+    modules.
+  * Automatically enable DeprecationWarning when running tests.
+- Launch tests using multibuild.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:33 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jun 29 19:43:55 UTC 2017 - aloisio@gmx.com
+
+- Added missing requires for update-alternatives
+
+-------------------------------------------------------------------
+Fri Jun 23 09:19:42 UTC 2017 - aloisio@gmx.com
+
+- Update to 4.7.0
+  * Drop all support for ``subunit``.
+  4.6.0:
+  * Make the ``subunit`` support purely optional: applications
+    which have been getting the dependencies via
+    ``zope.testrunner`` should either add
+    ``zope.testrunner[subunit]`` to their ``install_requires`` or
+    else depend directly on ``python-subunit``.
+  * New option ``--ignore-new-thread=<regexp>`` to suppress
+    "New thread(s)" warnings.
+  * Support Python 3.6.
+  4.5.1:
+  * Fixed: Using the ``-j`` option to run tests in multiple
+    processes caused tests that used the ``multiprocessing``
+    package to hang (because the testrunner replaced ``sys.stdin``
+    with an unclosable object).
+  * Drop conditional dependency on ``unittest2`` (redundant after
+    dropping support for Python 2.6).
+  4.5.0:
+  * Stop tests for all layers when test fails/errors when started
+    with -x/--stop-on-error
+    (`#37 <https://github.com/zopefoundation/zope.testrunner/pull/37>`_).
+  * Drop support for Python 2.6 and 3.2.
+  4.4.10:
+  * Add support for Python 3.5
+    (`#31 <https://github.com/zopefoundation/zope.testrunner/pull/31>`_).
+  * Insert extra paths (from ``--path``) to the front of sys.argv
+    (`#32 <https://github.com/zopefoundation/zope.testrunner/issues/32>`_).
+  4.4.9:
+  * When using ``-j``, parallelize all the tests, including the
+    first test layer
+    (`#28 <https://github.com/zopefoundation/zope.testrunner/issues/28>`_).
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Mon Aug 15 14:51:56 UTC 2016 - toddrme2178@gmail.com
+
+- Fix update-alternatives implementation.
+
+-------------------------------------------------------------------
+Fri May 15 13:47:39 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 4.4.8:
+  * Support skipped tests in subunit output
+  * More efficient test filtering
+- additional changes from version 4.4.7:
+  * Work around a bug in PyPy3’s curses module (#24).
+- additional changes from version 4.4.6:
+  * Restore support for instance-based test layers that regressed
+    in 4.4.5 (#20).
+- additional changes from version 4.4.5:
+  * Sort related layers close to each other to reduce the number of
+    unnecessary teardowns (fixes #14).
+  * Run the unit test layer first (fixes LP #497871).
+- additional changes from version 4.4.4:
+  * When looking for the right location of test code, start with
+    longest location paths first. This fixes problems with nested
+    code locations.
+- additional changes from version 4.4.3:
+  * Added support for Python 3.4.
+- additional changes from version 4.4.2:
+  * Drop support for Python 3.1.
+  * Fix post-mortem debugging when a non-printable exception
+    happens (#8).
+- add runtime requirements python-six, python-zope.exceptions,
+  python-zope.interface
+- update the test requirements (still commented out, tests fail)
+- fix update-alternatives
+
+-------------------------------------------------------------------
+Sat Nov 08 20:11:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in pre script
+
+-------------------------------------------------------------------
+Thu Nov 14 15:45:40 UTC 2013 - p.drouand@gmail.com
+
+- Add update-alternative support
+
+-------------------------------------------------------------------
+Wed Nov 13 13:08:41 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 4.4.1
+  + Updated boostrap.py to version 2.2.
+  + Fix nondeterministic test failures on Python 3.3
+  + Tear down layers after post_mortem debugging is finished.
+  + Fix tests that write to source directory, it might be read-only.
+- Changes from 4.4.0
+  + Fix tests selection when the negative "!" pattern is used several times
+    (LP #1160965)
+  +  Moved tests into a 'tests' subpackage.
+  + Made python -m zope.testrunner work again.
+  + Support 'skip' feature of unittest2 (which became the new unittest in Python 2.7).
+  + Better diagnostics when communication with subprocess fails
+    (https://github.com/zopefoundation/zope.testrunner/issues/5).
+  + Do not break subprocess execution when the test suite changes the working
+    directory (https://github.com/zopefoundation/zope.testrunner/issues/6).
+  + Count test module import errors as errors (LP #1026576).
+- Add python-unittest2 and python-zope.interface commented BuildRequires;
+  these are new requirements for test but there are still broken
+- Add fdupes BuildRequires and use fdupes to remove duplicate files
+
+-------------------------------------------------------------------
+Thu Oct 24 11:18:03 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Mar 15 14:03:51 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

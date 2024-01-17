@@ -1,0 +1,8 @@
+<package name="golang-github-QubitProducts-exporter_exporter" project="openSUSE:Factory">
+  <title>Exporter Exporter</title>
+  <description>Provides a simple reverse proxy for Prometheus exporters. It is
+	  intended as a single binary alternative to nginx/Apache for use in
+	  environments where opening multiple TCP ports to all servers might be
+	  difficult.</description>
+  <devel project="server:monitoring" package="golang-github-QubitProducts-exporter_exporter"/>
+</package>
