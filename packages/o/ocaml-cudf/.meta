@@ -1,8 +1,0 @@
-<package name="ocaml-cudf" project="openSUSE:Factory">
-  <title>Ocaml CUDF library</title>
-  <description>CUDF (for Common Upgradeability Description Format) is a format for describing upgrade scenarios in package-based Free and Open Source Software distribution. This is reference implementation in Ocaml.
-
-</description>
-  <devel project="devel:languages:ocaml" package="ocaml-cudf"/>
-  <url>http://www.mancoosi.org/cudf/</url>
-</package>

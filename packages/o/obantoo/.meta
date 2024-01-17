@@ -1,5 +1,0 @@
-<package name="obantoo" project="openSUSE:Factory">
-  <title>OBanToo</title>
-  <description>Java library for German online banking standards</description>
-  <devel project="Java:packages" package="obantoo"/>
-</package>

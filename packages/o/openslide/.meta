@@ -1,5 +1,0 @@
-<package name="openslide" project="openSUSE:Factory">
-  <title></title>
-  <description>OpenSlide is a C library that provides a simple interface to read whole-slide images (also known as virtual slides).</description>
-  <devel project="graphics" package="openslide"/>
-</package>

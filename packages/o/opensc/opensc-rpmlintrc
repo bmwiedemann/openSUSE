@@ -1,3 +1,0 @@
-# There is no devel package any more.
-addFilter("obsolete-not-provided")
-addFilter("devel-file-in-non-devel-package")

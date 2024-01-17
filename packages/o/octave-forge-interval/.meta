@@ -1,6 +1,0 @@
-<package name="octave-forge-interval" project="openSUSE:Factory">
-  <title></title>
-  <description>The package provides data types for verified computing. The implementation of intervals in inf-sup format is based on interval boundaries represented by binary64 numbers and is standard conforming to IEEE 1788.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-interval"/>
-</package>

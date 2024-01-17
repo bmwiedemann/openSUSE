@@ -1,6 +1,0 @@
-<package name="octave-forge-communications" project="openSUSE:Factory">
-  <title></title>
-  <description>Digital Communications, Error Correcting Codes (Channel Code), Source Code functions, Modulation and Galois Fields.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-communications"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="octave-forge-struct" project="openSUSE:Factory">
-  <title></title>
-  <description>Additional Structure manipulations functions.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-struct"/>
-</package>

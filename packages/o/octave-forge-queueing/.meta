@@ -1,7 +1,0 @@
-<package name="octave-forge-queueing" project="openSUSE:Factory">
-  <title></title>
-  <description>Functions for queueing networks and Markov chains analysis. This package can be used to compute steady-state performance measures
-for open, closed and mixed networks with single or multiple job classes. Mean Value Analysis (MVA), convolution, and various bounding techniques are implemented. Furthermore, several transient and steady-state performance measures for Markov chains can be computed, such as state occupancy probabilities, mean time to absorption, time-averaged sojourn times and so forth. Discrete- and continuous-time Markov chains are supported.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-queueing"/>
-</package>

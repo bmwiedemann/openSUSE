@@ -1,7 +1,0 @@
-<package name="opal" project="openSUSE:Factory">
-  <title>Open Phone Abstraction Library</title>
-  <description>Open Phone Abstraction Library, implementation of the ITU H.323
-teleconferencing protocol, and successor of the openh323 library. It
-supports the H.323 protocol as well as SIP and IAX2.</description>
-  <devel project="network:telephony" package="opal"/>
-</package>

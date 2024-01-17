@@ -1,6 +1,0 @@
-<package name="ocaml-ptmap" project="openSUSE:Factory">
-  <title>Maps over integers implemented as Patricia trees</title>
-  <description>OCaml implementation of an efficient maps over integers,
-from a paper by Chris Okasaki.</description>
-  <devel project="devel:languages:ocaml" package="ocaml-ptmap"/>
-</package>

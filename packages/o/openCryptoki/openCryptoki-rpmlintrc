@@ -1,1 +1,0 @@
-addFilter("openCryptoki.* tmpfile-not-in-filelist /var/lock/opencryptoki")

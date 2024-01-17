@@ -1,8 +1,0 @@
-<package name="open-lldp" project="openSUSE:Factory">
-  <title>Link Layer Discovery Protocol (LLDP) Agent</title>
-  <description>This package contains the Link Layer Discovery Protocol (LLDP) Agent
-with Data Center Bridging (DCB) for Intel(R) Network Connections
-'lldpad' plus the configuration tools 'dcbtool' and 'lldptool'.
-</description>
-  <devel project="network:fcoe" package="open-lldp"/>
-</package>

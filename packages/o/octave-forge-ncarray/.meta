@@ -1,6 +1,0 @@
-<package name="octave-forge-ncarray" project="openSUSE:Factory">
-  <title></title>
-  <description>Access a single or a collection of NetCDF files as a multi-dimensional array.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-ncarray"/>
-</package>

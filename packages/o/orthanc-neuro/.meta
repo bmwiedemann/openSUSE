@@ -1,5 +1,0 @@
-<package name="orthanc-neuro" project="openSUSE:Factory">
-  <title>Neuroimaging plugin for Orthanc</title>
-  <description></description>
-  <devel project="graphics" package="orthanc-neuro"/>
-</package>

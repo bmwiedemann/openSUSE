@@ -1,8 +1,0 @@
-<package name="ocaml-libvirt" project="openSUSE:Factory">
-  <title>OCaml binding for libvirt</title>
-  <description>OCaml binding for libvirt.
-
-</description>
-  <devel project="devel:languages:ocaml" package="ocaml-libvirt"/>
-  <url>http://libvirt.org/ocaml/</url>
-</package>

@@ -1,6 +1,0 @@
-<package name="openttd-openmsx" project="openSUSE:Factory">
-  <title>An OpenTTD Music replacement set</title>
-  <description>OpenMSX is an open source replacement for the original Transport Tycoon Deluxe (TTD) music. It's currently work-in-progress and does not have a
-huge collection of music, contributions are welcome as long as they are licensed under the GPL v2 License.</description>
-  <devel project="games" package="openttd-openmsx"/>
-</package>

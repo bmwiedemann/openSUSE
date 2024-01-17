@@ -1,5 +1,0 @@
-<package name="openvswitch" project="openSUSE:Factory">
-  <title>open vswitch userspace</title>
-  <description>This package provides the user level binaries for the open vswitch project.</description>
-  <devel project="network" package="openvswitch"/>
-</package>

@@ -1,7 +1,0 @@
-<servicedata>
-  <service name="tar_scm">
-    <param name="url">git@github.com:openSUSE/obs-service-set_version.git</param>
-  <param name="changesrevision">eaedc529acba421821e0e5dcb4956c66e7f315a9</param></service>
-<service name="tar_scm">
-                <param name="url">https://github.com/openSUSE/obs-service-set_version.git</param>
-              <param name="changesrevision">d4150d2cf2c80788efd5e9dff6bc4fd033c74a93</param></service></servicedata>

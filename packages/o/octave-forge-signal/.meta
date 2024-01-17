@@ -1,6 +1,0 @@
-<package name="octave-forge-signal" project="openSUSE:Factory">
-  <title></title>
-  <description>Signal processing tools, including filtering, windowing and display functions.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-signal"/>
-</package>

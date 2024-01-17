@@ -1,9 +1,0 @@
-<package name="osgi-annotation" project="openSUSE:Factory">
-  <title>Annotations for use in compiling OSGi bundles</title>
-  <description>Annotations for use in compiling OSGi bundles. This package is not normally
-needed at run-time.
-
-</description>
-  <devel project="Java:packages" package="osgi-annotation"/>
-  <url>http://www.osgi.org/</url>
-</package>

@@ -1,6 +1,0 @@
-<package name="obexfs" project="openSUSE:Factory">
-  <title>FUSE based filesystem using ObexFTP</title>
-  <description>ObexFS is a fuse (FUSE-based filesystem) using obexftp (ObexFTP) to
-access files on mobile phones.</description>
-  <devel project="filesystems" package="obexfs"/>
-</package>
