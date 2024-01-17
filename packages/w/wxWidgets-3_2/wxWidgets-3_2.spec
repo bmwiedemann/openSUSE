@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,8 +80,9 @@ Source5:        wxWidgets-3_2-rpmlintrc
 # This script is not used during build, but it makes possible to
 # identify and backport wxPython fixes to wxWidgets.
 Source6:        wxpython-mkdiff.sh
-Patch1:         soversion.diff
-Patch2:         autoconf-2_72.diff
+Patch0:         soversion.diff
+Patch1:         autoconf-2_72.diff
+Patch2:         wxWidgets-3_2-fix-building-fault-S390.patch
 %if "%{flavor}" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  fdupes

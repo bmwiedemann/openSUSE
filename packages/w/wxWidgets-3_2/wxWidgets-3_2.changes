@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 28 08:21:30 UTC 2023 - Cliff Zhao <qzhao@suse.com>
+
+- Add wxWidgets-3_2-fix-building-fault-S390.patch:
+  Fix wxWidgets-3_2 building check fault on S390 platform:
+  /sys/power/state doesn't exist in SLE S390 platform and certain
+  types of containers, so check the file exist before run the
+  test case.
+  (bsc#1217026)
+
+-------------------------------------------------------------------
 Tue Dec 26 14:28:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add autoconf-2_72.diff
@@ -177,7 +187,20 @@ Wed Apr 13 16:45:53 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
     * Fix getting wxPrintData from the print dialog.
     * Fix wxMediaCtrl support when using Wayland
     * Generate wxKeyEvents for GDK_KEY_LaunchX keys
-- Drop upstream fixed wxWidgets-3.1.5-fix-wxIcon-wxDVC-columns.patch
+- Remove wxWidgets-3.1.5-fix-wxIcon-wxDVC-columns.patch:
+  This update already include the patch.
+- Remove wxWidgets-3_2-Create-our-own-socket-file-for-socket-file-test.patch:
+  This update already include the patch.
+  (bsc#1217026)
+
+-------------------------------------------------------------------
+Tue Apr 12 12:45:12 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Add wxWidgets-3_2-Create-our-own-socket-file-for-socket-file-test.patch:
+  Backporting f172f53a from upstream to fix building check fault:
+  Create our own socket file for socket file test, /dev/log doesn't
+  exist in certain types of containers.
+  (bsc#1217026)
 
 -------------------------------------------------------------------
 Fri Feb 11 14:53:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
