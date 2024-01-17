@@ -1,0 +1,8 @@
+<package name="nanoxml" project="openSUSE:Factory">
+  <title>NanoXML is a small XML parser for Java</title>
+  <description>The intent of NanoXML is to be a small parser which is easy to use.
+Although many features were added to NanoXML, it is very small.
+The full parser with builder fits in a JAR file of about 32K.
+</description>
+  <devel project="Java:packages" package="nanoxml"/>
+</package>

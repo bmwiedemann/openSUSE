@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ab4099d8d3d37976ad1063500bef7e27</srcmd5>
+    <version>1.10.1</version>
+    <time>1605290272</time>
+    <user>dimstar_suse</user>
+    <comment>The LSC Algorithm Inspiral Library for gravitational wave data analysis.</comment>
+    <requestid>846239</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>65389e9212b6f7286d38b0e46acb1c8f</srcmd5>
+    <version>2.0.1</version>
+    <time>1613463562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872144</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f8117bc4c63ae18a6a9733a83a8faba5</srcmd5>
+    <version>2.0.2</version>
+    <time>1619031545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876071</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f71c60552910f288fd4b49c0d677aa96</srcmd5>
+    <version>2.0.4</version>
+    <time>1642455238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945460</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0ee8762d6d19622443ee6005e6ab53be</srcmd5>
+    <version>3.0.0</version>
+    <time>1661346667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998928</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>69c070e94463da721e919a0df54e7b1c</srcmd5>
+    <version>3.0.0</version>
+    <time>1676990159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066761</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ca27fd6c56cb5fbb55f50ae3f8429390</srcmd5>
+    <version>4.0.2</version>
+    <time>1685141456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089164</requestid>
+  </revision>
+</revisionlist>

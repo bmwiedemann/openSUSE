@@ -1,0 +1,23 @@
+<constraints>
+  <hardware>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+    <physicalmemory>
+      <size unit="G">8</size>
+    </physicalmemory>
+    <disk>
+      <size unit="G">13</size>
+    </disk>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+    <physicalmemory>
+      <size unit="M">9600</size>
+    </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>

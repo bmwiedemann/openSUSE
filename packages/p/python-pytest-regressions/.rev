@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f9a77632fbad2b2c53835cd2a627a48e</srcmd5>
+    <version>2.2.0</version>
+    <time>1627898710</time>
+    <user>dimstar_suse</user>
+    <comment>Now required for python-pydata-sphinx-theme and python-sphinx-book-theme</comment>
+    <requestid>909681</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f3c167d25e1f3d251fe2b2a9edfbfc86</srcmd5>
+    <version>2.2.0</version>
+    <time>1683630424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085219</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e074e1cd8e203289565099259c6bdb43</srcmd5>
+    <version>2.4.2</version>
+    <time>1683728243</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.2:
+  * Properly handle missing index ``0``.
+  * Compatibility fix for pytest 6.2.
+  * New ``--regen-all`` flag, which regenerates all files without
+    failing the tests. Useful to regenerate all files in
+    the test suite with a single run.
+  * The public API is now fully type annotated.
+  * ``pytest&gt;=6.2`` is now required.
+  * Properly handle empty and NaN values on
+    num_regression and dataframe_regression.
+  * New ``--with-test-class-names`` command-line flag to consider
+    test class names when composing the expected and obtained
+    data filenames. Needed when the same module contains
+    different classes with the same method names.
+  * New ``ndarrays_regression``, for comparing NumPy arrays with
+    arbitrary shape.
+  * Fix ``empty string bug`` on dataframe regression.
+- drop np_num-deprecated.patch (upstream)</comment>
+    <requestid>1085835</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2eef8be93a7793e1da6a8aa135cecab8</srcmd5>
+    <version>2.4.2</version>
+    <time>1685124906</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-pandas and python-matplotlib from BuildRequires 
+</comment>
+    <requestid>1088997</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>eb1eab982ee69755654ea6f4a19953e6</srcmd5>
+    <version>2.4.2</version>
+    <time>1685632745</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_different_data_types because of s390x architecture issue.
+- Skip test_common_case because of SLE15 i586 precision issue</comment>
+    <requestid>1089802</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bce476be443045772e3f2534f8fa8d46</srcmd5>
+    <version>2.5.0</version>
+    <time>1694113939</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.0:
+  * Dropped support for EOL Python 3.6 and Python 3.7.
+  * Added support for Python 3.11.
+  * Make ``dataframe_regression`` compatible with classes inheriting
+    from ``pandas.DataFrame``.</comment>
+    <requestid>1109484</requestid>
+  </revision>
+</revisionlist>

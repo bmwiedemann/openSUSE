@@ -1,0 +1,5 @@
+<package name="babeltrace" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:tools:lttng" package="babeltrace"/>
+</package>

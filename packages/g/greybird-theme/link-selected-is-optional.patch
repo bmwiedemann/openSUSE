@@ -1,0 +1,12 @@
+diff -rub a/light/gtk-4.0/_common.scss b/light/gtk-4.0/_common.scss
+--- a/light/gtk-4.0/_common.scss	2023-01-16 09:59:06.618277289 +0800
++++ b/light/gtk-4.0/_common.scss	2023-01-16 10:06:48.039205675 +0800
+@@ -1547,7 +1547,7 @@
+       box-shadow: inset 0 1px mix($top_hilight, $selected_bg_color, 60%);
+     }
+ 
+-    .subtitle:link { @extend *:link:selected;  }
++    .subtitle:link { @extend *:link:selected !optional;  }
+ 
+     button {
+       @include button(normal, $selected_bg_color, $selected_fg_color);
