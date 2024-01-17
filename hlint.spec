@@ -19,7 +19,7 @@
 %global pkg_name hlint
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        3.5
+Version:        3.6.1
 Release:        0
 Summary:        Source code suggestions
 License:        BSD-3-Clause
