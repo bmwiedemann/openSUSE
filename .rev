@@ -702,4 +702,20 @@
     <comment></comment>
     <requestid>1119666</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>ba684e0f992370837b6206a5c2a03357</srcmd5>
+    <version>45.1</version>
+    <time>1701378030</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130014</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>0b9d96fd3db67b2e3de8ece8065dcd1a</srcmd5>
+    <version>45.2</version>
+    <time>1701792106</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1130683 from iznogood)</comment>
+    <requestid>1130747</requestid>
+  </revision>
 </revisionlist>
