@@ -15,4 +15,17 @@
     <comment>- Listen on IPv6 by default as well as IPv4</comment>
     <requestid>1138823</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0434d495aa75b76cb3473eba24a6ba25</srcmd5>
+    <version>1.15</version>
+    <time>1705611232</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.15
+  * Try to avoid leaking the length of the --auth password through timing side-channels.
+  * Document that --auth is not secure.
+  * Add mime types: apng, avif, webp, webm, json, woff, woff2, ogg, flac, wav, opus, oga, spx
+  * Custom headers with the CLI option
+</comment>
+    <requestid>1139690</requestid>
+  </revision>
 </revisionlist>
