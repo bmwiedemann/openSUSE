@@ -24,4 +24,41 @@
 - remove serverxmltool and use xsltproc</comment>
     <requestid>1139112</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7c7c6d2afb703ac1178af1d18802edba</srcmd5>
+    <version>10.1.18</version>
+    <time>1705611222</time>
+    <user>anag+factory</user>
+    <comment>- Update to Tomcat 10.1.18
+  * Fixed CVEs:
+    + CVE-2023-46589: Apache Tomcat: HTTP request smuggling due to
+      incorrect headers parsing (bsc#1217649)
+  * Catalina
+    + Update:  68378: Align extension to MIME type mappings in the
+      global web.xml with those in httpd by adding
+      application/vnd.geogebra.slides for ggs, text/javascript for mjs
+      and audio/ogg for opus. (markt)
+    + Fix:  Background processes should not be run concurrently with
+      lifecycle operations of a container. (remm)
+    + Fix:  Correct unintended escaping of XML in some WebDAV
+      responses. The XML list of support locks when provided in
+      response to a PROPFIND request was incorrectly XML escaped.
+      (markt)
+    + Fix:  68227: Ensure that AsyncListener.onComplete() is called
+      if AsyncListener.onError() calls AsyncContext.dispatch().
+      (markt)
+    + Fix:  68228: Use a 408 status code if a read timeout occurs
+      during HTTP request processing. Includes a test case based on
+      code provided by adwsingh. (markt)
+    + Fix:  67667: TLSCertificateReloadListener prints unreadable
+      rendering of X509Certificate#getNotAfter(). (michaelo)
+    + Update:  The status servlet included in the manager webapp
+      can now output statistics as JSON, using the JSON=true URL
+      parameter. (remm)
+    + Update:  Optionally allow ServiceBindingPropertySource to
+      trim a trailing newline from a file containing a
+      property-value. (schultz)
+    + Fix:  67793: Ensure the original session timeout is restored</comment>
+    <requestid>1139643</requestid>
+  </revision>
 </revisionlist>

@@ -29,7 +29,7 @@
 %define elspec %{elspec_major}.%{elspec_minor}
 %define major_version 10
 %define minor_version 1
-%define micro_version 14
+%define micro_version 18
 %define java_major 1
 %define java_minor 11
 %define java_version %{java_major}.%{java_minor}
@@ -92,6 +92,7 @@ Patch5:         %{app_name}-jdt.patch
 Patch6:         %{app_name}-secretRequired-default.patch
 Patch7:         %{app_name}-fix_catalina.patch
 Patch8:         %{app_name}-logrotate_everything.patch
+Patch9:         tomcat-10.1-build-with-java-11.patch
 BuildRequires:  ant >= 1.10.2
 BuildRequires:  ant-antlr
 BuildRequires:  apache-commons-collections
@@ -111,7 +112,6 @@ BuildRequires:  jakarta-taglibs-standard >= 1.1
 BuildRequires:  java-devel >= 11
 BuildRequires:  javapackages-local
 BuildRequires:  junit
-BuildRequires:  libxslt-tools
 BuildRequires:  osgi-annotation
 BuildRequires:  osgi-compendium
 BuildRequires:  osgi-core
@@ -132,6 +132,7 @@ Requires:       apache-commons-pool2
 Requires:       jakarta-servlet
 Requires:       java >= %{java_version}
 Requires(post): %fillup_prereq
+Requires(post): libxslt-tools
 Requires(pre):  shadow
 Requires:       libtcnative-1-0 >= 1.2.38
 Requires:       logrotate
@@ -150,6 +151,7 @@ ATTENTION: This tomcat is built with java %{java_version}.
 Summary:        The host manager and manager web applications for Apache Tomcat
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
+Requires(post): libxslt-tools
 Conflicts:      %{app_name}-admin-webapps
 
 %description admin-webapps
@@ -167,6 +169,7 @@ Embeddeding support (various libraries) for Apache Tomcat.
 Summary:        The "docs" web application for Apache Tomcat
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
+Requires(post): libxslt-tools
 Conflicts:      %{app_name}-docs-webapp
 
 %description docs-webapp
@@ -261,6 +264,7 @@ Summary:        ROOT and examples web applications for Apache Tomcat
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires:       jakarta-taglibs-standard >= 1.1
+Requires(post): libxslt-tools
 Conflicts:      %{app_name}-webapps
 
 %description webapps
@@ -587,6 +591,7 @@ getent passwd tomcat >/dev/null || %{_sbindir}/useradd -c "Apache Tomcat" \
 %post
 %service_add_post %{app_name}.service
 %{fillup_only %{app_name}}
+xsltproc  --output %{confdir}/server.xml %{confdir}/valve.xslt %{confdir}/server.xml
 
 %preun
 %service_del_preun %{app_name}.service
@@ -695,9 +700,6 @@ xsltproc --output %{tomcatappdir}/docs/META-INF/context.xml %{confdir}/allowLink
 if [ ! -e %{_datadir}/%{app_name}/webapps/docs ]; then
     ln -sf %{tomcatappdir}/docs %{_datadir}/%{app_name}/webapps/docs
 fi
-
-%posttrans
-xsltproc  --output %{confdir}/server.xml %{confdir}/valve.xslt %{confdir}/server.xml
 
 %files
 %doc {LICENSE,NOTICE,RELEASE*}
