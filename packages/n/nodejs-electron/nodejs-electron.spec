@@ -115,29 +115,25 @@ BuildArch:      i686
 %endif
 
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora}
 %bcond_without system_crc32c
 %bcond_without system_dav1d
 %bcond_without system_highway
 %bcond_without system_nvctrl
-%else
-%bcond_with system_crc32c
-%bcond_with system_dav1d
-%bcond_with system_highway
-%bcond_with system_nvctrl
-%endif
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
+%bcond_without system_spirv
+%else
+%bcond_with system_spirv
+%endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
 %bcond_without harfbuzz_5
 %bcond_without link_vulkan
 %bcond_without ffmpeg_5
-%bcond_without system_spirv
 %else
 %bcond_with harfbuzz_5
 %bcond_with link_vulkan
 %bcond_with ffmpeg_5
-%bcond_with system_spirv
 %endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora} >= 38
@@ -240,7 +236,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        27.2.2
+Version:        27.2.3
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -362,7 +358,6 @@ Patch2039:      vulkan_memory_allocator-upgrade.patch
 Patch2040:      build-without-extensions.patch
 Patch2041:      chromium-117-blink-BUILD-mnemonic.patch
 Patch2042:      brotli-remove-shared-dictionary.patch
-Patch2043:      keyboard_util-gcc12-invalid-constexpr.patch
 Patch2044:      computed_style_base-nbsp.patch
 Patch2045:      libxml-2.12-xmlCtxtGetLastError-const.patch
 
@@ -659,6 +654,7 @@ BuildRequires:  pkgconfig(SPIRV-Tools) >= 2022.2
 %if %{with link_vulkan}
 BuildRequires:  pkgconfig(vulkan) >= 1.3
 %endif
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(zlib)
@@ -673,11 +669,11 @@ BuildRequires:  pkgconfig(vpx) >= 1.13~
 %endif
 %if %{without clang}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
-BuildRequires:  gcc >= 12
-BuildRequires:  gcc-c++ >= 12
+BuildRequires:  gcc >= 13
+BuildRequires:  gcc-c++ >= 13
 %else
-BuildRequires:  gcc12-PIE
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %endif
 %endif
 %if %{with pipewire}
@@ -734,7 +730,6 @@ clang -v
 # Use stable path to source to make use of ccache
 %autosetup -n src -p1
 
-
 # Sanity check if macro corresponds to the actual ABI
 test $(grep ^node_module_version electron/build/args/all.gn | sed 's/.* = //') = %abi_version
 
@@ -783,7 +778,7 @@ mkdir -p third_party/wayland-protocols/kde/src
 ln -svfT %{_datadir}/wayland third_party/wayland/src/protocol
 #mkdir -p third_party/wayland-protocols/mesa
 
-#ln -svfT %{_datadir}/wayland-protocols third_party/wayland-protocols/src
+ln -svfT %{_datadir}/wayland-protocols third_party/wayland-protocols/src
 #ln -svfT %{_datadir}/wayland-eglstream third_party/wayland-protocols/mesa/wayland-drm
 ln -svfT %{_datadir}/plasma-wayland-protocols third_party/wayland-protocols/kde/src/protocols
 
@@ -923,11 +918,11 @@ export AR=gcc-ar
 export NM=gcc-nm
 export RANLIB=gcc-ranlib
 %else
-export CC=gcc-12
-export CXX=g++-12
-export AR=gcc-ar-12
-export NM=gcc-nm-12
-export RANLIB=gcc-ranlib-12
+export CC=gcc-13
+export CXX=g++-13
+export AR=gcc-ar-13
+export NM=gcc-nm-13
+export RANLIB=gcc-ranlib-13
 %endif
 
 # endif with clang
