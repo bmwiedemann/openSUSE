@@ -374,8 +374,8 @@ products:
     - x86_64
   - samba-image:
     - x86_64
-#  - tomcat-image:
-#    - x86_64
+  - tomcat-image:
+    - x86_64
   - init-image:
     - x86_64
   - virt-api-container:
