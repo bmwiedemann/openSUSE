@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 18 17:58:40 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.14.2
+  - InfluxDB: truncate timestamps to whole seconds to save disk space. #9969
+  - HttpServerConnection: log request processing time as well. #9970
+  - Update Boost shipped on Windows to v1.84. #9970
+
+-------------------------------------------------------------------
 Thu Dec 21 12:43:53 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.14.1
