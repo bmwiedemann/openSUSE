@@ -2032,4 +2032,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1129730</requestid>
   </revision>
+  <revision rev="236" vrev="2">
+    <srcmd5>e85afacfc09f085560149edebe030aa5</srcmd5>
+    <version>1.2.8</version>
+    <time>1705611104</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1139464 from dimstar)</comment>
+    <requestid>1139465</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package PackageKit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,9 @@ Patch7:         PackageKit-zypp-disable-upgrade-system-in-sle.patch
 Patch15:        PackageKit-fix-pkcon-permission.patch
 # PATCH-FIX-UPSTREAM PackageKit-dynamic-export.patch boo#1213309 dimstar@opensuse.org -- Fix loading modules when built with glib 2.70
 Patch16:        PackageKit-dynamic-export.patch
+
+# PATCH-FIX-SLE PackageKit-find-python-3-6.patch alynx.zhou@suse.com -- Build PackageKit with Python 3.6
+Patch1001:      PackageKit-find-python-3-6.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -274,7 +277,17 @@ This package provides the upstream default configuration for PackageKit.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 7 -p1
+%patch -P 15 -p1
+%patch -P 16 -p1
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%patch -P 1001 -p1
+%endif
 
 %build
 %meson \

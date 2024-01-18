@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  2 08:23:40 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add PackageKit-find-python-3-6.patch: Specify the Python version
+  we need to build this package.
+
+-------------------------------------------------------------------
 Thu Nov  9 09:32:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.8:
