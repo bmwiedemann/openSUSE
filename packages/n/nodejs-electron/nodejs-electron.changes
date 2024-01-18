@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 17 22:17:15 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.2.3
+  * Security fixes for V8 (bsc#1218892):
+    CVE-2024-0517 CVE-2024-0518
+- Use system spirv on 15.6
+- Build using gcc13 on Leap
+  * drop keyboard_util-gcc12-invalid-constexpr.patch
+- Drop support for 15.4 and Fedora 37
+  and remove relevant vendored libraries from tarball.
+
+-------------------------------------------------------------------
 Wed Jan 10 20:23:22 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 27.2.2
