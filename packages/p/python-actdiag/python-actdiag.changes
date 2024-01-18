@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 18 04:31:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Add patch clean-up-assertions.patch:
+  * Use non-deprecated assertion functions.
+
+-------------------------------------------------------------------
 Thu Aug  4 20:14:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix the requirements
