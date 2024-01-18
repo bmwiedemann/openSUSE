@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 16 19:38:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add missing Qt6 BuildRequires to enable osltoy 
+
+-------------------------------------------------------------------
 Tue Jan 16 11:01:20 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 1.12.14.0:
