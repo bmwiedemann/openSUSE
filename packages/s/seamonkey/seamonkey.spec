@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 #               2006-2018 Wolfgang Rosenauer
-#               2018-2023 Tristan Miller
+#               2018-2024 Tristan Miller
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,9 +72,9 @@ BuildRequires:  clang-devel >= 5
 %endif
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.18
+Version:        2.53.18.1
 Release:        0
-%define releasedate 20231209000000
+%define releasedate 20240116000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -142,8 +142,10 @@ Provides:       seamonkey-dom-inspector = %{version}
 # the following conditions are always met in Factory by definition
 BuildRequires:  mozilla-nspr-devel >= 4.13.1
 PreReq:         mozilla-nspr >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
+%if 0%{?sle_version} != 150500 && 0%{?is_opensuse}
 BuildRequires:  mozilla-nss-devel >= 3.28.6
 PreReq:         mozilla-nss >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nss)
+%endif
 
 %description
 SeaMonkey is an all-in-one Internet application suite containing a web
@@ -255,7 +257,9 @@ ac_add_options --disable-elf-hack
 ac_add_options --disable-debug
 
 ac_add_options --with-system-nspr
+%if 0%{?sle_version} != 150500 && 0%{?is_opensuse}
 ac_add_options --with-system-nss
+%endif
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
