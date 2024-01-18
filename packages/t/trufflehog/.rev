@@ -101,4 +101,41 @@
   * Add skip archive support (#2257) (forwarded request 1134935 from ph03nix)</comment>
     <requestid>1135012</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>281dbcd729a7a8855323d013826e441f</srcmd5>
+    <version>3.63.10</version>
+    <time>1705611281</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.63.10:
+  * [chore] - Add regex and keyword for api_org tokens (#2240)
+  * Assume unauthenticated github scans have public visibility (#2308)
+  * [fixup ] - Allow ssh cloning with AWS Code Commit (#2307)
+  * added azure protos (#2304)
+  * Disable recently added postgres detector because it it too sensitive (#2303)
+  * [feat] - Provide CLI flag to only use custom verifiers (#2299)
+  * Individuate archive tests #2293
+  * [feat] - Allow for the use of include/exclude path files for filesystem scans (#2297)
+  * [chore] - small updates (#2288)
+  * fix(deps): update module github.com/bradleyfalzon/ghinstallation/v2 to v2.9.0 (#2295)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.49.19 (#2294)
+  * feat(installation): Implement checksum signature verification (#2157)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.49.18 (#2292)
+  * fix(deps): update module cloud.google.com/go/storage to v1.36.0 (#2291)
+  * chore(deps): update sigstore/cosign-installer action to v3.3.0 (#2290)
+  * chore(deps): update alpine docker tag to v3.19 (#2287)
+  * fix(deps): update module github.com/mattn/go-sqlite3 to v1.14.19 (#2286)
+  * Extend memory cache (#2275)
+  * fix(deps): update module github.com/gabriel-vasile/mimetype to v1.4.3 (#2285)
+  * fix(deps): update golang.org/x/exp digest to 0dcbfd6 (#2284)
+  * fix(deps): update module github.com/azuread/microsoft-authentication-library-for-go to v1.2.1 (#2282)
+  * adding postgres detector (#2108)
+  * update test (#2283)
+  * fix(deps): update golang.org/x/exp digest to be819d1 (#2281)
+  * fix(signable): ignore common false positives (#2230)
+  * fix(parseur): ignore false positives (#2229)
+  * [chore] - update docs for pre-commit (#2280)
+  * 1833 Fix syslog udp (#1835)
+  * Wrap temp deletion err #2277 (forwarded request 1139765 from ph03nix)</comment>
+    <requestid>1139780</requestid>
+  </revision>
 </revisionlist>
