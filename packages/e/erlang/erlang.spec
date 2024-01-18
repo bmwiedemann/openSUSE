@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           erlang
-Version:        26.1.2
+Version:        26.2.1
 Release:        0
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
@@ -275,9 +275,13 @@ export LANG="en_US.UTF-8"
 %make_build clean
 %make_build
 # to build the docs, just compiled erlang is required
-PATH=$PWD/bin:$PATH %make_build docs
+PATH=$PWD/bin:$PATH ERL_TOP=$TMP_ERL_TOP %make_build docs
 
 %sysusers_generate_pre %{SOURCE10} epmd epmd-user.conf
+
+%check
+# Disable tests by default, they are slow and have many false positives.
+#PATH=$PWD/bin:$PATH make test
 
 %install
 %make_install install-docs

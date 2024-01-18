@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jan 11 06:09:29 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Changes for 26.2.1:
+  * erts: Removed unnecessary PCRE source tar-ball.
+  * ssh: With this change (being response to CVE-2023-48795),
+    ssh can negotiate "strict KEX" OpenSSH extension with
+    peers supporting it; also
+    'chacha20-poly1305@openssh.com' algorithm becomes a
+    less preferred cipher.
+    If strict KEX availability cannot be ensured on both
+    connection sides, affected encryption modes(CHACHA and
+    CBC) can be disabled with standard ssh configuration.
+    This will provide protection against vulnerability, but
+    at a cost of affecting interoperability. See
+    Configuring algorithms in SSH. (bsc#1218192, CVE-2023-48795)
+- Changes for 26.2:
+  * all: Replaced unintentional Erlang Public License 1.1
+    headers in some files with the intended Apache License
+    2.0 header.
+  * otp: The removal of the deprecated slave module, originally
+    planned for OTP 27, has been postponed to OTP 29.
+  * asn1: Fix benign warning from gcc 11 about mismatching call
+    to free().
+  * crypto: Enable engine support for OpenSSL versions 3.
+  * edoc: Emit <code> instead of <tt>.
+- Disable test suite for now, it has many false positives and
+  takes a very long time.
+
+-------------------------------------------------------------------
 Wed Oct 25 15:15:02 UTC 2023 - matwey.kornilov@gmail.com
 
 - Changes for 26.1.2:
