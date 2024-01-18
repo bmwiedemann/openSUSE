@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Wed Jan 17 11:29:29 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#979
+- allow to get Arch object from SystemInfo
+- make testcase more robust
+- coding style
+- 4.5.174
+
+--------------------------------------------------------------------
 Fri Jan 12 21:03:37 UTC 2024 - aschnell@suse.com
 
 - Translated using Weblate (Russian) (bsc#1149754)
