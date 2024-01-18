@@ -184,4 +184,15 @@
     <comment></comment>
     <requestid>1137511</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8826c9650ca799d307bd3e6e77bbfbef</srcmd5>
+    <version>1.15</version>
+    <time>1705611279</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.15
+  - Add systemd generator for systemd-status-mail
+  - Add own user for status-mail service
+</comment>
+    <requestid>1139769</requestid>
+  </revision>
 </revisionlist>
