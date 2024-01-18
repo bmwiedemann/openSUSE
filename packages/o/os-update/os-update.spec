@@ -21,7 +21,7 @@
 %endif
 
 Name:           os-update
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Updates the system regularly to stay current and safe
 License:        GPL-2.0-or-later
@@ -29,6 +29,8 @@ URL:            https://github.com/openSUSE/os-update
 Source:         https://github.com/openSUSE/os-update/releases/download/v%{version}/os-update-%{version}.tar.xz
 Source99:       os-update-rpmlintrc
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(systemd)
 Requires:       lsof
 %if 0%{?suse_version} >= 1500
@@ -54,6 +56,7 @@ Suggests:       mailx
 %else
 Requires:       mailx
 %endif
+%sysusers_requires
 
 %description -n systemd-status-mail
 systemd-mail-status is called by systemd-status-mail@.service if the
@@ -71,6 +74,7 @@ of the service, the hostname and the output of
   %define make_build %{__make} -O %{?_smp_mflags}
 %endif
 %make_build
+%sysusers_generate_pre systemd/systemd-status-mail.conf systemd-status-mail systemd-status-mail.conf
 
 %install
 %make_install
@@ -87,6 +91,8 @@ install -m 644 -D etc/default/systemd-status-mail %{buildroot}%{_distconfdir}/de
 
 %postun
 %service_del_postun os-update.timer
+
+%pre -n systemd-status-mail -f systemd-status-mail.pre
 
 %files
 %license COPYING
@@ -110,8 +116,10 @@ install -m 644 -D etc/default/systemd-status-mail %{buildroot}%{_distconfdir}/de
 %endif
 %{_libexecdir}/systemd-status-mail
 %{_prefix}/lib/systemd/system/systemd-status-mail@.service
+%{_prefix}/lib/systemd/system-generators/status-mail-generator.sh
 %{_mandir}/man8/systemd-status-mail.8%{?ext_man}
 %dir %{_datadir}/systemd-status-mail
 %{_datadir}/systemd-status-mail/status-mail.conf
+%{_sysusersdir}/systemd-status-mail.conf
 
 %changelog
