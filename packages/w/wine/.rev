@@ -5035,4 +5035,14 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.0-rc4 release</comment>
     <requestid>1138460</requestid>
   </revision>
+  <revision rev="430" vrev="1">
+    <srcmd5>5d0ca1f02b886d935886df4996a7d7a2</srcmd5>
+    <version>9.0</version>
+    <time>1705611227</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.0 release
+  - see all lower entries for major changes, also the ANNOUNCE file
+- update staging to 9.0 release</comment>
+    <requestid>1139672</requestid>
+  </revision>
 </revisionlist>
