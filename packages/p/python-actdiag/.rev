@@ -56,4 +56,14 @@
     <comment></comment>
     <requestid>993138</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6413a2a4c7f4eb799656889b54220395</srcmd5>
+    <version>3.0.0</version>
+    <time>1705611212</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Add patch clean-up-assertions.patch:
+  * Use non-deprecated assertion functions.</comment>
+    <requestid>1139611</requestid>
+  </revision>
 </revisionlist>

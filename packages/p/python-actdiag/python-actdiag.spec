@@ -1,7 +1,7 @@
 #
 # spec file for package python-actdiag
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,18 +21,20 @@ Version:        3.0.0
 Release:        0
 Summary:        Text to activity-diagram image generator
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            http://blockdiag.com/
 Source:         https://files.pythonhosted.org/packages/source/a/actdiag/actdiag-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#blockdiag/actdiag#25
+Patch0:         clean-up-assertions.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module blockdiag >= 3}
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blockdiag >= 3
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -42,15 +44,15 @@ BuildArch:      noarch
 actdiag generates activity-diagram image files from spec-text files.
 
 %prep
-%setup -q -n actdiag-%{version}
+%autosetup -p1 -n actdiag-%{version}
 # python-blockdiag-nose-to-pytest.patch of python-blockdiag changed the function name
 sed -i 's/testcase_generator/_testcase_generator/' src/actdiag/tests/test_generate_diagram.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/actdiag
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -68,6 +70,6 @@ sed -i 's/testcase_generator/_testcase_generator/' src/actdiag/tests/test_genera
 %doc README.rst
 %python_alternative %{_bindir}/actdiag
 %{python_sitelib}/actdiag
-%{python_sitelib}/actdiag-%{version}*-info
+%{python_sitelib}/actdiag-%{version}.dist-info
 
 %changelog
