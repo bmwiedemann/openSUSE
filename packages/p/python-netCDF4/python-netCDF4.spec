@@ -1,7 +1,7 @@
 #
 # spec file for package python-netCDF4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,6 +83,12 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %check
 pushd test
 export NO_NET=1
+
+# Broken test in s390x, gh#Unidata/netcdf4-python#1124
+%ifarch s390x
+rm tst_compoundvar.py
+%endif
+
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python run_all.py
 }

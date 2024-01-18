@@ -393,4 +393,13 @@
     from netcdf-c</comment>
     <requestid>1131716</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>ffaf4a00acc99dd7aefc20cad696914f</srcmd5>
+    <version>1.6.5</version>
+    <time>1705611246</time>
+    <user>anag+factory</user>
+    <comment>- Disable broken tests for s390x, gh#Unidata/netcdf4-python#1124,
+  bsc#1218606</comment>
+    <requestid>1139718</requestid>
+  </revision>
 </revisionlist>
