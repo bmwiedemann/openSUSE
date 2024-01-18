@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Jan 18 08:15:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.1:
+  * Final goreleaser fix (#753)
+  * Remove unnecessary docker manifest entry in goreleaser (#752)
+  * Update goreleaser to fix release pipeline (#751)
+
+-------------------------------------------------------------------
+Thu Jan 18 08:13:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.0:
+  * Update CHANGELOG.md for 1.6.0 (#749)
+  * Bump version for OSV-Scanner. (#750)
+  * Build action image when releasing (#747)
+  * fix(deps): update osv-scanner minor (#743)
+  * chore(deps): update actions/upload-artifact action to v4.1.0
+    (#744)
+  * chore(deps): update golang:alpine docker digest to fd78f2f
+    (#719)
+  * chore(deps): update workflows (major) (#709)
+  * chore(deps): update alpine docker tag to v3.19 (#708)
+  * fix(deps): update osv-scanner minor (#700)
+  * chore(deps): lock file maintenance (#710)
+  * chore(deps): update github/codeql-action action to v2.23.0
+    (#707)
+  * Assume latest patch version if version does not exist (#740)
+  * Add support for verbosity levels (#727)
+  * Show ecosystem and version even if git is shown if the info
+    exists. (#736)
+  * chore(deps): Bump github.com/cloudflare/circl from 1.3.3 to
+    1.3.7 (#738)
+  * Add option to not fail on vuln to workflow files (#737)
+  * Fix vulnerabilities that OSV-Scanner found (#724)
+  * Add option to not fail on vulnerability being found for github
+    action (#732)
+  * fix: remove deprecated `Reporter` methods (#722)
+  * fix directives related to go generate in package spdx (#730)
+  * verify license allowlist against spdx identifiers (#729)
+  * Add formatting instructions to docs contribution (#723)
+  * Adjusting docs (#716)
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.11.0
+    [security] (#721)
+  * Get go stdlib version from go.mod (#704)
+  * feat: support `PrintTextf` and `PrintErrorf` on `Reporter`
+    (#706)
+  * Refactor: attempt to transition into using models.Ecosystems
+    rather than lockfile.Ecosystems (#705)
+  * Updating cdxgen-go version in go.mod (#718)
+  * Unify OSV scanner action (#711)
+  * refactor: setup `prettier` for formatting files (#693)
+  * Return an error if both license scanning and local/offline
+    scanning is enabled simultaneously (#703)
+  * chore(deps): update golang:alpine docker digest to feceecc
+    (#699)
+  * scan and report dependency groups of vulnerabilities (#655)
+  * Create an option to skip/disable upload to code scanning (#702)
+  * Add support for NuGet lock files version 2 (#694)
+  * remove extra backtick in license scanning documentation (#696)
+  * Update changelog to include minimum go version changes (#695)
+
+-------------------------------------------------------------------
 Wed Dec 06 12:05:33 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.5.0:
