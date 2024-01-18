@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 18 12:11:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 4.3.3:
+  * Always terminate --allow-only and --fail-on messages with a newline
+  * Always terminate files created with --output-file with a newline
+- Ignore broken test with latest version of wcwidth,
+  gh#raimon49/pip-licenses#178
+
+-------------------------------------------------------------------
 Thu Jun  1 20:08:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.2:
