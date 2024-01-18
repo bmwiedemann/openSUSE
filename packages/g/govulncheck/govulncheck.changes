@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Jan 17 20:49:27 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.0.2:
+  * cmd/govulncheck: update test data
+  * go.mod: update golang.org/x dependencies
+  * internal/osv: fix type name in comment
+  * internal/scan: remove informational header for package and module mode
+  * internal/scan: remove redundant newline for package and module mode
+  * cmd/govulncheck/integration/stackrox: update vuln expectation
+  * all: update tools to pick up bug fixes
+  * internal/vulncheck: compute proper db names for generic functions
+  * internal/vulncheck: improve error message for fetching vulns
+  * testdata: Add more package/mod level tests
+  * internal/scan: change text based on scan level
+  * internal/scan: update show help message
+  * internal/sarif: add sarif types
+  * internal/scan: enable module scan mode
+  * internal/scan: add scan_level to text tests
+  * internal/scan: add scan level to textHandler
+  * cmd/govulncheck: rearrange test files
+  * all: add logging to TestGovulncheck
+  * internal/scan: disallow package input in mod level
+  * go.mod: update golang.org/x dependencies
+  * cmd/govulncheck: fix mod level behavior
+  * all: update to x/tools@v.15.0
+  * internal/vulncheck: define Binary over Bin
+  * internal/vulncheck: add binary abstraction data structure
+  * cmd/govulncheck: organize tests into subdirs
+  * internal/scan: Improve "Informational" text output
+  * internal/scan: properly "genericify" choose
+  * internal/vulncheck: emit package findings all at once
+  * internal/vulncheck: update logic for package level analysis
+  * internal/vulncheck: remove obsolete tests and helpers
+  * internal/scan: remove obsolete function
+  * internal/scan: check for go mod before running
+  * cmd/govulncheck/integration: add new expectations
+  * cmd/govulncheck: Fix no go mod tests
+  * internal/vulncheck: rename moduleVulnerabilities
+  * internal/vulncheck: add documentation and propagate errors
+  * internal/vulncheck: emit OSVs in their raw form asap
+  * internal/scan: move emit logic for findings to internal/vulncheck
+  * internal: properly fetch modules in source mode
+  * internal/scan: verify scan level flag
+  * internal/govulncheck: update Finding docstring
+  * internal/vulncheck: remove file set computation
+  * internal/scan: generate better message when patterns matches no packages
+  * internal/scan, vulncheck: emit vulns as found
+  * internal/scan: use modVersion for mod version
+  * internal/scan: suggest earliest valid fixed version as the fix
+  * internal/scan: communicate default value for test flag
+  * internal/semver: rename the LatestFixedVersion function
+  * cmd/govulncheck: fix incorrect test file name
+  * cmd/govulncheck: remove go version for test file
+  * internal/vulnchec: improve comments and names for imports level logic
+  * internal/govulncheck: update description of Findings
+  * internal/vulncheck/internal/buildinfo: support stripped darwin binaries
+  * internal/scan: update test names
+  * internal/scan: text output allows module level vulns
+  * internal/client: add additional context to HTTP error message
+  * internal/scan: add isImported function
+  * internal/scan: fix trace count bug
+  * internal/vulncheck: add LoadModules using go.mod
+  * internal/govulncheck: add WantPackages scan level
+
+-------------------------------------------------------------------
 Sun Sep 24 23:15:41 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.0.1:

@@ -35,4 +35,12 @@
 - _service add setversion to automatically update spec Version (forwarded request 1113318 from jfkw)</comment>
     <requestid>1113319</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3641e005d6fd31b7d544dff11f79fd33</srcmd5>
+    <version>1.0.2</version>
+    <time>1705611127</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.2: (forwarded request 1139543 from jfkw)</comment>
+    <requestid>1139545</requestid>
+  </revision>
 </revisionlist>
