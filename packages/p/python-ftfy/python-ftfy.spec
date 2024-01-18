@@ -1,7 +1,7 @@
 #
 # spec file for package python-ftfy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ftfy
 Version:        6.0.3
@@ -25,7 +24,11 @@ Summary:        Python module for repairing mis-decoded Unicode text
 License:        MIT
 URL:            https://github.com/rspeer/python-ftfy
 Source:         https://github.com/rspeer/python-ftfy/archive/refs/tags/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM update-wcwidth.patch gh#rspeer/python-ftfy@5d975c6bb183
+Patch1:         update-wcwidth.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-wcwidth
@@ -43,13 +46,13 @@ Ftfy attempts to repair Unicode text that has been erroneously
 put through an encode/decode cycle with different encodings.
 
 %prep
-%setup -q -n python-ftfy-%{version}
+%autosetup -p1 -n python-ftfy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ftfy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -71,6 +74,7 @@ export PATH="build/testbin:$PATH"
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/ftfy
-%{python_sitelib}/*
+%{python_sitelib}/ftfy
+%{python_sitelib}/ftfy-%{version}*-info
 
 %changelog

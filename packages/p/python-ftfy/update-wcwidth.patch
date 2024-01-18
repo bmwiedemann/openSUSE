@@ -1,0 +1,40 @@
+From 5d975c6bb1836d4a1abf0e44675a08f1a9321be9 Mon Sep 17 00:00:00 2001
+From: Elia Robyn Lake <elial@ec.ai>
+Date: Tue, 21 Nov 2023 18:40:17 -0500
+Subject: [PATCH] update wcwidth
+
+---
+ ftfy/formatting.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+Index: python-ftfy-6.0.3/ftfy/formatting.py
+===================================================================
+--- python-ftfy-6.0.3.orig/ftfy/formatting.py
++++ python-ftfy-6.0.3/ftfy/formatting.py
+@@ -28,7 +28,7 @@ def character_width(char: str) -> int:
+     >>> character_width('\n')
+     -1
+     """
+-    return wcwidth(char)
++    return int(wcwidth(char))
+ 
+ 
+ def monospaced_width(text: str) -> int:
+@@ -47,7 +47,7 @@ def monospaced_width(text: str) -> int:
+     >>> len('ちゃぶ台返し')
+     6
+     >>> monospaced_width('owl\N{SOFT HYPHEN}flavored')
+-    12
++    11
+     >>> monospaced_width('example\x80')
+     -1
+ 
+@@ -70,7 +70,7 @@ def monospaced_width(text: str) -> int:
+     #
+     # Remove terminal escapes before calculating width, because if they are
+     # displayed as intended, they will have zero width.
+-    return wcswidth(remove_terminal_escapes(normalize('NFC', text)))
++    return int(wcswidth(remove_terminal_escapes(normalize("NFC", text))))
+ 
+ 
+ def display_ljust(text, width, fillchar=' '):
