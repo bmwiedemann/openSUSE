@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jan 17 20:30:22 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 4.2.04:
+  * PO files:
+    + Add Catalan ca.po
+    + Update Greek el.po
+  * xmlrpc remote log: set xmlrpc execute timeout to 10.0 seconds
+    for all fllog access
+  * update font browser widget class to use std::list for
+    enumerating fonts
+  * gpio ptt: correct gpio export routine
+  * MACRO tags: Add missing trailing '>' to macro tag string definitions
+  * RsID Rx button color: remove from button initialization list
+  * hamlib 4.6 bug fix: hamlib 4.6~git changes creates incompatible
+    call with previous versions of the library
+  * FMT zombie: fix potential thread zombie if FMT modem shut down
+    during a log write
+  * Squelch Macro tags
+  * Add
+    + <SQL:on|off|t> Digital Squelch on, off,toggle
+    + <SQLCH:nnn> Digital Squelch level, 0..100
+  * CLRLOG LOG LNW: Correct macro functions
+  * metar report: add unprocessed ob: line as a report option
+  * Log fields
+    + add MY_STATE
+    + trim leading/trailing blanks
+    + add UK counties to counties list
+    + changed short form to blank when NIL selected for state
+    + store fldigi version number in SQSO.txt file
+    + regenerate list from internal string if version number does
+      not match with executing binary
+
+-------------------------------------------------------------------
 Sun Nov  5 07:21:01 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 -  update to 4.2.03:
