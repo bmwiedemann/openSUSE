@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-batch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,18 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-batch
-Version:        14.0.0
+Version:        14.1.0
 Release:        0
 Summary:        Microsoft Azure Batch Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-batch/azure-batch-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-batch/azure-batch-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-nspkg >= 3.0.0
