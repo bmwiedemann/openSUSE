@@ -3974,8 +3974,6 @@ unsorted:
   - finch-devel 
   - findbugs-bcel 
   - findbugs-bcel-javadoc 
-  - finger 
-  - finger-server 
   - fio 
   - fiona-fio 
   - fips 
@@ -7847,6 +7845,7 @@ unsorted:
   - gtkglext-devel 
   - gtkglext-doc 
   - gtkgreet 
+  - gtkgreet-lang 
   - gtkhtml-4_0-lang 
   - gtkhtml-devel 
   - gtkimageview-devel 
@@ -10116,6 +10115,7 @@ unsorted:
   - lazarus-lcl-gtk3 
   - lazarus-lcl-nogui 
   - lazarus-lcl-qt5 
+  - lazarus-lcl-qt6 
   - lazarus-tools 
   - lazygit 
   - lbdb 
@@ -10731,6 +10731,8 @@ unsorted:
   - libQt6Nfc6 
   - libQt6OpcUa6 
   - libQt6OpenGLWidgets6 
+  - libQt6Pas-devel 
+  - libQt6Pas6 
   - libQt6Pdf6 
   - libQt6PdfQuick6 
   - libQt6PdfWidgets6 
@@ -11965,7 +11967,7 @@ unsorted:
   - libdico2 
   - libdict-devel 
   - libdict1_0 
-  - libdigikamcore8_1_0 
+  - libdigikamcore8_2_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit 
   - libdirac_encoder0 
@@ -15062,7 +15064,7 @@ unsorted:
   - libscamperctrl-devel 
   - libscamperctrl2 
   - libscamperfile-devel 
-  - libscamperfile6 
+  - libscamperfile8 
   - libscca-devel 
   - libscca-tools 
   - libscca1 
@@ -15240,8 +15242,8 @@ unsorted:
   - libspatialindex6 
   - libspatialite-devel 
   - libspatialite8 
-  - libspdlog1_12 
-  - libspdlog1_12-32bit 
+  - libspdlog1_13 
+  - libspdlog1_13-32bit 
   - libspdylay7 
   - libspectre-devel 
   - libspeechd-devel 
@@ -20563,6 +20565,7 @@ unsorted:
   - perl-IO-Pager 
   - perl-IO-Pipely 
   - perl-IO-SessionData 
+  - perl-IO-Socket-INET6 
   - perl-IO-Socket-Multicast 
   - perl-IO-Socket-PortState 
   - perl-IO-Socket-Timeout 
@@ -35263,6 +35266,7 @@ unsorted:
   - stringtemplate4-bootstrap 
   - stringtemplate4-javadoc 
   - strip-nondeterminism 
+  - stripe-mock 
   - strongswan 
   - strongswan-doc 
   - strongswan-hmac 

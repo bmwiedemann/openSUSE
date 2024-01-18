@@ -2199,7 +2199,7 @@
     <package name="liblightdm-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libliveMedia107" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libliveMedia112" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="liblldp_clif1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="liblmdb-0_9_30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libloader" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3259,7 +3259,6 @@
     <package name="perl-HTTP-Message" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-HTTP-Negotiate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-IO-HTML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-IO-Socket-INET6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-IO-Socket-SSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-IO-String" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-IO-Tty" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3290,7 +3289,7 @@
     <package name="perl-NetAddr-IP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Parse-RecDescent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="perl-SNMP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="perl-Socket6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="perl-Socket6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Term-ReadKey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-TimeDate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Try-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
