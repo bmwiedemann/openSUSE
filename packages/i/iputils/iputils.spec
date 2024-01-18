@@ -1,7 +1,7 @@
 #
 # spec file for package iputils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iputils
-Version:        20231222
+Version:        20240117
 Release:        0
 Summary:        IPv4 and IPv6 Networking Utilities
 License:        BSD-3-Clause AND GPL-2.0-or-later
