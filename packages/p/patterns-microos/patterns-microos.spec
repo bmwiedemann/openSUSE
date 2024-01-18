@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-microos
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -610,7 +610,7 @@ Requires:       dolphin
 Requires:       kde-print-manager
 Requires:       kgamma5
 Requires:       kwrited5
-Requires:       phonon4qt5-backend-gstreamer
+Requires:       phonon4qt5-backend-vlc
 Requires:       plasma-nm5
 
 # Manually pull in baloo5-file to better support desktop search functions/desktop integration

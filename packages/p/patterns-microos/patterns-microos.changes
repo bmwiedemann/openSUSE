@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 18 07:54:21 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Switch from phonon4qt5-backend-gstreamer to phonon4qt5-backend-vlc
+  as recommended by upstream
+
+-------------------------------------------------------------------
 Wed Dec 13 08:56:23 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Require build-key instead of openSUSE-build-key. This allows for
