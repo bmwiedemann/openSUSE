@@ -561,6 +561,9 @@ Prefer: -tomcat10-servlet-6_0-api tomcat-servlet-4_0-api
 # have choice for pkgconfig(xkbregistry) needed by libgnome-desktop-3-devel: libxkbregistry-devel libxkbregistry-devel-32bit
 Prefer: -libxkbregistry-devel-32bit
 
+# have choice for dbus-broker-restart-behavior = 35 needed by dbus-broker: dbus-broker-allow-restart dbus-broker-block-restart
+Prefer: -dbus-broker-allow-restart
+
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
 Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
 Preinstall: libbz2-1 libgcc_s1 libncurses6 libreadline8 libz1 libselinux1
