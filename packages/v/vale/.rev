@@ -495,4 +495,29 @@
   * docs: add famewall (forwarded request 1138134 from jfkw)</comment>
     <requestid>1138135</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>17305286cfcafca8ca24af6c6a1f6f70</srcmd5>
+    <version>3.0.5</version>
+    <time>1705611139</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.5:
+  * refactor: don't load `Vale` if it's not needed
+  * test: add another spelling case
+  * fix: ensure `applyPatterns` respects `formats`
+
+- Update to version 3.0.4:
+  * fix: better support for phrases in vocabularies
+  * fix: use file paths when applying ignore patterns
+  * refactor: move ini-related functions to ini.go
+  * test: add vocab to example
+  * test: add case for `substitution` determinism
+  * refactor: add `Found` column to `ls-dirs`
+
+- Update to version 3.0.3:
+  * fix: don't error on missing default files
+
+- Update to version 3.0.2:
+  * refactor: better error message for default styles (forwarded request 1139551 from jfkw)</comment>
+    <requestid>1139554</requestid>
+  </revision>
 </revisionlist>

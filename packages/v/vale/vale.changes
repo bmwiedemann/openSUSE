@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jan 17 22:23:58 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.0.5:
+  * refactor: don't load `Vale` if it's not needed
+  * test: add another spelling case
+  * fix: ensure `applyPatterns` respects `formats`
+
+-------------------------------------------------------------------
+Wed Jan 17 22:22:43 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.0.4:
+  * fix: better support for phrases in vocabularies
+  * fix: use file paths when applying ignore patterns
+  * refactor: move ini-related functions to ini.go
+  * test: add vocab to example
+  * test: add case for `substitution` determinism
+  * refactor: add `Found` column to `ls-dirs`
+
+-------------------------------------------------------------------
+Wed Jan 17 22:22:16 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.0.3:
+  * fix: don't error on missing default files
+
+-------------------------------------------------------------------
+Wed Jan 17 22:16:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.0.2:
+  * refactor: better error message for default styles
+
+-------------------------------------------------------------------
 Thu Jan 11 13:26:56 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.0.1:
