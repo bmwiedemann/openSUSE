@@ -62,4 +62,14 @@
     level configuration when necessary.</comment>
     <requestid>1098925</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>223299802a0ea1718b04bcd7cf6eedee</srcmd5>
+    <version>7.1.0.post3</version>
+    <time>1705611144</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+
+- enable %{?sle15_python_module_pythons}</comment>
+    <requestid>1139548</requestid>
+  </revision>
 </revisionlist>
