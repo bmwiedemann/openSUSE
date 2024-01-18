@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 17 08:41:07 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.8.3:
+  * libgnutls: Fix more timing side-channel inside RSA-PSK key
+    exchange. [GNUTLS-SA-2024-01-14, CVSS: medium]
+    [bsc#1218865, CVE-2024-0553]
+  * libgnutls: Fix assertion failure when verifying a certificate
+    chain with a cycle of cross signatures.
+    [GNUTLS-SA-2024-01-09, CVSS: medium] [bsc#1218862, CVE-2024-0567]
+  * libgnutls: Fix regression in handling Ed25519 keys stored in
+    PKCS#11 token certtool was unable to handle Ed25519 keys
+    generated on PKCS#11 with pkcs11-tool (OpenSC).
+    This is a regression introduced in 3.8.2.
+  * Rebase gnutls-FIPS-140-3-references.patch
+  * Updated upstream gnutls.keyring
+
+-------------------------------------------------------------------
 Fri Nov 17 10:17:02 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.8.2: [bsc#1217277, CVE-2023-5981]
