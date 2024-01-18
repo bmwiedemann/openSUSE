@@ -142,4 +142,17 @@
   * Better Handling extracting URLs from `Project-URL`</comment>
     <requestid>1090383</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3f1ee1fb453ea82045a5e0ee747dc186</srcmd5>
+    <version>4.3.3</version>
+    <time>1705611234</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.3.3:
+  * Always terminate --allow-only and --fail-on messages with a newline
+  * Always terminate files created with --output-file with a newline
+- Ignore broken test with latest version of wcwidth,
+  gh#raimon49/pip-licenses#178
+</comment>
+    <requestid>1139702</requestid>
+  </revision>
 </revisionlist>

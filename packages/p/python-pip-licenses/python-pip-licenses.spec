@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip-licenses
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-pip-licenses
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        Python packages license list
 License:        MIT
@@ -66,7 +66,10 @@ sed -i '1{/^#!/d}' piplicenses.py
 %check
 export LANG=en_US.UTF-8
 # gh#raimon49/pip-licenses#120 for test_from_all
-%pytest -k 'not test_from_all'
+donttest="test_from_all"
+# test_format_rst_without_filter fails with wcwidth>=0.2.10 gh#raimon49/pip-licenses#178
+donttest+=" or test_format_rst_without_filter"
+%pytest -k "not ($donttest)"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/pip-licenses-%{$python_bin_suffix} -s
 
 %post
