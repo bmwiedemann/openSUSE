@@ -209,4 +209,13 @@
   * Pull request 312: 6321 boot ttl vol.1 (forwarded request 1138879 from VaiTon)</comment>
     <requestid>1138973</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>92bc97d26642f09e98af92144c542573</srcmd5>
+    <version>0.63.0</version>
+    <time>1705611209</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.63.0:
+  * Pull request: AG-28961-upd-golibs (forwarded request 1139608 from jfkw)</comment>
+    <requestid>1139609</requestid>
+  </revision>
 </revisionlist>
