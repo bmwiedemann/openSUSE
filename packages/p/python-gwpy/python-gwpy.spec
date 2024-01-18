@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwpy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-gwpy
-Version:        3.0.7
+Version:        3.0.8
 Release:        0
 Summary:        A python package for gravitational-wave astrophysics
 License:        GPL-3.0-only
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-astropy >= 4.3.0
+Requires:       python-dateparser
 Requires:       python-dqsegdb2
 Requires:       python-gwdatafind >= 1.1.0
 Requires:       python-gwosc >= 0.5.3
@@ -52,6 +53,7 @@ BuildArch:      noarch
 # BuildRequires:  %%{python_module PyCBC} -- optional, not available on aarch64
 BuildRequires:  %{python_module PyMySQL}
 BuildRequires:  %{python_module astropy >= 4.3.0}
+BuildRequires:  %{python_module dateparser}
 BuildRequires:  %{python_module dqsegdb2}
 BuildRequires:  %{python_module gwdatafind >= 1.1.0}
 BuildRequires:  %{python_module gwosc >= 0.5.3}

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jan 15 08:52:21 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.8:
+  * [gh#gwpy/gwpy#1665] Sieve URLs from gwosc client before fetch
+  * [gh#gwpy/gwpy#1669] Handle reading LIGO_LW XML files that are
+    missing the _ns timing columns.
+  * [gh#gwpy/gwpy#1672] Fix bug in TimeSeriesDict.find
+  * [gh#gwpy/gwpy#1685] Fix array indexing of Series.xindex
+  * [gh#gwpy/gwpy#1688] Silence LAL LIGOTimeGPS warnings when
+    parsing a cache
+  * [gh#gwpy/gwpy#1691] Use class fixtures to download GWOSC data
+    that is used many times
+  * [gh#gwpy/gwpy#1694] Fix missing sample when reading with
+    non-exact sample times using LALFrame
+  * [gh#gwpy/gwpy#1695] Replace maya with dateparser in gwpy.time
+  * [gh#gwpy/gwpy#1698] Fix coherene test fixture
+  * [gh#gwpy/gwpy#1699] Fix the Zenodo RST utility module
+  * [gh#gwpy/gwpy#1712] Drop HAS_TEX for faster startup time
+  * [gh#gwpy/gwpy#1713] Track LALSuite rebrand in docs
+  * [gh#gwpy/gwpy#1714] Add support for Python 3.12
+  * [gh#gwpy/gwpy#1715] Avoid python-framel 8.46.0
+  * [gh#gwpy/gwpy#1716] Migrate test requirement to pytest-freezer
+  * [gh#gwpy/gwpy#1718] Remove all use of distutils
+  * [gh#gwpy/gwpy#1719] Replace datetime.utcnow() with
+    datetime.now(UTC)
+  * [gh#gwpy/gwpy#1721] Add aliases for LIGO and Virgo's 'time'
+    units
+  * [gh#gwpy/gwpy#1722] Read the unitX from a GWF with frameCPP
+  * [gh#gwpy/gwpy#1723] Allow localhost sockets during dist
+    testing
+  * [gh#gwpy/gwpy#1728] Fix bugs in inverse FFT normalisation
+  * [gh#gwpy/gwpy#1730] Propagate source keyword in
+    DataQualityDict.populate
+  * [gh#gwpy/gwpy#1733] Update documentation references for
+    lscsoft-glue and LALSuite
+  * [gh#gwpy/gwpy#1734] Replace sphinx-panels tabs with
+    sphinx-immaterial tabs
+- New (Build)Requires: python-dateparser.
+
+-------------------------------------------------------------------
 Tue Oct 10 22:34:47 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.7:
