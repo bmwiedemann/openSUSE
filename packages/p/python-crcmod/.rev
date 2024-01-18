@@ -46,4 +46,15 @@
 - Run spec-cleaner (forwarded request 1006672 from glaubitz)</comment>
     <requestid>1006673</requestid>
   </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>16bc27a1b0cbb5407186f1d6014004ce</srcmd5>
+    <version>1.7</version>
+    <time>1705611221</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Add patch use-setuptools.patch:
+  * Switch to setuptools to build, rather than distutils.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1139637</requestid>
+  </revision>
 </revisionlist>
