@@ -1,0 +1,12 @@
+diff --unified --recursive --text --new-file --color PackageKit-1.2.8.old/backends/dnf/meson.build PackageKit-1.2.8.new/backends/dnf/meson.build
+--- PackageKit-1.2.8.old/backends/dnf/meson.build	2023-11-09 04:35:41.000000000 +0800
++++ PackageKit-1.2.8.new/backends/dnf/meson.build	2024-01-02 16:12:35.600072285 +0800
+@@ -8,7 +8,7 @@
+ endif
+ 
+ python = import('python')
+-python_exec = python.find_installation()
++python_exec = python.find_installation('python3.6')
+ python_package_dir = get_option('pythonpackagedir')
+ if python_package_dir == ''
+   python_package_dir = python_exec.get_install_dir()
