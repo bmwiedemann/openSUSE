@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 17 08:16:52 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 2.8.3
+  * Fix adding launchers to desktop. (Issue #122)
+  * Fix segfault in profile destructor. (Issue #123)
+  * Translation updates
+
+-------------------------------------------------------------------
 Mon Nov 27 11:15:04 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 2.8.2
