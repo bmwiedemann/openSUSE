@@ -264,4 +264,12 @@
 - Switch source archive format to TAR.GZ (forwarded request 1115008 from glaubitz)</comment>
     <requestid>1115604</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4cf19f596d474c13320b0390436bc3fa</srcmd5>
+    <version>9.4.0</version>
+    <time>1705611268</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139739</requestid>
+  </revision>
 </revisionlist>
