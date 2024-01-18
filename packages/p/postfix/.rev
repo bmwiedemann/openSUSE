@@ -2236,4 +2236,14 @@ successfully tested on Tumbleweed x86_64</comment>
     seems to be obsolete)</comment>
     <requestid>1135431</requestid>
   </revision>
+  <revision rev="232" vrev="3">
+    <srcmd5>8a7c5877624c9e68db1553b5ccf7ad12</srcmd5>
+    <version>3.8.4</version>
+    <time>1705611166</time>
+    <user>anag+factory</user>
+    <comment>  Add missed bugnumbers
+  bsc#1218304, bsc#1218314 CVE-2023-51764, SMTP smuggling attack:
+    &quot;warning: Unexpected record type 'X'. (bsc#1213515)</comment>
+    <requestid>1139680</requestid>
+  </revision>
 </revisionlist>
