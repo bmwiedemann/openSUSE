@@ -4383,4 +4383,18 @@
   https://github.com/dankamongmen/notcurses/blob/master/TERMINALS.md (forwarded request 1137701 from lnussel)</comment>
     <requestid>1137727</requestid>
   </revision>
+  <revision rev="256" vrev="29">
+    <srcmd5>c6d8e48676c92ef8480f0ec646defa6b</srcmd5>
+    <version>unknown</version>
+    <time>1705611097</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20240113
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + modify dist.mk to avoid passing developer's comments in manpages into
+    the generated html documentation.
+  + use ansi+local, ansi+local1, ansi+pp, ansi+rca, ansi+rca2, ansi+sgr
+    to trim -TD
+  + restore padding for wy520* and vt320-k311 (report by Sven Joachim).</comment>
+    <requestid>1138810</requestid>
+  </revision>
 </revisionlist>
