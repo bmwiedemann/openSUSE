@@ -1,7 +1,7 @@
 #
 # spec file for package sar2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sar2
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Rescue Helicopter Simulator
 License:        GPL-2.0-only
@@ -28,7 +28,6 @@ BuildRequires:  Mesa-devel
 BuildRequires:  fdupes
 BuildRequires:  freealut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  libXxf86vm-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  openal-soft-devel
@@ -39,10 +38,11 @@ BuildRequires:  xorg-x11-libX11-devel
 BuildRequires:  xorg-x11-libXext-devel
 BuildRequires:  xorg-x11-libXmu-devel
 BuildRequires:  xorg-x11-libXpm-devel
+BuildRequires:  pkgconfig(sdl2)
 Requires:       %{name}-data = %{version}
 %if 0%{?suse_version} < 1330
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires(postun):update-desktop-files
 %endif
 
 %description
