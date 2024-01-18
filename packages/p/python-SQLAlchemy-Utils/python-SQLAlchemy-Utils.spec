@@ -1,7 +1,7 @@
 #
 # spec file for package python-SQLAlchemy-Utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Various utility functions for SQLAlchemy
 License:        BSD-3-Clause
 URL:            https://github.com/kvesteri/sqlalchemy-utils
 Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy-Utils/SQLAlchemy-Utils-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE sqlalchemy-2.0.22.patch gh#kvesteri/sqlalchemy-utils#725
+Patch1:         sqlalchemy-2.0.22.patch
 BuildRequires:  %{python_module Babel >= 1.3}
 BuildRequires:  %{python_module Jinja2 >= 2.3}
 BuildRequires:  %{python_module Pygments >= 1.2}
@@ -38,6 +40,7 @@ BuildRequires:  %{python_module intervals >= 0.7.1}
 BuildRequires:  %{python_module passlib >= 1.6}
 BuildRequires:  %{python_module pendulum >= 2.0.5}
 BuildRequires:  %{python_module phonenumbers >= 5.9.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psycopg2 >= 2.5.1}
 BuildRequires:  %{python_module psycopg2cffi >= 2.8.1}
 BuildRequires:  %{python_module pyodbc}
@@ -45,6 +48,7 @@ BuildRequires:  %{python_module pytest >= 2.7.1}
 BuildRequires:  %{python_module python-dateutil >= 2.6}
 BuildRequires:  %{python_module pytz >= 2014.2}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy >= 1.0
@@ -68,13 +72,13 @@ Requires:       python-backports.zoneinfo
 Various utility functions and custom data types for SQLAlchemy.
 
 %prep
-%setup -q -n SQLAlchemy-Utils-%{version}
+%autosetup -p1 -n SQLAlchemy-Utils-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -104,6 +108,6 @@ rm tests/types/test_uuid.py
 %doc README.rst
 %dir %{python_sitelib}/sqlalchemy_utils
 %{python_sitelib}/sqlalchemy_utils/*
-%{python_sitelib}/SQLAlchemy_Utils-%{version}-py*.egg-info
+%{python_sitelib}/SQLAlchemy_Utils-%{version}*-info
 
 %changelog

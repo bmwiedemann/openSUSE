@@ -344,4 +344,13 @@
     beta (like &quot;2.0.0b3&quot;)</comment>
     <requestid>1092729</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>2c3efe5db8f24ecd8c32663a8d4b52ee</srcmd5>
+    <version>0.41.1</version>
+    <time>1705611229</time>
+    <user>anag+factory</user>
+    <comment>- Add sqlalchemy-2.0.22.patch to make it compatible with
+  SQLAlchemy&gt;=2.0.22, gh#kvesteri/sqlalchemy-utils#725</comment>
+    <requestid>1139684</requestid>
+  </revision>
 </revisionlist>

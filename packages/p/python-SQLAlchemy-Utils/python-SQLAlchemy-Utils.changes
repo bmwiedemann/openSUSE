@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 18 11:05:27 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add sqlalchemy-2.0.22.patch to make it compatible with
+  SQLAlchemy>=2.0.22, gh#kvesteri/sqlalchemy-utils#725
+
+-------------------------------------------------------------------
 Tue Jun 13 05:17:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update 0.41.1:
