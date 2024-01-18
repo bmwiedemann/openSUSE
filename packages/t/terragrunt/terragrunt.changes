@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 18 14:06:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.19:
+  * Improved parsing of empty tfvars files (#2896)
+
+-------------------------------------------------------------------
 Wed Jan 17 07:23:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.54.18:
