@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?rhel} || ( 0%{?suse_version} && 0%{?suse_version} <= 1315 )
+%if 0%{?rhel} || 0%{?amzn} || ( 0%{?suse_version} && 0%{?suse_version} <= 1315 )
 %bcond_with obs_scm_testsuite
 %else
 %bcond_without obs_scm_testsuite
