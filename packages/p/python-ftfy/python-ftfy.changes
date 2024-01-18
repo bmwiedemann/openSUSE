@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 18 11:16:51 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add update-wcwidth.patch to make it work with newer wcwidth,
+  gh#rspeer/python-ftfy@5d975c6bb183
+
+-------------------------------------------------------------------
 Sat Jan 15 17:46:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.3:

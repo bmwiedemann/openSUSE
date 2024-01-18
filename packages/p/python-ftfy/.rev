@@ -69,4 +69,13 @@
     calculating text width.</comment>
     <requestid>946691</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ebb5b113bb14ea6101a5b91957e06851</srcmd5>
+    <version>6.0.3</version>
+    <time>1705611230</time>
+    <user>anag+factory</user>
+    <comment>- Add update-wcwidth.patch to make it work with newer wcwidth,
+  gh#rspeer/python-ftfy@5d975c6bb183</comment>
+    <requestid>1139687</requestid>
+  </revision>
 </revisionlist>
