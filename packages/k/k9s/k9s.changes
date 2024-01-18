@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 18 16:27:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.31.7:
+  * Resolved Issues
+    - [#2488](https://github.com/derailed/k9s/issues/2488)
+      linux_amd64 "--kubeconfig" not working on v0.31.6
+-------------------------------------------------------------------
+Thu Jan 18 08:13:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.31.6:
+  * K9s/release v0.31.6 (#2487)
+  * Adding system arch to nodes view (#2480)
+  * shell autocomplete for k8s flags (#2477)
+  * Bump k8s.io/klog/v2 from 2.110.1 to 2.120.0 (#2474)
+
+-------------------------------------------------------------------
 Mon Jan 15 17:13:55 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.31.5:
