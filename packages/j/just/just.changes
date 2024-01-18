@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jan 18 01:01:52 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.23.0:
+  * Allow setting custom confirm prompt
+  * Add `set quiet` and `[no-quiet]`
+  * Add `just_pid` function
+  * Include completion scripts in releases
+  * Run imports in working directory of importer
+  * Tweak readme table formatting
+  * Add functions to return XDG base directories
+  * Don't abbreviate just in README
+  * Add `--no-deps` to skip running recipe dependencies
+  * Ignore [private] recipes in just --list
+  * Add a dash to tempdir prefix
+  * Don't conflate recipes with the same name in different modules
+  * Clarify that UUID is version 4
+  * Make sigil stripping from recipe lines less incomprehensible
+  * Refactor invalid path argument check
+  * Recipes can be invoked with path syntax
+  * Move table of contents pointer to right
+  * Add `--format` and `--initialize` as aliases for `--fmt` and `--init`
+  * Use box-drawing characters in error messages
+  * Optional modules and imports
+  * Use Self
+  * Print submodule recipes in --summary
+  * Expand tilde in import and module paths
+  * Document import override behavior
+  * Override imported recipes
+  * Document submodule working directory
+  * Run recipes with working directory set to submodule directory
+  * Allow mod statements with path to source file
+
+-------------------------------------------------------------------
 Thu Dec 28 05:47:44 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 1.19.0:
