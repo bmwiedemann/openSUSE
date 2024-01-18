@@ -34,6 +34,11 @@ Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY
 BuildRequires:  OpenEXR-devel >= 2.3
 BuildRequires:  OpenImageIO >= 2.2
 BuildRequires:  bison
+BuildRequires:  cmake(Qt6)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6Widgets)
 %if 0%{?suse_version} > 1500
 #!BuildIgnore:  clang-tools
 BuildRequires:  clang15-devel
