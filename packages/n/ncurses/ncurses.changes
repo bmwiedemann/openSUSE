@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 15 08:07:35 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240113
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + modify dist.mk to avoid passing developer's comments in manpages into
+    the generated html documentation.
+  + use ansi+local, ansi+local1, ansi+pp, ansi+rca, ansi+rca2, ansi+sgr
+    to trim -TD
+  + restore padding for wy520* and vt320-k311 (report by Sven Joachim).
+
+-------------------------------------------------------------------
 Tue Jan  9 10:06:22 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
 
 - Add foot to terminfo-base. It's the most compliant wayland
