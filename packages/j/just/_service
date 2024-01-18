@@ -6,7 +6,7 @@
     <param name="exclude">.git</param>
     <param name="exclude">.github</param>
     <param name="exclude">www</param>
-    <param name="revision">2846df7e27e2baa9a9431a7af133545bd1eb1e7f</param>
+    <param name="revision">639ed74c239185f22ca1e0362fc48cc556100604</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
