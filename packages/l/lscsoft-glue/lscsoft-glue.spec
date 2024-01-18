@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,6 @@ ExcludeArch:    %{ix86}
 %endif
 
 %define pname lscsoft-glue
-# NEP 29: numpy, matplotlib do not have a python36 flavor package in TW
-%define skip_python36 1
 # Support dropped for python2 by upstream
 %define skip_python2 1
 
@@ -37,7 +35,7 @@ ExcludeArch:    %{ix86}
 
 %define modname glue
 Name:           lscsoft-glue%{psuffix}
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Grid LSC User Environment
 License:        GPL-2.0-only
