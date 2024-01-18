@@ -1,7 +1,7 @@
 #
 # spec file for package python-crcmod
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-crcmod
 Version:        1.7
 Release:        0
 Summary:        CRC Generator
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://crcmod.sourceforge.net/
 Source:         https://files.pythonhosted.org/packages/source/c/crcmod/crcmod-%{version}.tar.gz
+Patch0:         use-setuptools.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -45,18 +47,22 @@ from the Python standard library.  A ``Crc`` class instance can also generate
 C/C++ source code that can be used in another application.
 
 %prep
-%setup -q -n crcmod-%{version}
+%autosetup -p1 -n crcmod-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/crcmod
+
+%check
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -c 'import crcmod'
 
 %files %{python_files}
 %license LICENSE
 %doc README changelog
-%{python_sitearch}/*
+%{python_sitearch}/crcmod
+%{python_sitearch}/crcmod-%{version}.dist-info
 
 %changelog

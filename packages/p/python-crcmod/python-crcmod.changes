@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 18 08:02:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Add patch use-setuptools.patch:
+  * Switch to setuptools to build, rather than distutils.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Sep 28 12:52:24 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Replace python-base with python-devel in BuildRequires (bsc#1203453)
