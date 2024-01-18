@@ -1,7 +1,7 @@
 #
 # spec file for package desktop-file-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,8 +38,12 @@ BuildRequires:  pkgconfig
 # We need explicit requirement here, as these are required by
 # %%filetriggerin that could be started early during the installation
 # process.
+%if 0%{?suse_version}
 Requires:       aaa_base
 Requires:       awk
+%else
+Requires:       gawk
+%endif
 Requires:       coreutils
 
 %description
