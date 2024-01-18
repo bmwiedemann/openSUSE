@@ -1,7 +1,7 @@
 #
 # spec file for package libfvde
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define lname	libfvde1
 Name:           libfvde
-Version:        20231128
+Version:        20240113
 Release:        0
 Summary:        Library to access the File Vault Drive Encryption format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -34,17 +34,17 @@ BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse)
-BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libbfio) >= 20221025
 BuildRequires:  pkgconfig(libcaes) >= 20231120
-BuildRequires:  pkgconfig(libcdata) >= 20230108
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20221218
-BuildRequires:  pkgconfig(libcnotify) >= 20220108
-BuildRequires:  pkgconfig(libcpath) >= 20220108
-BuildRequires:  pkgconfig(libcsplit) >= 20220109
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20230115
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcfile) >= 20240106
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcpath) >= 20240109
+BuildRequires:  pkgconfig(libcsplit) >= 20240110
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libfcache) >= 20240112
 BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfplist) >= 20231023
@@ -60,19 +60,19 @@ BuildRequires:  pkgconfig(zlib)
 %description
 libfvde is a library to access the File Vault Drive Encryption format.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to access the File Vault Drive Encryption format
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 The libfvde library is a library to access the File Vault Drive Encryption format
 
 %package tools
 Summary:        Several tools for reading the File Vault Drive Encryption format
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description tools
 Several tools for reading the File Vault Drive Encryption format
@@ -109,30 +109,30 @@ grep ' '' ''local' config.log && exit 1
 
 %install
 mv %_builddir/rt/* %buildroot/
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libfvde.so.*
+%_libdir/libfvde.so.*
 
 %files -n %name-tools
 %license COPYING*
-%{_bindir}/fvde*
-%{_mandir}/man1/fvde*.1*
+%_bindir/fvde*
+%_mandir/man1/fvde*.1*
 
 %files -n %name-devel
 %license COPYING*
-%{_includedir}/libfvde.h
-%{_includedir}/libfvde/
-%{_libdir}/libfvde.so
-%{_libdir}/pkgconfig/libfvde.pc
-%{_mandir}/man3/libfvde.3*
+%_includedir/libfvde.h
+%_includedir/libfvde/
+%_libdir/libfvde.so
+%_libdir/pkgconfig/libfvde.pc
+%_mandir/man3/libfvde.3*
 
 %files %python_files
 %license COPYING*
-%{python_sitearch}/pyfvde.so
+%python_sitearch/pyfvde.so
 
 %changelog
