@@ -1,7 +1,7 @@
 #
 # spec file for package c-toxcore
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,9 +39,9 @@ BuildRequires:  libsodium-devel
 BuildRequires:  libtool
 BuildRequires:  libvpx-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(msgpack)
 BuildRequires:  pkgconfig(systemd)
 Requires(pre):  shadow
+Provides:       bundled(cmp) = 20
 %{?systemd_requires}
 
 %description
@@ -77,10 +77,10 @@ Group:          System/Libraries
 This are the Core library for toxcore.
 
 %prep
-%setup -q
+%autosetup -p1
 # install submodules
 pushd third_party/cmp
-tar xvzf %{SOURCE10} --strip 1
+tar -xvzf %{SOURCE10} --strip 1
 popd
 # change location of bootstrap bin
 sed -ri 's:%{_prefix}/local/bin/tox-bootstrapd:%{_bindir}/tox-bootstrapd:g' other/bootstrap_daemon/tox-bootstrapd.service
@@ -91,20 +91,22 @@ sed -ri 's:Group=tox-bootstrapd:Group=toxcmd:g' other/bootstrap_daemon/tox-boots
 sed -ri 's:%{_localstatedir}/lib/tox-bootstrapd/keys:%{_sysconfdir}/tox/bootstrapd/keys:g' other/bootstrap_daemon/tox-bootstrapd.conf
 
 %build
-pushd build
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+# SHARED_LIBS=ON produces a stray libmisc_tools.so which is not part of `make install`.
+# SHARED_LIBS=OFF still produces libtoxcore.so.2, so... *shrug*
+#
+%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DBUILD_TOXAV=ON \
       -DMUST_BUILD_TOXAV=ON \
       -DBOOTSTRAP_DAEMON=ON \
       -DDHT_BOOTSTRAP=ON \
       -DENABLE_STATIC=OFF  \
+      -DBUILD_SHARED_LIBS:BOOL=OFF \
       ..
 
-make %{?_smp_mflags}
-popd
+%cmake_build
 
 %install
-make install -C build PREFIX=%_prefix DESTDIR=%buildroot
+%cmake_install
 
 # Install dir /var/run/graylog2-server
 install -d -m 0755 %{buildroot}%{_prefix}/lib/tmpfiles.d/

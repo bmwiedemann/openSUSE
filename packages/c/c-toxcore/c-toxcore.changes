@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  3 06:44:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove build dependency on msgpack (this was dropped
+  and replaced by "cmp" in the 0.2.18 release)
+- Use standardized cmake build macros
+
+-------------------------------------------------------------------
 Sun Jun 26 11:24:56 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.2.18
