@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 18 13:25:55 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests for s390x, gh#Unidata/netcdf4-python#1124,
+  bsc#1218606
+
+-------------------------------------------------------------------
 Thu Dec  7 22:10:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.5:
