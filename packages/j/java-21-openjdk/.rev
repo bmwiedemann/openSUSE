@@ -39,4 +39,12 @@
     <comment>fix fips mode</comment>
     <requestid>1133105</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b4e8c976002149783309ad794928bf7a</srcmd5>
+    <version>21.0.2.0</version>
+    <time>1705611106</time>
+    <user>anag+factory</user>
+    <comment>January 2024 CPU</comment>
+    <requestid>1139468</requestid>
+  </revision>
 </revisionlist>
