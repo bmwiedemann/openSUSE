@@ -113,4 +113,19 @@
   * Fixes glob keys with import values (e.g. user*: @lib/user). #1755 (forwarded request 1131541 from jfkw)</comment>
     <requestid>1131649</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba40a3c9edb3468576f1bbbbe1a7cff4</srcmd5>
+    <version>0.6.3</version>
+    <time>1705611249</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.3:
+  * Themes can be customized via d2-config vars. #1777
+  * Icons can be added for special objects (sql_table, class, code, markdown, latex). #1774
+  * Fix importing files that override an existing value with an array. #1762
+  * Fixes missing unfilled triangle arrowheads when sketch flag is on. #1763
+  * Fixes a bug where the render target could be incorrect if the target path contains &quot;index&quot;. #1764
+  * Fixes ELK layout with outside labels/icons. #1776
+  * Fixes a bug where an edge could become disconnected with dagre layout and direction right. #1778 (forwarded request 1139555 from jfkw)</comment>
+    <requestid>1139556</requestid>
+  </revision>
 </revisionlist>
