@@ -278,7 +278,7 @@ Requires:       dolphin
 Requires:       kde-print-manager
 Requires:       kgamma5
 Requires:       kwrited5
-Requires:       phonon4qt5-backend-gstreamer
+Requires:       phonon4qt5-backend-vlc
 Requires:       plasma-nm5
 
 # Manually pull in baloo5-file to better support desktip search functions/desktop integration
