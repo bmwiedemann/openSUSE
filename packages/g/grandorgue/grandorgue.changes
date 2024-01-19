@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  8 14:26:36 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.13.3.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.13.3-1
+  - Fixed not loading a pipe if some loop was not suitable for crossfade https://github.com/GrandOrgue/grandorgue/issues/1724
+  - Fixed a wrong .wav filename in the log message window https://github.com/GrandOrgue/grandorgue/issues/1724
+  - Increased the maximum number of Tremulants from 10 to 999
+  - Fixed setting a reverb file name by default to the current directory https://github.com/GrandOrgue/grandorgue/issues/1741
+  - Fixed crash on enabling convolution reverb https://github.com/GrandOrgue/grandorgue/issues/1741
+  - Fixed hang on Panic button press on MacOs https://github.com/GrandOrgue/grandorgue/issues/1726
+  - Fixed crash on switching divisionals when a bidirectional devisional coupler was engaged https://github.com/GrandOrgue/grandorgue/issues/1725
+- Update to version 3.13.2.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.13.2-1
+  - Fixed loading an organ when some configuration entry is out of range https://github.com/GrandOrgue/grandorgue/issues/1696
+  - Fixed crash when trying to load a sample set with a truncated wave file https://github.com/GrandOrgue/grandorgue/discussions/370
+  - Fixed crash on closing an organ https://github.com/GrandOrgue/grandorgue/issues/1678
+
+-------------------------------------------------------------------
 Sat Nov 18 16:45:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.13.1:
