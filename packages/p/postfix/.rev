@@ -2246,4 +2246,17 @@ successfully tested on Tumbleweed x86_64</comment>
     &quot;warning: Unexpected record type 'X'. (bsc#1213515)</comment>
     <requestid>1139680</requestid>
   </revision>
+  <revision rev="233" vrev="4">
+    <srcmd5>a5eea7215337a62e7e4c2a8e7e34d8ad</srcmd5>
+    <version>3.8.4</version>
+    <time>1705701627</time>
+    <user>anag+factory</user>
+    <comment>- update default configuration to enable the long-term fix for
+  bsc#1218304, bsc#1218314 CVE-2023-51764, SMTP smuggling attack:
+  * smtpd_forbid_bare_newline = yes
+  * smtpd_forbid_bare_newline_exclusions = $mynetworks
+
+    &quot;warning: Unexpected record type 'X'. (bsc#1213515)</comment>
+    <requestid>1139868</requestid>
+  </revision>
 </revisionlist>
