@@ -1,7 +1,7 @@
 #
 # spec file for package python-types-python-dateutil
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-types-python-dateutil
 Version:        2.8.19.14
 Release:        0
@@ -23,7 +24,9 @@ Summary:        Typing stubs for python-dateutil
 License:        Apache-2.0
 URL:            https://github.com/python/typeshed
 Source:         https://files.pythonhosted.org/packages/source/t/types-python-dateutil/types-python-dateutil-%{version}.tar.gz
+BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,6 +44,9 @@ can be used by type-checking tools like
 
 %build
 %pyproject_wheel
+
+%check
+%python_exec -m mypy dateutil-stubs
 
 %install
 %pyproject_install
