@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-lsp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define shortversion 2.2.1
+%define shortversion 2.2.2
 Name:           python-jupyter-lsp
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        LSP for Jupyter Notebook/Lab server
 License:        BSD-3-Clause
-URL:            https://github.com/jupyter-lsp/jupyterlab-lsp/tree/master/python_packages/jupyter_lsp
+URL:            https://github.com/jupyter-lsp/jupyterlab-lsp/tree/main/python_packages/jupyter_lsp
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter-lsp/jupyter-lsp-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

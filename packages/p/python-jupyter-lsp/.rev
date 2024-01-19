@@ -27,4 +27,21 @@
   * use `sys.executable` in stdio tests #998</comment>
     <requestid>1133728</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>73c18d2f9978944ebb5ea3f1045240fa</srcmd5>
+    <version>2.2.2</version>
+    <time>1705701722</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.2.2
+  * address warning about renamed extension_points (#1035)
+  * fix compatibility with jupyter server 1.x
+  * fix an authentication-related security vulnerability
+    GHSA-4qhp-652w-c22x CVE-2024-22415 boo#1218976
+  * add authorization support (lsp resource, jupyter-server v2+
+    only) - this allows server operators for fine grained access
+    control, e.g. in case if specific users (such as guest or
+    read-only users) should not be allowed to access LSP; this is
+    in addition to authentication fixes</comment>
+    <requestid>1139869</requestid>
+  </revision>
 </revisionlist>
