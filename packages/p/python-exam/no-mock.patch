@@ -68,3 +68,16 @@ Index: exam-0.10.6/tests/test_objects.py
  from tests import TestCase
  
  from exam.objects import always, noop
+Index: exam-0.10.6/setup.py
+===================================================================
+--- exam-0.10.6.orig/setup.py
++++ exam-0.10.6/setup.py
+@@ -8,7 +8,7 @@ try:
+ except ImportError:
+     pass
+ 
+-install_requires = ['mock']
++install_requires = []
+ lint_requires = ['pep8', 'pyflakes']
+ tests_require = ['unittest']
+ 
