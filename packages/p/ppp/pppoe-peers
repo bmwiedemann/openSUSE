@@ -1,7 +1,7 @@
 #
-# PPP over Ethernet options (using roaring pinguin plugin)
+# PPP over Ethernet options (using pppoe plugin)
 #
-plugin rp-pppoe.so
+plugin pppoe.so
 #
 # Plugin passwordfd enables us to pipe the password to pppd, thus we
 # don't have to put it into pap-secrets and chap-secrets.

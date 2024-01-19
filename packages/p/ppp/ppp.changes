@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 11 13:22:52 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Backport ppp-pidfiles.patch and ppp-mkdir-run.patch from the
+  upcoming 2.5.1 release and make sure that pppd's pid, resolv
+  and database files are created under /run/ppp (bsc#1218370).
+
+-------------------------------------------------------------------
+Thu Dec 28 10:38:28 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Reflect the rp-pppoe -> pppoe name change also in pppoe-peers.
+
+-------------------------------------------------------------------
 Fri Apr 21 11:52:53 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to version 2.5.0. This release is a major release of pppd
