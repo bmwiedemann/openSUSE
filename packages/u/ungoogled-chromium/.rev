@@ -340,4 +340,17 @@
     <comment>ungoogled-chromium 120.0.6099.216 (boo#1217839, boo#1218048, boo#1218302, boo#1218533, boo#1218719, boo#1218303)</comment>
     <requestid>1138578</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1e49d89a4841a136d16054f63b258abd</srcmd5>
+    <version>120.0.6099.224</version>
+    <time>1705701624</time>
+    <user>anag+factory</user>
+    <comment>- ungoogled-chromium 120.0.6099.224 (boo#1218892)
+  * CVE-2024-0517: Out of bounds write in V8
+  * CVE-2024-0518: Type Confusion in V8
+  * CVE-2024-0519: Out of bounds memory access in V8
+  * Various fixes from internal audits, fuzzing and other initiatives
+</comment>
+    <requestid>1139807</requestid>
+  </revision>
 </revisionlist>

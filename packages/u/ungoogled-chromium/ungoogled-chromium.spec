@@ -79,7 +79,7 @@
 %endif
 # Package names
 Name:           ungoogled-chromium
-Version:        120.0.6099.216
+Version:        120.0.6099.224
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -144,8 +144,6 @@ Patch253:       chromium-120-missing-header-files.patch
 Patch254:       chromium-120-emplace-struct.patch
 Patch255:       chromium-120-workaround_clang_bug-structured_binding.patch
 Patch256:       chromium-120-make_unique-struct.patch
-BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
-BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -155,9 +153,11 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  git
 BuildRequires:  gn >= 0.1807
-BuildRequires:  golang(API)
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
+BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
+BuildRequires:  golang(API)
 # Java used during build
 BuildRequires:  java-openjdk-headless
 BuildRequires:  libdc1394
