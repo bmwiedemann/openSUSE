@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 18 15:25:55 UTC 2024 - lnussel@suse.com
+
+- Update to version 20240118:
+  * find-provides.ksyms: Fix ksym provides on Tumbleweed/ALP
+
+-------------------------------------------------------------------
+Mon Jan 15 13:31:52 UTC 2024 - lnussel@suse.com
+
+- Update to version 20240115:
+  * macros.initrd: %regenerate_initrd_post: don't fail if mkdir is unavailable
+  * scripts: Do full ksyms dependencies on Tumbleweed (bsc#1215015)
+
+-------------------------------------------------------------------
 Wed Jul 12 12:25:55 UTC 2023 - lnussel@suse.de
 
 - Update to version 20230712:
