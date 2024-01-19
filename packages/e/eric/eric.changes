@@ -1,4 +1,214 @@
 -------------------------------------------------------------------
+Fri Jan 19 03:23:47 UTC 2024 - Mikhail Terekhov <termim@gmail.com>
+
+- Update to version 24.1
+  - bug fixes
+  - General
+      - Changed debug logging to be directed to a debug log file `eric7_debug.txt` in
+        the `.eric7` directory.
+  - Code Style Checker
+      - Updated these checkers to support more cases.
+          - Logging
+          - Miscellaneous
+          - Simplify
+      - Extended the documentation style checker to check the tag sequence and the use
+        of deprecated tags (eric doc style).
+   - Editor
+       - Added the capability to comment/uncomment/toggle comment for languages
+         that do not support single line comments (e.g. HTML uses `<!--` and
+         `-->`.
+       - Added the capability to search & replace strings containing escape codes
+         (like `\n`).
+       - Introduced a configurable timeout after which the quick search text occurrences
+         are highlighted (if this function is activated).
+   - File Browser
+       - Added context menu entries to show the directory path of an item in an
+         external file manager.
+   - Find In Files
+       - Added the capability to search & replace strings containing escape codes
+         (like `\n`).
+   - Multiproject
+       - Added the capability to indicate externally removed projects and actions
+         to clear them out.
+   - Project Browser
+       - Added context menu entries to show the directory path of an item in an
+         external file manager.
+       - Added an entry to the background context menu to show the project
+         directory in an external file manager.
+   - Testing
+       - Extended the testing dialog to allow filtering of the result list
+         based on the result status.
+       - Extended the testing dialog to allow to perform a discovery run only and
+         just perform selected test cases of this list.
+       - Extended the testing dialog to allow to perform the test with debugger
+         support (only if the dialog was started from within eric IDE).
+   - Viewmanager
+       - Added `Close Tabs to the Left` and `Close Tabs to the Right` context
+         menu entries to the tabview view manager.
+       - Added `Close Editors Above` and `Close Editors Below` context menu
+         entries to the listspace view manager.
+   - Virtual Environments
+       - Added the capability to search for unregistered Python interpreters in
+         order to create an environment entry for those selected by the user.
+   - Third Party packages
+       - Upgraded pip-licenses to version 4.3.3.
+       - Upgraded pycodestyle to version 2.11.1.
+
+   - Update to version 23.12
+   - bug fixes
+   - General
+       - Improved platform support for FreeBSD.
+   - Debugger
+       - Added a configuration option to select whether call trace optimization
+         shall be enabled (this requires no function/method definition on the
+         first line of a module).
+       - Improved the configuration for remote debugging (global and project
+         specific).
+       - Changed the Python debugger code such, that unhandled exceptions are
+         reported always and handled exception only, if the specifically
+         requested in the `Start Debugging` dialog.
+   - Diff Dialog
+       - Extended the functionality to accept two files to be diffed via the
+         command line.
+   - Editor
+       - Changed the `Auto Save` interval to be in seconds instead of minutes.
+         __Note__: The `Auto Save` interval has to be reconfigured!
+       - Added the capability to save a modified file automatically when the
+         editor looses the focus.
+       - Added a button to format underline text of HTML documents.
+   - Icons
+       - Added a configuration option to override the style dependent icon size
+         of the tool bars.
+   - Plugin Repository Dialog
+       - Introduced categories to improve the presentation of the list of available
+         plugins.
+   - Syntax Checker
+       - Added code to show some per file and overall statistics of the check.
+       - Re-introduced the JavaScript syntax checker. This time it is based on
+         the `esprima` package.
+
+- Update to version 23.11
+   - bug fixes
+   - General
+       - Added the capability to select list entries with a configurable action
+         (system default, double click, single click) (see `Interface => Interface`
+         configuration page)
+   - Editor
+       - Enhanced the print capability with the configuration of the print
+         color mode (e.g. to print an editor with a dark background).
+   - Project Viewer
+       - Added the context menu action "New source file..." to give a more concise
+         way to create a new source file.
+
+- Update to version 23.10
+   - bug fixes
+   - General
+       - Made the code compatible with Python 3.12.
+   - Editor
+       - Added a typing completer for TOML files.
+       - Enhanced the existing completers slightly.
+       - Enhanced the 'Search & Replace' widget to allow a mode switching using
+         a mode switch button and keyboard shortcuts (see issue 511)
+   - Mercurial Interface
+       - Added the capability to select the branches to be shown to the Log Browser
+         window.
+   - MicroPython
+       - Updated the list of known CircuitPython boards.
+   - pip Interface
+       - Added capability to disable display of vulnerability data (e.g. if system
+         does not support HTTPS protocol).
+   - Shell
+       - Added some more special commands (% commands). Type `%help` to get a dialog
+         listing these commands.
+   - Syntax Checker
+       - Added code to the Python syntax checker to report Python Warnings.
+   - Third Party packages
+       - Upgraded eradicate to version 2.3.0.
+       - Upgraded pip-licenses to version 4.3.2.
+
+- Update to version 23.9
+   - bug fixes
+   - MicroPython
+       - Added support to set the host name of the device (WiFi and Ethernet).
+       - Added support to set the WiFi country code (where supported by the device
+         and the installed firmware).
+   - Project
+       - Added capability to configure the project sources directory (e.g. if the
+         project uses the 'src' directory layout schema).
+   - Third Party packages
+       - Upgraded pyflakes to version 3.1.0.
+       - Upgraded pycodestyle to version 2.11.0.
+
+- Update to version 23.8
+   - bug fixes
+   - General
+       - Removed support for Python 3.7 because that is EOL.
+   - Code Style Checker
+       - Added these checkers to support more case.
+           - use of sync functions in async functions
+   - MicroPython
+       - Updated the list of known CircuitPython boards.
+       - Updated the list of known UF2 capable boards.
+   - pip Interface
+       - Added the capability to repair all dependencies with one button click.
+   - Shell Window
+       - Added more pages to the Shell window configuration dialog.
+
+- Update to version 23.7
+   - bug fixes
+   - Code Style Checker
+       - Added these checkers to support more case.
+           - property decorator usage
+           - PEP-604 style union type annotations
+           - deprecated 'typing' symbols (PEP 585)
+   - MicroPython
+       - Added support for Bluetooth for RP2040 based boards (e.g. Pi Pico W).
+   - pip Interface
+       - Added a standalone application for Python package management with `pip`.
+
+- Update to version 23.6
+   - bug fixes
+   - Code Style Checker
+       - Updated these checkers to support more cases.
+           - Annotations
+           - Miscellaneous
+           - Name Order
+           - Simplify
+       - Added these checkers to support more case.
+           - unused arguments
+           - unused global variables
+   - MicroPython
+       - Added support of th WebREPL device interface available on some boards with
+         builtin network capability.
+       - Added the capability to enable/disable the WebREPL via the WiFi menu.
+   - Third Party packages
+       - Upgraded pipdeptree to version 2.7.1.
+       - Upgraded pip-licenses to version 4.3.1.
+
+- Update to version 23.5
+   - bug fixes
+   - JavaScript Support
+       - Removed JavaScript functionality depending on the `jasy` package because it
+         has not been maintained for years.
+   - MicroPython
+       - Added support for STLink based devices.
+       - Added the capability to select the device path manually in case it could not
+         be detected (e.g. because the device does not have a volume name).
+       - Added the capability to install the `mpy-cross` compiler from the MicroPython
+         page of the configuration dialog.
+       - Added a package installer for devices lacking network connectivity and the `mip`
+         package manager.
+   - Plugin Repository
+       - Added the capability to enforce the download of plugin packages using the
+         `http://` protocol (in case of missing/non-functional system `SSL` libraries).
+   - Translator
+       - Added support for the LibreTranslate translator (see
+         https://github.com/LibreTranslate/LibreTranslate).
+   - Web Browser
+       - Added the capability to enforce the download of spell check dictionaries using
+         the `http://` protocol (in case of missing/non-functional system `SSL` libraries).
+
+-------------------------------------------------------------------
 Wed Apr 19 15:45:30 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 23.4.2
@@ -354,7 +564,7 @@ Wed Apr 19 15:45:30 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 Sat Mar  5 23:01:55 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add new EditorConfig dependency
-- Add qt6-sql-sqlite dependency and recommends for mysql and 
+- Add qt6-sql-sqlite dependency and recommends for mysql and
   postgresql plug-ins
 
 -------------------------------------------------------------------
@@ -489,7 +699,7 @@ Sat Jan 15 18:56:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 21.11
   eric 21.11 has been released. It fixes just a few bugs. This will be the last
   release of the 'eric6' line of development (i.e. the one requiring PyQt5/Qt5 as
-  its execution environment). 
+  its execution environment).
 
 -------------------------------------------------------------------
 Mon Oct 25 13:25:33 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
@@ -788,7 +998,7 @@ Sat Mar 14 12:26:08 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
   - Debugger
     -- added debugging support for QRunable
   - Mercurial Interface
-    -- added support for the '--secure' flag of hg import as of 
+    -- added support for the '--secure' flag of hg import as of
        Mercurial 5.3
   - Syntax Checker
     -- updated pyflakes to repository as of 2020-02-03
@@ -955,7 +1165,7 @@ Sat Sep  7 12:46:40 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 - Update to version 19.6
   + bug fixes
   + Code Style Checker
-    + added checks for use of 'gettattr' and 'setattr', base super() 
+    + added checks for use of 'gettattr' and 'setattr', base super()
       calls and 'assert False' statements
   + Editor
     + Python Typing
@@ -1023,7 +1233,7 @@ Sun Apr 07 03:00:12 UTC 2019 - seanlew@opensuse.org
   * addd extended regex support for C++ 11
   * added capability to configure the subline indent
   * added capability to frame the line containing the cursor
-  * added support for sub-styling 
+  * added support for sub-styling
   * extended support for keyword sets
 
 -------------------------------------------------------------------
@@ -1034,7 +1244,7 @@ Sun Mar 03 06:37:14 UTC 2019 - seanlew@opensuse.org
   * suppress auto-completions in various circumstances
   * changed the if from menu based -> widget-based in toolbox
   * extended the environment def by a flag indicting remote access
-  * updated pycodestyle to 2.5.0 
+  * updated pycodestyle to 2.5.0
   * updated pyflakes to 2.1.0
 
 -------------------------------------------------------------------
@@ -1280,19 +1490,19 @@ Sat Jan  6 18:10:44 UTC 2018 - termim@gmail.com
     -- added an entry to delete all change markers to the marker margin context
        menu
   - Project
-    -- If a project does not contain protobuf files, the old project file format                           
-       (5.1) is generated to make the file backward compatible.                                            
-  - Plug-ins                                                                                               
-    -- added the pip interface plug-in to the core plug-ins                                                
-    -- added the virtualenv/pyvenv interface plug-in to the core plug-ins                                  
-    -- added the setup.py wizard plug-in to the core plug-ins                                              
-    -- added the eric plug-in wizard plug-in to the core plug-ins                                          
-    -- added the .desktop wizard plug-in to the core plug-ins                                              
-    -- added the translator plug-in to the core plug-ins                                                   
-    -- added the git plug-in to the core plug-ins                                                          
-                                                                                                           
-  **Note**: These plug-ins should be deinstalled via the plug-in                                           
-  uninstallation dialog of eric before upgrading eric. A reconfiguration of                                
+    -- If a project does not contain protobuf files, the old project file format
+       (5.1) is generated to make the file backward compatible.
+  - Plug-ins
+    -- added the pip interface plug-in to the core plug-ins
+    -- added the virtualenv/pyvenv interface plug-in to the core plug-ins
+    -- added the setup.py wizard plug-in to the core plug-ins
+    -- added the eric plug-in wizard plug-in to the core plug-ins
+    -- added the .desktop wizard plug-in to the core plug-ins
+    -- added the translator plug-in to the core plug-ins
+    -- added the git plug-in to the core plug-ins
+
+  **Note**: These plug-ins should be deinstalled via the plug-in
+  uninstallation dialog of eric before upgrading eric. A reconfiguration of
   these plug-ins may be neccessary.
     - PluginToolPip
     - PluginWizardVirtualenv
@@ -1331,7 +1541,7 @@ Tue Dec  5 00:44:28 UTC 2017 - termim@gmail.com
        situations on low power or low memory machines)
   - Styles
     -- added a dark style (*.qss and Python lexers) provided by Giuseppe
-       Corbelli 
+       Corbelli
   - Third Party packages
     -- updated send2trash to version 1.4.2
 
@@ -1354,13 +1564,13 @@ Fri Nov  3 19:08:46 UTC 2017 - termim@gmail.com
   - Editor
     - added support for auto-completion lists being provided asynchronously
     - added a viewer for source code documentation extracted by providers
-      to be implemented by plug-ins (like rope and jedi) 
+      to be implemented by plug-ins (like rope and jedi)
   - Web Browser (old style)
     - changed logic in order to put new downloads at the top of the list of
-      downloads and added the download date and time to the shown info 
+      downloads and added the download date and time to the shown info
   - Web Browser (NG)
     - changed logic in order to put new downloads at the top of the list of
-      downloads and added the download date and time to the shown info 
+      downloads and added the download date and time to the shown info
 
 -------------------------------------------------------------------
 Mon Oct  9 15:56:02 UTC 2017 - termim@gmail.com
@@ -1380,7 +1590,7 @@ Fri Sep  1 13:13:39 UTC 2017 - termim@gmail.com
     --  unified the Python2 and Python3 debugger interfaces
   - Exporter
     -- extended the HTML exporter to convert Markdown and ReST files to
-       HTML 
+       HTML
   - Plugin Manager
     -- added a bar with counts for new/local updates/remote updates to the
        plug-in repository dialog
@@ -1563,7 +1773,7 @@ Tue Jan  3 16:44:29 UTC 2017 - termim@gmail.com
      -- added capability to save a crash session in order to restore the
         current state in case of a cras
      -- added option to configure the crash session startup behavior and
-        added the '--no-crash' option to suppress looking for a crash session 
+        added the '--no-crash' option to suppress looking for a crash session
      -- added the '--disable-crash' option to temporarily disable the crash
         session support through the command line
      -- changed some options: --noopen to --no-open, --nosplash to --no-splash
