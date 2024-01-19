@@ -1,7 +1,7 @@
 #
 # spec file for package libp11
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,10 @@ Source1:        https://github.com/OpenSC/libp11/releases/download/%{name}-%{ver
 Source2:        %{name}.keyring
 Source3:        %{name}-rpmlintrc
 Source4:        baselibs.conf
+# PATCH-FIX-UPSTREAM
 Patch0:         libp11-openssl-3.1.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         libp11-configure-treat-all-openssl-3.x-releases-the-same.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  p11-kit-devel
