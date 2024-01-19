@@ -1,0 +1,19 @@
+Index: exam-0.10.6/tests/test_asserts.py
+===================================================================
+--- exam-0.10.6.orig/tests/test_asserts.py
++++ exam-0.10.6/tests/test_asserts.py
+@@ -52,12 +52,12 @@ class AssertChangesMixin(Exam, TestCase)
+ 
+     def test_raises_assertion_error_if_value_changes(self):
+         msg = 'Value changed from 0 to 1'
+-        with self.assertRaisesRegexp(AssertionError, msg):
++        with self.assertRaisesRegex(AssertionError, msg):
+             with self.assertDoesNotChange(len, self.thing):
+                 self.thing.append(1)
+ 
+     def test_assertion_error_mentions_unexpected_result_at_after(self):
+         msg = 'Value changed to 1, not 3'
+-        with self.assertRaisesRegexp(AssertionError, msg):
++        with self.assertRaisesRegex(AssertionError, msg):
+             with self.assertChanges(len, self.thing, after=3):
+                 self.thing.append(1)

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 19 03:46:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Add patch fix-assertion-methods.patch:
+  * Correct test assertion methods.
+- Refresh no-mock.patch, to remove it from install_requires.
+
+-------------------------------------------------------------------
 Mon Mar 14 05:55:32 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch no-mock.patch:

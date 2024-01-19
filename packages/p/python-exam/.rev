@@ -42,4 +42,16 @@
 - No longer run testsuite twice.</comment>
     <requestid>961561</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>59d44eb12d2d4c0cf64b60f61de4dbc4</srcmd5>
+    <version>0.10.6</version>
+    <time>1705701719</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Add patch fix-assertion-methods.patch:
+  * Correct test assertion methods.
+- Refresh no-mock.patch, to remove it from install_requires.</comment>
+    <requestid>1139835</requestid>
+  </revision>
 </revisionlist>
