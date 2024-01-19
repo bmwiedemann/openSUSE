@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Jan 18 17:23:45 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#687
+- use kernel-firmware-all instead of kernel-firmware (bsc#1214789)
+- 17.111
+
+--------------------------------------------------------------------
 Mon Jan 15 11:23:23 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#685
