@@ -1,7 +1,7 @@
 #
 # spec file for package eric
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010-2023 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %bcond_with tools
 
 Name:           eric
-Version:        23.4.2
+Version:        24.1
 Release:        0
 Summary:        Python IDE based on Qt6
 License:        GPL-3.0-or-later
@@ -129,7 +129,7 @@ ln -sf %{distname}_ide %{buildroot}%{_bindir}/%{name}
 
 %files
 %license eric/docs/LICENSE.txt
-%doc eric/docs/README*.rst eric/docs/THANKS eric/docs/changelog.md eric/docs/%{distname}-plugin.odt
+%doc eric/docs/README*.md eric/docs/THANKS eric/docs/changelog.md eric/docs/%{distname}-plugin.odt
 %{_bindir}/*
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{distname}.appdata.xml
