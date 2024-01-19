@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Sat Dec 30 15:54:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- update to 4.9.0,  highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version490
+  Highlights of this release:
+  * Core Module:
+    + Added cv::broadcast
+    + Fixed several rounding issues on ARM platform
+    + Added detection & dispatching of some modern NEON
+      instructions (NEON_FP16, NEON_BF16)
+    + Added optimization for LoongArch 128-bit vector,
+      detection & dispatching of LoongArch
+  * DNN module patches:
+    + Experimental transformers support
+    + ONNX Attention layer support
+    + ONNX Einsum layer support
+    + OpenVINO backend for INT8 models
+    + ONNX Gather Elements layer
+    + ONNX InstanceNorm layer
+    + Better support of ONNX Expand layer with cv::broadcast
+    + Improved DNN graph fusion with shared nodes and commutative
+      operations
+    + New fastGEMM implementation and several layers on top of it
+    + Winograd fp16 optimizations on ARM
+    + Tests and multiple fixes for Yolo family models support
+    + New layers support and bug fixes in CUDA backend: GEMM,
+      Gelu, Add
+    + CANN backend: bug fix, support HardSwish, 
+      LayerNormalization and InstanceNormalization
+    + LayerNormalization: support OpenVINO, OpenCL and 
+      CUDA backend.
+  * G-API module:
+    + Intel® OpenVINO™ DL inference backend:
+      - Introduced "inferenence only" ("benchmark") mode 
+        in the OV2.0 backend.
+      - Fixed model layout setting issue in the OV2.0 backend.
+      - Fixed/relaxed various asserts in the OV2.0 backend.
+    + Core and image processing functionality:
+      - Fluid kernels were rewritten to new universal intrinsics.
+        Thanks for this contribution!
+    + Streaming and video functionality:
+      - Introduced a QueueSource: an alternative way to manually
+        push input frames to the G-API pipeline in the streaming
+        mode.
+      - Introduced VAS Object Tracker (OT) for the various video
+        analytics scenarios.
+    +  Python bindings:
+      - Exposed VAS OT in G-API Python bindings.
+    + Other changes and fixes:
+      - Updated ADE (the G-API's graph library) to the latest
+        version.
+      - Various code clean-ups and warning fixes.
+  * Objdetect module:
+    + Implemented own QR code decoder as replacement for QUIRC
+      library
+    + Bug fixes in QR code encoder version estimation
+    + More accurate Aruco marker corner refinement with
+      dynamic window
+    + Fixed contour filtering in ArUco
+    + QR code detection sample for Android
+    + Multiple local bug fixes and documentation update for
+      Aruco makers, Charuco boards and QR codes.
+  * Video:
+    + Google Summer of Code: added a new object tracking API
+      TrackerVit for a vision transformer-based VitTrack. 
+      This work is done by LIU Pengyu.
+  * VideoIO:
+    + Videoio: Add raw encoded video stream encapsulation
+      to cv::VideoWriter with CAP_FFMPEG
+    + Fix GStreamer backend with manual pipelines.
+  * Calibration module:
+    + Multiple fixes and improvements chess board calibration
+      rig detector.
+    + calibrateCamera throws exception, if calibration system
+      is underconstrained.
+    + Fixed bug in findEssentialMat with USAC
+    + Fixed out-of-image access in cv::cornerSubPix
+    + Fixed crash in ap3p
+    + Fixed stereoRectify image boundaries
+    + Fixed "use after free" issue in essential_solver.cpp
+  * Python Bindings:
+    + Added type stub generation for missed types and manually
+      wrapped types.
+    + Added read-only flag handling for Numpy arrays.
+    + Fixed exception handling and bindings for in module.
+    + Improved error messages in Numpy array type handling.
+    + Fixed constructors documentation in Python.
+  * Platforms and hardware Support:
+    + Experimental CUDA support as first class language in CMake
+    + Added experimental support for Apple VisionOS platform
+    + Add support Orbbec Gemini2 and Gemini2 XL camera
+    + Fix fullscreen behavior on macOS
+  * Other:
+    + OpenCV Summer of Code: semi-automated refactoring across
+      multiple pull requests by HAN Liutong made our CPU-optimized
+      code compatible with SIMD with variable vector
+      length (RISC-V RVV)
+
+-------------------------------------------------------------------
 Sun Oct  1 22:45:15 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.8.1
