@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpi4py
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -138,6 +138,9 @@ cat >> %{buildroot}%{_rpmmacrodir}/macros.mpi4py <<EOL
 mpi4py_mpi_ver openmpi
 EOL
 
+# Don't run tests in s390x, mpiexec is not too reliable running in the
+# OBS virtual machine environment. bsc#1218604#c1
+%ifnarch s390x
 %check
 export PYTHONDONTWRITEBYTECODE=1
 export LANG=en_US.UTF-8
@@ -157,6 +160,7 @@ rm -rf build _build.*
 %setup_openmpi
 %{openmpi_prefix}/bin/mpiexec --use-hwthread-cpus --mca btl tcp,self -n 1  $python -B test/runtests.py -v --exclude="$donttest"
 }
+%endif
 
 %files %{python_files}
 %doc CHANGES.rst DESCRIPTION.rst README.rst
