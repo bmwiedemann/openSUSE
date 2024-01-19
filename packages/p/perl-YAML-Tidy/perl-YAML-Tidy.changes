@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 19 03:09:09 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9.0
+   see /usr/share/doc/packages/perl-YAML-Tidy/Changes
+
+  v0.9.0 2024-01-18 21:45:25+01:00
+
+      - Add option --batch
+      - Add option --verbose
+      - Add yamltidy.pod
+
+-------------------------------------------------------------------
 Sat Jan  6 03:10:02 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.8.0

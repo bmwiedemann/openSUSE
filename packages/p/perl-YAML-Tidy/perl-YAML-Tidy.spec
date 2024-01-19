@@ -18,7 +18,7 @@
 
 %define cpan_name YAML-Tidy
 Name:           perl-YAML-Tidy
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tidy YAML files
@@ -32,14 +32,14 @@ BuildRequires:  perl(Getopt::Long::Descriptive)
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::Warnings) >= 0.029
-BuildRequires:  perl(YAML::LibYAML::API) >= v0.14.0
+BuildRequires:  perl(YAML::LibYAML::API) >= 0.14.0
 BuildRequires:  perl(YAML::LibYAML::API::XS)
 BuildRequires:  perl(YAML::PP::Common)
 BuildRequires:  perl(YAML::PP::Highlight)
 BuildRequires:  perl(YAML::PP::Parser)
 BuildRequires:  perl(experimental)
 Requires:       perl(Getopt::Long::Descriptive)
-Requires:       perl(YAML::LibYAML::API) >= v0.14.0
+Requires:       perl(YAML::LibYAML::API) >= 0.14.0
 Requires:       perl(YAML::LibYAML::API::XS)
 Requires:       perl(YAML::PP::Common)
 Requires:       perl(YAML::PP::Highlight)
