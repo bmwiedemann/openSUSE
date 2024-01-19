@@ -18,6 +18,8 @@ Tue Nov 21 16:24:41 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 Mon Aug 28 11:12:49 UTC 2023 - daniel@molkentin.de
 
 - Update to version 0.26.0:
+  * (CVE-2023-40577, bsc#1218838): Fix stored XSS via the
+    /api/v1/alerts endpoint in the Alertmanager UI
   * Fast Forward the `main` branch to align with 0.26
   * Check the validity of the generatorURL field
   * Fix year in 0.26.0-rc.0 entry (#3468)
