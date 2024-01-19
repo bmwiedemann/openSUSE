@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Dec 20 10:10:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.7.1+0.g13ba383:
+  * tree: do no free ns on error in nvme_ns_init
+
+-------------------------------------------------------------------
+Tue Dec 19 13:26:50 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.7+0.gf38b1d7:
+  * tree: do not open blk device on default
+  * tree: read all attributes from sysfs when available
+  * ioctl: set data length when retrieving LBA status
+  * types: fix regression for vendor-specific field in nvme_id_ns
+  * util: use cleanup functions
+  * linux: use cleanup functions
+  * json: use cleanup functions
+  * fabrics: use cleanup functions
+  * tree: use cleanup functions
+  * cleanup: add cleanup functions
+  * tree: fix incorrect return value
+  * tree: Fix clearing application strings
+  * libnvme: reshuffle nvme_generate_tls_key_identity()
+  * libnvme: fixup error codes
+  * libnvme: Implement 'nvme_generate_tls_key_identity()'
+  * libnvme: support NVMe TLS identities version 1
+  * libnvme: Add base64 functions
+  * libnvme: separate out 'gen_tls_identity' and reshuffle 'derive_nvme_keys'
+  * libnvme: separate out a function 'select_hmac'
+  * libnvme: fix a memory leak when calling read_ssns()
+  * libnvme: fix a memory leak in read_discovery()
+  * fabrics: avoid redundant args in nvme_discovery_log()
+  * fabrics: have nvmf_get_discovery_log() call nvmf_get_discovery_wargs()
+  * fabrics: fetch smaller Discovery Log Page header
+  * fabrics: avoid redundant Get Log Page on retry
+  * fabrics: clear RAE for discovery log page commands
+  * json-schema: add keyring and tls_key details
+  * types: add Host Behavior Support field definitions
+  * mi: Cast values to u32 if shift overflows int
+  * types: Cast values to u32 if shift overflows int
+  * test: Avoid unaligned pointer dereferences
+  * nbft: Avoid unaligned pointer dereferences
+  * types: add cross-namespace copy formats, status codes, ONCS bits
+  * nvme: Add length field to Hkdf-Expand-Label computation
+  * ioctl: use lsp arg in nvme_get_log_boot_partition
+  * fabrics: use SECTYPE to determine whether to use TLS
+  * fabrics: Allocate aligned payloads for id_ctrl and discovery log calls
+  * linux: Allocate aligned payloads for id_ctrl and id_ns calls
+  * ioctl: MSB variable-size storage/reference tags
+
+-------------------------------------------------------------------
 Tue Oct 17 14:38:25 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 1.6+5.g68c6ffb:
