@@ -1,7 +1,7 @@
 #
 # spec file for package rtaudio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover 6
+%define sover 7
 Name:           rtaudio
-Version:        5.1.0
+Version:        6.0.1
 Release:        0
 Summary:        Real-time Audio I/O Library
 License:        MIT
@@ -27,6 +27,7 @@ URL:            http://www.music.mcgill.ca/~gary/rtaudio/
 Source0:        http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-%{version}.tar.gz
 BuildRequires:  alsa-lib-devel
 BuildRequires:  automake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  jack-audio-connection-kit-devel
 BuildRequires:  libpulse-devel
@@ -60,7 +61,7 @@ realtime audio input/output across different operating systems.
 This subpackage contains the headers for rtaudio.
 
 %prep
-%setup -q
+%autosetup
 # remove proprietary content
 rm -r include/ tests/Windows
 # remove all hidden files
@@ -75,6 +76,7 @@ make %{?_smp_mflags}
 %install
 %make_install
 rm %{buildroot}%{_libdir}/lib%{name}.la
+%fdupes %{buildroot}
 
 %post   -n librtaudio%{sover} -p /sbin/ldconfig
 %postun -n librtaudio%{sover} -p /sbin/ldconfig
