@@ -1,7 +1,7 @@
 #
 # spec file for package tesseract-ocr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libtesseract5
 Name:           tesseract-ocr
-Version:        5.3.3
+Version:        5.3.4
 Release:        0
 Summary:        Open Source OCR Engine
 License:        Apache-2.0 AND GPL-2.0-or-later
