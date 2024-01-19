@@ -1,7 +1,7 @@
 #
 # spec file for package volk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ BuildRequires:  python3-Mako
 Provides:       bundled(cpu_features) = 0.6.0
 
 %description
-VOLK provides a library of vector-optimized kernels. It is a subproject
+VOLK is a library of vector-optimized kernels. It is a subproject
 of GNU Radio, but can also be used standalone.
 
 %package devel
@@ -55,7 +55,7 @@ Provides:       gnuradio-devel:%{_libdir}/pkgconfig/volk.pc
 This package provides the the development files for VOLK.
 
 %package -n libvolk%{soname}
-Summary:        VOLK shared library
+Summary:        Vector-Optimized Library of Kernels
 Group:          System/Libraries
 Recommends:     volk
 
@@ -63,15 +63,15 @@ Recommends:     volk
 This package provides the VOLK shared library.
 
 %package -n volk_modtool
-Summary:        VOLK modtool
-Group:          Development/Libraries/C and C++
+Summary:        VOLK kernel creation utility
+Group:          Development/Tools/Other
 
 %description -n volk_modtool
 This package provides volk_modtool, used for creating new
 VOLK kernels.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake
@@ -82,7 +82,7 @@ VOLK kernels.
 chmod -x %{buildroot}%{python3_sitearch}/volk_modtool/*py
 sed -i -e '1 { \@.*/bin/env.*python.*@ d }' %{buildroot}%{python3_sitearch}/volk_modtool/*py
 
-%fdupes %{buildroot}
+%fdupes %{buildroot}/%{_prefix}
 
 %post -n libvolk%{soname} -p /sbin/ldconfig
 %postun -n libvolk%{soname} -p /sbin/ldconfig
