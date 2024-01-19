@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  2 22:41:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add tests
+- require setuptools
+
+-------------------------------------------------------------------
+Wed Dec 27 12:33:40 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Nov 16 21:45:23 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- initial package 
+- initial package

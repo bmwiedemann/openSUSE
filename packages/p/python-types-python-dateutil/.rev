@@ -7,4 +7,17 @@
     <comment>type stubs for python-datetutil , needed by python-pyarrow</comment>
     <requestid>1127190</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0b07bd6a924b2c9d331bb6000b9d2923</srcmd5>
+    <version>2.8.19.14</version>
+    <time>1705701619</time>
+    <user>anag+factory</user>
+    <comment>- add tests
+- require setuptools
+
+- Add %{?sle15_python_module_pythons}
+
+- initial package</comment>
+    <requestid>1136317</requestid>
+  </revision>
 </revisionlist>
