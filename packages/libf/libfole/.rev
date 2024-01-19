@@ -51,4 +51,12 @@
     <comment>delete system-libs.patch</comment>
     <requestid>1038462</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4269136b6d825bb34e8fae6a15928c28</srcmd5>
+    <version>20240119</version>
+    <time>1705701747</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240119</comment>
+    <requestid>1139914</requestid>
+  </revision>
 </revisionlist>
