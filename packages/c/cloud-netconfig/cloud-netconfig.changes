@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 19 14:20:48 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.10:
+  + Drop cloud-netconfig-nm sub package and include NM dispatcher
+    script in main packages (bsc#1219007)
+  + Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Jan 17 11:24:02 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.9:
+  + Drop package dependency on sysconfig-netconfig
+  + Improve log level handling
+  + Support IPv6 IMDS endpoint in EC2 (bsc#1218069)
+
+-------------------------------------------------------------------
 Wed Aug 30 06:26:29 UTC 2023 - Joachim Gleissner <jgleissner@suse.com>
 
 - Update to version 1.8:
