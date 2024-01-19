@@ -31,4 +31,25 @@
 </comment>
     <requestid>742737</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b0335862a07d231da78b02d6875fd407</srcmd5>
+    <version>6.0.1</version>
+    <time>1705701733</time>
+    <user>anag+factory</user>
+    <comment>- Update to Version 6.0.1:
+ - soversion bump to 7
+- update to version 6.0.0:
+ - see git history for complete list of changes
+ - major API changes concerning device selection / specification
+ - major API changes concerning error handling ... C++ exceptions no longer used
+ - rewrite of device querying code
+- Update to version 5.2.0:
+ - see git history for complete list of changes
+ - update to audioprobe.cpp to list devices for all APIs
+ - miscellaneous build system updates
+ - PulseAudio device detection fixes
+ - various WASAPI updates (thanks to Marcus Tomlinson)
+</comment>
+    <requestid>1140001</requestid>
+  </revision>
 </revisionlist>

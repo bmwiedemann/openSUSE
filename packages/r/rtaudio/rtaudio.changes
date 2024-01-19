@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug  2 09:40:25 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to Version 6.0.1:
+ - soversion bump to 7
+- update to version 6.0.0:
+ - see git history for complete list of changes
+ - major API changes concerning device selection / specification
+ - major API changes concerning error handling ... C++ exceptions no longer used
+ - rewrite of device querying code
+
+-------------------------------------------------------------------
+Tue Nov 16 17:35:10 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 5.2.0:
+ - see git history for complete list of changes
+ - update to audioprobe.cpp to list devices for all APIs
+ - miscellaneous build system updates
+ - PulseAudio device detection fixes
+ - various WASAPI updates (thanks to Marcus Tomlinson)
+
+-------------------------------------------------------------------
 Sun Jun  9 19:28:17 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 5.1.0:
