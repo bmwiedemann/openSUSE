@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,14 @@ ExclusiveArch:  do-not-build
 %define no_dist_conf 1
 %endif
 
+%if 0%{?suse_version} == 1600
+%define with_sysconfig 0
+%else
+%define with_sysconfig 1
+%endif
+
 Name:           %{base_name}%{flavor_suffix}
-Version:        1.8
+Version:        1.10
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Network configuration scripts for %{csp_string}
@@ -51,30 +57,12 @@ Group:          System/Management
 Source0:        %{base_name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-%if 0%{?suse_version} == 1110
-BuildRequires:  sysconfig
-Requires:       sysconfig
-%define _udevrulesdir %{_sysconfdir}/udev/rules.d
-%else
-BuildRequires:  sysconfig-netconfig
-Requires:       sysconfig-netconfig
-%endif
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(udev)
-%if 0%{?sle_version} > 150100
-BuildRequires:  NetworkManager
-%endif
 Requires:       curl
 Requires:       udev
-%if 0%{?sles_version} == 11
-# RPM in SLES 11 does not support self conflict, use otherproviders()
-# workaround
-Provides:       cloud-netconfig
-Conflicts:      otherproviders(cloud-netconfig)
-%else
 Provides:       cloud-netconfig
 Conflicts:      cloud-netconfig
-%endif
 %if 0%{?suse_version} == 1315
 %{?systemd_requires}
 %else
@@ -91,17 +79,6 @@ Conflicts:      cloud-netconfig
 This package contains scripts for automatically configuring network interfaces
 in %{csp_string} with full support for hotplug.
 
-%if 0%{?sle_version} > 150100
-%package -n %{base_name}-nm
-Summary:        Network configuration scripts for %{csp_string}
-Group:          System/Management
-Requires:       NetworkManager
-Requires:       cloud-netconfig
-
-%description -n %{base_name}-nm
-Dispatch script for NetworkManager that automatically runs cloud-netconfig.
-%endif
-
 %prep
 %setup -q -n %{base_name}-%{version}
 
@@ -116,7 +93,8 @@ make install%{flavor_suffix} \
   SCRIPTDIR=%{_scriptdir} \
   UDEVRULESDIR=%{_udevrulesdir} \
   UNITDIR=%{_unitdir} \
-  NETCONFIGDIR=%{_netconfigdir}
+  NETCONFIGDIR=%{_netconfigdir} \
+  NMDISPATCHDIR=/usr/lib/NetworkManager/dispatcher.d
 
 # Disable persistent net generator from udev-persistent-ifnames as
 # it does not work for xen interfaces. This will likely produce a warning.
@@ -125,37 +103,37 @@ mkdir -p %{buildroot}/%{_sysconfdir}/udev/rules.d
 ln -s /dev/null %{buildroot}/%{_sysconfdir}/udev/rules.d/75-persistent-net-generator.rules
 %endif
 
+%if %{with_sysconfig} == 1
+make install-netconfig-wrapper \
+  DESTDIR=%{buildroot} \
+  NETCONFIGDIR=%{_netconfigdir}
+
 # install link to cleanup script in /etc/sysconfig/network/scripts to wicked
 # will find it
 mkdir -p %{buildroot}/%{_sysconfdir}/sysconfig/network/scripts
 ln -s %{_scriptdir}/cloud-netconfig-cleanup %{buildroot}/%{_sysconfdir}/sysconfig/network/scripts/cloud-netconfig-cleanup
-
-%if 0%{?sle_version} <= 150100
-rm -r %{buildroot}/usr/lib/NetworkManager
 %endif
 
 %files -n %{base_name}%{flavor_suffix}
 %defattr(-,root,root)
 %{_scriptdir}
-%{_sysconfdir}/sysconfig/network/scripts/cloud-netconfig-cleanup
 %if %{defined no_dist_conf}
 %config(noreplace) %{_distconfdir}/default/cloud-netconfig
 %else
 %{_distconfdir}/default/cloud-netconfig
 %endif
+%if %{with_sysconfig} == 1
 %{_netconfigdir}
+%{_sysconfdir}/sysconfig/network
+%endif
 %if 0%{?suse_version} >= 1315
 %{_sysconfdir}/udev/rules.d
 %endif
 %{_udevrulesdir}/*
 %{_unitdir}/*
+/usr/lib/NetworkManager
 %doc README.md
 %license LICENSE
-
-%if 0%{?sle_version} > 150100
-%files -n %{base_name}-nm
-/usr/lib/NetworkManager/dispatcher.d
-%endif
 
 %pre
 %service_add_pre %{base_name}.service %{base_name}.timer
