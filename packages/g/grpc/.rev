@@ -571,4 +571,12 @@ Note: In my home project this only builds on Factory/Tumbleweed. (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1131220</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>f32e09e2bdce8056a0bf9fdaecceaf72</srcmd5>
+    <version>1.60.0</version>
+    <time>1705701596</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139642</requestid>
+  </revision>
 </revisionlist>

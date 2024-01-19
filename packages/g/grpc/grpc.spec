@@ -1,7 +1,7 @@
 #
 # spec file for package grpc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,14 +28,15 @@ Group:          Development/Tools/Building
 URL:            https://grpc.io/
 Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
 Source2:        %name-rpmlintrc
+# PATCH-FIX-UPSTREAM ARM-Unaligned-access-fixes.patch gh#Cyan4973/xxHash#651 easyaspi314@users.noreply.github.com
+# Fix unaligned access on ARM
+Patch1:         ARM-Unaligned-access-fixes.patch
+# PATCH-FIX-UPSTREAM Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch gh#Cyan4973/xxHash#651 mattias.ellert@physics.uu.se
+# Fix build on ppc64le on RHEL-7 with gcc-4.8
+Patch2:         Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
-%if 0%{?suse_version} < 1550
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  opencensus-proto-source
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcares) >= 1.19.1
@@ -124,15 +125,13 @@ BuildArch:      noarch
 This subpackage contains source code of the gRPC reference implementation.
 
 %prep
-%autosetup -p1
+%autosetup -N
+pushd third_party/xxhash
+%patch1 -p1
+%patch2 -p1
+popd
 rm -Rf third_party/abseil-cpp/
 
-%build
-%if 0%{?suse_version} < 1550
-export CC=gcc-12
-export CXX=g++-12
-%endif
-%define _lto_cflags %nil
 # protoc is invoked strangely; make it happy with this dir or it will assert()
 mkdir -p third_party/protobuf/src
 
@@ -149,9 +148,7 @@ export CXXFLAGS="$CFLAGS"
        -DgRPC_SSL_PROVIDER=package        \
        -DZLIB_LIBRARY=%{_libdir}/libz.so  \
        -DgRPC_ZLIB_PROVIDER=package \
-       -DCMAKE_CXX_STANDARD=17 \
-       -DCMAKE_SKIP_RPATH=FALSE \
-       -DCMAKE_SKIP_INSTALL_RPATH=TRUE
+       -DCMAKE_CXX_STANDARD=17
 %cmake_build
 
 %install

@@ -1,0 +1,58 @@
+From 316649c7bb8545571d9beb75dc2fb1abfbe6552f Mon Sep 17 00:00:00 2001
+From: "easyaspi314 (Devin)" <easyaspi314@users.noreply.github.com>
+Date: Tue, 7 Dec 2021 21:36:13 -0500
+Subject: [PATCH] [ARM] Unaligned access fixes
+
+ - Use memcpy on ARMv6 and lower when unaligned access is supported
+  - GCC has an internal conflict on whether unaligned access is available
+    on ARMv6 so some parts do byteshift, some parts do not
+  - aligned(1) is better on everything else
+  - All this seems to be safe on even GCC 4.9.
+ - Leave out the alignment check if unaligned access is supported on ARM.
+---
+ xxhash.h | 24 +++++++-----------------
+ 1 file changed, 7 insertions(+), 17 deletions(-)
+
+diff --git a/xxhash.h b/xxhash.h
+index 08ab794..4cf3f0d 100644
+--- a/xxhash.h
++++ b/xxhash.h
+@@ -1402,28 +1402,18 @@ XXH3_128bits_reset_withSecretandSeed(XXH3_state_t* statePtr,
+  */
+ 
+ #ifndef XXH_FORCE_MEMORY_ACCESS   /* can be defined externally, on command line for example */
+-   /* prefer __packed__ structures (method 1) for gcc on armv7+ and mips */
+-#  if !defined(__clang__) && \
+-( \
+-    (defined(__INTEL_COMPILER) && !defined(_WIN32)) || \
+-    ( \
+-        defined(__GNUC__) && ( \
+-            (defined(__ARM_ARCH) && __ARM_ARCH >= 7) || \
+-            ( \
+-                defined(__mips__) && \
+-                (__mips <= 5 || __mips_isa_rev < 6) && \
+-                (!defined(__mips16) || defined(__mips_mips16e2)) \
+-            ) \
+-        ) \
+-    ) \
+-)
++   /* prefer __packed__ structures (method 1) for GCC
++    * < ARMv7 with unaligned access (e.g. Raspbian armhf) still uses byte shifting, so we use memcpy
++    * which for some reason does unaligned loads. */
++#  if defined(__GNUC__) && !(defined(__ARM_ARCH) && __ARM_ARCH < 7 && defined(__ARM_FEATURE_UNALIGNED))
+ #    define XXH_FORCE_MEMORY_ACCESS 1
+ #  endif
+ #endif
+ 
+ #ifndef XXH_FORCE_ALIGN_CHECK  /* can be defined externally */
+-#  if defined(__i386)  || defined(__x86_64__) || defined(__aarch64__) \
+-   || defined(_M_IX86) || defined(_M_X64)     || defined(_M_ARM64) /* visual */
++   /* don't check on x86, aarch64, or arm when unaligned access is available */
++#  if defined(__i386)  || defined(__x86_64__) || defined(__aarch64__) || defined(__ARM_FEATURE_UNALIGNED) \
++   || defined(_M_IX86) || defined(_M_X64)     || defined(_M_ARM64)    || defined(_M_ARM) /* visual */
+ #    define XXH_FORCE_ALIGN_CHECK 0
+ #  else
+ #    define XXH_FORCE_ALIGN_CHECK 1
+-- 
+2.43.0
+

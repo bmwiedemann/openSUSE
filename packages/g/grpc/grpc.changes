@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 18 07:58:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add ARM-Unaligned-access-fixes.patch to fix unaligned
+  access on ARM which causes issues on AArch64 kernels
+- Add Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch
+  to fix FTBFS on ppc64le when using gcc-7 (boo#1208794)
+- Revert changes made to RPATH handling
+- Switch build compiler back to default on SLE-15
+
+-------------------------------------------------------------------
 Tue Nov 28 21:04:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.60
