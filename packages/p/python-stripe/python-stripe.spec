@@ -25,8 +25,6 @@ URL:            https://github.com/stripe/stripe-python
 Source:         https://files.pythonhosted.org/packages/source/s/stripe/stripe-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#stripe/stripe-python#1195
 Patch0:         use-sys-executable.patch
-# PATCH-FIX-OPENSUSE Skip tests that require mocked stripe service running
-Patch1:         also-skip-streaming.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-mock >= 2.0}
@@ -36,6 +34,7 @@ BuildRequires:  %{python_module typing_extensions >= 4.5.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  stripe-mock
 Requires:       python-requests >= 2.20
 Requires:       python-typing_extensions >= 4.5.0
 Conflicts:      python-stripe-api
@@ -56,7 +55,10 @@ Python bindings for the Stripe API.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --nomock
+stripe-mock &
+pid=$!
+%pytest
+kill $pid
 
 %files %{python_files}
 %doc CHANGELOG.md README.md examples/

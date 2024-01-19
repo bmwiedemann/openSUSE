@@ -52,4 +52,15 @@
     https://stripe.com/docs/upgrades#2023-10-16 and carefully review the API</comment>
     <requestid>1139334</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d3c4417925d0e32a8a9435f76be5782c</srcmd5>
+    <version>7.12.0</version>
+    <time>1705701718</time>
+    <user>anag+factory</user>
+    <comment>- Drop patch also-skip-streaming.patch:
+  * No longer needed.
+- Add BuildRequires on new stripe-mock service, and run it during the
+  check phase.</comment>
+    <requestid>1139834</requestid>
+  </revision>
 </revisionlist>
