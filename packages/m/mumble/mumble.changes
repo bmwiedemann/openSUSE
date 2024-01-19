@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 18 21:07:38 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build with Qt 5.15 / OpenGL (boo#1218944)
+- Fix mumble-server.service (gh#mumble-voip/mumble/6273)
+
+-------------------------------------------------------------------
 Thu Nov 23 19:14:57 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - enable pulseaudio support boo#1217419

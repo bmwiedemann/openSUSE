@@ -1,7 +1,9 @@
 #
 # spec file for package mumble
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2024 Tobias Burnus <burnus@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,6 +138,9 @@ won't be audible to other players.
         -DMUMBLE_INSTALL_PLUGINDIR=%{_libdir}/mumble/plugins \
         -Dbundled-speex:BOOL=OFF \
         -Dice:BOOL=OFF \
+%if 0%{?suse_version} > 1600
+        -DCMAKE_SHARED_LINKER_FLAGS="-lGL" \
+%endif
 %if 0%{?suse_version} <= 1550
         -DCMAKE_MODULE_LINKER_FLAGS="" \
         -DCMAKE_SHARED_LINKER_FLAGS="" \
