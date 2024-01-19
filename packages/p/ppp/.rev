@@ -443,4 +443,12 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
 - Enable support for systemd notification.</comment>
     <requestid>1134222</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>7a6bfde69c3e50b22b216ea906708d40</srcmd5>
+    <version>2.5.0</version>
+    <time>1705701609</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1139724</requestid>
+  </revision>
 </revisionlist>

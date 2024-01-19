@@ -1,7 +1,7 @@
 #
 # spec file for package ppp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,9 @@ Patch4:         ppp-fix-bashisms.patch
 Patch5:         ppp-fork-fix.patch
 # misc tiny stuff
 Patch6:         ppp-misc.patch
+Patch7:         ppp-mkdir-run.patch
+Patch8:         ppp-pidfiles.patch
+
 # Of cause any other compatible libc would work, like musl, but 2.24 required for SOL_NETLINK
 BuildRequires:  glibc-devel >= 2.24
 BuildRequires:  libpcap-devel
@@ -109,6 +112,8 @@ you can disable unnecessary or disable everything.
 %patch4
 %patch5
 %patch6
+%patch7
+%patch8
 
 sed -i -e '1s/local\///' scripts/secure-card
 find scripts -type f | xargs chmod a-x
@@ -119,7 +124,12 @@ find -type f -name '*.orig' | xargs rm -f
 #sed -i '/#HAVE_LIBATM/s/#//' pppd/plugins/pppoatm/Makefile.linux
 
 %build
-%configure --enable-cbcp --with-pam --enable-multilink --enable-systemd
+%configure \
+	--with-runtime-dir=%_rundir/ppp/ \
+	--enable-cbcp \
+	--with-pam \
+	--enable-multilink \
+	--enable-systemd
 %make_build
 
 #CHAPMS=y CBCP=y HAS_SHADOW=y USE_PAM=y FILTER=y HAVE_INET6=y HAVE_LOGWTMP=y
