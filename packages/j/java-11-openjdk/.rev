@@ -535,4 +535,12 @@
     <comment>October 2023 CPU</comment>
     <requestid>1118622</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>9da0b652b1b44384a620735f3f9151d6</srcmd5>
+    <version>11.0.22.0</version>
+    <time>1705701598</time>
+    <user>anag+factory</user>
+    <comment>January 2024 CPU</comment>
+    <requestid>1139696</requestid>
+  </revision>
 </revisionlist>
