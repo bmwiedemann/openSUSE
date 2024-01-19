@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 11 15:45:00 MST 2024 - carnold@suse.com
+
+- Copy sorted packagelist to packages during supermin appliance
+  setup. (bsc#1215586)
+  libguestfs.spec
+
+-------------------------------------------------------------------
 Thu Jan  4 13:10:51 MST 2024 - carnold@suse.com
 
 - Update to version 1.52.0 (jsc#PED-6305)

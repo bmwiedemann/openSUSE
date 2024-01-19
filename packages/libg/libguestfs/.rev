@@ -1086,4 +1086,12 @@
     <comment>Update libguestfs to version 1.52.0 with adjustments for reproducible builds and other minor tweaks.</comment>
     <requestid>1137599</requestid>
   </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>064e47b3eea52c56f609adcceae0b1b2</srcmd5>
+    <version>1.52.0</version>
+    <time>1705701703</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1139823</requestid>
+  </revision>
 </revisionlist>

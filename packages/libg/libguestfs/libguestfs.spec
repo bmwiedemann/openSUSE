@@ -97,7 +97,7 @@ sed -i 's/tar zcf/tar -zcf/' appliance/Makefile.am
 # provide a wrapper to tar that creates bit-reproducible output (boo#1218191)
 # used in supermin for base.tar.gz, in %install for zz-winsupport.tar.gz zz-scripts.tar.gz and in appliance/Makefile.am for 3 more .tar.gz files
 SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-$(date -r %{SOURCE0} +%%s)}
-mkdir ~/bin ; cat >~/bin/tar <<EOF
+mkdir -p ~/bin ; cat >~/bin/tar <<EOF
 #!/bin/sh
 exec /usr/bin/tar \
   --sort=name --clamp-mtime --mtime=@$SOURCE_DATE_EPOCH \
@@ -223,6 +223,8 @@ find %{buildroot}/ -name "*.bs" -size 0c -print -delete
 # OCaml
 %ocaml_create_file_list
 # Supermin
+# Use RPMs from packagelist for the packages file. Sort and clean leading whitespace.
+sort -u appliance/packagelist | awk '{$1=$1};1' > %buildroot%_libdir/guestfs/supermin.d/packages
 pushd $RPM_BUILD_ROOT%{_libdir}/guestfs/supermin.d
 
 function remove
