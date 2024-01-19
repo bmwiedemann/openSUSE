@@ -1,7 +1,7 @@
 #
 # spec file for package gimp-plugin-resynthesizer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,19 @@
 
 
 Name:           gimp-plugin-resynthesizer
-Version:        2.0.3~git.20220422
+Version:        2.0.3~git.20231001
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Suite of gimp plugins for texture synthesis
-URL:            https://github.com/bootchk/resynthesizer
+URL:            https://github.com/itr-tert/gimp-resynthesizer-scm
 Group:          Productivity/Graphics/Bitmap Editors
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
-BuildRequires:  gimp
-BuildRequires:  gimp-devel
+BuildRequires:  gimp-devel < 3.0
 BuildRequires:  intltool
 BuildRequires:  pkgconfig(glib-2.0)
-Requires:       gimp-plugins-python
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package is a set of plugins for use with the Gimp program.
@@ -43,25 +40,26 @@ The package includes:
 - various plugins (in Python language) that call the resynthesizer engine
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 ./autogen.sh
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-%find_lang resynthesizer
 
 %clean
 rm -rf %{buildroot}
 
-%files -f resynthesizer.lang
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog NEWS README
+%files
+%doc README.md
 %license COPYING
 %{_libdir}/gimp/2.0/plug-ins/*
 %{_datadir}/resynthesizer/
+%dir %{_datadir}/gimp/2.0/scripts
+%dir %{_datadir}/gimp/2.0/scripts/resynthesizer-scm
+%{_datadir}/gimp/2.0/scripts/resynthesizer-scm/*
 
 %changelog
