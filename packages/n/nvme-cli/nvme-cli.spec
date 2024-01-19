@@ -19,7 +19,7 @@
 %bcond_without check
 
 Name:           nvme-cli
-Version:        2.6
+Version:        2.7.1
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -27,14 +27,11 @@ Group:          Hardware/Other
 URL:            https://github.com/linux-nvme/nvme-cli/
 Source0:        nvme-cli-%{version}.tar.gz
 Source1:        nvme-cli-rpmlintrc
-Patch001:       0001-fabrics-autoconnect-add-service-unit-for-connecting-.patch
-Patch002:       0002-fabrics-add-udev-rule-to-avoid-renaming-nbft-interfa.patch
 # downstream patches
 Patch100:       0100-harden_nvmf-connect@.service.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libnvme-devel
 BuildRequires:  meson
@@ -166,7 +163,7 @@ fi
 %{_mandir}/man1/nvme*.1*%{?ext_man}
 %{_udevrulesdir}/65-persistent-net-nbft.rules
 %{_udevrulesdir}/70-nvmf-autoconnect.rules
-%{_udevrulesdir}/71-nvmf-iopolicy-netapp.rules
+%{_udevrulesdir}/71-nvmf-netapp.rules
 %{_unitdir}/nvmefc-boot-connections.service
 %{_unitdir}/nvmf-autoconnect.service
 %{_unitdir}/nvmf-connect-nbft.service
