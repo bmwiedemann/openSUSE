@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 19 09:45:13 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Don't run tests in s390x, mpiexec is not too reliable running in the
+  OBS virtual machine environment. bsc#1218604#c1
+
+-------------------------------------------------------------------
 Thu Dec  7 22:11:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.5:
