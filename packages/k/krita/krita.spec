@@ -1,7 +1,7 @@
 #
 # spec file for package krita
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,10 @@ Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version
 Source1:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz.sig
 Source2:        krita.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-libjxl-0.9.0.patch
+Patch2:         0002-KisFileIconCreator-add-workaround-for-JPEG-XL-too.patch
+Patch3:         0003-JPEG-XL-Disable-export-bug-workaround-for-libjxl-0.9.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel
@@ -53,6 +57,7 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_system1_75_0-devel
 #!BuildIgnore:  libboost_headers1_66_0-devel
 %endif
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel
 BuildRequires:  libheif-devel
@@ -60,7 +65,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libpoppler-qt5-devel
-BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libraw-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  openjpeg2-devel
@@ -119,8 +123,8 @@ BuildRequires:  pkgconfig(harfbuzz) >= 4.0
 BuildRequires:  pkgconfig(libmypaint)
 BuildRequires:  pkgconfig(libunibreak)
 BuildRequires:  pkgconfig(libwebp)
-BuildRequires:  pkgconfig(xcb-xinput)
 BuildRequires:  pkgconfig(xcb-atom)
+BuildRequires:  pkgconfig(xcb-xinput)
 BuildRequires:  pkgconfig(xi) >= 1.4.99.1
 %if %{with python}
 Recommends:     python3-qt5
