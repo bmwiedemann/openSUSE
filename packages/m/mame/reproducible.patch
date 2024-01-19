@@ -1,32 +1,6 @@
-https://github.com/mamedev/mame/pull/11651
-
-Author: Bernhard M. Wiedemann <bernhard+gitcommit lsmod.de>
-Date:   Sun Oct 22 20:23:29 2023 +0200
-
-Make generation of has_*.h files deterministic
-
-Without this patch, order of entries in generated/has_{buses,cpus,formats,machines,sounds,videos}.h varied across builds.
-
-This patch was done while working on reproducible builds for openSUSE.
-
-
-Index: mame-mame0258/scripts/genie.lua
-===================================================================
---- mame-mame0258.orig/scripts/genie.lua
-+++ mame-mame0258/scripts/genie.lua
-@@ -1530,7 +1530,7 @@ function generate_has_header(hashname, h
-    file:write(string.format("#ifndef GENERATED_HAS_%s_H\n", hashname))
-    file:write(string.format("#define GENERATED_HAS_%s_H\n", hashname))
-    file:write("\n")
--   for k, v in pairs(hash) do
-+   for k, v in ipairs(hash) do
- 	  if v then
- 		 file:write(string.format("#define HAS_%s_%s\n", hashname, k))
- 	  end
-Index: mame-mame0258/scripts/build/makedep.py
-===================================================================
---- mame-mame0258.orig/scripts/build/makedep.py
-+++ mame-mame0258/scripts/build/makedep.py
+diff -Pdpru mame-mame0261.orig/scripts/build/makedep.py mame-mame0261/scripts/build/makedep.py
+--- mame-mame0261.orig/scripts/build/makedep.py	2023-11-27 23:47:14.000000000 +0300
++++ mame-mame0261/scripts/build/makedep.py	2024-01-18 21:01:55.694442744 +0300
 @@ -432,7 +432,7 @@ class DriverFilter:
              elif text:
                  if (len(text) >= 2) and ((text[0] == '"') or (text[0] == "'")) and (text[0] == text[-1]):

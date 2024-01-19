@@ -1,7 +1,7 @@
 #
 # spec file for package mame
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define ver     260
+%define ver     261
 Name:           mame
 Version:        0.%{ver}
 Release:        0
@@ -106,6 +106,7 @@ rm -r 3rdparty/{asio,compat,dxsdk,expat,glm,libflac,libjpeg,portaudio,portmidi,p
 %build
 %define _lto_cflags %{nil}
 MY_OPT_FLAGS=$(echo %{optflags} | sed -re 's@-g($|[0-9])@-g1@g; s@-g\s@-g1 @g')
+MY_OPT_FLAGS=$(echo $MY_OPT_FLAGS | sed 's@ -Wp,-D_GLIBCXX_ASSERTIONS@@')
 sed -i "s@-Wall -Wextra -Os \$(MPARAM)@$MY_OPT_FLAGS@" 3rdparty/genie/build/gmake.linux/genie.make
 sed -i "s@-s -rdynamic@$LDFLAGS -rdynamic@" 3rdparty/genie/build/gmake.linux/genie.make
 
