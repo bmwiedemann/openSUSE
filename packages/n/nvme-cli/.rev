@@ -690,4 +690,156 @@
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1218306</comment>
     <requestid>1134429</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>27cab52335c512a3f9e3051f22dc22a5</srcmd5>
+    <version>2.7.1</version>
+    <time>1705701603</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.7.1:
+  * nvme-print-json: Revert field name changes (bsc#1218306)
+- Update to version 2.7:
+  * nvme-print-json: include vs for identify namespace
+  * nvme-print-stdout: enhance connect message
+  * fabrics: fix connect error if hostid file does not exist
+  * fabrics: fix invalid output format error during nvme connect
+  * wdc: Fix vs-smart-add-log Command for SN650 and SN655
+  * nvme: restric hmac options for gen-tls-key
+  * wdc: Fix UUID index fallback mechanism
+  * plugins/ocp: Add OCP Telemetry String log page, Telemetry log page
+  * completions: Add bash completions for telemetry string log page
+  * plugins/solidigm: Added OCP 2.0 compatibility version command
+  * plugins/solidigm: Added OCP 2.0 vs-drive-info command.
+  * plugins/ocp: Fix printing order of various Latency Monitor Log buckets
+  * nvme: validate output format split status from flag return value
+  * nvme: simplify cleanup_nvme_dev()
+  * cleanup: remove unused cleanup_charp()
+  * wdc: Add support for SN861 2nd pci device id
+  * nvme: replace libhugetlbfs with mmap and madvise
+  * util/mem: move alloc helper to util section
+  * nvme: auto cleanup filedescriptors
+  * nvme: auto cleanup buffers
+  * nvme: return error code in get_persistent_event_log
+  * nvme: sanitize nvme-gen-tls-key
+  * nvme: print out the resulting TLS identity for 'nvme check-tls-key'
+  * nvme: Add version '1' identifier for nvme-gen-tls-key
+  * subprojects/libnvme: update wrapper for TP8018
+  * plugins/solidigm: Added re_sku_count smart atrribute
+  * doc: Fix nvme-connect manpage --application option string
+  * plugins/ocp: changed command clear-pcie-correctable-error-counters to match OCP 2.0 spec.
+  * plugins/solidigm: Added command to clear PCIe Correctable Error Counters according to OCP 2.0
+  * plugins/ocp: Reorganized clear feature code for better reuse
+  * nvme: fixup length calculation for 'nvme gen-tls-key --secret'
+  * doc: remove invalid hostkey info for --dhchap-secret
+  * nvme-print-json: use human helper everywhere
+  * nvme-print-json: remove obj_print helper
+  * plugins/ocp: update nvme_show_select_result call
+  * mailmap: only show contributer's name
+  * nvme-print-json: Change to report status and message in array
+  * nvme-print-json: Change to report feature select in array
+  * nvme-print-json: Change to report error and data in array
+  * nvme-print-json: Add show_init/finish calls to report features in array
+  * nvme-print: Add nvme_show_error_status() to merge error message and status
+  * nvme-print-json: Use r instead of root and use obj_add_***(r, ..., ...)
+  * nvme-print-json: Delete static const char string global variables
+  * nvme-print-json: Add remaining controller registers readable format
+  * nvme-print-json: Add readable format cap, vs, cc, csts, nssr and crto registers
+  * nvme-print-json: Combine duplicated json key and val string variables
+  * nvme-print-json: Replase json_array_add_value_string() to array_add_str()
+  * nvme-print-json: Replase json_object_add_value_uint128() to obj/root_add_uint128()
+  * nvme-print-json: Replase json_object_add_value_object() to obj/root_add_obj()
+  * nvme-print-json: Replase json_array_add_value_object() to array_add_obj()
+  * nvme-print-json: Replase json_object_add_value_array() to obj/root_add_array()
+  * nvme-print-json: Replase json_object_add_value_uint() to obj/root_add_uint()
+  * nvme-print-json: Replase json_object_add_value_int() to obj/root_add_int()
+  * nvme-print-json: Replase json_object_add_value_uint64() to obj/root_add_uint64()
+  * nvme-print-json: Replase json_object_add_value_string() to obj/root_add_str()
+  * nvme-print-json: Update feature_show_fields_*** to use root/obj_add_***()
+  * nvme-print-json: Update lba_status_log to use root_add_***() and obj_add_***()
+  * nvme-print-json: Replace lba_status_log printf() to root_add_result()
+  * nvme-print-json: Add list_item print function
+  * nvme-print-json: Add lba_status_info print function
+  * nvme-print-json: Add lba_range print function
+  * nvme-print-json: Add id_ctrl_rpmbs print function
+  * nvme-print-json: Unify json_list and jroot object names to root
+  * nvme-print-json: Add json_zns_changed print function
+  * nvme-print-json: Add root_add_result() to output result message
+  * nvme-print-json: Split persistent_event_log print function
+  * nvme-print-json: Remove unnecessary string newline code
+  * nvme-print-json: Replace effects_log_list print to use json_print()
+  * nvme-print-json: Print persistent_event_log no log data result correctly
+  * nvme-print-json: Add static &quot;result&quot; and &quot;erorr&quot; strings variables
+  * nvme-print-json: Add single_property printf function
+  * nvme: Replace get feature command stderr output to nvme_show_error()
+  * nvme-print-json: Change d() output to use d_json()
+  * nvme: Fix get-feature command mixed stdout and json outputs
+  * nvme-print-json: Add remaining feature fields print functions
+  * nvme-print-json: Update formatting and codying style
+  * build: Add -std=c99 to CFLAGS for muon on CentOS 7
+  * fabrics: add udev rule to avoid renaming nbft interfaces
+  * fabrics: autoconnect: add service unit for connecting NBFT subsystems
+  * fabrics: autoconnect: explicitly express module dependency
+  * Updates to codeql config
+  * libnvme-wrap: exit on VOID_FN lookup failure
+  * plugins/ocp:Added the ocp C6h feature api
+  * plugin/ocp_fid_c6h:Added the ocp C6h feature api
+  * nvme-copy: support cross-namespace copy
+  * nvme/plugins: fix mismatch operator
+  * nvme: fix overflow possiblity
+  * nvme: reduce identify cmd issue
+  * nvme: allow set-features to take input from stdin
+  * Fix common misspellings from codespell project
+  * nvme-print: Correct to print correct ascii character string length
+  * print-stdout: print Host Behavior Support correctly
+  * build: Bump libnvme wrap
+  * plugins/solidigm: Added support for temperature statistics log page
+  * Add support for codeql sweeps
+  * doc: Add virt-mgmt command
+  * doc: Add id-uuid command
+  * doc: Add list-secondary command
+  * doc: Add id-ns-granularity command
+  * doc: Add nvme commands --output-format and --verbose options
+  * completions: Add nvme-mi-recv nad nvme-mi-send commands completions
+  * completions: Change short option -o and -v duplicated to upper case
+  * doc: Change short option -o and -v duplicated to upper case
+  * nvme: Change short option -o and -v duplicated to upper case
+  * nvme: Change phy-rx-eom-log command to use NVME_ARGS instead
+  * plugins/memblaze: Add smart-log-add and latency-feature functions
+  * plugins/solidigm: internal-logs Telemetry auto detect last data area.
+  * nvme: Change to use NVME_FLBAS_META_EXT() macro to check flbas value
+  * nvme-print-json: Add host memory buffer and timestamp features print functions
+  * nvme-print-json: Add feature fields print functions
+  * nvme-print-json: Add TMPTH feature print function
+  * nvme-print-json: Add show_feature_fields print function
+  * nvme-print-json: Add select_result print function
+  * nvme-print-json: Use json_print to print and free object
+  * nvme-print-json: Add lba_status print function
+  * nvme-print-json: Combine variable definition and setting value
+  * nvme-print-json: Add id_iocs print function
+  * nvme-print-stdout: Fix coding style errors
+  * nvme-print-json: Add directive print function
+  * nvme: Fixed segmentation fault when getting host initiated telemetry
+  * plugins/wdc: enhanced SN861 device support
+  * plugins/wdc: cleanup line lengths
+  * nvme: do not include meta data for PRACT=1 and MD=8
+  * nvme: use block-count arg if provided
+  * build: bump libnvme to disable tests option
+  * build: Add static build on CI target
+  * nvme-print: Add nvme_zns_start_zone_list() API function
+  * nvme-print: Add nvme_zns_finish_zone_list() API function
+  * nvme-print-binary: Set list function to NULL if unimplemented
+  * nvme-print-json: Change order list functions and set NULL if unimplemented
+  * nvme-print-stdout: Fix to set stdout_list_item print function missed
+  * plugins/solidigm: log page name extraction using nvme_log_to_string function
+  * nvme-print: Added missing logpage names in nvme_log_to_string function
+  * udev-rules: rename netapp udev rule
+  * udev-rules: set ctrl_loss_tmo to -1 for ONTAP NVMe/TCP
+- Remove upstreamed patches
+  * remove 0001-fabrics-autoconnect-add-service-unit-for-connecting-.patch
+  * remove 0002-fabrics-add-udev-rule-to-avoid-renaming-nbft-interfa.patch
+- Update spec file
+  * remove libhugetblfs depedency
+  * update NetApp udev rule file name
+</comment>
+    <requestid>1139715</requestid>
+  </revision>
 </revisionlist>
