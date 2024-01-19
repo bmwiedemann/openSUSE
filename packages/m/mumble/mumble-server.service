@@ -10,8 +10,8 @@
 
 [Unit]
 Description=Mumble Server (murmur)
-Requires=var-run.mount network.target remote-fs.target time-sync.target
-After=var-run.mount network.target remote-fs.target time-sync.target mysql.target
+Requires=network.target remote-fs.target time-sync.target
+After=network.target remote-fs.target time-sync.target mysql.target
 
 [Service]
 # added automatically, for details please see

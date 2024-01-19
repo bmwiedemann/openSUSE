@@ -16,4 +16,14 @@
 </comment>
     <requestid>1128789</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f3c463e41f35bd95a8520daec3ba578c</srcmd5>
+    <version>1.5.517</version>
+    <time>1705701701</time>
+    <user>anag+factory</user>
+    <comment>- Fix build with Qt 5.15 / OpenGL (boo#1218944)
+- Fix mumble-server.service (gh#mumble-voip/mumble/6273)
+</comment>
+    <requestid>1139811</requestid>
+  </revision>
 </revisionlist>
