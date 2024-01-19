@@ -2062,7 +2062,6 @@
     <package name="libhogweed6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhogweed6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhogweed6-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libhugetlbfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhunspell-1_7-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhwasan0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libhwy1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

@@ -12969,6 +12969,7 @@ unsorted:
   - libhttrack2 
   - libhubbub-devel 
   - libhubbub0 
+  - libhugetlbfs 
   - libhugetlbfs-devel 
   - libhugetlbfs-tests 
   - libhunspell-1_7-0-32bit 
@@ -13617,6 +13618,7 @@ unsorted:
   - libminisat2 
   - libminiupnpc-devel 
   - libminizinc-devel 
+  - libminizip-ng4 
   - libminizip1-32bit 
   - libmirage-3_2 
   - libmirage-data 
@@ -14029,18 +14031,18 @@ unsorted:
   - libopencsd_c_api1 
   - libopencsg1 
   - libopencv3_4 
-  - libopencv408 
-  - libopencv_aruco408 
-  - libopencv_face408 
-  - libopencv_gapi408 
-  - libopencv_highgui408 
-  - libopencv_imgcodecs408 
-  - libopencv_objdetect408 
-  - libopencv_optflow408 
-  - libopencv_superres408 
-  - libopencv_videoio408 
-  - libopencv_videostab408 
-  - libopencv_ximgproc408 
+  - libopencv409 
+  - libopencv_aruco409 
+  - libopencv_face409 
+  - libopencv_gapi409 
+  - libopencv_highgui409 
+  - libopencv_imgcodecs409 
+  - libopencv_objdetect409 
+  - libopencv_optflow409 
+  - libopencv_superres409 
+  - libopencv_videoio409 
+  - libopencv_videostab409 
+  - libopencv_ximgproc409 
   - libopendkim11 
   - libopenhpi4 
   - libopenjp2-7-32bit 
@@ -15000,7 +15002,7 @@ unsorted:
   - librsvg-devel 
   - librsync-devel 
   - librsync2 
-  - librtaudio6 
+  - librtaudio7 
   - librtlsdr2 
   - librtmidi7 
   - librtprocess-devel 
@@ -17700,6 +17702,7 @@ unsorted:
   - miniupnpc 
   - minizinc 
   - minizip-devel 
+  - minizip-ng-devel 
   - minlog 
   - minlog-javadoc 
   - mint-x-icon-theme 
@@ -24153,6 +24156,7 @@ unsorted:
   - python310-flit-scm 
   - python310-flower 
   - python310-fluent 
+  - python310-fluent.syntax 
   - python310-flufl.bounce 
   - python310-flufl.i18n 
   - python310-flufl.lock 
@@ -27645,6 +27649,7 @@ unsorted:
   - python311-flit-scm 
   - python311-flower 
   - python311-fluent 
+  - python311-fluent.syntax 
   - python311-flufl.testing 
   - python311-fluidity-sm 
   - python311-flynt 
@@ -31095,6 +31100,7 @@ unsorted:
   - python39-flit-scm 
   - python39-flower 
   - python39-fluent 
+  - python39-fluent.syntax 
   - python39-flufl.bounce 
   - python39-flufl.i18n 
   - python39-flufl.lock 
