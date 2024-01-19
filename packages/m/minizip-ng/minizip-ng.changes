@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Fri Jan 19 12:22:57 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Remove TODO.multibuild, Factory build chokes on it
+
+-------------------------------------------------------------------
+Thu Jan 18 12:09:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix the soname of the non-compat package 
+
+-------------------------------------------------------------------
+Thu Jan 18 11:12:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Enable signing mode again. Passes testsuite now. 
+
+-------------------------------------------------------------------
+Thu Jan 18 11:11:20 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Prepare building both the compat mode and the non compat API
+  To activate this rename TODO.multibuild to _multibuild.
+
+-------------------------------------------------------------------
+Thu Jan 18 11:07:40 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 4.0.4
+  - Fix unzLocateFile 3rd parameter by @tuliom in #746
+  - Silence MZ_COMPAT_VERSION warnings by @brad0 in #751
+  - Silence -Wunused-but-set-variable warnings by @brad0 in #752
+  - Remove DOS line endings by @brad0 in #753
+- Changes from 4.0.3
+  - Fix for filenames of the form "x/../y" by @pmqs in #742
+  - Check for zero length path in mz_path_has_slash by @pmqs in
+    #741
+  - Match default compression level value in compress streams #726
+  - Use ZSTD compression level defaults. #726
+  - Fixed possible memory leak if realloc fails.
+- Changes from 4.0.2
+  - Support compression levels >= 10 and use zstd's internal
+    default level. by @mkasick in #730
+  - Fix lzma compression level #731 by @gix in #732
+  - Get mz_dir_make to test for an empty path by @pmqs in #738
+  - Silence warnings about BSD_SOURCE being deprecated.
+  - Fixed implicit conversion precision warnings by @NickBrighten
+    in #728
+  - Fix pkgconfig file for private dependencies by @autoantwort in
+    #729
+
+-------------------------------------------------------------------
+Sat Sep  2 13:58:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.0.1
+  * Added optional support for AES CBC mode to mz_crypt_aes.
+  * Support AAD in AES-GCM
+
+-------------------------------------------------------------------
+Mon Aug 28 21:15:49 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Place includes under /usr/include/minizip-ng
+
+-------------------------------------------------------------------
+Mon Aug 28 11:09:37 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Version 3.0.10: initial build
