@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 19 10:44:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.0.3
+    - Fixed crash on macOS 11.
+    - Fixed missing German translation.
+    - Fixed display of release notes.
+
+-------------------------------------------------------------------
 Sat Jan 13 11:49:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
