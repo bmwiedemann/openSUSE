@@ -1,0 +1,5 @@
+<package name="python-fluent.syntax" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-fluent.syntax"/>
+</package>
