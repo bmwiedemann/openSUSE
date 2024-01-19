@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.55.0
+Version:        2.56.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -80,11 +80,11 @@ Requires:       python3-azure-mgmt-billing >= 6.0.0
 Requires:       python3-azure-mgmt-botservice >= 2.0.0b3
 Requires:       python3-azure-mgmt-cdn >= 12.0.0
 Requires:       python3-azure-mgmt-cognitiveservices >= 13.5.0
-Requires:       python3-azure-mgmt-compute >= 30.3.0
+Requires:       python3-azure-mgmt-compute >= 30.4.0
 Requires:       python3-azure-mgmt-containerinstance >= 10.1.0
 Requires:       python3-azure-mgmt-containerregistry >= 10.1.0
 Requires:       python3-azure-mgmt-containerservice >= 28.0.0
-Requires:       python3-azure-mgmt-cosmosdb >= 9.3.0
+Requires:       python3-azure-mgmt-cosmosdb >= 9.4.0
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-store >= 0.5.0
 Requires:       python3-azure-mgmt-datamigration >= 10.0.0
@@ -115,7 +115,7 @@ Requires:       python3-azure-mgmt-rdbms >= 10.2.0b12
 Requires:       python3-azure-mgmt-recoveryservices >= 2.5.0
 Requires:       python3-azure-mgmt-recoveryservicesbackup >= 7.0.0
 Requires:       python3-azure-mgmt-redhatopenshift >= 1.4.0
-Requires:       python3-azure-mgmt-redis >= 14.1.0
+Requires:       python3-azure-mgmt-redis >= 14.2.0
 Requires:       python3-azure-mgmt-reservations >= 2.0.0
 Requires:       python3-azure-mgmt-resource >= 23.1.0~b2
 Requires:       python3-azure-mgmt-search >= 9.0
@@ -130,14 +130,14 @@ Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
 Requires:       python3-azure-mgmt-storage >= 21.1.0
 Requires:       python3-azure-mgmt-synapse >= 2.1.0b5
 Requires:       python3-azure-mgmt-trafficmanager >= 1.0.0
-Requires:       python3-azure-mgmt-web >= 7.0.0
+Requires:       python3-azure-mgmt-web >= 7.2.0
 Requires:       python3-azure-multiapi-storage >= 1.2.0
 Requires:       python3-azure-storage-common >= 1.4
 Requires:       python3-azure-synapse-accesscontrol >= 0.5.0
-Requires:       python3-azure-synapse-artifacts >= 0.17.0
+Requires:       python3-azure-synapse-artifacts >= 0.18.0
 Requires:       python3-azure-synapse-managedprivateendpoints >= 0.4.0
 Requires:       python3-azure-synapse-spark >= 0.2.0
-Requires:       python3-chardet >= 3.0.4
+Requires:       python3-chardet >= 5.2.0
 Requires:       python3-colorama >= 0.4.4
 Requires:       python3-distro
 Requires:       python3-javaproperties >= 0.5.1
