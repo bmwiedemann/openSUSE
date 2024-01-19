@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>1137116</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a43bfac6f38d87df90d02ec283111b42</srcmd5>
+    <version>5.0</version>
+    <time>1705701696</time>
+    <user>anag+factory</user>
+    <comment>- Removed:
+  * Requires: phonon4qt5-backend-gstreamer (deprecated)
+- Added:
+  * Requires: phonon4qt5-backend-vlc
+
+- Added TPM2.0 packages (boo#1218439)</comment>
+    <requestid>1139813</requestid>
+  </revision>
 </revisionlist>
