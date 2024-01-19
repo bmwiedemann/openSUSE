@@ -1298,4 +1298,13 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment></comment>
     <requestid>1134051</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>c75289e5034b6730bf85eaf695494eb3</srcmd5>
+    <version>2.0.1</version>
+    <time>1705701607</time>
+    <user>anag+factory</user>
+    <comment>- upgrade to version 2.0.1
+  * load.sh: fix fadump (bsc#1218589)</comment>
+    <requestid>1139721</requestid>
+  </revision>
 </revisionlist>
