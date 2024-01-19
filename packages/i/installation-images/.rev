@@ -1602,4 +1602,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1138827</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>18c00fcea9c6ee4f7f08551d6c66f99b</srcmd5>
+    <version>17.111</version>
+    <time>1705701614</time>
+    <user>anag+factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1139786</requestid>
+  </revision>
 </revisionlist>
