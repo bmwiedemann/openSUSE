@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Jan 19 16:59:31 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#70
+- handle compressed firmware files (bsc#1214789)
+- documentation update
+- 2.14
+
+--------------------------------------------------------------------
 Wed Jan 10 17:49:04 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#69
