@@ -114,4 +114,13 @@
 - required by dask</comment>
     <requestid>1135342</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9f0ec741ee293492eff4a6dd06a22886</srcmd5>
+    <version>2.16.1</version>
+    <time>1705701773</time>
+    <user>anag+factory</user>
+    <comment>- skip broken tests in s390x, gh#zarr-developers/zarr-python#1375
+  bsc#1218611</comment>
+    <requestid>1139963</requestid>
+  </revision>
 </revisionlist>
