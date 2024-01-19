@@ -56,7 +56,7 @@ export PYTHON=python3
 NOCONFIGURE=1 ./autogen.sh
 %configure --disable-static \
            --enable-additional \
-           --libexecdir=%{_libdir}/ibus
+           --libexecdir=%{_ibus_libexecdir}
 %make_build
 
 %install
@@ -69,8 +69,8 @@ NOCONFIGURE=1 ./autogen.sh
 %license COPYING
 %doc AUTHORS README NEWS ChangeLog
 %{_bindir}/%{name}-createdb
-%{_ibus_libdir}/ibus-engine-table
-%{_ibus_libdir}/ibus-setup-table
+%{_ibus_libexecdir}/ibus-engine-table
+%{_ibus_libexecdir}/ibus-setup-table
 %{_datadir}/applications/ibus-setup-table.desktop
 %{_datadir}/%{name}
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.table.gschema.xml

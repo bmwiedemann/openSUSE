@@ -427,4 +427,12 @@ feat: use _service files to automate fetching sources</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1127356</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>bddf5177118624cb3923c6f4bb01f035</srcmd5>
+    <version>1.17.4</version>
+    <time>1705701777</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139998</requestid>
+  </revision>
 </revisionlist>
