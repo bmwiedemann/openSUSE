@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 18 15:32:28 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.3.0.0:
+  * Add status_mail module for systemd-status-mail configuration
+    (jsc#PED-6989)
+  * Apply automatic shellcheck fixes
+  * Add annotations for shellcheck
+  * Load files based on jeos-firstboot/jeos-config location
+
+-------------------------------------------------------------------
 Thu Nov 30 12:50:24 UTC 2023 - jeos-internal@suse.de
 
 - Update to version 1.2.0.9:

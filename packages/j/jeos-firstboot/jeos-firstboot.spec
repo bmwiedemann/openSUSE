@@ -1,7 +1,7 @@
 #
 # spec file for package jeos-firstboot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           jeos-firstboot
-Version:        1.2.0.9
+Version:        1.3.0.0
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
@@ -91,6 +91,7 @@ rm %{buildroot}%{_datadir}/jeos-firstboot/modules/raspberrywifi
 %dir %{_datadir}/jeos-firstboot/modules/network-modules/
 %{_datadir}/jeos-firstboot/modules/network-modules/NetworkManager
 %{_datadir}/jeos-firstboot/modules/network-modules/wicked
+%{_datadir}/jeos-firstboot/modules/status_mail
 %{_sbindir}/jeos-config
 %{_sbindir}/jeos-firstboot
 %{_sbindir}/jeos-firstboot-snapshot
