@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 19 10:29:36 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.3~git.20231001:
+  * switch to a new fork that removes Python2 requirements
+
+-------------------------------------------------------------------
 Thu Sep  8 06:22:53 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0.3~git.20220422:
