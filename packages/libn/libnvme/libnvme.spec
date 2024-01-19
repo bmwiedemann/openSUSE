@@ -21,7 +21,7 @@
 %bcond_without check
 
 Name:           libnvme
-Version:        1.6+5.g68c6ffb
+Version:        1.7.1+0.g13ba383
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later
