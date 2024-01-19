@@ -1,7 +1,7 @@
 #
 # spec file for package kitty
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.31.0
+Version:        0.32.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -28,12 +28,7 @@ URL:            https://github.com/kovidgoyal/kitty
 Source:         https://github.com/kovidgoyal/kitty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        kitty-rpmlintrc
-# PATCH-FIX-OPENSUSE optional-disable-docs.diff -- Optionally disable building documentation files
-Patch0:         optional-disable-docs.diff
-# PATCH-FIX-OPENSUSE fix-librsync-leap.diff -- Fix for Leap, as librsync header is missing the stdio.h header for FILE*
-# Seems ./kittens/transfer/rsync.c is gone
-#Patch1:         fix-librsync-leap.diff
-Patch2:         go-buildmode-pie.diff
+Patch0:         buildmode-and-skip_docs.diff
 BuildRequires:  ImageMagick-devel
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  fdupes
@@ -49,7 +44,6 @@ BuildRequires:  libcanberra-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpng16-compat-devel
 BuildRequires:  librsync-devel
-#BuildRequires:  libwayland-egl-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  libxkbcommon-x11-devel
 BuildRequires:  ncurses-devel
@@ -112,8 +106,6 @@ shell-integration [bash,fish,zsh] file(s) for the Kitty terminal; this package c
 #%%autosetup -p1 -a 1
 %setup -a 1
 %patch0
-#%%patch1 -p1
-%patch2
 
 %if 0%{?suse_version} > 1500
 find . -type f -exec sed -i 's@#!/usr/bin/env python3$@#!%{_bindir}/python3@' {} +
@@ -145,6 +137,10 @@ find . -type f -exec sed -i 's@#!/usr/bin/env python$@#!%{_bindir}/python3.9@' {
 #export CFLAGS="${CFLAGS:-%%optflags} -Wno-error=switch"
 #export CXXFLAGS="${CXXFLAGS:-%%optflags} -Wno-error=switch"
 #
+%ifarch i586
+export CFLAGS="${CFLAGS:-%optflags} -fcf-protection=none"
+%endif
+#
 %if 0%{?suse_version} > 1500
 python3 \
 %else
@@ -158,13 +154,7 @@ python3.9 -B \
 %endif
 %endif
 %endif
-  setup.py --verbose \
-%if !%{with docs}
-    --no-docs \
-%endif
-    linux-package \
-    --prefix %{buildroot}%{_prefix} \
-    --libdir-name %{_lib}
+setup.py --verbose linux-package --prefix %{buildroot}%{_prefix} --libdir-name %{_lib}
 
 %fdupes %{buildroot}%{_libdir}/%{name}
 
