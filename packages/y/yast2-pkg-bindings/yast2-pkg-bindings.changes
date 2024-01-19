@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 18 14:18:02 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed repository and service probing with libzypp 7.31.26
+  and newer, convert the type to string by pkg-bindings,
+  not by libzypp which might change it (bsc#1218399)
+- 5.0.4
+
+-------------------------------------------------------------------
+Tue Jan 16 14:32:15 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Added new pkg calls for managing and resolving the solver
+  conflicts. Added PkgSolveProblems(), PkgSetSolveSolutions()
+  and PkgResetSolveSolutions() calls. (gh#openSUSE/agama#944)
+- Libzypp 17.31.26+ uses "N/A" for unknown repository types
+  instead of "NONE", support both cases (bsc#1218859)
+- 5.0.3
+
+-------------------------------------------------------------------
 Wed Sep 20 15:54:13 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Pkg.SourceEditSet() - Allow setting the repository service name
