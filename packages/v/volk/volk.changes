@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 19 10:45:21 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions
+- Limit fdupes to /usr so it does not accidentally hardlink across
+  mounts.
+
+-------------------------------------------------------------------
 Tue Dec  5 21:33:20 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.1.0
