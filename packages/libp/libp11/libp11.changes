@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 19 10:43:16 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Add support for OpenSSL 3.x:
+  Add libp11-configure-treat-all-openssl-3.x-releases-the-same.patch
+
+-------------------------------------------------------------------
 Wed Sep 27 09:58:37 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Replace openssl-ibmpkcs11 with openssl-engine-libp11 (jsc#PED-3327)

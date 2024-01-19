@@ -268,4 +268,13 @@
   and Provides: openssl-ibmpkcs11 = 1.0.1</comment>
     <requestid>1120337</requestid>
   </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>c4769ee71e5e8b4ec03c5db6f84cb0c9</srcmd5>
+    <version>0.4.12</version>
+    <time>1705701745</time>
+    <user>anag+factory</user>
+    <comment>- Add support for OpenSSL 3.x:
+  Add libp11-configure-treat-all-openssl-3.x-releases-the-same.patch</comment>
+    <requestid>1139912</requestid>
+  </revision>
 </revisionlist>
