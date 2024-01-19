@@ -634,4 +634,41 @@ See changelog in:
   * chore(create): indent to spaces</comment>
     <requestid>1133405</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>fb7fd01ded919a3d8586d88d06c59ec3</srcmd5>
+    <version>3.14.0</version>
+    <time>1705701724</time>
+    <user>anag+factory</user>
+    <comment>- determine git commit hash automatically
+
+- Update to version 3.14.0:
+  * Notable Changes
+    - New helm search flag of --fail-on-no-result
+    - Allow a nested tpl invocation access to defines
+    - Speed up the tpl function
+    - Added qps/HELM_QPS parameter that tells Kubernetes packages
+      how to operate
+    - Added --kube-version to lint command
+    - The ignore pkg is now public
+  * Changelog
+    - Improve release action
+    - bump version to
+    - Fix issues when verify generation readiness was merged
+    - fix test to use the default code's k8sVersionMinor
+    - lint: Add --kube-version flag to set capabilities and
+      deprecation rules
+    - Update to Go 1.21 for builds
+    - chore(deps): bump github.com/containerd/containerd from 1.7.6
+      to 1.7.11
+    - chore(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+    - Removing Asset Transparency
+    - tests(pkg/engine): test RenderWithClientProvider
+    - Make the `ignore` pkg public again
+    - chore(deps): bump golang.org/x/crypto from 0.14.0 to 0.17.0
+    - Updating to Kubernetes 1.29.0 libraries
+    - feature(pkg/engine): introduce RenderWithClientProvider
+    - chore(deps): bump github/codeql-action from 2.22.10 to
+      3.22.11</comment>
+    <requestid>1139987</requestid>
+  </revision>
 </revisionlist>

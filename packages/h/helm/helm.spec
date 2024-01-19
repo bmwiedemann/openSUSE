@@ -1,7 +1,7 @@
 #
 # spec file for package helm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,9 @@
 
 
 %define goipath helm.sh/helm/v3
-%define git_commit c8b948945e52abba22ff885446a1486cb5fd3474
 %define git_dirty clean
 Name:           helm
-Version:        3.13.3
+Version:        3.14.0
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -75,7 +74,7 @@ export GO111MODULE=on
 export CGO_ENABLED=0
 %gobuild -trimpath -tags '' -mod vendor -buildmode pie -ldflags \
     "-X %{goipath}/internal/version.version=v%{version} \
-     -X %{goipath}/internal/version.gitCommit=%{git_commit} \
+     -X %{goipath}/internal/version.gitCommit=$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/helm.obsinfo) \
      -X %{goipath}/pkg/lint/rules.k8sVersionMajor=1 \
      -X %{goipath}/pkg/lint/rules.k8sVersionMinor=$K8S_MINOR \
      -X %{goipath}/pkg/chartutil.k8sVersionMajor=1 \
