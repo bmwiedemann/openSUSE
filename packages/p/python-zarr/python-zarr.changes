@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 19 14:52:05 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- skip broken tests in s390x, gh#zarr-developers/zarr-python#1375
+  bsc#1218611
+
+-------------------------------------------------------------------
 Wed Dec 27 16:02:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.16.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-zarr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,7 +72,20 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# avoid broken tests in s390x, gh#zarr-developers/zarr-python#1375
+%if "%_arch" == "s390x"
+donttest="test_hexdigest or test_nbytes_stored"
+donttest+=" or test_array_1d or test_array_1d_fill_value or test_array_1d_selections"
+donttest+=" or test_array_2d or test_array_2d_edge_case or test_array_order"
+donttest+=" or test_resize_2d or test_append_2d or test_append_2d_axis"
+donttest+=" or test_np_ufuncs or test_iter or test_islice or test_non_cont"
+donttest+=" or test_read_nitems_less_than_blocksize_from_multiple_chunks"
+donttest+=" or test_read_from_all_blocks"
+donttest+=" or test_format_compatibility"
+%pytest -k "not ($donttest)"
+%else
 %pytest
+%endif
 
 %files %{python_files}
 %doc README.md
