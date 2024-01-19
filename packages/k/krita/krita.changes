@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 19 09:40:36 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to support libjxl >= 0.9.0:
+  * 0001-Fix-build-with-libjxl-0.9.0.patch
+  * 0002-KisFileIconCreator-add-workaround-for-JPEG-XL-too.patch
+  * 0003-JPEG-XL-Disable-export-bug-workaround-for-libjxl-0.9.patch
+
+-------------------------------------------------------------------
 Mon Dec 18 11:28:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.2.2
