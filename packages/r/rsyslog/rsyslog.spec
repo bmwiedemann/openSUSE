@@ -1,7 +1,7 @@
 #
 # spec file for package rsyslog
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,12 @@
 %endif
 
 %define mark_daemon_restart %if 0%{?suse_version} > 1550 \
-				/usr/lib/systemd/systemd-update-helper mark-restart-system-units rsyslog.service \
+				/usr/lib/systemd/systemd-update-helper mark-restart-system-units rsyslog.service ||: \
 			     %else \
-				/usr/bin/systemctl set-property "rsyslog.service" Markers=+needs-restart \
+				/usr/bin/systemctl set-property "rsyslog.service" Markers=+needs-restart ||: \
 			     %endif
+
+%define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
 # drop this with next release when doc tarball version lines up
 %define rsyslog_major 8.2306
@@ -396,6 +398,8 @@ a rsgtutil utility to manage the files.
 Requires:       %{name} = %{version}
 Summary:        RELP protocol support module for syslog
 Group:          System/Daemons
+
+%requires_file %{_libdir}/librelp.so
 
 %description module-relp
 Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
@@ -1026,9 +1030,7 @@ fi # first install
 %endif
 
 %posttrans
-if [ -x /usr/bin/systemctl ] && /usr/bin/systemctl is-active rsyslog.service; then
-      /usr/bin/systemctl --marked reload-or-restart
-fi
+/usr/bin/systemctl --marked reload-or-restart ||:
 
 %preun
 #
