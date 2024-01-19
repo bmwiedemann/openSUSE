@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 16 08:11:17 UTC 2024 - Vlastimil Babka <vbabka@suse.com>
+
+- update to version 2.4
+  * Support EMR processors (jsc#PED-6059, jsc#PED-6038)
+  * Support Power10 processors (jsc#PED-5450, jsc#PED-5667)
+  * Support Zen3, Zen4 processors
+
+-------------------------------------------------------------------
 Fri Nov 18 09:16:32 UTC 2022 - Vlastimil Babka <vbabka@suse.com>
 
 - update to version 2.3
