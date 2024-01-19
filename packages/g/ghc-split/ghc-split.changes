@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 11 16:34:00 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update split to version 0.2.5.
+  * 0.2.5 (9 January 2024)
+
+    - Test with GHC 9.8.
+    - New function `mapSplitter` witnessing the fact that `Splitter` is
+      a contravariant functor
+      ([#22](https://github.com/byorgey/split/pull/22), thanks to Ellis
+      Kesterton)
+
+-------------------------------------------------------------------
 Mon Oct  9 18:34:48 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update split to version 0.2.4.
