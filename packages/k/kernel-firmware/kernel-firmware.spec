@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20240102
+%define version_unconverted 20240115
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20240102
+Version:        20240115
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -114,39 +114,6 @@ Obsoletes:      qlogic-firmware < %{version}
 Conflicts:      filesystem < 84
 %endif
 %if "%{flavor}" == "uncompressed"
-Provides:       %{name}-amdgpu = %{version}
-Provides:       %{name}-ath10k = %{version}
-Provides:       %{name}-ath11k = %{version}
-Provides:       %{name}-ath12k = %{version}
-Provides:       %{name}-atheros = %{version}
-Provides:       %{name}-bluetooth = %{version}
-Provides:       %{name}-bnx2 = %{version}
-Provides:       %{name}-brcm = %{version}
-Provides:       %{name}-chelsio = %{version}
-Provides:       %{name}-dpaa2 = %{version}
-Provides:       %{name}-i915 = %{version}
-Provides:       %{name}-intel = %{version}
-Provides:       %{name}-iwlwifi = %{version}
-Provides:       %{name}-liquidio = %{version}
-Provides:       %{name}-marvell = %{version}
-Provides:       %{name}-media = %{version}
-Provides:       %{name}-mediatek = %{version}
-Provides:       %{name}-mellanox = %{version}
-Provides:       %{name}-mwifiex = %{version}
-Provides:       %{name}-network = %{version}
-Provides:       %{name}-nfp = %{version}
-Provides:       %{name}-nvidia = %{version}
-Provides:       %{name}-platform = %{version}
-Provides:       %{name}-prestera = %{version}
-Provides:       %{name}-qcom = %{version}
-Provides:       %{name}-qlogic = %{version}
-Provides:       %{name}-radeon = %{version}
-Provides:       %{name}-realtek = %{version}
-Provides:       %{name}-serial = %{version}
-Provides:       %{name}-sound = %{version}
-Provides:       %{name}-ti = %{version}
-Provides:       %{name}-ueagle = %{version}
-Provides:       %{name}-usb-network = %{version}
 Provides:       kernel-firmware-uncompressed = %{version}
 %endif
 

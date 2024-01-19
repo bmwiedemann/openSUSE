@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jan 16 07:59:35 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240115 (git commit efeb548d2a2b):
+  * Intel Bluetooth: Update firmware file for Magnetor Intel Bluetooth AX101
+  * Intel Bluetooth: Update firmware file for Magnetor Intel Bluetooth AX203
+  * Intel Bluetooth: Update firmware file for SolarF Intel Bluetooth AX203
+  * Intel Bluetooth: Update firmware file for SolarF Intel Bluetooth AX211
+  * Intel Bluetooth: Update firmware file for Solar Intel Bluetooth AX211
+  * amdgpu: DMCUB updates for DCN314
+  * cirrus: Add firmware file for cs42l43
+  * amdgpu: DMCUB updates for DCN312
+
+-------------------------------------------------------------------
+Mon Jan 15 08:53:49 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240111 (git commit b3132c18d0be):
+  * qcom: Update the firmware for Adreno a630 family of GPUs
+  * cirrus: Add CS35L41 firmware for Legion Slim 7 Gen 8 laptops
+  * linux-firmware: Add firmware for Cirrus CS35L41 for various Dell laptops
+
+-------------------------------------------------------------------
+Wed Jan 10 14:03:35 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240110 (git commit 31db82d69905):
+  * linux-firmware: update firmware for qat_4xxx devices
+  * linux-firmware: update firmware for w1u_uart
+  * amdgpu: DMCUB updates for DCN314
+  * Intel Bluetooth: Update firmware file for Magnetor Intel Bluetooth AX211
+  * Intel Bluetooth: Update firmware file for Solar Intel Bluetooth AX101
+  * Intel Bluetooth: Update firmware file for Solar Intel Bluetooth AX203
+  * Intel Bluetooth: Update firmware file for Solar Intel Bluetooth AX210
+
+-------------------------------------------------------------------
+Mon Jan 08 13:19:55 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240105 (git commit 5a6ae745d8a4):
+  * amlogic/bluetooth: add firmware bin of W1 serial soc(w1u_uart)
+- Drop superfluous Provides from uncompressed kernel-firmware package
+  that may confuse dependencies (bsc#1218307)
+- Minor adjustment and updates of scripts / templates
+
+-------------------------------------------------------------------
 Tue Jan 02 13:54:59 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240102 (git commit b83108216200):
