@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 19 11:25:23 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.3.4
+  - Fixes for autoconf, clang and sw builds
+  - Send output of combine_tessdata -d to stdout instead of stderr.
+    Fixes #4149 in #4150
+  - Move bail_out function before libtoolize check in #4151
+  - Improve OCR for an image URL
+    - Fail on curl download errors
+    - Add new parameter curl_cookiefile for curl_easy_setopt in #4156
+    - Set User-Agent: header field in HTTP request for curl downloads
+  - Force TCP v4 for socket to ScrollView server. Fixes #3000 in #4162
+  - Fix some compiler warnings and avoid unnecessary conversions
+    from std::string to char pointer in #4174
+  - Fix a tiny typo in publictypes.h in #4178
+  - Fixes for autoconf, clang and sw builds
+  - Other small improvements for code and documentation.
+
+-------------------------------------------------------------------
 Fri Dec 15 08:54:51 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.3.3
