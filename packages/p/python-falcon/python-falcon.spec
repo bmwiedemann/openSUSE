@@ -46,7 +46,6 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module testtools}
-BuildRequires:  %{python_module ujson}
 %if 0%{?suse_version} >= 1550
 BuildRequires:  %{python_module httpx if (%python-base without python36-base)}
 BuildRequires:  %{python_module uvicorn if (%python-base without python36-base)}
