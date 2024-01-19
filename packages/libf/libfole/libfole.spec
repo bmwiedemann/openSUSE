@@ -1,7 +1,7 @@
 #
 # spec file for package libfole
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libfole
 %define lname	libfole1
-Version:        20220115
+Version:        20240119
 Release:        0
 Summary:        Library for Object Linking and Embedding (OLE) data types
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libfole/releases/download/%version/lib
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcerror) >= 20240101
 # Various notes: https://en.opensuse.org/libyal
 
 %description
@@ -37,11 +37,11 @@ libfole is a library for Object Linking and Embedding (OLE) data types.
 
 Part of the libyal family of libraries.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library for Object Linking and Embedding (OLE) data types
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 libfole is a library for Object Linking and Embedding (OLE) data types.
 
 Part of the libyal family of libraries.
@@ -49,7 +49,7 @@ Part of the libyal family of libraries.
 %package devel
 Summary:        Development files for libfole
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description devel
 libfole is a library for Object Linking and Embedding (OLE) data types.
@@ -68,20 +68,20 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libfole.so.*
+%_libdir/libfole.so.*
 
 %files devel
-%{_includedir}/libfole.h
-%{_includedir}/libfole/
-%{_libdir}/libfole.so
-%{_libdir}/pkgconfig/libfole.pc
-%{_mandir}/man3/libfole.3*
+%_includedir/libfole.h
+%_includedir/libfole/
+%_libdir/libfole.so
+%_libdir/pkgconfig/libfole.pc
+%_mandir/man3/libfole.3*
 
 %changelog
