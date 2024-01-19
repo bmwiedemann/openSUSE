@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Jan 18 10:54:53 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 4.9:
+  * Made ignore_options/CCACHE_IGNOREOPTIONS also skip the option from special
+    processing, similar to how --ccache-skip works.
+  * Added support for expanding environment variables references in all
+    configuration options.
+  * MSVC options /Fd, /FS and /MP are no longer included in the input hash.
+  * Made ccache terminate an ongoing compiler subprocess when terminated on all
+    platforms, not only on Unix.
+  * Added support for multiple -Xarch_* arguments matching -arch.
+  * Added a debug_level/CCACHE_DEBUGLEVEL configuration option, making it
+    possible to tell ccache to only write a log file for each compilation, not
+    other debug files.
+  * Added max_cache_size_kibibyte and max_files_in_cache fields in output from
+    ccache --print-stats.
+  * Paths after -Xclang -include are now rewritten to relative paths if
+    base_dir/CCACHE_BASEDIR is in effect.
+  * Added support for clang --analyze.
+  * Improved processing of input file arguments.
+  * Added support for st_Xtimensec fields in struct stat, thus improving
+    behavior on some BSDs when using newly created include files.
+  * Added support for the undocumented GCC/Clang option --include.
+  * Ccache now exits more gracefully on invalid sharded remote storage URLs.
+  * Made ccache bail out on too hard options -fmodules-ts, -fmodule-header,
+    -wrapper and -Xclang -ast-dump.
+  * Stopped relying on the st_blocks field in struct stat since it cannot be
+    trusted for filesystems such as ZFS that do transparent compression or
+    deduplication and adjust st_blocks some time in the future.
+  * Fixed crash on Windows for paths with only a drive letter.
+  * Made handling of Clang config options (such as --config-system-dir) more
+    robust.
+  * Fixed compiler type detection when compiler is a symlink called “clang-cl”.
+  * Made sure to use MSVC logic for clang-cl when handling a precompiled
+    header.
+  * Generalized expansion of remote storage URLs with sharding, for instance
+    making it possible to shard on port number.
+  * Upgraded to xxHash 0.8.2, thereby fixing an error when compiling ccache
+    with -Og.
+  * Fixed sign-compare warning in src/InodeCache.cpp on FreeBSD.
+  * Fixed the CMake option STATIC_LINK on Linux/macOS.
+  * Added the CMake option OFFLINE, defaulting to the value of the standard
+    variable FETCHCONTENT_FULLY_DISCONNECTED (which is OFF by default), to
+    disable downloading anything from the internet.
+  * Fixed warnings about unused functions on new MSVC versions.
+  * Made sure to set both C and C++ CMake compiler launcher variables if either
+    is set.
+  * The manual now mentions that system_headers sloppiness is not supported for
+    MSVC.
+  * Fixed regex in direct.bash.
+- Fix SLE build by using gcc11 and disable hiredis dependency
+
+-------------------------------------------------------------------
 Sat Oct 28 19:46:57 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.8.3

@@ -1,7 +1,7 @@
 #
 # spec file for package ccache
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,14 @@
 #
 
 
+# Build with hiredis by default only on TW
+%if %{?suse_version} > 1600
 %bcond_without hiredis
+%else
+%bcond_with hiredis
+%endif
 Name:           ccache
-Version:        4.8.3
+Version:        4.9
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
@@ -27,7 +32,14 @@ Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/c
 Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake
+%if %{?suse_version} > 1600
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
+# SLE requires gcc11 for std::filesystem
+%else
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libzstd) >= 1.1.2
 BuildRequires:  rubygem(asciidoctor)
@@ -49,6 +61,9 @@ Objective-C++.
 %autosetup -p1
 
 %build
+%if %{?suse_version} < 1600
+export CC=gcc-11 CXX=g++-11
+%endif
 %cmake \
 %if !%{with hiredis}
   -DREDIS_STORAGE_BACKEND=OFF \
