@@ -450,4 +450,41 @@
     <comment></comment>
     <requestid>1124263</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1f0163391962807720188bee5ad9756f</srcmd5>
+    <version>0.32.0</version>
+    <time>1705701783</time>
+    <user>anag+factory</user>
+    <comment>- i586 builds fail with -fcf-protection=full (seems to be default);
+  setting to -fcf-protection=none with CFLAGS export
+
+- Removing go-buildmode-pie.diff and optional-disable-docs.diff; replacing
+  with buildmode-and-skip_docs.diff which should be an easier path going
+  forward to disabling 'make docs' from setup.py
+- Update to 0.32.0:
+  * Conditional mappings depending on the state of the focused window
+  * Support for Modal mappings such as in modal editors like vim
+  * A new option notify_on_cmd_finish to show a desktop notification
+    when a long running command finishes (#6817)
+  * A new action send_key to simplify mapping key presses to other
+    keys without needing send_text
+  * Allow focusing previously active OS windows via nth_os_window (#7009)
+  * Wayland: Fix a regression in the previous release that broke copying
+    to clipboard under wl-roots based compositors in some circumstances (#6890)
+  * macOS: Fix some combining characters not being rendered (#6898)
+  * macOS: Fix returning from full screen via the button when the titlebar
+    is hidden not hiding the buttons (#6883)
+  * macOS: Fix newly created OS windows not always appearing on the
+    &quot;active&quot; monitor (#6932)
+  * Font fallback: Fix the font used to render a character sometimes dependent
+    on the order in which characters appear on screen (#6865)
+  * panel kitten: Fix rendering with non-zero margin/padding in
+    kitty.conf (#6923)
+  * kitty keyboard protocol: Specify the behavior of the modifier bits during
+    modifier key events (#6913)
+  * Wayland: Enable support for the new cursor-shape protocol so that the
+    mouse cursor is always rendered at the correct size in compositors that
+    support this protocol (#6914)</comment>
+    <requestid>1140006</requestid>
+  </revision>
 </revisionlist>
