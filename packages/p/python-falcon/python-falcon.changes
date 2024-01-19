@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 18 09:33:52 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- remove unneeded build dependency python-ujson
+
+-------------------------------------------------------------------
 Tue Jan  2 23:52:59 UTC 2024 - Jiri Srain <jsrain@suse.com>
 
 - removed unneeded build dependency on python3-pygments-style-railscasts
