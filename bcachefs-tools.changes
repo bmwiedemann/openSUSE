@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 19 01:54:34 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Delete use_libexec_not_lib.patch (merged)
+- Update to release v1.4.1
+  * fix cmd_fsck, "bad mount option read-only"
+  * now open block devices with O_EXCL
+
+-------------------------------------------------------------------
 Tue Jan  9 03:46:53 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Add use_libexec_not_lib.patch

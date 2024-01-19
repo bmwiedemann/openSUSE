@@ -17,15 +17,14 @@
 
 
 Name:           bcachefs-tools
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://bcachefs.org/
 Source:         %name-%version.tar.xz
-Patch0:         use_libexec_not_lib.patch
-BuildRequires:  libaio-devel
+BuildRequires:  libaio-devel >= 0.3.111
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(blkid)
@@ -43,7 +42,7 @@ BuildRequires:  pkgconfig(zlib)
 Bcachefs is a filesystem for Linux, with an emphasis on reliability
 and robustness.
 
-* Copy on write (COW) - like zfs or btrfs
+* Copy on write (COW) like zfs or btrfs
 * Full data and metadata checksumming
 * Multiple devices
 * Replication
@@ -86,5 +85,6 @@ rm -Rf "%buildroot/etc/initramfs-tools" "%buildroot/%_datadir/initramfs-tools"
 %_udevrulesdir/64-bcachefs.rules
 %_mandir/man8/*.8*
 %license COPYING
+%doc doc/bcachefs-principles-of-operation.tex
 
 %changelog
