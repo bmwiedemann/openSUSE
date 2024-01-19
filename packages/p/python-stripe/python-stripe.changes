@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 19 03:23:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch also-skip-streaming.patch:
+  * No longer needed.
+- Add BuildRequires on new stripe-mock service, and run it during the
+  check phase.
+
+-------------------------------------------------------------------
 Wed Jan 17 03:12:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.12.0:
