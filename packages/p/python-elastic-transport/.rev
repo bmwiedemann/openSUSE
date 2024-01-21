@@ -71,4 +71,13 @@
   * Fix `__iter__` return type to Iterator</comment>
     <requestid>1133054</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5456e79209ad425b947c8c4ffd018234</srcmd5>
+    <version>8.12.0</version>
+    <time>1705874835</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.12.0:
+  * Fix basic auth built from percent-encoded URLs</comment>
+    <requestid>1140133</requestid>
+  </revision>
 </revisionlist>
