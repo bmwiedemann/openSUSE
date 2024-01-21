@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 21 10:46:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.1:
+  * fix overflow error on systems with ``sizeof(size_t) < 8``
+  * fix pure python fallback implementation of ``fuzz.token_set_ratio``
+  * properly link with ``-latomic`` if ``std::atomic<uint64_t>``
+    is not natively supported
+  * add banded implementation of LCS / Indel. This improves the
+    runtime from ``O((|s1|/64) * |s2|)`` to
+    ``O((score_cutoff/64) * |s2|)``
+  * upgrade to ``Cython==3.0.7``
+  * cdist for many metrics now returns a matrix of ``uint32``
+    instead of ``int32`` by default
+
+-------------------------------------------------------------------
 Wed Dec 27 16:06:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.2:

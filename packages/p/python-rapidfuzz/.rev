@@ -87,4 +87,22 @@
     pure Python implementation</comment>
     <requestid>1135345</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>edc0523c42c3be53e4aaf6f1520d3630</srcmd5>
+    <version>3.6.1</version>
+    <time>1705874994</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.6.1:
+  * fix overflow error on systems with ``sizeof(size_t) &lt; 8``
+  * fix pure python fallback implementation of ``fuzz.token_set_ratio``
+  * properly link with ``-latomic`` if ``std::atomic&lt;uint64_t&gt;``
+    is not natively supported
+  * add banded implementation of LCS / Indel. This improves the
+    runtime from ``O((|s1|/64) * |s2|)`` to
+    ``O((score_cutoff/64) * |s2|)``
+  * upgrade to ``Cython==3.0.7``
+  * cdist for many metrics now returns a matrix of ``uint32``
+    instead of ``int32`` by default</comment>
+    <requestid>1140264</requestid>
+  </revision>
 </revisionlist>
