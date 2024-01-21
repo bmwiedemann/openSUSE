@@ -104,4 +104,16 @@
 - use generic Cython dependency &gt;= 3.0</comment>
     <requestid>1132078</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>de2aafbb410089aec4f92788edb8f101</srcmd5>
+    <version>1.16</version>
+    <time>1705875015</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.16:
+  * Formatting support was improved, following CPython 3.13a3 as
+    of https://github.com/python/cpython/pull/111320
+  * Add support for Python 3.13 by using Cython 3.0.8 and calling
+    math.gcd().</comment>
+    <requestid>1140281</requestid>
+  </revision>
 </revisionlist>
