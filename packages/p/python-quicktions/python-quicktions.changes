@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:21:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16:
+  * Formatting support was improved, following CPython 3.13a3 as
+    of https://github.com/python/cpython/pull/111320
+  * Add support for Python 3.13 by using Cython 3.0.8 and calling
+    math.gcd().
+
+-------------------------------------------------------------------
 Fri Dec  8 12:06:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15:
