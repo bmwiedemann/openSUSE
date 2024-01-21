@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 20 19:31:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.9:
+  * Fix patching an already running Proactor loop
+
+-------------------------------------------------------------------
 Mon Nov 27 19:39:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.8:
@@ -8,7 +14,7 @@ Mon Nov 27 19:39:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Sun Oct 16 17:58:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.6:
-  * Add Python 3.11 support 
+  * Add Python 3.11 support
 
 -------------------------------------------------------------------
 Sun May 29 20:19:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -21,13 +27,13 @@ Sun May 29 20:19:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Mon Dec 13 05:53:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.4:
-  * No release notes 
+  * No release notes
 
 -------------------------------------------------------------------
 Fri Jun 25 11:19:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.5.1
-  * no release notes 
+  * no release notes
   * update required by jupyter_client 6.2
 
 -------------------------------------------------------------------
