@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan 21 10:45:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.29.0
+  * Always set debugger to true in kernelspec #1191 (@ianthomas23)
+  * Revert "Enable ProactorEventLoop on windows for ipykernel"
+    #1194 (@blink1073)
+  * Make outputs go to correct cell when generated in
+    threads/asyncio #1186 (@krassowski)
+  * Pin pytest-asyncio to 0.23.2 #1189 (@ianthomas23)
+- Update to 6.28.0
+  * Enable ProactorEventLoop on windows for ipykernel #1184
+    (@NewUserHa)
+  * Adds a flag in debug_info for the copyToGlobals support #1099
+    (@brichet)
+  * Support python 3.12 #1185 (@blink1073)
+
+-------------------------------------------------------------------
 Wed Dec 20 21:56:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.27.1:
