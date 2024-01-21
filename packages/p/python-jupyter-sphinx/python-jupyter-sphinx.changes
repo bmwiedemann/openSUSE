@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:15:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.3, 0.5.2, 0.5.1
+  * releaser changes
+- Release 0.5.0
+  * drop support for Python 3.6 by @12rambau in #229
+  * Add direct dependency on ipykernel by @garrison in #226
+  * Adapt to level config to match other Jupyter repos by
+    @blink1073 in #237
+- Drop jupyter-sphinx-pr226-ipykernel.patch
+- Drop jupyter-sphinx-pr233-pathlib.patch
+
+-------------------------------------------------------------------
 Thu Sep 14 09:29:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add jupyter-sphinx-pr233-pathlib.patch
