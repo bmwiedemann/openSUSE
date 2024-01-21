@@ -944,4 +944,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1135097</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>aaf6d1c7e10d488094cf03072426ca37</srcmd5>
+    <version>2024.1.0</version>
+    <time>1705874958</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.1.4:
+  * see corresponding dask update:
+  https://docs.dask.org/en/stable/changelog.html#v2024-1-0</comment>
+    <requestid>1140138</requestid>
+  </revision>
 </revisionlist>
