@@ -369,4 +369,12 @@
     refactoring in parser.py. Ref: #481 [pronoym99]</comment>
     <requestid>1133683</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>35cd503b9955fd996d8e248adec77089</srcmd5>
+    <version>5.0.11</version>
+    <time>1705874916</time>
+    <user>anag+factory</user>
+    <comment>- skip tests on leap</comment>
+    <requestid>1140098</requestid>
+  </revision>
 </revisionlist>

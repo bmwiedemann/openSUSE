@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2009 - 7/2011 Sascha Manns <saigkill@opensuse.org>
 #
@@ -61,7 +61,10 @@ with Python. It follows the RFC 2445 (iCalendar) specification.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# some dependencies are too old in Leap
+%if 0%{?suse_version} >= 1550
 %pytest src
+%endif
 
 %post
 %python_install_alternative icalendar

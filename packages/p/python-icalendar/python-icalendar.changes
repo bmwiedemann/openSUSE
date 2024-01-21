@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 12:19:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip tests on leap
+
+-------------------------------------------------------------------
 Sun Dec 17 02:03:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.11:
