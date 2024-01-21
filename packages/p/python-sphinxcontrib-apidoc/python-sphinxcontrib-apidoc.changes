@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 21 10:54:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * Added quote marks to indicate default template dir is a
+    string
+  * Removed more white space to match required style
+  * Removed white space screwing with PR linter
+  * Added description of apidoc\_template\_dir option to README
+  * Added missed line in patch for templates support
+  * Added support for autodoc --templatedir option
+  * Use release/v1 branch of pypi release workflow
+
+-------------------------------------------------------------------
 Thu Oct  5 09:06:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.0:

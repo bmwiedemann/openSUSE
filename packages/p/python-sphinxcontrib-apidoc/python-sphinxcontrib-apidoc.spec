@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-apidoc%{psuffix}
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A Sphinx extension for running 'sphinx-apidoc' on each build
 License:        BSD-2-Clause
