@@ -774,4 +774,22 @@
   * Sync SPDX licenses</comment>
     <requestid>1098351</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>12b070e91d3cb4ad54cd35b126374891</srcmd5>
+    <version>20240121</version>
+    <time>1705875024</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240121:
+  * update licenses
+  * Fix formatting of overlong tags
+  * set header_name to the spec file name
+  * Sync licenses with SPDX spec
+
+- do not enter empty license line if not found (eg in include file)
+  (bnc#624980)
+- fix empty line handling (multiple subsequent empty lines)
+  lines in a package, for example in if-constructs)
+- cleanup prepare_spec, drop Needed.pm</comment>
+    <requestid>1140288</requestid>
+  </revision>
 </revisionlist>
