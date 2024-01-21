@@ -1,7 +1,7 @@
 #
 # spec file for package gap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -222,6 +222,7 @@ Requires:       gap-sglppow >= 2.3
 Requires:       gap-sgpviz >= 0.999.5
 Requires:       gap-simpcomp >= 2.1.14
 Requires:       gap-singular >= 2022.09.23
+Requires:       gap-sl2reps >= 1.1
 Requires:       gap-sla >= 1.5.3
 Requires:       gap-smallgrp >= 1.5.1
 Requires:       gap-smallsemi >= 0.6.13
