@@ -385,4 +385,20 @@
   - Add pytest.ini to collect all tests &lt;Lie Ryan&gt;</comment>
     <requestid>1135620</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ba2db8000f4b440188b1897756c7f41b</srcmd5>
+    <version>1.12.0</version>
+    <time>1705875011</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.12.0:
+  * #733 skip directories with perm error when building
+    autoimport index (@MrBago)
+  * #722, #723 Remove site-packages from packages search tree
+    (@tkrabel)
+  * #738 Implement os.PathLike on Resource (@lieryan)
+  * #739, #736 Ensure autoimport requests uses indexes (@lieryan)
+  * #734, #735 raise exception when extracting the start of a
+    block without the end</comment>
+    <requestid>1140277</requestid>
+  </revision>
 </revisionlist>

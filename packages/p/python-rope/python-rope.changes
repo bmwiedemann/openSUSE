@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:09:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.0:
+  * #733 skip directories with perm error when building
+    autoimport index (@MrBago)
+  * #722, #723 Remove site-packages from packages search tree
+    (@tkrabel)
+  * #738 Implement os.PathLike on Resource (@lieryan)
+  * #739, #736 Ensure autoimport requests uses indexes (@lieryan)
+  * #734, #735 raise exception when extracting the start of a
+    block without the end
+
+-------------------------------------------------------------------
 Fri Dec 29 09:51:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.0:
