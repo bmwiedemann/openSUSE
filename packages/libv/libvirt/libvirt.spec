@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@
 %define with_firewalld_zone 0%{!?_without_firewalld_zone:0}
 %define with_libssh        0%{!?_without_libssh:0}
 %define with_nbdkit        0%{!?_without_nbdkit:0}
+%define with_nbdkit_config_default 0%{!?_without_nbdkit_config_default:0}
 
 # Set the OS / architecture specific special cases
 
@@ -127,7 +128,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        9.10.0
+Version:        10.0.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -904,6 +905,11 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %else
     %define arg_nbdkit -Dnbdkit=disabled
 %endif
+%if %{with_nbdkit_config_default}
+    %define arg_nbdkit_config_default -Dnbdkit_config_default=enabled
+%else
+    %define arg_nbdkit_config_default -Dnbdkit_config_default=disabled
+%endif
 %if %{with_apparmor}
     %define arg_apparmor -Dapparmor=enabled -Dsecdriver_apparmor=enabled
     %define arg_apparmor_profiles -Dapparmor_profiles=enabled
@@ -1015,6 +1021,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            %{?arg_numactl} \
            %{?arg_numad} \
            %{?arg_nbdkit} \
+           %{?arg_nbdkit_config_default} \
            -Dcapng=enabled \
            -Dfuse=enabled \
            -Dnetcf=disabled \

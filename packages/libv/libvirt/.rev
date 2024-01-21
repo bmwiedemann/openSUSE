@@ -4509,4 +4509,19 @@ driver is disabled for ALP. Fix it.
 bsc#1216656</comment>
     <requestid>1134307</requestid>
   </revision>
+  <revision rev="390" vrev="1">
+    <srcmd5>35773e8d41be4124aafcbb4df5e06bd1</srcmd5>
+    <version>10.0.0</version>
+    <time>1705874860</time>
+    <user>anag+factory</user>
+    <comment>- Add temporary build fix for ppc64le
+  bsc#1218823
+
+- Update to libvirt 10.0.0
+  - jsc#PED-3226, jsc#PED-3279, jsc#PED-4931, jsc#PED-5432,
+    jsc#PED-6851
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-0-0-2024-01-15</comment>
+    <requestid>1139524</requestid>
+  </revision>
 </revisionlist>
