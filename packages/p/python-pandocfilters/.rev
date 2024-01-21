@@ -77,4 +77,14 @@
     <comment></comment>
     <requestid>1100594</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>55684ba2950a7b2dceb037dea340287d</srcmd5>
+    <version>1.5.1</version>
+    <time>1705874965</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.1:
+  * Don't raise an error if the directory used to store images
+    already exists (#104, Augusto Zanellato).</comment>
+    <requestid>1140200</requestid>
+  </revision>
 </revisionlist>
