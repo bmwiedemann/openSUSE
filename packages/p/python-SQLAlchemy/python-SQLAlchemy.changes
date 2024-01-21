@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 21 10:30:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.25:
+  * preliminary support for Python 3.12 pep-695 type alias
+    structures
+  * see https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.25
+
+-------------------------------------------------------------------
 Fri Dec 29 09:04:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.24:
