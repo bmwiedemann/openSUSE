@@ -1,7 +1,7 @@
 #
 # spec file for package sssd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.9.3
+Version:        2.9.4
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later

@@ -1189,4 +1189,12 @@ goes in line with 946250</comment>
     <comment>SLE merge, complete changelog with dropped SLE patches (forwarded request 1129120 from scabrero)</comment>
     <requestid>1129201</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>f9a883a1d27e2e211d74178757e4de8f</srcmd5>
+    <version>2.9.4</version>
+    <time>1705874882</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1139957</requestid>
+  </revision>
 </revisionlist>
