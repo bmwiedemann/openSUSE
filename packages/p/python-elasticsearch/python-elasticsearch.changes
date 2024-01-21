@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 20 12:38:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.12.0:
+  * Dropped support for Python 3.6
+  * Allowed unrestricted `body` parameter again (see #2383 for
+    details)
+  * Added the Inference APIs
+  * Added the ES|QL API
+  * Added `active_only` parameter to `security.get_api_key` API
+  * Added `expiration` parameter to `security.update_api_key` API
+
+-------------------------------------------------------------------
 Wed Dec 27 10:02:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.11.1:
