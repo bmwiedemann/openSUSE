@@ -38,4 +38,13 @@
   * code maintenance</comment>
     <requestid>1134930</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e92e734e4b98dc440165e6ae2cd9dcbd</srcmd5>
+    <version>0.5.1</version>
+    <time>1705875019</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.1
+  * fix: support OPTIONS method for CORS #102 (@zhanba)</comment>
+    <requestid>1140286</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:06:00 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.1
+  * fix: support OPTIONS method for CORS #102 (@zhanba)
+
+-------------------------------------------------------------------
 Sat Dec 23 19:46:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.5.0
