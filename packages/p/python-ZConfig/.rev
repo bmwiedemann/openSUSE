@@ -93,4 +93,13 @@ source URL fixed</comment>
   * Drop support for Python 3.4.</comment>
     <requestid>1067286</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1ff3937aad025472e5c8ef804d57f37b</srcmd5>
+    <version>4.0</version>
+    <time>1705874990</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0:
+  * Drop support for Python 2.7, 3.5, 3.6.</comment>
+    <requestid>1140254</requestid>
+  </revision>
 </revisionlist>
