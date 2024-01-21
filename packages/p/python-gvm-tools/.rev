@@ -99,4 +99,13 @@
 - Kill dephell dependency</comment>
     <requestid>1133873</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7060a77afae4ed64f3d09b76c07191ea</srcmd5>
+    <version>24.1.0</version>
+    <time>1705874969</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.1.0:
+  * New create-consolidated-report container opts</comment>
+    <requestid>1140206</requestid>
+  </revision>
 </revisionlist>
