@@ -25,7 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://code.google.com/p/py-leveldb/
 Source:         https://files.pythonhosted.org/packages/source/l/leveldb/leveldb-%{version}.tar.gz
-Patch:          leveldb-atomic.patch
+Patch0:         leveldb-atomic.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -39,7 +39,7 @@ Python bindings for leveldb database library.
 
 %prep
 %setup -q -n leveldb-%{version}
-%patch -p1
+%patch0 -p1
 chmod -x README
 
 %build
