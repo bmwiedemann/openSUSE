@@ -1,0 +1,11 @@
+--- jsonref-1.1.0/pyproject.toml	2023-01-16 17:06:47.203465200 +0100
++++ jsonref-1.1.0/pyproject.toml	2024-01-13 21:57:26.399821227 +0100
+@@ -37,6 +37,6 @@
+ 
+ [build-system]
+ requires = [
+-    "pdm-pep517>=1.0.0",
++    "pdm-backend"
+ ]
+-build-backend = "pdm.pep517.api"
++build-backend = "pdm.backend"

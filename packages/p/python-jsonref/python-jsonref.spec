@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonref
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsonref
-Version:        0.2
+Version:        1.1.0
 Release:        0
 Summary:        An implementation of JSON Reference for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/gazpachoking/jsonref
 Source:         https://files.pythonhosted.org/packages/source/j/jsonref/jsonref-%{version}.tar.gz
+Patch1:         use-pdm-backend.patch
+BuildRequires:  %{python_module pdm-backend}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,22 +53,21 @@ almost completely transparent.
 Complete docs can be found at http://jsonref.readthedocs.org/
 
 %prep
-%setup -q -n jsonref-%{version}
-dos2unix README.rst
+%autosetup -p1 -n jsonref-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%check
-%pytest tests.py
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
-%{python_sitelib}/*
+%doc README.md
+%{python_sitelib}/jsonref.py
+%{python_sitelib}/proxytypes.py
+%pycache_only %{python_sitelib}/__pycache__/*
+%{python_sitelib}/jsonref-%{version}.dist-info
 
 %changelog
