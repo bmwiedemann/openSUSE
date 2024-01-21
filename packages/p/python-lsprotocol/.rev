@@ -17,4 +17,15 @@
   * Update package classifiers</comment>
     <requestid>1135280</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8b4871481928b60a81b4174fc0dab01</srcmd5>
+    <version>2023.0.1</version>
+    <time>1705874961</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.0.1:
+  * Remove type ignore comments
+  * Tighten `cattrs` dependency
+  * Fix bug with `WorkspaceSymbol` structuring hook</comment>
+    <requestid>1140197</requestid>
+  </revision>
 </revisionlist>

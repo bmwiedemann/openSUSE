@@ -1,7 +1,7 @@
 #
 # spec file for package python-lsprotocol
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-lsprotocol
-Version:        2023.0.0
+Version:        2023.0.1
 Release:        0
 Summary:        Python implementation of the Language Server Protocol
 License:        MIT
@@ -28,11 +28,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 21.3.0}
-BuildRequires:  %{python_module cattrs}
+BuildRequires:  %{python_module cattrs >= 23.2.2}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-attrs >= 21.3.0
-Requires:       python-cattrs
+Requires:       python-cattrs >= 23.2.2
 BuildArch:      noarch
 %python_subpackages
 

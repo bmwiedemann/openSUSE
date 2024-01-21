@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 20 19:23:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.0.1:
+  * Remove type ignore comments
+  * Tighten `cattrs` dependency
+  * Fix bug with `WorkspaceSymbol` structuring hook
+
+-------------------------------------------------------------------
 Wed Dec 27 10:52:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.0.0:
