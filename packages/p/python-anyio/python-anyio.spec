@@ -1,7 +1,7 @@
 #
 # spec file for package python-anyio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anyio
-Version:        3.7.1
+Version:        4.2.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
 URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM see gh#agronholm/anyio#626
-Patch2:         tests-test_fileio.py-don-t-follow-symlinks-in-dev.patch
 BuildRequires:  %{python_module contextlib2 if %python-base < 3.7}
 BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module idna >= 2.8}
@@ -34,7 +32,7 @@ BuildRequires:  %{python_module psutil >= 5.9}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module sniffio >= 1.1}
 BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
 # SECTION test requirements
@@ -42,20 +40,18 @@ BuildRequires:  %{python_module hypothesis >= 4.0}
 BuildRequires:  %{python_module mock >= 4.0 if %python-base < 3.8}
 BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-mock >= 3.6.1}
-BuildRequires:  %{python_module trio >= 0.16}
+BuildRequires:  %{python_module trio >= 0.23}
 BuildRequires:  %{python_module trustme}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-idna >= 2.8
 Requires:       python-sniffio >= 1.1
-%if 0%{?python_version_nodots} < 38
-Requires:       python-typing_extensions
-%endif
+Requires:       (python-typing_extensions if python-base < 3.11)
 %if 0%{?python_version_nodots} < 37
 Requires:       python-contextvars
 Requires:       python-dataclasses
 %endif
-Suggests:       python-trio >= 0.16
+Suggests:       python-trio >= 0.23
 BuildArch:      noarch
 %python_subpackages
 

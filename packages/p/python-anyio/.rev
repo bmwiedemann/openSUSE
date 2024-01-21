@@ -228,4 +228,41 @@ SR for python stack proposal</comment>
     integers instead of ``signal.Signals`` instances on the</comment>
     <requestid>1126958</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f2d50db36275a6bc1a633c08e1b2721f</srcmd5>
+    <version>4.2.0</version>
+    <time>1705874853</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.0:
+  * Add support for byte-based paths in connect_unix,
+    create_unix_listeners, create_unix_datagram_socket, and
+    create_connected_unix_datagram_socket. (PR by Lura Skye)
+  * Enabled the Event and CapacityLimiter classes to be
+    instantiated outside an event loop thread
+  * Broadly improved/fixed the type annotations. Among other
+    things, many functions and methods that take variadic
+    positional arguments now make use of PEP 646 TypeVarTuple to
+    allow the positional arguments to be validated by static type
+    checkers. These changes affected numerous methods and
+    functions, including: * anyio.run() * TaskGroup.start_soon()
+    * anyio.from_thread.run() * anyio.from_thread.run_sync() *
+    anyio.to_thread.run_sync() * anyio.to_process.run_sync() *
+    BlockingPortal.call() * BlockingPortal.start_task_soon() *
+    BlockingPortal.start_task() (also resolves #560)
+  * Fixed various type annotations of anyio.Path to match
+    Typeshed: * anyio.Path.__lt__() * anyio.Path.__le__() *
+    anyio.Path.__gt__() * anyio.Path.__ge__() *
+    anyio.Path.__truediv__() * anyio.Path.__rtruediv__() *
+    anyio.Path.hardlink_to() * anyio.Path.samefile() *
+    anyio.Path.symlink_to() * anyio.Path.with_segments() (PR by
+    Ganden Schaffner)
+  * Fixed adjusting the total number of tokens in a
+    CapacityLimiter on asyncio failing to wake up tasks waiting
+    to acquire the limiter in certain edge cases (fixed with help
+    from Egor Blagov)
+  * Fixed loop_factory and use_uvloop options not being used on
+    the asyncio backend
+  * Fixed cancellation propagating on asyncio from a task group</comment>
+    <requestid>1136274</requestid>
+  </revision>
 </revisionlist>
