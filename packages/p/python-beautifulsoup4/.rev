@@ -567,4 +567,32 @@ Build and package documentation (forwarded request 176044 from TheBlackCat)</com
     <comment>- Require cchardet explicitly to avoid charset-normalizer braindamage.</comment>
     <requestid>1128224</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2a7fc238acd71fcd91e5c39823baec92</srcmd5>
+    <version>4.12.3</version>
+    <time>1705874832</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.12.3:
+  * Fixed a regression such that if you set .hidden on a tag, the
+    tag becomes invisible but its contents are still visible. User
+    manipulation of .hidden is not a documented or supported
+    feature, so don't do this, but it wasn't too difficult to
+    keep the old behavior
+    working.
+  * Fixed a case found by Mengyuhan where html.parser giving up
+    on markup would result in an AssertionError instead of a
+    ParserRejectedMarkup exception.
+  * Added the correct stacklevel to instances of the
+    XMLParsedAsHTMLWarning.
+  * Corrected the syntax of the license definition in
+    pyproject.toml.
+  * Corrected a typo in a test that was causing test failures
+    when run against libxml2 2.12.1.
+
+- Require cchardet explicitly to avoid charset-normalizer braindamage.
+- disable tests on SLE_11, fail due to too old python-lxml
+- remove lxml support (fails unit test)
+- Use recommended lxml parser instead of native one</comment>
+    <requestid>1140116</requestid>
+  </revision>
 </revisionlist>

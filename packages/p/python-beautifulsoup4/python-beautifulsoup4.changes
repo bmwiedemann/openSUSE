@@ -1,7 +1,27 @@
 -------------------------------------------------------------------
+Sat Jan 20 13:11:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.12.3:
+  * Fixed a regression such that if you set .hidden on a tag, the
+    tag becomes invisible but its contents are still visible. User
+    manipulation of .hidden is not a documented or supported
+    feature, so don't do this, but it wasn't too difficult to
+    keep the old behavior
+    working.
+  * Fixed a case found by Mengyuhan where html.parser giving up
+    on markup would result in an AssertionError instead of a
+    ParserRejectedMarkup exception.
+  * Added the correct stacklevel to instances of the
+    XMLParsedAsHTMLWarning.
+  * Corrected the syntax of the license definition in
+    pyproject.toml.
+  * Corrected a typo in a test that was causing test failures
+    when run against libxml2 2.12.1.
+
+-------------------------------------------------------------------
 Thu Nov 23 03:40:05 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Require cchardet explicitly to avoid charset-normalizer braindamage. 
+- Require cchardet explicitly to avoid charset-normalizer braindamage.
 
 -------------------------------------------------------------------
 Mon May  8 11:39:40 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
@@ -359,50 +379,50 @@ Sun Aug  5 11:02:25 UTC 2018 - adrian@suse.de
 - update to 4.6.1:
   * Stop data loss when encountering an empty numeric entity, and
     possibly in other cases.  Thanks to tos.kamiya for the fix. [bug=1698503]
-  
+
   * Preserve XML namespaces introduced inside an XML document, not just
      the ones introduced at the top level. [bug=1718787]
-  
+
   * Added a new formatter, "html5", which represents void elements
      as "<element>" rather than "<element/>".  [bug=1716272]
-  
+
   * Fixed a problem where the html.parser tree builder interpreted
     a string like "&foo " as the character entity "&foo;"  [bug=1728706]
-  
+
   * Correctly handle invalid HTML numeric character entities like &#147;
     which reference code points that are not Unicode code points. Note
     that this is only fixed when Beautiful Soup is used with the
     html.parser parser -- html5lib already worked and I couldn't fix it
     with lxml.  [bug=1782933]
-  
+
   * Improved the warning given when no parser is specified. [bug=1780571]
-  
+
   * When markup contains duplicate elements, a select() call that
     includes multiple match clauses will match all relevant
     elements. [bug=1770596]
-  
+
   * Fixed code that was causing deprecation warnings in recent Python 3
     versions. Includes a patch from Ville Skyttä. [bug=1778909] [bug=1689496]
-  
+
   * Fixed a Windows crash in diagnose() when checking whether a long
     markup string is a filename. [bug=1737121]
-  
+
   * Stopped HTMLParser from raising an exception in very rare cases of
     bad markup. [bug=1708831]
-  
+
   * Fixed a bug where find_all() was not working when asked to find a
     tag with a namespaced name in an XML document that was parsed as
     HTML. [bug=1723783]
-  
+
   * You can get finer control over formatting by subclassing
     bs4.element.Formatter and passing a Formatter instance into (e.g.)
     encode(). [bug=1716272]
-  
+
   * You can pass a dictionary of `attrs` into
     BeautifulSoup.new_tag. This makes it possible to create a tag with
     an attribute like 'name' that would otherwise be masked by another
     argument of new_tag. [bug=1779276]
-  
+
   * Clarified the deprecation warning when accessing tag.fooTag, to cover
     the possibility that you might really have been looking for a tag
     called 'fooTag'.
@@ -691,26 +711,26 @@ Tue Jun 25 11:52:34 UTC 2013 - dmueller@suse.com
    appear to be part of entities. That is, "&lt;" will become
    "&amp;lt;". The old code was left over from Beautiful Soup 3, which
    didn't always turn entities into Unicode characters.
- 
+
    If you really want the old behavior (maybe because you add new
    strings to the tree, those strings include entities, and you want
    the formatter to leave them alone on output), it can be found in
    EntitySubstitution.substitute_xml_containing_entities(). [bug=1182183]
- 
+
  * Gave new_string() the ability to create subclasses of
    NavigableString. [bug=1181986]
- 
+
  * Fixed another bug by which the html5lib tree builder could create a
    disconnected tree. [bug=1182089]
- 
+
  * The .previous_element of a BeautifulSoup object is now always None,
    not the last element to be parsed. [bug=1182089]
- 
+
  * Fixed test failures when lxml is not installed. [bug=1181589]
- 
+
  * html5lib now supports Python 3. Fixed some Python 2-specific
    code in the html5lib test suite. [bug=1181624]
- 
+
  * The html.parser treebuilder can now handle numeric attributes in
    text when the hexidecimal name of the attribute starts with a
    capital X. Patch by Tim Shirley. [bug=1186242]
@@ -718,7 +738,7 @@ Tue Jun 25 11:52:34 UTC 2013 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon Jun 10 20:34:00 UTC 2013 - dmueller@suse.com
 
-- disable tests on SLE_11, fail due to too old python-lxml 
+- disable tests on SLE_11, fail due to too old python-lxml
 
 -------------------------------------------------------------------
 Sat May 18 13:30:00 UTC 2013 - toddrme2178@gmail.com
@@ -774,14 +794,14 @@ Sat May 18 13:30:00 UTC 2013 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Tue Apr 30 12:59:02 UTC 2013 - dmueller@suse.com
 
-- remove lxml support (fails unit test) 
+- remove lxml support (fails unit test)
 
 -------------------------------------------------------------------
 Sat Jan 12 14:10:18 UTC 2013 - toddrme2178@gmail.com
 
 - Use explicit file list
 - Fix building on openSUSE 12.1 and 12.2
-- Use recommended lxml parser instead of native one 
+- Use recommended lxml parser instead of native one
   (native fails fails for some python versions)
 
 -------------------------------------------------------------------
