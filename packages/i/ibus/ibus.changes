@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 19 15:23:25 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %_libexecdir as the basis of %_ibus_libexecdir (bsc#1174075)
+
+-------------------------------------------------------------------
 Sat Dec  2 08:30:07 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.5.29
