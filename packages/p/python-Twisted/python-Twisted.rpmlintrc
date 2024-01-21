@@ -1,1 +1,2 @@
-addFilter("E: python-tests-in-package.*/usr/lib/.*/site-packages/twisted.*/test")
+# rpmlint is too stupid for the . in the name
+addFilter("python-.*-require .*zope.interface")
