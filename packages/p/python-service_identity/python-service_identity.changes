@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 20 20:31:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.1.0:
+  * If a certificate doesn't contain any `subjectAltName`s, we
+    now raise `service_identity.CertificateError` instead of
+    `service_identity.VerificationError` to make the problem
+    easier to debug.
+
+-------------------------------------------------------------------
 Mon Sep 18 09:42:13 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required
@@ -115,19 +124,19 @@ Mon Sep 24 13:16:17 UTC 2018 - ecsos@opensuse.org
 
 - Update to 17.0.0:
   * Deprecations:
-    - Since Chrome 58 and Firefox 48 both don’t accept certificates 
-      that contain only a Common Name, its usage is hereby 
-      deprecated in service_identity too. We have been raising 
-      a warning since 16.0.0 and the support will be removed in 
+    - Since Chrome 58 and Firefox 48 both don’t accept certificates
+      that contain only a Common Name, its usage is hereby
+      deprecated in service_identity too. We have been raising
+      a warning since 16.0.0 and the support will be removed in
       mid-2018 for good.
   * Changes:
-    - When service_identity.SubjectAltNameWarning is raised, the 
+    - When service_identity.SubjectAltNameWarning is raised, the
       Common Name of the certificate is now included in the warning
       message. #17
     - Added cryptography.x509 backend for verifying certificates.
       #18
-    - Wildcards (*) are now only allowed if they are the leftmost 
-      label in a certificate. This is common practice by all major 
+    - Wildcards (*) are now only allowed if they are the leftmost
+      label in a certificate. This is common practice by all major
       browsers. #19
 
 -------------------------------------------------------------------

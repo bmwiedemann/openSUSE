@@ -1,7 +1,7 @@
 #
 # spec file for package python-service_identity
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define oname   service_identity
 %{?sle15_python_module_pythons}
 Name:           python-service_identity
-Version:        23.1.0
+Version:        24.1.0
 Release:        0
 Summary:        Service identity verification for pyOpenSSL
 License:        MIT

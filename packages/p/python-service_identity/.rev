@@ -154,4 +154,24 @@
     <comment></comment>
     <requestid>1112023</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>44d27606b88cdf13385aa3a387262094</srcmd5>
+    <version>24.1.0</version>
+    <time>1705874841</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.1.0:
+  * If a certificate doesn't contain any `subjectAltName`s, we
+    now raise `service_identity.CertificateError` instead of
+    `service_identity.VerificationError` to make the problem
+    easier to debug.
+
+    - Since Chrome 58 and Firefox 48 both don’t accept certificates
+      that contain only a Common Name, its usage is hereby
+      deprecated in service_identity too. We have been raising
+      a warning since 16.0.0 and the support will be removed in
+    - When service_identity.SubjectAltNameWarning is raised, the
+    - Wildcards (*) are now only allowed if they are the leftmost
+      label in a certificate. This is common practice by all major</comment>
+    <requestid>1140210</requestid>
+  </revision>
 </revisionlist>
