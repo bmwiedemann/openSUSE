@@ -344,4 +344,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1137921</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>db0729fe8d33ff964a9a5df3303bfbeb</srcmd5>
+    <version>3.45.0.0</version>
+    <time>1705874918</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.45.0.0:
+  * Correctly handle NULL/None VFS filenames (:issue:`506`)</comment>
+    <requestid>1140101</requestid>
+  </revision>
 </revisionlist>
