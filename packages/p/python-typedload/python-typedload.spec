@@ -1,7 +1,7 @@
 #
 # spec file for package python-typedload
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-typedload
-Version:        2.26
+Version:        2.27
 Release:        0
 Summary:        Load and dump data from json-like format into typed data structures
 License:        GPL-3.0-only

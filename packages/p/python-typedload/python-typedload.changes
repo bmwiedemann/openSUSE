@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:12:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.27:
+  * Add support for re.Patterns
+
+-------------------------------------------------------------------
 Wed Dec 13 10:19:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.26:
