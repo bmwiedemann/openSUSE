@@ -7,4 +7,12 @@
     <comment>re-instate GAP CAS</comment>
     <requestid>1134753</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f1d299ac327291a9529cafa0f0900934</srcmd5>
+    <version>4.12.2</version>
+    <time>1705874904</time>
+    <user>anag+factory</user>
+    <comment>- Add sl2reps extension to gap-full</comment>
+    <requestid>1140030</requestid>
+  </revision>
 </revisionlist>
