@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 20 19:28:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Don't raise an error if the directory used to store images
+    already exists (#104, Augusto Zanellato).
+
+-------------------------------------------------------------------
 Tue Jul 25 10:44:21 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
