@@ -7,4 +7,36 @@
     <comment></comment>
     <requestid>720154</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b822e12400fc4c59f645f225b2e5d5c</srcmd5>
+    <version>1.1.0</version>
+    <time>1705874915</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.0:
+  * Fixes documents where the root is a reference object not
+    being cached
+  * Allows a reference object to refer to a fragment within
+    itself. fix #51, #40
+  * Extra properties of a reference object will now have
+    references resolved.
+- update to 1.0.1:
+  * Fix issue with proxies=False where it would not recurse
+    through references to remove the proxies. #48
+- update to 1.0.0:
+  * `replace_refs` is now a function rather than a class method
+    of `JsonRef` (The class method is still around, but
+    deprecated.)
+  * New options were also added to `replace_refs`
+  * `jsonloader` is now a plan function rather than an instance
+    of a class. (This is a breaking change if you were
+    subclassing `JsonLoader`)
+- add patch use-pdm-backend.patch: switch to more modern
+  pdm-backend
+
+- Update to version 0.2 (python 3.7 support)
+- Packaging :
+  + spec-cleaner
+  + Add tests</comment>
+    <requestid>1140097</requestid>
+  </revision>
 </revisionlist>
