@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,9 @@
 %bcond_with libalternatives
 %endif
 # X.X.0 gets abbreviated by pythondistdeps
-%define shortversion 7.13.1
+%define shortversion 7.14.2
 Name:           python-nbconvert%{psuffix}
-Version:        7.13.1
+Version:        7.14.2
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT

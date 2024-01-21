@@ -408,4 +408,17 @@
   * Add table, td, tr to allowed list of tags #2083 (@yuvipanda)</comment>
     <requestid>1135497</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>11ab507ea5c0802a5ccef8b61f598366</srcmd5>
+    <version>7.14.2</version>
+    <time>1705875031</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.14.2 via 7.14.1, 7.14.0
+  * Fix broken image scaling in case a custom width or height is
+    provided for the image #2094 (@AndSte01)
+  * Convert coalescese_streams function to
+    CoalesceStreamsPreprocessor #2089 (@ryan-williams)
+  * Fix webpdf test on Python 3.12 #2088 (@blink1073)</comment>
+    <requestid>1140294</requestid>
+  </revision>
 </revisionlist>
