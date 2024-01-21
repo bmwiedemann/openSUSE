@@ -109,4 +109,41 @@
     <comment></comment>
     <requestid>1074793</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c76fceed4d99eb747478575a79f4e7a2</srcmd5>
+    <version>0.12.3</version>
+    <time>1705874986</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.3:
+  * Variance included by Boris
+  * Visualizer updated to include variance  by Boris
+  * Visualizer updated to make it flexible by Gerd
+  * Tests updated by Boris
+  * get_spectrum_dims is renamed to get spectral_dims
+- update to 0.12.1:
+  * updates to some of the visualizers (spectrum visualizer for
+    example)
+  * bug fix to Sidpy Fitter class that was preventing proper
+    scaling with multiple workers
+  * changes on the backend regarding getting and setting
+    dimensions
+  * additional tests
+- update to 0.12.0:
+  * New version of sidpy has been released. The major change is
+    that previous operations that would have resulted in return
+    of numpy or dask arrays are now programmed to return sidpy
+    dataset objects. This is particularly useful for instance
+    when wishing to crop, slice, and perform standard arithmetic
+    operations on sidpy datasets. The sidpy.fitter class has been
+    updated to allow for complex datasets. An example notebook is
+    provided here
+
+- Remove skip for Python 3.10, dask is now available.
+    dask.array.
+  * Submodules of the main modules can be imported directly.
+  * Fixed bugs in sidpy.io.interface_utils.py that was causing
+  * Added plotting utilities written to support upcoming
+  * Ported additional hdf_utils functions for copying datasets</comment>
+    <requestid>1140251</requestid>
+  </revision>
 </revisionlist>
