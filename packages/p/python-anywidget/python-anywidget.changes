@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 21 10:52:29 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.1
+  * fix: Skip Promise serialization for ipywidget's layout/style
+    traits (#412)
+
+-------------------------------------------------------------------
 Sat Dec 23 18:33:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.0

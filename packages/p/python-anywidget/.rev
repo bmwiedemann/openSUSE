@@ -70,4 +70,14 @@
     necessary.</comment>
     <requestid>1134918</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>30f1ea3a1f5c184e29d1765254d41358</srcmd5>
+    <version>0.8.1</version>
+    <time>1705875016</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.1
+  * fix: Skip Promise serialization for ipywidget's layout/style
+    traits (#412)</comment>
+    <requestid>1140282</requestid>
+  </revision>
 </revisionlist>
