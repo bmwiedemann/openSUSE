@@ -1,12 +1,24 @@
 -------------------------------------------------------------------
+Sun Jan 21 10:39:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.13:
+  * try to keep file-/dir-selection windows in the front
+  * Exit gracefully if user cancels file selection
+  * updated docu; renamed self.info -> self.ffmpeg_info
+  * left tkinter root window visible to avoid some crashes
+  * [erroneous fix]
+  * moved the tkinter root to the top to be visible
+  * fixed error in displayed name of out-file
+
+-------------------------------------------------------------------
 Fri Oct  1 05:42:32 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded BuildRequires on nose. 
+- Remove unneeded BuildRequires on nose.
 
 -------------------------------------------------------------------
 Fri Feb 12 14:09:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 36 build 
+- skip python 36 build
 
 -------------------------------------------------------------------
 Tue Jul 23 15:39:16 UTC 2019 - Todd R <toddrme2178@gmail.com>
