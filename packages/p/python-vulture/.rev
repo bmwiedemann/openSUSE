@@ -117,4 +117,15 @@
     (sshishov, #279).</comment>
     <requestid>1135359</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>43aea051e5b1a3bc6cb6c4e8ca4d4ed2</srcmd5>
+    <version>2.11</version>
+    <time>1705875012</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.11:
+  * Switch to tomllib/tomli to support heterogeneous arrays
+  * Bump flake8, flake8-comprehensions and flake8-bugbear
+  * Provide whitelist parity for `MagicMock` and `Mock`</comment>
+    <requestid>1140278</requestid>
+  </revision>
 </revisionlist>
