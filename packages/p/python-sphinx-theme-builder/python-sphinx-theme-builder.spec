@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-theme-builder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-sphinx-theme-builder
-Version:        0.2.0b1
+Version:        0.2.0b2
 Release:        0
 Summary:        A tool for authoring Sphinx themes with a simple (opinionated) workflow
 License:        MIT
