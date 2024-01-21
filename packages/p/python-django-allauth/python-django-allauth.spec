@@ -32,7 +32,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-allauth
-Version:        0.60.0
+Version:        0.60.1
 Release:        0
 Summary:        Django authentication, registration, account management
 License:        MIT
