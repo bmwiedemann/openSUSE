@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 12 14:02:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9.4
+  * Fixes a crash when PAM passkey processing incorrectly handles
+    non-passkey data.
+  * Fixed group membership handling when members are coming from
+    different forest domains and using ldap token groups is
+    prohibited.
+  * Files provider was erroneously taking into consideration
+    ``local_auth_policy`` config option, thus breaking smartcard
+    authentication of local user in setups that did not explicitly
+    specify this option. This is now fixed.
+
+-------------------------------------------------------------------
 Tue Nov 21 09:43:57 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
 
 - Adapt spec file for SLE 15 SP6/Leap 15.6; (jsc#PED-6714);
