@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-terminal-exec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdg-terminal-exec
-Version:        20231124+git.fc8a6e0
+Version:        20240120+git.efc3517
 Release:        0
 Summary:        XDG terminal execution utility and default terminal specification
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
