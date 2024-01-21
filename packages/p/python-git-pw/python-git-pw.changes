@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 20 14:05:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Use older Python version for click-man
+  * Add support for Python 3.12, drop Python 3.7
+  * Replace use of pkg\_resources
+  * Revert "docs: Switch to furo theme"
+  * Add pyproject.toml file
+  * docs: Switch to furo theme
+  * readthedocs: Also install git-pw
+  * readthedocs: Specify requirements
+  * Specify OS, tools
+  * Add readthedocs config file
+
+-------------------------------------------------------------------
 Thu Dec  7 23:02:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0:
