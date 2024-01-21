@@ -520,4 +520,24 @@
   * Add github actions, bail on asyncio patch for tornado 6.1.</comment>
     <requestid>1134337</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>25c2e536bdd21f189ec90efa827f34e1</srcmd5>
+    <version>6.29.0</version>
+    <time>1705874849</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.29.0
+  * Always set debugger to true in kernelspec #1191 (@ianthomas23)
+  * Revert &quot;Enable ProactorEventLoop on windows for ipykernel&quot;
+    #1194 (@blink1073)
+  * Make outputs go to correct cell when generated in
+    threads/asyncio #1186 (@krassowski)
+  * Pin pytest-asyncio to 0.23.2 #1189 (@ianthomas23)
+- Update to 6.28.0
+  * Enable ProactorEventLoop on windows for ipykernel #1184
+    (@NewUserHa)
+  * Adds a flag in debug_info for the copyToGlobals support #1099
+    (@brichet)
+  * Support python 3.12 #1185 (@blink1073)</comment>
+    <requestid>1140287</requestid>
+  </revision>
 </revisionlist>
