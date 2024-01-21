@@ -1,7 +1,7 @@
 #
 # spec file for package python-elasticsearch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 Name:           python-elasticsearch
 # DO NOT UPDATE until the compatible version of
 # python-elasticsearch-dsl is available
-Version:        8.11.1
+Version:        8.12.0
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
@@ -69,6 +69,6 @@ sed -i '/addopts/d' setup.cfg
 %license LICENSE
 %doc CODE_OF_CONDUCT.md CHANGELOG.md README.rst
 %{python_sitelib}/elasticsearch
-%{python_sitelib}/elasticsearch-%{version}*-info
+%{python_sitelib}/elasticsearch-%{version}.dist-info
 
 %changelog
