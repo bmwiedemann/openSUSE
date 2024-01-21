@@ -1,10 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 19 08:41:49 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 2.3.8+git1:
+  * CI: Enable Android builds
+- There's a v2.3.8 tag now so the version matches properly again
+
+-------------------------------------------------------------------
 Wed Jan 03 07:31:51 UTC 2024 - otto.hollmann@suse.com
 
 - Update to version 2.3.7+git12:
   * Increase version number
   * Update rootcerts.pem
   * test: add test for EME_PKCS1_OAEP and fix openssl >= 3.2 does not failing anymore when decrypting with the wrong key
+    (bsc#1217722)
   * plugins/qca-ossl: Announce tripledes unconditionally again
 
 -------------------------------------------------------------------
