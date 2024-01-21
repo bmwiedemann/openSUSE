@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 19 21:18:24 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1705655319.5fa7a50:
+  * Add yamltidy config
+  * Exclude files under external/ from compile check
+  * Exclude external/ from installed files
+  * git-subrepo: update external/os-autoinst-common
+  * Fix _read_socket mockup
+  * video_stream: mark two functions as uncoverable
+
+-------------------------------------------------------------------
 Wed Jan 17 13:12:21 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1705392855.dac4aee:
