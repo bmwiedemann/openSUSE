@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan 21 12:35:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.1
+  ## Maintenance and upkeep improvements
+  * Fix CI (Backport #221 into 1.x) #224 (@martinRenou)
+  * Fix for last_modified being None #223 (@martinRenou)
+- Release 1.2.0
+  ## Maintenance and upkeep improvements
+  * Backport #172 on branch 1.x (Remove print) #188 (@fcollonval)
+- Release 1.1.0
+  ## Enhancements made
+  * Backport #177: Adds a flag to disable RTC #178 (@hbcarlos)
+- Release 1.0.1
+  * Support ypy-websocket v0.12 #168 (@davidbrochart)
+  * Chat subprotocol #167 (@hbcarlos)
+
+-------------------------------------------------------------------
 Thu Aug 17 15:52:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Suggest primary python package -- boo#1214354
