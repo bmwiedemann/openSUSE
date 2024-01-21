@@ -1,7 +1,7 @@
 #
 # spec file for package python-eventlet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,28 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-eventlet
-Version:        0.33.3
+Version:        0.34.3
 Release:        0
 Summary:        Concurrent networking library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://eventlet.net
 Source:         https://files.pythonhosted.org/packages/source/e/eventlet/eventlet-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#eventlet/eventlet#638 mcepl@suse.com
-# Removes dependency on nose
-Patch0:         denose-eventlet.patch
-# PATCH-FIX-UPSTREAM https://github.com/eventlet/eventlet/pull/643
-Patch2:         python-eventlet-FTBFS2028.patch
-# PATCH-FIX-UPSTREAM fix-py3-rlock.patch gh#eventlet/eventlet#754
-Patch3:         fix-py3-rlock.patch
-# PATCH-FIX-OPENSUSE Based on https://src.fedoraproject.org/rpms/python-eventlet/raw/rawhide/f/python3.12.patch
-Patch4:         support-python3.12.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       netcfg
 Requires:       python-dnspython >= 1.15.0
-Requires:       python-greenlet >= 0.3
-Requires:       python-six >= 1.10.0
+Requires:       python-greenlet >= 1.0
 BuildArch:      noarch
 # SECTION TEST requirements
 BuildRequires:  %{python_module dnspython >= 1.15.0}
-BuildRequires:  %{python_module greenlet >= 0.3}
+BuildRequires:  %{python_module greenlet >= 1.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module testsuite}
 # eventlet parses /etc/protocols which is not available in normal build envs
 BuildRequires:  netcfg
@@ -70,29 +60,19 @@ interpreter, or as part of a larger application.
 %prep
 %autosetup -p1 -n eventlet-%{version}
 
-# Fix non-executable script
-sed -i '1{/^#!/ d}' eventlet/support/greendns.py
-
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# python2 is required to build for Leap, but tests fail (even upstream)
-python2_pytest_param='--collect-only'
 # dnspython 1 and 2: backdoor tests fail with "take too long"
 skiptests="(BackdoorTest and test_server)"
-# fail only with dnspython 2:
 skiptests+=" or test_dns_methods_are_green or test_noraise_dns_tcp or test_clear"
 # These are flaky inside the OBS environment
 skiptests+=" or test_fork_after_monkey_patch or test_send_1k_req_rep or test_cpu_usage_after_bind"
-# tracebacks in denosed suite with pytest inside obs presumably work different than when upstream is running nose?
-skiptests+=" or test_leakage_from_tracebacks"
-# temporarily disable to build with OpenSSL 3.0 bsc#1205042
-skiptests+=" or test_017_ssl_zeroreturnerror"
 # it is racy, see: https://lore.kernel.org/all/CADVnQy=AnJY9NZ3w_xNghEG80-DhsXL0r_vEtkr=dmz0ugcoVw@mail.gmail.com/ (bsc#1202188)
 skiptests+=" or test_018b_http_10_keepalive_framing"
 # gh#eventlet/eventlet#803
@@ -100,23 +80,14 @@ skiptests+=" or test_raise_dns_tcp"
 # gh#eventlet/eventlet#821 bsc#1216858
 skiptests+=" or test_full_duplex"
 
-# Unknown Python 3.6 specific errors
-# TypeError: _wrap_socket() argument 1 must be _socket.socket, not SSLSocket
-# https://github.com/rthalley/dnspython/issues/559#issuecomment-675274960
-python36_skiptests+=" or test_connect_ssl or test_ssl_sending_messages or test_wrap_ssl"
-python36_skiptests+=" or ssl_test or wsgi_test"
-python3_skiptests+="$python36_skiptests"
-# https://github.com/eventlet/eventlet/issues/730
-python310_skiptests+=" or test_patcher_existing_locks_locked"
 # https://github.com/eventlet/eventlet/issues/739
 python310_skiptests+=" or test_017_ssl_zeroreturnerror"
-# no subdir recursion https://github.com/eventlet/eventlet/issues/638#issuecomment-676085599
-%pytest -o norecursedirs="tests/*" -k "not ($skiptests ${$python_skiptests})" ${$python_pytest_param}
+%pytest -k "not ($skiptests ${$python_skiptests})" ${$python_pytest_param}
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS NEWS README.rst
 %{python_sitelib}/eventlet
-%{python_sitelib}/eventlet-%{version}*-info
+%{python_sitelib}/eventlet-%{version}.dist-info
 
 %changelog
