@@ -1,7 +1,7 @@
 #
 # spec file for package python-GooCalendar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016-2023 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,7 @@
 #
 
 
-%define         skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-GooCalendar
 Version:        0.8.0
 Release:        0
@@ -28,7 +28,9 @@ URL:            https://goocalendar.tryton.org/
 Source:         https://files.pythonhosted.org/packages/source/G/GooCalendar/GooCalendar-%{version}.tar.gz
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  python-rpm-macros
@@ -42,16 +44,16 @@ A calendar widget for GTK using PyGoocanvas (Gnome widget linrary).
 %setup -q -n GooCalendar-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc README COPYRIGHT
 %{python_sitelib}/goocalendar
-%{python_sitelib}/GooCalendar-%{version}*-info
+%{python_sitelib}/GooCalendar-%{version}.dist-info
 
 %changelog
