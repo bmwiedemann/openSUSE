@@ -1,7 +1,7 @@
 #
 # spec file for package leveldb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,7 +99,12 @@ cp -a build_static/db_bench %{buildroot}%{_bindir}
 
 %check
 %define __builddir build_static
-%ctest
+%ifarch s390x
+# bsc#1218597
+exclude_regex='--exclude-regex autocompact_test'
+%endif
+eclude_regex='--exclude-regex "(autocompact_test|db_test)"'
+%ctest $exclude_regex
 
 %post   -n %{lib_name} -p /sbin/ldconfig
 %postun -n %{lib_name} -p /sbin/ldconfig

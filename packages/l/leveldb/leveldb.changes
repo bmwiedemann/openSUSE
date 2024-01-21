@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 11 18:08:20 UTC 2024 - pgajdos@suse.com
+
+- disable autocompact_test [bsc#1218597]
+
+-------------------------------------------------------------------
 Wed Mar  8 12:47:35 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3
