@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -306,6 +306,7 @@ donttest="$donttest or testCLI0193virt_install_xen_hvm"
 # different source image format
 donttest="$donttest or testCLI0199virt_install_bhyve_default_f27"
 donttest="$donttest or testCLI0200virt_install_bhyve_default_f27"
+donttest="$donttest or testCLI0264virt_xml"
 # Due to the above skips:
 # "there are XML properties that are untested in the test suite"
 donttest="$donttest or testCheckXMLBuilderProps"
