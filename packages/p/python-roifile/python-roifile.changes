@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 21 10:53:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1.10:
+  * Support text rotation.
+  * Improve text rendering.
+  * Avoid array copies.
+  * Limit size read from files.
+
+-------------------------------------------------------------------
 Wed Dec 13 10:37:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.8.30:
