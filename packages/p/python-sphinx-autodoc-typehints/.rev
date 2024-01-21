@@ -194,4 +194,12 @@
     <comment>- add sle15_python_module_pythons, remove skip_python2</comment>
     <requestid>1099932</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5e0496306d1bd4256c7ac9fcbd22329b</srcmd5>
+    <version>1.25.2</version>
+    <time>1705874997</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1140272</requestid>
+  </revision>
 </revisionlist>

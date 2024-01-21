@@ -2,9 +2,11 @@
  tests/conftest.py |   13 ++-----------
  1 file changed, 2 insertions(+), 11 deletions(-)
 
---- a/tests/conftest.py
-+++ b/tests/conftest.py
-@@ -18,17 +18,8 @@ collect_ignore = ["roots"]
+Index: sphinx_autodoc_typehints-1.25.2/tests/conftest.py
+===================================================================
+--- sphinx_autodoc_typehints-1.25.2.orig/tests/conftest.py
++++ sphinx_autodoc_typehints-1.25.2/tests/conftest.py
+@@ -19,16 +19,8 @@ collect_ignore = ["roots"]
  
  @pytest.fixture(scope="session")
  def inv(pytestconfig: Config) -> Inventory:
@@ -14,8 +16,7 @@
 -    if inv_dict is not None:
 -        return Inventory(inv_dict)
 -
--    print("Downloading objects.inv")
--    url = "https://docs.python.org/{v.major}.{v.minor}/objects.inv".format(v=sys.version_info)
+-    url = f"https://docs.python.org/{sys.version_info.major}.{sys.version_info.minor}/objects.inv"
 -    inv = Inventory(url=url)
 -    pytestconfig.cache.set(cache_path, inv.json_dict())
 -    return inv

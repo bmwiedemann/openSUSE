@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-autodoc-typehints%{psuffix}
-Version:        1.19.2
+Version:        1.25.2
 Release:        0
 Summary:        Type hints (PEP 484) support for the Sphinx autodoc extension
 License:        MIT
@@ -38,9 +38,8 @@ Source:         https://files.pythonhosted.org/packages/source/s/sphinx_autodoc_
 # PATCH-FIX-OPENSUSE python-sphinx-autodoc-typehints-system-object.inv.patch gh#agronholm/sphinx-autodoc-typehints#174 mcepl@suse.com
 # Don't download inventory from the Internet, but use the local one.
 Patch0:         python-sphinx-autodoc-typehints-system-object.inv.patch
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 36.2.7}
-BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Jan 14 10:21:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.25.2:
+  * Allow Sphinx explicitly to write in parallel.
+  * Fixed crash when documenting ParamSpecArgs
+  * Fixed a bug where if a class has an attribute and a constructor
+    argument with the same name, the constructor argument
+    type would be rendered incorrectly (issue 308)
+  * Fixed napoleon handling of numpy docstrings with no specified
+    return type.
+  * Fix a `Field list ends without a blank line` warning (issue 305).
+  * More robust determination of rtype location / fix issue 302
+  * Improvements to the location of the return type
+  * Use format_annotation to render class attribute type annotations
+  * Fix overloads support
+  * Fix spacing between `:rtype:` and directives
+  * Handle types from types module
+  * If module is \_io, use io instead
+  * Put rtype before examples or usage section
+  * Remove redundant return type for attributes
+  * Handle collections.abc.Callable as well as typing.Callable
+  * Put Literal args in code blocks
+  * Fix Optional role to be data.
+  * Fixed default options not displaying for parameters without
+    type hints.
+  * Use hatchling instead of setuptools
+  * Add support for typing.ParamSpec
+  * Allow star prefixes for parameter names in docstring
+
+-------------------------------------------------------------------
 Fri Jul 21 12:06:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons, remove skip_python2
@@ -6,10 +36,10 @@ Fri Jul 21 12:06:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 -------------------------------------------------------------------
 Fri Oct  7 16:20:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.19.2 
+- Update to version 1.19.2
   * Fix incorrect domain used for collections.abc.Callable.
   * Support for CPython 3.11, no longer adds Optional when the argument is default
-  
+
 -------------------------------------------------------------------
 Thu Jul 14 16:34:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
@@ -100,7 +130,7 @@ Tue Aug  3 09:42:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Sat Apr 24 14:11:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove no-net-tests.patch as adding the fixed
-  python-sphinx-autodoc-typehints-system-object.inv.patch 
+  python-sphinx-autodoc-typehints-system-object.inv.patch
   makes tests requiring network working
   (gh#agronholm/sphinx-autodoc-typehints#174).
 
