@@ -104,4 +104,18 @@
   * Remove tests from pypi package</comment>
     <requestid>1088117</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>85b5ece0e3ef127fcc683f8612d12f4c</srcmd5>
+    <version>4.0.5</version>
+    <time>1705874926</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.5:
+  * Compatiblity fixes for Flask-SQLAlchemy &gt;= 3.1
+  * Allow process_revision_directives option to be configurable
+  * Stop testing Python 3.7, as Flask-SQLAlchemy 3.1 stopped
+    supporting it
+
+  * Stop building Python 3.6</comment>
+    <requestid>1140100</requestid>
+  </revision>
 </revisionlist>
