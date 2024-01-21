@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 21 10:36:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0:
+  * Drop support for Python 2.7, 3.5, 3.6.
+
+-------------------------------------------------------------------
 Mon Feb 20 07:30:20 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.6.1:
