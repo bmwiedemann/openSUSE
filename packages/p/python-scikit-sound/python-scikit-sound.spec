@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-sound
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-scikit-sound
-Version:        0.2.3
+Version:        0.2.13
 Release:        0
 Summary:        Python utilities for working with sound signals
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://work.thaslwanter.at/sksound/html
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-sound/scikit-sound-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -61,15 +61,16 @@ Scikit-sound contains functions for working with sound
 sed -i 's/\r$//' CHANGES.txt README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/sksound
+%{python_sitelib}/scikit_sound-%{version}.dist-info
 
 %changelog

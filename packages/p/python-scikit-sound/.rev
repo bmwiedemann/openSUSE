@@ -31,4 +31,22 @@
     <comment>- Remove unneeded BuildRequires on nose.</comment>
     <requestid>922454</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>60ef1cb0b929add62ae0d1809c5112c9</srcmd5>
+    <version>0.2.13</version>
+    <time>1705875004</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.13:
+  * try to keep file-/dir-selection windows in the front
+  * Exit gracefully if user cancels file selection
+  * updated docu; renamed self.info -&gt; self.ffmpeg_info
+  * left tkinter root window visible to avoid some crashes
+  * [erroneous fix]
+  * moved the tkinter root to the top to be visible
+  * fixed error in displayed name of out-file
+
+- Remove unneeded BuildRequires on nose.
+- skip python 36 build</comment>
+    <requestid>1140255</requestid>
+  </revision>
 </revisionlist>
