@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 20 12:35:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.2:
+  * fix: Remove internal use of transactions (added in 0.6.0),
+    because csvkit's csvsql already starts a transaction.
+  * feat: Add experimental support for Ingres.
+  * fix: Restore internal use of transactions instead of
+    savepoints, because not all database engines support
+    savepoints.
+- switch to PEP517 build
+
+-------------------------------------------------------------------
 Sat Dec  2 17:21:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.0:

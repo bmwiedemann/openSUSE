@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-sql
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-agate-sql
-Version:        0.7.0
+Version:        0.7.2
 Release:        0
 Summary:        SQL read/write support for agate
 License:        MIT
@@ -29,7 +28,9 @@ Source:         https://github.com/wireservice/agate-sql/archive/%{version}.tar.
 # we do not have crate dialect
 Patch0:         python-agate-sql-no-crate.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy
@@ -51,10 +52,10 @@ Agate-sql adds SQL read/write support to agate.
 sed -i -e '/^#!\//, 1d' agatesql/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +64,7 @@ sed -i -e '/^#!\//, 1d' agatesql/*.py
 %files %{python_files}
 %doc AUTHORS.rst README.rst CHANGELOG.rst
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/agatesql
+%{python_sitelib}/agate_sql-%{version}.dist-info
 
 %changelog
