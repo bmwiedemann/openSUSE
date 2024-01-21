@@ -823,4 +823,17 @@ fix a jira reference in the changelog.
     jsc#PED-6851</comment>
     <requestid>1132177</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>372ad1ec6ba3ee270e9a4c274c7185ba</srcmd5>
+    <version>10.0.0</version>
+    <time>1705874858</time>
+    <user>anag+factory</user>
+    <comment>Updated python bindings for libvirt 10.0.0
+
+- Update to 10.0.0
+  - Add all new APIs and constants in libvirt 10.0.0
+  - jsc#PED-3226, jsc#PED-3279, jsc#PED-4931, jsc#PED-5432,
+    jsc#PED-6851</comment>
+    <requestid>1139514</requestid>
+  </revision>
 </revisionlist>
