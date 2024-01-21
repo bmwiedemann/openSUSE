@@ -1,0 +1,56 @@
+From 0a3af211128567c437e68261a02591ffe2682d95 Mon Sep 17 00:00:00 2001
+From: Hugo van Kemenade <hugovk@users.noreply.github.com>
+Date: Thu, 6 Jan 2022 15:35:16 +0200
+Subject: [PATCH] Fix tests for Python 3.11 using teyit
+
+---
+ tests/test_colorize.py   |  2 +-
+ tests/test_dictconfig.py | 12 ++++++++----
+ 2 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/tests/test_colorize.py b/tests/test_colorize.py
+index b4f9fa6..b1a34b6 100644
+--- a/tests/test_colorize.py
++++ b/tests/test_colorize.py
+@@ -33,7 +33,7 @@ class ColorizeTest(unittest.TestCase):
+             try:
+                 logger.warning(u('Some unicode string'))
+                 logfile_handle.seek(0)
+-                self.assertTrue('Some unicode string' in logfile_handle.read())
++                self.assertIn('Some unicode string', logfile_handle.read())
+             finally:
+                 logger.removeHandler(handler)
+                 handler.close()
+diff --git a/tests/test_dictconfig.py b/tests/test_dictconfig.py
+index 3aee984..0cf4806 100644
+--- a/tests/test_dictconfig.py
++++ b/tests/test_dictconfig.py
+@@ -568,8 +568,10 @@ class ConfigDictTest(unittest.TestCase):
+             raise RuntimeError()
+         except RuntimeError:
+             logging.exception("just testing")
+-        self.assertEquals(h.formatted[0],
+-            "ERROR:root:just testing\nGot a [RuntimeError]")
++        self.assertEqual(
++            h.formatted[0],
++            'ERROR:root:just testing\nGot a [RuntimeError]'
++        )
+ 
+     def test_config4a_ok(self):
+         # A config specifying a custom formatter class.
+@@ -580,8 +582,10 @@ class ConfigDictTest(unittest.TestCase):
+             raise RuntimeError()
+         except RuntimeError:
+             logging.exception("just testing")
+-        self.assertEquals(h.formatted[0],
+-            "ERROR:root:just testing\nGot a [RuntimeError]")
++        self.assertEqual(
++            h.formatted[0],
++            'ERROR:root:just testing\nGot a [RuntimeError]'
++        )
+ 
+     def test_config5_ok(self):
+         self.test_config1_ok(config=self.config5)
+-- 
+2.42.0
+

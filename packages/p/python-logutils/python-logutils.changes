@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 18 19:39:04 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add logutils-pr1-fix-testasserts-py3.12.patch
+  * https://bitbucket.org/vinay.sajip/logutils/pull-requests/1
+  * Fixes the test suite. This package is really old but still
+    half-maintained
+- Switch to PEP517
+- Deduplicate files
+
+-------------------------------------------------------------------
 Fri Feb 17 12:31:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update path for SLE15
