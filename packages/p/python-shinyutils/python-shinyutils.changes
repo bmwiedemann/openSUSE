@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:02:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 12.4.0:
+  * raise `TypeError` if `SH` instance re-entered
+  * handle single command case in `run_prog`
+  * handle single unnamed command case in `run_prog`
+  * allow `run_prog` to run without sub-parsers for single
+    command programs
+  * add `add_short_full_helps` argument to `run_prog`
+  * add `run_prog` function
+  * add more arguments to `run_prog`
+  * allow specifying sub-commands with keyword arguments in
+    `run_prog`
+  * apply `add_short_full_helps` to subparsers in `run_prog`
+  * use `corgy 4.1` to support Python 3.7 and 3.8
+  * fix mock `trange` implementation
+  * update `corgy` to version 4.0
+  * simplify `NNTrainer` var names
+  * refactor `pt` based on latest `corgy`
+  * call `MatWrap.configure` in `PlottingArgs.__init__`
+  * mark wrapped names in `matwrap` as `Any` so `mypy` doesn't
+    complain
+  * refactor `pt` based on latest `corgy`
+  * simplify `NNTrainer` var names
+  * update `corgy` to version 2.4
+  * refactor `pt` to work better with `Corgy`
+  * make `MatWrap.mpl/plt/sns` properties
+  * replace `MatWrap.add_plotting_args` with `PlottingArgs` class
+  * disalbe auto calling `conf_logging` and add parse arguments
+    for it
+  * remove logng.build_log_argp
+  * make arguments to conf_logging keyword only
+  * rename 'color' dependency group to 'colors'
+  * remove plotting and pytorch dependency groups
+  * increase minimum Python version to 3.9
+  * add helps for argparse arguments
+  * make `MatWrap.mpl/plt/sns` properties
+  * make arguments to conf_logging keyword only
+  * refactor `pt` to work better with `Corgy`
+  * replace `MatWrap.add_plotting_args` with `PlottingArgs` class
+  * allow passing callback function to NNTrainer
+  * add sh module
+  * make matwrap.Plot save_file argument optional
+
+-------------------------------------------------------------------
 Wed Jul 14 10:38:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer build for python 3.6, as needed dependencies are not
