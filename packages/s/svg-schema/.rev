@@ -126,4 +126,15 @@ Several spec changes, but no version update:
  - Apply %fdupes macro only to %{buildroot}%{_docdir}</comment>
     <requestid>649216</requestid>
   </revision>
+  <revision rev="18" vrev="124">
+    <srcmd5>c417d237ab5eb064408cc764fe684e01</srcmd5>
+    <version>20030114</version>
+    <time>1705874827</time>
+    <user>anag+factory</user>
+    <comment>- Modernise spec file
+
+- Update urls to valid one and update REC-SVG11-20030114 zip file
+  with version including errata.</comment>
+    <requestid>1139945</requestid>
+  </revision>
 </revisionlist>
