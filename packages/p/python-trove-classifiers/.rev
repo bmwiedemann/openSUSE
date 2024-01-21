@@ -88,4 +88,13 @@
 - Update to version 2022.9.26</comment>
     <requestid>1135340</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5e2b2aa81568ce51239cf9256241c038</srcmd5>
+    <version>2024.1.8</version>
+    <time>1705874844</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.1.8:
+  * added more CAN classifiers</comment>
+    <requestid>1140257</requestid>
+  </revision>
 </revisionlist>
