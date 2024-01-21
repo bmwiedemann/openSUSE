@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 19 14:15:14 MST 2024 - carnold@suse.com
+
+- bsc#1218983 - [SLE15SP6] virt-manager:test testCLI0264virt_xml
+  fails with libvirt 10.0.0. Disable this test for now.
+  virt-manager.spec
+
+-------------------------------------------------------------------
 Mon Nov 20 15:01:59 MST 2023 - carnold@suse.com
 
 - Upstream bug fixes (bsc#1027942) (jsc#PED-6305)
