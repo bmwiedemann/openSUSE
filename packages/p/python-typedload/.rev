@@ -60,4 +60,13 @@
   * Switch to setuptools</comment>
     <requestid>1132841</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>36b9f4f654fedf32d0b69969ab27a948</srcmd5>
+    <version>2.27</version>
+    <time>1705875013</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.27:
+  * Add support for re.Patterns</comment>
+    <requestid>1140279</requestid>
+  </revision>
 </revisionlist>
