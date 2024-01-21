@@ -54,4 +54,16 @@
 - Initial package release.</comment>
     <requestid>1132855</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c2e1033b38393a04162b42331bbad87e</srcmd5>
+    <version>2024.1.10</version>
+    <time>1705875009</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.1.10:
+  * Support text rotation.
+  * Improve text rendering.
+  * Avoid array copies.
+  * Limit size read from files.</comment>
+    <requestid>1140267</requestid>
+  </revision>
 </revisionlist>
