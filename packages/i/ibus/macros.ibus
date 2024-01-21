@@ -5,7 +5,7 @@
 # Use %%ibus_table_requires as requires
 %_ibus_includedir	%{_includedir}/ibus-1.0
 %_ibus_libdir		%{_libdir}/ibus
-%_ibus_libexecdir	%{_ibus_libdir}
+%_ibus_libexecdir	%{_libexecdir}/ibus
 %_ibus_datadir		%{_datadir}/ibus
 %_ibus_componentdir	%{_ibus_datadir}/component
 %_ibus_enginedir	%{_ibus_datadir}/engine
