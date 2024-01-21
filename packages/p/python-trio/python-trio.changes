@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Jan 11 10:56:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- We don't need isort for the tests: Avoid it for Ring1
+- Clean dependencies
+
+-------------------------------------------------------------------
+Wed Jan  3 10:35:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.2:
+  * TypeVarTuple is now used to fully type
+    :meth:`nursery.start_soon() <trio.Nursery.start_soon>`,
+    :func:`trio.run()`, :func:`trio.to_thread.run_sync()`, and
+    other similar functions accepting (func, *args). This means
+    type checkers will be able to verify types are used
+    correctly. :meth:`nursery.start() <trio.Nursery.start>` is
+    not fully typed yet however. (#2881)
+  * Make pyright recognize :func:`open_memory_channel` as
+    generic. (#2873)
+    backlink Unknown interpreted text role "func".
+  * Make pyright recognize :func:`open_memory_channel` as
+    generic.
+  * Unknown interpreted text role "func".
+  * Moved the metadata into PEP 621-compliant
+    :file:`pyproject.toml`. (#2860)
+
+-------------------------------------------------------------------
+Tue Nov  7 15:06:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.1:
+  * Don't crash on import in Anaconda interpreters.
+  * Add type hints.
+  * When exiting a nursery block, the parent task always waits
+    for child tasks to exit. This wait cannot be cancelled. However,
+    previously, if you tried to cancel it, it *would* inject a
+    `Cancelled` exception, even though it wasn't cancelled.
+    Most users probably never noticed either way, but injecting a
+    `Cancelled` here is not really useful, and in some rare cases
+    caused confusion or problems, so Trio no longer does that.
+  * If called from a thread spawned by `trio.to_thread.run_sync`,
+    `trio.from_thread.run` and `trio.from_thread.run_sync` now
+    reuse the task and cancellation status of the host task;
+  * this means that context variables and cancel scopes naturally
+    propagate 'through' threads spawned by Trio. You can also use
+    `trio.from_thread.check_cancelled`
+    to efficiently check for cancellation without reentering the
+    Trio thread.
+  * :func:`trio.lowlevel.start_guest_run` now does a bit more
+    setup of the guest run before it returns to its caller,
+    so that the caller can immediately make calls to
+    :func:`trio.current_time`,
+    :func:`trio.lowlevel.spawn_system_task`,
+    :func:`trio.lowlevel.current_trio_token`, etc.
+  * When a starting function raises before calling
+    :func:`trio.TaskStatus.started`,
+    :func:`trio.Nursery.start` will no longer wrap the exception
+    in an undocumented :exc:`ExceptionGroup`.
+  * To better reflect the underlying thread handling semantics,
+    the keyword argument for `trio.to_thread.run_sync` that was
+    previously called ``cancellable`` is now named
+    ``abandon_on_cancel``.
+  * The old ``cancellable`` name is now deprecated.
+
+-------------------------------------------------------------------
+Tue Oct 31 15:56:49 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.22.2:
+  * Fix PermissionError when importing trio due to trying to
+    access pthread.
+  * Breaking change: Timeout functions now raise ValueError if
+    passed math.nan. This includes trio.sleep, trio.sleep_until,
+    trio.move_on_at, trio.move_on_after, trio.fail_at and
+    trio.fail_after.
+  * Added support for naming threads created with
+    trio.to_thread.run_sync, requires pthreads so is only
+    available on POSIX platforms with glibc installed.
+  * trio.socket.socket now prints the address it tried to connect
+    to upon failure.
+  * Fixed a crash that can occur when running Trio within an
+    embedded Python interpreter, by handling the TypeError that
+    is raised when trying to (re-)install a C signal handler.
+  * Fix sniffio.current_async_library() when Trio tasks are
+    spawned from a non-Trio context (such as when using
+    trio-asyncio). Previously, a regular Trio task would inherit
+    the non-Trio library name, and spawning a system task would
+    cause the non-Trio caller to start thinking it was Trio.
+  * Documented that Nursery.start_soon does not guarantee task
+    ordering.
+
+-------------------------------------------------------------------
 Tue Sep 19 14:51:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove buildrequires that are not used on sle15
