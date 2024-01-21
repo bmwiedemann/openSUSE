@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 20 12:28:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.45.0.0:
+  * Correctly handle NULL/None VFS filenames (:issue:`506`)
+
+-------------------------------------------------------------------
 Wed Jan  3 09:42:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools
