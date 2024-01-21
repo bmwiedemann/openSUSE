@@ -15,4 +15,22 @@
     <comment></comment>
     <requestid>1074482</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4694160aa5131e635eb7bda9babb89bc</srcmd5>
+    <version>0.7.0</version>
+    <time>1705875022</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.0:
+  * Add support for hashable dimension names
+  * Fix tests to be compatible with latest xarray
+  * Address numpy deprecation warnings
+  * `.ecdf` now returns a DataArray to be compatible with
+    `~xarray.Dataset.map` {pull}`47`
+  * Added `.linalg` and `.einops` accessors for `DataArray`
+    objects
+  * Update dependencies and follow new pylint recommendations
+  * Add documentation showing how to use accessors
+  * Ease running einops tutorial locally</comment>
+    <requestid>1140276</requestid>
+  </revision>
 </revisionlist>
