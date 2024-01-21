@@ -31,7 +31,7 @@ Source0:   ftp://ftp.mozilla.org/pub/mozilla.org/directory/perldap/releases/%{ve
 # Original from ftp://ftp.mozilla.org/pub/mozilla.org/directory/perldap/releases/1.5/src/Makefile.PL.rpm
 # Enhanced to support OpenLDAP
 Source1:   Makefile.PL.rpm
-Patch:     API.xs.patch
+Patch0:    API.xs.patch
 BuildRequires: perl >= 5.8.0
 BuildRequires: perl(ExtUtils::MakeMaker)
 BuildRequires: perl-macros
@@ -46,7 +46,7 @@ A perl LDAP module that wraps the OpenLDAP C SDK.
 
 %prep
 %setup -q -n perl-mozldap-%{version}
-%patch
+%patch0
 
 # Filter unwanted Provides:
 cat << \EOF > %{name}-prov
