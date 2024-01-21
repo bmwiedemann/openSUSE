@@ -505,6 +505,7 @@ Tue Jan 10 14:18:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 - update to 2.39.1:
   * [BUGFIX] Rules: Fix notifier relabel changing the labels on active alerts. #11427
 - update to 2.40.0:
+  * [SECURITY] CVE-2022-41715: Limit memory used by parsing regexps. (bsc#1204023).
   * [FEATURE] Add experimental support for native histograms. Enable with the flag --enable-feature=native-histograms. #11447
   * [FEATURE] SD: Add service discovery for OVHcloud. #10802
   * [ENHANCEMENT] Kubernetes SD: Use protobuf encoding. #11353
