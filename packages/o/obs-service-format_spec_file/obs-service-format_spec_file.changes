@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:25:24 UTC 2024 - dmueller@suse.com
+
+- Update to version 20240121:
+  * update licenses
+  * Fix formatting of overlong tags
+  * set header_name to the spec file name
+  * Sync licenses with SPDX spec
+
+-------------------------------------------------------------------
 Wed Jul 12 11:16:06 UTC 2023 - dmueller@suse.com
 
 - Update to version 20230712:
@@ -210,7 +219,7 @@ Mon Aug 25 05:13:17 UTC 2014 - coolo@suse.com
 -------------------------------------------------------------------
 Thu Aug 14 02:28:08 CEST 2014 - ro@suse.de
 
-- do not enter empty license line if not found (eg in include file) 
+- do not enter empty license line if not found (eg in include file)
 
 -------------------------------------------------------------------
 Wed Aug 13 11:21:40 CEST 2014 - ro@suse.de
@@ -511,18 +520,18 @@ Mon Aug  8 14:05:45 UTC 2011 - ro@suse.com
 Mon Aug  1 17:29:28 CEST 2011 - ro@suse.de
 
 - try to keep summary and group for cases like openldap2
-  (bnc#624980) 
+  (bnc#624980)
 
 -------------------------------------------------------------------
 Mon Jul  4 11:42:26 CEST 2011 - ro@suse.de
 
-- fix empty line handling (multiple subsequent empty lines) 
+- fix empty line handling (multiple subsequent empty lines)
 
 -------------------------------------------------------------------
 Mon Jul  4 00:16:05 CEST 2011 - ro@suse.de
 
 - leave Version lines intact (fix issue with multiple version
-  lines in a package, for example in if-constructs) 
+  lines in a package, for example in if-constructs)
 
 -------------------------------------------------------------------
 Fri Jun 17 07:27:18 UTC 2011 - coolo@novell.com
@@ -548,7 +557,7 @@ Wed May 25 14:00:35 CEST 2011 - ro@suse.de
 -------------------------------------------------------------------
 Wed May  4 01:55:04 CEST 2011 - ro@suse.de
 
-- cleanup prepare_spec, drop Needed.pm 
+- cleanup prepare_spec, drop Needed.pm
 - make it ready for public usage
 
 -------------------------------------------------------------------
