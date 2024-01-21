@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-panel%{psuffix}
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
