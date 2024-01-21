@@ -60,4 +60,17 @@
   * Python 3.12 support.</comment>
     <requestid>1129232</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>23154990fa6a0efd51dd81903b8c2058</srcmd5>
+    <version>1.5.9</version>
+    <time>1705874840</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.9:
+  * Fix patching an already running Proactor loop
+
+  * Add Python 3.11 support
+  * No release notes
+  * no release notes</comment>
+    <requestid>1140202</requestid>
+  </revision>
 </revisionlist>

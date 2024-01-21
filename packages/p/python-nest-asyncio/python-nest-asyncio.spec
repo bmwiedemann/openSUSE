@@ -1,7 +1,7 @@
 #
 # spec file for package python-nest-asyncio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nest-asyncio
-Version:        1.5.8
+Version:        1.5.9
 Release:        0
 Summary:        Patch asyncio to allow nested event loops
 License:        BSD-2-Clause
