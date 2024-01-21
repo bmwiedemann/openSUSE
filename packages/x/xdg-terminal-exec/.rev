@@ -77,4 +77,54 @@
 </comment>
     <requestid>1128631</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>34c7378ff79557c8f7acdeb4ac21cafa</srcmd5>
+    <version>20240120+git.efc3517</version>
+    <time>1705874981</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240120+git.efc3517:
+  * Validate only entry ID part of paths, fixes #48
+- Update to version 20231218+git.a09da69:
+  * Document cache behavior caveat
+  * tests: Don't implicitly test found entry order
+  * README: Document checking order of found entries
+  * find_entry_paths: Only use a single `find` call
+  * xdg-terminal-exec: Reverse entry data search order
+  * Fix typo
+  * xdg-terminal-exec: Simplify entry search
+  * [Breaking] Drop xdg-terminals dirs, discard explicit exec arg
+  * set umask when saving cache
+  * update readme
+  * cleanups
+  * improve debug, comments
+  * only validate entries from config, mass validate filenames with find
+  * aliases are not propagated to subshells in bash, future-proofing for cache
+  * xdg-terminal-exec: Introduce `error`
+  * xdg-terminal-exec: Don't check for duplicates
+  * xdg-terminal-exec: Fix matching &lt;hyphen-minus&gt;
+  * cleanups
+  * Fix undefined var
+  * Add XDG_CURRENT_DESKTOP to cache
+  * optimize contains(), case is awesome
+  * repeat small things from cache branch
+  * simplify id validator, relax config id pattern
+  * Cache tweaks, stricter entry IDs from configs
+  * wording sync
+  * Update readme
+  * save cmd late, invalidate cache by missing cmd early
+  * drop cache on missing command
+  * working cache
+  * initial funcions
+  * [Semi-Breaking] flexible directives
+  * drop /usr/etc from readme
+  * [Breaking] use stock applications by default
+  * action test fix
+  * formatting and debug
+  * ignore *ShowIn checks for explicitly selected entries, better debug
+  * change wording on non-conforming entry IDs
+  * add ID string validator
+  * Fix entry heirarchy precedence.
+</comment>
+    <requestid>1140218</requestid>
+  </revision>
 </revisionlist>
