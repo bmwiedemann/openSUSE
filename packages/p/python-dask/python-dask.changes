@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jan 20 12:31:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1.0:
+  * Released on January 12, 2024
+  * P2P rechunking now utilizes the relationships between input
+    and output chunks. For situations that do not require all-to-
+    all data transfer, this may significantly reduce the runtime
+    and memory/disk footprint. It also enables task culling.
+  * The fastparquet Parquet engine has been deprecated. Users
+    should migrate to the pyarrow engine by installing PyArrow
+    and removing engine="fastparquet" in read_parquet or
+    to_parquet calls.
+  * This release improves serialization robustness for arbitrary
+    data. Previously there were some cases where serialization
+    could fail for non-msgpack serializable data. In those cases
+    we now fallback to using pickle.
+  * Deprecate shuffle keyword in favour of shuffle_method for
+    DataFrame methods (:pr:`10738`) `Hendrik Makait`_
+  * Deprecate automatic argument inference in repartition
+  * Deprecate compute parameter in set_index
+  * Deprecate inplace in eval
+  * Deprecate Series.view
+  * Deprecate npartitions="auto" for set_index & sort_values
+
+-------------------------------------------------------------------
 Mon Dec 18 12:08:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.12.1:
