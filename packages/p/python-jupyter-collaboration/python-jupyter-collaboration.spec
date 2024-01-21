@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,10 @@
 %bcond_with test
 %endif
 
-%define python3distversion 1
+# Note that jupyter-collaboration v2 is not ready for production yet: It depends on pycrdt which is in incubation phase
+%define python3distversion 1.2.1
 Name:           python-jupyter-collaboration%{psuffix}
-Version:        1.0.0
+Version:        1.2.1
 Release:        0
 Summary:        Jupyter Server Extension Providing Y Documents
 License:        BSD-3-Clause
@@ -44,11 +45,12 @@ BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-collaboration = %{version}
-Requires:       python-jupyter_events
+Requires:       python-jsonschema >= 4.18.0
+Requires:       python-jupyter_events >= 0.7
 Requires:       (python-jupyter_server >= 2.0.0 with python-jupyter_server < 3.0.0)
-Requires:       (python-jupyter_server_fileid >= 0.6.0 with python-jupyter_server_fileid < 1)
+Requires:       (python-jupyter_server_fileid >= 0.7.0 with python-jupyter_server_fileid < 1)
 Requires:       (python-jupyter_ydoc >= 1.0.1 with  python-jupyter_ydoc < 2.0.0)
-Requires:       (python-ypy-websocket >= 0.8.3 with python-ypy-websocket < 0.9.0)
+Requires:       (python-ypy-websocket >= 0.12.1 with python-ypy-websocket < 0.13)
 Provides:       python-jupyter_collaboration = %{version}-%{release}
 Obsoletes:      python-jupyter-server-ydoc < 1
 Obsoletes:      python-jupyter_server_ydoc < 1
@@ -58,7 +60,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module jupyter-server-test >= 2}
 BuildRequires:  %{python_module jupyter_collaboration = %{version}}
 BuildRequires:  %{python_module pytest >= 7}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module websockets}
 %endif
 %python_subpackages
 
