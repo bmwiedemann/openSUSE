@@ -153,4 +153,16 @@
     including ``Seq``, ``SeqRecord``, and ``SeqIO``.</comment>
     <requestid>1135235</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fbe4a57bae07c4deede072b928376a25</srcmd5>
+    <version>1.83</version>
+    <time>1705874929</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.83:
+  * This release reverts the removal of the .strand, .ref, and
+    .ref_db attributes of the SeqFeature which was done without a
+    deprecation period. They are again aliases for
+    .location.strand etc, but trigger deprecation warnings.</comment>
+    <requestid>1140102</requestid>
+  </revision>
 </revisionlist>
