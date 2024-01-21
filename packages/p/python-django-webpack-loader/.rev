@@ -111,4 +111,14 @@
   * Add support for Django 5.0</comment>
     <requestid>1135233</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bed2e5b56fcfcb915474cf6a70e020cd</srcmd5>
+    <version>3.0.1</version>
+    <time>1705874924</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.1:
+  * Added `skip_common_chunks` option to the `get_files()`
+    template tag.</comment>
+    <requestid>1140103</requestid>
+  </revision>
 </revisionlist>
