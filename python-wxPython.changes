@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 15 16:29:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable python312 as valid multibuild flavor.
+
+-------------------------------------------------------------------
+Sat Jan  6 21:47:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update buildset:
+  * Tumbleweed: Prepare python312, drop python38
+  * 15.X: Prepare for "SLE15 Python module pythons" (The repository
+    does not have all the requirements yet to build)
+- Add 0001-wxWidgets-Phoenix-integer-division.patch
+  * Required for Python 3.12
+  * gh#wxWidgets/Phoenix#2508
+- Update requirements:
+  * This version requires Pillow again.
+  * Require numpy for all flavors: Add require-numpy.patch
+  * Upstream goes back and forth, see
+    https://github.com/wxWidgets/Phoenix/commits/master/requirements/install.txt
+- Repack the source: Remove stray wxWidgets-4.1.0 tree
+
+-------------------------------------------------------------------
 Wed Dec 27 07:37:06 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to fix building the package with
