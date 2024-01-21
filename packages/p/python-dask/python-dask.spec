@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,21 @@
 %define psuffix -test-py39
 %define skip_python310 1
 %define skip_python311 1
+%define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
 %define skip_python39 1
 %define skip_python311 1
+%define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py311"
 %define psuffix -test-py311
 %define skip_python39 1
 %define skip_python310 1
+%define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
@@ -43,7 +46,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.12.1
+Version:        2024.1.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
