@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 21 17:43:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- enable sle15 pythons build
+- use PEP517 build
+
+-------------------------------------------------------------------
 Sun Mar 19 08:24:52 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - Version 0.8.0
@@ -7,7 +13,7 @@ Sun Mar 19 08:24:52 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 -------------------------------------------------------------------
 Fri Aug 13 17:28:32 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
-- Version 0.7.2 
+- Version 0.7.2
   * Add support GooCanvas 3.0
   * Add selected text color property
   * Remove lighter background on event
@@ -69,9 +75,9 @@ Thu Aug 24 13:39:48 UTC 2017 - jmatejek@suse.com
 -------------------------------------------------------------------
 Tue Nov 29 16:01:43 UTC 2016 - axel.braun@gmx.de
 
-- Version 0.3 
+- Version 0.3
   * Add support for goocanvas >= 2.0
-  * Add colors and font-desc properties to Calendar 
+  * Add colors and font-desc properties to Calendar
 
 -------------------------------------------------------------------
 Fri Jul  1 09:21:25 UTC 2016 - axel.braun@gmx.de

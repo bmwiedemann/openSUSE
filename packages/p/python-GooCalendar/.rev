@@ -82,4 +82,17 @@
 </comment>
     <requestid>1073388</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>0e775ce637feb484b60236c0b5183a8f</srcmd5>
+    <version>0.8.0</version>
+    <time>1705875047</time>
+    <user>anag+factory</user>
+    <comment>- enable sle15 pythons build
+- use PEP517 build
+
+- Version 0.7.2
+- Version 0.3
+  * Add colors and font-desc properties to Calendar</comment>
+    <requestid>1140315</requestid>
+  </revision>
 </revisionlist>
