@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jan 21 13:25:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.4
+  * Fix _staring -> _starting #87 (@davidbrochart)
+- Release 0.12.3
+  * Add Django Channels consumer #84 (@zswaff)
+- Release 0.12.2
+  * Pin anyio<5 #83 (@davidbrochart)
+- Release 0.12.1
+  * Install typing_extensions for python<3.8 #82 (@davidbrochart)
+- Release 0.12.0
+  * Start store from room, start room from server #81
+    (@davidbrochart)
+- Release 0.11.1
+  * Type get_room as possible coroutine #80 (@davidbrochart)
+- Release 0.11.0
+  * Use AnyIO #77 (@davidbrochart)
+- Release 0.10.0
+  * Implement ASGI server #75 (@davidbrochart)
+- Release 0.9.0
+  + Use anyio instead of aiofiles #72 (@davidbrochart)
+  * Add license, URLs, classifiers #71 (@davidbrochart)
+
+-------------------------------------------------------------------
 Sun Jun 11 21:15:50 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.4
