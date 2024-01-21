@@ -196,4 +196,22 @@
     * Fix pathlib link in readme (#36)</comment>
     <requestid>1130855</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>460886738c88ad251d2aa66a68e7813e</srcmd5>
+    <version>24.1.17</version>
+    <time>1705874941</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.1.17:
+  * B038: Restrict rule to mutation functions only
+- update to 24.1.16:
+  * B036: Fix crash on ``raise`` statements raising something
+    other than
+- update to 24.1.15:
+  * B038: Add check for mutations of loop iterator
+  * B037: Add check for yielding or returning values in
+    __init__()
+  * B017: make B017 also apply to BaseException
+  * B036: Add check for except BaseException without re-raising</comment>
+    <requestid>1140112</requestid>
+  </revision>
 </revisionlist>

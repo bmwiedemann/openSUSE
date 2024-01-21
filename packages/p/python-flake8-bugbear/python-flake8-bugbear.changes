@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 20 13:07:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.1.17:
+  * B038: Restrict rule to mutation functions only
+- update to 24.1.16:
+  * B036: Fix crash on ``raise`` statements raising something
+    other than
+- update to 24.1.15:
+  * B038: Add check for mutations of loop iterator
+  * B037: Add check for yielding or returning values in
+    __init__()
+  * B017: make B017 also apply to BaseException
+  * B036: Add check for except BaseException without re-raising
+
+-------------------------------------------------------------------
 Mon Dec  4 21:33:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.12.2:
