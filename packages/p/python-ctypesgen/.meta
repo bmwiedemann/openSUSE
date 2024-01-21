@@ -1,0 +1,9 @@
+<package name="python-ctypesgen" project="openSUSE:Factory">
+  <title>Python wrapper generator for ctypes</title>
+  <description>ctypesgen is a pure-python ctypes wrapper generator. It parses C header files
+and creates a wrapper for libraries based on what it finds.
+
+</description>
+  <devel project="devel:languages:python" package="python-ctypesgen"/>
+  <url>https://github.com/ctypesgen/ctypesgen</url>
+</package>
