@@ -84,4 +84,17 @@
     <comment></comment>
     <requestid>1032040</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>39e4de22facbb92803701339e750193f</srcmd5>
+    <version>3.3.0</version>
+    <time>1705874967</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.0:
+  * Allow space character in exchange and queue names
+   * Convert AMQP timestamp property to handle milliseconds
+
+- Update to 3.2.1
+  * Add support for short-short-int and short-short-uint. (#33 - michal800106)</comment>
+    <requestid>1140205</requestid>
+  </revision>
 </revisionlist>

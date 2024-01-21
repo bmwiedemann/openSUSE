@@ -1,7 +1,7 @@
 #
 # spec file for package python-pamqp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pamqp
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Pure-python AMQP 0-9-1 frame encoder and decoder
 License:        BSD-3-Clause
