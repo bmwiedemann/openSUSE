@@ -1,7 +1,7 @@
 #
 # spec file for package python-overrides
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-overrides
-Version:        7.4.0
+Version:        7.5.0
 Release:        0
 Summary:        A decorator to automatically detect mismatch when overriding a method
 License:        Apache-2.0

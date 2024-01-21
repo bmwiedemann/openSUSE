@@ -16,4 +16,13 @@
   * Support PEP 604 _Allow writing union types as X | Y_</comment>
     <requestid>1132677</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa1eeffcd0fec3bdb7939acbbe0f1ebe</srcmd5>
+    <version>7.5.0</version>
+    <time>1705874962</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.5.0:
+  * Fix _is_same_module() on PyPy</comment>
+    <requestid>1140198</requestid>
+  </revision>
 </revisionlist>
