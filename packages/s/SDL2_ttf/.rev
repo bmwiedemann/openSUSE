@@ -86,4 +86,12 @@
     <comment>- Update to release 2.20.2</comment>
     <requestid>1063599</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d0abc03608c6f11bd1df5dd82ee1200c</srcmd5>
+    <version>2.22.0</version>
+    <time>1705875049</time>
+    <user>anag+factory</user>
+    <comment>- Update to relesae 2.22</comment>
+    <requestid>1140317</requestid>
+  </revision>
 </revisionlist>
