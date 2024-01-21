@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 19 21:01:47 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1705610500.1e9bfef6:
+  * git-subrepo: update external/os-autoinst-common
+  * Improve deletion of asset-symlinks
+  * Use signatures in some asset-related utility functions
+  * Remove obsolete entry from group_overview
+  * Refactor code for filter form on test result overview page
+  * Add comment text in filter form on test results overview page
+  * Document filter for comments on "All tests" page
+
+-------------------------------------------------------------------
 Tue Jan 16 15:37:15 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1705419426.44c52651:
