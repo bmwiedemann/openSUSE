@@ -75,4 +75,12 @@ Required to allow builds to complete.</comment>
     <comment>- Update to release 20231126</comment>
     <requestid>1129234</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e1264de6a72e52e70d356acb66bc37f7</srcmd5>
+    <version>20240120</version>
+    <time>1705874952</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240120</comment>
+    <requestid>1140085</requestid>
+  </revision>
 </revisionlist>

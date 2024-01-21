@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 20 10:56:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240120
+  * Support unpaired UTF-16 surrogates
+
+-------------------------------------------------------------------
 Mon Nov 27 19:32:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20231126
