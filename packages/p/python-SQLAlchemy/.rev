@@ -1209,4 +1209,15 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
   * https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.24</comment>
     <requestid>1135606</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>1878811951b6d52a9395d732d28dc485</srcmd5>
+    <version>2.0.25</version>
+    <time>1705874842</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.25:
+  * preliminary support for Python 3.12 pep-695 type alias
+    structures
+  * see https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.25</comment>
+    <requestid>1140252</requestid>
+  </revision>
 </revisionlist>
