@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:00:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.7.1
+  * Derive JupyterAsyncApp from JupyterApp #389 (@blink1073)
+- Release 5.7.0
+  * Modernize event loop behavior #387 (@blink1073)
+- Release 5.6.1
+  * Fix export of package version #386 (@blink1073)
+  * Revert "Enable async JupyterApp" #385 (@blink1073)
+- Release 5.6.0
+  * Enable async JupyterApp #381 (@blink1073)
+
+-------------------------------------------------------------------
 Sat Dec 23 19:23:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.5.1

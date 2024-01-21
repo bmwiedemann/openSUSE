@@ -261,4 +261,20 @@ Update to 4.6.1</comment>
     (@blink1073)</comment>
     <requestid>1134926</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>345e9d772924e87e0636d926c5cef7fd</srcmd5>
+    <version>5.7.1</version>
+    <time>1705874848</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.7.1
+  * Derive JupyterAsyncApp from JupyterApp #389 (@blink1073)
+- Release 5.7.0
+  * Modernize event loop behavior #387 (@blink1073)
+- Release 5.6.1
+  * Fix export of package version #386 (@blink1073)
+  * Revert &quot;Enable async JupyterApp&quot; #385 (@blink1073)
+- Release 5.6.0
+  * Enable async JupyterApp #381 (@blink1073)</comment>
+    <requestid>1140285</requestid>
+  </revision>
 </revisionlist>
