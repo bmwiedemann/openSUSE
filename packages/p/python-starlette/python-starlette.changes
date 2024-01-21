@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jan 13 20:43:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.35.1
+  * Stop using the deprecated "method" parameter in FileResponse
+    inside of StaticFiles #2406.
+  * Make typing-extensions optional again #2409.
+- Update to 0.35.0
+  * Add *args to Middleware and improve its type hints #2381.
+  * Use Iterable instead Iterator on iterate_in_threadpool #2362.
+  * Handle root_path to keep compatibility with mounted ASGI
+    applications and WSGI #2400.
+  * Turn scope["client"] to None on TestClient #2377.
+
+-------------------------------------------------------------------
+Fri Dec 29 10:02:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.34.0:
+  * Use `ParamSpec` for `run_in_threadpool` #2375.
+  * Add `UploadFile.__repr__` #2360.
+  * Merge URLs properly on `TestClient` #2376.
+  * Take weak ETags in consideration on `StaticFiles` #2334.
+  * Deprecate `FileResponse(method=...)` parameter #2366.
+  * Add `middleware` per `Route`/`WebSocketRoute` #2349.
+  * Add `middleware` per `Router` #2351.
+  * Do not overwrite `"path"` and `"root_path"` scope keys #2352.
+  * Set `ensure_ascii=False` on `json.dumps()` for
+    `WebSocket.send_json()` #2341.
+- update to 0.32.0.post1:
+  * Revert mkdocs-material from 9.1.17 to 9.4.7 #2326.
+- update to 0.32.0:
+  * Send `reason` on `WebSocketDisconnect` #2309.
+  * Add `domain` parameter to `SessionMiddleware` #2280.
+  * Inherit from `HTMLResponse` instead of `Response` on
+    `_TemplateResponse` #2274.
+  * Restore the `Response.render` type annotation to its
+    pre-0.31.0 state #2264.
+
+-------------------------------------------------------------------
 Wed Nov 22 17:27:05 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Override pytest configuration to do not handle warnings as errors.
@@ -82,14 +120,14 @@ Fri Mar 10 11:36:42 UTC 2023 - David Anes <david.anes@suse.com>
   * Fixed
     - Allow "name" argument on url_for() and url_path_for() #2050.
   * Deprecated
-    - Deprecate on_startup and on_shutdown events #2070. 
+    - Deprecate on_startup and on_shutdown events #2070.
 
 -------------------------------------------------------------------
 Thu Feb 16 16:22:35 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.25.0:
   * Fixed
-    - Limit the number of fields and files when parsing 
+    - Limit the number of fields and files when parsing
     multipart/form-data on the MultipartParser.
 
 - Fixed upstream: reenable tests for tests for i586 and armv7l.
@@ -136,7 +174,7 @@ Tue Dec 13 08:27:49 UTC 2022 - David Anes <david.anes@suse.com>
   * Fixed
     - Fix bug on FloatConvertor regex.
 
-- Fix test package by adding 'exceptiongroup' python module as a 
+- Fix test package by adding 'exceptiongroup' python module as a
   build dependency.
 
 -------------------------------------------------------------------
@@ -172,7 +210,7 @@ Thu Sep 29 08:19:37 UTC 2022 - Michael Ströder <michael@stroeder.com>
 -------------------------------------------------------------------
 Thu Aug 11 05:22:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded BuildRequires on contextlib2. 
+- Remove unneeded BuildRequires on contextlib2.
 
 -------------------------------------------------------------------
 Fri Aug  5 11:37:43 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
@@ -267,7 +305,7 @@ Wed Feb 23 01:08:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
     on the system. This fixes an error raised on systems with FIPS
     enabled #1366 and #1410.
   * Fix path_params type on url_path_for() method i.e. turn str into Any #1341.
-  * Host now ignores port on routing #1322. 
+  * Host now ignores port on routing #1322.
 - Set asyncio_mode when running pytest, and stop turning warnings into
   errors.
 
@@ -370,4 +408,4 @@ Wed Dec  2 14:49:51 UTC 2020 - Michael Ströder <michael@stroeder.com>
 Sat Sep  5 11:33:42 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - initial packaging of 0.13.8
- 
+
