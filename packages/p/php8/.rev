@@ -651,4 +651,16 @@
     https://www.php.net/ChangeLog-8.php#8.2.14</comment>
     <requestid>1136160</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>271a39af65f0b906d34a20cd8b3a9ee7</srcmd5>
+    <version>8.2.15</version>
+    <time>1705874866</time>
+    <user>anag+factory</user>
+    <comment>- version update to 8.2.15
+  * This is a bug fix release.
+- modified patches
+  % php-ar-flags.patch (refreshed)
+  % php-build-reproducible-phar.patch (refreshed)</comment>
+    <requestid>1139795</requestid>
+  </revision>
 </revisionlist>

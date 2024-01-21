@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 18 18:01:47 UTC 2024 - pgajdos@suse.com
+
+- version update to 8.2.15
+  * This is a bug fix release.
+- modified patches
+  % php-ar-flags.patch (refreshed)
+  % php-build-reproducible-phar.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue Jan  2 11:40:49 UTC 2024 - pgajdos@suse.com
 
 - version update to 8.2.14
