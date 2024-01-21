@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-bugbear
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8-bugbear
-Version:        23.12.2
+Version:        24.1.17
 Release:        0
 Summary:        A plugin for flake8 finding likely bugs and design problems in your program
 License:        MIT
