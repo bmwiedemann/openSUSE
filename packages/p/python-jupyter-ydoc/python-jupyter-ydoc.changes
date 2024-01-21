@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 21 13:17:27 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Disable tests for jupyter-collaboration and ypy-websocket
+  update gh#jupyter-server/jupyter_ydoc#211
+
+-------------------------------------------------------------------
 Sat Oct  7 13:45:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.1
