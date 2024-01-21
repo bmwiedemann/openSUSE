@@ -1,0 +1,170 @@
+diff -Nraub citra-nightly1803.ori/src/audio_core/hle/hle.cpp citra-nightly1803/src/audio_core/hle/hle.cpp
+--- citra-nightly1803.ori/src/audio_core/hle/hle.cpp	2022-11-11 18:36:00.828217582 -0400
++++ citra-nightly1803/src/audio_core/hle/hle.cpp	2022-11-11 21:52:25.444448998 -0400
+@@ -179,6 +179,7 @@
+         return 1;
+     default:
+         UNREACHABLE();
++        return 1;
+         break;
+     }
+ }
+diff -Nraub citra-nightly1803.ori/src/core/file_sys/archive_backend.cpp citra-nightly1803/src/core/file_sys/archive_backend.cpp
+--- citra-nightly1803.ori/src/core/file_sys/archive_backend.cpp	2022-11-11 18:36:00.836217599 -0400
++++ citra-nightly1803/src/core/file_sys/archive_backend.cpp	2022-11-11 21:52:25.446449002 -0400
+@@ -91,6 +91,7 @@
+     }
+ 
+     UNREACHABLE();
++    return {};
+ }
+ 
+ std::vector<u8> Path::AsBinary() const {
+diff -Nraub citra-nightly1803.ori/src/core/hle/kernel/memory.cpp citra-nightly1803/src/core/hle/kernel/memory.cpp
+--- citra-nightly1803.ori/src/core/hle/kernel/memory.cpp	2022-11-11 18:36:00.839217605 -0400
++++ citra-nightly1803/src/core/hle/kernel/memory.cpp	2022-11-11 21:52:25.448449006 -0400
+@@ -99,6 +99,7 @@
+         return memory_regions[2];
+     default:
+         UNREACHABLE();
++        return memory_regions[0];
+     }
+ }
+ 
+diff -Nraub citra-nightly1803.ori/src/core/hle/kernel/object.cpp citra-nightly1803/src/core/hle/kernel/object.cpp
+--- citra-nightly1803.ori/src/core/hle/kernel/object.cpp	2022-11-11 18:36:00.839217605 -0400
++++ citra-nightly1803/src/core/hle/kernel/object.cpp	2022-11-11 21:52:25.450449011 -0400
+@@ -35,6 +35,7 @@
+     }
+ 
+     UNREACHABLE();
++    return false;
+ }
+ 
+ } // namespace Kernel
+diff -Nraub citra-nightly1803.ori/src/core/hle/kernel/resource_limit.cpp citra-nightly1803/src/core/hle/kernel/resource_limit.cpp
+--- citra-nightly1803.ori/src/core/hle/kernel/resource_limit.cpp	2022-11-11 18:36:00.839217605 -0400
++++ citra-nightly1803/src/core/hle/kernel/resource_limit.cpp	2022-11-11 21:52:25.452449015 -0400
+@@ -32,6 +32,7 @@
+     default:
+         LOG_CRITICAL(Kernel, "Unknown resource limit category");
+         UNREACHABLE();
++        return resource_limits[static_cast<u8>(category)];
+     }
+ }
+ 
+diff -Nraub citra-nightly1803.ori/src/core/hle/kernel/shared_page.cpp citra-nightly1803/src/core/hle/kernel/shared_page.cpp
+--- citra-nightly1803.ori/src/core/hle/kernel/shared_page.cpp	2022-11-11 18:36:00.839217605 -0400
++++ citra-nightly1803/src/core/hle/kernel/shared_page.cpp	2022-11-11 21:52:25.453449017 -0400
+@@ -51,6 +51,7 @@
+         return std::chrono::seconds(Settings::values.init_time);
+     default:
+         UNREACHABLE_MSG("Invalid InitClock value ({})", Settings::values.init_clock);
++        return std::chrono::seconds(Settings::values.init_time);
+     }
+ }
+ 
+diff -Nraub citra-nightly1803.ori/src/core/hle/service/dsp/dsp_dsp.cpp citra-nightly1803/src/core/hle/service/dsp/dsp_dsp.cpp
+--- citra-nightly1803.ori/src/core/hle/service/dsp/dsp_dsp.cpp	2022-11-11 18:36:00.842217611 -0400
++++ citra-nightly1803/src/core/hle/service/dsp/dsp_dsp.cpp	2022-11-11 21:52:25.456449023 -0400
+@@ -328,6 +328,7 @@
+     }
+     }
+     UNREACHABLE_MSG("Invalid interrupt type = {}", type);
++    return interrupt_zero;
+ }
+ 
+ bool DSP_DSP::HasTooManyEventsRegistered() const {
+diff -Nraub citra-nightly1803.ori/src/core/hle/service/fs/fs_user.cpp citra-nightly1803/src/core/hle/service/fs/fs_user.cpp
+--- citra-nightly1803.ori/src/core/hle/service/fs/fs_user.cpp	2022-11-11 18:36:00.843217613 -0400
++++ citra-nightly1803/src/core/hle/service/fs/fs_user.cpp	2022-11-11 21:52:25.459449029 -0400
+@@ -856,6 +856,7 @@
+         return MakeResult(static_cast<u16>(NCSDContentIndex::DLP));
+     default:
+         ASSERT(false);
++        return MakeResult(static_cast<u16>(NCSDContentIndex::DLP));
+     }
+ }
+ 
+diff -Nraub citra-nightly1803.ori/src/core/hle/service/mic_u.cpp citra-nightly1803/src/core/hle/service/mic_u.cpp
+--- citra-nightly1803.ori/src/core/hle/service/mic_u.cpp	2022-11-11 18:36:00.844217616 -0400
++++ citra-nightly1803/src/core/hle/service/mic_u.cpp	2022-11-11 21:52:25.466449043 -0400
+@@ -56,6 +56,7 @@
+         return 32728;
+     default:
+         UNREACHABLE();
++        return 1;
+     }
+ }
+ 
+diff -Nraub citra-nightly1803.ori/src/core/memory.cpp citra-nightly1803/src/core/memory.cpp
+--- citra-nightly1803.ori/src/core/memory.cpp	2022-11-11 18:36:00.846217620 -0400
++++ citra-nightly1803/src/core/memory.cpp	2022-11-11 21:52:25.464449039 -0400
+@@ -128,6 +128,7 @@
+             return n3ds_extra_ram.get();
+         default:
+             UNREACHABLE();
++            return NULL;
+         }
+     }
+ 
+@@ -143,6 +144,7 @@
+             return N3DS_EXTRA_RAM_SIZE;
+         default:
+             UNREACHABLE();
++            return 1;
+         }
+     }
+ 
+diff -Nraub citra-nightly1803.ori/src/video_core/rasterizer_cache/texture_runtime.cpp citra-nightly1803/src/video_core/rasterizer_cache/texture_runtime.cpp
+--- citra-nightly1803.ori/src/video_core/rasterizer_cache/texture_runtime.cpp	2022-11-11 18:36:00.851217630 -0400
++++ citra-nightly1803/src/video_core/rasterizer_cache/texture_runtime.cpp	2022-11-11 21:52:25.468449048 -0400
+@@ -18,6 +18,7 @@
+     case Aspect::DepthStencil:
+         return GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT;
+     }
++    return 0 ;
+ }
+ 
+ TextureRuntime::TextureRuntime() {
+diff -Nraub citra-nightly1803.ori/src/video_core/regs_framebuffer.h citra-nightly1803/src/video_core/regs_framebuffer.h
+--- citra-nightly1803.ori/src/video_core/regs_framebuffer.h	2022-11-11 18:36:00.851217630 -0400
++++ citra-nightly1803/src/video_core/regs_framebuffer.h	2022-11-11 21:52:25.470449052 -0400
+@@ -264,6 +264,7 @@
+         }
+ 
+         ASSERT_MSG(false, "Unknown depth format {}", format);
++        return 1;
+     }
+ 
+     // Returns the number of bits per depth component of the specified depth format
+diff -Nraub citra-nightly1803.ori/src/video_core/swrasterizer/framebuffer.cpp citra-nightly1803/src/video_core/swrasterizer/framebuffer.cpp
+--- citra-nightly1803.ori/src/video_core/swrasterizer/framebuffer.cpp	2022-11-11 18:36:00.853217634 -0400
++++ citra-nightly1803/src/video_core/swrasterizer/framebuffer.cpp	2022-11-11 21:52:25.472449056 -0400
+@@ -357,6 +357,7 @@
+     }
+ 
+     UNREACHABLE();
++    return 1;
+ };
+ 
+ // Decode/Encode for shadow map format. It is similar to D24S8 format, but the depth field is in
+diff -Nraub citra-nightly1803.ori/src/video_core/swrasterizer/texturing.cpp citra-nightly1803/src/video_core/swrasterizer/texturing.cpp
+--- citra-nightly1803.ori/src/video_core/swrasterizer/texturing.cpp	2022-11-11 18:36:00.853217634 -0400
++++ citra-nightly1803/src/video_core/swrasterizer/texturing.cpp	2022-11-11 21:52:25.476449064 -0400
+@@ -88,6 +88,7 @@
+     }
+ 
+     UNREACHABLE();
++    return values.bbb();
+ };
+ 
+ u8 GetAlphaModifier(TevStageConfig::AlphaModifier factor, const Common::Vec4<u8>& values) {
+@@ -120,6 +121,7 @@
+     }
+ 
+     UNREACHABLE();
++    return values.b();
+ };
+ 
+ Common::Vec3<u8> ColorCombine(TevStageConfig::Operation op, const Common::Vec3<u8> input[3]) {

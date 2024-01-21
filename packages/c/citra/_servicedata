@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/citra-emu/citra.git</param>
+              <param name="changesrevision">11baa40d75d8a479bd738a05e91bba6f09856fe5</param></service><service name="tar_scm">
+                <param name="url">https://github.com/citra-emu/citra-nightly.git</param>
+              <param name="changesrevision">f44c95d6384e4bcda79efe0b3b2ddd8413bfb496</param></service></servicedata>
