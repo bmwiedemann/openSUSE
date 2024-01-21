@@ -1,7 +1,7 @@
 #
 # spec file for package python-shinyutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-shinyutils
-Version:        3.1.0
+Version:        12.4.0
 Release:        0
 Summary:        Various utilities for Python
 License:        MIT
 URL:            https://github.com/jayanthkoushik/shinyutils
 Source:         https://files.pythonhosted.org/packages/source/s/shinyutils/shinyutils-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-crayons
@@ -56,15 +56,17 @@ matplotlib, subclasses, argument parsing, and logging.
 %setup -q -n shinyutils-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%doc README.md
+%doc README.md CHANGELOG.md
 %license LICENSE
-%{python_sitelib}/*
+%exclude %{python_sitelib}/CHANGELOG.md
+%{python_sitelib}/shinyutils
+%{python_sitelib}/shinyutils-%{version}.dist-info
 
 %changelog
