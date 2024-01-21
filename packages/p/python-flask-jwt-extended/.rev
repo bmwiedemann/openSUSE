@@ -37,4 +37,20 @@
   * Relax dependency pinning for cryptography package (#467)</comment>
     <requestid>1093727</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2614ad1557584c463d3690acb3bf2157</srcmd5>
+    <version>4.6.0</version>
+    <time>1705874948</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.0:
+  * Bump cryptography from 41.0.4 to 41.0.6
+  * Do not check JWT_TOKEN_LOCATION when testing if
+    cookie_csrf_protect is enabled
+- update to 4.5.3:
+  * Replace &quot;defining&quot; with &quot;define&quot;
+  * Fix documentation syntax error
+  * remove duplicate comments
+  * Support python 3.12 and add support for flask 3.0</comment>
+    <requestid>1140113</requestid>
+  </revision>
 </revisionlist>
