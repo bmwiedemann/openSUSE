@@ -1,7 +1,7 @@
 #
 # spec file for package python-elasticsearch-dsl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,18 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-elasticsearch-dsl
-Version:        8.11.0
+Version:        8.12.0
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elasticsearch/elasticsearch-dsl-py
 Source:         https://github.com/elastic/elasticsearch-dsl-py/archive/refs/tags/v%{version}.tar.gz#/elasticsearch-dsl-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # gh#elastic/elasticsearch-dsl-py#1569
@@ -47,10 +50,10 @@ Python client for Elasticsearch.
 %autosetup -p1 -n elasticsearch-dsl-py-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,7 +62,7 @@ Python client for Elasticsearch.
 %files %{python_files}
 %doc AUTHORS Changelog.rst README
 %license LICENSE
-%{python_sitelib}/elasticsearch_dsl/
-%{python_sitelib}/elasticsearch_dsl-%{version}*-info/
+%{python_sitelib}/elasticsearch_dsl
+%{python_sitelib}/elasticsearch_dsl-%{version}.dist-info
 
 %changelog

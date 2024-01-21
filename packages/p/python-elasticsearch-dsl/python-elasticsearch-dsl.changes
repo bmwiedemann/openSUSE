@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 20 12:39:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.12.0:
+  * Added Search.knn() method
+  * Added Search.rank() method (undocumented as it still is in
+    technical preview)
+  * Fixed importing collapse from dictionary
+
+-------------------------------------------------------------------
 Mon Nov 27 18:55:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.11.0:
