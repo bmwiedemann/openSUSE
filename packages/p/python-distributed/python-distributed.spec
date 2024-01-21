@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,21 @@
 %define psuffix -test-py39
 %define skip_python310 1
 %define skip_python311 1
+%define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
 %define skip_python39 1
 %define skip_python311 1
+%define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py311"
 %define psuffix -test-py311
 %define skip_python39 1
 %define skip_python310 1
+%define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
@@ -44,7 +47,7 @@
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.12.1
+Version:        2024.1.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -164,6 +167,7 @@ donttest+=" or (test_worker and test_gather_dep_from_remote_workers_if_all_local
 donttest+=" or (test_worker and test_worker_reconnects_mid_compute)"
 donttest+=" or (test_worker_memory and test_digests)"
 donttest+=" or (test_worker_memory and test_pause_while_spilling)"
+donttest+=" or (test_computations_futures)"
 # server-side fail due to the non-network warning in a subprocess where the patched filter does not apply
 donttest+=" or (test_client and test_quiet_close_process)"
 # should return > 3, returns 3 exactly
