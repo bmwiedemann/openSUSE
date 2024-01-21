@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 20 12:25:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.5:
+  * Compatiblity fixes for Flask-SQLAlchemy >= 3.1
+  * Allow process_revision_directives option to be configurable
+  * Stop testing Python 3.7, as Flask-SQLAlchemy 3.1 stopped
+    supporting it
+
+-------------------------------------------------------------------
 Sun May 21 09:11:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.4:
@@ -8,7 +17,7 @@ Sun May 21 09:11:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Switch to pytest as test runner
   * Support "check" command
   * Do not use deprecated functions in Flask-SQLAlchemy 3.0
-  * Stop building Python 3.6 
+  * Stop building Python 3.6
   * Remove tests from pypi package
 
 -------------------------------------------------------------------
