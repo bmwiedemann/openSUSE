@@ -548,4 +548,41 @@
   * Support Python 3.12 changes.</comment>
     <requestid>1129879</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>f6a10ee58a7686e27176d271b5ba3b1c</srcmd5>
+    <version>0.34.3</version>
+    <time>1705874878</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.34.3:
+  * Fix security issue in the wsgi module related to RFC 9112
+  * Fix segfault, a new approach for greening existing locks
+  * greendns: fix getaddrinfo parameter name
+  * Fix deprecation warning on ssl.PROTOCOL_TLS
+  * Pytests, fix error at teardown of
+    TestGreenSocket.test_full_duplex
+  * Skip test which uses Py cgi module
+  * Drop old code based on python &lt; 3.7
+  * Allowing inheritance of GreenSSLSocket without overriding the
+    __new_ method https://github.com/eventlet/eventlet/pull/796
+  * [bug] Fix broken API related to `__version__` removal
+  * [doc] Fix pypi broken link
+  * 0.34.1
+  * [bug] Fix memory leak in greendns
+  * [infra] Fix OIDC authentication failure
+  * [bug] Ignore asyncore and asynchat for Python 3.12+
+  * 0.34.0 (Not released on Pypi)
+  * Dropped support for Python 3.6 and earlier.
+  * Fix Python 3.13 compat by adding missing attibute
+    '_is_main_interpreter'
+  * Add support of Python 3.12
+  * Drop unmaintained and unused stdlib tests
+  * Fix tests and CI for Python 3.7 and higher
+  * Stop claiming to create universal wheels
+  * Fix green logging locks for Python versions &lt;= 3.10
+- switch to PEP517 build
+- cleanup tests
+- drop support-python3.12.patch, denose-eventlet.patch:
+  solved differently upstream</comment>
+    <requestid>1139942</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jan 19 08:47:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.34.3:
+  * Fix security issue in the wsgi module related to RFC 9112
+  * Fix segfault, a new approach for greening existing locks
+  * greendns: fix getaddrinfo parameter name
+  * Fix deprecation warning on ssl.PROTOCOL_TLS
+  * Pytests, fix error at teardown of
+    TestGreenSocket.test_full_duplex
+  * Skip test which uses Py cgi module
+  * Drop old code based on python < 3.7
+  * Allowing inheritance of GreenSSLSocket without overriding the
+    __new_ method https://github.com/eventlet/eventlet/pull/796
+  * [bug] Fix broken API related to `__version__` removal
+  * [doc] Fix pypi broken link
+  * 0.34.1
+  * [bug] Fix memory leak in greendns
+  * [infra] Fix OIDC authentication failure
+  * [bug] Ignore asyncore and asynchat for Python 3.12+
+  * 0.34.0 (Not released on Pypi)
+  * Dropped support for Python 3.6 and earlier.
+  * Fix Python 3.13 compat by adding missing attibute
+    '_is_main_interpreter'
+  * Add support of Python 3.12
+  * Drop unmaintained and unused stdlib tests
+  * Fix tests and CI for Python 3.7 and higher
+  * Stop claiming to create universal wheels
+  * Fix green logging locks for Python versions <= 3.10
+- switch to PEP517 build
+- cleanup tests
+- drop support-python3.12.patch, denose-eventlet.patch:
+  solved differently upstream
+- drop python-eventlet-FTBFS2028.patch fix-py3-rlock.patch:
+  upstream
+
+-------------------------------------------------------------------
 Thu Nov 30 04:41:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python3.12.patch:
@@ -44,7 +80,7 @@ Sat Jan 28 12:30:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Tue Jan 17 16:55:46 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-py3-rlock.patch to make the code compatible with python 3.11,
-  gh#eventlet/eventlet#754 
+  gh#eventlet/eventlet#754
 
 -------------------------------------------------------------------
 Fri Dec  9 10:16:59 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
@@ -54,7 +90,7 @@ Fri Dec  9 10:16:59 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Sat Dec  3 05:14:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v0.33.2 
+- Update to v0.33.2
   * Stop using deprecated threading APIs
     Way back in py26, snake_case alternatives were added for the old
     camelCase APIs. py310 started emitting DeprecationWarnings about them;
@@ -138,18 +174,18 @@ Thu Dec 10 22:43:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 Mon Dec  7 00:14:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.29.1
-  * patcher: [py27] recursion error in pytest/python2.7 installing 
+  * patcher: [py27] recursion error in pytest/python2.7 installing
     register_at_fork
-  * patcher: monkey_patch(builtins=True) failed on py3 because 
+  * patcher: monkey_patch(builtins=True) failed on py3 because
     `file` class is gone
-  * don't crash on PyPy 7.0.0   
-  * Only install monotonic on python2 
+  * don't crash on PyPy 7.0.0
+  * Only install monotonic on python2
 - Changes for 0.29.0
   * ssl: context wrapped listener fails accept()
 - Changes for 0.28.1
   * Clean up TypeError in __del__
 - Changes for 0.28.0
-  * Always remove the right listener from the hub 
+  * Always remove the right listener from the hub
     gh#enventlet/eventlet#645
 - Changes for 0.27.0
   * patcher: Clean up threading book-keeping at fork when
