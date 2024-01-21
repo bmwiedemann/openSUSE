@@ -269,4 +269,14 @@
     False in Argh v.0.33 or v.1.0.</comment>
     <requestid>1137646</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3902438df48f2173ff444526a5b72d34</srcmd5>
+    <version>0.31.1</version>
+    <time>1705874922</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.31.1:
+  * broken support for type alias `List`
+  * cleaned up the README, rearranged other documentation.</comment>
+    <requestid>1140108</requestid>
+  </revision>
 </revisionlist>
