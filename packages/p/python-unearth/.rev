@@ -79,4 +79,21 @@
   * Match index url with the same netloc</comment>
     <requestid>1130709</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>41ecf5127537785c4993014343b301e4</srcmd5>
+    <version>0.14.0</version>
+    <time>1705874992</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.0:
+  * Extract the wheel tag validation method
+  * Remove the hashes argument from PackageFinder.build_evaluator
+    that is deprecated before
+  * Drop support for Python 3.7
+  * Add PyPI as the default index in PackageFinder
+  * Add a default timeout to the session
+  * Support fetching from Git refs
+  * Update hg.py to use the commit hash instead of the local
+    identity</comment>
+    <requestid>1140258</requestid>
+  </revision>
 </revisionlist>
