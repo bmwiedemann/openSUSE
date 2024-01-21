@@ -95,4 +95,34 @@
   * No upstream changelog available</comment>
     <requestid>1056715</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>836246d4c6f88af48bc151b7d765ff5c</srcmd5>
+    <version>1.11.0</version>
+    <time>1705874967</time>
+    <user>anag+factory</user>
+    <comment>- update 1.11.0:
+  * modutils: mark as deprecated all code that is going to be removed
+  * textutils: add support for background colors
+  * update logging colors scheme to match modern pratice
+
+  * No upstream changelog available
+- Update to 1.9.7
+  * Add header_message in ConfigurationMixIn.generate_config
+         available on debian buste
+  * add a with_tempdir decorator ensuring all temporary files and
+  * improve DotBackend configuration. graphiz rendered can now be
+  * clcommands: commands may be hidden (eg not displayed in help),
+    generic ListCommandsCommand useful to build bash completion
+  * changelog: module to parse ChangeLog file as this one,
+  * date: new nb_open_days function counting worked days between
+  * testlib: introduce InnerTest class to name generative tests,
+  * shellutils: use shutil.move instead of os.rename as default
+    avoiding potential bugs with inheritance when using cached class
+    correctly its &quot;version&quot; argument)
+    functions in favor of new function shellutils.find
+  * compat: use the set module when available, added sorted()
+  * tree: renamed leafs() to leaves()
+- remove noarch for now</comment>
+    <requestid>1140204</requestid>
+  </revision>
 </revisionlist>

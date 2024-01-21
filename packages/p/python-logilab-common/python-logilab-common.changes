@@ -1,20 +1,28 @@
 -------------------------------------------------------------------
+Sat Jan 20 19:35:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update 1.11.0:
+  * modutils: mark as deprecated all code that is going to be removed
+  * textutils: add support for background colors
+  * update logging colors scheme to match modern pratice
+
+-------------------------------------------------------------------
 Fri Jan  6 21:58:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.8:
-  * No upstream changelog available 
+  * No upstream changelog available
 
 -------------------------------------------------------------------
 Thu Sep 29 14:53:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.9.7 
+- Update to 1.9.7
   No log
 
 -------------------------------------------------------------------
 Mon Feb 14 21:46:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.3:
-  * Add header_message in ConfigurationMixIn.generate_config 
+  * Add header_message in ConfigurationMixIn.generate_config
   * configuration: better error message
   * rql repo has been moved
   * add test on python3.8
@@ -26,7 +34,7 @@ Mon Mar  8 08:40:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * feature: add tox helpers to make pipy and debian releases
   * fix: use TypedDict if python version > 3.8 only, otherwise use a Dict
          (TypedDict were imported from typing_extension 3.7.4, which is not
-         available on debian buste 
+         available on debian buste
 
 -------------------------------------------------------------------
 Sat Dec 19 13:21:12 UTC 2020 - Dirk Müller <dmueller@suse.com>
@@ -482,9 +490,9 @@ Fri Aug 22 14:53:25 CEST 2008 - garloff@suse.de
 
 - Update to 0.34.0:
   * changelog properly adds new line at the end of each entry
-  * add a with_tempdir decorator ensuring all temporary files and 
+  * add a with_tempdir decorator ensuring all temporary files and
     dirs are removed
-  * improve DotBackend configuration. graphiz rendered can now be 
+  * improve DotBackend configuration. graphiz rendered can now be
     selected and additionnal graph parameter used
   * db: support of Decimal Type
 - Update to 0.33.0:
@@ -514,13 +522,13 @@ Fri Aug 22 14:53:25 CEST 2008 - garloff@suse.de
   * pytest: pytestconf.py for customization
 - Update to 0.30.0:
   * db: remember logged user on the connection
-  * clcommands: commands may be hidden (eg not displayed in help), 
-    generic ListCommandsCommand useful to build bash completion 
+  * clcommands: commands may be hidden (eg not displayed in help),
+    generic ListCommandsCommand useful to build bash completion
     helpers
-  * changelog: module to parse ChangeLog file as this one, 
+  * changelog: module to parse ChangeLog file as this one,
     backported from logilab.devtools
 - Update to 0.29.1:
-  * date: new nb_open_days function counting worked days between 
+  * date: new nb_open_days function counting worked days between
     two dates
   * adbh: add -p option to mysql commands to ask for password
 - Update to 0.29.0:
@@ -531,7 +539,7 @@ Fri Aug 22 14:53:25 CEST 2008 - garloff@suse.de
 - Update to 0.28.2:
   * testlib: restore python2.3 compatiblity
 - Update to 0.28.1:
-  * testlib: introduce InnerTest class to name generative tests, 
+  * testlib: introduce InnerTest class to name generative tests,
      fix generative tests description storage
   * pytest: fix -s option
   * modutils: included Stefan Rank's patch to deal with 2.4 relative import
@@ -599,21 +607,21 @@ Tue Jul 17 01:31:39 CEST 2007 - garloff@suse.de
   * fix a bug which provoqued a crash if devtools was not installed
 - Update to 0.22.0:
   * pytest improvements
-  * shellutils: use shutil.move instead of os.rename as default 
+  * shellutils: use shutil.move instead of os.rename as default
     action of mv
   * db: new `list_users` and `sql_drop_unique_constraint` methods i
     on advanced helpers
   * deprecation: new `obsolete` decorator
 - Update to 0.21.3:
   * fixed cached decorator to use __dict__ instead of attribute lookup,
-    avoiding potential bugs with inheritance when using cached class 
+    avoiding potential bugs with inheritance when using cached class
     methods
 - Update to 0.21.2:
   * fix ReST normalization (#3471)
 - Update to 0.21.1:
   * tree: make Node iterable (iter on its children)
   * configuration: fix #3197 (OptionsManagerMixin __init__ isn't passing
-    correctly its "version" argument) 
+    correctly its "version" argument)
   * textutils: new 'rest' argument to normalize_text to better deal with
     ReST formated text
   * some packaging fixes
@@ -626,7 +634,7 @@ Tue Jul 17 01:31:39 CEST 2007 - garloff@suse.de
     module. At this occasion new "decorators" and "deprecation" modules
     has been added
   * deprecated fileutils.[files_by_ext,include_files_by_ext,exclude_files_by_ext]
-    functions in favor of new function shellutils.find	
+    functions in favor of new function shellutils.find
   * mark the following modules for deprecation, they will be removed in a
     near version:
     - astutils: moved to astng
@@ -774,15 +782,15 @@ Mon Dec 19 23:52:40 CET 2005 - garloff@suse.de
 
 - Update to 0.12.0:
   * shellutils: bug fix in mv()
-  * compat: use the set module when available, added sorted() 
+  * compat: use the set module when available, added sorted()
     and reversed()
   * table: new methods and some optimizations
-  * tree: renamed leafs() to leaves() 
+  * tree: renamed leafs() to leaves()
 
 -------------------------------------------------------------------
 Sat Aug 13 00:51:31 CEST 2005 - ro@suse.de
 
-- remove noarch for now 
+- remove noarch for now
 
 -------------------------------------------------------------------
 Wed Aug  3 02:27:56 CEST 2005 - garloff@suse.de
