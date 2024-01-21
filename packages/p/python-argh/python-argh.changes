@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 20 12:41:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31.1:
+  * broken support for type alias `List`
+  * cleaned up the README, rearranged other documentation.
+
+-------------------------------------------------------------------
 Mon Jan  8 21:09:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.31.0:
