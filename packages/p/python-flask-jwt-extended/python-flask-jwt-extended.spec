@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-jwt-extended
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-flask-jwt-extended
-Version:        4.5.2
+Version:        4.6.0
 Release:        0
 Summary:        A Flask extension that provides JWT support
 License:        MIT
@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-JWT-Exten
 BuildRequires:  %{python_module Flask >= 1.0}
 BuildRequires:  %{python_module PyJWT >= 2.0}
 BuildRequires:  %{python_module Werkzeug >= 0.14}
-BuildRequires:  %{python_module cryptography >= 3.0}
+BuildRequires:  %{python_module cryptography >= 41.0.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
@@ -38,7 +38,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 1.0
 Requires:       python-PyJWT >= 2.0
 Requires:       python-Werkzeug >= 0.14
-Suggests:       python-cryptography >= 3.0
+Suggests:       python-cryptography >= 41.0.6
 BuildArch:      noarch
 %python_subpackages
 
