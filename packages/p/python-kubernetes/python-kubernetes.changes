@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 18 19:52:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add kubernetes-client-python-pr2178-assertEqual-py312.patch
+  gh#kubernetes-client/python#2178 fixing a python3.12 test error
+- Remove deprecated setup.py usage, switch to PEP517
+
+-------------------------------------------------------------------
 Wed Nov  1 13:56:47 UTC 2023 - Alexandre Almeida <me@aoalmeida.com>
 
 - Remove upper version bound for urllib3 
