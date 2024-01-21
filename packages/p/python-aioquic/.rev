@@ -82,4 +82,19 @@
     <comment></comment>
     <requestid>1133422</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7e2f5114b465172b5c413e572db7ba73</srcmd5>
+    <version>0.9.25</version>
+    <time>1705874942</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.25:
+  * Add parsing and serialization for certificate requests
+  * Allow clients to authenticate with servers using a certificate
+  * Close connection if client's first INITIAL contains no CRYPTO
+  * Exclude binary packet captures from spelling check
+  * Added support for cubic congestion control (RFC9438)
+  * Drop httpbin from HTTP/3 server demo
+  * Raise a TLS alert if parsing a message causes a BufferReadError</comment>
+    <requestid>1140132</requestid>
+  </revision>
 </revisionlist>

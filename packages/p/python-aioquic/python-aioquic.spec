@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioquic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aioquic
-Version:        0.9.23
+Version:        0.9.25
 Release:        0
 Summary:        Python implementation of QUIC and HTTP/3
 License:        BSD-3-Clause
