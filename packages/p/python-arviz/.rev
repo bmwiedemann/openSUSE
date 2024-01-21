@@ -91,4 +91,30 @@
   * Rerun Numba notebook</comment>
     <requestid>1100895</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a4f480c2f992ff3332a7f8a2b0e4d8e7</srcmd5>
+    <version>0.17.0</version>
+    <time>1705874933</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.17.0:
+  * Add prior sensitivity diagnostic `psens`
+  * Add filter_vars functionality to
+    `InfereceData.to_dataframe`method
+  * Update requirements: matplotlib&gt;=3.5, pandas&gt;=1.4.0,
+    numpy&gt;=1.22.0
+  * Fix behaviour of `plot_ppc` when dimension order isn't
+    `chain, draw, ...`
+  * Avoid repeating the variable name in `plot_ppc`,
+    `plot_bpv`, `plot_loo_pit`... when repeated.
+  * Add support for the latest CmdStanPy.
+  * Fix import error on windows due to missing encoding
+    argument
+  * Add ``__delitem__`` method to InferenceData
+  * Improve the docstring of `psislw`
+  * Rerun the quickstart and working with InferenceData notebooks
+  * Several fixes in `plot_ppc` docstring
+
+- No longer skip Python 3.8 and 3.11.</comment>
+    <requestid>1140110</requestid>
+  </revision>
 </revisionlist>
