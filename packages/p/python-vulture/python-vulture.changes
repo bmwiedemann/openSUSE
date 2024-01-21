@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:11:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.11:
+  * Switch to tomllib/tomli to support heterogeneous arrays
+  * Bump flake8, flake8-comprehensions and flake8-bugbear
+  * Provide whitelist parity for `MagicMock` and `Mock`
+
+-------------------------------------------------------------------
 Wed Dec 27 16:54:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10:
