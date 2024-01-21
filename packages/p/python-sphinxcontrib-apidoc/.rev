@@ -61,4 +61,20 @@
 - drop sphinx72.patch (upstream)</comment>
     <requestid>1115778</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ea624750a0087cf7d5296fe890daf744</srcmd5>
+    <version>0.5.0</version>
+    <time>1705874844</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.0:
+  * Added quote marks to indicate default template dir is a
+    string
+  * Removed more white space to match required style
+  * Removed white space screwing with PR linter
+  * Added description of apidoc\_template\_dir option to README
+  * Added missed line in patch for templates support
+  * Added support for autodoc --templatedir option
+  * Use release/v1 branch of pypi release workflow</comment>
+    <requestid>1140271</requestid>
+  </revision>
 </revisionlist>
