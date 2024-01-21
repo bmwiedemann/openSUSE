@@ -114,4 +114,19 @@
   * Add ``min_col_len`` and ``col_len_multiplier`` options to</comment>
     <requestid>1130497</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7bde26cb1120d3f459f335c21f354a41</srcmd5>
+    <version>0.7.2</version>
+    <time>1705874931</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.2:
+  * fix: Remove internal use of transactions (added in 0.6.0),
+    because csvkit's csvsql already starts a transaction.
+  * feat: Add experimental support for Ingres.
+  * fix: Restore internal use of transactions instead of
+    savepoints, because not all database engines support
+    savepoints.
+- switch to PEP517 build</comment>
+    <requestid>1140104</requestid>
+  </revision>
 </revisionlist>
