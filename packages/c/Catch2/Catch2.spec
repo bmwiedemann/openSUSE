@@ -18,7 +18,7 @@
 
 %define __builder ninja
 Name:           Catch2
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD
 License:        BSL-1.0

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 19 18:58:25 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.5.2:
+  * Fixed -Wsubobject-linkage in the Console reporter
+    (gh#catchorg/Catch2#2794).
+  * Fixed adding new CLI Options to lvalue parser using |
+    (gh#catchorg/Catch2#2787).
+
+-------------------------------------------------------------------
 Tue Jan  2 12:15:06 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.5.1:
