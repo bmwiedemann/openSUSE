@@ -1,7 +1,7 @@
 #
 # spec file for package python-comm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-comm
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Jupyter Python Comm implementation
 License:        BSD-3-Clause

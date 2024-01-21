@@ -43,4 +43,14 @@
     <comment>- add sle15_python_module_pythons</comment>
     <requestid>1131028</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>43bab8e4e72c9148ef75f3b4f00da8f8</srcmd5>
+    <version>0.2.1</version>
+    <time>1705874847</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.1
+  * Prevent exception spam during interpreter teardown #24
+    (@apmorton)</comment>
+    <requestid>1140284</requestid>
+  </revision>
 </revisionlist>

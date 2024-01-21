@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 21 10:55:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2.1
+  * Prevent exception spam during interpreter teardown #24
+    (@apmorton)
+
+-------------------------------------------------------------------
 Tue Dec  5 16:53:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons
