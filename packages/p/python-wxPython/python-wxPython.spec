@@ -1,7 +1,7 @@
 #
-# spec file for package python-wxPython
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,9 +45,6 @@ ExclusiveArch:  donotbuild
 # Extraneous build_flavors and skips are excluded automatically so future
 # additions can be included here early and old flavors can be removed some time
 # after the global drop in Factory.
-%if "%flavor" != "python38"
-%define skip_python38 1
-%endif
 %if "%flavor" != "python39"
 %define skip_python39 1
 %endif
@@ -57,13 +54,21 @@ ExclusiveArch:  donotbuild
 %if "%flavor" != "python311"
 %define skip_python311 1
 %endif
+%if "%flavor" != "python312"
+%define skip_python312 1
+%endif
 %else
-# SLE/Leap: python3 only
-%if "%flavor" != "python3"
-%define pythons %{nil}
-%else
+# SLE/Leap
+%if "%flavor" == "python3"
+# python3 is the old 3.6
 %define pythons python3
 %define python3_provides %{nil}
+%else
+%{?sle15_python_module_pythons}
+%if "%flavor" != "%pythons"
+# sle15_python_module_pythons defines the flavor, otherwise don't build
+%define pythons %{nil}
+%endif
 %endif
 %endif
 # The obs server-side interpreter cannot use lua or rpm shrink
@@ -95,6 +100,8 @@ Patch1:         0001-Update-wxTextCtrl-OSX-overrides-since-they-re-now-do.patch
 Patch2:         0001-Handle-wxGLCanvas-CreateSurface-which-is-only-availa.patch
 # PATCH-FIX-UPSTREAM https://github.com/wxWidgets/Phoenix/pull/2497
 Patch3:         0001-Support-building-with-Doxygen-1.9.7.patch
+# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/Phoenix/pull/2508
+Patch4:         0001-wxWidgets-Phoenix-integer-division.patch
 # PATCH-FIX-OPENSUSE
 Patch12:        use_stl_build.patch
 # PATCH-FIX-UPSTREAM - https://github.com/wxWidgets/Phoenix/pull/2232
@@ -103,9 +110,11 @@ Patch13:        0003-Make-pip-usage-in-wxget-optional.patch
 Patch14:        0004-Fix-time_t-ETG-typedef-extend-DateTime.FromTimeT-tes.patch
 # PATCH-FIX-OPENSUSE - Test fixes/additions:
 Patch112:       0001-Check-HSV-values-in-image-test.patch
+# PATCH-FIX-OPENSUSE - Numpy for Python 3.12 is a thing
+Patch113:       require-numpy.patch
+# TODO: Replace deprecated setup.py calls in build.py with PEP517 without building wxWidgets into the wheel
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -134,6 +143,8 @@ BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xtst)
 %endif
+Requires:       %{pprefix}-Pillow
+Requires:       %{pprefix}-numpy
 Requires:       %{pprefix}-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -147,6 +158,7 @@ Provides:       %{python_provides}-wxWidgets = %{version}
 Obsoletes:      %{python_provides}-wxPython < %{version}-%{release}
 %endif
 %if %{with test}
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-xdist}
@@ -307,7 +319,7 @@ mv wx_temp wx
 %python_alternative %{_bindir}/wxdemo
 %python_alternative %{_bindir}/wxdocs
 %python_alternative %{_bindir}/wxget
-%{python_sitearch}/wxPython-*-py*.egg-info
+%{python_sitearch}/wxPython-%{version}-py*.egg-info
 %{python_sitearch}/wx/
 %if %{without syswx}
 %exclude %{python_sitearch}/wx/locale/
