@@ -1,7 +1,7 @@
 #
 # spec file for package svg-schema
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,22 +36,21 @@ Version:        20030114
 Release:        0
 Summary:        SVG DTD and RELAX NG Schema
 License:        BSD-3-Clause
-Group:          Productivity/Graphics/Other
-URL:            http://www.w3.org/Graphics/SVG/
-Source0:        http://www.w3.org/TR/2001/REC-SVG-20010904/REC-SVG-20010904.zip
-Source1:        http://www.w3.org/TR/SVG11/REC-SVG11-20030114.zip
+URL:            https://www.w3.org/Graphics/SVG/
+Source0:        https://www.w3.org/TR/2001/REC-SVG-20010904/REC-SVG-20010904.zip
+Source1:        https://www.w3.org/TR/2003/REC-SVG11-20030114/REC-SVG11-20030114.zip
 Source2:        CATALOG.svg-1.0
 Source3:        CATALOG.svg-1.1
 Source4:        svg-1.0.xml
 Source5:        svg-1.1.xml
-Source10:       http://www.w3.org/Graphics/SVG/1.1/rng/rng.zip
+Source10:       https://www.w3.org/Graphics/SVG/1.1/rng/rng.zip
 BuildRequires:  fdupes
 BuildRequires:  sgml-skel >= 0.7
 BuildRequires:  unzip
 Requires:       sgml-skel >= 0.7
 Requires(post): libxml2-tools
 Requires(post): sgml-skel >= 0.7
-Requires(postun): sgml-skel >= 0.7
+Requires(postun):sgml-skel >= 0.7
 Provides:       svg-dtd = %{version}
 BuildArch:      noarch
 
@@ -72,7 +71,7 @@ Group:          Productivity/Graphics/Other
 SVG DTD and RELAX NG Schema Documentation in HTML
 
 %prep
-%setup -q -c -T
+%autosetup -c -T
 unzip -q -a %{SOURCE1}
 unzip -q -a %{SOURCE0} -d svg-dtd-20010904
 unzip -q -a %{SOURCE10} -d rng11
