@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jan 20 11:28:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.11
+  ## Security fixes
+  * Potential authentication and CSRF tokens leak in JupyterLab
+    (GHSA-44cc-43rp-5947) CVE-2024-22421
+  * SXSS in Markdown Preview (GHSA-4m77-cmpx-vjc4) CVE-2024-22420
+  ## Bugs fixed
+  Fixes focus indicator on input checkbox for Firefox #15612
+  (@alden-ilao)
+- Update to 4.0.10
+  ##  Bugs fixed
+  * Backport PR #15386: Improve scrolling to heading #15565
+    (@krassowski)
+  * Workaround focus leaving input box on consecutive submissions
+    #15479 (@krassowski)
+  * Fix search coming back in notebook and editor #15443
+    (@krassowski)
+  * Fix jupyter labextension watch --help #15542 (@akx)
+  * Fix FormComponent showing error indicators in all fields when
+    using a customValidate function #15464 (@mmichilot)
+  * Fix Shift + L not working in stdin #15440 (@krassowski)
+
+-------------------------------------------------------------------
 Sun Nov 26 14:54:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.9
