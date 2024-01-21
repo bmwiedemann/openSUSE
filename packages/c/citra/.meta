@@ -1,0 +1,6 @@
+<package name="citra" project="openSUSE:Factory">
+  <title>citra</title>
+  <description>Citra is an open-source Nintendo 3DS emulator and debugger, written with portability in mind.</description>
+  <devel project="Emulators" package="citra"/>
+  <url>https://citra-emu.org/</url>
+</package>
