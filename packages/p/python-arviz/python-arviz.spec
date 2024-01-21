@@ -1,7 +1,7 @@
 #
 # spec file for package python-arviz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %define modname arviz
+%{?sle15_python_module_pythons}
 Name:           python-arviz
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 Summary:        Exploratory analysis of Bayesian models
 License:        Apache-2.0
@@ -34,7 +35,7 @@ BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module h5netcdf}
 BuildRequires:  %{python_module matplotlib >= 3.5}
 BuildRequires:  %{python_module numba}
-BuildRequires:  %{python_module numpy >= 1.20.0}
+BuildRequires:  %{python_module numpy >= 1.22.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 1.4.0}
 BuildRequires:  %{python_module pytest >= 0.23}
@@ -48,8 +49,8 @@ BuildRequires:  %{python_module zarr}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-h5netcdf
-Requires:       python-matplotlib >= 3.2
-Requires:       python-numpy >= 1.20.0
+Requires:       python-matplotlib >= 3.5
+Requires:       python-numpy >= 1.22.0
 Requires:       python-packaging
 Requires:       python-pandas >= 1.4.0
 Requires:       python-scipy >= 1.8.0
