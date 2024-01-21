@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:39:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.14.2 via 7.14.1, 7.14.0
+  * Fix broken image scaling in case a custom width or height is
+    provided for the image #2094 (@AndSte01)
+  * Convert coalescese_streams function to
+    CoalesceStreamsPreprocessor #2089 (@ryan-williams)
+  * Fix webpdf test on Python 3.12 #2088 (@blink1073)
+
+-------------------------------------------------------------------
 Thu Dec 28 15:21:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.13.1
