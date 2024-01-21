@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 19 21:31:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable libjxl integration as ffmpeg-5 cannot handle libjxl>=0.9.
+
+-------------------------------------------------------------------
 Wed Dec  6 08:50:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Copy codec list from ffmpeg-6

@@ -186,4 +186,12 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
     <comment>- Copy codec list from ffmpeg-6</comment>
     <requestid>1131457</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>ff36af687f2050c01b76032433dfa22f</srcmd5>
+    <version>5.1.4</version>
+    <time>1705874901</time>
+    <user>anag+factory</user>
+    <comment>- Disable libjxl integration as ffmpeg-5 cannot handle libjxl&gt;=0.9.</comment>
+    <requestid>1140025</requestid>
+  </revision>
 </revisionlist>
