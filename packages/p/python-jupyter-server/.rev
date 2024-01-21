@@ -644,4 +644,13 @@
   * Force legacy ws subprotocol when using gateway #1311 (@epignot)</comment>
     <requestid>1138728</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a60b9ee0e3164ccc5e1d84c1431bfe61</srcmd5>
+    <version>2.12.5</version>
+    <time>1705875018</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.12.5
+  * Improve warning handling #1386 (@blink1073)</comment>
+    <requestid>1140283</requestid>
+  </revision>
 </revisionlist>
