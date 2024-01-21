@@ -1,7 +1,7 @@
 #
 # spec file for package python-quantities
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-quantities
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Package for physical quantities with units
 License:        BSD-3-Clause
