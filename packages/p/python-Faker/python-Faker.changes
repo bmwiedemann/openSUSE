@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 20 19:22:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.4.0:
+  * Add `fa_IR` localization for currency provider. Thanks
+    @parsariyahi.
+  * Add bank provider for `uk_UA`. Thanks @SanderFtn.
+  * Add bank provider for `cs_CZ`. Thanks @george0st.
+
+-------------------------------------------------------------------
 Mon Jan  8 21:00:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.1.0:
