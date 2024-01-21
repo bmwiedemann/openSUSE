@@ -1,0 +1,13 @@
+Index: qpdf-11.8.0/qpdf/qtest/qpdf/fuzz-16214.out
+===================================================================
+--- qpdf-11.8.0.orig/qpdf/qtest/qpdf/fuzz-16214.out
++++ qpdf-11.8.0/qpdf/qtest/qpdf/fuzz-16214.out
+@@ -9,7 +9,7 @@ WARNING: fuzz-16214.pdf (object 14 0, of
+ WARNING: fuzz-16214.pdf: file is damaged
+ WARNING: fuzz-16214.pdf (object 1 0, offset 7189): expected n n obj
+ WARNING: fuzz-16214.pdf: Attempting to reconstruct cross-reference table
+-WARNING: fuzz-16214.pdf (offset 7207): error decoding stream data for object 2 0: stream inflate: inflate: data: invalid code lengths set
++WARNING: fuzz-16214.pdf (offset 7207): error decoding stream data for object 2 0: stream inflate: inflate: data: Operation-Ending-Supplemental Code is 0x27
+ WARNING: fuzz-16214.pdf (offset 7207): getStreamData called on unfilterable stream
+ WARNING: fuzz-16214.pdf (object 11 0, offset 11551): supposed object stream 5 has wrong type
+ WARNING: fuzz-16214.pdf (object 11 0, offset 11551): object stream 5 has incorrect keys

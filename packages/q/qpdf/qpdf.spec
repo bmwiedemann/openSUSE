@@ -1,7 +1,7 @@
 #
 # spec file for package qpdf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_version 29
 Name:           qpdf
-Version:        11.7.0
+Version:        11.8.0
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
@@ -27,6 +27,10 @@ URL:            https://qpdf.sourceforge.io/
 Source:         https://github.com/qpdf/qpdf/releases/download/v%{version}/qpdf-%{version}.tar.gz
 Source1:        https://github.com/qpdf/qpdf/releases/download/v%{version}/qpdf-%{version}.tar.gz.asc
 Source2:        qpdf.keyring
+#PATCH-FIX-SUSE temporary workaround for openssl 3.2 bsc#1218902
+%ifarch s390x
+Patch1:         openssl3_2-fuzz-16214.patch
+%endif
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -83,7 +87,7 @@ This packages contains the shared libraries required for the qpdf
 package.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %global optflags %optflags -fexcess-precision=fast
