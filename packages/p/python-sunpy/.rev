@@ -252,4 +252,33 @@
     <comment></comment>
     <requestid>1128614</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2a750bb34e1747152532f305e0c1f282</srcmd5>
+    <version>5.1.1</version>
+    <time>1705875006</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.1:
+  * Add an example of plotting a rectangle on a map with a
+    rotation angle relative to the axes (:ref:`sphx_glr_generated
+    _gallery_plotting_plot_rotated_rectangle.py`).
+  * Added testing and explicit support for Python 3.12.
+  * When calling :meth:`sunpy.map.GenericMap.rotate` on an
+    integer data array, with missing set to NaN (the default
+    value), the method will now itself raise an informative error
+    message instead deferring to NumPy to raise the error.
+  * Fixed the usage of :meth:`~sunpy.map.GenericMap.superpixel`
+    in :ref:`sphx_glr_generated_gallery_map_map_resampling_and_su
+    perpixels.py`.
+  * Added Clarification on setting JSOC Email.
+  * Added explanation text to :ref:`sphx_glr_generated_gallery_pl
+    otting_plotting_blank_map.py` about the offset between &quot;(0,
+    0)&quot; in helioprojective coordinates and the heliographic
+    equator.
+  * The delim_whitespace keyword in pandas.read_csv is deprecated
+    and was updated with sep='\s+'. This should have no affect on
+    the output of the code.
+  * Fixed an environment-specific failure of a unit test for
+    :meth:`sunpy.coordinates.Helioprojective.is_visible`.</comment>
+    <requestid>1140256</requestid>
+  </revision>
 </revisionlist>
