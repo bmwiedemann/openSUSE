@@ -1,7 +1,7 @@
 #
 # spec file for package python-logging-journald
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-logging-journald
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        Pure python logging handler for writing logs to the journald using native protocol
 License:        MIT
