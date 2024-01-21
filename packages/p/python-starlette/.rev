@@ -276,4 +276,12 @@ https://build.opensuse.org/request/show/1126958
 </comment>
     <requestid>1128182</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c3534e072031ed5620b9445b7f718cae</srcmd5>
+    <version>0.35.1</version>
+    <time>1705874857</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138590</requestid>
+  </revision>
 </revisionlist>
