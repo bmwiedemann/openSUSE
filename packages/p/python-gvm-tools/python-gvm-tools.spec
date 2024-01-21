@@ -1,7 +1,7 @@
 #
 # spec file for package python-gvm-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?sle15_python_module_pythons}
 %global skip_python39 1
 Name:           python-gvm-tools
-Version:        23.11.0
+Version:        24.1.0
 Release:        0
 Summary:        Tools to control a GSM/GVM over GMP or OSP
 License:        GPL-3.0-or-later
