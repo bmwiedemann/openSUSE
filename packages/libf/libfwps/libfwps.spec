@@ -1,7 +1,7 @@
 #
 # spec file for package libfwps
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libfwps
 %define lname	libfwps1
-Version:        20231126
+Version:        20240120
 Release:        0
 Summary:        Library for Windows Property Store data types
 License:        LGPL-3.0-or-later
@@ -31,14 +31,14 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libcdata) >= 20230108
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libclocale) >= 20221218
-BuildRequires:  pkgconfig(libcnotify) >= 20220108
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfdatetime) >= 20220112
-BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libfole) >= 20220115
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcthreads) >= 2024012
+BuildRequires:  pkgconfig(libfdatetime) >= 20240115
+BuildRequires:  pkgconfig(libfguid) >= 20240116
+BuildRequires:  pkgconfig(libfole) >= 20240119
 BuildRequires:  pkgconfig(libuna) >= 20230710
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
