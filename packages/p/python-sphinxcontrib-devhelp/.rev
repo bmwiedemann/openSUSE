@@ -35,4 +35,12 @@
   * Raise minimum required Sphinx version to 5.0</comment>
     <requestid>1109520</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5d88dcb0bd02b925896ecf7ea5ad2856</srcmd5>
+    <version>1.0.6</version>
+    <time>1705874846</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1140274</requestid>
+  </revision>
 </revisionlist>
