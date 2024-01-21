@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -171,7 +171,6 @@ BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
 %if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(librist)
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
@@ -599,7 +598,6 @@ LDFLAGS="%_lto_cflags" \
 	--enable-libgsm \
 	--enable-libjack \
 %if 0%{?suse_version} >= 1550
-	--enable-libjxl \
 	--enable-librist \
 %endif
 	--enable-libmp3lame \
