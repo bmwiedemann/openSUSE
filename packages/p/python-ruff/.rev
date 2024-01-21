@@ -435,4 +435,41 @@
    * [pylint] Fix __aenter__ message in unnecessary-dunder-call</comment>
     <requestid>1138846</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>adaaef8935b1eef7bf979c52e948d8e2</srcmd5>
+    <version>0.1.14</version>
+    <time>1705875044</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.14
+ * Preview features
+   * [flake8-bugbear] Add fix for duplicate-value (B033) 
+   * [flake8-simplify] Implement enumerate-for-loop (SIM113) 
+   * [pygrep_hooks] Add fix for deprecated-log-warn (PGH002) 
+   * [pylint] Implement import-private-name (C2701) 
+   * [refurb] Implement regex-flag-alias with fix (FURB167) 
+   * [ruff] Add rule and fix to sort contents of __all__ (RUF022) 
+   * [tryceratops] Add fix for error-instead-of-exception (TRY400) 
+ * Rule changes
+   * [flake8-pyi] Fix PYI047 false negatives on PEP-695 type aliases 
+   * [flake8-pyi] Fix PYI049 false negatives on call-based TypedDicts 
+   * [pylint] Exclude self and cls when counting method arguments (PLR0917) 
+ * CLI
+   * --show-settings displays active settings in a far more readable format 
+   * Add --extension support to the formatter 
+   * Configuration
+   * Ignore preview status for fixable and unfixable selectors 
+   * [pycodestyle] Use the configured tab size when expanding indents 
+ * Bug fixes
+   * Recursively visit deferred AST nodes 
+   * Visit deferred lambdas before type definitions 
+   * [flake8-simplify] Avoid some more enumerate-for-loop false positives (SIM113) 
+   * [pandas-vet] Limit inplace diagnostics to methods that accept inplace 
+   * [pylint] Add the __prepare__ method to the list of recognized dunder method 
+   * [pylint] Ignore unnecessary dunder calls within dunder definitions 
+   * [refurb] Avoid bailing when reimplemented-operator is called on function (FURB118) 
+   * [ruff] Avoid treating named expressions as static keys (RUF011) 
+ * Documentation
+   * Add instructions on using noqa with isort rules</comment>
+    <requestid>1140308</requestid>
+  </revision>
 </revisionlist>
