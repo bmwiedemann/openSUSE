@@ -1,7 +1,7 @@
 #
 # spec file for package python-xarray-einstats
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-# no python38-xarray
-%define skip_python38 1
+%{?sle15_python_module_pythons}
 Name:           python-xarray-einstats
-Version:        0.5.1
+Version:        0.7.0
 Release:        0
 Summary:        Stats, linear algebra and einops for xarray
 License:        Apache-2.0
