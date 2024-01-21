@@ -18,26 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-authheaders
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        A library wrapping email authentication header verification and generation
 License:        MIT
 URL:            https://github.com/ValiMail/authentication-headers
 Source:         https://files.pythonhosted.org/packages/source/a/authheaders/authheaders-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-authres >= 1.0.1
 Requires:       python-dkimpy >= 0.7.1
 Requires:       python-dnspython
-Requires:       python-importlib_resources
 Requires:       python-publicsuffix2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module authres >= 1.2.0}
 BuildRequires:  %{python_module dkimpy >= 0.7.1}
 BuildRequires:  %{python_module dnspython}
-BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module publicsuffix2}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -51,10 +51,10 @@ A library wrapping email authentication header verification and generation.
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Remove binaries
@@ -70,6 +70,7 @@ donttest="(TestAuthenticateMessage and test_authenticate_dmarc_psdsub)"
 %files %{python_files}
 %doc CHANGES README.md
 %license COPYING
-%{python_sitelib}/authheaders*
+%{python_sitelib}/authheaders
+%{python_sitelib}/authheaders-%{version}.dist-info
 
 %changelog

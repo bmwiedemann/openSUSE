@@ -106,4 +106,18 @@
 - Removed authheaders-importlib-resources.patch</comment>
     <requestid>1138689</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0de0e515206b7d4467819b6549b3dda9</srcmd5>
+    <version>0.16.1</version>
+    <time>1705874919</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.16.1:
+  * Clean up unnecessary escaping of semi-colons in test data
+    and adjust related code to resolve SyntaxWarning with
+    Python 3.12 (#29)
+  * Set python_requires &gt;3.7 and clean up cruft in setup.py
+  * Use importlib.resources instead of importlib_resources
+- switch to PEP517 build</comment>
+    <requestid>1140105</requestid>
+  </revision>
 </revisionlist>
