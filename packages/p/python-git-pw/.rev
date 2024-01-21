@@ -80,4 +80,22 @@
     + bundle remove</comment>
     <requestid>1131997</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>18df5376e0b36c9fb92fc9b264b8aab6</srcmd5>
+    <version>2.6.0</version>
+    <time>1705874955</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.0:
+  * Use older Python version for click-man
+  * Add support for Python 3.12, drop Python 3.7
+  * Replace use of pkg\_resources
+  * Revert &quot;docs: Switch to furo theme&quot;
+  * Add pyproject.toml file
+  * docs: Switch to furo theme
+  * readthedocs: Also install git-pw
+  * readthedocs: Specify requirements
+  * Specify OS, tools
+  * Add readthedocs config file</comment>
+    <requestid>1140135</requestid>
+  </revision>
 </revisionlist>
