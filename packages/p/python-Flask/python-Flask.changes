@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan 20 14:06:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Correct type for path argument to send_file. :issue:`5230`
+  * Fix a typo in an error message for the flask run --key
+    option. :pr:`5344`
+  * Session data is untagged without relying on the built-in
+    json.loads object_hook. This allows other JSON providers that
+    don't implement that. :issue:`5381`
+  * Address more type findings when using mypy strict mode.
+    :pr:`5383`
+  * Remove previously deprecated code. :pr:`5223`
+  * Deprecate the __version__ attribute. Use feature detection,
+    or importlib.metadata.version("flask"), instead.
+    :issue:`5230`
+  * Restructure the code such that the Flask (app) and Blueprint
+    classes have Sans-IO bases. :pr:`5127`
+  * Allow self as an argument to url_for. :pr:`5264`
+  * Require Werkzeug >= 3.0.0.
+
+-------------------------------------------------------------------
 Mon Sep 25 02:32:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.3.3:
@@ -171,18 +192,18 @@ Mon Mar 28 19:45:05 UTC 2022 - Michael Ströder <michael@stroeder.com>
   * copy_current_request_context can decorate async functions. #4303
   * The CLI uses importlib.metadata instead of setuptools to load command entry points. #4419
   * Overriding FlaskClient.open will not cause an error on redirect. #3396
-  * Add an --exclude-patterns option to the flask run CLI command to 
+  * Add an --exclude-patterns option to the flask run CLI command to
     specify patterns that will be ignored by the reloader. #4188
   * When using lazy loading (the default with the debugger), the Click context from
     the flask run command remains available in the loader thread. #4460
   * Deleting the session cookie uses the httponly flag. #4485
-  * Relax typing for errorhandler to allow the user to use more precise 
+  * Relax typing for errorhandler to allow the user to use more precise
     types and decorate the same function multiple times. #4095, #4295, #4297
   * Fix typing for __exit__ methods for better compatibility with ExitStack. #4474
-  * From Werkzeug, for redirect responses the Location header URL will 
+  * From Werkzeug, for redirect responses the Location header URL will
     remain relative, and exclude the scheme and domain, by default. #4496
-  * Add Config.from_prefixed_env() to load config values from environment 
-    variables that start with FLASK_ or another prefix. This parses values as 
+  * Add Config.from_prefixed_env() to load config values from environment
+    variables that start with FLASK_ or another prefix. This parses values as
     JSON by default, and allows setting keys in nested dicts. #4479
 
 -------------------------------------------------------------------
@@ -213,7 +234,7 @@ Tue Oct  5 09:49:23 UTC 2021 - Michael Ströder <michael@stroeder.com>
 - Update to 2.0.2
   * Fix type annotation for teardown_* methods. #4093
   * Fix type annotation for before_request and before_app_request decorators. #4104
-  * Fixed the issue where typing requires template global decorators to 
+  * Fixed the issue where typing requires template global decorators to
     accept functions with no arguments. #4098
   * Support View and MethodView instances with async handlers. #4112
   * Enhance typing of app.errorhandler decorator. #4095
@@ -325,9 +346,9 @@ Sat Jun 19 07:28:01 UTC 2021 - Michael Ströder <michael@stroeder.com>
       methods=["POST"]). #3907
     - Support async views, error handlers, before and after request, and teardown functions. #3412
     - Support nesting blueprints. #593, #1548, #3923
-    - Set the default encoding to “UTF-8” when loading .env and .flaskenv 
+    - Set the default encoding to “UTF-8” when loading .env and .flaskenv
       files to allow to use non-ASCII characters. #3931
-    - flask shell sets up tab and history completion like the default 
+    - flask shell sets up tab and history completion like the default
       python shell if readline is installed. #3941
     - helpers.total_seconds() is deprecated. Use timedelta.total_seconds() instead. #3962
     - Add type hinting. #3973.
@@ -854,7 +875,7 @@ Thu Oct 24 11:05:46 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Mon Sep  9 07:47:12 UTC 2013 - dmueller@suse.com
 
-- add dependency on itsdangerous 
+- add dependency on itsdangerous
 
 -------------------------------------------------------------------
 Tue Jun 25 11:33:18 UTC 2013 - dmueller@suse.com
