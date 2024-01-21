@@ -7,4 +7,12 @@
     <comment>Required by new version of python-pydata-sphinx-theme</comment>
     <requestid>1070648</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>32aff6230a56011aa77b1a0cce30731d</srcmd5>
+    <version>0.2.0b2</version>
+    <time>1705875000</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1140273</requestid>
+  </revision>
 </revisionlist>
