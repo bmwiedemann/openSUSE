@@ -316,4 +316,15 @@
     (@jayeshsingh9767)</comment>
     <requestid>1135500</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1ecd81f35df15cf3cbb671115ab3105a</srcmd5>
+    <version>7.0.7</version>
+    <time>1705874911</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.0.7
+  * Update to JupyterLab 4.0.11 #7215 (@krassowski)
+    (packaged js files update, CVE-2024-22420 and CVE-2024-22421)
+</comment>
+    <requestid>1140088</requestid>
+  </revision>
 </revisionlist>
