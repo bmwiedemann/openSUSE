@@ -1,7 +1,7 @@
 #
 # spec file for package python-kubernetes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-kubernetes
 Version:        28.1.0
 Release:        0
@@ -25,23 +24,29 @@ License:        Apache-2.0
 URL:            https://github.com/kubernetes-client/python
 # Source tar - https://pypi.org/project/kubernetes/#files
 Source:         https://files.pythonhosted.org/packages/source/k/kubernetes/kubernetes-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM kubernetes-client-python-pr2178-assertEqual-py312.patch gh#kubernetes-client/python#2178
+Patch0:         kubernetes-client-python-pr2178-assertEqual-py312.patch
 BuildRequires:  %{python_module PyYAML >= 5.4.1}
-BuildRequires:  %{python_module Sphinx >= 1.3.1}
 BuildRequires:  %{python_module certifi >= 14.05.14}
 BuildRequires:  %{python_module google-auth >= 1.0.1}
 BuildRequires:  %{python_module oauthlib >= 3.2.2}
-BuildRequires:  %{python_module pluggy}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil >= 2.5.3}
-BuildRequires:  %{python_module recommonmark}
 BuildRequires:  %{python_module requests-oauthlib}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools >= 21.0.0}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module urllib3 >= 1.24.2}
 BuildRequires:  %{python_module websocket-client >= 0.32.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module Sphinx >= 1.4}
+BuildRequires:  %{python_module pluggy >= 0.3.1}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module recommonmark}
+# /SECTION
 Requires:       python-PyYAML >= 5.4.1
 Requires:       python-certifi >= 14.05.14
 Requires:       python-google-auth >= 1.0.1
@@ -49,7 +54,6 @@ Requires:       python-oauthlib >= 3.2.2
 Requires:       python-python-dateutil >= 2.5.3
 Requires:       python-requests
 Requires:       python-requests-oauthlib
-Requires:       python-setuptools >= 21.0.0
 Requires:       python-six >= 1.9.0
 Requires:       python-urllib3 >= 1.24.2
 Requires:       python-websocket-client >= 0.32.0
@@ -63,10 +67,10 @@ Python client for kubernetes http://kubernetes.io/
 %autosetup -p1 -n kubernetes-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -80,6 +84,6 @@ rm kubernetes/dynamic/test_discovery.py
 %license LICENSE
 %doc README.md CHANGELOG.md
 %{python_sitelib}/kubernetes
-%{python_sitelib}/kubernetes-%{version}*-info
+%{python_sitelib}/kubernetes-%{version}.dist-info
 
 %changelog
