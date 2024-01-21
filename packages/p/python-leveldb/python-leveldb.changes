@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 02:14:38 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %patch0 to fix compilation with rpm-4.19
+
+-------------------------------------------------------------------
 Mon Jul 26 14:41:33 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - leveldb-atomic.patch: Enable use of <cstdatomic> on modern platforms
