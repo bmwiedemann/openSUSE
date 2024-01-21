@@ -87,4 +87,14 @@
     <comment></comment>
     <requestid>1131000</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>694a8d624cbf7376a6bf144b63d250d7</srcmd5>
+    <version>1.14</version>
+    <time>1705874950</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14:
+  * Add `text/javascript` mimetype. See #41
+  * Use brotlicffi for PyPy</comment>
+    <requestid>1140115</requestid>
+  </revision>
 </revisionlist>

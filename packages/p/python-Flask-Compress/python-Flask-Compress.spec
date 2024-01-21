@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Compress
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Compress
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        Compress responses in Flask apps with gzip
 License:        MIT
