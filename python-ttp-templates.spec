@@ -1,7 +1,7 @@
 #
 # spec file for package python-ttp-templates
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-ttp-templates
-Version:        0.3.2
+Version:        0.3.6
 Release:        0
 Summary:        Template Text Parser Templates collections
 License:        MIT
