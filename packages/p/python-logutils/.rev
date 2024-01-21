@@ -61,4 +61,12 @@
     <comment>- update path for SLE15</comment>
     <requestid>1066376</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>0db5c79c4ed079192f6c4e7a8a139f69</srcmd5>
+    <version>0.3.5</version>
+    <time>1705874871</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139872</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-logutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-logutils
 Version:        0.3.5
 Release:        0
@@ -26,8 +25,13 @@ Group:          Development/Languages/Python
 URL:            https://logutils.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/l/logutils/logutils-%{version}.tar.gz
 Patch0:         sphinx4.patch
+# PATCH-FIX-UPSTREAM logutils-pr1-fix-testasserts-py3.12.patch https://bitbucket.org/vinay.sajip/logutils/pull-requests/1
+Patch1:         https://bitbucket.org/hugovk/logutils/commits/0a3af211128567c437e68261a02591ffe2682d95/raw#/logutils-pr1-fix-testasserts-py3.12.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  redis
@@ -64,11 +68,15 @@ This package contains the documentation.
 %autopatch -p1
 
 %build
-%python_build
-cd doc && make html
+%pyproject_wheel
+pushd doc
+make html
+rm _build/html/.buildinfo
+popd
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PATH="$PATH:/sbin:/usr/sbin"
@@ -77,7 +85,8 @@ export PATH="$PATH:/sbin:/usr/sbin"
 %files %{python_files}
 %license LICENSE.txt
 %doc NEWS.txt README.rst
-%{python_sitelib}/*
+%{python_sitelib}/logutils
+%{python_sitelib}/logutils-%{version}.dist-info
 
 %files -n python-logutils-doc
 %license LICENSE.txt
