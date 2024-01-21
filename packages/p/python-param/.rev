@@ -225,4 +225,28 @@
     <comment></comment>
     <requestid>1133621</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7604122f5721ec5eabffd45d9dfff93e</srcmd5>
+    <version>2.0.2</version>
+    <time>1705874964</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.2:
+  * Minor optimizations in hot codepaths accessing class parameters
+  * Unpack partial callables in iscoroutinefunction
+  * Fix building Param with setuptools-scm&lt;7
+
+  * Parameter slot values are now all inherited correctly across
+  * There is now a ListProxy wrapper around Selector.objects (with
+    forward and backward compatibility) to easily update objects
+  * Parameterized classes and instances now have a rich HTML
+    representation that is displayed automatically in
+  * Parameters have all gained the allow_refs and nested_refs
+    attributes, bringing an exceptionally useful feature that was
+  * You can now use .param.update as a context manager for applying
+  * Path now has check_exists attribute, leading it to raise an error
+- Update to version 1.12.3:
+- Don't test optional numpy with python36, but include optional
+  * No upstream changelog</comment>
+    <requestid>1140199</requestid>
+  </revision>
 </revisionlist>
