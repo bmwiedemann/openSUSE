@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-prometheus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
