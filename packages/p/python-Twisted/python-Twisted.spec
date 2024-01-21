@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Version:        23.10.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
-URL:            https://twistedmatrix.com/
+URL:            https://twisted.org
 Source0:        https://files.pythonhosted.org/packages/source/t/twisted/twisted-%{version}.tar.gz
 Source99:       python-Twisted.rpmlintrc
 Patch0:         skip_MultiCast.patch
@@ -42,8 +42,10 @@ Patch2:         no-test_successResultOfWithFailureHasTraceback.patch
 # PATCH-FIX-UPSTREAM 1521_delegate_parseqs_stdlib_bpo42967.patch https://twistedmatrix.com/trac/ticket/10096 mcepl@suse.com
 # overcome incompatibility with the solution for bpo#42967.
 Patch3:         1521_delegate_parseqs_stdlib_bpo42967.patch
-# We don't want to package yet another module, and it is easily skippable
-Patch4:         no-cython_test_exception_raiser.patch
+# PATCH-FIX-UPSTREAM twisted-pr12054-testinvokationpy3.12.1.patch gh#twisted/twisted#12054 fixes gh#twisted/twisted#12052
+Patch4:         twisted-pr12054-testinvokationpy3.12.1.patch
+# PATCH-FIX-OPENSUSE We don't want to package yet another module, and it is easily skippable
+Patch5:         no-cython_test_exception_raiser.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch6:         remove-dependency-version-upper-bounds.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
@@ -178,6 +180,8 @@ This metapackage is for the optional dependency all_non_platform
 %prep
 %autosetup -p1 -n twisted-%{version}
 sed -i '1{/env python/d}' src/twisted/mail/test/pop3testserver.py src/twisted/trial/test/scripttest.py
+find src/twisted -name .gitignore -delete
+find src/twisted -name '*.misc' -size 0 -delete
 
 %if ! %{with test}
 %build
@@ -197,6 +201,11 @@ install -m0644 docs/*/man/*.1 %{buildroot}%{_mandir}/man1/ # Install man pages
 find docs -type f -print0 | xargs -0 chmod a-x # Fix doc-file dependency by removing x flags
 #sed -i "s/\r//" docs/core/howto/listings/udp/{MulticastClient,MulticastServer}.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_docdir}/%{name}-doc
+cp -r docs/* %{buildroot}%{_docdir}/%{name}-doc
+%fdupes %{buildroot}%{_docdir}/%{name}-doc
+%endif
 
 # Prepare for update-alternatives usage
 for p in twistd cftp ckeygen conch pyhtmlizer tkconch trial ; do
@@ -288,8 +297,10 @@ done
 
 %if 0%{?suse_version} > 1500
 %files -n %{name}-doc
-%endif
+%doc %{_docdir}/%{name}-doc
+%else
 %doc docs/
+%endif
 
 %endif
 
