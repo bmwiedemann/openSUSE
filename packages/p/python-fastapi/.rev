@@ -330,4 +330,12 @@
     usage of templates with new Starlette arguments.</comment>
     <requestid>1135254</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a9246b0581524a57c0835c25e381c628</srcmd5>
+    <version>0.109.0</version>
+    <time>1705874856</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138589</requestid>
+  </revision>
 </revisionlist>
