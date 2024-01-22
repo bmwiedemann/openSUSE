@@ -26,7 +26,7 @@ Group:          System/I18n/Chinese
 Url:            https://github.com/fcitx/fcitx-configtool
 Source:         http://download.fcitx-im.org/fcitx-configtool/%{name}-%{version}.tar.xz
 #PATCH-FIX-UPSTREAM for loop init declaration is only allowed in c99 mode
-Patch:          fcitx-configtool-0.4.9-for-loop-init-declaration-c99.patch
+Patch0:         fcitx-configtool-0.4.9-for-loop-init-declaration-c99.patch
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel
 BuildRequires:  gcc-c++
@@ -63,7 +63,7 @@ KDE Version see fcitx-config-kde4 or kcm-fcitx.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 %cmake
