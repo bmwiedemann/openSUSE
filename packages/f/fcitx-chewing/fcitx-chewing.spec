@@ -25,7 +25,7 @@ Group:          System/I18n/Chinese
 Url:            https://github.com/fcitx/fcitx-chewing
 Source:         http://download.fcitx-im.org/%{name}/%{name}-%{version}.tar.xz
 #PATCH-FIX-OPENSUSE marguerite@opensuse.org build for 12.3
-Patch:          %{name}-openSUSE-12.3.patch
+Patch0:         %{name}-openSUSE-12.3.patch
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel
 BuildRequires:  fdupes
@@ -45,7 +45,7 @@ Chewing is a set of free intelligent Chinese Phonetic IME.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 mkdir -pv build
