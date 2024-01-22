@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 21 07:27:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.2:
+  Bug Fixes:
+  * Crash using --git-repos on unreadable dir
+  * Crash using --git-repos on unreadable dir
+
+-------------------------------------------------------------------
 Fri Jan 12 07:27:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.1:
