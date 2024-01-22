@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat Jan 20 16:26:06 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.11.2
+  * Stopped autonav from preventing wobble and overshooting by
+    crashing the entire game
+- Changes in 0.11.1
+  * Give all ammo back to player after doing obelisk
+  * Fixed player being invincible after completing an obelisk
+  * Fixed a crash when loading games while a landing hook was
+    running
+  * Fixed race condition in threadpool
+  * Fixed asteroids spawning in not proper shapes
+  * Fixed autonav wobble and overshooting
+  * Point defense won't shoot at disabled pilots anymore
+  * Fixed battery descriptions
+  * Discovering a hidden jump will make both directions known
+  * Fixed AI trying to scan hostile targets they lost track of
+  * Properly save and load reward_value to and from saves
+  * Fixed events and missions being able to trigger in obelisk
+    tests
+  * Fixed beam weapons not hitting asteroids
+  * Properly compute weapon range with launch_range modifiers
+  * Fixed some range checks with inrange weapon sets
+  * Fixed Empire Pacifier mass being too low
+  * Fixed warning when looking at internal flow amplifier
+    descriptions
+  * Removed Soromid Ira turret and forward weapon stats
+  * Fixed reality rip and avatar of sirichana abilities giving
+    errors when the AI tries to use them
+  * Fixed issue on some systems with indexed images
+  * Fixed pirates and pilots that don't care being able to
+    disable the fake transponder
+  * Can now see and target allies that are stealthed
+  * Pheromone emitter won't do anything in exclusively claimed
+    systems
+  * Fixed some weapons such as beams not hitting targets other
+    than selected one
+  * Fixed rendering order making it so most effects were below
+    the player
+  * Fixed fallback switch weapon sets not being found properly
+  * Fixed bioship "Wanderer" perk giving absolute accel bonus
+    instead of relative
+  * Increased Neural Accelerator Interface energy regen malus
+    to -100%
+  * zalek/blackhole/zbh09: don't error out when a bioship ceases
+    to exist
+  * kidnapped/traffic_00: fixed formatting string telling the
+    player what system to go to
+  * kidnapped/traffic_01: ship should spawn if taking off in the
+    same system, not just jumping in
+  * tutorial/nelly01: fixed derelict message not appearing
+  * minerva/pirate4: fixed save me spam only being print once
+  * neutral/seek_n_destroy: fixed warnings when taking off in the
+    same system
+  * sirius/achack/achack01: fixed not being able to accept mission
+  * dvaered/dv_diversion: fixed not being able to accept mission
+  * dvaered/dv_bikers: don't allow the player to use escorts and
+    properly update mission TODO
+  * sirius/achack03: fixed not being able to complete the mission
+  * neutral/kidnapped: fixed inconsistency in the name of the
+    system to go to
+  * shadow/shadowrun: fixed VN issues not allowing mission
+    completion
+  * shadow/shadowrun: changed locations to make it possible to do
+    in the allotted time-frame
+  * shadow/shadowvigil: fixed Seiryuu not appearing
+  * shiplover: don't ask the player about ships they can't obtain
+  * Fixed many typos
+  * Translation updates
+
+-------------------------------------------------------------------
 Wed Dec 27 08:50:24 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 0.11.0
