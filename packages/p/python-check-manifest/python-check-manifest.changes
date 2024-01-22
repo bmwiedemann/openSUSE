@@ -136,6 +136,10 @@ Fri Sep 13 11:02:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.39:
   * You can now use check-manifest as a pre-commit hook (#100).
+  * Make tests pass on a system with no Python 2 and systems
+    where the python interpreter is not called python but python3
+    (gh#mgedmin/check-manifest#101, gh#mgedmin/check-manifest#57,
+    bsc#1198295).
 
 -------------------------------------------------------------------
 Wed May 15 18:07:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
