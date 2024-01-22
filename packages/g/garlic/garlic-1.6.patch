@@ -1,6 +1,8 @@
---- garlic-1.3/register.c
-+++ garlic-1.3/register.c
-@@ -33,6 +33,8 @@
+Index: garlic-1.6/register.c
+===================================================================
+--- garlic-1.6.orig/register.c
++++ garlic-1.6/register.c
+@@ -33,6 +33,8 @@ Notes:
  
  int Register_ (void)
  {
@@ -9,9 +11,11 @@
  char		outfile_nameA[SHORTSTRINGSIZE];
  char		command_stringA[STRINGSIZE];
  FILE		*outfileP;
---- garlic-1.3/typedefs.h
-+++ garlic-1.3/typedefs.h
-@@ -38,7 +38,7 @@
+Index: garlic-1.6/typedefs.h
+===================================================================
+--- garlic-1.6.orig/typedefs.h
++++ garlic-1.6/typedefs.h
+@@ -38,7 +38,7 @@ typedef struct		/* VectorS */
  
  
  /* Configuration data from  $HOME/.garlicrc , or - if this file */

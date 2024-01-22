@@ -1,0 +1,26 @@
+Description: Propagate hardening options
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Fri, 01 Dec 2017 20:45:48 +0100
+
+Index: garlic-1.6/Makefile
+===================================================================
+--- garlic-1.6.orig/Makefile
++++ garlic-1.6/Makefile
+@@ -1,7 +1,7 @@
+ CC = gcc
+ 
+ #CCOPT = -O
+-CCOPT = -O3
++CCOPT = -O3 $(CFLAGS)
+ #CCOPT = -O3 -g3
+ #CCOPT = -ansi -pedantic -g3
+ #CCOPT = -ansi -pedantic -O -Wall -Wstrict-prototypes -g3
+@@ -10,7 +10,7 @@ HEADERS = defines.h typedefs.h
+ 
+ LIBPATH =
+ 
+-LINKOPT = -lX11 -lm
++LINKOPT = -lX11 -lm $(LDFLAGS)
+ 
+ OBJECTS =	garlic.o print_usage.o print_help.o print_version.o \
+ 		register.o alloc_gui.o alloc_config.o alloc_mol_complex.o \
