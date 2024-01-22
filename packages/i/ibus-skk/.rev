@@ -31,4 +31,12 @@
   * Build and translation fixes (forwarded request 710702 from hillwood)</comment>
     <requestid>710703</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>553375a18824da5904312ffb06dbf439</srcmd5>
+    <version>1.4.3</version>
+    <time>1705952367</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140699</requestid>
+  </revision>
 </revisionlist>
