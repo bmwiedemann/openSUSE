@@ -1,0 +1,43 @@
+https://github.com/mislav/hub/pull/3344
+
+From 64805c5e92fc270ce01afd6980a8fa8a604f2ac8 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sat, 11 Nov 2023 03:06:48 +0100
+Subject: [PATCH] Use go -trimpath
+
+per golang/go#63851 this is the recommended way
+to achieve reproducible builds.
+
+This patch was done while working on reproducible builds for openSUSE.
+---
+ Makefile     | 4 ++--
+ script/build | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+Index: hub-2.14.2/Makefile
+===================================================================
+--- hub-2.14.2.orig/Makefile
++++ hub-2.14.2/Makefile
+@@ -9,8 +9,8 @@ export GO111MODULE=on
+ unexport GOPATH
+ 
+ export LDFLAGS := -extldflags '$(LDFLAGS)'
+-export GCFLAGS := all=-trimpath '$(PWD)'
+-export ASMFLAGS := all=-trimpath '$(PWD)'
++export GCFLAGS :=
++export ASMFLAGS :=
+ 
+ MIN_COVERAGE = 90.2
+ 
+Index: hub-2.14.2/script/build
+===================================================================
+--- hub-2.14.2.orig/script/build
++++ hub-2.14.2/script/build
+@@ -17,6 +17,7 @@ build_hub() {
+ 	  -ldflags "-X github.com/github/hub/version.Version=`./script/version` $LDFLAGS" \
+ 	  -gcflags "$GCFLAGS" \
+ 	  -asmflags "$ASMFLAGS" \
++	  -trimpath \
+ 	  -o "$1"
+ }
+ 

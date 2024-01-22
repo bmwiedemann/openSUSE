@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Tools/Version Control
 URL:            https://github.com/github/hub
 Source:         https://github.com/github/%{name}/archive/v%{ver}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/mislav/hub/pull/3344
+Patch0:         reproducible.patch
 BuildRequires:  fish
 BuildRequires:  go
 BuildRequires:  groff
@@ -38,7 +40,7 @@ hub is a command line tool that wraps git in order to extend it with
 extra features and commands that make working with GitHub easier.
 
 %prep
-%setup -q -n %{name}-%{ver}
+%autosetup -p1 -n %{name}-%{ver}
 sed -i -e 's#bin/ronn --#ronn --#' -e 's#script/bootstrap#true#' Makefile
 chmod +x script/install.sh
 sed -i -e 's#cd .*#true#' script/install.sh

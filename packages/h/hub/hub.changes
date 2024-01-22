@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan  7 16:01:26 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch for reproducible builds (boo#1062303)
+
+-------------------------------------------------------------------
 Fri Mar  6 18:58:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.14.2
