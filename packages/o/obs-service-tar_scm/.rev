@@ -1466,4 +1466,12 @@ Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1101101</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>0276de1385ccc8875a1e3440b08c3e83</srcmd5>
+    <version>0.10.41</version>
+    <time>1705951843</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140384</requestid>
+  </revision>
 </revisionlist>
