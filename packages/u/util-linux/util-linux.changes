@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 18 15:09:16 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Minor multibuild fixes (PED-307):
+  * Restore /bin symlinks in util-linux-systemd if building with
+    ul_extra_bin_sbin.
+  * Restore compatibility supplements and split-provides.
+  * Update safety check instructions.
+
+-------------------------------------------------------------------
 Thu Dec  7 13:22:16 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 - Increase delay in waitpid test (bsc#1217651), add
