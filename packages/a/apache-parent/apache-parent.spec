@@ -1,7 +1,7 @@
 #
 # spec file for package apache-parent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           apache-parent
-Version:        28
+Version:        31
 Release:        0
 Summary:        Parent POM file for Apache projects
 License:        Apache-2.0
@@ -25,8 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/apache/maven-apache-parent
 Source0:        https://repo1.maven.org/maven2/org/apache/apache/%{version}/apache-%{version}-source-release.zip
 Source1:        https://repo1.maven.org/maven2/org/apache/apache/%{version}/apache-%{version}-source-release.zip.asc
-Source2:        apache-parent.keyring
-
+Source2:        https://downloads.apache.org/maven/KEYS#/%{name}.keyring
 BuildRequires:  javapackages-local
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -43,7 +42,7 @@ This package contains the parent pom file for apache projects.
 
 %install
 # pom
-install -d -m 755 %{buildroot}%{_mavenpomdir}
+install -dm 755 %{buildroot}%{_mavenpomdir}
 install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom
 

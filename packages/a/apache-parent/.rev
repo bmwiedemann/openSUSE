@@ -45,4 +45,12 @@
     <comment>Upgrade</comment>
     <requestid>1040352</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b25c5e02e13120d7f878d6d3c9db8828</srcmd5>
+    <version>31</version>
+    <time>1705951913</time>
+    <user>anag+factory</user>
+    <comment>version 31 will be needed by apache-sshd</comment>
+    <requestid>1140069</requestid>
+  </revision>
 </revisionlist>

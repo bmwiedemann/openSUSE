@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 19 21:30:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- update to 31:
+  * New Feature
+    + MPOM-440: Add maven-checkstyle-plugin to pluginManagement
+  * Improvement
+    + MPOM-399: Set minimalMavenBuildVersion to 3.6.3 - the minimum
+      used by plugins
+    + MPOM-378: Using an SPDX identifier as the license name is
+      recommended by Maven
+    + MPOM-289: Use properties to define the versions of plugins
+  * Bug
+    + MPOM-386: update documentation for previous changes
+
+-------------------------------------------------------------------
 Mon Dec  5 10:36:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 28:
