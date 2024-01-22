@@ -1,7 +1,7 @@
 #
 # spec file for package OpenColorIO
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,24 +25,20 @@
 # Ensure that libyaml-cpp version is the one that is built against
 # See boo#1160171
 %define yamlrequires %(rpm -q --requires yaml-cpp-devel | grep libyaml || echo aaa_base)
-%define so_ver 2_1
+%define so_ver 2_3
 %define pkg_name OpenColorIO
 %if %{without ocio_tools}
 Name:           OpenColorIO
 %else
 Name:           OpenColorIO-tools
 %endif
-Version:        2.1.2
+Version:        2.3.1
 Release:        0
 Summary:        Color Management Solution Geared Towards Motion Picture Production
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://opencolorio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gcc12_fix.patch asterios.dramis@gmail.com -- Fix compilation with GCC12
-Patch0:         gcc12_fix.patch
-# PATCH-FIX-OPENSUSE 0001-Fix-detection-of-yaml-cpp-0.8.patch -- temporary solution to detect yaml-cpp 0.8
-Patch1:         0001-Fix-detection-of-yaml-cpp-0.8.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -55,6 +51,7 @@ BuildRequires:  pystring-devel >= 1.1.3
 BuildRequires:  python3-devel
 BuildRequires:  python3-pybind11-devel
 BuildRequires:  yaml-cpp-devel >= 0.6.3
+BuildRequires:  pkgconfig(minizip-ng) >= 4.0.4
 Recommends:     %{pkg_name}-doc = %{version}
 %if %{with ocio_tools}
 BuildRequires:  OpenImageIO >= 2.1.9
@@ -195,7 +192,7 @@ rm -rf %{buildroot}%{_includedir}
 
 %files -n python3-OpenColorIO
 %license LICENSE
-%{python3_sitearch}/PyOpenColorIO.so
+%{python3_sitearch}/PyOpenColorIO/
 %endif
 
 %changelog
