@@ -25,7 +25,7 @@ License:        ISC
 Url:            ftp://ftp.gac.edu/pub/guenther
 Summary:        Parser class for BIND configuration files
 Source:         BIND-Conf_Parser-%{version}.tar.bz2
-Patch:          BIND-Conf_Parser-%{version}.diff
+Patch0:         BIND-Conf_Parser-%{version}.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{perl_requires}
 BuildRequires:  perl
@@ -37,7 +37,7 @@ version 8 configuration files (named.conf).
 
 %prep
 %setup -n BIND-Conf_Parser-%{version}
-%patch
+%patch0
 
 %build
 perl Makefile.PL
