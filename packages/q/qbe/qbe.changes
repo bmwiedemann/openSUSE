@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 20 09:05:43 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version v1.1+30:
+  * fix link in doc
+  * dbgloc: add column argument
+  * Add missing documentation for union types and VAL.
+  * revert 5af33410
+  * Fix IBT/BTI by instrumenting function calls
+  * hard-code $(CC) to equal "cc"
+
+-------------------------------------------------------------------
 Fri Nov 10 12:23:27 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update Groups section in specfile

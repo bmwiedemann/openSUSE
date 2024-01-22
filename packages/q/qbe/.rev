@@ -31,4 +31,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1127295</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5147e4dd3cd10bbaff2ccb34093caf73</srcmd5>
+    <version>1.1+30</version>
+    <time>1705952277</time>
+    <user>anag+factory</user>
+    <comment>- Update to version v1.1+30:
+  * fix link in doc
+  * dbgloc: add column argument
+  * Add missing documentation for union types and VAL.
+  * revert 5af33410
+  * Fix IBT/BTI by instrumenting function calls
+  * hard-code $(CC) to equal &quot;cc&quot;
+</comment>
+    <requestid>1140075</requestid>
+  </revision>
 </revisionlist>
