@@ -1,7 +1,7 @@
 #
 # spec file for package libcamera
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
-%define lname       libcamera0_1
-%define lname_base  libcamera-base0_1
+%define lname       libcamera0_2
+%define lname_base  libcamera-base0_2
 Name:           libcamera
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        A complex camera support library in C++
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://libcamera.org/
+URL:            https://libcamera.org/
+#Git-Web:       https://git.libcamera.org/libcamera/libcamera.git/
 
 Source:         %name-%version.tar.xz
 Source1:        baselibs.conf
