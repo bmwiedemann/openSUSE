@@ -38,4 +38,15 @@
 - Drop execute bits for installed modules, stop a spurious requirement.</comment>
     <requestid>893603</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c19a1cee7366059a05f5705daedeb382</srcmd5>
+    <version>0.6.1</version>
+    <time>1705952051</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Add Requires for update-alternatives.
+- Add patch correct-test-assertion-methods.patch:
+  * Use non-removed test assertion methods.</comment>
+    <requestid>1140336</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 22 02:03:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Add Requires for update-alternatives.
+- Add patch correct-test-assertion-methods.patch:
+  * Use non-removed test assertion methods.
+
+-------------------------------------------------------------------
 Mon May 17 08:30:46 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.6.1:
