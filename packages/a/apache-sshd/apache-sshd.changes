@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Jan 19 22:17:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Updated to upstream version 2.12.0
+- Changes in version 2.11.0
+  * Bug Fixes
+    + GH-328 Added configurable timeout(s) to DefaultSftpClient
+    + GH-370 Also compare file keys in ModifiableFileWatcher.
+    + GH-371 Fix channel pool in SftpFileSystem.
+    + GH-383 Use correct default OpenOptions in
+      SftpFileSystemProvider.newFileChannel().
+    + GH-384 Use correct lock modes for SFTP FileChannel.lock().
+    + GH-388 ScpClient: support issuing commands to a server that
+      uses a non-UTF-8 locale.
+    + GH-398 SftpInputStreamAsync: fix reporting EOF on zero-length
+      reads.
+    + GH-403 Work-around a bug in WS_FTP <= 12.9 SFTP clients.
+    + GH-407 (Regression in 2.10.0) SFTP performance fix: override
+      FilterOutputStream.write(byte[], int, int).
+    + GH-410 Fix a race condition to ensure SSH_MSG_CHANNEL_EOF is
+      always sent before SSH_MSG_CHANNEL_CLOSE.
+    + GH-414 Fix error handling while flushing queued packets at end
+      of KEX.
+    + GH-420 Fix wrong log level on closing an Nio2Session.
+    + SSHD-789 Fix detection of Android O/S from system properties.
+    + SSHD-1259 Consider all applicable host keys from the
+      known_hosts files.
+    + SSHD-1310 SftpFileSystem: do not close user session.
+    + SSHD-1327 ChannelAsyncOutputStream: remove write future when
+      done.
+    + SSHD-1332 (Regression in 2.10.0) Resolve ~ in IdentityFile
+      file names in HostConfigEntry.
+  * New Features
+    + SSHD-1330 Use KeepAliveHandler global request instance in
+      client as well
+    + GH-356 Publish snapshot maven artifacts to the Apache
+      Snapshots maven repository.
+    + Bundle sshd-contrib has support classes for the HAProxy
+      protocol V2.
+- Changes in version 2.12.0
+  * Bug Fixes
+    + GH-428/GH-392 SCP client fails silently when error signalled
+      due to missing file or lacking permissions
+    + GH-434 Ignore unknown key types from agent or in OpenSSH host
+      keys extension
+  * New Features
+    + GH-429 Support GIT protocol-v2
+    + GH-445 OpenSSH "strict key exchange" protocol extension
+      (CVE-2023-48795, bsc#1218189 mitigation)
+- Modified patch:
+  * apache-sshd-javadoc.patch
+    + rediff to changed context and drop integrated hunks
+
+-------------------------------------------------------------------
 Wed Oct 11 09:03:24 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstrem version 2.10.0

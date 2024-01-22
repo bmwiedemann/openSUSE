@@ -47,4 +47,12 @@
     <comment>2.10.0</comment>
     <requestid>1121385</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f731b4108558a6ae1961ec73957c4007</srcmd5>
+    <version>2.12.0</version>
+    <time>1705951916</time>
+    <user>anag+factory</user>
+    <comment>CVE-2023-48795, bsc#1218189</comment>
+    <requestid>1140070</requestid>
+  </revision>
 </revisionlist>

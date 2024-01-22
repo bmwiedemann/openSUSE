@@ -1,7 +1,7 @@
 #
 # spec file for package apache-sshd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           apache-sshd
-Version:        2.10.0
+Version:        2.12.0
 Release:        0
 Summary:        Apache SSHD
 # One file has ISC licensing:
@@ -40,7 +40,7 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-remote-resources-plugin)
 BuildRequires:  mvn(org.apache.maven.surefire:surefire-junit47)
 BuildRequires:  mvn(org.apache.maven:maven-archiver)
 BuildRequires:  mvn(org.apache:apache-jar-resource-bundle)
-BuildRequires:  mvn(org.apache:apache:pom:)
+BuildRequires:  mvn(org.apache:apache:pom:) >= 30
 BuildRequires:  mvn(org.bouncycastle:bcpg-jdk18on)
 BuildRequires:  mvn(org.bouncycastle:bcpkix-jdk18on)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
@@ -85,6 +85,8 @@ rm -rf sshd-core/src/main/java/org/apache/sshd/agent/unix
 %pom_disable_module sshd-cli
 %pom_disable_module sshd-openpgp
 %pom_disable_module assembly
+# don't require bom that we don't package
+%pom_remove_dep org.testcontainers:testcontainers-bom sshd-scp
 
 # Disable plugins we don't need for RPM builds
 %pom_remove_plugin :apache-rat-plugin
