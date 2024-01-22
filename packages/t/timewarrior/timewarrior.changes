@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 17 18:49:01 UTC 2024 - Benedikt Fein <benedikt.fein@gmail.com>
+
+- Update to 1.7.1
+  * #580    internal parsing of tags starting with number broken
+  * #582    Retrieval of intervals with tags containing hyphens is broken
+  * #583    README - Update build instructions
+
+-------------------------------------------------------------------
 Tue Jan  2 19:37:12 UTC 2024 - Benedikt Fein <benedikt.fein@gmail.com>
 
 - Update to 1.7.0
