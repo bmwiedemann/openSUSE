@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 20 17:00:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.168.0:
+  * Add release notes for 0.168.0
+  * Fix generating presigned URL for K8s authentication
+  * Safely access/mutate fargate coredns pod annotations
+  * Ignore unsupported zone types when creating a zone mapping
+  * Add missing permission 'deletecollection for pvc' to
+    emr-containers role which is needed for Spark Jobs running >=
+    emr-6.12
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Sun Jan 07 17:58:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.167.0:
