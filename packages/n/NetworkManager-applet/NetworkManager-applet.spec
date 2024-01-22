@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-applet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,16 @@
 
 
 %define _name   network-manager-applet
-
 Name:           NetworkManager-applet
-Version:        1.34.0
+Version:        1.36.0
 Release:        0
 Summary:        GTK+ tray applet for use with NetworkManager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gnome.org/projects/NetworkManager
-Source0:        https://download.gnome.org/sources/network-manager-applet/1.34/%{_name}-%{version}.tar.xz
-
+Source0:        %{_name}-%{version}.tar.zst
 # PATCH-FIX-UPSTREAM feature-app-indicator-desktop-file.patch sflees@suse.com --  nm-applet needs to be launched with --indicator and needs a startup delay incase its started before the systray
 Patch1:         feature-app-indicator-desktop-file.patch
-
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
@@ -47,16 +44,16 @@ BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 BuildRequires:  pkgconfig(mm-glib)
 BuildRequires:  pkgconfig(mobile-broadband-provider-info)
 Requires:       NetworkManager >= 0.9.3
+Requires:       NetworkManager-connection-editor
 Requires:       dbus(org.freedesktop.secrets)
 # Needed for translated country names.
 Requires:       iso-codes
 # mobile-broadband-provider-info is required for DUN capabilities. The BT plugin crashes without it.
 Requires:       mobile-broadband-provider-info
-Conflicts:      nma-data < 1.8.28
+Requires:       timezone
 # libnma was (wronlgy) carrying the glib-schema for org.gnome.nm-applet, now moved back here
 Conflicts:      libnma0 < 1.10.4
-Requires:       NetworkManager-connection-editor
-Requires:       timezone
+Conflicts:      nma-data < 1.8.28
 Provides:       NetworkManager-client
 # NetworkManager-gnome was last used in openSUSE Leap 42.2.
 Provides:       NetworkManager-gnome = %{version}
@@ -73,15 +70,24 @@ NetworkManager, including a panel applet for wireless networks.
 Summary:        GUI to configure connections for NetworkManager
 Group:          System/GUI/GNOME
 Requires:       mobile-broadband-provider-info
-# Translations moved to NetworkManager-connection-editor-lang
-Obsoletes:      NetworkManager-applet-lang < %{version}
-Provides:       NetworkManager-applet-lang = %{version}
 
 %description -n NetworkManager-connection-editor
 NetworkManager Configuration tool - take control over your
 connection settings.
 
-%lang_package -n NetworkManager-connection-editor
+%package -n NetworkManager-connection-editor-lang
+# FIXME: consider using %%lang_package macro
+Summary:        Translations for package NetworkManager-connection-editor
+Group:          System/Localization
+Requires:       NetworkManager-connection-editor = %{version}
+# Translations moved to NetworkManager-connection-editor-lang
+Obsoletes:      NetworkManager-applet-lang < %{version}
+Provides:       NetworkManager-applet-lang = %{version}
+Provides:       NetworkManager-connection-editor-lang-all = %{version}
+BuildArch:      noarch
+
+%description -n NetworkManager-connection-editor-lang
+Provides translations for the "NetworkManager-connection-editor" package.
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
