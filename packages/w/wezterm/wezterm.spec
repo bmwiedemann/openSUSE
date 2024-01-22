@@ -1,7 +1,7 @@
 #
 # spec file for package wezterm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Patch0:         do-not-send-eof-when-closing-application.patch
 Patch1:         https://github.com/wez/wezterm/pull/4578/commits/963413f8c550e7cf417a468a9f78bafcda512006.patch#/add-terminator-to-sync-capability.patch
-Requires:       terminfo
 BuildRequires:  Mesa-libEGL-devel
 
 BuildRequires:  rust+cargo >= 1.43
@@ -60,9 +59,8 @@ BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(libssh2)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(tic)
 BuildRequires:  pkgconfig(xcb)
-Recommends:     %{name}-terminfo
+Recommends:     terminfo
 
 %description
 Wezterm is a GPU-accelerated terminal emulator written in Rust. It supports
@@ -75,14 +73,6 @@ Recommends:     %{name} = %{version}
 
 %description mux-server
 Multiplexer server for wezterm for running on a headless system.
-
-%package terminfo
-Summary:        Terminfo for %{name}
-Supplements:    (%{name}-terminfo and terminfo)
-BuildArch:      noarch
-
-%description terminfo
-Terminfo file for wezterm.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
@@ -111,7 +101,6 @@ Zsh completion script for %{name}.
 
 %prep
 %autosetup -a1 -p1
-tic -vvv -x -o terminfo termwiz/data/%{name}.terminfo
 printf "%{version}" > .tag
 
 %build
@@ -131,7 +120,6 @@ install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/wezterm-gui %{bu
 install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/wezterm-mux-server %{buildroot}%{_bindir}/wezterm-mux-server
 install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/strip-ansi-escapes %{buildroot}%{_bindir}/strip-ansi-escapes
 
-install -Dm 0644 terminfo/w/wezterm %{buildroot}%{_datadir}/terminfo/w/wezterm
 install -Dm 0644 assets/%{name}.desktop %{buildroot}%{_datadir}/applications/org.wezfurlong.%{name}.desktop
 install -Dm 0644 assets/icon/%{name}-icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.wezfurlong.%{name}.svg
 install -Dm 0644 assets/%{name}.appdata.xml %{buildroot}%{_datadir}/metainfo/org.wezfurlong.%{name}.appdata.xml
@@ -166,10 +154,6 @@ install -D -m 0644 assets/shell-completion/fish %{buildroot}%{_datadir}/fish/ven
 %license LICENSE.md
 %doc README.md CONTRIBUTING.md
 %{_bindir}/wezterm-mux-server
-
-%files terminfo
-%license LICENSE.md
-%{_datadir}/terminfo/w/wezterm
 
 %files bash-completion
 %dir %{_datadir}/bash-completion

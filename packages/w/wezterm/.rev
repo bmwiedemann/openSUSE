@@ -694,4 +694,13 @@
 </comment>
     <requestid>1127902</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>ca04927de5250ca9cf59dd52825fb382</srcmd5>
+    <version>20230712.072601.f4abf8fd+git210</version>
+    <time>1705951999</time>
+    <user>anag+factory</user>
+    <comment>- Remove wezterm-terminfo package. Ncurses now provides the terminfo file
+</comment>
+    <requestid>1140240</requestid>
+  </revision>
 </revisionlist>
