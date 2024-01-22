@@ -1,7 +1,7 @@
 #
 # spec file for package python-emoji
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15allpythons}
 Name:           python-emoji
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause
@@ -57,6 +57,9 @@ By default, the language is English (``language='en'``). Further supported langa
 * Simplified Chinese ('zh')
 * Japanese ('ja')
 * Korean ('ko')
+* Russian ('ru')
+* Arabic ('ar')
+* Turkish ('tr')
 
 %prep
 %autosetup -n emoji-%{version} -p1
