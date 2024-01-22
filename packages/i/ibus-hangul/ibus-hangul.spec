@@ -54,13 +54,13 @@ libhangul.
 %build
 autoreconf -fi
 %configure --disable-static \
-           --libexecdir=%{_ibus_libdir}
+           --libexecdir=%{_ibus_libexecdir}
 %make_build
 
 %install
 %make_install
 %suse_update_desktop_file ibus-setup-hangul Utility DesktopUtility System
-ln -sf %{_ibus_libdir}/ibus-setup-hangul %{buildroot}%{_bindir}/ibus-setup-hangul
+ln -sf %{_ibus_libexecdir}/ibus-setup-hangul %{buildroot}%{_bindir}/ibus-setup-hangul
 
 %find_lang %{name}
 %fdupes %{buildroot}
@@ -70,8 +70,8 @@ ln -sf %{_ibus_libdir}/ibus-setup-hangul %{buildroot}%{_bindir}/ibus-setup-hangu
 %license COPYING
 %doc AUTHORS README
 %{_bindir}/ibus-setup-hangul
-%{_ibus_libdir}/ibus-engine-hangul
-%{_ibus_libdir}/ibus-setup-hangul
+%{_ibus_libexecdir}/ibus-engine-hangul
+%{_ibus_libexecdir}/ibus-setup-hangul
 %{_ibus_componentdir}/hangul.xml
 %{_datadir}/applications/ibus-setup-hangul.desktop
 %{_datadir}/icons/hicolor/64x64/apps/ibus-*.png
