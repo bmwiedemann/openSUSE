@@ -1,7 +1,7 @@
 #
 # spec file for package libraqm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,7 +75,7 @@ text layout and provides a convenient API.
 
 %check
 # python 3.6 is too old for running tests
-%if 0%{suse_version} > 1500
+%if 0%{?suse_version} > 1500
 export LC_ALL=C.utf8
 %meson_test
 %endif
