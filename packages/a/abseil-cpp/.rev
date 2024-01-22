@@ -276,4 +276,17 @@
     <comment></comment>
     <requestid>1116453</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>a4e76980928b8c2f90d03ecd87938a9f</srcmd5>
+    <version>20230802.1</version>
+    <time>1705951834</time>
+    <user>anag+factory</user>
+    <comment>- fix build for non-SUSE distributions
+
+      The flags library now provides suggestions for the closest
+  * minor warning fix
+    hexadecimal strings
+- Update to version 20190808 (forwarded request 1139988 from dirkmueller)</comment>
+    <requestid>1140366</requestid>
+  </revision>
 </revisionlist>
