@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 19 00:05:02 UTC 2024 - jason.record@suse.com
+
+- Changes to version 3.2.6
+  + Corrected podman .ID error (bsc#1218812)
+  + Remove duplicate non-root podman users (bsc#1218814)
+
+-------------------------------------------------------------------
 Thu Jan 11 14:01:52 UTC 2024 - jason.record@suse.com
 
 - Changes to version 3.2.5
