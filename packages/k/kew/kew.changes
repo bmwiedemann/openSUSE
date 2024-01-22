@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 22 11:43:39 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.0.4
+  * You can now add "-e" or "--exact" in your searches to return an
+    exact (not case sensitive) match. This can be helpful when two
+    albums have a similar name, and you want to specify you want
+    one or the other. Example: kew -e basement popstar.
+  * Fixed issue where pressing del on the playlist changed view to
+    track view.
+
+-------------------------------------------------------------------
 Mon Jan 15 06:45:39 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.0.3
