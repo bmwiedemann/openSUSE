@@ -26,7 +26,7 @@ Url:            http://docbook2x.sourceforge.net/
 Source:         http://downloads.sourceforge.net/docbook2x/docbook2X-%{version}.tar.bz2
 #Source:       http://ftp1.sourceforge.net/sourceforge/docbook2x/docbook2X-%%{version}.tar.gz
 Source1:        docbook2x-README.SUSE
-Patch:          docbook2X-0.8.8-catalog.diff
+Patch0:         docbook2X-0.8.8-catalog.diff
 BuildRequires:  automake
 BuildRequires:  docbook_4
 BuildRequires:  libxslt-devel
@@ -69,7 +69,7 @@ A new tool based on Perl modules.
 %prep
 %setup -q -n docbook2X-%{version}
 cp %{S:1} README.SUSE
-%patch -p 1
+%patch0 -p 1
 
 %build
 autoreconf --force --install
