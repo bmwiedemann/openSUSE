@@ -1,10 +1,217 @@
 -------------------------------------------------------------------
+Tue Jan 09 15:31:06 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Disable workflow runs from master
+
+  The following github actions will be disabled from master
+  because they are expected to run from main:
+
+  - ci-publish-pages.yml
+  - ci-publish-to-pypi.yml
+  - ci-update-build-tests.yml
+
+-------------------------------------------------------------------
+Tue Jan 09 15:19:30 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.21 → 9.25.22
+
+-------------------------------------------------------------------
+Tue Jan 09 11:18:30 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed regression in GRUB_SERIAL_COMMAND setup
+
+  The condition to write the serial line setup was broken.
+  This commit fixes it. Related to Issue #2419
+
+-------------------------------------------------------------------
+Mon Jan 08 17:26:00 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed grub terminal setup
+
+  The grub terminal setup is divided into the setting for the output
+  and the input console. For both settings different parameters exists.
+  So far kiwi did not differentiate between the two parts of the
+  console setup and that could lead to a wrong setting if only one
+  value is provided in kiwi's console= attribute which lead to the
+  grub setting, GRUB_TERMINAL=value. If value is set to e.g gfxterm
+  grub takes this for both input and output and it's obviously
+  wrong for the input. To make this less error prune the kiwi code
+  changes with this commit to set GRUB_TERMINAL_INPUT and
+  GRUB_TERMINAL_OUTPUT rather than GRUB_TERMINAL and also runs sanity
+  checks on the provided values if they are applicable. The information
+  for setting up the console in the schema stays untouched though.
+  That's because it's used for all bootloaders and also because grub
+  supports multiple values for the console in/out setting in one
+  GRUB_TERMINAL variable even though kiwi does no longer use it.
+  To make this clear for the users also the documentation for the
+  console attribute setup has been updated. If we want to wish two
+  distinct attributes for input and output console settings a schema
+  change and also differentiation between bootloaders is needed and
+  that I only see for the kiwi-10 branch if at all. This Fixes #2419
+
+-------------------------------------------------------------------
+Thu Jan 04 13:16:26 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix tox.ini
+
+  python 3.12 unit target did not specify a 3.12 interpreter
+
+-------------------------------------------------------------------
+Thu Jan 04 13:05:39 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix overwrite of kiwi_oemunattended
+
+  In case rd.kiwi.oem.installdevice is set, there is an overwrite
+  of the kiwi_oemunattended setting. However the variable was set
+  in local scope of a function and therefore the change was not
+  effective in other methods which also evaluates this variable.
+  This commit fixes it such that the overwrite happens in the early
+  initialize method which provides the environment for all code
+  running in the dracut module. This is related to jira#PED-7180
+
+-------------------------------------------------------------------
+Fri Dec 29 20:23:17 CET 2023 - Neal Gompa <neal@gompa.dev>
+
+- Ensure setfiles is detected inside the image-root
+
+  We do not actually use setfiles from the host, we use it from the
+  image root we create for the image build. Thus, we should look in
+  the image root instead of on the host system.
+
+  This prevents us from incorrectly detecting that setfiles is not
+  available for setting SELinux contexts.
+
+  Fixes: https://github.com/OSInside/kiwi/issues/2414
+  Fixes: 2a22901ddd11ae23b6724b5e1aaa4261f219ccb6
+
+-------------------------------------------------------------------
+Thu Dec 28 13:52:32 CET 2023 - Dan Čermák <dcermak@suse.com>
+
+- Use xdist on the CI to speed up the test runs
+
+-------------------------------------------------------------------
+Thu Dec 28 13:51:52 CET 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add unit test job using python 3.12
+
+-------------------------------------------------------------------
+Thu Dec 28 13:51:19 CET 2023 - Dan Čermák <dcermak@suse.com>
+
+- Only run the job for this python environment
+
+-------------------------------------------------------------------
+Thu Dec 28 13:49:31 CET 2023 - Dan Čermák <dcermak@suse.com>
+
+- [ci] Switch runner to ubuntu-latest
+
+-------------------------------------------------------------------
+Thu Dec 28 13:40:34 CET 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add missing raw string identifier infront of regexes
+
+-------------------------------------------------------------------
+Tue Dec 26 12:31:11 CET 2023 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Allow target_blocksize to be available for kis image
+
+-------------------------------------------------------------------
+Sun Dec 17 20:35:36 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.20 → 9.25.21
+
+-------------------------------------------------------------------
+Sun Dec 17 20:33:43 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Cleanup tox targets
+
+  Align tox targets with github workflows and fix targets
+  not associated with a specific python version to use
+  the python3 version installed on the host
+
+-------------------------------------------------------------------
+Sun Dec 17 19:59:46 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.19 → 9.25.20
+
+-------------------------------------------------------------------
+Sun Dec 17 16:12:42 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed unit tests for parallel invokation
+
+-------------------------------------------------------------------
+Fri Dec 15 10:43:17 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure selinux policy is effectively applied
+
+  setup_selinux_file_contexts is now called after the config.sh
+  script. This makes sure that eventual policy related changes
+  done in the optional config.sh are covered by a late setfiles
+  call. In addition setup_selinux_file_contexts is called again
+  at the end of any chroot based script hook. So we assume that
+  any optional script target can change the system in a way that
+  a new setfiles call might be required. It can happen that
+  setfiles is called more often than required but as we cannot
+  know what custom scripts does, it's better to call it more
+  often compared to not often enough. This Fixes bsc#1210604
+
+-------------------------------------------------------------------
+Thu Dec 14 16:57:45 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Decrease image size for encrypted integration test
+
+  Encrypted images do not compress well, therefore the size
+  should be smaller such that we don't produce monsters
+
+-------------------------------------------------------------------
+Thu Dec 14 15:51:23 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use ext4 for rawhide integration test
+
+-------------------------------------------------------------------
+Thu Dec 14 10:59:22 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed typo in error message
+
+-------------------------------------------------------------------
+Wed Dec 13 21:31:56 CET 2023 - Neal Gompa <neal@gompa.dev>
+
+- package: Drop unused xorriso dep on dracut-kiwi-live subpackage
+
+  We do not actually use xorriso anywhere inside of the dracut module,
+  nor do we pull in any utilities from the xorriso package into the
+  generated initramfs anyway.
+
+  Fixes: https://github.com/OSInside/kiwi/issues/2404
+
+-------------------------------------------------------------------
+Mon Dec 11 09:43:50 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Set kpartx as default mapper tool for s390
+
+  Some time ago we moved the default partition mapper from
+  kpartx to partx to reduce a package dependencies.
+  However, on the s390 architecture partx does not work
+  proplerly on e.g DASD devices. Thus the default mapper
+  tool for this architecture will change to kpartx
+  with this PR
+
+-------------------------------------------------------------------
 Fri Dec 08 09:25:22 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Update test-image-MicroOS
 
   Incorporate latest changes from upstream MicroOS and
   also add an encrypted profile build for testing
+
+-------------------------------------------------------------------
+Wed Dec 06 22:10:45 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Include either partx or partprobe to dracut
+
+  The code in the 99kiwi-lib dracut module can either use
+  partprobe or partx to do the job. We prefer partx over
+  partprobe and error out if none of them could be found
+  This Fixes #2400
 
 -------------------------------------------------------------------
 Tue Nov 28 08:54:36 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
