@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 13 08:48:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.0
+  * The control "SceneFlicker" has been removed and replaced by
+    AeFlickerMode, AeFlickerDetected and AeFlickerPeriod.
+  * CameraConfiguration::transform was removed,
+    CameraConfiguration::orientation and sensorConfig added.
+
+-------------------------------------------------------------------
 Fri Sep 01 07:00:58 UTC 2023 - rfrohl@suse.com
 
 - Update to version 0.1.0:
