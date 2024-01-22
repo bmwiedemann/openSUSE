@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 22 12:59:48 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.538.ge7a5cff9:
+  * fix(livenet): split `imgsize` calculation to avoid misleading error message
+  * fix(livenet): check also `content-length` from live image header
+  * fix(livenet): propagate error code
+  * fix(dracut): correct regression with multiple `rd.break=` options
+
+-------------------------------------------------------------------
 Thu Dec 21 09:11:45 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.533.g5a7cf9fa:
