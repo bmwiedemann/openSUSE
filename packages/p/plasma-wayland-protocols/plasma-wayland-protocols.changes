@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan 17 18:46:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.12.0:
+  * plasma-shell: Mark set_panel_behaviour as deprecated
+  * plasma-shell: Drop commented out initial ideas
+  * add more HDR settings to the output management protocols
+  * docs: Use "provides" instead of "installs"
+  * docs: improve readme clarity
+  * add an icc profile path to output management protocols
+  * outputdevice,outputmanagement: add auto rotate setting
+  * fake-input: Add destructor request
+  * Make filename match virtual desktop protocol name
+  * Bump version number to allow depending on it
+  * kde-screen-edge-v1: Add new protocol
+  * outputdevice,management: add settings for hdr and color managament
+  * Make plane state values in plasma_window_management
+
+-------------------------------------------------------------------
+Fri Jan 20 10:38:16 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Version got changed to 1.10.0 for consistency
+
+-------------------------------------------------------------------
 Thu Jan 19 08:28:56 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to 1.10:
