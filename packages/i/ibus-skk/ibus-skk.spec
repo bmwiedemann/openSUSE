@@ -43,7 +43,7 @@ A Japanese Simple Kana Kanji Input Method Engine for ibus.
 
 %build
 NOCONFIGURE=1 ./autogen.sh
-%configure
+%configure --libexecdir=%{_ibus_libexecdir}
 make %{?_smp_mflags}
 
 %install
@@ -58,7 +58,7 @@ make %{?_smp_mflags}
 %license COPYING
 %{_datadir}/ibus-skk
 %{_datadir}/applications/ibus-setup-skk.desktop
-%{_libexecdir}/ibus-*-skk
+%{_ibus_libexecdir}/ibus-*-skk
 %{_datadir}/ibus/component/skk.xml
 
 %changelog
