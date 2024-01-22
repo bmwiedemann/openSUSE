@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 22 11:33:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240122
+  * No user-visible changes
+
+-------------------------------------------------------------------
 Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete system-libs.patch (not needed - system libs are
