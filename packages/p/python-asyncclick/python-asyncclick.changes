@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Jan 14 15:48:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.1.7.0+async
+  * Fix issue with regex flags in shell completion. #2581
+  * Bash version detection issues a warning instead of an error.
+    #2574
+  * Fix issue with completion script for Fish shell. #2567
+- Version 8.1.6
+  * Fix an issue with type hints for @click.group(). #2558
+ - Version 8.1.5
+  * Fix an issue with type hints for @click.command(),
+    @click.option(), and other decorators. Introduce typing tests.
+    #2558
+- Version 8.1.4
+  * Replace all typing.Dict occurrences to typing.MutableMapping
+    for parameter hints. #2255
+  * Improve type hinting for decorators and give all generic types
+    parameters. #2398
+  * Fix return value and type signature of
+    shell_completion.add_completion_class function. #2421
+  * Bash version detection doesn’t fail on Windows. #2461
+  * Completion works if there is a dot (.) in the program name.
+    #2166
+  * Improve type annotations for pyright type checker. #2268
+  * Improve responsiveness of click.clear(). #2284
+  * Improve command name detection when using Shiv or PEX. #2332
+  * Avoid showing empty lines if command help text is empty. #2368
+  * ZSH completion script works when loaded from fpath. #2344.
+  * EOFError and KeyboardInterrupt tracebacks are not suppressed
+    when standalone_mode is disabled. #2380
+  * @group.command does not fail if the group was created with a
+    custom command_class. #2416
+  * multiple=True is allowed for flag options again and does not
+    require setting default=(). #2246, #2292, #2295
+  * Make the decorators returned by @argument() and @option()
+    reusable when the cls parameter is used. #2294
+  * Don’t fail when writing filenames to streams with strict
+    errors. Replace invalid bytes with the replacement character
+    (�). #2395
+  * Remove unnecessary attempt to detect MSYS2 environment. #2355
+  * Remove outdated and unnecessary detection of App Engine
+    environment. #2554
+  * echo() does not fail when no streams are attached, such as with
+    pythonw on Windows. #2415
+  * Argument with expose_value=False do not cause completion to
+    fail. #2336
+- Switch to github archive, because upstream forgot to release on
+  PyPI gh#python-trio/asyncclick#18
+
+-------------------------------------------------------------------
 Fri May 19 07:22:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build with setuptools_scm

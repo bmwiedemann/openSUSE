@@ -24,4 +24,12 @@
 - build for PSP on sle15</comment>
     <requestid>1087893</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2640fc8f87befb63e03c9dbe31ddb7a9</srcmd5>
+    <version>8.1.7.0+async</version>
+    <time>1705951887</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138798</requestid>
+  </revision>
 </revisionlist>
