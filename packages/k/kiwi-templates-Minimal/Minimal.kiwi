@@ -409,7 +409,7 @@
         <package name="wireless-tools"/>
         <package name="wpa_supplicant"/>
         <package name="bcm43xx-firmware"/>
-        <package name="kernel-firmware"/><!-- Fix choice between kernel-firmware and kernel-firmware-all -->
+        <package name="kernel-firmware-brcm"/>
         <package name="u-boot-rpiarm64" arch="aarch64"/>
     </packages>
 
