@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 20 20:42:06 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- remove pam-config call from post scriptlet of systemd-32bit
+  * the full package already does that
+
+-------------------------------------------------------------------
 Fri Jan 12 10:12:15 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Add 5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
