@@ -1,0 +1,6 @@
+<package name="rustdesk-server" project="openSUSE:Factory">
+  <title></title>
+  <description>Self-host your own RustDesk server, it is free and open source.</description>
+  <devel project="X11:RemoteDesktop" package="rustdesk-server"/>
+  <url>https://github.com/rustdesk/rustdesk-server</url>
+</package>
