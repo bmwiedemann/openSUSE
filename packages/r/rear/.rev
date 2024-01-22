@@ -286,4 +286,12 @@
     <comment>rear update to ReaR 2.7 release (forwarded request 989145 from jsmeix)</comment>
     <requestid>989146</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>fb6a404a13d122c30a6e14d4e03b7dac</srcmd5>
+    <version>2.7</version>
+    <time>1705952074</time>
+    <user>anag+factory</user>
+    <comment>Security fix CVE-2024-23301 bsc#1218728 for rear (forwarded request 1140363 from jsmeix)</comment>
+    <requestid>1140364</requestid>
+  </revision>
 </revisionlist>
