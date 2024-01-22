@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jan 22 15:29:35 UTC 2024 - Caleb Crane (caleb.crane@suse.com)
+
+- Update to version 0.3.2~0:
+  * crates.io: Updating crates.io for publishing
+  * cert: Fixing minor bug with certificates
+  * Fixing report request serialization
+  * hyperv: Adding feature flag for hyperv
+  * VCEK: Patching for x509 error
+  * 9: Adding Cargo.lock for dependency tracking
+  * 9: Adding Rust Minimum Version
+  * Auto Assign: Adding yml files
+  * Update docs/snpguest.1.adoc
+  * Change false to hv in main
+  * Fixing comments on PR, added code to main, and fixed flag ambiguity
+  * Adding Derived Key Feature
+  * azure: Use mutable variable instead of consistently recreating
+  * docs: Document report --platform flag
+  * report: Add --platform flag for Hyper-V
+  * hyperv: Require VMPL 0 for attestation report
+  * hyperv: Check for hypervisor guest + Hyper-V functions
+  * hyperv: Fetch attestation report from Azure vTPM
+  * hyperv: Detect if in a Hyper-V SEV-SNP guest
+  * Reformat with cargo fmt
+  * verify: Fix clippy warning
+  * Fixing clippy Errors
+  * Changed Attestation workflow to always require a bin Attestation Report. Fixed requested changes.
+  * Adding new write_cert function. Organizing code.
+  * Adding proctype enum
+  * Attestation Report requested when used. New fetch command. Continuity fixes.
+  * Fixing dependencies
+
+-------------------------------------------------------------------
 Mon Jul 10 17:18:03 UTC 2023 - larry.j.dewey@gmail.com
 
 - Update to version 0.2.2~0:
