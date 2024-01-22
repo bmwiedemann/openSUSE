@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  4 09:09:31 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.2.0
+  - Update master for stable/2023.1
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Bump bandit
+  - Imported Translations from Zanata
+  - Moves supported python runtimes from version 3.8 to 3.10
+
+-------------------------------------------------------------------
 Mon Mar  6 20:58:55 UTC 2023 - cloud-devel@suse.de
 
 - update to version 3.1.1

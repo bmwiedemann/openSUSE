@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.service
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %global rdo 1
 %endif
 Name:           python-oslo.service
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        OpenStack oslo.service library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.service
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.service/oslo.service-3.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.service/oslo.service-3.2.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  procps
 BuildRequires:  python3-Paste >= 2.0.2
@@ -90,7 +90,7 @@ performing periodic operations, interacting with systemd, etc.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.service-3.1.1
+%autosetup -p1 -n oslo.service-3.2.0
 %py_req_cleanup
 
 %build
