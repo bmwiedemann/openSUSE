@@ -150,4 +150,27 @@
     + Runtime library search path to remove current directory</comment>
     <requestid>1130754</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8d7eb6fb471bc9ccb5e606957be52581</srcmd5>
+    <version>2.10.1</version>
+    <time>1705951818</time>
+    <user>anag+factory</user>
+    <comment>- u_buildfix-i586.patch
+  * fixed build on i586 
+
+- Update to version 2.10.1
+  + Changed
+    * Project name to Intel® Video Processing Library (Intel® VPL)
+    * Project versioning scheme to align with library and API
+      version
+  + Added
+    * Intel® VPL specification and associated build scripts
+  + Known Issues
+    * sample_decode may report &quot;DeliverOutput return error = -1&quot;
+      when run using -r option
+    * vpl-infer example will fail to load model if built with CMake
+      version higher than 3.25.3 on Windows
+- Add libva build dep</comment>
+    <requestid>1140080</requestid>
+  </revision>
 </revisionlist>

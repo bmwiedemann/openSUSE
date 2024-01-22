@@ -1,7 +1,7 @@
 #
 # spec file for package libvpl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,16 +25,18 @@
 %global sover 2
 Name:           libvpl
 %define lname   libvpl%{sover}
-Version:        2023.4.0
+Version:        2.10.1
 Release:        0
 Summary:        oneAPI Video Processing Library (oneVPL) dispatcher, tools, and examples
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/oneapi-src/oneVPL
 Source0:        https://github.com/oneapi-src/oneVPL/archive/refs/tags/v%{version}.tar.gz#/libvpl-%{version}.tar.gz
+Patch0:         u_buildfix-i586.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(wayland-client)
 %if 0%{?suse_version} > 1600
 ExclusiveArch:  x86_64 %ix86

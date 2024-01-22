@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan 20 10:02:00 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_buildfix-i586.patch
+  * fixed build on i586 
+
+-------------------------------------------------------------------
+Fri Jan 19 16:06:29 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 2.10.1
+  + Changed
+    * Project name to Intel® Video Processing Library (Intel® VPL)
+    * Project versioning scheme to align with library and API
+      version
+  + Added
+    * Intel® VPL specification and associated build scripts
+  + Known Issues
+    * sample_decode may report "DeliverOutput return error = -1"
+      when run using -r option
+    * vpl-infer example will fail to load model if built with CMake
+      version higher than 3.25.3 on Windows
+- Add libva build dep
+-------------------------------------------------------------------
 Mon Dec  4 12:25:24 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - This includes latest version of one of the components needed for
