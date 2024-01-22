@@ -1,7 +1,7 @@
 #
 # spec file for package rustscan
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@ Source:         RustScan-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
-Requires:       nmap
+Recommends:     nmap
 
 %description
 Find all open ports fast with RustScan, then automatically
