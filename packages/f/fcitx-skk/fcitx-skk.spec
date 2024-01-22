@@ -25,7 +25,7 @@ Group:          System/I18n/Japanese
 Url:            https://github.com/fcitx/fcitx-skk
 Source:         http://download.fcitx-im.org/fcitx-skk/%{name}-%{version}.tar.xz
 #PATCH-FIX-UPSTREAM lower qt5 version
-Patch:          qt5-version.patch
+Patch0:         qt5-version.patch
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel >= 4.2.8
 BuildRequires:  fcitx-qt5-devel
@@ -43,7 +43,7 @@ fcitx-skk is an input method engine for Fcitx, which uses libskk as its backend.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 mkdir -p build
