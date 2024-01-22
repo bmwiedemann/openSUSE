@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.15.8
+Version:        2.16.2
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -50,23 +50,22 @@ BuildArch:      noarch
 Conflicts:      ansible < 3
 Conflicts:      ansible-base
 
-# https://github.com/ansible/ansible/blob/devel/setup.cfg#L40
-BuildRequires:  %{ansible_python}-base >= 3.9
+# https://github.com/ansible/ansible/blob/stable-2.16/setup.cfg#L40
+BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-setuptools
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-# importlib_resources not required, as we are using python 3.10 or higher
-# SECTION test requirements
-BuildRequires:  %{ansible_python}-botocore
+# https://github.com/ansible/ansible/blob/stable-2.16/requirements.txt
 BuildRequires:  %{ansible_python}-Jinja2 >= 3.0.0
 BuildRequires:  %{ansible_python}-PyYAML >= 5.1
 BuildRequires:  %{ansible_python}-cryptography
-BuildRequires:  %{ansible_python}-curses
 BuildRequires:  %{ansible_python}-packaging
-BuildRequires:  %{ansible_python}-pytest
-BuildRequires:  %{ansible_python}-pytz
-# https://github.com/ansible/ansible/blob/devel/requirements.txt
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 1.1.0)
+# SECTION test requirements
+###BuildRequires:  %{ansible_python}-botocore
+###BuildRequires:  %{ansible_python}-curses
+###BuildRequires:  %{ansible_python}-pytest
+###BuildRequires:  %{ansible_python}-pytz
 # /SECTION
 # SECTION docs
 BuildRequires:  %{ansible_python}-docutils
@@ -75,18 +74,17 @@ Requires:       %{ansible_python}-Jinja2 >= 3.0.0
 Requires:       %{ansible_python}-PyYAML >= 5.1
 Requires:       %{ansible_python}-cryptography
 Requires:       %{ansible_python}-packaging
-# https://github.com/ansible/ansible/blob/devel/requirements.txt
-# importlib_resources not required, as we are using python 3.10 or higher
 Requires:       (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 1.1.0)
 
 # ansible-documentation is a separate package since 2.15.3
 Recommends:     ansible-documentation
 
 %description
-Ansible is a radically simple IT automation system. It handles
-configuration management, application deployment, cloud provisioning,
-ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex
-changes like zero-downtime rolling updates with load balancers easy. More information on the Ansible `website <https://ansible.com/>`_.
+Ansible is a radically simple IT automation system. It handles configuration
+management, application deployment, cloud provisioning, ad-hoc task execution,
+network automation, and multi-node orchestration. Ansible makes complex changes
+like zero-downtime rolling updates with load balancers easy. More information
+on the Ansible website <https://ansible.com/>.
 
 %package -n ansible-test
 Summary:        Tool for testing ansible plugin and module code
@@ -186,7 +184,7 @@ cp -v ./man1/*.1 %{buildroot}/%{_mandir}/man1/
 #python3 bin/ansible-test units -v --python %%{python3_version}
 
 %files
-%doc changelogs/CHANGELOG-v2.15.rst changelogs/changelog.yaml
+%doc changelogs/CHANGELOG-v2.16.rst changelogs/changelog.yaml
 %license COPYING licenses/Apache-License.txt licenses/MIT-license.txt licenses/PSF-license.txt licenses/simplified_bsd.txt
 %{_bindir}/ansible
 %{_bindir}/ansible-config

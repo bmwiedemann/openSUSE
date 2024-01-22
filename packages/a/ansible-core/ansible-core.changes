@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Sun Jan 21 08:09:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.2:
+  https://github.com/ansible/ansible/blob/v2.16.2/changelogs/CHANGELOG-v2.16.rst
+  * Bugfixes
+    - unsafe data - Address an incompatibility when iterating or
+      getting a single index from AnsibleUnsafeBytes
+    - unsafe data - Address an incompatibility with
+      AnsibleUnsafeText and AnsibleUnsafeBytes when pickling with
+      protocol=0
+
+-------------------------------------------------------------------
+Sun Jan 21 08:06:56 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.1:
+  https://github.com/ansible/ansible/blob/v2.16.1/changelogs/CHANGELOG-v2.16.rst
+  * Breaking Changes / Porting Guide
+    - assert - Nested templating may result in an inability for the
+      conditional to be evaluated. See the porting guide for more
+      information.
+  * Security Fixes
+    - templating - Address issues where internal templating can
+      cause unsafe variables to lose their unsafe designation
+      (CVE-2023-5764)
+  * Bugfixes
+    - Fix issue where an include_tasks handler in a role was not
+      able to locate a file in tasks/ when tasks_from was used as a
+      role entry point and main.yml was not present (#82241)
+    - Plugin loader does not dedupe nor cache filter/test plugins
+      by file basename, but full path name.
+    - Restoring the ability of filters/tests can have same file
+      base name but different tests/filters defined inside.
+    - ansible-pull now will expand relative paths for the
+      -d|--directory option is now expanded before use.
+    - ansible-pull will now correctly handle become and connection
+      password file options for ansible-playbook.
+    - flush_handlers - properly handle a handler failure in a
+      nested block when force_handlers is set
+      (http://github.com/ansible/ansible/issues/81532)
+    - module no_log will no longer affect top level booleans, for
+      example no_log_module_parameter='a' will no longer hide
+      changed=False as a 'no log value' (matches 'a').
+    - role params now have higher precedence than host facts again,
+      matching documentation, this had unintentionally changed in
+      2.15.
+    - wait_for should not handle 'non mmapable files' again.
+
+-------------------------------------------------------------------
+Sun Jan 21 08:02:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.0:
+  https://github.com/ansible/ansible/blob/v2.16.0/changelogs/CHANGELOG-v2.16.rst
+  * Bugfixes and Minor changes omitted for brevity, see full
+    changelog
+  * Breaking Changes / Porting Guide
+    - Any plugin using the config system and the cli entry to use
+      the timeout from the command line, will see the value change
+      if the use had configured it in any of the lower precedence
+      methods. If relying on this behaviour to consume the
+      global/generic timeout from the DEFAULT_TIMEOUT constant,
+      please consult the documentation on plugin configuration to
+      add the overlaping entries.
+    - ansible-test - Test plugins that rely on containers no longer
+      support reusing running containers. The previous behavior was
+      an undocumented, untested feature.
+    - service module will not permanently configure variables/flags
+      for openbsd when doing enable/disable operation anymore, this
+      module was never meant to do this type of work, just to
+      manage the service state itself. A rcctl_config or similar
+      module should be created and used instead.
+  * Deprecated Features
+    - Deprecated ini config option collections_paths, use the
+      singular form collections_path instead
+    - Deprecated the env var ANSIBLE_COLLECTIONS_PATHS, use the
+      singular form ANSIBLE_COLLECTIONS_PATH instead
+    - Old style vars plugins which use the entrypoints
+      get_host_vars or get_group_vars are deprecated. The plugin
+      should be updated to inherit from BaseVarsPlugin and define a
+      get_vars method as the entrypoint.
+    - Support for Windows Server 2012 and 2012 R2 has been removed
+      as the support end of life from Microsoft is October 10th
+      2023. These versions of Windows will no longer be tested in
+      this Ansible release and it cannot be guaranteed that they
+      will continue to work going forward.
+    - STRING_CONVERSION_ACTION config option is deprecated as it is
+      no longer used in the Ansible Core code base.
+    - the 'smart' option for setting a connection plugin is being
+      removed as it's main purpose (choosing between ssh and
+      paramiko) is now irrelevant.
+    - vault and unfault filters - the undocumented vaultid
+      parameter is deprecated and will be removed in ansible-core
+      2.20. Use vault_id instead.
+    - yum_repository - deprecated parameter 'keepcache' (#78693).
+  * Removed Features (previously deprecated)
+    - ActionBase - remove deprecated _remote_checksum method
+    - PlayIterator - remove deprecated cache_block_tasks and
+      get_original_task methods
+    - Remove deprecated FileLock class
+    - Removed Python 3.9 as a supported version on the controller.
+      Python 3.10 or newer is required.
+    - Removed include which has been deprecated in Ansible 2.12.
+      Use include_tasks or import_tasks instead.
+    - Templar - remove deprecated shared_loader_obj parameter of
+      __init__
+    - fetch_url - remove auto disabling decompress when gzip is not
+      available
+    - get_action_args_with_defaults - remove deprecated
+      redirected_names method parameter
+    - ansible-test - Removed support for the remote Windows targets
+      2012 and 2012-R2
+    - inventory_cache - remove deprecated
+      default.fact_caching_prefix ini configuration option, use
+      defaults.fact_caching_prefix instead.
+    - module_utils/basic.py - Removed Python 3.5 as a supported
+      remote version. Python 2.7 or Python 3.6+ is now required.
+    - stat - removed unused get_md5 parameter.
+  * Security Fixes
+    - ansible-galaxy - Prevent roles from using symlinks to
+      overwrite files outside of the installation directory
+      (CVE-2023-5115)
+  * Known issues
+    - ansible-galaxy - dies in the middle of installing a role when
+      that role contains Java inner classes (files with $ in the
+      file name). This is by design, to exclude temporary or backup
+      files. (#81553).
+    - ansible-test - The pep8 sanity test is unable to detect
+      f-string spacing issues (E201, E202) on Python 3.10 and 3.11.
+      They are correctly detected under Python 3.12. See
+      (PyCQA/pycodestyle#1190).
+
+-------------------------------------------------------------------
 Tue Dec 12 17:22:59 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.15.8:
