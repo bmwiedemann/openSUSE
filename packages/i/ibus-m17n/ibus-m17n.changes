@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 15:04:05 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Use %_libexecdir as the basis of %_ibus_libexecdir (bsc#1174075)
+
+-------------------------------------------------------------------
 Thu Dec  7 20:33:00 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 1.4.27

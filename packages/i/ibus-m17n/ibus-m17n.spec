@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-m17n
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ the input table maps from m17n-db.
 
 %build
 %configure --disable-static \
-           --libexecdir=%{_prefix}/%{_lib}/ibus \
+           --libexecdir=%{_libexecdir}/ibus \
            --with-gtk=3.0
 %make_build
 
@@ -52,7 +52,7 @@ the input table maps from m17n-db.
 %license COPYING
 %doc AUTHORS README
 %{_datadir}/ibus-*
-%{_libdir}/ibus/ibus-*
+%{_libexecdir}/ibus/ibus-*
 %{_datadir}/ibus/component/*
 %{_datadir}/applications/ibus-setup-m17n.desktop
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.m17n.gschema.xml
