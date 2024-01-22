@@ -1,7 +1,7 @@
 #
 # spec file for package openvdb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,10 +19,14 @@
 
 %bcond_without nanovdb
 
-%define libname libopenvdb9_0
+%define libname libopenvdb11_0
+%if 0%{suse_version} <= 1500
+# force a recent gcc version on 15.X, default would be gcc7 which is too old
+%define gcc_major 10
+%endif
 
 Name:           openvdb
-Version:        9.0.0
+Version:        11.0.0
 Release:        0
 Summary:        Sparse volume data structure and tools
 License:        Apache-2.0
@@ -30,17 +34,19 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.openvdb.org
 Source:         https://github.com/AcademySoftwareFoundation/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.12
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_major}-c++ >= 9.3.1
 BuildRequires:  libboost_iostreams-devel-impl >= 1.70
 BuildRequires:  libboost_system-devel-impl >= 1.70
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  tbb-devel
+BuildRequires:  tbb-devel >= 2020.3
 BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(jemalloc)
+# 32-bit: linker errors
+ExcludeArch: %ix86 %arm32
 
 %description
 OpenVDB is a C++ library comprising a hierarchical data structure and
@@ -84,7 +90,8 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
 # -DCMAKE_NO_SYSTEM_FROM_IMPORTED:BOOL=TRUE is needed,
 # will bail out with: stdlib.h not found otherwise
 %cmake \
-    -DCMAKE_CXX_STANDARD=14 \
+    -DCMAKE_CXX_STANDARD=17 \
+%{?gcc_major:-DCMAKE_C_COMPILER=gcc-%{gcc_major} -DCMAKE_CXX_COMPILER=g++-%{gcc_major}} \
     -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC " \
     -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC " \
     -DCMAKE_NO_SYSTEM_FROM_IMPORTED:BOOL=TRUE \
