@@ -1,8 +1,7 @@
 #
 # spec file for package rnp
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +29,7 @@ Source3:        https://www.rnpgp.org/openpgp_keys/31AF5A24D861EFCB7CB79A1924900
 Patch0:         rnp-v0.17.0-disable-static.patch
 Patch2:         rnp-v0.17.0-system-sexp.patch
 Patch3:         rnp-v0.17.0-tests.patch
+Patch4:         rnp-v0.17.0-test-SHA1-cutoff.patch
 BuildRequires:  cmake >= 3.18
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2 >= 2.2

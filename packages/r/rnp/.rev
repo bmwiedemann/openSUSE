@@ -105,4 +105,13 @@ Needs SR#1093175</comment>
 </comment>
     <requestid>1095488</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>5a5f309443959d5c507be1597d722c63</srcmd5>
+    <version>0.17.0</version>
+    <time>1705951919</time>
+    <user>anag+factory</user>
+    <comment>fix build after SHA-1 cutoff date
+</comment>
+    <requestid>1140565</requestid>
+  </revision>
 </revisionlist>
