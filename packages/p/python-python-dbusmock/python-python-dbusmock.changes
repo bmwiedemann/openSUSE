@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sun Jan 21 17:35:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.30.2:
+  * bluez5: Fix invalid arguments to PairDevice
+- update to 0.30.1:
+  * bluez: Clean up static default properties, re-drop
+    PairDevice() `class_` parameter
+- update to 0.30.0:
+  * api: Add pytest support and helpers
+  * api: Factor the server spawning into a new SpawnedMock object
+  * cli: Add support for running custom commands on the mock
+    environment
+- update to 0.29.1:
+  * spec: Update License: to SPDX format
+- update to 0.29.0:
+  * Support loading templates from XDG_DATA_DIRS
+  * iio-sensors-proxy: Throw proper D-Bus errors instead of
+    Python Exception
+- update to 0.28.7:
+  * blue5-obex template: Fix OBEX PullAll
+  * power_profiles template: Fix Actions property type
+  * README: Explain container tests and how to debug them
+- update to 0.28.6:
+  * Fix generated _version.py in release tarball
+- update to 0.28.4:
+  * setup.py: Fix ModuleNotFoundError
+  * ofono template: Fix conversion to f-strings (Debian #1015286)
+  * Ship FMF tests in release tarballs
+- update to 0.28.3:
+  * Bring back dbusmock.__version__
+- update to 0.28.2:
+  * Dynamically compute version with setuptools-scm
+- update to 0.28.1:
+  * Again works on RHEL/CentOS 8 (0.27 broke there), now in CI
+  * Avoid glib GI dependency for main dbusmock, for running in
+    virtualenv (thanks Allison Karlitskaya)
+- update to 0.27.5:
+  * bluez and accountsservice templates: Drop default arguments
+    from D-Bus methods (thanks Simon McVittie)
+- update to 0.27.4:
+  * Fix D-Bus signature detection regression from 0.27.0
+- update to 0.27.3:
+  * packit: Fix file name to sync
+- update to 0.27.2:
+  * packit: Really fix Fedora dist-git syncing
+- update to 0.27.1:
+  * packit: Fix Fedora dist-git syncing
+- update to 0.27.0:
+  * Do not register standard session service directories, add API
+    to enable selected services (thanks Benjamin Berg)
+  * Log static method calls from templates (thanks Peter
+    Hutterer)
+- update to 0.26.1:
+  * Fix README content type to Markdown, to fix releasing to PyPi
+- update to 0.26.0:
+  * logind template: Add locking API (thanks Andy Holmes)
+  * bluez5 template: Add RemoveDevice() and
+    RemoveAdapterWithDevices() methods,
+  * fix properties (thanks Bastien Nocera)
+  * Documentation improvements, particularly wrt. raising errors
+- update to 0.25.0:
+  * bluez template: Implement adapter discovery, connect,
+    disconnect, and removal
+  * Fix changing array properties (thanks Jonas Ådahl)
+  * Fix CLI upower tests (thanks Marco Trevisan)
+
+-------------------------------------------------------------------
 Wed Oct 11 01:31:56 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - dbusmock explicitly needs dbus-1-daemon to function (rather then
@@ -46,7 +113,7 @@ Mon Dec 13 04:35:29 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
   * upower template: Drop support for 0.9 API
   * NetworkManager template: Handle NetworkingEnable
   * NetworkManager template: AddConnectionUnsaved
-  * Drop support for Python 2 
+  * Drop support for Python 2
 - Add python-dataclasses to {Build,}Requires
 
 -------------------------------------------------------------------
