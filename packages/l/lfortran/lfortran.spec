@@ -18,7 +18,7 @@
 # for static libraries
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
-Version:        0.30.0
+Version:        0.31.0
 %global         sover 0
 Name:           lfortran
 Release:        0
@@ -30,8 +30,6 @@ Summary:        A modern interactive Fortran compiler built on top of LLVM
 License:        BSD-3-Clause AND Apache-2.0 WITH LLVM-exception
 URL:            https://lfortran.org/
 Source0:        https://lfortran.github.io/tarballs/release/lfortran-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 3043.patch lfortran/lfortran#3043, fix linking issue.
-Patch0:         3043.patch
 
 # https://github.com/lfortran/lfortran/issues/2981
 ExclusiveArch: x86_64
@@ -125,6 +123,7 @@ This package contains static runtime library for %{name}.
 %files
 %doc README.md
 %{_bindir}/lfortran
+%{_mandir}/man1/lfortran.1.*
 
 %files -n liblfortran%{sover}
 %license LICENSE

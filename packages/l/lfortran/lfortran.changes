@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Jan 22 16:54:36 UTC 2024 - Christoph Junghans <junghans@votca.org>
+
+- Update to v0.31.0
+  - CI: add lfortran.1 to tarball ([gh#lfortran/lfortran##3041])
+  - Update generic travel example ([gh#lfortran/lfortran##2995])
+  - Implement intrinsic repeat ([gh#lfortran/lfortran##3038])
+  - Warning when the LHS character len and the RHS character len are not equal
+    ([gh#lfortran/lfortran##3005])
+  - CI: test example of stdlib special functions gamma
+    ([gh#lfortran/lfortran##3036])
+  - Add gamma to IntrinsicScalarFunction ([gh#lfortran/lfortran##3032])
+  - ASR: Print => as Associate and = as Assignment
+    ([gh#lfortran/lfortran##3040])
+  - cmake: add libm to lfortran_runtime ([gh#lfortran/lfortran##3043])
+  - Support calling scalar intrinsics with allocatable inputs
+    ([gh#lfortran/lfortran##3049])
+  - ci: update stdlib branch to remove workaround for gamma
+    ([gh#lfortran/lfortran##3045])
+  - Added tsunami integration test ([gh#lfortran/lfortran##3055])
+  - Fixes for compiling testdrive.F90 ([gh#lfortran/lfortran##3062])
+  - FIX: Type mismatch in array initializer r32 and i32
+    ([gh#lfortran/lfortran##3059])
+  - FIX: operands to a binary operator are not of the same type!
+    ([gh#lfortran/lfortran##3061])
+  - Handle template with elemental functions ([gh#lfortran/lfortran##2895])
+  - Fixes for bugs in testdrive.F90 ([gh#lfortran/lfortran##3065])
+  - Stdlib: Fix compile time evaluation for char() with IntegerBOZ
+    ([gh#lfortran/lfortran##3064])
+  - Fix allocatable to non-allocatable arguments in testdrive.F90
+    ([gh#lfortran/lfortran##3068])
+  - Rename IntrinsicFunctionSqrt to RealSqrt ([gh#lfortran/lfortran##3050])
+  - Stdlib: Support evaluating len() at compile-time
+    ([gh#lfortran/lfortran##3077])
+  - Simplify ASR.asdl ([gh#lfortran/lfortran##3063])
+  - Emit warning for complex*4 x ([gh#lfortran/lfortran##3066])
+  - Support char type for write(..) ([gh#lfortran/lfortran##2888])
+  - FIX: inconsistent kind handling for array item indices
+    ([gh#lfortran/lfortran##3093])
+  - Nested template definitions and instantiations
+    ([gh#lfortran/lfortran##2996])
+  - Stdlib: Fix initialization for complex parameter
+    ([gh#lfortran/lfortran##3097])
+  - Emit warning for logical* 4 ([gh#lfortran/lfortran##3099])
+  - Stdlib: LFortran compiles ascii ([gh#lfortran/lfortran##3095])
+  - Fix complex parameter initialization ([gh#lfortran/lfortran##3100])
+  - Fix shape intrinsic for scalar arg ([gh#lfortran/lfortran##3094])
+  - Fix use of keyword args for intrinsic functions
+    ([gh#lfortran/lfortran##3075])
+  - doc: Update Windows build instructions ([gh#lfortran/lfortran##3101])
+  - Stdlib: LFortran compiles version and optval modules
+    ([gh#lfortran/lfortran##3118])
+  - Stdlib: Fix stop and error stop, Support stdlib_error module
+    ([gh#lfortran/lfortran##3121])
+  - Refactor code ([gh#lfortran/lfortran##3126])
+  - ENH: support intrinsic dfloat ([gh#lfortran/lfortran##3131])
+  - Handle kind for trailz ([gh#lfortran/lfortran##3132])
+  - Implement shiftr ([gh#lfortran/lfortran##3134])
+  - Compiling test/array to ASR ([gh#lfortran/lfortran##3135])
+  - Corrected keywords for intrinsic functions ([gh#lfortran/lfortran##3123])
+  - implement leadz ([gh#lfortran/lfortran##3141])
+  - Improve intrinsic tests ([gh#lfortran/lfortran##3145])
+  - Implement rank ([gh#lfortran/lfortran##3146])
+  - Python script for Intrinsic Functions verify_args()
+    ([gh#lfortran/lfortran##3150])
+  - cmake: allow llvm without zstd ([gh#lfortran/lfortran##3157])  
+- Dropped 3043.patch, merged upsteam
+
+-------------------------------------------------------------------
 Tue Jan  9 02:56:57 UTC 2024 - Christoph Junghans <junghans@votca.org>
 
 - Add kokkos dep
