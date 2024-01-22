@@ -1,8 +1,8 @@
-Index: doxygen-1.9.2/src/fortranscanner.l
+Index: doxygen-1.10.0/src/fortranscanner.l
 ===================================================================
---- doxygen-1.9.2.orig/src/fortranscanner.l
-+++ doxygen-1.9.2/src/fortranscanner.l
-@@ -2314,7 +2314,6 @@ static void initEntry(yyscan_t yyscanner
+--- doxygen-1.10.0.orig/src/fortranscanner.l
++++ doxygen-1.10.0/src/fortranscanner.l
+@@ -2697,7 +2697,6 @@ static void initEntry(yyscan_t yyscanner
  static void addCurrentEntry(yyscan_t yyscanner,bool case_insens)
  {
    struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
