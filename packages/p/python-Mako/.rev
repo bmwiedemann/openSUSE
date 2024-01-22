@@ -558,4 +558,12 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     parameter which refers to the name of a cache plugin,</comment>
     <requestid>1131715</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>26871a3d61ad470c97acf0a425d14bda</srcmd5>
+    <version>1.3.0</version>
+    <time>1705951848</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140408</requestid>
+  </revision>
 </revisionlist>
