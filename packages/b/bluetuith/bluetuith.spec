@@ -1,7 +1,7 @@
 #
 # spec file for package bluetuith
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bluetuith
-Version:        0.1.9
+Version:        0.2.0
 Release:        0
 Summary:        A TUI bluetooth manager for Linux
 License:        MIT
