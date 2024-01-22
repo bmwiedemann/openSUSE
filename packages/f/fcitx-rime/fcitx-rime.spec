@@ -24,7 +24,7 @@ License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx-rime
 Source:         http://download.fcitx-im.org/fcitx-rime/%{name}-%{version}.tar.xz
-Patch:          fcitx-rime-0.3.2-rime-sync-user-data.patch
+Patch0:         fcitx-rime-0.3.2-rime-sync-user-data.patch
 BuildRequires:  brise
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel
@@ -52,7 +52,7 @@ This package is the Fcitx implentation of RIME.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 mkdir -p build
