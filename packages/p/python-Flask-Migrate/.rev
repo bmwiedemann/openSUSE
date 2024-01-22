@@ -118,4 +118,12 @@
   * Stop building Python 3.6</comment>
     <requestid>1140100</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>92b09bc556a1e40e36a03a259d5c75d8</srcmd5>
+    <version>4.0.5</version>
+    <time>1705952334</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140406</requestid>
+  </revision>
 </revisionlist>
