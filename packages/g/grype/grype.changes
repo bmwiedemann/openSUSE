@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 20 17:00:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.74.2:
+  * chore(deps): update Syft to v0.101.1 (#1669)
+  * chore(deps): bump github.com/docker/docker (#1667)
+  * chore(deps): bump anchore/sbom-action from 0.15.3 to 0.15.4
+    (#1666)
+  * chore(deps): bump actions/upload-artifact from 4.1.0 to 4.2.0
+    (#1668)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#1665)
+  * chore: enable automatic approval of dependabot PRs (#1664)
+
+-------------------------------------------------------------------
 Thu Jan 18 08:10:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.74.1:
