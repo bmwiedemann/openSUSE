@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           streamdeck-linux-gui
-Version:        3.2.0
+Version:        4.0.0
 Release:        0
 Summary:        Stream Deck tools (service, Web Interface, and UI)
 License:        MIT
@@ -44,6 +44,7 @@ Requires:       python3-CairoSVG >= 2.5.2
 Requires:       python3-Pillow >= 9.4.0
 Requires:       python3-evdev >= 1.3
 Requires:       python3-filetype >= 1.0.10
+Requires:       python3-importlib-metadata >= 6.8.0
 Requires:       python3-pynput >= 1.7.6
 Requires:       python3-pyside6 >= 6.4.2
 Requires:       python3-python-xlib >= 0.33
@@ -51,7 +52,7 @@ Requires:       python3-streamdeck >= 0.9.3
 BuildArch:      noarch
 Conflicts:      streamdeck-ui
 Provides:       streamdeck-ui = %{version}
-Obsoletes:      streamdeck-ui < %{version} 
+Obsoletes:      streamdeck-ui < %{version}
 
 %description
 A service, Web Interface, and UI for interacting with your computer using a Stream Deck

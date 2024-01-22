@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Dec 15 15:09:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * ensure correctly initialization of pipeline when new page is
+    added
+  * Ensure palette frames are RGBA
+  * **gui.py:** Fix horizontal alignment
+  * make image load exception broader
+  * switch page/button state race condition
+  * **timers.py:** ensure to disconnect previous calls
+  * validate invalid pages and button states
+  * Add support for default config
+  * Multi state buttons
+  * Use dataclasses instead of dicts to handle configuration and
+    support multi state buttons.
+  * config: state now uses models instead dicts
+  * api: state now uses models instead dicts
+  * gui: configuration now support multiple button states, v1
+    state file will be migrated, v2 is not backward compatible
+  * gui: warn dialog about migrating file and backup
+  * gui: allow add and remove button states
+  * gui: allow set the action "switch state" in button settings
+  * gui: cleaner logic to update button states
+  * cli: allow set the button state
+  * api: add test for add and remove button states
+  * api: add test for add and remove pages
+  * api: add test for change all properties (font, font size,
+    color, etc)
+  * gui: add test for all menu items
+  * gui: add tests for pages actions (add and remove)
+  * gui: add tests for button states actions add and remove
+  * gui: add tests for warn migration message
+  * config: test read/write and migration configuration
+  * fix minor bugs resulting in bad buttons display under some
+    circumstances
+  * Use dataclasses instead of dicts to handle configuration and
+    support multi state buttons.
+  * config: state now uses models instead dicts
+  * api: state now uses models instead dicts
+  * gui: configuration now support multiple button states, v1
+    state file will be migrated, v2 is not backward compatible
+  * gui: warn dialog about migrating file and backup
+  * gui: allow add and remove button states
+  * gui: allow set the action "switch state" in button settings
+  * gui: cleaner logic to update button states
+  * cli: allow set the button state
+  * build/ci: add ubuntu libraries for virtual framebuffer
+  * build/ci: add python pytest-qt libraries
+  * api: add test for add and remove button states
+  * api: add test for add and remove pages
+  * api: add test for change all properties (font, font size,
+    color, etc)
+  * gui: add test for all menu items
+  * gui: add tests for pages actions (add and remove)
+  * gui: add tests for button states actions add and remove
+  * gui: add tests for warn migration message
+  * config: test read/write and migration configuration
+  * fix minor bugs resulting in bad buttons display under some
+    circumstances
+
+-------------------------------------------------------------------
 Fri Nov 10 00:32:07 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - Re add provides and conflicts with streamdeck-ui, no idea when
