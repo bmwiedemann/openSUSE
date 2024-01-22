@@ -1,7 +1,7 @@
 #
 # spec file for package rear
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,12 @@ Source0:        http://sourceforge.net/projects/rear/files/rear/%{upstream_versi
 # Source999 rear-rpmlintrc filters false positives rpmlint warning messages, see
 # https://en.opensuse.org/openSUSE:Packaging_checks#Building_Packages_despite_of_errors
 Source999:      rear-rpmlintrc
+# Patch100...Patch999 is for patches from SUSE which are not intended for upstream:
+# Patch100 GRUB_RESCUE_initrd.patch fixes CVE-2024-23301
+# "ReaR creates world-readable initrd with GRUB_RESCUE=Y"
+# https://github.com/rear/rear/issues/3122
+# https://bugzilla.suse.com/show_bug.cgi?id=1218728
+Patch100:       GRUB_RESCUE_initrd.patch
 # Rear contains only bash scripts plus documentation so that on first glance it could be "BuildArch: noarch"
 # but actually it is not "noarch" because it only works on those architectures that are explicitly supported.
 # Of course the rear bash scripts can be installed on any architecture just as any binaries can be installed on any architecture.
@@ -287,6 +293,11 @@ for details see the GNU General Public License.
 
 %prep
 %setup -q -n rear-%{upstream_version}
+# Patch100 GRUB_RESCUE_initrd.patch fixes CVE-2024-23301
+# "ReaR creates world-readable initrd with GRUB_RESCUE=Y"
+# https://github.com/rear/rear/issues/3122
+# https://bugzilla.suse.com/show_bug.cgi?id=1218728
+%patch100
 # Add a specific os.conf to not depend on LSB dependencies
 # (otherwise it calls "lsb_release" in /usr/share/rear/lib/config-functions.sh)
 # for the suse_version values see the listings at

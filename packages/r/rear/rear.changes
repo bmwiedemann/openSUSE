@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 22 07:10:11 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- GRUB_RESCUE_initrd.patch fixes CVE-2024-23301
+  "ReaR creates world-readable initrd with GRUB_RESCUE=Y"
+  https://github.com/rear/rear/issues/3122
+  (bsc#1218728)
+
+-------------------------------------------------------------------
 Thu Jul 14 12:55:28 CEST 2022 - jsmeix@suse.de
 
 - Version upgrade to 2.7
