@@ -1,0 +1,6 @@
+<package name="rofi-network-manager" project="openSUSE:Factory">
+  <title>rofi-network-manager</title>
+  <description>A Network manager for Tiling Window Managers [i3/bspwm/awesome/etc] or not. Inspired from rofi-wifi-menu.</description>
+  <devel project="X11:Utilities" package="rofi-network-manager"/>
+  <url>https://github.com/P3rf/rofi-network-manager</url>
+</package>
