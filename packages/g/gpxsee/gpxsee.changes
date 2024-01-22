@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 21 23:45:47 CET 2024 - tumic@cbox.cz
+
+- Update to version 13.15
+  * Removed qt5compat dependency from Qt6 builds.
+  * Multiple minor fixes (GUI). 
+
+-------------------------------------------------------------------
 Mon Jan  1 23:25:38 CET 2024 - tumic@cbox.cz
 
 - Update to version 13.14
