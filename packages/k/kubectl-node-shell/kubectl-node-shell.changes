@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 22 05:30:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.10.1:
+  * fix grep for check resource quota
+
+-------------------------------------------------------------------
+Sat Jan 20 17:36:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.10.0:
+  * bump version v1.10.0
+  * Fix Windows support for 2019 (#47)
+  * Automatically set or not set resource quota through the cluster
+    (#59)
+
+-------------------------------------------------------------------
+Sat Jan 20 17:34:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.0:
+  * feat(node-shell): optional pod running timeout (#57)
+
+-------------------------------------------------------------------
 Sun Jan 07 18:22:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.1:
