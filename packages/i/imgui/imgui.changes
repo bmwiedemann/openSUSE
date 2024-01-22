@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon Jan 22 10:20:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.1:
+  * imgui_freetype: commented out ImGuiFreeType::BuildFontAtlas()
+    obsoleted in 1.81.
+    Prefer using #define IMGUI_ENABLE_FREETYPE or see commented
+    code for manual calls.
+  * Removed CalcListClipping() marked obsolete in 1.86. (#3841)
+    Prefer using ImGuiListClipper which can return non-contiguous
+    ranges.
+  * Internals, Columns: commented out legacy ImGuiColumnsFlags_XXX
+    symbols redirecting to ImGuiOldColumnsFlags_XXX
+  * Commented out obsolete ImGuiKey_KeyPadEnter redirection to
+    ImGuiKey_KeypadEnter. (#2625, #7143)
+  * Navigation (Keyboard/gamepad):
+    - Nav, IO: SetNextFrameWantCaptureKeyboard(false) calls are
+      not overridden back to true when navigation is enabled.
+      SetNextFrameWantCaptureKeyboard() is always higher priority.
+    - Nav: Activation can also be performed with Keypad Enter.
+  * Drag and Drop:
+    - Fixed drop target highlight on items temporarily pushing a
+      widened clip rect (namely Selectables and Treenodes using
+      SpanAllColumn flag) so the highlight properly covers
+      all columns. (#7049, #4281, #3272)
+  * InputText:
+    - InputTextMultiline: Fixed Tab character input not repeating
+    - InputTextMultiline: Tabbing through a multi-line text editor
+      which allows Tab character inputs (using the
+      ImGuiInputTextFlags_AllowTabInput flag) doesn't
+      automatically activate it, in order to allow passing
+      through multiple widgets easily.
+  * Drags, Sliders, Inputs:
+    + DragScalarN, SliderScalarN, InputScalarN: Fixed incorrect
+      pushes into ItemWidth stack when number of components is 1.
+    + Drags, Sliders, Inputs: removed all attempts to filter
+      non-numerical characters during text editing. Invalid
+      inputs not applied to value, visibly reverted after
+      validation.
+    + Drags, Sliders, Inputs: removal of filter means that "nan"
+      and "inf" values may be input. (#7096)
+    + DragScalarN, SliderScalarN, InputScalarN,
+      PushMultiItemsWidths: improve multi-components width
+      computation to better distribute the error.
+  * Menus:
+    + Tweaked hover slack logic, adding an extra timeout to avoid
+      situations where a slow vertical movements toward another
+      parent BeginMenu() can keep the wrong child menu open.
+  * Color Editors:
+    + ColorEdit: Layout tweaks for very small sizes. (#7120, #7121)
+    + ColorPicker: Fixed saturation/value cursor radius not
+      scaling properly.
+  * Debug Tools:
+    - Added io.ConfigDebugIsDebuggerPresent option. When enabled,
+      this adds buttons in various locations of Metrics/Debugger
+      to manually request a debugger break:
+    - Metrics: Reorganize Tools menu.
+    - Added DebugFlashStyleColor() to identify a style color.
+  * Settings: Fixed an issue marking settings as dirty when merely
+    clicking on a border or resize grip without moving it.
+  * Misc: Added IMGUI_USER_H_FILENAME to change the path included
+    when using IMGUI_INCLUDE_IMGUI_USER_H. (#7039) [@bryceberger]
+  * Misc: Rework debug display of texture id in Metrics window to
+    avoid compile-error when ImTextureID is defined to be larger
+    than 64-bits. (#7090)
+  * Misc: Added extra courtesy ==/!= operators when
+    IMGUI_DEFINE_MATH_OPERATORS is defined.
+  * Misc: Fixed text functions fast-path for handling "%s" and
+    "%.*s" to handle null pointers gracefully, like most printf
+    implementations. (#7016, #3466, #6846
+  * Misc: Renamed some defines in imstb_textedit.h to avoid
+    conflicts when using unity/jumbo builds on a codebase where
+    another copy of the library is used.
+  * Misc: During shutdown, check that io.BackendPlatformUserData
+    and io.BackendRendererUserData are NULL in order to catch
+    cases where backend was not shut down. (#7175)
+  * Misc: Reworked Issue Template to a shinier and better form.
+
+-------------------------------------------------------------------
 Sat Nov 25 20:24:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.90:
