@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jan 19 18:05:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag 17.0.10+2 (January 2024 CPU)
+  * Security fixes:
+    + JDK-8313048, CVE-2024-20923: Better Glyph handling
+    + JDK-8313105, CVE-2024-20925: Improved media framing
+    + JDK-8313056, CVE-2024-20922: General enhancements of Glass
+  * Other fixes:
+    + JDK-8181084: JavaFX show big icons in system menu on macOS
+      with Retina display
+    + JDK-8251240: Menus inaccessible on Linux with i3 wm
+    + JDK-8260528: Clean glass-gtk sizing and positioning code
+    + JDK-8299968: Second call to Stage.setScene() create sizing
+      issue with uiScale > 1.0
+    + JDK-8292922: [Linux] No more drag events when new Stage is
+      created in drag handler
+    + JDK-8201538: Remove implementation support for applets from
+      JavaFX
+    + JDK-8320267: WebView crashes on macOS 11 with WebKit 616.1
+    + JDK-8319231: Unrecognized "minimum" key in .jcheck/conf causes
+      /reviewers command to be ignored
+    + JDK-8319066: Application window not always activated in macOS
+      14 Sonoma
+    + JDK-8318823: Change JavaFX release version to 17.0.10 in
+      jfx17u
+
+-------------------------------------------------------------------
 Fri May 12 08:00:13 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag 17.0.7+2
