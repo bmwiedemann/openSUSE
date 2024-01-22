@@ -41,7 +41,7 @@ The input pad engine for IBus platform.
 %setup -q
 
 %build
-%configure --disable-static
+%configure --disable-static --libexecdir=%{_ibus_libexecdir}
 make %{?_smp_mflags}
 
 %install
@@ -53,8 +53,8 @@ make install DESTDIR=$RPM_BUILD_ROOT INSTALL='install -p'
 %files -f %{name}.lang
 %defattr(-,root,root,-)
 %doc AUTHORS COPYING README
-%{_libexecdir}/ibus-engine-input-pad
-%{_libexecdir}/ibus-setup-input-pad
+%{_ibus_libexecdir}/ibus-engine-input-pad
+%{_ibus_libexecdir}/ibus-setup-input-pad
 %{_datadir}/ibus/component/*
 %{_datadir}/applications/ibus-setup-input-pad.desktop
 

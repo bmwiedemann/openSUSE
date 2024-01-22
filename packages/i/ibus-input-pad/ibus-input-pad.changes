@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 14:55:24 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)
+
+-------------------------------------------------------------------
 Tue Oct 14 06:28:16 UTC 2014 - hillwood@linuxfans.org
 
 - Update 1.4.99.20140916
