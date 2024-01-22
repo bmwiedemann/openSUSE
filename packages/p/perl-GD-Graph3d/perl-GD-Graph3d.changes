@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 02:05:57 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %patch0 to fix compilation with rpm-4.19
+
+-------------------------------------------------------------------
 Tue Mar 13 15:13:56 UTC 2018 - crrodriguez@opensuse.org
 
 - Remove buildrequires on jpeg and xorg-x11-devel 
