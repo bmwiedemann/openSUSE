@@ -459,4 +459,41 @@
 * Make sure, apparmor cache subdirectories are deleted as well.</comment>
     <requestid>1097041</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9cf10db3f39b862bbc2382c5fcac3dad</srcmd5>
+    <version>8.7.34</version>
+    <time>1705952295</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 8.7.34
+  * (Again) Cannot use the string ${ZSH_VERSION} in
+    $FPATH.  Instead change orig zsh version to current one.
+  * Change isFile(fn) to return nil if fn is a broken symlink.
+  * Change abspath() to l_abspath() in tools/fileOps.lua
+  * Create realpath() to use posix.realpath() if it exists
+    otherwise use l_abspath()
+  * Implement user request that the Active RC file(s) be realpath()
+  * Internally rename complete name to be &quot;complete&lt;name&gt;&quot; and
+    unwrap when necessary.
+  * Change the current version of zsh with the string
+    ${ZSH_VERSION} when builting the init/zsh file.
+  * Better handling of zsh shell functions in source_sh().
+    Must match &quot;\n}\n&quot; to find end of function.
+  * Better name for extension title, remove trailing \n
+  * Added support for getenv function in TCL modules
+  * Fix bug where the version is very long (like git commit tags)
+  * Must delete old tcl2lua.so* files before installing new ones
+  * wrap double quotes around any newlines found in env var value
+    in bash like shells
+  * Unknown TCL module command now produce an error instead of
+    being ignored
+  * Update zsh and bash tab completion files
+  * Added support for &quot;module purge&quot; in a TCL modulefile to unload
+    all other modules on load.
+  * &quot;module show&quot; now prints the contents of inheritted modules.
+  * Added support for &quot;purge()&quot; function in modules to unload all
+    other modules on load.
+  * Created hook colorize_fullName to allow for sites to control
+    how &quot;module list&quot; and &quot;module av&quot; (forwarded request 1139499 from eeich)</comment>
+    <requestid>1140511</requestid>
+  </revision>
 </revisionlist>
