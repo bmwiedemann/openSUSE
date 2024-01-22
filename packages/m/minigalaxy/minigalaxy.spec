@@ -1,7 +1,7 @@
 #
 # spec file for package minigalaxy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           minigalaxy
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        A GOG client for Linux that lets you download and play your GOG Linux games
 License:        GPL-3.0-only
+Group:          Amusements/Games/Other
 URL:            https://github.com/sharkwouter/minigalaxy
-Source0:        https://github.com/sharkwouter/minigalaxy/archive/%{version}.tar.gz
+Source0:        https://github.com/sharkwouter/minigalaxy/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         minigalaxy-0.9.0-desktop.patch
 BuildRequires:  gobject-introspection
 BuildRequires:  python3

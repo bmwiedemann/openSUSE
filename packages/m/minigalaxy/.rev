@@ -266,4 +266,12 @@
   * Create new config if reading it fails</comment>
     <requestid>1103505</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8d3c190464fc8f8beea4f287eee8f868</srcmd5>
+    <version>1.2.6</version>
+    <time>1705952007</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140244</requestid>
+  </revision>
 </revisionlist>

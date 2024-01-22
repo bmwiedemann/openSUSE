@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 20 16:49:53 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.2.6: 
+  * Fix changing the install path causing an exception
+  * Fix error detection & reporting on wineprefix creation failure
+- Add group tag
+
+-------------------------------------------------------------------
 Fri Aug 11 14:18:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.5:
