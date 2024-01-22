@@ -135,4 +135,15 @@
     <comment></comment>
     <requestid>1131031</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>488e92caf94aabf0306536bece4ae830</srcmd5>
+    <version>3.11.3</version>
+    <time>1705952033</time>
+    <user>anag+factory</user>
+    <comment>- fix build with non-suse dists
+
+    https://github.com/nlohmann/json/releases/tag/v3.11.0
+  - incomplete type nlohmann::detail::wide_string_input_helper</comment>
+    <requestid>1140290</requestid>
+  </revision>
 </revisionlist>
