@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Sun Jan 21 08:00:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.2:
+  * Retroactivelly add a 2.15 porting guide note about handlers
+    (#882)
+  * bump approved antsibull-docs version to 2.6.0
+  * Update windows_winrm.rst (#910) (#951)
+  * documentation_contributions: show how to set up a venv and
+    remove outdated notes (#911) (#950)
+  * handlers notify example indentation fix (#915) (#947)
+  * Improve module developing documenation for deprecation and
+    linking (#943) (#946)
+  * Merge pull request #937 from Andersson007/add_pr_link (#944)
+  * Add Ansible community 8.7.0 porting guide (#938)
+  * Add 2.14 and 2.15 CVE porting guide to 2.16 (#932)
+  * Merge pull request #929 from anweshadas/pr_porting_guide_9.1.0
+    (#936)
+  * Ansible 9: Follow ansible-core more closely (#856) (#934)
+  * README: consistently use `nox -s` over `nox -e` (#923)
+
+-------------------------------------------------------------------
+Sun Jan 21 07:56:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.1:
+  * nox pip-compile: allow passing --no-upgrade flag (#883) (#920)
+  * add nox make session and revamp contribution docs (#707) (#917)
+  * installation_guide/intro: update seealso with respect to
+    communication (#869) (#908)
+  * Update links in plugin documentation (#859) (#907)
+  * installation_distros.rst: fix RST hyperlink syntax (#857)
+    (#904)
+  * developing_collections_path.rst: fix formatting (#842) (#901)
+  * Add the mission statement to the community guide (#854) (#902)
+  * Fix Edit on GitHub for templated pages, remove superfluous
+    template, fix broken link (#865) (#892)
+  * add ansible-galaxy to command cheatsheet (#826) (#898)
+  * Fix delegate_to details about inheriting vars from 'all' (#825)
+    (#897)
+  * Update developing_program_flow_modules.rst (#819) (#895)
+  * intro_installation: add EE info (#870) (#894)
+  * developing_collections_structure.rst: Add EE collection-level
+    metadata link to meta directory subsection (#855) (#890)
+  * update python versions in installation guide (#836) (#887)
+  * add support for Ansible 9 intersphinx links (#878) (#879)
+  * Refs #340: Swap old 'CLA' for the DCO (#598) (#875)
+  * Add porting guide for CVE-2023-5764 (#866)
+  * Update the information on RouterOS network connections. (#841)
+    (#863)
+  * update galaxy urls for networking docs' (#822) (#862)
+  * ci: refresh dev dependencies (#839)
+  * ci: refresh dev dependencies (#813)
+  * sphinx: remove usage of deprecated notfound-page options (#827)
+  * update logic to make it easier to patch for core vs ansible
+    release (#849) (#850)
+  * downgrade sphinx to 7.1.2 to fix 404 pages
+  * add Ansible 9 changelogs (#831) (#848)
+  * update backport instructions to match 2.16 (#799) (#846)
+  * Set release version to 9 (#832) (#845)
+  * Add Ansible community 9.0.0 porting guide (#843) (#844)
+  * developing_collections.rst: add collection creator path (#775)
+    (#835)
+  * EOL 2.13 in release table (#798) (#810)
+  * communication.rst: remove inactive security WG (#828) (#833)
+  * communication.rst: update Docs WG reference (#785) (#802)
+  * communication.rst: update MySQL WG to point to the forum group
+    page (#795) (#805)
+  * Update the Note for certificate authentication with a TLS 1.3
+    connection in windows_winrm.rst  (#757) (#781)
+  * [PR #788/2a485247 backport][stable-2.16] Add Ansible community
+    8.6.0 porting guide (#791)
+  * Porting guide for 9.0.0b1. (#787) (#790)
+  * update versioning for 2.16 (#755) (#783)
+  * communication.rst: Make WG a top-level section (#750) (#764)
+  * intro_installation: pass --include-injected in pipx upgrade
+    example (#745) (#768)
+  * Replaced the AWX mailing list with the AWX Forum page. (#769)
+    (#777)
+  * set release version to 2.16 (#756)
+
+-------------------------------------------------------------------
+Sun Jan 21 07:52:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.0:
+  This tag contains a snapshot of the ansible-documentation
+  stable-2.16 branch at the time of the ansible-core 2.16.0
+  release.
+
+-------------------------------------------------------------------
 Tue Dec 12 17:26:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.15.8:

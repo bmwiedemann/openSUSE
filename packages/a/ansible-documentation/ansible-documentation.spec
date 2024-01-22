@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-documentation
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ansible-documentation
-Version:        2.15.8
+Version:        2.16.2
 Release:        0
 Summary:        Ansible community documentation and example files
 License:        GPL-3.0-only
