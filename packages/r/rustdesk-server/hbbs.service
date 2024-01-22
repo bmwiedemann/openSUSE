@@ -1,0 +1,13 @@
+[Unit]
+Description=hbbs service for rustdesk-server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash -c 'hbbs -r 127.0.0.1'
+WorkingDirectory=/var/lib/rustdesk-server/
+Restart=always
+RestartSec=10
+User=rustdesk
+[Install]
+WantedBy=multi-user.target

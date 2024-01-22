@@ -1,0 +1,13 @@
+[Unit]
+Description=hbbr service for rustdesk-server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hbbr
+WorkingDirectory=/var/lib/rustdesk-server/
+Restart=always
+RestartSec=10
+User=rustdesk
+[Install]
+WantedBy=multi-user.target

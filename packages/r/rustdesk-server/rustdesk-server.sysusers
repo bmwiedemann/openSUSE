@@ -1,0 +1,4 @@
+#Type Name ID GECOS Home directory Shell
+u     rustdesk - "user for rustdesk-server" /var/lib/rustdesk-server
+g     rustdesk -
+m     rustdesk rustdesk
