@@ -1,7 +1,7 @@
 #
 # spec file for package python-efl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %{?!python_module:%define python_module() python3-%{**}}
 
 %if 0%{?suse_version} > 1599
@@ -35,9 +37,9 @@ Patch0:         cython3.patch
 BuildRequires:  %{python_module Cython3}
 %else
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module setuptools}
 %endif
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  dbus-1-python3-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ecore)
@@ -95,6 +97,7 @@ Conflicts:      otherproviders(python3-efl-doc)
 %description -n python-efl-doc
 HTML formated documentation for python-efl module.
 %endif
+
 %package -n python-efl-examples
 Summary:        Examples of python-efl usage
 Group:          Documentation/Other
