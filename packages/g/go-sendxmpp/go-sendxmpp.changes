@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 21 07:36:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.2:
+  * Fix an issue in look up of SRV records (via xmppsrv v0.2.6)
+
+-------------------------------------------------------------------
 Wed Jan 17 03:56:07 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.1:

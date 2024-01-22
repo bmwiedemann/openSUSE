@@ -157,4 +157,13 @@
   * http-upload: Improved error handling.</comment>
     <requestid>1139338</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1a20cf5336faa488246cee1f49f624d8</srcmd5>
+    <version>0.8.2</version>
+    <time>1705952012</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.2:
+  * Fix an issue in look up of SRV records (via xmppsrv v0.2.6)</comment>
+    <requestid>1140242</requestid>
+  </revision>
 </revisionlist>
