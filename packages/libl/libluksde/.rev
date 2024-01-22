@@ -107,4 +107,12 @@
     <comment>- Update to release 20231205</comment>
     <requestid>1130897</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ae3180edbe44effee6673de5de5b1b43</srcmd5>
+    <version>20240114</version>
+    <time>1705952047</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1140330</requestid>
+  </revision>
 </revisionlist>
