@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 20 17:04:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.11.4:
+  * release 1.11.4 (#9453)
+  * update bitnami/kubectl (#9408) (#9452)
+  * bump libs (#9411)
+
+-------------------------------------------------------------------
 Fri Jan 05 13:50:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.11.3:
