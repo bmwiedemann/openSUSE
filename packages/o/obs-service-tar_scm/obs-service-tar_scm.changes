@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 17 14:42:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add support for AL2023
+
+-------------------------------------------------------------------
 Thu Jul 20 14:36:05 UTC 2023 - FSchreiner@suse.com
 
 - Update to version 0.10.41:
@@ -342,7 +347,7 @@ Tue Jun 04 11:42:50 UTC 2019 - FSchreiner@suse.com
 -------------------------------------------------------------------
 Wed May  8 13:26:40 UTC 2019 - Julio González Gil <jgonzalez@suse.com>
 
-- Require external argparse for RHEL6 
+- Require external argparse for RHEL6
 
 -------------------------------------------------------------------
 Tue May 07 22:41:38 UTC 2019 - FSchreiner@suse.com
@@ -699,7 +704,7 @@ Wed Jun  7 08:53:48 UTC 2017 - adrian@suse.de
 -------------------------------------------------------------------
 Thu May 11 11:49:37 UTC 2017 - marco.strigl@suse.com
 
-- added Requires: python2 for Fedora >= 25 
+- added Requires: python2 for Fedora >= 25
 
 -------------------------------------------------------------------
 Tue Apr 18 07:17:45 UTC 2017 - fvogt@suse.com
@@ -866,7 +871,7 @@ Sun Oct 30 20:48:49 UTC 2016 - opensuse-packaging@opensuse.org
 Sun Oct 30 20:45:47 UTC 2016 - opensuse-packaging@opensuse.org
 
 - Update to version 0.7.0.1474270818.3e05f80:
-  * 
+  *
 
 -------------------------------------------------------------------
 Thu Oct 27 11:23:36 UTC 2016 - opensuse-packaging@opensuse.org
@@ -1378,13 +1383,13 @@ Tue Jul  3 11:23:12 UTC 2012 - adrian@suse.de
 -------------------------------------------------------------------
 Sat Jun 30 13:56:51 UTC 2012 - magist3r@gmail.com
 
-- Fixed error with cache 
+- Fixed error with cache
 
 -------------------------------------------------------------------
 Sat Jun 30 10:59:34 UTC 2012 - magist3r@gmail.com
 
 - Added an option to disable git submodules
-- Replaced --exclude=.$MYSCM with --exclude-vcs tar option 
+- Replaced --exclude=.$MYSCM with --exclude-vcs tar option
 
 -------------------------------------------------------------------
 Thu Jun 28 22:53:29 UTC 2012 - magist3r@gmail.com
@@ -1396,8 +1401,8 @@ Tue Jun  5 11:12:07 UTC 2012 - saschpe@suse.de
 
 - Re-iterating the last change once again, 'git rev-parse --verify $REV'
   will return false even if $REV is a normal branch upon first clone
-  of the repo. Thus 'git fetch $URL +$REV:$REV" is run initially. 
-  However, the 'git checkout $REV' then fails because it's missing 
+  of the repo. Thus 'git fetch $URL +$REV:$REV" is run initially.
+  However, the 'git checkout $REV' then fails because it's missing
   tracking information. Therefore, try a normal checkout first and fetch
   the specific $REV only when that fails (due to reasons described below).
 
@@ -1519,7 +1524,7 @@ Fri Aug 12 11:51:07 UTC 2011 - adrian@suse.de
 -------------------------------------------------------------------
 Mon Jun 20 08:48:12 UTC 2011 - cthiel@novell.com
 
-- add support for bzr 
+- add support for bzr
 
 -------------------------------------------------------------------
 Tue Mar 22 14:55:55 UTC 2011 - ammler@openttdcoop.org

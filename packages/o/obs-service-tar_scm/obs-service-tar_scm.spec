@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?fedora_version}%{?rhel}
+%if 0%{?fedora_version}%{?rhel}%{?amzn}
 %define _pkg_base %nil
 %else
 %define _pkg_base -base
@@ -40,7 +40,7 @@
 ExclusiveArch:  skip-build
 %endif
 
-%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29 || 0%{?rhel} >= 8
+%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29 || 0%{?rhel} >= 8 || 0%{?amzn}
 %bcond_without python3
 %else
 %bcond_with    python3
@@ -71,14 +71,14 @@ ExclusiveArch:  skip-build
 %endif
 %endif
 
-%if 0%{?fedora_version} || 0%{?rhel}
-%if 0%{?fedora_version} >= 29 || 0%{?rhel} >= 8
+%if 0%{?fedora_version} || 0%{?rhel} || 0%{?amzn}
+%if 0%{?fedora_version} >= 29 || 0%{?rhel} >= 8 || 0%{?amzn}
 %define pyyaml_package %{use_python}-PyYAML
 %else
 %define pyyaml_package PyYAML
 %endif
 
-%if 0%{?fedora_version} >= 24 || 0%{?rhel} >= 8
+%if 0%{?fedora_version} >= 24 || 0%{?rhel} >= 8 || 0%{?amzn}
 %define locale_package glibc-langpack-en
 %else
 %define locale_package glibc-common
