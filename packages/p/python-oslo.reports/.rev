@@ -180,4 +180,23 @@
   - Changed minversion in tox to 3.18.0</comment>
     <requestid>983959</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>170624f734cadcc9664c95b03f9ff9d6</srcmd5>
+    <version>3.1.0</version>
+    <time>1705951881</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.1.0
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Imported Translations from Zanata
+  - Update master for stable/2023.1
+  - Moves supported python runtimes from version 3.8 to 3.10
+
+- update to version 3.0.0
+  - Imported Translations from Zanata
+  - remove unicode literal from code
+  - Drop python3.6/3.7 support in testing runtime
+  - remove unicode prefix from code
+  - Fix formatting of release list</comment>
+    <requestid>1138713</requestid>
+  </revision>
 </revisionlist>
