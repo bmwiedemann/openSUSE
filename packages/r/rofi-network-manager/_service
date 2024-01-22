@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/P3rf/rofi-network-manager.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">0.0.0.git~%h</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>

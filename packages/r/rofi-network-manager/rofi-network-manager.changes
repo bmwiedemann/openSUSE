@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Jan 19 22:25:06 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Refactored configuration setup, to put systemwide configuration
+  in %{_distconfdir}/rofi.   Will now check %{_distconfdir}/rofi/,
+  %{_sysconfdir}/rofi/, and then $HOME/.config/rofi/ for configs
+- Added:
+  * 0001-Modified-for-System-wide-configuration.patch
+- Removed:
+  * 0001-Add-CONFDIR-variable-for-systemwide-installation.patch
+
+-------------------------------------------------------------------
+Wed Dec  6 18:07:44 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added Requires: qrencode for functionality
+
+-------------------------------------------------------------------
+Wed Dec  6 00:15:37 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Initial commit
