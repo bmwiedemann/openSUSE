@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-bootstrap4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-django-bootstrap4
-Version:        21.2
+Version:        23.4
 Release:        0
 Summary:        Bootstrap support for Django projects
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/zostera/django-bootstrap4
 Source:         https://github.com/zostera/django-bootstrap4/archive/v%{version}.tar.gz#/django-bootstrap4-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip-failing-tests.patch gh#zostera/django-bootstrap4#439 mcepl@suse.com
-# Skip failing tests.
-Patch0:         skip-failing-tests.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,6 +36,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  gdal-devel
 # /SECTION
 %python_subpackages
 
@@ -50,7 +48,15 @@ Bootstrap support for Django projects.
 
 # Remove need to install gis, as the tests do not exercise this yet
 sed -i '/django.contrib.gis/d' tests/app/settings.py
-sed -Ei '/(gisform|polygon)/d' tests/test_templates.py
+sed -Ei '/(gisform|polygon)/d' tests/forms.py
+
+# gh#zostera/django-bootstrap4#662
+# Upstream uses setuptools_scm that adds everything in the git
+# repository so we need to do the same here manually to do not depend
+# on git.
+cat << EOF > MANIFEST.in
+recursive-include src/bootstrap4/templates/bootstrap4 *.html
+EOF
 
 %build
 %pyproject_wheel
@@ -65,6 +71,7 @@ sed -Ei '/(gisform|polygon)/d' tests/test_templates.py
 %files %{python_files}
 %doc AUTHORS README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/bootstrap4
+%{python_sitelib}/django_bootstrap4-%{version}*-info
 
 %changelog

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jan 22 11:48:12 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add %{?sle15_python_module_pythons} to build for modern python in
+  SLE/Leap
+- Delete not needed patch skip-failing-tests.patch
+- Update to 23.4:
+  - Use setuptools-scm to build package (#664).
+23.3:
+  - Use ruff instead of black for formatting (#653).
+  - Add support for Python 3.12 (#658).
+  - Add support for Django 5.0 (#658).
+  - Revert packaging tools to setuptools, build, tox and twine (#658).
+23.2:
+  - Fix references to example application (#648).
+  - Remove support for Python 3.7 (EOL) (#646).
+  - Switch to Hatch (#638).
+  - Fix readthedocs (#603).
+  - Remove version restriction on importlib-metadata (#604).
+  - Replace m2r2 with sphinx-mdinclude (#605).
+23.1:
+  - Add support for Django 4.2 (#601).
+  - Update requirements and packages (#601).
+  - Stop using coveralls (#601).
+22.3:
+  - Add support for Python 3.11 (#554).
+22.2:
+  - Update Bootstrap to 4.6.2 (#499).
+  - Drop support for Django 2.2 (EOL) (#500).
+  - Add support for Django 4.1 (#500).
+22.1:
+  - Add support for Django 4 (#447).
+  - Fix urls in example (#418, #444).
+
+-------------------------------------------------------------------
 Thu Feb 24 07:16:53 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 21.2:
