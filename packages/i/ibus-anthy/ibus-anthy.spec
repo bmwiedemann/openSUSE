@@ -55,7 +55,7 @@ The %{name}-devel package includes the header files for the %{name} package.
 
 %build
 %configure --disable-static \
-           --libexecdir=%{_libexecdir} \
+           --libexecdir=%{_ibus_libexecdir} \
            --with-python=python3
 
 make %{?_smp_mflags}
@@ -76,7 +76,7 @@ find %{buildroot} -name "*.la" -type f -delete -print
 %files -f %{name}.lang
 %doc AUTHORS README
 %license COPYING
-%{_libexecdir}/ibus-*
+%{_ibus_libexecdir}/ibus-*
 %{_datadir}/ibus-anthy
 %{_datadir}/ibus
 %{_libdir}/girepository-1.0
