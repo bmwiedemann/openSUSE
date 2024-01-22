@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 02:27:35 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %patch0 to fix compilation with rpm-4.19
+
+-------------------------------------------------------------------
 Thu May 18 13:50:48 UTC 2023 - schwab@linux-m68k.org
 
 - Update to version 1.14.9+136+g2cf5a78:

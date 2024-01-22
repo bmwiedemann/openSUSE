@@ -24,7 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Editors/Emacs
 URL:            https://github.com/wanderlust/flim
 Source:         flim-%{version}.tar.gz
-Patch:          flim-encoding-fix.diff
+Patch0:         flim-encoding-fix.diff
 BuildRequires:  emacs-apel >= 10.7
 BuildRequires:  emacs-nox
 Requires:       emacs
@@ -41,7 +41,7 @@ For coding and decoding MIME messages.
 
 %prep
 %setup -q -n flim-%{version}
-%patch
+%patch0
 
 %build
 make %{?_smp_mflags} EMACS=emacs \
