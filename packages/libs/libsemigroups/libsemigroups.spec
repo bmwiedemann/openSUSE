@@ -1,7 +1,7 @@
 #
 # spec file for package libsemigroups
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libsemigroups
 %define lname	libsemigroups2
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        Library with algorithms for computing finite and finitely presented semigroups
 License:        GPL-3.0-or-later
@@ -43,10 +43,10 @@ Group:          System/Libraries
 A C++14 library containing implementations of several algorithms for
 computing finite and finitely presented semigroups, namely:
 
-  * the Froidure-Pin algorithm for computing finite semigroups
-  * the Todd-Coxeter algorithm for finitely presented semigroups and monoids;
-  * the Knuth-Bendix algorithm for finitely presented semigroups and monoids;
-  * the Schreier-Sims algorithm for permutation groups.
+	* the Froidure–Pin algorithm for computing finite semigroups
+	* the Todd–Coxeter and Knuth–Bendix algorithms for finitely
+	  presented semigroups and monoids;
+	* the Schreier–Sims algorithm for permutation groups
 
 %package devel
 Summary:        Development files for the Semigroups library
