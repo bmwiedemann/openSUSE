@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-dbusmock
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-python-dbusmock
-Version:        0.24.1
+Version:        0.30.2
 Release:        0
 Summary:        Python library for creating mock D-Bus objects
 License:        LGPL-3.0-or-later
@@ -28,11 +28,12 @@ BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  dbus-1-daemon
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  upower
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  dbus-1-daemon
 Requires:       dbus-1-x11
 Requires:       python-dbus-python
 Requires:       python-gobject
@@ -65,7 +66,7 @@ to what one may expect in tests.
 
 %files %{python_files}
 %license COPYING
-%doc NEWS README.rst
+%doc NEWS README.md
 %{python_sitelib}/dbusmock
 %{python_sitelib}/python_dbusmock-%{version}*-info
 
