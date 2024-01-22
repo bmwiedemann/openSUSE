@@ -327,4 +327,15 @@
   * Add Fortran icons</comment>
     <requestid>1138225</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9da547d17eaafc0c1737cf7ad03faa5b</srcmd5>
+    <version>0.17.2+0</version>
+    <time>1705952004</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.17.2:
+  Bug Fixes:
+  * Crash using --git-repos on unreadable dir
+  * Crash using --git-repos on unreadable dir</comment>
+    <requestid>1140241</requestid>
+  </revision>
 </revisionlist>
