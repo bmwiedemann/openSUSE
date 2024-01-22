@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 22 08:30:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Unconditionally BuildRequire setuptools: the build relies on it.
+
+-------------------------------------------------------------------
 Sat Dec  2 10:09:44 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Remove Sphinx .doctrees for reproducible builds
