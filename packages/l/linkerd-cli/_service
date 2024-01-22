@@ -3,7 +3,7 @@
     <param name="url">https://github.com/linkerd/linkerd2</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">stable-2.14.8</param>
+    <param name="revision">stable-2.14.9</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">stable-(.*)</param>
@@ -17,6 +17,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="manual">
-    <param name="archive">linkerd2-2.14.8.obscpio</param>
+    <param name="archive">linkerd2-2.14.9.obscpio</param>
   </service>
 </services>

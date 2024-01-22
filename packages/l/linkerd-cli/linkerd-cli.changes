@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 20 17:04:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.9:
+  * stable-2.14.9
+  * Bump CNI plugin version to v1.3.0 in Go pkg (#11912)
+  * Remove shortnames from Tap API resources (#11816)
+  * Only send server updates to listeners when the opaque protocol
+    changes (#11907)
+  * Add cni-repair-controller to linkerd-cni DaemonSet (#11699)
+
+-------------------------------------------------------------------
 Thu Jan 04 18:46:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.8:
