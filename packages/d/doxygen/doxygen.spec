@@ -1,7 +1,7 @@
 #
 # spec file for package doxygen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,8 @@ Source0:        https://www.doxygen.nl/files/doxygen-%{version}.src.tar.gz
 # suse specific
 Patch1:         %{name}-no-lowercase-man-names.patch
 # The unified libclang-cpp library doesn't exist on older Leap / SLE
-Patch10:        doxygen-no-libclang-cpp.patch
+Patch2:         doxygen-no-libclang-cpp.patch
+Patch3:         reproducible.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14
 BuildRequires:  flex
@@ -65,9 +66,10 @@ language VHDL.
 %patch1 -p1
 %if %{with libclang}
 %if 0%{?sle_version} == 150100 || (0%{?sle_version} == 150200 && !0%{?is_opensuse})
-%patch10 -p1
+%patch2 -p1
 %endif
 %endif
+%patch3 -p1
 
 %build
 %cmake \

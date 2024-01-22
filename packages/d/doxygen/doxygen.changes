@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 22 11:06:03 UTC 2024 - pgajdos@suse.com
+
+- reintroduce useful reproducible.patch
+- modified patches
+  % doxygen-no-lowercase-man-names.patch (refreshed)
+- added patches
+  + reproducible.patch
+
+-------------------------------------------------------------------
 Mon Dec 25 20:11:52 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - Update to doxygen 1.10.0

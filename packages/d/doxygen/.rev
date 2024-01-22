@@ -1154,4 +1154,16 @@
     <comment></comment>
     <requestid>1135238</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>1508783e74183c6271c80173cf748f1b</srcmd5>
+    <version>1.10.0</version>
+    <time>1705951864</time>
+    <user>anag+factory</user>
+    <comment>- reintroduce useful reproducible.patch
+- modified patches
+  % doxygen-no-lowercase-man-names.patch (refreshed)
+- added patches
+  + reproducible.patch</comment>
+    <requestid>1140578</requestid>
+  </revision>
 </revisionlist>
