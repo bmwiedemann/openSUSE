@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Sat Jan 13 05:30:40 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.30~git20240112:
+  * media_utils: fix segfault when stopping a recording
+  * cellFont: some stubs
+  * Ensure HDD1 is never damaged or corrupted due to unexpected RPCS3/game termination
+  * cellMouse: silence some log spam
+  * audio_decoder: fix more memleaks and dangling files
+  * cellMusicDecode: fix random pop at the end of a stream
+  * cellSearch: fix vfs music and video paths
+  * get_media_info: improve logging
+  * audio_decoder: ignore first invalid data error
+  * audio_decoder: improve logging
+  * audio_decoder: properly free packets
+  * audio_decoder: check for failed av_packet_alloc
+  * overlays: decrease log level
+  * cellVideoExport: export movies to /video/ instead of /movie
+  * Windows: remove QtCore5Compat dependency
+  * Update FAudio to 24.01
+  * sdl: log version
+  * sys_ss: Corrected sys_ss_update_manager(0x6011) version data format
+  * sys_fs: Improved get_device_root() path identifying security
+  * sys_fs: Prevented duplicate device mounting
+  * sys_fs: Fixed sys_fs_unlink()'s failing to delete files in dev_usbXXX
+  * Honk if you knew memset(nullptr, 0, 0) was UB
+  * Fix weird cmp in np_handler.cpp
+  * Fix games passing invalid npids
+  * sceNp: don't return error if assignedReqId is null
+  * sceNp: add missing roomPassword check
+  * sceNp: add missing withPassword check
+  * sceNp: add missing check for roomSlotInfo
+  * Misc NP fixes
+  * Add -Werror=implicit-fallthrough to cmake build
+  * Improve sceNpEula
+  * Impl sceNpBasicSendMessage
+
+-------------------------------------------------------------------
+Sun Jan 07 10:28:18 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.30~git20240105:
+  * Check room event callback has been set before calling it
+  * Fix sceNpBasicSetPresence when data is nullptr and size is 0
+  * vk: Force GPU texture processing if the input is already GPU-resident (Tiled RCB read)
+  * RPCN 0.9 (#15002)
+  * gl: Implement display output format correction
+  * vk: Implement display output format correction
+  * rsx: Add an option to force hardware MSAA resolve
+  * rpcs3_version: Bump to 0.0.30
+  * whitespace and format
+  * cellSearch: mount paths in /dev_hdd0/.tmp/ instead of /,tmp/
+  * cellSearch: fix mounting of files
+  * Improve Emulator::GetBdvdDir
+  * Savestates: Experimental pads fix
+  * Fix report_fatal_error duplicate messages
+  * Fix PPU progress dialog hint
+  * sys: fix games.yml hdd paths
+  * Warn on use of privileged port on Linux
+  * rsx: Fix RSX tiling when using optimized DMA views
+  * macOS CI: downgrade ffmpeg (#14987)
+  * cellPad LDD fixup
+  * Qt: Add build version, title, emulation state and date to fatal error dialog
+  * cellPad: Fix LDD pads registration
+  * Savestates/vm: Improve saving performance
+  * sys_spu: Fix warning and theoretical bug
+  * Savestates: Fix g_fxo->init for types which use a pointer
+  * PPUTranslator: Try to fix a regression
+  * Utilities\BitField.h: Try to fix some warnings
+  * Add more debug info in serial_breathe_and_tag()
+  * Savestates: Rename DeferDeserialization, add some asserts
+  * Fix a corner case in lv2_timer_thread abort
+  * Simplify lv2_timer_thread management
+  * Move initialize_timebased_time call to a safer spot
+  * Fix pad_state_notify_state_change
+  * Savestates/cellPad: Save old controller state
+  * Compression: Fix infinite loop
+  * Compression: Improve async compression performance
+  * Savestates/TAR: Fix huge files handling in TAR serialization
+  * SPU LLVM: Minor fixup
+  * Update deploy-mac.sh - libjxl_cms.0.9.dylib
+  * HOTFIX for atomic wait
+  * fixes
+  * fix some more warnings
+  * Update wolfssl to v5.6.6
+  * rsx: remove unused param
+  * fix more warnings
+  * fix some warnings
+  * sceNp: fix size_t data types
+
+-------------------------------------------------------------------
 Sat Dec 30 15:45:53 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.29~git20231230:
