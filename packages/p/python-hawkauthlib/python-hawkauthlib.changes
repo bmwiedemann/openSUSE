@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 22 05:38:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Add patch fix-assertion-methods.patch:
+  * Use non-removed assertion methods.
+
+-------------------------------------------------------------------
 Mon May 31 07:16:42 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
