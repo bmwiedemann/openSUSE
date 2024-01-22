@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 02:22:17 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %patch0 to fix compilation with rpm-4.19
+
+-------------------------------------------------------------------
 Sat Dec  2 05:17:36 UTC 2017 - i@marguerite.su
 
 - update version 0.1.4
