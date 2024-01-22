@@ -33,7 +33,7 @@ Summary:        3d extension for perl-GDGraph
 License:        Artistic-1.0
 Group:          Development/Libraries/Perl
 Source:         GD-Graph3d-%{version}.tar.gz
-Patch:          GD-Graph3d-trim_miter.diff
+Patch0:         GD-Graph3d-trim_miter.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{perl_requires}
 
@@ -44,7 +44,7 @@ graph using Lincoln Stein's GD.pm.
 
 %prep
 %setup -n GD-Graph3d-%{version}
-%patch -p1
+%patch0 -p1
 
 %build
 perl Makefile.PL OPTIMIZE="$RPM_OPT_FLAGS -Wall"
