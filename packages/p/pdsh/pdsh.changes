@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jan 17 15:49:28 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update to version 2.35
+  * slurm: call slurm_init() once before any call to Slurm API (Egbert Eich)
+    Removed:
+    Add-call-to-slurm_init-this-makes-sure-the-config-options-are-set.patch
+  * slurm: fix compile of slurm plugin against Slurm >= 23.x
+    Removed:
+    Hack-to-work-around-a-generic-type-name-breakage-introduced-by-latest-Slurm.patch
+  * log module option errors with -d (Erik Jacobson)
+  * fail fast on connect error or non-zero return code (Jerry Mannil)
+    Removed: fail-fast-on-ssh-errors-or-non-zero-return-code.patch
+    Removed: doc-fast-fail-update.patch
+  * Release a lock that is no longer used (ycaibb)
+    Removed: Release-a-lock-that-is-no-longer-used-in-dsh.patch
+  * build: use LDADD instead of LDFLAGS for libcommon.la (orbea)
+  * slurm: add -C to restrict hostlist to nodes with features (Dylan Simon)
+    Removed: slurm-add-C-features-constraint.patch
+            slurm-add-documentation-for-C.patch
+  * ssh: fix sshcmd_signal on macos
+  * dsbak: fix handling of empty input lines
+    Removed: dshbak-fix-uninitialized-use-of-tag-on-empty-input.patch
+  * Removed additional backport:
+    hostlist-fix-use-of-strchr.patch
+- Remove outdated and defunct project URI on Google. The content
+  can still be found in the archives at:
+     https://code.google.com/archive/p/pdsh/.
+  The project has moved to github entirely.
+
+-------------------------------------------------------------------
 Mon Jul  3 15:15:52 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Only call slurm_init() if Slurm > 21.02 (bsc#1212946).
