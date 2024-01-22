@@ -416,4 +416,13 @@ I will submit the packages one by one once this is accepted.</comment>
   see included CHANGES.md file for details</comment>
     <requestid>1137513</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ac205f4f74f37811e53ac9a6d3bcf963</srcmd5>
+    <version>3.13.0</version>
+    <time>1705951897</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.13.0
+  see included CHANGES.md file for details</comment>
+    <requestid>1140024</requestid>
+  </revision>
 </revisionlist>
