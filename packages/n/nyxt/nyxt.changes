@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jan 22 11:51:20 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- added nyxt-rpmlintrc
+- Update to version 3.11.1:
+  * UI/UX
+    - Improve user experience of macro-edit-mode
+    - Improve UI of the interfaces bound to annotate-mode commands,
+      such as show-annotations-for-current-url (unbound)
+    - Review the appearance of all help system pages such as describe-class (f1 C)
+    - Review font sizes
+    - Add possibility to specify a monospace font via monospace-font-family.
+      By default, it is set to DejaVu
+    - Review usage of proportional and monospace fonts
+    - Use monospace fonts in plaintext-editor-mode
+    - Replace source heading buttons in the prompt-buffer
+    - Review styling of the status-buffer , repl (unbound) and migration-guide
+    - Replace glyph that collapses sections, for instance in the manual
+    - Improve UI of the interfaces bound to commands:
+        list-downloads (Ctrl+Shift+Y)
+        list-history (unbound)
+        list-buffers (unbound)
+        list-bookmarks (unbound)
+        buffers-panel (unbound)
+        bookmarks-panel (unbound) 
+
+-------------------------------------------------------------------
 Mon Jan  8 16:02:31 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 3.11.0:
