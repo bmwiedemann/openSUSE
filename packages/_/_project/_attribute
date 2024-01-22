@@ -4,26 +4,26 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#1207390: '20240119'
-  boo#1207940: '20240119'
-  boo#1209053: '20240119'
+  boo#1207390: '20240121'
+  boo#1207940: '20240121'
+  boo#1209053: '20240121'
   boo#1209728: '20240115'
-  boo#1216660: '20240119'
-  boo#1217029: '20240119'
-  boo#1217683: '20240119'
+  boo#1216660: '20240121'
+  boo#1217029: '20240121'
+  boo#1217683: '20240121'
   boo#1218131: '20240112'
-  boo#1218492: '20240119'
+  boo#1218492: '20240121'
   boo#1218565: '20240107'
   boo#1218954: '20240119'
   gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
-  poo#105271: '20240118'
+  poo#105271: '20240121'
   poo#120459: '20240110'
   poo#132191: '20240116'
   poo#133691: '20240111'
-  poo#134078: '20240119'
-  poo#137423: '20240118'
-  poo#138743: '20240119'
-  poo#152320: '20240119'
+  poo#134078: '20240121'
+  poo#137423: '20240121'
+  poo#138743: '20240121'
+  poo#152320: '20240121'
   poo#152551: '20240116'
   poo#152793: '20240109'
   poo#152829: '20240112'
@@ -485,9 +485,9 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20240119'
-publishing: '20240119'
-testing: '20240119'
+published: '20240121'
+publishing: '20240121'
+testing: '20240121'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
