@@ -25,7 +25,7 @@ Group:          System/I18n/Japanese
 Url:            https://github.com/fcitx/fcitx-kkc
 Source:         http://download.fcitx-im.org/fcitx-kkc/%{name}-%{version}.tar.xz
 #PATCH-FIX-UPSTREAM lower qt5 version
-Patch:          qt5-version.patch
+Patch0:         qt5-version.patch
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel >= 4.2.8
 BuildRequires:  fcitx-qt5-devel
@@ -43,7 +43,7 @@ fcitx-kkc is a Japanese KKC IME Wrapper for Fcitx.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 mkdir -p build
