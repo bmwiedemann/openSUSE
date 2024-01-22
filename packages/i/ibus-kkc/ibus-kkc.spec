@@ -38,7 +38,7 @@ ibus-kkc is a Japanese Kana Kanji input engine for IBus IMF.
 
 %build
 gnome-autogen.sh
-%configure --libexecdir=%{_libdir}/ibus
+%configure --libexecdir=%{_ibus_libexecdir}
 %make_build
 
 %install
@@ -48,8 +48,8 @@ gnome-autogen.sh
 %files -f %{name}.lang
 %license COPYING
 %doc AUTHORS README
-%{_libdir}/ibus/ibus-engine-kkc
-%{_libdir}/ibus/ibus-setup-kkc
+%{_ibus_libexecdir}/ibus-engine-kkc
+%{_ibus_libexecdir}/ibus-setup-kkc
 %{_datadir}/applications/ibus-setup-kkc.desktop
 %{_datadir}/ibus-kkc/
 %{_datadir}/ibus/component/kkc.xml

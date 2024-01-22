@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 14:55:34 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)
+
+-------------------------------------------------------------------
 Sat May  8 11:57:18 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.5.22
