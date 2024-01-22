@@ -103,7 +103,6 @@ cp -a build_static/db_bench %{buildroot}%{_bindir}
 # bsc#1218597
 exclude_regex='--exclude-regex autocompact_test'
 %endif
-eclude_regex='--exclude-regex "(autocompact_test|db_test)"'
 %ctest $exclude_regex
 
 %post   -n %{lib_name} -p /sbin/ldconfig

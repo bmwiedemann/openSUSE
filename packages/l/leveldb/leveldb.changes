@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 22 09:31:24 UTC 2024 - pgajdos@suse.com
+
+- remove faulty and noop assignment
+
+-------------------------------------------------------------------
 Thu Jan 11 18:08:20 UTC 2024 - pgajdos@suse.com
 
 - disable autocompact_test [bsc#1218597]
