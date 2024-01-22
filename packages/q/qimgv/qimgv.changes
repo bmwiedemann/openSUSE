@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 13 17:22:02 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20240113.70dc0ef:
+  * [scriptmanager] fix .bat args
+  * [settingsdialog] fix default lang in combobox
+  * add German translation #530 (credit to https://github.com/Auravendill)
+
+-------------------------------------------------------------------
+Tue Dec 26 22:00:08 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20231226.ec4e571:
+  * exiv2 fix
+  * upd build script
+  * Added Spanish translation
+
+-------------------------------------------------------------------
 Mon Aug 28 13:43:34 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 1.0.3a+git20230815.4c12677:
