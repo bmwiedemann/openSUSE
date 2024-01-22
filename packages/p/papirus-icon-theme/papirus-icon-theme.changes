@@ -1,4 +1,305 @@
 -------------------------------------------------------------------
+Sat Jan 20 00:46:38 UTC 2024 - Marcus Lönnqvist <nico9824@gmail.com>
+
+- update to 20231201:
+
+  Highlights
+
+  Since this release we drop support for old distros, like
+
+  * Ubuntu 14.04 LTS
+  * Ubuntu 16.04 LTS
+  * Ubuntu 18.04 LTS
+  * Debian 10 Buster
+  * elementary OS 0.4 Loki
+  * elementary OS 5.0 Juno
+  * elementary OS 5.1 Hera
+  * RHEL 7
+  * RHEL 8
+
+  Added icons
+  * Bookup (Flathub) #2007 by @SmartFinn
+  * Electron 22, 23, 24, and 25 by @SmartFinn
+  * gtkcord4 (Flathub) #2007 by @morganist
+  * Haansoft Hangul document `*.hwpx` by @mjkim0727 in #3585
+  * Legacy Launcher by @yevklim in #3587
+  * MilkyTracker (Flathub) #2007 by @kowalski7cc in #3607
+  * Okteta (Flathub) #2007 by @SmartFinn
+  * Proton VPN Linux app #3594 by @SmartFinn
+  * RedisInsight (Flathub) #2007 by @SmartFinn
+  * Surfshark #3562 by @morganist in #3597
+  * Timestripe by @yevklim in #3592
+  * Unity Online Accounts by @SmartFinn
+  * Vinegar (new Flatpak package) (Flathub) #2007 by @SmartFinn
+  * Vivaldi (Flathub) #2007 by @morganist
+  * Wineglass (Flathub) #2007 by @SmartFinn
+  * Wordbook (Flathub) #2007 by @SmartFinn in #3608
+  * X (Twitter) by @mjkim0727 in #3584
+
+  Updated icons
+
+  * Feedback by @morganist in #3609
+  * GNOME Sound Recorder #3601 by @morganist
+  * Gwenview by @mjkim0727 in #3583
+  * Libation by @morganist in #3599
+
+  Removed icons
+  Note: Since the previous release, we are actively removing obsolete icons for discontinued software and outdated versions of software.
+
+  * AdobeReader 8, 10, 11, and 12 #3582 by @SmartFinn
+  * antimicroX < 3.1 by @SmartFinn in #3608
+  * Ardour 5 by @SmartFinn
+  * Banshee #3582 by @SmartFinn
+  * BitTorrent Sync GUI #3582 by @SmartFinn
+  * Comix #3582 by @SmartFinn
+  * Copy.com (app, tray, and folder icons) #3582 by @SmartFinn
+  * Docky #3582 by @SmartFinn
+  * EasyPass by @SmartFinn in #3608
+  * Electron < 22 by @SmartFinn
+  * emacs 24, and 25 by @SmartFinn
+  * Ferdi #3582 by @SmartFinn
+  * Gammy #3582 by @SmartFinn
+  * Glimpse Image Editor #3582 by @SmartFinn
+  * GNOME Weather < 3.20.1 by @SmartFinn in #3608
+  * GnomeBaker #3582 by @SmartFinn
+  * GNU Ring #3582 by @SmartFinn
+  * KingsCross (renamed to GNOME Console) by @SmartFinn in #3608
+  * Master PDF Editor 3 by @SmartFinn
+  * Nuvola Player #3582 by @SmartFinn
+  * Nylas Mail #3582 by @SmartFinn
+  * ODrive (aka OpenDrive) #3582 by @SmartFinn
+  * PDFShuffler #3582 by @SmartFinn
+  * Qt4 #3582 by @SmartFinn
+  * RedshiftGUI #3582 by @SmartFinn
+  * ScudCloud #3582 by @SmartFinn
+  * SFLphone #3582 by @SmartFinn
+  * Slic3r Prusa Edition #3582 by @SmartFinn
+  * Terminix by @SmartFinn in #3608
+  * Thunderbird 3 by @SmartFinn
+  * UbuntuOne Client #3582 by @SmartFinn
+  * VGrive #3582 by @SmartFinn
+  * WMail #3582 by @SmartFinn
+  * XChat #3582 by @SmartFinn
+  * Y PPA Manager #3582 by @SmartFinn
+  * youtube-indicator #3582 by @SmartFinn
+
+  Also,
+
+  * A lot of symlinks for Flatpak packages that were removed or renamed by @SmartFinn in #3608
+      * br.com.jeanhertel.adriconf
+      * com.bluejeans.BlueJeans
+      * com.dangeredwolf.ModernDeck
+      * com.georgefb.haruna
+      * com.getferdi.Ferdi
+      * com.gigitux.gtkwhats
+      * com.github.bilelmoussaoui.Authenticator
+      * com.github.bitseater.weather
+      * com.github.Cogitri.gxi
+      * com.github.gkarsay.parlatype
+      * com.github.huluti.ImCompressor
+      * com.github.rssguard
+      * com.github.thestr4ng3r.Chiaki
+      * com.gitlab.zehkira.Myuzi
+      * com.giuspen.cherrytree
+      * com.jvieira.tpt.Metronome
+      * com.microsoft.Teams
+      * com.remarkable.reMarkable
+      * com.xamarin.MonoDevelop
+      * cx.ring.Ring
+      * de.haeckerfelix.gradio #3582
+      * de.haeckerfelix.Remotely #3582
+      * dev.geopjr.Hashbrown
+      * de.wolfvollprecht.UberWriter
+      * org.small_tech.Gnomit #3582
+      * ind.ie.Gnomit #3582
+      * io.bit3.WhatsAppQT
+      * io.brackets.Brackets
+      * io.designer.GravitDesigner
+      * io.github.EndlessSky.endless-sky
+      * io.github.Fontforge
+      * io.github.FreeDM
+      * io.github.gitahead.GitAhead
+      * io.github.GnomeMpv
+      * io.github.gustavoperedo.VideoDownloader
+      * io.github.jkozera.ZevDocs
+      * io.github.lukajankovic.ambience #3582
+      * io.github.m64p.m64p
+      * io.github.mujx.Nheko
+      * io.github.openWMail.openWMail
+      * io.gitlab.construo.construo
+      * io.gitlab.windstille.Windstille-0_2
+      * net.sourceforge.xournal
+      * net.xmind.ZEN
+      * org.baedert.corebird
+      * org.eclipse.Committers
+      * org.ethereum.Mist
+      * org.eu.encom.matrique
+      * org.freeciv.Freeciv
+      * org.nextcloud.Nextcloud
+      * org.seul.pingus
+      * uk.co.mrbenshef.Boop-GTK
+      * uk.co.ibboard.cawbird
+      * xyz.diamondb.gtkcord4
+      * org.gnome.ghex
+      * org.gnome.iagno
+      * org.gnome.IconPreview
+      * org.gnome.quadrapassel
+      * org.gnome.tetravex
+      * org.gnome.zbrown.Palette
+      * com.realm667.Wolfenstein_Blade_of_Agony
+      * io.gitlab.evtest_qt.evtest_qt
+      * io.gitlab.jstest_gtk.jstest_gtk
+      * org.kicad_pcb.KiCad
+      * dev.rdm.RDM symlink
+  * Removed a lot of symlinks that never used by apps, they were added for by @SmartFinn in #3608
+      * org.kde.partitionmanager
+      * org.gnome.books
+      * org.gnome.Bijiben
+      * org.gnome.builder
+      * org.gnome.calendar
+      * org.gnome.cheese
+      * org.gnome.Clocks
+      * org.gnome.documents
+      * org.gnome.epiphany
+      * org.gnome.Files
+      * org.gnome.files
+      * org.gnome.games
+      * org.gnome.hitori
+      * org.gnome.lollypop
+      * org.gnome.maps
+      * org.gnome.music
+      * org.gnome.polari
+      * org.gnome.powerstats
+      * org.gnome.recipes
+      * org.gnome.software
+      * org.gnome.weather
+      * org.gnome.weather.application
+  * Removed duplicated icon for Done app by @SmartFinn in #3608
+  * Removed gnome-panel* symlinks used in GNOME 2.x #3582 by @SmartFinn
+  * Removed legacy `gnome-fs-*` icons for Nautilus < 3.1 #3582 by @SmartFinn
+  * Removed legacy `gnome-mime-*` icons for GNOME < 2.6 #3582 by @SmartFinn
+  * Removed obsolete app icon for Akira by @SmartFinn in #3608
+  * Removed obsolete app icon for Azure Data Studio by @SmartFinn in #3608
+  * Removed obsolete app icon for Firerfox by @SmartFinn
+  * Removed obsolete app icon for Minigalaxy by @SmartFinn in #3608
+  * Removed obsolete app icon for Spotify by @SmartFinn
+  * Removed obsolete app icon for Sublime Text by @SmartFinn
+  * Removed obsolete app icons for Calibre Flatpak < 5.7.1 by @SmartFinn in #3608
+  * Removed obsolete app icons for O20 Office by @SmartFinn in #3608
+  * Removed obsolete gpaste tray icon by @SmartFinn
+  * Removed obsolete icons for Epiphany (GNOME Web) by @SmartFinn
+  * Removed obsolete symlinks for youtube-dl-gui by @SmartFinn
+  * Removed obsolete tray icons for KDEConnect by @SmartFinn
+  * Removed old icon for Bottles by @SmartFinn in #3608
+  * Removed the old app icon for Tracks by @SmartFinn in #3608
+  * Removed unnecessary icon for older version of GNOME Sound Recorder #3600 by @morganist
+  * Removed unused foxitpdf symlink by @SmartFinn
+  * Removed unused Joplin symlink by @SmartFinn
+  * Removed unused symlink for Moneydance by @SmartFinn
+
+  Changes and fixes
+
+  * Renamed Gravit Designer to Corel Vector #3582 by @SmartFinn
+  * Renamed icon for Gestures by @SmartFinn in #3608
+  * Renamed icon for Pingus to support not only deb package @SmartFinn
+  * Renamed icon for PPAExtender by @SmartFinn in #3608
+  * Renamed Natron icon to correctly apply for AUR package by @SmartFinn
+  * Renamed symbolic icons for current versions of Authenticator by @SmartFinn in #3608
+  * Renamed Telegrand icon to Paper Plane by @SmartFinn in #3608
+
+  Others
+
+  * Added 2 new tests for detecting decimal numbers or lengths units are set in width, height, or viewBox attributes 10d5cc19d1a5ed6884969c64d571a2637e7e61aa
+
+
+- changes from 20231101
+  Highlights
+
+  The release actually hasn't the highlight, let's call it a maintenance release. It seems like this is the first release where more files have been removed than added (**-1338** vs **+269**). Anyway, there is one notable change:
+
+  - Debian package in our [PPA](https://launchpad.net/~papirus/+archive/ubuntu/papirus) was split to `papirus-icon-theme` and `epapirus-icon-theme` packages #3563
+
+  **For PPA users**
+
+  In most cases, you will not see the difference. If recommended packages are not denied on your system, `epapirus-icon-theme` package will be installed as before, but now you can remove ePapirus and ePapirus-Dark icon theme using `sudo apt remove epapirus-icon-theme`, in case you're not an elementaryOS user.
+
+  **For package maintainers**
+
+  The default behavior didn't change. The Makefile still installs all the available icon themes. But we recommend two options to deal with ePapirus and ePapirus-Dark themes:
+
+  1. If your distro supports [Pantheon Desktop](https://en.wikipedia.org/wiki/Elementary_OS#Pantheon_desktop_environment) please split the package to `papirus-icon-theme` (Papirus, Papirus-Dark, Papirus-Light), and `epapirus-icon-theme` (ePapirus, ePapirus-Dark).  epapirus-icon-theme should have `papirus-icon-theme` as dependency. See example for [deb package](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/commit/635c7bc416edd41b028a328df61ffae4cf053a7c).
+  2. If your distro does **NOT** support [Pantheon Desktop](https://en.wikipedia.org/wiki/Elementary_OS#Pantheon_desktop_environment), please exclude ePapirus and ePapirus-Dark from `papirus-icon-theme` package using EXCLUDE notation: `make EXCLUDE="ePapirus ePapirus-Dark" install`.
+
+  This saves up to 17309 inodes and up to 72MB of disk space for your users.
+
+  Also, if you've previously used the `IGNORE=` notation in your build script, this release introduces a couple of breaking changes (1e76dbab9865a2536c4d7ebe06a5728471fd2152 and 5183e15de4b042ca4c2e901588a63f71acae3d57). So, if you've been using a command like `make IGNORE="./ePapirus ./ePapirus-Dark" install` in your build script, please update it to use the new command: `make EXCLUDE="ePapirus ePapirus-Dark" install`.
+
+  Added icons
+
+  * 64Gram Desktop (Flathub) #2007 by @SmartFinn
+  * Alien Arena (Flathub) #2007 by @SmartFinn
+  * Ardour 8 by @SmartFinn
+  * Atlantik (Flathub) #2007 by @SmartFinn
+  * CoreRenamer #2007 by @SmartFinn
+  * Deezer (Flathub) #2007 by @SmartFinn
+  * DevilutionX (Flathub) #2007 by @SmartFinn
+  * Forza Horizon 5 #3262 by @mjkim0727 in #3545
+  * GNOME Terminal and GNOME Console symbolic icons by @SmartFinn
+  * Google Earth Pro (Flathub) #2007 by @SmartFinn
+  * JamesDSP (Flathub) #2007 by @SmartFinn
+  * JetBrains RustRover icon #3558 by @SmartFinn
+  * KImageMapEditor (Flathub) #2007 by @SmartFinn
+  * KMyMoney (Flathub) #2007 by @SmartFinn
+  * Kompare (Flathub) #2007 by @SmartFinn
+  * Konsole (Flathub) #2007 by @SmartFinn
+  * Libation #3521 by @morganist in #3565
+  * Libre Menu Editor (Flathub) #2007 by @SmartFinn
+  * LibreOffice 7.5 (Official builds) by @SmartFinn
+  * LibreOffice 7.6 (Official builds) by @SmartFinn
+  * Loupe #3406 by @SmartFinn
+  * Lunar Client (Nixpgks) by @surfaceflinger in #3571
+  * MMEX Money Manager (Flathub) #2007 by @SmartFinn
+  * Nix Software Center #3478 by @SmartFinn
+  * NixOS Configuration Editor by @SmartFinn
+  * NixOS distributor logo #1901 by @SmartFinn
+  * NixOS Manual #3478 by @SmartFinn
+  * Outlook for Linux #2007 by @SmartFinn
+  * PhotoCollage (Flathub) #2007 by @SmartFinn
+  * PlayOnLinux 4 (Flathub) #2007 by @SmartFinn
+  * SABnzbd (Flathub) #2007 by @SmartFinn
+  * Snapshot #3570 by @SmartFinn
+  * Spotify (tray icon) #3556 by @SmartFinn
+  * SymbolEditor (Flathub) #2007 by @SmartFinn
+  * Thorium Browser by @SmartFinn
+  * Time Log (Flathub) #2007 by @SmartFinn
+  * Yakuake (Flathub) #2007 by @SmartFinn
+  * Yum Extender NG #3567 by @SmartFinn
+
+  Updated icons
+
+  * GNOME Console by @SmartFinn
+  * GNOME spinner #3477 by @SmartFinn
+  * KWordQuiz by @raymond-nee in #3577
+
+  Changes and fixes
+
+  * Added couple missing icons for Evolution (Calendar → Year view, and Preferences → News and Blogs) by @SmartFinn
+  * Added symlinks for newer versions of OpenJDK and Oracle JDK #3065 by @SmartFinn
+  * Added symlinks for Python >3.8 (from 3.8 to 3.11) by @gitadum in #3559
+  * Nordic folder color now matches the [Nordic Frost palette](https://www.nordtheme.com/docs/colors-and-palettes#frost) by @mochaaP in #3547
+  * Removed AKS icon #2089 by @SmartFinn
+  * Removed custom folder color because [folder-color](https://github.com/costales/folder-color) since 0.3.1 (6 May 2023) stops to support it #3551 by @SmartFinn
+  * Removed symlinks for non-LTS versions, and versions <17 for Sun JDK, OpenJDK, Oracle JDK and CacaoJVM by @SmartFinn
+  * Removed symlinks for older versions of LibreOffice released before 2022 by @SmartFinn
+  * Removed symlinks for Python from 2.6 to 3.4 because of End Of Life by @SmartFinn
+
+  Others
+
+  * Replaced `ICON_THEMES` variable with `EXTRA_THEMES` in Papirus Installer
+  * uninstall.sh script now asks before removing an icon theme
+  * Allow to pass `--reflink=auto` to cp command in Makefile using `make CP_OPTS='--reflink=auto' install` to speed up file coping on file systems with Copy-on-Write support
+
+-------------------------------------------------------------------
 Sat Oct  7 06:33:37 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update to 20230901: 
