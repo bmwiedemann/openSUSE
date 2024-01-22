@@ -1,7 +1,7 @@
 #
 # spec file for package qml-autoreqprov
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qml-autoreqprov
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Automatic dependency generator for QML files and modules
 License:        GPL-3.0-or-later

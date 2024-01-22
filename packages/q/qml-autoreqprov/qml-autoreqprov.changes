@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 21 12:11:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Bump version to 1.4
+- qml.req:
+  * Detect Qt version based on libQtCore presence. The previous method
+    broke if /usr/libexec/qtX or kf5-filesystem were present.
+- qmldirreqprov.sh:
+  * Generate unversioned URI provides for plugin provided imports as well
+
+-------------------------------------------------------------------
 Tue Nov 14 23:57:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Bump version to 1.3
