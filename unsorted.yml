@@ -2433,7 +2433,6 @@ unsorted:
   - containerized-data-importer-uploadproxy 
   - containerized-data-importer-uploadserver 
   - containment-rpm 
-  - contour-terminal 
   - contractor 
   - contrast 
   - contrast-lang 
@@ -3713,6 +3712,11 @@ unsorted:
   - f2c-devel 
   - f2fs-tools-devel 
   - f3 
+  - f3d 
+  - f3d-bash-completion 
+  - f3d-devel 
+  - f3d-fish-completion 
+  - f3d-zsh-completion 
   - fIcy 
   - faba-icon-theme 
   - fabtests 
@@ -7994,6 +7998,7 @@ unsorted:
   - hashlink 
   - hashlink-devel 
   - hashlink-hdlls 
+  - hauler 
   - haveged-devel 
   - hawk-apiserver 
   - hawk2 
@@ -10512,7 +10517,7 @@ unsorted:
   - libOpenCOLLADAFramework0_3 
   - libOpenCOLLADASaxFrameworkLoader0_3 
   - libOpenCOLLADAStreamWriter0_3 
-  - libOpenColorIO2_1 
+  - libOpenColorIO2_3 
   - libOpenEXR-3_1-30-32bit 
   - libOpenEXRCore-3_1-30 
   - libOpenEXRCore-3_1-30-32bit 
@@ -11560,10 +11565,10 @@ unsorted:
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
-  - libcamera-base0_1-32bit 
+  - libcamera-base0_2-32bit 
   - libcamera-devel 
   - libcamera-tools 
-  - libcamera0_1-32bit 
+  - libcamera0_2-32bit 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
   - libcanberra-gtk0-32bit 
@@ -12176,6 +12181,7 @@ unsorted:
   - libexttextcat-tools 
   - libf2c0 
   - libf2fs_format8 
+  - libf3d2 
   - libfa1-32bit 
   - libfabric 
   - libfabric-devel 
@@ -14086,7 +14092,7 @@ unsorted:
   - libopenvas_wincmd1 
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
-  - libopenvdb9_0 
+  - libopenvdb11_0 
   - libopenvswitch-3_1-0 
   - liboping-devel 
   - liboping0 
@@ -24157,7 +24163,6 @@ unsorted:
   - python310-flit-core 
   - python310-flit-scm 
   - python310-flower 
-  - python310-fluent 
   - python310-fluent.syntax 
   - python310-flufl.bounce 
   - python310-flufl.i18n 
@@ -27652,7 +27657,6 @@ unsorted:
   - python311-flit-core 
   - python311-flit-scm 
   - python311-flower 
-  - python311-fluent 
   - python311-fluent.syntax 
   - python311-flufl.testing 
   - python311-fluidity-sm 
@@ -31104,7 +31108,6 @@ unsorted:
   - python39-flit-core 
   - python39-flit-scm 
   - python39-flower 
-  - python39-fluent 
   - python39-fluent.syntax 
   - python39-flufl.bounce 
   - python39-flufl.i18n 
@@ -34275,6 +34278,7 @@ unsorted:
   - rofi 
   - rofi-calc 
   - rofi-devel 
+  - rofi-network-manager 
   - rofi-wayland 
   - rofi-wayland-devel 
   - rook 
@@ -34468,6 +34472,10 @@ unsorted:
   - rust1.73 
   - rust1.74 
   - rust1.75 
+  - rustdesk-server 
+  - rustdesk-server-hbbr 
+  - rustdesk-server-hbbs 
+  - rustdesk-server-utils 
   - rustscan 
   - rustup 
   - rxp 
@@ -35470,6 +35478,7 @@ unsorted:
   - system-user-ntp 
   - system-user-osc-collab 
   - system-user-prometheus 
+  - system-user-rustdesk 
   - system-user-uuidd 
   - system-user-velociraptor 
   - systemd-default-settings-branding-SLE-Micro 
@@ -35641,10 +35650,6 @@ unsorted:
   - terraform-provider-azurerm 
   - terraform-provider-helm 
   - terraform-provider-libvirt 
-  - terraform-provider-null 
-  - terraform-provider-openstack 
-  - terraform-provider-template 
-  - terraform-provider-vsphere 
   - terragrunt 
   - teseq 
   - tesla-polyglot-common 
@@ -45783,7 +45788,6 @@ unsorted:
   - wezterm-bash-completion 
   - wezterm-fish-completion 
   - wezterm-mux-server 
-  - wezterm-terminfo 
   - wezterm-zsh-completion 
   - wf-recorder 
   - wg-info 
