@@ -17,7 +17,7 @@
 
 
 Name:           timewarrior
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Command line time tracker
 License:        MIT
