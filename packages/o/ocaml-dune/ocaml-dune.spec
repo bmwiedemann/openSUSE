@@ -25,7 +25,7 @@
 %define     pkg ocaml-dune
 %global  _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        3.12.2
+Version:        3.13.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        MIT
@@ -132,17 +132,6 @@ dune_release_pkgs="${dune_release_pkgs// /,}"
 # use the just built dune
 PATH="$PWD/.bin:$PATH"
 %ocaml_dune_install
-%if "%build_flavor" == "devel"
-# the META file removed below belongs to this package, to provide dune.configurator
-mkdir -vp %buildroot%ocaml_standard_library/dune
-tee %buildroot%ocaml_standard_library/dune/META <<_EOM_
-package "configurator" (
-  directory = "configurator"
-  version = "%version"
-  requires = "dune-configurator"
-)
-_EOM_
-%endif
 %if "%build_flavor" == ""
 # the installed META file provides and requires 'dune-configurator'
 rm -rfv %buildroot%ocaml_standard_library
