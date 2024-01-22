@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mocket%{psuffix}
-Version:        3.12.0
+Version:        3.12.3
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -54,6 +54,8 @@ BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module httptools}
 BuildRequires:  %{python_module mocket = %{version}}
 BuildRequires:  %{python_module pook >= 0.2.1}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module requests}
@@ -102,7 +104,7 @@ trap "kill $victims || true" EXIT
 sleep 2
 
 # Checks the ability to record a real request and response. Not available inside obs.
-donttest="test_asyncio_record_replay"
+donttest="test_asyncio_record_replay or test_truesendall_with_dump_from_recording or test_no_dangling_fds"
 # The reference recording has different headers in this case
 %if %{pkg_vcmp python311-httpx < 0.23}
 donttest="$donttest or test_truesendall_with_dump_from_recording"

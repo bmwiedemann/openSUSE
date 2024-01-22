@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 22 08:43:05 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- add pytest-asyncio and psutil to test build requirements
+- skip test_truesendall_with_dump_from_recording and test_no_dangling_fds as they require internet connection
+
+-------------------------------------------------------------------
+Sat Jan 20 19:40:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.3:
+  * Fixes for allowing making a mixture of unmocked and mocked
+    HTTPS requests using aiohttp
+  * Merging external contribution
+  * Adding testcase for proving #209 was fixed
+
+-------------------------------------------------------------------
+Sat Jan 13 20:23:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.2:
+  * Pook is now compatible with modern Python versions
+  * Excluding venvs from dist packages
+
+-------------------------------------------------------------------
 Fri Dec 29 16:14:00 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix check that was testing the version package of python3-httpx.
@@ -364,7 +386,7 @@ Tue Aug 11 07:17:16 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * This version ships the change to support the libmagic wrapper
     distributed with file's command.
 
-------------------------------------------------------------------- 
+-------------------------------------------------------------------
 Tue Aug 11 07:08:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to multibuild as we create cycle with python-pook otherwise

@@ -268,4 +268,262 @@
     <comment></comment>
     <requestid>1136200</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>fded983dd6ae6d66431f5a93f79e236d</srcmd5>
+    <version>3.12.3</version>
+    <time>1705951872</time>
+    <user>anag+factory</user>
+    <comment>- add pytest-asyncio and psutil to test build requirements
+- skip test_truesendall_with_dump_from_recording and test_no_dangling_fds as they require internet connection
+- update to 3.12.3:
+  * Fixes for allowing making a mixture of unmocked and mocked
+    HTTPS requests using aiohttp
+  * Merging external contribution
+  * Adding testcase for proving #209 was fixed
+- update to 3.12.2:
+  * Pook is now compatible with modern Python versions
+  * Excluding venvs from dist packages
+- Fix check that was testing the version package of python3-httpx.
+  That's not available in SLE so we now use python311-httpx
+  instead which allows the package to build fine in SLE's Python
+  3.11 stack.
+- Add %{?sle15_python_module_pythons}
+- Update to version 3.12.0:
+ * Support for Python 3.12 (#204)
+ * Fix for Python 3.12
+ * Getting rid of Python 3.7, since it's not supported anymore.
+ * Precommit hooks' autoupdate.
+ * Disabling `aiohttp` for testing Python 3.12.
+- Run redis server on %check to fix redis tests that depends on a real
+  redis server running.
+- Update to 3.11.1
+  * Fix for `urllib2&gt;=2`
+  * Bump version for publishing a new release
+  * Adding local container for partially replacing httpbin.org usage
+  * Replacing httpbin.org with mockbin.org from Kong for what needs HTTPS
+- Update to version 3.11:
+ - Migrating the HTTP[S] mock from relying on http-parser to httptools.
+ - Never discovered the root cause for the failing tests with aiohttp/Python 3.11 (first time ever I added @pytest.mark.xfail to a few tests). Same test works with httpx, so I suspect it's related to a client issue. I'll probably migrate to httpx as the reference client for testing async/await code.
+- remove patches merged upstream:
+    0007-Switching-to-httptools.parser.HttpRequestParser.patch
+    0008-Disabling-tests-for-pook-when-testing-Python-3.11.patch
+    0009-Removing-DeprecationWarning-all-over-the-place.patch
+    0010-Python-3.11-needs-an-async-decorator.patch
+    0012-Removing-async-timeout-dependency.patch
+    0013-Refactoring-using-event_loop-fixture.patch
+    0014-Refactoring-using-tempfile-as-a-context-manager.patch
+    0015-Skip-those-tests-and-see-what-happens-to-the-rest.patch
+- add these commits as patches from the upstream PR:
+    0007-Switching-to-httptools.parser.HttpRequestParser.patch
+    0008-Disabling-tests-for-pook-when-testing-Python-3.11.patch
+    0009-Removing-DeprecationWarning-all-over-the-place.patch
+    0010-Python-3.11-needs-an-async-decorator.patch
+    0012-Removing-async-timeout-dependency.patch
+    0013-Refactoring-using-event_loop-fixture.patch
+    0014-Refactoring-using-tempfile-as-a-context-manager.patch
+    0015-Skip-those-tests-and-see-what-happens-to-the-rest.patch
+- skip now failing tests, update buildrequires for tests on py 3.11
+- Update to version 3.10.9
+  * Small improvement for socketpair by @mindflayer in #189
+  * Fix for an unconvential usage of Mocket by @mindflayer in #192
+  * Improve efficiency on CI by @amotl in #194
+- Add missing fastapi test dependency
+- update to version 3.10.8:
+ - Support for calls made by fastapi (#188)
+  * Introduce a `socket.socketpair()` function that acts as the real one
+- update to version 3.10.7:
+ - Adding support for `httpx` (#183)
+ - Change methods not using its bound instance to staticmethods (#180)
+- Clean test requirements and suggestions
+- Drop recording-urllib3-brotli.patch fixed by updated httpx
+- version update to 3.10.6
+  No need for the external mock dependency
+- deleted patches
+  - python-mocket-no-mock.patch (upstreamed)
+- do not require python-mock for build
+- added patches
+  fix https://github.com/mindflayer/python-mocket/issues/178
+  + python-mocket-no-mock.patch
+- - Bump Mocket version
+ - MocketEntry.request_class str vs bytes  (#177)
+   * Change request_cls to prevent unintended bytes -&gt; str conversion (#176)
+   * Use type from `.compat`.
+   Co-authored-by: Michael Lazar &lt;lazar.michael22@gmail.com&gt;
+ - Update README.rst
+ - Remove blank lines after docstring (#174)
+   Co-authored-by: deepsource-autofix[bot] &lt;62050782+deepsource-autofix[bot]@users.noreply.github.com&gt;
+ - Remove assert statement from non-test files (#173)
+   Co-authored-by: deepsource-autofix[bot] &lt;62050782+deepsource-autofix[bot]@users.noreply.github.com&gt;
+ - Small refactor. (#172)
+ - Update README.rst
+ - Update LICENSE
+ - No need for it.
+ - New badge
+ - Update README.rst
+ - Update README.rst
+ - Add Mocket &quot;strict mode&quot; (#171)
+   * Add Mocket &quot;strict mode&quot;.
+ - Update main.yml
+ - Introducing `request_list()` method (#170)
+   * Introducing `request_list()` method.
+ - Refactoring. (#169)
+ - Some cleaning/refactoring (#168)
+   * Some cleaning/refactoring.
+   * Improving coverage.
+ - Update README.rst
+ - Use literal syntax instead of function calls to create data structure (#167)
+   Co-authored-by: deepsource-autofix[bot] &lt;62050782+deepsource-autofix[bot]@users.noreply.github.com&gt;
+- Add recording-urllib3-brotli.patch for test data because the
+  new urllib3 for Tumbleweed accepts Brotli encoding by default
+  rendering the recorded request differently.
+- Upstream dropped Python 2 support. Skip python2 build for 15.3
+- Refresh test ignores for SLE/Leap (not that it matters, the only
+  Python 3.7 test is skipped by name globally)
+- - Add Mocket &quot;strict mode&quot; (#171)
+   * Add Mocket &quot;strict mode&quot;.
+ - Update main.yml
+ - Introducing `request_list()` method (#170)
+   * Introducing `request_list()` method.
+ - Refactoring. (#169)
+ - Some cleaning/refactoring (#168)
+   * Some cleaning/refactoring.
+   * Improving coverage.
+ - Update README.rst
+ - Use literal syntax instead of function calls to create data structure (#167)
+   Co-authored-by: deepsource-autofix[bot] &lt;62050782+deepsource-autofix[bot]@users.noreply.github.com&gt;
+- - Introducing `request_list()` method (#170)
+   * Introducing `request_list()` method.
+ - Refactoring. (#169)
+ - Some cleaning/refactoring (#168)
+   * Some cleaning/refactoring.
+   * Improving coverage.
+ - Update README.rst
+ - Use literal syntax instead of function calls to create data structure (#167)
+   Co-authored-by: deepsource-autofix[bot] &lt;62050782+deepsource-autofix[bot]@users.noreply.github.com&gt;
+- Update to version 3.10.2:
+ - Help the user to spot issues (#166)
+   * Help to detect `register()` misusage.
+   * Bump version.
+   * Improve DeepSource scans.
+ - Newer `pipenv` and GIT hooks (#165)
+   * Newer GIT hooks.
+ - Remove implicit `object` from the base class (#164)
+   Co-authored-by: deepsource-autofix[bot] &lt;62050782+deepsource-autofix[bot]@users.noreply.github.com&gt;
+ - Change methods not using its bound instance to staticmethods (#163)
+   Co-authored-by: deepsource-autofix[bot] &lt;62050782+deepsource-autofix[bot]@users.noreply.github.com&gt;
+ - Add .deepsource.toml
+ - Replace `dict` call with comprehension (#162)
+   Co-authored-by: deepsource-autofix[bot] &lt;62050782+deepsource-autofix[bot]@users.noreply.github.com&gt;
+ - Refactor unnecessary `else` / `elif` when `if` block has a `return` statement (#161)
+   Co-authored-by: deepsource-autofix[bot] &lt;62050782+deepsource-autofix[bot]@users.noreply.github.com&gt;
+ - Remove unnecessary generator (#160)
+   Co-authored-by: deepsource-autofix[bot] &lt;62050782+deepsource-autofix[bot]@users.noreply.github.com&gt;
+ - Multi `register()` (#159)
+   * Add failing test.
+   * `Entry.collect` let us know if the response should be consumed or not.
+   * Bump version.
+ - Update README.rst
+ - Update main.yml
+ - In PYPI the package is old and broken
+- Update to version 3.10.1:
+ - Multi `register()` (#159)
+   * Add failing test.
+   * `Entry.collect` let us know if the response should be consumed or not.
+   * Bump version.
+ - Update README.rst
+ - Update main.yml
+ - In PYPI the package is old and broken
+- update to version 3.10.0:
+ - Fix for version number
+ - Testing out Python 3.10 (#156)
+   * Adding support for Python 3.10
+ - Update LICENSE
+ - Update main.yml
+- remove obsolete kwsyntax.patch.
+- Update to version 3.9.44:
+ - Update __init__.py
+ - Removing the constraint for `decorator`.
+ - Update __init__.py (#155)
+ - Patch from PR #150 (Refactored the mocketize decorator) (#153)
+   * Patch from PR #150. Thanks to @micheles form the hints.
+   * Complete refactor for using `decorator&gt;=5`.
+ - Update README.rs
+- Add kwsyntax.patch to fix test failure with new decorator.
+- Update to version 3.9.42:
+ - Mock check_hostname everywhere (#152)
+  * Fix for #151.
+  * Complete refactoring.
+- update to version 3.9.41:
+ - A few refactors.
+ - Adding `make setup` for local development.
+ - Migrating package creation to using build.  Avoid decorator&gt;=5 as dependency. (#149)
+ - Avoid decorator&gt;=5 as dependency. (#149)
+- disable test test_asyncio_record_replay as it requires DNS.
+- Update to version 3.9.40:
+ - Fix for asyncio.open_connection() (#144)
+ - fix UT for 3.5 support
+- update to version 3.9.39:
+ - Use MocketSocket as context manager (#141)
+  * Adding support for using a `socket` as a context manager as requested by #139.
+  * Closing real socket.
+  * Bump version.
+- update to version 3.9.38:
+ - Update __init__.py
+- update to version 3.9.37:
+ - Fix for external decorators (#138)
+- update to version 3.9.36:
+ - New mocket method for checking if all entries have been served (#137)
+ * Mocket method for checking if all entries have been served at least once.
+ - Yet another refactor (#135)
+ - Refactor. (#136)
+- update to version 3.9.35:
+ - Removing Python 2 compatibility layer (#134).
+- Do not require and test with pook on Python2
+- Update to version 3.9.4
+  * fix for new version of pip resolver
+- Skip python38 only tests in python36 flavor and python3 flavor
+  if python3 &lt;= 3.8 (Leap)
+- Relax pinned setup.py requires so that the installed egg-info
+  does not interfere with other packages
+- Update to version 3.9.3:
+ * Fix for `.makefile()` as reported by @KyleKing.
+ * From `codecs` to `binascii` for PyPy. (#127)
+- Update to version 3.9.2:
+ * Mocket raises exceptions.
+ * Fix for Python 2.
+- Update to version 3.9.1:
+ - Multiple HTTP writes (#125)
+ - Fix for #111.
+- Update to version 3.9.0:
+ - MockHTTP uses `http-parser` as parser
+   Fix for second sendall used for delivering request's body.
+- Update to version 3.8.9:
+ - Small refactor for HTTPretty plugin
+   Now the import line can be written as from mocket.plugins.httpretty import httpretty, httprettified.
+- Update to version 3.8.8:
+ - Small fix applied to `setup.py`
+- Update to version 3.8.7
+  * This version ships the change to support the libmagic wrapper
+    distributed with file's command.
+- Switch to multibuild as we create cycle with python-pook otherwise
+- Change requirements version specifier from == to &gt;=.
+- Update to version 3.8.6:
+ - No upstream changelog available
+- Use source tarball from pypi instead of GitHub.
+- version update to 3.8.4
+  * Adding missing `load_verify_locations` method
+  * Removing `hexdump` dependency
+  * Fix for removing DeprecationWarning (#105)
+  * Py3.8 classifier
+  * Fix for Redis module
+- Update to 3.7.3:
+  * testsuite fixes
+- Drop patch partial-wildcards.patch
+- Activate test suite
+- Add patch partial-wildcards.patch
+- Update to v3.7.2
+- Initial spec for v2.7.2
+</comment>
+    <requestid>1140590</requestid>
+  </revision>
 </revisionlist>
