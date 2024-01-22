@@ -1,6 +1,8 @@
---- Makefile
-+++ Makefile
-@@ -8,7 +8,7 @@
+Index: garlic-1.6/Makefile
+===================================================================
+--- garlic-1.6.orig/Makefile
++++ garlic-1.6/Makefile
+@@ -8,7 +8,7 @@ CCOPT = -O3
  
  HEADERS = defines.h typedefs.h
  

@@ -138,4 +138,12 @@
     <comment></comment>
     <requestid>578718</requestid>
   </revision>
+  <revision rev="21" vrev="222">
+    <srcmd5>ac0018093363efff9026c66fba29a13c</srcmd5>
+    <version>1.6</version>
+    <time>1705951906</time>
+    <user>anag+factory</user>
+    <comment>fix compilation with rpm-4.19</comment>
+    <requestid>1140031</requestid>
+  </revision>
 </revisionlist>
