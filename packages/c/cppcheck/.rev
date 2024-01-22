@@ -432,4 +432,21 @@
   similar way.</comment>
     <requestid>1134967</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fe4618bc1261b2b74037129f09a98638</srcmd5>
+    <version>2.13.1</version>
+    <time>1705952290</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.13.1:
+ * Show premium autosar/misra/cert style issues even if --enable
+   is not used
+ * Better validation of --premium options
+ * unsafe handling of unconditional #error
+ * unsafe suppressions of critical errors
+ * missing &quot;misra-config&quot; warning, calling unknown function in
+   condition
+ * If --premium=safety is used then go to &quot;safety mode&quot;. Do not
+   override this in cppcheck.cfg</comment>
+    <requestid>1140512</requestid>
+  </revision>
 </revisionlist>

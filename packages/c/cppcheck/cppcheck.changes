@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 22 09:54:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.1:
+ * Show premium autosar/misra/cert style issues even if --enable
+   is not used
+ * Better validation of --premium options
+ * unsafe handling of unconditional #error
+ * unsafe suppressions of critical errors
+ * missing "misra-config" warning, calling unknown function in
+   condition
+ * If --premium=safety is used then go to "safety mode". Do not
+   override this in cppcheck.cfg
+
+-------------------------------------------------------------------
 Sun Dec 24 06:43:54 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - update to 2.13.0
