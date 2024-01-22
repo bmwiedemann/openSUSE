@@ -47,7 +47,7 @@ on libzhuyin for IBus.
 #NOCONFIGURE=1 ./autogen.sh
 
 %build
-%configure
+%configure --libexecdir=%{_ibus_libexecdir}
 make %{?_smp_mflags}
 
 %install
@@ -61,8 +61,8 @@ rm -rf %{buildroot}%{_datadir}/doc
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog README
 %license COPYING
-%{_libexecdir}/ibus-engine-libzhuyin
-%{_libexecdir}/ibus-setup-libzhuyin
+%{_ibus_libexecdir}/ibus-engine-libzhuyin
+%{_ibus_libexecdir}/ibus-setup-libzhuyin
 %{_datadir}/%{name}
 %{_libdir}/ibus-libzhuyin/
 %dir %{_datadir}/appdata
