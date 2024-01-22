@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 22 09:25:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.3.17:
+  * Fix possible integer overflow
+  * Assert and return on divide by zero (#187)
+  * Update DG2 device ID macro (#183)
+
+-------------------------------------------------------------------
 Mon Dec 18 08:59:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 22.3.18:
+- update to 22.3.16:
   * Fix to align HAlign to 128bytes for Linear Packed YUV format
   * Add PVC device ID
   * Guard FormatTable to be within bound
