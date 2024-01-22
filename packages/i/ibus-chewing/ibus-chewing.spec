@@ -48,7 +48,7 @@ libchewing.
 %patch0 -p1
 
 %build
-%cmake -DLIBEXEC_DIR=%{_libdir}/ibus
+%cmake -DLIBEXEC_DIR=%{_ibus_libexecdir}
 
 %install
 %cmake_install
@@ -61,7 +61,7 @@ rm -rf %{buildroot}%{_datadir}/doc/ibus-chewing
 %defattr(-,root,root,-)
 %doc USER-GUIDE AUTHORS INSTALL ChangeLog README.md RELEASE-NOTES.txt
 %license COPYING
-%{_libdir}/ibus
+%{_ibus_libexecdir}/ibus-*
 %{_datadir}/%{name}
 %{_datadir}/ibus
 %{_datadir}/applications/ibus-setup-chewing.desktop
