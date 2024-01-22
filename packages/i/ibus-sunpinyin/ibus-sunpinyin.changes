@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 15:15:37 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)
+
+-------------------------------------------------------------------
 Wed Dec 15 10:17:30 UTC 2021 - Cliff Zhao <qzhao@suse.com>
 
 - Remove locale macro in SPEC: disable default installation, allow

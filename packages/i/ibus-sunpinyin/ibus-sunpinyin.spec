@@ -49,13 +49,13 @@ sed -i "s/exec python /exec python3 /g" wrapper/ibus/setup/ibus-setup-sunpinyin.
 cd wrapper/ibus/
 scons --prefix=%{_prefix} \
       --libdir=%{_libdir} \
-      --libexecdir=%{_libdir}/ibus
+      --libexecdir=%{_ibus_libexecdir}
 
 %install
 pushd wrapper/ibus/
 scons install --prefix=%{_prefix} \
               --libdir=%{_libdir} \
-              --libexecdir=%{_libdir}/ibus \
+              --libexecdir=%{_ibus_libexecdir} \
               --install-sandbox=%{buildroot}
 popd
 
@@ -67,8 +67,8 @@ chmod 755 %{buildroot}%{_datadir}/%{name}/setup/main.py
 %defattr(-,root,root)
 %doc wrapper/ibus/README
 %license wrapper/ibus/COPYING wrapper/ibus/LGPL.LICENSE wrapper/ibus/OPENSOLARIS.LICENSE
-%{_libdir}/ibus/ibus-engine-sunpinyin
-%{_libdir}/ibus/ibus-setup-sunpinyin
+%{_ibus_libexecdir}/ibus-engine-sunpinyin
+%{_ibus_libexecdir}/ibus-setup-sunpinyin
 %{_datadir}/%{name}
 %{_datadir}/ibus/component/sunpinyin.xml
 
