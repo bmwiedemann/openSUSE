@@ -1,0 +1,206 @@
+Index: hawkauthlib-2.0.0/hawkauthlib/tests/test_utils.py
+===================================================================
+--- hawkauthlib-2.0.0.orig/hawkauthlib/tests/test_utils.py
++++ hawkauthlib-2.0.0/hawkauthlib/tests/test_utils.py
+@@ -33,26 +33,26 @@ class TestUtils(unittest.TestCase):
+ 
+         # Test parsing of a single unquoted parameter.
+         params = parse_authz_header(req('Digest realm=hello'))
+-        self.assertEquals(params['scheme'], 'Digest')
+-        self.assertEquals(params['realm'], 'hello')
++        self.assertEqual(params['scheme'], 'Digest')
++        self.assertEqual(params['realm'], 'hello')
+ 
+         # Test parsing of multiple parameters with mixed quotes.
+         params = parse_authz_header(req('Digest test=one, again="two"'))
+-        self.assertEquals(params['scheme'], 'Digest')
+-        self.assertEquals(params['test'], 'one')
+-        self.assertEquals(params['again'], 'two')
++        self.assertEqual(params['scheme'], 'Digest')
++        self.assertEqual(params['test'], 'one')
++        self.assertEqual(params['again'], 'two')
+ 
+         # Test parsing of an escaped quote and empty string.
+         params = parse_authz_header(req('Digest test="\\"",again=""'))
+-        self.assertEquals(params['scheme'], 'Digest')
+-        self.assertEquals(params['test'], '"')
+-        self.assertEquals(params['again'], '')
++        self.assertEqual(params['scheme'], 'Digest')
++        self.assertEqual(params['test'], '"')
++        self.assertEqual(params['again'], '')
+ 
+         # Test parsing of embedded commas, escaped and non-escaped.
+         params = parse_authz_header(req('Digest one="1\\,2", two="3,4"'))
+-        self.assertEquals(params['scheme'], 'Digest')
+-        self.assertEquals(params['one'], '1,2')
+-        self.assertEquals(params['two'], '3,4')
++        self.assertEqual(params['scheme'], 'Digest')
++        self.assertEqual(params['one'], '1,2')
++        self.assertEqual(params['two'], '3,4')
+ 
+         # Test parsing on various malformed inputs
+         self.assertRaises(ValueError, parse_authz_header, req(None))
+@@ -72,20 +72,19 @@ class TestUtils(unittest.TestCase):
+                           req('Broken realm="duplicated",,what=comma'))
+ 
+         # Test all those again, but returning a default value
+-        self.assertEquals(None, parse_authz_header(req(None), None))
+-        self.assertEquals(None, parse_authz_header(req(""), None))
+-        self.assertEquals(None, parse_authz_header(req(" "), None))
+-        self.assertEquals(None,
+-                          parse_authz_header(req('Broken raw-token'), None))
+-        self.assertEquals(None, parse_authz_header(
++        self.assertIsNone(parse_authz_header(req(None), None))
++        self.assertIsNone(parse_authz_header(req(""), None))
++        self.assertIsNone(parse_authz_header(req(" "), None))
++        self.assertIsNone(parse_authz_header(req('Broken raw-token'), None))
++        self.assertIsNone(parse_authz_header(
+                           req('Broken realm="unclosed-quote'), None))
+-        self.assertEquals(None, parse_authz_header(
++        self.assertIsNone(parse_authz_header(
+                           req('Broken realm=unopened-quote"'), None))
+-        self.assertEquals(None, parse_authz_header(
++        self.assertIsNone(parse_authz_header(
+                           req('Broken realm="unescaped"quote"'), None))
+-        self.assertEquals(None, parse_authz_header(
++        self.assertIsNone(parse_authz_header(
+                           req('Broken realm="escaped-end-quote\\"'), None))
+-        self.assertEquals(None, parse_authz_header(
++        self.assertIsNone(parse_authz_header(
+                           req('Broken realm="duplicated",,what=comma'), None))
+ 
+     def test_normalized_request_string_against_example_from_spec(self):
+@@ -109,7 +108,7 @@ class TestUtils(unittest.TestCase):
+         # IanB, *thank you* for Request.from_bytes!
+         req = Request.from_bytes(req)
+         mysigstr = get_normalized_request_string(req, params)
+-        self.assertEquals(sigstr, mysigstr)
++        self.assertEqual(sigstr, mysigstr)
+ 
+     def test_normalized_request_string_with_custom_port(self):
+         req = b"GET / HTTP/1.1\r\nHost: example.com:88\r\n\r\n"
+@@ -117,7 +116,7 @@ class TestUtils(unittest.TestCase):
+         req.authorization = ("Hawk", {"ts": "1", "nonce": "2"})
+         sigstr = "hawk.1.header\n1\n2\nGET\n/\nexample.com\n88\n\n\n"
+         mysigstr = get_normalized_request_string(req)
+-        self.assertEquals(sigstr, mysigstr)
++        self.assertEqual(sigstr, mysigstr)
+ 
+     def test_normalized_request_string_with_https_scheme(self):
+         req = b"GET / HTTP/1.1\r\nHost: example.com\r\n\r\n"
+@@ -126,7 +125,7 @@ class TestUtils(unittest.TestCase):
+         req.scheme = "https"
+         sigstr = "hawk.1.header\n1\n2\nGET\n/\nexample.com\n443\n\n\n"
+         mysigstr = get_normalized_request_string(req)
+-        self.assertEquals(sigstr, mysigstr)
++        self.assertEqual(sigstr, mysigstr)
+ 
+     def test_normalized_request_string_errors_when_no_default_port(self):
+         req = b"GET / HTTP/1.1\r\nHost: example.com\r\n\r\n"
+Index: hawkauthlib-2.0.0/hawkauthlib/tests/test_signatures.py
+===================================================================
+--- hawkauthlib-2.0.0.orig/hawkauthlib/tests/test_signatures.py
++++ hawkauthlib-2.0.0/hawkauthlib/tests/test_signatures.py
+@@ -18,19 +18,19 @@ class TestSignatures(unittest.TestCase):
+         req = b"GET / HTTP/1.1\r\nHost: example.com\r\n\r\n"
+         req = Request.from_bytes(req)
+         req.authorization = ("Hawk", {"id": "user1", "ts": "1", "nonce": "2"})
+-        self.assertEquals(get_id(req), "user1")
++        self.assertEqual(get_id(req), "user1")
+ 
+     def test_get_id_returns_none_for_other_auth_schemes(self):
+         req = b"GET / HTTP/1.1\r\nHost: example.com\r\n\r\n"
+         req = Request.from_bytes(req)
+         req.authorization = ("OAuth", {"id": "user1", "ts": "1", "nonce": "2"})
+-        self.assertEquals(get_id(req), None)
++        self.assertIsNone(get_id(req))
+ 
+     def test_get_id_returns_none_if_the_id_is_missing(self):
+         req = b"GET / HTTP/1.1\r\nHost: example.com\r\n\r\n"
+         req = Request.from_bytes(req)
+         req.authorization = ("Hawk", {"ts": "1", "nonce": "2"})
+-        self.assertEquals(get_id(req), None)
++        self.assertIsNone(get_id(req))
+ 
+     def test_get_signature_against_example_from_spec(self):
+         req = b"GET /resource/1?b=1&a=2 HTTP/1.1\r\n"\
+@@ -47,7 +47,7 @@ class TestSignatures(unittest.TestCase):
+         sig = "6R4rV5iE+NPoym+WwjeHzjAGXUtLNIxmo1vpMofpLAE="
+         req = Request.from_bytes(req)
+         mysig = get_signature(req, key, algorithm, params=params)
+-        self.assertEquals(sig, mysig)
++        self.assertEqual(sig, mysig)
+ 
+     def test_get_signature_by_parsing_authz_header(self):
+         req = b"GET /resource/1?b=1&a=2 HTTP/1.1\r\n"\
+@@ -63,13 +63,13 @@ class TestSignatures(unittest.TestCase):
+         algorithm = "sha256"
+         sig = "6R4rV5iE+NPoym+WwjeHzjAGXUtLNIxmo1vpMofpLAE="
+         mysig = get_signature(req, key, algorithm)
+-        self.assertEquals(sig, mysig)
++        self.assertEqual(sig, mysig)
+ 
+     def test_sign_request_throws_away_other_auth_params(self):
+         req = Request.blank("/")
+         req.authorization = ("Digest", {"response": "helloworld"})
+         sign_request(req, "id", "key")
+-        self.assertEquals(req.authorization[0], "Hawk")
++        self.assertEqual(req.authorization[0], "Hawk")
+ 
+     def test_check_signature_errors_when_missing_id(self):
+         req = b"GET / HTTP/1.1\r\nHost: example.com\r\n\r\n"
+Index: hawkauthlib-2.0.0/hawkauthlib/tests/test_noncecache.py
+===================================================================
+--- hawkauthlib-2.0.0.orig/hawkauthlib/tests/test_noncecache.py
++++ hawkauthlib-2.0.0/hawkauthlib/tests/test_noncecache.py
+@@ -25,18 +25,18 @@ class TestNonceCache(unittest.TestCase):
+ 
+     def test_default_ttl_values(self):
+         nc = NonceCache()
+-        self.assertEquals(nc.window,  60)
++        self.assertEqual(nc.window,  60)
+ 
+     def test_operation(self):
+         window = 0.1
+         mocktime = MockTime()
+         nc = NonceCache(window, get_time=mocktime.time)
+         # Initially nothing is cached, so all nonces as fresh.
+-        self.assertEquals(nc.window, window)
+-        self.assertEquals(len(nc), 0)
++        self.assertEqual(nc.window, window)
++        self.assertEqual(len(nc), 0)
+         self.assertTrue(nc.check_nonce(mocktime.time(), "abc"))
+         # After adding a nonce, it should contain just that item.
+-        self.assertEquals(len(nc), 1)
++        self.assertEqual(len(nc), 1)
+         self.assertFalse(nc.check_nonce(mocktime.time(), "abc"))
+         self.assertTrue(nc.check_nonce(mocktime.time(), "xyz"))
+         # After the timeout passes, the nonce should be expired.
+@@ -63,20 +63,20 @@ class TestNonceCache(unittest.TestCase):
+         mocktime = MockTime()
+         cache = Cache(timeout, get_time=mocktime.time)
+         cache.set("hello", "world")
+-        self.assertEquals(cache.get("hello"), "world")
++        self.assertEqual(cache.get("hello"), "world")
+         mocktime.sleep(timeout / 2)
+-        self.assertEquals(cache.get("hello"), "world")
++        self.assertEqual(cache.get("hello"), "world")
+         mocktime.sleep(timeout / 2)
+         self.assertRaises(KeyError, cache.get, "hello")
+ 
+     def test_that_cache_respects_max_size(self):
+         cache = Cache(1, max_size=2)
+         cache.set("hello", "world")
+-        self.assertEquals(len(cache), 1)
++        self.assertEqual(len(cache), 1)
+         cache.set("how", "are")
+-        self.assertEquals(len(cache), 2)
++        self.assertEqual(len(cache), 2)
+         cache.set("you", "today?")
+-        self.assertEquals(len(cache), 2)
+-        self.assertEquals(cache.get("you"), "today?")
+-        self.assertEquals(cache.get("how"), "are")
++        self.assertEqual(len(cache), 2)
++        self.assertEqual(cache.get("you"), "today?")
++        self.assertEqual(cache.get("how"), "are")
+         self.assertRaises(KeyError, cache.get, "hello")

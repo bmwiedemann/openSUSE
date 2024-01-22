@@ -1,7 +1,7 @@
 #
 # spec file for package python-hawkauthlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pyname hawkauthlib
 Name:           python-hawkauthlib
 Version:        2.0.0
@@ -27,9 +26,12 @@ URL:            https://github.com/mozilla-services/hawkauthlib
 Source0:        https://github.com/mozilla-services/hawkauthlib/archive/v%{version}.tar.gz
 # Add MPL-2.0 License text directly from MPL upstream, since it is not included in package tarball
 Source1:        https://www.mozilla.org/media/MPL/2.0/index.txt
+Patch0:         fix-assertion-methods.patch
 BuildRequires:  %{python_module WebOb}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-WebOb
@@ -42,15 +44,14 @@ hawkauthlib is a low-level library for implementing Hawk Access Authentication, 
 simple HTTP request-signing scheme described in:https://npmjs.org/package/hawk
 
 %prep
-%setup -q -n hawkauthlib-%{version}
+%autosetup -p1 -n hawkauthlib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 cp %{SOURCE1} LICENSE
 
 %install
-%python_install
-
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +61,6 @@ cp %{SOURCE1} LICENSE
 %license LICENSE
 %doc CHANGES.txt README.rst
 %{python_sitelib}/%{pyname}
-%{python_sitelib}/%{pyname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{pyname}-%{version}.dist-info
 
 %changelog
