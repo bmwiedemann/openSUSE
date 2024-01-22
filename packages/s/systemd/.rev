@@ -6984,4 +6984,12 @@ handle manual pages that consist only of a .so directive such as
   071ac409a0 rules: set up tty permissions and group for /dev/hvc* nodes (bsc#1218137)</comment>
     <requestid>1138298</requestid>
   </revision>
+  <revision rev="412" vrev="2">
+    <srcmd5>573750f597c0364330130438baecc6a8</srcmd5>
+    <version>254.8</version>
+    <time>1705951841</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140379</requestid>
+  </revision>
 </revisionlist>
