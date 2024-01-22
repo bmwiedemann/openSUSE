@@ -1,7 +1,7 @@
 #
 # spec file for package util-linux
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -149,6 +149,9 @@ BuildRequires:  socat
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  rubygem(asciidoctor)
+Supplements:    (util-linux and systemd)
+# Split-provides for upgrade from SLE < 12 and openSUSE <= 13.1
+Provides:       util-linux:/bin/logger
 # man pages were moved to -systemd subpackage with 2.38.x (SLE15 SP6, Leap 15.6)
 Conflicts:      util-linux < 2.38
 %systemd_requires
@@ -533,7 +536,7 @@ UTIL_LINUX_FOUND_SYSTEMD_DEPS=$(find . -type f -name "*.c" -exec grep -l '#.*if.
 if test "$UTIL_LINUX_KNOWN_SYSTEMD_DEPS" != "$UTIL_LINUX_FOUND_SYSTEMD_DEPS" ; then
 	echo "List of utilities depending on systemd have changed.
 Please check the new util-linux-systemd file list, file removal and update of Conflicts for safe update!
-Then update configure options to build what needed.
+Then update %%core and/or %%exclude in the file list to build what is needed.
 Only then you can safely update following spec file line:
 UTIL_LINUX_KNOWN_SYSTEMD_DEPS='$UTIL_LINUX_FOUND_SYSTEMD_DEPS'"
 	exit 1
@@ -891,7 +894,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %config %dir %{_sysconfdir}/issue.d
 
 %if %{ul_extra_bin_sbin}
-%exclude /bin/findmnt
 %core /bin/kill
 %core %verify(not mode) %attr(%ul_suid,root,root) /bin/su
 %core /bin/dmesg
@@ -923,9 +925,11 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core /sbin/swaplabel
 %core /sbin/fstrim
 %core /sbin/chcpu
-
+%if "%ulsubset" != "systemd"
+%exclude /bin/findmnt
 %exclude /bin/logger
 %exclude /bin/lsblk
+%endif
 %endif
 # ul_extra_bin_sbin
 
@@ -1301,7 +1305,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %config %dir %{_sysconfdir}/issue.d
 
 %if %{ul_extra_bin_sbin}
-%exclude /bin/findmnt
+/bin/findmnt
 /bin/logger
 /bin/lsblk
 %endif

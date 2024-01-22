@@ -2556,4 +2556,14 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>- Update to release 2.29.3</comment>
     <requestid>1131683</requestid>
   </revision>
+  <revision rev="281" vrev="2">
+    <srcmd5>ad11655d55108dfb8fcbf94fc25c3026</srcmd5>
+    <version>2.39.3</version>
+    <time>1705951804</time>
+    <user>anag+factory</user>
+    <comment>- Minor multibuild fixes (PED-307):
+
+- modern Supplements</comment>
+    <requestid>1139900</requestid>
+  </revision>
 </revisionlist>
