@@ -1,7 +1,7 @@
 #
 # spec file for package restic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define import_path github.com/restic/restic
 
 Name:           restic
-Version:        0.16.2
+Version:        0.16.3
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        BSD-2-Clause

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 17 13:04:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.16.3
+  - Fix #4560: Improve errors for irregular files on Windows
+  - Fix #4574: Support backup of deduplicated files on Windows
+    again
+  - Fix #4612: Improve error handling for rclone backend
+  - Fix #4624: Correct restore progress information if an error
+    occurs
+  - Fix #4626: Improve reliability of restoring large files
+
+-------------------------------------------------------------------
 Tue Nov  7 10:00:15 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
