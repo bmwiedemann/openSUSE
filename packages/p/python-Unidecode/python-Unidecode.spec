@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15allpythons}
 %define skip_python2 1
 Name:           python-Unidecode
 Version:        1.3.8
