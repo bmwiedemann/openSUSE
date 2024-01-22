@@ -91,4 +91,12 @@
   aside from original GPL-2.0-or-later </comment>
     <requestid>1110310</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>c7f58a0bd6bb306cc615e6f73de3ffc7</srcmd5>
+    <version>5.0.17995</version>
+    <time>1705952086</time>
+    <user>anag+factory</user>
+    <comment>- Limited build to fmt &lt; 10.</comment>
+    <requestid>1140381</requestid>
+  </revision>
 </revisionlist>

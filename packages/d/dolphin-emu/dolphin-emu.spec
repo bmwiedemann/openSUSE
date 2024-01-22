@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin-emu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(fmt) >= 6.0
+BuildRequires:  pkgconfig(fmt) < 10
 BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libavcodec)
@@ -114,7 +114,6 @@ cmake . \
     -DENCODE_FRAMEDUMPS=OFF \
     -DUSE_DISCORD_PRESENCE=OFF \
     -DUSE_MGBA=OFF \
-    -DUSE_SHARED_ENET=ON \
     -DXXHASH_FOUND=ON \
     -G Ninja
 ninja -v
