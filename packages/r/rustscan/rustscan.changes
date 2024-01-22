@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 20 11:45:15 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Downgrade nmap requirements to recommends: The no-nmap option
+  exists, and nmap should move to :NonFree
+
+-------------------------------------------------------------------
 Wed Jun 14 10:04:34 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Drop not needed RustScan-*.obscpio, as RustScan-*.tar.xz is used
