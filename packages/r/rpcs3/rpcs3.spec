@@ -1,7 +1,7 @@
 #
 # spec file for package rpcs3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.29~git20231230
+Version:        0.0.30~git20240112
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
