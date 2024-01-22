@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Wed Jan 17 15:14:23 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update to version 8.7.34
+  * (Again) Cannot use the string ${ZSH_VERSION} in
+    $FPATH.  Instead change orig zsh version to current one.
+  * Change isFile(fn) to return nil if fn is a broken symlink.
+  * Change abspath() to l_abspath() in tools/fileOps.lua
+  * Create realpath() to use posix.realpath() if it exists
+    otherwise use l_abspath()
+  * Implement user request that the Active RC file(s) be realpath()
+  * Internally rename complete name to be "complete<name>" and
+    unwrap when necessary.
+  * Change the current version of zsh with the string
+    ${ZSH_VERSION} when builting the init/zsh file.
+  * Better handling of zsh shell functions in source_sh().
+    Must match "\n}\n" to find end of function.
+  * Better name for extension title, remove trailing \n
+  * Added support for getenv function in TCL modules
+  * Fix bug where the version is very long (like git commit tags)
+  * Must delete old tcl2lua.so* files before installing new ones
+  * wrap double quotes around any newlines found in env var value
+    in bash like shells
+  * Unknown TCL module command now produce an error instead of
+    being ignored
+  * Update zsh and bash tab completion files
+  * Added support for "module purge" in a TCL modulefile to unload
+    all other modules on load.
+  * "module show" now prints the contents of inheritted modules.
+  * Added support for "purge()" function in modules to unload all
+    other modules on load.
+  * Created hook colorize_fullName to allow for sites to control
+    how "module list" and "module av"
+    prints to the terminal.
+  * Make isFile return true for all file types except dir.
+  * Now print alias and de-refed module in module list and module
+    -t list.
+  * Allow -f and --force to be the same option for the lmod
+    command (module)
+  * Do not use install to copy symbolic links
+  * Change $MODULEPATH_INIT to $LMOD_MODULEPATH_INIT
+  * Abort configure step if bc is not found
+  * Allow users to do "ml -f purge" which is translated to
+    "module --force purge"
+  * Allow site to use /etc/lmod/.modulespath or $MODULEPATH_INIT
+    to set file location of
+    .modulespath
+  * Switch tcsh/csh module alias to use tcsh/csh instead of shell.
+    The dynamic_shell routine does not
+    work under MacOS for tcsh/csh correctly.
+  * Fix the generation of the manpage to be portable by setting
+    LUA_PATH, LUA_CPATH
+    to have the system paths and the installed Lmod paths.
+    This fixes missing posix and lfs
+  * Change default location of SitePackage.lua to be called
+    <srctree> so that rt/configDir test passes portably.
+  * Undo fixes in end2end.tdesc and rt/common_funcs.sh to unset
+    LMOD_FAST_TCL_INTERP
+  * Switch to use gsha1sum instead of sha1sum on Darwin.
+    (It works better on M1 macs)
+  * Created LMOD_USING_FAST_TCL_INTERP cosmic var to report if
+    fast tcl interp is active.
+  * Allow both pushenv("FOO","") and pushenv("FOO",false) to work.
+  * Report SitePackage.lua location if different from "standard"
+  * Report the existance of lmod_config.lua and its location
+  * Add module-hide and module-forbid to RC2lua.tcl. They are
+    currently no-ops.
+  * Add support for module --brief list to list only direct user
+    loaded modules (stackDepth == 0)
+  * Fix Lmod location to /main/ in README.md
+  * Add env variable LMOD_DEBUG as another way to turn on
+    Lmod debugging.
+  * Do not print Global Aliases header when no aliases would
+    be printed.
+  * Must take barebasename of results from ps -p $PPID -ocomm=
+    in dynamic_shell in src/utils.lua Also fix s_shellTbl entry
+    for zsh.
+    Also handle the case where posix.readlink is not working
+  * Do not ignore error when building man_pages
+    Wrap pcall when trying to require("tcl2lua")
+  * Change MainControl:reportMissingDepModules() to report missing
+    dep. modules through LmodWarning()
+  * Fix bug where repeating the same directory in the $MODULEPATH
+    would cause a loopback and therefore a stack overflow when
+    building the spider cache.
+
+-------------------------------------------------------------------
 Tue Jul  4 17:08:22 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Add apparmor bash abstraction for Lmod (bsc#1212837).
