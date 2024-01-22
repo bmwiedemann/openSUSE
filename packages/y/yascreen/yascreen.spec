@@ -1,7 +1,7 @@
 #
 # spec file for package yascreen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            https://github.com/bbonev/yascreen/
 Source:         %{url}releases/download/v%{version}/yascreen-%{version}.tar.xz
 Source2:        %{url}releases/download/v%{version}/yascreen-%{version}.tar.xz.asc
 Source3:        https://raw.githubusercontent.com/bbonev/yascreen/v%{version}/debian/upstream/signing-key.asc#/%{name}.keyring
-%if %{?suse_version} < 1599
+%if 0%{?suse_version} && %{?suse_version} < 1599
 BuildRequires:  gcc12
 %endif
 
@@ -63,7 +63,7 @@ compile applications or shared objects that use yascreen.
 
 %build
 export CFLAGS="%{optflags}"
-%if %{?suse_version} < 1599
+%if 0%{?suse_version} && %{?suse_version} < 1599
 export CC=gcc-12
 %endif
 %make_build
