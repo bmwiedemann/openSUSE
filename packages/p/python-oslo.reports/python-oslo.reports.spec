@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.reports
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.reports
-Version:        2.4.0
+Version:        3.1.0
 Release:        0
 Summary:        OpenStack oslo.reports library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.reports
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.reports/oslo.reports-2.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.reports/oslo.reports-3.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Jinja2 >= 2.10
 BuildRequires:  python3-eventlet
@@ -66,7 +66,7 @@ framework, known as the "guru meditation report".
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.reports-2.4.0
+%autosetup -p1 -n oslo.reports-3.1.0
 %py_req_cleanup
 
 %build
@@ -81,7 +81,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{py3_install}
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-oslo.reports
 %license LICENSE
