@@ -117,4 +117,18 @@
     permission for `files_upload_v2` method. To learn more about</comment>
     <requestid>1132105</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f8bd540591ef2320507ec7b0b6f4bee3</srcmd5>
+    <version>3.26.2</version>
+    <time>1705952043</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.26.2:
+  * #1447 #1446 aiohttp based socket_mode failed to reconnect and
+    enter a broken state
+  * #1436 Configuring with pyproject.toml
+  * #1443 Update run_*.sh scripts to align with the contributor
+  * #1445 Replace Flask-Sockets with aiohttp for testing
+  * #1448 Fix broken links to modal documentation</comment>
+    <requestid>1140323</requestid>
+  </revision>
 </revisionlist>

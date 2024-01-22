@@ -1,7 +1,7 @@
 #
 # spec file for package python-slack-sdk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-slack-sdk
-Version:        3.26.1
+Version:        3.26.2
 Release:        0
 Summary:        Python SDKs for the Slack API
 License:        MIT
@@ -69,6 +69,8 @@ seamlessly when used together, too.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/slack
+%{python_sitelib}/slack_sdk
+%{python_sitelib}/slack_sdk-%{version}.dist-info
 
 %changelog
