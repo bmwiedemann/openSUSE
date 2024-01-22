@@ -1,7 +1,7 @@
 #
 # spec file for package naev
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           naev
-Version:        0.11.0
+Version:        0.11.2
 Release:        0
 Summary:        2D action RPG space game
 License:        GPL-3.0-only
