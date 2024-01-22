@@ -420,4 +420,37 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
     <comment>- Only call slurm_init() if Slurm &gt; 21.02 (bsc#1212946). (forwarded request 1096619 from eeich)</comment>
     <requestid>1096630</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5de40defe6c69306b2e28c70d4caf27a</srcmd5>
+    <version>2.35</version>
+    <time>1705952305</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.35
+  * slurm: call slurm_init() once before any call to Slurm API (Egbert Eich)
+    Removed:
+    Add-call-to-slurm_init-this-makes-sure-the-config-options-are-set.patch
+  * slurm: fix compile of slurm plugin against Slurm &gt;= 23.x
+    Removed:
+    Hack-to-work-around-a-generic-type-name-breakage-introduced-by-latest-Slurm.patch
+  * log module option errors with -d (Erik Jacobson)
+  * fail fast on connect error or non-zero return code (Jerry Mannil)
+    Removed: fail-fast-on-ssh-errors-or-non-zero-return-code.patch
+    Removed: doc-fast-fail-update.patch
+  * Release a lock that is no longer used (ycaibb)
+    Removed: Release-a-lock-that-is-no-longer-used-in-dsh.patch
+  * build: use LDADD instead of LDFLAGS for libcommon.la (orbea)
+  * slurm: add -C to restrict hostlist to nodes with features (Dylan Simon)
+    Removed: slurm-add-C-features-constraint.patch
+            slurm-add-documentation-for-C.patch
+  * ssh: fix sshcmd_signal on macos
+  * dsbak: fix handling of empty input lines
+    Removed: dshbak-fix-uninitialized-use-of-tag-on-empty-input.patch
+  * Removed additional backport:
+    hostlist-fix-use-of-strchr.patch
+- Remove outdated and defunct project URI on Google. The content
+  can still be found in the archives at:
+     https://code.google.com/archive/p/pdsh/.
+  The project has moved to github entirely. (forwarded request 1140553 from eeich)</comment>
+    <requestid>1140554</requestid>
+  </revision>
 </revisionlist>

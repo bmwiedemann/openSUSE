@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,23 +54,13 @@ Recommends:     mrsh
 %if 0%{?have_genders}
 BuildRequires:  genders-devel > 1.0
 %endif
-URL:            http://pdsh.googlecode.com/
-Version:        2.34
+URL:            https://github.com/chaos/%{pname}
+Version:        2.35
 Release:        0
 Summary:        Parallel remote shell program
-# git clone of https://code.google.com/p/pdsh/
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/Computing
 Source:         https://github.com/chaos/%{pname}/releases/download/%{pname}-%{version}/%{pname}-%{version}.tar.gz
-Patch1:         slurm-add-C-features-constraint.patch
-Patch2:         slurm-add-documentation-for-C.patch
-Patch3:         hostlist-fix-use-of-strchr.patch
-Patch4:         dshbak-fix-uninitialized-use-of-tag-on-empty-input.patch
-Patch5:         Release-a-lock-that-is-no-longer-used-in-dsh.patch
-Patch6:         fail-fast-on-ssh-errors-or-non-zero-return-code.patch
-Patch7:         doc-fast-fail-update.patch
-Patch8:         Hack-to-work-around-a-generic-type-name-breakage-introduced-by-latest-Slurm.patch
-Patch9:         Add-call-to-slurm_init-this-makes-sure-the-config-options-are-set.patch
 
 %description
 Pdsh is a multithreaded remote shell client which executes commands on
@@ -133,15 +123,6 @@ Plugin for pdsh to determine nodes to run on from netgroups.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
