@@ -385,4 +385,17 @@
   - Update master for stable/zed</comment>
     <requestid>1069739</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>eb57f70024f1fdc0d96047a508cf61d6</srcmd5>
+    <version>3.2.0</version>
+    <time>1705951884</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.2.0
+  - Update master for stable/2023.1
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Bump bandit
+  - Imported Translations from Zanata
+  - Moves supported python runtimes from version 3.8 to 3.10</comment>
+    <requestid>1138714</requestid>
+  </revision>
 </revisionlist>
