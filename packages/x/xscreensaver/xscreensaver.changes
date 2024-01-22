@@ -17,7 +17,7 @@ Sun Oct  1 19:25:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
   * Added some new map sources to mapscroller.
   * Various other minor bug fixes. 
 - leave a nice notice for a very angry upstream developer in
-  xscreensaver-disable-upgrade-nagging-message.patch
+  xscreensaver-disable-upgrade-nagging-message.patch (bsc#1217318)
 - drop xscreensaver-bsc1204744.patch, included upstream
 
 -------------------------------------------------------------------
