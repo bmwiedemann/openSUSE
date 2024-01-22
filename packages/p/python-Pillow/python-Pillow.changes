@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Jan 22 06:00:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 10.2.0:
+  * Add ``keep_rgb`` option when saving JPEG to prevent conversion of
+    RGB colorspace
+  * Trim glyph size in ImageFont.getmask()
+  * Deprecate IptcImagePlugin helpers
+  * Allow uncompressed TIFF images to be saved in chunks
+  * Concatenate multiple JPEG EXIF markers
+  * Changed IPTC tile tuple to match other plugins
+  * Do not assign new fp attribute when exiting context manager
+  * Support arbitrary masks for uncompressed RGB DDS images
+  * Support setting ROWSPERSTRIP tag
+  * Apply ImageFont.MAX_STRING_LENGTH to ImageFont.getmask()
+  * Optimise ``ImageColor`` using ``functools.lru_cache``
+  * Restricted environment keys for ImageMath.eval()
+    (CVE-2023-50447, bsc#1219048)
+  * Optimise ``ImageMode.getmode`` using ``functools.lru_cache``
+  * Fix incorrect color blending for overlapping glyphs
+  * Attempt memory mapping when tile args is a string
+  * Fill identical pixels with transparency in subsequent frames when
+    saving GIF
+  * Corrected duration when combining multiple GIF frames into single frame
+  * Handle disposing GIF background from outside palette
+  * Seek past the data when skipping a PSD layer
+  * Import plugins relative to the module
+  * Translate encoder error codes to strings; deprecate
+    ``ImageFile.raise_oserror()``
+  * Support reading BC4U and DX10 BC1 images
+  * Optimize ImageStat.Stat.extrema
+  * Handle pathlib.Path in FreeTypeFont
+  * Added support for reading DX10 BC4 DDS images
+  * Optimized ImageStat.Stat.count
+  * Correct PDF palette size when saving
+  * Fixed closing file pointer with olefile 0.47
+  * Raise ValueError when TrueType font size is not greater than zero
+  * If absent, do not try to close fp when closing image
+  * Allow configuring JPEG restart marker interval on save
+  * Decrement reference count for PyObject
+  * Implement ``streamtype=1`` option for tables-only JPEG encoding
+  * If save_all PNG only has one frame, do not create animated image
+  * Fixed frombytes() for images with a zero dimension
+- Switch to autosetup and pyproject macros.
+
+-------------------------------------------------------------------
 Mon Nov 27 08:54:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.1.0:
