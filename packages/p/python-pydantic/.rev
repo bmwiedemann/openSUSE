@@ -281,4 +281,15 @@
   * alias precedence logic changed so aliases on a field always take</comment>
     <requestid>1137356</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b18e9024119ff76571ca1939577955d1</srcmd5>
+    <version>1.10.14</version>
+    <time>1705951852</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.10.14:
+  * Update install.md
+  * Fixes ci to only deploy docs on release
+  * Fix cached_property handling in dataclasses when copied</comment>
+    <requestid>1140422</requestid>
+  </revision>
 </revisionlist>
