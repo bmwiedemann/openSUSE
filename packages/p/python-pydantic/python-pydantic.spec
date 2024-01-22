@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pydantic
-Version:        1.10.13
+Version:        1.10.14
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
