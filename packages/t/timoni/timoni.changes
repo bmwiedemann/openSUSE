@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jan 21 10:55:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.0:
+  * docs: Format Get Started guide
+  * docs: Add immutable ConfigMaps and Secrets guide
+  * Add `#ImmutableConfig` generator to CUE schemas
+  * Fix typo
+  * build(deps): bump the ci group with 1 update
+  * Add Cosign keyless verification example (#316)
+  * Persist module OCI annotations in the in-cluster instance
+  * docs: Add module instance to spec
+  * docs: Add redirects to module section
+  * docs: Add module spec
+  * docs: Updates the links to module pages
+  * docs: How to update the Timoni schemas
+  * Bump the ci group with 1 update
+  * set defaultPath as an empty string
+  * find the correct kubeconfig based on thee current context
+  * docs: specifies where the instance inventory is stored
+  * docs: Rename `_config` to `#config`
+  * docs: Add Import Resources from YAML guide
+  * docs: Add Module Distribution with GitHub Actions guide
+  * docs: Add Module Signing and Verification guide
+  * docs: Add Module Publishing guide
+  * docs: Add Run tests with Jobs guide
+  * docs: Add Control the Apply Behaviour guide
+  * docs: Add Cluster Version Constraints guide
+  * docs: Add Custom Resources guide
+  * docs: Add module development get started guide
+  * docs: Add CUE Features Walkthrough
+  * docs: Add CUE reference section
+  * Enable GitHub Sponsors
+  * ci: Push blueprints on-demand
+  * Refactor example module with nested packages
+  * Change the `config` type to definition
+  * docs: Format code blocks with CUE v0.7.0
+
+-------------------------------------------------------------------
 Thu Jan 04 17:55:55 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.18.0:
