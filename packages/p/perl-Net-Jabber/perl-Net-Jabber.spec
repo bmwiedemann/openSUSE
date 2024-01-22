@@ -24,7 +24,7 @@ License:        Artistic-1.0
 Group:          Development/Libraries/Perl
 Url:            http://cpan.org/modules/by-module/Net/
 Source:         http://search.cpan.org/CPAN/authors/id/R/RE/REATMON/Net-Jabber-%version.tar.gz
-Patch:          Net-Jabber-%{version}-tests.diff
+Patch0:         Net-Jabber-%{version}-tests.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl-Net-XMPP
 BuildRequires:  perl-macros
@@ -51,7 +51,7 @@ Authors:
 
 %prep
 %setup -q -n Net-Jabber-%{version}
-%patch
+%patch0
 
 %build
 perl Makefile.PL
