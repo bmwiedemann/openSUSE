@@ -1026,4 +1026,17 @@ new request.</comment>
     jsc#PED-6851</comment>
     <requestid>1132178</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>c67db9090d3227c3733c20a85d5d91be</srcmd5>
+    <version>10.0.0</version>
+    <time>1705951889</time>
+    <user>anag+factory</user>
+    <comment>Updated perl bindings for libvirt 10.0.0
+
+- Update to 10.0.0
+  - Add all new APIs and constants in libvirt 10.0.0
+  - jsc#PED-3226, jsc#PED-3279, jsc#PED-4931, jsc#PED-5432,
+    jsc#PED-6851</comment>
+    <requestid>1139515</requestid>
+  </revision>
 </revisionlist>
