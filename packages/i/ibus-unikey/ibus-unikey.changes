@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 15:16:22 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)
+
+-------------------------------------------------------------------
 Mon Nov  6 16:13:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

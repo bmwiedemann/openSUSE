@@ -43,7 +43,7 @@ A Vietnamese engine for IBus input platform that uses Unikey.
 %patch0 -p1
 
 %build
-%configure
+%configure --libexecdir=%{_ibus_libexecdir}
 make %{?_smp_mflags}
 
 %install
@@ -56,6 +56,6 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} install
 %doc README AUTHORS COPYING ChangeLog
 %{_datadir}/%{name}
 %{_datadir}/ibus/component/*
-%{_libexecdir}/ibus-*-unikey
+%{_ibus_libexecdir}/ibus-*-unikey
 
 %changelog
