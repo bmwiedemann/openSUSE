@@ -3505,7 +3505,6 @@
     <package name="python311-argon2-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python311-argon2-cffi-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python311-argparse-manpage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python311-async_generator" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python311-async_timeout" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python311-atpublic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python311-atspi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
