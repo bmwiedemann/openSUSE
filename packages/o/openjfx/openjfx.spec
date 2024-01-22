@@ -1,7 +1,7 @@
 #
 # spec file for package openjfx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global featurever   17
 %global interimver   0
-%global updatever    7
+%global updatever    10
 %global buildver     2
 %global jfx_repo     jfx17u
 %global jfx_tag      %{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
@@ -69,6 +69,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  gperf
 BuildRequires:  java-devel >= 11
 BuildRequires:  maven-local
+BuildRequires:  pkgconfig
+BuildRequires:  xmvn-subst
 BuildRequires:  mvn(org.antlr:ST4)
 BuildRequires:  mvn(org.antlr:antlr)
 BuildRequires:  mvn(org.antlr:antlr-runtime)
@@ -80,8 +82,6 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:exec-maven-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:native-maven-plugin)
 BuildRequires:  mvn(org.eclipse.swt:swt)
-BuildRequires:  pkgconfig
-BuildRequires:  xmvn-subst
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)

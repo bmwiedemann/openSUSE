@@ -7,4 +7,12 @@
     <comment>Restore package without dependency on gradle</comment>
     <requestid>1086796</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c30a70c4fdd3a20b175f999786f0bb98</srcmd5>
+    <version>17.0.10.0</version>
+    <time>1705952327</time>
+    <user>anag+factory</user>
+    <comment>January 2024 CPU</comment>
+    <requestid>1140608</requestid>
+  </revision>
 </revisionlist>
