@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 20 17:09:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240118T070339Z:
+  * feat: add action for mc undo recursive (#4822)
+  * Add ability to replay JSON file in scanner info (#4824)
+
+-------------------------------------------------------------------
 Wed Jan 17 07:25:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240116T160634Z:
