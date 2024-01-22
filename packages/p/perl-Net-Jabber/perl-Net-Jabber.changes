@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 02:36:09 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %patch0 to fix compilation with rpm-4.19
+
+-------------------------------------------------------------------
 Tue Oct 14 12:44:00 UTC 2014 - jengelh@inai.de
 
 - Use source URLs and remove ancient specfile tags and sections
