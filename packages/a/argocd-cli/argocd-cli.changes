@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jan 20 17:05:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.5:
+  * Bump version to 2.9.5 (#16937)
+  * fix(ui): set content-type for certain UI requests (#16923)
+    (#16930) (#16933)
+
+-------------------------------------------------------------------
+Sat Jan 20 17:02:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.4:
+  * Bump version to 2.9.4 (#16917)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.8.1 to
+    5.11.0 (#16912)
+  * fix: enforce content type header for API requests (#16860)
+    (Cherry-pick release-2.9 ) (#16878)
+  * fix: add list permission deployments (#16785) (#16804)
+  * fix(ui):Fixed log horizontal scroll for issue #16411 (#16727)
+    (#16761)
+  * fix(action): Add missing owner refs and annotation to
+    create-job action (#16607) (#16608)
+  * Added missing 'alias:' prefix for repository name as described
+    here: (#15902) (#16535)
+  * fix(grpcproxy): add missing GRPCKeepAliveEnforcementMinimum
+    (#15708) (#16576)
+  * fix(appset): don't emit k8s events for unchanged apps, log at
+    debug (#16562)
+  * docs: Fix format issue in rbac.md (#16521) (#16538)
+  * chore: upgrade k8s client from v0.24.2 to v0.24.17 (#16554)
+  * fix(appset): Don't use revision cache when reconciling after
+    webhook (#16062) (#16241) (#16536)
+
+-------------------------------------------------------------------
 Sun Dec 03 18:51:59 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.9.3:
