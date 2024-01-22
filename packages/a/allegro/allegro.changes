@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 21 07:41:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.2.9.1:
+  * Fix a regression where toggling fullscreen window when menus are used stopped working (SiegeLord)
+
+-------------------------------------------------------------------
 Sun Nov 26 18:21:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.2.9.0:
