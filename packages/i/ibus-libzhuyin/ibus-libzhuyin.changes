@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 14:55:42 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)
+
+-------------------------------------------------------------------
 Wed Mar  8 15:08:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not BuildRequire libzhuyin13: that's the responsibility of the
