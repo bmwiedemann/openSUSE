@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 18 14:05:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.24.1:
+  * bump version of compose-go to v2.0.0-rc.1
+  * build(deps): bump github.com/docker/docker
+  * remove watch command from the alpha command
+  * build(deps): bump github.com/docker/cli
+  * fix(tracing): batch span exports to prevent blocking
+  * signals/utils: always handle received signals
+  * fix engine version require to use healthcheck.start_interval
+  * Stop the resource timer after last expected event
+  * build(deps): bump github.com/containerd/containerd from 1.7.11
+    to 1.7.12 (#11347)
+  * build(deps): bump github.com/docker/docker from
+    25.0.0-rc.1+incompatible to 25.0.0-rc.2+incompatible (#11349)
+  * build(deps): bump github.com/docker/cli from
+    25.0.0-rc.1+incompatible to 25.0.0-rc.2+incompatible (#11348)
+
+-------------------------------------------------------------------
 Mon Jan 15 17:09:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.24.0:
