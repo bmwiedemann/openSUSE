@@ -424,4 +424,12 @@ Disable rpath-install and silent-rules while configure.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1114973</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>181ac4bba75030447cb4e8f5618cdfdc</srcmd5>
+    <version>0.16.0</version>
+    <time>1705951837</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140376</requestid>
+  </revision>
 </revisionlist>
