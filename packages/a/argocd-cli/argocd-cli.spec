@@ -1,7 +1,7 @@
 #
 # spec file for package argocd-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define executable_name argocd
 
 Name:           argocd-cli
-Version:        2.9.3
+Version:        2.9.5
 Release:        0
 Summary:        CLI for the ArgoCD declarative continuous deployment tool
 License:        Apache-2.0
