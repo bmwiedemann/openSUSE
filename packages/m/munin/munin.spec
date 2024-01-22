@@ -83,6 +83,8 @@ Requires:       shadow
 Requires:       spawn-fcgi
 Requires:       perl(Munin::Common::Defaults)
 Recommends:     logrotate
+Provides:       group(munin)
+Provides:       user(munin)
 BuildArch:      noarch
 %{?systemd_ordering}
 %if 0%{?suse_version} <= 1510
