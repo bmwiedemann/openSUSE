@@ -1,7 +1,7 @@
 #
 # spec file for package sdbootutil
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ BuildRequires:  git-core
 %define git_version %{nil}
 %endif
 Name:           sdbootutil
-Version:        1+git20231221.42797ab%{git_version}
+Version:        1+git20240118.7e744b4%{git_version}
 Release:        0
 Summary:        script to install shim with sd-boot
 License:        MIT

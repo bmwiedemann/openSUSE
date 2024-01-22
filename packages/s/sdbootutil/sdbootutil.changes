@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 22 12:58:40 UTC 2024 - lnussel@suse.com
+
+- Update to version 1+git20240118.7e744b4:
+  * Bind mount /etc inside the snapshot
+
+-------------------------------------------------------------------
 Thu Dec 21 16:24:56 UTC 2023 - lnussel@suse.com
 
 - Update to version 1+git20231221.42797ab:

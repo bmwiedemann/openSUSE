@@ -114,4 +114,13 @@
     <comment></comment>
     <requestid>1135444</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7f89e5c741da3ed3893328fb90d2fca3</srcmd5>
+    <version>1+git20240118.7e744b4</version>
+    <time>1705951875</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20240118.7e744b4:
+  * Bind mount /etc inside the snapshot</comment>
+    <requestid>1140600</requestid>
+  </revision>
 </revisionlist>
