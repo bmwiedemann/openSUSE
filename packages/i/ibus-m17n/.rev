@@ -303,4 +303,12 @@
    add a sleep for Return. This is to avoid ordering problems in mutter</comment>
     <requestid>1131689</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>25e0771e74a6f9657215531696e09c2c</srcmd5>
+    <version>1.4.27</version>
+    <time>1705951954</time>
+    <user>anag+factory</user>
+    <comment>- Use %_libexecdir as the basis of %_ibus_libexecdir (bsc#1174075)</comment>
+    <requestid>1140146</requestid>
+  </revision>
 </revisionlist>
