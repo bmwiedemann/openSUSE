@@ -1,4 +1,252 @@
 -------------------------------------------------------------------
+Fri Jan 19 12:06:44 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Upstreamed patches 0001-Fix-detection-of-yaml-cpp-0.8.patch
+  and gcc12_fix.patch removed
+
+-------------------------------------------------------------------
+Thu Jan 18 12:18:28 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Move OpenImageIO buildrequires back into the tools section to
+  avoid loop
+
+-------------------------------------------------------------------
+Thu Jan 18 11:15:18 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Bump minizip-ng to 4.0.4 as it avoids some weird compiler
+  warnings seen with older versions
+
+-------------------------------------------------------------------
+Mon Jan 15 19:06:54 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.3.1
+  Bug fixes and minor enhancements:
+  - PR #1898, Add Python 3.12 wheels
+  - PR #1913, Improve heuristics for finding known color spaces
+  - PR #1886, Fix missing Default View Transform on equal operator
+  - PR #1904, Fix env serialization for v1 configs
+  - PR #1873, Fix missing cache id reset on look update
+  - PR #1896, Skip processor concatenation if the display color
+    space is also data
+  - PR #1855, Fix regression in cccid handling when no value is
+    supplied
+  - PR #1849, Python bindings source builds failing to load
+    libOpenColorIO
+  - PR #1905, Fix NamedTransform context var issue
+  - PR #1845, Improve ocioview curve inspector
+  - PR #1853, Improve ocioview mac support and simplify
+    dependencies
+  - PR #1882, Remove circular import caused by typing annotations
+  - PR #1888, ICC Profile load issue caused by improper use of
+    std::isspace
+  - PR #1847, Add some small arm neon optimizations
+  - PR #1842, Fix support for X86 32-bit
+  - PR #1848, Add links to new release notes documentation
+  - PR #1892, Fix spelling errors in documentation
+
+  Build enhancements:
+  - PR #1907, Fix yaml-cpp build issues
+  - PR #1902, Improve compatibility with minizip-ng COMPAT mode
+  - PR #1901, Improve handling of pystring include dir
+  - PR #1899, Restore GPU workflow and minor updates to CI
+  - PR #1891, Simplify the Findyaml-cpp module
+  - PR #1890, Tentative fix for the doxygen installation in the
+    Windows CI
+  - PR #1861, Correctly recover CXX_FLAGS in CheckSupportSSE2.cmake
+
+-------------------------------------------------------------------
+Mon Jan 15 19:05:54 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.3.0
+  This is the main new feature release for this year and is the
+  base version for the CY2024 VFX Reference Platform (which
+  specifies 2.3.x).
+
+  We anticipate making an ABI-compatible 2.3.x release near the end
+  of the year that will fix any issues found with the new features
+  as the 2.3.0 library gets more widely tested. Ideally,
+  application developers will introduce 2.3.0 into their testing
+  programs now and then update to the latest 2.3.x release
+  available before shipping next year.
+
+  This documentation page explains the new features in this
+  release.
+
+  Major new features:
+  - PR #1816, Add new ocioview config visual editor app (alpha)
+  - PR #1687, Utilize AVX SIMD intrinsics to accelerate Lut1D and
+    Lut3D performance
+  - PR #1828, Utilize Neon SIMD intrinsics and improve Universal
+    Build support for macOS
+  - PR #1788, Enhanced methods to find an equivalent color space
+    between configs
+  - PR #1802, Add command-line apps to Python Wheel
+  - PR #1808, Add GetProcessorFromConfigs variants for displays and
+    views
+  - PR #1762, Disallow use of 1D textures for Lut1D ops in the GPU
+    renderer
+  - PR #1791, Add clear Processor cache function to accomodate
+    changes to existing LUT files
+  - PR #1773, Add cg-config-latest & studio-config-latest
+    short-cuts to built-in configs
+  - PR #1812, Add built-in transform for Display P3 and bump config
+    version
+
+  Bug fixes and minor enhancements:
+  - PR #1792, Add isInactiveColorSpace and getRoleColorSpace
+    methods
+  - PR #1832, Add hasDynamic method to CPUProcessor and allow OSL
+    language output from Python
+  - PR #1829, Fix named transform validation issue
+  - PR #1779, Fix GradingPrimary bypass and allow easier comparison
+    in Python
+  - PR #1759, Allow PyOpenColorIO module to load DLLs from Windows
+    PATH env var
+  - PR #1780, Improve DisplayViewTransform error message and add
+    more unit tests
+  - PR #1786, Remove inactive color space warnings from unit test
+    output
+  - PR #1822, Remove additional color space warnings from unit test
+    output
+  - PR #1833, Update Python docs for new texture dimensions API
+  - PR #1812, Fix error in Baker documentation related to LUT
+    inversion
+  - PR #1803, Add Thomas and Zach to the TSC
+  - PR #1782, Add 3ds Max as a supported app
+
+  Build process enhancements:
+  - PR #1777, Add CMake support for minimum and recommended
+    versions of dependencies
+  - PR #1813, Add VFX Platform 2023 to CI Linux build matrix
+  - PR #1778, Improve Python Wheel packaging
+  - PR #1790, Make OpenColorIO usable as a sub-project using
+    CMake's FetchContent
+  - PR #1806, Support minizip-ng 4 API
+  - PR #1823, CMake fixes for yaml-cpp affecting vcpkg
+  - PR #1793, Change min ZLib version to 1.2.8
+  - PR #1826, Adjust to change in Sphinx breaking documentation
+    builds
+  - PR #1809, Adjust to change in Doxygen groups to fix
+    documentation build
+  - PR #1797, Adjust urllib3 version to fix CI and
+    dependencies-latest workflows
+  - PR #1770, Update GitHub Actions workflows
+  - PR #1795, OSL-related fix for dependencies-latest workflow on
+    macOS
+  - PR #1783, Docutils version fix for dependencies-latest workflow
+  - PR #1714, Fix CI warnings / deprecations
+
+-------------------------------------------------------------------
+Mon Jan 15 19:05:03 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.2.1 
+  Bug fixes and minor enhancements:
+  - PR #1743, Fix inverse Lut1D optimization issue (may affect
+    identity Look transforms in camera log process spaces)
+  - PR #1742, Improve naming of ICC-based virtual displays on
+    Windows
+  - PR #1741, Fix Python ARM Wheel (now works on M1-based Macs)
+  - PR #1738, Update documentation for 2.2 release
+  - PR #1734, Fix issue with isColorSpaceLinear function (to avoid
+    crash when color space doesn't exist)
+  - PR #1726, Processor cache does not detect context variable
+    changes in FileTransform cccid string
+  - PR #1723, Replace "texture2D" function with "texture" for GLSL
+    1.3 (allows use of GLSL 1.3)
+
+  Build enhancements:
+  - PR #1736, OCIO CMake improvements
+  - PR #1729, Hiding minizip-ng symbols on Mac
+  - PR #1725, Fix issue with minizip build
+  - PR #1721, CheckSupportSSE2: Fix sse flags unexpected
+    propagation
+  - PR #1720, Configure the OpenColorIO.pc file on Windows
+
+-------------------------------------------------------------------
+Mon Jan 15 19:03:40 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.2.0
+  This is the main new feature release for this year and is the
+  base version for the CY2023 VFX Reference Platform (which
+  specifies 2.2.x).
+
+  We anticipate making an ABI-compatible 2.2.1 release near the end
+  of the year that will fix any bugs found with the new features as
+  the 2.2.0 library gets more widely tested.
+
+  New features:
+  - PR #1659, Build the new ACES CG and Studio configs into the
+    library itself
+  - PR #1696, Allow OCIO configs to be archived, introducing the
+    .ocioz file format
+  - PR #1710, Convert to or from a known external color space
+  - PR #1703, Add a method to query whether a color space is linear
+  - PR #1637, Address circular build dependency between OCIO and
+    OpenImageIO
+
+  Noteworthy bug fixes and enhancements:
+  - PR #1711, Make the interchange roles required for config
+    versions 2.2 or higher
+  - PR #1691, Add support for ICC Parametric curves type 1-4
+  - PR #1689, Add getProcessor calls that take a NamedTransform
+  - PR #1604, Add preliminary support for ACES Metadata Files (AMF)
+  - PR #1693, Add NamedTransform support for Baking and fix
+    crosstalk issue
+  - PR #1704, Add Built-in Transforms for ARRI LogC4 and Canon
+    curves
+  - PR #1706, Add Python 3.11 wheels
+  - PR #1712, Fix atan2 issue with ACES viewing transforms in HLSL
+  - PR #1656, Speed up config ID hashing (replace md5 with xxhash)
+  - PR #1684, Allow ocioconvert, ociowrite, ocioperf to invert a
+    DisplayViewTransform
+  - PR #1646, Provide scripts to facilitate building OCIO on
+    Windows
+  - PR #1630, Improve iridas_cube parsing speed
+  - PR #1605, Add Python source distribution package for PyPI
+  - PR #1598, Add DisplayViewTransform support to Baker
+  - PR #1516, Default to C++ 14 and remove OIIO from ocioperf
+  - PR #1532, Update default branch name to "main"
+
+  Other fixes and minor enhancements:
+  - PR #1715, Fix missing warnings issue with ociocheck
+    command-line tool
+  - PR #1713, Update Built-in configs with official 1.0.0 CG and
+    Studio release
+  - PR #1708, Enforce GL_NEAREST with GPU tetrahedral interpolation
+  - PR #1697, Built fix (strtof_l) for MinGW
+  - PR #1695, Add anchorpoint to supported applications
+  - PR #1694, Log OCIO version for debugging purposes
+  - PR #1692, Fix OpenEXR build on ninja
+  - PR #1684, Fix for const literals in HLSL
+  - PR #1678, Build fix (from_chars, strtol_l) for those using the
+    musl-libc library
+  - PR #1669, Correct http links to https
+  - PR #1647, Build fixes for MS Visual Studio 2022
+  - PR #1636, Print version in cmake find_package
+  - PR #1635, Adjust 'family' description in OpenColorIO.h
+  - PR #1632, Fix "requirement" typo in installation.rst
+  - PR #1599, Minor build and CI fixes
+  - PR #1594, Fix cmake issue with Windows Unicode support
+  - PR #1542, Build fixes for C++ 20
+  - PR #1596, Update Carol Payne as TSC Chair in GOVERNANCE.md
+  - PR #1498, Add Rémi Achard to GOVERNANCE.md & COMMITTERS.md
+
+-------------------------------------------------------------------
+Mon Jan 15 18:32:30 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.1.3
+  - PR #1743, Fix inverse Lut1D optimization issue (may affect
+    identity Look transforms in camera log process spaces)
+  - PR #1726, Processor cache does not detect context variable
+    changes in FileTransform cccid string
+  - PR #1723, Replace "texture2D" function with "texture" for GLSL
+    1.3 (allows use of GLSL 1.3)
+  - PR #1712, Fix atan2 argument order for HLSL (may affect ACES
+    output transforms on Windows)
+  - PR #1697, MinGW: Work around lack of strtof_l for
+    local-independent parsing (allows compiling with MinGW)
+
+-------------------------------------------------------------------
 Wed Aug 30 09:45:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:
