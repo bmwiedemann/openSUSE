@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:23:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.26.2:
+  * #1447 #1446 aiohttp based socket_mode failed to reconnect and
+    enter a broken state
+  * #1436 Configuring with pyproject.toml
+  * #1443 Update run_*.sh scripts to align with the contributor
+  * #1445 Replace Flask-Sockets with aiohttp for testing
+  * #1448 Fix broken links to modal documentation
+
+-------------------------------------------------------------------
 Fri Dec  8 13:43:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.26.1:
