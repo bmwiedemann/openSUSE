@@ -25,7 +25,9 @@ qtver=
 [[ -n ${qtvers} ]] || qtvers="5 6 7"
 
 for ver in ${qtvers}; do
-	stat /usr/lib*/qt${ver} &>/dev/null && qtver="${qtver}${ver}"
+	if [ -e "/usr/lib/libQt${ver}Core.so.${ver}" ] || [ -e "/usr/lib64/libQt${ver}Core.so.${ver}" ]; then
+		qtver="${qtver}${ver}"
+	fi
 done
 
 # Zero or more than one version of Qt found. Abort.
