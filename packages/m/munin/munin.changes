@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 22 10:33:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide user(munin) and group(munin): the user and group are
+  created during in the pre script.
+
+-------------------------------------------------------------------
 Mon Jan 15 11:41:47 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Use IO::Socket::IP instead of IO::Socket::INET[6]
