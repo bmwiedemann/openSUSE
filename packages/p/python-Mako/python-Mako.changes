@@ -37,7 +37,8 @@ Sun Sep 11 07:28:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.2:
   * Fixed issue in lexer where the regexp used to match tags would not
-    correctly interpret quoted sections individually
+    correctly interpret quoted sections individually (CVE-2022-40023,
+    bsc#1203246)
 
 -------------------------------------------------------------------
 Mon Jul 18 13:39:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
