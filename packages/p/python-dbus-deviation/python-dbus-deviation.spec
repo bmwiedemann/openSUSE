@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbus-deviation
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-dbus-deviation
 Version:        0.6.1
 Release:        0
 Summary:        Parse D-Bus introspection XML and process it in various ways
 License:        LGPL-2.1-or-later
-URL:            http://people.collabora.com/~pwith/dbus-deviation/
+URL:            https://tecnocode.co.uk/dbus-deviation/
 Source:         https://files.pythonhosted.org/packages/source/d/dbus-deviation/dbus-deviation-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pwithnall/dbus-deviation#21
+Patch0:         correct-test-assertion-methods.patch
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
@@ -34,6 +36,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module lxml}
 # /SECTION
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -43,16 +47,16 @@ difference between two D-Bus APIs for the purpose of checking for API breaks.
 This functionality is also available as a Python module, dbusdeviation.
 
 %prep
-%setup -q -n dbus-deviation-%{version}
+%autosetup -p1 -n dbus-deviation-%{version}
 sed -i -e "/setuptools_/d" setup.py
 chmod -x dbusapi/tests/*.py dbusdeviation/tests/*.py dbusdeviation/utilities/*.py
 sed -i '1 {/^#!/d}' dbusapi/tests/*.py dbusdeviation/tests/*.py dbusdeviation/utilities/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/dbus-interface-diff
 %python_clone -a %{buildroot}%{_bindir}/dbus-interface-vcs-helper
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -73,6 +77,6 @@ sed -i '1 {/^#!/d}' dbusapi/tests/*.py dbusdeviation/tests/*.py dbusdeviation/ut
 %python_alternative %{_bindir}/dbus-interface-vcs-helper
 %{python_sitelib}/dbusapi
 %{python_sitelib}/dbusdeviation
-%{python_sitelib}/dbus_deviation-%{version}*-info
+%{python_sitelib}/dbus_deviation-%{version}.dist-info
 
 %changelog
