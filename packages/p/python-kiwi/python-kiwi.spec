@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.25.19
+Version:        9.25.22
 Provides:       kiwi-schema = 7.5
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -561,7 +561,6 @@ Requires:       dracut-network
 Requires:       device-mapper
 %endif
 Requires:       dracut
-Requires:       xorriso
 License:        GPL-3.0-or-later
 Group:          %{sysgroup}
 

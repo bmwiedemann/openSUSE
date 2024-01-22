@@ -2295,4 +2295,41 @@
   Fixes suse bsc#1208701</comment>
     <requestid>1132074</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>68aab45d6c88e20246c5e20612a1d7f0</srcmd5>
+    <version>9.25.22</version>
+    <time>1705951870</time>
+    <user>anag+factory</user>
+    <comment>- Disable workflow runs from master
+  The following github actions will be disabled from master
+  because they are expected to run from main:
+  - ci-publish-pages.yml
+  - ci-publish-to-pypi.yml
+  - ci-update-build-tests.yml
+
+- Bump version: 9.25.21 → 9.25.22
+
+- Fixed regression in GRUB_SERIAL_COMMAND setup
+  The condition to write the serial line setup was broken.
+  This commit fixes it. Related to Issue #2419
+
+- Fixed grub terminal setup
+  The grub terminal setup is divided into the setting for the output
+  and the input console. For both settings different parameters exists.
+  So far kiwi did not differentiate between the two parts of the
+  console setup and that could lead to a wrong setting if only one
+  value is provided in kiwi's console= attribute which lead to the
+  grub setting, GRUB_TERMINAL=value. If value is set to e.g gfxterm
+  grub takes this for both input and output and it's obviously
+  wrong for the input. To make this less error prune the kiwi code
+  changes with this commit to set GRUB_TERMINAL_INPUT and
+  GRUB_TERMINAL_OUTPUT rather than GRUB_TERMINAL and also runs sanity
+  checks on the provided values if they are applicable. The information
+  for setting up the console in the schema stays untouched though.
+  That's because it's used for all bootloaders and also because grub
+  supports multiple values for the console in/out setting in one
+  GRUB_TERMINAL variable even though kiwi does no longer use it.
+  To make this clear for the users also the documentation for the</comment>
+    <requestid>1140588</requestid>
+  </revision>
 </revisionlist>
