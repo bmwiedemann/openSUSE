@@ -71,7 +71,7 @@ Wed Jul 21 07:13:43 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 Mon Mar 23 09:15:41 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.5.3:
-  * Support for new python interpreters
+  * Support for new python interpreters (bsc#1197824)
 - Remove merged patch pr_290.patch
 
 -------------------------------------------------------------------
