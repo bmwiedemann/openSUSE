@@ -39,7 +39,7 @@ Rime Input Method Engine for Linux/IBus
 
 %build
 %cmake \
-  -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
+  -DCMAKE_INSTALL_LIBEXECDIR=%{_ibus_libexecdir} \
   -DRIME_DATA_DIR=%{_datadir}/rime-data
 %make_build
 
@@ -51,7 +51,7 @@ Rime Input Method Engine for Linux/IBus
 %doc README.md
 %dir %{_datadir}/rime-data
 %{_ibus_componentdir}/rime.xml
-%{_libexecdir}/ibus-rime/
+%{_ibus_libexecdir}/ibus-rime/
 %{_datadir}/ibus-rime/
 %{_datadir}/rime-data/ibus_rime.yaml
 
