@@ -28,7 +28,7 @@ URL:            https://github.com/fcitx/fcitx-zhuyin
 Source:         %{name}-%{version}.tar.xz
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org in 1.0.91, zhuyin_guess_candidates
 # was replaced by zhuyin_guess_candidates_after_cursor
-Patch:          libzhuyin-1.0.91-zhuyin_guess_candidates.patch
+Patch0:         libzhuyin-1.0.91-zhuyin_guess_candidates.patch
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org libzhuyin has merged to libpinyin
 # libpinyin doesn't provide pkgdata dir in libzhuyin.pc
 Patch1:         fcitx-zhuyin-libpinyin.patch
@@ -50,7 +50,7 @@ This is a libzhuyin wrapper for fcitx.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 %patch1 -p1
 
 %build

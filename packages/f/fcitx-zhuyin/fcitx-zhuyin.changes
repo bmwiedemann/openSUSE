@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 02:18:29 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %patch0 to fix compilation with rpm-4.19
+
+-------------------------------------------------------------------
 Sun Sep 27 07:35:22 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - Add fcitx-zhuyin-libpinyin.patch
