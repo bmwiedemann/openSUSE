@@ -711,4 +711,41 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   * Added session type check for Linux in</comment>
     <requestid>1129060</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>3ae95593f4cf4e2418f194b74cccd62c</srcmd5>
+    <version>10.2.0</version>
+    <time>1705951829</time>
+    <user>anag+factory</user>
+    <comment>- Update to 10.2.0:
+  * Add ``keep_rgb`` option when saving JPEG to prevent conversion of
+    RGB colorspace
+  * Trim glyph size in ImageFont.getmask()
+  * Deprecate IptcImagePlugin helpers
+  * Allow uncompressed TIFF images to be saved in chunks
+  * Concatenate multiple JPEG EXIF markers
+  * Changed IPTC tile tuple to match other plugins
+  * Do not assign new fp attribute when exiting context manager
+  * Support arbitrary masks for uncompressed RGB DDS images
+  * Support setting ROWSPERSTRIP tag
+  * Apply ImageFont.MAX_STRING_LENGTH to ImageFont.getmask()
+  * Optimise ``ImageColor`` using ``functools.lru_cache``
+  * Restricted environment keys for ImageMath.eval()
+    (CVE-2023-50447, bsc#1219048)
+  * Optimise ``ImageMode.getmode`` using ``functools.lru_cache``
+  * Fix incorrect color blending for overlapping glyphs
+  * Attempt memory mapping when tile args is a string
+  * Fill identical pixels with transparency in subsequent frames when
+    saving GIF
+  * Corrected duration when combining multiple GIF frames into single frame
+  * Handle disposing GIF background from outside palette
+  * Seek past the data when skipping a PSD layer
+  * Import plugins relative to the module
+  * Translate encoder error codes to strings; deprecate
+    ``ImageFile.raise_oserror()``
+  * Support reading BC4U and DX10 BC1 images
+  * Optimize ImageStat.Stat.extrema
+  * Handle pathlib.Path in FreeTypeFont
+  * Added support for reading DX10 BC4 DDS images</comment>
+    <requestid>1140356</requestid>
+  </revision>
 </revisionlist>

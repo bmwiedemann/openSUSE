@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pillow
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pillow
-Version:        10.1.0
+Version:        10.2.0
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
 URL:            https://python-pillow.org/
-Source:         https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pillow/pillow-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module olefile}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tk}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libimagequant-devel
 BuildRequires:  pkgconfig
@@ -67,14 +69,13 @@ Pillow is the "friendly" PIL fork by Alex Clark and Contributors. PIL is the
 Python Imaging Library by Fredrik Lundh and Contributors.
 
 %prep
-%setup -q -n Pillow-%{version}
-%autopatch -p1
+%autosetup -p1 -n pillow-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # add missing path
 %{python_expand echo "PIL" > %{buildroot}%{$python_sitearch}/PIL.pth}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -101,7 +102,7 @@ pytest-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --i
 %doc CHANGES.rst README.md
 %{python_sitearch}/PIL
 %{python_sitearch}/PIL.pth
-%{python_sitearch}/Pillow-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/pillow-%{version}.dist-info
 %exclude %{python_sitearch}/PIL/ImageTk*
 %exclude %{python_sitearch}/PIL/_imagingtk*
 %pycache_only %exclude %{python_sitearch}/PIL/__pycache__/ImageTk.*
