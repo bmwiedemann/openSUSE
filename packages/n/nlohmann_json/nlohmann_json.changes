@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 21 11:39:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix build with non-suse dists
+
+-------------------------------------------------------------------
 Sat Dec  2 07:17:04 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - Update to version 3.11.3:
@@ -39,7 +44,7 @@ Tue Aug  2 11:06:05 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
   * More tests for edge cases like 32-bit support, C++20 features,
     using the library with ICPC, or after including <windows.h>.
   * Full changelog available at:
-    https://github.com/nlohmann/json/releases/tag/v3.11.0 
+    https://github.com/nlohmann/json/releases/tag/v3.11.0
 
 -------------------------------------------------------------------
 Sun Jan 16 16:11:50 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
@@ -125,7 +130,7 @@ Tue Oct  5 06:38:22 UTC 2021 - ecsos <ecsos@opensuse.org>
 - Update to 3.10.2
   - Annoying -Wundef on new JSON_DIAGNOSTICS macro #2975
   - += issue with multiple redirection. #2970
-  - incomplete type nlohmann::detail::wide_string_input_helper 
+  - incomplete type nlohmann::detail::wide_string_input_helper
     compilation error #2969
   - Fix -Wunused warnings on JSON_DIAGNOSTICS #2976 (gcerretani)
 - Changes from 3.10.1 and 3.10.0 see:
@@ -301,22 +306,22 @@ Tue Apr 10 09:08:51 UTC 2018 - mardnh@gmx.de
     arguments for strings or objects) can now be used in assignments (#972, #
     977, #986).
   * Fixed a logical error in an iterator range check (#992).
-  
+
   Improvements
   * The parser and the serialization now support user-defined string types (#
     1006, #1009).
-  
+
   Further Changes
   * Clang Analyzer is now used as additional static analyzer; see make
     clang_analyze.
   * Overworked README by adding links to the documentation (#981).
-  
+
   Deprecated functions
-  
+
   This release does not deprecate any functions. As an overview, the following
   functions have been deprecated in earlier versions and will be removed in the
   next major version (i.e., 4.0.0):
-  
+
   * Function iterator_wrapper are deprecated. Please use the member function
     items() instead.
   * Functions friend std::istream& operator<<(basic_json&, std::istream&) and
@@ -372,7 +377,7 @@ Tue Apr 10 09:08:51 UTC 2018 - mardnh@gmx.de
   Summary
   This release adds support for the UBJSON format and JSON Merge Patch. It also
   contains some minor changes and bug fixes. All changes are backward-compatible.
-  
+
   New features
   * The library now supports UBJSON (Universal Binary JSON Specification) as
     binary format to read and write JSON values space-efficiently. See the
@@ -381,7 +386,7 @@ Tue Apr 10 09:08:51 UTC 2018 - mardnh@gmx.de
   * JSON Merge Patch (RFC 7386) offers an intuitive means to describe patches
     between JSON values (#876, #877). See the documentation of merge_patch for
     more information.
-  
+
   Improvements
   * The library now uses the Grisu2 algorithm for printing floating-point
     numbers (based on the reference implementation by Florian Loitsch) which
@@ -389,7 +394,7 @@ Tue Apr 10 09:08:51 UTC 2018 - mardnh@gmx.de
     935, #936).
   * The UTF-8 handling was further simplified by using the decoder of Björn
     Hoehrmann in more scenarios.
- 
+
   Reorganization
   * Though the library is released as a single header, its development got more
     and more complicated. With this release, the header is split into several
@@ -399,7 +404,7 @@ Tue Apr 10 09:08:51 UTC 2018 - mardnh@gmx.de
     (#700, #906, #907, #910, #911, #915, #920, #924, #925, #928, #944).
   * The split further allowed for a forward declaration header include/nlohmann
     /json_fwd.hpp to speed up compilation times (#314).
- 
+
   Further changes
   * Google Benchmark is now used for micro benchmarks (see benchmarks folder, #
     921).
@@ -423,7 +428,7 @@ Tue Apr 10 09:08:51 UTC 2018 - mardnh@gmx.de
   * A compiler error related to incomplete types has been fixed (#919).
   * The tests form the UTF-8 decoder stress test have been added to the test
     suite.
- 
+
   Deprecated functions
   * Function iterator_wrapper has been deprecated (#874). Since its
     introduction, the name was up for discussion, as it was too technical. We
@@ -432,7 +437,7 @@ Tue Apr 10 09:08:51 UTC 2018 - mardnh@gmx.de
 
   Furthermore, the following functions are deprecated since version 3.0.0 and
   will be removed in the next major version (i.e., 4.0.0):
-  
+
   * friend std::istream& operator<<(basic_json&, std::istream&)
   * friend std::ostream& operator>>(const basic_json&, std::ostream&)
 

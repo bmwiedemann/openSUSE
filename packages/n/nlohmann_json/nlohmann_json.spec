@@ -1,7 +1,7 @@
 #
 # spec file for package nlohmann_json
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@ URL:            https://nlohmann.github.io/json/
 Source:         https://github.com/nlohmann/json/archive/v%{version}.tar.gz#/json-%{version}.tar.gz
 BuildRequires:  cmake >= 3.1
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} < 1500
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 BuildRequires:  gcc7-c++
 %else
 BuildRequires:  gcc-c++
@@ -49,7 +49,7 @@ to make JSON a first-class datatype for C++11
 %setup -q -n json-%{version}
 
 %build
-%if 0%{?suse_version} < 1500
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 export CC="gcc-7"
 export CXX="g++-7"
 %endif
@@ -58,13 +58,17 @@ export CXX="g++-7"
   -DJSON_MultipleHeaders=ON \
   -DNLOHMANN_JSON_CONFIG_INSTALL_DIR="%{_libdir}/cmake/nlohmann_json"
 # require 2GB mem per thread
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 %make_jobs
+%else
+%cmake_build
+%endif
 
 %install
 %cmake_install
 
 %check
-%if 0%{?suse_version} < 1500
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 export CC="gcc-7"
 export CXX="g++-7"
 FLAGS="`echo %{optflags} | sed -e 's/\-fstack-clash-protection//g'`"
