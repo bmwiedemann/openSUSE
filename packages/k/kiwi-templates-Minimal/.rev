@@ -89,4 +89,12 @@
 - Use kernel-default-base instead of kvmsmall</comment>
     <requestid>1137720</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>e462a0fa8acbe99414bbc35f69467d47</srcmd5>
+    <version>84.87.1</version>
+    <time>1705928207</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1140407</requestid>
+  </revision>
 </revisionlist>

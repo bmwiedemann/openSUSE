@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 22 08:01:11 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not use the big kernel-firmware for RPi, but only the required
+  kernel-firmware-brcm - boo#1218307
+
+-------------------------------------------------------------------
 Tue Jan  9 08:38:11 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Drop systemd-sysvinit, the main systemd package itself contains
