@@ -73,4 +73,12 @@
 - Switch to pyproject and pytest macros.</comment>
     <requestid>1100994</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d3c12f9adc476715cc3424ba41e5ca78</srcmd5>
+    <version>4.8.0</version>
+    <time>1706047020</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140820</requestid>
+  </revision>
 </revisionlist>
