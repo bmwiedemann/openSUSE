@@ -2332,4 +2332,11 @@
   To make this clear for the users also the documentation for the</comment>
     <requestid>1140588</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>96b4ba0cc02fbdd340074bd79df99fa5</srcmd5>
+    <version>9.25.19</version>
+    <time>1706001848</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1219074</comment>
+  </revision>
 </revisionlist>
