@@ -25,10 +25,9 @@
 %bcond_with test
 %endif
 
-# Note that jupyter-collaboration v2 is not ready for production yet: It depends on pycrdt which is in incubation phase
-%define python3distversion 1.2.1
+%define python3distversion 2.0.1
 Name:           python-jupyter-collaboration%{psuffix}
-Version:        1.2.1
+Version:        2.0.1
 Release:        0
 Summary:        Jupyter Server Extension Providing Y Documents
 License:        BSD-3-Clause
@@ -46,20 +45,21 @@ BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-collaboration = %{version}
 Requires:       python-jsonschema >= 4.18.0
-Requires:       python-jupyter_events >= 0.7
+Requires:       python-jupyter_events >= 0.7.0
 Requires:       (python-jupyter_server >= 2.0.0 with python-jupyter_server < 3.0.0)
 Requires:       (python-jupyter_server_fileid >= 0.7.0 with python-jupyter_server_fileid < 1)
-Requires:       (python-jupyter_ydoc >= 1.0.1 with  python-jupyter_ydoc < 2.0.0)
-Requires:       (python-ypy-websocket >= 0.12.1 with python-ypy-websocket < 0.13)
+Requires:       (python-jupyter_ydoc >= 2.0.0 with  python-jupyter_ydoc < 3.0.0)
+Requires:       (python-pycrdt-websocket >= 0.12.5 with python-pycrdt-websocket < 0.13.0)
 Provides:       python-jupyter_collaboration = %{version}-%{release}
 Obsoletes:      python-jupyter-server-ydoc < 1
 Obsoletes:      python-jupyter_server_ydoc < 1
 Obsoletes:      python-jupyterlab-rtc < 1
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module jupyter-collaboration = %{version}}
 BuildRequires:  %{python_module jupyter-server-test >= 2}
-BuildRequires:  %{python_module jupyter_collaboration = %{version}}
 BuildRequires:  %{python_module pytest >= 7}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module websockets}
 %endif
 %python_subpackages
