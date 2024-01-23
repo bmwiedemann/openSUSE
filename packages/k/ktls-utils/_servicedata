@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/oracle/ktls-utils.git</param>
+              <param name="changesrevision">198ff00ba28cb97cdab6e49a7422cce331fde198</param></service><service name="tar_scm">
+                <param name="url">https://github.com/openSUSE/ktls-utils.git</param>
+              <param name="changesrevision">01b3018189117e3aa495af2f1eec22fdce6b6be3</param></service></servicedata>
