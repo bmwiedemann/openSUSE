@@ -1,8 +1,8 @@
 #
 # spec file for package python-relatorio
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2016-2022 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2016-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         mod_name relatorio
 Name:           python-relatorio
@@ -28,11 +29,15 @@ Group:          Productivity/Office/Management
 URL:            https://pypi.python.org/pypi/relatorio
 Source:         https://pypi.io/packages/source/r/%{mod_name}/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{python_module Genshi}
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-magic}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+
 Requires:       python-Genshi
 Requires:       python-PyYAML
 Requires:       python-lxml
@@ -52,10 +57,10 @@ as documents (odt, ods, pdf) or images (png, svg).
 %setup -q -n %{mod_name}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/relatorio-render
 
