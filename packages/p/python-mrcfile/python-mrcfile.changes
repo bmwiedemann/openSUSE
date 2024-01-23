@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 22 22:30:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Add new 'indexed_extended_header' attribute to access the
+    indexed part of the extended header if it exists
+  * Add support for numpy 1.24, 1.25 and 1.26 and Python 3.12
+
+-------------------------------------------------------------------
 Tue May  2 11:15:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update description

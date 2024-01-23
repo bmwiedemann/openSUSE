@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1084331</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>214eae6c3b375af235247ac3da54e52b</srcmd5>
+    <version>1.5.0</version>
+    <time>1706046950</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.0:
+  * Add new 'indexed_extended_header' attribute to access the
+    indexed part of the extended header if it exists
+  * Add support for numpy 1.24, 1.25 and 1.26 and Python 3.12</comment>
+    <requestid>1140734</requestid>
+  </revision>
 </revisionlist>
