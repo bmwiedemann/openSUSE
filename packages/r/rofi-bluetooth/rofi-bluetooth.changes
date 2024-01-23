@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Jan 23 16:27:28 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Updated versionformat in _service, to be a more useful version
+  number, per https://build.opensuse.org/request/show/1140739
+
+-------------------------------------------------------------------
+Wed Dec  6 21:15:38 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Initial packaging and commit

@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f559361c842e415e02e8512dafbf1d05</srcmd5>
+    <version>0~git20230203.9d91c04</version>
+    <time>1706046940</time>
+    <user>anag+factory</user>
+    <comment>New package for managing bluetooth connections/devices through
+the rofi interface, for tiling environments like sway, i3,
+hyprland and others.</comment>
+    <requestid>1141023</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="rofi-bluetooth" project="openSUSE:Factory">
+  <title>rofi-bluetooh</title>
+  <description>Bluetooth manager for rofi</description>
+  <devel project="X11:Utilities" package="rofi-bluetooth"/>
+  <url>https://github.com/nickclude/rofi-bluetooth</url>
+</package>
