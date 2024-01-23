@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue Jan 23 03:11:25 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.41:
+  * Introduce observed_estimated_label
+  * Update Argentina holidays
+  * Update Cyprus holidays
+  * Update Malaysia holidays
+  * Update Paraguay holidays
+  * Update Thailand holidays
+  * Add Papua New Guinea holidays
+  * Fix United States and Guam holidays
+  * Extend native holiday categories support
+  * Update NYSE holidays: fix New Year's Day observed
+  * Update Netherlands holidays: fix Liberation Day
+  * Add categories and subdivisions support to special observed holidays
+  * Add categories and subdivisions support to substituted holidays
+  * Update Israel holidays
+  * Update Ukraine holidays
+  * Migrate NYSE holidays to ObservedHolidayBase
+  * Add special holidays per subdivisions support
+  * Add special_holidays_observed support
+  * Add Bahamas holidays
+  * Add Timor-Leste holidays
+  * Add Tonga holidays
+  * Update Portugal holidays: add holiday categories
+  * Add Maldives holidays
+  * Add Tanzania holidays
+  * Implement Tanzania `StaticHolidays` 
+  * Add Laos holidays
+  * Update Belarus holidays: add substituted holidays
+  * Update NYSE holidays: fix Juneteenth National Independence Day start year
+  * Update Spain holidays
+  * Add merge queue support
+  * Update Belgium holidays: add bank holidays
+  * Update Canada holidays
+  * Update Liechtenstein holidays: specify bank holidays
+  * Update United Kingdom holidays
+  * Add subdivision category holidays support
+  * Add Barbados holidays
+  * Add Iran holidays
+  * Add Vanuatu holidays
+  * Update Barbados holidays
+  * Update Singapore holidays: add 2023 Polling Day
+  * Update Slovenia holidays: add 2023 Solidarity Day
+  * Update Vanuatu holidays
+  * Update South Korea holidays
+  * Update Taiwan holidays
+  * Update Uruguay holidays
+  * Add JULIAN_REVISED_CALENDAR calendar
+  * Add Guatemala holidays
+  * Update United Kingdom holidays: update certain holidays start years
+  * Add HolidayBase methods for relative weekdays calculation
+  * Add Brunei Darussalam holidays
+  * Add Burkina Faso holidays
+  * Add Cambodia holidays
+  * Add Chad holidays
+  * Add Columbus day to InternationalHolidays
+  * Allow using ISO 639-2 (three-letter) language codes
+  * Make Tynwald Day movable from 1992 onwards for Isle of Man
+  * Use aware UTC datetimes internally
+  * Introduce Asian holidays pre-calculated data
+  * Add Belize holidays
+  * Add Cameroon holidays
+  * Add El Salvador holidays
+  * Add Gabon holidays
+  * Update Azerbaijan holidays: use custom Islamic calendar
+  * Update Morocco holidays
+  * Update Vatican City holidays
+  * Introduce entity lazy loading
+  * Add Algeria holidays
+  * Update coverage upload process
+  * Add Ecuador holidays
+  * Add polib as a deploy process dependency
+  * Introduce subdivision holidays methods
+  * Refactor .po and .mo files generation
+  * Update Andorra parish holidays
+  * Add Costa Rica holidays
+  * Update Portugal holidays
+  * Fix NYSE New Year's Day observance calculation
+  * Update Ireland holidays: St. Bridget's Day
+  * Update Mexico holidays
+  * Update Saudi Arabia holidays
+  * Add functions for relative weekdays calculation
+  * Use the built-in library for time zone functions
+- Update Source and URL.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri Mar  3 06:56:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.20:

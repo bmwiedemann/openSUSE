@@ -146,4 +146,41 @@
   * PyMeeus for equinox and solstice calculation #828, #863 (Nalguedo)</comment>
     <requestid>1069087</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>55932da155959a68e2218a940b660eac</srcmd5>
+    <version>0.41</version>
+    <time>1706046968</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.41:
+  * Introduce observed_estimated_label
+  * Update Argentina holidays
+  * Update Cyprus holidays
+  * Update Malaysia holidays
+  * Update Paraguay holidays
+  * Update Thailand holidays
+  * Add Papua New Guinea holidays
+  * Fix United States and Guam holidays
+  * Extend native holiday categories support
+  * Update NYSE holidays: fix New Year's Day observed
+  * Update Netherlands holidays: fix Liberation Day
+  * Add categories and subdivisions support to special observed holidays
+  * Add categories and subdivisions support to substituted holidays
+  * Update Israel holidays
+  * Update Ukraine holidays
+  * Migrate NYSE holidays to ObservedHolidayBase
+  * Add special holidays per subdivisions support
+  * Add special_holidays_observed support
+  * Add Bahamas holidays
+  * Add Timor-Leste holidays
+  * Add Tonga holidays
+  * Update Portugal holidays: add holiday categories
+  * Add Maldives holidays
+  * Add Tanzania holidays
+  * Implement Tanzania `StaticHolidays` 
+  * Add Laos holidays
+  * Update Belarus holidays: add substituted holidays
+  * Update NYSE holidays: fix Juneteenth National Independence Day start year
+  * Update Spain holidays</comment>
+    <requestid>1140748</requestid>
+  </revision>
 </revisionlist>
