@@ -2,7 +2,7 @@
 # spec file for package trytond_purchase
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2014-2021 Dr. Axel Braun
+# Copyright (c) 2014-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} >= 1550
+%define pythons python3
+%define mypython python3
+%define mysitelib %python3_sitelib
+%else
+%{?sle15_python_module_pythons}
+%define mypython %pythons
+%define mysitelib %{expand:%%%{mypython}_sitelib}
+%endif
 
 %define majorver 6.0
 Name:           trytond_purchase
@@ -28,9 +37,14 @@ URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
 Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-pip
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wheel
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
+
 Requires:       trytond
 Requires:       trytond_account
 Requires:       trytond_account_invoice
@@ -53,14 +67,14 @@ each one containing a product and a quantity.
 %setup -q
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
-%fdupes -s %{buildroot}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{mysitelib}
 
 %files
 %defattr(-,root,root)
-%{python3_sitelib}/*
+%{mysitelib}/tryton*
 
 %changelog
