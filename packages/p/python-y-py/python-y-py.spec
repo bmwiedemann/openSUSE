@@ -16,16 +16,16 @@
 #
 
 
+%define pyversion 0.7.0a1
 Name:           python-y-py
 # Update through editing _service and running `osc service runall`
-Version:        0.6.2
+Version:        0.7.0~a1
 Release:        0
 Summary:        Python bindings for the Y-CRDT built from yrs (Rust)
 License:        MIT
 URL:            https://github.com/y-crdt/ypy
 Source:         ypy-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module maturin >= 1.2.3 with %python-maturin < 2}
 BuildRequires:  %{python_module pip}
@@ -48,8 +48,6 @@ stable release.
 
 %prep
 %setup -q -n ypy-%{version} -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %pyproject_wheel
@@ -65,6 +63,6 @@ cp %{SOURCE2} .cargo/config
 %doc README.md
 %license LICENSE
 %{python_sitearch}/y_py
-%{python_sitearch}/y_py-%{version}.dist-info
+%{python_sitearch}/y_py-%{pyversion}.dist-info
 
 %changelog
