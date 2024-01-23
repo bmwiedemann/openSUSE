@@ -84,4 +84,20 @@
 </comment>
     <requestid>1067591</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ba790e93e2fb77b1b6afd72ae4db8711</srcmd5>
+    <version>0.7.17</version>
+    <time>1706046964</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.17:
+  * Add Python 3.11 support; drop support for Python &lt; 3.8
+  * Fix #636 nullable IntArray and StrArray
+  * Fix quoting table alias in MySQL DELETE queries
+  * Fix handling of default argument values in hybrid methods
+    and functions
+- drop python-311.patch (upstream)
+
+  * Fixes #628: DBAPIProvider.init() got multiple values for argument 'database'</comment>
+    <requestid>1140744</requestid>
+  </revision>
 </revisionlist>

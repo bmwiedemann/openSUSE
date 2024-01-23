@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 22 23:41:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.17:
+  * Add Python 3.11 support; drop support for Python < 3.8
+  * Fix #636 nullable IntArray and StrArray
+  * Fix quoting table alias in MySQL DELETE queries
+  * Fix handling of default argument values in hybrid methods
+    and functions
+- drop python-311.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Feb 24 11:46:59 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-311.patch to support python 3.11,
@@ -11,7 +22,7 @@ Thu Feb 17 21:08:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * A long-awaited support of Python 3.10.
   * A possibility to create shared-in memory SQLite databases that can be
     accessed from multiple threads
-  * Fixes #628: DBAPIProvider.init() got multiple values for argument 'database' 
+  * Fixes #628: DBAPIProvider.init() got multiple values for argument 'database'
 - remove b6599465524c4b5c9624dfa30dd3c8a5624b515d.patch (upstream)
 
 -------------------------------------------------------------------
