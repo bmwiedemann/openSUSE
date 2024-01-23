@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-HTMLmin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-Flask-HTMLmin
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Flask minifier for HTML responses
 License:        BSD-3-Clause
 URL:            https://github.com/hamidfzm/Flask-HTMLmin
 Source:         https://github.com/hamidfzm/Flask-HTMLmin/archive/v%{version}.tar.gz
-Patch0:         remove-pytest-runner.patch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module cssmin}
 BuildRequires:  %{python_module htmlmin}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask
@@ -46,10 +46,10 @@ Flask-HTMLmin minimizes HTML rendered by Flask.
 %autosetup -n Flask-HTMLmin-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +60,6 @@ Flask-HTMLmin minimizes HTML rendered by Flask.
 %license LICENSE
 %dir %{python_sitelib}/flask_htmlmin
 %{python_sitelib}/flask_htmlmin/*
-%{python_sitelib}/Flask_HTMLmin-%{version}-*.egg-info
+%{python_sitelib}/Flask_HTMLmin-%{version}.dist-info
 
 %changelog

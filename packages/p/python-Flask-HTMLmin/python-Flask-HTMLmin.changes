@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 22 22:32:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.1:
+  * Stop using pytest-runner
+  * Fix documentation error in README
+  * Fix https://github.com/hamidfzm/Flask-HTMLmin/issues/30 by
+    @hamidfzm
+- switch to PEP517 build
+- drop remove-pytest-runner.patch (upstream)
+
+-------------------------------------------------------------------
 Sat Feb 19 19:21:30 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
@@ -15,7 +26,7 @@ Sat Feb 19 19:21:30 UTC 2022 - Arun Persaud <arun@gmx.de>
 Mon Dec 20 05:07:09 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-pytest-runner.patch:
-  * No longer require pytest-runner. 
+  * No longer require pytest-runner.
 
 -------------------------------------------------------------------
 Wed Mar  3 19:28:34 UTC 2021 - Arun Persaud <arun@gmx.de>

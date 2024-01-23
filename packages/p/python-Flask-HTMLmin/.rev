@@ -66,4 +66,20 @@
     <comment></comment>
     <requestid>1030923</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9eca95d026a57e3bbb2dd3ec1ca5eee0</srcmd5>
+    <version>2.2.1</version>
+    <time>1706046957</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.1:
+  * Stop using pytest-runner
+  * Fix documentation error in README
+  * Fix https://github.com/hamidfzm/Flask-HTMLmin/issues/30 by
+    @hamidfzm
+- switch to PEP517 build
+- drop remove-pytest-runner.patch (upstream)
+
+  * No longer require pytest-runner.</comment>
+    <requestid>1140735</requestid>
+  </revision>
 </revisionlist>
