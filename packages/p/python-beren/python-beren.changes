@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 16 09:29:40 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- swith to wheel and enable %{?sle15allpythons}
+
+-------------------------------------------------------------------
 Tue Jan 11 20:52:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python macro dependency 
