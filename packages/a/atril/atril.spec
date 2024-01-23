@@ -28,6 +28,10 @@ License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM atril-Use-a-blank-line-at-most.patch robert.buj@gmail.com -- Needed, so that patch1 applies
+Patch0:         atril-Use-a-blank-line-at-most.patch
+# PATCH-FIX-UPSTREAM atril-comics-Use-libarchive-to-unpack-documents.patch robert.buj@gmail.com -- Fix CVE-2023-51698
+Patch1:         atril-comics-Use-libarchive-to-unpack-documents.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  mate-common >= %{_version}
@@ -169,6 +173,8 @@ This package contains the documentation for atril
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 NOCONFIGURE=1 mate-autogen
