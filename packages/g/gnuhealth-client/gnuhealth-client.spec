@@ -2,7 +2,7 @@
 # spec file for package gnuhealth-client
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2015-2023 Dr. Axel Braun
+# Copyright (c) 2015-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 #
 
 
-%define majorver 4.2
+%define majorver 4.4
 
 %if 0%{?suse_version} >= 1550
 %define pythons python3
@@ -30,7 +30,7 @@
 %endif
 
 Name:           gnuhealth-client
-Version:        %{majorver}.1
+Version:        %{majorver}.0
 Release:        0
 Summary:        The client of the GNU Health Hospital system
 License:        GPL-3.0-only
@@ -62,7 +62,7 @@ Requires:       %{mypython}-GooCalendar >= 0.5
 Requires:       %{mypython}-cairo
 Requires:       %{mypython}-chardet
 Requires:       %{mypython}-dateutil
-Requires:       %{mypython}-gnupg
+Requires:       %{mypython}-python-gnupg
 Requires:       %{mypython}-gobject
 Requires:       %{mypython}-gobject-Gdk
 Requires:       %{mypython}-gobject-cairo
@@ -99,6 +99,9 @@ mv gnuhealth_camera* camera
 
 # Remove pycache
 rm -rf */__pycache__
+
+#shebag ersetzen
+find . -iname "bin/gnuhealth-client" -exec sed -i "s/env python/%{mypython}/" '{}' \;
 
 %build
 %pyproject_wheel
