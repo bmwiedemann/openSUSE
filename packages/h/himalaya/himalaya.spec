@@ -1,7 +1,7 @@
 #
 # spec file for package himalaya
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           himalaya
 Version:        0.9.0~0
 Release:        0
 Summary:        Command-line interface for email management
-License:        MIT
+License:        AGPL-3.0-only AND AGPL-3.0-or-later AND GPL-2.0-or-later AND MIT AND bzip2-1.0.6 AND MPL-2.0 AND CC-BY-3.0 AND BSD-4-Clause AND OpenSSL AND OFL-1.1
 Group:          Productivity/Networking/Email/Clients
 URL:            https://pimalaya.org/himalaya
 Source0:        %{name}-%{version}.tar.xz
