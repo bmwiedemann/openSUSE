@@ -3,9 +3,9 @@
     <param name="url">https://github.com/y-crdt/ypy.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v0.6.2</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">v0.7.0a1</param>
+    <param name="versionrewrite-pattern">v(.*)a(.*)</param>
+    <param name="versionrewrite-replacement">\1~a\2</param>
   </service>
   <service mode="disabled" name="tar" />
   <service mode="disabled" name="recompress">
