@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 17 09:07:03 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update to version 2021.7
+  * Change default value for mem_alloc_type to device
+  * License update
+  * Bug fixes
+  * Currently not provided in SUSE:
+    IMB-MPI1-GPU benchmark: Dynamically loading from LD_LIBRARY_PATH
+    cuda or level zero library.
+
+-------------------------------------------------------------------
 Fri Oct 20 10:20:53 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for openmpi[123] (jsc#PED-7111)
@@ -8,6 +19,11 @@ Fri Oct 20 10:20:53 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 Tue Oct 10 09:39:24 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop %ver macro so that the Version tag can be parsed more easily
+
+-------------------------------------------------------------------
+Tue Jan  3 10:03:45 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc11/12.
 
 -------------------------------------------------------------------
 Thu Sep 15 09:21:10 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
