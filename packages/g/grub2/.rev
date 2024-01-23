@@ -2697,4 +2697,11 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>1140513</requestid>
   </revision>
+  <revision rev="315" vrev="4">
+    <srcmd5>9d46ad1cb8a13b5835a4e86d29b0376c</srcmd5>
+    <version>2.12</version>
+    <time>1705997574</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1219074</comment>
+  </revision>
 </revisionlist>
