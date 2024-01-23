@@ -23,4 +23,19 @@
     <comment></comment>
     <requestid>1131005</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4a7dddbec2310237bae92ccd3c36eee9</srcmd5>
+    <version>1.0.0</version>
+    <time>1706046958</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0:
+  * Drop Python 3.6 support.
+  * Fix compatibility issue with Python 3.10
+  * Fix the log file generation issue to ensure that the log
+    filename is random
+  * Fix compatibility issue with Python 3.12
+  * Support passing `from_email` in tuple format to `send_mail()`
+    function</comment>
+    <requestid>1140737</requestid>
+  </revision>
 </revisionlist>
