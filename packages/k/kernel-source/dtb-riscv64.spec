@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.6
-%define patchversion 6.6.11
+%define srcversion 6.7
+%define patchversion 6.7.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        6.6.11
+Version:        6.7.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g05ae4ad
+Release:        <RELEASE>.g4959dd8
 %else
 Release:        0
 %endif
@@ -97,6 +97,7 @@ Source82:       modflist
 Source83:       kernel-subpackage-build
 Source84:       kernel-subpackage-spec
 Source85:       kernel-default-base.spec.txt
+Source86:       old_changelog.txt
 Source100:      config.tar.bz2
 Source101:      config.addon.tar.bz2
 Source102:      patches.arch.tar.bz2
@@ -166,6 +167,7 @@ NoSource:       82
 NoSource:       83
 NoSource:       84
 NoSource:       85
+NoSource:       86
 NoSource:       100
 NoSource:       101
 NoSource:       102
@@ -221,6 +223,15 @@ Requires(post): coreutils
 %description -n dtb-sifive
 Device Tree files for SiFive based riscv64 systems.
 
+%package -n dtb-sophgo
+Summary:        Sophgo based riscv64 systems
+Group:          System/Boot
+Provides:       multiversion(dtb)
+Requires(post): coreutils
+
+%description -n dtb-sophgo
+Device Tree files for Sophgo based riscv64 systems.
+
 %package -n dtb-starfive
 Summary:        StarFive based riscv64 systems
 Group:          System/Boot
@@ -258,7 +269,7 @@ export DTC_FLAGS="-R 4 -p 0x1000"
 DTC_FLAGS="$DTC_FLAGS -@"
 
 cd $source/arch/riscv/boot/dts
-for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts starfive/*.dts thead/*.dts ; do
+for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts sophgo/*.dts starfive/*.dts thead/*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -270,7 +281,7 @@ done
 %install
 
 cd pp
-for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts starfive/*.dts thead/*.dts ; do
+for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts sophgo/*.dts starfive/*.dts thead/*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -313,6 +324,13 @@ cd /boot
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
 %post -n dtb-sifive
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%post -n dtb-sophgo
 cd /boot
 # If /boot/dtb is a symlink, remove it, so that we can replace it.
 [ -d dtb ] && [ -L dtb ] && rm -f dtb
@@ -376,6 +394,17 @@ cd /boot
 %dir %{dtbdir}
 %dir %{dtbdir}/sifive
 %{dtbdir}/sifive/*.dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-sophgo -f dtb-sophgo.list
+%else
+%files -n dtb-sophgo
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/sophgo
+%{dtbdir}/sophgo/*.dtb
 
 %ifarch %arm aarch64 riscv64
 %files -n dtb-starfive -f dtb-starfive.list
