@@ -145,4 +145,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1125409</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>efc36922c85b265e6388572348812b32</srcmd5>
+    <version>6.0.5</version>
+    <time>1706047010</time>
+    <user>anag+factory</user>
+    <comment>- Switch to wheel and %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1140833</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,8 @@
 #
 # spec file for package trytond_purchase_request
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2017-2021 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2017-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,16 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%define pythons python3
+%define mypython python3
+%define mysitelib %python3_sitelib
+%else
+%{?sle15_python_module_pythons}
+%define mypython %pythons
+%define mysitelib %{expand:%%%{mypython}_sitelib}
+%endif
+
 %define majorver 6.0
 Name:           trytond_purchase_request
 Version:        %{majorver}.5
@@ -30,9 +40,13 @@ Summary:        Tryton module for purchase requests
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 
+BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-pip
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wheel
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
 
 Requires:       trytond
 Requires:       trytond_product
@@ -47,14 +61,14 @@ The purchase_request module of the Tryton application platform allows you to cre
 %setup -q
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
-%fdupes -s %{buildroot}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{mysitelib}
 
 %files
 %defattr(-,root,root)
-%{python3_sitelib}/*
+%{mysitelib}/tryton*
 
 %changelog
