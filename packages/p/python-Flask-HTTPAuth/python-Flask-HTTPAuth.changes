@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 22 12:23:39 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- enable %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Jul 27 07:15:25 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.8.0:
