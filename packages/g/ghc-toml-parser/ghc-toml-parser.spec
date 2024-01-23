@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.1.2
+Version:        1.3.2.0
 Release:        0
 Summary:        TOML 1.0.0 parser
 License:        ISC
