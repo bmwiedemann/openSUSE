@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jan 22 23:44:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.1:
+  * Fix issue with lambda based updates
+  * Remove unused code from the test suite
+  * De-duplicate the parser test cases
+  * Remove a test that merely checks exception inheritance
+  * Add pytest-randomly to shake out auto_id side effects
+  * Include the test suite in coverage reports
+  * Remove tests that don't affect coverage and contribute
+    nothing
+  * Reformat `tests/test_create.py`
+  * Remove `test_doctests`, which is a no-op
+  * Demonstrate that there are no doctests
+  * Remove the `coveralls` dependency
+  * Migrate `tests/bin/test_jsonpath.py` to use pytest
+  * remove Python2 crumbs
+  * Add CodeQL analysis
+  * Remove the `oslotest` dependency
+  * Fix running CI against incoming PRs
+  * Support, and test against, Python 3.12
+  * Update the currently-tested CPython versions in the README
+  * Remove an unused Travis CI config file
+  * Add a Dependabot config to keep GitHub action versions
+    updated
+  * add a test for the case when root element is a list
+  * Fix issue with assignment in case root element is a list.
+  * Fix typo in README
+  * Fix test commands in Makefile
+  * Fix .coveragerc path
+  * Simplify clean in Makefile
+  * Refactor unit tests for better errors
+  * test case for existing auto id
+  * Add more examples to README (thanks @baynes)
+  * Don't fail when regex match is attempted on non-strings
+  * Add additional tests
+  * Add `keys` keyword
+
+-------------------------------------------------------------------
 Fri Sep 15 08:51:59 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.6.0

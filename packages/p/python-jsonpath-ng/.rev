@@ -23,4 +23,41 @@
     <comment></comment>
     <requestid>1112029</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>301f13e6f0e1ac86cf6afae5ba98c4fd</srcmd5>
+    <version>1.6.1</version>
+    <time>1706046966</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.1:
+  * Fix issue with lambda based updates
+  * Remove unused code from the test suite
+  * De-duplicate the parser test cases
+  * Remove a test that merely checks exception inheritance
+  * Add pytest-randomly to shake out auto_id side effects
+  * Include the test suite in coverage reports
+  * Remove tests that don't affect coverage and contribute
+    nothing
+  * Reformat `tests/test_create.py`
+  * Remove `test_doctests`, which is a no-op
+  * Demonstrate that there are no doctests
+  * Remove the `coveralls` dependency
+  * Migrate `tests/bin/test_jsonpath.py` to use pytest
+  * remove Python2 crumbs
+  * Add CodeQL analysis
+  * Remove the `oslotest` dependency
+  * Fix running CI against incoming PRs
+  * Support, and test against, Python 3.12
+  * Update the currently-tested CPython versions in the README
+  * Remove an unused Travis CI config file
+  * Add a Dependabot config to keep GitHub action versions
+    updated
+  * add a test for the case when root element is a list
+  * Fix issue with assignment in case root element is a list.
+  * Fix typo in README
+  * Fix test commands in Makefile
+  * Fix .coveragerc path
+  * Simplify clean in Makefile
+  * Refactor unit tests for better errors</comment>
+    <requestid>1140745</requestid>
+  </revision>
 </revisionlist>
