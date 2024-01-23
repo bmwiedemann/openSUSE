@@ -25,4 +25,13 @@
   * Fix _is_same_module() on PyPy</comment>
     <requestid>1140198</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d3c0ee62221becfbdaf3ee627bad128</srcmd5>
+    <version>7.6.0</version>
+    <time>1706046948</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.6.0:
+  * Fixing bytecode handling in 3.12</comment>
+    <requestid>1140733</requestid>
+  </revision>
 </revisionlist>
