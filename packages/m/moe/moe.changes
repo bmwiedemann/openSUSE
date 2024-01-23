@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 22 22:45:31 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU moe 1.14:
+  * Multiple updates to text UI display and behavior
+  * no longer processes backslash escapes in file names
+  * Search supports '(D)elete' and '\=<ch>' (equivalence class)
+  * Executable files (scripts) are now loaded with 'auto indent' on
+  * commend 'b' scrolls backwards, like less
+  * scroll keys work without Alt key in read-only buffers
+  * Recursive load now ignores file names with extensions ".avi",
+    ".docx", ".mp3", ".mp4", ".mpg", and man pages ".[0-9]".
+  * The UTF-8 decoder now converts some box drawing characters.
+
+-------------------------------------------------------------------
 Tue Feb 28 21:54:08 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU moe 1.13:
