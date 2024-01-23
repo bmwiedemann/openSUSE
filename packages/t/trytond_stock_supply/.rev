@@ -178,4 +178,12 @@
     <comment></comment>
     <requestid>1118946</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>4ecdf9f2b4eb2f64c690b2629d1cf437</srcmd5>
+    <version>6.0.6</version>
+    <time>1706047009</time>
+    <user>anag+factory</user>
+    <comment>python 311 (forwarded request 1140811 from DocB)</comment>
+    <requestid>1140829</requestid>
+  </revision>
 </revisionlist>
