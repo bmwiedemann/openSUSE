@@ -78,4 +78,34 @@
     <comment></comment>
     <requestid>794050</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4bb793fb3e60dbbf2491cf40004e5bd8</srcmd5>
+    <version>3.2.0</version>
+    <time>1706046962</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.0:
+  * Provide a fix for collapsing/expanding future (not-yet-
+    created) nodes
+      This prevents a TypeError under various circumstances,
+      which made GTG's TreeView display inconsistent
+      search/filtering results.
+  * Clarify, in the README file, that liblarch is LGPL v3 &quot;or
+    later&quot;
+  * Fix Pytest deprecation warnings
+  * Provide an optimized way to refresh filtered items
+    This provides better performance for GTG in particular
+  * Replace calls to the pep8 executable by pycodestyle
+  * Disable building with Python 2
+  * Fix drag &amp; drop from one GTK TreeView widget to another
+  * Handle cases where the tree should and shouldn't be re-
+    filtered
+  * Improved PyGI (GObject introspection) compatibility
+  * Improved code quality and PEP 8 compliance
+- drop libarch-py2compat.patch (obsolete as upstream is &gt;= 3.5)
+- reenable tests
+
+- Remove nose dep as tests are not executed
+- Initial package, version 0.1.0.</comment>
+    <requestid>1140743</requestid>
+  </revision>
 </revisionlist>
