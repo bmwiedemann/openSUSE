@@ -174,4 +174,12 @@
     <comment>bugfix release</comment>
     <requestid>1127522</requestid>
   </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>4e3310055e174fb475c3f3768e0591dc</srcmd5>
+    <version>6.0.5</version>
+    <time>1706047000</time>
+    <user>anag+factory</user>
+    <comment>python 311 (forwarded request 1140805 from DocB)</comment>
+    <requestid>1140824</requestid>
+  </revision>
 </revisionlist>
