@@ -16,9 +16,8 @@
 #
 
 
-# Note: Don't update to v2 before jupyter-collaboration v2 is also production ready
 Name:           python-jupyter-ydoc
-Version:        1.1.1
+Version:        2.0.1
 Release:        0
 Summary:        Document structures for collaborative editing using Ypy
 License:        BSD-3-Clause
@@ -37,16 +36,16 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-importlib-metadata >= 3.6 if python-base < 3.10)
-Requires:       (python-y-py >= 0.6.0 with python-y-py < 0.7.0)
+Requires:       (python-pycrdt >= 0.8.1 with python-pycrdt < 0.9)
 Provides:       python-jupyter_ydoc = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test
 BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10}
+BuildRequires:  %{python_module pycrdt >= 0.8.1 with %python-pycrdt < 0.9}
+BuildRequires:  %{python_module pycrdt-websocket >= 0.12.6 with %python-pycrdt-websocket < 0.13}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module websockets >= 10.0}
-BuildRequires:  %{python_module y-py >= 0.6.0 with %python-y-py < 0.7.0}
-#BuildRequires:  %%{python_module ypy-websocket >= 0.8.3 with %%python-ypy-websocket < 0.9}
 BuildRequires:  nodejs
 BuildRequires:  procps
 BuildRequires:  yarn
@@ -70,10 +69,9 @@ Built-in documents include:
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# Disable tests: Requires old ypy-websocket: https://github.com/jupyter-server/jupyter_ydoc/issues/211
-# %%check
+%check
 # https://github.com/jupyter-server/jupyter_ydoc/issues/168
-# %%pytest -v && pkill -f yjs_client_0.js -e
+%pytest -v && pkill -f yjs_client_0.js -e
 
 %files %{python_files}
 %{python_sitelib}/jupyter_ydoc

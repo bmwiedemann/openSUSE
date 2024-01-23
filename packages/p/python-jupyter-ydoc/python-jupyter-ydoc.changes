@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 22 18:57:38 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.1
+  * Update pycrdt v0.8 #208 (@davidbrochart)
+- Release 2.0.0
+  * Use pycrdt instead of y-py #194 (@davidbrochart)
+- Ignore that pycrdt is still in incubation phase
+  gh#jupyter-server/jupyter_ydoc#211
+
+-------------------------------------------------------------------
 Sun Jan 21 13:17:27 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Disable tests for jupyter-collaboration and ypy-websocket
