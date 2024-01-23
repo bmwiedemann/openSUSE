@@ -1,7 +1,7 @@
 #
 # spec file for package etcd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           etcd
-Version:        3.5.9
+Version:        3.5.11
 Release:        0
 Summary:        Highly-available key value store for configuration and service discovery
 License:        Apache-2.0
@@ -35,7 +35,7 @@ Source12:       %{name}.service
 Source15:       README.security
 Source16:       system-user-etcd.conf
 Source17:       vendor-update.sh
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.20
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
