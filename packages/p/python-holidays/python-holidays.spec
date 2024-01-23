@@ -1,7 +1,7 @@
 #
 # spec file for package python-holidays
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,24 @@
 
 
 Name:           python-holidays
-Version:        0.20
+Version:        0.41
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
-URL:            https://github.com/dr-prodigy/python-holidays
-Source:         https://github.com/dr-prodigy/python-holidays/archive/refs/tags/v.%{version}.tar.gz#/holidays-%{version}.tar.gz
+URL:            https://github.com/vacanza/python-holidays
+Source:         https://github.com/vacanza/python-holidays/archive/refs/tags/v%{version}.tar.gz#/holidays-%{version}.tar.gz
 BuildRequires:  %{python_module convertdate}
 BuildRequires:  %{python_module hijri-converter >= 2.2}
 BuildRequires:  %{python_module korean-lunar-calendar}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module polib}
 BuildRequires:  %{python_module pytest}
-#BuildRequires:  %%{python_module lag_baomer}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-convertdate
-Requires:       python-hijri-converter >= 2.2
-Requires:       python-korean-lunar-calendar
-#Requires:       python-lag_baomer
 Requires:       python-python-dateutil
 BuildArch:      noarch
 %python_subpackages
@@ -46,21 +44,23 @@ A Python library for generating country, province and state specific sets of hol
 It makes determining whether a specific date is a holiday possible.
 
 %prep
-%setup -q -n python-holidays-v.%{version}
+%setup -q -n python-holidays-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+scripts/l10n/generate_mo_files.py
 %pytest
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGES README.rst
-%{python_sitelib}/*
+%{python_sitelib}/holidays
+%{python_sitelib}/holidays-%{version}.dist-info
 
 %changelog
