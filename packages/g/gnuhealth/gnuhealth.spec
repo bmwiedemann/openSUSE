@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2014-2023 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2014-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,24 @@
 
 
 %bcond_with tests 1
-
 %define         skip_python2 1
+
+%if 0%{?suse_version} >= 1550
+%define pythons python3
+%define mypython python3
+%define mysitelib %python3_sitelib
+%else
+%{?sle15_python_module_pythons}
+%define mypython %pythons
+%define mysitelib %{expand:%%%{mypython}_sitelib}
+%endif
+
 %define         t_version %(rpm -q --qf '%%{VERSION}' trytond)
-%define         majorver 4.2
+%define         majorver 4.4
 
 Name:           gnuhealth
 
-Version:        %{majorver}.3
+Version:        %{majorver}.0
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System
@@ -43,13 +53,16 @@ Source6:        gnuhealth
 Source7:        gnuhealth-rpmlintrc
 Source8:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz.sig
 Source9:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
-Patch0:         shebang.diff
 
+## BuildRequires:  %{python_module pytest}
+BuildRequires:  %{mypython}-pip
+BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wheel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-pytest
-BuildRequires:  python3-setuptools
+
 # For the tests:
 BuildRequires:  trytond
 BuildRequires:  trytond_company
@@ -59,20 +72,20 @@ BuildRequires:  trytond_product
 
 # new fonts for the forms:
 Requires:       gnu-free-fonts
+Requires:       %{mypython}-Pillow
+Requires:       %{mypython}-PyWebDAV3-GNUHealth
+Requires:       %{mypython}-caldav
+Requires:       %{mypython}-hl7apy
+Requires:       %{mypython}-ldap3
+Requires:       %{mypython}-matplotlib
+Requires:       %{mypython}-passlib
+Requires:       %{mypython}-python-barcode
+Requires:       %{mypython}-qrcode
+Requires:       %{mypython}-simpleeval
+Requires:       %{mypython}-six
+Requires:       %{mypython}-vobject
 Requires:       bsdtar
 Requires:       proteus
-Requires:       python3-Pillow
-Requires:       python3-PyWebDAV3-GNUHealth
-Requires:       python3-caldav
-Requires:       python3-hl7apy
-Requires:       python3-ldap3
-Requires:       python3-matplotlib
-Requires:       python3-passlib
-Requires:       python3-pyBarcode
-Requires:       python3-qrcode
-Requires:       python3-simpleeval
-Requires:       python3-six
-Requires:       python3-vobject
 Requires:       trytond
 Requires:       trytond_account
 Requires:       trytond_account_invoice
@@ -112,30 +125,34 @@ See https://en.opensuse.org/GNUHealth_on_openSUSE for instructions
 %package -n %{name}-orthanc
 Summary:        Integration module for Orthanc
 Group:          Productivity/Office/Management
+Requires:       %{mypython}-beren
+Requires:       %{mypython}-pendulum
+Requires:       %{mypython}-pydicom
 Requires:       gnuhealth
-Requires:       python3-beren
-Requires:       python3-pendulum
 
 %description -n %{name}-orthanc
 This package provides the interface to Orthanc
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
+## %patch0 -p1
 cp %{S:1} .
 cp %{S:2} .
+
+#shebag ersetzen
+find . -iname "*.py" -exec sed -i "s/env python/%{mypython}/" '{}' \;
 
 %build
 for i in h*; do
   pushd $i
-  %python3_build
+  %pyproject_wheel
   popd
 done
 
 %install
 for i in h*; do
   pushd $i
-  %python3_install
+  %pyproject_install
   popd
 done
 
@@ -162,11 +179,11 @@ mkdir -p -m 755 %{buildroot}%{_docdir}/%{name}/examples/
 mv doc/* %{buildroot}%{_docdir}/%{name}/examples/.
 rmdir doc
 
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{mysitelib}
 
 %if %{with tests}
 %check
-cd %{buildroot}%{python3_sitelib}/trytond/modules
+cd %{buildroot}%{mysitelib}/trytond/modules
 for i in h*; do
   pushd $i
     %pytest -rs tests
@@ -208,8 +225,8 @@ EOF
 %service_del_postun gnuhealth-webdav@.service
 
 %files -n %{name}-orthanc
-%{python3_sitelib}/%{name}_orthanc*
-%{python3_sitelib}/trytond/modules/health_orthanc*
+%{mysitelib}/%{name}_orthanc*
+%{mysitelib}/trytond/modules/health_orthanc*
 
 %files
 %defattr(-,root,root)
@@ -224,8 +241,9 @@ EOF
 %{_docdir}/%{name}/examples*
 %dir %{_sysconfdir}/tryton
 %license COPYING LICENSES/*
-%exclude %{python3_sitelib}/%{name}_orthanc*
-%exclude %{python3_sitelib}/trytond/modules/health_orthanc*
-%{python3_sitelib}/*
+%exclude %{mysitelib}/%{name}_orthanc*
+%exclude %{mysitelib}/trytond/modules/health_orthanc*
+%{mysitelib}/trytond*
+%{mysitelib}/gnuhealth*
 
 %changelog
