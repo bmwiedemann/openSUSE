@@ -324,4 +324,12 @@
     <comment>bugfix release</comment>
     <requestid>1127520</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>4cd630fa433f0338389a9a82de3a0601</srcmd5>
+    <version>6.0.23</version>
+    <time>1706047006</time>
+    <user>anag+factory</user>
+    <comment>python 311 (forwarded request 1140809 from DocB)</comment>
+    <requestid>1140827</requestid>
+  </revision>
 </revisionlist>
