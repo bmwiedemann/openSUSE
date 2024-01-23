@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 22 13:48:03 UTC 2024 - Gayane Osipyan <Gayane.Osipyan@suse.com>
+
+- update to version 0.2.8
+  * Add ---devices option
+  * Fix generating policy for Crio mounts
+  * Improve code readability based on lint and black findings
+
+-------------------------------------------------------------------
 Thu May  4 15:38:26 UTC 2023 - Gayane Osipyan <Gayane.Osipyan@suse.com>
 
 - update to version 0.2.7
