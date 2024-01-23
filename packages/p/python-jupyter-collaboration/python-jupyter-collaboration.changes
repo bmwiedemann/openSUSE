@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 22 19:00:29 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.1
+  * Revert PR #170 #228 (@davidbrochart)
+- Update to 2.0.0
+  * Adds a flag to disable RTC #177 (@hbcarlos)
+  * Improves chat #173 (@hbcarlos)
+  * Adds restore and ovewrite messages #170 (@hbcarlos)
+  * Improves error handling when the file does not exist #175
+    (@hbcarlos)
+  * Use fileId instead of path in the store #174 (@hbcarlos)
+  * Adds restore and ovewrite messages #170 (@hbcarlos)
+- Ignore that pycrdt is still in incubation phase
+  gh#jupyter-server/jupyter_ydoc#211
+
+-------------------------------------------------------------------
 Sun Jan 21 12:35:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.2.1
