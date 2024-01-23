@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Jan 22 18:40:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.6
+  * Resolve "Text data type does not delete as expected" by @jbdyn
+    in #68
+- Releases in Between:
+  * Bump yrs, pyo3, maturin
+- Release 0.8.3
+  * Support nested ReadTransaction by @davidbrochart in #59
+  * Fix Map.pop default value handling by @davidbrochart in #60
+  * Add contains method by @davidbrochart in #61
+  * Support bytes by @davidbrochart in #62
+  * Revert PR #58 by @davidbrochart in #63
+
+-------------------------------------------------------------------
+Thu Dec 28 17:00:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v0.8.2
+- Required by jupyter-collaboration 2 (still incubating phase)
