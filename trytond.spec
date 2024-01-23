@@ -1,8 +1,8 @@
 #
 # spec file for package trytond
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2015-2023 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2015-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,16 @@
 
 %define majorver 6.0
 %define base_name tryton
+%if 0%{?suse_version} >= 1550
+%define pythons python3
+%define mypython python3
+%define mysitelib %python3_sitelib
+%else
+%{?sle15_python_module_pythons}
+%define mypython %pythons
+%define mysitelib %{expand:%%%{mypython}_sitelib}
+%endif
+
 Name:           trytond
 Version:        %{majorver}.39
 Release:        0
@@ -35,37 +45,42 @@ Source6:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360
 Source7:        openSUSE-trytond-setup
 Source20:       %{name}.service
 Patch0:         Update_changed_fields_6.0.diff
+BuildRequires:  %{mypython}-Werkzeug
+BuildRequires:  %{mypython}-bcrypt
+BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-lxml >= 2.0
+BuildRequires:  %{mypython}-psycopg2 >= 2.7.0
+BuildRequires:  %{mypython}-pydot
+BuildRequires:  %{mypython}-python-sql >= 0.5
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wrapt
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Werkzeug
-BuildRequires:  python3-bcrypt
-BuildRequires:  python3-lxml >= 2.0
-BuildRequires:  python3-psycopg2 >= 2.5.4
-BuildRequires:  python3-pydot3
-BuildRequires:  python3-python-sql >= 0.5
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wrapt
+# Wheel
+BuildRequires:  %{mypython}-pip
+BuildRequires:  %{mypython}-wheel
 
+Requires:       %{mypython}-Genshi
+Requires:       %{mypython}-Pillow
+Requires:       %{mypython}-Werkzeug
+Requires:       %{mypython}-bcrypt
+Requires:       %{mypython}-dateutil
+Requires:       %{mypython}-defusedxml
+Requires:       %{mypython}-gevent
+Requires:       %{mypython}-lxml
+Requires:       %{mypython}-passlib >= 1.7.0
+Requires:       %{mypython}-polib
+Requires:       %{mypython}-psycopg2 >= 2.7.0
+Requires:       %{mypython}-pydot
+Requires:       %{mypython}-python-sql >= 0.5
+Requires:       %{mypython}-relatorio >= 0.7.0
+Requires:       %{mypython}-weasyprint
+Requires:       %{mypython}-wrapt
 Requires:       graphviz
 Requires:       html2text
 Requires:       libreoffice-pyuno
-Requires:       python3-Genshi
 Requires:       python3-Levenshtein
-Requires:       python3-Pillow
-Requires:       python3-Werkzeug
-Requires:       python3-bcrypt
-Requires:       python3-dateutil
-Requires:       python3-defusedxml
-Requires:       python3-gevent
-Requires:       python3-lxml
-Requires:       python3-passlib >= 1.7.0
-Requires:       python3-polib
-Requires:       python3-psycopg2 >= 2.5.4
-Requires:       python3-pydot
-Requires:       python3-python-sql >= 0.5
-Requires:       python3-relatorio >= 0.7.0
-Requires:       python3-weasyprint
-Requires:       python3-wrapt
 Requires:       unoconv
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
@@ -88,11 +103,14 @@ cp %{SOURCE1} .
 
 %patch0 -p1
 
+#shebag ersetzen
+find . -iname "bin/trytond*" -exec sed -i "s/python3 /%{mypython} /" '{}' \;
+
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
+%pyproject_install
 
 # only for systemd
 mkdir -p %{buildroot}%{_sysconfdir}/%{base_name}
@@ -127,7 +145,7 @@ getent passwd tryton > /dev/null || %{_sbindir}/useradd -r -g tryton \
 %files
 %license LICENSE
 %doc README.rst tryton-server.README.openSUSE doc/*
-%{python3_sitelib}/*
+%{mysitelib}/tryton*
 %dir %{_sysconfdir}/%{base_name}
 %{_bindir}/openSUSE-trytond-setup
 %{_bindir}/%{name}*

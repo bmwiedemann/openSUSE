@@ -745,4 +745,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1135782</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>911a654d41fdc0317ca6e6642ec7afa0</srcmd5>
+    <version>6.0.39</version>
+    <time>1706047013</time>
+    <user>anag+factory</user>
+    <comment>- Switch to wheel and %{?sle15_python_module_pythons}
+  Updated dependencies
+</comment>
+    <requestid>1140893</requestid>
+  </revision>
 </revisionlist>
