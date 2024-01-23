@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydicom-data
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15allpythons}
 Name:           python-pydicom-data
 Version:        1.0.0
 Release:        0
@@ -50,7 +50,7 @@ Test files used by pydicom and other packages by the same organisation.
 %pytest -rs
 
 %files %{python_files}
-%{python_sitelib}/data_store/
-%{python_sitelib}/pydicom[-_]data*/
+%{python_sitelib}/data_store
+%{python_sitelib}/pydicom_data-%{version}.dist-info
 
 %changelog
