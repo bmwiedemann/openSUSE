@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpath-ng
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           python-jsonpath-ng
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        JSONPath for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/h2non/jsonpath-ng
 Source:         https://github.com/h2non/jsonpath-ng/archive/refs/tags/v%{version}.tar.gz#/jsonpath-ng-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator
 Requires:       python-ply
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -52,10 +53,10 @@ sed -i '1{/^#!/d}' jsonpath_ng/bin/jsonpath.py
 cp tests/test_jsonpath_rw_ext.py /tmp
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jsonpath_ng
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -78,6 +79,7 @@ $python -m pytest
 %license LICENSE
 %doc README.rst History.md
 %python_alternative %{_bindir}/jsonpath_ng
-%{python_sitelib}/jsonpath_ng*
+%{python_sitelib}/jsonpath_ng
+%{python_sitelib}/jsonpath_ng-%{version}.dist-info
 
 %changelog
