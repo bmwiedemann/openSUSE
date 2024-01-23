@@ -38,4 +38,12 @@
   + Fix warning on startup from the Qt desktop filename</comment>
     <requestid>1117907</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>06c211b4c05c57b1e071a0af21b6e4f6</srcmd5>
+    <version>1.0.0</version>
+    <time>1706047032</time>
+    <user>anag+factory</user>
+    <comment>- Use GCC 11 for SLE/Leap</comment>
+    <requestid>1140879</requestid>
+  </revision>
 </revisionlist>

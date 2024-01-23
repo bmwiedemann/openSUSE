@@ -28,7 +28,11 @@ URL:            https://gitlab.freedesktop.org/serebit/waycheck
 Source0:        %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz
 
 BuildRequires:  meson
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  pkgconfig(Qt6Core) >= %{qt6_minver}
 BuildRequires:  pkgconfig(Qt6Gui) >= %{qt6_minver}
 BuildRequires:  pkgconfig(Qt6WaylandClient) >= %{qt6_minver}
@@ -45,6 +49,10 @@ Requires:       hicolor-icon-theme
 
 
 %build
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+export CC=gcc-11
+export CXX=g++-11
+%endif
 %meson
 %meson_build
 
