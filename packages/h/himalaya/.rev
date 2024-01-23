@@ -117,4 +117,12 @@
   * Moved email-reading-verify-cmd to pgp.verify-cmd.</comment>
     <requestid>1108880</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>08eac904d5da46f4bfa8dbf82f995d29</srcmd5>
+    <version>0.9.0~0</version>
+    <time>1706046970</time>
+    <user>anag+factory</user>
+    <comment>- Correction of license based on legaldb review</comment>
+    <requestid>1140755</requestid>
+  </revision>
 </revisionlist>
