@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 20 13:18:29 UTC 2024 - Enno Gotthold <egotthold@suse.com>
+
+- Update to 2.1.7
+- Update to 2.1.5
+  * feat: add support for UNSIGNED numeric data type conversion
+  * fix: fix invalid column_type error message
+
+-------------------------------------------------------------------
 Sun Oct 22 14:13:29 UTC 2023 - Enno Gotthold <egotthold@suse.com>
 
 - Update to 2.1.0
