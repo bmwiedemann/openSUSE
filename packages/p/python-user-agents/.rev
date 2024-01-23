@@ -52,4 +52,12 @@
 - Switch to pyproject and more recent testing macros.</comment>
     <requestid>1098455</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>821a4939c17be089602198697218d3e3</srcmd5>
+    <version>2.2.0</version>
+    <time>1706046980</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140776</requestid>
+  </revision>
 </revisionlist>
