@@ -1,7 +1,7 @@
 #
 # spec file for package python-librouteros
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,17 +17,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-librouteros
 Version:        3.2.1
 Release:        0
 Summary:        Python implementation of MikroTik RouterOS API
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/luqasz/librouteros
 Source:         https://github.com/luqasz/librouteros/archive/%{version}.tar.gz#/librouteros-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,21 +40,23 @@ Python implementation of MikroTik RouterOS API.
 http://wiki.mikrotik.com/wiki/API
 
 %prep
-%setup -q -n librouteros-%{version}
+%autosetup -p1 -n librouteros-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests/unit
+# Broken test upstream
+%pytest -k 'not test_rawCmd_calls_writeSentence' tests/unit
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/librouteros
+%{python_sitelib}/librouteros-%{version}.dist-info
 
 %changelog

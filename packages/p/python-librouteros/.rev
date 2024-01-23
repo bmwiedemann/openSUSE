@@ -71,4 +71,14 @@
     <comment></comment>
     <requestid>1007072</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2706fa7920be5a7fc6cd5ade73369461</srcmd5>
+    <version>3.2.1</version>
+    <time>1706046974</time>
+    <user>anag+factory</user>
+    <comment>- Skip a broken test.
+- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1140763</requestid>
+  </revision>
 </revisionlist>

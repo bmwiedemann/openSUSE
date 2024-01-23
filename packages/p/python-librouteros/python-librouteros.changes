@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 23 06:26:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a broken test.
+- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Thu Sep 29 14:49:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 3.2.1
