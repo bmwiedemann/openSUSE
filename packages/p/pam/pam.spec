@@ -71,7 +71,7 @@
 #
 Name:           pam%{name_suffix}
 #
-Version:        1.5.3
+Version:        1.6.0
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
@@ -96,14 +96,14 @@ Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
-# https://github.com/linux-pam/linux-pam/pull/594
-Patch2:         pam_access-doc-IPv6-link-local.patch
-# https://github.com/linux-pam/linux-pam/pull/596
-Patch3:         pam_access-hostname-debug.patch
-# https://github.com/linux-pam/linux-pam/pull/581
-Patch4:         pam_shells-fix-econf-memory-leak.patch
-# https://github.com/linux-pam/linux-pam/pull/574
-Patch5:         disable-examples.patch
+# https://github.com/linux-pam/linux-pam/pull/739
+Patch2:         pam_env-fix_vendordir.patch
+# https://github.com/linux-pam/linux-pam/pull/740
+Patch3:		pam_env-fix-enable-vendordir-fallback.patch
+# https://github.com/linux-pam/linux-pam/pull/741
+Patch4:         pam_env-remove-escaped-newlines.patch
+# https://github.com/linux-pam/linux-pam/pull/744
+Patch5:         pam_unix-fix-password-aging-disabled.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex
@@ -151,7 +151,9 @@ username/password pair against values stored in a Berkeley DB database.
 %package -n pam-extra
 Summary:        PAM module with extended dependencies
 Group:          System/Libraries
-BuildRequires:  pkgconfig(systemd)
+#BuildRequires:  pkgconfig(systemd) 
+# The systemd-mini package does not pass configure checks
+BuildRequires:  systemd-devel >= 254
 BuildRequires:  pam-devel
 Provides:	pam:%{_sbindir}/pam_timestamp_check
 
@@ -237,7 +239,9 @@ autoreconf
 	--enable-isadir=../..%{_pam_moduledir} \
 	--enable-securedir=%{_pam_moduledir} \
 	--enable-vendordir=%{_prefix}/etc \
+%if "%{flavor}" == "full"
 	--enable-logind \
+%endif
         --disable-examples \
 	--disable-nis \
 %if %{with debug}
@@ -290,9 +294,13 @@ mkdir -p -m 755 %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_distconfdir}/pam.d
 
 %make_install
-/sbin/ldconfig -n %{buildroot}%{libdir}
+# XXX remove for now until we have a security review of the new module
+rm -f %{buildroot}%{_libdir}/security/pam_canonicalize_user.so
+/sbin/ldconfig -n %{buildroot}%{_libdir}
 # Install documentation
 %make_install -C doc
+# XXX remove for now until we have a security review, see above
+rm -f %{buildroot}%{_mandir}/man8/pam_canonicalize_user.8*
 # install /etc/security/namespace.d used by pam_namespace.so for namespace.conf iscript
 install -d %{buildroot}%{_pam_secconfdir}/namespace.d
 # install other.pamd and common-*.pamd
@@ -343,7 +351,7 @@ echo '.so man8/pam_motd.8' > %{buildroot}%{_mandir}/man5/motd.5
 
 %if !%{build_main}
 rm -rf %{buildroot}{%{_sysconfdir},%{_distconfdir},%{_sbindir}/{f*,m*,pam_n*,pw*,u*},%{_pam_secconfdir},%{_pam_confdir},%{_datadir}/locale}
-rm -rf %{buildroot}{%{_includedir},%{_libdir}/{libpam*,pkgconfig},%{_pam_vendordir},%{_rpmmacrodir},%{_tmpfilesdir}}
+rm -rf %{buildroot}{%{_includedir},%{_libdir}/{libpam*,pkgconfig},%{_pam_vendordir},%{_rpmmacrodir},%{_tmpfilesdir},%{_unitdir}/pam_namespace.service}
 rm -rf %{buildroot}%{_pam_moduledir}/pam_{a,b,c,d,e,f,g,h,j,k,l,m,n,o,p,q,r,s,v,w,x,y,z,time.,tt,um,un,usertype}*
 %else
 # Delete files for extra package

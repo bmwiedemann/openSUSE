@@ -12,7 +12,7 @@ grep -rh LOGIN_DEFS . |
 	sed -n 's/CRYPTO_KEY/\"HMAC_CRYPTO_ALGO\"/g;s/^.*search_key *([A-Za-z_]*, *[A-Z_]*LOGIN_DEFS, *"\([A-Z0-9_]*\)").*$/\1/p' |
 	LC_ALL=C sort -u >pam-login_defs-vars.lst
 
-if test $(sha1sum pam-login_defs-vars.lst | sed 's/ .*$//') != cda62ec4158236270a5a30ba1875fa2795926f23 ; then
+if test $(sha1sum pam-login_defs-vars.lst | sed 's/ .*$//') != 8521c47f55dff97fac980d52395b763590cd3f07 ; then
 
 	echo "does not match!" >&2
 	echo "Checksum is: $(sha1sum pam-login_defs-vars.lst | sed 's/ .*$//')" >&2
