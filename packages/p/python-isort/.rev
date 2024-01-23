@@ -617,4 +617,12 @@ Let's see which package is missing in ringX for test flavor</comment>
   * Fixed #1542: Bug in VERTICAL_PREFIX_FROM_MODULE_IMPORT wrap</comment>
     <requestid>1133685</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>07db85e2cebd32affe00b335b921ff8c</srcmd5>
+    <version>5.13.2</version>
+    <time>1706046979</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140773</requestid>
+  </revision>
 </revisionlist>
