@@ -19,4 +19,12 @@
   * Avoid duplicate rules for accessing mounts and devices</comment>
     <requestid>1090014</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4d70a70c2fb7c3ca2c55cae13e39424a</srcmd5>
+    <version>0.2.8</version>
+    <time>1706047023</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140795</requestid>
+  </revision>
 </revisionlist>
