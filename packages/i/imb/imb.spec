@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,8 @@
 # Base package name
 %define pname imb
 %define PNAME IMB
-%define _ver 2021_3
+%define ver 2021.7
+%define _ver 2021_7
 
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
@@ -262,6 +263,84 @@ ExclusiveArch:  do_not_build
 %{?DisOMPI5}
 %endif
 
+%if "%{flavor}" == "gnu11-mvapich2-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 11
+%global mpi_flavor mvapich2
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu11-mpich-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 11
+# macro mpi is used by macros for master package
+%global mpi_flavor mpich
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu11-openmpi3-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 11
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 3
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu11-openmpi4-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 11
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI4}
+%endif
+
+%if "%{flavor}" == "gnu12-mvapich2-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 12
+%global mpi_flavor mvapich2
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu12-mpich-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 12
+# macro mpi is used by macros for master package
+%global mpi_flavor mpich
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu12-openmpi3-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 12
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 3
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu12-openmpi4-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 12
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI4}
+%endif
+
 %if %{without hpc}
 %define p_bindir /usr/%_lib/mpi/gcc/%{flavor}/bin
 %if "%{flavor}" == ""
@@ -276,7 +355,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           %{package_name}
-Version:        2021.3
+Version:        %ver
 Release:        0
 Summary:        Intel MPI Benchmarks (IMB)
 License:        BSD-3-Clause
