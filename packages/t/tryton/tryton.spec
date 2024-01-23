@@ -2,7 +2,7 @@
 # spec file for package tryton
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2015-2023 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2015-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define majorver 6.0
+
+%if 0%{?suse_version} >= 1550
+%define pythons python3
+%define mypython python3
+%define mysitelib %python3_sitelib
+%else
+%{?sle15_python_module_pythons}
+%define mypython %pythons
+%define mysitelib %{expand:%%%{mypython}_sitelib}
+%endif
+
+
 Name:           tryton
 Version:        %{majorver}.33
 Release:        0
@@ -31,28 +42,33 @@ Source2:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360
 
 Patch0:         000-pygtkcompat.diff
 Patch1:         001-disable-version-check.diff
-BuildRequires:  fdupes
-BuildRequires:  python3-Babel
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-devel
-BuildRequires:  python3-gobject
-BuildRequires:  python3-python-dateutil
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-simplejson
-BuildRequires:  update-desktop-files
 
-Requires:       python3-GooCalendar >= 0.7
-Requires:       python3-cairo
-Requires:       python3-chardet
-Requires:       python3-dateutil
-Requires:       python3-gnupg
-Requires:       python3-gobject
-Requires:       python3-gobject-Gdk
-Requires:       python3-gobject-cairo >= 1.15.10
-Requires:       python3-pytz
-Requires:       python3-setuptools
-Requires:       python3-simplejson
-Requires:       python3-xml
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-generators
+BuildRequires:  %{mypython}-Babel
+BuildRequires:  %{mypython}-Sphinx
+BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-gobject
+BuildRequires:  %{mypython}-python-dateutil
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-simplejson
+BuildRequires:  update-desktop-files
+BuildRequires:  %{mypython}-pip
+BuildRequires:  %{mypython}-wheel
+
+Requires:       %{mypython}-GooCalendar >= 0.7
+Requires:       %{mypython}-cairo
+Requires:       %{mypython}-chardet
+Requires:       %{mypython}-dateutil
+Requires:       %{mypython}-gnupg
+Requires:       %{mypython}-gobject
+Requires:       %{mypython}-gobject-Gdk
+Requires:       %{mypython}-gobject-cairo >= 1.15.10
+Requires:       %{mypython}-pytz
+Requires:       %{mypython}-setuptools
+Requires:       %{mypython}-simplejson
+Requires:       %{mypython}-xml
 BuildArch:      noarch
 
 %description
@@ -67,20 +83,23 @@ It provides modularity, scalability and security.
 %patch0 -p1
 %patch1 -p1
 
+#shebag ersetzen
+find . -iname "bin/tryton" -exec sed -i "s/env python/%{mypython}/" '{}' \;
+
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
+%pyproject_install
 
 # menu-entry
 desktop-file-install --dir %{buildroot}%{_datadir}/applications %{name}.desktop
 %suse_update_desktop_file %{name}
 
-%python_expand %fdupes %{buildroot}%{python3_sitelib}
+%python_expand %fdupes %{buildroot}%{mysitelib}
 
 mkdir -p %{buildroot}%{_datadir}/pixmaps
-cp %{buildroot}%{python3_sitelib}/%{name}/data/pixmaps/%{name}/%{name}-icon.png %{buildroot}%{_datadir}/pixmaps/%{name}-icon.png
+cp %{buildroot}%{mysitelib}/%{name}/data/pixmaps/%{name}/%{name}-icon.png %{buildroot}%{_datadir}/pixmaps/%{name}-icon.png
 
 %files
 %{_bindir}/%{name}
@@ -88,6 +107,6 @@ cp %{buildroot}%{python3_sitelib}/%{name}/data/pixmaps/%{name}/%{name}-icon.png 
 %doc COPYRIGHT README.rst CHANGELOG
 %license LICENSE
 %{_datadir}/pixmaps/*
-%{python3_sitelib}/*
+%{mysitelib}/tryton*
 
 %changelog
