@@ -251,4 +251,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1125406</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>42ce5c5be29346ee4908cf9ce7cc8313</srcmd5>
+    <version>6.0.14</version>
+    <time>1706046993</time>
+    <user>anag+factory</user>
+    <comment>python 311 (forwarded request 1140800 from DocB)</comment>
+    <requestid>1140818</requestid>
+  </revision>
 </revisionlist>
