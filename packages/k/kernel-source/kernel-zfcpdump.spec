@@ -17,9 +17,9 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.6
-%define patchversion 6.6.11
-%define git_commit 05ae4ada30ff79567ddbd9fdb8f1a513b0e1c8df
+%define srcversion 6.7
+%define patchversion 6.7.1
+%define git_commit 4959dd8dad49eb4f1644953682e53c1d966d6eb3
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -113,9 +113,9 @@ Name:           kernel-zfcpdump
 Summary:        The IBM System Z zfcpdump Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.6.11
+Version:        6.7.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g05ae4ad
+Release:        <RELEASE>.g4959dd8
 %else
 Release:        0
 %endif
@@ -212,6 +212,7 @@ Source82:       modflist
 Source83:       kernel-subpackage-build
 Source84:       kernel-subpackage-spec
 Source85:       kernel-default-base.spec.txt
+Source86:       old_changelog.txt
 Source100:      config.tar.bz2
 Source101:      config.addon.tar.bz2
 Source102:      patches.arch.tar.bz2
@@ -281,6 +282,7 @@ NoSource:       82
 NoSource:       83
 NoSource:       84
 NoSource:       85
+NoSource:       86
 NoSource:       100
 NoSource:       101
 NoSource:       102

@@ -16,9 +16,9 @@
 #
 
 
-%define srcversion 6.6
-%define patchversion 6.6.11
-%define git_commit 05ae4ada30ff79567ddbd9fdb8f1a513b0e1c8df
+%define srcversion 6.7
+%define patchversion 6.7.1
+%define git_commit 4959dd8dad49eb4f1644953682e53c1d966d6eb3
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0-only
 Group:          Documentation/Man
-Version:        6.6.11
+Version:        6.7.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g05ae4ad
+Release:        <RELEASE>.g4959dd8
 %else
 Release:        0
 %endif
@@ -144,6 +144,7 @@ Source82:       modflist
 Source83:       kernel-subpackage-build
 Source84:       kernel-subpackage-spec
 Source85:       kernel-default-base.spec.txt
+Source86:       old_changelog.txt
 Source100:      config.tar.bz2
 Source101:      config.addon.tar.bz2
 Source102:      patches.arch.tar.bz2
@@ -213,6 +214,7 @@ NoSource:       82
 NoSource:       83
 NoSource:       84
 NoSource:       85
+NoSource:       86
 NoSource:       100
 NoSource:       101
 NoSource:       102
@@ -259,6 +261,7 @@ These are HTML documents built from the current kernel sources.
 %prep
 %setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 114 -a 120 -a 121
 cp -a linux-%srcversion/{COPYING,CREDITS,MAINTAINERS,README} .
+cp %_sourcedir/old_changelog.txt .
 cd linux-%srcversion
 %_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
 
@@ -303,6 +306,7 @@ done
 %license COPYING
 %endif
 %doc CREDITS MAINTAINERS README
+%doc old_changelog.txt
 
 %if %build_pdf
 %files pdf
