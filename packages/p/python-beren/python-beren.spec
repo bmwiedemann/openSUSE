@@ -1,8 +1,8 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2019-2021 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2019-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
+%{?sle15allpythons}
 %define skip_python2 1
-%define skip_python36 1
 %define modname beren
 Name:           python-%{modname}
 Version:        0.7.1
@@ -28,10 +27,15 @@ Summary:        Provides a REST client targeted at Orthanc REST API endpoints
 License:        GPL-3.0-or-later
 URL:            https://github.com/teffalump/beren
 Source:         https://files.pythonhosted.org/packages/source/b/%{modname}/%{modname}-%{version}.tar.gz
+
 BuildRequires:  %{python_module apiron}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+
 Requires:       python-apiron
 
 %python_subpackages
@@ -45,10 +49,10 @@ python-beren provides a REST client targeted at Orthanc REST API endpoints
 sed -i 's/apiron==.*$/apiron/' requirements.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 #%%check
