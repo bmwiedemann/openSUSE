@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 21 07:46:14 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.20:
+  * New command-line options for jumping to a line number or match
+  * Improved handling of file names containing control characters
+  * Tweak workflow for fewer 'buffer modified' warnings
+  * Tilde expansion is now performed on file names
+  * Warn on modifying a buffer from a read-only file
+  * Create missing intermediate directories when writing to a file
+  * Documentation updates
+- drop obsolete makeinfo marcos
+
+-------------------------------------------------------------------
 Mon Jan 16 22:16:48 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.19:

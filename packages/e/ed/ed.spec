@@ -2,6 +2,7 @@
 # spec file for package ed
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           ed
-Version:        1.19
+Version:        1.20
 Release:        0
 Summary:        A line-oriented text editor
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -25,10 +26,7 @@ Group:          Productivity/Text/Editors
 URL:            https://www.gnu.org/software/ed/
 # This is just recompressed from  https://ftp.gnu.org/gnu/ed/ed-%%{version}.tar.lz
 # in order to avoid pulling lzip to ring0
-Source0:        ed-%{version}.tar.zst
-BuildRequires:  zstd
-Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Source0:        ed-%{version}.tar.xz
 
 %description
 GNU ed is a line-oriented text editor. It is used to create, display,
@@ -40,7 +38,7 @@ Unix, and thus widely available. For most purposes, however, it is
 superseded by full-screen editors such as GNU Emacs or GNU Moe.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
@@ -51,12 +49,6 @@ superseded by full-screen editors such as GNU Emacs or GNU Moe.
 
 %check
 %make_build check
-
-%post
-%install_info --entry="* ed: (ed). Line-oriented text editor" --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %files
 %license COPYING
