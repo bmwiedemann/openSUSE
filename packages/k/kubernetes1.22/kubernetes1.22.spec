@@ -49,6 +49,7 @@ Patch3:         opensuse-version-checks.patch
 Patch4:         kubeadm-opensuse-flexvolume.patch
 # Patch to revert renaming of coredns image location to match how it's done on download.opensuse.org
 Patch5:         revert-coredns-image-renaming.patch
+Patch6:         kubernetes-sort-custom-column-print-flags.patch
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
@@ -202,6 +203,7 @@ Kubernetes client tools common files
 %patch3 -p1
 %patch4 -p0
 %patch5 -p1
+%patch6 -p1
 
 %build
 # This is fixing bug bsc#1065972

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 10 17:43:49 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add kubernetes-sort-custom-column-print-flags.patch
+  for reproducible builds
+
+-------------------------------------------------------------------
 Mon Mar 27 09:24:52 UTC 2023 - Robert Munteanu <rombert@apache.org>
 
 - Stronger conflicts for completion packages 
