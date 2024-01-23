@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 22 22:34:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.2:
+  * models/package: have `version_spec` only exist in
+    `ReqPackage`
+  * Use "Any" value if necessary for required version in JSON
+    render
+
+-------------------------------------------------------------------
 Tue Jan  9 21:42:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.1:

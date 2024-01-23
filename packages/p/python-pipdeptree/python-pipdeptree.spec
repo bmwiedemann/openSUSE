@@ -17,7 +17,7 @@
 
 
 Name:           python-pipdeptree
-Version:        2.13.1
+Version:        2.13.2
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT

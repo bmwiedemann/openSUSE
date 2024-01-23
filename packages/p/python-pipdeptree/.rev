@@ -132,4 +132,16 @@
   * Allow to force encoding</comment>
     <requestid>1137819</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0272b63ca9921d1a0b0cce23336bd348</srcmd5>
+    <version>2.13.2</version>
+    <time>1706046954</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.13.2:
+  * models/package: have `version_spec` only exist in
+    `ReqPackage`
+  * Use &quot;Any&quot; value if necessary for required version in JSON
+    render</comment>
+    <requestid>1140736</requestid>
+  </revision>
 </revisionlist>
