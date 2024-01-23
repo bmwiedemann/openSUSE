@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 22 23:30:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Add Python 3.12 support
+  * Rebuild Linux wheels, including Python 3.12 wheels.
+  * Allow using plyvel.DB as a context manager (pr #151)
+
+-------------------------------------------------------------------
 Wed Nov  9 16:29:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.5.0 
+- Update to 1.5.0
   * use manylinux2014 image for building wheels
   * Fix typo in docs (#145)
   * update leveldb links to github
@@ -20,7 +28,7 @@ Sun Jan 16 12:36:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Use manylinux2010 instead of manylinux1 to build wheels
   * Add Python 3.9 support
   * Drop Python 3.5 support
-  * Completely drop Python 2 support 
+  * Completely drop Python 2 support
 
 -------------------------------------------------------------------
 Thu May 27 07:28:42 UTC 2021 - pgajdos@suse.com
@@ -92,5 +100,5 @@ Sun Jan 31 08:31:40 UTC 2016 - mpluskal@suse.com
 -------------------------------------------------------------------
 Tue Oct 28 16:52:58 UTC 2014 - mpluskal@suse.com
 
-- Initial package 
+- Initial package
 

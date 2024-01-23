@@ -107,4 +107,19 @@
     <comment></comment>
     <requestid>1035046</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>988c7a722964d1b455d7a872dfdf673c</srcmd5>
+    <version>1.5.1</version>
+    <time>1706046960</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.1:
+  * Add Python 3.12 support
+  * Rebuild Linux wheels, including Python 3.12 wheels.
+  * Allow using plyvel.DB as a context manager (pr #151)
+
+- Update to 1.5.0
+  * Completely drop Python 2 support
+- Initial package</comment>
+    <requestid>1140742</requestid>
+  </revision>
 </revisionlist>
