@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Sat Jan 20 20:08:34 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
-
-- allow to boot memtest86 if stored in /usr/lib/memtest86+
-  * SR#1071109 can then work
-
--------------------------------------------------------------------
 Wed Jan 17 03:32:48 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Resolved XFS regression leading to the "not a correct XFS inode" error by
