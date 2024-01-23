@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Fri Jan  5 10:12:15 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 8.80:
+  * fix default arguments for SeparatorParams constructor in
+    documentation
+  * fix build error with GCC 4.8.5
+  * enable ccache only when tests are enabled
+  * optional ccache
+  * fix build warnings on openSUSE 15.4 / g++ v7.5.0
+- Drop 0001-Include-cpp-limits-header.patch: upstreamed
+
+- Changes since 8.77:
+  * add two SetCell methods for consistency with GetCell
+  * switch ssize_t usage to int
+
+- Changes since 8.75:
+  * retain UTF-8 BOM on Save
+  * ensure setting cell value works correctly with column headers
+    offset
+  * ignore c++ locale when mNumericLocale is set false
+  * fix precision loss when writing floating-point values to csv
+    document
+  * fix no_converter::what() accessability
+  * update doc mentioning package managers vcpkg and conan
+  * add missing "const" qualifier to several functions in class
+    Document
+
+- Changes since 8.69:
+  * update issue templates, ci branches and gitignore
+  * use cmake --build for windows build
+  * add utf-8 flag for windows build
+  * compliance with effective c++ guidelines
+  * add support for custom quote character
+  * Include limits header
+  * update doc
+
+- Changes since 8.65:
+  * fix sign conversion warnings
+
+-------------------------------------------------------------------
+Tue Nov  1 09:40:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Compact description. Use find's "+" mode during build.
+
+-------------------------------------------------------------------
+Thu Oct 27 09:13:45 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Initial version
