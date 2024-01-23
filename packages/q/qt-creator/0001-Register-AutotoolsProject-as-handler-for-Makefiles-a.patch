@@ -1,0 +1,28 @@
+From 47e25983af5cd50a92b6e482e9f1c5bb66f41337 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Mon, 22 Jan 2024 14:00:28 +0100
+Subject: [PATCH] Register AutotoolsProject as handler for Makefiles again
+
+95a3087a7b3 dropped the mime type registration by accident. Add it back to
+make the plugin functional again.
+
+Signed-off-by: Fabian Vogt <fvogt@suse.de>
+---
+ src/plugins/autotoolsprojectmanager/autotoolsprojectplugin.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/plugins/autotoolsprojectmanager/autotoolsprojectplugin.cpp b/src/plugins/autotoolsprojectmanager/autotoolsprojectplugin.cpp
+index 7dd531265066..6a93f4b08d12 100644
+--- a/src/plugins/autotoolsprojectmanager/autotoolsprojectplugin.cpp
++++ b/src/plugins/autotoolsprojectmanager/autotoolsprojectplugin.cpp
+@@ -91,6 +91,7 @@ class AutotoolsProjectPlugin final : public ExtensionSystem::IPlugin
+ 
+     void initialize() final
+     {
++        ProjectManager::registerProjectType<AutotoolsProject>(Constants::MAKEFILE_MIMETYPE);
+         d = std::make_unique<AutotoolsProjectPluginPrivate>();
+     }
+ 
+-- 
+2.43.0
+
