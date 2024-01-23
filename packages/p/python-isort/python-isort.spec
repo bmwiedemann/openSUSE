@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,12 @@
 %else
 %define psuffix %{nil}
 %bcond_with test
+%endif
+
+%if 0%{?suse_version} < 1550
+%bcond_with pylama
+%else
+%bcond_without pylama
 %endif
 
 %{?sle15_python_module_pythons}
@@ -58,7 +64,9 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip-api}
 BuildRequires:  %{python_module pipreqs}
 BuildRequires:  %{python_module poetry}
+%if %{with pylama}
 BuildRequires:  %{python_module pylama}
+%endif
 BuildRequires:  %{python_module pytest > 6.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module toml >= 0.10.2}
@@ -78,6 +86,10 @@ too.
 %prep
 %setup -q -n isort-%{version}
 chmod -x LICENSE
+
+%if %{without pylama}
+sed -i '/import isort.pylama_isort/d' tests/unit/test_importable.py
+%endif
 
 echo "
 # increase test deadline for slow obs executions
@@ -107,6 +119,9 @@ hypothesis.settings.register_profile(
 ignoretests="--ignore tests/integration/test_projects_using_isort.py"
 # don't run benchmarks
 ignoretests+=" --ignore tests/benchmark"
+%if %{without pylama}
+ignoretests+=" --ignore tests/unit/test_pylama_isort.py"
+%endif
 # test_setting_combinations.py::test_isort_is_idempotent
 # is flaky https://github.com/PyCQA/isort/issues/1466
 donttest="(test_setting_combinations and test_isort_is_idempotent)"
