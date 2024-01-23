@@ -1199,14 +1199,6 @@ pushd test
     install -m 0755 %{S:8} %{buildroot}%{_libexecdir}/ncurses-examples/
 popd
 
-#
-# Move manual page init.1 to init.1ncurses otherwise we conflict with
-# systemd's anual page with same name
-#
-pushd %{buildroot}%{_mandir}/man1
-    mv init.1 init.1ncurses
-popd
-
 %if 0%{?_crossbuild}
 # No test here
 %else
@@ -1273,7 +1265,6 @@ popd
 %{_bindir}/tset
 %doc %{_mandir}/man1/clear.1%{ext_man}
 %doc %{_mandir}/man1/infocmp.1%{ext_man}
-%doc %{_mandir}/man1/init.1*%{ext_man}
 %doc %{_mandir}/man1/reset.1%{ext_man}
 %doc %{_mandir}/man1/tabs.1%{ext_man}
 %doc %{_mandir}/man1/toe.1%{ext_man}
