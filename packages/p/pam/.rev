@@ -1187,4 +1187,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1108086</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>5b3a693762920c4a04d14c58c1088cfe</srcmd5>
+    <version>1.6.0</version>
+    <time>1706046908</time>
+    <user>anag+factory</user>
+    <comment>- Add post 1.6.0 release fixes for pam_env and pam_unix:
+  - pam_env-fix-enable-vendordir-fallback.patch
+  - pam_env-fix_vendordir.patch
+  - pam_env-remove-escaped-newlines.patch
+  - pam_unix-fix-password-aging-disabled.patch
+- Update to version 1.6.0
+  - Added support of configuration files with arbitrarily long lines.
+  - build: fixed build outside of the source tree.
+  - libpam: added use of getrandom(2) as a source of randomness if available.
+  - libpam: fixed calculation of fail delay with very long delays.
+  - libpam: fixed potential infinite recursion with includes.
+  - libpam: implemented string to number conversions validation when parsing
+    controls in configuration.
+  - pam_access: added quiet_log option.
+  - pam_access: fixed truncation of very long group names.
+  - pam_canonicalize_user: new module to canonicalize user name.
+  - pam_echo: fixed file handling to prevent overflows and short reads.
+  - pam_env: added support of '\' character in environment variable values.
+  - pam_exec: allowed expose_authtok for password PAM_TYPE.
+  - pam_exec: fixed stack overflow with binary output of programs.
+  - pam_faildelay: implemented parameter ranges validation.
+  - pam_listfile: changed to treat \r and \n exactly the same in configuration.
+  - pam_mkhomedir: hardened directory creation against timing attacks.
+  - Please note that using *at functions leads to more open file handles
+    during creation.
+  - pam_namespace: fixed potential local DoS (CVE-2024-22365).
+  - pam_nologin: fixed file handling to prevent short reads.
+  - pam_pwhistory: helper binary is now built only if SELinux support is
+    enabled.
+  - pam_pwhistory: implemented reliable usernames handling when remembering</comment>
+    <requestid>1139944</requestid>
+  </revision>
 </revisionlist>

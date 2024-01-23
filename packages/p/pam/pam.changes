@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Jan 19 09:11:30 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add post 1.6.0 release fixes for pam_env and pam_unix:
+  - pam_env-fix-enable-vendordir-fallback.patch
+  - pam_env-fix_vendordir.patch
+  - pam_env-remove-escaped-newlines.patch
+  - pam_unix-fix-password-aging-disabled.patch
+- Update to version 1.6.0
+  - Added support of configuration files with arbitrarily long lines.
+  - build: fixed build outside of the source tree.
+  - libpam: added use of getrandom(2) as a source of randomness if available.
+  - libpam: fixed calculation of fail delay with very long delays.
+  - libpam: fixed potential infinite recursion with includes.
+  - libpam: implemented string to number conversions validation when parsing
+    controls in configuration.
+  - pam_access: added quiet_log option.
+  - pam_access: fixed truncation of very long group names.
+  - pam_canonicalize_user: new module to canonicalize user name.
+  - pam_echo: fixed file handling to prevent overflows and short reads.
+  - pam_env: added support of '\' character in environment variable values.
+  - pam_exec: allowed expose_authtok for password PAM_TYPE.
+  - pam_exec: fixed stack overflow with binary output of programs.
+  - pam_faildelay: implemented parameter ranges validation.
+  - pam_listfile: changed to treat \r and \n exactly the same in configuration.
+  - pam_mkhomedir: hardened directory creation against timing attacks.
+  - Please note that using *at functions leads to more open file handles
+    during creation.
+  - pam_namespace: fixed potential local DoS (CVE-2024-22365).
+  - pam_nologin: fixed file handling to prevent short reads.
+  - pam_pwhistory: helper binary is now built only if SELinux support is
+    enabled.
+  - pam_pwhistory: implemented reliable usernames handling when remembering
+    passwords.
+  - pam_shells: changed to allow shell entries with absolute paths only.
+  - pam_succeed_if: fixed treating empty strings as numerical value 0.
+  - pam_unix: added support of disabled password aging.
+  - pam_unix: synchronized password aging with shadow.
+  - pam_unix: implemented string to number conversions validation.
+  - pam_unix: fixed truncation of very long user names.
+  - pam_unix: corrected rounds retrieval for configured encryption method.
+  - pam_unix: implemented reliable usernames handling when remembering
+    passwords.
+  - pam_unix: changed to always run the helper to obtain shadow password
+    entries.
+  - pam_unix: unix_update helper binary is now built only if SELinux support
+    is enabled.
+  - pam_unix: added audit support to unix_update helper.
+  - pam_userdb: added gdbm support.
+  - Multiple minor bug fixes, portability fixes, documentation improvements,
+    and translation updates.
+- The following patches are obsolete with the update:
+  - pam_access-doc-IPv6-link-local.patch
+  - pam_access-hostname-debug.patch
+  - pam_shells-fix-econf-memory-leak.patch
+  - pam_shells-fix-econf-memory-leak.patch
+  - disable-examples.patch
+- pam-login_defs-check.sh: adjust checksum, SHA_CRYPT_MAX_ROUNDS
+  is no longer used.
+
+-------------------------------------------------------------------
 Wed Aug 23 09:20:06 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix building without SELinux
