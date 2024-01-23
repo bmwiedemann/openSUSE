@@ -53,6 +53,7 @@ Patch5:         revert-coredns-image-renaming.patch
 Patch6:         kube-apiserver-admission-plugin-policy.patch
 # Patch to fix CVE-2023-2431, to return error when a Pod or Container's SecurityContext has a localhost seccomp type but an empty localhostProfile field.
 Patch7:         fix-seccomp-localhost-error-handling.patch
+Patch8:         kubernetes-sort-custom-column-print-flags.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
@@ -223,6 +224,7 @@ Fish command line completion support for %{name}-client.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 # This is fixing bug bsc#1065972

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 10 17:45:07 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add kubernetes-sort-custom-column-print-flags.patch for reproducible builds
+
+-------------------------------------------------------------------
 Tue Jun 20 12:56:47 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Security Patch Fix for CVE-2023-2431 (bsc#1212493)
