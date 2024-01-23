@@ -1,7 +1,7 @@
 #
 # spec file for package python-liblarch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,15 +21,15 @@
 %define         _name_gtk liblarch_gtk
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-liblarch
-Version:        3.0
+Version:        3.2.0
 Release:        0
 Summary:        A Python library to handle data structure
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://live.gnome.org/liblarch
 Source:         https://github.com/getting-things-gnome/%{_name}/archive/v%{version}.tar.gz
-Patch0:         libarch-py2compat.patch
 BuildRequires:  %{python_module gobject}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,7 +60,6 @@ This package provides GTK bindings for liblarch.
 
 %prep
 %setup -q -n %{_name}-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -70,8 +69,8 @@ This package provides GTK bindings for liblarch.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # TESTS fail with segf, local execution works
-#%check
-#%%python_expand xvfb-run nosetests-%{$python_bin_suffix} tests
+%check
+%python_expand xvfb-run pytest-%{$python_bin_suffix} tests
 
 %files %{python_files}
 %license LICENSE

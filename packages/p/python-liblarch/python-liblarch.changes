@@ -1,7 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan 22 23:34:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Provide a fix for collapsing/expanding future (not-yet-
+    created) nodes
+      This prevents a TypeError under various circumstances,
+      which made GTG's TreeView display inconsistent
+      search/filtering results.
+  * Clarify, in the README file, that liblarch is LGPL v3 "or
+    later"
+  * Fix Pytest deprecation warnings
+  * Provide an optimized way to refresh filtered items
+    This provides better performance for GTG in particular
+  * Replace calls to the pep8 executable by pycodestyle
+  * Disable building with Python 2
+  * Fix drag & drop from one GTK TreeView widget to another
+  * Handle cases where the tree should and shouldn't be re-
+    filtered
+  * Improved PyGI (GObject introspection) compatibility
+  * Improved code quality and PEP 8 compliance
+- drop libarch-py2compat.patch (obsolete as upstream is >= 3.5)
+- reenable tests
+
+-------------------------------------------------------------------
 Wed Apr 15 07:41:08 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Remove nose dep as tests are not executed 
+- Remove nose dep as tests are not executed
 
 -------------------------------------------------------------------
 Tue Aug  7 09:16:21 UTC 2018 - tchvatal@suse.com
@@ -51,6 +75,6 @@ Tue Feb 28 10:43:02 UTC 2012 - cfarrell@suse.com
 -------------------------------------------------------------------
 Wed Feb 15 19:34:52 UTC 2012 - dimstar@opensuse.org
 
-- Initial package, version 0.1.0. 
+- Initial package, version 0.1.0.
 
 
