@@ -112,4 +112,12 @@
     <comment>Remove %python3_install prefix and root options, that's included in the macro by default. (forwarded request 1118924 from dgarcia)</comment>
     <requestid>1118958</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>450fca23283ca0e9c069219074ade198</srcmd5>
+    <version>6.0.3</version>
+    <time>1706046999</time>
+    <user>anag+factory</user>
+    <comment>python 311 (forwarded request 1140804 from DocB)</comment>
+    <requestid>1140823</requestid>
+  </revision>
 </revisionlist>

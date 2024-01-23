@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_country
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} >= 1550
+%define pythons python3
+%define mypython python3
+%define mysitelib %python3_sitelib
+%else
+%{?sle15_python_module_pythons}
+%define mypython %pythons
+%define mysitelib %{expand:%%%{mypython}_sitelib}
+%endif
 
 %define majorver 6.0
 Name:           trytond_country
@@ -32,15 +42,20 @@ Patch0:         001_pycountry.diff
 Patch1:         002_support_pycountry_22.diff
 Patch2:         003_revert_pycountry_limit.diff
 # List of additional build dependencies
+BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-pip
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wheel
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
+
 Requires:       proteus
 # Leap uses an older pycountry
 %if 0%{?suse_version} <= 1500
-Requires:       python3-pycountry <= 20.7.3
+Requires:       %{mypython}-pycountry
 %else
-Requires:       python3-pycountry
+Requires:       %{mypython}-pycountry
 %endif
 Requires:       trytond
 
@@ -67,15 +82,15 @@ echo %{?suse_version}
 %endif
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
-%fdupes -s %{buildroot}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{mysitelib}
 
 %files
 %defattr(-,root,root)
 %attr(755,root,tryton) %{_bindir}/trytond_import*
-%{python3_sitelib}/*
+%{mysitelib}/tryton*
 
 %changelog
