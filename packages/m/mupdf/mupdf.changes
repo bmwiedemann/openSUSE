@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 23 07:04:27 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.23.9:
+  * Fix text moving after redaction.
+  * Add use-cid-for-unknown-unicode option to stext device.
+  * Move previously private APIs into public headers so they can be used in python bindings.
+  * Add version numbers to shared library installation targets on Linux/OpenBSD.
+  * Avoid setuptools problems for python bindings in python 3.12.
+  * Fix makefile so python bindings build with tesseract.
+
+-------------------------------------------------------------------
 Wed Dec 20 08:50:28 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.23.7:
