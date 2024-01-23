@@ -2704,4 +2704,11 @@ pretty much the same. The main user visible changes are
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1219074</comment>
   </revision>
+  <revision rev="316" vrev="5">
+    <srcmd5>8b4cf4883f10e543a10cd0d5b2369ebb</srcmd5>
+    <version>2.12</version>
+    <time>1706001881</time>
+    <user>dimstar_suse</user>
+    <comment>Re-apply reverted fix; identified as not being the culprit</comment>
+  </revision>
 </revisionlist>
