@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-RESTful
 Version:        0.3.10
