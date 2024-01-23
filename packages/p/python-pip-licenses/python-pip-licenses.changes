@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 23 06:46:01 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed test ignore, fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jan 22 21:46:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.4:
+  * Maintain to pass test with wcwidth>=0.2.10
+
+-------------------------------------------------------------------
 Thu Jan 18 12:11:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 4.3.3:
@@ -42,13 +53,13 @@ Mon Feb  6 05:39:44 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.3:
   * Escape unicode output (to e.g. &#123;) in the html output
-  * Add type annotations and code formatter 
+  * Add type annotations and code formatter
 - Add missing BuildRequires to fix test failures.
 
 -------------------------------------------------------------------
 Sat Dec  3 19:58:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 4.0.1 
+- Update to version 4.0.1
   * Fix “pip-licenses” is missing in output of pip-licenses --with-system option
 
 -------------------------------------------------------------------

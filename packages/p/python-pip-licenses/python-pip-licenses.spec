@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-pip-licenses
-Version:        4.3.3
+Version:        4.3.4
 Release:        0
 Summary:        Python packages license list
 License:        MIT
@@ -67,8 +67,6 @@ sed -i '1{/^#!/d}' piplicenses.py
 export LANG=en_US.UTF-8
 # gh#raimon49/pip-licenses#120 for test_from_all
 donttest="test_from_all"
-# test_format_rst_without_filter fails with wcwidth>=0.2.10 gh#raimon49/pip-licenses#178
-donttest+=" or test_format_rst_without_filter"
 %pytest -k "not ($donttest)"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/pip-licenses-%{$python_bin_suffix} -s
 

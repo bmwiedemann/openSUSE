@@ -155,4 +155,98 @@
 </comment>
     <requestid>1139702</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ba9381cce95e9f3b57c6ad32ef6c0652</srcmd5>
+    <version>4.3.4</version>
+    <time>1706046934</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed test ignore, fixed upstream.
+- update to 4.3.4:
+  * Maintain to pass test with wcwidth&gt;=0.2.10
+- Update to version 4.3.3:
+  * Always terminate --allow-only and --fail-on messages with a newline
+  * Always terminate files created with --output-file with a newline
+- Ignore broken test with latest version of wcwidth,
+  gh#raimon49/pip-licenses#178
+- update to 4.3.2:
+  * Better Handling extracting URLs from `Project-URL`
+- Update to 4.3.1:
+  * Fix to treat package names as normalized as in PEP 503 with
+    --packages and --ignore-packages option
+- 4.3.0:
+  * Implement new option --no-version
+- Update to 4.2.0:
+  - Implement new option --with-maintainers
+  - Implement new option --python
+  - Allow version spec in --ignore-packages parameters
+  - When the Author field is UNKNOWN, the output is automatically
+    completed from Author-email
+  - When the home-page field is UNKNOWN, the output is
+    automatically completed from Project-URL
+- Update to 4.1.0:
+  - Support case-insensitive license name matching around
+    --fail-on and --allow-only parameters
+- Update to 4.0.3:
+  * Escape unicode output (to e.g. &amp;#123;) in the html output
+  * Add type annotations and code formatter
+- Add missing BuildRequires to fix test failures.
+- Update to version 4.0.1
+  * Fix “pip-licenses” is missing in output of pip-licenses --with-system option
+- Update to 4.0.0:
+  - Support for Python 3.11
+  - Dropped support Python 3.7
+  - Migrate Docker base image from Alpine to Debian 11-slim
+  - Breaking changes
+    - Does not work with PTable and depends on prettytable
+    - Depend on importlib_metadata rather than pip
+- Remove unnecessary no-pip-internal.patch.
+- Update to 3.5.2:
+  - Ignore spaces around --fail-on and --allow-only parameters
+  - Fix the order in which multiple licenses are output
+  - Handle multiple licenses better with options --fail-on and
+      --allow-only
+  - Small change in output method for multiple licenses, change
+    the separator from comma to semicolon
+        Up to 3.4.0: Python Software Foundation License, MIT License
+        3.5.0 or later: Python Software Foundation License; MIT License
+  - Implement new option --packages
+  - Fix license summary refer to --from option
+  - Improves the readability of the help command
+  - Implement new option --from=all
+  - Change license notation under SPDX license identifier style
+  - Implement new option for use in continuous integration
+      --fail-on
+      --allow-only
+- Skip failing tests gh#raimon49/pip-licenses#120
+- Add no-pip-internal.patch replace missing
+  get_installed_distributions() method in modern pip.
+- Update to v3.0.0
+  * Change default behavior to `--from=mixed`
+- Add missing runtime dependency on pip
+- Update to v3.1.1
+  * Implement new option for manage unicode characters
+    + `--filter-strings`
+    + `--filter-code-page`
+- from v2.2.1
+  * Fixed the file that is selected when multiple matches are made
+    with `LICENSE*` with run `--with-license-file`
+- from v2.2.0
+  * Implement new option `--with-notice-file`
+  * Added to find British style file name `LICENCE` with run
+    `--with-license-file`
+- Don't use %python3_only command, but properly use alternatives.
+- Update to 2.1.1
+  * Suppress errors when opening license files
+  * Implement new option --format=plain-vertical
+  * Support for outputting license file named COPYING *
+  * Better license file open handling in Python 3
+  * Dropped support Python 2.7
+  * Options like --format-* were marked obsolete
+  * Implement new option --no-license-path
+- Update to v1.18.0
+- Update to v0.17.0
+- Initial spec for v1.13.0
+</comment>
+    <requestid>1140772</requestid>
+  </revision>
 </revisionlist>
