@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 24 09:17:14 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on aarch64:
+  * a95febc7.patch
+
+-------------------------------------------------------------------
 Fri Jan 19 12:06:44 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Upstreamed patches 0001-Fix-detection-of-yaml-cpp-0.8.patch

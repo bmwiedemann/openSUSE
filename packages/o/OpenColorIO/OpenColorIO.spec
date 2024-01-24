@@ -39,6 +39,8 @@ License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://opencolorio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/AcademySoftwareFoundation/OpenColorIO/pull/1924
+Patch1:         a95febc7.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
