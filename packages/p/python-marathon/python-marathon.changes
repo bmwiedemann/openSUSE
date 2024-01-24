@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 24 04:31:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.
+- Actually run fdupes.
+- Add patch fix-assertion-method.patch:
+  * Use assertEqual, not assertEquals.
+
+-------------------------------------------------------------------
 Mon Feb 28 11:36:47 UTC 2022 - pgajdos@suse.com
 
 - fix build, run tests
