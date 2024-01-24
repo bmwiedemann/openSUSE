@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,7 @@ Patch501:       coreutils-test_without_valgrind.patch
 # tests: skip tests/rm/ext3-perf.sh temporarily as it hangs on OBS.
 Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
 Patch900:       coreutils-tests-workaround-make-fdleak.patch
+Patch920:       coreutils-9.4.split-CVE-2024-0684.patch
 BuildRequires:  automake
 BuildRequires:  gmp-devel
 BuildRequires:  hostname
@@ -173,6 +174,7 @@ This package contains the documentation for the GNU Core Utilities.
 
 %patch810
 %patch900
+%patch920 -p1
 
 # ================================================
 %build

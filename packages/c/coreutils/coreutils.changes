@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 21 09:50:55 UTC 2024 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- coreutils-9.4.split-CVE-2024-0684.patch: Add upstream patch:
+  split: do not shrink hold buffer.  (CVE-2024-0684)
+- coreutils-i18n.patch: Update from Fedora to fix build on i686 on GCC14.
+
+-------------------------------------------------------------------
 Sun Sep 17 16:15:24 UTC 2023 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - gnulib-readutmp-under-gdm.patch: Add upstream gnulib patch to fix crash
