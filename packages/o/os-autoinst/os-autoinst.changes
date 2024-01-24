@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 23 22:21:38 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1706048489.09eb749:
+  * Update .yamllint
+  * git-subrepo: Update external/os-autoinst-common
+  * Ensure the requested Git branch is made known when caching
+  * Make test for Git caching work offline
+  * Allow local caching of Git repositories
+  * Add yamltidy config
+
+-------------------------------------------------------------------
 Fri Jan 19 21:18:24 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1705655319.5fa7a50:
