@@ -1011,6 +1011,7 @@
     <package name="kernel-firmware-network" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-nfp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-nvidia" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="kernel-firmware-nvidia-gspx-G06" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="kernel-firmware-platform" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-prestera" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-qcom" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2766,7 +2767,7 @@
     <package name="libvpl2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvpx8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvte-2_91-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwacom-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwacom9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwavpack1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3071,6 +3072,7 @@
     <package name="ntfsprogs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="numlockx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="nvidia-open-driver-G06-signed-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nvme-cli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nvme-cli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="obex-data-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->

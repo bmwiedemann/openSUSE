@@ -4176,8 +4176,6 @@ unsorted:
   - freeipmi-devel 
   - freeipmi-ipmidetectd 
   - freeipmi-ipmiseld 
-  - freemarker 
-  - freemarker-javadoc 
   - freeradius-client 
   - freeradius-client-devel 
   - freeradius-client-libs 
@@ -9403,7 +9401,6 @@ unsorted:
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-firmware-nvidia-gsp-G06 
-  - kernel-firmware-nvidia-gspx-G06 
   - kernel-install-tools 
   - kernel-kvmsmall 
   - kernel-kvmsmall-devel 
@@ -10861,7 +10858,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVulkanLayerSettings-1_3_268_0 
+  - libVulkanLayerSettings-1_3_275_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit 
   - libWPEWebInspectorResources 
@@ -15862,6 +15859,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
+  - libvolk 
   - libvolk3_1 
   - libvomsapi1 
   - libvorbis-devel 
@@ -18766,7 +18764,6 @@ unsorted:
   - nut-drivers-net 
   - nvdock 
   - nvidia-open-driver-G06-signed-default-devel 
-  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-texture-tools 
   - nvimpager 
   - nvimpager-zsh-completion 
@@ -24031,6 +24028,7 @@ unsorted:
   - python310-dukpy 
   - python310-dukpy-kovidgoyal 
   - python310-dulwich 
+  - python310-dunamai 
   - python310-dynaconf 
   - python310-e-antic 
   - python310-easy-thumbnails 
@@ -24212,6 +24210,7 @@ unsorted:
   - python310-geomet 
   - python310-geopandas 
   - python310-geopy 
+  - python310-get-annotations 
   - python310-getmac 
   - python310-gevent 
   - python310-gevent-websocket 
@@ -25084,6 +25083,7 @@ unsorted:
   - python310-physt 
   - python310-pick 
   - python310-pickleshare 
+  - python310-piexif 
   - python310-pifpaf 
   - python310-pika 
   - python310-pika-pool 
@@ -25125,6 +25125,7 @@ unsorted:
   - python310-podman-compose 
   - python310-poetry 
   - python310-poetry-core 
+  - python310-poetry-dynamic-versioning 
   - python310-poetry-plugin-export 
   - python310-polib 
   - python310-pony 
@@ -25186,6 +25187,7 @@ unsorted:
   - python310-pulsectl 
   - python310-pulsemixer 
   - python310-pure-eval 
+  - python310-pure-protobuf 
   - python310-pure-sasl 
   - python310-purl 
   - python310-py 
@@ -27529,6 +27531,7 @@ unsorted:
   - python311-dukpy 
   - python311-dukpy-kovidgoyal 
   - python311-dulwich 
+  - python311-dunamai 
   - python311-dynaconf 
   - python311-e-antic 
   - python311-easy-thumbnails 
@@ -27705,6 +27708,7 @@ unsorted:
   - python311-geomet 
   - python311-geopandas 
   - python311-geopy 
+  - python311-get-annotations 
   - python311-getmac 
   - python311-gevent-websocket 
   - python311-geventhttpclient 
@@ -28524,6 +28528,7 @@ unsorted:
   - python311-physt 
   - python311-pick 
   - python311-pickleshare 
+  - python311-piexif 
   - python311-pifpaf 
   - python311-pika 
   - python311-pika-pool 
@@ -28562,6 +28567,7 @@ unsorted:
   - python311-podman-compose 
   - python311-poetry 
   - python311-poetry-core 
+  - python311-poetry-dynamic-versioning 
   - python311-poetry-plugin-export 
   - python311-polib 
   - python311-pony 
@@ -28618,6 +28624,7 @@ unsorted:
   - python311-pulsectl 
   - python311-pulsemixer 
   - python311-pure-eval 
+  - python311-pure-protobuf 
   - python311-pure-sasl 
   - python311-purl 
   - python311-py-build-cmake 
@@ -30980,6 +30987,7 @@ unsorted:
   - python39-dukpy 
   - python39-dukpy-kovidgoyal 
   - python39-dulwich 
+  - python39-dunamai 
   - python39-dynaconf 
   - python39-e-antic 
   - python39-easy-thumbnails 
@@ -31161,6 +31169,7 @@ unsorted:
   - python39-geomet 
   - python39-geopandas 
   - python39-geopy 
+  - python39-get-annotations 
   - python39-getmac 
   - python39-gevent 
   - python39-gevent-websocket 
@@ -32029,6 +32038,7 @@ unsorted:
   - python39-physt 
   - python39-pick 
   - python39-pickleshare 
+  - python39-piexif 
   - python39-pifpaf 
   - python39-pika 
   - python39-pika-pool 
@@ -32070,6 +32080,7 @@ unsorted:
   - python39-podman-compose 
   - python39-poetry 
   - python39-poetry-core 
+  - python39-poetry-dynamic-versioning 
   - python39-poetry-plugin-export 
   - python39-polib 
   - python39-pony 
@@ -32131,6 +32142,7 @@ unsorted:
   - python39-pulsectl 
   - python39-pulsemixer 
   - python39-pure-eval 
+  - python39-pure-protobuf 
   - python39-pure-sasl 
   - python39-purl 
   - python39-py 
@@ -34725,6 +34737,7 @@ unsorted:
   - scummvm-tools 
   - sd 
   - sd-mux-ctrl 
+  - sdbootutil-kernel-install 
   - sdbus-cpp-devel 
   - sdbus-cpp-devel-doc 
   - sdbus-cpp-xml2cpp 
@@ -45668,6 +45681,7 @@ unsorted:
   - vulkan-tools-32bit 
   - vulkan-utility-libraries-devel 
   - vulkan-validationlayers 
+  - vulkan-volk-devel 
   - vym 
   - w3c-markup-validator 
   - w3c-markup-validator-libs 
