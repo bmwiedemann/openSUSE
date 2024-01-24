@@ -1,7 +1,7 @@
 #
 # spec file for package paraview
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -262,12 +262,6 @@ sed -i "1{\@/usr/bin/env@d}" %{buildroot}%{python3_sitearch}/paraview/vtkmodules
 install -Dm0644 %{S:2} %{buildroot}%{_datadir}/%{name}-%{short_ver}/doc/GettingStarted.pdf
 install -Dm0644 %{S:3} %{buildroot}%{_datadir}/%{name}-%{short_ver}/doc/Guide.pdf
 
-# REMOVE paraview-config: DOESN'T WORK WITHOUT STATIC LIBS ANYWAY
-rm %{buildroot}%{_bindir}/paraview-config
-
-# Delete zero-length cmake files
-find %{buildroot}%{_libdir}/cmake/paraview-%{short_ver}/ -size 0 -delete -print
-
 %fdupes %{buildroot}/
 
 %post -n %{shlib} -p /sbin/ldconfig
@@ -277,6 +271,9 @@ find %{buildroot}%{_libdir}/cmake/paraview-%{short_ver}/ -size 0 -delete -print
 %files
 %license %{_datadir}/licenses/ParaView/
 %{_bindir}/*
+# Part of paraview-devel-static
+%exclude %{_bindir}/paraview-config
+#
 %exclude %{_bindir}/smTest*
 %exclude %{_bindir}/vtk*
 %{_datadir}/%{name}-%{short_ver}/
@@ -306,6 +303,7 @@ find %{buildroot}%{_libdir}/cmake/paraview-%{short_ver}/ -size 0 -delete -print
 %{_includedir}/%{name}*
 
 %files devel-static
+%{_bindir}/paraview-config
 %{_libdir}/*.a
 
 %files -n python3-paraview
