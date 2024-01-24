@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -306,6 +306,11 @@ sed -i '/"certifi>=.*"/ d' pyproject.toml
 
 %if %{with test}
 %check
+# force 'swrast' ("llvmpipe") Mesa/OpenGL driver to be used by
+# setting and exporting LIBGL_ALWAYS_SOFTWARE=1 to get rid of
+# issues when Mesa is trying to load 'zink' driver (messages are
+# just warnings, but seem to be fatal for the tests here) (boo#1219095)
+export LIBGL_ALWAYS_SOFTWARE=1
 # fails to detect alternative backend within xvfb
 skip_tests+=" or test_backend_fallback_headful"
 # test_usetex.py::test_usetex[png] - no tex text -- do not skip test_empty[png] and test_unicode_minus[png]
