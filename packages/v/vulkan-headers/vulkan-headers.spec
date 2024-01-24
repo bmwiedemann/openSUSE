@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-headers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 #
 
 Name:           vulkan-headers
-Version:        1.3.268.0
+Version:        1.3.275.0
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
@@ -58,8 +58,6 @@ to make use of Vulkan.
 
 %install
 %cmake_install
-# Fixed upstream (#336) for next rel
-#find "%buildroot" -name genvk.py -type f -exec chmod a+x {} +
 
 %files
 %license LICENSE.md
