@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Jan 23 06:56:11 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 0.7.2:
+  * Add --log-file to gvproxy
+  * ssh: Recreate connection on retries in setupProxy
+  * build(deps): bump golang.org/x/sync from 0.5.0 to 0.6.0
+  * build(deps): bump golang.org/x/crypto from 0.17.0 to 0.18.0
+  * ghactions: add Go 1.22rc1
+  * go.mod: gvisor.dev/gvisor v0.0.0-20231023213702-2691a8f9b1cf
+  * ssh: Add when to setupProxy
+  * ssh: Introduce 'retry' helper
+  * [CI:BUILD] packit: simplify config after F37 EOL
+  * version: Add versioning for github tarballs
+  * version: Add moduleVersionFromBuildInfo
+  * cmd/*: Add -version flag to executables
+  * build(deps): bump golang.org/x/crypto from 0.15.0 to 0.17.0
+  * build: Use ldflags in win-{gvproxy,sshproxy} targets
+  * build(deps): bump github.com/coreos/stream-metadata-go
+  * build(deps): bump github.com/miekg/dns from 1.1.56 to 1.1.57
+  * build(deps): bump github.com/onsi/gomega from 1.28.0 to 1.30.0
+  * build(deps): bump golang.org/x/sync from 0.4.0 to 0.5.0
+  * build(deps): bump golang.org/x/crypto from 0.14.0 to 0.15.0
+  * lint: Stop using dot imports
+  * tools: Update golangci-lint to latest version
+  * transport: Support passing CID for linux vsock
+  * Packit: enable f39 downstream tasks
+  * build(deps): bump golang.org/x/net from 0.15.0 to 0.17.0
+  * build(deps): bump golang.org/x/sync from 0.3.0 to 0.4.0
+  * build(deps): bump golang.org/x/crypto from 0.13.0 to 0.14.0
+  * build(deps): bump github.com/onsi/gomega from 1.27.10 to 1.28.0
+  * Packit: add ppc64le and s390x targets for podman-next copr
+  * build(deps): bump github.com/miekg/dns from 1.1.55 to 1.1.56
+  * Add graceful shutdown support for gvproxy on Win
+  * ghactions: Add comment explaining why we stay on ubuntu-20.04
+  * ghactions: Use macos-latest instead of macos-11
+  * ghactions: Use `make win-sshproxy`
+  * ghactions: build: Add win-gvproxy and win-sshproxy
+  * Packit: enable f39 targets
+  * rpm: correctly obsolete older rpm builds
+  * rpm: gvforwarder subpackage
+  * Packit: reuse copr targets for podman-next
+  * Rename Command type to GvproxyCommand
+  * Fixes the generated commandline for the Command type
+  * README: More vfkit updates
+  * build(deps): bump golang.org/x/crypto from 0.12.0 to 0.13.0
+  * build: Add freebsd build to make cross
+  * transport: Refactor 'Listen' code
+  * transport: Only build unixgram on darwin
+  * build: Use golangci-lint from tools/
+  * tools: go.mod: Switch to golang 1.20
+  * tools: Rename go module
+  * build: Remove -arm64/-amd64 darwin binaries after makefat
+  * build: Build arm64 linux binary
+  * ghactions: Build on ubuntu 20.04
+  * Fix golangci-lint errors
+  * build(deps): bump golang.org/x/crypto from 0.11.0 to 0.12.0
+  * Add `Command` type
+  * packit: Build PRs into default packit COPRs
+  * build(deps): bump golang.org/x/sys from 0.10.0 to 0.11.0
+  * gvproxy: add docker.internal dns entries
+  * Packit: switch to rpm/gvisor-tap-vsock.spec
+  * README.md: Replace hyperkit with vfkit
+  * README.md: Fix QEMU spelling
+
+-------------------------------------------------------------------
 Thu Aug 03 12:50:21 UTC 2023 - danish.prakash@suse.com
 
 - Use .obscpio archive format with obs_scm svc
