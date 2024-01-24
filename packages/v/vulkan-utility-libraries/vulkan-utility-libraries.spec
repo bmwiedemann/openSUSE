@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-utility-libraries
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%define lname libVulkanLayerSettings-1_3_268_0
+# version also present in shared.diff
+%define lname libVulkanLayerSettings-1_3_275_0
 Name:           vulkan-utility-libraries
-Version:        1.3.268.0
+Version:        1.3.275.0
 Release:        0
 Summary:        Utility libraries for Vulkan
 License:        Apache-2.0
@@ -33,7 +34,7 @@ BuildRequires:  c++_compiler
 %endif
 BuildRequires:  cmake >= 3.17.2
 BuildRequires:  pkg-config
-BuildRequires:  vulkan-headers >= 1.3.268
+BuildRequires:  vulkan-headers >= 1.3.275
 Obsoletes:      vulkan < %version-%release
 Provides:       vulkan = %version-%release
 
