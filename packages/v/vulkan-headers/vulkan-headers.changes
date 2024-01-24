@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 18 19:13:54 UTC 2024 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Update to release SDK-1.3.275.0
+  * New extensions: VK_ARM_scheduling_controls,
+    VK_NV_cuda_kernel_launch, VK_IMG_relaxed_line_rasterization,
+    VK_EXT_layer_settings, VK_ARM_render_pass_striped,
+    VK_KHR_calibrated_timestamps, VK_KHR_vertex_attribute_divisor,
+    VK_KHR_video_encode_queue, VK_KHR_video_encode_h264,
+    VK_KHR_video_encode_h265, VK_KHR_video_maintenance1,
+    VK_KHR_maintenance6, VK_NV_per_stage_descriptor_set.
+
+-------------------------------------------------------------------
 Fri Oct 27 03:47:20 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.268.0
