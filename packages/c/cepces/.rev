@@ -71,4 +71,15 @@
 </comment>
     <requestid>1039334</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>977db8463480a319b389cee4c97f2a0a</srcmd5>
+    <version>0.3.8</version>
+    <time>1706119449</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.8:
+  * Fix WSTEP BinarySecurityToken attribute namespaces
+  * Migrate to SPNEGO auth mech
+</comment>
+    <requestid>1140677</requestid>
+  </revision>
 </revisionlist>

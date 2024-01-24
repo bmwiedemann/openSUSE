@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 22 15:17:33 UTC 2024 - dmulder@suse.com
+
+- Update to version 0.3.8:
+  * Fix WSTEP BinarySecurityToken attribute namespaces
+  * Migrate to SPNEGO auth mech
+
+-------------------------------------------------------------------
 Thu Dec  1 14:44:33 UTC 2022 - David Mulder <dmulder@suse.com>
 
 Release v0.3.7:

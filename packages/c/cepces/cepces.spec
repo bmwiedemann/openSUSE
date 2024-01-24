@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global logdir %{_localstatedir}/log/%{app_name}
 
 Name:           %{app_name}
-Version:        0.3.7
+Version:        0.3.8
 Release:        0%{?dist}
 Summary:        Certificate Enrollment through CEP/CES
 
@@ -35,6 +35,7 @@ Requires:       python3-%{app_name} == %{version}
 %if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
 Requires:       (%{app_name}-selinux == %{version} if selinux-policy)
 %endif
+BuildRequires:  fdupes
 
 %description
 %{app_name} is an application for enrolling certificates through CEP and CES.
@@ -129,6 +130,8 @@ install -p -m 755 bin/%{app_name}-submit \
 %{__rm} -rfv %{buildroot}/usr/local/libexec/certmonger
 
 sed -i 's/\/usr\/bin\/env python3/\/usr\/bin\/python3/g' %{buildroot}%{_libexecdir}/certmonger/%{app_name}-submit
+
+%fdupes %{buildroot}/%{python3_sitelib}/%{app_name}
 
 %if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
 %post selinux
