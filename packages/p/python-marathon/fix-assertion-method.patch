@@ -1,0 +1,25 @@
+Index: marathon-python-0.13.0/tests/test_model_app.py
+===================================================================
+--- marathon-python-0.13.0.orig/tests/test_model_app.py
++++ marathon-python-0.13.0/tests/test_model_app.py
+@@ -9,7 +9,7 @@ class MarathonAppTest(unittest.TestCase)
+         é testé
+         """
+         app = MarathonApp()
+-        self.assertEquals(app.env, {})
++        self.assertEqual(app.env, {})
+ 
+     def test_add_env_empty_dict(self):
+         app = MarathonApp()
+Index: marathon-python-0.13.0/tests/test_model_deployment.py
+===================================================================
+--- marathon-python-0.13.0.orig/tests/test_model_deployment.py
++++ marathon-python-0.13.0/tests/test_model_deployment.py
+@@ -29,5 +29,5 @@ class MarathonDeploymentTest(unittest.Te
+         }
+ 
+         deployment = MarathonDeployment.from_json(deployment_json)
+-        self.assertEquals(deployment.id, "ID")
+-        self.assertEquals(deployment.current_actions[0].app, "/app")
++        self.assertEqual(deployment.id, "ID")
++        self.assertEqual(deployment.current_actions[0].app, "/app")

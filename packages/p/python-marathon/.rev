@@ -62,4 +62,16 @@
     <comment></comment>
     <requestid>958056</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>dd95400f19132609eeddec4e049a6897</srcmd5>
+    <version>0.13.0</version>
+    <time>1706119534</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.
+- Actually run fdupes.
+- Add patch fix-assertion-method.patch:
+  * Use assertEqual, not assertEquals.</comment>
+    <requestid>1141102</requestid>
+  </revision>
 </revisionlist>
