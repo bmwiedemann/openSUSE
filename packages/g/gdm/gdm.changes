@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 23 07:58:15 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- Make Patch0 only applies on s390 and s390x.
+
+-------------------------------------------------------------------
 Tue Nov 28 12:08:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.
