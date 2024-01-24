@@ -1,7 +1,7 @@
-Index: gnome-shell-45.0/js/gdm/domain.js
+Index: gnome-shell-45.3/js/gdm/domain.js
 ===================================================================
 --- /dev/null
-+++ gnome-shell-45.0/js/gdm/domain.js
++++ gnome-shell-45.3/js/gdm/domain.js
 @@ -0,0 +1,236 @@
 +// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 +/*
@@ -239,10 +239,10 @@ Index: gnome-shell-45.0/js/gdm/domain.js
 +        return this._activeDomain + this._separator + user;
 +    }
 +}
-Index: gnome-shell-45.0/js/gdm/loginDialog.js
+Index: gnome-shell-45.3/js/gdm/loginDialog.js
 ===================================================================
---- gnome-shell-45.0.orig/js/gdm/loginDialog.js
-+++ gnome-shell-45.0/js/gdm/loginDialog.js
+--- gnome-shell-45.3.orig/js/gdm/loginDialog.js
++++ gnome-shell-45.3/js/gdm/loginDialog.js
 @@ -29,6 +29,7 @@ import Shell from 'gi://Shell';
  import St from 'gi://St';
  
@@ -342,22 +342,22 @@ Index: gnome-shell-45.0/js/gdm/loginDialog.js
          this._userList.grab_key_focus();
      }
  
-Index: gnome-shell-45.0/js/js-resources.gresource.xml
+Index: gnome-shell-45.3/js/js-resources.gresource.xml
 ===================================================================
---- gnome-shell-45.0.orig/js/js-resources.gresource.xml
-+++ gnome-shell-45.0/js/js-resources.gresource.xml
+--- gnome-shell-45.3.orig/js/js-resources.gresource.xml
++++ gnome-shell-45.3/js/js-resources.gresource.xml
 @@ -3,6 +3,7 @@
    <gresource prefix="/org/gnome/shell">
      <file>gdm/authList.js</file>
      <file>gdm/authPrompt.js</file>
 +    <file>gdm/domain.js</file>
      <file>gdm/batch.js</file>
+     <file>gdm/credentialManager.js</file>
      <file>gdm/loginDialog.js</file>
-     <file>gdm/oVirt.js</file>
-Index: gnome-shell-45.0/po/POTFILES.in
+Index: gnome-shell-45.3/po/POTFILES.in
 ===================================================================
---- gnome-shell-45.0.orig/po/POTFILES.in
-+++ gnome-shell-45.0/po/POTFILES.in
+--- gnome-shell-45.3.orig/po/POTFILES.in
++++ gnome-shell-45.3/po/POTFILES.in
 @@ -9,6 +9,7 @@ data/org.gnome.Shell.Extensions.desktop.
  data/org.gnome.Shell.PortalHelper.desktop.in.in
  js/dbusServices/extensions/ui/extension-error-page.ui

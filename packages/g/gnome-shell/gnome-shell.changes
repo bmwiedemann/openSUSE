@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 22 02:31:04 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Adapt to version 45.3(bsc#1216072):
+  + Rebase gnome-shell-domain.patch
+  + Rebase gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
+
+-------------------------------------------------------------------
 Wed Jan 10 08:56:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.3:

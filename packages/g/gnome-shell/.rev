@@ -2236,4 +2236,14 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>Update to 45.3 (forwarded request 1137898 from dimstar)</comment>
     <requestid>1137905</requestid>
   </revision>
+  <revision rev="249" vrev="2">
+    <srcmd5>f3f07dd506f9002b2e6407a1d657ebbc</srcmd5>
+    <version>45.3</version>
+    <time>1706119472</time>
+    <user>anag+factory</user>
+    <comment>- Adapt to version 45.3(bsc#1216072):
+  + Rebase gnome-shell-domain.patch
+  + Rebase gnome-shell-fate324570-Make-GDM-background-image-configurable.patch (forwarded request 1140749 from xiaoguang_wang)</comment>
+    <requestid>1140890</requestid>
+  </revision>
 </revisionlist>
