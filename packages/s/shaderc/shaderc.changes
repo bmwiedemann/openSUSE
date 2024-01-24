@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 19 13:04:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.8
+  * API: Expose rlaxed Vulkan rules from glslang
+
+-------------------------------------------------------------------
 Thu Nov  9 15:46:07 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix previous change: export to CXXFLAGS instead of CPPFLAGS so

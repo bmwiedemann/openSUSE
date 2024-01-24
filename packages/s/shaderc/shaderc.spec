@@ -1,7 +1,7 @@
 #
 # spec file for package shaderc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # Remember to bump in baselibs.conf
 %define lname libshaderc_shared1
 Name:           shaderc
-Version:        2023.7
+Version:        2023.8
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
@@ -31,10 +31,11 @@ Source99:       baselibs.conf
 Patch1:         0001-Use-system-third-party-libs.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 2.8.12
-BuildRequires:  glslang-devel >= 12.3.1+sdk261
+BuildRequires:  glslang-devel >= 14
 BuildRequires:  glslang-nonstd-devel
-BuildRequires:  spirv-headers >= 1.6.1~sdk261
-BuildRequires:  spirv-tools-devel >= 2023.4~rc2
+BuildRequires:  python3-base
+BuildRequires:  spirv-headers >= 1.6.1~sdk275
+BuildRequires:  spirv-tools-devel >= 2023.6~rc1
 
 %description
 A collection of tools, libraries and tests for shader compilation.
@@ -68,6 +69,7 @@ Shaderc wraps around core functionality in glslang and SPIRV-Tools
 %autosetup -p1
 chmod a+x utils/update_build_version.sh
 echo "\"%version\"" >glslc/src/build-version.inc
+find . -type f -exec grep -l '#!/usr/bin/env python' {} + | xargs perl -i -lpe 's{/env python\w*}{/python3}g'
 
 %build
 export CXXFLAGS="%{optflags} -I%_includedir/External"
