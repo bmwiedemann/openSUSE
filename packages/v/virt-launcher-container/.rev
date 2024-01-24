@@ -215,4 +215,11 @@
     <comment></comment>
     <requestid>1136524</requestid>
   </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>f7ad311a7e87113832ae32c084dfc394</srcmd5>
+    <version>unknown</version>
+    <time>1706082502</time>
+    <user>dimstar_suse</user>
+    <comment>Use netcat instead of non-free nmap/ncat</comment>
+  </revision>
 </revisionlist>
