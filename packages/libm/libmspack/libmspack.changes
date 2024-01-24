@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 22 17:09:16 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- The following bugs and CVEs are not affecting TW:
+  * CVE-2018-18584
+  * CVE-2018-18585
+  * CVE-2018-18586
+  * CVE-2019-1010305
+  * bsc#1113038
+  * bsc#1113039
+  * bsc#1113040
+  * bsc#1130489
+  * bsc#1141680
+
+-------------------------------------------------------------------
 Mon Feb  6 10:46:11 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.11:
