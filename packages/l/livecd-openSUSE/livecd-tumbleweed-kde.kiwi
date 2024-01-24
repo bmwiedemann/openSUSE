@@ -524,8 +524,6 @@
     <ignore name="libproxy1-pacrunner-webkit"/>
     <package name="aaa_base" replaces="vlc"/>
     <ignore name="vlc"/>
-    <package name="aaa_base" replaces="vlc-noX"/>
-    <ignore name="vlc-noX"/>
     <package name="aaa_base" replaces="vlc-qt"/>
     <ignore name="vlc-qt"/>
     <package name="aaa_base" replaces="vlc-lang"/>
