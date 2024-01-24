@@ -179,4 +179,12 @@ New dependency of python-Pyramid</comment>
 - Drop patch fix-pylons-sphinx-theme.diff</comment>
     <requestid>1137870</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>18aaa7c26a2a18039ac5b6e6c4f89a82</srcmd5>
+    <version>3.1.0</version>
+    <time>1706119569</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141246</requestid>
+  </revision>
 </revisionlist>

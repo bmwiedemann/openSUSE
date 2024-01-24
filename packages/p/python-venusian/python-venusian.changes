@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 24 11:36:23 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error in Leap.
+  Use correct BuildRequires.
+
+-------------------------------------------------------------------
 Wed Jan 10 06:10:22 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.1.0:
