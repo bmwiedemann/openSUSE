@@ -1,0 +1,20 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-01-19 11:52:08.473079444 +0100
+
+---
+ CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: volk-vulkan-sdk-1.3.275.0/CMakeLists.txt
+===================================================================
+--- volk-vulkan-sdk-1.3.275.0.orig/CMakeLists.txt
++++ volk-vulkan-sdk-1.3.275.0/CMakeLists.txt
+@@ -31,7 +31,7 @@ endif()
+ # Static library
+ 
+ if(NOT VOLK_HEADERS_ONLY OR VOLK_INSTALL)
+-  add_library(volk STATIC volk.h volk.c)
++  add_library(volk SHARED volk.h volk.c)
+   add_library(volk::volk ALIAS volk)
+   target_include_directories(volk PUBLIC
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
