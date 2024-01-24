@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-core
-Version:        1.29.6
+Version:        1.29.7
 Release:        0
 Summary:        Microsoft Azure Core Library for Python
 License:        MIT
@@ -34,8 +34,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 3.0
-Requires:       python-anyio < 5.0
-Requires:       python-anyio >= 3.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-requests >= 2.21.0
 Requires:       python-six >= 1.11.0
