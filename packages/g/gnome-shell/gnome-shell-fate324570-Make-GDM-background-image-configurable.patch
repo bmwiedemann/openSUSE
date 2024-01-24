@@ -1,19 +1,19 @@
-Index: gnome-shell-45.0/data/gnome-shell-theme.gresource.xml
+Index: gnome-shell-45.3/data/gnome-shell-theme.gresource.xml
 ===================================================================
---- gnome-shell-45.0.orig/data/gnome-shell-theme.gresource.xml
-+++ gnome-shell-45.0/data/gnome-shell-theme.gresource.xml
+--- gnome-shell-45.3.orig/data/gnome-shell-theme.gresource.xml
++++ gnome-shell-45.3/data/gnome-shell-theme.gresource.xml
 @@ -13,6 +13,7 @@
      <file>gnome-shell-light.css</file>
      <file>gnome-shell-high-contrast.css</file>
      <file>gnome-shell-start.svg</file>
 +    <file>noise-texture.png</file>
      <file>pad-osd.css</file>
-     <file>process-working.svg</file>
-     <file>toggle-off.svg</file>
-Index: gnome-shell-45.0/js/ui/screenShield.js
+     <file>process-working-light.svg</file>
+     <file>process-working-dark.svg</file>
+Index: gnome-shell-45.3/js/ui/screenShield.js
 ===================================================================
---- gnome-shell-45.0.orig/js/ui/screenShield.js
-+++ gnome-shell-45.0/js/ui/screenShield.js
+--- gnome-shell-45.3.orig/js/ui/screenShield.js
++++ gnome-shell-45.3/js/ui/screenShield.js
 @@ -11,6 +11,7 @@ import St from 'gi://St';
  
  import * as Signals from '../misc/signals.js';
@@ -74,7 +74,7 @@ Index: gnome-shell-45.0/js/ui/screenShield.js
      }
  
      async _getLoginSession() {
-@@ -522,6 +547,53 @@ export class ScreenShield extends Signal
+@@ -518,6 +543,53 @@ export class ScreenShield extends Signal
          this.emit('wake-up-screen');
      }
  
