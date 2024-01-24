@@ -17,7 +17,7 @@
 
 
 Name:           qml-autoreqprov
-Version:        1.4
+Version:        1.4.1
 Release:        0
 Summary:        Automatic dependency generator for QML files and modules
 License:        GPL-3.0-or-later
