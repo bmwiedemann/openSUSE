@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 22 15:39:47 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.7.1:
+  * crond: Wait on finishing the job with -n option to check
+    the exit status
+  * crond: Do not set the return path to <> if non-default MAILFROM is set
+  * /etc/sysconfig/crond and /etc/default/anacron files are optional
+- Remove test-for-etc-default-anacron.patch
+
+-------------------------------------------------------------------
+Thu Jan 18 08:27:24 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
+
+- Set safe permissions for crontab backups. Add
+  * safe-backup-permissions.patch
+
+-------------------------------------------------------------------
 Thu Jan 11 17:52:56 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix anacron not working when /etc/default/anacron does not exist,
