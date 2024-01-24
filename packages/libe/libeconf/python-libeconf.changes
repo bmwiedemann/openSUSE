@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 22 14:30:16 UTC 2024 - schubi@suse.com
+
+- Update to version 0.6.1:
+  * reading lines which have a length greater than BUFSIZE (#195)
+  * Improved data quote check in read_file (#193)
+
+-------------------------------------------------------------------
 Mon Nov 13 07:55:36 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Do not requires the library for the documentation
