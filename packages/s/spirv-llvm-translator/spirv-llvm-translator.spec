@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-llvm-translator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/KhronosGroup/SPIRV-LLVM-Translator
 Source:         https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v%{version}.tar.gz#/SPIRV-LLVM-Translator-%{version}.tar.gz
+Patch0:         https://github.com/KhronosGroup/SPIRV-LLVM-Translator/commit/ca3ae0cc.patch
 BuildRequires:  cmake >= 3.3
 BuildRequires:  gcc-c++
 BuildRequires:  llvm%{sover}-devel
@@ -60,6 +61,9 @@ the LLVM/SPIR-V Bi-Directional Translator library.
 
 %prep
 %setup -q -n SPIRV-LLVM-Translator-%{version}
+%if %{pkg_vcmp spirv-headers >= 1.6.1+sdk275}
+%patch -P 0 -p 1
+%endif
 
 %build
 %cmake \

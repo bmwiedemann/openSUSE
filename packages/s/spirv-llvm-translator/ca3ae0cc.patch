@@ -1,0 +1,110 @@
+From ca3ae0cc936aab4f15f6798f01069882fd5a58bf Mon Sep 17 00:00:00 2001
+From: Dmitry Sidorov <dmitry.sidorov@intel.com>
+Date: Tue, 23 Jan 2024 12:41:32 +0100
+Subject: [PATCH] [Backport to 17] Update LongConstantCompositeINTEL to
+ LongCompositesINTEL capability after Headers change (#2258) (#2308)
+
+* Bump SPIRV-Headers to 1c6bb2743599e6eb6f37b2969acc0aef812e32e3
+* replace internal SPV_INTEL_long_composites ext with the published SPV_INTEL_long_composites
+* don't rename extension for now
+This closes: https://github.com/KhronosGroup/SPIRV-LLVM-Translator/issues/2261
+
+Co-authored-by: Viktoria Maximova <viktoria.maksimova@intel.com>
+Co-authored-by: Wlodarczyk, Bertrand <bertrand.wlodarczyk@intel.com>
+---
+ include/LLVMSPIRVExtensions.inc                 | 4 +++-
+ lib/SPIRV/libSPIRV/SPIRVEntry.h                 | 2 +-
+ lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h           | 2 +-
+ spirv-headers-tag.conf                          | 2 +-
+ test/SpecConstants/long-spec-const-composite.ll | 2 +-
+ test/long-constant-array.ll                     | 2 +-
+ test/long-type-struct.ll                        | 2 +-
+ 7 files changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/include/LLVMSPIRVExtensions.inc b/include/LLVMSPIRVExtensions.inc
+index eb98c7f60..cace48cea 100644
+--- a/include/LLVMSPIRVExtensions.inc
++++ b/include/LLVMSPIRVExtensions.inc
+@@ -41,7 +41,9 @@ EXT(SPV_INTEL_variable_length_array)
+ EXT(SPV_INTEL_fp_fast_math_mode)
+ EXT(SPV_INTEL_fpga_cluster_attributes)
+ EXT(SPV_INTEL_loop_fuse)
+-EXT(SPV_INTEL_long_constant_composite)
++EXT(SPV_INTEL_long_composites)
++EXT(SPV_INTEL_long_constant_composite) // TODO: rename to
++                                       // SPV_INTEL_long_composites later
+ EXT(SPV_INTEL_optnone)
+ EXT(SPV_INTEL_fpga_dsp_control)
+ EXT(SPV_INTEL_memory_access_aliasing)
+diff --git a/lib/SPIRV/libSPIRV/SPIRVEntry.h b/lib/SPIRV/libSPIRV/SPIRVEntry.h
+index a3c944196..fbc7eef71 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVEntry.h
++++ b/lib/SPIRV/libSPIRV/SPIRVEntry.h
+@@ -908,7 +908,7 @@ class SPIRVContinuedInstINTELBase : public SPIRVEntryNoId<OC> {
+   }
+ 
+   SPIRVCapVec getRequiredCapability() const override {
+-    return getVec(CapabilityLongConstantCompositeINTEL);
++    return getVec(CapabilityLongCompositesINTEL);
+   }
+ 
+   std::optional<ExtensionID> getRequiredExtension() const override {
+diff --git a/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h b/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
+index d450a4381..a2a0ddb05 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
++++ b/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
+@@ -610,7 +610,7 @@ template <> inline void SPIRVMap<Capability, std::string>::init() {
+   add(CapabilityGroupNonUniformRotateKHR, "GroupNonUniformRotateKHR");
+   add(CapabilityAtomicFloat32AddEXT, "AtomicFloat32AddEXT");
+   add(CapabilityAtomicFloat64AddEXT, "AtomicFloat64AddEXT");
+-  add(CapabilityLongConstantCompositeINTEL, "LongConstantCompositeINTEL");
++  add(CapabilityLongCompositesINTEL, "LongCompositesINTEL");
+   add(CapabilityOptNoneINTEL, "OptNoneINTEL");
+   add(CapabilityAtomicFloat16AddEXT, "AtomicFloat16AddEXT");
+   add(CapabilityDebugInfoModuleINTEL, "DebugInfoModuleINTEL");
+diff --git a/spirv-headers-tag.conf b/spirv-headers-tag.conf
+index 9a532ba5d..7fae55f32 100644
+--- a/spirv-headers-tag.conf
++++ b/spirv-headers-tag.conf
+@@ -1 +1 @@
+-9b527c0fb60124936d0906d44803bec51a0200fb
++1c6bb2743599e6eb6f37b2969acc0aef812e32e3
+diff --git a/test/SpecConstants/long-spec-const-composite.ll b/test/SpecConstants/long-spec-const-composite.ll
+index a45c89570..8994d9741 100644
+--- a/test/SpecConstants/long-spec-const-composite.ll
++++ b/test/SpecConstants/long-spec-const-composite.ll
+@@ -11,7 +11,7 @@
+ target datalayout = "e-i64:64-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024-n8:16:32:64"
+ target triple = "spir64-unknown-unknown"
+ 
+-; CHECK-SPIRV: Capability LongConstantCompositeINTEL 
++; CHECK-SPIRV: Capability LongCompositesINTEL
+ ; CHECK-SPIRV: Extension "SPV_INTEL_long_constant_composite"
+ ; CHECK-SPIRV-DAG: Decorate [[First:[0-9]+]] SpecId  0
+ ; CHECK-SPIRV-DAG: Decorate [[Last:[0-9]+]] SpecId 65548
+diff --git a/test/long-constant-array.ll b/test/long-constant-array.ll
+index 415a72328..21dab6292 100644
+--- a/test/long-constant-array.ll
++++ b/test/long-constant-array.ll
+@@ -9,7 +9,7 @@
+ ; TODO: run validator once it supports the extension
+ ; RUNx: spirv-val %t.spv
+ 
+-; CHECK-SPIRV: Capability LongConstantCompositeINTEL 
++; CHECK-SPIRV: Capability LongCompositesINTEL
+ ; CHECK-SPIRV: Extension "SPV_INTEL_long_constant_composite"
+ ; CHECK-SPIRV: TypeInt [[TInt:[0-9]+]] 8
+ ; CHECK-SPIRV: Constant {{[0-9]+}} [[ArrSize:[0-9]+]] 78000
+diff --git a/test/long-type-struct.ll b/test/long-type-struct.ll
+index 9b83f62dc..a0ff39716 100644
+--- a/test/long-type-struct.ll
++++ b/test/long-type-struct.ll
+@@ -10,7 +10,7 @@
+ 
+ ; RUN: not llvm-spirv %t.bc -o %t.spv 2>&1 | FileCheck %s --check-prefix=CHECK-ERROR
+ 
+-; CHECK-SPIRV: Capability LongConstantCompositeINTEL 
++; CHECK-SPIRV: Capability LongCompositesINTEL
+ ; CHECK-SPIRV: Extension "SPV_INTEL_long_constant_composite"
+ ; CHECK-SPIRV: TypeInt [[TInt:[0-9]+]] 8
+ ; CHECK-SPIRV: TypePointer [[TIntPtr:[0-9]+]] 8 [[TInt]]
