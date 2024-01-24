@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 24 06:44:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch suppot-python-312.patch:
+  * Support code changes in Python 3.12+.
+
+-------------------------------------------------------------------
 Thu Oct 19 16:35:18 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add test-ruff-0.1.0.patch to fix tests with ruvv-0.1.0 
