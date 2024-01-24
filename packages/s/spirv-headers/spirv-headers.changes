@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 19 11:33:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.275.0
+  * ClspvReflection non-sematic: add
+    NormalizedSamplerMaskPushConstant
+  * Headers support for new FPGAMemoryAttributesINTEL
+  * Fix SPV_KHR_workgroup_memory_explicit_layout implicit
+    declaration
+  * Change token IDs for global_variable_fpga_decorations and
+    global_variable_host_access
+  * Update SPV_INTEL_long_composites tokens
+  * Add Type-Declaration for extended types
+  * Headers support for FPGAClusterAttributesV2INTEL
+
+-------------------------------------------------------------------
 Fri Oct 27 04:00:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.268.0
