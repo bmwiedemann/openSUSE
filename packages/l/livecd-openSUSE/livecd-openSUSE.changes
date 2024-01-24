@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 24 07:48:58 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-kde: switch from phonon4qt5-backend-gstreamer to
+  phonon4qt5-backend-vlc: the gstreamer backed is deprecated and no
+  longer maintained.
+
+-------------------------------------------------------------------
 Fri Jan  5 08:28:20 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - config.sh: drop intel vsc firmware (11MB): Visual Sensing Control

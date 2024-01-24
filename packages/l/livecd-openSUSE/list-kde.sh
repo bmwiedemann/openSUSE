@@ -35,7 +35,7 @@ buildignore plasma5-desktop-emojier
 
 # Resolve have-choice
 install plasma-nm5
-install phonon4qt5-backend-gstreamer
+install phonon4qt5-backend-vlc
 buildignore ispell
 
 # No fun allowed
