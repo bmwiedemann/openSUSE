@@ -367,4 +367,12 @@
     <comment>new_version</comment>
     <requestid>1120705</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>485e655ff082b91d497331565df977af</srcmd5>
+    <version>1.3.275.0</version>
+    <time>1706119489</time>
+    <user>anag+factory</user>
+    <comment>- Update to release SDK-1.3.275.0</comment>
+    <requestid>1139939</requestid>
+  </revision>
 </revisionlist>
