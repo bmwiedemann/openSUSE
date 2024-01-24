@@ -193,7 +193,7 @@ find . -iname \*.py -print -exec sed -i '1s@^#!.*@#!%{_bindir}/python3@' '{}' \;
 %ifarch ppc
     -DNOTHREADS=ON \
 %endif
-    -DCMAKE_CXX_STANDARD=14 \
+    -DCMAKE_CXX_STANDARD=17 \
     -DINSTALL_DOCS:BOOL=ON \
     -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
     -DCMAKE_INSTALL_MANDIR:PATH=%{_mandir}/man1 \

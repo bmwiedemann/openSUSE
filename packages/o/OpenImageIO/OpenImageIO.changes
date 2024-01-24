@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 24 13:22:08 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- OpenImageIO so far forced C++ Standard 14 which does not match
+  with openVDB >= 10.1 which requires 17 at least.
+
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4021 
+
+-------------------------------------------------------------------
 Mon Jan 15 13:24:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - The devel package has to require the main package as the cmake
