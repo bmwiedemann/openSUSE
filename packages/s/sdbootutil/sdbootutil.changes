@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 23 07:46:31 UTC 2024 - lnussel@suse.com
+
+- Update to version 1+git20240122.c0d8f76:
+  * Integrate with kernel-install
+  * Rework kernel listing a bit
+  * Add checks to list-entries
+  * List entries for current system only by default
+  * Fall back to loader.conf if setting efivar failed
+  * Runtime determine kernel image name
+  * Add list-snapshots
+  * Add list-entries command
+
+-------------------------------------------------------------------
 Mon Jan 22 12:58:40 UTC 2024 - lnussel@suse.com
 
 - Update to version 1+git20240118.7e744b4:

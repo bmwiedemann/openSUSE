@@ -123,4 +123,20 @@
   * Bind mount /etc inside the snapshot</comment>
     <requestid>1140600</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>14d60e6bd02a96bc804a02c631d407a3</srcmd5>
+    <version>1+git20240122.c0d8f76</version>
+    <time>1706119471</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20240122.c0d8f76:
+  * Integrate with kernel-install
+  * Rework kernel listing a bit
+  * Add checks to list-entries
+  * List entries for current system only by default
+  * Fall back to loader.conf if setting efivar failed
+  * Runtime determine kernel image name
+  * Add list-snapshots
+  * Add list-entries command</comment>
+    <requestid>1140775</requestid>
+  </revision>
 </revisionlist>
