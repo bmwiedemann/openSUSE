@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 15 10:51:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Rework hash code to support openSSL 3.x EVP API
+  * memory leak fix
+  * tests for invalid zchunk files
+  * More statistics in zchunk_delta_info
+  * avoid infinite loop under certain conditions
+  * Add zck_get_chunk_ctx function to get context from chunk
+
+-------------------------------------------------------------------
 Sat Oct 14 10:19:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.2:
