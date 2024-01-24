@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-shutil
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ License:        MIT
 URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-shutil/pytest-shutil-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM pytest-fixtures-pr171-remove-mock.patch -- gh#man-group#pytest-plugins#171
-Patch1:         pytest-fixtures-pr171-remove-mock.patch
+Patch0:         pytest-fixtures-pr171-remove-mock.patch
+# PATCH-FIX-UPSTREAM gh#man-group/pytest-plugins#219
+Patch1:         stop-using-imp.patch
 BuildRequires:  %{python_module execnet}
 BuildRequires:  %{python_module path}
 BuildRequires:  %{python_module pytest}
