@@ -123,4 +123,13 @@
     <comment>- Refresh remove-mock.patch from upstream to also support Python 3.12.</comment>
     <requestid>1138195</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>bdf7756a1955ef574d1d80d41cc3b6ed</srcmd5>
+    <version>2.3.1</version>
+    <time>1706119528</time>
+    <user>anag+factory</user>
+    <comment>- Add missing BuildRequires on Pillow for tests.
+- Switch to pyproject macros.</comment>
+    <requestid>1141089</requestid>
+  </revision>
 </revisionlist>
