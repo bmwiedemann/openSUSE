@@ -1,7 +1,7 @@
 #
 # spec file for package zbar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Carlos Goncalves <cgoncalves@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,19 +20,18 @@
 %define sover   0
 %define libname lib%{name}%{sover}
 Name:           zbar
-Version:        0.23.90
+Version:        0.23.93
 Release:        0
 Summary:        Bar code reader
 License:        LGPL-2.0-or-later
 URL:            https://github.com/mchehab/zbar
 Source0:        https://linuxtv.org/downloads/%{name}/%{name}-%{version}.tar.bz2
 Source98:       baselibs.conf
-# PATCH-FIX-UPSTREAM: fix build against python 3.11 - https://github.com/mchehab/zbar/commit/9bb0cc43f7f9e9c676e07b2e511f03bfa1c491cb
-Patch1:         py311.patch
-# PATCH-FIX-UPSTREAM -- mvetter@suse.com -- bsc#1214770
-Patch2:         zbar-CVE-2023-40889.patch
-# PATCH-FIX-UPSTREAM -- mvetter@suse.com -- bsc#1214771
-Patch3:         zbar-CVE-2023-40890.patch
+# https://github.com/mchehab/zbar/issues/277
+Patch0:         https://github.com/mchehab/zbar/commit/368571ffa1a0f6cc41f708dd0d27f9b6e9409df8.patch#/zbar-pkgconfig.patch
+# https://github.com/mchehab/zbar/issues/277
+Patch1:         https://github.com/mchehab/zbar/commit/a549566ea11eb03622bd4458a1728ffe3f589163.patch#/zbar-configure.patch
+BuildRequires:  automake
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  xmlto
