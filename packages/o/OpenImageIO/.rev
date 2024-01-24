@@ -371,4 +371,14 @@ Updated oiio-detectplatform-others.patch to handle armv6l
     <comment></comment>
     <requestid>1138986</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>ee7ee8b753b0b25ff945570a43acd474</srcmd5>
+    <version>2.5.6.0</version>
+    <time>1706126263</time>
+    <user>dimstar_suse</user>
+    <comment>- OpenImageIO so far forced C++ Standard 14 which does not match
+  with openVDB &gt;= 10.1 which requires 17 at least.
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4021</comment>
+    <requestid>1141249</requestid>
+  </revision>
 </revisionlist>
