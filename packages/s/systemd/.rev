@@ -6992,4 +6992,22 @@ handle manual pages that consist only of a .so directive such as
     <comment></comment>
     <requestid>1140379</requestid>
   </revision>
+  <revision rev="413" vrev="3">
+    <srcmd5>157157b618b9838a9df6f017ae25a281</srcmd5>
+    <version>254.8</version>
+    <time>1706119478</time>
+    <user>anag+factory</user>
+    <comment>- Add patches that implement [jsc#PED-5659]
+  5003-cgroup-rename-TasksMax-structure-to-CGroupTasksMax.patch
+  5004-bus-print-properties-ignore-CGROUP_LIMIT_MAX-for-Mem.patch
+  5005-bus-print-properties-prettify-more-unset-properties.patch
+  5006-cgroup-Add-EffectiveMemoryMax-EffectiveMemoryHigh-an.patch
+  5007-test-Convert-rlimit-test-to-subtest-of-generic-limit.patch
+  5008-test-Add-effective-cgroup-limits-testing.patch
+  5009-cgroup-Restrict-effective-limits-with-global-resourc.patch
+  5010-cgroup-Rename-effective-limits-internal-table.patch
+  They are temporarily put in quarantine to get broader testing but should be
+  eventually moved to the git repo.</comment>
+    <requestid>1141007</requestid>
+  </revision>
 </revisionlist>

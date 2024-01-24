@@ -1,0 +1,56 @@
+From edfd70ab2c5490131fcf5a4348e31c19251d3479 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20Koutn=C3=BD?= <mkoutny@suse.com>
+Date: Tue, 23 Jan 2024 11:30:20 +0100
+Subject: [PATCH 5009/5011] cgroup: Restrict effective limits with global
+ resource provision
+
+Global resource (whole system or root cg's (e.g. in a container)) is
+also a well-defined limit for memory and tasks, take it into account
+when calculating effective limits.
+
+(cherry picked from commit 93f8e88d23bd383b5134f32c1e2ee315ac3a38c8)
+
+[mkoutny: fixes jsc#PED-5659]
+---
+ man/systemd.resource-control.xml |  2 +-
+ src/core/cgroup.c                | 11 +++++++++++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/man/systemd.resource-control.xml b/man/systemd.resource-control.xml
+index 5b7900af87..ded4722e7a 100644
+--- a/man/systemd.resource-control.xml
++++ b/man/systemd.resource-control.xml
+@@ -422,7 +422,7 @@ CPUWeight=20   DisableControllers=cpu              /          \
+           <literal>memory.max</literal> control group attribute. For details about this control group attribute, see
+           <ulink url="https://docs.kernel.org/admin-guide/cgroup-v2.html#memory-interface-files">Memory Interface Files</ulink>.
+           The effective configuration is reported as <varname>EffectiveMemoryMax=</varname> (the value is
+-          the most stringent limit of the unit and parent slices).</para>
++          the most stringent limit of the unit and parent slices and it is capped by physical memory).</para>
+ 
+           <para>While <varname>StartupMemoryMax=</varname> applies to the startup and shutdown phases of the system,
+           <varname>MemoryMax=</varname> applies to normal runtime of the system, and if the former is not set also to
+diff --git a/src/core/cgroup.c b/src/core/cgroup.c
+index 0842036559..a53d90486c 100644
+--- a/src/core/cgroup.c
++++ b/src/core/cgroup.c
+@@ -4006,6 +4006,17 @@ static uint64_t unit_get_effective_limit_one(Unit *u, CGroupLimitType type) {
+         assert(u);
+         assert(UNIT_HAS_CGROUP_CONTEXT(u));
+ 
++        if (unit_has_name(u, SPECIAL_ROOT_SLICE))
++                switch (type) {
++                        case CGROUP_LIMIT_MEMORY_MAX:
++                        case CGROUP_LIMIT_MEMORY_HIGH:
++                                return physical_memory();
++                        case CGROUP_LIMIT_TASKS_MAX:
++                                return system_tasks_max();
++                        default:
++                                assert_not_reached();
++                }
++
+         cc = unit_get_cgroup_context(u);
+         switch (type) {
+                 /* Note: on legacy/hybrid hierarchies memory_max stays CGROUP_LIMIT_MAX unless configured
+-- 
+2.35.3
+

@@ -221,6 +221,15 @@ Patch5:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 # will be removed as soon as a proper fix will be merged by upstream.
 Patch5001:      5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
 Patch5002:      5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
+# jsc#PED-5659
+Patch5003:      5003-cgroup-rename-TasksMax-structure-to-CGroupTasksMax.patch
+Patch5004:      5004-bus-print-properties-ignore-CGROUP_LIMIT_MAX-for-Mem.patch
+Patch5005:      5005-bus-print-properties-prettify-more-unset-properties.patch
+Patch5006:      5006-cgroup-Add-EffectiveMemoryMax-EffectiveMemoryHigh-an.patch
+Patch5007:      5007-test-Convert-rlimit-test-to-subtest-of-generic-limit.patch
+Patch5008:      5008-test-Add-effective-cgroup-limits-testing.patch
+Patch5009:      5009-cgroup-Restrict-effective-limits-with-global-resourc.patch
+Patch5010:      5010-cgroup-Rename-effective-limits-internal-table.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
