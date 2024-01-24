@@ -15,4 +15,13 @@
     <comment>- add test-ruff-0.1.0.patch to fix tests with ruvv-0.1.0 (forwarded request 1119080 from mimi_vx)</comment>
     <requestid>1119081</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5bba0b6cb26587c67c0da3a53816eb5c</srcmd5>
+    <version>0.0.10</version>
+    <time>1706119542</time>
+    <user>anag+factory</user>
+    <comment>- Add patch suppot-python-312.patch:
+  * Support code changes in Python 3.12+.</comment>
+    <requestid>1141121</requestid>
+  </revision>
 </revisionlist>

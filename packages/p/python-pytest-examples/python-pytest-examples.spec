@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-examples
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/pydantic/pytest-examples
 Source:         https://github.com/pydantic/pytest-examples/archive/refs/tags/v%{version}.tar.gz#/pytest-examples-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM test-ruff-0.1.0.patch - fix tests for ruff-0.1.0
 Patch0:         test-ruff-0.1.0.patch
+# PATCH-FIX-UPSTREAM gh#pydantic/pytest-examples#22
+Patch1:         suppot-python-312.patch
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -59,11 +61,11 @@ It can also update code examples in place to format them and insert or update pr
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest
+
 %files %{python_files}
 %{python_sitelib}/pytest_examples
 %{python_sitelib}/pytest_examples-%{version}.dist-info
-
-%check
-%pytest
 
 %changelog
