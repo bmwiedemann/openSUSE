@@ -5439,4 +5439,62 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - let sle15-sp6 require llvm17/clang17</comment>
     <requestid>1128045</requestid>
   </revision>
+  <revision rev="492" vrev="364">
+    <srcmd5>e570729929d31aa655a78356c7f6d8e3</srcmd5>
+    <version>unknown</version>
+    <time>1706119433</time>
+    <user>anag+factory</user>
+    <comment>- split python36-buildfix.patch into two patches python36-buildfix1.patch 
+  and python36-buildfix2.patch; apply the latter only on sle15-sp6/Leap 15.6
+  since on newer python releases than 3.6 it changes behaviour to 
+  remove required=True option
+
+- python36-buildfix.patch
+  * src/freedreno/registers/gen_header.py: hopefully fixes aarch64
+    build
+
+- u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
+  u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
+  python36-buildfix.patch
+  * fixes build against python 3.6 
+
+- let Mesa-dri require libvulkan1 to get zink/swrast driver
+  fallbacks working (hopefully); probably related:
+  https://gitlab.freedesktop.org/mesa/mesa/-/commit/2a71f06f2938678d89d5ed1372cda6a7b55d964d
+
+-  Update to bugfix release 23.3.3
+  --&gt; https://docs.mesa3d.org/relnotes/23.3.3.html
+
+- Update to bugfix release 23.3.2
+  --&gt; https://docs.mesa3d.org/relnotes/23.3.2.html 
+
+- Update to version 23.3.0:
+  * It includes NVK, a new reverse-engineered Vulkan driver for
+    Nvidia hardware. This driver is still in experimental phase,
+    not quite ready for prime time yet, but adventurous users can
+    give it a go!
+  * New extensions &amp; features (in no particular order):
+    - VK_EXT_pipeline_robustness on ANV
+    - VK_KHR_maintenance5 on RADV
+    - OpenGL ES 3.1 on Asahi
+    - GL_ARB_compute_shader on Asahi
+    - GL_ARB_shader_atomic_counters on Asahi
+    - GL_ARB_shader_image_load_store on Asahi
+    - GL_ARB_shader_image_size on Asahi
+    - GL_ARB_shader_storage_buffer_object on Asahi
+    - GL_ARB_sample_shading on Asahi
+    - GL_OES_sample_variables on Asahi
+    - GL_OES_shader_multisample_interpolation on Asahi
+    - GL_OES_gpu_shader5 on Asahi
+    - EGL_ANDROID_blob_cache works when disk caching is disabled
+    - VK_KHR_cooperative_matrix on RADV/GFX11+
+- Drop patches fixed upstream:
+  * U_clover-llvm-move-to-modern-pass-manager.patch
+  * U_radeonsi-prefix-function-with-si_-to-prevent-name-co.patch
+- Refresh patches with quilt.
+- Use %patch -p N instead of deprecated %patchN.
+
+- enable rusticl on sle15-sp6</comment>
+    <requestid>1140618</requestid>
+  </revision>
 </revisionlist>

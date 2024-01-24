@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Jan 22 14:36:33 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- split python36-buildfix.patch into two patches python36-buildfix1.patch 
+  and python36-buildfix2.patch; apply the latter only on sle15-sp6/Leap 15.6
+  since on newer python releases than 3.6 it changes behaviour to 
+  remove required=True option
+
+-------------------------------------------------------------------
+Sat Jan 20 13:04:02 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- python36-buildfix.patch
+  * src/freedreno/registers/gen_header.py: hopefully fixes aarch64
+    build
+
+-------------------------------------------------------------------
+Sat Jan 20 11:22:42 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
+  u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
+  python36-buildfix.patch
+  * fixes build against python 3.6 
+
+-------------------------------------------------------------------
+Sat Jan 20 10:43:27 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- let Mesa-dri require libvulkan1 to get zink/swrast driver
+  fallbacks working (hopefully); probably related:
+  https://gitlab.freedesktop.org/mesa/mesa/-/commit/2a71f06f2938678d89d5ed1372cda6a7b55d964d
+
+-------------------------------------------------------------------
+Thu Jan 11 11:41:17 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+-  Update to bugfix release 23.3.3
+  --> https://docs.mesa3d.org/relnotes/23.3.3.html
+
+-------------------------------------------------------------------
+Sat Jan  6 14:24:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 23.3.2
+  --> https://docs.mesa3d.org/relnotes/23.3.2.html 
+
+-------------------------------------------------------------------
+Fri Dec  1 20:10:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 23.3.0:
+  * It includes NVK, a new reverse-engineered Vulkan driver for
+    Nvidia hardware. This driver is still in experimental phase,
+    not quite ready for prime time yet, but adventurous users can
+    give it a go!
+  * New extensions & features (in no particular order):
+    - VK_EXT_pipeline_robustness on ANV
+    - VK_KHR_maintenance5 on RADV
+    - OpenGL ES 3.1 on Asahi
+    - GL_ARB_compute_shader on Asahi
+    - GL_ARB_shader_atomic_counters on Asahi
+    - GL_ARB_shader_image_load_store on Asahi
+    - GL_ARB_shader_image_size on Asahi
+    - GL_ARB_shader_storage_buffer_object on Asahi
+    - GL_ARB_sample_shading on Asahi
+    - GL_OES_sample_variables on Asahi
+    - GL_OES_shader_multisample_interpolation on Asahi
+    - GL_OES_gpu_shader5 on Asahi
+    - EGL_ANDROID_blob_cache works when disk caching is disabled
+    - VK_KHR_cooperative_matrix on RADV/GFX11+
+- Drop patches fixed upstream:
+  * U_clover-llvm-move-to-modern-pass-manager.patch
+  * U_radeonsi-prefix-function-with-si_-to-prevent-name-co.patch
+- Refresh patches with quilt.
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Nov 20 14:53:17 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - buildrequire 'pkgconfig(SPIRV-Tools)' also with disabled rusticl
@@ -14,7 +85,7 @@ Mon Nov 20 14:44:53 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Mon Nov 20 14:40:06 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
-- enable rusticl on sle15-sp6 
+- enable rusticl on sle15-sp6
 
 -------------------------------------------------------------------
 Fri Nov 17 14:14:06 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>

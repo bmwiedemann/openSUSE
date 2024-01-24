@@ -1,0 +1,65 @@
+--- mesa-23.3.3/src/nouveau/nvidia-headers/class_parser.py.orig	2024-01-20 12:47:36.464476669 +0100
++++ mesa-23.3.3/src/nouveau/nvidia-headers/class_parser.py	2024-01-20 13:04:30.212851443 +0100
+@@ -9,6 +9,16 @@
+ 
+ from mako.template import Template
+ 
++def removeprefix(s, prefix):
++    if s.startswith(prefix):
++        return s[len(prefix):]
++    return s
++
++def removesuffix(s, suffix):
++    if s.endswith(suffix):
++        return s[:-len(suffix)]
++    return s
++
+ METHOD_ARRAY_SIZES = {
+     'BIND_GROUP_CONSTANT_BUFFER'        : 16,
+     'CALL_MME_DATA'                     : 256,
+@@ -273,7 +283,7 @@
+                 if ":" in list[2]:
+                     state = 1
+                 elif teststr in list[1]:
+-                    curmthd.field_defs[curfield][list[1].removeprefix(teststr)] = list[2]
++                    curmthd.field_defs[curfield][removeprefix(list[1], teststr)] = list[2]
+                 else:
+                     state = 1
+ 
+@@ -283,7 +293,7 @@
+                     if ("0x" in list[2]):
+                         state = 1
+                     else:
+-                        field = list[1].removeprefix(teststr)
++                        field = removeprefix(list[1], teststr)
+                         bitfield = list[2].split(":")
+                         curmthd.field_name_start[field] = bitfield[1]
+                         curmthd.field_name_end[field] = bitfield[0]
+@@ -304,13 +314,13 @@
+                 is_array = 0
+                 if (':' in list[2]):
+                     continue
+-                name = list[1].removeprefix(teststr)
++                name = removeprefix(list[1], teststr)
+                 if name.endswith("(i)"):
+                     is_array = 1
+-                    name = name.removesuffix("(i)")
++                    name = removesuffix(name, "(i)")
+                 if name.endswith("(j)"):
+                     is_array = 1
+-                    name = name.removesuffix("(j)")
++                    name = removesuffix(name, "(j)")
+                 x = method()
+                 x.name = name
+                 x.addr = list[2]
+@@ -336,8 +346,8 @@
+ 
+     clheader = os.path.basename(args.in_h)
+     nvcl = clheader
+-    nvcl = nvcl.removeprefix("cl")
+-    nvcl = nvcl.removesuffix(".h")
++    nvcl = removeprefix(nvcl, "cl")
++    nvcl = removesuffix(nvcl, ".h")
+     nvcl = nvcl.upper()
+     nvcl = "NV" + nvcl
+ 
