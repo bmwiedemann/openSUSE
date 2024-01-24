@@ -4075,8 +4075,6 @@ unsorted:
   - flxmlrpc-devel 
   - fly 
   - fmit 
-  - fmpp 
-  - fmpp-javadoc 
   - fmt-9-devel 
   - fmt-devel 
   - fnotifystat 
@@ -8415,9 +8413,9 @@ unsorted:
   - imb-mpich 
   - imb-mvapich2 
   - imb-openmpi4 
-  - imb_2021_3-gnu-mpich-hpc 
-  - imb_2021_3-gnu-mvapich2-hpc 
-  - imb_2021_3-gnu-openmpi4-hpc 
+  - imb_2021_7-gnu-mpich-hpc 
+  - imb_2021_7-gnu-mvapich2-hpc 
+  - imb_2021_7-gnu-openmpi4-hpc 
   - imgp 
   - imgp-bash-completion 
   - imgp-fish-completion 
@@ -9774,6 +9772,7 @@ unsorted:
   - ktimer-lang 
   - ktimetracker 
   - ktimetracker-lang 
+  - ktls-utils 
   - ktnef-common 
   - ktnef-devel 
   - ktoblzcheck 
@@ -18437,7 +18436,6 @@ unsorted:
   - nbdkit-tmpdisk-plugin 
   - nbdkit-xz-filter 
   - nbsdgames 
-  - ncat 
   - ncdu 
   - ncftp 
   - ncmpcpp 
@@ -18650,7 +18648,6 @@ unsorted:
   - nlopt-devel 
   - nm-tray 
   - nm-tray-lang 
-  - nmap 
   - nmap-parse-output 
   - nmap-parse-output-bash-completion 
   - nmcli-dmenu 
@@ -18712,7 +18709,6 @@ unsorted:
   - novnc 
   - novprog 
   - novprog-lang 
-  - nping 
   - npkg 
   - npm-default 
   - npm20 
@@ -25252,6 +25248,8 @@ unsorted:
   - python310-pycomposefile 
   - python310-pycountry 
   - python310-pycparser 
+  - python310-pycrdt 
+  - python310-pycrdt-websocket 
   - python310-pycryptodome 
   - python310-pycryptodomex 
   - python310-pyct 
@@ -28676,6 +28674,8 @@ unsorted:
   - python311-pycodestyle 
   - python311-pycomposefile 
   - python311-pycountry 
+  - python311-pycrdt 
+  - python311-pycrdt-websocket 
   - python311-pycryptodomex 
   - python311-pyct 
   - python311-pycxx 
@@ -32193,6 +32193,8 @@ unsorted:
   - python39-pycomposefile 
   - python39-pycountry 
   - python39-pycparser 
+  - python39-pycrdt 
+  - python39-pycrdt-websocket 
   - python39-pycryptodome 
   - python39-pycryptodomex 
   - python39-pyct 
@@ -34013,6 +34015,7 @@ unsorted:
   - ranger 
   - rapid-photo-downloader 
   - rapid-photo-downloader-lang 
+  - rapidcsv-devel 
   - rapidjson-devel 
   - rapidyaml-devel 
   - raptor 
@@ -34276,6 +34279,7 @@ unsorted:
   - rocs-devel 
   - rocs-lang 
   - rofi 
+  - rofi-bluetooth 
   - rofi-calc 
   - rofi-devel 
   - rofi-network-manager 
