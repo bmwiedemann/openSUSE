@@ -1,7 +1,7 @@
 #
 # spec file for package rdma-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,9 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 
-%define         git_ver .0.0bffa5d9be9b
+%define         git_ver .0.8847c327b89c
 Name:           rdma-core
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
