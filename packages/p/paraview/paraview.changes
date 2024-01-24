@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 19 13:38:42 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Do not delete zero-sized .cmake files, these are referenced from
+  other cmake files; use rpmlintrc rule to suppress warnings.
+- Do not delete paraview-config script now that we have a
+  -devel-static package; instead include it as part of the latter.
+
+-------------------------------------------------------------------
 Sat Sep 30 17:16:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.11.2:
