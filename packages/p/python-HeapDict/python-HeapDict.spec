@@ -1,7 +1,7 @@
 #
 # spec file for package python-HeapDict
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-HeapDict
 Version:        1.0.1
 Release:        0
 Summary:        A heap with decrease-key and increase-key operations
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            http://stutzbachenterprises.com/
 Source:         https://files.pythonhosted.org/packages/source/H/HeapDict/HeapDict-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# These packages contain module test from stdlib,
-# it has nothing to do with this package being noarch
-%if ! %{with python2}
-# TW has without python2 defined and will have multiple python3 flavors
-BuildRequires:  %{python_module testsuite}
-%else
-BuildRequires:  python2-devel
-BuildRequires:  python3-testsuite
-%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,20 +47,20 @@ important for many algorithms such as Dijkstra's Algorithm and A*.
 %setup -q -n HeapDict-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec test_heap.py
+%pytest -k 'not test_main' test_heap.py
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/heapdict.py*
 %pycache_only %{python_sitelib}/__pycache__/heapdict*
-%{python_sitelib}/HeapDict-%{version}*-info
+%{python_sitelib}/HeapDict-%{version}.dist-info
 
 %changelog

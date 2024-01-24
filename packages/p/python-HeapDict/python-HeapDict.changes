@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 24 02:11:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Clean up Python 2 leftovers.
+- Use pytest to run the testsuite.
+
+-------------------------------------------------------------------
 Thu Dec 24 00:35:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Support multiple python3 flavors

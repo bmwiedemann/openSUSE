@@ -35,4 +35,14 @@
     <comment></comment>
     <requestid>858536</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>adb146b0ea701692478d31af3648401d</srcmd5>
+    <version>1.0.1</version>
+    <time>1706119532</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Clean up Python 2 leftovers.
+- Use pytest to run the testsuite.</comment>
+    <requestid>1141097</requestid>
+  </revision>
 </revisionlist>
