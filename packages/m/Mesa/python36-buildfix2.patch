@@ -1,0 +1,11 @@
+--- mesa-23.3.3/src/freedreno/registers/gen_header.py.orig	2024-01-20 14:01:30.261999839 +0100
++++ mesa-23.3.3/src/freedreno/registers/gen_header.py	2024-01-20 14:01:57.678558692 +0100
+@@ -781,7 +781,7 @@ def main():
+ 	parser.add_argument('--rnn', type=str, required=True)
+ 	parser.add_argument('--xml', type=str, required=True)
+ 
+-	subparsers = parser.add_subparsers(required=True)
++	subparsers = parser.add_subparsers()
+ 
+ 	parser_c_defines = subparsers.add_parser('c-defines')
+ 	parser_c_defines.set_defaults(func=dump_c_defines)

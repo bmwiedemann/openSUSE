@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 23.2.1
+%define _version 23.3.3
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -123,7 +123,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        23.2.1
+Version:        23.3.3
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -138,9 +138,10 @@ Source4:        manual-pages.tar.bz2
 Source6:        Mesa-rpmlintrc
 Source7:        Mesa.keyring
 Patch2:         n_add-Mesa-headers-again.patch
-# Patches for LLVM 17, should all be in 23.2.
-Patch4:         U_clover-llvm-move-to-modern-pass-manager.patch
-Patch10:        U_radeonsi-prefix-function-with-si_-to-prevent-name-co.patch
+Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
+Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
+Patch13:        python36-buildfix1.patch
+Patch14:        python36-buildfix2.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
@@ -506,6 +507,7 @@ the Mesa-libGLES* packages.
 Summary:        DRI plug-ins for 3D acceleration
 Group:          System/Libraries
 Requires:       Mesa = %{version}
+Requires:       libvulkan1
 Supplements:    Mesa
 
 %description -n Mesa-dri
@@ -752,17 +754,22 @@ programs against the XA state tracker.
 # remove some docs
 rm -rf docs/README.{VMS,WIN32,OS2}
 
-%patch2 -p1
-%patch4 -p1
-%patch10 -p1
+%patch -P 2 -p1
+# fixes build against python 3.6
+%patch -P 11 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%if 0%{?suse_version} < 1550
+%patch -P 14 -p1
+%endif
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
-%patch54 -p1
+%patch -P 54 -p1
 %endif
-%patch58 -p1
-%patch100 -p1
-#%patch200 -p1
-%patch400 -p1
+%patch -P 58 -p1
+%patch -P 100 -p1
+#%patch -P 200 -p1
+%patch -P 400 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...

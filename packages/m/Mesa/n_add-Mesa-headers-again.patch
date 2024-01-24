@@ -1,8 +1,8 @@
-Index: mesa-20.2.0/include/meson.build
+Index: mesa-23.3.0/include/meson.build
 ===================================================================
---- mesa-20.2.0.orig/include/meson.build
-+++ mesa-20.2.0/include/meson.build
-@@ -29,10 +29,8 @@ if with_android_stub
+--- mesa-23.3.0.orig/include/meson.build
++++ mesa-23.3.0/include/meson.build
+@@ -28,10 +28,8 @@ if with_android_stub
    inc_include += [include_directories('android_stub')]
  endif
  
