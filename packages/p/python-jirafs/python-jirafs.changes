@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 24 01:32:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on Pillow for tests.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Jan 12 02:16:58 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Refresh remove-mock.patch from upstream to also support Python 3.12. 

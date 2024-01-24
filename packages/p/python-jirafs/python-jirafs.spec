@@ -26,7 +26,9 @@ URL:            https://github.com/coddingtonbear/jirafs
 Source:         https://github.com/coddingtonbear/jirafs/archive/refs/tags/%{version}.tar.gz#/jirafs-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#coddingtonbear/jirafs#70
 Patch0:         remove-mock.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       git-core
@@ -42,6 +44,7 @@ Suggests:       python-ipdb
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2 >= 2.10.3}
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PrettyTable >= 0.7.2}
 BuildRequires:  %{python_module behave}
 BuildRequires:  %{python_module blessings >= 1.5.1}
@@ -55,7 +58,7 @@ BuildRequires:  %{python_module watchdog >= 0.9.0}
 BuildRequires:  git-core
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -70,10 +73,10 @@ sed -i 's/,<[0-9.][0-9.]*//' requirements.txt
 rm jirafs/.pre-commit-config.yaml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/jirafs
 
@@ -91,6 +94,6 @@ git config --global user.email johndoe@example.com
 %files %{python_files}
 %python_alternative %{_bindir}/jirafs
 %{python_sitelib}/jirafs
-%{python_sitelib}/jirafs-%{version}*info
+%{python_sitelib}/jirafs-%{version}.dist-info
 
 %changelog
