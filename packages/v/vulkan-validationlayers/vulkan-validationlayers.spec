@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-validationlayers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.3.268.0
+Version:        1.3.275.0
 Release:        0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
@@ -25,7 +25,6 @@ Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-ValidationLayers
 Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/refs/tags/vulkan-sdk-%version.tar.gz
 Patch2:         xxhash.diff
-Patch3:         glslang14.diff
 BuildRequires:  cmake >= 3.7.12
 %if 0%{?suse_version} >= 1599
 BuildRequires:  gcc-c++
@@ -36,12 +35,12 @@ BuildRequires:  glslang-devel >= 13.1.0
 BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.6.1+sdk268
-BuildRequires:  spirv-tools-devel >= 2023.5~rc1
+BuildRequires:  spirv-headers >= 1.6.1+sdk275
+BuildRequires:  spirv-tools-devel >= 2023.6~rc1
 BuildRequires:  vulkan-headers
-BuildRequires:  vulkan-utility-libraries-devel >= 1.3.268
+BuildRequires:  vulkan-utility-libraries-devel >= 1.3.275
 BuildRequires:  xxhash-devel
-BuildRequires:  pkgconfig(vulkan) >= 1.3.268
+BuildRequires:  pkgconfig(vulkan) >= 1.3.275
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 Conflicts:      vulkan < 1.1
