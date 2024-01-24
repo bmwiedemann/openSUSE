@@ -36,7 +36,7 @@ RUN zypper -n install \
               libcap-progs \
               libvirt-client \
               libvirt-daemon-driver-qemu \
-              ncat \
+              netcat \
               nftables \
               qemu-hw-usb-redirect \
               qemu-img \
@@ -60,8 +60,6 @@ RUN if [ "$(uname -m)" = "aarch64" ]; then \
     fi;
 
 RUN zypper clean -a
-
-RUN ln -s ncat /usr/bin/nc
 
 #!ArchExclusiveLine: x86_64
 RUN if [ "$(uname -m)" = "x86_64" ]; then \
