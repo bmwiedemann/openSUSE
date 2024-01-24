@@ -1,0 +1,97 @@
+From 46451a18828473edaf7e9873a084f26f0c827a3d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20Koutn=C3=BD?= <mkoutny@suse.com>
+Date: Tue, 23 Jan 2024 11:30:18 +0100
+Subject: [PATCH 5007/5011] test: Convert rlimit test to subtest of generic
+ limit testing
+
+No functional change intended. Preparation for new tests.
+
+(cherry picked from commit 834ca54624ae1d61ec4fcf3a63b10271c38c4860)
+
+[mkoutny: fixes jsc#PED-5659]
+---
+ test/units/testsuite-05.rlimit.sh | 25 +++++++++++++++++++++++++
+ test/units/testsuite-05.service   |  2 +-
+ test/units/testsuite-05.sh        | 22 +++-------------------
+ 3 files changed, 29 insertions(+), 20 deletions(-)
+ create mode 100755 test/units/testsuite-05.rlimit.sh
+
+diff --git a/test/units/testsuite-05.rlimit.sh b/test/units/testsuite-05.rlimit.sh
+new file mode 100755
+index 0000000000..bbf3adbe65
+--- /dev/null
++++ b/test/units/testsuite-05.rlimit.sh
+@@ -0,0 +1,25 @@
++#!/usr/bin/env bash
++# SPDX-License-Identifier: LGPL-2.1-or-later
++set -eux
++set -o pipefail
++
++P=/run/systemd/system.conf.d
++mkdir $P
++
++cat >$P/rlimits.conf <<EOF
++[Manager]
++DefaultLimitNOFILE=10000:16384
++EOF
++
++systemctl daemon-reload
++
++[[ "$(systemctl show -P DefaultLimitNOFILESoft)" = "10000" ]]
++[[ "$(systemctl show -P DefaultLimitNOFILE)" = "16384" ]]
++
++[[ "$(systemctl show -P LimitNOFILESoft testsuite-05.service)" = "10000" ]]
++[[ "$(systemctl show -P LimitNOFILE testsuite-05.service)" = "16384" ]]
++
++# shellcheck disable=SC2016
++systemd-run --wait -t bash -c '[[ "$(ulimit -n -S)" = "10000" ]]'
++# shellcheck disable=SC2016
++systemd-run --wait -t bash -c '[[ "$(ulimit -n -H)" = "16384" ]]'
+diff --git a/test/units/testsuite-05.service b/test/units/testsuite-05.service
+index ab72d8fe27..cf32accb8c 100644
+--- a/test/units/testsuite-05.service
++++ b/test/units/testsuite-05.service
+@@ -1,6 +1,6 @@
+ # SPDX-License-Identifier: LGPL-2.1-or-later
+ [Unit]
+-Description=TEST-05-RLIMITS
++Description=TEST-05-LIMITS
+ 
+ [Service]
+ ExecStartPre=rm -f /failed /testok
+diff --git a/test/units/testsuite-05.sh b/test/units/testsuite-05.sh
+index 870845d14b..9c2a033aa9 100755
+--- a/test/units/testsuite-05.sh
++++ b/test/units/testsuite-05.sh
+@@ -3,25 +3,9 @@
+ set -eux
+ set -o pipefail
+ 
+-P=/run/systemd/system.conf.d
+-mkdir $P
++# shellcheck source=test/units/test-control.sh
++. "$(dirname "$0")"/test-control.sh
+ 
+-cat >$P/rlimits.conf <<EOF
+-[Manager]
+-DefaultLimitNOFILE=10000:16384
+-EOF
+-
+-systemctl daemon-reload
+-
+-[[ "$(systemctl show -P DefaultLimitNOFILESoft)" = "10000" ]]
+-[[ "$(systemctl show -P DefaultLimitNOFILE)" = "16384" ]]
+-
+-[[ "$(systemctl show -P LimitNOFILESoft testsuite-05.service)" = "10000" ]]
+-[[ "$(systemctl show -P LimitNOFILE testsuite-05.service)" = "16384" ]]
+-
+-# shellcheck disable=SC2016
+-systemd-run --wait -t bash -c '[[ "$(ulimit -n -S)" = "10000" ]]'
+-# shellcheck disable=SC2016
+-systemd-run --wait -t bash -c '[[ "$(ulimit -n -H)" = "16384" ]]'
++run_subtests
+ 
+ touch /testok
+-- 
+2.35.3
+

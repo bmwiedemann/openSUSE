@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 23 13:44:21 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Add patches that implement [jsc#PED-5659]
+
+  5003-cgroup-rename-TasksMax-structure-to-CGroupTasksMax.patch
+  5004-bus-print-properties-ignore-CGROUP_LIMIT_MAX-for-Mem.patch
+  5005-bus-print-properties-prettify-more-unset-properties.patch
+  5006-cgroup-Add-EffectiveMemoryMax-EffectiveMemoryHigh-an.patch
+  5007-test-Convert-rlimit-test-to-subtest-of-generic-limit.patch
+  5008-test-Add-effective-cgroup-limits-testing.patch
+  5009-cgroup-Restrict-effective-limits-with-global-resourc.patch
+  5010-cgroup-Rename-effective-limits-internal-table.patch
+
+  They are temporarily put in quarantine to get broader testing but should be
+  eventually moved to the git repo.
+
+-------------------------------------------------------------------
 Sat Jan 20 20:42:06 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - remove pam-config call from post scriptlet of systemd-32bit
