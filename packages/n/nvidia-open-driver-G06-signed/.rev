@@ -257,4 +257,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1139143</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>75a5bfa12da4a8418e79108fd15021df</srcmd5>
+    <version>545.29.06</version>
+    <time>1706119581</time>
+    <user>anag+factory</user>
+    <comment>- kernel-6.7.patch
+  * fixes build against kernel 6.7 (boo#1219117)</comment>
+    <requestid>1141256</requestid>
+  </revision>
 </revisionlist>

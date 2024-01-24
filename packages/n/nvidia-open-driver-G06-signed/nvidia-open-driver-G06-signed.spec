@@ -52,6 +52,7 @@ Source12:       pesign-spec-macros
 Source14:       group-source-files.pl
 Patch0:         0001-Don-t-override-INSTALL_MOD_DIR.patch
 Patch2:         persistent-nvidia-id-string.patch
+Patch3:         kernel-6.7.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -96,6 +97,7 @@ for GeForce RTX 2000 series and newer GPUs.
 %setup -q -n open-gpu-kernel-modules-%{version}
 %patch0 -p1
 %patch2 -p1
+%patch3 -p1
 set -- *
 mkdir source
 mv "$@" source/
