@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 24 01:53:09 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.
+- Add patch fix-assertion-methods.patch:
+  * Use non-deprecated assertion methods.
+
+-------------------------------------------------------------------
 Wed Dec 27 14:25:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.0:

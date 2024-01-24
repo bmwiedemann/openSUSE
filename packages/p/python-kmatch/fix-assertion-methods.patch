@@ -1,0 +1,51 @@
+Index: kmatch-0.5.0/kmatch/tests/kmatch_tests.py
+===================================================================
+--- kmatch-0.5.0.orig/kmatch/tests/kmatch_tests.py
++++ kmatch-0.5.0/kmatch/tests/kmatch_tests.py
+@@ -11,7 +11,7 @@ class KPatternTest(TestCase):
+     """
+     def test_pattern(self):
+         k = K(['=~', 'hi', 'hi'])
+-        self.assertEquals(k.pattern, ['=~', 'hi', 'hi'])
++        self.assertEqual(k.pattern, ['=~', 'hi', 'hi'])
+ 
+ 
+ class KMatchTest(TestCase):
+@@ -363,20 +363,20 @@ class KInitTest(TestCase):
+     @patch('kmatch.kmatch.re.compile', spec_set=True, side_effect=lambda x, flags: '{0}_compiled'.format(x))
+     def test_unnested(self, mock_compile):
+         k = K(['=~', 'field', 'hi'])
+-        self.assertEquals(mock_compile.call_count, 1)
+-        self.assertEquals(k._compiled_pattern, ['=~', 'field', 'hi_compiled'])
++        self.assertEqual(mock_compile.call_count, 1)
++        self.assertEqual(k._compiled_pattern, ['=~', 'field', 'hi_compiled'])
+ 
+     @patch('kmatch.kmatch.re.compile', spec_set=True, side_effect=lambda x, flags: '{0}_compiled'.format(x))
+     def test_nested_list_of_single_dict(self, mock_compile):
+         k = K(['!', ['=~', 'field', 'hi']])
+-        self.assertEquals(mock_compile.call_count, 1)
+-        self.assertEquals(k._compiled_pattern, ['!', ['=~', 'field', 'hi_compiled']])
++        self.assertEqual(mock_compile.call_count, 1)
++        self.assertEqual(k._compiled_pattern, ['!', ['=~', 'field', 'hi_compiled']])
+ 
+     @patch('kmatch.kmatch.re.compile', spec_set=True, side_effect=lambda x, flags: '{0}_compiled'.format(x))
+     def test_nested_list_of_lists(self, mock_compile):
+         k = K(['&', [['=~', 'f', 'hi'], ['=~', 'f', 'hello']]])
+-        self.assertEquals(mock_compile.call_count, 2)
+-        self.assertEquals(
++        self.assertEqual(mock_compile.call_count, 2)
++        self.assertEqual(
+             k._compiled_pattern,
+             ['&', [['=~', 'f', 'hi_compiled'], ['=~', 'f', 'hello_compiled']]])
+ 
+@@ -393,8 +393,8 @@ class KInitTest(TestCase):
+                 ]]
+             ]]
+         ]])
+-        self.assertEquals(mock_compile.call_count, 5)
+-        self.assertEquals(k._compiled_pattern, ['&', [
++        self.assertEqual(mock_compile.call_count, 5)
++        self.assertEqual(k._compiled_pattern, ['&', [
+             ['=~', 'f', 'hi_compiled'],
+             ['=~', 'f', 'hello_compiled'],
+             ['|', [

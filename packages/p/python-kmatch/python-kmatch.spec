@@ -1,7 +1,7 @@
 #
 # spec file for package python-kmatch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,10 @@ URL:            https://github.com/ambitioninc/kmatch
 Source:         https://files.pythonhosted.org/packages/source/k/kmatch/kmatch-%{version}.tar.gz
 # https://github.com/ambitioninc/kmatch/issues/42
 Patch0:         python-kmatch-no-mock.patch
+Patch1:         fix-assertion-methods.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,8 +45,7 @@ dictionaries. Patterns are specified as lists of filters combined
 with logical operators.
 
 %prep
-%setup -q -n kmatch-%{version}
-%patch0 -p1
+%autosetup -p1 -n kmatch-%{version}
 sed -i '/nose/d' setup.py
 dos2unix README.rst LICENSE
 chmod a-x README.rst LICENSE
@@ -51,10 +53,10 @@ rm -r *.egg-info
 
 %build
 mv kmatch/tests/ .tests
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +66,7 @@ mv .tests tests
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/kmatch
+%{python_sitelib}/kmatch-%{version}.dist-info
 
 %changelog
