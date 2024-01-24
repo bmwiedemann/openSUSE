@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 23 13:21:14 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.63.11:
+  * updating detector logic for zenscrape (#2316)
+  * Add prometheus metrics to measure hook execution time (#2312)
+  * [chore] - reduce test time (#2321)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.50.0 (#2325)
+  * fix(deps): update module github.com/envoyproxy/protoc-gen-validate to v1.0.4 (#2322)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.7.1 (#2320)
+  * fix(deps): update golang.org/x/exp digest to 1b97071 (#2318)
+  * [chore] - Update Chunk struct comment (#2317)
+  * fix(deps): update module github.com/hashicorp/golang-lru to v2 (#2054)
+  * save 8 bytes per chunk (#2310)
+
+-------------------------------------------------------------------
 Thu Jan 18 13:29:28 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.63.10:

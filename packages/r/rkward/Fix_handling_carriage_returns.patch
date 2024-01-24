@@ -1,0 +1,105 @@
+--- "a/rkward/rkconsole.cpp"	2022-06-25 09:26:29.000000000 +0200
++++ "b/rkward/rkconsole.cpp"	2022-12-26 03:12:50.000000000 +0100
+@@ -486,6 +486,7 @@
+ 	skip_command_display_lines = incomplete_command.count ('\n') + 1;	// incomplete command, and first line have already been shown.
+ 
+ 	doc->insertLine (doc->lines (), QString ());
++	output_cursor = doc->documentEnd();
+ 	if (!command.isEmpty ()) {
+ 		current_command = new RCommand (command, RCommand::User | RCommand::Console);
+ 		connect(current_command->notifier(), &RCommandNotifier::commandOutput, this, &RKConsole::newOutput);
+@@ -533,11 +534,30 @@
+ 	else qApp->beep ();
+ }
+ 
++void RKConsole::rawWriteLine(const QString& line, QChar line_end) {
++	int existing_line_length = doc->lineLength(output_cursor.line());
++	if (output_cursor.column() < existing_line_length) {
++		int overwrite_end = qMin(existing_line_length, output_cursor.column() + line.length());
++		doc->removeText(KTextEditor::Range(output_cursor, KTextEditor::Cursor(output_cursor.line(), overwrite_end)));
++	}
++	doc->insertText(output_cursor, line);
++	output_cursor.setColumn(output_cursor.column() + line.length());
++	if (line_end == '\n') {
++		output_cursor.setColumn(doc->lineLength(output_cursor.line()));
++		doc->insertText(output_cursor, "\n");
++		output_cursor.setColumn(0);
++		output_cursor.setLine(output_cursor.line() + 1);
++	} else if (line_end == '\r') {
++		output_cursor.setColumn(0);
++	}
++}
++
+ void RKConsole::newOutput (RCommand *command, const ROutput *output) {
+ 	RK_TRACE (APP);
+ 
+ 	int first_line = doc->lines () -1;
+ 	QString popped_line;
++	// TODO: rewrite utilizing output_cursor;
+ 	if (!command) {
+ 		// spontanteous R output, to be inserted _above_ the current command
+ 		// as a shortcut, we pop the last line, and reinsert in, later
+@@ -545,25 +565,19 @@
+ 		doc->removeLine(doc->lines() - 1);
+ 	}
+ 
+-	// split by and handle carriage returns
+-	const QString outstr = output->output;
++	// split by and handle carriage returns (important for progress bars)
++	const QString out = output->output;
++	int string_pos = -1;
+ 	int start_pos = 0;
+-	int end_pos = outstr.size () - 1;
+-	QChar c;
+-	for (int pos = 0; pos <= end_pos; ++pos) {
+-		c = output->output.at (pos);
+-		if (c == '\r') {
+-			/* NOTE: My first approach was to split the whole string by newlines, and insert each line separately. This allowed for a minor
+-			 * optimization when hitting a carriage return (the string before the '\r' could simply be ignored, then), however it caused
+-			 * around 10% slowdown when printing large amounts of output.
+-			 * Thus, instead, when hitting a CR, we first insert everything before that into the document, then reset the line. */
+-			doc->insertText (doc->documentEnd (), outstr.mid (start_pos, pos - start_pos));
+-			doc->removeLine (doc->lines () - 1);
+-			doc->insertLine (doc->lines (), QString ());
+-			start_pos = pos + 1;
++	int end_pos = out.length();
++	while (++string_pos < end_pos) {
++		auto c = out.at(string_pos);
++		if (c == '\n' || c == '\r') {
++			rawWriteLine(out.mid(start_pos, string_pos - start_pos), c);
++			start_pos = string_pos+1;
+ 		}
+ 	}
+-	if (start_pos <= end_pos) doc->insertText (doc->documentEnd (), outstr.mid (start_pos, end_pos - start_pos + 1));
++	if (start_pos < end_pos) rawWriteLine(out.mid(start_pos, string_pos - start_pos + 1), ' ');
+ 
+ 	int end_line = doc->lines () -1;
+ 	if (output->type != ROutput::Output || (!command)) {
+@@ -581,6 +595,7 @@
+ // KDE4: does the setUpdatesEnabled (false) still affect performance?
+ 			view->setUpdatesEnabled (false);		// major performance boost while removing lines!
+ 			doc->removeText (KTextEditor::Range (0, 0, c - RKSettingsModuleConsole::maxConsoleLines (), 0));
++			output_cursor.setLine(output_cursor.line() - c + RKSettingsModuleConsole::maxConsoleLines());
+ 			view->setUpdatesEnabled (true);
+ 		}
+ 	}
+@@ -606,6 +621,7 @@
+ 	prefix = iprefix;
+ 	showPrompt ();
+ 	setCurrentEditingLine (line);
++	output_cursor = doc->documentEnd();
+ }
+ 
+ void RKConsole::submitBatch (const QString &batch) {
+
+--- "a/rkward/rkconsole.h"	2022-06-09 16:30:25.000000000 +0200
++++ "b/rkward/rkconsole.h"	2022-12-26 03:12:50.000000000 +0100
+@@ -169,6 +169,8 @@
+ 	int current_command_displayed_up_to;
+ 	int skip_command_display_lines;
+ 	bool previous_chunk_was_piped;
++	KTextEditor::Cursor output_cursor;
++	void rawWriteLine(const QString &line, QChar line_end);
+ };
+ 
+ /** A part interface to RKConsole. Provides the context-help functionality

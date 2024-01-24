@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan  5 10:51:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add extra-cmake-module BuildRequires: This used to be dragged in
+  by other deps before, but cmake explicitly checks for it here.
+
+-------------------------------------------------------------------
+Wed Dec 28 19:35:26 UTC 2022 - Pierre Bonamy <flyos@mailoo.org>
+
+- Add Fix_Syntax_Pipe.patch: Backport fix to properly highlight
+  the native pipe "|>" as an operator in the R console.
+
+-------------------------------------------------------------------
+Tue Dec 27 12:28:17 UTC 2022 - Pierre Bonamy <flyos@mailoo.org>
+
+- Backport fix to display progress bars from 'cli' package in
+  RKWard R console. See "Fix_handling_carriage_returns.patch".
+
+-------------------------------------------------------------------
 Tue Nov  8 08:54:13 UTC 2022 - Pierre Bonamy <flyos@mailoo.org>
 
 - Update to upstream release 0.7.5

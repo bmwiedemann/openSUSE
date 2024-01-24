@@ -1046,4 +1046,14 @@
     <comment>- Remove python3-oauth2. This is not needed to build.</comment>
     <requestid>1137763</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>7babd0addfba7b82b47151d8a13ba880</srcmd5>
+    <version>4.13.1+git.1704296072.32469f29</version>
+    <time>1706047040</time>
+    <user>anag+factory</user>
+    <comment>- Update fence-agents package with fence_aws and fence_ibm_powervs (jsc#PED-7701)
+- Update to version 4.13.1+git.1704296072.32469f29:
+  * fence_zvmip: fix manpage formatting</comment>
+    <requestid>1140886</requestid>
+  </revision>
 </revisionlist>

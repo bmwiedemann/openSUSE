@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 14 10:36:41 CET 2023 - mls@suse.de
+
+- declare the users/groups we create in the preinstall scripts
+  (this is needed for newer rpm versions)
+
+-------------------------------------------------------------------
+Wed Nov 29 10:24:30 UTC 2023 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Gemfile.lock should be generaged on the client side (bsc#1217642)
+
+-------------------------------------------------------------------
 Thu Nov 23 10:41:56 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update to use rubygen-websocket-driver 0.7.6

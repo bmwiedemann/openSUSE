@@ -15,4 +15,12 @@
     <comment>version 40</comment>
     <requestid>1109288</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>522f4a32520f35e12a662ed2e8f5a7c1</srcmd5>
+    <version>40</version>
+    <time>1706047038</time>
+    <user>anag+factory</user>
+    <comment>sync with sle15sp2</comment>
+    <requestid>1140888</requestid>
+  </revision>
 </revisionlist>

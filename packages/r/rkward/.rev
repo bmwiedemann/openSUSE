@@ -489,4 +489,12 @@
     * Fixed: Fix object name completion for (irregular) names starting with numbers or underscores (forwarded request 1034450 from flyos)</comment>
     <requestid>1034452</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>d9d98bb9146b6c684869598917ed80a5</srcmd5>
+    <version>0.7.5</version>
+    <time>1706047048</time>
+    <user>anag+factory</user>
+    <comment>Mention the patch in the changelog, so that the diff can actualy be forwarded to Factory (and the package be built) (forwarded request 1141001 from dimstar)</comment>
+    <requestid>1141006</requestid>
+  </revision>
 </revisionlist>
