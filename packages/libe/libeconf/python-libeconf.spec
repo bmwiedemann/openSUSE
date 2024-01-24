@@ -1,7 +1,7 @@
 #
 # spec file for package python-libeconf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define skip_python39 1
 Name:           python-libeconf
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Python bindings for libeconf
 License:        LGPL-2.1-or-later
