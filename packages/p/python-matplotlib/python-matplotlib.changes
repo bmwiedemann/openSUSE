@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 23 17:01:35 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- force 'swrast' ("llvmpipe") Mesa/OpenGL driver to be used by
+  setting and exporting LIBGL_ALWAYS_SOFTWARE=1 to get rid of
+  issues when Mesa is trying to load 'zink' driver (messages are
+  just warnings, but seem to be fatal for the tests here) (boo#1219095)
+
+-------------------------------------------------------------------
 Sun Dec 17 17:11:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.8.2
