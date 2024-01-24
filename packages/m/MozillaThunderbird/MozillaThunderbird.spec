@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package MozillaThunderbird
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2006-2023 Wolfgang Rosenauer <wr@rosenauer.org>
@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          115
-%define mainver        %major.6.1
-%define orig_version   115.6.1
+%define mainver        %major.7.0
+%define orig_version   115.7.0
 %define orig_suffix    %nil
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -217,7 +217,7 @@ Recommends:     libcanberra0
 Recommends:     libotr5
 Recommends:     libpulse0
 Requires(post): desktop-file-utils
-Requires(postun):desktop-file-utils
+Requires(postun): desktop-file-utils
 %define libgssapi libgssapi_krb5.so.2
 ExcludeArch:    armv6l armv6hl
 
