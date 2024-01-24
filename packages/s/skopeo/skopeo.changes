@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 22 10:20:36 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.14.1:
+  * Bump to v1.14.1
+  * fix(deps): update module github.com/containers/common to v0.57.2
+  * fix(deps): update module github.com/containers/image/v5 to v5.29.1
+  * chore(deps): update dependency containers/automation_images to v20240102
+  * Fix libsubid detection
+  * fix(deps): update module golang.org/x/term to v0.16.0
+  * fix(deps): update golang.org/x/exp digest to 02704c9
+  * chore(deps): update dependency containers/automation_images to v20231208
+  * [skip-ci] Update actions/stale action to v9
+  * fix(deps): update module github.com/containers/common to v0.57.1
+  * fix(deps): update golang.org/x/exp digest to 6522937
+  * DOCS: add Gentoo in install.md
+  * DOCS: Update to add Arch Linux in install.md
+  * fix(deps): update module golang.org/x/term to v0.15.0
+  * Bump to v1.14.1-dev
+
+-------------------------------------------------------------------
 Thu Nov 23 11:10:07 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.14.0:
