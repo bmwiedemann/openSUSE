@@ -1,7 +1,7 @@
 #
 # spec file for package gdm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -247,7 +247,6 @@ running display manager.
 %if !0%{?sle_version}
 %autopatch -p1 -m 1 -M 999
 %else
-%patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1

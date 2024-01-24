@@ -2022,4 +2022,12 @@
     <comment></comment>
     <requestid>1130902</requestid>
   </revision>
+  <revision rev="262" vrev="6">
+    <srcmd5>0565cc5804a724018a81dde7568a2146</srcmd5>
+    <version>45.0.1</version>
+    <time>1706119476</time>
+    <user>anag+factory</user>
+    <comment>- Make Patch0 only applies on s390 and s390x. (forwarded request 1140780 from yfjiang)</comment>
+    <requestid>1140891</requestid>
+  </revision>
 </revisionlist>
