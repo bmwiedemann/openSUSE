@@ -35,8 +35,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-copybutton}
 # /SECTION
 # SECTION documentation requirements
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-pylons-sphinx-themes
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pylons-sphinx-themes}
 # /SECTION
 %python_subpackages
 
@@ -64,7 +64,7 @@ sed -i '/addopts/d' setup.cfg
 
 %build
 %pyproject_wheel
-PYTHONPATH=src python3 -msphinx docs build/sphinx/html \
+PYTHONPATH=src python%python_bin_suffix -msphinx docs build/sphinx/html \
     && rm -rv build/sphinx/html/{.buildinfo,objects.inv,.doctrees}
 
 %install
