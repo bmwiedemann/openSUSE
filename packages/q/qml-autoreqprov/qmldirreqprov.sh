@@ -101,7 +101,9 @@ while read file; do
 					echo "Ignoring ${import}" >&2
 					continue
 				fi
-				moduleExports["qt${qtver}qmlimport(${import%.*})"]="" # Provides for unversioned imports
+				if [[ $qtver -ge 6 ]]; then
+					moduleExports["qt${qtver}qmlimport(${import%.*})"]="" # Provides for unversioned imports
+				fi
 				foundModuleExport "qt${qtver}qmlimport(${import})" "$min"
 			done < <(qmlpluginexports-qt${qtver} "$plugin" "$module")
 		done
