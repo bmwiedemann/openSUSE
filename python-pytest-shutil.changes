@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 24 04:48:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch stop-using-imp.patch:
+  * Use importlib and not imp.
+
+-------------------------------------------------------------------
 Sat Jun 10 11:50:04 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
