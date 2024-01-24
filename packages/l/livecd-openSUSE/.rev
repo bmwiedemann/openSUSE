@@ -1748,4 +1748,13 @@
     <comment>- config.sh: drop intel vsc firmware (11MB): Visual Sensing Control
   is potentially used for 'walk away lock'.</comment>
   </revision>
+  <revision rev="219" vrev="219">
+    <srcmd5>476cef388b60ebeae1be512ac86e6b8b</srcmd5>
+    <version>unknown</version>
+    <time>1706082581</time>
+    <user>dimstar_suse</user>
+    <comment>- list-kde: switch from phonon4qt5-backend-gstreamer to
+  phonon4qt5-backend-vlc: the gstreamer backed is deprecated and no
+  longer maintained.</comment>
+  </revision>
 </revisionlist>

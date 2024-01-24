@@ -500,7 +500,7 @@
     <package name="aaa_base" replaces="plasma5-desktop-emojier"/>
     <ignore name="plasma5-desktop-emojier"/>
     <package name="plasma-nm5"/>
-    <package name="phonon4qt5-backend-gstreamer"/>
+    <package name="phonon4qt5-backend-vlc"/>
     <package name="aaa_base" replaces="ispell"/>
     <ignore name="ispell"/>
     <package name="aaa_base" replaces="patterns-kde-kde_games"/>
