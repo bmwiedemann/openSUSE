@@ -216,4 +216,14 @@
 - Update to version 0.11.0</comment>
     <requestid>1135634</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7ebf0be8b9edb156f01e72ecf37cde4a</srcmd5>
+    <version>0.27.0</version>
+    <time>1706204497</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.27.0:
+  * Improved handling of commented-out macro definitions and
+    fixed related logic in `Specfile.update_value()`.</comment>
+    <requestid>1141448</requestid>
+  </revision>
 </revisionlist>
