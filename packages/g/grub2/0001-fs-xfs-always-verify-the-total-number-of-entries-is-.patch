@@ -1,0 +1,48 @@
+From 045aae8fe7238aabc217700df4d17d83b7d891f3 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 23 Jan 2024 12:46:16 +0800
+Subject: [PATCH] fs/xfs: always verify the total number of entries is not zero
+
+---
+ grub-core/fs/xfs.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/grub-core/fs/xfs.c b/grub-core/fs/xfs.c
+index bc2224dbb..1ce5fa4fc 100644
+--- a/grub-core/fs/xfs.c
++++ b/grub-core/fs/xfs.c
+@@ -900,6 +900,8 @@ grub_xfs_iterate_dir (grub_fshelp_node_t dir,
+ 	  {
+ 	    struct grub_xfs_dir2_entry *direntry =
+ 					grub_xfs_first_de(dir->data, dirblock);
++	    struct grub_xfs_dirblock_tail *tail = grub_xfs_dir_tail (dir->data, dirblock);
++
+ 	    int entries = -1;
+ 	    char *end = dirblock + dirblk_size;
+ 
+@@ -918,18 +920,16 @@ grub_xfs_iterate_dir (grub_fshelp_node_t dir,
+ 	     */
+ 	    if (dir->inode.nextents == grub_cpu_to_be32_compile_time (1))
+ 	      {
+-		struct grub_xfs_dirblock_tail *tail = grub_xfs_dir_tail (dir->data, dirblock);
+-
+ 		end = (char *) tail;
+ 
+ 		/* Subtract the space used by leaf nodes. */
+ 		end -= grub_be_to_cpu32 (tail->leaf_count) * sizeof (struct grub_xfs_dir_leaf_entry);
++	      }
+ 
+-		entries = grub_be_to_cpu32 (tail->leaf_count) - grub_be_to_cpu32 (tail->leaf_stale);
++	    entries = grub_be_to_cpu32 (tail->leaf_count) - grub_be_to_cpu32 (tail->leaf_stale);
+ 
+-		if (!entries)
+-		  continue;
+-	      }
++	    if (!entries)
++	      continue;
+ 
+ 	    /* Iterate over all entries within this block.  */
+ 	    while ((char *) direntry < (char *) end)
+-- 
+2.43.0
+
