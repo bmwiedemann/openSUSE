@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-shell-utilities
 Version:        1.8.0
 Release:        0
