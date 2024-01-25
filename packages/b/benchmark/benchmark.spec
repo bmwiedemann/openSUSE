@@ -1,7 +1,7 @@
 #
 # spec file for package benchmark
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,9 @@ sed -e 's|libdir=${prefix}/lib|libdir=${prefix}/%{_lib}|' \
 # dont ship debug stuff
 rm -rf %{buildroot}%{_libexecdir}/debug
 # doc will be installed in different location
+# Location differs between TW and SLE/Leap, clear both
 rm -rf %{buildroot}%{_datadir}/doc/benchmark
+rm -rf %{buildroot}%{_datadir}/doc/packages/benchmark
 
 %check
 # path needs to be exported otherwise unit tests will fail
