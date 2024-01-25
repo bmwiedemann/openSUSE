@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-skip-markers
 Version:        1.5.1
 Release:        0
