@@ -1,7 +1,7 @@
 #
 # spec file for package 389-ds
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.4.0~git113.84a845c
+Version:        2.4.0~git126.5936946
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
