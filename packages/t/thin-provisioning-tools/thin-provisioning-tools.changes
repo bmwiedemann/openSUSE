@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 24 13:25:36 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.10:
+  * Bump version to 1.0.10
+  * [build] Update dependencies
+  * [all] Fix clippy lints and typos
+  * [space_map] Allow non-zero values in unused index block entries
+  * [thin_repair] Fix child keys checking on the node with a zero key
+  * [thin_check] Tweak the logs to avoid confusion with node errors
+  * [thin_check] Support overriding the details tree root
+  * [tests] Update expected help text for _pack and _unpack
+  * [all] Fix clippy lints on optional targets
+  * [build] Simplify the pre-commit hooks by checking all the targets at once
+  * [thin_metadata_unpack] Allow long format for input and output
+  * [space map] Fix incorrect index_entry.nr_free while expansion
+  * thin_metadata_pack: Allow long format for input and output
+
+-------------------------------------------------------------------
 Mon Dec 18 14:36:10 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.9:
