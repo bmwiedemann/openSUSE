@@ -218,4 +218,13 @@
   * Pull request: AG-28961-upd-golibs (forwarded request 1139608 from jfkw)</comment>
     <requestid>1139609</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f02a9dfcf5b6b5259ba56f4b2b02e80a</srcmd5>
+    <version>0.63.1</version>
+    <time>1706204456</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.63.1:
+  * Pull request 315: 373 fix goroutines leak (forwarded request 1141074 from VaiTon)</comment>
+    <requestid>1141229</requestid>
+  </revision>
 </revisionlist>
