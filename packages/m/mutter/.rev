@@ -1947,4 +1947,12 @@ New stable rel</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 1137895 from dimstar)</comment>
     <requestid>1137904</requestid>
   </revision>
+  <revision rev="221" vrev="2">
+    <srcmd5>7db30b61a9f0c1988198fe8c3ee89bf3</srcmd5>
+    <version>45.3</version>
+    <time>1706204389</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141228</requestid>
+  </revision>
 </revisionlist>
