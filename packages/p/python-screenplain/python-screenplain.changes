@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 17 21:39:48 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 0.11.1+git.1701424578.13b79f2:
+  * Typo caused reading from stdin to fail
+  * Add arguments --encoding and --encoding-errors
+
+-------------------------------------------------------------------
 Wed Nov 29 14:51:09 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.10.0:
