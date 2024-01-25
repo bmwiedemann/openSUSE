@@ -1,7 +1,7 @@
 #
 # spec file for package sndio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libname libsndio7_1
+%define libname libsndio7
 Name:           sndio
-Version:        1.7.0
+Version:        1.9.0
 Release:        0
 Summary:        Small audio and MIDI framework
 License:        ISC
@@ -78,6 +78,11 @@ export CFLAGS="%{optflags}"
 %install
 %make_install
 
+%ifnarch %ix86
+mkdir -p %{buildroot}%{_libdir}/pkgconfig
+mv %{buildroot}%{_prefix}/lib/pkgconfig/sndio.pc %{buildroot}%{_libdir}/pkgconfig/sndio.pc
+%endif
+
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
@@ -90,11 +95,12 @@ export CFLAGS="%{optflags}"
 %{_mandir}/man8/sndiod.8%{?ext_man}
 %{_mandir}/man7/sndio.7%{?ext_man}
 
-%files -n libsndio7_1
-%{_libdir}/libsndio.so.7.1
+%files -n %{libname}
+%{_libdir}/libsndio.so.*
 
 %files -n sndio-devel
 %{_includedir}/sndio.h
+%{_libdir}/pkgconfig/sndio.pc
 %{_libdir}/libsndio.so
 %{_mandir}/man3/*.3%{?ext_man}
 
