@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 22 19:41:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.6.4:
+  * Improve simulated _Float## types to support glibc headers
+    (gh#CastXML/CastXML#251).
+
+-------------------------------------------------------------------
 Fri Jan 19 18:46:20 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.6.3:
