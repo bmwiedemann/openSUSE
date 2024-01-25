@@ -527,4 +527,20 @@
     <comment></comment>
     <requestid>1111407</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>634919bc6607c4a79d14d5445ceddbfb</srcmd5>
+    <version>4.2.0</version>
+    <time>1703102572</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134186</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>63095dcf0a5a2a1c93ee4088120c9340</srcmd5>
+    <version>4.2.1</version>
+    <time>1706204444</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141447</requestid>
+  </revision>
 </revisionlist>

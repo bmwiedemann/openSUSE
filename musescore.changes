@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Thu Jan 25 06:52:34 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add changelog from https://github.com/orgs/musescore/projects/36/views/2
+- MuseScore 4.2.1:
+
+  * [MusicXML import] fermatas on barlines #19770
+  * Crash after changing beam type to No beam in Properties #21099
+  * Crash when trying to open a midi score that musescore 4.1.1 was
+    able to open #21020
+  * MacBook MuseScore App Crashing #20936
+  * [MU4 Tech Debt] Unit tests in src/notation are never running #10667
+  * No longer able to drag a section of music to transpose it. #20606
+  * Minimum distance field does not update when value changes #13261
+  * [MU4 Issue] Playback not in sync with playhead when changing
+    instrument in mixer #15047
+  * Pauses not working properly and delaying playback #17329
+  * [MU4 Issue] Caesuras do not Update Playback #15773
+  * [MuseSounds Issue] Pauses not Working, Playback Clipped Sometimes,
+    Removing Pauses makes it Worse #15578
+  * Cmd+Delete measures and undo crashes MuseScore #20947
+  * [MU4 Issue] Pause (fermata/caesura) duration not honored until
+    save/reload #15305
+  * Crash after deleting measure with tempo mark and closing orchestral
+    score #20955
+  * Pedal text not rendering at all when I insert a marking with said 
+    text #20646
+  * Glissandos don't play back on tied notes. #20570
+  * Opening and closing mixer while note input mode is enabled causes 
+    strange visual bug in score view #20761
+  * Pedals do not work on mallet percussion instruments #20579
+  * Sounds continue across Section Break #20557
+  * Fix a translatable string not being detected by lupdate #20684
+  * adding caesura causing playback problems after 4.2 update #20669
+  * Improve export of technical indications #20252
+  * Huge & misplaced tie mark when moving note between voices #20967
+  * Measure number not refreshed after excluding from count #20768
+  * Super long sustain in solo strings where it shouldn't be present #20714
+  * Playback bug with tied (whole-)notes after tempo change (note
+    duration is longer/shorter than it should) #20577
+  * Changing instrument mid-playback causes music to restart but tracking
+    header continues from where it was #20593
+  * MIDI Note Input - Yamaha MX88 #18609
+  * [MU4 Issue] Instrument sounds play from start point if changed while
+    playing #15445
+  * Fixed folder names for excerpts with non-English characters #20843  
+  * Drumset preview pane not showing correct stem direction #20785
+  * [MU4 Issue] Note input from MIDI keyboard can be not so accurate as
+    in MU3, some notes are not picked up when entering chords (Mac) #12694
+  * Midi input stops working and needs a reload #20488
+  * Selecting the title and then Voice 2 crashes #20872
+  * MuseScore 4.1.1 problem on Mac with USB MIDI-IN interface connected
+    to CASIO Previa PX-S5000 e-piano #19990
+  * Add support for sostenuto pedal to MusicXML and MEI #20219
+  * Missing text/staff line properties compared with MS3 #17074
+  * Crash when adding and removing staves and undoing and redoing #17494
+  * Undoing after copy-pasting rest causes crash #18499
+  * Incorrect export of MusicXML format #20490
+  * 4.2.0 ARM appimages removed after release  #20578
+  * Visual bug in continuous mode #20551
+  * Cross staff beam + Grace notes crashes #20808
+  * Tremolo glitchery #20563
+  * Measure and Staff/Part properties dialogs don't work via keyboard 
+    (and crash) #20580
+  * cresc. line is not clickable #20561
+  * cresc. line disappears when the start text is out of view #20560
+  * Playback cursor eats cresc. line #20562
+  * Crash when trying to save while two projects are open, and when
+    trying to copy and paste within a project (one score) #20572
+  * crash when deleting courtesy key signature #20622
+  * Beamed rest doesn't go across the staff when the beam is 
+    cross-staff #20619
+  * Replace Instrument dialog: OK/Cancel buttons wrongly positioned
+    when instrument description is long #20617
+  * Score and parts synchronization strings need English (US)
+    localization #20636
+  * Tie start point is offset by lyrics #20735
+  * Lines continued on next system are not visible #20661
+  * "Show Invisible" does not always show invisible lines #20662
+  * MuseScore 4.2 crashes when appending frames on scores with opened
+    parts. #20716
+  * The placement of the arpeggio is completely incorrect when the
+    chord is on another staff #20715
+  * Line end at system break unhides next system #20782
+  * Crash with cross-staff arpeggio and tablature #20765
+  * Sudden abort of pdf export #20780
+  * [Task] Add ability to open score in previous version of MuseScore in
+    dev builds (add checkbox to DevTools) #20899
+  * Crash on score created from template containing slurs #20620
+  * Playback loop boundaries get scaled and shifted (UI doesn't reflect
+    that) after tempo text editing. #20713
+  * [Properties] 'Always display an accidental' sign doesn't rewrite when
+    changing ornament interval for ornament lines (trill)  #20903
+  * Invisible lines of text lines are not clickable #16922
+  * Part rename doesn't mark score as having unsaved changes #20698
+  * 95% chance of crashing when opening a certain score (Unable to add
+    event for track, INFO chunk size mismatch) #21003
+  * Crash when delete measure with tremolo+slur in score with opened
+    parts #21065
+  * The long closing time of the program fix #21019
+  * Crash on undoing change beam mode #21069
+  * no playback on percussion glissando #20685
+
+-------------------------------------------------------------------
+Wed Jan 24 06:58:17 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2.1:
+  No changelog provided
+
+-------------------------------------------------------------------
+Wed Dec 20 08:29:03 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 4.2.0
+
+  New features:
+
+  * A new system for notating guitar bends, including playback support
+  * A new system for easily displaying alternate string tunings for
+    plucked string instruments
+  * Much improved control over synchronicity of notation elements
+    between main score and parts
+  * The ability to select individual sounds within SoundFonts, and
+    a bespoke system for categorising sounds in our default SoundFont, MS Basic
+  * An enhanced upload flow to audio.com, including the ability to
+    replace existing audio files online
+  * A convenient list view for seeing all your scores in the Home tab
+  * The ability to open scores in the desktop app directly from
+    musescore.com
+  * Playback support for harp glissandi via the harp pedal widget
+  * Microtonal playback support
+  * A new note input mode for Braille music notation (Thanks to @daisy
+    and @SMCenter)
+  * "A tempo" and "primo tempo" elements in Palettes (Thanks to
+    community contributor @rtbo)
+  * The option to import/export scores in the MEI file format (Thanks
+    to community contributors @lpugin and @rettinghaus).
+
+  In addition, please see this document (https://musescore.org/en/node/356876)
+  for a complete list of engraving improvements, including:
+
+  * Improved handling of arpeggios spanning multiple staves and voices,
+  * More placement options for ties
+  * Significant layout and interaction improvements
+  * MusicXML improvements
+  * A multitude of refinements to key signatures, time signatures
+    and parts (Thanks to community contributor @sammik).
+
+- Update source URL in spec
+- Update cmake flags
+- Use %exclude for unneeded development files
+- Update README.SUSE
+- Disable JACK as it wasn't actually used
+
+-------------------------------------------------------------------
 Thu Sep 14 13:41:17 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Build as release again.
