@@ -446,4 +446,12 @@
     <comment>Relaxed the ruby version requirement.</comment>
     <requestid>1134435</requestid>
   </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>2788b23958a28eaf455fa26f07bd90e5</srcmd5>
+    <version>2.3.7</version>
+    <time>1706204369</time>
+    <user>anag+factory</user>
+    <comment>- Added file ruby-3.3.patch for ruby 3.3 support (boo#1218951).</comment>
+    <requestid>1140686</requestid>
+  </revision>
 </revisionlist>
