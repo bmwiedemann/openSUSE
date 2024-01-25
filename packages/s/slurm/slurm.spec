@@ -17,13 +17,11 @@
 
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
-%define so_version 39
+%define so_version 40
 # Make sure to update `upgrades` as well!
-%define ver 23.02.7
-%define _ver _23_02
-#%%define rc_v 0rc1
+%define ver 23.11.1
+%define _ver _23_11
 %define dl_ver %{ver}
-#%%define dl_ver 23-02-0%{?rc_v:-%rc_v}
 # so-version is 0 and seems to be stable
 %define pmi_so 0
 %define nss_so 2
@@ -58,7 +56,7 @@ ExclusiveArch:  do_not_build
 %if 0%{?sle_version} == 150300 || 0%{?sle_version} == 150400
 %define base_ver 2011
 %endif
-%if 0%{?sle_version} == 150500
+%if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
 %define base_ver 2302
 %endif
 
@@ -122,7 +120,7 @@ Conflicts:      %{*} }
 %endif
 
 %if 0%{?suse_version} >= 1500
-%define have_hdf5 1
+%undefine have_hdf5
 %define have_boolean_deps 1
 %define have_lz4 1
 %define have_firewalld 1
@@ -162,7 +160,6 @@ License:        SUSE-GPL-2.0-with-openssl-exception
 Group:          Productivity/Clustering/Computing
 URL:            https://www.schedmd.com
 Source:         https://download.schedmd.com/slurm/%{pname}-%{dl_ver}.tar.bz2
-#Source:         https://github.com/SchedMD/slurm/archive/refs/tags/%{pname}-%{dl_ver}.tar.gz
 Source1:        %upgrade_versions
 Source2:        slurm-rpmlintrc
 Source10:       slurmd.xml
@@ -1088,6 +1085,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_bindir}/sstat
 %{_bindir}/strigger
 %{?have_netloc:%{_bindir}/netloc_to_topology}
+%{_sbindir}/sackd
 %{_sbindir}/slurmctld
 %{_sbindir}/slurmsmwd
 %dir %{_libdir}/slurm/src
@@ -1190,33 +1188,27 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %dir %{_sysconfdir}/%{pname}/plugstack.conf.d
 %dir %{_libdir}/slurm
 %{_libdir}/slurm/libslurmfull.so
-%{_libdir}/slurm/accounting_storage_none.so
 %{_libdir}/slurm/accounting_storage_slurmdbd.so
 %{_libdir}/slurm/acct_gather_energy_pm_counters.so
 %{_libdir}/slurm/acct_gather_energy_gpu.so
 %{_libdir}/slurm/acct_gather_energy_ibmaem.so
-%{_libdir}/slurm/acct_gather_energy_none.so
 %{_libdir}/slurm/acct_gather_energy_rapl.so
 %{_libdir}/slurm/acct_gather_interconnect_sysfs.so
 %{_libdir}/slurm/acct_gather_filesystem_lustre.so
-%{_libdir}/slurm/acct_gather_filesystem_none.so
-%{_libdir}/slurm/acct_gather_interconnect_none.so
-%{_libdir}/slurm/acct_gather_profile_none.so
 %{_libdir}/slurm/burst_buffer_lua.so
 %{_libdir}/slurm/burst_buffer_datawarp.so
+%{_libdir}/slurm/data_parser_v0_0_40.so
 %{_libdir}/slurm/data_parser_v0_0_39.so
 %{_libdir}/slurm/cgroup_v1.so
 %if 0%{?suse_version} >= 1500
 %{_libdir}/slurm/cgroup_v2.so
 %endif
-%{_libdir}/slurm/core_spec_none.so
-%{_libdir}/slurm/cli_filter_none.so
 %{_libdir}/slurm/cli_filter_lua.so
 %{_libdir}/slurm/cli_filter_syslog.so
 %{_libdir}/slurm/cli_filter_user_defaults.so
 %{_libdir}/slurm/cred_none.so
-%{_libdir}/slurm/ext_sensors_none.so
 %{_libdir}/slurm/gpu_generic.so
+%{_libdir}/slurm/gpu_nrt.so
 %{_libdir}/slurm/gres_gpu.so
 %{_libdir}/slurm/gres_mps.so
 %{_libdir}/slurm/gres_nic.so
@@ -1224,13 +1216,10 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/hash_k12.so
 %{_libdir}/slurm/jobacct_gather_cgroup.so
 %{_libdir}/slurm/jobacct_gather_linux.so
-%{_libdir}/slurm/jobacct_gather_none.so
 %{_libdir}/slurm/jobcomp_filetxt.so
-%{_libdir}/slurm/jobcomp_none.so
 %{_libdir}/slurm/jobcomp_lua.so
 %{_libdir}/slurm/jobcomp_script.so
 %{_libdir}/slurm/job_container_cncu.so
-%{_libdir}/slurm/job_container_none.so
 %{_libdir}/slurm/job_container_tmpfs.so
 %{_libdir}/slurm/job_submit_all_partitions.so
 %{_libdir}/slurm/job_submit_defaults.so
@@ -1241,17 +1230,13 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/libslurm_pmi.so
 %{_libdir}/slurm/mcs_account.so
 %{_libdir}/slurm/mcs_group.so
-%{_libdir}/slurm/mcs_none.so
 %{_libdir}/slurm/mcs_user.so
-%{_libdir}/slurm/mpi_none.so
 %{_libdir}/slurm/mpi_pmi2.so
 %if %{with pmix}
 %{_libdir}/slurm/mpi_pmix.so
 %{_libdir}/slurm/mpi_pmix_v3.so
 %endif
 %{_libdir}/slurm/node_features_helpers.so
-%{_libdir}/slurm/power_none.so
-%{_libdir}/slurm/preempt_none.so
 %{_libdir}/slurm/preempt_partition_prio.so
 %{_libdir}/slurm/preempt_qos.so
 %{_libdir}/slurm/prep_script.so
@@ -1260,24 +1245,19 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/proctrack_cgroup.so
 %{_libdir}/slurm/proctrack_linuxproc.so
 %{_libdir}/slurm/proctrack_pgid.so
-%{_libdir}/slurm/route_default.so
-%{_libdir}/slurm/route_topology.so
 %{_libdir}/slurm/sched_backfill.so
 %{_libdir}/slurm/sched_builtin.so
-%{_libdir}/slurm/select_cons_res.so
 %{_libdir}/slurm/select_cons_tres.so
 %{_libdir}/slurm/select_linear.so
 %{_libdir}/slurm/serializer_json.so
 %{_libdir}/slurm/serializer_url_encoded.so
 %{_libdir}/slurm/serializer_yaml.so
-%{_libdir}/slurm/site_factor_none.so
-%{_libdir}/slurm/switch_none.so
+%{_libdir}/slurm/site_factor_example.so
 %{_libdir}/slurm/task_affinity.so
 %{_libdir}/slurm/task_cgroup.so
-%{_libdir}/slurm/task_none.so
 %{_libdir}/slurm/topology_3d_torus.so
-%{_libdir}/slurm/topology_hypercube.so
-%{_libdir}/slurm/topology_none.so
+%{_libdir}/slurm/topology_block.so
+%{_libdir}/slurm/topology_default.so
 %{_libdir}/slurm/topology_tree.so
 %if 0%{?suse_version} > 1310
 %{_libdir}/slurm/acct_gather_interconnect_ofed.so
@@ -1326,12 +1306,12 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_sbindir}/rcslurmrestd
 %{_unitdir}/slurmrestd.service
 %{_mandir}/man8/slurmrestd.*
+%{_libdir}/slurm/openapi_slurmctld.so
+%{_libdir}/slurm/openapi_slurmdbd.so
 %{_libdir}/slurm/openapi_dbv0_0_39.so
 %{_libdir}/slurm/openapi_v0_0_39.so
 %{_libdir}/slurm/openapi_dbv0_0_38.so
 %{_libdir}/slurm/openapi_v0_0_38.so
-%{_libdir}/slurm/openapi_dbv0_0_37.so
-%{_libdir}/slurm/openapi_v0_0_37.so
 %{_libdir}/slurm/rest_auth_local.so
 %endif
 

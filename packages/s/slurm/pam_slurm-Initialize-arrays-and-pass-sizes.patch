@@ -1,9 +1,7 @@
+From d51d3e1db8b2ed650a042352eff041ae77e467f9 Mon Sep 17 00:00:00 2001
 From: Egbert Eich <eich@suse.com>
-Date: Mon Feb 20 21:29:27 2023 +0100
-Subject: pam_slurm: Initialize arrays and pass sizes
-Patch-mainline: Not yet
-Git-commit: 5feca5c29d4e820dafd8d34c0343944b28890902
-References: bsc#1007053
+Date: Mon, 20 Feb 2023 21:29:27 +0100
+Subject: [PATCH] pam_slurm: Initialize arrays and pass sizes
 
 PAM is security critical:
 - clear arrays
@@ -15,11 +13,12 @@ Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  contribs/pam/pam_slurm.c | 20 +++++++++++---------
  1 file changed, 11 insertions(+), 9 deletions(-)
+
 diff --git a/contribs/pam/pam_slurm.c b/contribs/pam/pam_slurm.c
-index 20d21a9..363b6ae 100644
+index a27e651548..eac9879c07 100644
 --- a/contribs/pam/pam_slurm.c
 +++ b/contribs/pam/pam_slurm.c
-@@ -266,9 +266,9 @@ static int
+@@ -279,9 +279,9 @@ static int
  _gethostname_short (char *name, size_t len)
  {
  	int error_code, name_len;
@@ -31,12 +30,12 @@ index 20d21a9..363b6ae 100644
  	if (error_code)
  		return error_code;
  
-@@ -296,13 +296,13 @@ static int
+@@ -309,13 +309,13 @@ static int
  _slurm_match_allocation(uid_t uid)
  {
  	int authorized = 0, i;
--	char hostname[MAXHOSTNAMELEN];
-+	char hostname[MAXHOSTNAMELEN] = {0};
+-	char hostname[HOST_NAME_MAX];
++	char hostname[HOST_NAME_MAX] = {0};
  	char *nodename = NULL;
  	job_info_msg_t * msg;
  
@@ -47,7 +46,7 @@ index 20d21a9..363b6ae 100644
  		_log_msg(LOG_ERR, "gethostname: %m");
  		return 0;
  	}
-@@ -425,7 +425,7 @@ _send_denial_msg(pam_handle_t *pamh, struct _options *opts,
+@@ -438,7 +438,7 @@ _send_denial_msg(pam_handle_t *pamh, struct _options *opts,
   */
  extern void libpam_slurm_init (void)
  {
@@ -56,7 +55,7 @@ index 20d21a9..363b6ae 100644
  
  	if (slurm_h)
  		return;
-@@ -433,10 +433,10 @@ extern void libpam_slurm_init (void)
+@@ -446,10 +446,10 @@ extern void libpam_slurm_init (void)
  	/* First try to use the same libslurm version ("libslurm.so.24.0.0"),
  	 * Second try to match the major version number ("libslurm.so.24"),
  	 * Otherwise use "libslurm.so" */
@@ -69,7 +68,7 @@ index 20d21a9..363b6ae 100644
  		_log_msg (LOG_ERR, "Unable to write libslurmname\n");
  	} else if ((slurm_h = dlopen(libslurmname, RTLD_NOW|RTLD_GLOBAL))) {
  		return;
-@@ -445,8 +445,10 @@ extern void libpam_slurm_init (void)
+@@ -458,8 +458,10 @@ extern void libpam_slurm_init (void)
  			libslurmname, dlerror ());
  	}
  
@@ -82,3 +81,6 @@ index 20d21a9..363b6ae 100644
  		_log_msg (LOG_ERR, "Unable to write libslurmname\n");
  	} else if ((slurm_h = dlopen(libslurmname, RTLD_NOW|RTLD_GLOBAL))) {
  		return;
+-- 
+2.42.1
+
