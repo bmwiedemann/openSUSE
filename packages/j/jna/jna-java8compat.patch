@@ -1,6 +1,6 @@
 --- jna-5.13.0/build.xml	2023-05-30 15:30:31.116195853 +0200
 +++ jna-5.13.0/build.xml	2023-05-30 15:31:56.400786710 +0200
-@@ -106,8 +106,12 @@
+@@ -106,8 +106,14 @@
      JDK 11 is the last JDK, that supports creation of Java 6 compatible class
      files.
    -->
@@ -10,6 +10,8 @@
      <matches pattern="^1\.\d+$" string="${ant.java.version}"/>
 +        <matches pattern="^9.*$" string="${ant.java.version}"/>
 +        <matches pattern="^1.*$$" string="${ant.java.version}"/>
++        <matches pattern="^20.*$$" string="${ant.java.version}"/>
++        <matches pattern="^21.*$$" string="${ant.java.version}"/>
 +    </or>
    </condition>
  

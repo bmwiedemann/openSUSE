@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 23 15:33:23 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jna-java8compat.patch
+    + force java 1.8 compatibility for all JDKs which support it
+
+-------------------------------------------------------------------
 Wed Aug 30 10:34:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 5.13.0
