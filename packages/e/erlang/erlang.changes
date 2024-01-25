@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 23 09:35:11 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Disable rpmlint tests on SLE-15 where they currently fail
+
+-------------------------------------------------------------------
+Tue Jan 23 01:27:26 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- This codestream wasn't affected by bsc#1207113
+
+-------------------------------------------------------------------
 Thu Jan 11 06:09:29 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Changes for 26.2.1:
@@ -1338,6 +1348,7 @@ Thu Oct 13 16:02:52 UTC 2022 - opensuse-packaging@opensuse.org
     applications. For example via inets (httpd), cowboy, etc. Note
     that the vulnerability only affects servers that request client
     certification, that is sets the option {verify, verify_peer}.
+    (bsc#1205318)
   * eunit: With this change, Eunit can optionally not try to
     execute related module with "_tests" suffix. This might be used
     for avoiding duplicated executions when source and test modules

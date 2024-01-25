@@ -1064,4 +1064,12 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1139630</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>c8fa434fe8155fe1e8fa0a60330222da</srcmd5>
+    <version>26.2.1</version>
+    <time>1706204473</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141317</requestid>
+  </revision>
 </revisionlist>
