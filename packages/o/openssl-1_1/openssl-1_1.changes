@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 22 09:34:28 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Because OpenSSL 1.1.1 is no longer default, let's rename engine
+  directories to contain version of OpenSSL and let unversioned for
+  the default OpenSSL. [bsc#1194187, bsc#1207472, bsc#1218933]
+  * /etc/ssl/engines.d ->  /etc/ssl/engines1_1.d
+  * /etc/ssl/engdef.d -> /etc/ssl/engdef1_1.d
+  * Update patches:
+    - openssl-1_1-ossl-sli-002-ran-make-update.patch
+    - openssl-1_1-use-include-directive.patch
+
+-------------------------------------------------------------------
 Thu Nov 23 09:43:39 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Skip SHA1 test in 20-test_dgst.t when in FIPS mode
