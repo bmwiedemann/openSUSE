@@ -1,7 +1,7 @@
 #
 # spec file for package python-numcodecs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-numcodecs
-Version:        0.11.0
+Version:        0.12.1
 Release:        0
 Summary:        Buffer compression and transformation codecs
 License:        MIT
@@ -25,10 +25,6 @@ URL:            https://github.com/zarr-developers/numcodecs
 Source:         https://files.pythonhosted.org/packages/source/n/numcodecs/numcodecs-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM unbundle-libs.patch -- unbundle system libs gh#zarr-developers/numcodecs#264
 Patch0:         unbundle-libs.patch
-# PATCH-FIX-UPSTREAM numcodecs-pr417-raggednumpy.patch gh#zarr-developers/numcodecs#417
-Patch1:         numcodecs-pr417-raggednumpy.patch
-# PATCH-FIX-UPSTREAM gh#zarr-developers/numcodecs#442
-Patch2:         move-from-entrypoints.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
@@ -81,6 +77,6 @@ export DISABLE_NUMCODECS_AVX2=1
 %doc README.rst
 %license LICENSE.txt
 %{python_sitearch}/numcodecs
-%{python_sitearch}/numcodecs-%{version}*-info
+%{python_sitearch}/numcodecs-%{version}.dist-info
 
 %changelog
