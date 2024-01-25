@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 24 01:34:45 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240124.feea55a9:
+  * Fix: sh: guide users to setup key-based ssh authentication when non-interactive authentcation fails (bsc#1219045)
+
+-------------------------------------------------------------------
+Wed Jan 24 01:10:00 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240124.c9e4a0a1:
+  * Fix: bootstrap: ssh key of the init node is duplicated in the authorized_keys files of other node (bsc#1218940)
+
+-------------------------------------------------------------------
 Tue Jan 23 08:50:35 UTC 2024 - XLiang@suse.com
 
 - Update to version 4.6.0+20240123.680089b0:
