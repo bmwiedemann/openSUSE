@@ -266,4 +266,21 @@
   * fixes build against kernel 6.7 (boo#1219117)</comment>
     <requestid>1141256</requestid>
   </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>cad94d08b4e498e54aa800a7e1d2e277</srcmd5>
+    <version>545.29.06</version>
+    <time>1706204530</time>
+    <user>anag+factory</user>
+    <comment>- splitted up 61-nvidia-$flavor.conf to 59-nvidia-$flavor.conf 
+  and 61-nvidia-$flavor.conf, because 'install' line cannot be 
+  overwritten with higher config number ...
+
+- mistakenly moved dracut config file from 60-nvidia-%1.conf to
+  61-nvidia-%1.conf --&gt; reverted!
+
+- switched from 60-nvidia-$flavor.conf to 61-nvidia-$flavor.conf in
+  modprobe.d to resolve conflict with older package, which can be
+  installed in parallel</comment>
+    <requestid>1141543</requestid>
+  </revision>
 </revisionlist>
