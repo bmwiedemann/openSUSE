@@ -3158,6 +3158,7 @@ BuildFlags: onlybuild:vte
 BuildFlags: onlybuild:vulkan-headers
 BuildFlags: onlybuild:vulkan-loader
 BuildFlags: onlybuild:vulkan-tools
+BuildFlags: onlybuild:vulkan-volk
 BuildFlags: onlybuild:w3m
 BuildFlags: onlybuild:waf
 BuildFlags: onlybuild:waffle
