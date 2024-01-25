@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 23 23:16:30 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.63.1:
+  * Pull request 315: 373 fix goroutines leak
+
+-------------------------------------------------------------------
 Thu Jan 18 03:13:00 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.63.0:
