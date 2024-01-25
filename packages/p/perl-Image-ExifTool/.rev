@@ -771,4 +771,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1138760</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>25c473ed6d3373e9afdae5a2fb488fd0</srcmd5>
+    <version>12.74</version>
+    <time>1706204440</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141123</requestid>
+  </revision>
 </revisionlist>
