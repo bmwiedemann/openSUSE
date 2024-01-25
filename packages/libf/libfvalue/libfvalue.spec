@@ -1,7 +1,7 @@
 #
 # spec file for package libfvalue
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libfvalue
 %define lname	libfvalue1
-Version:        20220120
+Version:        20240124
 Release:        0
 Summary:        Library to provide generic file value functions
 License:        LGPL-3.0-or-later
@@ -29,30 +29,30 @@ Source2:        https://github.com/libyal/libfvalue/releases/download/%version/l
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20220115
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcnotify) >= 20220108
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfdatetime) >= 20220112
-BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libfwnt) >= 20210906
-BuildRequires:  pkgconfig(libuna) >= 20220102
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libfdatetime) >= 20240115
+BuildRequires:  pkgconfig(libfguid) >= 20240116
+BuildRequires:  pkgconfig(libfwnt) >= 20231124
+BuildRequires:  pkgconfig(libuna) >= 20230710
 # Various notes: https://en.opensuse.org/libyal
 
 %description
 Library to provide generic file value functions for the libyal family of libraries.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to provide generic file value functions
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 Library to provide generic file value functions for the libyal family of libraries.
 
 %package devel
 Summary:        Development files for libfvalue
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description devel
 Library to provide generic file value functions for the libyal family of libraries.
@@ -71,20 +71,20 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libfvalue.so.*
+%_libdir/libfvalue.so.*
 
 %files devel
-%{_includedir}/libfvalue.h
-%{_includedir}/libfvalue/
-%{_libdir}/libfvalue.so
-%{_libdir}/pkgconfig/libfvalue.pc
-%{_mandir}/man3/libfvalue.3*
+%_includedir/libfvalue.h
+%_includedir/libfvalue/
+%_libdir/libfvalue.so
+%_libdir/pkgconfig/libfvalue.pc
+%_mandir/man3/libfvalue.3*
 
 %changelog
