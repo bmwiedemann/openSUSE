@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Tue Jan 23 21:29:27 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- change services to manual
+- add a minimum meson version
+
+-------------------------------------------------------------------
+Sun Dec 10 16:36:10 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- fix a bug which didn't show installed wine/proton versions
+
+-------------------------------------------------------------------
+Wed Nov 29 06:56:36 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- update to version 0.4.8:
+  * Fix Bottle Icon
+
+-------------------------------------------------------------------
+Thu Nov 23 07:13:40 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- Update to version 0.4.7-2:
+  * Modified the appdata file to include the changelog of v0.4.7
+
+- Update to version 0.4.7-1:
+  * Fix missing icon sizes.
+
+- Update to version 0.4.7:
+  * modernised UI
+  * updated localization
+
+-------------------------------------------------------------------
+Tue Sep  5 01:03:10 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- update to version 0.4.6:
+  * Add Installed filter
+  * Add couple extra Wine/DXVK versions for download
+
+-------------------------------------------------------------------
+Mon Jul 31 11:22:27 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- Seperate language files into their own package
+- Update to version 0.4.5:
+  * Reworked delete diaglog
+  * Added ability to download older Wine/Proton versions
+  * Updated localization
+
+-------------------------------------------------------------------
+Sat Jul  8 08:56:49 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- Add libarchive and libjson-glib-1_0-0 as dependency
+
+-------------------------------------------------------------------
+Tue Jul  4 00:21:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Wed Jun 14 06:29:30 UTC 2023 - rrahl0@proton.me
+
+- Update to version 0.4.4:
+  * :hammer: Update appdata
+  * :bug: Fix Proton Tkg
+  * :bug: Fix install directories creation
+  * Update  german translation
+
+-------------------------------------------------------------------
+Tue Jun 13 20:47:03 UTC 2023 - rrahl0@proton.me
+
+- Update to version 0.4.3:
+  * :bug: Fix warning box
+  * :memo: Fix appdata typo
+  * :lipstick: Updated the UI
+  * :globe_with_meridians: Update language files
+  * :wrench: Update appdata and meson
+  * :sparkles: Added caching system
+  * Add german translation
+

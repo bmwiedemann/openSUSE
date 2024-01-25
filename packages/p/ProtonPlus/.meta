@@ -1,0 +1,6 @@
+<package name="ProtonPlus" project="openSUSE:Factory">
+  <title></title>
+  <description>ProtonPlus is a simple Proton version manager that make it easy to install and manage Proton versions. It works with Steam, Lutris, Heroic Games Launcher and Bottles. It was made in Vala with GTK4 and Libadwaita using GNOME Builder.</description>
+  <devel project="games:tools" package="ProtonPlus"/>
+  <url>https://github.com/vysp3r/ProtonPlus</url>
+</package>
