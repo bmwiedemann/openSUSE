@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 24 01:18:23 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.1.0~rc15~git8.122b6af:
+  * Remove unused import that breaks builds on newer rust versions
+  * Update to latest webauthn-rs version
+  * fix version
+  * Fix maint branch versions
+  * Disable inconsistent test (#2278)
+
+-------------------------------------------------------------------
 Tue Oct 31 12:02:37 UTC 2023 - william.brown@suse.com
 
 - Update to version 1.1.0~rc15~git2.74f5c0f:
