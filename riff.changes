@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 25 07:57:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.28.0:
+  * Conflict markers can be added to files by git merge for example.
+
+-------------------------------------------------------------------
 Tue Nov 14 06:57:44 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.27.1:
