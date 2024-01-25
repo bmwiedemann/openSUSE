@@ -168,4 +168,15 @@
     <comment>- removed the upstream ipxe binaries</comment>
     <requestid>1112815</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9ac5b723892ae26f15314357b98b9852</srcmd5>
+    <version>4.5.0~rc0</version>
+    <time>1706204464</time>
+    <user>anag+factory</user>
+    <comment>- make only overlay dir beeing config files
+
+- moved to git archive hash as source in order to be reproducible
+- removed grub-boot.patch as incorporated upstreams (forwarded request 1141266 from mslacken)</comment>
+    <requestid>1141267</requestid>
+  </revision>
 </revisionlist>

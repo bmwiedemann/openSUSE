@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Jan 24 14:31:17 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- make only overlay dir beeing config files
+
+-------------------------------------------------------------------
+Fri Jan 19 13:45:18 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- moved to git archive hash as source in order to be reproducible
+- added vendor.tar.gz as git hash source doesn't have vendoring 
+- removed grub-boot.patch as incorporated upstreams
+
+-------------------------------------------------------------------
+Wed Jan 17 11:16:59 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- added documentation for replacing dhcpd and tftp with dnsmasq
+  as README.dnsmasq (jira#HPC-65)
+- added following patches:
+  * clean-warewulf-conf.patch
+  * dnsmasq-template-move.patch
+
+-------------------------------------------------------------------
+Thu Dec 21 14:48:08 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- updated to v4.5.0rc0 pre release with following new features:
+  * disks, partitions and file systems can set in the configration
+    and if ignition is present in the container, changes to the disks will be
+    made
+  * grub can be used as alternative boot method instead of iPXE. The
+    grub binairy is extracted from the container and shim is executed before
+    the grub. This enables secure boot
+  * wwctl has now the genconfig subcommand which will print/create
+    valid configurations
+  * all paths e.g the overlay dir, can now be configured in warewulf.conf
+- notable bug fixes are:
+  * Fixed a bug where profile tags were erroneously overridden by empty node
+    values.
+  * Fixed bug where tags from profiles weren't rendered
+- added grub-boot.patch which includes the not merged grub support
+- removed make-ipxe-binary-source-configureable.patch
+  CreateMt-Targets.patch,
+  Fix-for-CVE-2022-41723.patch as incoperated upstream
+
+
+-------------------------------------------------------------------
+Thu Oct 12 07:43:32 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- check if automatic configured ip range doesn'y contain ip address
+  of ww4 host (bsc#1215583)
+	
+
+-------------------------------------------------------------------
 Thu Sep 21 09:23:31 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - removed the upstream ipxe binaries 

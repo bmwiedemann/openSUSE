@@ -1,0 +1,238 @@
+diff --git a/Makefile b/Makefile
+index e85ac05b..466faf19 100644
+--- a/Makefile
++++ b/Makefile
+@@ -106,7 +106,8 @@ install: build docs
+ 	install -d -m 0755 $(DESTDIR)$(SYSTEMDDIR)
+ 	install -d -m 0755 $(DESTDIR)$(IPXESOURCE)
+ 	install -d -m 0755 $(DESTDIR)$(DATADIR)/warewulf
+-	test -f $(DESTDIR)$(WWCONFIGDIR)/warewulf.conf || install -m 0644 etc/warewulf.conf $(DESTDIR)$(WWCONFIGDIR)
++	# wwctl genconfig to get the compiled in paths to warewulf.conf
++	test -f $(DESTDIR)$(WWCONFIGDIR)/warewulf.conf || ./wwctl --warewulfconf etc/warewulf.conf genconfig warewulfconf print> $(DESTDIR)$(WWCONFIGDIR)/warewulf.conf
+ 	test -f $(DESTDIR)$(WWCONFIGDIR)/nodes.conf || install -m 0644 etc/nodes.conf $(DESTDIR)$(WWCONFIGDIR)
+ 	test -f $(DESTDIR)$(WWCONFIGDIR)/wwapic.conf || install -m 0644 etc/wwapic.conf $(DESTDIR)$(WWCONFIGDIR)
+ 	test -f $(DESTDIR)$(WWCONFIGDIR)/wwapid.conf || install -m 0644 etc/wwapid.conf $(DESTDIR)$(WWCONFIGDIR)
+diff --git a/internal/pkg/config/buildconfig.go.in b/internal/pkg/config/buildconfig.go.in
+index 125f192f..6f761cc1 100644
+--- a/internal/pkg/config/buildconfig.go.in
++++ b/internal/pkg/config/buildconfig.go.in
+@@ -5,17 +5,44 @@ var ConfigFile = "@SYSCONFDIR@/warewulf/warewulf.conf"
+ type BuildConfig struct {
+ 	Bindir         string `default:"@BINDIR@"`
+ 	Sysconfdir     string `default:"@SYSCONFDIR@"`
+-	Datadir        string `default:"@DATADIR@"`
+ 	Localstatedir  string `default:"@LOCALSTATEDIR@"`
+ 	Ipxesource     string `default:"@IPXESOURCE@"`
+ 	Srvdir         string `default:"@SRVDIR@"`
+-	Tftpdir        string `default:"@TFTPDIR@"`
+ 	Firewallddir   string `default:"@FIREWALLDDIR@"`
+ 	Systemddir     string `default:"@SYSTEMDDIR@"`
+ 	WWOverlaydir   string `default:"@WWOVERLAYDIR@"`
+ 	WWChrootdir    string `default:"@WWCHROOTDIR@"`
+ 	WWProvisiondir string `default:"@WWPROVISIONDIR@"`
+-	Version        string `default:"@VERSION@"`
+-	Release        string `default:"@RELEASE@"`
+ 	WWClientdir    string `default:"@WWCLIENTDIR@"`
++	version        string `default:"@VERSION@"`
++	release        string `default:"@RELEASE@"`
++}
++
++func (conf BuildConfig) Version() string {
++	return conf.version
++}
++
++func (conf BuildConfig) Release() string {
++	return conf.release
++}
++
++type TFTPConf struct {
++	Enabled     bool   `yaml:"enabled" default:"true"`
++	TftpRoot    string `yaml:"tftproot" default:"@TFTPDIR@"`
++	SystemdName string `yaml:"systemd name" default:"tftp"`
++
++	IpxeBinaries map[string]string `yaml:"ipxe" default:"{\"00:09\": \"ipxe-snponly-x86_64.efi\",\"00:00\": \"undionly.kpxe\",\"00:0B\": \"arm64-efi/snponly.efi\",\"00:07\":  \"ipxe-snponly-x86_64.efi\"}"`
++}
++
++// WarewulfConf adds additional Warewulf-specific configuration to
++// BaseConf.
++type WarewulfConf struct {
++	Port              int    `yaml:"port" default:"9983"`
++	Secure            bool   `yaml:"secure" default:"true"`
++	UpdateInterval    int    `yaml:"update interval" default:"60"`
++	AutobuildOverlays bool   `yaml:"autobuild overlays" default:"true"`
++	EnableHostOverlay bool   `yaml:"host overlay" default:"true"`
++	Syslog            bool   `yaml:"syslog" default:"false"`
++	DataStore         string `yaml:"datastore" default:"@DATADIR@"`
++	GrubBoot          bool   `yaml:"grubboot" default:"false"`
+ }
+diff --git a/internal/pkg/config/mounts.go b/internal/pkg/config/mounts.go
+index daf38c0a..2eb5060b 100644
+--- a/internal/pkg/config/mounts.go
++++ b/internal/pkg/config/mounts.go
+@@ -3,8 +3,8 @@ package config
+ // A MountEntry represents a bind mount that is applied to a container
+ // during exec and shell.
+ type MountEntry struct {
+-	Source   string `yaml:"source" default:"/etc/resolv.conf"`
+-	Dest     string `yaml:"dest,omitempty" default:"/etc/resolv.conf"`
+-	ReadOnly bool   `yaml:"readonly,omitempty" default:"false"`
++	Source   string `yaml:"source"`
++	Dest     string `yaml:"dest,omitempty"`
++	ReadOnly bool   `yaml:"readonly,omitempty"`
+ 	Options  string `yaml:"options,omitempty"` // ignored at the moment
+ }
+diff --git a/internal/pkg/config/root_test.go b/internal/pkg/config/root_test.go
+index f8c9a697..d57d1557 100644
+--- a/internal/pkg/config/root_test.go
++++ b/internal/pkg/config/root_test.go
+@@ -43,10 +43,9 @@ func TestDefaultRootConf(t *testing.T) {
+ 
+ 	assert.NotEmpty(t, conf.Paths.Bindir)
+ 	assert.NotEmpty(t, conf.Paths.Sysconfdir)
+-	assert.NotEmpty(t, conf.Paths.Datadir)
++	assert.NotEmpty(t, conf.Warewulf.DataStore)
+ 	assert.NotEmpty(t, conf.Paths.Localstatedir)
+ 	assert.NotEmpty(t, conf.Paths.Srvdir)
+-	assert.NotEmpty(t, conf.Paths.Tftpdir)
+ 	assert.NotEmpty(t, conf.Paths.Firewallddir)
+ 	assert.NotEmpty(t, conf.Paths.Systemddir)
+ 	assert.NotEmpty(t, conf.Paths.WWOverlaydir)
+diff --git a/internal/pkg/config/tftp.go b/internal/pkg/config/tftp.go
+deleted file mode 100644
+index cd5260df..00000000
+--- a/internal/pkg/config/tftp.go
++++ /dev/null
+@@ -1,11 +0,0 @@
+-package config
+-
+-// TFTPConf represents that configuration for the TFTP service that
+-// Warewulf will configure.
+-type TFTPConf struct {
+-	Enabled     bool   `yaml:"enabled" default:"true"`
+-	TftpRoot    string `yaml:"tftproot" default:"/var/lib/tftpboot"`
+-	SystemdName string `yaml:"systemd name" default:"tftp"`
+-
+-	IpxeBinaries map[string]string `yaml:"ipxe" default:"{\"00:09\": \"ipxe-snponly-x86_64.efi\",\"00:00\": \"undionly.kpxe\",\"00:0B\": \"arm64-efi/snponly.efi\",\"00:07\":  \"ipxe-snponly-x86_64.efi\"}"`
+-}
+diff --git a/internal/pkg/config/warewulf.go b/internal/pkg/config/warewulf.go
+deleted file mode 100644
+index 9a0dc3f4..00000000
+--- a/internal/pkg/config/warewulf.go
++++ /dev/null
+@@ -1,14 +0,0 @@
+-package config
+-
+-// WarewulfConf adds additional Warewulf-specific configuration to
+-// BaseConf.
+-type WarewulfConf struct {
+-	Port              int    `yaml:"port" default:"9983"`
+-	Secure            bool   `yaml:"secure" default:"true"`
+-	UpdateInterval    int    `yaml:"update interval" default:"60"`
+-	AutobuildOverlays bool   `yaml:"autobuild overlays" default:"true"`
+-	EnableHostOverlay bool   `yaml:"host overlay" default:"true"`
+-	Syslog            bool   `yaml:"syslog" default:"false"`
+-	DataStore         string `yaml:"datastore" default:"/var/lib/warewulf"`
+-	GrubBoot          bool   `yaml:"grubboot" default:"false"`
+-}
+diff --git a/internal/pkg/configure/tftp.go b/internal/pkg/configure/tftp.go
+index 058ca059..ab71429d 100644
+--- a/internal/pkg/configure/tftp.go
++++ b/internal/pkg/configure/tftp.go
+@@ -12,7 +12,7 @@ import (
+ 
+ func TFTP() error {
+ 	controller := warewulfconf.Get()
+-	var tftpdir string = path.Join(controller.Paths.Tftpdir, "warewulf")
++	var tftpdir string = path.Join(controller.TFTP.TftpRoot, "warewulf")
+ 
+ 	err := os.MkdirAll(tftpdir, 0755)
+ 	if err != nil {
+diff --git a/internal/pkg/node/constructors.go b/internal/pkg/node/constructors.go
+index 857f93cf..1ddf9274 100644
+--- a/internal/pkg/node/constructors.go
++++ b/internal/pkg/node/constructors.go
+@@ -49,7 +49,7 @@ func New() (NodeYaml, error) {
+ 		ConfigFile = path.Join(conf.Paths.Sysconfdir, "warewulf/nodes.conf")
+ 	}
+ 	if DefaultConfig == "" {
+-		DefaultConfig = path.Join(conf.Paths.Datadir, "warewulf/defaults.conf")
++		DefaultConfig = path.Join(conf.Warewulf.DataStore, "warewulf/defaults.conf")
+ 	}
+ 	wwlog.Verbose("Opening node configuration file: %s", ConfigFile)
+ 	data, err := os.ReadFile(ConfigFile)
+diff --git a/internal/pkg/testenv/testenv.go b/internal/pkg/testenv/testenv.go
+index 7303d326..6ddbeeca 100644
+--- a/internal/pkg/testenv/testenv.go
++++ b/internal/pkg/testenv/testenv.go
+@@ -68,10 +68,10 @@ func New(t *testing.T) (env *TestEnv) {
+ 
+ 	conf.Paths.Sysconfdir = env.GetPath(Sysconfdir)
+ 	conf.Paths.Bindir = env.GetPath(Bindir)
+-	conf.Paths.Datadir = env.GetPath(Datadir)
++	conf.Warewulf.DataStore = env.GetPath(Datadir)
+ 	conf.Paths.Localstatedir = env.GetPath(Localstatedir)
+ 	conf.Paths.Srvdir = env.GetPath(Srvdir)
+-	conf.Paths.Tftpdir = env.GetPath(Tftpdir)
++	conf.TFTP.TftpRoot = env.GetPath(Tftpdir)
+ 	conf.Paths.Firewallddir = env.GetPath(Firewallddir)
+ 	conf.Paths.Systemddir = env.GetPath(Systemddir)
+ 	conf.Paths.WWOverlaydir = env.GetPath(WWOverlaydir)
+@@ -82,10 +82,10 @@ func New(t *testing.T) (env *TestEnv) {
+ 	for _, confPath := range []string{
+ 		conf.Paths.Sysconfdir,
+ 		conf.Paths.Bindir,
+-		conf.Paths.Datadir,
++		conf.Warewulf.DataStore,
+ 		conf.Paths.Localstatedir,
+ 		conf.Paths.Srvdir,
+-		conf.Paths.Tftpdir,
++		conf.TFTP.TftpRoot,
+ 		conf.Paths.Firewallddir,
+ 		conf.Paths.Systemddir,
+ 		conf.Paths.WWOverlaydir,
+diff --git a/internal/pkg/version/version.go b/internal/pkg/version/version.go
+index d4b5fb85..6231e4fc 100644
+--- a/internal/pkg/version/version.go
++++ b/internal/pkg/version/version.go
+@@ -12,7 +12,7 @@ Return the version of wwctl
+ */
+ func GetVersion() string {
+ 	conf := warewulfconf.Get()
+-	return fmt.Sprintf("%s-%s", conf.Paths.Version, conf.Paths.Release)
++	return fmt.Sprintf("%s-%s", conf.Paths.Version(), conf.Paths.Release())
+ }
+ 
+ /*
+diff --git a/internal/pkg/warewulfd/copyshim.go b/internal/pkg/warewulfd/copyshim.go
+index 44ea45f4..0b295175 100644
+--- a/internal/pkg/warewulfd/copyshim.go
++++ b/internal/pkg/warewulfd/copyshim.go
+@@ -24,22 +24,22 @@ func CopyShimGrub() (err error) {
+ 	if shimPath == "" {
+ 		return fmt.Errorf("no shim found on the host os")
+ 	}
+-	err = util.CopyFile(shimPath, path.Join(conf.Paths.Tftpdir, "warewulf", "shim.efi"))
++	err = util.CopyFile(shimPath, path.Join(conf.TFTP.TftpRoot, "warewulf", "shim.efi"))
+ 	if err != nil {
+ 		return err
+ 	}
+-	_ = os.Chmod(path.Join(conf.Paths.Tftpdir, "warewulf", "shim.efi"), 0o755)
++	_ = os.Chmod(path.Join(conf.TFTP.TftpRoot, "warewulf", "shim.efi"), 0o755)
+ 	grubPath := container.GrubFind("")
+ 	if grubPath == "" {
+ 		return fmt.Errorf("no grub found on host os")
+ 	}
+-	err = util.CopyFile(grubPath, path.Join(conf.Paths.Tftpdir, "warewulf", "grub.efi"))
++	err = util.CopyFile(grubPath, path.Join(conf.TFTP.TftpRoot, "warewulf", "grub.efi"))
+ 	if err != nil {
+ 		return err
+ 	}
+-	_ = os.Chmod(path.Join(conf.Paths.Tftpdir, "warewulf", "grub.efi"), 0o755)
+-	err = util.CopyFile(grubPath, path.Join(conf.Paths.Tftpdir, "warewulf", "grubx64.efi"))
+-	_ = os.Chmod(path.Join(conf.Paths.Tftpdir, "warewulf", "grubx64.efi"), 0o755)
++	_ = os.Chmod(path.Join(conf.TFTP.TftpRoot, "warewulf", "grub.efi"), 0o755)
++	err = util.CopyFile(grubPath, path.Join(conf.TFTP.TftpRoot, "warewulf", "grubx64.efi"))
++	_ = os.Chmod(path.Join(conf.TFTP.TftpRoot, "warewulf", "grubx64.efi"), 0o755)
+ 
+ 	return
+ }
