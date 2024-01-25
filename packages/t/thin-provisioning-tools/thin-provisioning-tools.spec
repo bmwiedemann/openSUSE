@@ -1,7 +1,7 @@
 #
 # spec file for package thin-provisioning-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           thin-provisioning-tools
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Thin Provisioning Tools
 License:        GPL-3.0-only
@@ -28,7 +28,7 @@ Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  suse-module-tools
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 Conflicts:      device-mapper < 1.02.115
 
 %description
