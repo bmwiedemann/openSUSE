@@ -1,7 +1,7 @@
 #
 # spec file for package python-gmpy2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,12 @@ Source:         https://files.pythonhosted.org/packages/source/g/gmpy2/gmpy2-%{v
 Patch0:         mpfr421.patch
 # PATCH-FIX-UPSTREAM file included in https://github.com/aleaxit/gmpy/issues/418#issuecomment-1706721394
 Patch1:         gmpy2_cache.c.diff
+# PATCH-FIX-UPSTREAM included in https://github.com/aleaxit/gmpy/issues/446
+Patch2:         support-python-312.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  mpc-devel
@@ -51,10 +55,10 @@ rounded complex floating-point arithmetic) libraries.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -69,6 +73,6 @@ popd
 %doc README
 %license COPYING COPYING.LESSER
 %{python_sitearch}/gmpy2
-%{python_sitearch}/gmpy2-%{version}*-info
+%{python_sitearch}/gmpy2-%{version}.dist-info
 
 %changelog
