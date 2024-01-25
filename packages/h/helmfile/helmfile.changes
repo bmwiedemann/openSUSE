@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Jan 24 09:22:29 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.161.0:
+  What's Changed
+  * build(deps): bump github.com/helmfile/vals from 0.31.0 to
+    0.32.0 by @dependabot in #1250
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.8 to
+    1.49.9 by @dependabot in #1251
+  * feat: respect helmfile.lock with ad-hoc kustimzation by
+    @vlpav030 in #1244
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.9 to
+    1.49.10 by @dependabot in #1257
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.10 to
+    1.49.11 by @dependabot in #1259
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.11 to
+    1.49.12 by @dependabot in #1260
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.12 to
+    1.49.13 by @dependabot in #1263
+  * fix: prevent preparing chart for disabled releases by
+    @mighty1231 in #1210
+  * add support for HELMFILE_FILE_PATH envvar to set -f by
+    @sstarcher in #1255
+  * fix checker error message by @petelock in #1266
+  * build(deps): bump golang.org/x/term from 0.15.0 to 0.16.0
+    by @dependabot in #1267
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.13 to
+    1.49.14 by @dependabot in #1269
+  * build(deps): bump golang.org/x/sync from 0.5.0 to 0.6.0 by
+    @dependabot in #1268
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.14 to
+    1.49.15 by @dependabot in #1270
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.15 to
+    1.49.16 by @dependabot in #1272
+  * build(deps): bump github.com/cloudflare/circl from 1.3.3 to
+    1.3.7 by @dependabot in #1273
+  * feat: include func support more template functions by
+    @yxxhero in #1277
+  * chore: add zhihu to list of helmfile users by @zhaogaolong
+    in #1278
+  * Bugfix: do not print registry password to stdout when running
+    by @ennekein in #1275
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.16 to
+    1.49.17 by @dependabot in #1279
+  * build(deps): bump gitpython from 3.1.37 to 3.1.41 in /docs
+    by @dependabot in #1280
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.17 to
+    1.49.18 by @dependabot in #1283
+  * build(deps): bump jinja2 from 3.1.1 to 3.1.3 in /docs by
+    @dependabot in #1284
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.18 to
+    1.49.19 by @dependabot in #1285
+  * feat: bump helm-diff to v3.9.1 by @yxxhero in #1286
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.19 to
+    1.49.21 by @dependabot in #1287
+  * Bump helm diff to 3.9.2 by @kxkcx in #1291
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.21 to
+    1.49.22 by @dependabot in #1292
+  * fix: issue with pre-release Helm version by @yxxhero in #1293
+  * build(deps): bump k8s.io/apimachinery from 0.29.0 to 0.29.1
+    by @dependabot in #1298
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.22 to
+    1.49.23 by @dependabot in #1296
+  * Bump helm diff to 3.9.2 by @kxkcx in #1299
+  * feat: bump helm to 3.14.0 by @yxxhero in #1295
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.23 to
+    1.49.24 by @dependabot in #1300
+  * feat: bump vals to 0.33.0 by @yxxhero in #1302
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.49.24 to
+    1.50.0 by @dependabot in #1303
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.50.0 to
+    1.50.1 by @dependabot in #1305
+  * Fix the password display problem when passing the chart link
+    by @NavesEdu in #1281
+
+-------------------------------------------------------------------
 Tue Dec 26 09:32:39 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.160.0:

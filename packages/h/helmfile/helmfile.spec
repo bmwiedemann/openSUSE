@@ -1,8 +1,8 @@
 #
 # spec file for package helmfile
 #
-# Copyright (c) 2023 SUSE LLC
-#               2021 Manfred Hollstein <manfred.h@gmx.net>
+# Copyright (c) 2024 SUSE LLC
+#               2021-2024 Manfred Hollstein <manfred.h@gmx.net>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%define git_commit e9cb5a05fe38eeaceb89e6b268882140f83e76af
+%define git_commit 430677d43cf4e591aa86a6c24268d02f15f7162a
 Name:           helmfile
-Version:        0.160.0
+Version:        0.161.0
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT
@@ -27,8 +27,8 @@ Group:          Development/Languages/Other
 URL:            https://github.com/helmfile/helmfile
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Requires:       helm >= 3.11.1
-Recommends:     helm >= 3.13.1
+Requires:       helm >= 3.13.1
+Recommends:     helm >= 3.14.0
 BuildRequires:  golang-packaging
 BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.21
