@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 25 14:43:26 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- splitted up 61-nvidia-$flavor.conf to 59-nvidia-$flavor.conf 
+  and 61-nvidia-$flavor.conf, because 'install' line cannot be 
+  overwritten with higher config number ...
+
+-------------------------------------------------------------------
+Thu Jan 25 14:36:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- mistakenly moved dracut config file from 60-nvidia-%1.conf to
+  61-nvidia-%1.conf --> reverted!
+
+-------------------------------------------------------------------
+Thu Jan 25 13:52:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- switched from 60-nvidia-$flavor.conf to 61-nvidia-$flavor.conf in
+  modprobe.d to resolve conflict with older package, which can be
+  installed in parallel
+
+-------------------------------------------------------------------
 Wed Jan 24 13:39:39 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - kernel-6.7.patch
