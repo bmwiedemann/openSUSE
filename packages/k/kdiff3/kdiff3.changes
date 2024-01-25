@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 25 08:35:20 UTC 2024 - Wolfgang Bauer <wbauer1@a1.net>
+
+- Update to 1.10.7
+  * Correctly handle oversized files (kde#475176)
+
+-------------------------------------------------------------------
 Thu Oct  5 08:25:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.10.6
