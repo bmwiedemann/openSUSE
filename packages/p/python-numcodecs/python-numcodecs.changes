@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 25 07:14:05 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.12.1:
+  * Codec is now derived from abc.ABC By Mads R. B. Kristensen, #472.
+  * Fix handling of entry points on older Python versions where
+    importlib_metadata compatibility is concerned By Vyas Ramasubramani, #478.
+  * Make shuffle pyx functions noexcept By Martin Durant, #477.
+  * Add fletcher32 checksum codec By Martin Durant, #410.
+  * Add jenkins_lookup3 checksum codec By Mark Kittisopkul, #445.
+  * Support Python 3.12. By John Kirkham, #471.
+  * Cleanup imports in adhoc/blosc_memleak_check.py By John Kirkham, #408.
+- Drop patches move-from-entrypoints.patch,
+  numcodecs-pr417-raggednumpy.patch:
+  * Included upstream.
+
+-------------------------------------------------------------------
 Mon Aug 28 02:21:23 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch move-from-entrypoints.patch:

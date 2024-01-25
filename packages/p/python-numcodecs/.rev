@@ -40,4 +40,23 @@
   * Drop requirements on entrypoints, use importlib.metadata.</comment>
     <requestid>1106198</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e2db9389bef1855166c26aa8cdfecddd</srcmd5>
+    <version>0.12.1</version>
+    <time>1706204492</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.1:
+  * Codec is now derived from abc.ABC By Mads R. B. Kristensen, #472.
+  * Fix handling of entry points on older Python versions where
+    importlib_metadata compatibility is concerned By Vyas Ramasubramani, #478.
+  * Make shuffle pyx functions noexcept By Martin Durant, #477.
+  * Add fletcher32 checksum codec By Martin Durant, #410.
+  * Add jenkins_lookup3 checksum codec By Mark Kittisopkul, #445.
+  * Support Python 3.12. By John Kirkham, #471.
+  * Cleanup imports in adhoc/blosc_memleak_check.py By John Kirkham, #408.
+- Drop patches move-from-entrypoints.patch,
+  numcodecs-pr417-raggednumpy.patch:
+  * Included upstream.</comment>
+    <requestid>1141437</requestid>
+  </revision>
 </revisionlist>
