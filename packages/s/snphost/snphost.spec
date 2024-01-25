@@ -1,38 +1,35 @@
-# SPDX-License-Identifier: Apache-2.0
 #
+# spec file for package snphost
+#
+# Copyright (c) 2024 SUSE LLC
 # Copyright (C) 2023 VirTEE
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-# Author: Larry Dewey <larry.dewey@amd.com>
+
 
 Name:           snphost
-Version:        0.1.2~0
+Version:        0.2.0~0
 Release:        0
 Summary:        A Rust command-line tool for interacting with the AMD Secure Processor
 License:        Apache-2.0
 Group:          Productivity/Security
-Url:            https://github.com/virtee/snphost
+URL:            https://github.com/virtee/snphost
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
-BuildRequires:	openssl-devel
-%if 0%{?suse_version} > 1600
-BuildRequires: 	ruby3.2-rubygem-asciidoctor
-%else
-BuildRequires: 	ruby2.5-rubygem-asciidoctor
-%endif
+BuildRequires:  openssl-devel
+BuildRequires:  rubygem(asciidoctor)
 ExclusiveArch:  x86_64
 
 %description
@@ -49,7 +46,7 @@ install -D -m 644 %{SOURCE2} .cargo/config
 
 %install
 %{cargo_install}
- 
+
 %check
 %{cargo_test}
 
