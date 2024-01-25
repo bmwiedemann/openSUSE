@@ -468,6 +468,8 @@ Requires:       python%{python3_pkgversion}
 %if 0%{?weak_deps}
 Recommends:     podman >= 2.0.2
 %endif
+Provides:       user(cephadm)
+Provides:       group(cephadm)
 %description -n cephadm
 Utility to bootstrap a Ceph cluster and manage Ceph daemons deployed 
 with systemd and podman.
@@ -505,6 +507,8 @@ Obsoletes:      libradosstriper1 <= %{_epoch_prefix}%{version}-%{release}
 PreReq:         permissions
 Requires(pre):	shadow
 %endif
+Provides:       user(ceph)
+Provides:       group(ceph)
 %description -n ceph-common
 Common utilities to mount and interact with a ceph storage cluster.
 Comprised of files that are common to Ceph clients and servers.
