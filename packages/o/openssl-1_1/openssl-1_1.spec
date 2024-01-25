@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-1_1
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,8 @@
 %define ssletcdir %{_sysconfdir}/ssl
 %define maj_min 1.1
 %define _rname  openssl
+%global sslengcnf %{ssletcdir}/engines1_1.d
+%global sslengdef %{ssletcdir}/engdef1_1.d
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 # Enable livepatching support for SLE15-SP4 onwards. It requires
 # compiler support introduced there.
@@ -389,8 +391,8 @@ mkdir %{buildroot}/%{_datadir}/ssl
 mv %{buildroot}/%{ssletcdir}/misc %{buildroot}/%{_datadir}/ssl/
 # Create the two directories into which packages will drop their configuration
 # files.
-mkdir %{buildroot}/%{ssletcdir}/engines.d/
-mkdir %{buildroot}/%{ssletcdir}/engdef.d/
+mkdir %{buildroot}/%{sslengcnf}
+mkdir %{buildroot}/%{sslengdef}
 
 # avoid file conflicts with man pages from other packages
 #
@@ -486,8 +488,8 @@ unset LD_LIBRARY_PATH
 %dir %{ssletcdir}
 %config (noreplace) %{ssletcdir}/openssl-1_1.cnf
 %attr(700,root,root) %{ssletcdir}/private
-%dir %{ssletcdir}/engines.d
-%dir %{ssletcdir}/engdef.d
+%dir %{sslengcnf}
+%dir %{sslengdef}
 %dir %{_datadir}/ssl
 %{_datadir}/ssl/misc
 %{_bindir}/c_rehash-1_1
