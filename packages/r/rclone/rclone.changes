@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 25 01:42:58 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.65.2:
+  * Version v1.65.2
+  * azureblob: fix data corruption bug #7590
+  * build: add -race flag to integration tester test_all
+  * docs: add bisync to index
+  * build(deps): bump actions/cache from 3 to 4
+  * add missing backtick
+  * docs: add rclone OS requirements
+  * imagekit: updated overview - supported operations
+  * imagekit: Updated docs and web content
+  * docs: add warp.dev sponsorship to github home page
+  * docs: add warp.dev as a sponsor
+  * docs: update website footer
+  * vfs: fix stale data when using --vfs-cache-mode full
+  * build(deps): bump github.com/cloudflare/circl from 1.3.6 to 1.3.7
+  * Start v1.65.2-DEV development
+
+-------------------------------------------------------------------
 Mon Jan 08 13:12:53 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.65.1:
