@@ -15,4 +15,22 @@
     <comment></comment>
     <requestid>1125432</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d42fd5e1367a0251499729e2dc92797</srcmd5>
+    <version>1.4.33</version>
+    <time>1706204400</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.33:
+  * Added native DX12 support for encoding and PreAnalysis
+  * Vulkan encoder became independent from Vulkan driver
+  * Switched to public Vulkan Khronos extensions for decoder
+  * AMF on Linux can now be used with AMD Pro Vulkan, and experimentally with RADV drivers
+  * Improvements to sample presenters
+  * Added new FRC component and API doc
+  * Added new VQEnhancer API doc
+  * Improvements and cleanup to sample presenters
+  * Updated FFmpeg to 6.0
+</comment>
+    <requestid>1141051</requestid>
+  </revision>
 </revisionlist>

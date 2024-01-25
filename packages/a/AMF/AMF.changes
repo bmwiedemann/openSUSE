@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 23 20:50:38 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 1.4.33:
+  * Added native DX12 support for encoding and PreAnalysis
+  * Vulkan encoder became independent from Vulkan driver
+  * Switched to public Vulkan Khronos extensions for decoder
+  * AMF on Linux can now be used with AMD Pro Vulkan, and experimentally with RADV drivers
+  * Improvements to sample presenters
+  * Added new FRC component and API doc
+  * Added new VQEnhancer API doc
+  * Improvements and cleanup to sample presenters
+  * Updated FFmpeg to 6.0
+
+-------------------------------------------------------------------
 Mon Nov 13 09:46:08 UTC 2023 - ecsos@opensuse.org
 
 - Update to version 1.4.30:

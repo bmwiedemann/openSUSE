@@ -1,7 +1,7 @@
 #
 # spec file for package AMF
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           AMF
-Version:        1.4.30
+Version:        1.4.33
 Release:        0
 Summary:        Advanced Media Framework (AMF) SDK
 License:        MIT
