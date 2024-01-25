@@ -1,0 +1,61 @@
+From 9dd2b961dac1c9192d2459b697925ffab26a8ed2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jeremy=20Lain=C3=A9?= <jeremy.laine@m4x.org>
+Date: Sun, 14 Jan 2024 11:49:14 +0100
+Subject: [PATCH] Adapt "no subjectaltname" test for service-identitity >= 24
+
+When a certificate contains no subjectAltName extension,
+`service-identity` now raises a `CertificateError` instead of a
+`VerificationError`.
+---
+ pyproject.toml     | 2 +-
+ src/aioquic/tls.py | 7 +++++--
+ tests/test_tls.py  | 3 +--
+ 3 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 562a2a72..927fa0d4 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -31,7 +31,7 @@ dependencies = [
+     "cryptography",
+     "pylsqpack>=0.3.3,<0.4.0",
+     "pyopenssl>=22",
+-    "service-identity>=23.1.0",
++    "service-identity>=24.1.0",
+ ]
+ dynamic = ["version"]
+ 
+diff --git a/src/aioquic/tls.py b/src/aioquic/tls.py
+index a8bcb2ce..35f92ce7 100644
+--- a/src/aioquic/tls.py
++++ b/src/aioquic/tls.py
+@@ -244,10 +244,13 @@ def verify_certificate(
+                     certificate, server_name
+                 )
+ 
+-        except service_identity.VerificationError as exc:
++        except (
++            service_identity.CertificateError,
++            service_identity.VerificationError,
++        ) as exc:
+             patterns = service_identity.cryptography.extract_patterns(certificate)
+             if len(patterns) == 0:
+-                errmsg = "subject alternative name not found in the certificate"
++                errmsg = str(exc)
+             elif len(patterns) == 1:
+                 errmsg = f"hostname {server_name!r} doesn't match {patterns[0]!r}"
+             else:
+diff --git a/tests/test_tls.py b/tests/test_tls.py
+index 1de9cf35..cf28bf11 100644
+--- a/tests/test_tls.py
++++ b/tests/test_tls.py
+@@ -1666,8 +1666,7 @@ def test_verify_subject_no_subjaltname(self):
+                     cadata=cadata, certificate=certificate, server_name="example.com"
+                 )
+             self.assertEqual(
+-                str(cm.exception),
+-                "subject alternative name not found in the certificate",
++                str(cm.exception), "Certificate does not contain any `subjectAltName`s."
+             )
+ 
+     def test_verify_subject_with_subjaltname(self):

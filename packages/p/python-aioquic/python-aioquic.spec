@@ -22,12 +22,12 @@ Version:        0.9.25
 Release:        0
 Summary:        Python implementation of QUIC and HTTP/3
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/aiortc/aioquic
 Source:         https://files.pythonhosted.org/packages/source/a/aioquic/aioquic-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE cryptography.patch -- we can't pin to old cryptography and thus don't get expected test exceptions, code@bnavigator.de
-Patch1:         cryptography.patch
+# PATCH-FIX-UPSTREAM gh#aiortc/aioquic#452
+Patch0:         support-service-identity-24.patch
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -57,10 +57,10 @@ A library for the QUIC network protocol in Python. It features a minimal TLS
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm %{buildroot}%{$python_sitearch}/aioquic/*.c
 %fdupes %{buildroot}%{$python_sitearch}
 }
@@ -72,6 +72,6 @@ export CFLAGS="%{optflags}"
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/aioquic
-%{python_sitearch}/aioquic-%{version}*-info
+%{python_sitearch}/aioquic-%{version}.dist-info
 
 %changelog
