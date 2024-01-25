@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 25 08:01:55 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Apply "0001-lftp_ssl-deinitialize-the-lftp_ssl_openssl_instance.patch"
+  to fix a crash that ocurred when lftp is run on s390x with an IBM
+  crypto card installed. The issue has been reported to upstream at
+  https://github.com/lavv17/lftp/issues/716. [bsc#1213984]
+
+-------------------------------------------------------------------
 Wed Jul 26 14:46:17 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - The lftp_wrapper script has been deprecated over 1.5 years ago.
@@ -306,7 +314,7 @@ Wed May 11 09:09:12 UTC 2016 - moio@suse.com
 - lftp 4.7.1:
   * http: fixed authentication for proxy, transient errors, max-retries=1.
   * http: fixed put with authentication not to use HEAD request.
-  * translations updated (cs, ru).  
+  * translations updated (cs, ru).
 
 -------------------------------------------------------------------
 Mon Dec 14 20:10:00 UTC 2015 - andreas@suse.de
@@ -351,7 +359,7 @@ Fri Jun 19 17:08:47 UTC 2015 - kstreitova@suse.com
   * fixed one byte buffer overflow in cls.
   * fixed cmd:fail-exit description in the man page.
   * fixed large stack usage when parsing fish directory listings.
-- refresh lftp-stdio.h.patch 
+- refresh lftp-stdio.h.patch
 - use spec-cleaner
 
 -------------------------------------------------------------------
@@ -381,7 +389,7 @@ Fri Jan  9 22:11:12 UTC 2015 - andreas.stieger@gmx.de
   * new mirror option --scan-all-first.
   * mirror --Remove-source-files now removes files already present
     at the target.
-  * added a workaround for FUSE with HadoopFS I/O error during 
+  * added a workaround for FUSE with HadoopFS I/O error during
     rename(2).
   * fixed du to round file size up to block size.
   * fixed compilation with libressl.
@@ -452,12 +460,12 @@ Mon Aug 11 21:11:48 UTC 2014 - andreas.stieger@gmx.de
   * fixed a memory leak in torrent.
   * fixed byte counters in mirror --depth-first.
   * fixed timeout checks in FISH.
-  * translations updated (pl). 
+  * translations updated (pl).
 
 -------------------------------------------------------------------
 Tue Jul 29 09:50:11 UTC 2014 - pgajdos@suse.com
 
-- use default ssl cipher instead of the custom one 
+- use default ssl cipher instead of the custom one
   [bnc#857148] (internal)
 - added patches:
   * lftp-default-ssl-cipher.patch
@@ -497,12 +505,12 @@ Sat Jun  7 19:13:27 UTC 2014 - andreas.stieger@gmx.de
   * fixed a coredump in ftp when data connection fails.
   * fixed default values of some settings.
   * fixed http redirection handling.
-  * fixed compilation with gcc-4.8.3. 
+  * fixed compilation with gcc-4.8.3.
 
 -------------------------------------------------------------------
 Mon Jun  2 13:00:55 UTC 2014 - vdziewiecki@suse.com
 
-- Removed desktop file - bnc#869644 - Remove lftp menu item 
+- Removed desktop file - bnc#869644 - Remove lftp menu item
 
 -------------------------------------------------------------------
 Fri May 30 20:31:41 UTC 2014 - andreas.stieger@gmx.de
@@ -534,7 +542,7 @@ Sat May 10 18:41:59 UTC 2014 - andreas.stieger@gmx.de
     server.
   * fixed directory index parsing for some http servers.
   * fixed find command output to avoid extra slash for plain files.
-  * fixed several bugs which could cause segfault. 
+  * fixed several bugs which could cause segfault.
 - some spec cleanup
 
 -------------------------------------------------------------------
@@ -561,13 +569,13 @@ Wed Dec 18 12:45:39 UTC 2013 - vdziewiecki@suse.com
 
 -Update to latest stable upstream, 4.4.14:
     fixed HEAD/PROPFIND handling in http.
-    a minor memory leak fixed. 
+    a minor memory leak fixed.
 
 -------------------------------------------------------------------
 Fri Nov 29 14:43:33 UTC 2013 - vdziewiecki@suse.com
 
 -Update to latest stable upstream, 4.4.13:
-    fixed a bug in file size checking code. 
+    fixed a bug in file size checking code.
     new option -l (--ls) for find command.
     improve workaround for single NL replies from an FTP server.
     Ukrainian translation updated (Yuri Chornoivan).
@@ -586,7 +594,7 @@ Mon Nov 18 14:40:39 UTC 2013 - vdziewiecki@suse.com
     fixed a slow down in mirror from http (thanks to OGAWA Hirofumi).
     fixed a coredump in sftp when accessing an inexistent file.
 4.4.10 had these changes:
-	
+
     mirror new option --file/-f to mirror a single file.
     mirror new option -O for get/put similarity.
     WebDAV fixes and improvements.
@@ -594,8 +602,8 @@ Mon Nov 18 14:40:39 UTC 2013 - vdziewiecki@suse.com
     fixed handling of incorrect encoding of file names.
     fixed compilation without libiconv.
     fixed occasional hang in mirror.
-    kill ssh when terminating fish or sftp connection. 
- 
+    kill ssh when terminating fish or sftp connection.
+
 
 -------------------------------------------------------------------
 Mon Oct  7 16:13:53 CEST 2013 - pth@suse.de
@@ -616,10 +624,10 @@ Mon Oct  7 16:13:53 CEST 2013 - pth@suse.de
   * man page updated.
 
   For the other changes since 4.4.0 see the file NEWS in the
-  package documentation.  
+  package documentation.
 - Change source url as the old one isn't valid anymore.
 - Use the xz packed tarbal because of size.
-- Adapted patches: 
+- Adapted patches:
   ftp-wrapper+edit+compat-modify.patch
   lftp-stdio.h.patch
 - Add lftp-config_h.patch that includes config.h where needed
@@ -650,7 +658,7 @@ Sun Dec  2 12:57:05 UTC 2012 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Tue Oct 16 10:02:11 UTC 2012 - puzel@suse.com
 
-- update to 4.4.0 
+- update to 4.4.0
   * implemented bittorrent extensions (FAST, DHT, LTEP,
     ut_metadata, ut_pex).
   * allow torrent downloading by magnet links.
@@ -755,14 +763,14 @@ Wed Oct 12 14:00:01 UTC 2011 - tabraham@novell.com
 -------------------------------------------------------------------
 Thu Jun 30 07:09:01 UTC 2011 - puzel@novell.com
 
-- update to lftp-4.3.1 
+- update to lftp-4.3.1
   - fixed a coredump in torrent on linux with a ppp interface.
   - translation updated (ru).
 
 -------------------------------------------------------------------
 Mon Jun 27 11:28:42 UTC 2011 - puzel@novell.com
 
-- update to lftp-4.3.0 
+- update to lftp-4.3.0
   - new command `attach' to control a backgrounded lftp.
   - automatically fill torrent:ipv6 setting.
   - slightly improved torrent status display.
@@ -815,7 +823,7 @@ Tue Mar 22 10:31:35 UTC 2011 - puzel@novell.com
 -------------------------------------------------------------------
 Sun Nov 28 15:41:33 UTC 2010 - puzel@novell.com
 
-- udpate to 4.1.1 
+- udpate to 4.1.1
   * fixed job command line display.
   * fixed some warnings and compilation with old gcc compilers
   (Openwall).
@@ -823,7 +831,7 @@ Sun Nov 28 15:41:33 UTC 2010 - puzel@novell.com
 -------------------------------------------------------------------
 Tue Nov 23 10:41:12 UTC 2010 - puzel@novell.com
 
-- udpate to 4.1.0 
+- udpate to 4.1.0
   * send path components to ftp server separately, unless TVFS is
     in FEAT reply
   * save pget status at the very beginning of pget execution
@@ -840,7 +848,7 @@ Tue Nov 23 10:41:12 UTC 2010 - puzel@novell.com
 -------------------------------------------------------------------
 Fri Sep 17 15:36:08 UTC 2010 - puzel@novell.com
 
-- update to 4.0.10 
+- update to 4.0.10
   * use cached file set, don't parse file listing again
   * updated convert-netscape-cookies
   * fixed a problem with zeroed errno in http
@@ -851,8 +859,8 @@ Fri Sep 17 15:36:08 UTC 2010 - puzel@novell.com
 -------------------------------------------------------------------
 Wed Jul 21 14:44:58 UTC 2010 - puzel@novell.com
 
-- update to 4.0.9 
-  * torrent: don't try to re-download invalid piece from the same 
+- update to 4.0.9
+  * torrent: don't try to re-download invalid piece from the same
     peer
   * added a short lftp.conf(5) man page (Jiri Skala)
   * fixed a problem with zeroed errno (Gabriele Balducci)
@@ -864,10 +872,10 @@ Thu May 27 17:39:34 CEST 2010 - mkudlvasr@suse.cz
 
 - update to 4.0.8
   highlights from changelist:
-    * new settings: xfer:auto-rename (off by default), 
-      ftp:ssl-copy-sid (for some broken servers), 
+    * new settings: xfer:auto-rename (off by default),
+      ftp:ssl-copy-sid (for some broken servers),
       cmd:stifle-rl-history (to limit command history size),
-      ftp:prefer-epsv, ftp:trust-feat (default no), 
+      ftp:prefer-epsv, ftp:trust-feat (default no),
       cmd:move-background-detach, ftp:proxy-auth-type
     * added torrent client
     * many bugs fixed
@@ -887,13 +895,13 @@ Tue Nov  3 19:09:25 UTC 2009 - coolo@novell.com
 -------------------------------------------------------------------
 Mon Mar 23 15:58:51 CET 2009 - crrodriguez@suse.de
 
-- fix build, missing sentinel 
+- fix build, missing sentinel
 
 -------------------------------------------------------------------
 Tue Feb 26 01:42:25 CET 2008 - crrodriguez@suse.de
 
 - fix file-not-in-lang errors
-- fix library-without-ldconfig* errors 
+- fix library-without-ldconfig* errors
 
 -------------------------------------------------------------------
 Wed Feb 13 15:49:12 CET 2008 - mkudlvasr@suse.cz
@@ -913,7 +921,7 @@ Mon Jul 16 19:42:31 CEST 2007 - mkudlvasr@suse.cz
 - update to 3.5.11
   highlights from changelist:
     * fixed mirror for MDTM-less ftp servers.
-    * fixed compilation with Sun native compiler  
+    * fixed compilation with Sun native compiler
 
 -------------------------------------------------------------------
 Thu Apr  5 21:26:54 CEST 2007 - mkudlvasr@suse.cz
@@ -932,14 +940,14 @@ Mon Mar 19 18:33:39 CET 2007 - mkudlvasr@suse.cz
 Tue Oct 17 10:51:22 CEST 2006 - postadal@suse.cz
 
 - updated to version 3.5.6
-  * new settings cmd:parallel and cmd:queue-parallel to set number of jobs 
+  * new settings cmd:parallel and cmd:queue-parallel to set number of jobs
     executed in parallel in non-interactive mode and in a queue.
   * new mirror option --skip-noaccess and setting mirror:skip-noaccess.
   * fixed a coredump when lftp was compiled with a non-gcc compiler.
   * fixed compilation when stdbool.h is missing.
   * fixed a failed assertion.
   * fixed coredump when doing `ls ..' on a http site.
-  * fixed memory and file descriptor leak in mget/mput. 
+  * fixed memory and file descriptor leak in mget/mput.
 
 -------------------------------------------------------------------
 Mon Aug 14 18:14:12 CEST 2006 - anosek@suse.cz
@@ -970,7 +978,7 @@ Tue Aug  1 12:02:26 CEST 2006 - postadal@suse.cz
   * new setting dns:max-retries
   * new settings fish:charset and sftp:charset (for sftp version<4)
   * implemented pget -c (continue) with a status file
-  *  new options of `repeat' command: --count (-c), --delay (-d), 
+  *  new options of `repeat' command: --count (-c), --delay (-d),
      --while-ok, --until-ok
   * added support for ALLO command and ftp:use-allo setting
   * changed default for http:use-propfind to no
@@ -1000,7 +1008,7 @@ Mon Mar 13 12:15:11 CET 2006 - postadal@suse.cz
 Sat Mar 11 18:27:48 CET 2006 - postadal@suse.cz
 
 - added ftp and ftp.1 to alternative system, so they can be
-  interchanged with lukemftp [#156450] 
+  interchanged with lukemftp [#156450]
 
 -------------------------------------------------------------------
 Thu Mar  9 16:03:01 CET 2006 - postadal@suse.cz
@@ -1010,7 +1018,7 @@ Thu Mar  9 16:03:01 CET 2006 - postadal@suse.cz
 -------------------------------------------------------------------
 Fri Mar  3 16:44:35 CET 2006 - pnemec@suse.cz
 
-- fixed lukemftp update problem 154349 
+- fixed lukemftp update problem 154349
 
 -------------------------------------------------------------------
 Fri Jan 27 08:05:51 CET 2006 - pnemec@suse.cz
@@ -1025,12 +1033,12 @@ Wed Jan 25 21:37:20 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Thu Jan 19 15:03:29 CET 2006 - pnemec@suse.cz
 
-- fixed some parts in lftp_wrapper.c 
+- fixed some parts in lftp_wrapper.c
 
 -------------------------------------------------------------------
 Tue Jan 17 01:54:02 CET 2006 - postadal@suse.cz
 
-- made ftp wrapper and compat-mode module for backward compatibility 
+- made ftp wrapper and compat-mode module for backward compatibility
   with lukemftp [#52021] (compat-mode.patch, wrapper.patch)
 - added -fstack-protector
 
@@ -1156,4 +1164,3 @@ Fri Jan 10 17:41:51 CET 2003 - postadal@suse.cz
 Fri Dec 06 12:10:17 CET 2002 - postadal@suse.cz
 
 - new package: lftp 2.6.3
-

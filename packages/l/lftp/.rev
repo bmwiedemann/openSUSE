@@ -757,4 +757,12 @@ the underlying buffer would always contain a NUL-terminated string.
   It's time to remove it from the package. [jsc#SLE-17861]</comment>
     <requestid>1100890</requestid>
   </revision>
+  <revision rev="80" vrev="4">
+    <srcmd5>3454bde646f8321e578a4e192bfacd74</srcmd5>
+    <version>4.9.2</version>
+    <time>1706204495</time>
+    <user>anag+factory</user>
+    <comment>Fix a crash that ocurred when lftp is run on s390x with an IBM crypto card installed. [bsc#1213984]</comment>
+    <requestid>1141445</requestid>
+  </revision>
 </revisionlist>
