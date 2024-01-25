@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 23 16:19:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.92
+  * Added methods for WhiteheadXMod etc. for xmods which are not
+    permanent xmods
+  * Now using the NC version of PreImagesRepresentative
+
+-------------------------------------------------------------------
 Sun Jun 25 10:05:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.91
