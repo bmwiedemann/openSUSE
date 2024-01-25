@@ -71,7 +71,7 @@ NOCONFIGURE=1 ./autogen.sh
 %configure --disable-static \
            --enable-opencc \
            --disable-boost \
-           --libexecdir=%{_libdir}/ibus \
+           --libexecdir=%{_ibus_libexecdir} \
            --libdir=%{_libdir} \
 %if %{with_cloud_input}
            --enable-cloud-input-mode \
@@ -101,8 +101,8 @@ NOCONFIGURE=1 ./autogen.sh
 %defattr(-,root,root)
 %license COPYING
 %doc AUTHORS README NEWS
-%{_libdir}/ibus/ibus-engine-libpinyin
-%{_libdir}/ibus/ibus-setup-libpinyin
+%{_ibus_libexecdir}/ibus-engine-libpinyin
+%{_ibus_libexecdir}/ibus-setup-libpinyin
 %{_datadir}/applications/ibus-setup-libbopomofo.desktop
 %{_datadir}/applications/ibus-setup-libpinyin.desktop
 %{_datadir}/%{name}/base.lua

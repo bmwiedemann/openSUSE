@@ -1,5 +1,10 @@
 -------------------------------------------------------------------
-Wed Dec 27 11:33:47 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+Tue Jan 23 12:42:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)
+
+-------------------------------------------------------------------
+Wed Dec 27 11:33:47 UTC 2023 - Cliff Zhao <qzhao@suse.com>
 
 - Update ibus-libpinyin.spec: Change build requirement and installation
   requirement from python310 to python311 in SLE-15-SP6 and later
@@ -19,7 +24,7 @@ Sun Dec  3 13:29:11 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 Fri Jun  9 07:14:30 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.15.3
-  * Fix English mode in Full Pinyin 
+  * Fix English mode in Full Pinyin
 
 -------------------------------------------------------------------
 Mon Mar 20 13:54:32 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
