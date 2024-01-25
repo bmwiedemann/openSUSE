@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 25 09:33:30 UTC 2024 - Denys Kondratenko <stdden@opensuse.org>
+
+- Update to version 0.16.0
+  * flutter takes color-scheme instead of theme by @denisok in #116
+  * Fix missing glyphs on the default style by @a-kpappas in #118
+  * Convert Waybar tooltip calendar to new format (>=0.9.18) by @FilippoBonazziSUSE in #120
+  * Migrate Alacritty configuration to TOML by @tacerus in #128
+  * Add screenshot utility configuration by @FilippoBonazziSUSE in #117
+  * Add screenshot mode menu by @FilippoBonazziSUSE in #131
+  * Add bluetooth waybar module by @FilippoBonazziSUSE in #127
+  * Add some packages from GreyBeard by @denisok in #133
+  * Add some applications to default floating by @krishjainx in #132
+
+-------------------------------------------------------------------
 Wed May 31 10:06:20 UTC 2023 - Denys Kondratenko <stdden@opensuse.org>
 
 - Update to version 0.15.2: 

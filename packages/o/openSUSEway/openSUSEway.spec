@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSEway
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,55 +20,92 @@
 %define waybar_version %(rpm -q --queryformat "%%{version}" waybar)
 
 Name:           openSUSEway
-Version:        0.15.2
+Version:        0.16.0
 Release:        0
 Summary:        The openSUSEway desktop environment meta package
 License:        MIT
 Group:          Metapackages
 URL:            https://github.com/openSUSE/openSUSEway
 Source0:        https://github.com/openSUSE/openSUSEway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE add-configuration-for-play-pause-next-prev-multimedi.patch gh#openSUSE/openSUSEway#41 mcepl@suse.com
-# Add multimedia keys configuration
+
 BuildArch:      noarch
 BuildRequires:  aaa_base
 BuildRequires:  pkgconfig(systemd)
+
+# system
+Requires:       wget
 Requires:       NetworkManager
 Requires:       aaa_base
-Recommends:     adwaita-qt5
+Requires:       bash-completion
 Requires:       bzip2
 Requires:       command-not-found
 Requires:       curl
-Recommends:     firefox
-Requires:       gfxboot-branding-openSUSE
 Requires:       git
-Requires:       greetd
+Requires:       glibc-locale
 Requires:       grep
 Requires:       gzip
-Requires:       (gtkgreet or wlgreet)
-Suggests:       imv
 Requires:       jq
 Requires:       less
-Recommends:     libqt5-qtwayland
-Suggests:       mpv
-Requires:       pipewire
-Recommends:     qt5ct
 Requires:       sudo
-Requires:       sway-branding-openSUSE
 Requires:       tar
+
+# basic DE
+Requires:       greetd
+Requires:       pipewire
+Requires:       sway-marker
+Requires:       (gtkgreet or wlgreet)
+Recommends:     bluez
+Recommends:     firefox
+Recommends:     grim
+Recommends:     slurp
+Recommends:     tlp
+Suggests:       mpv
 Suggests:       vifm
 Suggests:       vim
+Suggests:       imv
+
+# basic multi-media
 Requires:       clipman
 Requires:       mpris-ctl
-Requires:       sway-marker
-Requires:       waybar-branding-openSUSE
-Requires:       wget
 Requires:       wl-clipboard
+
+# branding
+Requires:       waybar-branding-openSUSE
+Requires:       gfxboot-branding-openSUSE
+Requires:       sway-branding-openSUSE
+
+# xdg portals and utils
 Requires:       xdg-desktop-portal
+Requires:       xdg-desktop-portal-gtk
 Requires:       xdg-desktop-portal-wlr
 Requires:       xdg-utils
 
+# Appearance
+Requires:       adwaita-icon-theme
+Requires:       gtk3-metatheme-adwaita
+Requires:       metatheme-adwaita-common
+Recommends:     adwaita-qt5
+Recommends:     libqt5-qtwayland
+Recommends:     qt5ct
+
+# Fonts
+Requires:       adobe-sourcecodepro-fonts
+Requires:       adobe-sourcesanspro-fonts
+Requires:       adobe-sourceserifpro-fonts
+Requires:       cantarell-fonts
+Requires:       dejavu-fonts
+Requires:       ghostscript-fonts-other
+Requires:       ghostscript-fonts-std
+Requires:       google-carlito-fonts
+Requires:       google-droid-fonts
+Requires:       google-opensans-fonts
+Requires:       google-roboto-fonts
+Requires:       noto-coloremoji-fonts
+Requires:       noto-emoji-fonts
+Requires:       noto-sans-fonts
+
 %description
-This meta package aggregates openSUSEway desktop enviroment packages.
+This meta-package aggregates openSUSEway desktop environment packages.
 
 %package -n     patterns-openSUSEway
 %pattern_graphicalenvironments
@@ -98,6 +135,7 @@ Requires:       pamixer
 Requires:       patterns-sway-sway
 Requires:       pavucontrol
 Requires:       playerctl
+Requires:       polkit-default-privs
 Requires:       polkit-gnome
 Requires:       sway
 Requires:       wallpaper-branding-openSUSE
@@ -150,6 +188,7 @@ echo 'This file marks the pattern openSUSEway to be installed.' >%{buildroot}%{_
 install -D -p -m 644 .config/sway/config %{buildroot}%{_sysconfdir}/sway/config
 install -D -p -m 644 .config/sway/env %{buildroot}%{_sysconfdir}/sway/env
 install -D -p -m 644 .config/sway/config.d/50-openSUSE.conf %{buildroot}%{_sysconfdir}/sway/config.d/50-openSUSE.conf
+install -D -p -m 644 .config/sway/config.d/55-openSUSE-windows.conf %{buildroot}%{_sysconfdir}/sway/config.d/55-openSUSE-windows.conf
 
 install -D -p -m 644 sway/sway-session.target %{buildroot}%{_prefix}/lib/systemd/user/sway-session.target
 install -D -p -m 644 sway/sway.service %{buildroot}%{_prefix}/lib/systemd/user/sway.service
@@ -158,7 +197,7 @@ install -D -p -m 755 sway/sway-run.sh %{buildroot}%{_bindir}/sway-run.sh
 
 ### alacritty
 # so far doesn't have special branding package and it doesn't support system wide config
-install -D -p -m 644 .config/alacritty/alacritty.yml %{buildroot}%{_sysconfdir}/alacritty/alacritty.yml
+install -D -p -m 644 .config/alacritty/alacritty.toml %{buildroot}%{_sysconfdir}/alacritty/alacritty.toml
 
 ## wofi
 install -D -p -m 644 .config/wofi/config %{buildroot}%{_sysconfdir}/wofi/config
@@ -230,13 +269,14 @@ test -e %{_datadir}/wayland-sessions/sway.desktop.orig && \
 %config %{_sysconfdir}/sway/env
 %dir %{_sysconfdir}/sway/config.d
 %config %{_sysconfdir}/sway/config.d/50-openSUSE.conf
+%config %{_sysconfdir}/sway/config.d/55-openSUSE-windows.conf
 %{_prefix}/lib/systemd/user/sway-session.target
 %{_prefix}/lib/systemd/user/sway.service
 %{_datadir}/wayland-sessions/sway.desktop.brand
 %{_bindir}/sway-run.sh
 
 %dir %{_sysconfdir}/alacritty
-%config(noreplace) %{_sysconfdir}/alacritty/alacritty.yml
+%config(noreplace) %{_sysconfdir}/alacritty/alacritty.toml
 
 %dir %{_sysconfdir}/wofi
 %config(noreplace) %{_sysconfdir}/wofi/config
