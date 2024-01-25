@@ -1,7 +1,7 @@
 #
 # spec file for package gap-grpconst
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-grpconst
-Version:        2.6.4
+Version:        2.6.5
 Release:        0
 Summary:        GAP: Group construction of a given order
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/grpconst/
 #Git-Clone:     https://github.com/gap-packages/grpconst
 Source:         https://github.com/gap-packages/grpconst/releases/download/v%version/grpconst-%version.tar.gz
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.7
 Requires:       gap-autpgrp >= 1.6
+Requires:       gap-core >= 4.7
 Requires:       gap-irredsol >= 1.2
 Requires:       gap-smallgrp >= 1.4
 
