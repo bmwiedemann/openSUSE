@@ -1,4 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/SUPERCILEX/fuc.git</param>
-              <param name="changesrevision">f458c0a071818faeeda6ecc0a71ce90b99803e90</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/SUPERCILEX/fuc.git</param>
+    <param name="changesrevision">a73f9bb89ccb6e49e39653362916e870fd827fc7</param>
+  </service>
+</servicedata>
