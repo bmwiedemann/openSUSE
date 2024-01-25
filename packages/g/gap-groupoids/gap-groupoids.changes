@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 24 00:20:36 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.74
+  * Avoid trivial function wrappers
+
+-------------------------------------------------------------------
 Sun Jun 25 09:43:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.73

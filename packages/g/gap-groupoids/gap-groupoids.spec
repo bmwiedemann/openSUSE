@@ -1,7 +1,7 @@
 #
 # spec file for package gap-groupoids
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-groupoids
-Version:        1.73
+Version:        1.74
 Release:        0
 Summary:        GAP: Groupoids, graphs of groups, and graphs of groupoids
 License:        GPL-2.0-or-later
