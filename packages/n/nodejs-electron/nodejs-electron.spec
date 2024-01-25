@@ -236,7 +236,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        27.2.3
+Version:        27.3.0
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -360,6 +360,7 @@ Patch2041:      chromium-117-blink-BUILD-mnemonic.patch
 Patch2042:      brotli-remove-shared-dictionary.patch
 Patch2044:      computed_style_base-nbsp.patch
 Patch2045:      libxml-2.12-xmlCtxtGetLastError-const.patch
+Patch2046:      chromium-118-sigtrap_system_ffmpeg.patch
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 Patch3016:      chromium-98-EnumTable-crash.patch
