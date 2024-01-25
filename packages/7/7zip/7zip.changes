@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 23 11:32:54 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix build on SLE-15-SP6
+  * fix-avx-sle.patch
+
+-------------------------------------------------------------------
 Tue Jan  2 20:37:25 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Add missing man pages for 7z / 7za / 7zr / 7zz.
