@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package java-21-openjdk
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -210,7 +210,7 @@ BuildRequires:  zip
 Requires:       %{name}-headless = %{version}-%{release}
 Requires:       fontconfig
 Requires(post): file
-%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java = %{javaver}
 Provides:       java-%{javaver} = %{version}-%{release}
@@ -279,12 +279,12 @@ Requires:       jpackage-utils
 Requires:       mozilla-nss
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
-Requires(posttrans):java-ca-certificates
+Requires(posttrans): java-ca-certificates
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     tzdata-java8
 Obsoletes:      %{name}-accessibility
-%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
 Provides:       java-headless = %{javaver}
@@ -317,8 +317,8 @@ Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun):update-alternatives
-%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
+Requires(postun): update-alternatives
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-devel = %{javaver}
@@ -363,9 +363,9 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install javadoc alternative.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}

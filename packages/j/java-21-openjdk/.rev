@@ -47,4 +47,12 @@
     <comment>January 2024 CPU</comment>
     <requestid>1139468</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b4bfe8f7c4acbcc0a665437441933e60</srcmd5>
+    <version>21.0.2.0</version>
+    <time>1706204383</time>
+    <user>anag+factory</user>
+    <comment>bsc#1219115</comment>
+    <requestid>1141174</requestid>
+  </revision>
 </revisionlist>
