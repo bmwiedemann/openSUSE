@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jan 24 18:48:42 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 1.21.1:
+  * updated translations
+  * slightly increased precision for CTL luts in low-quality mode
+    (used for thumbnails)
+  * fixed metadata display on thumbnails for png files
+  * updated camera matrices
+  * updated WB presets
+  * local editing: make "copy region" insert after the current
+    selection
+  * ctl luts: fixed setting gui group for PT_CHOICE params
+  * added fast export support to "send to external editor"
+  * rawimage: put global black level for xtrans files where the
+    code expects to find it
+  * texture boost: increased range of detail threshold slider
+  * exifpanel: improved metadata validators
+  * profiles: tweaked "Simple Film Curve"
+  * logenc: use 2 digits for black ev
+  * improved support for translation of CTL scripts
+  * added support for user-specific translation files
+  * color wheel: edit by hue/saturation instead of x/y with right
+    click
+  * CTL lut params: allow to specify also a tooltip (markup) string
+    as last parameter (after group name)
+  * improved LUT precision for fast CTL rendering on the preview
+  * local editing: add new region after the current selected one
+    instead of always appending at the end
+  * tone curve: added base curve control for seamless tone mapping
+  * cli: accept relative filenames in --check-lut
+  * tweaks to handling quality settings for CTL scripts
+  * continued removing dead code
+  * dynamic profiles: changed how "image type" filter works now it
+    allows to distinguish between raw and non-raw images. For HDR
+    and/ or PS, custom exif tags can be used
+  * removed some dead code
+  * further improvement in loading of lut params
+  * improved robustness of CTL scripts support
+  * Moving FileBrowserEntry static variable initialization to a
+    dedicated method. Fixes a crash introduced a previous commit.
+  * CTL interpreter: add ART ctlscripts to the module search path
+
+-------------------------------------------------------------------
 Thu Dec  7 15:40:19 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to 1.21:
