@@ -88,7 +88,7 @@ Wed Sep  6 16:02:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Wed Aug  9 01:02:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 1.57
+- Update to release 1.57 (CVE-2023-4785, bsc#1215334)
   * EventEngine: Change GetDNSResolver to return
     absl::StatusOr<std::unique_ptr<DNSResolver>>.
   * Improve server handling of file descriptor exhaustion.
@@ -114,7 +114,7 @@ Wed Jun 28 07:09:25 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 -------------------------------------------------------------------
 Mon Jun 19 03:28:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 1.56.0
+- Update to release 1.56.0 (CVE-2023-32731, bsc#1212180)
   * core: Add support for vsock transport.
   * EventEngine: Change TXT lookup result type to
     std::vector<std::string>.
@@ -135,7 +135,7 @@ Tue May  2 10:15:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Fri Apr 14 11:07:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 1.54
+- Update to release 1.54 (CVE-2023-32732, bsc#1212182)
   * XDS: enable XDS federation by default
   * TlsCreds: Support revocation of intermediate in chain
 

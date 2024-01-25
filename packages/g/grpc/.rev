@@ -579,4 +579,12 @@ Note: In my home project this only builds on Factory/Tumbleweed. (forwarded requ
     <comment></comment>
     <requestid>1139642</requestid>
   </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>ca50af983c42dcee4a5ce5a315bedabf</srcmd5>
+    <version>1.60.0</version>
+    <time>1706204422</time>
+    <user>anag+factory</user>
+    <comment>- Add missing bugzilla references for multiple CVEs (forwarded request 1141319 from glaubitz)</comment>
+    <requestid>1141330</requestid>
+  </revision>
 </revisionlist>
