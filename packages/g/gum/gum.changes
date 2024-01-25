@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Tue Jan 16 10:19:47 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 0.13.0:
+  New:
+  * Add --select-if-one flag to gum choose and gum filter
+  * Added brand new log command. Gum log logs messages to the
+    terminal at different levels and styling
+  * Pager search functionality
+  * Strip ANSI for gum filter and gum choose when output is not 	
+    a TTY
+  * Non-positive widths will cause gum write will use the entire
+    terminal width
+  * GUM_FORMAT_THEME / GUM_FORMAT_LANGUAGE environment variables
+  * --no-sort flag for gum filter
+  * Customizable cursor modes and line text
+  * Add --timeout flag to all subcommands
+  * Truecolor support added to gum style
+  * Context headers for gum choose and gum filter
+  * Keep order of selected items in gum choose with --ordered
+  * Pass programming language for gum format
+  * Customize format theme, including using glamour json theme
+    files
+  * gum choose now supports tab and ctrl+j/k keybindings
+  * add --file and --directory flags to select each in gum file
+  * gum pager --soft-wrap option added
+  * gum style pass input to style over stdin
+  * ability to add --header values
+  Fixes:
+  * showoutput flag displays in realtime
+  * Pretty Table Print improved
+  * Avoid reading from stdin if --value is being used
+  * Made filter work with losts as choose
+  * Respect file path argument in filepicker
+  * --all option defaults to false
+  * exit with status 130 if escape key pressed on gum write
+  * symlink directory follows link in gum file
+  * allow exact match in gum filter
+
+-------------------------------------------------------------------
+Fri Feb 17 07:24:05 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for gum 0.8.0

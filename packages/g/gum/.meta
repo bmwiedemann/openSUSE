@@ -1,0 +1,6 @@
+<package name="gum" project="openSUSE:Factory">
+  <title>gum</title>
+  <description>A tool for glamorous shell scripts. Leverage the power of Bubbles and Lip Gloss in your scripts and aliases without writing any Go code!</description>
+  <devel project="utilities" package="gum"/>
+  <url>https://github.com/charmbracelet/gum</url>
+</package>
