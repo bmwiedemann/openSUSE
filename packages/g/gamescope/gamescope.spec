@@ -1,7 +1,7 @@
 #
 # spec file for package gamescope
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.13.19
+Version:        3.14.0
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig(openvr)
 BuildRequires:  pkgconfig(benchmark)
 BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(hwdata)
+BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.113
 BuildRequires:  pkgconfig(libpipewire-0.3)

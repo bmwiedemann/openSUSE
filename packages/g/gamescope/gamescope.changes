@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 23 21:09:17 UTC 2024 - antonio.teixeira@suse.com
+
+- Update to version 3.14.0:
+  * readme: Remove dead shortcut
+  * main: Pick correct Vulkan device for DRM
+  * Add configurable mouse sensitivity
+  * reshade: Make changeset as small using inlining
+  * reshade: Removed explicit datatype parameter for inferred typename T (of function)
+  * reshade: Condense to one common lambda function
+  * reshade: Break function into smaller chunks & common params
+  * vr_session: update to OpenVR 2
+  * steamcompmgr: Limit desired size by drm cursor size
+  * rendervulkan: Add VkExternalMemoryImageCreateInfo for any flippable surface
+
+-------------------------------------------------------------------
 Fri Dec 22 19:05:28 UTC 2023 - antonio.teixeira@suse.com
 
 - Update to version 3.13.19:
