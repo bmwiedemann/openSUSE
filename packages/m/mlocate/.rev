@@ -298,4 +298,12 @@ The group warning is fixed in rpmlint devel project already.</comment>
     <comment></comment>
     <requestid>1138325</requestid>
   </revision>
+  <revision rev="35" vrev="37">
+    <srcmd5>b730f62b842ae42bc080e904a7e767b4</srcmd5>
+    <version>0.26</version>
+    <time>1706204527</time>
+    <user>anag+factory</user>
+    <comment>Security update to fix bsc#1218896 (CVE-2023-32190).</comment>
+    <requestid>1141521</requestid>
+  </revision>
 </revisionlist>
