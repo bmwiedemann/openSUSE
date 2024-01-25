@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 25 08:18:10 UTC 2024 - Wolfgang Bauer <wbauer1@a1.net>
+
+- Update to 1.5.0
+  * It's now possible to find the chronologically closest track
+    point for an unassigned image and center the map there. If an
+    image has been taken in the time between two tracks, one can
+    find the last or first coordinates of the track recorded before
+    or afterwards (whichever is closer) and use them as a basis for
+    manual tagging.
+  * The timezones data files have been updated to Timezone Boundary
+    Builder's release 2023d.
+
+-------------------------------------------------------------------
 Tue Oct 24 09:34:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.4.0
