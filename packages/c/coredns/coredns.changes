@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 25 11:05:35 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Added patch fix-CVE-2024-0874.patch to fix CVE-2024-0874: coredns: CD bit response is cached and served later
+
+-------------------------------------------------------------------
 Tue Sep 19 08:26:26 UTC 2023 - andrea.manzini@suse.com
 
 - Update to version 1.11.1:
