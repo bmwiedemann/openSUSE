@@ -1,7 +1,7 @@
 #
 # spec file for package kgeotag
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kgeotag
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        A photo geotagging utility
 License:        GPL-3.0-only
@@ -77,7 +77,6 @@ images' Exif header and/or in XMP sidecar files.
 %{_kf5_bindir}/kgeotag
 %{_kf5_htmldir}/en/kgeotag/
 %{_kf5_iconsdir}/hicolor/*/apps/kgeotag.png
-%{_kf5_kxmlguidir}/kgeotag/
 %{_kf5_sharedir}/kgeotag/
 
 %files lang -f %{name}.lang
