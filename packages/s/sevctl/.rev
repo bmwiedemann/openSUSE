@@ -76,4 +76,15 @@
     <comment></comment>
     <requestid>1110940</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6cf425eafa8bc5bd1c59b1d1d2c5d8c8</srcmd5>
+    <version>0.4.3</version>
+    <time>1706204471</time>
+    <user>anag+factory</user>
+    <comment>- Fix CVE-2023-50711: vmm-sys-util: out of bounds memory accesses (bsc#1218502, bsc#1218499)
+  - Upgrade vendored dependencies, namely vmm-sys-utils &gt; 0.12.0
+- spec: Switch back to greedy cargo updates of vendored dependencies. This CVE was multiple
+  levels deep in the dependency tree and only fixed with the more agressive cargo update strategy</comment>
+    <requestid>1141311</requestid>
+  </revision>
 </revisionlist>

@@ -25,6 +25,6 @@
   <service name="cargo_vendor" mode="disabled">
     <param name="srcdir">sevctl</param>
     <param name="compression">xz</param>
-    <param name="update">false</param>
+    <param name="update">true</param>
   </service>
 </services>
