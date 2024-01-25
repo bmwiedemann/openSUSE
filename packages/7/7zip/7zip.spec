@@ -31,6 +31,10 @@ Source1:        p7zip
 Source2:        p7zip.1
 Source3:        7zz.1
 Patch0:         fix-compatib-with-p7zip.patch
+# PATCH-FIX-SUSE danilo.spinella@suse.com
+# Fix build on SLE-15-SP6
+# https://sourceforge.net/p/sevenzip/patches/420/
+Patch1:         fix-avx-sle.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -51,6 +55,7 @@ extracting various formats.
 %prep
 tar xaf %{SOURCE0}
 %patch0 -p1
+%patch1 -p1
 dos2unix DOC/*.txt
 # Remove executable perms from docs
 chmod -x DOC/*.txt
