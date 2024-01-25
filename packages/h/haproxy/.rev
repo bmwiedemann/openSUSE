@@ -1436,4 +1436,41 @@
   * BUG/MINOR: ssl: Double free of OCSP Certificate ID</comment>
     <requestid>1137606</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>f8f214b8c2653ce1606cf188f89c73a8</srcmd5>
+    <version>2.9.3+git0.de3ab549a</version>
+    <time>1706204460</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.9.3+git0.de3ab549a:
+  * [RELEASE] Released version 2.9.3
+  * BUG/MEDIUM: quic: keylog callback not called (USE_OPENSSL_COMPAT)
+  * BUG/MINOR: mux-h2: also count streams for refused ones
+  * BUG/MINOR: mux-quic: do not prevent non-STREAM sending on flow control
+  * BUILD: quic: missing include for quic_tp
+  * [RELEASE] Released version 2.9.2
+  * DOC: configuration: corrected description of keyword tune.ssl.ocsp-update.mindelay
+  * REGTESTS: add a test to ensure map-ordering is preserved
+  * BUG/MINOR: map: list-based matching potential ordering regression
+  * CLEANUP: quic: Double quic_dgram_parse() prototype declaration.
+  * MINOR: ssl: Update ssl_fc_curve/ssl_bc_curve to use SSL_get0_group_name
+  * MINOR: ot: logsrv struct becomes logger
+  * MINOR: mux-h2: support limiting the total number of H2 streams per connection
+  * BUG/MEDIUM: spoe: Never create new spoe applet if there is no server up
+  * BUG/MEDIUM: stconn: Set fsb date if zero-copy forwarding is blocked during nego
+  * BUG/MEDIUM: stconn: Forward shutdown on write timeout only if it is forwardable
+  * BUG/MEDIUM: h3: fix incorrect snd_buf return value
+  * BUILD: quic: Missing quic_ssl.h header protection
+  * CLEANUP: quic: Remaining useless code into server part
+  * REGTESTS: check attach-srv out of order declaration
+  * MINOR: debug: add features and build options to &quot;show dev&quot;
+  * MINOR: global: export a way to list build options
+  * CI: use semantic version compare for determing &quot;latest&quot; OpenSSL
+  * BUG/MINOR: h3: disable fast-forward on buffer alloc failure
+  * BUG/MINOR: h3: close connection on sending alloc errors
+  * BUG/MINOR: h3: properly handle alloc failure on finalize
+  * MINOR: h3: add traces for connection init stage
+  * BUG/MINOR: h3: close connection on header list too big
+  * MINOR: h3: check connection error during sending</comment>
+    <requestid>1141253</requestid>
+  </revision>
 </revisionlist>
