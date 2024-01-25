@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-structlog
 Version:        24.1.0
 Release:        0
