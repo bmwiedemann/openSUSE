@@ -1,7 +1,7 @@
 #
 # spec file for package vagrant
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Laurent Bigonville <bigon@debian.org>, License GPL-2.0+
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,6 +19,10 @@
 # disable tests if you want to just run a quick build
 %{bcond_without tests}
 
+%global rb_build_versions %rb_default_ruby
+%global rb_build_abi %rb_default_ruby_abi
+%global rb_ruby_suffix %rb_default_ruby_suffix
+#
 %global mod_name vagrant
 %global mod_full_name %{mod_name}-%{version}
 %global vim_data_dir %{_datadir}/vim/site/plugin/
@@ -47,6 +51,7 @@ Recommends:     vagrant-libvirt
 # https://github.com/dcermak/vagrant.git repository.
 # On every new release of vagrant, rebase them on top of the latest tag.
 #
+Patch0:         ruby-3.3.patch
 Patch1:         0001-bin-vagrant-silence-warning-about-installer.patch
 Patch2:         0002-Use-a-private-temporary-dir.patch
 Patch3:         0003-plugins-don-t-abuse-require_relative.patch.patch
@@ -79,7 +84,7 @@ Patch13:        0013-Bump-webrick-dependency-to-1.8.0.patch
 # Build dependencies
 #===============================================================================
 
-BuildRequires:  %{ruby} >= 3.0
+BuildRequires:  %{ruby} < 3.4
 BuildRequires:  %{rubygem bundler}
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 BuildRequires:  %{rubygem bcrypt_pbkdf:1 >= 1.1 }
