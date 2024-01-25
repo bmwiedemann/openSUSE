@@ -1,0 +1,52 @@
+Replace dhcpd and tftp with dnsmasq
+===================================
+
+The isc `dhcpd` server and `tftp` service can be replaced by `dnsmasq` as 
+singe service, which has also the benefit that dns entries for the 
+wwarewulf cluster will then also be provided.
+
+Installation
+-----------
+
+Before the installation, make sure that `dhcpd` and `tftp` are disabled.
+You can do that with the commands:
+```
+systemctl disable dhcpd
+systemctl stop dhcpd
+systemctl disable tftp
+systemctl stop tftp
+```
+
+Now you can install `dnsmasq` with command 
+```
+zypper install dnsmasq
+```
+
+After the installation you have to instruct `warewulf` to use  `dnsmasq` as
+`dhcpd` and `tftp` service, `dnsmasq` has to be specified in the configuration
+file `/etc/warewulf/warewulf.conf`. There you have to change the two following 
+values:
+```
+tftp:
+  systemd name: dnsmasq
+dhcp:
+  systemd name: dnsmasq
+```
+
+The configuration of `dnsmasq` doesn't need to be changed, as the default configuration
+includes all files with following pattern `/etc/dnsmasq.d/*conf` into its configuration.
+This configuration is created by the template `overlays/host/etc/dnsmasq.d/ww4-hosts.conf.ww`.
+In order to build this template run
+```
+wwctl overlay build -H
+```
+After that the `dnsmasq` service has to be enabled with either
+```
+systemctl enable --now dnsmasq
+```
+or by (re)configuring warewulf with 
+```
+wwctl configure dhcp
+wwctl configure tftp
+```
+

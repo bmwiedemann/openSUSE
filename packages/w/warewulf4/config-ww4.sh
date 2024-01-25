@@ -27,6 +27,21 @@ network_address() {
 
     echo $( IFS=.; echo "${octets[*]}" )
 }
+# Check if last Octed is in range
+function is_ip_in_range() {
+  # split the ip addresses into their octets.
+  local ip_start_octets=($(echo $DYNSTART | tr "." " "))
+  local ip_end_octets=($(echo $DYNEND | tr "." " "))
+  local ip_address_octets=($(echo $1 | tr "." " "))
+
+  # compare the octets one at a time to see if the ip address is within the range.
+    if [[ ${ip_address_octets[3]} -lt ${ip_start_octets[3]} || ${ip_address_octets[3]} -gt ${ip_end_octets[3]} ]]; then
+      return 1
+    fi 
+  # if we reach this point, the ip address is in the range.
+  return 0
+}
+
 echo "-- WW4 CONFIGURAION $* --"
 
 # Make sure that a ip address was defined for out network so that 
@@ -39,19 +54,32 @@ IP4NET=$(network_address "$IP4/$IP4PREFIX")
 
 if [ "$IP4PREFIX" -gt 25 ] ; then
   echo "ERROR: warewulf does at least a /25 network for dynamic addresses"
-  exit 1
+  cat << EOF
+ipaddr: $IP4
+netmask: $IP4MASK
+network: $IP4NET
+  range start: $DYNSTART
+  range end: $DYNEND
+EOF
+  exit 0
 fi
 
 DYNSIZE=20
 DYNSTART=${IP4#*.*.*.}
+DYNSTART=$(( $DYNSTART + 2))
 DYNPRE=${IP4%.*}
-DYNEND=$(( $DYNSTART + $DYNSIZE ))
+DYNEND=$(( $DYNSTART + $DYNSIZE + 1 ))
 if [ $DYNEND -gt 254 ] ; then
   DYNEND=$(( $IPNET + 2 + $DYNSIZE ))
   DYNSTART=$(( $IPNET + 2 ))
 fi
 DYNSTART="${DYNPRE}.${DYNSTART}"
 DYNEND="${DYNPRE}.${DYNEND}"
+
+if is_ip_in_range $IP4 ; then
+   echo "ERROR: ip address is in range for dynamic address, please set this manually"
+   exit 0
+fi
 
 
 if [ -e $WW4CONF ] ; then
