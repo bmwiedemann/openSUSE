@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 17 01:58:33 UTC 2024 - william.brown@suse.com
+
+- Update to version 2.4.0~git126.5936946:
+  * Issue 6028 - vlv index keys inconsistencies (#6031)
+  * Issue 5989 - RFE support of inChain Matching Rule (#5990)
+  * Issue 6022 - lmdb inconsistency between vlv index and vlv cache names (#6026)
+  * Issue 6015 - Fix typo remeber (#6014)
+  * Issue 6016 - Pin upload/download artifacts action to v3
+  * Issue 5939 - During an update, if the target entry is reverted in the entry cache, the server should not retry to lock it (#6007)
+  * Issue 4673 - Update Rust crates
+  * Issue 6004 - idletimeout may be ignored (#6005)
+  * Issue 5954 - Disable Transparent Huge Pages
+  * Issue 5997 - test_inactivty_and_expiration CI testcase is wrong (#5999)
+  * Issue 5993 - Fix several race condition around CI tests (#5996)
+  * Issue 5944 - Reversion of the entry cache should be limited to BETXN plugin failures (#5994)
+  * Bump openssl from 0.10.55 to 0.10.60 in /src (#5995)
+
+-------------------------------------------------------------------
 Wed Dec 13 05:32:59 UTC 2023 - William Brown <william.brown@suse.com>
 
 - Update to support newer obs-service-cargo-vendor
