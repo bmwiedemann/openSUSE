@@ -810,11 +810,11 @@ Prefer: cmake-mini
 
 Prefer: -re2-10-devel
 
-# pythin-pip inside OBS never connects to the net, so we don't use certs
-Ignore: python38-pip:ca-certificates
+# python-pip inside OBS never connects to the net, so we don't use certs
 Ignore: python39-pip:ca-certificates
 Ignore: python310-pip:ca-certificates
 Ignore: python311-pip:ca-certificates
+Ignore: python312-pip:ca-certificates
 
 Prefer: -suse-build-key
 # Set postfix as the 'default' smtp_daemon (virtual symbol provided by all MTAs)
