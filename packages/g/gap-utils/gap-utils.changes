@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 24 00:21:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.85
+  * Avoid trivial function wrappers in List and ForAll
+
+-------------------------------------------------------------------
 Fri Sep 15 11:49:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.84
