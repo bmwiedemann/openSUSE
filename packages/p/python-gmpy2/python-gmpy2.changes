@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 25 01:40:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-312.patch:
+  * Support Python 3.12 changes.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Sep 27 11:47:12 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Fix build error "patch defined multiple times" for Leap.
