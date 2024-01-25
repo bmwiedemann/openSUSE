@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 25 11:18:12 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Persist s390 cio_ignore kernel argument always when given 
+  (bsc#1210525).
+- 5.0.4
+
+-------------------------------------------------------------------
+Wed Jan 10 23:16:39 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not try finding undefined bootloader name to avoid error
+  in logs (bsc#1218700)
+- 5.0.3
+
+-------------------------------------------------------------------
 Mon Sep  4 06:40:19 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Fixed testsuite for architectures other than x86_64.
