@@ -1,7 +1,7 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -198,7 +198,7 @@ Requires(post): permissions
 Requires(pre):  shadow
 Recommends:     blktrace
 Provides:       s390utils:/sbin/dasdfmt
-### ExclusiveArch:  s390x x86_64
+ExclusiveArch:  s390x x86_64
 
 %description
 This package contains the tools needed to use Linux on IBM z Systems

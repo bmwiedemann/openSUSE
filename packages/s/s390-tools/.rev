@@ -783,4 +783,17 @@
     <comment></comment>
     <requestid>1133718</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>5ab21269dc67c27c3c275f85174d3243</srcmd5>
+    <version>2.30.0</version>
+    <time>1706204461</time>
+    <user>anag+factory</user>
+    <comment>Resubmitting the upgrade s390-tools to version 2.30 (jsc#PED-5783, jsc#PED-6785, jsc#PED-7136, jsc#PED-6539, jsc#PED-4604, jsc#PED-6649, jsc#PED-7138)
+
+- Updated the .spec file
+  * Explicitly specified 'ExclusiveArch: s390x x86_64'
+
+Build succeeded on IBS (in a home project).</comment>
+    <requestid>1141278</requestid>
+  </revision>
 </revisionlist>
