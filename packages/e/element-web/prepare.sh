@@ -8,7 +8,7 @@ sed -i -e "s/^\(Version: *\)[^ ]*$/\1${version}/" element-web.spec
 oldwd="$(pwd)"
 
 # cleanup old stuff
-find -maxdepth 1 -type d -name 'element-web-*' | xargs rm -r
+(find -maxdepth 1 -type d -name 'element-web-*' | xargs rm -r) ||:
 
 version=$(grep "Version:" element-web.spec | awk '{print $2}')
 last_packaged_version=$(osc cat devel:languages:nodejs/element-web/element-web.spec | grep "^Version:" | awk '{print $NF}')
@@ -34,6 +34,7 @@ yarn install --pure-lockfile --ignore-engines || : # this will download tha pack
 cd ./npm-packages-offline-cache/
 
 # fill sentry-cli cache with mock binaries for all architecutres
+mkdir -p sentry-cli
 cd sentry-cli
 sentry_cli_version=$(ls ../@sentry-cli-*.tgz | sed -e 's/.*cli-//' -e 's/.tgz//')
 for arch in i686 x86_64 aarch64 armv7 riscv64 ppc64 ppc64le s390x; do

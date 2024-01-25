@@ -567,4 +567,12 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
   * Fix a fresh login creating a new key backup (https://github.com/matrix-org/matrix-react-sdk/pull/12106).</comment>
     <requestid>1136869</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>2c839384649e3baef824ea25b47708f8</srcmd5>
+    <version>1.11.54</version>
+    <time>1706204521</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1141485</requestid>
+  </revision>
 </revisionlist>

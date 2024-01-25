@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jan 17 14:26:02 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.54
+  ## 🐛 Bug Fixes
+  
+  * Fix CSS stacking context order determinism (https://github.com/element-hq/element-web/pull/26840). Contributed by @t3chguy.
+
+  ## ✨ Features
+
+  * Accessibility improvements around aria-labels and tooltips (https://github.com/matrix-org/matrix-react-sdk/pull/12062). Contributed by @t3chguy.
+  * Add RoomKnocksBar to RoomHeader (https://github.com/matrix-org/matrix-react-sdk/pull/12077). Contributed by @charlynguyen.
+  * Adjust tooltip side for DecoratedRoomAvatar to not obscure room name (https://github.com/matrix-org/matrix-react-sdk/pull/12079). Contributed by @t3chguy.
+  * Iterate landmarks around the app in order to improve a11y (https://github.com/matrix-org/matrix-react-sdk/pull/12064). Contributed by @t3chguy.
+  * Update element call embedding UI (https://github.com/matrix-org/matrix-react-sdk/pull/12056). Contributed by @toger5.
+  * Use Compound tooltips instead of homegrown in TextWithTooltip \& InfoTooltip (https://github.com/matrix-org/matrix-react-sdk/pull/12052). Contributed by @t3chguy.
+
+  ## 🐛 Bug Fixes
+
+  * Fix regression around CSS stacking contexts and PIP widgets (https://github.com/matrix-org/matrix-react-sdk/pull/12094). Contributed by @t3chguy.
+  * Fix Identity Server terms accepting not working as expected (https://github.com/matrix-org/matrix-react-sdk/pull/12109). Contributed by @t3chguy.
+  * fix: microphone and camera dropdown doesn't work In legacy call (https://github.com/matrix-org/matrix-react-sdk/pull/12105). Contributed by @muratersin.
+  * Revert "Set up key backup using non-deprecated APIs (#12005)" (https://github.com/matrix-org/matrix-react-sdk/pull/12102). Contributed by @BillCarsonFr.
+  * Fix regression around read receipt animation from refs changes (https://github.com/matrix-org/matrix-react-sdk/pull/12100). Contributed by @t3chguy.
+  * Added meaning full error message based on platform (https://github.com/matrix-org/matrix-react-sdk/pull/12074). Contributed by @Pankaj-SinghR.
+  * Fix editing event from search room view (https://github.com/matrix-org/matrix-react-sdk/pull/11992). Contributed by @t3chguy.
+  * Fix timeline position when moving to a room and coming back (https://github.com/matrix-org/matrix-react-sdk/pull/12055). Contributed by @florianduros.
+  * Fix threaded reply playwright tests (https://github.com/matrix-org/matrix-react-sdk/pull/12070). Contributed by @dbkr.
+  * Element-R: fix repeated requests to enter 4S key during cross-signing reset (https://github.com/matrix-org/matrix-react-sdk/pull/12059). Contributed by @richvdh.
+  * Fix position of thumbnail in room timeline (https://github.com/matrix-org/matrix-react-sdk/pull/12016). Contributed by @anoopw3bdev.
+
+-------------------------------------------------------------------
 Thu Jan  4 15:18:23 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.53
