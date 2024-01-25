@@ -1,7 +1,7 @@
 #
 # spec file for package python-screenplain
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,16 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%bcond_with python2
-%else
-%bcond_without python2
-%endif
 Name:           python-screenplain
-Version:        0.10.0
+Version:        0.11.1+git.1701424578.13b79f2
 Release:        0
 Summary:        Convert text file to viewable screenplay
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://www.screenplain.com/
-Source:         https://files.pythonhosted.org/packages/source/s/screenplain/screenplain-%{version}.tar.gz
+URL:            https://www.screenplain.com/
+# Source:         https://files.pythonhosted.org/packages/source/s/screenplain/screenplain-%%{version}.tar.gz
 # Tarball generated from gh#vilcans/screenplain#62
-# Source:         screenplain-%%{version}.tar.gz
+Source:         screenplain-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix_entry_point.patch mcepl@suse.com
 # entry point lead to incorrect function.
 Patch0:         fix_entry_point.patch
@@ -40,11 +35,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Requires:       python-reportlab
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -69,10 +63,10 @@ be supported in a not too distant future.
 sed -i '1{/^#!.*env python/d}' screenplain/main.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/screenplain
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -89,6 +83,6 @@ sed -i '1{/^#!.*env python/d}' screenplain/main.py
 %files %{python_files}
 %python_alternative %{_bindir}/screenplain
 %{python_sitelib}/screenplain
-%{python_sitelib}/screenplain-%{version}*-info
+%{python_sitelib}/screenplain-0.11.1*-info
 
 %changelog

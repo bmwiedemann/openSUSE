@@ -5,4 +5,6 @@
                 <param name="url">https://git.sr.ht/~mcepl/screenplay</param>
               <param name="changesrevision">302bfdd3362f4287a471cff80908e018bc09f990</param></service><service name="tar_scm">
                 <param name="url">https://git.sr.ht/~mcepl/screenplain</param>
-              <param name="changesrevision">353e6c94e996055880c07a3846cb51b98e19dfa2</param></service></servicedata>
+              <param name="changesrevision">353e6c94e996055880c07a3846cb51b98e19dfa2</param></service><service name="tar_scm">
+                <param name="url">https://github.com/vilcans/screenplain.git</param>
+              <param name="changesrevision">13b79f2dd0bf8f584965269137893dea50378b39</param></service></servicedata>
