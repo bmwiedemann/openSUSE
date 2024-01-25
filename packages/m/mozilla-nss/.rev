@@ -3114,4 +3114,17 @@
     <comment></comment>
     <requestid>1135302</requestid>
   </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>035c0fbc48e83e8c5e87721f803fdf82</srcmd5>
+    <version>3.96.1</version>
+    <time>1706204380</time>
+    <user>anag+factory</user>
+    <comment>- update to NSS 3.96.1
+  * bmo#1869408 - Use pypi dependencies for MacOS worker in ./build_gyp.sh
+  * bmo#1830978 - p7sign: add -a hash and -u certusage (also p7verify cleanups)
+  * bmo#1867408 - add a defensive check for large ssl_DefSend return values
+  * bmo#1869378 - Add dependency to the taskcluster script for Darwin
+  * bmo#1869378 - Upgrade version of the MacOS worker for the CI</comment>
+    <requestid>1141173</requestid>
+  </revision>
 </revisionlist>

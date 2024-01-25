@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 21 09:02:29 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.96.1
+  * bmo#1869408 - Use pypi dependencies for MacOS worker in ./build_gyp.sh
+  * bmo#1830978 - p7sign: add -a hash and -u certusage (also p7verify cleanups)
+  * bmo#1867408 - add a defensive check for large ssl_DefSend return values
+  * bmo#1869378 - Add dependency to the taskcluster script for Darwin
+  * bmo#1869378 - Upgrade version of the MacOS worker for the CI
+
+-------------------------------------------------------------------
 Tue Dec 26 15:34:48 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 
 - add nss-allow-slow-tests-s390x.patch: "certutil dump keys with
