@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldappool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-ldappool
 Version:        3.0.0
 Release:        0
@@ -29,9 +30,9 @@ Patch:          remove-six-dep.patch
 BuildRequires:  %{python_module ldap >= 3.0.0}
 BuildRequires:  %{python_module pbr}
 # SECTION stestr is only available for primary python3 flavor (openstack package)
-BuildRequires:  python3-stestr
-BuildRequires:  python3-testresources
-BuildRequires:  python3-testtools
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testresources}
+BuildRequires:  %{python_module testtools}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -66,7 +67,7 @@ sed -i 's/PrettyTable<0.8,>=0.7.2/prettytable>=0.7.2/' requirements.txt
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/ldappool/tests
 
 %check
-python3 -m stestr.cli run
+%python_exec -m stestr.cli run
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

@@ -73,4 +73,17 @@
 </comment>
     <requestid>1038064</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>ee934298bf966c23f1c1cdf6ff63ce58</srcmd5>
+    <version>3.0.0</version>
+    <time>1706204475</time>
+    <user>anag+factory</user>
+    <comment>- switch to new python stack
+- build for all python flavors
+
+- fix requires on renamed prettytable
+- fix license
+- Initial package. Version 1.0</comment>
+    <requestid>1141341</requestid>
+  </revision>
 </revisionlist>
