@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 24 14:27:00 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated the .spec file
+  * Explicitly specified 'ExclusiveArch: s390x x86_64'
+
+-------------------------------------------------------------------
 Sun Dec 17 05:48:56 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated the .spec file to use gcc13 (bsc#1217838) 
