@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 23 16:03:37 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Disable zxing in Leap15
+  * Leap 15 can not provide zxing >= 1.4.0, zxing is inherited from
+    SLE15 but SLE15 do provide zxing version 1.2.0 only, Factory do
+    have zxing-cpp 2.0.0 however it's not an API compatible version.
+
+-------------------------------------------------------------------
 Thu Jan  4 07:56:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.8:
