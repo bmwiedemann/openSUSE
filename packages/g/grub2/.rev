@@ -2711,4 +2711,12 @@ pretty much the same. The main user visible changes are
     <user>dimstar_suse</user>
     <comment>Re-apply reverted fix; identified as not being the culprit</comment>
   </revision>
+  <revision rev="317" vrev="6">
+    <srcmd5>53d34e1e7735287a7fec79cf394398d6</srcmd5>
+    <version>2.12</version>
+    <time>1706204379</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141140</requestid>
+  </revision>
 </revisionlist>

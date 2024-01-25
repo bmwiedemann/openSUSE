@@ -387,7 +387,7 @@ Patch194:       0003-Restrict-ls-and-auto-file-completion-on-cryptodisk-p.patch
 Patch195:       0004-Key-revocation-on-out-of-bound-file-access.patch
 # Workaround for 2.12 tarball
 Patch196:       fix_no_extra_deps_in_release_tarball.patch
-Patch197:       0001-Revert-fs-xfs-Fix-XFS-directory-extent-parsing.patch
+Patch197:       0001-fs-xfs-always-verify-the-total-number-of-entries-is-.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

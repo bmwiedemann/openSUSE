@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 23 04:56:58 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Reinstate the verification for a non-zero total entry count to skip unmapped
+  data blocks (bsc#1218864)
+  * 0001-fs-xfs-always-verify-the-total-number-of-entries-is-.patch
+- Removed temporary fix as reverting it will cause a different XFS parser bug
+  * 0001-Revert-fs-xfs-Fix-XFS-directory-extent-parsing.patch 
+
+-------------------------------------------------------------------
 Sat Jan 20 20:08:34 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - allow to boot memtest86 if stored in /usr/lib/memtest86+
