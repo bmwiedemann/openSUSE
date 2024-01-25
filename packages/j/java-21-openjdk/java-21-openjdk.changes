@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 24 08:16:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add JPackage base provides for SLE15 too (bsc#1219115)
+
+-------------------------------------------------------------------
 Wed Jan 17 13:18:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-21.0.2+13 (January 2024 CPU)
