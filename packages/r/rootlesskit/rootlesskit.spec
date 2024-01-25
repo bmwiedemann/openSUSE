@@ -1,7 +1,7 @@
 #
 # spec file for package rootlesskit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,8 @@
 #
 
 
-%global provider        github
-%global provider_tld    com
-%global project         rootless-containers
-%global repo            rootlesskit
-%global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
-%global import_path     %{provider_prefix}
-
 Name:           rootlesskit
-Version:        1.1.1
+Version:        2.0.0
 Release:        0
 Summary:        Linux-native fakeroot using user namespaces
 License:        Apache-2.0
@@ -44,9 +37,9 @@ the real root on the host from potential container-breakout attacks.
 %setup -qa1
 
 %build
-go build -mod=vendor -buildmode=pie -o _output/rootlesskit %{provider_prefix}/cmd/rootlesskit
-go build -mod=vendor -buildmode=pie -o _output/rootlessctl %{provider_prefix}/cmd/rootlessctl
-go build -mod=vendor -buildmode=pie -o _output/rootlesskit-docker-proxy %{provider_prefix}/cmd/rootlesskit-docker-proxy
+go build -mod=vendor -buildmode=pie -o _output/rootlesskit ./cmd/rootlesskit
+go build -mod=vendor -buildmode=pie -o _output/rootlessctl ./cmd/rootlessctl
+go build -mod=vendor -buildmode=pie -o _output/rootlesskit-docker-proxy ./cmd/rootlesskit-docker-proxy
 
 %install
 mkdir -p %{buildroot}%{_bindir}/
