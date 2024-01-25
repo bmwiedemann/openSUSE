@@ -1,7 +1,7 @@
 #
 # spec file for package arti
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           arti
 #               This will be set by osc services, that will run after this.
-Version:        1.1.11~0
+Version:        1.1.12~0
 Release:        0
 Summary:        An implementation of Tor, in Rust.
 #               If you know the license, put it's SPDX string here.
