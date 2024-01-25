@@ -1,0 +1,35 @@
+diff --git a/distrobuilder/main_repack-windows.go b/distrobuilder/main_repack-windows.go
+index 76735f2..845fe04 100644
+--- a/distrobuilder/main_repack-windows.go
++++ b/distrobuilder/main_repack-windows.go
+@@ -327,17 +327,17 @@ func (c *cmdRepackWindows) run(cmd *cobra.Command, args []string, overlayDir str
+ 	logger.Info("Generating new ISO")
+ 	var stdout strings.Builder
+ 
+-	err = shared.RunCommand(c.global.ctx, nil, &stdout, "genisoimage", "--version")
++	err = shared.RunCommand(c.global.ctx, nil, &stdout, "mkisofs", "--version")
+ 	if err != nil {
+-		return fmt.Errorf("Failed to determine version of genisoimage: %w", err)
++		return fmt.Errorf("Failed to determine version of mkisofs: %w", err)
+ 	}
+ 
+ 	version := strings.Split(stdout.String(), "\n")[0]
+ 
+ 	if strings.HasPrefix(version, "mkisofs") {
+-		err = shared.RunCommand(c.global.ctx, nil, nil, "genisoimage", "-iso-level", "3", "-l", "-no-emul-boot", "-b", "efi/microsoft/boot/efisys.bin", "-o", args[1], overlayDir)
++		err = shared.RunCommand(c.global.ctx, nil, nil, "mkisofs", "-iso-level", "3", "-l", "-no-emul-boot", "-b", "efi/microsoft/boot/efisys.bin", "-o", args[1], overlayDir)
+ 	} else {
+-		err = shared.RunCommand(c.global.ctx, nil, nil, "genisoimage", "--allow-limited-size", "-l", "-no-emul-boot", "-b", "efi/microsoft/boot/efisys.bin", "-o", args[1], overlayDir)
++		err = shared.RunCommand(c.global.ctx, nil, nil, "mkisofs", "--allow-limited-size", "-l", "-no-emul-boot", "-b", "efi/microsoft/boot/efisys.bin", "-o", args[1], overlayDir)
+ 	}
+ 
+ 	if err != nil {
+@@ -413,7 +413,7 @@ func (c *cmdRepackWindows) modifyWim(path string, index int) error {
+ }
+ 
+ func (c *cmdRepackWindows) checkDependencies() error {
+-	dependencies := []string{"genisoimage", "hivexregedit", "rsync", "wimlib-imagex"}
++	dependencies := []string{"mkisofs", "hivexregedit", "rsync", "wimlib-imagex"}
+ 
+ 	for _, dep := range dependencies {
+ 		_, err := exec.LookPath(dep)

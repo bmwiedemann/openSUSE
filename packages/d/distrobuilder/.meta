@@ -1,0 +1,10 @@
+<package name="distrobuilder" project="openSUSE:Factory">
+  <title></title>
+  <description>distrobuilder is an image building tool for LXC and LXD/Incus.
+
+The image definition is a YAML document which describes the source of the image, its package manager, what packages to install/remove for specific image variants, os releases and architectures, as well as additional files to generate and arbitrary actions to execute as part of the image build process.
+
+The output is either a plain root filesystem, a LXD/Incus image or a LXC image.</description>
+  <devel project="Virtualization:containers" package="distrobuilder"/>
+  <url>https://linuxcontainers.org/distrobuilder</url>
+</package>
