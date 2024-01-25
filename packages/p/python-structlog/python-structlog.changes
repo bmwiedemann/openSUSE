@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 24 07:35:08 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+  https://en.opensuse.org/openSUSE:Packaging_Python
+
+-------------------------------------------------------------------
 Sun Jan 14 15:12:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.1.0:
