@@ -1,4 +1,332 @@
 -------------------------------------------------------------------
+Fri Jan 12 11:08:01 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- Update to 23.11.1 with following major improvements and fixing
+  CVE-2023-49933, CVE-2023-49934, CVE-2023-49935, CVE-2023-49936
+  and CVE-2023-49937
+  * Substantially overhauled the SlurmDBD association management
+    code. For clusters updated to 23.11, account and user
+    additions or removals are significantly faster than in prior
+    releases.
+  * Overhauled `scontrol reconfigure` to prevent configuration
+    mistakes from disabling slurmctld and slurmd. Instead, an
+    error will be returned, and the running configuration will
+    persist. This does require updates to the systemd service
+    files to use the `--systemd` option to `slurmctld` and `slurmd`.
+  * Added a new internal `auth/cred` plugin - `auth/slurm`. This
+    builds off the prior `auth/jwt` model, and permits operation
+    of the `slurmdbd` and `slurmctld` without access to full
+    directory information with a suitable configuration.
+  * Added a new `--external-launcher` option to `srun`, which is
+    automatically set by common MPI launcher implementations and
+    ensures processes using those non-srun launchers have full
+    access to all resources allocated on each node.
+  * Reworked the dynamic/cloud modes of operation to allow for
+    "fanout" - where Slurm communication can be automatically
+    offloaded to compute nodes for increased cluster scalability.
+  * Overhauled and extended the Reservation subsystem to allow
+    for most of the same resource requirements as are placed on
+    the job. Notably, this permits reservations to now reserve
+    GRES directly.
+- Details of changes:
+  * Fix `scontrol update job=... TimeLimit+=/-=` when used with a
+    raw JobId of job array element.
+  * Reject `TimeLimit` increment/decrement when called on job with
+    `TimeLimit=UNLIMITED`.
+  * Fix issue with requesting a job with `*licenses` as well as
+    `*tres-per-task=license`.
+  * `slurmctld` - Prevent segfault in `getopt_long()` with an
+    invalid long option.
+  * slurmrestd - Added `/meta/slurm/cluster` field to responses.
+  * Adjust systemd service files to start daemons after
+    `remote-fs.target`.
+  * Fix `task/cgroup` indexing tasks in cgroup plugins, which
+    caused `jobacct/gather` to match the gathered stats with the
+    wrong task id.
+  * `select/linear` - Fix regression in 23.11 in which jobs that
+    requested `*cpus-per-task` were rejected.
+  * `data_parser/v0.0.40` - Fix the parsing for
+    `/slurmdb/v0.0.40/jobs` exit_code query parameter.
+  * If a job requests more shards which would allocate more than
+    one sharing GRES (gpu) per node refuse it unless
+    `SelectTypeparameters` has `MULTIPLE_SHARING_GRES_PJ`.
+  * Trigger fatal exit when Slurm API function is called before
+    `slurm_init()` is called.
+  * `slurmd` - Fix issue with `scontrol reconfigure` when started
+    with `-c`.
+  * `slurmrestd` - Job submissions that result in the following
+    error codes will be considered as successfully submitted (with
+    a warning), instead of returning an HTTP 500 error back:
+    `ESLURM_NODES_BUSY`, `ESLURM_RESERVATION_BUSY`, `ESLURM_JOB_HELD`,
+    `ESLURM_NODE_NOT_AVAIL`, `ESLURM_QOS_THRES`,
+    `ESLURM_ACCOUNTING_POLICY`, `ESLURM_RESERVATION_NOT_USABLE`,
+    `ESLURM_REQUESTED_PART_CONFIG_UNAVAILABLE`,
+    `ESLURM_BURST_BUFFER_WAIT`, ESLURM_PARTITION_DOWN`,
+    `ESLURM_LICENSES_UNAVAILABLE`.
+  * Fix a `slurmctld` fatal error when upgrading to 23.11 and
+    changing from `select/cons_res` to `select/cons_tres` at the
+    same time.
+  * `slurmctld` - Reject arbitrary distribution jobs that have a
+    minimum node count that differs from the number of unique
+    nodes in the hostlist.
+  * Prevent `slurmdbd` errors when updating reservations with names
+    containing apostrophes.
+  * Prevent message extension attacks that could bypass the
+    message hash. CVE-2023-49933.
+  * Prevent SQL injection attacks in `slurmdbd`. CVE-2023-49934.
+  * Prevent message hash bypass in slurmd which can allow an
+    attacker to reuse root-level MUNGE tokens and escalate
+    permissions. CVE-2023-49935.
+  * Prevent NULL pointer dereference on size_valp overflow.
+    CVE-2023-49936.
+  * Prevent double-xfree() on error in `_unpack_node_reg_resp()`.
+    CVE-2023-49937.
+  * For jobs that request  `*cpus-per-gpu`, ensure that the
+    `*cpus-per-gpu request` is honored on every node in the and
+    not just for the job as a whole.
+  * Fix listing available `data_parser` plugins for json and yaml
+    when giving no commands to `scontrol` or `sacctmgr`.
+  * `slurmctld` - Rework `scontrol reconfigure` to avoid race
+    conditions that can result in stray jobs.
+  * `slurmctld` - Shave ~1 second off average reconfigure time by
+    terminating internal processing threads faster.
+  * Skip running `slurmdbd -R` if the connected cluster is 23.11
+    or newer. This operation is no longer relevant for 23.11.
+  * Ensure `slurmscriptd` shuts down before `slurmctld` is stopped
+    or reconfigured.
+  * Improve error handling and error messages in `slurmctld` to
+    `slurmscriptd` communications. This includes avoiding
+    potential deadlock in `slurmctld` if slurmscript dies
+    unexpectedly.
+  * Do not hold batch jobs whose extra constraints cannot be
+    immediately satisfied, and set the state reason to
+    `Constraints` instead of `BadConstraints`.
+  * Fix verbose log message printing a hex number instead of a job
+    id.
+  * Upgrade rate limit parameters message from debug to info.
+  * For `SchedulerParameters=extra_constraints`, prevent `slurmctld`
+    segfault when starting a `slurmd` with `*extra` for a node
+    that did not previously set this.
+    This also ensures the extra constraints model works off the
+    current node state, not the prior state.
+  * Fix `*tres-per-task` assertion.
+  * Fix a few issues when creating reservations.
+  * Add `SchedulerParameters=time_min_as_soft_limit` option.
+  * Remove `SLURM_WORKING_CLUSTER` env from batch and srun
+    environments.
+  * `cli_filter/lua` - return nil for unset time options rather
+    than the string `2982616-04:14:00` (which is the internal
+    macro `NO_VAL` represented as time string).
+  * Remove 'none' plugins for all but auth and cred. scontrol show
+    config will report (null) now.
+  * Removed `select/cons_res`. Please update your configuration to
+    `select/cons_tres`.
+  * `mpi/pmix` - When aborted with status 0, avoid marking
+    job/step as failed.
+  * Fixed typo on `initialized` for the description of
+    `ESLURM_PLUGIN_NOT_LOADED`.
+  * `cgroup.conf` - Removed deprecated parameters `AllowedKmemSpace`,
+    `ConstrainKmemSpace`, `MaxKmemPercent`, and `MinKmemSpace`.
+  * `proctrack/cgroup` - Add `SignalChildrenProcesses=<yes|no>`
+    option to `cgroup.conf`. This allows signals for cancelling,
+    suspending, resuming, etc. to be sent to children processes in
+    a `step/job` rather than just the parent.
+  * Add `PreemptParameters=suspend_grace_time` parameter to
+    control amount of time between `SIGTSTP` and `SIGSTOP` signals
+    when suspending jobs.
+  * `job_submit/throttle` - improve reset of submitted job counts
+    per user in order to better honor
+    `SchedulerParameters=jobs_per_user_per_hour=#`.
+  * Load the user environment into a private pid namespace to
+    avoid user scripts leaving background processes on a node.
+  * `scontrol` show `assoc_mgr` will display Lineage instead of Lft
+    for associations.
+  * Add `SlurmctldParameters=no_quick_restart` to avoid a new
+    `slurmctld` taking over the old `slurmctld` by accident.
+  * Fix `--cpus-per-gpu` for step allocations, which was
+    previously ignored for job steps. `*cpus-per-gpu` implies
+    `--exact`.
+  * Fix mutual exclusivity of `--cpus-per-gpu` and
+    `--cpus-per-task`:  fatal if both options are requested in the
+    commandline or both are requested in the environment. If one
+    option is requested in the command line, it will override the
+    other option in the environment.
+  * `slurmrestd` - `openapi/dbv0.0.37` and `openapi/v0.0.37`
+    plugins have been removed.
+  * `slurmrestd` - `openapi/dbv0.0.38` and `openapi/v0.0.38`
+    plugins have been tagged as deprecated.
+  * `slurmrestd` - added auto population of `info/version` field.
+  * `sdiag` - add `--yaml` and `--json` arg support to specify
+    data_parser plugin.
+  * `sacct` - add `--yaml` and `--json` arg support to specify
+    `data_parser` plugin.
+  * `scontrol` - add `--yaml` and `--json` arg support to specify
+    `data_parser` plugin.
+  * `sinfo` - add `--yaml` and `--json` arg support to specify
+    `data_parser` plugin.
+  * `squeue` - add `--yaml` and `--json` arg support to specify
+    `data_parser` plugin.
+  * Changed the default `SelectType` to `select/cons_tres` (from
+    `select/linear`).
+  * Allow `SlurmUser`/`root` to use reservations without specific
+    permissions.
+  * Fix sending step signals to nodes not allocated by the step.
+  * Remove `CgroupAutomount=` option from `cgroup.conf`.
+  * Add `TopologyRoute=RoutePart` to route communications based
+    on partition node lists.
+  * Added ability for configless to push Prolog and Epilog
+    scripts to `slurmd`s.
+  * Prolog and Epilog do not have to be fully qualified pathnames.
+  * Changed default value of `PriorityType` from `priority/basic`
+    to `priority/multifactor`.
+  * `torque/mpiexec` - Propogate exit code from `launched` process.
+  * `slurmrestd` - Add new rlimits fields for job submission.
+  * Define SPANK options environment variables when
+    `--export=[NIL|NONE]` is specified.
+  * `slurmrestd` - Numeric input fields provided with a null
+    formatted value will now convert to zero (0) where it can be
+    a valid value. This is expected to be only be notable with job
+    submission against v0.0.38 versioned endpoints with job
+    requests with fields provided with null values. These fields
+    were already rejected by v0.0.39+ endpoints, unless `+complex`
+    parser value is provided to v0.0.40+ endpoints.
+  * `slurmrestd` - Improve parsing of integers and floating point
+    numbers when handling incoming user provided numeric fields.
+    Fields that would have not rejected a number for a numeric
+    field followed by other non-numeric characters will now get
+    rejected. This is expected to be only be notable with job
+    submission against v0.0.38 versioned endpoints with malformed
+    job requests.
+  * Reject reservation update if it will result in previously
+    submitted jobs losing access to the reservation.
+  * `data_parser/v0.0.40` - output partition state when dumping
+    partitions.
+  * Allow for a shared suffix to be used with the hostlist format.
+    E.g., `node[0001-0010]-int`.
+  * Replace `SRUN_CPUS_PER_TASK` with `SLURM_CPUS_PER_TASK` and
+    get back the previous behavior before Slurm 22.05 since now we
+    have the new external launcher step.
+  * `job_container/tmpfs` - Add `BasePath=none` option to disable
+    plugin on node subsets when there is a global setting.
+  * Add QOS flag `Relative`. If set the QOS limits will be treated
+    as percentages of a cluster/partition instead of absolutes.
+  * Remove `FIRST_CORES` flag from reservations.
+  * Add cloud instance id and instance type to node records.
+    Can be viewed/updated with `scontrol`.
+  * `slurmd` - add `instance-id`, `instance-type`, and `extra`
+    options to allow them to be set on startup.
+  * Add cloud instance accounting to database that can be viewed
+    with `sacctmgr show instance`.
+  * `select/linear` - fix task launch failure that sometimes
+    occurred when requesting  `*threads-per-core` or
+    `--hint=nomultithread`. This also fixes memory calculation
+    with one of these options and  `*mem-per-cpu`:
+    Previously, memory = mem-per-cpu * all cpus including unusable
+    threads.
+    Now, memory = mem-per-cpu * only usuable threads. This
+    behavior matches the documentation and select/cons_tres.
+  * `gpu/nvml` - Reduce chances of `NVML_ERROR_INSUFFICIENT_SIZE`
+    error when getting gpu memory information.
+  * `slurmrestd` - Convert to generating `OperationIDs` based on
+    path for all v0.0.40 tagged paths.
+  * `slurmrestd` - Reduce memory used while dumping a job's stdio
+    paths.
+  * `slurmrestd` - Jobs queried from `data_parser/v0.0.40` from
+    `slurmdb` will have `step/id` field given as a string to match
+    CLI formatting instead of an object.
+  * `sacct` - Output in JSON or YAML output will will have the
+    `step/id` field given as a string instead of an object.
+  * `scontrol`/`squeue` - Step output in JSON or YAML output will
+    will have the `id` field given as a string instead of an
+    object.
+  * `slurmrestd` - For `GET /slurmdb/v0.0.40/jobs` mimick default
+    behavior for handling of job start and end times as `sacct`
+    when one or both fields are not provided as a query parameter.
+  * `openapi/slurmctld` - Add `GET /slurm/v0.0.40/shares` endpoint
+    to dump same output as `sshare`.
+  * `sshare` - add JSON/YAML support.
+  * `data_parser/v0.0.40` - Remove `required/memory` output in
+    json. It is replaced by `required/memory_per_cpu` and
+    `required/memory_per_node`.
+  * `slurmrestd` - Add numeric id to all association identifiers
+    to allow unique identification where association has been
+    deleted but is still referenced by accounting record.
+  * `slurmrestd` - Add accounting, id, and comment fields to
+    association dumps.
+  * Use `memory.current` in cgroup/v2 instead of manually
+    calculating RSS. This makes accounting consistent with
+    OOM Killer.
+  * `sreport` - cluster Utilization `PlannedDown` field now
+    includes the time that all nodes were in the `POWERED_DOWN`
+    state instead of just cloud nodes.
+  * `scontrol` update partition now allows `Nodes+=<node-list>` and
+    `Nodes-=<node-list>` to add/delete nodes from the existing
+    partition node list. `Nodes=+host1,-host2` is also allowed.
+  * `sacctmgr` - add `--yaml` and `--json` arg support to specify
+    `data_parser` plugin.
+  * `sacctmgr` can now modify QOS's RawUsage to zero or a positive
+    value.
+  * `sdiag` - Added statistics on why the main and backfill
+    schedulers have stopped evaluation on each scheduling cycle.
+    the number of `RPC limit exceeded...` messages that are logged.
+  * Rename `sbcast --fanout` to `--treewidth`.
+  * Remove `SLURM_NODE_ALIASES` env variable.
+  * Enable fanout for dynamic and unaddresable cloud nodes.
+  * Fix how steps are dealloced in an allocation if the last step
+    of an srun never completes due to a node failure.
+  * Remove redundant database indexes.
+  * Add database index to suspend table to speed up archive/purges.
+  * When requesting `--tres-per-task` alter incorrect request for
+    TRES, it should be `TRESType/TRESName` not `TRESType:TRESName`.
+  * Make it so reservations can reserve GRES.
+  * `sbcast` - use the specified `--fanout` value on all hops in
+    message forwarding; previously the specified fanout was only
+    used on the first hop, and additional hops used `TreeWidth` in
+    `slurm.conf`.
+  * `slurmrestd`- remove logger prefix from `-s/-a list` options
+    outputs.
+  * `switch/hpe_slingshot` - Add support for collectives.
+  * Nodes with suspended jobs can now be displayed as `MIXED`.
+  * Fix inconsistent handling of using cli and/or environment
+    options for `tres_per_task=cpu:#` and `cpus_per_gpu`.
+  * Requesting `--cpus-per-task` will now set
+    `SLURM_TRES_PER_TASK=cpu:#` in the  environment.
+  * For some tres related environment variables such as
+    `SLURM_TRES_PER_TASK`, when `srun` requests a different value
+    for that option, set these environment variables to the value
+    requested by `srun`. Previously these environment variables
+    were unchanged from the job allocation. This bug only affected
+    the output environment variables, not the actual step resource
+    allocation.
+  * `RoutePlugin=route/topology` has been replaced with
+    `TopologyParam=RouteTree`.
+  * If `ThreadsPerCore` in `slurm.conf` is configured with less
+    than the number of hardware threads, fix a bug where the task
+    plugins used fewer cores instead of using fewer threads per core.
+  * Fix arbitrary distribution allowing it to be used with `salloc`
+    and `sbatch` and fix how cpus are allocated to nodes.
+  * Allow nodes to reboot while node is drained or in a
+    maintenance state.
+  * Allow `scontrol` reboot to use nodesets to filter nodes to reboot.
+  * Fix how the topology of typed gres gets updated.
+  * Changes to the Type option in gres.conf now can be applied with
+    `scontrol` reconfig.
+  * Allow for jobs that request a newly configured gres type to be
+    queued even when the needed `slurmd`s have not yet registered.
+  * Kill recovered jobs that require unconfigured gres types.
+  * If keepalives are configured, enable them on all persistent
+    connections.
+  * Configless - Also send Includes from configuration files not
+    parsed by the controller (i.e. from `plugstack.conf`).
+  * Add `gpu/nrt` plugin for nodes using Trainium/Inferentia
+    devices.
+  * `data_parser/v0.0.40` - Add `START_RECEIVED` to job flags in
+    dumped output.
+  * SPANK - Failures from most spank functions (not epilog or
+    exit) will now cause the step to be marked as failed and the
+    command (`srun`, `salloc`, `sbatch  *wait`) to return 1.
+
+-------------------------------------------------------------------
 Wed Jan  3 10:45:48 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Update to 23.02.6 to fix (CVE-2023-49933 - bsc#1218046, CVE-2023-49935 -

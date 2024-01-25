@@ -1418,4 +1418,41 @@
     + Update node reason with updated `INVAL` state reason if different from (forwarded request 1136624 from eeich)</comment>
     <requestid>1137045</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>f61dff98c90d0e7af8c6ecc366d25292</srcmd5>
+    <version>23.11.1</version>
+    <time>1706204465</time>
+    <user>anag+factory</user>
+    <comment>- Update to 23.11.1 with following major improvements and fixing
+  CVE-2023-49933, CVE-2023-49934, CVE-2023-49935, CVE-2023-49936
+  and CVE-2023-49937
+  * Substantially overhauled the SlurmDBD association management
+    code. For clusters updated to 23.11, account and user
+    additions or removals are significantly faster than in prior
+    releases.
+  * Overhauled `scontrol reconfigure` to prevent configuration
+    mistakes from disabling slurmctld and slurmd. Instead, an
+    error will be returned, and the running configuration will
+    persist. This does require updates to the systemd service
+    files to use the `--systemd` option to `slurmctld` and `slurmd`.
+  * Added a new internal `auth/cred` plugin - `auth/slurm`. This
+    builds off the prior `auth/jwt` model, and permits operation
+    of the `slurmdbd` and `slurmctld` without access to full
+    directory information with a suitable configuration.
+  * Added a new `--external-launcher` option to `srun`, which is
+    automatically set by common MPI launcher implementations and
+    ensures processes using those non-srun launchers have full
+    access to all resources allocated on each node.
+  * Reworked the dynamic/cloud modes of operation to allow for
+    &quot;fanout&quot; - where Slurm communication can be automatically
+    offloaded to compute nodes for increased cluster scalability.
+  * Overhauled and extended the Reservation subsystem to allow
+    for most of the same resource requirements as are placed on
+    the job. Notably, this permits reservations to now reserve
+    GRES directly.
+- Details of changes:
+  * Fix `scontrol update job=... TimeLimit+=/-=` when used with a
+    raw JobId of job array element.</comment>
+    <requestid>1141442</requestid>
+  </revision>
 </revisionlist>
