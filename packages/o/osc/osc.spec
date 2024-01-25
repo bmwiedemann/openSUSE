@@ -1,7 +1,7 @@
 #
 # spec file for package osc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define use_python python3
 %define use_python_pkg python3
@@ -41,7 +42,7 @@
 %endif
 
 # whether to use fdupes to deduplicate python bytecode
-%if 0%{?suse_version} || 0%{?fedora} || 0%{?rhel} >= 8
+%if 0%{?suse_version} || 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?amzn}
 %bcond_without fdupes
 %else
 %bcond_with fdupes
@@ -49,18 +50,19 @@
 
 %define argparse_manpage_pkg argparse-manpage
 %define obs_build_pkg obs-build
-%define openssh_pkg openssh
+%define ssh_add_pkg openssh-clients
+%define ssh_keygen_pkg openssh
 %define sphinx_pkg %{use_python_pkg}-sphinx
 
 %if 0%{?suse_version}
 %define argparse_manpage_pkg %{use_python_pkg}-argparse-manpage
 %define obs_build_pkg build
-%define openssh_pkg openssh-common
+%define ssh_keygen_pkg openssh-common
 %define sphinx_pkg %{use_python_pkg}-Sphinx
 %endif
 
 Name:           osc
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -128,7 +130,8 @@ Recommends:     obs-service-tar_scm
 Recommends:     obs-service-verify_file
 
 # needed for ssh signature auth
-Recommends:     %{openssh_pkg}
+Recommends:     %{ssh_add_pkg}
+Recommends:     %{ssh_keygen_pkg}
 
 # needed for `osc browse` that calls xdg-open
 Recommends:     xdg-utils
