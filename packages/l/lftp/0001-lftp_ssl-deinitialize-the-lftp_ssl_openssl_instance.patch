@@ -1,0 +1,32 @@
+From f5463495c401be1807d76b1dc00a62b1ef5ada23 Mon Sep 17 00:00:00 2001
+From: Thomas Abraham <tabraham@suse.com>
+Date: Mon, 22 Jan 2024 10:35:18 -0500
+Subject: [PATCH] lftp_ssl: deinitialize the lftp_ssl_openssl_instance
+
+If the instance isn't deinitialized prior to exit, the
+OPENSSL_cleanup exit handler may run before the
+lftp_ssl_openssl_instance destructor on exit resulting
+in a segfault.
+
+This fixes a null deref on exit.
+
+Fixes #716
+---
+ src/lftp_ssl.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/lftp_ssl.cc b/src/lftp_ssl.cc
+index 18f816e1..ba7d1edc 100644
+--- a/src/lftp_ssl.cc
++++ b/src/lftp_ssl.cc
+@@ -863,6 +863,7 @@ lftp_ssl_openssl::~lftp_ssl_openssl()
+ {
+    SSL_free(ssl);
+    ssl=0;
++   global_deinit();
+ }
+ 
+ static lftp_ssl_openssl *verify_callback_ssl;
+-- 
+2.35.3
+

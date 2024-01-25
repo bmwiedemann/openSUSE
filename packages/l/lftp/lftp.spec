@@ -1,7 +1,7 @@
 #
 # spec file for package lftp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,6 +34,8 @@ Patch1:         0001-Add-content-of-the-SUSE-lftp-vi-1.1-archive.patch
 Patch2:         0002-Add-content-of-lftp-compat-addfiles.patch.patch
 Patch3:         0003-Add-content-of-lftp-completion.patch.patch
 Patch5:         0005-Add-the-wrapper-code-to-the-Makefile-in-order-to-bui.patch
+# https://github.com/lavv17/lftp/issues/716
+Patch6:         0001-lftp_ssl-deinitialize-the-lftp_ssl_openssl_instance.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -52,7 +54,7 @@ BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       less
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      ftp
 
 %description
@@ -71,8 +73,7 @@ at specified times, opie and skey support in the FTP protocol, SSL for
 HTTP and FTP, and FXP transfers.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 # It's necessary to update the Autotools build system, because of patches 2-6
