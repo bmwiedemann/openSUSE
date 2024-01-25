@@ -39,4 +39,12 @@
     <comment>5.13.0</comment>
     <requestid>1108089</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2c1ad2ba7b9a8d1ccd8c79c6e8a1d667</srcmd5>
+    <version>5.13.0</version>
+    <time>1706204373</time>
+    <user>anag+factory</user>
+    <comment>Force java 8 compatibility when building with JDK &lt;= 21</comment>
+    <requestid>1141014</requestid>
+  </revision>
 </revisionlist>
