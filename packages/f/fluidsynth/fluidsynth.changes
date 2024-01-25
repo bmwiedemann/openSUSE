@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 24 09:33:28 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Drop the leftover directory for the old system-wide service
+  (bsc#1219124)
+
+-------------------------------------------------------------------
 Tue Nov 21 15:00:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.4:

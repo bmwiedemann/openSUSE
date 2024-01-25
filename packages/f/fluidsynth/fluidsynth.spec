@@ -1,7 +1,7 @@
 #
 # spec file for package fluidsynth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,7 +86,6 @@ This package contains the shared library for Fluidsynth.
 
 %install
 %cmake_install
-mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}
 install -Dpm0644 %{SOURCE1} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -Dpm0644 build/fluidsynth.service %{buildroot}%{_userunitdir}/%{name}.service
 mkdir %{buildroot}%{_sbindir}
@@ -110,7 +109,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %files
 %license LICENSE
 %doc AUTHORS ChangeLog README.md THANKS TODO
-%dir %attr(-,%{name},audio) %{_localstatedir}/lib/%{name}
 %{_bindir}/%{name}
 %{_fillupdir}/sysconfig.%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
