@@ -97,4 +97,16 @@
   * Raise a TLS alert if parsing a message causes a BufferReadError</comment>
     <requestid>1140132</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>da1cf6817616e549b319b1b073fe5e22</srcmd5>
+    <version>0.9.25</version>
+    <time>1706204486</time>
+    <user>anag+factory</user>
+    <comment>- Drop patch cryptography.patch:
+  * No longer required.
+- Add patch support-service-identity-24.patch:
+  * Support service-identity &gt;= 24
+- Switch to pyproject macros.</comment>
+    <requestid>1141367</requestid>
+  </revision>
 </revisionlist>

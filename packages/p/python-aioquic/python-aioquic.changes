@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 25 04:25:09 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch cryptography.patch:
+  * No longer required.
+- Add patch support-service-identity-24.patch:
+  * Support service-identity >= 24
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sat Jan 20 14:01:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.25:
