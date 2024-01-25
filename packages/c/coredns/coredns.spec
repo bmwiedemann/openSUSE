@@ -1,7 +1,7 @@
 #
 # spec file for package coredns
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
+Patch0:         fix-CVE-2024-0874.patch
 BuildRequires:  fdupes
 BuildRequires:  golang(API) >= 1.20
 
@@ -52,7 +53,7 @@ Extra components for the %{name} package, to make %{name} usable in a
 non-containerized environment (man pages, configuration, unit file).
 
 %prep
-%setup -q -a1
+%autosetup -a1 -p1
 
 %build
 
