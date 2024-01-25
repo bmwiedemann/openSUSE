@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 24 16:17:44 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- Update to 0.14.0: 
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.14.0
+- Removed CYTHON-Make-cython-compatible-with-3.0-15469.patch
+
+-------------------------------------------------------------------
 Tue Oct 10 11:35:45 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Do not package %{$python_sitearch}/tvm/{src,include,3rdparty}
