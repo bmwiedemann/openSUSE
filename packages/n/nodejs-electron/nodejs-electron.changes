@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 24 18:59:12 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.3.0
+  * Added net module to utility process
+
+-------------------------------------------------------------------
+Wed Jan 24 13:14:48 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix crash in media::FFmpegGlue::OpenContext (chromium-118-sigtrap_system_ffmpeg.patch)
+
+-------------------------------------------------------------------
 Wed Jan 17 22:17:15 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 27.2.3
