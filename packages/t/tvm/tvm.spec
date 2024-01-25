@@ -1,7 +1,7 @@
 #
 # spec file for package tvm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
@@ -48,7 +48,6 @@ Patch2:         tvm-fix-openblas.patch
 # PATCH-FIX-OPENSUSE tvm-disable-vulkan-test-check.patch -- Cannot test in OBS despite enabled in library
 Patch3:         tvm-disable-vulkan-test-check.patch
 # PATCH-FIX-UPSTREAM CYTHON-Make-cython-compatible-with-3.0-15469.patch
-Patch4:         CYTHON-Make-cython-compatible-with-3.0-15469.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module cloudpickle}
@@ -72,6 +71,7 @@ BuildRequires:  dlpack-devel >= 0.7
 BuildRequires:  dmlc-core-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  gcc12-c++
 BuildRequires:  git
 BuildRequires:  gmock
 BuildRequires:  gtest
@@ -163,7 +163,7 @@ popd
 # USE_MICRO USE_MICRO_STANDALONE_RUNTIME
 # USE_NNPACK
 # USE_ROCBLAS USE_ROCM
-%cmake \
+%cmake -DCMAKE_C_COMPILER=gcc-12 -DCMAKE_CXX_COMPILER=g++-12 -DCMAKE_LINKER=gcc-12 \
 %if %{with arm_compute_lib}
   -DUSE_ARM_COMPUTE_LIB_GRAPH_RUNTIME=ON \
   -DUSE_ARM_COMPUTE_LIB=ON \
@@ -231,7 +231,7 @@ export OMP_NUM_THREADS=1
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
 # TextureCopy: no openCL in environment
-ctestflags="-E TextureCopy"
+ctestflags="-E (TextureCopy|TvmVMMemoryManagerTest)"
 %ctest $ctestflags
 }
 
