@@ -975,4 +975,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **securitycenter:** Update the api</comment>
     <requestid>1140134</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6052c69d5b91a64713dfeb38a8799b30</srcmd5>
+    <version>2.115.0</version>
+    <time>1706204474</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141339</requestid>
+  </revision>
 </revisionlist>

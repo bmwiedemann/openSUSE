@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jan 24 14:02:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.115.0
+  * **aiplatform:** Update the api
+  * **analyticsadmin:** Update the api
+  * **apigee:** Update the api
+  * **apphub:** Update the api
+  * **cloudsupport:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **dataflow:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **documentai:** Update the api
+  * **gkehub:** Update the api
+  * **logging:** Update the api
+  * **monitoring:** Update the api
+  * **notebooks:** Update the api
+  * **policysimulator:** Update the api
+  * **prod_tt_sasportal:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **retail:** Update the api
+  * **securitycenter:** Update the api
+  * **tpu:** Update the api
+  * **vmwareengine:** Update the api
+
+-------------------------------------------------------------------
 Sat Jan 20 14:03:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.114.0:
