@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.53
+Version:        1.11.54
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        Apache-2.0
@@ -42,6 +42,9 @@ BuildRequires:  python3
 BuildRequires:  sqlcipher-devel
 BuildRequires:  libsecret-devel
 BuildRequires:  gcc-c++
+BuildRequires:  ccache
+BuildRequires:  zlib-devel
+BuildRequires:  asar
 Requires:       element-web = %{version}
 Requires:       nodejs-electron
 %if 0%{?suse_version} <= 1540
@@ -89,6 +92,23 @@ yarn run hak copyandlink
 
 yarn run build:native
 yarn run build:universal
+
+pushd dist/linux-universal-unpacked/resources/
+# provide the app.asar.unpacked folder like pre 1.11.54
+mkdir -p app.asar.unpacked/node_modules/keytar/build/Release/
+asar ef app.asar .hak/hakModules/keytar/build/Release/keytar.node
+mv keytar.node app.asar.unpacked/node_modules/keytar/build/Release/
+
+mkdir -p app.asar.unpacked/node_modules/matrix-seshat/
+asar ef app.asar .hak/hakModules/matrix-seshat/index.node
+mv index.node app.asar.unpacked/node_modules/matrix-seshat/
+
+# repackage the asar file with the pre 1.11.54 format
+asar e app.asar app.asar.repak
+cp -av app.asar.repak/.hak/hakModules/* app.asar.repak/node_modules/
+asar p app.asar.repak/ app.asar
+rm -r app.asar.repak/
+popd
 
 %install
 # Install the app content, replace the webapp with a symlink to the system package
