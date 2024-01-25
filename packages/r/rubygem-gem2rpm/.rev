@@ -352,4 +352,15 @@ A    0033-Use-File.exist-instead-of-File.exists-which-was-remo.patch
   ruby-common is no longer sufficient.</comment>
     <requestid>1086832</requestid>
   </revision>
+  <revision rev="33" vrev="22">
+    <srcmd5>78e92c8a07e9079b31d24bc9fdb0f49b</srcmd5>
+    <version>0.10.1</version>
+    <time>1706204368</time>
+    <user>anag+factory</user>
+    <comment>- Update the ruby ABI version in the 3.3.0 paths to the final
+  string.
+
+- enable building for ruby 3.3</comment>
+    <requestid>1135076</requestid>
+  </revision>
 </revisionlist>
