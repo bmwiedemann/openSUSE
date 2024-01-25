@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jan 24 09:59:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.119.1
+  * Support for the Generative AI service
+  * Support for additional currencies and countries for paid
+    listings in the Marketplace service
+  * Support for process sets in the Stack Monitoring service
+- from version 2.119.0
+  * Support for resource id filter on the service work requests in the Container Instances service
+  * Support for polyglot vulnerability audit in the Application Dependency Management service
+  * Support for create, read, and update operations on peer databases in the Data Safe service
+  * Support for dimension specific alarm suppressions in the Monitoring service
+  * Support for calculating audit volume in the Data Safe service
+  * Support for viewing schema accesses in data safe user assessments in the Data Safe service
+  * Support for security feature usage in the Data Safe service
+  * Support for viewing the top security findings in data safe security assessments in the Data Safe service
+  * Support for additional filters in list findings operation in the Data Safe service
+  * Support for updating risk level of the specified finding in the Data Safe service
+  * Method `create_vulnerability_audit_and_wait_for_state` now waits on `oci.adm.models.VulnerabilityAudit`
+    instead of `oci.adm.models.WorkRequest` in the Application Dependency Management service
+- from version 2.118.2
+  * Removed dependency on python-pkcs11
+- from version 2.118.1
+  * Support for calling Oracle Cloud Infrastructure services in the sa-valparaiso-1 region
+  * Support for creation of up to 60 containers per container instance in the Container Instances service
+  * Support for Oracle GoldenGate discovery and monitoring in the Stack Monitoring service
+  * Support for GoldenGate stream analytics in the GoldenGate service
+  * Support for backup work requests in MySQL Heatwave service
+  * Support for create, update, delete and list operations on premise vantage points
+    in the Application Performance Monitoring service
+  * Support for create, update, delete and list operations on workers in the
+    Application Performance Monitoring service
+  * Support for host capacity planning for compute instances and host unallocated
+    metrics in the Operations Insights service
+- Refresh patches for new version
+  * ops_relax-python-depends.patch
+
+-------------------------------------------------------------------
 Wed Jan  3 10:42:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.118.0
