@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 24 08:00:32 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.50
+  * Bug Fixes:
+    + Fix short read in block incremental restore. 
+    + Fix overflow suppressing backup progress in info output.
+
+  * Improvements:
+    + Preserve partial files during block incremental delta restore.
+    + Add support for alternate compile-time page sizes.
+    + Skip files truncated during backup when bundling.
+    + Improve SFTP storage error messages. 
+
+-------------------------------------------------------------------
 Tue Nov 28 16:20:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.49
