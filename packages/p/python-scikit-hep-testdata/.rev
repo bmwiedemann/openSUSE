@@ -173,4 +173,13 @@
     <comment></comment>
     <requestid>1138853</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ad62c2b96db3146ab67e645d6624d6d7</srcmd5>
+    <version>0.4.37</version>
+    <time>1706204498</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.37:
+  * feat: add uproot-issue-1070 data</comment>
+    <requestid>1141451</requestid>
+  </revision>
 </revisionlist>
