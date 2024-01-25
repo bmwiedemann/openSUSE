@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 24 15:22:20 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
+
+- Fix CVE-2023-50711: vmm-sys-util: out of bounds memory accesses (bsc#1218502, bsc#1218499)
+  - Upgrade vendored dependencies, namely vmm-sys-utils > 0.12.0
+- spec: Switch back to greedy cargo updates of vendored dependencies. This CVE was multiple
+  levels deep in the dependency tree and only fixed with the more agressive cargo update strategy
+
+-------------------------------------------------------------------
 Wed Sep 13 14:42:56 UTC 2023 - Caleb Crane <caleb.crane@suse.com>
 
 - Update to sevctl v0.4.3 (jsc#4981)
