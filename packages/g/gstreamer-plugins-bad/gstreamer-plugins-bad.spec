@@ -52,7 +52,7 @@
 %bcond_with openjp2
 %endif
 
-%if 0%{?suse_version} >= 1550 || (0%{?is_opensuse} && 0%{?sle_version} >= 150400)
+%if 0%{?suse_version} >= 1550
 %bcond_without zxing
 %else
 %bcond_with zxing
