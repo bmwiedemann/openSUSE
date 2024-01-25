@@ -108,12 +108,6 @@ make check %{?_smp_mflags}
 %{fillup_only -n locate}
 %service_add_post mlocate.service mlocate.timer
 
-# If database permissions are wrong (see bsc#1188933), fix them
-if [ -f "%{_localstatedir}/lib/mlocate/mlocate.db" ]
-then
-	chmod 644 "%{_localstatedir}/lib/mlocate/mlocate.db"
-fi
-
 %preun
 %service_del_preun mlocate.service mlocate.timer
 
