@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 24 07:37:57 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.2.0:
+  * Fix support for sample rates other than 48khz 
+  * Use exponential weighted moving averages for PLC auto tolerance 
+  * Use two separate RtAudio streams when input != output device 
+  * Automatically calculate headroom for PLC 
+  * Attempting to make the user feedback form easier to dismiss 
+  * Adding X button to close audio device controls drawer 
+  * Fix flickering of audio device controls when you reconnect after closing them 
+  * Fix for broken deeplinks when the studio doesn't match filters 
+  * More fixes related to collapsed device controls when connected 
+
+-------------------------------------------------------------------
 Fri Dec 22 15:13:19 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.1.0:
