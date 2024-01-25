@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 24 16:35:35 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.22rc2 (released 2024-01-24) is a release candidate version of
+  go1.22 cut from the master branch at the revision tagged
+  go1.22rc2.
+  Refs boo#1218424 go1.22 release tracking
+
+-------------------------------------------------------------------
 Tue Dec 19 20:59:26 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.22rc1 (released 2023-12-19) is a release candidate version of

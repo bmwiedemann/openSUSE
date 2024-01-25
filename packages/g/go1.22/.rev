@@ -19,4 +19,15 @@ the go metapackage to version 1.22.</comment>
     <comment>Fix typo Refs boo#1218424 go1.22 release tracking (forwarded request 1137625 from jfkw)</comment>
     <requestid>1137626</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e28a25cae2ad92de9224a36e9921e402</srcmd5>
+    <version>1.22rc2</version>
+    <time>1706204478</time>
+    <user>anag+factory</user>
+    <comment>- go1.22rc2 (released 2024-01-24) is a release candidate version of
+  go1.22 cut from the master branch at the revision tagged
+  go1.22rc2.
+  Refs boo#1218424 go1.22 release tracking (forwarded request 1141356 from jfkw)</comment>
+    <requestid>1141357</requestid>
+  </revision>
 </revisionlist>
