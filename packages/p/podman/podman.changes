@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 23 06:19:07 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 4.9.0:
+  * Bump to v4.9.0
+  * Fix a small grammar error in RELEASE_NOTES.md
+  * Fix push endpoint stream
+  * Finalized release notes for v4.9.0
+  * farm build: push built images to registry
+  * Move the --farm flag to farm build command
+  * Clean up farm-build miscommit
+  * [CI:DOCS] Add podman farm build doc
+  * Add release notes for v4.9.0
+  * gvproxy: Update to 0.7.2 release
+  * [v4.9] Bump Buildah to v1.33.3, c/common to v0.57.2, c/image to v5.29.1
+  * Add a net health recovery service to Qemu machines
+  * Set up podman machine remote user correctly
+  * Remove Libpod special-init conditions
+  * Fix `podman system reset` with external containers
+  * [v4.8] podman kube play: fix broken annotation parsing
+  * feat: disable pid max in the podman machine
+  * systests: cp: add wait_for_ready
+  * System tests: fixes for RHEL8 gating failures
+  * Add API forwarding support for HyperV
+  * bump to v4.8.4-dev
+
+-------------------------------------------------------------------
 Thu Jan 04 05:59:42 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 4.8.3:
