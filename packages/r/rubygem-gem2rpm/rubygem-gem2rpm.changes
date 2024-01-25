@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 25 07:15:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update the ruby ABI version in the 3.3.0 paths to the final
+  string.
+
+-------------------------------------------------------------------
+Thu Sep 14 14:57:00 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable building for ruby 3.3
+
+-------------------------------------------------------------------
 Mon May  8 19:40:38 UTC 2023 - Software System <opensuse@wolke7.net>
 
 - add BuildRequires: ruby-common >= 3.2 
