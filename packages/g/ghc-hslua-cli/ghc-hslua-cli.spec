@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hslua-cli
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Command-line interface for Lua
 License:        MIT
