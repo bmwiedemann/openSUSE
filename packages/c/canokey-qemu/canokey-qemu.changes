@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 25 08:48:29 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- Fix static library build (added canokey-core-static.diff)
+
+-------------------------------------------------------------------
+Fri Jan 19 19:30:18 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Ignore underlinking errors/warnings, libcanokey-qemu directly
+  calls functions provided by qemu (without linking to it),
+  (boo#1218620).
+- Move unversioned libcanokey-qemu.so to devel package
+- Add missing ldconfig post/postun calls
+
+-------------------------------------------------------------------
 Wed Nov 29 09:27:31 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Add _service file and update to current git
