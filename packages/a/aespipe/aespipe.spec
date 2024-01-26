@@ -1,7 +1,7 @@
 #
 # spec file for package aespipe
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aespipe
-Version:        2.4f
+Version:        2.4g
 Release:        0
 Summary:        AES Encrypting/Decrypting Pipe
 License:        GPL-2.0-only

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 26 03:02:12 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 2.4g:
+  * Added configure script autodetection for -fno-strict-aliasing compile
+    flag. This option is needed with some compilers that miscompile code
+    when link-time-optimization is used. 
+
+-------------------------------------------------------------------
 Tue Nov 15 13:56:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Homepage link http://loop-aes.sourceforge.net/ is a permanent
