@@ -1,7 +1,7 @@
 #
 # spec file for package tbb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Alessandro de Oliveira Faria (A.K.A. CABELO)
 #
 # All modifications and additions to the file contributed by third parties
@@ -244,7 +244,7 @@ popd
 %endif
 
 # we install it into the devel package docdir
-rm -r %{buildroot}%{_datadir}/doc/TBB
+rm -rf %{buildroot}%{_datadir}/doc/
 
 # Rename tbb32.pc to tbb.pc (same as 64-bit) so that applications depending on tbb
 # do not have to call different pkgconfig modules based on arch
