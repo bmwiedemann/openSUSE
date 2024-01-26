@@ -1,0 +1,21 @@
+From 1b7376423d3bf79ba37856eae8f45d59ecc9c170 Mon Sep 17 00:00:00 2001
+From: Nobuyoshi Nakada <nobu@ruby-lang.org>
+Date: Sun, 26 Nov 2023 01:18:48 +0900
+Subject: [PATCH] Omit test_session_reuse_but_expire if OpenSSL 3.2.0
+
+---
+ test/net/http/test_https.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: ruby-3.2.2/test/net/http/test_https.rb
+===================================================================
+--- ruby-3.2.2.orig/test/net/http/test_https.rb
++++ ruby-3.2.2/test/net/http/test_https.rb
+@@ -167,6 +167,7 @@ class TestNetHTTPS < Test::Unit::TestCas
+   def test_session_reuse_but_expire
+     # FIXME: The new_session_cb is known broken for clients in OpenSSL 1.1.0h.
+     omit if OpenSSL::OPENSSL_LIBRARY_VERSION.include?('OpenSSL 1.1.0h')
++    omit if OpenSSL::OPENSSL_LIBRARY_VERSION.include?('OpenSSL 3.2.0')
+ 
+     http = Net::HTTP.new(HOST, config("port"))
+     http.use_ssl = true

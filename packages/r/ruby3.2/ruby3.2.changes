@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 21 12:56:03 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Omit test_session_reuse_but_expire if OpenSSL 3.2.0
+  Add Omit-test_session_reuse_but_expire-if-OpenSSL-3.2.0.patch
+
+-------------------------------------------------------------------
 Tue Nov  7 10:01:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
