@@ -1245,4 +1245,12 @@ bsc#1130564: Apply update from the openSUSE package
   * BUG: sparse.csgraph: Support int64 indices in traversal.pyx</comment>
     <requestid>1127833</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>f1d5ed61112f27fc01c44c6800750656</srcmd5>
+    <version>1.11.4</version>
+    <time>1706305533</time>
+    <user>anag+factory</user>
+    <comment>- Disable broken tests in s390x, gh#scipy/scipy#18878, bsc#1218608</comment>
+    <requestid>1141434</requestid>
+  </revision>
 </revisionlist>
