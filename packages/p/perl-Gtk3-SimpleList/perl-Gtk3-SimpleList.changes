@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 25 17:24:46 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix build on Leap > 15.2
+
+-------------------------------------------------------------------
 Wed Nov 11 10:40:35 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - build require typelib(GdkPixdata) for Leap 15.2 as well

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Gtk3-SimpleList
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,9 +36,7 @@ Requires:       perl(Gtk3)
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  typelib(Gtk) = 3.0
-%if ( 0%{?sle_version} == 150200 && 0%{?is_opensuse} ) || 0%{?suse_version} >= 1550
 BuildRequires:  typelib(GdkPixdata) = 2.0
-%endif
 # MANUAL END
 
 %description
