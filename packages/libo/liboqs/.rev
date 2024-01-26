@@ -107,4 +107,12 @@
     - Kyber: C, AVX2, and aarch64 implementation updated (forwarded request 1134979 from msmeissn)</comment>
     <requestid>1134980</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c95e741e6901171938326754c8b115b9</srcmd5>
+    <version>0.9.2</version>
+    <time>1706305672</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141696</requestid>
+  </revision>
 </revisionlist>
