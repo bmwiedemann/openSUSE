@@ -18,8 +18,7 @@
 
 %define oldpython python
 %define mname qtwebengine-qt5
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-%{mname}
 Version:        5.15.6
 Release:        0
