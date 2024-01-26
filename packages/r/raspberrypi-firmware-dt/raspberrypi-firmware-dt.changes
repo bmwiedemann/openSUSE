@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 23 16:19:02 UTC 2024 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Extend "ARM: dts: bcm27xx: Use better name for spidev" patch coverage.
+  Change compatible "spidev" to "rohm,dh2228fv" in overlay files too.
+  Fixes bsc#1219094.
+
+-------------------------------------------------------------------
 Mon Dec 11 09:03:47 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - They are vendor changes in bcm2835-dma driver around new RPi5
