@@ -1,7 +1,7 @@
 #
 # spec file for package timg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           timg
-Version:        1.5.3
+Version:        1.6.0
 Release:        0
 Summary:        Terminal image viewer
 License:        GPL-2.0-only
@@ -32,10 +32,12 @@ BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libdeflate)
 BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsixel)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libturbojpeg)
+BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(stb)
 
 %description
