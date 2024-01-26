@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -298,6 +298,13 @@ donttest+=" or (test_fftlog and test_fht_identity)"
 donttest+=" or (test_cython_api and eval_sh_chebyt)"
 donttest+=" or (test_stats_boost_ufunc)"
 %endif
+
+%ifarch s390x
+# gh#scipy/scipy#18878
+donttest+=" or (test_distance_transform_cdt05)"
+donttest+=" or (test_svd_maxiter)"
+%endif
+
 # not enough precison on 32 bits
 if [ $(getconf LONG_BIT) -eq 32 ]; then
     donttest+=" or (TestCheby1 and test_basic)"
