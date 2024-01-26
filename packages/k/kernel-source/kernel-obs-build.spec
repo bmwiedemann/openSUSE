@@ -44,7 +44,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-4959dd8dad49eb4f1644953682e53c1d966d6eb3
+BuildRequires:  kernel%kernel_flavor-srchash-6aca25404404e4f72fa252563503b29fe5828cca
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -52,7 +52,7 @@ BuildRequires:  kernel
 %endif
 
 %if ! 0%{?is_kotd} || %{?is_kotd_qa}%{!?is_kotd_qa:0}
-ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le powerpc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
 %else
 ExclusiveArch:  do_not_build
 %endif
@@ -62,7 +62,7 @@ License:        GPL-2.0-only
 Group:          SLES
 Version:        6.7.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g4959dd8
+Release:        <RELEASE>.g6aca254
 %else
 Release:        0
 %endif

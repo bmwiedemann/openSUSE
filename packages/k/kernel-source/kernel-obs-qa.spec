@@ -29,7 +29,7 @@ BuildRequires:  kernel-default
 BuildRequires:  kernel-obs-build
 BuildRequires:  modutils
 %if ! 0%{?is_kotd} || %{?is_kotd_qa}%{!?is_kotd_qa:0}
-ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le powerpc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
 %else
 ExclusiveArch:  do_not_build
 %endif
@@ -38,7 +38,7 @@ License:        GPL-2.0-only
 Group:          SLES
 Version:        6.7.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g4959dd8
+Release:        <RELEASE>.g6aca254
 %else
 Release:        0
 %endif
