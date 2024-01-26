@@ -1,7 +1,7 @@
 #
 # spec file for package transactional-update
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Neal Gompa
 #
 # All modifications and additions to the file contributed by third parties
@@ -166,7 +166,7 @@ autoreconf -fiv
 %make_build
 
 # Use "up" for non-rolling releases
-%if %{defined sle_version} && %{undefined is_susecasp}
+%if (%{defined sle_version} && %{undefined is_susecasp}) || 0%{?suse_version} == 1600
 sed -i 's/^UPDATE_METHOD=.*/UPDATE_METHOD=up/' etc/transactional-update.conf
 %endif
 
