@@ -295,3 +295,6 @@ install zip
 
 # Workaround for bsc#1131492
 buildignore ntp
+
+# Pulled in by dracut through a boolean dep somehow
+buildignore wicked

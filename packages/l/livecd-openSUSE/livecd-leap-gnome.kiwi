@@ -413,6 +413,8 @@
     <package name="zip"/>
     <package name="aaa_base" replaces="ntp"/>
     <ignore name="ntp"/>
+    <package name="aaa_base" replaces="wicked"/>
+    <ignore name="wicked"/>
 
     <!-- list-gnome.sh -->
     <package name="aaa_base" replaces="libreoffice-calc"/>
@@ -421,6 +423,8 @@
     <ignore name="libreoffice-draw"/>
     <package name="aaa_base" replaces="libreoffice-impress"/>
     <ignore name="libreoffice-impress"/>
+    <package name="aaa_base" replaces="libreoffice-icon-themes"/>
+    <ignore name="libreoffice-icon-themes"/>
     <package name="aaa_base" replaces="libreoffice-icon-theme-breeze"/>
     <ignore name="libreoffice-icon-theme-breeze"/>
     <package name="aaa_base" replaces="libreoffice-icon-theme-sifr"/>
@@ -602,6 +606,8 @@
     <ignore name="yelp"/>
     <package name="aaa_base" replaces="sushi"/>
     <ignore name="sushi"/>
+    <package name="aaa_base" replaces="libgtk-2_0-0"/>
+    <ignore name="libgtk-2_0-0"/>
   </packages>
   <packages type="bootstrap">
     <package name="filesystem"/>

@@ -74,10 +74,12 @@ if [ "$desktop" = "x11" ] || [ "$desktop" = "xfce" ]; then
 	sed -i '/omit_dracutmodules=/d' /usr/bin/dracut
 fi
 
-if [ "$desktop" = "x11" ]; then
-	# Only used for X11 acceleration on vmwgfx, saves ~47MiB
-	rpm -e --nodeps Mesa-gallium
+# Only used for OpenCL and X11 acceleration on vmwgfx (?), saves ~50MiB
+rpm -e --nodeps Mesa-gallium
+# Too big and will have to be dropped anyway (unmaintained, known security issues)
+rm -rf /usr/lib*/libmfxhw*.so.* /usr/lib*/mfx/
 
+if [ "$desktop" = "x11" ]; then
 	# Generated on boot if missing
 	rm /etc/udev/hwdb.bin
 fi
@@ -123,7 +125,6 @@ else
 fi
 # the new, optional nvidia gsp firmware blobs are huge - ~ 70MB
 find /lib/firmware/nvidia -name gsp | xargs -r rm -rf 
-
 
 # The gems are unpackaged already, no need to store them twice
 rm -rf /usr/lib*/ruby/gems/*/cache/
