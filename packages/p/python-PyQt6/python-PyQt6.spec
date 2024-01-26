@@ -21,7 +21,7 @@
 %define pyqt_build_for_qt6 1
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}
-Version:        6.6.0
+Version:        6.6.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -34,9 +34,9 @@ Patch0:         disable-rpaths.diff
 Patch1:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
 BuildRequires:  %{python_module PyQt6-sip >= 13.6}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pyqt-builder >= 1.11}
-BuildRequires:  %{python_module sip-devel >= 6.7.12}
+BuildRequires:  %{python_module devel >= 3.6.1}
+BuildRequires:  %{python_module pyqt-builder >= 1.15}
+BuildRequires:  %{python_module sip-devel >= 6.5}
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
