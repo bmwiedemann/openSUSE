@@ -19,7 +19,7 @@
 %define plainpython python
 %define mname qtdatavis3d-qt5
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-%{mname}
 Version:        5.15.5
 Release:        0
