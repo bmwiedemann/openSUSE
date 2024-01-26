@@ -5497,4 +5497,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - enable rusticl on sle15-sp6</comment>
     <requestid>1140618</requestid>
   </revision>
+  <revision rev="493" vrev="365">
+    <srcmd5>bb07410c22f0666710223cb8197f2bc1</srcmd5>
+    <version>unknown</version>
+    <time>1706305541</time>
+    <user>anag+factory</user>
+    <comment>- Update to bugfix release 23.3.4
+  --&gt; https://docs.mesa3d.org/relnotes/23.3.4.html</comment>
+    <requestid>1141480</requestid>
+  </revision>
 </revisionlist>
