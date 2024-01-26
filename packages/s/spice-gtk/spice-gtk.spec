@@ -1,7 +1,7 @@
 #
 # spec file for package spice-gtk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -59,7 +59,7 @@ BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libcap-ng)
 BuildRequires:  pkgconfig(libdrm)
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150600
 BuildRequires:  pkgconfig(libphodav-2.0)
 %else
 BuildRequires:  pkgconfig(libphodav-3.0)
