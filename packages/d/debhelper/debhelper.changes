@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 26 11:53:37 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- update to 13.11.10:
+  * dh_installsystemduser: fix daemon-reload of user instances
+  * dh_clean: Clean __pycache__ (Closes: #1048890)
+  * dh_installchangelogs: Generate separate binNMU changelog also
+    under --no-trim (Closes: #1059395)
+  * dh_assistant: Add filename to `detect-hook-targets`
+  * Dh_Lib.pm: Ensure `$_use_color` is always initialized first time
+  * dh_assistant: Add detect-unknown-hook-targets subcommand
+
+-------------------------------------------------------------------
 Fri Jan  5 18:40:33 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - update to 13.11.9:
