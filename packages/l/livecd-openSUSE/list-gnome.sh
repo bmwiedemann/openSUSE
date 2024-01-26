@@ -1,6 +1,7 @@
 buildignore libreoffice-calc
 buildignore libreoffice-draw
 buildignore libreoffice-impress
+buildignore libreoffice-icon-themes
 buildignore libreoffice-icon-theme-breeze
 buildignore libreoffice-icon-theme-sifr
 buildignore libreoffice-icon-theme-hicontrast
@@ -128,3 +129,6 @@ buildignore yelp
 if [ "$distro" = "leap" ]; then
 	buildignore sushi
 fi
+
+# Avoid all GTK 2 stuff. GTK 3 and 4 should be enough, really.
+buildignore libgtk-2_0-0

@@ -12,6 +12,14 @@ Fri Jan  5 08:28:20 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
   is potentially used for 'walk away lock'.
 
 -------------------------------------------------------------------
+Wed Dec 13 17:01:57 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Drop Mesa-gallium everywhere
+- Force delete the biggest part of libmfx1
+- list-gnome: Block libgtk-2_0 and libreoffice-icon-themes
+- list-common: Block wicked
+
+-------------------------------------------------------------------
 Tue Dec 12 08:22:23 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - list-xfce: Drop samba. Not really used but recommended by the pattern
