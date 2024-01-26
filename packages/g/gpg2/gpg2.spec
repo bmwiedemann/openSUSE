@@ -1,7 +1,7 @@
 #
 # spec file for package gpg2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gpg2
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -44,10 +44,8 @@ Patch10:        gnupg-allow-import-of-previously-known-keys-even-without-UIDs.pa
 Patch11:        gnupg-allow-large-rsa.patch
 #PATCH-FIX-SUSE Revert the rfc4880bis features default of key generation
 Patch12:        gnupg-revert-rfc4880bis.patch
-#PATCH-FIX-UPSTREAM Fix emacs gpg2 output parsing
-Patch13:        gnupg-Report-BEGIN_-status-before-examining-the-input.patch
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
-Patch14:        gnupg-nobetasuffix.patch
+Patch13:        gnupg-nobetasuffix.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  ibmswtpm2
