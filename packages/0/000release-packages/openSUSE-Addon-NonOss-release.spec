@@ -1,5 +1,5 @@
 #
-# spec file for package openSUSE-Addon-NonOss-release (Version 20240125)
+# spec file for package openSUSE-Addon-NonOss-release (Version 20240126)
 #
 # Copyright (c) 2024 openSUSE.
 #
@@ -16,7 +16,7 @@
 Name:           openSUSE-Addon-NonOss-release
 %define         product openSUSE-Addon-NonOss
 Summary:        openSUSE NonOSS Addon%{?betaversion: %{betaversion}}
-Version:        20240125
+Version:        20240126
 #!BcntSyncTag: openSUSE-Addon-NonOss
 Release:        0
 License:        BSD-3-Clause
@@ -25,9 +25,9 @@ Group:          System/Fhs
 
 Provides:       %name-%version
 Provides:       product() = openSUSE%2DAddon%2DNonOss
-Provides:       product(openSUSE-Addon-NonOss) = 20240125-0
+Provides:       product(openSUSE-Addon-NonOss) = 20240126-0
 Provides:       product-label() = non%20oss%20addon
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Daddon%2Dnonoss%3A20240125
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Daddon%2Dnonoss%3A20240126
 
 
 AutoReqProv:    on
@@ -50,10 +50,10 @@ cat >%{buildroot}%{_sysconfdir}/products.d/openSUSE-Addon-NonOss.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>openSUSE-Addon-NonOss</name>
-  <version>20240125</version>
+  <version>20240126</version>
   <release>0</release>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:opensuse-addon-nonoss:20240125</cpeid>
+  <cpeid>cpe:/o:opensuse:opensuse-addon-nonoss:20240126</cpeid>
   <register>
     <pool>
     </pool>
