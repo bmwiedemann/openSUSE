@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 18 16:51:51 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update safe to version 0.3.21.
+  0.3.21, released 2024-01-18
+      #34, mark headErr/tailErr as Partial
+
+-------------------------------------------------------------------
+Sun Jan 14 10:19:26 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update safe to version 0.3.20.
+  0.3.20, released 2024-01-14
+      #34, add headErr, tailErr
+      #33, avoid using head/tail to avoid x-partial
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:07 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
