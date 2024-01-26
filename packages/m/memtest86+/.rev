@@ -341,4 +341,17 @@ The main modification of the package is:
     <comment></comment>
     <requestid>1139379</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>262dbee665fb026a76db0c21275cf19e</srcmd5>
+    <version>7.00</version>
+    <time>1706305592</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.00
+  - IMC polling for live RAM settings
+  - Preliminary support for ECC polling
+  - Add support for MMIO UART
+  - Add debugging options
+  - Bug fixes &amp; optimizations</comment>
+    <requestid>1141780</requestid>
+  </revision>
 </revisionlist>
