@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 26 08:10:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Require maven-parent >= 40. The maven build will fail with
+  anything lower
+
+-------------------------------------------------------------------
 Wed Sep 20 07:04:26 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.6.0

@@ -88,4 +88,12 @@
     <comment>3.6.0</comment>
     <requestid>1112488</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9adad9d337175c886a408b3ef8e55676</srcmd5>
+    <version>3.6.0</version>
+    <time>1706305657</time>
+    <user>anag+factory</user>
+    <comment>A little fix that has meaning for sle</comment>
+    <requestid>1141668</requestid>
+  </revision>
 </revisionlist>
