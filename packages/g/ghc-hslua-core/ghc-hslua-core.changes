@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 18 16:11:37 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hslua-core to version 2.3.2.
+  ## hslua-core-2.3.2
+
+  Released 2024-01-18.
+
+  -   Relaxed upper bound for text, and bytestring, allowing
+      text-2.1, and bytestring-0.12.
+
+-------------------------------------------------------------------
 Thu Apr 13 17:23:49 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hslua-core to version 2.3.1.
