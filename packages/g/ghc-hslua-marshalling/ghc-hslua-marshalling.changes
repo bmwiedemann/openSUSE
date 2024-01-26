@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 18 16:39:05 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hslua-marshalling to version 2.3.1.
+  ## hslua-marshalling-2.3.1
+
+  Released 2024-01-18.
+
+  -   Relaxed upper bound for text, containers, and bytestring,
+      allowing text-2.1, containers-0.7, and bytestring-0.12.
+
+-------------------------------------------------------------------
 Thu Apr 13 12:06:19 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hslua-marshalling to version 2.3.0.
