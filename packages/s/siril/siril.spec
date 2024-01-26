@@ -1,7 +1,7 @@
 #
 # spec file for package siril
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           siril
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        An astronomical image processing software for Linux. (IRIS clone)
 License:        BSL-1.0 AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://www.siril.org/
 Source:         https://gitlab.com/free-astro/siril/-/archive/%{version}/siril-%{version}.tar.bz2
-Patch0:         fix-exiv2.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -61,7 +60,7 @@ processing tool, able to convert, pre-process images, help aligning them
 automatically or manually, stack them and enhance final images.
 
 %prep
-%autosetup -n siril-%{version} -p1
+%autosetup -p1
 
 %build
 # override build directory, the default "build" is a regular source directory

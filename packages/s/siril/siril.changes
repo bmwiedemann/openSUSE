@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan 26 12:55:49 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.1:
+  * Fixed Anscombe VST noise reduction option for mono images
+  * Fixed HEIF import (#1198)
+  * Fixed Noise Reduction Anscombe VST bug with mono images (#1200)
+  * Fixed problems with Fourier Transform planning > Estimate (#1199)
+  * Fixed data initialisation bugs in copyfits() and RGB compositing tool
+  * Fixed exported x-column for lightcurves when Julian date is not selected (#1220)
+  * Fixed sampling tolerance for astrometry which was incorrectly read (#1231)
+  * Allowed for RA/DEC to be sorted in PSF windows (#1214)
+  * Added SET-TEMP as valid FITS header to be saved (#1215)
+  * Added configurable color for background extraction sample and standard annotations (#1230)
+  * Fixed argument parsing error in makepsf (!593)
+  * Fixed light_curve and csv export from plot when some images were unselected from the sequence (#1169)
+  * Added undo/redo when platesolving with astrometry.net (#1233)
+  * Fixed crash in findstar when detecting stars close to the border (#1237)
+  * Fixed using wcs info when using light_curve command (#1195)
+  * Allowed moving file into workdir to be picked up for livestacking (#1223)
+  * Fixed the way we check if there is enough space to use quick photometry (#1238)
+  * Fixed bit depth evaluation for 8-bit images (#1244)
+  * Fixed division by 0 in PixelMath (#1249)
+- Drop upstreamed fix-exiv2.patch
+
+-------------------------------------------------------------------
 Thu Sep 21 05:49:59 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.2.0:
