@@ -1,7 +1,7 @@
 #
 # spec file for package tiff
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source2:        README.SUSE
 Source3:        baselibs.conf
 Source99:       tiff.keyring
 Patch0:         tiff-4.0.3-seek.patch
+Patch1:         tiff-CVE-2023-52356.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
