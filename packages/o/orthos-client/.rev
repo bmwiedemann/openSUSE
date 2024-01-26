@@ -35,4 +35,15 @@
     <comment></comment>
     <requestid>946181</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0dde5a4312b15bfc9f4ab475b73595d</srcmd5>
+    <version>1.2.83+git.cb8bcaf</version>
+    <time>1706305676</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.83+git.cb8bcaf:
+  * Enhance orthosrc with pre-defined aliases
+  * Remove suse specifics
+</comment>
+    <requestid>1141714</requestid>
+  </revision>
 </revisionlist>
