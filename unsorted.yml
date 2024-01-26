@@ -220,6 +220,8 @@ unsorted:
   - PlayOnLinux 
   - Printrun 
   - Printrun-common 
+  - ProtonPlus 
+  - ProtonPlus-lang 
   - PrusaSlicer 
   - PyCBC-utils 
   - QCSXCAD-devel 
@@ -3132,6 +3134,7 @@ unsorted:
   - distribution-logos-openSUSE 
   - distribution-logos-openSUSE-Kubic 
   - distribution-registry 
+  - distrobuilder 
   - dita 
   - diy-devel 
   - diy-mpich-devel 
@@ -7929,6 +7932,7 @@ unsorted:
   - guix 
   - gulkan-devel 
   - gulkan0_15-0 
+  - gum 
   - gummi 
   - gummi-lang 
   - gup 
@@ -8442,6 +8446,9 @@ unsorted:
   - include-what-you-use-tools 
   - indent 
   - indent-lang 
+  - indi 
+  - indi-devel 
+  - indi-plugins 
   - indicator-common 
   - indriya 
   - indriya-javadoc 
@@ -9192,9 +9199,6 @@ unsorted:
   - jxl-thumbnailer 
   - jxrlib 
   - jxrlib-devel 
-  - jython 
-  - jython-demo 
-  - jython-javadoc 
   - jzlib 
   - jzlib-demo 
   - jzlib-javadoc 
@@ -15177,7 +15181,7 @@ unsorted:
   - libsliplu1 
   - libslirp-devel 
   - libslopy7_6 
-  - libslurm39 
+  - libslurm40 
   - libsmartcols-devel 
   - libsmartcols-devel-32bit 
   - libsmartcols-devel-static 
@@ -15202,7 +15206,7 @@ unsorted:
   - libsndfile-devel 
   - libsndfile-progs 
   - libsndfile1-32bit 
-  - libsndio7_1 
+  - libsndio7 
   - libsnmp40-32bit 
   - libsoc-common 
   - libsoc-devel 
@@ -18583,6 +18587,8 @@ unsorted:
   - newlib 
   - newsboat 
   - newsboat-lang 
+  - newsflash 
+  - newsflash-lang 
   - newt 
   - newt-devel 
   - newt-doc 
@@ -34474,6 +34480,12 @@ unsorted:
   - ruby3.2-rubygem-web-console 
   - ruby3.2-rubygem-webfinger 
   - ruby3.2-rubygem-webpacker 
+  - ruby3.3-devel 
+  - ruby3.3-devel-extra 
+  - ruby3.3-doc 
+  - ruby3.3-doc-ri 
+  - ruby3.3-rubygem-gem2rpm 
+  - ruby3.3-rubygem-gettext_i18n_rails_js 
   - rubygem-libguestfs 
   - rubygem-passenger-nginx 
   - runawk 
@@ -34969,7 +34981,6 @@ unsorted:
   - slurm-cray 
   - slurm-devel 
   - slurm-doc 
-  - slurm-hdf5 
   - slurm-lua 
   - slurm-munge 
   - slurm-node 
@@ -45714,6 +45725,7 @@ unsorted:
   - warewulf-vnfs 
   - warewulf4 
   - warewulf4-api 
+  - warewulf4-doc 
   - warewulf4-overlay 
   - warewulf4-slurm 
   - warp 
