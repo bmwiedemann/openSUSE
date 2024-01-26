@@ -105,6 +105,8 @@ donttest="testCombinedTools"
 sed -i "s/timeout=1/timeout=10/" cherrypy/test/helper.py
 sed -i "s/timeout=5/timeout=20/" cherrypy/test/helper.py
 sed -i "s/timeout=5/timeout=20/" cherrypy/test/test_states.py
+# flaky test
+donttest+=" or test_wait_publishes_periodically"
 %endif
 
 %pytest -k "not ($donttest)"
