@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 26 15:47:54 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.1.1
+  * Fixed a few issues related to passing cover art url and track
+    length to mpris. Should now display cover and progress
+    correctly in widgets on gnome/wayland.
+
+-------------------------------------------------------------------
 Mon Jan 22 11:43:39 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.0.4
