@@ -1,7 +1,7 @@
 #
 # spec file for package corosync
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -634,6 +634,8 @@ Summary:        The Corosync Cluster Engine Qdevice Network Daemon
 Group:          System/Base
 Requires:       mozilla-nss-tools
 Requires(pre):  /usr/sbin/useradd
+Provides:       group(coroqnetd)
+Provides:       user(coroqnetd)
 
 %if %{with systemd}
 %{systemd_ordering}
