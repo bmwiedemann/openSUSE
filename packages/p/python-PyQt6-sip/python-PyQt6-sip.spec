@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyQt6-sip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@ Summary:        The sip module support for PyQt6
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 URL:            https://www.riverbankcomputing.com/software/sip/
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt6-sip/PyQt6_sip-%{version}.tar.gz
-# PATCH-FIX-SLE support-python3.6.patch alarrosa@suse.com -- Let python-PyQt6-sip work with SLE's python3.6
-Patch0:         support-python3.6.patch
-BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -47,16 +47,16 @@ without a library to be wrapped.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %license LICENSE LICENSE-GPL2 LICENSE-GPL3
 %dir %{python_sitearch}/PyQt6
 %{python_sitearch}/PyQt6/sip*
-%{python_sitearch}/PyQt6_sip-%{version}*info
+%{python_sitearch}/PyQt6_sip-%{version}.dist-info
 
 %changelog
