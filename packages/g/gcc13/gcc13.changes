@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 25 07:59:39 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-13 branch head, fc7d87e0ffadca49bec29b2107, git8250
+  * Includes fix for building TVM.  [boo#1218492]
+
+-------------------------------------------------------------------
+Mon Jan 22 10:05:20 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add cross-X-newlib-devel requires to newlib cross compilers.
+  [boo#1219031]
+
+-------------------------------------------------------------------
+Thu Jan 18 14:14:46 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Package m2rte.so plugin in the gcc13-m2 sub-package rather than
+  in gcc13-devel.  [boo#1210959]
+- Require libstdc++6-devel-gcc13 from gcc13-m2 as m2 programs
+  are linked against libstdc++6.
+
+-------------------------------------------------------------------
 Tue Jan  9 14:20:57 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-13 branch head, 36ddb5230f56a30317630a928, git8205 
