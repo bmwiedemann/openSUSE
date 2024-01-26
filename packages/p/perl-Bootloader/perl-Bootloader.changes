@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Jan 25 16:22:23 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#162
+- handle script exit codes properly (bsc#1218847)
+- 1.11
+
+--------------------------------------------------------------------
 Wed Dec 20 11:35:25 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#160
