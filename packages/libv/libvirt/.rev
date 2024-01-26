@@ -4524,4 +4524,13 @@ bsc#1216656</comment>
     https://libvirt.org/news.html#v10-0-0-2024-01-15</comment>
     <requestid>1139524</requestid>
   </revision>
+  <revision rev="391" vrev="2">
+    <srcmd5>c02dcd1e6fa7036f5670200c5d659158</srcmd5>
+    <version>10.0.0</version>
+    <time>1706305596</time>
+    <user>anag+factory</user>
+    <comment>- Replace temporary build fix with upstream equivalent
+  bsc#1218823</comment>
+    <requestid>1141532</requestid>
+  </revision>
 </revisionlist>
