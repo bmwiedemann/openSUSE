@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 18 17:29:23 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hslua-cli to version 1.4.2.
+  ## hslua-cli-1.4.2
+
+  Released 2024-01-18.
+
+  -   Relaxed upper bound for text, allowing text-2.1.
+
+-------------------------------------------------------------------
 Thu Apr 13 17:19:32 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hslua-cli to version 1.4.1.
