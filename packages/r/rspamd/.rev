@@ -231,4 +231,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1134658</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>513e389d109dad537df9295be301f0a9</srcmd5>
+    <version>3.8.1</version>
+    <time>1706305697</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.8.1
+- Add Provides for user and group which are created in the %pre
+  scriptlet.
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/HG2JKUIKDTWQQIQSA43A4VWHX7YKJQT3/</comment>
+    <requestid>1141777</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Fri Jan 26 16:01:44 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add Provides for user and group which are created in the %pre
+  scriptlet.
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/HG2JKUIKDTWQQIQSA43A4VWHX7YKJQT3/
+
+-------------------------------------------------------------------
+Fri Jan 26 15:57:00 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.8.1
+  - [Fix] Replace comment types by @arkamar in #4785
+  - [Test] statistics: per-user by @fatalbanana in #4789
+  - [Minor] rbl: fix warning by @fatalbanana in #4790
+
+-------------------------------------------------------------------
+Sat Jan 20 14:36:28 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop fix_stack_smash.patch:
+  solved in a better way in 3.8.0
+
+-------------------------------------------------------------------
+Sat Jan 20 14:31:26 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.8.0
+  - [WebUI] Update map editor by @moisseev in #4668
+  - [Minor] Make Robot Framework loop unfunny by @fatalbanana in
+    #4672
+  - [Project] Support of JSON logging by @vstakhov in #4674
+  - [Minor] Add missing include for gcc 14 by @arkamar in #4675
+  - [Minor] Add rule for messages missing both X-Mailer and
+    User-Agent header by @twesterhever in #4682
+  - [Minor] Treat *.zpaq attachments as archives and harmful by
+    @twesterhever in #4680
+  - [Enhancement] Add composite rule for suspicious URLs in
+    suspicious messages by @twesterhever in #4681
+  - [Minor] Improve FREEMAIL_AFF capture rates by @twesterhever in
+    #4683
+  - [Fix] rbl: unbreak exclude_local by @fatalbanana in #4678
+  - [Minor] force_actions: set a group for symbols by @fatalbanana
+    in #4685
+  - [Minor] doxydown: fix elements containing few spaces by
+    @fatalbanana in #4687
+  - [Fix] known_senders: fix config handling by @fatalbanana in
+    #4693
+  - [Feature] Reiterate on gtube patterns by @vstakhov in #4691
+  - [Minor] Try improve test stability by @fatalbanana in #4695
+  - [Feature] Support ping command in fuzzy storage by @vstakhov in
+    #4694
+  - [Test] Set umask where it's useful by @fatalbanana in #4699
+  - [Minor] Remove obsolete code by @moisseev in #4700
+  - [WebUI] Load modules dynamically by @moisseev in #4705
+  - Add support for loongarch by @wuruilong01 in #4704
+  - [Test] Try correct settings test by @fatalbanana in #4706
+  - [Minor] Get rid of 'var' declarations by @moisseev in #4707
+  - [Test] Fix dummy http server on python 3.6 by @fatalbanana in
+    #4710
+  - [Test] Skip miltertest tests if it is not installed by
+    @fatalbanana in #4709
+  - [Test] Restore stylistic rules check by @moisseev in #4711
+  - [Minor] Re-sign YAML by @fatalbanana in #4713
+  - [Minor] Use consistent object key/value spacing by @moisseev in
+    #4712
+  - Fix fuzzy stat by @vstakhov in #4714
+  - [Minor] Convert callbacks to arrow functions by @moisseev in
+    #4715
+  - Fix issues with the raw header on header insertion/modification
+    by @vstakhov in #4716
+  - [Fix] dkim_signing: siging_table: lowercase before lookup by
+    @fatalbanana in #4717
+  - [Minor] Replace Dockerfile with advertisement for image by
+    @fatalbanana in #4721
+  - [WebUI] Refine symbols score input boxes by @moisseev in #4723
+  - [Test] Remove default ESLint Stylistic rule by @moisseev in
+    #4724
+  - [Test] Exercise rspamadm lua logger in functional tests by
+    @fatalbanana in #4728
+  - [Test] Use npm ls to show versions by @moisseev in #4725
+  - [Test] Unbreak ESLint by @moisseev in #4730
+  - [Test] Test systemd logging by @fatalbanana in #4733
+  - [CritFix] - Fix reported length of logging structure by
+    @AdamMajer in #4732
+  - [Test] Remove deprecated Stylelint rule by @moisseev in #4735
+  - Migrate bayes redis backend to Lua scripts by @vstakhov in
+    #4718
+  - [Minor] Have bayes use global redis settings by @fatalbanana in
+    #4739
+  - [Feature] rbl: support disabling or replacing url_whitelist per
+    RBL by @fatalbanana in #4742
+  - [Minor] rbl: try harder to identify lua patterns by
+    @fatalbanana in #4743
+  - [Minor] rbl: revisit previous change by @fatalbanana in #4747
+  - [WebUI] Symbols: replace individual save buttons by @moisseev
+    in #4748
+  - [WebUI] Send only altered symbols in save requests by @moisseev
+    in #4749
+  - [Minor] docs: rspamd_html: fix some copypasta by @fatalbanana
+    in #4750
+  - [Minor] ratelimit: make per-bucket symbol behave like global
+    symbol by @fatalbanana in #4755
+  - [Minor] Log a debug message when ratelimit skipped by @moisseev
+    in #4757
+  - [WebUI] Show pass-through module in scan result by @moisseev in
+    #4758
+  - [Minor] debian: add missing stuff to rspamd-asan package by
+    @fatalbanana in #4761
+  - [Minor] Fix typo in hfilter map by @moisseev in #4759
+  - [Minor] Move common stuff to separate files by @moisseev in
+    #4762
+  - Fix an overzealous s/NULL/nullptr/g by @jvoisin in #4764
+  - [WebUI] Show message size in IEC (base 1024) units by @moisseev
+    in #4765
+  - [WebUI] Normalize IPv4 for column sorting by @moisseev in #4766
+  - [Test] Some more tests for logging by @fatalbanana in #4767
+  - [Feature] Support suppressing DMARC reporting for particular
+    recipients by @fatalbanana in #4772
+  - [Test] Fix tests on Robot Framework 7.0 by @fatalbanana in
+    #4775
+  - Rewrite redis_cache logic in statistics by @vstakhov in #4774
+  - [Fix] multimap: rawtext: use decoded parts by @fatalbanana in
+    #4781
+
+-------------------------------------------------------------------
 Fri Dec 15 16:59:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.7.5

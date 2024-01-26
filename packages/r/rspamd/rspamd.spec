@@ -1,7 +1,7 @@
 #
 # spec file for package rspamd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.7.5
+Version:        3.8.1
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -67,7 +67,6 @@ Source1:        usr.bin.rspamd
 Patch0:         rspamd-conf.patch
 Patch1:         rspamd-after-redis-target.patch
 Patch2:         fix_missing_return.patch
-Patch3:         fix_stack_smash.patch
 %if !0%{?is_opensuse}
 # because 80-check-malware-scan-clamav triggered in SLE-15-SP2
 BuildRequires:  -post-build-checks-malwarescan
@@ -135,6 +134,8 @@ Conflicts:      rspamd-client
 BuildRequires:  apparmor-abstractions
 Requires:       apparmor-abstractions
 Requires(pre):  shadow
+Provides:       group(%{rspamd_group})
+Provides:       user(%{rspamd_user})
 
 %description
 Rspamd is a spam filtering system that allows evaluation of messages
@@ -532,6 +533,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lupa.lua
 %{_datadir}/rspamd/lualib/plugins_stats.lua
 %{_datadir}/rspamd/lualib/tableshape.lua
+%{_datadir}/rspamd/lualib/lua_bayes_redis.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_content
 %{_datadir}/rspamd/lualib/lua_content/ical.lua
@@ -601,6 +603,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/rspamadm/vault.lua
 %{_datadir}/rspamd/lualib/rspamadm/neural_test.lua
 %{_datadir}/rspamd/lualib/rspamadm/dkim_keygen.lua
+%{_datadir}/rspamd/lualib/rspamadm/fuzzy_ping.lua
 
 %dir %{_datadir}/rspamd/lualib/plugins
 %{_datadir}/rspamd/lualib/plugins/dmarc.lua
@@ -615,6 +618,11 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/redis_scripts/ratelimit_check.lua
 %{_datadir}/rspamd/lualib/redis_scripts/ratelimit_cleanup_pending.lua
 %{_datadir}/rspamd/lualib/redis_scripts/ratelimit_update.lua
+%{_datadir}/rspamd/lualib/redis_scripts/bayes_cache_check.lua
+%{_datadir}/rspamd/lualib/redis_scripts/bayes_cache_learn.lua
+%{_datadir}/rspamd/lualib/redis_scripts/bayes_classify.lua
+%{_datadir}/rspamd/lualib/redis_scripts/bayes_learn.lua
+%{_datadir}/rspamd/lualib/redis_scripts/bayes_stat.lua
 
 %dir %{_datadir}/rspamd/rules
 %{_datadir}/rspamd/rules/bitcoin.lua
@@ -679,6 +687,8 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_wwwdir}/%{name}/js/app/stats.js
 %{_wwwdir}/%{name}/js/app/symbols.js
 %{_wwwdir}/%{name}/js/app/upload.js
+%{_wwwdir}/%{name}/js/app/common.js
+%{_wwwdir}/%{name}/js/app/libft.js
 
 %{_wwwdir}/%{name}/js/lib
 
