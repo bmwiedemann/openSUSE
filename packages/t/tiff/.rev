@@ -936,4 +936,15 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     <comment>- CVE-2023-25435 [bsc#1212607] tiffcrop is removed</comment>
     <requestid>1131379</requestid>
   </revision>
+  <revision rev="95" vrev="4">
+    <srcmd5>9088f9711895990e8ff1d0a7b6ad84e3</srcmd5>
+    <version>4.6.0</version>
+    <time>1706305578</time>
+    <user>anag+factory</user>
+    <comment>- security update:
+  * CVE-2023-52356 [bsc#1219213]
+    Fix segfault in TIFFReadRGBATileExt()
+    + tiff-CVE-2023-52356.patch</comment>
+    <requestid>1141711</requestid>
+  </revision>
 </revisionlist>
