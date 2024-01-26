@@ -1385,4 +1385,13 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2024-01-06T15:12:04 UTC (#1918)</comment>
     <requestid>1137681</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>2b6fc3d16974cd87122b47c74401463d</srcmd5>
+    <version>20240123</version>
+    <time>1706305528</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240123:
+  * util: gTLD data autopull updates for 2024-01-23T15:14:10 UTC (#1921)</comment>
+    <requestid>1141328</requestid>
+  </revision>
 </revisionlist>
