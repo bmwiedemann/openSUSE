@@ -101,4 +101,12 @@
   * Added support for Python v3.10.</comment>
     <requestid>1057815</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5cebc3f261de65b80fc9efc6ea4f8a1e</srcmd5>
+    <version>5.15.5</version>
+    <time>1706305622</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141591</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 25 20:49:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Enable SLE15 python module for more modern python in 15.x
+
+-------------------------------------------------------------------
 Wed Jan 11 14:57:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Merge -sip and -api package into -devel
