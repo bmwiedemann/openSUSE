@@ -82,7 +82,7 @@ Source5:        wxWidgets-3_2-rpmlintrc
 Source6:        wxpython-mkdiff.sh
 Patch0:         soversion.diff
 Patch1:         autoconf-2_72.diff
-Patch2:         wxWidgets-3_2-fix-building-fault-S390.patch
+Patch2:         wxWidgets-3_2-Fix-test-suite-on-Linux-s390x-architectures.patch
 %if "%{flavor}" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  fdupes
