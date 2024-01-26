@@ -1,7 +1,7 @@
 #
 # spec file for package python-lxml
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lxml
-Version:        4.9.4
+Version:        5.1.0
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -27,22 +27,13 @@ URL:            https://lxml.de/
 Source0:        https://files.pythonhosted.org/packages/source/l/lxml/lxml-%{version}.tar.gz
 Source1:        https://lxml.de/lxmldoc-4.5.2.pdf
 Source99:       python-lxml.rpmlintrc
-# PATCH-FIX-UPSTREAM close_file_before_test.patch bsc#1206555 mcepl@suse.com
-# make sure the testing data are flushed to the file
-Patch0:         close_file_before_test.patch
 # PATCH-FIX-OPENSUSE Skip a test under libxml2 2.10.4+
 # https://bugs.launchpad.net/lxml/+bug/2016939
 Patch1:         skip-test-under-libxml2-2.10.4.patch
 # PATCH-FIX-OPENSUSE Skip a test under libxml2 2.11.1+
 # https://bugs.launchpad.net/lxml/+bug/2018522
 Patch2:         skip-test-under-libxml2-2.11.1.patch
-# PATCH-FIX-UPSTREAM ISO-Schematron-schema-optional.patch lp#2024343 mcepl@suse.com
-# Make ISO Schematron RNG validation schemes optional and then remove it gh#lxml/lxml@4bfab2c82196
-Patch3:         ISO-Schematron-schema-optional.patch
-# PATCH-FIX-UPSTREAM remove-ISO-Schematron-schema.patch gl#fedora/legal/fedora-license-data/-#154 mcepl@suse.com
-# Actually remove the schema
-Patch4:         remove-ISO-Schematron-schema.patch
-BuildRequires:  %{python_module Cython >= 0.29.7 with %python-Cython < 3}
+BuildRequires:  %{python_module Cython >= 3.0.7}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
@@ -104,7 +95,7 @@ rm src/lxml/lxml.etree_api.h
 
 %build
 export CFLAGS="%{optflags}"
-%python_build --with-cython
+%python_build build_ext -i --with-cython
 
 %check
 # The tests fail on SLE 11 due to broken incremental parsing in libxml2
@@ -113,7 +104,7 @@ export LANG=en_US.UTF-8
 export PYTHONUNBUFFERED=x
 # cyclic dependency between html5lib and lxml
 rm -v src/lxml/html/tests/test_html5parser.py
-%{python_expand PYTHON3="$python" %make_build test3}
+%python_exec test.py
 
 %install
 %python_install

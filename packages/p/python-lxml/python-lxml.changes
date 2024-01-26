@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 24 10:53:21 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap.
+  Use build and test as descriped on upstream.
+
+-------------------------------------------------------------------
+Sun Jan 14 10:00:32 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 5.1.0:
+  Details on  https://lxml.de/5.1/changes-5.1.0.html
+  removed merged patches:
+  - ISO-Schematron-schema-optional.patch
+  - remove-ISO-Schematron-schema.patch
+  - close_file_before_test.patch
+
+-------------------------------------------------------------------
 Wed Dec 20 22:04:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.9.4:

@@ -1050,4 +1050,22 @@ Send to Staging:E.
     ElementTree.write() produces a deprecation warning and will</comment>
     <requestid>1134342</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>9cba444e644f62f8758d3a72288cca84</srcmd5>
+    <version>5.1.0</version>
+    <time>1705526076</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138865</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>18bc7e9c93513a5d978c39e27edfff15</srcmd5>
+    <version>5.1.0</version>
+    <time>1706305594</time>
+    <user>anag+factory</user>
+    <comment>- Fix build error for Leap.
+  Use build and test as descriped on upstream.
+</comment>
+    <requestid>1141530</requestid>
+  </revision>
 </revisionlist>
