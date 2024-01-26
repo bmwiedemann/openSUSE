@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 23 18:24:16 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.8.5
+  * Security: this release improves support to defend against an email
+    spoofing attack (SMTP smuggling) on recipients at a Postfix server.
+    For background, see https://www.postfix.org/smtp-smuggling.html.
+
+-------------------------------------------------------------------
 Thu Dec 28 07:57:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update default configuration to enable the long-term fix for

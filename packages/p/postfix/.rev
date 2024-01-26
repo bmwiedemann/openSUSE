@@ -2259,4 +2259,12 @@ successfully tested on Tumbleweed x86_64</comment>
     &quot;warning: Unexpected record type 'X'. (bsc#1213515)</comment>
     <requestid>1139868</requestid>
   </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>3a42b42b10968e18e8ad622f247eda85</srcmd5>
+    <version>3.8.5</version>
+    <time>1706305584</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141719</requestid>
+  </revision>
 </revisionlist>
