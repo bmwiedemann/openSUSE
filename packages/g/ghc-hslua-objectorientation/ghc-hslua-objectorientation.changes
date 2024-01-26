@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 18 16:46:37 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hslua-objectorientation to version 2.3.1.
+  ## hslua-objectorientation-2.3.1
+
+  Released 2024-01-18.
+
+  -   Relaxed upper bound for text, containers, and bytestring,
+      allowing text-2.1, containers-0.7, and bytestring-0.12.
+
+-------------------------------------------------------------------
 Thu Apr 13 12:06:26 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hslua-objectorientation to version 2.3.0.
