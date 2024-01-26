@@ -1,7 +1,7 @@
 #
 # spec file for package python-sip6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sip6
-Version:        6.7.12
+Version:        6.8.2
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/sip
 Source0:        https://files.pythonhosted.org/packages/source/s/sip/sip-%{version}.tar.gz
-Patch0:         support-python3.6.patch
-BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module ply}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli if %python-base < 3.11}
-BuildRequires:  c++_compiler
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 
 %python_subpackages
 
@@ -48,12 +48,8 @@ to generate wxPython, the Python bindings for wxWidgets.
 Summary:        A Python bindings generator for C/C++ libraries
 Group:          Development/Libraries/Python
 Requires:       c++_compiler
-Requires:       python-devel >= 3.6
-%if %{python_version_nodots} <= 36
-Requires:       python-dataclasses
-%endif
+Requires:       python-base >= 3.8
 Requires:       python-packaging
-Requires:       python-ply
 Requires:       python-setuptools
 Requires:       (python-tomli if python-base < 3.11)
 Requires(post): update-alternatives
@@ -95,17 +91,17 @@ This package contains the documentation and example files.
 %autosetup -p1 -n sip-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/sip-build
 %python_clone -a %{buildroot}%{_bindir}/sip-distinfo
 %python_clone -a %{buildroot}%{_bindir}/sip-install
 %python_clone -a %{buildroot}%{_bindir}/sip-module
 %python_clone -a %{buildroot}%{_bindir}/sip-sdist
 %python_clone -a %{buildroot}%{_bindir}/sip-wheel
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes -s doc
 
 %post devel
@@ -122,8 +118,8 @@ This package contains the documentation and example files.
 %python_alternative %{_bindir}/sip-module
 %python_alternative %{_bindir}/sip-sdist
 %python_alternative %{_bindir}/sip-wheel
-%{python_sitearch}/sipbuild
-%{python_sitearch}/sip-%{version}*-info
+%{python_sitelib}/sipbuild
+%{python_sitelib}/sip-%{version}.dist-info
 
 %if 0%{?suse_version} > 1500
 %files -n python-sip6-doc
