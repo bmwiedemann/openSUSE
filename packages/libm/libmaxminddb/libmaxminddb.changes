@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 10 08:53:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmaxminddb 1.9.1:
+  * On very large databases, the calculation to determine the search
+    tree size could overflow. This was fixed and several additional
+    guards against overflows were added
+  * build system tweaks
+
+-------------------------------------------------------------------
 Tue Nov  7 21:58:11 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libmaxminddb 1.8.0:
