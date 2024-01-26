@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Jan 25 14:23:06 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.30~git20240125:
+  * Enable Discord presence on Linux
+  * Add missing headers (#15075)
+  * rpcs3qt: Add macOS support to the updater.
+  * System: don't consider games as registered if they were already in games.yml
+  * Asmjit FI
+  * Accurate frest and frsqest
+  * Qt: trim whitespace from textinput before writing to config
+  * update submodules
+  * rsx: Do not emit rounding code when not needed
+  * rsx: Fix compiling of mixed-precision shaders
+  * rsx: Aesthetic changes
+  * rsx: Forcefully disable writes to channels disabled on host
+  * rsx: More pipeine refactoring
+  * fs: fix get_executable_dir
+  * Emu: Add more info to BlockingCallFromMainThread
+  * Qt: revert accidental settings_dialog check-in
+  * cellImeJp: fix character deletion after change to cursor
+  * cellImeJp: fix deadlock
+  * cellImeJp: add candidate list functions
+  * cellImeJp: add cursor
+  * cellImeJp: fix focus area
+  * cellImeJp: static functions to silence annoying VS
+  * fs: fix warning. fix size argument in report_fatal_error
+  * Savestates: Fix restart when suspend mode is off
+  * Savestates: Dont patch memory on load
+  * Savestates: Add some logging for sys_overlay
+  * Simplify fatal dialog's error a bit
+  * Savestates/net: fix P2P socket data saving
+  * Firmware installer: Early protection against disk space shortage complications
+  * sys_fs: Aggregate safe file reads (optimization)
+  * progress dialog: minor fix
+  * fixup hdd1 cache
+  * Utilities: Add support for portable user directory. (#15064)
+  * rsx: Properly propagate surface properties on surface reuse.
+  * Mac: Update MoltenVk to 1.2.7
+  * Mac: silence deprecation warning
+  * Replaces page fault triggers with assembly
+  * sceNp: disable Canonicalize functions for RPCN
+  * sceNpCommerce: more error checks
+  * sceNpCommerce: add error constants
+  * sceNpFriendlist: more checks
+  * sceNpMatching: simplify linked list for loops
+  * sceNpMatching: add error checks
+  * split JIT.cpp and SPURecompiler.cpp
+  * prepare split
+  * add comments where to split
+  * RPCN 1.0 (#15045)
+  * fs: move buf from stack to heap to silence VS warning
+  * fs: remove duplicate to_utf8 function
+  * Qt: use fs::get_temp_dir during updates
+  * Qt/input: show all mmjoy devices with connection in dropdown
+  * Qt/Input: Keep configured device name in config when no pad is connected
+  * input: implement dynamic mmjoy device reconnection
+  * Misc NP fixes
+
+-------------------------------------------------------------------
 Sat Jan 13 05:30:40 UTC 2024 - i@guoyunhe.me
 
 - Update to version 0.0.30~git20240112:
