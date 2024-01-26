@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 24 19:33:03 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-CVE-2024-23222.patch: fix a type confusion issue
+  (bsc#1219113 CVE-2024-23222).
+
+-------------------------------------------------------------------
 Sat Dec 16 13:51:42 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.42.4 (boo#1218032):

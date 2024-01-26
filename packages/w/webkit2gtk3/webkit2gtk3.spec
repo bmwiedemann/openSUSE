@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,6 +91,8 @@ Patch0:         reproducibility.patch
 Patch1:         webkit2gtk3-create-destroy-egl-image.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-disable-dmabuf-nvidia.patch boo#1216778 mgorse@suse.com -- disable the DMABuf renderer for NVIDIA proprietary drivers.
 Patch2:         webkit2gtk3-disable-dmabuf-nvidia.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-CVE-2024-23222.patch bsc#1219113 mgorse@suse.com -- fix a type confusion issue.
+Patch3:         webkit2gtk3-CVE-2024-23222.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -429,8 +431,8 @@ A small test browswer from webkit, useful for testing features.
 
 
 
-# Expand %%lang_package to Obsoletes its older-name counterpart
 
+# Expand %%lang_package to Obsoletes its older-name counterpart
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
