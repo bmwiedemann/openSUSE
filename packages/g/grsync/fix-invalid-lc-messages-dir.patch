@@ -1,11 +1,11 @@
---- grsync-1.3.0/configure.in.orig	2020-12-28 14:11:14.004115848 +0100
-+++ grsync-1.3.0/configure.in	2020-12-28 14:11:28.304157114 +0100
-@@ -73,7 +73,7 @@
+--- grsync-1.3.1/configure.ac.orig	2023-06-14 16:59:50.000000000 +0800
++++ grsync-1.3.1/configure.ac	2023-12-29 16:41:35.417881906 +0800
+@@ -75,7 +75,7 @@
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package.])
  
  dnl Add the languages which your application supports here.
--ALL_LINGUAS="nl_NL it_IT zh_CN fr_FR sv_SE nb_NO tr_TR ru_RU de_DE es_ES cs_CZ gl_ES ca_ES pt_BR id_ID hr_HR zh_TW hu_HU el_GR pt_PT"
+-ALL_LINGUAS="nl_NL it_IT zh_CN fr_FR sv_SE nb_NO tr_TR ru_RU de_DE es_ES cs_CZ gl_ES ca_ES pt_BR id_ID hr_HR zh_TW hu_HU el_GR pt_PT ja_JP"
 +ALL_LINGUAS="ca cs de es fr gl hr hu id it nb nl pt_BR ru sv tr zh_CN zh_TW"
  AM_GLIB_GNU_GETTEXT
  
- AC_OUTPUT([
+ AC_CONFIG_FILES([
