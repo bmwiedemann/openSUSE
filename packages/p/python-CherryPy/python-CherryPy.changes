@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 25 11:54:48 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable more flaky tests in s390x, bsc#1218602
+
+-------------------------------------------------------------------
 Tue Jan 16 13:34:59 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Increase timeouts for tests for s390x architecture, bsc#1218602

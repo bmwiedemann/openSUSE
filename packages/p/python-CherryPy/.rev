@@ -328,4 +328,12 @@
     <comment>- Increase timeouts for tests for s390x architecture, bsc#1218602</comment>
     <requestid>1139238</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>37e578eda105601d1f7a4fdbbe729f5a</srcmd5>
+    <version>18.9.0</version>
+    <time>1706305558</time>
+    <user>anag+factory</user>
+    <comment>- Disable more flaky tests in s390x, bsc#1218602</comment>
+    <requestid>1141502</requestid>
+  </revision>
 </revisionlist>
