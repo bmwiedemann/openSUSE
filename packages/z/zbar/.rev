@@ -226,4 +226,12 @@
     <comment></comment>
     <requestid>1140634</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>da1502791bf535c10b2d1b2d3da88643</srcmd5>
+    <version>0.23.93</version>
+    <time>1706305607</time>
+    <user>anag+factory</user>
+    <comment>- Fix building for Leap</comment>
+    <requestid>1141556</requestid>
+  </revision>
 </revisionlist>
