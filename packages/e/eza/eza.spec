@@ -17,7 +17,7 @@
 
 
 Name:           eza
-Version:        0.17.2+0
+Version:        0.17.3+0
 Release:        0
 Summary:        Replacement for ls written in Rust
 License:        MIT

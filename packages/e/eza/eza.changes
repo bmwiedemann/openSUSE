@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 25 21:25:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.3:
+  * Remove version testing
+  * Avoid unwrap() by changing filter-then-map to filter_map
+
+-------------------------------------------------------------------
 Sun Jan 21 07:27:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.2:
