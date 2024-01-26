@@ -3,13 +3,18 @@
 # Date 1695432215 25200
 #      Fri Sep 22 18:23:35 2023 -0700
 # Node ID e6a8a9f0956d124e8de34eb4bcf09d8e17077d9d
-# Parent  677cbf2e64cdcd3a93e644f781be2bdc2529ba1a
+# Parent  5dbbabbfaca21d2c5994f95ed095313284611c44
 Bug 1822730 - Add basic blob protocol handling for blob URIs that contain parsable http/s protocols
 
 diff --git a/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs b/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
 --- a/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
 +++ b/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
-@@ -221,11 +221,13 @@ export class DownloadLastDir {
+@@ -216,38 +216,49 @@ export class DownloadLastDir {
+       Services.prefs.setComplexValue(LAST_DIR_PREF, nsIFile, aFile);
+     } else if (Services.prefs.prefHasUserValue(LAST_DIR_PREF)) {
+       Services.prefs.clearUserPref(LAST_DIR_PREF);
+     }
+   }
  
    /**
     * Pre-processor to extract a domain name to be used with the content-prefs
@@ -20,12 +25,13 @@ diff --git a/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs b/toolkit/mozapps
     *  - all file:/// URIs share the same folder
     *  - data: URIs share a folder per mime-type. If a mime-type is not
     *    specified text/plain is assumed.
-+   *  - blob: blob URIs are tested for http/https and the blob protocol
-+   *    is stripped.
+    *  - blob: URIs share the same folder as their origin. This is done by
+    *    ContentPrefs already, so we just let the url fall-through.
     * In any other case the original URL is returned as a string and ContentPrefs
     * will do its usual parsing.
     *
-@@ -234,6 +236,9 @@ export class DownloadLastDir {
+    * @param {string|nsIURI|URL} url The URL to parse
+    * @returns {string} the domain name to use, or the original url.
     */
    #cpsGroupFromURL(url) {
      if (typeof url == "string") {
@@ -35,7 +41,7 @@ diff --git a/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs b/toolkit/mozapps
        url = new URL(url);
      } else if (url instanceof Ci.nsIURI) {
        url = URL.fromURI(url);
-@@ -241,6 +246,14 @@ export class DownloadLastDir {
+     }
      if (!URL.isInstance(url)) {
        return url;
      }
@@ -50,3 +56,8 @@ diff --git a/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs b/toolkit/mozapps
      if (url.protocol == "data:") {
        return url.href.match(/^data:[^;,]*/i)[0].replace(/:$/, ":text/plain");
      }
+     if (url.protocol == "file:") {
+       return "file:///";
+     }
+     return url.href;
+   }

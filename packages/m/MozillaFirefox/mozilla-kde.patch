@@ -50,7 +50,7 @@ Co-authored-by: Björn Bidar <bjorn.bidar@thaodan.de>
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -91,16 +91,17 @@
+@@ -90,16 +90,17 @@
  #include "PLDHashTable.h"
  #include "prdtoa.h"
  #include "prlink.h"
@@ -1235,7 +1235,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  #  include "Units.h"
  extern mozilla::LazyLogModule gWidgetLog;
  #  define LOG(args) MOZ_LOG(gWidgetLog, mozilla::LogLevel::Debug, args)
-@@ -305,17 +308,18 @@ nsFilePicker::AppendFilters(int32_t aFil
+@@ -302,17 +305,18 @@ nsFilePicker::AppendFilters(int32_t aFil
    mAllowURLs = !!(aFilterMask & filterAllowURLs);
    return nsBaseFilePicker::AppendFilters(aFilterMask);
  }
@@ -1255,19 +1255,18 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
    mFilters.AppendElement(filter);
    mFilterNames.AppendElement(name);
-@@ -415,16 +419,41 @@ nsresult nsFilePicker::Show(nsIFilePicke
+@@ -412,16 +416,39 @@ nsresult nsFilePicker::Show(nsIFilePicke
    return NS_OK;
  }
  
  NS_IMETHODIMP
  nsFilePicker::Open(nsIFilePickerShownCallback* aCallback) {
    // Can't show two dialogs concurrently with the same filepicker
-   if (mRunning) return NS_ERROR_NOT_AVAILABLE;
+   if (mFileChooser) return NS_ERROR_NOT_AVAILABLE;
  
 +  // KDE file picker is not handled via callback
 +  if (nsKDEUtils::kdeSupport()) {
 +    mCallback = aCallback;
-+    mRunning = true;
 +    NS_ADDREF_THIS();
 +    g_idle_add(
 +        [](gpointer data) -> gboolean {
@@ -1280,7 +1279,6 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
 +          } else {
 +            queuedPicker->mResult = result;
 +          }
-+          queuedPicker->mRunning = false;
 +          NS_RELEASE(queuedPicker);
 +          return G_SOURCE_REMOVE;
 +        },
@@ -1297,7 +1295,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
    GtkFileChooserAction action = GetGtkFileChooserAction(mMode);
  
    const gchar* accept_button;
-@@ -696,16 +725,215 @@ void nsFilePicker::Done(void* file_choos
+@@ -703,16 +730,215 @@ void nsFilePicker::Done(void* file_choos
      mCallback->Done(result);
      mCallback = nullptr;
    } else {
