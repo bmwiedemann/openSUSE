@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 25 13:01:34 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Replace temporary build fix with upstream equivalent
+  bsc#1218823
+
+-------------------------------------------------------------------
 Wed Jan 17 15:58:55 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Add temporary build fix for ppc64le
