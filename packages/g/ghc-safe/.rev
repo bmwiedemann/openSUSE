@@ -122,4 +122,12 @@
     <comment>update for ghc-9.4.4</comment>
     <requestid>1076022</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9c3e8c719c772a30bd1860fe522ca30a</srcmd5>
+    <version>0.3.21</version>
+    <time>1706305646</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1141629</requestid>
+  </revision>
 </revisionlist>
