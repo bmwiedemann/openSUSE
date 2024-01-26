@@ -9,6 +9,6 @@
 </service>
 <service name="tar_scm">
   <param name="url">https://github.com/ClusterLabs/crmsh.git</param>
-  <param name="changesrevision">feea55a985585b794983c629dfb12a4c0d99270b</param>
+  <param name="changesrevision">e227ccf6be0b408bf63d7e949ea207cad08c76d8</param>
 </service>
 </servicedata>
