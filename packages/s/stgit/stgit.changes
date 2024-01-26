@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 26 09:43:01 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Move completions and plugins to subpackages
+
+-------------------------------------------------------------------
+Thu Jan 18 00:05:59 UTC 2024 - Mikhail Terekhov <termim@gmail.com>
+
+- update to 2.4.2
+  * This is a complete rewrite in Rust.
+  * For the full list of changes see
+    https://github.com/stacked-git/stgit/releases
+- Drop no longer needed stgbashprompt-noexec.patch
+
+-------------------------------------------------------------------
 Sun Mar 27 18:46:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5:
