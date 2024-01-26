@@ -168,4 +168,15 @@
     <comment></comment>
     <requestid>1117887</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e746811630475b5cc638b2e496bce471</srcmd5>
+    <version>1.15.4</version>
+    <time>1706305570</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.15.4
+  * Added QtMultimediaQuick to the Qt5 bundle.
+  * Removed some plugins from the PyQt5 bundle.
+  * Bundle the QtWebChannelQuick library.</comment>
+    <requestid>1141681</requestid>
+  </revision>
 </revisionlist>
