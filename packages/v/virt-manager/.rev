@@ -1958,4 +1958,12 @@
     <comment>Fix for bsc#1218983 - [SLE15SP6] virt-manager:test testCLI0264virt_xml fails with libvirt 10.0.0</comment>
     <requestid>1140020</requestid>
   </revision>
+  <revision rev="248" vrev="14">
+    <srcmd5>570307915cfe168488e1275b8735087d</srcmd5>
+    <version>4.1.0</version>
+    <time>1706305530</time>
+    <user>anag+factory</user>
+    <comment>Several upstream bug fixes. Cleanup of %check tests in the spec file.</comment>
+    <requestid>1141354</requestid>
+  </revision>
 </revisionlist>

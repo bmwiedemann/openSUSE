@@ -95,6 +95,11 @@ Patch52:        052-Fix-some-pylint.patch
 Patch55:        055-connectauth-Drop-sanity-checking-for-libvirtd.patch
 Patch56:        056-delete-Fix-ambiguity-that-confused-pylint.patch
 Patch57:        057-Fix-filesystem-socket.source.patch
+Patch58:        058-uri-Mock-domcaps-returning-NO_SUPPORT.patch
+Patch59:        059-tests-cli-Adjust-hotplug-test-for-latest-libvirt.patch
+Patch60:        060-Fix-some-pylint.patch
+Patch61:        061-tests-ui-make-newvm-test-start-less-flakey.patch
+Patch62:        062-tests-ui-make-creatnet-test-start-less-flakey.patch
 Patch69:        revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
@@ -264,49 +269,23 @@ chmod -x %{buildroot}%{_datadir}/virt-manager/virtManager/virtmanager.py
 # different device names
 donttest="test_disk_numtotarget"
 donttest="$donttest or testCLI0001virt_install_many_devices"
+# depends on osc/obs host cpu?
+donttest="$donttest or testCLI0003virt_install_singleton_config_2"
 donttest="$donttest or testCLI0113virt_install_reinstall_cdrom"
 donttest="$donttest or testCLI0165virt_install"
 donttest="$donttest or testCLI0172virt_install_s390x_cdrom"
+# Fedora specific
+donttest="$donttest or testCLI0178virt_install_arm_defaultmach_f20"
+donttest="$donttest or testCLI0179virt_install_arm_kvm_import"
 donttest="$donttest or testCLI0193virt_install_xen_default"
 donttest="$donttest or testCLI0194virt_install_xen_pv"
 donttest="$donttest or testCLI0195virt_install_xen_hvm"
 donttest="$donttest or testCLI0196virt_install_xen_hvm"
 donttest="$donttest or testCLI0203virt_install_bhyve_default_f27"
-donttest="$donttest or testCLI0276virt_xml_build_disk_domain"
-donttest="$donttest or testCLI0277virt_xml_build_disk_domain"
 donttest="$donttest or testCLI0280virt_xml_build_disk_domain"
-donttest="$donttest or testCLI0284virt_xml_build_pool_logical_disk"
-donttest="$donttest or testCLI0285virt_xml_build_pool_logical_disk"
 donttest="$donttest or testCLI0287virt_xml_edit_cpu_host_copy"
 donttest="$donttest or testCLI0288virt_xml_build_pool_logical_disk"
-donttest="$donttest or testCLI0371virt_xml_add_disk_create_storage_start"
-donttest="$donttest or testCLI0372virt_xml_add_disk_create_storage_start"
 donttest="$donttest or testCLI0375virt_xml_add_disk_create_storage_start"
-# depends on osc/obs host cpu?
-donttest="$donttest or testCLI0003virt_install_singleton_config_2"
-donttest="$donttest or testCLI0283virt_xml_edit_cpu_host_copy"
-donttest="$donttest or testCLI0284virt_xml_edit_cpu_host_copy"
-# RuntimeError: SEV launch security requires a Q35 machine -- due to patch for bsc#1196806, jsc#SLE-18834 ?
-donttest="$donttest or testCLI0162virt_install"
-# Expectsion <video> element
-donttest="$donttest or testCLI0168virt_install_s390x_cdrom"
-donttest="$donttest or testCLI0169virt_install_s390x_cdrom"
-# Fedora specific
-donttest="$donttest or testCLI0178virt_install_arm_defaultmach_f20"
-donttest="$donttest or testCLI0179virt_install_arm_kvm_import"
-# missing <boot> element, extra <kernel> element
-donttest="$donttest or testCLI0189virt_install_xen_default"
-donttest="$donttest or testCLI0190virt_install_xen_default"
-donttest="$donttest or testCLI0190virt_install_xen_pv"
-donttest="$donttest or testCLI0191virt_install_xen_pv"
-# different <emulator> additional <model> in <interface>
-donttest="$donttest or testCLI0191virt_install_xen_hvm"
-donttest="$donttest or testCLI0192virt_install_xen_hvm"
-donttest="$donttest or testCLI0193virt_install_xen_hvm"
-# different source image format
-donttest="$donttest or testCLI0199virt_install_bhyve_default_f27"
-donttest="$donttest or testCLI0200virt_install_bhyve_default_f27"
-donttest="$donttest or testCLI0264virt_xml"
 # Due to the above skips:
 # "there are XML properties that are untested in the test suite"
 donttest="$donttest or testCheckXMLBuilderProps"

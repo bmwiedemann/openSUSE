@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 24 14:50:16 MST 2024 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027942) (jsc#PED-6305)
+  058-uri-Mock-domcaps-returning-NO_SUPPORT.patch
+  059-tests-cli-Adjust-hotplug-test-for-latest-libvirt.patch
+  060-Fix-some-pylint.patch
+  061-tests-ui-make-newvm-test-start-less-flakey.patch
+  062-tests-ui-make-creatnet-test-start-less-flakey.patch
+- Cleanup now working or non-existant %check tests
+
+-------------------------------------------------------------------
 Fri Jan 19 14:15:14 MST 2024 - carnold@suse.com
 
 - bsc#1218983 - [SLE15SP6] virt-manager:test testCLI0264virt_xml
