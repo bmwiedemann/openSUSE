@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 25 10:09:51 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Keep cio_ignore kernel argument when present in the parmfile or
+  use the cio_ignore -k output if not and write it always even
+  in zVM and KVM (bsc#1210525).
+- 5.0.4
+
+-------------------------------------------------------------------
 Wed Nov 29 16:27:50 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Enclose IPv6 addresses within square brackets when calling
