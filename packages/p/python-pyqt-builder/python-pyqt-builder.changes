@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 25 20:05:00 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.15.4
+  * Added QtMultimediaQuick to the Qt5 bundle.
+  * Removed some plugins from the PyQt5 bundle.
+  * Bundle the QtWebChannelQuick library.
+
+-------------------------------------------------------------------
 Sun Oct 15 13:48:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.15.3

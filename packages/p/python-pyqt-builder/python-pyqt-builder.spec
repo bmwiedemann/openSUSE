@@ -19,13 +19,13 @@
 %define mname pyqt-builder
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}
-Version:        1.15.3
+Version:        1.15.4
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 URL:            https://www.riverbankcomputing.com/software/pyqt-builder
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/PyQt-builder-%{version}.tar.gz
-# PATCH-FEATURE-SUSE support-python3.6.patch alarrosa@suse.com
+# PATCH-FEATURE-SUSE support-python3.6.patch alarrosa@suse.com -- The PyQt5 packages have the SLE15 python module macro, but it is disable in some maintance projects
 Patch0:         support-python3.6.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
