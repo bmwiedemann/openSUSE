@@ -1,0 +1,36 @@
+From 76063ef32c4231b68196dec43b21d091c778e87f Mon Sep 17 00:00:00 2001
+From: Arnaud Ferraris <aferraris@debian.org>
+Date: Sat, 21 Oct 2023 11:43:09 +0200
+Subject: [PATCH] libqmi-glib,message: fix 16-bit service on big endian
+ architectures
+
+The latest release introduces handling of 16-bit service indications.
+However, only the raw message data is returned from
+`qmi_message_get_service()`, leading to incorrect values on big-endian
+architectures. As a consequence, `libqmi` ultimately fails to build as
+the corresponding test errors out in this case.
+
+This patch ensures the service indication is correct on all kinds of
+architectures.
+
+(cherry picked from commit 6662764338d3127924cfefaa9cf1b0cc4f90a189)
+---
+ src/libqmi-glib/qmi-message.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libqmi-glib/qmi-message.c b/src/libqmi-glib/qmi-message.c
+index 3e31b4b4..1918a456 100644
+--- a/src/libqmi-glib/qmi-message.c
++++ b/src/libqmi-glib/qmi-message.c
+@@ -226,7 +226,7 @@ qmi_message_get_service (QmiMessage *self)
+     if (MESSAGE_IS_QMUX (self))
+         return (QmiService)((struct full_message *)(self->data))->header.qmux.service;
+ 
+-    return (QmiService)((struct full_message *)(self->data))->header.qrtr.service;
++    return (QmiService)GUINT16_FROM_LE (((struct full_message *)(self->data))->header.qrtr.service);
+ }
+ 
+ guint8
+-- 
+GitLab
+

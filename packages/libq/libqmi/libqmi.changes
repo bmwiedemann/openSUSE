@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 23 15:14:21 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Add patch:
+  * 0001-message-fix-16bit-service-on-big-endian.patch
+    - Fixes 16-bit service indications on big endian architectures.
+      Cherry-picked from upstream qmi-1-34 branch
+
+-------------------------------------------------------------------
 Fri Nov 10 14:01:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to update to 1.34.0:

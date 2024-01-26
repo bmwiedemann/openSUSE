@@ -27,6 +27,7 @@ License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Hardware/Modem
 URL:            https://gitlab.freedesktop.org/mobile-broadband/libqmi
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Patch0:         0001-message-fix-16bit-service-on-big-endian.patch
 
 BuildRequires:  help2man
 BuildRequires:  pkgconfig

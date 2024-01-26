@@ -424,4 +424,12 @@
     ** New 'QmiUimCardApplicationPersonalizationFeatureStatus'</comment>
     <requestid>1124996</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>f090076fedd18a4e7cd8166963ba267e</srcmd5>
+    <version>1.34.0</version>
+    <time>1706305572</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141698</requestid>
+  </revision>
 </revisionlist>
