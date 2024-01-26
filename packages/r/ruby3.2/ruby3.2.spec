@@ -97,6 +97,8 @@ Source6:        cargo_config
 Source98:       series
 Source99:       %{rb_soname}-rpmlintrc
 Patch0:         use-pie.patch
+# PATCH-FIX-UPSTREAM https://github.com/ruby/ruby/pull/9036
+Patch1:         Omit-test_session_reuse_but_expire-if-OpenSSL-3.2.0.patch
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
 BuildRequires:  clang
