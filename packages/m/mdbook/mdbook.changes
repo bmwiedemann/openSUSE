@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan 26 12:06:54 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Fix FTBFS by updating how we use obs-service-cargo to automate
+  vendoring of dependencies.
+
+-------------------------------------------------------------------
+Thu Jan 18 02:32:06 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.4.36:
+  * Added
+    - Added Nim to the default highlighted languages.
+    - Added a small indicator for the sidebar resize handle.
+  * Changed
+    - Updated dependencies. MSRV raised to 1.70.0.
+  * Fixed
+    - Fixed blank column in print page when the sidebar was visible.
+    - Fixed indentation of code blocks when Javascript is disabled.
+    - Fixed a panic when mdbook serve or mdbook watch were given certain kinds of paths.
+
+-------------------------------------------------------------------
+Thu Oct 12 03:12:43 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
 Sat Sep 30 00:59:33 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.4.35:
