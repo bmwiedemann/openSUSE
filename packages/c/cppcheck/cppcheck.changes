@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 26 09:06:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.2:
+  * Fix premium version check
+  * Fix 12375
+
+-------------------------------------------------------------------
 Mon Jan 22 09:54:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.1:
