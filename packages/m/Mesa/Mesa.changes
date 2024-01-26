@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 25 05:19:47 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 23.3.4
+  --> https://docs.mesa3d.org/relnotes/23.3.4.html
+
+-------------------------------------------------------------------
 Mon Jan 22 14:36:33 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - split python36-buildfix.patch into two patches python36-buildfix1.patch 
