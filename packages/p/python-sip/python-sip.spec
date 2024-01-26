@@ -16,14 +16,13 @@
 #
 
 
+%{?sle15_python_module_pythons}
 # Default is sip6 for all distributions. Be sure to branch both python-sip6 and python-sip into
 # any project using this metapackge.
 %define sipN sip6
 # Assume that all installed python flavors have the same version
 %define Nversion %(rpm -q --qf '%%{version}' --whatprovides $(echo %{python_module %{sipN}-devel}| cut -d " " -f 1))
-%define skip_python2 1
 %define plainpython python
-%{?sle15_python_module_pythons}
 Name:           python-sip
 Version:        %{Nversion}
 Release:        0
