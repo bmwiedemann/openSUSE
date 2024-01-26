@@ -1,7 +1,7 @@
 #
 # spec file for package canokey-qemu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,14 @@ License:        Apache-2.0
 URL:            https://github.com/canokeys/canokey-qemu
 Source:         %{name}-%{version}.tar
 Patch0:         canokey-git.diff
+Patch1:         canokey-core-static.diff
 BuildRequires:  cmake
+BuildRequires:  glibc-devel-static
 
 %description
 CanoKey is an open-source secure key with supports of U2F / FIDO2 with Ed25519
 and HMAC-secret, OpenPGP Card V3.4 with RSA4096, Ed25519 and more 2,
 PIV (NIST SP 800-73-4), HOTP / TOTP, NDEF.
-
 
 %package devel
 Summary:        Development files for CanoKey support in QEMU
@@ -43,21 +44,28 @@ CanoKey is an open-source secure key with supports of U2F / FIDO2 with Ed25519
 and HMAC-secret, OpenPGP Card V3.4 with RSA4096, Ed25519 and more 2,
 PIV (NIST SP 800-73-4), HOTP / TOTP, NDEF.
 
-
 %prep
 %autosetup -p1
 cp canokey-core/virt-card/git-rev.h.in canokey-core/virt-card/git-rev.h
 echo "%version" >> canokey-core/virt-card/git-rev.h
 
 %build
-# undo command line override for those. needed to include libcanokey-core
-%cmake -UBUILD_SHARED_LIBS -UBUILD_STATIC_LIBS
+# Ignore missing symbols from qemu, libcanokey-qemu directly calls back
+# into qemu (remove "-Wl,--no-undefined")
+%cmake \
+  -UBUILD_SHARED_LIBS -UBUILD_STATIC_LIBS \
+  -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now"
+
 %cmake_build
 
 %install
 %cmake_install
 
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %files devel
+%{_libdir}/libcanokey-qemu.so
 %{_includedir}/canokey-qemu.h
 %{_libdir}/pkgconfig/canokey-qemu.pc
 
@@ -65,7 +73,5 @@ echo "%version" >> canokey-core/virt-card/git-rev.h
 %license LICENSE
 %doc README.md
 %{_libdir}/libcanokey-qemu.so.0
-%{_libdir}/libcanokey-qemu.so
 
 %changelog
-

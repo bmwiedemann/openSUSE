@@ -7,4 +7,12 @@
     <comment>new package provides a software FIDO2 library for qemu</comment>
     <requestid>1129763</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de164691d1e553522802d24f340aca51</srcmd5>
+    <version>0.0+git20230606.151568c</version>
+    <time>1706305561</time>
+    <user>anag+factory</user>
+    <comment>- Fix static library build (added canokey-core-static.diff) (forwarded request 1141452 from lnussel)</comment>
+    <requestid>1141479</requestid>
+  </revision>
 </revisionlist>

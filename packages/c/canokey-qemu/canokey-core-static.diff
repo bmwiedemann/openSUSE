@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f5be451..b6aa294 100644
+--- a/canokey-core/CMakeLists.txt
++++ b/canokey-core/CMakeLists.txt
+@@ -31,7 +31,7 @@ endif ()
+ file(GLOB_RECURSE SRC src/*.c applets/*.c interfaces/*.c
+         littlefs/lfs.c littlefs/lfs_util.c
+         tinycbor/src/cborencoder.c tinycbor/src/cborparser.c)
+-add_library(canokey-core ${SRC})
++add_library(canokey-core STATIC ${SRC})
+ 
+ if (ENABLE_TESTS)
+     target_compile_definitions(canokey-core PUBLIC TEST)
