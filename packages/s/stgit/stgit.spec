@@ -1,7 +1,7 @@
 #
 # spec file for package stgit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,51 +17,119 @@
 
 
 Name:           stgit
-Version:        1.5
+Version:        2.4.2
 Release:        0
 Summary:        Stacked GIT - Source Code Management Tool
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Version Control
 URL:            https://stacked-git.github.io
 Source0:        https://github.com/ctmarinas/stgit/releases/download/v%{version}/stgit-%{version}.tar.gz
-# Patch sent upstream, PR 81: https://github.com/stacked-git/stgit/pull/81
-Patch1:         stgbashprompt-noexec.patch
+Source1:        vendor.tar.zst
 BuildRequires:  asciidoc
-BuildRequires:  fdupes
+BuildRequires:  cargo-packaging
 BuildRequires:  git-core
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig
 BuildRequires:  xmlto
+BuildRequires:  pkgconfig(openssl)
 Requires:       git-core
-BuildArch:      noarch
+# Disable this line if you wish to support all platforms.
+# In most situations, you will likely only target tier1 arches for user facing components.
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
-StGIT is a Python application providing similar functionality to Quilt
-(i.e. pushing/popping patches to/from a stack) on top of GIT. These
-operations are performed using GIT commands and the patches are stored
-as GIT commit objects, allowing easy merging of the StGIT patches into
-other repositories using standard GIT functionality.
+Stacked Git, StGit for short, is an application for managing Git commits
+as a stack of patches.
+With a patch stack workflow, multiple patches can be developed
+concurrently and efficiently, with each patch focused on a single
+concern, resulting in both a clean Git commit history and improved
+productivity.
+
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (stgit and bash)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       fish
+Supplements:    (stgit and fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish command line completion support for %{name}.
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (stgit and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+ZSH command line completion support for %{name}.
+
+%package emacs
+Summary:        emacs plugin for for %{name}
+Requires:       %{name} = %{version}
+Requires:       emacs
+Supplements:    (stgit and emacs)
+BuildArch:      noarch
+
+%description emacs
+emacs command line completion support for %{name}.
+
+%package vim-plugin
+Summary:        VIM plugin for for %{name}
+Requires:       %{name} = %{version}
+Requires:       vim
+Supplements:    (stgit and vim)
+BuildArch:      noarch
+
+%description vim-plugin
+VIM command line completion support for %{name}.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1 -a1
 
 %build
-%python3_build
-PYTHON=python3 make %{?_smp_mflags} prefix=%{_prefix} doc
+%{cargo_build}
 
 %install
-%python3_install
-PYTHON=python3 make %{?_smp_mflags} prefix=%{_prefix} mandir=%{_mandir} DESTDIR=%{buildroot} install-doc
-# avoid unreproducible pyc files https://bugs.python.org/issue34033 https://github.com/python/cpython/pull/8057
-%py3_compile %{buildroot}%{python3_sitelib}
-%fdupes %{buildroot}%{python3_sitelib}
+%make_install prefix=%{_prefix} install-completion install-contrib install-man
 
 %files
+%doc AUTHORS.md README.md CHANGELOG.md
 %license COPYING
-%doc CONTRIBUTING.md CHANGELOG.md TODO
 %{_bindir}/stg
-%{_mandir}/man1/stg*%{ext_man}
-%{python3_sitelib}/*
+%{_mandir}/man1/stg*
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/stg
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/stg.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_stg
+
+%files emacs
+%{_datadir}/emacs/site-lisp/stgit.el
+
+%files vim-plugin
+%dir %{_datadir}/vim
+%dir %{_datadir}/vim/vimfiles
+%dir %{_datadir}/vim/vimfiles/ftdetect
+%dir %{_datadir}/vim/vimfiles/syntax
+%{_datadir}/vim/vimfiles/ftdetect/stg.vim
+%{_datadir}/vim/vimfiles/syntax/stg*.vim
 
 %changelog
