@@ -6543,4 +6543,41 @@
     <comment></comment>
     <requestid>1138351</requestid>
   </revision>
+  <revision rev="417" vrev="1">
+    <srcmd5>b578960ac685db20dd064555306ebb2a</srcmd5>
+    <version>122.0</version>
+    <time>1706305543</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 122.0
+  https://www.mozilla.org/en-US/firefox/122.0/releasenotes/
+  MFSA 2024-01 (bsc#1218955)
+  * CVE-2024-0741 (bmo#1864587)
+    Out of bounds write in ANGLE
+  * CVE-2024-0742 (bmo#1867152)
+    Failure to update user input timestamp
+  * CVE-2024-0743 (bmo#1867408)
+    Crash in NSS TLS method
+  * CVE-2024-0744 (bmo#1871089)
+    Wild pointer dereference in JavaScript
+  * CVE-2024-0745 (bmo#1871838)
+    Stack buffer overflow in WebAudio
+  * CVE-2024-0746 (bmo#1660223)
+    Crash when listing printers on Linux
+  * CVE-2024-0747 (bmo#1764343)
+    Bypass of Content Security Policy when directive unsafe-inline was set
+  * CVE-2024-0748 (bmo#1783504)
+    Compromised content process could modify document URI
+  * CVE-2024-0749 (bmo#1813463)
+    Phishing site popup could show local origin in address bar
+  * CVE-2024-0750 (bmo#1863083)
+    Potential permissions request bypass via clickjacking
+  * CVE-2024-0751 (bmo#1865689)
+    Privilege escalation through devtools
+  * CVE-2024-0752 (bmo#1866840)
+    Use-after-free could occur when applying update on macOS
+  * CVE-2024-0753 (bmo#1870262)
+    HSTS policy on subdomain could bypass policy of upper domain
+  * CVE-2024-0754 (bmo#1871605)</comment>
+    <requestid>1141490</requestid>
+  </revision>
 </revisionlist>

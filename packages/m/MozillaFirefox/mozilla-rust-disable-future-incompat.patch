@@ -1,17 +1,17 @@
 # HG changeset patch
-# Parent  b62ddf6a31854e9e3c22a81056d233a50b4dd5c4
+# Parent  fa3b49f090f8b4a1af0510a675d2674a420fcbc6
 
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -206,8 +206,13 @@ webext-storage = { git = "https://github
+@@ -219,8 +219,13 @@ webext-storage = { git = "https://github
  path = "third_party/rust/mio-0.6.23"
  
  [patch."https://github.com/mozilla/uniffi-rs.git"]
- uniffi = "=0.24.3"
- uniffi_bindgen = "=0.24.3"
- uniffi_build = "=0.24.3"
- uniffi_macros = "=0.24.3"
+ uniffi = "=0.25.3"
+ uniffi_bindgen = "=0.25.3"
+ uniffi_build = "=0.25.3"
+ uniffi_macros = "=0.25.3"
  weedle2 = "=4.0.0"
 +
 +# Package code v0.1.4 uses code "that will be rejected by a future version of Rust"
