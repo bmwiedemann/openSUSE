@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 25 19:58:02 UTC 2024 - Matthias Bach <marix@marix.org> - 58
+
+- Update to version 58
+  * Add ini_ prefix even to static names so inih can be used as an
+    #include.
+
+-------------------------------------------------------------------
 Fri Jul  7 13:37:21 UTC 2023 - Matthias Bach <marix@marix.org> - 57
 
 - Update to version 57
