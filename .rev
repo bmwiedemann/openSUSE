@@ -66,4 +66,14 @@ war rightfully raised in my previous one.</comment>
   * Added GetInteger64 and GetUnsigned64 to read 64-bit integers.</comment>
     <requestid>1097525</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>152dd1d74138574e63edf6e8fdced4ec</srcmd5>
+    <version>58</version>
+    <time>1706305564</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 58
+  * Add ini_ prefix even to static names so inih can be used as an
+    #include.</comment>
+    <requestid>1141568</requestid>
+  </revision>
 </revisionlist>
