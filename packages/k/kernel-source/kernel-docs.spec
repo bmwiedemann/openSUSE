@@ -18,7 +18,7 @@
 
 %define srcversion 6.7
 %define patchversion 6.7.1
-%define git_commit 4959dd8dad49eb4f1644953682e53c1d966d6eb3
+%define git_commit 6aca25404404e4f72fa252563503b29fe5828cca
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
@@ -33,7 +33,7 @@ License:        GPL-2.0-only
 Group:          Documentation/Man
 Version:        6.7.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g4959dd8
+Release:        <RELEASE>.g6aca254
 %else
 Release:        0
 %endif
@@ -52,6 +52,7 @@ BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
 %if ! 0%{?suse_version} || 0%{?suse_version} > 1500
 BuildRequires:  python3-base
+BuildRequires:  python3-PyYAML
 BuildRequires:  python3-Sphinx
 BuildRequires:  texlive-amscls
 %else
@@ -86,7 +87,6 @@ URL:            https://www.kernel.org/
 Provides:       %name = %version-%source_rel
 Provides:       %name-srchash-%git_commit
 %if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
-ExclusiveArch:  noarch %ix86 aarch64 armv6hl armv7hl ppc64le powerpc64le riscv64 s390x x86_64
 BuildArch:      noarch
 %else
 ExclusiveArch:  do_not_build
