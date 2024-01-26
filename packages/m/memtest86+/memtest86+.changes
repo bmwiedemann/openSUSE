@@ -5,6 +5,16 @@ Mon Jan 15 10:58:15 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 * Outcome of legal review, requested by SUSE legal team-
 
 -------------------------------------------------------------------
+Mon Jan  8 09:41:12 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.00
+  - IMC polling for live RAM settings
+  - Preliminary support for ECC polling
+  - Add support for MMIO UART
+  - Add debugging options
+  - Bug fixes & optimizations
+
+-------------------------------------------------------------------
 Sat May 13 10:30:43 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Revert change from Mon Mar 13, as this prevents the use of memtest
@@ -459,4 +469,3 @@ Mon Aug 28 15:49:45 CEST 2000 - garloff@suse.de
 
 - Added memtest86-2.4.
 
--------------------------------------------------------------------
