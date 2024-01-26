@@ -62,7 +62,7 @@ Source98:       package-lock.json
 Source97:       node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
 Patch1:         0001-selinux-allow-login-to-read-motd-file.patch
-Patch2:         hide-docs.patch
+Patch2:         suse_docs.patch
 Patch3:         suse-microos-branding.patch
 Patch4:         css-overrides.patch
 Patch5:         storage-btrfs.patch
@@ -602,6 +602,10 @@ Requires: wallpaper-branding
 %endif
 # for cockpit-desktop
 Suggests: python3
+Provides:       group(cockpit-ws)
+Provides:       group(cockpit-wsinstance)
+Provides:       user(cockpit-ws)
+Provides:       user(cockpit-wsinstance)
 
 # prevent hard python3 dependency for cockpit-desktop, it falls back to other browsers
 %global __requires_exclude_from ^%{_libexecdir}/cockpit-client$
