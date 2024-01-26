@@ -85,4 +85,15 @@
 </comment>
     <requestid>1121500</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>841098c32bc3657a86758a9b71264e92</srcmd5>
+    <version>6.6.0</version>
+    <time>1706305665</time>
+    <user>anag+factory</user>
+    <comment>- Drop support-python3.6.patch
+  * python-foo prefixed packages for SLE15 with python3.6 should be
+    handled by an SLE internal maintenance request to python3-foo
+</comment>
+    <requestid>1141680</requestid>
+  </revision>
 </revisionlist>
