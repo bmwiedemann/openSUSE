@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Bootloader
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %{!?_distconfdir:%global _distconfdir /etc}
 
 Name:           perl-Bootloader
-Version:        1.10
+Version:        1.11
 Release:        0
 Requires:       coreutils
 Requires:       perl-base = %{perl_version}
