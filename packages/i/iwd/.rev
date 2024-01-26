@@ -402,4 +402,12 @@
     <comment>- Update to release 2.12 [boo#1218410]</comment>
     <requestid>1136583</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>41535e20860e335cc671b603870f4dea</srcmd5>
+    <version>2.13</version>
+    <time>1706305649</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1141631</requestid>
+  </revision>
 </revisionlist>
