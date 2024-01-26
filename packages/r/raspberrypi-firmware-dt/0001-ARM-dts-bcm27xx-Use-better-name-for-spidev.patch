@@ -1,44 +1,66 @@
-From e105f89205c68afcca2e4c4a9f925ac44aa80a12 Mon Sep 17 00:00:00 2001
+From 0940caf223acb587119718a79966508a8799e57a Mon Sep 17 00:00:00 2001
 From: "Ivan T. Ivanov" <iivanov@suse.de>
 Date: Mon, 17 Jul 2023 17:38:31 +0300
 Subject: [PATCH] ARM: dts: bcm27xx: Use better name for spidev
 
 Since this patch [1] 'spidev' compatible strings can not be used to auto bind
-to spidev module. Aparently upstream don not want these to used anymore.
+to spidev module. Apparently upstream don not want these to used anymore.
 
-Vendor linux tree, from where we are geting thse Device Tree files, still
-support this becase it have this [2] patch.
+Vendor Linux tree, from where we are getting these Device Tree files, still
+support this because it have this [2] patch.
 
-Lets follow upstream descision even if we slighly diverge from the Vendor
+Lets follow upstream decision even if we slightly diverge from the Vendor
 Device Tree sources.
 
 [1] fffc84fd87d9 ("spi: spidev: Make probe to fail early if a spidev compatible is used")
 [2] 0dd30794bd79 ("spi: spidev: Restore loading from Device Tree")
 
-This fixes bsc#1212791
+This fixes bsc#1212791 and bsc#1219094.
 
 Signed-off-by: Ivan T. Ivanov <iivanov@suse.de>
 ---
- arch/arm/boot/dts/broadcom/bcm2708-rpi-b-plus.dts   | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2708-rpi-b-rev1.dts   | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2708-rpi-b.dts        | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2708-rpi-cm.dts       | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2708-rpi-zero-w.dts   | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2708-rpi-zero.dts     | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2709-rpi-2-b.dts      | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2709-rpi-cm2.dts      | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2710-rpi-2-b.dts      | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b-plus.dts | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b.dts      | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2710-rpi-cm3.dts      | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dts | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts      | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts      | 4 ++--
- arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts     | 4 ++--
- 16 files changed, 32 insertions(+), 32 deletions(-)
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-b-plus.dts           | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-b-rev1.dts           | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-b.dts                | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-cm.dts               | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-zero-w.dts           | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-zero.dts             | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2709-rpi-2-b.dts              | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2709-rpi-cm2.dts              | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2710-rpi-2-b.dts              | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b-plus.dts         | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b.dts              | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2710-rpi-cm3.dts              | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dts         | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts              | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts              | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts             | 4 ++--
+ arch/arm/boot/dts/overlays/seeed-can-fd-hat-v1-overlay.dts  | 2 +-
+ arch/arm/boot/dts/overlays/spi1-1cs-overlay.dts             | 2 +-
+ arch/arm/boot/dts/overlays/spi1-2cs-overlay.dts             | 4 ++--
+ arch/arm/boot/dts/overlays/spi1-3cs-overlay.dts             | 6 +++---
+ arch/arm/boot/dts/overlays/spi2-1cs-overlay.dts             | 2 +-
+ arch/arm/boot/dts/overlays/spi2-1cs-pi5-overlay.dts         | 2 +-
+ arch/arm/boot/dts/overlays/spi2-2cs-overlay.dts             | 4 ++--
+ arch/arm/boot/dts/overlays/spi2-2cs-pi5-overlay.dts         | 4 ++--
+ arch/arm/boot/dts/overlays/spi2-3cs-overlay.dts             | 6 +++---
+ arch/arm/boot/dts/overlays/spi3-1cs-overlay.dts             | 2 +-
+ arch/arm/boot/dts/overlays/spi3-1cs-pi5-overlay.dts         | 2 +-
+ arch/arm/boot/dts/overlays/spi3-2cs-overlay.dts             | 4 ++--
+ arch/arm/boot/dts/overlays/spi3-2cs-pi5-overlay.dts         | 4 ++--
+ arch/arm/boot/dts/overlays/spi4-1cs-overlay.dts             | 2 +-
+ arch/arm/boot/dts/overlays/spi4-2cs-overlay.dts             | 4 ++--
+ arch/arm/boot/dts/overlays/spi5-1cs-overlay.dts             | 2 +-
+ arch/arm/boot/dts/overlays/spi5-1cs-pi5-overlay.dts         | 2 +-
+ arch/arm/boot/dts/overlays/spi5-2cs-overlay.dts             | 4 ++--
+ arch/arm/boot/dts/overlays/spi5-2cs-pi5-overlay.dts         | 4 ++--
+ arch/arm/boot/dts/overlays/spi6-1cs-overlay.dts             | 2 +-
+ arch/arm/boot/dts/overlays/spi6-2cs-overlay.dts             | 4 ++--
+ .../dts/overlays/waveshare-can-fd-hat-mode-a-overlay.dts    | 2 +-
+ 38 files changed, 67 insertions(+), 67 deletions(-)
 
 diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-plus.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-plus.dts
-index b317e83..c94e102 100644
+index 558992b..832333f 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-plus.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-plus.dts
 @@ -121,7 +121,7 @@
@@ -60,7 +82,7 @@ index b317e83..c94e102 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-rev1.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-rev1.dts
-index 228fd47..f3055af 100644
+index 9301e34..05d00fd 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-rev1.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-rev1.dts
 @@ -121,7 +121,7 @@
@@ -82,7 +104,7 @@ index 228fd47..f3055af 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b.dts
-index 1df74d5..ef6dbf9 100644
+index b8459fd..6ecbdf5 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b.dts
 @@ -121,7 +121,7 @@
@@ -104,10 +126,10 @@ index 1df74d5..ef6dbf9 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-cm.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-cm.dts
-index 6f7fea0..a4aaadf 100644
+index fde85c8..7e09989 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-cm.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-cm.dts
-@@ -126,7 +126,7 @@ cam0_reg: &cam0_regulator {
+@@ -129,7 +129,7 @@ i2c_csi_dsi0: &i2c0 {
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
  	spidev0: spidev@0{
@@ -116,7 +138,7 @@ index 6f7fea0..a4aaadf 100644
  		reg = <0>;	/* CE0 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-@@ -134,7 +134,7 @@ cam0_reg: &cam0_regulator {
+@@ -137,7 +137,7 @@ i2c_csi_dsi0: &i2c0 {
  	};
  
  	spidev1: spidev@1{
@@ -126,7 +148,7 @@ index 6f7fea0..a4aaadf 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero-w.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero-w.dts
-index 4266caf..8a2225e 100644
+index f9fb541..edd538b 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero-w.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero-w.dts
 @@ -183,7 +183,7 @@
@@ -148,7 +170,7 @@ index 4266caf..8a2225e 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero.dts
-index 3069f58..14c44c7 100644
+index 28b30c4..2a46676 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero.dts
 @@ -118,7 +118,7 @@
@@ -170,7 +192,7 @@ index 3069f58..14c44c7 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2709-rpi-2-b.dts b/arch/arm/boot/dts/broadcom/bcm2709-rpi-2-b.dts
-index c3e1b1b..c2f6a2b 100644
+index ecea4ed..6346d12 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2709-rpi-2-b.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2709-rpi-2-b.dts
 @@ -121,7 +121,7 @@
@@ -192,10 +214,10 @@ index c3e1b1b..c2f6a2b 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2709-rpi-cm2.dts b/arch/arm/boot/dts/broadcom/bcm2709-rpi-cm2.dts
-index 78881c5..c22e94b 100644
+index 3967718..758e90e 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2709-rpi-cm2.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2709-rpi-cm2.dts
-@@ -155,7 +155,7 @@ cam0_reg: &cam0_regulator {
+@@ -158,7 +158,7 @@ i2c_csi_dsi0: &i2c0 {
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
  	spidev0: spidev@0{
@@ -204,7 +226,7 @@ index 78881c5..c22e94b 100644
  		reg = <0>;	/* CE0 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-@@ -163,7 +163,7 @@ cam0_reg: &cam0_regulator {
+@@ -166,7 +166,7 @@ i2c_csi_dsi0: &i2c0 {
  	};
  
  	spidev1: spidev@1{
@@ -214,7 +236,7 @@ index 78881c5..c22e94b 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2710-rpi-2-b.dts b/arch/arm/boot/dts/broadcom/bcm2710-rpi-2-b.dts
-index 3c89b44..5e365c9 100644
+index 2282eab..c107063 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2710-rpi-2-b.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2710-rpi-2-b.dts
 @@ -121,7 +121,7 @@
@@ -236,7 +258,7 @@ index 3c89b44..5e365c9 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b-plus.dts b/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b-plus.dts
-index 818804d..a636fc5 100644
+index ec051dd..1105c58 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b-plus.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b-plus.dts
 @@ -203,7 +203,7 @@
@@ -258,7 +280,7 @@ index 818804d..a636fc5 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b.dts b/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b.dts
-index 14bb3be..9070cc7 100644
+index 582c17d..9360e3c 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b.dts
 @@ -218,7 +218,7 @@
@@ -280,10 +302,10 @@ index 14bb3be..9070cc7 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2710-rpi-cm3.dts b/arch/arm/boot/dts/broadcom/bcm2710-rpi-cm3.dts
-index 5cb7342..6fa4d8a 100644
+index 08a3303..7290ca2 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2710-rpi-cm3.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2710-rpi-cm3.dts
-@@ -155,7 +155,7 @@ cam0_reg: &cam0_regulator {
+@@ -158,7 +158,7 @@ i2c_csi_dsi0: &i2c0 {
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
  	spidev0: spidev@0{
@@ -292,7 +314,7 @@ index 5cb7342..6fa4d8a 100644
  		reg = <0>;	/* CE0 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-@@ -163,7 +163,7 @@ cam0_reg: &cam0_regulator {
+@@ -166,7 +166,7 @@ i2c_csi_dsi0: &i2c0 {
  	};
  
  	spidev1: spidev@1{
@@ -302,10 +324,10 @@ index 5cb7342..6fa4d8a 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dts b/arch/arm/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dts
-index 8cf0f45..ebdf5e7 100644
+index c653853..aa8cb88 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dts
-@@ -196,7 +196,7 @@
+@@ -183,7 +183,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
  	spidev0: spidev@0{
@@ -314,7 +336,7 @@ index 8cf0f45..ebdf5e7 100644
  		reg = <0>;	/* CE0 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-@@ -204,7 +204,7 @@
+@@ -191,7 +191,7 @@
  	};
  
  	spidev1: spidev@1{
@@ -324,7 +346,7 @@ index 8cf0f45..ebdf5e7 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
-index 15f46d5..cfe3228 100644
+index 86dc9e7..e27b125 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
 @@ -294,7 +294,7 @@
@@ -346,7 +368,7 @@ index 15f46d5..cfe3228 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts
-index 8718e13..e4618d5 100644
+index f510575..cf6aed7 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts
 @@ -303,7 +303,7 @@
@@ -368,7 +390,7 @@ index 8718e13..e4618d5 100644
  		#address-cells = <1>;
  		#size-cells = <0>;
 diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts
-index 1069184..69cbca6 100644
+index 6ccf845..d141c35 100644
 --- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts
 +++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts
 @@ -182,7 +182,7 @@
@@ -389,5 +411,409 @@ index 1069184..69cbca6 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/seeed-can-fd-hat-v1-overlay.dts b/arch/arm/boot/dts/overlays/seeed-can-fd-hat-v1-overlay.dts
+index 210d027..f91ee5e 100644
+--- a/arch/arm/boot/dts/overlays/seeed-can-fd-hat-v1-overlay.dts
++++ b/arch/arm/boot/dts/overlays/seeed-can-fd-hat-v1-overlay.dts
+@@ -34,7 +34,7 @@
+ 			cs-gpios = <&gpio 18 1>;
+ 			status = "okay";
+ 			spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi1-1cs-overlay.dts b/arch/arm/boot/dts/overlays/spi1-1cs-overlay.dts
+index ea2794b..d199434 100644
+--- a/arch/arm/boot/dts/overlays/spi1-1cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi1-1cs-overlay.dts
+@@ -32,7 +32,7 @@
+ 			status = "okay";
+ 
+ 			spidev1_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi1-2cs-overlay.dts b/arch/arm/boot/dts/overlays/spi1-2cs-overlay.dts
+index dab34ee..82ac68b 100644
+--- a/arch/arm/boot/dts/overlays/spi1-2cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi1-2cs-overlay.dts
+@@ -32,7 +32,7 @@
+ 			status = "okay";
+ 
+ 			spidev1_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -41,7 +41,7 @@
+ 			};
+ 
+ 			spidev1_1: spidev@1 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <1>;      /* CE1 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi1-3cs-overlay.dts b/arch/arm/boot/dts/overlays/spi1-3cs-overlay.dts
+index bc7e7d0..107f146 100644
+--- a/arch/arm/boot/dts/overlays/spi1-3cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi1-3cs-overlay.dts
+@@ -32,7 +32,7 @@
+ 			status = "okay";
+ 
+ 			spidev1_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -41,7 +41,7 @@
+ 			};
+ 
+ 			spidev1_1: spidev@1 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <1>;      /* CE1 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -50,7 +50,7 @@
+ 			};
+ 
+ 			spidev1_2: spidev@2 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <2>;      /* CE2 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi2-1cs-overlay.dts b/arch/arm/boot/dts/overlays/spi2-1cs-overlay.dts
+index 2a29750..89653a9 100644
+--- a/arch/arm/boot/dts/overlays/spi2-1cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi2-1cs-overlay.dts
+@@ -32,7 +32,7 @@
+ 			status = "okay";
+ 
+ 			spidev2_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi2-1cs-pi5-overlay.dts b/arch/arm/boot/dts/overlays/spi2-1cs-pi5-overlay.dts
+index 44382cc..80c078e 100644
+--- a/arch/arm/boot/dts/overlays/spi2-1cs-pi5-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi2-1cs-pi5-overlay.dts
+@@ -16,7 +16,7 @@
+ 			status = "okay";
+ 
+ 			spidev2_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi2-2cs-overlay.dts b/arch/arm/boot/dts/overlays/spi2-2cs-overlay.dts
+index 642678f..533d5eb 100644
+--- a/arch/arm/boot/dts/overlays/spi2-2cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi2-2cs-overlay.dts
+@@ -32,7 +32,7 @@
+ 			status = "okay";
+ 
+ 			spidev2_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -41,7 +41,7 @@
+ 			};
+ 
+ 			spidev2_1: spidev@1 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <1>;      /* CE1 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi2-2cs-pi5-overlay.dts b/arch/arm/boot/dts/overlays/spi2-2cs-pi5-overlay.dts
+index b37a2c2..b83f624 100644
+--- a/arch/arm/boot/dts/overlays/spi2-2cs-pi5-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi2-2cs-pi5-overlay.dts
+@@ -16,7 +16,7 @@
+ 			status = "okay";
+ 
+ 			spidev2_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -25,7 +25,7 @@
+ 			};
+ 
+ 			spidev2_1: spidev@1 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <1>;      /* CE1 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi2-3cs-overlay.dts b/arch/arm/boot/dts/overlays/spi2-3cs-overlay.dts
+index 28d40c6..1ff30d4 100644
+--- a/arch/arm/boot/dts/overlays/spi2-3cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi2-3cs-overlay.dts
+@@ -32,7 +32,7 @@
+ 			status = "okay";
+ 
+ 			spidev2_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -41,7 +41,7 @@
+ 			};
+ 
+ 			spidev2_1: spidev@1 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <1>;      /* CE1 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -50,7 +50,7 @@
+ 			};
+ 
+ 			spidev2_2: spidev@2 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <2>;      /* CE2 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi3-1cs-overlay.dts b/arch/arm/boot/dts/overlays/spi3-1cs-overlay.dts
+index 7abea6d..fe12743 100644
+--- a/arch/arm/boot/dts/overlays/spi3-1cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi3-1cs-overlay.dts
+@@ -24,7 +24,7 @@
+ 			status = "okay";
+ 
+ 			spidev3_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi3-1cs-pi5-overlay.dts b/arch/arm/boot/dts/overlays/spi3-1cs-pi5-overlay.dts
+index a94e3a9..a1fdddf 100644
+--- a/arch/arm/boot/dts/overlays/spi3-1cs-pi5-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi3-1cs-pi5-overlay.dts
+@@ -16,7 +16,7 @@
+ 			status = "okay";
+ 
+ 			spidev3_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi3-2cs-overlay.dts b/arch/arm/boot/dts/overlays/spi3-2cs-overlay.dts
+index 2f474ac..ab4cf5d 100644
+--- a/arch/arm/boot/dts/overlays/spi3-2cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi3-2cs-overlay.dts
+@@ -24,7 +24,7 @@
+ 			status = "okay";
+ 
+ 			spidev3_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -33,7 +33,7 @@
+ 			};
+ 
+ 			spidev3_1: spidev@1 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <1>;      /* CE1 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi3-2cs-pi5-overlay.dts b/arch/arm/boot/dts/overlays/spi3-2cs-pi5-overlay.dts
+index 259548b..5217100 100644
+--- a/arch/arm/boot/dts/overlays/spi3-2cs-pi5-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi3-2cs-pi5-overlay.dts
+@@ -16,7 +16,7 @@
+ 			status = "okay";
+ 
+ 			spidev3_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -25,7 +25,7 @@
+ 			};
+ 
+ 			spidev3_1: spidev@1 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <1>;      /* CE1 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi4-1cs-overlay.dts b/arch/arm/boot/dts/overlays/spi4-1cs-overlay.dts
+index 66d8952..9a70ae2 100644
+--- a/arch/arm/boot/dts/overlays/spi4-1cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi4-1cs-overlay.dts
+@@ -24,7 +24,7 @@
+ 			status = "okay";
+ 
+ 			spidev4_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi4-2cs-overlay.dts b/arch/arm/boot/dts/overlays/spi4-2cs-overlay.dts
+index 83d8cb8..d13e513 100644
+--- a/arch/arm/boot/dts/overlays/spi4-2cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi4-2cs-overlay.dts
+@@ -24,7 +24,7 @@
+ 			status = "okay";
+ 
+ 			spidev4_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -33,7 +33,7 @@
+ 			};
+ 
+ 			spidev4_1: spidev@1 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <1>;      /* CE1 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi5-1cs-overlay.dts b/arch/arm/boot/dts/overlays/spi5-1cs-overlay.dts
+index 168b482..2cc671d 100644
+--- a/arch/arm/boot/dts/overlays/spi5-1cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi5-1cs-overlay.dts
+@@ -24,7 +24,7 @@
+ 			status = "okay";
+ 
+ 			spidev5_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi5-1cs-pi5-overlay.dts b/arch/arm/boot/dts/overlays/spi5-1cs-pi5-overlay.dts
+index bde1837..37dabfd 100644
+--- a/arch/arm/boot/dts/overlays/spi5-1cs-pi5-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi5-1cs-pi5-overlay.dts
+@@ -16,7 +16,7 @@
+ 			status = "okay";
+ 
+ 			spidev5_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi5-2cs-overlay.dts b/arch/arm/boot/dts/overlays/spi5-2cs-overlay.dts
+index c2a239a..624ee07 100644
+--- a/arch/arm/boot/dts/overlays/spi5-2cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi5-2cs-overlay.dts
+@@ -24,7 +24,7 @@
+ 			status = "okay";
+ 
+ 			spidev5_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -33,7 +33,7 @@
+ 			};
+ 
+ 			spidev5_1: spidev@1 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <1>;      /* CE1 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi5-2cs-pi5-overlay.dts b/arch/arm/boot/dts/overlays/spi5-2cs-pi5-overlay.dts
+index 2c9eee2..1eacefb 100644
+--- a/arch/arm/boot/dts/overlays/spi5-2cs-pi5-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi5-2cs-pi5-overlay.dts
+@@ -16,7 +16,7 @@
+ 			status = "okay";
+ 
+ 			spidev5_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -25,7 +25,7 @@
+ 			};
+ 
+ 			spidev5_1: spidev@1 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <1>;      /* CE1 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi6-1cs-overlay.dts b/arch/arm/boot/dts/overlays/spi6-1cs-overlay.dts
+index a784f8a..5638dea 100644
+--- a/arch/arm/boot/dts/overlays/spi6-1cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi6-1cs-overlay.dts
+@@ -24,7 +24,7 @@
+ 			status = "okay";
+ 
+ 			spidev6_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/spi6-2cs-overlay.dts b/arch/arm/boot/dts/overlays/spi6-2cs-overlay.dts
+index 8ef5138..e06f322 100644
+--- a/arch/arm/boot/dts/overlays/spi6-2cs-overlay.dts
++++ b/arch/arm/boot/dts/overlays/spi6-2cs-overlay.dts
+@@ -24,7 +24,7 @@
+ 			status = "okay";
+ 
+ 			spidev6_0: spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;      /* CE0 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -33,7 +33,7 @@
+ 			};
+ 
+ 			spidev6_1: spidev@1 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <1>;      /* CE1 */
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+diff --git a/arch/arm/boot/dts/overlays/waveshare-can-fd-hat-mode-a-overlay.dts b/arch/arm/boot/dts/overlays/waveshare-can-fd-hat-mode-a-overlay.dts
+index 59388cc..e3aac5f 100644
+--- a/arch/arm/boot/dts/overlays/waveshare-can-fd-hat-mode-a-overlay.dts
++++ b/arch/arm/boot/dts/overlays/waveshare-can-fd-hat-mode-a-overlay.dts
+@@ -36,7 +36,7 @@
+ 			cs-gpios = <&gpio 26 1>;
+ 			status = "okay";
+ 			spidev@0 {
+-				compatible = "spidev";
++				compatible = "rohm,dh2228fv";
+ 				reg = <0>;
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
 -- 
 2.35.3
+
