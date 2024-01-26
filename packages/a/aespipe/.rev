@@ -146,4 +146,12 @@
   redirect to its HTTPS counterpart https://loop-aes.sourceforge.net/ (forwarded request 1035848 from dimstar)</comment>
     <requestid>1035849</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b9adb56e46f2b3b1c8e045d6c319635f</srcmd5>
+    <version>2.4g</version>
+    <time>1706305654</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141665</requestid>
+  </revision>
 </revisionlist>
