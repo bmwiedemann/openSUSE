@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 18 17:08:57 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hslua-typing to version 0.1.1.
+  ## hslua-typing-0.1.1
+
+  Released 2024-01-18.
+
+  -   Relaxed upper bound for text and containers, allowing
+      text-2.1, and containers-0.7.
+
+-------------------------------------------------------------------
 Mon Mar 13 12:06:27 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Add hslua-typing at version 0.1.0.
