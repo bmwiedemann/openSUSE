@@ -117,4 +117,12 @@ This is for backports derived from Factory. No effect on Tumbleweed.</comment>
     <comment>Fixed building against Qt v5.15.8 and later.</comment>
     <requestid>1062119</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5531e3c7bbddcb451d4b74cbe6451782</srcmd5>
+    <version>5.15.6</version>
+    <time>1706305618</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141587</requestid>
+  </revision>
 </revisionlist>
