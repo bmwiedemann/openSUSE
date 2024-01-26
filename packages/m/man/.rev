@@ -1013,4 +1013,15 @@
     <comment></comment>
     <requestid>1118949</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>85926cceea25e5a5ecfe729afa137fbd</srcmd5>
+    <version>2.12.0</version>
+    <time>1706305577</time>
+    <user>anag+factory</user>
+    <comment>- Skip posttrans dependency on systemd to support container without
+  systemd (boo#1215538)
+- Use %(trans)filetriggerin and %(trans)filetriggerpostun to get
+  an uptodate man database for installed manual pages</comment>
+    <requestid>1141710</requestid>
+  </revision>
 </revisionlist>

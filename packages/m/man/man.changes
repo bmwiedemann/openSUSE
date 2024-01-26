@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 26 09:26:57 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Skip posttrans dependency on systemd to support container without
+  systemd (boo#1215538)
+- Use %(trans)filetriggerin and %(trans)filetriggerpostun to get
+  an uptodate man database for installed manual pages
+
+-------------------------------------------------------------------
 Sun Oct  1 12:19:14 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 2.12.0:

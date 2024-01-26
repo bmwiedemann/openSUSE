@@ -1,7 +1,7 @@
 #
 # spec file for package man
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,7 +84,6 @@ Requires:       less
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         coreutils
 PreReq:         fillup
-Requires(posttrans):systemd
 Requires(pre):  group(man)
 Requires(pre):  user(man)
 Provides:       man_db
@@ -98,17 +97,17 @@ printer (using groff).
 
 %prep
 %setup -q -n man-db-%{version}
-%patch0 -b .groff
-%patch3 -b .chinese
-%patch4 -b .zio
-%patch5 -b .listall
-%patch6 -p1 -b .p6
-%patch7 -p1 -b .p7
-%patch8 -p1 -b .p8
-%patch9 -b .p9
-%patch10 -b .libalernative
+%patch -P 0 -b .groff
+%patch -P3 -b .chinese
+%patch -P4 -b .zio
+%patch -P5 -b .listall
+%patch -P6 -p1 -b .p6
+%patch -P7 -p1 -b .p7
+%patch -P8 -p1 -b .p8
+%patch -P9 -b .p9
+%patch -P10 -b .libalernative
 rm -f configure
-%patch12 -p1 -b .p12
+%patch -P12 -p1 -b .p12
 
 %build
 %global optflags %{optflags} -funroll-loops -pipe -Wall
@@ -262,6 +261,51 @@ install -m 644 %{SOURCE9} %{buildroot}%{_prefix}/etc/profile.d/
 
 %find_lang man-db --all-name --with-man
 
+%global trigger_functions %{expand:
+-- Check if rpm.execute() as function call is given
+if type(rpm.execute) == "function" then
+   execute = rpm.execute
+else
+  function execute(path, ...)
+    local pid = posix.fork()
+    if not pid then
+       error(path .. ": fork failed: " .. posix.errno() .. "\n")
+    elseif pid == 0 then
+       assert(posix.exec(path, ...))
+    else
+       posix.wait(pid)
+    end
+  end
+end
+--
+}
+
+%if 0%{?suse_version} >= 1699
+%transfiletriggerin -p <lua> -- %{_mandir}
+%else
+%filetriggerin -p <lua> -- %{_mandir}
+%endif
+%trigger_functions
+stat = posix.stat("/var/cache/man/index.db")
+if stat then
+    execute("%{_bindir}/mandb", "--quiet")
+else
+    execute("%{_bindir}/mandb", "--quiet", "--create")
+end
+
+%if 0%{?suse_version} >= 1699
+%transfiletriggerpostun -p <lua> -- %{_mandir}
+%else
+%filetriggerpostun -p <lua> -- %{_mandir}
+%endif
+%trigger_functions
+stat = posix.stat("/var/cache/man/index.db")
+if stat then
+    execute("%{_bindir}/mandb", "--quiet")
+else
+    execute("%{_bindir}/mandb", "--quiet", "--create")
+end
+
 %pre
 test -d var/catman/ && rm -rf var/catman/ || true
 %if %{with sdtimer}
@@ -286,6 +330,9 @@ then
     esac
   done
 fi
+# Simply for systemdless containers
+getent group  man > /dev/null || groupadd -r man
+getent passwd man > /dev/null || useradd -r -g man -d /var/cache/man -s /sbin/nologin -c "Manual pages viewer" man
 
 %post
 %{fillup_only -an cron}
@@ -316,7 +363,14 @@ fi
 
 %posttrans
 %{?tmpfiles_create:%tmpfiles_create %{_prefix}/lib/tmpfiles.d/man-db.conf}
-if test -d %{_localstatedir}/cache/man
+if test ! -d %{_localstatedir}/cache/man
+then
+  # Simply for systemdless containers
+  umask 022
+  mkdir -p %{_localstatedir}/cache/man
+  chown -R man:man %{_localstatedir}/cache/man
+fi
+if test ! -s %{_localstatedir}/cache/man/index.db
 then
   mandb --quiet --create || :
 fi
