@@ -248,4 +248,21 @@
     <comment>- Update to gcc-13 branch head, 36ddb5230f56a30317630a928, git8205</comment>
     <requestid>1137881</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8900a884f50653a6e653442c1bf0ce1f</srcmd5>
+    <version>13.2.1+git8250</version>
+    <time>1706305524</time>
+    <user>anag+factory</user>
+    <comment>- Update to gcc-13 branch head, fc7d87e0ffadca49bec29b2107, git8250
+  * Includes fix for building TVM.  [boo#1218492]
+
+- Add cross-X-newlib-devel requires to newlib cross compilers.
+  [boo#1219031]
+
+- Package m2rte.so plugin in the gcc13-m2 sub-package rather than
+  in gcc13-devel.  [boo#1210959]
+- Require libstdc++6-devel-gcc13 from gcc13-m2 as m2 programs
+  are linked against libstdc++6.</comment>
+    <requestid>1141444</requestid>
+  </revision>
 </revisionlist>

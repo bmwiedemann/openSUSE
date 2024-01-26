@@ -200,7 +200,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.2.1+git8205
+Version:        13.2.1+git8250
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -1951,6 +1951,7 @@ Requires:       libm2iso%{libm2_sover} >= %{version}-%{release}
 Requires:       libm2log%{libm2_sover} >= %{version}-%{release}
 Requires:       libm2min%{libm2_sover} >= %{version}-%{release}
 Requires:       libm2pim%{libm2_sover} >= %{version}-%{release}
+Requires:       libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix} = %{version}-%{release}
 
 %description m2
 This package contains a Modula-2 compiler.
@@ -1966,6 +1967,7 @@ Requires:       libm2iso%{libm2_sover}-32bit >= %{version}-%{release}
 Requires:       libm2log%{libm2_sover}-32bit >= %{version}-%{release}
 Requires:       libm2min%{libm2_sover}-32bit >= %{version}-%{release}
 Requires:       libm2pim%{libm2_sover}-32bit >= %{version}-%{release}
+Requires:       libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-32bit = %{version}-%{release}
 
 %description m2-32bit
 This package contains a Modula-2 compiler.
@@ -1981,6 +1983,7 @@ Requires:       libm2iso%{libm2_sover}-64bit >= %{version}-%{release}
 Requires:       libm2log%{libm2_sover}-64bit >= %{version}-%{release}
 Requires:       libm2min%{libm2_sover}-64bit >= %{version}-%{release}
 Requires:       libm2pim%{libm2_sover}-64bit >= %{version}-%{release}
+Requires:       libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-64bit = %{version}-%{release}
 
 %description m2-64bit
 This package contains a Modula-2 compiler.
@@ -3542,6 +3545,9 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc13-locale.lang
 %defattr(-,root,root)
 %dir %{libsubdir}/plugin
 %{libsubdir}/plugin
+%if %{build_m2}
+%exclude %{libsubdir}/plugin/m2rte.so
+%endif
 %endif
 
 %files locale -f gcc13-locale.lang
@@ -4049,6 +4055,9 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc13-locale.lang
 %defattr(-,root,root)
 %{_prefix}/bin/gm2%{binsuffix}
 %{libsubdir}/cc1gm2
+%if %{enable_plugins}
+%{libsubdir}/plugin/m2rte.so
+%endif
 %{versmainlibdir}/m2
 %versmainlib libm2log.a
 %versmainlib libm2log.so

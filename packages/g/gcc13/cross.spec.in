@@ -129,6 +129,7 @@ BuildRequires: libunwind-devel
 ExclusiveArch: do-not-build
 %endif
 BuildRequires: cross-%cross_arch-newlib-devel
+Requires: cross-%cross_arch-newlib-devel
 %endif
 %if "%{cross_arch}" == "avr"
 %if !0%{?is_opensuse}
