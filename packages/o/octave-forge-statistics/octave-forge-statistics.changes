@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan 20 15:06:54 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.1:
+  * New functions:
+    - ClassificationKNN (new classdef)
+    - predict (for ClassificationKNN classdef)
+    - fitcknn
+    - fitrgam
+    - knnsearch (fully Matlab compatible)
+    - mnrfit
+    - rangesearch (fully Matlab compatible)
+    - RegressionGAM (new classdef)
+    - predict (for RegressionGAM classdef)
+  * Improvements:
+    - anovan: new features
+    - friedman: bug fixes
+    - pdist: updated functionality, fully MATLAB compatible
+    - pdist2: updated functionality, fully MATLAB compatible
+    - regress_gp: updated functionality with RBF kernel
+    - ridge: bug fixes
+
+-------------------------------------------------------------------
 Thu Oct 19 09:45:53 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.6.0:
