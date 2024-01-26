@@ -1,7 +1,7 @@
 #
 # spec file for package orthos-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           orthos-client
-Version:        1.2.31+git.5a38e82
+Version:        1.2.83+git.cb8bcaf
 Release:        0
 Summary:        Command line client for orthos2
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Boot/Servers
 URL:            https://github.com/openSUSE/orthos2
 Source:         orthos2-%{version}.tar.gz
-Source1:        orthos2.1
+BuildRequires:  python3-docutils
 Requires:       python3-base
 Requires:       python3-pytz
 BuildArch:      noarch
@@ -41,14 +41,16 @@ line interface based on readline.
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
+mkdir -p %{buildroot}/%{_sysconfdir}
 mkdir -p %{buildroot}/%{_mandir}/man1
 
-install orthos2 %{buildroot}/%{_bindir}/orthos2
-install -m 644 %{S:1} %{buildroot}/%{_mandir}/man1/orthos2.1
+install cli/orthos2 %{buildroot}/%{_bindir}/orthos2
+install cli/orthosrc %{buildroot}/%{_sysconfdir}/orthosrc
+rst2man docs/commandline.rst %{buildroot}/%{_mandir}/man1/orthos2.1
 
 %files
-%doc orthosrc
 %attr(755, root, root) %{_bindir}/orthos2
-%{_mandir}/man1/orthos2.1%{?ext_man}
+%config %attr(644, root, root) %{_sysconfdir}/orthosrc
+%{_mandir}/man1/orthos2.1*
 
 %changelog
