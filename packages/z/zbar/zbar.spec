@@ -33,6 +33,7 @@ Patch0:         https://github.com/mchehab/zbar/commit/368571ffa1a0f6cc41f708dd0
 Patch1:         https://github.com/mchehab/zbar/commit/a549566ea11eb03622bd4458a1728ffe3f589163.patch#/zbar-configure.patch
 BuildRequires:  automake
 BuildRequires:  libjpeg-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(ImageMagick)
@@ -105,6 +106,7 @@ This package contains the module to use ZBar from python3.
 %autosetup -p1
 
 %build
+autoreconf -fiv
 %configure \
   --docdir=%{_docdir}/%{name} \
   --disable-static \
