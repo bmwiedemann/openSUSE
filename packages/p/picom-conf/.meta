@@ -1,0 +1,6 @@
+<package name="picom-conf" project="openSUSE:Factory">
+  <title>GUI configuration tool for Picom X composite manager</title>
+  <description>picom-conf is a configuration tool for X composite manager picom.</description>
+  <devel project="X11:LXQt" package="picom-conf"/>
+  <url>https://github.com/qtilities/picom-conf</url>
+</package>

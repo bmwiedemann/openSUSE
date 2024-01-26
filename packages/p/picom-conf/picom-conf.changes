@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu Jan 25 16:07:07 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Removed:
+  * Recommends %{name}-lang, per https://build.opensuse.org/request/show/1141338
+
+-------------------------------------------------------------------
+Mon Dec 11 18:08:54 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Updated to first official 0.17.0 release tarball
+
+-------------------------------------------------------------------
+Fri Dec 08 16:04:50 UTC 2023 - sfalken@opensuse.org
+
+- Update to version 0.16.0+git135.1167266:
+  * Weblate commits
+  * Weblate commits
+  * README fix
+  * Renamed translation files
+  * Minor README and CMake config changes, set test language
+  * Weblate commits
+  * Weblate commits
+  * Wrong French desktop translation directory
+  * Weblate commits
+  * Updated translations
+
+-------------------------------------------------------------------
+Sun Aug 20 08:08:31 UTC 2023 - Андрей Алыпов <and.november@opensuse.org>
+
+- initial package (version 0.16.0) for openSUSE
