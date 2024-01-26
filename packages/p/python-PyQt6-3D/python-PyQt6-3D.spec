@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %define mname PyQt6-3D
 %define pyqt_build_for_qt6 1
+%{?sle15_python_module_pythons}
 Name:           python-%{mname}
 Version:        6.6.0
 Release:        0
