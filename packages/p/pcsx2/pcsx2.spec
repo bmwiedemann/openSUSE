@@ -17,18 +17,19 @@
 
 
 Name:           pcsx2
-Version:        1.7.5386~git20240104
+Version:        1.7.5518~git20240126
 Release:        0
 Summary:        Sony PlayStation 2 Emulator
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-only AND LGPL-3.0-only
 URL:            http://pcsx2.net/
 Source0:        %{name}-%{version}.tar.xz
+Source1:        https://github.com/PCSX2/pcsx2_patches/releases/download/latest/patches.zip
 ExclusiveArch:  x86_64
+BuildRequires:  clang
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fast_float-devel
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  gtest
 BuildRequires:  libaio-devel
 BuildRequires:  libpcap-devel-static
@@ -98,7 +99,8 @@ mkdir build
 cd build
 cmake ..\
   -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+  -DCMAKE_C_COMPILER=clang \
+  -DCMAKE_CXX_COMPILER=clang++ \
   -DX11_API=ON \
   -DWAYLAND_API=ON \
   -DENABLE_SETCAP=OFF \
@@ -110,6 +112,8 @@ cmake ..\
 # pcsx2 doesn't support make install anymore, we have to do it manually
 mkdir -p %{buildroot}%{_libdir}/%{name}
 cp -r build/bin/* %{buildroot}%{_libdir}/%{name}
+
+cp %{SOURCE1} %{buildroot}%{_libdir}/%{name}/resources
 
 mkdir -p %{buildroot}%{_bindir}
 ln -s %{_libdir}/%{name}/%{name}-qt %{buildroot}%{_bindir}/%{name}-qt

@@ -17,4 +17,5 @@
     <param name="basename">pcsx2</param>
   </service>
   <service name="format_spec_file" mode="localonly"/>
+  <service name="download_files" mode="localonly"/>
 </services>

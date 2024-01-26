@@ -1,4 +1,211 @@
 -------------------------------------------------------------------
+Fri Jan 26 12:10:01 UTC 2024 - i@guoyunhe.me
+
+- Update to version 1.7.5518~git20240126:
+  * ImGuiOverlays: Fix OSD margin
+  * Qt: Make "Ignore Inversion" a global mapping setting
+  * Qt: Update Base Translation
+  * DEV9: Remove some casts in ATA Info
+  * DEV9: Various ATA fixes
+  * DEV9: LBA48 Support
+  * Qt: Icon Refresh
+  * Qt: Fix use of tr outside of Qt class
+  * Common: Add helper for creating an NSString from a string_view
+  * Qt: Use proper Show in Finder on macOS
+  * CMake: Set qm files as non-source data in Xcode
+  * GS/HW: Handle more double-half clear edge cases
+  * GameDB: Hot Shots Golf Fore Fixes
+  * PINE: fix save state regression introduced during the switch to Qt
+  * Debugger: Allow copying address of memory search results
+  * FSUI: Add Recording Indicator and Time
+  * GameDB: Thrillville fixes
+  * GUI: Memory Card "slot" instead of "port"
+  * Debugger: Adds loading breakpoints/saved addresses from settings
+  * Qt: Fix unclickable links in Setup Wizard
+  * Qt: Remove the duplicate memcard button
+  * Qt: Remove NTFS compression checkbox on Linux/Mac
+  * MemoryCardFile: Log size/formatted state on load
+  * MemoryCardFile: Don't compress file on opening
+  * Qt: Explicitly set memcard compression regardless of choice
+  * GameDB: Various fixes
+  * GS/HW: Don't preload target from other targets after hw clear
+  * PAD: Update to latest controller database.
+  * GS/HW: Fix up Tekken 5 CRC hack to not remove post + break other scenes
+  * config: remove  unused variables
+  * Qt: Update Base Translation
+  * Qt: Warning fix
+  * GS/HW: Fix incorrect page mask in ClearGSLocalMemory()
+  * GS/HW: Fix double-half clears misfiring on CT32+Z24 when clearing depth
+  * GS/HW: Prevent creating texture with invalid mipmap levels
+  * GS/Metal: Don't discard alpha on RGB depth copy
+  * GameDB: A few trilinear+mipmap games
+  * GS: Correct flush reasons
+  * GS/HW: Better avoid target uploads on HW clear
+  * SPU: VolumeSlide: disregard phase when exp + decr
+  * GS/HW: Fix false positive on shared bits with double-half clears
+  * Qt: Make Shift+Wheel scroll settings info panel
+  * GunCon2: Fix cursor assertions in devbuilds
+  * GS/HW: Optimize out some situations of texture loading
+  * GameDB: Various fixes 2: Electric Boogaloo
+  * GameDB: Various fixes
+  * Qt: Update Base Translation
+  * GS/HW: Fix compiler warnings.
+  * Qt: Remove non-printable character from some strings
+  * FullscreenUI: Link create memory card to Qt dialog
+  * Qt: Fix OSD/Big Picture display for missing languages
+  * translations: Syncing Crowdin translations (#10638)
+  * GameDB: Add HPO Native to SLAI
+  * GameDB: Gun Align to Native + typo fix
+  * Pad: Force multitapped slots to Not Connected if their multitap is missing
+  * GS/HW: Add DS and Alpha Test checks
+  * GS/HW: Further improve no_rt heuristics
+  * ImGuiOverlays: Fix analog input display
+  * FileSystem: Handle infinite symlink loops in FindFiles()
+  * ImGuiOverlays: Display inputs as integer, ignoring deadzone
+  * Pad: Add GetEffectiveInput()
+  * Adding Jetbrains Rider to Gitignore.
+  * gitignore: Add portable.ini/fix font paths
+  * CI/Linux: Use wildcard for AppImage libc downgrade
+  * DEV9: Remove SDMA code
+  * DEV9: Fix ATA MDMA
+  * GameDB: Various fixes
+  * GameDB: Fix water in Just Cause (#10645)
+  * Game List: Ignore exclusion paths if they are empty string
+  * CI: Default to non-portable builds
+  * Build: Remove unused option `DISABLE_BUILD_DATE`
+  * PAD: Update to latest controller database.
+  * GS/HW: ignore lower 3 bits of 16bit color for AEM check
+  * Qt: Look for a file named DefaultUpdaterChannel.h
+  * Build: Simplify Git version extraction
+  * Update Crowdin configuration file
+  * GameDB: Flower sun and rain fixes
+  * Qt: Remove debug popup after update cleanup
+  * Qt: Update Base Translation
+  * Qt: Invoke Updater as Administrator for Program Files installs
+  * GS/HW: Don't mark 24bit alpha as valid on upgrade
+  * CDVD: Fix block dump path generation
+  * Qt: Use native path separators for block dump
+  * IPU: Fix regression from #10617
+  * CI: Allow user to override deps build path
+  * GS/DX11: Remove unused field
+  * GS: Fix enum type return warnings
+  * GS: Make GSVertex POD
+  * GS: Make GSDrawingContext and GSDrawingEnvironment POD
+  * GS: Make vector types POD
+  * GS: Skip vertex append for GS_INVALID PRIM
+  * GS: Remove unused vertex types
+  * GSCapture: Fix invalid substring comparison
+  * x86/iR5900: Fix signed/unsigned comparison in timeout loop
+  * SPU2: Make StereoOut16/32 POD
+  * IPU: Remove last parameter from IDCT_Add
+  * HW: Make various DMAC/IPU/VIF register types POD
+  * Cache: Make CacheTag/CacheData POD
+
+-------------------------------------------------------------------
+Sat Jan 13 05:13:15 UTC 2024 - i@guoyunhe.me
+
+- Update to version 1.7.5449~git20240113:
+  * Qt: Update Base Translation
+  * FSUI: Allow toggling fullscreen when VM is paused
+  * Qt: Tidy up Tools menu
+  * Update VMManager.cpp to not count paused time toward time played
+  * GS/HW: Fix drawing with mismatched target sizes
+  * CMake: Set LINUX in current and parent scope
+  * VMManager: Force TimeStretch in Achievements HC Mode
+  * Translation\UI: Updates Bitrate "Kbps" to "kpbs"
+  * Settings: Adds description to 'All CRCs' on hover for cheat/patch settings
+  * MTGS: Explicitly set FP control register on startup
+  * PINE: Convert from class to namespace
+  * PINE: Tidy up and fix shutdown hang on Linux
+  * GS:MTL: Properly handle hdr rendering to cleared textures
+  * Qt: Update Base Translation
+  * 3rdparty: Add source for modified PromptFont that we use for OSD
+  * Qt: Add log window
+  * Qt: Add accessors for UI thread view of current game
+  * Console: Remove WX rubbish and replace
+  * GS/HW: Don't bother trying to draw empty draws
+  * GameDB: Remove GS fixes from Ty The Tasmanian Tiger
+  * GSDumpRunner: Fix dump runner
+  * GS/HW: Upgrade target to C32 if alpha requested on src is rt
+  * GS/HW: Update cached source alpha if linked to target
+  * GameDB: Set HPO Native to Fast and Furious (#10595)
+  * CI: fix flatpak cron and add a way to manually kick off a release (#10567)
+  * GameDB: Merge sprite to remove blur on Sakura Taisen - Atsuki Chishioni
+  * GS/HW: Detected striped moves in HW
+  * GS: Flush draw when address matches FRAME/Z
+  * GS/HW: Don't rely on old targets for double-half clear
+  * Qt: Fix incorrect renderer shown in status bar
+  * DEV9: various fixes for ATA Identify improved 48-bit addressing UDMA mode now set correctly MDMA0 mode now set correctly fixed user addressable sectors limit
+  * GS/HW: Fix incorrect resizing of Ico move target
+  * GS/HW: Allow blending on normal shuffles
+  * GameDB: Fix broken shadows in Armored Core Last Raven
+  * PINE: fix regressions introduced in #10448
+  * PAD: Update to latest controller database.
+  * Misc: Warning fixes
+  * Qt: Fix docs file not getting included on Linux/Mac
+  * Debugger: initialise SavedAddress.address with 0 instead of NULL
+  * GameDB: Various fixes
+  * Qt: Add third-party license statements
+  * GameDB: Use chop rounding for division in GT4 NTSC-J
+  * Config: Replace FpuNegDivHack with eeDivRoundMode
+  * Qt: Update Base Translation
+  * Qt: Minor Translation Fixes
+
+-------------------------------------------------------------------
+Sun Jan 07 10:18:23 UTC 2024 - i@guoyunhe.me
+
+- Update to version 1.7.5413~git20240107:
+  * Qt: Fix HTTP download error format string
+
+-------------------------------------------------------------------
+Sun Jan 07 09:54:35 UTC 2024 - i@guoyunhe.me
+
+- Update to version 1.7.5412~git20240107:
+  * GameDB: DMC 1 Fixes
+  * Qt: Update base translation
+  * Qt: Fix opening game properties causing patch reload
+  * Qt: Fix missing font message not being translatable
+
+-------------------------------------------------------------------
+Sun Jan 07 08:26:49 UTC 2024 - i@guoyunhe.me
+
+- Update to version 1.7.5410~git20240107:
+  * Qt: Add runtime downloading of CJK OSD fonts
+  * Qt: Add runtime resource downloading
+  * Config: Add UserResources to EmuFolders
+  * SDLInputSource: Replace hint strings with macros
+  * Qt: Fix columns in cheat tree list not auto-sizing
+  * Patch: Fix ungrouped patches from >1 file not merging
+  * SDLInputSource: Log axes/buttons when controller is opened
+  * Misc: Enable some disabled warnings
+  * CI: migrate to upload-artifact@v4, download-artifact@v4 and labeler@v5 (#10431)
+  * Qt: Minor Translation Fixes
+  * Qt: Add Popn icon to Input OSD
+  * GameDB: Various fixes
+  * GameDB: Fixes for Bully
+  * Misc: Uses Qt::UserRole for hardcoded literals & const changes
+  * Debugger: Double clicking Memory Search result switches to memory view tab
+  * Debugger: Add Saved Addresses tab widget for bookmarking mem addresses
+  * SIO: Fix Wunused-variable compiler warnings.
+  * Qt: Update Base Translation
+  * Patch: Fix last duplicate patch group not being ignored
+  * Pad: Add Pop'n Music controller type
+  * GameDB: Add fullblend/autoflush/tex-in-RT for Catwoman
+  * GS/HW: Handle offset RTs when offset texture is detected
+  * Linux: Stop OpenGL overriding Vulkan if both VK and OpenGL are enabled
+  * Misc: Add patches folder to gitignore
+  * CheatsSettings/PatchSettings: Add toggle for showing All CRCs
+  * Qt: Update Base Translation
+  * Core: Remove unused variable
+  * Core: Remove syscon log and merge with EE logs
+  * Readme: Update and Remove Redundant Info
+  * Debugger: Add support for Not Equals Array filter searches
+  * Debugger: Combine Start & End addresses to 1 line & add comparison label
+  * Settings: Clearing settings disables Cheats/Patches
+  * GameDB: remove Knights Of The Temple 2 CRC
+  * HW/CRC: remove  Knights Of The Temple 2 CRC hacks
+
+-------------------------------------------------------------------
 Thu Jan 04 12:06:19 UTC 2024 - i@guoyunhe.me
 
 - Update to version 1.7.5386~git20240104:
