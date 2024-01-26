@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 25 21:07:23 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 1.21.1:
+  * Fix loading of local plugins to account for newly released
+    versions of a dependency
+
+-------------------------------------------------------------------
 Thu Dec 21 14:30:24 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 1.21.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-hatchling
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hatchling
-Version:        1.21.0
+Version:        1.21.1
 Release:        0
 Summary:        Build backend used by Hatch
 License:        MIT
@@ -40,7 +40,7 @@ Requires:       python-pathspec >= 0.10.1
 Requires:       python-pluggy >= 1.0.0
 Requires:       python-trove-classifiers
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.2.2
