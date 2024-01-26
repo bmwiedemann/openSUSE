@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 25 20:08:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Remove old skip_python2
+- %{?sle15_python_module_pythons} must be declared before first
+  use of %python_module
+
+-------------------------------------------------------------------
 Sat Jun 10 09:45:54 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
