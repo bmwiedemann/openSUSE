@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jan 25 00:00:00 CET 2024 - dsterba@suse.cz
+
+- update to 6.7
+  * mkfs: make 4k sectorsize default, recommended minimum kernel for that is
+    6.1 and requires subpage support on architectures with page size > 4k
+  * subvolume create: return correct error code when a target already exists
+  * tree-checker: dump tree block on error (btrfs-convert, ...)
+  * scrub limit: fix reporting of a limit set while there's none
+  * fi usage: fix reporting of unallocated data or raid56 profile without root
+    privs due to lack of that information
+  * convert:
+    * align data block group lengths to 64K
+    * fix conversion of a large filesystem when there are partial inode items
+      present due to caching
+  * other:
+    * build fixes
+    * updated documentation
+    * new and updated tests
+- update to 6.6.3
+  * subvol create: accept multiple arguments
+  * subvol delete: print the subvolume id in the output
+  * subvol sync: check if the filesystems is still writeable so it does not
+    wait indefinitely
+  * device delete: add a timeout and warning when deleting multiple devices
+  * scrub status: report limit if set in sysfs/../scrub_speed_max
+  * scrub limit: new command to show or set the per-device scrub limits
+  * scrub start: report the limit if set
+  * build:
+    * fix CPU feature detection on aarch64
+    * support Botan and OpenSSL (3.2+) as crypto backends
+  * other:
+    * documentation updates, RTD config update
+    * new and updated tests
+    * CI updates
+
+-------------------------------------------------------------------
 Wed Nov 15 00:00:00 CET 2023 - dsterba@suse.cz
 
 - update to 6.6.2
