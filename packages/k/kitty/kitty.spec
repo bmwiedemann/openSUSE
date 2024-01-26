@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.32.0
+Version:        0.32.1
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -137,10 +137,11 @@ find . -type f -exec sed -i 's@#!/usr/bin/env python$@#!%{_bindir}/python3.9@' {
 #export CFLAGS="${CFLAGS:-%%optflags} -Wno-error=switch"
 #export CXXFLAGS="${CXXFLAGS:-%%optflags} -Wno-error=switch"
 #
-%ifarch i586
-export CFLAGS="${CFLAGS:-%optflags} -fcf-protection=none"
-%endif
-#
+### This might have been fixed as part of #gh/kovidgoyal/kitty/7026
+#%%ifarch i586
+#export CFLAGS="${CFLAGS:-%%optflags} -fcf-protection=none"
+#%%endif
+#####
 %if 0%{?suse_version} > 1500
 python3 \
 %else

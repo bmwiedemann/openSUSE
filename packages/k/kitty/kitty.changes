@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 26 15:24:52 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- #gh/kovidgoyal/kitty/7026 may have fixed -fcf-protection issue for i586
+- Update to 0.32.1:
+  * macOS: Fix a regression in the previous release that broke overriding
+    keyboard shortcuts for actions present in the global menu bar (#7016)
+  * Fix a regression in the previous release that caused multi-key
+    sequences to not abort when pressing an unknown key (#7022)
+  * Fix a regression in the previous release that caused
+    kitten @ launch --cwd=current to fail over SSH (#7028)
+  * Fix a regression in the previous release that caused
+    kitten @ send-text with a match tab parameter to send text twice to
+    the active window (#7027)
+  * Fix a regression in the previous release that caused overriding of
+    existing multi-key mappings to fail (#7044, #7058)
+  * Wayland+NVIDIA: Do not request an sRGB output buffer as a bug in Wayland
+    causes kitty to not start (#7021)
+
+-------------------------------------------------------------------
 Fri Jan 19 17:15:25 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - i586 builds fail with -fcf-protection=full (seems to be default);
