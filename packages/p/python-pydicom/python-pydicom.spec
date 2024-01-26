@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydicom
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-pydicom
-Version:        2.3.1
+Version:        2.4.4
 Release:        0
 Summary:        Pure python package for DICOM medical file reading and writing
 License:        MIT
 URL:            https://github.com/darcymason/pydicom
-Source:         https://files.pythonhosted.org/packages/source/p/pydicom/pydicom-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/pydicom/pydicom/archive/refs/tags/v%{version}.tar.gz#/pydicom-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM pydicom-pr1908-fixpillow.patch gh#pydicom/pydicom#1908 fixes gh#pydicom/pydicom#1907
+Patch0:         pydicom-pr1908-fixpillow.patch
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core >= 3.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -34,13 +37,12 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pydicom-data}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
+%if 0%{?suse_version} > 1550
+# GDCM is not multiflavor in Tumbleweed
 BuildRequires:  python3-gdcm
+%endif
 # /SECTION
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-dicom < %{version}
-Provides:       %{oldpython}-dicom = %{version}
-%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %python_subpackages
@@ -55,33 +57,41 @@ medical images and related information such as reports
 and radiotherapy objects.
 
 %prep
-%setup -q -n pydicom-%{version}
+%autosetup -p1 -n pydicom-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pydicom
-%python_expand rm -r %{buildroot}%{$python_sitelib}/pydicom/{benchmarks,tests,data/test_files}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 
+%{python_expand # see https://github.com/pydicom/pydicom/issues/1697
+mkdir build/locallib
+cp -r %{$python_sitelib}/data_store %{$python_sitelib}/pydicom_data*.dist-info build/locallib/
+}
+export PYTHONPATH=$PWD/build/locallib
+# these assume that a cache is updatable from online downloads
 skips="test_fetch_data_files"
-# see https://github.com/pydicom/pydicom-data/issues/9
-skips="$skips or OBXXXX1A or (test_can_access_unsupported_dataset and (TestPillowHandler_JPEG or TestPillowHandler_JPEG2K))"
+skips="$skips or test_get_testdata_file_external_hash_mismatch"
+skips="$skips or test_get_testdata_files_local_external_and_cache"
+skips="$skips or test_get_testdata_files_hash_match"
+skips="$skips or test_get_testdata_files_hash_mismatch"
+skips="$skips or test_get_testdata_files_external_ignore_hash"
 
-# Failures only on ppc64
-skips="$skips or test_invalid_arr_dtype_raises or TestHandlerGenerateMultiplex or TestHandlerMultiplexArray"
-# Failures only on i586
-skips="$skips or test_write_file_id or test_file_id or test_encapsulate_bot_large_raises or (TestPillowHandler_JPEG2K and test_array)"
+if [ "$RPM_ARCH" = "ppc64le" -o "$RPM_ARCH" = "aarch64" ]; then
+  skips="$skips or TestPillowHandler_JPEG2K"
+fi
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+  # Failures on i586
+  skips="$skips or test_write_file_id or test_file_id or test_encapsulate_bot_large_raises or (TestPillowHandler_JPEG2K and test_array)"
+fi
 
-# see https://github.com/pydicom/pydicom/issues/1697
-ignores="--ignore pydicom/tests/test_dataset.py --ignore pydicom/tests/test_data_manager.py"
-
-%pytest -rs pydicom/tests $ignores -k "not ($skips)"
+%pytest -rsfR $ignores -k "not ($skips)"
 
 %post
 %python_install_alternative pydicom
@@ -93,6 +103,7 @@ ignores="--ignore pydicom/tests/test_dataset.py --ignore pydicom/tests/test_data
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/pydicom
-%{python_sitelib}/pydicom*
+%{python_sitelib}/pydicom
+%{python_sitelib}/pydicom-%{version}.dist-info
 
 %changelog

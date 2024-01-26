@@ -1,0 +1,23 @@
+From 11f7bd260137a18496bdfd00ddb742ef0cf2d2fd Mon Sep 17 00:00:00 2001
+From: scaramallion <scaramallion@users.noreply.github.com>
+Date: Mon, 16 Oct 2023 10:35:46 +1100
+Subject: [PATCH 1/4] Fix Pillow raising AttributeError due to Image.mode being
+ read-only
+
+Index: pydicom-2.4.4/pydicom/pixel_data_handlers/pillow_handler.py
+===================================================================
+--- pydicom-2.4.4.orig/pydicom/pixel_data_handlers/pillow_handler.py
++++ pydicom-2.4.4/pydicom/pixel_data_handlers/pillow_handler.py
+@@ -129,7 +129,11 @@ def _decompress_single_frame(
+                 image.tile[0][2],
+                 (color_mode, ''),
+             )]
+-            image.mode = color_mode
++            # Pillow 10.1+ made Image.mode read-only
++            if hasattr(image, "_mode"):
++                image._mode = color_mode
++            else:
++                image.mode = color_mode
+             image.rawmode = color_mode
+     return image
+ 

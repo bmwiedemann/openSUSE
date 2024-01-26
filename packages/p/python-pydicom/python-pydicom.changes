@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Jan 25 17:55:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.4
+  ## Changes
+  * Removed support for Python 3.6 (EOL since December 2021)
+  ## Enhancements
+  * Added attribute alphabetic (#1634)
+  * Added attribute json_key (#1648)
+  * Added value validation for numerical VRs, add type validation
+    for all validated VRs (#1414)
+  * CLI commands now accept pydicom charset test files and CLI help
+    shows Python Version (#1674)
+  * Added support for Python 3.11 (#1658)
+  * Added ISfloat to allow non-strict reading of existing files
+    with float IS values (#1661)
+  * Improved speed of creating and accessing highly nested
+    structures (#1728, #1734)
+  * Switched to a pyproject.toml build process (#1792)
+  * Updated DICOM and UID dicts to DICOM 2023b (#1803)
+  ## Fixes
+  * Fixed length validation of DS values with maximum length
+    without a leading zero (#1632)
+  * Increased download speed with progress bar for test data
+    (#1611)
+  * Fixed crash due to invalid private creator (#1638)
+  * Fixed extremely long BytesLengthException error messages
+    (#1683)
+  * In codify, ensure unique variable names for DICOM keywords
+    repeated in sequences, and handle unicode characters correctly
+    (#1670)
+  * Fixed handling of some invalid values in to_json_dict() if
+    suppress_invalid_tags is set to True (#1693)
+  * Fixed reading of data with 8 bits allocated, encoded in Big
+    Endian transfer syntax using VR OW (#1680)
+  * Fixed crash if reading regular dataset that has the SOP Class
+    of a DICOMDIR (#1702)
+  * Fixed wrong waveform data calculation when as_raw=False and
+    baseline!=0 (#1667)
+  * Fixed reading LUTData to expected size (#1747)
+  * Fixed handling of AT VRs when codifying data elements (#1738)
+  ## Pydicom Internals
+  * In test suites, renamed ‘setup’ and ‘teardown’ methods,
+    deprecated starting in pytest 7.2
+  * Use own fork of CharPyLS to handle builds with Python 3.11
+    (#1788)
+- Go back do %{?sle15_python_module_pythons}. python- prefixed
+  packages for Python 3.6 should be handled by separate maintenance
+  request to python3-pydicom on SLE side
+- Add pydicom-pr1908-fixpillow.patch
+  * gh#pydicom/pydicom#1908 fixes gh#pydicom/pydicom#1907
+
+-------------------------------------------------------------------
+Tue Jan 16 09:57:21 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- switch to wheel and enable %{?sle15allpythons}
+
+-------------------------------------------------------------------
 Sat Dec  3 20:04:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2.3.1: 
