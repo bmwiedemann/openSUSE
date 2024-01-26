@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 25 06:08:17 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.10.0:
+  * Release 1.10.0
+  * Release notes for 1.10.0
+  * chore(deps): update rust crate chrono to 0.4.32
+  * chore(deps): update dependency containers/automation_images to v20240102
+  * fix(deps): update rust crate futures-util to 0.3.30
+  * fix(deps): update rust crate anyhow to 1.0.79
+  * fix(deps): update rust crate tokio to 1.35.1
+  * chore(deps): update dependency containers/automation_images to v20231208
+  * fix(deps): update rust crate tokio to 1.35.0
+  * fix duplicated IP CI flake
+  * server: remove unused kill switch
+  * fix(deps): update rust crate clap to ~4.4.10
+  * Bump working version to v1.10.0-dev
+
+-------------------------------------------------------------------
 Thu Nov 30 07:05:22 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.9.0:
