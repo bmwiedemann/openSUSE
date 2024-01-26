@@ -338,4 +338,14 @@
   * Crash using --git-repos on unreadable dir</comment>
     <requestid>1140241</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>eb3ec26a6e9e5c0b66d133c855afd627</srcmd5>
+    <version>0.17.3+0</version>
+    <time>1706305652</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.17.3:
+  * Remove version testing
+  * Avoid unwrap() by changing filter-then-map to filter_map</comment>
+    <requestid>1141636</requestid>
+  </revision>
 </revisionlist>
