@@ -223,4 +223,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1138877</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>54e261383edc70a1aa66b736424db07a</srcmd5>
+    <version>3.2.4</version>
+    <time>1706305539</time>
+    <user>anag+factory</user>
+    <comment>Add wxWidgets-3_2-Fix-test-suite-on-Linux-s390x-architectures.patch to fix test failure suites on Linux/s390x and maybe other architectures. (forwarded request 1141466 from qzhao)</comment>
+    <requestid>1141469</requestid>
+  </revision>
 </revisionlist>

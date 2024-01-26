@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 21 09:21:37 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add wxWidgets-3_2-Fix-test-suite-on-Linux-s390x-architectures.patch:
+  Backporting e2cc16ef from upstream, Fix test suite on Linux/s390x
+  and maybe other architectures.
+- Drop wxWidgets-3_2-fix-building-fault-S390.patch:
+  Patch has been merged by upstream,and they did this modification
+  during accept.
+  (bsc#1217026)
+
+-------------------------------------------------------------------
 Thu Dec 28 08:21:30 UTC 2023 - Cliff Zhao <qzhao@suse.com>
 
 - Add wxWidgets-3_2-fix-building-fault-S390.patch:
