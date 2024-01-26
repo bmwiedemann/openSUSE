@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 %define mname PyQt6-%{qtlib}
 %define pyqt_build_for_qt6 1
 %define plainpython python
+%{?sle15_python_module_pythons}
 Name:           python-%{mname}
 Version:        6.6.0
 Release:        0
@@ -28,9 +29,8 @@ License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtchart
 Source:         https://files.pythonhosted.org/packages/source/P/%{mname}/PyQt6_%{qtlib}-%{version}.tar.gz
-Patch0:         support-python3.6.patch
 BuildRequires:  %{python_module PyQt6-devel >= 6.2}
-BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pyqt-builder >= 1.10}
 BuildRequires:  %{python_module sip-devel >= 6}
 BuildRequires:  fdupes
