@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 18 16:19:41 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Use "up" instead of "dup" by default on ALP [bsc#1218861]
+
+-------------------------------------------------------------------
 Mon Nov 20 17:12:20 UTC 2023 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.5.0
