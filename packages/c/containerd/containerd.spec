@@ -91,6 +91,7 @@ separately from Docker.
 Summary:        Source code for containerd
 Group:          Development/Libraries/Go
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 This package contains the source code needed for building packages that
@@ -107,11 +108,11 @@ reference the following Go import paths: github.com/containerd/containerd
 %goprep %{import_path}
 BUILDTAGS="apparmor selinux seccomp"
 make \
-	BUILDTAGS="$BUILDTAGS" \
-	VERSION="v%{version}" \
-	REVISION="%{git_version}"
-# TODO: Fix man-page generation.
-#make man
+        BUILDTAGS="$BUILDTAGS" \
+        VERSION="v%{version}" \
+        REVISION="%{git_version}"
+
+make man
 
 cp -r "$PROJECT/bin" bin
 
@@ -121,7 +122,7 @@ cp -r "$PROJECT/bin" bin
 pushd bin/
 for bin in containerd{,-shim*}
 do
-	install -D -m755 "$bin" "%{buildroot}/%{_sbindir}/$bin"
+        install -D -m755 "$bin" "%{buildroot}/%{_sbindir}/$bin"
 done
 # "ctr" is a bit too generic.
 install -D -m755 ctr %{buildroot}/%{_sbindir}/%{name}-ctr
@@ -135,13 +136,12 @@ echo "# See containerd-config.toml(5) for documentation." >%{buildroot}/%{_sysco
 install -Dp -m644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 
 # Man pages.
-# TODO: Fix man page generation.
-#for file in man/*
-#do
-#	section="${file##*.}"
-#	install -D -m644 "$file" "%{buildroot}/%{_mandir}/man$section/$(basename "$file")"
-#done
-#ln -s ctr.1 %{buildroot}/%{_mandir}/man1/%{name}-ctr.1
+for file in man/*
+do
+        section="${file##*.}"
+        install -D -m644 "$file" "%{buildroot}/%{_mandir}/man$section/$(basename "$file")"
+done
+mv %{buildroot}/%{_mandir}/man8/{ctr.8,%{name}-ctr.8}
 
 %fdupes %{buildroot}
 
@@ -166,14 +166,12 @@ install -Dp -m644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 %{_sbindir}/containerd
 %{_sbindir}/containerd-shim*
 %{_unitdir}/%{name}.service
-# TODO: Fix man page generation.
-#%{_mandir}/man*/%{name}*
-#%exclude %{_mandir}/man1/*ctr.1*
+%{_mandir}/man*/%{name}*
+%exclude %{_mandir}/man8/*ctr.8*
 
 %files ctr
-%{_sbindir}/containerd-ctr
-# TODO: Fix man page generation.
-#%{_mandir}/man1/*ctr.1*
+%{_sbindir}/%{name}-ctr
+%{_mandir}/man8/%{name}-ctr.8*
 
 %files devel
 %license LICENSE

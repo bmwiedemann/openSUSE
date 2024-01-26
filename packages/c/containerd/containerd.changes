@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 15 11:12:05 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Enable manpage generation
+- Make devel package noarch
+- adjust rpmlint filters
+
+-------------------------------------------------------------------
 Mon Jan  8 12:12:00 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
 
 - Add patch for bsc#1217952:

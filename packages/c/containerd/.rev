@@ -532,4 +532,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment>Add patch for bsc#1217952</comment>
     <requestid>1137575</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>393dec61c7ab8ec3e692628c9056e8d1</srcmd5>
+    <version>1.7.10</version>
+    <time>1706305601</time>
+    <user>anag+factory</user>
+    <comment>Enable manpage generation (forwarded request 1138822 from dancermak)</comment>
+    <requestid>1141549</requestid>
+  </revision>
 </revisionlist>
