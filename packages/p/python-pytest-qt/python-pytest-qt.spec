@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
@@ -64,7 +65,6 @@ BuildConflicts: %{python_module pyside2}
 BuildConflicts: %{python_module qt5}
 %endif
 
-%{?sle15_python_module_pythons}
 Name:           python-pytest-qt%{psuffix}
 Version:        4.3.1
 Release:        0

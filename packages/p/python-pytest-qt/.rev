@@ -166,4 +166,13 @@
     `@The-Compiler`_ for the PR.</comment>
     <requestid>1137115</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>fe9ad707cbc16306405c8a4e2df6180b</srcmd5>
+    <version>4.3.1</version>
+    <time>1706305670</time>
+    <user>anag+factory</user>
+    <comment>- %sle15_python_module_pythons must define %pythons before any
+  %python_module usage</comment>
+    <requestid>1141695</requestid>
+  </revision>
 </revisionlist>
