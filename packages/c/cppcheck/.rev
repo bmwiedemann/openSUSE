@@ -449,4 +449,14 @@
    override this in cppcheck.cfg</comment>
     <requestid>1140512</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0175262836052ee608a818d27ffa0c29</srcmd5>
+    <version>2.13.2</version>
+    <time>1706305667</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.13.2:
+  * Fix premium version check
+  * Fix 12375</comment>
+    <requestid>1141685</requestid>
+  </revision>
 </revisionlist>
