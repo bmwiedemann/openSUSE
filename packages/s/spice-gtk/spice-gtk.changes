@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 25 08:30:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use libphotodav-3.0 on SLE/Leap 15.6+ (boo#1219083).
+
+-------------------------------------------------------------------
 Wed Feb 22 15:39:46 MST 2023 - carnold@suse.com
 
 - Update to version 0.42. Features and Issues addressed:
