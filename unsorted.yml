@@ -21548,6 +21548,8 @@ unsorted:
   - picocom 
   - picojson-devel 
   - picom 
+  - picom-conf 
+  - picom-conf-lang 
   - picotool 
   - picplanner 
   - picplanner-lang 
@@ -22782,7 +22784,6 @@ unsorted:
   - python3-shiboken6 
   - python3-shiboken6-devel 
   - python3-smbus 
-  - python3-solv 
   - python3-spglib 
   - python3-sphinxbase 
   - python3-sphinxbase5 
@@ -25906,6 +25907,7 @@ unsorted:
   - python310-socketpool 
   - python310-softlayer 
   - python310-softlayer-zeep 
+  - python310-solv 
   - python310-sorl-thumbnail 
   - python310-sortedcollections 
   - python310-sortedcontainers 
@@ -29299,6 +29301,7 @@ unsorted:
   - python311-socketpool 
   - python311-softlayer 
   - python311-softlayer-zeep 
+  - python311-solv 
   - python311-sorl-thumbnail 
   - python311-sortedcollections 
   - python311-sortinghat 
@@ -32861,6 +32864,7 @@ unsorted:
   - python39-socketpool 
   - python39-softlayer 
   - python39-softlayer-zeep 
+  - python39-solv 
   - python39-sorl-thumbnail 
   - python39-sortedcollections 
   - python39-sortedcontainers 
@@ -35592,6 +35596,11 @@ unsorted:
   - stellarsolver-devel 
   - stern 
   - stgit 
+  - stgit-bash-completion 
+  - stgit-emacs 
+  - stgit-fish-completion 
+  - stgit-vim-plugin 
+  - stgit-zsh-completion 
   - stix-integrals-fonts 
   - stix-pua-fonts 
   - stix-sizes-fonts 
@@ -35996,7 +36005,6 @@ unsorted:
   - termsyn-bitmap-fonts 
   - terraform 
   - terraform-provider-aws 
-  - terraform-provider-azurerm 
   - terraform-provider-helm 
   - terraform-provider-libvirt 
   - terragrunt 
