@@ -204,4 +204,20 @@
   - packages: Adjust dropcap logic for letters with a depth</comment>
     <requestid>1134957</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8f1b20924c8b3cc7b3aa345e5a1eb3cb</srcmd5>
+    <version>0.14.16</version>
+    <time>1706467365</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.16
+ * Features
+  - languages: Accomodate alternate Turkish hyphenation guidelines at apostrophes
+  - typesetters: Support for speaker change introduced by em-dash
+ * Bug Fixes
+ - languages: Break at ela geminada in Catalan cancels the punt vola
+ - languages: Break at explicit hyphen in Polish repeats the hyphen
+ - languages: Remove multiple repetitions of U+00A0 nbsp in French
+ - languages: U+00A0 nbsp in French causes unexpected word breaks</comment>
+    <requestid>1141973</requestid>
+  </revision>
 </revisionlist>
