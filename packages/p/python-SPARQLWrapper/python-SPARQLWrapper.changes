@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 27 11:12:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Ported codebase to Python 3. Dropped support for Python 2
+  * Removed nosetest in favour of unittest
+  * Added a CLI: ``rqw``
+  * Updated for RDFLib >= 6.1.1
+  * Added type hints
+- drop no-2to3.patch (obsolete)
+
+-------------------------------------------------------------------
 Mon Mar  7 11:58:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add no-2to3.patch for better compatibility with newer setuptools 
+- add no-2to3.patch for better compatibility with newer setuptools
 
 -------------------------------------------------------------------
 Wed Mar 11 17:00:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
