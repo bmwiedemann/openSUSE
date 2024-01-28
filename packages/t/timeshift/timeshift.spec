@@ -18,7 +18,7 @@
 
 
 Name:           timeshift
-Version:        23.12.2
+Version:        24.01.1
 Release:        0
 Summary:        System restore utility
 License:        GPL-3.0-only
