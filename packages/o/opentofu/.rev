@@ -91,4 +91,12 @@
     <comment>update to stable 1.6.0 release</comment>
     <requestid>1138054</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f716863120c07cbde1b4abaa9577303c</srcmd5>
+    <version>1.6.1</version>
+    <time>1706467341</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141924</requestid>
+  </revision>
 </revisionlist>
