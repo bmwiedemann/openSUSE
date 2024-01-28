@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c6957271ec14fed2626b603e80627b90</srcmd5>
+    <version>23.6.0</version>
+    <time>1706467383</time>
+    <user>anag+factory</user>
+    <comment>new package python-awx-cli: CLI for the AWX Ansible web UI (the upstream of Ansible Automation Platform)</comment>
+    <requestid>1142011</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Sat Jan 27 19:58:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package python-awx-cli: CLI to manage the AWX Ansible web
+  platform (successor of the tower-cli)
