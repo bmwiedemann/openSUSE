@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-lxqt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-lxqt
-Version:        20231212
+Version:        20240126
 Release:        0
 Summary:        Patterns for Installation (LXQt)
 License:        MIT
@@ -41,6 +41,7 @@ This particular package contains the LXQt patterns.
 
 
 ################################################################################
+
 %package lxqt
 %pattern_graphicalenvironments
 Summary:        LXQt Desktop Environment
@@ -71,7 +72,7 @@ Requires:       pattern() = x11
 Recommends:     xdg-desktop-portal-lxqt
 Recommends:     pattern() = multimedia
 # non core packages belonging to LXQt organization
-Recommends:     compton-conf
+Recommends:     picom-conf
 Recommends:     featherpad
 Recommends:     lximage-qt
 Recommends:     lxqt-archiver

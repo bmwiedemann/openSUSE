@@ -151,4 +151,16 @@
   Other parts can depend on the binaries shipped there</comment>
     <requestid>1134436</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6469fcfe35994cd8e68cff8da3ec344f</srcmd5>
+    <version>20240126</version>
+    <time>1706467199</time>
+    <user>anag+factory</user>
+    <comment>- Bumped version to 20240126
+- Removed:
+  * Recommends: compton-conf (Deprecated) (boo#1214420)
+- Added:
+  * Recommends: picom-conf</comment>
+    <requestid>1141858</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 26 23:02:23 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Bumped version to 20240126
+- Removed:
+  * Recommends: compton-conf (Deprecated) (boo#1214420)
+- Added:
+  * Recommends: picom-conf
+
+-------------------------------------------------------------------
 Thu Dec 21 12:11:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - boo#1218288: Require liblxqt
