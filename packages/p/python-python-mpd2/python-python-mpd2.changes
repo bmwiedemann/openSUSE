@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 27 10:53:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1:
+  * Propagate exception to all pending commands
+  * Fix test for python 3.12
+- switch to PEP517 build
+
+-------------------------------------------------------------------
 Thu Dec 14 21:35:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:

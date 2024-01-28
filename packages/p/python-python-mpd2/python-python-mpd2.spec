@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-mpd2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-mpd2
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        A Python MPD client library
 License:        LGPL-3.0-only
@@ -26,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Mic92/python-mpd2
 Source:         https://files.pythonhosted.org/packages/source/p/python-mpd2/python-mpd2-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-Twisted
@@ -45,10 +47,10 @@ backward compatibles with the original python-mpd package.
 %setup -q -n python-mpd2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,7 +59,7 @@ backward compatibles with the original python-mpd package.
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst doc
-%{python_sitelib}/python_mpd2-%{version}-py*.egg-info
+%{python_sitelib}/python_mpd2-%{version}.dist-info
 %{python_sitelib}/mpd
 
 %changelog
