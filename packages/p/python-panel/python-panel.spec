@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-panel
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-panel%{psuffix}
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -64,7 +64,7 @@ Requires:       python-tqdm >= 4.48.0
 Requires:       python-typing_extensions
 Requires:       python-xyzservices >= 2021.09.1
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-holoviews >= 1.16.0
 Recommends:     python-jupyterlab
