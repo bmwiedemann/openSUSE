@@ -1,7 +1,7 @@
 #
 # spec file for package python-social-auth-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %bcond_with saml
 
 Name:           python-social-auth-core
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause
