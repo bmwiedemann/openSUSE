@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jan 26 21:04:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.5:
+  * Updated Tagalog translations
+  * Updated Pillow to 10.2 to mitigate security vulnerabilities
+  * Improved resilience of instant navigation
+  * Fixed #6687: Updated Mermaid.js to version 10.7.0 (latest)
+  * Fixed #6652: Keyboard events in custom elements captured
+  * Fixed #6582: Instant navigation doesn't correctly handle
+    alternate URLs
+  * Fixed #6565: Instant navigation doesn't allow for `onclick`
+    handlers
+  * Fixed #6345: Instant navigation sometimes breaks browser back
+    button
+  * Fixed #6334: Instant navigation doesn't correctly position
+    anchors (Safari)
+  * Fixed #6275: Instant navigation doesn't correctly resolve after
+    404
+  * Fixed #6102: Instant navigation reloads page on same link
+    navigation
+
+-------------------------------------------------------------------
 Mon Jan 15 20:24:50 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.4:
