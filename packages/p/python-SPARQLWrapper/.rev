@@ -97,4 +97,20 @@
     <comment>- add no-2to3.patch for better compatibility with newer setuptools</comment>
     <requestid>959866</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>131e7bc0f07c8f8c6d062c5e9b3f73b9</srcmd5>
+    <version>2.0.0</version>
+    <time>1706467356</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.0:
+  * Ported codebase to Python 3. Dropped support for Python 2
+  * Removed nosetest in favour of unittest
+  * Added a CLI: ``rqw``
+  * Updated for RDFLib &gt;= 6.1.1
+  * Added type hints
+- drop no-2to3.patch (obsolete)
+
+- add no-2to3.patch for better compatibility with newer setuptools</comment>
+    <requestid>1141948</requestid>
+  </revision>
 </revisionlist>

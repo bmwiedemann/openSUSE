@@ -1,7 +1,7 @@
 #
 # spec file for package python-SPARQLWrapper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-SPARQLWrapper
-Version:        1.8.5
+Version:        2.0.0
 Release:        0
 Summary:        SPARQL Endpoint interface to Python
 License:        W3C
 URL:            https://rdflib.dev/sparqlwrapper/
 Source:         https://files.pythonhosted.org/packages/source/S/SPARQLWrapper/SPARQLWrapper-%{version}.tar.gz
-Patch1:         no-2to3.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-rdflib >= 4.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -39,22 +42,29 @@ format.
 
 %prep
 %setup -q -n SPARQLWrapper-%{version}
-%patch1 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/rqw
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 #%%pytest test
 
+%post
+%python_install_alternative rqw
+
+%postun
+%python_uninstall_alternative rqw
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst AUTHORS.md
-%{python_sitelib}/SPARQLWrapper/
-%{python_sitelib}/SPARQLWrapper-%{version}-py*.egg-info
+%python_alternative %{_bindir}/rqw
+%{python_sitelib}/SPARQLWrapper
+%{python_sitelib}/SPARQLWrapper-%{version}.dist-info
 
 %changelog
