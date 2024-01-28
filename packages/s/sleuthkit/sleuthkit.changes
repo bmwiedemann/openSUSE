@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 27 16:08:26 UTC 2024 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 4.12.1 
+  *     C/C++:
+  *         Bug fixes from Luis Nassif and Joachim Metz
+  *         Added check to stop for very large folders to prevent memory exhaustion
+  *     Java:
+  *         Added File Repository concept for files to be stored in another location
+  *         Schema updated to 9.4
+  *         Fixed OS Account merge bug and now fire events when accounts are merged
+
+- remove sleuthkit-4.12.0_add-missing-include-file.patch
+  *     No longer missing
+  *     gh#sleuthkit/sleuthkit#2812
+- add sleuthkit-4.12.0_add-lvm-support.patch
+  *     Joachem Metz submitted changes to 4.12.0 to allow lvm support, but one header file was missed
+-------------------------------------------------------------------
 Fri Feb 17 22:36:16 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to 4.12.0 
