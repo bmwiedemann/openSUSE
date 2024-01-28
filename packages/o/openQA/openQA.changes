@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 26 21:02:07 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1706272112.624209b7:
+  * Avoid deprecation warnings in GitHub action for JavaScript linting
+  * Show relevant tasks when following Minion link after asset cleanup
+  * Use `--within-instance` in example for cloning MM jobs
+  * Ensure only the Git cache directory from the local worker config is used
+  * Mention handling of symlinks when cleaning up assets in docs
+  * Document debugging problematic connections in the GRE network
+  * Document command to check whether IP forwarding is enabled
+  * Update MTU-related documentation in MM-setup documentation
+  * Improve documentation for running MM jobs accross multiple hosts
+  * Mention specific test scenarios that can be used to verify the MM setup
+
+-------------------------------------------------------------------
 Tue Jan 23 22:43:23 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1706049794.bd8ad6e3:
