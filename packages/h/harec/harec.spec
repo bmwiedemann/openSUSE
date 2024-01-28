@@ -1,7 +1,7 @@
 #
 # spec file for package harec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           harec
 Release:        0
-Version:        1702179030.9d51b36
+Version:        1704220143.770566a
 Summary:        Bootstrap compiler for hare
 Group:          Development/Tools/Building
 URL:            https://git.sr.ht/~sircmpwn/harec
@@ -36,28 +36,41 @@ POSIX-compatible systems.
 
 %prep
 %setup -q
-mkdir -p build/
 
 %build
-export CFLAGS="%optflags"
+cat > config.mk <<-SH
+PREFIX = %{_prefix}
+BINDIR = %{_bindir}
 
-# Harec does not use autoconf
-pushd build/
-../configure
-make %{?_smp_mflags} VERSION="%{version}"
-popd
+PLATFORM = linux
+ARCH = %{_arch}
+HARECFLAGS =
+QBEFLAGS =
+ASFLAGS =
+LDLINKFLAGS = --gc-sections -z noexecstack
+CFLAGS = %{optflags} -Iinclude
+LDFLAGS =
+LIBS = -lm
+
+CC = cc
+AS = as
+LD = ld
+QBE = qbe
+
+HARECACHE = .cache
+BINOUT = .bin
+
+DEFAULT_TARGET = %{_arch}
+VERSION = %{version}
+SH
+
+make
 
 %install
-export CFLAGS="%optflags"
-pushd build/
-make %{?_smp_mflags} VERSION="%{version}" DESTDIR="%{buildroot}" BINDIR="%{_bindir}" install
-popd
+make DESTDIR=%{buildroot} install
 
 %check
-export CFLAGS="%optflags"
-cd build
-../configure
-make %{?_smp_mflags} check
+make check
 
 %files
 %{_bindir}/%{name}

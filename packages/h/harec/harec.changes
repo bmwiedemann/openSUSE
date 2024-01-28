@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 20 07:21:00 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1704220143.770566a:
+  * gen: add column to dbgloc
+  * Check for STORAGE_ERROR before lowering Hare vaargs
+  * qtype: fix -Werror failures
+  * add .builds/openbsd.yml
+  * gen: move tagged value to first aligned offset
+  * OpenBSD: fix tests
+  * replace ./configure with config.mk
+  * fix confusing wording in parse.c
+- Update specfile
+  * Adopt new makefile to new configs
+
+-------------------------------------------------------------------
 Sat Dec 23 08:12:46 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Set version environment variable in specfile
