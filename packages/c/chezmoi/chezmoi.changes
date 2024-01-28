@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 26 16:55:06 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.46.0:
+  - Features
+    * feat: Support rage as an alternative age encryption command
+    * feat: Add re-add --recursive flag and make it the default
+    * feat: Promote hooks to stable
+    * feat: Promote HCP Vault Secrets template functions to stable
+    * feat: Promote Doppler template functions to stable
+    * feat: Promote edit --watch to stable
+  - Fixes
+    * fix: Defer lookup of git in $PATH for git-repo externals
+    * fix: Change init to default to --config if --config-path is absent
+    * fix: Handle more keepassxc-cli errors
+    * fix: Reduce injection of terminal control characters into keepassxc-cli output
+  - Documentation updates
+    * docs: combine testing and debugging templates
+    * docs: Fix names of age recipients files config variables
+
+-------------------------------------------------------------------
 Mon Jan 15 16:40:09 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.45.0:
