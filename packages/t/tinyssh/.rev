@@ -47,4 +47,21 @@
     <comment></comment>
     <requestid>1046202</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>be7c6822da72d43d216cf6fe665cf2d9</srcmd5>
+    <version>20240101</version>
+    <time>1706467366</time>
+    <user>anag+factory</user>
+    <comment>- update to 20240101 (bsc#1218197, CVE-2023-48795):
+  * fixed channel_forkpty() race condition between close(slave)
+    in parent process and login_tty(slave) in child process
+  * fixed behavior when using terminal mode and stdin redirected
+    to /dev/null 'ssh -tt -n'
+  * added an 'strict-key' key exchange kex-strict-
+    s-v00@openssh.com (Mitigates CVE-2023-48795 &quot;Terrapin
+    attack&quot;)
+
+  * updated crypto/crypto_onetimeauth_poly1305.c</comment>
+    <requestid>1141978</requestid>
+  </revision>
 </revisionlist>
