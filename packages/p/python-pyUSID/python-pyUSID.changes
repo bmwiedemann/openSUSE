@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 26 15:44:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.0.12
+  * Minor update to previous pyUSID version with changes to ensure
+    compatibility with updated methods of slicing of h5 datasets in
+    h5py. This also resolves the errors thrown by visualization
+    utilizes that have plagued BGlib
+- Release 0.0.11
+  * This version maintains compatibility with the latest numpy, and
+    also re-instates comp_utils that was removed from sidpy,
+    causing version incompatibility. Furthermore, some dependency
+    requirements have been updated. Whilst there are no feature
+    improvements, this release ensures continued functionality of
+    pyUSID.
+- Drop pyUSID-pr84-np1.24.patch
+- Drop abc_iterable.patch
+
+-------------------------------------------------------------------
 Sun Mar 26 16:26:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.0.10.post2
