@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 26 19:27:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.74.3:
+  * chore(deps): update Syft to v0.102.0 (#1681)
+  * Fix matching when RPM modularity is a factor (#1679)
+  * chore: break assumption that syft cpe.CPE is wfn.Attributes
+    (#1675)
+  * chore(deps): bump github.com/docker/docker (#1677)
+  * chore(deps): bump github.com/google/uuid from 1.5.0 to 1.6.0
+    (#1678)
+  * chore(deps): bump actions/upload-artifact from 4.2.0 to 4.3.0
+    (#1676)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.4.12
+    to 0.5.0 (#1674)
+  * fix: take VEX docs into account when --fail-on is set (#1657)
+  * chore(deps): bump anchore/sbom-action from 0.15.4 to 0.15.5
+    (#1671)
+
+-------------------------------------------------------------------
 Sat Jan 20 17:00:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.74.2:
