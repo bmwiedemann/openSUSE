@@ -1,0 +1,98 @@
+diff --git a/mayavi/filters/threshold.py b/mayavi/filters/threshold.py
+index b9329e7c..4c648297 100644
+--- a/mayavi/filters/threshold.py
++++ b/mayavi/filters/threshold.py
+@@ -14,6 +14,7 @@ from traits.api import Instance, Range, Float, Bool, \
+                                  Property, Enum
+ from traitsui.api import View, Group, Item
+ from tvtk.api import tvtk
++from tvtk.common import vtk_major_version, vtk_minor_version
+ 
+ # Local imports
+ from mayavi.core.filter import Filter
+@@ -165,13 +166,19 @@ class Threshold(Filter):
+     ######################################################################
+     def _lower_threshold_changed(self, new_value):
+         fil = self.threshold_filter
+-        fil.threshold_between(new_value, self.upper_threshold)
++        if (vtk_major_version, vtk_minor_version) >= (9, 1):
++            fil.lower_threshold = new_value
++        else:
++            fil.threshold_between(new_value, self.upper_threshold)
+         fil.update()
+         self.data_changed = True
+ 
+     def _upper_threshold_changed(self, new_value):
+         fil = self.threshold_filter
+-        fil.threshold_between(self.lower_threshold, new_value)
++        if (vtk_major_version, vtk_minor_version) >= (9, 1):
++            fil.upper_threshold = new_value
++        else:
++            fil.threshold_between(self.lower_threshold, new_value)
+         fil.update()
+         self.data_changed = True
+ 
+@@ -270,8 +277,12 @@ class Threshold(Filter):
+             return
+         fil = new
+         self.configure_connection(fil, self.inputs[0].outputs[0])
+-        fil.threshold_between(self.lower_threshold,
+-                              self.upper_threshold)
++        if (vtk_major_version, vtk_minor_version) >= (9, 1):
++            fil.lower_threshold = self.lower_threshold
++            fil.upper_threshold = self.upper_threshold
++        else:
++            fil.threshold_between(self.lower_threshold,
++                                  self.upper_threshold)
+         fil.update()
+         self._set_outputs([fil])
+ 
+diff --git a/mayavi/tests/test_set_active_attribute.py b/mayavi/tests/test_set_active_attribute.py
+index d46357c7..7b01dee6 100644
+--- a/mayavi/tests/test_set_active_attribute.py
++++ b/mayavi/tests/test_set_active_attribute.py
+@@ -64,8 +64,8 @@ class TestSetActiveAttribute(unittest.TestCase):
+         c = src.children[1]
+         sc = get_output(c.outputs[0]).point_data.scalars
+         self.assertEqual(sc.name,'temperature')
+-        # It is an iso-contour!
+-        self.assertEqual(sc.range[0],sc.range[1])
++        # It is an iso-contour! Allow rounding differences
++        self.assertAlmostEqual(sc.range[0], sc.range[1], places=5)
+         aa = c.children[0].children[0]
+         self.assertEqual(aa.point_scalars_name,'pressure')
+         sc = get_output(aa.outputs[0]).point_data.scalars
+diff --git a/tvtk/common.py b/tvtk/common.py
+index b5413583..e79f8de1 100644
+--- a/tvtk/common.py
++++ b/tvtk/common.py
+@@ -10,6 +10,7 @@ import re
+ import vtk
+ 
+ vtk_major_version = vtk.vtkVersion.GetVTKMajorVersion()
++vtk_minor_version = vtk.vtkVersion.GetVTKMinorVersion()
+ 
+ 
+ ######################################################################
+diff --git a/tvtk/tests/test_vtk_parser.py b/tvtk/tests/test_vtk_parser.py
+index ceab86b7..c97635f5 100644
+--- a/tvtk/tests/test_vtk_parser.py
++++ b/tvtk/tests/test_vtk_parser.py
+@@ -127,7 +127,7 @@ class TestVTKParser(unittest.TestCase):
+             res['NormalScale'] = (1., None)
+             res['OcclusionStrength'] = (1., float_max)
+             res['Roughness'] = (0.5, float_max)
+-        if vtk_major_version >= 9 and vtk_minor_version > 0:
++        if (vtk_major_version, vtk_minor_version) >= (9, 1):
+             res['Anisotropy'] = (0.0, (0.0, 1.0))
+             res['AnisotropyRotation'] = (0.0, (0.0, 1.0))
+             res['BaseIOR'] = (1.5, (1.0, 9.999999680285692e+37))
+@@ -140,6 +140,8 @@ class TestVTKParser(unittest.TestCase):
+             res['SelectionColor'] = ((1.0, 0.0, 0.0, 1.0), None)
+             res['SelectionLineWidth'] = (2.0, None)
+             res['SelectionPointSize'] = (2.0, None)
++        if (vtk_major_version, vtk_minor_version) >= (9, 3):
++            res['EdgeOpacity'] = (1.0, None)
+ 
+         result = list(p.get_get_set_methods().keys())
+         if hasattr(obj, 'GetTexture'):
