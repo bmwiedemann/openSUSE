@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 26 06:36:10 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Updat to version 0.4.11 
+  * be strict about inputs in datetest --isvalid (#146)
+  * build on Macs again (#107)
+  * make illegible zone names fatal errors (#151)
+  * be strict in datetest --isvalid when inputs have been
+    specified (#146)
+  * fix issue with negative days remaining after adding months
+    in datediff (#153)
+- Remove patches 841c635b.patch and 35041f4d.patch because
+  they have been applied in source code
+
+-------------------------------------------------------------------
 Mon Dec 19 13:45:39 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add upstream patches 35041f4d.patch and 841c635b.patch: Do not
