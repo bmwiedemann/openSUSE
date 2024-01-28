@@ -33,4 +33,15 @@
 </comment>
     <requestid>1031199</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ddc0dc586edb1e74ebc810ebc30b3c3</srcmd5>
+    <version>0.12.0</version>
+    <time>1706467347</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.0:
+  * drop python 2.x support
+  * add orjson
+  * implemented chunked blake</comment>
+    <requestid>1141941</requestid>
+  </revision>
 </revisionlist>
