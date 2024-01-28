@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 27 15:40:31 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.14.16
+ * Features
+  - languages: Accomodate alternate Turkish hyphenation guidelines at apostrophes
+  - typesetters: Support for speaker change introduced by em-dash
+ * Bug Fixes
+ - languages: Break at ela geminada in Catalan cancels the punt vola
+ - languages: Break at explicit hyphen in Polish repeats the hyphen
+ - languages: Remove multiple repetitions of U+00A0 nbsp in French
+ - languages: U+00A0 nbsp in French causes unexpected word breaks
+
+-------------------------------------------------------------------
 Sun Dec 24 06:53:10 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 0.14.14
