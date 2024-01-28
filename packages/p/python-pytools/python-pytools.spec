@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-pytools
-Version:        2022.1.14
+Version:        2023.1.1
 Release:        0
 Summary:        A collection of tools for Python
 License:        MIT
