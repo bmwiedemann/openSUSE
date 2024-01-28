@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfVFS
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 
-%define timestamp 20230531
+%define timestamp 20231208
 Name:           python-dfVFS
 Version:        0~%{timestamp}
 Release:        0
@@ -64,10 +64,12 @@ BuildRequires:  %{python_module tsk}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
+Requires:       python-cffi
 Requires:       python-construct
 Requires:       python-cryptography
 Requires:       python-dfdatetime >= 0~20180110
 Requires:       python-dtfabric >= 20220219
+Requires:       python-idna
 Requires:       python-libbde
 Requires:       python-libcaes
 Requires:       python-libewf
@@ -130,7 +132,7 @@ chmod -x run_tests.py
 %fdupes %{buildroot}
 
 %check
-%if 0%{?suse_version} && 0%{?suse_version} > 1550
+%if 0%{?suse_version} && 0%{?suse_version} > 1560
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python ./run_tests.py
 }
