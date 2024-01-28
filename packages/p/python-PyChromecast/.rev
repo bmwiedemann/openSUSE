@@ -278,4 +278,28 @@
 - Correct egg-info filename to build in the multi-python new world order.</comment>
     <requestid>1132433</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3b00e762c40cd1b7daef0976f035ca55</srcmd5>
+    <version>13.1.0</version>
+    <time>1706467193</time>
+    <user>anag+factory</user>
+    <comment>- update to 13.1.0:
+  * Increase homeassistant lovelace connect timeout and make it
+    configurable (#770) @cicchr
+  * Add support for NRK TV and NRK Radio apps (#777) @lersveen
+  * Change logged precision of volume from 1 to 2 (#768)
+    @alexdelorenzo
+  * Create ShakaPlayer Controller (#758) @juanfadev
+  * Add date for removal of deprecated discovery functions (#767)
+    @emontnemery
+  * Mark discover_chromecasts as deprecated (#766) @emontnemery
+  * Update README.rst (#765) @emontnemery
+  * Fix known_hosts for older chromecasts (#762) @domenipavec
+  * Fix SSLContext settings (#764) @emontnemery
+  * Update README.rst to reflect refactoring of cast.device to
+    cast.cast_info (#751) @davidjabon
+  * Fix deprecated call to ssl.SSLContext without specifying
+    protocol (#763) @emontnemery</comment>
+    <requestid>1141814</requestid>
+  </revision>
 </revisionlist>

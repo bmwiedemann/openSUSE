@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyChromecast
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-PyChromecast
-Version:        13.0.8
+Version:        13.1.0
 Release:        0
 Summary:        Python module to talk to Google Chromecast
 License:        MIT
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-casttube >= 0.2.0
-Requires:       python-protobuf >= 3.0.0
+Requires:       python-protobuf >= 3.19.1
 Requires:       python-zeroconf >= 0.25.1
 BuildArch:      noarch
 %python_subpackages
