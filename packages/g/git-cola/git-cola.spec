@@ -1,8 +1,8 @@
 #
 # spec file for package git-cola
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2023 Marcin Bajor
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Marcin Bajor
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           git-cola
-Version:        4.4.1
+Version:        4.5.0
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
