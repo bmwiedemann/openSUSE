@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jan 26 19:42:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.1:
+  * Bump version and update changelog. (#1183)
+  * Improve stability on 32-bit architectures (#1154)
+  * Add Environment Variables to plugin signing page (#1159)
+  * Add changelog entry for #1141 (#1142)
+  * Fix running `tofu show` and `tofu state show` with state files
+    that reference Terraform registry providers. (#1141)
+  * #1129 backport (#1133)
+  * Add Global Schema Cache fix to CHANGELOG.md
+  * Fix Global Schema Cache not working in provider acceptance
+    tests (#1054)
+  * Allow known references in import blocks (#1105) (#1114)
+  * Backporting #1110 (#1111)
+  * Update references of tofu version to 1.6.0 ready for release
+    (#1082)
+  * docs: fix wget https://get.opentofu.org command (#1095) (#1096)
+  * Updating install instructions to include the installer script
+    (#1070) (#1094)
+  * Pull in 1.6.x-docs into v1.6 (#1092)
+
+-------------------------------------------------------------------
 Wed Jan 10 19:15:04 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version v1.6.0:
