@@ -54,6 +54,9 @@ A Python library for building OAuth and OpenID Connect servers.
 
 %prep
 %setup -q -n %{modname}-%{version}
+# Remove the file containing the commercial license so licensedigger
+# doesn't complain about the dual license
+rm COMMERCIAL-LICENSE
 
 %build
 %python_build
