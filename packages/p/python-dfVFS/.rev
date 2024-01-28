@@ -662,4 +662,17 @@ Move from python 2 to python 3</comment>
     <comment></comment>
     <requestid>1103389</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>825bab519b5a3c2077657f04cbc0c109</srcmd5>
+    <version>0~20231208</version>
+    <time>1706467376</time>
+    <user>anag+factory</user>
+    <comment>- update to 20231208 
+   - minor changes
+- add Requires python-cffi [likely did previously -- lint complained
+- add Requires python-idna [likely did previously -- lint complained
+- APFS related python tests for 15.5 and 15.6 still fail. Extended test exclusion to 15.6
+</comment>
+    <requestid>1142005</requestid>
+  </revision>
 </revisionlist>

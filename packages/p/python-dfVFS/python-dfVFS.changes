@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 27 00:09:50 UTC 2024 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 20231208 
+   - minor changes
+- add Requires python-cffi [likely did previously -- lint complained
+- add Requires python-idna [likely did previously -- lint complained
+- APFS related python tests for 15.5 and 15.6 still fail. Extended test exclusion to 15.6
+
+-------------------------------------------------------------------
 Thu Aug 10 19:41:31 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to 20230531
