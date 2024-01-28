@@ -1,7 +1,7 @@
 #
 # spec file for package python-geomet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           python-geomet
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        GeoJSON <-> WKT/WKB conversion utilities
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/geomet/geomet
 Source:         https://github.com/geomet/geomet/archive/%{version}.tar.gz
-# https://github.com/geomet/geomet/issues/90
-Patch0:         python-geomet-no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
@@ -47,10 +47,10 @@ GeoJSON <-> WKT/WKB conversion utilities
 
 %build
 sed -i '1{/^#!/ d}' geomet/*.py
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/geomet
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -68,6 +68,6 @@ sed -i '1{/^#!/ d}' geomet/*.py
 %license LICENSE
 %python_alternative %{_bindir}/geomet
 %{python_sitelib}/geomet
-%{python_sitelib}/geomet-%{version}-py*.egg-info
+%{python_sitelib}/geomet-%{version}.dist-info
 
 %changelog
