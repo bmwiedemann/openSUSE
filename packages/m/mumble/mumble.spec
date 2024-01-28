@@ -41,6 +41,8 @@ Patch1:         fix-pkg_get_variable.patch
 Patch2:         mumble-cxx17.patch
 Patch3:         mumble-1.5.517-qsystemlocaledate.patch
 Patch4:         mumble-leap-cxx17-filesystem.patch
+# PATCH-FIX-UPSTREAM -- reproducible builds
+Patch5:         https://github.com/mumble-voip/mumble/pull/6147.patch#/reproducible.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
@@ -128,6 +130,7 @@ won't be audible to other players.
 %if 0%{?suse_version} <= 1550
 %patch4 -p1
 %endif
+%patch5 -p1
 
 %build
 %cmake \

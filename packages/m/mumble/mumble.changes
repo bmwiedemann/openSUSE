@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 25 06:45:30 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort the file list (boo#1041090)
+
+-------------------------------------------------------------------
 Thu Jan 18 21:07:38 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix build with Qt 5.15 / OpenGL (boo#1218944)
