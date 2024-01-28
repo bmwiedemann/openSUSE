@@ -65,4 +65,12 @@
   * Avoid an interpreter segfault.</comment>
     <requestid>1073392</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c597f643249bfac762adb9574260e9ff</srcmd5>
+    <version>4.8.1</version>
+    <time>1706467214</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141847</requestid>
+  </revision>
 </revisionlist>

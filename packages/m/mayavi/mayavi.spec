@@ -1,7 +1,7 @@
 #
 # spec file for package mayavi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,10 @@ URL:            https://github.com/enthought/mayavi
 Source0:        https://files.pythonhosted.org/packages/source/m/mayavi/mayavi-%{version}.tar.gz
 Source1:        mayavi.desktop
 Source2:        tvtk_doc.desktop
-Source99:       mayavi-rpmlintrc
 # PATCH-FIX-UPSTREAM Based on gh#enthought/mayavi#1199
 Patch0:         python-311-support.patch
+# PATCH-FIX-UPSTREAM mayavi-pr1290-vtk-9.3.patch gh#enthought/mayavi#1290
+Patch1:         mayavi-pr1290-vtk-9.3.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -54,6 +55,7 @@ BuildRequires:  vtk-devel
 Requires:       python3-Pygments
 Requires:       python3-apptools
 Requires:       python3-envisage
+Requires:       python3-numpy
 Requires:       python3-packaging
 Requires:       python3-pyface >= 6.1.1
 Requires:       python3-traits >= 6.0.0

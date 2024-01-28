@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 26 19:59:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add mayavi-pr1290-vtk-9.3.patch for VTK 9.3
+  * gh#enthought/mayavi#1290
+
+-------------------------------------------------------------------
 Tue Mar 21 04:02:30 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch python-311-support.patch:
