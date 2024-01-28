@@ -1,0 +1,9 @@
+<package name="igwn-cmake-macros" project="openSUSE:Factory">
+  <title>Collection of macros to help convert autotools based projects into CMake</title>
+  <description>IGWN cmake macros is a collection of macros and scripts that were developed to
+aid in the process of converting Autotools based projects into CMake.
+
+</description>
+  <devel project="science" package="igwn-cmake-macros"/>
+  <url>https://git.ligo.org/computing/ldastools/igwn-cmake</url>
+</package>

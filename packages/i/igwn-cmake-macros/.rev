@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e73980d14d8d1c29ccfbc2ba044403e</srcmd5>
+    <version>1.5.0</version>
+    <time>1706467181</time>
+    <user>anag+factory</user>
+    <comment>Tool to help convert autotools projects into cmake based ones.
+
+Pretty generic tool, but so far used exclusively by gravitational wave simulation/detection software. Needed for upcoming updates to ldas-* libraries.</comment>
+    <requestid>1141788</requestid>
+  </revision>
+</revisionlist>
