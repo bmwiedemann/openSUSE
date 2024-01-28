@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 26 19:36:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.5
+  * Fixed support for "finishings", "output-bin", and "sides"
+    options.
+  * Fixed IEEE-1284 device ID generation code.
+  * Fixed crash in retrofit printer application.
+
+-------------------------------------------------------------------
 Thu Dec 21 21:24:54 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.4
