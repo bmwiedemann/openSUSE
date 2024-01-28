@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 19 07:58:14 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.4.
+  ## 0.2.3
+
+  Released 2024-01-19.
+
+  -   Relaxed upper bound for aeson, allowing aeson-2.2.\*.
+
+  ## 0.2.3
+
+  Released 2024-01-19.
+
+  -   Relaxed upper bound for text, containers, and bytestring,
+      allowing text-2.1, containers-0.7, and bytestring-0.12.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:48 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

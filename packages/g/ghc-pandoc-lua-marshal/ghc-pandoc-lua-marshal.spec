@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-pandoc-lua-marshal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.2
+Version:        0.2.4
 Release:        0
 Summary:        Use pandoc types in Lua
 License:        MIT
@@ -43,8 +43,6 @@ BuildRequires:  ghc-hslua-list-prof
 BuildRequires:  ghc-hslua-marshalling-devel
 BuildRequires:  ghc-hslua-marshalling-prof
 BuildRequires:  ghc-hslua-prof
-BuildRequires:  ghc-lua-devel
-BuildRequires:  ghc-lua-prof
 BuildRequires:  ghc-pandoc-types-devel
 BuildRequires:  ghc-pandoc-types-prof
 BuildRequires:  ghc-rpm-macros
