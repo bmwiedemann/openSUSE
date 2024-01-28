@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 25 09:27:23 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 1.8.0
+  * fix typo in message, thanks to lintian.
+  * fix compiler warnings about unused variables.
+  * Fixed a typo in comment line in filter.c
+  * Redefine usage of POSIX signals.
+  * Support for building sngrep using CMake added.
+
+-------------------------------------------------------------------
 Sun Apr  2 14:45:08 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.0
