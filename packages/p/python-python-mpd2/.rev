@@ -79,4 +79,15 @@
   * asyncio: fix race condition in command queue</comment>
     <requestid>1133207</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dcec2380164ec82a974d5e68ac372919</srcmd5>
+    <version>3.1.1</version>
+    <time>1706467349</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.1:
+  * Propagate exception to all pending commands
+  * Fix test for python 3.12
+- switch to PEP517 build</comment>
+    <requestid>1141944</requestid>
+  </revision>
 </revisionlist>
