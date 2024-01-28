@@ -229,4 +229,13 @@
   * Fix crash on spaces in directory names #184</comment>
     <requestid>1098036</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a3c115f43a522dacc22ec0d4db3f8c5c</srcmd5>
+    <version>1.12.4</version>
+    <time>1706467326</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.4:
+  * Documentation updated</comment>
+    <requestid>1141919</requestid>
+  </revision>
 </revisionlist>
