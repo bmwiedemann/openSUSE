@@ -121,4 +121,12 @@
 - Remove unneeded BuildRequires on mock.</comment>
     <requestid>1137639</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f7e2abe5533b76f3a4d4afca32512858</srcmd5>
+    <version>1.3.0</version>
+    <time>1706467208</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141850</requestid>
+  </revision>
 </revisionlist>
