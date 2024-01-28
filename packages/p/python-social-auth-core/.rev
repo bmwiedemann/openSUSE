@@ -422,4 +422,20 @@
     <comment></comment>
     <requestid>1130256</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bc04f92ebcc06564ab91d33c4864d714</srcmd5>
+    <version>4.5.2</version>
+    <time>1706467346</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.5.2:
+  * Updated Facebook API version to 18.0
+  * Make AppleID work with multiple identifiers
+
+- Update to 4.5.0
+  - Added CAS OIDC backend
+- Update to 4.4.1
+- Update to 4.4.0
+  - Updated `user_data` method in `StripeOAuth2` to return `email`</comment>
+    <requestid>1141940</requestid>
+  </revision>
 </revisionlist>
