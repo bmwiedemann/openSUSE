@@ -131,4 +131,14 @@
 - Drop patch collections-python310.patch, included upstream.</comment>
     <requestid>1135608</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e2a47489789eca649bc9a082088cbba3</srcmd5>
+    <version>3.2.2</version>
+    <time>1706467210</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.2:
+  * Minor changes to fix Python 3.12 warnings with usage of raw
+    strings</comment>
+    <requestid>1141853</requestid>
+  </revision>
 </revisionlist>
