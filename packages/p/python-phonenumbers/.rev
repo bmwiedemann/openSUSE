@@ -259,4 +259,13 @@
   * merge upstream 8.13.27 phonenumber fixes</comment>
     <requestid>1137426</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ddb03568ba0d596f41f0108ff0732fc4</srcmd5>
+    <version>8.13.29</version>
+    <time>1706467348</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.13.29:
+  * merge upstream 8.13.29 phonenumber fixes</comment>
+    <requestid>1141942</requestid>
+  </revision>
 </revisionlist>
