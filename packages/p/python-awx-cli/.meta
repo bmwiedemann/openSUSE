@@ -1,0 +1,6 @@
+<package name="python-awx-cli" project="openSUSE:Factory">
+  <title>AWX CLI</title>
+  <description>CLI for the AWX Ansible web platform</description>
+  <devel project="systemsmanagement:ansible" package="python-awx-cli"/>
+  <url>https://github.com/ansible/awx/tree/devel/awxkit</url>
+</package>
