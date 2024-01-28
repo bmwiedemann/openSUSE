@@ -31,4 +31,12 @@
     <comment>- Update to release v1.4.1</comment>
     <requestid>1139890</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>06b0708b9d8a838c6c8fcb7d19cbda04</srcmd5>
+    <version>1.4.1</version>
+    <time>1706467344</time>
+    <user>anag+factory</user>
+    <comment>- Rectify paths in systemd unit files [boo#1218808]</comment>
+    <requestid>1141933</requestid>
+  </revision>
 </revisionlist>

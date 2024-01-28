@@ -58,7 +58,8 @@ This package contains utilities for creating and mounting bcachefs.
 %autosetup -p1
 
 %build
-%make_build NO_RUST=1 EXTRA_CFLAGS="%optflags"
+%make_build PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir" \
+	EXTRA_CFLAGS="%optflags" NO_RUST=1
 
 %install
 %make_install PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir" NO_RUST=1

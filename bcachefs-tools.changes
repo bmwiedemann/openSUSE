@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 27 09:49:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Rectify paths in systemd unit files [boo#1218808]
+
+-------------------------------------------------------------------
 Fri Jan 19 01:54:34 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Delete use_libexec_not_lib.patch (merged)
