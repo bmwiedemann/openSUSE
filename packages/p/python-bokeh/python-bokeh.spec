@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %bcond_with testexamples
 
 Name:           python-bokeh%{psuffix}
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
@@ -166,7 +166,7 @@ deselectname+=" or test_serialization_data_models"
 # linting and code structure irrelevant for rpm package
 deselectname+=" or test_ruff or test_isort or test_eslint or test_code_quality or test_no_request_host"
 # no driver (chromedriver only x86_64)
-deselectname+=" or Test_webdriver_control"
+deselectname+=" or Test_webdriver_control or test_adding_periodic_twice"
 # fails when tested with pytest-xdist
 deselectname+=" or (TestModelCls and test_get_class)"
 deselectname+=" or test_external_js_and_css_resource_ordering"
