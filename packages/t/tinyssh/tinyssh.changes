@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 27 16:28:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 20240101 (bsc#1218197, CVE-2023-48795):
+  * fixed channel_forkpty() race condition between close(slave)
+    in parent process and login_tty(slave) in child process
+  * fixed behavior when using terminal mode and stdin redirected
+    to /dev/null 'ssh -tt -n'
+  * added an 'strict-key' key exchange kex-strict-
+    s-v00@openssh.com (Mitigates CVE-2023-48795 "Terrapin
+    attack")
+
+-------------------------------------------------------------------
 Mon Jan  2 13:33:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20230101:
@@ -15,7 +27,7 @@ Sun Dec  4 13:40:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * use null fields in utmpx calls for logout
   * do not reverse the argument order in LIBS
   * fill utmp(x)'s ut_addr_v6 field when it exists
-  * updated crypto/crypto_onetimeauth_poly1305.c 
+  * updated crypto/crypto_onetimeauth_poly1305.c
 
 -------------------------------------------------------------------
 Thu May  5 07:05:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
@@ -51,4 +63,4 @@ Fri Dec  7 14:39:22 UTC 2018 - Karol Babioch <kbabioch@suse.de>
 Sat Feb  3 00:14:55 UTC 2018 - kbabioch@suse.com
 
 - Initial package
- 
+
