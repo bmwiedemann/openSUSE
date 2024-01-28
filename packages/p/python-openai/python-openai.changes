@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 26 12:54:53 UTC 2024 - Markéta Machová <mmachova@suse.com>, Module Updater <pgajdos@suse.com>
+
+- Update to 1.10.0
+  * Auto-retry with backoff if there's an error 
+  * Proper types (for mypy/pyright/editors)
+  * You can now instantiate a client, instead of using a global default. 
+  * Switch to explicit client instantiation
+  * Weights and Biases CLI will now be included in their own package
+  * many more smaller changes, see https://github.com/openai/openai-python/blob/main/CHANGELOG.md
+- Use an upstream tarball and run at least some tests
+
+-------------------------------------------------------------------
 Mon Jul 24 20:18:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.27.8:
