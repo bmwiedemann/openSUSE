@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 26 15:34:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add 0004-Fix-build-with-sip6.8.patch to support sip 6.8
+
+-------------------------------------------------------------------
 Fri Jan 19 09:40:36 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to support libjxl >= 0.9.0:

@@ -46,6 +46,7 @@ Source2:        krita.keyring
 Patch1:         0001-Fix-build-with-libjxl-0.9.0.patch
 Patch2:         0002-KisFileIconCreator-add-workaround-for-JPEG-XL-too.patch
 Patch3:         0003-JPEG-XL-Disable-export-bug-workaround-for-libjxl-0.9.patch
+Patch4:         0004-Fix-build-with-sip6.8.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel
