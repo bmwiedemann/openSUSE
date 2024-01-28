@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 26 19:40:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.22:
+  * Updated AWS SDK to 1.50.0 (#2906)
+
+-------------------------------------------------------------------
+Tue Jan 23 17:48:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.21:
+  * Enhanced Missing Executable Error Messages for Terraform & Tofu
+    (#2905)
+
+-------------------------------------------------------------------
 Sat Jan 20 17:33:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.54.20:
