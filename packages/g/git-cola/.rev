@@ -817,4 +817,12 @@ https://github.com/git-cola/git-cola/issues/991
 - switch to PyQt6</comment>
     <requestid>1128784</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>ab19a4c2f89d6ff332eb07465c628406</srcmd5>
+    <version>4.5.0</version>
+    <time>1706467372</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.5.0</comment>
+    <requestid>1142002</requestid>
+  </revision>
 </revisionlist>

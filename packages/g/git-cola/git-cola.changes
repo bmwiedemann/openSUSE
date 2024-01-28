@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jan 27 17:39:36 UTC 2024 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 4.5.0
+- Usability, bells and whistles
+  * "Stage Modified" was added to the available toolbar actions.
+    https://github.com/git-cola/git-cola/issues/1371
+  * "Stage Untracked" no longer stages modified files when the list of
+    untracked files to stage is empty.
+    https://github.com/git-cola/git-cola/issues/1371
+  * `Ctrl + Space` can now be used to display the autocomplete options in input fields
+    that provide autocompletion.
+  * The Diff widget now displays the currently selected filename.
+    Uncheck the "Show filenames" option in the Diff widget's tool menu
+    to disable this feature.
+    https://github.com/git-cola/git-cola/issues/1367
+  * The "Fetch", "Push" and "Pull" dialogs now have an embedded progress bar instead
+    of displaying a progress bar in a separate popup window.
+  * The "Fetch", "Push" and "Pull" dialogs will now stay open after the remote
+    operation completes when the "Close on completion" checkbox is unchecked.
+    These dialogs closed themselves unconditionally before this change.
+- Fixes
+  * PyQt6 compatibility for the "Find in diff" feature.
+  * PyQt6 compatibility for the ``git dag`` Gravatar icons.
+- Translations
+  * Updated Polish translation.
+    https://github.com/git-cola/git-cola/pull/1368
+- Packaging and Dependencies
+  * The vendored `qtpy` library was updated to `v2.4.1`.
+  * The documentation no longer depends on `jaraco.packaging`.
+- Development
+  * upload-artifact and setup-python github actions were upgraded.
+
+-------------------------------------------------------------------
 Sat Nov 25 19:10:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.1:
