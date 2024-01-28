@@ -1,7 +1,7 @@
 #
 # spec file for package hare
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without  test
 Name:           hare
 Release:        0
-Version:        1703745713.f01c8eed
+Version:        1705636831.933763ed
 Summary:        Hare system programming language
 Group:          Development/Tools/Building
 License:        MPL-2.0
@@ -30,7 +30,7 @@ Source2:        README-suse-maint.md
 BuildRequires:  binutils
 BuildRequires:  gcc
 # Always be specific on harec version
-BuildRequires:  harec = 1702179030.9d51b36
+BuildRequires:  harec = 1704220143.770566a
 BuildRequires:  make
 BuildRequires:  qbe
 BuildRequires:  scdoc

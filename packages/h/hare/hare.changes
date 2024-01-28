@@ -1,12 +1,42 @@
 -------------------------------------------------------------------
-Thu Dec 28 12:11:52 UTC 2023 - socvirnyl.estela@gmail.com
+Sat Jan 20 07:25:20 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1705636831.933763ed:
+  * OpenBSD: rt add kqueue(2) wrappers
+  * OpenBSD: rt fix termios structures
+  * .builds/freebsd.yml drop CC=cc workaround again
+  * Fix typo in crypto::chachapoly
+  * strings: Simplify fromutf8
+  * Makefile: more quoting
+  * remove harec2 from the makefile all target
+  * cmd/haredoc: close read end of pipe after passing it to command
+  * cmd/hare: fix cross-compiling qbe arch
+  * Advance after zero-length regex matches
+  * .builds/*: exit on non-master builds
+  * make bootstrap
+  * strings: rename pad functions per convention
+  * strings: improve docs and params for pad functions
+  * strings: readd pad functions
+  * time: change signature of *_to_timespec funcs
+  * notify hare-dev on ci failure
+  * encoding::utf8: Return invalid from utf8sz on invalid starting byte
+  * *BSD: fsflags_to_bsd return unsupported instead of abort()
+  * rt: BPF socket structs & option levels for Linux
+  * configs/*.mk: don't always assume cross-compilation
+  * fmt: Fix fmt::mods documentation
+  * unix::signal: fix typo in docs
+  * encoding::utf8: Rename valid() to validate() and change return type
+  * update ci for harec config.mk
+
+-------------------------------------------------------------------
+Thu Dec 28 12:11:52 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 1703745713.f01c8eed:
   * OpenBSD: rt fix munmap system call
   * OpenBSD: fix CI
 
 -------------------------------------------------------------------
-Sat Dec 23 02:20:15 UTC 2023 - socvirnyl.estela@gmail.com
+Sat Dec 23 02:20:15 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 1703237889.6c1a836c:
   * correct inotify_event to use [*]u8
@@ -85,7 +115,7 @@ Fri Dec  8 13:25:24 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncom
 - Enable checks.
 
 -------------------------------------------------------------------
-Fri Dec 08 13:20:23 UTC 2023 - socvirnyl.estela@gmail.com
+Fri Dec 08 13:20:23 UTC 2023 - uncomfy+openbuildservice@uncomfyhalomacro.pl
 
 - Update to version 1701969360.dbd2d7a5:
   * remove the fs::flag::TRUNC argument from os::create in cmd::hare
@@ -103,7 +133,7 @@ Fri Dec 08 13:20:23 UTC 2023 - socvirnyl.estela@gmail.com
   * OpenBSD: os::cpucount: Return the number of online CPUs
 
 -------------------------------------------------------------------
-Sat Dec 02 10:19:02 UTC 2023 - socvirnyl.estela@gmail.com
+Sat Dec 02 10:19:02 UTC 2023 - uncomfy+openbuildservice@uncomfyhalomacro.pl
 
 - Update specfile
 - Update to version 1701471445.901444ae:
@@ -199,7 +229,7 @@ Fri Nov 10 06:52:24 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncom
 - adopt new config.mk
 
 -------------------------------------------------------------------
-Fri Nov 10 04:15:57 UTC 2023 - socvirnyl.estela@gmail.com
+Fri Nov 10 04:15:57 UTC 2023 - uncomfy+openbuildservice@uncomfyhalomacro.pl
 
 - Update to version 1699559089.3d06f9d2:
   * speed up crypto::argon2 a bit
@@ -214,17 +244,17 @@ Fri Nov 10 04:15:57 UTC 2023 - socvirnyl.estela@gmail.com
   * cmd/parsechk: initial commit
 
 -------------------------------------------------------------------
-Sun Aug 20 15:06:19 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Sun Aug 20 15:06:19 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Remove no-exec-stack.patch. Seems it's already in the latest commits
 
 -------------------------------------------------------------------
-Sun Aug 20 14:56:03 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Sun Aug 20 14:56:03 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Add no-exec-stack.patch
 
 -------------------------------------------------------------------
-Sun Aug 20 14:48:25 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Sun Aug 20 14:48:25 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0+3206:
   * crypto::ed25519: change api to take slices
@@ -278,12 +308,12 @@ Sun Aug 20 14:48:25 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
   * hkdf: add extract and expand functions
 
 -------------------------------------------------------------------
-Sun Aug 13 13:26:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Sun Aug 13 13:26:57 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Replace obsoleted `disabled` option with `manual`
 
 -------------------------------------------------------------------
-Sat Jul 22 01:51:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Sat Jul 22 01:51:57 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to 0+3157:
  * hare::ast: add README
@@ -300,7 +330,7 @@ Sat Jul 22 01:51:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
  * hare::parse::identstr: only parse full ident
 
 -------------------------------------------------------------------
-Thu Jun 22 12:51:08 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Thu Jun 22 12:51:08 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to 0+3145:
   Alexey Yerin (3):
@@ -405,12 +435,12 @@ Thu Jun 22 12:51:08 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
         crypto::salsa20: add hsalsa20
 
 -------------------------------------------------------------------
-Sun May 28 03:28:04 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Sun May 28 03:28:04 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Remove checks for now.
 
 -------------------------------------------------------------------
-Sat May 27 13:12:29 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Sat May 27 13:12:29 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to 0+3076:
   * cmd/haredoc: close read end of pipe later
@@ -424,21 +454,21 @@ Sat May 27 13:12:29 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
   * net::unix: replace memcpy with slice assignment
 
 -------------------------------------------------------------------
-Mon Mar 20 12:02:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Mon Mar 20 12:02:54 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Configure LDFLAGS inside config.mk explicitly.
 
 -------------------------------------------------------------------
-Mon Mar 20 02:06:13 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Mon Mar 20 02:06:13 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Configure CFLAGS inside config.mk.
 
 -------------------------------------------------------------------
-Fri Mar 17 12:13:44 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Fri Mar 17 12:13:44 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Cleanup specfile
 
 -------------------------------------------------------------------
-Wed Mar  1 00:40:34 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Wed Mar  1 00:40:34 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Initial spec for hare 0+git2848
