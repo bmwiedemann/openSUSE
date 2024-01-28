@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package rust1.73
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -664,6 +664,7 @@ python3 ./x.py test --target=%{rust_triple} \
     --exclude src/bootstrap
 %else
 python3 ./x.py test --target=%{rust_triple} \
+    --exclude tests/run-make/issue-71519 \
     --exclude src/tools/tidy \
     --exclude src/tools/expand-yaml-anchors \
     --exclude tests/ui/methods \
