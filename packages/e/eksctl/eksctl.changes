@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 26 19:27:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.169.0:
+  * Add release notes for 0.169.0
+  * Add support for EKS 1.29
+  * Fix coredns pdb preventing cluster deletion
+  * Fix StringLike condition key for ebsCSIController IAM policy
+  * Fix outdated links
+  * Handle unordered public endpoint CIDRs from EKS in endpoint
+    updates
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Sat Jan 20 17:00:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.168.0:
