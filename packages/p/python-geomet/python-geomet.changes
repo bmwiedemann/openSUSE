@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 26 21:25:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Move project metadata to pyproject.toml, modify build scripts
+  * pyproject.toml: include the full README.md as the readme
+    contents
+  * Remove dependency on `six`
+  * Fix geojson to esrijson conversion with custom SRID
+  * Add explicit support for Python3.11
+  * docs: Simplify release process, make patch versioning more
+    clear
+  * Add explicit support for Python3.12
+  * Release 1.1.0
+- drop python-geomet-no-six.patch (upstream)
+
+-------------------------------------------------------------------
 Thu May 11 10:38:08 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.0.0

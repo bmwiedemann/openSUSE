@@ -31,4 +31,23 @@
     <comment></comment>
     <requestid>1086538</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d72effc35dd17a06c051b4f22e9884ad</srcmd5>
+    <version>1.1.0</version>
+    <time>1706467194</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.0:
+  * Move project metadata to pyproject.toml, modify build scripts
+  * pyproject.toml: include the full README.md as the readme
+    contents
+  * Remove dependency on `six`
+  * Fix geojson to esrijson conversion with custom SRID
+  * Add explicit support for Python3.11
+  * docs: Simplify release process, make patch versioning more
+    clear
+  * Add explicit support for Python3.12
+  * Release 1.1.0
+- drop python-geomet-no-six.patch (upstream)</comment>
+    <requestid>1141816</requestid>
+  </revision>
 </revisionlist>
