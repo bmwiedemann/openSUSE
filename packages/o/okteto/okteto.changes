@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 26 19:41:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.24.2:
+  * fix: panic on race condition (#4140) (#4142)
+
+-------------------------------------------------------------------
+Tue Jan 23 17:49:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.24.1:
+  * fix: statefulset reconnection error (#4127) (#4138)
+  * Upgrade staging domain for user apps (#4125) (#4137)
+  * fix okteto up double shutdown when interrupting with ctrl+c
+    (#4134) (#4136)
+
+-------------------------------------------------------------------
 Tue Jan 09 20:14:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.24.0:
