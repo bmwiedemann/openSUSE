@@ -1,7 +1,7 @@
 #
 # spec file for package sleuthkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sosuffix 19
 Name:           sleuthkit
-Version:        4.12.0
+Version:        4.12.1
 Release:        0
 Summary:        Tools for file system and volume forensic analysis
 License:        CPL-1.0 AND IPL-1.0 AND GPL-2.0-or-later
@@ -27,8 +27,8 @@ URL:            https://www.sleuthkit.org/
 Source0:        https://github.com/%{name}/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM upsteam_tarball_left_a_file_out gh#sleuthkit/sleuthkit#642
 Patch1:         0001-build-support-libewf-V3.patch
-# PATCH-FIX-UPSTREAM upsteam_tarball_left_a_file_out gh#sleuthkit/sleuthkit#2812
-Patch2:         sleuthkit-4.12.0_add-missing-include-file.patch
+# Joachim Metz provided support, but 1 header file was missed in the tarball
+Patch2:         sleuthkit-4.12.0_add-lvm-support.patch
 BuildRequires:  gcc-c++
 #BuildRequires:  libtool
 # libewf - Newer versions are plain BSD (older are BSD with advertising)
