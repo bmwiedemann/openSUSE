@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Dec 30 13:48:44 UTC 2023 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Upgrade to version 5.0:
+  * Performance improvements in uprobe registration and module startup.
+  * More probe point process details are printed in "-L" list mode with
+    more "-v".
+  * For the case where newer kernels may break systemtap runtime APIs,
+    better pass-4 failure diagnostics are printed.
+  * Tapset function print_ubacktrace_fileline() now understands DWARF5.
+  * The target(s) of process probes may be specified by path name
+    globs, as located selected debuginfod servers.  This requires the
+    debuginfod servers to support "metadata" queries.  The following
+    probes all of the binaries matching /usr/*/curl known to the
+    debuginfod servers, regardless of what's currently installed as the
+    system /usr/bin/curl:
+      # export DEBUGINFOD_URLS="URL1 URL2 ..."
+      # stap -e 'probe debuginfod.process("/usr/*/curl").begin { log("hi") }'
+    The archive glob may be given as an optional component to filter further:
+      # stap -e 'probe debuginfod.archive("*.fc38*")
+                 .process("/usr/*/c*").function("main") { log("Hello World") }'
+  * The kernel-user message transport system added framing codes,
+    making the transport more reliable, but becoming incompatible
+    across pre-5.0 versions.  Use matching versions of stap and
+    staprun.
+  * RHEL6, kernel 2.6.32* as well as older releases have been
+    deprecated from the codebase.  RHEL7 and kernel version 3.10 are
+    now the oldest supported versions for Systemtap.
+  * The testsuite Makefile has been simplified to remove concurrency,
+    so "parallel" and "resume" modes are gone.
+  * New runtime macro STP_TIMING_NSECS is now supported for reporting
+    probe timing stats in nsecs instead of cycles.  This may become
+    default later.
+  * Add new runtime macro STP_FORCE_STDOUT_TTY to override
+    STP_STDOUT_NOT_ATTY.
+
+-------------------------------------------------------------------
 Wed May 10 06:00:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.9:

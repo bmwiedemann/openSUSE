@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap
-Version:        4.9
+Version:        5.0
 Release:        0
 Summary:        Instrumentation System
 License:        GPL-2.0-or-later
@@ -34,8 +34,9 @@ Source4:        README-KEYRING
 Source5:        stap-server.conf
 Patch1:         systemtap-build-source-dir.patch
 
-BuildRequires:  autoconf
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel
 BuildRequires:  libcap-devel
@@ -47,6 +48,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  sqlite-devel
 BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(libdebuginfod)
 BuildRequires:  pkgconfig(systemd)
 Requires:       %{name}-dtrace = %{version}
 Requires:       %{name}-runtime = %{version}-%{release}
@@ -123,6 +125,8 @@ touch %{buildroot}%{_localstatedir}/log/stap-server.log
 # config file for stap-server (/run now on tmpfs)
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}
+
+%fdupes %{buildroot}%{_datadir}/%{name}
 
 %find_lang systemtap
 

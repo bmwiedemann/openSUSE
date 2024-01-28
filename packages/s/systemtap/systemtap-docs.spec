@@ -17,7 +17,7 @@
 
 
 Name:           systemtap-docs
-Version:        4.9
+Version:        5.0
 Release:        0
 Summary:        Documents and examples for systemtap
 License:        GPL-2.0-or-later
@@ -45,6 +45,7 @@ BuildRequires:  texlive-babel-english
 BuildRequires:  texlive-collection-fontsrecommended
 BuildRequires:  texlive-metafont-bin
 BuildRequires:  xmlto
+BuildRequires:  pkgconfig(libdebuginfod)
 BuildRequires:  tex(charter.sty)
 BuildRequires:  tex(fancybox.sty)
 BuildRequires:  tex(fancyhdr.sty)
