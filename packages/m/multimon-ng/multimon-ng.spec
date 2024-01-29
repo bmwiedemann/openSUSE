@@ -1,7 +1,7 @@
 #
 # spec file for package multimon-ng
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           multimon-ng
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A fork of multimon that decodes multiple digital transmission modes
 License:        GPL-2.0-only
