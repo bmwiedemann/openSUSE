@@ -460,4 +460,12 @@
     <comment></comment>
     <requestid>1135268</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>c51fe0d64a4cfed30195df98422b4e51</srcmd5>
+    <version>3.9.1</version>
+    <time>1706563554</time>
+    <user>anag+factory</user>
+    <comment>- Disable broken tests with openssl 3.2 and python &lt; 3.11 bsc#1217782</comment>
+    <requestid>1141676</requestid>
+  </revision>
 </revisionlist>
