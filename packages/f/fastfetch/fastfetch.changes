@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Jan 28 04:50:07 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- update to version 2.7.0:
+  Changes:
+    * Add new module TerminalTheme, which prints the foreground and background color of the current terminal window.
+    * Allow command substitution when expanding paths
+    * Improve xonsh shell detection (Shell)
+    * Support colored percentage values (Bluetooth / Gamepad / Sound)
+    * Add --<module>-percent-[green|yellow] options to specify threshold of percentage colors
+    * Add --percent-color-[green|yellow|red] options to specify color of different percent value states.
+    * Remove support of option --battery-dir. We detect a lot of things in /sys/class/*
+      and only module Battery supports specifying a custom directory for some reason, which is weird.
+    * Remove --chassis-use-wmi which is no longer used.
+    * --gpu-use-nvml has been renamed to --gpu-driver-specific due to using of IGCL and AGS
+    * We now detect external partitions more conservatively in Linux. USB partitions will not be detected as external always
+  Features:
+    * Default preset names to .jsonc. For example, fastfetch -c all will load presets/all.jsonc
+    * Support more properties of physical disks (PhysicalDisk)
+    * Support SSD temperature detection with --physicaldisk-temp (PhysicalDisk)
+    * Support ash (default shell of BusyBox) version detection (Shell, Linux)
+    * Support manufacture date and serial number detection for physical monitors (Monitor)
+    * Support battery serial number and manufacturer date detection (Battery)
+    * Support host serial number and UUID detection (Host)
+    * Support battery level detection for gamepads where possible (Gamepad)
+  Bugfixes:
+    * Fix segfault in CPU module when running in aarch64 machine without lscpu installed (CPU, Linux)
+    * Don't use login as terminal process (Terminal, Linux)
+    * Create sub folders when writing config file
+    * Fix Btrfs subvolumes being detected as external partitions some times (Linux, Disk)
+    * Fix battery cycle counts in some places (Battery)
+    * Fix physical monitor detection with Nvidia drivers (Monitor, Linux)
+    * Fix locale module printing unexpected results in specific environments (Locale)
+
+  For more info: https://github.com/fastfetch-cli/fastfetch/releases
+
+-------------------------------------------------------------------
 Sat Dec 23 08:15:55 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - update to version 2.4.0:
