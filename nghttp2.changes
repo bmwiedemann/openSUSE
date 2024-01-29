@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Jan 28 17:01:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.59.0:
+  * Update bash_completion
+  * h2load: Fix bug that ttfb is not recorded if h3 stream
+    has no data
+  * h2load: Consider all h2 HEADERS when counting bytes and
+    recording ttfb
+  * h2load: Ignore 1xx status code
+  * nghttpd: Free SSL_CTX on exit
+  * nghttpx: OpenSSL needs SSL_CTX_set_recv_max_early_data
+  * nghttpx: OpenSSL needs SSL_CTX_set_recv_max_early_data
+  * cmake: Require OpenSSL >= 1.1.1
+  * Add nghttp2_select_alpn and deprecate
+    nghttp2_select_next_protocol
+  * nghttpx: Add --alpn-list and deprecate --npn-list
+  * h2load: Add --alpn-list and deprecate --npn-list
+  * Remove NPN
+  * src: Support building with aws-lc
+  * Avoid detecting OpenSSL 3.2 as quictls
+  * Use nghttp3_pri_parse_priority added since nghttp3 v1.1.0
+  * h2load: Fix IPv6 address in :authority
+  * h2load: Fix IPv6 address in :authority
+  * nghttpx: Propagate stream priority from backend to
+    frontend
+  * nghttpx: Propagate stream priority from backend to
+    frontend
+  * Merge pull request #1991 from nghttp2/get-and-parse-
+    extpri
+  * Add API to get and parse RFC 9218 priority
+  * nghttpx: Prefer __FILE_NAME__ if defined
+
+-------------------------------------------------------------------
+Sat Nov 25 22:23:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.58.0:
+  * Update manual pages
+  * Bump neverbleed
+  * Bump ngtcp2
+  * Prefer clock_gettime if __CYGWIN__ defined
+  * Do not require strict c++ mode
+  * nghttpx: Stricter transfer-encoding checks
+  * Refactor character comparison
+  * Integration servertester h3
+  * integration: Enable http3 test with cmake
+
+-------------------------------------------------------------------
+Tue Nov 21 11:53:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- fix unversioned provides to be in sync with nghttp3
+
+-------------------------------------------------------------------
 Tue Nov  7 12:54:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add keyring for gpg validation
