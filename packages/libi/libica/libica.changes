@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 29 07:52:34 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libica to version 2.3.0 (jsc#PED-5446)
+  * New API function ica_allow_external_gcm_iv_in_fips_mode
+  * Bug fixes
+
+-------------------------------------------------------------------
 Fri Oct  6 07:08:03 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade to version 4.2.3 (jsc#PED-5446) 
