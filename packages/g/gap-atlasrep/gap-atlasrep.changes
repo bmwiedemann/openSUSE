@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 28 10:26:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.8:
+  * An example in Section 2.1-2 of the Tutorial had to be adjusted
+  because the results of the function
+  SmallerDegreePermutationRepresentation (Reference:
+  SmallerDegreePermutationRepresentation) depend on random
+  computations, in particular the implementation in GAP 4.13 may
+  yield a nicer representation than had been shown before.
+
+-------------------------------------------------------------------
 Tue Nov 21 21:46:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.7
