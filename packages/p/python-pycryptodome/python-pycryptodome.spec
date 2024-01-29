@@ -19,7 +19,7 @@
 %define min_version %{lua:rpm.expand("%{version}"):gsub("^(%d+%.%d+).*", "%1")}
 %{?sle15_python_module_pythons}
 Name:           python-pycryptodome
-Version:        3.19.1
+Version:        3.20.0
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
