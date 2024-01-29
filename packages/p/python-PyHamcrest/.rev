@@ -70,4 +70,20 @@
     <comment></comment>
     <requestid>1082033</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>272238036777346492f70b64b787b76e</srcmd5>
+    <version>2.1.0</version>
+    <time>1706563595</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * Add a matcher for exceptions in asyncio future
+  * Use the correct generic type in the internal
+    ``describe_keyvalue`` method
+  * ``has_properties`` now returns ``Matcher[Any]`` type, which
+    addresses type checking errors when nested as a matcher.
+  * Added Python 3.11 testing
+
+- Because of gh#hamcrest/PyHamcrest#123 we have to remove</comment>
+    <requestid>1141945</requestid>
+  </revision>
 </revisionlist>

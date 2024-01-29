@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 27 11:03:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Add a matcher for exceptions in asyncio future
+  * Use the correct generic type in the internal
+    ``describe_keyvalue`` method
+  * ``has_properties`` now returns ``Matcher[Any]`` type, which
+    addresses type checking errors when nested as a matcher.
+  * Added Python 3.11 testing
+
+-------------------------------------------------------------------
 Fri Apr 21 12:20:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -53,7 +64,7 @@ Tue Nov  5 11:20:23 UTC 2019 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Mon Nov  4 14:35:43 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
-- Because of gh#hamcrest/PyHamcrest#123 we have to remove 
+- Because of gh#hamcrest/PyHamcrest#123 we have to remove
   tests/hamcrest_unit_test/core/is{_test,instanceof_test}.py to
   make the test suite passing.
   Patch pytest4.patch has been removed, it was a step into dead
