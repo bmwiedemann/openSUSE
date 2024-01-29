@@ -1,7 +1,7 @@
 #
 # spec file for package python-dtfabric
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define modname dtfabric
 Name:           python-dtfabric
-Version:        20221218
+Version:        20230520
 Release:        0
 Summary:        Data type fabric (dtfabric)
 License:        Apache-2.0
@@ -28,12 +28,14 @@ URL:            https://github.com/libyal/dtfabric
 Source:         https://github.com/libyal/dtfabric/releases/download/%{version}/dtfabric-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
+Requires:       python-pip
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
