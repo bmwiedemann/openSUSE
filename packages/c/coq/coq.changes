@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jan 28 20:20:35 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.19.0. The most impactful changes:
+  * Sort polymorphism makes it possible to share common constructs
+    over `Type`, `Prop` and `SProp`.
+  * The notation `term%_scope` to set a scope only temporarily (in
+    addition to `term%scope` for opening a scope applying to all
+    subterms).
+  * `lazy`, `simpl`, `cbn` and `cbv` and the associated `Eval` and
+    `eval` reductions learned to do head reduction when given flag
+    `head`.
+  * New Ltac2 APIs, improved Ltac2 `exact` and dynamic building of
+    Ltac2 term patterns.
+  * New performance evaluation facilities: `Instructions` to count
+    CPU instructions used by a command and Profiling system to
+    produce trace files.
+  * New command `Attributes` to assign attributes such as
+    `deprecated` to a library file.
+- Notable breaking changes:
+  * `replace` with `by tac` does not automatically attempt to solve
+    the generated equality subgoal using the hypotheses. Use `by
+    first [assumption | symmetry;assumption | tac]` if you need the
+    previous behaviour.
+  * Removed old deprecated files from the standard library. 
+- Use %fdupes in the documentation package.
+
+-------------------------------------------------------------------
 Sun Nov 12 22:52:11 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Revert last change: this is now set in ocaml-rpm-macros.
