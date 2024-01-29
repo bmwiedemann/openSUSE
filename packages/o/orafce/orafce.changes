@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 29 09:54:53 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.9.1+git0.1071eb6:
+  * prepare for 4.9.1
+  * fix white spaces in regress tests
+  * fix formatting issues from previous commit
+  * dbms_random.string Enhancement #252
+
+-------------------------------------------------------------------
 Tue Jan 02 08:18:51 UTC 2024 - emiliano.langella@suse.com
 
 - Update to version 4.9.0+git0.18d82db:
