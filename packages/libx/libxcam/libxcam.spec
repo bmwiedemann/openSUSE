@@ -1,7 +1,7 @@
 #
 # spec file for package libxcam
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Patch2:         https://github.com/intel/libxcam/commit/ea99d89082c2473c2e22c848
 Patch3:         0001-Fix-multiple-definitions-of-XCam-ShaderID-ODR-violat.patch
 # PATCH-FIX-UPSTREAM Fix build with GCC 12
 Patch4:         https://github.com/intel/libxcam/pull/802/commits/d13b69e6332277a4a59cd736439e17851fe8be74.patch#/libxcam-1.5.0-gcc-12.patch
+# PATCH-FIX-OPENSUSE Fix FTBFS error
+Patch5:         fix-missing-include.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  autoconf
 BuildRequires:  automake

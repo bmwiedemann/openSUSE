@@ -1,0 +1,21 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Fix build error
+
+[   50s] cl_memory.cpp: In static member function 'static uint32_t XCam::CLImage::calculate_pixel_bytes(const cl_image_format&)':
+[   50s] cl_memory.cpp:332:10: error: 'CL_UNORM_INT24' was not declared in this scope; did you mean 'CL_UNORM_INT8'?
+[   50s]   332 |     case CL_UNORM_INT24:
+[   50s]       |          ^~~~~~~~~~~~~~
+[   50s]       |          CL_UNORM_INT8
+
+Index: libxcam-release_1.5.0/modules/ocl/cl_memory.cpp
+===================================================================
+--- libxcam-release_1.5.0.orig/modules/ocl/cl_memory.cpp
++++ libxcam-release_1.5.0/modules/ocl/cl_memory.cpp
+@@ -21,6 +21,7 @@
+ #include "cl_utils.h"
+ #include "cl_memory.h"
+ #include "cl_error.h"
++#include <CL/cl_gl.h>
+ 
+ namespace XCam {
+ 
