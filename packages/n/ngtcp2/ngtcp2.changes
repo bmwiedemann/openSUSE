@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jan 28 17:13:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Remove sample_offset field from ngtcp2_ppe
+  * wolfssl: Just use QUIC v1 transport parameter codepoint
+  * Do not send STOP_SENDING if RESET_STREAM has been
+    received
+  * Return early when STOP_SENDING is received more than once
+  * Do not send STOP_SENDING if RESET_STREAM has been
+    received
+  * Fix persistent congestion
+  * ngtcp2_pkt_adjust_pkt_num: Take bytes rather than bits
+  * Remove use of SSL_set_quic_transport_version
+  * Switch interop client/server to wolfssl because OpenSSL
+    1.1.1 has been EOLed and OpenSSL 3.x has the various
+    performance issues due to its design decision.
+    wolfssl has been chosen because it has the ability
+    to specify chacha cipher suite and it is also relatively
+    easy to build compared to GnuTLS.
+  * Avoid detecting OpenSSL 3.2 as quictls
+  * cmake: Require nghttp3 >= v1.0.0
+
+-------------------------------------------------------------------
 Thu Dec 28 21:08:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

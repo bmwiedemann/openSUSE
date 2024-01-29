@@ -44,4 +44,30 @@
   * Rework app_limited</comment>
     <requestid>1135547</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>90cd15c351f59840c469578340581f9b</srcmd5>
+    <version>1.2.0</version>
+    <time>1706563721</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Remove sample_offset field from ngtcp2_ppe
+  * wolfssl: Just use QUIC v1 transport parameter codepoint
+  * Do not send STOP_SENDING if RESET_STREAM has been
+    received
+  * Return early when STOP_SENDING is received more than once
+  * Do not send STOP_SENDING if RESET_STREAM has been
+    received
+  * Fix persistent congestion
+  * ngtcp2_pkt_adjust_pkt_num: Take bytes rather than bits
+  * Remove use of SSL_set_quic_transport_version
+  * Switch interop client/server to wolfssl because OpenSSL
+    1.1.1 has been EOLed and OpenSSL 3.x has the various
+    performance issues due to its design decision.
+    wolfssl has been chosen because it has the ability
+    to specify chacha cipher suite and it is also relatively
+    easy to build compared to GnuTLS.
+  * Avoid detecting OpenSSL 3.2 as quictls
+  * cmake: Require nghttp3 &gt;= v1.0.0</comment>
+    <requestid>1142109</requestid>
+  </revision>
 </revisionlist>
