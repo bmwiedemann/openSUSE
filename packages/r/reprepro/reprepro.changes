@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 29 08:05:25 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 5.4.3
+  * uncompress: prevent block on unzstd
+    (https://bugs.debian.org/1056380) 
+
+-------------------------------------------------------------------
 Tue Oct 24 03:56:31 UTC 2023 - ming li <mli@suse.com>
 
 - Update to version 5.4.2
