@@ -1,0 +1,355 @@
+-------------------------------------------------------------------
+Sun Jan 28 16:45:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add conflicts with libs3-tools
+
+-------------------------------------------------------------------
+Fri Jan 26 12:09:44 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.0
+  * Use uint64_t for memory limit and cap it to SIZE_MAX by @waahm7 in (#404)
+
+-------------------------------------------------------------------
+Wed Jan  3 14:12:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.9
+  * Change `port` from uint16_t to uint32_t to support VSOCK by @graebm in (#394)
+- from version 0.4.8
+  * Skip headRequest for RangeGet Part 1 by @waahm7 in (#389)
+  * Fix get-object-part by @TingDaoK in (#401)
+- from version 0.4.7
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#400)
+  * Fix two bugs from metrics and cancel by @TingDaoK in (#399)
+- from version 0.4.6
+  * Cancel/Pause stream optimization by @TingDaoK in (#395)
+  * Metric callback improve by @TingDaoK in (#390)
+- from version 0.4.5
+  * Support meta request level override of part size and
+    mpu threshold by @TingDaoK in (#393)
+
+-------------------------------------------------------------------
+Wed Dec 13 08:55:44 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.4
+  * Helper for s3express by @TingDaoK in (#387)
+  * Create session error code by @TingDaoK in (#392)
+
+-------------------------------------------------------------------
+Thu Nov 30 12:30:37 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.3
+  * Fix tests to use net_test_case by @waahm7 in (#383)
+  * Mem limiter validation by @DmitriyMusatkin in (#385)
+  * Bypass for CreateSession reqeust by @TingDaoK in (#384)
+- from version 0.4.2
+  * Performance optimization updates by @TingDaoK in (#381)
+- from version 0.4.1
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#376)
+  * Report S3 operation name of specific request that failed
+    by @graebm in (#377)
+- from version 0.4.0
+  * Fix stale bot permissions by @jmklix in (#371)
+  * Mem limiter by @DmitriyMusatkin in (#368)
+
+-------------------------------------------------------------------
+Tue Nov 21 09:24:28 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.24
+  * Cleanup CPU group array info code by @waahm7 in (#369)
+- from version 0.3.23
+  * Retry for slow upload part request by @TingDaoK in (#360)
+  * API to retrieve list of platform with recommended
+    configuration by @waahm7 in (#367)
+- from version 0.3.22
+  * Remove Populating Empty Error Body by @waahm7 in (#366)
+- from version 0.3.21
+  * Fix Request Tag Usage for Populating Error Payload by @waahm7 in (#365)
+  * Environment Detection by @waahm7 in (#361)
+- from version 0.3.20
+  * Populate error payload for HeadObject request failure by @waahm7 in (#364)
+- from version 0.3.19
+  * Fix typo in aws_cached_signing_config_new by @waahm7 in (#358)
+
+-------------------------------------------------------------------
+Tue Oct 17 09:59:46 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.18
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#348)
+  * Retry for request skewed by @TingDaoK in (#343)
+  * Parallel prepare - open file on needed by @TingDaoK in (#355)
+  * Instead of skipping, let's prepare the parts and mark it noop by @TingDaoK in (#356)
+
+-------------------------------------------------------------------
+Tue Sep 12 09:52:12 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.17
+  * Fix: Get object with checksum leak when retry happens by @TingDaoK in (#346)
+  * Fix: Hang on file upload after period of inactivity by @TingDaoK in (#347)
+
+-------------------------------------------------------------------
+Wed Aug 30 08:00:47 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.16
+  * Added workflow for handling answerable discussions by @yasminetalby in (#342)
+  * Progress callbacks fire for all meta-request types by @graebm in (#344)
+
+-------------------------------------------------------------------
+Fri Aug 25 12:14:40 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.15
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#334)
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#337)
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#339)
+  * Minor CMakelists.txt cleanup by @graebm in (#340)
+  * Explicit Private for target_link_libraries by @waahm7 in (#345)
+
+-------------------------------------------------------------------
+Tue Jul 25 08:45:34 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.14
+  * Adapt to XML API changes by @graebm in (#332)
+
+-------------------------------------------------------------------
+Mon Jul 10 10:02:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.13
+  * Auto-Update S3 ruleset and partition by @waahm7 in (#324)
+  * Enable assert lock held and fix the compile by @TingDaoK in (#329)
+  * Allow user to review checksums before multipart
+    upload completes by @graebm in (#327)
+
+-------------------------------------------------------------------
+Wed Jul  5 09:07:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.12
+  * Update S3 sample by @waahm7 in (#321)
+  * Use one array for part info, instead of separate etag
+    array and checksum array by @graebm in (#322)
+  * Update partition.json URL in script by @waahm7 in (#323)
+
+-------------------------------------------------------------------
+Fri Jun 23 08:16:11 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.11
+  * Move endpoint resolver private header to .c file by @waahm7 in (#320)
+
+-------------------------------------------------------------------
+Wed Jun 21 13:08:51 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.10
+  * Use aws_array_list<aws_byte_buffer*> for encoded_checksum_list
+    by @TingDaoK in (#318)
+- from version 0.3.9
+  * Not retry on TLS failure by @TingDaoK in (#316)
+  * Zero unknown content length by @DmitriyMusatkin in (#319)
+
+-------------------------------------------------------------------
+Thu Jun 15 11:22:48 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.8
+  * Speed up async streaming by @graebm in (#313)
+
+-------------------------------------------------------------------
+Wed Jun 14 11:29:47 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.7
+  * Fix a missing copy of user data for signing config by @TingDaoK in (#314)
+
+-------------------------------------------------------------------
+Tue Jun 13 08:46:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.6
+  * Async cancel test by @graebm in (#310)
+  * async-stream: lots more tests by @graebm in (#311)
+  * [CopyObject]: increase minimum part size to 128MiB by @grrtrr in (#288)
+  * S3 Endpoint Resolver by @waahm7 in (#300)
+
+-------------------------------------------------------------------
+Mon Jun  5 11:12:24 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.5
+  * [CopyObject]: fix hardcoded URL, re-enable CopyObject support
+    and tests by @grrtrr in (#284)
+  * Async streaming - WIP by @graebm in (#299)
+  * MPU Copy tests by @DmitriyMusatkin in (#302)
+  * Tests for async streaming (seems to work!) by @graebm in (#301)
+
+-------------------------------------------------------------------
+Tue May 30 11:03:43 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.4
+  * Support unknown content-length for put by @DmitriyMusatkin in (#285)
+  * Update time to ancient by @jmklix in (#291)
+  * Add request type to telemetry by @TingDaoK in (#287)
+
+-------------------------------------------------------------------
+Fri May 19 09:42:32 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.3
+  * Fix MPU part size round off error for large files by @waahm7 in (#289)
+
+-------------------------------------------------------------------
+Tue May 16 08:22:44 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.2
+  * Fix handling of content-encoding header for
+    default request by @waahm7 in (#286)
+- from version 0.3.1
+  * Fix mem leak by @TingDaoK in (#279)
+  * Fix test helper script by @TingDaoK in (#280)
+  * Fix test helper follow up by @TingDaoK in (#281)
+  * Telemetry API by @TingDaoK in (#271)
+  * Fix warnings in public headers by @waahm7 in (#283)
+
+-------------------------------------------------------------------
+Wed May  3 11:33:10 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.0
+  * Add multipart upload threshold by @TingDaoK in (#276)
+- from version 0.2.9
+  * Add GitHub templates and bots by @jmklix in (#274)
+  * Unpin awslc by @TingDaoK in (#275)
+  * Fix compiler warning about missing void by @graebm in (#277)
+  * Fix bug when Range: bytes=0-0 by @graebm in (#278)
+
+-------------------------------------------------------------------
+Tue Apr 18 11:33:03 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.8
+  * Update package.json by @waahm7 in (#260)
+  * Fix Benchmark stack by @waahm7 in (#270)
+  * Fix one byte range handling by @DmitriyMusatkin in (#272)
+
+-------------------------------------------------------------------
+Fri Mar 17 10:37:58 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.7
+  * Fix default throughput monitoring by @graebm in (#265)
+  * Skip mock server setup when tests are disabled by @graebm in (#267)
+  * New send_filepath option, for faster uploads. by @graebm in (#266)
+
+-------------------------------------------------------------------
+Thu Mar  9 11:17:09 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.6
+  * Add defaults to detect dead connections. by @graebm in (#263)
+
+-------------------------------------------------------------------
+Wed Mar  1 10:26:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.5
+  * Change #if _MSC_VER to #ifdef _MSC_VER by @jmklix in (#259)
+
+-------------------------------------------------------------------
+Fri Feb 10 13:41:23 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.4
+  * Fix error handling for meta request init by @TingDaoK in (#248)
+  * More tests 3 by @TingDaoK in (#252)
+  * Put Object Tests by @TingDaoK in (#254)
+  * More S3 client test by @TingDaoK in (#255)
+  * Fix proxy options copy in s3_new by @waahm7 in (#256)
+
+-------------------------------------------------------------------
+Fri Jan 20 09:01:08 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.3
+  * Added test for object modified by @TingDaoK in (#247)
+  * Test Revamp by @TingDaoK in (#246)
+  * Fix test_s3_range_requests by @TingDaoK in (#250)
+  * Fix Host header not including port by @DmitriyMusatkin in (#249)
+
+-------------------------------------------------------------------
+Mon Jan 16 11:50:16 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.2
+  * Clean up aws_s3_paginator_continue by @TingDaoK in (#244)
+  * Fix macro usage by @DmitriyMusatkin in (#245)
+  * Use the builder --coverage instead by @TingDaoK in (#241)
+  * Fix overly large s_default_max_part_size constant by @grrtrr in (#242)
+- from version 0.2.1
+  * Mock s3 test by @TingDaoK in (#231)
+  * Codecov by @TingDaoK in (#237)
+  * Make code coverage a separate action by @TingDaoK in (#239)
+  * Fix checksum check on skipped parts during resume by @DmitriyMusatkin in (#240)
+
+-------------------------------------------------------------------
+Tue Dec  6 10:06:20 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.0
+  * Add if-match to auto-range get by @TingDaoK in (#226)
+  * Handle async error by @TingDaoK in (#225)
+  * s3_request: fix broken requests_in_flight counter by @grrtrr in (#216)
+  * Update CI to fix downstream build by @waahm7 in (#227)
+  * Handle async error for default type by @TingDaoK in (#233)
+  * acquire() and release() functions return pointers,
+    for better ergonomics by @graebm in (#234)
+  * Use AWS_ARRAY_SIZE() macro by @graebm in (#236)
+  * Fix off-by-one error in calculating the
+    number of parts by @grrtrr in (#232)
+  * Pause resume update by @DmitriyMusatkin in (#235)
+
+-------------------------------------------------------------------
+Tue Nov  1 12:26:31 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.51
+  * Checksum API update by @TingDaoK in (#219)
+  * Validate checksum fix by @TingDaoK in (#224)
+
+-------------------------------------------------------------------
+Fri Oct 21 09:17:40 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.50
+  * Don't invoke on_body callback if there is no body to report
+    by @TingDaoK in (#220)
+  * s3_meta_request: fix typo by @grrtrr in (#222)
+  * Fix crash when aws_s3_meta_request has function called
+    on it after completion by @graebm in (#217)
+
+-------------------------------------------------------------------
+Wed Oct  5 11:55:12 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.49
+  * Flow-control for multipart downloads by @graebm in (#213)
+- from version 0.1.48
+  * Fix race condition with aws_s3_endpoint acquire/release by @graebm in (#209)
+- from version 0.1.47
+  * Don't cover the error code with retry failure by @TingDaoK in (#207)
+  * s3_endpoint: log ID of new connection_manager instead
+    of nil by @grrtrr in (#201)
+  * Expose additional configuration options for Http
+    connection manager by @waahm7 in (#204)
+
+-------------------------------------------------------------------
+Fri Sep  2 07:07:33 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.46
+  * Fallback for target load by @TingDaoK in (c1198ae)
+- from version 0.1.45
+  * Add checksum to s3 dependencies by @sbSteveK in (#199)
+  * Use aws_byte_cursor_utf8_parse_u64 by @TingDaoK in (#200)
+
+-------------------------------------------------------------------
+Mon Aug  8 10:24:10 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.44
+  * Fix pause API call breaking ECS cred provider (#197)
+- from version 0.1.42
+  * Fix the crash on error clean up by @TingDaoK in (#196)
+- from version 0.1.41
+  * Support for Pause/Resume for put
+
+-------------------------------------------------------------------
+Wed May 18 14:10:02 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.41
+  * Fix a bug where copy-file was decoding encoded URLs
+- from version 0.1.40
+  * Don't re-send "x-amz-meta-" headers in each part of a
+    multipart upload. by @graebm in (#189)
+
+-------------------------------------------------------------------
+Thu Apr 28 14:07:27 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.1.39
