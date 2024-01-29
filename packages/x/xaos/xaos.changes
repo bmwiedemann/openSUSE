@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 27 21:52:03 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 4.3.2:
+  * Turkish translation.
+  * Ctrl-C copies the current position to the clipboard as an URL at xaos.app.
+  * Some new keyboard shortcuts: Shift-F1 for Info on current fractal and
+    Ctrl-+ for Autopilot.
+  * "Mathematical" coordinates of the mouse are shown in the status.
+  * Contributor's list is linked in Help > About.
+
+-------------------------------------------------------------------
 Wed Nov  1 06:53:01 UTC 2023 - munix9@googlemail.com
 
 - Fix build on Factory/TW: Add STRIP=%{_bindir}/strip to %qmake6_build
