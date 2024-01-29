@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/LibreOffice/libexttextcat.git</param>
+    <param name="changesrevision">3b85d7e9fd34990f5be6a7e321c2e6b135064464</param>
+  </service>
+</servicedata>

@@ -2,6 +2,7 @@
 # spec file for package libexttextcat
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +20,17 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libexttextcat-2_0-0
 Name:           libexttextcat
-Version:        3.4.6
+Version:        3.4.7
 Release:        0
 Summary:        Text categorization library datafiles and documents
 License:        BSD-4-Clause
 Group:          Productivity/Text/Convertors
 URL:            https://wiki.documentfoundation.org/Libexttextcat
-Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  xz
 Obsoletes:      libtextcat < 3.2.0
 Provides:       libtextcat = %{version}
 
@@ -63,7 +66,8 @@ The %{name}-tools package contains the createfp program that allows
 you to easily create your own document fingerprints.
 
 %prep
-%setup -q
+%autosetup -p1
+autoreconf -fiv
 
 %build
 %configure \
@@ -77,8 +81,10 @@ you to easily create your own document fingerprints.
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%check
+%make_build check
+
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %license LICENSE
@@ -86,9 +92,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/%{name}*
 
 %files -n %{libname}
+%license LICENSE
 %{_libdir}/*.so.0*
 
 %files devel
+%license LICENSE
 %dir %{_datadir}/vala
 %dir %{_datadir}/vala/vapi
 %{_libdir}/*.so
@@ -97,6 +105,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/vala/vapi/%{name}.vapi
 
 %files tools
+%license LICENSE
 %{_bindir}/*
 
 %changelog
