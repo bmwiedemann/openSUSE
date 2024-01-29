@@ -16,6 +16,15 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%define pysidepython python3
+%else
+%{?sle15_python_module_pythons}
+%define pysidepython %pythons
+%endif
+%define pysidepython_sitelib %{expand:%%%{pysidepython}_sitelib}
+%define pysidepython_version %{expand:%%%{pysidepython}_version}
+
 Name:           python-AnyQt
 Version:        0.2.0
 Release:        0
@@ -35,7 +44,7 @@ Recommends:     python-qt5
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module qt5}
-BuildRequires:  python3-pyside2
+BuildRequires:  %{pysidepython}-pyside2
 BuildRequires:  %{python_module PyQt6}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-xvfb}
@@ -79,8 +88,8 @@ done
 # not ready for pyside6 yet
 for q in pyside2; do
   export QT_API=$q
-  export PYTHONPATH=%{buildroot}%{python3_sitelib}
-  pytest-%{python3_version} --ignore test/
+  export PYTHONPATH=%{buildroot}%{pysidepython_sitelib}
+  pytest-%{pysidepython_version} --ignore test/
 done
 # this doesn't return error codes, check output manually
 unset QT_API
