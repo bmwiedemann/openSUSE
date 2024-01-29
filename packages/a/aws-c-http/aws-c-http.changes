@@ -1,0 +1,277 @@
+-------------------------------------------------------------------
+Wed Jan  3 13:25:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.0
+  * Correct the doc about unactivated stream and add test by @TingDaoK in (#460)
+  * Change `port` from uint16_t to uint32_t to support VSOCK by @graebm in (#457)
+- from version 0.7.15
+  * sizeof('c') == 4, not 1: Fix overallocation by @nabijaczleweli in (#459)
+  * Add support for cancel stream by @TingDaoK in (#458)
+
+-------------------------------------------------------------------
+Tue Nov 21 09:16:29 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.14
+  * system vtables: Use full function names,
+    for better grepping by @graebm in (#454)
+  * Request idle timeout by @TingDaoK in (#456)
+
+-------------------------------------------------------------------
+Fri Sep 22 10:29:08 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.13
+  * Added workflow for handling answerable discussions by @yasminetalby in (#449)
+  * Remove unused headers code in elasticurl by @quinnj in (#452)
+  * Update CERT by @waahm7 in (#453)
+
+-------------------------------------------------------------------
+Wed Aug 30 07:56:46 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.12
+  * Explicit Private for target_link_libraries by @waahm7 in (#450)
+
+-------------------------------------------------------------------
+Wed Jul 12 06:06:47 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.11
+  * Skip empty string for proxy env var by @TingDaoK in (#446)
+
+-------------------------------------------------------------------
+Wed Jun  7 11:14:22 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.10
+  * Adapt to aws_future changes by @graebm in (#445)
+
+-------------------------------------------------------------------
+Mon Jun  5 10:54:10 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.9
+  * Move to postman-echo.com from httpbin.org by @waahm7 in (#442)
+  * Update time to ancient by @jmklix in (#441)
+  * aws_future<aws_http_message *> by @graebm in (#443)
+  * Use latest aws-crt-builder by @graebm in (#444)
+
+-------------------------------------------------------------------
+Tue May 16 09:11:10 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.8
+  * Add github templates and bots by @jmklix in (#436)
+  * Update builder version to fix aws-lc build on manylinux1 by @TingDaoK in (#437)
+  * Fix compiler warnings about missing void by @graebm in (#438)
+  * HTTP stream telemetry api by @TingDaoK in (#433)
+  * Fix warnings in public headers by @waahm7 in (#440)
+
+-------------------------------------------------------------------
+Tue Apr 18 11:55:48 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.7
+  * Support for host resolution override per
+    connection by @bretambrose in (#434)
+
+-------------------------------------------------------------------
+Fri Mar 24 11:42:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.6
+  * Skip local server setup when tests are disabled by @graebm in (#429)
+  * Remove sanitizer blacklist by @DmitriyMusatkin in (#432)
+  * Throw better errors for h2 manual write instead
+    of invalid state error by @waahm7 in (#430)
+  * Handle connection close corner case by @TingDaoK in (#431)
+
+-------------------------------------------------------------------
+Wed Mar  1 10:31:43 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.5
+  * Change #if _MSC_VER to #ifdef _MSC_VER by @jmklix in (#427)
+
+-------------------------------------------------------------------
+Mon Feb  6 13:40:27 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.4
+  * Proxy config new crash by @TingDaoK in (#423)
+  * Adapt to renamed class from aws-c-common by @graebm in (#422)
+  * Add ProxyConfig new from ProxyOptions & TLS info by @waahm7 in (#421)
+
+-------------------------------------------------------------------
+Mon Jan 16 14:18:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.3
+  * Stop hitting example.com in tests by @graebm in (#420)
+- from version 0.7.2
+  * Fix http2 manual write by @waahm7 in (#419)
+
+-------------------------------------------------------------------
+Wed Jan  4 13:45:31 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.1
+  * Fix macro usage by @DmitriyMusatkin in (#411)
+  * Revise "Better helper functions for querying header
+    values (#412)" by @graebm in (#414)
+  * Validate websocket handshake response by @graebm in (#410)
+  * More websocket handshake validation by @graebm in (#415)
+  * Improve websocket error reporting by @graebm in (#416)
+  * Websocket automatically responds to PING with PONG by @graebm in (#417)
+  * Websocket: Validate UTF-8 in text payloads by @graebm in (#418)
+
+-------------------------------------------------------------------
+Fri Dec 23 19:18:06 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.0
+  * Breaking change to websocket API: setup callback
+    can report body of response by @graebm in (#409)
+- from version 0.6.29
+  * Add ref-counting to aws_websocket by @graebm in (#405)
+  * Proxy h2 by @TingDaoK in (#402)
+  * Test coverage by @TingDaoK in (#406)
+  * Only "data" frames affect websocket's
+    read window now by @graebm in (#407)
+  * Add notes documentation for headers by @TingDaoK in (#408)
+
+-------------------------------------------------------------------
+Tue Dec  6 10:59:48 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.28
+  * Replace s_cat with `aws_byte_buf_append_dynamic` by @TingDaoK in (#404)
+  * WebSocket ref-counts its HTTP request by @graebm in (#403)
+
+-------------------------------------------------------------------
+Tue Nov 15 10:46:02 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.27
+  * Localhost test MAC by @TingDaoK in (#398)
+  * Update CI by @waahm7 in (#396)
+
+-------------------------------------------------------------------
+Fri Nov 11 13:12:48 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.26
+  * Localhost test mac by @TingDaoK in (#398)
+  * Update CI by @waahm7 in (#396)
+- from version 0.6.25
+  * sprintf() -> snprintf() by @graebm in (#397)
+  * Fix C++ One Definition Rules (ODR) Violations by @graebm in (#399)
+
+-------------------------------------------------------------------
+Wed Nov  2 09:09:42 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.24
+  * Empty path by @DmitriyMusatkin in (#395)
+- from version 0.6.23
+  * Event loop pin by @bretambrose in (#391)
+
+-------------------------------------------------------------------
+Mon Oct 17 10:39:35 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.22
+  * Added leased_concurrency to metrics and instrumented http connection
+    manager and stream managers. by @JonathanHenson in (#392)
+
+-------------------------------------------------------------------
+Wed Oct  5 13:17:41 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.21
+  * Add AppVerifier to CI by @TwistedTwigleg in (#389)
+  * Destroy callback for http stream by @TingDaoK in (#390)
+
+-------------------------------------------------------------------
+Fri Sep  2 09:39:45 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.20
+  * Split up hpack.c by @graebm in (#385)
+  * Proposal for moving websocket frame write completions from
+    on-send-downstream to on-socket-write-completion by @bretambrose
+    in (#367)
+  * Fallback for target load by @TingDaoK in (#387)
+
+-------------------------------------------------------------------
+Mon Aug  8 09:16:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.19
+  * HTTP/2 Stream Manager dead lock fix
+    + Fix the dead lock for stream manager by @TingDaoK in (#384)
+- from version 0.6.18
+  * HTTP/2 Stream Manager new functions
+    + Stream manager prior knowledge by @TingDaoK in (#380)
+    + Edit some code for clarity by @graebm in (#382)
+    + More Protocol verification by @TingDaoK in (#378)
+    + Support close on server error and period ping for
+      stream manager by @TingDaoK in (#381)
+
+-------------------------------------------------------------------
+Thu Jul 14 12:51:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.17  
+  * Stream manager test with body by @TingDaoK in (#376)
+  * Added aws_http2_stream_write_data, allowing H2 data frames
+    to be written at any time by @justinboswell in (#338)
+  * H2 monitor by @TingDaoK in (#377)
+- from version 0.6.16
+  * Build a local echo server and test against it. by @TingDaoK in (#373)
+  * More local host test by @TingDaoK in (#375)
+  * h2 stream callback not kill connection by @TingDaoK in (#364)
+  * Metric for manager by @TingDaoK in (#370)
+
+-------------------------------------------------------------------
+Thu May 19 11:30:18 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.15
+  * Silence "variable set but not used" warnings by @graebm in (#374)
+  * refcount input stream by @TingDaoK in (#342)
+- from version 0.6.14  
+  * Update to latest builder by @bretambrose in (#368)
+  * Fix our CI ignores branches that have "/" in name by @TingDaoK in (#371)
+  * Flow control window update by @TingDaoK in (#372)
+  * HTTP/2 integration tests - Part 1 by @TingDaoK in (#365)
+- from version 0.6.13
+  * Mark h2 tests as net tests
+- from version 0.6.12
+  * Bugfix: the refcount for connection manager will pop up from zero
+    in some situation from the culling task, which will cause destroy
+    to happen twice and crash.
+- from version 0.6.11
+  * Introduce HTTP/2 stream manager
+
+-------------------------------------------------------------------
+Thu Dec  9 12:16:46 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.10
+  * HTTP/2 Message support
+    + Support HTTP/2 message type, instead of translating all the
+      request to HTTP/2 format
+    + BUGFIX: raise proper error when reaching max concurrent stream.
+- from version 0.6.9
+  * Const added to members, chunked trailer support to HTTP/1, HTTP/2 headers
+    + HTTP2/ headers
+      - Pseudo headers are pushed into the front of the array list, and other
+        than that, it will be treated the same as normal headers
+      - Trade off:
+        * We know that push front to the array list is expensive. But, it should
+          be used only few times, as you don't want to change pseudo headers a
+  	  lot and there are at most 4 of them. More than that, we don't need to
+  	  do the push front later when we need to send the headers into the wire.
+        * The advantage of it is that we will have the mostly the same behavior
+          as netty, which is used by Java SDK team already.
+        * `add` will push the pseudo header to the front of the list when needed
+          (the last header is NOT pseudo header)
+    + Chunked trailer
+      - Add chunked trailer support to HTTP/1
+    + Const changes
+      - const added to aws_socket_options
+      - const added to aws_http_proxy_options
+      - const added to aws_tls_connection_options
+- from version 0.6.8
+  * Removed OOM conditions/tests
+    + Removed OOM test, since that's no longer allowed (#343)
+
+-------------------------------------------------------------------
+Tue Oct 12 12:42:24 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim conjecture and redundant metadata from description.
+- Use cmake()/pkgconfig() as buildrequires. Update descriptions.
+- Replace %-bin subpackage by just %, and lib%-devel by %-devel.
+
+-------------------------------------------------------------------
+Tue Oct 12 09:55:26 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial release
+  + Version 0.6.7
