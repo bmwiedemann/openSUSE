@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 29 10:10:37 UTC 2024 - pgajdos@suse.com
+
+- ghostscript-fonts-std: relax to recommends [bsc#1216604]
+
+-------------------------------------------------------------------
 Thu Oct 26 09:38:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Have libGraphicsMagick3-config require ghostscript-fonts-std
