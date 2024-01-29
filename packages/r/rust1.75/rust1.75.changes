@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 27 01:03:10 UTC 2024 - William Brown <william.brown@suse.com>
+
+- bsc#1217722 jsc#PED-6570 - exclude issue-71519 as when we enable lld for wasm,
+  this test incorrectly assumes we can use it with -Z gcc-ld=lld which is a nightly
+  only flag.
+
+-------------------------------------------------------------------
 Sun Dec 31 23:59:57 UTC 2023 - William Brown <william.brown@suse.com>
 
 Version 1.75.0 (2023-12-28)
