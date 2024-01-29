@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 24 16:29:29 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests with openssl 3.2 and python < 3.11 bsc#1217782
+
+-------------------------------------------------------------------
 Wed Dec  6 09:18:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 12.0:

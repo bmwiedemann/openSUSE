@@ -464,4 +464,12 @@
 - Update to 10.4</comment>
     <requestid>1131292</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>7c7004a7e3680a8ffca363f21f6999dd</srcmd5>
+    <version>12.0</version>
+    <time>1706563550</time>
+    <user>anag+factory</user>
+    <comment>- Disable broken tests with openssl 3.2 and python &lt; 3.11 bsc#1217782</comment>
+    <requestid>1141312</requestid>
+  </revision>
 </revisionlist>
