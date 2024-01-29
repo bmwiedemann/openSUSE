@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 27 15:44:31 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 0.26.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.26.0
+  * Removed several deprecated commands
+  * Support optional pin names
+  * jaeger trace exporter has been removed
+
+- Update to 0.25.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.25.0
+  * WebUI: Updated Peers View
+  * Kubo RPC API now supports optional HTTP Authorization.
+  * MPLEX Removal
+  * Graphsync Experiment Removal
+  * Commands ipfs key sign and ipfs key verify
+
+-------------------------------------------------------------------
 Wed Dec  6 12:55:38 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Add 10243.patch to fix FUSE mounts

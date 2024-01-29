@@ -1,7 +1,7 @@
 #
 # spec file for package kubo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define repo github.com/ipfs/kubo
 Name:           kubo
-Version:        0.24.0
+Version:        0.26.0
 Release:        0
 Summary:        IPFS implementation in Go
 License:        MIT
@@ -39,8 +39,8 @@ Requires:       fuse
 Requires:       nss-myhostname
 %systemd_requires
 
-Provides:       ipfs
 Provides:       go-ipfs = %version
+Provides:       ipfs
 Obsoletes:      go-ipfs <= 0.21.0
 
 %description
