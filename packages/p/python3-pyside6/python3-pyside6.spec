@@ -1,7 +1,7 @@
 #
 # spec file for package python3-pyside6
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,31 @@
 
 %define tar_name pyside-setup-everywhere-src
 %define short_version 6.6
-#
-%if "@BUILD_FLAVOR@%{nil}" == "shiboken6"
-%global pyside_flavor shiboken6
-%else
+
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%flavor" == ""
+# factory-auto requires the main build_flavor to match the specfile name
+%define mypython python3
 %global pyside_flavor pyside6
+# stop-gap for local builds
+BuildRequires:  no-build-without-multibuild-flavor
+ExclusiveArch:  donotbuild
+%else
+%global pyside_flavor %flavor
+%if 0%{suse_version} > 1500
+# This builds only for the primary python flavor, it provides the python3 flavor
+%define pythons %{primary_python}
+%else
+# This only works with the SLE15 python module for a more modern python than 3.6.
+# The build will stay unresolvable for regular python3 = 3.6
+%{?sle15_python_module_pythons}
 %endif
-#
-Name:           python3-%{pyside_flavor}
+%define mypython %pythons
+%define __mypython %{expand:%%__%{mypython}}
+%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
+%endif
+
+Name:           %{mypython}-%{pyside_flavor}
 Version:        6.6.1
 Release:        0
 Summary:        Python bindings for Qt 6
@@ -36,13 +53,13 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 Patch0:         0001-Always-link-to-python-libraries.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
+BuildRequires:  %{mypython}-Sphinx
+BuildRequires:  %{mypython}-devel >= 3.7
+BuildRequires:  %{mypython}-numpy-devel
+BuildRequires:  %{mypython}-setuptools
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-devel >= 3.7
-BuildRequires:  python3-numpy-devel
-BuildRequires:  python3-setuptools
 BuildRequires:  qt6-macros
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Test)
@@ -52,8 +69,8 @@ BuildRequires:  pkgconfig(libxslt)
 # /SECTION
 %if "%{pyside_flavor}" == "pyside6"
 # For the registry_existence test
-BuildRequires:  python3-distro
-BuildRequires:  cmake(Shiboken6) = %{version}
+BuildRequires:  %{mypython}-distro
+BuildRequires:  %{mypython}-shiboken6-devel = %{version}
 # SECTION test_dependencies
 BuildRequires:  Mesa-dri
 BuildRequires:  qt6-location
@@ -70,6 +87,7 @@ BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  cmake(Qt6Widgets)
 # /SECTION
 # SECTION optional_modules
+BuildRequires:  qt6-qml-private-devel
 BuildRequires:  cmake(Qt63DAnimation)
 BuildRequires:  cmake(Qt63DCore)
 BuildRequires:  cmake(Qt63DExtras)
@@ -88,7 +106,6 @@ BuildRequires:  cmake(Qt6Location)
 BuildRequires:  cmake(Qt6Multimedia)
 BuildRequires:  cmake(Qt6MultimediaWidgets)
 BuildRequires:  cmake(Qt6NetworkAuth)
-BuildRequires:  qt6-qml-private-devel
 BuildRequires:  cmake(Qt6OpenGL)
 BuildRequires:  cmake(Qt6OpenGLWidgets)
 BuildRequires:  cmake(Qt6Positioning)
@@ -110,7 +127,7 @@ BuildRequires:  cmake(Qt6TextToSpeech)
 BuildRequires:  cmake(Qt6UiPlugin)
 BuildRequires:  cmake(Qt6UiTools)
 BuildRequires:  cmake(Qt6WebChannel)
-%ifnarch %{ix86} armv7l armv7hl ppc ppc64 ppc64le s390 s390x
+%ifarch x86_64 aarch64 s390x
 BuildRequires:  cmake(Qt6Pdf)
 BuildRequires:  cmake(Qt6PdfWidgets)
 BuildRequires:  cmake(Qt6WebEngineCore)
@@ -119,6 +136,11 @@ BuildRequires:  cmake(Qt6WebEngineWidgets)
 %endif
 BuildRequires:  cmake(Qt6WebSockets)
 # /SECTION
+Requires:       %{mypython}-shiboken6
+%endif
+%if 0%{?suse_version} > 1500
+Provides:       python3-%{pyside_flavor} = %{version}-%{release}
+Obsoletes:      python3-%{pyside_flavor} < %{version}-%{release}
 %endif
 
 %description
@@ -127,6 +149,10 @@ Python bindings for the Qt cross-platform application and UI framework.
 %package devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}
+%if 0%{?suse_version} > 1500
+Provides:       python3-%{pyside_flavor}-devel = %{version}-%{release}
+Obsoletes:      python3-%{pyside_flavor}-devel < %{version}-%{release}
+%endif
 
 %description devel
 Python bindings for the Qt cross-platform application and UI framework
@@ -153,8 +179,8 @@ pushd sources/%{pyside_flavor}
   -DCMAKE_C_FLAGS:STRING="" \
   -DCMAKE_CXX_FLAGS:STRING="" \
   -DCMAKE_EXE_LINKER_FLAGS:STRING="" \
-  -DPYTHON_EXECUTABLE:STRING=python3 \
-  -DNUMPY_INCLUDE_DIR:STRING=%{python_sitearch}/numpy/core/include \
+  -DPYTHON_EXECUTABLE:STRING=%{__mypython} \
+  -DNUMPY_INCLUDE_DIR:STRING=%{mypython_sitearch}/numpy/core/include \
   -DCMAKE_BUILD_RPATH_USE_ORIGIN:BOOL=ON \
 %if "%{pyside_flavor}" == "shiboken6"
   -DCMAKE_SKIP_RPATH:BOOL=ON \
@@ -171,23 +197,18 @@ pushd sources/%{pyside_flavor}
 popd
 
 %if "%{pyside_flavor}" == "shiboken6"
-
-%fdupes -s %{buildroot}%{python_sitearch}
-
-sed -i 's#env python$#python3#' %{buildroot}%{_bindir}/shiboken_tool.py
-
+sed -i 's@^#.*env python.*$@#!%{__mypython}@' %{buildroot}%{_bindir}/shiboken_tool.py
 %else
-
 rm %{buildroot}%{_datadir}/PySide6/typesystems/*_{mac,win}.xml
-
-%fdupes -s %{buildroot}%{python_sitearch}/PySide6
-
 %endif
 # Install egg-info
 # qtpaths is needed
 export PATH="%{_qt6_bindir}:$PATH"
-python3 setup.py egg_info --build-type=%{pyside_flavor}
-cp -r *.egg-info %{buildroot}%{python_sitearch}
+%__mypython setup.py egg_info --build-type=%{pyside_flavor}
+# fdupes macro does not expand this (!?)
+sitearch=%{buildroot}%{mypython_sitearch}
+cp -r *.egg-info $sitearch
+%fdupes $sitearch
 
 %fdupes -s %{buildroot}%{_libdir}/cmake
 
@@ -253,16 +274,16 @@ popd
 %if "%{pyside_flavor}" == "shiboken6"
 %{_bindir}/shiboken6
 %{_bindir}/shiboken_tool.py
-%{python_sitearch}/shiboken6/
-%{python_sitearch}/shiboken6_generator/
+%{mypython_sitearch}/shiboken6/
+%{mypython_sitearch}/shiboken6_generator/
 %endif
 %if "%{pyside_flavor}" == "pyside6"
 %{_libdir}/libpyside6qml.abi3.so.*
 %dir %{_qt6_pluginsdir}/designer
 %{_qt6_pluginsdir}/designer/libPySidePlugin.so
-%{python_sitearch}/PySide6/
+%{mypython_sitearch}/PySide6/
 %endif
-%{python_sitearch}/*.egg-info
+%{mypython_sitearch}/*.egg-info
 
 %files devel
 %if "%{pyside_flavor}" == "shiboken6"
