@@ -1,7 +1,7 @@
 #
 # spec file for package bibtool
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +18,11 @@
 
 
 Name:           bibtool
-Version:        2.63
+Version:        2.68
 Release:        0
 Summary:        Tool for Manipulating BibTeX Databases
-License:        GPL-1.0-or-later AND CC-BY-SA-3.0
-Url:            http://www.gerd-neugebauer.de/software/TeX/BibTool/index.en.html
+License:        CC-BY-SA-3.0 AND GPL-1.0-or-later
+URL:            http://www.gerd-neugebauer.de/software/TeX/BibTool/index.en.html
 Source0:        http://www.gerd-neugebauer.de/software/TeX/BibTool/BibTool-%{version}.tar.gz
 Source1:        http://www.gerd-neugebauer.de/software/TeX/BibTool/BibTool-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
@@ -38,7 +38,7 @@ BibTeX files which goes beyond the possibilities - and intentions - of BibTeX.
 
 %prep
 %setup -q -n BibTool
-%patch1 -p1
+# %patch1 -p1
 
 %build
 %configure

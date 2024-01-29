@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 29 11:01:39 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 2.68 
+  * Handling of extracting by aux file improved.
+  * Record extended by attribute lineno.This attribute carries
+    the line number of the initiating @.
+  * The format of the error messages has been slightly
+    streamlined. Double spaces are avoided; two colons in one
+    message are avoided.
+  * The format of the messages of check_rule include file and
+    line number.
+  * Warning for double fields added.
+  * The empty output file is used to signal that the output
+    should be suppressed.
+  * The resources check.warning.rule and check.error.rule have
+    been introduced to allow semantic checks to be classified
+    as warning or error.
+  * The behaviour of the resource check.double has been
+    generalized. The requirement that double entries to be
+    adjacent has been dropped. This has the impact that the
+    processing is slightly slower.
+  * New resource file unique.field introduced. With this
+    resource it is possible to specify additional unique
+    constraints for fields. If different records have the same
+    value for one of those fields then a warning is issued.
+  * Static library renamed from libbib.a to libbibtool.a.
+
+-------------------------------------------------------------------
 Thu Oct 17 14:35:50 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)
