@@ -17,6 +17,9 @@
 
 
 %{?sle15_python_module_pythons}
+# pyside is for one flavor only
+%define pyside_python %{?sle15_python_module_pythons:%pythons}%{!?sle15_python_module_pythons:python3}
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
@@ -42,8 +45,7 @@ BuildConflicts: %{python_module qt5}
 %endif
 %if "%{flavor}" == "test-pyside2"
 %define psuffix -%{flavor}
-# pyside is for the primary python3 flavor only
-%define pythons python3
+%{!?sle15_python_module_pythons:%define pythons python3}
 %define test_qtapi pyside2
 %bcond_without test
 BuildRequires:  %{python_module pyside2}
@@ -53,8 +55,7 @@ BuildConflicts: %{python_module qt5}
 %endif
 %if "%{flavor}" == "test-pyside6"
 %define psuffix -%{flavor}
-# pyside is for the primary python3 flavor only
-%define pythons python3
+%{!?sle15_python_module_pythons:%define pythons python3}
 %define test_qtapi pyside6
 # invalid traceback gh#pytest-dev/pytest-qt#488
 %define testflavorargs --ignore tests/test_exceptions.py
@@ -89,11 +90,6 @@ Suggests:       python-pyside2
 Suggests:       python-pyside6
 Suggests:       python-qt5
 BuildArch:      noarch
-%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-Requires:       (python-qt5 or python-PyQt6 or python3-pyside2 or python3-pyside6)
-%else
-Requires:       (python-qt5 or python-PyQt6)
-%endif
 %if %{with test}
 BuildRequires:  %{python_module pytest-qt = %{version}}
 BuildRequires:  %{python_module pytest}
