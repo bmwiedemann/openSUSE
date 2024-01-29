@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 02:16:08 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %patch0 to fix compilation with rpm-4.19
+
+-------------------------------------------------------------------
 Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build Python3 flavors for distributions 15 and greater

@@ -28,7 +28,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-documentdb-python
 Source:         https://files.pythonhosted.org/packages/source/p/pydocumentdb/pydocumentdb-%{version}.tar.gz
-Patch:          p_disable-changelog-parsing.patch
+Patch0:         p_disable-changelog-parsing.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,7 +49,7 @@ This package has been tested with Python 2.7, 3.3, 3.4 and 3.5.
 
 %prep
 %setup -q -n pydocumentdb-%{version}
-%patch -p1
+%patch0 -p1
 
 %build
 %python_build
