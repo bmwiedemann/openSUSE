@@ -29,6 +29,7 @@ Source2:        irssi.png
 Source3:        https://github.com/irssi/irssi/releases/download/%{version}/irssi-%{version}.tar.xz.asc
 # https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x7EE65E3082A5FB06AC7C368D00CCB587DDBEF0E1
 Source4:        %{name}.keyring
+Patch0:         https://codeberg.org/irssi/irssi/releases/download/1.4.5/perl-again.patch
 BuildRequires:  glib2-devel
 BuildRequires:  meson
 BuildRequires:  ncurses-devel
@@ -72,6 +73,7 @@ compile plugins for the irssi package.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %meson \
