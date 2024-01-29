@@ -81,4 +81,13 @@
   * Emit more debug info to diagnose a compile() issue in CPython</comment>
     <requestid>1135285</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6891d268311f1f9de28cc25fd2e59c52</srcmd5>
+    <version>0.3.2</version>
+    <time>1706563558</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.2:
+  * Performance improvements based on Hypothesis 6.93.0</comment>
+    <requestid>1141815</requestid>
+  </revision>
 </revisionlist>
