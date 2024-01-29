@@ -278,4 +278,12 @@
 - Update Requires from setup.py (forwarded request 1128147 from glaubitz)</comment>
     <requestid>1128149</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>71c53f5a8fa0e6a2e64cab1b7a20c20b</srcmd5>
+    <version>5.0.0</version>
+    <time>1706563995</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142318</requestid>
+  </revision>
 </revisionlist>
