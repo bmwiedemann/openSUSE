@@ -63,7 +63,10 @@ dos2unix LICENSE.rst # Fix wrong EOL encoding
 
 %check
 %if %{with test}
-%pytest -W ignore:'Support for nose tests is deprecated'
+# Test broken with latest version of MarkupSafe (2.1.4)
+# gh#pallets/jinja#1930, gh#pallets/markupsafe#417
+donttest="test_striptags"
+%pytest -W ignore:'Support for nose tests is deprecated' -k "not ($donttest)"
 %endif
 
 %files %{python_files}
