@@ -1,0 +1,6 @@
+<package name="sddm-conf" project="openSUSE:Factory">
+  <title>SDDM configuration editor</title>
+  <description>Configuration editor for SDDM similar to sddm-config-editor, but written in C++.</description>
+  <devel project="X11:LXQt" package="sddm-conf"/>
+  <url>https://github.com/qtilities/sddm-conf</url>
+</package>
