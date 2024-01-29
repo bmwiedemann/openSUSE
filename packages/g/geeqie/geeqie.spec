@@ -1,7 +1,7 @@
 #
 # spec file for package geeqie
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           geeqie
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            http://www.geeqie.org
 Source0:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        geeqie.keyring
-# PATCH-FIX-UPSTREAM exiv_0-28.patch Fix an Issue with exiv2 0.28
-Patch0:         exiv_0-28.patch
 BuildRequires:  c++_compiler
 BuildRequires:  docbook_4
 BuildRequires:  doxygen
@@ -59,7 +57,7 @@ BuildRequires:  pkgconfig(libwebp) >= 0.6.1
 BuildRequires:  pkgconfig(lua5.3)
 BuildRequires:  pkgconfig(poppler-glib) >= 0.62
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
+Requires(postun): update-desktop-files
 
 %description
 Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
@@ -79,7 +77,7 @@ Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file %{name}
+%suse_update_desktop_file org.geeqie.Geeqie
 %fdupes %{buildroot}/%{_prefix}
 
 # Already in the license directory
@@ -90,7 +88,7 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING
 %doc NEWS TODO README.md
 %doc %{_docdir}/%{name}/html
 %{_bindir}/geeqie
-%{_datadir}/applications/geeqie.desktop
+%{_datadir}/applications/org.geeqie.Geeqie.desktop
 %{_datadir}/icons/hicolor/scalable/apps/geeqie.svg
 %{_datadir}/geeqie/
 %{_datadir}/pixmaps/geeqie.png
