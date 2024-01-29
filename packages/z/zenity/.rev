@@ -598,4 +598,12 @@
     <comment>New stable release (forwarded request 1132068 from iznogood)</comment>
     <requestid>1132440</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>be19a8a125fb40c018c182bd238507f6</srcmd5>
+    <version>4.0.1</version>
+    <time>1706563628</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142241</requestid>
+  </revision>
 </revisionlist>
