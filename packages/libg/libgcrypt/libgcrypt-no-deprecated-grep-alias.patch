@@ -1,0 +1,35 @@
+--- libgcrypt-1.10.3.orig/acinclude.m4
++++ libgcrypt-1.10.3/acinclude.m4
+@@ -130,10 +130,10 @@ EOF
+     ac_nlist=conftest.nm
+     if AC_TRY_EVAL(NM conftest.$ac_objext \| $lt_cv_sys_global_symbol_pipe \| cut -d \' \' -f 2 \> $ac_nlist) && test -s "$ac_nlist"; then
+       # See whether the symbols have a leading underscore.
+-      if egrep '^_nm_test_func' "$ac_nlist" >/dev/null; then
++      if grep -E '^_nm_test_func' "$ac_nlist" >/dev/null; then
+         ac_cv_sys_symbol_underscore=yes
+       else
+-        if egrep '^nm_test_func ' "$ac_nlist" >/dev/null; then
++        if grep -E '^nm_test_func ' "$ac_nlist" >/dev/null; then
+           :
+         else
+           echo "configure: cannot find nm_test_func in $ac_nlist" >&AS_MESSAGE_LOG_FD
+--- libgcrypt-1.10.3.orig/src/libgcrypt-config.in
++++ libgcrypt-1.10.3/src/libgcrypt-config.in
+@@ -154,7 +154,7 @@ if test "$echo_cflags" = "yes"; then
+ 
+     tmp=""
+     for i in $includes $cflags_final; do
+-       if echo "$tmp" | fgrep -v -- "$i" >/dev/null; then
++       if echo "$tmp" | @GREP@ -F -v -- "$i" >/dev/null; then
+            tmp="$tmp $i"
+        fi
+     done
+@@ -175,7 +175,7 @@ if test "$echo_libs" = "yes"; then
+ 
+     tmp=""
+     for i in $libdirs $libs_final; do
+-       if echo "$tmp" | fgrep -v -- "$i" >/dev/null; then
++       if echo "$tmp" | @GREP@ -F -v -- "$i" >/dev/null; then
+            tmp="$tmp $i"
+        fi
+     done
