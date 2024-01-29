@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:39:45 UTC 2024 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- add perl-again.patch, workaround for Perl bug that breaks the
+  Irssi locale and glyph rendering (upstream PR #1510)
+
+-------------------------------------------------------------------
 Tue Oct  3 07:45:35 UTC 2023 - Ailin Nemui <ailin.nemui@gmail.com>
 
 - drop perl-ntype.patch, upstreamed
