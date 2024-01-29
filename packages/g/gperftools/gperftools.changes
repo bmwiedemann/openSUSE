@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jan 28 12:32:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15:
+  * Mikael Simberg and Tom "spot" Callaway have pointed out the
+    missing symbols issue when linking PPC or i386
+    builds.
+  * Roman Geissler has contributed a fix to nasty initialization
+    bug introduced in 2.13 (see github issue #1452 for one example
+    where it fails).
+  * spinlock delay support now has proper windows support.
+    Instead of simply sleeping, it uses WaitOnAddress (which is
+    basically windows equivalent of futexes). This improvement was
+    contributed by Lennox Ho.
+  * we now have basic QNX support (basic malloc + heap profiler)
+    championed by Xiang.Lin. Thanks! Do note, however, that QNX
+    doesn't provide SIGPROF ticks, so there will be no cpu profiler
+    support on this OS.
+  * several people have contributed various improvements to our
+    cmake build: Lennox Ho, Sergey Fedorov, Mateusz Jakub Fila. But
+    do note that cmake build is still incomplete and best-effort.
+  * Julian Schroeder have fixed generic_fp incompatibility with
+    ARM pointer auth.
+  * Mateusz Jakub Fila has contributed implementation of
+    mallocinfo2 function (64-bit version of mallinfo).
+  * Lennox Ho has contributed the ability to disable malloc
+    functions patching on windows when TCMALLOC_DISABLE_REPLACEMENT=1
+    environment variable is set.
+  * User poljak181 has contributed a fix to infinite recursion in
+    some cases of malloc hooks (or user-replaced operator new) and
+    MallocExtension::instance().
+  * Sergey Fedorov has contributed a fix to use MAP_ANON on some
+    older OSes without MAP_ANONYMOUS.
+  * the way we detect working ucontext->pc extraction method was
+    reworked and is now fully compile-time as opposed to
+    config-time. This means no more duplication and mismatches
+    between autoconf and cmake bits in this area.
+
+-------------------------------------------------------------------
 Fri Sep 29 08:10:03 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.13:
@@ -128,7 +166,7 @@ Mon Mar 26 00:35:41 CEST 2018 - ro@suse.de
 
 - add patch gperftools-aarch64.patch (bsc#1086762)
   (analog upstream commit 02eeed29df112728564a5dde6417fa4622b57a06)
-  fix build on aarch64 by removing conflicting mmap definition 
+  fix build on aarch64 by removing conflicting mmap definition
 
 -------------------------------------------------------------------
 Thu Mar 15 01:43:38 CET 2018 - ro@suse.de
@@ -140,7 +178,7 @@ Thu Mar 15 01:43:38 CET 2018 - ro@suse.de
 -------------------------------------------------------------------
 Wed Mar 14 18:38:44 CET 2018 - ro@suse.de
 
-- do not buildrequire valgrind on s390, only exists on s390x 
+- do not buildrequire valgrind on s390, only exists on s390x
 
 -------------------------------------------------------------------
 Thu Aug 10 10:17:23 UTC 2017 - schwab@suse.de
@@ -237,9 +275,9 @@ Tue Mar 22 13:33:02 UTC 2016 - cgardner@suse.com
   * Simon Que contributed better include for malloc_hook_c.h
   * user wmamrak contributed struct timespec fix for Visual Studio 2015.
   * user ssubotin contributed typo in PrintAvailability code.
-  * build fix for Visual Studio. 
-  * dynamic sized delete is now disabled by default. It turned out that 
-    IFUNC relocations are not supporting our advanced use case on all 
+  * build fix for Visual Studio.
+  * dynamic sized delete is now disabled by default. It turned out that
+    IFUNC relocations are not supporting our advanced use case on all
     platforms and in all cases.
 - Removed the following patches. All have either been incorporated
   upstream or are no longer applicable in current distros.
@@ -256,55 +294,55 @@ Mon Jan 10 16:30:24 UTC 2015 - cgardner@suse.com
 
 - gperftools 2.4, available 10 Jan 2015.
   Skipped version 2.3, release 7 Dec 2014. 2.3 changes included:
-  * ( issue 631 ) fixed debugallocation miscompilation on mmap-less 
-    platforms (courtesy of user iamxujian) 
-  * ( issue 630 ) reference to wrong PROFILE (vs. correct CPUPROFILE) 
-    environment variable was fixed (courtesy of WenSheng He) 
-  * pprof now has option to display stack traces in output for heap 
-    checker (courtesy of Michael Pasieka) 
-  * ( issue 636 ) pprof web command now works on mingw 
-  * ( issue 635 ) pprof now handles library paths that contain spaces 
-    (courtesy of user mich...@sebesbefut.com) 
-  * ( issue 637 ) pprof now has an option to not strip template 
-    arguments (patch by jiakai) 
-  * ( issue 644 ) possible out-of-bounds access in GetenvBeforeMain 
-    was fixed (thanks to user abyss.7) 
-  * ( issue 641 ) pprof now has an option --show_addresses (thanks to 
-    user yurivict). New option prints instruction address in addition 
-    to function name in stack traces 
-  * ( issue 646 ) pprof now works around some issues of addr2line 
-    reportedly when DWARF v4 format is used (patch by Adam McNeeney) 
-  * ( issue 645 ) heap profiler exit message now includes remaining 
-    memory allocated info (patch by user yurivict) 
-  * pprof code that finds location of /proc/pid/maps in cpu profile 
-    files is now fixed (patch by Ricardo M. Correia) 
-  * ( issue 654 ) pprof now handles "split text segments" feature of 
-    Chromium for Android (patch by simonb) 
-  * ( issue 655 ) potential deadlock on windows caused by early call 
-    to getenv in malloc initialization code was fixed (bug reported 
-    and fix proposed by user zndmitry) 
-  * incorrect detection of arm 6zk instruction set support 
-    (-mcpu=arm1176jzf-s) was fixed. (Reported by pedronavf on old issue-493) 
-  * new cpu profiling mode on Linux is now implemented. It sets up separate 
-    profiling timers for separate threads. Which improves accuracy of 
-    profiling on Linux a lot. It is off by default. And is enabled if both 
-    librt.f is loaded and CPUPROFILE_PER_THREAD_TIMERS environment 
-    variable is set. But note that all threads need to be registered 
-    via ProfilerRegisterThread. 
+  * ( issue 631 ) fixed debugallocation miscompilation on mmap-less
+    platforms (courtesy of user iamxujian)
+  * ( issue 630 ) reference to wrong PROFILE (vs. correct CPUPROFILE)
+    environment variable was fixed (courtesy of WenSheng He)
+  * pprof now has option to display stack traces in output for heap
+    checker (courtesy of Michael Pasieka)
+  * ( issue 636 ) pprof web command now works on mingw
+  * ( issue 635 ) pprof now handles library paths that contain spaces
+    (courtesy of user mich...@sebesbefut.com)
+  * ( issue 637 ) pprof now has an option to not strip template
+    arguments (patch by jiakai)
+  * ( issue 644 ) possible out-of-bounds access in GetenvBeforeMain
+    was fixed (thanks to user abyss.7)
+  * ( issue 641 ) pprof now has an option --show_addresses (thanks to
+    user yurivict). New option prints instruction address in addition
+    to function name in stack traces
+  * ( issue 646 ) pprof now works around some issues of addr2line
+    reportedly when DWARF v4 format is used (patch by Adam McNeeney)
+  * ( issue 645 ) heap profiler exit message now includes remaining
+    memory allocated info (patch by user yurivict)
+  * pprof code that finds location of /proc/pid/maps in cpu profile
+    files is now fixed (patch by Ricardo M. Correia)
+  * ( issue 654 ) pprof now handles "split text segments" feature of
+    Chromium for Android (patch by simonb)
+  * ( issue 655 ) potential deadlock on windows caused by early call
+    to getenv in malloc initialization code was fixed (bug reported
+    and fix proposed by user zndmitry)
+  * incorrect detection of arm 6zk instruction set support
+    (-mcpu=arm1176jzf-s) was fixed. (Reported by pedronavf on old issue-493)
+  * new cpu profiling mode on Linux is now implemented. It sets up separate
+    profiling timers for separate threads. Which improves accuracy of
+    profiling on Linux a lot. It is off by default. And is enabled if both
+    librt.f is loaded and CPUPROFILE_PER_THREAD_TIMERS environment
+    variable is set. But note that all threads need to be registered
+    via ProfilerRegisterThread.
   Changes for version 2.4~rc
-  * enabled aggressive decommit option by default. It was found to 
-    significantly improve memory fragmentation with negligible impact 
-    on performance. (Thanks to investigation work performed by Adhemerval 
-    Zanella) 
-  * added ./configure flags for tcmalloc pagesize and tcmalloc allocation 
-    alignment. Larger page sizes have been reported to improve performance 
-    occasionally. (Patch by Raphael Moreira Zinsly) 
-  * sped-up hot-path of malloc/free. By about 5% on static library and 
-    about 10% on shared library. Mainly due to more efficient checking 
-    of malloc hooks. 
-  * improved accuracy of stacktrace capturing in cpu profiler (due to 
-    issue found by Arun Sharma). As part of that issue pprof's handling 
-    of cpu profiles was also improved. 
+  * enabled aggressive decommit option by default. It was found to
+    significantly improve memory fragmentation with negligible impact
+    on performance. (Thanks to investigation work performed by Adhemerval
+    Zanella)
+  * added ./configure flags for tcmalloc pagesize and tcmalloc allocation
+    alignment. Larger page sizes have been reported to improve performance
+    occasionally. (Patch by Raphael Moreira Zinsly)
+  * sped-up hot-path of malloc/free. By about 5% on static library and
+    about 10% on shared library. Mainly due to more efficient checking
+    of malloc hooks.
+  * improved accuracy of stacktrace capturing in cpu profiler (due to
+    issue found by Arun Sharma). As part of that issue pprof's handling
+    of cpu profiles was also improved.
 - Removed missing_includes.patch; incorporated upstream.
 
 -------------------------------------------------------------------
@@ -375,7 +413,7 @@ Mon May 19 15:39:40 UTC 2014 - cgardner@suse.com
   * MallocExtension::instance() is now faster (based on patch by
     Adhemerval Zanella)
   * issue-610 (hangs on windows in multibyte locales) is now fixed
-- Removed the following patches. All have either been incorporated 
+- Removed the following patches. All have either been incorporated
   upstream or are no longer applicable in current distros.
   * gperftools_fix_multiple_install_headers.patch
   * gperftools-glibc216.patch
@@ -385,7 +423,7 @@ Mon May 19 15:39:40 UTC 2014 - cgardner@suse.com
 -------------------------------------------------------------------
 Mon Aug 12 15:49:12 UTC 2013 - cgardner@suse.com
 
-- Fixed configure.ac to use older version of autoconf, so that 
+- Fixed configure.ac to use older version of autoconf, so that
   gperftools can build for SLE10.
 
 -------------------------------------------------------------------
@@ -394,7 +432,7 @@ Tue Jul 30 17:44:01 UTC 2013 - cgardner@suse.com
 - gperftools 2.1, released 30 July 2013.
   * fixes for building on newer platforms. Notably, there's now initial
     support for x32 ABI (--enable-minimal only at this time))
-  * Some fixes for debug allocation on POWER/Linux 
+  * Some fixes for debug allocation on POWER/Linux
   * new getNumericProperty stats for cache sizes
   * added HEAP_PROFILER_TIME_INTERVAL variable (see documentation)
   * added environment variable to control heap size (TCMALLOC_HEAP_LIMIT_MB)
@@ -411,9 +449,9 @@ Tue Jul 30 17:44:01 UTC 2013 - cgardner@suse.com
 -------------------------------------------------------------------
 Thu Dec 27 11:08:09 UTC 2012 - dvaleev@suse.com
 
-- spinlock-rand.patch fixes an issue encountered on PPC with 
-  undefined conversions from 'base::subtle::Atomic64*' to 'const 
-  volatile Atomic32*' 
+- spinlock-rand.patch fixes an issue encountered on PPC with
+  undefined conversions from 'base::subtle::Atomic64*' to 'const
+  volatile Atomic32*'
 
 -------------------------------------------------------------------
 Sun Jul 22 07:47:04 UTC 2012 - aj@suse.de

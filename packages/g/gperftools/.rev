@@ -297,4 +297,41 @@
     <comment></comment>
     <requestid>1123973</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>aaf3df0fc88ac47db342b70ba031b1b4</srcmd5>
+    <version>2.15</version>
+    <time>1706563602</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.15:
+  * Mikael Simberg and Tom &quot;spot&quot; Callaway have pointed out the
+    missing symbols issue when linking PPC or i386
+    builds.
+  * Roman Geissler has contributed a fix to nasty initialization
+    bug introduced in 2.13 (see github issue #1452 for one example
+    where it fails).
+  * spinlock delay support now has proper windows support.
+    Instead of simply sleeping, it uses WaitOnAddress (which is
+    basically windows equivalent of futexes). This improvement was
+    contributed by Lennox Ho.
+  * we now have basic QNX support (basic malloc + heap profiler)
+    championed by Xiang.Lin. Thanks! Do note, however, that QNX
+    doesn't provide SIGPROF ticks, so there will be no cpu profiler
+    support on this OS.
+  * several people have contributed various improvements to our
+    cmake build: Lennox Ho, Sergey Fedorov, Mateusz Jakub Fila. But
+    do note that cmake build is still incomplete and best-effort.
+  * Julian Schroeder have fixed generic_fp incompatibility with
+    ARM pointer auth.
+  * Mateusz Jakub Fila has contributed implementation of
+    mallocinfo2 function (64-bit version of mallinfo).
+  * Lennox Ho has contributed the ability to disable malloc
+    functions patching on windows when TCMALLOC_DISABLE_REPLACEMENT=1
+    environment variable is set.
+  * User poljak181 has contributed a fix to infinite recursion in
+    some cases of malloc hooks (or user-replaced operator new) and
+    MallocExtension::instance().
+  * Sergey Fedorov has contributed a fix to use MAP_ANON on some
+    older OSes without MAP_ANONYMOUS.</comment>
+    <requestid>1142087</requestid>
+  </revision>
 </revisionlist>
