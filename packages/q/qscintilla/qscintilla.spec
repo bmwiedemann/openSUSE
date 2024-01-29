@@ -30,6 +30,10 @@ ExclusiveArch:  do_not_build
 %define _qt_archdatadir %_libqt5_archdatadir
 %define pyqt_mname PyQt5
 %define psuffix -qt5
+%{?sle15allpythons}
+# Two packages provide the same stuff, conflicting with each other.
+# The second one comes from the python3-dbus-python package for old Python 3.6 in SLE
+#!BuildIgnore: python3-dbus-python-common-devel
 %endif
 %if "%{_qt}" == "qt6"
 %define mname PyQt6-QScintilla
@@ -41,13 +45,13 @@ ExclusiveArch:  do_not_build
 %define _qt_archdatadir %_qt6_archdatadir
 %define pyqt_mname PyQt6
 %define pyqt_build_for_qt6 1
+%{?sle15_python_module_pythons}
 %endif
 
 # PyQt5 built against SIP v4 is not compatible with this version of QScintilla.
 # if your distro target still uses the SIPv4 built PyQt5, disable python bindings
 %bcond_without python
 
-%define skip_python2 1
 %define debug_package_requires libqscintilla2_qt5-%{sonum} = %{version}-%{release}
 %define sonum   15
 Name:           qscintilla%{?psuffix}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 28 20:09:53 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Enable SLE15 python module: Additionally to 3.6 in for Qt5 and
+  exclusively for Qt6
+
+-------------------------------------------------------------------
 Wed Sep 27 09:10:13 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.14.1
