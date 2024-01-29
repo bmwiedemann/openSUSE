@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 23 19:56:06 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 7.5.2:
+  * Dos2unix can print info about the line break type of the last
+    line, or indicate there is none
+  * Updated documentation about ASCII mode conversion
+
+-------------------------------------------------------------------
 Wed Aug 30 16:43:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 7.5.1:
