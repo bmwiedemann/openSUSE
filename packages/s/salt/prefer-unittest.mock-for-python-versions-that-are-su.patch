@@ -1,0 +1,135 @@
+From 107de57586f0b0f784771543b942dfb6bb70453a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Yeray=20Guti=C3=A9rrez=20Cedr=C3=A9s?=
+ <yeray.gutierrez@suse.com>
+Date: Wed, 13 Dec 2023 11:03:45 +0000
+Subject: [PATCH] Prefer unittest.mock for Python versions that are
+ sufficient
+
+---
+ requirements/pytest.txt                       |  2 +-
+ .../unit/cloud/clouds/test_dimensiondata.py   |  4 +-
+ tests/pytests/unit/cloud/clouds/test_gce.py   |  4 +-
+ tests/support/mock.py                         | 48 +++++++++----------
+ 4 files changed, 25 insertions(+), 33 deletions(-)
+
+diff --git a/requirements/pytest.txt b/requirements/pytest.txt
+index 5b67583a3d..0bead83f5b 100644
+--- a/requirements/pytest.txt
++++ b/requirements/pytest.txt
+@@ -1,4 +1,4 @@
+-mock >= 3.0.0
++mock >= 3.0.0; python_version < '3.8'
+ # PyTest
+ pytest >= 7.0.1; python_version <= "3.6"
+ pytest >= 7.2.0; python_version > "3.6"
+diff --git a/tests/pytests/unit/cloud/clouds/test_dimensiondata.py b/tests/pytests/unit/cloud/clouds/test_dimensiondata.py
+index e196805004..aab2e686f2 100644
+--- a/tests/pytests/unit/cloud/clouds/test_dimensiondata.py
++++ b/tests/pytests/unit/cloud/clouds/test_dimensiondata.py
+@@ -11,7 +11,6 @@ from salt.cloud.clouds import dimensiondata
+ from salt.exceptions import SaltCloudSystemExit
+ from salt.utils.versions import Version
+ from tests.support.mock import MagicMock
+-from tests.support.mock import __version__ as mock_version
+ from tests.support.mock import patch
+ 
+ try:
+@@ -144,8 +143,7 @@ def test_import():
+     with patch("salt.config.check_driver_dependencies", return_value=True) as p:
+         get_deps = dimensiondata.get_dependencies()
+         assert get_deps is True
+-        if Version(mock_version) >= Version("2.0.0"):
+-            assert p.call_count >= 1
++        assert p.call_count >= 1
+ 
+ 
+ def test_provider_matches():
+diff --git a/tests/pytests/unit/cloud/clouds/test_gce.py b/tests/pytests/unit/cloud/clouds/test_gce.py
+index 265818016e..ec1346a978 100644
+--- a/tests/pytests/unit/cloud/clouds/test_gce.py
++++ b/tests/pytests/unit/cloud/clouds/test_gce.py
+@@ -13,7 +13,6 @@ from salt.cloud.clouds import gce
+ from salt.exceptions import SaltCloudSystemExit
+ from salt.utils.versions import Version
+ from tests.support.mock import MagicMock
+-from tests.support.mock import __version__ as mock_version
+ from tests.support.mock import call, patch
+ 
+ 
+@@ -281,8 +280,7 @@ def test_import():
+     with patch("salt.config.check_driver_dependencies", return_value=True) as p:
+         get_deps = gce.get_dependencies()
+         assert get_deps is True
+-        if Version(mock_version) >= Version("2.0.0"):
+-            p.assert_called_once()
++        p.assert_called_once()
+ 
+ 
+ @pytest.mark.parametrize(
+diff --git a/tests/support/mock.py b/tests/support/mock.py
+index 2256ad8f5d..59e5fcbc8e 100644
+--- a/tests/support/mock.py
++++ b/tests/support/mock.py
+@@ -18,37 +18,33 @@ import copy
+ import errno
+ import fnmatch
+ import sys
+-
+-# By these days, we should blowup if mock is not available
+-import mock  # pylint: disable=blacklisted-external-import
+-
+-# pylint: disable=no-name-in-module,no-member
+-from mock import (
+-    ANY,
+-    DEFAULT,
+-    FILTER_DIR,
+-    MagicMock,
+-    Mock,
+-    NonCallableMagicMock,
+-    NonCallableMock,
+-    PropertyMock,
+-    __version__,
+-    call,
+-    create_autospec,
+-    patch,
+-    sentinel,
+-)
++import importlib
++
++current_version = (sys.version_info.major, sys.version_info.minor)
++
++# Prefer unittest.mock for Python versions that are sufficient
++if current_version >= (3,8):
++    mock = importlib.import_module('unittest.mock')
++else:
++    mock = importlib.import_module('mock')
++
++ANY = mock.ANY
++DEFAULT = mock.DEFAULT
++FILTER_DIR = mock.FILTER_DIR
++MagicMock = mock.MagicMock
++Mock = mock.Mock
++NonCallableMagicMock = mock.NonCallableMagicMock
++NonCallableMock = mock.NonCallableMock
++PropertyMock = mock.PropertyMock
++call = mock.call
++create_autospec = mock.create_autospec
++patch = mock.patch
++sentinel = mock.sentinel
+ 
+ import salt.utils.stringutils
+ 
+ # pylint: disable=no-name-in-module,no-member
+ 
+-
+-__mock_version = tuple(
+-    int(part) for part in mock.__version__.split(".") if part.isdigit()
+-)  # pylint: disable=no-member
+-
+-
+ class MockFH:
+     def __init__(self, filename, read_data, *args, **kwargs):
+         self.filename = filename
+-- 
+2.41.0
+

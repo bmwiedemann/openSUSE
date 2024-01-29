@@ -1,0 +1,103 @@
+From 0459d3f711eb9898f56a97d0bf0eb66fd1421a56 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 2 Oct 2023 13:25:52 +0200
+Subject: [PATCH] Use salt-call from salt bundle with
+ transactional_update
+
+* Use salt-call from the bundle with transactional_update
+
+* Add test checking which salt-call is selected by executable
+---
+ salt/modules/transactional_update.py          | 13 +++++-
+ .../unit/modules/test_transactional_update.py | 44 +++++++++++++++++++
+ 2 files changed, 56 insertions(+), 1 deletion(-)
+
+diff --git a/salt/modules/transactional_update.py b/salt/modules/transactional_update.py
+index 658ebccc6b..d6915475f5 100644
+--- a/salt/modules/transactional_update.py
++++ b/salt/modules/transactional_update.py
+@@ -276,6 +276,9 @@ transaction.
+ """
+ 
+ import logging
++import os.path
++import pathlib
++import sys
+ 
+ import salt.client.ssh.state
+ import salt.client.ssh.wrapper.state
+@@ -941,10 +944,18 @@ def call(function, *args, **kwargs):
+     activate_transaction = kwargs.pop("activate_transaction", False)
+ 
+     try:
++        # Set default salt-call command
++        salt_call_cmd = "salt-call"
++        python_exec_dir = os.path.dirname(sys.executable)
++        if "venv-salt-minion" in pathlib.Path(python_exec_dir).parts:
++            # If the module is executed with the Salt Bundle,
++            # use salt-call from the Salt Bundle
++            salt_call_cmd = os.path.join(python_exec_dir, "salt-call")
++
+         safe_kwargs = salt.utils.args.clean_kwargs(**kwargs)
+         salt_argv = (
+             [
+-                "salt-call",
++                salt_call_cmd,
+                 "--out",
+                 "json",
+                 "-l",
+diff --git a/tests/pytests/unit/modules/test_transactional_update.py b/tests/pytests/unit/modules/test_transactional_update.py
+index 5d9294c49b..dbd72fd74b 100644
+--- a/tests/pytests/unit/modules/test_transactional_update.py
++++ b/tests/pytests/unit/modules/test_transactional_update.py
+@@ -670,3 +670,47 @@ def test_single_queue_true():
+         "salt.modules.transactional_update.call", MagicMock(return_value="result")
+     ):
+         assert tu.single("pkg.installed", name="emacs", queue=True) == "result"
++
++
++@pytest.mark.parametrize(
++    "executable,salt_call_cmd",
++    [
++        ("/usr/bin/python3", "salt-call"),
++        (
++            "/usr/lib/venv-salt-minion/bin/python",
++            "/usr/lib/venv-salt-minion/bin/salt-call",
++        ),
++    ],
++)
++def test_call_which_salt_call_selected_with_executable(executable, salt_call_cmd):
++    """Test transactional_update.chroot which salt-call used"""
++    utils_mock = {
++        "json.find_json": MagicMock(return_value={"return": "result"}),
++    }
++    salt_mock = {
++        "cmd.run_all": MagicMock(return_value={"retcode": 0, "stdout": ""}),
++    }
++    with patch("sys.executable", executable), patch.dict(
++        tu.__utils__, utils_mock
++    ), patch.dict(tu.__salt__, salt_mock):
++        assert tu.call("test.ping") == "result"
++
++        salt_mock["cmd.run_all"].assert_called_with(
++            [
++                "transactional-update",
++                "--non-interactive",
++                "--drop-if-no-change",
++                "--no-selfupdate",
++                "--continue",
++                "--quiet",
++                "run",
++                salt_call_cmd,
++                "--out",
++                "json",
++                "-l",
++                "quiet",
++                "--no-return-event",
++                "--",
++                "test.ping",
++            ]
++        )
+-- 
+2.42.0
+

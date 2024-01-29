@@ -1,0 +1,113 @@
+From da938aa8a572138b5b9b1535c5c3d69326e5194e Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Thu, 18 Jan 2024 17:02:23 +0100
+Subject: [PATCH] Improve pip target override condition with
+ VENV_PIP_TARGET environment variable (bsc#1216850) (#613)
+
+* Improve pip target override condition
+
+* Improve pip test with different condition of overriding the target
+
+* Add changelog entry
+---
+ changelog/65562.fixed.md               |  1 +
+ salt/modules/pip.py                    |  6 ++--
+ tests/pytests/unit/modules/test_pip.py | 50 +++++++++++++++++---------
+ 3 files changed, 38 insertions(+), 19 deletions(-)
+ create mode 100644 changelog/65562.fixed.md
+
+diff --git a/changelog/65562.fixed.md b/changelog/65562.fixed.md
+new file mode 100644
+index 0000000000..ba483b4b77
+--- /dev/null
++++ b/changelog/65562.fixed.md
+@@ -0,0 +1 @@
++Improve the condition of overriding target for pip with VENV_PIP_TARGET environment variable.
+diff --git a/salt/modules/pip.py b/salt/modules/pip.py
+index a60bdca0bb..68a2a442a1 100644
+--- a/salt/modules/pip.py
++++ b/salt/modules/pip.py
+@@ -857,9 +857,11 @@ def install(
+         cmd.extend(["--build", build])
+ 
+     # Use VENV_PIP_TARGET environment variable value as target
+-    # if set and no target specified on the function call
++    # if set and no target specified on the function call.
++    # Do not set target if bin_env specified, use default
++    # for specified binary environment or expect explicit target specification.
+     target_env = os.environ.get("VENV_PIP_TARGET", None)
+-    if target is None and target_env is not None:
++    if target is None and target_env is not None and bin_env is None:
+         target = target_env
+ 
+     if target:
+diff --git a/tests/pytests/unit/modules/test_pip.py b/tests/pytests/unit/modules/test_pip.py
+index b7ad1ea3fd..c03e6ed292 100644
+--- a/tests/pytests/unit/modules/test_pip.py
++++ b/tests/pytests/unit/modules/test_pip.py
+@@ -1738,28 +1738,44 @@ def test_when_version_is_called_with_a_user_it_should_be_passed_to_undelying_run
+         )
+ 
+ 
+-def test_install_target_from_VENV_PIP_TARGET_in_resulting_command(python_binary):
++@pytest.mark.parametrize(
++    "bin_env,target,target_env,expected_target",
++    [
++        (None, None, None, None),
++        (None, "/tmp/foo", None, "/tmp/foo"),
++        (None, None, "/tmp/bar", "/tmp/bar"),
++        (None, "/tmp/foo", "/tmp/bar", "/tmp/foo"),
++        ("/tmp/venv", "/tmp/foo", None, "/tmp/foo"),
++        ("/tmp/venv", None, "/tmp/bar", None),
++        ("/tmp/venv", "/tmp/foo", "/tmp/bar", "/tmp/foo"),
++    ],
++)
++def test_install_target_from_VENV_PIP_TARGET_in_resulting_command(
++    python_binary, bin_env, target, target_env, expected_target
++):
+     pkg = "pep8"
+-    target = "/tmp/foo"
+-    target_env = "/tmp/bar"
+     mock = MagicMock(return_value={"retcode": 0, "stdout": ""})
+     environment = os.environ.copy()
+-    environment["VENV_PIP_TARGET"] = target_env
++    real_get_pip_bin = pip._get_pip_bin
++
++    def mock_get_pip_bin(bin_env):
++        if not bin_env:
++            return real_get_pip_bin(bin_env)
++        return [f"{bin_env}/bin/pip"]
++
++    if target_env is not None:
++        environment["VENV_PIP_TARGET"] = target_env
+     with patch.dict(pip.__salt__, {"cmd.run_all": mock}), patch.object(
+         os, "environ", environment
+-    ):
+-        pip.install(pkg)
+-        expected = [*python_binary, "install", "--target", target_env, pkg]
+-        mock.assert_called_with(
+-            expected,
+-            saltenv="base",
+-            runas=None,
+-            use_vt=False,
+-            python_shell=False,
+-        )
+-        mock.reset_mock()
+-        pip.install(pkg, target=target)
+-        expected = [*python_binary, "install", "--target", target, pkg]
++    ), patch.object(pip, "_get_pip_bin", mock_get_pip_bin):
++        pip.install(pkg, bin_env=bin_env, target=target)
++        expected_binary = python_binary
++        if bin_env is not None:
++            expected_binary = [f"{bin_env}/bin/pip"]
++        if expected_target is not None:
++            expected = [*expected_binary, "install", "--target", expected_target, pkg]
++        else:
++            expected = [*expected_binary, "install", pkg]
+         mock.assert_called_with(
+             expected,
+             saltenv="base",
+-- 
+2.43.0
+
+

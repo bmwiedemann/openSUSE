@@ -296,7 +296,7 @@ Patch75:        fix-tests-to-make-them-running-with-salt-testsuite.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/f82860b8ad3ee786762fa02fa1a6eaf6e24dc8d4
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/65020
 Patch76:        do-not-fail-on-bad-message-pack-message-bsc-1213441-.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64510
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64510 (dropped at patch 91)
 Patch77:        make-sure-configured-user-is-properly-set-by-salt-bs.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64959
 Patch78:        fixed-gitfs-cachedir_basename-to-avoid-hash-collisio.patch
@@ -304,6 +304,44 @@ Patch78:        fixed-gitfs-cachedir_basename-to-avoid-hash-collisio.patch
 Patch79:        revert-usage-of-long-running-req-channel-bsc-1213960.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/65238
 Patch80:        write-salt-version-before-building-when-using-with-s.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/65036
+Patch81:        fix-calculation-of-sls-context-vars-when-trailing-do.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/594
+Patch82:        implement-the-calling-for-batch-async-from-the-salt-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/tornadoweb/tornado/pull/2277
+Patch83:        only-call-native_str-on-curl_debug-message-in-tornad.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/65204
+Patch84:        use-salt-call-from-salt-bundle-with-transactional_up.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/65181
+Patch85:        improve-salt.utils.json.find_json-bsc-1213293.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/65266
+Patch86:        fix-optimization_order-opt-to-prevent-test-fails.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65232
+Patch87:        allow-all-primitive-grain-types-for-autosign_grains-.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65482
+Patch88:        fix-cve-2023-34049-bsc-1215157.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65017
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65136
+Patch89:        fix-gitfs-__env__-and-improve-cache-cleaning-bsc-119.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65435
+Patch90:        dereference-symlinks-to-set-proper-__cli-opt-bsc-121.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/614 (revert patch 77)
+Patch91:        revert-make-sure-configured-user-is-properly-set-by-.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65488
+Patch92:        enable-keepalive-probes-for-salt-ssh-executions-bsc-.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65644
+Patch93:        prefer-unittest.mock-for-python-versions-that-are-su.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/620
+Patch94:        fix-the-aptpkg.py-unit-test-failure.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65092
+Patch95:        update-__pillar__-during-pillar_refresh.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65009
+Patch96:        fixed-keyerror-in-logs-when-running-a-state-that-fai.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65562
+Patch97:        improve-pip-target-override-condition-with-venv_pip_.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65819
+Patch98:        allow-kwargs-for-fileserver-roots-update-bsc-1218482.patch
+
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
@@ -319,6 +357,8 @@ Obsoletes:      python2-%{name}
 
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
+Provides:       user(salt)
+Provides:       group(salt)
 
 %if 0%{?suse_version}
 Requires(pre):  %fillup_prereq

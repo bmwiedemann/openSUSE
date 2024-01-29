@@ -1,0 +1,101 @@
+From 9942c488b1e74f2c6f187fcef3556fe53382bb4c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Mon, 13 Nov 2023 15:04:14 +0000
+Subject: [PATCH] Dereference symlinks to set proper __cli opt
+ (bsc#1215963) (#611)
+
+* Dereference symlinks to set proper __cli
+
+* Add changelog entry
+
+* Add unit tests to check path is expanded
+
+---------
+
+Co-authored-by: vzhestkov <vzhestkov@suse.com>
+---
+ changelog/65435.fixed.md                        |  1 +
+ salt/config/__init__.py                         |  8 ++++++--
+ tests/pytests/unit/config/test_master_config.py | 13 +++++++++++++
+ tests/pytests/unit/config/test_minion_config.py | 13 +++++++++++++
+ 4 files changed, 33 insertions(+), 2 deletions(-)
+ create mode 100644 changelog/65435.fixed.md
+ create mode 100644 tests/pytests/unit/config/test_master_config.py
+ create mode 100644 tests/pytests/unit/config/test_minion_config.py
+
+diff --git a/changelog/65435.fixed.md b/changelog/65435.fixed.md
+new file mode 100644
+index 0000000000..5fa532891d
+--- /dev/null
++++ b/changelog/65435.fixed.md
+@@ -0,0 +1 @@
++Dereference symlinks to set proper __cli opt
+diff --git a/salt/config/__init__.py b/salt/config/__init__.py
+index 43182f3f92..d8258a4dbc 100644
+--- a/salt/config/__init__.py
++++ b/salt/config/__init__.py
+@@ -3747,7 +3747,9 @@ def apply_minion_config(
+             )
+             opts["fileserver_backend"][idx] = new_val
+ 
+-    opts["__cli"] = salt.utils.stringutils.to_unicode(os.path.basename(sys.argv[0]))
++    opts["__cli"] = salt.utils.stringutils.to_unicode(
++        os.path.basename(salt.utils.path.expand(sys.argv[0]))
++    )
+ 
+     # No ID provided. Will getfqdn save us?
+     using_ip_for_id = False
+@@ -3949,7 +3951,9 @@ def apply_master_config(overrides=None, defaults=None):
+             )
+         opts["keep_acl_in_token"] = True
+ 
+-    opts["__cli"] = salt.utils.stringutils.to_unicode(os.path.basename(sys.argv[0]))
++    opts["__cli"] = salt.utils.stringutils.to_unicode(
++        os.path.basename(salt.utils.path.expand(sys.argv[0]))
++    )
+ 
+     if "environment" in opts:
+         if opts["saltenv"] is not None:
+diff --git a/tests/pytests/unit/config/test_master_config.py b/tests/pytests/unit/config/test_master_config.py
+new file mode 100644
+index 0000000000..c9de8a7892
+--- /dev/null
++++ b/tests/pytests/unit/config/test_master_config.py
+@@ -0,0 +1,13 @@
++import salt.config
++from tests.support.mock import MagicMock, patch
++
++
++def test___cli_path_is_expanded():
++    defaults = salt.config.DEFAULT_MASTER_OPTS.copy()
++    overrides = {}
++    with patch(
++        "salt.utils.path.expand", MagicMock(return_value="/path/to/testcli")
++    ) as expand_mock:
++        opts = salt.config.apply_master_config(overrides, defaults)
++        assert expand_mock.called
++        assert opts["__cli"] == "testcli"
+diff --git a/tests/pytests/unit/config/test_minion_config.py b/tests/pytests/unit/config/test_minion_config.py
+new file mode 100644
+index 0000000000..34aa84daa7
+--- /dev/null
++++ b/tests/pytests/unit/config/test_minion_config.py
+@@ -0,0 +1,13 @@
++import salt.config
++from tests.support.mock import MagicMock, patch
++
++
++def test___cli_path_is_expanded():
++    defaults = salt.config.DEFAULT_MINION_OPTS.copy()
++    overrides = {}
++    with patch(
++        "salt.utils.path.expand", MagicMock(return_value="/path/to/testcli")
++    ) as expand_mock:
++        opts = salt.config.apply_minion_config(overrides, defaults)
++        assert expand_mock.called
++        assert opts["__cli"] == "testcli"
+-- 
+2.42.0
+
+

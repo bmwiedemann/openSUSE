@@ -1,0 +1,145 @@
+From 7ab208fd2d23eaa582cdbba912d4538d8c87e5f4 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 2 Oct 2023 13:24:15 +0200
+Subject: [PATCH] Implement the calling for batch async from the salt
+ CLI
+
+* Implement calling batch async with salt CLI
+
+* Add the test for calling batch async with salt CLI
+---
+ salt/cli/salt.py                    | 53 ++++++++++++++++++++++++++++-
+ tests/pytests/unit/cli/test_salt.py | 50 +++++++++++++++++++++++++++
+ 2 files changed, 102 insertions(+), 1 deletion(-)
+ create mode 100644 tests/pytests/unit/cli/test_salt.py
+
+diff --git a/salt/cli/salt.py b/salt/cli/salt.py
+index f90057f668..e19cfa5ce6 100644
+--- a/salt/cli/salt.py
++++ b/salt/cli/salt.py
+@@ -47,7 +47,12 @@ class SaltCMD(salt.utils.parsers.SaltCMDOptionParser):
+             self.exit(2, "{}\n".format(exc))
+             return
+ 
+-        if self.options.batch or self.options.static:
++        if self.options.batch and self.config["async"]:
++            # _run_batch_async() will just return the jid and exit
++            # Execution will not continue past this point
++            # in batch async mode. Batch async is handled by the master.
++            self._run_batch_async()
++        elif self.options.batch or self.options.static:
+             # _run_batch() will handle all output and
+             # exit with the appropriate error condition
+             # Execution will not continue past this point
+@@ -296,6 +301,52 @@ class SaltCMD(salt.utils.parsers.SaltCMDOptionParser):
+                     retcode = job_retcode
+             sys.exit(retcode)
+ 
++    def _run_batch_async(self):
++        kwargs = {
++            "tgt": self.config["tgt"],
++            "fun": self.config["fun"],
++            "arg": self.config["arg"],
++            "timeout": self.options.timeout,
++            "show_timeout": self.options.show_timeout,
++            "show_jid": self.options.show_jid,
++            "batch": self.config["batch"],
++        }
++        tgt = kwargs.pop("tgt", "")
++        fun = kwargs.pop("fun", "")
++
++        if self.config.get("eauth", ""):
++            kwargs.update(
++                {
++                    "eauth": self.config["eauth"],
++                }
++            )
++            for opt in ("username", "password"):
++                if opt in self.config:
++                    kwargs[opt] = self.config[opt]
++
++        try:
++            ret = self.local_client.run_job(tgt, fun, **kwargs)
++        except (
++            AuthenticationError,
++            AuthorizationError,
++            SaltInvocationError,
++            EauthAuthenticationError,
++            SaltClientError,
++        ) as exc:
++            ret = str(exc)
++            self.exit(2, "ERROR: {}\n".format(exc))
++        if "jid" in ret and "error" not in ret:
++            salt.utils.stringutils.print_cli(
++                "Executed command with job ID: {}".format(ret["jid"])
++            )
++        else:
++            self._output_ret(ret, self.config.get("output", "nested"))
++
++        if "error" in ret:
++            sys.exit(1)
++
++        sys.exit(0)
++
+     def _print_errors_summary(self, errors):
+         if errors:
+             salt.utils.stringutils.print_cli("\n")
+diff --git a/tests/pytests/unit/cli/test_salt.py b/tests/pytests/unit/cli/test_salt.py
+new file mode 100644
+index 0000000000..d9f4b5b097
+--- /dev/null
++++ b/tests/pytests/unit/cli/test_salt.py
+@@ -0,0 +1,50 @@
++import pytest
++
++from tests.support.mock import MagicMock, patch
++
++
++def test_saltcmd_batch_async_call():
++    """
++    Test calling batch async with salt CLI
++    """
++    import salt.cli.salt
++
++    local_client = MagicMock()
++    local_client.run_job = MagicMock(return_value={"jid": 123456})
++    with pytest.raises(SystemExit) as exit_info, patch(
++        "sys.argv",
++        [
++            "salt",
++            "--batch=10",
++            "--async",
++            "*",
++            "test.arg",
++            "arg1",
++            "arg2",
++            "kwarg1=val1",
++        ],
++    ), patch("salt.cli.salt.SaltCMD.process_config_dir", MagicMock), patch(
++        "salt.output.display_output", MagicMock()
++    ), patch(
++        "salt.client.get_local_client", return_value=local_client
++    ), patch(
++        "salt.utils.stringutils.print_cli", MagicMock()
++    ) as print_cli:
++        salt_cmd = salt.cli.salt.SaltCMD()
++        salt_cmd.config = {
++            "async": True,
++            "batch": 10,
++            "tgt": "*",
++            "fun": "test.arg",
++            "arg": ["arg1", "arg2", {"__kwarg__": True, "kwarg1": "val1"}],
++        }
++        salt_cmd._mixin_after_parsed_funcs = []
++        salt_cmd.run()
++
++        local_client.run_job.assert_called_once()
++        assert local_client.run_job.mock_calls[0].args[0] == "*"
++        assert local_client.run_job.mock_calls[0].args[1] == "test.arg"
++        assert local_client.run_job.mock_calls[0].kwargs["arg"] == ["arg1", "arg2", {"__kwarg__": True, "kwarg1": "val1"}]
++        assert local_client.run_job.mock_calls[0].kwargs["batch"] == 10
++        print_cli.assert_called_once_with("Executed command with job ID: 123456")
++        assert exit_info.value.code == 0
+-- 
+2.42.0
+

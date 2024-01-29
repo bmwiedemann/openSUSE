@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Mon Jan 29 13:50:44 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Provide user(salt)/group(salt) capabilities for RPM 4.19
+
+-------------------------------------------------------------------
+Tue Jan 23 15:39:14 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Prevent exceptions with fileserver.update when called via state (bsc#1218482)
+
+- Added:
+  * allow-kwargs-for-fileserver-roots-update-bsc-1218482.patch
+
+-------------------------------------------------------------------
+Thu Jan 18 16:10:04 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Improve pip target override condition with VENV_PIP_TARGET
+  environment variable (bsc#1216850)
+- Fixed KeyError in logs when running a state that fails
+
+- Added:
+  * improve-pip-target-override-condition-with-venv_pip_.patch
+  * fixed-keyerror-in-logs-when-running-a-state-that-fai.patch
+
+-------------------------------------------------------------------
+Thu Jan 18 13:06:21 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
+
+- Ensure that pillar refresh loads beacons from pillar without restart
+- Fix the aptpkg.py unit test failure
+- Prefer unittest.mock to python-mock in test suite
+
+- Added:
+  * update-__pillar__-during-pillar_refresh.patch
+  * fix-the-aptpkg.py-unit-test-failure.patch
+  * prefer-unittest.mock-for-python-versions-that-are-su.patch
+
+-------------------------------------------------------------------
+Fri Dec  1 11:04:02 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Enable "KeepAlive" probes for Salt SSH executions (bsc#1211649)
+
+- Added:
+  * enable-keepalive-probes-for-salt-ssh-executions-bsc-.patch
+
+-------------------------------------------------------------------
+Thu Nov 16 10:33:00 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Revert changes to set Salt configured user early in the stack (bsc#1216284)
+
+- Added:
+  * revert-make-sure-configured-user-is-properly-set-by-.patch
+
+-------------------------------------------------------------------
+Mon Nov 13 16:02:35 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Align behavior of some modules when using salt-call via symlink (bsc#1215963)
+- Fix gitfs "__env__" and improve cache cleaning (bsc#1193948)
+
+- Added:
+  * fix-gitfs-__env__-and-improve-cache-cleaning-bsc-119.patch
+  * dereference-symlinks-to-set-proper-__cli-opt-bsc-121.patch
+
+-------------------------------------------------------------------
+Tue Oct 31 11:51:17 UTC 2023 - Alexander Graul <alexander.graul@suse.com>
+
+- Randomize pre_flight_script path (CVE-2023-34049 bsc#1215157)
+
+- Added:
+  * fix-cve-2023-34049-bsc-1215157.patch
+
+-------------------------------------------------------------------
+Tue Oct 17 15:28:22 UTC 2023 - Marek Czernek <marek.czernek@suse.com>
+
+- Allow all primitive grain types for autosign_grains (bsc#1214477)
+
+- Added:
+  * allow-all-primitive-grain-types-for-autosign_grains-.patch
+
+-------------------------------------------------------------------
+Mon Oct  2 12:49:41 UTC 2023 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Fix optimization_order opt to prevent testsuite fails
+- Improve salt.utils.json.find_json to avoid fails
+  with transactional salt salt-ssh managed clients (bsc#1213293)
+- Use salt-call from salt bundle with transactional_update
+- Only call native_str on curl_debug message in tornado when needed
+- Implement the calling for batch async from the salt CLI
+
+- Added:
+  * implement-the-calling-for-batch-async-from-the-salt-.patch
+  * improve-salt.utils.json.find_json-bsc-1213293.patch
+  * only-call-native_str-on-curl_debug-message-in-tornad.patch
+  * use-salt-call-from-salt-bundle-with-transactional_up.patch
+  * fix-optimization_order-opt-to-prevent-test-fails.patch
+
+-------------------------------------------------------------------
+Mon Oct  2 09:50:00 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix calculation of SLS context vars when trailing dots
+  on targetted sls/state (bsc#1213518)
+
+- Added:
+  * fix-calculation-of-sls-context-vars-when-trailing-do.patch
+
+-------------------------------------------------------------------
 Wed Sep 20 12:17:44 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix inconsistency in reported version by egg-info metadata (bsc#1215489)

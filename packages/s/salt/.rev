@@ -2258,4 +2258,12 @@ let build start it or we will get libvirt errors.
   * write-salt-version-before-building-when-using-with-s.patch</comment>
     <requestid>1112589</requestid>
   </revision>
+  <revision rev="142" vrev="6">
+    <srcmd5>f50da431f5878896b91d2bf0e35871ef</srcmd5>
+    <version>3006.0</version>
+    <time>1706563630</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142448</requestid>
+  </revision>
 </revisionlist>

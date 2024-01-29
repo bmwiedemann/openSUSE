@@ -1,0 +1,164 @@
+From 8ae54e8a0e12193507f1936f363c3438b4a006ee Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Yeray=20Guti=C3=A9rrez=20Cedr=C3=A9s?=
+ <yeray.gutierrez@suse.com>
+Date: Tue, 23 Jan 2024 15:33:28 +0000
+Subject: [PATCH] Allow kwargs for fileserver roots update
+ (bsc#1218482) (#618)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Allow kwargs for fileserver roots update (bsc#1218482)
+
+* Prevent exceptions with fileserver.update when called via state
+
+* Fix wrong logic and enhance tests around fileserver.update
+
+* Remove test which is not longer valid
+
+---------
+
+Co-authored-by: Pablo Suárez Hernández <psuarezhernandez@suse.com>
+---
+ changelog/65819.fixed.md                     |  1 +
+ salt/fileserver/roots.py                     |  8 ++--
+ salt/runners/fileserver.py                   |  6 +++
+ tests/integration/runners/test_fileserver.py | 40 ++++++++++++++++++--
+ tests/pytests/unit/fileserver/test_roots.py  |  2 +-
+ 5 files changed, 47 insertions(+), 10 deletions(-)
+ create mode 100644 changelog/65819.fixed.md
+
+diff --git a/changelog/65819.fixed.md b/changelog/65819.fixed.md
+new file mode 100644
+index 0000000000..432f5c791c
+--- /dev/null
++++ b/changelog/65819.fixed.md
+@@ -0,0 +1 @@
++Prevent exceptions with fileserver.update when called via state
+diff --git a/salt/fileserver/roots.py b/salt/fileserver/roots.py
+index 4880cbab9b..a02b597c6f 100644
+--- a/salt/fileserver/roots.py
++++ b/salt/fileserver/roots.py
+@@ -193,9 +193,7 @@ def update():
+         os.makedirs(mtime_map_path_dir)
+     with salt.utils.files.fopen(mtime_map_path, "wb") as fp_:
+         for file_path, mtime in new_mtime_map.items():
+-            fp_.write(
+-                salt.utils.stringutils.to_bytes("{}:{}\n".format(file_path, mtime))
+-            )
++            fp_.write(salt.utils.stringutils.to_bytes(f"{file_path}:{mtime}\n"))
+ 
+     if __opts__.get("fileserver_events", False):
+         # if there is a change, fire an event
+@@ -326,11 +324,11 @@ def _file_lists(load, form):
+             return []
+     list_cache = os.path.join(
+         list_cachedir,
+-        "{}.p".format(salt.utils.files.safe_filename_leaf(actual_saltenv)),
++        f"{salt.utils.files.safe_filename_leaf(actual_saltenv)}.p",
+     )
+     w_lock = os.path.join(
+         list_cachedir,
+-        ".{}.w".format(salt.utils.files.safe_filename_leaf(actual_saltenv)),
++        f".{salt.utils.files.safe_filename_leaf(actual_saltenv)}.w",
+     )
+     cache_match, refresh_cache, save_cache = salt.fileserver.check_file_list_cache(
+         __opts__, form, list_cache, w_lock
+diff --git a/salt/runners/fileserver.py b/salt/runners/fileserver.py
+index d75d7de0cf..1ed05b68ca 100644
+--- a/salt/runners/fileserver.py
++++ b/salt/runners/fileserver.py
+@@ -350,6 +350,12 @@ def update(backend=None, **kwargs):
+         salt-run fileserver.update backend=git remotes=myrepo,yourrepo
+     """
+     fileserver = salt.fileserver.Fileserver(__opts__)
++
++    # Remove possible '__pub_user' in kwargs as it is not expected
++    # on "update" function for the different fileserver backends.
++    if "__pub_user" in kwargs:
++        del kwargs["__pub_user"]
++
+     fileserver.update(back=backend, **kwargs)
+     return True
+ 
+diff --git a/tests/integration/runners/test_fileserver.py b/tests/integration/runners/test_fileserver.py
+index ae8ab766aa..62f0da0c4a 100644
+--- a/tests/integration/runners/test_fileserver.py
++++ b/tests/integration/runners/test_fileserver.py
+@@ -202,15 +202,31 @@ class FileserverTest(ShellCase):
+         fileserver.update
+         """
+         ret = self.run_run_plus(fun="fileserver.update")
+-        self.assertTrue(ret["return"])
++        self.assertTrue(ret["return"] is True)
+ 
+         # Backend submitted as a string
+         ret = self.run_run_plus(fun="fileserver.update", backend="roots")
+-        self.assertTrue(ret["return"])
++        self.assertTrue(ret["return"] is True)
+ 
+         # Backend submitted as a list
+         ret = self.run_run_plus(fun="fileserver.update", backend=["roots"])
+-        self.assertTrue(ret["return"])
++        self.assertTrue(ret["return"] is True)
++
++        # Possible '__pub_user' is removed from kwargs
++        ret = self.run_run_plus(
++            fun="fileserver.update", backend=["roots"], __pub_user="foo"
++        )
++        self.assertTrue(ret["return"] is True)
++
++        # Unknown arguments
++        ret = self.run_run_plus(
++            fun="fileserver.update", backend=["roots"], unknown_arg="foo"
++        )
++        self.assertIn(
++            "Passed invalid arguments: update() got an unexpected keyword argument"
++            " 'unknown_arg'",
++            ret["return"],
++        )
+ 
+         # Other arguments are passed to backend
+         def mock_gitfs_update(remotes=None):
+@@ -225,7 +241,23 @@ class FileserverTest(ShellCase):
+             ret = self.run_run_plus(
+                 fun="fileserver.update", backend="gitfs", remotes="myrepo,yourrepo"
+             )
+-            self.assertTrue(ret["return"])
++            self.assertTrue(ret["return"] is True)
++            mock_backend_func.assert_called_once_with(remotes="myrepo,yourrepo")
++
++        # Possible '__pub_user' arguments are removed from kwargs
++        mock_backend_func = create_autospec(mock_gitfs_update)
++        mock_return_value = {
++            "gitfs.envs": None,  # This is needed to activate the backend
++            "gitfs.update": mock_backend_func,
++        }
++        with patch("salt.loader.fileserver", MagicMock(return_value=mock_return_value)):
++            ret = self.run_run_plus(
++                fun="fileserver.update",
++                backend="gitfs",
++                remotes="myrepo,yourrepo",
++                __pub_user="foo",
++            )
++            self.assertTrue(ret["return"] is True)
+             mock_backend_func.assert_called_once_with(remotes="myrepo,yourrepo")
+ 
+         # Unknown arguments are passed to backend
+diff --git a/tests/pytests/unit/fileserver/test_roots.py b/tests/pytests/unit/fileserver/test_roots.py
+index a8a80eea17..96bceb0fd3 100644
+--- a/tests/pytests/unit/fileserver/test_roots.py
++++ b/tests/pytests/unit/fileserver/test_roots.py
+@@ -236,7 +236,7 @@ def test_update_mtime_map():
+     # between Python releases.
+     lines_written = sorted(mtime_map_mock.write_calls())
+     expected = sorted(
+-        salt.utils.stringutils.to_bytes("{key}:{val}\n".format(key=key, val=val))
++        salt.utils.stringutils.to_bytes(f"{key}:{val}\n")
+         for key, val in new_mtime_map.items()
+     )
+     assert lines_written == expected, lines_written
+-- 
+2.43.0
+
+
