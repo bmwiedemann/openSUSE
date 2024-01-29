@@ -7,4 +7,41 @@
     <comment>I want to maintain nng in Factory</comment>
     <requestid>914386</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>341dc19cb42b3890aae3ed9298dec6ab</srcmd5>
+    <version>1.7.1</version>
+    <time>1706563722</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.1:
+  * This fixes two problems and includes a new example program.
+- update to 1.7.0:
+  * A new compile time setting, `NNG_MAX_POLLER_THREADS` is
+    introduced, with a default value of 8, and will limit the
+    number of threads
+  * A new supplemental API, nng_id_map(3), is made available.
+    This exposes the internal ID hash API NNG uses mapping
+    integer IDs
+  * (like socket IDs) to data structures. It also brings back
+    support for 64-bit IDs. See bug #1740.
+  * A new transport (experimental), for `socket://` is available.
+    This allows a connection using sockets created with
+    `socketpair()` (or the new `nng_socket_pair()` supplemental
+    API), which can help use cases where file descriptors are
+    passed between processes or inherited via `fork()`.  This API
+    is only available on Linux.  It does have somewhat different
+    semantics for establishing the connection, so please see the
+    manual page for `nng_socket(5)` for more information.
+  * WebSocket close is fixed to conform to RFC 6455, sending the
+    close frame, and waiting to receive the close frame from the
+    peer.  This allows websocket based connections to ensure that
+    data messages are fully delivered before shutting down. See
+    bugs #1733, #1734 and #1735. Thanks @alawn-wang for the
+    inspiration and a first draft of the change.
+  * The REQ and SURVEYOR protocols were fixed to improve
+    scalability when many clients or many contexts are used.  As
+    part of this change, a new option, `NNG_OPT_REQ_RESENDTICK`
+    is available to adjust how often we check for expired
+    requests.  See bug #1663.</comment>
+    <requestid>1142110</requestid>
+  </revision>
 </revisionlist>
