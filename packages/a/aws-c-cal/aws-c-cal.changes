@@ -1,0 +1,215 @@
+-------------------------------------------------------------------
+Tue Nov 21 10:27:12 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.9
+  * Use AWS_APPSTORE_SAFE cflag to gate access to
+    private APIs by @graebm in (#171)
+- from version 0.6.8
+  * Stop using private CommonCrypto APIs on iOS by @graebm in (#170)
+- from version 0.6.7
+  * Fix OpenSSL 3 tests by @DmitriyMusatkin in (#169)
+
+-------------------------------------------------------------------
+Tue Oct 17 09:36:15 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.6
+  * More consistent signature mismatch error on mac by @DmitriyMusatkin in (#167)
+  * Consistent signature validation for short signatures by @DmitriyMusatkin in (#168)
+- from version 0.6.5
+  * Missing salt define by @DmitriyMusatkin in (#165)
+- from version 0.6.4
+  * Fix build against openssl 1.0.2 by @DmitriyMusatkin in (#164)
+- from version 0.6.3
+  * Added workflow for handling answerable discussion by @yasminetalby in (#156)
+  * Fix aws-c-cal-config.cmake by @graebm in (#158)
+  * Be more explicit on int format in DER by @DmitriyMusatkin in (#160)
+  * RSA support by @DmitriyMusatkin in (#159)
+  * Fix for byo crypto compile and add ci for it by @TingDaoK in (#162)
+  * Use fake pub key by @TingDaoK in (#163)
+
+-------------------------------------------------------------------
+Wed Aug 30 08:17:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.2
+  * Minor CMakelists.txt cleanup by @graebm in (#155)
+  * Explicit Private for target_link_libraries by @waahm7 in (#157)
+
+-------------------------------------------------------------------
+Tue Jul 25 08:56:28 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.1
+  * Stop using memset(), use byte-buf helper function instead. by @graebm in (#154)
+
+-------------------------------------------------------------------
+Mon Jul  3 12:48:31 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.0
+  * Update time to ancient (#150)
+  * Cleanup aws-lc thread locals and thread
+    local key on library shutdown (#152)
+
+-------------------------------------------------------------------
+Tue May 16 09:08:20 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.27
+  * Support BoringSSL by @DmitriyMusatkin in (#148)
+  * Fix warnings in public headers by @waahm7 in (#149)
+
+-------------------------------------------------------------------
+Wed Apr 26 09:48:16 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.26
+  * Fixed CTR mode on OpenSSL not generating an empty counter
+    by @JonathanHenson in (#147)
+- from version 0.5.25
+  * Add Github templates and bots by @jmklix in (#143)
+  * Unpin awslc by @TingDaoK in (#144)
+  * Fix for osx deployment target 10.9 by @waahm7 in (#145)
+  * Added validation for key and iv sizes. by @JonathanHenson in (#146)
+
+-------------------------------------------------------------------
+Tue Apr 18 11:29:55 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.24
+  * Correctly detect macOS version by @JonathanHenson in (#140)
+  * Handle OpenSSL 1.0 on cipher reset correctly
+    by @JonathanHenson in (#141)
+- from version 0.5.23
+  * Minor Bug fix in keywrap buffer management that broke on
+    statically allocated buffers by @JonathanHenson in (#139)
+- from version 0.5.22
+  * CI job for OpenBSD by @knightjoel in (#134)
+  * Pull in aws-lc during builder builds on OpenBSD
+    by @knightjoel in (#135)
+  * Remove sanitizer blacklist by @DmitriyMusatkin in (#137)
+  * Pin version of aws-lc by @DmitriyMusatkin in (#138)
+  * Added 256-bit AES with CBC, CTR, GCM, and Keywrap
+    Modes by @JonathanHenson in (#136)
+
+-------------------------------------------------------------------
+Fri Mar  3 13:34:12 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.21
+  * Fix build on OpenBSD by @knightjoel in (#133)
+
+-------------------------------------------------------------------
+Fri Oct 14 07:54:22 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.20
+  * Fix dynamic loading of AWS-LC by @jeking3 in (#129)
+
+-------------------------------------------------------------------
+Thu Sep  1 12:54:23 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.19
+  * Double fallback for load target by @TingDaoK in (#123)
+- from version 0.5.18
+  * CI to run ECC signature verifier tool on cross-platform
+    data set by @bretambrose in (#118)
+  * Apple assert fix by @graebm in (#121)
+
+-------------------------------------------------------------------
+Wed May 18 14:06:39 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.17
+  * Find OpenSSL package from system by @serzhick in (#114)
+- from version 0.5.16
+  * Remove AWS:: prefix from crypto module used from cmake path
+    in case of IN_SOURCE_BUILD by @serzhick in (#112)
+- from version 0.5.15
+  * Fix an issue where windows implementations of ecdsa wasn't
+    properly trimming padding from sha256 signature.
+
+-------------------------------------------------------------------
+Tue Mar  1 12:28:19 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.14
+  + Fixed build failure from previous release.
+    * Fixed memory leak in unit test. (#106)
+- from version 0.5.13
+  + Fix aws-lc targets.
+    * Properly use cmake target exports for libcrypto. (#104)
+
+-------------------------------------------------------------------
+Sat Oct 16 12:38:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Use cmake()/pkgconfig() as buildrequires. Update descriptions.
+- Replace %-bin subpackage by just %, and lib%-devel by %-devel.
+
+-------------------------------------------------------------------
+Mon Oct 11 07:46:11 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.12
+  + Removed sha256_profile binary from common build path
+    * Only build sha256_profile if BUILD_TESTING is enabled (#101)
+
+-------------------------------------------------------------------
+Mon Jun 21 12:16:01 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.11
+  + Logging updates
+    * Move libcrypto symbol resolution output to logging calls
+- from version 0.5.10
+  + BYO_CRYPTO updates for Sigv4a
+    * Updated some ecc key API functions to have BYO_CRYPTO-conditional implementations
+- from version 0.5.9
+  + Support in-source build with AWS-LC
+    * Instead of always searching for a pre-installed libcrypto, now provide the option
+      to use the crypto target to do the link. It's useful for the in-source build, where
+      we will not install libcrypto, instead, we build aws-lc (for libcrypto) before building
+      aws-c-cal.
+- from version 0.5.8
+  + SHA1 Hash Support
+    * Adding support for SHA1.
+- from version 0.5.7
+  + Don't run aws-lc's codegen at build time
+    * Disable aws-lc's codegen. (#90)
+      Background: aws-lc uses codegen to create some of its source files, and it runs these generators
+      if the user's machine has Go and Perl installed. However, up-to-date versions of the generated
+      files are already committed to the repo, so it's not necessary for users to run codegen on their
+      machines. This codegen has led to unexpected issues (ex: failure due to network access at build
+      time) so let's just turn it off and reduce unnecessary complexity.
+- from version 0.5.6
+  + OpenSSL detection fixes
+    * OpenSSL/libcrypto fixes and CI (#88)
+    * Additional fixes from OpenSSL testing
+    * Added diagnostics for libcrypto usage
+    * Only allow openssl variant on linux
+    * Fixed versioning of builder in builds that left it out
+    * Updated to builder v0.8.14 for variants support
+- from version 0.5.5
+  + Restored OpenSSL detection and improved robustness
+    * Fixes to OpenSSL probing from testing (#87)
+    * Fixed static resolution pass to be exhaustive before attempting dynamic pass
+    * Made logging consistent between API resolution functions
+- from version 0.5.4
+  + Fix aws-lc builds when shared libs is ON
+    * Propagates the BUILD_SHARED_LIBS settings downstream to the aws-lc build
+- from version 0.5.3
+  + Improved ECC support
+    * Fix some ECC key generation tests
+    * Update Windows system dependencies to include Ncrypt to allow for ECC imports
+- from version 0.5.2
+  + aws-lc.cmake skips libssl, builds only libcrypto
+    * aws-lc.cmake skips libssl, builds only libcrypto (#74)
+- from version 0.5.1
+  + Added Bring your own crypto support for unix platforms.
+    * Add CI jobs for shared-libs (#69)
+    * Also fix windows-vc14 (x86) job so it actually uses vc14, and actually builds x86
+- from version 0.5.0
+  + Now using aws-lc instead of libcrypto on UNIX platforms
+    * Integration of AWS LC as crypto implementation on UNIX platforms (#67)
+    * Make Unix platforms build with AWS-LC
+    * Disabled fail-fast on matrix tests
+    * Temporarily remove auth downstream until auth is updated
+    * Deleted libcrypto depedency:
+    * Added aws-lc as dependency
+    * Added support for lib64 dirs on RH variants
+    * Consume LibCrypto::Crypto the same way s2n does
+    * Removed broken shared-libs job
+
+-------------------------------------------------------------------
+Thu Nov 26 15:54:04 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.4.5
