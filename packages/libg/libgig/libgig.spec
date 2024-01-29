@@ -18,10 +18,10 @@
 #
 
 
-%define sover_gig  10
+%define sover_gig  11
 %define sover_akai 0
 Name:           libgig
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        Library for loading Gigasampler and DLS Level 1/2 files
 License:        GPL-2.0-or-later

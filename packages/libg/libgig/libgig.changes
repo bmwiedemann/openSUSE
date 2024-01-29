@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 27 08:50:05 UTC 2024 - Edgar Aichinger <edogawa@aon.at>
+
+- update to version 4.4.0 (libgig.so.11):
+  * add new command line tool "wav2gig"
+  * see libgig's ChangeLog for a list of source and API changes 
+
+-------------------------------------------------------------------
 Tue May 18 08:36:17 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to version 4.3.0 (libgig.so.10):
