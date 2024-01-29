@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 29 16:14:00 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Force-rewrite "/usr/bin/env python" to "python3" (not 2.x)
+
+-------------------------------------------------------------------
 Sat Nov 19 01:01:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.2
