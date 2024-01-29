@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 24 13:47:04 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.93.2:
+  * This patch improves observability reports by moving timing
+  information from metadata to a new timing key, and supporting
+  conversion of additional argument types to json rather than 
+  string reprs via a .to_json() method
+  (including e.g. Pandas dataframes).
+
+-------------------------------------------------------------------
 Sat Jan  6 20:28:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.92.2:
