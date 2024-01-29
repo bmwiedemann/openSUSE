@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 27 06:48:15 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.11:
+  * PICARD-2819 - Track/release relationship settings not being
+    respected as described
+
+-------------------------------------------------------------------
 Mon Oct 16 13:52:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.10:
