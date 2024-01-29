@@ -1,0 +1,14 @@
+diff -Nru s2n-tls-1.1.1.orig/CMakeLists.txt s2n-tls-1.1.1/CMakeLists.txt
+--- s2n-tls-1.1.1.orig/CMakeLists.txt	2021-10-05 00:47:12.000000000 +0000
++++ s2n-tls-1.1.1/CMakeLists.txt	2021-10-11 08:49:14.435094522 +0000
+@@ -456,6 +456,10 @@
+ 
+ target_link_libraries(${PROJECT_NAME} PUBLIC ${OS_LIBS} m)
+ 
++# Our ABI is not yet stable
++set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES VERSION 1.0.0)
++set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SOVERSION 0unstable)
++
+ target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+ target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/api> $<INSTALL_INTERFACE:include>)
+ 
