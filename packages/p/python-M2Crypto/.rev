@@ -818,4 +818,12 @@ Update to 0.36.0:
 - SLE12 requires swig3 for a successful build, too</comment>
     <requestid>1136436</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>b359024cea5a7cf50a3bcc678e370faf</srcmd5>
+    <version>0.40.0</version>
+    <time>1706563551</time>
+    <user>anag+factory</user>
+    <comment>- Disable broken tests with openssl 3.2, bsc#1217782</comment>
+    <requestid>1141318</requestid>
+  </revision>
 </revisionlist>

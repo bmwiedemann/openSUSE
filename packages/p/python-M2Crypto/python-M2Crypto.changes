@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 24 17:00:29 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests with openssl 3.2, bsc#1217782
+
+-------------------------------------------------------------------
 Wed Jan  3 09:51:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools
