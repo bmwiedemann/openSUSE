@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 26 21:18:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.4:
+  * Don't use regular expressions for striptags, avoiding a
+    performance issue. :pr:`413`
+
+-------------------------------------------------------------------
 Mon Jun 19 20:10:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.3:
@@ -26,7 +33,7 @@ Sun Jan 29 18:13:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Jun 24 02:55:18 UTC 2022 - Manuel Jacob <me@manueljacob.de>
 
-- Patch PKG-INFO to avoid pip failing on Python 3.6 with 
+- Patch PKG-INFO to avoid pip failing on Python 3.6 with
   `ERROR: Package 'MarkupSafe' requires a different Python:
    3.6.15 not in '>=3.7'`.
 
@@ -136,7 +143,7 @@ Thu May  8 13:51:56 UTC 2014 - toddrme2178@gmail.com
 
 - Update to 0.21
   + No upstream changelog
-  
+
   -------------------------------------------------------------------
 Thu Mar 13 14:03:44 UTC 2014 - mcihar@suse.cz
 
@@ -159,7 +166,7 @@ Tue Jun 25 11:56:41 UTC 2013 - dmueller@suse.com
 Wed May 23 05:24:01 UTC 2012 - highwaystar.ru@gmail.com
 
 - python3 package added
-- minor spec improvement 
+- minor spec improvement
 
 -------------------------------------------------------------------
 Thu Sep  8 20:24:51 UTC 2011 - andrea.turrini@gmail.com

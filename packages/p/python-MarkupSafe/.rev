@@ -246,4 +246,17 @@ minor spec improvement (forwarded request 121844 from HighwayStar)</comment>
   * Use ``Self`` for annotating return types. :pr:`379`</comment>
     <requestid>1093827</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ff8e71d67913abbf11007a9ea24eded3</srcmd5>
+    <version>2.1.4</version>
+    <time>1706563556</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.4:
+  * Don't use regular expressions for striptags, avoiding a
+    performance issue. :pr:`413`
+
+- Patch PKG-INFO to avoid pip failing on Python 3.6 with
+- minor spec improvement</comment>
+    <requestid>1141812</requestid>
+  </revision>
 </revisionlist>
