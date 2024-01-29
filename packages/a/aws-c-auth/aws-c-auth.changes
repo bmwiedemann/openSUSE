@@ -1,0 +1,176 @@
+-------------------------------------------------------------------
+Sat Jan 27 16:37:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix packaging shlib naming
+
+-------------------------------------------------------------------
+Fri Jan 26 11:48:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.14
+  * Make Partial Creds a Transient Error by @waahm7 in (#226)
+- from version 0.7.13
+  * Handle empty path in AWS_CONTAINER_CREDENTIALS_FULL_URI
+    by @jamesbornholt in (#225)
+- from version 0.7.12
+  * Remove old test files by @graebm in (#223)
+  * Add assumeRole chain support by @waahm7 in (#224)
+- from version 0.7.11
+  * Add an option to disable environment credentials provider
+    in the default chain by @waahm7 in (#222)
+
+-------------------------------------------------------------------
+Wed Jan  3 13:23:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.10
+  * Change `port` from uint16_t to uint32_t to support VSOCK by @graebm in (#220)
+- from version 0.7.9
+  * Fix error when tests run in parallel by @graebm in (#221)
+
+-------------------------------------------------------------------
+Thu Nov 30 12:37:35 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.8
+  * Performance optimization updates by @TingDaoK in (#219)
+
+-------------------------------------------------------------------
+Tue Nov 21 10:21:45 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.7
+  * Add an Option to Disable v2 to v1 Fallback by @waahm7 in (#218)
+- from version 0.7.6
+  * Fix the imds client endless retry by @TingDaoK in (#217)
+- from version 0.7.5
+  * aws_signable refcounts request by @graebm in (#216)
+- from version 0.7.4
+  * Increase ancient bot by @jmklix in (#199)
+  * Fix permissions for stale issue bot by @jmklix in (#212)
+  * Minor CMakelists.txt cleanup by @graebm in (#213)
+  * Added workflow for handling answerable discussions
+    by @yasminetalby in (#214)
+  * StsWebIdentity allow parameters by @waahm7 in (#215)
+
+-------------------------------------------------------------------
+Tue Aug 15 10:03:33 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.3
+  * Remove Outdated Comment by @waahm7 in (#210)
+  * Fix ProcessCredentialsProvider Callback to
+    trigger once by @waahm7 in (#211)
+
+-------------------------------------------------------------------
+Tue Jul 25 08:54:29 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.2
+  * Allow Overriding of Profile in Default Chain by @waahm7 in (#209)
+- from version 0.7.1
+  * Treat empty environment variable as unset by @TingDaoK in (#206)
+  * Adapt to XML API changes by @graebm in (#207)
+
+-------------------------------------------------------------------
+Wed Jul  5 10:48:09 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.0
+  * Fix session token in ProcessCredentialsProvider by @waahm7 in (#205)
+
+-------------------------------------------------------------------
+Mon Jul  3 12:41:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.30
+  * Add process credentials provider in default chain by @waahm7 in (#204)
+
+-------------------------------------------------------------------
+Fri Jun 23 08:07:54 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.29
+  * Don't use the default cursor to override if
+    no override needed by @TingDaoK in (#200)
+  * Fix the function that saying accepting null
+    but actually not by @TingDaoK in (#201)
+  * Send Host header in IMDS requests
+    by @jamesbornholt in (#203)
+
+-------------------------------------------------------------------
+Tue May 16 09:55:20 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.28
+  * Fix warnings in public headers by @waahm7 in (#198)
+
+-------------------------------------------------------------------
+Tue May  9 07:42:30 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.27
+  * Fix aws_parse_credentials_from_json_document by @waahm7 in (#192)
+  * Fix the doc, decrement for release by @TingDaoK in (#194)
+  * Add github templates and bots by @jmklix in (#196)
+  * Update builder version to fix aws-lc build
+    on manylinux-1 by @TingDaoK in (#197)
+  * Implement SSOCredentialsProvider by @waahm7 in (#189)
+
+-------------------------------------------------------------------
+Wed Mar 15 10:53:24 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.26
+  * Add Option to Use Cached Profile Collection by @waahm7 in (#187)
+
+-------------------------------------------------------------------
+Fri Mar  3 13:14:31 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.25
+  * Event Signing Support via Sigv4 by @waahm7 in (#186)
+
+-------------------------------------------------------------------
+Fri Feb  3 22:10:21 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.24
+  * Fix trailer signing by @waahm7 in (#184)
+- from version 0.6.23
+  * Adds default monitoring options for IMDS client by @waahm7 in (#183)
+- from version 0.6.22
+  * Add codecov action by @TingDaoK in (#180)
+  * Fix macro usage by @DmitriyMusatkin in (#181)
+
+-------------------------------------------------------------------
+Tue Nov 22 11:59:15 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.21
+  * Add delegate failure error code by @waahm7 in (#179)
+
+-------------------------------------------------------------------
+Fri Nov 11 13:03:48 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.20
+  * Update CI by @waahm7 in (#177)
+- from version 0.6.19
+  * Fix C++ One Definition Rules (ODR) Violations by @graebm in (#178)
+
+-------------------------------------------------------------------
+Wed Nov  2 09:04:34 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.18
+  * Cognito tests require networking by @graebm in (#176)
+
+-------------------------------------------------------------------
+Wed Oct  5 13:23:15 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.17
+  * Adds basic cognito credentials provider implementation
+
+-------------------------------------------------------------------
+Fri Sep  2 09:47:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.16
+  * Use the default load target function by @TingDaoK in (#172)
+- from version 0.6.15
+  * Adds support for Anonymous Credentials by @waahm7 in (#171)
+- from version 0.6.14
+  * Expiration override by @bretambrose in (#166)
+  * STS web ID default by @bretambrose in (#167)
+  * Never sign "Expect" header by @graebm in (#170)
+- Add rpmlint override for bogus shlib-policy-name-error
+  * aws-c-auth-rpmlintrc
+
+-------------------------------------------------------------------
+Thu Apr 28 13:58:17 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.6.13
