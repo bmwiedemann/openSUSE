@@ -291,4 +291,17 @@
     <comment></comment>
     <requestid>1138595</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a6db82912bac4a277eab19dc52ff1f56</srcmd5>
+    <version>5.15.12</version>
+    <time>1706564031</time>
+    <user>anag+factory</user>
+    <comment>- Enable SLE15 python module for a more modern python than 3.6
+  * disambiguate multiple providers of cmake(Pyside2) with
+    pyside2_python_abi() provides
+- Use llvm14 for 15.6 in order to workaround PYSIDE-2288:
+  * Wrong type for QEvent::Type
+  * avoids patch like deb#1051886 for libqt5-qtbase</comment>
+    <requestid>1142577</requestid>
+  </revision>
 </revisionlist>
