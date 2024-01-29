@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 29 10:22:55 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Increase memory to 12G for s390x builds in _constraints
+  (bsc#1218563).
+
+-------------------------------------------------------------------
 Thu Jan 11 12:56:06 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
-- Increase memory for s390x builds in _constraints.
+- Increase memory to 10G for s390x builds in _constraints
+  (bsc#1218563).
 
 -------------------------------------------------------------------
 Thu Jan 11 11:32:07 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
