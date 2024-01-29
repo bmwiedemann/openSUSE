@@ -86,4 +86,13 @@
   supported (also solves boo#1198526)</comment>
     <requestid>975260</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8d1594e1426f906e298c13a5728944ba</srcmd5>
+    <version>21.3.0</version>
+    <time>1706563767</time>
+    <user>anag+factory</user>
+    <comment>- Enable SLE15 python module
+- Force c++17 gh#frescobaldi/python-poppler-qt5#61 (forwarded request 1142197 from bnavigator)</comment>
+    <requestid>1142198</requestid>
+  </revision>
 </revisionlist>
