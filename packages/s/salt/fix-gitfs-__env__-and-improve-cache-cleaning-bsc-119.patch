@@ -1,0 +1,2024 @@
+From a7c98ce490833ff232946b9715909161b6ba5a46 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Mon, 13 Nov 2023 11:24:09 +0000
+Subject: [PATCH] Fix gitfs "__env__" and improve cache cleaning
+ (bsc#1193948) (#608)
+
+* Fix __env__ and improve cache cleaning
+* Move gitfs locks out of cachedir/.git
+
+---------
+
+Co-authored-by: cmcmarrow <charles.mcmarrow.4@gmail.com>
+---
+ changelog/65002.fixed.md                      |   1 +
+ changelog/65086.fixed.md                      |   1 +
+ salt/utils/cache.py                           |  32 ++
+ salt/utils/gitfs.py                           | 307 +++++++++------
+ .../functional/pillar/test_git_pillar.py      | 262 +++++++++++++
+ tests/pytests/functional/utils/test_cache.py  |  83 ++++
+ tests/pytests/functional/utils/test_gitfs.py  | 275 +++++++++++++
+ tests/pytests/functional/utils/test_pillar.py | 365 ++++++++++++++++++
+ .../pytests/functional/utils/test_winrepo.py  | 164 ++++++++
+ tests/pytests/unit/test_minion.py             |  31 +-
+ tests/pytests/unit/utils/test_gitfs.py        |  18 +-
+ tests/unit/utils/test_gitfs.py                |  21 +-
+ 12 files changed, 1393 insertions(+), 167 deletions(-)
+ create mode 100644 changelog/65002.fixed.md
+ create mode 100644 changelog/65086.fixed.md
+ create mode 100644 tests/pytests/functional/pillar/test_git_pillar.py
+ create mode 100644 tests/pytests/functional/utils/test_cache.py
+ create mode 100644 tests/pytests/functional/utils/test_gitfs.py
+ create mode 100644 tests/pytests/functional/utils/test_pillar.py
+ create mode 100644 tests/pytests/functional/utils/test_winrepo.py
+
+diff --git a/changelog/65002.fixed.md b/changelog/65002.fixed.md
+new file mode 100644
+index 0000000000..86ed2d4bcc
+--- /dev/null
++++ b/changelog/65002.fixed.md
+@@ -0,0 +1 @@
++Fix __env__ and improve cache cleaning see more info at pull #65017.
+diff --git a/changelog/65086.fixed.md b/changelog/65086.fixed.md
+new file mode 100644
+index 0000000000..292930f0fd
+--- /dev/null
++++ b/changelog/65086.fixed.md
+@@ -0,0 +1 @@
++Moved gitfs locks to salt working dir to avoid lock wipes
+diff --git a/salt/utils/cache.py b/salt/utils/cache.py
+index a78a1f70fc..88e7fa2400 100644
+--- a/salt/utils/cache.py
++++ b/salt/utils/cache.py
+@@ -6,6 +6,7 @@ import functools
+ import logging
+ import os
+ import re
++import shutil
+ import time
+ 
+ import salt.config
+@@ -15,6 +16,8 @@ import salt.utils.data
+ import salt.utils.dictupdate
+ import salt.utils.files
+ import salt.utils.msgpack
++import salt.utils.path
++import salt.version
+ from salt.utils.zeromq import zmq
+ 
+ log = logging.getLogger(__name__)
+@@ -345,3 +348,32 @@ def context_cache(func):
+         return func(*args, **kwargs)
+ 
+     return context_cache_wrap
++
++
++def verify_cache_version(cache_path):
++    """
++    Check that the cached version matches the Salt version.
++    If the cached version does not match the Salt version, wipe the cache.
++
++    :return: ``True`` if cache version matches, otherwise ``False``
++    """
++    if not os.path.isdir(cache_path):
++        os.makedirs(cache_path)
++    with salt.utils.files.fopen(
++        salt.utils.path.join(cache_path, "cache_version"), "a+"
++    ) as file:
++        file.seek(0)
++        data = "\n".join(file.readlines())
++        if data != salt.version.__version__:
++            log.warning(f"Cache version mismatch clearing: {repr(cache_path)}")
++            file.truncate(0)
++            file.write(salt.version.__version__)
++            for item in os.listdir(cache_path):
++                if item != "cache_version":
++                    item_path = salt.utils.path.join(cache_path, item)
++                    if os.path.isfile(item_path):
++                        os.remove(item_path)
++                    else:
++                        shutil.rmtree(item_path)
++            return False
++        return True
+diff --git a/salt/utils/gitfs.py b/salt/utils/gitfs.py
+index af61aa0dda..061647edac 100644
+--- a/salt/utils/gitfs.py
++++ b/salt/utils/gitfs.py
+@@ -17,7 +17,6 @@ import os
+ import shlex
+ import shutil
+ import stat
+-import string
+ import subprocess
+ import time
+ import weakref
+@@ -26,6 +25,7 @@ from datetime import datetime
+ import salt.ext.tornado.ioloop
+ import salt.fileserver
+ import salt.syspaths
++import salt.utils.cache
+ import salt.utils.configparser
+ import salt.utils.data
+ import salt.utils.files
+@@ -253,7 +253,6 @@ class GitProvider:
+             val_cb=lambda x, y: str(y),
+         )
+         self.conf = copy.deepcopy(per_remote_defaults)
+-
+         # Remove the 'salt://' from the beginning of any globally-defined
+         # per-saltenv mountpoints
+         for saltenv, saltenv_conf in self.global_saltenv.items():
+@@ -457,48 +456,38 @@ class GitProvider:
+                 self.id,
+             )
+             failhard(self.role)
+-
+-        hash_type = getattr(hashlib, self.opts.get("hash_type", "md5"))
+-        # Generate full id.
+-        # Full id helps decrease the chances of collections in the gitfs cache.
+-        try:
+-            target = str(self.get_checkout_target())
+-        except AttributeError:
+-            target = ""
+-        self._full_id = "-".join(
+-            [
+-                getattr(self, "name", ""),
+-                self.id,
+-                getattr(self, "env", ""),
+-                getattr(self, "_root", ""),
+-                self.role,
+-                getattr(self, "base", ""),
+-                getattr(self, "branch", ""),
+-                target,
+-            ]
++        if hasattr(self, "name"):
++            self._cache_basehash = self.name
++        else:
++            hash_type = getattr(hashlib, self.opts.get("hash_type", "md5"))
++            # We loaded this data from yaml configuration files, so, its safe
++            # to use UTF-8
++            self._cache_basehash = str(
++                base64.b64encode(hash_type(self.id.encode("utf-8")).digest()),
++                encoding="ascii",  # base64 only outputs ascii
++            ).replace(
++                "/", "_"
++            )  # replace "/" with "_" to not cause trouble with file system
++        self._cache_hash = salt.utils.path.join(cache_root, self._cache_basehash)
++        self._cache_basename = "_"
++        if self.id.startswith("__env__"):
++            try:
++                self._cache_basename = self.get_checkout_target()
++            except AttributeError:
++                log.critical(f"__env__ cant generate basename: {self.role} {self.id}")
++                failhard(self.role)
++        self._cache_full_basename = salt.utils.path.join(
++            self._cache_basehash, self._cache_basename
+         )
+-        # We loaded this data from yaml configuration files, so, its safe
+-        # to use UTF-8
+-        base64_hash = str(
+-            base64.b64encode(hash_type(self._full_id.encode("utf-8")).digest()),
+-            encoding="ascii",  # base64 only outputs ascii
+-        ).replace(
+-            "/", "_"
+-        )  # replace "/" with "_" to not cause trouble with file system
+-
+-        # limit name length to 19, so we don't eat up all the path length for windows
+-        # this is due to pygit2 limitations
+-        # replace any unknown char with "_" to not cause trouble with file system
+-        name_chars = string.ascii_letters + string.digits + "-"
+-        cache_name = "".join(
+-            c if c in name_chars else "_" for c in getattr(self, "name", "")[:19]
++        self._cachedir = salt.utils.path.join(self._cache_hash, self._cache_basename)
++        self._salt_working_dir = salt.utils.path.join(
++            cache_root, "work", self._cache_full_basename
+         )
+-
+-        self.cachedir_basename = f"{cache_name}-{base64_hash}"
+-        self.cachedir = salt.utils.path.join(cache_root, self.cachedir_basename)
+-        self.linkdir = salt.utils.path.join(cache_root, "links", self.cachedir_basename)
+-        if not os.path.isdir(self.cachedir):
+-            os.makedirs(self.cachedir)
++        self._linkdir = salt.utils.path.join(
++            cache_root, "links", self._cache_full_basename
++        )
++        if not os.path.isdir(self._cachedir):
++            os.makedirs(self._cachedir)
+ 
+         try:
+             self.new = self.init_remote()
+@@ -510,12 +499,32 @@ class GitProvider:
+                 msg += " Perhaps git is not available."
+             log.critical(msg, exc_info=True)
+             failhard(self.role)
++        self.verify_auth()
++        self.setup_callbacks()
++        if not os.path.isdir(self._salt_working_dir):
++            os.makedirs(self._salt_working_dir)
++        self.fetch_request_check()
++
++    def get_cache_basehash(self):
++        return self._cache_basehash
++
++    def get_cache_hash(self):
++        return self._cache_hash
+ 
+-    def full_id(self):
+-        return self._full_id
++    def get_cache_basename(self):
++        return self._cache_basename
+ 
+-    def get_cachedir_basename(self):
+-        return self.cachedir_basename
++    def get_cache_full_basename(self):
++        return self._cache_full_basename
++
++    def get_cachedir(self):
++        return self._cachedir
++
++    def get_linkdir(self):
++        return self._linkdir
++
++    def get_salt_working_dir(self):
++        return self._salt_working_dir
+ 
+     def _get_envs_from_ref_paths(self, refs):
+         """
+@@ -557,7 +566,7 @@ class GitProvider:
+         return ret
+ 
+     def _get_lock_file(self, lock_type="update"):
+-        return salt.utils.path.join(self.gitdir, lock_type + ".lk")
++        return salt.utils.path.join(self._salt_working_dir, lock_type + ".lk")
+ 
+     @classmethod
+     def add_conf_overlay(cls, name):
+@@ -644,7 +653,7 @@ class GitProvider:
+         # No need to pass an environment to self.root() here since per-saltenv
+         # configuration is a gitfs-only feature and check_root() is not used
+         # for gitfs.
+-        root_dir = salt.utils.path.join(self.cachedir, self.root()).rstrip(os.sep)
++        root_dir = salt.utils.path.join(self._cachedir, self.root()).rstrip(os.sep)
+         if os.path.isdir(root_dir):
+             return root_dir
+         log.error(
+@@ -816,7 +825,7 @@ class GitProvider:
+                 desired_refspecs,
+             )
+             if refspecs != desired_refspecs:
+-                conf.set_multivar(remote_section, "fetch", self.refspecs)
++                conf.set_multivar(remote_section, "fetch", desired_refspecs)
+                 log.debug(
+                     "Refspecs for %s remote '%s' set to %s",
+                     self.role,
+@@ -1069,7 +1078,7 @@ class GitProvider:
+         """
+         raise NotImplementedError()
+ 
+-    def checkout(self):
++    def checkout(self, fetch_on_fail=True):
+         """
+         This function must be overridden in a sub-class
+         """
+@@ -1192,6 +1201,21 @@ class GitProvider:
+         else:
+             self.url = self.id
+ 
++    def fetch_request_check(self):
++        fetch_request = salt.utils.path.join(self._salt_working_dir, "fetch_request")
++        if os.path.isfile(fetch_request):
++            log.debug(f"Fetch request: {self._salt_working_dir}")
++            try:
++                os.remove(fetch_request)
++            except OSError as exc:
++                log.error(
++                    f"Failed to remove Fetch request: {self._salt_working_dir} {exc}",
++                    exc_info=True,
++                )
++            self.fetch()
++            return True
++        return False
++
+     @property
+     def linkdir_walk(self):
+         """
+@@ -1218,14 +1242,14 @@ class GitProvider:
+                         dirs = []
+                     self._linkdir_walk.append(
+                         (
+-                            salt.utils.path.join(self.linkdir, *parts[: idx + 1]),
++                            salt.utils.path.join(self._linkdir, *parts[: idx + 1]),
+                             dirs,
+                             [],
+                         )
+                     )
+                 try:
+                     # The linkdir itself goes at the beginning
+-                    self._linkdir_walk.insert(0, (self.linkdir, [parts[0]], []))
++                    self._linkdir_walk.insert(0, (self._linkdir, [parts[0]], []))
+                 except IndexError:
+                     pass
+             return self._linkdir_walk
+@@ -1275,13 +1299,17 @@ class GitPython(GitProvider):
+             role,
+         )
+ 
+-    def checkout(self):
++    def checkout(self, fetch_on_fail=True):
+         """
+         Checkout the configured branch/tag. We catch an "Exception" class here
+         instead of a specific exception class because the exceptions raised by
+         GitPython when running these functions vary in different versions of
+         GitPython.
++
++        fetch_on_fail
++          If checkout fails perform a fetch then try to checkout again.
+         """
++        self.fetch_request_check()
+         tgt_ref = self.get_checkout_target()
+         try:
+             head_sha = self.repo.rev_parse("HEAD").hexsha
+@@ -1345,6 +1373,15 @@ class GitPython(GitProvider):
+             except Exception:  # pylint: disable=broad-except
+                 continue
+             return self.check_root()
++        if fetch_on_fail:
++            log.debug(
++                "Failed to checkout %s from %s remote '%s': fetch and try again",
++                tgt_ref,
++                self.role,
++                self.id,
++            )
++            self.fetch()
++            return self.checkout(fetch_on_fail=False)
+         log.error(
+             "Failed to checkout %s from %s remote '%s': remote ref does not exist",
+             tgt_ref,
+@@ -1360,16 +1397,16 @@ class GitPython(GitProvider):
+         initialized by this function.
+         """
+         new = False
+-        if not os.listdir(self.cachedir):
++        if not os.listdir(self._cachedir):
+             # Repo cachedir is empty, initialize a new repo there
+-            self.repo = git.Repo.init(self.cachedir)
++            self.repo = git.Repo.init(self._cachedir)
+             new = True
+         else:
+             # Repo cachedir exists, try to attach
+             try:
+-                self.repo = git.Repo(self.cachedir)
++                self.repo = git.Repo(self._cachedir)
+             except git.exc.InvalidGitRepositoryError:
+-                log.error(_INVALID_REPO, self.cachedir, self.url, self.role)
++                log.error(_INVALID_REPO, self._cachedir, self.url, self.role)
+                 return new
+ 
+         self.gitdir = salt.utils.path.join(self.repo.working_dir, ".git")
+@@ -1603,10 +1640,14 @@ class Pygit2(GitProvider):
+         except AttributeError:
+             return obj.get_object()
+ 
+-    def checkout(self):
++    def checkout(self, fetch_on_fail=True):
+         """
+         Checkout the configured branch/tag
++
++        fetch_on_fail
++          If checkout fails perform a fetch then try to checkout again.
+         """
++        self.fetch_request_check()
+         tgt_ref = self.get_checkout_target()
+         local_ref = "refs/heads/" + tgt_ref
+         remote_ref = "refs/remotes/origin/" + tgt_ref
+@@ -1796,6 +1837,15 @@ class Pygit2(GitProvider):
+                 exc_info=True,
+             )
+             return None
++        if fetch_on_fail:
++            log.debug(
++                "Failed to checkout %s from %s remote '%s': fetch and try again",
++                tgt_ref,
++                self.role,
++                self.id,
++            )
++            self.fetch()
++            return self.checkout(fetch_on_fail=False)
+         log.error(
+             "Failed to checkout %s from %s remote '%s': remote ref does not exist",
+             tgt_ref,
+@@ -1837,16 +1887,16 @@ class Pygit2(GitProvider):
+         home = os.path.expanduser("~")
+         pygit2.settings.search_path[pygit2.GIT_CONFIG_LEVEL_GLOBAL] = home
+         new = False
+-        if not os.listdir(self.cachedir):
++        if not os.listdir(self._cachedir):
+             # Repo cachedir is empty, initialize a new repo there
+-            self.repo = pygit2.init_repository(self.cachedir)
++            self.repo = pygit2.init_repository(self._cachedir)
+             new = True
+         else:
+             # Repo cachedir exists, try to attach
+             try:
+-                self.repo = pygit2.Repository(self.cachedir)
++                self.repo = pygit2.Repository(self._cachedir)
+             except KeyError:
+-                log.error(_INVALID_REPO, self.cachedir, self.url, self.role)
++                log.error(_INVALID_REPO, self._cachedir, self.url, self.role)
+                 return new
+ 
+         self.gitdir = salt.utils.path.join(self.repo.workdir, ".git")
+@@ -2370,6 +2420,7 @@ class GitBase:
+         self.file_list_cachedir = salt.utils.path.join(
+             self.opts["cachedir"], "file_lists", self.role
+         )
++        salt.utils.cache.verify_cache_version(self.cache_root)
+         if init_remotes:
+             self.init_remotes(
+                 remotes if remotes is not None else [],
+@@ -2442,8 +2493,6 @@ class GitBase:
+             )
+             if hasattr(repo_obj, "repo"):
+                 # Sanity check and assign the credential parameter
+-                repo_obj.verify_auth()
+-                repo_obj.setup_callbacks()
+                 if self.opts["__role"] == "minion" and repo_obj.new:
+                     # Perform initial fetch on masterless minion
+                     repo_obj.fetch()
+@@ -2492,7 +2541,7 @@ class GitBase:
+         # Don't allow collisions in cachedir naming
+         cachedir_map = {}
+         for repo in self.remotes:
+-            cachedir_map.setdefault(repo.cachedir, []).append(repo.id)
++            cachedir_map.setdefault(repo.get_cachedir(), []).append(repo.id)
+ 
+         collisions = [x for x in cachedir_map if len(cachedir_map[x]) > 1]
+         if collisions:
+@@ -2509,48 +2558,42 @@ class GitBase:
+         if any(x.new for x in self.remotes):
+             self.write_remote_map()
+ 
++    def _remove_cache_dir(self, cache_dir):
++        try:
++            shutil.rmtree(cache_dir)
++        except OSError as exc:
++            log.error(
++                "Unable to remove old %s remote cachedir %s: %s",
++                self.role,
++                cache_dir,
++                exc,
++            )
++            return False
++        log.debug("%s removed old cachedir %s", self.role, cache_dir)
++        return True
++
++    def _iter_remote_hashes(self):
++        for item in os.listdir(self.cache_root):
++            if item in ("hash", "refs", "links", "work"):
++                continue
++            if os.path.isdir(salt.utils.path.join(self.cache_root, item)):
++                yield item
++
+     def clear_old_remotes(self):
+         """
+         Remove cache directories for remotes no longer configured
+         """
+-        try:
+-            cachedir_ls = os.listdir(self.cache_root)
+-        except OSError:
+-            cachedir_ls = []
+-        # Remove actively-used remotes from list
+-        for repo in self.remotes:
+-            try:
+-                cachedir_ls.remove(repo.cachedir_basename)
+-            except ValueError:
+-                pass
+-        to_remove = []
+-        for item in cachedir_ls:
+-            if item in ("hash", "refs"):
+-                continue
+-            path = salt.utils.path.join(self.cache_root, item)
+-            if os.path.isdir(path):
+-                to_remove.append(path)
+-        failed = []
+-        if to_remove:
+-            for rdir in to_remove:
+-                try:
+-                    shutil.rmtree(rdir)
+-                except OSError as exc:
+-                    log.error(
+-                        "Unable to remove old %s remote cachedir %s: %s",
+-                        self.role,
+-                        rdir,
+-                        exc,
+-                    )
+-                    failed.append(rdir)
+-                else:
+-                    log.debug("%s removed old cachedir %s", self.role, rdir)
+-        for fdir in failed:
+-            to_remove.remove(fdir)
+-        ret = bool(to_remove)
+-        if ret:
++        change = False
++        # Remove all hash dirs not part of this group
++        remote_set = {r.get_cache_basehash() for r in self.remotes}
++        for item in self._iter_remote_hashes():
++            if item not in remote_set:
++                change = self._remove_cache_dir(
++                    salt.utils.path.join(self.cache_root, item) or change
++                )
++        if not change:
+             self.write_remote_map()
+-        return ret
++        return change
+ 
+     def clear_cache(self):
+         """
+@@ -2609,6 +2652,27 @@ class GitBase:
+             name = getattr(repo, "name", None)
+             if not remotes or (repo.id, name) in remotes or name in remotes:
+                 try:
++                    # Find and place fetch_request file for all the other branches for this repo
++                    repo_work_hash = os.path.split(repo.get_salt_working_dir())[0]
++                    for branch in os.listdir(repo_work_hash):
++                        # Don't place fetch request in current branch being updated
++                        if branch == repo.get_cache_basename():
++                            continue
++                        branch_salt_dir = salt.utils.path.join(repo_work_hash, branch)
++                        fetch_path = salt.utils.path.join(
++                            branch_salt_dir, "fetch_request"
++                        )
++                        if os.path.isdir(branch_salt_dir):
++                            try:
++                                with salt.utils.files.fopen(fetch_path, "w"):
++                                    pass
++                            except OSError as exc:  # pylint: disable=broad-except
++                                log.error(
++                                    f"Failed to make fetch request: {fetch_path} {exc}",
++                                    exc_info=True,
++                                )
++                        else:
++                            log.error(f"Failed to make fetch request: {fetch_path}")
+                     if repo.fetch():
+                         # We can't just use the return value from repo.fetch()
+                         # because the data could still have changed if old
+@@ -2863,7 +2927,7 @@ class GitBase:
+                 for repo in self.remotes:
+                     fp_.write(
+                         salt.utils.stringutils.to_str(
+-                            "{} = {}\n".format(repo.cachedir_basename, repo.id)
++                            "{} = {}\n".format(repo.get_cache_basehash(), repo.id)
+                         )
+                     )
+         except OSError:
+@@ -2871,15 +2935,18 @@ class GitBase:
+         else:
+             log.info("Wrote new %s remote map to %s", self.role, remote_map)
+ 
+-    def do_checkout(self, repo):
++    def do_checkout(self, repo, fetch_on_fail=True):
+         """
+         Common code for git_pillar/winrepo to handle locking and checking out
+         of a repo.
++
++        fetch_on_fail
++          If checkout fails perform a fetch then try to checkout again.
+         """
+         time_start = time.time()
+         while time.time() - time_start <= 5:
+             try:
+-                return repo.checkout()
++                return repo.checkout(fetch_on_fail=fetch_on_fail)
+             except GitLockError as exc:
+                 if exc.errno == errno.EEXIST:
+                     time.sleep(0.1)
+@@ -3274,14 +3341,17 @@ class GitPillar(GitBase):
+ 
+     role = "git_pillar"
+ 
+-    def checkout(self):
++    def checkout(self, fetch_on_fail=True):
+         """
+         Checkout the targeted branches/tags from the git_pillar remotes
++
++        fetch_on_fail
++          If checkout fails perform a fetch then try to checkout again.
+         """
+         self.pillar_dirs = OrderedDict()
+         self.pillar_linked_dirs = []
+         for repo in self.remotes:
+-            cachedir = self.do_checkout(repo)
++            cachedir = self.do_checkout(repo, fetch_on_fail=fetch_on_fail)
+             if cachedir is not None:
+                 # Figure out which environment this remote should be assigned
+                 if repo.branch == "__env__" and hasattr(repo, "all_saltenvs"):
+@@ -3298,8 +3368,8 @@ class GitPillar(GitBase):
+                         env = "base" if tgt == repo.base else tgt
+                 if repo._mountpoint:
+                     if self.link_mountpoint(repo):
+-                        self.pillar_dirs[repo.linkdir] = env
+-                        self.pillar_linked_dirs.append(repo.linkdir)
++                        self.pillar_dirs[repo.get_linkdir()] = env
++                        self.pillar_linked_dirs.append(repo.get_linkdir())
+                 else:
+                     self.pillar_dirs[cachedir] = env
+ 
+@@ -3308,17 +3378,19 @@ class GitPillar(GitBase):
+         Ensure that the mountpoint is present in the correct location and
+         points at the correct path
+         """
+-        lcachelink = salt.utils.path.join(repo.linkdir, repo._mountpoint)
+-        lcachedest = salt.utils.path.join(repo.cachedir, repo.root()).rstrip(os.sep)
++        lcachelink = salt.utils.path.join(repo.get_linkdir(), repo._mountpoint)
++        lcachedest = salt.utils.path.join(repo.get_cachedir(), repo.root()).rstrip(
++            os.sep
++        )
+         wipe_linkdir = False
+         create_link = False
+         try:
+             with repo.gen_lock(lock_type="mountpoint", timeout=10):
+-                walk_results = list(os.walk(repo.linkdir, followlinks=False))
++                walk_results = list(os.walk(repo.get_linkdir(), followlinks=False))
+                 if walk_results != repo.linkdir_walk:
+                     log.debug(
+                         "Results of walking %s differ from expected results",
+-                        repo.linkdir,
++                        repo.get_linkdir(),
+                     )
+                     log.debug("Walk results: %s", walk_results)
+                     log.debug("Expected results: %s", repo.linkdir_walk)
+@@ -3379,7 +3451,7 @@ class GitPillar(GitBase):
+                     # Wiping implies that we need to create the link
+                     create_link = True
+                     try:
+-                        shutil.rmtree(repo.linkdir)
++                        shutil.rmtree(repo.get_linkdir())
+                     except OSError:
+                         pass
+                     try:
+@@ -3431,6 +3503,9 @@ class GitPillar(GitBase):
+ class WinRepo(GitBase):
+     """
+     Functionality specific to the winrepo runner
++
++    fetch_on_fail
++          If checkout fails perform a fetch then try to checkout again.
+     """
+ 
+     role = "winrepo"
+@@ -3438,12 +3513,12 @@ class WinRepo(GitBase):
+     # out the repos.
+     winrepo_dirs = {}
+ 
+-    def checkout(self):
++    def checkout(self, fetch_on_fail=True):
+         """
+         Checkout the targeted branches/tags from the winrepo remotes
+         """
+         self.winrepo_dirs = {}
+         for repo in self.remotes:
+-            cachedir = self.do_checkout(repo)
++            cachedir = self.do_checkout(repo, fetch_on_fail=fetch_on_fail)
+             if cachedir is not None:
+                 self.winrepo_dirs[repo.id] = cachedir
+diff --git a/tests/pytests/functional/pillar/test_git_pillar.py b/tests/pytests/functional/pillar/test_git_pillar.py
+new file mode 100644
+index 0000000000..6fd3dee431
+--- /dev/null
++++ b/tests/pytests/functional/pillar/test_git_pillar.py
+@@ -0,0 +1,262 @@
++import pytest
++
++from salt.pillar.git_pillar import ext_pillar
++from salt.utils.immutabletypes import ImmutableDict, ImmutableList
++from tests.support.mock import patch
++
++pytestmark = [
++    pytest.mark.slow_test,
++]
++
++
++try:
++    import git  # pylint: disable=unused-import
++
++    HAS_GITPYTHON = True
++except ImportError:
++    HAS_GITPYTHON = False
++
++
++try:
++    import pygit2  # pylint: disable=unused-import
++
++    HAS_PYGIT2 = True
++except ImportError:
++    HAS_PYGIT2 = False
++
++
++skipif_no_gitpython = pytest.mark.skipif(not HAS_GITPYTHON, reason="Missing gitpython")
++skipif_no_pygit2 = pytest.mark.skipif(not HAS_PYGIT2, reason="Missing pygit2")
++
++
++@pytest.fixture
++def git_pillar_opts(salt_master, tmp_path):
++    opts = dict(salt_master.config)
++    opts["cachedir"] = str(tmp_path)
++    for key, item in opts.items():
++        if isinstance(item, ImmutableDict):
++            opts[key] = dict(item)
++        elif isinstance(item, ImmutableList):
++            opts[key] = list(item)
++    return opts
++
++
++@pytest.fixture
++def gitpython_pillar_opts(git_pillar_opts):
++    git_pillar_opts["verified_git_pillar_provider"] = "gitpython"
++    return git_pillar_opts
++
++
++@pytest.fixture
++def pygit2_pillar_opts(git_pillar_opts):
++    git_pillar_opts["verified_git_pillar_provider"] = "pygit2"
++    return git_pillar_opts
++
++
++def _get_ext_pillar(minion, pillar_opts, grains, *repos):
++    with patch("salt.pillar.git_pillar.__opts__", pillar_opts, create=True):
++        with patch("salt.pillar.git_pillar.__grains__", grains, create=True):
++            return ext_pillar(minion, None, *repos)
++
++
++def _test_simple(pillar_opts, grains):
++    data = _get_ext_pillar(
++        "minion",
++        pillar_opts,
++        grains,
++        "https://github.com/saltstack/salt-test-pillar-gitfs.git",
++    )
++    assert data == {"key": "value"}
++
++
++@skipif_no_gitpython
++def test_gitpython_simple(gitpython_pillar_opts, grains):
++    _test_simple(gitpython_pillar_opts, grains)
++
++
++@skipif_no_pygit2
++def test_pygit2_simple(pygit2_pillar_opts, grains):
++    _test_simple(pygit2_pillar_opts, grains)
++
++
++def _test_missing_env(pillar_opts, grains):
++    data = _get_ext_pillar(
++        "minion",
++        pillar_opts,
++        grains,
++        {
++            "https://github.com/saltstack/salt-test-pillar-gitfs.git": [
++                {"env": "misssing"}
++            ]
++        },
++    )
++    assert data == {}
++
++
++@skipif_no_gitpython
++def test_gitpython_missing_env(gitpython_pillar_opts, grains):
++    _test_missing_env(gitpython_pillar_opts, grains)
++
++
++@skipif_no_pygit2
++def test_pygit2_missing_env(pygit2_pillar_opts, grains):
++    _test_missing_env(pygit2_pillar_opts, grains)
++
++
++def _test_env(pillar_opts, grains):
++    data = _get_ext_pillar(
++        "minion",
++        pillar_opts,
++        grains,
++        {
++            "other https://github.com/saltstack/salt-test-pillar-gitfs-2.git": [
++                {"env": "other_env"}
++            ]
++        },
++    )
++    assert data == {"other": "env"}
++
++
++@skipif_no_gitpython
++def test_gitpython_env(gitpython_pillar_opts, grains):
++    _test_env(gitpython_pillar_opts, grains)
++
++
++@skipif_no_pygit2
++def test_pygit2_env(pygit2_pillar_opts, grains):
++    _test_env(pygit2_pillar_opts, grains)
++
++
++def _test_branch(pillar_opts, grains):
++    data = _get_ext_pillar(
++        "minion",
++        pillar_opts,
++        grains,
++        "branch https://github.com/saltstack/salt-test-pillar-gitfs.git",
++    )
++    assert data == {"key": "data"}
++
++
++@skipif_no_gitpython
++def test_gitpython_branch(gitpython_pillar_opts, grains):
++    _test_branch(gitpython_pillar_opts, grains)
++
++
++@skipif_no_pygit2
++def test_pygit2_branch(pygit2_pillar_opts, grains):
++    _test_branch(pygit2_pillar_opts, grains)
++
++
++def _test_simple_dynamic(pillar_opts, grains):
++    data = _get_ext_pillar(
++        "minion",
++        pillar_opts,
++        grains,
++        "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git",
++    )
++    assert data == {"key": "value"}
++
++
++@skipif_no_gitpython
++def test_gitpython_simple_dynamic(gitpython_pillar_opts, grains):
++    _test_simple_dynamic(gitpython_pillar_opts, grains)
++
++
++@skipif_no_pygit2
++def test_pygit2_simple_dynamic(pygit2_pillar_opts, grains):
++    _test_simple_dynamic(pygit2_pillar_opts, grains)
++
++
++def _test_missing_env_dynamic(pillar_opts, grains):
++    data = _get_ext_pillar(
++        "minion",
++        pillar_opts,
++        grains,
++        {
++            "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git": [
++                {"env": "misssing"}
++            ]
++        },
++    )
++    assert data == {}
++
++
++@skipif_no_gitpython
++def test_gitpython_missing_env_dynamic(gitpython_pillar_opts, grains):
++    _test_missing_env_dynamic(gitpython_pillar_opts, grains)
++
++
++@skipif_no_pygit2
++def test_pygit2_missing_env_dynamic(pygit2_pillar_opts, grains):
++    _test_missing_env_dynamic(pygit2_pillar_opts, grains)
++
++
++def _test_pillarenv_dynamic(pillar_opts, grains):
++    pillar_opts["pillarenv"] = "branch"
++    data = _get_ext_pillar(
++        "minion",
++        pillar_opts,
++        grains,
++        "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git",
++    )
++    assert data == {"key": "data"}
++
++
++@skipif_no_gitpython
++def test_gitpython_pillarenv_dynamic(gitpython_pillar_opts, grains):
++    _test_pillarenv_dynamic(gitpython_pillar_opts, grains)
++
++
++@skipif_no_pygit2
++def test_pygit2_pillarenv_dynamic(pygit2_pillar_opts, grains):
++    _test_pillarenv_dynamic(pygit2_pillar_opts, grains)
++
++
++def _test_multiple(pillar_opts, grains):
++    pillar_opts["pillarenv"] = "branch"
++    data = _get_ext_pillar(
++        "minion",
++        pillar_opts,
++        grains,
++        "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "other https://github.com/saltstack/salt-test-pillar-gitfs-2.git",
++    )
++    assert data == {"key": "data"}
++
++
++@skipif_no_gitpython
++def test_gitpython_multiple(gitpython_pillar_opts, grains):
++    _test_multiple(gitpython_pillar_opts, grains)
++
++
++@skipif_no_pygit2
++def test_pygit2_multiple(pygit2_pillar_opts, grains):
++    _test_multiple(pygit2_pillar_opts, grains)
++
++
++def _test_multiple_2(pillar_opts, grains):
++    data = _get_ext_pillar(
++        "minion",
++        pillar_opts,
++        grains,
++        "https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "https://github.com/saltstack/salt-test-pillar-gitfs-2.git",
++    )
++    assert data == {
++        "key": "value",
++        "key1": "value1",
++        "key2": "value2",
++        "key4": "value4",
++        "data1": "d",
++        "data2": "d2",
++    }
++
++
++@skipif_no_gitpython
++def test_gitpython_multiple_2(gitpython_pillar_opts, grains):
++    _test_multiple_2(gitpython_pillar_opts, grains)
++
++
++@skipif_no_pygit2
++def test_pygit2_multiple_2(pygit2_pillar_opts, grains):
++    _test_multiple_2(pygit2_pillar_opts, grains)
+diff --git a/tests/pytests/functional/utils/test_cache.py b/tests/pytests/functional/utils/test_cache.py
+new file mode 100644
+index 0000000000..d405b8246f
+--- /dev/null
++++ b/tests/pytests/functional/utils/test_cache.py
+@@ -0,0 +1,83 @@
++import os
++
++import pytest
++
++import salt.utils.cache
++import salt.utils.files
++import salt.utils.path
++import salt.version
++
++_DUMMY_FILES = (
++    "data.txt",
++    "foo.t2",
++    "bar.t3",
++    "nested/test",
++    "nested/cache.txt",
++    "n/n1/n2/n3/n4/n5",
++)
++
++
++def _make_dummy_files(tmp_path):
++    for full_path in _DUMMY_FILES:
++        full_path = salt.utils.path.join(tmp_path, full_path)
++        path, _ = os.path.split(full_path)
++        if not os.path.isdir(path):
++            os.makedirs(path)
++        with salt.utils.files.fopen(full_path, "w") as file:
++            file.write("data")
++
++
++def _dummy_files_exists(tmp_path):
++    """
++    True if all files exists
++    False if all files are missing
++    None if some files exists and others are missing
++    """
++    ret = None
++    for full_path in _DUMMY_FILES:
++        full_path = salt.utils.path.join(tmp_path, full_path)
++        is_file = os.path.isfile(full_path)
++        if ret is None:
++            ret = is_file
++        elif ret is not is_file:
++            return None  # Some files are found and others are missing
++    return ret
++
++
++def test_verify_cache_version_bad_path():
++    with pytest.raises(ValueError):
++        # cache version should fail if given bad file python
++        salt.utils.cache.verify_cache_version("\0/bad/path")
++
++
++def test_verify_cache_version(tmp_path):
++    # cache version should make dir if it does not exist
++    tmp_path = str(salt.utils.path.join(str(tmp_path), "work", "salt"))
++    cache_version = salt.utils.path.join(tmp_path, "cache_version")
++
++    # check that cache clears when no cache_version is present
++    _make_dummy_files(tmp_path)
++    assert salt.utils.cache.verify_cache_version(tmp_path) is False
++    assert _dummy_files_exists(tmp_path) is False
++
++    # check that cache_version has correct salt version
++    with salt.utils.files.fopen(cache_version, "r") as file:
++        assert "\n".join(file.readlines()) == salt.version.__version__
++
++    # check that cache does not get clear when check is called multiple times
++    _make_dummy_files(tmp_path)
++    for _ in range(3):
++        assert salt.utils.cache.verify_cache_version(tmp_path) is True
++        assert _dummy_files_exists(tmp_path) is True
++
++    # check that cache clears when a different version is present
++    with salt.utils.files.fopen(cache_version, "w") as file:
++        file.write("-1")
++    assert salt.utils.cache.verify_cache_version(tmp_path) is False
++    assert _dummy_files_exists(tmp_path) is False
++
++    # check that cache does not get clear when check is called multiple times
++    _make_dummy_files(tmp_path)
++    for _ in range(3):
++        assert salt.utils.cache.verify_cache_version(tmp_path) is True
++        assert _dummy_files_exists(tmp_path) is True
+diff --git a/tests/pytests/functional/utils/test_gitfs.py b/tests/pytests/functional/utils/test_gitfs.py
+new file mode 100644
+index 0000000000..30a5f147fa
+--- /dev/null
++++ b/tests/pytests/functional/utils/test_gitfs.py
+@@ -0,0 +1,275 @@
++import os.path
++
++import pytest
++
++from salt.fileserver.gitfs import PER_REMOTE_ONLY, PER_REMOTE_OVERRIDES
++from salt.utils.gitfs import GitFS, GitPython, Pygit2
++from salt.utils.immutabletypes import ImmutableDict, ImmutableList
++
++pytestmark = [
++    pytest.mark.slow_test,
++]
++
++
++try:
++    import git  # pylint: disable=unused-import
++
++    HAS_GITPYTHON = True
++except ImportError:
++    HAS_GITPYTHON = False
++
++
++try:
++    import pygit2  # pylint: disable=unused-import
++
++    HAS_PYGIT2 = True
++except ImportError:
++    HAS_PYGIT2 = False
++
++
++skipif_no_gitpython = pytest.mark.skipif(not HAS_GITPYTHON, reason="Missing gitpython")
++skipif_no_pygit2 = pytest.mark.skipif(not HAS_PYGIT2, reason="Missing pygit2")
++
++
++@pytest.fixture
++def gitfs_opts(salt_factories, tmp_path):
++    config_defaults = {"cachedir": str(tmp_path)}
++    factory = salt_factories.salt_master_daemon(
++        "gitfs-functional-master", defaults=config_defaults
++    )
++    config_defaults = dict(factory.config)
++    for key, item in config_defaults.items():
++        if isinstance(item, ImmutableDict):
++            config_defaults[key] = dict(item)
++        elif isinstance(item, ImmutableList):
++            config_defaults[key] = list(item)
++    return config_defaults
++
++
++@pytest.fixture
++def gitpython_gitfs_opts(gitfs_opts):
++    gitfs_opts["verified_gitfs_provider"] = "gitpython"
++    GitFS.instance_map.clear()  # wipe instance_map object map for clean run
++    return gitfs_opts
++
++
++@pytest.fixture
++def pygit2_gitfs_opts(gitfs_opts):
++    gitfs_opts["verified_gitfs_provider"] = "pygit2"
++    GitFS.instance_map.clear()  # wipe instance_map object map for clean run
++    return gitfs_opts
++
++
++def _get_gitfs(opts, *remotes):
++    return GitFS(
++        opts,
++        remotes,
++        per_remote_overrides=PER_REMOTE_OVERRIDES,
++        per_remote_only=PER_REMOTE_ONLY,
++    )
++
++
++def _test_gitfs_simple(gitfs_opts):
++    g = _get_gitfs(
++        gitfs_opts,
++        {"https://github.com/saltstack/salt-test-pillar-gitfs.git": [{"name": "bob"}]},
++    )
++    g.fetch_remotes()
++    assert len(g.remotes) == 1
++    assert set(g.file_list({"saltenv": "main"})) == {".gitignore", "README.md"}
++
++
++@skipif_no_gitpython
++def test_gitpython_gitfs_simple(gitpython_gitfs_opts):
++    _test_gitfs_simple(gitpython_gitfs_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_gitfs_simple(pygit2_gitfs_opts):
++    _test_gitfs_simple(pygit2_gitfs_opts)
++
++
++def _test_gitfs_simple_base(gitfs_opts):
++    g = _get_gitfs(
++        gitfs_opts, "https://github.com/saltstack/salt-test-pillar-gitfs.git"
++    )
++    g.fetch_remotes()
++    assert len(g.remotes) == 1
++    assert set(g.file_list({"saltenv": "base"})) == {
++        ".gitignore",
++        "README.md",
++        "file.sls",
++        "top.sls",
++    }
++
++
++@skipif_no_gitpython
++def test_gitpython_gitfs_simple_base(gitpython_gitfs_opts):
++    _test_gitfs_simple_base(gitpython_gitfs_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_gitfs_simple_base(pygit2_gitfs_opts):
++    _test_gitfs_simple_base(pygit2_gitfs_opts)
++
++
++@skipif_no_gitpython
++def test_gitpython_gitfs_provider(gitpython_gitfs_opts):
++    g = _get_gitfs(
++        gitpython_gitfs_opts, "https://github.com/saltstack/salt-test-pillar-gitfs.git"
++    )
++    assert len(g.remotes) == 1
++    assert g.provider == "gitpython"
++    assert isinstance(g.remotes[0], GitPython)
++
++
++@skipif_no_pygit2
++def test_pygit2_gitfs_provider(pygit2_gitfs_opts):
++    g = _get_gitfs(
++        pygit2_gitfs_opts, "https://github.com/saltstack/salt-test-pillar-gitfs.git"
++    )
++    assert len(g.remotes) == 1
++    assert g.provider == "pygit2"
++    assert isinstance(g.remotes[0], Pygit2)
++
++
++def _test_gitfs_minion(gitfs_opts):
++    gitfs_opts["__role"] = "minion"
++    g = _get_gitfs(
++        gitfs_opts, "https://github.com/saltstack/salt-test-pillar-gitfs.git"
++    )
++    g.fetch_remotes()
++    assert len(g.remotes) == 1
++    assert set(g.file_list({"saltenv": "base"})) == {
++        ".gitignore",
++        "README.md",
++        "file.sls",
++        "top.sls",
++    }
++    assert set(g.file_list({"saltenv": "main"})) == {".gitignore", "README.md"}
++
++
++@skipif_no_gitpython
++def test_gitpython_gitfs_minion(gitpython_gitfs_opts):
++    _test_gitfs_minion(gitpython_gitfs_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_gitfs_minion(pygit2_gitfs_opts):
++    _test_gitfs_minion(pygit2_gitfs_opts)
++
++
++def _test_fetch_request_with_mountpoint(opts):
++    mpoint = [{"mountpoint": "salt/m"}]
++    p = _get_gitfs(
++        opts,
++        {"https://github.com/saltstack/salt-test-pillar-gitfs.git": mpoint},
++    )
++    p.fetch_remotes()
++    assert len(p.remotes) == 1
++    repo = p.remotes[0]
++    assert repo.mountpoint("testmount") == "salt/m"
++    assert set(p.file_list({"saltenv": "testmount"})) == {
++        "salt/m/test_dir1/testfile3",
++        "salt/m/test_dir1/test_dir2/testfile2",
++        "salt/m/.gitignore",
++        "salt/m/README.md",
++        "salt/m/test_dir1/test_dir2/testfile1",
++    }
++
++
++@skipif_no_gitpython
++def test_gitpython_fetch_request_with_mountpoint(gitpython_gitfs_opts):
++    _test_fetch_request_with_mountpoint(gitpython_gitfs_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_fetch_request_with_mountpoint(pygit2_gitfs_opts):
++    _test_fetch_request_with_mountpoint(pygit2_gitfs_opts)
++
++
++def _test_name(opts):
++    p = _get_gitfs(
++        opts,
++        {
++            "https://github.com/saltstack/salt-test-pillar-gitfs.git": [
++                {"name": "name1"}
++            ]
++        },
++        {
++            "https://github.com/saltstack/salt-test-pillar-gitfs.git": [
++                {"name": "name2"}
++            ]
++        },
++    )
++    p.fetch_remotes()
++    assert len(p.remotes) == 2
++    repo = p.remotes[0]
++    repo2 = p.remotes[1]
++    assert repo.get_cache_basehash() == "name1"
++    assert repo2.get_cache_basehash() == "name2"
++
++
++@skipif_no_gitpython
++def test_gitpython_name(gitpython_gitfs_opts):
++    _test_name(gitpython_gitfs_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_name(pygit2_gitfs_opts):
++    _test_name(pygit2_gitfs_opts)
++
++
++def _test_remote_map(opts):
++    p = _get_gitfs(
++        opts,
++        "https://github.com/saltstack/salt-test-pillar-gitfs.git",
++    )
++    p.fetch_remotes()
++    assert len(p.remotes) == 1
++    assert os.path.isfile(os.path.join(opts["cachedir"], "gitfs", "remote_map.txt"))
++
++
++@skipif_no_gitpython
++def test_gitpython_remote_map(gitpython_gitfs_opts):
++    _test_remote_map(gitpython_gitfs_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_remote_map(pygit2_gitfs_opts):
++    _test_remote_map(pygit2_gitfs_opts)
++
++
++def _test_lock(opts):
++    g = _get_gitfs(
++        opts,
++        "https://github.com/saltstack/salt-test-pillar-gitfs.git",
++    )
++    g.fetch_remotes()
++    assert len(g.remotes) == 1
++    repo = g.remotes[0]
++    assert repo.get_salt_working_dir() in repo._get_lock_file()
++    assert repo.lock() == (
++        [
++            "Set update lock for gitfs remote 'https://github.com/saltstack/salt-test-pillar-gitfs.git'"
++        ],
++        [],
++    )
++    assert os.path.isfile(repo._get_lock_file())
++    assert repo.clear_lock() == (
++        [
++            "Removed update lock for gitfs remote 'https://github.com/saltstack/salt-test-pillar-gitfs.git'"
++        ],
++        [],
++    )
++    assert not os.path.isfile(repo._get_lock_file())
++
++
++@skipif_no_gitpython
++def test_gitpython_lock(gitpython_gitfs_opts):
++    _test_lock(gitpython_gitfs_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_lock(pygit2_gitfs_opts):
++    _test_lock(pygit2_gitfs_opts)
+diff --git a/tests/pytests/functional/utils/test_pillar.py b/tests/pytests/functional/utils/test_pillar.py
+new file mode 100644
+index 0000000000..143edbf6ff
+--- /dev/null
++++ b/tests/pytests/functional/utils/test_pillar.py
+@@ -0,0 +1,365 @@
++import os
++
++import pytest
++
++from salt.pillar.git_pillar import GLOBAL_ONLY, PER_REMOTE_ONLY, PER_REMOTE_OVERRIDES
++from salt.utils.gitfs import GitPillar, GitPython, Pygit2
++from salt.utils.immutabletypes import ImmutableDict, ImmutableList
++
++pytestmark = [
++    pytest.mark.slow_test,
++]
++
++
++try:
++    import git  # pylint: disable=unused-import
++
++    HAS_GITPYTHON = True
++except ImportError:
++    HAS_GITPYTHON = False
++
++
++try:
++    import pygit2  # pylint: disable=unused-import
++
++    HAS_PYGIT2 = True
++except ImportError:
++    HAS_PYGIT2 = False
++
++
++skipif_no_gitpython = pytest.mark.skipif(not HAS_GITPYTHON, reason="Missing gitpython")
++skipif_no_pygit2 = pytest.mark.skipif(not HAS_PYGIT2, reason="Missing pygit2")
++
++
++@pytest.fixture
++def pillar_opts(salt_factories, tmp_path):
++    config_defaults = {"cachedir": str(tmp_path)}
++    factory = salt_factories.salt_master_daemon(
++        "pillar-functional-master", defaults=config_defaults
++    )
++    config_defaults = dict(factory.config)
++    for key, item in config_defaults.items():
++        if isinstance(item, ImmutableDict):
++            config_defaults[key] = dict(item)
++        elif isinstance(item, ImmutableList):
++            config_defaults[key] = list(item)
++    return config_defaults
++
++
++@pytest.fixture
++def gitpython_pillar_opts(pillar_opts):
++    pillar_opts["verified_git_pillar_provider"] = "gitpython"
++    return pillar_opts
++
++
++@pytest.fixture
++def pygit2_pillar_opts(pillar_opts):
++    pillar_opts["verified_git_pillar_provider"] = "pygit2"
++    return pillar_opts
++
++
++def _get_pillar(opts, *remotes):
++    return GitPillar(
++        opts,
++        remotes,
++        per_remote_overrides=PER_REMOTE_OVERRIDES,
++        per_remote_only=PER_REMOTE_ONLY,
++        global_only=GLOBAL_ONLY,
++    )
++
++
++@skipif_no_gitpython
++def test_gitpython_pillar_provider(gitpython_pillar_opts):
++    p = _get_pillar(
++        gitpython_pillar_opts, "https://github.com/saltstack/salt-test-pillar-gitfs.git"
++    )
++    assert len(p.remotes) == 1
++    assert p.provider == "gitpython"
++    assert isinstance(p.remotes[0], GitPython)
++
++
++@skipif_no_pygit2
++def test_pygit2_pillar_provider(pygit2_pillar_opts):
++    p = _get_pillar(
++        pygit2_pillar_opts, "https://github.com/saltstack/salt-test-pillar-gitfs.git"
++    )
++    assert len(p.remotes) == 1
++    assert p.provider == "pygit2"
++    assert isinstance(p.remotes[0], Pygit2)
++
++
++def _test_env(opts):
++    p = _get_pillar(
++        opts, "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git"
++    )
++    assert len(p.remotes) == 1
++    p.checkout()
++    repo = p.remotes[0]
++    # test that two different pillarenvs can exist at the same time
++    files = set(os.listdir(repo.get_cachedir()))
++    for f in (".gitignore", "README.md", "file.sls", "top.sls"):
++        assert f in files
++    opts["pillarenv"] = "main"
++    p2 = _get_pillar(
++        opts, "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git"
++    )
++    assert len(p.remotes) == 1
++    p2.checkout()
++    repo2 = p2.remotes[0]
++    files = set(os.listdir(repo2.get_cachedir()))
++    for f in (".gitignore", "README.md"):
++        assert f in files
++    for f in ("file.sls", "top.sls", "back.sls", "rooms.sls"):
++        assert f not in files
++    assert repo.get_cachedir() != repo2.get_cachedir()
++    files = set(os.listdir(repo.get_cachedir()))
++    for f in (".gitignore", "README.md", "file.sls", "top.sls"):
++        assert f in files
++
++    # double check cache paths
++    assert (
++        repo.get_cache_hash() == repo2.get_cache_hash()
++    )  # __env__ repos share same hash
++    assert repo.get_cache_basename() != repo2.get_cache_basename()
++    assert repo.get_linkdir() != repo2.get_linkdir()
++    assert repo.get_salt_working_dir() != repo2.get_salt_working_dir()
++    assert repo.get_cache_basename() == "master"
++    assert repo2.get_cache_basename() == "main"
++
++    assert repo.get_cache_basename() in repo.get_cachedir()
++    assert (
++        os.path.join(repo.get_cache_basehash(), repo.get_cache_basename())
++        == repo.get_cache_full_basename()
++    )
++    assert repo.get_linkdir() not in repo.get_cachedir()
++    assert repo.get_salt_working_dir() not in repo.get_cachedir()
++
++
++@skipif_no_gitpython
++def test_gitpython_env(gitpython_pillar_opts):
++    _test_env(gitpython_pillar_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_env(pygit2_pillar_opts):
++    _test_env(pygit2_pillar_opts)
++
++
++def _test_checkout_fetch_on_fail(opts):
++    p = _get_pillar(opts, "https://github.com/saltstack/salt-test-pillar-gitfs.git")
++    p.checkout(fetch_on_fail=False)  # TODO write me
++
++
++@skipif_no_gitpython
++def test_gitpython_checkout_fetch_on_fail(gitpython_pillar_opts):
++    _test_checkout_fetch_on_fail(gitpython_pillar_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_checkout_fetch_on_fail(pygit2_pillar_opts):
++    _test_checkout_fetch_on_fail(pygit2_pillar_opts)
++
++
++def _test_multiple_repos(opts):
++    p = _get_pillar(
++        opts,
++        "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "main https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "branch https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "__env__ https://github.com/saltstack/salt-test-pillar-gitfs-2.git",
++        "other https://github.com/saltstack/salt-test-pillar-gitfs-2.git",
++    )
++    p.checkout()
++    assert len(p.remotes) == 5
++    # make sure all repos dont share cache and working dir
++    assert len({r.get_cachedir() for r in p.remotes}) == 5
++    assert len({r.get_salt_working_dir() for r in p.remotes}) == 5
++
++    p2 = _get_pillar(
++        opts,
++        "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "main https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "branch https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "__env__ https://github.com/saltstack/salt-test-pillar-gitfs-2.git",
++        "other https://github.com/saltstack/salt-test-pillar-gitfs-2.git",
++    )
++    p2.checkout()
++    assert len(p2.remotes) == 5
++    # make sure that repos are given same cache dir
++    for repo, repo2 in zip(p.remotes, p2.remotes):
++        assert repo.get_cachedir() == repo2.get_cachedir()
++        assert repo.get_salt_working_dir() == repo2.get_salt_working_dir()
++    opts["pillarenv"] = "main"
++    p3 = _get_pillar(
++        opts,
++        "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "main https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "branch https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "__env__ https://github.com/saltstack/salt-test-pillar-gitfs-2.git",
++        "other https://github.com/saltstack/salt-test-pillar-gitfs-2.git",
++    )
++    p3.checkout()
++    # check that __env__ has different cache with different pillarenv
++    assert p.remotes[0].get_cachedir() != p3.remotes[0].get_cachedir()
++    assert p.remotes[1].get_cachedir() == p3.remotes[1].get_cachedir()
++    assert p.remotes[2].get_cachedir() == p3.remotes[2].get_cachedir()
++    assert p.remotes[3].get_cachedir() != p3.remotes[3].get_cachedir()
++    assert p.remotes[4].get_cachedir() == p3.remotes[4].get_cachedir()
++
++    # check that other branch data is in cache
++    files = set(os.listdir(p.remotes[4].get_cachedir()))
++    for f in (".gitignore", "README.md", "file.sls", "top.sls", "other_env.sls"):
++        assert f in files
++
++
++@skipif_no_gitpython
++def test_gitpython_multiple_repos(gitpython_pillar_opts):
++    _test_multiple_repos(gitpython_pillar_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_multiple_repos(pygit2_pillar_opts):
++    _test_multiple_repos(pygit2_pillar_opts)
++
++
++def _test_fetch_request(opts):
++    p = _get_pillar(
++        opts,
++        "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "other https://github.com/saltstack/salt-test-pillar-gitfs-2.git",
++    )
++    frequest = os.path.join(p.remotes[0].get_salt_working_dir(), "fetch_request")
++    frequest_other = os.path.join(p.remotes[1].get_salt_working_dir(), "fetch_request")
++    opts["pillarenv"] = "main"
++    p2 = _get_pillar(
++        opts, "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git"
++    )
++    frequest2 = os.path.join(p2.remotes[0].get_salt_working_dir(), "fetch_request")
++    assert frequest != frequest2
++    assert os.path.isfile(frequest) is False
++    assert os.path.isfile(frequest2) is False
++    assert os.path.isfile(frequest_other) is False
++    p.fetch_remotes()
++    assert os.path.isfile(frequest) is False
++    # fetch request was placed
++    assert os.path.isfile(frequest2) is True
++    p2.checkout()
++    # fetch request was found
++    assert os.path.isfile(frequest2) is False
++    p2.fetch_remotes()
++    assert os.path.isfile(frequest) is True
++    assert os.path.isfile(frequest2) is False
++    assert os.path.isfile(frequest_other) is False
++    for _ in range(3):
++        p2.fetch_remotes()
++    assert os.path.isfile(frequest) is True
++    assert os.path.isfile(frequest2) is False
++    assert os.path.isfile(frequest_other) is False
++    # fetch request should still be processed even on fetch_on_fail=False
++    p.checkout(fetch_on_fail=False)
++    assert os.path.isfile(frequest) is False
++    assert os.path.isfile(frequest2) is False
++    assert os.path.isfile(frequest_other) is False
++
++
++@skipif_no_gitpython
++def test_gitpython_fetch_request(gitpython_pillar_opts):
++    _test_fetch_request(gitpython_pillar_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_fetch_request(pygit2_pillar_opts):
++    _test_fetch_request(pygit2_pillar_opts)
++
++
++def _test_clear_old_remotes(opts):
++    p = _get_pillar(
++        opts,
++        "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git",
++        "other https://github.com/saltstack/salt-test-pillar-gitfs-2.git",
++    )
++    repo = p.remotes[0]
++    repo2 = p.remotes[1]
++    opts["pillarenv"] = "main"
++    p2 = _get_pillar(
++        opts, "__env__ https://github.com/saltstack/salt-test-pillar-gitfs.git"
++    )
++    repo3 = p2.remotes[0]
++    assert os.path.isdir(repo.get_cachedir()) is True
++    assert os.path.isdir(repo2.get_cachedir()) is True
++    assert os.path.isdir(repo3.get_cachedir()) is True
++    p.clear_old_remotes()
++    assert os.path.isdir(repo.get_cachedir()) is True
++    assert os.path.isdir(repo2.get_cachedir()) is True
++    assert os.path.isdir(repo3.get_cachedir()) is True
++    p2.clear_old_remotes()
++    assert os.path.isdir(repo.get_cachedir()) is True
++    assert os.path.isdir(repo2.get_cachedir()) is False
++    assert os.path.isdir(repo3.get_cachedir()) is True
++
++
++@skipif_no_gitpython
++def test_gitpython_clear_old_remotes(gitpython_pillar_opts):
++    _test_clear_old_remotes(gitpython_pillar_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_clear_old_remotes(pygit2_pillar_opts):
++    _test_clear_old_remotes(pygit2_pillar_opts)
++
++
++def _test_remote_map(opts):
++    p = _get_pillar(
++        opts,
++        "https://github.com/saltstack/salt-test-pillar-gitfs.git",
++    )
++    p.fetch_remotes()
++    assert len(p.remotes) == 1
++    assert os.path.isfile(
++        os.path.join(opts["cachedir"], "git_pillar", "remote_map.txt")
++    )
++
++
++@skipif_no_gitpython
++def test_gitpython_remote_map(gitpython_pillar_opts):
++    _test_remote_map(gitpython_pillar_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_remote_map(pygit2_pillar_opts):
++    _test_remote_map(pygit2_pillar_opts)
++
++
++def _test_lock(opts):
++    p = _get_pillar(
++        opts,
++        "https://github.com/saltstack/salt-test-pillar-gitfs.git",
++    )
++    p.fetch_remotes()
++    assert len(p.remotes) == 1
++    repo = p.remotes[0]
++    assert repo.get_salt_working_dir() in repo._get_lock_file()
++    assert repo.lock() == (
++        [
++            "Set update lock for git_pillar remote 'https://github.com/saltstack/salt-test-pillar-gitfs.git'"
++        ],
++        [],
++    )
++    assert os.path.isfile(repo._get_lock_file())
++    assert repo.clear_lock() == (
++        [
++            "Removed update lock for git_pillar remote 'https://github.com/saltstack/salt-test-pillar-gitfs.git'"
++        ],
++        [],
++    )
++    assert not os.path.isfile(repo._get_lock_file())
++
++
++@skipif_no_gitpython
++def test_gitpython_lock(gitpython_pillar_opts):
++    _test_lock(gitpython_pillar_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_lock(pygit2_pillar_opts):
++    _test_lock(pygit2_pillar_opts)
+diff --git a/tests/pytests/functional/utils/test_winrepo.py b/tests/pytests/functional/utils/test_winrepo.py
+new file mode 100644
+index 0000000000..117d995bba
+--- /dev/null
++++ b/tests/pytests/functional/utils/test_winrepo.py
+@@ -0,0 +1,164 @@
++import os
++
++import pytest
++
++from salt.runners.winrepo import GLOBAL_ONLY, PER_REMOTE_ONLY, PER_REMOTE_OVERRIDES
++from salt.utils.gitfs import GitPython, Pygit2, WinRepo
++from salt.utils.immutabletypes import ImmutableDict, ImmutableList
++
++pytestmark = [
++    pytest.mark.slow_test,
++]
++
++
++try:
++    import git  # pylint: disable=unused-import
++
++    HAS_GITPYTHON = True
++except ImportError:
++    HAS_GITPYTHON = False
++
++
++try:
++    import pygit2  # pylint: disable=unused-import
++
++    HAS_PYGIT2 = True
++except ImportError:
++    HAS_PYGIT2 = False
++
++
++skipif_no_gitpython = pytest.mark.skipif(not HAS_GITPYTHON, reason="Missing gitpython")
++skipif_no_pygit2 = pytest.mark.skipif(not HAS_PYGIT2, reason="Missing pygit2")
++
++
++@pytest.fixture
++def winrepo_opts(salt_factories, tmp_path):
++    config_defaults = {"cachedir": str(tmp_path)}
++    factory = salt_factories.salt_master_daemon(
++        "winrepo-functional-master", defaults=config_defaults
++    )
++    config_defaults = dict(factory.config)
++    for key, item in config_defaults.items():
++        if isinstance(item, ImmutableDict):
++            config_defaults[key] = dict(item)
++        elif isinstance(item, ImmutableList):
++            config_defaults[key] = list(item)
++    return config_defaults
++
++
++@pytest.fixture
++def gitpython_winrepo_opts(winrepo_opts):
++    winrepo_opts["verified_winrepo_provider"] = "gitpython"
++    return winrepo_opts
++
++
++@pytest.fixture
++def pygit2_winrepo_opts(winrepo_opts):
++    winrepo_opts["verified_winrepo_provider"] = "pygit2"
++    return winrepo_opts
++
++
++def _get_winrepo(opts, *remotes):
++    return WinRepo(
++        opts,
++        remotes,
++        per_remote_overrides=PER_REMOTE_OVERRIDES,
++        per_remote_only=PER_REMOTE_ONLY,
++        global_only=GLOBAL_ONLY,
++    )
++
++
++@skipif_no_gitpython
++def test_gitpython_winrepo_provider(gitpython_winrepo_opts):
++    w = _get_winrepo(
++        gitpython_winrepo_opts,
++        "https://github.com/saltstack/salt-test-pillar-gitfs.git",
++    )
++    assert len(w.remotes) == 1
++    assert w.provider == "gitpython"
++    assert isinstance(w.remotes[0], GitPython)
++
++
++@skipif_no_pygit2
++def test_pygit2_winrepo_provider(pygit2_winrepo_opts):
++    w = _get_winrepo(
++        pygit2_winrepo_opts, "https://github.com/saltstack/salt-test-pillar-gitfs.git"
++    )
++    assert len(w.remotes) == 1
++    assert w.provider == "pygit2"
++    assert isinstance(w.remotes[0], Pygit2)
++
++
++def _test_winrepo_simple(opts):
++    w = _get_winrepo(opts, "https://github.com/saltstack/salt-test-pillar-gitfs.git")
++    assert len(w.remotes) == 1
++    w.checkout()
++    repo = w.remotes[0]
++    files = set(os.listdir(repo.get_cachedir()))
++    for f in (".gitignore", "README.md", "file.sls", "top.sls"):
++        assert f in files
++
++
++@skipif_no_gitpython
++def test_gitpython_winrepo_simple(gitpython_winrepo_opts):
++    _test_winrepo_simple(gitpython_winrepo_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_winrepo_simple(pygit2_winrepo_opts):
++    _test_winrepo_simple(pygit2_winrepo_opts)
++
++
++def _test_remote_map(opts):
++    p = _get_winrepo(
++        opts,
++        "https://github.com/saltstack/salt-test-pillar-gitfs.git",
++    )
++    p.fetch_remotes()
++    assert len(p.remotes) == 1
++    assert os.path.isfile(os.path.join(opts["cachedir"], "winrepo", "remote_map.txt"))
++
++
++@skipif_no_gitpython
++def test_gitpython_remote_map(gitpython_winrepo_opts):
++    _test_remote_map(gitpython_winrepo_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_remote_map(pygit2_winrepo_opts):
++    _test_remote_map(pygit2_winrepo_opts)
++
++
++def _test_lock(opts):
++    w = _get_winrepo(
++        opts,
++        "https://github.com/saltstack/salt-test-pillar-gitfs.git",
++    )
++    w.fetch_remotes()
++    assert len(w.remotes) == 1
++    repo = w.remotes[0]
++    assert repo.get_salt_working_dir() in repo._get_lock_file()
++    assert repo.lock() == (
++        [
++            "Set update lock for winrepo remote 'https://github.com/saltstack/salt-test-pillar-gitfs.git'"
++        ],
++        [],
++    )
++    assert os.path.isfile(repo._get_lock_file())
++    assert repo.clear_lock() == (
++        [
++            "Removed update lock for winrepo remote 'https://github.com/saltstack/salt-test-pillar-gitfs.git'"
++        ],
++        [],
++    )
++    assert not os.path.isfile(repo._get_lock_file())
++
++
++@skipif_no_gitpython
++def test_gitpython_lock(gitpython_winrepo_opts):
++    _test_lock(gitpython_winrepo_opts)
++
++
++@skipif_no_pygit2
++def test_pygit2_lock(pygit2_winrepo_opts):
++    _test_lock(pygit2_winrepo_opts)
+diff --git a/tests/pytests/unit/test_minion.py b/tests/pytests/unit/test_minion.py
+index 4508eaee95..740743194e 100644
+--- a/tests/pytests/unit/test_minion.py
++++ b/tests/pytests/unit/test_minion.py
+@@ -21,35 +21,33 @@ from tests.support.mock import MagicMock, patch
+ log = logging.getLogger(__name__)
+ 
+ 
+-def test_minion_load_grains_false():
++def test_minion_load_grains_false(minion_opts):
+     """
+     Minion does not generate grains when load_grains is False
+     """
+-    opts = {"random_startup_delay": 0, "grains": {"foo": "bar"}}
++    minion_opts["grains"] = {"foo": "bar"}
+     with patch("salt.loader.grains") as grainsfunc:
+-        minion = salt.minion.Minion(opts, load_grains=False)
+-        assert minion.opts["grains"] == opts["grains"]
++        minion = salt.minion.Minion(minion_opts, load_grains=False)
++        assert minion.opts["grains"] == minion_opts["grains"]
+         grainsfunc.assert_not_called()
+ 
+ 
+-def test_minion_load_grains_true():
++def test_minion_load_grains_true(minion_opts):
+     """
+     Minion generates grains when load_grains is True
+     """
+-    opts = {"random_startup_delay": 0, "grains": {}}
+     with patch("salt.loader.grains") as grainsfunc:
+-        minion = salt.minion.Minion(opts, load_grains=True)
++        minion = salt.minion.Minion(minion_opts, load_grains=True)
+         assert minion.opts["grains"] != {}
+         grainsfunc.assert_called()
+ 
+ 
+-def test_minion_load_grains_default():
++def test_minion_load_grains_default(minion_opts):
+     """
+     Minion load_grains defaults to True
+     """
+-    opts = {"random_startup_delay": 0, "grains": {}}
+     with patch("salt.loader.grains") as grainsfunc:
+-        minion = salt.minion.Minion(opts)
++        minion = salt.minion.Minion(minion_opts)
+         assert minion.opts["grains"] != {}
+         grainsfunc.assert_called()
+ 
+@@ -91,24 +89,17 @@ def test_send_req_tries(req_channel, minion_opts):
+ 
+             assert rtn == 30
+ 
+-
+-@patch("salt.channel.client.ReqChannel.factory")
+-def test_mine_send_tries(req_channel_factory):
++def test_mine_send_tries(minion_opts):
+     channel_enter = MagicMock()
+     channel_enter.send.side_effect = lambda load, timeout, tries: tries
+     channel = MagicMock()
+     channel.__enter__.return_value = channel_enter
+ 
+-    opts = {
+-        "random_startup_delay": 0,
+-        "grains": {},
+-        "return_retry_tries": 20,
+-        "minion_sign_messages": False,
+-    }
++    minion_opts["return_retry_tries"] = 20
+     with patch("salt.channel.client.ReqChannel.factory", return_value=channel), patch(
+         "salt.loader.grains"
+     ):
+-        minion = salt.minion.Minion(opts)
++        minion = salt.minion.Minion(minion_opts)
+         minion.tok = "token"
+ 
+         data = {}
+diff --git a/tests/pytests/unit/utils/test_gitfs.py b/tests/pytests/unit/utils/test_gitfs.py
+index e9915de412..2bf627049f 100644
+--- a/tests/pytests/unit/utils/test_gitfs.py
++++ b/tests/pytests/unit/utils/test_gitfs.py
+@@ -1,5 +1,4 @@
+ import os
+-import string
+ import time
+ 
+ import pytest
+@@ -214,11 +213,11 @@ def test_checkout_pygit2(_prepare_provider):
+     provider.init_remote()
+     provider.fetch()
+     provider.branch = "master"
+-    assert provider.cachedir in provider.checkout()
++    assert provider.get_cachedir() in provider.checkout()
+     provider.branch = "simple_tag"
+-    assert provider.cachedir in provider.checkout()
++    assert provider.get_cachedir() in provider.checkout()
+     provider.branch = "annotated_tag"
+-    assert provider.cachedir in provider.checkout()
++    assert provider.get_cachedir() in provider.checkout()
+     provider.branch = "does_not_exist"
+     assert provider.checkout() is None
+ 
+@@ -238,18 +237,9 @@ def test_checkout_pygit2_with_home_env_unset(_prepare_provider):
+         assert "HOME" in os.environ
+ 
+ 
+-def test_full_id_pygit2(_prepare_provider):
+-    assert _prepare_provider.full_id().startswith("-")
+-    assert _prepare_provider.full_id().endswith("/pygit2-repo---gitfs-master--")
+-
+-
+ @pytest.mark.skipif(not HAS_PYGIT2, reason="This host lacks proper pygit2 support")
+ @pytest.mark.skip_on_windows(
+     reason="Skip Pygit2 on windows, due to pygit2 access error on windows"
+ )
+ def test_get_cachedir_basename_pygit2(_prepare_provider):
+-    basename = _prepare_provider.get_cachedir_basename()
+-    assert len(basename) == 45
+-    assert basename[0] == "-"
+-    # check that a valid base64 is given '/' -> '_'
+-    assert all(c in string.ascii_letters + string.digits + "+_=" for c in basename[1:])
++    assert "_" == _prepare_provider.get_cache_basename()
+diff --git a/tests/unit/utils/test_gitfs.py b/tests/unit/utils/test_gitfs.py
+index 6d8e97a239..259ea056fc 100644
+--- a/tests/unit/utils/test_gitfs.py
++++ b/tests/unit/utils/test_gitfs.py
+@@ -114,27 +114,14 @@ class TestGitBase(TestCase, AdaptedConfigurationTestCaseMixin):
+         self.assertTrue(self.main_class.remotes[0].fetched)
+         self.assertFalse(self.main_class.remotes[1].fetched)
+ 
+-    def test_full_id(self):
+-        self.assertEqual(
+-            self.main_class.remotes[0].full_id(), "-file://repo1.git---gitfs-master--"
+-        )
+-
+-    def test_full_id_with_name(self):
+-        self.assertEqual(
+-            self.main_class.remotes[1].full_id(),
+-            "repo2-file://repo2.git---gitfs-master--",
+-        )
+-
+     def test_get_cachedir_basename(self):
+         self.assertEqual(
+-            self.main_class.remotes[0].get_cachedir_basename(),
+-            "-jXhnbGDemchtZwTwaD2s6VOaVvs98a7w+AtiYlmOVb0=",
++            self.main_class.remotes[0].get_cache_basename(),
++            "_",
+         )
+-
+-    def test_get_cachedir_base_with_name(self):
+         self.assertEqual(
+-            self.main_class.remotes[1].get_cachedir_basename(),
+-            "repo2-nuezpiDtjQRFC0ZJDByvi+F6Vb8ZhfoH41n_KFxTGsU=",
++            self.main_class.remotes[1].get_cache_basename(),
++            "_",
+         )
+ 
+     def test_git_provider_mp_lock(self):
+-- 
+2.42.0
+
+

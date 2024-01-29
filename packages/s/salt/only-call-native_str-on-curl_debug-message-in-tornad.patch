@@ -1,0 +1,31 @@
+From b76b74bd9640adf3b6798e4de4b89aaa7af62c9f Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 2 Oct 2023 13:24:43 +0200
+Subject: [PATCH] Only call native_str on curl_debug message in tornado
+ when needed
+
+Co-authored-by: Ben Darnell <ben@bendarnell.com>
+---
+ salt/ext/tornado/curl_httpclient.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/salt/ext/tornado/curl_httpclient.py b/salt/ext/tornado/curl_httpclient.py
+index 8652343cf7..9e4133fd13 100644
+--- a/salt/ext/tornado/curl_httpclient.py
++++ b/salt/ext/tornado/curl_httpclient.py
+@@ -494,10 +494,11 @@ class CurlAsyncHTTPClient(AsyncHTTPClient):
+ 
+     def _curl_debug(self, debug_type, debug_msg):
+         debug_types = ('I', '<', '>', '<', '>')
+-        debug_msg = native_str(debug_msg)
+         if debug_type == 0:
++            debug_msg = native_str(debug_msg)
+             curl_log.debug('%s', debug_msg.strip())
+         elif debug_type in (1, 2):
++            debug_msg = native_str(debug_msg)
+             for line in debug_msg.splitlines():
+                 curl_log.debug('%s %s', debug_types[debug_type], line)
+         elif debug_type == 4:
+-- 
+2.42.0
+

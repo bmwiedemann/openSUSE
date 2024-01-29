@@ -1,0 +1,25 @@
+From 4bc3be7814daf5365d63b88f164f791ea53b418f Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Wed, 17 Jan 2024 15:04:53 +0100
+Subject: [PATCH] Fix the aptpkg.py unit test failure
+
+---
+ salt/modules/aptpkg.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
+index 9885e9fb60..ad5450c415 100644
+--- a/salt/modules/aptpkg.py
++++ b/salt/modules/aptpkg.py
+@@ -3128,7 +3128,7 @@ def expand_repo_def(**kwargs):
+         NOT USABLE IN THE CLI
+     """
+     warn_until_date(
+-        "20240101",
++        "20250101",
+         "The pkg.expand_repo_def function is deprecated and set for removal "
+         "after {date}. This is only unsed internally by the apt pkg state "
+         "module. If that's not the case, please file an new issue requesting "
+-- 
+2.43.0
+

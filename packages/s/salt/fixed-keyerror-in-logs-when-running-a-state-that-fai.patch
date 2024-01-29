@@ -1,0 +1,121 @@
+From f41a8e2a142a8487e13af481990928e0afb5f15e Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Thu, 18 Jan 2024 17:02:03 +0100
+Subject: [PATCH] Fixed KeyError in logs when running a state that
+ fails. (#615)
+
+Co-authored-by: Megan Wilhite <mwilhite@vmware.com>
+---
+ changelog/64231.fixed.md                      |  1 +
+ salt/master.py                                |  2 +-
+ salt/minion.py                                |  4 ++
+ salt/utils/event.py                           |  3 +-
+ .../integration/states/test_state_test.py     | 38 +++++++++++++++++++
+ 5 files changed, 46 insertions(+), 2 deletions(-)
+ create mode 100644 changelog/64231.fixed.md
+ create mode 100644 tests/pytests/integration/states/test_state_test.py
+
+diff --git a/changelog/64231.fixed.md b/changelog/64231.fixed.md
+new file mode 100644
+index 0000000000..0991c5a8b9
+--- /dev/null
++++ b/changelog/64231.fixed.md
+@@ -0,0 +1 @@
++Fixed KeyError in logs when running a state that fails.
+diff --git a/salt/master.py b/salt/master.py
+index fc243ef674..3d2ba1e29d 100644
+--- a/salt/master.py
++++ b/salt/master.py
+@@ -1790,7 +1790,7 @@ class AESFuncs(TransportMethods):
+     def pub_ret(self, load):
+         """
+         Request the return data from a specific jid, only allowed
+-        if the requesting minion also initialted the execution.
++        if the requesting minion also initiated the execution.
+ 
+         :param dict load: The minion payload
+ 
+diff --git a/salt/minion.py b/salt/minion.py
+index 4db0d31bd4..2ccd0cd5a9 100644
+--- a/salt/minion.py
++++ b/salt/minion.py
+@@ -2022,6 +2022,8 @@ class Minion(MinionBase):
+         ret["jid"] = data["jid"]
+         ret["fun"] = data["fun"]
+         ret["fun_args"] = data["arg"]
++        if "user" in data:
++            ret["user"] = data["user"]
+         if "master_id" in data:
+             ret["master_id"] = data["master_id"]
+         if "metadata" in data:
+@@ -2141,6 +2143,8 @@ class Minion(MinionBase):
+             ret["jid"] = data["jid"]
+             ret["fun"] = data["fun"]
+             ret["fun_args"] = data["arg"]
++            if "user" in data:
++                ret["user"] = data["user"]
+         if "metadata" in data:
+             ret["metadata"] = data["metadata"]
+         if minion_instance.connected:
+diff --git a/salt/utils/event.py b/salt/utils/event.py
+index 869e12a140..e6d7b00520 100644
+--- a/salt/utils/event.py
++++ b/salt/utils/event.py
+@@ -902,7 +902,8 @@ class SaltEvent:
+                     data["success"] = False
+                     data["return"] = "Error: {}.{}".format(tags[0], tags[-1])
+                     data["fun"] = fun
+-                    data["user"] = load["user"]
++                    if "user" in load:
++                        data["user"] = load["user"]
+                     self.fire_event(
+                         data,
+                         tagify([load["jid"], "sub", load["id"], "error", fun], "job"),
+diff --git a/tests/pytests/integration/states/test_state_test.py b/tests/pytests/integration/states/test_state_test.py
+new file mode 100644
+index 0000000000..b2328a4c2b
+--- /dev/null
++++ b/tests/pytests/integration/states/test_state_test.py
+@@ -0,0 +1,38 @@
++def test_failing_sls(salt_master, salt_minion, salt_cli, caplog):
++    """
++    Test when running state.sls and the state fails.
++    When the master stores the job and attempts to send
++    an event a KeyError was previously being logged.
++    This test ensures we do not log an error when
++    attempting to send an event about a failing state.
++    """
++    statesls = """
++    test_state:
++      test.fail_without_changes:
++        - name: "bla"
++    """
++    with salt_master.state_tree.base.temp_file("test_failure.sls", statesls):
++        ret = salt_cli.run("state.sls", "test_failure", minion_tgt=salt_minion.id)
++        for message in caplog.messages:
++            assert "Event iteration failed with" not in message
++
++
++def test_failing_sls_compound(salt_master, salt_minion, salt_cli, caplog):
++    """
++    Test when running state.sls in a compound command and the state fails.
++    When the master stores the job and attempts to send
++    an event a KeyError was previously being logged.
++    This test ensures we do not log an error when
++    attempting to send an event about a failing state.
++    """
++    statesls = """
++    test_state:
++      test.fail_without_changes:
++        - name: "bla"
++    """
++    with salt_master.state_tree.base.temp_file("test_failure.sls", statesls):
++        ret = salt_cli.run(
++            "state.sls,cmd.run", "test_failure,ls", minion_tgt=salt_minion.id
++        )
++        for message in caplog.messages:
++            assert "Event iteration failed with" not in message
+-- 
+2.43.0
+
+
