@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 29 11:11:20 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Make phonon4qt5-backend a hard dep of the plasma pattern
+  (boo#1219277)
+- Avoid gstreamer if not necessary
+
+-------------------------------------------------------------------
+Wed Jan 24 01:42:45 UTC 2024 - pallas wept <pallaswept@proton.me>
+
+- Change from phonon4qt5-backend-gstreamer to phonon4qt5-backend-vlc
+  due to deprecation of the gstreamer backend
+
+-------------------------------------------------------------------
 Wed Dec  6 16:07:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add qt6-graph and qt6-webchannelquick development packages to

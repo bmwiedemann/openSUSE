@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-kde
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ of the installation source setup.  Installation of this package does
 not make sense.
 
 This particular package contains the KDE patterns.
+
 
 ################################################################################
 
@@ -447,7 +448,9 @@ Recommends:     kwrited5
 Recommends:     plasma5-session-wayland
 
 # Make sure that at least a phonon backend is being installed
-Recommends:     phonon4qt5-backend-gstreamer
+Requires:       phonon4qt5-backend
+Suggests:       phonon4qt5-backend-vlc
+
 # bnc#541820
 Recommends:     khelpcenter5
 Recommends:     baloo5-file
@@ -712,11 +715,11 @@ Provides:       pattern-order() = 2620
 Obsoletes:      patterns-openSUSE-kde4_multimedia < %{version}
 Obsoletes:      patterns-openSUSE-kde_multimedia < %{version}
 Supplements:    (patterns-kde-kde and patterns-desktop-multimedia)
-Recommends:     PackageKit-gstreamer-plugin
-Recommends:     gstreamer-plugins-good
 Recommends:     kio_audiocd
-Recommends:     phonon4qt5-backend-gstreamer
+Recommends:     phonon4qt5-backend-vlc
 Recommends:     plasma5-pa
+Recommends:     (PackageKit-gstreamer-plugin if gstreamer)
+Recommends:     (gstreamer-plugins-good if gstreamer)
 # we want a video player
 Recommends:     vlc
 Suggests:       amarok
