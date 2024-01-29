@@ -1,11 +1,32 @@
 -------------------------------------------------------------------
+Sun Jan 28 17:28:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * Decoder memory access - add debug features and cacheing to
+    improve performance of decode.
+    Caching controllable by API or environment variables.
+  * Decode debug options to control potential runaway debug when
+    incorrect memory images input to decoder.
+    a) aarch64 instruction check for invalid instruction opcode.
+       (any opcode with 0x0000 as top 16 bits).
+    b) optional instruction range maximum run limit.
+  * Memory spaces: ensure that decoder memory requests are
+    correctly labelled with Realm and root characteristics when
+    appropriate.
+  * M class tail chained interrupts now correctly handled.
+  * STM: - fix master and channel ID initialisation
+  * Test: update README.md and perf-test-script.base for new paths
+    (github issue #60 from yuxy-c)
+  * build: Fix GCC version dir handling for versions of GCC > 9.
+
+-------------------------------------------------------------------
 Tue Sep 12 13:38:10 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - update to 1.4.1:
-  * Test: Update test program trc_pkt_lister with option to have 
+  * Test: Update test program trc_pkt_lister with option to have
     no logging output - final stats only.
   * Bugfix: ETM4x: ETE: Fix memory leak / use after free
-    (github issues #53, #58 from yabinc) 
+    (github issues #53, #58 from yabinc)
   * Bugfix: C-API: Fix memory leak with output sink object.
     (github issue #55)
 
@@ -45,7 +66,7 @@ Mon Sep 12 09:13:45 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 Wed Aug  3 06:53:47 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.3.1:
-    - Bugfix: Add header file in snapshot parser - fix build for 
+    - Bugfix: Add header file in snapshot parser - fix build for
       certain libc++ libs (github issue #43 from manojgupta)
     - Bugfix: Fix typo in comment (github issue #42 from nothatDinger)
 
@@ -95,17 +116,17 @@ Thu Jun 17 09:55:46 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 Fri Jan 15 08:14:25 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.0.0:
-  - __New Decode Protocol__: Support added for the ETE protocol, used by ARM PEs that implement the FEAT_ETE 
-                             feature. Supports new architectural features in this trace, including FEAT_TME. 
-  - __Update__: Output Elememts: New protocol defines two new output elements. 
+  - __New Decode Protocol__: Support added for the ETE protocol, used by ARM PEs that implement the FEAT_ETE
+                             feature. Supports new architectural features in this trace, including FEAT_TME.
+  - __Update__: Output Elememts: New protocol defines two new output elements.
   - __Update__: Add support for WFIT / WFET instructions traced as P0 elements.
   - __Update__: Architecture versioning. Arch v8 + PEs may add features in a flexible manner, and ARM also
-                declares future features ahead of architecture versions to allow support to be added. 
+                declares future features ahead of architecture versions to allow support to be added.
                 APIs requiring an architecture version can now use ARCH_AA64 to declare a version of v8.3 +
                 additional features. This relaxes the strict versionnig rules that the decoder uses when
                 looking for Opcodes as trace waypoints.
-  - __Update__: docs: Add linux 'man' file and installation.				  
-  - __Bugfix__: build: Fix clean install, and remove static lib build test from main makefile to 
+  - __Update__: docs: Add linux 'man' file and installation.
+  - __Bugfix__: build: Fix clean install, and remove static lib build test from main makefile to
                 dev makefile only. (github issue #33)
 - Package man page
 
@@ -113,10 +134,10 @@ Fri Jan 15 08:14:25 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 Thu Nov 19 12:55:22 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 0.14.4:
-  * __Update__: makefile: Add DESTDIR to install targets. 
+  * __Update__: makefile: Add DESTDIR to install targets.
     (github issue #30)
   * __Update__: tests: add script to run single test only.
-  * __Update__: docs: update to location of ARM coresight driver 
+  * __Update__: docs: update to location of ARM coresight driver
     backports directory.
   * __Bugfix__: ETMv3: Fix missing comma in string list.
     (github issue #31)
@@ -151,4 +172,4 @@ Wed Jun 17 11:41:49 UTC 2020 - Mian Yousaf Kaukab <yousaf.kaukab@suse.com>
 -------------------------------------------------------------------
 Wed Jun 17 10:15:56 UTC 2020 - Mian Yousaf Kaukab <yousaf.kaukab@suse.com>
 
-- New SUSE package for opencsd library v0.14.2 
+- New SUSE package for opencsd library v0.14.2
