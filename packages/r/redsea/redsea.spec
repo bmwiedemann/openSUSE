@@ -1,8 +1,8 @@
 #
 # spec file for package redsea
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2017-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           redsea
-Version:        0.20
+Version:        0.21
 Release:        0
 Summary:        An RDS decoder
 License:        MIT
