@@ -565,4 +565,13 @@
 - Add suggests for vim and emacs in their respective</comment>
     <requestid>1138254</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>308ce69fb5a0f4428490d2024a0b4740</srcmd5>
+    <version>3.1.3</version>
+    <time>1706563618</time>
+    <user>anag+factory</user>
+    <comment>- Disable broken test with latest version of MarkupSafe (2.1.4)
+  (gh#pallets/jinja#1930, gh#pallets/markupsafe#417)</comment>
+    <requestid>1142212</requestid>
+  </revision>
 </revisionlist>
