@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 28 17:36:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 20240122:
+  * --sshlogin supports ranges: server[01-12,15]
+    10.0.[1-10].[2-254]
+  * --plus enables {slot-1} and {seq-1} = {%}-1 and {#}-1 to
+    count from 0.
+  * env_parallel.{sh,ash,dash,bash,ksh,zsh} is now the same
+    script.
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
 Wed Dec 27 11:31:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20231222:
