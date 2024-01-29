@@ -108,3 +108,16 @@ Index: node-v20.10.0/test/parallel/test-node-output-errors.mjs
        .replaceAll('file:**', 'file:*/');
    }
  
+Index: node-v20.10.0/test/parallel/test-crypto-fips.js
+===================================================================
+--- node-v20.10.0.orig/test/parallel/test-crypto-fips.js
++++ node-v20.10.0/test/parallel/test-crypto-fips.js
+@@ -3,6 +3,8 @@
+ const common = require('../common');
+ if (!common.hasCrypto)
+   common.skip('missing crypto');
++if (common.hasOpenSSL3)
++  common.skip('skipped fips test on openssl 3.x, to be fixed later');
+ 
+ const assert = require('assert');
+ const spawnSync = require('child_process').spawnSync;

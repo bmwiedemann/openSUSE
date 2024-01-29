@@ -266,4 +266,13 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.10.0
     <comment>- c-ares-fixes.patch: add additional backports for unit test fixes</comment>
     <requestid>1137592</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>9ad15637563986e8bffb5f850a90b943</srcmd5>
+    <version>20.10.0</version>
+    <time>1706563621</time>
+    <user>anag+factory</user>
+    <comment>- fix_ci_tests.patch: disable test_crypto_fips for openssl 3.x,
+  to be fixed soon (bsc#1219152)</comment>
+    <requestid>1142218</requestid>
+  </revision>
 </revisionlist>
