@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jan 26 21:21:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.4:
+  * fixes handling of unhashable modules which cannot be cached
+    (see #923)
+  * reload modules loaded by the dynamic patcher instead of
+    removing them - sometimes they may
+  * not be reloaded automatically (see #932)
+  * add back argument `use_dynamic_patch` as a fallback for
+    similar problems
+  * fixed a problem with patching `_io` under Python 3.12 (see
+    #910)
+  * fixed a problem with accessing the temp path if emulating
+    Linux under Windows
+  * (see #912)
+  * fixed result of `os.walk` with a path-like top directory
+  * (see #915)
+  * properly fixed the problem that filesystem patching was still
+    active in the pytest
+  * logreport phase (see #904), the previous fix was incomplete
+  * changed behavior of `add_real_directory` to be able to map a
+    real directory
+  * Restores compatibility with PyTorch 2.0 and above, as well as
+    with other classes that have custom __setattr__ methods
+    (see #905).
+  * Adds official support for Python 3.12.
+  * removed a leftover debug print statement (see #869)
+  * make sure tests work without HOME environment set (see #870)
+  * automount drive or UNC path under Windows if needed for
+    `pathlib.Path.mkdir()`
+  * (see #890)
+  * adapt patching `io.open` and `io.open_code` to work with
+    Python 3.12
+  * (see #836 and #892)
+
+-------------------------------------------------------------------
 Thu Sep  7 11:35:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.4:
