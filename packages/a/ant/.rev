@@ -824,4 +824,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>reproducible timestamp in property files</comment>
     <requestid>1110311</requestid>
   </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>ab24097cf02acab94c1144e91929eb2f</srcmd5>
+    <version>1.10.14</version>
+    <time>1706563596</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141954</requestid>
+  </revision>
 </revisionlist>

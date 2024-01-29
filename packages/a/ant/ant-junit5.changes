@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 26 20:37:50 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Add forgotten univocity-parsers to
+  %{_sysconfdir}/ant.d/junitlauncher (needed to run unit tests
+  annotated with @CsvSource and @CsvFileSource)
+
+-------------------------------------------------------------------
 Mon Sep 11 12:50:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
