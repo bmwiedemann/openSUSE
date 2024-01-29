@@ -1,7 +1,7 @@
 #
 # spec file for package xapp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,14 @@
 %define typelib typelib-1_0-XApp-1_0
 %define soname  libxapp
 %define sover   1
-%define pkg_ver master.mint21
 Name:           xapp
-Version:        2.6.1
+Version:        2.8.2
 Release:        0
 Summary:        XApp library and common files
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/xapp
-Source:         https://github.com/linuxmint/%{name}/archive/%{pkg_ver}.tar.gz#/%{name}-%{pkg_ver}.tar.gz
+Source:         https://github.com/linuxmint/xapp/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
@@ -118,7 +117,7 @@ Mate status applet with HIDPI support
 %lang_package -n %{name}-common
 
 %prep
-%setup -q -n xapp-%{pkg_ver}
+%setup -q -n xapp-%{version}
 
 %build
 python3 -c 'import gi;print(gi._overridesdir)'

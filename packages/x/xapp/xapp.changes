@@ -1,15 +1,29 @@
 -------------------------------------------------------------------
+Sun Jan 28 09:58:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.2:
+  * l10n: Update translations
+  * Add github issue templates.
+  * xapp-gtk3-module.c: Use the 'realize' signal to trigger
+    injecting the favorites:// uri into the sidebar places.
+  * xapp-sn-watcher.c: Mute some warning messages from more of
+    dbus-menu, gtk.
+  * Fix meson.build deprecations up to 0.56.0 (#172)
+  * Update issue template with a link to open and closed issues.
+  * Remove unused includes, bump required gtk version.
+
+-------------------------------------------------------------------
 Sun Aug 27 06:34:48 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update to 2.6.1
   * favorite-vfs-file.c: Lock the settings object when modifying root
     metadata.
   * favorites: Use generic getter for content type check.
-  * xapp-status-icon.c: Don't destroy the dummy event window too early. 
+  * xapp-status-icon.c: Don't destroy the dummy event window too early.
   * Add XAppGpuOffloadHelper.
   * Add XAppDarkModeManager to allow support for XDG desktop settings
     portal from Gtk3 apps.
-  * xapp-sn-watcher.c: Don't exit if XDG_CURRENT_DESKTOP isn't set. 
+  * xapp-sn-watcher.c: Don't exit if XDG_CURRENT_DESKTOP isn't set.
 
 -------------------------------------------------------------------
 Tue Dec  6 12:46:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -50,7 +64,7 @@ Tue Dec  6 12:46:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Implement scroll events with the fallback icon (GtkStatusIcon).
   * sn-item.c: Handle Id property updates.
   * xapp-icon-chooser-dialog.c: Don't be case-sensitive when searching.
- 
+
 -------------------------------------------------------------------
 Sun Jan  2 21:36:28 UTC 2022 - andy great <andythe_great@pm.me>
 
@@ -102,7 +116,7 @@ Tue Jun 15 14:21:37 UTC 2021 - andy great <andythe_great@pm.me>
 -------------------------------------------------------------------
 Thu May 27 19:57:25 UTC 2021 - andy great <andythe_great@pm.me>
 
-- Update to version 2.2.0. 
+- Update to version 2.2.0.
   * xapp-preferences-window.c: Hide the sidebar switcher initially
     to prevent it showing even with single-page views.
   * all: Add debug topics.
@@ -135,20 +149,20 @@ Sat Jan  2 20:09:00 UTC 2021 - andy great <andythe_great@pm.me>
   * favorite-vfs-file.c: Don't mark favorites that have unavailable
     target files as symbolic links.
   * favorite-vfs-file.c: Remove a file from favorites when deleted
-    or trashed (but don't actually delete or trash them) - this 
+    or trashed (but don't actually delete or trash them) - this
     brings the favorites behavior in line with recents.
-  * favorite-vfs-file.c: Remove some methods that can't be 
+  * favorite-vfs-file.c: Remove some methods that can't be
     supported.
   * Go back to leaving favorites with missing targets as symlinks.
-  * favorite-vfs-file.c: Add thumbnailing preference to the 
+  * favorite-vfs-file.c: Add thumbnailing preference to the
     filesystem info.
-  * xapp-status-icon.c: Construct fallback dbus name from a 
+  * xapp-status-icon.c: Construct fallback dbus name from a
     non-localized string.
-  * status icon: Replace g_get_application_name with g_get_progname 
+  * status icon: Replace g_get_application_name with g_get_progname
     everywhere else (followup to previous commit).
   * xapp-status-icon-monitor.c: fix typo.
   * l10n: Update translations
-  * xapp-gtk3-module.c: Add a mechanism to allow a GtkWindow's 
+  * xapp-gtk3-module.c: Add a mechanism to allow a GtkWindow's
     icon (#127)
 
 -------------------------------------------------------------------
@@ -157,7 +171,7 @@ Sat Dec 26 17:54:55 UTC 2020 - andy great <andythe_great@pm.me>
 - Update to version 2.0.4.
   * Change shebang path
 - Update to version 2.0.3
-  * fix "build/install: Make the favorite gtk module's xinit file 
+  * fix "build/install: Make the favorite gtk module's xinit file
     executable."
   * Add shebang to 80xapp-gtk3-module.sh
   * l10n: Update translations
@@ -166,24 +180,24 @@ Sat Dec 26 17:54:55 UTC 2020 - andy great <andythe_great@pm.me>
 - Update to version 2.0.1
   * Update docs
   * fix xorg-server startup variable
-  * favorites: Make sure initializing favorites also initializes 
+  * favorites: Make sure initializing favorites also initializes
     the uri scheme.
-  * xapp-favorites.c: Add a note about the favorites uri in the 
+  * xapp-favorites.c: Add a note about the favorites uri in the
     class description.
-  * build/install: Make the favorite gtk module's xinit file 
+  * build/install: Make the favorite gtk module's xinit file
     executable.
   * build: update some dependencies.
-  * xapp-gtk3-module.c: Override GObject's constructed vfunc to 
-    inject the favorites uri into GtkPlacesSidebars rather than 
+  * xapp-gtk3-module.c: Override GObject's constructed vfunc to
+    inject the favorites uri into GtkPlacesSidebars rather than
     hooking onto a signal.
   * build: use buildtype=debugoptimized by default.
   * sn-item.c: Fix typo.
   * various: Fix some previously missed build warnings.
-  * xapp-gtk3-module.c: Don't add a favorites section if there 
+  * xapp-gtk3-module.c: Don't add a favorites section if there
     aren't any favorites.
-  * favorite-vfs-file.c: Don't assume a GError was passed in for 
+  * favorite-vfs-file.c: Don't assume a GError was passed in for
     file_query_info.
-  * favorite-vfs-file-enumerator.c: Fix a couple more places where 
+  * favorite-vfs-file-enumerator.c: Fix a couple more places where
     an error was assumed.
   * change favorite icons
   * favorite-vfs-file.c: Don't free priv->uri until finalize.
@@ -199,9 +213,9 @@ Sun Dec  6 16:43:39 UTC 2020 - andy great <andythe_great@pm.me>
   * .gitignore: Ignore the new debian build folder.
   * favorites: expose xapp_favorites_rename (), it was mistakenly
     made private during some cleanup.
-  * xapp-gtk3-module.c: Don't initialize favorites until they're 
+  * xapp-gtk3-module.c: Don't initialize favorites until they're
     needed.
-  * xapp-gtk3-module.c: Register the favorites uri scheme 
+  * xapp-gtk3-module.c: Register the favorites uri scheme
     immediately, rather than when XAppFavorites is instantiated.
   * xapp-favorites: Add missing pointer to the DestroyData.
   * l10n: Update POT
@@ -210,50 +224,50 @@ Sun Dec  6 16:43:39 UTC 2020 - andy great <andythe_great@pm.me>
     callback.
   * sn-item.c: use a different method of fetching the pixmap.
   * Make property-retrieval fully asynchronous.
-  * mate-xapp-status-applet.py: Adapt to change brought by 
+  * mate-xapp-status-applet.py: Adapt to change brought by
     9c4d5e92d2eb288.
   * build: Allow making a library-only build for flatpak packaging.
   * xapp-icon-chooser-button.c: Remove leftover debugging line.
-  * xapp-sn-watcher: Create StatusNotifierItem proxies 
+  * xapp-sn-watcher: Create StatusNotifierItem proxies
     asynchronously, and don't try to load their properties.
-  * xapp-sn-watcher: Add an app list to flag items that should 
+  * xapp-sn-watcher: Add an app list to flag items that should
     have their tooltip replaced by the application name.
   * build: Make build of xapp-sn-watcher optional, defaulting to
     true.
-  * xapp-sn-watcher: Add key to disable StatusNotifier support, 
+  * xapp-sn-watcher: Add key to disable StatusNotifier support,
     but leave appindicator support enabled.
   * l10n: Update translations
   * Update docs
   * xapp-status-icon.c: Get rid of the dead 'shadow' region around
-    menus, as they can interfere with clicking on the icon to 
+    menus, as they can interfere with clicking on the icon to
     close the menu.
-  * xapp-status-icon: Add new properties for menu/button state 
-    handling and one for metadata (miscellaneous info to help 
+  * xapp-status-icon: Add new properties for menu/button state
+    handling and one for metadata (miscellaneous info to help
     define behavior in the status applets).
-  * xapp-sn-watcher: Set status icon metadata for appindicator 
-    icons, to inform the applet to highlight/toggle the panel icon 
+  * xapp-sn-watcher: Set status icon metadata for appindicator
+    icons, to inform the applet to highlight/toggle the panel icon
     with either button click when opening the menu.
-  * mate-xapp-status-applet.py: Use new properties to sync button 
+  * mate-xapp-status-applet.py: Use new properties to sync button
     toggle state with the menu state.
   * test-scripts: Update some scripts to demonstrate new property
     use.
   * sn-item: Remove support for XAyatanaLabel.
-  * xapp-sn-watcher: Update clear the registration list before 
+  * xapp-sn-watcher: Update clear the registration list before
     freeing the table of registered items.
-  * xapp-status-icon.c: Add xapp_status_icon_popup_menu() and use 
+  * xapp-status-icon.c: Add xapp_status_icon_popup_menu() and use
     a more reliable GtkMenu popup method.
-  * xapp-status-icon.c: Fix inadvertant verison change in doc 
+  * xapp-status-icon.c: Fix inadvertant verison change in doc
     string.
   * Icons: Add symbolic icons for xreaders annotation features
   * xapp-status-icon: Add a get_visible method.
   * mate applet: Use markup for tooltips, and update test script to
     reflect this as well.
-  * mate-xapp-status-applet: Fix set icon error handling when an 
+  * mate-xapp-status-applet: Fix set icon error handling when an
     icon name is missing.
   * xapp-status-icon: Add a get_visible method.
   * mate applet: Use markup for tooltips, and update test script to
     reflect this as well.
-  * mate-xapp-status-applet: Fix set icon error handling when an 
+  * mate-xapp-status-applet: Fix set icon error handling when an
     icon name is missing.
   * Update documentation
   * README: Update link to docs
@@ -266,37 +280,37 @@ Sun Dec  6 16:43:39 UTC 2020 - andy great <andythe_great@pm.me>
   * Add a utility function to check for nvidia on-demand mode.
   * xapp-sn-watcher: Don't enable in MATE
   * l10n: Fix makepot picking up unwanted service file
-  * Eliminate all appindicator-specific code from 
+  * Eliminate all appindicator-specific code from
     xapp-status-icon.c, Add a whitelist for xapp-sn-watcher to list
     ai icons  that should left-click to activate.
   * l10n: Fix makepot picking up unwanted service file
-  * Eliminate all appindicator-specific code from 
+  * Eliminate all appindicator-specific code from
     xapp-status-icon.c,
-    Add a whitelist for xapp-sn-watcher to list ai icons  that 
+    Add a whitelist for xapp-sn-watcher to list ai icons  that
     should left-click to activate.
-  * xapp-sn-watcher: Add a whitelist to manage what desktop 
+  * xapp-sn-watcher: Add a whitelist to manage what desktop
     environments to start in.
   * Add option to specify path to pygobject override directory
   * Install icons and scripts using meson options
-  * xapp-status-icon.c: Sync the visible state of the fallback 
+  * xapp-status-icon.c: Sync the visible state of the fallback
     GtkStatusIcon when it is first created.
-  * xapp-status-icon.c: Fix the timeout duration for 
+  * xapp-status-icon.c: Fix the timeout duration for
     xapp_status_icon_any_monitors.
   * Remove use of deprecated g_type_class_add_private function.
   * xapp-monitor-blanker: Use G_DECLARE_FINAL_TYPE
-  * xapp-status-icon.c: check if we have a fallback status icon 
+  * xapp-status-icon.c: check if we have a fallback status icon
     before disconnecting signals from it.
-  * xapp-status-icon.c: Only call gtk_status_icon_set_name() when 
+  * xapp-status-icon.c: Only call gtk_status_icon_set_name() when
     explicitly requested.
   * Add StatusNotifier watcher.
-  * mate applet: Set the new icon size property (this provides a 
+  * mate applet: Set the new icon size property (this provides a
     hint to xapp-sn-watcher or any client app to provide a correct
     icon size in some situations).
   * status icon: Add support for scroll events
   * debian: Remove python2 deps.
   * debian/control: Add missing dbusmenu dependency.
   * Packaging: Re-add python-gi-dev as build-dep
-  * xapp-sn-watcher: rewrite in C due to leaky dbus python 
+  * xapp-sn-watcher: rewrite in C due to leaky dbus python
     bindings.
 - Removed xapps-python3.patch, fixed.
 - Removed gtkstatusicon-fix.patch, fixed
@@ -312,33 +326,33 @@ Mon Sep  7 10:58:06 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 Sun Mar 22 13:04:56 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Add gtkstatusicon-fix.patch, backport to fix crashing tray icon
-  (boo#1165082) 
+  (boo#1165082)
 
 -------------------------------------------------------------------
 Sun Mar  1 05:20:54 UTC 2020 - Marguerite Su <i@marguerite.su>
 
-- Add xapps-python3.patch, fix issues to build without python2 
+- Add xapps-python3.patch, fix issues to build without python2
 
 -------------------------------------------------------------------
 Fri Jan 17 15:38:06 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 1.6.10
-  * xapp-status-icon.c: Sync the visible state of the fallback 
+  * xapp-status-icon.c: Sync the visible state of the fallback
     GtkStatusIcon when it is first created.
-  * xapp-status-icon.c: Fix the timeout duration for 
+  * xapp-status-icon.c: Fix the timeout duration for
     xapp_status_icon_any_monitors.
 - Changes in previous versions since 1.4.8
   * xapp-icon-chooser-dialog.c: fix hidpi icon rendering and spacing.
-  * xapp-status-icon.c: Allow a primary-click to activate appindicator 
-    icons when they have set a 'secondary activate' target.  Otherwise, 
+  * xapp-status-icon.c: Allow a primary-click to activate appindicator
+    icons when they have set a 'secondary activate' target.  Otherwise,
     have primary open the menu as it ordinarily would.
-  * xapp-status-icon.c: Reposition the menu when part of it would end 
+  * xapp-status-icon.c: Reposition the menu when part of it would end
     up below the workarea of the monitor.
-  * mate-xapp-status-applet.py: Call widget.show_all() before binding 
-    to the proxy's visible property.  The binding is one way only - 
+  * mate-xapp-status-applet.py: Call widget.show_all() before binding
+    to the proxy's visible property.  The binding is one way only -
     local changes can override the state initially set by the proxy.
-  * mate-xapp-status-applet.py: Add a small margin at either end of 
-    the applet, and allow ctrl-right-clicks anywhere on it, so the user 
+  * mate-xapp-status-applet.py: Add a small margin at either end of
+    the applet, and allow ctrl-right-clicks anywhere on it, so the user
     can bring up the About menu.
   * mate-xapp-status-applet.py: Hardcode symbolic icons to 22px.
   * Mate applet: Don't use a handle
@@ -346,27 +360,27 @@ Fri Jan 17 15:38:06 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
   * mate applet: fix regression in install location
   * debian: fixup changed file locations
   * mate-xapp-status-applet.py: handle a null icon name correctly.
-  * test-scripts: have xapp-status-applet sort icons in the same manner 
+  * test-scripts: have xapp-status-applet sort icons in the same manner
     the real applets do (symbolic to the right, then by alpha process name).
-  * xapp-status-icon.c: Keep an account of button presses so an orphan 
+  * xapp-status-icon.c: Keep an account of button presses so an orphan
     release doesn't activate or pop up a menu.
-  * xapp-status-icon: Track and notify changes in types of support for 
-    the icon - notify when a status icon is picked up by a native applet, 
+  * xapp-status-icon: Track and notify changes in types of support for
+    the icon - notify when a status icon is picked up by a native applet,
     a traditional system tray, or is not being picked up by anything.
-  * xapp-status-icon.c: Replace g_enum_to_string with a custom function, 
+  * xapp-status-icon.c: Replace g_enum_to_string with a custom function,
     this isn't available with lmde's glib.
-  * xapp-status-icon: Add a function to check for the existence of any 
+  * xapp-status-icon: Add a function to check for the existence of any
     active status applets.
   * Implement XAppStatusIcon (gh#linuxmint/xapps#67)
   * libxapp: cleanup compile warnings (gh#linuxmint/xapps#69)
-  * status icons: Add a monitor class for applets - XAppStatusIconMonitor, 
+  * status icons: Add a monitor class for applets - XAppStatusIconMonitor,
     (gh#linuxmint/xapps#70)
   * test-scripts: add a status-icon-via-libappindicator script.
   * xapp-status-icon.c: Remove leftover debug line
-  * xapp-status-icon: When a menu is provided to XAppStatusIcon, handle 
-    positioning and showing it internally instead of requiring the application 
+  * xapp-status-icon: When a menu is provided to XAppStatusIcon, handle
+    positioning and showing it internally instead of requiring the application
     to do it.
-  * xapp-status-icon.c: Use G_ class macros to cleanup header file, fix 
+  * xapp-status-icon.c: Use G_ class macros to cleanup header file, fix
     xapp_status_icon_get_menu()  (copy/paste error).
   * Add some useful build C-flags, fix test script exec bit.
   * Add API reference in docs/reference/
@@ -379,25 +393,25 @@ Fri Jan 17 15:38:06 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
   * icon chooser dialog: add *_add_custom_category () function
   * Add a Mate status applet (gh#linuxmint/xapps#72)
   * xapp-status-icon.c: Refactor event handling.
-  * xapp-icon-chooser-dialog.c: prevent segfault on non-existent icon name 
+  * xapp-icon-chooser-dialog.c: prevent segfault on non-existent icon name
     (gh#linuxmint/xapps#76)
-  * IconChooserButton: Add the ability to set the default category 
+  * IconChooserButton: Add the ability to set the default category
     (gh#linuxmint/xapps#77)
   * xapp-icon-chooser-button.c: add missing dispose method (gh#linuxmint/xapps#78)
-  * mate-xapp-status-applet.py: Make improvements to event handling and widget 
+  * mate-xapp-status-applet.py: Make improvements to event handling and widget
     appearance during clicks.
   * Add a custom install script for installing the generated header file.
   * Add i18n for the mate applet.
-  * mate applet: Add an about window, use more appropriate install locations, move 
+  * mate applet: Add an about window, use more appropriate install locations, move
     build replacement strings to a separate imported file.
-  * xapp-status-icon.c: During async ops, when checking for cancellation, use the 
+  * xapp-status-icon.c: During async ops, when checking for cancellation, use the
     error code, as the cancellable may have reset in the interim, but the code will
     be correct.
   * status icons: Support multiple icons from the same process.
   * Revert "docs: Generate html automatically"
   * Add a makedoc script to update docs/reference
   * Update reference docs
-  * xapp-icon-chooser-dialog.c: color the symbolic icons properly and fix hidpi 
+  * xapp-icon-chooser-dialog.c: color the symbolic icons properly and fix hidpi
     (gh#linuxmint/xapps#79)
   * Update translations
 
