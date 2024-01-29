@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jan 28 10:24:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.30.0:
+  * Install attached plugin zip file, or use Calibre's 'Get
+    plugins' feature.
+  * FanFicFare is delivered as a `pip` Python package.
+  * Run `fanficfare -h` from command-line.
+  * Update translations.
+  * Better handling of &<> entities with stripHTML() and chapter
+    titles. #1019
+  * SB(but not SV) removed RSS link from thread list title.
+    Closes #1017
+  * adapter_storiesonlinenet: Allow /n/ as well as /s/ paths
+  * adapter_storiesonlinenet: Update for chapter URL change for
+    paid subs. See #1014, thanks bpothier!
+  * adapter_storiesonlinenet: Update for chapter URL change. See
+    #1013
+  * adapter_fanfictionnet: Only use data-original cover images.
+  * BrowserCache should ignore usecache flag, that's for
+    BasicCache.
+
+-------------------------------------------------------------------
 Tue Nov 21 14:39:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.29.0:

@@ -1301,4 +1301,29 @@
   * Remove site: archive.skyehawke.com - Domain parked, broken</comment>
     <requestid>1127938</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>9cf8917e2a51c3a600ccdd33a3816ef7</srcmd5>
+    <version>4.30.0</version>
+    <time>1706563707</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.30.0:
+  * Install attached plugin zip file, or use Calibre's 'Get
+    plugins' feature.
+  * FanFicFare is delivered as a `pip` Python package.
+  * Run `fanficfare -h` from command-line.
+  * Update translations.
+  * Better handling of &amp;&lt;&gt; entities with stripHTML() and chapter
+    titles. #1019
+  * SB(but not SV) removed RSS link from thread list title.
+    Closes #1017
+  * adapter_storiesonlinenet: Allow /n/ as well as /s/ paths
+  * adapter_storiesonlinenet: Update for chapter URL change for
+    paid subs. See #1014, thanks bpothier!
+  * adapter_storiesonlinenet: Update for chapter URL change. See
+    #1013
+  * adapter_fanfictionnet: Only use data-original cover images.
+  * BrowserCache should ignore usecache flag, that's for
+    BasicCache.</comment>
+    <requestid>1142076</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-fanficfare
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define modnamedown fanficfare
 %define skip_python2 1
 Name:           python-fanficfare
-Version:        4.29.0
+Version:        4.30.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
@@ -49,7 +49,7 @@ Requires:       python-requests
 Requires:       python-requests-file
 Requires:       python-urllib3
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
