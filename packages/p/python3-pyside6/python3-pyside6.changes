@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 26 12:07:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Enable SLE15 python module for a more modern python than 3.6
+- Use primary_python flavor for Tumbleweed (which provides python3)
+
+-------------------------------------------------------------------
 Thu Dec  7 10:54:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.1. Check the installed changes-6.6.0 file for the

@@ -199,4 +199,13 @@
     <comment>Update to 6.6.1 (forwarded request 1131610 from krop)</comment>
     <requestid>1132322</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>fcc916127944615ac5978796eaf87baa</srcmd5>
+    <version>6.6.1</version>
+    <time>1706564033</time>
+    <user>anag+factory</user>
+    <comment>- Enable SLE15 python module for a more modern python than 3.6
+- Use primary_python flavor for Tumbleweed (which provides python3)</comment>
+    <requestid>1142581</requestid>
+  </revision>
 </revisionlist>
