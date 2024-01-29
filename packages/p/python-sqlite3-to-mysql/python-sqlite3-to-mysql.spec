@@ -46,7 +46,7 @@ Requires:       python-tabulate
 Requires:       python-tqdm >= 4.65.0
 Requires:       python-typing_extensions
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx}
@@ -59,7 +59,6 @@ BuildRequires:  %{python_module packaging >= 20.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytimeparse >= 1.1.8}
 BuildRequires:  %{python_module simplejson >= 3.16.0}
-BuildRequires:  %{python_module six >= 1.12.0}
 BuildRequires:  %{python_module sphinxcontrib-programoutput}
 BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module tqdm >= 4.35.0}
