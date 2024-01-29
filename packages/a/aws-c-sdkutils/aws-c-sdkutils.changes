@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Sat Jan 27 16:41:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix naming to match shlib policy
+
+-------------------------------------------------------------------
+Fri Jan 26 12:12:32 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.14
+  * Add minimal regex matcher by @DmitriyMusatkin in (#37)
+
+-------------------------------------------------------------------
+Wed Dec 13 09:02:27 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.13
+  * Minor CMakelists.txt cleanup by @graebm in (#34)
+  * Added workflow for handling answerable
+    discussions by @yasminetalby in (#35)
+  * Add partition mapping for iso-e and
+    iso-f by @DmitriyMusatkin in (#36)
+
+-------------------------------------------------------------------
+Tue Jul 25 08:53:12 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.12
+  * aws_profile: Reduce logging verbosity of the
+    ~/.aws/profile parser by @grrtrr in (#31)
+
+-------------------------------------------------------------------
+Wed May 31 14:25:11 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.11
+  * Update time to ancient by @jmklix in (#29)
+  * Update the behavior for profile override by @TingDaoK in (#30)
+
+-------------------------------------------------------------------
+Tue May 16 09:44:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.10
+  * Fix warnings in public headers by @waahm7 in (#28)
+
+-------------------------------------------------------------------
+Thu May  4 12:59:06 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.9
+  * Add github templates and bots by @jmklix in (#27)
+  * Explicit void parameter for aws_endpoints_rule_engine_init
+    by @sdavtaker in (#25)
+
+-------------------------------------------------------------------
+Wed Mar 15 10:55:42 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.8
+  * Fix comment to correct type by @waahm7 in (#21)
+  * Add codecov action by @TingDaoK in (#22)
+  * Add Reference Count to Profile Collection by @waahm7 in (#23)
+  * Update parsing logic to include sso-session by @waahm7 in (#24)
+
+-------------------------------------------------------------------
+Tue Nov 22 11:52:27 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.7
+  * Update CI to fix downstream build by @waahm7 in (#18)
+  * Fix handling of description in partitions file by @DmitriyMusatkin in (#20)
+
+-------------------------------------------------------------------
+Fri Nov 11 12:57:59 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.6
+  * Ep2 mem leak by @DmitriyMusatkin in (#19)
+- from version 0.1.5
+  * Fix build warning in ruleset parser by @DmitriyMusatkin in (#17)
+- from version 0.1.4
+  * Endpoints20 parsing by @DmitriyMusatkin in (#13)
+  * Add AppVerifier to CI by @TwistedTwigleg in (#14)
+  * Endpoint Resolution Rule Engine by @DmitriyMusatkin in (#15)
+  * Fix bug in resolving templates if strings contain escaped quotes
+    by @DmitriyMusatkin in (#16)
+
+-------------------------------------------------------------------
+Fri Sep  2 09:53:49 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.3
+  * Load cmake target fallback by @TingDaoK in (#11)
+  * Add readme by @DmitriyMusatkin in (#12)
+- Add rpmlint override for bogus shlib-policy-name-error
+  * aws-c-sdkutils-rpmlintrc
+
+-------------------------------------------------------------------
+Thu Apr 28 13:46:17 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.1.2
