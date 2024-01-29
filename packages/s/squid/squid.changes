@@ -9,9 +9,16 @@ Thu Dec 28 22:12:14 UTC 2023 - Sean Lewis <seanlew@opensuse.org>
  - Bug 5154: Do not open IPv6 sockets when IPv6 is disabled
  - FTP: Ignore credenials with a NUL-prefixed username
  - log_db_daemon: Fix DSN construction
- - Limit the number of allowed X-Forwarded-For hops
+ - Limit the number of allowed X-Forwarded-For hops (bsc#1217654, CVE-2023-50269)
  - Do not update StoreEntry expiration after errorAppendEntry()
- - improve handling of response sending errors
+ - improve handling of response sending errors (bsc#1219131, CVE-2024-23638)
+
+- changes in 6.5:
+ - Bug 5309: frequent "lowestOffset () <= target_offset" assertion
+ - Bug 4977: Remove mem_hdr::freeDataUpto() assertion
+ - Fix handling of expanding HTTP header values
+ - Fix RFC 1123 date parsing (bsc#1217813, CVE-2023-49285)
+ - Gracefully shutdown when helper process startup fails (bsc#1217815, CVE-2023-49286)
 
 -------------------------------------------------------------------
 Wed Oct 25 14:32:33 UTC 2023 - Adam Majer <adam.majer@suse.de>
@@ -23,6 +30,7 @@ Wed Oct 25 14:32:33 UTC 2023 - Adam Majer <adam.majer@suse.de>
     + Denial of Service in HTTP Digest Authentication (bsc#1216495, CVE-2023-46847)
     + Denial of Service in FTP (bsc#1216498, CVE-2023-46848)
     + Fix validation of certificates (bsc#1216803, CVE-2023-46724)
+    + One-Byte Buffer OverRead in HTTP Request Header Parsing (bsc#1217274)
   * Bug 5294: ERR_CANNOT_FORWARD returned instead of ERR_DNS_FAIL
   * Bug 4981: Work around in-call job invalidation bugs
   * basic_smb_lm_auth: fix 'no previous declaration' warnings
@@ -43,7 +51,7 @@ Tue Sep 19 16:20:19 UTC 2023 - Adam Majer <adam.majer@suse.de>
 -------------------------------------------------------------------
 Wed Aug  9 07:48:25 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
-- update to 6.2:
+- update to 6.2 (bsc#1217825, CVE-2023-49288, bsc#1216497):
   * Major UI changes:
     - Remove 8K limit for single access.log line
     - Add tls_key_log to report TLS communication secrets
