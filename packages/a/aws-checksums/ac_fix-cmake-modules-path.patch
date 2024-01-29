@@ -1,0 +1,42 @@
+diff -Nru aws-checksums-0.1.8.orig/CMakeLists.txt aws-checksums-0.1.8/CMakeLists.txt
+--- aws-checksums-0.1.8.orig/CMakeLists.txt	2020-07-16 22:22:27.000000000 +0200
++++ aws-checksums-0.1.8/CMakeLists.txt	2020-08-14 14:04:46.532565535 +0200
+@@ -16,17 +16,10 @@
+     file(TO_CMAKE_PATH "${CMAKE_INSTALL_PREFIX}" CMAKE_INSTALL_PREFIX)
+ endif()
+ 
+-if (UNIX AND NOT APPLE)
+-    include(GNUInstallDirs)
+-elseif(NOT DEFINED CMAKE_INSTALL_LIBDIR)
+-    set(CMAKE_INSTALL_LIBDIR "lib")
+-endif()
++find_package(aws-c-common REQUIRED)
++set(CMAKE_MODULE_PATH ${aws-c-common_DIR})
+ 
+-# This is required in order to append /lib/cmake to each element in CMAKE_PREFIX_PATH
+-set(AWS_MODULE_DIR "/${CMAKE_INSTALL_LIBDIR}/cmake")
+-string(REPLACE ";" "${AWS_MODULE_DIR};" AWS_MODULE_PATH "${CMAKE_PREFIX_PATH}${AWS_MODULE_DIR}")
+-# Append that generated list to the module search path
+-list(APPEND CMAKE_MODULE_PATH ${AWS_MODULE_PATH})
++include(GNUInstallDirs)
+ 
+ include(AwsCFlags)
+ include(AwsCheckHeaders)
+@@ -140,7 +133,7 @@
+ endif()
+ 
+ install(EXPORT "${PROJECT_NAME}-targets"
+-        DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/${TARGET_DIR}"
++        DESTINATION "${LIB_INSTALL_DIR}/cmake/${CMAKE_PROJECT_NAME}/${TARGET_DIR}/"
+         NAMESPACE AWS::
+         COMPONENT Development)
+ 
+@@ -149,7 +142,7 @@
+         @ONLY)
+ 
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+-        DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/"
++        DESTINATION "${LIB_INSTALL_DIR}/cmake/${CMAKE_PROJECT_NAME}"
+         COMPONENT Development)
+ 
+ include(CTest)
