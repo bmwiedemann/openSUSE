@@ -1,7 +1,7 @@
 #
 # spec file for package goxel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           goxel
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Voxel graphics editor
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/3D Editors
 URL:            https://goxel.xyz/
 Source:         https://github.com/guillaumechereau/goxel/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_security_issue_in_quickjs.patch -- based on commit f3faec9
-Patch0:         fix_security_issue_in_quickjs.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  scons
