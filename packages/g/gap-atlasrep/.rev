@@ -7,4 +7,18 @@
     <comment>GAP CAS module</comment>
     <requestid>1134760</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>137453aceb7008dec054b608879f1a75</srcmd5>
+    <version>2.1.8</version>
+    <time>1706563711</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.8:
+  * An example in Section 2.1-2 of the Tutorial had to be adjusted
+  because the results of the function
+  SmallerDegreePermutationRepresentation (Reference:
+  SmallerDegreePermutationRepresentation) depend on random
+  computations, in particular the implementation in GAP 4.13 may
+  yield a nicer representation than had been shown before. (forwarded request 1142077 from dirkmueller)</comment>
+    <requestid>1142078</requestid>
+  </revision>
 </revisionlist>

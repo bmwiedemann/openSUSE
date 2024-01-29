@@ -1,7 +1,7 @@
 #
 # spec file for package gap-atlasrep
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-atlasrep
-Version:        2.1.7
+Version:        2.1.8
 Release:        0
 Summary:        GAP: Interface to the Atlas of Group Representations
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://www.math.rwth-aachen.de/homes/Thomas.Breuer/atlasrep
 Source:         https://www.math.rwth-aachen.de/homes/Thomas.Breuer/atlasrep/atlasrep-%version.tar.gz
