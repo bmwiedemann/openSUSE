@@ -785,4 +785,12 @@ This version fixes the license naming issue.</comment>
   * updates vendored list of top-level domains</comment>
     <requestid>1137295</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>7253f3565324fe830830411a6edbffb0</srcmd5>
+    <version>6.93.2</version>
+    <time>1706563552</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141527</requestid>
+  </revision>
 </revisionlist>
