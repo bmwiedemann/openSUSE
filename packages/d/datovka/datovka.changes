@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan  8 22:08:01 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 4.23.3:
+  * Fixed drag&drop on attachment list in send message dialogue
+- 4.23.2:
+  * Showing progress of attachment uploads and message sending in
+    the send message dialogue
+  * Fixed send message dialogue layout where the tab widget wasn't
+    vertically expanding.
+  * Fixed colours of some labels in the send message dialogue which
+    have been illegible in dark mode.
+  * Enabled sending of high-volume data messages
+- 4.23.1:
+  * Fixed the CLI get-msg command when messages failed to download
+    with freshly created databases.
+  * Changed all references of the term 'account' in the UI into
+    'data box'
+
+-------------------------------------------------------------------
 Mon Dec  4 11:09:21 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 4.23.0
