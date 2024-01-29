@@ -29,14 +29,11 @@ BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 0.12.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.14.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 0.12.1
-Requires:       python-setuptools
-Requires:       python-six >= 1.14.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
