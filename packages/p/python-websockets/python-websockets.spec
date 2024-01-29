@@ -1,7 +1,7 @@
 #
 # spec file for package python-websockets
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,10 @@ export CFLAGS="%{optflags}"
 # Test execution speed depends on BS load and architecture, relax
 export WEBSOCKETS_TESTS_TIMEOUT_FACTOR=10
 # Disable flaky tests gh#python-websockets/websockets#1322
-%pytest_arch -v -k "not test_close_waits_for_close_frame" tests
+donttest="test_close_waits_for_close_frame"
+# Disable broken tests with openssl 3.2 and python < 3.11
+donttest+=" or test_reject_invalid_server_certificate"
+%pytest_arch -v -k "not ($donttest)" tests
 
 %files %{python_files}
 %license LICENSE
