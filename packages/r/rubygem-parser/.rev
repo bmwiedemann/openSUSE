@@ -145,4 +145,12 @@ Dependency update required for rubocop update:
   * parser to 3.2.2.4 (forwarded request 1117064 from NickLion)</comment>
     <requestid>1117130</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>25291cb22b9f337dae0d2add7f111320</srcmd5>
+    <version>3.3.0.5</version>
+    <time>1706563755</time>
+    <user>anag+factory</user>
+    <comment>Updated rubocop to version 1.60.2 and dependent parser to 3.3.0.5 (forwarded request 1141716 from NickLion)</comment>
+    <requestid>1142180</requestid>
+  </revision>
 </revisionlist>
