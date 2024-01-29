@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed Jun 14 11:41:01 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.17
+  * Update CI to fix downstream build by @waahm7 in (#57)
+  * Update builder version to fix aws-lc build on manylinux1 by @TingDaoK in (#59)
+  * Fix warnings in public headers by @waahm7 in (#60)
+
+-------------------------------------------------------------------
+Fri Nov 11 13:07:07 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.16
+  * Add AppVerifier to CI by @TwistedTwigleg in (#56)
+  * Fix C++ One Definition Rules (ODR) Violations by @graebm in (#58)
+
+-------------------------------------------------------------------
+Fri Sep  2 09:49:23 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.15
+  * Fallback for target load by @TingDaoK in (#55)
+
+-------------------------------------------------------------------
+Tue Oct 12 21:45:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Simplify package naming. Replace bogus shlib package name.
+
+-------------------------------------------------------------------
+Tue Oct 12 09:36:07 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.2.14
