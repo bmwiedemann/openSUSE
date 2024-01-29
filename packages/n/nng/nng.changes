@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sun Jan 28 17:17:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * This fixes two problems and includes a new example program.
+- update to 1.7.0:
+  * A new compile time setting, `NNG_MAX_POLLER_THREADS` is
+    introduced, with a default value of 8, and will limit the
+    number of threads
+  * A new supplemental API, nng_id_map(3), is made available.
+    This exposes the internal ID hash API NNG uses mapping
+    integer IDs
+  * (like socket IDs) to data structures. It also brings back
+    support for 64-bit IDs. See bug #1740.
+  * A new transport (experimental), for `socket://` is available.
+    This allows a connection using sockets created with
+    `socketpair()` (or the new `nng_socket_pair()` supplemental
+    API), which can help use cases where file descriptors are
+    passed between processes or inherited via `fork()`.  This API
+    is only available on Linux.  It does have somewhat different
+    semantics for establishing the connection, so please see the
+    manual page for `nng_socket(5)` for more information.
+  * WebSocket close is fixed to conform to RFC 6455, sending the
+    close frame, and waiting to receive the close frame from the
+    peer.  This allows websocket based connections to ensure that
+    data messages are fully delivered before shutting down. See
+    bugs #1733, #1734 and #1735. Thanks @alawn-wang for the
+    inspiration and a first draft of the change.
+  * The REQ and SURVEYOR protocols were fixed to improve
+    scalability when many clients or many contexts are used.  As
+    part of this change, a new option, `NNG_OPT_REQ_RESENDTICK`
+    is available to adjust how often we check for expired
+    requests.  See bug #1663.
+  * A new ability to override compile-time settings for thread
+    counts is available.  This facility is considered
+    experimental, and is not documented in manual pages -- and is
+    subject to change without notice. Please see
+    nng_init_set_parameter() in the nng.h header file.  The
+    values that can be tuned are listed there along with comments
+    describing their use.  See bug #1572.
+  * As part of the fixes for #1572, tunable values for setting
+    fixed values (rather upper limits) for thread counts are now
+    exposed properly via CMake variables. These are
+    `NNG_NUM_EXPIRE_THREADS` and `NNG_NUM_TASKQ_THREADS`.
+  * A new API, `nng_aio_set_expire()` is introduced as a
+    complement to `nng_aio_set_timeout()`.  This provides
+    absolute expiration times, which may be easier in
+    circumstances involving multiple actions such as common
+    state-machine based idioms.
+  * A bug which caused TLS connections to spin on accept, causing
+    high CPU usage, is fixed.  See bug #1673.
+  * The separate thread created for the timer is removed.  See
+    bug #1729.
+  * Various minor documentation fixes were made, some contributed
+    by Patrik Wenger .
+
+- update to 1.6.0:
+  * Numerous critical bugs were fixed; some of these led to seg
+    faults, crashes, and memory leaks.  See bugs #1523, #1713,
+    #1702, #1657, #1347, #1518, #1526, #1541, #1638, #1543, #1657,
+    #1658
+  * Significant performance optimizations have been mad
+  * New APIs were added for `nng_aio_busy()`,
+    `nng_ctx_sendmsg()`, `nng_ctx_recvmsg()`, `nng_device_aio()`.
+  * A CMake tunable for limiting the number of threads use for
+    request expiration is provided via the `NNG_MAX_EXPIRE_THREADS`
+    option.
+  * Additionally various fixes for compilation problems,
+    documentation errata, test case, and so forth have been applied.
+
+-------------------------------------------------------------------
 Mon Aug 23 14:10:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.2
@@ -83,7 +153,7 @@ Mon Mar  2 21:38:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
   * Raw mode fixes for XREQ and XRESPONDENT.
   * HTTP Server root URL handling had a few issues which are
     resolved.
-  * Numerous test suites uncovered small (rare) races, etc. 
+  * Numerous test suites uncovered small (rare) races, etc.
   * REP protocol with SENDFD was inconsistent
   Other Changes
   * Polyamorous Pair v1 mode is changed, such that a new API call is
