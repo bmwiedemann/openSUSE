@@ -1,3 +1,0 @@
-addFilter (".*W: no-manual-page-for-binary terraform-provider-libvirt")
-addFilter (".*W: filename-too-long-for-joliet terraform-provider-libvirt.*")
-addFilter (".*W: explicit-lib-dependency libvirt-client")
