@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jan 28 07:31:50 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.65.0:
+  * Add the new MaxMind license key format (#2181)
+  * Prevent print or logging in detectors (#2341)
+  * make sure to close connections after testing (#2343)
+  * Fix test (#2339)
+  * add tri-state verification to yelp (#1736)
+  * Improve GitHub scan logging (#2220)
+  * Update DockerHub detector logic (#2266)
+  * Add Google oauth2 token detector (#2274)
+
+-------------------------------------------------------------------
+Thu Jan 25 10:34:16 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.64.0:
+  * add priority semaphore (#2336)
+  * updating doppler logic (#2329)
+  * added azuredevopspersonalaccesstoken detector (#2315)
+  * Walk directories in filesystem source enumeration (#2313)
+  * [feat] - Replace regexp pkg w/ go-re2 in detectors (#2324)
+  * Update Gitlab repo count in tests #2333
+  * Narrow Postgres detector to only look for URIs (#2314)
+  * fixing incorrect acct num id for some aws keys (#2332)
+
+-------------------------------------------------------------------
 Tue Jan 23 13:21:14 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.63.11:
