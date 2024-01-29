@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 24 05:26:00 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.46.2:
+  * no release notes.
+- Drop framel-correct-python-platlib.patch: fixed upstream.
+- Ensure python packages, which now install to python_sitelib are
+  noarch.
+- Run tests as part of %check section; BuildRequires:
+  python-pytest.
+- New BuildRequires: python-ctypesgen.
+- Disable a segfaulting test on 32 bit archs.
+- Trim descriptions.
+
+-------------------------------------------------------------------
 Sat Aug 20 00:06:09 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 8.42.3:
