@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 29 04:30:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-connection-stack.patch:
+  * Remove unused and broken with Flask 3.0 internal imports
+- Refresh fix-requirements.patch to also drop pydocstyle.
+- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Thu Nov 30 13:24:20 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add %{?sle15_python_module_pythons}

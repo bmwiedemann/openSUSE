@@ -41,4 +41,16 @@
     <comment></comment>
     <requestid>1131001</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>6d7c5103953ed54cef0d41fbea240cfd</srcmd5>
+    <version>0.5.0</version>
+    <time>1706563734</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-connection-stack.patch:
+  * Remove unused and broken with Flask 3.0 internal imports
+- Refresh fix-requirements.patch to also drop pydocstyle.
+- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1142154</requestid>
+  </revision>
 </revisionlist>
