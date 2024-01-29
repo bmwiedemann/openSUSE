@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Jan 23 18:03:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.3:
+  * What's Changed
+    - Add architecture.md by @manuelbuil in #3453
+    - Clean/speed up Drone by @superseb in #3417
+    - [release/v1.5] Simplify update README workflow by @superseb
+      in #3436
+    - [v1.5] Added ACI-CNI 6.0.3.2 variables by @akhilesh-oc in
+      #3475
+    - [v1.5] update kdm branch to release-v2.8 by @kinarashah in
+      #3479
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported
+      Kubernetes versions. If you want to use a different version
+      than listed below, you will need to update Kubernetes using
+      the system images option in your cluster.yml.
+      - Kubernetes version
+        - v1.27.8-rancher2-2 (Default)
+        - v1.26.11-rancher2-2
+        - v1.25.16-rancher2-2
+      - Experimental Kubernetes version
+        - N/A
+
+-------------------------------------------------------------------
+Thu Jan 18 16:41:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.2:
+  * Enhancements
+    - Introduced v1.27.8-rancher2-1, v1.26.11-rancher2-1 and
+      v1.25.16-rancher2-1
+    - Introduced calico and canal v3.26.3 and nginx ingress v1.9.4
+      for v1.27.8-rancher2-1, v1.26.11-rancher2-1 and
+      v1.25.16-rancher2-1
+  * Bug Fixes
+    - Added ACI 6.0.3.1 variables
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported
+      Kubernetes versions. If you want to use a different version
+      than listed below, you will need to update Kubernetes using
+      the system images option in your cluster.yml.
+      - Kubernetes version
+        - v1.27.8-rancher2-1 (Default)
+        - v1.26.11-rancher2-1
+        - v1.25.16-rancher2-1
+      - Experimental Kubernetes version
+        - N/A
+
+-------------------------------------------------------------------
 Thu Dec 21 19:00:59 UTC 2023 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.1:
