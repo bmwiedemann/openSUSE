@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sat Jan 27 20:59:27 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Removed Recommends: %{name}-lang
+
+-------------------------------------------------------------------
+Tue Dec 12 01:08:50 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added Conflicts: sddm-config-editor
+  * sddm-config-editor is deprecated https://github.com/lxqt/sddm-config-editor/
+
+-------------------------------------------------------------------
+Mon Dec 11 18:38:10 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Packaged 0.1.0 official release tarball
+
+-------------------------------------------------------------------
+Mon Sep  4 18:24:23 UTC 2023 - Андрей Алыпов <and.november@opensuse.org>
+
+- initial package (version 0.2.0) for openSUSE
