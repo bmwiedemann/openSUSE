@@ -40,6 +40,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module matplotlib-qt5}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}

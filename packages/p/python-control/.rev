@@ -304,4 +304,14 @@
   * add/cleanup documentation on simulation functions by @murrayrm</comment>
     <requestid>1092345</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>a91f0361e7f78e56017ac6a23c298940</srcmd5>
+    <version>0.9.4</version>
+    <time>1706563760</time>
+    <user>anag+factory</user>
+    <comment>- Use PyQt5 for tests with matplotlib-qt5 (Avoid choice with
+  unsupported pyside6)
+</comment>
+    <requestid>1142191</requestid>
+  </revision>
 </revisionlist>
