@@ -1,7 +1,7 @@
 #
 # spec file for package xreader
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,14 @@
 %define sover   3
 %define typelib1 typelib-1_0-XreaderDocument-1_5
 %define typelib2 typelib-1_0-XreaderView-1_5
-%define pkg_ver 3.8.3
 Name:           xreader
-Version:        3.8.3
+Version:        4.0.2
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            https://github.com/linuxmint/xreader
-Source:         https://github.com/linuxmint/xreader/archive/%{pkg_ver}.tar.gz#/%{name}-%{pkg_ver}.tar.gz
+Source:         https://github.com/linuxmint/xreader/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
@@ -200,7 +199,7 @@ Supplements:    %{name}
 A plugin for Xreader to read Pixbuf documents.
 
 %prep
-%autosetup -p1 -n %{name}-%{pkg_ver}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %meson \

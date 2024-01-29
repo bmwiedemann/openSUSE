@@ -450,4 +450,41 @@
     <comment></comment>
     <requestid>1130592</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6278acabf98ae2ef884decf21886b7ac</srcmd5>
+    <version>4.0.2</version>
+    <time>1706563706</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.2 (CVE-2023-44451, bsc#1218298, CVE-2023-44452,
+    bsc#1218299):
+  * l10n: Update translations
+  * Fix list of supported mime types (#631)
+  * dependency: Drop compatibility with libwebkit2gtk-4.0
+  * dvi: Don't manually escape the exported filename.
+  * ev-window.c: Don't create the epub webview until the doc type
+    is known.
+  * Djvu file rotation direction fixed (#628)
+  * epub: Prevent path traversal when extracting files
+    [CVE-2023-44451]
+  * comics: Use libarchive to unpack documents [CVE-2023-44452].
+  * Revert &quot;ev-window.c: Don't create the epub webview until the
+    doc type&quot;
+  * l10n: Update translations
+
+  * Get toolbar visibility from GtkRevealer when saving view
+  * Fix for #442. Added null check to stop segfault with
+  * Move the new sidebar button to be part of the navigation group
+  * Favorites - rework startup page to display both favorites and
+  * ev-window.c: Temporarily disable menu toggling using the alt
+  * Revert &quot;Implements ticket #279. Added Go To Page By Number to
+  /shell/ev-application.c error no return statement in
+  * Fix compile warnings (#317)
+  * Fix build: Fail on implicit function declarations (#321)
+  * preview window/printing: Remove build conditionals for
+  * Fix segfault on empty navMap (#334)
+  * meson: Dependency fixes (#335)
+  * EVINCE BACKPORTS:
+    * backends: backends: Don't ask for bug report</comment>
+    <requestid>1142074</requestid>
+  </revision>
 </revisionlist>
