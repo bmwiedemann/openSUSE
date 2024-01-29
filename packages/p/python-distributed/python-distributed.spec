@@ -180,7 +180,7 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # https://github.com/dask/distributed/issues/7175
   donttest+=" or (test_sizeof_error and larger)"
   #
-  donttest+=" or test_task_groups"
+  donttest+=" or test_task_groups or test_client_worker"
 fi
 
 %if %{with paralleltests}

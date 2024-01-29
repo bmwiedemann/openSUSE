@@ -954,4 +954,12 @@
   https://docs.dask.org/en/stable/changelog.html#v2024-1-0</comment>
     <requestid>1140138</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>bc77747c6d4ef240427a80a909bf6ae4</srcmd5>
+    <version>2024.1.0</version>
+    <time>1706563948</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1142208</requestid>
+  </revision>
 </revisionlist>
