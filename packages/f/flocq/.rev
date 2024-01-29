@@ -62,4 +62,14 @@
 </comment>
     <requestid>1111804</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>beda8ff2232c37b0b985ccf27a179886</srcmd5>
+    <version>4.1.4</version>
+    <time>1706563733</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.1.4.
+  * Ensured compatibility from Coq 8.12 to 8.19.
+</comment>
+    <requestid>1142145</requestid>
+  </revision>
 </revisionlist>
