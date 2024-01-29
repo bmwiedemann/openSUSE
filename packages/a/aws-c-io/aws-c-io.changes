@@ -1,0 +1,515 @@
+-------------------------------------------------------------------
+Fri Jan 26 11:44:47 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.2
+  * Cache the Error Before Any Side Effects by @waahm7 in (#619)
+
+-------------------------------------------------------------------
+Tue Jan 16 09:02:56 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.1
+  * Surface proper PKCS11 error by @sbSteveK in (#617)
+  * Always run channel setup callback on pinned event
+    loop if one exists by @bretambrose in (#618)
+
+-------------------------------------------------------------------
+Wed Jan  3 14:28:33 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.0
+  * Change `port` from uint16_t to uint32_t to support VSOCK by @graebm in (#613)
+
+-------------------------------------------------------------------
+Mon Dec  4 09:02:50 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.36
+  * Remove null check for aws_pkcs11_lib_login_user
+    by @xiazhvera in (#611)
+  * Use 500 ms rather than 25 ms for the exponential
+    backoff defaults by @JonathanHenson in (#612)
+
+-------------------------------------------------------------------
+Tue Oct 17 10:18:10 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.35
+  * Handle CRLF for windows by @xiazhvera in (#608)
+- from version 0.13.34
+  * Fix assert statement by @graebm in (#607)
+- from version 0.13.33
+  * Log as warning for socket connect and client bootstrap by @TingDaoK in (#594)
+  * Added workflow for handling answerable discussions by @yasminetalby in (#592)
+  * Intel Vtune Markers for EventLoop and InputStream Read by @waahm7 in (#596)
+  * Fix compiling error by @TingDaoK in (#600)
+  * Read me update by @yasminetalby in (#604)
+  * Refactor pem by @DmitriyMusatkin in (#605)
+  * Add format unknown by @DmitriyMusatkin in (#606)
+
+-------------------------------------------------------------------
+Tue Aug 15 10:49:30 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.32
+  * Fix permissions for stale issue bot by @jmklix in (#590)
+  * Fix S2N blocked issue by @waahm7 in (#589)
+- from version 0.13.31
+  * Fix: release alpn string before set for
+    tls_ctx_options by @xiazhvera in (#588)
+
+-------------------------------------------------------------------
+Tue Jul 25 08:29:45 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.30
+  * Maximum Backoff Implementation by @waahm7 in (#587)
+
+-------------------------------------------------------------------
+Mon Jul 17 10:15:09 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.29
+  * Change S2N security policy for 0-RTT in TLS 1.3 by @graebm in (#585)
+
+-------------------------------------------------------------------
+Mon Jul 10 10:00:18 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.28
+  * Support read-only file stream by @TingDaoK in (#582)
+
+-------------------------------------------------------------------
+Mon Jul  3 12:44:06 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.27
+  * Cleanup aws-lc thread locals in event loop threads by @bretambrose in (#581)
+
+-------------------------------------------------------------------
+Sat Jun 10 02:44:10 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.26
+  * Fix compiler warning by @TingDaoK in (#579)
+- from version 0.13.25
+  * Stream-tester can report how much data was read by @graebm in (#578)
+  * Fix build issues with stream-tester files by @graebm in (#580)
+
+-------------------------------------------------------------------
+Wed Jun  7 11:12:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.24
+  * aws_future functions no longer inline by @graebm in (#577)
+
+-------------------------------------------------------------------
+Mon Jun  5 10:52:36 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.23
+  * Use UUID for socket endpoints by @TwistedTwigleg in (#570)
+  * Update time to ancient by @jmklix in (#571)
+  * aws_future by @graebm in (#572)
+  * aws_async_input_stream by @graebm in (#573)
+  * aws_future keeps channel alive until callback fires by @graebm in (#574)
+  * Tests for aws_async_input_stream by @graebm in (#575)
+
+-------------------------------------------------------------------
+Tue May 16 09:59:33 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version to 0.13.22
+  * Add github templates and bots by @jmklix in (#564)
+  * Update builder version to fix aws-lc build on manylinux1 by @TingDaoK in (#566)
+  * Relax the default_pki_path_exists test. by @graebm in (#568)
+  * Fix warnings in public headers by @waahm7 in (#569)
+
+-------------------------------------------------------------------
+Wed Apr 19 12:20:04 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.21
+  * Raise error message if macOS key import failed by @xiazhvera in (#558)
+  * Get socket from handler by @TingDaoK in (#560)
+  * Fix DNS starvation case by @bretambrose in (#562)
+- from version 0.13.20
+  * doc: Fix typo in readme by @codingspirit in (#554)
+  * Skip PKCS#11 setup when tests are disabled by @graebm in (#557)
+  * DNS Ping Proposal by @bretambrose in (#559)
+
+-------------------------------------------------------------------
+Mon Mar 13 09:41:41 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.19
+  * Teach c-io where to find the PKI trust store
+    on OpenBSD by @knightjoel in (#553)
+
+-------------------------------------------------------------------
+Wed Mar  1 10:29:01 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.18
+  * Change #if _MSC_VER to #ifdef _MSC_VER by @jmklix in (#551)
+
+-------------------------------------------------------------------
+Wed Feb 22 09:35:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.17
+  * Fix HostResolver Callback by @waahm7 in (#523)
+- from version 0.13.16
+  * Use const in record_connection_failure by @waahm7 in (#550)
+  * Purge address cache by @waahm7 in (#546)
+
+-------------------------------------------------------------------
+Mon Feb  6 14:08:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.15
+  * Fix possible crash when host resolver returns
+    two addresses. by @TingDaoK in (#543)
+  * Fix build on OpenBSD by @knightjoel in (#545)
+  * Fix: Generate random callback by @waahm7 in (#542)
+
+-------------------------------------------------------------------
+Wed Jan 18 13:18:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.14
+  * Errno usage pass by @bretambrose in (#541)
+- from version 0.13.13
+  * Conditional fix for supporting glibc 3.0 by @sdavtaker in (#537)
+  * Use macros consistently by @DmitriyMusatkin in (#538)
+  * Fix macro usage by @DmitriyMusatkin in (#539)
+  * Stop checking errno after failed aws_fopen() by @graebm in (#540)
+
+-------------------------------------------------------------------
+Wed Jan  4 13:11:36 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.12
+  * Handle connection reset error code for posix
+    socket by @JonathanHenson in (#532)
+  * Fix bug with increment read window by @graebm in (#535)
+
+-------------------------------------------------------------------
+Tue Nov 22 12:06:52 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.11
+  * Add new SeekFailed, GetLengthFailed, GetLengthUnsupported,
+    and SeekUnsupported Errors by @waahm7 in (#530)
+
+-------------------------------------------------------------------
+Wed Nov 16 15:18:55 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.10
+  * Fix the crash from log by @TingDaoK in (#529)
+  * Create setter for TLS Cipher Preference by @alexw91 in (#531)
+
+-------------------------------------------------------------------
+Fri Nov 11 13:16:45 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.9
+  * Update CI to fix downstream build by @waahm7 in (#525)
+- from version 0.13.8
+  * Fix C++ One Definition Rules (ODR) Violations by @graebm in (#528)
+- from version 0.13.7
+  * OSX ECC key support by @xiazhvera in (#524)
+  * Fix aws_import_ecc_key_into_keychain debug by @waahm7 in (#526)
+  * sprintf() -> snprintf() by @graebm in (#527)
+  * Set thread names to help debugging by @graebm in (#519)
+
+-------------------------------------------------------------------
+Tue Nov  1 12:44:12 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.6
+  * Use const in aws_host_resolver_new_default by @waahm7 in (#522)
+
+-------------------------------------------------------------------
+Mon Oct 17 10:37:04 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.5
+  * Add AppVerifier by @TwistedTwigleg in (#516)
+  * Always set s_s2n_initialized_externally value by @waahm7 in (#517)
+  * migrate uri helpers from aws-c-io by @DmitriyMusatkin in (#518)
+  * Adds missing const by @waahm7 in (#520)
+- from version 0.13.4
+  * Fixes a missing include that may cause build failures depending
+    on linux distribution by @bretambrose in (#514)
+  * Fixes an event loop group clean up failure issue when process
+    is exiting by @waahm7 in (#515)
+
+-------------------------------------------------------------------
+Fri Sep  2 09:36:09 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.3
+  * Fix for heap access violation by @TwistedTwigleg in (#513)
+- from version 0.13.2
+  * Fallback for target load by @TingDaoK in (#511)
+- from version 0.13.1
+  * Clang windows by @bretambrose in (#504)
+  * ALPN availability check function now properly checks
+    for Windows 8.1 and above by @HolyZsiraf in (#502)
+  * VerifyVersionInfo doesn't behave like you'd expect
+    by @bretambrose in (#505)
+  * Tolerate s2n_init() being called before aws_io_library_init()
+    by @graebm in (#508)
+
+-------------------------------------------------------------------
+Mon Aug  8 09:24:58 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.0
+  * Custom TLS key operation support
+    + Add asserts to aws_retry_strategy refcounts. by @graebm in (#500)
+    + Custom TLS key operation support by @TwistedTwigleg in (#501)
+- from version 0.12.0
+  * Remove support for legacy PQ Key Exchange Algorithms
+    + Explicit warnings/error when default CA certificates
+      not found by @graebm in (#498)
+    + Remove support for legacy PQ Key Exchange Algorithms
+      by @alexw91 in (#497)
+
+-------------------------------------------------------------------
+Mon Jul 11 13:25:36 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.11.2
+  * Adds a channel task scheduling API that always uses the cross-thread
+    task queue. This API guarantees serialized order-of-submission is
+    order-of-execution. The default API does not guarantee this because
+    tasks submitted on the event loop thread may jump ahead of tasks
+    already in the cross-thread queue.
+- from version 0.11.1
+  * Fix error codes reported by windows sockets. by @graebm in (#489)
+  * New: aws_socket_get_bound_address() by @graebm in (#491)
+
+-------------------------------------------------------------------
+Thu Apr 28 13:52:40 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.11.0
+  * Input Stream API change by @TingDaoK in (#444)
+  * Changed Input Stream API to be refcounted
+- from version 0.10.22
+  * Ensure that library init/cleanup can be called
+    multiple times by @graebm in (#461)
+- from version 0.10.21
+  * Added ECC support for PKCS11 by @JamieHunter in (#479)
+
+-------------------------------------------------------------------
+Thu Mar 17 08:16:10 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.20
+  * Deprecate macOS keychain path function
+  * Improve errors when searching windows cert store
+- from version 0.10.19
+  * Fix possible memory leak in aws_tls_connection_options_copy.
+    + Now the aws_tls_connection_options_copy function will clean up the
+      options and release memory before copy into it. Please make sure
+      the copy destination option is initialized/zero out before call
+      the function.
+- from version 0.10.18
+  * Fix Certificate Chains for Windows
+  * aws_pkcs11_lib_behavior validation and spelling
+  * Fix aws-crt-swift by moving PKCS#11 headers
+
+-------------------------------------------------------------------
+Fri Jan  7 10:38:39 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.17
+  * Event loop pinning + TLS updates
+    + Support for channel creation with event loop pinning
+    + Additional TLS tests
+    + SCH_USE_STRONG_CRYPTO enabled by default on Windows
+      (monitor for potential breakage)
+
+-------------------------------------------------------------------
+Tue Jan  4 14:52:52 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.16
+  * Remove platform ifdefs from tls_channel_handler.h
+    + This fixes iOS builds
+- from version 0.10.15
+  * BUGFIX: Fix crash when crash when s2n connection
+    class fails to be created
+
+-------------------------------------------------------------------
+Thu Dec  9 12:14:19 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.14
+  * Remove Windows.h from header
+    + Removed Windows.h from public header
+    + Improved error reporting when getaddrinfo() fail
+    + Set default cpu_id on thread_options
+    + Better use of const in aws_tls_ctx_pkcs11_options
+- from version 0.10.13
+  * Support PKCS#11 for mutual TLS on Unix platforms
+    + Support PKCS#11 for mutual TLS on Unix platforms (#451)
+- from version 0.10.12
+  * Path API updates
+    + Moved aws_path_exist checks over to the safe variant. (#448)
+- from version 0.10.11
+  * Updated S2N PQ Crypto cipher preference list
+    + Add Round 3 Cipher Pref List to Allowlist (#447)
+- from version 0.10.10
+  * Removed file utils, moved to common
+    + Replace tls double channel (#441)
+      - Remove test first
+      - Add codebuild job spec that will run downstream integration
+        tests (aws-c-http) that exercise double tls
+      - Add channel API to read from initial handler
+- Rename devel package to "devel"
+- Switch BuildRequires to use cmake() and pkgconfig() macros
+
+-------------------------------------------------------------------
+Mon Oct 11 07:47:07 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.9
+  + TLS 1.3 Support
+    * Linux support for tls1.3 and switch to CRT-specific tls
+      configurations when using s2n
+    * Refactor pipe signal suppression to avoid logging spurious errors
+- from version 0.10.8
+  + Use ephemeral credentials for TLS on Windows
+    * Update secure channel configuration to use credentials in an ephemeral manner
+- from version 0.10.7
+  + Fix CA override functions
+    * This fixes the issue where "override_default_trust_store" functions did
+      not actually override the system trust store on Linux and Apple platforms.
+
+-------------------------------------------------------------------
+Wed Jul  7 11:30:20 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.6
+  + Managed thread handle release
+    * Updates the managed thread system to properly release Windows thread
+      handles. Requires an associated change in aws-c-common as well.
+
+-------------------------------------------------------------------
+Mon Jun 21 12:07:26 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.5
+  + Fix SNI check when custom root-CA used on Apple devices.
+    * Validate hostname on Mac when custom root-CA is used. (#396)
+- from version 0.10.4
+  + Revert Windows CRL checks on root CA override
+    * On Windows only, reverts the cached CRL check when validating a server
+      certificate chain using a root CA override. This check was added as part
+      of a larger change performing SNI validation with a root CA override (#385).
+      The SNI check remains in place. The CRL check was breaking tls connections
+      for multiple customers and appears to be subject to properties of the host
+      beyond the CRT's control.
+- from version 0.10.3
+  + Inconsistent trust store override behavior logged
+    * Added warning statement when trust store override is used (#394)
+
+-------------------------------------------------------------------
+Thu Jun 10 11:03:51 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.2
+  + iOS fix
+    * Removed call to sanitize pems on iOS (#391)
+- from version 0.10.1
+  + Fix Windows verify_peer = false issue in client mode
+    * Previously on Windows, we were not properly translating "verify_peer = false"
+      into a secure channel configuration that would actually skip peer verification
+      in client mode. We were always verifying the certificate no matter what the
+      setting's value.
+- from version 0.10.0
+  + All uses of aws_off_t replaced with int64_t
+    * CHANGE: All uses of aws_off_t replaced with int64_t. aws_off_t used to be 32 or
+      64 bits, depending on a project's compiler flags. This was leading to bugs when
+      projects had different flags. Now in64_t is used instead. Beginning in aws-c-common
+      v0.6.0, aws_off_t is simply a typedef for int64_t, so hopefully this change is painless
+      for consumers.
+- from version 0.9.14
+  + Windows warnings
+    * Fix some Windows compile warnings that are not currently being caught by local CI and
+      only showing up in the publishing pipeline
+- from version 0.9.13
+  + Improve SNI validation, socket read error checking
+    * On Windows, properly do SNI and server cert chain verification when the
+      root CA has been overridden
+    * On Posix systems, check socket read error before making any potential log
+      calls which could overwrite the error info via internal sys calls
+
+-------------------------------------------------------------------
+Fri May 14 12:05:24 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.12
+  + TLS Context Initialization fix
+    * Fixes an issue where TLS context initialization could fail on
+      Linux due to passing in buffers that weren't properly zero-
+      terminated at their final length
+- from version 0.9.11
+  + Path URI Encoding Bugfix
+    * Fix for some characters not being correctly URI-encoded in the path
+      URI encode function.
+- from version 0.9.10
+  + Bugfix for shutdown race condition
+    * Fix for shutdown crash when peer hangs up immediately
+      following first non-TLS write (#379)
+    * Fixed ownership semantics in SecureTransport read_message
+- from version 0.9.9
+  + Support non-ascii file path
+    * Use aws_fopen to support non-ASCII file path for file stream
+
+-------------------------------------------------------------------
+Mon Apr 26 10:36:48 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.8
+  + Mac TLS API update
+    * Small update to Mac TLS keychain API signature
+- from version 0.9.7
+  + Fixing bug with aws_input_stream_new_from_file
+    * Changing fopen flags used by aws_input_stream_new_from_file to r+b
+      instead of r, which fixes a Windows issue where the stream may terminate
+      early due to an EOF character.
+- from version 0.9.6
+  + Windows ECC platform synchronization
+    * (Windows only) Synchronizes ECC import logic with the compilation/cmake
+      switch that links NCrypt in aws-c-cal
+- from version 0.9.5
+  + Mac Keychain and Windows ECC certs
+    * Hardened Windows certificate import process
+    * Added support for importing ECC certs/keys in Windows
+    * Added support for overriding the keychain on Macintosh
+- from version 0.9.4
+  + PEM comments support
+    * Support comments in PEM file.
+- from version 0.9.3
+  + Platform compiler fixes and TLS shutdown delay
+    * Misc compiler fixes on Windows
+    * Improve Mac foundation library integration
+    * honor s2n's tls shutdown delay on linux when applicable
+    * ASAN CI integration and resulting fixes
+- from version 0.9.2
+  + Support for bring your own crypto TLS implementation on Unix platforms
+    * Added support for bring your own crypto via the cmake -DBYO_CRYPTO flag
+- from version 0.9.1
+  + Removed dependency on lib crypto in aws-c-cal/s2n
+    * Updated builder version of s2n to latest release (#361)
+    * Updated to builder v0.8.4
+    * Fixed build-deps to avoid compile issues from aws-lc
+- from version 0.9.0
+  + New managed thread API
+    * Convert to new managed thread system for threads that cannot be
+      reliably explicitly joined
+
+-------------------------------------------------------------------
+Mon Feb 15 11:21:16 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.3
+  + Socket write callbacks are always async
+    * Socket write callbacks are always async. Fixes bugs
+      in websocket an MQTT when writing large payloads.
+- from version 0.8.2
+  + Nested TLS support
+    * Fix per-platform TLS channel handler issues for channels
+      using nested TLS
+- from version 0.8.1
+  + Win32 fix
+    * Fix the build issue on Win32 targets
+
+-------------------------------------------------------------------
+Fri Jan  8 12:04:21 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.0
+  + NUMA-aware event-loops
+  + Host resolver improvements
+  + Best of two event-loop load balancing
+  + Windows build fix for iocp event loop (#346)
+
+-------------------------------------------------------------------
+Wed Dec 16 11:30:42 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.1
+  + Host resolver creation update
+    * Modifies the default host resolver creation function to take an options struct
+
+-------------------------------------------------------------------
+Thu Nov 26 15:50:49 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.7.0
+- add ci_fix-cmake-modules-path.patch, aci_add-so-version.patch
