@@ -1,7 +1,7 @@
 cabal-version:  3.0
 Name:           cairo
 Version:        0.13.10.0
-x-revision: 1
+x-revision:     2
 License:        BSD-3-Clause
 License-file:   COPYRIGHT
 Copyright:      (c) 2001-2010 The Gtk2Hs Team, (c) Paolo Martini 2005, (c) Abraham Egnor 2003, 2004, (c) Aetion Technologies LLC 2004
@@ -60,9 +60,9 @@ custom-setup
 Library
         build-depends:  base >= 4.8 && < 5,
                         utf8-string >= 0.2 && < 1.1,
-                        text >= 1.0.0.0 && < 2.1,
+                        text >= 1.0.0.0 && < 2.2,
                         array < 0.6,
-                        bytestring < 0.12,
+                        bytestring < 0.13,
                         mtl < 2.4
         exposed-modules:  Graphics.Rendering.Cairo
                           Graphics.Rendering.Cairo.Matrix
