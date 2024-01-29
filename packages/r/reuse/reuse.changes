@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun Jan 28 19:07:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * `.qrc` and `.ui` now have the HTML comment style instead of
+    being marked uncommentable.
+  * This reverts behaviour introduced in v3.0.0: the contents of
+    uncommentable * files are scanned for REUSE information again.
+    The contents of binary files are not.
+  * Implement handling LicenseRef in `download` and `init`.
+  * Declared support for Python 3.12.
+  * More file types are recognised:
+    + TCL (`.tcl`)
+    + Julia (`.jl`)
+    + Modern Fortran (`.f90`)
+    + Bazel (`.bzl`)
+    + GNU Linker script (`.ld`)
+    + Assembly code (`.s`)
+    + Empty placeholders (`.empty`)
+    + ShellCheck configuration (`.shellcheckrc`)
+    + Pylint in-project configuration (`pylintrc`)
+    + Lisp schemes (`.sld`, `.sls`, `.sps`)
+  + Added comment styles:
+  * `csingle` for Zig (`.zig`) and Hare (`.ha`)
+  * Display recommendations for steps to fix found issues during
+    a lint.
+  * Add support for Pijul VCS. Pijul support is not added to the
+    Docker image.
+  * When running `annotate` on a file with an unrecognised file
+    path, the tool currently exits early. To automatically
+    create a .license file for unrecognised files,
+    `--fallback-dot-license` has been added.
+  * Ignore `.sl` directory as used by Sapling SCM.
+  * Alpine Docker image now uses 3.18 as base.
+  * The Git submodule detection was made less naïve. Where
+    previously it detected
+  * a directory with a `.git` file as a submodule, it now uses
+    the git command to detect submodules. This helps detect
+    (quoted from Git man page) "[repositories] that were cloned
+    independently and later added as a submodule or old setups",
+    which "have the submodule's git directory inside the submodule
+    instead of embedded into the superproject's git directory".
+  * No longer scan binary or uncommentable files for their
+    contents in search of REUSE information.
+  * `--force-dot-license` and `--skip-unrecognised` are now
+    mutually exclusive on `annotate`.
+  * No longer create and publish `-extra` Docker images. The
+    `openssh-client` package is now in the main image.
+  * No longer create and publish `dev` Docker images.
+  * The `-debian` Docker image is now based off debian:12-slim.
+    It used to be based on the python:slim image, which used
+    debian:slim under the hood.
+  * Removed deprecated `--explicit-license`.
+  * Removed deprecated `addheader`.
+  * No longer depend on `sphinx-autodoc-typehints` for
+    documentation.
+  * Syntax errors in .reuse/dep5 now have better error handling.
+  * Reduced python-debian minimum version to 0.1.34.
+  * Fix issue in `annotate` where `--single-line` and `--multi-
+    line` would not correctly raise an error with an incompatible
+    comment style
+  * Fix parsing existing copyright lines when they do not have a
+    year
+  * Better handling of Lisp comment styles. Now, any number of
+    ";" characters is
+  * recognised as the prefix to a Lisp comment, and ";;;" is used
+    when inserting comment headers
+
+-------------------------------------------------------------------
 Tue Aug  1 21:32:01 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 2.1.0:
