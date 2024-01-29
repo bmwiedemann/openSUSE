@@ -1,7 +1,7 @@
 #
 # spec file for package openafs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,11 +57,11 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.10
+%define upstream_version 1.8.11pre1
 
 Name:           openafs
 
-Version:        1.8.10.1
+Version:        1.8.11~pre1
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
@@ -104,15 +104,9 @@ Source98:       kmp_only.files
 Source99:       openafs.changes
 
 # PATCH-FIX-UPSTREAM fix build with kernel 6.5
-Patch1:         fef2457.diff
-Patch2:         d15c7ab.diff
-Patch3:         63801cf.diff
-Patch4:         538f450.diff
-Patch6:         6de0a64.diff
-# PATCH-FIX-UPSTREAM fix build with kernel 6.6
-Patch5:         5b647bf.diff
-Patch7:         6413fdb.diff
-Patch8:         4f1d810.diff
+# PATCH-HANDLE-BACKPORTS
+# some kernel-features from 6.5 are apparently in 6.4
+Patch99:        handle_backports.diff
 
 #	GENERAL BuildRequires and Requires
 #
@@ -323,14 +317,9 @@ for src_file in %{S:0}  %{S:1}; do
 done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%if 0%{?sle_version} == 150600
+%patch99 -p1
+%endif
 
 ./regen.sh
 
