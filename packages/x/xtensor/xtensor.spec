@@ -17,16 +17,12 @@
 
 
 Name:           xtensor
-Version:        0.24.7
+Version:        0.25.0
 Release:        0
 Summary:        Multi-dimensional arrays with broadcasting and lazy computing
 License:        BSD-3-Clause
 URL:            https://github.com/xtensor-stack/xtensor
 Source0:        https://github.com/xtensor-stack/xtensor/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-Use-L-suffix-for-long-double-constants.patch gh#xtensor-stack/xtensor#2762
-Patch0:         0001-Use-L-suffix-for-long-double-constants.patch
-# PATCH-FIX-UPSTREAM 0002-Use-1-4-step-for-testing-arange.patch gh#xtensor-stack/xtensor#2763
-Patch1:         0002-Use-1-4-step-for-testing-arange.patch
 BuildRequires:  cmake
 BuildRequires:  doctest-devel
 BuildRequires:  doxygen
@@ -78,8 +74,6 @@ Containers of xtensor are inspired by NumPy, the Python array programming librar
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %cmake -DCPP17:BOOL=ON -DBUILD_TESTS:BOOL=ON

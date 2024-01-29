@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan 27 10:58:14 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.25.0
+  - Fix conversion warning in xrepeat
+  - Upraded to xsimd 11
+  - Update to use XTENSOR_DEFAULT_ALIGNMENT when using XSIMD
+  - Removed failing test xinfo on clang 16
+  - Bump cmake version and resolve build issues
+  - Make reshape_view accept -1 as a wildcard dimension
+  - Fixing bug in argmin/argmax called with axis on rank-1 container
+  - pre-commit autoupdate
+  - Use L suffix for long double constants
+  - Use 1/4 step for testing arange
+  - [Optimization] Updated concatenate_access and stack_access to remove allocations
+  - Minor xindex_view to_array cleanup
+- Drop upstreamed 0001-Use-L-suffix-for-long-double-constants.patch
+  0002-Use-1-4-step-for-testing-arange.patch
+
+-------------------------------------------------------------------
 Fri Jan  5 09:38:18 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Fix i586 build:
