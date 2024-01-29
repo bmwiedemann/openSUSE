@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan 28 07:12:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.17:
+  * Add new flag --auto-select: when there is only one entry left,
+	  automaticallty select it #357
+  * Password flag parameters with indicator option(Addresses #221) #360
+  * Single instance mode(Addresses #324) #358
+  * Update help/usage to add cursor background and foreground
+	  colors(Addresses #361). #362
+  * Wayland: fix monitor and scaling detection #356
+  * fix: wayland mmap failed on Sway 1.8.1 #368
+  * chore: minor variable rewording #369
+  * Fix fallback to xclip #365
+  * Upwards list support(Addresses #328, X11/Wayland/Cairo) #364
+  * add option to start vim bindings in normal mode #375
+  * wayland: ensure bemenu is shown on top of fullscreen windows #376
+  * feat: C-b to go left #377
+
+-------------------------------------------------------------------
 Wed Aug 30 05:06:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.16:
