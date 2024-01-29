@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package sanlock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,8 @@ BuildRequires:  pkgconfig(uuid)
 %if ! %{with python}
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
+Provides:       group(sanlock)
+Provides:       user(sanlock)
 Recommends:     logrotate
 %{?systemd_requires}
 %if 0%{?suse_version} >= 1500

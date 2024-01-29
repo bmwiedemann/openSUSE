@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 29 10:25:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add user()/group() provides for rpm 4.19
+
+-------------------------------------------------------------------
 Tue Oct 18 14:27:20 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to sanlock 3.8.5
@@ -27,7 +32,7 @@ Wed Jun  9 19:58:35 UTC 2021 - James Fehlig <jfehlig@suse.com>
 Fri Oct 23 20:58:29 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 -  Make python subpackage ready for multiple python3 flavors
-   using the multibuild feature gh#openSUSE/python-rpm-macros#66 
+   using the multibuild feature gh#openSUSE/python-rpm-macros#66
 
 -------------------------------------------------------------------
 Tue Aug 18 22:48:21 UTC 2020 - James Fehlig <jfehlig@suse.com>
@@ -126,7 +131,7 @@ Tue Dec  5 18:53:41 UTC 2017 - jfehlig@suse.com
 -------------------------------------------------------------------
 Thu Nov 23 13:47:59 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -176,7 +181,7 @@ Wed Mar 15 08:23:44 UTC 2017 - zren@suse.com
   * refresh suse-no-date-time.patch to cover the same issue
     in fence_sanlockd
   * adjust fence_sanlockd.init and suse-systemd.patch
-- Enable sanlk-reset subpackage 
+- Enable sanlk-reset subpackage
 - Fix "undefined symbol to io_suspend" at runtime, bsc#1030060
   suse-fix-link-errors.patch
 
@@ -209,8 +214,8 @@ Sat Mar 21 16:26:54 UTC 2015 - p.drouand@gmail.com
   it's redundant
 - Add systemd backward compatibility links
 - Update patchs:
-  * suse-no-date-time.patch 
-  * suse-systemd.patch 
+  * suse-no-date-time.patch
+  * suse-systemd.patch
 
 -------------------------------------------------------------------
 Fri Jan 10 10:16:16 MST 2014 - jfehlig@suse.com
@@ -300,5 +305,5 @@ Wed Jan 18 10:17:57 MST 2012 - jfehlig@suse.com
 -------------------------------------------------------------------
 Thu Dec 22 01:15:39 CET 2011 - ro@suse.de
 
-- initial package based on package from openstack 
+- initial package based on package from openstack
 
