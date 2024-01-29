@@ -1,7 +1,7 @@
-Index: feh-3.9/config.mk
+Index: feh-3.10.2/config.mk
 ===================================================================
---- feh-3.9.orig/config.mk
-+++ feh-3.9/config.mk
+--- feh-3.10.2.orig/config.mk
++++ feh-3.10.2/config.mk
 @@ -36,8 +36,8 @@ icon_dir = ${ICON_PREFIX}/hicolor
  scalable_icon_dir = ${icon_dir}/scalable/apps
  
@@ -15,8 +15,8 @@ Index: feh-3.9/config.mk
  CFLAGS += -std=c11 -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -D_DARWIN_C_SOURCE
 Index: feh-3.9/src/Makefile
 ===================================================================
---- feh-3.9.orig/src/Makefile
-+++ feh-3.9/src/Makefile
+--- feh-3.10.2.orig/src/Makefile
++++ feh-3.10.2/src/Makefile
 @@ -42,7 +42,7 @@ I_SRCS = ${shell echo *.raw}
  I_DSTS = ${I_SRCS:.raw=.inc}
  

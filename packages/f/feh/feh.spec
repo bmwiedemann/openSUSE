@@ -1,7 +1,7 @@
 #
 # spec file for package feh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           feh
-Version:        3.9.1
+Version:        3.10.2
 Release:        0
 Summary:        X11 image viewer
 License:        LGPL-2.0-or-later AND MIT
@@ -30,8 +30,6 @@ Source4:        https://git.finalrewind.org/zsh/plain/etc/completions/_feh
 Source99:       feh-rpmlintrc
 # PATCH-FIX-OPENSUSE feh-makefile_optflags.patch https://github.com/derf/feh/issues/71 pascal.bleser@opensuse.org -- pass OPTFLAGS to make instead of hard-coded -O2 -g
 Patch1:         feh-makefile_optflags.patch
-# PATCH-FIX-UPSTREAM feh-fix_pointer_arithmetics.patch https://github.com/derf/feh/issues/69 pascal.bleser@opensuse.org -- fix compiler warnings on casting pointers as ints
-Patch2:         feh-fix_pointer_arithmetics.patch
 # PATCH-FIX-UPSTREAM https://github.com/derf/feh/pull/337
 Patch6:         feh-makefile_app.patch
 
@@ -49,8 +47,8 @@ Requires:       imlib2-loaders
 Requires:       libjpeg-turbo
 Requires(post): desktop-file-utils
 Requires(post): hicolor-icon-theme
-Requires(postun):desktop-file-utils
-Requires(postun):hicolor-icon-theme
+Requires(postun): desktop-file-utils
+Requires(postun): hicolor-icon-theme
 
 %description
 feh is an X11 image viewer aimed mostly at console users. It does not

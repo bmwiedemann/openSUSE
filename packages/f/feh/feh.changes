@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 28 11:20:03 UTC 2024 - Mazin Alhaddad <mazin@getstate.dev>
+
+- Update to 3.10.2
+  * Fix crash in right-click / menu rendering code on some distributions 
+- Drop 'feh-fix_pointer_arithmetics.patch'
+- Update keyring
+
+-------------------------------------------------------------------
 Sun Sep 18 09:02:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.9.1:
