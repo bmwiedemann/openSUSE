@@ -1,9 +1,9 @@
 #
 # spec file for package flocq
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Peter Trommler <ptrommler@icloud.com>
-# Copyright (c) 2023 Aaron Puchert <aaronpuchert@alice-dsl.net>
+# Copyright (c) 2024 Aaron Puchert <aaronpuchert@alice-dsl.net>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 
 Name:           flocq
-Version:        4.1.3
+Version:        4.1.4
 Release:        0
 Summary:        Formalization of floating point numbers for Coq
 Group:          Productivity/Scientific/Math
