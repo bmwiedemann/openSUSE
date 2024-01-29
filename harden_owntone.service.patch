@@ -1,9 +1,9 @@
-Index: owntone-28.2/owntone.service.in
+Index: owntone-28.9/owntone.service.in
 ===================================================================
---- owntone-28.2.orig/owntone.service.in
-+++ owntone-28.2/owntone.service.in
-@@ -5,6 +5,19 @@ Requires=network.target local-fs.target
- After=network.target sound.target remote-fs.target pulseaudio.service
+--- owntone-28.9.orig/owntone.service.in
++++ owntone-28.9/owntone.service.in
+@@ -7,6 +7,19 @@ Requires=network.target local-fs.target
+ After=network-online.target sound.target remote-fs.target pulseaudio.service
  
  [Service]
 +# added automatically, for details please see

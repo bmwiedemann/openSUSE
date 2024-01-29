@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Jan 28 17:20:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 28.9:
+  * web UI improvements:
+  * display lyrics metadata
+  * toggle Spotify on/off in some views
+  * many minor improvements
+  * use compressed ALAC for Airplay for bandwidth + fixes esp32
+    issue
+  * don't merge Spotify albums with local albums
+  * handle playlist with Unicode BOM
+  * json API add tracks to queue returns info on added tracks
+  * replace syscall with gettid, syscall deprecated on MacOS
+  * fix issue where m3u genre doesn't override despite
+    m3u_override = true
+  * fix possible crash from use-after-free
+  * fix FreeBSD possible crash
+  * fix crash when keys of incorrect length are used for legacy
+    pairing
+  * fix ALAC missing end tag causing ffmpeg decoder warnings
+  * fix crash if Spotify AP resolver is unavailable
+  * fix duplicates if file within library is replaced
+  * fix fatal error due to mutex being zeroed
+  * fix compability with ffmpeg 6
+  * web UI improvements:
+  * easier volume sliders
+  * incorrect display of genre
+  * Chinese translation
+  * fix removing RSS podcasts
+  * sort by rating for composer, genre and artist tracks
+  * (and much more)
+  * changes to artwork search orders (easier static artwork for
+    pipes)
+  * major refactor of the http server improving mp3 streaming
+  * support for m3u8 playlist files
+  * allow mixed ipv4/ipv6 mdns
+  * fix issue with device name capitalization (TuneAero issue)
+  * drop support for libevent < 2.1.4
+
+-------------------------------------------------------------------
 Tue Apr 11 11:02:24 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - update to version 28.6
