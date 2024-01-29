@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 26 21:11:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.20.0:
+  * Added support for TurboSHAKE128 and TurboSHAKE256.
+  * Added method Crypto.Hash.new() to generate a hash object
+    given a hash name.
+  * Added support for AES-GCM encryption of PBES2 and PKCS#8
+    containers.
+  * Added support for SHA-2 and SHA-3 algorithms in PBKDF2 when
+    creating PBES2 and PKCS#8 containers.
+  * Export of RSA keys accepts the prot_params dictionary as
+    parameter to control the number of iterations for PBKDF2 and
+    scrypt.
+  * C unit tests also run on non-x86 architectures.
+  * GH#787: Fixed autodetect logic for GCC 14 in combination with
+    LTO.
+
+-------------------------------------------------------------------
 Sat Dec 30 16:53:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.19.1 (bsc#1218564, CVE-2023-52323):
