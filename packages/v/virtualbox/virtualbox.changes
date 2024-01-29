@@ -10,10 +10,34 @@ Fri Jan 26 12:28:45 UTC 2024 - Bingwu Zhang <xtexchooser@duck.com>
 - Install UnattendedTemplates for unattended installing.
 
 -------------------------------------------------------------------
+Wed Jan 16 15:40:02 UTC 2024 - Larry Rainey <llrainey15@gmail.com>
+
+- Version bump to VirtualBox 7.0.14 (released January 16, 2024 by Oracle)
+
+This is a maintenance release. The following items were fixed and/or added:
+
+    Audio: Added more fixes for switching host audio devices on Windows hosts using the WAS backend
+    3D: Added general improvements
+    OCI: Fixed wrong guest RAM unit usage in VirtualSystemDescription, memory is provided in bytes, "Byte" is the base unit
+    Main: OVF Import/Export: Added support for importing and exporting VMs containing NVMe storage controllers (bug #19320)
+    Main: OVF Import/Export: Added support for exporting a VM which contains a medium inserted into a virtual CD/DVD drive which is attached to a Virtio-SCSI controller
+    Devices: Fixed a problem where Windows guests "forget" in-progress touch events when the user holds down a finger without moving it for a period of time.
+    macOS Host USB: Added support for newer storage devices
+    macOS Host: Fixed memory Leak in the VBoxIntNetSwitch process when VM was configured to use 'Internal Networking' (bug #21752)
+    Linux Host and Guest: Added initial support for RHEL 9.4 kernel
+    Linux Guest Additions: Fixed kernel panic on RHEL 8.9 kernel caused by vboxvideo (bugs #10381 and #21911)
+    Solaris Guest Additions: Added support for the Additions to be installed into an alternate root path ('pkgadd -R')
+    Solaris Guest Additions: Removed requirement to reboot VM after uninstalling GAs
+    RDP: Fix possible crash when connecting with the Apple Silicon variant of the Microsoft Remote Desktop application (bug #21820).
+    BIOS: Fixed handle number used for DMI OEM table (bug #19781) 
+
+=======
+-------------------------------------------------------------------
 Thu Oct 26 18:10:45 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - Update file "fixes_for_leap.patch" to cover API change in Leap 15.6 kernel.
 
+>>>>>>> ./virtualbox.changes.new
 -------------------------------------------------------------------
 Sat Oct 21 19:27:40 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 

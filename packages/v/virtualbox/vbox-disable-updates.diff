@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.12/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
+Index: VirtualBox-7.0.14/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
 ===================================================================
---- VirtualBox-7.0.12.orig/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
-+++ VirtualBox-7.0.12/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
+--- VirtualBox-7.0.14.orig/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
++++ VirtualBox-7.0.14/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
 @@ -99,8 +99,6 @@ void UISettingsDialogGlobal::retranslate
      m_pSelector->setItemText(GlobalSettingsPageType_Input, tr("Input"));
  
