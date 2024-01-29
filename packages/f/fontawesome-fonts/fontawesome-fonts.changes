@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Dec 27 20:53:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.5.1:
+  * Updated the reddit, reddit-alien, and square-reddit brand icons
+  * Corrected file-pdf reading "PNG"
+  * Updated some brand icons that were accidentally marked as
+    Pro-only
+  * 3,000+ icons in an elegant new style: Sharp Thin
+  * Icons are all built on the same 16px grid as existing Font
+    Awesome Classic icons.
+  * Icon upload now supports Duotone Icons!
+  * A batch of new brand icons, including: Google Scholar, Pixiv,
+    Signal, Upwork, and Webflow.
+  * Added the Mintbit brand icon, commissioned by Mintbit.
+  * Our dinosaur icon was lonely, so we added a T-Rex icon
+    to keep it company.
+  * Made our childhood selves happy by adding truck-fire,
+    excavator, and bulldozer icons. Also added a truck-ladder icon.
+  * Added a selection of City Management icons commissioned by
+    WBlue, including landmark-magnifying-glass, tent-double-peak,
+    truck-utensils, hammer-brushh, sign, sign-wrench, sign-post,
+    building-memo, building-magnifying-glass, and
+    hand-holding-circle-dollar.
+  * Included some popular icon requests, including: bell-ring,
+    folder-check, cannon, court-sport, and wave.
+  * Collected a number of new file-type icons.
+  * Searched for a selection of new magnifying glass icons:
+    magnifying-glass-waveform, magnifying-glass-play, and
+    magnifying-glass-music. The latter was commissioned by Undeco.
+  * Flipped out on new reflect-horizontal and reflect-vertical icons.
+  * Added new ticket-based icons: tickets, ticket-perforated,
+    and tickets-perforated.
+  * Updated Facebook, Patreon, Ubuntu, and SUSE logos.
+  * Simplified the "fire" icon modifier in a number of our icons.
+  * Updated all of our "square" brand icons to use a consistent
+    corner radius.
+  * Fixed an issue with a number of our icons that had
+    self-intersecting vector paths, making them more compatible
+     with the Icon Wizard.
+  * Fixed minor issues with our scroll-old, spray-can,
+    and filter-circle-dollar icons.
+
+-------------------------------------------------------------------
 Fri Aug  4 10:15:33 UTC 2023 - Dawid Adam <nyslay@gmail.com>
 
 - Added
@@ -151,7 +194,7 @@ Mon Aug 15 20:59:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fired up the bbq with our new grill, grill-hot, and grill-fire icons
   * Switched on our new toggle-large-on and toggle-large-off icons
   * Said yes to a new ring-diamond icon
-  * New square-gitlab brand icon 
+  * New square-gitlab brand icon
   * tons of changes and fixes (see https://fontawesome.com/docs/changelog/=
 - remove outdated LICENSE.txt copy and use the released license instead
 
@@ -159,35 +202,35 @@ Mon Aug 15 20:59:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Tue May 17 10:30:53 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 6.1.1
-  * Added a plus-large variant of our plus icon 
-  * Added new child-dress icon 
-  * Added a TypeScript d.ts file for the import.macro.js module 
+  * Added a plus-large variant of our plus icon
+  * Added new child-dress icon
+  * Added a TypeScript d.ts file for the import.macro.js module
   * Adjusted the children icon to be more consistent with the new
-    child and child-dress icons 
+    child and child-dress icons
   * Lowered the arms on the child icon and added a new child-reaching
-    variant to match v5 icon 
+    variant to match v5 icon
   * Brought back a handful of version 4 compatibility unicode aliases
   * Fixing light style of square-star, so it looks less like circle-star
-  * Made thin style of cubes-stacked actually thin 
+  * Made thin style of cubes-stacked actually thin
   * Fixed dial-max icon in the light and thin styles,
-    and standardized width on dial indicators in the solid and duotone styles 
+    and standardized width on dial indicators in the solid and duotone styles
 - Update to version 6.1.0
   * Collaborated with the United Nations Office for the Coordination
     of Humanitarian Affairs (OCHA) on a set of new icons that depict
     themes of interest to the humanitarian community such as clusters,
     disaster types, categories of affected people, and relief items.
-  * Crossed over with a new sponsored bridge-suspension icon 
-  * Cut the deck with a new cards-blank icon 
+  * Crossed over with a new sponsored bridge-suspension icon
+  * Cut the deck with a new cards-blank icon
   * Pointed to new sponsored icons
-  * New down-to-bracket and up-from-bracket icons 
-  * Merged in a new merge icon to match our existing split icon 
-  * New sponsored ScreenPal brand icon 
+  * New down-to-bracket and up-from-bracket icons
+  * Merged in a new merge icon to match our existing split icon
+  * New sponsored ScreenPal brand icon
   * Claimed our stake in new sponsored hexagon-vertical-nft and
-    hexagon-vertical-nft-slanted icons 
-  * Made an entirely fungible new sponsored hexagon-image icon 
+    hexagon-vertical-nft-slanted icons
+  * Made an entirely fungible new sponsored hexagon-image icon
   * Nearly communicated some new sponsored NFC-related icons
-  * New shield-quartered icon 
-  * Zoomed in on our xmark icon, and made an xmark-large variant 
+  * New shield-quartered icon
+  * Zoomed in on our xmark icon, and made an xmark-large variant
 
 -------------------------------------------------------------------
 Sun Feb 20 21:09:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -322,7 +365,7 @@ Thu Nov 24 10:16:25 UTC 2016 - mpluskal@suse.com
 Fri Jul 29 12:39:11 UTC 2016 - petr@cervinka.net
 
 - Updated to version 4.6.3
-   * Fixed  fa-instagram 
+   * Fixed  fa-instagram
    * Updated google plus icon
 - Changes in version 4.6.2
    * Updated pied-piper logo
