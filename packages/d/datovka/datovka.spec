@@ -1,7 +1,7 @@
 #
 # spec file for package datovka
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,8 @@
 %define qt_version_full 5.4.1
 %define lrelease lrelease-qt5
 %endif
-
 Name:           datovka
-Version:        4.23.0
+Version:        4.23.3
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later
@@ -37,11 +36,6 @@ Source0:        https://secure.nic.cz/files/datove_schranky/%{version}/%{name}-%
 Source1:        https://secure.nic.cz/files/datove_schranky/%{version}/%{name}-%{version}.tar.xz.sha256
 # PATCH-FIX-UPSTREAM: remove some issues with current .pro file
 Patch0:         datovka-fix-pro.patch
-%if 0%{qt_version} == 6
-BuildRequires:  qt6-tools-linguist
-%else
-BuildRequires:  libqt5-linguist
-%endif
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt%{qt_version}Core) >= %{qt_version_full}
@@ -53,16 +47,21 @@ BuildRequires:  cmake(Qt%{qt_version}Svg) >= %{qt_version_full}
 BuildRequires:  cmake(Qt%{qt_version}WebSockets) >= %{qt_version_full}
 BuildRequires:  cmake(Qt%{qt_version}Widgets) >= %{qt_version_full}
 BuildRequires:  cmake(QuaZip-Qt%{qt_version})
-BuildRequires:  pkgconfig(libdatovka) >= 0.1.2
+BuildRequires:  pkgconfig(libdatovka) >= 0.6.0
+Recommends:     %{name}-lang
+# Included inside with different approach
+Obsoletes:      python-dslib
+%if 0%{qt_version} == 6
+BuildRequires:  qt6-tools-linguist
+%else
+BuildRequires:  libqt5-linguist
+%endif
 %if 0%{qt_version} == 6
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt_version_full}
 Requires:       qt6-sql-sqlite
 %else
 Requires:       libqt5-sql-sqlite
 %endif
-Recommends:     %{name}-lang
-# Included inside with different approach
-Obsoletes:      python-dslib
 %if 0%{?suse_version} < 1330
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
@@ -88,8 +87,8 @@ export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 %{lrelease} datovka.pro
 %if 0%{qt_version} == 6
-%qmake6 PREFIX=%{_prefix} DISABLE_VERSION_CHECK_BY_DEFAULT=1
-%qmake6_build
+%{qmake6} PREFIX=%{_prefix} DISABLE_VERSION_CHECK_BY_DEFAULT=1
+%{qmake6_build}
 %else
 %qmake5 PREFIX=%{_prefix} DISABLE_VERSION_CHECK_BY_DEFAULT=1
 %make_jobs
@@ -97,7 +96,7 @@ export CXXFLAGS="%{optflags}"
 
 %install
 %if 0%{qt_version} == 6
-%qmake6_install
+%{qmake6_install}
 %else
 %qmake5_install
 %endif
