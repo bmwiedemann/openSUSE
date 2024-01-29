@@ -317,4 +317,17 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
     <comment></comment>
     <requestid>1131467</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>4cd2b872c840df474e4a60df4d6f949e</srcmd5>
+    <version>20231206</version>
+    <time>1706563625</time>
+    <user>anag+factory</user>
+    <comment>- Make phonon4qt5-backend a hard dep of the plasma pattern
+  (boo#1219277)
+- Avoid gstreamer if not necessary
+
+- Change from phonon4qt5-backend-gstreamer to phonon4qt5-backend-vlc
+  due to deprecation of the gstreamer backend</comment>
+    <requestid>1142232</requestid>
+  </revision>
 </revisionlist>
