@@ -1,8 +1,7 @@
-Index: BibTool/AutoConf/makefile.in
-===================================================================
---- BibTool.orig/AutoConf/makefile.in
-+++ BibTool/AutoConf/makefile.in
-@@ -218,9 +218,9 @@ NON_ANSI_DEFS = @DEFS@
+diff -auNr BibTool/AutoConf/makefile.in BibTool-new/AutoConf/makefile.in
+--- BibTool/AutoConf/makefile.in	2020-04-13 22:32:40.000000000 +0800
++++ BibTool-new/AutoConf/makefile.in	2024-01-29 18:09:47.041145779 +0800
+@@ -234,9 +234,9 @@
  REGEX_DIR  = regex-0.12
  # 
  
@@ -14,37 +13,35 @@ Index: BibTool/AutoConf/makefile.in
  
  # -------------------------------------------------------
  #  Kpathsea Library support.
-@@ -476,8 +476,8 @@ $(OFILES): $(MAKEFILE)
+@@ -500,8 +500,8 @@
  # __________________________________________________________________
  #  Targets from the GNU Regular Expression Library.
  
 -regex$(OBJ): $(REGEX_DIR)$(DIR_SEP)regex.c $(MAKEFILE)
 -	$(CC) $(C_FLAGS) -I$(REGEX_DIR) -I.. $(NON_ANSI_DEFS) $(REGEX_DIR)$(DIR_SEP)regex.c $(DONT_LINK) -o $@
-+#regex$(OBJ): $(REGEX_DIR)$(DIR_SEP)regex.c $(MAKEFILE)
-+#	$(CC) $(C_FLAGS) -I$(REGEX_DIR) -I.. $(NON_ANSI_DEFS) $(REGEX_DIR)$(DIR_SEP)regex.c $(DONT_LINK) -o $@
++# regex$(OBJ): $(REGEX_DIR)$(DIR_SEP)regex.c $(MAKEFILE)
++# 	$(CC) $(C_FLAGS) -I$(REGEX_DIR) -I.. $(NON_ANSI_DEFS) $(REGEX_DIR)$(DIR_SEP)regex.c $(DONT_LINK) -o $@
  
  
  bibtcl:
-@@ -511,7 +511,7 @@ Test:
+@@ -535,7 +535,7 @@
  	(cd test; $(MAKE))
  
- libbib.a: $(OLIBFILES)
+ libbibtool.a: $(OLIBFILES)
 -	$(AR) $@ $(OLIBFILES) regex.o
 +	$(AR) $@ $(OLIBFILES)
  	$(RANLIB) $@
  
  depend:
-Index: BibTool/rewrite.c
-===================================================================
---- BibTool.orig/rewrite.c
-+++ BibTool/rewrite.c
-@@ -22,7 +22,8 @@
- #include <bibtool/rewrite.h>
+diff -auNr BibTool/rewrite.c BibTool-new/rewrite.c
+--- BibTool/rewrite.c	2020-04-13 22:31:54.000000000 +0800
++++ BibTool-new/rewrite.c	2024-01-29 18:10:26.031482831 +0800
+@@ -37,7 +37,8 @@
+ #include <bibtool/symbols.h>
  
  #ifdef REGEX
--#include <bibtool/regex.h>
+ #include <bibtool/regex.h>
 +#define  __USE_GNU
-+#include <regex.h>
  #endif
  
   typedef struct rULE
