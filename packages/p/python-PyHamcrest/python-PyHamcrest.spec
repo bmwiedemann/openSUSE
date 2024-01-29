@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyHamcrest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-PyHamcrest
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 Summary:        Hamcrest framework for matcher objects
 License:        BSD-3-Clause
 URL:            https://github.com/hamcrest/PyHamcrest
-# PyPi is missing tests
-#Source:         https://files.pythonhosted.org/packages/source/P/PyHamcrest/PyHamcrest-%%{version}.tar.gz
-Source:         https://github.com/hamcrest/PyHamcrest/archive/V%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pyhamcrest/pyhamcrest-%{version}.tar.gz
 Patch0:         0001-Add-boolean-matchers.patch
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module hypothesis >= 1.11}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-hamcrest = %{version}
@@ -45,14 +45,14 @@ PyHamcrest is a framework for writing matcher objects,
 allowing you to declaratively define “match” rules.
 
 %prep
-%setup -q -n PyHamcrest-%{version}
+%setup -q -n pyhamcrest-%{version}
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/hamcrest
 
 %check
@@ -62,6 +62,6 @@ allowing you to declaratively define “match” rules.
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/hamcrest
-%{python_sitelib}/PyHamcrest-%{version}-py*.egg-info/
+%{python_sitelib}/pyhamcrest-%{version}.dist-info
 
 %changelog
