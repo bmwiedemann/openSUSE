@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 28 10:38:08 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.6.2:
+  * Make the main canvas background to mid-gray, when on non-dark
+    color themes.
+  * Updated copyright headers into the New Year (2024).
+
+-------------------------------------------------------------------
 Tue Dec  5 19:28:42 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.6.1:
