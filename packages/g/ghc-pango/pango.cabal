@@ -1,7 +1,7 @@
 cabal-version:  3.0
 Name:           pango
 Version:        0.13.10.0
-x-revision: 1
+x-revision:     2
 License:        LGPL-2.1-only
 License-file:   COPYING
 Copyright:      (c) 2001-2010 The Gtk2Hs Team
@@ -55,7 +55,7 @@ Library
                         pretty < 1.2,
                         glib  >= 0.13.0.0 && < 0.14,
                         cairo >= 0.13.0.0 && < 0.14,
-                        text >= 0.11.0.6 && < 2.1
+                        text >= 0.11.0.6 && < 2.2
 
         if flag(new-exception)
           build-depends:  base >= 4
@@ -97,4 +97,3 @@ Library
         else
           pkgconfig-depends: pango >= 1.0
         pkgconfig-depends:  cairo >= 1.2.0, pangocairo >= 1.10
-
