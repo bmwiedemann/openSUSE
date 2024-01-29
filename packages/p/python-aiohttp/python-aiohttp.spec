@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -131,6 +131,9 @@ donttest+=" or test_client_session_timeout_zero or test_requote_redirect_url_def
 donttest+=" or test_https_proxy_unsupported_tls_in_tls"
 # not running under pytest ?!
 donttest+=" or test_circular_imports or test_import_time"
+# raises not expected "ConnectionResetError" with openssl 3.2 and python < 3.11
+donttest+=" or test_tcp_connector_raise_connector_ssl_error[pyloop]"
+
 # requires python-on-whales
 rm -v tests/autobahn/test_autobahn.py
 # randomly fails on xdist splits
