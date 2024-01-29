@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>1123256</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>95f09e81691050ccead7212293503c2a</srcmd5>
+    <version>5.4.3</version>
+    <time>1706563959</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.4.3 (forwarded request 1142179 from jgwang)</comment>
+    <requestid>1142216</requestid>
+  </revision>
 </revisionlist>
