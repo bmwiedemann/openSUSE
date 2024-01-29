@@ -49,7 +49,7 @@
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.0.12
+Version:        7.0.14
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-2.0-or-later

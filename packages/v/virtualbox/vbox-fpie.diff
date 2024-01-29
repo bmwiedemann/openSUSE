@@ -1,8 +1,8 @@
-Index: VirtualBox-7.0.12/Config.kmk
+Index: VirtualBox-7.0.14/Config.kmk
 ===================================================================
---- VirtualBox-7.0.12.orig/Config.kmk
-+++ VirtualBox-7.0.12/Config.kmk
-@@ -6778,6 +6778,9 @@ TEMPLATE_VBoxR3HardenedExe_LDFLAGS.darwi
+--- VirtualBox-7.0.14.orig/Config.kmk
++++ VirtualBox-7.0.14/Config.kmk
+@@ -6777,6 +6777,9 @@ TEMPLATE_VBoxR3HardenedExe_LDFLAGS.darwi
  ifeq ($(KBUILD_TARGET),linux)
   # not necessary except USE_LIB_PCAP is defined in SUPR3HardenedMain.cpp
   # TEMPLATE_VBoxR3HardenedExe_LIBS += cap
@@ -12,7 +12,7 @@ Index: VirtualBox-7.0.12/Config.kmk
  endif
  ifeq ($(KBUILD_TARGET),win) # No CRT!
   TEMPLATE_VBoxR3HardenedExe_SDKS          = VBoxNtDll $(TEMPLATE_VBoxR3Exe_SDKS)
-@@ -6810,8 +6813,8 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
+@@ -6809,8 +6812,8 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
   TEMPLATE_VBoxR3HardenedExe_VBOX_IMPORT_CHECKER.win = noimports
  else ifn1of ($(KBUILD_TARGET), os2)
   ifneq ($(KBUILD_TYPE),asan) # Keep RPATH in asan builds so we can find libasan.so.X and libubsan.so.Y.
