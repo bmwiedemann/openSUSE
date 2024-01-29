@@ -543,4 +543,41 @@
     <comment>Security fix CVE-2023-46751 bsc#1217871 for ghostscript and ghostscript-mini (forwarded request 1136515 from jsmeix)</comment>
     <requestid>1136517</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>ba6aeeab1998c13aae81995158267b6e</srcmd5>
+    <version>10.02.1</version>
+    <time>1706563598</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.02.1:
+  * Patch release to address some security bugs
+  * This release (10.02.0) marks the final demise of the
+    PostScript based PDF interpreter.
+  * This 10.01.1 release removes the &quot;-dNEWPDF=false&quot; command
+    line option to fall back to the deprecated, old PDF
+    interpreter.
+  * This 10.01.0 release removes the &quot;-dNEWPDF=false&quot; command
+    line option to fall back to the deprecated, old PDF
+    interpreter.
+  * This release officially deprecates the old Postscript
+    implementation of PDF, we will not be updating or maintaining
+    that code moving forward. The option to use the old PDF
+    implementation _**will**_ be removed in the next full release
+    (10.01.0)
+  * Important: This release includes the new PDF interpreter
+    (implemented in C rather than PostScript). It is both
+    integrated into Ghostscript (now ENABLED by default), and
+    available as a standalone, PDF only, binary. See
+    https://ghostscript.com/pdfi.html for more details.
+  * This also bundles the latest zlib (1.2.12) which addresses a
+    security issue (CVE-2018-25032)
+  * **Important**: This release includes the new PDF interpreter
+    (implemented in C rather than PostScript). It is both
+    integrated into Ghostscript (now **ENABLED** by default), and
+    available as a standalone, PDF only, binary. See
+    https://ghostscript.com/pdfi.html for more details.
+- drop CVE-2023-28879.patch, CVE-2023-36664.patch,
+       CVE-2023-38559.patch, CVE-2023-43115.patch,
+       CVE-2023-46751.patch: upstream</comment>
+    <requestid>1142081</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Jan 28 10:39:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.02.1:
+  * Patch release to address some security bugs
+  * This release (10.02.0) marks the final demise of the
+    PostScript based PDF interpreter.
+  * This 10.01.1 release removes the "-dNEWPDF=false" command
+    line option to fall back to the deprecated, old PDF
+    interpreter.
+  * This 10.01.0 release removes the "-dNEWPDF=false" command
+    line option to fall back to the deprecated, old PDF
+    interpreter.
+  * This release officially deprecates the old Postscript
+    implementation of PDF, we will not be updating or maintaining
+    that code moving forward. The option to use the old PDF
+    implementation _**will**_ be removed in the next full release
+    (10.01.0)
+  * Important: This release includes the new PDF interpreter
+    (implemented in C rather than PostScript). It is both
+    integrated into Ghostscript (now ENABLED by default), and
+    available as a standalone, PDF only, binary. See
+    https://ghostscript.com/pdfi.html for more details.
+  * This also bundles the latest zlib (1.2.12) which addresses a
+    security issue (CVE-2018-25032)
+  * **Important**: This release includes the new PDF interpreter
+    (implemented in C rather than PostScript). It is both
+    integrated into Ghostscript (now **ENABLED** by default), and
+    available as a standalone, PDF only, binary. See
+    https://ghostscript.com/pdfi.html for more details.
+- drop CVE-2023-28879.patch, CVE-2023-36664.patch,
+       CVE-2023-38559.patch, CVE-2023-43115.patch,
+       CVE-2023-46751.patch: upstream
+- drop remove-zlib-h-dependency.patch: unused
+
+-------------------------------------------------------------------
 Wed Jan  3 12:15:46 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
 
 - CVE-2023-46751.patch is
@@ -103,12 +138,12 @@ Mon Jul 18 07:28:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Jul 18 06:38:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- Use _multibuild 
+- Use _multibuild
 
 -------------------------------------------------------------------
 Wed Apr 13 11:12:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- Use system zlib (bsc#1198449) 
+- Use system zlib (bsc#1198449)
 
 -------------------------------------------------------------------
 Thu Apr  7 08:14:51 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
@@ -231,7 +266,7 @@ Tue Oct 20 16:03:48 CEST 2020 - jsmeix@suse.de
     Note for GSView Users: The patch level addition breaks
     GSView 5 (it is hardcoded to check for versions 704-999).
     It is possible, but not guaranteed that a GSView update might
-    be forthcoming to resolve this. 
+    be forthcoming to resolve this.
   For a release summary see:
   https://www.ghostscript.com/doc/9.53.3/News.htm
   For details see the News.htm and History9.htm files.
