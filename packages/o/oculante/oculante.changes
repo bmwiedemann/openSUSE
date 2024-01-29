@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 28 01:44:30 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.7:
+  + Features:
+    - Add Basic support for ktx2
+- add _constraints to fix out of memory on aarch64 build
+
+-------------------------------------------------------------------
 Sat Dec 16 09:33:00 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package
