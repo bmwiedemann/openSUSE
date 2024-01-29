@@ -20,7 +20,7 @@
 %global sover   14
 %global flavor @BUILD_FLAVOR@%{nil}
 Name:           nghttp2
-Version:        1.58.0
+Version:        1.59.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(openssl) >= 1.1.1
 BuildRequires:  pkgconfig(zlib)
 %ifnarch ppc %{arm}
 BuildRequires:  pkgconfig(jemalloc)
