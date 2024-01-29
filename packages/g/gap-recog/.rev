@@ -7,4 +7,12 @@
     <comment>GAP CAS module</comment>
     <requestid>1134868</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2dc967de31a9f14898464fa8edb20a26</srcmd5>
+    <version>1.4.2</version>
+    <time>1706564037</time>
+    <user>anag+factory</user>
+    <comment>- Force-rewrite &quot;/usr/bin/env python&quot; to &quot;python3&quot; (not 2.x)</comment>
+    <requestid>1142589</requestid>
+  </revision>
 </revisionlist>
