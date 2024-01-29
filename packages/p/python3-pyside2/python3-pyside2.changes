@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 26 14:34:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Enable SLE15 python module for a more modern python than 3.6
+  * disambiguate multiple providers of cmake(Pyside2) with
+    pyside2_python_abi() provides
+- Use llvm14 for 15.6 in order to workaround PYSIDE-2288:
+  * Wrong type for QEvent::Type
+  * avoids patch like deb#1051886 for libqt5-qtbase
+
+-------------------------------------------------------------------
 Fri Jan 12 09:22:25 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Disable the QtQml_signal_arguments test in s390x just as it was
