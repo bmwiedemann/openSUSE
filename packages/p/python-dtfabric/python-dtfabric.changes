@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 27 21:31:46 UTC 2024 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to version 20230520 
+  * No changelog was provided.
+- Add BuildRequires: python-setuptools -- build was failing without it
+- Add Requires: python-pip -- lint check requested it 
+  -- not sure I did this properly; still getting lint errors.
+  
+-------------------------------------------------------------------
 Sun Jul 30 07:15:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file.
