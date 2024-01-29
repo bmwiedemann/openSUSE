@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 28 18:45:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.4:
+  * add mysql indexstorage backend
+  * add s3 storage for attestations
+  * fix: Do not check for pubsub.topics.get on initialization
+  * fix optional field in cose schema
+  * Update ranges.go
+  * update indexstorage interface to reduce roundtrips
+  * use a single validator library in rekor-cli
+  * Remove go-playground/validator dependency from pkg/pki
+
+-------------------------------------------------------------------
 Fri Nov 24 16:03:38 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to rekor 1.3.3 (jsc#SLE-23476):
