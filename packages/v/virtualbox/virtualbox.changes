@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 27 08:18:41 UTC 2024 - Bingwu Zhang <xtexchooser@duck.com>
+
+- Fix extpack updater to allow PUEL version 11
+- Package UnattendedTemplates into main package
+
+-------------------------------------------------------------------
+Fri Jan 26 12:28:45 UTC 2024 - Bingwu Zhang <xtexchooser@duck.com>
+
+- Install UnattendedTemplates for unattended installing.
+
+-------------------------------------------------------------------
 Thu Oct 26 18:10:45 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - Update file "fixes_for_leap.patch" to cover API change in Leap 15.6 kernel.

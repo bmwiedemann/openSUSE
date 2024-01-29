@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package virtualbox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -555,6 +555,7 @@ install -d -m 755 %{buildroot}%{_prefix}/lib
 install -d -m 755 %{buildroot}%{_bindir}
 install -d -m 755 %{buildroot}%{_sbindir}
 install -d -m 755 %{buildroot}%{_datadir}/virtualbox/nls
+install -d -m 755 %{buildroot}%{_datadir}/virtualbox/UnattendedTemplates
 install -d -m 755 %{buildroot}%{_datadir}/pixmaps
 install -d -m 755 %{buildroot}%{_datadir}/applications
 install -d -m 755 %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
@@ -648,6 +649,7 @@ install -m 644 *.r0 				%{buildroot}%{_vbox_instdir}
 install -m 644 components/*			%{buildroot}%{_vbox_instdir}/components/
 # install languages
 install -m 644 nls/*				%{buildroot}%{_datadir}/virtualbox/nls/
+install -m 644 UnattendedTemplates/*		%{buildroot}%{_datadir}/virtualbox/UnattendedTemplates/
 # install kmp src
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/additions
@@ -971,6 +973,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %attr(1770,root,vboxusers) %{_sysconfdir}/vbox/autostart.d
 %config %attr(644,root,vboxusers) %{_sysconfdir}/vbox/vbox.cfg
 %config %attr(644,root,vboxusers) %{_sysconfdir}/vbox/autostart.cfg
+%{_datadir}/virtualbox/UnattendedTemplates
 
 %files qt
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxPermissionMessage
