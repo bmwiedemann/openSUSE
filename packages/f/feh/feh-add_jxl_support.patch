@@ -1,7 +1,7 @@
-Index: feh-3.9/share/applications/feh.pre
+Index: feh-3.10.2/share/applications/feh.pre
 ===================================================================
---- feh-3.9.orig/share/applications/feh.pre
-+++ feh-3.9/share/applications/feh.pre
+--- feh-3.10.2.orig/share/applications/feh.pre
++++ feh-3.10.2/share/applications/feh.pre
 @@ -9,5 +9,5 @@ Terminal=false
  Type=Application
  Icon=feh
