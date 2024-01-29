@@ -264,4 +264,19 @@ corruption of the VM's disk image.  See FATE#306399.</comment>
     <comment></comment>
     <requestid>1029802</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>767c23dd41bd5c6eb4c6c79c6da9e6bb</srcmd5>
+    <version>3.8.5</version>
+    <time>1706563623</time>
+    <user>anag+factory</user>
+    <comment>- add user()/group() provides for rpm 4.19
+
+   using the multibuild feature gh#openSUSE/python-rpm-macros#66
+- Replace references to /var/adm/fillup-templates with new
+- Enable sanlk-reset subpackage
+  * suse-no-date-time.patch
+  * suse-systemd.patch
+- initial package based on package from openstack</comment>
+    <requestid>1142220</requestid>
+  </revision>
 </revisionlist>
