@@ -1,0 +1,11 @@
+diff -Nru aws-c-cal-0.4.5.orig/CMakeLists.txt aws-c-cal-0.4.5/CMakeLists.txt
+--- aws-c-cal-0.4.5.orig/CMakeLists.txt	2020-11-21 06:21:48.000000000 +0100
++++ aws-c-cal-0.4.5/CMakeLists.txt	2020-11-26 12:52:06.019080125 +0100
+@@ -108,6 +108,7 @@
+ 
+ # Our ABI is not yet stable
+ set_target_properties(${PROJECT_NAME} PROPERTIES VERSION 1.0.0)
++set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SOVERSION 0unstable)
+ 
+ target_include_directories(${PROJECT_NAME} PUBLIC
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
