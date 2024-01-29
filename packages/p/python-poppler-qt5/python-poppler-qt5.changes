@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 29 08:58:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Enable SLE15 python module
+- Force c++17 gh#frescobaldi/python-poppler-qt5#61
+
+-------------------------------------------------------------------
 Thu May  5 19:36:17 UTC 2022 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 21.3.0:

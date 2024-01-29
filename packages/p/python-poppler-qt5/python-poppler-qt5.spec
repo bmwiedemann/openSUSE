@@ -1,7 +1,7 @@
 #
 # spec file for package python-poppler-qt5
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 LISA GmbH, Bingen, Germany.
 # Copyright (c) 2012 Johannes Engel <jcnengel@gmail.com>
 #
@@ -18,14 +18,12 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-poppler-qt5
 Version:        21.3.0
 Release:        0
 Summary:        Python binding to poppler-qt5
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            https://pypi.org/project/python-poppler-qt5/
 Source0:        https://files.pythonhosted.org/packages/source/p/python-poppler-qt5/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pyqt-builder}
@@ -62,7 +60,8 @@ python packages using python-poppler
 sed -i 's/text=True/universal_newlines=True/' project.py
 
 %build
-%pyqt_build
+# https://github.com/frescobaldi/python-poppler-qt5/issues/61
+%pyqt_build -s %{quote:--qmake-setting 'CONFIG += c++17'}
 
 %install
 %pyqt_install
