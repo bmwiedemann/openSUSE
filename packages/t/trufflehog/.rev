@@ -156,4 +156,30 @@
   * save 8 bytes per chunk (#2310) (forwarded request 1141026 from ph03nix)</comment>
     <requestid>1141040</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1855c0b28fcb81c53dab5d6d18f0979c</srcmd5>
+    <version>3.65.0</version>
+    <time>1706563717</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.65.0:
+  * Add the new MaxMind license key format (#2181)
+  * Prevent print or logging in detectors (#2341)
+  * make sure to close connections after testing (#2343)
+  * Fix test (#2339)
+  * add tri-state verification to yelp (#1736)
+  * Improve GitHub scan logging (#2220)
+  * Update DockerHub detector logic (#2266)
+  * Add Google oauth2 token detector (#2274)
+
+- Update to version 3.64.0:
+  * add priority semaphore (#2336)
+  * updating doppler logic (#2329)
+  * added azuredevopspersonalaccesstoken detector (#2315)
+  * Walk directories in filesystem source enumeration (#2313)
+  * [feat] - Replace regexp pkg w/ go-re2 in detectors (#2324)
+  * Update Gitlab repo count in tests #2333
+  * Narrow Postgres detector to only look for URIs (#2314)
+  * fixing incorrect acct num id for some aws keys (#2332) (forwarded request 1142057 from ph03nix)</comment>
+    <requestid>1142090</requestid>
+  </revision>
 </revisionlist>
