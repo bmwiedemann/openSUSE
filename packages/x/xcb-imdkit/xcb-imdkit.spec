@@ -1,7 +1,7 @@
 #
 # spec file for package xcb-imdkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _suffix 1
 Name:           xcb-imdkit
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        An implementation of xim protocol in xcb
 License:        LGPL-2.1-only

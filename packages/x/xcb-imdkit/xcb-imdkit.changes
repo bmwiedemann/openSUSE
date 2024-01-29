@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 27 17:25:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.6:
+  * Try alternative way to set event mask
+
+-------------------------------------------------------------------
 Mon Mar 27 11:27:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.0.5: 
+- update to 1.0.5:
   * Make the client demo to be more realistic, including handling the input
-    method server quits 
+    method server quits
 
 -------------------------------------------------------------------
 Tue Nov 22 11:29:56 UTC 2022 - Marguerite Su <i@marguerite.su>
@@ -51,4 +57,4 @@ Wed Mar  4 04:02:12 UTC 2020 - Xu Zhao <i@xuzhao.net>
 -------------------------------------------------------------------
 Sat Aug 25 05:25:16 UTC 2018 - i@marguerite.su
 
-- initial package 
+- initial package
