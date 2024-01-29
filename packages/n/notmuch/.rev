@@ -444,4 +444,17 @@ From the NEWS file, this version reports the following:
   * Update signatures for performance test corpus.</comment>
     <requestid>1128817</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>595fbd0fbdba80baf241392d74eaf910</srcmd5>
+    <version>0.38.2</version>
+    <time>1706563719</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.38.2:
+  * Make sorting of string maps lexicographic on (key,value)
+    pairs. This avoids some test failures due to variation in
+    message property output order.
+  * Avoid extra separators after the last address in `notmuch-
+    emacs-mua`.</comment>
+    <requestid>1142092</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 28 13:25:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.38.2:
+  * Make sorting of string maps lexicographic on (key,value)
+    pairs. This avoids some test failures due to variation in
+    message property output order.
+  * Avoid extra separators after the last address in `notmuch-
+    emacs-mua`.
+
+-------------------------------------------------------------------
 Sat Nov 25 22:18:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.38.1:
