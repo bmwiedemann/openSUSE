@@ -1,0 +1,8 @@
+<package name="eartag" project="openSUSE:Factory">
+  <title></title>
+  <description>Ear Tag is a simple audio file tag editor. It is primarily geared towards making quick edits or bulk-editing tracks in albums/EPs. Unlike other tagging programs, Ear Tag does not require the user to set up a music library folder.
+
+Ear Tag supports both desktop and mobile form factors.</description>
+  <devel project="GNOME:Apps" package="eartag"/>
+  <url>https://apps.gnome.org/EarTag/</url>
+</package>
