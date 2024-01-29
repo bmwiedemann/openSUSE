@@ -347,4 +347,41 @@
     many unformatted same-content lines.</comment>
     <requestid>1136067</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f02933f2c833343404d2d527b2286d53</srcmd5>
+    <version>24.1.0</version>
+    <time>1706563615</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.1.0:
+  * Add parentheses around `if`-`else` expressions
+  * Dummy class and function implementations consisting only of
+    `...` are formatted more compactly
+  * If an assignment statement is too long, we now prefer
+    splitting on the right-hand side
+  * Hex codes in Unicode escape sequences are now standardized to
+    lowercase
+  * Allow empty first lines at the beginning of most blocks
+  * Add parentheses around long type annotations
+  * Enforce newline after module docstrings
+  * Fix incorrect magic trailing comma handling in return types
+  * Remove blank lines before class docstrings
+  * Wrap multiple context managers in parentheses if combined in
+    a single `with` statement
+  * Fix bug in line length calculations for power operations
+  * Add trailing commas to collection literals even if there's a
+    comment after the last entry
+  * When using `--skip-magic-trailing-comma` or `-C`, trailing
+    commas are stripped from subscript expressions with more than
+    1 element
+  * Add extra blank lines in stubs in a few cases
+  * Accept raw strings as docstrings
+  * Split long lines in case blocks
+  * Stop removing spaces from walrus operators within subscripts
+  * Fix incorrect formatting of certain async statements
+  * Allow combining `# fmt: skip` with other comments
+  * There are already a few improvements in the `--preview`
+    style, which are slated for the 2025 stable style. Try them
+    out and share your feedback. In the past, the preview</comment>
+    <requestid>1142193</requestid>
+  </revision>
 </revisionlist>

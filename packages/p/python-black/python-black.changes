@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Jan 29 08:51:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.1.0:
+  * Add parentheses around `if`-`else` expressions
+  * Dummy class and function implementations consisting only of
+    `...` are formatted more compactly
+  * If an assignment statement is too long, we now prefer
+    splitting on the right-hand side
+  * Hex codes in Unicode escape sequences are now standardized to
+    lowercase
+  * Allow empty first lines at the beginning of most blocks
+  * Add parentheses around long type annotations
+  * Enforce newline after module docstrings
+  * Fix incorrect magic trailing comma handling in return types
+  * Remove blank lines before class docstrings
+  * Wrap multiple context managers in parentheses if combined in
+    a single `with` statement
+  * Fix bug in line length calculations for power operations
+  * Add trailing commas to collection literals even if there's a
+    comment after the last entry
+  * When using `--skip-magic-trailing-comma` or `-C`, trailing
+    commas are stripped from subscript expressions with more than
+    1 element
+  * Add extra blank lines in stubs in a few cases
+  * Accept raw strings as docstrings
+  * Split long lines in case blocks
+  * Stop removing spaces from walrus operators within subscripts
+  * Fix incorrect formatting of certain async statements
+  * Allow combining `# fmt: skip` with other comments
+  * There are already a few improvements in the `--preview`
+    style, which are slated for the 2025 stable style. Try them
+    out and share your feedback. In the past, the preview
+    style has included some features that we were not able to
+    stabilize. This year, we're adding a separate `--unstable`
+    style for features with known problems. Now, the `--preview`
+    style only includes features that we actually expect to make
+    it into next year's stable style.
+  * Fix comment handling when parenthesising conditional
+    expressions
+  * Fix bug where spaces were not added around parenthesized
+    walruses in subscripts, unlike other binary operators
+  * Remove empty lines before docstrings in async functions
+  * Address a missing case in the change to allow empty lines at
+    the beginning of all blocks, except immediately before a
+    docstring
+  * For stubs, fix logic to enforce empty line after nested
+    classes with bodies
+  * Add `--unstable` style, covering preview features that have
+    known problems that would block them from going into the
+    stable style. Also add the `--enable-unstable-feature`
+    flag; for example, use `--enable-unstable-feature
+    hug_parens_with_braces_and_square_brackets` to apply this
+    preview feature throughout 2024, even if a later Black
+    release downgrades the feature to unstable
+  * Format module docstrings the same as class and function
+    docstrings
+  * Fix crash when using a walrus in a dictionary
+  * Fix unnecessary parentheses when wrapping long dicts
+  * Stop normalizing spaces before `# fmt: skip` comments
+  * Print warning when configuration in `pyproject.toml` contains
+    an invalid key
+  * Fix symlink handling, properly ignoring symlinks that point
+    outside of root
+  * Fix cache mtime logic that resulted in false positive cache
+    hits
+  * Remove the long-deprecated `--experimental-string-processing`
+    flag. This feature can currently be enabled with `--preview
+    --enable-unstable- feature string_processing`.
+  * Revert the change to run Black's pre-commit integration only
+    on specific git hooks (#3940) for better compatibility with
+    older versions of pre-commit
+
+-------------------------------------------------------------------
 Tue Jan  2 08:19:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.12.1:
