@@ -1,7 +1,7 @@
 #
 # spec file for package ant-junit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -48,7 +48,7 @@ Patch6:         apache-ant-xml-apis.patch
 Patch7:         reproducible-propertyfile-task.patch
 BuildRequires:  antlr-bootstrap
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
 BuildRequires:  xml-commons-apis-bootstrap
 #!BuildIgnore:  xml-commons-apis
@@ -521,10 +521,7 @@ do
   fi
 
   #install pom
-  if [ "$jarname" != ant-bootstrap ]; then
-    %pom_remove_parent src/etc/poms/${jarname}/pom.xml
-  fi
-  install -m 644 src/etc/poms/${jarname}/pom.xml %{buildroot}/%{_mavenpomdir}/${pomname}
+  %{mvn_install_pom} src/etc/poms/${jarname}/pom.xml %{buildroot}/%{_mavenpomdir}/${pomname}
   if [ "$jarname" = ant-launcher ]; then
     %add_maven_depmap ${pomname} ${destname}${jarname}.jar -a ant:ant-launcher
   elif [ "$jarname" = ant-jmf ]; then
@@ -587,7 +584,7 @@ echo "junit4 ant/ant-junit4" > %{buildroot}%{_sysconfdir}/ant.d/junit4
 %endif
 
 %if %{with junit5}
-echo "junit5 hamcrest/core junit opentest4j ant/ant-junitlauncher" > %{buildroot}%{_sysconfdir}/ant.d/junitlauncher
+echo "junit5 hamcrest/core junit opentest4j univocity-parsers ant/ant-junitlauncher" > %{buildroot}%{_sysconfdir}/ant.d/junitlauncher
 %endif
 
 %if %{with antlr}
