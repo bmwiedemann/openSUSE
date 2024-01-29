@@ -823,4 +823,12 @@
   + ISO 3166-2: Fix wrong Spanish translation.</comment>
     <requestid>1088416</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>3a7cda3f618ea5c309e4dfc8bc3b635d</srcmd5>
+    <version>4.16.0</version>
+    <time>1706563625</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142239</requestid>
+  </revision>
 </revisionlist>

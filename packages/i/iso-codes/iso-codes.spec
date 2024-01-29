@@ -2,6 +2,7 @@
 # spec file for package iso-codes
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           iso-codes
-Version:        4.15.0
+Version:        4.16.0
 Release:        0
 Summary:        ISO Code Lists and Translations
 License:        LGPL-2.1-or-later
@@ -68,13 +69,16 @@ translations in gettext .po form.
 %find_lang iso_15924 %{name}.lang
 
 %files
+%license COPYING
 %doc CHANGELOG.md README.md TODO
 %{_datadir}/xml/iso-codes/
 %{_datadir}/iso-codes/
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %files devel
+%license COPYING
 %{_datadir}/pkgconfig/iso-codes.pc
 
 %changelog
