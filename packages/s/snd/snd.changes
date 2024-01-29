@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 27 11:55:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.0:
+  * in s7, fixed various bugs, made a few more optimizations.
+  * checked: sbcl 2.3.11, sbcl 2.4.0
+
+-------------------------------------------------------------------
 Sat Nov 25 14:24:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.9:
