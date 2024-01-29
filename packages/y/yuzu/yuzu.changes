@@ -1,0 +1,480 @@
+-------------------------------------------------------------------
+Sun Jan 28 15:25:22 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.1696:
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12749"
+  * "Merge Tagged PR 12760"
+  * "Merge Tagged PR 12802"
+  * android: Multi-program app switching
+  * input: add a missing null pointer check
+  * nx_tzdb: add another safety assertion
+  * nx_tzdb: check for unpacked directory
+
+-------------------------------------------------------------------
+Sat Jan 27 03:48:21 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.1694:
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12749"
+  * "Merge Tagged PR 12769"
+  * cmif_serialization: support non-domain sessions on domain servers
+  * cmif_types: improve ergonomics of types
+  * android: Disable default focus highlight on views that shouldn't be selected
+  * android: Allow controller to focus on toolbar menu items
+  * android: Add 600dp layout for GameInfoFragment
+  * android: Fix button click listener for build version name
+  * android: Disable focus for the root of cards that contain buttons
+  * android: Focus on the in game menu when opened
+  * cmake: support simpleini cmake config and pc file
+  * service: add template serializer for method calls
+  * android: Fix waiting for driver install on startup
+  * android: Add current driver vendor to FPS overlay
+  * android: Add key check
+  * android: Add option to make MessageDialogFragments non-dismissible
+  * frontend_common: Consistently use references
+  * frontend_common: Remove key rederivation and keep key check
+  * android: Only compare game contents for GameAdapter
+  * Rework time service to fix time passing offline.
+  * nvservices: close map handles on session close
+  * kernel: target invalidate to given process
+
+-------------------------------------------------------------------
+Fri Jan 26 11:20:56 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.1693:
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12499"
+  * "Merge Tagged PR 12749"
+  * "Merge Tagged PR 12759"
+  * "Merge Tagged PR 12769"
+  * Demote Mesa dozen to the bottom of the device list
+
+-------------------------------------------------------------------
+Thu Jan 25 12:02:43 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.1692:
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12499"
+  * "Merge Tagged PR 12749"
+  * service: properly convert buffers to strings
+  * loader: also register fs process for raw exefs partition
+  * device_memory_manager: fix ScratchBuffer indexing
+  * android: Add to launcher button
+  * android: Provide debug.keystore for debug and relWithDebInfo builds
+  * android: Port "Lock drawer" feature from Citra
+  * frontend_common: Remove default value for installer callbacks
+  * android: Add options to verify installed content
+  * core: hid: Allow to disable vibration
+  * frontend_common: Move integrity verification to content_manager
+  * service: hid: Implement EnableAppletForInput
+  * service: set: Don't allow invalid mii author id
+  * android: Sync translations
+  * android: Change "Clear" to "Use global setting" for per-game settings
+  * fs/file: Explicitly convert std::u8string to std::filesystem::path
+  * android: Use elevated card style for home setting card
+  * android: Sort recently added/played games by time
+  * frontend_common: Add documentation for content_mananger
+  * android: Add addon delete button
+  * android: Use callback to update progress bar dialogs
+  * frontend_common: Add content manager utility functions
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12688"
+  * "Merge Tagged PR 12695"
+  * device_memory_manager: use unique_lock for update
+  * nvhost_vic: use map erase by key
+  * nvdrv: clean up preallocation
+  * nvdrv: use correct names for interface factory
+  * nvdrv: use static typing for SessionId, smmu Asid types
+  * Core: Invert guest memory depandancy
+  * Core: Make sure GPU Dirty Managers ae shared by all processes.
+  * Core: Eliminate core/memory dependancies.
+  * SMMU: Fix Right Shift UB.
+  * SMMU: Fix 8Gb layout.
+  * Core: Clang format and other small issues.
+  * SMMU: Fix software rendering and cleanup
+  * SMMU: Add continuity tracking optimization.
+  * SMMU: Simplify and remove old code.
+  * SMMU: Add Android compatibility
+  * GPU-SMMU: Estimate game leak and preallocate device region.
+  * GPU SMMU: Expand to 34 bits
+  * SMMU: Fix Unregister on MultiAddress
+  * SMMU: Implement physical memory mirroring
+  * SMMU: Initial adaptation to video_core.
+  * SMMU: Implement backing CPU page protect/unprotect
+  * NVDRV: Implement sessions and initial implementation of SMMU
+  * Core: Initial implementation of device memory mapping
+  * vi: check layer state before opening or closing
+  * nvnflinger: ensure display abandonment considers all layers and future layers
+  * renderer_vulkan: recreate swapchain when frame size changes
+  * service: hid: Fully implement abstract vibration
+
+-------------------------------------------------------------------
+Sun Jan 21 00:07:58 UTC 2024 - pousaduarte@gmail.com
+
+- Update to version 0.1688:
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12579"
+  * "Merge Tagged PR 12660"
+  * "Merge Tagged PR 12688"
+  * "Merge Tagged PR 12701"
+  * Bump MoltenVK to v1.2.7
+  * service: hid: Clear controller status when aruid is no longer used
+  * Update based on feedback
+  * Allow -u to accept a username string in addition to index, and suppress the User selector even if settings requires it to be shown for one instance only.
+  * core: hid: Disable special features before disconnecting the controllers
+
+-------------------------------------------------------------------
+Sat Jan 20 01:01:07 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.1687:
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12688"
+  * "Merge Tagged PR 12695"
+  * input_common: Add android input engine
+  * android: Save overlay data while using emulation fragment
+  * ci: remove format dep from mainline step2
+  * service: set: Implement stubbed functions
+  * service: set: Refractor setting service
+  * Fix typos in master
+  * Fix typos in arrays.xml
+  * Fix one more typo
+  * Fix more typos
+  * service: nfc: Create backup when none exist
+  * android: Fix overlay toggle ordering
+  * ci: Remove format step from mainline builds
+  * core: Support multiple modules per patcher
+  * android: Show version name instead of git hash in the about fragment
+  * android: Clean up git commands in build.gradle
+  * android: Move ktlintCheck to yuzu-verify
+  * service: acc: Only save profiles when profiles have changed
+  * loader: fix homebrew nro registration
+  * kernel: optimize page free on shutdown
+  * kernel: fix debugger and process list lifetime
+  * kernel: fix page leak on process termination
+  * audio: fetch process object from handle table
+  * shader_recompiler: emulate 8-bit and 16-bit storage writes with cas loop
+  * fsp-srv: use program registry for SetCurrentProcess
+  * shader_recompiler: fix Offset operand usage for non-OpImage*Gather
+  * Save profile name used
+  * server_manager: respond to session close correctly
+
+-------------------------------------------------------------------
+Sun Jan 14 00:07:02 UTC 2024 - pousaduarte@gmail.com
+
+- Update to version 0.1680:
+  * "Merge Tagged PR 12173"
+  * "Merge Tagged PR 12610"
+  * "Merge Tagged PR 12612"
+  * service: hid: Create abstracted pad structure
+  * ci: fix file mode check in format script
+  * android: Fix added driver path
+  * android: Add button to use global driver value
+  * android: Reload driver data on importing user data
+  * android: Rework driver fragment
+  * android: Refactor DriverAdapter to use AbstractSingleSelectionList
+  * android: Create generic single selection list adapter
+  * android: Refactor recycler view adapters to use AbstractListAdapter
+  * android: Create generic list adapter for basic lists
+  * android: Refactor async diff adapters to use AbstractDiffAdapter
+  * android: Create generic adapter and viewholder
+  * ci: fix format task
+  * externals: Update txdb_to_nx
+  * Fix typos in src/core (#12625)
+  * ci: make verify format workflow output more helpful
+  * general: fix trailing whitespace
+  * vi: connect vsync event handle lifetime to application display service interface
+  * vi: fix name of nvnflinger
+  * Fix "Propietary" typo elsewhere
+  * Fix typos in video_core
+  * service: hid: Delete shared memory handle when unused
+  * service: hid: Make sure there's an active aruid handle
+  * service: hid: Implement GetLastActiveNpad
+  * service: hid: Implement AssigningSingleOnSlSrPress
+  * service: hid: Implement SetNpadSystemExtStateEnabled
+  * service: set: Rename files
+  * service: hid: Implement CaptureButtonAssignment
+  * service: set: Use official names
+  * service: hid: Add functions needed by Qlaunch
+  * service: hid: Handle pending delete
+  * hid_core: Move hid to it's own subproject
+  * android: Re-add global save manager
+  * android: add basic support for google game dashboard
+
+-------------------------------------------------------------------
+Sun Jan 07 00:07:14 UTC 2024 - pousaduarte@gmail.com
+
+- Update to version 0.1674:
+  * "Merge Tagged PR 12173"
+  * android: Save global config synchronously in onCloseGameFoldersFragment
+  * frontend_common: config: Only write setting related to opened config file
+  * android: Don't save settings on config destruction
+  * android: Update orientation on emulation fragment start
+  * android: Expose all orientation locking options
+  * service: hid: Remove data races when handling shared memory
+  * service: hid: Implement NpadResource and NpadData
+  * frontend_common: config: Move WriteIntegerSetting definition to header
+  * actions: android: Prevent resolving tag commit to PR link
+  * actions: android: Resolve PR commits to link
+  * actions: android: Move trigger logic to be yuzu-android specific
+  * android: Add internal option to disable compression for zip exports
+  * KThread: Send termination interrupt to all cores a thread has affinity to
+  * yuzu: Use displayed port on direct connect
+  * android: Use case-insensitive check for addon directory
+  * android: Fix dpad position saving
+  * Update translations (2024-01-01)
+  * Vulkan: Only recreate swapchain if the frame is bigger than the swap image.
+  * MaxwellDMA: Don't flush the outputs of a dma copy.
+  * service: hid: Use applet resource to get latest shared memory handle
+  * android: Expose touchscreen toggle
+  * android: Don't apply material you below android 12
+  * frontend_common: config: Do not count "." as a special character
+  * android: Migrate in-game overlay settings to ini
+  * frontend_common: config: Refactor WriteSetting to stricter types
+  * android: Migrate theme settings to ini
+  * android: Update Kotlin version to 1.9.20
+  * yuzu_cmd: Report more SDL errors
+  * Fix Wayland appId
+  * android: Expose anisotropic filtering setting
+  * android: Center switch setting title when no description is present
+  * android: Pair fastmem toggle to CPU Debug toggle
+  * jit: use code memory handles correctly
+  * actions: android: Build relWithDebInfo on main repo
+  * k_capabilities: simplify KTrace map skip logic
+  * ips_layer: prevent out of bounds access with offset exceeding module size
+  * heap_tracker: use linear-time mapping eviction
+  * shader_recompiler: use default value for clip distances array
+  * shader_recompiler: respect clip distance limits in indexed store
+  * video_core: Fix buffer_row_length computation for linear compressed textures
+  *  assert/logging: Stop the logging thread and flush the backends before crashing
+  * core: track separate heap allocation for linux
+  * ring_buffer: Use feature macro
+  * main: Remove unused enum
+  * am/jit: reference memory instance from context
+  * kernel: remove unecessary process member from handle table
+  * service: fetch objects from the client handle table
+  * kernel: use simple mutex for object list container
+  * core_timing: block advance thread while clearing and signal after
+  * core_timing: handle concurrent unscheduling of looping events
+  * core_timing: use static typing for no-wait unschedule
+  * core_timing: remove user data value
+  * renderer_vulkan: skip SetObjectNameEXT on unsupported driver
+  * renderer_vulkan: demote format assert to error log
+  * kernel: fix resource limit imbalance
+  * kernel: restrict nce to applications
+  * general: properly support multiple memory instances
+  * k_server_session: remove scratch buffer usage in favor of direct copy
+  * k_server_session: process for guest servers
+  * kernel: instantiate memory separately for each guest process
+  * Settings: Indicate AMD's compatibility with SPIR-V on OGL
+  * spirv_emit_context: Fix BaseInstance for OGL spirv
+  * shader_recompiler: ensure derivatives for textureGrad are f32
+  * shader_recompiler: use float image operations on load/store when required
+  * qt: settings: Fix per-game vsync combobox
+  * android: Fix "No games found" text appearing on load
+  * service: hid: Fix crash on InitializeVibrationDevice
+  * emit_glsl_image: Use inlined texelFetch offsets
+  * gl_device: Remove AMD blacklists that are no longer applicable
+  * gl_rasterizer: Less spammy log for unimplemented resets
+  * nce: hide shadowing warnings from dynarmic headers
+  * gl_rasterizer: Implement DrawTransformFeedback macro
+  * externals: update Vulkan-Headers to v1.3.274
+  * vulkan_common: unbreak build with Vulkan-Headers 1.3.274
+  * OpenGL: Add GL_PRIMITIVES_GENERATED and GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN queries
+  * gl_rasterizer: Silence spammy logs
+  * gl_buffer_cache: Reintroduce NV_vertex_buffer_unified_memory
+  * nce: increase handler stack size
+  * renderer_vulkan: don't pass null view when nullDescriptor is not supported
+  * nce: fix read size in simd immediate emulation
+  * yuzu: Read/Save category Paths
+  * shader_recompiler: use minimal clip distance array
+  * shader_recompiler: ignore clip distances beyond driver support level
+  * yuzu: Make language persistent and remove symbols_path
+  * oboe_sink: specify additional required parameters
+  * vk_query_cache: Fix prefix sum max_accumulation_limit logic
+  * fs: implement OpenDirectoryMode
+  * oboe_sink: set low latency performance mode
+  * Revert "video_core: use interval map for page count tracking"
+  * renderer_vulkan: work around turnip binding bug in a610
+  * path_util: copy output for GetParentPath
+  * android: add oboe to audio configuration
+  * oboe_sink: implement channel count querying
+  * android: add oboe audio sink
+  * renderer_vulkan: allow up to 7 swapchain images
+  * nvnflinger: mark buffer as acquired when acquired
+  * audio: skip coefficient normalization for downmix
+  * set: add cstddef for offsetof macro
+  * Have GetActiveChannelCount return the system channels instead of host device channels
+  * gl_buffer_cache: Fix tfb binding typo
+  * ssl: fix output byte buffer size issue (#12372)
+  * Make system settings persistent across boots
+  * common: use memory holepunching when clearing memory
+  * video_core: lock interval map update
+  * video_core: use interval map for page count tracking
+  * core: Make sure npad is initialized
+  * renderer_vulkan: bound async presentation queue growth
+  * core: hid: Clean up headers
+  * service: hid: Allow to create multiple instances of shared memory
+  * ci: fix homebrew installation issue in actions runner images
+  * android: Rework InstallableProperty view with icon
+  * android: Prevent editing non-savable settings in per-game settings
+  * android: Pre-select custom config in game launch dialog
+  * android: Use confirmation dialog when deleting shader cache
+  * android: Always use custom settings when launched from intent
+  * settings: Allow vsync to be changed per-game
+  * android: Adjust variable name format for native config
+  * android: Add game dir entries to FilesystemProvider
+  * android: Fix games list loading thread safety
+  * android: Collect latest information for games list
+  * android: Remove global save import/exporter UI
+  * android: Compare all properties between games in DiffCallback
+  * android: Expose MemoryUtil size formatting function
+  * android: Add JNI initialization information for Game class
+  * settings: Allow CPU Debug and Fastmem to be changed per-game
+  * android: Add per-game drivers
+  * android: Add per-game settings
+  * android: Add Game properties
+  * frontend_common: Fix settings reload bug
+  * android: Refactor settings to expose more options
+  * configure_debug: Fix small typo
+  * vcpkg: Update fmt to 10.1.1
+  * vi: fix confusion between closing and destroying layers
+  * nce: adjust initialization for repeated calls
+  * nce: implement instruction emulation for misaligned memory accesses
+  * service: hid: Improve CreateAppletResource implementation and free resources
+  * core: Use single instance of profile manager
+  * sm:: fix tipc deserialization
+  * settings: Clearer NCE error messages
+  * ro: add separate ro service
+  * fbshare: set external format correctly
+  * fs: don't enumerate hidden savedata size file
+  * service: populate pid and handle table from client
+  * service: use interface factory in server manager
+  * debug: fix reading of module names
+  * android: Listen for directory selection in viewmodel
+  * kernel: fix single core
+  * settings: Enable NCE by default on capable systems
+  * dist: add udev rule to enable user hidraw access (#12292)
+  * kernel: implement light IPC
+  * service: hid: Introduce proper AppletResource emulation
+  * kernel: implement remaining IPC syscalls
+  * Improve path splitting speed
+  * codec: Update to use av frame flags
+  * arm: fix context save of vector regs
+  * frontend_common: Use optional for language default
+  * core: refactor emulated cpu core activation
+  * texture_cache: fix max_element comparison function
+  * renderer_opengl: remove srgb conversion logic
+  * renderer_vulkan: do not recreate swapchain for srgb
+  * fsmitm_romfsbuild: optimize for data locality
+  * romfs: cache file and directory metadata tables
+  * nce: fix pre-text patch for single modules
+  * file_sys: handle null romfs
+  * texture_cache: use pedantic type names
+  * android: Don't reload filesystem on update install
+  * host_memory: move MAP_ALIGNED_SUPER attempt after 448d4815dece
+  * host_memory: allow missing MAP_NORESERVE on FreeBSD after 448d4815dece
+  * vk_blit_screen: Use correct format for fxaa renderpass
+  * service: nfc: Don't tag amiibos as corrupted if they are loaded as read only
+  * Update translations (2023-12-01)
+  * renderer_vulkan: adjust window origin and swizzle independently
+  * cmake: prefer system gamemode library
+  * renderer_vulkan: exclude more qcom drivers from extensions
+  * cmake: sync gamemode conditionals with code after 5eec980a2d71
+  * core: Rename patcher file
+  * add mac workflow
+  * general: conditionally compile gamemode on linux only
+  * cmake: Move HAS_NCE to root cmake
+  * android: Save global settings in onStop
+  * android: Multi directory UI
+  * set: don't load version nca with null romfs
+  * Fixed controller applet crashing when on FW17+
+  * GLSL: Prefer known used cbuf sizes
+  * qt: add cpu_backend configuration
+  * video_core: fix mac compile
+  * general: fix mac compile
+  * loader: fix gcc compile
+  * service: nfc: Validate mii data
+  * service: am: Create random mii for cabinet applet
+  * cmake: prefer system simpleini library
+  * android: input: Flip abxy on backbone labs controllers
+  * time: undef GetCurrentTime for Windows
+  * cmake: move gamemode target include into its file
+  * yuzu: create linux group in general settings
+  * yuzu: integrate gamemode support on linux
+  * android: input: Flip abxy on redmagic controllers
+  * oaknut: Address warnings
+  * host_memory: Simplify randomness generation
+  * Address more review comments
+  * loader: apply nso patch to offset program image
+  * arm_nce: skip data aborts for crash handling parity
+  * android: show current backend in fps overlay
+  * arm: Print backtrace on data abort
+  * patch: check offsets from first code word
+  * core: Define HAS_NCE macro
+  * common: Enforce fastmem for nce usage
+  * arm_nce: skip dc cvac on possibly write-protected areas
+  * Address some review comments
+  * android: Add cpu bakend gui toggle
+  * arm: Implement native code execution backend
+  * device_memory: Enable direct mapped addresses for nce
+  * externals: Add oaknut submodule
+  * settings: Add cpu backend setting
+  * kernel: Manually specify aslr region start
+  * core: Respect memory permissions in Map
+  * host_memory: Switch to FreeRegionManager
+  * host_memory: ensure map base is between 36 and 39 bits
+  * common: Add free region manager
+  * common: Add libc sigaction hook
+  * yuzu: Constrain mouse in render window when emulated
+  * yuzu: Display firmware version
+  * vulkan_device: add names for more driverID enumeration values
+  * renderer_vulkan: exclude steam deck oled from force max clock setting
+  * core: hid: Ensure output devices are initialized
+  * query_cache: demote report synced unreachable to assert
+  * frontend_common: Don't specify default value for screenshot_path
+  * frontend_common: Don't load config files that we fail to open
+  * frontend_common: Add option to read unsigned integers
+  * frontend_common: Set config array size to 0 if the array is ended without changing its index
+  * frontend_common: Manually handle opening config file
+  * frontend_common: Add special config case for unmapped windows network drives
+  * frontend_common: Disable UTF-8 BOM in config
+  * android: Rework config lifecycle
+  * android: Remove ini4j
+  * common: settings: Add ifdefs to define android's default settings
+  * general: Remove inih
+  * config: Unify config handling under frontend_common
+  * vk_texture_cache: add workaround for nullDescriptor on Mali
+  * service: hid: Create appropriate hid resources
+  * gl_buffer_cache: Batch vertex/tfb buffer binding
+  * Vulkan: Add a final barrier to the upload command buffer
+  * renderer_vulkan: Introduce separate cmd buffer for uploads
+  * shader_recompiler: Align SSBO offsets in GlobalMemory functions
+  * buffer_cache: Apply storage buffer alignment only to the offset
+  * shader_recompiler: Align SSBO offsets to meet host requirements
+  * gl_texture_cache: Enable async downloads
+  * gl_buffer_cache: Enable async downloads
+  * gl_staging_buffer_pool: Refactor allocation variables into a struct
+
+-------------------------------------------------------------------
+Fri Jan  5 11:52:52 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
+
+- Update compatibility_list.json
+
+-------------------------------------------------------------------
+Wed Nov 22 16:31:19 UTC 2023 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 0.1629:
+  * "Merge Tagged PR 11889"
+  * game_list_worker: Explicit caputure of 'this'
+  * shared_widget: Explicit capture of 'this'
+  * Stub CheckBlockedUserListAvailability
+  * android: Use file picker intent for save exporter
+  * android: Use path instead of programId for recently added / played key
+  * android: Select recently played games by default in search tab
+  * android: Allow up to 400% for the limit speed percent setting
+  * Implemented qlaunch version of the controller applet
+  * video_core: refactor video frame and packet parsing
+  * CMakeLists: Add option to call lupdate directly
+  * shared_translation: Call tr for each string
+ 
