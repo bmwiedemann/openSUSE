@@ -38,10 +38,10 @@ fi
 # An extpack has been installed on this system. Now we need to check if
 # it was issued under the current version of the license.
 
-#Note to maintainers: The "version 10" in the next command must be changed
+#Note to maintainers: The "version 11" in the next command must be changed
 # manually when Oracle revises the license.
 
-LICENSE_CHECK=`$GREP "version 10" $LICENSE_PATH | $AWK -F\  {'print $2'}`
+LICENSE_CHECK=`$GREP "version 11" $LICENSE_PATH | $AWK -F\  {'print $2'}`
 if [ -z $LICENSE_CHECK ]; then
 # New license version does not match the current installation.
 # The user will need to agree to the new version, thus we do nothing here.
