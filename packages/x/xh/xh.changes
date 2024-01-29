@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 29 05:10:26 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Updat to 0.21.0:
+  * Display remote address in metadata when -vv or --meta flag is
+    used, see #348
+  * Default XH_CONFIG_DIR to ~/.config/xh in macOS, see #353
+
+-------------------------------------------------------------------
 Sun Nov 19 20:58:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.1:
