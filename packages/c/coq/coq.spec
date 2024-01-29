@@ -1,9 +1,9 @@
 #
 # spec file for package coq
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012-2018 Peter Trommler, peter.trommler at ohm-hochschule.de
-# Copyright (c) 2023 Aaron Puchert <aaronpuchert@alice-dsl.net>
+# Copyright (c) 2024 Aaron Puchert <aaronpuchert@alice-dsl.net>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           coq
-Version:        8.18.0
+Version:        8.19.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -40,6 +40,7 @@ Source50:       coq-refman-%{version}.tar.xz
 Source51:       coq-stdlib-%{version}.tar.xz
 Source100:      %{name}-rpmlintrc
 BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
 BuildRequires:  make >= 3.81
 BuildRequires:  ocaml >= 4.09.0
 BuildRequires:  ocaml-camlp5-devel >= 5.08
@@ -180,14 +181,17 @@ find %{buildroot}%{_libdir} -name '*.a' \
                 -or -name '*.v' | sed "s|%{buildroot}||g" >devel.list
 
 # Until we can build it, we fetch the documentation from the official website:
-# svn export https://github.com/coq/doc/trunk/V%{version}/refman
-# svn export https://github.com/coq/doc/trunk/V%{version}/stdlib
+# git clone --filter=tree:0 --sparse https://github.com/coq/doc.git
+# pushd doc
+# git sparse-checkout add V%{version}
+# cd V%{version}
 # tar --sort=name --owner=0 --group=0 --mtime="@$(stat -c %%Y refman/index.html)" \
 #     --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
-#     -cJf coq-refman-%{version}.tar.xz refman
+#     -cJf ../../coq-refman-%{version}.tar.xz refman
 # tar --sort=name --owner=0 --group=0 --mtime="@$(stat -c %%Y stdlib/index.html)" \
 #     --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
-#     -cJf coq-stdlib-%{version}.tar.xz stdlib
+#     -cJf ../../coq-stdlib-%{version}.tar.xz stdlib
+# popd
 
 # Drop some CSS files and headers in stdlib documentation, add some margin directly.
 find stdlib/ -name '*.html' -exec sed -i '
@@ -200,6 +204,8 @@ s#//coq.inria.fr/sites/all/themes/coq/coqdoc.css#%{_libdir}/coq-core/tools/coqdo
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -r refman stdlib %{buildroot}%{_docdir}/%{name}
 rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
+
+%fdupes %{buildroot}%{_docdir}/%{name}
 
 %files -f dir.list -f runtime.list
 %license LICENSE CREDITS
