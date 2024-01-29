@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 26 12:26:06 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- In zVM or KVM installations the cio_ignore kernel argument will 
+  be written only if given (bsc#1210525).
+- 5.0.5
+
+-------------------------------------------------------------------
 Thu Jan 25 10:09:51 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
 
 - Keep cio_ignore kernel argument when present in the parmfile or
