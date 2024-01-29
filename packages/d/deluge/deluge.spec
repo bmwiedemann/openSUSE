@@ -48,6 +48,7 @@ BuildRequires:  python3-rjsmin
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-slimit
 BuildRequires:  python3-wheel
+BuildRequires:  strip-nondeterminism
 BuildRequires:  update-desktop-files
 Requires:       python3-Mako
 Requires:       python3-Pillow
@@ -102,6 +103,7 @@ sed -i '/^#!/d' deluge/path_chooser_common.py deluge/ui/gtk3/path_combo_chooser.
 
 %install
 %py3_install
+strip-nondeterminism -t zip %{buildroot}%{python3_sitelib}/%{name}/plugins/*.egg
 install -D -m 644 packaging/systemd/deluged.service %{buildroot}%{_userunitdir}/deluged.service
 install -D -m 644 packaging/systemd/deluge-web.service %{buildroot}%{_userunitdir}/deluge-web.service
 %fdupes %{buildroot}%{python3_sitelib}/
