@@ -3,8 +3,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/ipfs/kubo</param>
     <param name="scm">git</param>
-    <param name="revision">v0.24.0</param>
-    <param name="version">0.24.0</param>
+    <param name="revision">v0.26.0</param>
+    <param name="version">0.26.0</param>
   </service>
   <service name="go_modules" mode="manual">
     <param name="compression">zst</param>
