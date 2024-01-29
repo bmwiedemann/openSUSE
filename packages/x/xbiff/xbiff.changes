@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 20 21:09:45 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.5
+  * This release adds -help & -version command line options.
+    For those building for 32-bit platforms, it also enables use of the
+    "large file" APIs so that it can handle mailboxes which exceed 2gb
+    or which may be stored on a filesystem which uses large inode numbers
+    not supported by the original 32-bit APIs.
+    Since this release was generated using the new GNU autoconf 2.72, this
+    also adds a --enable-year2038 configure flag which may allow a 32-bit
+    build of xbiff to work with files whose timestamps are later than
+    January 19, 2038, but this has not been tested.
+
+-------------------------------------------------------------------
 Fri Dec  3 14:07:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir)
