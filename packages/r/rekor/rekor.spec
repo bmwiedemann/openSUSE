@@ -1,7 +1,7 @@
 #
 # spec file for package rekor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,18 @@
 %define apps cli server
 
 Name:           rekor
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
-%define revision 2ea1ef00f03b493ace47b1f26a8bfd4ab3b17fe9
+%define revision 5072901241fc6370a78457219e7aa2da490f399f
 Summary:        Supply Chain Transparency Log
 License:        Apache-2.0
 URL:            https://github.com/sigstore/rekor
 Source:         https://github.com/sigstore/rekor/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        rekor-zypper-verify.sh
 BuildRequires:  golang-packaging
+BuildRequires:  zstd
 BuildRequires:  golang(API)
-%{go_nostrip}
 
 %description
 Rekor's goals are to provide an immutable tamper resistant ledger of metadata generated within a software projects supply chain. Rekor will enable software maintainers and build systems to record signed metadata to an immutable record. Other parties can then query said metadata to enable them to make informed decisions on trust and non-repudiation of an object's lifecycle. For more details visit the sigstore website
@@ -46,9 +46,9 @@ Rekor fulfils the signature transparency role of sigstore's software signing inf
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 for app in %{apps} ; do
-CLI_PKG=github.com/sigstore/rekor/cmd/rekor-${app}/app
+CLI_PKG=sigs.k8s.io/release-utils/version
 CLI_LDFLAGS="-X ${CLI_PKG}.gitVersion=%{version} -X ${CLI_PKG}.gitCommit=%{revision} -X ${CLI_PKG}.gitTreeState=release -X ${CLI_PKG}.buildDate=${BUILD_DATE}"
-go build -mod=vendor -buildmode=pie -ldflags "${CLI_LDFLAGS}" ./cmd/rekor-${app}
+go build -mod=vendor -trimpath -buildmode=pie -ldflags "${CLI_LDFLAGS}" ./cmd/rekor-${app}
 ./rekor-${app} version
 done
 

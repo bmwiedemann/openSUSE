@@ -389,4 +389,12 @@
   - chore: fix backfill-redis Makefile target (#1685) (forwarded request 1128621 from msmeissn)</comment>
     <requestid>1128622</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2c126377007194b630f25401d9a3c4c7</srcmd5>
+    <version>1.3.4</version>
+    <time>1706563967</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142230</requestid>
+  </revision>
 </revisionlist>
