@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 29 04:41:13 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.4.0:
+  * Elimination of Python 2/3 compatibility code in __gt__ (#94).
+  * Addition of optional keyword arguments for __new__, solving an issue with
+    Dask (#92).
+  * Addition of some type hints for float arguments and return types (#87).
+  * Python version support is now 3.7-3.11 (#82).
+  * Faster __new__ and from_gdal methods (#78).
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sat Sep 24 10:30:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.1:

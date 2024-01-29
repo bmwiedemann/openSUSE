@@ -1,7 +1,7 @@
 #
 # spec file for package python-affine
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-affine
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        Affine transformation matrices
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/sgillies/affine
 Source:         https://files.pythonhosted.org/packages/source/a/affine/affine-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pydocstyle}
 BuildRequires:  %{python_module pytest >= 3.0}
 # /SECTION
 %python_subpackages
@@ -42,10 +42,10 @@ Matrices describing affine transformation of the plane.
 %setup -q -n affine-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +55,6 @@ Matrices describing affine transformation of the plane.
 %doc AUTHORS.txt CHANGES.txt README.rst
 %license LICENSE.txt
 %{python_sitelib}/affine
-%{python_sitelib}/affine-%{version}*-info
+%{python_sitelib}/affine-%{version}.dist-info
 
 %changelog
