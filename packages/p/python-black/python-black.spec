@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-black
-Version:        23.12.1
+Version:        24.1.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
@@ -55,7 +55,7 @@ Requires:       python-pathspec >= 0.9.0
 Requires:       python-platformdirs >= 2
 Requires:       python-tomli >= 1.1.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 311
 Requires:       python-typing_extensions >= 3.10.0.0
