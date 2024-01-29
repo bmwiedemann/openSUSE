@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 28 05:23:44 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to version 6.1.8:
+  * Don't panic when unwrapping ReadoutKey::from_str
+
+-------------------------------------------------------------------
 Tue Oct 11 14:20:22 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 6.1.6:

@@ -1,7 +1,7 @@
 #
 # spec file for package macchina
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           macchina
-Version:        6.1.6
+Version:        6.1.8
 Release:        0
 Summary:        Fast, minimal and customizable system information frontend
 License:        MIT
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/Macchina-CLI/macchina#macchina
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
@@ -37,7 +37,6 @@ macchina lets you view system information, like your kernel version, uptime, mem
 %prep
 %setup -q
 %setup -qa1
-mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
