@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan 29 05:07:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.11.1:
+  * Fix a bug when deploying using passwords read from the console.
+
+-------------------------------------------------------------------
+Sun Jan 28 07:19:26 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.11.0:
+  * Top-level :exclusions can now affect top-level :dependencies.
+  * Fix a bug where :eval-in :nrepl couldn't detect running repl.
+  * Fix a bug where :eval-in :nrepl would crash.
+  * Fix a bug where files on test path could be visible during jar.
+  * Fix an issue with check in namespaces that rely on AOT.
+  * Fix a redundant confusing dependencies warning.
+  * Add static-classpath task for static analysis.
+  * Major performance improvements handling pathological dependency trees.
+  * Improve error reporting for search failures.
+  * Support XDG config directories.
+  * Use $XDG_CACHE_HOME for self-installs if it exists.
+  * Add warnings for buggy composite profiles.
+
+-------------------------------------------------------------------
 Mon Dec 12 08:01:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.10.0:

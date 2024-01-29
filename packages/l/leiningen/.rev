@@ -156,4 +156,27 @@
     incorrectly.</comment>
     <requestid>1042277</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>61d94ffa98cd8e20e0a9fd3c867766cc</srcmd5>
+    <version>2.11.1</version>
+    <time>1706563699</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.11.1:
+  * Fix a bug when deploying using passwords read from the console.
+
+- Update to 2.11.0:
+  * Top-level :exclusions can now affect top-level :dependencies.
+  * Fix a bug where :eval-in :nrepl couldn't detect running repl.
+  * Fix a bug where :eval-in :nrepl would crash.
+  * Fix a bug where files on test path could be visible during jar.
+  * Fix an issue with check in namespaces that rely on AOT.
+  * Fix a redundant confusing dependencies warning.
+  * Add static-classpath task for static analysis.
+  * Major performance improvements handling pathological dependency trees.
+  * Improve error reporting for search failures.
+  * Support XDG config directories.
+  * Use $XDG_CACHE_HOME for self-installs if it exists.
+  * Add warnings for buggy composite profiles.</comment>
+    <requestid>1142156</requestid>
+  </revision>
 </revisionlist>
