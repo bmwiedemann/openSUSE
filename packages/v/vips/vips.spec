@@ -1,7 +1,7 @@
 #
 # spec file for package vips
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,14 @@
 %define short_version_ 8.0
 %define somajor 42
 Name:           vips
-Version:        8.15.0
+Version:        8.15.1
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.libvips.org/
 Source0:        https://github.com/libvips/libvips/releases/download/v%{version}/%{name}-%{version}.tar.xz
+# Based on https://github.com/libvips/libvips/commit/f0ed595021786f70dbcb145abbe8301e8a2fb331.patch with the Changelog chunk removed
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -136,7 +137,7 @@ This package contains documentation about the VIPS library in HTML and PDF
 formats.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \

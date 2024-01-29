@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jan 28 20:44:04 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 8.15.1:
+  - reduceh: fix Highway path on SSE2 [DarthSim]
+  - fix JPEG in TIFF colourspace for Q >= 90 [heman1-test]
+  - fix build with upcoming libjxl 0.9 [kleisauke]
+  - jxlsave: lower min effort value to 1 [DarthSim]
+  - fix build without libjpeg [ionenwks]
+  - fix vips7 plugin load [jcupitt]
+  - allow ".jfif" as a suffix for jpegsave [casperbrike]
+  - don't let the magick sniffer hijack TIFF [kleisauke]
+  - ignore BLOCKED classes in foreign map [jcupitt]
+  - add locks to fftw3 calls [akash-akya]
+- drop f0ed595021786f70dbcb145abbe8301e8a2fb331.patch
+
+-------------------------------------------------------------------
+Thu Jan 18 17:17:53 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix building with jxl 0.9
+  can be removed in 8.15.1
+  https://github.com/libvips/libvips/commit/f0ed595021786f70dbcb145abbe8301e8a2fb331.patch
+
+-------------------------------------------------------------------
 Thu Dec  7 03:24:55 UTC 2023 - ming li <mli@suse.com>
 
 - Update to version 8.15.0:
