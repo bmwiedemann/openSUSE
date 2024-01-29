@@ -1,7 +1,7 @@
 #
 # spec file for package GraphicsMagick
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -95,7 +95,7 @@ Summary:        Configuration for the GraphicsMagick image conversion library
 Group:          System/Libraries
 # %{_libdir}/GraphicsMagick-*/config/type-ghostscript.mgk references fonts
 # shipped as part of ghostscript-fonts-std (boo#1216604)
-Requires:       ghostscript-fonts-std
+Recommends:     ghostscript-fonts-std
 
 %description -n libGraphicsMagick%{so_ver}-config
 GraphicsMagick provides an image manipulation and translation utility
