@@ -1,7 +1,7 @@
 #
 # spec file for package shotcut
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 #%%(pkg-config --modversion Qt6Core)
 %bcond_with    x264
 Name:           shotcut
-Version:        23.12.15
+Version:        24.01.28
 Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later

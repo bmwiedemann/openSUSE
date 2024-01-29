@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jan 29 09:20:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 24.01.28:
+  * Added Player > Loop (\) and Player > Set Loop Range to the menu and player controls.
+  * Added Timeline > Selection > Group/Ungroup (Ctrl+G, command+G on macOS). This is basically a saved
+    multi-selection system. So, the operations it supports are all those available for multiple selection. That
+    does not include trim, Filters, or Properties at this time. Hold Alt (option on macOS) to
+		select an individual member of a group. Hold Alt+Ctrl (option+command on macOS) to
+		multi-select only certain members of a group.
+  * Added support for multiple selection to Split At Playhead.
+  * Added Timeline > Edit > Split All Tracks At Playhead (Shift+S).
+  * Added Edit > Undo and Redo support for adding, removing, changing, and disabling Filters.
+  * Added Timeline > Edit > Nudge Forward (.) and Nudge Backward (,).
+  * Added Pause and Resume to the context menu in Jobs.
+  * Added Settings > Backup with options for:
+      * Manually
+      * Hourly
+      * Daily (default)
+      * Weekly This creates a backup of the current project file in a manner similar to File > Backup and Save
+      except it is automatic now unless Manually is chosen.
+  * Added File > Other Versions submenu that tries to find similarly-named project files in the same folder
+    create by Shotcut backup or recovery mechanisms.
+  * Added Settings > Player > Audio API on Linux and Windows. Basically, this makes the --SDL_AUDIODRIVER command
+    line option available in the Settings menu.
+  * Added a Previous button to View > Application Log dialog that goes to the log file created by the previous
+    app session. Now, on startup, Shotcut makes a backup of shotcut-log.txt to shotcut-log.bak.
+  * Added a Copy button to all text viewer dialogs that does the same thing that the non-obvious Select All and
+    Copy actions in the context menu.
+  * Fixed a possible crash when opening project.
+  * Fixed a crash in Playlist > menu > Add Selected to Slidewhow when something is playing.
+  * Fixed a possible crash in Timeline > Split or trim actions if the clip has certain filters with keyframes.
+  * Fixed some bugs in Undo after moving clips on the Timeline.
+  * Fixed sometimes (25 fps) frames are dropped and others repeated in Export on macOS.
+  * Fixed proxy generation failing with NVENC if Settings > Proxy > Use Hardware Encoder is on.
+  * Fixed proxy generation failing for videos with full range color on macOS with Settings > Proxy > Use Hardware
+    Encoder turned on.
+  * Fixed 10-bit Export with NVENC (NVIDIA) encoders.
+  * Fixed Layers > New > Emoji is disabled in Glaxnimate on Windows.
+  * Fixed distort mode in Size & Position GPU filter.
+  * Fixed zombie values in Time Remap filter while working with keyframes.
+  * Fixed saving B frames in custom Export preset with hardware encoder.
+  * Fixed toggling Export > Use hardware encoder resets all options to defaults.
+  * Fixed Export > Each Playlist Item > Directory incorrectly shows a filename.
+  * Fixed intermittent crash moving a clip on the Timeline.
+  * Fixed Playlist > Select All and Remove All are disabled until selection changes.
+  * Fixed some filter parameters’ sliders may overflow using new keyframe easings that over- or under-shoot.
+  * Changed the name of the Declick time filter to Declick Audio.
+  * Changed the player controls to automatically adapt to 2 rows so the In Point and Selected
+	  Duration show more reliably.
+  * Changed the low memory warning dialog to automatically close itself when the free memory becomes high enough.
+  * Changed the low memory detection to automatically pause and resume a currently running job
+	  as the free memory becomes too low and then high enough again.
+  * Changed Timeline > Detach Audio to automatically create a group.
+  * Changed the Jobs log viewer to automatically and scroll to the end if it is left open while a
+	  job is running.
+  * Changed the Slideshow Generator to remember all options.
+  * Changed the splitter between UI panels to be easier to find and grab to drag.
+
+-------------------------------------------------------------------
 Tue Dec 19 09:34:56 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 23.12.15:
