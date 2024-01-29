@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Gravatar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,15 @@ Version:        0.5.0
 Release:        0
 Summary:        Small extension for Flask to make usage of Gravatar service
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/zzzsochi/Flask-Gravatar/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Gravatar/Flask-Gravatar-%{version}.tar.gz
 # https://github.com/zzzsochi/Flask-Gravatar/issues/27
 Patch0:         fix-requirements.patch
+# PATCH-FIX-OPENSUSE Remove unused and broken with Flask 3.0 internal imports
+Patch1:         remove-connection-stack.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # Test requirements
 BuildRequires:  %{python_module Flask >= 0.10}
@@ -35,7 +38,6 @@ BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module check-manifest >= 0.25}
 BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module isort >= 4.2.2}
-BuildRequires:  %{python_module pydocstyle >= 1.0.0}
 BuildRequires:  %{python_module pytest >= 2.8.0}
 # End of test requirements
 BuildRequires:  fdupes
@@ -48,17 +50,16 @@ BuildArch:      noarch
 Small extension for Flask to make usage of the Gravatar service.
 
 %prep
-%setup -q -n Flask-Gravatar-%{version}
-%patch0 -p1
+%autosetup -p1 -n Flask-Gravatar-%{version}
 rm pytest.ini
 
 %build
 export LC_CTYPE=en_US@UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LC_CTYPE=en_US@UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,6 +69,7 @@ export LC_CTYPE=en_US@UTF-8
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/flask_gravatar
+%{python_sitelib}/Flask_Gravatar-%{version}.dist-info
 
 %changelog
