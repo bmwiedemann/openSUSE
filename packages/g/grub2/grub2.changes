@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 29 06:24:11 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Remove magic number header field check on arm64 (bsc#1218783)
+  * 0001-loader-arm64-efi-linux-Remove-magic-number-header-fi.patch
+
+-------------------------------------------------------------------
 Tue Jan 23 04:56:58 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Reinstate the verification for a non-zero total entry count to skip unmapped
