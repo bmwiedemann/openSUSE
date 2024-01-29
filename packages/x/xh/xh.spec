@@ -1,7 +1,7 @@
 #
 # spec file for package xh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xh
-Version:        0.20.1~0
+Version:        0.21.0~0
 Release:        0
 Summary:        Tool for sending HTTP requests
 License:        MIT
@@ -34,7 +34,7 @@ xh is a tool for sending HTTP requests. It reimplements as much as possible of H
 
 %prep
 %autosetup -a1
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
