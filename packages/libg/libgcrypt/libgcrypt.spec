@@ -1,7 +1,7 @@
 #
 # spec file for package libgcrypt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Source99:       libgcrypt.changes
 Patch1:         libgcrypt-1.10.0-allow_FSM_same_state.patch
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch2:         libgcrypt-nobetasuffix.patch
+# https://dev.gnupg.org/T6964
+Patch3:         libgcrypt-no-deprecated-grep-alias.patch
 # FIPS patches:
 #PATCH-FIX-SUSE bsc#1190700 FIPS: Provide a service-level indicator for PK
 Patch100:       libgcrypt-FIPS-SLI-pk.patch

@@ -867,4 +867,35 @@ This correction fixes the build failures we are currently seeing in Factory, etc
     <comment></comment>
     <requestid>1127966</requestid>
   </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>295b0ed6c96ffbfe80ee47731d683b99</srcmd5>
+    <version>1.10.3</version>
+    <time>1706563548</time>
+    <user>anag+factory</user>
+    <comment>- add libgcrypt-no-deprecated-grep-alias.patch
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+  * Fix counter operand from read-only to read/write
+- Fix gpg2 tests on BigEndian architectures: s390x ppc64
+- making the build reproducible - see
+- libgcrypt-init-at-elf-load-fips.patch: initialize globally on ELF
+- Correct patch 0007-User-interface-to-DRBG.patch so that the
+- Drop arm-missing-files.diff, fixed upstream
+- add arm-missing-files.diff: Add missing files to fix build
+- update to 1.6.
+- Library must be built with large file support in
+- add GPL3.0+ to License tag because of dumpsexp (bnc#810759)
+- Libraries back into %{_libdir}, /usr merge project
+ * New variants of the TIGER algorithm.
+   generation.  DSA domain parameters may be given as well.
+- build rijndael.c with -fno-strict-aliasing [bnc#443693]
+    entropy for the intial seeding
+    the manual are under the GPL
+- update to version 1.2.2
+- require libgpg-error-devel (Bug #48271)
+- update to version 1.2.0
+- disable make check, because it uses /dev/random whihc is
+  implemented.</comment>
+    <requestid>1141963</requestid>
+  </revision>
 </revisionlist>

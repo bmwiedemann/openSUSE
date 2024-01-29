@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 27 13:37:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add libgcrypt-no-deprecated-grep-alias.patch
+
+-------------------------------------------------------------------
 Tue Nov 21 10:36:09 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Re-create HMAC checksum after RPM build strips the library
@@ -94,7 +99,7 @@ Tue Apr 11 14:08:24 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 -------------------------------------------------------------------
 Wed Mar  8 10:34:34 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
-- Build AVX2 enabled hwcaps library for x86_64-v3 
+- Build AVX2 enabled hwcaps library for x86_64-v3
 
 -------------------------------------------------------------------
 Wed Oct 19 14:01:24 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
@@ -925,7 +930,7 @@ Fri Jun  2 10:05:18 UTC 2017 - pmonrealgonzalez@suse.com
 Fri Jan 20 09:41:15 UTC 2017 - rmaliska@suse.com
 
 - libgcrypt 1.7.6:
-  * Fix counter operand from read-only to read/write 
+  * Fix counter operand from read-only to read/write
   * Fix too large jump alignment in mpih-rshift
 
 -------------------------------------------------------------------
@@ -1150,7 +1155,7 @@ Tue Sep  8 08:03:19 UTC 2015 - vcizek@suse.com
 -------------------------------------------------------------------
 Tue Jun 23 15:15:30 UTC 2015 - dvaleev@suse.com
 
-- Fix gpg2 tests on BigEndian architectures: s390x ppc64 
+- Fix gpg2 tests on BigEndian architectures: s390x ppc64
   libgcrypt-1.6.3-aliasing.patch
 
 -------------------------------------------------------------------
@@ -1171,7 +1176,7 @@ Sat Feb 28 19:31:10 UTC 2015 - astieger@suse.com
 -------------------------------------------------------------------
 Fri Feb  6 18:42:28 UTC 2015 - coolo@suse.com
 
-- making the build reproducible - see 
+- making the build reproducible - see
   http://lists.gnupg.org/pipermail/gnupg-commits/2014-September/010683.html
   for a very similiar problem
 
@@ -1251,7 +1256,7 @@ Mon May 26 12:05:17 UTC 2014 - meissner@suse.com
 - libgcrypt-fix-rng.patch: make drbg work again in FIPS mode.
 - libgcrypt-1.6.1-use-fipscheck.patch: library to test is libgcrypt.so.20
   and not libgcrypt.so.11
-- libgcrypt-init-at-elf-load-fips.patch: initialize globally on ELF 
+- libgcrypt-init-at-elf-load-fips.patch: initialize globally on ELF
   DSO loading to meet FIPS requirements.
 
 -------------------------------------------------------------------
@@ -1264,7 +1269,7 @@ Tue May 13 10:47:51 UTC 2014 - vcizek@suse.com
 -------------------------------------------------------------------
 Sun May 12 13:25:33 UTC 2014 - tittiatcoke@gmail.com
 
-- Correct patch 0007-User-interface-to-DRBG.patch so that the 
+- Correct patch 0007-User-interface-to-DRBG.patch so that the
   struct used in the route matches the header of the function
 
 -------------------------------------------------------------------
@@ -1306,7 +1311,7 @@ Thu Mar 27 14:57:22 UTC 2014 - meissner@suse.com
 -------------------------------------------------------------------
 Thu Jan 30 13:29:49 UTC 2014 - idonmez@suse.com
 
-- Drop arm-missing-files.diff, fixed upstream 
+- Drop arm-missing-files.diff, fixed upstream
 
 -------------------------------------------------------------------
 Wed Jan 29 18:40:49 UTC 2014 - andreas.stieger@gmx.de
@@ -1324,7 +1329,7 @@ Wed Jan 29 18:40:49 UTC 2014 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Fri Jan  3 16:36:21 UTC 2014 - dmueller@suse.com
 
-- add arm-missing-files.diff: Add missing files to fix build 
+- add arm-missing-files.diff: Add missing files to fix build
 
 -------------------------------------------------------------------
 Fri Jan  3 09:43:39 UTC 2014 - mvyskocil@suse.com
@@ -1343,7 +1348,7 @@ Thu Dec 19 13:53:21 UTC 2013 - mvyskocil@suse.com
 -------------------------------------------------------------------
 Thu Dec 19 09:03:21 UTC 2013 - mvyskocil@suse.com
 
-- update to 1.6. 
+- update to 1.6.
  * Removed the long deprecated gcry_ac interface.  Thus Libgcrypt is
    not anymore ABI compatible to previous versions if they used the ac
    interface. Check NEWS in libgcrypt-devel for removed interfaces.
@@ -1409,7 +1414,7 @@ Mon Jun 17 13:22:33 UTC 2013 - coolo@suse.com
 -------------------------------------------------------------------
 Sun Jun 16 22:56:56 UTC 2013 - crrodriguez@opensuse.org
 
-- Library must be built with large file support in 
+- Library must be built with large file support in
  32 bit archs.
 
 -------------------------------------------------------------------
@@ -1427,7 +1432,7 @@ Thu Apr 18 18:23:36 UTC 2013 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Fri Mar 22 09:31:11 UTC 2013 - mvyskocil@suse.com
 
-- add GPL3.0+ to License tag because of dumpsexp (bnc#810759) 
+- add GPL3.0+ to License tag because of dumpsexp (bnc#810759)
 
 -------------------------------------------------------------------
 Mon Mar 18 20:41:00 UTC 2013 - andreas.stieger@gmx.de
@@ -1461,7 +1466,7 @@ Tue Jun 12 21:19:18 UTC 2012 - chris@computersalat.de
 -------------------------------------------------------------------
 Sun Feb 12 15:23:56 UTC 2012 - crrodriguez@opensuse.org
 
-- Libraries back into %{_libdir}, /usr merge project 
+- Libraries back into %{_libdir}, /usr merge project
 
 -------------------------------------------------------------------
 Sat Dec 24 23:51:26 UTC 2011 - opensuse@dstoecker.de
@@ -1494,7 +1499,7 @@ Fri Nov 19 09:59:41 UTC 2010 - mvyskocil@suse.cz
  * Fixed a sigill during Padlock detection on old CPUs.
  * Boosted SHA-512 performance by 30% on ia32 boxes and gcc 4.3;
    SHA-256 went up by 25%.
- * New variants of the TIGER algorithm.        
+ * New variants of the TIGER algorithm.
  * New cipher algorithm mode for AES-WRAP.
  * Interface changes relative to the 1.4.2 release:
     GCRY_MD_TIGER1             NEW
@@ -1527,7 +1532,7 @@ Tue Apr  7 15:45:06 CEST 2009 - crrodriguez@suse.de
  * In fips mode, RSA keys are now generated using the X9.31 algorithm
    and DSA keys using the FIPS 186-2 algorithm.
  * The transient-key flag is now also supported for DSA key
-   generation.  DSA domain parameters may be given as well. 
+   generation.  DSA domain parameters may be given as well.
 
 -------------------------------------------------------------------
 Thu Jan 29 10:57:01 CET 2009 - olh@suse.de
@@ -1543,7 +1548,7 @@ Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
 -------------------------------------------------------------------
 Tue Nov 11 17:23:54 CET 2008 - mkoenig@suse.de
 
-- build rijndael.c with -fno-strict-aliasing [bnc#443693] 
+- build rijndael.c with -fno-strict-aliasing [bnc#443693]
 
 -------------------------------------------------------------------
 Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
@@ -1555,7 +1560,7 @@ Mon Jun 30 11:47:59 CEST 2008 - mkoenig@suse.de
 
 - update to version 1.4.1
   * Fixed a bug which led to the comsumption of far too much
-    entropy for the intial seeding 
+    entropy for the intial seeding
   * Improved AES performance for CFB and CBC modes
 
 -------------------------------------------------------------------
@@ -1574,7 +1579,7 @@ Thu Jan 17 12:20:25 CET 2008 - mkoenig@suse.de
 
 - update to version 1.4.0:
   * The entire library is now under the LGPL. The helper programs and
-    the manual are under the GPL 
+    the manual are under the GPL
   * New control code GCRYCTL_PRINT_CONFIG
   * Experimental support for ECDSA
   * Assembler support for the AMD64 architecture
@@ -1646,7 +1651,7 @@ Wed Nov  2 16:44:48 CET 2005 - hvogel@suse.de
 -------------------------------------------------------------------
 Tue Oct 25 13:40:15 CEST 2005 - hvogel@suse.de
 
-- update to version 1.2.2 
+- update to version 1.2.2
 
 -------------------------------------------------------------------
 Thu Jun 23 11:26:58 CEST 2005 - hvogel@suse.de
@@ -1668,7 +1673,7 @@ Tue Jan 11 16:48:10 CET 2005 - schwab@suse.de
 -------------------------------------------------------------------
 Wed Nov 17 11:22:44 CET 2004 - hvogel@suse.de
 
-- require libgpg-error-devel (Bug #48271) 
+- require libgpg-error-devel (Bug #48271)
 - get rid of the NLD parts
 
 -------------------------------------------------------------------
@@ -1680,12 +1685,12 @@ Wed Jul 14 11:12:54 CEST 2004 - adrian@suse.de
 -------------------------------------------------------------------
 Wed May 19 14:57:45 CEST 2004 - hvogel@suse.de
 
-- update to version 1.2.0  
+- update to version 1.2.0
 
 -------------------------------------------------------------------
 Mon Mar 22 16:48:53 CET 2004 - meissner@suse.de
 
-- disable make check, because it uses /dev/random whihc is 
+- disable make check, because it uses /dev/random whihc is
   not filled on some server machines.
 
 -------------------------------------------------------------------
@@ -1733,7 +1738,7 @@ Mon Feb 10 16:11:55 CET 2003 - mc@suse.de
 - gcry_pk_sign, gcry_pk_verify and gcry_pk_encrypt can now handle an
   optional pkcs1 flags parameter in the S-expression.  A similar flag
   may be passed to gcry_pk_decrypt but it is only syntactically
-  implemented. 
+  implemented.
 - New convenience macro gcry_md_get_asnoid.
 - There is now some real stuff in the manual.
 - New algorithm: MD4
