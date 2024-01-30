@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-filter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-django-filter
-Version:        23.1
+Version:        23.5
 Release:        0
 Summary:        Reusable Django app to allow users to filter queryset dynamically
 License:        BSD-3-Clause
-Group:          Development/Libraries/Python
 URL:            https://github.com/carltongibson/django-filter
 Source:         https://files.pythonhosted.org/packages/source/d/django-filter/django-filter-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 2.2}
-BuildRequires:  %{python_module coreapi}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module django-crispy-forms}
 BuildRequires:  %{python_module djangorestframework}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
-Requires:       python-djangorestframework
-Recommends:     python-django-crispy-forms
+Requires:       python-Django >= 3.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,10 +43,10 @@ For usage and installation instructions, consult the docs directory.
 %setup -q -n django-filter-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +55,7 @@ For usage and installation instructions, consult the docs directory.
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS CHANGES.rst README.rst docs/{*.txt,ref/*.txt}
-%{python_sitelib}/*django[-_]filter*/
+%{python_sitelib}/django_filters
+%{python_sitelib}/django_filter-%{version}.dist-info
 
 %changelog
