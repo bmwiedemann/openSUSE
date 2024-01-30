@@ -182,4 +182,12 @@ Need for dosbox and aplaymidi for play MT-32 sound.</comment>
     can be created as long as the JACK support is compiled in.</comment>
     <requestid>1011136</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f517d429f2636dce57ddb3043976bfcc</srcmd5>
+    <version>2.7.1</version>
+    <time>1706635521</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142605</requestid>
+  </revision>
 </revisionlist>
