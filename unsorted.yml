@@ -14103,7 +14103,9 @@ unsorted:
   - libopenssl-1_1-devel-32bit 
   - libopenssl-3-devel 
   - libopenssl-3-devel-32bit 
+  - libopenssl-3-fips-provider 
   - libopenssl-devel 
+  - libopenssl-fips-provider 
   - libopenssl10 
   - libopenssl1_0_0 
   - libopenssl1_0_0-32bit 
@@ -18836,8 +18838,6 @@ unsorted:
   - obs-scm-bridge 
   - obs-service-appimage 
   - obs-service-cargo 
-  - obs-service-cargo_audit 
-  - obs-service-cargo_vendor 
   - obs-service-cdi_containers_meta 
   - obs-service-compose_kiwi_description 
   - obs-service-docker_label_helper 
@@ -22473,7 +22473,6 @@ unsorted:
   - python-novaclient-doc 
   - python-nss-doc 
   - python-octaviaclient-doc 
-  - python-onionshare 
   - python-openstackclient-doc 
   - python-openstacksdk-doc 
   - python-osc-lib-doc 
@@ -22733,6 +22732,7 @@ unsorted:
   - python3-ntp 
   - python3-obexftp 
   - python3-octaviaclient 
+  - python3-onionshare 
   - python3-openbabel 
   - python3-opencv 
   - python3-opencv3 
@@ -23062,6 +23062,7 @@ unsorted:
   - python310-SpeechRecognition 
   - python310-Sphinx 
   - python310-Sphinx-latex 
+  - python310-StrEnum 
   - python310-TagStats 
   - python310-Telethon 
   - python310-Tempita 
@@ -23809,7 +23810,6 @@ unsorted:
   - python310-copr 
   - python310-copr-cli 
   - python310-coreapi 
-  - python310-coreapi-cli 
   - python310-coreschema 
   - python310-cornice 
   - python310-cov-core 
@@ -24798,7 +24798,6 @@ unsorted:
   - python310-merge3 
   - python310-mergedeep 
   - python310-meson-python 
-  - python310-mesonpep517 
   - python310-metaextract 
   - python310-metakernel 
   - python310-metamagic.json 
@@ -24826,6 +24825,7 @@ unsorted:
   - python310-mocket 
   - python310-mockito 
   - python310-model-bakery 
+  - python310-modern-colorthief 
   - python310-modernize 
   - python310-mohawk 
   - python310-mongoengine 
@@ -24978,7 +24978,6 @@ unsorted:
   - python310-opcodes 
   - python310-openTSNE 
   - python310-openai 
-  - python310-openapi-codec 
   - python310-openapi-core 
   - python310-openapi-schema-validator 
   - python310-openapi-spec-validator 
@@ -25424,7 +25423,6 @@ unsorted:
   - python310-pyqt-builder 
   - python310-pyqtgraph 
   - python310-pyquery 
-  - python310-pyquil 
   - python310-pyrad 
   - python310-pyramid 
   - python310-pyramid-chameleon 
@@ -26605,6 +26603,7 @@ unsorted:
   - python311-SpeechRecognition 
   - python311-Sphinx 
   - python311-Sphinx-latex 
+  - python311-StrEnum 
   - python311-TagStats 
   - python311-Telethon 
   - python311-Tempita 
@@ -27324,7 +27323,6 @@ unsorted:
   - python311-copr 
   - python311-copr-cli 
   - python311-coreapi 
-  - python311-coreapi-cli 
   - python311-coreschema 
   - python311-cornice 
   - python311-cov-core 
@@ -28261,7 +28259,6 @@ unsorted:
   - python311-merge3 
   - python311-mergedeep 
   - python311-meson-python 
-  - python311-mesonpep517 
   - python311-metaextract 
   - python311-metakernel 
   - python311-metamagic.json 
@@ -28289,6 +28286,7 @@ unsorted:
   - python311-mocket 
   - python311-mockito 
   - python311-model-bakery 
+  - python311-modern-colorthief 
   - python311-modernize 
   - python311-mohawk 
   - python311-mongoengine 
@@ -28431,7 +28429,6 @@ unsorted:
   - python311-opcodes 
   - python311-openTSNE 
   - python311-openai 
-  - python311-openapi-codec 
   - python311-openapi-core 
   - python311-openapi-schema-validator 
   - python311-openapi-spec-validator 
@@ -28852,7 +28849,6 @@ unsorted:
   - python311-pyqt-builder 
   - python311-pyqtgraph 
   - python311-pyquery 
-  - python311-pyquil 
   - python311-pyrad 
   - python311-pyramid 
   - python311-pyramid-chameleon 
@@ -30037,6 +30033,7 @@ unsorted:
   - python39-SpeechRecognition 
   - python39-Sphinx 
   - python39-Sphinx-latex 
+  - python39-StrEnum 
   - python39-TagStats 
   - python39-Telethon 
   - python39-Tempita 
@@ -30785,7 +30782,6 @@ unsorted:
   - python39-copr 
   - python39-copr-cli 
   - python39-coreapi 
-  - python39-coreapi-cli 
   - python39-coreschema 
   - python39-cornice 
   - python39-cov-core 
@@ -31770,7 +31766,6 @@ unsorted:
   - python39-merge3 
   - python39-mergedeep 
   - python39-meson-python 
-  - python39-mesonpep517 
   - python39-metaextract 
   - python39-metakernel 
   - python39-metamagic.json 
@@ -31798,6 +31793,7 @@ unsorted:
   - python39-mocket 
   - python39-mockito 
   - python39-model-bakery 
+  - python39-modern-colorthief 
   - python39-modernize 
   - python39-mohawk 
   - python39-mongoengine 
@@ -31949,7 +31945,6 @@ unsorted:
   - python39-opcodes 
   - python39-openTSNE 
   - python39-openai 
-  - python39-openapi-codec 
   - python39-openapi-core 
   - python39-openapi-schema-validator 
   - python39-openapi-spec-validator 
@@ -32396,7 +32391,6 @@ unsorted:
   - python39-pyqt-builder 
   - python39-pyqtgraph 
   - python39-pyquery 
-  - python39-pyquil 
   - python39-pyrad 
   - python39-pyramid 
   - python39-pyramid-chameleon 
@@ -36051,7 +36045,6 @@ unsorted:
   - termrec 
   - termshark 
   - termsyn-bitmap-fonts 
-  - terraform 
   - terragrunt 
   - teseq 
   - tesla-polyglot-common 
