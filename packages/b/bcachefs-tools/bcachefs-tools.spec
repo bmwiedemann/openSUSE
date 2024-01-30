@@ -17,17 +17,20 @@
 
 
 Name:           bcachefs-tools
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://bcachefs.org/
-Source:         %name-%version.tar.xz
-Patch0:         use_libexec_not_lib.patch
-BuildRequires:  libaio-devel
+Source0:        https://evilpiepirate.org/%name/%name-vendored-%version.tar.zst
+Source1:        https://evilpiepirate.org/%name/%name-vendored-%version.tar.sign
+Source2:        %{name}.keyring
+BuildRequires:  cargo
+BuildRequires:  clang-devel
+BuildRequires:  libaio-devel >= 0.3.111
 BuildRequires:  pkg-config
-BuildRequires:  xz
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(libkeyutils)
 BuildRequires:  pkgconfig(liblz4)
@@ -43,7 +46,7 @@ BuildRequires:  pkgconfig(zlib)
 Bcachefs is a filesystem for Linux, with an emphasis on reliability
 and robustness.
 
-* Copy on write (COW) - like zfs or btrfs
+* Copy on write (COW) like zfs or btrfs
 * Full data and metadata checksumming
 * Multiple devices
 * Replication
@@ -59,10 +62,11 @@ This package contains utilities for creating and mounting bcachefs.
 %autosetup -p1
 
 %build
-%make_build NO_RUST=1 EXTRA_CFLAGS="%optflags"
+%make_build PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir" \
+	EXTRA_CFLAGS="%optflags"
 
 %install
-%make_install PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir" NO_RUST=1
+%make_install PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir"
 # this ain't no debian
 rm -Rf "%buildroot/etc/initramfs-tools" "%buildroot/%_datadir/initramfs-tools"
 
@@ -86,5 +90,6 @@ rm -Rf "%buildroot/etc/initramfs-tools" "%buildroot/%_datadir/initramfs-tools"
 %_udevrulesdir/64-bcachefs.rules
 %_mandir/man8/*.8*
 %license COPYING
+%doc doc/bcachefs-principles-of-operation.tex
 
 %changelog
