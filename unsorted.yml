@@ -1104,6 +1104,17 @@ unsorted:
   - awf-gtk3 
   - awf-gtk4 
   - awkward-devel 
+  - aws-c-auth-devel 
+  - aws-c-cal 
+  - aws-c-cal-devel 
+  - aws-c-common-devel 
+  - aws-c-compression-devel 
+  - aws-c-http 
+  - aws-c-http-devel 
+  - aws-c-io-devel 
+  - aws-c-s3-bin 
+  - aws-c-s3-devel 
+  - aws-c-sdkutils-devel 
   - aws-cli 
   - aws-efs-utils 
   - aws-nitro-enclaves-binaryblobs-upstream 
@@ -3360,6 +3371,8 @@ unsorted:
   - e3 
   - eaglemode 
   - earlyoom 
+  - eartag 
+  - eartag-lang 
   - easy-rsa 
   - easyeffects 
   - easyeffects-doc 
@@ -8433,6 +8446,8 @@ unsorted:
   - immer-devel 
   - imobiledevice-tools 
   - import-properties-plugin 
+  - impression 
+  - impression-lang 
   - impressive 
   - imv 
   - imwheel 
@@ -9501,7 +9516,6 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
-  - kimageformats-eps 
   - kimagemapeditor 
   - kimagemapeditor-lang 
   - kimap 
@@ -11253,6 +11267,16 @@ unsorted:
   - libavutil57 
   - libavutil57-32bit 
   - libavutil58-32bit 
+  - libaws-c-auth1_0_0 
+  - libaws-c-cal0unstable 
+  - libaws-c-common1 
+  - libaws-c-compression1_0_0 
+  - libaws-c-http1_0_0 
+  - libaws-c-io0unstable 
+  - libaws-c-s30unstable 
+  - libaws-c-sdkutils1_0_0 
+  - libaws-checksums-devel 
+  - libaws-checksums1 
   - libax25-0 
   - libax25-common 
   - libax25-devel 
@@ -12574,7 +12598,7 @@ unsorted:
   - libgif7-32bit 
   - libgig-devel 
   - libgig-tools 
-  - libgig10 
+  - libgig11 
   - libginac11 
   - libgio-2_0-0-32bit 
   - libgio-qt0 
@@ -15031,6 +15055,7 @@ unsorted:
   - librygel-ruih-2_8-0 
   - librygel-server-2_8-0 
   - libryml0_5_0 
+  - libs2n0unstable 
   - libs3-4 
   - libs3-devel 
   - libs3-tools 
@@ -22766,8 +22791,6 @@ unsorted:
   - python3-pyside2 
   - python3-pyside2-devel 
   - python3-pyside2-examples 
-  - python3-pyside6 
-  - python3-pyside6-devel 
   - python3-pysol-cards 
   - python3-pytest-ansible 
   - python3-pytest-cookies 
@@ -22782,8 +22805,6 @@ unsorted:
   - python3-saharaclient 
   - python3-seccomp 
   - python3-senlinclient 
-  - python3-shiboken6 
-  - python3-shiboken6-devel 
   - python3-smbus 
   - python3-spglib 
   - python3-sphinxbase 
@@ -28838,6 +28859,8 @@ unsorted:
   - python311-pyshark 
   - python311-pyshould 
   - python311-pyshp 
+  - python311-pyside6 
+  - python311-pyside6-devel 
   - python311-pysmb 
   - python311-pysmi 
   - python311-pysndfile 
@@ -29266,6 +29289,8 @@ unsorted:
   - python311-shaptools 
   - python311-shellingham 
   - python311-sherpa 
+  - python311-shiboken6 
+  - python311-shiboken6-devel 
   - python311-shijian 
   - python311-shinyutils 
   - python311-shodan 
@@ -34851,6 +34876,7 @@ unsorted:
   - ryzenadj 
   - rzsz 
   - s-tui 
+  - s2n-devel 
   - s390-tools 
   - s3backer 
   - s3fs 
@@ -35088,6 +35114,8 @@ unsorted:
   - sdcc-libc-sources 
   - sdcv 
   - sddm-branding-upstream 
+  - sddm-conf 
+  - sddm-conf-lang 
   - sddm-greeter-qt6 
   - sddm-qt6 
   - sddm-qt6-branding-upstream 
@@ -36011,9 +36039,6 @@ unsorted:
   - termshark 
   - termsyn-bitmap-fonts 
   - terraform 
-  - terraform-provider-aws 
-  - terraform-provider-helm 
-  - terraform-provider-libvirt 
   - terragrunt 
   - teseq 
   - tesla-polyglot-common 
@@ -46413,7 +46438,6 @@ unsorted:
   - xf86-input-evdev-devel 
   - xf86-input-joystick-devel 
   - xf86-input-libinput-devel 
-  - xf86-input-mouse 
   - xf86-input-mouse-devel 
   - xf86-input-synaptics 
   - xf86-input-synaptics-devel 
@@ -46877,6 +46901,7 @@ unsorted:
   - yudit 
   - yum 
   - yum-utils 
+  - yuzu 
   - z 
   - z3 
   - z3-devel 
