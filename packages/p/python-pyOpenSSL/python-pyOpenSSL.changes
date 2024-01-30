@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 29 21:16:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.0.0:
+  * Added OpenSSL.SSL.Connection.get_selected_srtp_profile to
+    determine which SRTP profile was negotiated. #1279.
+
+-------------------------------------------------------------------
 Mon Nov 27 08:52:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.3.0:

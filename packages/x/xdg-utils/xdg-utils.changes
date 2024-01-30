@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jan 30 03:49:59 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Update to Version 1.2.0 (Lining up with the upstream release)
+  * all: Add xdg-realpath to better handle Canonicalizing filenames (#66)
+  * xdg-open: Use url.dll as url opener on wsl (#242)
+  * tests: Fix quoting issues in t-xdg-open.sh
+  * xdg-open: Added a reporting issues section to xdg-open in the hopes
+    that more issues will be attributed correctly
+  * xdg-mime: Added a secutity note on xdg-mime default to warn against confusing 
+    openers and runners
+  * xdg-open: Added paragraph explaining the wiered return behaviour of xdg-open
+  * xdg-email: shellcheck
+  * xdg-mime: shellcheck
+  * xdg-settings:  Add support for deeping-desktop browser setting in
+    xdg-settings.
+  * all: Fix config.status warning about ignored --datarootdir setting 
+  * all: Shellchecked xdg-utils-common.in
+  * xdg-open: shellcheck
+  * xdg-mime: Create a generic implementation for KDE 
+  * all: Move to markdown for README's
+  * xdg-mime: Improve Documentation around query file/default
+  * xdg-open: Document not handling '-' at the start of filenames
+  * xdg-open: Deduplicate URL recognition
+  * xdg-open: remove unused open_generic_xdg_file_mime
+  * xdg-open: use LC_ALL=C with URLs
+  * xdg-open: Fix URI/URL handling
+  * xdg-email: Remove default BROWSER logic, no longer needed
+  * xdg-mime: Improve synopsis 
+  * xdg-settings: read KDE browser settings the right way around
+  * xdg-open: Improve WSL support
+  * xdg-mime: actually handle lists in mimeapps.list correctly
+
+-------------------------------------------------------------------
 Fri Sep 29 08:50:42 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - Update to version 1.2.0-beta1+20230929:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 23 17:46:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.4:
+  * bump dependencies
+  * typo fix
+  * feat: regex filter pod name
+
+-------------------------------------------------------------------
 Thu Jan 04 18:04:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.3:

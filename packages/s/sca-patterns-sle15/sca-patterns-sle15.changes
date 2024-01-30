@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 29 19:02:26 UTC 2024 - jason.record@suse.com
+
+- Changes to version 1.5.7
+  + rsyslog-000019710.py not applicable to SLE Micro (bsc#1219320)
+  + coredumpctl-000018634.py has invalid output element (bsc#1219319)
+
+-------------------------------------------------------------------
 Fri Jan 12 18:13:04 UTC 2024 - jason.record@suse.com
 
 - Changes to version 1.5.6

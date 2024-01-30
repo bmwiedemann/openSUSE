@@ -1084,4 +1084,12 @@
   * README: modify the fwts git repository</comment>
     <requestid>1132868</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>5d101a8e386ee30129970fbc9d64749c</srcmd5>
+    <version>23.11.00</version>
+    <time>1706635517</time>
+    <user>anag+factory</user>
+    <comment>- Only build on supported architectures (bsc#1219232)</comment>
+    <requestid>1142609</requestid>
+  </revision>
 </revisionlist>

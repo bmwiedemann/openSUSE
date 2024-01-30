@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cloudflare
-Version:        2.16.0
+Version:        2.17.0
 Release:        0
 Summary:        Python wrapper for the Cloudflare v4 API
 License:        MIT
@@ -38,7 +38,7 @@ Requires:       python-beautifulsoup4
 Requires:       python-jsonlines
 Requires:       python-requests >= 2.4.2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

@@ -1,7 +1,7 @@
 #
 # spec file for package smemstat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           smemstat
-Version:        0.02.12
+Version:        0.02.13
 Release:        0
 Summary:        Memory usage monitoring tool
 License:        GPL-2.0-or-later

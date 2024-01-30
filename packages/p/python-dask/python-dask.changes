@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 30 09:40:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1.1:
+  * This release contains compatibility updates for the latest
+    pandas and scipy releases. See :pr:`10834`, :pr:`10849`,
+    :pr:`10845`, and :pr-distributed:`8474` from `crusaderky`_
+    for details.
+
+-------------------------------------------------------------------
 Sat Jan 20 12:31:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.1.0:

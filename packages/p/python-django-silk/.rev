@@ -139,4 +139,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1116424</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>957c37e5ef4cd6bb00d549fc026ce13d</srcmd5>
+    <version>5.1.0</version>
+    <time>1706635616</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.0:
+  * This release includes Fix deprecation warning for
+    get_storage_class #669
+  * which deprecates `SILKY_STORAGE_CLASS`.  Users should instead
+    use the Django `STORAGES` configuration.
+  * Also, for python 3.12, the `cProfile` stdlib library cannot
+    be enabled multiple times concurrently.
+  * Silk will therefore skip profiling if another profile is
+    already enabled.
+  * Allow option to delete profiles
+  * Gracefully error out when there are concurrent profilers
+  * Always disable cProfile as part of cleanup
+  * Fix when Session, Authentication or Message middlewares are
+    not present
+  * Support Django 4.2
+  * Support python 3.12
+  * Support Django 5
+  * Remove deprecated datetime.timezone.utc
+  * Derive version from importlib</comment>
+    <requestid>1142775</requestid>
+  </revision>
 </revisionlist>

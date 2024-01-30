@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Wed Jan 24 14:05:47 UTC 2024 - jfehlig@suse.com
+
+- Update to version 1.3.0 (jsc#PED-4981):
+  * tests: add tests for live and defined support
+  * doc: document live support and its options
+  * cli: add live and defined parameters to modify command
+  * callouts: add callout live event support
+  * main: refactor jsonfile loading
+  * main: refactor getting active devices
+  * tests: add callout versioning tests
+  * callouts: add warning for unknown supported actions and events
+  * callouts: prevent repeating unsuccessful script searches
+  * callouts: add versioning on callout scripts
+  * callouts: make callout method reusable
+  * callouts: add a check_result_fn to invoke_first_matching_script
+  * Fix new clippy warnings
+  * Cargo.toml: move tempfile to dev-dependencies
+  * main: assemble active devices without overwriting
+  * mdevctl.spec.in: Add systemd as build requirement
+  * callout: ignore broken pipe on stdin
+  * cli: improve lsmdev help
+  * callouts: set script in callout on success only
+  * main: fix file open error being suppressed
+  * Fix clippy warning for useless vec
+  * callouts: replace negated check and improve msgs
+  * callouts: improve debug messages in get_attributes
+  * callouts: match code format in Display for Event and Action
+  * tests/callouts: make scripts cross distro compliant
+  * actions: update release action to newer versions
+  * Bump clap to 4.0
+  * Bump env_logger dependency to 0.9.0
+  * Fix deprecated github actions
+  * cli: change modify parameter relationships
+  * tests: use printf over echo
+  * tests: add callout constructor panic tests
+  * callouts: add MDev to callout struct
+  * callouts: Move stdin generation from Callout::invoke_script()
+  * callouts: Add a Callout argument to the invoke callback function
+  * callouts: Reuse Callout::callout() for get_attributes()
+  * callouts: Return Output from Callout::callout()
+  * callouts: Remove Callout::callout_dir()
+  * callouts: Move self.script invocation to callout()
+  * callouts: make Callout::invoke() a method
+  * mdev: provide better error message for invalid attr index
+  * mdev: change attribute index arguments to usize
+  * cli: adjust help text for modify option addattr
+  * modify: ensure required parameter is given
+  * trim trailing null from callout script get-attributes output
+  * Add --force option for commands that have callouts
+  * Bump 'nix' dependency
+  * tests: test 'stop' with callouts
+  * tests: remove stray debug prints during fork
+  * tests: make test failure reports more obvious
+  * Bump version to 1.3.0
+  * undefine: report error if device is not undefined
+  * modify: add jsonfile optional parameter
+  * cli: add cli tests
+  * cli: fix clap deprecations warnings
+  * tests: fix test_modify() when auto and manual are both set
+  * Fix panic on modify delattr with invalid index
+  * Active attributes (#71)
+  * clippy: remove needless borrows
+  * mdevctl.rst: align use of term state
+  * Add tests for callout dir priority
+  * Add system callout script dir outside /etc.
+  * Add ability to set env root with env variable
+  * Rename Environment::persist_base() to config_base()
+  * Update github checkout action
+  * Relax 'nix' dependency version requirement
+  * callouts: remove return value from Callout::notify()
+  * callouts: remove separate is_dir() check in notify()
+  * callouts: filter and map iterator in notifier loop
+  * Update uuid version
+  * tests: verify that callout scripts are executed in order
+  * callouts: make sure scripts are sorted
+  * callouts: simplify loop through callout dir
+  * callouts: Remove call to count() on callout dir entries
+  * Fix new clippy warnings
+  * Fix intermittent callout failure during test
+  * rpm: set debug env vars when running tests in rpm build
+  * Add python3-docutils to rpm BuildRequires
+
+-------------------------------------------------------------------
 Sun Dec 11 18:19:52 UTC 2022 - dmueller@suse.com
 
 - Update to version 1.2.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package openssl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,6 +62,16 @@ Provides:       pkgconfig(openssl) = %{version}
 This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
+%package -n libopenssl-fips-provider
+Summary:        Include Files and Libraries mandatory for Development
+Group:          Development/Libraries/C and C++
+Requires:       %{name} >= 3.0.0
+Requires:       libopenssl%{_sonum} >= 3.0.0
+Requires:       pkgconfig
+
+%description -n libopenssl-fips-provider
+This package contains OpenSSL FIPS provider.
+
 %prep
 cp %{SOURCE0} .
 
@@ -75,6 +85,9 @@ cp %{SOURCE0} .
 %doc README.SUSE
 
 %files -n libopenssl-devel
+%doc README.SUSE
+
+%files -n libopenssl-fips-provider
 %doc README.SUSE
 
 %changelog

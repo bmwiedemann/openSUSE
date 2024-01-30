@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 24 10:28:23 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build with distro flags
+
+-------------------------------------------------------------------
 Thu Sep 14 06:26:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Ship libduktape207-32bit: needed by libproxy since version 0.5.

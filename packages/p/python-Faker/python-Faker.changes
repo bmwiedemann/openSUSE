@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 30 12:06:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.6.0:
+  * Add support for birthday and gender to  `uk_UA` `ssn` method.
+  * Add area code `830000` to `zh_CN`. Thanks @antik.
+  * Add `area_code` parameter to `ssn` provider for `zh_CN`.
+  * Add `http_status_code` to internet provider.
+
+-------------------------------------------------------------------
 Sat Jan 20 19:22:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.4.0:

@@ -151,4 +151,12 @@
   * fix: replace ` ` with `\n` in error reports for matches</comment>
     <requestid>1098174</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7d5aff6b909e250d2d112189d9cd1ada</srcmd5>
+    <version>2.0.2</version>
+    <time>1706635532</time>
+    <user>anag+factory</user>
+    <comment>- build for python 3.7 and above</comment>
+    <requestid>1142643</requestid>
+  </revision>
 </revisionlist>

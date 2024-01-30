@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 30 12:05:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3:
+  * replace flake8 with ruff
+  * CI fixes
+
+-------------------------------------------------------------------
 Wed Aug  9 07:28:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4:
@@ -36,7 +43,7 @@ Wed Aug  9 07:28:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sat Dec  3 04:28:06 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v1.2.32 
+- Update to v1.2.32
   * chore(Format): fix formatting
 
 - Update to v1.2.31
@@ -45,7 +52,7 @@ Sat Dec  3 04:28:06 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Tue Sep 27 14:32:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v1.2.30: 
+- Update to v1.2.30:
   * Fixes #31
   * Fixes #36
   * Implements #52 fix from upstream that fixes #37

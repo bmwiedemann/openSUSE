@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-FontTools
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -24,10 +24,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-FontTools%{psuffix}
-Version:        4.47.0
+Version:        4.47.2
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1
@@ -45,7 +44,7 @@ BuildRequires:  unzip
 # some packages should require fonttools[ufo] but expect fs to be pulled in by default.
 Requires:       python-fs >= 2.2.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Brotli >= 1.1.0
 Recommends:     python-freetype-py >= 2.4.0
 Recommends:     python-lxml >= 4.9.3
@@ -63,10 +62,8 @@ BuildRequires:  %{python_module Brotli >= 1.1.0}
 BuildRequires:  %{python_module fs >= 2.4.16}
 BuildRequires:  %{python_module pytest}
 %endif
-%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Obsoletes:      fonttools < %{version}-%{release}
 Provides:       fonttools = %{version}-%{release}
-%endif
 %python_subpackages
 
 %description
@@ -129,7 +126,7 @@ rm -r %{buildroot}%{_mandir}
 %python_alternative %{_bindir}/fonttools
 %python_alternative %{_mandir}/man1/ttx.1%{?ext_man}
 %{python_sitelib}/fontTools
-%{python_sitelib}/fonttools-%{version}*-info
+%{python_sitelib}/fonttools-%{version}.dist-info
 %endif
 
 %changelog

@@ -4011,4 +4011,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch</comment>
     <requestid>1139223</requestid>
   </revision>
+  <revision rev="425" vrev="2">
+    <srcmd5>7c90abf58c479af86a0e040d01bb2bc2</srcmd5>
+    <version>21.1.11</version>
+    <time>1706635434</time>
+    <user>anag+factory</user>
+    <comment>- no longer (build-)require obsolete Xprint/XprintUtil</comment>
+    <requestid>1142261</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,21 @@
+--- apache-ivy-2.5.2/build.xml	2023-10-30 16:09:23.892302634 +0100
++++ apache-ivy-2.5.2/build.xml	2023-10-30 16:12:01.143389848 +0100
+@@ -185,6 +185,7 @@
+         <javac srcdir="${src.dir}"
+                destdir="${core.classes.build.dir}"
+                sourcepath=""
++               classpathref="lib.classpath"
+                source="${ivy.minimum.javaversion}"
+                target="${ivy.minimum.javaversion}"
+                debug="${debug.mode}"
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/util/FileUtil.java	2023-10-30 16:09:23.928969555 +0100
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/util/FileUtil.java	2023-10-30 16:13:35.547375897 +0100
+@@ -46,7 +46,7 @@
+ import java.util.zip.GZIPInputStream;
+ import java.util.zip.ZipInputStream;
+ 
+-import static java.util.jar.Pack200.newUnpacker;
++import static io.pack200.Pack200.newUnpacker;
+ 
+ /**
+  * Utility class used to deal with file related operations, like copy, full reading, symlink, ...

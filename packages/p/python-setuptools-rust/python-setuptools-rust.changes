@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:14:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix dependencies (add tomli)
+
+-------------------------------------------------------------------
+Mon Jan 29 12:34:54 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to 1.8.1:
+  * Remove direct imports from distutils
+  * Include py.typed when packaging to denote that setuptools-rust includes type hints
+  * Add support for pyproject.toml configuration using [tool.setuptools-rust] options
+  * Fix plat_name handling in the case bdist_wheel.plat_name is set via configuration file
+  * Drop support for Python 3.7
+  * Remove direct imports from pkg_resources.
+  * Add support for setting a custom cargo profile with the SETUPTOOLS_RUST_CARGO_PROFILE environment variable
+- drop installation of example hello-world as it needs a cargo now
+
+-------------------------------------------------------------------
 Thu May  4 19:54:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:
@@ -120,9 +138,9 @@ Fri Feb  4 22:05:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Mon Jan 10 11:54:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip building for python 2.x, as the setuptools we have is no
-  longer compatible with it 
+  longer compatible with it
 
 -------------------------------------------------------------------
 Sat Nov 27 13:25:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- Initial package (1.0.0) 
+- Initial package (1.0.0)

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 29 17:40:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240128T162314Z:
+  * fix: remove prometheus metrics arbitrary body limit (#4832)
+  * feat: service restart/update provides now per node status
+    (#4827)
+  * Bump github.com/lestrrat-go/jwx from 1.2.27 to 1.2.28 (#4830)
+  * feat: add skip-errors to mc mirror (#4831)
+  * fix: allow -q by turning of pipe progress bar (#4828)
+  * Adding screen-256color to pager enabled terms (#4829)
+
+-------------------------------------------------------------------
 Sat Jan 20 17:09:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240118T070339Z:

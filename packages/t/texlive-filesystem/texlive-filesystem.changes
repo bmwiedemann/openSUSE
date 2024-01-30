@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 29 12:02:43 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- We need a working full-featured setpriv(8) (boo#1212571)
+
+-------------------------------------------------------------------
 Tue Jul  4 09:16:37 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Rework lua(meta)tex/context resource findings

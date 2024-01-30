@@ -1,7 +1,7 @@
 #
 # spec file for package xrootd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %bcond_with    ceph
 
 Name:           %{pname}%{psuffix}
-Version:        5.6.4
+Version:        5.6.6
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
@@ -259,9 +259,9 @@ Requires:       %{pname}-libs = %{version}
 Requires:       logrotate
 Requires:       systemd
 Requires(post): systemd
-Requires(postun):systemd
+Requires(postun): systemd
 Requires(pre):  systemd
-Requires(preun):systemd
+Requires(preun): systemd
 
 %description    server-libs
 The XROOTD project gives access to data repositories.

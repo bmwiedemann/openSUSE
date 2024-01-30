@@ -1,8 +1,8 @@
-Index: unittest-xml-reporting-3.0.2/xmlrunner/result.py
+Index: unittest-xml-reporting-3.2.0/xmlrunner/result.py
 ===================================================================
---- unittest-xml-reporting-3.0.2.orig/xmlrunner/result.py
-+++ unittest-xml-reporting-3.0.2/xmlrunner/result.py
-@@ -179,6 +179,9 @@ class _TestInfo(object):
+--- unittest-xml-reporting-3.2.0.orig/xmlrunner/result.py
++++ unittest-xml-reporting-3.2.0/xmlrunner/result.py
+@@ -188,6 +188,9 @@ class _TestInfo(object):
          """
          return self.test_exception_info
  
@@ -10,9 +10,9 @@ Index: unittest-xml-reporting-3.0.2/xmlrunner/result.py
 +        return self.test_description
 +
  
- class _XMLTestResult(_TextTestResult):
+ class _XMLTestResult(TextTestResult):
      """
-@@ -658,3 +661,8 @@ class _XMLTestResult(_TextTestResult):
+@@ -673,3 +676,8 @@ class _XMLTestResult(TextTestResult):
      def _exc_info_to_string(self, err, test):
          """Converts a sys.exc_info()-style tuple of values into a string."""
          return super(_XMLTestResult, self)._exc_info_to_string(err, test)

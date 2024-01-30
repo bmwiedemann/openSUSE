@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 30 08:57:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.275.0
+  * MSL: Support std140 half matrices and arrays.
+  * HLSL: Fix issue with vec4 straddle rules in substructs.
+
+-------------------------------------------------------------------
 Fri Oct 27 04:14:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.268.0

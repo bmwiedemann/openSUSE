@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jan 30 14:22:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.25.1:
+  * fix: json build output (#4157) (#4159)
+  * add depot.dev as a valid builder  (#4106) (#4160)
+
+-------------------------------------------------------------------
+Mon Jan 29 17:39:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.25.0:
+  * fix: logger on different output formats (#4152) (#4155)
+  * fix cves (#4153) (#4154)
+  * fix: avoid panic in k8s logger if resp is nil (#4149) (#4150)
+  * fix: log k8s request before any return (#4147) (#4148)
+  * fix: missing whitespace on spinner (#4143) (#4145)
+  * fix: remote with parent folders (#4128)
+  * fix: panic on race condition (#4140)
+  * lint(revive): enable and fix rule EXC0014 (#4139)
+  * Log all requests made to K8S's API (#4131)
+  * rename launch to deploy (#4135)
+  * update codeowners to backend team (#4133)
+  * fix okteto up double shutdown when interrupting with ctrl+c
+    (#4134)
+  * update golangci goheader config for 2024 (#4132)
+  * docs: rename svc to service in helper (#4126)
+  * feat: always refresh kubetoken on okteto up errors (#4123)
+  * fix: multi tag bullds (#4124)
+  * fix: statefulset reconnection error (#4127)
+  * Upgrade staging domain for user apps (#4125)
+  * docs: refactor helper usage (#4122)
+  * feat: expand build secrets (#4119)
+  * wrap errors instead of using its string (#4108)
+  * fix: add test for missing trailing slash in IsGlobalRegistry
+    (#4118)
+  * refactor: move build model to pkg/build (#4098)
+  * build(deps): Bump github.com/cloudflare/circl from 1.3.3 to
+    1.3.7 (#4115)
+  * fix: panic in okteto build caused by nil oc.Store (#4113)
+  * fix: panic in okteto up caused by already closed readyChan
+    (#4111)
+  * build(deps): Bump github.com/containerd/containerd from 1.6.20
+    to 1.6.26 (#4096)
+  * fix: wrap error while creating secrets (#4107)
+  * build(deps): Bump github.com/go-git/go-git/v5 from 5.4.2 to
+    5.11.0 (#4104)
+
+-------------------------------------------------------------------
 Fri Jan 26 19:41:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.24.2:

@@ -68,4 +68,17 @@
   * Relase fixing issue #6</comment>
     <requestid>1103084</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ad7dc0e92ae6f315bb69d535ff94cb99</srcmd5>
+    <version>1.4.3</version>
+    <time>1706635607</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.3:
+  * replace flake8 with ruff
+  * CI fixes
+
+- Update to v1.2.32
+- Update to v1.2.30:</comment>
+    <requestid>1142766</requestid>
+  </revision>
 </revisionlist>

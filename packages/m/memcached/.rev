@@ -552,4 +552,43 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment></comment>
     <requestid>1125870</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>b4eb8cbe4c5f0f381a4c07fae0bcf242</srcmd5>
+    <version>1.6.23</version>
+    <time>1706635458</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1142485 from dirkmueller
+
+- update to 1.6.23:
+  * https://github.com/memcached/memcached/wiki/ReleaseNotes1623
+
+- fixes [bsc#1216699] (CVE-2023-46852)
+  * proxy: add memory accounting tracking
+  * Meta protocol has some adjusments: extra spaces were
+  * extstore: make defaults more aggressive
+  * Fix error message on conflicting ports while using '-l'
+  * core: remove cdefs include from queue.h
+  * The total number of UDP datagrams required for the message is calculated
+  * The meta protocol can now transmit binary encoded keys by encoding the
+  * Fix TCP failure under OS X.
+- Mention that this stream isn't affected by bsc#1085209,
+- Replace references to /var/adm/fillup-templates with new
+  * Please read the news at
+  * issue#370 : slab re-balance is not thread-safe in function
+- update to 1.4.20
+- freshed memcached-autofoo.patch
+  * Reduce odds of getting OOM errors in some odd cases
+- Update to version 1.4.14
+    * Better detection of sasl_callback_ft
+    * fix slabs_reassign tests on 32bit hosts
+    * Fix to build with cyrus sasl 2.1.25
+    * Slab page reassignment and bug fixes over 1.4.10.
+    * Allow all tests to run as root
+    * Fix -c so maxconns can be raised above default.
+    * Fix compile error on OS X
+    * Issue 200 : Don't fire dtrace probe as the last thing in a function
+    * Fix compilation issue on Solaris 9 wrt isspace() macro - Resolves
+      issue 111</comment>
+    <requestid>1142602</requestid>
+  </revision>
 </revisionlist>

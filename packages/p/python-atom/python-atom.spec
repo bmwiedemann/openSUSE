@@ -1,7 +1,7 @@
 #
 # spec file for package python-atom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-atom
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        Memory efficient Python objects
 License:        BSD-3-Clause

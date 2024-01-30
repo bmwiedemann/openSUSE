@@ -204,4 +204,40 @@
   * Add openssl-CVE-2023-5678.patch</comment>
     <requestid>1126784</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>325c98fdb4673ebd6ecdae68cd78c393</srcmd5>
+    <version>3.1.4</version>
+    <time>1706635501</time>
+    <user>anag+factory</user>
+    <comment>- Encapsulate the fips provider into a new package called
+  libopenssl-3-fips-provider.
+
+- Added openssl-3-use-include-directive.patch so that the default
+  /etc/ssl/openssl.cnf file will include any configuration files that
+  other packages might place into /etc/ssl/engines3.d/ and
+  /etc/ssl/engdef3.d/. Also create symbolic links /etc/ssl/engines.d/
+  and /etc/ssl/engdef.d/ to above versioned directories.
+- Updated spec file to create the two new necessary directores for
+  the above patch and two symbolic links to above directories.
+  [bsc#1194187, bsc#1207472, bsc#1218933]
+
+- Security fix: [bsc#1218810, CVE-2023-6237]
+  * Limit the execution time of RSA public key check
+  * Add openssl-CVE-2023-6237.patch
+
+- Rename openssl-Override-default-paths-for-the-CA-directory-tree.patch
+  to openssl-crypto-policies-support.patch
+
+- Embed the FIPS hmac. Add openssl-FIPS-embed-hmac.patch
+
+- Load the FIPS provider and set FIPS properties implicitly.
+  * Add openssl-Force-FIPS.patch [bsc#1217934]
+- Disable the fipsinstall command-line utility.
+  * Add openssl-disable-fipsinstall.patch
+- Add instructions to load legacy provider in openssl.cnf.
+  * openssl-load-legacy-provider.patch
+- Disable the default provider for the test suite.
+  * openssl-Disable-default-provider-for-test-suite.patch</comment>
+    <requestid>1142584</requestid>
+  </revision>
 </revisionlist>

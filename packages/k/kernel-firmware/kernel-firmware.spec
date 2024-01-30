@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20240115
+%define version_unconverted 20240126
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20240115
+Version:        20240126
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -1680,6 +1680,7 @@ Supplements:    modalias(pci:v00008086d000056BCsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056BDsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056C0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056C1sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000056C2sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00005902sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00005906sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00005908sv*sd*bc03sc*i*)
@@ -1810,6 +1811,9 @@ Conflicts:      kernel-firmware-uncompressed
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
+Supplements:    modalias(acpi*:INTC1009%3A*)
+Supplements:    modalias(acpi*:INTC1058%3A*)
+Supplements:    modalias(acpi*:INTC1094%3A*)
 Supplements:    modalias(pci:v00008086d00000435sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001919sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000019E2sv*sd*bc*sc*i*)
@@ -5963,6 +5967,7 @@ Supplements:    modalias(usb:v2001p3310d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3310d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p3311d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3311d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2001p3312d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p3317d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3319d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p331Bd*dc*dsc*dp*ic*isc*ip*in*)
@@ -6025,13 +6030,16 @@ Supplements:    modalias(usb:v2357p010Cd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2357p010Cd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2357p0111d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2357p0111d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2357p0126d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2357p0601d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2357p0601d*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v2357p0601d*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v25D4p4CA1d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v25D4p4CABd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2C4Ep0100d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2C4Ep0102d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2C4Ep0102d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2C4Ep0104d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v4855p0090d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v4855p0090d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v4855p0091d*dc*dsc*dp*ic*isc*ip*in*)
@@ -6274,6 +6282,7 @@ Supplements:    modalias(acpi*:CSC0010%3A*)
 Supplements:    modalias(acpi*:CSC3551%3A*)
 Supplements:    modalias(acpi*:INT33C8%3A*)
 Supplements:    modalias(acpi*:INT3438%3A*)
+Supplements:    modalias(acpi*:INT8866%3A*)
 Supplements:    modalias(acpi*:PNPB006%3A*)
 Supplements:    modalias(acpi*:TIAS2781%3A*)
 Supplements:    modalias(hdaudio:v11020011r*a01*)

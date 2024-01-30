@@ -279,4 +279,15 @@
   * cleaned up the README, rearranged other documentation.</comment>
     <requestid>1140108</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>534ce69da9b59be66b237cc47109f205</srcmd5>
+    <version>0.31.2</version>
+    <time>1706635614</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.31.2:
+  * broken support for `Optional[List]` (but not
+    `Optional[list]`), a narrower case of the problem fixed
+    earlier</comment>
+    <requestid>1142777</requestid>
+  </revision>
 </revisionlist>

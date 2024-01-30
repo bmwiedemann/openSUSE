@@ -307,4 +307,15 @@
     <comment></comment>
     <requestid>1095766</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>7f910f29c2d5b62c3e1b619b7c334a7b</srcmd5>
+    <version>3.14.0</version>
+    <time>1706635573</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Drop core{api,schema} from BuildRequires/Recommends, they are no
+  longer developed, and will be removed.
+- Switch to psycopg (so version 3).</comment>
+    <requestid>1142708</requestid>
+  </revision>
 </revisionlist>

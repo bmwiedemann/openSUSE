@@ -194,4 +194,13 @@ Features
     (e.g. ``en-us`` becomes ``en``). Fallback can be disabled with ``lang_check=False``</comment>
     <requestid>1135656</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c32d9858bd57e0817a326d348620802c</srcmd5>
+    <version>2.5.1</version>
+    <time>1706635600</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.1:
+  * Flush file after saving</comment>
+    <requestid>1142762</requestid>
+  </revision>
 </revisionlist>

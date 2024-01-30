@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 30 11:54:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.3:
+  * Add support for Python 3.12, PyPy 3.9, and PyPy 3.10
+  * Update to match `toolz` 0.12.1
+
+-------------------------------------------------------------------
 Wed Jul 26 16:00:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.2:
@@ -36,7 +43,7 @@ Mon Jan 10 22:38:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Mar 30 14:32:52 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Use pytest instead of nose 
+- Use pytest instead of nose
 
 -------------------------------------------------------------------
 Fri Nov  8 18:10:49 UTC 2019 - marec@detebe.org

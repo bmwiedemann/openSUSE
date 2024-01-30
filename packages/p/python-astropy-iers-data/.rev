@@ -17,4 +17,14 @@
     data/compare/v0.2023.12.18.00.30.18...v0.2023.12.25.00.30.16</comment>
     <requestid>1135255</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53a4b57f2cbe94fd8674cfb49ff9d7a0</srcmd5>
+    <version>0.2024.1.29.0.30.37</version>
+    <time>1706635605</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2024.01.29.00.30.37:
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2023.12.25.00.30.16...v0.2024.01.29.00.30.37</comment>
+    <requestid>1142761</requestid>
+  </revision>
 </revisionlist>

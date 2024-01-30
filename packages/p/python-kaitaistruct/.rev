@@ -42,4 +42,12 @@
 </comment>
     <requestid>1043186</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4fc0a4d54e61d54d48b699866ca14320</srcmd5>
+    <version>0.10</version>
+    <time>1706635542</time>
+    <user>anag+factory</user>
+    <comment>- build also for 311</comment>
+    <requestid>1142653</requestid>
+  </revision>
 </revisionlist>

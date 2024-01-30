@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-qxl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
+Patch0:         Xspice-python3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -74,7 +75,7 @@ XSpice is both an X and a Spice server that can be accessed by a Spice client.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi

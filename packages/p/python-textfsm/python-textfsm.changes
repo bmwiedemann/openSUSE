@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 29 10:03:54 UTC 2024 - pgajdos@suse.com
+
+- do not require six
+- deleted patches
+  - remove-future-requirement.patch (part of python-textfsm-no-python2.patch)
+- added patches
+  fix https://github.com/google/textfsm/commit/c8843d69daa9b565fea99a0283ad13c324d5b563
+  + python-textfsm-no-python2.patch
+
+-------------------------------------------------------------------
 Tue Sep  5 01:14:13 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch correct-version.patch, version in the tarball does not match.

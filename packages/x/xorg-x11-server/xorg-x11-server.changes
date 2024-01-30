@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 29 13:03:52 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer (build-)require obsolete Xprint/XprintUtil 
+
+-------------------------------------------------------------------
 Tue Jan 16 13:41:43 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 21.1.11

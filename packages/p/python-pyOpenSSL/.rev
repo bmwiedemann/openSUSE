@@ -560,4 +560,14 @@
 - fixed doc generation</comment>
     <requestid>1129059</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>469e827b3d3221737fde36b4f6876194</srcmd5>
+    <version>24.0.0</version>
+    <time>1706635468</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.0.0:
+  * Added OpenSSL.SSL.Connection.get_selected_srtp_profile to
+    determine which SRTP profile was negotiated. #1279.</comment>
+    <requestid>1142651</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jan 24 10:46:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.12:
+  + This release adds the following features:
+    - Add remote modification support to fwupdtool
+    - Add support for more modify-config options
+    - Generate HTML pages for all man pages
+  + This release fixes the following bugs:
+    - Assume the legacy LVFS::UpdateRequestId tag is non-generic
+    - Avoid crashing the daemon if not using udisks
+    - Correctly mark the CPU as supported
+    - Correctly match invalid EFI partitions
+    - Do not change the device status until the action has
+      completed
+    - Do not require systemd for fwupdtool modify-config
+    - Enable access to the home interface for snap
+    - Fix an assertion when enabling lvfs-testing for the first
+      time
+    - Fix a possible crash in fwupdtool build-cabinet
+    - Handle systems with more than one ccp device
+    - Only check AMD CPUs for SHSTK, not IBT
+    - Only write the mutable fwupd.conf with the current values
+    - Re-evaluate supported every time pci-psp attributes are
+      refreshed
+    - Show "CET OS support" on AMD systems too
+  + This release adds support for the following hardware:
+    - AVer CAM340plus
+    - AVer VB342 Pro
+    - More Algoltek devices
+
+-------------------------------------------------------------------
 Sat Jan 13 05:05:41 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
 
 - Fix build failure on s390x and ppc64le

@@ -68,4 +68,24 @@
     <comment></comment>
     <requestid>1109075</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7b29d1eb407a10e1207dbe9676560e6b</srcmd5>
+    <version>3.0.11</version>
+    <time>1706635523</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.11:
+  * Add WRDE_NOCMD to wordexp call
+  * Fix: validateDTD compile fails if when libxml2 not
+    installed
+  * Fix memory leak of validateDTD's dtd object
+  * Fix memory leaks in ValidateSchema
+  * Add support for expirevar action
+  * Fix: lmdb regex match on non-null terminated string
+  * Fix memory leaks in lmdb code (new'd strings)
+  * Configure: add additional name to pcre2 pkg-config list
+
+    - Additional information on this issue is available at
+ - Fix variable FILES_TMPNAMES</comment>
+    <requestid>1142603</requestid>
+  </revision>
 </revisionlist>

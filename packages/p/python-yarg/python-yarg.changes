@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 30 15:10:26 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix (C) line in spec file
+
+-------------------------------------------------------------------
 Tue Jun 13 09:00:47 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

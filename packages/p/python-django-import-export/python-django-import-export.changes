@@ -1,4 +1,345 @@
 -------------------------------------------------------------------
+Tue Jan 30 12:23:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.6:
+  * Fix issue with highlight when using 'light' color scheme
+  * Remove unnecessary ChangeList queries to speed up export via
+    Admin UI
+  * Respect color scheme override
+  * Update FAQ to cover skipping rows with validation errors
+  * Added support for django5
+  * Show list of exported fields in Admin UI
+  * Added support for python 3.12
+  * Update Finnish translations
+  * :meth:`~import_export.admin.ExportActionMixin.export_admin_ac
+    tion` can be overridden by subclassing it in the ModelAdmin
+  * Updated Spanish translations
+  * Added documentation and tests for retrieving instance
+    information after import
+  * :meth:`~import_export.widgets.NumberWidget.render` returns
+    None as empty string if coerce_to_string is True
+  * Updated documentation to describe how to select for export in
+    Admin UI
+  * Added catch for django5 deprecation warning
+  * Updated and compiled message files
+  * Added .readthedocs.yaml
+  * Remove 'escape output' deprecation (#1618) Removal of
+    deprecated :ref:`IMPORT_EXPORT_ESCAPE_OUTPUT_ON_EXPORT`.
+    Deprecation of :ref:`IMPORT_EXPORT_ESCAPE_HTML_ON_EXPORT`.
+    Refer to :ref:`installation` docs.
+  * Removal of deprecated
+    :ref:`IMPORT_EXPORT_ESCAPE_OUTPUT_ON_EXPORT`.
+  * Deprecation of :ref:`IMPORT_EXPORT_ESCAPE_HTML_ON_EXPORT`.
+    Refer to :ref:`installation` docs.
+  * Refactoring and fix to support filtering exports
+  * Store instance and original object in
+    :class:`~import_export.results.RowResult`
+  * Add customizable blocks in import.html
+  * Include 'allowed formats' settings
+  * Add kwargs to enable CharWidget to return values as strings
+  * Add Finnish translation
+  * Updated ru translation
+  * Fixed badly formatted translation string
+  * Remove 'escape output' deprecation
+  * Do not decode bytes when writing to MediaStorage
+  * Fix for cache entries not removed
+  * Added support for Django 4.2
+  * Add automatic formatting and linting
+  * removed duplicate admin integration tests
+  * Removed support for python3.7 and django4.0 (past EOL)
+  * Updated documentation for interoperability with third party
+    libraries
+  * Escape formulae on export to XLSX (#1568)  This includes
+    deprecation of :ref:`IMPORT_EXPORT_ESCAPE_OUTPUT_ON_EXPORT`.
+    Refer to :ref:`installation` for alternatives.
+    :meth:`import_export.formats.TablibFormat.export()`:
+    escape_output flag now deprecated in favour of escape_html
+    and escape_formulae.
+  * Escape formulae on export to XLSX
+  * This includes deprecation of
+    :ref:`IMPORT_EXPORT_ESCAPE_OUTPUT_ON_EXPORT`. Refer to
+    :ref:`installation` for alternatives.
+  * This includes deprecation of
+    :ref:`IMPORT_EXPORT_ESCAPE_OUTPUT_ON_EXPORT`.
+  * Refer to :ref:`installation` for alternatives.
+  * :meth:`import_export.formats.TablibFormat.export()`:
+    escape_output flag now deprecated in favour of escape_html
+    and escape_formulae.
+  * :meth:`import_export.formats.TablibFormat.export()`:
+    escape_output flag now deprecated in favour of escape_html
+    and escape_formulae.
+  * Refactor methods so that args are declared correctly (#1566)
+    This includes deprecations to be aware of if you have
+    overridden :meth:`~import_export.resources.Resource.export`
+    or :class:`~import_export.forms.ImportExportFormBase`.
+    export(): If passing queryset as the first arg, ensure this
+    is passed as a named parameter. ImportExportFormBase: If
+    passing resources to __init__ as the first arg, ensure this
+    is passed as a named parameter.
+  * Refactor methods so that args are declared correctly
+  * This includes deprecations to be aware of if you have
+    overridden :meth:`~import_export.resources.Resource.export`
+    or :class:`~import_export.forms.ImportExportFormBase`.
+    export(): If passing queryset as the first arg, ensure this
+    is passed as a named parameter. ImportExportFormBase: If
+    passing resources to __init__ as the first arg, ensure this
+    is passed as a named parameter.
+  * export(): If passing queryset as the first arg, ensure this
+    is passed as a named parameter.
+  * ImportExportFormBase: If passing resources to __init__ as the
+    first arg, ensure this is passed as a named parameter.
+
+-------------------------------------------------------------------
+Tue Jan 30 12:21:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.6:
+  * Fix issue with highlight when using 'light' color scheme
+  * 3.3.5 (2023-12-19) - Remove unnecessary ChangeList queries to
+    speed up export via Admin UI (#1715) - Respect color scheme
+    override (#1720) - Update FAQ to cover skipping rows with
+    validation errors (#1721) 3.3.4 (2023-12-09) - Added support
+    for django5 (#1634) - Show list of exported fields in Admin
+    UI (#1685) - Added CONTRIBUTING.md - Added support for python
+    3.12 (#1698) - Update Finnish translations (#1701) 3.3.3
+    (2023-11-11) - :meth:`~import_export.admin.ExportActionMixin.
+    export_admin_action` can be overridden by subclassing it in
+    the
+  * 3.3.2 (2023-11-09) - Updated Spanish translations (#1639) -
+    Added documentation and tests for retrieving instance
+    information after import (#1643) -
+    :meth:`~import_export.widgets.NumberWidget.render` returns
+    None as empty string
+  * Updated documentation to describe how to select for export in
+    Admin UI
+  * Added catch for django5 deprecation warning
+  * Updated and compiled message files
+  * 3.3.1 (2023-09-14) - Added .readthedocs.yaml (#1625) 3.3.0
+    (2023-09-14) Deprecations - Remove 'escape output'
+    deprecation
+  * Removal of deprecated
+    :ref:`IMPORT_EXPORT_ESCAPE_OUTPUT_ON_EXPORT`.
+  * Deprecation of :ref:`IMPORT_EXPORT_ESCAPE_HTML_ON_EXPORT`.
+    Refer to :ref:`installation` docs.
+  * Enhancements - Refactoring and fix to support filtering
+    exports (#1579) - Store instance and original object in
+    :class:`~import_export.results.RowResult` (#1584) - Add
+    customizable blocks in import.html (#1598) - Include 'allowed
+    formats' settings (#1606) - Add kwargs to enable CharWidget
+    to return values as strings (#1623) Internationalization -
+    Add Finnish translation (#1588) - Updated ru translation
+    (#1604) - Fixed badly formatted translation string (#1622) -
+    Remove 'escape output' deprecation (#1618) Fixes - Do not
+    decode bytes when writing to MediaStorage (#1615) - Fix for
+    cache entries not removed (#1621) Development - Added support
+    for Django 4.2 (#1570) - Add automatic formatting and linting
+    (#1571) - removed duplicate admin integration tests (#1616) -
+    Removed support for python3.7 and django4.0 (past EOL)
+    (#1618) Documentation - Updated documentation for
+    interoperability with third party libraries (#1614) 3.2.0
+    (2023-04-12) - Escape formulae on export to XLSX
+  * This includes deprecation of
+    :ref:`IMPORT_EXPORT_ESCAPE_OUTPUT_ON_EXPORT`. Refer to
+    :ref:`installation` for alternatives.
+  * :meth:`import_export.formats.TablibFormat.export()`:
+    escape_output flag now deprecated in favour of escape_html
+    and escape_formulae.
+  * Refactor methods so that args are declared correctly (#1566)
+    - This includes deprecations to be aware of if you have
+    overridden :meth:`~import_export.resources.Resource.export`
+    or :class:`~import_export.forms.ImportExportFormBase`. -
+    export(): If passing queryset as the first arg, ensure this
+    is passed as a named parameter. - ImportExportFormBase: If
+    passing resources to __init__ as the first arg, ensure this
+    is  passed as a named parameter.
+  * Refactor methods so that args are declared correctly (#1566)
+    - This includes deprecations to be aware of if you have
+    overridden :meth:`~import_export.resources.Resource.export`
+  * or :class:`~import_export.forms.ImportExportFormBase`. -
+    export(): If passing queryset as the first arg, ensure this
+    is passed as a named parameter. - ImportExportFormBase: If
+    passing resources to __init__ as the first arg, ensure this
+    is
+  * passed as a named parameter.
+  * Updated setup.py (#1564)
+  * Updated setup.py
+  * Added SECURITY.md (#1563)
+  * Added SECURITY.md
+  * Updated FAQ to include workaround for
+    RelatedObjectDoesNotExist exception (#1562)
+  * Updated FAQ to include workaround for
+    RelatedObjectDoesNotExist exception
+  * Prevent error comparing m2m field of the new objects (#1560)
+  * Prevent error comparing m2m field of the new objects
+  * Add documentation for passing data from admin form to
+    Resource  (#1555)
+  * Add documentation for passing data from admin form to
+    Resource
+  * Added new translations to Spanish and Spanish (Argentina)
+    (#1552)
+  * Added new translations to Spanish and Spanish (Argentina)
+  * Pass kwargs to import_set function (#1448)
+  * Pass kwargs to import_set function
+  * 3.1.0 (2023-02-21) - Add optional dehydrate method param
+  * exceptions module has been undeprecated
+  * Updated DE translation
+  * Add option for single step import via Admin Site
+  * Add support for m2m add
+  * collect errors on bulk operations (#1541) - this change
+    causes bulk import errors to be logged at DEBUG level not
+    EXCEPTION.
+  * Improve bulk import performance
+  * Reduce memory footprint during import
+  * documentation updates
+  * add detailed format parameter docstrings to DateWidget and
+    TimeWidget
+  * tox updates
+  * fix xss vulnerability in html export
+  * 3.0.2 (2022-12-13) - Support Python 3.11 (#1508) - use
+    get_list_select_related in ExportMixin (#1511) - bugfix:
+    handle crash on start-up when change_list_template is a
+    property (#1523) - bugfix: include instance info in row
+    result when row is skipped (#1526) - bugfix: add **kwargs
+    param to Resource constructor (#1527) 3.0.1 (2022-10-18) -
+    Updated django-import-export-ci.yml to fix node.js
+    deprecation - bugfix: DateTimeWidget.clean() handles tz aware
+    datetime (#1499) - Updated translations for v3.0.0 release
+    (#1500) 3.0.0 (2022-10-18) Breaking changes This release
+    makes some minor changes to the public API.  If you have
+    overridden any methods from the resources or widgets modules,
+    you may need to update your implementation to accommodate
+    these changes. - Check value of ManyToManyField in skip_row()
+  * This fixes an issue where ManyToMany fields are not checked
+    correctly in skip_row().  This means that skip_row() now
+    takes row as a mandatory arg.  If you have overridden
+    skip_row() in your own implementation, you will need to add
+    row as an arg.
+  *  Bug fix: validation errors were being ignored when
+    skip_unchanged is set (#1378)  If you have overridden
+    skip_row() you can choose whether or not to skip rows if
+    validation errors are present.  The default behavior is to
+    not to skip rows if there are validation errors during
+    import.
+  * If you have overridden skip_row() you can choose whether or
+    not to skip rows if validation errors are present.  The
+    default behavior is to not to skip rows if there are
+    validation errors during import.
+  *  Use 'create' flag instead of instance.pk (#1362)
+    import_export.resources.save_instance() now takes an
+    additional mandatory argument: is_create.  If you have
+    overridden save_instance() in your own code, you will need to
+    add this new argument.
+  * import_export.resources.save_instance() now takes an
+    additional mandatory argument: is_create.  If you have
+    overridden save_instance() in your own code, you will need to
+    add this new argument.
+  *  widgets: Unused *args params have been removed from method
+    definitions. (#1413)  If you have overridden clean() then you
+    should update your method definition to reflect this change.
+    widgets.ForeignKeyWidget / widgets.ManyToManyWidget: The
+    unused *args param has been removed from __init__().  If you
+    have overridden ForeignKeyWidget or ManyToManyWidget you may
+    need to update your implementation to reflect this change.
+  * If you have overridden clean() then you should update your
+    method definition to reflect this change.
+  * widgets.ForeignKeyWidget / widgets.ManyToManyWidget: The
+    unused *args param has been removed from __init__().  If you
+    have overridden ForeignKeyWidget or ManyToManyWidget you may
+    need to update your implementation to reflect this change.
+  *  Admin interface: Modified handling of import errors (#1306)
+    Exceptions raised during the import process are now presented
+    as form errors, instead of being wrapped in a <H1> tag in the
+    response.  If you have any custom logic which uses the error
+    written directly into the response, then this may need to be
+    changed.
+  * Exceptions raised during the import process are now presented
+    as form errors, instead of being wrapped in a <H1> tag in the
+    response.  If you have any custom logic which uses the error
+    written directly into the response, then this may need to be
+    changed.
+  *  ImportForm: improve compatibility with previous signature
+    (#1434)  Previous ImportForm implementation was based on
+    Django's forms.Form, if you have any custom ImportForm you
+    now need to inherit from
+    import_export.forms.ImportExportFormBase.
+  * Previous ImportForm implementation was based on Django's
+    forms.Form, if you have any custom ImportForm you now need to
+    inherit from import_export.forms.ImportExportFormBase.
+  *  Allow custom change_list_template in admin views using
+    mixins (#1483)  If you are using admin mixins from this
+    library in conjunction with code that overrides
+    change_list_template (typically admin mixins from other
+    libraries such as django-admin-sortable2 or reversion),
+    object tools in the admin change list views may render
+    differently now. If you have created a custom template which
+    extends any import_export template, then this may now cause a
+    recursion error (see #1514)
+  * If you are using admin mixins from this library in
+    conjunction with code that overrides change_list_template
+    (typically admin mixins from other libraries such as django-
+    admin-sortable2 or reversion), object tools in the admin
+    change list views may render differently now.
+  * If you have created a custom template which extends any
+    import_export template, then this may now cause a recursion
+    error (see #1514)
+  *  import.html: Added blocks to import template (#1488)  If you
+    have made customizations to the import template then you may
+    need to refactor these after the addition of block
+    declarations.
+  * If you have made customizations to the import template then
+    you may need to refactor these after the addition of block
+    declarations.
+  * Deprecations This release adds some deprecations which will
+    be removed in a future release. - Add support for multiple
+    resources in ModelAdmin.
+  * The *Mixin.resource_class accepting single resource has been
+    deprecated and the new *Mixin.resource_classes accepting
+    subscriptable type (list, tuple, ...) has been added.
+  * Same applies to all of the get_resource_class,
+    get_import_resource_class and get_export_resource_class
+    methods.
+  * Deprecated exceptions.py
+  *  Refactored form-related methods on ImportMixin / ExportMixin
+    (#1147)  The following are deprecated: - get_import_form() -
+    get_confirm_import_form() - get_form_kwargs() -
+    get_export_form()
+  * The following are deprecated: - get_import_form() -
+    get_confirm_import_form() - get_form_kwargs() -
+    get_export_form()
+  * Enhancements - Default format selections set correctly for
+    export action (#1389) - Added option to store raw row values
+    in each row's RowResult (#1393) - Add natural key support to
+    ForeignKeyWidget (#1371) - Optimised default instantiation of
+    CharWidget (#1414) - Allow custom change_list_template in
+    admin views using mixins (#1483) - Added blocks to import
+    template (#1488) - improve compatibility with previous
+    ImportForm signature (#1434) - Refactored form-related
+    methods on ImportMixin / ExportMixin (#1147) - Include custom
+    form media in templates (#1038) - Remove unnecessary files
+    generated when running tox locally (#1426) Fixes - Fixed
+    Makefile coverage: added coverage combine - Fixed handling of
+    LF character when using CacheStorage (#1417) - bugfix:
+    skip_row() handles M2M field when UUID pk used - Fix broken
+    link to tablib formats page (#1418) - Fix broken image ref in
+    README.rst - bugfix: skip_row() fix crash when model has m2m
+    field and none is provided in upload (#1439) - Fix
+    deprecation in example application: Added support for
+    transitional form renderer (#1451) Development - Increased
+    test coverage, refactored CI build to use tox (#1372)
+    Documentation - Clarified issues around the usage of
+    temporary storage (#1306) 2.9.0 (2022-09-14) - Fix
+    deprecation in example application: Added support for
+    transitional form renderer (#1451) - Escape HTML output when
+    rendering decoding errors (#1469) - Apply make_aware when the
+    original file contains actual datetimes (#1478) -
+    Automatically guess the format of the file when importing
+    (#1460) 2.8.0 (2022-03-31) - Updated import.css to support
+    dark mode (#1318) - Fix crash when import_data() called with
+    empty Dataset and collect_failed_rows=True (#1381) - Improve
+    Korean translation (#1402) - Update example subclass widget
+    code (#1407) - Drop support for python3.6, django 2.2, 3.0,
+    3.1 (#1408) - Add get_export_form() to ExportMixin
+
+-------------------------------------------------------------------
 Sun Dec 26 12:39:08 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.7.1

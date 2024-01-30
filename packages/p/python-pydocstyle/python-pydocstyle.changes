@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 30 01:02:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip two broken tests with Python 3.12. 
+
+-------------------------------------------------------------------
 Tue Jun 13 09:04:09 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -46,8 +46,6 @@
   <overwrite>
     <conditions>
       <package>kernel-source</package>
-      <package>kernel-source-azure</package>
-      <package>kernel-source-rt</package>
     </conditions>
     <hardware>
       <disk>
@@ -61,9 +59,7 @@
   <overwrite>
     <conditions>
       <package>kernel-docs</package>
-      <package>kernel-docs-rt</package>
       <package>kernel-source:kernel-docs</package>
-      <package>kernel-source-rt:kernel-docs-rt</package>
     </conditions>
     <hardware>
       <physicalmemory>
@@ -101,7 +97,7 @@
     </hardware>
   </overwrite>
 
-  <!-- 14GB of disk and 2GB of memory for binary package on s390x -->
+  <!-- 16GB of disk and 2GB of memory for binary package on s390x -->
   <overwrite>
     <conditions>
       <arch>s390x</arch>

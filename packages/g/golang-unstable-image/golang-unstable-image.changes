@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 29 09:18:52 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- switch unstable image to 1.22
+
+-------------------------------------------------------------------
 Tue Aug  8 06:51:38 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - Add go-doc and go-race subpackages for developer convenience

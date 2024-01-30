@@ -962,4 +962,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1142208</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>8528570c1b5b7411f00fa7d4b8861f1c</srcmd5>
+    <version>2024.1.1</version>
+    <time>1706635619</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.1.1:
+  * see corresponding dask update:
+  https://docs.dask.org/en/stable/changelog.html#v2024-1-1
+  * compatibility updates for latest pandas and scipy
+
+- update to 2024.1.0:</comment>
+    <requestid>1142780</requestid>
+  </revision>
 </revisionlist>

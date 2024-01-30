@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Jan 29 17:38:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.7:
+  * bug: broken reading from stdin (-) (#704)
+  * build(deps): bump the k8s-io group with 2 updates (#698)
+  * build(deps): bump
+    github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+    (#700)
+  * build(deps): bump helm.sh/helm/v3 from 3.13.3 to 3.14.0 (#699)
+  * build(deps): bump actions/cache from 3 to 4 (#697)
+  * feat: support go1.21 (#696)
+
+-------------------------------------------------------------------
+Tue Jan 23 18:03:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.6:
+  * fix: pdb-min-available when Replica number is controlled via
+    HPA (#688)
+  * fix: ignore templates in Chart dependencies based on ignore
+    paths (#667)
+  * Bump
+    github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+    (#693)
+  * Extend liveness-port logic for two new checks around startup
+    and readiness (#689)
+  * Bump docker/metadata-action from 5.4.0 to 5.5.0 (#690)
+  * group dependabot k8s updates (#686)
+  * Create new check for liveness port (#661)
+  * Bump k8s.io/client-go from 0.28.4 to 0.29.0 (#685)
+  * Bump actions/download-artifact from 3 to 4 (#682)
+  * Bump github.com/spf13/viper from 1.18.1 to 1.18.2 (#683)
+  * Bump helm.sh/helm/v3 from 3.13.2 to 3.13.3 (#684)
+  * Bump docker/metadata-action from 5.3.0 to 5.4.0 (#680)
+  * Bump github.com/containerd/containerd from 1.7.6 to 1.7.11
+    (#679)
+  * Bump golang.org/x/crypto from 0.16.0 to 0.17.0 (#678)
+  * Bump github/codeql-action from 2 to 3 (#676)
+  * Bump sigstore/cosign-installer from 3.2.0 to 3.3.0 (#677)
+  * Bump github.com/cert-manager/cert-manager from 1.13.2 to 1.13.3
+    (#675)
+  * Bump github.com/spf13/viper from 1.18.0 to 1.18.1 (#674)
+  * Bump actions/setup-go from 4 to 5 (#672)
+  * Bump docker/metadata-action from 5.0.0 to 5.3.0 (#673)
+  * Bump
+    github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+    (#671)
+  * Bump github.com/spf13/viper from 1.17.0 to 1.18.0 (#670)
+  * Docs: Fixed broken template links, fixed script versions (#662)
+  * Bump k8s.io/cli-runtime from 0.28.3 to 0.28.4 (#666)
+  * Bump k8s.io/client-go from 0.28.3 to 0.28.4 (#665)
+  * Bump k8s.io/api from 0.28.3 to 0.28.4 (#664)
+  * Bump docker/build-push-action from 5.0.0 to 5.1.0 (#663)
+  * Bump helm.sh/helm/v3 from 3.13.1 to 3.13.2 (#660)
+  * Bump github.com/golangci/golangci-lint from 1.55.1 to 1.55.2
+    (#659)
+  * Bump
+    github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+    (#658)
+  * Bump sigstore/cosign-installer from 3.1.2 to 3.2.0 (#657)
+  * Bump github.com/spf13/cobra from 1.7.0 to 1.8.0 (#655)
+  * Bump github.com/fatih/color from 1.15.0 to 1.16.0 (#656)
+  * Bump
+    github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+    (#654)
+
+-------------------------------------------------------------------
 Thu Nov 02 12:39:38 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.6.5:

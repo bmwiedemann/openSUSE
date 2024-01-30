@@ -22,7 +22,7 @@
 %define sca_python %{libbase}/python
 
 Name:           sca-server-report
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Supportconfig Analysis Server Report
 License:        GPL-2.0-only

@@ -171,4 +171,18 @@
 </comment>
     <requestid>1043697</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2285589d7b7c78711f3d6cb113dc92e9</srcmd5>
+    <version>9.0.1</version>
+    <time>1706635539</time>
+    <user>anag+factory</user>
+    <comment>- switch to python311 build
+
+  * Deprecation of pathod and pathoc tools and modules. Future releases
+  * Tests: Replace asynctest with stdlib mock
+- Update to v5.2
+  * Fix dev version detection with parent git repo
+  * replace-asynctest.patch</comment>
+    <requestid>1142652</requestid>
+  </revision>
 </revisionlist>

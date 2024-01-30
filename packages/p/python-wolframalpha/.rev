@@ -72,4 +72,15 @@
     <comment>- Add more-itertools to BuildRequires.</comment>
     <requestid>1001817</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>66b92ac7bddc5857b6668261462de201</srcmd5>
+    <version>5.0.0</version>
+    <time>1706635551</time>
+    <user>anag+factory</user>
+    <comment>- switch to modern pythonstack
+
+- Add more-itertools to BuildRequires.
+- Initial release of python-wolframalpha 3.0</comment>
+    <requestid>1142664</requestid>
+  </revision>
 </revisionlist>

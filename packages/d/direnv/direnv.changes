@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jan 28 16:21:41 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.33.0:
+  * fixes and updates to documentation
+  * feat: direnv status --json 
+  * feat: add PowerShell Support 
+  * feat: add mergify configuration 
+  * feat: add support for armv7l platform in install.sh 
+  * feat: add watch print command 
+  * feat: alias direnv disallow to deny 
+  * feat: stdlib: create CACHEDIR.TAG inside .direnv 
+  * fix: allowPath for LoadedRC 
+  * fix: don't prompt to allow if user explicitly denied 
+  * fix: man/direnv-stdlib: fix obsolete opam-env example 
+  * fix: print correct path in source_env log message 
+  * fix: quote tcsh $PATH, to avoid failure on whitespace 
+  * fix: remove redundant nil check in CommandsDispatch 
+  * fix: update nixpkgs and shellcheck 
+
+-------------------------------------------------------------------
 Mon Jun 26 20:24:54 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 2.32.3:

@@ -6506,4 +6506,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>enable multibuild (constraints are now applied, a fix number two) &amp; other minor packaging fixes</comment>
     <requestid>1141663</requestid>
   </revision>
+  <revision rev="719" vrev="1">
+    <srcmd5>438441479a8dca6e6dd655875c24eaf2</srcmd5>
+    <version>6.7.2</version>
+    <time>1706635461</time>
+    <user>anag+factory</user>
+    <comment>6.7.2 &amp; minor multibuild fixup</comment>
+    <requestid>1141935</requestid>
+  </revision>
 </revisionlist>

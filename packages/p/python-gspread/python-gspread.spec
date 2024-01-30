@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gspread
-Version:        5.12.4
+Version:        6.0.0
 Release:        0
 Summary:        Google Spreadsheets Python API
 License:        MIT
@@ -32,6 +32,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-StrEnum >= 0.4.15
 Requires:       python-google-auth >= 1.12.0
 Requires:       python-google-auth-oauthlib >= 0.4.1
 BuildArch:      noarch

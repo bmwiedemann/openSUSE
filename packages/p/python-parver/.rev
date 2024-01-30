@@ -58,4 +58,12 @@
   * Errors raised for keyword-only argument errors on Python 3 did</comment>
     <requestid>1134331</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>dcfe8f76aa20c487f3c3cdb65371c48f</srcmd5>
+    <version>0.5</version>
+    <time>1706635537</time>
+    <user>anag+factory</user>
+    <comment>- build for python 3.8 and above</comment>
+    <requestid>1142644</requestid>
+  </revision>
 </revisionlist>

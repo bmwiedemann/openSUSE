@@ -1124,4 +1124,12 @@ in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from je
     <comment></comment>
     <requestid>1098512</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>a5a98f413beea3475554bd75d9c829f8</srcmd5>
+    <version>2.7.0</version>
+    <time>1706635452</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142597</requestid>
+  </revision>
 </revisionlist>

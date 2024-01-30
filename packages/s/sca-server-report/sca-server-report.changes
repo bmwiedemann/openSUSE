@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 29 19:56:43 UTC 2024 - jason.record@suse.com
+
+- Changes to version 1.6.2
+  + Missing supportconfig key (bsc#1219252)
+  + Includes SLE Micro (bsc#1219255)
+  + SUMA detection (bsc#1219257)
+
+-------------------------------------------------------------------
 Tue Jan  9 18:29:47 UTC 2024 - jason.record@suse.com
 
 - Changes to version 1.6.1

@@ -99,4 +99,14 @@
   signature verification works.</comment>
     <requestid>1079614</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f3e89debc9a584efe268cdd74e83db3</srcmd5>
+    <version>0.7.1</version>
+    <time>1706635535</time>
+    <user>anag+factory</user>
+    <comment>- Update to v0.7.1:
+  * Support for 24-bit RGB formats.
+  * Various bugfixes.</comment>
+    <requestid>1142648</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 cabal-version:       >=1.10
 name:                th-compat
 version:             0.1.4
-x-revision: 3
+x-revision: 4
 synopsis:            Backward- (and forward-)compatible Quote and Code types
 description:         This package defines a "Language.Haskell.TH.Syntax.Compat"
                      module, which backports the @Quote@ and @Code@ types to
@@ -50,7 +50,7 @@ library
     build-depends:     fail             == 4.9.*
                      , transformers     >= 0.2 && < 0.7
   if !impl(ghc >= 9.4)
-    build-depends:     filepath         >= 1.2.0.0 && < 1.5
+    build-depends:     filepath         >= 1.2.0.0 && < 1.6
                      , directory        >= 1.1.0.0 && < 1.4
   hs-source-dirs:      src
   default-language:    Haskell2010

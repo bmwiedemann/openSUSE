@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Faker
-Version:        22.4.0
+Version:        22.6.0
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.4
 Requires:       python-text-unidecode >= 1.3
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Obsoletes:      python3-fake-factory < %{version}-%{release}
 Provides:       python3-fake-factory = %{version}-%{release}
 BuildArch:      noarch

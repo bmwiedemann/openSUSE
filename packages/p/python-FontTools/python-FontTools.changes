@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 28 11:00:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.47.2:
+  * [merge] Improve help message and add standard command line
+    options
+  * [otlLib] Pass ttFont to name.addName in buildStatTable
+  * [featureVars] Re-use FeatureVariationRecord's when possible
+
+-------------------------------------------------------------------
+Thu Jan 25 08:49:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- always obsolete fonttools. We have switched to python311 stack
+  in SLE15 and need to get the obsoletes back
+
+-------------------------------------------------------------------
 Thu Jan  4 12:29:41 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.47.0
@@ -64,7 +79,7 @@ Thu Jan  4 12:29:41 UTC 2024 - ecsos <ecsos@opensuse.org>
   - [feaLib/otlLib] Better error message when building Coverage table with missing glyph (#3286).
 - Changes from 4.43.0
   - [subset] Set up lxml XMLParser(resolve_entities=False) when parsing OT-SVG documents
-    to prevent XML External Entity (XXE) attacks (9f61271): 
+    to prevent XML External Entity (XXE) attacks (9f61271):
     https://codeql.github.com/codeql-query-help/python/py-xxe/
   - [varLib.iup] Added workaround for a Cython bug in iup_delta_optimize
     that was leading to IUP tolerance being incorrectly initialised,
@@ -83,7 +98,7 @@ Thu Jan  4 12:29:41 UTC 2024 - ecsos <ecsos@opensuse.org>
   - [varLib] Use sentinel value 0xFFFF to mark a glyph advance in hmtx/vmtx as non participating,
     allowing sparse masters to contain glyphs for variation purposes other than {H,V}VAR (#3235).
   - [varLib/cff] Treat empty glyphs in non-default masters as missing,
-    thus not participating in CFF2 delta computation, similarly to how 
+    thus not participating in CFF2 delta computation, similarly to how
     varLib already treats them for gvar (#3234).
   - Added varLib.avarPlanner script to deduce 'correct' avar v1 axis mappings based on glyph average weights (#3223).
 - Changes from 4.41.1
@@ -113,7 +128,7 @@ Thu Jan  4 12:29:41 UTC 2024 - ecsos <ecsos@opensuse.org>
     They will include precompiled Cython-accelerated modules (e.g. cu2qu) without
     requiring to compile them from source. The pure-python wheel and source distribution
     will continue to be published as always (pip will automatically chose them when no
-    binary wheel is available for the given platform, e.g. pypy). 
+    binary wheel is available for the given platform, e.g. pypy).
     Use pip install --no-binary=fonttools fonttools to expliclity request pip to install from the pure-python source.
   - [designspaceLib|varLib] Add initial support for specifying axis mappings and build avar2 table from those (#3123).
   - [feaLib] Support variable ligature caret position (#3130).
@@ -140,6 +155,59 @@ Thu Jan  4 12:29:41 UTC 2024 - ecsos <ecsos@opensuse.org>
 Thu Jan  4 11:15:34 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add missing setuptools to fix build error under Leap.
+
+-------------------------------------------------------------------
+Sat Dec 30 11:28:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.47.0:
+  * [varLib.models] New API for VariationModel: ``getMasterScalars``
+    and ``interpolateFromValuesAndScalars``.
+  * [varLib.interpolatable] Various bugfixes and rendering
+    improvements. In particular, add a Summary page in the front,
+    and an Index and Table-of-Contents in the back.  Change the
+    page size to Letter.
+  * [Docs/designspaceLib] Defined a new ``public.fontInfo`` lib key,
+    not used anywhere yet (#3358).
+  * [featureVars] Allow to register the same set of substitution
+    rules to multiple features.  The ``addFeatureVariations``
+    function can now take a list of featureTags; similarly, the
+    lib key 'com.github.fonttools.varLib.featureVarsFeatureTag' can
+    now take a comma-separateed string of feature tags (e.g.
+    "salt,ss01") instead of a single tag (#3360).
+  * [featureVars] Don't overwrite GSUB FeatureVariations, but append
+    new records to it for features which are not already there. But
+    raise ``VarLibError`` if the feature tag already has feature
+    variations associated with it (#3363).
+  * [varLib] Added ``addGSUBFeatureVariations`` function to add GSUB
+    Feature Variations to an existing variable font from rules
+    defined in a DesignSpace document (#3362).
+  * [varLib.interpolatable] Various bugfixes and rendering
+    improvements. In particular, a new test for "underweight" glyphs.
+    The new test reports quite a few false-positives though. Please
+    send feedback.
+  * [varLib.interpolatable] Various bugfixes and improvements, better
+    reporting, reduced false positives.
+  * [ttGlyphSet] Added option to not recalculate glyf bounds (#3348).
+  * [varLib.interpolatable] Vastly improved algorithms. Also
+    available now is ``--pdf`` and ``--html`` options to generate a
+    PDF or HTML report of the interpolation issues.
+    The PDF/HTML report showcases the problematic masters, the
+    interpolated broken glyph, as well as the proposed fixed version.
+  * [subset] Only prune codepage ranges for OS/2.version >= 1, ignore
+    otherwise (#3334).
+  * [instancer] Ensure hhea vertical metrics stay in sync with OS/2
+    ones after instancing MVAR table containing 'hasc', 'hdsc' or
+    'hlgp' tags (#3297).
+  * [glyf] Have ``Glyph.recalcBounds`` skip empty components (base
+    glyph with no contours) when computing the bounding box of
+    composite glyphs. This simply restores the existing
+    behavior before some changes were introduced in fonttools
+    4.44.0 (#3333).
+  * [feaLib] Ensure variable mark anchors are deep-copied while
+    building since they get modified in-place and later reused
+  * [OS/2|subset] Added method to ``recalcCodePageRanges`` to OS/2
+    table class; added ``--prune-codepage-ranges`` to `fonttools
+    subset` command (#3328, #2607).
 
 -------------------------------------------------------------------
 Sat Oct 14 00:19:08 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
@@ -177,10 +245,10 @@ Thu Mar 30 18:53:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * SpooledTemporaryFile, seekable method only added on python
     3.11 (#3052).
   * [varLib] Fixed regression introduced in 4.39.1 whereby an
-    incomplete 'STAT' table would be built even though a 
+    incomplete 'STAT' table would be built even though a
     DesignSpace v5 did contain 'STAT' definitions (#3045, #3046).
   * [avar2] Added experimental support for reading/writing avar
-    version 2 as specified in this draft proposal: 
+    version 2 as specified in this draft proposal:
     https://github.com/harfbuzz/boring-expansion-spec/blob/main/avar2.md
   * [glifLib] Wrap underlying XML library exceptions with
     GlifLibError when parsing GLIFs, and also print the name
@@ -411,7 +479,7 @@ Tue Apr 12 09:46:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
   * [cffLib] Remove leftover GlobalState class and fix calls to
     TopDictIndex() (#2569, #2570).
   * [instancer] Clear AxisValueArray if it is empty after
-    instantiating (#2563). 
+    instantiating (#2563).
 - Release 4.31.2
   * [varLib] fix instantiation of GPOS SinglePos values (#2555).
 - Release 4.31.1
@@ -473,7 +541,7 @@ Sat Jan 15 15:11:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Merge GDEF marksets in Lookups properly
   * Have fontTools feaLib script exit with error code when build fails
   * Added ntos option to customize number formatting
-  * Speed up subsetting of large CFF fonts 
+  * Speed up subsetting of large CFF fonts
   * Speculatively promote lookups to extension to speed up compilation
 
 -------------------------------------------------------------------
@@ -700,7 +768,7 @@ Sun Dec 12 18:18:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
     (#2253)
   * [cffLib] Add missing CFF2 dict operators LanguageGroup and
     ExpansionFactor (#2249) ATTENTION: This will change your TTX
-    dumps! 
+    dumps!
 - Support for python36 has been dropped
 - Use Github archive instead of zipfile from PyPI because it has
   the test fonts.
@@ -941,7 +1009,7 @@ Tue Sep  4 20:41:54 UTC 2018 - Matěj Cepl <mcepl@suse.com>
 Thu Mar 15 08:53:18 CET 2018 - tiwai@suse.de
 
 - add fonttools-disable_failing_tests_bigendian.patch
-  disable two tests currently failing on bigendian archs 
+  disable two tests currently failing on bigendian archs
 
 -------------------------------------------------------------------
 Thu Mar  8 16:02:24 UTC 2018 - toddrme2178@gmail.com

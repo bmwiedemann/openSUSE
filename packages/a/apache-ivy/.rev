@@ -213,4 +213,12 @@
     <comment>Reproducible build improvements</comment>
     <requestid>1112266</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>bfff57b8f203788cd74fed97de31de7b</srcmd5>
+    <version>2.5.2</version>
+    <time>1706635495</time>
+    <user>anag+factory</user>
+    <comment>Conditionally allow building with standalone Pack200 implementation</comment>
+    <requestid>1142746</requestid>
+  </revision>
 </revisionlist>

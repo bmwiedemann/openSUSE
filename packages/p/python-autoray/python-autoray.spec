@@ -1,7 +1,7 @@
 #
 # spec file for package python-autoray
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-autoray
-Version:        0.6.7
+Version:        0.6.8
 Release:        0
 Summary:        A lightweight python automatic-array library
 License:        Apache-2.0

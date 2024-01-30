@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,8 @@
 %define sover 3
 %define _rname openssl
 %define man_suffix 3ssl
+%global sslengcnf %{ssletcdir}/engines%{sover}.d
+%global sslengdef %{ssletcdir}/engdef%{sover}.d
 Name:           openssl-3
 # Don't forget to update the version in the "openssl" meta-package!
 Version:        3.1.4
@@ -36,6 +38,7 @@ Source3:        https://www.%{_rname}.org/source/%{_rname}-%{version}.tar.gz.asc
 # http://pgp.mit.edu:11371/pks/lookup?op=get&search=0xA2D29B7BF295C759#/openssl.keyring
 Source4:        %{_rname}.keyring
 Source5:        showciphers.c
+Source6:        openssl-Disable-default-provider-for-test-suite.patch
 # PATCH-FIX-OPENSUSE: Do not install html docs as it takes ages
 Patch1:         openssl-no-html-docs.patch
 Patch2:         openssl-truststore.patch
@@ -45,7 +48,7 @@ Patch5:         openssl-ppc64-config.patch
 Patch6:         openssl-no-date.patch
 # Add crypto-policies support
 Patch7:         openssl-Add-support-for-PROFILE-SYSTEM-system-default-cipher.patch
-Patch8:         openssl-Override-default-paths-for-the-CA-directory-tree.patch
+Patch8:         openssl-crypto-policies-support.patch
 # PATCH-FIX-UPSTREAM: bsc#1209430 Upgrade OpenSSL from 3.0.8 to 3.1.0 in TW
 Patch9:         openssl-Add_support_for_Windows_CA_certificate_store.patch
 # PATCH-FIX-FEDORA Add FIPS_mode compatibility macro and flag support
@@ -62,6 +65,22 @@ Patch17:        openssl-Improve-performance-for-6x-unrolling-with-vpermxor-i.pat
 # PATCH-FIX-UPSTREAM: bsc#1216922 CVE-2023-5678 Generating excessively long X9.42 DH keys or
 # checking excessively long X9.42 DH keys or parameters may be very slow
 Patch18:        openssl-CVE-2023-5678.patch
+# PATCH-FIX-UPSTREAM https://github.com/openssl/openssl/pull/22971
+Patch19:        openssl-Enable-BTI-feature-for-md5-on-aarch64.patch
+# PATCH-FIX-UPSTREAM: bsc#1218690 CVE-2023-6129 - POLY1305 MAC implementation corrupts vector registers on PowerPC
+Patch20:        openssl-CVE-2023-6129.patch
+# PATCH-FIX-FEDORA Load FIPS the provider and set FIPS properties implicitly
+Patch21:        openssl-Force-FIPS.patch
+# PATCH-FIX-FEDORA Disable the fipsinstall command-line utility
+Patch22:        openssl-disable-fipsinstall.patch
+# PATCH-FIX-FEDORA Instructions to load legacy provider in openssl.cnf
+Patch23:        openssl-load-legacy-provider.patch
+# PATCH-FIX-FEDORA Embed the FIPS hmac
+Patch24:        openssl-FIPS-embed-hmac.patch
+# PATCH-FIX-UPSTREAM: bsc#1218810 CVE-2023-6237: Excessive time spent checking invalid RSA public keys
+Patch25:        openssl-CVE-2023-6237.patch
+# PATCH-FIX-SUSE bsc#1194187, bsc#1207472, bsc#1218933  - Add engines section in openssl.cnf
+Patch26:        openssl-3-use-include-directive.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl3 = %{version}-%{release}
@@ -84,7 +103,6 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl3
 Summary:        Secure Sockets and Transport Layer Security
-BuildRequires:  fipscheck
 Recommends:     ca-certificates-mozilla
 Conflicts:      %{name} < %{version}-%{release}
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
@@ -122,6 +140,14 @@ Obsoletes:      libopenssl-1_0_0-devel
 This subpackage contains header files for developing applications
 that want to make use of the OpenSSL C API.
 
+%package -n libopenssl-3-fips-provider
+Summary:        OpenSSL FIPS provider
+Requires:       libopenssl3 >= %{version}
+BuildRequires:  fipscheck
+
+%description -n libopenssl-3-fips-provider
+This package contains the OpenSSL FIPS provider.
+
 %package doc
 Summary:        Manpages and additional documentation for openssl
 Conflicts:      libopenssl-3-devel < %{version}-%{release}
@@ -145,13 +171,14 @@ export MACHINE=armv5el
 export MACHINE=armv6l
 %endif
 
-./config \
+./Configure \
     no-mdc2 no-ec2m no-sm2 no-sm4 \
     enable-rfc3779 enable-camellia enable-seed \
 %ifarch x86_64 aarch64 ppc64le
     enable-ec_nistp_64_gcc_128 \
 %endif
     enable-fips \
+    enable-ktls \
     zlib \
     --prefix=%{_prefix} \
     --libdir=%{_lib} \
@@ -182,12 +209,39 @@ perl configdata.pm --dump
 # Relax the crypto-policies requirements for the regression tests
 # Revert patch8 before running tests
 patch -p1 -R < %{PATCH8}
+# Revert openssl-3-use-include-directive.patch because these directories
+# exists only in buildroot but not in build system and some tests are failing
+# because of it.
+patch -p1 -R < %{PATCH26}
+# Disable the default provider for the test suite.
+patch -p1 < %{SOURCE6}
 export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
-
 export MALLOC_CHECK_=3
 export MALLOC_PERTURB_=$(($RANDOM % 255 + 1))
 # export HARNESS_VERBOSE=yes
+# Embed HMAC into fips provider for test run
+OPENSSL_CONF=/dev/null LD_LIBRARY_PATH=. apps/openssl dgst -binary -sha256 -mac HMAC -macopt hexkey:f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 < providers/fips.so > providers/fips.so.hmac
+objcopy --update-section .rodata1=providers/fips.so.hmac providers/fips.so providers/fips.so.mac
+mv providers/fips.so.mac providers/fips.so
+
+# Run the tests in non FIPS mode
 LD_LIBRARY_PATH="$PWD" make test -j16
+
+# Run the tests also in FIPS mode
+# OPENSSL_FORCE_FIPS_MODE=1 LD_LIBRARY_PATH="$PWD" make TESTS='-test_evp_fetch_prov -test_tsa' test -j16 || :
+
+# Add generation of HMAC checksum of the final stripped library
+# We manually copy standard definition of __spec_install_post
+# and add hmac calculation/embedding to fips.so
+%define __spec_install_post \
+    %{?__debug_package:%{__debug_install_post}} \
+    %{__arch_install_post} \
+    %{__os_install_post} \
+    OPENSSL_CONF=/dev/null LD_LIBRARY_PATH=. apps/openssl dgst -binary -sha256 -mac HMAC -macopt hexkey:f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 < $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so > $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so.hmac \
+    objcopy --update-section .rodata1=$RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so.hmac $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so.mac \
+    mv $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so.mac $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so \
+    rm $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so.hmac \
+%{nil}
 
 # show ciphers
 gcc -o showciphers %{optflags} -I%{buildroot}%{_includedir} %{SOURCE5} -L%{buildroot}%{_libdir} -lssl -lcrypto
@@ -223,6 +277,14 @@ rm -f %{buildroot}%{ssletcdir}/fipsmodule.cnf
 ln -sf ./%{_rname} %{buildroot}/%{_includedir}/ssl
 mkdir %{buildroot}/%{_datadir}/ssl
 mv %{buildroot}/%{ssletcdir}/misc %{buildroot}/%{_datadir}/ssl/
+
+# Create the two directories into which packages will drop their configuration
+# files.
+mkdir %{buildroot}/%{sslengcnf}
+mkdir %{buildroot}/%{sslengdef}
+# Create unversioned symbolic links to above directories
+ln -s %{sslengcnf} %{buildroot}/%{ssletcdir}/engines.d
+ln -s %{sslengdef} %{buildroot}/%{ssletcdir}/engdef.d
 
 # Avoid file conflicts with man pages from other packages
 pushd %{buildroot}/%{_mandir}
@@ -263,10 +325,12 @@ fi
 %{_libdir}/libcrypto.so.%{sover}
 %{_libdir}/engines-%{sover}
 %dir %{_libdir}/ossl-modules
-%{_libdir}/ossl-modules/fips.so
 %{_libdir}/ossl-modules/legacy.so
 %{_libdir}/.libssl.so.%{sover}.hmac
 %{_libdir}/.libcrypto.so.%{sover}.hmac
+
+%files -n libopenssl-3-fips-provider
+%{_libdir}/ossl-modules/fips.so
 
 %files -n libopenssl-3-devel
 %doc NOTES*.md CONTRIBUTING.md HACKING.md AUTHORS.md ACKNOWLEDGEMENTS.md
@@ -289,6 +353,11 @@ fi
 %config (noreplace) %{ssletcdir}/openssl.cnf
 %config (noreplace) %{ssletcdir}/ct_log_list.cnf
 %attr(700,root,root) %{ssletcdir}/private
+%dir %{sslengcnf}
+%dir %{sslengdef}
+# symbolic link to above directories
+%{ssletcdir}/engines.d
+%{ssletcdir}/engdef.d
 %dir %{_datadir}/ssl
 %{_datadir}/ssl/misc
 %dir %{_localstatedir}/lib/ca-certificates/

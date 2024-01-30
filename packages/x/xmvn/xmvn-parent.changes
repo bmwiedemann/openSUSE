@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 30 09:25:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * UUID.patch
+    + sync with the version in our official upstream pull request
+
+-------------------------------------------------------------------
 Wed Sep 13 16:55:35 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

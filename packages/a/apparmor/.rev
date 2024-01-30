@@ -2661,4 +2661,15 @@ thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comme
   /run/systemd/sessions/ (bsc#1216878)</comment>
     <requestid>1124276</requestid>
   </revision>
+  <revision rev="199" vrev="7">
+    <srcmd5>4c4342b3d75ae57cef33ae553334f21c</srcmd5>
+    <version>3.1.6</version>
+    <time>1706635466</time>
+    <user>anag+factory</user>
+    <comment>- Add dovecot-unix_chkpwd.diff to allow dovecot-auth to execute
+  unix_chkpwd, and add a profile for unix_chkpwd. This is needed
+  for PAM 1.6 (boo#1219139)
+- Refresh apparmor.keyring - the key was renewed (forwarded request 1142649 from cboltz)</comment>
+    <requestid>1142650</requestid>
+  </revision>
 </revisionlist>

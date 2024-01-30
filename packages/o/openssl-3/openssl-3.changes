@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Jan 29 15:17:22 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Encapsulate the fips provider into a new package called
+  libopenssl-3-fips-provider.
+
+-------------------------------------------------------------------
+Mon Jan 22 09:34:28 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Added openssl-3-use-include-directive.patch so that the default
+  /etc/ssl/openssl.cnf file will include any configuration files that
+  other packages might place into /etc/ssl/engines3.d/ and
+  /etc/ssl/engdef3.d/. Also create symbolic links /etc/ssl/engines.d/
+  and /etc/ssl/engdef.d/ to above versioned directories.
+- Updated spec file to create the two new necessary directores for
+  the above patch and two symbolic links to above directories.
+  [bsc#1194187, bsc#1207472, bsc#1218933]
+
+-------------------------------------------------------------------
+Tue Jan 16 09:45:24 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security fix: [bsc#1218810, CVE-2023-6237]
+  * Limit the execution time of RSA public key check
+  * Add openssl-CVE-2023-6237.patch
+
+-------------------------------------------------------------------
+Sun Jan 14 13:36:33 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Rename openssl-Override-default-paths-for-the-CA-directory-tree.patch
+  to openssl-crypto-policies-support.patch
+
+-------------------------------------------------------------------
+Sat Jan 13 23:59:27 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Embed the FIPS hmac. Add openssl-FIPS-embed-hmac.patch
+
+-------------------------------------------------------------------
+Sat Jan 13 22:31:15 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Load the FIPS provider and set FIPS properties implicitly.
+  * Add openssl-Force-FIPS.patch [bsc#1217934]
+- Disable the fipsinstall command-line utility.
+  * Add openssl-disable-fipsinstall.patch
+- Add instructions to load legacy provider in openssl.cnf.
+  * openssl-load-legacy-provider.patch
+- Disable the default provider for the test suite.
+  * openssl-Disable-default-provider-for-test-suite.patch
+
+-------------------------------------------------------------------
+Thu Jan 11 08:07:48 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security fix: [bsc#1218690, CVE-2023-6129]
+  * POLY1305: Fix vector register clobbering on PowerPC
+  * Add openssl-CVE-2023-6129.patch
+
+-------------------------------------------------------------------
+Thu Dec  7 09:54:17 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix BTI enablement on aarch64:
+  * openssl-Enable-BTI-feature-for-md5-on-aarch64.patch
+
+-------------------------------------------------------------------
 Mon Nov 13 09:29:26 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security fix: [bsc#1216922, CVE-2023-5678]

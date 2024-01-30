@@ -1,7 +1,7 @@
 #
 # spec file for package python-unittest-xml-reporting
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python2 1
 Name:           python-unittest-xml-reporting
-Version:        3.0.2
+Version:        3.2.0
 Release:        0
 Summary:        PyUnit-based test runner with JUnit like XML reporting
 License:        LGPL-3.0-or-later
@@ -27,10 +26,13 @@ Source:         https://github.com/xmlrunner/unittest-xml-reporting/archive/%{ve
 # PATCH-FIX-UPSTREAM python-311.patch gh#xmlrunner/unittest-xml-reporting#274
 Patch0:         python-311.patch
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-lxml
 Provides:       python-xmlrunner = %{version}
 BuildArch:      noarch
 %python_subpackages
@@ -42,22 +44,23 @@ systems, IDEs and continuous integration servers.
 
 %prep
 %autosetup -p1 -n unittest-xml-reporting-%{version}
+# Do not install the LICENSE for us.
+sed -i '/data_files =/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#xmlrunner/unittest-xml-reporting#205
-%pytest -k 'not test_xmlrunner_non_ascii'
+%pytest
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/xmlrunner
-%{python_sitelib}/unittest_xml_reporting-%{version}*-info
+%{python_sitelib}/unittest_xml_reporting-%{version}.dist-info
 
 %changelog

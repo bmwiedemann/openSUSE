@@ -619,4 +619,16 @@
   * Add bank provider for `cs_CZ`. Thanks @george0st.</comment>
     <requestid>1140196</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>520b2d8ee9a0d6dee4cd74d629908657</srcmd5>
+    <version>22.6.0</version>
+    <time>1706635497</time>
+    <user>anag+factory</user>
+    <comment>- update to 22.6.0:
+  * Add support for birthday and gender to  `uk_UA` `ssn` method.
+  * Add area code `830000` to `zh_CN`. Thanks @antik.
+  * Add `area_code` parameter to `ssn` provider for `zh_CN`.
+  * Add `http_status_code` to internet provider.</comment>
+    <requestid>1142767</requestid>
+  </revision>
 </revisionlist>

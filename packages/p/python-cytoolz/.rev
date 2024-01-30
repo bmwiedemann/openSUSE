@@ -72,4 +72,16 @@
     stopped working for some reason (#199)</comment>
     <requestid>1100893</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cb67d336e43b8019e00db055391cad03</srcmd5>
+    <version>0.12.3</version>
+    <time>1706635599</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.3:
+  * Add support for Python 3.12, PyPy 3.9, and PyPy 3.10
+  * Update to match `toolz` 0.12.1
+
+- Use pytest instead of nose</comment>
+    <requestid>1142760</requestid>
+  </revision>
 </revisionlist>

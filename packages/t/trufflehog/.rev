@@ -182,4 +182,22 @@
   * fixing incorrect acct num id for some aws keys (#2332) (forwarded request 1142057 from ph03nix)</comment>
     <requestid>1142090</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>70d299dd4af55e87f43c1d959d818fea</srcmd5>
+    <version>3.66.1</version>
+    <time>1706635632</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.66.1:
+  * Azure function key is throwing FPs (#2352)
+
+- Update to version 3.66.0:
+  * feat(detectors): update template (#2342)
+  * Azure function key is throwing FPs (#2352)
+  * Improve fp ignore logic (#2351)
+  * added azuresearchquerykey detector (#2349)
+  * added azuresearchadminkey detector (#2348)
+  * added azurefunctionkey detector (#2337)
+  * updates to plain and json printing to include verification error (#2335) (forwarded request 1142728 from ph03nix)</comment>
+    <requestid>1142812</requestid>
+  </revision>
 </revisionlist>

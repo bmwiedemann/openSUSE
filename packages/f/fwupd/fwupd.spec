@@ -40,7 +40,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        1.9.11
+Version:        1.9.12
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -71,7 +71,7 @@ BuildRequires:  gpgme-devel
 BuildRequires:  help2man
 BuildRequires:  intltool
 BuildRequires:  libelf-devel
-BuildRequires:  meson >= 0.61.0
+BuildRequires:  meson >= 0.62.0
 BuildRequires:  pkgconfig
 BuildRequires:  procps
 BuildRequires:  python3-Pillow

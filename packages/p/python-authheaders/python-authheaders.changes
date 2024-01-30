@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 30 12:04:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.2:
+  * Add checks for None results to avoid tracebacks (#31)
+  * Account for FWS in From (which is legal, apparently)
+  * Delete more setup.py cruft for non-supported Pythons
+
+-------------------------------------------------------------------
 Sat Jan 20 12:36:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.1:

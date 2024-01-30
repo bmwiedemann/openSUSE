@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 29 19:05:11 UTC 2024 - jason.record@suse.com
+
+- Changes to version 1.5.7
+  + coredumpctl-000018634.py has invalid output element (bsc#1219319)
+
+-------------------------------------------------------------------
 Fri Jan 12 18:14:01 UTC 2024 - jason.record@suse.com
 
 - Changes to version 1.5.6
