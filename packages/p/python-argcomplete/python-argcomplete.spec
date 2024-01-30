@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-argcomplete
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
@@ -39,7 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  zsh
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

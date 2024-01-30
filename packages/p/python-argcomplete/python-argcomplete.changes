@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 30 12:07:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.2:
+  * Expand tilde in zsh
+
+-------------------------------------------------------------------
 Wed Jan  3 10:54:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove coverage check

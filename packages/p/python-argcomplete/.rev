@@ -334,4 +334,13 @@
     <comment></comment>
     <requestid>1136647</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4e62dbb90cca2722a64454e887ec4715</srcmd5>
+    <version>3.2.2</version>
+    <time>1706635498</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.2:
+  * Expand tilde in zsh</comment>
+    <requestid>1142768</requestid>
+  </revision>
 </revisionlist>
