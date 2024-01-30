@@ -101,4 +101,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1076773</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4bdbd0665d00b01933bcd13bed8b4f32</srcmd5>
+    <version>23.5</version>
+    <time>1706635567</time>
+    <user>anag+factory</user>
+    <comment>- Update to 23.5:
+  * Fixed OrderingFilter handling of empty values.
+  * Official support for Django 5.0 and Python 3.12.
+  * Fix DeprecationWarning for pkgutil.find_loader.
+  * Adds initial compatibility with Django 5.0, prior to Django 5.0a1.
+  * Updates packaging to use pyproject.toml and Flit.
+  * Deprecated the schema generation methods of the DRF related
+    DjangoFilterBackend.
+  * In addition, stopped testing against the (very old now) coreapi schema
+    generation.
+  * Updated Polish translations.
+- Switch to pyproject macros.</comment>
+    <requestid>1142700</requestid>
+  </revision>
 </revisionlist>
