@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 29 15:45:28 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.7.1
+  * Fixed initialisation of ROMInfo objects which caused crashes of client applications
+    when accessing the static ROM data. Currently, only builds with clang-17.0 are affected
+    which is used in MSYS2 environment. 
+
+-------------------------------------------------------------------
 Sat Oct 15 17:07:22 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 2.7.0.
