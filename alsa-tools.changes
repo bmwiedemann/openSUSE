@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 29 16:10:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- hwmixvolume: replace the unversioned python shebang to point to
+  python3 (alsa-project/alsa-tools@fb04384 claims it is compatible
+  to python3).
+- Change hwmixvolume's dependency on pyalso to python3-alsa: ensure
+  we get the main python interpreters' alsa module (matching the
+  /usr/bin/python3 shebang) (boo#1219312).
+
+-------------------------------------------------------------------
 Wed Nov  9 10:56:43 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Add tarball signature and keyring
@@ -6,7 +16,7 @@ Wed Nov  9 10:56:43 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 -------------------------------------------------------------------
 Mon May 31 12:12:47 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
-- Update to version 1.2.5
+- Update to version 1.2.5 (jsc#PED-6566):
   * hdspmixer: add output loopback buttons
   * hdspmixer: enhance saving of presets 
 

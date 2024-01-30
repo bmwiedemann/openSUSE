@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -211,7 +211,7 @@ Version:        0.9
 Release:        0
 Summary:        GUI tool to set individual hardware stream volumes
 Group:          Productivity/Multimedia/Sound/Utilities
-Requires:       pyalsa
+Requires:       python3-alsa
 Provides:       alsa-tools-gui = 1.0.28
 Obsoletes:      alsa-tools-gui <= 1.0.28
 
@@ -300,7 +300,7 @@ Hammerfall DSP soundcard series.
 cp %{SOURCE3} .
 %patch101 -p1
 
-sed -i '1s@/usr/bin/env python@/usr/bin/python@' hwmixvolume/hwmixvolume
+sed -i '1s@/usr/bin/env python$@/usr/bin/python3@' hwmixvolume/hwmixvolume
 
 ALL_PACKS="seq/sbiload hdsploader usx2yloader us428control as10k1 ld10k1 hwmixvolume hda-verb"
 %ifarch %ix86
