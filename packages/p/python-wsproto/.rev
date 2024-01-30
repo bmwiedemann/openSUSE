@@ -139,4 +139,16 @@
     <comment></comment>
     <requestid>1081722</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>4a1b9002119fc2f0a8687d74cf58ffd9</srcmd5>
+    <version>1.2.0</version>
+    <time>1706635465</time>
+    <user>anag+factory</user>
+    <comment>- spec file cleanup
+
+- reenable tests
+- fix version dependency on h11
+  * many changes in connection management, see CHANGELOG.rst</comment>
+    <requestid>1142646</requestid>
+  </revision>
 </revisionlist>
