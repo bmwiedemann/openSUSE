@@ -363,7 +363,6 @@
       <repopackage name="dracut"/>
       <repopackage name="dracut-transactional-update"/>
       <repopackage name="drbd"/>
-      <repopackage name="drbd-kmp-default"/>
       <repopackage name="drbd-utils"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -986,7 +985,6 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
-      <repopackage name="kernel-default-base"/>
       <repopackage name="kernel-firmware-all"/>
       <repopackage name="kernel-firmware-amdgpu"/>
       <repopackage name="kernel-firmware-ath10k"/>
@@ -1010,7 +1008,6 @@
       <repopackage name="kernel-firmware-network"/>
       <repopackage name="kernel-firmware-nfp"/>
       <repopackage name="kernel-firmware-nvidia"/>
-      <repopackage name="kernel-firmware-nvidia-gspx-G06"/>
       <repopackage name="kernel-firmware-platform"/>
       <repopackage name="kernel-firmware-prestera"/>
       <repopackage name="kernel-firmware-qcom"/>
@@ -3113,7 +3110,6 @@
       <repopackage name="ntfsprogs"/>
       <repopackage name="numactl"/>
       <repopackage name="numlockx"/>
-      <repopackage name="nvidia-open-driver-G06-signed-kmp-default"/>
       <repopackage name="nvme-cli"/>
       <repopackage name="nvme-cli-bash-completion"/>
       <repopackage name="obex-data-server"/>
