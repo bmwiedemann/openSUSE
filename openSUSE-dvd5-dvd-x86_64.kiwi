@@ -3868,6 +3868,7 @@
       <repopackage name="ruby3.3-rubygem-get_process_mem"/>
       <repopackage name="ruby3.3-rubygem-gettext"/>
       <repopackage name="ruby3.3-rubygem-gettext_i18n_rails"/>
+      <repopackage name="ruby3.3-rubygem-gettext_i18n_rails_js"/>
       <repopackage name="ruby3.3-rubygem-gli"/>
       <repopackage name="ruby3.3-rubygem-globalid"/>
       <repopackage name="ruby3.3-rubygem-google-protobuf"/>
@@ -3916,6 +3917,7 @@
       <repopackage name="ruby3.3-rubygem-liquid-4"/>
       <repopackage name="ruby3.3-rubygem-listen"/>
       <repopackage name="ruby3.3-rubygem-little-plugger"/>
+      <repopackage name="ruby3.3-rubygem-llhttp-ffi"/>
       <repopackage name="ruby3.3-rubygem-locale"/>
       <repopackage name="ruby3.3-rubygem-log4r"/>
       <repopackage name="ruby3.3-rubygem-logging"/>
@@ -4001,6 +4003,7 @@
       <repopackage name="ruby3.3-rubygem-rack-protection"/>
       <repopackage name="ruby3.3-rubygem-rack-proxy"/>
       <repopackage name="ruby3.3-rubygem-rack-test-0_6"/>
+      <repopackage name="ruby3.3-rubygem-rails-7.0"/>
       <repopackage name="ruby3.3-rubygem-rails-dom-testing"/>
       <repopackage name="ruby3.3-rubygem-rails-html-sanitizer"/>
       <repopackage name="ruby3.3-rubygem-rails-i18n"/>
@@ -4764,6 +4767,7 @@
       <repopackage name="xxd"/>
       <repopackage name="xz"/>
       <repopackage name="xz-lang"/>
+      <repopackage name="yarn"/>
       <repopackage name="yast2"/>
       <repopackage name="yast2-add-on"/>
       <repopackage name="yast2-alternatives"/>
