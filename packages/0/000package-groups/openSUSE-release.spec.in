@@ -218,7 +218,10 @@ ID_LIKE="opensuse suse"
 VERSION_ID="$VERSION_ID"
 PRETTY_NAME="openSUSE Tumbleweed"
 ANSI_COLOR="0;32"
-CPE_NAME="cpe:/o:opensuse:tumbleweed:%{version}"
+# CPE 2.3 format, boo#1217921
+CPE_NAME="cpe:2.3:o:opensuse:tumbleweed:%{version}:*:*:*:*:*:*:*"
+#CPE 2.2 format
+#CPE_NAME="cpe:/o:opensuse:tumbleweed:%{version}"
 BUG_REPORT_URL="https://bugzilla.opensuse.org"
 SUPPORT_URL="https://bugs.opensuse.org"
 HOME_URL="https://www.opensuse.org"

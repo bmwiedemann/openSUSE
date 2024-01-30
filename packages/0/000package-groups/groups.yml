@@ -98,17 +98,17 @@ dvd:
   - patterns-base-enhanced_base: [required,suggested]
   - patterns-server-file_server: [required,suggested]
   - patterns-fonts-fonts: [required]
-  - patterns-server-lamp_server: [required,suggested]
-  - patterns-server-mail_server: [required,suggested]
+  - patterns-server-lamp_server: [required]
+  - patterns-server-mail_server: [required]
   - patterns-desktop-multimedia: [required]
-  - patterns-office-office: [required,suggested]
-  - patterns-server-printing: [required,suggested]
+  - patterns-office-office: [required]
+  - patterns-server-printing: [required]
   - patterns-media-rest_cd_core: [required]
   - patterns-base-sw_management: [required,suggested]
   - patterns-gnome-sw_management_gnome: [required]
   - patterns-base-basic_desktop: [required,suggested]
   - patterns-base-selinux: [required,suggested]
-  - patterns-base-transactional_base: [required,suggested]
+  - patterns-base-transactional_base: [required]
   - patterns-base-x11: [required,suggested]
   - patterns-xfce-xfce: [suggested]
   - patterns-xfce-xfce_basis: [suggested]
@@ -123,7 +123,7 @@ dvd:
   - patterns-server-kvm_server
   - patterns-server-kvm_tools
   - patterns-base-minimal_base: [required,suggested]
-  - patterns-yast-x11_yast: [required,suggested]
+  - patterns-yast-x11_yast: [required]
   - patterns-server-xen_server: [x86_64]
   # bnc#431280 (Japanese fonts)
   - clicfs
