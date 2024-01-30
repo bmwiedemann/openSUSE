@@ -39,4 +39,14 @@
     <comment>- Rectify paths in systemd unit files [boo#1218808]</comment>
     <requestid>1141933</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b3eafd5d9ccdde6b0ff294681fafbbc8</srcmd5>
+    <version>1.4.1</version>
+    <time>1706635623</time>
+    <user>anag+factory</user>
+    <comment>- Build with rust functionality enabled [boo#1219158]
+  * Switch to upstream vendored source tarball
+  * Validate upstream source signature (forwarded request 1142783 from ddiss)</comment>
+    <requestid>1142786</requestid>
+  </revision>
 </revisionlist>

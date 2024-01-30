@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 29 06:55:58 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Build with rust functionality enabled [boo#1219158]
+  * Switch to upstream vendored source tarball
+  * Validate upstream source signature
+
+-------------------------------------------------------------------
 Sat Jan 27 09:49:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Rectify paths in systemd unit files [boo#1218808]

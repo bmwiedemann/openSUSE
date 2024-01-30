@@ -23,10 +23,14 @@ Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://bcachefs.org/
-Source:         %name-%version.tar.xz
+Source0:        https://evilpiepirate.org/%name/%name-vendored-%version.tar.zst
+Source1:        https://evilpiepirate.org/%name/%name-vendored-%version.tar.sign
+Source2:        %{name}.keyring
+BuildRequires:  cargo
+BuildRequires:  clang-devel
 BuildRequires:  libaio-devel >= 0.3.111
 BuildRequires:  pkg-config
-BuildRequires:  xz
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(libkeyutils)
 BuildRequires:  pkgconfig(liblz4)
@@ -59,10 +63,10 @@ This package contains utilities for creating and mounting bcachefs.
 
 %build
 %make_build PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir" \
-	EXTRA_CFLAGS="%optflags" NO_RUST=1
+	EXTRA_CFLAGS="%optflags"
 
 %install
-%make_install PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir" NO_RUST=1
+%make_install PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir"
 # this ain't no debian
 rm -Rf "%buildroot/etc/initramfs-tools" "%buildroot/%_datadir/initramfs-tools"
 
