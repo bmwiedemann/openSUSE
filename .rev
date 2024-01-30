@@ -53,4 +53,14 @@
   * Conflict markers can be added to files by git merge for example.</comment>
     <requestid>1141443</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c3d980179042869fc0d1ecb4cda7cef</srcmd5>
+    <version>2.29.0~0</version>
+    <time>1706635580</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.29.0:
+  * Improve error handling
+  * Improve display</comment>
+    <requestid>1142714</requestid>
+  </revision>
 </revisionlist>
