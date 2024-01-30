@@ -570,6 +570,12 @@ Prefer: -dbus-broker-allow-restart
 # have choice for python3-fluent: python311-fluent python311-fluent.syntax
 Prefer: -python311-fluent
 
+# have choice for fonttools: python310-FontTools python311-FontTools python39-FontTools
+Prefer: -python39-FontTools -python310-FontTools
+
+# have choice for (python311-qt5 or python311-pyside2 or python311-PyQt6 or python311-pyside6) needed by python311-qtconsole: python311-pyside6 python311-qt5
+Prefer: -python311-pyside6
+
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
 Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
 Preinstall: libbz2-1 libgcc_s1 libncurses6 libreadline8 libz1 libselinux1
