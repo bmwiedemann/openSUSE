@@ -810,8 +810,6 @@
       <repopackage name="hack-fonts"/>
       <repopackage name="haveged"/>
       <repopackage name="hdparm"/>
-      <repopackage name="health-checker"/>
-      <repopackage name="health-checker-plugins-MicroOS"/>
       <repopackage name="hfsutils"/>
       <repopackage name="hicolor-icon-theme"/>
       <repopackage name="hicolor-icon-theme-branding-openSUSE"/>
@@ -3289,8 +3287,6 @@
       <repopackage name="perl-Crypt-OpenSSL-RSA"/>
       <repopackage name="perl-Crypt-SmbHash"/>
       <repopackage name="perl-CryptX"/>
-      <repopackage name="perl-DBD-mysql"/>
-      <repopackage name="perl-DBI"/>
       <repopackage name="perl-Digest-HMAC"/>
       <repopackage name="perl-Digest-MD4"/>
       <repopackage name="perl-Digest-SHA1"/>
@@ -3372,14 +3368,9 @@
       <repopackage name="phononsettings"/>
       <repopackage name="phononsettings-lang"/>
       <repopackage name="php8"/>
-      <repopackage name="php8-cli"/>
       <repopackage name="php8-ctype"/>
       <repopackage name="php8-dom"/>
-      <repopackage name="php8-gd"/>
-      <repopackage name="php8-gettext"/>
       <repopackage name="php8-iconv"/>
-      <repopackage name="php8-mbstring"/>
-      <repopackage name="php8-mysql"/>
       <repopackage name="php8-openssl"/>
       <repopackage name="php8-pdo"/>
       <repopackage name="php8-sqlite"/>
@@ -3509,7 +3500,6 @@
       <repopackage name="purpose"/>
       <repopackage name="purpose-lang"/>
       <repopackage name="pwgen"/>
-      <repopackage name="python-falcon-doc"/>
       <repopackage name="python3-apparmor"/>
       <repopackage name="python3-audit"/>
       <repopackage name="python3-brlapi"/>
@@ -3610,7 +3600,6 @@
       <repopackage name="python311-Mako"/>
       <repopackage name="python311-markdown-it-py"/>
       <repopackage name="python311-MarkupSafe"/>
-      <repopackage name="python311-mdit-py-plugins"/>
       <repopackage name="python311-mdurl"/>
       <repopackage name="python311-msgpack"/>
       <repopackage name="python311-mysqlclient"/>
@@ -3619,7 +3608,6 @@
       <repopackage name="python311-notify2"/>
       <repopackage name="python311-numpy"/>
       <repopackage name="python311-olefile"/>
-      <repopackage name="python311-outcome"/>
       <repopackage name="python311-packaging"/>
       <repopackage name="python311-passlib"/>
       <repopackage name="python311-pexpect"/>
@@ -3670,18 +3658,14 @@
       <repopackage name="python311-semanage"/>
       <repopackage name="python311-service_identity"/>
       <repopackage name="python311-setools"/>
-      <repopackage name="python311-setproctitle"/>
       <repopackage name="python311-setuptools"/>
       <repopackage name="python311-simplejson"/>
       <repopackage name="python311-six"/>
       <repopackage name="python311-sniffio"/>
-      <repopackage name="python311-sortedcontainers"/>
       <repopackage name="python311-SQLAlchemy"/>
       <repopackage name="python311-text-unidecode"/>
       <repopackage name="python311-tomli"/>
-      <repopackage name="python311-tornado"/>
       <repopackage name="python311-tornado6"/>
-      <repopackage name="python311-trio"/>
       <repopackage name="python311-Twisted"/>
       <repopackage name="python311-Twisted-tls"/>
       <repopackage name="python311-typing_extensions"/>
@@ -4408,7 +4392,6 @@
       <repopackage name="transmission-gtk-lang"/>
       <repopackage name="tree"/>
       <repopackage name="tukit"/>
-      <repopackage name="tukitd"/>
       <repopackage name="tumbler"/>
       <repopackage name="tumbler-folder-thumbnailer"/>
       <repopackage name="tumbler-lang"/>

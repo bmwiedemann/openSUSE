@@ -20286,6 +20286,8 @@ unsorted:
   - perl-DBD-Pg 
   - perl-DBD-SQLite 
   - perl-DBD-XBase 
+  - perl-DBD-mysql 
+  - perl-DBI 
   - perl-DBICx-Sugar 
   - perl-DBICx-TestDatabase 
   - perl-DBIx-Class 
@@ -21502,6 +21504,7 @@ unsorted:
   - php8-bcmath 
   - php8-bz2 
   - php8-calendar 
+  - php8-cli 
   - php8-curl 
   - php8-dba 
   - php8-devel 
@@ -21514,6 +21517,8 @@ unsorted:
   - php8-fpm 
   - php8-fpm-apache 
   - php8-ftp 
+  - php8-gd 
+  - php8-gettext 
   - php8-gmagick 
   - php8-gmp 
   - php8-ice 
@@ -21522,8 +21527,10 @@ unsorted:
   - php8-ldap 
   - php8-lzf 
   - php8-maxminddb 
+  - php8-mbstring 
   - php8-memcache 
   - php8-memcached 
+  - php8-mysql 
   - php8-odbc 
   - php8-opcache 
   - php8-pcntl 
@@ -22415,6 +22422,7 @@ unsorted:
   - python-doc-pdf 
   - python-efl-doc 
   - python-efl-examples 
+  - python-falcon-doc 
   - python-fastcluster-doc 
   - python-flake8-doc 
   - python-freezerclient-doc 
@@ -28244,6 +28252,7 @@ unsorted:
   - python311-md2workflow 
   - python311-md2workflow-plugins-jira 
   - python311-md2workflow-plugins-redmine 
+  - python311-mdit-py-plugins 
   - python311-mechanize 
   - python311-mediafile 
   - python311-meld3 
@@ -28458,6 +28467,7 @@ unsorted:
   - python311-oscrypto 
   - python311-osmviz 
   - python311-ospd-openvas 
+  - python311-outcome 
   - python311-overrides 
   - python311-ovirt-engine-sdk 
   - python311-pa-ringbuffer 
@@ -29272,6 +29282,7 @@ unsorted:
   - python311-seqdiag 
   - python311-serpent 
   - python311-serverfiles 
+  - python311-setproctitle 
   - python311-setuptools-declarative-requirements 
   - python311-setuptools-gettext 
   - python311-setuptools-git 
@@ -29334,6 +29345,7 @@ unsorted:
   - python311-solv 
   - python311-sorl-thumbnail 
   - python311-sortedcollections 
+  - python311-sortedcontainers 
   - python311-sortinghat 
   - python311-sounddevice 
   - python311-soupsieve 
@@ -29522,6 +29534,7 @@ unsorted:
   - python311-toolz 
   - python311-toposort 
   - python311-topy 
+  - python311-tornado 
   - python311-tortilla 
   - python311-towncrier 
   - python311-tox 
@@ -29544,6 +29557,7 @@ unsorted:
   - python311-treq 
   - python311-tri.declarative 
   - python311-tri.struct 
+  - python311-trio 
   - python311-trio-websocket 
   - python311-trove-classifiers 
   - python311-trustme 
@@ -45235,6 +45249,7 @@ unsorted:
   - tudu 
   - tuigreet 
   - tuimoji 
+  - tukitd 
   - tuladha-jejeg-fonts 
   - tumbler-devel 
   - tumbler-doc 
