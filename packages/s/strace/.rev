@@ -1502,4 +1502,22 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
   * Updated lists of ioctl commands from Linux 6.6. (forwarded request 1121446 from Andreas_Schwab)</comment>
     <requestid>1121447</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>655e57c91cb25e4c1fd5386712671048</srcmd5>
+    <version>6.7</version>
+    <time>1706635470</time>
+    <user>anag+factory</user>
+    <comment>- Update to strace 6.7
+  * Implemented -kk/--stack-traces=source option for libdw-based stack tracing.
+  * Implemented decoding of futex_wake, futex_wait, and sys_futex_requeue
+    syscalls.
+  * Updated lists of BPF_*, BTRFS_*, IORING_*, KVM_*, LANDLOCK_*, PR_*,
+    and TCP_* constants.
+  * Updated lists of ioctl commands from Linux 6.7.
+  * Fix strace -r during the first second after booting to show correct relative
+    timestamps.
+  * Fix strace -f entering deadlock on exit if there are tracee processes
+    spawned using vfork semantics. (forwarded request 1142655 from AndreasSchwab)</comment>
+    <requestid>1142656</requestid>
+  </revision>
 </revisionlist>

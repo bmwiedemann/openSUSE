@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 30 09:38:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1.1:
+  * see corresponding dask update:
+  https://docs.dask.org/en/stable/changelog.html#v2024-1-1
+  * compatibility updates for latest pandas and scipy
+
+-------------------------------------------------------------------
 Mon Jan 22 09:56:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip one more test for 32bit
@@ -6,7 +14,7 @@ Mon Jan 22 09:56:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sat Jan 20 12:43:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
-- update to 2023.1.4:
+- update to 2024.1.0:
   * see corresponding dask update:
   https://docs.dask.org/en/stable/changelog.html#v2024-1-0
 

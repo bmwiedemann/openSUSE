@@ -29,4 +29,12 @@ When accepted to Factory, please, remove python-stem.</comment>
   - Stop using a function that was removed in Python 3.11.</comment>
     <requestid>1070054</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c2166f690383c1d5e4a5c23bee6b3072</srcmd5>
+    <version>1.8.4</version>
+    <time>1706635631</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142804</requestid>
+  </revision>
 </revisionlist>

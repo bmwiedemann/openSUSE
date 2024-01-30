@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 30 15:24:39 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * apache-ivy-pack200.patch
+    + conditionally apply to allow building against standalone
+      pack200 implementation
+
+-------------------------------------------------------------------
 Tue Sep 19 11:31:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

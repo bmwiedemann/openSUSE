@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 29 17:05:05 UTC 2024 - Mohd Saquib <mohd.saquib@suse.com>
+
+- update to 2.1.1:
+  * fix(offline-cmd): use family when creating ipset (64f78a9)
+  * fix(firewall-config): allow rich rule forwarded ports to be logged (d46ea62)
+  * fix(ipXtables): log forwarded ports only (07dc202)
+  * fix(nftables): log forwarded ports (5c26b73)
+  * fix(io.ipset): raise exception if entries exceed limit (a2da5fb)
+  * fix(policy): ipXtables: multiple policies using same zone (b6f2f09)
+  * fix(policy): dispatch update for active policies (7f6f0e2)
+
+-------------------------------------------------------------------
 Mon Jan  8 07:30:21 UTC 2024 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to 2.1.0:

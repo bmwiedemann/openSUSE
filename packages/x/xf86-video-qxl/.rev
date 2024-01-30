@@ -254,4 +254,13 @@
   * u_fix-build-against-xserver-21_1.patch</comment>
     <requestid>1060603</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>b54c51ab1140928d276b67f7aca2b4f9</srcmd5>
+    <version>0.1.6</version>
+    <time>1706635449</time>
+    <user>anag+factory</user>
+    <comment>- Xspice-python3.patch
+  * for python3 interpreter needs to be /usr/bin/python3</comment>
+    <requestid>1142574</requestid>
+  </revision>
 </revisionlist>

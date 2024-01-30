@@ -152,4 +152,13 @@
   * clarify Unicode deprecation warning PR #102</comment>
     <requestid>1115791</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d4205e750cac3803b13c7d8d4381cb95</srcmd5>
+    <version>0.10.4</version>
+    <time>1706635601</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.4:
+  * allow unions in TypeVar bound PR #207</comment>
+    <requestid>1142763</requestid>
+  </revision>
 </revisionlist>

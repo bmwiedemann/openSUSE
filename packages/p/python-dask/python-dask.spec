@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-dask
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -46,7 +46,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.1.0
+Version:        2024.1.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -70,7 +70,7 @@ Requires:       python-packaging >= 20.0
 Requires:       python-partd >= 1.2.0
 Requires:       python-toolz >= 0.10.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     %{name}-array = %{version}
 Recommends:     %{name}-dataframe = %{version}
 Recommends:     %{name}-distributed = %{version}

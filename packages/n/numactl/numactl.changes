@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jan 30 06:11:46 UTC 2024 - trenn@suse.de
+
+- Update to version 2.0.17.4.g63befa8:
+  * Fix CodeQl Warn: Wrong type of arguments to formatting function
+  * libnuma: Fix incorrect print and exit of numa_preferred/_many APIs
+  * libnuma: Fix unexpected output
+  * Fix README.md
+  * Increase version number
+  * Fix build badge
+  * Fix README.md
+  * Update README.md
+  * Add configure file for release
+  * Fix unused function return warning in numastat
+  * fix complain() fuction print newline
+  * Document that numa_police_memory may cause data races
+  * Add numastat_diff from jirka-h
+  * Enable v1 compatibility for unused getnodemask test
+  * libnuma: Handle initialization without sysfs
+  * Support empty memory nodes
+  * numactl: Add --version option to print version
+  * Remove obsolete numamon file
+  * numactl: Use standard tab indent for print_node_cpus
+  * Avoid using /proc/cpuinfo in test suite
+  * numact: Add --cpu-compress option
+  * Pin release workflow script to minimize risk of supply chain attacks
+  * move_pages: Fix warning (missing hunk from earlier revert)
+  * numastat: Remove unused functions
+  * distance: Remove unused variable (NFC)
+  * numademo: Adjust memcpy test bandwidth calculation
+  * numactl.c: Refactor print_node_cpus to display CPU ranges
+  * numactl.c: Refactor print_node_cpus to display CPU ranges
+  * numactl.c: Refactor print_node_cpus to display CPU ranges
+  * Refactor print_node_cpus to display CPU ranges instead of individual CPUs
+  * numactl: Fix manual for --preferred and --preferred-many
+  * Revert "Fix build error on riscv64 by linking libatomic"
+  * Include <fcntl.h> instead of <sys/fcntl.h>
+  * Fix the example usage in the numactl manual
+  * Fix issue #190 about numa_exit_on_warn does not work
+  * Create SECURITY.md
+  * fix: fix memory leaks when run with -H
+  * use mems allowed nodes to test prefer_many policy.
+  * fix typo in memhog.8
+  * Update move_pages.c
+  * migspeed don't have to be linked against librt
+  * Add MPOL_F_RELATIVE/STATIC_NODES
+
+-------------------------------------------------------------------
 Tue Apr 25 07:46:43 UTC 2023 - trenn@suse.de
 
 - Update to version 2.0.16.21.g693fee1:

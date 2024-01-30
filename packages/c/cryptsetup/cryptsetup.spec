@@ -1,7 +1,7 @@
 #
 # spec file for package cryptsetup
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,17 @@
 
 %define so_ver 12
 Name:           cryptsetup
-Version:        2.6.1
+Version:        2.7.0
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
 Group:          System/Base
 URL:            https://gitlab.com/cryptsetup/cryptsetup/
-Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetup-%{version}.tar.xz
+Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-%{version}.tar.xz
 # GPG signature of the uncompressed tarball.
-Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetup-%{version}.tar.sign
+Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-%{version}.tar.sign
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
-#PATCH-FIX-UPSTREAM bsc#1211079 luksFormat: handle system with low memory and no swap space
-Patch0:         cryptsetup-Check-for-physical-memory-available-also-in-PBKDF-be.patch
-Patch1:         cryptsetup-Try-to-avoid-OOM-killer-on-low-memory-systems-withou.patch
-Patch2:         cryptsetup-Use-only-half-of-detected-free-memory-on-systems-wit.patch
 BuildRequires:  device-mapper-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libpwquality-devel

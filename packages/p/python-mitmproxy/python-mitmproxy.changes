@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 29 21:27:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to python311 build
+
+-------------------------------------------------------------------
 Thu Dec 15 17:32:53 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip broken tests in different architectures
@@ -164,10 +169,10 @@ Wed Jan 27 14:37:07 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.0.2
   * Mitmproxy now requires Python 3.8 or above.
-  * Deprecation of pathod and pathoc tools and modules. Future releases 
+  * Deprecation of pathod and pathoc tools and modules. Future releases
     will not contain them!
   * SSLKEYLOGFILE now supports TLS 1.3 secrets
-  * Tests: Replace asynctest with stdlib mock 
+  * Tests: Replace asynctest with stdlib mock
   * Many smaller improvements and bugfixes
 - Drop unpin.patch and replace it with a sed script
 - Drop merged replace-asynctest.patch
@@ -175,7 +180,7 @@ Wed Jan 27 14:37:07 UTC 2021 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Tue Aug 11 10:05:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- Update to v5.2 
+- Update to v5.2
   * Add Filter message to mitmdump (@sarthak212)
   * Display TCP flows at flow list (@Jessonsotoventura,
     @nikitastupin, @mhils)
@@ -189,7 +194,7 @@ Tue Aug 11 10:05:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
     (@JustAnotherArchivist)
   * Fix HTTP reason value on HTTP/2 reponses (@rbdixon)
   * mitmweb: support wslview to open a web browser (@G-Rath)
-  * Fix dev version detection with parent git repo 
+  * Fix dev version detection with parent git repo
     (@JustAnotherArchivist)
   * Restructure examples and supported addons (@mhils)
   * Certificate generation: mark SAN as critical if no CN is set
@@ -223,7 +228,7 @@ Tue Aug 11 10:05:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - refresh unpin.patch
 - replace unmaintained asynctest by native python 3.8 unittest
   calls
-  * replace-asynctest.patch 
+  * replace-asynctest.patch
   * gh#mitmproxy/mitmproxy#4020
 
 -------------------------------------------------------------------

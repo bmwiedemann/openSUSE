@@ -1741,4 +1741,41 @@ fixes its regression.
     <comment>- Update to 3.1.4</comment>
     <requestid>1120188</requestid>
   </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>53c02a30a06ff0b16a354a916dafa36f</srcmd5>
+    <version>3.1.4</version>
+    <time>1706635503</time>
+    <user>anag+factory</user>
+    <comment>- New libopenssl-fips-provider package.
+
+- Remove a hack for bsc#936563
+  bsc936563_hack.patch (bsc#936563)
+- Build with no-ssl3, for details on why this is needed read
+  require us to patch dependant packages as the relevant
+  functions are still available (SSLv3_(client|server)_method)
+- openssl.keyring: use Matt Caswells current key.
+- openSSL 1.0.1j
+- openssl.keyring: the 1.0.1i release was done by
+- 012-Fix-eckey_priv_encode.patch eckey_priv_encode should
+- 0001-Axe-builtin-printf-implementation-use-glibc-instead.patch
+  it is already in RPM_OPT_FLAGS and is replaced by
+- Remove the &quot;gmp&quot; and &quot;capi&quot; shared engines, nobody noticed
+  but they are just dummies that do nothing.
+- Use enable-rfc3779 to allow projects such as rpki.net
+- openssl-buffreelistbug-aka-CVE-2010-5298.patch fix
+- openssl-gcc-attributes.patch: fix thinko, CRYPTO_realloc_clean does
+- openssl-gcc-attributes.patch
+- additional changes required for FIPS validation( from Fedora repo)
+- Remove GCC option &quot;-O3&quot; for compiliation issue of ARM version
+  Modify files: README-FIPS.txt openssl.spec
+  Add file: CVE-2013-6450.patch
+- Fixed bnc#856687, openssl: crash when using TLS 1.2
+  Add file: CVE-2013-6449.patch
+- 0001-libcrypto-Hide-library-private-symbols.patch
+  This patch is however not 100% complete, as some private library
+  symbols are declared in public headers that shall not be touched
+- openssl-1.0.1c-ipv6-apps.patch:
+- Fix armv6l arch (armv7 was previously used to build armv6 which</comment>
+    <requestid>1142585</requestid>
+  </revision>
 </revisionlist>

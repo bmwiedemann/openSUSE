@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jan 27 16:53:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 389:
+  * interchange variables in subparameter parsing, fixing a bug
+    where subparameters after the first parameter could be
+    misidentified
+  * correct  popping of icon/window titles in a case where only
+    one was pushed from patch #385 changes.
+  * add XTQMODKEYS response in DECRQSS, as alternative for vim.
+  * correct  DECCIR encoded information on character set size,
+    handle a VT525 quirk, and add DECST8C (Windows Terminal
+    #14984).
+  * improve  DECRQCRA  (prompted  by  discussion with James
+    Holderness, Windows Terminal #14974).
+  * add part of VT525 color controls:
+    + DECAC,  to  update  default foreground/background, respond to
+      DECRQSS
+    + DECATC, to respond with DECRQSS
+  * prevent  Unicode  non-characters  from  being  printed
+  * modify  send_SGR()  to  avoid modifying colors 16 to 255 in
+    printed output (patch by Grady Martin).
+  * minor cleanup of miscellaneous error-codes with ERROR_MISC.
+  * remove legacy CSI 53 for locator status, corrected in patch
+  * modify  DECRQUPSS  and  DECAUPSS feature to support VT5xx
+    character sets (report by Thomas Wolff).
+  * improve EWMH handling (report/analysis by Edward Rosten)
+    + reset  _NET_WM_STATE_HIDDEN  flag  from _NET_WM_STATE  before
+      mapping the window to deiconify.
+    + cache  X  properties  to reduce latency (adapted
+    from patch by Edward Rosten).
+
+-------------------------------------------------------------------
 Sun Nov 12 09:47:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 388:

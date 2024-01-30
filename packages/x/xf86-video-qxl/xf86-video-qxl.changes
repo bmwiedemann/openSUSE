@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 29 15:14:40 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Xspice-python3.patch
+  * for python3 interpreter needs to be /usr/bin/python3 
+
+-------------------------------------------------------------------
 Tue Jan 24 08:45:11 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.1.6

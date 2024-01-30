@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jan 29 08:15:07 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240126 (git commit 8fa621d2f9c1):
+  * qcom: Add Audio firmware for SM8650 MTP
+  * linux-firmware: Add firmware for Cirrus CS35L41 on HP Consumer Laptops
+  * Intel Bluetooth: Make spacing consistent with rest of WHENCE
+  * amdgpu: update raven2 firmware
+  * amdgpu: update raven firmware
+  * amdgpu: update SDMA 5.2.7 firmware
+  * amdgpu: update PSP 13.0.8 firmware
+  * amdgpu: update VCN 3.1.2 firmware
+  * amdgpu: update SDMA 5.2.6 firmware
+  * amdgpu: update PSP 13.0.5 firmware
+  * amdgpu: update GC 10.3.6 firmware
+  * amdgpu: add GC 11.0.1 rlc_1 firmware
+  * amdgpu: update vega20 firmware
+  * amdgpu: update VCN 4.0.0 firmware
+  * amdgpu: update SMU 13.0.0 firmware
+  * amdgpu: update PSP 13.0.0 firmware
+  * amdgpu: update GC 11.0.0 firmware
+  * amdgpu: update vega12 firmware
+  * amdgpu: update vega10 firmware
+  * amdgpu: update beige goby firmware
+  * amdgpu: update picasso firmware
+  * amdgpu: update dimgrey cavefish firmware
+  * amdgpu: update vangogh firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update green sardine firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update PSP 13.0.11 firmware
+  * amdgpu: update GC 11.0.4 firmware
+  * amdgpu: update VCN 4.0.2 firmware
+  * amdgpu: update PSP 13.0.4 firmware
+  * amdgpu: update GC 11.0.1 firmware
+  * amdgpu: update arcturus firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: add VCN 4.0.3 firmware
+  * amdgpu: add SDMA 4.4.2 firmware
+  * amdgpu: add SMU 13.0.6 firmware
+  * amdgpu: add PSP 13.0.6 firmware
+  * amdgpu: Add GC 9.4.3 firmware
+  * amdgpu: update renoir firmware
+  * amdgpu: update VCN 4.0.4 firmware
+  * amdgpu: update SMU 13.0.7 firmware
+  * amdgpu: update PSP 13.0.7 firmware
+  * amdgpu: update GC 11.0.2 firmware
+  * amdgpu: update navi12 firmware
+  * amdgpu: update yellow carp firmware
+  * amdgpu: update SMU 13.0.10 firmware
+  * amdgpu: update SDMA 6.0.3 firmware
+  * amdgpu: update PSP 13.0.10 firmware
+  * amdgpu: update GC 11.0.3 firmware
+  * amdgpu: update navi10 firmware
+  * amdgpu: update aldebaran firmware
+  * linux-firmware: Update AMD cpu microcode
+  * RTL8192E: Remove old realtek WiFi firmware
+- Update aliases
+
+-------------------------------------------------------------------
 Tue Jan 16 07:59:35 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240115 (git commit efeb548d2a2b):

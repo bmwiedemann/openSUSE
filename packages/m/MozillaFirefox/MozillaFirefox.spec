@@ -1,5 +1,5 @@
 #
-# spec file for package MozillaFirefox
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2006-2023 Wolfgang Rosenauer <wr@rosenauer.org>
@@ -235,7 +235,7 @@ Patch102:       firefox-branded-icons.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): coreutils shared-mime-info desktop-file-utils
-Requires(postun): shared-mime-info desktop-file-utils
+Requires(postun):shared-mime-info desktop-file-utils
 Requires:       %{name}-branding >= 68
 %requires_ge    mozilla-nspr
 %requires_ge    mozilla-nss
@@ -717,9 +717,7 @@ exit 0
 %{progdir}/*.so
 %{progdir}/glxtest
 %if 0%{wayland_supported}
-%ifarch %{arm} aarch64 %{ix86} x86_64
 %{progdir}/vaapitest
-%endif
 %endif
 %ifarch aarch64 riscv64 %arm
 %{progdir}/v4l2test

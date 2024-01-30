@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:22:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.23:
+  * https://github.com/memcached/memcached/wiki/ReleaseNotes1623
+
+-------------------------------------------------------------------
 Mon Nov 13 11:40:34 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.6.22
@@ -23,7 +29,7 @@ Mon Nov 13 11:40:34 UTC 2023 - pgajdos@suse.com
   * proxy: fix buffer overflow with multiget syntax
   * proxy: fix flaky test in t/proxylimits.t
 - fixes [bsc#1216700] (CVE-2023-46853)
-- fixes [bsc#1216699] (CVE-2023-46852) 
+- fixes [bsc#1216699] (CVE-2023-46852)
 
 -------------------------------------------------------------------
 Mon Jun 26 13:26:48 UTC 2023 - pgajdos@suse.com
@@ -64,7 +70,7 @@ Mon May 29 19:43:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * proxy: restrict functions for lua config vs route
   * proxy: fix bug ignoring -R setting for proxy reqs
   * proxy: add conntimeout error
-  * proxy: add memory accounting tracking 
+  * proxy: add memory accounting tracking
 
 -------------------------------------------------------------------
 Tue Mar 14 09:10:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -99,7 +105,7 @@ Sun Jan 15 21:30:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.18:
   * Mostly fixes and improvements to proxy mode.
-  * Meta protocol has some adjusments: extra spaces were 
+  * Meta protocol has some adjusments: extra spaces were
     being returned in a few instances
   * see https://github.com/memcached/memcached/wiki/ReleaseNotes1618
 
@@ -134,7 +140,7 @@ Mon Sep  5 13:13:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * sock ip filtering tagging support for FBSD/OBSD
   * MacOS drop privileges support
   * core: make large item storage more reliable
-  * extstore: make defaults more aggressive 
+  * extstore: make defaults more aggressive
 
 -------------------------------------------------------------------
 Wed Aug 17 19:11:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -197,7 +203,7 @@ Sun Feb 20 22:06:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fix integer overflow in hashsize calculation causing hang on huge hash tables
   * meta: add "proxy tokens" P, L which are ignored
   * core: fix large pages detection on redhat distros
-  * Fix error message on conflicting ports while using '-l' 
+  * Fix error message on conflicting ports while using '-l'
 
 -------------------------------------------------------------------
 Sat Jan 22 12:06:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -214,7 +220,7 @@ Sat Jan 22 12:06:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fix for failing tests on OS X
   * extstore: avoid looping IO queues on submission
   * tests: maxconns test when extstore enabled
-  * core: remove cdefs include from queue.h 
+  * core: remove cdefs include from queue.h
 
 -------------------------------------------------------------------
 Sun Nov 28 17:22:19 UTC 2021 - Sarah Kriesch <sarah.kriesch@opensuse.org>
@@ -247,12 +253,12 @@ Sun Nov 28 17:22:19 UTC 2021 - Sarah Kriesch <sarah.kriesch@opensuse.org>
   * fix arm64 crc32 on old glibc/gcc.
   * extstore: fix crash on 'stats extstore'
   * seccomp: extend allowed rules for extended usage
-  * The total number of UDP datagrams required for the message is calculated 
+  * The total number of UDP datagrams required for the message is calculated
     incorrectly.
   * meta: allow base64'ed binary keys with 'b' flag
   * small improvements to readme
   * Added debugtime command for test suite
-  * The meta protocol can now transmit binary encoded keys by encoding the 
+  * The meta protocol can now transmit binary encoded keys by encoding the
     key in base64 and sending a 'b' flag with the command
 
 -------------------------------------------------------------------
@@ -303,7 +309,7 @@ Mon Sep 28 20:29:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * Do not join lru and slab maintainer threads if they do not exist
   * Restore SAN entries in testing TLS certificates
   * Changed code using strtol to use safe_strtol wrapper
-  * Fix TCP failure under OS X. 
+  * Fix TCP failure under OS X.
 - drop use-signal-function-instead-of-sigignore.patch (upstream)
 
 -------------------------------------------------------------------
@@ -320,7 +326,7 @@ Sat Jun  6 05:37:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
   * Disable aarch64 hw crc32 function for now
   * Pull in BigEndian-compatible crc32c
   * minimum libevent version is 2.x
-  
+
 -------------------------------------------------------------------
 Mon Apr 13 19:08:36 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
@@ -513,7 +519,7 @@ Wed Apr 18 12:21:14 UTC 2018 - pgajdos@suse.com
 Thu Apr  5 00:15:11 UTC 2018 - sflees@suse.de
 
 - Home directory shouldn't be world readable bsc#1077718
-- Mention that this stream isn't affected by bsc#1085209, 
+- Mention that this stream isn't affected by bsc#1085209,
   CVE-2018-1000127 to make the checker bots happy.
 
 -------------------------------------------------------------------
@@ -533,7 +539,7 @@ Fri Mar  9 08:55:34 UTC 2018 - dmueller@suse.com
 -------------------------------------------------------------------
 Thu Nov 23 13:46:21 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -580,7 +586,7 @@ Mon Nov  7 17:18:21 UTC 2016 - mrueckert@suse.de
 Tue Dec  1 16:52:51 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 1.4.25:
-  * Please read the news at 
+  * Please read the news at
     https://github.com/memcached/memcached/wiki/ReleaseNotes1425
 - Update memcached-autofoo.patch
 
@@ -604,7 +610,7 @@ Sun Feb 22 20:47:12 UTC 2015 - mpluskal@suse.com
   * Fix off-by-one causing segfault in lru_crawler
   * Fix potential corruption for incr/decr of 0b items
   * Fix  issue #369  - uninitialized stats_lock
-  * issue#370 : slab re-balance is not thread-safe in function 
+  * issue#370 : slab re-balance is not thread-safe in function
     do_item_get
   * Fix potential corruption in hash table expansion
   * use item lock instead of global lock when hash expanding
@@ -640,7 +646,7 @@ Mon Jun 16 16:27:47 UTC 2014 - mrueckert@suse.de
   bnc#857188 CVE-2013-7239
   bnc#817781 CVE-2011-4971
   bnc#798458 CVE-2013-0179
-- update to 1.4.20 
+- update to 1.4.20
   - Fix a race condition causing new connections to appear closed,
     causing an inifinte loop.
 - additional changes from 1.4.19
@@ -715,7 +721,7 @@ Mon Jun 16 16:27:47 UTC 2014 - mrueckert@suse.de
     Adjusting tail repair time: -o tail_repair_time=60 (in seconds)
 - dropped memcached-1.4.x_delete_verbose_mode_dos.patch:
   included upstream
-- freshed memcached-autofoo.patch 
+- freshed memcached-autofoo.patch
 
 -------------------------------------------------------------------
 Tue Jan 15 11:44:05 UTC 2013 - mrueckert@suse.de
@@ -737,7 +743,7 @@ Wed Nov  7 20:47:22 UTC 2012 - chris@computersalat.de
   * Add some mild thread documentation
   * README.md was missing from dist tarball
   * Issue 286 : --disable-coverage drops "-pthread" option
-  * Reduce odds of getting OOM errors in some odd cases 
+  * Reduce odds of getting OOM errors in some odd cases
 - rebase use-endian_h, autofoo patch and 1.4.5.dif
 - fix build <= 1140
   * export LIBEVENT_CFLAGS and LIBEVENT_LIBS so we dont need
@@ -757,7 +763,7 @@ Wed Nov  7 19:58:59 UTC 2012 - mrueckert@suse.de
 -------------------------------------------------------------------
 Tue Aug 14 02:50:12 UTC 2012 - crrodriguez@opensuse.org
 
-- Update to version 1.4.14 
+- Update to version 1.4.14
 * Avoid race condition in test during pid creation by blind retrying
 * Fixed issue with invalid binary protocol touch command expiration time
 
@@ -775,7 +781,7 @@ Tue Apr  3 00:54:39 UTC 2012 - tabraham@novell.com
 
 - Update to version 1.4.13
     * Fix inline issue with older compilers (gcc 4.2.2)
-    * Better detection of sasl_callback_ft 
+    * Better detection of sasl_callback_ft
 
 - Changes from version 1.4.12
     Fixes:
@@ -787,7 +793,7 @@ Tue Apr  3 00:54:39 UTC 2012 - tabraham@novell.com
     * fix warning in UDP test
     * properly detect GCC atomics
     * tests: loop on short binary packet reads
-    * fix slabs_reassign tests on 32bit hosts 
+    * fix slabs_reassign tests on 32bit hosts
 
 - Changes from version 1.4.11
     Fixes:
@@ -801,9 +807,9 @@ Tue Apr  3 00:54:39 UTC 2012 - tabraham@novell.com
     * clean do_item_get logic a bit. fix race.
     * clean up the do_item_alloc logic
     * shorten lock for item allocation more
-    * Fix to build with cyrus sasl 2.1.25 
+    * Fix to build with cyrus sasl 2.1.25
     New features:
-    * Slab page reassignment and bug fixes over 1.4.10. 
+    * Slab page reassignment and bug fixes over 1.4.10.
 
 - Changes from version 1.4.10
     Fixes:
@@ -814,7 +820,7 @@ Tue Apr  3 00:54:39 UTC 2012 - tabraham@novell.com
     * Move hash calls outside of cache_lock
     * Use spinlocks for main cache lock
     * Remove uncommon branch from asciiprot hot path
-    * Allow all tests to run as root 
+    * Allow all tests to run as root
     New features:
     * tested improvements in speed between 3 and 6 worker
       threads (-t 3 to -t 6) More than 6 reduced speed
@@ -823,7 +829,7 @@ Tue Apr  3 00:54:39 UTC 2012 - tabraham@novell.com
     * Add a systemd service file
     * Fix some minor typos in the protocol doc
     * Issue 224  - check retval of main event loop
-    * Fix -c so maxconns can be raised above default. 
+    * Fix -c so maxconns can be raised above default.
 
 - Changes from version 1.4.8
     Fixes:
@@ -840,7 +846,7 @@ Tue Apr  3 00:54:39 UTC 2012 - tabraham@novell.com
     * Add binary GATK/GATKQ
     * Backport binary TOUCH/GAT/GATQ commands
     * Issue 221 : Increment treats leading spaces as 0
-    * Fix compile error on OS X 
+    * Fix compile error on OS X
     New features:
     * touch commands
     * fast connection limit handling
@@ -860,7 +866,7 @@ Tue Apr  3 00:54:39 UTC 2012 - tabraham@novell.com
     * Issue 115 : accont for CAS in item_size_ok
     * Fix incredibly slim race for maxconns handler. Should no longer hang ever
     * Issue 183  - Reclaim items dead by flush_all
-    * Issue 200 : Don't fire dtrace probe as the last thing in a function 
+    * Issue 200 : Don't fire dtrace probe as the last thing in a function
     New features:
     * monotonic clock
 
@@ -886,8 +892,8 @@ Tue Apr  3 00:54:39 UTC 2012 - tabraham@novell.com
     * Reverse backward expected/actual params in test
     * Issue 152 : Fix error message from mget
     * Refuse to start if we detect libevent 1.12
-    * Fix compilation issue on Solaris 9 wrt isspace() macro - Resolves  
-      issue 111  
+    * Fix compilation issue on Solaris 9 wrt isspace() macro - Resolves
+      issue 111
     New features:
     * multiple port binding
 
@@ -900,17 +906,17 @@ Fri May 27 12:41:52 UTC 2011 - coolo@novell.com
 Thu May  6 12:03:59 UTC 2010 - freitag@novell.com
 
 - update to version 1.4.5:
-This is a maintenance release with some build fixes, doc fixes, and one new stat. 
+This is a maintenance release with some build fixes, doc fixes, and one new stat.
 Fixes:
-    * Properly detect CPU alignment on ARM.  bug100 
-    * Remove 1MB assertion.  bug 119 
+    * Properly detect CPU alignment on ARM.  bug100
+    * Remove 1MB assertion.  bug 119
     * More automake versions supported.
     * Compiler warning fixes for OpenBSD.
     * potential buffer overflow in vperror
-    * Report errors opening pidfiles using vperror 
+    * Report errors opening pidfiles using vperror
 New Features::
     * New stat: reclaimed
-    * sasl_pwdb for more simple auth deployments 
+    * sasl_pwdb for more simple auth deployments
 
 -------------------------------------------------------------------
 Fri Jun  5 03:19:40 CEST 2009 - mrueckert@suse.de
@@ -954,7 +960,7 @@ Fri Jun  5 03:19:40 CEST 2009 - mrueckert@suse.de
 Fri Nov 28 16:05:33 CET 2008 - ro@suse.de
 
 - ignore test suite results for the moment
-  (will not work without networking support in build environment) 
+  (will not work without networking support in build environment)
 
 -------------------------------------------------------------------
 Tue Sep 16 18:25:33 CEST 2008 - mrueckert@suse.de

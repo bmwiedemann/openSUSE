@@ -129,4 +129,12 @@
 - enable testsuite (multibuild)</comment>
     <requestid>1131030</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>353bde817b58ce6dc67736e1f6e0a3c2</srcmd5>
+    <version>1.8.0</version>
+    <time>1706635436</time>
+    <user>anag+factory</user>
+    <comment>- Disable broken tests in s390x, bsc#1217019</comment>
+    <requestid>1142263</requestid>
+  </revision>
 </revisionlist>

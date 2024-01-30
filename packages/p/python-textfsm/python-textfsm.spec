@@ -1,7 +1,7 @@
 #
 # spec file for package python-textfsm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@ URL:            https://github.com/google/textfsm
 Source:         https://github.com/google/textfsm/archive/v%{version}.tar.gz#/textfsm-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE https://github.com/google/textfsm/issues/118
 Patch0:         correct-version.patch
-# PATCH-FIX-UPSTREAM gh#google/textfsm#116
-Patch1:         remove-future-requirement.patch
+# https://github.com/google/textfsm/commit/c8843d69daa9b565fea99a0283ad13c324d5b563
+Patch1:         python-textfsm-no-python2.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

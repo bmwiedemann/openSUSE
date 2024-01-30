@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1085093</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>89843bd4a95a0686e41614b14da9cd24</srcmd5>
+    <version>0.1.23</version>
+    <time>1706635543</time>
+    <user>anag+factory</user>
+    <comment>- build for modern python stack</comment>
+    <requestid>1142657</requestid>
+  </revision>
 </revisionlist>

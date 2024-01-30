@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdg-utils
-Version:        1.2.0~beta1+20230929
+Version:        1.2.0+20240130
 Release:        0
 Summary:        Utilities to uniformly interface desktop environments
 License:        MIT
@@ -70,7 +70,7 @@ ln -snf xdg-open %{buildroot}%{_bindir}/desktop-launch
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog README TODO
+%doc ChangeLog README.md TODO
 %license LICENSE
 %{_bindir}/call-browser
 %{_bindir}/desktop-launch

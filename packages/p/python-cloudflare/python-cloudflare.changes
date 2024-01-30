@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 30 12:08:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0:
+  * handle case where zone and account disallow load balancing
+  * make 4xx error handling more generic
+  * testing load balancers becuase they return 412 HTTP errors
+  * debug messages line lenght needs to be longer so that error
+    return messages are shown clearly
+  * issue-181 HTTP response code 412 not handled
+  * handle 404 errors with invalid API error structure
+  * test get/put/patch/delete and post with no data - all expected
+    return error
+  * now testing api calls with four id values
+  * now testing api calls with three id values
+  * improve error message responses for 400-405 http reponses code
+    they now decode
+
+-------------------------------------------------------------------
 Mon Jan  8 21:01:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.16.0:

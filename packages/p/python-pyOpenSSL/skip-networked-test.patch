@@ -1,8 +1,8 @@
-Index: pyOpenSSL-23.2.0/tests/test_ssl.py
+Index: pyOpenSSL-24.0.0/tests/test_ssl.py
 ===================================================================
---- pyOpenSSL-23.2.0.orig/tests/test_ssl.py
-+++ pyOpenSSL-23.2.0/tests/test_ssl.py
-@@ -1252,6 +1252,7 @@ class TestContext:
+--- pyOpenSSL-24.0.0.orig/tests/test_ssl.py
++++ pyOpenSSL-24.0.0/tests/test_ssl.py
+@@ -1250,6 +1250,7 @@ class TestContext:
          reason="set_default_verify_paths appears not to work on Windows.  "
          "See LP#404343 and LP#404344.",
      )
@@ -10,21 +10,26 @@ Index: pyOpenSSL-23.2.0/tests/test_ssl.py
      def test_set_default_verify_paths(self):
          """
          `Context.set_default_verify_paths` causes the platform-specific CA
-Index: pyOpenSSL-23.2.0/setup.cfg
+Index: pyOpenSSL-24.0.0/setup.cfg
 ===================================================================
---- pyOpenSSL-23.2.0.orig/setup.cfg
-+++ pyOpenSSL-23.2.0/setup.cfg
-@@ -1,6 +1,8 @@
- [tool:pytest]
- addopts = "-r s --strict-markers"
- testpaths = tests
-+markers =
-+   network: test case requires network connection
- 
- [metadata]
- license_file = LICENSE
-@@ -15,4 +17,3 @@ doc_files = doc/_build/html
+--- pyOpenSSL-24.0.0.orig/setup.cfg
++++ pyOpenSSL-24.0.0/setup.cfg
+@@ -11,4 +11,3 @@ doc_files = doc/_build/html
  [egg_info]
  tag_build = 
  tag_date = 0
 -
+Index: pyOpenSSL-24.0.0/pyproject.toml
+===================================================================
+--- pyOpenSSL-24.0.0.orig/pyproject.toml
++++ pyOpenSSL-24.0.0/pyproject.toml
+@@ -42,6 +42,9 @@ ignore_missing_imports = true
+ [tool.pytest.ini_options]
+ addopts = "-r s --strict-markers"
+ testpaths = ["tests"]
++markers = [
++    "network: test case requires network connection",
++]
+ 
+ [tool.ruff]
+ select = ['E', 'F', 'I', 'W', 'UP', 'RUF']

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 30 12:20:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31.2:
+  * broken support for `Optional[List]` (but not
+    `Optional[list]`), a narrower case of the problem fixed
+    earlier
+
+-------------------------------------------------------------------
 Sat Jan 20 12:41:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.31.1:

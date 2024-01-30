@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 30 14:17:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.24.4:
+  * don't check external network existence when swarm is enabled
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/docker/docker
+  * Add support for storage_opt
+  * ci(deps): update DOCKER_CLI_VERSION to v25.0.1
+  * bump compose-go to v2.0.0-rc.3 which fixes multiple compose
+    files merge issues
+  * build(deps): bump actions/upload-artifact from v3 to v4
+  * update MAINTAINERS file
+
+-------------------------------------------------------------------
 Fri Jan 26 19:47:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.24.3:

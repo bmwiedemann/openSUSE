@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-silk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-django-silk
-Version:        5.0.4
+Version:        5.1.0
 Release:        0
 Summary:        Profiling for the Django Framework
 License:        MIT

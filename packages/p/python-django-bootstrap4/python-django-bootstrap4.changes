@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 30 12:25:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.1:
+  * Fix CheckboxSelectMultiple on Django>4 (#672, @heso).
+
+-------------------------------------------------------------------
 Mon Jan 22 11:48:12 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add %{?sle15_python_module_pythons} to build for modern python in

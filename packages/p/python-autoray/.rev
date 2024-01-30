@@ -77,4 +77,13 @@
 - Initial package release.</comment>
     <requestid>1124985</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>53adf52afa626da06a9441a62cc9ea32</srcmd5>
+    <version>0.6.8</version>
+    <time>1706635612</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.8:
+  * Alias jax.scipy</comment>
+    <requestid>1142773</requestid>
+  </revision>
 </revisionlist>

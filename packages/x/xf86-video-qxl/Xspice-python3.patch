@@ -1,0 +1,9 @@
+diff -u -r -p xf86-video-qxl-0.1.6.orig/scripts/Xspice xf86-video-qxl-0.1.6/scripts/Xspice
+--- xf86-video-qxl-0.1.6.orig/scripts/Xspice	2024-01-29 16:12:58.376167000 +0100
++++ xf86-video-qxl-0.1.6/scripts/Xspice	2024-01-29 16:13:19.891049000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ """
+ Xspice

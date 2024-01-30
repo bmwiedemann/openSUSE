@@ -1623,6 +1623,7 @@ i915: pci:v00008086d000056BCsv*sd*bc03sc*i*
 i915: pci:v00008086d000056BDsv*sd*bc03sc*i*
 i915: pci:v00008086d000056C0sv*sd*bc03sc*i*
 i915: pci:v00008086d000056C1sv*sd*bc03sc*i*
+i915: pci:v00008086d000056C2sv*sd*bc03sc*i*
 i915: pci:v00008086d00005902sv*sd*bc03sc*i*
 i915: pci:v00008086d00005906sv*sd*bc03sc*i*
 i915: pci:v00008086d00005908sv*sd*bc03sc*i*
@@ -2861,6 +2862,9 @@ liquidio: pci:v0000177Dd00000092sv*sd*bc*sc*i*
 liquidio: pci:v0000177Dd00009702sv*sd*bc*sc*i*
 lontium_lt9611uxc: of:N*T*Clontium,lt9611uxc
 lontium_lt9611uxc: of:N*T*Clontium,lt9611uxcC*
+mei_vsc_hw: acpi*:INTC1009%3A*
+mei_vsc_hw: acpi*:INTC1058%3A*
+mei_vsc_hw: acpi*:INTC1094%3A*
 meson_vdec: of:N*T*Camlogic,g12a-vdec
 meson_vdec: of:N*T*Camlogic,g12a-vdecC*
 meson_vdec: of:N*T*Camlogic,gxbb-vdec
@@ -5027,6 +5031,7 @@ rtl8xxxu: usb:v2001p330Bd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v2001p330Fd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v2001p3310d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v2001p3311d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v2001p3312d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v2001p3319d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v2001p331Bd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v2019p1201d*dc*dsc*dp*icFFiscFFipFFin*
@@ -5044,7 +5049,10 @@ rtl8xxxu: usb:v2357p0108d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v2357p0109d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v2357p010Cd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v2357p0111d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v2357p0126d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v2C4Ep0100d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v2C4Ep0102d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v2C4Ep0104d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v4855p0090d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v4855p0091d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v4856p0091d*dc*dsc*dp*icFFiscFFipFFin*
@@ -5258,6 +5266,7 @@ snd_hda_scodec_cs35l41_i2c: acpi*:CLSA0100%3A*
 snd_hda_scodec_cs35l41_i2c: acpi*:CLSA0101%3A*
 snd_hda_scodec_cs35l41_i2c: acpi*:CSC3551%3A*
 snd_hda_scodec_cs35l41_spi: acpi*:CSC3551%3A*
+snd_hda_scodec_tas2781_i2c: acpi*:INT8866%3A*
 snd_hda_scodec_tas2781_i2c: acpi*:TIAS2781%3A*
 snd_intel_sst_acpi: acpi*:80860F28%3A*
 snd_intel_sst_acpi: acpi*:808622A8%3A*

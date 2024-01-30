@@ -76,4 +76,13 @@
 </comment>
     <requestid>1140587</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d10b65d8f7439c6ba4b09badeb73e77c</srcmd5>
+    <version>24.1</version>
+    <time>1706635618</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.1:
+  * Fix CheckboxSelectMultiple on Django&gt;4 (#672, @heso).</comment>
+    <requestid>1142779</requestid>
+  </revision>
 </revisionlist>

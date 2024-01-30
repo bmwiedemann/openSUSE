@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 29 20:56:13 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- Add dovecot-unix_chkpwd.diff to allow dovecot-auth to execute
+  unix_chkpwd, and add a profile for unix_chkpwd. This is needed
+  for PAM 1.6 (boo#1219139)
+- Refresh apparmor.keyring - the key was renewed
+
+-------------------------------------------------------------------
 Wed Nov  8 18:19:36 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 
 - Actually apply the previously added patch for bsc#1216878

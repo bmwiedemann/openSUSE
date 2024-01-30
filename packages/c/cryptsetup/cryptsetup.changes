@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Jan 29 16:40:40 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.7.0:
+  * Full changelog in:
+    mirrors.edge.kernel.org/pub/linux/utils/cryptsetup/v2.7/v2.7.0-ReleaseNotes
+  * Introduce support for hardware OPAL disk encryption.
+  * plain mode: Set default cipher to aes-xts-plain64 and password hashing
+    to sha256.
+  * Allow activation (open), luksResume, and luksAddKey to use the volume
+    key stored in a keyring.
+  * Allow to store volume key to a user-specified keyring in open and
+    luksResume commands.
+  * Do not flush IO operations if resize grows the device.
+    This can help performance in specific cases where the encrypted device
+    is extended automatically while running many IO operations.
+  * Use only half of detected free memory for Argon2 PBKDF on systems
+    without swap (for LUKS2 new keyslot or format operations).
+  * Add the possibility to specify a directory for external LUKS2 token
+    handlers (plugins).
+  * Do not allow reencryption/decryption on LUKS2 devices with
+    authenticated encryption or hardware (OPAL) encryption.
+  * Do not fail LUKS format if the operation was interrupted on subsequent
+    device wipe.
+  * Fix the LUKS2 keyslot option to be used while activating the device
+    by a token.
+  * Properly report if the dm-verity device cannot be activated due to
+    the inability to verify the signed root hash (ENOKEY).
+  * Fix to check passphrase for selected keyslot only when adding
+    new keyslot.
+  * Fix to not wipe the keyslot area before in-place overwrite.
+  * bitlk: Fix segfaults when attempting to verify the volume key.
+  * Add --disable-blkid command line option to avoid blkid device check.
+  * Add support for the meson build system.
+  * Fix wipe operation that overwrites the whole device if used for LUKS2
+    header with no keyslot area.
+  * Fix luksErase to work with detached LUKS header.
+  * Disallow the use of internal kernel crypto driver names in "capi"
+    specification.
+  * Fix reencryption to fail early for unknown cipher.
+  * tcrypt: Support new Blake2 hash for VeraCrypt.
+  * tcrypt: use hash values as substring for limiting KDF check.
+  * Add Aria cipher support and block size info.
+  * Do not decrease PBKDF parameters if the user forces them.
+  * Support OpenSSL 3.2 Argon2 implementation.
+  * Add support for Argon2 from libgcrypt
+    (requires yet unreleased gcrypt 1.11).
+  * Used Argon2 PBKDF implementation is now reported in debug mode
+    in the cryptographic backend version. For native support in
+    OpenSSL 3.2 or libgcrypt 1.11, "argon2" is displayed.
+    If libargon2 is used, "cryptsetup libargon2" (for embedded
+    library) or "external libargon2" is displayed.
+  * Link only libcrypto from OpenSSL.
+  * Disable reencryption for Direct-Access (DAX) devices.
+  * Print a warning message if the device is not aligned to sector size.
+  * Fix sector size and integrity fields display for non-LUKS2 crypt
+    devices for the status command.
+  * Fix suspend for LUKS2 with authenticated encryption (also suspend
+    dm-integrity device underneath).
+  * Update keyring and locking documentation and LUKS2 specification
+    for OPAL2 support.
+  * Remove patches fixed upstream:
+    - cryptsetup-Check-for-physical-memory-available-also-in-PBKDF-be.patch
+    - cryptsetup-Try-to-avoid-OOM-killer-on-low-memory-systems-withou.patch
+    - cryptsetup-Use-only-half-of-detected-free-memory-on-systems-wit.patch
+
+-------------------------------------------------------------------
 Thu Jul 13 09:46:24 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - luksFormat: Handle system with low memory and no swap space [bsc#1211079]

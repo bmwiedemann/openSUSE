@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-debugpy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -120,6 +120,13 @@ donttest="$donttest or test_redirect_output or test_with_no_output or test_syste
 rm -v tests/debugpy/test_exception.py tests/debugpy/test_django.py
 # gh#microsoft/debugpy#1462
 donttest="$donttest or test_attach_pid_client"
+
+# Disable broken tests in s390x, bsc#1217019
+%ifarch s390x
+sed -i "s/timeout=30/timeout=60/g" pytest.ini
+donttest+=" or test_attach_api or test_reattach or test_break_api or test_set_variable or test_unicode or test_debugpySystemInfo or test_debug_this_thread or test_tracing"
+%endif
+
 %pytest_arch -k "not ($donttest)"
 %endif
 

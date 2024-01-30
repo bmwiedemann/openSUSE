@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-djangorestframework
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,24 +25,21 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-djangorestframework%{psuffix}
 Version:        3.14.0
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            http://django-rest-framework.org/
 Source:         https://github.com/encode/django-rest-framework/archive/%{version}.tar.gz#/djangorestframework-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 3.0
 Recommends:     python-Markdown
 Recommends:     python-Pygments
-Recommends:     python-coreapi
-Recommends:     python-coreschema
 Recommends:     python-requests
 Suggests:       python-psycopg2
 Provides:       python-django-rest-framework = %{version}
@@ -53,10 +50,8 @@ BuildRequires:  %{python_module Django >= 3.0}
 BuildRequires:  %{python_module Markdown >= 3.3}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module coreapi >= 2.3.1}
-BuildRequires:  %{python_module coreschema >= 0.0.4}
 BuildRequires:  %{python_module django-guardian >= 2.4.0}
-BuildRequires:  %{python_module psycopg2}
+BuildRequires:  %{python_module psycopg}
 BuildRequires:  %{python_module pytest-django >= 4.1.0}
 %endif
 %python_subpackages
@@ -77,11 +72,11 @@ authentication and permission policies out of the box.
 sed -i '/addopts/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -89,15 +84,16 @@ sed -i '/addopts/d' setup.cfg
 %if %{with test}
 # Two tests failing due to incompatible output of Markdown 3.4 vs 3.3 pinned upstream
 # https://github.com/encode/django-rest-framework/discussions/7980
-%pytest -rs -vv -k 'not ((TestViewNamesAndDescriptions and test_markdown) or (TestDocumentationRenderer and test_shell_code_example_rendering))'
+# coreapi has been removed from Tumbleweed
+%pytest -rs -vv -k 'not ((TestViewNamesAndDescriptions and test_markdown) or (TestDocumentationRenderer and test_shell_code_example_rendering) or test_coreapi)'
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%{python_sitelib}/rest_framework/
-%{python_sitelib}/*djangorestframework*/
+%{python_sitelib}/rest_framework
+%{python_sitelib}/djangorestframework-%{version}.dist-info
 %endif
 
 %changelog

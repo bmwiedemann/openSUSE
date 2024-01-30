@@ -1,7 +1,7 @@
 #
 # spec file for package stress-ng
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           stress-ng
-Version:        0.17.03
+Version:        0.17.04
 Release:        0
 Summary:        Tool to load and stress a computer
 License:        GPL-2.0-only

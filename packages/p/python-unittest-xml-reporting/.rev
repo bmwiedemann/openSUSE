@@ -165,4 +165,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1067909</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b6d0792b2669964419e8176d1451f3d2</srcmd5>
+    <version>3.2.0</version>
+    <time>1706635575</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.2.0:
+  * fix subtest referencing objects (#220) 
+  * Avoid including empty system-out and system-err when reporting
+  * explicitly require lxml (#232)
+  * make time measurements monotonic (#231)
+  * Add outsuffix option (#238)
+  * Used unittest.TextTestResult instead of an alias _TextTestResult
+    removed in Python 3.11
+  * Used assertRegex() instead of an alias assertRegexpMatches() removed
+    in Python 3.11
+  * Fix typo in tests/django_test.py.
+  * Update Django testing.
+  * Add LICENSE to tarball
+- Switch to pyproject macros.
+- Refresh python-311.patch.</comment>
+    <requestid>1142716</requestid>
+  </revision>
 </revisionlist>

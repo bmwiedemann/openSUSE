@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jan 29 22:07:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Fix free_zpage() offset accounting. The read_zpage() subtracted
+    the offset from the file start to find where to get the
+    compressed data, but the free_zpage() did not, and would fail to
+    find and free the passed in zpage.
+  * Have function_graph plugin break apart functions that migrate
+    between CPUs from entry to exit even if there is no event in
+    between.
+  * Fix iterators for when there's CPUs with no data. It was using
+    the total number of CPUs to iterate the cpu_data[] array, that
+    only contains CPUs with content.
+  * Fix iterator with respect to function_graph handle that may do
+    a peek of the next event to know if it should merge the entry
+    and exit events of a function.
+  * Some other small fixes and clean ups
+  * tracecmd_iterate_events_reverse(): Will iterate events in the
+    trace.dat file from the last event to the first.
+  * tracecmd_iterate_reset(): Reset the iterator to restart from the
+    beginning.
+  * Fix meson build
+  * Have callbacks exit out of iterator as the man page for
+    tracecmd_iterate_events() says it should.
+  * Have tracecmd_iterate_events() start where it left off
+  * Speed up freeing the zpages by using an rbtree instead of a flat
+    link
+
+-------------------------------------------------------------------
 Thu Nov  9 15:23:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.0

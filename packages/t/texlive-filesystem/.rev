@@ -585,4 +585,12 @@
     <comment>- Rework lua(meta)tex/context resource findings</comment>
     <requestid>1096749</requestid>
   </revision>
+  <revision rev="58" vrev="61">
+    <srcmd5>37f9c5fe632fcc0f49eae951e8382a36</srcmd5>
+    <version>unknown</version>
+    <time>1706635425</time>
+    <user>anag+factory</user>
+    <comment>- We need a working full-featured setpriv(8) (boo#1212571)</comment>
+    <requestid>1142250</requestid>
+  </revision>
 </revisionlist>

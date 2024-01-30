@@ -6580,4 +6580,12 @@
   * CVE-2024-0754 (bmo#1871605)</comment>
     <requestid>1141490</requestid>
   </revision>
+  <revision rev="418" vrev="2">
+    <srcmd5>d2442d5e0abf4f4b3700c12540aa1c3b</srcmd5>
+    <version>122.0</version>
+    <time>1706635472</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142680</requestid>
+  </revision>
 </revisionlist>

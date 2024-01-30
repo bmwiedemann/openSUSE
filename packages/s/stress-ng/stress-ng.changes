@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sat Jan 27 16:26:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.4:
+  * kernel-coverage: add longer duration sysbadaddr test
+  * stress-pthread: disable pthread_sigqueue call for CYGWIN
+  * stress-tree: disable RB trees for CYGWIN
+  * stress-sparsematrix: disable RB trees for CYGWIN
+  * core-helper: add _start workaround for CYGWIN
+  * core-shim: fix setdomainname check on HAVE_SETDOMAINNAME
+  * stress-dir: don't reference non-POSIX d_reclen for CYGWIN
+  * stress-mmapfork: use stress_mmap_populate for MAP_POPULATE
+  * stress-xattr: workaround ENODATA not being defined for NetBSD
+  * stress-metamix: voidify parameter temp_dir if O_DIRECTORY is
+    not defined
+  * core-time: voidify parameter dnow, cleans up Dilos build
+    warning
+  * stress-sysbadaddr: fix another valid fd check, should be >= 0
+  * stress-sysbadaddr: fix valid fd check, should be >= 0
+  * stress-sysbadaddr: close fdin rather than fdout on fdout open
+    failure
+  * stress-sysfs: use SCNu16 formate specifier for sscanf
+    uint16_t
+  * stress-sock: remove shadowed declaration of variable i
+  * stress-vdso: add clock_getres
+  * stress-sysinval: set dirfd mode, gid and uid back to original
+    setting
+  * stress-sigxfsz: retry setrlimit with smaller size if limit is
+    too large
+  * stress-copy-file: replace sizeof(char) with 8
+  * stress-copy-file: fix the max off_t, it's signed to cater for
+    this
+  * stress-sysbadaddr: use shim_cacheflush instead of direct
+    system call
+  * stress-sysbadaddr: pass different addresses to ppoll
+  * stress-af-alg-defconfigs: re-order and remove blank lines
+  * stress-mmap: add mprotect EACCESS error check for NetBSD
+  * stress-metamix: add EBADF on fdatasync on read-only fd
+  * stress-metamix: fix incorrect EBADF check
+  * stress-metamix: ignore EBADF on fdatasync on read-only file
+  * stress-ng: don't call mprotect if it does not exist
+  * stress-syscall: add comment explaining why shell sort is used
+    instead of qsort
+  * stress-sysbadaddr: use VOID_RET for typed voidification of
+    system call returns
+  * Update copyright year to 2024
+  * Manual: remove . in Eigen description
+  * stress-sock: exercise SO_SOCKET SO_* opts that return int
+    type values
+  * stress-sysbadaddr: only increment counter if a syscall is to
+    be made
+  * stress-sysbadaddr: avoid exercising system calls that will
+    not fail
+  * stress-sysbadaddr: add some more xattr system calls
+  * stress-sysbadaddr: bad_fstat: exercise fstat on temp dir
+  * stress-sysbadaddr: add copy_file_range
+  * stress-sysbadaddr: add missing MIPS cacheflush system call
+  * stress-syscall: add missing MIPS cacheflush system call
+  * stress-sysbadaddr: exercise shim'd and non-shim'd syscalls
+  * stress-sysbadaddr: exericse system call parameters with range
+    of parameters
+  * stress-sysbadaddr: only respawn child when bad addr breaks
+    system call
+  * core-version: define EQUAL_GNUC for all compiler times
+  * stress-radixsort: remove array size specifiers to fix tcc
+    build failures
+  * core-builtin: add shim wrapper for __builtin_assume_aligned()
+  * core-cache: add missing tab to clean up \ alignments
+  * stress-vecshuf: remove redundant variables total_ops and
+    total_bytes
+  * stress-numa: Fix spelling mistake in comment
+  * stress-memthrash: remove trailing space at end of line
+
+-------------------------------------------------------------------
 Thu Dec 14 13:38:12 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.17.3
@@ -238,7 +311,7 @@ Fri Jul 22 21:19:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to version 0.14.3
   * see https://github.com/ColinIanKing/stress-ng/blob/V0.14.03/debian/changelog
-  for the full changelog 
+  for the full changelog
 
 -------------------------------------------------------------------
 Wed Apr 13 09:54:34 UTC 2022 - Martin Hauke <mardnh@gmx.de>
@@ -252,7 +325,7 @@ Sun Mar 27 18:42:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.12:
   See https://github.com/ColinIanKing/stress-ng/blob/V0.13.12/debian/changelog
-  for the full changelog 
+  for the full changelog
 
 -------------------------------------------------------------------
 Wed Oct 13 19:40:20 UTC 2021 - Martin Hauke <mardnh@gmx.de>
@@ -2726,7 +2799,7 @@ Sun Jun 18 20:01:34 UTC 2017 - mardnh@gmx.de
 
 - update to version 0.08.05:
   * test-sem-posix: don't build for FreeBSD kernels
-  * stress-cyclic: only produce stats for first instance 
+  * stress-cyclic: only produce stats for first instance
   * stress-sem: hust build on systems that provide POSIX semaphores
   * stress-madvise: fix build warning with clobbered sz with gcc 3.4.3
   * stress-vm: fix build warning on munmap
@@ -3629,50 +3702,50 @@ Sat Aug 27 08:52:55 UTC 2016 - mpluskal@suse.com
 Sat Jul 16 12:00:49 UTC 2016 - mpluskal@suse.com
 
 - Update to version 0.06.12:
-  * Makefile: bump version once more	
-  * Update manual page date since we've touched the manual	
-  * stress-seal: don't abort fatally if memfd_create is not 
-    available.	
-  * fast-test-all: cater for non-fatal test exit status	
-  * Add oom-pipe to fast-test-all exclusion list	
+  * Makefile: bump version once more
+  * Update manual page date since we've touched the manual
+  * stress-seal: don't abort fatally if memfd_create is not
+    available.
+  * fast-test-all: cater for non-fatal test exit status
+  * Add oom-pipe to fast-test-all exclusion list
   * Manual: clarify that return code 3 could refer to missing
-    system call	
-  * stress-fcntl: handle EAGAIN lock requests more robustly	
-  * stress-fcntl: don't check initial GETLK status	
-  * stress-icache: don't fail if advice fails on EINVAL	
+    system call
+  * stress-fcntl: handle EAGAIN lock requests more robustly
+  * stress-fcntl: don't check initial GETLK status
+  * stress-icache: don't fail if advice fails on EINVAL
 - Changes for version 0.06.11
-  * Makefile; bump version	
-  * fast-test-all: don't run seccomp, it may not pass on some 
-    kernels	
-  * stress-fault: handle segfaults that occur on some BSD kernels	
-  * stress-icache: only madvice if MADV_NOHUGEPAGE is defined	
-  * stress-icache: don't assume that read/write/exec protection is 
-    allowed	
+  * Makefile; bump version
+  * fast-test-all: don't run seccomp, it may not pass on some
+    kernels
+  * stress-fault: handle segfaults that occur on some BSD kernels
+  * stress-icache: only madvice if MADV_NOHUGEPAGE is defined
+  * stress-icache: don't assume that read/write/exec protection is
+    allowed
   * Update cache-mfence helper. It supports ARM now.	Zhiyi Sun
 - Changes for version 0.06.10:
-  * Makefile: bump version again	
-  * stress-atomic + build: the autodetect smarts did not work, fix 
-    them	
+  * Makefile: bump version again
+  * stress-atomic + build: the autodetect smarts did not work, fix
+    them
 - Changes for 0.06.09:
-  * Makefile: bump version	
-  * stress-atomic: don't make tmp volatile, fixes clang warnings	
-  * Add smarts to Makefile to detect if atomic GCC functions are 
-    supported	
+  * Makefile: bump version
+  * stress-atomic: don't make tmp volatile, fixes clang warnings
+  * Add smarts to Makefile to detect if atomic GCC functions are
+    supported
 - Changes for 0.06.08:
-  * Makefile: bump version	
-  * Manual: update date	
-  * stress-ptrace: EINTR is not a failure on waitpid	
-  * stress-tlb-shootdown: remove case where < 2 CPUs abort the test	
-  * Add GCC atomic ops stressor	
-  * stress-copy-file-range: handle ENOSPC as non-fatal	
-  * stress-icache: call __clear_cache() between code modifications.	
-  * Enable icache stressor for arm	
-  * Add renameat2 to syscalls	
-  * Add preadv2/prwritev2 to syscalls	
-  * stress-lockbus: se GCC builtin __atomic_add_fetch to test lock 
+  * Makefile: bump version
+  * Manual: update date
+  * stress-ptrace: EINTR is not a failure on waitpid
+  * stress-tlb-shootdown: remove case where < 2 CPUs abort the test
+  * Add GCC atomic ops stressor
+  * stress-copy-file-range: handle ENOSPC as non-fatal
+  * stress-icache: call __clear_cache() between code modifications.
+  * Enable icache stressor for arm
+  * Add renameat2 to syscalls
+  * Add preadv2/prwritev2 to syscalls
+  * stress-lockbus: se GCC builtin __atomic_add_fetch to test lock
     bus for ARMv6-v8.
-  * stress-epoll: void return on timer_settime	
-  * Manual: update contributors, add Zhiyi Sun	
+  * stress-epoll: void return on timer_settime
+  * Manual: update contributors, add Zhiyi Sun
 
 -------------------------------------------------------------------
 Tue Jul 12 19:05:38 UTC 2016 - mpluskal@suse.com
@@ -4024,7 +4097,7 @@ Tue Apr 12 07:07:18 UTC 2016 - liedke@rz.uni-mannheim.de
   * limit.c: remove redundant #includes
   * io-priority: make source 80 column friendly
   * ignite-cpu: make source 80 column friendly
-  * Include stress-ng.h first for __kernel_long_t and __kernel_ulong_t 
+  * Include stress-ng.h first for __kernel_long_t and __kernel_ulong_t
 
 -------------------------------------------------------------------
 Sat Feb 20 13:28:16 UTC 2016 - liedke@rz.uni-mannheim.de
@@ -4428,7 +4501,7 @@ stress-ng (0.05.00-1) unstable; urgency=medium
   * stress-sem-sysv: handle signal during setup phase correctly
   * stress-sem: handle signal during setup phase correctly
   * fix -k option: it does not require a parameter
-  * stress-procfs: use non-blocking open 
+  * stress-procfs: use non-blocking open
 
 -------------------------------------------------------------------
 Wed Nov 11 21:45:41 UTC 2015 - mardnh@gmx.de

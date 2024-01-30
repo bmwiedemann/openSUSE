@@ -58,9 +58,13 @@ application that use %{name}.
 %autosetup -p1
 
 %build
+export LDFLAGS="%{?_lto_cflags}"
+export CFLAGS="%{optflags}"
 %make_build -f Makefile.sharedlibrary INSTALL_PREFIX=%{_prefix} LIBDIR=/%{_lib}
 
 %install
+export LDFLAGS="%{?_lto_cflags}"
+export CFLAGS="%{optflags}"
 %make_install -f Makefile.sharedlibrary INSTALL_PREFIX=%{_prefix} LIBDIR=/%{_lib}
 
 %ldconfig_scriptlets -n lib%{name}%{sover}

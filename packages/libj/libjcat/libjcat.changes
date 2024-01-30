@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 22 07:46:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.1:
+  + Do not dedupe sig and sig-of-checksum when loading.
+  + Fix the installed tests.
+  + Show the sig-of-checksum results clearer on the CLI.
+
+-------------------------------------------------------------------
 Wed Jan 10 09:17:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not install test files: pass -Dtest=false to meson instead of

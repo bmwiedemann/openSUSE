@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 30 12:02:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.4:
+  * allow unions in TypeVar bound PR #207
+
+-------------------------------------------------------------------
 Thu Oct  5 09:46:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.3:

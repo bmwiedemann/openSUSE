@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 29 21:44:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to modern pythonstack
+
+-------------------------------------------------------------------
 Thu Sep  8 04:23:32 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add more-itertools to BuildRequires. 
+- Add more-itertools to BuildRequires.
 
 -------------------------------------------------------------------
 Mon Aug 30 10:02:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -50,7 +55,7 @@ Fri Aug 27 12:49:53 UTC 2021 - pgajdos@suse.com
   ======
   * Require Python 3.6 or later.
 - test the package
-                              
+
 -------------------------------------------------------------------
 Sat Dec 22 05:22:07 UTC 2018 - Todd R <toddrme2178@gmail.com>
 
@@ -67,4 +72,4 @@ Sun Mar  4 19:29:21 UTC 2018 - alarrosa@suse.com
 -------------------------------------------------------------------
 Tue Sep  5 15:41:51 UTC 2017 - alarrosa@suse.com
 
-- Initial release of python-wolframalpha 3.0 
+- Initial release of python-wolframalpha 3.0

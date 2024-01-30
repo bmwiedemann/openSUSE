@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.7
-%define patchversion 6.7.1
-%define git_commit 6aca25404404e4f72fa252563503b29fe5828cca
+%define patchversion 6.7.2
+%define git_commit a52bf765724a419339d0b0ac309ebfbac92845a8
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -113,9 +113,9 @@ Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.7.1
+Version:        6.7.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6aca254
+Release:        <RELEASE>.ga52bf76
 %else
 Release:        0
 %endif

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 29 10:34:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use grep -E for egrep
+
+-------------------------------------------------------------------
 Thu Oct 19 14:23:08 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 2.4.58:
@@ -242,7 +247,7 @@ Fri Apr  7 13:17:47 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
       in a question mark. PR66547. [Eric Covener]
 
     *) mod_rewrite: Add "BCTLS" and "BNE" RewriteRule flags. Re-allow encoded
-      characters on redirections without the "NE" flag. 
+      characters on redirections without the "NE" flag.
       [Yann Ylavic, Eric Covener]
 
     *) mod_proxy: Fix double encoding of the uri-path of the request forwarded
@@ -256,10 +261,10 @@ Fri Apr  7 13:17:47 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 Wed Mar  8 19:44:32 UTC 2023 - David Anes <david.anes@suse.com>
 
 - This update fixes the following security issues:
-  * CVE-2023-27522 [bsc#1209049]: mod_proxy_uwsgi HTTP response splitting 
-  * CVE-2023-25690 [bsc#1209047]: HTTP request splitting with mod_rewrite and mod_proxy  
+  * CVE-2023-27522 [bsc#1209049]: mod_proxy_uwsgi HTTP response splitting
+  * CVE-2023-25690 [bsc#1209047]: HTTP request splitting with mod_rewrite and mod_proxy
 
-- Update to 2.4.56: 
+- Update to 2.4.56:
     *) rotatelogs: Add -T flag to allow subsequent rotated logfiles to be
       truncated without the initial logfile being truncated.  [Eric Covener]
     *) mod_ldap: LDAPConnectionPoolTTL should accept negative values in order to
@@ -438,7 +443,7 @@ Fri Sep 23 06:06:26 UTC 2022 - Stephan Kulow <coolo@suse.com>
 -------------------------------------------------------------------
 Tue Sep 20 15:01:58 UTC 2022 - David Anes <david.anes@suse.com>
 
-- Remove references to README.QUICKSTART and point them to 
+- Remove references to README.QUICKSTART and point them to
   https://en.opensuse.org/SDB:Apache_installation (bsc#1203573)
 
 -------------------------------------------------------------------
@@ -451,7 +456,7 @@ Thu Sep  1 06:31:31 UTC 2022 - Stefan Schubert <schubi@suse.com>
 Tue Jun 28 14:39:26 UTC 2022 - Stefan Schubert <schubi@intern>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d
-  to vendor specific directory /usr/etc/logrotate.d. 
+  to vendor specific directory /usr/etc/logrotate.d.
 
 -------------------------------------------------------------------
 Wed Jun  8 11:26:13 UTC 2022 - pgajdos@suse.com
@@ -687,8 +692,8 @@ Thu Jan 27 13:57:47 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Jan 11 12:05:55 UTC 2022 - David Anes <david.anes@suse.com>
 
-- Align some defaults in apache2-server-tuning.conf to upstream 
-  defaults: 
+- Align some defaults in apache2-server-tuning.conf to upstream
+  defaults:
   * Updated MaxRequestWorkers and ServerLimit to 256. [bsc#1194062]
 - The old name MaxRequestsPerChild is changed to MaxConnectionsPerChild.
   * See https://httpd.apache.org/docs/2.4/mod/mpm_common.html#maxconnectionsperchild
@@ -982,7 +987,7 @@ Mon Aug  2 17:32:18 UTC 2021 - pgajdos@suse.com
 Wed Jun  2 07:31:14 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.4.48
-  
+
   Changes with Apache 2.4.48
 
   *) mod_proxy_wstunnel: Add ProxyWebsocketFallbackToProxyHttp to opt-out the
@@ -1379,7 +1384,7 @@ Thu Nov 26 12:10:52 UTC 2020 - pgajdos@suse.com
   - httpd-2.2.0-apxs-a2enmod.dif (not needed)
   - httpd-2.4.9-bnc690734.patch
     (renamed to apache2-LimitRequestFieldSize-limits-headers.patch)
-  - httpd-2.4.x-fate317766-config-control-two-protocol-options.diff 
+  - httpd-2.4.x-fate317766-config-control-two-protocol-options.diff
     (renamed to apache2-HttpContentLengthHeadZero-HttpExpectStrict.patch)
   - httpd-2.x.x-logresolve.patch
     (renamed to apache2-logresolve-tmp-security.patch)
@@ -1697,9 +1702,9 @@ Wed Feb 12 13:13:05 UTC 2020 - pgajdos@suse.com
 Fri Jan 31 18:22:09 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - define DEFAULT_LISTENBACKLOG=APR_INT32_MAX. We want apache
-  to honour net.core.somaxconn sysctl as the mandatory limit. 
-  the old value of 511 was never used as until v5.4-rc6 it was 
-  clamped to 128, in current kernels the default limit is 4096. 
+  to honour net.core.somaxconn sysctl as the mandatory limit.
+  the old value of 511 was never used as until v5.4-rc6 it was
+  clamped to 128, in current kernels the default limit is 4096.
   Cannot use the apr_socket_listen(.., -1) idiom because the function
   expects a positive integer argument.
 
@@ -1881,13 +1886,13 @@ Fri Jan 18 15:12:08 UTC 2019 - Manu Maier <mmanu84@outlook.de>
     have been fixed. [Michael Kaufmann, Stefan Eissing]
   * mod_setenvif: We can have expressions that become true if a regex pattern
     in the expression does NOT match. In this case val is NULL
-    and we should just set the value for the environment variable 
+    and we should just set the value for the environment variable
     like in the pattern case. [Ruediger Pluem]
   * mod_session: Always decode session attributes early. [Hank Ibell]
   * core: Incorrect values for environment variables are substituted when
     multiple environment variables are specified in a directive. [Hank Ibell]
   * mod_rewrite: Only create the global mutex used by "RewriteMap prg:" when
-    this type of map is present in the configuration.  PR62311.  
+    this type of map is present in the configuration.  PR62311.
     [Hank Ibell <hwibell gmail.com>]
   * mod_dav: Fix invalid Location header when a resource is created by
     passing an absolute URI on the request line [Jim Jagielski]
@@ -1947,9 +1952,9 @@ Thu Oct 18 20:41:02 UTC 2018 - Manu Maier <mmanu84@outlook.de>
   * mod_proxy_scgi, mod_proxy_uwsgi: improve error handling when sending the
     body of the response. [Jim Jagielski]
   * mod_http2: adding defensive code for stream EOS handling, in case the request handler
-    missed to signal it the normal way (eos buckets). Addresses github issues 
+    missed to signal it the normal way (eos buckets). Addresses github issues
     https://github.com/icing/mod_h2/issues/164, https://github.com/icing/mod_h2/issues/167
-    and https://github.com/icing/mod_h2/issues/170. [Stefan Eissing] 
+    and https://github.com/icing/mod_h2/issues/170. [Stefan Eissing]
   * ab: Add client certificate support. [Graham Leggett]
   * ab: Disable printing temp key for OpenSSL before
     version 1.0.2. SSL_get_server_tmp_key is not available
@@ -2131,7 +2136,7 @@ Mon Jul 16 12:03:39 UTC 2018 - pgajdos@suse.com
   *) mod_ssl: Fix cmake-based build.  PR 62266.  [Rainer Jung]
   *) core: Add <IfFile>, <IfDirective> and <IfSection> conditional
      section containers.  [Eric Covener, Joe Orton]
-* %check: do not load all modules, just use default loadmodule.conf; some 
+* %check: do not load all modules, just use default loadmodule.conf; some
   modules require to load another ones in advance
 * %install: parallel install is broken
 
@@ -2332,12 +2337,12 @@ Fri Dec 15 13:05:29 UTC 2017 - pgajdos@suse.com
 -------------------------------------------------------------------
 Sun Nov 26 17:25:10 UTC 2017 - sergiolindo.empresa@gmail.com
 
-- Add which and w3m as dependencies. poo#28406 
+- Add which and w3m as dependencies. poo#28406
 
 -------------------------------------------------------------------
 Thu Nov 23 13:43:30 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -2377,7 +2382,7 @@ Tue Oct 17 12:41:23 UTC 2017 - pgajdos@suse.com
 - gensslcert:
   * set also SAN [bsc#1045159]
   * drop -C argument, it was not mapped to CN actually
-  * consider also case when hostname does return empty string or 
+  * consider also case when hostname does return empty string or
     does not exist [bsc#1057406]
   * do not consider environment ROOT variable
 
@@ -2435,7 +2440,7 @@ Tue Oct  3 16:13:13 UTC 2017 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Jul 24 15:25:09 UTC 2017 - schneemann@b1-systems.de
 
-- make the package runable on non systemd systems 
+- make the package runable on non systemd systems
   + deprecated-scripts-arch.patch
 
 -------------------------------------------------------------------
@@ -2464,7 +2469,7 @@ Mon Jul 17 09:30:36 UTC 2017 - pgajdos@suse.com
   *) core: Avoid duplicate HEAD in Allow header.
      This is a regression in 2.4.24 (unreleased), 2.4.25 and 2.4.26.
      PR 61207. [Christophe Jaillet]
-- drop upstreamed patch: 
+- drop upstreamed patch:
   * httpd-2.4.12-lua-5.2.patch (see upstream's PR#58188 for details)
 
 -------------------------------------------------------------------
@@ -2481,7 +2486,7 @@ Tue Jun 20 13:57:18 UTC 2017 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Jun 19 08:15:40 UTC 2017 - pgajdos@suse.com
 
-- updated to 2.4.26: This release of Apache is a security, feature, 
+- updated to 2.4.26: This release of Apache is a security, feature,
   and bug fix release. For details, see
   http://httpd.apache.org/dev/dist/CHANGES_2.4.26
 - refreshed patches:
@@ -2542,11 +2547,11 @@ Tue Jan 10 22:00:14 UTC 2017 - jweberhofer@weberhofer.at
 -------------------------------------------------------------------
 Mon Jan  2 09:50:00 UTC 2017 - pgajdos@suse.com
 
-- update to 2.4.25: fixed several security issues (CVE-2016-8740, 
+- update to 2.4.25: fixed several security issues (CVE-2016-8740,
   CVE-2016-5387, CVE-2016-2161, CVE-2016-0736, CVE-2016-8743), many
-  fixes and improvements of mod_http2 and other modules; see CHANGES 
+  fixes and improvements of mod_http2 and other modules; see CHANGES
   for full change log
-- verify tarball: added httpd*.bz2.asc, apache2.keyring and remove 
+- verify tarball: added httpd*.bz2.asc, apache2.keyring and remove
   60C5442D.key
 
 -------------------------------------------------------------------
@@ -2573,7 +2578,7 @@ Fri Aug  5 11:36:28 UTC 2016 - tchvatal@suse.com
 -------------------------------------------------------------------
 Fri Aug  5 09:15:11 UTC 2016 - pgajdos@suse.com
 
-- readd the support of multiple entries in APACHE_ACCESS_LOG 
+- readd the support of multiple entries in APACHE_ACCESS_LOG
   [bsc#991032]
 
 -------------------------------------------------------------------
@@ -2583,14 +2588,14 @@ Tue Jul 12 14:49:09 UTC 2016 - kstreitova@suse.com
   Introduces directives to control two protocol options:
    * HttpContentLengthHeadZero - allow Content-Length of 0 to be
      returned on HEAD
-   * HttpExpectStrict - allow admin to control whether we must 
+   * HttpExpectStrict - allow admin to control whether we must
      see "100-continue"
   [bsc#894225], [fate#317766]
 
 -------------------------------------------------------------------
 Wed Jul  6 16:16:57 UTC 2016 - crrodriguez@opensuse.org
 
-- version 2.4.23 
+- version 2.4.23
 *  Fixes CVE-2016-4979 [bsc#987365]
 * mod_proxy_hcheck was missing due to upstream bug.
 * mod_proxy_fdpass needs explicit configure line now.
@@ -2606,7 +2611,7 @@ Wed Jul  6 06:29:57 UTC 2016 - fbui@suse.com
 -------------------------------------------------------------------
 Thu May 26 08:13:16 UTC 2016 - pgajdos@suse.com
 
-- remove Alias= from [Install] of the template service 
+- remove Alias= from [Install] of the template service
   [bsc#981541c#10]
 
 -------------------------------------------------------------------
@@ -2651,16 +2656,16 @@ Mon Dec 14 16:44:55 UTC 2015 - pgajdos@suse.com
 -------------------------------------------------------------------
 Sat Dec 12 15:57:21 UTC 2015 - crrodriguez@opensuse.org
 
-- Update to version 2.4.18 
+- Update to version 2.4.18
 * drop 2.4.17-protocols.patch in upstream.
-- Change list too long to mention here see: 
+- Change list too long to mention here see:
   http://www.apache.org/dist/httpd/CHANGES_2.4.18 for details.
 
 -------------------------------------------------------------------
 Mon Dec  7 18:05:37 UTC 2015 - crrodriguez@opensuse.org
 
 - systemd: Set TasksMax=infinity for current systemd releases.
-  The default limit of 512 is too small and prevents the creation of 
+  The default limit of 512 is too small and prevents the creation of
   new server processes. Apache has its own runtime/harcoded limits.
 
 -------------------------------------------------------------------
@@ -2678,7 +2683,7 @@ Mon Nov 23 11:02:19 UTC 2015 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Nov  6 10:06:19 UTC 2015 - pgajdos@suse.com
 
-- restart apache once after the rpm or zypper transaction 
+- restart apache once after the rpm or zypper transaction
   [bnc#893659]
 - drop some old compat code from %post
 
@@ -2695,13 +2700,13 @@ Thu Nov  5 16:52:45 UTC 2015 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Wed Nov  4 06:29:27 UTC 2015 - pgajdos@suse.com
 
-- LogLevel directive into correct config file, thanks Michael Calmer 
+- LogLevel directive into correct config file, thanks Michael Calmer
   for the fix [bsc#953329]
 
 -------------------------------------------------------------------
 Mon Oct 26 09:34:28 UTC 2015 - pgajdos@suse.com
 
-- do not build mod_http2 for older distros than 13.2 for now (nghttp2 
+- do not build mod_http2 for older distros than 13.2 for now (nghttp2
   does not build there)
 
 -------------------------------------------------------------------
@@ -2713,7 +2718,7 @@ Mon Oct 26 09:14:29 UTC 2015 - pgajdos@suse.com
 -------------------------------------------------------------------
 Wed Oct 21 07:35:30 UTC 2015 - pgajdos@suse.com
 
-- gensslcert: CN now defaults to `hostname -f` [bnc#949766] 
+- gensslcert: CN now defaults to `hostname -f` [bnc#949766]
   (internal), fix help [bnc#949771] (internal)
 
 -------------------------------------------------------------------
@@ -2741,11 +2746,11 @@ Thu Aug 13 13:04:00 UTC 2015 - schwab@suse.de
 -------------------------------------------------------------------
 Tue Aug 11 15:52:42 UTC 2015 - kstreitova@suse.com
 
-- fix Logjam vulnerability: change SSLCipherSuite cipherstring to 
+- fix Logjam vulnerability: change SSLCipherSuite cipherstring to
   disable export cipher suites and deploy Ephemeral Elliptic-Curve
-  Diffie-Hellman (ECDHE) ciphers. Adjust 'gensslcert' script to 
+  Diffie-Hellman (ECDHE) ciphers. Adjust 'gensslcert' script to
   generate a strong and unique Diffie Hellman Group and append it
-  to the server certificate file [bnc#931723], [CVE-2015-4000] 
+  to the server certificate file [bnc#931723], [CVE-2015-4000]
 
 -------------------------------------------------------------------
 Wed Jul 29 06:22:59 UTC 2015 - pgajdos@suse.com
@@ -2766,7 +2771,7 @@ Mon Jul 20 13:35:21 UTC 2015 - kstreitova@suse.com
 Sat Jul 18 03:50:24 UTC 2015 - i@marguerite.su
 
 - add patch: httpd-2.4.12-lua-5.2.patch
-  * lua_dump introduced a new strip option in 5.3, set it to 0 
+  * lua_dump introduced a new strip option in 5.3, set it to 0
     to get the old behavior
   * luaL_register was deprecated in 5.2, use luaL_setfuncs and
     luaL_newlib instead
@@ -2777,20 +2782,20 @@ Sat Jul 18 03:50:24 UTC 2015 - i@marguerite.su
 -------------------------------------------------------------------
 Thu Jul 16 08:46:22 UTC 2015 - pgajdos@suse.com
 
-- change Provides: from suse_maintenance_mmn = # to 
+- change Provides: from suse_maintenance_mmn = # to
   suse_maintenance_mmn_#
 
 -------------------------------------------------------------------
 Wed Jul 15 14:47:33 UTC 2015 - pgajdos@suse.com
 
 - apache2 Suggests:, not Recommends: apache2-prefork; that means
-  for example, that `zypper in apache2-worker` will not pull 
+  for example, that `zypper in apache2-worker` will not pull
   apache2-prefork also
 - installing /usr/sbin/httpd link:
-  * do not try to install it in '%post <MPM>' when apache2 (which 
-    includes /usr/share/apache2/script-helpers) is not installed 
+  * do not try to install it in '%post <MPM>' when apache2 (which
+    includes /usr/share/apache2/script-helpers) is not installed
     yet (fixes installation on 11sp3)
-  * install it in '%post' if apache2 is installed after 
+  * install it in '%post' if apache2 is installed after
     apache2-<MPM> to be sure it is there
 
 -------------------------------------------------------------------
@@ -2801,25 +2806,25 @@ Tue Jul 14 07:32:00 UTC 2015 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Jul 13 15:14:20 UTC 2015 - pgajdos@suse.com
 
-- apache2-implicit-pointer-decl.patch renamed to 
+- apache2-implicit-pointer-decl.patch renamed to
   httpd-implicit-pointer-decl.patch to align with other
   patches names
 
 -------------------------------------------------------------------
 Mon Jul 13 15:12:29 UTC 2015 - pgajdos@suse.com
 
-- apachectl is now wrapper to start_apache2; therefore, it honors 
-  HTTPD_INSTANCE variable, see README-instances.txt for details 
+- apachectl is now wrapper to start_apache2; therefore, it honors
+  HTTPD_INSTANCE variable, see README-instances.txt for details
   + httpd-apachectl.patch
   - httpd-2.4.10-apachectl.patch
 
 -------------------------------------------------------------------
 Mon Jul 13 13:37:53 UTC 2015 - pgajdos@suse.com
 
-- a2enmod/a2dismod and a2enflag/a2disflag now respect 
-  HTTPD_INSTANCE=<instance_name> environment variable, which can be 
-  used to specify apache instance name; sysconfig file is expected 
-  at /etc/sysconfig/apache2@<instance_name> 
+- a2enmod/a2dismod and a2enflag/a2disflag now respect
+  HTTPD_INSTANCE=<instance_name> environment variable, which can be
+  used to specify apache instance name; sysconfig file is expected
+  at /etc/sysconfig/apache2@<instance_name>
  (see README-instances.txt for details)
 
 -------------------------------------------------------------------
@@ -2845,7 +2850,7 @@ Mon Jul 13 10:05:17 UTC 2015 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Jul 13 09:52:21 UTC 2015 - pgajdos@suse.com
 
-- reenable 690734.patch, it should be upstreamed by the author 
+- reenable 690734.patch, it should be upstreamed by the author
   (Adrian Schroeter) though
    + httpd-2.4.9-bnc690734.patch
    - httpd-2.2.x-bnc690734.patch
@@ -2860,9 +2865,9 @@ Wed Jul  1 09:41:31 UTC 2015 - pgajdos@suse.com
 
 - allow to run multiple instances of Apache on one system
   [fate#317786] (internal)
-  * distributed httpd.conf no longer includes sysconfig.d, nor this 
-    directory is shipped. httpd.conf includes loadmodule.conf and 
-    global.conf which are former sysconfig.d/loadmodule.conf and 
+  * distributed httpd.conf no longer includes sysconfig.d, nor this
+    directory is shipped. httpd.conf includes loadmodule.conf and
+    global.conf which are former sysconfig.d/loadmodule.conf and
     sysconfig.d/global.conf for default /etc/sysconfig/apache2
     global.conf and loadmodule.conf are not included when
     sysconfig variables could have been read by start_apache2
@@ -2871,7 +2876,7 @@ Wed Jul  1 09:41:31 UTC 2015 - pgajdos@suse.com
     are not taken into account.
   * some not-maintained scripts are moved from
     /usr/share/apache2 to /usr/share/apache2/deprecated-scripts
-  * all modules comment in sysconfig file is not generated 
+  * all modules comment in sysconfig file is not generated
     anymore
   * added README-instances.txt
   * removed Sources:
@@ -2896,14 +2901,14 @@ Thu Jun 25 15:52:14 UTC 2015 - kstreitova@suse.com
 - add SSLHonorCipherOrder directive to apache2-ssl-global.conf
 - adopt SSLCipherSuite directive value from SLE12
 - remove default-vhost-ssl.conf and default-vhost.conf from
-  /etc/apache2. These two files are not (!) read by the 
+  /etc/apache2. These two files are not (!) read by the
   configuration framework, but are named *.conf, which is
-  misleading. The files are almost identical with the vhost 
+  misleading. The files are almost identical with the vhost
   templates in /etc/apache2/vhosts.d/. The two templates there do
   it right because they are not named *.conf and are not sourced
-  either. apache's response with no explicit (eg. default, vanilla) 
+  either. apache's response with no explicit (eg. default, vanilla)
   configuration is contained in /etc/apache2/default-server.conf.
-  * remove apache2-README.default-vhost as there are no 
+  * remove apache2-README.default-vhost as there are no
     default-vhost* files anymore.
 
 -------------------------------------------------------------------
@@ -2927,7 +2932,7 @@ Tue Jun  9 09:04:32 UTC 2015 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Jun  2 23:17:40 UTC 2015 - crrodriguez@opensuse.org
 
-- apache2.service: Only order us after network.target and 
+- apache2.service: Only order us after network.target and
   nss-lookup.target but not pull the units in.
 - apache2.service: SSL requires correct system time to
   work properly, order after time-sync.target
@@ -2964,7 +2969,7 @@ Tue May  5 12:36:10 UTC 2015 - kstreitova@suse.com
 -------------------------------------------------------------------
 Tue May  5 12:17:21 UTC 2015 - kstreitova@suse.com
 
-- remove curly brackets around format sequence "%y" in 
+- remove curly brackets around format sequence "%y" in
   `stat --format="%{y}" %{SOURCE1}` that caused an incorrect
   evaluation. Add escaping to proper spec-cleaner processing in
   the future
@@ -2974,7 +2979,7 @@ Thu Apr  9 15:53:27 UTC 2015 - kstreitova@suse.com
 
 - remove 'exit 0' from the %post section in the specfile that was
   placed here incorrectly and caused that the rest of the %post
-  section couldn't be executed. 
+  section couldn't be executed.
 
 -------------------------------------------------------------------
 Thu Apr  9 13:12:46 UTC 2015 - pgajdos@suse.com
@@ -3051,7 +3056,7 @@ Mon Feb 23 16:58:11 UTC 2015 - kstreitova@suse.com
 - add httpd-2.4.x-mod_lua_websocket_DoS.patch to fix mod_lua bug
   where a maliciously crafted websockets PING after a script calls
   r:wsupgrade() can cause a child process crash
-  [CVE-2015-0228], [bnc#918352]. 
+  [CVE-2015-0228], [bnc#918352].
 
 -------------------------------------------------------------------
 Tue Feb  3 15:12:04 UTC 2015 - pgajdos@suse.com
@@ -3061,7 +3066,7 @@ Tue Feb  3 15:12:04 UTC 2015 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Jan 19 19:18:28 UTC 2015 - crrodriguez@opensuse.org
 
-- httpd-2.4.3-mod_systemd.patch find libsystemd-daemon 
+- httpd-2.4.3-mod_systemd.patch find libsystemd-daemon
   with pkg-config, this is the only correct way, in current
   versions sd_notify is in libsystemd and in old products
   in libsystemd-daemon.
@@ -3069,7 +3074,7 @@ Mon Jan 19 19:18:28 UTC 2015 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Fri Jan 16 04:24:04 UTC 2015 - crrodriguez@opensuse.org
 
-- remove obsolete patches 
+- remove obsolete patches
 * httpd-2.4.10-check_null_pointer_dereference.patch
 * httpd-event-deadlock.patch
 * httpd-2.4.x-bnc871310-CVE-2013-5704-mod_headers_chunked_requests.patch
@@ -3078,10 +3083,10 @@ Fri Jan 16 04:24:04 UTC 2015 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Fri Jan 16 04:13:59 UTC 2015 - crrodriguez@opensuse.org
 
-- Apache 2.4.11 
+- Apache 2.4.11
 
   *) SECURITY: CVE-2014-3583 (cve.mitre.org)
-     mod_proxy_fcgi: Fix a potential crash due to buffer over-read, with 
+     mod_proxy_fcgi: Fix a potential crash due to buffer over-read, with
      response headers' size above 8K.  [Yann Ylavic, Jeff Trawick]
 
   *) SECURITY: CVE-2014-3581 (cve.mitre.org)
@@ -3109,10 +3114,10 @@ Fri Jan 16 04:13:59 UTC 2015 - crrodriguez@opensuse.org
      tickets without restarting the web server with an appropriate frequency
      (e.g. daily) compromises perfect forward secrecy. [Rainer Jung]
 
-  *) mod_proxy_fcgi: Provide some basic alternate options for specifying 
+  *) mod_proxy_fcgi: Provide some basic alternate options for specifying
      how PATH_INFO is passed to FastCGI backends by adding significance to
      the value of proxy-fcgi-pathinfo. PR 55329. [Eric Covener]
- 
+
   *) mod_proxy_fcgi: Enable UDS backends configured with SetHandler/RewriteRule
      to opt-in to connection reuse and other Proxy options via explicitly
      declared "proxy workers" (<Proxy unix:... enablereuse=on max=...)
@@ -3138,7 +3143,7 @@ Fri Jan 16 04:13:59 UTC 2015 - crrodriguez@opensuse.org
      leading 'e' was written in upper case in <!--#if expr="..." -->
      statements. [Christophe Jaillet]
 
-  *) split-logfile: Fix perl error:  'Can't use string ("example.org:80") 
+  *) split-logfile: Fix perl error:  'Can't use string ("example.org:80")
      as a symbol ref while "strict refs"'. PR 56329.
      [Holger Mauermann <mauermann gmail.com>]
 
@@ -3146,7 +3151,7 @@ Fri Jan 16 04:13:59 UTC 2015 - crrodriguez@opensuse.org
      the URL parameter interpolates to an empty string. PR 56603.
      [<ajprout hotmail.com>]
 
-  *) core: Fix -D[efined] or <Define>[d] variables lifetime accross restarts. 
+  *) core: Fix -D[efined] or <Define>[d] variables lifetime accross restarts.
      PR 57328.  [Armin Abfalterer <a.abfalterer gmail.com>, Yann Ylavic].
 
   *) mod_proxy: Preserve original request headers even if they differ
@@ -3190,12 +3195,12 @@ Fri Jan 16 04:13:59 UTC 2015 - crrodriguez@opensuse.org
   *) core: Support custom ErrorDocuments for HTTP 501 and 414 status codes.
      PR 57167 [Edward Lu <Chaosed0 gmail.com>]
 
-  *) mod_proxy_connect: Fix ProxyRemote to https:// backends on EBCDIC 
+  *) mod_proxy_connect: Fix ProxyRemote to https:// backends on EBCDIC
      systems. PR 57092 [Edward Lu <Chaosed0 gmail.com>]
 
   *) mod_cache: Avoid a 304 response to an unconditional requst when an AH00752
      CacheLock error occurs during cache revalidation. [Eric Covener]
- 
+
   *) mod_ssl: Move OCSP stapling information from a per-certificate store to
      a per-server hash. PR 54357, PR 56919. [Alex Bligh <alex alex.org.uk>,
      Yann Ylavic, Kaspar Brand]
@@ -3217,7 +3222,7 @@ Fri Jan 16 04:13:59 UTC 2015 - crrodriguez@opensuse.org
 
   *) mod_substitute: Fix line length limitation in case of regexp plus flatten.
      [Rainer Jung]
-  
+
   *) mod_proxy: Truncated character worker names are no longer fatal
      errors. PR53218. [Jim Jagielski]
 
@@ -3251,7 +3256,7 @@ Fri Jan 16 04:13:59 UTC 2015 - crrodriguez@opensuse.org
      and later.  PR 56615.  [Chuck Liu <cliu81 gmail.com>, Jeff Trawick]
 
   *) mod_ratelimit: Drop severity of AH01455 and AH01457 (ap_pass_brigade
-     failed) messages from ERROR to TRACE1.  Other filters do not bother 
+     failed) messages from ERROR to TRACE1.  Other filters do not bother
      re-reporting failures from lower level filters.  PR56832.  [Eric Covener]
 
   *) core: Avoid useless warning message when parsing a section guarded by
@@ -3278,7 +3283,7 @@ Fri Jan 16 04:13:59 UTC 2015 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Mon Jan 12 10:51:32 UTC 2015 - bruno@ioda-net.ch
 
-- Redone lost patch to fix boo#859439 
+- Redone lost patch to fix boo#859439
   + service reload can cause log data to be lost with logrotate
   under some circumstances: remove "-t" from service reload.
   [bnc#859439]
@@ -3298,7 +3303,7 @@ Mon Dec 15 17:29:28 UTC 2014 - kstreitova@suse.com
 
 - added httpd-2.4.x-bnc871310-CVE-2013-5704-mod_headers_chunked_requests.patch
   to fix flaw in the way mod_headers handled chunked requests. Adds
-  "MergeTrailers" directive to restore legacy behavior 
+  "MergeTrailers" directive to restore legacy behavior
   [bnc#871310], [CVE-2013-5704].
 
 -------------------------------------------------------------------
@@ -3307,7 +3312,7 @@ Fri Dec 12 15:46:29 UTC 2014 - kstreitova@suse.com
 - added httpd-2.4.x-bnc909715-CVE-2014-8109-mod_lua_handling_of_Require_line.patch
   that fixes handling of the Require line when a LuaAuthzProvider is
   used in multiple Require directives with different arguments
-  [bnc#909715], [CVE-2014-8109]. 
+  [bnc#909715], [CVE-2014-8109].
 
 -------------------------------------------------------------------
 Fri Dec  5 20:10:28 UTC 2014 - pgajdos@suse.com
@@ -3334,26 +3339,26 @@ Sun Nov 09 00:57:00 UTC 2014 - Led <ledest@gmail.com>
 Fri Nov  7 15:52:47 UTC 2014 - kstreitova@suse.com
 
 - added httpd-2.4.10-check_null_pointer_dereference.patch to avoid
-  a crash when Content-Type has an empty value [bnc#899836], 
+  a crash when Content-Type has an empty value [bnc#899836],
   CVE-2014-3581
 
 -------------------------------------------------------------------
 Fri Oct 31 16:04:15 UTC 2014 - crrodriguez@opensuse.org
 
-- httpd-event-deadlock.patch:  Fix worker-listener 
+- httpd-event-deadlock.patch:  Fix worker-listener
   deadlock in graceful restart.
 
 -------------------------------------------------------------------
 Sat Oct 18 16:21:00 UTC 2014 - Led <ledest@gmail.com>
 
-- httpd-2.1.9-apachectl.dif renamed to httpd-2.4.10-apachectl.patch 
+- httpd-2.1.9-apachectl.dif renamed to httpd-2.4.10-apachectl.patch
   and updated (fixed bashism).
 
 -------------------------------------------------------------------
 Thu Oct 16 12:29:06 UTC 2014 - pgajdos@suse.com
 
-- drop (turned off) itk mpm spec file code as mpm-itk is now 
-  provided as a separate module, not via patch 
+- drop (turned off) itk mpm spec file code as mpm-itk is now
+  provided as a separate module, not via patch
   (see http://mpm-itk.sesse.net/ and [bnc#851229])
 
 -------------------------------------------------------------------
@@ -3371,7 +3376,7 @@ Mon Oct  6 12:30:07 UTC 2014 - kstreitova@suse.com
 
 - the following unused patches were removed from the package:
   * apache2-mod_ssl_npn.patch
-  * httpd-2.0.49-log_server_status.dif 
+  * httpd-2.0.49-log_server_status.dif
 
 -------------------------------------------------------------------
 Mon Sep 29 11:57:40 UTC 2014 - pgajdos@suse.com
@@ -3392,7 +3397,7 @@ Fri Sep 26 15:00:45 UTC 2014 - pgajdos@suse.com
 -------------------------------------------------------------------
 Thu Sep 25 14:39:05 UTC 2014 - pgajdos@suse.com
 
-- ServerSignature=Off and ServerTokens=Prod by request from 
+- ServerSignature=Off and ServerTokens=Prod by request from
   security team [bnc#716495]
 
 -------------------------------------------------------------------
@@ -3403,7 +3408,7 @@ Wed Sep 24 13:11:16 UTC 2014 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Jul 21 16:23:51 UTC 2014 - crrodriguez@opensuse.org
 
-- Update package Summary and Description. 
+- Update package Summary and Description.
 - version 2.4.10
 * SECURITY: CVE-2014-0117 (cve.mitre.org)
 * SECURITY: CVE-2014-3523 (cve.mitre.org)
@@ -3429,7 +3434,7 @@ Mon Apr 14 08:47:02 UTC 2014 - lnussel@suse.de
 -------------------------------------------------------------------
 Thu Mar 27 16:18:27 UTC 2014 - crrodriguez@opensuse.org
 
-- version 2.4.9 
+- version 2.4.9
 * SECURITY: CVE-2014-0098
 * SECURITY: CVE-2013-6438
 * multiple bugfixes and improvements to mod_ssl, mod_lua,
@@ -3485,12 +3490,12 @@ Mon Nov  4 20:55:52 UTC 2013 - freek@opensuse.org
 -------------------------------------------------------------------
 Fri Oct 25 00:05:02 UTC 2013 - crrodriguez@opensuse.org
 
-- reenable mod_ssl-2.4.x-ekh.diff  
+- reenable mod_ssl-2.4.x-ekh.diff
 
 -------------------------------------------------------------------
 Tue Oct 22 15:43:53 UTC 2013 - crrodriguez@opensuse.org
 
-- Correct build in old distros. 
+- Correct build in old distros.
 
 -------------------------------------------------------------------
 Tue Oct 22 15:09:21 UTC 2013 - crrodriguez@opensuse.org
@@ -3501,7 +3506,7 @@ Tue Oct 22 15:09:21 UTC 2013 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Tue Oct 22 15:06:19 UTC 2013 - crrodriguez@opensuse.org
 
-- make mod_systemd static so scenarios described in 
+- make mod_systemd static so scenarios described in
   [bnc#846897] do not happen again.
 
 -------------------------------------------------------------------
@@ -3509,7 +3514,7 @@ Mon Oct 21 23:44:19 UTC 2013 - crrodriguez@opensuse.org
 
 - mod_ssl: improve ephemeral key handling in particular, support DH params
   with more than 1024 bits, and allow custom configuration.
-  This patch adjust DH parameters according to the relevant RFC 
+  This patch adjust DH parameters according to the relevant RFC
   recommendations and permanently disables the usage of "export"
   and "NULL" ciphers no matter what the user configuration is
   (mod_ssl-2.4.x-ekh.diff, to be in 2.4.7)
@@ -3517,7 +3522,7 @@ Mon Oct 21 23:44:19 UTC 2013 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Mon Oct 21 23:27:56 UTC 2013 - crrodriguez@opensuse.org
 
-- fix [bnc#846897] problems building kiwi images due to 
+- fix [bnc#846897] problems building kiwi images due to
   systemd not being running in chroot. (submit to 13.1 ASAP)
 
 -------------------------------------------------------------------
@@ -3529,19 +3534,19 @@ Mon Oct 14 19:58:23 UTC 2013 - aj@suse.com
 Tue Sep  3 15:37:37 UTC 2013 - crrodriguez@opensuse.org
 
 - Also fix subtle non-obvious systemd unit confusion
-  we really mean -DFOREGROUND not -DNO_DETACH the latter only 
-  inhibits the parent from forking, not quite the same as 
+  we really mean -DFOREGROUND not -DNO_DETACH the latter only
+  inhibits the parent from forking, not quite the same as
   running in well.. the foreground as required.
 
 -------------------------------------------------------------------
 Tue Sep  3 03:58:27 UTC 2013 - crrodriguez@opensuse.org
 
-- Ensure we only use /run and not /var/run 
+- Ensure we only use /run and not /var/run
 
 -------------------------------------------------------------------
 Fri Aug 30 04:48:07 UTC 2013 - crrodriguez@opensuse.org
 
-- Really use %requires_ge for libapr1 and libapr-util1 
+- Really use %requires_ge for libapr1 and libapr-util1
   mentioned but not implemented in the previous commit.
 
 -------------------------------------------------------------------
@@ -3561,24 +3566,24 @@ Fri Aug  2 08:18:03 UTC 2013 - meissner@suse.com
 -------------------------------------------------------------------
 Thu Aug  1 02:06:38 UTC 2013 - crrodriguez@opensuse.org
 
-- Enable mod_proxy_html, mod_xml2enc and mod_lua (missed BuildRequires) 
+- Enable mod_proxy_html, mod_xml2enc and mod_lua (missed BuildRequires)
 
 -------------------------------------------------------------------
 Mon Jul 29 19:53:48 UTC 2013 - crrodriguez@opensuse.org
 
-- provide and obsolete mod_macro 
-- upgrade: some people complain that log_config module 
+- provide and obsolete mod_macro
+- upgrade: some people complain that log_config module
  is not enabled by default sometimes, fix that.
 - upgrade : "SSLMutex" no longer exists.
 - Toogle EnableSendfile on because now apache defaults to off
-  due to kernel bugs. that's a silly thing to do here 
+  due to kernel bugs. that's a silly thing to do here
   as kernel bugs have to be fixed at their source, not worked around
   in applications.
 
 -------------------------------------------------------------------
 Mon Jul 22 21:57:40 UTC 2013 - crrodriguez@opensuse.org
 
-- httpd-event-ssl.patch: from upstream 
+- httpd-event-ssl.patch: from upstream
   Lift the restriction that prevents mod_ssl taking
   full advantage of the event MPM.
 
@@ -3605,27 +3610,27 @@ It will be fixed in the upcoming weeks/months.
 -------------------------------------------------------------------
 Tue Jun 18 07:41:36 UTC 2013 - crrodriguez@opensuse.org
 
-- apache-20-22-upgrade: still no cookie, module authn_file 
+- apache-20-22-upgrade: still no cookie, module authn_file
   is ok and must not be disabled on update.
   authn_core must however be enabled too.
 
 -------------------------------------------------------------------
 Tue Jun 18 06:42:33 UTC 2013 - crrodriguez@opensuse.org
 
-- fix apache_mmn spec macro, otherwise all modules down 
+- fix apache_mmn spec macro, otherwise all modules down
   the chain will have broken dependencies
 
 -------------------------------------------------------------------
 Tue Jun 18 05:53:31 UTC 2013 - crrodriguez@opensuse.org
 
-- remove After=mysql.service php-fpm.service postgresql.service 
+- remove After=mysql.service php-fpm.service postgresql.service
   which were added in the previous change, those must be added
   as Before=apache2.service in the respective services.
 
 -------------------------------------------------------------------
 Fri Jun 14 21:51:09 UTC 2013 - crrodriguez@opensuse.org
 
-- Include mod_systemd for more complete integration with 
+- Include mod_systemd for more complete integration with
   systemd, turn the service to Typé=notify as required
 
 - Disable SSL NPN patch for now, it is required for mod_spdy
@@ -3634,7 +3639,7 @@ Fri Jun 14 21:51:09 UTC 2013 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Sat Jun  1 03:54:50 UTC 2013 - crrodriguez@opensuse.org
 
-- apache 2.4.4 
+- apache 2.4.4
 * fix for CVE-2012-3499
 * fix for the CRIME attack (disable ssl compression by default)
 * many other bugfies
@@ -3645,13 +3650,13 @@ Sat Jun  1 03:54:50 UTC 2013 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Mon Feb 25 08:19:41 UTC 2013 - mlin@suse.com
 
-- Install apache2.service accordingly (/usr/lib/systemd for 12.3 
+- Install apache2.service accordingly (/usr/lib/systemd for 12.3
   and up or /lib/systemd for older versions).
 
 -------------------------------------------------------------------
 Sat Jan 26 05:06:07 UTC 2013 - crrodriguez@opensuse.org
 
--  Apache 2.4.3 
+-  Apache 2.4.3
 * SECURITY: CVE-2012-3502
 * SECURITY: CVE-2012-2687
 * mod_cache: Set content type in case we return stale content.
@@ -3671,13 +3676,13 @@ Fri Jan 18 11:52:30 CET 2013 - mhrusecky@suse.cz
 Wed Aug  1 04:10:13 UTC 2012 - crrodriguez@opensuse.org
 
 - Fix factory-auto (aka r2dbag) complains about URL.
-- Provide a symlink for apxs2 new location otherwise 
+- Provide a symlink for apxs2 new location otherwise
   all buggy spec files of external modules will break.
 
 -------------------------------------------------------------------
 Wed Aug  1 02:21:34 UTC 2012 - crrodriguez@opensuse.org
 
-- BuildRequire xz explicitly, fix build in !Factory 
+- BuildRequire xz explicitly, fix build in !Factory
 - Drop more old, unused patches
 
 -------------------------------------------------------------------
@@ -3690,7 +3695,7 @@ CAREFULLY otherwise your server will most likely
 fail to start due to backward incompatible changes.
 
 * You can read the huge complete list of changes
-  at https://httpd.apache.org/docs/2.4/new_features_2_4.html 
+  at https://httpd.apache.org/docs/2.4/new_features_2_4.html
 
 -------------------------------------------------------------------
 Wed Jul 25 11:32:34 UTC 2012 - saschpe@suse.de
@@ -3730,7 +3735,7 @@ Sat Feb 18 21:15:08 UTC 2012 - poeml@cmdline.net
   *) SECURITY: CVE-2011-3368 (cve.mitre.org)
      Reject requests where the request-URI does not match the HTTP
      specification, preventing unexpected expansion of target URLs in
-     some reverse proxy configurations. 
+     some reverse proxy configurations.
   *) SECURITY: CVE-2011-3607 (cve.mitre.org)
      Fix integer overflow in ap_pregsub() which, when the mod_setenvif module
      is enabled, could allow local users to gain privileges via a .htaccess
@@ -3744,9 +3749,9 @@ Sat Feb 18 21:15:08 UTC 2012 - poeml@cmdline.net
      string is in use and a client sends a nameless, valueless cookie, causing
      a denial of service. The issue existed since version 2.2.17. PR 52256.
   *) SECURITY: CVE-2012-0031 (cve.mitre.org)
-     Fix scoreboard issue which could allow an unprivileged child process 
-     could cause the parent to crash at shutdown rather than terminate 
-     cleanly. 
+     Fix scoreboard issue which could allow an unprivileged child process
+     could cause the parent to crash at shutdown rather than terminate
+     cleanly.
   *) SECURITY: CVE-2012-0053 (cve.mitre.org)
      Fix an issue in error responses that could expose "httpOnly" cookies
      when no custom ErrorDocument is specified for status code 400.
@@ -3766,8 +3771,8 @@ Sat Feb 18 21:15:08 UTC 2012 - poeml@cmdline.net
   *) Fix a regression introduced by the CVE-2011-3192 byterange fix in 2.2.20:
      A range of '0-' will now return 206 instead of 200. PR 51878.
   *) Example configuration: Fix entry for MaxRanges (use "unlimited" instead
-     of "0"). 
-  *) mod_substitute: Fix buffer overrun. 
+     of "0").
+  *) mod_substitute: Fix buffer overrun.
 - adjusted SSL template/default config for upstream changes, and added
   MaxRanges example to apache2-server-tuning.conf
 - fixed installation of (moved) man pages
@@ -3781,7 +3786,7 @@ Sat Feb 11 09:21:15 UTC 2012 - coolo@suse.com
 Sat Jan 21 13:54:01 CET 2012 - draht@suse.de
 
 - enable mod_reqtimeout by default via APACHE_MODULES in
-  /etc/sysconfig/apache2, configuration 
+  /etc/sysconfig/apache2, configuration
   /etc/apache2/mod_reqtimeout.conf .
   Of course, the existing configuration remains unchanged.
 
@@ -3804,7 +3809,7 @@ Fri Dec  2 07:18:56 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Fri Nov 18 15:04:12 CET 2011 - draht@suse.de
 
-- update to /etc/init.d/apache2: handle reload with deleted 
+- update to /etc/init.d/apache2: handle reload with deleted
   binaries after package update more thoughtfully: If the binaries
   have been replaced, then a dlopen(3) on the apache modules is
   prone to fail. => Don't reload then, but complain and fail.
@@ -3820,7 +3825,7 @@ Fri Oct  7 17:11:56 CEST 2011 - draht@suse.de
 -------------------------------------------------------------------
 Fri Oct  7 14:36:31 UTC 2011 - fcrozat@suse.com
 
-- Ensure service_add_pre macro is correctly called for 
+- Ensure service_add_pre macro is correctly called for
   openSUSE 12.1 or later.
 
 -------------------------------------------------------------------
@@ -3861,14 +3866,14 @@ Thu Sep  1 09:43:49 UTC 2011 - fcrozat@suse.com
 -------------------------------------------------------------------
 Wed Aug 31 12:52:22 UTC 2011 - crrodriguez@opensuse.org
 
-- Update to version 2.2.20, fix CVE-2011-3192 
+- Update to version 2.2.20, fix CVE-2011-3192
   mod_deflate D.o.S.
 
 
 -------------------------------------------------------------------
 Fri Aug  5 06:02:35 UTC 2011 - crrodriguez@opensuse.org
 
--  Fix apache PR 45076 
+-  Fix apache PR 45076
 
 -------------------------------------------------------------------
 Sun Jul 17 19:49:55 UTC 2011 - crrodriguez@opensuse.org
@@ -3880,8 +3885,8 @@ Wed Jun 22 16:12:10 UTC 2011 - crrodriguez@opensuse.org
 
 - Add 2 patches from the "low hanging fruit" warnings in apache
   STATUS page.
- * mod_deflate: Stop compressing HEAD requests 
-  if there is not Content-Length header 
+ * mod_deflate: Stop compressing HEAD requests
+  if there is not Content-Length header
  * mod_reqtimeout: Disable keep-alive after read timeout
 
 -------------------------------------------------------------------
@@ -3908,7 +3913,7 @@ Thu May 26 03:35:05 UTC 2011 - crrodriguez@opensuse.org
 *) Revert ABI breakage in 2.2.18 caused by the function signature change
      of ap_unescape_url_keep2f().  This release restores the signature from
      2.2.17 and prior, and introduces ap_unescape_url_keep2f_ex().
-     [Eric Covener] 
+     [Eric Covener]
 
 -------------------------------------------------------------------
 Fri May 20 19:28:03 UTC 2011 - crrodriguez@opensuse.org
@@ -3918,7 +3923,7 @@ Fri May 20 19:28:03 UTC 2011 - crrodriguez@opensuse.org
 *  mod_ssl, ab: Support OpenSSL compiled without SSLv2 support.
 * core: Treat timeout reading request as 408 error, not 400.
 * core: Only log a 408 if it is no keepalive timeout.
-*  mod_rewrite: Allow to unset environment variables. 
+*  mod_rewrite: Allow to unset environment variables.
 * prefork: Update MPM state in children during a graceful restart.
 * Other fixes in mod_cache,mod_dav,mod_proxy se NEWS for detail.
 
@@ -3933,7 +3938,7 @@ Wed Apr 20 23:24:26 UTC 2011 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Mon Apr 11 16:19:14 UTC 2011 - crrodriguez@opensuse.org
 
-- Allow usage of an openSSL library compiled without SSlv2 
+- Allow usage of an openSSL library compiled without SSlv2
 
 -------------------------------------------------------------------
 Fri Apr  8 13:41:48 UTC 2011 - lnussel@suse.de
@@ -3965,43 +3970,43 @@ Tue Oct 19 17:16:16 UTC 2010 - poeml@cmdline.net
      [We build with system expat library // poeml]
   prefork MPM: Run cleanups for final request when process exits gracefully
      to work around a flaw in apr-util.  PR 43857
-  core: 
+  core:
    - check symlink ownership if both FollowSymlinks and
      SymlinksIfOwnerMatch are set
    - fix origin checking in SymlinksIfOwnerMatch PR 36783
    - (re)-introduce -T commandline option to suppress documentroot
-     check at startup.  PR 41887 
-  vhost: 
-   - A purely-numeric Host: header should not be treated as a port.  PR 44979 
-  rotatelogs: 
+     check at startup.  PR 41887
+  vhost:
+   - A purely-numeric Host: header should not be treated as a port.  PR 44979
+  rotatelogs:
    - Fix possible buffer overflow if admin configures a
      mongo log file path.
   Proxy balancer: support setting error status according to HTTP response
      code from a backend.  PR 48939.
-  mod_authnz_ldap: 
+  mod_authnz_ldap:
    - If AuthLDAPCharsetConfig is set, also convert the
      password to UTF-8. PR 45318.
-  mod_dir, mod_negotiation: 
+  mod_dir, mod_negotiation:
    - Pass the output filter information to newly created sub requests; as these
      are later on used as true requests with an internal redirect. This allows
      for mod_cache et.al. to trap the results of the redirect.  PR 17629, 43939
-  mod_headers: 
+  mod_headers:
    - Enable multi-match-and-replace edit option PR 46594
-  mod_log_config: 
+  mod_log_config:
    - Make ${cookie}C correctly match whole cookie names
      instead of substrings. PR 28037.
-  mod_reqtimeout: 
+  mod_reqtimeout:
    - Do not wrongly enforce timeouts for mod_proxy's backend
      connections and other protocol handlers (like mod_ftp). Enforce the
      timeout for AP_MODE_GETLINE. If there is a timeout, shorten the lingering
      close time from 30 to 2 seconds.
-  mod_ssl: 
-   - Do not do overlapping memcpy. PR 45444 
+  mod_ssl:
+   - Do not do overlapping memcpy. PR 45444
 
 -------------------------------------------------------------------
 Tue Oct  5 18:25:39 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- Add missing libcap-devel to BuildRequires, wanted by "itk" MPM.  
+- Add missing libcap-devel to BuildRequires, wanted by "itk" MPM.
 
 -------------------------------------------------------------------
 Thu Jul 29 15:40:29 UTC 2010 - poeml@cmdline.net
@@ -4019,23 +4024,23 @@ Thu Jul 29 15:40:29 UTC 2010 - poeml@cmdline.net
      for connection filters.  PR 49328.
   mod_filter:
    - enable it to act on non-200 responses.  PR 48377
-  mod_ldap: 
+  mod_ldap:
    - LDAP caching was suppressed (and ldap-status handler returns
      title page only) when any mod_ldap directives were used in VirtualHost
      context.
-  mod_ssl: 
+  mod_ssl:
    - Fix segfault at startup if proxy client certs are shared
      across multiple vhosts.  PR 39915.
-  mod_proxy_http: 
+  mod_proxy_http:
    - Log the port of the remote server in various messages.
      PR 48812.
-  apxs: 
+  apxs:
    - Fix -A and -a options to ignore whitespace in httpd.conf
-  mod_dir: 
+  mod_dir:
    - add FallbackResource directive, to enable admin to specify
      an action to happen when a URL maps to no file, without resorting
      to ErrorDocument or mod_rewrite.  PR 47184
-  mod_rewrite: 
+  mod_rewrite:
    - Allow to set environment variables without explicitely
      giving a value.
 - add Requires and BuildRequires on libapr1 >= 1.4.2. In the past, libapr1 >=
@@ -4053,8 +4058,8 @@ Mon May 17 14:33:47 UTC 2010 - poeml@cmdline.net
 -------------------------------------------------------------------
 Tue May 11 21:42:11 UTC 2010 - lars@linux-schulserver.de
 
-- fix deprecated usage of $[ in apxs2 
-  (httpd-2.2.15-deprecated_use_of_build_in_variable.patch) 
+- fix deprecated usage of $[ in apxs2
+  (httpd-2.2.15-deprecated_use_of_build_in_variable.patch)
 
 -------------------------------------------------------------------
 Fri May  7 12:38:10 UTC 2010 - aj@suse.de
@@ -4088,7 +4093,7 @@ Mon Mar  8 12:34:18 UTC 2010 - poeml@cmdline.net
   SECURITY: CVE-2010-0408 (cve.mitre.org)
      mod_proxy_ajp: Respond with HTTP_BAD_REQUEST when the body is not sent
      when request headers indicate a request body is incoming; not a case of
-     HTTP_INTERNAL_SERVER_ERROR.  
+     HTTP_INTERNAL_SERVER_ERROR.
   SECURITY: CVE-2010-0425 (cve.mitre.org)
      mod_isapi: Do not unload an isapi .dll module until the request processing
      is completed, avoiding orphaned callback pointers.
@@ -4098,78 +4103,78 @@ Mon Mar  8 12:34:18 UTC 2010 - poeml@cmdline.net
      in the case of no request body.  PR 48359
   mod_reqtimeout:
    - New module to set timeouts and minimum data rates for receiving requests
-     from the client. 
+     from the client.
   core:
    - Fix potential memory leaks by making sure to not destroy bucket brigades
      that have been created by earlier filters.
    - Return APR_EOF if request body is shorter than the length announced by the
-     client. PR 33098 
-   - Preserve Port information over internal redirects PR 35999 
-   - Build: fix --with-module to work as documented PR 43881 
+     client. PR 33098
+   - Preserve Port information over internal redirects PR 35999
+   - Build: fix --with-module to work as documented PR 43881
   worker:
    - Don't report server has reached MaxClients until it has.  Add message when
-     server gets within MinSpareThreads of MaxClients.  PR 46996.  
+     server gets within MinSpareThreads of MaxClients.  PR 46996.
   ab, mod_ssl:
    - Restore compatibility with OpenSSL < 0.9.7g.
   mod_authnz_ldap:
    - Add AuthLDAPBindAuthoritative to allow Authentication to try other
-     providers in the case of an LDAP bind failure.  PR 46608 
+     providers in the case of an LDAP bind failure.  PR 46608
    - Failures to map a username to a DN, or to check a user password now result
-     in an informational level log entry instead of warning level.  
+     in an informational level log entry instead of warning level.
   mod_cache:
    - Introduce the thundering herd lock, a mechanism to keep the flood of
      requests at bay that strike a backend webserver as a cached entity goes
-     stale. 
-   - correctly consider s-maxage in cacheability decisions.  
+     stale.
+   - correctly consider s-maxage in cacheability decisions.
   mod_disk_cache, mod_mem_cache:
-   - don't cache incomplete responses, per RFC 2616, 13.8.  PR15866.  
+   - don't cache incomplete responses, per RFC 2616, 13.8.  PR15866.
   mod_charset_lite:
    - Honor 'CharsetOptions NoImplicitAdd'.
   mod_filter:
-   - fix FilterProvider matching where "dispatch" string doesn't exist.  PR 48054 
+   - fix FilterProvider matching where "dispatch" string doesn't exist.  PR 48054
   mod_include:
    - Allow fine control over the removal of Last-Modified and ETag headers
      within the INCLUDES filter, making it possible to cache responses if
-     desired. Fix the default value of the SSIAccessEnable directive. 
+     desired. Fix the default value of the SSIAccessEnable directive.
   mod_ldap:
    - If LDAPSharedCacheSize is too small, try harder to purge some cache
      entries and log a warning. Also increase the default LDAPSharedCacheSize
      to 500000. This is a more realistic size suitable for the default values
-     of 1024 for LdapCacheEntries/LdapOpCacheEntries.  PR 46749. 
+     of 1024 for LdapCacheEntries/LdapOpCacheEntries.  PR 46749.
   mod_log_config:
-   - Add the R option to log the handler used within the request. 
+   - Add the R option to log the handler used within the request.
   mod_mime:
-   - Make RemoveType override the info from TypesConfig.  PR 38330. 
+   - Make RemoveType override the info from TypesConfig.  PR 38330.
    - Detect invalid use of MultiviewsMatch inside Location and LocationMatch
-     sections.  PR 47754.  
+     sections.  PR 47754.
   mod_negotiation:
    - Preserve query string over multiviews negotiation.  This buglet was fixed
      for type maps in 2.2.6, but the same issue affected multiviews and was
-     overlooked.  PR 33112 
+     overlooked.  PR 33112
   mod_proxy:
    - unable to connect to a backend is SERVICE_UNAVAILABLE, rather than
-     BAD_GATEWAY or (especially) NOT_FOUND.  PR 46971 
+     BAD_GATEWAY or (especially) NOT_FOUND.  PR 46971
   mod_proxy, mod_proxy_http:
-   - Support remote https proxies by using HTTP CONNECT.  PR 19188.  
+   - Support remote https proxies by using HTTP CONNECT.  PR 19188.
   mod_proxy_http:
    - Make sure that when an ErrorDocument is served from a reverse proxied URL,
      that the subrequest respects the status of the original request. This
      brings the behaviour of proxy_handler in line with default_handler. PR
-     47106. 
+     47106.
   mod_proxy_ajp:
    - Really regard the operation a success, when the client aborted the
      connection. In addition adjust the log message if the client aborted the
-     connection. 
+     connection.
   mod_rewrite:
    - Make sure that a hostname:port isn't fully qualified if the request is a
      CONNECT request. PR 47928
-   - Add scgi scheme detection.  
+   - Add scgi scheme detection.
   mod_ssl:
    - Fix a potential I/O hang if a long list of trusted CAs is configured for
-     client cert auth. PR 46952.  
+     client cert auth. PR 46952.
    - When extracting certificate subject/issuer names to the SSL_*_DN_*
      variables, handle RDNs with duplicate tags by exporting multiple
-     varialables with an "_n" integer suffix.  PR 45875.  
+     varialables with an "_n" integer suffix.  PR 45875.
 - obsolete patch CVE-2009-3555-2.2.patch removed
 
 -------------------------------------------------------------------
@@ -4191,7 +4196,7 @@ Sat Nov  7 11:30:06 UTC 2009 - poeml@cmdline.net
   A partial fix for the TLS renegotiation prefix injection attack by rejecting
   any client-initiated renegotiations. Any configuration which requires
   renegotiation for per-directory/location access control is still vulnerable,
-  unless using OpenSSL >= 0.9.8l.  
+  unless using OpenSSL >= 0.9.8l.
 
 -------------------------------------------------------------------
 Mon Oct 26 12:48:11 UTC 2009 - poeml@cmdline.net
@@ -4250,19 +4255,19 @@ Mon Jul 27 22:20:11 CEST 2009 - poeml@suse.de
 
 - update to 2.2.12:
   SECURITY: CVE-2009-1891 (cve.mitre.org)
-     Fix a potential Denial-of-Service attack against mod_deflate or other 
-     modules, by forcing the server to consume CPU time in compressing a 
+     Fix a potential Denial-of-Service attack against mod_deflate or other
+     modules, by forcing the server to consume CPU time in compressing a
      large file after a client disconnects.  PR 39605.
   SECURITY: CVE-2009-1195 (cve.mitre.org)
-     Prevent the "Includes" Option from being enabled in an .htaccess 
+     Prevent the "Includes" Option from being enabled in an .htaccess
      file if the AllowOverride restrictions do not permit it.
-  SECURITY: CVE-2009-1890 (cve.mitre.org) 
+  SECURITY: CVE-2009-1890 (cve.mitre.org)
      Fix a potential Denial-of-Service attack against mod_proxy in a
      reverse proxy configuration, where a remote attacker can force a
-     proxy process to consume CPU time indefinitely.  
+     proxy process to consume CPU time indefinitely.
   SECURITY: CVE-2009-1191 (cve.mitre.org)
      mod_proxy_ajp: Avoid delivering content from a previous request which
-     failed to send a request body. PR 46949 
+     failed to send a request body. PR 46949
   SECURITY: CVE-2009-0023, CVE-2009-1955, CVE-2009-1956 (cve.mitre.org)
      The bundled copy of the APR-util library has been updated, fixing three
      different security issues which may affect particular configurations
@@ -4274,95 +4279,95 @@ Mon Jul 27 22:20:11 CEST 2009 - poeml@suse.de
      consuming an additional shell process for the lifetime of the logging
      pipe program but granting additional process invocation flexibility.
    - prefork: Fix child process hang during graceful restart/stop in
-     configurations with multiple listening sockets.  PR 42829.  
+     configurations with multiple listening sockets.  PR 42829.
    - Translate the status line to ASCII on EBCDIC platforms in
      ap_send_interim_response() and for locally generated "100
-     Continue" responses.  
+     Continue" responses.
    - CGI: return 504 (Gateway timeout) rather than 500 when a
-     script times out before returning status line/headers. PR 42190 
+     script times out before returning status line/headers. PR 42190
    - prefork: Log an error instead of segfaulting when child startup fails
-     due to pollset creation failures.  PR 46467.  
+     due to pollset creation failures.  PR 46467.
    - core/utils: Enhance ap_escape_html API to support escaping non-ASCII chars
    - Set Listen protocol to "https" if port is set to 443 and no proto is specified
-     (as documented but not implemented). PR 46066  
+     (as documented but not implemented). PR 46066
    - Output -M and -S dumps (modules and vhosts) to stdout instead of stderr.
-     PR 42571 and PR 44266 (dup).  
-  mod_alias: 
-   - check sanity in Redirect arguments.  PR 44729 
+     PR 42571 and PR 44266 (dup).
+  mod_alias:
+   - check sanity in Redirect arguments.  PR 44729
    - Ensure Redirect emits HTTP-compliant URLs.  PR 44020
-  mod_authnz_ldap: 
+  mod_authnz_ldap:
    - Reduce number of initialization debug messages and make
-     information more clear. PR 46342 
-  mod_cache: 
+     information more clear. PR 46342
+  mod_cache:
    - Introduce 'no-cache' per-request environment variable to
      prevent the saving of an otherwise cacheable response.
    - Correctly save Content-Encoding of cachable entity. PR 46401
    - When an explicit Expires or Cache-Control header is set, cache
      normally non-cacheable response statuses. PR 46346.
-  mod_cgid: 
-   - fix segfault problem on solaris.  PR 39332 
-  mod_disk_cache: 
+  mod_cgid:
+   - fix segfault problem on solaris.  PR 39332
+  mod_disk_cache:
    - The module now turns off sendfile support if 'EnableSendfile
      off' is defined globally. PR 41218.
-  mod_disk_cache/mod_mem_cache: 
+  mod_disk_cache/mod_mem_cache:
    - Fix handling of CacheIgnoreHeaders directive to correctly
      remove headers before storing them.
-  mod_deflate: 
+  mod_deflate:
    - revert changes in 2.2.8 that caused an invalid etag to be
      emitted for on-the-fly gzip content-encoding.  PR 39727 will
      require larger fixes and this fix was far more harmful than
-     the original code. PR 45023. 
-  mod_ext_filter: 
+     the original code. PR 45023.
+  mod_ext_filter:
    - fix error handling when the filter prog fails to start, and
      introduce an onfail configuration option to abort the request
-     or to remove the broken filter and continue.  PR 41120 
-  mod_include: 
+     or to remove the broken filter and continue.  PR 41120
+  mod_include:
    - fix potential segfault when handling back references on an
-     empty SSI variable. 
+     empty SSI variable.
    - Prevent a case of SSI timefmt-smashing with filter chains
-     including multiple INCLUDES filters. PR 39369 
+     including multiple INCLUDES filters. PR 39369
    - support generating non-ASCII characters as entities in SSI PR
-     25202 
-  mod_ldap: 
+     25202
+  mod_ldap:
    - Avoid a segfault when result->rc is checked in
      uldap_connection_init when result is NULL. This could happen
-     if LDAP initialization failed.  PR 45994.  
-  mod_negotiation: 
+     if LDAP initialization failed.  PR 45994.
+  mod_negotiation:
    - Escape pathes of filenames in 406 responses to avoid HTML
      injections and HTTP response splitting.  PR 46837.
-  mod_proxy: 
+  mod_proxy:
    - Complete ProxyPassReverse to handle balancer URL's.  Given;
      BalancerMember balancer://alias http://example.com/foo
      ProxyPassReverse /bash balancer://alias/bar backend url
      http://example.com/foo/bar/that is now translated /bash/that
-  mod_proxy_ajp: 
-   - Check more strictly that the backend follows the AJP protocol. 
+  mod_proxy_ajp:
+   - Check more strictly that the backend follows the AJP protocol.
    - Forward remote port information by default.
-  mod_proxy_http: 
-   - fix Host: header for literal IPv6 addresses.  PR 47177 
-   - fix case sensitivity checking transfer encoding PR 47383 
-  mod_rewrite: 
+  mod_proxy_http:
+   - fix Host: header for literal IPv6 addresses.  PR 47177
+   - fix case sensitivity checking transfer encoding PR 47383
+  mod_rewrite:
    - Remove locking for writing to the rewritelog.  PR 46942
    - Fix the error string returned by RewriteRule.  RewriteRule
      returned "RewriteCond: bad flag delimiters" when the 3rd
      argument of RewriteRule was not started with "[" or not ended
-     with "]".  PR 45082 
+     with "]".  PR 45082
    - When evaluating a proxy rule in directory context, do escape
-     the filename by default. PR 46428 
+     the filename by default. PR 46428
    - Introduce DiscardPathInfo|DPI flag to stop the troublesome way
      that per-directory rewrites append the previous notion of
      PATH_INFO to each substitution before evaluating subsequent
-     rules.  PR38642 
-   - fix "B" flag breakage by reverting r589343 PR 45529 
-  mod_ssl: 
+     rules.  PR38642
+   - fix "B" flag breakage by reverting r589343 PR 45529
+  mod_ssl:
    - Add server name indication support (RFC 4366) and better
      support for name based virtual hosts with SSL. PR 34607
    - Add SSLProxyCheckPeerExpire and SSLProxyCheckPeerCN directives
      to enable stricter checking of remote server certificates.
    - Add SSLRenegBufferSize directive to allow changing the size of
      the buffer used for the request-body where necessary during a
-     per-dir renegotiation.  PR 39243.  
-  mod_substitute: 
+     per-dir renegotiation.  PR 39243.
+  mod_substitute:
    - Fix a memory leak. PR 44948
 
 -------------------------------------------------------------------
@@ -4410,7 +4415,7 @@ Mon Apr 27 11:21:43 CEST 2009 - poeml@suse.de
 -------------------------------------------------------------------
 Thu Mar 12 07:01:58 CET 2009 - crrodriguez@suse.de
 
-- update apache2-vhost.template mod_php4 references [bnc#444205] 
+- update apache2-vhost.template mod_php4 references [bnc#444205]
 
 -------------------------------------------------------------------
 Mon Mar  9 15:33:40 CET 2009 - poeml@suse.de
@@ -4427,8 +4432,8 @@ Sat Dec 20 00:49:29 CET 2008 - poeml@suse.de
   core:
    - Worker MPM: Crosscheck that idle workers are still available
      before using them and thus preventing an overflow of the
-     worker queue which causes a SegFault. PR 45605 
-   - Add ap_timeout_parameter_parse to public API. 
+     worker queue which causes a SegFault. PR 45605
+   - Add ap_timeout_parameter_parse to public API.
    - When the ap_http_header_filter processes an error bucket,
      cleanup the passed brigade before returning AP_FILTER_ERROR
      down the filter chain. This unambiguously ensures the same
@@ -4436,43 +4441,43 @@ Sat Dec 20 00:49:29 CET 2008 - poeml@suse.de
    - Error responses set by filters were being coerced into 500
      errors, sometimes appended to the original error response. Log
      entry of: 'Handler for (null) returned invalid result code -3'
-   - configure: Don't reject libtool 2.x PR 44817 
+   - configure: Don't reject libtool 2.x PR 44817
    - Build: Correctly set SSL_LIBS during openssl detection if
-     pkgconfig is not available. PR 46018 
+     pkgconfig is not available. PR 46018
   mod_autoindex:
-   - add configuration option to insert string in HTML HEAD (IndexHeadInsert). 
+   - add configuration option to insert string in HTML HEAD (IndexHeadInsert).
   mod_cache:
    - Convert age of cached object to seconds before comparing it to
      age supplied by the request when checking whether to send a
-     Warning header for a stale response. PR 39713. 
-  mod_expires: 
-   - Do not sets negative max-age / Expires header in the past.  PR 39774 
-  mod_info: 
-   - Was displaying the wrong value for the KeepAliveTimeout value. 
+     Warning header for a stale response. PR 39713.
+  mod_expires:
+   - Do not sets negative max-age / Expires header in the past.  PR 39774
+  mod_info:
+   - Was displaying the wrong value for the KeepAliveTimeout value.
   mod_log_config:
    - Add new LogFormat parameter, %k, which logs the number of
-     keepalive requests on this connection for this request.  PR 45762 
-  mod_proxy: 
+     keepalive requests on this connection for this request.  PR 45762
+  mod_proxy:
    - Add the possibility to set the worker parameters
-     connectiontimeout and ping in milliseconds. 
+     connectiontimeout and ping in milliseconds.
    - Prevent segmentation faults by correctly adjusting the
      lifetime of the buckets read from the proxy backend. PR 45792
-  mod_proxy_ajp: 
+  mod_proxy_ajp:
    - Do not fail if response data is sent before all request
-     data is read. PR 45911 
+     data is read. PR 45911
    - Fix wrongly formatted requests where client sets
      Content-Length header, but doesn't provide a body.  Servlet
      container always expects that next packet is body whenever C-L
      is present in the headers. This can lead to wrong
      interpretation of the packets. In this case send the empty
-     body packet, so container can deal with that. 
-  mod_proxy_balancer: 
+     body packet, so container can deal with that.
+  mod_proxy_balancer:
    - Add in forced recovery for balancer members if
-     all are in error state. 
+     all are in error state.
   mod_rewrite:
    - Export and install the mod_rewrite.h header to ensure the optional
      rewrite_mapfunc_t and ap_register_rewrite_mapfunc functions are
-     available to third party modules. 
+     available to third party modules.
 
 -------------------------------------------------------------------
 Wed Dec 17 15:45:07 CET 2008 - poeml@suse.de
@@ -4504,52 +4509,52 @@ Wed Oct 29 00:13:58 CET 2008 - poeml@suse.de
 - update to 2.2.10:
   SECURITY: CVE-2008-2939 (cve.mitre.org)
      mod_proxy_ftp: Prevent XSS attacks when using wildcards in the path of
-     the FTP URL. Discovered by Marc Bevand of Rapid7. 
+     the FTP URL. Discovered by Marc Bevand of Rapid7.
   core:
-   - Support chroot on Unix-family platforms. PR 43596 
-  mod_authn_alias: 
+   - Support chroot on Unix-family platforms. PR 43596
+  mod_authn_alias:
    - Detect during startup when AuthDigestProvider is configured to
-     use an incompatible provider via AuthnProviderAlias.  PR 45196 
-  mod_cgid: 
+     use an incompatible provider via AuthnProviderAlias.  PR 45196
+  mod_cgid:
    - Pass along empty command line arguments from an ISINDEX query
      that has consecutive '+' characters in the QUERY_STRING,
      matching the behavior of mod_cgi.
-  mod_charset_lite: 
+  mod_charset_lite:
    - Avoid dropping error responses by handling meta buckets
-     correctly. PR 45687 
-  mod_dav_fs: 
+     correctly. PR 45687
+  mod_dav_fs:
    - Retrieve minimal system information about directory entries
      when walking a DAV fs, resolving a performance degradation on
-     Windows.  PR 45464.  
-  mod_headers: 
+     Windows.  PR 45464.
+  mod_headers:
    - Prevent Header edit from processing only the first header of
      possibly multiple headers with the same name and deleting the
-     remaining ones. PR 45333.  
+     remaining ones. PR 45333.
   mod_proxy:
    - Allow for smax to be 0 for balancer members so that all idle
-     connections are able to be dropped should they exceed ttl. PR 43371 
+     connections are able to be dropped should they exceed ttl. PR 43371
    - Add 'scolonpathdelim' parameter to allow for ';' to also be
-     used as a session path separator/delim  PR 45158. 
+     used as a session path separator/delim  PR 45158.
    - Add connectiontimeout parameter for proxy workers in order to
      be able to set the timeout for connecting to the backend separately.
-     PR 45445. 
-  mod_proxy_http: 
+     PR 45445.
+  mod_proxy_http:
    - Don't trigger a retry by the client if a failure to
      read the response line was the result of a timeout.
    - Introduce environment variable proxy-initial-not-pooled to
      avoid reusing pooled connections if the client connection is an initial
-     connection. PR 37770. 
+     connection. PR 37770.
    - Do not forward requests with 'Expect: 100-continue' to
      known HTTP/1.0 servers. Return 'Expectation failed' (417) instead.
-  mod_proxy_balancer: 
+  mod_proxy_balancer:
    - Move nonce field in the balancer manager page inside
-     the html form where it belongs. PR 45578. 
+     the html form where it belongs. PR 45578.
    - Add 'bybusyness' load balance method.
-  mod_rewrite: 
-   - Allow Cookie option to set secure and HttpOnly flags.  PR 44799 
+  mod_rewrite:
+   - Allow Cookie option to set secure and HttpOnly flags.  PR 44799
    - Preserve the query string when [proxy,noescape]. PR 45247.
-  mod_ssl: 
-   - implement dynamic mutex callbacks for the benefit of OpenSSL.  
+  mod_ssl:
+   - implement dynamic mutex callbacks for the benefit of OpenSSL.
    - Rewrite shmcb to avoid memory alignment issues.  PR 42101.
 - drop obsolete patch httpd-2.2.x-CVE-2008-2939.patch
 
@@ -4566,7 +4571,7 @@ Fri Sep 19 16:18:39 CEST 2008 - skh@suse.de
 - add httpd-2.x.x-logresolve.patch again [bnc#210904]
 - add httpd-2.2.x-CVE-2008-2939.patch [bnc#415061]:
   mod_proxy_ftp: Prevent XSS attacks when using wildcards in
-  the path of the FTP URL. Discovered by Marc Bevand of Rapid7. 
+  the path of the FTP URL. Discovered by Marc Bevand of Rapid7.
   [Ruediger Pluem]
 
 -------------------------------------------------------------------
@@ -4599,10 +4604,10 @@ Sun Jun 15 19:39:46 CEST 2008 - poeml@suse.de
   SECURITY: CVE-2008-2364 (cve.mitre.org)
      mod_proxy_http: Better handling of excessive interim responses
      from origin server to prevent potential denial of service and
-     high memory usage. Reported by Ryujiro Shibuya. 
+     high memory usage. Reported by Ryujiro Shibuya.
   SECURITY: CVE-2007-6420 (cve.mitre.org)
      mod_proxy_balancer: Prevent CSRF attacks against the
-     balancer-manager interface.  
+     balancer-manager interface.
    - htpasswd: Fix salt generation weakness. PR 31440
   worker/event MPM:
    - Fix race condition in pool recycling that leads to
@@ -4610,95 +4615,95 @@ Sun Jun 15 19:39:46 CEST 2008 - poeml@suse.de
   core:
    - Fix address-in-use startup failure on some platforms caused by
      creating an IPv4 listener which overlaps with an existing IPv6
-     listener.  
+     listener.
    - Add the filename of the configuration file to the warning
      message about the useless use of AllowOverride. PR 39992.
    - Do not allow Options ALL if not all options are allowed to be
-     overwritten. PR 44262 
-   - reinstate location walk to fix config for subrequests PR 41960 
+     overwritten. PR 44262
+   - reinstate location walk to fix config for subrequests PR 41960
    - Fix garbled TRACE response on EBCDIC platforms.
    - gen_test_char: add double-quote to the list of
-     T_HTTP_TOKEN_STOP.  PR 9727 
+     T_HTTP_TOKEN_STOP.  PR 9727
   http_filters:
    - Don't return 100-continue on redirects. PR 43711
-   - Don't return 100-continue on client error PR 43711 
-   - Don't spin if get an error when reading the next chunk. PR 44381 
+   - Don't return 100-continue on client error PR 43711
+   - Don't spin if get an error when reading the next chunk. PR 44381
    - Don't add bogus duplicate Content-Language entries
   suexec:
    - When group is given as a numeric gid, validate it by looking up
      the actual group name such that the name can be used in log entries.
-     PR 7862 
+     PR 7862
   mod_authn_dbd:
-   - Disambiguate and tidy database authentication error messages.  PR 43210.  
+   - Disambiguate and tidy database authentication error messages.  PR 43210.
   mod_cache:
-   - Handle If-Range correctly if the cached resource was stale.  PR 44579 
+   - Handle If-Range correctly if the cached resource was stale.  PR 44579
    - Revalidate cache entities which have Cache-Control: no-cache
-     set in their response headers. PR 44511 
+     set in their response headers. PR 44511
   mod_cgid:
    - Explicitly set permissions of the socket (ScriptSock) shared
      by mod_cgid and request processing threads, for OS'es such as
      HPUX and AIX that do not use umask for AF_UNIX socket permissions.
-   - Don't try to restart the daemon if it fails to initialize the socket.  
+   - Don't try to restart the daemon if it fails to initialize the socket.
   mod_charset_lite:
    - Add TranslateAllMimeTypes sub-option to CharsetOptions,
      allowing the administrator to skip the mimetype checking that
      precedes translation.
   mod_dav:
    - Return "method not allowed" if the destination URI of a WebDAV
-     copy / move operation is no DAV resource. PR 44734 
+     copy / move operation is no DAV resource. PR 44734
   mod_headers:
-   - Add 'merge' option to avoid duplicate values within the same header. 
+   - Add 'merge' option to avoid duplicate values within the same header.
   mod_include:
    - Correctly handle SSI directives split over multiple filter
   mod_log_config:
    - Add format options for %p so that the actual local or remote
-     port can be logged.  PR 43415.  
+     port can be logged.  PR 43415.
   mod_logio:
-   - Provide optional function to allow modules to adjust the 
+   - Provide optional function to allow modules to adjust the
      bytes_in count
   mod_proxy:
    - Make all proxy modules nocanon aware and do not add the
      query string again in this case. PR 44803.
    - scoreboard: Remove unused proxy load balancer elements from scoreboard
-     image (not scoreboard memory itself).  
+     image (not scoreboard memory itself).
    - Support environment variable interpolation in reverse
-     proxying directives. 
+     proxying directives.
    - Do not try a direct connection if the connection via a
      remote proxy failed before and the request has a request body.
-   - ProxyPassReverse is now balancer aware. 
+   - ProxyPassReverse is now balancer aware.
    - Lower memory consumption for short lived connections.
-     PR 44026. 
+     PR 44026.
    - Keep connections to the backend persistent in the HTTPS case.
   mod_proxy_ajp:
    - Do not retry request in the case that we either failed to
      sent a part of the request body or if the request is not idempotent.
-     PR 44334 
+     PR 44334
   mod_proxy_ftp:
-   - Fix base for directory listings.  PR 27834 
+   - Fix base for directory listings.  PR 27834
   mod_proxy_http:
    - Fix processing of chunked responses if Connection:
      Transfer-Encoding is set in the response of the proxied
-     system. PR 44311 
+     system. PR 44311
    - Return HTTP status codes instead of apr_status_t values for
-     errors encountered while forwarding the request body PR 44165 
-  mod_rewrite: 
+     errors encountered while forwarding the request body PR 44165
+  mod_rewrite:
    - Initialize hash needed by ap_register_rewrite_mapfunc early
-     enough. PR 44641 
+     enough. PR 44641
    - Check all files used by DBM maps for freshness, mod_rewrite
-     didn't pick up on updated sdbm maps due to this.  PR41190 
-   - Don't canonicalise URLs with [P,NE] PR 43319 
+     didn't pick up on updated sdbm maps due to this.  PR41190
+   - Don't canonicalise URLs with [P,NE] PR 43319
   mod_speling:
    - remove regression from 1.3/2.0 behavior and drop dependency
      between mod_speling and AcceptPathInfo.
   mod_ssl:
    - Fix a memory leak with connections that have zlib compression
-     turned on. PR 44975 
+     turned on. PR 44975
   mod_substitute:
    - The default is now flattening the buckets after each
      substitution. The newly added 'q' flag allows for the quicker,
      more efficient bucket-splitting if the user so
   mod_unique_id:
-   - Fix timestamp value in UNIQUE_ID.  PR 37064 
+   - Fix timestamp value in UNIQUE_ID.  PR 37064
   ab (apache benchmark):
    - Include <limits.h> earlier if available since we may need
      INT_MAX (defined there on Windows) for the definition of MAX_REQUESTS.
@@ -4717,11 +4722,11 @@ Sun Jun 15 19:39:46 CEST 2008 - poeml@suse.de
    - Use a 64 bit unsigned int instead of a signed long to count the
   rotatelogs:
    - Log the current file size and error code/description when
-     failing to write to the log file.  
+     failing to write to the log file.
    - Added '-f' option to force rotatelogs to create the logfile as
-     soon as started, and not wait until it reads the first entry. 
-   - Don't leak memory when reopening the logfile.  PR 40183 
-   - Improve atomicity when using -l and cleaup code.  PR 44004 
+     soon as started, and not wait until it reads the first entry.
+   - Don't leak memory when reopening the logfile.  PR 40183
+   - Improve atomicity when using -l and cleaup code.  PR 44004
 - drop obsolete patches httpd-2.1.3alpha-autoconf-2.59.dif
                         httpd-2.2.x-CVE-2008-1678.patch
 - don't run autoreconf on SLES9
@@ -4737,10 +4742,10 @@ Mon Jun  9 17:18:03 CEST 2008 - poeml@suse.de
 -------------------------------------------------------------------
 Mon May 26 16:55:37 CEST 2008 - skh@suse.de
 
-- CVE-2008-1678: modules/ssl/mod_ssl.c (ssl_cleanup_pre_config): 
-  Remove the call to CRYPTO_cleanup_all_ex_data here, fixing a 
-  per-connection memory leak which occurs if the client indicates 
-  support for a compression algorithm in the initial handshake, and 
+- CVE-2008-1678: modules/ssl/mod_ssl.c (ssl_cleanup_pre_config):
+  Remove the call to CRYPTO_cleanup_all_ex_data here, fixing a
+  per-connection memory leak which occurs if the client indicates
+  support for a compression algorithm in the initial handshake, and
   mod_ssl is linked against OpenSSL >= 0.9.8f.  [bnc#392096]
   httpd-2.2.x-CVE-2008-1678.patch
 
@@ -4756,7 +4761,7 @@ Fri Apr 18 11:55:14 CEST 2008 - poeml@suse.de
 
 - fix from Factory:
   - remove dir /usr/share/omc/svcinfo.d as it is provided now
-    by filesystem 
+    by filesystem
 - remove obsolete httpd-2.2.x.doublefree.patch file, which isn't
   used since quite some time since the issue is resolved.
 
@@ -4810,29 +4815,29 @@ Sat Feb  2 05:37:34 CET 2008 - crrodriguez@suse.de
      Introduce the ProxyFtpDirCharset directive, allowing the administrator
      to identify a default, or specific servers or paths which list their
      contents in other-than ISO-8859-1 charset (e.g. utf-8).
-  mod_autoindex: 
+  mod_autoindex:
    - Generate valid XHTML output by adding the xhtml namespace. PR 43649
-  mod_charset_lite: 
+  mod_charset_lite:
    - Don't crash when the request has no associated filename.
-  mod_dav: 
+  mod_dav:
    - Fix evaluation of If-Match * and If-None-Match * conditionals.  PR 38034
    - Adjust etag generation to produce identical results on 32-bit
      and 64-bit platforms and avoid a regression with conditional PUT's on lock
      and etag. PR 44152.
-  mod_deflate: 
+  mod_deflate:
    - initialise inflate-out filter correctly when the first brigade
      contains no data buckets.  PR 43512
-  mod_disk_cache: 
+  mod_disk_cache:
   - Delete temporary files if they cannot be renamed to their final
     name.
-  mod_filter: 
+  mod_filter:
    - Don't segfault on (unsupported) chained FilterProvider usage.  PR 43956
-  mod_include: 
+  mod_include:
    - Add an "if" directive syntax to test whether an URL is
      accessible, and if so, conditionally display content. This
      allows a webmaster to hide a link to a private page when the
      user has no access to that page.
-  mod_ldap: 
+  mod_ldap:
    - Try to establish a new backend LDAP connection when the
      Microsoft LDAP client library returns LDAP_UNAVAILABLE, e.g.
      after the LDAP server has closed the connection due to a
@@ -4842,7 +4847,7 @@ Sat Feb  2 05:37:34 CET 2008 - crrodriguez@suse.de
    - Stop passing a reference to pconf around for (limited) use
      during request processing, avoiding possible memory corruption
      and crashes.
-  mod_proxy: 
+  mod_proxy:
    - Canonicalisation improvements. Add "nocanon" keyword to
      ProxyPass, to suppress URI-canonicalisation in a reverse proxy. Also,
      don't escape/unescape forward-proxied URLs.  PR 41798, 42592
@@ -4854,16 +4859,16 @@ Sat Feb  2 05:37:34 CET 2008 - crrodriguez@suse.de
    - check ProxyBlock for all blocked addresses PR 36987
    - Don't lose bytes when a response line arrives in small chunks.
      PR 40894
-  mod_proxy_ajp: 
+  mod_proxy_ajp:
    - Use 64K as maximum AJP packet size. This is the maximum length
      we can squeeze inside the AJP message packet.
    - Ignore any ajp13 flush packets received before we send the
      response headers. See Tomcat PR 43478.
    - Differentiate within AJP between GET and HEAD requests. PR 43060
-  mod_proxy_balancer: 
+  mod_proxy_balancer:
    - Do not reset lbstatus, lbfactor and lbset when starting a new
      child.  PR 39907
-  mod_proxy_http: 
+  mod_proxy_http:
    - Remove Warning headers with wrong date PR 16138
    - Correctly parse all Connection headers in proxy.  PR 43509
    - add Via header correctly (if enabled) to response, even where
@@ -4874,27 +4879,27 @@ Sat Feb  2 05:37:34 CET 2008 - crrodriguez@suse.de
    - strip hop-by-hop response headers PR 43455
    - Propagate Proxy-Authorization header correctly.  PR 25947
    - Don't segfault on bad line in FTP listing PR 40733
-  mod_rewrite: 
+  mod_rewrite:
    - Add option to suppress URL unescaping PR 34602
    - Add the novary flag to RewriteCond.
-  mod_substitute: 
+  mod_substitute:
    - Added a new output filter, which performs inline response
      content pattern matching (including regex) and substitution.
-  mod_ssl: 
+  mod_ssl:
    - Fix handling of the buffered request body during a per-location
      renegotiation, when an internal redirect occurs.  PR 43738.
    - Fix SSL client certificate extensions parsing bug. PR 44073.
    - Prevent memory corruption of version string.  PR 43865, 43334
-  mod_status: 
+  mod_status:
    - Add SeeRequestTail directive, which determines if
      ExtendedStatus displays the 1st 63 characters of the request
      or the last 63. Useful for those requests with large string
      lengths and which only vary with the last several characters.
-  event MPM: 
+  event MPM:
    - Add support for running under mod_ssl, by reverting to the
      Worker MPM behaviors, when run under an input filter that buffers
      its own data.
-  core: 
+  core:
    - Fix regression in 2.2.7 in chunk filtering with massively
      chunked requests.
    - Lower memory consumption of ap_r* functions by reusing the
@@ -4918,7 +4923,7 @@ Sat Feb  2 05:37:34 CET 2008 - crrodriguez@suse.de
    - scoreboard: improve error message on apr_shm_create failure PR
      40037
    - Don't send spurious "100 Continue" response lines.  PR 38014
-   - http_protocol: 
+   - http_protocol:
      - Escape request method in 413 error reporting.  Determined to
        be not generally exploitable, but a flaw in any case.  PR
        44014
@@ -4964,11 +4969,11 @@ Mon Sep 10 17:32:56 CEST 2007 - poeml@suse.de
      mod_proxy: Prevent reading past the end of a buffer when parsing
      date-related headers.  PR 41144.
   SECURITY: CVE-2007-1863 (cve.mitre.org)
-     mod_cache: Prevent a segmentation fault if attributes are listed in a 
-     Cache-Control header without any value. 
+     mod_cache: Prevent a segmentation fault if attributes are listed in a
+     Cache-Control header without any value.
   SECURITY: CVE-2007-3304 (cve.mitre.org)
      prefork, worker, event MPMs: Ensure that the parent process cannot
-     be forced to kill processes outside its process group. 
+     be forced to kill processes outside its process group.
   SECURITY: CVE-2006-5752 (cve.mitre.org)
      mod_status: Fix a possible XSS attack against a site with a public
      server-status page and ExtendedStatus enabled, for browsers which
@@ -4976,52 +4981,52 @@ Mon Sep 10 17:32:56 CEST 2007 - poeml@suse.de
   SECURITY: CVE-2007-1862 (cve.mitre.org)
      mod_mem_cache: Copy headers into longer lived storage; header names and
      values could previously point to cleaned up storage.  PR 41551.
-  mod_alias: 
+  mod_alias:
    - Accept path components (URL part) in Redirects. PR 35314.
-  mod_authnz_ldap: 
+  mod_authnz_ldap:
    - Don't return HTTP_UNAUTHORIZED during authorization when
-     LDAP authentication is configured but we haven't seen any 
-     'Require ldap-*' directives, allowing authorization to be passed to lower 
-     level modules (e.g. Require valid-user) PR 43281 
-  mod_autoindex: 
+     LDAP authentication is configured but we haven't seen any
+     'Require ldap-*' directives, allowing authorization to be passed to lower
+     level modules (e.g. Require valid-user) PR 43281
+  mod_autoindex:
    - Add in Type and Charset options to IndexOptions
-     directive. This allows the admin to explicitly set the 
+     directive. This allows the admin to explicitly set the
      content-type and charset of the generated page and is therefore
      a viable workaround for buggy browsers affected by CVE-2007-4465
   mod_cache:
    - Remove expired content from cache that cannot be revalidated.
-     PR 30370. 
+     PR 30370.
    - Do not set Date or Expires when they are missing from the
-     original response or are invalid.  
+     original response or are invalid.
    - Correctly handle HEAD requests on expired cache content.  PR
-     41230.  
+     41230.
    - Let Cache-Control max-age set the expiration of the cached
-     representation if Expires is not set.  
+     representation if Expires is not set.
    - Allow caching of requests with query arguments when
-     Cache-Control max-age is explicitly specified.  
+     Cache-Control max-age is explicitly specified.
    - Use the same cache key throughout the whole request processing
-     to handle escaped URLs correctly.  PR 41475.  
+     to handle escaped URLs correctly.  PR 41475.
    - Add CacheIgnoreQueryString directive. PR 41484.
    - While serving a cached entity ensure that filters that have
      been applied to this cached entity before saving it to the
-     cache are not applied again. PR 40090.  
+     cache are not applied again. PR 40090.
    - Correctly cache objects whose URL query string has been
-     modified by mod_rewrite. PR 40805.  
-  mod_cgi, mod_cgid: 
-   - Fix use of CGI scripts as ErrorDocuments.  PR 39710.  
-  mod_dbd: 
+     modified by mod_rewrite. PR 40805.
+  mod_cgi, mod_cgid:
+   - Fix use of CGI scripts as ErrorDocuments.  PR 39710.
+  mod_dbd:
    - Introduce configuration groups to allow inheritance by virtual
      hosts of database configurations from the main server.
      Determine the minimal set of distinct configurations and share
      connection pools whenever possible.  Allow virtual hosts to
-     override inherited SQL statements.  PR 41302.  
+     override inherited SQL statements.  PR 41302.
    - Create memory sub-pools for each DB connection and close DB
      connections in a pool cleanup function.  Ensure prepared
      statements are destroyed before DB connection is closed.  When
      using reslists, prevent segfaults when child processes exit,
      and stop memory leakage of ap_dbd_t structures.  Avoid use of
      global s->process->pool, which isn't destroyed by exiting
-     child processes in most multi-process MPMs.  PR 39985.  
+     child processes in most multi-process MPMs.  PR 39985.
    - Handle error conditions in dbd_construct() properly.  Simplify
      ap_dbd_open() and use correct arguments to apr_dbd_error()
      when non-threaded.  Register correct cleanup data in
@@ -5030,61 +5035,61 @@ Mon Sep 10 17:32:56 CEST 2007 - poeml@suse.de
      wherever possible.
    - Stash DBD connections in request_config of initial request
      only, or else sub-requests and internal redirections may cause
-     entire DBD pool to be stashed in a single HTTP request.  
-  mod_deflate: 
+     entire DBD pool to be stashed in a single HTTP request.
+  mod_deflate:
    - don't try to process metadata buckets as data.  what should
      have been a 413 error was logged as a 500 and a blank screen
      appeared at the browser.
-   - fix protocol handling in deflate input filter PR 23287 
-  mod_disk_cache: 
+   - fix protocol handling in deflate input filter PR 23287
+  mod_disk_cache:
    - Allow Vary'd responses to be refreshed properly.
-  mod_dumpio: 
+  mod_dumpio:
    - Fix for correct dumping of traffic on EBCDIC hosts Data had
      been incorrectly converted twice, resulting in garbled log
-     output. 
-  mod_expires: 
-   - don't crash on bad configuration data PR 43213 
-  mod_filter: 
-   - fix integer comparisons in dispatch rules PR 41835 
-   - fix merging of ! and = in FilterChain PR 42186 
-  mod_headers: 
+     output.
+  mod_expires:
+   - don't crash on bad configuration data PR 43213
+  mod_filter:
+   - fix integer comparisons in dispatch rules PR 41835
+   - fix merging of ! and = in FilterChain PR 42186
+  mod_headers:
    - Allow % at the end of a Header value. PR 36609.
-  mod_info: 
-   - mod_info outputs invalid XHTML 1.0 transitional.  PR 42847 
-  mod_ldap: 
+  mod_info:
+   - mod_info outputs invalid XHTML 1.0 transitional.  PR 42847
+  mod_ldap:
    - Avoid possible crashes, hangs, and busy loops due to improper
-     merging of the cache lock in vhost config PR 43164 
-  mod_ldap: 
+     merging of the cache lock in vhost config PR 43164
+  mod_ldap:
    - Remove the hardcoded size limit parameter for
      ldap_search_ext_s and replace it with an APR_ defined value
      that is set according to the LDAP SDK being used.
-  mod_mem_cache: 
+  mod_mem_cache:
    - Increase the minimum and default value for MCacheMinObjectSize
      from 0 to 1, as a MCacheMinObjectSize of 0 does not make sense
      and leads to a division by zero.  PR 40576.
-  mod_negotiation: 
-   - preserve Query String in resolving a type map PR 33112 
+  mod_negotiation:
+   - preserve Query String in resolving a type map PR 33112
   mod_proxy:
    -  mod_proxy_http: accept proxy-sendchunked/proxy-sendchunks as
-      synonymous.  PR 43183 
+      synonymous.  PR 43183
    -  Ensure that at least scheme://hostname[:port] matches between
       worker and URL when searching for the best fitting worker for
-      a given URL.  PR 40910 
+      a given URL.  PR 40910
    -  Improve network performance by setting APR_TCP_NODELAY
-      (disable Nagle algorithm) on sockets if implemented.  PR 42871 
-   -  Add a missing assignment in an error checking code path.  PR 40865 
-   -  don't URLencode tilde in path component PR 38448 
-   -  enable Ignore Errors option on ProxyPass Status.  PR 43167 
+      (disable Nagle algorithm) on sockets if implemented.  PR 42871
+   -  Add a missing assignment in an error checking code path.  PR 40865
+   -  don't URLencode tilde in path component PR 38448
+   -  enable Ignore Errors option on ProxyPass Status.  PR 43167
    - Allow to use different values for sessionid in url encoded id
-     and cookies. PR 41897. 
+     and cookies. PR 41897.
    - Fix the 503 returned when session route does not match any of
-     the balancer members. 
+     the balancer members.
    - Added ProxyPassMatch directive, which is similar to ProxyPass
-     but takes a regex local path prefix. 
+     but takes a regex local path prefix.
    - Print the correct error message for erroneous configured
-     ProxyPass directives. PR 40439.  
+     ProxyPass directives. PR 40439.
    - Fix some proxy setting inheritance problems (eg:
-     ProxyTimeout). PR 11540.  
+     ProxyTimeout). PR 11540.
    - proxy/ajp_header.c: Fixed header token string comparisons
      Matching of header tokens failed to include the trailing NIL
      byte and could misinterpret a longer header token for a
@@ -5092,41 +5097,41 @@ Mon Sep 10 17:32:56 CEST 2007 - poeml@suse.de
      case insensitive.
    - proxy/ajp_header.c: Backport of an AJP protocol fix for EBCDIC
      On EBCDIC machines, the status_line string was incorrectly
-     converted twice. 
-  mod_proxy_connect: 
-   - avoid segfault on DNS lookup failure.  PR 40756 
+     converted twice.
+  mod_proxy_connect:
+   - avoid segfault on DNS lookup failure.  PR 40756
   mod_proxy_http:
    - HTTP proxy ProxyErrorOverride: Leave 1xx and 3xx responses
      alone.  Only processing of error responses (4xx, 5xx) will be
      altered. PR 39245.
-   - Don't try to read body of a HEAD request before responding. PR 41644 
+   - Don't try to read body of a HEAD request before responding. PR 41644
    - Handle request bodies larger than 2 GB by converting the
      Content-Length header of the request correctly. PR 40883.
-  mod_ssl: 
+  mod_ssl:
    - Fix spurious hostname mismatch warning for valid wildcard
-     certificates.  PR 37911.  
+     certificates.  PR 37911.
    - Version reporting update; displays 'compiled against' Apache
      and build-time SSL Library versions at loglevel [info], while
      reporting the run-time SSL Library version in the server info
      tags.  Helps to identify a mod_ssl built against one flavor of
      OpenSSL but running against another (also adds SSL-C version
-     number reporting.)  
+     number reporting.)
    - initialize thread locks before initializing the hardware
      acceleration library, so the latter can make use of the
-     former.  PR 20951.  
+     former.  PR 20951.
   core:
-   - Do not replace a Date header set by a proxied backend server. PR 40232 
+   - Do not replace a Date header set by a proxied backend server. PR 40232
    - log core: ensure we use a special pool for stderr logging, so that
      the stderr channel remains valid from the time plog is destroyed,
      until the time the open_logs hook is called again.
    - main core: Emit errors during the initial apr_app_initialize()
      or apr_pool_create() (when apr-based error reporting is not ready).
-   - log core: fix the new piped logger case where we couldn't connect 
-     the replacement stderr logger's stderr to the NULL stdout stream.  
-     Continue in this case, since the previous alternative of no error 
-     logging at all (/dev/null) is far worse. 
-   - Correct a regression since 2.0.x in the handling of AllowOverride 
-     Options. PR 41829.  
+   - log core: fix the new piped logger case where we couldn't connect
+     the replacement stderr logger's stderr to the NULL stdout stream.
+     Continue in this case, since the previous alternative of no error
+     logging at all (/dev/null) is far worse.
+   - Correct a regression since 2.0.x in the handling of AllowOverride
+     Options. PR 41829.
    - Unix MPMs: Catch SIGFPE so that exception hooks and CoreDumpDirectory
      can work after that terminating signal.
    -  mod_so: Provide more helpful LoadModule feedback when an error occurs.
@@ -5134,11 +5139,11 @@ Mon Sep 10 17:32:56 CEST 2007 - poeml@suse.de
    - mime.types: Many updates to sync with IANA registry and common
      unregistered types that the owners refuse to register.  Admins
      are encouraged to update their installed mime.types file.  PR:
-     35550, 37798, 39317, 31483 
+     35550, 37798, 39317, 31483
    - mime.types: add Registered Javascript/ECMAScript MIME types
-     (RFC4329) PR 40299 
+     (RFC4329) PR 40299
    - htdbm: Enable crypt support on platforms with crypt() but not
-     <crypt.h>, such as z/OS.  
+     <crypt.h>, such as z/OS.
    - ab.c: Correct behavior of HTTP request headers sent by ab in
      presence of -H command-line overrides. PR 31268, 26554.
    - ab.c: The apr_port_t type is unsigned, but ab was using a
@@ -5194,7 +5199,7 @@ Fri Aug 31 11:42:58 CEST 2007 - poeml@suse.de
 -------------------------------------------------------------------
 Thu Aug 23 11:27:19 CEST 2007 - mskibbe@suse.de
 
-- Bug 289996 - VUL-0: mod_status XSS in public server status page 
+- Bug 289996 - VUL-0: mod_status XSS in public server status page
 - Bug 289997 - VUL-0: apache2: mod_cache remote denial of service
 
 -------------------------------------------------------------------
@@ -5222,7 +5227,7 @@ Fri Mar 23 08:55:47 CET 2007 - poeml@suse.de
 -------------------------------------------------------------------
 Tue Mar 20 10:47:18 CET 2007 - mskibbe@suse.de
 
-- add firewall file for ssl (#246929) 
+- add firewall file for ssl (#246929)
 
 -------------------------------------------------------------------
 Mon Mar 19 12:44:22 CET 2007 - mskibbe@suse.de
@@ -5233,7 +5238,7 @@ Mon Mar 19 12:44:22 CET 2007 - mskibbe@suse.de
 -------------------------------------------------------------------
 Fri Jan 26 12:44:04 CET 2007 - poeml@suse.de
 
-- the QUICKSTART Readmes have been moved to 
+- the QUICKSTART Readmes have been moved to
   http://www.opensuse.org/Apache
 
 -------------------------------------------------------------------
@@ -5247,7 +5252,7 @@ Mon Jan 22 11:24:32 CET 2007 - poeml@suse.de
 -------------------------------------------------------------------
 Sat Jan 20 17:16:20 CET 2007 - poeml@suse.de
 
-- add httpd-2.2.x.doublefree.patch, backport of 
+- add httpd-2.2.x.doublefree.patch, backport of
   http://svn.apache.org/viewvc?diff_format=h&view=rev&revision=496831
   See http://issues.apache.org/bugzilla/show_bug.cgi?id=39985
 
@@ -5259,19 +5264,19 @@ Thu Jan 18 22:00:48 CET 2007 - poeml@suse.de
 -------------------------------------------------------------------
 Fri Jan 12 14:25:51 CET 2007 - mskibbe@suse.de
 
-- change path to service cml document (fate #301708) 
+- change path to service cml document (fate #301708)
 
 -------------------------------------------------------------------
 Tue Jan  9 15:59:42 CET 2007 - poeml@suse.de
 
 - upstream 2.2.4
-  mod_authnz_ldap: 
+  mod_authnz_ldap:
    - Add an AuthLDAPRemoteUserAttribute directive. If set,
      REMOTE_USER will be set to this attribute, rather than the
      username supplied by the user. Useful for example when you
      want users to log in using an email address, but need to
      supply a userid instead to the backend.
-  mod_cache: 
+  mod_cache:
    - From RFC3986 (section 6.2.3.) if a URI contains an authority
      component and an empty path, the empty path is to be
      equivalent to "/". It explicitly cites the following four URIs
@@ -5289,44 +5294,44 @@ Tue Jan  9 15:59:42 CET 2007 - poeml@suse.de
   mod_cgi and mod_cgid:
    - Don't use apr_status_t error return from input filters as HTTP
      return value from the handler.  PR 31579.
-  mod_dbd: 
+  mod_dbd:
    - share per-request database handles across subrequests and
      internal redirects
    - key connection pools to virtual hosts correctly even when
      ServerName is unset/unavailable
-  mod_deflate: 
+  mod_deflate:
    - Rework inflate output and deflate output filter to fix several
      issues: Incorrect handling of flush buckets, potential memory
      leaks, excessive memory usage in inflate output filter for
      large compressed content. PR 39854.
-  mod_disk_cache: 
+  mod_disk_cache:
    - Make sure that only positive integers are accepted for the
      CacheMaxFileSize and CacheMinFileSize parameters in the config
      file. PR39380.
   mod_dumpio:
    - Allow mod_dumpio to log at other than DEBUG levels via the new
      DumpIOLogLevel directive.
-  mod_echo: 
+  mod_echo:
    - Fix precedence problem in if statement. PR 40658.
-  mod_ext_filter: 
+  mod_ext_filter:
    - Handle filter names which include capital letters.  PR 40323.
-  mod_headers: 
+  mod_headers:
    - Support regexp-based editing of HTTP headers.
-  mod_mime_magic: 
+  mod_mime_magic:
    - Fix precedence problem in if statement. PR 40656.
-  mod_mem_cache: 
+  mod_mem_cache:
    - Memory leak fix: Unconditionally free the buffer.
    - Convert mod_mem_cache to use APR memory pool functions by
      creating a root pool for object persistence across requests.
      This also eliminates the need for custom serialization code.
-  mod_proxy: 
+  mod_proxy:
    - Don't try to use dead backend connection. PR 37770.
    - Add explicit flushing feature. When Servlet container sends
      AJP body message with size 0, this means that Servlet
      container has asked for an explicit flush. Create flush bucket
      in that case. This feature has been added to the recent Tomcat
      versions without breaking the AJP protocol.
-  mod_proxy_ajp: 
+  mod_proxy_ajp:
    - Close connection to backend if reading of request body fails.
      PR 40310.
    - Added cping/cpong support for the AJP protocol.  A new worker
@@ -5334,7 +5339,7 @@ Tue Jan  9 15:59:42 CET 2007 - poeml@suse.de
      expecting CPONG packet within defined timeout.  In case the
      backend is too busy this will fail instead sending the full
      header.
-  mod_proxy_balancer: 
+  mod_proxy_balancer:
    - Workers can now be defined as part of a balancer cluster "set"
      in which members of a lower-numbered set are preferred over
      higher numbered ones.
@@ -5382,7 +5387,7 @@ Tue Jan  9 15:59:42 CET 2007 - poeml@suse.de
 -------------------------------------------------------------------
 Mon Jan  8 11:57:04 CET 2007 - mskibbe@suse.de
 
-- Apache XML Service Description Document (fate #301708) 
+- Apache XML Service Description Document (fate #301708)
 
 -------------------------------------------------------------------
 Thu Dec 21 10:36:14 CET 2006 - poeml@suse.de
@@ -5390,7 +5395,7 @@ Thu Dec 21 10:36:14 CET 2006 - poeml@suse.de
 - add patch to add charset=utf-8 to directory listings generated by
   mod_autoindex, and add a directive to allow overriding the
   charset (testing, needs to be discussed with upstream) [#153557]
-  httpd-2.2.3-AddDirectoryIndexCharset.patch 
+  httpd-2.2.3-AddDirectoryIndexCharset.patch
 
 -------------------------------------------------------------------
 Wed Dec 20 15:58:35 CET 2006 - poeml@suse.de
@@ -5434,7 +5439,7 @@ Wed Aug  9 16:13:07 CEST 2006 - poeml@suse.de
   |  client SDKs that don't support the LDAP_SECURITY_ERROR macro. PR 39529.
   | mod_autoindex: Fix filename escaping with FancyIndexing disabled.
   |  PR 38910.
-  | mod_cache: 
+  | mod_cache:
   | - Make caching of reverse SSL proxies possible again. PR 39593.
   | - Do not overwrite the Content-Type in the cache, for
   |   successfully revalidated cached objects. PR 39647.
@@ -5495,16 +5500,16 @@ Fri Jun  9 23:11:45 CEST 2006 - poeml@suse.de
   |   outputting in HTML to avoid potential cross-site scripting.
   |   Change also made to ap_escape_html so we escape quotes.
   |   Reported by JPCERT.
-  | mod_cache: 
+  | mod_cache:
   |  - Make caching of reverse proxies possible again. PR 38017.
-  | mod_disk_cache: 
+  | mod_disk_cache:
   |  - Return the correct error codes from bucket read failures,
   |    instead of APR_EGENERAL.
   | mod_dbd:
   |  - Update defaults, improve error reporting.
   |  - Create own pool and mutex to avoid problem use of process
   |    pool in request processing.
-  | mod_deflate: 
+  | mod_deflate:
   |  - work correctly in an internal redirect
   | mod_proxy:
   |  - don't reuse a connection that may be to the wrong backend PR 39253
@@ -5513,9 +5518,9 @@ Fri Jun  9 23:11:45 CEST 2006 - poeml@suse.de
   |  - Fix incorrect usage of local and shared worker init.  PR 38403.
   |  - If we get an error reading the upstream response, close the
   |    connection.
-  | mod_proxy_balancer: 
+  | mod_proxy_balancer:
   |  - Initialize members of a balancer correctly.  PR 38227.
-  | mod_proxy_ajp: 
+  | mod_proxy_ajp:
   |  - Flushing of the output after each AJP chunk is now
   |    configurable at runtime via the 'flushpackets' and 'flushwait'
   |    worker params. Minor MMN bump.
@@ -5524,18 +5529,18 @@ Fri Jun  9 23:11:45 CEST 2006 - poeml@suse.de
   |    buffer boundaries and thus revealing possibly sensitive memory
   |    contents to the client.
   |  - Support common headers of the AJP protocol in responses.  PR 38340.
-  | mod_proxy_http: 
+  | mod_proxy_http:
   |  - Do send keep-alive header if the client sent connection:
   |    keep-alive and do not close backend connection if the client
   |    sent connection: close. PR 38524.
-  | mod_proxy_balancer: 
+  | mod_proxy_balancer:
   |  - Do not overwrite the status of initialized workers and respect
   |    the configured status of uninitilized workers when creating a
   |    new child process.
   |  - Fix off-by-one error in proxy_balancer.  PR 37753.
-  | mod_speling: 
+  | mod_speling:
   |  - Stop crashing with certain non-file requests.
-  | mod_ssl: 
+  | mod_ssl:
   |  - Fix possible crashes in shmcb with gcc 4 on platforms
   |    requiring word-aligned pointers.  PR 38838.
   | miscellaneous:
@@ -5602,7 +5607,7 @@ Mon Feb 20 13:49:07 CET 2006 - poeml@suse.de
 -------------------------------------------------------------------
 Mon Jan 30 12:41:20 CET 2006 - poeml@suse.de
 
-- added Requires: libapr-util1-devel to apache2-devel package [#146496] 
+- added Requires: libapr-util1-devel to apache2-devel package [#146496]
 
 -------------------------------------------------------------------
 Fri Jan 27 15:10:15 CET 2006 - poeml@suse.de
@@ -5632,7 +5637,7 @@ Mon Dec 19 13:25:20 CET 2005 - poeml@suse.de
 
 - update to 2.2.0
 - enable all new modules
-- replaced modules "auth auth_dbm access" in default configuration 
+- replaced modules "auth auth_dbm access" in default configuration
   by "auth_basic authn_file authn_dbm authz_host authz_default
   authz_user""
 - /usr/share/apache2/apache-20-22-upgrade will fix the module list
@@ -5677,7 +5682,7 @@ Mon Oct 24 14:17:08 CEST 2005 - poeml@suse.de
   |    mod_ssl: Fix a security issue where "SSLVerifyClient" was
   |    not enforced in per-location context if "SSLVerifyClient
   |    optional" was configured in the vhost configuration.
-  | SECURITY: CAN-2005-2491 (cve.mitre.org): 
+  | SECURITY: CAN-2005-2491 (cve.mitre.org):
   |    Fix integer overflows in PCRE in quantifier parsing which
   |    could be triggered by a local user through use of a
   |    carefully-crafted regex in an .htaccess file.
@@ -5708,7 +5713,7 @@ Mon Oct 24 14:17:08 CEST 2005 - poeml@suse.de
   |    alter the behavior of the TRACE method.  This addresses a
   |    flaw in proxy conformance to RFC 2616 - previously the proxy
   |    server would accept a TRACE request body although the RFC
-  |    prohibited it.  The default remains 'TraceEnable on'. 
+  |    prohibited it.  The default remains 'TraceEnable on'.
   |  - Add ap_log_cerror() for logging messages associated with
   |    particular client connections.
   |  - Support the suppress-error-charset setting, as with Apache
@@ -5716,7 +5721,7 @@ Mon Oct 24 14:17:08 CEST 2005 - poeml@suse.de
   |  - Fix bad globbing comparison which could result in getting a
   |    directory listing when a file was requested. PR 34512.
   |  - Fix a file descriptor leak when starting piped loggers.  PR
-  |    33748. 
+  |    33748.
   |  - Prevent hangs of child processes when writing to piped
   |    loggers at the time of graceful restart.  PR 26467.
   | mod_cgid:
@@ -5729,7 +5734,7 @@ Mon Oct 24 14:17:08 CEST 2005 - poeml@suse.de
   | mod_ldap:
   |  - Fix PR 36563. Keep track of the number of attributes
   |    retrieved from LDAP so that all of the values can be
-  |    properly cached even if the value is NULL. 
+  |    properly cached even if the value is NULL.
   |  - Fix core dump if mod_auth_ldap's
   |    mod_auth_ldap_auth_checker() was called even if
   |    mod_auth_ldap_check_user_id() was not (or if it didn't
@@ -5755,10 +5760,10 @@ Mon Oct 24 14:17:08 CEST 2005 - poeml@suse.de
   |    RewriteMap txt: files.
   | mod_userdir:
   |  - Fix possible memory corruption issue.  PR 34588.
-- drop obsolete patches httpd-2.0.54-openssl-0.9.8.dif 
-                        httpd-2.0.54-CAN-2005-1268-mod_ssl-crl.dif 
-                        apache2-bundled-pcre-5.0-CAN-2005-2491.dif 
-                        httpd-2.0.54-SSLVerifyClient-CAN-2005-2700.diff 
+- drop obsolete patches httpd-2.0.54-openssl-0.9.8.dif
+                        httpd-2.0.54-CAN-2005-1268-mod_ssl-crl.dif
+                        apache2-bundled-pcre-5.0-CAN-2005-2491.dif
+                        httpd-2.0.54-SSLVerifyClient-CAN-2005-2700.diff
                         httpd-2.0.54-ap_byterange-CAN-2005-2728.diff
 - add httpd-2.0.55-37145_2.0.x.diff (broken mod_proxy in 2.0.55)
 
@@ -5784,7 +5789,7 @@ Fri Sep 30 09:47:20 CEST 2005 - poeml@suse.de
 -------------------------------------------------------------------
 Mon Sep 26 01:24:18 CEST 2005 - ro@suse.de
 
-- define LDAP_DEPRECATED in CFLAGS 
+- define LDAP_DEPRECATED in CFLAGS
 
 -------------------------------------------------------------------
 Fri Sep  2 12:55:08 CEST 2005 - poeml@suse.de
@@ -5817,7 +5822,7 @@ Fri Aug 26 14:33:34 CEST 2005 - lmuelle@suse.de
 -------------------------------------------------------------------
 Sun Aug 14 00:20:26 CEST 2005 - ro@suse.de
 
-- alingn suexec2 permissions with permissions.secure 
+- alingn suexec2 permissions with permissions.secure
 
 -------------------------------------------------------------------
 Thu Aug 11 11:09:49 CEST 2005 - poeml@suse.de
@@ -5858,14 +5863,14 @@ Mon Jun 20 12:57:17 CEST 2005 - poeml@suse.de
 Wed May 18 16:46:22 CEST 2005 - poeml@suse.de
 
 - update to 2.0.54. Relevant changes:
-  | mod_cache: 
+  | mod_cache:
   |  - Add CacheIgnoreHeaders directive.  PR 30399.
   | mod_dav:
   | - Correctly export all public functions.
   | mod_ldap:
   | - Added the directive LDAPConnectionTimeout to configure the
   |   ldap socket connection timeout value.
-  | mod_ssl: 
+  | mod_ssl:
   | - If SSLUsername is used, set r->user earlier.  PR 31418.
   | miscellaneous:
   | - Unix MPMs: Shut down the server more quickly when child
@@ -5943,7 +5948,7 @@ Wed Feb  9 11:46:37 CET 2005 - poeml@suse.de
   | SECURITY: CAN-2004-0885 (cve.mitre.org)
   |   mod_ssl: Fix a bug which allowed an SSLCipherSuite setting to be
   |   bypassed during an SSL renegotiation.  PR 31505.
-  | mod_dumpio: 
+  | mod_dumpio:
   |  - new I/O logging/dumping module, added to the
   |    modules/expermimental subdirectory.
   | mod_ssl:
@@ -6117,10 +6122,10 @@ Fri Oct  8 18:36:21 CEST 2004 - poeml@suse.de
   |   authentication.  PR 31315.
   | util_ldap:
   |   Fix a segfault in the LDAP cache when it is configured switched off.
-  | mod_mem_cache: 
+  | mod_mem_cache:
   |   Fixed race condition causing segfault because of memory being
   |   freed twice, or reused after being freed.
-  | mod_log_config: 
+  | mod_log_config:
   |   Fix a bug which prevented request completion time from being
   |   logged for I_INSIST_ON_EXTRA_CYCLES_FOR_CLF_COMPLIANCE
   |   processing.  PR 29696.
@@ -6132,7 +6137,7 @@ Fri Oct  8 18:36:21 CEST 2004 - poeml@suse.de
   |   - Fix the global mutex crash when the global mutex is never
   |     allocated due to disabled/empty caches.
   |   - Add -l option to rotatelogs to let it use local time rather
-  |     than UTC.  PR 24417.  
+  |     than UTC.  PR 24417.
 - changes from 2.0.51:
   | SECURITY: CAN-2004-0786 (cve.mitre.org)
   |   Fix an input validation issue in apr-util which could be
@@ -6159,12 +6164,12 @@ Fri Oct  8 18:36:21 CEST 2004 - poeml@suse.de
   |    sections.  PR 27985.
   |  - no longer confuse the RewriteMap caches if different maps
   |    defined in different virtual hosts use the same map name. PR 26462.
-  | mod_ssl: 
+  | mod_ssl:
   |  - Add new 'ssl_is_https' optional function.
   |  - Add "SSLUserName" directive to set r->user based on a chosen SSL
   |    environment variable.  PR 20957.
   |  - Avoid startup failure after unclean shutdown if using shmcb.  PR 18989.
-  | mod_autoindex: 
+  | mod_autoindex:
   |  - Don't truncate the directory listing if a stat() call fails (for
   |    instance on a >2Gb file).  PR 17357.
   | mod_cache, mod_disk_cache, mod_mem_cache:
@@ -6174,10 +6179,10 @@ Fri Oct  8 18:36:21 CEST 2004 - poeml@suse.de
   |  - Implement binary format for on-disk header files.
   |  - Optimize network performance of disk cache subsystem by allowing
   |    zero-copy (sendfile) writes and other miscellaneous fixes.
-  | mod_userdir: 
+  | mod_userdir:
   |  - Ensure that the userdir identity is used for suexec userdir
   |    access in a virtual host which has suexec configured.  PR 18156.
-  | mod_setenvif: 
+  | mod_setenvif:
   |  - Remove "support" for Remote_User variable which never worked at
   |    all. PR 25725.
   |  - Extend the SetEnvIf directive to capture subexpressions of the
@@ -6236,7 +6241,7 @@ Fri Oct  8 18:36:21 CEST 2004 - poeml@suse.de
   |    address.  PR 28174.
   |  - initialize server arrays prior to calling
   |    ap_setup_prelinked_modules so that static modules can push
-  |    Defines values when registering hooks just like DSO modules can 
+  |    Defines values when registering hooks just like DSO modules can
 - drop obsolete security fixes
     httpd-2.0.50-CAN-2004-0751-mod_ssl-proxied-request-segfault.dif
     httpd-2.0.50-CAN-2004-0748-mod_ssl-input-filter-infinite-loop.dif
@@ -6307,13 +6312,13 @@ Thu Jul  8 14:17:13 CEST 2004 - poeml@suse.de
   |   platforms; preventing deadlock when stderr output fills pipe
   |   buffer.  Also fixes case where stderr from nph- scripts could be
   |   lost.  PR 22030, 18348.
-  | mod_dav: 
+  | mod_dav:
   |  - Fix a problem that could cause crashes when manipulating locks
   |    on some platforms.
-  | mod_dav_fs: 
+  | mod_dav_fs:
   |  - Fix MKCOL response for missing parent collections, which caused
   |    issues for the Eclipse WebDAV extension.  PR 29034.
-  | mod_deflate: 
+  | mod_deflate:
   |  - Fix memory consumption (which was proportional to the response
   |    size).  PR 29318.
   | mod_expires:
@@ -6326,10 +6331,10 @@ Thu Jul  8 14:17:13 CEST 2004 - poeml@suse.de
   |  - no longer removes the EOS bucket. PR 27928.
   | mod_proxy:
   |  - Fix handling of IPv6 numeric strings.
-  | mod_rewrite: 
+  | mod_rewrite:
   |   no longer turns forward proxy requests into reverse proxy
   |   requests. PR 28125
-  | mod_ssl: 
+  | mod_ssl:
   |  - Log the errors returned on failure to load or initialize a
   |    crypto accelerator engine.
   |  - Fix a potential segfault in the 'shmcb' session cache for small
@@ -6538,7 +6543,7 @@ Mon Mar 15 17:36:07 CET 2004 - poeml@suse.de
   |    headers, to which the backend server respond with status 304.)
   |  - Fix memory leak in handling of request bodies during reverse
   |    proxy operations.  PR 24991.
-  |  - mod_proxy: Fix cases where an invalid status-line could be sent 
+  |  - mod_proxy: Fix cases where an invalid status-line could be sent
   |    to the client.  PR 23998.
   | mod_rewrite:
   |  - Catch an edge case, where strange subsequent RewriteRules
@@ -6613,12 +6618,12 @@ Mon Mar 15 17:36:07 CET 2004 - poeml@suse.de
   |    from mime.types. PR 26079.
   |  - Remove compile-time length limit on request strings. Length is
   |    now enforced solely with the LimitRequestLine config directive.
-  |  - Set the scoreboard state to indicate logging prior to running 
+  |  - Set the scoreboard state to indicate logging prior to running
   |    logging hooks so that server-status will show 'L' for hung loggers
   |    instead of 'W'.
   |  - Fix the inability to log errors like exec failure in
-  |    mod_ext_filter/mod_cgi script children.  This was broken after 
-  |    such children stopped inheriting the error log handle.  
+  |    mod_ext_filter/mod_cgi script children.  This was broken after
+  |    such children stopped inheriting the error log handle.
   |  - fix "Expected </Foo>> but saw </Foo>" errors in nested,
   |    argumentless containers.
   |  - ap_mpm.h: Fix include guard of ap_mpm.h to reference mpm
@@ -6638,8 +6643,8 @@ Mon Mar 15 17:36:07 CET 2004 - poeml@suse.de
   |  - Add XHTML Document Type Definitions to httpd.h (minor MMN bump).
   |  - Fix build with parallel make.  PR 24643.
   |  - Add fatal exception hook for use by diagnostic modules.  The hook
-  |    is only available if the --enable-exception-hook configure parm 
-  |    is used and the EnableExceptionHook directive has been set to 
+  |    is only available if the --enable-exception-hook configure parm
+  |    is used and the EnableExceptionHook directive has been set to
   |    "on".
   |  - Improve 'configure --help' output for some modules.
 - drop two hunks from httpd-2.0.47-headtail.dif (buildcheck.sh is
@@ -6716,7 +6721,7 @@ Thu Oct 30 11:41:19 CET 2003 - poeml@suse.de
   Security [CAN-2003-0542]: Fix buffer overflows in mod_alias and
     mod_rewrite which occurred if one configured a regular
     expression with more than 9 captures.
-  mod_rewrite: 
+  mod_rewrite:
     - Don't die silently when failing to open RewriteLogs. PR 23416
     - Fix support of the [P] option to send rewritten request using
       "proxy:". The code was adding multiple "proxy:" fields in the
@@ -6724,7 +6729,7 @@ Thu Oct 30 11:41:19 CET 2003 - poeml@suse.de
     - Ignore RewriteRules in .htaccess files if the directory
       containing the .htaccess file is requested without a trailing
       slash.  PR 20195.
-  mod_include: 
+  mod_include:
     - Fix a trio of bugs that would cause various unusual sequences
       of parsed bytes to omit portions of the output stream. PR 21095
     - fix segfault which occured if the filename was not set, for
@@ -6744,12 +6749,12 @@ Thu Oct 30 11:41:19 CET 2003 - poeml@suse.de
     by the icon of that file. PR 9587.
   mod_usertrack: do not get false positive matches on the
     user-tracking cookie's name. PR 16661.
-  mod_cache: 
+  mod_cache:
     - Fix the cache code so that responses can be cached if they
       have an Expires header but no Etag or Last-Modified headers.
       PR 23130.  cache_util: Fix ap_check_cache_freshness to check
       max_age, smax_age, and expires as directed in RFC 2616.
-  mod_deflate: 
+  mod_deflate:
     - fix to not call deflate() without checking first whether it
       has something to deflate. (Currently this causes deflate to
       generate a fatal error according to the zlib spec.) PR 22259.
@@ -6766,12 +6771,12 @@ Thu Oct 30 11:41:19 CET 2003 - poeml@suse.de
     bytes were sent (e.g. with 304 or 204 response codes).
   mod_ext_filter: Set additional environment variables for use by
     the external filter.  PR 20944.
-  core: 
+  core:
     - allow <Foo>..</Foo> containers (no arguments in the opening
       tag), as in 1.3. Needed by mod_perl <Perl> sections
     - Fix a misleading message from the some of the threaded MPMs
       when MaxClients has to be lowered due to the setting of
-      ServerLimit.  
+      ServerLimit.
     - Avoid an infinite recursion, which occured if the name of an
       included config file or directory contained a wildcard
       character. PR 22194.
@@ -6788,7 +6793,7 @@ Thu Oct 30 11:41:19 CET 2003 - poeml@suse.de
       PR 10678, 11602.
     - Update mime.types to include latest IANA and W3C types.
     - Modify ap_get_client_block() to note if it has seen EOS.
-  ab: 
+  ab:
     - Overlong credentials given via command line no longer clobber
       the buffer.
     - Work over non-loopback on Unix again. PR 21495.
@@ -6895,7 +6900,7 @@ Fri Aug 15 21:40:46 CEST 2003 - poeml@suse.de
 - change group of wwwrun user: nogroup -> www [#21782]
 - proxycachedir and localstatedir should not be world readable
 - set DEFAULT_PIDLOG to /var/run/httpd2.pid, so we don't need to
-  configure the PidFile directive 
+  configure the PidFile directive
 - add -fno-strict-aliasing, due to warnings about code where
   dereferencing type-punned pointers will break strict aliasing
 - clean the RPM_BUILD_ROOT, but not in the build system
@@ -6946,10 +6951,10 @@ Thu Jul 10 16:49:50 CEST 2003 - poeml@suse.de
     place of the strong one.
   Security [CAN-2003-0253]: Fixed a bug in prefork MPM causing
     temporary denial of service when accept() on a rarely accessed
-    port returns certain errors. 
+    port returns certain errors.
   Security [CAN-2003-0254]: Fixed a bug in ftp proxy causing denial
     of service when target host is IPv6 but proxy server can't
-    create IPv6 socket.  Fixed by the reporter. 
+    create IPv6 socket.  Fixed by the reporter.
   Security [VU#379828]: Prevent the server from crashing when entering
     infinite loops. The new LimitInternalRecursion directive
     configures limits of subsequent internal redirects and nested
@@ -6959,12 +6964,12 @@ Thu Jul 10 16:49:50 CEST 2003 - poeml@suse.de
     bucket if it's the last bucket.  This prevents creating
     unneccessary empty brigades which may not be destroyed until
     the end of a keepalive connection.
-  mod_cgid: 
+  mod_cgid:
     Eliminate a double-close of a socket.  This resolves various
     operational problems in a threaded MPM, since on the second
     attempt to close the socket, the same descriptor was often
     already in use by another thread for another purpose.
-  mod_negotiation: 
+  mod_negotiation:
     Introduce "prefer-language" environment variable, which allows
     to influence the negotiation process on request basis to prefer
     a certain language.
@@ -6986,7 +6991,7 @@ Wed May 28 20:40:24 CEST 2003 - poeml@suse.de
   mod_ssl:
     - SSL session caching(shmht) : Fix a SEGV problem with SHMHT
       session caching.
-  mod_deflate: 
+  mod_deflate:
     - Add another check for already compressed content
     - Check also err_headers_out for an already set
       Content-Encoding: gzip header. This prevents gzip compressed
@@ -6994,12 +6999,12 @@ Wed May 28 20:40:24 CEST 2003 - poeml@suse.de
   mod_mime_magic:
     - If mod_mime_magic does not know the content-type, do not
       attempt to guess.
-  mod_rewrite: 
+  mod_rewrite:
     - Fix handling of absolute URIs.
-  mod_log_config: 
+  mod_log_config:
     - Add the ability to log the id of the thread processing the
       request via new %P formats.
-  mod_auth_ldap: 
+  mod_auth_ldap:
     - Use generic whitespace character class when parsing "require"
       directives, instead of literal spaces only.
   mod_proxy:
@@ -7015,9 +7020,9 @@ Wed May 28 20:40:24 CEST 2003 - poeml@suse.de
 - note the rebirth of the httpd and apachectl man pages (thanks to
   RPMv4 :)
 - let the module RPM packages only depend on the _major_ module
-  magic number, not on the minor 
+  magic number, not on the minor
 - fix some paths in config_vars.mk, which facilitates building of
-  certain modules 
+  certain modules
 
 -------------------------------------------------------------------
 Wed May 14 14:12:56 CEST 2003 - poeml@suse.de
@@ -7049,7 +7054,7 @@ Fri May  9 14:47:54 CEST 2003 - poeml@suse.de
       the response. PR 14451.
     - Simpler, faster code path for request header scanning
     - Try to log an error if a piped log program fails.  Try to
-      restart a piped log program in more failure situations. 
+      restart a piped log program in more failure situations.
     - Fix bug where 'Satisfy Any' without an AuthType lost all MIME
       information (and more). Related to PR 9076.
     - Fix If header parsing when a non-mod_dav lock token is passed to it.
@@ -7064,7 +7069,7 @@ Fri May  9 14:47:54 CEST 2003 - poeml@suse.de
     bad shebang line, etc. Fix possible segfaults under obscure
     error conditions within the cgid daemon.
   mod_deflate:
-    - you can now specify the compression level. 
+    - you can now specify the compression level.
     - Extend the DeflateFilterNote directive to allow accurate
       logging of the filter's in- and outstream.
     - Fix potential memory leaks in mod_deflate on malformed data.  PR 16046.
@@ -7109,7 +7114,7 @@ Fri May  9 14:47:54 CEST 2003 - poeml@suse.de
     - Don't remove the Content-Length from responses in mod_proxy PR: 8677
   mod_auth_digest no longer tries to guess AuthDigestDomain, if it's
      not specified. Now it assumes "/" as already documented. PR 16937.
-  mod_file_cache: fix segfaults 
+  mod_file_cache: fix segfaults
 - improve the start/restart section of the init script, and add a
   ssl_scache_cleanup script
 - understand a syntax like -DSTATUS, as described in the sysconfig
@@ -7125,7 +7130,7 @@ Fri May  9 14:47:54 CEST 2003 - poeml@suse.de
 -------------------------------------------------------------------
 Wed Apr  9 02:00:20 CEST 2003 - ro@suse.de
 
-- fix deprecated head/tail call syntax "-1" 
+- fix deprecated head/tail call syntax "-1"
 
 -------------------------------------------------------------------
 Mon Mar 17 11:59:36 CET 2003 - kukuk@suse.de
@@ -7176,7 +7181,7 @@ Tue Feb 18 11:39:18 CET 2003 - poeml@suse.de
 -------------------------------------------------------------------
 Fri Feb 14 16:39:40 CET 2003 - poeml@suse.de
 
-- fix configuration script to find apache modules on 64 bit archs 
+- fix configuration script to find apache modules on 64 bit archs
 - mark ssl.conf (noreplace)
 
 -------------------------------------------------------------------
@@ -7268,13 +7273,13 @@ Wed Dec 18 15:11:53 CET 2002 - poeml@suse.de
   - also ignore *,v files
   - include APACHE_CONF_INCLUDE_DIRS
   - dump some files: suse_define.conf (not needed) & suse_text.conf
-    (too much overhead) 
-- rc.apache2: 
+    (too much overhead)
+- rc.apache2:
   - implement most of apachectl's commands (graceful, configtest)
   - use server_flags from sysconfig.apache2
   - pass server flags like -DSTATUS from the command line through
     to httpd2
-  - add commmands to show the server status 
+  - add commmands to show the server status
   - don't quit silently when no apache MPM is installed
   - handle ServerSignature and other stuff on the command line
     (save modifications to httpd.conf)
@@ -7286,7 +7291,7 @@ Wed Dec 18 15:11:53 CET 2002 - poeml@suse.de
 - add /etc/apache2/{,modules} to the filelist
 - add /etc/apache2/conf.d as drop-in directory for packages
 - hard code some more default paths into the executable
-- finally, run a test! 
+- finally, run a test!
 
 -------------------------------------------------------------------
 Thu Dec  5 13:55:06 CET 2002 - poeml@suse.de
@@ -7300,7 +7305,7 @@ Thu Dec  5 00:26:22 CET 2002 - poeml@suse.de
 
 - more checks and warnings to SuSEconfig.apache2
 - shift APR files into the the apr package
-- try 1.136 revision of perchild.c 
+- try 1.136 revision of perchild.c
 
 -------------------------------------------------------------------
 Tue Dec  3 16:27:35 CET 2002 - poeml@suse.de
@@ -7340,7 +7345,7 @@ Thu Oct  3 14:50:20 CEST 2002 - poeml@suse.de
 - build the "leader/follower" MPM. On i686, enable nonportable but
   faster atomics for it.
 - use filelists for more flexibility. APRVARS ceased to exist.
-  Don't add README* twice. 
+  Don't add README* twice.
 - perchild: use AcceptMutex fcntl to prevent permission conflict as
   suggested in Apache Bugzilla #7921
 - remove mod_rewrite and mod_proxy from the default modules
@@ -7369,7 +7374,7 @@ Wed Aug 28 16:39:59 CEST 2002 - poeml@suse.de
 - allow building modules via apxs2 (for all server MPMs) --- or via
   apxs2-{worker,perchild,prefork} for a specific server MPM
 - add permissions.apache2 setting /usr/sbin/suexec2 to 4755
-- rewrite SuSEconfig.apache2 for apache 2. 
+- rewrite SuSEconfig.apache2 for apache 2.
 - add httpd-2.0.40-cache_util.c.diff that prevents a segfault in
   mod_proxy when given an invalid URL
 - branch apache2-example-pages off (docroot contents)
@@ -7382,7 +7387,7 @@ Mon Aug 19 16:43:37 CEST 2002 - poeml@suse.de
 - fixed comment in SuSEconfig.apache
 - drop SuSEconfig subpackage
 - split main package and -devel package in three packages, one for
-  each MPM... 
+  each MPM...
   apache2       -> apache2-{worker,perchild,prefork}
   apache2-devel -> apache2-{worker,perchild,prefork}-devel
 
@@ -7462,4 +7467,4 @@ Wed May 29 18:16:00 CEST 2002 - poeml@suse.de
   distribution now
 - RPM can be built as user now
 - SuSEconfig.apache: understand relative and absolute pathnames
-- disable experimental auth_digest_module 
+- disable experimental auth_digest_module

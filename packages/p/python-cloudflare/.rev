@@ -241,4 +241,25 @@
   * moved to use tempfile.TemporaryFile so more portable over many systems</comment>
     <requestid>1137644</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9020379a7b95c7adf7842a5286f1c4ff</srcmd5>
+    <version>2.17.0</version>
+    <time>1706635608</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.17.0:
+  * handle case where zone and account disallow load balancing
+  * make 4xx error handling more generic
+  * testing load balancers becuase they return 412 HTTP errors
+  * debug messages line lenght needs to be longer so that error
+    return messages are shown clearly
+  * issue-181 HTTP response code 412 not handled
+  * handle 404 errors with invalid API error structure
+  * test get/put/patch/delete and post with no data - all expected
+    return error
+  * now testing api calls with four id values
+  * now testing api calls with three id values
+  * improve error message responses for 400-405 http reponses code
+    they now decode</comment>
+    <requestid>1142769</requestid>
+  </revision>
 </revisionlist>

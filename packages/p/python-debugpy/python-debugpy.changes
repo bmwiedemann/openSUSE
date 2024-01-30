@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 29 12:57:18 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests in s390x, bsc#1217019
+
+-------------------------------------------------------------------
 Tue Dec  5 17:14:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove python 3.6 support as the version update to 1.8.0 dropped

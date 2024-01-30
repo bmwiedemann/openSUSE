@@ -1,10 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 29 14:22:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.11:
+  * Add WRDE_NOCMD to wordexp call
+  * Fix: validateDTD compile fails if when libxml2 not
+    installed
+  * Fix memory leak of validateDTD's dtd object
+  * Fix memory leaks in ValidateSchema
+  * Add support for expirevar action
+  * Fix: lmdb regex match on non-null terminated string
+  * Fix memory leaks in lmdb code (new'd strings)
+  * Configure: add additional name to pcre2 pkg-config list
+
+-------------------------------------------------------------------
 Mon Sep  4 15:59:43 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 3.0.10:
   * Security impacting issue (fix bsc#1213702, CVE-2023-38285)
     - Fix: worst-case time in implementation of four transformations
-    - Additional information on this issue is available at 
+    - Additional information on this issue is available at
       https://www.trustwave.com/resources/blogs/spiderlabs-blog/modsecurity-v3-dos-vulnerability-in-four-transformations-cve-2023-38285/
   * Enhancements and bug fixes
     - Add TX synonym for MSC_PCRE_LIMITS_EXCEEDED
@@ -218,7 +232,7 @@ Wed Jul 22 10:39:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
  - Initialize m_dtd member in ValidateDTD class as NULL
  - Fix broken @detectxss operator regression test case
  - Fix utils::string::ssplit() to handle delimiter in the end of string
- - Fix variable FILES_TMPNAMES 
+ - Fix variable FILES_TMPNAMES
  - Fix memory leak in Collections
  - Fix lib version information while generating the .so file
  - Adds support for ctl:ruleRemoveByTag

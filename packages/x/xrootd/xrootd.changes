@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jan 25 16:00:54 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.6:
+  * [XrdHttp] Fix PostProcessHttpReq to take into account
+    User-Agent setting (gh#xrootd/xrootd#2154).
+  * [Server] Set TZ environment variable to avoid race conditions
+    (gh#xrootd/xrootd#2107).
+  * [XrdCl] Treat errOperationInterrupted as a recoverable error
+    (gh#xrootd/xrootd#2169).
+
+-------------------------------------------------------------------
+Wed Jan 24 18:47:28 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.5:
+  * [XrdTpc] Fix potential segmentation fault when creating packet
+    marking handle (gh#xrootd/xrootd#2161)
+  * [XrdSecgsi] Fix compilation with GCC 14
+    (gh#xrootd/xrootd#2165)
+  * [XrdSys] Include <byteswap.h> for BSD and GNU/Hurd
+    (gh#xrootd/xrootd#2149)
+  * [Server] Align monitoring ID with HTTP (gh#xrootd/xrootd#2133)
+  * [XrdCrypto] Skip check of our standard DH parameters
+    (gh#xrootd/xrootd#2162)
+  * [XrdHttp] Send User-Agent as part of monitoring info
+    (gh#xrootd/xrootd#2154)
+
+-------------------------------------------------------------------
 Tue Dec 19 16:37:06 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.6.4:

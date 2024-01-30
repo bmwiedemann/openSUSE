@@ -18,6 +18,6 @@ tdir=$(mktemp -d $tmpprefix); test $? = 0 || { echo >&2 Could not create tmpdir.
 cut -f 1 -d '|' $F  > $tdir/fc-all.$$
 grep ^+ < $tdir/fc-all.$$ | cut -c2- | sort > $tdir/fc-in.$$
 grep -- ^- < $tdir/fc-all.$$ | cut -c2- | sort > $tdir/fc-out.$$
-join -v 1 $tdir/fc-in.$$ $tdir/fc-out.$$ | xargs -ixx egrep "^\\+xx" $F
+join -v 1 $tdir/fc-in.$$ $tdir/fc-out.$$ | xargs -ixx grep -E "^\\+xx" $F
 rm $tdir/fc-all.$$ $tdir/fc-in.$$ $tdir/fc-out.$$
 rmdir $tdir

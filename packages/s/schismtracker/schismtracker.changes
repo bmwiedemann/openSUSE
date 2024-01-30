@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 29 23:12:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240129
+  * Provide undo for "revert pattern data"
+  * Fixed a playback bug where an instrument's volume is zero and
+    has gotten a note off would not trigger the envelopes properly
+  * Fixed a playback bug where Position Jumps and Pattern Breaks
+    would not work sometimes
+
+-------------------------------------------------------------------
 Sun Oct 29 04:31:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2013102

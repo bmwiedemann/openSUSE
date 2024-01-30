@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 29 17:37:29 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Only build on supported architectures (bsc#1219232)
+
+-------------------------------------------------------------------
 Wed Dec 13 11:58:33 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 23.11.00:

@@ -17,7 +17,7 @@
 
 
 Name:           kail
-Version:        0.17.3
+Version:        0.17.4
 Release:        0
 Summary:        Kubernetes log viewer
 License:        MIT

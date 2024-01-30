@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 24 13:54:15 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- mutter-SLE-bsc984738-grab-display.patch:
+  * Temporary disable this SLE-only patch as it makes mutter
+    45 lock-up on non-CSD apps (bsc#1218935)
+
+-------------------------------------------------------------------
 Tue Jan 23 17:35:28 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Rebase mutter-disable-cvt-s390x.patch for mutter 45.x. 

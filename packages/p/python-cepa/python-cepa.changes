@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 28 16:46:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Enable SLE15 python module for onionshare with Python 3.11
+- Use PEP517, don't catchall the sitelib
+- Update requirements:
+  * setuptools is not used at runtime
+  * cryptography is not required, but recommended
+
+-------------------------------------------------------------------
 Wed Mar  8 04:31:43 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-fullargspec.patch:

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 30 15:38:57 UTC 2024 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 0.4.8.13
+  * Invert Gyro Roll for Steam Deck input handler
+  * Fixed state handling with Steam Deck input handler
+  * Changed svg_widget and osd keyboard for newer ElementTree behavior
+  * Added HAS_RSTICK flag for Steam Deck module
+  * Make special path for RIGHT when using Steam Deck
+  * Fixed binding of ABS_X to Gyro Per Axis
+  * CI and AppImage generation workflows added to project. Contribution by Christian
+  * Hotfix BT controllers on SteamOS 3. Contribution by pattontim
+  * Support custom UDP port. Contribution by Christian
+  * Removed cpp namespace prefixes from cemuhook_server c code. Contribution by Christian
+  * Changes to AppImage workflow
+
+
+-------------------------------------------------------------------
 Fri May 26 16:26:23 UTC 2023 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 0.4.8.11

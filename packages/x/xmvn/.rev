@@ -135,4 +135,12 @@
     <comment>Reproducible: temporary file in generated javadoc</comment>
     <requestid>1110989</requestid>
   </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>dd43d73ec93c1cc51d1354bcb5d1ac42</srcmd5>
+    <version>4.2.0</version>
+    <time>1706635584</time>
+    <user>anag+factory</user>
+    <comment>Official PR patch</comment>
+    <requestid>1142740</requestid>
+  </revision>
 </revisionlist>

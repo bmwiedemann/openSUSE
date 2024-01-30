@@ -97,4 +97,15 @@
   * Remove qutebrowser from projects using colorlog</comment>
     <requestid>1130977</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dea52445607a644d8ac2a9c52280e650</srcmd5>
+    <version>6.8.2</version>
+    <time>1706635613</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.8.2:
+  * Update package links in README
+  * Added docs/CONTRIBUTING.md.
+  * Documented &quot;bright&quot; colours in the README.</comment>
+    <requestid>1142776</requestid>
+  </revision>
 </revisionlist>

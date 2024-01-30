@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 30 07:02:35 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.9.18
+  * Bug
+    + MRESOLVER-372: Sporadic AccessDeniedEx on Windows
+    + MRESOLVER-441: Undo FileUtils changes that altered non-Windows
+      execution path
+  * Improvement
+    + MRESOLVER-396: Native transport should retry on HTTP 429
+      (Retry-After)
+  * Task
+    + MRESOLVER-397: Deprecate Guice modules
+    + MRESOLVER-405: Get rid of component name string literals, make
+      them constants and reusable
+    + MRESOLVER-433: Expose configuration for inhibiting
+      Expect-Continue handshake in 1.x
+    + MRESOLVER-435: Refresh download page
+    + MRESOLVER-437: Resolver should not override given HTTP
+      transport default use of expect-continue handshake
+
+-------------------------------------------------------------------
 Thu Sep 21 12:10:01 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.9.15

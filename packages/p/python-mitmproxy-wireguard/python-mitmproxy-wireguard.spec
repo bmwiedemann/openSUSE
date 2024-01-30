@@ -1,8 +1,7 @@
 #
 # spec file for package python-mitmproxy-wireguard
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +17,14 @@
 
 
 %define modname mitmproxy_wireguard
+%{?sle15_python_module_pythons}
 Name:           python-mitmproxy-wireguard
 Version:        0.1.23
 Release:        0
 Summary:        WireGuard interface for mitmproxy
 License:        MIT
 URL:            https://github.com/decathorpe/mitmproxy_wireguard
-Source0:        https://files.pythonhosted.org/packages/source/m/%{modname}/%{modname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/m/mitmproxy_wireguard/%{modname}-%{version}.tar.gz
 # use `osc service disabledrun` to regenerate
 Source2:        vendor.tar.zst
 Source3:        cargo_config
@@ -66,7 +66,7 @@ rm -fv .cargo/config.toml
 %check
 %{cargo_test}
 
-%files %python_files
+%files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{python_sitearch}/mitmproxy_wireguard

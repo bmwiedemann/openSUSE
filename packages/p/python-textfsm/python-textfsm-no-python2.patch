@@ -1,0 +1,2666 @@
+From c8843d69daa9b565fea99a0283ad13c324d5b563 Mon Sep 17 00:00:00 2001
+From: Daniel Harrison <harro@users.noreply.github.com>
+Date: Mon, 29 Jan 2024 12:48:00 +1100
+Subject: [PATCH] Remove python2 support. (#121)
+
+Change triggers release renumber to v2.0.0  (which is to be done when we pull into the stable branch)
+---
+ setup.py                            |  60 ++-
+ tests/clitable_test.py              |  21 +-
+ tests/copyable_regex_object_test.py |  42 --
+ tests/terminal_test.py              |  11 +-
+ tests/textfsm_test.py               | 641 ++++++++++++++++------------
+ tests/texttable_test.py             |  21 +-
+ textfsm/clitable.py                 |  40 +-
+ textfsm/copyable_regex_object.py    |  41 --
+ textfsm/parser.py                   | 188 ++++----
+ textfsm/terminal.py                 | 159 +++----
+ textfsm/texttable.py                | 152 +++----
+ 11 files changed, 689 insertions(+), 687 deletions(-)
+ delete mode 100755 tests/copyable_regex_object_test.py
+ delete mode 100755 textfsm/copyable_regex_object.py
+
+Index: textfsm-1.1.3/setup.py
+===================================================================
+--- textfsm-1.1.3.orig/setup.py
++++ textfsm-1.1.3/setup.py
+@@ -16,42 +16,40 @@
+ 
+ """Setup script."""
+ 
+-from setuptools import setup, find_packages
+-import textfsm
+ # To use a consistent encoding
+ from codecs import open
+ from os import path
++from setuptools import find_packages, setup
++import textfsm
+ 
+ here = path.abspath(path.dirname(__file__))
+ 
+ # Get the long description from the README file
+-with open(path.join(here, 'README.md'), encoding="utf8") as f:
+-    long_description = f.read()
++with open(path.join(here, 'README.md'), encoding='utf8') as f:
++  long_description = f.read()
+ 
+-setup(name='textfsm',
+-      maintainer='Google',
+-      maintainer_email='textfsm-dev@googlegroups.com',
+-      version=textfsm.__version__,
+-      description='Python module for parsing semi-structured text into python tables.',
+-      long_description=long_description,
+-      long_description_content_type='text/markdown',
+-      url='https://github.com/google/textfsm',
+-      license='Apache License, Version 2.0',
+-      classifiers=[
+-          'Development Status :: 5 - Production/Stable',
+-          'Intended Audience :: Developers',
+-          'License :: OSI Approved :: Apache Software License',
+-          'Operating System :: OS Independent',
+-          'Programming Language :: Python :: 2',
+-          'Programming Language :: Python :: 3',
+-          'Topic :: Software Development :: Libraries'],
+-      packages=['textfsm'],
+-      entry_points={
+-        'console_scripts': [
+-            'textfsm=textfsm.parser:main'
+-        ]
+-      },      
+-      include_package_data=True,
+-      package_data={'textfsm': ['../testdata/*']},
+-      install_requires=['six', 'future'],
+-     )
++setup(
++    name='textfsm',
++    maintainer='Google',
++    maintainer_email='textfsm-dev@googlegroups.com',
++    version=textfsm.__version__,
++    description=(
++        'Python module for parsing semi-structured text into python tables.'
++    ),
++    long_description=long_description,
++    long_description_content_type='text/markdown',
++    url='https://github.com/google/textfsm',
++    license='Apache License, Version 2.0',
++    classifiers=[
++        'Development Status :: 5 - Production/Stable',
++        'Intended Audience :: Developers',
++        'License :: OSI Approved :: Apache Software License',
++        'Operating System :: OS Independent',
++        'Programming Language :: Python :: 3',
++        'Topic :: Software Development :: Libraries',
++    ],
++    packages=['textfsm'],
++    entry_points={'console_scripts': ['textfsm=textfsm.parser:main']},
++    include_package_data=True,
++    package_data={'textfsm': ['../testdata/*']},
++)
+Index: textfsm-1.1.3/tests/clitable_test.py
+===================================================================
+--- textfsm-1.1.3.orig/tests/clitable_test.py
++++ textfsm-1.1.3/tests/clitable_test.py
+@@ -16,19 +16,12 @@
+ 
+ """Unittest for clitable script."""
+ 
+-from __future__ import absolute_import
+-from __future__ import division
+-from __future__ import print_function
+-from __future__ import unicode_literals
+-
+ import copy
++import io
+ import os
+ import re
+ import unittest
+-
+-from io import StringIO
+ from textfsm import clitable
+-from textfsm import copyable_regex_object
+ 
+ 
+ class UnitTestIndexTable(unittest.TestCase):
+@@ -47,8 +40,7 @@ class UnitTestIndexTable(unittest.TestCa
+ 
+     self.assertEqual(indx.compiled.size, 3)
+     for col in ('Command', 'Vendor', 'Template', 'Hostname'):
+-      self.assertTrue(isinstance(indx.compiled[1][col],
+-                                 copyable_regex_object.CopyableRegexObject))
++      self.assertIsInstance(indx.compiled[1][col], re.Pattern)
+ 
+     self.assertTrue(indx.compiled[1]['Hostname'].match('random string'))
+ 
+@@ -66,8 +58,7 @@ class UnitTestIndexTable(unittest.TestCa
+     indx = clitable.IndexTable(_PreParse, _PreCompile, file_path)
+     self.assertEqual(indx.index[2]['Template'], 'CLITABLE_TEMPLATEC')
+     self.assertEqual(indx.index[1]['Command'], 'sh[[ow]] ve[[rsion]]')
+-    self.assertTrue(isinstance(indx.compiled[1]['Hostname'],
+-                               copyable_regex_object.CopyableRegexObject))
++    self.assertIsInstance(indx.compiled[1]['Hostname'], re.Pattern)
+     self.assertFalse(indx.compiled[1]['Command'])
+ 
+   def testGetRowMatch(self):
+@@ -101,7 +92,7 @@ class UnitTestCliTable(unittest.TestCase
+                      'Start\n'
+                      '  ^${Col1} ${Col2} ${Col3} -> Record\n'
+                      '\n')
+-    self.template_file = StringIO(self.template)
++    self.template_file = io.StringIO(self.template)
+ 
+   def testCompletion(self):
+     """Tests '[[]]' syntax replacement."""
+@@ -123,7 +114,7 @@ class UnitTestCliTable(unittest.TestCase
+ 
+     self.assertEqual('sh(o(w)?)? ve(r(s(i(o(n)?)?)?)?)?',
+                      self.clitable.index.index[1]['Command'])
+-    self.assertEqual(None, self.clitable.index.compiled[1]['Template'])
++    self.assertIsNone(self.clitable.index.compiled[1]['Template'])
+     self.assertTrue(
+         self.clitable.index.compiled[1]['Command'].match('sho vers'))
+ 
+@@ -267,7 +258,7 @@ class UnitTestCliTable(unittest.TestCase
+                      'Start\n'
+                      '  ^${Col1} ${Col2} ${Col3} -> Record\n'
+                      '\n')
+-    self.template_file = StringIO(self.template)
++    self.template_file = io.StringIO(self.template)
+     self.clitable._TemplateNamesToFiles = lambda t: [self.template_file]
+     self.clitable.ParseCmd(self.input_data + input_data2,
+                            attributes={'Command': 'sh ver'})
+Index: textfsm-1.1.3/tests/textfsm_test.py
+===================================================================
+--- textfsm-1.1.3.orig/tests/textfsm_test.py
++++ textfsm-1.1.3/tests/textfsm_test.py
+@@ -16,16 +16,9 @@
+ # permissions and limitations under the License.
+ 
+ """Unittest for textfsm module."""
+-from __future__ import absolute_import
+-from __future__ import division
+-from __future__ import print_function
+-from __future__ import unicode_literals
+ 
+-from builtins import str
++import io
+ import unittest
+-from io import StringIO
+-
+-
+ 
+ import textfsm
+ 
+@@ -60,27 +53,27 @@ class UnitTestFSM(unittest.TestCase):
+     self.assertEqual(v.OptionNames(), ['Required'])
+ 
+     # regex must be bounded by parenthesis.
+-    self.assertRaises(textfsm.TextFSMTemplateError,
+-                      v.Parse,
+-                      'Value beer (boo(hoo)))boo')
+-    self.assertRaises(textfsm.TextFSMTemplateError,
+-                      v.Parse,
+-                      'Value beer boo(boo(hoo)))')
+-    self.assertRaises(textfsm.TextFSMTemplateError,
+-                      v.Parse,
+-                      'Value beer (boo)hoo)')
++    self.assertRaises(
++        textfsm.TextFSMTemplateError, v.Parse, 'Value beer (boo(hoo)))boo'
++    )
++    self.assertRaises(
++        textfsm.TextFSMTemplateError, v.Parse, 'Value beer boo(boo(hoo)))'
++    )
++    self.assertRaises(
++        textfsm.TextFSMTemplateError, v.Parse, 'Value beer (boo)hoo)'
++    )
+ 
+     # Escaped parentheses don't count.
+     v = textfsm.TextFSMValue(options_class=textfsm.TextFSMOptions)
+     v.Parse(r'Value beer (boo\)hoo)')
+     self.assertEqual(v.name, 'beer')
+     self.assertEqual(v.regex, r'(boo\)hoo)')
+-    self.assertRaises(textfsm.TextFSMTemplateError,
+-                      v.Parse,
+-                      r'Value beer (boohoo\)')
+-    self.assertRaises(textfsm.TextFSMTemplateError,
+-                      v.Parse,
+-                      r'Value beer (boo)hoo\)')
++    self.assertRaises(
++        textfsm.TextFSMTemplateError, v.Parse, r'Value beer (boohoo\)'
++    )
++    self.assertRaises(
++        textfsm.TextFSMTemplateError, v.Parse, r'Value beer (boo)hoo\)'
++    )
+ 
+     # Unbalanced parenthesis can exist if within square "[]" braces.
+     v = textfsm.TextFSMValue(options_class=textfsm.TextFSMOptions)
+@@ -89,17 +82,16 @@ class UnitTestFSM(unittest.TestCase):
+     self.assertEqual(v.regex, '(boo[(]hoo)')
+ 
+     # Escaped braces don't count.
+-    self.assertRaises(textfsm.TextFSMTemplateError,
+-                      v.Parse,
+-                      r'Value beer (boo\[)\]hoo)')
++    self.assertRaises(
++        textfsm.TextFSMTemplateError, v.Parse, r'Value beer (boo\[)\]hoo)'
++    )
+ 
+     # String function.
+     v = textfsm.TextFSMValue(options_class=textfsm.TextFSMOptions)
+     v.Parse('Value Required beer (boo(hoo))')
+     self.assertEqual(str(v), 'Value Required beer (boo(hoo))')
+     v = textfsm.TextFSMValue(options_class=textfsm.TextFSMOptions)
+-    v.Parse(
+-        r'Value Required,Filldown beer (bo\S+(hoo))')
++    v.Parse(r'Value Required,Filldown beer (bo\S+(hoo))')
+     self.assertEqual(str(v), r'Value Required,Filldown beer (bo\S+(hoo))')
+ 
+   def testFSMRule(self):
+@@ -144,144 +136,174 @@ class UnitTestFSM(unittest.TestCase):
+     self.assertEqual(r.record_op, 'NoRecord')
+ 
+     # Bad syntax tests.
+-    self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSMRule,
+-                      '  ^A beer called ${beer} -> Next Next Next')
+-    self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSMRule,
+-                      '  ^A beer called ${beer} -> Boo.hoo')
+-    self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSMRule,
+-                      '  ^A beer called ${beer} -> Continue.Record $Hi')
++    self.assertRaises(
++        textfsm.TextFSMTemplateError,
++        textfsm.TextFSMRule,
++        '  ^A beer called ${beer} -> Next Next Next',
++    )
++    self.assertRaises(
++        textfsm.TextFSMTemplateError,
++        textfsm.TextFSMRule,
++        '  ^A beer called ${beer} -> Boo.hoo',
++    )
++    self.assertRaises(
++        textfsm.TextFSMTemplateError,
++        textfsm.TextFSMRule,
++        '  ^A beer called ${beer} -> Continue.Record $Hi',
++    )
+ 
+   def testRulePrefixes(self):
+     """Test valid and invalid rule prefixes."""
+ 
+     # Bad syntax tests.
+     for prefix in (' ', '.^', ' \t', ''):
+-      f = StringIO('Value unused (.)\n\nStart\n' + prefix + 'A simple string.')
++      f = io.StringIO(
++          'Value unused (.)\n\nStart\n' + prefix + 'A simple string.'
++      )
+       self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSM, f)
+ 
+     # Good syntax tests.
+     for prefix in (' ^', '  ^', '\t^'):
+-      f = StringIO('Value unused (.)\n\nStart\n' + prefix + 'A simple string.')
++      f = io.StringIO(
++          'Value unused (.)\n\nStart\n' + prefix + 'A simple string.'
++      )
+       self.assertIsNotNone(textfsm.TextFSM(f))
+ 
+   def testImplicitDefaultRules(self):
+ 
+-    for line in ('  ^A beer called ${beer} -> Record End',
+-                 '  ^A beer called ${beer} -> End',
+-                 '  ^A beer called ${beer} -> Next.NoRecord End',
+-                 '  ^A beer called ${beer} -> Clear End',
+-                 '  ^A beer called ${beer} -> Error "Hello World"'):
++    for line in (
++        '  ^A beer called ${beer} -> Record End',
++        '  ^A beer called ${beer} -> End',
++        '  ^A beer called ${beer} -> Next.NoRecord End',
++        '  ^A beer called ${beer} -> Clear End',
++        '  ^A beer called ${beer} -> Error "Hello World"',
++    ):
+       r = textfsm.TextFSMRule(line)
+       self.assertEqual(str(r), line)
+ 
+-    for line in ('  ^A beer called ${beer} -> Next "Hello World"',
+-                 '  ^A beer called ${beer} -> Record.Next',
+-                 '  ^A beer called ${beer} -> Continue End',
+-                 '  ^A beer called ${beer} -> Beer End'):
+-      self.assertRaises(textfsm.TextFSMTemplateError,
+-                        textfsm.TextFSMRule, line)
++    for line in (
++        '  ^A beer called ${beer} -> Next "Hello World"',
++        '  ^A beer called ${beer} -> Record.Next',
++        '  ^A beer called ${beer} -> Continue End',
++        '  ^A beer called ${beer} -> Beer End',
++    ):
++      self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSMRule, line)
+ 
+   def testSpacesAroundAction(self):
+-    for line in ('  ^Hello World -> Boo',
+-                 '  ^Hello World ->  Boo',
+-                 '  ^Hello World ->   Boo'):
+-      self.assertEqual(
+-          str(textfsm.TextFSMRule(line)), '  ^Hello World -> Boo')
++    for line in (
++        '  ^Hello World -> Boo',
++        '  ^Hello World ->  Boo',
++        '  ^Hello World ->   Boo',
++    ):
++      self.assertEqual(str(textfsm.TextFSMRule(line)), '  ^Hello World -> Boo')
+ 
+     # A '->' without a leading space is considered part of the matching line.
+-    self.assertEqual('  A simple line-> Boo -> Next',
+-                     str(textfsm.TextFSMRule('  A simple line-> Boo -> Next')))
++    self.assertEqual(
++        '  A simple line-> Boo -> Next',
++        str(textfsm.TextFSMRule('  A simple line-> Boo -> Next')),
++    )
+ 
+   def testParseFSMVariables(self):
+     # Trivial template to initiate object.
+-    f = StringIO('Value unused (.)\n\nStart\n')
++    f = io.StringIO('Value unused (.)\n\nStart\n')
+     t = textfsm.TextFSM(f)
+ 
+     # Trivial entry
+     buf = 'Value Filldown Beer (beer)\n\n'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     t._ParseFSMVariables(f)
+ 
+     # Single variable with commented header.
+     buf = '# Headline\nValue Filldown Beer (beer)\n\n'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     t._ParseFSMVariables(f)
+     self.assertEqual(str(t._GetValue('Beer')), 'Value Filldown Beer (beer)')
+ 
+     # Multiple variables.
+-    buf = ('# Headline\n'
+-           'Value Filldown Beer (beer)\n'
+-           'Value Required Spirits (whiskey)\n'
+-           'Value Filldown Wine (claret)\n'
+-           '\n')
++    buf = (
++        '# Headline\n'
++        'Value Filldown Beer (beer)\n'
++        'Value Required Spirits (whiskey)\n'
++        'Value Filldown Wine (claret)\n'
++        '\n'
++    )
+     t._line_num = 0
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     t._ParseFSMVariables(f)
+     self.assertEqual(str(t._GetValue('Beer')), 'Value Filldown Beer (beer)')
+     self.assertEqual(
+-        str(t._GetValue('Spirits')), 'Value Required Spirits (whiskey)')
++        str(t._GetValue('Spirits')), 'Value Required Spirits (whiskey)'
++    )
+     self.assertEqual(str(t._GetValue('Wine')), 'Value Filldown Wine (claret)')
+ 
+     # Multiple variables.
+-    buf = ('# Headline\n'
+-           'Value Filldown Beer (beer)\n'
+-           ' # A comment\n'
+-           'Value Spirits ()\n'
+-           'Value Filldown,Required Wine ((c|C)laret)\n'
+-           '\n')
++    buf = (
++        '# Headline\n'
++        'Value Filldown Beer (beer)\n'
++        ' # A comment\n'
++        'Value Spirits ()\n'
++        'Value Filldown,Required Wine ((c|C)laret)\n'
++        '\n'
++    )
+ 
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     t._ParseFSMVariables(f)
+     self.assertEqual(str(t._GetValue('Beer')), 'Value Filldown Beer (beer)')
++    self.assertEqual(str(t._GetValue('Spirits')), 'Value Spirits ()')
+     self.assertEqual(
+-        str(t._GetValue('Spirits')), 'Value Spirits ()')
+-    self.assertEqual(str(t._GetValue('Wine')),
+-                     'Value Filldown,Required Wine ((c|C)laret)')
++        str(t._GetValue('Wine')), 'Value Filldown,Required Wine ((c|C)laret)'
++    )
+ 
+     # Malformed variables.
+     buf = 'Value Beer (beer) beer'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     self.assertRaises(textfsm.TextFSMTemplateError, t._ParseFSMVariables, f)
+ 
+     buf = 'Value Filldown, Required Spirits ()'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     self.assertRaises(textfsm.TextFSMTemplateError, t._ParseFSMVariables, f)
+     buf = 'Value filldown,Required Wine ((c|C)laret)'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     self.assertRaises(textfsm.TextFSMTemplateError, t._ParseFSMVariables, f)
+ 
+     # Values that look bad but are OK.
+-    buf = ('# Headline\n'
+-           'Value Filldown Beer (bee(r), (and) (M)ead$)\n'
+-           '# A comment\n'
+-           'Value Spirits,and,some ()\n'
+-           'Value Filldown,Required Wine ((c|C)laret)\n'
+-           '\n')
+-    f = StringIO(buf)
++    buf = (
++        '# Headline\n'
++        'Value Filldown Beer (bee(r), (and) (M)ead$)\n'
++        '# A comment\n'
++        'Value Spirits,and,some ()\n'
++        'Value Filldown,Required Wine ((c|C)laret)\n'
++        '\n'
++    )
++    f = io.StringIO(buf)
+     t._ParseFSMVariables(f)
+-    self.assertEqual(str(t._GetValue('Beer')),
+-                     'Value Filldown Beer (bee(r), (and) (M)ead$)')
+     self.assertEqual(
+-        str(t._GetValue('Spirits,and,some')), 'Value Spirits,and,some ()')
+-    self.assertEqual(str(t._GetValue('Wine')),
+-                     'Value Filldown,Required Wine ((c|C)laret)')
++        str(t._GetValue('Beer')), 'Value Filldown Beer (bee(r), (and) (M)ead$)'
++    )
++    self.assertEqual(
++        str(t._GetValue('Spirits,and,some')), 'Value Spirits,and,some ()'
++    )
++    self.assertEqual(
++        str(t._GetValue('Wine')), 'Value Filldown,Required Wine ((c|C)laret)'
++    )
+ 
+     # Variable name too long.
+-    buf = ('Value Filldown '
+-           'nametoolong_nametoolong_nametoolo_nametoolong_nametoolong '
+-           '(beer)\n\n')
+-    f = StringIO(buf)
+-    self.assertRaises(textfsm.TextFSMTemplateError,
+-                      t._ParseFSMVariables, f)
++    buf = (
++        'Value Filldown '
++        'nametoolong_nametoolong_nametoolo_nametoolong_nametoolong '
++        '(beer)\n\n'
++    )
++    f = io.StringIO(buf)
++    self.assertRaises(textfsm.TextFSMTemplateError, t._ParseFSMVariables, f)
+ 
+   def testParseFSMState(self):
+ 
+-    f = StringIO('Value Beer (.)\nValue Wine (\\w)\n\nStart\n')
++    f = io.StringIO('Value Beer (.)\nValue Wine (\\w)\n\nStart\n')
+     t = textfsm.TextFSM(f)
+ 
+     # Fails as we already have 'Start' state.
+     buf = 'Start\n  ^.\n'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     self.assertRaises(textfsm.TextFSMTemplateError, t._ParseFSMState, f)
+ 
+     # Remove start so we can test new Start state.
+@@ -289,7 +311,7 @@ class UnitTestFSM(unittest.TestCase):
+ 
+     # Single state.
+     buf = '# Headline\nStart\n  ^.\n\n'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     t._ParseFSMState(f)
+     self.assertEqual(str(t.states['Start'][0]), '  ^.')
+     try:
+@@ -299,7 +321,7 @@ class UnitTestFSM(unittest.TestCase):
+ 
+     # Multiple states.
+     buf = '# Headline\nStart\n  ^.\n  ^Hello World\n  ^Last-[Cc]ha$$nge\n'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     t._line_num = 0
+     t.states = {}
+     t._ParseFSMState(f)
+@@ -315,21 +337,23 @@ class UnitTestFSM(unittest.TestCase):
+     t.states = {}
+     # Malformed states.
+     buf = 'St%art\n  ^.\n  ^Hello World\n'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     self.assertRaises(textfsm.TextFSMTemplateError, t._ParseFSMState, f)
+ 
+     buf = 'Start\n^.\n  ^Hello World\n'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     self.assertRaises(textfsm.TextFSMTemplateError, t._ParseFSMState, f)
+ 
+     buf = '  Start\n  ^.\n  ^Hello World\n'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     self.assertRaises(textfsm.TextFSMTemplateError, t._ParseFSMState, f)
+ 
+     # Multiple variables and substitution (depends on _ParseFSMVariables).
+-    buf = ('# Headline\nStart\n  ^.${Beer}${Wine}.\n'
+-           '  ^Hello $Beer\n  ^Last-[Cc]ha$$nge\n')
+-    f = StringIO(buf)
++    buf = (
++        '# Headline\nStart\n  ^.${Beer}${Wine}.\n'
++        '  ^Hello $Beer\n  ^Last-[Cc]ha$$nge\n'
++    )
++    f = io.StringIO(buf)
+     t.states = {}
+     t._ParseFSMState(f)
+     self.assertEqual(str(t.states['Start'][0]), '  ^.${Beer}${Wine}.')
+@@ -344,43 +368,52 @@ class UnitTestFSM(unittest.TestCase):
+ 
+     # State name too long (>32 char).
+     buf = 'rnametoolong_nametoolong_nametoolong_nametoolong_nametoolo\n  ^.\n\n'
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     self.assertRaises(textfsm.TextFSMTemplateError, t._ParseFSMState, f)
+ 
+   def testInvalidStates(self):
+ 
+     # 'Continue' should not accept a destination.
+-    self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSMRule,
+-                      '^.* -> Continue Start')
++    self.assertRaises(
++        textfsm.TextFSMTemplateError,
++        textfsm.TextFSMRule,
++        '^.* -> Continue Start',
++    )
+ 
+     # 'Error' accepts a text string but "next' state does not.
+-    self.assertEqual(str(textfsm.TextFSMRule('  ^ -> Error "hi there"')),
+-                     '  ^ -> Error "hi there"')
+-    self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSMRule,
+-                      '^.* -> Next "Hello World"')
++    self.assertEqual(
++        str(textfsm.TextFSMRule('  ^ -> Error "hi there"')),
++        '  ^ -> Error "hi there"',
++    )
++    self.assertRaises(
++        textfsm.TextFSMTemplateError,
++        textfsm.TextFSMRule,
++        '^.* -> Next "Hello World"',
++    )
+ 
+   def testRuleStartsWithCarrot(self):
+ 
+-    f = StringIO(
+-        'Value Beer (.)\nValue Wine (\\w)\n\nStart\n  A Simple line')
++    f = io.StringIO(
++        'Value Beer (.)\nValue Wine (\\w)\n\nStart\n  A Simple line'
++    )
+     self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSM, f)
+ 
+   def testValidateFSM(self):
+ 
+     # No Values.
+-    f = StringIO('\nNotStart\n')
++    f = io.StringIO('\nNotStart\n')
+     self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSM, f)
+ 
+     # No states.
+-    f = StringIO('Value unused (.)\n\n')
++    f = io.StringIO('Value unused (.)\n\n')
+     self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSM, f)
+ 
+     # No 'Start' state.
+-    f = StringIO('Value unused (.)\n\nNotStart\n')
++    f = io.StringIO('Value unused (.)\n\nNotStart\n')
+     self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSM, f)
+ 
+     # Has 'Start' state with valid destination
+-    f = StringIO('Value unused (.)\n\nStart\n')
++    f = io.StringIO('Value unused (.)\n\nStart\n')
+     t = textfsm.TextFSM(f)
+     t.states['Start'] = []
+     t.states['Start'].append(textfsm.TextFSMRule('^.* -> Start'))
+@@ -412,14 +445,14 @@ class UnitTestFSM(unittest.TestCase):
+     # Trivial template
+     buf = 'Value Beer (.*)\n\nStart\n  ^\\w\n'
+     buf_result = buf
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     t = textfsm.TextFSM(f)
+     self.assertEqual(str(t), buf_result)
+ 
+     # Slightly more complex, multple vars.
+     buf = 'Value A (.*)\nValue B (.*)\n\nStart\n  ^\\w\n\nState1\n  ^.\n'
+     buf_result = buf
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     t = textfsm.TextFSM(f)
+     self.assertEqual(str(t), buf_result)
+ 
+@@ -427,7 +460,7 @@ class UnitTestFSM(unittest.TestCase):
+ 
+     # Trivial FSM, no records produced.
+     tplt = 'Value unused (.)\n\nStart\n  ^Trivial SFM\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     data = 'Non-matching text\nline1\nline 2\n'
+     self.assertFalse(t.ParseText(data))
+@@ -437,7 +470,7 @@ class UnitTestFSM(unittest.TestCase):
+ 
+     # Simple FSM, One Variable no options.
+     tplt = 'Value boo (.*)\n\nStart\n  ^$boo -> Next.Record\n\nEOF\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     # Matching one line.
+     # Tests 'Next' & 'Record' actions.
+@@ -452,10 +485,12 @@ class UnitTestFSM(unittest.TestCase):
+     self.assertListEqual(result, [['Matching text'], ['And again']])
+ 
+     # Two Variables and singular options.
+-    tplt = ('Value Required boo (one)\nValue Filldown hoo (two)\n\n'
+-            'Start\n  ^$boo -> Next.Record\n  ^$hoo -> Next.Record\n\n'
+-            'EOF\n')
+-    t = textfsm.TextFSM(StringIO(tplt))
++    tplt = (
++        'Value Required boo (one)\nValue Filldown hoo (two)\n\n'
++        'Start\n  ^$boo -> Next.Record\n  ^$hoo -> Next.Record\n\n'
++        'EOF\n'
++    )
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     # Matching two lines. Only one records returned due to 'Required' flag.
+     # Tests 'Filldown' and 'Required' options.
+@@ -463,7 +498,7 @@ class UnitTestFSM(unittest.TestCase):
+     result = t.ParseText(data)
+     self.assertListEqual(result, [['one', 'two']])
+ 
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     # Matching two lines. Two records returned due to 'Filldown' flag.
+     data = 'two\none\none'
+     t.Reset()
+@@ -471,11 +506,13 @@ class UnitTestFSM(unittest.TestCase):
+     self.assertListEqual(result, [['one', 'two'], ['one', 'two']])
+ 
+     # Multiple Variables and options.
+-    tplt = ('Value Required,Filldown boo (one)\n'
+-            'Value Filldown,Required hoo (two)\n\n'
+-            'Start\n  ^$boo -> Next.Record\n  ^$hoo -> Next.Record\n\n'
+-            'EOF\n')
+-    t = textfsm.TextFSM(StringIO(tplt))
++    tplt = (
++        'Value Required,Filldown boo (one)\n'
++        'Value Filldown,Required hoo (two)\n\n'
++        'Start\n  ^$boo -> Next.Record\n  ^$hoo -> Next.Record\n\n'
++        'EOF\n'
++    )
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'two\none\none'
+     result = t.ParseText(data)
+     self.assertListEqual(result, [['one', 'two'], ['one', 'two']])
+@@ -484,7 +521,7 @@ class UnitTestFSM(unittest.TestCase):
+ 
+     # Trivial FSM, no records produced.
+     tplt = 'Value unused (.)\n\nStart\n  ^Trivial SFM\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     data = 'Non-matching text\nline1\nline 2\n'
+     self.assertFalse(t.ParseText(data))
+@@ -494,7 +531,7 @@ class UnitTestFSM(unittest.TestCase):
+ 
+     # Simple FSM, One Variable no options.
+     tplt = 'Value boo (.*)\n\nStart\n  ^$boo -> Next.Record\n\nEOF\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     # Matching one line.
+     # Tests 'Next' & 'Record' actions.
+@@ -506,14 +543,17 @@ class UnitTestFSM(unittest.TestCase):
+     t.Reset()
+     data = 'Matching text\nAnd again'
+     result = t.ParseTextToDicts(data)
+-    self.assertListEqual(result,
+-                     [{'boo': 'Matching text'}, {'boo': 'And again'}])
++    self.assertListEqual(
++        result, [{'boo': 'Matching text'}, {'boo': 'And again'}]
++    )
+ 
+     # Two Variables and singular options.
+-    tplt = ('Value Required boo (one)\nValue Filldown hoo (two)\n\n'
+-            'Start\n  ^$boo -> Next.Record\n  ^$hoo -> Next.Record\n\n'
+-            'EOF\n')
+-    t = textfsm.TextFSM(StringIO(tplt))
++    tplt = (
++        'Value Required boo (one)\nValue Filldown hoo (two)\n\n'
++        'Start\n  ^$boo -> Next.Record\n  ^$hoo -> Next.Record\n\n'
++        'EOF\n'
++    )
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     # Matching two lines. Only one records returned due to 'Required' flag.
+     # Tests 'Filldown' and 'Required' options.
+@@ -521,30 +561,34 @@ class UnitTestFSM(unittest.TestCase):
+     result = t.ParseTextToDicts(data)
+     self.assertListEqual(result, [{'hoo': 'two', 'boo': 'one'}])
+ 
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     # Matching two lines. Two records returned due to 'Filldown' flag.
+     data = 'two\none\none'
+     t.Reset()
+     result = t.ParseTextToDicts(data)
+     self.assertListEqual(
+-        result, [{'hoo': 'two', 'boo': 'one'}, {'hoo': 'two', 'boo': 'one'}])
++        result, [{'hoo': 'two', 'boo': 'one'}, {'hoo': 'two', 'boo': 'one'}]
++    )
+ 
+     # Multiple Variables and options.
+-    tplt = ('Value Required,Filldown boo (one)\n'
+-            'Value Filldown,Required hoo (two)\n\n'
+-            'Start\n  ^$boo -> Next.Record\n  ^$hoo -> Next.Record\n\n'
+-            'EOF\n')
+-    t = textfsm.TextFSM(StringIO(tplt))
++    tplt = (
++        'Value Required,Filldown boo (one)\n'
++        'Value Filldown,Required hoo (two)\n\n'
++        'Start\n  ^$boo -> Next.Record\n  ^$hoo -> Next.Record\n\n'
++        'EOF\n'
++    )
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'two\none\none'
+     result = t.ParseTextToDicts(data)
+     self.assertListEqual(
+-        result, [{'hoo': 'two', 'boo': 'one'}, {'hoo': 'two', 'boo': 'one'}])
++        result, [{'hoo': 'two', 'boo': 'one'}, {'hoo': 'two', 'boo': 'one'}]
++    )
+ 
+   def testParseNullText(self):
+ 
+     # Simple FSM, One Variable no options.
+     tplt = 'Value boo (.*)\n\nStart\n  ^$boo -> Next.Record\n\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     # Null string
+     data = ''
+@@ -554,181 +598,210 @@ class UnitTestFSM(unittest.TestCase):
+   def testReset(self):
+ 
+     tplt = 'Value boo (.*)\n\nStart\n  ^$boo -> Next.Record\n\nEOF\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'Matching text'
+     result1 = t.ParseText(data)
+     t.Reset()
+     result2 = t.ParseText(data)
+     self.assertListEqual(result1, result2)
+ 
+-    tplt = ('Value boo (one)\nValue hoo (two)\n\n'
+-            'Start\n  ^$boo -> State1\n\n'
+-            'State1\n  ^$hoo -> Start\n\n'
+-            'EOF')
+-    t = textfsm.TextFSM(StringIO(tplt))
++    tplt = (
++        'Value boo (one)\nValue hoo (two)\n\n'
++        'Start\n  ^$boo -> State1\n\n'
++        'State1\n  ^$hoo -> Start\n\n'
++        'EOF'
++    )
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     data = 'one'
+     t.ParseText(data)
+     t.Reset()
+     self.assertEqual(t._cur_state[0].match, '^$boo')
+-    self.assertEqual(t._GetValue('boo').value, None)
+-    self.assertEqual(t._GetValue('hoo').value, None)
++    self.assertIsNone(None, t._GetValue('boo').value)
++    self.assertIsNone(t._GetValue('hoo').value)
+     self.assertEqual(t._result, [])
+ 
+   def testClear(self):
+ 
+     # Clear Filldown variable.
+     # Tests 'Clear'.
+-    tplt = ('Value Required boo (on.)\n'
+-            'Value Filldown,Required hoo (tw.)\n\n'
+-            'Start\n  ^$boo -> Next.Record\n  ^$hoo -> Next.Clear')
++    tplt = (
++        'Value Required boo (on.)\n'
++        'Value Filldown,Required hoo (tw.)\n\n'
++        'Start\n  ^$boo -> Next.Record\n  ^$hoo -> Next.Clear'
++    )
+ 
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'one\ntwo\nonE\ntwO'
+     result = t.ParseText(data)
+     self.assertListEqual(result, [['onE', 'two']])
+ 
+     # Clearall, with Filldown variable.
+     # Tests 'Clearall'.
+-    tplt = ('Value Filldown boo (on.)\n'
+-            'Value Filldown hoo (tw.)\n\n'
+-            'Start\n  ^$boo -> Next.Clearall\n'
+-            '  ^$hoo')
++    tplt = (
++        'Value Filldown boo (on.)\n'
++        'Value Filldown hoo (tw.)\n\n'
++        'Start\n  ^$boo -> Next.Clearall\n'
++        '  ^$hoo'
++    )
+ 
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'one\ntwo'
+     result = t.ParseText(data)
+     self.assertListEqual(result, [['', 'two']])
+ 
+   def testContinue(self):
+ 
+-    tplt = ('Value Required boo (on.)\n'
+-            'Value Filldown,Required hoo (on.)\n\n'
+-            'Start\n  ^$boo -> Continue\n  ^$hoo -> Continue.Record')
++    tplt = (
++        'Value Required boo (on.)\n'
++        'Value Filldown,Required hoo (on.)\n\n'
++        'Start\n  ^$boo -> Continue\n  ^$hoo -> Continue.Record'
++    )
+ 
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'one\non0'
+     result = t.ParseText(data)
+     self.assertListEqual(result, [['one', 'one'], ['on0', 'on0']])
+ 
+   def testError(self):
+ 
+-    tplt = ('Value Required boo (on.)\n'
+-            'Value Filldown,Required hoo (on.)\n\n'
+-            'Start\n  ^$boo -> Continue\n  ^$hoo -> Error')
++    tplt = (
++        'Value Required boo (on.)\n'
++        'Value Filldown,Required hoo (on.)\n\n'
++        'Start\n  ^$boo -> Continue\n  ^$hoo -> Error'
++    )
+ 
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'one'
+     self.assertRaises(textfsm.TextFSMError, t.ParseText, data)
+ 
+-    tplt = ('Value Required boo (on.)\n'
+-            'Value Filldown,Required hoo (on.)\n\n'
+-            'Start\n  ^$boo -> Continue\n  ^$hoo -> Error "Hello World"')
++    tplt = (
++        'Value Required boo (on.)\n'
++        'Value Filldown,Required hoo (on.)\n\n'
++        'Start\n  ^$boo -> Continue\n  ^$hoo -> Error "Hello World"'
++    )
+ 
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     self.assertRaises(textfsm.TextFSMError, t.ParseText, data)
+ 
+   def testKey(self):
+-    tplt = ('Value Required boo (on.)\n'
+-            'Value Required,Key hoo (on.)\n\n'
+-            'Start\n  ^$boo -> Continue\n  ^$hoo -> Record')
+-
+-    t = textfsm.TextFSM(StringIO(tplt))
+-    self.assertTrue('Key' in t._GetValue('hoo').OptionNames())
+-    self.assertTrue('Key' not in t._GetValue('boo').OptionNames())
++    tplt = (
++        'Value Required boo (on.)\n'
++        'Value Required,Key hoo (on.)\n\n'
++        'Start\n  ^$boo -> Continue\n  ^$hoo -> Record'
++    )
++
++    t = textfsm.TextFSM(io.StringIO(tplt))
++    self.assertIn('Key', t._GetValue('hoo').OptionNames())
++    self.assertNotIn('Key', t._GetValue('boo').OptionNames())
+ 
+   def testList(self):
+ 
+-    tplt = ('Value List boo (on.)\n'
+-            'Value hoo (tw.)\n\n'
+-            'Start\n  ^$boo\n  ^$hoo -> Next.Record\n\n'
+-            'EOF')
++    tplt = (
++        'Value List boo (on.)\n'
++        'Value hoo (tw.)\n\n'
++        'Start\n  ^$boo\n  ^$hoo -> Next.Record\n\n'
++        'EOF'
++    )
+ 
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'one\ntwo\non0\ntw0'
+     result = t.ParseText(data)
+     self.assertListEqual(result, [[['one'], 'two'], [['on0'], 'tw0']])
+ 
+-    tplt = ('Value List,Filldown boo (on.)\n'
+-            'Value hoo (on.)\n\n'
+-            'Start\n  ^$boo -> Continue\n  ^$hoo -> Next.Record\n\n'
+-            'EOF')
++    tplt = (
++        'Value List,Filldown boo (on.)\n'
++        'Value hoo (on.)\n\n'
++        'Start\n  ^$boo -> Continue\n  ^$hoo -> Next.Record\n\n'
++        'EOF'
++    )
+ 
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'one\non0\non1'
+     result = t.ParseText(data)
+-    self.assertEqual(result, ([[['one'], 'one'],
+-                               [['one', 'on0'], 'on0'],
+-                               [['one', 'on0', 'on1'], 'on1']]))
+-
+-    tplt = ('Value List,Required boo (on.)\n'
+-            'Value hoo (tw.)\n\n'
+-            'Start\n  ^$boo -> Continue\n  ^$hoo -> Next.Record\n\n'
+-            'EOF')
++    self.assertEqual(
++        result,
++        ([
++            [['one'], 'one'],
++            [['one', 'on0'], 'on0'],
++            [['one', 'on0', 'on1'], 'on1'],
++        ]),
++    )
++
++    tplt = (
++        'Value List,Required boo (on.)\n'
++        'Value hoo (tw.)\n\n'
++        'Start\n  ^$boo -> Continue\n  ^$hoo -> Next.Record\n\n'
++        'EOF'
++    )
+ 
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'one\ntwo\ntw2'
+     result = t.ParseText(data)
+     self.assertListEqual(result, [[['one'], 'two']])
+ 
+-
+   def testNestedMatching(self):
+-      """
+-      Ensures that List-type values with nested regex capture groups are parsed
+-      correctly as a list of dictionaries.
+-
+-      Additionaly, another value is used with the same group-name as one of the
+-      nested groups to ensure that there are no conflicts when the same name is
+-      used.
+-      """
+-      tplt = (
+-          # A nested group is called "name"
+-          r"Value List foo ((?P<name>\w+):\s+(?P<age>\d+)\s+(?P<state>\w{2})\s*)"
+-          "\n"
+-          # A regular value is called "name"
+-          r"Value name (\w+)"
+-          # "${name}" here refers to the Value called "name"
+-          "\n\nStart\n"
+-          r"  ^\s*${foo}"
+-          "\n"
+-          r"  ^\s*${name}"
+-          "\n"
+-          r"  ^\s*$$ -> Record"
+-      )
+-      t = textfsm.TextFSM(StringIO(tplt))
+-      # Julia should be parsed as "name" separately
+-      data = " Bob: 32 NC\n Alice: 27 NY\n Jeff: 45 CA\nJulia\n\n"
+-      result = t.ParseText(data)
+-      self.assertListEqual(
+-          result, (
+-              [[[
+-                  {'name': 'Bob', 'age': '32', 'state': 'NC'},
+-                  {'name': 'Alice', 'age': '27', 'state': 'NY'},
+-                  {'name': 'Jeff', 'age': '45', 'state': 'CA'}
+-              ], 'Julia']]
+-          )
+-      )
++    """List-type values with nested regex capture groups are parsed correctly.
+ 
+-  def testNestedNameConflict(self):
+-      tplt = (
+-          # Two nested groups are called "name"
+-          r"Value List foo ((?P<name>\w+)\s+(?P<name>\w+):\s+(?P<age>\d+)\s+(?P<state>\w{2})\s*)"
+-          "\nStart\n"
+-          r"^\s*${foo}"
+-          "\n  ^"
+-          r"\s*$$ -> Record"
+-      )
+-      self.assertRaises(textfsm.TextFSMTemplateError, textfsm.TextFSM, StringIO(tplt))
++    Additionaly, another value is used with the same group-name as one of the
++    nested groups to ensure that there are no conflicts when the same name is
++    used.
++    """
++
++    tplt = (
++        # A nested group is called "name"
++        r'Value List foo ((?P<name>\w+):\s+(?P<age>\d+)\s+(?P<state>\w{2})\s*)'
++        '\n'
++        # A regular value is called "name"
++        r'Value name (\w+)'
++        # "${name}" here refers to the Value called "name"
++        '\n\nStart\n'
++        r'  ^\s*${foo}'
++        '\n'
++        r'  ^\s*${name}'
++        '\n'
++        r'  ^\s*$$ -> Record'
++    )
++    t = textfsm.TextFSM(io.StringIO(tplt))
++    # Julia should be parsed as "name" separately
++    data = ' Bob: 32 NC\n Alice: 27 NY\n Jeff: 45 CA\nJulia\n\n'
++    result = t.ParseText(data)
++    self.assertListEqual(
++        result,
++        ([[
++            [
++                {'name': 'Bob', 'age': '32', 'state': 'NC'},
++                {'name': 'Alice', 'age': '27', 'state': 'NY'},
++                {'name': 'Jeff', 'age': '45', 'state': 'CA'},
++            ],
++            'Julia',
++        ]]),
++    )
+ 
++  def testNestedNameConflict(self):
++    tplt = (
++        # Two nested groups are called "name"
++        r'Value List foo'
++        r' ((?P<name>\w+)\s+(?P<name>\w+):\s+(?P<age>\d+)\s+(?P<state>\w{2})\s*)'
++        '\nStart\n'
++        r'^\s*${foo}'
++        '\n  ^'
++        r'\s*$$ -> Record'
++    )
++    self.assertRaises(
++        textfsm.TextFSMTemplateError, textfsm.TextFSM, io.StringIO(tplt)
++    )
+ 
+   def testGetValuesByAttrib(self):
+ 
+-    tplt = ('Value Required boo (on.)\n'
+-            'Value Required,List hoo (on.)\n\n'
+-            'Start\n  ^$boo -> Continue\n  ^$hoo -> Record')
++    tplt = (
++        'Value Required boo (on.)\n'
++        'Value Required,List hoo (on.)\n\n'
++        'Start\n  ^$boo -> Continue\n  ^$hoo -> Record'
++    )
+ 
+     # Explicit default.
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     self.assertEqual(t.GetValuesByAttrib('List'), ['hoo'])
+     self.assertEqual(t.GetValuesByAttrib('Filldown'), [])
+     result = t.GetValuesByAttrib('Required')
+@@ -738,37 +811,41 @@ class UnitTestFSM(unittest.TestCase):
+   def testStateChange(self):
+ 
+     # Sinple state change, no actions
+-    tplt = ('Value boo (one)\nValue hoo (two)\n\n'
+-            'Start\n  ^$boo -> State1\n\nState1\n  ^$hoo -> Start\n\n'
+-            'EOF')
+-    t = textfsm.TextFSM(StringIO(tplt))
++    tplt = (
++        'Value boo (one)\nValue hoo (two)\n\n'
++        'Start\n  ^$boo -> State1\n\nState1\n  ^$hoo -> Start\n\n'
++        'EOF'
++    )
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     data = 'one'
+     t.ParseText(data)
+     self.assertEqual(t._cur_state[0].match, '^$hoo')
+     self.assertEqual('one', t._GetValue('boo').value)
+-    self.assertEqual(None, t._GetValue('hoo').value)
++    self.assertIsNone(t._GetValue('hoo').value)
+     self.assertEqual(t._result, [])
+ 
+     # State change with actions.
+-    tplt = ('Value boo (one)\nValue hoo (two)\n\n'
+-            'Start\n  ^$boo -> Next.Record State1\n\n'
+-            'State1\n  ^$hoo -> Start\n\n'
+-            'EOF')
+-    t = textfsm.TextFSM(StringIO(tplt))
++    tplt = (
++        'Value boo (one)\nValue hoo (two)\n\n'
++        'Start\n  ^$boo -> Next.Record State1\n\n'
++        'State1\n  ^$hoo -> Start\n\n'
++        'EOF'
++    )
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     data = 'one'
+     t.ParseText(data)
+     self.assertEqual(t._cur_state[0].match, '^$hoo')
+-    self.assertEqual(None, t._GetValue('boo').value)
+-    self.assertEqual(None, t._GetValue('hoo').value)
++    self.assertIsNone(t._GetValue('boo').value)
++    self.assertIsNone(t._GetValue('hoo').value)
+     self.assertEqual(t._result, [['one', '']])
+ 
+   def testEOF(self):
+ 
+     # Implicit EOF.
+     tplt = 'Value boo (.*)\n\nStart\n  ^$boo -> Next\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     data = 'Matching text'
+     result = t.ParseText(data)
+@@ -776,14 +853,14 @@ class UnitTestFSM(unittest.TestCase):
+ 
+     # EOF explicitly suppressed in template.
+     tplt = 'Value boo (.*)\n\nStart\n  ^$boo -> Next\n\nEOF\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     result = t.ParseText(data)
+     self.assertListEqual(result, [])
+ 
+     # Implicit EOF suppressed by argument.
+     tplt = 'Value boo (.*)\n\nStart\n  ^$boo -> Next\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     result = t.ParseText(data, eof=False)
+     self.assertListEqual(result, [])
+@@ -792,7 +869,7 @@ class UnitTestFSM(unittest.TestCase):
+ 
+     # End State, EOF is skipped.
+     tplt = 'Value boo (.*)\n\nStart\n  ^$boo -> End\n  ^$boo -> Record\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'Matching text A\nMatching text B'
+ 
+     result = t.ParseText(data)
+@@ -800,14 +877,14 @@ class UnitTestFSM(unittest.TestCase):
+ 
+     # End State, with explicit Record.
+     tplt = 'Value boo (.*)\n\nStart\n  ^$boo -> Record End\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     result = t.ParseText(data)
+     self.assertListEqual(result, [['Matching text A']])
+ 
+     # EOF state transition is followed by implicit End State.
+     tplt = 'Value boo (.*)\n\nStart\n  ^$boo -> EOF\n  ^$boo -> Record\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+ 
+     result = t.ParseText(data)
+     self.assertListEqual(result, [['Matching text A']])
+@@ -815,14 +892,15 @@ class UnitTestFSM(unittest.TestCase):
+   def testInvalidRegexp(self):
+ 
+     tplt = 'Value boo (.$*)\n\nStart\n  ^$boo -> Next\n'
+-    self.assertRaises(textfsm.TextFSMTemplateError,
+-                      textfsm.TextFSM, StringIO(tplt))
++    self.assertRaises(
++        textfsm.TextFSMTemplateError, textfsm.TextFSM, io.StringIO(tplt)
++    )
+ 
+   def testValidRegexp(self):
+     """RegexObjects uncopyable in Python 2.6."""
+ 
+     tplt = 'Value boo (fo*)\n\nStart\n  ^$boo -> Record\n'
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     data = 'f\nfo\nfoo\n'
+     result = t.ParseText(data)
+     self.assertListEqual(result, [['f'], ['fo'], ['foo']])
+@@ -832,7 +910,7 @@ class UnitTestFSM(unittest.TestCase):
+ 
+     tplt = 'Value boo (.*)\n\nStart\n  ^$boo -> Next Stop\n\nStop\n  ^abc\n'
+     output_text = 'one\ntwo'
+-    tmpl_file = StringIO(tplt)
++    tmpl_file = io.StringIO(tplt)
+ 
+     t = textfsm.TextFSM(tmpl_file)
+     t.ParseText(output_text)
+@@ -856,10 +934,11 @@ Start
+ 2 A2 --
+ 3 -- B3
+ """
+-    t = textfsm.TextFSM(StringIO(tplt))
++    t = textfsm.TextFSM(io.StringIO(tplt))
+     result = t.ParseText(data)
+     self.assertListEqual(
+-        result, [['1', 'A2', 'B1'], ['2', 'A2', 'B3'], ['3', '', 'B3']])
++        result, [['1', 'A2', 'B1'], ['2', 'A2', 'B3'], ['3', '', 'B3']]
++    )
+ 
+ 
+ class UnitTestUnicode(unittest.TestCase):
+@@ -918,7 +997,7 @@ State1
+   ^$$ -> Next
+   ^$$ -> End
+ """
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     t = textfsm.TextFSM(f)
+     self.assertEqual(str(t), buf_result)
+ 
+Index: textfsm-1.1.3/tests/texttable_test.py
+===================================================================
+--- textfsm-1.1.3.orig/tests/texttable_test.py
++++ textfsm-1.1.3/tests/texttable_test.py
+@@ -16,14 +16,8 @@
+ 
+ """Unittest for text table."""
+ 
+-from __future__ import absolute_import
+-from __future__ import division
+-from __future__ import print_function
+-from __future__ import unicode_literals
+-
+-from builtins import range
++import io
+ import unittest
+-from io import StringIO
+ from textfsm import terminal
+ from textfsm import texttable
+ 
+@@ -84,8 +78,8 @@ class UnitTestRow(unittest.TestCase):
+     self.assertEqual(3, len(row))
+ 
+     # Contains.
+-    self.assertTrue('two' not in row)
+-    self.assertTrue('Two' in row)
++    self.assertNotIn('two', row)
++    self.assertIn('Two', row)
+ 
+     # Iteration.
+     self.assertEqual(['one', 'Two', 'three'], list(row))
+@@ -253,8 +247,8 @@ class UnitTestTextTable(unittest.TestCas
+ 
+   def testContains(self):
+     t = self.BasicTable()
+-    self.assertTrue('a' in t)
+-    self.assertFalse('x' in t)
++    self.assertIn('a', t)
++    self.assertNotIn('x', t)
+ 
+   def testIteration(self):
+     t = self.BasicTable()
+@@ -271,6 +265,7 @@ class UnitTestTextTable(unittest.TestCas
+ 
+     # Can we iterate repeatedly.
+     index = 0
++    index2 = 0
+     for r in t:
+       index += 1
+       self.assertEqual(r, t[index])
+@@ -312,7 +307,7 @@ a,b, c, d  # Trim comment
+ 10, 11
+ # More comments.
+ """
+-    f = StringIO(buf)
++    f = io.StringIO(buf)
+     t = texttable.TextTable()
+     self.assertEqual(2, t.CsvToTable(f))
+     # pylint: disable=E1101
+@@ -514,7 +509,7 @@ a,b, c, d  # Trim comment
+         3, t._SmallestColSize('bbb ' + terminal.AnsiText('bb', ['red'])))
+ 
+   def testFormattedTableColor(self):
+-    # Test to sepcify the color defined in terminal.FG_COLOR_WORDS
++    # Test to specify the color defined in terminal.FG_COLOR_WORDS
+     t = texttable.TextTable()
+     t.header = ('LSP', 'Name')
+     t.Append(('col1', 'col2'))
+Index: textfsm-1.1.3/textfsm/clitable.py
+===================================================================
+--- textfsm-1.1.3.orig/textfsm/clitable.py
++++ textfsm-1.1.3/textfsm/clitable.py
+@@ -23,20 +23,12 @@ output combinations and store the data i
+ Is the glue between an automated command scraping program (such as RANCID) and
+ the TextFSM output parser.
+ """
+-from __future__ import absolute_import
+-from __future__ import division
+-from __future__ import print_function
+-from __future__ import unicode_literals
+ 
+ import copy
+ import os
+ import re
+ import threading
+-from builtins import object    # pylint: disable=redefined-builtin
+-from builtins import str       # pylint: disable=redefined-builtin
+ import textfsm
+-
+-from textfsm import copyable_regex_object
+ from textfsm import texttable
+ 
+ 
+@@ -48,7 +40,7 @@ class IndexTableError(Error):
+   """General INdexTable error."""
+ 
+ 
+-class CliTableError(Error):
++class CliTableError(Error):  # pylint: disable=g-bad-exception-name
+   """General CliTable error."""
+ 
+ 
+@@ -139,7 +131,7 @@ class IndexTable(object):
+         if precompile:
+           row[col] = precompile(col, row[col])
+         if row[col]:
+-          row[col] = copyable_regex_object.CopyableRegexObject(row[col])
++          row[col] = re.compile(row[col])
+ 
+   def GetRowMatch(self, attributes):
+     """Returns the row number that matches the supplied attributes."""
+@@ -148,8 +140,11 @@ class IndexTable(object):
+         for key in attributes:
+           # Silently skip attributes not present in the index file.
+           # pylint: disable=E1103
+-          if (key in row.header and row[key] and
+-              not row[key].match(attributes[key])):
++          if (
++              key in row.header
++              and row[key]
++              and not row[key].match(attributes[key])
++          ):
+             # This line does not match, so break and try next row.
+             raise StopIteration()
+         return row.row
+@@ -184,11 +179,12 @@ class CliTable(texttable.TextTable):
+ 
+     # pylint: disable=E0213
+     def Wrapper(main_obj, *args, **kwargs):
+-      main_obj._lock.acquire()                  # pylint: disable=W0212
++      main_obj._lock.acquire()  # pylint: disable=W0212
+       try:
+         return func(main_obj, *args, **kwargs)  # pylint: disable=E1102
+       finally:
+-        main_obj._lock.release()                # pylint: disable=W0212
++        main_obj._lock.release()  # pylint: disable=W0212
++
+     return Wrapper
+ 
+   @synchronised
+@@ -227,7 +223,7 @@ class CliTable(texttable.TextTable):
+       self.index = self.INDEX[fullpath]
+ 
+     # Does the IndexTable have the right columns.
+-    if 'Template' not in self.index.index.header:    # pylint: disable=E1103
++    if 'Template' not in self.index.index.header:  # pylint: disable=E1103
+       raise CliTableError("Index file does not have 'Template' column.")
+ 
+   def _TemplateNamesToFiles(self, template_str):
+@@ -237,8 +233,7 @@ class CliTable(texttable.TextTable):
+     template_files = []
+     try:
+       for tmplt in template_list:
+-        template_files.append(
+-            open(os.path.join(self.template_dir, tmplt), 'r'))
++        template_files.append(open(os.path.join(self.template_dir, tmplt), 'r'))
+     except:
+       for tmplt in template_files:
+         tmplt.close()
+@@ -269,8 +264,9 @@ class CliTable(texttable.TextTable):
+       if row_idx:
+         templates = self.index.index[row_idx]['Template']
+       else:
+-        raise CliTableError('No template found for attributes: "%s"' %
+-                            attributes)
++        raise CliTableError(
++            'No template found for attributes: "%s"' % attributes
++        )
+ 
+     template_files = self._TemplateNamesToFiles(templates)
+ 
+@@ -282,8 +278,9 @@ class CliTable(texttable.TextTable):
+ 
+       # Add additional columns from any additional tables.
+       for tmplt in template_files[1:]:
+-        self.extend(self._ParseCmdItem(self.raw, template_file=tmplt),
+-                    set(self._keys))
++        self.extend(
++            self._ParseCmdItem(self.raw, template_file=tmplt), set(self._keys)
++        )
+     finally:
+       for f in template_files:
+         f.close()
+@@ -357,6 +354,7 @@ class CliTable(texttable.TextTable):
+     if not key and self._keys:
+       key = self.KeyValue
+     super(CliTable, self).sort(cmp=cmp, key=key, reverse=reverse)
++
+   # pylint: enable=W0622
+ 
+   def AddKeys(self, key_list):
+Index: textfsm-1.1.3/textfsm/parser.py
+===================================================================
+--- textfsm-1.1.3.orig/textfsm/parser.py
++++ textfsm-1.1.3/textfsm/parser.py
+@@ -23,28 +23,19 @@ A simple template language is used to de
+ parse a specific type of text input, returning a record of values
+ for each input entity.
+ """
+-from __future__ import absolute_import
+-from __future__ import division
+-from __future__ import print_function
+-from __future__ import unicode_literals
+-
+ 
+ import getopt
+ import inspect
+ import re
+ import string
+ import sys
+-from builtins import object   # pylint: disable=redefined-builtin
+-from builtins import str      # pylint: disable=redefined-builtin
+-from builtins import zip      # pylint: disable=redefined-builtin
+-import six
+ 
+ 
+ class Error(Exception):
+   """Base class for errors."""
+ 
+ 
+-class Usage(Exception):
++class UsageError(Exception):
+   """Error in command line execution."""
+ 
+ 
+@@ -58,15 +49,15 @@ class TextFSMTemplateError(Error):
+ 
+ # The below exceptions are internal state change triggers
+ # and not used as Errors.
+-class FSMAction(Exception):
++class FSMAction(Exception):  # pylint: disable=g-bad-exception-name
+   """Base class for actions raised with the FSM."""
+ 
+ 
+-class SkipRecord(FSMAction):
++class SkipRecord(FSMAction):  # pylint: disable=g-bad-exception-name
+   """Indicate a record is to be skipped."""
+ 
+ 
+-class SkipValue(FSMAction):
++class SkipValue(FSMAction):  # pylint: disable=g-bad-exception-name
+   """Indicate a value is to be skipped."""
+ 
+ 
+@@ -175,8 +166,8 @@ class TextFSMOptions(object):
+     """Value constitutes part of the Key of the record."""
+ 
+   class List(OptionBase):
+-    r"""
+-    Value takes the form of a list.
++    # pylint: disable=g-space-before-docstring-summary
++    r"""Value takes the form of a list.
+ 
+     If the value regex contains nested match groups in the form (?P<name>regex),
+     instead of adding a string to the list, we add a dictionary of the groups.
+@@ -237,6 +228,7 @@ class TextFSMValue(object):
+     fsm: A TextFSMBase(), the containing FSM.
+     value: (str), the current value.
+   """
++
+   # The class which contains valid options.
+ 
+   def __init__(self, fsm=None, max_name_len=48, options_class=None):
+@@ -285,7 +277,6 @@ class TextFSMValue(object):
+ 
+     Raises:
+       TextFSMTemplateError: Value declaration contains an error.
+-
+     """
+ 
+     value_line = value.split(' ')
+@@ -310,15 +301,17 @@ class TextFSMValue(object):
+ 
+     if len(self.name) > self.max_name_len:
+       raise TextFSMTemplateError(
+-          "Invalid Value name '%s' or name too long." % self.name)
++          "Invalid Value name '%s' or name too long." % self.name
++      )
+ 
+-    if self.regex[0]!='(' or self.regex[-1]!=')' or self.regex[-2]=='\\':
++    if self.regex[0] != '(' or self.regex[-1] != ')' or self.regex[-2] == '\\':
+       raise TextFSMTemplateError(
+-          "Value '%s' must be contained within a '()' pair." % self.regex)
++          "Value '%s' must be contained within a '()' pair." % self.regex
++      )
+     try:
+       compiled_regex = re.compile(self.regex)
+-    except re.error as e:
+-      raise TextFSMTemplateError(str(e))
++    except re.error as exc:
++      raise TextFSMTemplateError(str(exc)) from exc
+ 
+     self.template = re.sub(r'^\(', '(?P<%s>' % self.name, self.regex)
+ 
+@@ -345,8 +338,8 @@ class TextFSMValue(object):
+     # Create the option object
+     try:
+       option = self._options_cls.GetOption(name)(self)
+-    except AttributeError:
+-      raise TextFSMTemplateError('Unknown option "%s"' % name)
++    except AttributeError as exc:
++      raise TextFSMTemplateError('Unknown option "%s"' % name) from exc
+ 
+     self.options.append(option)
+ 
+@@ -361,7 +354,8 @@ class TextFSMValue(object):
+       return 'Value %s %s %s' % (
+           ','.join(self.OptionNames()),
+           self.name,
+-          self.regex)
++          self.regex,
++      )
+     else:
+       return 'Value %s %s' % (self.name, self.regex)
+ 
+@@ -373,10 +367,10 @@ class CopyableRegexObject(object):
+     self.pattern = pattern
+     self.regex = re.compile(pattern)
+ 
+-  def match(self, *args, **kwargs):
++  def match(self, *args, **kwargs):  # pylint: disable=invalid-name
+     return self.regex.match(*args, **kwargs)
+ 
+-  def sub(self, *args, **kwargs):
++  def sub(self, *args, **kwargs):  # pylint: disable=invalid-name
+     return self.regex.sub(*args, **kwargs)
+ 
+   def __copy__(self):
+@@ -407,6 +401,7 @@ class TextFSMRule(object):
+     regex_obj: Compiled regex for which the rule matches.
+     line_num: Integer row number of Value.
+   """
++
+   # Implicit default is '(regexp) -> Next.NoRecord'
+   MATCH_ACTION = re.compile(r'(?P<match>.*)(\s->(?P<action>.*))')
+ 
+@@ -444,15 +439,16 @@ class TextFSMRule(object):
+     self.match = ''
+     self.regex = ''
+     self.regex_obj = None
+-    self.line_op = ''              # Equivalent to 'Next'.
+-    self.record_op = ''            # Equivalent to 'NoRecord'.
+-    self.new_state = ''            # Equivalent to current state.
++    self.line_op = ''  # Equivalent to 'Next'.
++    self.record_op = ''  # Equivalent to 'NoRecord'.
++    self.new_state = ''  # Equivalent to current state.
+     self.line_num = line_num
+ 
+     line = line.strip()
+     if not line:
+-      raise TextFSMTemplateError('Null data in FSMRule. Line: %s'
+-                                 % self.line_num)
++      raise TextFSMTemplateError(
++          'Null data in FSMRule. Line: %s' % self.line_num
++      )
+ 
+     # Is there '->' action present.
+     match_action = self.MATCH_ACTION.match(line)
+@@ -466,18 +462,20 @@ class TextFSMRule(object):
+     if var_map:
+       try:
+         self.regex = string.Template(self.match).substitute(var_map)
+-      except (ValueError, KeyError):
++      except (ValueError, KeyError) as exc:
+         raise TextFSMTemplateError(
+-            "Duplicate or invalid variable substitution: '%s'. Line: %s." %
+-            (self.match, self.line_num))
++            "Duplicate or invalid variable substitution: '%s'. Line: %s."
++            % (self.match, self.line_num)
++        ) from exc
+ 
+     try:
+       # Work around a regression in Python 2.6 that makes RE Objects uncopyable.
+       self.regex_obj = CopyableRegexObject(self.regex)
+-    except re.error:
++    except re.error as exc:
+       raise TextFSMTemplateError(
+-          "Invalid regular expression: '%s'. Line: %s." %
+-          (self.regex, self.line_num))
++          "Invalid regular expression: '%s'. Line: %s."
++          % (self.regex, self.line_num)
++      ) from exc
+ 
+     # No '->' present, so done.
+     if not match_action:
+@@ -493,8 +491,9 @@ class TextFSMRule(object):
+         action_re = self.ACTION3_RE.match(match_action.group('action'))
+         if not action_re:
+           # Last attempt, match an optional new state only.
+-          raise TextFSMTemplateError("Badly formatted rule '%s'. Line: %s." %
+-                                     (line, self.line_num))
++          raise TextFSMTemplateError(
++              "Badly formatted rule '%s'. Line: %s." % (line, self.line_num)
++          )
+ 
+     # We have an Line operator.
+     if 'ln_op' in action_re.groupdict() and action_re.group('ln_op'):
+@@ -514,14 +513,16 @@ class TextFSMRule(object):
+     if self.line_op == 'Continue' and self.new_state:
+       raise TextFSMTemplateError(
+           "Action '%s' with new state %s specified. Line: %s."
+-          % (self.line_op, self.new_state, self.line_num))
++          % (self.line_op, self.new_state, self.line_num)
++      )
+ 
+     # Check that an error message is present only with the 'Error' operator.
+     if self.line_op != 'Error' and self.new_state:
+       if not re.match(r'\w+', self.new_state):
+         raise TextFSMTemplateError(
+             'Alphanumeric characters only in state names. Line: %s.'
+-            % (self.line_num))
++            % (self.line_num)
++        )
+ 
+   def __str__(self):
+     """Prints out the FSM Rule, mimic the input file."""
+@@ -555,6 +556,7 @@ class TextFSM(object):
+     header: Ordered list of values.
+     state_list: Ordered list of valid states.
+   """
++
+   # Variable and State name length.
+   MAX_NAME_LEN = 48
+   comment_regex = re.compile(r'^\s*#')
+@@ -709,7 +711,7 @@ class TextFSM(object):
+       # Blank line signifies end of Value definitions.
+       if not line:
+         return
+-      if not isinstance(line, six.string_types):
++      if not isinstance(line, str):
+         line = line.decode('utf-8')
+       # Skip commented lines.
+       if self.comment_regex.match(line):
+@@ -718,21 +720,28 @@ class TextFSM(object):
+       if line.startswith('Value '):
+         try:
+           value = TextFSMValue(
+-              fsm=self, max_name_len=self.MAX_NAME_LEN,
+-              options_class=self._options_cls)
++              fsm=self,
++              max_name_len=self.MAX_NAME_LEN,
++              options_class=self._options_cls,
++          )
+           value.Parse(line)
+-        except TextFSMTemplateError as error:
+-          raise TextFSMTemplateError('%s Line %s.' % (error, self._line_num))
++        except TextFSMTemplateError as exc:
++          raise TextFSMTemplateError(
++              '%s Line %s.' % (exc, self._line_num)
++          ) from exc
+ 
+         if value.name in self.header:
+           raise TextFSMTemplateError(
+               "Duplicate declarations for Value '%s'. Line: %s."
+-              % (value.name, self._line_num))
++              % (value.name, self._line_num)
++          )
+ 
+         try:
+           self._ValidateOptions(value)
+-        except TextFSMTemplateError as error:
+-          raise TextFSMTemplateError('%s Line %s.' % (error, self._line_num))
++        except TextFSMTemplateError as exc:
++          raise TextFSMTemplateError(
++              '%s Line %s.' % (exc, self._line_num)
++          ) from exc
+ 
+         self.values.append(value)
+         self.value_map[value.name] = value.template
+@@ -742,7 +751,8 @@ class TextFSM(object):
+       else:
+         raise TextFSMTemplateError(
+             'Expected blank line after last Value entry. Line: %s.'
+-            % (self._line_num))
++            % (self._line_num)
++        )
+ 
+   def _ValidateOptions(self, value):
+     """Checks that combination of Options is valid."""
+@@ -760,8 +770,8 @@ class TextFSM(object):
+     not clash with reserved names and are unique.
+ 
+     Args:
+-      template: Valid template file after Value definitions
+-      have already been read.
++      template: Valid template file after Value definitions have already been
++        read.
+ 
+     Returns:
+       Name of the state parsed from file. None otherwise.
+@@ -778,22 +788,26 @@ class TextFSM(object):
+     for line in template:
+       self._line_num += 1
+       line = line.rstrip()
+-      if not isinstance(line, six.string_types):
++      if not isinstance(line, str):
+         line = line.decode('utf-8')
+       # First line is state definition
+       if line and not self.comment_regex.match(line):
+-         # Ensure statename has valid syntax and is not a reserved word.
+-        if (not self.state_name_re.match(line) or
+-            len(line) > self.MAX_NAME_LEN or
+-            line in TextFSMRule.LINE_OP or
+-            line in TextFSMRule.RECORD_OP):
+-          raise TextFSMTemplateError("Invalid state name: '%s'. Line: %s"
+-                                     % (line, self._line_num))
++        # Ensure statename has valid syntax and is not a reserved word.
++        if (
++            not self.state_name_re.match(line)
++            or len(line) > self.MAX_NAME_LEN
++            or line in TextFSMRule.LINE_OP
++            or line in TextFSMRule.RECORD_OP
++        ):
++          raise TextFSMTemplateError(
++              "Invalid state name: '%s'. Line: %s" % (line, self._line_num)
++          )
+ 
+         state_name = line
+         if state_name in self.states:
+-          raise TextFSMTemplateError("Duplicate state name: '%s'. Line: %s"
+-                                     % (line, self._line_num))
++          raise TextFSMTemplateError(
++              "Duplicate state name: '%s'. Line: %s" % (line, self._line_num)
++          )
+         self.states[state_name] = []
+         self.state_list.append(state_name)
+         break
+@@ -806,7 +820,7 @@ class TextFSM(object):
+       # Finish rules processing on blank line.
+       if not line:
+         break
+-      if not isinstance(line, six.string_types):
++      if not isinstance(line, str):
+         line = line.decode('utf-8')
+       if self.comment_regex.match(line):
+         continue
+@@ -814,11 +828,13 @@ class TextFSM(object):
+       # A rule within a state, starts with 1 or 2 spaces, or a tab.
+       if not line.startswith((' ^', '  ^', '\t^')):
+         raise TextFSMTemplateError(
+-            "Missing white space or carat ('^') before rule. Line: %s" %
+-            self._line_num)
++            "Missing white space or carat ('^') before rule. Line: %s"
++            % self._line_num
++        )
+ 
+       self.states[state_name].append(
+-          TextFSMRule(line, self._line_num, self.value_map))
++          TextFSMRule(line, self._line_num, self.value_map)
++      )
+ 
+     return state_name
+ 
+@@ -864,8 +880,9 @@ class TextFSM(object):
+ 
+         if rule.new_state not in self.states:
+           raise TextFSMTemplateError(
+-              "State '%s' not found, referenced in state '%s'" %
+-              (rule.new_state, state))
++              "State '%s' not found, referenced in state '%s'"
++              % (rule.new_state, state)
++          )
+ 
+     return True
+ 
+@@ -877,7 +894,7 @@ class TextFSM(object):
+     Args:
+       text: (str), Text to parse with embedded newlines.
+       eof: (boolean), Set to False if we are parsing only part of the file.
+-            Suppresses triggering EOF state.
++        Suppresses triggering EOF state.
+ 
+     Raises:
+       TextFSMError: An error occurred within the FSM.
+@@ -902,7 +919,7 @@ class TextFSM(object):
+ 
+     return self._result
+ 
+-  def ParseTextToDicts(self, *args, **kwargs):
++  def ParseTextToDicts(self, text, eof=True):
+     """Calls ParseText and turns the result into list of dicts.
+ 
+     List items are dicts of rows, dict key is column header and value is column
+@@ -911,7 +928,7 @@ class TextFSM(object):
+     Args:
+       text: (str), Text to parse with embedded newlines.
+       eof: (boolean), Set to False if we are parsing only part of the file.
+-            Suppresses triggering EOF state.
++        Suppresses triggering EOF state.
+ 
+     Raises:
+       TextFSMError: An error occurred within the FSM.
+@@ -920,7 +937,7 @@ class TextFSM(object):
+       List of dicts.
+     """
+ 
+-    result_lists = self.ParseText(*args, **kwargs)
++    result_lists = self.ParseText(text, eof)
+     result_dicts = []
+ 
+     for row in result_lists:
+@@ -972,9 +989,9 @@ class TextFSM(object):
+       matched: (regexp.match) Named group for each matched value.
+       value: (str) The matched value.
+     """
+-    _value = self._GetValue(value)
+-    if _value is not None:
+-      _value.AssignVar(matched.group(value))
++    self._value = self._GetValue(value)
++    if self._value is not None:
++      self._value.AssignVar(matched.group(value))
+ 
+   def _Operations(self, rule, line):
+     """Operators on the data record.
+@@ -1017,11 +1034,15 @@ class TextFSM(object):
+     # Lastly process line operators.
+     if rule.line_op == 'Error':
+       if rule.new_state:
+-        raise TextFSMError('Error: %s. Rule Line: %s. Input Line: %s.'
+-                           % (rule.new_state, rule.line_num, line))
+-
+-      raise TextFSMError('State Error raised. Rule Line: %s. Input Line: %s'
+-                         % (rule.line_num, line))
++        raise TextFSMError(
++            'Error: %s. Rule Line: %s. Input Line: %s.'
++            % (rule.new_state, rule.line_num, line)
++        )
++
++      raise TextFSMError(
++          'State Error raised. Rule Line: %s. Input Line: %s'
++          % (rule.line_num, line)
++      )
+ 
+     elif rule.line_op == 'Continue':
+       # Continue with current line without returning to the start of the state.
+@@ -1060,8 +1081,8 @@ def main(argv=None):
+ 
+   try:
+     opts, args = getopt.getopt(argv[1:], 'h', ['help'])
+-  except getopt.error as msg:
+-    raise Usage(msg)
++  except getopt.error as exc:
++    raise UsageError(exc) from exc
+ 
+   for opt, _ in opts:
+     if opt in ('-h', '--help'):
+@@ -1070,10 +1091,11 @@ def main(argv=None):
+       return 0
+ 
+   if not args or len(args) > 4:
+-    raise Usage('Invalid arguments.')
++    raise UsageError('Invalid arguments.')
+ 
+   # If we have an argument, parse content of file and display as a template.
+   # Template displayed will match input template, minus any comment lines.
++  result = ''
+   with open(args[0], 'r') as template:
+     fsm = TextFSM(template)
+     print('FSM Template:\n%s\n' % fsm)
+@@ -1108,7 +1130,7 @@ if __name__ == '__main__':
+   help_msg = '%s [--help] template [input_file [output_file]]\n' % sys.argv[0]
+   try:
+     sys.exit(main())
+-  except Usage as err:
++  except UsageError as err:
+     print(err, file=sys.stderr)
+     print('For help use --help', file=sys.stderr)
+     sys.exit(2)
+Index: textfsm-1.1.3/textfsm/terminal.py
+===================================================================
+--- textfsm-1.1.3.orig/textfsm/terminal.py
++++ textfsm-1.1.3/textfsm/terminal.py
+@@ -16,26 +16,20 @@
+ 
+ """Simple terminal related routines."""
+ 
+-from __future__ import absolute_import
+-from __future__ import division
+-from __future__ import print_function
+-from __future__ import unicode_literals
+-
+-try:
+-  # Import fails on Windows machines.
+-  import fcntl
+-  import termios
+-  import tty
+-except (ImportError, ModuleNotFoundError):
+-  pass
+ import getopt
+ import os
+ import re
+ import struct
+ import sys
+ import time
+-from builtins import object   # pylint: disable=redefined-builtin
+-from builtins import str      # pylint: disable=redefined-builtin
++
++try:
++  # Import fails on Windows machines.
++  import fcntl  # pylint: disable=g-import-not-at-top
++  import termios  # pylint: disable=g-import-not-at-top
++  import tty  # pylint: disable=g-import-not-at-top
++except (ImportError, ModuleNotFoundError):
++  pass
+ 
+ __version__ = '0.1.1'
+ 
+@@ -67,34 +61,38 @@ SGR = {
+     'bg_cyan': 46,
+     'bg_white': 47,
+     'bg_reset': 49,
+-    }
++}
+ 
+ # Provide a familar descriptive word for some ansi sequences.
+-FG_COLOR_WORDS = {'black': ['black'],
+-                  'dark_gray': ['bold', 'black'],
+-                  'blue': ['blue'],
+-                  'light_blue': ['bold', 'blue'],
+-                  'green': ['green'],
+-                  'light_green': ['bold', 'green'],
+-                  'cyan': ['cyan'],
+-                  'light_cyan': ['bold', 'cyan'],
+-                  'red': ['red'],
+-                  'light_red': ['bold', 'red'],
+-                  'purple': ['magenta'],
+-                  'light_purple': ['bold', 'magenta'],
+-                  'brown': ['yellow'],
+-                  'yellow': ['bold', 'yellow'],
+-                  'light_gray': ['white'],
+-                  'white': ['bold', 'white']}
+-
+-BG_COLOR_WORDS = {'black': ['bg_black'],
+-                  'red': ['bg_red'],
+-                  'green': ['bg_green'],
+-                  'yellow': ['bg_yellow'],
+-                  'dark_blue': ['bg_blue'],
+-                  'purple': ['bg_magenta'],
+-                  'light_blue': ['bg_cyan'],
+-                  'grey': ['bg_white']}
++FG_COLOR_WORDS = {
++    'black': ['black'],
++    'dark_gray': ['bold', 'black'],
++    'blue': ['blue'],
++    'light_blue': ['bold', 'blue'],
++    'green': ['green'],
++    'light_green': ['bold', 'green'],
++    'cyan': ['cyan'],
++    'light_cyan': ['bold', 'cyan'],
++    'red': ['red'],
++    'light_red': ['bold', 'red'],
++    'purple': ['magenta'],
++    'light_purple': ['bold', 'magenta'],
++    'brown': ['yellow'],
++    'yellow': ['bold', 'yellow'],
++    'light_gray': ['white'],
++    'white': ['bold', 'white'],
++}
++
++BG_COLOR_WORDS = {
++    'black': ['bg_black'],
++    'red': ['bg_red'],
++    'green': ['bg_green'],
++    'yellow': ['bg_yellow'],
++    'dark_blue': ['bg_blue'],
++    'purple': ['bg_magenta'],
++    'light_blue': ['bg_cyan'],
++    'grey': ['bg_white'],
++}
+ 
+ 
+ # Characters inserted at the start and end of ANSI strings
+@@ -103,15 +101,14 @@ ANSI_START = '\001'
+ ANSI_END = '\002'
+ 
+ 
+-sgr_re = re.compile(r'(%s?\033\[\d+(?:;\d+)*m%s?)' % (
+-    ANSI_START, ANSI_END))
++sgr_re = re.compile(r'(%s?\033\[\d+(?:;\d+)*m%s?)' % (ANSI_START, ANSI_END))
+ 
+ 
+ class Error(Exception):
+   """The base error class."""
+ 
+ 
+-class Usage(Error):
++class UsageError(Error):
+   """Command line format error."""
+ 
+ 
+@@ -119,8 +116,8 @@ def _AnsiCmd(command_list):
+   """Takes a list of SGR values and formats them as an ANSI escape sequence.
+ 
+   Args:
+-    command_list: List of strings, each string represents an SGR value.
+-        e.g. 'fg_blue', 'bg_yellow'
++    command_list: List of strings, each string represents an SGR value. e.g.
++      'fg_blue', 'bg_yellow'
+ 
+   Returns:
+     The ANSI escape sequence.
+@@ -138,7 +135,7 @@ def _AnsiCmd(command_list):
+   # Convert to numerical strings.
+   command_str = [str(SGR[x.lower()]) for x in command_list]
+   # Wrap values in Ansi escape sequence (CSI prefix & SGR suffix).
+-  return '\033[%sm' % (';'.join(command_str))
++  return '\033[%sm' % ';'.join(command_str)
+ 
+ 
+ def AnsiText(text, command_list=None, reset=True):
+@@ -146,8 +143,8 @@ def AnsiText(text, command_list=None, re
+ 
+   Args:
+     text: String to encase in sgr escape sequence.
+-    command_list: List of strings, each string represents an sgr value.
+-      e.g. 'fg_blue', 'bg_yellow'
++    command_list: List of strings, each string represents an sgr value. e.g.
++      'fg_blue', 'bg_yellow'
+     reset: Boolean, if to add a reset sequence to the suffix of the text.
+ 
+   Returns:
+@@ -175,11 +172,11 @@ def TerminalSize():
+   try:
+     with open(os.ctermid()) as tty_instance:
+       length_width = struct.unpack(
+-          'hh', fcntl.ioctl(tty_instance.fileno(), termios.TIOCGWINSZ, '1234'))
++          'hh', fcntl.ioctl(tty_instance.fileno(), termios.TIOCGWINSZ, '1234')
++      )
+   except (IOError, OSError, NameError):
+     try:
+-      length_width = (int(os.environ['LINES']),
+-                      int(os.environ['COLUMNS']))
++      length_width = (int(os.environ['LINES']), int(os.environ['COLUMNS']))
+     except (ValueError, KeyError):
+       length_width = (24, 80)
+   return length_width
+@@ -201,27 +198,27 @@ def LineWrap(text, omit_sgr=False):
+     token_list = sgr_re.split(text_line)
+     text_line_list = []
+     line_length = 0
+-    for (index, token) in enumerate(token_list):
++    for index, token in enumerate(token_list):
+       # Skip null tokens.
+-      if token == '':
++      if not token:
+         continue
+ 
+       if sgr_re.match(token):
+         # Add sgr escape sequences without splitting or counting length.
+         text_line_list.append(token)
+-        text_line = ''.join(token_list[index +1:])
++        text_line = ''.join(token_list[index + 1 :])
+       else:
+         if line_length + len(token) <= width:
+           # Token fits in line and we count it towards overall length.
+           text_line_list.append(token)
+           line_length += len(token)
+-          text_line = ''.join(token_list[index +1:])
++          text_line = ''.join(token_list[index + 1 :])
+         else:
+           # Line splits part way through this token.
+           # So split the token, form a new line and carry the remainder.
+-          text_line_list.append(token[:width - line_length])
+-          text_line = token[width - line_length:]
+-          text_line += ''.join(token_list[index +1:])
++          text_line_list.append(token[: width - line_length])
++          text_line = token[width - line_length :]
++          text_line += ''.join(token_list[index + 1 :])
+           break
+ 
+     return (''.join(text_line_list), text_line)
+@@ -233,8 +230,9 @@ def LineWrap(text, omit_sgr=False):
+   text_multiline = []
+   for text_line in text.splitlines():
+     # Is this a line that needs splitting?
+-    while ((omit_sgr and (len(StripAnsiText(text_line)) > width)) or
+-           (len(text_line) > width)):
++    while (omit_sgr and (len(StripAnsiText(text_line)) > width)) or (
++        len(text_line) > width
++    ):
+       # If there are no sgr escape characters then do a straight split.
+       if not omit_sgr:
+         text_multiline.append(text_line[:width])
+@@ -284,8 +282,8 @@ class Pager(object):
+ 
+     Args:
+       text: A string, the text that will be paged through.
+-      delay: A boolean, if True will cause a slight delay
+-        between line printing for more obvious scrolling.
++      delay: A boolean, if True will cause a slight delay between line printing
++        for more obvious scrolling.
+     """
+     self._text = text or ''
+     self._delay = delay
+@@ -356,7 +354,9 @@ class Pager(object):
+     text = LineWrap(self._text).splitlines()
+     while True:
+       # Get a list of new lines to display.
+-      self._newlines = text[self._displayed:self._displayed+self._lines_to_show]
++      self._newlines = text[
++          self._displayed : self._displayed + self._lines_to_show
++      ]
+       for line in self._newlines:
+         sys.stdout.write(line + '\n')
+         if self._delay and self._lastscroll > 0:
+@@ -366,19 +366,19 @@ class Pager(object):
+       if self._currentpagelines >= self._lines_to_show:
+         self._currentpagelines = 0
+         wish = self._AskUser()
+-        if wish == 'q':         # Quit pager.
++        if wish == 'q':  # Quit pager.
+           return False
+-        elif wish == 'g':       # Display till the end.
++        elif wish == 'g':  # Display till the end.
+           self._Scroll(len(text) - self._displayed + 1)
+-        elif wish == '\r':      #  Enter, down a line.
++        elif wish == '\r':  #  Enter, down a line.
+           self._Scroll(1)
+         elif wish == '\033[B':  # Down arrow, down a line.
+           self._Scroll(1)
+         elif wish == '\033[A':  # Up arrow, up a line.
+           self._Scroll(-1)
+-        elif wish == 'b':       # Up a page.
++        elif wish == 'b':  # Up a page.
+           self._Scroll(0 - self._cli_lines)
+-        else:                   # Next page.
++        else:  # Next page.
+           self._Scroll()
+       if self._displayed >= len(text):
+         break
+@@ -389,8 +389,8 @@ class Pager(object):
+     """Set attributes to scroll the buffer correctly.
+ 
+     Args:
+-      lines: An int, number of lines to scroll. If None, scrolls
+-        by the terminal length.
++      lines: An int, number of lines to scroll. If None, scrolls by the terminal
++        length.
+     """
+     if lines is None:
+       lines = self._cli_lines
+@@ -413,18 +413,19 @@ class Pager(object):
+       A string, the character entered by the user.
+     """
+     if self._show_percent:
+-      progress = int(self._displayed*100 / (len(self._text.splitlines())))
++      progress = int(self._displayed * 100 / (len(self._text.splitlines())))
+       progress_text = ' (%d%%)' % progress
+     else:
+       progress_text = ''
+     question = AnsiText(
+-        'Enter: next line, Space: next page, '
+-        'b: prev page, q: quit.%s' %
+-        progress_text, ['green'])
++        'Enter: next line, Space: next page, b: prev page, q: quit.%s'
++        % progress_text,
++        ['green'],
++    )
+     sys.stdout.write(question)
+     sys.stdout.flush()
+     ch = self._GetCh()
+-    sys.stdout.write('\r%s\r' % (' '*len(question)))
++    sys.stdout.write('\r%s\r' % (' ' * len(question)))
+     sys.stdout.flush()
+     return ch
+ 
+@@ -455,8 +456,8 @@ def main(argv=None):
+ 
+   try:
+     opts, args = getopt.getopt(argv[1:], 'dhs', ['nodelay', 'help', 'size'])
+-  except getopt.error as msg:
+-    raise Usage(msg)
++  except getopt.error as exc:
++    raise UsageError(exc) from exc
+ 
+   # Print usage and return, regardless of presence of other args.
+   for opt, _ in opts:
+@@ -475,7 +476,7 @@ def main(argv=None):
+     elif opt in ('-d', '--delay'):
+       isdelay = True
+     else:
+-      raise Usage('Invalid arguments.')
++      raise UsageError('Invalid arguments.')
+ 
+   # Page text supplied in either specified file or stdin.
+ 
+@@ -491,7 +492,7 @@ if __name__ == '__main__':
+   help_msg = '%s [--help] [--size] [--nodelay] [input_file]\n' % sys.argv[0]
+   try:
+     sys.exit(main())
+-  except Usage as err:
++  except UsageError as err:
+     print(err, file=sys.stderr)
+     print('For help use --help', file=sys.stderr)
+     sys.exit(2)
+Index: textfsm-1.1.3/textfsm/texttable.py
+===================================================================
+--- textfsm-1.1.3.orig/textfsm/texttable.py
++++ textfsm-1.1.3/textfsm/texttable.py
+@@ -22,22 +22,10 @@ Tables can be created from CSV input and
+ formats such as CSV and variable sized and justified rows.
+ """
+ 
+-from __future__ import absolute_import
+-from __future__ import division
+-from __future__ import print_function
+-from __future__ import unicode_literals
+-
+ import copy
+-from functools import cmp_to_key
++import functools
+ import textwrap
+ 
+-from builtins import next      # pylint: disable=redefined-builtin
+-from builtins import object    # pylint: disable=redefined-builtin
+-from builtins import range     # pylint: disable=redefined-builtin
+-from builtins import str       # pylint: disable=redefined-builtin
+-from builtins import zip       # pylint: disable=redefined-builtin
+-import six
+-
+ from textfsm import terminal
+ 
+ 
+@@ -56,8 +44,11 @@ class Row(dict):
+   to make it behave like a regular dict() and list().
+ 
+   Attributes:
++    color: Colour spec of this row.
++    header: List of row's headers.
+     row: int, the row number in the container table. 0 is the header row.
+     table: A TextTable(), the associated container table.
++    values: List of row's values.
+   """
+ 
+   def __init__(self, *args, **kwargs):
+@@ -162,7 +153,7 @@ class Row(dict):
+     except IndexError:
+       return default_value
+ 
+-  def index(self, column):
++  def index(self, column):  # pylint: disable=invalid-name
+     """Fetches the column number (0 indexed).
+ 
+     Args:
+@@ -174,12 +165,12 @@ class Row(dict):
+     Raises:
+       ValueError: The specified column was not found.
+     """
+-    for i, key in enumerate(self._keys):
+-      if key == column:
+-        return i
+-    raise ValueError('Column "%s" not found.' % column)
++    try:
++      return self._keys.index(column)
++    except ValueError as exc:
++      raise ValueError('Column "%s" not found.' % column) from exc
+ 
+-  def iterkeys(self):
++  def iterkeys(self):  # pylint: disable=invalid-name
+     return iter(self._keys)
+ 
+   def items(self):
+@@ -263,12 +254,13 @@ class Row(dict):
+     elif isinstance(values, list) or isinstance(values, tuple):
+       if len(values) != len(self._values):
+         raise TypeError('Supplied list length != row length')
+-      for (index, value) in enumerate(values):
++      for index, value in enumerate(values):
+         self._values[index] = _ToStr(value)
+ 
+     else:
+-      raise TypeError('Supplied argument must be Row, dict or list, not %s',
+-                      type(values))
++      raise TypeError(
++          'Supplied argument must be Row, dict or list, not %s' % type(values)
++      )
+ 
+   def Insert(self, key, value, row_index):
+     """Inserts new values at a specified offset.
+@@ -317,8 +309,8 @@ class TextTable(object):
+     """Initialises a new table.
+ 
+     Args:
+-      row_class: A class to use as the row object. This should be a
+-        subclass of this module's Row() class.
++      row_class: A class to use as the row object. This should be a subclass of
++        this module's Row() class.
+     """
+     self.row_class = row_class
+     self.separator = ', '
+@@ -327,7 +319,7 @@ class TextTable(object):
+   def Reset(self):
+     self._row_index = 1
+     self._table = [[]]
+-    self._iterator = 0      # While loop row index
++    self._iterator = 0  # While loop row index
+ 
+   def __repr__(self):
+     return '%s(%r)' % (self.__class__.__name__, str(self))
+@@ -337,7 +329,7 @@ class TextTable(object):
+     return self.table
+ 
+   def __incr__(self, incr=1):
+-    self._SetRowIndex(self._row_index +incr)
++    self._SetRowIndex(self._row_index + incr)
+ 
+   def __contains__(self, name):
+     """Whether the given column header name exists."""
+@@ -386,9 +378,9 @@ class TextTable(object):
+     """Construct Textable from the rows of which the function returns true.
+ 
+     Args:
+-      function: A function applied to each row which returns a bool. If
+-                function is None, all rows with empty column values are
+-                removed.
++      function: A function applied to each row which returns a bool. If function
++        is None, all rows with empty column values are removed.
++
+     Returns:
+       A new TextTable()
+ 
+@@ -403,7 +395,7 @@ class TextTable(object):
+     # pylint: disable=protected-access
+     new_table._table = [self.header]
+     for row in self:
+-      if function(row) is True:
++      if function(row):
+         new_table.Append(row)
+     return new_table
+ 
+@@ -430,6 +422,7 @@ class TextTable(object):
+     return new_table
+ 
+   # pylint: disable=W0622
++  # pylint: disable=invalid-name
+   def sort(self, cmp=None, key=None, reverse=False):
+     """Sorts rows in the texttable.
+ 
+@@ -455,7 +448,7 @@ class TextTable(object):
+     new_table = self._table[1:]
+ 
+     if cmp is not None:
+-      key = cmp_to_key(cmp)
++      key = functools.cmp_to_key(cmp)
+ 
+     new_table.sort(key=key, reverse=reverse)
+ 
+@@ -465,17 +458,19 @@ class TextTable(object):
+     # Re-write the 'row' attribute of each row
+     for index, row in enumerate(self._table):
+       row.row = index
++
+   # pylint: enable=W0622
++  # pylint: enable=invalid-name
+ 
+-  def extend(self, table, keys=None):
++  def extend(self, table, keys=None):  # pylint: disable=invalid-name
+     """Extends all rows in the texttable.
+ 
+     The rows are extended with the new columns from the table.
+ 
+     Args:
+       table: A texttable, the table to extend this table by.
+-      keys: A set, the set of columns to use as the key. If None, the
+-        row index is used.
++      keys: A set, the set of columns to use as the key. If None, the row index
++        is used.
+ 
+     Raises:
+       IndexError: If key is not a valid column name.
+@@ -483,7 +478,7 @@ class TextTable(object):
+     if keys:
+       for k in keys:
+         if k not in self._Header():
+-          raise IndexError("Unknown key: '%s'", k)
++          raise IndexError("Unknown key: '%s'" % k)
+ 
+     extend_with = []
+     for column in table.header:
+@@ -516,8 +511,8 @@ class TextTable(object):
+     """Removes a row from the table.
+ 
+     Args:
+-      row: int, the row number to delete. Must be >= 1, as the header
+-        cannot be removed.
++      row: int, the row number to delete. Must be >= 1, as the header cannot be
++        removed.
+ 
+     Raises:
+       TableError: Attempt to remove nonexistent or header row.
+@@ -607,9 +602,7 @@ class TextTable(object):
+     # Avoid the global lookup cost on each iteration.
+     lstr = str
+     for row in self._table:
+-      result.append(
+-          '%s\n' %
+-          self.separator.join(lstr(v) for v in row))
++      result.append('%s\n' % self.separator.join(lstr(v) for v in row))
+ 
+     return ''.join(result)
+ 
+@@ -618,7 +611,7 @@ class TextTable(object):
+     if not isinstance(table, TextTable):
+       raise TypeError('Not an instance of TextTable.')
+     self.Reset()
+-    self._table = copy.deepcopy(table._table)   # pylint: disable=W0212
++    self._table = copy.deepcopy(table._table)  # pylint: disable=W0212
+     # Point parent table of each row back ourselves.
+     for row in self:
+       row.table = self
+@@ -666,15 +659,16 @@ class TextTable(object):
+         result.extend(self._TextJustify(paragraph, col_size))
+       return result
+ 
+-    wrapper = textwrap.TextWrapper(width=col_size-2, break_long_words=False,
+-                                   expand_tabs=False)
++    wrapper = textwrap.TextWrapper(
++        width=col_size - 2, break_long_words=False, expand_tabs=False
++    )
+     try:
+       text_list = wrapper.wrap(text)
+-    except ValueError:
+-      raise TableError('Field too small (minimum width: 3)')
++    except ValueError as exc:
++      raise TableError('Field too small (minimum width: 3)') from exc
+ 
+     if not text_list:
+-      return [' '*col_size]
++      return [' ' * col_size]
+ 
+     for current_line in text_list:
+       stripped_len = len(terminal.StripAnsiText(current_line))
+@@ -687,16 +681,23 @@ class TextTable(object):
+ 
+     return result
+ 
+-  def FormattedTable(self, width=80, force_display=False, ml_delimiter=True,
+-                     color=True, display_header=True, columns=None):
++  def FormattedTable(
++      self,
++      width=80,
++      force_display=False,
++      ml_delimiter=True,
++      color=True,
++      display_header=True,
++      columns=None,
++  ):
+     """Returns whole table, with whitespace padding and row delimiters.
+ 
+     Args:
+       width: An int, the max width we want the table to fit in.
+       force_display: A bool, if set to True will display table when the table
+-          can't be made to fit to the width.
++        can't be made to fit to the width.
+       ml_delimiter: A bool, if set to False will not display the multi-line
+-          delimiter.
++        delimiter.
+       color: A bool. If true, display any colours in row.colour.
+       display_header: A bool. If true, display header.
+       columns: A list of str, show only columns with these names.
+@@ -780,8 +781,9 @@ class TextTable(object):
+         for key in multi_word:
+           # If we scale past the desired width for this particular column,
+           # then give it its desired width and remove it from the wrapped list.
+-          if (largest[key] <=
+-              round((largest[key] / float(desired_width)) * spare_width)):
++          if largest[key] <= round(
++              (largest[key] / float(desired_width)) * spare_width
++          ):
+             smallest[key] = largest[key]
+             multi_word.remove(key)
+             spare_width -= smallest[key]
+@@ -789,8 +791,9 @@ class TextTable(object):
+             done = False
+           # If we scale below the minimum width for this particular column,
+           # then leave it at its minimum and remove it from the wrapped list.
+-          elif (smallest[key] >=
+-                round((largest[key] / float(desired_width)) * spare_width)):
++          elif smallest[key] >= round(
++              (largest[key] / float(desired_width)) * spare_width
++          ):
+             multi_word.remove(key)
+             spare_width -= smallest[key]
+             desired_width -= largest[key]
+@@ -799,8 +802,9 @@ class TextTable(object):
+       # Repeat the scaling algorithm with the final wrap list.
+       # This time we assign the extra column space by increasing 'smallest'.
+       for key in multi_word:
+-        smallest[key] = int(round((largest[key] / float(desired_width))
+-                                  * spare_width))
++        smallest[key] = int(
++            round((largest[key] / float(desired_width)) * spare_width)
++        )
+ 
+     total_width = 0
+     row_count = 0
+@@ -822,7 +826,7 @@ class TextTable(object):
+           header_list.append(result_dict[key][row_idx])
+         except IndexError:
+           # If no value than use whitespace of equal size.
+-          header_list.append(' '*smallest[key])
++          header_list.append(' ' * smallest[key])
+       header_list.append('\n')
+ 
+     # Format and store the body lines
+@@ -849,7 +853,7 @@ class TextTable(object):
+         prev_muli_line = True
+       # If current or prior line was multi-line then include delimiter.
+       if not first_line and prev_muli_line and ml_delimiter:
+-        body_list.append('-'*total_width + '\n')
++        body_list.append('-' * total_width + '\n')
+         if row_count == 1:
+           # Our current line was not wrapped, so clear flag.
+           prev_muli_line = False
+@@ -861,20 +865,20 @@ class TextTable(object):
+             row_list.append(result_dict[key][row_idx])
+           except IndexError:
+             # If no value than use whitespace of equal size.
+-            row_list.append(' '*smallest[key])
++            row_list.append(' ' * smallest[key])
+         row_list.append('\n')
+ 
+       if color and row.color is not None:
+         body_list.append(
+-            terminal.AnsiText(''.join(row_list)[:-1],
+-                              command_list=row.color))
++            terminal.AnsiText(''.join(row_list)[:-1], command_list=row.color)
++        )
+         body_list.append('\n')
+       else:
+         body_list.append(''.join(row_list))
+ 
+       first_line = False
+ 
+-    header = ''.join(header_list) + '='*total_width
++    header = ''.join(header_list) + '=' * total_width
+     if color and self._Header().color is not None:
+       header = terminal.AnsiText(header, command_list=self._Header().color)
+     # Add double line delimiter between header and main body.
+@@ -915,7 +919,7 @@ class TextTable(object):
+ 
+     body = []
+     for row in self:
+-    # Some of the row values are pulled into the label, stored in label_prefix.
++      # Some row values are pulled into the label, stored in label_prefix.
+       label_prefix = []
+       value_list = []
+       for key, value in row.items():
+@@ -925,8 +929,9 @@ class TextTable(object):
+         else:
+           value_list.append('%s %s' % (key, value))
+ 
+-      body.append(''.join(
+-          ['%s.%s\n' % ('.'.join(label_prefix), v) for v in value_list]))
++      body.append(
++          ''.join(['%s.%s\n' % ('.'.join(label_prefix), v) for v in value_list])
++      )
+ 
+     return '%s%s' % (label_str, ''.join(body))
+ 
+@@ -964,7 +969,6 @@ class TextTable(object):
+ 
+     Raises:
+       TableError: Column name already exists.
+-
+     """
+     if column in self.table:
+       raise TableError('Column %r already in table.' % column)
+@@ -1027,11 +1031,12 @@ class TextTable(object):
+     self.Reset()
+ 
+     header_row = self.row_class()
++    header_length = 0
+     if header:
+       line = buf.readline()
+       header_str = ''
+       while not header_str:
+-        if not isinstance(line, six.string_types):
++        if not isinstance(line, str):
+           line = line.decode('utf-8')
+         # Remove comments.
+         header_str = line.split('#')[0].strip()
+@@ -1052,7 +1057,7 @@ class TextTable(object):
+ 
+     # xreadlines would be better but not supported by StringIO for testing.
+     for line in buf:
+-      if not isinstance(line, six.string_types):
++      if not isinstance(line, str):
+         line = line.decode('utf-8')
+       # Support commented lines, provide '#' is first character of line.
+       if line.startswith('#'):
+@@ -1066,8 +1071,9 @@ class TextTable(object):
+       if not header:
+         header_row = self.row_class()
+         header_length = len(lst)
+-        header_row.values = dict(zip(range(header_length),
+-                                     range(header_length)))
++        header_row.values = dict(
++            zip(range(header_length), range(header_length))
++        )
+         self._table[0] = header_row
+         header = True
+         continue
+@@ -1079,7 +1085,7 @@ class TextTable(object):
+ 
+     return self.size
+ 
+-  def index(self, name=None):
++  def index(self, name=None):  # pylint: disable=invalid-name
+     """Returns index number of supplied column name.
+ 
+     Args:
+@@ -1093,5 +1099,5 @@ class TextTable(object):
+     """
+     try:
+       return self.header.index(name)
+-    except ValueError:
+-      raise TableError('Unknown index name %s.' % name)
++    except ValueError as exc:
++      raise TableError('Unknown index name %s.' % name) from exc

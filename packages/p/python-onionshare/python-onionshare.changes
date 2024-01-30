@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 28 17:35:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Use (single flavor) python_subpackages for correct package prefix
+- Obsolete incorrectly named packages, convince rpmlint that it is
+  fine
+
+-------------------------------------------------------------------
 Thu Nov 23 14:22:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Fix dependencies
@@ -149,7 +156,7 @@ Sun May 16 09:28:39 UTC 2021 - Axel Braun <axel.braun@gmx.de>
   * Bugfix: Fix chat mode
   * Bugfix: Fix –persistent in onionshare-cli
   * Bugfix: Fix checking for updates in Windows and macOS 
-  *  Major new feature: Multiple tabs, including better support for persistent services, faster Tor connections
+  * Major new feature: Multiple tabs, including better support for persistent services, faster Tor connections
   * New feature: Chat anonymously mode
   * New feature: All new design
   * New feature: Ability to display QR codes of OnionShare addresses

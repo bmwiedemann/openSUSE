@@ -31,4 +31,41 @@
     <comment></comment>
     <requestid>942603</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d9c33395a41f0639ee24d4417eaf3207</srcmd5>
+    <version>3.3.6</version>
+    <time>1706635617</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.6:
+  * Fix issue with highlight when using 'light' color scheme
+  * Remove unnecessary ChangeList queries to speed up export via
+    Admin UI
+  * Respect color scheme override
+  * Update FAQ to cover skipping rows with validation errors
+  * Added support for django5
+  * Show list of exported fields in Admin UI
+  * Added support for python 3.12
+  * Update Finnish translations
+  * :meth:`~import_export.admin.ExportActionMixin.export_admin_ac
+    tion` can be overridden by subclassing it in the ModelAdmin
+  * Updated Spanish translations
+  * Added documentation and tests for retrieving instance
+    information after import
+  * :meth:`~import_export.widgets.NumberWidget.render` returns
+    None as empty string if coerce_to_string is True
+  * Updated documentation to describe how to select for export in
+    Admin UI
+  * Added catch for django5 deprecation warning
+  * Updated and compiled message files
+  * Added .readthedocs.yaml
+  * Remove 'escape output' deprecation (#1618) Removal of
+    deprecated :ref:`IMPORT_EXPORT_ESCAPE_OUTPUT_ON_EXPORT`.
+    Deprecation of :ref:`IMPORT_EXPORT_ESCAPE_HTML_ON_EXPORT`.
+    Refer to :ref:`installation` docs.
+  * Removal of deprecated
+    :ref:`IMPORT_EXPORT_ESCAPE_OUTPUT_ON_EXPORT`.
+  * Deprecation of :ref:`IMPORT_EXPORT_ESCAPE_HTML_ON_EXPORT`.
+    Refer to :ref:`installation` docs.</comment>
+    <requestid>1142778</requestid>
+  </revision>
 </revisionlist>

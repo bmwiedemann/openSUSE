@@ -100,4 +100,25 @@
     &quot;poetry==1.4.0&quot;. #319</comment>
     <requestid>1084862</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>acfcb53e9dda1886186e7ce588f8e4b8</srcmd5>
+    <version>1.8.1</version>
+    <time>1706635447</time>
+    <user>anag+factory</user>
+    <comment>- fix dependencies (add tomli)
+
+- update to 1.8.1:
+  * Remove direct imports from distutils
+  * Include py.typed when packaging to denote that setuptools-rust includes type hints
+  * Add support for pyproject.toml configuration using [tool.setuptools-rust] options
+  * Fix plat_name handling in the case bdist_wheel.plat_name is set via configuration file
+  * Drop support for Python 3.7
+  * Remove direct imports from pkg_resources.
+  * Add support for setting a custom cargo profile with the SETUPTOOLS_RUST_CARGO_PROFILE environment variable
+- drop installation of example hello-world as it needs a cargo now
+
+  longer compatible with it
+- Initial package (1.0.0)</comment>
+    <requestid>1142459</requestid>
+  </revision>
 </revisionlist>

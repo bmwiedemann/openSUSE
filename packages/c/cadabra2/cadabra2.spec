@@ -1,7 +1,7 @@
 #
 # spec file for package cadabra2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           cadabra2
-Version:        2.4.4.1
+Version:        2.4.5.4
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
@@ -46,7 +46,7 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.8
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-ipykernel
 BuildRequires:  python3-matplotlib
@@ -56,7 +56,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(sqlite3)
-Requires:       python3
+Requires:       python3 >= 3.8
 Recommends:     %{name}-doc
 %if 0%{?suse_version} >= 1550
 BuildRequires:  jupyter-jupyter_core-filesystem

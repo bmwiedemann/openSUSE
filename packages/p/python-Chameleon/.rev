@@ -197,4 +197,29 @@ New dependency of python-Pyramid</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1139516</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>190446dbbe326c616e2c331b934852ad</srcmd5>
+    <version>4.5.2</version>
+    <time>1706635602</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.5.2:
+  * Fix a regression where a static symbol would not get
+    correctly imported.
+  * Add Python 3.13 classifier.
+  * Fix a regression where default_extension was no longer permitted
+  * Chameleon now has type annotations!
+  * Fix a regression where generated template code would
+    suboptimal due to incorrect handling of internal variables.
+  * Always cook templates in debug mode, even when using
+    CHAMELEON_CACHE option to persist generated code on disk.
+  * Parsing the AST back to Python code now uses the built-in
+    ast.unparse function. This change is not directly surfaced
+    but means that the unparsing code is now more correctly
+    tracking changes to the interpreter.
+  * Drop support for platforms where AST nodes aren't weakref-
+    capable (e.g., older PyPy).
+  * Fix a PyPy compatibility issue having to do with determining
+    the set</comment>
+    <requestid>1142764</requestid>
+  </revision>
 </revisionlist>

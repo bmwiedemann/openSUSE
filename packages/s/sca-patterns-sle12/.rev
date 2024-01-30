@@ -247,4 +247,12 @@
     <comment>Changed pattern mode in spec file bsc#1218773 (forwarded request 1138384 from jrecord)</comment>
     <requestid>1138385</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>427107c1d78a8acfbcae3eb4fc870768</srcmd5>
+    <version>1.5.7</version>
+    <time>1706635529</time>
+    <user>anag+factory</user>
+    <comment>bsc#1219319 (forwarded request 1142631 from jrecord)</comment>
+    <requestid>1142632</requestid>
+  </revision>
 </revisionlist>

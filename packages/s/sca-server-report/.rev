@@ -79,4 +79,12 @@
     <comment>Ready for install bsc#1218572 (forwarded request 1137792 from jrecord)</comment>
     <requestid>1137793</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e330c09b295b9e404a5dc42b53a228f2</srcmd5>
+    <version>1.6.2</version>
+    <time>1706635527</time>
+    <user>anag+factory</user>
+    <comment>bsc#1219252 bsc#1219255 bsc#1219257 (forwarded request 1142627 from jrecord)</comment>
+    <requestid>1142628</requestid>
+  </revision>
 </revisionlist>

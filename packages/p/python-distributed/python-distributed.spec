@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-distributed
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -47,7 +47,7 @@
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.1.0
+Version:        2024.1.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -84,7 +84,7 @@ Requires:       python-tornado >= 6.0.4
 Requires:       python-urllib3 >= 1.24.3
 Requires:       python-zict >= 2.2.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module bokeh >= 3.1}
@@ -172,6 +172,8 @@ donttest+=" or (test_computations_futures)"
 donttest+=" or (test_client and test_quiet_close_process)"
 # should return > 3, returns 3 exactly
 donttest+=" or (test_statistical_profiling_cycle)"
+# flakey on 3.10
+donttest+=" or (test_client_worker)"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # OverflowError -- https://github.com/dask/distributed/issues/5252
   donttest+=" or test_ensure_spilled_immediately"
@@ -180,7 +182,7 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # https://github.com/dask/distributed/issues/7175
   donttest+=" or (test_sizeof_error and larger)"
   #
-  donttest+=" or test_task_groups or test_client_worker"
+  donttest+=" or test_task_groups"
 fi
 
 %if %{with paralleltests}

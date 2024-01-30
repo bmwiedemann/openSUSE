@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 30 12:02:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.2:
+  * Fix a regression where a static symbol would not get
+    correctly imported.
+  * Add Python 3.13 classifier.
+  * Fix a regression where default_extension was no longer permitted
+  * Chameleon now has type annotations!
+  * Fix a regression where generated template code would
+    suboptimal due to incorrect handling of internal variables.
+  * Always cook templates in debug mode, even when using
+    CHAMELEON_CACHE option to persist generated code on disk.
+  * Parsing the AST back to Python code now uses the built-in
+    ast.unparse function. This change is not directly surfaced
+    but means that the unparsing code is now more correctly
+    tracking changes to the interpreter.
+  * Drop support for platforms where AST nodes aren't weakref-
+    capable (e.g., older PyPy).
+  * Fix a PyPy compatibility issue having to do with determining
+    the set
+
+-------------------------------------------------------------------
 Wed Jan 10 16:27:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.3:

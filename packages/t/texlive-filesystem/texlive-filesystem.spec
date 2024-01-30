@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-filesystem
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   208
+%define texlive_noarch   212
 %define texlive_source   texlive-20230311-source
 %define biber_version    2.19
 
@@ -57,7 +57,9 @@ Requires(post): %fillup_prereq
 Requires(post): permissions
 Requires(post): /usr/bin/mktemp
 Requires(post): /usr/bin/mv
-Requires(post): /usr/bin/setpriv
+# Requires(post): /usr/bin/setpriv
+# We need a working full-featured setpriv(8)
+Requires(post): util-linux
 %if 0%{?suse_version} > 1550
 Requires(pre):  rpm_macro(service_add_post)
 %endif
@@ -22897,7 +22899,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files
-%defattr(-,root,root,755)
 %if 0%{?suse_version} <= 1550
 %config %{_sysconfdir}/cron.daily/suse-texlive
 %endif
@@ -36412,163 +36413,110 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %files -n texlive-scheme-basic
-%defattr(-,root,root,755)
 
 %files -n texlive-scheme-bookpub
-%defattr(-,root,root,755)
 
 %files -n texlive-scheme-context
-%defattr(-,root,root,755)
 
 %files -n texlive-scheme-full
-%defattr(-,root,root,755)
 
 %files -n texlive-scheme-gust
-%defattr(-,root,root,755)
 
 %files -n texlive-scheme-infraonly
-%defattr(-,root,root,755)
 
 %files -n texlive-scheme-medium
-%defattr(-,root,root,755)
 
 %files -n texlive-scheme-minimal
-%defattr(-,root,root,755)
 
 %files -n texlive-scheme-small
-%defattr(-,root,root,755)
 
 %files -n texlive-scheme-tetex
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-basic
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-bibtexextra
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-binextra
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-context
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-fontsextra
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-fontsrecommended
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-fontutils
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-formatsextra
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-games
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-humanities
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langarabic
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langchinese
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langcjk
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langcyrillic
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langczechslovak
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langenglish
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langeuropean
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langfrench
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langgerman
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langgreek
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langitalian
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langjapanese
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langkorean
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langother
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langpolish
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langportuguese
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-langspanish
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-latex
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-latexextra
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-latexrecommended
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-luatex
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-mathscience
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-metapost
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-music
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-pictures
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-plaingeneric
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-pstricks
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-publishers
-%defattr(-,root,root,755)
 
 %files -n texlive-collection-xetex
-%defattr(-,root,root,755)
 
 %files -n texlive-devel
-%defattr(-,root,root,755)
 
 %files -n texlive-alldocumentation
-%defattr(-,root,root,755)
 
 %files -n texlive-extratools
-%defattr(-,root,root,755)
 
 %files -n texlive-updmap-map
-%defattr(-,root,root,755)
 %dir %{_texmfdistdir}/fonts/map/dvipdfmx/updmap
 %dir %{_texmfdistdir}/fonts/map/dvips/updmap
 %dir %{_texmfdistdir}/fonts/map/pdftex/updmap

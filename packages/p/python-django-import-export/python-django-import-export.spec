@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-import-export
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-django-import-export
-Version:        2.7.1
+Version:        3.3.6
 Release:        0
 Summary:        Django data importing and exporting
 License:        BSD-2-Clause
@@ -60,7 +58,7 @@ sed -i '/data_field/d' tests/core/migrations/0004_bookwithchapters.py
 %check
 export PYTHONPATH=${PWD}:${PWD}/tests/
 export LANG=en_US.UTF-8
-%python_exec -m django test core -v2 --settings=settings
+%python_exec -m django test core -v2 --settings=settings -k "not test_widget_from_django_field_cannot_import_postgres"
 
 %files %{python_files}
 %doc AUTHORS README.rst

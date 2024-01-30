@@ -156,7 +156,9 @@ applications that want to make use of the mutter library.
 %if 0%{?sle_version}
 %patch -P 1000 -p1
 %patch -P 1001 -p1
-%patch -P 1002 -p1
+# Disable mutter-SLE-bsc984738-grab-display.patch until
+# bsc#1218935 is fixed
+#%patch -P 1002 -p1
 %endif
 
 %build

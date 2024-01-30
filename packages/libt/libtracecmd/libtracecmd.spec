@@ -1,7 +1,7 @@
 #
 # spec file for package libtracecmd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libtracecmd
 %define lname   libtracecmd1
-Version:        1.4.0
+Version:        1.5.1
 Release:        0
 Summary:        Library for creating and reading trace-cmd data files
 License:        LGPL-2.1-only

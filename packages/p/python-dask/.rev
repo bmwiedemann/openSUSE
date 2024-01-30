@@ -1735,4 +1735,16 @@
   * Deprecate npartitions=&quot;auto&quot; for set_index &amp; sort_values</comment>
     <requestid>1140136</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>9a75e346881e86b4cbb92d8ee2bdee4b</srcmd5>
+    <version>2024.1.1</version>
+    <time>1706635621</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.1.1:
+  * This release contains compatibility updates for the latest
+    pandas and scipy releases. See :pr:`10834`, :pr:`10849`,
+    :pr:`10845`, and :pr-distributed:`8474` from `crusaderky`_
+    for details.</comment>
+    <requestid>1142781</requestid>
+  </revision>
 </revisionlist>

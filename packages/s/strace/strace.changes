@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 29 19:44:45 UTC 2024 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 6.7
+  * Implemented -kk/--stack-traces=source option for libdw-based stack tracing.
+  * Implemented decoding of futex_wake, futex_wait, and sys_futex_requeue
+    syscalls.
+  * Updated lists of BPF_*, BTRFS_*, IORING_*, KVM_*, LANDLOCK_*, PR_*,
+    and TCP_* constants.
+  * Updated lists of ioctl commands from Linux 6.7.
+  * Fix strace -r during the first second after booting to show correct relative
+    timestamps.
+  * Fix strace -f entering deadlock on exit if there are tracee processes
+    spawned using vfork semantics.
+
+-------------------------------------------------------------------
 Tue Oct 31 11:58:57 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Update to strace 6.6

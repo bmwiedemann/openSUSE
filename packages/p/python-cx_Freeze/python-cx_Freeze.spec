@@ -1,7 +1,7 @@
 #
 # spec file for package python-cx_Freeze
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define oldpython python
 Name:           python-cx_Freeze
-Version:        6.15.12
+Version:        6.15.13
 Release:        0
 Summary:        Scripts to create standalone executables from Python scripts
 License:        Python-2.0
@@ -38,7 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  patchelf
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # we provide same binary like the deprecated py2 variant
 Conflicts:      %{oldpython}-cx_Freeze
 %python_subpackages

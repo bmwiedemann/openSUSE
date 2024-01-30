@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 25 21:00:14 UTC 2024 - egotthold@suse.com
+
+- Update to version 1.4.0:
+  * fix doc
+  * fix wrong doc
+  * Update to plugins v1.4.0
+  * upload release artifact on the release page
+  * set CGO_ENABLED=1 when GOARCH=amd64
+  *  simplify the packaging and releasing of flannel-cni
+  * Fix typo in flannel_linux_test.go
+  * update Githb actions to stay up to date
+  * Add support for riscv64
+  * Set as latest the released image
+
+-------------------------------------------------------------------
 Sun Oct 08 13:01:54 UTC 2023 - egotthold@suse.com
 
 - Update to version 1.2.0:

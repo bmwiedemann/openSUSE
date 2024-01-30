@@ -1,7 +1,7 @@
 #
 # spec file for package xterm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define splitbin 0%{?suse_version} >= 1300
 Name:           xterm
-Version:        388
+Version:        389
 Release:        0
 Summary:        The basic X terminal program
 License:        MIT

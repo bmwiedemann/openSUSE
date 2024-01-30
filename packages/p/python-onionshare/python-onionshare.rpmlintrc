@@ -1,0 +1,8 @@
+# it's packaged inline
+addFilter("python-missing-require onionshare_cli")
+# using cepa instead
+addFilter("python-missing-require stem")
+# the rpmplint python requirement checker is confused about two packages in one
+addFilter("python-leftover-require python3[0-9]*-.*")
+# obsoleting but not replacing old multiflavor packages
+addFilter("obsolete-not-provided python3?[0-9]*-onionshare")

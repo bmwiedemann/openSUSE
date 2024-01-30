@@ -1,26 +1,36 @@
---- xmvn-4.2.0/xmvn-tools/xmvn-install/src/main/java/org/fedoraproject/xmvn/tools/install/impl/DefaultArtifactInstaller.java	2023-07-24 10:18:52.523347251 +0200
-+++ xmvn-4.2.0/xmvn-tools/xmvn-install/src/main/java/org/fedoraproject/xmvn/tools/install/impl/DefaultArtifactInstaller.java	2023-07-24 11:24:03.362142115 +0200
-@@ -185,7 +185,7 @@
+--- a/xmvn-tools/xmvn-install/src/main/java/org/fedoraproject/xmvn/tools/install/impl/DefaultArtifactInstaller.java
++++ b/xmvn-tools/xmvn-install/src/main/java/org/fedoraproject/xmvn/tools/install/impl/DefaultArtifactInstaller.java
+@@ -185,7 +185,12 @@ class DefaultArtifactInstaller
          am.setNamespace( repo.getNamespace() );
  
          // UUID
 -        am.setUuid( UUID.randomUUID().toString() );
-+        am.setUuid( UUID.nameUUIDFromBytes((System.getenv("SOURCE_DATE_EPOCH")+repo.getNamespace()+artifact.toString()).getBytes()).toString() );
++        UUID guid = UUID.randomUUID();
++        if ( System.getenv( "SOURCE_DATE_EPOCH" ) != null )
++        {
++            guid = UUID.nameUUIDFromBytes( ( System.getenv( "SOURCE_DATE_EPOCH" ) + repo.getNamespace() + artifact.toString() ).getBytes() );
++        }
++        am.setUuid( guid.toString() );
  
          // Compat version
          for ( String version : rule.getVersions() )
---- xmvn-4.2.0/xmvn-tools/xmvn-install/src/main/java/org/fedoraproject/xmvn/tools/install/JavaPackage.java	2023-07-24 10:18:52.523347251 +0200
-+++ xmvn-4.2.0/xmvn-tools/xmvn-install/src/main/java/org/fedoraproject/xmvn/tools/install/JavaPackage.java	2023-07-28 07:33:41.305575464 +0200
-@@ -58,7 +58,7 @@
+--- a/xmvn-tools/xmvn-install/src/main/java/org/fedoraproject/xmvn/tools/install/JavaPackage.java
++++ b/xmvn-tools/xmvn-install/src/main/java/org/fedoraproject/xmvn/tools/install/JavaPackage.java
+@@ -58,7 +58,12 @@ public class JavaPackage
          super( id );
          this.basePackageName = basePackageName;
          this.metadataDir = metadataDir;
 -        metadata.setUuid( UUID.randomUUID().toString() );
-+        metadata.setUuid( UUID.nameUUIDFromBytes((System.getenv("SOURCE_DATE_EPOCH")+basePackageName).getBytes()).toString() );
++        UUID guid = UUID.randomUUID();
++        if ( System.getenv( "SOURCE_DATE_EPOCH" ) != null )
++        {
++            guid = UUID.nameUUIDFromBytes( ( System.getenv( "SOURCE_DATE_EPOCH" ) + id + basePackageName + metadataDir.toString() ).getBytes() );
++        }
++        metadata.setUuid( guid.toString() );
      }
  
      /**
-@@ -71,11 +71,11 @@
+@@ -71,11 +76,16 @@ public class JavaPackage
      private PackageMetadata getSplitMetadata( String namespace )
      {
          PackageMetadata splitMetadata = new PackageMetadata();
@@ -29,7 +39,12 @@
          List<ArtifactMetadata> allArtifacts = metadata.getArtifacts();
          List<ArtifactMetadata> splitArtifacts =
              allArtifacts.stream().filter( a -> namespace.equals( a.getNamespace() ) ).collect( Collectors.toList() );
-+        splitMetadata.setUuid( UUID.nameUUIDFromBytes((System.getenv("SOURCE_DATE_EPOCH")+splitArtifacts.toString()).getBytes()).toString() );
++        UUID guid = UUID.randomUUID();
++        if ( System.getenv( "SOURCE_DATE_EPOCH" ) != null )
++        {
++            guid = UUID.nameUUIDFromBytes( ( System.getenv( "SOURCE_DATE_EPOCH" ) + splitArtifacts.toString() ).getBytes() );
++        }
++        splitMetadata.setUuid( guid.toString() );
          splitMetadata.setArtifacts( splitArtifacts );
          splitMetadata.setSkippedArtifacts( metadata.getSkippedArtifacts() );
          return splitMetadata;

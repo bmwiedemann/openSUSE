@@ -1,8 +1,8 @@
 #
 # spec file for package apparmor
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2011-2022 Christian Boltz
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2011-2024 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,6 +96,9 @@ Patch7:         apparmor-enable-precompiled-cache.diff
 # for https://gitlab.com/apparmor/apparmor/-/issues/360 is out
 # Upstream MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/1121 (merged 2023-11-08 into master, 3.1 and 3.0)
 Patch8:         apparmor-systemd-sessions.patch
+
+# allow dovecot-auth to execute unix_chkpwd, and add a profile for unix_chkpwd. This is needed for PAM 1.6 (boo#1219139)
+Patch9:         dovecot-unix_chkpwd.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -365,6 +368,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch7
 %endif
 %patch8 -p1
+%patch9 -p1
 
 %build
 export SUSE_ASNEEDED=0
@@ -599,6 +603,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-dcerpcd
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-rpcd
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-rpcd-*
+%config(noreplace) %{_sysconfdir}/apparmor.d/unix-chkpwd
 %config(noreplace) %{_sysconfdir}/apparmor.d/zgrep
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/*
 %dir /usr/share/apparmor/

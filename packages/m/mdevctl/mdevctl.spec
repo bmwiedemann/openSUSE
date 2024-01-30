@@ -1,7 +1,7 @@
 #
 # spec file for package mdevctl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mdevctl
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Mediated device management and persistence utility
 License:        LGPL-2.1-or-later
@@ -68,9 +68,8 @@ cargo test
 %{_sbindir}/lsmdev
 %{_udevrulesdir}/60-mdevctl.rules
 %dir %{_sysconfdir}/mdevctl.d
-%dir %{_sysconfdir}/mdevctl.d/scripts.d
-%dir %{_sysconfdir}/mdevctl.d/scripts.d/callouts
-%dir %{_sysconfdir}/mdevctl.d/scripts.d/notifiers
+%dir %{_prefix}/lib/mdevctl
+%dir %{_prefix}/lib/mdevctl/scripts.d
 %{_mandir}/man8/mdevctl.8%{?ext_man}
 %{_mandir}/man8/lsmdev.8%{?ext_man}
 %{_datadir}/bash-completion/completions/mdevctl

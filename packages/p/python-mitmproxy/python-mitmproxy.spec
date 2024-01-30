@@ -1,7 +1,7 @@
 #
 # spec file for package python-mitmproxy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
-%define skip_python38 1
+%{?sle15_python_module_pythons}
 Name:           python-mitmproxy
 Version:        9.0.1
 Release:        0
@@ -90,7 +88,7 @@ Requires:       python-zstandard >= 0.11
 Requires:       python-typing_extensions >= 4.3
 %endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
