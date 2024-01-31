@@ -1,7 +1,7 @@
 #
 # spec file for package keylime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        7.7.0
+Version:        7.9.0
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT AND BSD-3-Clause
@@ -66,7 +66,7 @@ Requires:       tpm2-0-tss
 Requires:       tpm2.0-abrmd
 Requires:       tpm2.0-tools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      rust-keylime
 BuildArch:      noarch
 %python_subpackages

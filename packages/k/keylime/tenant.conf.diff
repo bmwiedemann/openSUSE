@@ -1,5 +1,5 @@
---- tenant.conf.ORIG	2023-03-07 17:08:27.642929656 +0100
-+++ tenant.conf	2023-03-07 17:09:23.018891153 +0100
+--- config/tenant.conf.ORIG	2024-01-31 09:54:23.807371427 +0100
++++ config/tenant.conf	2024-01-31 09:55:09.827358730 +0100
 @@ -106,7 +106,8 @@
  # might provide a signed list of EK public key hashes.  Then you could write
  # an ek_check_script that checks the signature of the allowlist and then
