@@ -1,0 +1,37 @@
+#!/bin/sh
+
+GET_EDID=@LIBEXECDIR@/get-edid
+
+is_classic() {
+	while [ $# -gt 0 ] ; do
+		if [ "$1" = '-c' ] ; then
+			return 0
+		fi
+		if [ "$1" = '--classiconly' ] ; then
+			return 0
+		fi
+		shift
+	done
+	return 1
+end
+}
+
+check_i2c() {
+	if lsmod | grep -Fe i2c_dev > /dev/null ; then
+		return 0
+	fi
+	if modinfo i2c-dev | grep -Fe '(builtin)' > /dev/null ; then
+		return 0
+	fi
+	echo Cannot find i2c-dev kernel module. Maybe it needs to be loaded first. >&2
+	return 1
+}
+
+
+if is_classic "$@" ; then
+	exec $GET_EDID "$@"
+else
+	check_i2c
+	echo Using i2c bus only, use -c option to attempt a VBE BIOS call. >&2
+	exec $GET_EDID -i "$@"
+fi
