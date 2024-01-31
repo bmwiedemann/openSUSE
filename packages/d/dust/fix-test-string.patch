@@ -1,0 +1,83 @@
+From 96068518f603eed59d9dcb17fad60676a8f3fba7 Mon Sep 17 00:00:00 2001
+From: "andy.boot" <bootandy@gmail.com>
+Date: Wed, 10 Jan 2024 18:41:51 +0000
+Subject: tests: Print to stderr when test fails
+
+---
+ tests/test_exact_output.rs | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_exact_output.rs b/tests/test_exact_output.rs
+index 89a50148..1cc06f2b 100644
+--- a/tests/test_exact_output.rs
++++ b/tests/test_exact_output.rs
+@@ -52,7 +52,11 @@ fn exact_output_test<T: AsRef<OsStr>>(valid_outputs: Vec<String>, command_args:
+ 
+     let output = str::from_utf8(&a.unwrap().stdout).unwrap().to_owned();
+ 
+-    assert!(valid_outputs.iter().any(|i| output.contains(i)));
++    let will_fail = valid_outputs.iter().any(|i| output.contains(i));
++    if !will_fail {
++        eprintln!("output:\n{}\ndoes not contain any of:\n{:?}",output, valid_outputs.iter());
++    }
++    assert!(will_fail)
+ }
+ 
+ // "windows" result data can vary by host (size seems to be variable by one byte); fix code vs test and re-enable
+
+From 7ee744207b284cbf1486ff71422efa175dd21ae8 Mon Sep 17 00:00:00 2001
+From: "andy.boot" <bootandy@gmail.com>
+Date: Mon, 29 Jan 2024 22:17:16 +0000
+Subject: tests: fix test test_apparent_size
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+my 'many' line is: 4.0K   ┌─┴ many        │ the characters 4.0K are 4 chars.
+
+photosheep's space for 'many' is '44B' which is 3 chars and so my system
+needs 1 more char. Hence there is one more space character padding
+floating round.
+---
+ tests/test_exact_output.rs | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_exact_output.rs b/tests/test_exact_output.rs
+index 1cc06f2b..c2e7f88e 100644
+--- a/tests/test_exact_output.rs
++++ b/tests/test_exact_output.rs
+@@ -54,7 +54,11 @@ fn exact_output_test<T: AsRef<OsStr>>(valid_outputs: Vec<String>, command_args:
+ 
+     let will_fail = valid_outputs.iter().any(|i| output.contains(i));
+     if !will_fail {
+-        eprintln!("output:\n{}\ndoes not contain any of:\n{:?}",output, valid_outputs.iter());
++        eprintln!(
++            "output:\n{}\ndoes not contain any of:\n{}",
++            output,
++            valid_outputs.join("\n\n")
++        );
+     }
+     assert!(will_fail)
+ }
+@@ -202,12 +206,19 @@ pub fn test_apparent_size() {
+ 
+ fn apparent_size_output() -> Vec<String> {
+     // The apparent directory sizes are too unpredictable and system dependent to try and match
+-    let files = r#"
++    let one_space_before = r#"
++ 0B     ┌── a_file
++ 6B     ├── hello_file
++ "#
++    .trim()
++    .to_string();
++
++    let two_space_before = r#"
+   0B     ┌── a_file
+   6B     ├── hello_file
+  "#
+     .trim()
+     .to_string();
+ 
+-    vec![files]
++    vec![one_space_before, two_space_before]
+ }
