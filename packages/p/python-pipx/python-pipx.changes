@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 31 14:43:05 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 1.4.3
+  * Add macos shebang workaround description
+  * Introduce towncrier
+  * Potential fix for pylauncher with python version
+  * fix: nicer tracebacks in run mode on scripts 
+
+-------------------------------------------------------------------
 Mon Jan 15 14:32:28 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 1.4.2
