@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 30 19:16:58 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- update to version 1.6
+  Upgrade to GDCM 3.0.22 for static builds
+ 
+-------------------------------------------------------------------
 Fri Sep 23 13:40:34 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - changed dependency gdcm-libgdcm3_0 -> libgdcm3_0
