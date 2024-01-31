@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 20 17:35:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.21.1:
+  * Slightly speed up the contains keyword by removing some
+    unnecessary validator (re-)creation.
+
+-------------------------------------------------------------------
+Wed Jan 17 07:29:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.21.0:
+	* Wrong behaviour for enum keyword by @otto-ifak in
+    https://github.com/python-jsonschema/jsonschema/pull/1208
+
+------------------------------------------------------------------
 Fri Nov 17 05:46:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.20.0:
@@ -399,7 +413,7 @@ Tue Apr 26 11:54:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sun Aug 22 21:08:31 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
-- Use libalternatives instead of update-alternatives. 
+- Use libalternatives instead of update-alternatives.
 
 -------------------------------------------------------------------
 Tue May 25 07:59:29 UTC 2021 - pgajdos@suse.com
@@ -454,7 +468,7 @@ Tue Sep 17 05:31:26 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
   * Fixed a bug where 0 and False were considered equal by
     const and enum
 - from v3.0.1
-  * Fixed a bug where extending validators did not preserve their 
+  * Fixed a bug where extending validators did not preserve their
     notion of which validator property contains $id information.
 - from v3.0.0
   * Support for Draft 6 and Draft 7
@@ -552,7 +566,7 @@ Mon Sep 15 10:57:54 UTC 2014 - tbechtold@suse.com
 -------------------------------------------------------------------
 Thu Feb 13 10:27:36 UTC 2014 - dmueller@suse.com
 
-- remove dependency on unittest2 
+- remove dependency on unittest2
 
 -------------------------------------------------------------------
 Mon Oct 21 13:30:13 UTC 2013 - dmueller@suse.com
@@ -592,7 +606,7 @@ Sat Apr 13 10:11:29 UTC 2013 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Mon Feb 25 09:17:22 UTC 2013 - p.drouand@gmail.com
 
-- Add python3 support 
+- Add python3 support
   Tests with python3 fails for instance
 
 -------------------------------------------------------------------
