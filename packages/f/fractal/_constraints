@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <jobs>4</jobs>
+  <disk>
+    <!-- Maximal used disk space: 14746 Mbyte -->
+    <size unit="G">18</size>
+  </disk>
+    <physicalmemory>
+      <!-- Maximal used memory: 13976 Mbyte -->
+      <size unit="G">16</size>
+    </physicalmemory>
+  </hardware>
+  <hostlabel exclude="true">SLOW_CPU</hostlabel>
+</constraints>
+

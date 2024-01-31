@@ -1,0 +1,387 @@
+-------------------------------------------------------------------
+Fri Jan 19 08:18:52 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to version 6:
+  + Tab auto-completion also works for mentioning public rooms
+  + The verification flow was rewritten
+
+- remove cargo_audit from _service file, as it's nowadays
+  included in the new version of obs-service-cargo
+
+-------------------------------------------------------------------
+Mon Jan  8 10:12:31 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to version 6 release candidate 1:
+  + Matrix URIs can be opened with Fractal
+  + Our Join Room dialog now shows some room details as a preview
+  + Room members now have a profile page
+  + ingored people can be managed in the account settings
+  + The dialog to view an event’s source was reworked
+
+-------------------------------------------------------------------
+Mon Jan  1 03:30:26 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to version 6 beta 1:
+  + Restoring sessions from Secret Services other than GNOME Keyring
+    has been fixed
+  + Times follow the format (12h or 24h) from the system settings
+  + Media history works in encrypted rooms
+  + The accessibility of the sidebar was improved
+  + More notifications settings were added, you can now set global 
+    and per-room behavior and even manage your keywords
+
+-------------------------------------------------------------------
+Tue Nov 28 03:32:07 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- update to version 5
+
+- switch to the newer obs-service-cargo as it simplifies the 
+  spec file
+
+-------------------------------------------------------------------
+Wed Sep 20 21:53:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Build only for x86_64 for now, the other targets fails to much.
+  Replace the exsisting ExcludeArch with an ExclusiveArch.
+- Fixup _service, recompress during build. Sadly we can not update
+  the vendored deps, as this fails the build.
+
+-------------------------------------------------------------------
+Sat Aug 19 01:57:20 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 5.beta2:
+  + Second beta release since the rewrite of Fractal to take
+    advantage of GTK 4 and the Matrix Rust SDK, an effort that
+    started in March 2021.
+  + The most visible changes since Fractal 5.beta1 are:
+    - Editing text messages.
+    - Logging in with homeservers that don’t support
+      auto-discovery.
+    - A refactor of the login flow should avoid crashes when going
+      back at any step.
+    - Sometimes two day dividers would appear next to each other
+      without messages between them, this is now fixed.
+  + Of course, there are also a lot of less visible changes,
+    notably a lot of refactoring and fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 11 00:23:34 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 5.beta1:
+  + First beta release since the rewrite of Fractal to take
+    advantage of GTK 4 and the Matrix Rust SDK. It is the result of
+    over two years of work.
+  + New features since Fractal 5.alpha1:
+    - Joining room by ID, by alias or with a Matrix URI.
+    - Creation of direct chats.
+    - Sending and displaying read receipts, read markers and typing
+      notifications.
+    - Notifications on new messages.
+    - Highlight messages with mentions.
+    - Added media file history viewers in the room details.
+    - Displaying the other user's avatar as a room avatar for
+      direct chats.
+  + There are a also a lot of less visible changes, fixes and
+    translations.
+  + Being still in beta stage, it might trigger crashes or other
+    bugs but overall should be pretty stable.
+
+- Changes from version 5.alpha1:
+  + Fractal 5.alpha1 is the first release since Fractal has been
+    rewritten to take advantage of GTK 4 and the Matrix Rust SDK.
+    It is the result of eighteen months of work.
+  + Currently supported features are:
+    - Sending and receiving messages and files.
+    - Sending files via Drag-n-Drop and pasting in the message
+      entry.
+    - Rendering of rich formatted (HTML) messages, as well as
+      media.
+    - Displaying edited messages, redacting messages.
+    - Showing and adding reactions.
+    - Tab completion of user names.
+    - Sending and displaying replies.
+    - Sharing the current location.
+    - Exploring the room directory.
+    - Sorting the rooms by category.
+    - Joining rooms.
+    - Sending and accepting invitations.
+    - Logging into multiple accounts at once.
+    - Logging in with Single-Sign On.
+    - Sending and reading encrypted messages.
+    - Verifying user sessions using cross-signing.
+    - Exporting and importing encryption keys.
+    - Managing the connected devices.
+    - Changing the user profile details.
+    - Deactivating the account.
+  + Major missing features are: Notifications and read markers.
+
+- Add new BuildRequires: gstreamer-pbutils-1.0, gstreamer-play-1.0,
+  libadwaita-1, libpipewire-0.3, shumate-1.0, sqlite3,
+  xdg-desktop-portal pkgconfig() modules; and desktop-file-utils.
+- Drop no longer used/needed BuildRequires: atk, cairo, dbus-1,
+  gdk-3.0, gdk-pixbuf-2.0, gspell-1, gst-editing-services-1.0,
+  libhandy-1, libsecret-1, pango and pangocairo pkgconfig()
+  modules; and gmp-devel and cmake.
+- Replace BuildRequires: cargo, c++_compiler and c_compiler with
+  cargo-packaging, clang, clang-devel, and llvm-devel; and
+  gstreamer-audio-1.0, gstreamer-bad-audio-1.0,
+  gstreamer-player-1.0, gstreamer-plugins-bad-1.0,
+  gstreamer-plugins-base-1.0, gtk+-3.0 and gtksourceview-4 with
+  gstreamer-pbutils-1.0, gstreamer-play-1.0, gtk4 and
+  gtksourceview-5 pkgconfig() modules.
+
+-------------------------------------------------------------------
+Sun Aug  6 02:48:56 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 4.4.2: There was no visible changes for the end
+  user.
+- Drop merged upstream patches: fractal-fix-build.patch and
+  6fa1a23596d65d94aa889efe725174e6cd2903f0.patch.
+
+-------------------------------------------------------------------
+Sat Feb  4 14:20:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(openssl) with explicit libopenssl-1_1-devel
+  BuildRequires as fractal does not support building with openssl
+  3 and newer yet.
+
+-------------------------------------------------------------------
+Wed Jan 26 19:03:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 6fa1a23596d65d94aa889efe725174e6cd2903f0.patch: Fix build
+  with meson 0.61.0.
+- Add fractal-fix-build.patch: Downgrade dead_code to a warning,
+  hackfix build for now as we wait for a new release. The same
+  dead_code built fine a short while ago, so we can't be that much
+  worse off.
+
+-------------------------------------------------------------------
+Fri Nov 26 23:06:15 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.1:
+  + No upstream changes available. Please see upstream commitlog at
+    https://gitlab.gnome.org/GNOME/fractal/-/commits/release-4.4.1/
+- Replace pkgconfig(libhandy-0.0) with pkgconfig(libhandy-1)
+  BuildRequires following upstream changes.
+- Add c_compiler, c++_compiler and cmake BuildRequires, new
+  dependencies.
+
+-------------------------------------------------------------------
+Mon Dec  7 21:02:36 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.0:
+  + New features:
+    - Videos now have a preview directly in history
+    - New videos player: click on a preview to open it
+    - Improved audio file support, with a nicer presentation and
+      seeking
+    - Redacted messages are removed from history
+    - Edited messages are replaced with their new content and show
+      a small icon
+    - Spellcheck language is saved per room
+    - New swipe-back gesture to go back from room to room list in
+      narrow view
+    - New swipe left and right gesture to navigate through media in
+      media view
+    - SOCKS proxy are now also supported
+  + Bugfixes:
+    - Thumbnail for pasted images have been fixed
+    - File type detection for uploads is more reliable
+    - Typing notifications are now only sent when text is actually
+      typed in the message input
+  + Under the hood:
+    - Code refactor is still going
+    - Some improvements to logging, including access token removal
+      for privacy
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 21 06:29:49 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints min 4GB  disk space
+  and 4GB min physicalmemory for x86_64 ppc64 ppc64le
+
+-------------------------------------------------------------------
+Thu Aug 20 15:39:43 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Avoid build error for ppc64le as reported by boo#1175502
+
+-------------------------------------------------------------------
+Sat Jan 25 14:07:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Sat Jan 11 15:38:08 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.2.2:
+  + Translation strings have been updated
+  + Newlines now work when markdown is enabled
+  + Account settings can be accessed again
+  + Redaction is working again
+  + Compatibility with HTTP-only (non HTTPS) servers has been
+    restored
+  + Some crashes fixed
+  + Autocompletion popover position fix
+  + Translation strings have been updated
+  + Disable the textbox when there are no write permissions
+  + Fix crash on logout and login with wrong credentials
+  + Adaptive window, mobile friendly
+  + Window size and position are remembered
+  + Redesigned login
+  + Spellcheck
+  + Network proxy support
+  + Typing notifications
+  + Badges are shown for operators and moderators
+  + Keyboard shortcuts for easier navigation across rooms
+  + Better uploads:
+    - Audio and video files are now tagged correctly
+    - Image files have a thumbnail
+    - Various tweaks to the file chooser
+  + Logs actually output something now
+  + A few issues with invites and direct chats have been resolved
+  + More reliable scrolling
+  + Some crashes fixed
+  + Code refactor continues
+  + We’re now using Rust 2018
+  + Many improvements to the build system and CI
+- Remove fractal-drop-gst-bad-video-dep.patch, which has been
+  included upstream.
+- Replace pkgconfig(gtksourceview-3.0) with
+  pkgconfig(gtksourceview-4) BuildRequires.
+- Add pkgconfig(gst-editing-services-1.0) BuildRequires: New
+  dependency.
+
+-------------------------------------------------------------------
+Fri Nov  8 12:45:05 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Remove BuildRequires: rust-std, rust is enough and it conflicts
+  when building on SLE 15 SPx.
+
+-------------------------------------------------------------------
+Wed Sep  4 03:35:50 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Remove BuildRequires: cargo-vendor, this is now included in
+  the base cargo install.
+
+-------------------------------------------------------------------
+Tue Jul  9 11:10:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable LTO, fractal fails to build with it.
+
+-------------------------------------------------------------------
+Tue Feb 26 07:30:32 UTC 2019 - bjorn.lie@gmail.com
+
+- Add fractal-drop-gst-bad-video-dep.patch: Adapt to changes in
+  gstreamer.
+- Add pkgconfig(gstreamer-audio-1.0),
+  pkgconfig(gstreamer-base-1.0), pkgconfig(gstreamer-video-1.0),
+  pkgconfig(gstreamer-plugins-bad-1.0) and
+  pkgconfig(gstreamer-bad-audio-1.0) BuildRequires: Align with what
+  meson checks for.
+
+-------------------------------------------------------------------
+Mon Dec 24 09:31:56 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 4.0.0:
+  + New features:
+    - Enhanced history view with adaptive layout, day divider.
+    - Larger display of emoji-only messages.
+    - Some performance improvements.
+    - Opening a room jumps to first unread message.
+  + Bugfixes:
+    - More reliable notifications.
+    - Fixed display bug for avatars.
+  + Under the hood:
+    - Large code refactor.
+    - Logging infrastructure.
+    - Continuous integration.
+    - More informative build output.
+- Add pkgconfig(libsecret-1) and pkgconfig(libhandy-0.0)
+  BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
+Wed Oct 17 18:32:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix grammar in description.
+
+-------------------------------------------------------------------
+Thu Sep  6 17:29:48 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + No changes, stable bump only.
+- Changes from version 3.29.92:
+  + New features:
+    - Use markup for room details.
+    - Direct chat and invite to user id.
+    - Redesign file messages.
+    - Improve notification title format.
+    - Room Topic: Remove the button, use only labels.
+    - MessageMenu: Copy selected text action to menu.
+    - Native file chooser for attachments.
+  + Fixes: Don't override m.direct on direct room creation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  3 09:06:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.6:
+  + Message right click menu with: view source, reply, copy text
+    and delete.
+  + Styles for quotes in messages.
+  + Initial sync speed up.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 31 11:34:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.5:
+  + Fix multiline behaviour.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 24 16:44:48 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.4:
+  + New audio player widget for audio files.
+  + MediaViewer now loads more images from the server.
+  + MediaViewer with headerbar in full screen.
+  + New avatar async loading and defaults.
+  + New room settings view.
+  + Multiline entry with markdown syntax highlighting.
+- Add pkgconfig(gstreamer-1.0), pkgconfig(gstreamer-player-1.0),
+  pkgconfig(gstreamer-plugins-base-1.0) and
+  pkgconfig(gtksourceview-3.0) BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
+Sat Jun 23 17:20:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.1:
+  + Media viewer for images.
+
+-------------------------------------------------------------------
+Fri Jun 15 17:37:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.0:
+  + Various features and bugfixes.
+  + Adapt to GNOME release schedule.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 23 18:10:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.1.30:
+  + Number of members in the room in the members button.
+  + File storage configuration support.
+  + Gold and Silver tags for admins and moderatos.
+  + Translation support.
+- Drop fractal-fix-categories.patch: Fixed upstream.
+- Add lang sub-package, now that upstream supports translations.
+- Add pkgconfig(gspell-1) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Mon May 14 19:50:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Inital packaging.
+
