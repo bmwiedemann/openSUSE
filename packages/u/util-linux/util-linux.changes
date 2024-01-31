@@ -10,7 +10,8 @@ Thu Jan 18 15:09:16 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
 -------------------------------------------------------------------
 Thu Dec  7 13:22:16 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
-- Increase delay in waitpid test (bsc#1217651), add
+- util-linux:systemd build failures on s390x (bsc#1217651):
+  Increase delay in waitpid test, add
   tests-increase-delay-for-waitpid-test.patch
 
 -------------------------------------------------------------------
@@ -51,12 +52,13 @@ Tue Nov 28 10:51:47 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Sat Nov 17 14:05:00 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
-- Add libuuid-avoid-truncate-clocks.txt-to-improve-performance.patch
+- regression fix for clock.txt on xfs (upstreamed) (bsc#1207987)
+ * Add libuuid-avoid-truncate-clocks.txt-to-improve-performance.patch
 
 -------------------------------------------------------------------
 Tue Oct 31 13:20:38 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Add patch:
+- Setterm - avoid restoring flags from uninitialized memory
   * setterm-resize-uninit-flags.patch
 
 -------------------------------------------------------------------
