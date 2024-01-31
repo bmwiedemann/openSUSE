@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan 31 14:00:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.2:
+  * Update changelog for 1.6.2 (#779)
+  * chore(deps): update golang:alpine docker digest to a6a7f1f
+    (#772)
+  * chore(deps): update alpine:3.19 docker digest to c5b1261 (#771)
+  * Add pdm lockfile support (#776)
+  * Guided Remediation: Make `VulnerabilityClient` for OSV queries
+    (#773)
+  * Do not fail if no lockfiles found in github action (#774)
+  * Guided Remediation: Add computation for all relaxation patches
+    (#766)
+  * Parse severities for guided remediation (#767)
+  * Add pictures to github action docs (#768)
+  * Guided Remediation: Add dependency relaxation & re-resolution
+    (#765)
+  * Update govet printf settings (#745)
+  * fix: improve wording of usage description (#764)
+  * Guided Remediation: add npm `package.json` manifest parser
+    (#763)
+  * Update github action version (#761)
+  * Guided Remediation: Add manifest resolution (#757)
+  * Add OSV-Scanner subcommands (#748)
+  * test: use snapshot-based testing (#717)
+  * chore(deps): lock file maintenance (#760)
+  * fix(deps): update osv-scanner minor (#758)
+  * chore(deps): update workflows (#759)
+  * add dependency groups to flattened vulnerability (#754)
+  * Use new GitHub action in new repository (#756)
+
+-------------------------------------------------------------------
 Thu Jan 18 08:15:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.6.1:
