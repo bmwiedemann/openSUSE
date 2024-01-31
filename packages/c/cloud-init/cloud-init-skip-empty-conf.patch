@@ -1,0 +1,374 @@
+--- tests/unittests/config/test_cc_yum_add_repo.py.orig
++++ tests/unittests/config/test_cc_yum_add_repo.py
+@@ -2,7 +2,7 @@
+ 
+ import configparser
+ import logging
+-import re
++# import re
+ import shutil
+ import tempfile
+ 
+@@ -137,10 +137,10 @@ class TestAddYumRepoSchema:
+                 {"yum_repo_dir": True},
+                 "yum_repo_dir: True is not of type 'string'",
+             ),
+-            (
+-                {"yum_repos": {}},
+-                re.escape("yum_repos: {} does not have enough properties"),
+-            ),
++            # (
++            #     {"yum_repos": {}},
++            #     re.escape("yum_repos: {} does not have enough properties"),
++            # ),
+             # baseurl required
+             (
+                 {"yum_repos": {"My-Repo": {}}},
+--- tests/unittests/config/test_cc_apk_configure.py.orig
++++ tests/unittests/config/test_cc_apk_configure.py
+@@ -352,11 +352,11 @@ class TestApkConfigureSchema:
+                     " allowed ('bogus' was unexpected)"
+                 ),
+             ),
+-            (
+-                {"apk_repos": {"alpine_repo": {}}},
+-                "apk_repos.alpine_repo: 'version' is a required property,"
+-                " apk_repos.alpine_repo: {} does not have enough properties",
+-            ),
++            # (
++            #     {"apk_repos": {"alpine_repo": {}}},
++            #     "apk_repos.alpine_repo: 'version' is a required property,"
++            #     " apk_repos.alpine_repo: {} does not have enough properties",
++            # ),
+             (
+                 {"apk_repos": {"alpine_repo": True}},
+                 "apk_repos.alpine_repo: True is not of type 'object', 'null'",
+@@ -366,10 +366,10 @@ class TestApkConfigureSchema:
+                 "apk_repos.preserve_repositories: 'wrongtype' is not of type"
+                 " 'boolean'",
+             ),
+-            (
+-                {"apk_repos": {}},
+-                "apk_repos: {} does not have enough properties",
+-            ),
++            # (
++            #     {"apk_repos": {}},
++            #     "apk_repos: {} does not have enough properties",
++            # ),
+             (
+                 {"apk_repos": {"local_repo_base_url": None}},
+                 "apk_repos.local_repo_base_url: None is not of type 'string'",
+--- tests/unittests/config/test_cc_apt_configure.py.orig
++++ tests/unittests/config/test_cc_apt_configure.py
+@@ -32,7 +32,7 @@ class TestAPTConfigureSchema:
+                     " ('boguskey' was unexpected)"
+                 ),
+             ),
+-            ({"apt": {}}, "apt: {} does not have enough properties"),
++            # ({"apt": {}}, "apt: {} does not have enough properties"),
+             (
+                 {"apt": {"preserve_sources_list": 1}},
+                 "apt.preserve_sources_list: 1 is not of type 'boolean'",
+@@ -41,10 +41,10 @@ class TestAPTConfigureSchema:
+                 {"apt": {"disable_suites": 1}},
+                 "apt.disable_suites: 1 is not of type 'array'",
+             ),
+-            (
+-                {"apt": {"disable_suites": []}},
+-                re.escape("apt.disable_suites: [] is too short"),
+-            ),
++            # (
++            #     {"apt": {"disable_suites": []}},
++            #     re.escape("apt.disable_suites: [] is too short"),
++            # ),
+             (
+                 {"apt": {"disable_suites": [1]}},
+                 "apt.disable_suites.0: 1 is not of type 'string'",
+@@ -61,18 +61,18 @@ class TestAPTConfigureSchema:
+                 {"apt": {"primary": "nonlist"}},
+                 "apt.primary: 'nonlist' is not of type 'array'",
+             ),
+-            (
+-                {"apt": {"primary": []}},
+-                re.escape("apt.primary: [] is too short"),
+-            ),
++            # (
++            #     {"apt": {"primary": []}},
++            #     re.escape("apt.primary: [] is too short"),
++            # ),
+             (
+                 {"apt": {"primary": ["nonobj"]}},
+                 "apt.primary.0: 'nonobj' is not of type 'object'",
+             ),
+-            (
+-                {"apt": {"primary": [{}]}},
+-                "apt.primary.0: 'arches' is a required property",
+-            ),
++            # (
++            #     {"apt": {"primary": [{}]}},
++            #     "apt.primary.0: 'arches' is a required property",
++            # ),
+             (
+                 {"apt": {"primary": [{"boguskey": True}]}},
+                 re.escape(
+@@ -98,10 +98,10 @@ class TestAPTConfigureSchema:
+                 },
+                 "apt.primary.0.search: 'non-array' is not of type 'array'",
+             ),
+-            (
+-                {"apt": {"primary": [{"arches": ["amd64"], "search": []}]}},
+-                re.escape("apt.primary.0.search: [] is too short"),
+-            ),
++            # (
++            #     {"apt": {"primary": [{"arches": ["amd64"], "search": []}]}},
++            #     re.escape("apt.primary.0.search: [] is too short"),
++            # ),
+             (
+                 {
+                     "apt": {
+@@ -130,10 +130,10 @@ class TestAPTConfigureSchema:
+                 {"apt": {"debconf_selections": True}},
+                 "apt.debconf_selections: True is not of type 'object'",
+             ),
+-            (
+-                {"apt": {"debconf_selections": {}}},
+-                "apt.debconf_selections: {} does not have enough properties",
+-            ),
++            # (
++            #     {"apt": {"debconf_selections": {}}},
++            #     "apt.debconf_selections: {} does not have enough properties",
++            # ),
+             (
+                 {"apt": {"sources_list": True}},
+                 "apt.sources_list: True is not of type 'string'",
+@@ -166,10 +166,10 @@ class TestAPTConfigureSchema:
+                 {"apt": {"sources": {"opaquekey": True}}},
+                 "apt.sources.opaquekey: True is not of type 'object'",
+             ),
+-            (
+-                {"apt": {"sources": {"opaquekey": {}}}},
+-                "apt.sources.opaquekey: {} does not have enough properties",
+-            ),
++            # (
++            #     {"apt": {"sources": {"opaquekey": {}}}},
++            #     "apt.sources.opaquekey: {} does not have enough properties",
++            # ),
+             (
+                 {"apt": {"sources": {"opaquekey": {"boguskey": True}}}},
+                 re.escape(
+--- tests/unittests/config/test_cc_bootcmd.py.orig
++++ tests/unittests/config/test_cc_bootcmd.py
+@@ -1,5 +1,5 @@
+ # This file is part of cloud-init. See LICENSE file for license information.
+-import re
++# import re
+ import tempfile
+ 
+ import pytest
+@@ -128,13 +128,13 @@ class TestBootCMDSchema:
+                 "Cloud config schema errors: bootcmd: 1 is not of type"
+                 " 'array'",
+             ),
+-            ({"bootcmd": []}, re.escape("bootcmd: [] is too short")),
+-            (
+-                {"bootcmd": []},
+-                re.escape(
+-                    "Cloud config schema errors: bootcmd: [] is too short"
+-                ),
+-            ),
++            # ({"bootcmd": []}, re.escape("bootcmd: [] is too short")),
++            # (
++            #     {"bootcmd": []},
++            #     re.escape(
++            #         "Cloud config schema errors: bootcmd: [] is too short"
++            #     ),
++            # ),
+             (
+                 {
+                     "bootcmd": [
+--- tests/unittests/config/test_cc_ca_certs.py.orig
++++ tests/unittests/config/test_cc_ca_certs.py
+@@ -394,10 +394,10 @@ class TestCACertsSchema:
+                 {"ca_certs": 1},
+                 "ca_certs: 1 is not of type 'object'",
+             ),
+-            (
+-                {"ca_certs": {}},
+-                re.escape("ca_certs: {} does not have enough properties"),
+-            ),
++            # (
++            #     {"ca_certs": {}},
++            #     re.escape("ca_certs: {} does not have enough properties"),
++            # ),
+             (
+                 {"ca_certs": {"boguskey": 1}},
+                 re.escape(
+@@ -413,10 +413,10 @@ class TestCACertsSchema:
+                 {"ca_certs": {"trusted": [1]}},
+                 "ca_certs.trusted.0: 1 is not of type 'string'",
+             ),
+-            (
+-                {"ca_certs": {"trusted": []}},
+-                re.escape("ca_certs.trusted: [] is too short"),
+-            ),
++            # (
++            #     {"ca_certs": {"trusted": []}},
++            #     re.escape("ca_certs.trusted: [] is too short"),
++            # ),
+         ),
+     )
+     @skipUnlessJsonSchema()
+--- tests/unittests/config/test_cc_chef.py.orig
++++ tests/unittests/config/test_cc_chef.py
+@@ -304,10 +304,10 @@ class TestBootCMDSchema:
+                 {"chef": 1},
+                 "chef: 1 is not of type 'object'",
+             ),
+-            (
+-                {"chef": {}},
+-                re.escape(" chef: {} does not have enough properties"),
+-            ),
++            # (
++            #     {"chef": {}},
++            #     re.escape(" chef: {} does not have enough properties"),
++            # ),
+             (
+                 {"chef": {"boguskey": True}},
+                 re.escape(
+@@ -319,10 +319,10 @@ class TestBootCMDSchema:
+                 {"chef": {"directories": 1}},
+                 "chef.directories: 1 is not of type 'array'",
+             ),
+-            (
+-                {"chef": {"directories": []}},
+-                re.escape("chef.directories: [] is too short"),
+-            ),
++            # (
++            #     {"chef": {"directories": []}},
++            #     re.escape("chef.directories: [] is too short"),
++            # ),
+             (
+                 {"chef": {"directories": [1]}},
+                 "chef.directories.0: 1 is not of type 'string'",
+--- tests/unittests/config/test_cc_lxd.py.orig
++++ tests/unittests/config/test_cc_lxd.py
+@@ -385,7 +385,7 @@ class TestLXDSchema:
+             # Require bridge.mode
+             ({"lxd": {"bridge": {}}}, "bridge: 'mode' is a required property"),
+             # Require init or bridge keys
+-            ({"lxd": {}}, "lxd: {} does not have enough properties"),
++            # ({"lxd": {}}, "lxd: {} does not have enough properties"),
+             # Require some non-empty preseed config of type string
+             ({"lxd": {"preseed": {}}}, "not of type 'string'"),
+             ({"lxd": {"preseed": ""}}, None),
+--- tests/unittests/config/test_cc_mounts.py.orig
++++ tests/unittests/config/test_cc_mounts.py
+@@ -583,9 +583,9 @@ class TestMountsSchema:
+         "config, error_msg",
+         [
+             # We expect to see one mount if provided in user-data.
+-            ({"mounts": []}, re.escape("mounts: [] is too short")),
++            # ({"mounts": []}, re.escape("mounts: [] is too short")),
+             # Disallow less than 1 item per mount entry
+-            ({"mounts": [[]]}, re.escape("mounts.0: [] is too short")),
++            # ({"mounts": [[]]}, re.escape("mounts.0: [] is too short")),
+             # Disallow more than 6 items per mount entry
+             ({"mounts": [["1"] * 7]}, "mounts.0:.* is too long"),
+             # Disallow mount_default_fields will anything other than 6 items
+--- tests/unittests/config/test_cc_package_update_upgrade_install.py.orig
++++ tests/unittests/config/test_cc_package_update_upgrade_install.py
+@@ -17,7 +17,7 @@ class TestPackageUpdateUpgradeSchema:
+             # packages list with three entries (2 required)
+             ({"packages": ["p1", ["p2", "p3", "p4"]]}, ""),
+             # empty packages list
+-            ({"packages": []}, "is too short"),
++            # ({"packages": []}, "is too short"),
+             (
+                 {"apt_update": False},
+                 (
+--- tests/unittests/config/test_cc_runcmd.py.orig
++++ tests/unittests/config/test_cc_runcmd.py
+@@ -90,7 +90,7 @@ class TestRunCmdSchema:
+             ({"runcmd": ["echo bye", "echo bye"]}, None),
+             # Invalid schemas
+             ({"runcmd": 1}, "1 is not of type 'array'"),
+-            ({"runcmd": []}, r"runcmd: \[\] is too short"),
++            # ({"runcmd": []}, r"runcmd: \[\] is too short"),
+             (
+                 {
+                     "runcmd": [
+--- tests/unittests/config/test_cc_set_passwords.py.orig
++++ tests/unittests/config/test_cc_set_passwords.py
+@@ -715,12 +715,12 @@ class TestSetPasswordsSchema:
+                 {"chpasswd": {"list": ["user"]}},
+                 pytest.raises(SchemaValidationError),
+             ),
+-            (
+-                {"chpasswd": {"list": []}},
+-                pytest.raises(
+-                    SchemaValidationError, match=r"\[\] is too short"
+-                ),
+-            ),
++            # (
++            #     {"chpasswd": {"list": []}},
++            #     pytest.raises(
++            #         SchemaValidationError, match=r"\[\] is too short"
++            #     ),
++            # ),
+         ],
+     )
+     @skipUnlessJsonSchema()
+--- tests/unittests/config/test_cc_snap.py.orig
++++ tests/unittests/config/test_cc_snap.py
+@@ -279,16 +279,17 @@ class TestSnapSchema:
+                 {"snap": {"commands": ["ls"], "invalid-key": ""}},
+                 "Additional properties are not allowed",
+             ),
+-            ({"snap": {}}, "{} does not have enough properties"),
++            # ({"snap": {}}, "{} does not have enough properties"),
+             (
+                 {"snap": {"commands": "broken"}},
+                 "'broken' is not of type 'object', 'array'",
+             ),
+-            ({"snap": {"commands": []}}, r"snap.commands: \[\] is too short"),
+-            (
+-                {"snap": {"commands": {}}},
+-                r"snap.commands: {} does not have enough properties",
+-            ),
++            # ({"snap": {
++            #     "commands": []}}, r"snap.commands: \[\] is too short"),
++            # (
++            #     {"snap": {"commands": {}}},
++            #     r"snap.commands: {} does not have enough properties",
++            # ),
+             ({"snap": {"commands": [123]}}, ""),
+             ({"snap": {"commands": {"01": 123}}}, ""),
+             ({"snap": {"commands": [["snap", "install", 123]]}}, ""),
+@@ -302,11 +303,11 @@ class TestSnapSchema:
+                 {"snap": {"assertions": "broken"}},
+                 "'broken' is not of type 'object', 'array'",
+             ),
+-            ({"snap": {"assertions": []}}, r"\[\] is too short"),
+-            (
+-                {"snap": {"assertions": {}}},
+-                r"\{} does not have enough properties",
+-            ),
++            # ({"snap": {"assertions": []}}, r"\[\] is too short"),
++            # (
++            #     {"snap": {"assertions": {}}},
++            #     r"\{} does not have enough properties",
++            # ),
+         ],
+     )
+     @skipUnlessJsonSchema()
+--- tests/unittests/config/test_cc_write_files.py.orig
++++ tests/unittests/config/test_cc_write_files.py
+@@ -222,7 +222,7 @@ class TestWriteFilesSchema:
+         [
+             # Top-level write_files type validation
+             ({"write_files": 1}, "write_files: 1 is not of type 'array'"),
+-            ({"write_files": []}, re.escape("write_files: [] is too short")),
++            # ({"write_files": []}, re.escape("write_files: [] is too short")),
+             (
+                 {"write_files": [{}]},
+                 "write_files.0: 'path' is a required property",

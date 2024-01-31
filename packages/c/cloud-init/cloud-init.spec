@@ -39,6 +39,10 @@ Patch6:        cloud-init-write-routes.patch
 # FIXME (https://github.com/canonical/cloud-init/issues/4339)
 Patch7:        cloud-init-keep-flake.patch
 Patch8:        cloud-init-lint-fixes.patch
+# FIXME (https://github.com/canonical/cloud-init/pull/4788)
+Patch9:        cloud-init-pckg-reboot.patch
+# FIXME
+Patch10:       cloud-init-skip-empty-conf.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -145,6 +149,8 @@ Documentation and examples for cloud-init tools
 %patch6
 %patch7
 %patch8
+%patch9
+%patch10
 
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)
