@@ -230,4 +230,13 @@
   * Properly annotate `uvicorn.run()`</comment>
     <requestid>1138563</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c5c106bbee5ee13d9a54af5915f06aef</srcmd5>
+    <version>0.25.0</version>
+    <time>1706741617</time>
+    <user>anag+factory</user>
+    <comment>- Disable flacky test in s390x with current python-websockets,
+  bsc#1217022</comment>
+    <requestid>1142949</requestid>
+  </revision>
 </revisionlist>

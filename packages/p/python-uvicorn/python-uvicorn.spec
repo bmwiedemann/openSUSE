@@ -45,7 +45,7 @@ Suggests:       python-watchfiles >= 0.13
 Suggests:       python-wsproto >= 1.2.0
 Suggests:       python-websockets
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.1}
@@ -94,7 +94,12 @@ It supports HTTP/1.1 and WebSockets only.
 # Required for reporting bugs
 %python_exec -m uvicorn --version
 # No module python-a2wsgi
-%pytest --ignore tests/middleware/test_wsgi.py
+ignore="--ignore tests/middleware/test_wsgi.py"
+# Disable flacky test in s390x with current python-websockets
+%if "%{_arch}" == "s390x"
+ignore+=" --ignore tests/protocols/test_websocket.py"
+%endif
+%pytest $ignore
 
 %files %{python_files}
 %doc README.md
