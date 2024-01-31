@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan 31 08:32:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update wayland-protocols.keyring: Use gpg key by Daniel Stone to
+  verify sources.
+
+-------------------------------------------------------------------
+Fri Jan 26 11:41:27 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.33:
+  * xdg-shell: Clarify what a toplevel by default includes
+  * linux-dmabuf: sync changes from unstable to stable
+  * linux-dmabuf: require all planes to use the same modifier
+  * presentation-time: stop referring to Linux/glibc
+  * security-context-v1: Make sandbox engine names use reverse-DNS
+  * xdg-decoration: remove ambiguous wording in configure event
+  * xdg-decoration: fix configure event summary
+  * linux-dmabuf: mark as stable
+  * linux-dmabuf: add note about implicit sync
+  * security-context-v1: Document what can be done with the open
+    sockets
+  * security-context-v1: Document out of band metadata for flatpak
+
+-------------------------------------------------------------------
 Thu Oct 19 13:58:01 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use gcc11 in SLE15 in order to fix a ppc64le test that was
