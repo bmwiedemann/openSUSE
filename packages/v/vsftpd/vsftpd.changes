@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 30 21:03:43 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix location of ftpusers in /usr/lib/pam.d/vsftpd (boo#1219362)
+
+-------------------------------------------------------------------
 Wed Oct  4 08:00:40 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add vsftpd.ftpusers, the netcfg one is not maintained, outdated
