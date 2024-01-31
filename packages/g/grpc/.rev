@@ -587,4 +587,16 @@ Note: In my home project this only builds on Factory/Tumbleweed. (forwarded requ
     <comment>- Add missing bugzilla references for multiple CVEs (forwarded request 1141319 from glaubitz)</comment>
     <requestid>1141330</requestid>
   </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>b7382eab486bc0d480b509187b33602a</srcmd5>
+    <version>1.60.0</version>
+    <time>1706741600</time>
+    <user>anag+factory</user>
+    <comment>- Force-replace all /usr/bin/env python by python3.
+
+There are some more /usr/bin/env left, these come from
+opencensus-proto-source (copied verbatim by this build) and should be
+fixed in that other package, after which it will trickle down.</comment>
+    <requestid>1142787</requestid>
+  </revision>
 </revisionlist>

@@ -126,18 +126,27 @@ This subpackage contains source code of the gRPC reference implementation.
 
 %prep
 %autosetup -N
+find "." -type f -exec grep -l '/usr/bin/env ' {} + |
+	xargs -r perl -i -lpe \
+	's{#! ?/usr/bin/env python\S*}{#!/usr/bin/python3}g;
+	 s{#! ?/usr/bin/env sh}{#!/bin/sh}g;
+	 s{#! ?/usr/bin/env bash}{#!/bin/bash}g;
+	 s{#! ?/usr/bin/env }{#!/usr/bin/}g;'
 pushd third_party/xxhash
 %patch1 -p1
 %patch2 -p1
 popd
 rm -Rf third_party/abseil-cpp/
 
+%build
 # protoc is invoked strangely; make it happy with this dir or it will assert()
 mkdir -p third_party/protobuf/src
 
 cp -a /usr/src/opencensus-proto third_party/
 export CFLAGS="%optflags -Wno-error"
 export CXXFLAGS="$CFLAGS"
+find "." -type f -exec grep '/usr/bin/env ' {} + || :
+pushd .
 %cmake -DgRPC_INSTALL=ON                  \
        -DgRPC_INSTALL_LIBDIR:PATH="%_lib" \
        -DgRPC_INSTALL_CMAKEDIR:PATH="%_libdir/cmake/grpc" \
@@ -150,6 +159,8 @@ export CXXFLAGS="$CFLAGS"
        -DgRPC_ZLIB_PROVIDER=package \
        -DCMAKE_CXX_STANDARD=17
 %cmake_build
+popd
+find "." -type f -exec grep '/usr/bin/env ' {} + || :
 
 %install
 b="%buildroot"
