@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 30 12:13:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Create directory /usr/share/permissions/permissions.d for packages
+  to place their drop-ins.
+
+-------------------------------------------------------------------
 Mon Nov 27 11:38:26 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove dependency on /usr/bin/python3, making scripts to depends on
