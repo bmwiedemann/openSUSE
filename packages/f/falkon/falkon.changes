@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 31 11:38:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Change falkon-kde dependencies:
+  * Supplement plasma[56]-workspace instead of kwallet
+  * Remove hard dep on kwallet, it's optional and users probably use
+    it the other way around, i.e. use falkon with already installed
+    kwalletd.
+
+-------------------------------------------------------------------
 Tue Dec  5 14:19:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4
