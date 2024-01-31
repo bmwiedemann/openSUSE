@@ -218,8 +218,8 @@ This is Global Menu plugin for using with Vala Panel.
 %autosetup -p1
 
 %build
-export CFLAGS="$CFLAGS -I/usr/include/harfbuzz"
-export CXXFLAGS="$CXXFLAGS -I/usr/include/harfbuzz"
+export CFLAGS="%{optflags} -I/usr/include/harfbuzz"
+export CXXFLAGS="%{optflags} -I/usr/include/harfbuzz"
 %meson -Dwm_backend=%{backend} -Dregistrar=enabled
 %meson_build
 
