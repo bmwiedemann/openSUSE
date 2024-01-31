@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 31 08:19:59 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.28.7:
+  - Resolves CVE-2024-23170 boo#1219336 
+
+-------------------------------------------------------------------
 Fri Nov 10 16:20:12 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 2.28.6:
