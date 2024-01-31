@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 31 18:07:46 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.2
+  * Switch to two argument version of ReadPackage
+
+-------------------------------------------------------------------
 Sat Feb 25 18:56:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.1
