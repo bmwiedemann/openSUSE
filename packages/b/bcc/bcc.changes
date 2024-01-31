@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 26 05:11:04 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Switch to LLVM 17
+- Change LLVM version macro to the cleaner alternative suggested in
+  SR#1134405
+- Update to version 0.29.1
+  * support for kernel up to 6.6.
+  * new bcc tools: rdmaucma
+  * bcc tool update: tcpstates, statsnoop, runqlat, bio tools,
+    tcptop, slabratetop, tcprtt, etc.
+  * doc update, other bug fixes and tools improvement, and some new
+    enhancement for powerpc and riscv.
+
+-------------------------------------------------------------------
 Tue Dec  5 08:35:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded Requires on python3-future. 

@@ -1,7 +1,7 @@
 #
 # spec file for package bcc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,16 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-# Use the latest supported LLVM version, but Leap < 15.5 only has a slightly
-# older one so just use whatever version is available.
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
-%define llvm_major_version 15
+# Use the latest default LLVM version available, unless it is not yet
+# supported by bcc.
+%if 0%{?product_libs_llvm_ver} > 17
+%define llvm_major_version 17
 %else
-%define llvm_major_version %{nil}
+ %define llvm_major_version %{nil}
 %endif
 
 Name:           bcc
-Version:        0.28.0
+Version:        0.29.1
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
