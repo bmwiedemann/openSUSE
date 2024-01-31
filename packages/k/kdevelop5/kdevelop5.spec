@@ -36,8 +36,8 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_headers-devel
 BuildRequires:  clang-devel
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  okteta-devel
@@ -174,7 +174,7 @@ Provides translations for the "kdevplatform" package.
 
 %build
 %if 0%{?suse_version} == 1500
-  export CXX=g++-10
+  export CXX=g++-13
 %endif
 
 %cmake_kf5 -d build
