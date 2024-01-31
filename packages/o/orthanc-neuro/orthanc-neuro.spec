@@ -2,7 +2,7 @@
 # spec file for package orthanc-tcia
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2022 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2022-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-ne
 Source10:       https://third-party.orthanc-labs.com/nifti_clib-3.0.0.tar.gz
 
 Source20:       orthanc-neuro-readme.openSUSE
+
+Patch0:         cassert.diff
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -55,6 +57,7 @@ Plugin to import data from The Cancer Image Archive
 
 %prep
 %setup -q -n OrthancNeuro-%{version}
+%autopatch -p2
 
 #OrthancPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
