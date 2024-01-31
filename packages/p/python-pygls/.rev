@@ -20,4 +20,16 @@
     @alcarney in #374</comment>
     <requestid>1130169</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0c5dd2a7be546c9b2ed7361b69e34853</srcmd5>
+    <version>1.3.0</version>
+    <time>1706741663</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * feat: drop Python 3.7 support
+  * Add `pytest-lsp` and `lsp-devtools` to Implementations.md
+  * Add support for debugging servers in the VSCode Playground
+  * Update `lsprotocol` to 2023.0.1</comment>
+    <requestid>1142845</requestid>
+  </revision>
 </revisionlist>
