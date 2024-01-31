@@ -1,7 +1,7 @@
 #
 # spec file for package libbs2b
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          System/Libraries
 URL:            http://bs2b.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/project/bs2b/libbs2b/%{version}/libbs2b-%{version}.tar.bz2
 Patch0:         libbs2b-security.patch
+Patch1:         libbs2b-clipping.patch
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
