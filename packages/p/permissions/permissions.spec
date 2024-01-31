@@ -1,7 +1,7 @@
 #
 # spec file for package permissions
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,8 @@ make %{?_smp_mflags} CXXFLAGS="%{optflags}"
 
 %install
 %make_install fillupdir=%{_fillupdir}
+# create directory for packages to place their drop-ins
+mkdir %{buildroot}%{_datadir}/permissions/permissions.d
 # Fix shebang in scripts: Remove dependency on /usr/bin/python3,
 # making scripts to depends on the real python3 binary, not the link.
 # (bsc#1212476)
@@ -87,6 +89,7 @@ The actual permissions configuration files, /usr/share/permissions/permission.*.
 %files config
 %defattr(644, root, root, 755)
 %dir %{_datadir}/permissions
+%dir %{_datadir}/permissions/permissions.d
 %{_datadir}/permissions/permissions
 %{_datadir}/permissions/permissions.easy
 %{_datadir}/permissions/permissions.secure
