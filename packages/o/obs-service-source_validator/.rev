@@ -667,4 +667,12 @@ last submission had wrong tar ball for unknown reason</comment>
   * helpers/functions: Always treat all *.spec files as recipes</comment>
     <requestid>1128514</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>d3e556cab6679d38a1c50fcf699579d0</srcmd5>
+    <version>0.34</version>
+    <time>1706741708</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142980</requestid>
+  </revision>
 </revisionlist>

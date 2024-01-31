@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-source_validator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,9 +39,6 @@ Requires:       gpg2
 %else
 # Fedora
 Requires:       gnupg2
-%endif
-%if 0%{?suse_version} > 1210 || 0%{?centos_version} > 500
-Requires:       rpm-build
 %endif
 
 %description
