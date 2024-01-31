@@ -73,4 +73,41 @@
     <comment></comment>
     <requestid>1098502</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b13af41697b5fbee20ed9d430404ff2a</srcmd5>
+    <version>2024.0</version>
+    <time>1706741657</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.0:
+  * Add hook for ``cel-python``.
+  * Add hook for ``eth_keys`` that collects package metadata for
+    ``eth-keys &gt;= 0.5.0``.
+  * Add hook for ``fairscale`` to collect its source .py files for
+    TorchScript/JIT.
+  * Add hook for ``pygwalker`` that collects data files from the package.
+  * Add hook for ``PyTaskbar``
+  * Add hook for ``detectron2`` to collect its source .py files for
+    TorchScript/JIT.
+  * Add hook for ``fastai`` to collect its source .py files for
+    TorchScript/JIT.
+  * Add hook for ``fvcore.nn`` to collect its source .py files for
+    TorchScript/JIT. (`#676
+  * Add hook for ``langchain`` that collects data files from the
+    package.
+  * Add hook for ``lightning`` (PyTorch Lightning) to ensure that
+    its ``version.info`` data file is collected.
+  * Add hook for ``linear_operator`` to collect its source .py
+    files for TorchScript/JIT.
+  * Add hook for ``seedir`` that collects the ``words.txt`` data
+    file from the package.
+  * Add hook for ``timm`` (Hugging Face PyTorch Image Models) to
+    collect its source .py files for TorchScript/JIT.
+  * Add hook for ``torchaudio`` that collects dynamically-loaded
+    extensions, as well as source .py files for TorchScript/JIT.
+  * Add hook for ``torchtext`` that collects dynamically-loaded
+    extensions, as well as source .py files for TorchScript/JIT.
+  * Add hook for ``torchvision.io.image`` to ensure that
+    dynamically-loaded extension, required by this module, is</comment>
+    <requestid>1142839</requestid>
+  </revision>
 </revisionlist>
