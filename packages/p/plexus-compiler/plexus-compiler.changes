@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 31 12:43:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 2.14.2
+  * Removed
+    + Drop J2ObjC compiler
+  * New features and improvements
+    + Update AspectJ Compiler to 1.9.21 to support Java 21
+    + Require JDK 17 for build
+    + Improve locking on JavacCompiler
+    + Include 'parameter' and 'preview' describe log
+    + Switch to SISU annotations and plugin, fixes #217
+    + Support jdk 21
+    + Require Maven 3.5.4+
+    + Require Java 11 for plexus-compiler-eclipse an
+      javac-errorprone and aspectj compilers
+    + Add support to run its with Java 20
+  * Bug Fixes
+    + Fix javac memory leak
+    + Validate zip file names before extracting (Zip Slip)
+    + Restore AbstractCompiler#getLogger() method
+    + Return empty list for not existing source root location
+    + Improve javac error output parsing - Fix #336
+
+-------------------------------------------------------------------
 Wed Sep 20 05:18:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 2.13.0
@@ -44,12 +68,6 @@ Wed Sep 20 05:18:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
     + cleanup deprecated unused code
   * Build
     + use shared release drafter
-
-    Bump maven-surefire-plugin from 3.0.0-M5 to 3.0.0-M6
-    Bump error_prone_core from 2.11.0 to 2.13.1
-    Bump github/codeql-action from 1 to 2
-    Bump ecj from 3.28.0 to 3.29.0
-    Bump release-drafter/release-drafter from 5.18.1 to 5.19.0
 
 -------------------------------------------------------------------
 Sat May 21 19:49:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
