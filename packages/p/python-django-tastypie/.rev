@@ -180,4 +180,15 @@
   * Fix flake8, update docs, fix RTD builds</comment>
     <requestid>1111936</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c4ab368d0b4bf3f3f6c1c3b922ec205d</srcmd5>
+    <version>0.14.6</version>
+    <time>1706741682</time>
+    <user>anag+factory</user>
+    <comment>- Add patch correct-assertion-methods.patch:
+  * Use non-deprecated assertion methods.
+- Switch to autosetup and pyproject macros.
+- Stop using globbing in %files.</comment>
+    <requestid>1142889</requestid>
+  </revision>
 </revisionlist>
