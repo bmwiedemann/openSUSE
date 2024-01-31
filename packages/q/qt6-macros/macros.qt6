@@ -192,8 +192,8 @@
         -G"Unix Makefiles" \\\
 %endif \
 %if 0%{?suse_version} == 1500 \
-        -DCMAKE_C_COMPILER:STRING=gcc-12 \\\
-        -DCMAKE_CXX_COMPILER:STRING=g++-12 \\\
+        -DCMAKE_C_COMPILER:STRING=gcc-13 \\\
+        -DCMAKE_CXX_COMPILER:STRING=g++-13 \\\
         -DCMAKE_CXX_LINK_PIE_SUPPORTED:BOOL=ON \\\
 %endif \
         -DQT_DISABLE_RPATH:BOOL=ON \\\

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 31 14:49:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to the latest GCC version available in Leap
+
+-------------------------------------------------------------------
 Wed Jun 28 16:20:06 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change %_qt6_libexecdir to %_libexecdir/qt6 (bsc#1174075)
