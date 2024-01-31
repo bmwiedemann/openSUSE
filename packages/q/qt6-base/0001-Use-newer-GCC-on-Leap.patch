@@ -1,7 +1,7 @@
-From fcd37b9845e4b4a362e7f2bb570955fad623bac8 Mon Sep 17 00:00:00 2001
+From 793c4c0d728024139083660a7f382f6d95853efe Mon Sep 17 00:00:00 2001
 From: Christophe Marin <christophe@krop.fr>
 Date: Sun, 6 Jun 2021 10:44:09 +0200
-Subject: [PATCH] Require GCC 12 on Leap
+Subject: [PATCH] Use newer GCC on Leap.patch
 
 The default compiler in Leap doesn't match the Qt requirements.
 Use the latest compiler version available on Leap.
@@ -13,7 +13,7 @@ Change-Id: I0c4ad87af4dd60d12fa09366eb9910edafcc9c4c
  2 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/mkspecs/common/g++-base.conf b/mkspecs/common/g++-base.conf
-index d392879f66..5aac58a546 100644
+index d392879..ddca128 100644
 --- a/mkspecs/common/g++-base.conf
 +++ b/mkspecs/common/g++-base.conf
 @@ -8,14 +8,14 @@
@@ -21,21 +21,21 @@ index d392879f66..5aac58a546 100644
  #
  
 -QMAKE_COMPILER          = gcc
-+QMAKE_COMPILER          = gcc-12
++QMAKE_COMPILER          = gcc-13
  
 -QMAKE_CC                = $${CROSS_COMPILE}gcc
-+QMAKE_CC                = $${CROSS_COMPILE}gcc-12
++QMAKE_CC                = $${CROSS_COMPILE}gcc-13
  
  QMAKE_LINK_C            = $$QMAKE_CC
  QMAKE_LINK_C_SHLIB      = $$QMAKE_CC
  
 -QMAKE_CXX               = $${CROSS_COMPILE}g++
-+QMAKE_CXX               = $${CROSS_COMPILE}g++-12
++QMAKE_CXX               = $${CROSS_COMPILE}g++-13
  
  QMAKE_LINK              = $$QMAKE_CXX
  QMAKE_LINK_SHLIB        = $$QMAKE_CXX
 diff --git a/mkspecs/common/gcc-base.conf b/mkspecs/common/gcc-base.conf
-index ae58326289..7bc6a54ccb 100644
+index ae58326..33cc860 100644
 --- a/mkspecs/common/gcc-base.conf
 +++ b/mkspecs/common/gcc-base.conf
 @@ -124,8 +124,8 @@ QMAKE_CFLAGS_MIPS_DSPR2 += -mdspr2
@@ -44,11 +44,11 @@ index ae58326289..7bc6a54ccb 100644
  # Wrapper tools that understand .o/.a files with GIMPLE instead of machine code
 -QMAKE_AR_LTCG           = gcc-ar cqs
 -QMAKE_NM_LTCG           = gcc-nm -P
-+QMAKE_AR_LTCG           = gcc-ar-12 cqs
-+QMAKE_NM_LTCG           = gcc-nm-12 -P
++QMAKE_AR_LTCG           = gcc-ar-13 cqs
++QMAKE_NM_LTCG           = gcc-nm-13 -P
  QMAKE_RANLIB_LTCG       = true          # No need to run since gcc-ar has "s"
  
  QMAKE_LINK_OBJECT_SCRIPT = object_script
 -- 
-2.41.0
+2.43.0
 

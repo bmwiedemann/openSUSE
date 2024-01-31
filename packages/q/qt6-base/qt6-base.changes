@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 31 14:51:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to the latest GCC version available in Leap
+- Replace 0001-Require-GCC-12.patch with 0001-Use-newer-GCC-on-Leap.patch
+
+-------------------------------------------------------------------
 Wed Jan  3 08:52:06 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add upstream patches to fix an incorrect integer overflow check

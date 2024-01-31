@@ -408,4 +408,12 @@
     <comment></comment>
     <requestid>1136540</requestid>
   </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>a04668258c45d70afcc82eb7accfd456</srcmd5>
+    <version>6.6.1</version>
+    <time>1706741752</time>
+    <user>anag+factory</user>
+    <comment>Switch to newer GCC on Leap (forwarded request 1143068 from krop)</comment>
+    <requestid>1143079</requestid>
+  </revision>
 </revisionlist>
