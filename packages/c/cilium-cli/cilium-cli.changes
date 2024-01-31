@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Jan 31 14:01:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.21:
+  * Prepare for v0.15.21 release
+  * hooks: split feature detection from setup and validation
+  * Revert "gha: cleanup stale AWS-CNI iptables rules in EKS tunnel
+    workflow"
+  * fix(deps): update module google.golang.org/grpc to v1.61.0
+  * chore(deps): update actions/upload-artifact action to v4.3.0
+  * chore(deps): update dependency cilium/cilium to v1.14.6
+  * chore(deps): update golang:1.21.6-alpine3.19 docker digest to
+    a6a7f1f
+  * chore(deps): update golang:1.21.6-alpine3.19 docker digest to
+    29fd37e
+  * chore(deps): update docker.io/library/golang:1.21.6-alpine3.19
+    docker digest to 51a7800
+  * bgp: enhance defaulting of `bgp routes` command
+  * connectivity: determine Pod CIDRs from CiliumNodes
+  * connectivity: retrieve CiliumNode information
+  * fix(deps): update all go dependencies main
+  * test: allow to tune sysdump collection policy on a per test
+    basis
+  * action: introduce the NewGenericAction method
+  * action: do not attempt to capture hubble flows if given nil
+    source pod
+  * connectivity: add unknown ICMPv4 code as expected drop reason
+  * fix(status): correct exit code
+  * features: improve tunnel feature determination
+  * features: extract tunnel feature determination in separate
+    function
+  * chore(deps): update all github action dependencies to v2.1.0
+  * Go workflow: Add merge_group trigger
+  * Go workflow: Remove Cross-build step
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to e046063
+  * make: allow building with debug symbols
+  * sysdump: don't specify --follow while collecting hubble flows
+  * chore(deps): update actions/upload-artifact action to v4.2.0
+  * bgp: routes CLI - update min. cilium version, use `cilium`
+    binary
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to 83fc333
+  * connectivity: extract the encapsulated packets tcpdump filter
+  * connectivity: fix broken tcpdump filter matching encapsulated
+    packets
+  * connectivity: generalize the sniffer logic
+  * connectivity: extract the sniffer logic into a separate package
+  * connectivity: extract safeBuffer into a separate package
+  * logging: add DebugEnabled method to Action
+  * fix(deps): update module github.com/cilium/cilium to
+    v1.15.0-rc.1
+  * chore(deps): update azure/login action to v1.6.1
+  * connectivity: only wait for daemonsets if needed
+  * chore(deps): update actions/upload-artifact action to v4.1.0
+  * connectivity: add host to pod check
+  * bgp: Make `bgp neighbors` an alias for `bgp peers` command
+  * bgp: Add command for retrieving bgp routes
+  * refactor: improve error messaging for version command
+  * clustermesh: fix hardcode at service type
+  * Bump alpine images to 3.19
+  * Update stable release to v0.15.20
+
+-------------------------------------------------------------------
 Mon Jan 15 16:54:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.20:
