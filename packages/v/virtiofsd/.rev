@@ -31,4 +31,21 @@ Use macros to exclude 32-bit archs</comment>
     <comment></comment>
     <requestid>1108490</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7975def47b14cfc69d9b551df1e7d56b</srcmd5>
+    <version>1.10.1</version>
+    <time>1706741603</time>
+    <user>anag+factory</user>
+    <comment>- Fix CVE-2023-50711: vmm-sys-util: out of bounds memory accesses (bsc#1218502, bsc#1218500)
+- Update to version 1.10.1:
+  * Bump version to v1.10.1
+  * Fix mandatory user namespaces
+  * Don't drop supplemental groups in unprivileged user namespace
+  * Bump version to v1.10.0
+  * Update rust-vmm dependencies (bsc#1218500)
+  * Bump version to v1.9.0
+- Spec: switch to using the upstream virtio-fs config file for qemu
+- Spec: switch back to greedy cargo updates of vendored dependencies</comment>
+    <requestid>1142838</requestid>
+  </revision>
 </revisionlist>

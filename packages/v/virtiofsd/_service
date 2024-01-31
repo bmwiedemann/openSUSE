@@ -3,10 +3,11 @@
     <param name="url">https://gitlab.com/virtio-fs/virtiofsd.git</param>
     <param name="scm">git</param>
     <param name="filename">virtiofsd</param>
-    <param name="revision">v1.7.2</param>
+    <param name="revision">v1.10.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
   </service>
 
   <service name="set_version" mode="disabled"/>
@@ -25,6 +26,6 @@
   <service name="cargo_vendor" mode="disabled">
     <param name="srcdir">virtiofsd</param>
     <param name="compression">xz</param>
-    <param name="update">false</param>
+    <param name="update">true</param>
   </service>
 </services>

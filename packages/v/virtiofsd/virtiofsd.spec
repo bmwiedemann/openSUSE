@@ -1,7 +1,7 @@
 #
 # spec file for package virtiofsd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           virtiofsd
-Version:        1.7.2
+Version:        1.10.1
 Release:        0
 Summary:        vhost-user virtio-fs device backend written in Rust
 Group:          Development/Libraries/Rust
@@ -26,7 +26,6 @@ URL:            https://gitlab.com/virtio-fs/virtiofsd
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Source3:        50-qemu-virtiofsd.json
 BuildRequires:  cargo-packaging
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libseccomp-devel
@@ -47,7 +46,7 @@ cp %{SOURCE2} .cargo/config
 %install
 mkdir -p %{buildroot}%{_libexecdir}
 install -D -p -m 0755 %{_builddir}/%{name}-%{version}/target/release/virtiofsd %{buildroot}%{_libexecdir}/virtiofsd
-install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/qemu/vhost-user/50-qemu-virtiofsd.json
+install -D -p -m 0644 %{_builddir}/%{name}-%{version}/50-virtiofsd.json %{buildroot}%{_datadir}/qemu/vhost-user/50-virtiofsd.json
 
 %check
 %{cargo_test}
@@ -57,6 +56,6 @@ install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/qemu/vhost-user/50-qemu
 %{_libexecdir}/virtiofsd
 %dir %{_datadir}/qemu
 %dir %{_datadir}/qemu/vhost-user
-%{_datadir}/qemu/vhost-user/50-qemu-virtiofsd.json
+%{_datadir}/qemu/vhost-user/50-virtiofsd.json
 
 %changelog
