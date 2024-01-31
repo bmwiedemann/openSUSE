@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 30 05:19:54 UTC 2024 - ming li <mli@suse.com>
+
+- Update to 3.4.11:
+  * added new option "--add-braces=nested" to add braces in nested single line statements
+    (https://gitlab.com/saalen/astyle/-/issues/27)
+  * fix indent after double template brackets (https://gitlab.com/saalen/astyle/-/issues/28)
+  * fix indent after dot (https://gitlab.com/saalen/astyle/-/issues/28)
+  * "--squeeze-lines=1" is no longer default with Linux builds (#559)
+  * add experimental GHC mode (https://gitlab.com/saalen/astyle/-/issues/31)
+  * fix indent after raw string (https://gitlab.com/saalen/astyle/-/issues/32)
+
+-------------------------------------------------------------------
 Sat Oct 21 19:12:26 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 3.4.10:
