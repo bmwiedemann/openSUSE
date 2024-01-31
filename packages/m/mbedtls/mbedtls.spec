@@ -1,7 +1,7 @@
 #
 # spec file for package mbedtls
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define lib_everest libeverest
 %define lib_p256m   libp256m
 Name:           mbedtls
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0 OR GPL-2.0-or-later
@@ -87,10 +87,10 @@ This subpackage of mbedtls contains libp256m
 %package devel
 Summary:        Development files for mbedtls, a SSL/TLS library
 Requires:       %{lib_crypto} = %{version}
-Requires:       %{lib_tls} = %{version}
-Requires:       %{lib_x509} = %{version}
 Requires:       %{lib_everest} = %{version}
 Requires:       %{lib_p256m} = %{version}
+Requires:       %{lib_tls} = %{version}
+Requires:       %{lib_x509} = %{version}
 
 %description devel
 This subpackage contains the development files for mbedtls,
