@@ -325,4 +325,12 @@ Using the old *changes file which is not in utf-8 as it's difficult get it accpt
     <comment></comment>
     <requestid>1134741</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0b83af16afbd4e26143d1669cf0bc8cf</srcmd5>
+    <version>4.3.8.1</version>
+    <time>1706741779</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143133</requestid>
+  </revision>
 </revisionlist>

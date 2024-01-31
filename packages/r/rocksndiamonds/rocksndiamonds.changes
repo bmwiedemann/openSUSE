@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 30 17:09:20 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 4.3.8.1:
+  * changed setup option to disable global animations to only affect toons
+  * fixed bug caused by support for only eight global animations in the past
+  * fixed correctly using defined draw order of global animations
+  * fixed always drawing pointer-style global animations above everything else
+  * fixed bug with closing doors when exiting from level editor
+
+-------------------------------------------------------------------
 Wed Dec 20 15:41:29 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 4.3.8.0:
