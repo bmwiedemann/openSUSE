@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jan 31 08:11:12 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.5.2:
+  * Update BRANCHES.md
+  * Bump version
+  * Assemble Changelog
+  * Update Marvin fix Changelog entry
+  * Add warning for PKCS 1.5 decryption
+  * Fix typo
+  * RSA: improve readability
+  * RSA: remove unneeded temporaries
+  * RSA: document Montgomery trick in unblind
+  * Fix style
+  * Make local function static
+  * Add Changelog for the Marvin attack fix
+  * Extend blinding to RSA result check
+  * Make RSA unblinding constant flow
+  * Add Changelog for #8687
+  * Add required dependency to the testcase
+  * Remove unneeded testcase
+  * Update test-data to use SIZE_MAX
+  * Add missing newline at the end of test_suite_x509write.data
+  * Update fix to be more platform-independent
+  * Fix Issue #8687
+  * Add tests for Issue #8687
+- Resolves CVE-2024-23170 boo#1219336
+
+-------------------------------------------------------------------
 Tue Jan 23 11:12:58 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 -  Mbed TLS is now released under a dual Apache-2.0 OR GPL-2.0-or-later
