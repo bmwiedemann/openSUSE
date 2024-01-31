@@ -47,4 +47,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1068183</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b4c1fab37a3ec46b978c0d799a32ae73</srcmd5>
+    <version>4.11</version>
+    <time>1706741658</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.11:
+  * Drop support for SQLAlchemy &lt; 1.4.
+  * Add support for Python 3.12.
+  * Add support for SQLAlchemy 2.x.
+  * Fix an issue where a long-running request might not appear in
+    the toolbar UI without refreshing the page.
+  * Use ``time.monotonic()`` when computing performance
+    intervals.
+
+- Packaging :
+- Update to new version 4.4
+  + Reduce the log output for squashed exceptions and put them at
+    the INFO level so they can be filtered out if desired.
+    Javascript syntax fixes for browsers that don’t support
+    trailing commas.</comment>
+    <requestid>1142840</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid-debugtoolbar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 # nothing provides python2-pyramid needed by python2-pyramid-mako
 %define skip_python2 1
 Name:           python-pyramid-debugtoolbar
-Version:        4.10
+Version:        4.11
 Release:        0
 Summary:        An interactive HTML debugger for Pyramid application development
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
