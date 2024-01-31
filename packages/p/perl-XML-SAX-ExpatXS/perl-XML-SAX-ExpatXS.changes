@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 02:12:42 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %autopatch to fix compilation with rpm-4.19
+
+-------------------------------------------------------------------
 Thu Jul 19 12:17:22 UTC 2018 - coolo@suse.com
 
 - add parser to ParserDetails.ini

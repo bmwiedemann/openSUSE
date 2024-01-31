@@ -25,7 +25,7 @@ Version:        1.33
 Release:        0
 Url:            http://www.cpan.org/dist/XML-SAX-ExpatXS
 Source0:        %{cpan_name}-%{version}.tar.gz
-Patch:          %{cpan_name}-1.31-obs.patch
+Patch0:         %{cpan_name}-1.31-obs.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{perl_requires}
 BuildRequires:  perl
@@ -51,7 +51,7 @@ XML::SAX::ExpatXS is a direct XS extension to Expat XML parser. It implements
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%patch -p1
+%autopatch -p1
 
 %build
 perl Makefile.PL OPTIMIZE="$RPM_OPT_FLAGS -Wall"
