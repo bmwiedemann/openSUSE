@@ -1,7 +1,7 @@
 #
 # spec file for package xdp-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 # workaround binutils/strip issue with BPF object, see #boo#1217108
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           xdp-tools
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Group:          Productivity/Networking/Other
 Summary:        Utilities and example programs for use with XDP
