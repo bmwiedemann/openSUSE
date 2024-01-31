@@ -50,7 +50,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        307
+Version:        309
 Release:        0
 Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
@@ -594,7 +594,7 @@ Requires(post): (policycoreutils if selinux-policy-%{selinuxtype})
 Conflicts: firewalld < 0.6.0-1
 Recommends: sscg >= 2.3
 Recommends: system-logos
-Suggests: sssd-dbus
+Suggests: sssd-dbus >= 2.6.2
 %if 0%{?suse_version}
 Requires(pre): permissions
 Requires: distribution-logos
@@ -846,11 +846,15 @@ Requires: udisks2 >= 2.9
 Requires: %{__python3}
 %if 0%{?suse_version}
 Requires: libudisks2-0_lvm2 >= 2.9
+Requires: libudisks2-0_btrfs >= 2.9
 Recommends: multipath-tools
 Requires: python3-dbus-python
 %else
 Recommends: udisks2-lvm2 >= 2.9
 Recommends: udisks2-iscsi >= 2.9
+%if ! 0%{?rhel}
+Recommends: udisks2-btrfs >= 2.9
+%endif
 Recommends: device-mapper-multipath
 Recommends: clevis-luks
 Requires: python3-dbus
