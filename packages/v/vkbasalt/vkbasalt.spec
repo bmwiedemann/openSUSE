@@ -25,6 +25,7 @@ License:        Zlib
 URL:            https://github.com/DadSchoorse/vkBasalt
 Source0:        https://github.com/DadSchoorse/vkBasalt/archive/v%{version}.tar.gz#/vkBasalt-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+Source2:        baselibs.conf
 BuildRequires:  glslang-devel
 BuildRequires:  libX11-devel
 BuildRequires:  meson
