@@ -1,7 +1,7 @@
-Index: b/rsnapshot.conf.default.in
+Index: rsnapshot-1.4.5/rsnapshot.conf.default.in
 ===================================================================
---- a/rsnapshot.conf.default.in
-+++ b/rsnapshot.conf.default.in
+--- rsnapshot-1.4.5.orig/rsnapshot.conf.default.in
++++ rsnapshot-1.4.5/rsnapshot.conf.default.in
 @@ -37,7 +37,7 @@ snapshot_root	/.snapshots/
  #
  # See the README file or the man page for more details.
@@ -32,7 +32,7 @@ Index: b/rsnapshot.conf.default.in
  
  # Uncomment this to specify the path to rsnapshot-diff.
  #
--#cmd_rsnapshot_diff	/usr/local/bin/rsnapshot-diff
+-#cmd_rsnapshot_diff	@prefix@/bin/rsnapshot-diff
 +cmd_rsnapshot_diff	/usr/bin/rsnapshot-diff
  
  # Specify the path to a script (and any optional arguments) to run right
