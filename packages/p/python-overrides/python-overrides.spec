@@ -17,7 +17,7 @@
 
 
 Name:           python-overrides
-Version:        7.6.0
+Version:        7.7.0
 Release:        0
 Summary:        A decorator to automatically detect mismatch when overriding a method
 License:        Apache-2.0
