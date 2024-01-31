@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 31 07:31:21 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Change LLVM version macro to the cleaner alternative suggested in
+  SR#1134405
+- Update to 0.20.1
+  * Add log2 histograms with finer granularity
+  * Add support for uprobe_multi link
+  * Attach BTF to generated BPF programs
+  * Add fentry/fexit aliases for kfunc/kretfunc
+  * Support pid targeting for uprobe
+  * New builtin for getting the number of map elements
+  * New config block syntax and standardize config and env var names
+  * Add a jiffies builtin for advanced usages
+  * Fix silent truncation of 64-bit values in hist()
+  * Fix retval for kretfunc/fexit
+  * Add PPID field to execsnoop.bt
+
+-------------------------------------------------------------------
 Wed Dec 20 22:44:04 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - No longer keep debug info: this is not needed since version 0.16

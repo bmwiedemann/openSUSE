@@ -1,7 +1,7 @@
 #
 # spec file for package bpftrace
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,18 +13,19 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
-# Use the latest supported LLVM version, but Leap only has a slightly older one
-# so just use whatever version is available.
-%if 0%{?suse_version} > 1600 || 0%{?sle_version} > 150500
+# Use the latest default LLVM version available, unless it is not yet
+# supported by bpftrace.
+%if 0%{?product_libs_llvm_ver} > 17
 %define llvm_major_version 17
 %else
-%define llvm_major_version %{nil}
+ %define llvm_major_version %{nil}
 %endif
 
 Name:           bpftrace
-Version:        0.19.1
+Version:        0.20.1
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
