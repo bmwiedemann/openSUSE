@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jan 30 10:26:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.9.3
+  * Fixed backwards compatibility breakage (in 3.9.2) of ``ssl`` parameter
+    when set outside of ``ClientSession`` (e.g. directly in ``TCPConnector``)
+  * Improved test suite handling of paths and temp files to consistently
+    use pathlib and pytest fixtures.
+- from version 3.9.2 (bsc#1219341, CVE-2024-23334, bsc#1219342, CVE-2024-23829)
+  * Fixed server-side websocket connection leak.
+  * Fixed ``web.FileResponse`` doing blocking I/O in the event loop.
+  * Fixed double compress when compression enabled and compressed file
+    exists in server file responses.
+  * Added runtime type check for ``ClientSession`` ``timeout`` parameter.
+  * Fixed an unhandled exception in the Python HTTP parser on header lines
+    starting with a colon.
+  * Improved validation of paths for static resources requests to the server.
+  * Added support for passing :py:data:`True` to ``ssl`` parameter in
+    ``ClientSession`` while deprecating :py:data:`None`.
+  * Fixed an unhandled exception in the Python HTTP parser on header lines
+    starting with a colon.
+  * Fixed examples of ``fallback_charset_resolver`` function in the
+    :doc:`client_advanced` document.
+  * The Sphinx setup was updated to avoid showing the empty
+    changelog draft section in the tagged release documentation
+    builds on Read The Docs.
+  * The changelog categorization was made clearer. The contributors can
+    now mark their fragment files more accurately.
+  * Updated :ref:`contributing/Tests coverage <aiohttp-contributing>`
+    section to show how we use ``codecov``.
+  * Replaced all ``tmpdir`` fixtures with ``tmp_path`` in test suite.
+- Refresh patches for new version
+  * remove-re-assert.patch
+
+-------------------------------------------------------------------
 Fri Jan 26 08:02:10 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests with openssl 3.2 and python < 3.11 bsc#1217782
