@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 26 05:57:59 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1.26
+  * Fix autpokgtest case introduced recently for #946776 so
+    that it does not depend on time zone.
+- Changes from version 1.25
+  * Provide 64-bit versions of time functions on 32-bit
+    architectures (closes: #1028587, LP: #2002803).
+  * Cleanup source code, and reformat it with clang-format.
+  * In --static mode, set sub-seconds part to 0
+    (closes: #946776).
+  * Mention in man page and README file existence of
+    libfaketime package, that might be considered for more
+    advanced functionalities than the ones provided by
+    datefudge.
+  * Standards-Version: 4.6.2 (no changes)
+
+-------------------------------------------------------------------
 Wed Sep  2 16:36:27 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.24:

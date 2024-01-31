@@ -1,7 +1,7 @@
 #
 # spec file for package datefudge
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           datefudge
-Version:        1.24
+Version:        1.26
 Release:        0
 Summary:        A preload library to fake system time
 License:        GPL-2.0-or-later
