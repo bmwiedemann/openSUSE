@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 28 18:51:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.5:
+  * Fix regression (#310)
+  * Removing legacy Docbook files, as per discussion at
+  * Use @prefix@ instead of hardcoded value in
+    rsnapshot.conf.default.in comment line (#289).
+
+-------------------------------------------------------------------
 Sun Aug 15 13:28:41 UTC 2021 - munix9@googlemail.com
 
 - Add fix-tests-path.patch
@@ -89,15 +98,15 @@ Mon Sep 21 09:21:47 UTC 2015 - mpluskal@suse.com
   * Tidy the code with perltidy
   * Fix --rsh command line option
   * The --rsh option of rsync got errornously quoted (Debian Bug #743310)
-  *  Define traps to unmount LVM parts after fail If you use LVM 
-    snapshots and rsnapshot fails, rsnapshot will unmount and 
+  *  Define traps to unmount LVM parts after fail If you use LVM
+    snapshots and rsnapshot fails, rsnapshot will unmount and
     remove the snapshot, too.
   * cd to home before executing a command
   * if($use_lazy_deletes): remove lockfile in any case
-  * Bail on failing cmd_(pre|post)exec If one of those commands 
+  * Bail on failing cmd_(pre|post)exec If one of those commands
     fails, rsnapshot will exit with exit code != 0
   * Capture output from rsync and print/log if level is >=4
-  * Print rsnpashot's PID when logging to syslog, instead of the 
+  * Print rsnpashot's PID when logging to syslog, instead of the
     logger's PID.
   * make script uses pod2man instead of /usr/bin/pod2man
   * rsnapshot-diff: Fixed removed files reported as addition (+ mark)
@@ -120,7 +129,7 @@ Mon Sep 21 09:21:47 UTC 2015 - mpluskal@suse.com
   * Allow `backticks with options` in include_conf.
   * Fix inaccurate omission of --link-dest in test-mode output
   * rsnapshot-diff: Add -s option to show size of each file.
-- Drop no longer needed patches 
+- Drop no longer needed patches
   * rsnapshot-1.3.1-perl5.18.patch
   * rsnapshot-1.3.1-no_usr_local.patch
 
@@ -154,7 +163,7 @@ Wed Jun 26 22:45:40 UTC 2013 - Greg.Freemyer@gmail.com
 -------------------------------------------------------------------
 Thu Apr 16 02:00:14 CEST 2009 - ro@suse.de
 
-- buildfix: refresh patches 
+- buildfix: refresh patches
 
 -------------------------------------------------------------------
 Mon Sep  8 14:35:07 CEST 2008 - hvogel@suse.de
@@ -180,7 +189,7 @@ Thu Aug 16 23:39:00 CET 2007 - guru@unixtech.be
 -------------------------------------------------------------------
 Wed May 23 09:57:38 CEST 2007 - mskibbe@suse.de
 
-- fix path to binary in man and info pages 
+- fix path to binary in man and info pages
 
 -------------------------------------------------------------------
 Mon Jan 15 08:36:25 CET 2007 - mskibbe@suse.de
@@ -194,5 +203,5 @@ Mon Jan 15 08:36:25 CET 2007 - mskibbe@suse.de
 -------------------------------------------------------------------
 Fri Jul  7 09:19:54 CEST 2006 - mskibbe@suse.de
 
-- create package 
+- create package
 

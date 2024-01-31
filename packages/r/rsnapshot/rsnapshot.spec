@@ -1,7 +1,7 @@
 #
 # spec file for package rsnapshot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rsnapshot
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        Backup program using hardlinks
 License:        GPL-2.0-or-later
