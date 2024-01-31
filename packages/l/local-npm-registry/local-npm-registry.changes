@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 30 14:43:02 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.0.2
+  * --help invocation fixes
+  * cleanup npm's config.registry on exit
+  * adds support for non-standard alternative versions
+
+-------------------------------------------------------------------
 Fri Dec 29 11:02:40 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Escape `quilt setup` invoked section in the helper script

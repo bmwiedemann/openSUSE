@@ -49,4 +49,15 @@
     <comment>- Escape `quilt setup` invoked section in the helper script</comment>
     <requestid>1135647</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>52caa0ba739aaaa9f0e24c62bed266fc</srcmd5>
+    <version>1.0.2</version>
+    <time>1706741602</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.2
+  * --help invocation fixes
+  * cleanup npm's config.registry on exit
+  * adds support for non-standard alternative versions</comment>
+    <requestid>1142809</requestid>
+  </revision>
 </revisionlist>
