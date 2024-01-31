@@ -135,4 +135,12 @@
   * 0004-rt-tests-hwlatdetect-Update-to-integer-division.patch</comment>
     <requestid>1080074</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>057184384099cc2d95c05a2c4a02a4ec</srcmd5>
+    <version>2.6</version>
+    <time>1706741687</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142931</requestid>
+  </revision>
 </revisionlist>
