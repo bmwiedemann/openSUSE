@@ -468,4 +468,12 @@
     <comment>- Disable broken tests with openssl 3.2 and python &lt; 3.11 bsc#1217782</comment>
     <requestid>1141676</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>589ac0f093d37114b3351f9761ea4866</srcmd5>
+    <version>3.9.3</version>
+    <time>1706741613</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142928</requestid>
+  </revision>
 </revisionlist>
