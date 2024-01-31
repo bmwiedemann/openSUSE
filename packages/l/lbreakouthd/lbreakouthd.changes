@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 27 17:36:46 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.1.6
+  * unpause only with key p to allow switching windows
+  * allow windowed mode if resolution has at least its height
+  * added russian translation
+  * workaround for possible flickering when setting fullscreen
+  * non-blocking wait for key/confirm to workaround SDL bug
+  * fixed more typos
+- Changes in version 1.1.5
+  * added gettext support for yes/no keys
+  * added spanish translation
+  * fixed comma typos
+
+-------------------------------------------------------------------
 Sun Sep 24 08:36:46 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 1.1.4
