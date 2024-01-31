@@ -1,7 +1,7 @@
 #
 # spec file for package knot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 Name:           knot
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        An authoritative DNS daemon
 License:        GPL-3.0-or-later
@@ -178,6 +178,7 @@ This package contains a library for a zone record scanner.
 
 %install
 %make_install STRIP="/bin/true"
+find %{buildroot}
 install -d %{buildroot}%{_docdir}/%{pkg_name}
 install -d %{buildroot}%{_docdir}/%{pkg_name}/samples/
 rm %{buildroot}%{_sysconfdir}/%{pkg_name}/*
