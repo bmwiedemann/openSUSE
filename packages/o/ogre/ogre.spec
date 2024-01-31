@@ -1,7 +1,7 @@
 #
 # spec file for package ogre
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,7 @@ Patch2:         fix-sse-detection.patch
 Patch3:         swig-3-cpp11.patch
 # PATCH-FIX-OPENSUSE fix-gslang-cpp17.patch -- Our GLSlang package requires c++17
 Patch4:         fix-gslang-cpp17.patch
+Patch5:         fix-glslang-plugin-compilation.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  dos2unix
 BuildRequires:  doxygen
@@ -56,6 +57,7 @@ BuildRequires:  fdupes
 BuildRequires:  freeimage-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
+BuildRequires:  glslang-nonstd-devel
 BuildRequires:  imgui-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -171,7 +173,7 @@ Group:          System/Libraries
 Provides:       libOgreMain-plugins = %{version}
 Conflicts:      libOgreMain-plugins <= 1.12.13
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description -n libOgreMain%{soname}-plugins
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.

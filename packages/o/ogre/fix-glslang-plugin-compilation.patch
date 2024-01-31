@@ -1,0 +1,10 @@
+--- ogre-13.6.5-orig/PlugIns/GLSLang/src/OgreGLSLang.cpp	2024-01-30 12:24:56.745396228 +0100
++++ ogre-13.6.5/PlugIns/GLSLang/src/OgreGLSLang.cpp	2024-01-30 12:26:20.255540877 +0100
+@@ -10,6 +10,7 @@
+ 
+ #include <glslang/Public/ShaderLang.h>
+ #include <glslang/SPIRV/GlslangToSpv.h>
++#include <glslang/Include/Types.h>
+ #include "gl_types.h"
+ 
+ namespace

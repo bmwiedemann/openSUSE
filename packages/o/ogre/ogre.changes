@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 30 11:36:50 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- fixed compilation with glslang v14
+- added fix-glslang-plugin-compilation.patch 
+
+-------------------------------------------------------------------
 Mon Dec 18 12:12:08 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Added fix-gslang-cpp17.patch to fix build with our current GLSlang package
