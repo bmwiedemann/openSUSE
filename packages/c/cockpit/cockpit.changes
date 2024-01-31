@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 31 11:02:35 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- new version 309:
+  * storage redesign
+  * initial btrfs support
+  https://cockpit-project.org/blog/cockpit-309.html
+
+-------------------------------------------------------------------
 Thu Jan 25 09:36:45 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
 
 - suse_docs.patch: replace with suse docs and move docs with out eqiv

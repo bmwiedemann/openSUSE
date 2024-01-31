@@ -406,4 +406,15 @@
   there too....</comment>
     <requestid>1141721</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2621ce0136266b6f4e82f29a96e3b2a0</srcmd5>
+    <version>309</version>
+    <time>1706741621</time>
+    <user>anag+factory</user>
+    <comment>- new version 309:
+  * storage redesign
+  * initial btrfs support
+  https://cockpit-project.org/blog/cockpit-309.html</comment>
+    <requestid>1142995</requestid>
+  </revision>
 </revisionlist>
