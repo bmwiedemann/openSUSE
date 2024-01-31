@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jan 30 10:17:54 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Fix changelog timestamp in the last entry
+- Hard code rather then use -DCMAKE_INSTALL_DOCDIR:PATH=%{__cmake_make_prefix_relative %{_docdir}/%{name}
+  It was causing issues with the 15.5 build
+
+-------------------------------------------------------------------
+Wed Jan 24 14:38:01 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build to cope with changes in (open)SUSE specific cmake
+  macros, move documentation to canonical location.
+
+-------------------------------------------------------------------
+Mon Jan 1 18:42:02 UTC 2024 - Victorhck <victorhck@opensuse.org>
+
+- Update to 3.7.0:  
+  * The history pager will now also attempt subsequence matches (#9476),
+    so you can find a command line like git log 3.6.1..Integration_3.7.0 by searching for gitInt.
+  * Opening the history pager will now fill the search field with a search string if you’re already
+    in a search (#10005). This makes it nicer to search something with ↑ and then later decide 
+    to switch to the full pager.
+  * Closing the history pager with enter will now copy the search text to the commandline 
+    if there was no match, so you can continue editing the command you tried to find right away (#9934).
+  * Performance improvements for command completions and globbing, where supported by the operating system,
+    especially on slow filesystems such as NFS (#9891, #9931, #10032, #10052).
+  * fish can now be configured to wait a specified amount of time for a multi-key sequence to be completed,
+    instead of waiting indefinitely. For example, this makes binding kj to switching modes in vi mode possible.
+    The timeout can be set via the new fish_sequence_key_delay_ms variable (#7401),
+    and may be set by default in future versions.
+  * See https://github.com/fish-shell/fish-shell/releases/tag/3.7.0 
+    for more details
+
+-------------------------------------------------------------------
 Wed Dec  6 12:42:56 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 3.6.4

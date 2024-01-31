@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        3.6.4
+Version:        3.7.0
 Release:        0
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
@@ -67,14 +67,18 @@ find share/tools -type f -name *.py -exec \
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-    -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir}
+    -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir} \
+    -DCMAKE_INSTALL_DOCDIR:PATH=share/doc/packages/fish \
+    %{nil}
+%cmake_build
 
 %install
 %cmake_install
 
 %find_lang %{name}
 
-rm %{buildroot}/%{_datadir}/doc/fish/.buildinfo
+# Location varies between TW and SLE/Leap, try both
+rm %{buildroot}/%{_datadir}/doc/packages/fish/.buildinfo
 
 %suse_update_desktop_file -G "Command-line interpreter" fish TerminalEmulator
 
@@ -102,7 +106,7 @@ fi
 %{_bindir}/fish
 %{_bindir}/fish_indent
 %{_bindir}/fish_key_reader
-%{_datadir}/doc/%{name}
+%doc %{_datadir}/doc/packages/%{name}
 %{_datadir}/%{name}
 %{_mandir}/man1/*.1%{?ext_man}
 %{_datadir}/applications/fish.desktop
