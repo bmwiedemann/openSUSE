@@ -232,4 +232,12 @@
     <comment></comment>
     <requestid>1058139</requestid>
   </revision>
+  <revision rev="31" vrev="280">
+    <srcmd5>0396dfd0d132dc34b09902aa21aa73a8</srcmd5>
+    <version>1.42</version>
+    <time>1706741641</time>
+    <user>anag+factory</user>
+    <comment>- remove bin symlink for non-suse distributions</comment>
+    <requestid>1142423</requestid>
+  </revision>
 </revisionlist>

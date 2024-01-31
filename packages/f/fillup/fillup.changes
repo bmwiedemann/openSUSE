@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 17 17:32:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove bin symlink for non-suse distributions
+
+-------------------------------------------------------------------
 Tue Dec 27 10:36:20 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
