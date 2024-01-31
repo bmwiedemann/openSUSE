@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 20 09:20:42 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-skip-empty-conf.patch
+  + Skip tests with empty config
+
+-------------------------------------------------------------------
+Fri Jan 19 19:19:49 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-pckg-reboot.patch (boo#1198533, bsc#1218952,  jsc#SMO-326)
+  + Support reboot on package update/upgrade via the cloud-init config
+
+-------------------------------------------------------------------
 Fri Dec 15 14:09:36 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
 - Switch build dependency to the generic distribution-release package
