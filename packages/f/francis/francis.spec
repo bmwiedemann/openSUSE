@@ -28,9 +28,9 @@ Source:         https://download.kde.org/stable/francis/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/francis/%{name}-%{version}.tar.xz.sig
 Source2:        francis.keyring
 %endif
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc12-c++
-BuildRequires:  gcc12-PIE
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
 %endif
 BuildRequires:  extra-cmake-modules >= 5.92
 BuildRequires:  cmake(KF5Config)
@@ -60,8 +60,8 @@ Francis uses the well-known pomodoro technique to help you get more productive.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} == 1500
-export CXX=g++-12
+%if 0%{?suse_version} < 1550
+export CXX=g++-13
 %endif
 %cmake_kf5 -d build
 

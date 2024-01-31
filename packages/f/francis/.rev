@@ -15,4 +15,13 @@
     <comment>- Use GCC 12 for building francis on Leap</comment>
     <requestid>1114994</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>926279c97d925fe32e48f0e6b5c841cb</srcmd5>
+    <version>1.0.1</version>
+    <time>1706741758</time>
+    <user>anag+factory</user>
+    <comment>- Switch to the latest GCC version available in Leap for packages
+  that can't build with the default compiler</comment>
+    <requestid>1143086</requestid>
+  </revision>
 </revisionlist>
