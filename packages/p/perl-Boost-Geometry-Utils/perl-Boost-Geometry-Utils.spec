@@ -25,7 +25,7 @@ License:        Artistic-1.0 or GPL-1.0+
 Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/dist/Boost-Geometry-Utils/
 Source:         http://www.cpan.org/authors/id/A/AA/AAR/%{cpan_name}-%{version}.tar.gz
-Patch:          avextend.diff
+Patch0:         avextend.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -42,8 +42,7 @@ BuildRequires:  gcc-c++
 Bindings for the Boost Geometry library
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Build.PL installdirs=vendor optimize="%{optflags}"

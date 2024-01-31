@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 02:33:50 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %autosetup instead of %patch to fix compilation with rpm-4.19
+
+-------------------------------------------------------------------
 Wed Jul 23 12:58:25 CEST 2014 - mls@suse.de
 
 - do not call av_extend with a negative size
