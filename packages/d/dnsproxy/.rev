@@ -227,4 +227,15 @@
   * Pull request 315: 373 fix goroutines leak (forwarded request 1141074 from VaiTon)</comment>
     <requestid>1141229</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a3f6373e6924820b0eba80b76db9929e</srcmd5>
+    <version>0.64.1</version>
+    <time>1706741755</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.64.1:
+  * Pull request 317: 379 fix ipv6 upstream
+- Update to version 0.64.0
+  * Pull request 307: AG-28327-upstream-config-parser (forwarded request 1143050 from VaiTon)</comment>
+    <requestid>1143084</requestid>
+  </revision>
 </revisionlist>
