@@ -159,4 +159,14 @@
     <comment></comment>
     <requestid>1137423</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7c3b580c1ccb3cd825cbf2bfbb1ca184</srcmd5>
+    <version>0.33.0</version>
+    <time>1706741628</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1142613 from ojkastl_buildservice
+
+update to 0.33.0</comment>
+    <requestid>1142996</requestid>
+  </revision>
 </revisionlist>
