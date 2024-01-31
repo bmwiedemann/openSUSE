@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 28 10:07:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.4:
+  * System clipboard can be fully disabled using
+    $XONSH_USE_SYSTEM_CLIPBOARD.
+  * xonsh now adds the user site packages directory to sys.path
+    where required for proper xontrib discovery
+  * history: fix json file permissions upon sudo
+  * Correctly parse multi line foreign aliases
+  * Upgrade Python version at the introduction
+
+-------------------------------------------------------------------
 Thu Sep 28 11:23:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.1:
