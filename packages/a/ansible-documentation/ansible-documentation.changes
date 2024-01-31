@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jan 30 14:18:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.3:
+  * convert core docs to use Ansible sphinx theme (#922) (#1067)
+  * fix internal links for ansible forum (#1052) (#1062)
+  * added `gather_facts/(yes/no)` (#1003) (#1043)
+  * [backport][2.16] Add how to request a working group (#912)
+    (#1041)
+  * collection_requirements: add meta/execution-environments.yml
+    (#871) (#1048)
+  * collection requirements/steering committee inclusion policy:
+    change (#995) (#1047)
+  * Proof reading II (#733) (#1039)
+  * fix intersphinx  tuples (#880) (#1038)
+  * Update task definition in playbook getting started doc (#1029)
+    (#1032)
+  * Update Arch Linux bugtracker link (#1027) (#1033)
+  * ci: refresh dev dependencies (#1022)
+  * corrected `test/` folder to `tests/` (#993) (#1017)
+  * docs: Document removal of ConfigureRemotingForAnsible.ps1 #794
+    (#984) (#1010)
+  * Add documentation about --exclude flag (#978) (#1016)
+  * Merge pull request #957 from akira6592/fix-exapmle-role-name
+    (#1011)
+  * Fixed DCO file link (#1005) (#1007)
+  * Update windows_setup.rst to fix link (#766) (#1009)
+  * Adds note for more details about variable precedence (#930)
+  * Document collection naming (#987)
+  * Collection requirements: add seealso with link to Collection
+    creator path (#976) (#985)
+  * Fix argument_specs.yml example (#956) (#988)
+  * Add documentation for the custom Jinja2 global function `undef`
+    (#953)
+  * clone-core.py: allow specifying custom branch and repo (#954)
+  * get_bot_user: use correct username in committer email
+  * ci pr_labeler: also use the app token for issues (#636)
+  * ci pip-compile: remove duplicate environment key (#633)
+  * ci: use Github App token to authenticate (#621)
+
+-------------------------------------------------------------------
 Sun Jan 21 08:00:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.16.2:

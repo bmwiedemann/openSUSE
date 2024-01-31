@@ -17,7 +17,7 @@
 
 
 Name:           ansible-documentation
-Version:        2.16.2
+Version:        2.16.3
 Release:        0
 Summary:        Ansible community documentation and example files
 License:        GPL-3.0-only
