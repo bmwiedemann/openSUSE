@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 30 18:04:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Pre-empt current task before running handle, allowing unpatched
+    tasks
+
+-------------------------------------------------------------------
 Sat Jan 20 19:31:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.9:

@@ -73,4 +73,14 @@
   * no release notes</comment>
     <requestid>1140202</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3dffd81a94ddeac1aacd5fd5bfef30a9</srcmd5>
+    <version>1.6.0</version>
+    <time>1706741605</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.0:
+  * Pre-empt current task before running handle, allowing unpatched
+    tasks</comment>
+    <requestid>1142841</requestid>
+  </revision>
 </revisionlist>
