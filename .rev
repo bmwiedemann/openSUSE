@@ -63,4 +63,14 @@
   * Improve display</comment>
     <requestid>1142714</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e58f7c9803649110c0db6fd52b6b1bde</srcmd5>
+    <version>2.29.1~0</version>
+    <time>1706741685</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.20.1:
+  * Fix losing part of the diff
+	* Align diff file timestamp</comment>
+    <requestid>1142894</requestid>
+  </revision>
 </revisionlist>

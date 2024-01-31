@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 31 04:59:39 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.20.1:
+  * Fix losing part of the diff
+	* Align diff file timestamp
+
+-------------------------------------------------------------------
 Tue Jan 30 05:44:36 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.29.0:
