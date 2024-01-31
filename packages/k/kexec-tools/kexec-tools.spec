@@ -1,7 +1,7 @@
 #
 # spec file for package kexec-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Patch4:         %{name}-vmcoreinfo-in-xen.patch
 # https://patchwork.kernel.org/project/linux-riscv/patch/20190416123233.4779-1-mick@ics.forth.gr/
 Patch5:         %{name}-riscv64.patch
 Patch10:        %{name}-SYS_getrandom.patch
+Patch11:        kexec-dont-use-kexec_file_load-on-xen.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros

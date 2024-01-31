@@ -1,0 +1,59 @@
+From: Jiri Bohac <jbohac@suse.cz>
+Subject: [PATCH] kexec: dont use kexec_file_load on XEN
+Patch-mainline: 94fbe64fb22d61726ca0c0996987574b6c783c19
+References: bsc#1218590
+
+Since commit 29fe5067ed07 ("kexec: make -a the default")
+kexec tries the kexec_file_load syscall first and only falls back to kexec_load on
+selected error codes.
+
+This effectively breaks kexec on XEN, unless -c is pecified to force the kexec_load
+syscall.
+
+The XEN-specific functions (xen_kexec_load / xen_kexec_unload) are only called
+from my_load / k_unload, i.e. the kexec_load code path.
+
+With -p (panic kernel) kexec_file_load on XEN fails with -EADDRNOTAVAIL (crash
+kernel reservation is ignored by the kernel on XEN), which is not in the list
+of return codes that cause the fallback to kexec_file.
+
+Without -p kexec_file_load actualy leads to a kernel oops on v6.4.0
+(needs to be dubugged separately).
+
+Signed-off-by: Jiri Bohac <jbohac@suse.cz>
+Fixes: 29fe5067ed07 ("kexec: make -a the default")
+---
+ kexec/kexec.8 | 1 +
+ kexec/kexec.c | 4 ++++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/kexec/kexec.8 b/kexec/kexec.8
+index b969cea..9e995fe 100644
+--- a/kexec/kexec.8
++++ b/kexec/kexec.8
+@@ -162,6 +162,7 @@ Specify that the new kernel is of this
+ .TP
+ .BI \-s\ (\-\-kexec-file-syscall)
+ Specify that the new KEXEC_FILE_LOAD syscall should be used exclusively.
++Ignored on XEN.
+ .TP
+ .BI \-c\ (\-\-kexec-syscall)
+ Specify that the old KEXEC_LOAD syscall should be used exclusively.
+diff --git a/kexec/kexec.c b/kexec/kexec.c
+index 08edfca..9d0ec46 100644
+--- a/kexec/kexec.c
++++ b/kexec/kexec.c
+@@ -1685,6 +1685,10 @@ int main(int argc, char *argv[])
+ 			}
+ 		}
+ 	}
++	if (xen_present()) {
++		do_kexec_file_syscall = 0;
++		do_kexec_fallback = 0;
++	}
+ 	if (do_kexec_file_syscall) {
+ 		if (do_load_jump_back_helper && !do_kexec_fallback)
+ 			die("--load-jump-back-helper not supported with kexec_file_load\n");
+-- 
+2.43.0
+

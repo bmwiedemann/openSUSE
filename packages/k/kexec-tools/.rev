@@ -1109,4 +1109,14 @@ installer uses kexec to boot into second stage..
     <comment></comment>
     <requestid>1124288</requestid>
   </revision>
+  <revision rev="152" vrev="3">
+    <srcmd5>c4ada744a4d3c4bfd8ceab5f7dd0a18c</srcmd5>
+    <version>2.0.27</version>
+    <time>1706741635</time>
+    <user>anag+factory</user>
+    <comment>- add kexec-dont-use-kexec_file_load-on-xen.patch:
+  kexec: don't use kexec_file_load on xen (bsc#1218590)
+</comment>
+    <requestid>1143006</requestid>
+  </revision>
 </revisionlist>
