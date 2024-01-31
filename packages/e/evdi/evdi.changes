@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Jan 29 16:43:01 UTC 2024 - joan.torres@suse.com
+
+- Update to version 1.14.1:
+  * Set version to 1.14.1
+  * Remove buildDescription from jenkins job
+  * Use strscpy instead of strcpy
+  * Set version to 1.14.0
+  * Maintain support for legacy connect call for clients not requiring new functionality
+  * Remove unused reservation object
+  * Remove check_version from job
+  * Remove unnecessary CFLAGS when building module in kernel
+  * Run style check using checkstyle perl script from master
+  * Only include drm.h when building the module
+
+-------------------------------------------------------------------
+Mon Jan 29 13:05:19 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Init package.
