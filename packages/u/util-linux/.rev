@@ -2566,4 +2566,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
 - modern Supplements</comment>
     <requestid>1139900</requestid>
   </revision>
+  <revision rev="282" vrev="3">
+    <srcmd5>dd646010af38d1fc6d44eef973fe183a</srcmd5>
+    <version>2.39.3</version>
+    <time>1706741639</time>
+    <user>anag+factory</user>
+    <comment>- Add more verbose changes and bug references from ALP.</comment>
+    <requestid>1142237</requestid>
+  </revision>
 </revisionlist>
