@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -293,7 +293,10 @@ ExcludeArch:    %ix86
 %define p_libdir %hpc_libdir
 %define p_bindir %hpc_bindir
 %define libname lib%{name}
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150200
+%define _hpc_python3 1
 %undefine _hpc_python3
+%endif
 %define p_python_sitelib %hpc_python_sitelib
 %endif
 

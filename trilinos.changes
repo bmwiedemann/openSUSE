@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 30 14:13:12 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Make sure, we call python3 for all Python needs on anything later
+  than SLE/Leap (boo#1219310).
+
+-------------------------------------------------------------------
 Tue Oct 24 15:02:59 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Disable HPC flavors on %ix86

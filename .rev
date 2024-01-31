@@ -303,4 +303,13 @@
     <comment>- Disable HPC flavors on %ix86 (forwarded request 1120041 from eeich)</comment>
     <requestid>1120042</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>28f51c33abe519cee3acbb5e67b5c4af</srcmd5>
+    <version>14.0.0</version>
+    <time>1706741667</time>
+    <user>anag+factory</user>
+    <comment>- Make sure, we call python3 for all Python needs on anything later
+  than SLE/Leap (boo#1219310). (forwarded request 1142863 from eeich)</comment>
+    <requestid>1142864</requestid>
+  </revision>
 </revisionlist>
