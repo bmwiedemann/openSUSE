@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+-------------------------------------------------------------------
+Tue Jan 30 16:54:14 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 1.33.0:
+  * Bump supported Kubernetes version to 1.27
+  * Breaking change: (go/v4-alpha): go/v4 is now stable and is the
+    default version used when scaffolding a Go based operator.
+  * Breaking change: (kustomize/v2-alpha): kustomize/v2 is now
+    stable and is the default version used in the plugin chain when
+    using go/v4, ansible/v1, helm/v1, and hybrid/v1-alpha plugins.
+  * Updated the supported OLM versions to 0.24.0, 0.25.0, and
+    0.26.0.
+  * (helm/v1): Deprecate the --config flag due to the
+    controller-runtime ComponentConfig package being deprecated
+    with the planned removal of support for loading manager options
+    from a file.
+  * operator-sdk olm install: fix a bug where the retry logic would
+    not retry until the the command's timeout was reached,
+    resulting in early exiting of the command before the specified
+    timeout was reached.
+
+-------------------------------------------------------------------
 Sat Oct 07 05:26:13 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.32.0:
