@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Jan 23 21:40:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.19:
+  * Add modules for the following number formats:
+    - Tax Registration Number (الرقم الضريبي, Egypt tax number)
+    - Postcode (the Spanish postal code) (thanks Víctor)
+    - NIFp (Numéro d'Identification Fiscale Permanent, Guinea
+      tax number)
+    - BIS (Belgian BIS number) (thanks Jeff Horemans)
+    - Matična številka poslovnega registra (Corporate
+      Registration Number) (thanks Blaž Bregar)
+    - OSS (European VAT on e-Commerce - One Stop Shop) (thanks
+      Sergi Almacellas Abellana)
+  * Extend the validation of the Albanian NIPT
+  * Support different date formats in parsing GS1-128 application
+    identifiers
+  * Add get_county() function to Romanian CNP
+  * Add functionality to get gender from Belgian National Number
+  * Add support for Finland HETU new century indicating signs
+  * Add functionality to get (partial) birth date from Belgian
+    National Number
+  * Extend validation of Canadian SIN (thanks Marcel Lecker)
+  * Fix Belarusian UNP online validation
+  * Various typo and documentation fixes (thanks valeriko,
+    Dimitri Papadopoulos,
+  * Add contribution information to documentation
+  * Test suite improvements (including checking file headers)
+  * Add modules for the following number formats:
+    - NN, NISS (Belgian national number) (thanks Cédric Krier)
+    - CFI (ISO 10962 Classification of Financial Instruments)
+    - Czech bank account number (thanks Petr Přikryl)
+    - NIF, sometimes N.I.F. (Numéro d'Identification Fiscale,
+    Algeria tax number)
+    - V-number (Vinnutal, Faroe Islands tax number) (thanks
+    Leandro Regueiro)
+    - TIN (Taxpayer Identification Number, Ghana tax number)
+    - PIN (Personal Identification Number, Kenya tax number)
+    - ICE (Identifiant Commun de l’Entreprise, التعريف الموحد
+    - PIB (Poreski Identifikacioni Broj, Montenegro tax number)
+    - ЕДБ (Едниствен Даночен Број, North Macedonia tax number)
+    - CNIC number (Pakistani Computerised National Identity
+    - Enotna matična številka občana (Unique Master Citizen
+    - MF (Matricule Fiscal, Tunisia tax number) (thanks Leandro
+    Regueiro)
+  * Fix disabling check digit validation of Mexican CURP (thanks
+    guyskk)
+  * Support special validation of La Post SIRET (thanks BIGBen99
+    and Cédric Krier)
+  * Fix support for "I" and "O" in CUSIP number (thanks Thomas
+    Kavanagh)
+  * Calculate ISO 7064 Mod 97, 10 check digits in the range 02-98
+    for IBAN
+  * Fix German OffeneRegister lookups (change of URL and of data
+    structure)
+  * Add extra court alias for Berlin in German
+    Handelsregisternummer (thanks Romuald R)
+  * Ensure certificate for the Belarus VAT number check_nalog()
+    lookup is included
+  * Support parsing incomplete dates in GS1-128 (thanks Alexis de
+    Lattre)
+  * Improve validation of CAS Registry Number
+  * Typo fixes (thanks Vladimir and Dimitri Papadopoulos)
+  * Add a check_uid() function to the stdnum.ch.uid module
+  * All validation exceptions should now inherit from ValueError
+  * Switch from nose to pytest as test runner
+
+-------------------------------------------------------------------
 Tue Jan 23 16:23:25 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - enable %{?sle15_python_module_pythons}
@@ -141,7 +208,7 @@ Fri Sep 23 10:11:07 UTC 2016 - jengelh@inai.de
 -------------------------------------------------------------------
 Mon Jul  4 07:15:17 UTC 2016 - axel.braun@gmx.de
 
-- update to version 1.3 
+- update to version 1.3
 
 -------------------------------------------------------------------
 Wed Jun 29 07:07:28 UTC 2016 - axel.braun@gmx.de
@@ -152,5 +219,5 @@ Wed Jun 29 07:07:28 UTC 2016 - axel.braun@gmx.de
 Mon Jan  4 20:12:58 UTC 2016 - axel.braun@gmx.de
 
 - Version 1.2
-  initial OBS build 
+  initial OBS build
 

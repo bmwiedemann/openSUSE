@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%global modname python-stdnum
 %{?sle15_python_module_pythons}
-%define modname python-stdnum
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{modname}
-Version:        1.17
+Version:        1.19
 Release:        0
 Summary:        Python module to handle standardized numbers and codes
 License:        LGPL-2.0-or-later
 URL:            https://arthurdejong.org/python-stdnum/
 Source:         https://files.pythonhosted.org/packages/source/p/python-stdnum/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-PySimpleSOAP
@@ -45,10 +48,10 @@ parsing, validation, formatting or conversion functions.
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +61,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license COPYING
 %doc NEWS ChangeLog README.md
-%{python_sitelib}/*
+%{python_sitelib}/stdnum
+%{python_sitelib}/python_stdnum-%{version}.dist-info
 
 %changelog
