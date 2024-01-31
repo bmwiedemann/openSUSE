@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Jan 26 12:40:18 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.36.0
+  * RTL/LTR/Vertical pager: Speed up white borders cropping
+  * updated sources
+
+-------------------------------------------------------------------
+Wed Jan 24 00:34:41 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging
