@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 23 09:54:16 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-doclayout to version 1.1.1.
+  ## 1.1.1
+
+  Released 2024-01-23.
+
+  -   Relaxed upper bound for text, allowing text-2.1.
+
+  -   Improved doc strings.
+
+  -   Test with latest GHC versions.
+
+-------------------------------------------------------------------
 Thu Apr 13 12:14:34 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-doclayout to version 1.1.0.
