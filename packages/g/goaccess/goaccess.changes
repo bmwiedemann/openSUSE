@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 31 04:55:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Updaet to 1.9:
+  * Added multi-threaded log processing with '--jobs=<num>' for a boost
+	  in parsing speed, achieving an improvement ranging from 1.26 to 3.65x faster.
+  * Added the 'SEARCH' method to the list of HTTP request methods.
+  * Added compatibility to include the Traefik log format.
+  * Added the ability to gracefully handle SIGQUIT as a signal for shutdown.
+  * Altered WebSocket server initialization, ensuring it takes place after log-format checks.
+  * Deprecated '--output-format'; now, only the '--output' option is permissible.
+  * Implemented mutex locking to prevent a TZ environment race condition.
+  * Fixed a potential heap overflow when checking a request for bots.
+  * Fixed sorting of child items on HTML panels when sorting a column via the UI.
+  * Fixed an issue where, in some cases, the referer host wouldn't be extracted properly
+  * Fixed the miscategorization of Android 12.1 under operating systems.
+  * Fixed TUI and temporarily ignored SIGINT during subdialog execution via Ctrl+C.
+  * Updated the list of browsers/bots.
+
+-------------------------------------------------------------------
 Thu Nov  2 08:29:30 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.1:

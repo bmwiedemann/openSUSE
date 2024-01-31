@@ -789,4 +789,26 @@
     options are defined in config file.</comment>
     <requestid>1122197</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>25a112184dcbc304adfd321c19f141c7</srcmd5>
+    <version>1.9</version>
+    <time>1706741683</time>
+    <user>anag+factory</user>
+    <comment>- Updaet to 1.9:
+  * Added multi-threaded log processing with '--jobs=&lt;num&gt;' for a boost
+	  in parsing speed, achieving an improvement ranging from 1.26 to 3.65x faster.
+  * Added the 'SEARCH' method to the list of HTTP request methods.
+  * Added compatibility to include the Traefik log format.
+  * Added the ability to gracefully handle SIGQUIT as a signal for shutdown.
+  * Altered WebSocket server initialization, ensuring it takes place after log-format checks.
+  * Deprecated '--output-format'; now, only the '--output' option is permissible.
+  * Implemented mutex locking to prevent a TZ environment race condition.
+  * Fixed a potential heap overflow when checking a request for bots.
+  * Fixed sorting of child items on HTML panels when sorting a column via the UI.
+  * Fixed an issue where, in some cases, the referer host wouldn't be extracted properly
+  * Fixed the miscategorization of Android 12.1 under operating systems.
+  * Fixed TUI and temporarily ignored SIGINT during subdialog execution via Ctrl+C.
+  * Updated the list of browsers/bots.</comment>
+    <requestid>1142893</requestid>
+  </revision>
 </revisionlist>
