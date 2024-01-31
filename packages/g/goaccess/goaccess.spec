@@ -1,7 +1,7 @@
 #
 # spec file for package goaccess
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global goaccess_services goaccess@.service goaccess@.timer
 
 Name:           goaccess
-Version:        1.8.1
+Version:        1.9
 Release:        0
 Summary:        Apache Web Log Analyzer
 License:        GPL-2.0-or-later
