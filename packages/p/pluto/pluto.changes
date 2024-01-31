@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 31 17:37:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 5.19.1:
+  * Bump goreleaser version to 1.22.1 (#518)
+  * Fix FlowSchema typo in versions.yaml (#517)
+  * Update documentation from template (#513)
+  * Fix using REPL AVAIL/REPL AVAIL IN as custom columns (#515)
+
+-------------------------------------------------------------------
 Mon Dec 18 20:53:39 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 5.19.0:
