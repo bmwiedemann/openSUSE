@@ -1,7 +1,7 @@
 #
 # spec file for package falkon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,8 +67,8 @@ BuildRequires:  pkgconfig(xcb-util)
 # it doesn't start without it (boo#1067547)
 Requires:       libQt5Sql5-sqlite
 Recommends:     %{name}-kde
-Provides:       web_browser
 Provides:       qupzilla = %{version}
+Provides:       web_browser
 Obsoletes:      qupzilla < %{version}
 Provides:       falkon-gnome-keyring = %{version}
 Obsoletes:      falkon-gnome-keyring < %{version}
@@ -84,8 +84,8 @@ It was previously known as QupZilla.
 %package kde
 Summary:        Plugin for tighter integration of KDE technologies
 Requires:       %{name} = %{version}
-Requires:       kwalletd5
-Supplements:    (%{name} and kwalletd5)
+Supplements:    (%{name} and plasma5-workspace)
+Supplements:    (%{name} and plasma6-workspace)
 Provides:       falkon-kwallet = %{version}
 Obsoletes:      falkon-kwallet < %{version}
 Provides:       qupzilla-kwallet = %{version}
