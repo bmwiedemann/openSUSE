@@ -221,4 +221,14 @@
     <comment></comment>
     <requestid>1121409</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>3338483a2f4fbcc5ac61ce9067d76923</srcmd5>
+    <version>1.6.2</version>
+    <time>1706741599</time>
+    <user>anag+factory</user>
+    <comment>- Skip tests failing on python312
+  * changed repr of OrderedDict gh#pywbem/pywbem#3097
+  * unexpected DeprecationWarnings</comment>
+    <requestid>1141457</requestid>
+  </revision>
 </revisionlist>
