@@ -1,7 +1,7 @@
 #
 # spec file for package libdwarf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libdwarf
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Access DWARF debugging information
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,6 +26,7 @@ URL:            https://prevanders.net/dwarf.html
 Source:         https://github.com/davea42/libdwarf-code/releases/download/v%{version}/libdwarf-%{version}.tar.xz
 BuildRequires:  binutils-devel
 BuildRequires:  libelf-devel
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 
 %description
