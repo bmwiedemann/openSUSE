@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-PP
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name YAML-PP
 Name:           perl-YAML-PP
-Version:        0.37.0
+Version:        0.38.0
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        YAML 1.2 Processor
