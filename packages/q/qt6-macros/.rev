@@ -64,4 +64,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1097547</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b5b828d3d9dbc0d361a2f015455c7167</srcmd5>
+    <version>20240131</version>
+    <time>1706741754</time>
+    <user>anag+factory</user>
+    <comment>- Switch to the latest GCC version available in Leap</comment>
+    <requestid>1143080</requestid>
+  </revision>
 </revisionlist>
