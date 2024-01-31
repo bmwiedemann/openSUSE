@@ -51,4 +51,26 @@
   * Add support for Python 3.12's ``type`` aliases (:pr:`606`).</comment>
     <requestid>1135278</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8331ef845b2056620f1318d3a604ee55</srcmd5>
+    <version>0.18.6</version>
+    <time>1706741660</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.18.6:
+  * Support coercing integral floats to ints when strict=False
+  * Preserve leading _ when renaming fields to camel or pascal
+    case
+  * Support zero-copy decoding binary fields to a memoryview
+  * Fix a bug when inheriting from the same Generic base class
+    multiple times
+  * Add an order option to all encoders for enforcing
+    deterministic/sorted ordering when encoding. This can help
+    provide a more consistent or human readable output
+  * Support inheriting from any slots-class when defining a new
+    Struct type with gc=False
+  * Automatically infer the input field naming convention when
+    converting non-dict mappings or arbitrary objects to Struct
+    types in msgspec.convert</comment>
+    <requestid>1142843</requestid>
+  </revision>
 </revisionlist>

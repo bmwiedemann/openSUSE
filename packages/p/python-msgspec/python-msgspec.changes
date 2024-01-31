@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 30 18:06:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.6:
+  * Support coercing integral floats to ints when strict=False
+  * Preserve leading _ when renaming fields to camel or pascal
+    case
+  * Support zero-copy decoding binary fields to a memoryview
+  * Fix a bug when inheriting from the same Generic base class
+    multiple times
+  * Add an order option to all encoders for enforcing
+    deterministic/sorted ordering when encoding. This can help
+    provide a more consistent or human readable output
+  * Support inheriting from any slots-class when defining a new
+    Struct type with gc=False
+  * Automatically infer the input field naming convention when
+    converting non-dict mappings or arbitrary objects to Struct
+    types in msgspec.convert
+
+-------------------------------------------------------------------
 Wed Dec 27 10:51:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.18.5:
