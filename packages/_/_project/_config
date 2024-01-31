@@ -609,6 +609,7 @@ ExportFilter: -ia32-.*\.rpm$
 ExportFilter: -32bit-.*\.sparc64\.rpm$
 ExportFilter: -64bit-.*\.sparcv9\.rpm$
 ExportFilter: -64bit-.*\.aarch64_ilp32\.rpm$
+ExportFilter: \.aarch64\.rpm$ aarch64 
 ExportFilter: \.armv7l\.rpm$ armv7l
 ExportFilter: \.armv7hl\.rpm$ armv7l
 ExportFilter: ^glibc(?:-devel)?-32bit-.*\.sparc64\.rpm$ sparc64

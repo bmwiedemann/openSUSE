@@ -21,6 +21,8 @@
   boo#1219139: '20240129'
   boo#1219188: '20240128'
   boo#1219242: '20240130'
+  boo#1219384: '20240130'
+  boo#1219401: '20240130'
   gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
   poo#105271: '20240126'
   poo#120459: '20240110'
@@ -67,7 +69,7 @@ nocleanup-packages = 000product 000release-packages bootstrap-copy
 # subpackages of ring packages with unacceptable requires (don't abuse)
 repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web patterns-base-update_test monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility hplip-scan-utils patterns-kde-devel_qt6
 
-repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,compat-usrmerge,cpio,crypto-policies,debugedit,dejagnu,diffutils,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,fipscheck,flex,gawk,gcc,gcc12,gcc13,gdbm,gettext-runtime:gettext-runtime-mini,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libedit,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua54,m4,make,makedepend,memory-constraints,meson,mpc,mpdecimal,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,openssl-3,pam,patch,pcre2,perl,perl-Text-Unidecode,perl-gettext,permissions,pkgconf,popt,python-rpm-macros,python-rpm-packaging,python-flit-core:primary,python-packaging:primary,python-pyparsing:primary,python311:base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap:systemtap-headers,systemtap-headers,sysuser-tools,tcl,tclap,tcpd,texinfo,timezone,dpkg:update-alternatives,utempter,util-linux,which,xxhash,xz,zlib,zstd,
+repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,cmake,cmake:mini,compat-usrmerge,cpio,crypto-policies,debugedit,dejagnu,diffutils,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,fipscheck,flex,gawk,gcc,gcc12,gcc13,gdbm,gettext-runtime:gettext-runtime-mini,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libedit,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libuv,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua54,m4,make,makedepend,memory-constraints,meson,mpc,mpdecimal,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,openssl-3,pam,patch,pcre2,perl,perl-Text-Unidecode,perl-gettext,permissions,pkgconf,popt,python-rpm-macros,python-rpm-packaging,python-flit-core:primary,python-packaging:primary,python-pyparsing:primary,python311:base,readline,rhash,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap:systemtap-headers,systemtap-headers,sysuser-tools,tcl,tclap,tcpd,texinfo,timezone,dpkg:update-alternatives,utempter,util-linux,which,xxhash,xz,zlib,zstd,
 
 staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
@@ -493,9 +495,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20240130'
-published: '20240129'
-publishing: '20240129'
+    <value>failed: ''
+published: '20240130'
+publishing: '20240130'
 testing: '20240130'
 </value>
   </attribute>
