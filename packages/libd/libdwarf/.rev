@@ -425,4 +425,17 @@
     details.</comment>
     <requestid>1135481</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>afa08bdc94da54d821362399d51ee543</srcmd5>
+    <version>0.9.1</version>
+    <time>1706741665</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.1:
+  * &quot;--disable-decompression&quot; tells the build to compile
+    libdwarf and dwarfdump with no reference to the zlib or
+    zstd libraries.
+  * Latest DW_LANG names now present.
+- build with zstd support</comment>
+    <requestid>1142865</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 30 19:54:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.1:
+  * "--disable-decompression" tells the build to compile
+    libdwarf and dwarfdump with no reference to the zlib or
+    zstd libraries.
+  * Latest DW_LANG names now present.
+- build with zstd support
+
+-------------------------------------------------------------------
 Thu Dec 28 13:09:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.0:
