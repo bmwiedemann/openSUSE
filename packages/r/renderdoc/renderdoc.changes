@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 31 08:23:48 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.31
+  * UI: Messages suggesting enabling API validation for more error
+    information now direct to Open Capture with Options to
+    discourage permanently enabling validation.
+  * UI: Only show byte range for a single subresource when viewing
+    texture as buffer.
+  * UI: When switching between mesh shader draws and compute shader
+    dispatches, preserve pipeline state flowchart.
+  * Vulkan: Fail instance creation if RenderDoc layer is explicitly
+    enabled.
+  * Vulkan: Add support for 64-bit selectors to OpSwitch
+    statements.
+  * Vulkan: When 'ref all resources' is enabled, ensure internal
+    buffers aren't included.
+  * D3D11: Improve handling and checking for unsupported sparse
+    textures.
+  * Android: Add workaround for broken Android devices that don't
+    properly support layers in apks. 
+
+-------------------------------------------------------------------
 Tue Jan  2 13:09:35 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.30
