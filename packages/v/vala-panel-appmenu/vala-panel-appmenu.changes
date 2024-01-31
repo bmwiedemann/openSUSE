@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 24 15:15:56 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix CFLAGS and CXXFLAGS to use distro flags
+
+-------------------------------------------------------------------
 Sun Jul 30 20:46:22 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Fix systemd_user_post macro use.
