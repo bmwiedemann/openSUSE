@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 30 10:40:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.11.1:
+  * Fix incorrect size of the folderbutton size and scaling
+    (gh#nextcloud/desktop#6292).
+  * Do not treat item type change as metadata update
+    (gh#nextcloud/desktop#6294).
+  * Ensure we do not modify a file that has been just uploaded
+    (gh#nextcloud/desktop#6300).
+  * Feature/filelocking keep user lock (gh#nextcloud/desktop#6361).
+  * Display terabyte again (gh#nextcloud/desktop#6362).
+  * Spell-correction for e2e_errors (gh#nextcloud/desktop#6369).
+  * Bugfix/autostart (gh#nextcloud/desktop#6371).
+  * Remove failure to import legacy account notification
+    (gh#nextcloud/desktop#6383).
+
+-------------------------------------------------------------------
 Wed Dec 13 11:33:41 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.11.0:
