@@ -1,7 +1,7 @@
 #
 # spec file for package libunwind
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 # Note the wrong version number from upstream
 Name:           libunwind
-Version:        1.7.2
+Version:        1.8.0
 Release:        0
 Summary:        Call chain detection library
 License:        MIT
 Group:          System/Base
 URL:            https://savannah.nongnu.org/projects/libunwind/
-Source0:        https://github.com/libunwind/libunwind/releases/download/v%{version}/libunwind-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/libunwind/libunwind/releases/download/v%{version}/libunwind-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
+Source0:        https://github.com/libunwind/libunwind/releases/download/v%{version}/%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/libunwind/libunwind/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  automake >= 1.14

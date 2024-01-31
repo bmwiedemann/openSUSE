@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 30 11:33:15 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.8.0:
+  * Improve unwinding through a bad function pointer on x86_64
+  * Fix UMRs indicated by valgrind (x86_64)
+  * fix byte_order_is_valid function logic
+  * Use size_t to match R.H.S
+  * Move get_proc_info_in_range under dwarf/
+  * Bump actions/checkout@v2 to @V3
+  * dwarf_find_unwind_table: Find load_base correctly when current
+    segment does not start at segbase
+  * Add introspection for march=armv8-a+sve
+  * Linux: Make get_elf_image guaranteed AS-safe
+  * Provide syscall wrappers for mmap and munmap
+  * Allow to use a custom dl_iterate_phdr implementation
+  * aarch64: unw_step() validates address before calling dwarf_get
+  * Provide AS-safe allocator to LZMA
+  * Rework register load in aarch64_local_resume()
+  * Fix arm postdecrement
+  * Added support for unwinding through PPC64 PLT entries
+  * Fix array indexing bug in dwarf_search_unwind_table
+  * Fix unaligned memory accesses in */Ginit.c
+  * Get filename and offset from ip
+  * Fix maps leak if caller's pathlen is too small
+  * Adjust DYNAMIC addrs in loaded image
+  * Fix crash in elf_w(valid_object)
+  * Fix segfault on QNX
+
+-------------------------------------------------------------------
 Wed Aug 30 09:24:53 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.7.2:
