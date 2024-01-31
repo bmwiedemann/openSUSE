@@ -91,4 +91,16 @@
   * Handle comparison of FixedTzOffset with other types of object</comment>
     <requestid>1138499</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3a9d855e990a80236a2d384612375e1a</srcmd5>
+    <version>1.20.1</version>
+    <time>1706741662</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.20.1:
+  * add formatter property, closes #172
+  * add security policy file. closes #175.
+  * Support various number of digits after the comma in the
+    timestamp %f …</comment>
+    <requestid>1142844</requestid>
+  </revision>
 </revisionlist>

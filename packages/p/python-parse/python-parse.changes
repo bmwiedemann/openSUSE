@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 30 18:07:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.1:
+  * add formatter property, closes #172
+  * add security policy file. closes #175.
+  * Support various number of digits after the comma in the
+    timestamp %f …
+
+-------------------------------------------------------------------
 Sat Jan 13 20:40:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.0:

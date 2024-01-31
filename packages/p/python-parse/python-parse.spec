@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parse
-Version:        1.20.0
+Version:        1.20.1
 Release:        0
 Summary:        Python module for parsing strings using a "format" syntax
 License:        MIT
