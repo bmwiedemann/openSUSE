@@ -1,7 +1,7 @@
 #
 # spec file for package zutty
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zutty
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        Terminal program with GLES renderer and low latency
 License:        GPL-3.0-or-later
@@ -25,7 +25,8 @@ Group:          System/X11/Terminals
 URL:            https://tomscii.sig7.se/zutty/
 #Git-Clone:     https://github.com/tomscii/zutty
 #Git-Clone:     https://github.com/tomscii/zutty.wiki
-Source:         https://github.com/tomscii/zutty/archive/refs/tags/%{version}.tar.gz#/zutty-%version.tar.gz
+Source:         zutty-0.15.tar.gz
+Source1:        zutty-0.15.tar.gz.asc
 Source3:        FAQ.md
 # Note: Tumbleweed contains waf, but Leap does not (yet), so we use python3 and add waf to the sources.
 BuildRequires:  Mesa-libEGL-devel
@@ -44,7 +45,7 @@ It uses FreeType, but does not support fontconfig, thus won't find
 fonts by their usual names. (See FAQ for details.)
 
 %prep
-%autosetup
+%autosetup -n %{name}-%{version}
 cp -a "%{_sourcedir}/FAQ.md" .
 
 %build
