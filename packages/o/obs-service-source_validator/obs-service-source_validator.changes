@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 30 15:28:42 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- since https://github.com/openSUSE/obs-service-source_validator/commit/0cb832185b71e869bb84fc995f483275c5c4158d
+  rpm-build seems to be unused. remove the dependency.
+
+-------------------------------------------------------------------
 Fri Nov 24 09:38:20 UTC 2023 - ro@suse.com
 
 - Update to version 0.34:
