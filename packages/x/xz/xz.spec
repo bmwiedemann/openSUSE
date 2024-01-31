@@ -1,7 +1,7 @@
 #
 # spec file for package xz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,21 @@
 
 
 # avoid bootstrapping problem
+%if 0%{?suse_version} == 1500
+%bcond_without static
+%else
+%bcond_with static
+%endif
 %define _binary_payload w9.bzdio
 Name:           xz
-Version:        5.4.5
+Version:        5.4.6
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
 Group:          Productivity/Archiving/Compression
 URL:            https://tukaani.org/xz/
-Source0:        https://tukaani.org/xz/%{name}-%{version}.tar.gz
-Source1:        https://tukaani.org/xz/%{name}-%{version}.tar.gz.sig
+Source0:        https://github.com/tukaani-project/xz/releases/download/v%{version}/xz-%{version}.tar.gz
+Source1:        https://github.com/tukaani-project/xz/releases/download/v%{version}/xz-%{version}.tar.gz.sig
 Source2:        baselibs.conf
 Source3:        https://tukaani.org/misc/jia_tan_pubkey.txt#/%{name}.keyring
 Source4:        xznew
@@ -73,6 +78,17 @@ Obsoletes:      lzma-alpha-devel < %{version}
 This package contains the header files and libraries needed for
 compiling programs using the LZMA library.
 
+%if %{with static}
+%package static-devel
+Summary:        Static version of LZMA library
+License:        SUSE-Public-Domain
+Group:          Development/Libraries/C and C++
+Requires:       lzma-devel = %{version}
+
+%description static-devel
+Static library for the LZMA library
+%endif
+
 %prep
 %autosetup
 
@@ -80,6 +96,15 @@ compiling programs using the LZMA library.
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -D_REENTRANT -pipe -fPIE"
 export LDFLAGS="-Wl,-z,relro,-z,now -pie"
+# Either we build it without pic enabled, or we build one at a time
+%if %{with static}
+%configure \
+  --with-pic \
+  --docdir=%{_docdir}/%{name} \
+  --disable-shared CONFIG_SHELL=/bin/sh
+%make_build
+cp ./src/liblzma/.libs/liblzma.a liblzma.a
+%endif
 %configure \
   --with-pic \
   --docdir=%{_docdir}/%{name} \
@@ -102,6 +127,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} --all-name --with-man
 install -Dpm 0755 %{SOURCE4} %{buildroot}%{_bindir}/xznew
 install -Dpm 0644 %{SOURCE5} %{buildroot}%{_mandir}/man1/xznew.1
+%if %{with static}
+install -Dpm 0644 liblzma.a %{buildroot}%{_libdir}/
+%endif
 rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 
 %post -n liblzma5 -p /sbin/ldconfig
@@ -177,5 +205,11 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %{_includedir}/lzma/*
 %{_libdir}/liblzma.so
 %{_libdir}/pkgconfig/liblzma.pc
+
+%if %{with static}
+%files static-devel
+%defattr(-, root, root)
+%{_libdir}/liblzma.a
+%endif
 
 %changelog
