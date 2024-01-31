@@ -1,5 +1,5 @@
---- include/rpm/rpmcli.h.orig	2022-04-07 11:13:18.983517774 +0000
-+++ include/rpm/rpmcli.h	2022-12-02 13:43:44.899359176 +0000
+--- include/rpm/rpmcli.h.orig	2023-09-19 10:10:10.000000000 +0000
++++ include/rpm/rpmcli.h	2023-10-12 11:43:59.662617302 +0000
 @@ -306,6 +306,7 @@ enum rpmInstallFlags_e {
      INSTALL_ALLMATCHES	= (1 << 9),	/*!< from --allmatches */
      INSTALL_REINSTALL	= (1 << 10),	/*!< from --reinstall */
@@ -24,9 +24,9 @@
   */
  extern struct rpmInstallArguments_s rpmIArgs;
  
---- include/rpm/rpmts.h.orig	2022-12-02 13:27:05.109729552 +0000
-+++ include/rpm/rpmts.h	2022-12-02 13:27:08.881720646 +0000
-@@ -249,6 +249,15 @@ int rpmtsOrder(rpmts ts);
+--- include/rpm/rpmts.h.orig	2023-10-12 11:43:35.870664176 +0000
++++ include/rpm/rpmts.h	2023-10-12 11:43:59.662617302 +0000
+@@ -253,6 +253,15 @@ int rpmtsOrder(rpmts ts);
  int rpmtsRun(rpmts ts, rpmps okProbs, rpmprobFilterFlags ignoreSet);
  
  /** \ingroup rpmts
@@ -42,9 +42,9 @@
   * Reference a transaction set instance.
   * @param ts		transaction set
   * @return		new transaction set reference
---- lib/poptI.c.orig	2022-04-07 11:13:19.010517957 +0000
-+++ lib/poptI.c	2022-12-02 13:27:08.877720656 +0000
-@@ -273,6 +273,10 @@ struct poptOption rpmInstallPoptTable[]
+--- lib/poptI.c.orig	2023-09-19 10:10:10.000000000 +0000
++++ lib/poptI.c	2023-10-12 11:43:59.662617302 +0000
+@@ -283,6 +283,10 @@ struct poptOption rpmInstallPoptTable[]
  	&rpmIArgs.installInterfaceFlags, (INSTALL_RESTORE),
  	N_("restore package(s)"),
  	N_("<packagefile>+") },
@@ -55,9 +55,9 @@
  
     POPT_TABLEEND
  };
---- lib/psm.c.orig	2022-12-02 13:27:05.093729590 +0000
-+++ lib/psm.c	2022-12-02 13:27:08.877720656 +0000
-@@ -826,7 +826,7 @@ static rpmRC rpmPackageErase(rpmts ts, r
+--- lib/psm.c.orig	2023-10-12 11:43:35.850664215 +0000
++++ lib/psm.c	2023-10-12 11:43:59.662617302 +0000
+@@ -1001,7 +1001,7 @@ static rpmRC rpmPackageErase(rpmts ts, r
  	}
  	if (rc) break;
  
@@ -66,8 +66,8 @@
  	    /* Prepare post transaction uninstall triggers */
  	    rpmtriggersPrepPostUnTransFileTrigs(psm->ts, psm->te);
  	}
---- lib/rpminstall.c.orig	2022-09-02 05:48:29.712846716 +0000
-+++ lib/rpminstall.c	2022-12-02 13:27:08.877720656 +0000
+--- lib/rpminstall.c.orig	2023-09-19 10:10:10.000000000 +0000
++++ lib/rpminstall.c	2023-10-12 11:43:59.662617302 +0000
 @@ -6,6 +6,8 @@
  
  #include <string.h>
@@ -77,7 +77,7 @@
  #include <rpm/rpmcli.h>
  #include <rpm/rpmtag.h>
  #include <rpm/rpmlib.h>		/* rpmReadPackageFile, vercmp etc */
-@@ -812,3 +814,32 @@ int rpmInstallSource(rpmts ts, const cha
+@@ -830,3 +832,32 @@ int rpmInstallSource(rpmts ts, const cha
      return rc;
  }
  
@@ -110,8 +110,8 @@
 +    argvFree(manifest);
 +    return rc;
 +}
---- lib/rpmtriggers.c.orig	2022-04-07 11:13:19.020518024 +0000
-+++ lib/rpmtriggers.c	2022-12-02 13:27:08.877720656 +0000
+--- lib/rpmtriggers.c.orig	2023-09-19 10:10:10.000000000 +0000
++++ lib/rpmtriggers.c	2023-10-12 11:43:59.662617302 +0000
 @@ -1,5 +1,6 @@
  #include "system.h"
  
@@ -160,8 +160,8 @@
      if (tm == RPMSCRIPT_FILETRIGGER) {
  	priorityTag = RPMTAG_FILETRIGGERPRIORITIES;
      } else {
---- lib/rpmtriggers.h.orig	2022-04-07 11:13:19.020518024 +0000
-+++ lib/rpmtriggers.h	2022-12-02 13:27:08.881720646 +0000
+--- lib/rpmtriggers.h.orig	2023-09-19 10:10:10.000000000 +0000
++++ lib/rpmtriggers.h	2023-10-12 11:43:59.662617302 +0000
 @@ -27,6 +27,10 @@ rpmtriggers rpmtriggersCreate(unsigned i
  RPM_GNUC_INTERNAL
  rpmtriggers rpmtriggersFree(rpmtriggers triggers);
@@ -173,8 +173,8 @@
  /*
   * Prepare post trans uninstall file triggers. After transcation uninstalled
   * files are not saved anywhere. So we need during uninstalation of every
---- lib/rpmts_internal.h.orig	2022-04-07 11:13:19.021518031 +0000
-+++ lib/rpmts_internal.h	2022-12-02 13:44:39.803225928 +0000
+--- lib/rpmts_internal.h.orig	2023-09-19 10:10:10.000000000 +0000
++++ lib/rpmts_internal.h	2023-10-12 11:43:59.662617302 +0000
 @@ -94,6 +94,8 @@ struct rpmts_s {
      int min_writes;             /*!< macro minimize_writes used */
  
@@ -184,9 +184,9 @@
  };
  
  #ifdef __cplusplus
---- lib/transaction.c.orig	2022-08-30 11:42:23.784853830 +0000
-+++ lib/transaction.c	2022-12-02 13:27:08.881720646 +0000
-@@ -1478,6 +1478,8 @@ static int rpmtsSetup(rpmts ts, rpmprobF
+--- lib/transaction.c.orig	2023-09-19 10:10:10.000000000 +0000
++++ lib/transaction.c	2023-10-12 11:44:28.398560689 +0000
+@@ -1475,6 +1475,8 @@ static int rpmtsSetup(rpmts ts, rpmprobF
      /* Get available space on mounted file systems. */
      (void) rpmtsInitDSI(ts);
  
@@ -195,7 +195,7 @@
      return 0;
  }
  
-@@ -1856,22 +1858,26 @@ int rpmtsRun(rpmts ts, rpmps okProbs, rp
+@@ -1858,27 +1860,31 @@ int rpmtsRun(rpmts ts, rpmps okProbs, rp
      /* Actually install and remove packages */
      nfailed = rpmtsProcess(ts);
  
@@ -206,8 +206,14 @@
      /* Run %posttrans scripts unless disabled */
 -    if (!(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOSTTRANS))) {
 +    if (!ts->dump_posttrans && !(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOSTTRANS))) {
- 	rpmlog(RPMLOG_DEBUG, "running post-transaction scripts\n");
+ 	rpmlog(RPMLOG_DEBUG, "running %%posttrans scripts\n");
  	runTransScripts(ts, PKG_POSTTRANS);
+     }
+     /* Run %postuntrans scripts unless disabled */
+-    if (!(rpmtsFlags(ts) & RPMTRANS_FLAG_NOPOSTUNTRANS)) {
++    if (!ts->dump_posttrans && !(rpmtsFlags(ts) & RPMTRANS_FLAG_NOPOSTUNTRANS)) {
+ 	rpmlog(RPMLOG_DEBUG, "running %%postuntrans scripts\n");
+ 	runTransScripts(ts, PKG_POSTUNTRANS);
      }
  
      /* Run %transfiletriggerpostun scripts unless disabled */
@@ -226,7 +232,7 @@
  	runTransScripts(ts, PKG_TRANSFILETRIGGERIN);
      }
      /* Final exit code */
-@@ -1894,3 +1900,110 @@ exit:
+@@ -1901,3 +1907,117 @@ exit:
      sigaction(SIGPIPE, &oact, NULL);
      return rc;
  }
@@ -278,7 +284,10 @@
 +    tsMembers tsmem = rpmtsMembers(ts);
 +    rpmtxn txn = NULL;
 +    /* Ignore SIGPIPE for the duration of transaction */
-+    rpmsqAction_t oact = rpmsqSetAction(SIGPIPE, RPMSQ_IGN);
++    struct sigaction act, oact;
++    memset(&act, 0, sizeof(act));
++    act.sa_handler = SIG_IGN;
++    sigaction(SIGPIPE, &act, &oact);
 +    /* Force default 022 umask during transaction for consistent results */
 +    mode_t oldmask = umask(022);
 +    
@@ -319,9 +328,13 @@
 +    if (!(txn = rpmtxnBegin(ts, RPMTXN_WRITE)))
 +	goto exit;
 +
++    if (rpmChrootSet(rpmtsRootDir(ts)))
++	goto exit;
++
 +    /* run posttrans scripts */
 +    rpmlog(RPMLOG_DEBUG, "running post-transaction scripts\n");
 +    runTransScripts(ts, PKG_POSTTRANS);
++    runTransScripts(ts, PKG_POSTUNTRANS);
 +    /* run %transfiletriggerin scripts */
 +    runFileTriggers(ts, NULL, RPMSENSE_TRIGGERIN, RPMSCRIPT_TRANSFILETRIGGER, 0);
 +    /* run %transfiletriggerpostun scrips */
@@ -333,12 +346,12 @@
 +exit:
 +    (void) umask(oldmask);
 +    rpmtxnEnd(txn);
-+    rpmsqSetAction(SIGPIPE, oact);
++    sigaction(SIGPIPE, &oact, NULL);
 +    rpmtsEmpty(ts);
 +    return rc;
 +}
---- rpm.c.orig	2022-04-07 11:13:19.067518343 +0000
-+++ rpm.c	2022-12-02 13:55:52.969592594 +0000
+--- tools/rpm.c.orig	2023-09-19 10:10:10.000000000 +0000
++++ tools/rpm.c	2023-10-12 11:43:59.662617302 +0000
 @@ -21,6 +21,7 @@ enum modes {
      MODE_ERASE		= (1 <<  2),
      MODE_RESTORE	= (1 <<  4),

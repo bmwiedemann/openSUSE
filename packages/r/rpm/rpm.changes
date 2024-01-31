@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Dec 13 17:39:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- fix Source url to match what is listed on https://rpm.org/download.html
+
+-------------------------------------------------------------------
+Fri Oct 27 15:42:09 CEST 2023 - mls@suse.de
+
+- disable sysusers handling for now
+
+-------------------------------------------------------------------
+Wed Oct 11 17:07:14 CEST 2023 - mls@suse.de
+
+- update to rpm-4.19.1
+  * new spec snippet support for dynamic spec generation
+  * new sysusers.d integration for automated user and group handling
+  * new CMake build system
+  * removal of various deprecated and/or unused APIs
+  * various internal code cleanups
+- refreshed patches:
+  * brp-compress-no-img.patch
+  * brp.diff
+  * brpcompress.diff
+  * build.diff
+  * enable-postin-scripts-error.diff
+  * fileattrs.diff
+  * findlang.diff
+  * findsupplements.diff
+  * langnoc.diff
+  * macrosin.diff
+  * platformin.diff
+  * posttrans.diff
+  * refreshtestarch.diff
+  * rpm-findlang-inject-metainfo.patch
+  * rpmqpack.diff
+  * rpmrc.diff
+  * selinux_transactional_update.patch
+  * localetag.diff
+  * weakdepscompat.diff
+  * zstdpool.diff
+- deleted patches:
+  * cpuid_lzcnt.patch
+  * libmagic-exceptions.patch
+  * remove-awk-dependency.patch
+  * whatrequires-doc.diff
+  * x86_64-microarchitectures.patch
+- new patches:
+  * python_setup.diff
+  * rpmsort_reverse.diff
+  * canongnu.diff
+- new file:
+  * build-aux.tar.bz2 (taken from rpm-4.18)
+- fix --runposttrans not working correctly with the --root
+  option [bnc#1216091]
+
+-------------------------------------------------------------------
 Tue Aug  8 12:39:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add remove-awk-dependency.patch to be able to drop awk dependency
@@ -132,7 +187,7 @@ Mon Jun 27 11:01:54 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 -------------------------------------------------------------------
 Tue May 31 19:58:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- drop requires-ge-macro.diff: this is already in rpm-config-SUSE 
+- drop requires-ge-macro.diff: this is already in rpm-config-SUSE
 - enable-postin-scripts-error.diff: refresh
 
 -------------------------------------------------------------------
@@ -152,24 +207,24 @@ Wed Mar 30 08:54:50 UTC 2022 - Martin Liška <mliska@suse.cz>
 Mon Mar 14 10:50:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop rpm-deptracking.patch, this is already upstream and
-  we were just adding it twice 
+  we were just adding it twice
 
 -------------------------------------------------------------------
 Tue Mar  8 19:31:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use fileprovide /usr/bin/gzip for "rpm-build" to make alternative
-  providers possible 
+  providers possible
 
 -------------------------------------------------------------------
 Wed Feb 23 22:44:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add leave-malloc-check-set.diff to actually use MALLOC_CHECK_ during
-  build 
+  build
 
 -------------------------------------------------------------------
 Tue Feb  1 12:47:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- invoke find-lang.sh with bash, it is a bash script (bsc#1195391) 
+- invoke find-lang.sh with bash, it is a bash script (bsc#1195391)
 
 -------------------------------------------------------------------
 Fri Jan 28 17:00:15 CEST 2022 - simon.vogl@gmx.net
@@ -208,7 +263,7 @@ Thu Sep 23 20:57:45 CEST 2021 - mls@suse.de
 - update to rpm-4.17.0
 - dropped support for berkeley db
 - archive unpacking failures no longer leave garbage
-- unified built-in and user-define macro syntax and calling conventions 
+- unified built-in and user-define macro syntax and calling conventions
 - python generators and debuginfo extraction has been split into a
   separate upstream project
 - support for ed25519 signatures
@@ -218,7 +273,7 @@ Thu Sep 23 20:57:45 CEST 2021 - mls@suse.de
   * singlefilemode.diff
   * verbosearg.diff
 - modified patches:
-  * usr-lib-sysimage-rpm.patch 
+  * usr-lib-sysimage-rpm.patch
   * localetag.diff
   * brp.diff
   * findlang.diff
@@ -323,7 +378,7 @@ Wed Nov 18 10:46:03 CET 2020 - mls@suse.de
 -------------------------------------------------------------------
 Tue Oct 27 10:08:05 CET 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
-- RPM no longer ships config.sub and config.guess, just copy it 
+- RPM no longer ships config.sub and config.guess, just copy it
   from Libtool since it is identical
 
 -------------------------------------------------------------------
@@ -641,7 +696,7 @@ Mon Sep 17 11:04:48 UTC 2018 - Martin Liška <mliska@suse.cz>
 Wed Aug  8 05:12:24 UTC 2018 - bwiedemann@suse.com
 
 - Add reproducible-debuginfo.patch to generate debuginfo
-  in a reproducible way 
+  in a reproducible way
 
 -------------------------------------------------------------------
 Fri Jul 20 13:15:28 CEST 2018 - mls@suse.de
@@ -857,7 +912,7 @@ Fri Dec  1 17:15:13 CET 2017 - mls@suse.de
 -------------------------------------------------------------------
 Thu Nov 23 13:41:13 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -871,7 +926,7 @@ Tue Nov  7 14:27:32 UTC 2017 - rbrown@suse.com
 -------------------------------------------------------------------
 Mon Nov  6 13:53:45 UTC 2017 - mls@suse.de
 
-- Make %post compatibility symlink creation more resiliant 
+- Make %post compatibility symlink creation more resiliant
 
 -------------------------------------------------------------------
 Mon Nov  6 10:05:10 UTC 2017 - rbrown@suse.com
@@ -938,7 +993,7 @@ Wed Jul  5 16:28:46 CEST 2017 - ngompa13@gmail.com
   shared state content in Red Hat/Fedora; Mageia; and Debian/Ubuntu.
   The old path (/usr/com) isn't recognized by FHS, whereas /var/lib
   is recognized as suitable for this purpose.
-- Change the RPM binary payload from old-lzma to xz, 
+- Change the RPM binary payload from old-lzma to xz,
   in line with payload settings for RH/Fedora and Mageia
 - Backport upstream commit to read changelog entries with full
   timestamps
@@ -1182,7 +1237,7 @@ Mon Sep  8 18:51:28 CEST 2014 - mls@suse.de
     rpmtsRun() calls (RhBug:1076552, RhBug:1128359)
   * fix %autopatch options getting expanded twice
   * add support for %autosetup -S git_am (RhBug:1082038)
-- dropped patches: gentlyadjustmacros.diff, rundir.diff, 
+- dropped patches: gentlyadjustmacros.diff, rundir.diff,
   m68k.patch, debugedit-m68k.patch
 
 -------------------------------------------------------------------
@@ -1269,7 +1324,7 @@ Mon Dec  2 16:18:36 UTC 2013 - adrian@suse.de
 -------------------------------------------------------------------
 Fri Nov 29 11:54:44 UTC 2013 - dvaleev@suse.com
 
-- Rename and extend auto-config-update-aarch64.diff to 
+- Rename and extend auto-config-update-aarch64.diff to
   auto-config-update-aarch64-ppc64le.diff to apply same hack to
   powerpc64le architecture
 
@@ -1374,12 +1429,12 @@ Fri Jul 12 15:36:43 CEST 2013 - mls@suse.de
 -------------------------------------------------------------------
 Tue Jul  2 09:53:02 UTC 2013 - dmueller@suse.com
 
-- extend the armv7hl hack also to armv6hl 
+- extend the armv7hl hack also to armv6hl
 
 -------------------------------------------------------------------
 Thu Jun 27 22:03:51 UTC 2013 - dmueller@suse.com
 
-- add support for armv6hl target 
+- add support for armv6hl target
 
 -------------------------------------------------------------------
 Sun Jun 23 19:03:27 UTC 2013 - schwab@linux-m68k.org
@@ -1417,7 +1472,7 @@ Wed May  8 14:56:15 UTC 2013 - dmueller@suse.com
 Mon Apr 22 22:00:14 UTC 2013 - dmueller@suse.com
 
 - add auto-config-update-aarch64.diff:
- * optionally automatically update config.guess/sub during build 
+ * optionally automatically update config.guess/sub during build
 
 -------------------------------------------------------------------
 Fri Apr  5 18:47:53 UTC 2013 - dmueller@suse.com
@@ -1436,7 +1491,7 @@ Fri Apr  5 12:39:12 UTC 2013 - idonmez@suse.com
 -------------------------------------------------------------------
 Sat Mar 30 13:53:48 UTC 2013 - coolo@suse.com
 
-- which is essential for man packages 
+- which is essential for man packages
 
 -------------------------------------------------------------------
 Mon Mar 25 13:38:45 UTC 2013 - schwab@suse.de
@@ -1474,15 +1529,15 @@ Wed Jan  2 13:46:17 UTC 2013 - dmueller@suse.com
   * Fix locale dependent behavior in rpm2cpio.sh (RhBug:878363)
   * Add --undefine cli switch for undefining macros (related to RhBug:876308)
   * Fix warnings when building with gcc >= 4.7
-  * Permit key imports on transactions where signature checking is 
+  * Permit key imports on transactions where signature checking is
   disabled, regression of sorts introduced in 4.10.0 (RhBug:856225)
   * Fix RPMPROB_FILTER_FORCERELOCATE aka --badreloc, regression introduced in
   4.9.0 (RhBug:828784)
-  * Verify files from non-installed packages again, regression introduced 
+  * Verify files from non-installed packages again, regression introduced
   in 4.9.0 (RhBug:826589)
-  * Fix large (> 4GB) package support, regression introduced in 
+  * Fix large (> 4GB) package support, regression introduced in
   4.9.0 (RhBug:844936)
-  * Only create the first instance of a file shared between multiple 
+  * Only create the first instance of a file shared between multiple
   packages on install (speedup + improved verification timestamp behavior)
   * Report config and missinok flags too in deptype format extension
   * Fix relative path handling in --whatprovides query
@@ -1494,7 +1549,7 @@ Wed Jan  2 13:46:17 UTC 2013 - dmueller@suse.com
   * Fix bogus "unclosed %if" error when %include is used in conditionals
   * Report starting line for unclosed %if errors in spec
   * Always print out package dependencies on build
-  * Restore pre-4.10.0 fdFree() behavior, ie return the fd itself while 
+  * Restore pre-4.10.0 fdFree() behavior, ie return the fd itself while
   references exist, returning NULL introduced fd leak regressions.
 * Remove up-streamed patches:
   - obsoletesdeptag.diff, fdopen_strncat.diff, powerpc-fix-platform.diff, missingok.diff
@@ -1506,7 +1561,7 @@ Tue Nov 20 18:47:06 UTC 2012 - dimstar@opensuse.org
   with -o parameter. Non-unique does not make sense when not
   passing -u/-g (useradd/groupadd) and fails on newer pwdutils/
   shadowurils implementations. The macro does not allow for a
-  uid/gid being passed. 
+  uid/gid being passed.
 
 -------------------------------------------------------------------
 Mon Nov 12 10:29:13 UTC 2012 - coolo@suse.com
@@ -1546,7 +1601,7 @@ Tue Oct 16 18:39:11 CEST 2012 - ro@suse.de
 
 - new patch: powerpc-fix-platform.diff
   fix platform detection for ppc vs ppc64 (failed on ppc64 with
-  personality changed to ppc) 
+  personality changed to ppc)
 
 -------------------------------------------------------------------
 Wed Oct 10 07:03:41 UTC 2012 - adrian@suse.de
@@ -1565,7 +1620,7 @@ Mon Sep 24 11:43:13 UTC 2012 - coolo@suse.com
 - put an end date as echo into
    %run_permissions
    %run_suseconfig
-   %suse_update_config  
+   %suse_update_config
 
 -------------------------------------------------------------------
 Mon Sep 17 10:12:03 UTC 2012 - coolo@suse.com
@@ -1609,7 +1664,7 @@ Wed Jul  4 18:04:54 CEST 2012 - fcrozat@suse.com
 -------------------------------------------------------------------
 Wed Jun 13 13:24:28 CEST 2012 - ro@suse.de
 
-- set suse_version to 1220 
+- set suse_version to 1220
 
 -------------------------------------------------------------------
 Thu May 24 20:42:30 UTC 2012 - adrian@suse.de
@@ -1733,7 +1788,7 @@ Mon Dec 12 11:02:10 UTC 2011 - coolo@suse.com
 Fri Dec  9 13:55:31 UTC 2011 - coolo@suse.com
 
 - do not hardcode brp check list, but call everything below
-  /usr/lib/rpm/brp-suse.d - and move our own brp scripts to 
+  /usr/lib/rpm/brp-suse.d - and move our own brp scripts to
   brp-check-suse
 
 -------------------------------------------------------------------
@@ -1746,7 +1801,7 @@ Tue Nov 15 21:36:05 UTC 2011 - crrodriguez@opensuse.org
 
 - The %configure macro should use --disable-dependency-tracking
   that feature makes no sense when building rpms and only generates
-  extra I/O and uglify log files. Fedora uses it since 
+  extra I/O and uglify log files. Fedora uses it since
   redhat-rpm-config version 9.1.0 too.
 
 -------------------------------------------------------------------
@@ -1763,7 +1818,7 @@ Wed Oct 19 18:28:39 CEST 2011 - mls@suse.de
 -------------------------------------------------------------------
 Fri Sep 30 06:42:49 UTC 2011 - adrian@suse.de
 
-- enforce armv7hl plattform by default, despite the kernel only 
+- enforce armv7hl plattform by default, despite the kernel only
   reports armv7l via uname.
 - make armv7hl backward compatible to armv7l
 
@@ -1803,12 +1858,12 @@ Mon Aug 15 01:04:17 CEST 2011 - ro@suse.de
 - workaround in mono-find-requires: use >= as operator when finding
   .NET 1.0 dependencies, the .NET 1.5 libraries are compatible
   (note mono-find-requires and mono-find-provides as used by the
-   internal dependency generator are really outdated) 
+   internal dependency generator are really outdated)
 
 -------------------------------------------------------------------
 Wed Aug 10 02:40:22 UTC 2011 - crrodriguez@opensuse.org
 
-- Do not use -fno-strict-aliasing globally, the code 
+- Do not use -fno-strict-aliasing globally, the code
   already does in places where really needed.
 
 -------------------------------------------------------------------
@@ -1980,7 +2035,7 @@ Fri Oct 29 15:03:50 CEST 2010 - mls@suse.de
 Mon Oct  4 17:34:52 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - Enable libcap support so we can use the %caps macro in spec
-  files to set POSIX capabilities. 
+  files to set POSIX capabilities.
 
 -------------------------------------------------------------------
 Wed Sep  8 11:35:46 CEST 2010 - ro@suse.de
@@ -2086,7 +2141,7 @@ Fri Oct 23 17:56:28 CEST 2009 - mls@suse.de
 -------------------------------------------------------------------
 Tue Sep  8 02:40:55 CEST 2009 - crrodriguez@suse.de
 
-- make lang_package(s) Noarch 
+- make lang_package(s) Noarch
 
 -------------------------------------------------------------------
 Fri Sep  4 11:32:33 CEST 2009 - mls@suse.de
@@ -2168,7 +2223,7 @@ Tue Jun  9 11:53:50 CEST 2009 - mmarek@suse.cz
 -------------------------------------------------------------------
 Mon Apr  6 02:09:43 CEST 2009 - ro@suse.de
 
-- fix typo in brp-symlink (bnc#457908) 
+- fix typo in brp-symlink (bnc#457908)
 
 -------------------------------------------------------------------
 Tue Mar 31 11:25:14 CEST 2009 - mmarek@suse.cz
@@ -2194,7 +2249,7 @@ Wed Feb 18 11:04:35 CET 2009 - jblunck@suse.de
 -------------------------------------------------------------------
 Mon Feb 16 17:10:31 CET 2009 - ro@suse.de
 
-- fix sort call in finddebuginfo again 
+- fix sort call in finddebuginfo again
 
 -------------------------------------------------------------------
 Wed Feb 11 14:01:51 CET 2009 - coolo@suse.de
@@ -2236,7 +2291,7 @@ Fri Dec 19 15:26:30 CET 2008 - mls@suse.de
 -------------------------------------------------------------------
 Thu Dec 11 17:18:49 CET 2008 - ro@suse.de
 
-- brp-symlink: whitelist kde4 doc path (bnc#457908) 
+- brp-symlink: whitelist kde4 doc path (bnc#457908)
 
 -------------------------------------------------------------------
 Thu Dec 11 08:14:27 CET 2008 - agruen@suse.de
@@ -2254,7 +2309,7 @@ Tue Dec  9 16:45:44 CET 2008 - schwab@suse.de
 -------------------------------------------------------------------
 Mon Dec  1 12:35:39 CET 2008 - ro@suse.de
 
-- add rpm to baselibs.conf (for net-snmp) 
+- add rpm to baselibs.conf (for net-snmp)
 - append a "nil" after suse_install_update_script and _message
 
 -------------------------------------------------------------------
@@ -2307,7 +2362,7 @@ Thu Nov 13 18:16:14 CET 2008 - agruen@suse.de
 -------------------------------------------------------------------
 Fri Nov  7 15:03:25 CET 2008 - ro@suse.de
 
-- update gcc flags to current set 
+- update gcc flags to current set
 
 -------------------------------------------------------------------
 Fri Oct 31 18:59:25 CET 2008 - coolo@suse.de
@@ -2358,7 +2413,7 @@ Tue Sep 16 01:01:30 CEST 2008 - ro@suse.de
 
 - fix find-debuginfo.sh and debugsource-package.diff to even
   apply (directory depth)
-- add hack from jblunck using home made elfcmp 
+- add hack from jblunck using home made elfcmp
 
 -------------------------------------------------------------------
 Mon Sep 15 20:32:32 CEST 2008 - jblunck@suse.de
@@ -2377,7 +2432,7 @@ Thu Sep 11 15:33:52 CEST 2008 - mls@suse.de
 
 - update to 4.4.2.3 to get rid of >50 patches
 - make changelog cutter configurable
-- update rpm-suse_macros 
+- update rpm-suse_macros
 
 -------------------------------------------------------------------
 Fri Sep  5 16:56:23 CEST 2008 - dmueller@suse.de
@@ -2392,7 +2447,7 @@ Mon Aug 25 14:48:28 CEST 2008 - prusnak@suse.cz
 -------------------------------------------------------------------
 Thu Aug 21 01:49:00 CEST 2008 - ro@suse.de
 
-- update rpm-suse_macros 
+- update rpm-suse_macros
 
 -------------------------------------------------------------------
 Wed Aug 20 12:39:53 CEST 2008 - agruen@suse.de
@@ -2446,14 +2501,14 @@ Wed Apr 16 17:57:43 CEST 2008 - jblunck@suse.de
 -------------------------------------------------------------------
 Thu Apr 10 12:50:33 CEST 2008 - ro@suse.de
 
-- added baselibs.conf file for xxbit packages 
+- added baselibs.conf file for xxbit packages
 
 -------------------------------------------------------------------
 Thu Apr 10 12:32:46 CEST 2008 - jw@suse.de
 
 - added whatrequires-doc.diff
   Adds a hint to the misleading --whatrequires option, pointing to
-  the more useful -e --test.  
+  the more useful -e --test.
   Motivated by a talk thread started by Hubert.
 
 -------------------------------------------------------------------
@@ -2476,13 +2531,13 @@ Wed Apr  9 12:56:57 CEST 2008 - jblunck@suse.de
 -------------------------------------------------------------------
 Fri Mar 28 14:54:04 CET 2008 - coolo@suse.de
 
-- leave the rpm package itself with bzip payload to 
+- leave the rpm package itself with bzip payload to
   avoid blocking updates from within running system
 
 -------------------------------------------------------------------
 Thu Mar 27 14:43:24 CET 2008 - coolo@suse.de
 
-- switch payload default to lzma -2 
+- switch payload default to lzma -2
 - flag GNOME docu as %doc (bnc#358838)
 
 -------------------------------------------------------------------
@@ -2511,7 +2566,7 @@ Fri Mar 14 18:05:18 CET 2008 - coolo@suse.de
 -------------------------------------------------------------------
 Thu Mar 13 08:11:47 CET 2008 - coolo@suse.de
 
-- support lzma payload using liblzma 
+- support lzma payload using liblzma
 
 -------------------------------------------------------------------
 Thu Feb 21 21:58:39 CET 2008 - mls@suse.de
@@ -2521,12 +2576,12 @@ Thu Feb 21 21:58:39 CET 2008 - mls@suse.de
 -------------------------------------------------------------------
 Thu Jan 31 15:12:55 CET 2008 - ro@suse.de
 
-- brp-symlink: whitelist /opt/kde3/share/doc*/HTML/*/common 
+- brp-symlink: whitelist /opt/kde3/share/doc*/HTML/*/common
 
 -------------------------------------------------------------------
 Mon Jan 28 16:35:46 CET 2008 - ro@suse.de
 
-- finddebuginfo.diff: disable debuginfo for mono at the moment 
+- finddebuginfo.diff: disable debuginfo for mono at the moment
 
 -------------------------------------------------------------------
 Mon Jan 21 12:27:18 CET 2008 - mls@suse.de
@@ -2552,8 +2607,8 @@ Mon Dec  3 13:38:20 CET 2007 - dmueller@suse.de
 -------------------------------------------------------------------
 Fri Nov 16 20:46:42 CET 2007 - dmueller@suse.de
 
-- shorten changelogs in binary rpms (#308569) 
-  * saves 4.3MB for the one CD media 
+- shorten changelogs in binary rpms (#308569)
+  * saves 4.3MB for the one CD media
 
 -------------------------------------------------------------------
 Thu Oct 11 13:37:16 CEST 2007 - schwab@suse.de
@@ -2574,7 +2629,7 @@ Mon Sep  3 13:27:57 CEST 2007 - dmueller@suse.de
 -------------------------------------------------------------------
 Fri Aug 31 18:41:04 CEST 2007 - dmueller@suse.de
 
-- implement supplements for lang_packages (#306412) 
+- implement supplements for lang_packages (#306412)
 
 -------------------------------------------------------------------
 Fri Aug 10 16:40:10 CEST 2007 - dmueller@suse.de
@@ -2672,7 +2727,7 @@ Sun Apr  8 23:22:12 CEST 2007 - schwab@suse.de
 -------------------------------------------------------------------
 Sat Mar 24 12:22:23 CET 2007 - ro@suse.de
 
-- added libbz2-devel to BuildRequires and Requires for -devel 
+- added libbz2-devel to BuildRequires and Requires for -devel
 
 -------------------------------------------------------------------
 Fri Mar 23 16:14:28 CET 2007 - dmueller@suse.de
@@ -2799,7 +2854,7 @@ Tue Sep 19 13:47:56 CEST 2006 - rguenther@suse.de
 -------------------------------------------------------------------
 Tue Aug 15 00:59:12 CEST 2006 - ro@suse.de
 
-- workaround for gettext using MKINSTALLDIRS in configure.ac 
+- workaround for gettext using MKINSTALLDIRS in configure.ac
 
 -------------------------------------------------------------------
 Wed Jun 14 15:55:36 CEST 2006 - mls@suse.de
@@ -2851,7 +2906,7 @@ Mon Mar 20 14:51:02 CET 2006 - agruen@suse.de
 Sun Mar 19 20:27:11 CET 2006 - agruen@suse.de
 
 - Allow paths relative to %_sourcedir in
-  %suse_kernel_module_package. 
+  %suse_kernel_module_package.
 
 -------------------------------------------------------------------
 Sat Mar 18 08:24:12 CET 2006 - agruen@suse.de
@@ -2892,7 +2947,7 @@ Fri Mar 10 21:18:38 CET 2006 - agruen@suse.de
 -------------------------------------------------------------------
 Fri Mar 10 16:36:15 CET 2006 - dmueller@suse.de
 
-- patch for improved debuginfo extraction (#150940) 
+- patch for improved debuginfo extraction (#150940)
 
 -------------------------------------------------------------------
 Thu Mar  9 16:23:23 CET 2006 - agruen@suse.de
@@ -2930,7 +2985,7 @@ Sun Feb 19 13:35:40 CET 2006 - agruen@suse.de
 -------------------------------------------------------------------
 Sat Feb 18 15:17:50 CET 2006 - ro@suse.de
 
-- allow debuginfo packages also for noarch (for mono,java) 
+- allow debuginfo packages also for noarch (for mono,java)
 
 -------------------------------------------------------------------
 Fri Feb 17 15:00:28 CET 2006 - mls@suse.de
@@ -3077,13 +3132,13 @@ Wed Dec  7 04:27:28 CET 2005 - agruen@suse.de
 -------------------------------------------------------------------
 Tue Nov 22 01:17:34 CET 2005 - ro@suse.de
 
-- change NO_BRP_STRIP_DEBUG to NO_DEBUGINFO_STRIP_DEBUG 
+- change NO_BRP_STRIP_DEBUG to NO_DEBUGINFO_STRIP_DEBUG
 - fix patchrpm code not to modify immutable header parts
 
 -------------------------------------------------------------------
 Fri Nov 18 13:05:33 CET 2005 - ro@suse.de
 
-- honor NO_BRP_STRIP_DEBUG in find-debuginfo.sh 
+- honor NO_BRP_STRIP_DEBUG in find-debuginfo.sh
 
 -------------------------------------------------------------------
 Sat Oct 29 00:28:08 CEST 2005 - mls@suse.de
@@ -3096,12 +3151,12 @@ Sat Oct 29 00:28:08 CEST 2005 - mls@suse.de
 -------------------------------------------------------------------
 Mon Oct 24 02:34:43 CEST 2005 - ro@suse.de
 
-- find-requires/find-provides: fix MONO_PATH 
+- find-requires/find-provides: fix MONO_PATH
 
 -------------------------------------------------------------------
 Thu Oct 20 17:57:28 CEST 2005 - ro@suse.de
 
-- find-requires/find-provides: update mono hooks 
+- find-requires/find-provides: update mono hooks
 
 -------------------------------------------------------------------
 Wed Sep  7 18:13:11 CEST 2005 - matz@suse.de
@@ -3170,7 +3225,7 @@ Wed Apr  6 08:01:58 CEST 2005 - meissner@suse.de
 -------------------------------------------------------------------
 Tue Apr  5 11:48:14 CEST 2005 - bg@suse.de
 
-- add noarch to valid hppa architectures 
+- add noarch to valid hppa architectures
 
 -------------------------------------------------------------------
 Thu Mar 24 15:53:12 CET 2005 - uli@suse.de
@@ -3230,7 +3285,7 @@ Fri Feb  4 00:50:00 CET 2005 - ro@suse.de
 -------------------------------------------------------------------
 Thu Feb  3 17:09:32 CET 2005 - ro@suse.de
 
-- hppa may install noarch 
+- hppa may install noarch
 
 -------------------------------------------------------------------
 Wed Feb  2 01:09:53 CET 2005 - schwab@suse.de
@@ -3240,7 +3295,7 @@ Wed Feb  2 01:09:53 CET 2005 - schwab@suse.de
 -------------------------------------------------------------------
 Mon Jan 31 16:41:54 CET 2005 - adrian@suse.de
 
-- handle also ??_?? languages in %find_lang. 
+- handle also ??_?? languages in %find_lang.
 
 -------------------------------------------------------------------
 Fri Jan 28 17:21:22 CET 2005 - coolo@suse.de
@@ -3276,7 +3331,7 @@ Fri Dec  3 16:11:03 CET 2004 - mls@suse.de
 -------------------------------------------------------------------
 Thu Nov 25 23:47:44 CET 2004 - ro@suse.de
 
-- fix build with python-2.4 
+- fix build with python-2.4
 
 -------------------------------------------------------------------
 Tue Nov 16 00:26:15 CET 2004 - ro@suse.de
@@ -3510,7 +3565,7 @@ Fri Oct 10 15:25:26 CEST 2003 - sf@suse.de
 -------------------------------------------------------------------
 Fri Oct 10 01:26:57 CEST 2003 - ro@suse.de
 
-- ignore "linux-gate.so" in ldd output (on 2.6 systems) 
+- ignore "linux-gate.so" in ldd output (on 2.6 systems)
 
 -------------------------------------------------------------------
 Wed Oct  8 15:22:01 CEST 2003 - schwab@suse.de
@@ -3630,7 +3685,7 @@ Fri Jun 20 11:13:46 CEST 2003 - kukuk@suse.de
 -------------------------------------------------------------------
 Thu Jun 19 17:31:03 CEST 2003 - ro@suse.de
 
-- fix build (gettext and definition of mkinstalldirs) 
+- fix build (gettext and definition of mkinstalldirs)
 
 -------------------------------------------------------------------
 Mon Jun 16 10:10:27 CEST 2003 - kukuk@suse.de
@@ -3735,7 +3790,7 @@ Thu May  8 21:27:03 CEST 2003 - mls@suse.de
 -------------------------------------------------------------------
 Mon Apr  7 12:36:55 CEST 2003 - ro@suse.de
 
-- fix for new head(1) syntax 
+- fix for new head(1) syntax
 
 -------------------------------------------------------------------
 Mon Mar 10 10:55:29 CET 2003 - mls@suse.de
@@ -3823,7 +3878,7 @@ Mon Nov 11 16:34:57 CET 2002 - ma@suse.de
 -------------------------------------------------------------------
 Fri Oct 25 14:58:24 CEST 2002 - sf@suse.de
 
-- corrected %_libdir-macro (rpm-3.0.6-platform.diff) 
+- corrected %_libdir-macro (rpm-3.0.6-platform.diff)
 
 -------------------------------------------------------------------
 Mon Oct 21 10:47:49 CEST 2002 - schwab@suse.de
@@ -3845,7 +3900,7 @@ Wed Oct  2 15:29:39 MEST 2002 - mls@suse.de
 -------------------------------------------------------------------
 Sat Aug 24 11:37:29 CEST 2002 - ro@suse.de
 
-- fix popt-devel requires 
+- fix popt-devel requires
 
 -------------------------------------------------------------------
 Sun Aug 18 10:19:51 CEST 2002 - olh@suse.de
@@ -3941,7 +3996,7 @@ Tue Jul  2 16:36:05 CEST 2002 - ke@suse.de
 -------------------------------------------------------------------
 Fri Jun 21 00:03:09 CEST 2002 - ro@suse.de
 
-- automake is 1.6.2 
+- automake is 1.6.2
 
 -------------------------------------------------------------------
 Wed Jun 12 11:31:55 CEST 2002 - bk@suse.de
@@ -3975,7 +4030,7 @@ Fri May 17 18:25:34 CEST 2002 - olh@suse.de
 -------------------------------------------------------------------
 Wed May 15 14:15:41 CEST 2002 - ro@suse.de
 
-- update brp-x86_64-linux 
+- update brp-x86_64-linux
 
 -------------------------------------------------------------------
 Wed May 15 12:53:29 CEST 2002 - mfabian@suse.de
@@ -3994,16 +4049,16 @@ Fri Apr 26 16:58:57 CEST 2002 - sf@suse.de
 
 - fixed brp-x86_64-linux script
 - added *.a-files to brp-script
-- look _only_ for files or links with names *.a, *.so*  
+- look _only_ for files or links with names *.a, *.so*
 - added /opt/gnome/lib and /opt/kde/lib
 
 -------------------------------------------------------------------
 Wed Apr 24 16:01:11 CEST 2002 - sf@suse.de
 
-- added script to show requires and provides with 64 bit 
+- added script to show requires and provides with 64 bit
   (like s390 and sparc64)
-- rpm will now stop (on x86_64) if a 64-bit binary 
-  (or a link to one) is found in 
+- rpm will now stop (on x86_64) if a 64-bit binary
+  (or a link to one) is found in
   $RPM_BUILD_ROOT{, /usr, /usr/X11R6}/lib
 
 -------------------------------------------------------------------
@@ -4045,7 +4100,7 @@ Thu Apr 11 15:40:54 MEST 2002 - mls@suse.de
 Wed Apr 10 18:22:23 CEST 2002 - sf@suse.de
 
 - added x86_64 architecture
-- added --libdir to autogen.sh to copy the libs depending on 
+- added --libdir to autogen.sh to copy the libs depending on
   architecture (lib / lib64)
 
 -------------------------------------------------------------------
@@ -4061,7 +4116,7 @@ Fri Mar 22 20:23:59 MET 2002 - mls@suse.de
 -------------------------------------------------------------------
 Wed Mar 20 00:16:36 CET 2002 - ro@suse.de
 
-- modified config.diff for currently used optflags (#15123) 
+- modified config.diff for currently used optflags (#15123)
 
 -------------------------------------------------------------------
 Mon Mar 18 17:08:16 CET 2002 - schwab@suse.de
@@ -4109,18 +4164,18 @@ Mon Feb 18 18:10:49 CET 2002 - ro@suse.de
 -------------------------------------------------------------------
 Mon Feb 11 23:22:33 CET 2002 - ro@suse.de
 
-- tar option for bz2 is now "j" (re-added) 
+- tar option for bz2 is now "j" (re-added)
 
 -------------------------------------------------------------------
 Mon Feb 11 22:16:33 CET 2002 - ma@suse.de
 
-- unk_ugname_cached.diff: Upon building a package, unpacking sources 
+- unk_ugname_cached.diff: Upon building a package, unpacking sources
   by calling tar from the spec file, may lead to files with unknown
-  user/group names. If those files are to be included in the final 
+  user/group names. If those files are to be included in the final
   package, it's not appropriate to simply map unknown user/group names
   to the builders user/group (usg. root). This behaviour has been disabled
-  and building the package will fail. There are ample means to propperly 
-  define file attributes. If a spec file does not use them, although it 
+  and building the package will fail. There are ample means to propperly
+  define file attributes. If a spec file does not use them, although it
   should, it's considered broken.
   Unknown user/group names lead to NULL entries in rpms user/group name cache,
   which may cause a segmentation fault on cache lookup. This has been fixed.
@@ -4128,7 +4183,7 @@ Mon Feb 11 22:16:33 CET 2002 - ma@suse.de
 -------------------------------------------------------------------
 Sat Jan 26 11:37:18 CET 2002 - ro@suse.de
 
-- apply configure-diff also on s390x 
+- apply configure-diff also on s390x
 
 -------------------------------------------------------------------
 Mon Jan 21 22:34:19 CET 2002 - bk@suse.de
@@ -4184,7 +4239,7 @@ Thu Nov 22 18:53:31 MET 2001 - mls@suse.de
 -------------------------------------------------------------------
 Thu Nov 15 17:50:07 CET 2001 - ma@suse.de
 
-- Fixed: copyFile() in rpmchecksig didn't recognize 'No space left on 
+- Fixed: copyFile() in rpmchecksig didn't recognize 'No space left on
   device' condition, when creating tempfiles. rpm reported that the
   signature was not ok instead. (#12294)
 
@@ -4197,7 +4252,7 @@ Thu Nov  8 13:42:24 CET 2001 - adrian@suse.de
 -------------------------------------------------------------------
 Sat Nov  3 00:50:01 CET 2001 - ro@suse.de
 
-- accept automake 1.5 (still needs depcomp added) 
+- accept automake 1.5 (still needs depcomp added)
 
 -------------------------------------------------------------------
 Tue Sep  4 11:53:10 CEST 2001 - schwab@suse.de
@@ -4229,7 +4284,7 @@ Mon Jul  2 13:45:06 CEST 2001 - ma@suse.de
 Wed Jun 20 12:33:32 CEST 2001 - ma@suse.de
 
 - Don't define popt version via macro. Abuild does not like it (#8224).
-- Patches for rpmrc.in (ia64.dif,ppc64.rpmrc.diff) incorporated 
+- Patches for rpmrc.in (ia64.dif,ppc64.rpmrc.diff) incorporated
   into config.diff.
 - Patches for brp scripts (strip_no_lib.dif) and sparc64-linux.{req,prov}
   scripts (sparc64.dif) incorporated into pkg_build.diff.
@@ -4237,7 +4292,7 @@ Wed Jun 20 12:33:32 CEST 2001 - ma@suse.de
 -------------------------------------------------------------------
 Wed Jun 13 15:42:07 UTC 2001 - bk@suse.de
 
-- rpm-3.0.6.config.diff: add s390x support 
+- rpm-3.0.6.config.diff: add s390x support
 
 -------------------------------------------------------------------
 Mon Jun 11 19:23:54 CEST 2001 - olh@suse.de
@@ -4287,12 +4342,12 @@ Fri Apr  6 18:33:29 CEST 2001 - kukuk@suse.de
 -------------------------------------------------------------------
 Thu Mar 29 01:13:14 CEST 2001 - ro@suse.de
 
-- provides/requires script: add "-n200" to xargs arguments 
+- provides/requires script: add "-n200" to xargs arguments
 
 -------------------------------------------------------------------
 Mon Feb 26 00:50:46 CET 2001 - ro@suse.de
 
-- no optimization for alpha for now ... 
+- no optimization for alpha for now ...
 
 -------------------------------------------------------------------
 Wed Feb 14 11:23:56 CET 2001 - ma@suse.de
@@ -4466,7 +4521,7 @@ Thu Mar  2 16:23:41 CET 2000 - schwab@suse.de
 -------------------------------------------------------------------
 Mon Feb 28 18:06:21 CET 2000 - ma@suse.de
 
-- remove 'libNoVersion' in find-requires 
+- remove 'libNoVersion' in find-requires
 
 -------------------------------------------------------------------
 Wed Feb 23 21:28:01 CET 2000 - schwab@suse.de
@@ -4476,7 +4531,7 @@ Wed Feb 23 21:28:01 CET 2000 - schwab@suse.de
 -------------------------------------------------------------------
 Mon Feb  7 17:07:57 CET 2000 - ma@suse.de
 
-- rebuilddb fix 
+- rebuilddb fix
 - set info/mandir macros to /usr/share/...
 
 -------------------------------------------------------------------
@@ -4489,7 +4544,7 @@ Wed Feb  2 18:31:11 CET 2000 - ma@suse.de
 Sat Nov 13 13:08:53 MET 1999 - kukuk@suse.de
 
 - Add sparc64 directory
-- Fix installation into RPM_BUILD_ROOT directory 
+- Fix installation into RPM_BUILD_ROOT directory
 
 -------------------------------------------------------------------
 Mon Nov  8 19:58:14 MET 1999 - kukuk@suse.de
@@ -4499,7 +4554,7 @@ Mon Nov  8 19:58:14 MET 1999 - kukuk@suse.de
 -------------------------------------------------------------------
 Thu Nov  4 16:55:45 CET 1999 - bs@suse.de
 
-- fixed bug in find-requires regarding pseudo scripts 
+- fixed bug in find-requires regarding pseudo scripts
   starting with "#! --"
 
 -------------------------------------------------------------------
@@ -4526,7 +4581,7 @@ Thu Sep  9 12:15:28 CEST 1999 - bs@suse.de
 -------------------------------------------------------------------
 Mon Jul 19 16:00:50 MEST 1999 - ma@suse.de
 
-- again rebuilddb.patch 
+- again rebuilddb.patch
 
 -------------------------------------------------------------------
 Wed Jul 14 14:30:15 MEST 1999 - ro@suse.de
@@ -4570,7 +4625,7 @@ Mon Apr 26 18:00:01 MEST 1999 - ro@suse.de
 -------------------------------------------------------------------
 Mon Apr 12 15:34:40 MEST 1999 - ro@suse.de
 
-- update to 2.93 
+- update to 2.93
 
 -------------------------------------------------------------------
 Fri Mar 19 00:46:37 MET 1999 - ro@suse.de
@@ -4645,8 +4700,8 @@ Thu Nov  5 18:41:54 MET 1998 - ma@suse.de
 - new version 2.5.4
 - fix for rebuilddb
 - fix for %config(noreplace)
-- RPM-Changes html document that describes the important changes 
-  in RPM since what is documented in Maximum RPM. 
+- RPM-Changes html document that describes the important changes
+  in RPM since what is documented in Maximum RPM.
 
 -------------------------------------------------------------------
 Tue Nov  3 17:07:32 MET 1998 - ro@suse.de
@@ -4695,13 +4750,13 @@ Mon Oct 27 15:29:41 MET 1997 - ma@suse.de
 - patch: always 'chdir /' before executing scripts.
 - patch: remove empty dirs when installing a symlink
 - patch: ignore errors when installing a symlink and called from YaST
-- de.po update 
+- de.po update
 
 -------------------------------------------------------------------
 Thu Aug  7 17:46:48 MEST 1997 - ma@suse.de
 
 - duplicate '--nodeps' entry in rpm manpage deleted.
-- quick patch to allow installing rpm v1 packages. 
+- quick patch to allow installing rpm v1 packages.
 - workaround to skip installing a symlink (Jul 15 1997)
   is disabeled, unless environment variable RPM_IgnoreFailedSymlinks
   is set.

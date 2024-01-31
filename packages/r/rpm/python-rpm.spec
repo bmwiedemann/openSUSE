@@ -19,9 +19,8 @@
 
 # Enable Python build sourced from rpm spec
 %global with_python 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rpm
-Version:        4.18.0
+Version:        4.19.1
 Release:        0
 Summary:        Python Bindings for Manipulating RPM Packages
 License:        GPL-2.0-or-later
@@ -29,10 +28,15 @@ Group:          Development/Libraries/Python
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  libacl-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libcap-devel
+BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libselinux-devel
@@ -66,16 +70,20 @@ that will manipulate RPM packages and databases.
 %{expand:%(sed -n -e '/^%%prep/,/^%%install/p' <%{_sourcedir}/rpm.spec | sed -e '1d' -e '$d')}
 
 # The build stage is already declared and pulled in from rpm.spec
+cd ..
+cp _build/python/setup.py python
 pushd python
-%python_build
+%pyproject_wheel
 popd
 
 %install
 pushd python
-%python_install
+%pyproject_install
 popd
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%{python_sitearch}/rpm*
+%{python_sitearch}/rpm
+%{python_sitearch}/rpm-%{version}*-info
 
 %changelog

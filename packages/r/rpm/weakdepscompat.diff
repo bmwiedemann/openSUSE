@@ -1,9 +1,9 @@
---- build/parsePreamble.c.orig	2014-08-04 13:10:07.530953406 +0000
-+++ build/parsePreamble.c	2014-08-04 13:10:12.852929355 +0000
-@@ -343,6 +343,7 @@ static struct tokenBits_s const installS
-     { "verify",		RPMSENSE_SCRIPT_VERIFY },
-     { "pretrans",	RPMSENSE_PRETRANS },
+--- build/parsePreamble.c.orig	2023-10-09 13:08:54.579843386 +0000
++++ build/parsePreamble.c	2023-10-09 13:09:57.843727870 +0000
+@@ -351,6 +351,7 @@ static struct tokenBits_s const installS
      { "posttrans",	RPMSENSE_POSTTRANS },
+     { "preuntrans",	RPMSENSE_PREUNTRANS },
+     { "postuntrans",	RPMSENSE_POSTUNTRANS },
 +    { "hint",		RPMSENSE_MISSINGOK },
      { NULL, 0 }
  };

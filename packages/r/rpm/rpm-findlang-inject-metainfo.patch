@@ -1,14 +1,14 @@
---- scripts/find-lang.sh.orig	2018-01-31 13:37:22.810352621 +0000
-+++ scripts/find-lang.sh	2018-01-31 13:39:38.117990971 +0000
-@@ -32,6 +32,7 @@ Additional options:
+--- scripts/find-lang.sh.orig	2023-10-09 13:11:05.219604799 +0000
++++ scripts/find-lang.sh	2023-10-09 13:12:38.787433946 +0000
+@@ -47,6 +47,7 @@ Additional options:
    --with-man		find localized man pages
    --all-name		match all package/domain names
    --without-mo		do not find locale files
-+  --metainfo            create a metainfo.xml file for AppStream
++  --metainfo		create a metainfo.xml file for AppStream
+   --generate-subpackages move language files in one sub package per language
  EOF
  exit 1
- }
-@@ -62,6 +63,7 @@ ALL_NAME=#
+@@ -79,6 +80,7 @@ ALL_NAME=#
  NO_ALL_NAME=
  ONLY_C=#
  NO_C=#
@@ -16,7 +16,7 @@
  while test $# -gt 0 ; do
      case "${1}" in
  	--with-gnome )
-@@ -113,6 +115,11 @@ while test $# -gt 0 ; do
+@@ -134,6 +136,11 @@ while test $# -gt 0 ; do
  		NO_C=
  		shift
  		;;
@@ -28,7 +28,7 @@
  	* )
  		if [ $MO_NAME != ${NAMES[$#]}.lang ]; then
  		    NAMES[${#NAMES[@]}]=$MO_NAME
-@@ -323,6 +330,24 @@ if ! grep -q / $MO_NAME_NEW; then
+@@ -344,6 +351,24 @@ if ! grep -q / $MO_NAME_NEW; then
  	exit 1
  fi
  

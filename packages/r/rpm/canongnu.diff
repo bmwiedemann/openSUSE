@@ -1,0 +1,11 @@
+--- CMakeLists.txt.orig	2023-10-13 12:38:26.953411554 +0000
++++ CMakeLists.txt	2023-10-13 12:40:11.057239934 +0000
+@@ -144,7 +144,7 @@ function(makemacros)
+ 
+ 	set(RPMCANONVENDOR ${host_vendor})
+ 	set(RPMCANONOS ${host_os})
+-	set(RPMCANONGNU -gnu)
++	set(RPMCANONGNU -gnu CACHE STRING "gnu os suffix")
+ 
+ 	if (ENABLE_CUTF8)
+ 		set(C_LOCALE "C.UTF-8")

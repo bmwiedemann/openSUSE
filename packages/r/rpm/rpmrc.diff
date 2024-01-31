@@ -1,6 +1,6 @@
---- rpmrc.in.orig	2022-04-07 11:13:19.072518377 +0000
-+++ rpmrc.in	2022-12-02 13:14:27.719506789 +0000
-@@ -12,16 +12,16 @@
+--- rpmrc.in.orig	2023-09-19 10:10:10.000000000 +0000
++++ rpmrc.in	2023-10-09 12:44:42.206519465 +0000
+@@ -12,19 +12,19 @@
  # "fat" binary with both archs, for Darwin
  optflags: fat -O2 -g -arch i386 -arch ppc
  
@@ -21,12 +21,18 @@
  optflags: geode -Os -g -m32 -march=geode
 -optflags: ia64 -O2 -g
 -optflags: x86_64 -O2 -g
+-optflags: x86_64_v2 -O2 -g -march=x86-64-v2
+-optflags: x86_64_v3 -O2 -g -march=x86-64-v3
+-optflags: x86_64_v4 -O2 -g -march=x86-64-v4
 +optflags: ia64 -O2 -g -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables
 +optflags: x86_64 -O2 -g -m64 -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables
++optflags: x86_64_v2 -O2 -g -march=x86-64-v2 -m64 -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables
++optflags: x86_64_v3 -O2 -g -march=x86-64-v3 -m64 -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables
++optflags: x86_64_v4 -O2 -g -march=x86-64-v4 -m64 -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables
  optflags: amd64 -O2 -g
  optflags: ia32e -O2 -g
  
-@@ -41,17 +41,18 @@ optflags: sparc64v -O2 -g -m64 -mtune=ni
+@@ -44,17 +44,18 @@ optflags: sparc64v -O2 -g -m64 -mtune=ni
  
  optflags: m68k -O2 -g -fomit-frame-pointer
  
@@ -54,7 +60,7 @@
  optflags: hppa1.0 -O2 -g -mpa-risc-1-0
  optflags: hppa1.1 -O2 -g -mpa-risc-1-0
  optflags: hppa1.2 -O2 -g -mpa-risc-1-0
-@@ -75,10 +76,10 @@ optflags: armv5tl -O2 -g -march=armv5t
+@@ -78,10 +79,10 @@ optflags: armv5tl -O2 -g -march=armv5t
  optflags: armv5tel -O2 -g -march=armv5te
  optflags: armv5tejl -O2 -g -march=armv5te
  optflags: armv6l -O2 -g -march=armv6
@@ -67,7 +73,7 @@
  optflags: armv7hnl -O2 -g -march=armv7-a -mfloat-abi=hard -mfpu=neon
  optflags: armv8l -O2 -g -march=armv8-a
  optflags: armv8hl -O2 -g -march=armv8-a -mfloat-abi=hard -mfpu=vfpv4
-@@ -93,8 +94,8 @@ optflags: atariclone -O2 -g -fomit-frame
+@@ -96,8 +97,8 @@ optflags: atariclone -O2 -g -fomit-frame
  optflags: milan -O2 -g -fomit-frame-pointer
  optflags: hades -O2 -g -fomit-frame-pointer
  
@@ -78,7 +84,7 @@
  
  optflags: sh3 -O2 -g
  optflags: sh4 -O2 -g -mieee
-@@ -300,17 +301,17 @@ os_canon:       MacOSX: macosx	21
+@@ -309,17 +310,17 @@ os_canon:       MacOSX: macosx	21
  #############################################################
  # For a given uname().machine, the default build arch
  
@@ -104,7 +110,7 @@
  buildarchtranslate: i486: i386
  buildarchtranslate: i386: i386
  
-@@ -332,6 +333,7 @@ buildarchtranslate: sparc64v: sparc64
+@@ -341,6 +342,7 @@ buildarchtranslate: sparc64v: sparc64
  buildarchtranslate: osfmach3_ppc: ppc
  buildarchtranslate: powerpc: ppc
  buildarchtranslate: powerppc: ppc
@@ -112,7 +118,7 @@
  buildarchtranslate: ppc8260: ppc
  buildarchtranslate: ppc8560: ppc
  buildarchtranslate: ppc32dy4: ppc
-@@ -397,6 +399,15 @@ buildarchtranslate: riscv64: riscv64
+@@ -409,6 +411,15 @@ buildarchtranslate: riscv64: riscv64
  
  buildarchtranslate: loongarch64: loongarch64
  
@@ -128,7 +134,7 @@
  #############################################################
  # Architecture compatibility
  
-@@ -461,16 +472,20 @@ arch_compat: mips64r6el: mipsr6el
+@@ -473,16 +484,20 @@ arch_compat: mips64r6el: mipsr6el
  arch_compat: hppa2.0: hppa1.2
  arch_compat: hppa1.2: hppa1.1
  arch_compat: hppa1.1: hppa1.0
@@ -151,7 +157,7 @@
  arch_compat: armv4tl: armv4l
  arch_compat: armv4l: armv3l
  arch_compat: armv3l: noarch
-@@ -493,7 +508,7 @@ arch_compat: i370: noarch
+@@ -505,7 +520,7 @@ arch_compat: i370: noarch
  arch_compat: s390: noarch
  arch_compat: s390x: s390 noarch
  
@@ -160,7 +166,7 @@
  
  arch_compat: x86_64: amd64 em64t athlon noarch
  arch_compat: amd64: x86_64 em64t athlon noarch
-@@ -619,7 +634,8 @@ buildarch_compat: armv6hl: noarch
+@@ -634,7 +649,8 @@ buildarch_compat: armv6hl: noarch
  buildarch_compat: hppa2.0: hppa1.2
  buildarch_compat: hppa1.2: hppa1.1
  buildarch_compat: hppa1.1: hppa1.0
