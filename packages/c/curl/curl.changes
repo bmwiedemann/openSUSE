@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Jan 31 09:11:56 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.6.0: [bsc#1219149, CVE-2024-0853]
+  * Security fixes:
+    - CVE-2024-0853: OCSP verification bypass with TLS session reuse
+  * Changes:
+    - add CURLE_TOO_LARGE, CURLINFO_QUEUE_TIME_T
+  * Bugfixes:
+    - altsvc: free 'as' when returning error
+    - asyn-ares: with modern c-ares, use its default timeout
+    - cf-socket: show errno in tcpkeepalive error messages
+    - cmdline-opts: update availability for the *-ca-native options
+    - configure: when enabling QUIC, check that TLS supports QUIC
+    - content_encoding: change return code to typedef'ed enum
+    - curl: show ipfs and ipns as supported "protocols"
+    - CURLINFO_REFERER.3: clarify that it is the *request* header
+    - dist: add tests/errorcodes.pl to the tarball
+    - gen.pl: support ## for doing .IP in table-like lists
+    - GHA: bump ngtcp2, gnutls, mod_h2, quiche
+    - hostip: return error immediately when Curl_ip2addr() fails
+    - http3/quiche: fix result code on a stream reset
+    - http3: initial support for OpenSSL 3.2 QUIC stack
+    - http: check for "Host:" case insensitively
+    - http: fix off-by-one error in request method length check
+    - http: only act on 101 responses when they are HTTP/1.1
+    - lib: add debug log outputs for CURLE_BAD_FUNCTION_ARGUMENT
+    - lib: error out on multissl + http3
+    - lib: fix variable undeclared error caused by `infof` changes
+    - lib: rename Curl_strndup to Curl_memdup0 to avoid misunderstanding
+    - lib: strndup/memdup instead of malloc, memcpy and null-terminate
+    - libssh2: use `libssh2_session_callback_set2()` with v1.11.1
+    - ngtcp2: put h3 at the front of alpn
+    - openldap: fix an LDAP crash
+    - openldap: fix STARTTLS
+    - openssl: re-match LibreSSL deinit with init
+    - rtsp: deal with borked server responses
+    - sasl: make login option string override http auth
+    - tool: prepend output_dir in header callback
+    - tool_getparam: stop supporting `@filename` style for --cookie
+    - transfer: fix upload rate limiting, add test cases
+    - url: don't set default CA paths for Secure Transport backend
+    - url: for disabled protocols, mention if found in redirect
+    - vquic: extract TLS setup into own source
+    - websockets: check for negative payload lengths
+  * Remove patches fixed upstream:
+    - curl-adjust-pollset-fix.patch
+    - curl-tests-errorcodes.patch
+  * Rebase dont-mess-with-rpmoptflags.patch
+
+-------------------------------------------------------------------
 Fri Jan  5 17:54:08 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Added curl-adjust-pollset-fix.patch to fix broken MPD http streaming:
