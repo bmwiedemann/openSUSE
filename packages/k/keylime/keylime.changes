@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Jan 31 07:25:12 UTC 2024 - aplanas@suse.com
+
+- Update to version v7.9.0:
+  * templates: Add version 2.2, with event log location options
+  * Monthly release (7.9.0)
+  * update roadmap for 2024
+  * Extended the length of `verifier_ip` column to String(255)
+  * mba/e/elchecking: add workaround for non spec compliant firmware
+  * mba/e/example: ignore EV_CPU_MICROCODE, EV_EFI_HANDOFF_TABLES2 and MokListRT
+  * mba/e/example: Allow db entries to be also hashes
+  * mba/elchecking: load imports first
+  * codestyle: Have pyright ignore ffi.NULL
+  * codestyle: Use cast() to set type after splitlines()
+  * codestyle: Replace _ with variable name in abstract method (pyright)
+  * codestyle: Address some issues detected by pyright
+  * codestyle: Remove a 'type: ignore' comment (mypy)
+  * detect template changes - docs
+  * detect template changes - mappings
+  * Tests: Switch code coverage measurement to Fedora 39
+  * Correcting paths in userguide documentation
+  * docs: fix conf.py
+  * Add build os and python version to readthedocs
+  * Fix readthedocs config file location
+  * docs: add additional reading section
+
+-------------------------------------------------------------------
+Tue Dec 05 14:55:25 UTC 2023 - aplanas@suse.com
+
+- Update to version v7.8.0:
+  * Monthly release (7.8.0)
+  * address marcio and stefan comments
+  * Add documentation for IAK and IDevID
+  * templates/2.1: Fix enable_iak_idevid in agent template
+  * support for user mode in run-test.sh
+  * docs: fix small typo in threat model
+  * ca_impl_openssl: support CRL distribution point from config
+  * ca_util: add import functions for private keys
+  * Enable test functional/iak-idevid-register-with-certificates
+  * Replace mailing list address with Slack channel
+  * docs: Add configuration documentation
+  * tests: Add tests for exception cases in configuration update
+  * tests: Add test for update mapping corner cases
+  * convert_config: Add support for update mappings
+  * convert_config: Do not require keylime modules
+  * convert_config: Make the config upgrade less verbose
+  * ima: Report an error if no quote forward-progress was made
+  * codestyle: Modify list generator to avoid annotation issue (pyright)
+  * codestyle: Remove unnecessary type check ignore statement (mypy)
+  * codestyle: Add missing type parameter to generic type 'Pattern' (mypy)
+  * Update packit plan with new tests
+  * Fix typo in Secure Payloads docs
+  * incorrect boolean expression causing ECs to be disallowed
+  * codestyle: Create explicit sighandler with type annotation (pyright)
+  * cert_utils: Ignore malformed certificate files
+  * unit test for cert utils
+  * Add certificates and certificate checking for IDevID and IAK keys
+
+-------------------------------------------------------------------
 Fri Nov 03 15:27:58 UTC 2023 - aplanas@suse.com
 
 - Update to version v7.7.0:

@@ -1,5 +1,5 @@
---- config/verifier.conf.ORIG	2023-08-24 09:34:59.222214093 +0200
-+++ config/verifier.conf	2023-08-24 09:37:53.332256150 +0200
+--- config/verifier.conf.ORIG	2024-01-31 09:54:29.240703257 +0100
++++ config/verifier.conf	2024-01-31 09:55:21.884022063 +0100
 @@ -8,7 +8,8 @@
  uuid = default
  
