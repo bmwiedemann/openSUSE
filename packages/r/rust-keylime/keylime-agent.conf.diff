@@ -2,7 +2,7 @@ Index: rust-keylime-0.2.0+git.1677002906.cf6c4f0/keylime-agent.conf
 ===================================================================
 --- rust-keylime-0.2.0+git.1677002906.cf6c4f0.orig/keylime-agent.conf
 +++ rust-keylime-0.2.0+git.1677002906.cf6c4f0/keylime-agent.conf
-@@ -19,13 +19,15 @@ version = "2.0"
+@@ -19,13 +19,15 @@ version = "2.2"
  # of 'SHA256(public EK in PEM format)'.
  #
  # To override, set KEYLIME_AGENT_UUID environment variable.

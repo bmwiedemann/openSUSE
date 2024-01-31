@@ -1,21 +1,27 @@
 <services>
-  <service name="tar_scm" mode="disabled">
-    <param name="versionformat">0.2.3+git.%ct.%h</param>
-    <param name="revision">master</param>
+  <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/keylime/rust-keylime.git</param>
+    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
+    <param name="revision">v0.2.4</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
+    <param name="changesauthor">aplanas@suse.com</param>
   </service>
-  <service name="recompress" mode="disabled">
-    <param name="compression">xz</param>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
+    <param name="compression">zst</param>
   </service>
+  <service mode="disabled" name="set_version"/>
   <!-- <service name="cargo_vendor" mode="disabled"> -->
-  <!--    <param name="srcdir">rust-keylime</param> -->
-  <!--    <param name="compression">xz</param> -->
+  <!--    <param name="src">rust-keylime</param> -->
+  <!--    <param name="compression">zst</param> -->
+  <!--    <param name="update">true</param> -->
   <!-- </service> -->
   <service name="cargo_audit" mode="disabled">
     <param name="srcdir">rust-keylime</param>
-  </service> 
-  <service name="set_version" mode="disabled"/>
+  </service>
 </services>
