@@ -1,7 +1,7 @@
 #
 # spec file for package mirrormagic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mirrormagic
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        Puzzle game where you steer a beam of light using mirrors
 License:        GPL-2.0-only
