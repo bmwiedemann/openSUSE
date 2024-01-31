@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 31 05:03:28 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.75:
+  * CORRUPTION WARNING: Fixed bug introduced in 12.45 which could
+    result in corrupted Sony ARW images from some
+    newer models when writing if lossless compression was used
+  * Added ability to read C2PA JUMBF metadata from PDF and SVG files
+  * Added ability to extract JUMBF metadata as a block
+  * Added read support for C2PA (JUMBF-format) files
+  * Removed "date before 1970" warning entirely since 64-bit systems
+    should be able to handle dates in this range
+  * Improved Canon FocusMode decoding
+  * Fixed bug introducd in 12.74 which could cause "Undefined
+    subroutine" runtime error when reading MIE files
+
+-------------------------------------------------------------------
 Wed Jan 24 06:48:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.74:
