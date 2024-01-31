@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 31 21:22:26 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Drop libx86 support, it's no longer maintained in Factory.
+
+-------------------------------------------------------------------
+Wed Jan 31 14:40:42 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Add wrapper for get-edid (bsc#1219395)
+  * default to not calling VBE BIOS which may crash
+  * print a warning message when i2c-dev driver is not loaded
+
+-------------------------------------------------------------------
 Sun Jun  7 20:51:08 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix build with gcc10.

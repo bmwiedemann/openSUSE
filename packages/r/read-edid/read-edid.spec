@@ -1,7 +1,7 @@
 #
 # spec file for package read-edid
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,15 @@ License:        BSD-3-Clause
 Group:          System/X11/Utilities
 URL:            http://polypux.org/projects/read-edid/
 Source0:        http://polypux.org/projects/read-edid/read-edid-%{version}.tar.gz
+Source1:        read-edid-wrapper
 Patch0:         read-edid-fix-cmakelists.patch
 Patch1:         read-edid-code-cleanup.patch
 Patch2:         read-edid-fix-gcc10-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libx86-devel
+BuildRequires:  sed
+Recommends:     grep
+Recommends:     kmod-compat
 ExclusiveArch:  %{ix86} x86_64
 
 %description
@@ -47,11 +50,15 @@ since 1996. 256-byte EDIDs are not supported, though.
 %autopatch -p1
 
 %build
-%cmake
+%cmake -DCLASSICBUILD=OFF
 make %{?_smp_mflags}
 
 %install
 %cmake_install
+mkdir -p %{buildroot}%{_libexecdir}
+mv %{buildroot}%{_bindir}/get-edid %{buildroot}%{_libexecdir}
+install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/get-edid
+sed -i -e "s|@LIBEXECDIR@|%{_libexecdir}|" %{buildroot}%{_bindir}/get-edid
 rm -f %{buildroot}%{_docdir}/read-edid/LICENSE
 
 %files
@@ -59,6 +66,7 @@ rm -f %{buildroot}%{_docdir}/read-edid/LICENSE
 %doc AUTHORS ChangeLog README
 %{_bindir}/get-edid
 %{_bindir}/parse-edid
+%{_libexecdir}/get-edid
 %{_mandir}/man1/get-edid.1%{?ext_man}
 
 %changelog
