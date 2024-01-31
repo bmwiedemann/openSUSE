@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygls
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,15 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pygls
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        A pythonic generic language server
 License:        Apache-2.0
 URL:            https://github.com/openlawlibrary/pygls
 Source:         https://github.com/openlawlibrary/pygls/archive/refs/tags/v%{version}.tar.gz#/pygls-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
