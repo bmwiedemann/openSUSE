@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 23 10:35:07 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix regression parsing IPv6 addresses provided as hostname
+  * Added libssh-fix-ipv6-hostname-regression.patch
+
+-------------------------------------------------------------------
+Tue Dec 19 12:28:53 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.10.6
+  https://www.libssh.org/2023/12/18/libssh-0-10-6-and-libssh-0-9-8-security-releases/
+- Fix CVE-2023-6004: ProxyCommand/ProxyJump features allow injection of malicious code through hostname (bsc#1218209)
+- Fix CVE-2023-48795: prefix truncation breaking ssh channel integrity (bsc#1218126)
+- Fix CVE-2023-6918: Added Missing checks for return values for digests (bsc#1218186)
+
+-------------------------------------------------------------------
 Mon Sep 25 09:09:25 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Enable crypto-policies support: [bsc#1211301]
