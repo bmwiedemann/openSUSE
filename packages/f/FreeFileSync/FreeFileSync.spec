@@ -1,7 +1,7 @@
 #
 # spec file for package FreeFileSync
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           FreeFileSync
-Version:        13.2
+Version:        13.3
 Release:        0
 Summary:        Backup software to synchronize files and folders
 License:        GPL-3.0-or-later
