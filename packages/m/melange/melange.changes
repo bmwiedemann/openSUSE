@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Jan 23 18:00:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.6:
+  * sort with key/values
+  * Fail if unknown variable is used in substitution
+  * revert simple-hello, keep it alpine
+  * fix simple-hello again
+  * fix simple-hello
+  * fix wolfi e2e test
+  * also test wolfi built packages
+  * update examples
+  * migrate examples to wolfi
+  * add e2e test that packages can be installed with apk
+  * Audit the permissions of workflows.
+  * Add test for vendored pkgconfig
+  * Make "unable to detect git commit" a debug message
+  * Allow vendored pkgconfig deps
+  * make docs-repo
+  * update
+  * use apko@main
+  * drop pkg/logger and use slog
+  * Allow execable shared objects if name has ".so."
+  * Fix sbom loopvar issue
+  * Make BuildGuest more similar for Build and Test
+  * Use errgroup over github.com/korovkin/limiter
+  * Replace packages in APKINDEX with same version
+  * Remove some more struct mutating and shadowing
+  * Drop mutable imgRef from build.Build
+  * Move more mutations into parameters
+  * Take an fs as an argument to RetrieveWorkspace
+  * Add a test
+  * Convert some sca code to early return style
+  * build(deps): bump github.com/cloudflare/circl from 1.3.6 to
+    1.3.7
+  * move test pipelines to where others are. Remove unnecessary
+    test packages.
+  * Add python/import test pipeline, as well as e2e tests for
+    python test pipelines.
+  * how many ways can I really screw this one up...
+  * Try James suggestion.
+  * Fix the filenames.
+  * try with explicit false.
+  * maybe missing a space?
+  * Add --test-package-append that you can specify extra test
+    packages for each test.
+  * move the comment
+  * meson/configure: don't download subprojects by default
+  * Add a python/test pipeline.
+  * Bypass warning about detached head
+  * add `*_config` pattern to split/dev pipeline
+
+-------------------------------------------------------------------
 Sun Jan 07 18:08:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.5:
