@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Jan 31 19:21:04 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.29.4:
+  * Telegraf v1.29.4
+  * Update changelog for v1.29.4
+  * Update build_version.txt for v1.29.4
+  * chore(deps): Bump all AWS deps (#14651)
+  * chore(inputs.temp): Convert warning on missing sensors to debug message (#14656)
+  * fix(processors.parser): Drop original tracking metrics (#14655)
+  * fix(inputs.temp): Fix regression in metric formats (#14649)
+  * chore: Disable firewall during nightly package tests (#14652)
+  * chore(linters): Speed up golangci-lint runs for non-Linux OSes (#14639)
+  *  fix(inputs.snmp_trap): Handle octet strings (#14619)
+  * chore(deps): Bump github.com/yuin/goldmark from 1.5.6 to 1.6.0 (#14640)
+  * chore(deps): Bump github.com/gosnmp/gosnmp from 1.36.1 to 1.37.0 (#14641)
+  * chore(deps): Bump github.com/compose-spec/compose-go from 1.20.0 to 1.20.2 (#14642)
+  * chore(deps): Bump github.com/microsoft/go-mssqldb from 1.5.0 to 1.6.0 (#14643)
+  * chore(deps): Bump github.com/nats-io/nats-server/v2 from 2.10.6 to 2.10.9 (#14644)
+
+-------------------------------------------------------------------
+Tue Jan 30 00:38:28 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.29.3:
+  * Telegraf v1.29.3
+  * Update changelog for v1.29.3
+  * Update build_version.txt for v1.29.3
+  * docs: Resolve table column count lint issues (#14637)
+  * chore: Disable IPv6 on incus nightly (#14638)
+  * docs: Add notes about TOML (#14624)
+  * fix(common.encoding): Remove locally-defined errors and use upstream ones (#14627)
+  * fix(inputs.gnmi): Refactor alias handling (#14553)
+  * chore: Drop windows lint gogc value to 1 (#14626)
+  * docs(inputs.snmp): Clarify the deprecation of agent tag setting (#14622)
+  * docs(config): Add comment about single vs double quotes (#14621)
+  * docs(inputs.mysql): Add section on how to convert string to numeric (#14620)
+  * chore: Make directory before saving key (#14623)
+  * chore(internal): Handle ranges in type-conversion and add missing types (#14618)
+  * chore(deps): Bump github.com/testcontainers/testcontainers-go from 0.26.0 to 0.27.0 (#14608)
+  * chore(deps): Bump github.com/docker/docker from 24.0.7+incompatible to 25.0.0+incompatible (#14607)
+  * chore: Update incus nightly image (#14615)
+  * fix(outputs.iotdb): Handle paths that contain illegal characters (#14519)
+  * chore(internal.snmp): Rephrase error message on translating OID (#14612)
+  * chore(deps): Bump github.com/nats-io/nats.go from 1.31.0 to 1.32.0 (#14611)
+  * chore(deps): Bump modernc.org/sqlite from 1.24.0 to 1.28.0 (#14610)
+  * chore(deps): Bump github.com/fatih/color from 1.15.0 to 1.16.0 (#14609)
+  * fix(outputs.loki): Do not close body before reading it (#14604)
+  * chore: Use 20.04 over 22.04 due to networking issues (#14605)
+  * chore(inputs.opcua): Add option to collect client debug logging (#14595)
+  * chore: Update incus group/signing path (#14600)
+  * docs(inputs.redis): Add more examples for TLS (#14599)
+  * fix(outputs.mqtt): Preserve leading slash in topic (#14582)
+  * fix(inputs.temp): Recover pre-v1.22.4 temperature sensor readings (#14575)
+  * chore: Correct Windows signing artifact dir (#14594)
+  * chore: Update incus group and mark script executable (#14593)
+  * chore: Drop gogc further for Windows lint to 10 (#14592)
+  * chore: Update github.com/gorilla/websocket license (#14591)
+  * chore(circleci): Update gogc values to reduce memory pressure (#14589)
+  * chore: Switch from lxd to incus (#14495)
+  * chore: Attach workspace in current directoy, avoid non-existing dir (#14587)
+  * chore(deps): Bump github.com/gorilla/mux from 1.8.0 to 1.8.1 (#14546)
+  * fix(inputs.win_perf_counters): Ignore PdhCstatusNoInstance as well (#14570)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/sts from 1.26.5 to 1.26.7 (#14576)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs from 1.29.5 to 1.31.0 (#14578)
+  * chore(deps): Bump github.com/clarify/clarify-go from 0.2.4 to 0.3.1 (#14577)
+  * chore(deps): Bump go.opentelemetry.io/collector/pdata from 1.0.0-rcv0016 to 1.0.1 (#14574)
+  * chore(deps): bump github.com/github.com/vapourismo/knx-go from v0.0.0-20220829185957-fb5458a5389d to 20240107135439-816b70397a00 (#14573)
+  * chore(deps): Bump github.com/intel/powertelemetry from 1.0.0 to 1.0.1 (#14562)
+  * chore: Update Windows signing process (#14565)
+  * chore: Update to go1.21.6 (#14559)
+  * chore(deps): Bump github.com/docker/go-connections from 0.4.0 to 0.5.0 (#14545)
+  * chore(deps): Bump github.com/prometheus/common from 0.44.0 to 0.45.0 (#14544)
+  * chore(deps): Bump k8s.io/client-go from 0.28.3 to 0.29.0 (#14543)
+  * chore(deps): Bump go.starlark.net from go.starlark.net v0.0.0-20220328144851-d1966c6b9fcd to v0.0.0-20231121155337-90ade8b19d09 (#14541)
+  * fix(inputs.win_perf_counters): Check errors post-collection for skip (#14526)
+  * test(inputs.http_listener_v2): Skip test on Windows due to hang (#14572)
+  * docs(outputs.opensearch): Correct sample config format (#14538)
+  * chore(inputs.cisco_telemetry_mdt): Actually fix lint issue (#14554)
+  * chore(inputs.cisco_telemetry_mdt): Resolve linter with error check (#14552)
+  * test(inputs.influxdb_v2_listener): Skip on Windows after hang (#14551)
+
+-------------------------------------------------------------------
 Tue Jan  9 13:31:07 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - refresh harden_telegraf.service.patch to apply cleanly again 
