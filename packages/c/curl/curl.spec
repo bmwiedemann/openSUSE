@@ -21,7 +21,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        8.5.0
+Version:        8.6.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -35,10 +35,6 @@ Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
 #PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch3:         curl-disabled-redirect-protocol-message.patch
-#PATCH-FIX-UPSTREAM dist: add tests/errorcodes.pl to the tarball
-Patch4:         curl-tests-errorcodes.patch
-# fix MPD http streaming: https://github.com/curl/curl/issues/12632
-Patch5:         curl-adjust-pollset-fix.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Requires:       libcurl4 = %{version}
@@ -174,6 +170,7 @@ popd
 %{_bindir}/curl
 %{_datadir}/zsh/site-functions/_curl
 %{_mandir}/man1/curl.1%{?ext_man}
+%{_mandir}/man1/mk-ca-bundle.1%{?ext_man}
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %dir %{_datadir}/fish/

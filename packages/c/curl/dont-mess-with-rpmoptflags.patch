@@ -1,11 +1,11 @@
-Index: curl-7.82.0/configure.ac
+Index: curl-8.6.0/configure.ac
 ===================================================================
---- curl-7.82.0.orig/configure.ac
-+++ curl-7.82.0/configure.ac
-@@ -395,10 +395,6 @@ dnl platform/compiler/architecture speci
- dnl **********************************************************************
+--- curl-8.6.0.orig/configure.ac
++++ curl-8.6.0/configure.ac
+@@ -506,10 +506,6 @@ dnl ************************************
  
  CURL_CHECK_COMPILER
+ CURL_CHECK_NATIVE_WINDOWS
 -CURL_SET_COMPILER_BASIC_OPTS
 -CURL_SET_COMPILER_DEBUG_OPTS
 -CURL_SET_COMPILER_OPTIMIZE_OPTS
