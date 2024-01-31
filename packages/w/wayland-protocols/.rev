@@ -304,4 +304,27 @@
     <comment></comment>
     <requestid>1119213</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>bb4d8bf774a0e878106945876719d68f</srcmd5>
+    <version>1.33</version>
+    <time>1706741612</time>
+    <user>anag+factory</user>
+    <comment>- Update wayland-protocols.keyring: Use gpg key by Daniel Stone to
+  verify sources.
+
+- Update to version 1.33:
+  * xdg-shell: Clarify what a toplevel by default includes
+  * linux-dmabuf: sync changes from unstable to stable
+  * linux-dmabuf: require all planes to use the same modifier
+  * presentation-time: stop referring to Linux/glibc
+  * security-context-v1: Make sandbox engine names use reverse-DNS
+  * xdg-decoration: remove ambiguous wording in configure event
+  * xdg-decoration: fix configure event summary
+  * linux-dmabuf: mark as stable
+  * linux-dmabuf: add note about implicit sync
+  * security-context-v1: Document what can be done with the open
+    sockets
+  * security-context-v1: Document out of band metadata for flatpak</comment>
+    <requestid>1142927</requestid>
+  </revision>
 </revisionlist>
