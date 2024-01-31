@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 30 22:53:43 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1706655215.abf9d42:
+  * Enable shfmt in CI
+  * git subrepo pull (merge) external/os-autoinst-common
+  * Add shfmt to devel requires for preparation
+  * Add editorconfig and update files according to shfmt
+  * git subrepo pull (merge) external/os-autoinst-common
+  * Update .yamllint
+
+-------------------------------------------------------------------
 Tue Jan 23 22:21:38 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1706048489.09eb749:
