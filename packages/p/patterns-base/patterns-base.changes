@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 31 08:23:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- patterns-base-fips: Require openssl-fips-provider when libopenssl
+  is installed (meta package and libopenssl3) (boo#1219384).
+
+-------------------------------------------------------------------
 Wed Dec  6 17:14:31 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Remove scout: the cnf handler has been rewritten in rust and no
