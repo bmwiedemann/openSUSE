@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygit2
-Version:        1.13.3
+Version:        1.14.0
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
@@ -28,8 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module cffi >= 1.4.0}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
@@ -51,10 +53,10 @@ rm pytest.ini
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -rf %{buildroot}%{$python_sitearch}/pygit2/decl/
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -66,8 +68,8 @@ rm -rf pygit2
 
 %files %{python_files}
 %license COPYING
-%doc README.rst
+%doc README.md
 %{python_sitearch}/pygit2
-%{python_sitearch}/pygit2-%{version}*-info
+%{python_sitearch}/pygit2-%{version}.dist-info
 
 %changelog

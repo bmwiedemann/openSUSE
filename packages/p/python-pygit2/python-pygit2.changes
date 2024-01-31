@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jan 30 18:11:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.0:
+  * Drop support for Python 3.8
+  * New `Repository.submodules` namespace
+  * New `Repository.listall_mergeheads()`,
+    `Repository.message`,
+    `Repository.raw_message` and `Repository.remove_message()`
+  * New `pygit2.enums` supersedes the `GIT_` constants
+  * Now `Repository.status()`, `Repository.status_file()`,
+    `Repository.merge_analysis()`, `DiffFile.flags`,
+    `DiffFile.mode`,
+    `DiffDelta.flags` and `DiffDelta.status` return enums
+  * Now repository\'s `merge()`, `merge_commits()` and
+    `merge_trees()`  take enums/flags for their `favor`,
+    `flags` and `file_flags` arguments.
+  * Fix crash in filter cleanup
+  * Documentation fixes
+  * Remove deprecated `Repository.create_remote(...)` function,
+    use instead `Repository.remotes.create(...)`
+  * Deprecate `Repository.add_submodule(...)`, use
+    `Repository.submodules.add(...)`
+  * Deprecate `Repository.lookup_submodule(...)`, use
+    `Repository.submodules[...]`
+  * Deprecate `Repository.init_submodules(...)`, use
+    `Repository.submodules.init(...)`
+  * Deprecate `Repository.update_submodule(...)`, use
+    `Repository.submodules.update(...)`
+  * Deprecate `GIT_*` constants, use `pygit2.enums`
+  * Passign dicts to repository\'s `merge(...)`,
+    `merge_commits(...)` and `merge_trees(...)` is deprecated.
+    Instead pass `MergeFavor` for the `favor` argument, `MergeFlag`
+    for `flags`, and `MergeFileFlag` for `file_flags`.
+
+-------------------------------------------------------------------
 Sat Jan  6 20:59:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.3:
