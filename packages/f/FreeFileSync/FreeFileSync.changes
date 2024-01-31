@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 31 07:08:15 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 13.3:
+  * Completed CASA security assessment for Google Drive
+  * Use system temp folder for auto-updating
+  * Ignore errors when setting directory attributes is unsupported
+  * Save GUI sync log file even when cancelled
+  * Fixed Business Edition install over existing installation
+
+-------------------------------------------------------------------
 Tue Nov 28 07:00:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 13.2:

@@ -239,4 +239,18 @@ It would be nice to have this application available in the default repos. </comm
 </comment>
     <requestid>1129308</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6de935c81250b1a1edb881a8c9d8570f</srcmd5>
+    <version>13.3</version>
+    <time>1706741697</time>
+    <user>anag+factory</user>
+    <comment>- Update to 13.3:
+  * Completed CASA security assessment for Google Drive
+  * Use system temp folder for auto-updating
+  * Ignore errors when setting directory attributes is unsupported
+  * Save GUI sync log file even when cancelled
+  * Fixed Business Edition install over existing installation
+</comment>
+    <requestid>1142943</requestid>
+  </revision>
 </revisionlist>
