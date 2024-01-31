@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 31 12:14:47 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.72.1:
+  * Assorted fixes for potential issues with proper C library usage.
+  * Updated rpm and deb packages that guard against updates to newer
+    versions with different compilation options.
+- update courier-authlib.keyring with new signing key
+
+-------------------------------------------------------------------
 Sun Dec  4 19:34:09 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 0.72.0:
