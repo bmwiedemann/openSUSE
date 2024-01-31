@@ -1,0 +1,11 @@
+diff -U 3 -H -d -r -N -- /home/docb/buildservice/home:DocB:Orthanc/orthanc-neuro/OrthancNeuro-1.0/a/Sources/Framework/DicomInstancesCollection.cpp /home/docb/buildservice/home:DocB:Orthanc/orthanc-neuro/OrthancNeuro-1.0/b/Sources/Framework/DicomInstancesCollection.cpp
+--- /a/Sources/Framework/DicomInstancesCollection.cpp	2022-04-26 12:00:47.000000000 +0200
++++ /b/Sources/Framework/DicomInstancesCollection.cpp	2024-01-30 09:31:02.291308801 +0100
+@@ -21,6 +21,7 @@
+ 
+ #include "NeuroToolbox.h"
+ 
++#include <cassert>
+ #include <OrthancException.h>
+ #include <SerializationToolbox.h>
+ 
