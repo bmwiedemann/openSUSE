@@ -78,4 +78,24 @@
   * feat: respect user's language extension option #848</comment>
     <requestid>1138447</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>02d54ae6b06afec05dbb45197bf6ae4f</srcmd5>
+    <version>0.18.0+0</version>
+    <time>1706741746</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.0:
+  * Breaking change: refactor: remove IndentSensitive trait #868
+  * feat: add support for rewriters #855
+  * Breaking change: refactor: rename RuleWithConstraints to RuleCore #862
+  * feat: move fix to SerializableRuleCore #859
+  * Breaking change: refactor: remove MetaVarMatchers beb6f50
+  * Breaking change: feat: move fixer to RuleCore 8a43a26
+  * Breaking change: refactor: move language out of SerializableRuleCore c5e0dc8
+  * Breaking change: refactor: remove Content generic from Fixer 87bbf93
+  * Breaking change: feat: improve get_fixer signature e629e0f
+  * Breaking change: refactor: make TemplateFix non-generic 0f462a5
+  * feat: migrate constraints to Rule 230ee9c
+  * refactor: move SerializableRuleCore to rule_core mod 3a303c1</comment>
+    <requestid>1143067</requestid>
+  </revision>
 </revisionlist>
