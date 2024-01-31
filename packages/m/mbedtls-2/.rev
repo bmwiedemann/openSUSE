@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>1125092</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fe75a6af7ab8fe1a5afc656a40c27b4f</srcmd5>
+    <version>2.28.7</version>
+    <time>1706741689</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.28.7:
+  - Resolves CVE-2024-23170 boo#1219336</comment>
+    <requestid>1142922</requestid>
+  </revision>
 </revisionlist>
