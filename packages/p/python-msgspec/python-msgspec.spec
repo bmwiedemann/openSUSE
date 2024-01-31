@@ -1,7 +1,7 @@
 #
 # spec file for package python-msgspec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-msgspec
-Version:        0.18.5
+Version:        0.18.6
 Release:        0
 Summary:        A fast serialization and validation library
 License:        BSD-3-Clause
