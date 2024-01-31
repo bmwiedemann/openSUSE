@@ -34,4 +34,13 @@
   * Fixing bytecode handling in 3.12</comment>
     <requestid>1140733</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0843f727796c7ccf4b51918c93f53c71</srcmd5>
+    <version>7.7.0</version>
+    <time>1706741659</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.7.0:
+  * Fixing https://github.com/mkorpela/overrides/issues/121</comment>
+    <requestid>1142842</requestid>
+  </revision>
 </revisionlist>
