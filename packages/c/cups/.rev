@@ -1289,4 +1289,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Security fixes CVE-2023-4504 bsc#1215204 and CVE-2023-32360 bsc#1214254 for CUPS (forwarded request 1112569 from jsmeix)</comment>
     <requestid>1112570</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>65e5e4bf53881781693f6e668e8fb66d</srcmd5>
+    <version>2.4.7</version>
+    <time>1706741614</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1142944</requestid>
+  </revision>
 </revisionlist>
