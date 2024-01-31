@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 31 09:50:00 AEST 2024 - John Zaitseff <J.Zaitseff@zap.org.au>
+
+- New upstream release of Star Traders: version 7.20
+  * Changed documentation (history of the game)
+  * Updated Swedish, Norwegian Bokmål, French, German, Serbian,
+    Esperanto, Romanian, Polish and Ukrainian translations.
+- Include "BuildRequires: gperf" for parts of gnulib.
+
+-------------------------------------------------------------------
 Fri Jan 12 15:24:04 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - New upstream release of Star Traders: version 7.19

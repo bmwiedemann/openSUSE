@@ -2,7 +2,7 @@
 # spec file for package trader
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2012-22 John Zaitseff <J.Zaitseff@zap.org.au>
+# Copyright (c) 2012-24 John Zaitseff <J.Zaitseff@zap.org.au>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,20 @@
 # ***********************************************************************
 # *                                                                     *
 # *            Star Traders: A Game of Interstellar Trading             *
-# *               Copyright (C) 1990-2022, John Zaitseff                *
+# *               Copyright (C) 1990-2024, John Zaitseff                *
 # *                                                                     *
 # ***********************************************************************
+
 # Author: John Zaitseff <J.Zaitseff@zap.org.au>
-# $Id: 99f93cf1589a39d7579741fa302eb9e9818a2e5b $
+# $Id: 5ea51da60ce864d2de82d656ebbb3ce70601059a $
+
 # This file is distributed under the same licence as Star Traders itself:
 # the GNU General Public License, version 3 or later.
-%define upstream_version   7.19
-%define normalised_version 7.19
+
+%define upstream_version   7.20
+%define normalised_version 7.20
 %define rpm_release_num    1
+
 Name:           trader
 Version:        %{normalised_version}
 Release:        %{rpm_release_num}%{?dist}
@@ -37,15 +41,19 @@ Summary:        Star Traders, a simple game of interstellar trading
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://www.zap.org.au/projects/trader/
+
 Source0:        https://ftp.zap.org.au/pub/trader/unix/trader-%{upstream_version}.tar.xz
 Source1:        https://ftp.zap.org.au/pub/trader/unix/trader-%{upstream_version}.tar.xz.sig
 # Source2 downloaded from https://www.zap.org.au/~john/pubkey.asc
 Source2:        trader.keyring
+
 BuildRequires:  gcc
 BuildRequires:  gettext
+BuildRequires:  gperf
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(ncurses)
+
 Requires(post): hicolor-icon-theme
 Requires(postun):hicolor-icon-theme
 Recommends:     %{name}-lang = %{version}
