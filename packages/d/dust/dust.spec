@@ -24,6 +24,7 @@ License:        Apache-2.0
 URL:            https://github.com/bootandy/dust
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
+Patch0:         fix-test-string.patch
 BuildRequires:  cargo-packaging
 
 %description
@@ -60,6 +61,7 @@ ZSH completion script for %{name}.
 
 %prep
 %setup -qa1
+%patch0 -p1
 
 %build
 %{cargo_build}
@@ -71,7 +73,7 @@ install -Dm0644 completions/dust.bash %{buildroot}/%{_datadir}/bash-completion/c
 install -Dm0644 completions/dust.fish %{buildroot}/%{_datadir}/fish/completions/%{name}.fish
 
 %check
-%{cargo_test} -- --skip test_apparent_size
+%{cargo_test}
 
 %files
 %{_bindir}/%{name}
