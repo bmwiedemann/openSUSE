@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nest-asyncio
-Version:        1.5.9
+Version:        1.6.0
 Release:        0
 Summary:        Patch asyncio to allow nested event loops
 License:        BSD-2-Clause
