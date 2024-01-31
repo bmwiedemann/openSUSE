@@ -949,4 +949,12 @@ confusing &quot;failed to try-restart&quot; error message. [bsc#1093179, bsc#101
     <comment></comment>
     <requestid>1115519</requestid>
   </revision>
+  <revision rev="89" vrev="14">
+    <srcmd5>e355ffcf1f88b8ebdd19d8be461b792a</srcmd5>
+    <version>3.0.5</version>
+    <time>1706741608</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142871</requestid>
+  </revision>
 </revisionlist>
