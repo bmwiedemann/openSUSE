@@ -49,7 +49,7 @@ Patch100:       0001-Tell-the-truth-about-private-API.patch
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch101:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
 %if 0%{?suse_version} == 1500
-Patch102:       0001-Require-GCC-12.patch
+Patch102:       0001-Use-newer-GCC-on-Leap.patch
 %endif
 Patch103:       0001-Don-t-strip-binaries-when-building-with-qmake.patch
 ##
@@ -57,8 +57,8 @@ BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
 # The default GCC version in Leap 15 is too old
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc12-PIE
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -239,8 +239,8 @@ Requires:       libQt6Core6 = %{version}
 Requires:       qt6-base-common-devel = %{version}
 %if 0%{?suse_version} == 1500
 # Some public classes require C++ 17 features
-Requires:       gcc12-PIE
-Requires:       gcc12-c++
+Requires:       gcc13-PIE
+Requires:       gcc13-c++
 %endif
 
 %description -n qt6-core-devel
