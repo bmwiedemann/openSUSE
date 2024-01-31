@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 31 18:57:32 UTC 2024 - Matthias Bach <marix@marix.org> - 2.10.1
+
+- Update to 2.10.1
+  * Fix slow import when debugging in Python 3.12
+
+-------------------------------------------------------------------
 Thu Jan 18 21:28:57 UTC 2024 - Matthias Bach <marix@marix.org> - 2.10.0
 
 - Update to 2.10.0
