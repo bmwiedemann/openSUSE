@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Jan 26 15:38:11 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- update to 1.15.0
+  * New Operators (ai.onnx):
+    + ImageDecoder a new ImageDecoder operator to be used in preprocessing
+      models
+    + RegexFullMatch a new operator for regex matching that is commonly used in
+      feature preprocessing
+    + StringConcat takes two string tensors as input and returns the elementwise
+      concatenation of the strings in each tensor
+    + StringSplit takes a string tensor as input and splits each element based
+      on a delimiter attribute and a maxsplit attribute
+    + AffineGrid Generates a 2D or 3D flow field (sampling grid), given a batch
+      of affine matrices theta
+    + Gelu applies gaussian error linear unit function or its approximation to
+      input
+  * Operator Updates (ai.onnx):
+    + ConstantOfShape extends supported data types
+    + GridSample extends to ND data
+    + ReduceMax adds support for boolean
+    + ReduceMin adds support for boolean
+    + IsNan adds support of float8 types
+    + IsInf adds support of float8 types
+    + DFT promote axis as input
+  * New functionality:
+    + Enable empty list of values as attribute 
+    + Update diff bakend node tests for auto update doc 
+    + Enable pylint checks with Ruff and remove pylint from lintrunner 
+    + Getting onnx to treat inf/-inf as float literals. 
+    + Create the onnxtxt serialization format 
+    + Support JSON as a serialization target 
+    + Support for parsing and printing empty list value as attribute 
+    + Add auto update doc pipeline to help developers update docs 
+    + Implement GELU as function op 
+    + Integrate function-inlining with version-conversion 
+    + Extend function type inference to handle missing optional parameters 
+    + Create repr functions for OpSchema 
+    + Utility to inline model-local functions 
+    + Faster reference implementation for operator Conv based on im2col 
+    + Support textproto as a serialization format 
+  * ONNX now supports serializing to JSON, Text Proto as well as the ONNX Text
+    Representation
+  * Users are now able to serialize the model proto to a text format by
+    specifying supported file extensions or supplying the format= argument in
+    save_model.
+  * Bug fixes
+    + Do not use LFS64 on non-glibc linu 
+    + Reject absolute path when saving external data 
+    + Support Python editable builds 
+    + Supports float 8 initializers in ReferenceEvaluator 
+    + Transpose scalar shape inference 
+    + Enable RUFF as a formatter 
+    + Fix type constraints of Reshape(19) 
+
+
+-------------------------------------------------------------------
 Wed Oct 11 09:34:17 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.14.1

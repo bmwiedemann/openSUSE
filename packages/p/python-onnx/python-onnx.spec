@@ -1,7 +1,7 @@
 #
 # spec file for package python-onnx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,17 @@
 %{?sle15_python_module_pythons}
 # Tumbleweed does not have a python36-numpy anymore: NEP 29 dropped Python 3.6 for NumPy 1.20
 Name:           python-onnx
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        Open Neural Network eXchange
 License:        MIT
 URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module fb-re2}
+BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module protobuf}
@@ -98,7 +101,7 @@ sed -i "s|^#!\s*%{_bindir}/env python|#!%{_bindir}/python3|" tools/protoc-gen-my
 # build inside python_expand shuffled build dir also used by the cmake macro instead of upstream's custom dirname
 sed -i "/^CMAKE_BUILD_DIR = / s/TOP_DIR, '.setuptools-cmake-build'/TOP_DIR, 'build'/" setup.py
 # do not require extra pytest modules
-sed -i -e '/addopts/d' setup.cfg
+#sed -i -e '/addopts/d' setup.cfg
 # do not pull in pytest-runner as it is deprecated
 sed -i -e '/pytest-runner/d' setup.py
 
