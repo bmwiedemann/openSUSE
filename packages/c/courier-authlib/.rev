@@ -431,4 +431,16 @@ reviewed ok
     <comment></comment>
     <requestid>1040087</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>849b8cda539767966509bda0715c5264</srcmd5>
+    <version>0.72.1</version>
+    <time>1706741714</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.72.1:
+  * Assorted fixes for potential issues with proper C library usage.
+  * Updated rpm and deb packages that guard against updates to newer
+    versions with different compilation options.
+- update courier-authlib.keyring with new signing key</comment>
+    <requestid>1143022</requestid>
+  </revision>
 </revisionlist>
