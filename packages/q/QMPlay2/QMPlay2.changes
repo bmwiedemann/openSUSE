@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 31 17:05:29 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Add 0001-fix-taglib2-build.patch to fix build with taglib >= 2.0
+
+-------------------------------------------------------------------
 Sun Oct 22 11:35:39 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 23.10.22

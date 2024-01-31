@@ -1,7 +1,7 @@
 #
 # spec file for package QMPlay2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE 0001-add-opensuse-customizations.patch -- Fix python executable detection and add branding
 Patch1:         0001-add-opensuse-customizations.patch
+# PATCH-FIX-UPSTREAM 0001-fix-taglib2-build.patch -- Fix build with taglib 2.0+
+Patch2:         0001-fix-taglib2-build.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  llvm-gold
