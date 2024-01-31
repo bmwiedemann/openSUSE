@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 31 17:15:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to the latest GCC version available in Leap for packages
+  that can't build with the default compiler
+
+-------------------------------------------------------------------
 Tue Oct  3 12:18:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Use GCC 12 for building francis on Leap
