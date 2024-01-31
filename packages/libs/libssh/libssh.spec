@@ -30,7 +30,7 @@
 %bcond_with test
 %endif
 Name:           libssh%{pkg_suffix}
-Version:        0.10.5
+Version:        0.10.6
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later
@@ -43,6 +43,7 @@ Source3:        libssh_client.config
 Source4:        libssh_server.config
 Source99:       baselibs.conf
 Patch0:         0001-disable-timeout-test-on-slow-buildsystems.patch
+Patch1:         https://gitlab.com/libssh/libssh-mirror/-/merge_requests/431.patch#/libssh-fix-ipv6-hostname-regression.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel

@@ -761,4 +761,19 @@ ProxyCommand parsing in ssh configuration files:
     <comment></comment>
     <requestid>1113990</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>e8972d7c99349ff1de8f2d7ab5c4a740</srcmd5>
+    <version>0.10.6</version>
+    <time>1706741597</time>
+    <user>anag+factory</user>
+    <comment>- Fix regression parsing IPv6 addresses provided as hostname
+  * Added libssh-fix-ipv6-hostname-regression.patch
+- Update to version 0.10.6
+  https://www.libssh.org/2023/12/18/libssh-0-10-6-and-libssh-0-9-8-security-releases/
+- Fix CVE-2023-6004: ProxyCommand/ProxyJump features allow injection of malicious code through hostname (bsc#1218209)
+- Fix CVE-2023-48795: prefix truncation breaking ssh channel integrity (bsc#1218126)
+- Fix CVE-2023-6918: Added Missing checks for return values for digests (bsc#1218186)
+</comment>
+    <requestid>1134726</requestid>
+  </revision>
 </revisionlist>
