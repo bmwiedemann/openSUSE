@@ -2449,4 +2449,41 @@ See bugzilla 1167537 for the gory details.</comment>
   from containers</comment>
     <requestid>1103306</requestid>
   </revision>
+  <revision rev="310" vrev="1">
+    <srcmd5>05c26124be131b9fcdd987dbc84f8513</srcmd5>
+    <version>4.19.1</version>
+    <time>1706741595</time>
+    <user>anag+factory</user>
+    <comment>- Modernize python-rpm.spec to stop using deprecated macros
+  (%python_build and %python_install).
+
+- update to rpm-4.19.1
+
+- fix Source url to match what is listed on https://rpm.org/download.html
+
+- disable sysusers handling for now
+
+- update to rpm-4.19.1
+  * new spec snippet support for dynamic spec generation
+  * new sysusers.d integration for automated user and group handling
+  * new CMake build system
+  * removal of various deprecated and/or unused APIs
+  * various internal code cleanups
+- refreshed patches:
+  * brp-compress-no-img.patch
+  * brp.diff
+  * brpcompress.diff
+  * build.diff
+  * enable-postin-scripts-error.diff
+  * fileattrs.diff
+  * findlang.diff
+  * findsupplements.diff
+  * langnoc.diff
+  * macrosin.diff
+  * platformin.diff
+  * posttrans.diff
+  * refreshtestarch.diff
+  * rpm-findlang-inject-metainfo.patch</comment>
+    <requestid>1132932</requestid>
+  </revision>
 </revisionlist>

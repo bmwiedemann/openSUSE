@@ -19,11 +19,12 @@
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %{?!_fillupdir:%define _fillupdir /var/adm/fillup-templates}
 
-%global librpmsover 9
+%global librpmsover 10
 
 Name:           rpm
 BuildRequires:  binutils
 BuildRequires:  bzip2
+BuildRequires:  cmake
 BuildRequires:  file-devel
 BuildRequires:  findutils
 BuildRequires:  gcc
@@ -56,16 +57,17 @@ Requires:       rpm-config-SUSE
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        4.18.0
+Version:        4.19.1
 Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
-Source:         http://ftp.rpm.org/releases/rpm-4.17.x/rpm-%{version}.tar.bz2
+Source:         https://ftp.osuosl.org/pub/rpm/releases/rpm-4.19.x/rpm-%{version}.tar.bz2
 Source5:        rpmsort
 Source8:        rpmconfigcheck
 Source9:        sysconfig.services-rpm
 Source12:       baselibs.conf
 Source13:       rpmconfigcheck.service
+Source14:       build-aux.tar.bz2
 # quilt patches start here
 Patch5:         usr-lib-sysimage-rpm.patch
 Patch13:        ignore-auxv.diff
@@ -108,12 +110,9 @@ Patch131:       posttrans.diff
 Patch133:       zstdpool.diff
 Patch134:       zstdthreaded.diff
 Patch135:       selinux_transactional_update.patch
-Patch136:       x86_64-microarchitectures.patch
-Patch137:       cpuid_lzcnt.patch
-Patch138:       libmagic-exceptions.patch
-Patch139:       remove-awk-dependency.patch
-# touches a generated file
-Patch180:       whatrequires-doc.diff
+Patch136:       rpmsort_reverse.diff
+Patch137:       python_setup.diff
+Patch138:       canongnu.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -209,6 +208,9 @@ Provides and requires generator for .pl files and modules.
 
 %prep
 %setup -q -n rpm-%{version}
+%ifarch aarch64 ppc64le riscv64
+tar xf %{SOURCE14}
+%endif
 
 rm -rf sqlite
 %patch -P  5      -P 12 -P 13                         -P 18
@@ -223,8 +225,7 @@ rm -rf sqlite
 %patch -P 100        -P 102 -P 103
 %patch                                                  -P 117
 %patch -P 122 -P 123
-%patch -P 131          -P 133 -P 134 -P 135 -P 136 -P 137 -P 138 -P 139
-%patch -P 180
+%patch -P 131          -P 133 -P 134 -P 135 -P 136 -P 137 -P 138
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
@@ -240,51 +241,50 @@ export LDFLAGS="-Wl,-Bsymbolic-functions -ffunction-sections"
 export CFLAGS="-g -O0 -fno-strict-aliasing -ffunction-sections"
 %endif
 
+mkdir _build
+cd _build
+cmake .. \
 %ifarch %arm
-BUILDTARGET="--build=%{_target_cpu}-suse-linux-gnueabi"
-%elifarch x86_64 %x86_64
-BUILDTARGET="--build=x86_64-suse-linux"
-%else
-BUILDTARGET="--build=%{_target_cpu}-suse-linux"
+  -DRPMCANONGNU=-gnueabi \
 %endif
-export __FIND_DEBUGINFO=/usr/lib/rpm/find-debuginfo
-
-autoreconf -fi
-./configure --disable-dependency-tracking --prefix=%{_prefix} --mandir=%{_mandir} --infodir=%{_infodir} \
---libdir=%{_libdir} --sysconfdir=/etc --localstatedir=/var --sharedstatedir=/var/lib \
---with-lua \
---with-vendor=suse \
---with-rundir=/run \
---without-archive \
---with-selinux \
---with-crypto=libgcrypt \
---with-acl \
---with-cap \
---enable-shared \
---enable-ndb \
---enable-bdb-ro \
---enable-zstd \
---enable-sqlite=no \
-%{?with_python: --enable-python} \
-$BUILDTARGET
-
-rm po/de.gmo
+  -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
+  -DCMAKE_INSTALL_MANDIR:PATH=share/man \
+  -DCMAKE_INSTALL_INFODIR:PATH=share/info \
+  -DCMAKE_INSTALL_DOCDIR:PATH=%{_defaultdocdir}/%{NAME} \
+  -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
+  -DCMAKE_INSTALL_FULL_SYSCONFDIR:PATH=/etc \
+  -DCMAKE_INSTALL_FULL_LOCALSTATEDIR:PATH=/var \
+  -DCMAKE_INSTALL_SHAREDSTATEDIR:PATH=/var/lib \
+  -DCMAKE_INSTALL_FULL_SHAREDSTATEDIR:PATH=/var/lib \
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DRPM_VENDOR=suse \
+  -DWITH_ARCHIVE=OFF \
+  -DWITH_SELINUX=ON \
+  -DWITH_INTERNAL_OPENPGP=ON \
+  -DENABLE_NDB=ON \
+  -DENABLE_BDB_RO=ON \
+  -DENABLE_SQLITE=OFF \
+  -DWITH_AUDIT=OFF \
+  -DWITH_DBUS=OFF \
+  -DENABLE_PYTHON=%{?with_python:ON}%{?!with_python:OFF} \
+  -DENABLE_TESTSUITE=OFF \
+  -D__FIND_DEBUGINFO=/usr/lib/rpm/find-debuginfo \
+  -D__AR:FILEPATH=ar -D__AS:FILEPATH=as \
+  -D__CC:FILEPATH=gcc -D__CPP:FILEPATH="gcc -E" -D__CXX:FILEPATH=g++ \
+  -D__GPG:FILEPATH=/usr/bin/gpg2 -D__AWK:FILEPATH=/usr/bin/gawk
 make %{?_smp_mflags}
 
 %install
 mkdir -p %{buildroot}/usr/lib
 mkdir -p %{buildroot}/usr/share/locale
 ln -s ../share/locale %{buildroot}/usr/lib/locale
+pushd _build
 %make_install
+popd
 mkdir -p %{buildroot}/bin
 %if 0%{?suse_version} < 1550
 ln -s /usr/bin/rpm %{buildroot}/bin/rpm
 %endif
-# remove .la file and the static variant of libpopt
-# have to remove the dependency from other .la files as well
-for f in %{buildroot}/%{_libdir}/*.la; do
-    sed -i -e "s,/%_lib/libpopt.la,-lpopt,g" $f
-done
 mkdir -p %{buildroot}/usr/sbin
 install -m 755 %{SOURCE8} %{buildroot}/usr/sbin
 mkdir -p %{buildroot}/usr/lib/systemd/system
@@ -302,7 +302,6 @@ for d in %{buildroot}/usr/lib/rpm/platform/*-linux/macros ; do
   chmod 755 %{buildroot}/usr/src/packages/RPMS/$dd
 done
 mkdir -p %{buildroot}/usr/lib/sysimage/rpm
-gzip -9 %{buildroot}/%{_mandir}/man[18]/*.[18]
 export RPM_BUILD_ROOT
 %ifarch s390x
 [ -f scripts/brp-%_arch-linux ] && sh scripts/brp-%_arch-linux
@@ -338,8 +337,6 @@ install -m 755 build-aux/config.guess %{buildroot}/usr/lib/rpm
 install -m 755 build-aux/config.sub %{buildroot}/usr/lib/rpm
 %endif
 rm -rf %{buildroot}/%{_libdir}/python%{py_ver}
-rm -f %{buildroot}%{_libdir}/*.la
-rm -f %{buildroot}%{_libdir}/rpm-plugins/*.la
 bash %{buildroot}/usr/lib/rpm/find-lang.sh %{buildroot} rpm
 # On arm the kernel architecture is ignored. Not the best idea, but lets stay compatible with other distros
 %ifarch armv7hl armv6hl
@@ -348,9 +345,10 @@ bash %{buildroot}/usr/lib/rpm/find-lang.sh %{buildroot} rpm
 echo -n "%{_target_cpu}-suse-linux-gnueabi" > %{buildroot}/etc/rpm/platform
 %endif
 
-# make ndb the default database backend
-echo "setting the default database backend to 'ndb'"
-sed -i -e '/_db_backend/s/sqlite/ndb/' %{buildroot}/usr/lib/rpm/macros
+# disable sysuser handling for now
+rm %{buildroot}/usr/lib/rpm/sysusers.sh
+rm %{buildroot}/usr/lib/rpm/fileattrs/sysusers.attr
+sed -e '/^%%__systemd_sysusers/s/^/#/' -i %{buildroot}/usr/lib/rpm/macros
 
 %post
 %{fillup_only -an services}
@@ -391,7 +389,8 @@ fi
 %files -f rpm.lang
 %defattr(-,root,root)
 %license 	COPYING
-%doc 	docs/manual
+%doc	%{_datadir}/doc/packages/rpm
+%exclude %{_datadir}/doc/packages/rpm/API
 	/etc/rpm
 %if 0%{?suse_version} < 1550
 	/bin/rpm
@@ -407,6 +406,7 @@ fi
 	%{_bindir}/rpmquery
 	%{_bindir}/rpmsign
 	%{_bindir}/rpmverify
+	%{_bindir}/rpmsort
 	/usr/sbin/rpmconfigcheck
 	/usr/lib/systemd/system/rpmconfigcheck.service
 	%dir /usr/lib/rpm
@@ -419,7 +419,6 @@ fi
 	/usr/lib/rpm/rpmrc
 	/usr/lib/rpm/rpmsort
 	/usr/lib/rpm/rpmuncompress
-	/usr/lib/rpm/rpm_macros_provides.sh
 	/usr/lib/rpm/suse
 	/usr/lib/rpm/tgpg
 	%{_libdir}/rpm-plugins
@@ -448,6 +447,7 @@ fi
 /usr/bin/rpmbuild
 /usr/lib/rpm/pkgconfigdeps.sh
 /usr/lib/rpm/ocamldeps.sh
+/usr/lib/rpm/rpm_macros_provides.sh
 /usr/lib/rpm/elfdeps
 /usr/lib/rpm/rpmdeps
 /usr/bin/rpmspec
@@ -479,5 +479,7 @@ fi
 %{_libdir}/librpmio.so
 %{_libdir}/librpmsign.so
 %{_libdir}/pkgconfig/rpm.pc
+%{_libdir}/cmake/rpm
+%doc	%{_datadir}/doc/packages/rpm/API
 
 %changelog

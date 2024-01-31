@@ -1,6 +1,6 @@
---- installplatform
-+++ installplatform
-@@ -118,6 +118,11 @@
+--- installplatform.orig	2023-09-19 10:10:10.000000000 +0000
++++ installplatform	2023-10-09 12:56:44.709209329 +0000
+@@ -210,6 +210,11 @@ for ARCH in noarch `grep ^arch_canon $RP
    PPD="${DESTDIR}/${platformdir}/${ARCH}-${OS}"
    [ -d $PPD ] || mkdir -p $PPD
  
@@ -10,5 +10,5 @@
 +  fi
 +
    cat $PLATFORM \
-   | sed -e "s,@RPMRC_OPTFLAGS@,$RPMRC_OPTFLAGS," \
- 	-e "s,@RPMCANONARCH@,$CANONARCH,g" \
+   | sed -e "s,=RPMRC_OPTFLAGS=,$RPMRC_OPTFLAGS," \
+ 	-e "s,=RPMCANONARCH=,$CANONARCH,g" \

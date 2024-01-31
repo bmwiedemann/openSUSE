@@ -1,29 +1,15 @@
---- Makefile.am.orig	2022-08-30 11:42:23.754853580 +0000
-+++ Makefile.am	2022-12-02 13:15:01.631426573 +0000
-@@ -186,6 +186,10 @@ rpmgraph_LDADD =	lib/librpm.la rpmio/lib
- 
- dist_bin_SCRIPTS =	scripts/gendiff
- 
-+bin_PROGRAMS +=		rpmqpack
-+rpmqpack_SOURCES =      rpmqpack.c
-+rpmqpack_LDADD =        lib/librpm.la
-+
- rpmconfig_DATA = rpmrc
- rpmrc: $(top_srcdir)/rpmrc.in
- 	@$(SED) \
---- docs/man/Makefile.am.orig	2022-04-07 11:13:18.958517604 +0000
-+++ docs/man/Makefile.am	2022-12-02 13:16:00.071289072 +0000
-@@ -9,7 +9,7 @@ EXTRA_DIST += gendiff.1.md
- 
- man_man8dir = $(mandir)/man8
- man_man8_DATA = rpm.8 rpm-misc.8 rpmbuild.8 rpmdeps.8 rpmgraph.8 rpm2cpio.8
--man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8 rpmlua.8
-+man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8 rpmlua.8 rpmqpack.8
- 
- EXTRA_DIST += rpm.8.md rpm-misc.8.md rpmbuild.8.md rpmdeps.8.md rpmgraph.8.md
- EXTRA_DIST += rpm2cpio.8.md rpmdb.8.md rpmkeys.8.md rpmsign.8.md rpmspec.8.md
---- docs/man/rpmqpack.8.orig	2022-12-02 13:15:01.635426563 +0000
-+++ docs/man/rpmqpack.8	2022-12-02 13:15:01.635426563 +0000
+--- docs/man/CMakeLists.txt.orig	2023-12-12 10:57:31.000000000 +0000
++++ docs/man/CMakeLists.txt	2023-12-13 13:23:17.166128333 +0000
+@@ -2,6 +2,7 @@ set(core
+ 	gendiff.1 rpm2cpio.8
+ 	rpm.8 rpmbuild.8 rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8
+ 	rpmdeps.8 rpmgraph.8 rpmlua.8 rpm-misc.8 rpmsort.8
++	rpmqpack.8
+ )
+ set(extra
+ 	rpm2archive.8 rpm-plugins.8 rpm-plugin-prioreset.8 rpm-plugin-syslog.8
+--- docs/man/rpmqpack.8.orig	2023-12-13 13:23:17.166128333 +0000
++++ docs/man/rpmqpack.8	2023-12-13 13:23:17.166128333 +0000
 @@ -0,0 +1,25 @@
 +.TH RPMQPACK 8 "Mar 2002"
 +.SH NAME
@@ -50,8 +36,27 @@
 +
 +.SH AUTHOR
 +Michael Schroeder <mls@suse.de>
---- rpmqpack.c.orig	2022-12-02 13:15:01.635426563 +0000
-+++ rpmqpack.c	2022-12-02 13:15:01.635426563 +0000
+--- tools/CMakeLists.txt.orig	2023-12-13 13:24:27.374021318 +0000
++++ tools/CMakeLists.txt	2023-12-13 13:25:03.557966164 +0000
+@@ -7,6 +7,7 @@ add_executable(rpm2cpio rpm2cpio.c cliut
+ add_executable(rpmsign rpmsign.c cliutils)
+ add_executable(rpmbuild rpmbuild.c cliutils)
+ add_executable(rpmspec rpmspec.c cliutils)
++add_executable(rpmqpack rpmqpack.c)
+ 
+ add_executable(rpmdeps rpmdeps.c)
+ add_executable(rpmgraph rpmgraph.c)
+@@ -50,7 +51,7 @@ foreach(cmd rpmverify rpmquery)
+ endforeach()
+ install(TARGETS
+ 	rpm rpmdb rpmkeys rpm2cpio rpmsign rpmbuild rpmspec
+-	rpmlua rpmgraph rpmsort
++	rpmlua rpmgraph rpmsort rpmqpack
+ )
+ install(TARGETS elfdeps rpmdeps rpmuncompress DESTINATION ${RPM_CONFIGDIR})
+ 
+--- tools/rpmqpack.c.orig	2023-12-13 13:23:17.166128333 +0000
++++ tools/rpmqpack.c	2023-12-13 13:23:17.166128333 +0000
 @@ -0,0 +1,60 @@
 +#include <sys/types.h>
 +#include <limits.h>

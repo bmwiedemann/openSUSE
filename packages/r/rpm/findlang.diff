@@ -1,5 +1,5 @@
---- scripts/find-lang.sh.orig	2021-06-21 12:00:44.650612737 +0000
-+++ scripts/find-lang.sh	2021-09-23 19:12:01.428275661 +0000
+--- scripts/find-lang.sh.orig	2023-09-19 10:10:10.000000000 +0000
++++ scripts/find-lang.sh	2023-10-09 12:32:44.303726903 +0000
 @@ -37,11 +37,11 @@ the top of the tree containing the files
  PACKAGE_NAME is the %{name} of the package. This should also be
  the basename of the .mo files.  the output is written to
@@ -15,7 +15,7 @@
    --with-qt		find Qt translation files
    --with-html		find HTML files
    --with-man		find localized man pages
-@@ -65,9 +65,9 @@ else NAMES[0]=$1
+@@ -66,9 +66,9 @@ else NAMES[0]=$1
  fi
  shift
  
@@ -27,7 +27,7 @@
  QT=#
  MAN=#
  HTML=#
-@@ -89,6 +89,14 @@ while test $# -gt 0 ; do
+@@ -91,6 +91,14 @@ while test $# -gt 0 ; do
  		KDE=
  		shift
  		;;
@@ -42,7 +42,7 @@
  	--with-qt )
  		QT=
  		shift
-@@ -118,11 +126,13 @@ while test $# -gt 0 ; do
+@@ -124,11 +132,13 @@ while test $# -gt 0 ; do
  		shift
  		;;
      esac
@@ -59,7 +59,7 @@
  
  for NAME in ${NAMES[@]}; do
  
-@@ -132,7 +142,7 @@ s:'"$TOP_DIR"'::
+@@ -138,7 +148,7 @@ s:'"$TOP_DIR"'::
  '"$NO_ALL_NAME$MO"'s:\(.*/locale/\)\([^/_]\+\)\(.*/'"$NAME"'\.mo$\):%lang(\2) \1\2\3:
  s:^\([^%].*\)::
  s:%lang(C) ::
@@ -68,7 +68,7 @@
  
  find "$TOP_DIR" -type d|sed '
  s:'"$TOP_DIR"'::
-@@ -140,27 +150,27 @@ s:'"$TOP_DIR"'::
+@@ -146,27 +156,27 @@ s:'"$TOP_DIR"'::
  '"$ALL_NAME$GNOME"'s:\(.*/share/help/\)\([^/_]\+\)\([^/]*\)\(/[a-zA-Z0-9.\_\-]\+\)$:%lang(\2) %doc \1\2\3\4/:
  s:^\([^%].*\)::
  s:%lang(C) ::
@@ -103,7 +103,7 @@
  
  find "$TOP_DIR" -type f|sed '
  s:'"$TOP_DIR"'::
-@@ -168,7 +178,7 @@ s:'"$TOP_DIR"'::
+@@ -174,7 +184,7 @@ s:'"$TOP_DIR"'::
  '"$ALL_NAME$GNOME"'s:\(.*/omf/[a-zA-Z0-9.\_\-]\+/[a-zA-Z0-9.\_\-]\+-\([^/.]\+\)\.omf\):%lang(\2) \1:
  s:^[^%].*::
  s:%lang(C) ::
@@ -112,7 +112,7 @@
  
  find $TOP_DIR -type d|sed '
  s:'"$TOP_DIR"'::
-@@ -181,14 +191,14 @@ s:'"$TOP_DIR"'::
+@@ -187,14 +197,14 @@ s:'"$TOP_DIR"'::
  s:%lang(.*) .*/mate/help/[a-zA-Z0-9.\_\-]\+/[a-zA-Z0-9.\_\-]\+/.*::
  s:^\([^%].*\)::
  s:%lang(C) ::
@@ -129,7 +129,7 @@
  
  find "$TOP_DIR" -type f|sed '
  s:'"$TOP_DIR"'::
-@@ -196,7 +206,7 @@ s:'"$TOP_DIR"'::
+@@ -202,7 +212,7 @@ s:'"$TOP_DIR"'::
  '"$ALL_NAME$MATE"'s:\(.*/omf/[a-zA-Z0-9.\_\-]\+/[a-zA-Z0-9.\_\-]\+-\([^/.]\+\)\.omf\):%lang(\2) \1:
  s:^[^%].*::
  s:%lang(C) ::
@@ -138,7 +138,7 @@
  
  KDE3_HTML=`kde-config --expandvars --install html 2>/dev/null`
  if [ x"$KDE3_HTML" != x ] && [ -d "$TOP_DIR$KDE3_HTML" ]; then
-@@ -208,7 +218,7 @@ s:'"$TOP_DIR"'::
+@@ -214,7 +224,7 @@ s:'"$TOP_DIR"'::
  '"$ALL_NAME$KDE"'s:\(.*/HTML/\)\([^/_]\+\)\(.*/[a-zA-Z0-9.\_\-]\+$\):%lang(\2) \1\2\3:
  s:^\([^%].*\)::
  s:%lang(C) ::
@@ -147,7 +147,7 @@
  fi
  
  KDE4_HTML=`kde4-config --expandvars --install html 2>/dev/null`
-@@ -221,7 +231,7 @@ s:'"$TOP_DIR"'::
+@@ -227,7 +237,7 @@ s:'"$TOP_DIR"'::
  '"$ALL_NAME$KDE"'s:\(.*/HTML/\)\([^/_]\+\)\(.*/[a-zA-Z0-9.\_\-]\+$\):%lang(\2) \1\2\3:
  s:^\([^%].*\)::
  s:%lang(C) ::
@@ -156,7 +156,7 @@
  fi
  
  KF5_HTML=`kf5-config --expandvars --install html 2>/dev/null`
-@@ -234,7 +244,7 @@ s:'"$TOP_DIR"'::
+@@ -240,7 +250,7 @@ s:'"$TOP_DIR"'::
  '"$ALL_NAME$KDE"'s:\(.*/HTML/\)\([^/_]\+\)\(.*/[a-zA-Z0-9.\_\-]\+$\):%lang(\2) \1\2\3:
  s:^\([^%].*\)::
  s:%lang(C) ::
@@ -165,7 +165,7 @@
  fi
  
  find "$TOP_DIR" -type d|sed '
-@@ -245,7 +255,7 @@ s:'"$TOP_DIR"'::
+@@ -251,7 +261,7 @@ s:'"$TOP_DIR"'::
  '"$ALL_NAME$HTML"'s:\(.*/doc/HTML/\)\([^/_]\+\)\(.*/[a-zA-Z0-9.\_\-]\+$\):%lang(\2) \1\2\3:
  s:^\([^%].*\)::
  s:%lang(C) ::
@@ -174,7 +174,7 @@
  
  find "$TOP_DIR" -type f -o -type l|sed '
  s:'"$TOP_DIR"'::
-@@ -258,7 +268,7 @@ s:'"$TOP_DIR"'::
+@@ -264,7 +274,7 @@ s:'"$TOP_DIR"'::
  '"$ALL_NAME$QT"'s:^\([^%].*/[^/]\+_\([a-zA-Z]\+\)\.qm$\):%lang(\2) \1:
  s:^[^%].*::
  s:%lang(C) ::
@@ -183,7 +183,7 @@
  
  find "$TOP_DIR" -type d|sed '
  s:'"$TOP_DIR"'::
-@@ -266,19 +276,24 @@ s:'"$TOP_DIR"'::
+@@ -272,22 +282,25 @@ s:'"$TOP_DIR"'::
  '"$ALL_NAME$MAN"'s:\(.*/man/\([^/_]\+\).*/man[a-z0-9]\+$\):%lang(\2) \1*:
  s:^\([^%].*\)::
  s:%lang(C) ::
@@ -207,8 +207,9 @@
 +	rm -f $MO_NAME_NEW
  	exit 1
  fi
-+
+ 
 +sort -u $MO_NAME_NEW >> $MO_NAME
 +rm -f $MO_NAME_NEW
-+
- exit 0
+ 
+ if [[ "$SUBPKGS" == "NO" ]]; then
+     exit 0

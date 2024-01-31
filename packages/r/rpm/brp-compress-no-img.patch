@@ -7,5 +7,5 @@
 +    case $(file "$f") in *"image data"*) continue;; esac
 +
      case "$f" in
-      *.gz|*.Z)    gunzip  -f "$f"; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(gz\|Z\)$//'`;;
-      *.bz2)       bunzip2 -f "$f"; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.bz2$//'`;;
+      *.gz|*.Z)    gunzip  -f "$f" || check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(gz\|Z\)$//'`;;
+      *.bz2)       bunzip2 -f "$f" || check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.bz2$//'`;;

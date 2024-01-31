@@ -1,16 +1,10 @@
-Also test architecture in "refresh" test when not colored. This allows
-updates to different architectures.
-
---- lib/psm.c.orig	2019-10-02 09:54:56.180565818 +0000
-+++ lib/psm.c	2019-10-02 09:55:02.700552941 +0000
-@@ -518,9 +518,9 @@ static void markReplacedInstance(rpmts t
-     rpmdbSetIteratorRE(mi, RPMTAG_EPOCH, RPMMIRE_STRCMP, rpmteE(te));
-     rpmdbSetIteratorRE(mi, RPMTAG_VERSION, RPMMIRE_STRCMP, rpmteV(te));
-     rpmdbSetIteratorRE(mi, RPMTAG_RELEASE, RPMMIRE_STRCMP, rpmteR(te));
+--- lib/psm.c.orig	2023-09-19 10:10:10.000000000 +0000
++++ lib/psm.c	2023-10-09 12:21:38.576812293 +0000
+@@ -709,6 +709,7 @@ void rpmpsmNotify(rpmpsm psm, int what,
+ static void markReplacedInstance(rpmts ts, rpmte te)
+ {
+     rpmdbMatchIterator mi = rpmtsTeIterator(ts, te, 1);
 +    rpmdbSetIteratorRE(mi, RPMTAG_ARCH, RPMMIRE_STRCMP, rpmteA(te));
-     /* XXX shouldn't we also do this on colorless transactions? */
-     if (rpmtsColor(ts)) {
--	rpmdbSetIteratorRE(mi, RPMTAG_ARCH, RPMMIRE_STRCMP, rpmteA(te));
- 	rpmdbSetIteratorRE(mi, RPMTAG_OS, RPMMIRE_STRCMP, rpmteO(te));
-     }
- 
+     while (rpmdbNextIterator(mi) != NULL) {
+ 	rpmteSetDBInstance(te, rpmdbGetIteratorOffset(mi));
+ 	break;

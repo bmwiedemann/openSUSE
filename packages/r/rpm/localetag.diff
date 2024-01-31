@@ -139,7 +139,7 @@ decoding works, otherwise iso-8859-1.
  /**
 + * Retrieve text and convert to locale.
 + */
-+static int localeTag(Header h, rpmTag tag, rpmtd td)
++static int localeTag(Header h, rpmTag tag, rpmtd td, headerGetFlags hgflags)
 +{
 +    int rc;
 +    rc = headerGet(h, tag, td, HEADERGET_ALLOC);
@@ -172,14 +172,14 @@ decoding works, otherwise iso-8859-1.
      return i18nTag(h, RPMTAG_DESCRIPTION, td, hgflags);
  }
  
-+static int changelognameTag(Header h, rpmtd td)
++static int changelognameTag(Header h, rpmtd td, headerGetFlags hgflags)
 +{
-+    return localeTag(h, RPMTAG_CHANGELOGNAME, td);
++    return localeTag(h, RPMTAG_CHANGELOGNAME, td, hgflags);
 +}
 +
-+static int changelogtextTag(Header h, rpmtd td)
++static int changelogtextTag(Header h, rpmtd td, headerGetFlags hgflags)
 +{
-+    return localeTag(h, RPMTAG_CHANGELOGTEXT, td);
++    return localeTag(h, RPMTAG_CHANGELOGTEXT, td, hgflags);
 +}
 +
  /**

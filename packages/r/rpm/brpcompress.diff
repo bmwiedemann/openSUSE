@@ -49,10 +49,10 @@
 -     *.bz2)       bunzip2 -f "$f"; b=`echo "$f" | sed -e 's/\.bz2$//'`;;
 -     *.xz|*.lzma) unxz    -f "$f"; b=`echo "$f" | sed -e 's/\.\(xz\|lzma\)$//'`;;
 -     *.zst|*.zstd) unzstd -f --rm $f; b=`echo "$f" | sed -e 's/\.\(zst\|zstd\)$//'`;;
-+     *.gz|*.Z)    gunzip  -f "$f"; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(gz\|Z\)$//'`;;
-+     *.bz2)       bunzip2 -f "$f"; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.bz2$//'`;;
-+     *.xz|*.lzma) unxz    -f "$f"; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(xz\|lzma\)$//'`;;
-+     *.zst|*.zstd) unzstd -f --rm $f; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(zst\|zstd\)$//'`;;
++     *.gz|*.Z)    gunzip  -f "$f" || check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(gz\|Z\)$//'`;;
++     *.bz2)       bunzip2 -f "$f" || check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.bz2$//'`;;
++     *.xz|*.lzma) unxz    -f "$f" || check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(xz\|lzma\)$//'`;;
++     *.zst|*.zstd) unzstd -f --rm $f || check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(zst\|zstd\)$//'`;;
       *) b="$f";;
      esac
  

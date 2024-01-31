@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 30 14:13:37 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Modernize python-rpm.spec to stop using deprecated macros
+  (%python_build and %python_install).
+
+-------------------------------------------------------------------
+Wed Oct 11 17:07:14 CEST 2023 - mls@suse.de
+
+- update to rpm-4.19.1
+
+-------------------------------------------------------------------
 Tue May 30 09:07:28 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - add _multibuild for multiple .spec-files

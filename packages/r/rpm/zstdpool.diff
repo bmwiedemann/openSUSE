@@ -1,14 +1,14 @@
---- rpmio/rpmio.c.orig	2021-06-21 12:00:44.648612706 +0000
-+++ rpmio/rpmio.c	2022-04-13 13:48:55.224954032 +0000
+--- rpmio/rpmio.c.orig	2023-09-19 10:10:10.000000000 +0000
++++ rpmio/rpmio.c	2023-10-10 12:09:28.171040124 +0000
 @@ -8,6 +8,7 @@
  #include <ctype.h>
  #include <dirent.h>
  #include <fcntl.h>
 +#include <pthread.h>
- #if defined(__linux__)
- #include <sys/personality.h>
- #endif
-@@ -1034,6 +1035,7 @@ static const FDIO_t lzdio = &lzdio_s;
+ #include <sys/resource.h>
+ 
+ #include <rpm/rpmlog.h>
+@@ -997,6 +998,7 @@ static const FDIO_t lzdio = &lzdio_s;
  /* Support for ZSTD library.  */
  #ifdef HAVE_ZSTD
  
@@ -16,7 +16,7 @@
  #include <zstd.h>
  
  typedef struct rpmzstd_s {
-@@ -1048,6 +1050,29 @@ typedef struct rpmzstd_s {
+@@ -1011,6 +1013,29 @@ typedef struct rpmzstd_s {
      ZSTD_outBuffer zob;         /*!< ZSTD_outBuffer */
  } * rpmzstd;
  
@@ -29,8 +29,8 @@
 +static void zstdCreateThreadPool(void)
 +{
 +    int numthreads = rpmExpandNumeric("%{?_zstd_pool_threads}%{?!_zstd_pool_threads:-1}");
-+    if (numthreads >= 0)
-+        numthreads = get_compression_threads(numthreads > 0 ? numthreads : -1);
++    if (numthreads == 0)
++	numthreads = rpmExpandNumeric("%{getncpus:thread}");
 +    if (numthreads > 0) {
 +        zstdThreadPoolThreads = numthreads;
 +        zstdThreadPool = ZSTD_createThreadPool(numthreads);
@@ -46,9 +46,9 @@
  static rpmzstd rpmzstdNew(int fdno, const char *fmode)
  {
      int flags = 0;
-@@ -1133,8 +1158,18 @@ static rpmzstd rpmzstdNew(int fdno, cons
+@@ -1116,8 +1141,18 @@ static rpmzstd rpmzstdNew(int fdno, cons
+ 	}
  
- 	threads = get_compression_threads(threads);
  	if (threads > 0) {
 -	    if (ZSTD_isError (ZSTD_CCtx_setParameter(_stream, ZSTD_c_nbWorkers, threads)))
 +	    if (ZSTD_isError (ZSTD_CCtx_setParameter(_stream, ZSTD_c_nbWorkers, threads))) {
