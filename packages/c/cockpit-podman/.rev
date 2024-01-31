@@ -161,4 +161,13 @@
   * Performance and stability improvements</comment>
     <requestid>1135662</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5fb6827b052f64fdcdbe48b2ebd8b898</srcmd5>
+    <version>83</version>
+    <time>1706741629</time>
+    <user>anag+factory</user>
+    <comment>- New version 83:
+  * bug fixes and library updates</comment>
+    <requestid>1143005</requestid>
+  </revision>
 </revisionlist>
