@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 18 21:15:49 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip tests failing on python312
+  * changed repr of OrderedDict gh#pywbem/pywbem#3097
+  * unexpected DeprecationWarnings
+
+-------------------------------------------------------------------
 Wed Oct 25 09:55:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.6.2

@@ -19,6 +19,7 @@
 # cythonized pywbem produces yacc parser errors
 %bcond_with cythonize
 Name:           python-pywbem
+### FIXME: try to remove skipped unit test workaround for python 3.12 on next version update
 Version:        1.6.2
 Release:        0
 Summary:        Python module for making CIM operation calls using the WBEM protocol
@@ -87,12 +88,14 @@ rm %{buildroot}%{_bindir}/*.bat
 %python_clone -a %{buildroot}%{_bindir}/mof_compiler
 
 %check
-pytestargs="-W default -W ignore::PendingDeprecationWarning -W ignore::ResourceWarning"
-pytestargs="$pytestargs tests/unittest tests/functiontest"
+# https://github.com/pywbem/pywbem/issues/3097
+python312_donttest=" or (test_invokemethod_summary and instance_wp_tuple0)"
+# Deprecation warning from utcnow()
+python312_donttest="$python312_donttest or (test_subscriptionmanager and (kwargs29 or kwargs38))"
 %if %{with cythonize}
-%pytest_arch $pytestargs
+%pytest_arch -k "not (skipnothingbydefault ${$python_donttest})" tests/unittest tests/functiontest
 %else
-%pytest $pytestargs
+%pytest -k "not (skipnothingbydefault ${$python_donttest})" tests/unittest tests/functiontest
 %endif
 
 %post
