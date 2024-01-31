@@ -1,7 +1,7 @@
 #
 # spec file for package cups
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,18 +40,18 @@ Name:           cups
 # "zypper vcmp 2.3.b99 2.3.0" shows "2.3.b99 is older than 2.3.0" and
 # "zypper vcmp 2.2.99 2.3b6" show "2.2.99 is older than 2.3b6" so that
 # version upgrades from 2.2.x via 2.3.b* to 2.3.0 work:
-Version:        2.4.2
+Version:        2.4.7
 Release:        0
 Summary:        The Common UNIX Printing System
 License:        Apache-2.0
 Group:          Hardware/Printing
 URL:            https://openprinting.github.io/cups
 # To get Source0 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.4.2-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz
-Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz
+# wget --no-check-certificate -O cups-2.4.7-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz
+Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz
 # To get Source1 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.4.2-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz.sig
-Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz.sig
+# wget --no-check-certificate -O cups-2.4.7-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz.sig
+Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz.sig
 # To make Source2 use e.g.
 #   gpg --keyserver keys.openpgp.org --recv-keys 7082A0A50A2E92640F3880E0E4522DCC9B246FF7
 #   gpg --export --armor 7082A0A50A2E92640F3880E0E4522DCC9B246FF7 >cups.keyring
@@ -61,7 +61,7 @@ Source2:        cups.keyring
 # To manually verify Source0 with Source1 and Source2 do e.g.
 #   gpg --import cups.keyring
 #   gpg --list-keys | grep -1 'Zdenek Dohnal'
-#   gpg --verify cups-2.4.2-source.tar.gz.sig cups-2.4.2-source.tar.gz
+#   gpg --verify cups-2.4.7-source.tar.gz.sig cups-2.4.7-source.tar.gz
 Source102:      Postscript.ppd.gz
 Source105:      Postscript-level1.ppd.gz
 Source106:      Postscript-level2.ppd.gz
@@ -97,31 +97,12 @@ Patch104:       cups-config-libs.patch
 # see https://bugzilla.suse.com/show_bug.cgi?id=1195288
 Patch107:       harden_cups.service.patch
 # Patch108 downgrade-autoconf-requirement.patch
-# downgrades the autoconf requirement to the autoconf available in Tumbleweed as of this writing:
+# downgrades the autoconf requirement in configure.ac from autoconf 2.71 to autoconf 2.69
+# that is available in Tumbleweed as of this writing (March 2022)
 Patch108:       downgrade-autoconf-requirement.patch
-# Patch109 cups-2.4.2-CVE-2023-32324.patch
-# fixes CVE-2023-32324 "Heap buffer overflow in cupsd"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-cxc6-w2g7-69p7
-# https://bugzilla.suse.com/show_bug.cgi?id=1211643
-Patch109:       cups-2.4.2-CVE-2023-32324.patch
-# Patch110 cups-2.4.2-CVE-2023-34241.patch
-# fixes CVE-2023-34241 "use-after-free in cupsdAcceptClient()"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-qjgh-5hcq-5f25
-# https://bugzilla.suse.com/show_bug.cgi?id=1212230
-Patch110:       cups-2.4.2-CVE-2023-34241.patch
-# Patch111 cups-2.4.2-CVE-2023-32360.patch
-# fixes CVE-2023-32360 "Information leak through Cups-Get-Document operation"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-7pv4-hx8c-gr4g
-# https://bugzilla.suse.com/show_bug.cgi?id=1214254
-Patch111:       cups-2.4.2-CVE-2023-32360.patch
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 Patch112:       cups-2.4.2-additional_policies.patch
-# Patch113 cups-2.4.2-CVE-2023-4504.patch
-# fixes CVE-2023-4504 "CUPS PostScript Parsing Heap Overflow"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-pf5r-86w9-678h
-# https://bugzilla.suse.com/show_bug.cgi?id=1215204
-Patch113:       cups-2.4.2-CVE-2023-4504.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -346,29 +327,9 @@ printer drivers for CUPS.
 # Patch108 downgrade-autoconf-requirement.patch
 # downgrades the autoconf requirement to the autoconf available in Tumbleweed as of this writing:
 %patch108 -b downgrade-autoconf-requirement.orig
-# Patch109 cups-2.4.2-CVE-2023-32324.patch
-# fixes CVE-2023-32324 "Heap buffer overflow in cupsd"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-cxc6-w2g7-69p7
-# https://bugzilla.suse.com/show_bug.cgi?id=1211643
-%patch109 -b cups-2.4.2-CVE-2023-32324.orig
-# Patch110 cups-2.4.2-CVE-2023-34241.patch
-# fixes CVE-2023-34241 "use-after-free in cupsdAcceptClient()"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-qjgh-5hcq-5f25
-# https://bugzilla.suse.com/show_bug.cgi?id=1212230
-%patch110 -b cups-2.4.2-CVE-2023-34241.orig
-# Patch111 cups-2.4.2-CVE-2023-32360.patch
-# fixes CVE-2023-32360 "Information leak through Cups-Get-Document operation"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-7pv4-hx8c-gr4g
-# https://bugzilla.suse.com/show_bug.cgi?id=1214254
-%patch111 -b cups-2.4.2-CVE-2023-32360.orig
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 %patch112 -b cups-2.4.2-additional_policies.orig
-# Patch113 cups-2.4.2-CVE-2023-4504.patch
-# fixes CVE-2023-4504 "CUPS PostScript Parsing Heap Overflow"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-pf5r-86w9-678h
-# https://bugzilla.suse.com/show_bug.cgi?id=1215204
-%patch113 -b cups-2.4.2-CVE-2023-4504.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output
