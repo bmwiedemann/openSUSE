@@ -34,4 +34,12 @@
 - remove glibc-2.31-fix.patch (upstream)</comment>
     <requestid>831504</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>831d55f9c902acdddf7834e8474742a5</srcmd5>
+    <version>1.26</version>
+    <time>1706741638</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143015</requestid>
+  </revision>
 </revisionlist>
