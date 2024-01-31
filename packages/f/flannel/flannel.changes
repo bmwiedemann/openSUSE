@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jan 31 13:05:53 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- sync `kube-flannel.yaml` manifest with upstream release, v0.24.2 (bsc#1218694)
+- refactor, clean spec file. Include following change:
+  * bump go version build requirements: `BuildRequires:  golang(API) >= 1.20`
+  * include go modules dependencies as vendor tar - vendor.tar.gz, update following %prep, %build, %install sections accordingly
+
+-------------------------------------------------------------------
+Wed Jan 31 07:20:42 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 0.24.2:
+  * Prepare for v0.24.2 release
+  * Increase the time out for interface checking in windows
+  * Prepare for v0.24.1 release
+  * Provide support to select the interface in Windows
+  * Improve the log from powershell
+  * Wait all the jobs to finish before deploy the github-page
+  * remove remaining references to mips64le
+  * add multi-arch dockerfile
+  * add missing riscv64 in docker manifest create step
+  * prepare for v0.24.0 release
+  * Bump golang.org/x/crypto from 0.15.0 to 0.17.0
+  * Add the VNI to the error message in Windows
+  * chart: add possibility for defining image pull secrets in daemonset
+  * Remove multiclustercidr logic from code
+  * Update opentelemetry dependencies
+  * Bump go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
+  * Add riscv64 arch in GH actions
+  * vxlan vni should not be type uint16
+  * Quote wireguard psk in helm chart
+  * add riscv64 support
+
+-------------------------------------------------------------------
 Fri Jul 23 08:54:45 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update to 0.14.0:

@@ -24,20 +24,21 @@
 %define flannel_container_path registry.opensuse.org/kubic/flannel
 
 Name:           flannel
-Version:        0.14.0
+Version:        0.24.2
 Release:        0
 Summary:        An etcd backed network fabric for containers
 License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/flannel-io/flannel
-Source:         https://github.com/flannel-io/flannel/archive/v%{version}.tar.gz
-Source1:        kube-flannel.yaml
+Source0:        flannel-%{version}.tar.gz
+Source1:        vendor.tar.gz
+Source2:        kube-flannel.yaml
 Requires:       iproute2
 # arp is used:
 Requires:       net-tools-deprecated
 Requires:       iptables
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.20
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390
 %{go_nostrip}
@@ -70,34 +71,28 @@ unique, routable IP address inside the cluster. The advantage of this model is t
 reduces the complexity of doing port mapping.
 
 %prep
-%setup -q
+%setup -q -a1 -n flannel-%{version}
 
 %build
-gofmt -w -r "x -> \"%{version}\"" version/version.go
-%{goprep} github.com/flannel-io/flannel
-# go1.16+ default is GO111MODULE=on set to auto temporarily
-# until using an upstream version with go.mod
-export GO111MODULE=auto
-%{gobuild}
+%define project github.com/flannel-io/flannel
+CGO_ENABLED=1 go build -mod=vendor -v -buildmode=pie -o dist/flanneld \
+	  -ldflags '-s -w -X github.com/flannel-io/flannel/pkg/version.Version=v%{version}'
 
 %install
-%{goinstall}
 rm -rf %{buildroot}/%{_libdir}/go/contrib
+
+# move the binary
+install -D -m 0755 dist/flanneld %{buildroot}%{_sbindir}/flanneld
 
 # Install provided yaml file to download and run the flannel container
 mkdir -p %{buildroot}%{_datadir}/k8s-yaml/flannel
-#install -m 0644 Documentation/kube-flannel.yml %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
-install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
-sed -i -e 's|image: quay.io/coreos/flannel:.*|image: %{flannel_container_path}:%{version}|g' %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
+install -m 0644 Documentation/kube-flannel.yml %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
+sed -i -e 's|image: docker.io/flannel/flannel:.*|image: %{flannel_container_path}:%{version}|g' %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
 sed -i -e 's|/opt/bin/flanneld|/usr/sbin/flanneld|g' %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
-
-# Move
-mkdir -p %{buildroot}%{_sbindir}
-mv %{buildroot}%{_bindir}/flannel %{buildroot}%{_sbindir}/flanneld
 
 %files
 %defattr(-,root,root)
-%doc README.md DCO NOTICE
+%doc README.md DCO
 %license LICENSE
 %{_sbindir}/flanneld
 
