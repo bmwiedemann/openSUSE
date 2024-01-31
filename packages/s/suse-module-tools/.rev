@@ -759,4 +759,17 @@ source service setup which messed up my spec file.
   * 60-io-scheduler.rules: test for &quot;scheduler&quot; sysfs attribute (boo#1216717) (forwarded request 1136444 from mwilck)</comment>
     <requestid>1136446</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>cb8bfed2de8aba4cfd7f95ecc6a7fbf3</srcmd5>
+    <version>16.0.43</version>
+    <time>1706741635</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.43:
+  * macros.initrd: %regenerate_initrd_post: don't fail if mkdir is unavailable
+    (boo#1217979)
+  * Don't rebuild existing initramfs imagees if the environment variable
+    SKIP_REGENERATE_ALL=1 is set (boo#1192014)
+  * README: Update blacklist description (gh#openSUSE/suse-module-tools#71) (forwarded request 1143009 from mwilck)</comment>
+    <requestid>1143010</requestid>
+  </revision>
 </revisionlist>

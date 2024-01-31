@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 31 12:02:16 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.43:
+  * macros.initrd: %regenerate_initrd_post: don't fail if mkdir is unavailable
+    (boo#1217979)
+  * Don't rebuild existing initramfs imagees if the environment variable
+    SKIP_REGENERATE_ALL=1 is set (boo#1192014)
+  * README: Update blacklist description (gh#openSUSE/suse-module-tools#71)
+
+-------------------------------------------------------------------
 Wed Jan  3 09:59:35 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.42:
