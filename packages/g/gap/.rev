@@ -15,4 +15,12 @@
     <comment>- Add sl2reps extension to gap-full</comment>
     <requestid>1140030</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5c18e92ad5d562ee47a03600e6f11946</srcmd5>
+    <version>4.12.2</version>
+    <time>1706741770</time>
+    <user>anag+factory</user>
+    <comment>- Make the build reproducible by killing off dates.</comment>
+    <requestid>1143116</requestid>
+  </revision>
 </revisionlist>

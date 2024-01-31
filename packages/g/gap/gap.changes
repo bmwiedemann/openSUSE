@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 31 19:10:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Make the build reproducible by killing off dates.
+
+-------------------------------------------------------------------
 Fri Jan 19 23:05:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add sl2reps extension to gap-full

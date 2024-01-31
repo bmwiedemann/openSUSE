@@ -262,7 +262,7 @@ echo "This package causes installation of optional GAP packages" >FULL.txt
 
 %build
 %configure
-%make_build
+%make_build GAP_BUILD_DATETIME=""
 
 %install
 # Can not use "install" target, as that includes the "install-doc" target
