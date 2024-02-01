@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 18 15:13:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.4.1:
+  * No release notes.
+- Enable builds on non-x84_64 archs, issue fixed.
+
+-------------------------------------------------------------------
 Fri May 26 14:30:47 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix a couple of incorrect hashbangs on executable scripts.
