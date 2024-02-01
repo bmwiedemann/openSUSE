@@ -103,4 +103,12 @@
     timestamp %f …</comment>
     <requestid>1142844</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7d30808045353b24f0141f5bf9bda022</srcmd5>
+    <version>1.20.1</version>
+    <time>1706807100</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pytest, like upstream has.</comment>
+    <requestid>1143158</requestid>
+  </revision>
 </revisionlist>
