@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  1 11:00:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.9.0
+  * new SettingsFactory public static methods: fileName() and
+    format() (gh#pedrolcl/drumstick#15)
+  * new slot writeSettings() for some backends: Sonivox,
+    FluidSynth, Network (gh#pedrolcl/drumstick#16)
+  * Building with Qt6 by default.
+  * For Qt5 compatibility, a new option USE_QT5 must be set.
+  * Upgraded compiler/runtime requirements to C++17.
+  * Upgraded CMake requirement to 3.16
+
+-------------------------------------------------------------------
 Tue Oct 24 09:52:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.8.1

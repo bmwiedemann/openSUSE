@@ -18,7 +18,7 @@
 
 
 Name:           drumstick
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 Summary:        MIDI Sequencer C++ Library Bindings
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -33,18 +33,19 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5UiPlugin)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6UiPlugin)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(sonivox)
 BuildRequires:  pkgconfig(alsa)
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(fluidsynth)
-%endif
 BuildRequires:  pkgconfig(libpulse-simple)
 
 %description
@@ -80,7 +81,7 @@ This package contains input/output plugins for libdrumstick-rt2.
 %package -n libdrumstick-file2
 Summary:        MIDI Sequencer C++ Library
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Recommends:     %{name}-mimetypes
+Recommends:     drumstick-mimetypes
 
 %description -n libdrumstick-file2
 MIDI Sequencer C++ Library Bindings for Qt5 and ALSA.
@@ -121,7 +122,7 @@ Requires:       libdrumstick-file2 = %{version}
 Requires:       libdrumstick-rt2 = %{version}
 Requires:       libdrumstick-widgets2 = %{version}
 Requires:       libstdc++-devel
-Requires:       cmake(Qt5Core)
+Requires:       cmake(Qt6Core)
 
 %description -n libdrumstick-devel
 This package contains the files needed to compile programs that use the
@@ -144,14 +145,14 @@ sed -i 's#%{_includedir}/QtCore#%{_includedir}/qt5/QtCore#' Doxyfile.in
 sed -i 's#%{_includedir}/QtGui#%{_includedir}/qt5/QtGui#' Doxyfile.in
 
 %build
-%cmake -DSTATIC_DRUMSTICK=0
+%cmake_qt6 -DSTATIC_DRUMSTICK=0
 
-%cmake_build
+%qt6_build
 
-%make_build doxygen
+cmake --build %{__qt6_builddir} -t doxygen
 
 %install
-%cmake_install
+%qt6_install
 
 %ldconfig_scriptlets
 %ldconfig_scriptlets -n libdrumstick-alsa2
@@ -162,22 +163,22 @@ sed -i 's#%{_includedir}/QtGui#%{_includedir}/qt5/QtGui#' Doxyfile.in
 %files
 %license COPYING
 %doc AUTHORS NEWS TODO ChangeLog
-%{_bindir}/%{name}-*
+%{_bindir}/drumstick-*
 %{_datadir}/applications/net.sourceforge.drumstick-*.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.svgz
+%{_datadir}/icons/hicolor/*/apps/drumstick.png
+%{_datadir}/icons/hicolor/scalable/apps/drumstick.svgz
 %{_datadir}/metainfo/net.sourceforge.drumstick-*.xml
-%{_mandir}/man1/%{name}-*.1%{?ext_man}
+%{_mandir}/man1/drumstick-*.1%{?ext_man}
 
 %files lang
 %license COPYING
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/drumstick-drumgrid_*.qm
-%{_datadir}/%{name}/drumstick-guiplayer_*.qm
-%{_datadir}/%{name}/drumstick-vpiano_*.qm
+%dir %{_datadir}/drumstick
+%{_datadir}/drumstick/drumstick-drumgrid_*.qm
+%{_datadir}/drumstick/drumstick-guiplayer_*.qm
+%{_datadir}/drumstick/drumstick-vpiano_*.qm
 
 %files mimetypes
-%{_datadir}/mime/packages/%{name}.xml
+%{_datadir}/mime/packages/drumstick.xml
 
 %files -n libdrumstick-rt2
 %license COPYING
@@ -201,22 +202,22 @@ sed -i 's#%{_includedir}/QtGui#%{_includedir}/qt5/QtGui#' Doxyfile.in
 
 %files -n libdrumstick-widgets-lang
 %license COPYING
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/drumstick-widgets_*.qm
+%dir %{_datadir}/drumstick
+%{_datadir}/drumstick/drumstick-widgets_*.qm
 
 %files -n libdrumstick-devel
 %license COPYING
-%dir %{_includedir}/%{name}
-%dir %{_libqt5_plugindir}/designer
-%{_includedir}/%{name}.h
-%{_includedir}/%{name}/*.h
+%dir %{_includedir}/drumstick
+%{_includedir}/drumstick.h
+%{_includedir}/drumstick/*.h
 %{_libdir}/libdrumstick-alsa.so
 %{_libdir}/libdrumstick-file.so
 %{_libdir}/libdrumstick-rt.so
 %{_libdir}/libdrumstick-widgets.so
-%{_libdir}/pkgconfig/%{name}-*.pc
-%{_libdir}/cmake/%{name}
-%{_libqt5_plugindir}/designer/libdrumstick-vpiano-plugin.so
+%{_libdir}/pkgconfig/drumstick-*.pc
+%{_libdir}/cmake/drumstick
+%dir %{_qt6_pluginsdir}/designer
+%{_qt6_pluginsdir}/designer/libdrumstick-vpiano-plugin.so
 
 %files -n libdrumstick-doc
 %doc build/doc/html/*
