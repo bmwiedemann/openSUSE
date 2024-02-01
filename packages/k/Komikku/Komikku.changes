@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 30 07:36:31 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.37.0
+  * Added an indicator when an update is in progress
+  * Added Pull-to-Update feature
+  * Updated disk usage when one or more chapters are reset
+  * Fixed typo error causing overload
+  * Fixed "Report an Issue" link
+  * Some improvements to speed up HTML pages parsing
+
+-------------------------------------------------------------------
 Fri Jan 26 12:40:18 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.36.0
