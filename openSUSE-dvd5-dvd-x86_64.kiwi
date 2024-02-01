@@ -1378,6 +1378,7 @@
       <repopackage name="libcrypt1"/>
       <repopackage name="libcrypt1-32bit"/>
       <repopackage name="libcryptmount0"/>
+      <repopackage name="libcrypto50"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcryptui-data"/>
       <repopackage name="libcryptui-lang"/>
@@ -2492,6 +2493,7 @@
       <repopackage name="libreoffice-writer"/>
       <repopackage name="libreofficekit"/>
       <repopackage name="librepository"/>
+      <repopackage name="libressl"/>
       <repopackage name="librest-1_0-0"/>
       <repopackage name="librevenge-0_0-0"/>
       <repopackage name="librevenge-stream-0_0-0"/>
@@ -2578,6 +2580,7 @@
       <repopackage name="libssh-config"/>
       <repopackage name="libssh2-1"/>
       <repopackage name="libssh4"/>
+      <repopackage name="libssl53"/>
       <repopackage name="libsss_certmap0"/>
       <repopackage name="libsss_idmap0"/>
       <repopackage name="libsss_nss_idmap0"/>
@@ -2632,6 +2635,7 @@
       <repopackage name="libtiff6"/>
       <repopackage name="libtirpc-netconfig"/>
       <repopackage name="libtirpc3"/>
+      <repopackage name="libtls26"/>
       <repopackage name="libtomcrypt1"/>
       <repopackage name="libtommath1"/>
       <repopackage name="libtommath1-x86-64-v3"/>
