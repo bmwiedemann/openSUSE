@@ -200,4 +200,29 @@
   * updates to plain and json printing to include verification error (#2335) (forwarded request 1142728 from ph03nix)</comment>
     <requestid>1142812</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>86833df52a02fb31e08717f13011b776</srcmd5>
+    <version>3.66.3</version>
+    <time>1706807189</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.66.3
+  * Allow for configuring the buffered file writer (#2319)
+  * added flyio protos (#2357)
+  * Scan GitHub wikis (#2233)
+  * [chore] Add filesystem integration test (#2358)
+  * update azure test files to check rawV2 (#2353)
+  * [bug] fix script change (#2360)
+
+- Update to version 3.66.2:
+  * fix (#2360)
+  * update azure test files to check rawV2 (#2353)
+  * [chore] Add filesystem integration test (#2358)
+  * Scan GitHub wikis #2233
+  * added flyio protos (#2357)
+  * Allow for configuring the buffered file writer (#2319)
+  * [feat] - tmp file diffs (#2306)
+  * Fix filesystem enumeration ignore paths bug (#2355)
+  * Detectors Updates 1 for Tristate Verification (#2187) (forwarded request 1143193 from ph03nix)</comment>
+    <requestid>1143415</requestid>
+  </revision>
 </revisionlist>
