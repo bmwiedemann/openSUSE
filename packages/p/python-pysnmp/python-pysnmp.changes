@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  1 08:12:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use poetry-core for building
+
+-------------------------------------------------------------------
 Tue Aug  1 06:20:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to lextudio releases, and upgrade to 5.0.28:
@@ -46,17 +51,17 @@ Wed Jul 31 20:44:55 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.4.10
   * Reworked VACM access control function. Most important changes include:
-  
+
     + Added subtree match negation support (vacmViewTreeFamilyType)
     + Added subtree family mask support (vacmViewTreeFamilyMask)
     + Added prefix content name matching support (vacmAccessContextMatch)
     + Added key VACM tables caching for better `isAccessAllowed` lookup
       performance
-  
+
     One potential incompatibility may be caused by the `addContext()` call
     which now needs to be made explicitly during low-level VACM configuration
     rather than be a side effect of `addVacmAccess()` call.
-  
+
   * Rebased MIB importing code onto `importlib` because `imp` is long
     deprecated
   * Received MIB objects resolution made more forgiving to errors, added
@@ -112,7 +117,7 @@ Tue Dec  4 12:52:53 UTC 2018 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Thu Nov 27 17:56:55 UTC 2018 - alexander_naumov@opensuse.org
 
-- Update to version 4.4.6 
+- Update to version 4.4.6
   * Improved package build and dependency tracking
   * Fixed missing LICENSE from the tarball distribution
   * Fixed CommandGeneratorLcdConfigurator.unconfigure() to fully
@@ -156,7 +161,7 @@ Fri Jun 29 13:17:52 UTC 2018 - mardnh@gmx.de
   * Copyright notice extended to the year 2018
   * Fixed short local key expansion at 3DES key localization
     implementation.
-  
+
 - Update to 4.4.3:
   * Migrated references from SourceForge
   * Added missing SHA2 support for Blumenthal key localization
@@ -357,28 +362,28 @@ Tue Oct  6 10:05:12 UTC 2015 - hpj@urpla.net
         cache
      +  newly introduced sendVarBinds() method offers a more functional and
         logical signatures.
-     +  Promote the use of dedicated classes for dealing with OID-value pairs. 
-        Instances of those classes resemble OBJECT-IDENTITY, OBJECT-TYPE and 
+     +  Promote the use of dedicated classes for dealing with OID-value pairs.
+        Instances of those classes resemble OBJECT-IDENTITY, OBJECT-TYPE and
         NOTIFICATION-TYPE MIB structures.
-     +  Oneliner API reworked to become more generic: its LCD configuration 
-        shortcuts and and var-bindings processing code split off SNMP apps 
-        classes to stand-alone objects. The whole API also moved up in package 
-        naming hierarchy and becomes ‘pysnmp.hlapi.asyncore’ (hlapi is 
-        apparently an African fish). Old oneliner API remains fully operational 
+     +  Oneliner API reworked to become more generic: its LCD configuration
+        shortcuts and and var-bindings processing code split off SNMP apps
+        classes to stand-alone objects. The whole API also moved up in package
+        naming hierarchy and becomes ‘pysnmp.hlapi.asyncore’ (hlapi is
+        apparently an African fish). Old oneliner API remains fully operational
         at its original location.
-     +  Synchronous oneliner apps redesigned to offer Python generator-based 
+     +  Synchronous oneliner apps redesigned to offer Python generator-based
         API along with a more comprehensive set of accepted parameters.
      +  Asyncore-based asynchronous apps reworked to become functions.
-     +  Twisted API moved entirely into high-level domain to be aligned with 
+     +  Twisted API moved entirely into high-level domain to be aligned with
         other high-level APIs. This WILL BREAK backward compatibility for those
         apps that use Twisted API.
      +  Keep backward compatibility for all existing major/documented interfaces
-  + Sphinx documentation added to source code and example scripts. Library 
+  + Sphinx documentation added to source code and example scripts. Library
     documentation converted from .html into RsT markup.
-  + Execution Observer facility implemented to give app an inside view of SNMP 
+  + Execution Observer facility implemented to give app an inside view of SNMP
     engine inner workings. This is thought to be a generic framework for viewing
-    (and modifying) various internal states of pysnmp engine. Previously 
-    introduced non-standard APIs (like getting peer’s transport endpoint which 
+    (and modifying) various internal states of pysnmp engine. Previously
+    introduced non-standard APIs (like getting peer’s transport endpoint which
     is not suggested in RFCs) will be gradually migrated to this new framework.
   + Initial support for the asyncio & Trollius frameworks and coroutines-based
     SNMP Applications interfaces added. Both IPv4 and IPv6 datagram transports
@@ -392,31 +397,31 @@ Tue Oct  6 10:05:12 UTC 2015 - hpj@urpla.net
     following features were brought into pysnmp with this update:
     +   Sending SNMP packets from a non-local IP address
     +   Receiving IP packets for non-local IP addresses
-    +   Responding to SNMP requests from exactly the same IP address the query 
+    +   Responding to SNMP requests from exactly the same IP address the query
         was sent to. This proves to be useful when listening on both primary and
         secondary IP interfaces.
-  + Internal oneliner apps configuration cache moved from respective apps 
-    objects to [a singular] snmpEngine “user context” object. That would allow 
-    for better cache reuse and allow for a single app working with many 
+  + Internal oneliner apps configuration cache moved from respective apps
+    objects to [a singular] snmpEngine “user context” object. That would allow
+    for better cache reuse and allow for a single app working with many
     snmpEngine instances.
-  + Oneliner GETBULK Command Generator now strips possible excessive OIDs off 
+  + Oneliner GETBULK Command Generator now strips possible excessive OIDs off
     the bottom of returned var-binds table.
-  + Constraints assignment shortcut added to some base rfc1902 types (Integer, 
+  + Constraints assignment shortcut added to some base rfc1902 types (Integer,
     Integer32, OctetString, Bits). That formally constitutes ASN.1 sub-typing.
   + Built-in debugging is now based on Python logging module.
-  + Examples on a single Transport Dispatcher use with multiple SnmpEngine 
+  + Examples on a single Transport Dispatcher use with multiple SnmpEngine
     instances applicatons added.
   + Example script on transport timeout & retries manipulation added.
   + Example script explaining incoming message’s communityName re-mapping added.
   + Broadcast socket option can now be enabled with the .enableBroadcast() call
     for any datagram-based transport (namely, UDP and UDP6).
-  + AbstractTransportDispatcher’s jobStarted() and jobFinished() methods now 
+  + AbstractTransportDispatcher’s jobStarted() and jobFinished() methods now
     accept optional ‘count’ parameter which is a way for an app to indicate how
     many responses are expected or have been processed in bulk.
   + Example script on SNMP Agents UDP broadcast-based discovery added.
-  + Oneliner transport object now supports setLocalAddress() method to force 
+  + Oneliner transport object now supports setLocalAddress() method to force
     socket binding to specified local interface.
-  + New public DgramSocketTransport.getLocalAddress() returns local endpoint 
+  + New public DgramSocketTransport.getLocalAddress() returns local endpoint
     address underlying BSD socket is currently bound to.
   + Passing request details to access control callback at CommandResponder
     reworked towards more robust and simple design with the execution observer
@@ -535,7 +540,7 @@ Sun Nov 24 20:56:12 UTC 2013 - p.drouand@gmail.com
     scene.
   + The $PYSNMP_MIB_DIR & $PYSNMP_MIB_DIRS & $PYSNMP_MIB_PKGS path separator
     made platform  +specific.
-  + Change to rfc2576.v1tov2() logic: errorStatus = noSuchName is now 
+  + Change to rfc2576.v1tov2() logic: errorStatus = noSuchName is now
     translated into rfc1905.noSuchObject exception value for *all* var  +bindings
     at once. Although RFC2576 does not suggest error  +status   +> v2c exception
     translation, historically pysnmp used to perform it for a long time so we
@@ -552,7 +557,7 @@ Sun Nov 24 20:56:12 UTC 2013 - p.drouand@gmail.com
   + The snmpCommunityTable row selection improved to follow RFC2576, clause
     5.2.1.
   + Asyncore  +based dispatcher attempts to use poll() whenever available
-    on the platform. It would help handling a really large number (>1024) 
+    on the platform. It would help handling a really large number (>1024)
     of file descriptors.
   + AsynCommandGenerator.makeReadVarBinds() generalized into a new
     makeVarBinds() method which replaces somewhat redundant code at setCmd()
@@ -563,7 +568,7 @@ Sun Nov 24 20:56:12 UTC 2013 - p.drouand@gmail.com
     specific securityName.
   + SNMP credentials management reworked to separate userName from securityName
     in snmpCommunityEntry and usmUserEntry tables. Changes made to addV1System(),
-    addV3User() functions as well as to their oneliner's wrappers. 
+    addV3User() functions as well as to their oneliner's wrappers.
   + The contextEngineId parameter of config.addV3User() and auth.UsmUserData()
     renamed into securityEngineId as it's semantically correct
   + Oneliner UsmUserData() and CommunityData() classes now support clone()'ing
@@ -588,9 +593,9 @@ Sun Nov 24 20:56:12 UTC 2013 - p.drouand@gmail.com
   + Fix to usmUserSecurityName table column implementation   +  + automatic value
     generation from index value removed.
   + Fix and significant logic rework of snmpCommunityTable to make it working
-    in both Generator and Responder modes and better follow RFC2576 
+    in both Generator and Responder modes and better follow RFC2576
     requirements on sequential entries lookup and selection. As a side effect,
-    untagged snmpCommunityTable entries will *not* match tagged 
+    untagged snmpCommunityTable entries will *not* match tagged
     snmpTargetAddrTable entries and vice versa.
   + Fix to Twisted  +based NotificationOriginator to make it serving INFORMs again.
   + Fix to rfc2576.v1tov2() logic: errorStatus = noSuchName is now translated
@@ -660,7 +665,7 @@ Wed Apr 24 05:04:49 UTC 2013 - highwaystar.ru@gmail.com
     kinds of Management Instrumentation controllers.
   - Report package version on debugging code initialization.
   - MibInstrumController.getMibBuilder() added.
-  - I/O sockets buffer sizes made configurable, minimum default is now 
+  - I/O sockets buffer sizes made configurable, minimum default is now
     forced to be no less than 2**17 (to fit two huge datagrams).
   - Catch possible exceptions on pyasn1 encoder invocation.
   - VACM modules converted from a function into an object to let it keep
@@ -671,7 +676,7 @@ Wed Apr 24 05:04:49 UTC 2013 - highwaystar.ru@gmail.com
     NotificationOriginator.sendNotification()
   - Standard SNMPv3 Apps hardened to catch protocol-related exceptions and
     report them as errorIndication's.
-  - Catch and mute possible failure of getsockname(), that seems to happen 
+  - Catch and mute possible failure of getsockname(), that seems to happen
     on Windows only so far.
   - Memory leak fixed at oneliner cache of already configured targets.
   - Fixes to at AsynNotificationOriginator.sendNotification() to make
@@ -718,12 +723,12 @@ Wed Apr 24 05:04:49 UTC 2013 - highwaystar.ru@gmail.com
     MIB lookup for name resolution. This is a new and preferred API which
     obsoletes the tuple-based one (it is still suppored though).
   - Oneliner CommandGenerator's class attributes lexicographicMode, maxRows
-    and ignoreNonIncreasingOid moved to optional keyword args of nextGen() 
+    and ignoreNonIncreasingOid moved to optional keyword args of nextGen()
     and bulkGen() methods.
   - IPv6/UDP and Local Domain Socket transport interfaces added to the
     oneliner API.
   - Mib Instrumentation subsystem re-worked to replace excessive
-    MibNode's smiCreate()/smiWrite()/smiDestroy() methods with 
+    MibNode's smiCreate()/smiWrite()/smiDestroy() methods with
     MibScalarInstance's getValue()/setValue()
   - MibTree.readTest[Get]Next() reworked to be called uniformely so
     user could tap on these methods at any level of the MIB tree.
@@ -735,16 +740,16 @@ Wed Apr 24 05:04:49 UTC 2013 - highwaystar.ru@gmail.com
     local hostname not to depend upon local IP availability and performance.
   - Example apps reworked, additional SNMPv3 auth/priv protocols and transports
     added.
-  - Package version is now available as __init__.__version__ and it is 
+  - Package version is now available as __init__.__version__ and it is
     in-sync with distutils.
   - Package meta-information updated.
-  - The __init__.py's made non-empty (rumors are that they may be optimized 
+  - The __init__.py's made non-empty (rumors are that they may be optimized
     out by package managers).
   - Multiple fixes to UNIX domain socket transport to make it fully
     operational again.
   - Use sysUpTime value whenever it is included in Notification PDU, otheriwese
     resort to SNMP engine uptime reading.
-  - SNMPv2c Message is now defined in rfc1901.py what matches standard 
+  - SNMPv2c Message is now defined in rfc1901.py what matches standard
     definition.
   - Types defined within SNMPv1/v2c data structures (rfc1157.py/rfc1905.py)
     moved to module scope to become accessible by wrapper routines
@@ -780,11 +785,11 @@ Wed Apr 24 05:04:49 UTC 2013 - highwaystar.ru@gmail.com
   - The notificationType parameter of AsynNotificationOriginator.sendNotification
     made defaulted to reflect its optional nature.
   - Oneliner UsmUserData, UdpTransportTarget, Udp6TransportTarget instances
-    are not hashable anymore as they are intended to act more like a data 
+    are not hashable anymore as they are intended to act more like a data
     structure than object.
   - Built-in debugger now supports negating debugging categories.
   - An async/getgen.py example script added.
-  - Fix to MIB data reading routine to make it working with possible 
+  - Fix to MIB data reading routine to make it working with possible
     Windows end-of-line's.
   - Fix to CommandGenerator's SNMPv3 engine autodiscovery algorithm
     when retryCount is administratively set to 0.
@@ -799,7 +804,7 @@ Wed Apr 24 05:04:49 UTC 2013 - highwaystar.ru@gmail.com
   - Fix to v1.PDUAPI.setDefaults() method that used to set wrongly typed
     time-stamp component.
   - Fix to IPv6 address handling to prevent system from crashing whilst
-    running Python3. 
+    running Python3.
   - Fix to SNMPv2 exception objects translation into SNMPv1 PDU and NEXT
     OIDs calculation.
   - Fix to MibTree class to properly report noSuchObject & noSuchInstance
@@ -830,7 +835,7 @@ Wed Apr 24 05:04:49 UTC 2013 - highwaystar.ru@gmail.com
     side-effect of this change is that repetitive oneliner call with the same
     securityName and different configuration options will only honor
     the first settings. Previous implementation would override older settings.
-  - Transport dispatcher now provides its own time expressed in 
+  - Transport dispatcher now provides its own time expressed in
     fractions of second. SNMP engine uses this notion of time for
     handling requests timeout to make packet flow time bound
     to async I/O core operations rather than to real time.
@@ -879,7 +884,7 @@ Wed Apr 24 05:04:49 UTC 2013 - highwaystar.ru@gmail.com
   - Fix to error processing at GETNEXT & GETBULK apps response handlers.
   - Fix to libsmi2pysnmp to make it supporting long (256+) list of function
     params.
-  - Fix to libsmi2pysnmp to support inheritance of MIB types. 
+  - Fix to libsmi2pysnmp to support inheritance of MIB types.
 
 -------------------------------------------------------------------
 Sun Nov 27 08:35:10 UTC 2011 - jfunk@funktronics.ca
