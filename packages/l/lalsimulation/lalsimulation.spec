@@ -1,7 +1,7 @@
 #
 # spec file for package lalsimulation
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalsimulation
-Version:        5.2.0
+Version:        5.3.1
 Release:        0
 Summary:        LSC Algorithm Simulation Library
 License:        GPL-2.0-only
