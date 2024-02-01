@@ -202,4 +202,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment>Scripted push from GNOME:Next (forwarded request 1137891 from dimstar)</comment>
     <requestid>1137902</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>c54fd46a70a2e53c9f9cce90d70f8061</srcmd5>
+    <version>45.1</version>
+    <time>1706807168</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143315</requestid>
+  </revision>
 </revisionlist>

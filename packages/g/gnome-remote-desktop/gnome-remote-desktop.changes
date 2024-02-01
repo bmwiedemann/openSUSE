@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  1 09:20:38 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- Explict require higher version of gcc on SLE/Leap.
+
+-------------------------------------------------------------------
 Sun Oct 22 17:39:54 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 45.1:
