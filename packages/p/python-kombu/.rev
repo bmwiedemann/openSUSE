@@ -881,4 +881,41 @@
     <comment></comment>
     <requestid>1092371</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>4fcaa6e5b6b01295aa4afc8f28c1b9ee</srcmd5>
+    <version>5.3.5</version>
+    <time>1706807163</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3.5:
+  * Fix ReadTheDocs CI
+  * fix(docs): add Redis to the list of transports where SSL is
+    supported
+  * Fixed Improper Method Call: Replaced `mktemp`
+  * fix: freeze set during ticks iter in async hub
+  * azure service bus: fix TypeError when using Managed
+    Identities
+  * Fix unacknowledge typo in restore_visible()
+  * Changed pyup -&gt; dependabot for updating dependencies
+  * Fix crash when using global_keyprefix with a sentinel
+    connection
+- update to 5.3.4:
+  * Use the correct protocol for SQS requests
+- update to 5.3.3:
+  * Update redis.txt to align with celery main
+  * Handle Access Denied Exception in basic_ack Method
+  * fix azure servicebus using managed identity support
+  * Added as_uri method to MongoDB transport - Fixes #1795
+  * Revert &quot;[fix #1726] Use boto3 for SQS async requests&quot;
+  * Create a lock on cached_property if not present
+  * added Python 3.12 in the CI
+  * using assert_called_once() in est__pop_ready_uses_lock
+  * fix: redis requeue concurrency bug  #1800
+- update to 5.3.2:
+  * Reverted unwanted constraint introduced in #1629 with
+    max_retries
+  * Doc fix (hotfix for #1755)
+  * Python3.12: fix imports in kombu/utils/objects.py
+  * [fix #1726] Use boto3 for SQS async requests</comment>
+    <requestid>1143296</requestid>
+  </revision>
 </revisionlist>

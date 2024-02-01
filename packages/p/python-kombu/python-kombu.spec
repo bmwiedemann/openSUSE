@@ -1,7 +1,7 @@
 #
 # spec file for package python-kombu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kombu
-Version:        5.2.4
+Version:        5.3.5
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
@@ -27,21 +27,17 @@ Source:         https://files.pythonhosted.org/packages/source/k/kombu/kombu-%{v
 # PATCH-FIX-OPENSUSE Use Pyro4 compatibility for now, upstream should switch
 # for 5.3
 Patch0:         support-pyro-5.patch
-# PATCH-FIX-UPSTREAM Use zoneinfo, rather than pytz gh#celery/kombu#1680
-Patch1:         use-zoneinfo.patch
-# PATCH-FIX-UPSTREAM gh#celery/kombu#1651
-Patch2:         sqlalchemy-2.0.patch
-# PATCH-FIX-UPSTREAM gh#celery/kombu#1735
-Patch3:         0001-Support-redis-4.5.2.patch
 BuildRequires:  %{python_module Brotli >= 1.0.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module Pyro5}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module amqp >= 5.0.9}
+BuildRequires:  %{python_module azure-identity >= 1.12.0}
 BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
 BuildRequires:  %{python_module boto3 >= 1.9.12}
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module case >= 1.5.2}
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module importlib-metadata >= 0.18}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pycurl >= 7.43.0.2}
