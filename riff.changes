@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  1 15:39:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.30.0:
+  * Option to put command line options in the RIFF environment variable
+	  and riff will use them primarily
+  * --no-adds-only-special flag added
+  * Improved --- and +++ headers highlighting
+
+-------------------------------------------------------------------
 Wed Jan 31 04:59:39 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.20.1:

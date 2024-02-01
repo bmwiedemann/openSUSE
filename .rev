@@ -73,4 +73,16 @@
 	* Align diff file timestamp</comment>
     <requestid>1142894</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>09e87cf1ae4eaafaf65560d5680b1aaf</srcmd5>
+    <version>2.30.0~0</version>
+    <time>1706807194</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.30.0:
+  * Option to put command line options in the RIFF environment variable
+	  and riff will use them primarily
+  * --no-adds-only-special flag added
+  * Improved --- and +++ headers highlighting</comment>
+    <requestid>1143438</requestid>
+  </revision>
 </revisionlist>
