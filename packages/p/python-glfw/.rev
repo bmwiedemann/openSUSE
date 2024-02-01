@@ -121,4 +121,13 @@
   * Updated to GLFW 3.3.9</comment>
     <requestid>1134330</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1162b221d595921b1d8231e73d83cf62</srcmd5>
+    <version>2.6.5</version>
+    <time>1706807162</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.5:
+  * Fixed Python version check</comment>
+    <requestid>1143282</requestid>
+  </revision>
 </revisionlist>

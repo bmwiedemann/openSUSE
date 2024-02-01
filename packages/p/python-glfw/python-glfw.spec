@@ -1,7 +1,7 @@
 #
 # spec file for package python-glfw
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-glfw
-Version:        2.6.4
+Version:        2.6.5
 Release:        0
 Summary:        A ctypes-based wrapper for GLFW3
 License:        MIT
