@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 01 06:30:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.74.4:
+  * Security fixes:
+    - Upgrade syft to v0.103.1 (#1688)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#1685)
+  * chore(deps): bump anchore/sbom-action from 0.15.5 to 0.15.6
+    (#1684)
+  * ensure releases only use released versions of syft (#1680)
+  * chore(deps): bump gorm.io/gorm from 1.25.5 to 1.25.6 (#1683)
+  * chore(deps): bump 8398a7/action-slack from 3.15.1 to 3.16.2
+    (#1682)
+
+-------------------------------------------------------------------
 Fri Jan 26 19:27:04 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.74.3:
