@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Jan 24 12:04:25 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 1.28.17
+  See https://github.com/OpenPrinting/cups-filters/releases
+  Bug fix release, to more reliably discover all printer
+  capablities from driverless printers, especially borderless
+  printing, and to preferably use Apple Raster instead of
+  PWG Raster or PCLM.
+  * libcupsfilters: In PPD generator create only one *cupsFilter2:
+    line for raster. Only use the most desirable/reliable format,
+    usually Apple Raster (Issue #498).
+  * libcupsfilters: In get_printer_attributes() poll
+    media-col-database separately if needed. On some printers
+    one gets media-col-database only this way. Often it reveals
+    important functionality, like for example borderless printing
+    (Issue #492).
+  * libcupsfilters: Let PPD generator also parse media-col-ready
+    IPP attribute. media-col-ready lists the loaded media,
+    in contrary to media-ready, as list of complete descriptions
+    of the media (media-col data structure). This often lists also
+    variants like borderless (it is the same physical paper).
+    Especially useful when media-col-database is not available
+    (Issue #492).
+  * libcupsfilters: In generate_sizes() consider all
+    margin alternatives. When generating the PPD file
+    for a driverless printer, and in the
+    media-{left,right,top,bottom}-margin-supported printer
+    IPP attributes there was more than 1 value, the first value
+    (which often was the 0 for borderless printing) was not
+    considered, leaving the borderless functionality of many
+    printers undiscovered (Issue #492).
+  Issues are those at 
+  https://github.com/OpenPrinting/cups-filters/issues
+- Version upgrade to 1.28.16
+  See https://github.com/OpenPrinting/cups-filters/releases
+  Bug fix release, to make images be printed in their original
+  size with "print-scaling=none" and to not use deprecated data
+  types for reading TIFF images.
+  * imagetoraster, imagetopdf, libcupsfilters: Added support
+    for reading the resolution of an image from its EXIF data
+    when loading it. This way we get the image reproduced in
+    its original size with "print-scaling=none" (Issue #362).
+  * libcupsfilters: Replaced deprecated data types uint16 and
+    uint32. The function to read TIFF image files via libtiff
+    in cupsfilters/image-tiff.c uses the deprecated types
+    uint16 and uint32. The replacements for these types are
+    uint16_t and uint32_t.
+  Issues are those at
+  https://github.com/OpenPrinting/cups-filters/issues
+
+-------------------------------------------------------------------
 Wed May 17 07:54:03 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
 
 - cups-filters-1.28.15-0001-beh-backend-Use-execv-instead-of-system-CVE-2023-24805.patch
