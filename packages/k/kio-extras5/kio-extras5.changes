@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 31 14:35:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to the latest GCC version available in Leap for packages
+  that can't build with the default compiler
+
+-------------------------------------------------------------------
 Fri Dec 15 21:30:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time
