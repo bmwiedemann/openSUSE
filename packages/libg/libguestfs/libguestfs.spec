@@ -70,6 +70,7 @@ BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(libvirt)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(rpm) >= 4.6.0
