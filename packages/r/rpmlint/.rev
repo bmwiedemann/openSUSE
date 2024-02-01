@@ -4703,4 +4703,43 @@ oddjob-gpupdate isn't blocked)</comment>
 </comment>
     <requestid>1138844</requestid>
   </revision>
+  <revision rev="467" vrev="1">
+    <srcmd5>dd02f94dcbab010c2db714c4548c5a89</srcmd5>
+    <version>2.5.0+git20240201.be433b6</version>
+    <time>1706807067</time>
+    <user>anag+factory</user>
+    <comment>Should be staged with the latest sendmail update. Thanks!
+
+- Update to version 2.5.0+git20240201.be433b6:
+  * pam-modules: whitelist pam_canonicalize_user (bsc#1219358)
+
+- Update to version 2.5.0+git20240131.374af17:
+  * sendmail: permissions moved from /etc to /usr/share/permissions (bsc#1219339)
+
+- Update to version 2.5.0+git20240130.b66a310:
+  * sendmail: permissions moved from /etc to /usr/share/permissions (bsc#1219339)
+
+- Update to version 2.5.0+git20240130.4cdb3e1:
+  * Move rpm2cpio to one line
+  * PythonCheck: Check for python deps like python3.12dist(foo)
+  * config: Filter python require checks for Fedora
+
+- Update to version 2.5.0+git20240129.d2cbb70:
+  * test_file_digest: cover new glob features in package and path names
+  * sysctl-whitelist: use new package glob pattern
+  * FileDigestCheck: support glob patterns in package names
+  * FileDigestCheck: make glob patterns in filenames explicit
+
+- Update to version 2.5.0+git20240125.d0146be:
+  * sysctl-whitelist: add another package name for kubernetes1.29 (bsc#1219168)
+  * check: Implement reset method in checks
+  * Disable Mageia CI builds due to system problem
+  * check: Implement reset method in checks
+  * test: Add another test for patch-not-applied
+  * read rpm package directly with open() while extracting
+  * remove redundant TODO comments; checking is handled with check_output() pretty well now
+  * leave rpm2cpio as fallback for distros which do not have rpm2archive available yet
+  * fix warnings about import order, attempt 2</comment>
+    <requestid>1143293</requestid>
+  </revision>
 </revisionlist>

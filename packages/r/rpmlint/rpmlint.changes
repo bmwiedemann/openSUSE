@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Feb 01 10:40:43 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 2.5.0+git20240201.be433b6:
+  * pam-modules: whitelist pam_canonicalize_user (bsc#1219358)
+
+-------------------------------------------------------------------
+Wed Jan 31 12:36:33 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 2.5.0+git20240131.374af17:
+  * sendmail: permissions moved from /etc to /usr/share/permissions (bsc#1219339)
+
+-------------------------------------------------------------------
+Tue Jan 30 13:00:20 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 2.5.0+git20240130.b66a310:
+  * sendmail: permissions moved from /etc to /usr/share/permissions (bsc#1219339)
+
+-------------------------------------------------------------------
+Tue Jan 30 11:43:00 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240130.4cdb3e1:
+  * Move rpm2cpio to one line
+  * PythonCheck: Check for python deps like python3.12dist(foo)
+  * config: Filter python require checks for Fedora
+
+-------------------------------------------------------------------
+Mon Jan 29 15:02:45 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240129.d2cbb70:
+  * test_file_digest: cover new glob features in package and path names
+  * sysctl-whitelist: use new package glob pattern
+  * FileDigestCheck: support glob patterns in package names
+  * FileDigestCheck: make glob patterns in filenames explicit
+
+-------------------------------------------------------------------
+Thu Jan 25 14:44:51 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240125.d0146be:
+  * sysctl-whitelist: add another package name for kubernetes1.29 (bsc#1219168)
+  * check: Implement reset method in checks
+  * Disable Mageia CI builds due to system problem
+  * check: Implement reset method in checks
+  * test: Add another test for patch-not-applied
+  * read rpm package directly with open() while extracting
+  * remove redundant TODO comments; checking is handled with check_output() pretty well now
+  * leave rpm2cpio as fallback for distros which do not have rpm2archive available yet
+  * fix warnings about import order, attempt 2
+  * fix warnings about import order
+  * Fixes for nsafe shell command
+  * Drop rpm2cpio usage entirely
+  * Adding support for RPM packages containing files greater than 4GB
+  * lint: Reset all checks for each package
+  * test: Extend tag tests to check 'W: missing-dependency-on'
+
+-------------------------------------------------------------------
 Mon Jan 15 13:23:13 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20240115.66db794:
