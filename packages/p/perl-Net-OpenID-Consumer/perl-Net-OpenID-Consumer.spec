@@ -26,7 +26,7 @@ Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/dist/Net-OpenID-Consumer/
 Source:         http://www.cpan.org/authors/id/W/WR/WROG/%{cpan_name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM utf-charset.patch rt.cpan.org#106930
-Patch:          utf-charset.patch
+Patch0:         utf-charset.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -55,7 +55,7 @@ identity. More information is available at:
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%patch -p 1
+%autopatch -p 1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
