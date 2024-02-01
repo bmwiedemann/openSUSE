@@ -31,4 +31,25 @@
     <comment></comment>
     <requestid>1069932</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>98ddc47af73123c1406b516c39145424</srcmd5>
+    <version>4.3.2</version>
+    <time>1706807153</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.3.2:
+  * disabling run-command until it is properly finished
+- update to 4.3.1:
+  * fixed typeerror on Windows thanks to @eachimei, excluded docs
+    from install thanks to @mgorny and added readthedocs
+    configuration file
+- update to 4.3.0:
+  * Added support for multithreading, multiprocessing, colors
+    (16, 256 and full color) and many interactive terminal
+    features such as continuous printing for a live ETA
+
+- Update to version 4.2.0
+- Update to version 4.1.0
+  *</comment>
+    <requestid>1143266</requestid>
+  </revision>
 </revisionlist>
