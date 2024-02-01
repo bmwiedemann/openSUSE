@@ -587,4 +587,17 @@
   * Fix typo in rpmbuild.py</comment>
     <requestid>1136186</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>09b4af8aecd815b57016c6487d17e300</srcmd5>
+    <version>5.0.0</version>
+    <time>1706807154</time>
+    <user>anag+factory</user>
+    <comment>- Version 5.0.0
+  * Allow selecting mirror 1st time when adding packman repo
+  * Add Plugin for SoftMaker Freeoffice
+  * Use new osc service run cmd syntax
+  * Codecs: Install AV1 decoder for mpv
+  * Bump .NET SDK plugin to .NET 8.0</comment>
+    <requestid>1143265</requestid>
+  </revision>
 </revisionlist>
