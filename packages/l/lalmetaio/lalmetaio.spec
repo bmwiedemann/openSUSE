@@ -1,7 +1,7 @@
 #
 # spec file for package lalmetaio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with    octave
 
 Name:           lalmetaio
-Version:        4.0.1
+Version:        4.0.3
 Release:        0
 Summary:        LSC Algorithm MetaIO Library
 License:        GPL-2.0-or-later
@@ -181,6 +181,6 @@ popd
 %endif
 
 %files %{python_files}
-%{python_sitearch}/*
+%{python_sitearch}/lalmetaio/
 
 %changelog
