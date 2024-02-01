@@ -80,8 +80,8 @@ Patch107:       0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 %if 0%{?suse_version} <= 1500
-BuildRequires:  gcc10-PIE
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
@@ -199,8 +199,8 @@ LOGIN_DEFS_PATH="%{_sysconfdir}/login.defs"
       -DPID_FILE="/run/sddm.pid" \
       -DLOGIN_DEFS_PATH:path="${LOGIN_DEFS_PATH}" \
 %if 0%{?suse_version} <= 1500
-      -DCMAKE_C_COMPILER:STRING=gcc-10 \
-      -DCMAKE_CXX_COMPILER:STRING=g++-10 \
+      -DCMAKE_C_COMPILER:STRING=gcc-13 \
+      -DCMAKE_CXX_COMPILER:STRING=g++-13 \
 %endif
 
   %cmake_build

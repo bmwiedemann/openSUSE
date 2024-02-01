@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 31 14:35:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to the latest GCC version available in Leap for packages
+  that can't build with the default compiler
+
+-------------------------------------------------------------------
 Wed Sep 20 06:34:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Remove unnecessary Requires(post*)
