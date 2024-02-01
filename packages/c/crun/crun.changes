@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 27 16:21:04 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.14:
+  * build: drop dependency on libgcrypt. Use blake3 to compute the cache key.
+  * cpuset: don't clobber parent cgroup value when writing the cpuset value.
+  * linux: force umask(0). It ensures that the mknodat syscall is not affected by the umask of the calling process, 
+    allowing file permissions to be set as specified in the OCI configuration.
+  * ebpf: do not require MEMLOCK for eBPF programs. This requirement was relaxed in Linux 5.11.
+
+- update to 1.13:
+  * src: use O_CLOEXEC for all open/openat calls
+  * cgroup v1: use "max" when pids limit < 0.
+  * improve error message when idmap mount fails because the underlying file system has no support for it.
+  * libcrun: fix compilation when building without libseccomp and libcap.
+  * fix relative idmapped mount when using the custom annotation.
+
+-------------------------------------------------------------------
 Fri Dec  1 13:41:35 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.12:
