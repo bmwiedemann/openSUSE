@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Feb  1 10:44:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.5:
+  * Fix ReadTheDocs CI
+  * fix(docs): add Redis to the list of transports where SSL is
+    supported
+  * Fixed Improper Method Call: Replaced `mktemp`
+  * fix: freeze set during ticks iter in async hub
+  * azure service bus: fix TypeError when using Managed
+    Identities
+  * Fix unacknowledge typo in restore_visible()
+  * Changed pyup -> dependabot for updating dependencies
+  * Fix crash when using global_keyprefix with a sentinel
+    connection
+- update to 5.3.4:
+  * Use the correct protocol for SQS requests
+- update to 5.3.3:
+  * Update redis.txt to align with celery main
+  * Handle Access Denied Exception in basic_ack Method
+  * fix azure servicebus using managed identity support
+  * Added as_uri method to MongoDB transport - Fixes #1795
+  * Revert "[fix #1726] Use boto3 for SQS async requests"
+  * Create a lock on cached_property if not present
+  * added Python 3.12 in the CI
+  * using assert_called_once() in est__pop_ready_uses_lock
+  * fix: redis requeue concurrency bug  #1800
+- update to 5.3.2:
+  * Reverted unwanted constraint introduced in #1629 with
+    max_retries
+  * Doc fix (hotfix for #1755)
+  * Python3.12: fix imports in kombu/utils/objects.py
+  * [fix #1726] Use boto3 for SQS async requests
+  * docs: Remove SimpleQueue import
+  * Fixed pre-commit issues
+  * azure service bus: add managed identity support
+  * fix: Prevent redis task loss when closing connection while in
+    poll
+  * Kombu & celery with SQS #222
+  * syntax correction
+- update to 5.3.1:
+  * Update pycurl version
+  * Update librabbitmq restrict py3.11
+  * Update PyCurl version in SQS
+  * try python 3.11 on CI
+- update to 5.3.0:
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add fanout to filesystem
+  * Protect set of ready tasks by lock to avoid concurrent
+    updates
+  * Documentation: Update serialization page to indicate pickle
+    protocol version has been updated
+  * Use new entry_points interface
+  * Add `mypy` to the pipeline
+  * [pre-commit.ci] pre-commit autoupdate
+  * chore: Annotate semaphore.py
+  * Added possibility to serialize and deserialize binary
+    messages in json
+  * Annotate init files
+  * pytest~=7.1.1
+  * Support pymongo 4.x
+  * Annotate `exceptions.py` and `clocks.py`
+  * azure-servicebus>=7.6.1
+- drop 0001-Support-redis-4.5.2.patch,
+  use-zoneinfo.patch, sqlalchemy-2.0.patch: upstream
+
+-------------------------------------------------------------------
 Sun Jun 11 13:48:39 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -16,14 +82,14 @@ Wed Apr 12 02:16:37 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-zoneinfo.patch:
   * Use zoneinfo, rather than pytz.
-- Switch BuildRequires to zoneinfo and timezone. 
+- Switch BuildRequires to zoneinfo and timezone.
 
 -------------------------------------------------------------------
 Thu Feb 23 06:08:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pyro-5.patch:
   * Use Pyro5's compatability layer.
-- Switch BuildRequires to Pyro5. 
+- Switch BuildRequires to Pyro5.
 
 -------------------------------------------------------------------
 Mon Mar 21 08:16:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -66,7 +132,7 @@ Mon Jan  3 14:16:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * prevent redis event loop stopping on ‘consumer: Cannot connect’ (#1477).
   * Bump redis version to >= 3.4.1.
   * try latest sqs dependencies to fix security warning.
-  * Tests & dependency updates 
+  * Tests & dependency updates
 
 -------------------------------------------------------------------
 Sat Nov  6 18:40:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -74,16 +140,16 @@ Sat Nov  6 18:40:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 5.2.0:
   * stop mentioning librabbitmq
   * Use ANY from unittest instead of case.mock
-  * fix flake8 in kombu/asynchronous/aws/connection.py 
-  * Dont failfast when pypy3 tests fail 
-  * Return empty list instead of InconsistencyError when exchange table is empty 
+  * fix flake8 in kombu/asynchronous/aws/connection.py
+  * Dont failfast when pypy3 tests fail
+  * Return empty list instead of InconsistencyError when exchange table is empty
 
 -------------------------------------------------------------------
 Wed Jun 30 09:16:13 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.1.0
   * Add support for SQLAlchemy 1.4.
-  * prepare_accept_content() now raises SerializerNotInstalled instead of 
+  * prepare_accept_content() now raises SerializerNotInstalled instead of
     KeyError.
   * Wheels are no longer universal.
   * Remove python2 compatibility code
@@ -100,7 +166,7 @@ Mon Nov 16 01:50:08 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Adjusted the stable documentation's version in Sphinx's configuration
     since that was overlooked in the latest release
   * BREAKING CHANGE: Dropped support for Python 2 (#1232)
-  * Add an SQS transport option for custom botocore config (#1219) 
+  * Add an SQS transport option for custom botocore config (#1219)
 
 -------------------------------------------------------------------
 Thu Jul  9 06:20:03 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
@@ -178,14 +244,14 @@ Fri Dec 13 12:23:22 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
 Tue Oct  8 08:39:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.6.5:
-  - Revert _lookup api and correct redis implemetnation. 
+  - Revert _lookup api and correct redis implemetnation.
   - Major overhaul of redis test cases by adding more full featured fakeredis module.
   - Add more test cases to boost coverage of kombu redis transport.
   - Refactor the producer consumer test cases to be based on original mocks and be passing
   - Fix lingering line length issue in test.
   - Sanitise url when include_password is false
   - Pinned pycurl to 7.43.0.2 as it is the latest build with wheels provided
-  - Bump py-amqp to 2.5.2 
+  - Bump py-amqp to 2.5.2
 - Rebase python38.patch
 
 -------------------------------------------------------------------
@@ -194,7 +260,7 @@ Wed Sep 11 13:09:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 - Update to 4.6.4:
   - Use importlib-metadata instead of pkg_resources for better performance
   - Allow users to switch URLs while omitting the resource identifier (#1032)
-  - Don't stop receiving tasks on 503 SQS error. (#1064) 
+  - Don't stop receiving tasks on 503 SQS error. (#1064)
   - Fix maybe declare (#1066)
   - Revert "Revert "Use SIMEMBERS instead of SMEMBERS to check for queue (Redis Broker)
   - Fix MongoDB backend to work properly with TTL (#1076)
@@ -596,7 +662,7 @@ Tue Jan 21 13:48:22 UTC 2014 - dmueller@suse.com
 
 - update to 3.0.10:
   * Now depends on amqp 1.4.1.
-  * maybe_declare now raises a “recoverable connection error” 
+  * maybe_declare now raises a “recoverable connection error”
   if the channel is disconnected
   * Redis: Consumer.cancel() is now thread safe.
   * Fixed “unhashable type” error on Python 3
@@ -665,7 +731,7 @@ Mon Sep 16 14:32:40 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Tue Sep  3 08:08:47 UTC 2013 - dmueller@suse.com
 
-- update to 2.5.14: 
+- update to 2.5.14:
   * safe_str did not work properly resulting in UnicodeDecodeError
   * Now depends on amqp 1.0.13
   * Fixed typo in Django functional tests.
@@ -1410,7 +1476,7 @@ Tue Jan 17 01:15:23 UTC 2012 - alexandre@exatati.com.br
   - Producer.publish now supports automatic retry.
   - Producer.publish now supports a declare keyword argument.
   Fixes
-  - Redis transport: Timeout was multiplied by 1000 seconds when 
+  - Redis transport: Timeout was multiplied by 1000 seconds when
     using select for event I/O (Issue #86).
 
 -------------------------------------------------------------------
