@@ -7,4 +7,12 @@
     <comment>This was part of frescobaldi and is now a separate package.</comment>
     <requestid>1093601</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a26a9c9ac1c98e586d1b3e194de5ac9a</srcmd5>
+    <version>0.9.8</version>
+    <time>1706807175</time>
+    <user>anag+factory</user>
+    <comment>- Enable SLE15 python module</comment>
+    <requestid>1143343</requestid>
+  </revision>
 </revisionlist>
