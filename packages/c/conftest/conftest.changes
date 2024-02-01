@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 01 06:25:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.49.0:
+  * fix: Add tls flag to test command (#908)
+  * build(deps): bump alpine from 3.19.0 to 3.19.1 (#910)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.60.0
+    to 0.61.0 (#909)
+  * build(deps): bump golang from 1.21.5-alpine to 1.21.6-alpine
+    (#906)
+  * feat: Raise error when problematic use of the if keyword is
+    encountered (#902)
+  * ci: s390x architecture added in the goarch list (#905)
+
+-------------------------------------------------------------------
 Thu Jan 04 17:51:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.48.0:
@@ -360,4 +374,4 @@ Fri Dec 16 09:43:19 UTC 2022 - rombert@apache.org
 -------------------------------------------------------------------
 Tue Oct 19 08:21:38 UTC 2021 - Robert Munteanu <rombert@apache.org>
 
-- Initial pacakge 
+- Initial pacakge
