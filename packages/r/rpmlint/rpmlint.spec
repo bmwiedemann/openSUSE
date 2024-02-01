@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package rpmlint
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -23,7 +23,7 @@
 %define name_suffix -%{flavor}
 %endif
 Name:           rpmlint%{name_suffix}
-Version:        2.5.0+git20240115.66db794
+Version:        2.5.0+git20240201.be433b6
 Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
