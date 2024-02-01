@@ -34,6 +34,12 @@ Patch6:         lparstat-report-mixed-SMT-state.patch
 Patch7:         lparstat-Fix-offline-threads-uninitialized-entries.patch
 Patch8:         ppc64_cpu-Support-partial-SMT-level-through-SYS-FS-s.patch
 Patch9:         powerpc-utils-scripts-ofpathname-handle-nsid-of-nvme.patch
+Patch10:        bootlist-Support-multiple-dev-paths-for-a-nvme-boot-.patch
+Patch11:        rtas_dbg-Fix-the-large-negative-values-in-rtas_dbg.patch
+Patch12:        powerpc-nvram-fix-segmentation-fault-issue-in-print-.patch
+Patch13:        powerpc-nvram-Fix-Segmentation-fault-issue-in-nvram-.patch
+Patch14:        nvram-man-page-and-help-output-are-not-in-sync.patch
+Patch15:        ppc64_cpu-info-fix-bad-report-when-non-continuous-CP.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

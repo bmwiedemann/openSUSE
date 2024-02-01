@@ -1,0 +1,169 @@
+From 882335a30d04032d2684e165f70646b368a788b4 Mon Sep 17 00:00:00 2001
+From: Wen Xiong <wenxiong@linux.ibm.com>
+Date: Tue, 30 Jan 2024 10:49:13 -0600
+Subject: [PATCH] bootlist: Support multiple dev paths for a nvme boot device
+
+Multipath splitter drawer is going to support two physical paths for
+each nvme device.
+This patch adds the support for multiple device/of paths for a nvme boot
+device.
+
+For example,
+#lsslot -c pci
+U50EE.001.WZS000E-P3-C1-R1  U.2 PCI-E capable, Rev 4, 4x lanes with 2x
+lanes connected  0581:10:00.0
+U50EE.001.WZS000E-P3-C1-R2  U.2 PCI-E capable, Rev 4, 4x lanes with 2x
+lanes connected  0521:10:00.0
+
+#nvme list-subsys
+nvme-subsys1 -
+NQN=nqn.1994-11.com.samsung:nvme:PM1735a:2.5-inch:S6RUNE0R900042
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:3c6c1ace-e9b1-4a17-8ff0-6a84d3dd15f4
+               iopolicy=numa
+\
+ +- nvme1 pcie 0523:20:00.0 live
+ +- nvme0 pcie 0583:20:00.0 live
+
+# bootlist -m normal nvme1n1
+# bootlist -m normal -o
+nvme0
+nvme1n1
+#bootlist -m normal -r
+/pci@800000020000583/pci1014,6bc@0/namespace@1
+/pci@800000020000523/pci1014,6bc@0/namespace@1
+
+Signed-off-by: Wen Xiong <wenxiong@linux.ibm.com>
+[tyreld: fixup whitespace errors]
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ scripts/bootlist | 80 +++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 66 insertions(+), 14 deletions(-)
+
+diff --git a/scripts/bootlist b/scripts/bootlist
+index cc8718e..58c090f 100755
+--- a/scripts/bootlist
++++ b/scripts/bootlist
+@@ -304,6 +304,21 @@ is_nvmf_device()
+ 	fi
+ }
+ 
++# is_multipath_nvme_device
++# Check to see if this is a multipath nvme device
++#
++is_multipath_nvme_device()
++{
++	local res
++
++	res=`$FIND /sys/devices/virtual/nvme-subsystem -name $1 2>/dev/null`
++	if [[ ${#res} = 0 ]]; then
++		echo "no"
++	else
++		echo "yes"
++	fi
++}
++
+ # get_link
+ # return the directory path that a link points to.
+ # The only parameter is the link name.
+@@ -340,6 +355,32 @@ add_nvmf()
+ 	fi
+ }
+ 
++add_multipath_nvme()
++{
++	local DEVNAME=$1
++
++	ctrl_name=$DEVNAME
++	local startctr=$ctr
++
++	local dir
++	for dir in `$FIND /sys/devices/virtual/nvme-subsystem -name "$ctrl_name"`; do
++		cd $dir
++		cd ..
++		for slave in `ls -d $PWD/nvme*`; do
++		    slavedev=${slave##*/}
++		    if [[ "$slavedev" != *nvme*n* ]] ; then
++			    LOGICAL_NAMES[$ctr]=${slavedev}
++			    ctr=$[$ctr + 1]
++		    fi
++		done
++	done
++
++	if [[ "$startctr" = "$ctr" ]] ; then
++		LOGICAL_NAMES[$ctr]=$1
++		ctr=$[$ctr + 1]
++	fi
++}
++
+ add_logical()
+ {
+     local DEVNAME=$1
+@@ -487,31 +528,40 @@ while [[ -n $1 ]]; do
+         if [[ "$1" == *"dm-"* ]] ; then
+             add_logical $1
+         else
+-            if [[ "$1" == *"nvme-of"* ]]; then
++            if [[ "$1" == *"nvme-of"* ]] || [[ "$1" == *"namespace"* ]]; then
+                 ctrl_name=`get_logical_device_name $1`
++		master_of_path=$1
+             else
+             	ctrl_name=$1
+             	ctrl_name=${ctrl_name##*/}
++		master_of_path=`get_of_device_name $1`
+             fi
++
++	    if [[ -z $master_of_path ]]; then
++                echo "Device $1 does not appear to be valid." >&2
++                exit 1
++            fi
++
+             ctrl_name="${ctrl_name%n[0-9]*}"
+             is_nvmf=$(is_nvmf_device $ctrl_name)
+             if [[ $is_nvmf = "yes" ]]; then
+-                if [[ "$1" == *"nvme-of"* ]]; then
+-                    master_of_path=$1
+-                else
+-                    master_of_path=`get_of_device_name $1`
+-                fi
+-
+-                if [[ -z $master_of_path ]]; then
+-                    echo "Device $1 does not appear to be valid." >&2
+-                    exit 1
+-                fi
+-
+                 namespace_base=${master_of_path##*/}
+                 DEVTYPE="nvme-of"
+                 add_nvmf $ctrl_name
+             else
+-                add_logical $1
++		is_multipath_nvme=$(is_multipath_nvme_device $ctrl_name)
++                if [[ $is_multipath_nvme = "yes" ]]; then
++                    if [[ "$master_of_path" == *namespace* ]] ; then
++                        namespace_base=${master_of_path##*/}
++		    else
++		        echo "Device $1 does not appear to be valid." >&2
++		        exit 1
++                    fi
++                    DEVTYPE="multi-nvme"
++                    add_multipath_nvme $ctrl_name
++                else
++                    add_logical $1
++		fi
+             fi
+         fi
+     fi
+@@ -534,8 +584,10 @@ if [[ ${#LOGICAL_NAMES[*]} -ne 0 ]]; then
+         if [[ -z ${OF_DEVPATH[$ctr]} ]]; then
+ 	    # See if this is an OF pathname
+ 	    OF_DEVPATH[$ctr]=`get_of_device_name ${LOGICAL_NAMES[$ctr]}`
+-	    if [[ $DEVTYPE = "nvme-of" ]]; then
++	    if [[ $DEVTYPE = "nvme-of" ]] || [[ $DEVTYPE = "multi-nvme" ]]; then
+ 		    OF_DEVPATH[$ctr]=${OF_DEVPATH[$ctr]}/$namespace_base
++            else
++		    OF_DEVPATH[$ctr]=${OF_DEVPATH[$ctr]}
+ 	    fi
+ 	else
+ 	    OF_DEVPATH[$ctr]=${LOGICAL_NAMES[$ctr]}
+-- 
+2.43.0
+

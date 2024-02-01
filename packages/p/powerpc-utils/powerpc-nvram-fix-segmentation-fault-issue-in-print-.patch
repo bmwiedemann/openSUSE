@@ -1,0 +1,52 @@
+From 3f72b8326a2fc9a9dffb4b31d0ce3abf12e24751 Mon Sep 17 00:00:00 2001
+From: Likhitha Korrapati <likhitha@linux.ibm.com>
+Date: Thu, 25 Jan 2024 15:44:02 +0530
+Subject: [PATCH] powerpc/nvram: fix segmentation fault issue in print-config
+
+print-config option in nvram results in segmentation fault when the
+user provides a very large value.
+
+without the patch:
+[root@xxx powerpc-utils]# nvram --print-config=real-mode?
+true
+[root@xxx powerpc-utils]# nvram --print-config=$(perl -e 'p
+rint "A"x1000000')
+Segmentation fault (core dumped)
+
+The Segmentation fault occurs because the code tries to access memory
+beyond the bounds of the data at index varlen. varlen is the length of
+the string provided by the user.
+
+This patch adds a condition to check whether the length of the data is
+greater than varlen to prevent accessing out of bounds.
+
+with the patch:
+[root@xxx powerpc-utils]# ./src/nvram --print-config=real-m
+ode?
+true
+[root@xxx powerpc-utils]# ./src/nvram --print-config=$(perl
+ -e 'print "A"x1000000')
+
+Reported-by: Shirisha Ganta <shirisha@linux.ibm.com>
+Signed-off-by: Likhitha Korrapati <likhitha@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/nvram.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/nvram.c b/src/nvram.c
+index f051e9c..095e747 100644
+--- a/src/nvram.c
++++ b/src/nvram.c
+@@ -1280,7 +1280,7 @@ print_of_config(struct nvram *nvram, char *config_var, char *pname,
+ 
+ 	data = (char *)phead + sizeof(*phead);
+ 	while (*data != '\0') {
+-	    if ((data[varlen] == '=') && 
++	    if (strlen(data) > varlen && (data[varlen] == '=') &&
+ 		strncmp(config_var, data, varlen) == 0) {
+ 		printf("%s%c", data + varlen + 1, terminator);
+ 		rc = 0;
+-- 
+2.43.0
+

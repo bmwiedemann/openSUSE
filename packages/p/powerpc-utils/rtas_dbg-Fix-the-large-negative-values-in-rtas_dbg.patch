@@ -1,0 +1,75 @@
+From 9caa77e4477a73064a6deea253fd3faea32648fb Mon Sep 17 00:00:00 2001
+From: Likhitha Korrapati <likhitha@linux.ibm.com>
+Date: Fri, 17 Nov 2023 01:42:29 -0500
+Subject: [PATCH] rtas_dbg: Fix the large negative values in rtas_dbg
+
+without the patch:
+[root@xxx powerpc-utils]# rtas_dbg -l ibm,rks-hcalls
+Could not get rtas token for ibm,indicator-0002
+Could not get rtas token for ibm,integrated-stop-self
+Could not get rtas token for ibm,indicator-9005
+Could not get rtas token for ibm,extended-os-term
+Could not get rtas token for ibm,indicator-0001
+Could not get rtas token for ibm,sensor-0009
+Could not get rtas token for ibm,recoverable-epow3
+Could not get rtas token for ibm,sensor-9005
+Could not get rtas token for ibm,change-msix-capable
+Could not get rtas token for ibm,sensor-0005
+Could not get rtas token for ibm,sensor-0001
+ibm,rks-hcalls                          -536870912
+
+The large negatives values are due to incompatible format(%d).
+The data type of the token variable is uint32_t.This patch
+modifies the format(%u) to align with its data type(uint32_t).
+
+with the patch:
+[root@xxx powerpc-utils]# ./src/rtas_dbg -l ibm,rks-hcalls
+Could not get rtas token for ibm,indicator-0002
+Could not get rtas token for ibm,integrated-stop-self
+Could not get rtas token for ibm,indicator-9005
+Could not get rtas token for ibm,extended-os-term
+Could not get rtas token for ibm,indicator-0001
+Could not get rtas token for ibm,sensor-0009
+Could not get rtas token for ibm,recoverable-epow3
+Could not get rtas token for ibm,sensor-9005
+Could not get rtas token for ibm,change-msix-capable
+Could not get rtas token for ibm,sensor-0005
+Could not get rtas token for ibm,sensor-0001
+ibm,rks-hcalls                          3758096384
+
+Reported-by: Shirisha Ganta <shirisha@linux.ibm.com>
+Signed-off-by: Likhitha Korrapati <likhitha@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/rtas_dbg.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/rtas_dbg.c b/src/rtas_dbg.c
+index ebc7474..6c7854a 100644
+--- a/src/rtas_dbg.c
++++ b/src/rtas_dbg.c
+@@ -200,10 +200,10 @@ void print_rtas_tokens(struct rtas_token *tok, struct rtas_token *tok_list)
+ 	struct rtas_token *t;
+ 
+ 	if (tok)
+-		printf("%-40s%d\n", tok->name, tok->token);
++		printf("%-40s%u\n", tok->name, tok->token);
+ 	else {
+ 		for (t = tok_list; t; t = t->next)
+-			printf("%-40s%d\n", t->name, t->token);
++			printf("%-40s%u\n", t->name, t->token);
+ 	}
+ }
+ 
+@@ -217,7 +217,7 @@ int set_rtas_dbg(struct rtas_token *tok)
+ 	args.nret = htobe32(1);
+ 	args.args[0] = htobe32(tok->token);
+ 
+-	printf("Enabling rtas debug for %s (%d)\n", tok->name, tok->token);
++	printf("Enabling rtas debug for %s (%u)\n", tok->name, tok->token);
+ 
+ 	rc = rtas(&args);
+ 
+-- 
+2.43.0
+

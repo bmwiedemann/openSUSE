@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb  1 09:17:33 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Support muliple NVMe device paths in bootlist (bsc#1219234 ltc#204975)
+  * bootlist-Support-multiple-dev-paths-for-a-nvme-boot-.patch
+- Add fixes merged upstream (bsc#1219433)
+  * rtas_dbg-Fix-the-large-negative-values-in-rtas_dbg.patch
+  * powerpc-nvram-fix-segmentation-fault-issue-in-print-.patch
+  * powerpc-nvram-Fix-Segmentation-fault-issue-in-nvram-.patch
+  * nvram-man-page-and-help-output-are-not-in-sync.patch
+  * ppc64_cpu-info-fix-bad-report-when-non-continuous-CP.patch
+
+-------------------------------------------------------------------
 Thu Jan  4 16:11:51 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix support for nvme devices with nsid greater than 10 (bsc#1217925 ltc#204474)
@@ -42,7 +54,7 @@ Mon Jan  2 10:27:16 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
   + lparstat-Fix-display-of-mode-for-dedicated-donating-.patch
 - Fix cpu utilization display
   + lparstat-Fix-array-overflow-issue.patch
-- Fix setting primaty HNV link when using NM
+- Fix setting primaty HNV link when using NM (bsc#1195404 ltc#196259).
   + hcnmgr-Fix-setting-primary-slave-across-reboots.patch
 
 -------------------------------------------------------------------

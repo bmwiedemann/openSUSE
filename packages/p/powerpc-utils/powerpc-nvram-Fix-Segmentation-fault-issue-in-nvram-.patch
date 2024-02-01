@@ -1,0 +1,56 @@
+From a6d31caf4eaa453d3ec879f02163b3a515789b85 Mon Sep 17 00:00:00 2001
+From: Likhitha Korrapati <likhitha@linux.ibm.com>
+Date: Mon, 11 Sep 2023 05:23:37 -0500
+Subject: [PATCH] powerpc/nvram: Fix Segmentation fault issue in nvram-size.
+
+nvram-size option results in segmentation fault when the user
+specifies value larger than the default nvram size
+
+Without the patch:
+[root@xxx ~]# nvram --nvram-size 1048592
+nvram: WARNING: expected 1048592 bytes, but only read 15360!
+Segmentation fault (core dumped)
+
+Segmentation fault is caused because the phead->length is becoming 0.
+And because of this the p_start doesn't get updated which makes the
+while loop run infinitely resulting in segmentation fault.
+This patch adds a condition check for phead->length to avoid infinite
+while loop.
+
+With the patch:
+[root@xxx src]# ./nvram --nvram-size 1048592
+./nvram: WARNING: expected 1048592 bytes, but only read 15360!
+[root@xxx src]# ./nvram --nvram-size 268435456
+./nvram: WARNING: expected 268435456 bytes, but only read 15360!
+[root@xxx src]#
+
+Reported-by: Shirisha Ganta <shirisha@linux.ibm.com>
+Signed-off-by: Likhitha Korrapati <likhitha@linux.ibm.com>
+[tyreld: fixed up else block]
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/nvram.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/nvram.c b/src/nvram.c
+index 095e747..1987c3d 100644
+--- a/src/nvram.c
++++ b/src/nvram.c
+@@ -460,8 +460,12 @@ nvram_parse_partitions(struct nvram *nvram)
+ 	c_sum = checksum(phead);
+ 	if (c_sum != phead->checksum)
+ 	    warn_msg("this partition checksum should be %02x!\n", c_sum);
+-	phead->length = be16toh(phead->length);
+-	p_start += phead->length * NVRAM_BLOCK_SIZE;
++	if (phead->length != 0) {
++		phead->length = be16toh(phead->length);
++		p_start += phead->length * NVRAM_BLOCK_SIZE;
++	} else {
++		break;
++	}
+     }
+ 
+     if (verbose)
+-- 
+2.43.0
+
