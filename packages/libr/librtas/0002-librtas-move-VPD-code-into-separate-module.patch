@@ -1,4 +1,4 @@
-From 12a2764fd7efe7c52b53579a67edb641d662f54f Mon Sep 17 00:00:00 2001
+From ee06898b1e7807a6e201b281ffc8ee3fa96136f4 Mon Sep 17 00:00:00 2001
 From: Nathan Lynch <nathanl@linux.ibm.com>
 Date: Sat, 12 Aug 2023 12:44:38 -0500
 Subject: [PATCH 2/6] librtas: move VPD code into separate module
@@ -8,6 +8,7 @@ interface exposed by newer kernels. This will be a lot of additional
 code, so move it out of syscall_calls.c.
 
 Signed-off-by: Nathan Lynch <nathanl@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
 ---
  Makefile.am                 |  1 +
  librtas_src/syscall_calls.c | 67 ------------------------------
@@ -193,5 +194,5 @@ index 0000000..b2689fb
 +	return rc ? rc : status;
 +}
 -- 
-2.42.0
+2.43.0
 

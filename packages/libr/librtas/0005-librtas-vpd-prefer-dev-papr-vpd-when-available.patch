@@ -1,12 +1,10 @@
-From 3fffa2c147a69fac72b0159be967ecbe9c751dfb Mon Sep 17 00:00:00 2001
+From 57d5e1c07b40e56f6209e7b806208818464f8e8d Mon Sep 17 00:00:00 2001
 From: Nathan Lynch <nathanl@linux.ibm.com>
 Date: Sat, 12 Aug 2023 13:27:39 -0500
 Subject: [PATCH 5/6] librtas/vpd: prefer /dev/papr-vpd when available
 
-Change rtas_get_vpd() to prefer the /dev/papr-vpd character device as
-proposed for the kernel here:
-
-https://lore.kernel.org/linuxppc-dev/20230822-papr-sys_rtas-vs-lockdown-v1-0-932623cf3c7b@linux.ibm.com/
+Change rtas_get_vpd() to prefer the /dev/papr-vpd character device
+expected in Linux v6.8.
 
 On the first invocation of rtas_get_vpd(), probe for the new ABI and
 initialize an internal function pointer according to the result. Use
@@ -46,17 +44,27 @@ change. This is the primary (and perhaps only) user of rtas_get_vpd().
 For now, carry a copy of the kernel uapi header.
 
 Signed-off-by: Nathan Lynch <nathanl@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
 ---
- Makefile.am            |   3 +-
+ Makefile.am            |   5 +-
  librtas_src/papr-vpd.h |  22 ++++++
  librtas_src/vpd.c      | 155 ++++++++++++++++++++++++++++++++++++-----
- 3 files changed, 161 insertions(+), 19 deletions(-)
+ 3 files changed, 162 insertions(+), 20 deletions(-)
  create mode 100644 librtas_src/papr-vpd.h
 
 diff --git a/Makefile.am b/Makefile.am
-index d0cabfb..d3513e9 100644
+index d0cabfb..89a6eaa 100644
 --- a/Makefile.am
 +++ b/Makefile.am
+@@ -26,7 +26,7 @@ LIBRTAS_AGE = 0
+ LIBRTAS_LIBRARY_VERSION = $(LIBRTAS_CURRENT):$(LIBRTAS_REVISION):$(LIBRTAS_AGE)
+ 
+ lib_LTLIBRARIES += librtas.la
+-librtas_la_LDFLAGS = -version-info $(LIBRTAS_LIBRARY_VERSION)
++librtas_la_LDFLAGS = -version-info $(LIBRTAS_LIBRARY_VERSION) -lpthread
+ librtas_la_SOURCES = \
+ 	librtas_src/vpd.c \
+ 	librtas_src/ofdt.c \
 @@ -37,7 +37,8 @@ librtas_la_SOURCES = \
  library_include_HEADERS += librtas_src/librtas.h
  noinst_HEADERS += \
@@ -275,5 +283,5 @@ index b2689fb..544560f 100644
 +			  seq_next, bytes_ret);
 +}
 -- 
-2.42.0
+2.43.0
 

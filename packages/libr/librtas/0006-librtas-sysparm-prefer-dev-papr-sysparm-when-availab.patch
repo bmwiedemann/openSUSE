@@ -1,12 +1,10 @@
-From c98bf4d902821cfeb83cd6037a36a0bf208f842c Mon Sep 17 00:00:00 2001
+From d8d4ee6f5052704ac82bb8aa8d8fe8816dac41cd Mon Sep 17 00:00:00 2001
 From: Nathan Lynch <nathanl@linux.ibm.com>
 Date: Mon, 25 Sep 2023 11:42:26 -0500
 Subject: [PATCH 6/6] librtas/sysparm: prefer /dev/papr-sysparm when available
 
 Change rtas_get_sysparm() and rtas_set_sysparm() to prefer the
-/dev/papr-sysparm character device as proposed for the kernel here:
-
-[[[ FIXME ]]]
+/dev/papr-sysparm character device expected in Linux v6.8.
 
 On the first invocation of either function, probe for the new ABI and
 initialize internal function pointers according to the result. Use
@@ -24,6 +22,7 @@ recognize.
 For now, carry a copy of the kernel uapi header.
 
 Signed-off-by: Nathan Lynch <nathanl@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
 ---
  Makefile.am                |   1 +
  librtas_src/papr-sysparm.h |  58 +++++++++++++++
@@ -32,7 +31,7 @@ Signed-off-by: Nathan Lynch <nathanl@linux.ibm.com>
  create mode 100644 librtas_src/papr-sysparm.h
 
 diff --git a/Makefile.am b/Makefile.am
-index d3513e9..29b3b76 100644
+index 89a6eaa..67257e3 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -38,6 +38,7 @@ library_include_HEADERS += librtas_src/librtas.h
@@ -282,5 +281,5 @@ index 40af55e..b4d2054 100644
 +	return set_sysparm_fn(parameter, data);
 +}
 -- 
-2.42.0
+2.43.0
 

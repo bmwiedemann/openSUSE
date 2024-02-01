@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  1 08:44:01 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Update character device patches to current version.
+  * folded link-lpthread.patch into 0005-librtas-vpd-prefer-dev-papr-vpd-when-available.patch
+
+-------------------------------------------------------------------
 Mon Nov 20 16:14:19 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Add support for new rtas kernel interface for VPD and sysparm (jsc#PED-4541).
