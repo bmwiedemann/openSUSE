@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-remote-desktop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,10 @@ BuildRequires:  pkgconfig(freerdp-client2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp-server2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(fuse3) >= 3.9.1
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib_version}
@@ -78,6 +82,9 @@ GNOME desktop environment.
 %autosetup -p1
 
 %build
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+export CC=gcc-13
+%endif
 %meson \
 	-D vnc=true \
 	-D tests=false \
