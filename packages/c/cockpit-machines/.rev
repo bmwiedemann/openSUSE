@@ -148,4 +148,15 @@
   * Performance and stability improvements</comment>
     <requestid>1135663</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>82ee7fecb7e915985c61d71283c0dbda</srcmd5>
+    <version>305</version>
+    <time>1706807089</time>
+    <user>anag+factory</user>
+    <comment>- Update to 305:
+  * Avoid creating duplicate MACs
+  * Fix page crash on invalid domain startup times
+  * Other small fixes</comment>
+    <requestid>1143003</requestid>
+  </revision>
 </revisionlist>
