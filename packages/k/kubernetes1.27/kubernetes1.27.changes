@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jan 24 14:16:40 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update .spec file to remove go version build requirements:
+  * above build requirement causing build failures with following error:
+     - `go: download go1.20.13 for linux/amd64: toolchain not available`
+     - ref: https://go.dev/doc/toolchain
+
+- Update to version 1.27.10:
+  * Revert "Graduate Evented PLEG to Beta"
+  * [go] Bump images, dependencies and versions to go 1.20.13 and distroless iptables to 0.2.9
+  * e2e framework: adapt unit test to Go 1.22
+  * Handle edge cases in seat demand stats
+  * .*: bump golang.org/x/tools to v0.16.1
+  * fix: 119921
+  * Use a separate function for checking if device was reconstructed
+  * Add tests for checking of uncertain device paths
+  * Fix device uncertain errors on reboot
+  * fix(scheduler): fix incorrect loop logic in MultiPoint to avoid a plugin being loaded multiple times
+  * etcd: Update to version 3.5.10
+  * fix: smb file share unavailable issue when it's deleted
+
+-------------------------------------------------------------------
+Wed Jan 24 14:14:50 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 1.27.9:
+  * run update-vendor script
+  * [go] Bump images, dependencies and versions to go 1.20.12
+  * pass GOTOOLCHAIN to build containers
+  * handle GOTOOLCHAIN in kube::golang::verify_go_version
+  * Move adding GroupVersion log until after an update is confirmed
+  * fix: requeue pods rejected by Extenders properly
+  * Bump distroless-iptables to 0.2.8 based on Go 1.20.11
+  * Make StatefulSet restart pods with phase Succeeded
+  * run hack scripts to update cyphar/filepath-securejoin to v0.2.4 correctly
+  * update filepath-securejoin dependency to 0.2.4 to fix security vulnerability
+  * Fix panic when process RunScorePlugins for cap out of range
+  * e2e: bootstrap vsphere tests earlier
+
+-------------------------------------------------------------------
 Fri Nov 24 06:48:00 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update .spec file to bump go version build requirements:
