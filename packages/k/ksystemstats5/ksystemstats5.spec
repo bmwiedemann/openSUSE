@@ -42,8 +42,8 @@ BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  libsensors4-devel
 #%%endif
 %if 0%{?suse_version} < 1550
-BuildRequires:  gcc10-PIE
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(KF5CoreAddons)
@@ -75,7 +75,7 @@ KSystemStats is a daemon that collects statistics about the running system.
 
 %build
 %if 0%{?suse_version} < 1550
-  export CXX=g++-10
+  export CXX=g++-13
 %endif
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON
 %cmake_build
