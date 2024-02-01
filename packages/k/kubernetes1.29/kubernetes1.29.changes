@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Tue Jan 23 10:07:17 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 1.29.1:
+  * Revert "Graduate Evented PLEG to Beta"
+  * [go] Bump images, dependencies and versions to go 1.21.6 and distroless iptables to 0.4.4
+  * Make OpenAPIGetter tolerant of nil
+  * use context for lazy evaluation.
+  * Initialize default attach func regardless of the value of flag
+  * .*: bump golang.org/x/tools to v0.16.1
+  * fix: 119921
+  * Keep presence cost to 0 to ensure backward compatibility.
+  * fix(scheduler): fix incorrect loop logic in MultiPoint to avoid a plugin being loaded multiple times
+  * fix falky test pkg/registry/core/persistentvolume/storage TestUpdateStatus
+  * Use a separate function for checking if device was reconstructed
+  * Add tests for checking of uncertain device paths
+  * Fix device uncertain errors on reboot
+  * Fix CSI migration for vSphere volumes
+  * Wire in field dropping for CRDs
+  * Revert "scheduler/nodeaffinity: reduce pod scheduling latency"
+  * Revert "scheduler/NodeUnschedulable: reduce pod scheduling latency"
+  * kube-proxy: Fix etp:Local for externalIPs
+  * Add unit test for Job Controller for panic when PodFailurePolicy is used on 1.28
+
+------------------------------------------------------------------
+Tue Jan 23 10:02:04 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- initial package for Kubernetes v1.29.0 
