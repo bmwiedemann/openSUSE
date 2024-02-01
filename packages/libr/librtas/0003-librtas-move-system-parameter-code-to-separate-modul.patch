@@ -1,4 +1,4 @@
-From 80dfb541257cb88519855543324478cbb0f1f1b3 Mon Sep 17 00:00:00 2001
+From c47176a5f1ce7bb16ba02b8c8520e02b285d7e9f Mon Sep 17 00:00:00 2001
 From: Nathan Lynch <nathanl@linux.ibm.com>
 Date: Mon, 25 Sep 2023 11:32:33 -0500
 Subject: [PATCH 3/6] librtas: move system parameter code to separate module
@@ -8,6 +8,7 @@ different interface exposed by newer kernels. This will involve adding
 a nontrivial amount of code, so move it out of syscall_calls.c.
 
 Signed-off-by: Nathan Lynch <nathanl@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
 ---
  Makefile.am                 |  3 +-
  librtas_src/syscall_calls.c | 84 -----------------------------------
@@ -226,5 +227,5 @@ index 0000000..40af55e
 +	return rc ? rc : status;
 +}
 -- 
-2.42.0
+2.43.0
 

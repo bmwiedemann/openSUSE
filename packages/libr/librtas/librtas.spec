@@ -1,7 +1,7 @@
 #
 # spec file for package librtas
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ Patch3:         0003-librtas-move-system-parameter-code-to-separate-modul.patch
 Patch4:         0004-librtas-vendor-papr-miscdev.h.patch
 Patch5:         0005-librtas-vpd-prefer-dev-papr-vpd-when-available.patch
 Patch6:         0006-librtas-sysparm-prefer-dev-papr-sysparm-when-availab.patch
-Patch7:         link-lpthread.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
