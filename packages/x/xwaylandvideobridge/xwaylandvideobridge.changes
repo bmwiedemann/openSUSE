@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 31 17:34:21 UTC 2024 - christophe@krop.fr
+
+- Update to version 0.4.0+git12:
+  * Also skip the switcher (kde#477025)
+  * Do not start in an X11 session and opt out of session managment
+- Switch to the latest GCC version available in Leap for packages
+  that can't build with the default compiler
+
+-------------------------------------------------------------------
 Mon Oct  9 06:59:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Initial commit

@@ -17,7 +17,7 @@
 
 
 Name:           xwaylandvideobridge
-Version:        0.2+git6
+Version:        0.4.0+git12
 Release:        0
 Summary:        XWayland Video Bridge
 License:        GPL-2.0-only or GPL-3.0-or-later
@@ -43,8 +43,8 @@ BuildRequires:  pkgconfig(xcb-record)
 BuildRequires:  pkgconfig(xcb-xfixes)
 %if 0%{?suse_version} < 1600
 # Needs C++20
-BuildRequires:  gcc12-c++
-BuildRequires:  gcc12-PIE
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
 %endif
 
 %description
@@ -57,8 +57,8 @@ This tool allows us to share specific windows to X11 clients, but within the con
 
 %build
 %if 0%{?suse_version} < 1600
-export CC=gcc-12
-export CXX=g++-12
+export CC=gcc-13
+export CXX=g++-13
 %endif
 %cmake_kf5 -d build
 %cmake_build
@@ -69,10 +69,11 @@ export CXX=g++-12
 
 %files -f %{name}.lang
 %license LICENSES/*
-%{_kf5_bindir}/xwaylandvideobridge
 %{_kf5_applicationsdir}/org.kde.xwaylandvideobridge.desktop
-%{_kf5_iconsdir}/hicolor/scalable/apps/xwaylandvideobridge.svg
-%{_kf5_debugdir}/xwaylandvideobridge.categories
 %{_kf5_appstreamdir}/org.kde.xwaylandvideobridge.appdata.xml
+%{_kf5_bindir}/xwaylandvideobridge
+%{_kf5_configdir}/autostart/org.kde.xwaylandvideobridge.desktop
+%{_kf5_debugdir}/xwaylandvideobridge.categories
+%{_kf5_iconsdir}/hicolor/scalable/apps/xwaylandvideobridge.svg
 
 %changelog
