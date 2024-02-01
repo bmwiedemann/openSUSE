@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 31 19:51:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.61
+  * SSA: change xds_override_host policy to manage subchannels
+    based on last-used time rather than EDS health state
+  * xDS: read connection idle timeout from CDS resource
+  * xDS: move CDS and EDS watchers into xds resolver
+  * alpn: Remove grpc-exp experimental ALPN protocol
+- Add terminate.patch
+
+-------------------------------------------------------------------
 Mon Jan 29 17:25:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Force-replace all /usr/bin/env python by python3.

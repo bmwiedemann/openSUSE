@@ -16,11 +16,11 @@
 #
 
 
-%define lver 37
-%define lverp 1_60
+%define lver 38
+%define lverp 1_61
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.60.0
+Version:        1.61.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -28,12 +28,9 @@ Group:          Development/Tools/Building
 URL:            https://grpc.io/
 Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
 Source2:        %name-rpmlintrc
-# PATCH-FIX-UPSTREAM ARM-Unaligned-access-fixes.patch gh#Cyan4973/xxHash#651 easyaspi314@users.noreply.github.com
-# Fix unaligned access on ARM
-Patch1:         ARM-Unaligned-access-fixes.patch
-# PATCH-FIX-UPSTREAM Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch gh#Cyan4973/xxHash#651 mattias.ellert@physics.uu.se
-# Fix build on ppc64le on RHEL-7 with gcc-4.8
-Patch2:         Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch
+Patch1:         terminate.patch
+Patch4:         ARM-Unaligned-access-fixes.patch
+Patch5:         Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -126,6 +123,7 @@ This subpackage contains source code of the gRPC reference implementation.
 
 %prep
 %autosetup -N
+%patch -P 1 -p1
 find "." -type f -exec grep -l '/usr/bin/env ' {} + |
 	xargs -r perl -i -lpe \
 	's{#! ?/usr/bin/env python\S*}{#!/usr/bin/python3}g;
@@ -133,8 +131,7 @@ find "." -type f -exec grep -l '/usr/bin/env ' {} + |
 	 s{#! ?/usr/bin/env bash}{#!/bin/bash}g;
 	 s{#! ?/usr/bin/env }{#!/usr/bin/}g;'
 pushd third_party/xxhash
-%patch1 -p1
-%patch2 -p1
+%patch -P 4 -P 5 -p1
 popd
 rm -Rf third_party/abseil-cpp/
 
