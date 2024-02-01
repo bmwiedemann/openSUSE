@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-Twisted
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -48,6 +48,8 @@ Patch4:         twisted-pr12054-testinvokationpy3.12.1.patch
 Patch5:         no-cython_test_exception_raiser.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch6:         remove-dependency-version-upper-bounds.patch
+# PATCH-FIX-UPSTREAM gh#twisted/twisted#2280e5fcd0c9e9d34f5b7650c68f19c1498e49cd
+Patch7:         stop-using-3-arg-throw.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module incremental >= 21.3.0}
@@ -58,7 +60,7 @@ BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # SECTION install requires
 Requires:       python-Automat >= 0.8.0
 Requires:       python-attrs >= 19.2.0
