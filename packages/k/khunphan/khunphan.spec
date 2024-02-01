@@ -37,7 +37,7 @@ Release:        0
 Source0:        http://www.ibiblio.org/pub/Linux/games/strategy/khunphan-0.55.tar.bz2
 Source1:        %name.desktop
 Source2:        configure.ac
-Patch:          khunphan-0.55-codecleanup.diff
+Patch0:         khunphan-0.55-codecleanup.diff
 Patch1:         khunphan-freeglut.diff
 Patch2:         khunphan-DESTDIR.diff
 Patch3:         khunphan-0.55-png_uint_32.diff
@@ -61,11 +61,7 @@ sound effects. Ambient and Drum & Bass music from Nifflas
 
 %prep
 %setup -q
-%patch
-%patch1
-%patch2
-%patch3
-%patch4 -p1
+%autopatch -p1
 chmod -x khunphan/{*.cpp,*.h}
 rm -f aclocal.m4 acinclude.m4 configure.files configure.in*
 cp %{S:2} .

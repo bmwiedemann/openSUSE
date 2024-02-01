@@ -1,5 +1,5 @@
---- khunphan/kpglutuserinterface.cpp
-+++ khunphan/kpglutuserinterface.cpp
+--- a/khunphan/kpglutuserinterface.cpp
++++ b/khunphan/kpglutuserinterface.cpp
 @@ -84,8 +84,7 @@
    char temp[64];
  

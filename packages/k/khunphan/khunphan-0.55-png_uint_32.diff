@@ -1,5 +1,5 @@
---- khunphan/btexture.cpp
-+++ khunphan/btexture.cpp
+--- a/khunphan/btexture.cpp
++++ b/khunphan/btexture.cpp
 @@ -162,10 +162,15 @@
    // read png file info
    png_read_info(png_ptr, info_ptr);

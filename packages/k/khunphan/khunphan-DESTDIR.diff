@@ -1,5 +1,5 @@
---- khunphan/Music/Makefile.am
-+++ khunphan/Music/Makefile.am
+--- a/khunphan/Music/Makefile.am
++++ b/khunphan/Music/Makefile.am
 @@ -4,16 +4,14 @@
  EXTRA_DIST = Cymbals.ogg Earth.ogg Mystery.ogg 
  
@@ -24,8 +24,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Music/Mystery.ogg
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Sounds/Makefile.am
-+++ khunphan/Sounds/Makefile.am
+--- a/khunphan/Sounds/Makefile.am
++++ b/khunphan/Sounds/Makefile.am
 @@ -5,28 +5,22 @@
  EXTRA_DIST = changesetting.ogg gamesolved.ogg movetoken.ogg opengame.ogg openmenu.ogg quitgame.ogg tutorialnext.ogg 
  
@@ -70,8 +70,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/tutorialnext.ogg
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Sounds/bubbles/Makefile.am
-+++ khunphan/Sounds/bubbles/Makefile.am
+--- a/khunphan/Sounds/bubbles/Makefile.am
++++ b/khunphan/Sounds/bubbles/Makefile.am
 @@ -4,10 +4,10 @@
  EXTRA_DIST = movetoken.ogg 
  
@@ -86,8 +86,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/bubbles/movetoken.ogg
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Sounds/marble/Makefile.am
-+++ khunphan/Sounds/marble/Makefile.am
+--- a/khunphan/Sounds/marble/Makefile.am
++++ b/khunphan/Sounds/marble/Makefile.am
 @@ -4,10 +4,10 @@
  EXTRA_DIST = movetoken.ogg 
  
@@ -102,8 +102,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/marble/movetoken.ogg
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Sounds/metal/Makefile.am
-+++ khunphan/Sounds/metal/Makefile.am
+--- a/khunphan/Sounds/metal/Makefile.am
++++ b/khunphan/Sounds/metal/Makefile.am
 @@ -4,10 +4,10 @@
  EXTRA_DIST = movetoken.ogg 
  
@@ -118,8 +118,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/metal/movetoken.ogg
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Sounds/painting/Makefile.am
-+++ khunphan/Sounds/painting/Makefile.am
+--- a/khunphan/Sounds/painting/Makefile.am
++++ b/khunphan/Sounds/painting/Makefile.am
 @@ -4,10 +4,10 @@
  EXTRA_DIST = movetoken.ogg 
  
@@ -134,8 +134,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/painting/movetoken.ogg
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Sounds/rock/Makefile.am
-+++ khunphan/Sounds/rock/Makefile.am
+--- a/khunphan/Sounds/rock/Makefile.am
++++ b/khunphan/Sounds/rock/Makefile.am
 @@ -4,10 +4,10 @@
  EXTRA_DIST = movetoken.ogg 
  
@@ -150,8 +150,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/rock/movetoken.ogg
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Sounds/smily/Makefile.am
-+++ khunphan/Sounds/smily/Makefile.am
+--- a/khunphan/Sounds/smily/Makefile.am
++++ b/khunphan/Sounds/smily/Makefile.am
 @@ -4,10 +4,10 @@
  EXTRA_DIST = movetoken.ogg 
  
@@ -166,8 +166,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Sounds/smily/movetoken.ogg
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Textures/Makefile.am
-+++ khunphan/Textures/Makefile.am
+--- a/khunphan/Textures/Makefile.am
++++ b/khunphan/Textures/Makefile.am
 @@ -5,22 +5,18 @@
  EXTRA_DIST = characters.png logo.png music_on.png sound_on.png soundmusic_off.png 
  
@@ -202,8 +202,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/soundmusic_off.png
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Textures/bubbles/Makefile.am
-+++ khunphan/Textures/bubbles/Makefile.am
+--- a/khunphan/Textures/bubbles/Makefile.am
++++ b/khunphan/Textures/bubbles/Makefile.am
 @@ -4,19 +4,16 @@
  EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
  
@@ -233,8 +233,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/bubbles/texture3.png
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Textures/marble/Makefile.am
-+++ khunphan/Textures/marble/Makefile.am
+--- a/khunphan/Textures/marble/Makefile.am
++++ b/khunphan/Textures/marble/Makefile.am
 @@ -4,19 +4,16 @@
  EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
  
@@ -264,8 +264,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/marble/texture3.png
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Textures/metal/Makefile.am
-+++ khunphan/Textures/metal/Makefile.am
+--- a/khunphan/Textures/metal/Makefile.am
++++ b/khunphan/Textures/metal/Makefile.am
 @@ -4,19 +4,16 @@
  EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
  
@@ -295,8 +295,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/metal/texture3.png
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Textures/painting/Makefile.am
-+++ khunphan/Textures/painting/Makefile.am
+--- a/khunphan/Textures/painting/Makefile.am
++++ b/khunphan/Textures/painting/Makefile.am
 @@ -4,19 +4,16 @@
  EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
  
@@ -326,8 +326,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/painting/texture3.png
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Textures/rock/Makefile.am
-+++ khunphan/Textures/rock/Makefile.am
+--- a/khunphan/Textures/rock/Makefile.am
++++ b/khunphan/Textures/rock/Makefile.am
 @@ -4,19 +4,16 @@
  EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
  
@@ -357,8 +357,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/rock/texture3.png
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Textures/smily/Makefile.am
-+++ khunphan/Textures/smily/Makefile.am
+--- a/khunphan/Textures/smily/Makefile.am
++++ b/khunphan/Textures/smily/Makefile.am
 @@ -4,19 +4,16 @@
  EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
  
@@ -388,8 +388,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/smily/texture3.png
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/Textures/wood/Makefile.am
-+++ khunphan/Textures/wood/Makefile.am
+--- a/khunphan/Textures/wood/Makefile.am
++++ b/khunphan/Textures/wood/Makefile.am
 @@ -4,19 +4,16 @@
  EXTRA_DIST = board.png texture1.png texture2.png texture3.png 
  
@@ -419,8 +419,8 @@
 +	-rm -f $(DESTDIR)$(datadir)/khunphan/Textures/wood/texture3.png
  
  ####### kdevelop will overwrite this part!!! (end)############
---- khunphan/locale/Makefile.am
-+++ khunphan/locale/Makefile.am
+--- a/khunphan/locale/Makefile.am
++++ b/khunphan/locale/Makefile.am
 @@ -4,16 +4,14 @@
  EXTRA_DIST = 900.lang 901.lang 999.lang 
  

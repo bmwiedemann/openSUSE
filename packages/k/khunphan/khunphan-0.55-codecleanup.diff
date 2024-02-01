@@ -1,5 +1,5 @@
---- khunphan/bstring.cpp
-+++ khunphan/bstring.cpp
+--- a/khunphan/bstring.cpp
++++ b/khunphan/bstring.cpp
 @@ -197,8 +197,10 @@
  	char *p;
  
@@ -26,8 +26,8 @@
  } 
  
  char BString::firstchar(void) const
---- khunphan/bstring.h
-+++ khunphan/bstring.h
+--- a/khunphan/bstring.h
++++ b/khunphan/bstring.h
 @@ -122,35 +122,35 @@
  
  void FScat(const char *s1, const char *s2, BString& s3);
@@ -92,8 +92,8 @@
  
  #endif // #ifndef __bstring_h__
  
---- khunphan/bthreadfactory.cpp
-+++ khunphan/bthreadfactory.cpp
+--- a/khunphan/bthreadfactory.cpp
++++ b/khunphan/bthreadfactory.cpp
 @@ -39,7 +39,7 @@
        atexit ( BThreadFactory::finalize );
     }
@@ -109,8 +109,8 @@
  #endif
 -};
 +}
---- khunphan/kpboard.cpp
-+++ khunphan/kpboard.cpp
+--- a/khunphan/kpboard.cpp
++++ b/khunphan/kpboard.cpp
 @@ -227,10 +227,10 @@
  		::fprintf(fp, "\n");
  	}
@@ -124,8 +124,8 @@
  {
  	// internal caching: if id is zero it first has to be calculated
  
---- khunphan/kpboard.h
-+++ khunphan/kpboard.h
+--- a/khunphan/kpboard.h
++++ b/khunphan/kpboard.h
 @@ -50,7 +50,7 @@
  	bool Move(tKPTokenID id, tKPDirection d);
    bool CanMove(tKPTokenID aTokenID, tKPDirection d) const;
@@ -135,8 +135,8 @@
  	static KPIdHash idHash;
  	bool IsSolved(void) const;
    int GetX(tKPTokenID aTokenID) const;
---- khunphan/kpglutuserinterface.cpp
-+++ khunphan/kpglutuserinterface.cpp
+--- a/khunphan/kpglutuserinterface.cpp
++++ b/khunphan/kpglutuserinterface.cpp
 @@ -24,6 +24,7 @@
  #include <windows.h>
  #endif
@@ -145,8 +145,8 @@
  #include "kpglutuserinterface.h"
  
   
---- khunphan/kpidhash.cpp
-+++ khunphan/kpidhash.cpp
+--- a/khunphan/kpidhash.cpp
++++ b/khunphan/kpidhash.cpp
 @@ -168,9 +168,9 @@
  			continue;
  		while ((n = p->pnext) != NULL) {
@@ -159,8 +159,8 @@
  			p = p->pnext;
  		}
  	}
---- khunphan/main.cpp
-+++ khunphan/main.cpp
+--- a/khunphan/main.cpp
++++ b/khunphan/main.cpp
 @@ -46,7 +46,7 @@
  {
    DEBUGPRINT(PACKAGE " aborted by user\n");
@@ -170,8 +170,8 @@
  //#endif
  
  #ifdef WIN32
---- khunphan/misc1.h
-+++ khunphan/misc1.h
+--- a/khunphan/misc1.h
++++ b/khunphan/misc1.h
 @@ -92,6 +92,10 @@
    #include <stdlib.h>
  #endif
