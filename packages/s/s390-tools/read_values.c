@@ -424,10 +424,8 @@ int print_uuid()
 			return 1;
 		}
 		printf("-%s", result_string);
-
-		result_string = NULL;
 	}
-	printf("%s\n", result_string);
+	putchar('\n');
 	return 0;
 } /* print_uuid */
 
