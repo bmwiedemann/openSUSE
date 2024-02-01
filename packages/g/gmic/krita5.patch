@@ -1,7 +1,7 @@
 Krita 5 plugin support
 Origin: https://github.com/amyspark/gmic
 
-Rebased for gmic 3.2.2
+Rebased for gmic 3.3.3
 
 ---
  gmic-qt/CMakeLists.txt                        |  68 ++++-
@@ -41,7 +41,7 @@ Rebased for gmic 3.2.2
  create mode 100644 gmic-qt/src/Host/KritaPlugin/host.cpp
 
 diff --git a/gmic-qt/CMakeLists.txt b/gmic-qt/CMakeLists.txt
-index dc72daa..f3f0f9e 100644
+index 47face8..0641f4c 100644
 --- a/gmic-qt/CMakeLists.txt
 +++ b/gmic-qt/CMakeLists.txt
 @@ -30,7 +30,7 @@ endif()
@@ -53,7 +53,7 @@ index dc72daa..f3f0f9e 100644
  if (${GMIC_QT_HOST} STREQUAL "none")
    message("Building standalone version.")
  else()
-@@ -699,6 +699,70 @@ if (${GMIC_QT_HOST} STREQUAL "gimp" OR ${GMIC_QT_HOST} STREQUAL "gimp3")
+@@ -701,6 +701,70 @@ if (${GMIC_QT_HOST} STREQUAL "gimp" OR ${GMIC_QT_HOST} STREQUAL "gimp3")
        )
      install(TARGETS gmic_gimp_qt RUNTIME DESTINATION "${GIMP_PKGLIBDIR}/plug-ins/gmic_gimp_qt")
 
@@ -124,7 +124,7 @@ index dc72daa..f3f0f9e 100644
  elseif (${GMIC_QT_HOST} STREQUAL "none")
 
    set (gmic_qt_SRCS ${gmic_qt_SRCS}
-@@ -781,7 +845,7 @@ elseif (${GMIC_QT_HOST} STREQUAL "8bf")
+@@ -783,7 +847,7 @@ elseif (${GMIC_QT_HOST} STREQUAL "8bf")
 
  else()
 
@@ -339,10 +339,10 @@ index fad7b0a..7f6d317 100644
    return true;
  }
 diff --git a/gmic-qt/src/FilterSelector/FiltersPresenter.cpp b/gmic-qt/src/FilterSelector/FiltersPresenter.cpp
-index 9e43caa..0a99e56 100644
+index 3d2991c..3df386d 100644
 --- a/gmic-qt/src/FilterSelector/FiltersPresenter.cpp
 +++ b/gmic-qt/src/FilterSelector/FiltersPresenter.cpp
-@@ -428,7 +428,7 @@ void FiltersPresenter::expandFaveFolder()
+@@ -431,7 +431,7 @@ void FiltersPresenter::expandFaveFolder()
  void FiltersPresenter::expandPreviousSessionExpandedFolders()
  {
    if (_filtersView) {
@@ -352,10 +352,10 @@ index 9e43caa..0a99e56 100644
    }
  }
 diff --git a/gmic-qt/src/Globals.h b/gmic-qt/src/Globals.h
-index dc5ef70..a6db8fb 100644
+index b19a38d..9ab3e3b 100644
 --- a/gmic-qt/src/Globals.h
 +++ b/gmic-qt/src/Globals.h
-@@ -58,7 +58,13 @@ const char WarningPrefix = '!';
+@@ -59,7 +59,13 @@ const char WarningPrefix = '!';
  #define ONE_WEEK_HOURS (7 * 24)
  #define TWO_WEEKS_HOURS (14 * 24)
  #define ONE_MONTH_HOURS (30 * 24)
@@ -369,7 +369,7 @@ index dc5ef70..a6db8fb 100644
 
  #define PREVIEW_MAX_ZOOM_FACTOR 40.0
 
-@@ -67,4 +73,17 @@ const char WarningPrefix = '!';
+@@ -68,4 +74,17 @@ const char WarningPrefix = '!';
  #define KEYPOINTS_INTERACTIVE_MIDDLE_DELAY_MS ((KEYPOINTS_INTERACTIVE_LOWER_DELAY_MS + KEYPOINTS_INTERACTIVE_UPPER_DELAY_MS) / 2)
  #define KEYPOINTS_INTERACTIVE_AVERAGING_COUNT 6
 
@@ -388,10 +388,10 @@ index dc5ef70..a6db8fb 100644
 +
  #endif // GMIC_QT_GLOBALS_H
 diff --git a/gmic-qt/src/GmicProcessor.cpp b/gmic-qt/src/GmicProcessor.cpp
-index b35b4a5..e2db770 100644
+index 1d54b97..fd46545 100644
 --- a/gmic-qt/src/GmicProcessor.cpp
 +++ b/gmic-qt/src/GmicProcessor.cpp
-@@ -200,6 +200,11 @@ bool GmicProcessor::isIdle() const
+@@ -208,6 +208,11 @@ bool GmicProcessor::isIdle() const
    return !_filterThread;
  }
 
@@ -404,10 +404,10 @@ index b35b4a5..e2db770 100644
  {
    if (_filterThread) {
 diff --git a/gmic-qt/src/GmicProcessor.h b/gmic-qt/src/GmicProcessor.h
-index 0c65a62..1271e16 100644
+index 89875ca..d1d58b8 100644
 --- a/gmic-qt/src/GmicProcessor.h
 +++ b/gmic-qt/src/GmicProcessor.h
-@@ -91,6 +91,7 @@ public:
+@@ -93,6 +93,7 @@ public:
    bool isProcessingFullImage() const;
    bool isProcessing() const;
    bool isIdle() const;
@@ -1062,10 +1062,10 @@ index 7e74667..0c92a47 100644
      }
    }
 diff --git a/gmic-qt/src/MainWindow.cpp b/gmic-qt/src/MainWindow.cpp
-index ba017ac..b7702b9 100644
+index 14ecacc..52642cc 100644
 --- a/gmic-qt/src/MainWindow.cpp
 +++ b/gmic-qt/src/MainWindow.cpp
-@@ -187,8 +187,12 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent), ui(new Ui::MainW
+@@ -188,8 +188,12 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent), ui(new Ui::MainW
      updateShortcutF5->setContext(Qt::ApplicationShortcut);
      QShortcut * updateShortcutCtrlR = new QShortcut(QKeySequence("Ctrl+R"), this);
      updateShortcutCtrlR->setContext(Qt::ApplicationShortcut);
@@ -1078,7 +1078,7 @@ index ba017ac..b7702b9 100644
      ui->tbUpdateFilters->setToolTip(updateText);
    }
 
-@@ -272,6 +276,7 @@ void MainWindow::setIcons()
+@@ -275,6 +279,7 @@ void MainWindow::setIcons()
    ui->tbExpandCollapse->setIcon(_expandIcon);
  }
 
@@ -1086,7 +1086,7 @@ index ba017ac..b7702b9 100644
  void MainWindow::setDarkTheme()
  {
    // SHOW(QStyleFactory::keys());
-@@ -325,6 +330,7 @@ void MainWindow::setDarkTheme()
+@@ -328,6 +333,7 @@ void MainWindow::setDarkTheme()
    ui->vSplitterLine->setStyleSheet("QFrame{ border-top: 0px none #a0a0a0; border-bottom: 1px solid rgb(160,160,160);}");
    Settings::UnselectedFilterTextColor = Settings::UnselectedFilterTextColor.darker(150);
  }
@@ -1094,7 +1094,7 @@ index ba017ac..b7702b9 100644
 
  void MainWindow::setPluginParameters(const RunParameters & parameters)
  {
-@@ -360,7 +366,9 @@ void MainWindow::onUpdateDownloadsFinished(int status)
+@@ -363,7 +369,9 @@ void MainWindow::onUpdateDownloadsFinished(int status)
      showMessage(tr("No download was needed."), 3000);
    }
 
@@ -1104,7 +1104,7 @@ index ba017ac..b7702b9 100644
    if (_filtersPresenter->currentFilter().hash.isEmpty()) {
      setNoFilter();
    } else {
-@@ -382,7 +390,7 @@ void MainWindow::buildFiltersTree()
+@@ -385,7 +393,7 @@ void MainWindow::buildFiltersTree()
      _filtersPresenter->importGmicGTKFaves();
      _filtersPresenter->saveFaves();
      _gtkFavesShouldBeImported = false;
@@ -1113,7 +1113,7 @@ index ba017ac..b7702b9 100644
    }
    _filtersPresenter->toggleSelectionMode(withVisibility);
  }
-@@ -490,7 +498,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
+@@ -493,7 +501,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
    } else if (status == (int)Updater::UpdateStatus::NotNecessary) {
    }
 
@@ -1122,7 +1122,7 @@ index ba017ac..b7702b9 100644
      _gtkFavesShouldBeImported = false;
    } else {
      _gtkFavesShouldBeImported = askUserForGTKFavesImport();
-@@ -508,7 +516,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
+@@ -511,7 +519,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
    }
 
    // Retrieve and select previously selected filter
@@ -1131,7 +1131,7 @@ index ba017ac..b7702b9 100644
    if (_newSession || !_lastExecutionOK) {
      hash.clear();
    }
-@@ -573,7 +581,9 @@ void MainWindow::onEscapeKeyPressed()
+@@ -576,7 +584,9 @@ void MainWindow::onEscapeKeyPressed()
      } else {
        _processor.cancel();
        ui->previewWidget->displayOriginalImage();
@@ -1141,17 +1141,17 @@ index ba017ac..b7702b9 100644
      }
    }
  }
-@@ -690,7 +700,9 @@ void MainWindow::onPreviewUpdateRequested(bool synchronous)
-     ui->previewWidget->displayOriginalImage();
+@@ -695,7 +705,9 @@ void MainWindow::onPreviewUpdateRequested(bool synchronous)
+     ui->previewWidget->invalidateSavedPreview();
      return;
    }
 +#ifndef _GMIC_QT_DISABLE_UPDATES_
    ui->tbUpdateFilters->setEnabled(false);
 +#endif
-
-   const FiltersPresenter::Filter currentFilter = _filtersPresenter->currentFilter();
+   _processor.init();
    GmicProcessor::FilterContext context;
-@@ -753,14 +765,26 @@ void MainWindow::onPreviewImageAvailable()
+   if (!ui->cbPreview->isChecked()) {
+@@ -762,7 +774,9 @@ void MainWindow::onPreviewImageAvailable()
    }
    ui->previewWidget->setPreviewImage(_processor.previewImage());
    ui->previewWidget->enableRightClick();
@@ -1159,6 +1159,9 @@ index ba017ac..b7702b9 100644
    ui->tbUpdateFilters->setEnabled(true);
 +#endif
  }
+
+ void MainWindow::onGUIDynamismRunDone()
+@@ -777,9 +791,19 @@ void MainWindow::onGUIDynamismRunDone()
 
  void MainWindow::onPreviewError(const QString & message)
  {
@@ -1178,7 +1181,7 @@ index ba017ac..b7702b9 100644
  }
 
  void MainWindow::onParametersChanged()
-@@ -841,12 +865,16 @@ void MainWindow::onVeryFirstShowEvent()
+@@ -861,12 +885,16 @@ void MainWindow::onVeryFirstShowEvent()
    Updater::setOutputMessageMode(Settings::outputMessageMode());
    int ageLimit;
    {
@@ -1197,7 +1200,7 @@ index ba017ac..b7702b9 100644
  }
 
  void MainWindow::setZoomConstraint()
-@@ -981,7 +1009,7 @@ void MainWindow::saveCurrentParameters()
+@@ -1001,7 +1029,7 @@ void MainWindow::saveCurrentParameters()
 
  void MainWindow::saveSettings()
  {
@@ -1206,7 +1209,7 @@ index ba017ac..b7702b9 100644
 
    _filtersPresenter->saveSettings(settings);
 
-@@ -1023,7 +1051,7 @@ void MainWindow::saveSettings()
+@@ -1043,7 +1071,7 @@ void MainWindow::saveSettings()
 
  void MainWindow::loadSettings()
  {
@@ -1215,7 +1218,7 @@ index ba017ac..b7702b9 100644
    _filtersPresenter->loadSettings(settings);
    _lastExecutionOK = settings.value("LastExecution/ExitedNormally", true).toBool();
    _newSession = host_app_pid() != settings.value("LastExecution/HostApplicationID", 0).toUInt();
-@@ -1038,9 +1066,11 @@ void MainWindow::loadSettings()
+@@ -1058,9 +1086,11 @@ void MainWindow::loadSettings()
    if (settings.value("Config/PreviewPosition", "Left").toString() == "Left") {
      setPreviewPosition(PreviewPosition::Left);
    }
@@ -1227,7 +1230,7 @@ index ba017ac..b7702b9 100644
    if (!Settings::visibleLogos()) {
      ui->logosLabel->hide();
    }
-@@ -1084,7 +1114,7 @@ void MainWindow::loadSettings()
+@@ -1104,7 +1134,7 @@ void MainWindow::loadSettings()
      ui->splitter->setSizes(sizes);
    }
 
@@ -1236,7 +1239,7 @@ index ba017ac..b7702b9 100644
  }
 
  void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
-@@ -1146,7 +1176,7 @@ void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
+@@ -1166,7 +1196,7 @@ void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
  void MainWindow::adjustVerticalSplitter()
  {
    QList<int> sizes;
@@ -1245,7 +1248,7 @@ index ba017ac..b7702b9 100644
    sizes.push_back(settings.value(QString("Config/ParamsVerticalSplitterSizeTop"), -1).toInt());
    sizes.push_back(settings.value(QString("Config/ParamsVerticalSplitterSizeBottom"), -1).toInt());
    const int splitterHeight = ui->verticalSplitter->height();
-@@ -1274,17 +1304,19 @@ bool MainWindow::askUserForGTKFavesImport()
+@@ -1294,17 +1324,19 @@ bool MainWindow::askUserForGTKFavesImport()
                           QMessageBox::Yes | QMessageBox::No, this);
    messageBox.setDefaultButton(QMessageBox::Yes);
    QCheckBox * cb = new QCheckBox(tr("Don't ask again"));
@@ -1267,7 +1270,7 @@ index ba017ac..b7702b9 100644
      return false;
    }
 diff --git a/gmic-qt/src/MainWindow.h b/gmic-qt/src/MainWindow.h
-index fb5977c..df5736a 100644
+index 4f436f9..bccd72c 100644
 --- a/gmic-qt/src/MainWindow.h
 +++ b/gmic-qt/src/MainWindow.h
 @@ -71,7 +71,9 @@ public:
@@ -1425,4 +1428,3 @@ index 10b7ec8..f03ef4c 100644
           </property>
 --
 2.43.0
-
