@@ -5,7 +5,7 @@
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*?)(\+git0)?$</param>
     <param name="revision">master</param>
-    <param name="changesgenerate">true</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual" />
   <service mode="buildtime" name="tar" />
