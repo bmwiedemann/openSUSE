@@ -1,7 +1,7 @@
 #
 # spec file for package parted
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           parted
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        GNU partitioner
 License:        GPL-3.0-or-later
@@ -49,10 +49,7 @@ Patch22:        libparted-open-the-device-RO-and-lazily-switch-to-RW.patch
 Patch23:        parted-implement-wipesignatures-option.patch
 # bsc#982169
 Patch24:        libparted-fix-nvme-partition-naming.patch
-# fate#314888
-Patch25:        libparted-dasd-improve-lvm-raid-flag-handling.patch
 Patch26:        parted-mkpart-set-a-swap-flag-if-available.patch
-Patch27:        libparted-dasd-add-swap-flag-handling-for-DASD-CDL.patch
 Patch29:        libparted-fix-NVDIMM-partition-naming.patch
 Patch31:        parted-add-ignore-busy-option.patch
 Patch32:        parted-fix-resizepart-and-rm-command.patch
@@ -62,8 +59,6 @@ Patch34:        libparted-canonicalize-dev-md-paths.patch
 Patch36:        libparted-linux-pmem-path.patch
 # bsc#1164260
 Patch37:        parted-print-max-partitions-for-yast.patch
-Patch38:        direct-handling-of-partition-type-id-and-uuid.patch
-Patch39:        type-command.patch
 # bsc#1164907
 # Fatresize
 Patch100:       parted-fatresize-autoconf.patch
@@ -147,9 +142,7 @@ to develop applications that require these.
 %patch22 -p1
 %patch23 -p1
 %patch24 -p1
-%patch25 -p1
 %patch26 -p1
-%patch27 -p1
 %patch29 -p1
 %patch31 -p1
 %patch32 -p1
@@ -157,8 +150,6 @@ to develop applications that require these.
 %patch34 -p1
 %patch36 -p1
 %patch37 -p1
-%patch38 -p1
-%patch39 -p1
 %patch100 -p1
 %patch156 -p1
 %patch157 -p1

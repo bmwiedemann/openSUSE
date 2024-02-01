@@ -12,21 +12,20 @@ Index: parted-3.3/include/parted/disk.in.h
 ===================================================================
 --- parted-3.3.orig/include/parted/disk.in.h
 +++ parted-3.3/include/parted/disk.in.h
-@@ -83,10 +83,11 @@ enum _PedPartitionFlag {
- 
- enum _PedDiskTypeFeature {
-         PED_DISK_TYPE_EXTENDED=1,       /**< supports extended partitions */
--        PED_DISK_TYPE_PARTITION_NAME=2  /**< supports partition names */
-+        PED_DISK_TYPE_PARTITION_NAME=2, /**< supports partition names */
-+        PED_DISK_TYPE_SYSTEM_NAME=4     /**< supports system names */
+@@ -101,10 +101,11 @@
+         PED_DISK_TYPE_PARTITION_TYPE_UUID=8,  /**< supports partition type-uuids */
+         PED_DISK_TYPE_DISK_UUID=16,           /**< supports disk uuids */
+         PED_DISK_TYPE_PARTITION_UUID=32,      /**< supports partition uuids */
++        PED_DISK_TYPE_SYSTEM_NAME=64          /**< supports system names */
  };
- #define PED_DISK_TYPE_FIRST_FEATURE    PED_DISK_TYPE_EXTENDED
--#define PED_DISK_TYPE_LAST_FEATURE     PED_DISK_TYPE_PARTITION_NAME
-+#define PED_DISK_TYPE_LAST_FEATURE     PED_DISK_TYPE_SYSTEM_NAME
+ // NOTE: DO NOT define using enums
+ #define PED_DISK_TYPE_FIRST_FEATURE    1  // PED_DISK_TYPE_EXTENDED
+-#define PED_DISK_TYPE_LAST_FEATURE     32 // PED_DISK_TYPE_PARTITION_UUID
++#define PED_DISK_TYPE_LAST_FEATURE     64 // PED_DISK_TYPE_SYSTEM_NAME
  
  struct _PedDisk;
  struct _PedPartition;
-@@ -246,6 +247,8 @@ struct _PedDiskOps {
+@@ -274,6 +275,8 @@
          /* other */
          int (*alloc_metadata) (PedDisk* disk);
          int (*get_max_primary_partition_count) (const PedDisk* disk);
@@ -35,15 +34,15 @@ Index: parted-3.3/include/parted/disk.in.h
          bool (*get_max_supported_partition_count) (const PedDisk* disk,
                                                     int* supported);
          PedAlignment *(*get_partition_alignment)(const PedDisk *disk);
-@@ -337,7 +340,9 @@ extern int ped_partition_is_flag_availab
- extern int ped_partition_set_system (PedPartition* part,
-                                      const PedFileSystemType* fs_type);
+@@ -369,6 +372,9 @@
  extern int ped_partition_set_name (PedPartition* part, const char* name);
-+extern int ped_partition_set_system_name (PedPartition* part, const char* name);
  extern const char* ped_partition_get_name (const PedPartition* part);
+ 
++extern int ped_partition_set_system_name (PedPartition* part, const char* name);
 +extern const char* ped_partition_get_system_name (const PedPartition* part);
- extern int ped_partition_is_busy (const PedPartition* part);
- extern char* ped_partition_get_path (const PedPartition* part);
++
+ extern int ped_partition_set_type_id (PedPartition* part, uint8_t id);
+ extern uint8_t ped_partition_get_type_id (const PedPartition* part);
  
 Index: parted-3.3/libparted/disk.c
 ===================================================================
