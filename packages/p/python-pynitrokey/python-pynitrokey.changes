@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 31 15:56:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add support-spsdk-2.0.patch: support spsdk 2.0
+
+-------------------------------------------------------------------
+Mon Jan 29 08:19:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- allow the fixed click version as well
+- correct runtime requires
+
+-------------------------------------------------------------------
+Fri Jan 26 20:51:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.4.45:
+  * Remove firmware version check for SE050 test by
+    @sosthene-nitrokey in #481
+  * nk3 secrets: Log payload length by @robin-nitrokey in #496
+
+-------------------------------------------------------------------
 Fri Jan  5 16:01:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.44:
