@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Jan 24 10:47:23 UTC 2024 - priyanka.saggu@suse.com
+
+- Update .spec file to remove go version build requirements:
+  * above build requirement causing build failures with following error:
+     - `go: download go1.20.13 for linux/amd64: toolchain not available`
+     - ref: https://go.dev/doc/toolchain
+
+- Update to version 1.28.6:
+  * Revert "Graduate Evented PLEG to Beta"
+  * [go] Bump images, dependencies and versions to go 1.20.13 and distroless iptables to 0.2.9
+  * e2e framework: adapt unit test to Go 1.22
+  * use context for lazy evaluation.
+  * Handle edge cases in seat demand stats
+  * .*: bump golang.org/x/tools to v0.16.1
+  * fix: 119921
+  * Use a separate function for checking if device was reconstructed
+  * Add tests for checking of uncertain device paths
+  * Fix device uncertain errors on reboot
+  * fix(scheduler): fix incorrect loop logic in MultiPoint to avoid a plugin being loaded multiple times
+  * Add unit test for Job Controller for panic when PodFailurePolicy is used on 1.28
+  * etcd: Update to version 3.5.10
+  * kube-proxy: Fix etp:Local for externalIPs
+
+-------------------------------------------------------------------
+Wed Jan 24 10:21:40 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 1.28.5:
+  * enable SchedulerQueueingHints feature gate in TestIncomingPodsMetrics
+  * fix: disable SchedulerQueueingHints feature flag by default
+  * Fix panic if there are more terminating pods than active pods
+  * [go] Bump images, dependencies and versions to go 1.20.12
+  * Move adding GroupVersion log until after an update is confirmed
+  * pass GOTOOLCHAIN to build containers
+  * handle GOTOOLCHAIN in kube::golang::verify_go_version
+  * fix: requeue pods rejected by Extenders properly
+  * Bump distroless-iptables to 0.2.8 based on Go 1.20.11
+  * fix: smb file share unavailable issue when it's deleted
+  * Make StatefulSet restart pods with phase Succeeded
+  * run hack scripts to update cyphar/filepath-securejoin to v0.2.4 correctly
+  * update filepath-securejoin dependency to 0.2.4 to fix security vulnerability
+  * DRA: call plugins for claims even if exist in cache
+  * Fix panic when process RunScorePlugins for cap out of range
+  * e2e: bootstrap vsphere tests earlier
+  * apf: request ejected from queue should use reason 'time-out'
+  * apf: remove RequestWaitLimit from queueset config
+  * apf: remove timeoutOldRequestsAndRejectOrEnqueueLocked function
+  * apf: use context for queue wait
+  * apiserver: add flow control metric current_inqueue_seats
+
+-------------------------------------------------------------------
 Fri Nov 24 06:39:49 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update .spec file to bump go version build requirements:
