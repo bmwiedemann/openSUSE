@@ -50,8 +50,8 @@ Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1550
-BuildRequires:  gcc10-PIE
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -335,7 +335,7 @@ Plasma 5 session with Wayland from a display manager.
 
 %build
 %if 0%{?suse_version} < 1550
-  export CXX=g++-10
+  export CXX=g++-13
 %endif
 %cmake_kf5 -d build -- -DKDE_DEFAULT_HOME=.kde4 -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} -DGLIBC_LOCALE_GENERATED=TRUE -DGLIBC_LOCALE_GEN=OFF
 %cmake_build
