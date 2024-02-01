@@ -1,7 +1,7 @@
 #
 # spec file for package cups-filters
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,10 @@ Name:           cups-filters
 #       and also run: zypper vcmp 'next version' 'current version'
 # e.g. zypper vcmp '1.0.49' '1.0.49.20140326' -> 1.0.49 is older than 1.0.49.20140326
 #  and zypper vcmp '1.0.50' '1.0.49.20140326' -> 1.0.50 is newer than 1.0.49.20140326
-Version:        1.28.15
+Version:        1.28.17
 Release:        0
+# To get Source0 go to https://github.com/OpenPrinting/cups-filters/releases or use e.g.
+# wget --no-check-certificate -O cups-filters-1.28.17.tar.gz https://github.com/OpenPrinting/cups-filters/releases/download/1.28.17/cups-filters-1.28.17.tar.gz
 Source0:        cups-filters-%{version}.tar.gz
 Patch0:         harden_cups-browsed.service.patch
 # Upstream fix for https://bugs.linuxfoundation.org/show_bug.cgi?id=1421
@@ -90,6 +92,9 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(poppler-cpp) >= 0.19
+# _cupsImageReadEXIF in image.c called in image-jpeg.c image-tiff.c image-png.c see
+# https://github.com/OpenPrinting/cups-filters/commit/2298d1fa0770737945b9c0dbe1c3dc690033ed3c
+BuildRequires:  libexif-devel
 # libijs
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
