@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysnmp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Source:         https://github.com/lextudio/pysnmp/archive/refs/tags/v%{version}
 # PATCH-FIX-UPSTREAM ish? Sourced from gh#pyasn1/pyasn1/issues/28
 Patch0:         support-new-pyasn1.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pysmi}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

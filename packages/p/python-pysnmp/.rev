@@ -182,4 +182,41 @@
   * Support pyasn1 0.5.0.</comment>
     <requestid>1101627</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>a8388fe99cc4968c2a5f3cb2d70eac76</srcmd5>
+    <version>5.0.28</version>
+    <time>1706807121</time>
+    <user>anag+factory</user>
+    <comment>- use poetry-core for building
+
+- Update to version 4.4.6
+     +  Promote the use of dedicated classes for dealing with OID-value pairs.
+        Instances of those classes resemble OBJECT-IDENTITY, OBJECT-TYPE and
+     +  Oneliner API reworked to become more generic: its LCD configuration
+        shortcuts and and var-bindings processing code split off SNMP apps
+        classes to stand-alone objects. The whole API also moved up in package
+        naming hierarchy and becomes ‘pysnmp.hlapi.asyncore’ (hlapi is
+        apparently an African fish). Old oneliner API remains fully operational
+     +  Synchronous oneliner apps redesigned to offer Python generator-based
+     +  Twisted API moved entirely into high-level domain to be aligned with
+  + Sphinx documentation added to source code and example scripts. Library
+  + Execution Observer facility implemented to give app an inside view of SNMP
+    (and modifying) various internal states of pysnmp engine. Previously
+    introduced non-standard APIs (like getting peer’s transport endpoint which
+    +   Responding to SNMP requests from exactly the same IP address the query
+  + Internal oneliner apps configuration cache moved from respective apps
+    objects to [a singular] snmpEngine “user context” object. That would allow
+    for better cache reuse and allow for a single app working with many
+  + Oneliner GETBULK Command Generator now strips possible excessive OIDs off
+  + Constraints assignment shortcut added to some base rfc1902 types (Integer,
+  + Examples on a single Transport Dispatcher use with multiple SnmpEngine
+  + AbstractTransportDispatcher’s jobStarted() and jobFinished() methods now
+  + Oneliner transport object now supports setLocalAddress() method to force
+  + New public DgramSocketTransport.getLocalAddress() returns local endpoint
+  + Change to rfc2576.v1tov2() logic: errorStatus = noSuchName is now
+    on the platform. It would help handling a really large number (&gt;1024)
+    addV3User() functions as well as to their oneliner's wrappers.
+    in both Generator and Responder modes and better follow RFC2576</comment>
+    <requestid>1143200</requestid>
+  </revision>
 </revisionlist>
