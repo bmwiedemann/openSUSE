@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb  1 07:54:59 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.0:
+  * [breaking] Add --classify=always,auto,never
+  * Remove rustfmt config file that has a nightly only option in
+    favor of rustfmt skip directive which is already in place
+  * Fix small typo in pull request template
+  * Change cast to coertion, remove rustfmt skip and clippy lint
+    ignore directives
+  * Regenerate classification related tests
+
+-------------------------------------------------------------------
 Thu Jan 25 21:25:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.3:
