@@ -1328,4 +1328,12 @@
     <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
     <requestid>1131423</requestid>
   </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>4f12b84c1d5b47b065efdfad905c544e</srcmd5>
+    <version>5.27.10</version>
+    <time>1706807044</time>
+    <user>anag+factory</user>
+    <comment>Switch to GCC 13 for Leap builds for packages that can't be built with the default compiler (forwarded request 1143049 from krop)</comment>
+    <requestid>1143124</requestid>
+  </revision>
 </revisionlist>

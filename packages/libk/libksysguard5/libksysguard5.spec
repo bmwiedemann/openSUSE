@@ -40,8 +40,8 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  xz
 %if 0%{?suse_version} <= 1500
 # It does not build with the default compiler (GCC 7) on Leap 15.x
-BuildRequires:  gcc10-PIE
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  cmake(KF5Auth)
 BuildRequires:  cmake(KF5Completion)
@@ -147,7 +147,7 @@ QML applications.
 
 %build
 %if 0%{?suse_version} <= 1500
-    export CC=gcc-10 CXX=g++-10
+    export CC=gcc-13 CXX=g++-13
 %endif
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
 %cmake_build
