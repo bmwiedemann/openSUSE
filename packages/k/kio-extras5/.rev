@@ -1074,4 +1074,12 @@
     <comment>Require extra-cmake-modules at build time</comment>
     <requestid>1133515</requestid>
   </revision>
+  <revision rev="133" vrev="3">
+    <srcmd5>f485d43fa6059d23943d0a6e9737f621</srcmd5>
+    <version>23.08.4</version>
+    <time>1706807040</time>
+    <user>anag+factory</user>
+    <comment>Switch to GCC 13 for Leap builds for packages that can't be built with the default compiler (forwarded request 1143049 from krop)</comment>
+    <requestid>1143121</requestid>
+  </revision>
 </revisionlist>
