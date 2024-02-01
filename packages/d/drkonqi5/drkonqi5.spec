@@ -62,8 +62,8 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(libsystemd)
 %if 0%{?suse_version} < 1550
-BuildRequires:  gcc10-PIE
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %endif
 # QML runtime dependencies (not detected automatically because the QML code is embedded as Qt Resource)
 # if kirigami2 is not installed, it falls back to the old QWidgets-based UI though and doesn't need them...
@@ -91,7 +91,7 @@ The KDE Crash Handler gives the user feedback if a program has crashed.
 
 %build
 %if 0%{?suse_version} < 1550
-  export CXX=g++-10
+  export CXX=g++-13
 %endif
   # Turn off sentry unconditionally. It needs qdbus -> -qt5 fixing
   # before it can be used.
