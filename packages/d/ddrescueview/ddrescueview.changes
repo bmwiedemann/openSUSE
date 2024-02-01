@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  1 12:08:40 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Fixed build error with Lazarus 3.0 (boo#1219436).
+
+-------------------------------------------------------------------
 Sun Sep  3 09:47:03 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - Replace build requirement 'lazarus' by 'lazarus-tools' and 'lazarus-lcl-qt5'
