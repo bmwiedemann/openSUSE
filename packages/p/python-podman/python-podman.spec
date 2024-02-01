@@ -1,7 +1,7 @@
 #
 # spec file for package python-podman
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-podman%{psuffix}
-Version:        4.8.2
+Version:        4.9.0
 Release:        0
 Summary:        A library to interact with a Podman server
 License:        Apache-2.0
@@ -50,17 +50,13 @@ BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module podman >= %{version}}
-BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module rich >= 12.5.1}
 BuildRequires:  %{python_module setuptools >= 39}
-BuildRequires:  %{python_module urllib3 < 2.0}
-BuildRequires:  %{python_module varlink}
-BuildRequires:  %{python_module wheel}
+%if %{defined sle_version}
+BuildRequires:  %{python_module dataclasses}
+%endif
 # /SECTION
 %endif
 %python_subpackages

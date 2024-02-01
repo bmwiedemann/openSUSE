@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 23 17:56:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+-  update to 4.9.0:
+   * Add rich dep to setup.cfg by @umohnani8 in
+     https://github.com/containers/podman-py/pull/353
+   * Fix lint issues by @umohnani8 in
+     https://github.com/containers/podman-py/pull/358
+   * Update dependency containers/automation_images to v20231208 by
+     @renovate in https://github.com/containers/podman-py/pull/355
+   * Bump main to 4.9.0-dev by @umohnani8 in
+     https://github.com/containers/podman-py/pull/348
+   * Make progress_bar an extra feature by @yselkowitz in
+     https://github.com/containers/podman-py/pull/361
+   * Enable user defined netns by @dcasier in
+     https://github.com/containers/podman-py/pull/364
+   * Update dependency containers/automation_images to v20240102 by
+     @renovate in https://github.com/containers/podman-py/pull/365
+   * Fix the 'max_pool_size' parameter passing for Adapters by
+     @milanbalazs in
+     https://github.com/containers/podman-py/pull/366
+   * Bump version to v4.9 by @umohnani8 in
+     https://github.com/containers/podman-py/pull/367
+
+-------------------------------------------------------------------
+Tue Jan 16 13:43:33 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Remove unneeded BuildRequires for test package
+
+-------------------------------------------------------------------
 Sun Jan  7 15:27:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.8.1:
@@ -67,7 +96,7 @@ Mon Jul 24 13:21:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 - use new Build macros
 - update constraints on BuildRequires
   * drop constraint for urllib3 < 2
-  * add constraint on requests and pyxdg 
+  * add constraint on requests and pyxdg
 - follow upstream and use new tomli (for python < 3.11) instead of
   pytoml
 

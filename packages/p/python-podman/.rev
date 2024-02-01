@@ -139,4 +139,22 @@
     <comment></comment>
     <requestid>1137539</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a336edb5230107e6130d653e84a525cc</srcmd5>
+    <version>4.8.2</version>
+    <time>1705874892</time>
+    <user>anag+factory</user>
+    <comment>- Remove unneeded BuildRequires for test package
+
+* needed to get it working on Leap 15.X</comment>
+    <requestid>1139185</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5519f12aaff0585b570af9d9213806e8</srcmd5>
+    <version>4.9.0</version>
+    <time>1706807180</time>
+    <user>anag+factory</user>
+    <comment>update to 4.9.0 (forwarded request 1143095 from ojkastl_buildservice)</comment>
+    <requestid>1143399</requestid>
+  </revision>
 </revisionlist>
