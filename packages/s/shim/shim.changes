@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Sun Jan 28 09:32:32 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
+
+-- Update to version 15.8
+    - Various CVE fixes are already merged into this version
+        mok: fix LogError() invocation (bsc#1215099,CVE-2023-40546)
+        avoid incorrectly trusting HTTP headers (bsc#1215098,CVE-2023-40547)
+        Fix integer overflow on SBAT section size on 32-bit system (bsc#1215100,CVE-2023-40548)
+        Authenticode: verify that the signature header is in bounds (bsc#1215101,CVE-2023-40549)
+        pe: Fix an out-of-bound read in verify_buffer_sbat() (bsc#1215102,CVE-2023-40550)
+        pe-relocate: Fix bounds check for MZ binaries (bsc#1215103,CVE-2023-40551)
+    - remove shim-Enable-the-NX-compatibility-flag-by-default.patch
+        The codes in this patch are already existing in shim-15.8
+        The NX flag is disable which is same as the default value of shim-15.8, 
+        hence, not need to enable it by this patch now.
+    - Patches (git log --oneline --reverse 15.7..15.8)
+        657b248 Make sbat_var.S parse right with buggy gcc/binutils
+        7c76425 Enable the NX compatibility flag by default.
+        89972ae CryptoPkg/BaseCryptLib: Fix buffer overflow issue in realloc wrapper
+        c7b3051 pe: Align section size up to page size for mem attrs
+        e4f40ae pe: Add IS_PAGE_ALIGNED macro
+        f23883c Don't loop forever in load_certs() with buggy firmware
+        1f38cb3 Optionally allow to keep shim protocol installed
+        102a658 Drop invalid calls to `CRYPTO_set_mem_functions`
+        aae3df0 test-sbat: Fix exit code
+        cca3933 Block Debian grub binaries with SBAT < 4
+        cf59f34 Further improve load_certs() for non-compliant drivers/firmwares
+        0601f44 SBAT-related documents formatting and spelling
+        0640e13 Add a security contact email address in README.md
+        0bfc397 Work around malformed path delimiters in file paths from DHCP
+        a8b0b60 pe: only process RelocDir->Size of reloc section
+        f7a4338 Skip testing msleep()
+        549d346 Rename 'msecs' to 'usecs' to avoid potential confusion
+        908c388 Change type of fallback_verbose_wait from int to unsigned long
+        05eae92 Add SbatLevel_Variable.txt to document the various revocations
+        243f125 Use -Wno-unused-but-set-variable for Cryptlib and OpenSSL
+        89d25a1 Add a make rule for compile_commands.json
+        118ff87 Add gnu-stack notes
+        f132655 test: Make our fake dprintf be a statement.
+        be00279 Remove CentOS 7 test builds.
+        9964960 Split pe.c up even more.
+        569270d Test (and fix) ImageAddress()
+        61e9894 Verify signature before verifying sbat levels
+        1578b55 Add libFuzzer support for csv.c
+        a0673e3 Fix a 1-byte memory leak in .sbat parsing.
+        e246812 Add libFuzzer support to the .sbat parser.
+        fd43eda Work around ImageAddress() usage mistake
+        1e985a3 Correctly free memory allocated in handle_image()
+        dbbe3c8 mok: Avoid underflow in maximum variable size calculation
+        04111d4 Make some of the static analysis tools a little easier to run
+        7ba7440 compile_commands.json: remove stuff clang doesn't like
+        66e6579 CVE-2023-40546 mok: fix LogError() invocation
+        f271826 Add primitives for overflow-checked arithmetic operations.
+        8372147 pe-relocate: Add a fuzzer for read_header()
+        5a5147d CVE-2023-40551: pe-relocate: Fix bounds check for MZ binaries
+        e912071 pe-relocate: make read_header() use checked arithmetic operations.
+        93ce255 CVE-2023-40550 pe: Fix an out-of-bound read in verify_buffer_sbat()
+        e7f5fdf pe-relocate: Ensure nothing else implements CVE-2023-40550
+        afdc503 CVE-2023-40549 Authenticode: verify that the signature header is in bounds.
+        96dccc2 CVE-2023-40548 Fix integer overflow on SBAT section size on 32-bit system
+        dae82f6 Further mitigations against CVE-2023-40546 as a class
+        ea0f9df Allow SbatLevel data from external binary
+        b078ef2 Always clear SbatLevel when Secure Boot is disabled
+        7dfb687 BS Variables for bootmgr revocations
+        a967c0e shim should not self revoke
+        577cedd Print message when refusing to apply SbatLevel
+        e801b0d sbat revocations: check the full section name
+        0226b56 CVE-2023-40547 - avoid incorrectly trusting HTTP headers
+        6f0c8d2 Print errors when setting/clearing memory attrs
+        57c0eed Updated Revocations for January 2024 CVEs
+        49c6d95 Fix some minor ia32 build issues.
+        be8ff7c post-process-pe: Don't set the NX_COMPAT flag by default after all.
+        13abd9f pe-relocate: Avoid __builtin_add_overflow() on GCC < 5
+        c46c975 Suppress "Failed to open <..>\revocations.efi" when file does not exist
+        30a4f37 Rename "previous" revocations to "automatic"
+        6f395c2 Build time selectable automatic SBATLevel revocations
+        a23e2f0 netboot read_image() should not hardcode DEFAULT_LOADER
+        993a345 Try to load revocations.efi even if directory read fails
+        1770a03 gitmodules: use shim-15.8 for gnu-efi branch
+        5914984 (HEAD -> main, tag: latest-release, tag: 15.8, origin/main, origin/HEAD) Bump version to 15.8 
+
+-------------------------------------------------------------------
 Thu Oct  5 13:19:48 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Don't require grub so shim can still be used with systemd-boot

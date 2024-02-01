@@ -36,7 +36,7 @@
 %endif
 
 Name:           shim
-Version:        15.7
+Version:        15.8
 Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
@@ -75,8 +75,6 @@ Patch3:         shim-bsc1177315-verify-eku-codesign.patch
 Patch4:         remove_build_id.patch
 # PATCH-FIX-SUSE shim-disable-export-vendor-dbx.patch bsc#1185261 glin@suse.com -- Disable exporting vendor-dbx to MokListXRT
 Patch5:         shim-disable-export-vendor-dbx.patch
-# PATCH-FIX-UPSTREAM shim-Enable-the-NX-compatibility-flag-by-default.patch jlee@suse.com -- Enable the NX compatibility flag by default
-Patch6:         shim-Enable-the-NX-compatibility-flag-by-default.patch
 BuildRequires:  dos2unix
 BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl >= 0.9.8
@@ -126,7 +124,6 @@ The source code of UEFI shim loader
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %build
 # generate the vendor SBAT metadata

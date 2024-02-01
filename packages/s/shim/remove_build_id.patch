@@ -1,23 +1,22 @@
-Index: shim/shim-15.4/gnu-efi/Make.defaults
+Index: shim-15.8/gnu-efi/Make.defaults
 ===================================================================
---- shim-15.4.orgi/gnu-efi/Make.defaults
-+++ shim-15.4/gnu-efi/Make.defaults
-@@ -205,8 +205,7 @@ ARFLAGS := rDv
- endif
+--- shim-15.8.orig/gnu-efi/Make.defaults
++++ shim-15.8/gnu-efi/Make.defaults
+@@ -205,7 +205,7 @@ endif
  
  ASFLAGS += $(ARCH3264)
--LDFLAGS	+= -nostdlib --warn-common --no-undefined --fatal-warnings \
--	   --build-id=sha1
-+LDFLAGS	+= -nostdlib --warn-common --no-undefined --fatal-warnings
+ LDFLAGS	+= -nostdlib --warn-common --no-undefined --fatal-warnings \
+-	   --build-id=sha1 --no-warn-rwx-segments
++	   --no-warn-rwx-segments
  
  ifneq ($(ARCH),arm)
  export LIBGCC=$(shell $(CC) $(CFLAGS) $(ARCH3264) -print-libgcc-file-name)
-Index: shim/shim-15.4/Make.defaults
+Index: shim-15.8/Make.defaults
 ===================================================================
---- shim-15.4.orig/Make.defaults
-+++ shim-15.4/Make.defaults
-@@ -184,7 +184,7 @@ ifneq ($(origin VENDOR_DBX_FILE), undefi
- DEFINES		+= -DVENDOR_DBX_FILE=\"$(VENDOR_DBX_FILE)\"
+--- shim-15.8.orig/Make.defaults
++++ shim-15.8/Make.defaults
+@@ -192,7 +192,7 @@ ifneq ($(origin SBAT_AUTOMATIC_DATE), un
+ DEFINES		+= -DSBAT_AUTOMATIC_DATE=$(SBAT_AUTOMATIC_DATE)
  endif
  
 -LDFLAGS		= --hash-style=sysv -nostdlib -znocombreloc -T $(EFI_LDS) -shared -Bsymbolic -L$(LOCAL_EFI_PATH) -L$(LIBDIR) -LCryptlib -LCryptlib/OpenSSL $(EFI_CRT_OBJS) --build-id=sha1 $(ARCH_LDFLAGS) --no-undefined
