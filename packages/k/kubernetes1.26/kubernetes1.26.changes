@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan 24 14:36:14 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update .spec file to remove go version build requirements:
+  * above build requirement causing build failures with following error:
+     - `go: download go1.20.13 for linux/amd64: toolchain not available`
+     - ref: https://go.dev/doc/toolchain
+
+- Update to version 1.26.13:
+  * [go] Bump images, dependencies and versions to go 1.20.13 and distroless iptables to 0.2.9
+  * Handle edge cases in seat demand stats
+  * fix: 119921
+  * Use a separate function for checking if device was reconstructed
+  * Add tests for checking of uncertain device paths
+  * Fix device uncertain errors on reboot
+  * fix(scheduler): fix incorrect loop logic in MultiPoint to avoid a plugin being loaded multiple times
+  * etcd: Update to version 3.5.10
+
+-------------------------------------------------------------------
+Wed Jan 24 14:34:29 UTC 2024 - priyanka.saggu@suse.com
+
+- Update to version 1.26.12:
+  * run update-vendor script
+  * [go] Bump images, dependencies and versions to go 1.20.12
+  * pass GOTOOLCHAIN to build containers
+  * handle GOTOOLCHAIN in kube::golang::verify_go_version
+  * fix: requeue pods rejected by Extenders properly
+  * Bump distroless-iptables to v0.2.8 that uses go1.20.11
+  * fix: smb file share unavailable issue when it's deleted
+  * run hack scripts to update cyphar/filepath-securejoin to v0.2.4 correctly
+  * update filepath-securejoin dependency to 0.2.4 to fix security vulnerability
+
+-------------------------------------------------------------------
 Fri Nov 24 07:40:48 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update .spec file to bump go version build requirements:
