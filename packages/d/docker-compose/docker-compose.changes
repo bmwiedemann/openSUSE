@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 01 06:26:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.24.5:
+  * chore(e2e): fix flaky test & standalone behavior (#11382)
+  * ci(deps): replace buildkit to fix fsutil issues on Windows
+    (#11426)
+  * Fix canonical container name
+
+-------------------------------------------------------------------
 Tue Jan 30 14:17:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.24.4:
