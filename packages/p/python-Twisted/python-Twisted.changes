@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  1 08:33:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add stop-using-3-arg-throw.patch:
+  * Avoid 3-arg throw to fix a DeprecationWarning in Python 3.12.
+
+-------------------------------------------------------------------
 Thu Jan 18 21:33:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add twisted-pr12054-testinvokationpy3.12.1.patch

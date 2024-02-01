@@ -1563,4 +1563,13 @@
     <comment></comment>
     <requestid>1139828</requestid>
   </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>9779ab8294ef3e34fc493d16b0b29a82</srcmd5>
+    <version>23.10.0</version>
+    <time>1706807053</time>
+    <user>anag+factory</user>
+    <comment>- Add stop-using-3-arg-throw.patch:
+  * Avoid 3-arg throw to fix a DeprecationWarning in Python 3.12.</comment>
+    <requestid>1143215</requestid>
+  </revision>
 </revisionlist>
