@@ -1,0 +1,5 @@
+<package name="libdom" project="openSUSE:Factory">
+  <title>LibDOM</title>
+  <description>LibDOM is an implementation of the W3C DOM, written in C. It is currently in development for use with NetSurf and is intended to be suitable for use in other projects too.</description>
+  <devel project="network" package="libdom"/>
+</package>
