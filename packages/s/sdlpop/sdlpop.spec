@@ -1,7 +1,7 @@
 #
 # spec file for package sdlpop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sdlpop
-Version:        1.22
+Version:        1.23
 Release:        0
 Summary:        An open-source port of Prince of Persia
 License:        GPL-3.0-only
@@ -70,8 +70,8 @@ exec "%{_libexecdir}/%{name}/\${0##*/}" \$@
 EOF
 
 %files
-%doc doc/Readme.txt doc/ChangeLog.txt
-%license doc/gpl-3.0.txt
+%doc README.md doc/tiles.md doc/mod.ini doc/ChangeLog.txt
+%license COPYING
 %attr(0755,root,root) %{_bindir}/sdlpop
 %{_libexecdir}/%{name}
 %{_datadir}/icons/hicolor/32x32/apps/sdlpop.png
