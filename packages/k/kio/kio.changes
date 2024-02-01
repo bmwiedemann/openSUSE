@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 31 14:35:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to the latest GCC version available in Leap for packages
+  that can't build with the default compiler
+
+-------------------------------------------------------------------
 Sat Jan 13 11:21:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.114.0

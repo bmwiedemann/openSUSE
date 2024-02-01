@@ -39,8 +39,8 @@ BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 # gcc7 is too old for std::transform_reduce
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
 %endif
 BuildRequires:  krb5-devel
 BuildRequires:  libacl-devel
@@ -139,7 +139,7 @@ Development files.
 %endif
 
 %if 0%{?suse_version} == 1500
-export CXX=g++-10
+export CXX=g++-13
 %endif
 
 %cmake_kf5 -d build
