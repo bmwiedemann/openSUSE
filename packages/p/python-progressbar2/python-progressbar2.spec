@@ -1,7 +1,7 @@
 #
 # spec file for package python-progressbar2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,25 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-progressbar2
-Version:        4.2.0
+Version:        4.3.2
 Release:        0
 Summary:        Python library to provide visual text-based progress to long running operations
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/WoLpH/python-progressbar
 Source:         https://files.pythonhosted.org/packages/source/p/progressbar2/progressbar2-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-utils >= 2.3.0
 Conflicts:      python-progressbar
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module dill}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-utils >= 2.3.0}
 # /SECTION
@@ -46,21 +50,23 @@ A Python Progressbar library to provide visual (yet text based) progress to long
 rm pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # remove problematic section from pytest.ini
 export PYTEST_ADDOPTS="--doctest-modules"
 export PYTHONPATH=$PWD
+rm -v progressbar/terminal/os_specific/windows.py
 %pytest
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/progressbar
+%{python_sitelib}/progressbar2-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  1 08:47:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.2:
+  * disabling run-command until it is properly finished
+- update to 4.3.1:
+  * fixed typeerror on Windows thanks to @eachimei, excluded docs
+    from install thanks to @mgorny and added readthedocs
+    configuration file
+- update to 4.3.0:
+  * Added support for multithreading, multiprocessing, colors
+    (16, 256 and full color) and many interactive terminal
+    features such as continuous printing for a live ETA
+
+-------------------------------------------------------------------
 Tue Mar  7 06:29:07 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required
@@ -6,13 +20,13 @@ Tue Mar  7 06:29:07 UTC 2023 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Dec 13 16:11:53 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 4.2.0 
+- Update to version 4.2.0
   * Added increment() method for easy usage as callback from libraries such as boto
 
 - Update to version 4.1.1
   * Fixed backwards compatibility with original progressbar library
 
-- Update to version 4.1.0 
+- Update to version 4.1.0
   * Delegate unknown attrs to target in WrappingIO thanks to @william-andre. Added threaded progress bar example
 
 - Update to version 4.0.0
@@ -21,7 +35,7 @@ Tue Dec 13 16:11:53 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 - Update to version 3.54.0
   * Release created with GPGit 1.5.0
   https://github.com/NicoHood/gpgit
-  * 
+  *
 -------------------------------------------------------------------
 Thu Jul 30 11:06:51 UTC 2020 - Duncan Mac-Vicar <dmacvicar@suse.com>
 
