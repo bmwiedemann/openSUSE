@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Wed Jan 31 17:29:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.103.1:
+  * revert cosign signing of release checksums file (#2571)
+
+-------------------------------------------------------------------
+Wed Jan 31 17:26:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.103.0:
+  * bump archiver and stereoscope (#2570)
+  * fix: Better test for group ID in filename (#2565)
+  * Sign checksums file and add SBOMs on release (#2548)
+  * chore(deps): bump anchore/sbom-action from 0.15.5 to 0.15.6
+    (#2560)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#2561)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.3 to
+    6.5.4 (#2562)
+  * chore(deps): update tools to latest versions (#2554)
+  * chore(deps): bump github.com/sassoftware/go-rpmutils from 0.2.0
+    to 0.3.0 (#2556)
+  * chore(deps): bump 8398a7/action-slack from 3.15.1 to 3.16.2
+    (#2557)
+  * chore(deps): bump github/codeql-action from 3.23.1 to 3.23.2
+    (#2558)
+  * internalize format helpers (#2543)
+  * Internalize CPE generation logic (#2541)
+  * chore(deps): update tools to latest versions (#2550)
+
+-------------------------------------------------------------------
+Fri Jan 26 19:26:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.102.0:
+  * Implement golang Purl subpath (#2547)
+  * fix migration of integration test (#2546)
+  * Use the json schema as input for templating (#2542)
+  * Unexport types and functions cataloger packages (#2530)
+  * Internalize majority of cmd package (#2533)
+  * allow for RPM modularity to be optional (#2540)
+  * chore(deps): bump actions/upload-artifact from 4.2.0 to 4.3.0
+    (#2536)
+  * chore(deps): bump github.com/google/uuid from 1.5.0 to 1.6.0
+    (#2538)
+  * chore(deps): bump github.com/docker/docker (#2537)
+  * chore: stop re-exporting wfn.Attributes (#2534)
+  * swap format readseekers for readers (#2515)
+  * chore(deps): bump anchore/sbom-action from 0.15.4 to 0.15.5
+    (#2531)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.4.12
+    to 0.5.0 (#2532)
+  * plumb context through catalogers (#2528)
+  * Remove CLI and API deprecations (#2508)
+  * Turn off the SBOM cataloger by default (#2527)
+  * Re-introduce linux kernel cataloger (#2526)
+  * make AllLocations accept a context (#2518)
+  * chore(deps): update CPE dictionary index (#2523)
+  * fix: minor cataloger and docs nits (#2519)
+
+-------------------------------------------------------------------
+Sat Jan 20 17:00:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.101.1:
+  * Deduplicate digests from user configuration (#2522)
+  * update readme and help output to be accurate to syft api
+    (#2520)
+  * fix: remove second call to finalize as the task handles it
+    (#2516)
+  * chore(deps): update stereoscope to
+    eb656fc717935ad5abeb8e1379a5c4e11c957120 (#2510)
+  * chore(deps): bump github.com/docker/docker (#2512)
+  * chore(deps): bump actions/upload-artifact from 4.1.0 to 4.2.0
+    (#2513)
+  * chore(deps): bump anchore/sbom-action from 0.15.3 to 0.15.4
+    (#2514)
+  * chore(deps): bump github/codeql-action from 3.23.0 to 3.23.1
+    (#2506)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#2507)
+  * chore: enable automatic approval of dependabot PRs (#2505)
+
+-------------------------------------------------------------------
+Thu Jan 18 08:10:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.101.0:
+  * include binary cataloger configuration defaults (#2504)
+  * feat: classifier for wordpress cli binary (#2473)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.2 to
+    6.5.3 (#2502)
+  * chore(deps): bump actions/cache from 3.3.3 to 4.0.0 (#2503)
+  * chore(deps): update tools to latest versions (#2500)
+  * chore(deps): bump github.com/cloudflare/circl from 1.3.3 to
+    1.3.7 (#2501)
+  * Add cataloger list command (#2366)
+  * condense binary cataloger config in JSON output (#2499)
+  * chore(deps): bump actions/upload-artifact from 4.0.0 to 4.1.0
+    (#2495)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.2 to
+    6.5.3 (#2494)
+  * chore(deps): update CPE dictionary index (#2491)
+  * Replace core SBOM-creation API with builder pattern (#1383)
+  * chore(deps): update tools to latest versions (#2488)
+  * chore(deps): bump actions/cache from 3.3.2 to 3.3.3 (#2489)
+  * chore(deps): bump anchore/sbom-action from 0.15.2 to 0.15.3
+    (#2481)
+  * chore(deps): bump github.com/charmbracelet/bubbles from 0.16.1
+    to 0.17.1 (#2475)
+  * feat: binary classifiers for Percona Software For MySQL (#2478)
+  * feat: binary classifier for pypy (#2474)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.4.9 to
+    6.5.2 (#2476)
+  * fix: support traefik binary from the official Docker image
+    (#2484)
+  * feat: binary classifier for GCC (#2479)
+  * chore(deps): update tools to latest versions (#2480)
+  * chore(deps): bump golang.org/x/net from 0.19.0 to 0.20.0
+    (#2482)
+  * chore(deps): bump github/codeql-action from 3.22.12 to 3.23.0
+    (#2477)
+  * Upgrade binary test fixtures management (#2444)
+
+-------------------------------------------------------------------
 Sat Jan 06 15:26:12 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 0.100.0:
