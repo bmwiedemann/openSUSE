@@ -2482,6 +2482,8 @@ unsorted:
   - coredns-for-k8s1.27-extras 
   - coredns-for-k8s1.28 
   - coredns-for-k8s1.28-extras 
+  - coredns-for-k8s1.29 
+  - coredns-for-k8s1.29-extras 
   - corepack20 
   - corepack21 
   - coreutils-single 
@@ -3658,6 +3660,7 @@ unsorted:
   - etcd-for-k8s1.26 
   - etcd-for-k8s1.27 
   - etcd-for-k8s1.28 
+  - etcd-for-k8s1.29 
   - etcdctl 
   - etcdutl 
   - etckeeper 
@@ -9970,6 +9973,17 @@ unsorted:
   - kubernetes1.28-kubelet-common 
   - kubernetes1.28-proxy 
   - kubernetes1.28-scheduler 
+  - kubernetes1.29-apiserver 
+  - kubernetes1.29-client 
+  - kubernetes1.29-client-bash-completion 
+  - kubernetes1.29-client-common 
+  - kubernetes1.29-client-fish-completion 
+  - kubernetes1.29-controller-manager 
+  - kubernetes1.29-kubeadm 
+  - kubernetes1.29-kubelet 
+  - kubernetes1.29-kubelet-common 
+  - kubernetes1.29-proxy 
+  - kubernetes1.29-scheduler 
   - kubescape 
   - kubeseal 
   - kubesec 
@@ -12039,6 +12053,8 @@ unsorted:
   - libdns_sd-32bit 
   - libdnssec9 
   - libdocparser1 
+  - libdom-devel 
+  - libdom0 
   - libdouble-conversion3-32bit 
   - libdovi-devel 
   - libdovi3-32bit 
@@ -12292,7 +12308,6 @@ unsorted:
   - libfguid-devel 
   - libfguid1 
   - libfido2-devel 
-  - libfido2-udev 
   - libfido2-utils 
   - libfife0_4_2 
   - libfifechan0_1_5 
@@ -12740,9 +12755,9 @@ unsorted:
   - libgravatar-devel 
   - libgromacs8 
   - libgromacs_mpi8 
-  - libgrpc++1_60 
-  - libgrpc1_60 
-  - libgrpc37 
+  - libgrpc++1_61 
+  - libgrpc1_61 
+  - libgrpc38 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -15724,7 +15739,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb37 
+  - libupb38 
   - libupm1 
   - libupnp-devel 
   - libupnpp-devel 
@@ -16142,9 +16157,6 @@ unsorted:
   - libwxlua_debugger-wx32-3_1_0_0 
   - libwxsvg-devel 
   - libwxsvg3 
-  - libx86-1 
-  - libx86-devel 
-  - libx86-devel-static 
   - libx86emu-devel 
   - libxalan-c-devel 
   - libxalan-c112 
