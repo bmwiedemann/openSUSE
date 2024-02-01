@@ -599,4 +599,12 @@ opencensus-proto-source (copied verbatim by this build) and should be
 fixed in that other package, after which it will trickle down.</comment>
     <requestid>1142787</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>27b2e09025ba3fa72137ec02385d70c3</srcmd5>
+    <version>1.61.0</version>
+    <time>1706807051</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.61</comment>
+    <requestid>1143157</requestid>
+  </revision>
 </revisionlist>
