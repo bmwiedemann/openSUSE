@@ -1,7 +1,7 @@
 #
 # spec file for package ddrescueview
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Productivity/Archiving/Backup
 URL:            https://sourceforge.net/projects/ddrescueview/
 Source:         https://sourceforge.net/projects/ddrescueview/files/Test%20builds/v%{version}/ddrescueview-source-%{version}.tar.xz/download#/%{name}-%{version}.tar.xz
 BuildRequires:  gtk2-devel
+BuildRequires:  lazarus-ide
 BuildRequires:  lazarus-lcl-qt5
 BuildRequires:  lazarus-tools
 BuildRequires:  libQt5Pas-devel
