@@ -236,7 +236,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        27.3.0
+Version:        27.3.1
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -880,9 +880,6 @@ export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
 #and relies on the linker eliminating unused sections.
 #Re-add these parameters from build/config/compiler/BUILD.gn.
 export LDFLAGS="%{?build_ldflags} -Wl,-O2 -Wl,--gc-sections "
-%if %{without lld} && %{without gold}
-export LDFLAGS="$LDFLAGS -Wl,--gc-keep-exported"
-%endif
 
 
 %if %{with clang}
@@ -1171,6 +1168,8 @@ myconf_gn+=' angle_enable_abseil=true'
 #this is also mistakenly set to is_clang with the (untrue) comment “macros for determining endian type are currently clang specific”
 #in fact, 1° clang copied those macros from gcc and 2° this should be unbundled.
 myconf_gn+=' v8_use_libm_trig_functions=true'
+#yet another is_clang
+myconf_gn+=' rtc_enable_avx2=true'
 
 
 

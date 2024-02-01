@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 31 20:57:05 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.3.1
+  * Apply module search paths restriction on worker and child process
+  * Fix use after free in Web Audio (CVE-2024-0807 bsc#1219118)
+
+-------------------------------------------------------------------
 Wed Jan 24 18:59:12 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 27.3.0
