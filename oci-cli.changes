@@ -1,4 +1,428 @@
 -------------------------------------------------------------------
+Wed Jan 24 10:35:16 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.37.5
+  * Support for the new Generative AI Service Management
+    * ``oci generative-ai``
+  * Support for Process Sets in Stack Monitoring service
+    * ``oci stack-monitoring process-set``
+  - from version 3.37.4
+  * Feature to add filtering support based on the Resource ID for CI service work requests.
+    * ``oci container-instances work-request list --resource-id "$resourceid"``
+  * Support for new optional parameters in ADM service
+    * ``oci adm vulnerability-audit create --build-type``
+    * ``oci adm vulnerability-audit create-vulnerability-audit-external-resource-vulnerability-audit-source --build-type``
+    * ``oci adm vulnerability-audit create-vulnerability-audit-oci-resource-vulnerability-audit-source --build-type``
+    * ``oci adm vulnerability-audit create-vulnerability-audit-unknown-source-vulnerability-audit-source --build-type``
+    * ``oci adm remediation-run list-application-dependency-recommendations --purl``
+    * ``oci adm vulnerability-audit list-application-dependency-vulnerabilities --purl``
+    * ``oci adm vulnerability-audit list-application-dependency-vulnerabilities --severity-greater-than-or-equal``
+    * ``oci adm vulnerability-audit list --max-observed-severity-greater-than-or-equal-to``
+  * Data Safe Service
+    * Support for updating risk level of the specified finding
+      * ``oci data-safe finding update``
+    * Support for listing all changes made by user to risk levels of findings of the specified assessment
+      * ``oci data-safe security-assessment list-findings-change-audit-logs``
+    * Support for security feature usage
+      * ``oci data-safe security-assessment list-security-feature-analytics``
+      * ``oci data-safe security-assessment list-security-features``
+    * Support for viewing the top security findings in Data Safe Security Assessment
+      * ``oci data-safe security-assessment list-finding-analytics``
+    * Support for viewing the schemas that a user can access in Data Safe User Assessment.
+      * ``oci data-safe database-table-access-entry get``
+      * ``oci data-safe database-table-access-entry-collection list``
+      * ``oci data-safe database-view-access-entry get``
+      * ``oci data-safe database-view-access-entry-collection list``
+      * ``oci data-safe role-grant-path-collection list``
+      * ``oci data-safe security-policy-report get``
+      * ``oci data-safe security-policy-report-collection list``
+      * ``oci data-safe user-assessment list-user-access-analytics``
+    * Support for new commands
+      * ``oci data-safe peer-target-database``
+      * ``oci data-safe report update``
+      * ``oci data-safe target-database refresh``
+    * Add new param peer-target-database-details
+      * ``oci data-safe target-database create --peer-target-database-details``
+  * Support for new dimension-specific alarm suppression commands in Monitoring service
+    * ``oci monitoring alarm-suppression``
+    * ``oci monitoring alarm-suppression-collection list-alarm-suppressions``
+    * ``oci monitoring alarm-suppression summarize-alarm-suppression-history``
+   * Changed trail-locations parameter as optional, added new optional parameters for Data Safe service
+    * ``oci data-safe audit-profile calculate-audit-volume-available --trail-locations, --database-unique-name``
+    * ``oci data-safe masking-policy apply-sdm-masking-policy-difference --sdm-masking-policy-difference-id``
+    * ``oci data-safe work-request list --access-level, --compartment-id-in-subtree``
+- from version 3.37.3
+  * Reverted YubiKey authentication
+- from version 3.37.2
+  * Support for OCI CLI authentication using PKCS#11 compatible hardware devices like YubiKey
+      * ``oci <command> --auth yubi_key``
+  * Support for summarizing disk Statistics and Host Recommendation in OPSI Host Capacity Service
+    * ``oci opsi host-insights summarize-disk-statistics --compartment-id --id --analysis-time-interval``
+    * ``oci opsi host-insights summarize-host-recommendation --compartment-id
+      --id --analysis-time-interval --resource-metric``
+  * Support for new commands in the Apm Synthetic Service
+    * ``oci apm-synthetics monitor create-dns-server-monitor  --apm-domain-id --display-name --monitor-type
+      --vantage-points --repeat-interval-in-seconds  --target --name-server --protocol --record-type``
+    * ``oci apm-synthetics monitor create-dns-sec-monitor  --apm-domain-id  --display-name --monitor-type
+      --vantage-points --repeat-interval-in-seconds --target --name-server --protocol --record-type``
+    * ``oci apm-synthetics monitor create-dns-trace-monitor  --apm-domain-id  --display-name --monitor-type
+      --vantage-points --repeat-interval-in-seconds --target --name-server --protocol --record-type``
+    * ``oci apm-synthetics monitor update-dns-server-monitor  --apm-domain-id --display-name --monitor-type
+      --vantage-points --repeat-interval-in-seconds  --target --name-server --protocol --record-type``
+    * ``oci apm-synthetics monitor update-dns-sec-monitor  --apm-domain-id  --display-name --monitor-type
+      --vantage-points --repeat-interval-in-seconds --target --name-server --protocol --record-type``
+    * ``oci apm-synthetics monitor update-dns-trace-monitor  --apm-domain-id  --display-name --monitor-type
+      --vantage-points --repeat-interval-in-seconds --target --name-server --protocol --record-type``
+    * ``oci apm-synthetics on-premise-vantage-point create --name --description --apm-domain-id``
+    * ``oci apm-synthetics on-premise-vantage-point get  --on-premise-vantage-point-id --apm-domain-id``
+    * ``oci apm-synthetics on-premise-vantage-point-collection list-on-premise-vantage-points  --apm-domain-id``
+  * Support for creation of up to 60 Containers per Container Instance instead of 10 in Container Instance Service
+    * ``oci container-instances container-instance create --containers``
+  * Support for New Database Type "Golden Gate Stream Analytics (GGSA)" in the GoldenGate Service
+    * ``oci goldengate connection list --assignable-deployment-type GGSA``
+    * ``oci goldengate deployment create --deployment-type GGSA``
+    * ``oci goldengate deployment-type-collection list-deployment-types --deployment-type GGSA``
+    * ``oci goldengate deployment-version list --deployment-type GGSA``
+  * Support for "ORACLE_GOLDENGATE" resource type in Discovery and Monitoring in Stack Monitoring Service
+    * ``oci stack-monitoring discovery-job``
+  * Support for response values "CREATE_BACKUP" and "DELETE_BACKUP" for Work Request Commands in Mysql Database Service
+    * ``oci mysql work-request``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Wed Jan  3 12:22:01 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.37.1
+  * Support for carbon footprint reporting in the Usage Service
+    * ``oci usage-api average-carbon-emission request``
+    * ``oci usage-api clean-energy-usage request``
+    * ``oci usage-api configuration request-usage-carbon-emission-config``
+    * ``oci usage-api usage-carbon-emission-summary request-usage-carbon-emissions``
+    * ``oci usage-api usage-carbon-emissions-query create``
+    * ``oci usage-api usage-carbon-emissions-query delete``
+    * ``oci usage-api usage-carbon-emissions-query get``
+    * ``oci usage-api usage-carbon-emissions-query list``
+    * ``oci usage-api usage-carbon-emissions-query update``
+  * Support for change compartment of configurations in the PostgreSQL service
+    * ``oci psql configuration change-compartment``
+  * Support for Token Exchange in the IdentityDomains Service
+    * ``oci identity-domains identity-propagation-trust``
+  * Support for resource locking in the Data Catalog Service
+    * ``oci data-catalog catalog add``
+    * ``oci data-catalog catalog remove``
+    * ``oci data-catalog catalog-private-endpoint add``
+    * ``oci data-catalog catalog-private-endpoint remove``
+    * ``oci data-catalog metastore add``
+    * ``oci data-catalog metastore remove``
+  * Support for new optional parameter --dedicated-vm-host-id in the Core Service
+    * ``oci compute instance update --dedicated-vm-host-id``
+  * Support for additional attributes for existing APIs in the Data Safe Service
+    * ``oci data-safe sensitive-data-model list-discovery-analytics --is-common, --sensitive-type-id``
+    * ``oci data-safe sensitive-type list --is-common``
+  * Cloud Advisor Service
+    * Support for non root compartment in list commands for resource action summary and history summary
+      * ``oci optimizer resource-action-summary list -c <compartment ocid>``
+      * ``oci optimizer history-summary list -c <compartment ocid>``
+    * Support for new optional parameter resource metadata in resource actions
+      * ``oci optimizer resource-action-summary list -c <compartment ocid> --include-resource-metadata``
+      * ``oci optimizer resource-action get --resource-action-id <resource action ocid>
+        --include-resource-metadata``
+      * ``oci optimizer history-summary list -c <compartment ocid> --include-resource-metadata``
+  * Data Integration Service
+    * Support for concurrency throttling on
+      * ``oci data-integration workspace oci data-integration task create``
+    * Support for incremental extract, updates to
+      * ``oci data-integration workspace oci data-integration dataflow create`
+  * Goldengate Service
+    * Support for routing method for GoldenGate connections
+      * ``oci goldengate connection create--connection --routing-method``
+    * Support for subnetId update of GoldenGate connections
+      * ``oci goldengate connection update--connection --subnet-id``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Dec  7 14:08:08 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.37.0
+  * Database service
+    * Support for the serial console history.
+      * ``oci db console-history``
+    * Support for new optional parameters, autonomous-data-storage-size-in-tbs,
+      cpu-core-count-per-node and total-container-databases in the cloud autonomous
+      and autonomous vm cluster db resources.
+      * ``oci db autonomous-vm-cluster update --autonomous-data-storage-size-in-tbs,
+        --cpu-core-count-per-node, --total-container-databases``
+      * ``oci db cloud-autonomous-vm-cluster update --autonomous-data-storage-size-in-tbs,
+        --cpu-core-count-per-node, --total-container-databases``
+    * Support for new list system versions commands.
+      * ``oci db system-version list``
+    *Support for new optional parameter in cloud-vm-cluster and vm-cluster resources.
+      * ``oci db cloud-vm-cluster create --system-version``
+      * ``oci db vm-cluster create --system-version``
+  * Support for multiple clusters in a SDDC in Oracle Cloud VMware Provisioning service.
+    * ``oci ocvs esxi-host replace-host``
+    * ``oci ocvs cluster cluster``
+    * ``oci ocvs sddc retrieve-password``
+  * Support for upload-discovery-data in Log Analytics service.
+    * ``oci log-analytics entity upload-discovery-data
+      --upload-discovery-data-details --namespace-name``
+    * ``oci log-analytics entity upload-discovery-data --file --namespace-name``
+  * ADM service.
+    * Support for new list actions.
+      * ``oci adm remediation-recipe list``
+      * ``oci adm remediation-run list``
+      * ``oci adm remediation-run list-application-dependency-recommendations``
+      * ``oci adm remediation-run-stage list-stages``
+    * Support for new optional parameters --usage-data.
+      * ``oci adm vulnerability-audit create --usage-data``
+      * ``oci adm vulnerability-audit create-vulnerability-audit-\
+        external-resource-vulnerability-audit-source --usage-data``
+      * ``oci adm vulnerability-audit create-vulnerability-audit-\
+        oci-resource-vulnerability-audit-source --usage-data``
+      * ``oci adm vulnerability-audit create-vulnerability-audit-\
+        unknown-source-vulnerability-audit-source --usage-data``
+  * Support for new AWR Hub Snapshot ingest commands in Operations Insights service.
+    * ``oci opsi awr-hub-sources``
+    * ``oci opsi operations-insights-warehouses``
+    * ``oci opsi awr-hub-objects``
+  * Support for managing available certificates of target servers in Goldengate service.
+    * ``oci goldengate certificate``
+  * [BREAKING] Multiple parameters changes in OCVS service. Few params deleted in sddc resource.
+    * ``oci ocvs esxi-host create --cluster-id``
+    * ``oci ocvs esxi-host list --cluster-id``
+    * ``oci ocvs esxi-host update  --next-commitment``
+    * ``oci ocvs sddc``
+  * Description of export details in the Logging Analytics service
+    * ``oci log-analytics query export``
+  * Description change in Compute Cloud at Customer service
+  * [BREAKING] The following commands have been removed in ADM service.
+    * ``oci adm application-dependency-recommendation-collection
+      list-application-dependency-recommendations``
+    * ``oci adm remediation-recipe-collection list-remediation-recipes``
+    * ``oci adm remediation-run-collection list-remediation-runs``
+    * ``oci adm remediation-run-stage-collection list-stages``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Nov 23 10:49:56 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.36.2
+  * Support for new Oracle Database PostgreSQL service
+    * ``oci psql``
+  * Support for enabling, disabling, renewing, and viewing SSL/TLS in the BDS service
+    * ``oci bds instance enable-certificate``
+    * ``oci bds instance disable-certificate``
+    * ``oci bds instance renew-certificate``
+    * ``oci bds instance certificate-service-info``
+  * Identity Domains Service
+    * Support for new command
+      * ``oci identity-domains approval-workflow``
+      * ``oci identity-domains approval-workflow-assignment``
+      * ``oci identity-domains approval-workflow-step``
+      * ``oci identity-domains branding-setting``
+      * ``oci identity-domains cloud-gate``
+      * ``oci identity-domains cloud-gate-mapping``
+      * ``oci identity-domains cloud-gate-server``
+      * ``oci identity-domains cloud-gates``
+      * ``oci identity-domains condition``
+      * ``oci identity-domains my-completed-approval``
+      * ``oci identity-domains my-pending-approval``
+      * ``oci identity-domains my-pending-approvals list``
+      * ``oci identity-domains my-request``
+      * ``oci identity-domains network-perimeter``
+      * ``oci identity-domains notification-setting``
+      * ``oci identity-domains notification-settings``
+      * ``oci identity-domains o-auth-client-certificate``
+      * ``oci identity-domains o-auth-partner-certificate``
+      * ``oci identity-domains policies``
+      * ``oci identity-domains rule``
+      * ``oci identity-domains rules``
+      * ``oci identity-domains schema``
+      * ``oci identity-domains schemas``
+      * ``oci identity-domains self-registration-profile``
+      * ``oci identity-domains self-registration-profiles``
+      * ``oci identity-domains setting``
+      * ``oci identity-domains settings``
+    * Support for new optional parameter
+      * ``oci identity-domains authentication-factors-remover create --token
+      * ``oci identity-domains my-authentication-factors-remover create --token``
+      * ``oci identity-domains my-request create --action --approval-details --expires``
+  * Support for Capacity Topology API in the Compute service
+    * ``oci compute capacity-topology``
+- from version 3.36.1
+  * Java Management Service
+    * Support for distribution and management of Deployment Rule Set
+      * ``oci jms drs-file-collection list-drs-files``
+      * ``oci jms fleet create-drs-file``
+      * ``oci jms fleet update-drs-file``
+      * ``oci jms fleet enable-drs``
+      * ``oci jms fleet disable-drs``
+    * Support for exporting data across regions
+      * ``oci jms export-setting``
+      * ``oci jms export-status``
+    * Support for new optional parameter
+      * ``oci jms fleet-agent-configuration update --mac-os-configuration``
+      * ``oci jms java-family list --is-supported-version``
+      * ``oci jms work-request list --managed-instance-id``
+  * Database Service
+    * Support for SaaS administrative user configuration
+      * ``oci db autonomous-database configure-saas-admin-user``
+      * ``oci db autonomous-database saas-admin-user-status``
+    * Support for Create Autonomous Dataguard Association
+      * ``oci db autonomous-container-database-dataguard create``
+- from version 3.36.0
+  * Full Stack Disaster Recovery Service
+    * Support for performing disaster recovery drills
+      * ``oci disaster-recovery dr-plan-execution create-start-drill``
+      * ``oci disaster-recovery dr-plan-execution create-start-drill-precheck``
+      * ``oci disaster-recovery dr-plan-execution create-stop-drill``
+      * ``oci disaster-recovery dr-plan-execution create-stop-drill-precheck``
+    * Support for new optional parameter
+      * ``oci disaster-recovery dr-protection-group list --lifecycle-sub-state``
+  * Stack Monitoring Service
+    * Support for new commands on extensibility, metric extensions, and baseline and anomaly detection
+      * ``oci stack-monitoring config create-license-auto-assign-config``
+      * ``oci stack-monitoring config create-license-enterprise-extensibility-config``
+      * ``oci stack-monitoring config update-license-auto-assign-config``
+      * ``oci stack-monitoring config update-license-enterprise-extensibility-config``
+      * ``oci stack-monitoring resource manage-license``
+      * ``oci stack-monitoring resource summarize-count``
+      * ``oci stack-monitoring resource list``
+      * ``oci stack-monitoring resource-task``
+      * ``oci stack-monitoring resource-type``
+      * ``oci stack-monitoring metric-extension``
+      * ``oci stack-monitoring baselineable-metric``
+    * Support for new optional parameter
+      * ``oci stack-monitoring resource create --license``
+      * ``oci stack-monitoring resource search --license``
+  * Support for new optional parameter on integration with the Database Management
+    service in the MySQL HeatWave Database service
+    * ``oci mysql db-system clone --database-management``
+    * ``oci mysql db-system create --database-management``
+    * ``oci mysql db-system import --database-management``
+    * ``oci mysql db-system list --database-management``
+    * ``oci mysql db-system update --database-management``
+  * Support for new commands on integration with the MySQL HeatWave Database
+    service in the Database Management service
+    * ``oci database-management managed-my-sql-databases``
+  * Data Safe Service
+    * Support for new commands on database security configuration, security policy,
+      and analytics for SQL collection, firewall policies, and firewall violations
+      * ``oci data-safe database-security-config``
+      * ``oci data-safe security-policy``
+      * ``oci data-safe security-policy-deployment``
+      * ``oci data-safe security-policy-entry-state``
+      * ``oci data-safe sql-collection``
+      * ``oci data-safe sql-collection-analytics``
+      * ``oci data-safe sql-collection-log-insights``
+      * ``oci data-safe sql-firewall-allowed-sql``
+      * ``oci data-safe sql-firewall-allowed-sql-analytics``
+      * ``oci data-safe sql-firewall-policy``
+      * ``oci data-safe sql-firewall-policy-analytics``
+      * ``oci data-safe sql-firewall-violation-summary``
+    * Support for new optional parameters
+      * ``oci data-safe work-request list --access-level --compartment-id-in-subtree``
+  * [BREAKING] Optional parameter --sdm-masking-policy-difference-id for the below
+    command is now required in the Data Safe service
+    * ``oci data-safe masking-policy apply-sdm-masking-policy-difference
+      --sdm-masking-policy-difference-id``
+  * [BREAKING] Database Tool Service
+    * Multiple commands renamed
+      * ``oci dbtools connection add-lock``
+      * ``oci dbtools connection remove-lock``
+      * ``oci dbtools connection create-generic-jdbc``
+      * ``oci dbtools connection create-postgresql``
+      * ``oci dbtools connection update-generic-jdbc``
+      * ``oci dbtools connection update-postgresql``
+      * ``oci dbtools connection validate-postgresql``
+      * ``oci dbtools private-endpoint add-lock``
+      * ``oci dbtools private-endpoint remove-lock``
+    * Required parameter --database-tools-connection-id renamed
+      * ``oci dbtools connection add-lock --connection-id``
+      * ``oci dbtools connection remove-lock --connection-id``
+      * ``oci dbtools connection update-generic-jdbc --connection-id``
+      * ``oci dbtools connection update-postgresql --connection-id``
+      * ``oci dbtools connection validate-postgresql --connection-id``
+    * Required parameter --user-password renamed
+      * ``oci dbtools connection create-generic-jdbc --user-password-secret-id``
+      * ``oci dbtools connection create-postgresql --user-password-secret-id``
+      * ``oci dbtools connection update-generic-jdbc --user-password-secret-id``
+      * ``oci dbtools connection update-postgresql --user-password-secret-id``
+    * Required parameter --database-tools-private-endpoint-id renamed
+      * ``oci dbtools private-endpoint add-lock --private-endpoint-id``
+      * ``oci dbtools private-endpoint remove-lock --private-endpoint-id``
+    * Optional parameter removed
+      * ``oci dbtools connection update-mysql-database --user-password``
+- from version 3.35.0
+  * Support for new optional parameters in the list alarms status in the OCI Monitoring Service
+    * ``oci monitoring alarm-status list-alarms-status --entity-id, --resource-id, --service-name, --status``
+  * Add support for creating/updating new connection types in the Goldengate service
+    * ``oci goldengate connection create-amazon-kinesis-connection``
+    * ``oci goldengate connection update-amazon-kinesis-connection``
+    * ``oci goldengate connection create-amazon-redshift-connection``
+    * ``oci goldengate connection update-amazon-redshift-connection``
+    * ``oci goldengate connection create-elasticsearch-connection``
+    * ``oci goldengate connection update-elasticsearch-connection``
+    * ``oci goldengate connection create-generic-connection``
+    * ``oci goldengate connection update-generic-connection``
+    * ``oci goldengate connection create-google-big-query-connection``
+    * ``oci goldengate connection update-google-big-query-connection``
+    * ``oci goldengate connection create-google-cloud-storage-connection``
+    * ``oci goldengate connection update-google-cloud-storage-connection``
+    * ``oci goldengate connection create-redis-connection``
+    * ``oci goldengate connection update-redis-connection``
+  * Support for managing replicas in the NoSQL service
+    * ``oci nosql table create-replica``
+    * ``oci nosql table update-replica``
+  * Application Dependency Management
+    * Adds new commands for managing ADM Remediation resources
+      * ``oci adm remediation-recipe``
+      * ``oci adm remediation-run``
+      * ``oci adm remediation-run-collection list-remediation-runs``
+      * ``oci adm remediation-run-stage get-stage``
+      * ``oci adm remediation-run-stage-collection list-stages``
+      * ``oci adm application-dependency-recommendation-collection
+        list-application-dependency-recommendations``
+    * Fix bug where when creating a Vulnerability Audit, we now wait for
+      the lifecycle state of the audit instead of its Work Request.
+  * Database Service
+    * Support for new optional parameter in autonomous container database
+      * ``oci db autonomous-container-database create --is-dst-file-update-enabled``
+      * ``oci db autonomous-container-database update --is-dst-file-update-enabled``
+    * Newly added api for creating maintenance run for ACD resources
+      * ``oci db maintenance-run create``
+  * Database Tools
+    * Support for the new Generic JDBC connection type
+      * ``oci dbtools connection create-generic-jdbc``
+      * ``oci dbtools connection update-generic-jdbc``
+    * Support for the new Postgresql connection type
+      * ``oci dbtools connection create-postgresql``
+      * ``oci dbtools connection update-postgresql``
+    * Support for connections without runtime support on existing connection types
+      * ``oci dbtools connection create-oracle-database --runtime-support unsupported``
+      * ``oci dbtools connection create-mysql-database --runtime-support unsupported``
+    * Support for connection list filtering using the runtime-support property
+      * ``oci dbtools connection list --runtime-support``
+    * Support for proxy authentication on Oracle connections
+      * ``oci dbtools connection create-oracle-database --proxy-client``
+      * ``oci dbtools connection update-oracle-database --proxy-client``
+    *  Support for resource locking
+      * ``oci dbtools private-endpoint add-lock``
+      * ``oci dbtools private-endpoint remove-lock``
+  * [BREAKING] New required parameters in the Database Tools Service
+    * ``oci dbtools connection create-mysql-database --connection-string --user-name``
+    * ``oci dbtools connection create-oracle-database --connection-string --user-name``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Oct 19 09:19:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.34.0

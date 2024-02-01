@@ -1,8 +1,6 @@
-Common subdirectories: oci-cli-3.34.0.orig/.github and oci-cli-3.34.0/.github
-Common subdirectories: oci-cli-3.34.0.orig/images and oci-cli-3.34.0/images
-diff -u oci-cli-3.34.0.orig/requirements.txt oci-cli-3.34.0/requirements.txt
---- oci-cli-3.34.0.orig/requirements.txt	2023-10-17 09:37:30.000000000 +0200
-+++ oci-cli-3.34.0/requirements.txt	2023-10-19 11:17:39.414445782 +0200
+diff -Nru oci-cli-3.37.5.orig/requirements.txt oci-cli-3.37.5/requirements.txt
+--- oci-cli-3.37.5.orig/requirements.txt	2024-01-23 07:04:19.000000000 +0100
++++ oci-cli-3.37.5/requirements.txt	2024-01-24 11:22:42.039021824 +0100
 @@ -2,47 +2,47 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -20,7 +18,7 @@ diff -u oci-cli-3.34.0.orig/requirements.txt oci-cli-3.34.0/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.113.0
+-oci==2.119.1
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.11.0
@@ -40,7 +38,7 @@ diff -u oci-cli-3.34.0.orig/requirements.txt oci-cli-3.34.0/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.113.0
++oci>=2.119.1
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.11.0
@@ -86,20 +84,16 @@ diff -u oci-cli-3.34.0.orig/requirements.txt oci-cli-3.34.0/requirements.txt
 -setuptools==59.6.0; python_version == '3.6'
 +setuptools>=59.6.0; python_version >= '3.6'
  # this is required because of python 3.6 requests dependency version bound
--urllib3<=1.26.15
-\ No newline at end of file
-+urllib3<=1.26.15
-Common subdirectories: oci-cli-3.34.0.orig/scripts and oci-cli-3.34.0/scripts
-Common subdirectories: oci-cli-3.34.0.orig/services and oci-cli-3.34.0/services
-diff -u oci-cli-3.34.0.orig/setup.py oci-cli-3.34.0/setup.py
---- oci-cli-3.34.0.orig/setup.py	2023-10-17 09:37:30.000000000 +0200
-+++ oci-cli-3.34.0/setup.py	2023-10-19 11:18:17.151197418 +0200
+ urllib3<=1.26.15
+diff -Nru oci-cli-3.37.5.orig/setup.py oci-cli-3.37.5/setup.py
+--- oci-cli-3.37.5.orig/setup.py	2024-01-23 07:04:19.000000000 +0100
++++ oci-cli-3.37.5/setup.py	2024-01-24 11:21:39.735561975 +0100
 @@ -30,23 +30,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.113.0',
-+    'oci>=2.113.0',
+-    'oci==2.119.1',
++    'oci>=2.119.1',
      'arrow>=1.0.0',
      'certifi',
 -    'click==8.0.4',
@@ -128,5 +122,3 @@ diff -u oci-cli-3.34.0.orig/setup.py oci-cli-3.34.0/setup.py
  }
  
  fips_libcrypto_file = os.getenv("OCI_CLI_FIPS_LIBCRYPTO_FILE")
-Common subdirectories: oci-cli-3.34.0.orig/src and oci-cli-3.34.0/src
-Common subdirectories: oci-cli-3.34.0.orig/tests and oci-cli-3.34.0/tests
