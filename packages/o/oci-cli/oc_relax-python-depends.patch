@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.37.1.orig/requirements.txt oci-cli-3.37.1/requirements.txt
---- oci-cli-3.37.1.orig/requirements.txt	2023-12-12 10:31:25.000000000 +0100
-+++ oci-cli-3.37.1/requirements.txt	2024-01-03 13:20:59.131874288 +0100
+diff -Nru oci-cli-3.37.5.orig/requirements.txt oci-cli-3.37.5/requirements.txt
+--- oci-cli-3.37.5.orig/requirements.txt	2024-01-23 07:04:19.000000000 +0100
++++ oci-cli-3.37.5/requirements.txt	2024-01-24 11:22:42.039021824 +0100
 @@ -2,47 +2,47 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.37.1.orig/requirements.txt oci-cli-3.37.1/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.118.0
+-oci==2.119.1
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.11.0
@@ -38,7 +38,7 @@ diff -Nru oci-cli-3.37.1.orig/requirements.txt oci-cli-3.37.1/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.118.0
++oci>=2.119.1
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.11.0
@@ -85,15 +85,15 @@ diff -Nru oci-cli-3.37.1.orig/requirements.txt oci-cli-3.37.1/requirements.txt
 +setuptools>=59.6.0; python_version >= '3.6'
  # this is required because of python 3.6 requests dependency version bound
  urllib3<=1.26.15
-diff -Nru oci-cli-3.37.1.orig/setup.py oci-cli-3.37.1/setup.py
---- oci-cli-3.37.1.orig/setup.py	2023-12-12 10:31:25.000000000 +0100
-+++ oci-cli-3.37.1/setup.py	2024-01-03 13:20:00.861254190 +0100
+diff -Nru oci-cli-3.37.5.orig/setup.py oci-cli-3.37.5/setup.py
+--- oci-cli-3.37.5.orig/setup.py	2024-01-23 07:04:19.000000000 +0100
++++ oci-cli-3.37.5/setup.py	2024-01-24 11:21:39.735561975 +0100
 @@ -30,23 +30,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.118.0',
-+    'oci>=2.118.0',
+-    'oci==2.119.1',
++    'oci>=2.119.1',
      'arrow>=1.0.0',
      'certifi',
 -    'click==8.0.4',
