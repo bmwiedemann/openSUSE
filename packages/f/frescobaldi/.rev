@@ -226,4 +226,14 @@
   added necessary dependencaies.</comment>
     <requestid>1093602</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>15d3d8fa1ebf0b78995953ab887e8117</srcmd5>
+    <version>3.3.0</version>
+    <time>1706807176</time>
+    <user>anag+factory</user>
+    <comment>- Switch to SLE15 python module: Python 3.6 is not supported by
+  python-ly anymore
+- Move to PEP517 install macros</comment>
+    <requestid>1143344</requestid>
+  </revision>
 </revisionlist>
