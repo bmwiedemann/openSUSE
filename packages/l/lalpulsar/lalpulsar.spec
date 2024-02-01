@@ -1,7 +1,7 @@
 #
-# spec file for package lalpulsar
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 %define skip_python2 1
 
 Name:           %{pname}%{?psuffix}
-Version:        6.0.1
+Version:        6.0.6
 Release:        0
 Summary:        LSC Algorithm Pulsar Library
 License:        GPL-2.0-or-later
