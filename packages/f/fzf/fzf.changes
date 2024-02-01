@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  1 15:08:48 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.46.1:
+  * Bug fixes and improvements
+  * Downgraded minimum go version to 1.20
+  * Updated rivo/uniseg dependency
+
+-------------------------------------------------------------------
 Tue Jan 23 19:48:30 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.46.0:
