@@ -348,4 +348,19 @@
   * Avoid unwrap() by changing filter-then-map to filter_map</comment>
     <requestid>1141636</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cc9491dc23554e5ab8b84f018e1d2c64</srcmd5>
+    <version>0.18.0+0</version>
+    <time>1706807115</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.0:
+  * [breaking] Add --classify=always,auto,never
+  * Remove rustfmt config file that has a nightly only option in
+    favor of rustfmt skip directive which is already in place
+  * Fix small typo in pull request template
+  * Change cast to coertion, remove rustfmt skip and clippy lint
+    ignore directives
+  * Regenerate classification related tests</comment>
+    <requestid>1143198</requestid>
+  </revision>
 </revisionlist>
