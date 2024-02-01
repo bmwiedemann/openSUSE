@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 30 10:14:46 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Only update LongConstantCompositeINTEL on suse_version > 1506 
+
+-------------------------------------------------------------------
+Tue Jan 30 07:47:01 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.15610.11
+- Update spirv_llvm_translator_commit to 493353d7fdc655f9f31abc874dd0adef7dd241c1
+- Update vc_intrinsics_commit to v0.14.0
+- 0001-Fix-PromotePredicate-to-keep-sequence-of-instruction.patch
+  * Now included in current version
+- 0001-Backport-to-17-Update-LongConstantCompositeINTEL-to-.patch
+  * Adapt to name change made in spirv-headers 
+
+-------------------------------------------------------------------
 Wed Jan  3 14:14:10 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - 0001-Fix-PromotePredicate-to-keep-sequence-of-instruction.patch
