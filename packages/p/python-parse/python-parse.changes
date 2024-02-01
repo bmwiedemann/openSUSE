@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  1 00:50:36 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pytest, like upstream has. 
+
+-------------------------------------------------------------------
 Tue Jan 30 18:07:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.1:

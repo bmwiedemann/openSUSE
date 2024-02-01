@@ -16,16 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parse
 Version:        1.20.1
 Release:        0
 Summary:        Python module for parsing strings using a "format" syntax
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/r1chardj0n3s/parse
 Source0:        https://files.pythonhosted.org/packages/source/p/parse/parse-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -48,7 +47,7 @@ chmod a-x README.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover -v
+%pytest
 
 %files %{python_files}
 %license LICENSE
