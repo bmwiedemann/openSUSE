@@ -45,11 +45,11 @@ Source:         https://github.com/danvratil/qcoro/archive/refs/tags/v%{version}
 BuildRequires:  cmake >= 3.19.0
 BuildRequires:  dbus-1
 %if 0%{?qt5}
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{qt_min_version}
 %endif
 %if 0%{?qt6}
-BuildRequires:  qt6-qml-private-devel
-BuildRequires:  qt6-quick-private-devel
+BuildRequires:  qt6-qml-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-quick-private-devel >= %{qt_min_version}
 %endif
 BuildRequires:  cmake(Qt%{_qt_suffix}Concurrent) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}Core) >= %{qt_min_version}
@@ -60,10 +60,10 @@ BuildRequires:  cmake(Qt%{_qt_suffix}Qml) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}Test) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}WebSockets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}Widgets) >= %{qt_min_version}
-# C++-20 support is needed. Qt6 already requires gcc10
-%if 0%{?qt5} && 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
+# C++-20 support is required
+%if 0%{?qt5} && 0%{?suse_version} < 1550
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
 %endif
 
 %description
@@ -140,8 +140,8 @@ applications.
 %if 0%{?qt5}
 %cmake -DBUILD_SHARED_LIBS:BOOL=ON \
   -DUSE_QT_VERSION:STRING=%{_qt_suffix} \
-%if 0%{?qt5} && 0%{?suse_version} == 1500
-  -DCMAKE_CXX_COMPILER:STRING=g++-10
+%if 0%{?qt5} && 0%{?suse_version} < 1550
+  -DCMAKE_CXX_COMPILER:STRING=g++-13
 %endif
 
 %cmake_build
