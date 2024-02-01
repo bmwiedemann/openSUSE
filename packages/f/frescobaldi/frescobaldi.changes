@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  1 09:22:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Switch to SLE15 python module: Python 3.6 is not supported by
+  python-ly anymore
+- Move to PEP517 install macros
+
+-------------------------------------------------------------------
 Sat Jun 17 19:04:47 UTC 2023 - Cor Blom <cornelis@solcon.nl>
 
 - python-ly is now its own package. Removed it from this one and
