@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb  1 06:37:58 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 3.66.3
+  * Allow for configuring the buffered file writer (#2319)
+  * added flyio protos (#2357)
+  * Scan GitHub wikis (#2233)
+  * [chore] Add filesystem integration test (#2358)
+  * update azure test files to check rawV2 (#2353)
+  * [bug] fix script change (#2360)
+
+-------------------------------------------------------------------
+Thu Feb 01 06:29:26 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.66.2:
+  * fix (#2360)
+  * update azure test files to check rawV2 (#2353)
+  * [chore] Add filesystem integration test (#2358)
+  * Scan GitHub wikis #2233
+  * added flyio protos (#2357)
+  * Allow for configuring the buffered file writer (#2319)
+  * [feat] - tmp file diffs (#2306)
+  * Fix filesystem enumeration ignore paths bug (#2355)
+  * Detectors Updates 1 for Tristate Verification (#2187)
+
+-------------------------------------------------------------------
 Tue Jan 30 08:03:19 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Update to version 3.66.1:
