@@ -1,7 +1,7 @@
 #
-# spec file for package lalinspiral
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           %{pname}%{?psuffix}
-Version:        4.0.2
+Version:        4.0.4
 Release:        0
 Summary:        LSC Algorithm Inspiral Library
 License:        GPL-2.0-or-later
