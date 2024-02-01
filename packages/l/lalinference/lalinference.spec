@@ -1,7 +1,7 @@
 #
-# spec file for package lalinference
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %define skip_python2  1
 %define skip_python36 1
 Name:           %{pname}%{?psuffix}
-Version:        4.1.3
+Version:        4.1.5
 Release:        0
 Summary:        LSC Algorithm Inference Library
 License:        GPL-2.0-or-later
@@ -246,7 +246,7 @@ sed -E -i "1 s|^#\!\s*%{_bindir}/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 %{_bindir}/*
 %endif
-%{python_sitearch}/*
+%{python_sitearch}/lalinference/
 
 %files -n %{name}-data
 %{_datadir}/%{name}/
