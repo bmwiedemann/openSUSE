@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 30 11:44:50 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Correct permisson files path to /usr/share/permissions/permissions.d/ (boo#1219339)
+
+-------------------------------------------------------------------
+Tue Jan 30 08:00:47 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Fix file provides of openssl and timeout 
+
+-------------------------------------------------------------------
+Thu Jan 25 13:58:48 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid error messages of chkstat as this tools does not
+  accept slashes at the end of directory paths! 
+- Move sendmails permissions files to /usr/share/permissions/
+
+-------------------------------------------------------------------
+Wed Jan 17 13:22:30 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Work on certificates usage of smart and relay host 
+- Work on certificates for running sendmail
+
+-------------------------------------------------------------------
 Mon Dec 18 18:14:45 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - There is no such beast called var-run.mount anymore 

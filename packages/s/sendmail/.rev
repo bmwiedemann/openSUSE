@@ -1216,4 +1216,21 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1135112</requestid>
   </revision>
+  <revision rev="121" vrev="3">
+    <srcmd5>fe92c02db688636c92d1ec6ab0c4983c</srcmd5>
+    <version>8.17.2</version>
+    <time>1706807065</time>
+    <user>anag+factory</user>
+    <comment>- Correct permisson files path to /usr/share/permissions/permissions.d/ (boo#1219339)
+
+- Fix file provides of openssl and timeout 
+
+- Avoid error messages of chkstat as this tools does not
+  accept slashes at the end of directory paths! 
+- Move sendmails permissions files to /usr/share/permissions/
+
+- Work on certificates usage of smart and relay host 
+- Work on certificates for running sendmail</comment>
+    <requestid>1142755</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package sendmail
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,9 @@ BuildRequires:  mailx
 BuildRequires:  netcfg
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
+%if 0%{?suse_version} >= 1699
+BuildRequires:  permissions-config
+%endif
 BuildRequires:  procmail
 %if %{with sysvinit}
 Requires(pre):  sysvinit(network)
@@ -73,6 +76,8 @@ Provides:       sendmail-tls
 Provides:       smailcfg
 Provides:       smtp_daemon
 Requires:       /bin/fuser
+Requires:       /usr/bin/openssl
+Requires:       ca-certificates
 Requires:       coreutils
 Requires:       filesystem
 Requires:       findutils
@@ -90,16 +95,29 @@ Requires(pre):  group(daemon)
 Requires(pre):  user(daemon)
 Requires(pre):  group(mail)
 Requires(pre):  user(mail)
+%if 0%{?suse_version} >= 1699
+Requires(pre):  permissions-config
+%endif
 Requires(post): group(mail)
 Requires(post): user(mail)
 %endif
 Requires(post): %fillup_prereq
+Requires(post): ca-certificates
 Requires(post): coreutils
+Requires(post): findutils
+Requires(post): m4
 Requires(post): permissions
 Requires(post): sed
+Requires(post): /usr/bin/openssl
+Requires(post): /usr/bin/timeout
+Requires(posttrans):ca-certificates
 Requires(posttrans):coreutils
 Requires(posttrans):findutils
+Requires(posttrans):permissions
 Requires(posttrans):m4
+Requires(posttrans):sed
+Requires(posttrans):/usr/bin/openssl
+Requires(posttrans):/usr/bin/timeout
 %if 0%{?suse_version} >= 1330
 Requires(verify):group(mail)
 Requires(verify):user(mail)
@@ -123,6 +141,7 @@ Source4:        sendmail.service
 Source5:        sendmail-client.service
 Source6:        sendmail-client.systemd
 Source7:        sendmail.tmpfiles
+Source8:        certificates.sh
 Source42:       https://ftp.sendmail.org/PGPKEYS#/%{name}.keyring
 Source43:       https://ftp.sendmail.org/%{name}.%{version}.tar.gz.sig
 # PATCH-FIX-OPENSUSE: Add our m4 extensions and maintenance scripts
@@ -249,8 +268,14 @@ processed mail on to the MTA (e.g. sendmail).
 	# Part of filesystem RPM
 	# %%dir    %%attr(0770,root,mail)      %{_localstatedir}/spool/clientmqueue/
 	%%attr(0660,root,mail)                 %{_localstatedir}/spool/clientmqueue/sm-client.st
+%if 0%{?suse_version} >= 1699
+	%%attr(0755,root,root)        %{_datadir}/permissions/permissions.d/
+	%%attr(0644,root,root)        %{_datadir}/permissions/permissions.d/sendmail
+	%%attr(0644,root,root)        %{_datadir}/permissions/permissions.d/sendmail.paranoid
+%else
 	%%config %%attr(0644,root,root)        %{_sysconfdir}/permissions.d/sendmail
 	%%config %%attr(0644,root,root)        %{_sysconfdir}/permissions.d/sendmail.paranoid
+%endif
 	EOF
     cat <<-EOF > milterversion.c
 	#include "libmilter/mfapi.h"
@@ -340,7 +365,11 @@ processed mail on to the MTA (e.g. sendmail).
     mkdir -p %{buildroot}%{_includedir}/sm/os
     chmod 0750 %{buildroot}%{_mailcnfdir}/certs
     chmod 0750 %{buildroot}%{_mailcnfdir}/auth
+%if 0%{?suse_version} >= 1699
+    mkdir -p %{buildroot}%{_datadir}/permissions/permissions.d
+%else
     mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
+%endif
     mkdir -p %{buildroot}%{_mandir}/man1
     mkdir -p %{buildroot}%{_mandir}/man5
     mkdir -p %{buildroot}%{_mandir}/man8
@@ -424,7 +453,8 @@ processed mail on to the MTA (e.g. sendmail).
 	</body>
 	</html>
 	EOF
-    GROFF_NO_SGR=1 groff -pe -me -mtty-char -Tlatin1 doc/op/op.me > ${doc}/op.txt
+    GROFF_NO_SGR=1 groff -pe -me -mtty-char -Tutf8 doc/op/op.me > ${doc}/op.txt
+    make -C doc/op/
     install -m 0644 smrsh/README ${doc}/README.smrsh
     install -m 0644 libmilter/README ${doc}/README.libmilter
     bzip2 -9f ${doc}/*.ps
@@ -457,8 +487,13 @@ processed mail on to the MTA (e.g. sendmail).
 		    local-host-names %{buildroot}%{_mailcnfdir}/
     install -m 0600 auth-info %{buildroot}%{_mailcnfdir}/auth/
     install -m 0755 sendmail.nissl %{buildroot}%{_sbindir}/
+%if 0%{?suse_version} >= 1699
+    install -m 0644 permissions %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
+    install -m 0644 permissions.paranoid %{buildroot}%{_datadir}/permissions/permissions.d/sendmail.paranoid
+%else
     install -m 0644 permissions %{buildroot}%{_sysconfdir}/permissions.d/sendmail
     install -m 0644 permissions.paranoid %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
+%endif
 %if %{with sysvinit}
     install -m 0755 rc   %{buildroot}%{_sysconfdir}/init.d/sendmail
     sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
@@ -468,12 +503,21 @@ processed mail on to the MTA (e.g. sendmail).
 %else
     mkdir -p %{buildroot}%{_tmpfilesdir}
     install -m 0644 tmpfile %{buildroot}%{_tmpfilesdir}/sendmail.conf
+%if 0%{?suse_version} >= 1699
+    sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
+    sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail.paranoid
+    sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
+    sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail.paranoid
+    sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
+    sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail.paranoid
+%else
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
     sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
     sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
     sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
     sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
+%endif
 %endif
 %if 0%{?suse_version} > 1500
     install -m 0644 smtp %{buildroot}%{_pam_vendordir}/smtp
@@ -555,22 +599,27 @@ processed mail on to the MTA (e.g. sendmail).
     rm -f %{buildroot}%{_sysconfdir}/aliases %{buildroot}%{_mailcnfdir}/*.db
     rm -f %{buildroot}%{_mailcnfdir}/*/*.db
 
+    #
+    # Install certificates.sh
+    #
+    install -m 0755 %{S:8} %{buildroot}%{_mailcnfdir}/certs/scripts/certificates.sh
+
 %if %{defined verify_permissions}
 %verifyscript
 %if %{with sysvinit}
-%verify_permissions -e %{_localstatedir}/run/sendmail/
+%verify_permissions -e %{_localstatedir}/run/sendmail
 %endif
-%verify_permissions -e %{_localstatedir}/spool/clientmqueue/
-%verify_permissions -e %{_localstatedir}/spool/mqueue/
+%verify_permissions -e %{_localstatedir}/spool/clientmqueue
+%verify_permissions -e %{_localstatedir}/spool/mqueue
 %verify_permissions -e %{_sysconfdir}/sendmail.cf
 %if %{with sysvinit}
 %verify_permissions -e %{_sysconfdir}/init.d/sendmail
 %else
-%verify_permissions -e %{_mailcnfdir}/system/
+%verify_permissions -e %{_mailcnfdir}/system
 %endif
-%verify_permissions -e %{_mailcnfdir}/auth/
-%verify_permissions -e %{_mailcnfdir}/certs/
-%verify_permissions -e %{_libexecdir}/sendmail.d/bin/
+%verify_permissions -e %{_mailcnfdir}/auth
+%verify_permissions -e %{_mailcnfdir}/certs
+%verify_permissions -e %{_libexecdir}/sendmail.d/bin
 %verify_permissions -e %{_libexecdir}/sendmail.d/bin/mail.local
 %verify_permissions -e %{_libexecdir}/sendmail.d/bin/smrsh
 %verify_permissions -e %{_sbindir}/sendmail
@@ -619,19 +668,19 @@ fi
 %endif
 %if %{defined set_permissions}
 %if %{with sysvinit}
-%set_permissions %{_localstatedir}/run/sendmail/
+%set_permissions %{_localstatedir}/run/sendmail
 %endif
-%set_permissions %{_localstatedir}/spool/clientmqueue/
-%set_permissions %{_localstatedir}/spool/mqueue/
+%set_permissions %{_localstatedir}/spool/clientmqueue
+%set_permissions %{_localstatedir}/spool/mqueue
 %set_permissions %{_sysconfdir}/sendmail.cf
 %if %{with sysvinit}
 %set_permissions %{_sysconfdir}/init.d/sendmail
 %else
-%set_permissions %{_mailcnfdir}/system/
+%set_permissions %{_mailcnfdir}/system
 %endif
-%set_permissions %{_mailcnfdir}/auth/
-%set_permissions %{_mailcnfdir}/certs/
-%set_permissions %{_libexecdir}/sendmail.d/bin/
+%set_permissions %{_mailcnfdir}/auth
+%set_permissions %{_mailcnfdir}/certs
+%set_permissions %{_libexecdir}/sendmail.d/bin
 %set_permissions %{_libexecdir}/sendmail.d/bin/mail.local
 %set_permissions %{_libexecdir}/sendmail.d/bin/smrsh
 %set_permissions %{_sbindir}/sendmail
@@ -809,6 +858,7 @@ done
 %dir %attr(0700,root,root) %{_mailcnfdir}/certs/private/
 %dir %attr(0700,root,root) %{_mailcnfdir}/certs/newcerts/
 %dir %attr(0700,root,root) %{_mailcnfdir}/certs/scripts/
+%config %attr(0755,root,root) %{_mailcnfdir}/certs/scripts/certificates.sh
 
 %files -n rmail
 %defattr(-,root,root)
