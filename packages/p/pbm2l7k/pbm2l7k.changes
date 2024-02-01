@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 09:55:02 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported (use %%autosetup).
+
+-------------------------------------------------------------------
 Fri May 26 13:20:09 CEST 2006 - schwab@suse.de
 
 - Use RPM_OPT_FLAGS.
