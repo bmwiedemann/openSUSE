@@ -754,4 +754,12 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
     <comment>- Remove unnecessary Requires(post*) (forwarded request 1112456 from Vogtinator)</comment>
     <requestid>1112525</requestid>
   </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>659c5f4e67802d0deceb315450674d57</srcmd5>
+    <version>0.20.0</version>
+    <time>1706807048</time>
+    <user>anag+factory</user>
+    <comment>Switch to GCC 13 for Leap builds for packages that can't be built with the default compiler (forwarded request 1143049 from krop)</comment>
+    <requestid>1143128</requestid>
+  </revision>
 </revisionlist>
