@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-pynitrokey
-Version:        0.4.44
+Version:        0.4.45
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
@@ -31,6 +31,8 @@ URL:            https://github.com/Nitrokey/pynitrokey
 Source:         https://files.pythonhosted.org/packages/source/p/pynitrokey/pynitrokey-%{version}.tar.gz
 Source1:        LICENSE-MIT
 Source2:        LICENSE-APACHE
+# PATCH-FIX-UPSTREAM: support spsdk >= 2.0
+Patch1:         https://github.com/Nitrokey/pynitrokey/pull/499.patch#/support-spsdk-2.0.patch
 BuildRequires:  %{python_module click-aliases}
 BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
@@ -38,9 +40,9 @@ BuildRequires:  %{python_module semver}
 # https://github.com/Nitrokey/pynitrokey/blob/master/pyproject.toml
 BuildRequires:  %{python_module certifi >= 14.5.14}
 BuildRequires:  %{python_module cffi}
-BuildRequires:  %{python_module click >= 8.0.0 with %python-click < 9}
-# "cryptography >=3.4.4,<37"
-BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module click >= 8.1.6}
+# "cryptography >=41.0.4,<44"
+BuildRequires:  %{python_module cryptography >= 41.0.4 with %python-cryptography < 44}
 BuildRequires:  %{python_module ecdsa}
 # "frozendict ~= 2.3.4"
 BuildRequires:  %{python_module frozendict >= 2.3.4}
@@ -52,12 +54,9 @@ BuildRequires:  %{python_module nkdfu}
 BuildRequires:  %{python_module python-dateutil >= 2.7.0}
 BuildRequires:  %{python_module pyusb}
 BuildRequires:  %{python_module requests}
-# "spsdk >=1.7.0,<1.8.0"
-BuildRequires:  %{python_module spsdk >= 1.11.0 with %python-spsdk < 1.12.0}
-BuildRequires:  %{python_module tqdm}
-# "urllib3 ~= 1.26.7"
-BuildRequires:  %{python_module urllib3 >= 1.26.7}
+BuildRequires:  %{python_module spsdk >= 2.0 with %python-spsdk < 2.1}
 BuildRequires:  %{python_module tlv8}
+BuildRequires:  %{python_module tqdm}
 # "typing_extensions ~= 4.3.0"
 BuildRequires:  %{python_module typing_extensions >= 4.3.0}
 BuildRequires:  %{python_module pyserial}
@@ -72,6 +71,7 @@ BuildRequires:  %{python_module pytest}
 Requires:       intelhex
 Requires:       python-certifi >= 14.5.14
 Requires:       python-cffi
+Requires:       python-click >= 8.1.6
 Requires:       python-click-aliases
 Requires:       python-cryptography
 Requires:       python-ecdsa
@@ -83,16 +83,15 @@ Requires:       python-python-dateutil >= 2.7.0
 Requires:       python-pyusb
 Requires:       python-requests
 Requires:       python-semver
-Requires:       python-spsdk >= 1.7.0
 Requires:       python-tlv8
 Requires:       python-tqdm
 Requires:       python-typing_extensions >= 4.3.0
 Requires:       python-urllib3 >= 1.26.7
-Requires:       (python-click >= 8.0.0 with python-click < 9)
 Requires:       (python-fido2 >= 1.1.0 with python-fido2 < 2)
 Requires:       (python-nethsm >= 0.5.0 with python-nethsm < 2)
+Requires:       (python-spsdk >= 2.0 with python-spsdk < 2.1)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # only build for x86_64, as some dependencies are not available
 # for other architectures
 ExclusiveArch:  x86_64
@@ -120,7 +119,7 @@ The user documentation for the `nitropy` CLI is available on [docs.nitrokey.com]
 - [NetHSM](https://docs.nitrokey.com/nethsm/index.html)
 
 %prep
-%setup -q -n pynitrokey-%{version}
+%autosetup -p1 -n pynitrokey-%{version}
 
 cp %SOURCE1 .
 cp %SOURCE2 .
