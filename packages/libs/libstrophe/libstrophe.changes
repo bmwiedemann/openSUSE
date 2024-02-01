@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  1 08:52:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  * Fix connected/connecting signaling to user (#227)
+  * Fix wording of licensing terms (#225)
+  * Prepare for future changes in OpenSSL (#226)
+  * Improve Stream Management (#227) (#230)
+  * Add SCRAM-PLUS Variants (#228)
+  * Introduce XEP-0138 stream compression (#231)
+  * Deprecated the following API (#227):
+  * xmpp_conn_disable_tls() - replaced by a flag set by xmpp_conn_set_flags()
+
+-------------------------------------------------------------------
 Wed Aug  2 14:31:28 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.3:
