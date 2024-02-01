@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package MozillaFirefox
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2006-2023 Wolfgang Rosenauer <wr@rosenauer.org>
@@ -235,13 +235,19 @@ Patch102:       firefox-branded-icons.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): coreutils shared-mime-info desktop-file-utils
-Requires(postun):shared-mime-info desktop-file-utils
+Requires(postun): shared-mime-info desktop-file-utils
 Requires:       %{name}-branding >= 68
 %requires_ge    mozilla-nspr
 %requires_ge    mozilla-nss
 %requires_ge    libfreetype6
 Recommends:     libcanberra0
 Recommends:     libpulse0
+# To make security-keys (e.g. Yubikey) work with FF, it needs the udev-rules installed.
+# A clean package with the most common rules exists only in SP3 onwards. `u2f-hosts` could be used on older
+# code streams, but it contains more than just the rules, so we're not recommending it here.
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150300
+Recommends:     libfido2-udev
+%endif
 # addon leads to startup crash (bnc#908892)
 Obsoletes:      tracker-miner-firefox < 0.15
 %if 0%{?devpkg} == 0
