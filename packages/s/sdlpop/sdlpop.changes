@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jan 23 21:43:14 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.23
+  Fixed:
+  * Don't hardcode level 13 for the loose floor events.
+  * If a sprite's xpos is negative and divisible by 8, it appeared shifted 8 pixels to the left.
+  * If the place of a special event was changed, show it at its new place on level maps.
+  * Fixed black rectangle appearing when the shadow falls into the wall.
+  * Make the +/- keys work on the main keyboard, on any keyboard layout.
+  * Fixed crash when trying to load a non-existent mod from command line.
+  * Allow running without haptic support in SDL
+  * Save the current options (not the defaults) into the replay!
+  * Fix guards disappearing when the player (re-)enters the currently shown room.
+  * Fix crashing with the guard graphics of Christmas of Persia. (with SDL_image 2.6.2)
+  * Select "SETTINGS" in the pause menu, if coming back from the settings menu.
+  * Fixed some compiler and cppcheck warnings.
+  Done:
+  * Mention the tricks page in the INI, since tricks are mentioned there.
+  * Show guards' HP and skills on the maps.
+  * Added super high jump option.
+  * Added options to use the original music and/or graphics for custom levelsets.
+  * Added comments about unused fields in the level data.
+  * Added gamecontroller hotplug support. SDLPoP now detects controllers plugged in while the game is already running.
+  * Briefly show a dark screen when changing rooms, like in the original game.
+  * Moved the license and readme to a more common location.
+  * Fix jumping over guard
+  * Level maps: If the skeleton's respawn position is customized, mark it at the new place.
+  * Fix detection of allow_triggering_any_tile in Micro Palace.
+  * Make hardware acceleration a runtime option
+  * Added an ability to grab tiles while jumping forward.
+  * Fixed the skeleton fall check.
+  * Documented SDLPoP-specific tiles. See doc/tiles.md.
+  * During text input, display the screen keyboard if supported.
+  * Made the source more readable.
+  * Added support for teleports. See USE_TELEPORTS in config.h.
+  * Added a rounded border around the icon.
+  * Show the hotkeys for quicksave/load in the menu (instead of the splash screen). Mention the menu on the splash screen.
+  * Keep disappearing guard logic for super high jump consistent with the stand-alone option.
+  * Updated doc/mod.ini based on SDLPoP.ini.
+
+-------------------------------------------------------------------
 Sat Jul 10 09:55:52 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.22
