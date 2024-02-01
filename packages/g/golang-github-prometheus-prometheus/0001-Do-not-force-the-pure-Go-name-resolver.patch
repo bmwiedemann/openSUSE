@@ -1,4 +1,4 @@
-From de6a642d171890fb0360fed67fd7313f13ea4b37 Mon Sep 17 00:00:00 2001
+From e9458dc825ca19e306b1ded6433c5d25a1237c71 Mon Sep 17 00:00:00 2001
 From: Jan Fajerski <jfajerski@suse.com>
 Date: Fri, 8 Feb 2019 09:17:06 +0100
 Subject: [PATCH] Do not force the pure Go name resolver
@@ -10,16 +10,16 @@ on OS and environment variables.
 This allows, among other things, to use Prometheus to scrape mDNS targets.
 
 Signed-off-by: Jan Fajerski <jfajerski@suse.com>
-Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+Signed-off-by: Johannes Kastl <git@johannes-kastl.de>
 ---
- .promu.yml | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ .promu.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/.promu.yml b/.promu.yml
-index f724dc34f..ccce0d5a2 100644
+index e5e01181c..5fbce7825 100644
 --- a/.promu.yml
 +++ b/.promu.yml
-@@ -12,13 +12,12 @@ build:
+@@ -12,12 +12,12 @@ build:
            path: ./cmd/promtool
      tags:
          all:
@@ -29,11 +29,10 @@ index f724dc34f..ccce0d5a2 100644
          windows:
              - builtinassets
              - stringlabels
--    flags: -a
 +    flags: -mod=vendor -a
      ldflags: |
          -X github.com/prometheus/common/version.Version={{.Version}}
          -X github.com/prometheus/common/version.Revision={{.Revision}}
--- 
-2.40.1
+--
+2.43.0
 

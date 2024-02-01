@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Jan 15 20:33:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.49.1:
+  * [BUGFIX] TSDB: Fixed a wrong q= value in scrape accept header
+    #13313
+- rebase patch 0001-Do-not-force-the-pure-Go-name-resolver.patch
+
+-------------------------------------------------------------------
+Mon Jan 15 20:26:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.49.0:
+  * [FEATURE] Promtool: Add --run flag promtool test rules command.
+    #12206
+  * [FEATURE] SD: Add support for NS records to DNS SD. #13219
+  * [FEATURE] UI: Add heatmap visualization setting in the Graph
+    tab, useful histograms. #13096 #13371
+  * [FEATURE] Scraping: Add scrape_config.enable_compression
+    (default true) to disable gzip compression when scraping the
+    target. #13166
+  * [FEATURE] PromQL: Add a promql-experimental-functions feature
+    flag containing some new experimental PromQL functions. #13103
+    NOTE: More experimental functions might be added behind the
+    same feature flag in the future. Added functions: experimental
+    mad_over_time (median absolute deviation around the median)
+    function. #13059 and experimental sort_by_label and
+    sort_by_label_desc functions allowing sorting returned series
+    by labels. #11299
+  * [FEATURE] SD: Add __meta_linode_gpus label to Linode SD. #13097
+  * [FEATURE] API: Add exclude_alerts query parameter to
+    /api/v1/rules to only return recording rules. #12999
+  * [FEATURE] TSDB: --storage.tsdb.retention.time flag value is now
+    exposed as a prometheus_tsdb_retention_limit_seconds metric.
+    #12986
+  * [FEATURE] Scraping: Add ability to specify priority of scrape
+    protocols to accept during scrape (e.g. to scrape Prometheus
+    proto format for certain jobs). This can be changed by setting
+    global.scrape_protocols and scrape_config.scrape_protocols.
+    #12738
+  * [ENHANCEMENT] Scraping: Automated handling of scraping
+    histograms that violate
+    scrape_config.native_histogram_bucket_limit setting. #13129
+  * [ENHANCEMENT] Scraping: Optimized memory allocations when
+    scraping. #12992
+  * [ENHANCEMENT] SD: Added cache for Azure SD to avoid
+    rate-limits. #12622
+  * [ENHANCEMENT] TSDB: Various improvements to OOO exemplar
+    scraping. E.g. allowing ingestion of exemplars with the same
+    timestamp, but with different labels. #13021
+  * [ENHANCEMENT] API: Optimize /api/v1/labels and
+    /api/v1/label/<label_name>/values when 1 set of matchers are
+    used. #12888
+  * [ENHANCEMENT] TSDB: Various optimizations for TSDB block index,
+    head mmap chunks and WAL, reducing latency and memory
+    allocations (improving API calls, compaction queries etc).
+    #12997 #13058 #13056 #13040
+  * [ENHANCEMENT] PromQL: Optimize memory allocations and latency
+    when querying float histograms. #12954
+  * [ENHANCEMENT] Rules: Instrument TraceID in log lines for rule
+    evaluations. #13034
+  * [ENHANCEMENT] PromQL: Optimize memory allocations in
+    query_range calls. #13043
+  * [ENHANCEMENT] Promtool: unittest interval now defaults to
+    evaluation_intervals when not set. #12729
+  * [BUGFIX] SD: Fixed Azure SD public IP reporting #13241
+  * [BUGFIX] API: Fix inaccuracies in posting cardinality
+    statistics. #12653
+  * [BUGFIX] PromQL: Fix inaccuracies of histogram_quantile with
+    classic histograms. #13153
+  * [BUGFIX] TSDB: Fix rare fails or inaccurate queries with OOO
+    samples. #13115
+  * [BUGFIX] TSDB: Fix rare panics on append commit when exemplars
+    are used. #13092
+  * [BUGFIX] TSDB: Fix exemplar WAL storage, so remote write can
+    send/receive samples before exemplars. #13113
+  * [BUGFIX] Mixins: Fix url filter on remote write dashboards.
+    #10721
+  * [BUGFIX] PromQL/TSDB: Various fixes to float histogram
+    operations. #12891 #12977 #12609 #13190 #13189 #13191 #13201
+    #13212 #13208
+  * [BUGFIX] Promtool: Fix int32 overflow issues for 32-bit
+    architectures. #12978
+  * [BUGFIX] SD: Fix Azure VM Scale Set NIC issue. #13283
+
+-------------------------------------------------------------------
 Sat Dec  9 20:04:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.48.1:
@@ -1001,15 +1085,15 @@ Fri Jul 31 14:50:21 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
 Wed Jun  3 15:59:05 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
 
 - Update change log and spec file
-  + Modified spec file: default to golang 1.14 to avoid "have choice" build issues in OBS. 
+  + Modified spec file: default to golang 1.14 to avoid "have choice" build issues in OBS.
   + Rebase and update patches for version 2.18.0
-  + Changed:  
+  + Changed:
     * 0001-Do-not-force-the-pure-Go-name-resolver.patch
     * 0002-Default-settings.patch Changed
     * 0003-Add-Uyuni-service-discovery.patch
 
-- Update to 2.18.0 
-  + Features 
+- Update to 2.18.0
+  + Features
     * Tracing: Added experimental Jaeger support #7148
   + Changes
     * Federation: Only use local TSDB for federation (ignore remote read). #7096
@@ -1036,7 +1120,7 @@ Wed Jun  3 15:59:05 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
     * TSDB: Fix query performance regression that increased memory and CPU usage #7051
 
 - Changes from 2.17.0
-  + Features 
+  + Features
     * TSDB: Support isolation #6841
     * This release implements isolation in TSDB. API queries and recording rules are
       guaranteed to only see full scrapes and full recording rules. This comes with a
@@ -1065,7 +1149,7 @@ Wed Jun  3 15:59:05 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
     * Scrape: Fix crash when reloads are separated by two scrape intervals #7011
 
 - Changes from 2.16.0
-  + Features 
+  + Features
     * React UI: Support local timezone on /graph #6692
     * PromQL: add absent_over_time query function #6490
     * Adding optional logging of queries to their own file #6520
@@ -1106,7 +1190,7 @@ Wed Jun  3 15:59:05 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
     * TSDB: Fixed race on concurrent queries against same data. #6512
 
 - Changes from 2.15.0
-  + Features 
+  + Features
     * API: Added new endpoint for exposing per metric metadata `/metadata`. #6420 #6442
   + Changes
     * Discovery: Removed `prometheus_sd_kubernetes_cache_*` metrics. Additionally `prometheus_sd_kubernetes_workqueue_latency_seconds` and `prometheus_sd_kubernetes_workqueue_work_duration_seconds` metrics now show correct values in seconds. #6393
@@ -1120,7 +1204,7 @@ Wed Jun  3 15:59:05 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
     * Remote write: Added `prometheus_remote_storage_sent_bytes_total` counter per queue. #6344
     * promql: Improved PromQL parser performance. #6356
     * React UI: Implemented missing pages like `/targets` #6276, TSDB status page #6281 #6267 and many other fixes and performance improvements.
-    * promql: Prometheus now accepts spaces between time range and square bracket. e.g `[ 5m]` #6065  
+    * promql: Prometheus now accepts spaces between time range and square bracket. e.g `[ 5m]` #6065
   + Bug fixes
     * Config: Fixed alertmanager configuration to not miss targets when configurations are similar. #6455
     * Remote write: Value of `prometheus_remote_storage_shards_desired` gauge shows raw value of desired shards and it's updated correctly. #6378
@@ -1128,7 +1212,7 @@ Wed Jun  3 15:59:05 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
     * API: Targets Metadata API `/targets/metadata` now accepts empty `match_targets` parameter as in the spec. #6303
 
 - Changes from 2.14.0
-  + Features 
+  + Features
     * API: `/api/v1/status/runtimeinfo` and `/api/v1/status/buildinfo` endpoints added for use by the React UI. #6243
     * React UI: implement the new experimental React based UI. #5694 and many more
       * Can be found by under `/new`.
@@ -1173,7 +1257,7 @@ Wed Jun  3 15:59:05 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
     * UI: avoid truncated Y-axis values. #6014
 
 - Changes from 2.12.0
-  + Features 
+  + Features
     * Track currently active PromQL queries in a log file. #5794
     * Enable and provide binaries for `mips64` / `mips64le` architectures. #5792
   + Enhancements
@@ -1208,7 +1292,7 @@ Mon Jan 27 12:12:44 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
 -------------------------------------------------------------------
 Mon Nov 25 14:59:24 UTC 2019 - Joao Cavalheiro <jcavalheiro@suse.com>
 
-- Patch macros on spec file to support builds on SLE 12 
+- Patch macros on spec file to support builds on SLE 12
 
 -------------------------------------------------------------------
 Thu Nov 21 13:29:22 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
@@ -1225,8 +1309,8 @@ Wed Nov 20 22:33:20 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 Wed Nov 20 15:32:20 UTC 2019 - Joao Cavalheiro <jcavalheiro@suse.com>
 
 - Update Uyuni/SUSE Manager service discovery patch
-  + Modified 0003-Add-Uyuni-service-discovery.patch 
-  + Fixes crashes when systems have no FQDN 
+  + Modified 0003-Add-Uyuni-service-discovery.patch
+  + Fixes crashes when systems have no FQDN
   + Adds Parallel calls to Uyuni API, meaningful performance increase
   + Adds Support for system group labels
 
@@ -1273,141 +1357,141 @@ Thu Jul 25 16:34:29 UTC 2019 - Joao Cavalheiro <jcavalheiro@suse.com>
 -------------------------------------------------------------------
 Thu Jul 18 01:06:13 UTC 2019 - Simon Crute <simon.crute@grafana.com>
 
-- readded _service file removed in error. 
+- readded _service file removed in error.
 
-- Update to 2.11.1 
+- Update to 2.11.1
   + Bug Fix:
     * Fix potential panic when prometheus is watching multiple zookeeper paths.
 
 - Update to 2.11.0
   + Bug Fix:
-    * resolve race condition in maxGauge. 
-    * Fix ZooKeeper connection leak. 
-    * Improved atomicity of .tmp block replacement during compaction for usual case. 
-    * Fix "unknown series references" after clean shutdown. 
-    * Re-calculate block size when calling block.Delete. 
-    * Fix unsafe snapshots with head block. 
-    * prometheus_tsdb_compactions_failed_total is now incremented on any compaction failure. 
+    * resolve race condition in maxGauge.
+    * Fix ZooKeeper connection leak.
+    * Improved atomicity of .tmp block replacement during compaction for usual case.
+    * Fix "unknown series references" after clean shutdown.
+    * Re-calculate block size when calling block.Delete.
+    * Fix unsafe snapshots with head block.
+    * prometheus_tsdb_compactions_failed_total is now incremented on any compaction failure.
   + Changes:
     * Remove max_retries from queue_config (it has been unused since rewriting remote-write to utilize the write-ahead-log)
     * The meta file BlockStats no longer holds size information. This is now dynamically calculated and kept in memory. It also includes the meta file size which was not included before
     * Renamed metric from prometheus_tsdb_wal_reader_corruption_errors to prometheus_tsdb_wal_reader_corruption_errors_total
   + Features:
-    * Add option to use Alertmanager API v2. 
-    * Added humanizePercentage function for templates. 
-    * Include InitContainers in Kubernetes Service Discovery. 
-    * Provide option to compress WAL records using Snappy. 
+    * Add option to use Alertmanager API v2.
+    * Added humanizePercentage function for templates.
+    * Include InitContainers in Kubernetes Service Discovery.
+    * Provide option to compress WAL records using Snappy.
   + Enhancements:
-    * Create new clean segment when starting the WAL. 
-    * Reduce allocations in PromQL aggregations. 
-    * Add storage warnings to LabelValues and LabelNames API results. 
-    * Add prometheus_http_requests_total metric. 
-    * Enable openbsd/arm build. 
-    * Remote-write allocation improvements. 
-    * Query performance improvement: Efficient iteration and search in HashForLabels and HashWithoutLabels. 
-    * Allow injection of arbitrary headers in promtool. 
-    * Allow passing external_labels in alert unit tests groups. 
+    * Create new clean segment when starting the WAL.
+    * Reduce allocations in PromQL aggregations.
+    * Add storage warnings to LabelValues and LabelNames API results.
+    * Add prometheus_http_requests_total metric.
+    * Enable openbsd/arm build.
+    * Remote-write allocation improvements.
+    * Query performance improvement: Efficient iteration and search in HashForLabels and HashWithoutLabels.
+    * Allow injection of arbitrary headers in promtool.
+    * Allow passing external_labels in alert unit tests groups.
     * Allows globs for rules when unit testing.
-    * Improved postings intersection matching. 
-    * Reduced disk usage for WAL for small setups. 
-    * Optimize queries using regexp for set lookups. 
- 
+    * Improved postings intersection matching.
+    * Reduced disk usage for WAL for small setups.
+    * Optimize queries using regexp for set lookups.
+
 
 -------------------------------------------------------------------
 Thu Jul  4 12:08:24 UTC 2019 - Simon Crute <simon.crute@grafana.com>
 
-- rebase patch002-Default-settings.patch 
+- rebase patch002-Default-settings.patch
 
 - Update to 2.10.0:
   + Bug Fixes:
     * TSDB: Don't panic when running out of disk space and recover nicely from the condition
     * TSDB: Correctly handle empty labels.
-    * TSDB: Don't crash on an unknown tombstone reference. 
-    * Storage/remote: Remove queue-manager specific metrics if queue no longer exists. 
-    * PromQL: Correctly display {__name__="a"}. 
-    * Discovery/kubernetes: Use service rather than ingress as the name for the service workqueue. 
-    * Discovery/azure: Don't panic on a VM with a public IP. 
+    * TSDB: Don't crash on an unknown tombstone reference.
+    * Storage/remote: Remove queue-manager specific metrics if queue no longer exists.
+    * PromQL: Correctly display {__name__="a"}.
+    * Discovery/kubernetes: Use service rather than ingress as the name for the service workqueue.
+    * Discovery/azure: Don't panic on a VM with a public IP.
     * Web: Fixed Content-Type for js and css instead of using /etc/mime.types.
-    * API: Encode alert values as string to correctly represent Inf/NaN. 
+    * API: Encode alert values as string to correctly represent Inf/NaN.
   + Features:
-    * Template expansion: Make external labels available as $externalLabels in alert and console template expansion. 
+    * Template expansion: Make external labels available as $externalLabels in alert and console template expansion.
     * TSDB: Add prometheus_tsdb_wal_segment_current metric for the WAL segment index that TSDB is currently writing to. tsdb
     * Scrape: Add scrape_series_added per-scrape metric. #5546
   + Enhancements
-    * Discovery/kubernetes: Add labels __meta_kubernetes_endpoint_node_name and __meta_kubernetes_endpoint_hostname. 
-    * Discovery/azure: Add label __meta_azure_machine_public_ip. 
+    * Discovery/kubernetes: Add labels __meta_kubernetes_endpoint_node_name and __meta_kubernetes_endpoint_hostname.
+    * Discovery/azure: Add label __meta_azure_machine_public_ip.
     * TSDB: Simplify mergedPostings.Seek, resulting in better performance if there are many posting lists. tsdb
-    * Log filesystem type on startup. 
+    * Log filesystem type on startup.
     * Cmd/promtool: Use POST requests for Query and QueryRange. client_golang
-    * Web: Sort alerts by group name. 
+    * Web: Sort alerts by group name.
     * Console templates: Add convenience variables $rawParams, $params, $path.
 - Upadte to 2.9.2
   + Bug Fixes:
-    * Make sure subquery range is taken into account for selection 
-    * Exhaust every request body before closing it 
-    * Cmd/promtool: return errors from rule evaluations 
-    * Remote Storage: string interner should not panic in release 
+    * Make sure subquery range is taken into account for selection
+    * Exhaust every request body before closing it
+    * Cmd/promtool: return errors from rule evaluations
+    * Remote Storage: string interner should not panic in release
     * Fix memory allocation regression in mergedPostings.Seek tsdb
 
 - Update to 2.9.1
   + Bug Fixes:
-    * Discovery/kubernetes: fix missing label sanitization 
-    * Remote_write: Prevent reshard concurrent with calling stop 
+    * Discovery/kubernetes: fix missing label sanitization
+    * Remote_write: Prevent reshard concurrent with calling stop
 
-- Update to 2.9.0 
-  + Feature: 
+- Update to 2.9.0
+  + Feature:
     * Add honor_timestamps scrape option.
-  + Enhancements:	
+  + Enhancements:
     * Update Consul to support catalog.ServiceMultipleTags.
     * Discovery/kubernetes: add present labels for labels/annotations.
     * OpenStack SD: Add ProjectID and UserID meta labels.
-    * Add GODEBUG and retention to the runtime page. 
-    * Add support for POSTing to /series endpoint. 
+    * Add GODEBUG and retention to the runtime page.
+    * Add support for POSTing to /series endpoint.
     * Support PUT methods for Lifecycle and Admin APIs.
     * Scrape: Add global jitter for HA server.
-    * Check for cancellation on every step of a range evaluation. 
+    * Check for cancellation on every step of a range evaluation.
     * String interning for labels & values in the remote_write path.
     * Don't lose the scrape cache on a failed scrape.
     * Reload cert files from disk automatically. common
     * Use fixed length millisecond timestamp format for logs. common
-    * Performance improvements for postings. 
+    * Performance improvements for postings.
   Bug Fixes:
-    * Remote Write: fix checkpoint reading. 
-    * Check if label value is valid when unmarshaling external labels from YAML. 
-    * Promparse: sort all labels when parsing. 
-    * Reload rules: copy state on both name and labels. 
-    * Exponentation operator to drop metric name in result of operation. 
-    * Config: resolve more file paths. 
-    * Promtool: resolve relative paths in alert test files. 
+    * Remote Write: fix checkpoint reading.
+    * Check if label value is valid when unmarshaling external labels from YAML.
+    * Promparse: sort all labels when parsing.
+    * Reload rules: copy state on both name and labels.
+    * Exponentation operator to drop metric name in result of operation.
+    * Config: resolve more file paths.
+    * Promtool: resolve relative paths in alert test files.
     * Set TLSHandshakeTimeout in HTTP transport. common
-    * Use fsync to be more resilient to machine crashes. 
+    * Use fsync to be more resilient to machine crashes.
     * Keep series that are still in WAL in checkpoints.
 
 - Update to 2.8.1
   + Bug Fixes
     *  Display the job labels in /targets which was removed accidentally
 
-- Update to 2.8.0 
+- Update to 2.8.0
   + Change:
     * This release uses Write-Ahead Logging (WAL) for the remote_write API. This currently causes a slight increase in memory usage, which will be addressed in future releases.
-    * Default time retention is used only when no size based retention is specified. These are flags where time retention is specified by the flag --storage.tsdb.retention and size retention by --storage.tsdb.retention.size. 
-    * prometheus_tsdb_storage_blocks_bytes_total is now prometheus_tsdb_storage_blocks_bytes. 
+    * Default time retention is used only when no size based retention is specified. These are flags where time retention is specified by the flag --storage.tsdb.retention and size retention by --storage.tsdb.retention.size.
+    * prometheus_tsdb_storage_blocks_bytes_total is now prometheus_tsdb_storage_blocks_bytes.
   + Feature:
     * (EXPERIMENTAL) Time overlapping blocks are now allowed; vertical compaction and vertical query merge. It is an optional feature which is controlled by the --storage.tsdb.allow-overlapping-blocks flag, disabled by default.
-  + Enhancements:  
+  + Enhancements:
 	* Use the WAL for remote_write API.
-    * Query performance improvements. 
-    * UI enhancements with upgrade to Bootstrap 4. 
-    * Reduce time that Alertmanagers are in flux when reloaded. 
-    * Limit number of metrics displayed on UI to 10000. 
-    * (1) Remember All/Unhealthy choice on target-overview when reloading page. (2) Resize text-input area on Graph page on mouseclick. 
-    * In histogram_quantile merge buckets with equivalent le values. 
-    * Show list of offending labels in the error message in many-to-many scenarios. 
-    * Show Storage Retention criteria in effect on /status page. 
-  + Bug Fixes: 
-    + Fix sorting of rule groups. 
-    + Fix support for password_file and bearer_token_file in Kubernetes SD. 
-    + Scrape: catch errors when creating HTTP clients  
+    * Query performance improvements.
+    * UI enhancements with upgrade to Bootstrap 4.
+    * Reduce time that Alertmanagers are in flux when reloaded.
+    * Limit number of metrics displayed on UI to 10000.
+    * (1) Remember All/Unhealthy choice on target-overview when reloading page. (2) Resize text-input area on Graph page on mouseclick.
+    * In histogram_quantile merge buckets with equivalent le values.
+    * Show list of offending labels in the error message in many-to-many scenarios.
+    * Show Storage Retention criteria in effect on /status page.
+  + Bug Fixes:
+    + Fix sorting of rule groups.
+    + Fix support for password_file and bearer_token_file in Kubernetes SD.
+    + Scrape: catch errors when creating HTTP clients
     + Adds new metrics:
         prometheus_target_scrape_pools_total
         prometheus_target_scrape_pools_failed_total
@@ -1655,7 +1739,7 @@ Fri Feb  8 07:24:59 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
 -------------------------------------------------------------------
 Wed Mar 14 07:20:23 UTC 2018 - jan.fajerski@suse.com
 
-- spec: fix directory for fdupes 
+- spec: fix directory for fdupes
 
 -------------------------------------------------------------------
 Thu Jan 25 10:11:26 UTC 2018 - kkaempf@suse.com
@@ -1783,9 +1867,9 @@ Wed Oct 11 01:13:03 UTC 2017 - tserong@suse.com
 - Update to v2.0.0-rc.0:
   + Numerous changes to the new storage layer, the main changes being:
     * Remove `count_scalar`, `keep_common` and `drop_common_labels` functions
-    * Breaking change in the index format for better consistency 
-    * Fix panic due garbage collected mmap'ed strings 
-    * Fix broken snapshots and admin APIs 
+    * Breaking change in the index format for better consistency
+    * Fix panic due garbage collected mmap'ed strings
+    * Fix broken snapshots and admin APIs
     * Send HTTP Accept header when scraping
     * Use the WAL flush interval passed instead of the hardcoded value
   + This release requires a clean storage directory and is not compatible

@@ -27,7 +27,7 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        2.48.1
+Version:        2.49.1
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
