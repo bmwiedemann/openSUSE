@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Mako
-Version:        1.3.0
+Version:        1.3.2
 Release:        0
 Summary:        A Python templating language
 License:        MIT
@@ -44,7 +44,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 Recommends:     python-Beaker >= 1.1

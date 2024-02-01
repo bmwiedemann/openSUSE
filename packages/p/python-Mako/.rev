@@ -566,4 +566,18 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     <comment></comment>
     <requestid>1140408</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d903f28403ad2ae272df0775e004f10e</srcmd5>
+    <version>1.3.2</version>
+    <time>1706807060</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.2:
+  * Fixed parsing issue where attempting to render a single percent
+    sign % using an escaped percent %% would not function correctly
+    if the escaped percent were not the first character on a line.
+    Note that this is a revised version of a similar change made
+    in Mako 1.3.1 which caused unexpected parsing regressions,
+    resulting in the release being yanked.</comment>
+    <requestid>1143278</requestid>
+  </revision>
 </revisionlist>
