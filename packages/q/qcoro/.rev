@@ -91,4 +91,13 @@
     <comment></comment>
     <requestid>1132320</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7a0ba2157ff1379be2aed12163f823e7</srcmd5>
+    <version>0.10.0</version>
+    <time>1706807035</time>
+    <user>anag+factory</user>
+    <comment>- Switch to the latest GCC version available in Leap for packages
+  that can't build with the default compiler</comment>
+    <requestid>1143093</requestid>
+  </revision>
 </revisionlist>
