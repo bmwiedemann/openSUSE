@@ -30,8 +30,8 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 5.73
 %if 0%{?suse_version} <= 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
 %endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files

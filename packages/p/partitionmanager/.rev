@@ -249,4 +249,12 @@
     <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
     <requestid>1131973</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>6f483d72adada7afd7747efa07ca7f2a</srcmd5>
+    <version>23.08.4</version>
+    <time>1706807044</time>
+    <user>anag+factory</user>
+    <comment>Switch to GCC 13 for Leap builds for packages that can't be built with the default compiler (forwarded request 1143049 from krop)</comment>
+    <requestid>1143125</requestid>
+  </revision>
 </revisionlist>
