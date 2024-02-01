@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb  1 09:04:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.0.1
+  Bugfixes:
+  * Fix lib name for Qt5 link target
+  * meson: Pass -D_DARWIN_C_SOURCE on darwin
+  * Fix macOS build
+  * stemmer: Resolve potential issue where stemmer may never be
+    initialized
+  * cli: Don't fail what-provides if components were found
+  * Fix query element order for what-provides queries
+  * validator: Demote developer-name-tag-deprecated to info
+    severity for now
+  * content-rating: Fix missing or wrong value descriptions for
+    rating IDs
+  * curl: Add transfer speed timeouts for HTTP downloads
+  * curl: Retry operations on potentially transient errors
+    Miscellaneous:
+  * validator: Improve hint for content-attribute-value-invalid
+  * Allow building without zstd temporarily
+- Drop patches, merged upstream:
+  * 0001-validator-Demote-developer-name-tag-deprecated-to-in.patch
+  * 0001-content-rating-Fix-missing-or-wrong-value-descriptio.patch
+  * 0001-Fix-lib-name-for-Qt5-link-target.patch
+
+-------------------------------------------------------------------
+Wed Jan 31 14:34:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Switch to the latest GCC version available in Leap for packages
+  that can't build with the default compiler
+
+-------------------------------------------------------------------
 Fri Dec 15 11:12:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Use GCC 12 for building on Leap

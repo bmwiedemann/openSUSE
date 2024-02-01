@@ -28,14 +28,14 @@
 %endif
 # The default Leap compiler is too old for building AppStream-qt6. use the same compiler for both flavors
 %if 0%{?suse_version} == 1500
-%bcond_without gcc12
+%bcond_without gcc13
 %endif
 %define rname AppStream
 %define libappstream_sover 5
 %define libAppStreamQt_sover 3
 %define libappstream_compose_sover 0
 Name:           AppStream%{?pkg_suffix}
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -45,15 +45,11 @@ Source1:        http://www.freedesktop.org/software/appstream/releases/%{rname}-
 Source2:        AppStream.keyring
 # PATCH-FIX-OPENSUSE
 Patch0:         support-meson0.59.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-validator-Demote-developer-name-tag-deprecated-to-in.patch
-Patch2:         0001-content-rating-Fix-missing-or-wrong-value-descriptio.patch
-Patch3:         0001-Fix-lib-name-for-Qt5-link-target.patch
 BuildRequires:  cairo-devel
 BuildRequires:  docbook-xsl-stylesheets
-%if %{with gcc12}
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
+%if %{with gcc13}
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  gettext
@@ -224,8 +220,8 @@ GObject introspection bindings for interfaces provided by AppStream.
 %define options -Dqt5=true -Dcompose=true -Dvapi=%{build_vapi}
 %endif
 
-%if %{with gcc12}
-export CC=gcc-12 CXX=g++-12
+%if %{with gcc13}
+export CC=gcc-13 CXX=g++-13
 %endif
 
 %meson %{common_options} %{options}
