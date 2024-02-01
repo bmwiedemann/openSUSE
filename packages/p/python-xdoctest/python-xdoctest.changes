@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  1 02:40:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.1.3:
+  * `modname_to_modpath` now handles cases where editable packages have
+    modules where the name is different than the package.
+  * Update `xdoctest.plugin` to support pytest 8.0
+  * Fixed deprecated usage of `ast.Num`
+  * Partial support for 3.12. New f-string syntax is not supported yet.
+  * Removed dependency on six and got rid of old Python 2 logic
+- Drop patch python-xdoctest-no-six.patch, included upstream.
+- No more globs in %files.
+
+-------------------------------------------------------------------
 Tue Jun  6 15:34:57 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.1.1
