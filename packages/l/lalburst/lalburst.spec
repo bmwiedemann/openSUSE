@@ -1,7 +1,7 @@
 #
 # spec file for package lalburst
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalburst
-Version:        2.0.1
+Version:        2.0.3
 Release:        0
 Summary:        LSC Algorithm Burst Library
 License:        GPL-2.0-or-later
@@ -201,6 +201,6 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} %make_build -C ../`basename ${PYTHON}`_bu
 %endif
 
 %files %{python_files}
-%{python_sitearch}/*
+%{python_sitearch}/lalburst/
 
 %changelog
