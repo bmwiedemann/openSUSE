@@ -1,7 +1,7 @@
 #
 # spec file for package lalframe
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 # No support for octave >= 6
 %bcond_with octave
 Name:           lalframe
-Version:        3.0.1
+Version:        3.0.3
 Release:        0
 Summary:        LSC Algorithm Frame Library for gravitational wave data analysis
 License:        GPL-2.0-or-later
@@ -184,6 +184,6 @@ pushd ../${PYTHON}_build
 %endif
 
 %files %{python_files}
-%{python_sitearch}/*
+%{python_sitearch}/lalframe/
 
 %changelog
