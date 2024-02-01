@@ -51,4 +51,20 @@
     <comment></comment>
     <requestid>1091245</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f25494ae83d56f4bbcdf5609046614d5</srcmd5>
+    <version>1.1.3</version>
+    <time>1706807102</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.1.3:
+  * `modname_to_modpath` now handles cases where editable packages have
+    modules where the name is different than the package.
+  * Update `xdoctest.plugin` to support pytest 8.0
+  * Fixed deprecated usage of `ast.Num`
+  * Partial support for 3.12. New f-string syntax is not supported yet.
+  * Removed dependency on six and got rid of old Python 2 logic
+- Drop patch python-xdoctest-no-six.patch, included upstream.
+- No more globs in %files.</comment>
+    <requestid>1143162</requestid>
+  </revision>
 </revisionlist>

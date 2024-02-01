@@ -1,7 +1,7 @@
 #
 # spec file for package python-xdoctest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           python-xdoctest
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        Enhanced Python builtin doctest module
 License:        Apache-2.0
 URL:            https://github.com/Erotemic/xdoctest
 Source:         https://github.com/Erotemic/xdoctest/archive/refs/tags/v%{version}.tar.gz#/xdoctest-%{version}.tar.gz
-# https://github.com/Erotemic/xdoctest/pull/142
-Patch0:         python-xdoctest-no-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
@@ -33,7 +31,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-pygments
 BuildArch:      noarch
 %python_subpackages
@@ -66,6 +64,7 @@ sed -i '1{/^#!/d}' src/xdoctest/__main__.py
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/xdoctest
-%{python_sitelib}/xdoctest*
+%{python_sitelib}/xdoctest
+%{python_sitelib}/xdoctest-%{version}.dist-info
 
 %changelog
