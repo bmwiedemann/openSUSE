@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 31 11:22:14 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 305:
+  * Avoid creating duplicate MACs
+  * Fix page crash on invalid domain startup times
+  * Other small fixes
+
+-------------------------------------------------------------------
 Fri Dec 29 10:40:33 UTC 2023 - Adam Majer <adam.majer@suse.de> - 304
 
 - Update to 304:
