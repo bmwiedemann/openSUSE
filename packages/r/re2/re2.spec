@@ -2,6 +2,7 @@
 # spec file for package re2
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +17,7 @@
 #
 
 
-%global longver 2023-11-01
+%global longver 2024-02-01
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-11
 Name:           re2
@@ -101,16 +102,15 @@ export CXX=g++-12
 export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:LD_LIBRARY_PATH
 %ctest || true
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE
-%doc AUTHORS CONTRIBUTORS README
 %{_libdir}/lib%{name}.so.*
 
 %files devel
 %license LICENSE
+%doc README
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
