@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-SQLAlchemy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        SQLAlchemy support for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/mitsuhiko/flask-sqlalchemy
 Source:         https://files.pythonhosted.org/packages/source/f/flask_sqlalchemy/flask_sqlalchemy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pallets-eco/flask-sqlalchemy#1308
+Patch0:         stop-using-utcnow.patch
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}

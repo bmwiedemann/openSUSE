@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  1 05:13:58 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch stop-using-utcnow.patch:
+  * Use a callable wrapping datetime.now(utc) rather than utcnow().
+
+-------------------------------------------------------------------
 Thu Oct 19 21:37:17 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file

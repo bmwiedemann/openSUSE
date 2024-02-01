@@ -1,0 +1,137 @@
+From 172e2391ab3de16ec7a001226985aec3ee2f8353 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 31 Jan 2024 16:39:57 +1100
+Subject: [PATCH] Stop using datetime.utcnow() in tests
+
+datetime.utcnow() is deprecated for Python 3.12+, and raises a warning.
+Since warnings are treated as errors, this results in test failures.
+Since utcnow calls are done by the SQLAlchemy mapping machinery, we need
+to use a callable.
+
+Fixes #1303
+---
+ CHANGES.rst         |  5 +++++
+ tests/test_model.py | 38 ++++++++++++++++++++------------------
+ 2 files changed, 25 insertions(+), 18 deletions(-)
+
+diff --git a/CHANGES.rst b/CHANGES.rst
+index 60c7f2b2..afb639d9 100644
+--- a/CHANGES.rst
++++ b/CHANGES.rst
+@@ -1,3 +1,8 @@
++Unreleased
++----------
++
++-  No longer call ``datetime.utcnow()`` in the test suite. :issue:`1303`
++
+ Version 3.1.1
+ -------------
+ 
+diff --git a/tests/test_model.py b/tests/test_model.py
+index 0968a1e2..dda0a5fa 100644
+--- a/tests/test_model.py
++++ b/tests/test_model.py
+@@ -2,6 +2,7 @@
+ 
+ import typing as t
+ from datetime import datetime
++from datetime import timezone
+ 
+ import pytest
+ import sqlalchemy as sa
+@@ -14,6 +15,11 @@
+ from flask_sqlalchemy.model import Model
+ 
+ 
++class UTCNow(datetime):
++    def __new__(cls):  # type: ignore[no-untyped-def]
++        return datetime.now(tz=timezone.utc)
++
++
+ def test_default_model_class_1x(app: Flask) -> None:
+     db = SQLAlchemy(app)
+ 
+@@ -147,12 +153,12 @@ def test_abstractmodel(app: Flask, model_class: t.Any) -> None:
+         class TimestampModel(db.Model):
+             __abstract__ = True
+             created: sa_orm.Mapped[datetime] = sa_orm.mapped_column(
+-                db.DateTime, nullable=False, insert_default=datetime.utcnow, init=False
++                db.DateTime, nullable=False, insert_default=UTCNow, init=False
+             )
+             updated: sa_orm.Mapped[datetime] = sa_orm.mapped_column(
+                 db.DateTime,
+-                insert_default=datetime.utcnow,
+-                onupdate=datetime.utcnow,
++                insert_default=UTCNow,
++                onupdate=UTCNow,
+                 init=False,
+             )
+ 
+@@ -167,10 +173,10 @@ class Post(TimestampModel):
+         class TimestampModel(db.Model):  # type: ignore[no-redef]
+             __abstract__ = True
+             created: sa_orm.Mapped[datetime] = sa_orm.mapped_column(
+-                db.DateTime, nullable=False, default=datetime.utcnow
++                db.DateTime, nullable=False, default=UTCNow
+             )
+             updated: sa_orm.Mapped[datetime] = sa_orm.mapped_column(
+-                db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
++                db.DateTime, default=UTCNow, onupdate=UTCNow
+             )
+ 
+         class Post(TimestampModel):  # type: ignore[no-redef]
+@@ -181,10 +187,8 @@ class Post(TimestampModel):  # type: ignore[no-redef]
+ 
+         class TimestampModel(db.Model):  # type: ignore[no-redef]
+             __abstract__ = True
+-            created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+-            updated = db.Column(
+-                db.DateTime, onupdate=datetime.utcnow, default=datetime.utcnow
+-            )
++            created = db.Column(db.DateTime, nullable=False, default=UTCNow)
++            updated = db.Column(db.DateTime, onupdate=UTCNow, default=UTCNow)
+ 
+         class Post(TimestampModel):  # type: ignore[no-redef]
+             id = db.Column(db.Integer, primary_key=True)
+@@ -207,12 +211,12 @@ def test_mixinmodel(app: Flask, model_class: t.Any) -> None:
+ 
+         class TimestampMixin(sa_orm.MappedAsDataclass):
+             created: sa_orm.Mapped[datetime] = sa_orm.mapped_column(
+-                db.DateTime, nullable=False, insert_default=datetime.utcnow, init=False
++                db.DateTime, nullable=False, insert_default=UTCNow, init=False
+             )
+             updated: sa_orm.Mapped[datetime] = sa_orm.mapped_column(
+                 db.DateTime,
+-                insert_default=datetime.utcnow,
+-                onupdate=datetime.utcnow,
++                insert_default=UTCNow,
++                onupdate=UTCNow,
+                 init=False,
+             )
+ 
+@@ -226,10 +230,10 @@ class Post(TimestampMixin, db.Model):
+ 
+         class TimestampMixin:  # type: ignore[no-redef]
+             created: sa_orm.Mapped[datetime] = sa_orm.mapped_column(
+-                db.DateTime, nullable=False, default=datetime.utcnow
++                db.DateTime, nullable=False, default=UTCNow
+             )
+             updated: sa_orm.Mapped[datetime] = sa_orm.mapped_column(
+-                db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
++                db.DateTime, default=UTCNow, onupdate=UTCNow
+             )
+ 
+         class Post(TimestampMixin, db.Model):  # type: ignore[no-redef]
+@@ -239,10 +243,8 @@ class Post(TimestampMixin, db.Model):  # type: ignore[no-redef]
+     else:
+ 
+         class TimestampMixin:  # type: ignore[no-redef]
+-            created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+-            updated = db.Column(
+-                db.DateTime, onupdate=datetime.utcnow, default=datetime.utcnow
+-            )
++            created = db.Column(db.DateTime, nullable=False, default=UTCNow)
++            updated = db.Column(db.DateTime, onupdate=UTCNow, default=UTCNow)
+ 
+         class Post(TimestampMixin, db.Model):  # type: ignore[no-redef]
+             id = db.Column(db.Integer, primary_key=True)
