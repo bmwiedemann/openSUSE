@@ -4,7 +4,7 @@ References: bnc#657360
 Patch-mainline: no
 
 This patch should make parted's process of informing the kernel
-about changes of partition table sligtly more reliable.
+about changes of partition table slightly more reliable.
 It consists of 2 quite unrelated parts:
 
 * increase the max sleep time if partition is busy from 1 to 2 seconds

@@ -11,16 +11,17 @@ Index: parted-3.3/include/parted/disk.in.h
 ===================================================================
 --- parted-3.3.orig/include/parted/disk.in.h
 +++ parted-3.3/include/parted/disk.in.h
-@@ -38,9 +38,11 @@ enum _PedDiskFlag {
+@@ -38,10 +38,12 @@ enum _PedDiskFlag {
          PED_DISK_CYLINDER_ALIGNMENT=1,
          /* This flag controls whether the boot flag of a GPT PMBR is set */
          PED_DISK_GPT_PMBR_BOOT=2,
 +	/* This flag indicates that there is an implicit (aka fake) partition on the DASD disk */
 +	PED_DISK_DASD_IMPLICIT_PARTITION=3,
  };
- #define PED_DISK_FIRST_FLAG             PED_DISK_CYLINDER_ALIGNMENT
--#define PED_DISK_LAST_FLAG              PED_DISK_GPT_PMBR_BOOT
-+#define PED_DISK_LAST_FLAG              PED_DISK_DASD_IMPLICIT_PARTITION
+ // NOTE: DO NOT define using enums
+ #define PED_DISK_FIRST_FLAG             1 // PED_DISK_CYLINDER_ALIGNMENT
+-#define PED_DISK_LAST_FLAG              2 // PED_DISK_GPT_PMBR_BOOT
++#define PED_DISK_LAST_FLAG              3 // PED_DISK_DASD_IMPLICIT_PARTITION
  
  /**
   * Partition types
@@ -60,13 +61,13 @@ Index: parted-3.3/libparted/labels/dasd.c
  #include "pt-common.h"
  PT_define_limit_functions (dasd)
  
-@@ -116,6 +121,9 @@ static PedDiskOps dasd_disk_ops = {
- 
- 	partition_set_name:	NULL,
- 	partition_get_name:	NULL,
+@@ -122,6 +122,9 @@
+ 	partition_get_type_id:          NULL,
+ 	partition_set_type_uuid:	NULL,
+ 	partition_get_type_uuid:	NULL,
 +	disk_set_flag:		dasd_disk_set_flag,
 +	disk_get_flag:		dasd_disk_get_flag,
-+	disk_is_flag_available:	dasd_disk_is_flag_available,
++	disk_is_flag_available:	dasd_disk_is_flag_available, 
  
  	get_partition_alignment: dasd_get_partition_alignment,
  
