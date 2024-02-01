@@ -257,4 +257,20 @@
   * Internal improvements (#219)</comment>
     <requestid>1102032</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9544fe050ee2537b0cec4eb5885462fc</srcmd5>
+    <version>0.13.0</version>
+    <time>1706807128</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.13.0:
+  * Fix connected/connecting signaling to user (#227)
+  * Fix wording of licensing terms (#225)
+  * Prepare for future changes in OpenSSL (#226)
+  * Improve Stream Management (#227) (#230)
+  * Add SCRAM-PLUS Variants (#228)
+  * Introduce XEP-0138 stream compression (#231)
+  * Deprecated the following API (#227):
+  * xmpp_conn_disable_tls() - replaced by a flag set by xmpp_conn_set_flags()</comment>
+    <requestid>1143223</requestid>
+  </revision>
 </revisionlist>
