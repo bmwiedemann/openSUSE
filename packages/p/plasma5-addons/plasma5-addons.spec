@@ -67,8 +67,8 @@ BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 %if 0%{?suse_version} < 1550
-BuildRequires:  gcc10-PIE
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -100,7 +100,7 @@ the Plasma desktop.
 
 %build
 %if 0%{?suse_version} < 1550
-  export CXX=g++-10
+  export CXX=g++-13
 %endif
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
 %cmake_build
