@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 01 09:48:12 UTC 2024 - sflees@suse.de
+
+- Update to version 1.2.0+20240130:
+  * xdg-icon-resource: unbreak syntax by removing stray grave accent
+    (boo#1219420)
+
+-------------------------------------------------------------------
 Tue Jan 30 03:49:59 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Update to Version 1.2.0 (Lining up with the upstream release)
