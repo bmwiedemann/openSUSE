@@ -1,7 +1,7 @@
 #
 # spec file for package lal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@
 # No support for octave >= 6
 %bcond_with octave
 Name:           lal%{psuffix}
-Version:        7.3.1
+Version:        7.4.1
 Release:        0
 Summary:        A collection of various gravitational wave data analysis routines
 License:        GPL-2.0-only
@@ -61,10 +61,6 @@ Requires:       python-python-dateutil
 Requires:       python-scipy
 Recommends:     python-ligo-lw
 Recommends:     python-ligo-segments
-# Broken on all archs where 'char' is unsigned
-# https://git.ligo.org/lscsoft/lalsuite/-/issues/581
-# Also broken on x86
-ExcludeArch:    %{ix86} %{arm} %{ppc} aarch64 ppc64 ppc64le riscv64
 %if %{with octave}
 BuildRequires:  octave-devel
 BuildRequires:  swig >= 4.0
