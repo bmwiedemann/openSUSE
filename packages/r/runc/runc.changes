@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 31 00:00:33 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.1.12. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.1.12>. bsc#1218894
+
+  * This release fixes a container breakout vulnerability (CVE-2024-21626). For
+    more details, see the upstream security advisory:
+    <https://github.com/opencontainers/runc/security/advisories/GHSA-xr7r-f8xq-vfvv>
+  * Remove upstreamed patches:
+    - CVE-2024-21626.patch
+  * Update runc.keyring to match upstream changes.
+
+-------------------------------------------------------------------
+Thu Jan 18 00:37:01 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+[ This was only ever released for SLES. ]
+
+- Add upstream patch to fix embargoed issue CVE-2024-21626. bsc#1218894
+  <https://github.com/opencontainers/runc/security/advisories/GHSA-xr7r-f8xq-vfvv>
+  + CVE-2024-21626.patch
+
+-------------------------------------------------------------------
 Tue Jan  2 03:02:16 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.1.11. Upstream changelog is available from
