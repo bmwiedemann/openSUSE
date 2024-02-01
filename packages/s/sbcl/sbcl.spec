@@ -16,12 +16,12 @@
 #
 
 
-# Use --without-bootstrap to build sbcl with an existing sbcl package
-%bcond_without bootstrap
+# Use --with-bootstrap to build sbcl using the upstream binaries
+%bcond_with bootstrap
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        BSD-3-Clause AND SUSE-Public-Domain
