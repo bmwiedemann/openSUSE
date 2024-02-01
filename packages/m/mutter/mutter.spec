@@ -44,8 +44,6 @@ Patch4:         mutter-fix-text-input-delete-surrounding.patch
 Patch1000:      mutter-SLE-bell.patch
 # PATCH-FIX-SLE mutter-SLE-relax-some-constraints-on-CSD-windows.patch bnc#883491 cxiong@suse.com -- Relax some constraints on window positioning for CSD windows s.t. they can be placed at the very top of the monitor.
 Patch1001:      mutter-SLE-relax-some-constraints-on-CSD-windows.patch
-# PATCH-FIX-SLE mutter-SLE-bsc984738-grab-display.patch bsc#984738 bgo#769387 hpj@suse.com -- Revert a upstream commit to avoid X11 race condition that results in wrong dialog sizes.
-Patch1002:      mutter-SLE-bsc984738-grab-display.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
@@ -156,9 +154,6 @@ applications that want to make use of the mutter library.
 %if 0%{?sle_version}
 %patch -P 1000 -p1
 %patch -P 1001 -p1
-# Disable mutter-SLE-bsc984738-grab-display.patch until
-# bsc#1218935 is fixed
-#%patch -P 1002 -p1
 %endif
 
 %build
