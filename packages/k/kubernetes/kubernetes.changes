@@ -1,11 +1,30 @@
 -------------------------------------------------------------------
+Wed Jan 24 13:18:34 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Bump meta package versions:
+  * kubernetes (baseversion) - 1.29
+  * kubernetes (version) - 1.29.1
+  * kubernetes (baseversionminus1) - 1.28
+  * kubernetes (versionminus1) - 1.28.6
+  * kubernetes (baseversionminus2) - 1.27
+  * kubernetes (versionminus2) - 1.27.10
+  * kubernetes (baseversionminus3) - 1.26
+  * kubernetes (versionminus3) - 1.26.13
+  * Etcd (etcdversion) - 3.5.10
+  * Etcd (etcdversionminus1) - 3.5.10
+  * Etcd (etcdversionminus2) - 3.5.10
+  * Etcd (etcdversionminus3) - 3.5.10
+  * CoreDNS (corednsversion) - 1.11.1
+  * CoreDNS (corednsversionminus2) - 1.10.1
+
+-------------------------------------------------------------------
 Fri Nov 24 07:46:17 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Bump meta package versions:
   * kubernetes (version) - 1.28.4
   * kubernetes (versionminus1) - 1.27.8
-  * kubernetes (versionminus1) - 1.26.11
-  * kubernetes (versionminus1) - 1.25.16
+  * kubernetes (versionminus2) - 1.26.11
+  * kubernetes (versionminus3) - 1.25.16
 
 -------------------------------------------------------------------
 Thu Oct 26 06:09:51 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
@@ -13,8 +32,8 @@ Thu Oct 26 06:09:51 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 - Bump meta package versions:
   * kubernetes (version) - 1.28.3
   * kubernetes (versionminus1) - 1.27.7
-  * kubernetes (versionminus1) - 1.26.10
-  * kubernetes (versionminus1) - 1.25.15
+  * kubernetes (versionminus2) - 1.26.10
+  * kubernetes (versionminus3) - 1.25.15
   * Etcd (etcdversionminus1) - 3.5.9
   * Etcd (etcdversionminus2) - 3.5.9
   * Etcd (etcdversionminus3) - 3.5.9
@@ -28,9 +47,9 @@ Wed Sep 20 19:24:45 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
   * kubernetes (baseversionminus1) - 1.27
   * kubernetes (versionminus1) - 1.27.6
   * kubernetes (baseversionminus2) - 1.26
-  * kubernetes (versionminus1) - 1.26.9
-  * kubernetes (baseversionminus1) - 1.25
-  * kubernetes (versionminus1) - 1.25.14
+  * kubernetes (versionminus2) - 1.26.9
+  * kubernetes (baseversionminus3) - 1.25
+  * kubernetes (versionminus3) - 1.25.14
   * Etcd (etcdversion) - 3.5.9
   * Etcd (etcdversionminus1) - 3.5.7
   * CoreDNS (corednsversionminus1) - 1.10.1
