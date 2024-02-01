@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jan 24 13:27:36 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.5.7.0:
+  - fix(iv): Avoid crash with OpenGL + multi-channel images #4087
+  - fix(png): Fix crash for writing large PNGs with alpha #4074
+  - fix(ImageInput): Only check REST arguments if the file does not
+    exist, avoiding problems for filenames that legitimately
+    contain a ? character. #4085 (by AdamMainsTL)
+  - perf(IBA): Improve perf of ImageBufAlgo::channels in-place
+    operation #4088
+  - build: Ptex support for static library #4072 (by Dominik Wójt)
+  - build: Add a way to cram in a custom extra library for iv #4086
+  - build: JPEG2000: Include the headers we need to discern version
+    #4073
+  - tests: Improve color management test in imagebufalgo_test #4063
+  - tests: Add one more ref output for python-colorconfig test
+    #4065
+  - ci: Restrict Mac ARM running #4077
+  - ci: Rename macro to avoid conflict during CI unity builds #4092
+  - docs: Fix typo #4089
+  - docs: Fix link to openexr test images #4080 (by Jesse
+    Yurkovich)
+  - admin: Account for duplicate emails in the .mailmap #4075
+  - dev: Faster vint4 load/store with unsigned char conversion
+    #4071 (by Aras Pranckevičius)
+
+-------------------------------------------------------------------
 Wed Jan 24 13:22:08 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - OpenImageIO so far forced C++ Standard 14 which does not match
