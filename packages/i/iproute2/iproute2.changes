@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 31 18:09:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.7
+  * devlink: Support setting port function ipsec_crypto cap and
+    ipsec_packet cap
+  * iplink: bridge: Add support for bridge FDB learning limits
+  * bridge: fdb: support match on source VNI, nexthop ID,
+    destination VNI, destination port, destination IP address and
+    [no]router flag in the flush command
+  * bridge: mdb: Add get support
+
+-------------------------------------------------------------------
 Thu Nov 30 22:40:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.6

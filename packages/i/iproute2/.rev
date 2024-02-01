@@ -1134,4 +1134,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>- Update to release 6.6</comment>
     <requestid>1130110</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>2fb629dcb76078496dcb90c6d1ecdb40</srcmd5>
+    <version>6.7</version>
+    <time>1706807037</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 6.7</comment>
+    <requestid>1143108</requestid>
+  </revision>
 </revisionlist>
