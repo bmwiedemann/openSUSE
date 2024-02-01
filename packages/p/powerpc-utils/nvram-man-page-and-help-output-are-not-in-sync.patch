@@ -1,0 +1,52 @@
+From d604cc779741c29cbdc8da97cbfc1512fd21fc1b Mon Sep 17 00:00:00 2001
+From: Likhitha Korrapati <likhitha@linux.ibm.com>
+Date: Fri, 11 Aug 2023 00:41:14 -0500
+Subject: [PATCH] nvram man page and --help output are not in sync
+
+The nvram man page and the output from --help option are not in
+sync and few of the options are missing in man page.
+
+The options that are missing are ascii, dump, nvram-size, zero.
+These options are added through the commit ids [1], [2].
+
+This patch adds the above missing options to the nvram.
+
+[1] https://github.com/ibm-power-utilities/powerpc-utils/commit/0e09f4e2898e7dea556479b018a7f4bf12108099
+[2] https://github.com/ibm-power-utilities/powerpc-utils/commit/976dbe9bb7b01b135cac3e7bbd1dce0cdc88636a
+
+Signed-off-by: Likhitha Korrapati <likhitha@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ man/nvram.8 | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/man/nvram.8 b/man/nvram.8
+index 2938e34..6071712 100644
+--- a/man/nvram.8
++++ b/man/nvram.8
+@@ -67,6 +67,22 @@ be more verbose.
+ \fB\--help
+ print usage information including other low level options useful for
+ debugging nvram.
++.TP
++\fB\--ascii \fIname
++print partition contents as ASCII text
++.TP
++\fB\--dump \fIname
++raw dump of partition (use --partitions to see names)
++.TP
++\fB\--nvram-size
++specify size of nvram data, must in multiples of 16 Bytes (for repair 
++operations)
++.TP
++\fB\--unzip \fIname
++decompress and print compressed data from partition
++.TP
++\fB\--zero | 0 \fR
++terminate config pairs with a NULL character
+ .SH FILES
+ /dev/nvram
+ .SH AUTHOR
+-- 
+2.43.0
+
