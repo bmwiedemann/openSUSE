@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>882c7ae1521438fac9c7d1e5bfb855ea</srcmd5>
+    <version>1.11.1</version>
+    <time>1706807081</time>
+    <user>anag+factory</user>
+    <comment>New Package — coredns-for-k8s1.29, w.r.t, Kubernetes v1.29
+
+https://github.com/kubernetes/kubernetes/blob/v1.29.1/build/dependencies.yaml#L32</comment>
+    <requestid>1141316</requestid>
+  </revision>
+</revisionlist>
