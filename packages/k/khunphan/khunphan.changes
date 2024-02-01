@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 20 02:30:26 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %autopatch to fix compilation with rpm-4.19
+
+-------------------------------------------------------------------
 Wed Feb  8 16:56:03 CET 2017 - kukuk@suse.de
 
 - Move /usr/games to /usr/bin (as done with rest 4 years ago)
