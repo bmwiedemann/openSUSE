@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Feb  1 09:56:59 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.57
+  ## 🦖 Deprecations
+  
+  * Deprecate welcome bot `welcome_user_id` support (https://github.com/element-hq/element-web/pull/26885). Contributed by @t3chguy.
+  
+  ## ✨ Features
+
+  * Expose apps/widgets (https://github.com/matrix-org/matrix-react-sdk/pull/12071). Contributed by @charlynguyen.
+  * Enable the rust-crypto labs button (https://github.com/matrix-org/matrix-react-sdk/pull/12114). Contributed by @richvdh.
+  * Show a progress bar while migrating from legacy crypto (https://github.com/matrix-org/matrix-react-sdk/pull/12104). Contributed by @richvdh.
+  * Update Twemoji to Jdecked v15.0.3 (https://github.com/matrix-org/matrix-react-sdk/pull/12147). Contributed by @t3chguy.
+  * Change Quick Settings icon (https://github.com/matrix-org/matrix-react-sdk/pull/12141). Contributed by @florianduros.
+  * Use Compound tooltips more widely (https://github.com/matrix-org/matrix-react-sdk/pull/12128). Contributed by @t3chguy.
+
+  ## 🐛 Bug Fixes
+
+  * Fix OIDC bugs due to amnesiac stores forgetting OIDC issuer \& other data (https://github.com/matrix-org/matrix-react-sdk/pull/12166). Contributed by @t3chguy.
+  * Fix account management link for delegated auth OIDC setups (https://github.com/matrix-org/matrix-react-sdk/pull/12144). Contributed by @t3chguy.
+  * Fix Safari IME support (https://github.com/matrix-org/matrix-react-sdk/pull/11016). Contributed by @SuperKenVery.
+  * Fix Stickerpicker layout crossing multiple CSS stacking contexts (https://github.com/matrix-org/matrix-react-sdk/pull/12127).
+  * Fix Stickerpicker layout crossing multiple CSS stacking contexts (https://github.com/matrix-org/matrix-react-sdk/pull/12126). Contributed by @t3chguy.
+  * Fix 1F97A and 1F979 in Twemoji COLR font (https://github.com/matrix-org/matrix-react-sdk/pull/12177).
+  ## ✨ Features
+  
+  * Expose apps/widgets (https://github.com/matrix-org/matrix-react-sdk/pull/12071). Contributed by @charlynguyen.
+  * Enable the rust-crypto labs button (https://github.com/matrix-org/matrix-react-sdk/pull/12114). Contributed by @richvdh.
+  * Show a progress bar while migrating from legacy crypto (https://github.com/matrix-org/matrix-react-sdk/pull/12104). Contributed by @richvdh.
+  * Update Twemoji to Jdecked v15.0.3 (https://github.com/matrix-org/matrix-react-sdk/pull/12147). Contributed by @t3chguy.
+  * Change Quick Settings icon (https://github.com/matrix-org/matrix-react-sdk/pull/12141). Contributed by @florianduros.
+  * Use Compound tooltips more widely (https://github.com/matrix-org/matrix-react-sdk/pull/12128). Contributed by @t3chguy.
+  
+  ## 🐛 Bug Fixes
+  
+  * Fix OIDC bugs due to amnesiac stores forgetting OIDC issuer \& other data (https://github.com/matrix-org/matrix-react-sdk/pull/12166). Contributed by @t3chguy.
+  * Fix account management link for delegated auth OIDC setups (https://github.com/matrix-org/matrix-react-sdk/pull/12144). Contributed by @t3chguy.
+  * Fix Safari IME support (https://github.com/matrix-org/matrix-react-sdk/pull/11016). Contributed by @SuperKenVery.
+  * Fix Stickerpicker layout crossing multiple CSS stacking contexts (https://github.com/matrix-org/matrix-react-sdk/pull/12127).
+  * Fix Stickerpicker layout crossing multiple CSS stacking contexts (https://github.com/matrix-org/matrix-react-sdk/pull/12126). Contributed by @t3chguy.
+  * Fix 1F97A and 1F979 in Twemoji COLR font (https://github.com/matrix-org/matrix-react-sdk/pull/12177).
+  ## ✨ Features
+  
+  * Use jitsi-lobby in video channel (video rooms) (https://github.com/element-hq/element-web/pull/26879). Contributed by @toger5.
+
+
+
+- Version 1.11.55
+
+  ## ✨ Features
+
+  * Broaden support for matrix spec versions (https://github.com/matrix-org/matrix-react-sdk/pull/12159). Contributed by @RiotRobot.
+
+  ## 🐛 Bug Fixes
+
+  * Fixed shield alignment on message Input (https://github.com/matrix-org/matrix-react-sdk/pull/12155). Contributed by @RiotRobot.
+
+-------------------------------------------------------------------
 Wed Jan 17 14:26:02 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.54
