@@ -66,4 +66,23 @@
 </comment>
     <requestid>1112894</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ad4a29ea4853760b0f1263fd1800d576</srcmd5>
+    <version>20240201</version>
+    <time>1706799670</time>
+    <user>lkocman-factory</user>
+    <comment>- list the source url
+
+- Update Leap 15.6 branding poo#131666
+
+- Initial Leap Micro 5.2 branding</comment>
+    <requestid>1143413</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>544f248267df5db3aee048093d0f4a63</srcmd5>
+    <version>20230921</version>
+    <time>1706799965</time>
+    <user>dimstar_suse</user>
+    <comment>Revert non-approved change</comment>
+  </revision>
 </revisionlist>
