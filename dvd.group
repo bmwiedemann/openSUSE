@@ -226,7 +226,7 @@
     <package name="busybox-bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:grub2-systemd-sleep-plugin -->
     <package name="busybox-diffutils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="busybox-ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="busybox-ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-base -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -293,8 +293,8 @@
     <package name="cracklib-dict-full" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="crda" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="createrepo_c" supportstatus="unsupported"/> <!-- reason: dvd:createrepo_c -->
-    <package name="cron" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="cronie" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="cron" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="cronie" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="crypto-policies" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="crypto-policies-scripts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cryptsetup" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -328,7 +328,7 @@
     <package name="dcraw" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="dcraw-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ddskk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="debianutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="debianutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="debuginfod-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="debuginfod-profile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dejavu-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2187,7 +2187,7 @@
     <package name="libldap-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libldap2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libldap2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libldapcpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libldapcpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libldb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libldb2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libldm-1_0-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2538,12 +2538,12 @@
     <package name="librevenge-stream-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="librist4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librmt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="librpmbuild9" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="librpmbuild10" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="librscg1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librsvg-2-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librubberband2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libruby3_3-3_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="libsamba-policy0-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
+    <package name="libsamba-policy0-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libsamplerate0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsane1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsasl2-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2699,7 +2699,7 @@
     <package name="libupnp17" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libupower-glib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liburcu8" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="liburing2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="liburing2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusb-0_1-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libusbmuxd-2_0-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2924,7 +2924,7 @@
     <package name="mailimporter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mailman3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="mailutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="mailx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="mailx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="make" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="make-lang" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="makedumpfile" supportstatus="unsupported"/> <!-- reason: dvd:kdump -->
@@ -3234,11 +3234,11 @@
     <package name="perl-Crypt-OpenSSL-Bignum" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Crypt-OpenSSL-RSA" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Crypt-OpenSSL-Random" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Crypt-SmbHash" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
+    <package name="perl-Crypt-SmbHash" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-CryptX" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Digest-HMAC" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Digest-MD4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
-    <package name="perl-Digest-SHA1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Digest-MD4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="perl-Digest-SHA1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-Email-Address-XS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Detect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3283,7 +3283,7 @@
     <package name="perl-Net-SSLeay" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Net-Server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-NetAddr-IP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Parse-RecDescent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="perl-Parse-RecDescent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-SNMP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-Socket6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Term-ReadKey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3294,13 +3294,13 @@
     <package name="perl-Unix-Syslog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-WWW-RobotRules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-X11-Protocol" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-X500-DN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="perl-X500-DN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-XML-Dumper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-XML-LibXML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
-    <package name="perl-XML-NamespaceSupport" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
+    <package name="perl-XML-LibXML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="perl-XML-NamespaceSupport" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-XML-Parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-XML-SAX" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
-    <package name="perl-XML-SAX-Base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
+    <package name="perl-XML-SAX" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="perl-XML-SAX-Base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-XML-Twig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-XML-Writer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="perl-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3414,7 +3414,7 @@
     <package name="polkit-kde-agent-5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="poppler-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="popt-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="postfix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="postfix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="postgresql" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="postgresql-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
@@ -3459,17 +3459,17 @@
     <package name="python3-cupshelpers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-firewall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python3-gedit" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
-    <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-louis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python3-salt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-smbios" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="python3-smbios-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="python3-speechd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python3-talloc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python3-talloc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-talloc-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="python3-tdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
-    <package name="python3-tevent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
+    <package name="python3-tdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="python3-tevent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python311" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python311-Automat" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-Babel" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -4089,17 +4089,17 @@
     <package name="salt-master" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="salt-minion" supportstatus="unsupported"/> <!-- reason: dvd:salt-minion -->
     <package name="salt-transactional-update" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="samba" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="samba-ad-dc-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="samba" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="samba-ad-dc-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-client-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-client-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="samba-gpupdate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="samba-ldb-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="samba-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="samba-libs-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="samba-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
+    <package name="samba-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="samba-libs-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="samba-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="samba-winbind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="samba-winbind-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="samba-winbind-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4231,7 +4231,7 @@
     <package name="system-user-ftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="system-user-games" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="system-user-lp" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="system-user-mail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="system-user-mail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-man" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="system-user-news" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4509,7 +4509,7 @@
     <package name="wol-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wpa_supplicant" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="wqy-zenhei-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="wsdd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="wsdd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="wtmpdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="x11-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xano-mincho-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4727,7 +4727,7 @@
     <package name="yast2-control-center" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-control-center-qt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-country" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="yast2-country" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-country-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-drbd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="yast2-firewall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -4740,7 +4740,7 @@
     <package name="yast2-isns" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-journal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-kdump" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="yast2-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="yast2-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-logs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-mail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-metapackage-handler" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -4753,19 +4753,19 @@
     <package name="yast2-online-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-online-update-frontend" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-packager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="yast2-pam" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="yast2-pam" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-perl-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-pkg-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-printer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-proxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="yast2-python3-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
+    <package name="yast2-python3-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-qt-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-ruby-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-samba-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
-    <package name="yast2-samba-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
+    <package name="yast2-samba-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="yast2-samba-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-scanner" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-schema" supportstatus="unsupported"/> <!-- reason: dvd:autoyast2 -->
-    <package name="yast2-security" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="yast2-security" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-services-manager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-slp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-slp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4822,7 +4822,7 @@
     <package name="yast2-trans-sk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-sl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-sr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="yast2-trans-stats" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="yast2-trans-stats" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-trans-sv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-trans-ta" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-th" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4837,7 +4837,7 @@
     <package name="yast2-transfer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-tune" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="yast2-users" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="yast2-users" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-vm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-vpn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

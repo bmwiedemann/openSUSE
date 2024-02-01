@@ -93,6 +93,8 @@ unsorted:
   - J7Z-kf5 
   - Jamulus 
   - KEALib-devel 
+  - Komikku 
+  - Komikku-lang 
   - LHAPDF-devel 
   - LHAPDF-doc 
   - LaTeXML 
@@ -3672,6 +3674,9 @@ unsorted:
   - etrophy-data 
   - etrophy-devel 
   - evas-generic-loaders 
+  - evdi 
+  - evdi-devel 
+  - evdi-kmp-default 
   - evemu 
   - evemu-devel 
   - eventstat 
@@ -4165,6 +4170,8 @@ unsorted:
   - fprintd-devel 
   - fprintd-doc 
   - fq 
+  - fractal 
+  - fractal-lang 
   - frame 
   - frame-devel 
   - framel 
@@ -12165,6 +12172,7 @@ unsorted:
   - libev4-32bit 
   - libevdev-devel 
   - libevdev2-32bit 
+  - libevdi1 
   - libevemu3 
   - libevent-2_1-7-32bit 
   - libevent-devel 
@@ -23809,8 +23817,6 @@ unsorted:
   - python310-cooldict 
   - python310-copr 
   - python310-copr-cli 
-  - python310-coreapi 
-  - python310-coreschema 
   - python310-cornice 
   - python310-cov-core 
   - python310-covdefaults 
@@ -27322,8 +27328,6 @@ unsorted:
   - python311-cooldict 
   - python311-copr 
   - python311-copr-cli 
-  - python311-coreapi 
-  - python311-coreschema 
   - python311-cornice 
   - python311-cov-core 
   - python311-covdefaults 
@@ -30781,8 +30785,6 @@ unsorted:
   - python39-cooldict 
   - python39-copr 
   - python39-copr-cli 
-  - python39-coreapi 
-  - python39-coreschema 
   - python39-cornice 
   - python39-cov-core 
   - python39-covdefaults 
@@ -35842,8 +35844,6 @@ unsorted:
   - sysfsutils 
   - sysfsutils-devel 
   - sysinfo 
-  - syslinux-debuginfo-x86_64 
-  - syslinux-x86_64 
   - syslog-ng 
   - syslog-ng-bpf 
   - syslog-ng-curl 
