@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  1 10:09:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.2:
+  * Fixed parsing issue where attempting to render a single percent
+    sign % using an escaped percent %% would not function correctly
+    if the escaped percent were not the first character on a line.
+    Note that this is a revised version of a similar change made
+    in Mako 1.3.1 which caused unexpected parsing regressions,
+    resulting in the release being yanked.
+
+-------------------------------------------------------------------
 Thu Dec  7 22:09:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.0:
