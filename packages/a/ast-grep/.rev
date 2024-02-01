@@ -98,4 +98,13 @@
   * refactor: move SerializableRuleCore to rule_core mod 3a303c1</comment>
     <requestid>1143067</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7a914f420f01073e6e5cd052d8298d5c</srcmd5>
+    <version>0.18.1+0</version>
+    <time>1706807147</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.1:
+  * Breaking change: refactor: use more concise name 6a4a17c</comment>
+    <requestid>1143207</requestid>
+  </revision>
 </revisionlist>

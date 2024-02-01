@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  1 08:01:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.1:
+  * Breaking change: refactor: use more concise name 6a4a17c
+
+-------------------------------------------------------------------
 Wed Jan 31 15:05:18 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.0:
