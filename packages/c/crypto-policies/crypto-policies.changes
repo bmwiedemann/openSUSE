@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 30 18:36:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- avoid the cycle rpm/cmake/crypto-policies/python-rpm-macros:
+  we only need python3-base here, we don't need the python
+  macros as no module is being built
+
+-------------------------------------------------------------------
 Thu Oct  5 12:35:57 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove dependency on /usr/bin/python3, making scripts to depends on

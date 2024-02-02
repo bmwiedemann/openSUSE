@@ -1,7 +1,7 @@
 #
 # spec file for package crypto-policies
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,6 +82,9 @@ BuildRequires:  perl(File::Copy)
 BuildRequires:  perl(File::Temp)
 BuildRequires:  perl(File::Which)
 BuildRequires:  perl(File::pushd)
+%else
+# Avoid cycle with python-rpm-macros
+#!BuildIgnore: python-rpm-packaging python-rpm-macros
 %endif
 %if 0%{?primary_python:1}
 Recommends:     crypto-policies-scripts
@@ -180,7 +183,7 @@ done
 # Fix shebang in scripts
 for f in %{buildroot}%{_datadir}/crypto-policies/python/*
 do
-  [ -f $f ] && sed -i "1s@#!.*python.*@#!$(realpath %__python3)@" $f
+  [ -f $f ] && sed -i "1s@#!.*python.*@#!$(realpath /usr/bin/python3)@" $f
 done
 
 %py3_compile %{buildroot}%{_datadir}/crypto-policies/python
