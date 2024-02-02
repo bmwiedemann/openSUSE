@@ -1,10 +1,10 @@
-Index: gst-libav-1.22.8/meson.build
+Index: gst-libav-1.22.9/meson.build
 ===================================================================
---- gst-libav-1.22.8.orig/meson.build
-+++ gst-libav-1.22.8/meson.build
+--- gst-libav-1.22.9.orig/meson.build
++++ gst-libav-1.22.9/meson.build
 @@ -1,6 +1,6 @@
  project('gst-libav', 'c',
-   version : '1.22.8',
+   version : '1.22.9',
 -  meson_version : '>= 0.62',
 +  meson_version : '>= 0.61',
    default_options : [ 'warning_level=1',

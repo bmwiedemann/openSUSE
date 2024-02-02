@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  1 10:58:36 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.9:
+  + No changes, stable bump only.
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Thu Jan  4 07:59:38 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.8:
