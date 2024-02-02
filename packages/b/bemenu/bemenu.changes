@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  2 11:41:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.18:
+  * fix: buffer is not divisible #380
+  * implement wayland fractional scaling #379
+  * Reapply "implement wayland fractional scaling" #381
+
+-------------------------------------------------------------------
 Sun Jan 28 07:12:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.17:
