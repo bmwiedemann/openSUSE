@@ -1179,4 +1179,18 @@
   * Added strict enforcement for ``project.dynamic`` in</comment>
     <requestid>1134566</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>e9f4a14d197e59db662d2b07564827c4</srcmd5>
+    <version>69.0.3</version>
+    <time>1706885102</time>
+    <user>anag+factory</user>
+    <comment>- update to 69.0.3:
+  * Bugfixes - Retain valid names with underscores in egg_info.
+
+- Drop fix-get-python-lib-python38.patch: No Python &lt;3.9 built
+- Drop ugly allow-only-direct-compilation.patch in favor of proper
+  PEP517 compliant bootstrap, using a built-in pip and the wheel
+  package</comment>
+    <requestid>1136302</requestid>
+  </revision>
 </revisionlist>
