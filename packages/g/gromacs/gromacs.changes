@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb  1 01:58:30 UTC 2024 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2024
+  * Highlights:
+    - The Colvars library can now be used natively from GROMACS. This
+      simplifies the use of advanced enhanced sampling simulations.
+    - Reduced artifacts from Lennard-Jones pair interactions on the 
+      pressure by a configurable increase of the Verlet buffer. Can 
+      lead to a slight performance loss, especially for coarse-grained
+      systems.
+    - Corrected several aspects of the deform option. Now simulations with 
+      box deformation behave correctly under high shear or when a solid or 
+      membrane fractures. This also means that the deform option is now 
+      suitable for computing viscosities.
+    - New option for hydrogen mass repartitioning in grompp enables easy 
+      access to performance improvements.
+    - Improvements to AWH, such as better control of the histogram growth 
+      factor as well as enabling automatic scaling of the target distribution 
+      based on the AWH friction metric.
+    - Configurable HeFFTe multi-GPU FFT options lets users fine-tune the
+      settings for specific use-cases.
+  * See https://manual.gromacs.org/2024.0/release-notes/index.html
+
+
+-------------------------------------------------------------------
 Sun Apr  2 19:22:23 UTC 2023 - andy great <andythe_great@pm.me>
 
 - Update to 2023
