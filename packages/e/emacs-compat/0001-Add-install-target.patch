@@ -1,0 +1,79 @@
+From 9b142ee3ddfa80103cbef8bfc25d577200d9f6cf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@thaodan.de>
+Date: Wed, 27 Sep 2023 00:25:31 +0300
+Subject: [PATCH] Add install target
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
+---
+ Makefile | 35 ++++++++++++++++++++++++++++++++---
+ 1 file changed, 32 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 0044904..ac20d7d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -29,19 +29,32 @@
+ ### Code:
+ 
+ .POSIX:
+-.PHONY: all compile force-compile test clean check
++.PHONY: all compile force-compile test clean check install
+ .SUFFIXES: .el .elc
+ 
++DESTDIR ?=
++PREFIX  ?= /usr
++DATADIR ?= $(PREFIX)/share
++ELDIR   ?= $(DATADIR)/emacs/site-lisp
++INFODIR	?= $(DATADIR)/info
++
+ EMACS = emacs
+ MAKEINFO = makeinfo
+-BYTEC = compat-25.elc \
++GZIP	= gzip
++INSTALL_INFO = install-info
++RUNTIME = compat-25.elc \
+ 	compat-26.elc \
+ 	compat-27.elc \
+ 	compat-28.elc \
+ 	compat-29.elc \
+-	compat.elc \
++	compat.elc
++DEVELOPMENT = \
+ 	compat-macs.elc \
+ 	compat-tests.elc
++BYTEC = $(RUNTIME) \
++		$(DEVELOPMENT) \
++INFOS = compat.info
++
+ 
+ all: compile
+ 
+@@ -73,6 +86,22 @@ check:
+ 		sort | uniq > /tmp/compat-links
+ 	@ (diff /tmp/compat-defs /tmp/compat-defs)
+ 
++install: $(addprefix install-,compat-runtime-el compat-info)
++
++install-compat-runtime-el: $(RUNTIME) $(RUNTIME:.elc=.el)
++
++install-compat-info: compat.info
++
++install-%-el:
++	$(if $<, install -m755 -d $(DESTDIR)$(ELDIR))
++	$(if $<, install -m644 $^ $(DESTDIR)$(ELDIR))
++
++install-%-info:
++	$(if $<, install -m755 -d $(DESTDIR)$(INFODIR))
++	$(if $<, $(INSTALL_INFO) --info-file=$< --info-dir=$(DESTDIR)$(INFODIR))
++	$(if $<, install -m644 $^ $(DESTDIR)$(INFODIR))
++	$(if $<, $(GZIP) -9nf $(DESTDIR)$(INFODIR)/$<)
++
+ $(BYTEC): compat-macs.el
+ 
+ .el.elc:
+-- 
+2.43.0
+
