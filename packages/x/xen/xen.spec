@@ -1,7 +1,7 @@
 #
 # spec file for package xen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -119,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.18.0_04
+Version:        4.18.0_06
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -157,6 +157,20 @@ Source99:       baselibs.conf
 Patch1:         654370e2-x86-x2APIC-remove-ACPI_FADT_APIC_CLUSTER-use.patch
 Patch2:         65437103-x86-i8259-dont-assume-IRQs-always-target-CPU0.patch
 Patch3:         655b2ba9-fix-sched_move_domain.patch
+Patch4:         6566fef3-x86-vLAPIC-x2APIC-derive-LDR-from-APIC-ID.patch
+Patch5:         6569ad03-libxg-mem-leak-in-cpu-policy-get-set.patch
+Patch6:         656ee5e1-x86emul-avoid-triggering-event-assertions.patch
+Patch7:         656ee602-cpupool-adding-offline-CPU.patch
+Patch8:         656ee6c3-domain_create-error-path.patch
+Patch9:         6571ca95-fix-sched_move_domain.patch
+Patch10:        6578598c-Arm-avoid-pointer-overflow-on-invalidate.patch
+Patch11:        65842d5c-x86-AMD-extend-CPU-erratum-1474-fix.patch
+Patch12:        65a7a0a4-x86-Intel-GPCC-setup.patch
+Patch13:        65a9911a-VMX-IRQ-handling-for-EXIT_REASON_INIT.patch
+Patch14:        65b27990-x86-p2m-pt-off-by-1-in-entry-check.patch
+Patch15:        65b29e91-x86-ucode-stability-of-raw-policy-rescan.patch
+Patch16:        65b8f961-PCI-fail-dev-assign-if-phantom-functions.patch
+Patch17:        65b8f9ab-VT-d-else-vs-endif-misplacement.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jan 31 13:40:00 CET 2024 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  6566fef3-x86-vLAPIC-x2APIC-derive-LDR-from-APIC-ID.patch
+  6569ad03-libxg-mem-leak-in-cpu-policy-get-set.patch
+  656ee5e1-x86emul-avoid-triggering-event-assertions.patch
+  656ee602-cpupool-adding-offline-CPU.patch
+  656ee6c3-domain_create-error-path.patch
+  6571ca95-fix-sched_move_domain.patch
+  6578598c-Arm-avoid-pointer-overflow-on-invalidate.patch
+  65842d5c-x86-AMD-extend-CPU-erratum-1474-fix.patch
+  65a7a0a4-x86-Intel-GPCC-setup.patch
+  65a9911a-VMX-IRQ-handling-for-EXIT_REASON_INIT.patch
+  65b27990-x86-p2m-pt-off-by-1-in-entry-check.patch
+  65b29e91-x86-ucode-stability-of-raw-policy-rescan.patch
+- bsc#1218851 - VUL-0: CVE-2023-46839: xen: phantom functions
+  assigned to incorrect contexts (XSA-449)
+  65b8f961-PCI-fail-dev-assign-if-phantom-functions.patch
+- bsc#1219080 - VUL-0: CVE-2023-46840: xen: VT-d: Failure to
+  quarantine devices in !HVM builds (XSA-450)
+  65b8f9ab-VT-d-else-vs-endif-misplacement.patch
+- Patches dropped / replaced by newer upstream versions
+  xsa449.patch
+  xsa450.patch
+
+-------------------------------------------------------------------
+Tue Jan 23 08:52:25 MST 2024 - carnold@suse.com
+
+- bsc#1219080 - VUL-0: CVE-2023-46840: xen: VT-d: Failure to
+  quarantine devices in !HVM builds (XSA-450)
+  xsa450.patch
+
+-------------------------------------------------------------------
+Tue Jan 16 09:32:55 MST 2024 - carnold@suse.com
+
+- bsc#1218851 - VUL-0: CVE-2023-46839: xen: phantom functions
+  assigned to incorrect contexts (XSA-449)
+  xsa449.patch
+
+-------------------------------------------------------------------
 Tue Nov 21 13:22:23 MST 2023 - carnold@suse.com
 
 - Enable the Kconfig options REQUIRE_NX and DIT_DEFAULT to

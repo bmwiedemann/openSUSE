@@ -1,0 +1,56 @@
+# Commit d1f8883aebe00f6a9632d77ab0cd5c6d02c9cbe4
+# Date 2024-01-18 20:59:06 +0000
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/vmx: Fix IRQ handling for EXIT_REASON_INIT
+
+When receiving an INIT, a prior bugfix tried to ignore the INIT and continue
+onwards.
+
+Unfortunately it's not safe to return at that point in vmx_vmexit_handler().
+Just out of context in the first hunk is a local_irqs_enabled() which is
+depended-upon by the return-to-guest path, causing the following checklock
+failure in debug builds:
+
+  (XEN) Error: INIT received - ignoring
+  (XEN) CHECKLOCK FAILURE: prev irqsafe: 0, curr irqsafe 1
+  (XEN) Xen BUG at common/spinlock.c:132
+  (XEN) ----[ Xen-4.19-unstable  x86_64  debug=y  Tainted:     H  ]----
+  ...
+  (XEN) Xen call trace:
+  (XEN)    [<ffff82d040238e10>] R check_lock+0xcd/0xe1
+  (XEN)    [<ffff82d040238fe3>] F _spin_lock+0x1b/0x60
+  (XEN)    [<ffff82d0402ed6a8>] F pt_update_irq+0x32/0x3bb
+  (XEN)    [<ffff82d0402b9632>] F vmx_intr_assist+0x3b/0x51d
+  (XEN)    [<ffff82d040206447>] F vmx_asm_vmexit_handler+0xf7/0x210
+
+Luckily, this is benign in release builds.  Accidentally having IRQs disabled
+when trying to take an IRQs-on lock isn't a deadlock-vulnerable pattern.
+
+Drop the problematic early return.  In hindsight, it's wrong to skip other
+normal VMExit steps.
+
+Fixes: b1f11273d5a7 ("x86/vmx: Don't spuriously crash the domain when INIT is received")
+Reported-by: Reima ISHII <ishiir@g.ecc.u-tokyo.ac.jp>
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/hvm/vmx/vmx.c
++++ b/xen/arch/x86/hvm/vmx/vmx.c
+@@ -4100,7 +4100,7 @@ void vmx_vmexit_handler(struct cpu_user_
+ 
+     case EXIT_REASON_INIT:
+         printk(XENLOG_ERR "Error: INIT received - ignoring\n");
+-        return; /* Renter the guest without further processing */
++        break;
+     }
+ 
+     /* Now enable interrupts so it's safe to take locks. */
+@@ -4385,6 +4385,7 @@ void vmx_vmexit_handler(struct cpu_user_
+         break;
+     }
+     case EXIT_REASON_EXTERNAL_INTERRUPT:
++    case EXIT_REASON_INIT:
+         /* Already handled above. */
+         break;
+     case EXIT_REASON_TRIPLE_FAULT:

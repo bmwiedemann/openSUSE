@@ -1,0 +1,108 @@
+# Commit 23792cc0f22cff4e106d838b83aa9ae1cb6ffaf4
+# Date 2023-12-07 13:37:25 +0000
+# Author Juergen Gross <jgross@suse.com>
+# Committer George Dunlap <george.dunlap@cloud.com>
+xen/sched: fix sched_move_domain()
+
+Do cleanup in sched_move_domain() in a dedicated service function,
+which is called either in error case with newly allocated data, or in
+success case with the old data to be freed.
+
+This will at once fix some subtle bugs which sneaked in due to
+forgetting to overwrite some pointers in the error case.
+
+Fixes: 70fadc41635b ("xen/cpupool: support moving domain between cpupools with different granularity")
+Reported-by: René Winther Højgaard <renewin@proton.me>
+Initial-fix-by: Jan Beulich <jbeulich@suse.com>
+Initial-fix-by: George Dunlap <george.dunlap@cloud.com>
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: George Dunlap <george.dunlap@cloud.com>
+
+--- a/xen/common/sched/core.c
++++ b/xen/common/sched/core.c
+@@ -647,6 +647,24 @@ static void sched_move_irqs(const struct
+         vcpu_move_irqs(v);
+ }
+ 
++static void sched_move_domain_cleanup(const struct scheduler *ops,
++                                      struct sched_unit *units,
++                                      void *domdata)
++{
++    struct sched_unit *unit, *old_unit;
++
++    for ( unit = units; unit; )
++    {
++        if ( unit->priv )
++            sched_free_udata(ops, unit->priv);
++        old_unit = unit;
++        unit = unit->next_in_list;
++        xfree(old_unit);
++    }
++
++    sched_free_domdata(ops, domdata);
++}
++
+ /*
+  * Move a domain from one cpupool to another.
+  *
+@@ -686,7 +704,6 @@ int sched_move_domain(struct domain *d,
+     void *old_domdata;
+     unsigned int gran = cpupool_get_granularity(c);
+     unsigned int n_units = d->vcpu[0] ? DIV_ROUND_UP(d->max_vcpus, gran) : 0;
+-    int ret = 0;
+ 
+     for_each_vcpu ( d, v )
+     {
+@@ -699,8 +716,9 @@ int sched_move_domain(struct domain *d,
+     domdata = sched_alloc_domdata(c->sched, d);
+     if ( IS_ERR(domdata) )
+     {
+-        ret = PTR_ERR(domdata);
+-        goto out;
++        rcu_read_unlock(&sched_res_rculock);
++
++        return PTR_ERR(domdata);
+     }
+ 
+     for ( unit_idx = 0; unit_idx < n_units; unit_idx++ )
+@@ -718,10 +736,10 @@ int sched_move_domain(struct domain *d,
+ 
+         if ( !unit || !unit->priv )
+         {
+-            old_units = new_units;
+-            old_domdata = domdata;
+-            ret = -ENOMEM;
+-            goto out_free;
++            sched_move_domain_cleanup(c->sched, new_units, domdata);
++            rcu_read_unlock(&sched_res_rculock);
++
++            return -ENOMEM;
+         }
+ 
+         unit_ptr = &unit->next_in_list;
+@@ -808,22 +826,11 @@ int sched_move_domain(struct domain *d,
+ 
+     domain_unpause(d);
+ 
+- out_free:
+-    for ( unit = old_units; unit; )
+-    {
+-        if ( unit->priv )
+-            sched_free_udata(c->sched, unit->priv);
+-        old_unit = unit;
+-        unit = unit->next_in_list;
+-        xfree(old_unit);
+-    }
+-
+-    sched_free_domdata(old_ops, old_domdata);
++    sched_move_domain_cleanup(old_ops, old_units, old_domdata);
+ 
+- out:
+     rcu_read_unlock(&sched_res_rculock);
+ 
+-    return ret;
++    return 0;
+ }
+ 
+ void sched_destroy_vcpu(struct vcpu *v)

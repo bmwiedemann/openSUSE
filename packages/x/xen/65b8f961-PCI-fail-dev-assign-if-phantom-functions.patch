@@ -1,0 +1,78 @@
+# Commit cb4ecb3cc17b02c2814bc817efd05f3f3ba33d1e
+# Date 2024-01-30 14:28:01 +0100
+# Author Roger Pau Monné <roger.pau@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+pci: fail device assignment if phantom functions cannot be assigned
+
+The current behavior is that no error is reported if (some) phantom functions
+fail to be assigned during device add or assignment, so the operation succeeds
+even if some phantom functions are not correctly setup.
+
+This can lead to devices possibly being successfully assigned to a domU while
+some of the device phantom functions are still assigned to dom0.  Even when the
+device is assigned domIO before being assigned to a domU phantom functions
+might fail to be assigned to domIO, and also fail to be assigned to the domU,
+leaving them assigned to dom0.
+
+Since the device can generate requests using the IDs of those phantom
+functions, given the scenario above a device in such state would be in control
+of a domU, but still capable of generating transactions that use a context ID
+targeting dom0 owned memory.
+
+Modify device assign in order to attempt to deassign the device if phantom
+functions failed to be assigned.
+
+Note that device addition is not modified in the same way, as in that case the
+device is assigned to a trusted domain, and hence partial assign can lead to
+device malfunction but not a security issue.
+
+This is XSA-449 / CVE-2023-46839
+
+Fixes: 4e9950dc1bd2 ('IOMMU: add phantom function support')
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/drivers/passthrough/pci.c
++++ b/xen/drivers/passthrough/pci.c
+@@ -1439,11 +1439,10 @@ static int assign_device(struct domain *
+ 
+     pdev->fault.count = 0;
+ 
+-    if ( (rc = iommu_call(hd->platform_ops, assign_device, d, devfn,
+-                          pci_to_dev(pdev), flag)) )
+-        goto done;
++    rc = iommu_call(hd->platform_ops, assign_device, d, devfn, pci_to_dev(pdev),
++                    flag);
+ 
+-    for ( ; pdev->phantom_stride; rc = 0 )
++    while ( pdev->phantom_stride && !rc )
+     {
+         devfn += pdev->phantom_stride;
+         if ( PCI_SLOT(devfn) != PCI_SLOT(pdev->devfn) )
+@@ -1454,8 +1453,24 @@ static int assign_device(struct domain *
+ 
+  done:
+     if ( rc )
+-        printk(XENLOG_G_WARNING "%pd: assign (%pp) failed (%d)\n",
+-               d, &PCI_SBDF(seg, bus, devfn), rc);
++    {
++        printk(XENLOG_G_WARNING "%pd: assign %s(%pp) failed (%d)\n",
++               d, devfn != pdev->devfn ? "phantom function " : "",
++               &PCI_SBDF(seg, bus, devfn), rc);
++
++        if ( devfn != pdev->devfn && deassign_device(d, seg, bus, pdev->devfn) )
++        {
++            /*
++             * Device with phantom functions that failed to both assign and
++             * rollback.  Mark the device as broken and crash the target domain,
++             * as the state of the functions at this point is unknown and Xen
++             * has no way to assert consistent context assignment among them.
++             */
++            pdev->broken = true;
++            if ( !is_hardware_domain(d) && d != dom_io )
++                domain_crash(d);
++        }
++    }
+     /* The device is assigned to dom_io so mark it as quarantined */
+     else if ( d == dom_io )
+         pdev->quarantine = true;

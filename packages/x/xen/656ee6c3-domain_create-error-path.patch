@@ -1,0 +1,23 @@
+# Commit ff1178062094837d55ef342070e58316c43a54c9
+# Date 2023-12-05 10:00:51 +0100
+# Author Stewart Hildebrand <stewart.hildebrand@amd.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+xen/domain: fix error path in domain_create()
+
+If rangeset_new() fails, err would not be set to an appropriate error
+code. Set it to -ENOMEM.
+
+Fixes: 580c458699e3 ("xen/domain: Call arch_domain_create() as early as possible in domain_create()")
+Signed-off-by: Stewart Hildebrand <stewart.hildebrand@amd.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/common/domain.c
++++ b/xen/common/domain.c
+@@ -703,6 +703,7 @@ struct domain *domain_create(domid_t dom
+         watchdog_domain_init(d);
+         init_status |= INIT_watchdog;
+ 
++        err = -ENOMEM;
+         d->iomem_caps = rangeset_new(d, "I/O Memory", RANGESETF_prettyprint_hex);
+         d->irq_caps   = rangeset_new(d, "Interrupts", 0);
+         if ( !d->iomem_caps || !d->irq_caps )

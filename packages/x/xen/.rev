@@ -2894,4 +2894,12 @@
     <comment>Just a few upstream bug fixes and hypervisor config changes for better security.</comment>
     <requestid>1127999</requestid>
   </revision>
+  <revision rev="340" vrev="1">
+    <srcmd5>a08fbd50f31aec1dfc236b8f317df188</srcmd5>
+    <version>4.18.0_06</version>
+    <time>1706885093</time>
+    <user>anag+factory</user>
+    <comment>Various upstream bug fixes and updated security patches</comment>
+    <requestid>1143458</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,61 @@
+# Commit 6bdb965178bbb3fc50cd4418d4770a7789956e2c
+# Date 2024-01-17 10:40:52 +0100
+# Author Roger Pau Monné <roger.pau@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/intel: ensure Global Performance Counter Control is setup correctly
+
+When Architectural Performance Monitoring is available, the PERF_GLOBAL_CTRL
+MSR contains per-counter enable bits that is ANDed with the enable bit in the
+counter EVNTSEL MSR in order for a PMC counter to be enabled.
+
+So far the watchdog code seems to have relied on the PERF_GLOBAL_CTRL enable
+bits being set by default, but at least on some Intel Sapphire and Emerald
+Rapids this is no longer the case, and Xen reports:
+
+Testing NMI watchdog on all CPUs: 0 40 stuck
+
+The first CPU on each package is started with PERF_GLOBAL_CTRL zeroed, so PMC0
+doesn't start counting when the enable bit in EVNTSEL0 is set, due to the
+relevant enable bit in PERF_GLOBAL_CTRL not being set.
+
+Check and adjust PERF_GLOBAL_CTRL during CPU initialization so that all the
+general-purpose PMCs are enabled.  Doing so brings the state of the package-BSP
+PERF_GLOBAL_CTRL in line with the rest of the CPUs on the system.
+
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Acked-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/cpu/intel.c
++++ b/xen/arch/x86/cpu/intel.c
+@@ -533,9 +533,30 @@ static void cf_check init_intel(struct c
+ 	init_intel_cacheinfo(c);
+ 	if (c->cpuid_level > 9) {
+ 		unsigned eax = cpuid_eax(10);
++		unsigned int cnt = (eax >> 8) & 0xff;
++
+ 		/* Check for version and the number of counters */
+-		if ((eax & 0xff) && (((eax>>8) & 0xff) > 1))
++		if ((eax & 0xff) && (cnt > 1) && (cnt <= 32)) {
++			uint64_t global_ctrl;
++			unsigned int cnt_mask = (1UL << cnt) - 1;
++
++			/*
++			 * On (some?) Sapphire/Emerald Rapids platforms each
++			 * package-BSP starts with all the enable bits for the
++			 * general-purpose PMCs cleared.  Adjust so counters
++			 * can be enabled from EVNTSEL.
++			 */
++			rdmsrl(MSR_CORE_PERF_GLOBAL_CTRL, global_ctrl);
++			if ((global_ctrl & cnt_mask) != cnt_mask) {
++				printk("CPU%u: invalid PERF_GLOBAL_CTRL: %#"
++				       PRIx64 " adjusting to %#" PRIx64 "\n",
++				       smp_processor_id(), global_ctrl,
++				       global_ctrl | cnt_mask);
++				wrmsrl(MSR_CORE_PERF_GLOBAL_CTRL,
++				       global_ctrl | cnt_mask);
++			}
+ 			__set_bit(X86_FEATURE_ARCH_PERFMON, c->x86_capability);
++		}
+ 	}
+ 
+ 	if ( !cpu_has(c, X86_FEATURE_XTOPOLOGY) )
