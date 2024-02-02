@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  1 12:19:06 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Prevent directory traversal when creating syndic cache directory
+  on the master (CVE-2024-22231, bsc#1219430)
+- Prevent directory traversal attacks in the master's serve_file
+  method (CVE-2024-22232, bsc#1219431)
+
+- Added:
+  * fix-cve-2024-22231-and-cve-2024-22232-bsc-1219430-bs.patch
+
+-------------------------------------------------------------------
 Mon Jan 29 13:50:44 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Provide user(salt)/group(salt) capabilities for RPM 4.19
