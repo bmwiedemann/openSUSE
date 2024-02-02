@@ -7,4 +7,12 @@
     <comment>Add opensource displaylink driver. The driver has also a proprietary blob which should be added through other sources.</comment>
     <requestid>1143056</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>abe47ed3a8456c007f3a99c87521df8f</srcmd5>
+    <version>1.14.1</version>
+    <time>1706885282</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143618</requestid>
+  </revision>
 </revisionlist>
