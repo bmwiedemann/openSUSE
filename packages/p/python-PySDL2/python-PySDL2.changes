@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  2 09:28:39 UTC 2024 - munix9@googlemail.com
+
+- Add libmpg123-0 as a build requirement for the tests
+
+-------------------------------------------------------------------
 Sun Aug 20 11:55:43 UTC 2023 - munix9@googlemail.com
 
 - Remove fix-tests.patch in favor of upstream patches
