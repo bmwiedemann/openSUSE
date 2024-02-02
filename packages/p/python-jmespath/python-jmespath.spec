@@ -1,7 +1,7 @@
 #
 # spec file for package python-jmespath
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,16 @@ URL:            https://github.com/jmespath/jmespath.py
 Source:         https://github.com/jmespath/jmespath.py/archive/refs/tags/%{version}.tar.gz#/jmespath-%{version}.tar.gz
 # Testing
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply >= 3.4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ply >= 3.4
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -72,10 +74,10 @@ The expression: foo.*.name will return ["one", "two"].
 %autosetup -p1 -n jmespath.py-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 mv %{buildroot}%{_bindir}/jp.py %{buildroot}%{_bindir}/jp
 %python_clone -a %{buildroot}%{_bindir}/jp
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -94,7 +96,7 @@ mv %{buildroot}%{_bindir}/jp.py %{buildroot}%{_bindir}/jp
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/jmespath
-%{python_sitelib}/jmespath-%{version}*-info
+%{python_sitelib}/jmespath-%{version}.dist-info
 %python_alternative %{_bindir}/jp
 
 %changelog

@@ -219,4 +219,14 @@
     <comment></comment>
     <requestid>1112143</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>73fe069cb81c122760fe7d6f520f3213</srcmd5>
+    <version>1.0.1</version>
+    <time>1706885087</time>
+    <user>anag+factory</user>
+    <comment>- switch to PEP517 / wheel build
+
+  * Remove use of nose in the tests.</comment>
+    <requestid>1143395</requestid>
+  </revision>
 </revisionlist>
