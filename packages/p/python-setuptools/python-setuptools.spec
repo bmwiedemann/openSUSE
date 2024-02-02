@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,43 +21,32 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
-%bcond_with wheel
-%endif
-%if "%{flavor}" == "wheel"
-%define psuffix -wheel
-%bcond_with test
-%bcond_without wheel
 %endif
 %if "%{flavor}" == ""
 %define psuffix %{nil}
 %bcond_with test
-%bcond_with wheel
 %endif
 
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-setuptools%{psuffix}
-Version:        69.0.2
+Version:        69.0.3
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
 URL:            https://github.com/pypa/setuptools
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-%{version}.tar.gz
 Patch0:         sort-for-reproducibility.patch
-# PATCH-FIX-OPENSUSE fix-get-python-lib-python38.patch bsc#1204395
-Patch2:         fix-get-python-lib-python38.patch
-# PATCH-FIX-OPENSUSE Allow forcing direct compilation, see gh#pypa/setuptools#4164
-Patch3:         allow-only-direct-compilation.patch
-BuildRequires:  %{python_module base >= 3.7}
+# Bootstrap: Don't BuildRequire pip here!
+BuildRequires:  %{python_module base >= 3.9}
+# The rpm python-wheel build is bootstrap friendly since 0.42
+BuildRequires:  %{python_module wheel >= 0.42}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-%if %{with wheel}
-Requires:       %mypython(abi) = %python_version
-%endif
 %if %{with test}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
@@ -75,13 +64,9 @@ BuildRequires:  %{python_module setuptools = %{version}}
 BuildRequires:  %{python_module setuptools-wheel = %{version}}
 BuildRequires:  %{python_module tomli-w >= 1.0.0}
 BuildRequires:  %{python_module virtualenv >= 13.0.0}
-BuildRequires:  %{python_module wheel}
 %endif
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     ca-certificates-mozilla
-%endif
-%if %{with wheel}
-BuildRequires:  %{python_module wheel}
 %endif
 %python_subpackages
 
@@ -90,6 +75,14 @@ setuptools is a collection of enhancements to the Python distutils that
 allow you to build and distribute Python packages,
 especially ones that have dependencies on other packages.
 
+%package wheel
+Summary:        The setuptools wheel for custom tests and install requirements
+Requires:       %mypython(abi) = %python_version
+
+%description wheel
+This packages provides the setuptools wheel as separate file for cases where
+the wheel needs to be used directly in test or install setups
+
 %prep
 %autosetup -p1 -n setuptools-%{version}
 
@@ -97,26 +90,32 @@ especially ones that have dependencies on other packages.
 rm -f setuptools/*.exe
 
 %build
-%if ! %{with wheel}
-%python_build
-%else
-%python_exec setup.py bdist_wheel --universal
+%if !%{with test}
+%{python_expand # bootstrap with built-in pip
+$python -m venv build/env
+build/env/bin/python -m ensurepip
+export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
+%{$python_pyproject_wheel}
+}
 %endif
 
 %install
-%if !%{with test} && !%{with wheel}
-export SETUPTOOLS_FORCE_DIRECT=True
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-%endif
-
-%if %{with wheel}
-%python_expand install -D -m 0644 -t %{buildroot}%{$python_sitelib}/../wheels dist/*.whl
+%if !%{with test}
+%{python_expand # use pip bootstrapped above
+export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
+%{$python_pyproject_install}
+%fdupes %{buildroot}%{$python_sitelib}
+install -D -m 0644 -t %{buildroot}%{$python_sitelib}/../wheels dist/*.whl
+}
 %endif
 
 %check
 %if %{with test}
-%python_expand export PRE_BUILT_SETUPTOOLS_WHEEL=%{$python_sitelib}/../wheels/setuptools-%{version}-py2.py3-none-any.whl
+%{python_expand # just use the last one from the expansion, they're all the same
+mkdir -p dist/
+cp %{$python_sitelib}/../wheels/setuptools-%{version}-py3-none-any.whl $PWD/dist/
+}
+export PRE_BUILT_SETUPTOOLS_WHEEL=$PWD/dist/setuptools-%{version}-py3-none-any.whl
 export LANG=en_US.UTF-8
 # tests need imports from local source dir
 export PYTHONPATH=$(pwd)
@@ -133,17 +132,16 @@ donttest+=" or test_pbr_integration"
 %license LICENSE
 %doc NEWS.rst README.rst
 %{python_sitelib}/setuptools
-%{python_sitelib}/setuptools-%{version}*-info
+%{python_sitelib}/setuptools-%{version}.dist-info
 %dir %{python_sitelib}/pkg_resources
 %{python_sitelib}/pkg_resources/*
 %{python_sitelib}/_distutils_hack
 %{python_sitelib}/distutils-precedence.pth
 %endif
 
-%if %{with wheel}
+%files %{python_files wheel}
 %dir %{python_sitelib}/../wheels
 %{python_sitelib}/../wheels/*
-%endif
 %endif
 
 %changelog

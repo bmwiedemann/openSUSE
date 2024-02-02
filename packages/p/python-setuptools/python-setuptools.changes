@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  2 21:55:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 69.0.3:
+  * Bugfixes - Retain valid names with underscores in egg_info.
+
+-------------------------------------------------------------------
+Fri Dec 22 14:58:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Drop fix-get-python-lib-python38.patch: No Python <3.9 built
+- Drop ugly allow-only-direct-compilation.patch in favor of proper
+  PEP517 compliant bootstrap, using a built-in pip and the wheel
+  package
+
+-------------------------------------------------------------------
 Fri Dec 22 04:10:44 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch allow-only-direct-compilation.patch:
