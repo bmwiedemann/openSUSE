@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Feb 01 13:17:59 UTC 2024 - info@paolostivanin.com
+
+- Update to version 3.6.9:
+  * Bug fix for unknown camera temperature, gain or offset
+  * Focus UI Refactor
+  * Always show and edit scheduler job properties
+  * Allow deleting of scheduler jobs and appending to scheduler queue while running other jobs.
+  * In Sequence HFR Check Refactor
+  * Add capture time delay estimate for rotator movements
+  * Various fixes
+
+-------------------------------------------------------------------
+Mon Dec  4 08:36:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.6.8:
+  * Added Aberration Inspector.
+  * Improved Sub-exposure Calculator.
+  * Added FITSViewer Solver.
+  * Make "Set Coordinates Manually" dialog more intuitive.
+  * Telescope name specified in the optical trains are now saved in the FITS header (the mount name was saved before).
+  * New placeholders for ISO, binning and pure exposure time added.
+  * Add a new not-default scheduler option to disable greedy scheduling.
+  * Reduce latency between captures, especially when guiding / dithering.
+  * Fix issue with differential slewing.
+  * Separate Business Logic from UI in Scheduler.
+  * Fix bug in estimating job time, capture delays were misinterpreted.
+  * Fixed guide start deviation was not saved properly in esq file.
+  * Bugfix in one-pulse dither. Dither pulses were going the wrong way.
+  * Fix Scheduler hangs when Focus does not signal Autofocus start failure.
+  * Focus Guide Settle Bug.
+- Add fix-crash.patch
+
+-------------------------------------------------------------------
 Mon Oct  9 16:11:29 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.6.7:
