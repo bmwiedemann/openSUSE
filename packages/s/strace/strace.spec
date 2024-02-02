@@ -1,7 +1,7 @@
 #
 # spec file for package strace
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,10 @@ BuildRequires:  time
 %endif
 %ifarch x86_64
 Obsoletes:      strace-32bit
+%endif
+# enable SELinux context output (--secontext)
+%if 0%{?suse_version} >= 1500
+BuildRequires:  libselinux-devel
 %endif
 
 %description
