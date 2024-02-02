@@ -263,4 +263,15 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment>Resubmit, with only the nvme change added; dbus-broker reverted</comment>
     <requestid>1132628</requestid>
   </revision>
+  <revision rev="32" vrev="32">
+    <srcmd5>a190e79fc2999c5c7afeb0831f09607b</srcmd5>
+    <version>15</version>
+    <time>1706885100</time>
+    <user>anag+factory</user>
+    <comment>- Split hcn-init.service to hcn-init-NetworkManager and hcn-init-wicked
+  (bsc#1200731 ltc#198485 https://github.com/ibm-power-utilities/powerpc-utils/pull/84)
+  Support both the old and new service to avoid complex version interdependency.
+</comment>
+    <requestid>1143596</requestid>
+  </revision>
 </revisionlist>

@@ -22,6 +22,8 @@ disable fstrim.service
 enable fstrim.timer
 enable getty@.service
 enable hcn-init.service
+enable hcn-init-NetworkManager.service
+enable hcn-init-wicked.service
 enable ignition-delete-config.service
 enable ignition-firstboot-complete.service
 enable irqbalance.service

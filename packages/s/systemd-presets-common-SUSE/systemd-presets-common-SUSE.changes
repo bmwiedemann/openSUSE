@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  1 10:59:49 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Split hcn-init.service to hcn-init-NetworkManager and hcn-init-wicked
+  (bsc#1200731 ltc#198485 https://github.com/ibm-power-utilities/powerpc-utils/pull/84)
+  Support both the old and new service to avoid complex version interdependency.
+
+-------------------------------------------------------------------
 Thu Oct 19 11:24:59 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - nvme-cli: enable nvmf-autoconnect.service for improved user experience
