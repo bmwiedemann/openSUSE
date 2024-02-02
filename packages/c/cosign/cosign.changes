@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb  2 10:17:12 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.2.3 (jsc#SLE-23879)
+  Bug Fixes:
+    * Fix race condition on verification with multiple signatures attached to image (#3486)
+    * fix(clean): Fix clean cmd for private registries (#3446)
+    * Fixed BYO PKI verification (#3427)
+  Features:
+    * Allow for option in cosign attest and attest-blob to upload attestation as supported in Rekor (#3466)
+    * Add support for OpenVEX predicate type (#3405)
+  Documentation:
+    * Resolves #3088: `version` sub-command expected behaviour documentation and testing (#3447)
+    * add examples for cosign attach signature cmd (#3468)
+  Misc:
+    * Remove CertSubject function (#3467)
+    * Use local rekor and fulcio instances in e2e tests (#3478)
+- bumped embedded golang.org/x/crypto/ssh to fix the Terrapin attack CVE-2023-48795 (bsc#1218207)
+
+-------------------------------------------------------------------
 Tue Dec 12 10:18:40 UTC 2023 - Marcos Bjoerkelund <marcos.bjoerkelund@suse.com>
 
 - updated to 2.2.2 (jsc#SLE-23879)

@@ -1,7 +1,7 @@
 #
 # spec file for package cosign
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%define revision 12cbf9ea177d22bbf5cf028bcb4712b5f174ebc6
+%define revision 493e6e29e2ac830aaf05ec210b36d0a5a60c3b32
 Name:           cosign
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Container Signing, Verification and Storage in an OCI registry
 License:        Apache-2.0
 URL:            https://github.com/sigstore/cosign
 Source:         https://github.com/sigstore/cosign/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  golang(API) = 1.21
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
+BuildRequires:  golang(API) = 1.21
 
 %description
 Cosign aims to make signatures invisible infrastructure.
