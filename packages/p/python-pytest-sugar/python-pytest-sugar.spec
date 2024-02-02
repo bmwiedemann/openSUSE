@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-sugar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-sugar
-Version:        0.9.7
+Version:        1.0.0
 Release:        0
 Summary:        Pretty printer for pytest progress
 License:        BSD-3-Clause
 URL:            https://github.com/Frozenball/pytest-sugar
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-sugar/pytest-sugar-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module termcolor}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
@@ -41,10 +43,10 @@ pytest-sugar is a plugin for py.test that shows failures and errors instantly an
 %setup -q -n pytest-sugar-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +57,6 @@ pytest-sugar is a plugin for py.test that shows failures and errors instantly an
 %doc README.md
 %pycache_only %{python_sitelib}/__pycache__/*.pyc
 %{python_sitelib}/pytest_sugar.py
-%{python_sitelib}/pytest_sugar-%{version}*-info
+%{python_sitelib}/pytest_sugar-%{version}.dist-info
 
 %changelog

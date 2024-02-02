@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  1 20:51:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Add support for pytest 8.x
+  * Drop support for Python 3.7
+
+-------------------------------------------------------------------
 Thu Jul 27 12:46:32 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -13,7 +20,7 @@ Thu May  4 22:24:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Nov 30 11:39:52 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Remove python_module macro definition 
+- Remove python_module macro definition
 - More specific python_sitelib in %files
 - Update to 0.9.6:
   * Remove py.std calls (thanks @alexcjohnson)
@@ -67,4 +74,4 @@ Fri Nov 17 12:06:50 UTC 2017 - jengelh@inai.de
 -------------------------------------------------------------------
 Wed Nov 15 09:59:13 UTC 2017 - mimi.vx@gmail.com
 
-- initial package 
+- initial package
