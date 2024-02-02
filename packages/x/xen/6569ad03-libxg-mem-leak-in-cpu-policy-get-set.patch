@@ -1,0 +1,133 @@
+# Commit 1571ff7a987b88b20598a6d49910457f3b2c59f1
+# Date 2023-12-01 10:53:07 +0100
+# Author Alejandro Vallejo <alejandro.vallejo@cloud.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+tools/xg: Fix potential memory leak in cpu policy getters/setters
+
+They allocate two different hypercall buffers, but leak the first
+allocation if the second one failed due to an early return that bypasses
+cleanup.
+
+Remove the early exit and go through _post() instead. Invoking _post() is
+benign even if _pre() failed.
+
+Fixes: 6b85e427098c ('x86/sysctl: Implement XEN_SYSCTL_get_cpu_policy')
+Fixes: 60529dfeca14 ('x86/domctl: Implement XEN_DOMCTL_get_cpu_policy')
+Fixes: 14ba07e6f816 ('x86/domctl: Implement XEN_DOMCTL_set_cpumsr_policy')
+Signed-off-by: Alejandro Vallejo <alejandro.vallejo@cloud.com>
+Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
+
+--- a/tools/libs/guest/xg_cpuid_x86.c
++++ b/tools/libs/guest/xg_cpuid_x86.c
+@@ -136,20 +136,20 @@ static int get_system_cpu_policy(xc_inte
+     DECLARE_HYPERCALL_BOUNCE(msrs,
+                              *nr_msrs * sizeof(*msrs),
+                              XC_HYPERCALL_BUFFER_BOUNCE_OUT);
+-    int ret;
++    int ret = -1;
+ 
+-    if ( xc_hypercall_bounce_pre(xch, leaves) ||
+-         xc_hypercall_bounce_pre(xch, msrs) )
+-        return -1;
+-
+-    sysctl.cmd = XEN_SYSCTL_get_cpu_policy;
+-    sysctl.u.cpu_policy.index = index;
+-    sysctl.u.cpu_policy.nr_leaves = *nr_leaves;
+-    set_xen_guest_handle(sysctl.u.cpu_policy.leaves, leaves);
+-    sysctl.u.cpu_policy.nr_msrs = *nr_msrs;
+-    set_xen_guest_handle(sysctl.u.cpu_policy.msrs, msrs);
++    if ( !xc_hypercall_bounce_pre(xch, leaves) &&
++         !xc_hypercall_bounce_pre(xch, msrs) )
++    {
++        sysctl.cmd = XEN_SYSCTL_get_cpu_policy;
++        sysctl.u.cpu_policy.index = index;
++        sysctl.u.cpu_policy.nr_leaves = *nr_leaves;
++        set_xen_guest_handle(sysctl.u.cpu_policy.leaves, leaves);
++        sysctl.u.cpu_policy.nr_msrs = *nr_msrs;
++        set_xen_guest_handle(sysctl.u.cpu_policy.msrs, msrs);
+ 
+-    ret = do_sysctl(xch, &sysctl);
++        ret = do_sysctl(xch, &sysctl);
++    }
+ 
+     xc_hypercall_bounce_post(xch, leaves);
+     xc_hypercall_bounce_post(xch, msrs);
+@@ -174,20 +174,20 @@ static int get_domain_cpu_policy(xc_inte
+     DECLARE_HYPERCALL_BOUNCE(msrs,
+                              *nr_msrs * sizeof(*msrs),
+                              XC_HYPERCALL_BUFFER_BOUNCE_OUT);
+-    int ret;
++    int ret = -1;
+ 
+-    if ( xc_hypercall_bounce_pre(xch, leaves) ||
+-         xc_hypercall_bounce_pre(xch, msrs) )
+-        return -1;
+-
+-    domctl.cmd = XEN_DOMCTL_get_cpu_policy;
+-    domctl.domain = domid;
+-    domctl.u.cpu_policy.nr_leaves = *nr_leaves;
+-    set_xen_guest_handle(domctl.u.cpu_policy.leaves, leaves);
+-    domctl.u.cpu_policy.nr_msrs = *nr_msrs;
+-    set_xen_guest_handle(domctl.u.cpu_policy.msrs, msrs);
++    if ( !xc_hypercall_bounce_pre(xch, leaves) &&
++         !xc_hypercall_bounce_pre(xch, msrs) )
++    {
++        domctl.cmd = XEN_DOMCTL_get_cpu_policy;
++        domctl.domain = domid;
++        domctl.u.cpu_policy.nr_leaves = *nr_leaves;
++        set_xen_guest_handle(domctl.u.cpu_policy.leaves, leaves);
++        domctl.u.cpu_policy.nr_msrs = *nr_msrs;
++        set_xen_guest_handle(domctl.u.cpu_policy.msrs, msrs);
+ 
+-    ret = do_domctl(xch, &domctl);
++        ret = do_domctl(xch, &domctl);
++    }
+ 
+     xc_hypercall_bounce_post(xch, leaves);
+     xc_hypercall_bounce_post(xch, msrs);
+@@ -214,32 +214,24 @@ int xc_set_domain_cpu_policy(xc_interfac
+     DECLARE_HYPERCALL_BOUNCE(msrs,
+                              nr_msrs * sizeof(*msrs),
+                              XC_HYPERCALL_BUFFER_BOUNCE_IN);
+-    int ret;
++    int ret = -1;
+ 
+-    if ( err_leaf_p )
+-        *err_leaf_p = -1;
+-    if ( err_subleaf_p )
+-        *err_subleaf_p = -1;
+-    if ( err_msr_p )
+-        *err_msr_p = -1;
+-
+-    if ( xc_hypercall_bounce_pre(xch, leaves) )
+-        return -1;
+-
+-    if ( xc_hypercall_bounce_pre(xch, msrs) )
+-        return -1;
+-
+-    domctl.cmd = XEN_DOMCTL_set_cpu_policy;
+-    domctl.domain = domid;
+-    domctl.u.cpu_policy.nr_leaves = nr_leaves;
+-    set_xen_guest_handle(domctl.u.cpu_policy.leaves, leaves);
+-    domctl.u.cpu_policy.nr_msrs = nr_msrs;
+-    set_xen_guest_handle(domctl.u.cpu_policy.msrs, msrs);
+     domctl.u.cpu_policy.err_leaf = -1;
+     domctl.u.cpu_policy.err_subleaf = -1;
+     domctl.u.cpu_policy.err_msr = -1;
+ 
+-    ret = do_domctl(xch, &domctl);
++    if ( !xc_hypercall_bounce_pre(xch, leaves) &&
++         !xc_hypercall_bounce_pre(xch, msrs) )
++    {
++        domctl.cmd = XEN_DOMCTL_set_cpu_policy;
++        domctl.domain = domid;
++        domctl.u.cpu_policy.nr_leaves = nr_leaves;
++        set_xen_guest_handle(domctl.u.cpu_policy.leaves, leaves);
++        domctl.u.cpu_policy.nr_msrs = nr_msrs;
++        set_xen_guest_handle(domctl.u.cpu_policy.msrs, msrs);
++
++        ret = do_domctl(xch, &domctl);
++    }
+ 
+     xc_hypercall_bounce_post(xch, leaves);
+     xc_hypercall_bounce_post(xch, msrs);

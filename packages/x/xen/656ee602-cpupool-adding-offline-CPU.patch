@@ -1,0 +1,29 @@
+# Commit 06e8d65d33896aa90f5b6d9b2bce7f11433b33c9
+# Date 2023-12-05 09:57:38 +0100
+# Author Juergen Gross <jgross@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+xen/sched: fix adding offline cpu to cpupool
+
+Trying to add an offline cpu to a cpupool can crash the hypervisor,
+as the probably non-existing percpu area of the cpu is accessed before
+the availability of the cpu is being tested. This can happen in case
+the cpupool's granularity is "core" or "socket".
+
+Fix that by testing the cpu to be online.
+
+Fixes: cb563d7665f2 ("xen/sched: support core scheduling for moving cpus to/from cpupools")
+Reported-by: René Winther Højgaard <renewin@proton.me>
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/common/sched/cpupool.c
++++ b/xen/common/sched/cpupool.c
+@@ -892,6 +892,8 @@ int cpupool_do_sysctl(struct xen_sysctl_
+         if ( cpu >= nr_cpu_ids )
+             goto addcpu_out;
+         ret = -ENODEV;
++        if ( !cpu_online(cpu) )
++            goto addcpu_out;
+         cpus = sched_get_opt_cpumask(c->gran, cpu);
+         if ( !cpumask_subset(cpus, &cpupool_free_cpus) ||
+              cpumask_intersects(cpus, &cpupool_locked_cpus) )

@@ -1,0 +1,111 @@
+# Commit 787d11c5aaf4d3411d4658cff137cd49b0bd951b
+# Date 2023-12-05 09:57:05 +0100
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86emul: avoid triggering event related assertions
+
+The assertion at the end of x86_emulate_wrapper() as well as the ones
+in x86_emul_{hw_exception,pagefault}() can trigger if we ignore
+X86EMUL_EXCEPTION coming back from certain hook functions. Squash
+exceptions when merely probing MSRs, plus on SWAPGS'es "best effort"
+error handling path.
+
+In adjust_bnd() add another assertion after the read_xcr(0, ...)
+invocation, paralleling the one in x86emul_get_fpu() - XCR0 reads should
+never fault when XSAVE is (implicitly) known to be available.
+
+Also update the respective comment in x86_emulate_wrapper().
+
+Fixes: 14a6be89ec04 ("x86emul: correct EFLAGS.TF handling")
+Fixes: cb2626c75813 ("x86emul: conditionally clear BNDn for branches")
+Fixes: 6eb43fcf8a0b ("x86emul: support SWAPGS")
+Reported-by: AFL
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/arch/x86/x86_emulate/0f01.c
++++ b/xen/arch/x86/x86_emulate/0f01.c
+@@ -200,8 +200,10 @@ int x86emul_0f01(struct x86_emulate_stat
+         if ( (rc = ops->write_segment(x86_seg_gs, &sreg,
+                                       ctxt)) != X86EMUL_OKAY )
+         {
+-            /* Best effort unwind (i.e. no error checking). */
+-            ops->write_msr(MSR_SHADOW_GS_BASE, msr_val, ctxt);
++            /* Best effort unwind (i.e. no real error checking). */
++            if ( ops->write_msr(MSR_SHADOW_GS_BASE, msr_val,
++                                ctxt) == X86EMUL_EXCEPTION )
++                x86_emul_reset_event(ctxt);
+             goto done;
+         }
+         break;
+--- a/xen/arch/x86/x86_emulate/0fae.c
++++ b/xen/arch/x86/x86_emulate/0fae.c
+@@ -55,7 +55,10 @@ int x86emul_0fae(struct x86_emulate_stat
+                     cr4 = X86_CR4_OSFXSR;
+                 if ( !ops->read_msr ||
+                      ops->read_msr(MSR_EFER, &msr_val, ctxt) != X86EMUL_OKAY )
++                {
++                    x86_emul_reset_event(ctxt);
+                     msr_val = 0;
++                }
+                 if ( !(cr4 & X86_CR4_OSFXSR) ||
+                      (mode_64bit() && mode_ring0() && (msr_val & EFER_FFXSE)) )
+                     s->op_bytes = offsetof(struct x86_fxsr, xmm[0]);
+--- a/xen/arch/x86/x86_emulate/x86_emulate.c
++++ b/xen/arch/x86/x86_emulate/x86_emulate.c
+@@ -1143,10 +1143,18 @@ static bool is_branch_step(struct x86_em
+                            const struct x86_emulate_ops *ops)
+ {
+     uint64_t debugctl;
++    int rc = X86EMUL_UNHANDLEABLE;
+ 
+-    return ops->read_msr &&
+-           ops->read_msr(MSR_IA32_DEBUGCTLMSR, &debugctl, ctxt) == X86EMUL_OKAY &&
+-           (debugctl & IA32_DEBUGCTLMSR_BTF);
++    if ( !ops->read_msr ||
++         (rc = ops->read_msr(MSR_IA32_DEBUGCTLMSR, &debugctl,
++                             ctxt)) != X86EMUL_OKAY )
++    {
++        if ( rc == X86EMUL_EXCEPTION )
++            x86_emul_reset_event(ctxt);
++        debugctl = 0;
++    }
++
++    return debugctl & IA32_DEBUGCTLMSR_BTF;
+ }
+ 
+ static void adjust_bnd(struct x86_emulate_ctxt *ctxt,
+@@ -1160,13 +1168,21 @@ static void adjust_bnd(struct x86_emulat
+ 
+     if ( !ops->read_xcr || ops->read_xcr(0, &xcr0, ctxt) != X86EMUL_OKAY ||
+          !(xcr0 & X86_XCR0_BNDREGS) || !(xcr0 & X86_XCR0_BNDCSR) )
++    {
++        ASSERT(!ctxt->event_pending);
+         return;
++    }
+ 
+     if ( !mode_ring0() )
+         bndcfg = read_bndcfgu();
+     else if ( !ops->read_msr ||
+-              ops->read_msr(MSR_IA32_BNDCFGS, &bndcfg, ctxt) != X86EMUL_OKAY )
++              (rc = ops->read_msr(MSR_IA32_BNDCFGS, &bndcfg,
++                                  ctxt)) != X86EMUL_OKAY )
++    {
++        if ( rc == X86EMUL_EXCEPTION )
++            x86_emul_reset_event(ctxt);
+         return;
++    }
+     if ( (bndcfg & IA32_BNDCFGS_ENABLE) && !(bndcfg & IA32_BNDCFGS_PRESERVE) )
+     {
+         /*
+@@ -8677,7 +8693,9 @@ int x86_emulate_wrapper(
+      * An event being pending should exactly match returning
+      * X86EMUL_EXCEPTION.  (If this trips, the chances are a codepath has
+      * called hvm_inject_hw_exception() rather than using
+-     * x86_emul_hw_exception().)
++     * x86_emul_hw_exception(), or the invocation of a hook has caused an
++     * exception to be raised, while the caller was only checking for
++     * success/failure.)
+      */
+     ASSERT(ctxt->event_pending == (rc == X86EMUL_EXCEPTION));
+ 

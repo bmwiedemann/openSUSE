@@ -1,0 +1,73 @@
+# Commit cf7fe8b72deaa94157ddf97d4bb391480205e9c2
+# Date 2024-01-25 17:46:57 +0000
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/ucode: Fix stability of the raw CPU Policy rescan
+
+Always run microcode_update_helper() on the BSP, so the the updated Raw CPU
+policy doesn't get non-BSP topology details included.
+
+Have calculate_raw_cpu_policy() clear the instantanious XSTATE sizes.  The
+value XCR0 | MSR_XSS had when we scanned the policy isn't terribly interesting
+to report.
+
+When CPUID Masking is active, it affects CPUID instructions issued by Xen
+too.  Transiently disable masking to get a clean scan.
+
+Fixes: 694d79ed5aac ("x86/ucode: Refresh raw CPU policy after microcode load")
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/cpu-policy.c
++++ b/xen/arch/x86/cpu-policy.c
+@@ -353,6 +353,13 @@ void calculate_raw_cpu_policy(void)
+     /* Nothing good will come from Xen and libx86 disagreeing on vendor. */
+     ASSERT(p->x86_vendor == boot_cpu_data.x86_vendor);
+ 
++    /*
++     * Clear the truly dynamic fields.  These vary with the in-context XCR0
++     * and MSR_XSS, and aren't interesting fields in the raw policy.
++     */
++    p->xstate.raw[0].b = 0;
++    p->xstate.raw[1].b = 0;
++
+     /* 0x000000ce  MSR_INTEL_PLATFORM_INFO */
+     /* Was already added by probe_cpuid_faulting() */
+ }
+--- a/xen/arch/x86/cpu/microcode/core.c
++++ b/xen/arch/x86/cpu/microcode/core.c
+@@ -680,8 +680,18 @@ static long cf_check microcode_update_he
+         microcode_update_cache(patch);
+         spin_unlock(&microcode_mutex);
+ 
+-        /* Refresh the raw CPU policy, in case the features have changed. */
++        /*
++         * Refresh the raw CPU policy, in case the features have changed.
++         * Disable CPUID masking if in use, to avoid having current's
++         * cpu_policy affect the rescan.
++         */
++	if ( ctxt_switch_masking )
++            alternative_vcall(ctxt_switch_masking, NULL);
++
+         calculate_raw_cpu_policy();
++
++	if ( ctxt_switch_masking )
++            alternative_vcall(ctxt_switch_masking, current);
+     }
+     else
+         microcode_free_patch(patch);
+@@ -721,8 +731,12 @@ int microcode_update(XEN_GUEST_HANDLE(co
+     }
+     buffer->len = len;
+ 
+-    return continue_hypercall_on_cpu(smp_processor_id(),
+-                                     microcode_update_helper, buffer);
++    /*
++     * Always queue microcode_update_helper() on CPU0.  Most of the logic
++     * won't care, but the update of the Raw CPU policy wants to (re)run on
++     * the BSP.
++     */
++    return continue_hypercall_on_cpu(0, microcode_update_helper, buffer);
+ }
+ 
+ static int __init cf_check microcode_init(void)
