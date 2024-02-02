@@ -27,6 +27,7 @@ Wed Jan 31 14:14:20 UTC 2024 - Egbert Eich <eich@suse.com>
     instead of exiting with a fatal error.
   * Allow templated build arguments to definition files to have
     empty values.
+- Package .def templates separately for different SPs.
 
 -------------------------------------------------------------------
 Tue Oct 24 06:02:44 UTC 2023 - Egbert Eich <eich@suse.com>

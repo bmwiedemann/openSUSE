@@ -35,9 +35,10 @@ Conflicts:      singularity-ce
 Conflicts:      singularity-runtime
 Source0:        https://github.com/apptainer/apptainer/archive/v%{version}%{?vers_suffix}/apptainer-%{version}%{?vers_suffix}.tar.gz
 Source1:        README.SUSE
-Source2:        SLE-15SP6.def
-Source3:        SLE.def
-Source4:        leap.def
+Source2:        SUSE.def
+Source3:        SLE-15SP5.def
+Source4:        SLE-15SP6.def
+Source5:        Leap.def
 Source20:       %{name}-rpmlintrc
 Source21:       vendor.tar.gz
 BuildRequires:  cryptsetup
@@ -56,6 +57,10 @@ BuildRequires:  libseccomp-devel
 Requires:       squashfs
 Requires:       squashfuse
 Recommends:     fuse2fs
+Requires:       (apptainer-leap if product(Leap) = 15.5)
+Requires:       (apptainer-sle15_5 if product(SUSE_SLE) = 15.5)
+Requires:       (apptainer-sle15_6 if product(SUSE_SLE) = 15.6)
+
 # Needed for container decryption in userspace, upstream rpms include this
 # but factory should have this seperately
 Recommends:     gocryptfs
@@ -68,9 +73,36 @@ ExcludeArch:    ppc64 ppc64le %ix86 s390 s390x
 Apptainer provides functionality to make portable
 containers that can be used across host environments.
 
+%package   sle15_5
+Summary:        Apptainer Definition File Templates for SLE 15 SP5
+BuildArch:      noarch
+Requires:       apptainer
+
+%description sle15_5
+The package provides a definition file template for Apptainer containers
+based on SUSE Linux Enterprise 15 SP5.
+
+%package   sle15_6
+Summary:        Apptainer Definition File Templates for SLE 15 SP6
+BuildArch:      noarch
+Requires:       apptainer
+
+%description sle15_6
+The package provides a definition file template for Apptainer containers
+based on SUSE Linux Enterprise 15 SP6.
+
+%package leap
+Summary:        Apptainer Definition File Templates for current openSUSE Leap
+BuildArch:      noarch
+Requires:       apptainer
+
+%description leap
+The package provides a definition file template for Apptainer containers
+based on the latest openSUSE Leap release.
+
 %prep
 %setup -q -n %{name}-%{version}%{?vers_suffix}
-cp %{S:1} %{S:2} %{S:3} %{S:4} .
+cp %{S:1} .
 
 %build
 
@@ -105,6 +137,8 @@ export GOFLAGS=-mod=vendor
 export PATH=$GOPATH/bin:$PATH
 
 %make_install -C builddir V=
+install -d -m 0755 %{buildroot}/%{_datarootdir}/apptainer/templates
+install -m 0644 %{S:2} %{S:3} %{S:4} %{S:5} %{buildroot}/%{_datarootdir}/apptainer/templates
 
 %fdupes apptainer/examples
 %fdupes -s %buildroot
@@ -116,8 +150,6 @@ export PATH=$GOPATH/bin:$PATH
 %doc CHANGELOG.md
 %doc CONTRIBUTORS.md
 %doc %{basename:%{S:1}}
-%doc %{basename:%{S:2}}
-%doc %{basename:%{S:3}}
 %license LICENSE.md
 %license LICENSE_THIRD_PARTY.md
 %license LICENSE_DEPENDENCIES.md
@@ -126,9 +158,12 @@ export PATH=$GOPATH/bin:$PATH
 %dir %{_libexecdir}/apptainer/bin
 %dir %{_libexecdir}/apptainer/cni
 %dir %{_libexecdir}/apptainer/lib
+%dir %{_datarootdir}/apptainer
+%dir %{_datarootdir}/apptainer/templates
 %{_libexecdir}/apptainer/bin/starter
 %{_libexecdir}/apptainer/lib/offsetpreload.so
 %{_libexecdir}/apptainer/cni/*
+%{_datarootdir}/apptainer/templates/%{basename:%{S:2}}
 %dir %{_sysconfdir}/apptainer
 %config(noreplace) %{_sysconfdir}/apptainer/capability.json
 %config(noreplace) %{_sysconfdir}/apptainer/cgroups
@@ -146,5 +181,14 @@ export PATH=$GOPATH/bin:$PATH
 %dir %{_localstatedir}/lib/apptainer/mnt
 %dir %{_localstatedir}/lib/apptainer/mnt/session
 %{_mandir}/man1/*
+
+%files sle15_5
+%{_datarootdir}/apptainer/templates/%{basename:%{S:3}}
+
+%files sle15_6
+%{_datarootdir}/apptainer/templates/%{basename:%{S:4}}
+
+%files leap
+%{_datarootdir}/apptainer/templates/%{basename:%{S:5}}
 
 %changelog

@@ -285,4 +285,12 @@
     <comment></comment>
     <requestid>1143195</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>63c0099a3b8a7c83ef46f7f29b564253</srcmd5>
+    <version>1.2.5</version>
+    <time>1706885280</time>
+    <user>anag+factory</user>
+    <comment>- Package .def templates separately for different SPs. (forwarded request 1143317 from eeich)</comment>
+    <requestid>1143604</requestid>
+  </revision>
 </revisionlist>
