@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 02 08:53:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.22:
+  * Prepare for v0.15.22 release
+  * fix: Remove check function validateInfoForConnect for
+    DisconnectWithHelm function
+  * README.md: Update the title
+  * fix(deps): update all go dependencies main
+  * chore(deps): update docker.io/library/golang:1.21.6-alpine3.19
+    docker digest to a6a7f1f
+  * fix(deps): update module github.com/cilium/cilium to v1.15.0
+  * chore(deps): update dependency cilium/cilium to v1.15.0
+  * fix(deps): update module github.com/evanphx/json-patch to
+    v5.9.0+incompatible
+  * chore(deps): update nick-invision/retry action to v3
+  * connectivity: fix panic if the cilium-health test fails
+  * Encryption status models and JSON output parsing support added.
+  * Encryption status sub command implemented.
+  * Update stable release to v0.15.21
+
+-------------------------------------------------------------------
 Wed Jan 31 14:01:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.21:
