@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb  1 10:55:30 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.9:
+  + audiobasesink: Don't wait on gap events
+  + audioconvert: change gst_audio_convert_get_unit_size() log
+    levels
+  + glcolorconvert: Correct transform_caps direction
+  + gloverlay: Apply updated overlay coordinates correctly
+  + videorate: keep pool if max_buffers is unlimited
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Thu Jan  4 07:53:18 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.8:
