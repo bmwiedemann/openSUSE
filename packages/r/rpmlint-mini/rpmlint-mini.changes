@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  1 12:02:45 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Don't include copy of libm
+
+-------------------------------------------------------------------
 Fri Oct 13 12:02:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Bump to python311
