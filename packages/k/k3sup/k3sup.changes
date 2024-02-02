@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 02 09:59:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.5:
+  * Add --no-extra flag to join command
+  * Update go-execute and cobra
+
+-------------------------------------------------------------------
+Fri Feb 02 09:58:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.4:
+  * Bump golang.org/x/crypto from 0.13.0 to 0.17.0
+  * Update README.md
+
+-------------------------------------------------------------------
 Fri Oct 27 14:50:01 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.13.3:
