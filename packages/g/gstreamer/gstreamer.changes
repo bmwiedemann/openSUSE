@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb  1 10:54:29 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.9:
+  + Highlighted bugfixes in 1.22.9
+    - More Security fixes for the AV1 video codec parser
+    - va: fixes for Mesa Gallium drivers in Mesa versions older
+      than v23.2
+    - v4l2src: Consider framerate during caps selection
+    - v4l2codec: decoder fixes
+    - rtspsrc: multicast fixes
+    - camerabin viewfinder fixes
+    - various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer
+    - aggregator: fix use-after-free in queries processing
+    - multiqueue: Ignore queue fullness for most events
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Thu Jan  4 07:50:55 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.8:
