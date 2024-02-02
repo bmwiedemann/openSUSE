@@ -95,4 +95,16 @@
   * Switched to Qt 6</comment>
     <requestid>1094095</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1796bfd91a0b33cd722dc4025d57ee90</srcmd5>
+    <version>3.2.3</version>
+    <time>1706885285</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.2.3:
+  * Replaced deprecated code
+  * Translation updates: Turkish
+
+  * Improved Linux deployment</comment>
+    <requestid>1143622</requestid>
+  </revision>
 </revisionlist>
