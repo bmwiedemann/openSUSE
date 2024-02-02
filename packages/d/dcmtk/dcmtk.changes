@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  1 14:20:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.6.8
+  See DOCS/CHANGES.368 for the full list of changes
+- Drop patches, merged upstream:
+  * dcmtk-fix-pkgconfig.patch
+  * dcmtk-CVE-2022-43272.patch
+
+-------------------------------------------------------------------
 Thu Dec 14 14:19:39 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add dcmtk-fix-pkgconfig.patch: Removed leading spaces in
