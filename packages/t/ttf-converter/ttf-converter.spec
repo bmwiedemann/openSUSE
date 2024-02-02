@@ -1,7 +1,7 @@
 #
 # spec file for package ttf-converter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+%if 0%{suse_version} < 1550
+%define primary_python python3
+%endif
 Name:           ttf-converter
 Version:        1.0.7
 Release:        0
@@ -23,10 +26,10 @@ Summary:        Python script that converts fonts to TrueType format
 License:        GPL-3.0-only
 URL:            https://github.com/antlarr-suse/ttf-converter
 Source:         ttf-converter-%{version}.tar.xz
-BuildRequires:  python3
+BuildRequires:  python-rpm-macros
+Requires:       %{primary_python}-base
 Requires:       fontforge
 Requires:       ftdump
-Requires:       python3-base
 BuildArch:      noarch
 
 %description
@@ -50,7 +53,8 @@ instead.
 
 %install
 mkdir -p %{buildroot}%{_bindir}
-cp ttf-converter %{buildroot}%{_bindir}
+install ttf-converter %{buildroot}%{_bindir}
+%python3_fix_shebang
 
 %files
 %license LICENSE
