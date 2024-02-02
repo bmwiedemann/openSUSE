@@ -337,4 +337,14 @@
     <comment></comment>
     <requestid>1112606</requestid>
   </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>2bab6bc8441ff4653eda3b411c694c38</srcmd5>
+    <version>3.0.0</version>
+    <time>1706885092</time>
+    <user>anag+factory</user>
+    <comment>- use python311 build for documentation on SLE15
+
+  * Add an optional parameter to TestApp, allowing the user to</comment>
+    <requestid>1143455</requestid>
+  </revision>
 </revisionlist>

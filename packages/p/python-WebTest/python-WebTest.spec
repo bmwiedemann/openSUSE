@@ -1,7 +1,7 @@
 #
 # spec file for package python-WebTest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,8 +40,13 @@ BuildRequires:  %{python_module waitress >= 0.8.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Documentation build requirements:
+%if 0%{?suse_version} == 1500
+BuildRequires:  python311-Sphinx
+BuildRequires:  python311-pylons-sphinx-themes
+%else
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-pylons-sphinx-themes
+%endif
 Requires:       python-WebOb >= 1.2
 Requires:       python-beautifulsoup4
 Requires:       python-waitress >= 0.8.5

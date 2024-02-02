@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  1 17:24:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use python311 build for documentation on SLE15
+
+-------------------------------------------------------------------
 Wed Sep 20 14:48:54 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add py312.patch to fix build with Python 3.12
@@ -198,7 +203,7 @@ Mon Jan 13 14:01:30 UTC 2014 - dmueller@suse.com
 
 - update to 2.0.11:
   * Depend on unittest2 only for Python versions lower than 2.7
-  * Add an optional parameter to TestApp, allowing the user to 
+  * Add an optional parameter to TestApp, allowing the user to
   specify the parser used by BeautifulSoup
 
 -------------------------------------------------------------------
