@@ -1,7 +1,7 @@
 #
 # spec file for package syslog-ng
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,13 +34,25 @@
 %bcond_with	mqtt
 %endif
 
-# OpenTelemetry and BPF dependencies only in TW
+# GRPC and BPF dependencies only in TW
 %if 0%{?suse_version} > 1500
-%bcond_without  otel
+%bcond_without  grpc
 %bcond_without	bpf
 %else
-%bcond_with     otel
+%bcond_with     grpc
 %bcond_with	bpf
+%endif
+
+# CloudAuth needs 15+
+%if 0%{?suse_version} >= 1500
+%bcond_without  cloudauth
+%else
+%bcond_with     cloudauth
+%endif
+
+%if %{with grpc}
+BuildRequires:  grpc-devel
+BuildRequires:  protobuf-devel
 %endif
 
 # missing dependencies on SLES 15
@@ -76,7 +88,7 @@
 %bcond_with	mongodb
 %bcond_with	amqp
 Name:           syslog-ng
-Version:        4.3.1
+Version:        4.6.0
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -162,11 +174,6 @@ BuildRequires:  clang13
 BuildRequires:  libbpf-devel
 %endif
 
-%if %{with otel}
-BuildRequires:  grpc-devel
-BuildRequires:  protobuf-devel
-%endif
-
 %description
 syslog-ng is an enhanced log daemon, supporting a wide range of input and
 output methods: syslog, unstructured text, message queues, databases (SQL
@@ -183,11 +190,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-4_3-0
+%package -n libevtlog-4_6-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-4_3-0
+%description -n libevtlog-4_6-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -250,14 +257,6 @@ Requires:       %{name} = %{version}
 %description redis
 This package provides the libredis module providing support for
 logging to a redis destination.
-
-%package opentelemetry
-Summary:        OpenTelemetry support for syslog-ng
-Group:          System/Daemons
-Requires:       %{name} = %{version}
-
-%description opentelemetry
-This package provides OpenTelemetry support for syslog-ng
 
 %package bpf
 Summary:        Faster UDP log collection for syslog-ng
@@ -329,6 +328,50 @@ Summary:        MQTT support for syslog-ng
 Group:          System/Daemons
 Requires:       %{name} = %{version}
 
+%package grpc
+Summary:        Common files for grpc-based syslog-ng drivers
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+
+%description grpc
+This package provides provides common files for grpc-based syslog-ng drivers
+
+%package opentelemetry
+Summary:        OpenTelemetry support for syslog-ng
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+Requires:       %{name}-grpc
+
+%description opentelemetry
+This package provides OpenTelemetry support for syslog-ng
+
+%package loki
+Summary:        Loki destination support for syslog-ng
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+Requires:       %{name}-grpc
+
+%description loki
+This package provides Loki destination support for syslog-ng
+
+%package bigquery
+Summary:        Google BigQuery destination support for syslog-ng
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+Requires:       %{name}-grpc
+
+%description bigquery
+This package provides Google BigQuery destination support for syslog-ng
+
+%package cloudauth
+Summary:        Cloud Authentication support for syslog-ng: pubsub
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+
+%description cloudauth
+This package provides Cloud Authentication support for syslog-ng,
+currently used for Google PubSub
+
 %description mqtt
 This package provides MQTT support for syslog-ng
 
@@ -380,11 +423,16 @@ export BPFTOOL=/usr/sbin/bpftool
 	--datadir="%{_datadir}"	\
 	--without-compile-date			\
 	--enable-ssl				\
-        --enable-afsnmp                         \
-%if %{with otel}
+%if %{with grpc}
         --enable-cpp                            \
         --enable-grpc                           \
 %endif
+%if %{with cloudauth}
+        --enable-cloud-auth                     \
+%else
+        --disable-cloud-auth                    \
+%endif
+        --enable-afsnmp                         \
 %if %{with bpf}
         --enable-ebpf                           \
 %endif
@@ -561,8 +609,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-4_3-0 -p /sbin/ldconfig
-%postun -n libevtlog-4_3-0 -p /sbin/ldconfig
+%post -n libevtlog-4_6-0 -p /sbin/ldconfig
+%postun -n libevtlog-4_6-0 -p /sbin/ldconfig
 
 %files
 ##
@@ -641,6 +689,12 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/splunk/
 %dir %{_datadir}/syslog-ng/include/scl/logscale/
 %dir %{_datadir}/syslog-ng/include/scl/opensearch/
+%dir %{_datadir}/syslog-ng/include/scl/google/
+%dir %{_datadir}/syslog-ng/include/scl/openobserve/
+%dir %{_datadir}/syslog-ng/include/scl/pgsql/
+%dir %{_datadir}/syslog-ng/include/scl/pihole/
+%dir %{_datadir}/syslog-ng/include/scl/qbittorrent/
+%dir %{_datadir}/syslog-ng/include/scl/darwinosl/
 %dir %{_datadir}/syslog-ng/xsd
 %dir %{_sysconfdir}/syslog-ng
 %dir %{_sysconfdir}/syslog-ng/conf.d
@@ -745,11 +799,18 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/splunk/splunk.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/logscale/logscale.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/opensearch/opensearch.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/google/google-pubsub.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/openobserve/openobserve.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/pgsql/pgsql.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/pihole/pihole.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/qbittorrent/qbittorrent.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/darwinosl/darwinosl-metadata-db.csv
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/darwinosl/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/smart-multi-line.fsm
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl.conf
 
-%files -n libevtlog-4_3-0
+%files -n libevtlog-4_6-0
 %{_libdir}/libevtlog-*.so.*
 
 %files snmp
@@ -774,10 +835,26 @@ chmod 640 "${additional_sockets#/}"
 
 %endif
 
-%if %{with otel}
+%if %{with grpc}
+
+%files grpc
+%attr(755,root,root) %{_libdir}/libgrpc-protos.*
 
 %files opentelemetry
 %attr(755,root,root) %{_libdir}/syslog-ng/libotel.so
+
+%files loki
+%attr(755,root,root) %{_libdir}/syslog-ng/libloki.so
+
+%files bigquery
+%attr(755,root,root) %{_libdir}/syslog-ng/libbigquery.so
+
+%endif
+
+%if %{with cloudauth}
+
+%files cloudauth
+%attr(755,root,root) %{_libdir}/syslog-ng/libcloud_auth.so
 
 %endif
 
