@@ -66,7 +66,7 @@ Requires:       %{_bindir}/virsh
 Requires:       curl
 Requires:       guestfs-tools >= 1.42
 Requires:       libguestfs0 >= 1.42
-Requires:       openssh-clients >= 8.8p1
+Requires:       openssh-clients
 Requires:       ovmf
 Requires:       unzip
 Recommends:     nbdkit
@@ -125,11 +125,11 @@ for %{name}.
 
 %prep
 %autosetup -p1
-%if 0%{patches_touch_autotools}
-autoreconf -i
-%endif
 
 %build
+%if 0%{patches_touch_autotools}
+autoreconf -fi
+%endif
 %configure
 %make_build
 
