@@ -1,7 +1,7 @@
 #
 # spec file for package python-urwid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,21 @@
 #
 
 
-%bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-urwid
-Version:        2.1.2
+Version:        2.5.1
 Release:        0
 Summary:        A full-featured console (xterm et al.) user interface library
 License:        LGPL-2.1-or-later
 URL:            http://urwid.org
 Source:         https://files.pythonhosted.org/packages/source/u/urwid/urwid-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-311.patch gh#urwid/urwid#517
-Patch0:         python-311.patch
+BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 BuildRequires:  python-rpm-macros
 Requires:       python-curses
 %python_subpackages
@@ -57,22 +55,19 @@ useful for text console application developers including:
 find urwid -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# this test won't work on OBS
-rm -f urwid/tests/test_vterm.py
-cp *build*/*/urwid/*.so urwid
 %pyunittest discover -v
 
 %files %{python_files}
 %license COPYING
 %doc README.rst
-%{python_sitearch}/urwid/
-%{python_sitearch}/urwid-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/urwid
+%{python_sitearch}/urwid-%{version}.dist-info
 
 %changelog

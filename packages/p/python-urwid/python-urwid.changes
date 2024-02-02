@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Feb  2 05:55:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.5.1:
+  * Extend Command enum and update Columns & Pile
+  * Fix double Widget inheritance in the LineBox
+  * Columns PACK item not fit as FIXED and support FLOW
+  * allow not subclassed incomplete widgets in Columns/Pile
+  * Columns rendered with a non-first Selectable widget should not skip
+    other items
+  * Fix regression: Columns render incorrect BOX/FLOW widgets height
+  * Overlay typing and proper repr
+  * support proper repr and str for Canvas
+  * Support FIXED and FLOW operations for Overlay depends on options
+  * Columns accept focus widget as "focus_column"
+  * Filler can act as FLOW widget
+  * allow explicit focus in GridFlow constructor
+  * Columns support correct BOX render only if ALL BOX
+  * support FIXED-only widgets and FIXED rendering for Columns
+  * Support FIXED-only widgets and FIXED rendering for PILE
+  * support FIXED render type for GridFLow
+  * Add run_in_executor helper to the event loop
+  * Feature: Implement keypress and mouse_event default handlers
+  * use Hashable for signal identifier types
+  * Introduce optional dependencies for package
+  * Feature: Support pack() for CheckBox/RadioButton/Button
+  * Fix font in case Font.data is str
+  * Fix: deep TextEnum was improperly resolved
+  * Fix #583: python 3.12 compatibility
+  * Python 37+ migration, Python < 3.7 support dropped
+  * make tests compatible with Python 3.11
+  * Add two fonts based on Unicode 13 2x3 TRS-80/Teletext mosaic characters
+  * Fix assertion failure when string contains SO but not SI
+  * Use trio.lowlevel instead of trio.hazmat with Trio >= 0.15
+  * Provide 80x24 fallback for ansi and vt100
+- Switch to pyproject macros.
+- Drop patch python-311.patch, included upstream.
+- Clean up Python 2 leftovers.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
