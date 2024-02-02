@@ -1,7 +1,7 @@
 #
 # spec file for package pfstools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -338,8 +338,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files exr
 %{_bindir}/pfsinexr
 %{_bindir}/pfsoutexr
-%{_mandir}/man1/pfsinexr.1%%{?ext_man}
-%{_mandir}/man1/pfsoutexr.1%%{?ext_man}
+%{_mandir}/man1/pfsinexr.1%{?ext_man}
+%{_mandir}/man1/pfsoutexr.1%{?ext_man}
 %endif
 
 %files imgmagick
