@@ -1,7 +1,7 @@
 #
 # spec file for package python-PySDL2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  libmpg123-0
 BuildRequires:  xorg-x11-server
 # /SECTION
 Requires:       SDL2 >= 2.0.22
