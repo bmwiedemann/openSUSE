@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,37 +27,33 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-setuptools_scm%{psuffix}
-Version:        7.1.0
+Version:        8.0.4
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT
 URL:            https://github.com/pypa/setuptools_scm
-Source:         https://files.pythonhosted.org/packages/source/s/setuptools_scm/setuptools_scm-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/pypa/setuptools_scm/pull/867
-Patch1:         setuptools-68.patch
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module packaging >= 20.0}
+Source:         https://files.pythonhosted.org/packages/source/s/setuptools-scm/setuptools-scm-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE setuptools-scm-issue953-nowarn.patch gh#pypa/setuptools_scm#953 -- don't warn if setuptools_scm is present but not directly used
+Patch0:         setuptools-scm-issue953-nowarn.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 45}
-BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 20.0
 Requires:       python-setuptools
 Requires:       python-typing-extensions
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib-metadata
-%endif
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1
 %endif
 BuildArch:      noarch
 %if %{with test}
 # Testing requirements
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm = %{version}}
-BuildRequires:  %{python_module virtualenv > 20}
 BuildRequires:  git-core
 BuildRequires:  mercurial
 %endif
@@ -71,7 +67,7 @@ The setuptools_scm package handles managing one's Python package versions
 in SCM metadata. It also handles file finders for the supperted SCMs.
 
 %prep
-%autosetup -p1 -n setuptools_scm-%{version}
+%autosetup -p1 -n setuptools-scm-%{version}
 
 %build
 %pyproject_wheel
@@ -86,15 +82,13 @@ in SCM metadata. It also handles file finders for the supperted SCMs.
 %check
 # pip download needs network
 donttest="test_pip_download"
-# tested file not installed into sitelib. Yes the test is named that way.
-donttest+=" or test_git_archhival_from_unfiltered"
-%pytest -k "not ($donttest)"
+%pytest -rsEf -k "not ($donttest)"
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
-%doc README.rst CHANGELOG.rst
+%doc README.md CHANGELOG.md
 %{python_sitelib}/setuptools_scm
 %{python_sitelib}/setuptools_scm-%{version}*-info
 %endif

@@ -311,4 +311,12 @@
     <comment>- add setuptools-68.patch to fix tests with newer setuptools</comment>
     <requestid>1108959</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fb940d1df8afe60fd7cd18204f5ed6a2</srcmd5>
+    <version>8.0.4</version>
+    <time>1706885102</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137240</requestid>
+  </revision>
 </revisionlist>
