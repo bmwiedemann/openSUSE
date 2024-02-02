@@ -85,4 +85,17 @@
     <comment>update</comment>
     <requestid>999940</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ab511a007672b744b38eefb63cef722d</srcmd5>
+    <version>1.1.3</version>
+    <time>1706885268</time>
+    <user>anag+factory</user>
+    <comment>- Fix build with RPM 4.19: The build system used by tilde is not
+  exactly autoconf, even though it's initiated by configure. IT
+  mis-interprets the parameters of the configure macro to imply a
+  cross build, then fails to fine the correct pkg-config
+  executable. Aid the build script by defining PKG_CONFIG to
+  /usr/bin/pkg-config. (forwarded request 1143578 from dimstar)</comment>
+    <requestid>1143586</requestid>
+  </revision>
 </revisionlist>
