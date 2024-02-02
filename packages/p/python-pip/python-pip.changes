@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 22 16:06:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Drop deprecated setup.py installmethod, bootstrap PEP517 with
+  built-in pip instead
+- python3XX-pip-wheel can now be a regular subpackage
+- Drop obsolete python2 directives in specfile
+
+-------------------------------------------------------------------
 Mon Dec 18 14:18:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.3.2:

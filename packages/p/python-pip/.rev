@@ -892,4 +892,17 @@
     to PEP 427, so non-ASCII paths can be resolved as expected.</comment>
     <requestid>1133888</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>9fff9495ee47e53231853d806d4a888e</srcmd5>
+    <version>23.3.2</version>
+    <time>1706885101</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1134667 from bnavigator
+
+- Drop deprecated setup.py installmethod, bootstrap PEP517 with
+    built-in pip instead
+  - python3XX-pip-wheel can now be a regular subpackage
+  - Drop obsolete python2 directives in specfile</comment>
+    <requestid>1136254</requestid>
+  </revision>
 </revisionlist>
