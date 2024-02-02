@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/vmware/govmomi</param>
+              <param name="changesrevision">96b6eb7717a333660fca14fe0b5f71b9b6b01c22</param></service></servicedata>
