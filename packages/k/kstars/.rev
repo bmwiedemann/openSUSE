@@ -1190,4 +1190,12 @@
     <comment>Update to 3.6.7</comment>
     <requestid>1116514</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>6f6b48f5157330d1bc9589ff074c66d6</srcmd5>
+    <version>3.6.9</version>
+    <time>1706885251</time>
+    <user>anag+factory</user>
+    <comment>update to 3.6.9</comment>
+    <requestid>1143579</requestid>
+  </revision>
 </revisionlist>

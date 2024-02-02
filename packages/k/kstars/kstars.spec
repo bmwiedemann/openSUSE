@@ -1,7 +1,7 @@
 #
 # spec file for package kstars
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,8 @@
 
 # Internal QML import
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
-%bcond_without released
 Name:           kstars
-Version:        3.6.7
+Version:        3.6.9
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -34,15 +33,13 @@ Summary:        Desktop Planetarium
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://edu.kde.org/kstars/
-Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
-%if %{with released}
-Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
-%endif
+# For whatever reason, they aren't uploading releases anymore on DKO, so we use the one from gitlab instead.
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
+BuildRequires:  indi-devel >= 2.0.0
 BuildRequires:  libXISF-devel
 BuildRequires:  libnova-devel
 BuildRequires:  pkgconfig
@@ -76,12 +73,11 @@ BuildRequires:  cmake(StellarSolver) >= 2.2
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(libindi) >= 2.0.0
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(wcslib)
 Requires:       libqt5-qtquickcontrols
 Recommends:     /usr/bin/dbus-send
-Recommends:     libindi
+Recommends:     indi
 Recommends:     xplanet
 
 %description

@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://invent.kde.org/education/kstars.git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">3.6.9</param>
+    <param name="revision">stable-3.6.9</param>
+    <param name="scm">git</param>
+    <param name="filename">kstars</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version">
+    <param name="basename">kstars</param>
+  </service>
+</services>
