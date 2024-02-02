@@ -95,4 +95,12 @@
     <comment>Add Jira request number to changelog. No code change.</comment>
     <requestid>1137601</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>2ed878f7d5fc7c6fdf80ddadcbfbd89a</srcmd5>
+    <version>2.4.0</version>
+    <time>1706885250</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143557</requestid>
+  </revision>
 </revisionlist>

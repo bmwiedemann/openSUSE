@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 19 14:58:36 UTC 2024 - olaf@aepfle.de
+
+- Relax the openssh requirement. Options passed to scp are known
+  by openssh 8.4
+- Move autoreconf from prep to build, to simplify quilt setup.
+
+-------------------------------------------------------------------
 Thu Jan  4 13:38:59 MST 2024 - carnold@suse.com
 
 - Update to virt-v2v 2.4.0 (jsc#PED-6305)
