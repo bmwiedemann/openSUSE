@@ -78,4 +78,13 @@
 - Initial package</comment>
     <requestid>1136464</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>990e24def05283121077cf74ec5efa54</srcmd5>
+    <version>3.4.5</version>
+    <time>1706885237</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.4.5:
+  * Removed docutils version pin</comment>
+    <requestid>1143510</requestid>
+  </revision>
 </revisionlist>

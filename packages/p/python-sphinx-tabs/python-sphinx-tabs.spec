@@ -31,7 +31,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-tabs
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        Tabbed views for Sphinx
 License:        MIT
