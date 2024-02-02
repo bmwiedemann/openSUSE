@@ -277,4 +277,20 @@
 - removed CRYPTOGAMS license as not known in OBS and OpenSSL is</comment>
     <requestid>1120777</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a0a0a3ab093849a0865757190fbd0f4c</srcmd5>
+    <version>1.2.5</version>
+    <time>1706807113</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143195</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>63c0099a3b8a7c83ef46f7f29b564253</srcmd5>
+    <version>1.2.5</version>
+    <time>1706885280</time>
+    <user>anag+factory</user>
+    <comment>- Package .def templates separately for different SPs. (forwarded request 1143317 from eeich)</comment>
+    <requestid>1143604</requestid>
+  </revision>
 </revisionlist>
