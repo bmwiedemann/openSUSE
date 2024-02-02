@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  2 11:38:54 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- At %kernel_module_package add _projectcert.crt to automatically add
+  the signing key to MOK.
+  On new reboot a MOK menu appears and the key must be manually enrolled
+  using the admin password.
+
+-------------------------------------------------------------------
 Mon Jan 29 16:43:01 UTC 2024 - joan.torres@suse.com
 
 - Update to version 1.14.1:

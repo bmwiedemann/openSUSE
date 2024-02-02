@@ -30,10 +30,10 @@ Patch0:         evdi-Resolve-compiler-errors-when-compiling-against-Linux.patch
 Patch1:         evdi-Enable-compilation-against-15.5.patch
 Patch2:         evdi-Enable-compilation-against-15.6.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
-BuildRequires:  dkms
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libdrm)
-%kernel_module_package -p %{_sourcedir}/evdi-kmp-preamble
+# needssslcertforbuild
+%kernel_module_package -p %{_sourcedir}/evdi-kmp-preamble -c %{_sourcedir}/_projectcert.crt
 
 %description
 The Extensible Virtual Display Interface (EVDI) is a Linux kernel module
