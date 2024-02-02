@@ -83,4 +83,18 @@
   * Change dependencies to require 7.0.0 pytest</comment>
     <requestid>1137813</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ea810774f361af286f58333c7bac4e28</srcmd5>
+    <version>2.3.1</version>
+    <time>1706885228</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.1:
+  * Documentation Update, README.md
+  * Turn help function list into a table with param lists
+  * Show an alternative method of creating a helper function
+    using `check.fail()`
+  * `fail(msg)` - indicate test failure, but don't stop testing
+  * Summaries from 2.2.3 are cool, but don't work with xdist</comment>
+    <requestid>1143496</requestid>
+  </revision>
 </revisionlist>
