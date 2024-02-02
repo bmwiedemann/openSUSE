@@ -228,4 +228,12 @@ Please link to python3-polib.
   endian_magic.patch</comment>
     <requestid>1129236</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>3526ac71b262499be91de43949a222d4</srcmd5>
+    <version>1.2.0</version>
+    <time>1706885287</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143628</requestid>
+  </revision>
 </revisionlist>

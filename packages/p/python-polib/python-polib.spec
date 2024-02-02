@@ -1,7 +1,7 @@
 #
 # spec file for package python-polib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,11 +27,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/izimobil/polib/
 Source0:        https://files.pythonhosted.org/packages/source/p/polib/polib-%{version}.tar.gz
 Patch0:         polib-1.1.0-fix-tests-big-endian.patch
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime >= 0.19.8
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Sphinx
 BuildArch:      noarch
 %python_subpackages
 
@@ -67,7 +69,7 @@ This package contains documentation in HTML format.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 pushd docs
 make %{?_smp_mflags} html
@@ -75,16 +77,18 @@ rm _build/html/.buildinfo
 popd
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec tests/tests.py
+%pyunittest -v tests.tests
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG README.rst
-%{python_sitelib}/*
+%{python_sitelib}/polib.py
+%pycache_only %{python_sitelib}/__pycache__/polib.*pyc
+%{python_sitelib}/polib-%{version}.dist-info
 
 %files -n python-polib-doc
 %doc docs/_build/html
