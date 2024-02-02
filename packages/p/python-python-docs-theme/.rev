@@ -79,4 +79,16 @@
   * Focus search box when pressing slash</comment>
     <requestid>1132211</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f9ba5740cfbc5dbc04283df896635e94</srcmd5>
+    <version>2024.1</version>
+    <time>1706885096</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.1:
+  * Underline links for readability and a11y
+  * Add `hosted_on` variable for a link in the footer
+  * Consistently reference `theme_root_icon`
+  * Dark mode: fix contrast of footer highlight</comment>
+    <requestid>1143508</requestid>
+  </revision>
 </revisionlist>

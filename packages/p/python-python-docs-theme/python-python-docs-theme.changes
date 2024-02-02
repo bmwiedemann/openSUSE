@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  1 21:20:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1:
+  * Underline links for readability and a11y
+  * Add `hosted_on` variable for a link in the footer
+  * Consistently reference `theme_root_icon`
+  * Dark mode: fix contrast of footer highlight
+
+-------------------------------------------------------------------
 Sat Dec  9 08:26:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.9:
