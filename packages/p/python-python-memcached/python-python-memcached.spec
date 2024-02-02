@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-memcached
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,25 @@
 #
 
 
-%define oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-python-memcached
-Version:        1.59
+Version:        1.62
 Release:        0
 Summary:        Pure python memcached client
 License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/linsomniac/python-memcached
 Source:         https://github.com/linsomniac/python-memcached/archive/%{version}.tar.gz
-# https://github.com/linsomniac/python-memcached/pull/186
-Patch0:         python-python-memcached-no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  memcached
 BuildRequires:  python-rpm-macros
 BuildRequires:  util-linux
 Requires:       memcached
 BuildArch:      noarch
-%ifpython2
-Provides:       %{oldpython}-memcached = %{version}
-Obsoletes:      %{oldpython}-memcached < %{version}
-%endif
 %python_subpackages
 
 %description
@@ -55,15 +51,13 @@ for more information.
 sed -i \
     -e 's:#!%{_bindir}/env python::' \
     memcache.py
-sed -i 's/import mock/import unittest.mock as mock/' tests/test_memcache.py
-# gh#linsomniac/python-memcached#185
 sed -i -e '/__version__/s/[0-9.]\+/%{version}/' memcache.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,6 +70,6 @@ kill -9 $(cat $PWD/memcached.pid)
 %doc README.md
 %{python_sitelib}/memcache.py
 %pycache_only %{python_sitelib}/__pycache__/memcache.*.pyc
-%{python_sitelib}/python_memcached-%{version}*-info
+%{python_sitelib}/python_memcached-%{version}.dist-info
 
 %changelog

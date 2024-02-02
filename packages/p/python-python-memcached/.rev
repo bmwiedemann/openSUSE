@@ -198,4 +198,39 @@
     <comment></comment>
     <requestid>1090269</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0498b9dba1668df66ac1429d7aa2206e</srcmd5>
+    <version>1.62</version>
+    <time>1706885236</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.62:
+  * delete() return value now is 1 for &quot;DELETED&quot; and 0 for
+    &quot;NOT_FOUND&quot; or server error.  (Nick Pope PR #190)
+- update to 1.60:
+  * Allow to use a datetime.timedelta parameter for Client.set
+  * Fix cmemcahe_hash 0 values being translated to 1
+  * Fix tuple key support in multi methods
+  * Add support for default value in get
+  * test_memcache.py: try import unittest.mock
+  * Use == as suggested by Python 3.8 (PR from @za)
+  * Decoding in slab funcs, replacing &quot;1&quot; with &quot;True&quot; in while.
+  * Tell PyPI to parse README as markdown (PR from @MartinThoma)
+  * test_memcache.py: try import unittest.mock
+  * Removed Python 2.7 from setup.cfg, adding 3.8-3.12
+  * Add support for default value in get()
+  * Fix tuple key support in multi methods (regression in 1.55).
+  * Removing six.PY2/3 conditionals
+  * Removing &quot;time&quot; from delete and making expiry mandatory in
+    touch. (port of @erankor's PR in #30 )
+  * Added quit() method.  This method sends the 'quit' command to
+    the servers and then closes the connections, reducing the
+    number of TIME_WAIT sockets hanging around the OS.
+  * Allow to use a datetime.timedelta parameter for Client.set
+  * Allow keys to be encoded before use.
+  * Removing historic python 2to3 code and deprecated
+    socket.error (for OSError).
+  * Updating to the latest PSF license
+- drop python-python-memcached-no-six.patch (upstream)</comment>
+    <requestid>1143507</requestid>
+  </revision>
 </revisionlist>

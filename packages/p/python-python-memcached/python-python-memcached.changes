@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb  1 21:18:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.62:
+  * delete() return value now is 1 for "DELETED" and 0 for
+    "NOT_FOUND" or server error.  (Nick Pope PR #190)
+- update to 1.60:
+  * Allow to use a datetime.timedelta parameter for Client.set
+  * Fix cmemcahe_hash 0 values being translated to 1
+  * Fix tuple key support in multi methods
+  * Add support for default value in get
+  * test_memcache.py: try import unittest.mock
+  * Use == as suggested by Python 3.8 (PR from @za)
+  * Decoding in slab funcs, replacing "1" with "True" in while.
+  * Tell PyPI to parse README as markdown (PR from @MartinThoma)
+  * test_memcache.py: try import unittest.mock
+  * Removed Python 2.7 from setup.cfg, adding 3.8-3.12
+  * Add support for default value in get()
+  * Fix tuple key support in multi methods (regression in 1.55).
+  * Removing six.PY2/3 conditionals
+  * Removing "time" from delete and making expiry mandatory in
+    touch. (port of @erankor's PR in #30 )
+  * Added quit() method.  This method sends the 'quit' command to
+    the servers and then closes the connections, reducing the
+    number of TIME_WAIT sockets hanging around the OS.
+  * Allow to use a datetime.timedelta parameter for Client.set
+  * Allow keys to be encoded before use.
+  * Removing historic python 2to3 code and deprecated
+    socket.error (for OSError).
+  * Updating to the latest PSF license
+- drop python-python-memcached-no-six.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jun  1 09:27:51 UTC 2023 - pgajdos@suse.com
 
 - run pyupgrade
@@ -151,11 +183,11 @@ Fri Apr  1 11:23:28 UTC 2011 - oliver.bengs@opensuse.org
 - added %{py_requires}
 - make use of --record-rpm from setuptools
 
--------------------------------------------------------------------	
+-------------------------------------------------------------------
 Sat Feb 26 14.13.54 UTC 2011 - stian@viskjer.net
 
 - python-memcached 1.47
-  * Bug #680359: useOldServerHashFunction() is broken. It now 
+  * Bug #680359: useOldServerHashFunction() is broken. It now
     correctly switches back to the old memcache hash function.
 
 - python-memcached 1.46
@@ -184,7 +216,7 @@ Sat Feb 26 14.13.54 UTC 2011 - stian@viskjer.net
   * Removing Evan's e-mail address at his request, changing
     authorship to Sean.
 
--------------------------------------------------------------------	
+-------------------------------------------------------------------
 Fri Nov 26 23.00.00 UTC 2010 - stian@viskjer.net
 
 - python-memcached 1.45
