@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-setuptools-gettext
-Version:        0.1.8
+Version:        0.1.11
 Release:        0
 Summary:        Setuptools gettext extension plugin
 License:        GPL-2.0-or-later
