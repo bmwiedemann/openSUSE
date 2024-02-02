@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  2 12:25:44 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.1
+  * Added support for key modifiers (Ctrl/Alt/Shift);
+  * Added mouse/touchpad configuration;
+  * Added touchpad scrolling support;
+  * Added support for mouse drag;
+  * Optimized font render;
+  * Removed unnecessary image reload.
+
+-------------------------------------------------------------------
 Wed Jan  3 16:04:45 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.0
