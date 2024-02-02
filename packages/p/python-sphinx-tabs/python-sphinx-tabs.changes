@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  1 21:22:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.5:
+  * Removed docutils version pin
+
+-------------------------------------------------------------------
 Wed Jan  3 10:24:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools
