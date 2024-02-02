@@ -26,4 +26,18 @@
   * Delay adding entry points to finalize_distribution_options</comment>
     <requestid>1136273</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b766e716a4f357fb3fe5dc4ec91470a6</srcmd5>
+    <version>0.1.11</version>
+    <time>1706885225</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.11:
+  * Fix test
+- update to 0.1.10:
+  * Add setting for default language
+  * Add some tests
+  * Fix root
+  * Set pythonpath</comment>
+    <requestid>1143497</requestid>
+  </revision>
 </revisionlist>
