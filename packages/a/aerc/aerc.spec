@@ -1,7 +1,7 @@
 #
 # spec file for package aerc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Hannes Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           aerc
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        An email client for terminals
 License:        MIT
@@ -69,6 +69,7 @@ aerc is an email client that runs in terminals.
 %{_mandir}/man5/aerc-sendmail.5.gz
 %{_mandir}/man5/aerc-notmuch.5.gz
 %{_mandir}/man5/aerc-smtp.5.gz
+%{_mandir}/man7/aerc-patch.7.gz
 %{_mandir}/man7/aerc-tutorial.7.gz
 %{_mandir}/man7/aerc-templates.7.gz
 %{_mandir}/man7/aerc-stylesets.7.gz
