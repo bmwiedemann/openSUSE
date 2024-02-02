@@ -196,4 +196,41 @@ Should fix problem with non-downloadable source file.</comment>
     <comment></comment>
     <requestid>1081710</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>88b441bfcbb028ad58ce74c59e7b3783</srcmd5>
+    <version>2.5.1</version>
+    <time>1706885241</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.5.1:
+  * Extend Command enum and update Columns &amp; Pile
+  * Fix double Widget inheritance in the LineBox
+  * Columns PACK item not fit as FIXED and support FLOW
+  * allow not subclassed incomplete widgets in Columns/Pile
+  * Columns rendered with a non-first Selectable widget should not skip
+    other items
+  * Fix regression: Columns render incorrect BOX/FLOW widgets height
+  * Overlay typing and proper repr
+  * support proper repr and str for Canvas
+  * Support FIXED and FLOW operations for Overlay depends on options
+  * Columns accept focus widget as &quot;focus_column&quot;
+  * Filler can act as FLOW widget
+  * allow explicit focus in GridFlow constructor
+  * Columns support correct BOX render only if ALL BOX
+  * support FIXED-only widgets and FIXED rendering for Columns
+  * Support FIXED-only widgets and FIXED rendering for PILE
+  * support FIXED render type for GridFLow
+  * Add run_in_executor helper to the event loop
+  * Feature: Implement keypress and mouse_event default handlers
+  * use Hashable for signal identifier types
+  * Introduce optional dependencies for package
+  * Feature: Support pack() for CheckBox/RadioButton/Button
+  * Fix font in case Font.data is str
+  * Fix: deep TextEnum was improperly resolved
+  * Fix #583: python 3.12 compatibility
+  * Python 37+ migration, Python &lt; 3.7 support dropped
+  * make tests compatible with Python 3.11
+  * Add two fonts based on Unicode 13 2x3 TRS-80/Teletext mosaic characters
+  * Fix assertion failure when string contains SO but not SI</comment>
+    <requestid>1143539</requestid>
+  </revision>
 </revisionlist>
