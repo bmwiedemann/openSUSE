@@ -16,7 +16,7 @@
  
 --- lisp/textmodes/ispell.el
 +++ lisp/textmodes/ispell.el	2016-09-19 09:01:56.930605125 +0000
-@@ -1524,10 +1524,18 @@ Protects against bogus binding of `enabl
+@@ -1533,10 +1533,18 @@ Protects against bogus binding of `enabl
        nil                        ;; in pipe mode. Disable extended-char-mode
      (nth 6 (or (assoc ispell-current-dictionary ispell-local-dictionary-alist)
  	       (assoc ispell-current-dictionary ispell-dictionary-alist)))))

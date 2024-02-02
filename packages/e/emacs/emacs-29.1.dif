@@ -45,7 +45,7 @@
  	for page in *.1; do \
  	  test "$$page" = ChangeLog.1 && continue; \
  	  dest=`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1; \
-@@ -942,7 +943,7 @@ uninstall: uninstall-$(NTDIR) uninstall-
+@@ -947,7 +948,7 @@ uninstall: uninstall-$(NTDIR) uninstall-
  	   for page in *.1; do \
  	     rm -f "$(DESTDIR)${man1dir}"/`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1$$ext; done; \
  	 fi)
@@ -326,7 +326,7 @@
    "Program invoked by \\[ispell-word] and \\[ispell-region] commands."
    :type 'string
    :set (lambda (symbol value)
-@@ -1418,6 +1420,78 @@ The variable `ispell-library-directory'
+@@ -1427,6 +1429,78 @@ The variable `ispell-library-directory'
  
    ;; Define commands in menu in opposite order you want them to appear.
    (let ((map (make-sparse-keymap "Spell")))

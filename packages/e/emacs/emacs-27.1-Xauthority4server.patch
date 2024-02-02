@@ -20,8 +20,8 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  
  # Emacs will exit with status 15 after having received SIGTERM, which
 --- lisp/server.el
-+++ lisp/server.el	2023-08-01 08:08:52.491668562 +0000
-@@ -287,6 +287,11 @@ If nil, no instructions are displayed."
++++ lisp/server.el	2024-02-02 07:50:00.878231817 +0000
+@@ -289,6 +289,11 @@ If nil, no instructions are displayed."
    "The directory in which to place the server socket.
  If local sockets are not supported, this is nil.")
  
@@ -33,7 +33,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  (define-error 'server-running-external "External server running")
  
  (defun server-clients-with (property value)
-@@ -617,6 +622,11 @@ If the key is not valid, signal an error
+@@ -619,6 +624,11 @@ If the key is not valid, signal an error
    (let ((server-dir (if server-use-tcp server-auth-dir server-socket-dir)))
      (expand-file-name server-name server-dir)))
  
@@ -45,7 +45,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  (defun server-stop (&optional noframe)
    "If this Emacs process has a server communication subprocess, stop it.
  If this actually stopped the server, return non-nil.  If the
-@@ -718,7 +728,8 @@ the `server-process' variable."
+@@ -720,7 +730,8 @@ the `server-process' variable."
         (setq leave-dead t)))
        ;; Now any previous server is properly stopped.
      (unless leave-dead
@@ -55,7 +55,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  	;; Make sure there is a safe directory in which to place the socket.
  	(server-ensure-safe-dir (file-name-directory server-file))
          (with-file-modes ?\700
-@@ -760,6 +771,14 @@ the `server-process' variable."
+@@ -762,6 +773,14 @@ the `server-process' variable."
  	  (unless server-process (error "Could not start server process"))
            (server-log "Started server")
  	  (process-put server-process :server-file server-file)
@@ -70,7 +70,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
            (setq server-mode t)
            (push 'server-mode global-minor-modes)
  	  (when server-use-tcp
-@@ -896,7 +915,7 @@ This handles splitting the command if it
+@@ -898,7 +917,7 @@ This handles splitting the command if it
    (let ((frame
           (server-with-environment
               (process-get proc 'env)
@@ -79,7 +79,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
                 ;; For tgetent(3); list according to ncurses(3).
                 "BAUDRATE" "COLUMNS" "ESCDELAY" "HOME" "LINES"
                 "NCURSES_ASSUMED_COLORS" "NCURSES_NO_PADDING"
-@@ -1169,6 +1188,8 @@ The following commands are accepted by t
+@@ -1171,6 +1190,8 @@ The following commands are accepted by t
  		nowait     ; t if emacsclient does not want to wait for us.
  		frame      ; Frame opened for the client (if any).
  		display    ; Open frame on this display.
@@ -88,7 +88,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  		parent-id  ; Window ID for XEmbed
  		dontkill   ; t if client should not be killed.
  		commands
-@@ -1309,6 +1330,16 @@ The following commands are accepted by t
+@@ -1314,6 +1335,16 @@ The following commands are accepted by t
                  ;; -env NAME=VALUE:  An environment variable.
                  ("-env"
                   (let ((var (pop args-left)))
@@ -105,7 +105,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
                     ;; XXX Variables should be encoded as in getenv/setenv.
                     (process-put proc 'env
                                  (cons var (process-get proc 'env)))))
-@@ -1324,6 +1355,16 @@ The following commands are accepted by t
+@@ -1329,6 +1360,16 @@ The following commands are accepted by t
                  ;; Unknown command.
                  (arg (error "Unknown command: %s" arg))))
  

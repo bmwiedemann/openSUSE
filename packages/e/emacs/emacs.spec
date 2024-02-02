@@ -1,7 +1,7 @@
 #
 # spec file for package emacs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -154,7 +154,7 @@ BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xwayland)
 BuildRequires:  pkgconfig(xxf86vm)
 URL:            http://www.gnu.org/software/emacs/
-Version:        29.1
+Version:        29.2
 Release:        0
 Summary:        GNU Emacs Base Package
 License:        GPL-3.0-or-later
@@ -338,22 +338,22 @@ and most assembler-like syntaxes.
 %prep
 %setup -q -b 2
 %if %{with memmmap}
-%patch2  -p0 -b .glibc
+%patch -P2  -p0 -b .glibc
 %endif
-%patch4  -p0 -b .print
-%patch5  -p0 -b .psbdf
-%patch7  -p0 -b .psmu
-%patch8  -p0 -b .nvoid
-%patch12 -p0 -b .x11r7
-%patch15 -p0 -b .iconic
-%patch16 -p0 -b .flyspell
-%patch22 -p0 -b .pd
-%patch23 -p0 -b .custfnt
-%patch24 -p1 -b .imag
-%patch25 -p0 -b .xft
-%patch26 -p0 -b .fmt
-%patch29 -p0 -b .xauth
-%patch0  -p0 -b .0
+%patch -P4  -p0 -b .print
+%patch -P5  -p0 -b .psbdf
+%patch -P7  -p0 -b .psmu
+%patch -P8  -p0 -b .nvoid
+%patch -P12 -p0 -b .x11r7
+%patch -P15 -p0 -b .iconic
+%patch -P16 -p0 -b .flyspell
+%patch -P22 -p0 -b .pd
+%patch -P23 -p0 -b .custfnt
+%patch -P24 -p1 -b .imag
+%patch -P25 -p0 -b .xft
+%patch -P26 -p0 -b .fmt
+%patch -P29 -p0 -b .xauth
+%patch -P0  -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/
     tar --use-compress-program=xz -xf %{S:8}

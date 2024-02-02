@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Feb  2 08:26:58 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to GNU Emacs version 29.2
+ * Startup Changes in Emacs 29.2
+   On GNU/Linux, Emacs is now the default application for 'org-protocol'.
+   Org mode provides a way to quickly capture bookmarks, notes, and links
+   using 'emacsclient':
+    emacsclient "org-protocol://store-link?url=URL&title=TITLE"
+ * This is a bug-fix release with no new features.
+ * Changes in Specialized Modes and Packages in Emacs 29.2
+   - Tramp
+     New user option 'tramp-show-ad-hoc-proxies'.
+     When non-nil, ad-hoc definitions are kept in remote file names instead
+     of showing the shortcuts.
+ * Incompatible Lisp Changes in Emacs 29.2
+   'with-sqlite-transaction' rolls back changes if its BODY fails.
+   If the BODY of the macro signals an error, or committing the results
+   of the transaction fails, the changes will now be rolled back.
+- Port patches mainly by correcting hunk offsets
+  * emacs-24.1-ps-mule.patch
+  * emacs-24.4-ps-bdf.patch
+  * emacs-25.2-ImageMagick7.patch
+  * emacs-27.1-Xauthority4server.patch
+  * emacs-27.1-pdftex.patch
+  * emacs-29.1.dif
+  * pdump.patch
+
+-------------------------------------------------------------------
 Fri Dec 29 22:42:28 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - fix typo in %{ext_info} macro usage
