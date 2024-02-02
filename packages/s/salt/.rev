@@ -2266,4 +2266,17 @@ let build start it or we will get libvirt errors.
     <comment></comment>
     <requestid>1142448</requestid>
   </revision>
+  <revision rev="143" vrev="7">
+    <srcmd5>d44f6071786768a7cd0634b22e0312ea</srcmd5>
+    <version>3006.0</version>
+    <time>1706885092</time>
+    <user>anag+factory</user>
+    <comment>- Prevent directory traversal when creating syndic cache directory
+  on the master (CVE-2024-22231, bsc#1219430)
+- Prevent directory traversal attacks in the master's serve_file
+  method (CVE-2024-22232, bsc#1219431)
+- Added:
+  * fix-cve-2024-22231-and-cve-2024-22232-bsc-1219430-bs.patch</comment>
+    <requestid>1143454</requestid>
+  </revision>
 </revisionlist>
