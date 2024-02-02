@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Feb 02 08:38:04 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version b459a4d:
+  * check: also build 32-bit configurations
+  * FileDescriptor: fix fcntl(F_DUPFD_CLOEXEC) API
+  * tests: formatting: use proper format string (triggers warning on 32-bit)
+  * formatting: properly instantiate on 32-bit machines
+  * buildsystem: support LDFLAGS extension
+  * buildsystem: ensure we get a 64-bit off_t on Linux even on 32-bit machines
+  * clone: fix cast of pidfd pointer for 32-bit platforms
+  * DirEntry: use off_t for DirPos
+
+-------------------------------------------------------------------
+Wed Jan 31 13:00:39 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- initial packaging
