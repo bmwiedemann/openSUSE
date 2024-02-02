@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  2 08:34:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: wrongly escape %-sequences were fixed.
+
+-------------------------------------------------------------------
 Mon Jan  3 03:51:37 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix compilation error due to detected OOB access, add
