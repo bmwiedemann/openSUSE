@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  1 21:21:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.29.0:
+  * Add support for `pytest`==8.\*
+
+-------------------------------------------------------------------
 Tue Jan  9 21:38:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.28.0:

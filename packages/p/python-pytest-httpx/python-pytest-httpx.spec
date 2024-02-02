@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-httpx
-Version:        0.28.0
+Version:        0.29.0
 Release:        0
 Summary:        Send responses to httpx
 License:        MIT

@@ -123,4 +123,13 @@
   * Requires `httpx`==0.26.\*</comment>
     <requestid>1137816</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>10cc0d5328e505879c371ae514576313</srcmd5>
+    <version>0.29.0</version>
+    <time>1706885238</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.29.0:
+  * Add support for `pytest`==8.\*</comment>
+    <requestid>1143509</requestid>
+  </revision>
 </revisionlist>
