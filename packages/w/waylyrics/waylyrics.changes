@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Feb  2 00:31:46 UTC 2024 - xtexChooser <xtexchooser@duck.com>
+
+- Remove tar.zst packaged sources, keep obscpio only
+- Change versioning to follow package versioning guidelines
+
+-------------------------------------------------------------------
+Fri Feb  2 00:28:09 UTC 2024 - xtexChooser <xtexchooser@duck.com>
+
+- Remove rpm "Group"
+
+-------------------------------------------------------------------
+Thu Feb  1 14:22:55 UTC 2024 - xtexChooser <xtexchooser@duck.com>
+
+- Update vendored crates
+
+-------------------------------------------------------------------
+Thu Feb  1 13:44:45 UTC 2024 - xtexChooser <xtexchooser@duck.com>
+
+- Init waylyrics from upstream commit aed689ef481dd2ddf22cefc0d175fabee481cdb8

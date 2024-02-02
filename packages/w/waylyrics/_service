@@ -1,0 +1,24 @@
+<services>
+    <service mode="manual" name="obs_scm">
+        <param name="url">https://github.com/waylyrics/waylyrics.git</param>
+        <param name="versionformat">0~git@TAG_OFFSET@</param>
+        <param name="scm">git</param>
+        <param name="revision">master</param>
+        <param name="match-tag">*</param>
+        <param name="parent-tag">4c93d60a3c95ef2a8a3acc88a9ca11bbd70d2c5a</param>
+        <param name="versionrewrite-pattern">(0~git\d+)</param>
+        <param name="versionrewrite-replacement">\1</param>
+        <param name="changesgenerate">enable</param>
+    </service>
+    <service mode="buildtime" name="tar" />
+    <service mode="buildtime" name="recompress">
+        <param name="file">*.tar</param>
+        <param name="compression">zst</param>
+    </service>
+    <service mode="manual" name="set_version" />
+    <service mode="manual" name="cargo_vendor">
+        <param name="src">waylyrics</param>
+        <param name="compression">zst</param>
+        <param name="update">true</param>
+    </service>
+</services>
