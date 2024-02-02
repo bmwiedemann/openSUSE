@@ -1520,4 +1520,12 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     spawned using vfork semantics. (forwarded request 1142655 from AndreasSchwab)</comment>
     <requestid>1142656</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>77b6840e6044ce873ac842ae8d8915d9</srcmd5>
+    <version>6.7</version>
+    <time>1706885090</time>
+    <user>anag+factory</user>
+    <comment>- Enable SELinux Context Printing (--secontext). (forwarded request 1143440 from cahu)</comment>
+    <requestid>1143444</requestid>
+  </revision>
 </revisionlist>

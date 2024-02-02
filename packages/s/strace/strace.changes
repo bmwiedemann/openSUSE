@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  1 14:42:14 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Enable SELinux Context Printing (--secontext).
+
+-------------------------------------------------------------------
 Mon Jan 29 19:44:45 UTC 2024 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 6.7
