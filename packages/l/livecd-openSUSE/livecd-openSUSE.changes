@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 31 15:42:51 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Install ucode-amd explicitly, ignore ucode-intel explicitly.
+- config.sh: Omit more network drivers in the initrd,
+  delete System.map and tallylog
+
+-------------------------------------------------------------------
 Wed Jan 24 07:48:58 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - list-kde: switch from phonon4qt5-backend-gstreamer to

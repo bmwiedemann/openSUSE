@@ -415,6 +415,9 @@
     <ignore name="ntp"/>
     <package name="aaa_base" replaces="wicked"/>
     <ignore name="wicked"/>
+    <package name="ucode-amd" arch="i686,x86_64"/>
+    <package name="aaa_base" replaces="ucode-intel"/>
+    <ignore name="ucode-intel"/>
 
     <!-- list-x11.sh -->
     <package name="aaa_base" replaces="NetworkManager-lang"/>
