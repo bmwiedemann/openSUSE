@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  1 11:59:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- buildrequire setuptools
+
+-------------------------------------------------------------------
 Mon Oct 30 14:13:37 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Modernize python-rpm.spec to stop using deprecated macros
@@ -52,7 +57,7 @@ Wed Oct  2 14:53:19 CEST 2019 - mls@suse.de
 -------------------------------------------------------------------
 Thu Nov 22 09:50:36 UTC 2018 - asmorodskyi@suse.com
 
-- Fix python-module compatibility with older distros 
+- Fix python-module compatibility with older distros
 
 -------------------------------------------------------------------
 Fri Apr  6 14:11:01 CEST 2018 - mls@suse.de
@@ -115,7 +120,7 @@ Mon Apr 23 11:16:26 CEST 2012 - mls@suse.de
 -------------------------------------------------------------------
 Wed Apr 11 16:54:02 UTC 2012 - klaussfreire@gmail.com
 
-- Fix usage of deprecated AsVoidPtr Python/C API, 
+- Fix usage of deprecated AsVoidPtr Python/C API,
   replaced by Capsule API
 
 -------------------------------------------------------------------
@@ -144,12 +149,12 @@ Fri Oct 22 15:52:32 UTC 2010 - coolo@novell.com
 -------------------------------------------------------------------
 Mon Oct 18 11:03:53 CEST 2010 - dmueller@suse.de
 
-- adapt buildrequires 
+- adapt buildrequires
 
 -------------------------------------------------------------------
 Thu Feb 12 16:52:26 CET 2009 - ro@suse.de
 
-- adapt buildrequires 
+- adapt buildrequires
 
 -------------------------------------------------------------------
 Wed Oct  8 11:24:22 CEST 2008 - cthiel@suse.de
