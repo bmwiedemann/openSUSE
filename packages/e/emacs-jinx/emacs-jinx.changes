@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Wed Jan 31 08:37:20 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Rebase patches and remove those no longer required
+- Update to version 1.2:
+  * Fix deadlock on macOS during Jinx startup (Fix #91, #113)
+  * Revert "Simplify rescheduling"
+  * timer-activate-when-idle: Pass DONT-WAIT=t
+  * jinx--base-syntax-table: Exclude private use areas
+  * Bump copyright years
+  * Replace keyword wp with text
+  * Reschedule on window selection change
+  * Simplify rescheduling
+  * Avoid a little bit of timer consing
+  * Use menu-item for mouse menu
+  * Use hashed symbols
+  * Add jinx-menu-suggestions defcustom
+  * More compact mouse menu, delete duplicates
+  * jinx-correct-menu: Use jinx-correct-word
+  * Add mouse context menu
+  * New function jinx--session-suggestions
+  * jinx-mode: Extract jinx--reschedule-hooks variable
+  * derived-mode-p: Calling convention change
+  * Handle LANG=C or LANG=POSIX environment variables (Fix #116)
+  * Fix some package-lint warnings
+  * Revert "jinx-correct: Setup minibuffer keymaps later (Fix #112)"
+  * jinx-correct: Setup minibuffer keymaps later (Fix #112)
+  * Module initialization: Print a message for outdated Enchant (Fix #111)
+  * Require libenchant 2.3.1 or newer
+  * Exclude Gnus cite faces inside message mode
+  * jinx-mode: Support disabling via file-local variable
+  * Update face list
+  * Exclude cite faces inside message mode (#108)
+  * README: Mention NixOS
+  * Update jinx-exclude-regexps
+  * Update Org exclude faces
+  * Update Org excluded faces, add org-drawer (Fix #99)
+  * Use quotes in comment
+  * Fix docstring
+  * Improve jinx-correct docstring
+  * Rename jinx-correct-at-point to jinx-correct-word
+  * jinx-correct-*: Code cleanup
+  * Improve jinx-correct-at-point
+  * Code cleanup, use save-excursion
+  * jinx-correct: Add dispatching to jinx-correct-at-point
+  * Implement jinx-correct-at-point by faking an overlay (#89)
+  * Use without-restriction
+  * jinx-correct: Add prefix keys to session word suggestions (See #96, #97)
+  * jinx-correct: Suggestion from session words (Fix #97)
+  * Remove unused variable
+  * Fix condition
+  * Replace jinx-include-modes with global-jinx-modes
+  * jinx--word-valid-p: Simplify
+  * jinx--word-valid-p: More restrictive check of capitalized words
+  * jinx--word-valid-p: Allow capitalized words (See #96)
+  * Simplify jinx-correct
+  * jinx-correct: Refontify should not be necessary
+  * jinx-languages: Ensure that jinx-mode is enabled
+  * jinx-next/previous: Add command-modes
+  * jinx-exclude-regexps: Ignore hyphens used as bullet points (Fix #87)
+
+-------------------------------------------------------------------
+Sun Oct  1 00:12:19 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Add patch to exclude cite faces in message mode
+
+-------------------------------------------------------------------
+Fri Sep 29 17:57:41 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Add patch to only export necessary symbols in jinx-mod.so 
+
+-------------------------------------------------------------------
+Wed Sep 27 22:17:27 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for OpenSuSE
+- Jinx 0.9
+  * 🪄 Make sure that Emojis are not marked as misspelled 🧙🏼‍♀️
+  * Rename =jinx-correct-next/previous= to =jinx-next/previous=. The commands can be
+    used outside the minibuffer
+  * Bind =M-n= and =M-p= to =jinx-next/previous= in =jinx-overlay-map=
+  * Bind =M-$= to =jinx-correct= in the =jinx-overlay-map=
+  * Add =jinx-repeat-map=
+  * Rename category of Jinx overlays to =jinx-overlay=
+  * Rename =jinx-misspelled-map= to =jinx-overlay-map=
+  * Add many more language modes to =jinx-camel-modes=
