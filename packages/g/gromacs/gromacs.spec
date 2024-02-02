@@ -16,6 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# 32-bit archs officially unsupported 
+# https://gitlab.com/gromacs/gromacs/-/merge_requests/2453
+ExcludeArch:   %{ix86} %{arm}
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
@@ -30,10 +33,10 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if %{with mpi}
-%define libname_gromacs libgromacs_mpi8
+%define libname_gromacs libgromacs_mpi9
 %define libname_gmxapi libgmxapi_mpi0
 %else
-%define libname_gromacs libgromacs8
+%define libname_gromacs libgromacs9
 %define libname_gmxapi libgmxapi0
 %endif
 %define libname_nblib_gmx libnblib_gmx0
@@ -48,7 +51,7 @@ ExclusiveArch:  do_not_build
 %bcond_without tests
 
 Name:           gromacs%{?with_mpi:-openmpi}
-Version:        2023
+Version:        2024
 Release:        0
 %define uversion %{version}
 Summary:        Molecular Dynamics Package
@@ -60,7 +63,7 @@ Source1:        ftp://ftp.gromacs.org/pub/manual/manual-%{uversion}.pdf
 Source2:        ftp://ftp.gromacs.org/regressiontests/regressiontests-%{uversion}.tar.gz
 BuildRequires:  cmake >= 3.13.0
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++ >= 9
 BuildRequires:  lapack-devel
 %if %{with opencl}
 BuildRequires:  ocl-icd-devel
@@ -227,6 +230,9 @@ export MAX_TEST_THREADS=$(( %{?_smp_build_ncpus}%{!?_smp_build_ncpus:2} / 2 ))
 
 %install
 %cmake_install
+
+# fix shebang
+sed -i '1s@env @@' %{buildroot}/%{_bindir}/*.pl
 
 #no need when installed in /usr
 rm -f %{buildroot}%{_bindir}/GMXRC*
