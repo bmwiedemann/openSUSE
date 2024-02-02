@@ -472,4 +472,41 @@
    * Add instructions on using noqa with isort rules</comment>
     <requestid>1140308</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f383ace0be6b6b9a33cf3691524398e6</srcmd5>
+    <version>0.1.15</version>
+    <time>1706885209</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.15
+ * Preview features
+   * Error when NURSERY selector is used with --preview 
+   * Preserve indentation around multiline strings in formatter 
+   * [flake8-return] Add fixes for all rules (RET505, RET506, RET507, RET508) 
+   * [flake8-simplify] Add fix for if-with-same-arms (SIM114) 
+   * [pycodestyle] Add fix for multiple-imports-on-one-line (E401) 
+   * [pylint] Add fix for collapsible-else-if (PLR5501) 
+   * [pylint] Add fix for useless-else-on-loop (PLW0120) 
+   * [pylint] Implement assigning-non-slot (E0237) 
+   * [pylint] Implement potential-index-error (PLE0643) 
+   * [pylint] Implement too-many-nested-blocks (PLR1702) 
+   * [ruff] Add rule to sort __slots__ and __match_args__ 
+   * [ruff] Detect unnecessary dict comprehensions for iterables (RUF025) 
+   * [ruff] Guard against use of default_factory as a keyword argument (RUF026) 
+   * [ruff] Implement mutable-fromkeys-value (RUF024) 
+ * CLI
+   * Enable auto-wrapping of --help output 
+ * Bug fixes
+   * Avoid rendering display-only rules as fixable 
+   * Detect automagic-like assignments in notebooks 
+   * Generate custom JSON schema for dynamic setting 
+   * [flake8-no-pep420] Include global --config when determining namespace packages 
+   * [flake8-pie] Omit bound tuples passed to .startswith or .endswith 
+   * [flake8-return] Avoid panic when fixing inlined else blocks 
+   * [flake8-return] Consider exception suppression in unnecessary assignment 
+   * [flake8-return] Take NoReturn annotation into account when analyzing implicit returns 
+   * [flake8-simplify] Support inverted returns in needless-bool (SIM103) 
+   * [flake8-type-checking] Add Pydantic's BaseConfig to default-copy list 
+   * [flake8-type-checking] Avoid marking InitVar as a typing-only annotation</comment>
+    <requestid>1143460</requestid>
+  </revision>
 </revisionlist>
