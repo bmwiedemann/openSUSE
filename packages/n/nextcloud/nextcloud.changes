@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb  1 15:16:43 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 28.0.2
+  - Replace input filed with password field and added password error message (server#42118)
+  - Fix(theming): Adjust theming util to calculate primary element color based on WCAG color contrast (server#42315)
+  - Feat(setupcheck): Add setup check for maintenance_window_start config (server#42355)
+  - Typo in move or copy (server#42358)
+  - Fix(manager): removed dead code (server#42365)
+  - Fix(files): Use DAV functions from library to fix invalid source links (server#42367)
+  - Fix(theming): Adjust theming util to calculate primary element color based on WCAG color contrast (server#42369)
+  - Fix(dav): allow multiple organizers if possible (server#42373)
+  - Don’t write back .htaccess file on a RO filesystem (server#42384)
+  - Fix: Ensure app menu entries and dashboard welcome message have enough contrast (server#42403)
+  - Fix(files): drag and drop (server#42409)
+  - Fix(dav): Hide less than minute diff in calendar notification title (server#42410)
+  - Enh(dashboard): changed h1 to say Dashboard instead of Nextcloud (server#42413)
+  - Fix(files): Adjust ID for skip content buttons (server#42425)
+  - Fix(theming): Add adjusted color versions of default background (server#42426)
+  - Fix(theming): Adjust dark high contrast to fulfill WCAG 2.1 AAA contrast (server#42429)
+
+-------------------------------------------------------------------
 Fri Dec 22 11:24:11 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 28.0.1
