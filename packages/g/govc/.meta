@@ -1,0 +1,6 @@
+<package name="govc" project="openSUSE:Factory">
+  <title>vSphere CLI built on top of govmomi</title>
+  <description>The CLI is designed to be a user friendly CLI alternative to the GUI and well suited for automation tasks. It also acts as a test harness for the govmomi APIs and provides working examples of how to use the APIs.</description>
+  <devel project="Virtualization:VMware" package="govc"/>
+  <url>https://github.com/vmware/govmomi</url>
+</package>
