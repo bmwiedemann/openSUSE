@@ -101,4 +101,17 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1101083</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6bb5bbfa0647dd38c768940cb3696efe</srcmd5>
+    <version>1.0.0</version>
+    <time>1706885227</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0:
+  * Add support for pytest 8.x
+  * Drop support for Python 3.7
+
+- Remove python_module macro definition
+- initial package</comment>
+    <requestid>1143495</requestid>
+  </revision>
 </revisionlist>
