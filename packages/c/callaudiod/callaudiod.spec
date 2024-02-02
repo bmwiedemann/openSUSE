@@ -20,7 +20,7 @@
 %define apiver 0.1
 
 Name:           callaudiod
-Version:        0.1.7
+Version:        0.1.9
 Release:        0
 Summary:        Daemon for audio calls
 License:        GPL-3.0-or-later AND MIT
