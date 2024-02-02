@@ -1,4 +1,4 @@
-From 65bb10c34ff3734373a8b4be4e707f0494449f17 Mon Sep 17 00:00:00 2001
+From 3c0817dcbbc99eb438a33be5336db69cf88ca7cf Mon Sep 17 00:00:00 2001
 From: Giuliano Belinassi <gbelinassi@suse.de>
 Date: Wed, 24 May 2023 18:03:15 -0300
 Subject: [PATCH] Add Userspace Livepatch prologue into ASM functions
@@ -15,20 +15,19 @@ Signed-off-by: Giuliano Belinassi <gbelinassi@suse.de>
  Makeconfig                               |  5 +++++
  config.h.in                              |  3 +++
  config.make.in                           |  1 +
- configure                                | 21 +++++++++++++++++++++
- configure.ac                             | 13 +++++++++++++
- sysdeps/x86/sysdep.h                     | 22 ++++++++++++++++++----
+ configure                                | 21 ++++++++++++++++++
+ configure.ac                             | 13 +++++++++++
  sysdeps/x86_64/multiarch/strcmp-avx2.S   |  5 +----
  sysdeps/x86_64/multiarch/strcmp-evex.S   |  5 +----
  sysdeps/x86_64/multiarch/strcmp-sse4_2.S |  5 +----
- sysdeps/x86_64/sysdep.h                  | 13 +++++++++++++
- 10 files changed, 77 insertions(+), 16 deletions(-)
+ sysdeps/x86_64/sysdep.h                  | 28 ++++++++++++++++++++----
+ 9 files changed, 70 insertions(+), 16 deletions(-)
 
 diff --git a/Makeconfig b/Makeconfig
-index 77d7fd14df..765d72bcf5 100644
+index 85e00cef94..502e4e2d89 100644
 --- a/Makeconfig
 +++ b/Makeconfig
-@@ -984,6 +984,11 @@ else
+@@ -979,6 +979,11 @@ else
  +cflags += $(no-fortify-source)
  endif
  
@@ -41,10 +40,10 @@ index 77d7fd14df..765d72bcf5 100644
  # used to compile and will be installed.  Each can also contain an
  # include/ subdirectory, whose header files will be used to compile
 diff --git a/config.h.in b/config.h.in
-index 0dedc124f7..08b1868002 100644
+index 44a34072a4..430627dcaf 100644
 --- a/config.h.in
 +++ b/config.h.in
-@@ -204,6 +204,9 @@
+@@ -199,6 +199,9 @@
  /* Define to 1 if libpthread actually resides in libc.  */
  #define PTHREAD_IN_LIBC 0
  
@@ -55,11 +54,11 @@ index 0dedc124f7..08b1868002 100644
  #define TIMEOUTFACTOR 1
  
 diff --git a/config.make.in b/config.make.in
-index d487a4f4e9..e48351c59a 100644
+index 55e8b7563b..0f14c05d62 100644
 --- a/config.make.in
 +++ b/config.make.in
-@@ -85,6 +85,7 @@ nss-crypt = @libc_cv_nss_crypt@
- static-nss-crypt = @libc_cv_static_nss_crypt@
+@@ -81,6 +81,7 @@ mach-interface-list = @mach_interface_list@
+ memory-tagging = @memory_tagging@
  
  # Configuration options.
 +enable-userspace-livepatch = @enable_userspace_livepatch@
@@ -67,7 +66,7 @@ index d487a4f4e9..e48351c59a 100644
  build-profile = @profile@
  build-static-nss = @static_nss@
 diff --git a/configure b/configure
-index c02c0b5825..e2000fdc4a 100755
+index 59ff1e415d..69c0795f99 100755
 --- a/configure
 +++ b/configure
 @@ -622,6 +622,7 @@ LIBOBJS
@@ -78,7 +77,7 @@ index c02c0b5825..e2000fdc4a 100755
  mach_interface_list
  DEFINES
  static_nss
-@@ -819,6 +820,7 @@ enable_cet
+@@ -812,6 +813,7 @@ enable_cet
  enable_scv
  enable_fortify_source
  with_cpu
@@ -86,7 +85,7 @@ index c02c0b5825..e2000fdc4a 100755
  '
        ac_precious_vars='build_alias
  host_alias
-@@ -1501,6 +1503,8 @@ Optional Features:
+@@ -1490,6 +1492,8 @@ Optional Features:
                            Use -D_FORTIFY_SOURCE=[1|2|3] to control code
                            hardening, defaults to highest possible value
                            supported by the build compiler.
@@ -95,7 +94,7 @@ index c02c0b5825..e2000fdc4a 100755
  
  Optional Packages:
    --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
-@@ -8004,6 +8008,23 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
+@@ -7864,6 +7868,23 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
  
  
  
@@ -120,10 +119,10 @@ index c02c0b5825..e2000fdc4a 100755
  RELEASE=`sed -n -e 's/^#define RELEASE "\([^"]*\)"/\1/p' < $srcdir/version.h`
  
 diff --git a/configure.ac b/configure.ac
-index 09553541fb..a07e3d6284 100644
+index 65799e5685..e792f8c866 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1827,6 +1827,19 @@ AC_SUBST(DEFINES)
+@@ -1753,6 +1753,19 @@ AC_SUBST(DEFINES)
  dnl See sysdeps/mach/configure.ac for this variable.
  AC_SUBST(mach_interface_list)
  
@@ -143,46 +142,8 @@ index 09553541fb..a07e3d6284 100644
  VERSION=`sed -n -e 's/^#define VERSION "\([^"]*\)"/\1/p' < $srcdir/version.h`
  RELEASE=`sed -n -e 's/^#define RELEASE "\([^"]*\)"/\1/p' < $srcdir/version.h`
  AC_SUBST(VERSION)
-diff --git a/sysdeps/x86/sysdep.h b/sysdeps/x86/sysdep.h
-index 0b3483a77a..329c16306e 100644
---- a/sysdeps/x86/sysdep.h
-+++ b/sysdeps/x86/sysdep.h
-@@ -77,15 +77,29 @@ enum cf_protection_level
- #define ALIGNARG(log2) 1<<log2
- #define ASM_SIZE_DIRECTIVE(name) .size name,.-name;
- 
-+/* For 32-bit glibc then define those macros as empty.  */
-+#ifndef ULP_PRE_PROLOGUE
-+# define ULP_PRE_PROLOGUE
-+#endif
-+#ifndef ULP_POST_PROLOGUE
-+# define ULP_POST_PROLOGUE
-+#endif
-+
-+/* Define the first instructions of a function.  */
-+#define FUNCTION_START(name) \
-+  ULP_PRE_PROLOGUE; \
-+  C_LABEL(name); \
-+  cfi_startproc; \
-+  _CET_ENDBR; \
-+  ULP_POST_PROLOGUE; \
-+  CALL_MCOUNT;
-+
- /* Define an entry point visible from C.  */
- #define	ENTRY_P2ALIGN(name, alignment)					      \
-   .globl C_SYMBOL_NAME(name);						      \
-   .type C_SYMBOL_NAME(name),@function;					      \
-   .align ALIGNARG(alignment);						      \
--  C_LABEL(name)								      \
--  cfi_startproc;							      \
--  _CET_ENDBR;								      \
--  CALL_MCOUNT
-+  FUNCTION_START(name)
- 
- /* Common entry 16 byte aligns.  */
- #define ENTRY(name) ENTRY_P2ALIGN (name, 4)
 diff --git a/sysdeps/x86_64/multiarch/strcmp-avx2.S b/sysdeps/x86_64/multiarch/strcmp-avx2.S
-index 8804338d75..d3584b2c5d 100644
+index 5bc1d90078..3ea96c0aa3 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-avx2.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-avx2.S
 @@ -201,10 +201,7 @@ END (STRCASECMP)
@@ -198,7 +159,7 @@ index 8804338d75..d3584b2c5d 100644
  # if defined USE_AS_STRCASECMP_L
  	/* We have to fall back on the C implementation for locales with
 diff --git a/sysdeps/x86_64/multiarch/strcmp-evex.S b/sysdeps/x86_64/multiarch/strcmp-evex.S
-index ae39cdf217..44a8d4cee7 100644
+index 06730ab2a1..d96b1c4824 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-evex.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-evex.S
 @@ -224,10 +224,7 @@ END (STRCASECMP)
@@ -214,7 +175,7 @@ index ae39cdf217..44a8d4cee7 100644
  # if defined USE_AS_STRCASECMP_L
  	/* We have to fall back on the C implementation for locales with
 diff --git a/sysdeps/x86_64/multiarch/strcmp-sse4_2.S b/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
-index cbb22884eb..327377daa6 100644
+index 4e98da0246..2a2280c65f 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
 @@ -103,10 +103,7 @@ END (STRCASECMP)
@@ -230,10 +191,10 @@ index cbb22884eb..327377daa6 100644
  /*
   * This implementation uses SSE to compare up to 16 bytes at a time.
 diff --git a/sysdeps/x86_64/sysdep.h b/sysdeps/x86_64/sysdep.h
-index 6ca169573d..c18f0ef914 100644
+index db6e36b2dd..37136d8ca9 100644
 --- a/sysdeps/x86_64/sysdep.h
 +++ b/sysdeps/x86_64/sysdep.h
-@@ -24,6 +24,19 @@
+@@ -49,6 +49,20 @@ enum cf_protection_level
  
  #ifdef	__ASSEMBLER__
  
@@ -242,17 +203,44 @@ index 6ca169573d..c18f0ef914 100644
 +   written in ASM, the way we do this is by adding this prologue manually.  */
 +
 +#if ENABLE_USERSPACE_LIVEPATCH
-+# undef ULP_PRE_PROLOGUE
-+# undef ULP_POST_PROLOGUE
 +# define ULP_PRE_PROLOGUE \
 +  .rept 14; nop; .endr
 +# define ULP_POST_PROLOGUE \
 +  xchg %ax, %ax
++#else
++# define ULP_PRE_PROLOGUE
++# define ULP_POST_PROLOGUE
 +#endif
 +
  /* Syntactic details of assembler.  */
  
+ #ifdef _CET_ENDBR
+@@ -58,15 +72,21 @@ enum cf_protection_level
+ # define _CET_NOTRACK
+ #endif
+ 
++/* Define the first instructions of a function.  */
++#define FUNCTION_START(name)						      \
++  ULP_PRE_PROLOGUE;							      \
++  C_LABEL(name);							      \
++  cfi_startproc;							      \
++  _CET_ENDBR;								      \
++  ULP_POST_PROLOGUE;							      \
++  CALL_MCOUNT;
++
+ /* Define an entry point visible from C.  */
+ #define	ENTRY_P2ALIGN(name, alignment)					      \
+   .globl C_SYMBOL_NAME(name);						      \
+   .type C_SYMBOL_NAME(name),@function;					      \
+   .align ALIGNARG(alignment);						      \
+-  C_LABEL(name)								      \
+-  cfi_startproc;							      \
+-  _CET_ENDBR;								      \
+-  CALL_MCOUNT
++  FUNCTION_START(name)
+ 
  /* This macro is for setting proper CFI with DW_CFA_expression describing
+    the register as saved relative to %rsp instead of relative to the CFA.
 -- 
-2.41.0
+2.43.0
 
