@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 01 14:28:00 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 4.9.1:
+  * Bump to v4.9.1
+  * Release notes for v4.9.1
+  * [v4.9] Bump Buildah to v1.33.4, c/common v0.57.3, c/image v5.29.2
+  * pkginstaller: bump Qemu version to 8.2.1
+  * Assign separate ports for each appleHV machine
+  * Fix machine inspect test config
+  * AppleHV: update LastUp time
+  * applehv: return socket path from setupAPIForwarding
+  * applehv: Remove unneeded cmd.ExtraFiles assignment
+  * abi: drop check for IsRootless()
+  * system: enhance check for re-exec into rootless userns
+  * system: enhance check for re-exec into rootless userns
+  * Fix `podman machine set --rootful` for applehv
+  * applehv - fix vm lookup
+  * rpm: use go-rpm-macros on RHEL 10
+  * Bump to v4.9.1-dev
+
+-------------------------------------------------------------------
 Tue Jan 23 06:19:07 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 4.9.0:
