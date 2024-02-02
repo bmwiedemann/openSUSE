@@ -1,7 +1,47 @@
 -------------------------------------------------------------------
+Fri Jan  5 15:56:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add setuptools-scm-issue953-nowarn.patch
+  * gh#pypa/setuptools_scm#953
+  * don't warn if setuptools_scm is present but not directly used
+
+-------------------------------------------------------------------
+Wed Dec 27 11:40:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.4:
+  * introduce scriv for changelog management
+  * reconfigure local build backend to use an attribute instead
+    of star imports from setuptools
+  * introduce ruff as a linter
+  * ensure the setuptools version keyword correctly load
+    pyproject.toml configuration
+  * add build and wheel to the test requirements for regression
+    testing
+  * move internal toml handling to own module
+  * remove legacy version parser api - config arg always required
+    turn Configuration into a dataclass
+  * require configuration to always pass into helpers
+  * hide file-finders implementation in private module
+  * renamed setuptools_scm.hacks to setuptools_scm.fallbacks and
+    drop support for pip-egg-info
+  * remove trace function and use logging instead
+  * unify `distance=None` and `distance=0` they should mean the
+    same andwhere hiding dirty states that are now explicitly
+    dirty
+  * depend on later importlib for the full selectable api
+  * move setuptools integration code to private sub-package
+  * use normalized dist names for the
+    `SETUPTOOLS_SCM_PRETEND_VERSION_FOR_${DIST_NAME}` env var
+  * drop support for python 3.7
+  * introduce `version_file` as replacement for `write_to`
+  * created a directory for the vcs-versioning package and added
+    it to pypi
+- drop setuptools-68.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Sep  4 22:23:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- add setuptools-68.patch to fix tests with newer setuptools 
+- add setuptools-68.patch to fix tests with newer setuptools
 
 -------------------------------------------------------------------
 Wed May 10 23:05:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
@@ -252,7 +292,7 @@ Thu Jul 18 09:21:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Tue May 14 11:26:42 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 3.3.3
-  * adding the fallback_version option, which sets the version to 
+  * adding the fallback_version option, which sets the version to
     be used when everything else fails.
   * use a specific fallback root when calling fallbacks.
   * fix python3.8 support and add builds for up to python3.8
@@ -275,7 +315,7 @@ Fri Mar  1 12:37:15 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 3.2.0:
   * adding the option git_describe_command to allow the user to control the
-    way that git describe is called. 
+    way that git describe is called.
 
 -------------------------------------------------------------------
 Thu Jan 24 15:37:06 UTC 2019 - Matěj Cepl <mcepl@suse.com>
@@ -285,7 +325,7 @@ Thu Jan 24 15:37:06 UTC 2019 - Matěj Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Mon Sep 17 15:20:50 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- remove tox.ini - it breaks tests with pytest-3.8.0 
+- remove tox.ini - it breaks tests with pytest-3.8.0
 
 -------------------------------------------------------------------
 Wed Aug 29 08:02:35 UTC 2018 - tchvatal@suse.com
@@ -549,7 +589,7 @@ Mon Dec  5 20:18:07 UTC 2016 - buschmann23@opensuse.org
     Rodgers for reporting and fixing)
 - Update to 1.11.0:
   * always run tag_to_version so in order to handle prefixes on old
-    setuptools (thanks to Brian May) 
+    setuptools (thanks to Brian May)
   * drop support for python 3.2
   * extend the error message on missing scm metadata (thanks Markus
     Unterwaditzer)
@@ -564,7 +604,7 @@ v1.10.1
 * fix issue #73 - in hg pre commit merge, consider parent1 instead of failing
 
 v1.10.0
-* add support for overriding the version number via the 
+* add support for overriding the version number via the
   environment variable SETUPTOOLS_SCM_PRETEND_VERSION
 * fix isssue #63 by adding the --match parameter to the git describe call
   and prepare the possibility of passing more options to scm backends
