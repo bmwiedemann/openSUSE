@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-docs-theme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-python-docs-theme
-Version:        2023.9
+Version:        2024.1
 Release:        0
 Summary:        The Sphinx theme for the CPython docs and related projects
 License:        Python-2.0
