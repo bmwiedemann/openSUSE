@@ -1,0 +1,70 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@thaodan.de>
+Date: Fri, 29 Sep 2023 20:48:06 +0300
+Subject: [PATCH] Only export necessary symbols. Fixes #105
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+As recommended in:
+https://gcc.gnu.org/wiki/Visibility
+
+Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
+---
+ jinx-mod.c | 19 +++++++++++++++++--
+ jinx.el    |  2 +-
+ 2 files changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/jinx-mod.c b/jinx-mod.c
+index ee534cd522bc121a64ecc431bb345498b48a6993..0e2901e476c06e15de404f2d9a7f2941032c9226 100644
+--- a/jinx-mod.c
++++ b/jinx-mod.c
+@@ -21,10 +21,25 @@ along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.  */
+ #include <stdlib.h>
+ #include <string.h>
+ 
++
++#if defined _WIN32 || defined __CYGWIN__
++  #ifdef __GNUC__
++    #define JINX_EXPORT __attribute__ ((dllexport))
++  #else
++    #define JINX_EXPORT __declspec(dllexport)
++  #endif
++#else
++  #if __GNUC__ >= 4
++    #define JINX_EXPORT __attribute__ ((visibility ("default")))
++  #else
++    #define JINX_EXPORT
++  #endif
++#endif
++
+ #define jinx_unused(var) _##var __attribute__((unused))
+ #define jinx_autofree    __attribute__((cleanup(jinx_autofree_cleanup)))
+ 
+-int plugin_is_GPL_compatible;
++JINX_EXPORT int plugin_is_GPL_compatible;
+ 
+ static EnchantBroker* broker = 0;
+ static emacs_value Qt, Qnil;
+@@ -171,7 +186,7 @@ static emacs_value jinx_suggest(emacs_env* env, ptrdiff_t jinx_unused(nargs),
+     return list;
+ }
+ 
+-int emacs_module_init(struct emacs_runtime *runtime) {
++int JINX_EXPORT emacs_module_init(struct emacs_runtime *runtime) {
+     if ((size_t)runtime->size < sizeof (*runtime))
+         return 1; // Require Emacs binary compatibility
+     emacs_env* env = runtime->get_environment(runtime);
+diff --git a/jinx.el b/jinx.el
+index 363725f0f7e6ae81e111b35ed2e22f4d2cf845ef..d5bdec406c9c2b66169f798225cd997a739ae456 100644
+--- a/jinx.el
++++ b/jinx.el
+@@ -583,7 +583,7 @@ If CHECK is non-nil, always check first."
+                                    (or (locate-library c-name t)
+                                        (error "Jinx: %s not found" c-name))))
+                (command
+-                `(,cc "-I." "-O2" "-Wall" "-Wextra" "-fPIC" "-shared"
++                `(,cc "-I." "-O2" "-Wall" "-Wextra" "-fPIC" "-shared" "-fvisibility=hidden"
+                   "-o" ,mod-name ,c-name
+                   ,@(split-string-and-unquote
+                      (condition-case nil
