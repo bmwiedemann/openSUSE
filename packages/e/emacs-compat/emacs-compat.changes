@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed Jan 31 08:10:11 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 29.1.4.4:
+  * The maintainer field accepts only a single mail address
+  * fix(compat.el): Package-Requires "seq" = 2.3 -> 2.23 (#31)
+  * compat.texi: Fix typos
+
+-------------------------------------------------------------------
+Wed Sep 27 19:41:20 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for OpenSuSE
+- Include patch to add install targets to upstream makefiles
+- Compat 29.1.4.2
+  * compat-28: Improve =make-separator-line= visuals on graphic displays
+  * compat-28: Add =native-comp-available-p=, which always returns nil
+  * compat-29: Add variable =lisp-directory=
+
