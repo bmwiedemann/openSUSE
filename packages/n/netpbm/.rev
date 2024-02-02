@@ -918,4 +918,12 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
   - signed-char.patch (upstreamed)</comment>
     <requestid>1094813</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>bc7260ea081a20fb23667fa018b6dedd</srcmd5>
+    <version>11.5.2</version>
+    <time>1706885099</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143584</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Wed Jan 31 14:59:08 UTC 2024 - pgajdos@suse.com
+
+- version update to 11.5.2
+  Release 11.05.02
+  + ppmtowinicon: fix array overrun with 4 and 8 bits per pixel.
+  Release 11.05.01
+   Fix typo in ppmforge test case.
+  Release 11.05.00
+  + pnmpad: Add -color, -promote, -extend-edge, -detect-background .
+  + pnmconvol: Restore ability of convolution matrix to be a
+    pseudo-plain-PNM with samples that exceed the maxval.  Lost in
+    10.30 (October 2005) because maxval-checking code was added to
+    libnetpbm.  (Was fixed in 10.47.08 in November 2010, but only in
+    the 10.47 series).
+  + pnmindex: Improve failure mode when -size or -across is zero.
+  + pnmindex: Make -plain work.
+  + pnmpad: fix behavior with -left, -right, and -width together or
+    -top, -bottom, -height together: ignores -width where it should
+    fail.  Broken in Netpbm 10.72 (September 2015).
+  + pamtosvg: fix "zero determinant" failure.  Introduced in
+    Netpbm 11.04 (September 2023).
+  + pjtoppm: fix crash based on uninitialized variable.
+    Introduced in Netpbm 11.04 (September 2023).
+  + ppmtopcxl: fix incorrect output with > 256 colors.  Always
+    broken.  (Program was added in primordial Netpbm in 1990).
+  + pbmtext: fix buffer overrun with insanely large input.
+  + picttoppm: fix buffer overrun with insanely wide input.
+  + ppmtoxpm: fix incorrect output with insanely large number of
+    colors.
+  + pnmscalefixed: fix incorrect output with really big image and
+    -pixels option.
+  + ppmdither: fix buffer overrun with insanely large dithering
+    matrix.
+  + pnmpad: no longer accept old-style options (e.g. -t50).
+  + libnetpbm: Add pm_feed_from_file, pm_accept_to_files,
+    pm_accept_to_filestream Standard Input feeder, Output accepter
+    for pm_system.
+  + libnetpbm, programs that use color maps: fix buffer overrun
+    with insanely deep images.
+  + merge build: Fix 'pnmcat'.  Introduced in Netpbm 11.00
+    (September 2023).
+  Release 11.04.00
+  + pamaddnoise: add -salt.
+  + pamaddnoise: reject options that aren't meaningful for the type
+    of noise specified rather than just ignore them.
+  + ppmtosixel: Add -7bit, so it works on more terminals, including
+    xterms.  Thanks Scott Pakin.
+  + g3topbm: Add -correctlong
+  + pnmtojpeg: minor improvement to error messages about bad files.
+  + pammixmulti: Remove disclaimer of patent license.
+  + pamstack: Fix bug: acts like -firstmaxval specified when it
+    wasn't.  Introduced in Netpbm 11.03 (June 2023).
+  + pamstack: Fix -lcmmaxval: chooses wrong maxval.  Always
+    broken (-lcmmaxval was new in Netpbm 11.03 (June 2023)).
+  + pamstack: Fail gracefully when total number of planes is too
+    large for unsigned integer.  Always broken (Pamstack was new in
+    Netpbm 10.0 (June 2002).
+  + pamtosvg: fix hang.
+  + ppmfade: fix "file not found" crash for most fade modes.
+    Introduced in Netpbm 10.98 (March 2022).
+  + ppmfade: fix incorrect block mode fade.  Always broken
+    (ppmfade was new in Netpbm 8.4 (April 2000)).
+  + pamaddnoise: fix very incorrect noise added for all types.
+    Introduced in Netpbm 10.94 (March 2021).
+  + ppmrough: fix buffer overrun.  Always broken (Ppmrough was new
+    in Netpbm 10.9 (September 2002).
+    ppmrough: fix excessive roughness.  Introduced in Netpbm 10.94
+    (March 2021).
+  + pgmtexture: Fix buffer overflow with maxval > 255.  Always
+    broken.  Maxvals > 255 were possible starting in Netpbm 9.0
+    (April 2000).
+  + pgmtexture: Fix bug: ignores -d.  Introduced in Netpbm 10.56
+    (September 2011).
+  + xwdtopnm Fix spurious output with really wide/deep rows.
+  + imgtoppm: Fix spurious output with really wide/deep rows.
+  + pbmtopgm: Fix error message for excessive -width.
+  + pbmtoxbm: Fix spurious output with really wide rows.
+  + tifftopnm: Fix incorrect output with insanely wide/deep rows.
+  + thinkjettopbm: Fix incorrect output with insanely wide rows.
+  + ybmtopbm: Fix incorrect output with insanely wide rows.
+  + pjtoppm: Fix incorrect output with insanely large number of rows.
+  + library: add check of maxval for computable size.
+  + Build: Include LDFLAGS in link of shared library.
+  * Release 11.03.00
+  + pamstack: Add -firstmaxval, -lcmmaxval
+  + pnmcolormap: make result independent of how system's qsort
+    orders records with equal keys.  Affects pnmquant.
+  + pamtopng: fix typo in error message about -chroma option.
+  + pamtopng, pnmtopng, pngtopam: fix error message when something
+    fails in libpng.  Always broken (the programs were new in Netpbm
+    8.1 (March 2000)).
+- modified patches
+  % netpbm-gcc-warnings.patch (refreshed)
+  % netpbm-security-code.patch (refreshed)
+
+-------------------------------------------------------------------
 Fri Jun 23 09:11:02 UTC 2023 - pgajdos@suse.com
 
 - version update to 11.2.0
