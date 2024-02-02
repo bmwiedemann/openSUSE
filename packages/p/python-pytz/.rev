@@ -483,4 +483,28 @@
     <comment></comment>
     <requestid>1118299</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f2e72642daeea41dd06af1fac01b121a</srcmd5>
+    <version>2023.4</version>
+    <time>1706885085</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.4:
+  * Update olson to 2023d
+
+  * Update to IANA 2023b
+  * fixes to documentation formatting
+- Update to 2022.6
+- Update to 2022.5
+- avoid bashisms in rpm scripts (bsc#1195391)
+  * matches tzdata 2021c
+  * update to IANA 2021a timezone release
+  * update to IANA 2020e timezone release
+- from 2018.7
+- Do not remove internal timezone database on older distributions where
+- Run test suite during build (required disabling of one test as
+- remove conflicts with timezone, breaks the build
+- add provides/obsoletes on python(3)-tz
+  * Sync with timezone 2013b release</comment>
+    <requestid>1143345</requestid>
+  </revision>
 </revisionlist>
