@@ -2937,4 +2937,41 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   _IO_wdo_write (BZ #31183) (forwarded request 1136423 from Andreas_Schwab)</comment>
     <requestid>1136424</requestid>
   </revision>
+  <revision rev="285" vrev="1">
+    <srcmd5>fdbf3e9fe1539f276bab51183b270091</srcmd5>
+    <version>2.39</version>
+    <time>1706885103</time>
+    <user>anag+factory</user>
+    <comment>- Update to glibc 2.39
+  * A new tunable, glibc.cpu.plt_rewrite, can be used to enable PLT
+    rewrite on x86-64
+  * Sync with Linux kernel 6.6 shadow stack interface
+  * struct statvfs now has an f_type member, equal to the f_type statfs
+    member
+  * On Linux, the functions posix_spawnattr_getcgroup_np and
+    posix_spawnattr_setcgroup_np have been added, along with the
+    POSIX_SPAWN_SETCGROUP flag
+  * On Linux, the pidfd_spawn and pidfd_spawp functions have been added
+  * On Linux, the pidfd_getpid function has been added
+  * scanf-family functions now support the wN format length modifiers for
+    arguments pointing to types intN_t, int_leastN_t, uintN_t or
+    uint_leastN_t
+  * A new tunable, glibc.mem.decorate_maps, can be used to add additional
+    information on underlying memory allocated by the glibc
+  * The &lt;stdbit.h&gt; header has been added from ISO C2X
+  * On AArch64 new symbols were added to libmvec
+  * The ldconfig program now skips file names containing ';' or ending in
+    &quot;.dpkg.tmp&quot; or &quot;.dpkg.new&quot;
+  * The dynamic linker calls the malloc and free functions in more cases
+    during TLS access if a shared object with dynamic TLS is loaded and
+    unloaded
+- aarch64-rawmemchr-unwind.patch, cache-amd-legacy.patch,
+  cache-intel-shared.patch, call-init-proxy-objects.patch,
+  fstat-implementation.patch, gb18030-2022.patch,
+  getaddrinfo-eai-memory.patch, getaddrinfo-memory-leak.patch,
+  getcanonname-use-after-free.patch, iconv-error-verbosity.patch,
+  intl-c-utf-8-like-c-locale.patch, ldconfig-process-elf-file.patch,
+  libio-io-vtables.patch, libio-wdo-write.patch, (forwarded request 1143408 from Andreas_Schwab)</comment>
+    <requestid>1143409</requestid>
+  </revision>
 </revisionlist>

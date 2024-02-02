@@ -57,8 +57,8 @@
 %bcond_with usrmerged
 %endif
 
-%if 0%{?gcc_version} < 12
-%define with_gcc 12
+%if 0%{?gcc_version} < 13
+%define with_gcc 13
 %endif
 
 # Enable support for livepatching.
@@ -152,10 +152,10 @@ Name:           glibc%{name_suffix}
 Summary:        Standard Shared Libraries (from the GNU C Library)
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0
 Group:          System/Libraries
-Version:        2.38
+Version:        2.39
 Release:        0
 %if %{without snapshot}
-%define git_id 36f2487f13
+%define git_id ef321e23c2
 %define libversion %version
 %else
 %define git_id %(echo %version | sed 's/.*\.g//')
@@ -301,48 +301,6 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-UPSTREAM iconv: restore verbosity with unrecognized encoding names (BZ #30694)
-Patch1000:      iconv-error-verbosity.patch
-# PATCH-FIX-UPSTREAM x86: Fix for cache computation on AMD legacy cpus
-Patch1001:      cache-amd-legacy.patch
-# PATCH-FIX-UPSTREAM x86: Fix incorrect scope of setting `shared_per_thread` (BZ# 30745)
-Patch1002:      cache-intel-shared.patch
-# PATCH-FIX-UPSTREAM malloc: Enable merging of remainders in memalign, remove bin scanning from memalign (BZ #30723)
-Patch1003:      posix-memalign-fragmentation.patch
-# PATCH-FIX-UPSTREAM intl: Treat C.UTF-8 locale like C locale (BZ #16621)
-Patch1004:      intl-c-utf-8-like-c-locale.patch
-# PATCH-FIX-UPSTREAM io: Fix record locking contants for powerpc64 with __USE_FILE_OFFSET64 (BZ #30804)
-Patch1005:      ppc64-flock-fob64.patch
-# PATCH-FIX-UPSTREAM libio: Fix oversized __io_vtables
-Patch1006:      libio-io-vtables.patch
-# PATCH-FIX-UPSTREAM elf: Do not run constructors for proxy objects
-Patch1007:      call-init-proxy-objects.patch
-# PATCH-FIX-UPSTREAM Stack read overflow with large TCP responses in no-aaaa mode (CVE-2023-4527, BZ #30842)
-Patch1008:      no-aaaa-read-overflow.patch
-# PATCH-FIX-UPSTREAM getaddrinfo: Fix use after free in getcanonname (CVE-2023-4806, BZ #30843)
-Patch1009:      getcanonname-use-after-free.patch
-# PATCH-FIX-UPSTREAM Fix leak in getaddrinfo introduced by the fix for CVE-2023-4806 (CVE-2023-5156, BZ #30884)
-Patch1010:      getaddrinfo-memory-leak.patch
-# PATCH-FIX-UPSTREAM io: Do not implement fstat with fstatat
-Patch1011:      fstat-implementation.patch
-# PATCH-FIX-UPSTREAM Propagate GLIBC_TUNABLES in setxid binaries
-Patch1012:      setxid-propagate-glibc-tunables.patch
-# PATCH-FIX-UPSTREAM tunables: Terminate if end of input is reached (CVE-2023-4911)
-Patch1013:      tunables-string-parsing.patch
-# PATCH-FIX-UPSTREAM add GB18030-2022 charmap and test the entire GB18030 charmap (BZ #30243)
-Patch1014:      gb18030-2022.patch
-# PATCH-FIX-UPSTREAM aarch64: correct CFI in rawmemchr (BZ #31113)
-Patch1015:      aarch64-rawmemchr-unwind.patch
-# PATCH-FIX-UPSTREAM sysdeps: sem_open: Clear O_CREAT when semaphore file is expected to exist (BZ #30789)
-Patch1016:      sem-open-o-creat.patch
-# PATCH-FIX-UPSTREAM elf: Fix wrong break removal from 8ee878592c
-Patch1017:      ldconfig-process-elf-file.patch
-# PATCH-FIX-UPSTREAM elf: Fix TLS modid reuse generation assignment (BZ #29039)
-Patch1018:      tls-modid-reuse.patch
-# PATCH-FIX-UPSTREAM getaddrinfo: translate ENOMEM to EAI_MEMORY (BZ #31163)
-Patch1019:      getaddrinfo-eai-memory.patch
-# PATCH-FIX-UPSTREAM libio: Check remaining buffer size in _IO_wdo_write (BZ #31183)
-Patch1020:      libio-wdo-write.patch
 
 ###
 # Patches awaiting upstream approval
@@ -540,6 +498,15 @@ AutoReqProv:    off
 These libraries are needed to develop programs which use the standard C
 library in a cross compilation setting.
 
+%package -n libnsl1
+Summary:        Legacy Network Support Library (NIS)
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+
+%description -n libnsl1
+Network Support Library for legacy architectures.  This library does not
+have support for IPv6.
+
 %if 0%{suse_version} >= 1500
 %define make_output_sync -Oline
 %endif
@@ -565,27 +532,6 @@ library in a cross compilation setting.
 %patch306 -p1
 
 %if %{without snapshot}
-%patch1000 -p1
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
-%patch1004 -p1
-%patch1005 -p1
-%patch1006 -p1
-%patch1007 -p1
-%patch1008 -p1
-%patch1009 -p1
-%patch1010 -p1
-%patch1011 -p1
-%patch1012 -p1
-%patch1013 -p1
-%patch1014 -p1
-%patch1015 -p1
-%patch1016 -p1
-%patch1017 -p1
-%patch1018 -p1
-%patch1019 -p1
-%patch1020 -p1
 %endif
 
 %patch2000 -p1
@@ -806,7 +752,7 @@ export SUSE_ZNOW=0
 # Increase timeout
 export TIMEOUTFACTOR=16
 # The testsuite does its own malloc checking
-unset MALLOC_CHECK_
+unset MALLOC_CHECK_ MALLOC_PERTURB_
 make %{?_smp_mflags} %{?make_output_sync} -C cc-base -k check || {
   cd cc-base
   o=$-
@@ -1062,10 +1008,11 @@ rm -f %{buildroot}%{_bindir}/pldd
 rm -rf %{buildroot}%{_libdir}/audit
 
 %ifarch i686
-# Remove files from glibc-{extra,info,i18ndata} and nscd
+# Remove files from glibc-{extra,info,i18ndata}, nscd, libnsl1
 rm -rf %{buildroot}%{_infodir} %{buildroot}%{_prefix}/share/i18n
 rm -f %{buildroot}%{_bindir}/makedb %{buildroot}/var/lib/misc/Makefile
 rm -f %{buildroot}%{_sbindir}/nscd
+rm -f %{buildroot}%{slibdir}/libnsl.so.1
 %endif
 
 %ifnarch i686
@@ -1292,7 +1239,6 @@ exit 0
 %ifarch x86_64 aarch64
 %{slibdir}/libmvec.so.1
 %endif
-%{slibdir}/libnsl.so.1
 %{slibdir}/libnss_compat.so.2
 %{slibdir}/libnss_db.so.2
 %{slibdir}/libnss_dns.so.2
@@ -1447,6 +1393,11 @@ exit 0
 /var/lib/misc/Makefile
 
 %files lang -f libc.lang
+
+%ifarch %ix86 %alpha hppa m68k %mips32 %mips64 %sparc ppc ppc64 ppc64le x86_64 s390 s390x %arm aarch64 riscv64
+%files -n libnsl1
+%{slibdir}/libnsl.so.1
+%endif
 %endif
 
 %endif
