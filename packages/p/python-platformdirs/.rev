@@ -129,4 +129,15 @@
   * python 3.6 removal</comment>
     <requestid>1136016</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8f5c1de91676d5d2b005de4de9e7c8f0</srcmd5>
+    <version>4.2.0</version>
+    <time>1706885085</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.0:
+  * Fix 2 typos about XDG_DATA_DIR
+  * Add convenience methods to `PlatformDirsAPI` that allow
+    iterating over both user and site dirs/paths.</comment>
+    <requestid>1143346</requestid>
+  </revision>
 </revisionlist>

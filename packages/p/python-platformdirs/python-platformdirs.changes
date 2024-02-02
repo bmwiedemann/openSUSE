@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  1 12:37:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * Fix 2 typos about XDG_DATA_DIR
+  * Add convenience methods to `PlatformDirsAPI` that allow
+    iterating over both user and site dirs/paths.
+
+-------------------------------------------------------------------
 Mon Jan  1 20:22:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.0:
