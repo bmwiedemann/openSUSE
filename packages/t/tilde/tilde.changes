@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  2 08:52:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: The build system used by tilde is not
+  exactly autoconf, even though it's initiated by configure. IT
+  mis-interprets the parameters of the configure macro to imply a
+  cross build, then fails to fine the correct pkg-config
+  executable. Aid the build script by defining PKG_CONFIG to
+  /usr/bin/pkg-config.
+
+-------------------------------------------------------------------
 Mon Aug 29 09:53:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.3

@@ -1,7 +1,7 @@
 #
 # spec file for package tilde
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,7 @@ File menu can be accessed by pressing Alt-F.
 %autosetup -p1
 
 %build
+export PKG_CONFIG=%{_bindir}/pkg-config
 %configure CC=gcc CXX=g++ LIBTOOL=libtool --docdir="%_docdir/%name"
 make %{?_smp_mflags}
 
