@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 28 19:11:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.10:
+  * Use rpm.files instead of rpm.fi
+  * Add upper version bound for setInterruptSafety()
+
+-------------------------------------------------------------------
 Thu Oct 19 08:46:32 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
 
 - Do not use break lines in %python3_install macro to avoid problems
