@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           talosctl
-Version:        1.6.2
+Version:        1.6.4
 Release:        0
 Summary:        CLI to interact with Talos Linux
 License:        MPL-2.0
 URL:            https://github.com/siderolabs/talos
 Source:         talos-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.21
 
 %description
 Talos Linux is a modern Linux distribution built for Kubernetes.
