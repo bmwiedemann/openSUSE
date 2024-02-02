@@ -4,34 +4,35 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#1207390: '20240131'
-  boo#1207940: '20240131'
+  boo#1207390: '20240201'
+  boo#1207940: '20240201'
   boo#1209053: '20240129'
   boo#1209728: '20240115'
-  boo#1216660: '20240131'
-  boo#1217029: '20240131'
-  boo#1217683: '20240131'
-  boo#1218131: '20240129'
+  boo#1216660: '20240201'
+  boo#1217029: '20240201'
+  boo#1217683: '20240201'
+  boo#1218131: '20240201'
   boo#1218492: '20240124'
   boo#1218565: '20240107'
   boo#1218847: '20240126'
   boo#1218954: '20240119'
-  boo#1219132: '20240131'
+  boo#1219132: '20240201'
   boo#1219135: '20240124'
   boo#1219139: '20240129'
   boo#1219188: '20240128'
-  boo#1219242: '20240131'
-  boo#1219384: '20240131'
-  boo#1219401: '20240131'
+  boo#1219242: '20240201'
+  boo#1219384: '20240201'
+  boo#1219401: '20240201'
+  boo#1219481: '20240201'
   gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
-  poo#105271: '20240126'
+  poo#105271: '20240201'
   poo#120459: '20240110'
   poo#132191: '20240116'
   poo#133691: '20240111'
   poo#134078: '20240128'
   poo#137423: '20240131'
-  poo#138743: '20240130'
-  poo#152320: '20240131'
+  poo#138743: '20240201'
+  poo#152320: '20240201'
   poo#152551: '20240116'
   poo#152793: '20240109'
   poo#152829: '20240112'
@@ -40,10 +41,10 @@
   poo#153526: '20240116'
   poo#153895: '20240118'
   poo#154153: '20240128'
-  poo#154465: '20240131'
+  poo#154465: '20240201'
   poo#154471: '20240130'
-  poo#154693: '20240131'
-  poo#154714: '20240131'
+  poo#154693: '20240201'
+  poo#154714: '20240201'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -398,8 +399,8 @@ products:
     - x86_64
   - virt-handler-container:
     - x86_64
-#  - virt-libguestfs-tools-container:
-#    - x86_64
+  - virt-libguestfs-tools-container:
+    - x86_64
   - virt-controller-container:
     - x86_64
   - virt-launcher-container:
@@ -499,8 +500,8 @@ set_snapshot_number: True</value>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
 published: '20240131'
-publishing: '20240131'
-testing: '20240131'
+publishing: '20240201'
+testing: '20240201'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
