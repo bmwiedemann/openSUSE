@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb  1 10:01:05 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Update to version 1.0.27
+  * New libusb_init_context API to replace libusb_init
+  * New libusb_get_max_alt_packet_size API
+  * New libusb_get_platform_descriptor API (BOS)
+  * Allow setting log callback with libusb_set_option/libusb_init_context
+  * New WebAssembly + WebUSB backend using Emscripten
+  * Fix regression in libusb_set_interface_alt_setting
+  * Fix sync transfer completion race and use-after-free
+  * Fix hotplug exit ordering
+  * Linux: NO_DEVICE_DISCOVERY option set per context
+- added signature and keyring. (key received via keyserver)
+
+-------------------------------------------------------------------
 Sun Apr 10 19:17:47 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.26
