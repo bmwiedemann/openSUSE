@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 01 18:34:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240131T085940Z:
+  * fix: mirror with local path (#4825)
+  * Fix syntax in examples (#4834)
+  * fix validation in replicate rm to allow stale target cleanup
+    (#4838)
+  * fix prometheus metrics response on success (#4835)
+
+-------------------------------------------------------------------
 Mon Jan 29 17:40:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240128T162314Z:
