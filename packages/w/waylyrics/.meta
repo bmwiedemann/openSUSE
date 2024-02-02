@@ -1,0 +1,6 @@
+<package name="waylyrics" project="openSUSE:Factory">
+  <title></title>
+  <description>The furry way to show desktop lyrics</description>
+  <devel project="multimedia:apps" package="waylyrics"/>
+  <url>https://github.com/waylyrics/waylyrics</url>
+</package>
