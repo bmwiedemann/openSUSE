@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb  1 10:56:02 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.9:
+  + rtpsession: Only warn once if configured latency needs to be
+    known but isn't yet
+  + rtphdrext-clientaudiolevel: Fix level value being written by
+    the extension
+  + rtspsrc: set multicast-iface on udpsinks and fix RTCP sink TTL
+  + v4l2object: clear old fds when initializing poll during
+    opening v4l2 device
+  + v4l2src: Consider framerate during caps selection
+  + vpxdec: Use appropriate domain and code for decoding errors
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Thu Jan  4 07:54:19 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.8:
