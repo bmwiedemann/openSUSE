@@ -2486,4 +2486,17 @@ See bugzilla 1167537 for the gory details.</comment>
   * rpm-findlang-inject-metainfo.patch</comment>
     <requestid>1132932</requestid>
   </revision>
+  <revision rev="311" vrev="2">
+    <srcmd5>83682aefd072134e252da602d6ae859f</srcmd5>
+    <version>4.19.1</version>
+    <time>1706885080</time>
+    <user>anag+factory</user>
+    <comment>- buildrequire setuptools
+
+- Fix python-module compatibility with older distros
+- Fix usage of deprecated AsVoidPtr Python/C API,
+- adapt buildrequires
+- adapt buildrequires</comment>
+    <requestid>1143331</requestid>
+  </revision>
 </revisionlist>
