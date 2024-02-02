@@ -1,8 +1,8 @@
-Index: netpbm-11.2.0/converter/other/pngx.c
+Index: netpbm-11.5.2/converter/other/pngx.c
 ===================================================================
---- netpbm-11.2.0.orig/converter/other/pngx.c
-+++ netpbm-11.2.0/converter/other/pngx.c
-@@ -368,6 +368,7 @@ pngx_srgbIntentDesc(pngx_srgbIntent cons
+--- netpbm-11.5.2.orig/converter/other/pngx.c
++++ netpbm-11.5.2/converter/other/pngx.c
+@@ -370,6 +370,7 @@ pngx_srgbIntentDesc(pngx_srgbIntent cons
      case PNGX_ABSOLUTE_COLORIMETRIC: return "ABSOLUTE_COLORIMETRIC";
      }
      assert(false);
@@ -10,7 +10,7 @@ Index: netpbm-11.2.0/converter/other/pngx.c
  }
  
  
-@@ -383,6 +384,7 @@ const libpngSrgbIntentCode(pngx_srgbInte
+@@ -385,6 +386,7 @@ const libpngSrgbIntentCode(pngx_srgbInte
      }
  
      assert(false);  /* All cases above return */
@@ -18,10 +18,10 @@ Index: netpbm-11.2.0/converter/other/pngx.c
  }
  
  
-Index: netpbm-11.2.0/lib/libpm.c
+Index: netpbm-11.5.2/lib/libpm.c
 ===================================================================
---- netpbm-11.2.0.orig/lib/libpm.c
-+++ netpbm-11.2.0/lib/libpm.c
+--- netpbm-11.5.2.orig/lib/libpm.c
++++ netpbm-11.5.2/lib/libpm.c
 @@ -440,6 +440,7 @@ pm_maxvaltobits(int const maxval) {
          pm_error( "maxval of %d is too large!", maxval );
  
@@ -29,12 +29,12 @@ Index: netpbm-11.2.0/lib/libpm.c
 +    return 0;
  }
  
- int
-Index: netpbm-11.2.0/lib/libpnm3.c
+ 
+Index: netpbm-11.5.2/lib/libpnm3.c
 ===================================================================
---- netpbm-11.2.0.orig/lib/libpnm3.c
-+++ netpbm-11.2.0/lib/libpnm3.c
-@@ -433,6 +433,8 @@ pnm_bittoxel(bit    const inputBit,
+--- netpbm-11.5.2.orig/lib/libpnm3.c
++++ netpbm-11.5.2/lib/libpnm3.c
+@@ -446,6 +446,8 @@ pnm_bittoxel(bit    const inputBit,
      case PBM_WHITE: return pnm_whitexel(maxval, PBM_TYPE); break;
      default:
          assert(false);

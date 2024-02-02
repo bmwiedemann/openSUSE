@@ -1,7 +1,7 @@
 #
 # spec file for package netpbm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 %define asan_build     0
 %define ubsan_build    0
 %define libmaj  11
-%define libmin  102
+%define libmin  105
 %define libver  %{libmaj}.%{libmin}
 Name:           netpbm
-Version:        11.2.0
+Version:        11.5.2
 Release:        0
 Summary:        A Graphics Conversion Package
 License:        BSD-3-Clause AND GPL-2.0-or-later AND IJG AND MIT AND SUSE-Public-Domain
