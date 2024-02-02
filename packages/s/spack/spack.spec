@@ -1,7 +1,7 @@
 #
 # spec file for package spack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,12 +41,12 @@ ExclusiveArch:  do_not_build
 # packages recognized by spack, but not recommended
 %define spack_trigger_packages ghostscript go fish fzf hwloc-devel hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby sqlite3 openmpi1-devel openmpi2-devel openmpi3-devel openmpi4-devel openmpi1-gnu-hpc-devel openmpi2-gnu-hpc-devel openmpi3-gnu-hpc-devel openmpi4-gnu-hpc-devel mpich-gnu-hpc-devel mvapich2-devel mpich-devel
 
-%define spack_trigger_compilers gcc7 gcc8 gcc9 gcc10 gcc11 gcc12 gcc7-c++ gcc8-c++ gcc9-c++ gcc10-c++ gcc11-c++ gcc12-c++ gcc7-fortran gcc8-fortran gcc9-fortran gcc10-fortran gcc11-fortran gcc12-fortran
+%define spack_trigger_compilers gcc7 gcc8 gcc9 gcc10 gcc11 gcc12 gcc13 gcc7-c++ gcc8-c++ gcc9-c++ gcc10-c++ gcc11-c++ gcc12-c++ gcc13-c++ gcc7-fortran gcc8-fortran gcc9-fortran gcc10-fortran gcc11-fortran gcc12-fortran gcc13-fortran
 
 # non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
-Version:        0.20.3
+Version:        0.21.1
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
@@ -84,7 +84,6 @@ Requires:       git
 Requires:       gpg2
 Requires:       gzip
 Requires:       libbz2-devel
-Requires:       lua-lmod
 Requires:       make
 Requires:       patch
 Requires:       polkit
@@ -94,6 +93,7 @@ Requires:       tar
 Requires:       unzip
 Requires:       xz
 Recommends:     %spack_trigger_recommended_packages %spack_trigger_recommended_compilers
+Recommends:     lua-lmod
 Requires:       (hwloc if hwloc-devel)
 Requires:       (hwloc-devel if hwloc)
 %else

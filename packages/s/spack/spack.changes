@@ -1,4 +1,154 @@
 -------------------------------------------------------------------
+Thu Jan 25 14:07:19 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- Update Spack to version 0.21.1
+  * Add support for reading buildcaches created by Spack v0.22
+  * Bugfixes
+    + `spack graph`: fix coloring with environments
+    + `spack info`: sort variants in --variants-by-name
+    + `Spec.format`: error on old style format strings
+    + ASP-based solver:
+       - fix infinite recursion when computing concretization
+         errors,
+       - don't error for type mismatch on preferences,
+       - don't emit spurious debug output.
+    + Improve the error message for deprecated preferences.
+    + Fix multi-word aliases.
+    + Add a warning for unconfigured compiler.
+    + environment: fix an issue with deconcretization/reconcretization
+      of specs.
+    + buildcache: don't error if a patch is missing, when
+      installing from binaries
+- From version 0.21.0
+  * following new features:
+    + Better error messages with condition chaining:
+      In v0.18, we added better error messages that could tell you
+      what problem happened, but they couldn't tell you why it
+      happened. 0.21 adds condition chaining to the solver, and
+      Spack can now trace back through the conditions that led to
+      an error and build a tree of causes potential causes and
+      where they came from.
+    + OCI build caches:
+      You can now use an arbitrary OCI registry as a build cache:
+      - For Dockerhub:
+        `$ spack mirror add my_registry oci://user/image`
+      - For another registry (GHCR):
+        `$ spack mirror add my_registry oci://ghcr.io/haampie/spack-test`
+      Then set the login credentials:
+      `$ spack mirror set --push --oci-username ... --oci-password ... my_registry`
+      and push to it:
+      `$ spack buildcache push my_registry [specs...]`
+      You can optionally add a base image to get runnable images:
+      ```
+      $ spack buildcache push --base-image leap:15.5 my_registry python`
+       Pushed ... as [image]:python-3.11.2-65txfcpqbmpawclvtasuog4yzmxwaoia.spack
+       $ docker run --rm -it [image]:python-3.11.2-65txfcpqbmpawclvtasuog4yzmxwaoia.spack
+       ```
+      This creates a container image from the Spack installations
+      on the host system, without the need to run `spack install`
+      from a `Dockerfile` or `sif` file. It also addresses the
+      inconvenience of losing binaries of dependencies when
+      `RUN spack install` fails inside `docker build`. Further, the
+      container image layers and build cache tarballs are the same
+      files. This means that `spack install` and `docker pull` use the
+      exact same underlying binaries. If you previously used `spack
+      install` inside of docker build, this feature helps you save
+      storage by a factor two.
+    + Multiple versions of build dependencies:
+      Increasingly, complex package builds require multiple
+      versions of some build dependencies. For example, Python
+      packages frequently require very specific versions of
+      `setuptools`, `cython`, while different physics packages
+      require different versions of Python to build. The concretizer
+      enforced that every solve was unified, i.e., so that there was
+      only one version of every package. The concretizer now supports
+      "duplicate" nodes for build dependencies, but enforces unification
+      through transitive link and run dependencies. This will allow it
+      to better resolve complex dependency graphs in ecosystems like
+      Python.
+    + Cherry-picking virtual dependencies:
+      You can now select only a subset of virtual dependencies
+      from a spec that may provide more. For example, to make mpich
+      your mpi provider, you can be explicit by writing:
+      `hdf5 ^[virtuals=mpi] mpich`.
+      Or, to use, e.g., `intel-parallel-studio` for blas along with
+      an external `lapack` like `openblas`, you could write:
+      ```
+      strumpack ^[virtuals=mpi] intel-parallel-studio+mkl ^[virtuals=lapack] openblas`
+      ```
+      The `virtuals=mpi` is an edge attribute, and dependency edges
+      in Spack graphs now track which virtuals they satisfied.
+    + The `spack deconcretize` command gives you control over what
+      you want to update in an already concrete environment.
+      As an example, with an environment built with meson, and you
+      want to update your meson version, you can run:
+      `$spack deconcretize meson`
+      and have everything that depends on meson rebuilt the next
+      time you run spack concretize. In the future, we'll handle
+      this in a single command, but for now you can use this to
+      drop bits of your lockfile and resolve your dependencies
+      again.
+    + UI Improvements:
+      The `spack info` received a rework to make the output more
+      appealing. It is now on par with  the rest of Spack's UI.
+      `spack info` now makes much better use of terminal space and
+      shows variants, their values, and their descriptions more
+      clearly. Conditional variants are grouped separately so you
+      can more easily understand how packages are structured.
+      `spack checksum` now allows you to filter versions from your
+      editor, or by version range. It also notifies you about
+      potential download URL changes.
+    + Environments can include definitions:
+      Spack did not previously support using `include:` with The
+      definitions section of an environment, but now it does. You
+      can use this to curate lists of specs and more easily reuse
+      them across environments.
+    + Aliases:
+      You can now add aliases to Spack commands in `config.yaml`,
+      e.g. this might enshrine your favorite args to `spack find`
+      as `spack f`:
+      ```
+      config:
+        aliases:
+          f: find -lv
+      ```
+    + Improved autoloading of modules:
+      In this release, you can start using `hide_implicits: true`
+      instead, which exposes only explicitly installed packages to
+      the user, while still autoloading dependencies. On top of
+      that, you can safely use `hash_length: 0`, as this config now
+      only applies to the modules exposed to the user -- you don't
+      have to worry about file name clashes for hidden
+      dependencies.
+      Note: for Tcl this feature requires Modules 4.7 or higher.
+  * Other new commands and directives:
+    + `spack env activate` without arguments now loads a default
+      environment that you do not have to create.
+    + `spack find -H` / `--hashes`: a new shortcut for piping spack
+      find output to other commands.
+    + Add `spack checksum --verify`, fix `--add`.
+    + New `default_args` context manager factors out common args for
+      directives.
+    + `spack compiler find --[no]-mixed-toolchain` lets you easily
+      mix clang and gfortran on Linux.
+  * Performance improvements:
+    + `spack external find execution` is now much faster.
+    + `spack location -i` is now much faster on success.
+    + Drop redundant rpaths post install.
+    + ASP-based solver: avoid cycles in clingo using hidden
+      directive.
+    + Fix multiple quadratic complexity issues in environments.
+  * Other new features of note:
+    + archspec: update to v0.2.2, support for Sapphire Rapids,
+      Power10, Neoverse V2.
+    + Propagate variants across nodes that don't have that variant
+    + Implement fish shell completion.
+    + Can now distinguish between source/binary mirror; don't ping
+      mirror.spack.io as much.
+    + Improve status reporting on `spack install`
+      (add [n/total] display...).
+
+-------------------------------------------------------------------
 Mon Nov  6 08:04:55 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 0.20.3 with the following changes:

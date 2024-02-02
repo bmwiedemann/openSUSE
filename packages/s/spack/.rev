@@ -422,4 +422,41 @@
     + Spack now supports Python 3.12.</comment>
     <requestid>1124071</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>6939c8a379b59aaa71b84000003dd611</srcmd5>
+    <version>0.21.1</version>
+    <time>1706885257</time>
+    <user>anag+factory</user>
+    <comment>- Update Spack to version 0.21.1
+  * Add support for reading buildcaches created by Spack v0.22
+  * Bugfixes
+    + `spack graph`: fix coloring with environments
+    + `spack info`: sort variants in --variants-by-name
+    + `Spec.format`: error on old style format strings
+    + ASP-based solver:
+       - fix infinite recursion when computing concretization
+         errors,
+       - don't error for type mismatch on preferences,
+       - don't emit spurious debug output.
+    + Improve the error message for deprecated preferences.
+    + Fix multi-word aliases.
+    + Add a warning for unconfigured compiler.
+    + environment: fix an issue with deconcretization/reconcretization
+      of specs.
+    + buildcache: don't error if a patch is missing, when
+      installing from binaries
+- From version 0.21.0
+  * following new features:
+    + Better error messages with condition chaining:
+      In v0.18, we added better error messages that could tell you
+      what problem happened, but they couldn't tell you why it
+      happened. 0.21 adds condition chaining to the solver, and
+      Spack can now trace back through the conditions that led to
+      an error and build a tree of causes potential causes and
+      where they came from.
+    + OCI build caches:
+      You can now use an arbitrary OCI registry as a build cache:
+      - For Dockerhub:</comment>
+    <requestid>1143572</requestid>
+  </revision>
 </revisionlist>
