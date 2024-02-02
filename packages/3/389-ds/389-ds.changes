@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 02 05:31:39 UTC 2024 - william.brown@suse.com
+
+- Update to version 3.0.1~git1.1f95b57:
+  * Issue 6061 - Certificate lifetime displayed as NaN
+  * Bump version to 3.0.1
+  * Issue 6043, 6044 - Enhance Rust and JS bundling and add SPDX licenses for both (#6045)
+  * Issue 3555 - Remove audit-ci from dependencies (#6056)
+  * Issue 6052 - Paged results test sets hostname to `localhost` on test collection
+  * Issue 6051 - Drop unused pytest markers
+  * Issue 6049 - lmdb - changelog is wrongly recreated by reindex task (#6050)
+  * Issue 6047 - Add a check for tagged commits
+  * Issue 6041 - dscreate ds-root - accepts relative path (#6042)
+  * Switch default backend to lmdb and bump version to 3.0 (#6013)
+  * Issue 6032 - Replication broken after backup restore (#6035)
+  * Issue 6037 - Server crash at startup in vlvIndex_delete (#6038)
+  * Issue 6034 - Change replica_id from str to int
+
+-------------------------------------------------------------------
 Wed Jan 17 01:58:33 UTC 2024 - william.brown@suse.com
 
 - Update to version 2.4.0~git126.5936946:
