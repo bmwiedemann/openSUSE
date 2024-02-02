@@ -325,4 +325,15 @@
   * feat: C-b to go left #377</comment>
     <requestid>1142053</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8bc105a6e4fa5daadb5334ea9431030b</srcmd5>
+    <version>0.6.18</version>
+    <time>1706885282</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.18:
+  * fix: buffer is not divisible #380
+  * implement wayland fractional scaling #379
+  * Reapply &quot;implement wayland fractional scaling&quot; #381</comment>
+    <requestid>1143615</requestid>
+  </revision>
 </revisionlist>
