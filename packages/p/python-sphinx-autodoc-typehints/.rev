@@ -202,4 +202,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1140272</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>986b50ea201df844f28bc44ba117b5de</srcmd5>
+    <version>1.25.3</version>
+    <time>1706885226</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.25.3:
+  * dependency bumps</comment>
+    <requestid>1143500</requestid>
+  </revision>
 </revisionlist>
