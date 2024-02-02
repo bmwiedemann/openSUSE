@@ -1,7 +1,7 @@
 #
 # spec file for package novprog
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 Graeme Gott <graeme@gottcode.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           novprog
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        Wordcount graphing program
 License:        GPL-3.0-or-later
@@ -26,7 +26,11 @@ Group:          Productivity/Office/Other
 URL:            https://gottcode.org/novprog/
 Source:         https://gottcode.org/novprog/download/?os=source#/%{name}-%{version}-src.tar.bz2
 BuildRequires:  cmake
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-linguist-devel
@@ -51,6 +55,9 @@ graph will show a tooltip with that day's wordcount.
 %autosetup
 
 %build
+%if 0%{?suse_version} < 1550
+export CXX=g++-11
+%endif
 %cmake
 %cmake_build
 
