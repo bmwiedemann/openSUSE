@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb  2 06:34:59 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix for SLE 15 where %primary_python is not defined.
+
+-------------------------------------------------------------------
+Thu Feb  1 13:23:03 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Reduce the BuildRequires from python3 to just python-rpm-macros
+  and Require: %{primary_python}-base instead of python3-base
+  which might be off for a short time when %primary_python changes.
+
+-------------------------------------------------------------------
+Thu Feb  1 12:46:52 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %python3_fix_shebang
+
+-------------------------------------------------------------------
 Thu Sep 28 11:16:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update %description with content from upstream README.
