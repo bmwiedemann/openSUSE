@@ -298,3 +298,9 @@ buildignore ntp
 
 # Pulled in by dracut through a boolean dep somehow
 buildignore wicked
+
+install ucode-amd i686,x86_64
+# Technically useful, but with >12MiB simply too big.
+# It hurts twice, once in the early cpio in the initrd (uncompressed) and once in the FS (badly compressed, as encrypted).
+# On TW, it hasn't been pulled into the live CDs for ages so let's just ignore it explicitly.
+buildignore ucode-intel

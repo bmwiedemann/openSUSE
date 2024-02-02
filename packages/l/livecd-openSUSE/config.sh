@@ -59,16 +59,17 @@ echo 'omit_dracutmodules+=" multipath "' >> /etc/dracut.conf.d/no-multipath.conf
 # Stronger compression for the initrd
 echo 'compress="xz -4 --check=crc32 --memlimit-compress=50%"' >> /etc/dracut.conf.d/less-storage.conf
 
+# Smaller initrd where necessary
 if [ "$desktop" = "x11" ] || [ "$desktop" = "xfce" ]; then
 	# Forcibly exclude networking support
 	sed -i 's/echo network rootfs-block/echo rootfs-block/' /usr/lib/dracut/modules.d/90kiwi-live/module-setup.sh
-	echo 'omit_dracutmodules+=" network "' >> /etc/dracut.conf.d/no-network.conf
+	echo 'omit_dracutmodules+=" network qemu-net rdma "' >> /etc/dracut.conf.d/no-network.conf
 
 	# This only needs to be able to boot the live cd
-	echo 'omit_dracutmodules+=" bcache crypt lvm mdraid lunmask "' >> /etc/dracut.conf.d/less-storage.conf
+	echo 'omit_dracutmodules+=" bcache crypt lvm lunmask mdraid nvdimm "' >> /etc/dracut.conf.d/less-storage.conf
 
 	# Unnecessary modules in the initrd
-	echo 'omit_drivers+=" cifs ocfs2 "' >> /etc/dracut.conf.d/less-storage.conf
+	echo 'omit_drivers+=" ceph chcr cifs csiostor cxgb4 intel_qat ocfs2 bnx2fc qedf "' >> /etc/dracut.conf.d/less-storage.conf
 
 	# Work around https://github.com/OSInside/kiwi/issues/1751
 	sed -i '/omit_dracutmodules=/d' /usr/bin/dracut
@@ -130,8 +131,9 @@ find /lib/firmware/nvidia -name gsp | xargs -r rm -rf
 rm -rf /usr/lib*/ruby/gems/*/cache/
 
 # Not needed, boo#1166406
-rm -f /boot/vmlinux*.[gx]z
-rm -f /lib/modules/*/vmlinux*.[gx]z
+rm -f /boot/vmlinux*.[gx]z /lib/modules/*/vmlinux*.[gx]z
+# Also not needed
+rm -f /boot/System.map-* /lib/modules/*/System.map
 
 # Decompress kernel modules, better for squashfs (boo#1192457)
 find /lib/modules/*/kernel -name '*.ko.xz' -exec xz -d {} +
@@ -164,6 +166,7 @@ passwd -d linux
 pam-config -a --nullok
 
 : > /var/log/zypper.log
+: > /var/log/tallylog
 
 # Create fstab if it doesn't exist (Work around boo#1185815)
 >>/etc/fstab
