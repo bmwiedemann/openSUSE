@@ -203,4 +203,16 @@
   * dtv-scan-tables: hu-Digikabel changes</comment>
     <requestid>1042572</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f1f5e91d91826296af0a121d00ff6165</srcmd5>
+    <version>20240131</version>
+    <time>1706885278</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240131:
+  * isdb-t: Update Brazil channel lists
+  * dvb-s: drop transponders that aren't there at Lyngsat anymore
+  * dvb-s: update from today's Lyngsat report
+  * dtv-scan-tables: full uk transmitter update</comment>
+    <requestid>1143603</requestid>
+  </revision>
 </revisionlist>

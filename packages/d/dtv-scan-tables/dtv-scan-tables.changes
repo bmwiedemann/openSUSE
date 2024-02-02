@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  2 10:24:19 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20240131:
+  * isdb-t: Update Brazil channel lists
+  * dvb-s: drop transponders that aren't there at Lyngsat anymore
+  * dvb-s: update from today's Lyngsat report
+  * dtv-scan-tables: full uk transmitter update
+
+-------------------------------------------------------------------
 Tue Dec 13 08:36:09 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20221125:
