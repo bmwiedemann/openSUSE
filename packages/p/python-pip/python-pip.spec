@@ -20,24 +20,18 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
-%bcond_with wheel
-%else
-%if "%{flavor}" == "wheel"
-%define psuffix -wheel
-%bcond_without wheel
-%bcond_with test
 %else
 %define psuffix %{nil}
 %bcond_with test
-%bcond_with wheel
 %endif
-%endif
-%global skip_python2 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
+
+# in order to avoid rewriting for subpackage generator
+%define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-pip%{psuffix}
 Version:        23.3.2
@@ -54,12 +48,12 @@ Patch0:         pip-shipped-requests-cabundle.patch
 Patch1:         distutils-reproducible-compile.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 40.8.0}
+# The rpm python-wheel build is bootstrap friendly since 0.42
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       ca-certificates
 Requires:       coreutils
-Requires:       python-setuptools
-Requires:       python-xml
 Recommends:     ca-certificates-mozilla
 BuildArch:      noarch
 %if %{with libalternatives}
@@ -71,6 +65,7 @@ Requires(postun):update-alternatives
 %endif
 %if %{with test}
 # Test requirements:
+BuildRequires:  %{python_module pip = %{version}}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module cryptography}
@@ -82,15 +77,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scripttest}
 BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module virtualenv >= 1.10}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates
 BuildRequires:  git-core
-%if 0%{?suse_version} <= 1500
-BuildRequires:  %{python_module mock}
-%endif
-%endif
-%if %{with wheel}
-BuildRequires:  %{python_module wheel}
 %endif
 %python_subpackages
 
@@ -98,6 +86,14 @@ BuildRequires:  %{python_module wheel}
 Pip is a replacement for easy_install. It uses mostly the same techniques for
 finding packages, so packages that were made easy_installable should be
 pip-installable as well.
+
+%package wheel
+Summary:        The pip wheel for custom tests and install requirements
+Requires:       %mypython(abi) = %python_version
+
+%description wheel
+This packages provides the pip wheel as separate file for cases where
+the wheel needs to be used directly in test or install setups
 
 %prep
 # Unbundling is not advised by upstream. See src/pip/_vendor/README.rst
@@ -121,32 +117,31 @@ rm -v src/pip/_vendor/distlib/*.exe
 sed -i '/\.exe/d' setup.py
 
 %build
-%if ! %{with wheel}
-%python_build
-%else
-%python_exec setup.py bdist_wheel --universal
+%if !%{with test}
+%{python_expand # bootstrap with built-in pip
+$python -m venv build/env
+build/env/bin/python -m ensurepip
+export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
+%{$python_pyproject_wheel}
+}
 %endif
 
-%if !%{with test} && !%{with wheel}
 %install
-%python_install
+%if !%{with test}
+%{python_expand # use pip bootstrapped above
+export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
+%{$python_pyproject_install}
+install -D -m 0644 -t %{buildroot}%{$python_sitelib}/../wheels dist/*.whl
+%fdupes %{buildroot}%{$python_sitelib}
+}
 %python_clone -a %{buildroot}%{_bindir}/pip
 %python_clone -a %{buildroot}%{_bindir}/pip3
-# if we just cloned to pip3-2.7 delete it
-rm -f %{buildroot}%{_bindir}/pip3-2*
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-%endif
-
-%if %{with wheel}
-%python_expand install -D -m 0644 -t %{buildroot}%{$python_sitelib}/../wheels dist/*.whl
+%python_expand %fdupes %{buildroot}%{_bindir}
 %endif
 
 %if %{with test}
 %check
-export PYTHONPATH=$(pwd)/build/lib
-# Looks broken with 22.3.1
-donttest="test_pip_self_version_check_calls_underlying_implementation"
-%pytest -m "not network" -k "not ($donttest)" tests/unit
+%pytest -m "not network" tests/unit
 %endif
 
 %pre
@@ -157,36 +152,27 @@ donttest="test_pip_self_version_check_calls_underlying_implementation"
 # If libalternatives is used: Removing old update-alternatives entries.
 %python_libalternatives_reset_alternative pip
 
-%if !%{with test} && !%{with wheel}
 %post
 # keep the alternative groups separate. Users could decide to let pip and pip3 point to
 # different flavors
 %python_install_alternative pip
-%if "%{python_flavor}" != "python2"
 %python_install_alternative pip3
-%endif
 
 %postun
 %python_uninstall_alternative pip
 %python_uninstall_alternative pip3
-%endif
 
+%if !%{with test}
 %files %{python_files}
-%if !%{with test} && !%{with wheel}
 %license LICENSE.txt
 %doc AUTHORS.txt NEWS.rst README.rst
 %python_alternative %{_bindir}/pip
-%if "%{python_flavor}" == "python2"
-%{_bindir}/pip2
-%else
 %python_alternative %{_bindir}/pip3
-%endif
 %{_bindir}/pip%{python_bin_suffix}
-%{python_sitelib}/pip-%{version}*-info
+%{python_sitelib}/pip-%{version}.dist-info
 %{python_sitelib}/pip
-%endif
 
-%if %{with wheel}
+%files %{python_files wheel}
 %dir %{python_sitelib}/../wheels
 %{python_sitelib}/../wheels/*
 %endif
