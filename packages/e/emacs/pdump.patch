@@ -11,7 +11,7 @@ diff --git a/src/emacs.c b/src/emacs.c
 index 687b8c7f81f0..2d6bfe07d813 100644
 --- src/emacs.c
 +++ src/emacs.c
-@@ -920,11 +920,15 @@ load_pdump (int argc, char **argv, char *dump_file)
+@@ -867,11 +867,15 @@ load_pdump (int argc, char **argv, char *dump_file)
      NULL
  #endif
      ;
@@ -27,7 +27,7 @@ index 687b8c7f81f0..2d6bfe07d813 100644
  #endif
      ;
  
-@@ -1065,7 +1069,11 @@ load_pdump (int argc, char **argv, char *dump_file)
+@@ -1012,7 +1016,11 @@ load_pdump (int argc, char **argv, char *dump_file)
  	  if (IS_DIRECTORY_SEP (*p))
  	    last_sep = p;
  	}

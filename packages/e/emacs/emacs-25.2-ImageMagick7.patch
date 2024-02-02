@@ -7,7 +7,7 @@ Index: emacs-25.2/configure.ac
 
 --- emacs-29.1/configure.ac
 +++ emacs-29.1/configure.ac	2023-08-01 07:15:12.274827913 +0000
-@@ -2884,7 +2884,7 @@ if test "${HAVE_X11}" = "yes" || test "$
+@@ -2883,7 +2883,7 @@ if test "${HAVE_X11}" = "yes" || test "$
      else
         ## 6.3.5 is the earliest version known to work; see Bug#17339.
         ## 6.8.2 makes Emacs crash; see Bug#13867.
