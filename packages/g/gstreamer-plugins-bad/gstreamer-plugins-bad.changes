@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb  1 10:56:39 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.9:
+  + av1parser: Fix potential stack overflow during tile list
+    parsing (CVE-2024-0444, bsc#1219453, ZDI-CAN-22300)
+  + camerabin: Correctly relink viewfinderbin_queue
+  + GstPlay: Fix error details parsing
+  + h264decoder: Handle malformed avc/avc3 packets
+  + h264decoder: h265decoder: Align with wraparound fix
+  + vp8decoder: vp9decoder: av1decoder: mpeg2decoder:
+    Fix multiplication wraparound
+  + vah264enc/vah264dec issues after recent upgrade to 1.22.8
+    from 1.22.7
+  + va: fixes for Mesa Gallium drivers in Mesa versions older
+    than v23.2
+  + vp9parse: Fix critical warning during caps negotiation
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Tue Jan 23 16:03:37 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Disable zxing in Leap15
