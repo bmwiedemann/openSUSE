@@ -1,7 +1,7 @@
 #
 # spec file for package perl-gettext
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,10 +21,10 @@ Version:        1.07
 Release:        0
 %define cpan_name gettext
 Summary:        Message Handling Functions
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/gettext/
-Source0:        http://www.cpan.org/authors/id/P/PV/PVANDRY/%{cpan_name}-%{version}.tar.gz
+URL:            https://search.cpan.org/dist/gettext/
+Source0:        https://www.cpan.org/authors/id/P/PV/PVANDRY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -107,7 +107,8 @@ given by *codeset* if the encoding of the message catalog is known.
 %{__make} %{?_smp_mflags}
 
 %check
-%{__make} test
+# Testsuite fails with LANG=C.UTF-8 and glibc 2.39
+LANG=en_US.UTF-8 %{__make} test
 
 %install
 %perl_make_install
