@@ -2957,6 +2957,8 @@ BuildFlags: onlybuild:python310
 BuildFlags: onlybuild:python310:base
 BuildFlags: onlybuild:python311
 BuildFlags: onlybuild:python311:base
+BuildFlags: onlybuild:python312
+BuildFlags: onlybuild:python312:base
 BuildFlags: onlybuild:python39
 BuildFlags: onlybuild:python39:base
 BuildFlags: onlybuild:python:python-base
