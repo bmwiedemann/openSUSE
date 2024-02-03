@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  2 18:33:22 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Run testsuite with locale LANG=en_US.UTF. It fails otherwise with
+  glibc 2.39
+
+-------------------------------------------------------------------
 Sat Jun 25 06:26:54 UTC 2016 - coolo@suse.com
 
 - update to 1.07

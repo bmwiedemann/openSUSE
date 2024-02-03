@@ -182,4 +182,12 @@
    Add META.yml (Fixes #91921)</comment>
     <requestid>405486</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>333edfe84f338eaef13bff94657d6609</srcmd5>
+    <version>1.07</version>
+    <time>1706953677</time>
+    <user>dimstar_suse</user>
+    <comment>- Run testsuite with locale LANG=en_US.UTF. It fails otherwise with glibc 2.39 (forwarded request 1143717 from anag+factory)</comment>
+    <requestid>1143771</requestid>
+  </revision>
 </revisionlist>
