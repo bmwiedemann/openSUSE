@@ -2961,7 +2961,6 @@ BuildFlags: onlybuild:python312
 BuildFlags: onlybuild:python312:base
 BuildFlags: onlybuild:python39
 BuildFlags: onlybuild:python39:base
-BuildFlags: onlybuild:python:python-base
 BuildFlags: onlybuild:qca:qt5
 BuildFlags: onlybuild:qemu
 BuildFlags: onlybuild:qml-autoreqprov
