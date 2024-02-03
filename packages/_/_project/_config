@@ -850,7 +850,7 @@ Prefer: -python39-txt2tags -python310-txt2tags -python312-txt2tags
 Prefer: -libcontainers-default-policy
 
 # have choice for python3-jsonschema: python311-jsonschema python311-jsonschema417
-Prefer: -python39-jsonschema417 -python310-jsonschema417 -python311-jsonschema417
+Prefer: -python39-jsonschema417 -python310-jsonschema417 -python311-jsonschema417 -python312-jsonschema417
 Prefer: -python39-jsonschema417-format-nongpl
 Prefer: -python310-jsonschema417-format-nongpl
 Prefer: -python311-jsonschema417-format-nongpl
@@ -882,7 +882,7 @@ Prefer: chrony
 Prefer: -procps4
 
 # have choice for python39-sqlalchemy >= 1.4: python39-SQLAlchemy python39-SQLAlchemy1
-Prefer: -python39-SQLAlchemy1 -python310-SQLAlchemy1 -python311-SQLAlchemy1
+Prefer: -python39-SQLAlchemy1 -python310-SQLAlchemy1 -python311-SQLAlchemy1 -python312-SQLAlchemy1
 
 # have choice for (python36-qt5 or python36-PyQt6) needed by python36-pytest-qt
 Prefer: -python310-PyQt6 -python39-PyQt6 -python3-pyside2
@@ -971,11 +971,11 @@ Prefer: -libomp15-devel -libomp16-devel
 
 # have choice for python3dist(jupyterlab) = 3.6.2 needed by jupyter-jupyterlab: python310-jupyterlab python311-jupyterlab python38-jupyterlab python39-jupyterlab
 Prefer: -python310-jupyterlab -python39-jupyterlab
-Prefer: -python310-jupyter-client7 -python39-jupyter-client7
-Prefer: -python310-jupyter-client7 -python39-jupyter-client7
+Prefer: -python39-jupyter-client7
+Prefer: -python310-jupyter-client7
 Prefer: -python311-jupyter-client7
-Prefer: -python311-jupyter-client7
-Prefer: -python310-nbclassic -python39-nbclassic
+Prefer: -python312-jupyter-client7
+Prefer: -python310-nbclassic -python39-nbclassic -python312-nbclassic
 prefer: -python310-notebook -python39-notebook
 
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
