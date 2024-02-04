@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 03 08:46:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.6:
+  * Bump version to 2.9.6 (#17078)
+  * chore(deps): rm go-jose Cxb6dee8d5-b814 high vuln (#16947)
+    (#16970) (#17056)
+  * fix(redis): go-redis v9 regression missing metrics and
+    reconnect hook (#13415) (#15275) (#17024)
+  * fix(ui): Badge for apps in any namespace (#16739) (#17008)
+  * fix(server): allow disabling content-type check (#16959)
+    (#16977)
+
+-------------------------------------------------------------------
 Sat Jan 20 17:05:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.9.5:
