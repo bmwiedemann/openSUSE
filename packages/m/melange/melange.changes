@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Feb 03 17:40:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.7:
+  * Pass the correct env.env to the container.
+  * test: skip when executing on an unsupported arch
+  * melamge bump: only update expected commit shas for the main
+    git-checkout
+  * stop logging tons of "detected git commit for build
+    configuration" when parsing melage config
+  * Embed melange version in .PKGINFO
+  * Fix missing no-depends check
+  * build(deps): bump google.golang.org/api from 0.154.0 to 0.161.0
+  * build(deps): bump github.com/kubescape/go-git-url from 0.0.26
+    to 0.0.27
+  * build(deps): bump github.com/chainguard-dev/yam
+  * Bump apko to v0.14.0
+  * Update CODE_OF_CONDUCT.md
+  * Update CODE_OF_CONDUCT.md
+  * Switch to octo-sts-action (#968)
+  * build(deps): bump actions/upload-artifact from 4.0.0 to 4.3.0
+  * warn on invalid license, log SCA findings
+  * unexport some methods in pkg/sbom
+  * Fix aws-c-s3 SCA
+  * Don't include libexec directories in SCA includes
+  * tidy
+  * drop the lima runner
+  * Take advantage of Octo STS to publish homebrew updates. (#956)
+  * Pin to digest for setup-go in melange
+  * build(deps): bump actions/download-artifact from 4.1.0 to 4.1.1
+
+-------------------------------------------------------------------
 Tue Jan 23 18:00:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.6:
