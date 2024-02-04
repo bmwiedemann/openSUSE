@@ -504,7 +504,6 @@ for i in pam.d/cups ; do
      test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 %endif
-getent group ntadmin >/dev/null || %{_sbindir}/groupadd -g 71 -o -r ntadmin
 %service_add_pre cups.service cups-lpd.socket cups.socket
 
 %post -p /bin/bash
@@ -674,7 +673,6 @@ exit 0
 /usr/lib/cups/notifier/dbus
 /usr/lib/cups/notifier/mailto
 /usr/lib/cups/notifier/rss
-%dir %attr(0775,root,ntadmin) %{_datadir}/cups/drivers
 %doc %{_defaultdocdir}/cups
 %doc %{_mandir}/man1/cups.1.gz
 %doc %{_mandir}/man1/cupstestppd.1.gz
