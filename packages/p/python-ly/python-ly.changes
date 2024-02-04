@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  4 14:31:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Disable test suite
+  * tests are not python unittest but pytest style
+  * When enabled with pytest they revealed a bunch of problems:
+  * gh#frescobaldi/python-ly#167: Add python-ly-pkginfo-name.patch
+  * gh#frescobaldi/python-ly#153 The tests do not work at all
+
+-------------------------------------------------------------------
 Mon Jan 29 09:28:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Enable SLE15 python module

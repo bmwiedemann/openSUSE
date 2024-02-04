@@ -24,9 +24,12 @@ Summary:        Tool and library for manipulating LilyPond files
 License:        GPL-2.0-or-later
 URL:            https://github.com/frescobaldi/python-ly
 Source:         https://github.com/frescobaldi/python-ly/archive/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-ly-pkginfo-name.patch gh#frescobaldi/python-ly#167
+Patch0:         https://github.com/frescobaldi/python-ly/commit/233de7e253086c3eaad21c5b5223169832b36282.patch#/python-ly-pkginfo-name.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
+#BuildRequires:  %%{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -40,7 +43,7 @@ BuildArch:      noarch
 Tool and library for manipulating LilyPond files
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %pyproject_wheel
@@ -52,7 +55,8 @@ Tool and library for manipulating LilyPond files
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v
+# https://github.com/frescobaldi/python-ly/issues/153
+#%%pytest
 
 %post
 %python_install_alternative ly ly-server
