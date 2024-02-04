@@ -1,7 +1,7 @@
 #
 # spec file for package recidivm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           recidivm
-Version:        0.2
+Version:        0.2.1
 Release:        0
 Summary:        Tool for estimating peak virtual memory use
 License:        MIT
 Group:          Development/Tools/Other
-Url:            http://jwilk.net/software/recidivm
+URL:            http://jwilk.net/software/recidivm
 Source:         https://github.com/jwilk/recidivm/releases/download/%{version}/recidivm-%{version}.tar.gz
-Source1:        https://github.com/jwilk/recidivm/releases/download/%{version}/recidivm-%{version}.tar.gz.asc
-Source2:        %{name}.keyring
 BuildRequires:  gcc
 
 %description
