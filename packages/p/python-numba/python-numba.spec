@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-numba
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,23 +30,34 @@
 %define psuffix -test-py39
 %define skip_python310 1
 %define skip_python311 1
+%define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
 %define skip_python39 1
 %define skip_python311 1
+%define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py311"
 %define psuffix -test-py311
 %define skip_python39 1
 %define skip_python310 1
+%define skip_python312 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py312"
+%define psuffix -test-py312
+%define skip_python39 1
+%define skip_python310 1
+%define skip_python311 1
 %bcond_without test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-numba%{?psuffix}
-Version:        0.58.1
+Version:        0.59.0
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -55,7 +66,7 @@ URL:            https://numba.pydata.org/
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -64,10 +75,10 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  (tbb-devel >= 2021)
-Requires:       (python-llvmlite >= 0.41 with python-llvmlite < 0.42)
+Requires:       (python-llvmlite >= 0.42 with python-llvmlite < 0.43)
 Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Jinja2
 Recommends:     python-Pygments
 Recommends:     python-cffi

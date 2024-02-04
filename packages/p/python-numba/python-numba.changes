@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  3 07:04:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.59.0
+  * Python 3.12 support
+  * minimum supported version to 3.9
+  * Add support for ufunc attributes and reduce
+  * Add a config variable to enable / disable the llvmlite memory
+    manager
+  * see https://numba.readthedocs.io/en/stable/release/0.59.0-notes.html#highlights
+
+-------------------------------------------------------------------
 Mon Nov 20 12:15:07 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.58.1
@@ -29,7 +40,7 @@ Mon Aug 21 19:53:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
 Mon Aug 14 06:47:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.57.1:
-  * fix regressions with 0.57.0 
+  * fix regressions with 0.57.0
 - remove upper bound on numpy - upstream does not have it either
 
 -------------------------------------------------------------------
@@ -49,7 +60,7 @@ Fri May 26 13:28:26 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
     + Numba’s unicode functionality in str.startswith now supports kwargs
       start and end.
     + min and max now support boolean types.
-    + Support is added for the dict(iterable) constructor. 
+    + Support is added for the dict(iterable) constructor.
 - Dropped patches:
   * numba-pr8620-np1.24.patch
   * update-tbb-backend-calls-2021.6.patch
@@ -58,7 +69,7 @@ Fri May 26 13:28:26 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Wed Apr 12 05:53:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Clean up leftover Python 3.8 gubbins, look forward to Python 3.11 support. 
+- Clean up leftover Python 3.8 gubbins, look forward to Python 3.11 support.
 
 -------------------------------------------------------------------
 Tue Apr 11 08:30:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -297,12 +308,12 @@ Thu Nov 18 18:42:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Per function compiler flags with inheritance behaviours.
   * The extension API now has support for overloading class methods
     via the @overload_classmethod decorator.
-  
+
   Deprecations:
   * The ROCm target (for AMD ROC GPUs) has been moved to an
     “unmaintained” status and a seperate repository stub has been
     created for it at: https://github.com/numba/numba-rocm
- 
+
   CUDA target deprecations and breaking changes:
   * Relaxed strides checking is now the default when computing the
     contiguity of device arrays.
@@ -311,7 +322,7 @@ Thu Nov 18 18:42:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
     compile_ptx() instead.
   * Eager compilation of device functions (the case when
     device=True and a signature is provided) is deprecated.
- 
+
   Version support/dependency changes:
   * LLVM 11 is now supported on all platforms via llvmlite.
   * The minimum supported Python version is raised to 3.7.
@@ -356,35 +367,35 @@ Wed Feb 17 09:49:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.52.0
   https://numba.readthedocs.io/en/stable/release-notes.html
-  This release focuses on performance improvements, but also adds 
-  some new features and contains numerous bug fixes and stability 
+  This release focuses on performance improvements, but also adds
+  some new features and contains numerous bug fixes and stability
   improvements.
   Highlights of core performance improvements include:
-  * Intel kindly sponsored research and development into producing 
-    a new reference count pruning pass. This pass operates at the 
-    LLVM level and can prune a number of common reference counting 
-    patterns. This will improve performance for two primary 
+  * Intel kindly sponsored research and development into producing
+    a new reference count pruning pass. This pass operates at the
+    LLVM level and can prune a number of common reference counting
+    patterns. This will improve performance for two primary
     reasons:
-    - There will be less pressure on the atomic locks used to do 
+    - There will be less pressure on the atomic locks used to do
       the reference counting.
-    - Removal of reference counting operations permits more 
-      inlining and the optimisation passes can in general do more 
+    - Removal of reference counting operations permits more
+      inlining and the optimisation passes can in general do more
       with what is present.
     (Siu Kwan Lam).
-  * Intel also sponsored work to improve the performance of the 
-    numba.typed.List container, particularly in the case of 
+  * Intel also sponsored work to improve the performance of the
+    numba.typed.List container, particularly in the case of
     __getitem__ and iteration (Stuart Archibald).
-  * Superword-level parallelism vectorization is now switched on 
-    and the optimisation pipeline has been lightly analysed and 
-    tuned so as to be able to vectorize more and more often 
+  * Superword-level parallelism vectorization is now switched on
+    and the optimisation pipeline has been lightly analysed and
+    tuned so as to be able to vectorize more and more often
     (Stuart Archibald).
   Highlights of core feature changes include:
-  * The inspect_cfg method on the JIT dispatcher object has been 
-    significantly enhanced and now includes highlighted output and 
+  * The inspect_cfg method on the JIT dispatcher object has been
+    significantly enhanced and now includes highlighted output and
     interleaved line markers and Python source (Stuart Archibald).
-  * The BSD operating system is now unofficially supported (Stuart 
+  * The BSD operating system is now unofficially supported (Stuart
     Archibald).
-  * Numerous features/functionality improvements to NumPy support, 
+  * Numerous features/functionality improvements to NumPy support,
     including support for:
     - np.asfarray (Guilherme Leobas)
     - “subtyping” in record arrays (Lucio Fernandez-Arjona)
@@ -392,28 +403,28 @@ Wed Feb 17 09:49:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
     - operator.contains with ndarray (@mugoh).
     - np.asarray_chkfinite (Rishabh Varshney).
     - NumPy 1.19 (Stuart Archibald).
-    - the ndarray allocators, empty, ones and zeros, accepting a 
+    - the ndarray allocators, empty, ones and zeros, accepting a
       dtype specified as a string literal (Stuart Archibald).
   * Booleans are now supported as literal types (Alexey Kozlov).
   * On the CUDA target:
   * CUDA 9.0 is now the minimum supported version (Graham Markall).
   * Support for Unified Memory has been added (Max Katz).
   * Kernel launch overhead is reduced (Graham Markall).
-  * Cudasim support for mapped array, memcopies and memset has 
+  * Cudasim support for mapped array, memcopies and memset has
     been   * added (Mike Williams).
   * Access has been wired in to all libdevice functions (Graham
     Markall).
-  * Additional CUDA atomic operations have been added (Michae 
+  * Additional CUDA atomic operations have been added (Michae
     Collison).
-  * Additional math library functions (frexp, ldexp, isfinite) 
+  * Additional math library functions (frexp, ldexp, isfinite)
     (Zhihao   * Yuan).
   * Support for power on complex numbers (Graham Markall).
   Deprecations to note:
-  * There are no new deprecations. However, note that 
-    “compatibility” mode, which was added some 40 releases ago to 
-    help transition from 0.11 to 0.12+, has been removed! Also, 
-    the shim to permit the import of jitclass from Numba’s top 
-    level namespace has now been removed as per the deprecation 
+  * There are no new deprecations. However, note that
+    “compatibility” mode, which was added some 40 releases ago to
+    help transition from 0.11 to 0.12+, has been removed! Also,
+    the shim to permit the import of jitclass from Numba’s top
+    level namespace has now been removed as per the deprecation
     schedule.
 - NEP 29: Skip python36 build. Python 3.6 is dropped by NumPy 1.20
 
@@ -494,7 +505,7 @@ Fri Apr 24 14:07:35 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
     (Valentin Haenel).
   * Experimental support was added for first-class function types
     (Pearu Peterson).
-- Refreshed patch skip-failing-tests.patch 
+- Refreshed patch skip-failing-tests.patch
   * the troublesome tests are skipped upstream on 32-bit
 - Unpin llvmlite
 
@@ -765,7 +776,7 @@ Fri Oct 26 19:45:47 UTC 2018 - Todd R <toddrme2178@gmail.com>
     * Experimental support for executing a block of code inside a nopython mode
      function in object mode.
     * Parallel loops now allow arrays as reduction variables
-    * CUDA improvements: FMA, faster float64 atomics on supporting hardware, 
+    * CUDA improvements: FMA, faster float64 atomics on supporting hardware,
      records in const memory, and improved datatime dtype support
     * More NumPy functions: vander, tri, triu, tril, fill_diagonal
   + General Enhancements:
