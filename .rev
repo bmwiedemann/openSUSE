@@ -1052,4 +1052,12 @@
     section in GTK 4. (forwarded request 1137883 from polslinux)</comment>
     <requestid>1137910</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>a4bc815443e92c7d07763dca7a0846d2</srcmd5>
+    <version>4.0.5</version>
+    <time>1707070107</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143780</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  3 11:00:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Have transmission-daemon provide user(transmission) and
+  group(transmission): the user/group are generated in the pre
+  scriptlet using useradd/groupadd.
+
+-------------------------------------------------------------------
 Wed Jan 10 08:19:14 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 4.0.5:
