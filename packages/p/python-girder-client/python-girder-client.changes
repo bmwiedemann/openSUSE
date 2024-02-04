@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb  3 13:40:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * metadata fixes
+  * python 3.8 required
+- switch to PEP517 build
+
+-------------------------------------------------------------------
 Sun Dec 17 02:08:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.24:
