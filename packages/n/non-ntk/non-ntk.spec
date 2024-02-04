@@ -1,7 +1,7 @@
 #
 # spec file for package non-ntk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,8 +39,8 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(xft)
-# needed by ./waf
-BuildRequires:  python-base
+# ./waf has a env python shebang, but is also compatible with python3
+BuildRequires:  python3-base
 BuildRequires:  gcc-c++
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
@@ -84,12 +84,12 @@ sed -i -e "s|append_value('C\(.*\)FLAGS', CFLAGS|append_value('C\1FLAGS','%{optf
  wscript
 
 %build
-LDFLAGS="%{?__global_ldflags}" ./waf -v configure --prefix=%{_prefix} \
+LDFLAGS="%{?__global_ldflags}" python3 ./waf -v configure --prefix=%{_prefix} \
   --libdir=%{_libdir} --enable-gl
-./waf -v %{?_smp_mflags}
+python3 ./waf -v %{?_smp_mflags}
 
 %install
-./waf -v install --destdir=%{buildroot}
+python3 ./waf -v install --destdir=%{buildroot}
 install -d -m 0755 %{buildroot}%{_datadir}/applications
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/ntk-fluid.desktop
 rm %{buildroot}%{_libdir}/libntk*.a*
