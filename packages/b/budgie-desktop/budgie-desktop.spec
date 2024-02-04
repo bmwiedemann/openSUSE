@@ -27,7 +27,7 @@
 %bcond_without magpie
 %endif
 Name:           budgie-desktop
-Version:        10.8.2+0
+Version:        10.9+2
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -45,7 +45,6 @@ BuildRequires:  pkgconfig(accountsservice)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gnome-settings-daemon) >= 41.0
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -72,6 +71,8 @@ BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
+BuildRequires:  pkgconfig(libxfce4windowing-0)
+BuildRequires:  pkgconfig(upower-glib)
 # remove old applet
 Provides:       budgie-trash-applet = 1.7.0
 Obsoletes:      budgie-trash-applet < 1.7.0
@@ -87,6 +88,7 @@ Requires:       typelib-1_0-Budgie-1_0 >= %{version}
 Requires:       typelib-1_0-BudgieRaven-1_0 >= %{version}
 Requires:       budgie-desktop-branding >= 20220627.1
 Requires:       budgie-control-center >= 1.3.0+0
+Requires:       budgie-session >= 0.9.1
 %if %{with magpie}
 Requires:       magpie >= 0.9.3+0
 %endif
@@ -100,9 +102,11 @@ Requires:       libbudgie-private0 >= %{version}
 Requires:       libbudgie-appindexer0 >= %{version}
 Requires:       libbudgie-raven-plugin0 >= %{version}
 #
-Requires:       gnome-session-core
+Requires:       upower
+Requires:       gstreamer
+Requires:       libnotify-tools
+Requires:       libcanberra-gtk3-module
 Requires:       gnome-settings-daemon
-Requires:       gnome-bluetooth = 3.34.5
 Requires:       ibus
 Requires:       libgnomesu
 Requires:       xdg-user-dirs-gtk
@@ -206,7 +210,7 @@ Shared library for budgie raven plugins to link against.
 
 %build
 export CFLAGS="%{optflags} -Wno-pedantic"
-%meson -Dc_std=none -Dxdg-appdir=%{_sysconfdir}/xdg/autostart
+%meson -Dc_std=none -Dxdg-appdir=%{_distconfdir}/xdg/autostart
 %meson_build
 
 %install
@@ -217,7 +221,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopScreensaver.desktop
+# handled by budgie-screensaver
+rm %{buildroot}%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopScreensaver.desktop
 
 %find_lang %{name}
 
@@ -254,7 +259,7 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopScr
 %dir %{_datadir}/xdg-desktop-portal
 %{_datadir}/xdg-desktop-portal/budgie-portals.conf
 %{_libdir}/budgie-desktop
-%{_sysconfdir}/xdg/autostart/*.desktop
+%{_distconfdir}/xdg/autostart/*.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %ghost %{_sysconfdir}/alternatives/default.desktop
 

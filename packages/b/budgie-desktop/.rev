@@ -473,4 +473,12 @@
     <comment>10.8.2 but fixed</comment>
     <requestid>1128771</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>97b79b6c7443a42f298e4d57b44d3c78</srcmd5>
+    <version>10.9+2</version>
+    <time>1707070039</time>
+    <user>anag+factory</user>
+    <comment>Budgie 10.9</comment>
+    <requestid>1143469</requestid>
+  </revision>
 </revisionlist>
