@@ -491,4 +491,12 @@ replace plaintext widget with mini-html widget (forwarded request 522296 from je
   systemctl instead of the no longer relevant init script. (forwarded request 1137157 from aaronpuchert)</comment>
     <requestid>1137176</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>09d5245cc2716a85d2b253cb06043e95</srcmd5>
+    <version>7.24.1</version>
+    <time>1707070161</time>
+    <user>anag+factory</user>
+    <comment>- Employ %sysuser macros to generate &quot;boinc&quot; user</comment>
+    <requestid>1143836</requestid>
+  </revision>
 </revisionlist>
