@@ -50,4 +50,16 @@
   * Support for INSERT/UPDATE/DELETE statements</comment>
     <requestid>1135313</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9438c1101075775af2f78ae6917c0bbf</srcmd5>
+    <version>0.5.1</version>
+    <time>1707070194</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.1:
+  * Support INSERT/DELETE/UPDATE queries:
+    * that contain a table name without quotes
+    * that contain parameters
+    * when calling get_query_metadata()</comment>
+    <requestid>1143990</requestid>
+  </revision>
 </revisionlist>
