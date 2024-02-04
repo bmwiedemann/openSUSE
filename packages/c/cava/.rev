@@ -260,4 +260,14 @@
   * noncurses is now default</comment>
     <requestid>1137795</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>863fedd7e72c289ae0b6881b44fac54d</srcmd5>
+    <version>0.10.1</version>
+    <time>1707070064</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.1:
+  * JACK support
+  * default to pulseaudio before sndio</comment>
+    <requestid>1143715</requestid>
+  </revision>
 </revisionlist>

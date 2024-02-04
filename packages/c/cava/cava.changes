@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  2 17:50:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.1:
+  * JACK support
+  * default to pulseaudio before sndio
+
+-------------------------------------------------------------------
 Tue Jan  9 19:03:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.0:
