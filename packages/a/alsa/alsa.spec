@@ -1,7 +1,7 @@
 #
 # spec file for package alsa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 
 Name:           alsa
-Version:        1.2.10
+Version:        1.2.11
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
@@ -56,16 +56,6 @@ Source34:       alsa-init.sh
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source35:       alsa.keyring
 # upstream fixes
-Patch1:         0001-control.h-Fix-ump-header-file-detection.patch
-Patch2:         0002-global.h-move-__STRING-macro-outside-PIC-ifdef-block.patch
-Patch3:         0003-pcm-Fix-segfault-with-32bit-libs.patch
-Patch4:         0004-reshuffle-included-files-to-include-config.h-as-firs.patch
-Patch5:         0005-seq-Fix-typos-in-symbol-version-definitions.patch
-Patch6:         0006-seq-Fix-invalid-sanity-check-in-snd_seq_set_input_bu.patch
-Patch7:         0007-mixer-simple-Support-dB-TLVs-for-CTL_SINGLE-controls.patch
-Patch8:         0008-seq-Clear-UMP-event-flag-for-legacy-apps.patch
-Patch9:         0009-seq-Simplify-snd_seq_extract_output.patch
-Patch10:        0010-seq-Check-protocol-compatibility-with-the-current-ve.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
