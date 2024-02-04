@@ -383,4 +383,41 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     <comment></comment>
     <requestid>1127835</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a98165935b7f61508ce2784472ed60b2</srcmd5>
+    <version>0.59.0</version>
+    <time>1707070079</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.59.0
+  * Python 3.12 support
+  * minimum supported version to 3.9
+  * Add support for ufunc attributes and reduce
+  * Add a config variable to enable / disable the llvmlite memory
+    manager
+  * see https://numba.readthedocs.io/en/stable/release/0.59.0-notes.html#highlights
+
+  * fix regressions with 0.57.0
+    + Support is added for the dict(iterable) constructor.
+- Clean up leftover Python 3.8 gubbins, look forward to Python 3.11 support.
+  This release focuses on performance improvements, but also adds
+  some new features and contains numerous bug fixes and stability
+  * Intel kindly sponsored research and development into producing
+    a new reference count pruning pass. This pass operates at the
+    LLVM level and can prune a number of common reference counting
+    patterns. This will improve performance for two primary
+    - There will be less pressure on the atomic locks used to do
+    - Removal of reference counting operations permits more
+      inlining and the optimisation passes can in general do more
+  * Intel also sponsored work to improve the performance of the
+    numba.typed.List container, particularly in the case of
+  * Superword-level parallelism vectorization is now switched on
+    and the optimisation pipeline has been lightly analysed and
+    tuned so as to be able to vectorize more and more often
+  * The inspect_cfg method on the JIT dispatcher object has been
+    significantly enhanced and now includes highlighted output and
+  * The BSD operating system is now unofficially supported (Stuart
+  * Numerous features/functionality improvements to NumPy support,
+    - the ndarray allocators, empty, ones and zeros, accepting a</comment>
+    <requestid>1143960</requestid>
+  </revision>
 </revisionlist>
