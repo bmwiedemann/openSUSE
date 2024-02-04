@@ -114,4 +114,12 @@ AFAICT these packages aren't needed for generating the docs and the official doc
     <comment>- Update to release 2.4.1</comment>
     <requestid>1137692</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>98db129e207a4ef6fbbc6b7a2198fc46</srcmd5>
+    <version>2.4.1</version>
+    <time>1707070157</time>
+    <user>anag+factory</user>
+    <comment>- Generate &quot;keadhcp&quot; user with sysusers mechanism</comment>
+    <requestid>1143824</requestid>
+  </revision>
 </revisionlist>
