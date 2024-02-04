@@ -71,4 +71,12 @@
     <comment>- Removed Wants=network.target from mednafen.service (bsc#1196359).</comment>
     <requestid>960796</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>0d7f8d0462ac704b4be90dd994c7fde7</srcmd5>
+    <version>0.5.2</version>
+    <time>1707070204</time>
+    <user>anag+factory</user>
+    <comment>- Provided user(mednafen).</comment>
+    <requestid>1144018</requestid>
+  </revision>
 </revisionlist>
