@@ -1297,4 +1297,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1142944</requestid>
   </revision>
+  <revision rev="171" vrev="2">
+    <srcmd5>b9050b46b368237db3af185f3b3158e6</srcmd5>
+    <version>2.4.7</version>
+    <time>1707070004</time>
+    <user>anag+factory</user>
+    <comment>cups: Removed outdated ntadmin stuff from cups.spec (boo#1219503) (forwarded request 1143647 from jsmeix)</comment>
+    <requestid>1143648</requestid>
+  </revision>
 </revisionlist>
