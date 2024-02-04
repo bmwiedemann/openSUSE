@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  4 17:23:23 UTC 2024 - Илья Индиго <ilya@ilya.cf>
+
+- Provided user(mednafen).
+
+-------------------------------------------------------------------
 Thu Mar 10 13:28:09 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Removed Wants=network.target from mednafen.service (bsc#1196359).

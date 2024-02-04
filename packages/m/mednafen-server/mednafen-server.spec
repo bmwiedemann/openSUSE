@@ -1,7 +1,7 @@
 #
 # spec file for package mednafen-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source2:        %{_user}.firewalld
 BuildRequires:  gcc-c++
 Requires(pre):  group(games)
 Requires(pre):  shadow
+Provides:       user(%{_user})
 
 %description
 Network play server for mednafen
@@ -45,7 +46,6 @@ Network play server for mednafen
 %install
 %make_install
 mkdir -p %{buildroot}%{_sbindir}
-ln -fs %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{_user}
 install -Dpm0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{_user}.service
 install -Dpm0664 standard.conf %{buildroot}%{_home}/%{name}.conf
 install -Dpm0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/firewalld/services/%{_user}.xml
@@ -68,7 +68,6 @@ getent passwd %{_user} >/dev/null 2>/dev/null || %{_sbindir}/useradd -rc 'User f
 %license COPYING
 %doc ChangeLog
 %{_bindir}/%{name}
-%{_sbindir}/rc%{_user}
 %{_unitdir}/%{_user}.service
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
