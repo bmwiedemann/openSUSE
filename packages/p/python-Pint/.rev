@@ -243,4 +243,36 @@
     <comment></comment>
     <requestid>1135595</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>aae6f74511055eb20c06474628a3845f</srcmd5>
+    <version>0.23</version>
+    <time>1707070192</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23:
+  * Add _get_conversion_factor to registry with cache.
+  * Homogenize input and ouput of internal regitry functions to
+    facility typing, subclassing and wrapping.
+    (_yield_unit_triplets, )
+  * Generated downstream_status page to track the
+    state of downstream projects.
+  * Improve typing annotation.
+  * Updated to flexparser 0.2.
+  * Faster wraps
+  * Add codspeed github action.
+  * Move benchmarks to pytest-benchmarks.
+  * Support pytest on python 3.12 wrt Fraction formatting change
+  * Fixed Transformation type protocol.
+  * Documented to_preferred and created added an
+    autoautoconvert_to_preferred registry option.
+  * Enable Pint to parse uncertainty numbers.
+  * Optimize matplotlib unit conversion for Quantity arrays
+  * Add numpy.linalg.norm implementation.
+
+  * Better support for pandas and dask.
+  * Implements a first benchmark suite in airspeed velocity (asv).
+  - Improved behaviour in ScaleConverter, OffsetConverter
+  - Reimplemented loading of default definitions to allow Pint in
+  - Added UnitRegistry () operator to parse</comment>
+    <requestid>1143987</requestid>
+  </revision>
 </revisionlist>
