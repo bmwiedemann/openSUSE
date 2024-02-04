@@ -60,6 +60,7 @@ BuildRequires:  pkgconfig(pwquality)
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(udisks2)
 BuildRequires:  pkgconfig(upower-glib)
+Requires:       gnome-bluetooth = 3.34.5
 
 %description
 Fork of GNOME Control Center for Budgie 10

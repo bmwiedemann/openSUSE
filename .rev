@@ -139,4 +139,14 @@
 </comment>
     <requestid>1108119</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c91bee0241eb0636fbd14d5f7459e700</srcmd5>
+    <version>1.3.0+0</version>
+    <time>1707070035</time>
+    <user>anag+factory</user>
+    <comment>- GNOME Bluetooth v1 will stick around until we can remove it
+  from here - hopefully very soon
+</comment>
+    <requestid>1143385</requestid>
+  </revision>
 </revisionlist>
