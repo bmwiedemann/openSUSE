@@ -7,4 +7,12 @@
     <comment>Submitting package to openSUSE:Factory, without triggers.</comment>
     <requestid>1126585</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>14d8a4afbadee755cafff0990644052e</srcmd5>
+    <version>2.2.0</version>
+    <time>1707070084</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143769</requestid>
+  </revision>
 </revisionlist>
