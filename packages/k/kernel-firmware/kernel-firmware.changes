@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 02 14:10:05 UTC 2024 - tiwai@suse.com
+
+- More update on version 20240201 (git commit 3677750467cb):
+  * linux-firmware: wilc1000: update WILC1000 firmware to v16.1.2
+  * rtl_nic: add firmware for RTL8126A (bsc#1217417)
+  * qcom: Add Audio firmware for SM8550 HDK
+
+-------------------------------------------------------------------
+Thu Feb 01 16:37:39 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240201 (git commit 1b24d7d3379b):
+  * linux-firmware: intel: Add IPU6 firmware binaries
+  * ath11k: WCN6855 hw2.0: update to WLAN.HSP.1.1-03125-QCAHSPSWPL_V1_V2_SILICONZ_LITE-3.6510.37
+  * Revert "amdgpu: DMCUB updates for various AMDGPU ASICs"
+  * amdgpu: update SMU 13.0.0 firmware
+  * amdgpu: update PSP 13.0.0 firmware
+  * amdgpu: update GC 11.0.0 firmware
+  * brcm: Add brcmfmac43430-sdio.xxx.txt nvram for the Chuwi Hi8 (CWI509) tablet
+  * amdgpu: DMCUB updates for various AMDGPU ASICs
+
+-------------------------------------------------------------------
 Mon Jan 29 08:15:07 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240126 (git commit 8fa621d2f9c1):

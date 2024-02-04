@@ -38,6 +38,7 @@ mwl8k:		marvell
 mwifiex:	mwifiex		mwifiex mwifiex_pcie mwifiex_usb mwifiex_sdio btmrvl_sdio
 iwlwifi:	iwlwifi		iwlwifi iwl4965 iwl3945
 ipu3-imgu:	intel
+intel-ipu6-isys: intel
 mei-vsc-hw:	intel
 cx231xx:	media		cx25840
 ixp4xx-npe:	platform
