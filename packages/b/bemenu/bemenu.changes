@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  3 06:38:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.19:
+  * Revert "wayland: force window->scale = 1, if BEMENU_SCALE"
+
+-------------------------------------------------------------------
 Fri Feb  2 11:41:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.18:
