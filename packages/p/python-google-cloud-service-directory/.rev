@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1133777</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c68ef4ffa21da80836cc4c752b6ef977</srcmd5>
+    <version>1.11.0</version>
+    <time>1707070185</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.11.0:
+  * Allow users to explicitly configure universe domain</comment>
+    <requestid>1143979</requestid>
+  </revision>
 </revisionlist>
