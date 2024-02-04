@@ -56,4 +56,35 @@
 </comment>
     <requestid>1069704</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>561c2d6c64191253a26101d5a20dcc9b</srcmd5>
+    <version>0.10.0</version>
+    <time>1707070196</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.0:
+  * :class:`~mizani.formatters.mpl_format` has been removed,
+    :class:`~mizani.formatters.number_format` takes its place.
+  * :class:`~mizani.breaks.mpl_breaks` has been removed,
+    :class:`~mizani.breaks.extended_breaks` has always been
+    the default and it is sufficient.
+  * matplotlib has been removed as a dependency of mizani.
+  * mizani now requires python 3.9 and above.
+  * The units parameter for of :class:`~mizani.formatters.timedelta_format`
+    now accepts the values `&quot;min&quot;, &quot;day&quot;, &quot;week&quot;, &quot;month&quot;`,
+   instead of `&quot;m&quot;, &quot;d&quot;, &quot;w&quot;, &quot;M&quot;`.
+  * The naming convention for break formatting methods has changed
+    from `*_format` to `label_*`.
+  * The naming convention for break calculating methods has changed
+    from `*_breaks` to `breaks_*`. Specifically these methods have
+    been renamed.
+  * `log_breaks` is now :class:`~mizani.breaks.breaks_log`
+  * `trans_minor_breaks` is now :class:`~mizani.breaks.minor_breaks_trans`
+  * `date_breaks` is now :class:`~mizani.breaks. breaks_date`
+
+    values would cause a RuntimeError.
+  * Fixed issue with :class:`mizani.formatters.log_breaks` where non-linear
+    breaks could not be generated if the limits where greater than the largest
+  * Fixed :func:`mizani.scales.scale_discrete.train` when training categoricals</comment>
+    <requestid>1143988</requestid>
+  </revision>
 </revisionlist>

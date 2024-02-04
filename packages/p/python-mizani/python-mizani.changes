@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb  4 11:24:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * :class:`~mizani.formatters.mpl_format` has been removed,
+    :class:`~mizani.formatters.number_format` takes its place.
+  * :class:`~mizani.breaks.mpl_breaks` has been removed,
+    :class:`~mizani.breaks.extended_breaks` has always been
+    the default and it is sufficient.
+  * matplotlib has been removed as a dependency of mizani.
+  * mizani now requires python 3.9 and above.
+  * The units parameter for of :class:`~mizani.formatters.timedelta_format`
+    now accepts the values `"min", "day", "week", "month"`,
+   instead of `"m", "d", "w", "M"`.
+  * The naming convention for break formatting methods has changed
+    from `*_format` to `label_*`.
+  * The naming convention for break calculating methods has changed
+    from `*_breaks` to `breaks_*`. Specifically these methods have
+    been renamed.
+  * `log_breaks` is now :class:`~mizani.breaks.breaks_log`
+  * `trans_minor_breaks` is now :class:`~mizani.breaks.minor_breaks_trans`
+  * `date_breaks` is now :class:`~mizani.breaks. breaks_date`
+
+-------------------------------------------------------------------
 Mon Mar  6 16:30:10 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken test in i586 mizani.breaks.log_breaks, it's broken
@@ -25,7 +48,7 @@ Tue Feb 14 03:46:39 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
     mathtex for TeX values as understood by matplotlib instead of
     values in scientific notation.
   * Fixed bug in mizani.bounds.zero_range where uint64
-    values would cause a RuntimeError. 
+    values would cause a RuntimeError.
 
 -------------------------------------------------------------------
 Fri Feb  4 23:06:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -47,11 +70,11 @@ Thu Feb 18 09:14:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
 Fri Jul 10 09:01:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 0.7.1
-  * Fixed issue with :class:`mizani.formatters.log_breaks` where non-linear 
-    breaks could not be generated if the limits where greater than the largest 
+  * Fixed issue with :class:`mizani.formatters.log_breaks` where non-linear
+    breaks could not be generated if the limits where greater than the largest
     integer sys.maxsize.
   * Fixed :func:`mizani.palettes.gradient_n_pal` to return nan for nan values.
-  * Fixed :func:`mizani.scales.scale_discrete.train` when training categoricals 
+  * Fixed :func:`mizani.scales.scale_discrete.train` when training categoricals
     to maintain the order.
 
 -------------------------------------------------------------------
