@@ -1,7 +1,7 @@
 #
 # spec file for package workrave
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  libpulse-devel
 BuildRequires:  libtool
-BuildRequires:  python-xml
 BuildRequires:  python3-Jinja2
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-3.0)
