@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python38
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -182,11 +182,7 @@ Patch41:        99366-patch.dict-can-decorate-async.patch
 # PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
 # Detect email address parsing errors and return empty tuple to
 # indicate the parsing error (old API), from gh#python/cpython!105127
-# Patch carries a REGRESSION (gh#python/cpython#106669), so it has been also partially REVERTED
 Patch42:        CVE-2023-27043-email-parsing-errors.patch
-# PATCH-FIX-UPSTREAM Revert-gh105127-left-tests.patch bsc#1210638 mcepl@suse.com
-# Partially revert previous patch
-Patch43:        Revert-gh105127-left-tests.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -461,7 +457,6 @@ other applications.
 %patch38 -p1
 %patch41 -p1
 %patch42 -p1
-%patch43 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
