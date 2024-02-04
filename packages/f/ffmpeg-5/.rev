@@ -194,4 +194,13 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
     <comment>- Disable libjxl integration as ffmpeg-5 cannot handle libjxl&gt;=0.9.</comment>
     <requestid>1140025</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>bb7f7e791fffe03d340a1d4ad2c35324</srcmd5>
+    <version>5.1.4</version>
+    <time>1707070044</time>
+    <user>anag+factory</user>
+    <comment>- drop support for libmfx, which is no longer supported upstream
+  at all (boo#1219494) (forwarded request 1143611 from sndirsch)</comment>
+    <requestid>1143658</requestid>
+  </revision>
 </revisionlist>
