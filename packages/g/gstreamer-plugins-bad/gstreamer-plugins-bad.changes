@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  2 09:46:02 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- drop support for libmfx, which is no longer supported upstream
+  at all (boo#1219494)
+- added support for oneVPL
+
+-------------------------------------------------------------------
 Thu Feb  1 10:56:39 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.9:
