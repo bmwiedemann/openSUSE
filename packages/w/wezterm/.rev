@@ -703,4 +703,252 @@
 </comment>
     <requestid>1140240</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>37e013d31e9d58b7f1758b98fef172ff</srcmd5>
+    <version>20240128.202157.1e552d76+git29</version>
+    <time>1707070110</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240128.202157.1e552d76+git29:
+  * plumb a couple more window title invalidations through to gui
+  * Add lua version to debug overlay
+  * don't show default key assignments in palette when they are disabled
+  * mux: allow specifying cache policy for process information
+  * macos: add space between keycaps on command palette
+  * speculative fix for tab title change not invalidating window
+  * fix tmux passthrough escape sequence encoding
+  * Revert &quot;x11: scope the cyrillic ctrl-c workaround to cyrillic&quot;
+  * x11: scope the cyrillic ctrl-c workaround to cyrillic
+  * docs: changelog for #4910
+  * pty: improve unix path searching
+  * pty: don't try to spawn a directory from the cwd
+  * fix invalidation on palette change
+  * xkeyboard: maybe workaround next_group weirdness
+  * x11: improve keyboard trace diagnostics
+  * ci: regenerate workflows
+  * ci: Vendor cargo dependencies
+  * ci: Use scccache-action instead of rust-cache
+  * Add additional outputs for nix's flake package
+  * docs: update freetype_load_flags
+  * be smarter about NO_HINTING
+  * term: downgrade conpty tmux title mangling warning to debug
+  * Revert &quot;ci: use new arm runners for macos builds&quot;
+  * ci: use new arm runners for macos builds
+  * fixup parser for freetype_load_flags
+  * macos: constrain fallback to normal attributes
+  * Upgrade rcgen to 0.12
+  * docs: update for latest release
+  * front_end defaults to OpenGL again
+  * freetype_load_flags now defaults to NO_HINTING
+  * cargo update
+  * macos: fall back to old font fallback approach
+  * fix typo in installation example
+  * docs: fix typo (duplicate issue id)
+  * docs: changelog for kitty image protocol fixes
+  * flatpak: update some metadata
+  * run ci/update-derived-files.sh
+  * add small helper function to better express bool casting
+  * fix kitty image protocol display parameters
+  * fix laggy tab bar update after closing a tab
+  * macos: ignore LastResort font in fallback suggestions
+  * docs: update changelog to show latest release
+  * docs: update for retired and newly supported linux builds
+  * docs: manual fixup of color scheme data
+  * docs: update for latest release
+  * Cargo.lock: update
+  * update flatpak runtime version
+  * bidi: prep for crates.io update
+  * color-types: prep for crates.io publish
+  * wezterm-input-types: prep for crates.io publish
+  * wezterm-blob-leases: prep for crates.io publish
+  * wezterm-dynamic: bump version of crates.io publish
+  * sync color schemes
+  * sync-color-schemes: gogh schema changed slightly
+  * new: pane:get_lines_as_escapes()
+  * docs: show how to get whole scrollback in get_xxx_as_text
+  * launcher: allow ctrl-[ to close launcher menu
+- Remove add-terminator-to-sync-capability.patch.
+- Update to version 20230712.072601.f4abf8fd+git390:
+  * wayland: consider base in resize increment calc
+  * x11/wayland: fixup altgr in eg: azerty layout
+  * chore(nix): update hashes for git
+  * ci: actually build wezterm
+  * fix: disproportionate cursor
+  * fix excessive calls to format-tab-title
+  * docs: remove selection restriction
+  * docs: changelog for https://github.com/wez/wezterm/pull/4850
+  * fix: render bar cursors on topmost layer (#4850)
+  * x11: refactor selection logic in the spirit of DRY
+  * x11: more actively try to fallback to STRING for selection
+  * docs: fix typo
+  * docs: fix typo
+  * docs for https://github.com/wez/wezterm/pull/4824
+  * macos: set minimum increment size to 1x1 cells
+  * wayland: set minimum increment size to 1x1 cells
+  * x11: set minimum increment size to 1x1 cells
+  * Set base_width/height in set_resize_increments
+  * Move set_resize_increments() to apply_dimensions()
+  * Refactor set_resize_increment() args into struct
+  * x11: speculatively allow pasting latin-1 data
+  * Update AttachDomain.md
+  * Update shell-integration.md
+  * chore: add signal getter on exit status
+  * macos/clipboard: use try_quote instead of quote
+  * x11: fix handling of high-speed key events
+  * fixup issue with compose key
+  * docs: changelog for #4828
+  * fixup tests for seqno increment on resize change
+  * increment seqno when resizing
+  * switch wholesale to my fork xcb-imdkit, as it is not actively maintained
+  * deps: update zbus
+  * deps: update xcb
+  * deps: update x11
+  * deps: update xkbcommon
+  * x11: synthesize clearing dead key state when forgotten by system
+  * x11: always trust key event modifiers over xkd modifiers
+  * Revert &quot;x11: add experimental x11_use_passive_key_updates config option&quot;
+  * x11: add experimental x11_use_passive_key_updates config option
+  * rustfmt
+  * x11: synthesize clearing dead key status when composing via IME
+  * thread pane through to other scroll actions as well
+  * termwiz: surface: Fix cursor movement in DiffState
+  * termwiz: surface: Fix cell diffing in presence of wide cells
+  * Remove reserved space in full screen
+  * docs: changelog and update for #4426
+  * impl FT_PIXEL_MODE_LCD_V
+  * shell-integration: update bash-preexec.sh
+  * build(deps): bump actions/cache from 2 to 4
+  * shlex: update usage to avoid warnings about NUL bytes
+  * cargo update
+  * docs for #4839 and apply to other areas with similar issue
+  * fix: fixed palette selected row position on move down
+  * docs: changelog for #2373 #4339
+  * Fix mouse scroll on hovered but unfocused pane
+  * Update Symbols Nerd Font Mono to 3.1.1
+  * x11/wayland: avoid including keysym name in compose cursor
+  * docs: changelog for #3698, #3699
+  * support double-click on the tab bar for maximize
+  * Fix example comment about switching zero for Fira fonts
+  * build(deps): bump stefanzweifel/git-auto-commit-action from 4 to 5
+  * docs: shell-integration: Document activation by default on Arch Linux
+  * docs: changelog for #4505
+  * Fixes tabbar identation when placed at the bottom of the window
+  * docs: changelog for #4567
+  * docs: updated docs
+  * Update docs/config/lua/keyassignment/SetWindowLevel.md
+  * Update SetWindowLevel.md
+  * docs: fixed spacing
+  * docs: docs update with macos warning
+  * chore: moved comment
+  * Update window/src/os/macos/window.rs
+  * chore: run fmt
+  * macos: code cleanup
+  * Update docs/config/lua/keyassignment/SetWindowLevel.md
+  * Update docs/config/lua/keyassignment/SetWindowLevel.md
+  * Update docs/config/lua/keyassignment/ToggleAlwaysOnTop.md
+  * Update docs/config/lua/keyassignment/SetWindowLevel.md
+  * Update docs/config/lua/keyassignment/ToggleAlwaysOnBottom.md
+  * Update docs/config/lua/keyassignment/ToggleAlwaysOnBottom.md
+  * Update docs/config/lua/keyassignment/ToggleAlwaysOnTop.md
+  * docs: added window level options
+  * fix: moved window level state update
+  * fix: refactor window level + Toggle options
+  * macos: floating window logic cleanup
+  * macos: save window level on window_state
+  * macos: cleanup
+  * macos: refactor `set_window_level`
+  * macos: remove `level()` function in window
+  * macos: removed `cfg` on `ToggleFloatingWindow`
+  * fmt: run fmt
+  * macos: updated `WindowLevel` enum
+  * docs: `ToggleFloatingWindow` docs
+  * macos: added platform checks for `ToggleFloatingWindow`
+  * macos: added floating window
+  * Update workspaces.md
+  * xkbd: don't merge in modifiers, use only when missing
+  * fix: Proper block cursor shape (#4752)
+  * x11: fix resize increments
+  * Revert &quot;deps: update to wgpu 0.19&quot;
+  * Fix CI flake input checker config
+  * Improve code style
+  * ci: Add update-flake-lock workflow
+  * ci: Adjust directory
+  * ci: Add example from magic
+  * Update flake inputs
+  * Attempt to fix mac build
+  * Use rust-overlay for flake build
+  * Move flake to subdirectory
+  * Update flake dependencies
+  * Add nix flake config
+  * windows: one more
+  * windows: final stretch
+  * windows: and maybe this fixes the build now!
+  * deps: update env-logger
+  * windows: and another try!
+  * windows: another run at fixing up the build
+  * macos: another run at fixing up the build
+  * macos: another wgpu related fixup
+  * fix warning on macos
+  * maybe fixup build for wgpu 0.19 on macos and windows
+  * wgpu: use adapter limits to avoid panic on window resize
+  * simplify png decoding
+  * deps: update to wgpu 0.19
+  * glyphcache: avoid deprecated image method
+  * cargo update
+  * allow rgba for all window_frame colors
+  * docs: changelog for #4809 #4810
+  * fix: changed the criteria to calculate the sunset / sunrise progression
+  * docs: remove centos 7
+  * ci: remove centos 7
+  * docs: fix sources.list
+  * docs: changelog for #4775 #4770
+  * Fix freetype_load_target
+  * docs: changelog for #4151 #3840
+  * x11: Use modifiers from X event if non were detected by XKB
+  * docs: show how to use new apt repo
+  * cirrus: upload arm debs as well
+  * Experiment with hosting .debs on gemfury
+  * docs: changelog for #4730
+  * Ensure order of omitted parameters is retained
+  * de-fang paste payloads by removing bracketed paste sequences from them
+  * remove unused pub use
+  * cargo update
+  * Revert &quot;build(deps): bump actions/deploy-pages from 2 to 4&quot;
+  * ci: maybe fix pages action
+  * build(deps): bump the all group with 6 updates
+  * build(deps): bump actions/setup-python from 4 to 5
+  * build(deps): bump actions/deploy-pages from 2 to 4
+  * docs: fix list indenting for the background config
+  * cargo update
+  * fix dependabot syntax
+  * cargo update
+  * maybe tell dependebot to batch cargo updates
+  * cargo update
+  * Apply suggestions from code review
+  * Add `wezterm.to_string` function
+  * docs: changelog for #4578
+  * wezterm.terminfo: add terminator to Sync capability
+  * docs: changelog for #4420
+  * honor the window_close_confirmation config option when quitting
+  * docs: fixup list in ActivateCommandPalette
+  * ValuePrinter: improve array style table detection
+  * ValuePrinter: improve recursion handling
+  * teach ValuePrinter about binary strings
+  * docs: changelog for #4595
+  * Adds config option for command palette rows (#4595)
+  * docs: changelog for #4605
+  * fix: Correct `SUPER` modifier key handling in kitty protocol (#4605)
+  * cargo update
+  * ci: s/fedora36/fedora39/
+  * deps: harfbuzz -&gt; 8.3.0
+  * build(deps): bump dessant/lock-threads from 4 to 5
+  * cargo update
+  * docs: changelog for #4564
+  * docs: changelog for #4565
+  * Clamp cursor position reported by CPR
+  * DECRQCRA: treat uninitialized cells as spaces
+  * get-deps: support installing docs dependencies on debian
+  * docs: fix minor variable name mismatch in the docs
+</comment>
+    <requestid>1143790</requestid>
+  </revision>
 </revisionlist>

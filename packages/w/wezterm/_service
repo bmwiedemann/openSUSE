@@ -3,11 +3,11 @@
     <param name="url">https://github.com/wez/wezterm</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">600652583594e9f6195a6427d1fabb09068622a7</param>
+    <param name="revision">c3d37f9edae6951bbb564197a62bb433a289ff4f</param>
     <param name="versionrewrite-pattern">(\d+)-(\d+)-(\w+)</param>
     <param name="versionrewrite-replacement">\1.\2.\3</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
+    <param name="changesauthor">uncomfy+openbuildservice@uncomfyhalomacro.pl</param>
   </service>
   <service mode="manual" name="tar" />
   <service mode="manual" name="recompress">
