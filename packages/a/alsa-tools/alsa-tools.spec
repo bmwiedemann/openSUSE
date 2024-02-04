@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define have_gtk3	0
 %endif
 Name:           alsa-tools
-Version:        1.2.5
+Version:        1.2.11
 Release:        0
 Summary:        Various ALSA Tools
 License:        GPL-2.0-or-later
@@ -36,6 +36,8 @@ Source3:        README.SUSE
 Source4:        sbipatches.tar.bz2
 Source5:        rmedigicontrol.desktop
 Source7:        rmedigicontrol.png
+# upstream fixes
+Patch1:         0001-hdajackretask-Fix-build-with-gcc7.patch
 # build fixes
 Patch101:       alsa-tools-no_m4_dir.dif
 BuildRequires:  alsa-devel
@@ -211,7 +213,7 @@ Version:        0.9
 Release:        0
 Summary:        GUI tool to set individual hardware stream volumes
 Group:          Productivity/Multimedia/Sound/Utilities
-Requires:       pyalsa
+Requires:       python3-alsa
 Provides:       alsa-tools-gui = 1.0.28
 Obsoletes:      alsa-tools-gui <= 1.0.28
 
@@ -297,10 +299,11 @@ Hammerfall DSP soundcard series.
 
 %prep
 %setup -q -a 4
+%patch1 -p1
 cp %{SOURCE3} .
 %patch101 -p1
 
-sed -i '1s@/usr/bin/env python@/usr/bin/python@' hwmixvolume/hwmixvolume
+sed -i '1s@/usr/bin/env python$@/usr/bin/python3@' hwmixvolume/hwmixvolume
 
 ALL_PACKS="seq/sbiload hdsploader usx2yloader us428control as10k1 ld10k1 hwmixvolume hda-verb"
 %ifarch %ix86
