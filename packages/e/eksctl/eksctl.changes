@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Feb 03 08:19:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.170.0:
+  * Add release notes for 0.170.0
+  * Update access entries userdocs
+  * Add support for Access Entry Type
+  * Update release drafter template
+  * Update userdocs on nodegroups
+  * Fix deleting cluster sometimes drain managed nodegroups
+  * docs(fargate): eksctl update command is deprecated
+  * Update stale.yml
+  * Expand Karpenter settings.aws block to settings for v0.33.0 and
+    greater
+  * Update arm-support.md
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Fri Jan 26 19:27:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.169.0:
