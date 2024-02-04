@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  2 08:23:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.4.4:
+  * Fix non-string constants at the top of file being detected as
+    docstrings on Python>=3.8.
+  * Handle an edge case where :data:`sys.stderr` and
+    :data:`sys.__stderr__` might already be closed when
+    :ref:`faulthandler` is tearing down.
+  * Fixed tracebacks from collection errors not getting pruned.
+  * Removed unhelpful error message from assertion rewrite
+    mechanism when exceptions are raised in ``__iter__`` methods.
+    Now they are treated un-iterable instead.
+
+-------------------------------------------------------------------
 Tue Nov  7 12:01:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.4.3:
