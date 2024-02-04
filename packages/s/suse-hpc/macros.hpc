@@ -361,6 +361,21 @@ sed -e '/#%%Module1.0.*/b 1;1s/\(.*\)/#%%Module1.0\n\1/;:1' << EOF\\\
  echo %nil \
  %{-x:exit 1}
 
+# Get rpm version string from %rpmversion that can be used in
+# comparisons if this macro exists. If not, return 0
+%_hpc_rpmv %{lua: \
+   v=rpm.expand("%rpmversion") \
+   r=0 \
+   if (v == "%rpmversion") then \
+     print("0") \
+   else \
+     for w in string.gmatch(v, "(%w+)") do \
+       r=r*100+w \
+     end \
+     print(math.tointeger(r)) \
+   end \
+}
+
 #
 # Create 'master' package: packages which have the built package as
 # dependency. This way, the latest version of a library can be installed
@@ -480,7 +495,11 @@ When this package gets updated it installs the latest version of %name. \
 	echo  "#!/bin/bash" > $tmp; \
 	echo  "echo -e %_msg \> $readme && rm -f $tmp || true" >> $tmp; \
 	chmod u+x $tmp; echo -n $tmp) \
+%if %{_hpc_rpmv} < 41901 \
 %doc $(%_tmpexec)./%{_readme} \
+%else \
+%doc '$(%_tmpexec)'./%{_readme} \
+%endif \
 } \
 %{nil}
 

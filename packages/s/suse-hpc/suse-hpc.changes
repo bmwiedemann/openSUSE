@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  3 11:34:25 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Fix master package README generation 'trick' for rpm <= 4.19.1
+  rpm version 4.19.1 started to add quotes around the file name
+  when it expands a %doc statements into a script. This broke
+  the 'trick' we've used to generate a README file on-the-fly.
+  Here the saving grace was the introduction of the macro %rpmversion
+  with the same version of rpm that can be used to identify
+  versions affected by this.
+
+-------------------------------------------------------------------
 Thu Oct 26 21:07:33 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Previous fix did not work, revert and use %global instead of
