@@ -1,0 +1,25 @@
+diff --git a/control/config.py b/control/config.py
+index 59f0e4825..0ae883f49 100644
+--- a/control/config.py
++++ b/control/config.py
+@@ -48,6 +48,20 @@ def __missing__(self, key):
+         else:
+             raise KeyError(key)
+ 
++    # New get function for Python 3.12+ to replicate old behavior
++    def get(self, key, defval=None):
++        # If the key exists, return it
++        if self.__contains__(key):
++            return self[key]
++
++        # If not, see if it is deprecated
++        repl = self._check_deprecation(key)
++        if self.__contains__(repl):
++            return self.get(repl, defval)
++
++        # Otherwise, call the usual dict.get() method
++        return super().get(key, defval)
++
+     def _check_deprecation(self, key):
+         if self.__contains__(f"deprecated.{key}"):
+             repl = self[f"deprecated.{key}"]

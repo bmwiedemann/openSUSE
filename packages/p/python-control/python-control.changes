@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  4 10:46:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add python-control-pr961-py312.patch for python 312 support
+  gh#python-control/python-control#961
+- Use python-xdist: The tests grew over time and we have 4 flavors
+  at the moment
+
+-------------------------------------------------------------------
 Mon Jan 29 08:42:53 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Use PyQt5 for tests with matplotlib-qt5 (Avoid choice with

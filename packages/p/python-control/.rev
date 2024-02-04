@@ -314,4 +314,15 @@
 </comment>
     <requestid>1142191</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>54568c8a8ab967cc53f8ab40e0387c13</srcmd5>
+    <version>0.9.4</version>
+    <time>1707070190</time>
+    <user>anag+factory</user>
+    <comment>- Add python-control-pr961-py312.patch for python 312 support
+  gh#python-control/python-control#961
+- Use python-xdist: The tests grew over time and we have 4 flavors
+  at the moment</comment>
+    <requestid>1143985</requestid>
+  </revision>
 </revisionlist>
