@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  2 09:50:53 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- drop support for libmfx, which is no longer supported upstream
+  at all (boo#1219494)
+
+-------------------------------------------------------------------
 Wed Nov  8 15:38:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop fdk_aac bcond and move pkgconfig(fdk-aac) BuildRequires out

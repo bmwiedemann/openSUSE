@@ -1457,4 +1457,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>1124418</requestid>
   </revision>
+  <revision rev="142" vrev="3">
+    <srcmd5>c55036563f12a9f77a59352549c503c6</srcmd5>
+    <version>3.0.20</version>
+    <time>1707070001</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143627</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package vlc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -177,9 +177,6 @@ Conflicts:      %{conflicts}
 Obsoletes:      %{name}-gnome <= %{version}
 %if 0%{?suse_version} >= 1550
 BuildRequires:  pkgconfig(dav1d)
-%ifarch x86_64
-BuildRequires:  pkgconfig(libmfx)
-%endif
 %endif
 %if 0%{?suse_version} > 1500 && 0%{?is_opensuse}
 BuildRequires:  pkgconfig(srt)
@@ -883,9 +880,6 @@ fi
 %{_libdir}/vlc/plugins/codec/libcvdsub_plugin.so
 %if 0%{?suse_version} >= 1550
 %{_libdir}/vlc/plugins/codec/libdav1d_plugin.so
-%ifarch x86_64
-%{_libdir}/vlc/plugins/codec/libqsv_plugin.so
-%endif
 %endif
 %{_libdir}/vlc/plugins/codec/libdca_plugin.so
 %{_libdir}/vlc/plugins/codec/libddummy_plugin.so
