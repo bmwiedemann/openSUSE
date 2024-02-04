@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible
-Version:        9.1.0
+Version:        9.2.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0+
@@ -54,11 +54,11 @@ BuildRequires:  fdupes
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.16.1
+BuildRequires:  ansible-core >= 2.16.3
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.10
-Requires:       ansible-core >= 2.16.1
+Requires:       ansible-core >= 2.16.3
 
 # Do not check any files in collections for requires
 %global __requires_exclude_from ^%{ansible_python_sitelib}/.*$
