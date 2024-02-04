@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb  2 20:00:00 UTC 2024 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (2.2.0)
+  * (gtk 3) dual text color for progress bars is back
+    with appearance__progress_text.gtk3.patch for gtk3-classic
+  * (gtk 3) add gtk standard color names
+  * (gtk 3 & 4) add style for statusbar in progressbar and toolbar
+  * (gtk 3 & 4) update style for progressbar in treeviews
+  * (gtk 3 & 4) update style for arrows of notebook tabs
+  * (gtk 4) compatibility only with 4.12
+
+-------------------------------------------------------------------
 Tue Oct 10 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.1.0)

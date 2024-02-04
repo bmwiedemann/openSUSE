@@ -1,7 +1,7 @@
 #
 # spec file for package human-theme-gtk
 #
-# Copyright (c) 2021-2023 SUSE LLC
+# Copyright (c) 2021-2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           human-theme-gtk
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Human theme for GTK
 Summary(fr):    Thème Human pour GTK
@@ -35,28 +35,29 @@ Suggests:       qt6-platformtheme-gtk3
 BuildArch:      noarch
 
 %description %{expand:
-This theme works with: GTK 2.24+ (with gtk2-engine-murrine),
-GTK 3.20+ (including 3.22 and 3.24), and GTK 4.0+. It is mainly
-intended for Mate and Xfce Desktop Environments.
+This theme works with GTK 2.24 (with gtk2-engine-murrine),
+3.24, and 4.12. Better rendering with Pango 1.42- or 1.51+.
+
+It is mainly intended for Mate and Xfce Desktop Environments.
 
 After installation you must restart your session.}
 
 %description -l fr %{expand:
-Ce thème fonctionne avec : GTK 2.24+ (avec gtk2-engine-murrine),
-GTK 3.20+ (y compris 3.22 et 3.24), et GTK 4.0+. Il est principalement
-destiné pour les environnements de bureau Mate et Xfce.
+Ce thème fonctionne avec : GTK 2.24 (avec gtk2-engine-murrine),
+3.24, et 4.12. Meilleur rendu avec Pango 1.42- ou 1.51+.
+
+Il est principalement destiné pour les environnements de bureau Mate et Xfce.
 
 Après l'installation vous devez redémarrer votre session.}
 
 %prep
 %setup -q -n human-theme-%{version}
-
-%build
+sed -i 's/IconTheme=gnome/IconTheme=mate/g' src/*/index.theme
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d/
+install -pm 644 debian/profile.sh %{buildroot}%{_sysconfdir}/profile.d/%{name}.sh
 mkdir -p %{buildroot}%{_datadir}/themes/
-install -p -m 644 debian/profile.sh %{buildroot}%{_sysconfdir}/profile.d/%{name}.sh
 cp -a src/human-theme/        %{buildroot}%{_datadir}/themes/
 cp -a src/human-theme-blue/   %{buildroot}%{_datadir}/themes/
 cp -a src/human-theme-green/  %{buildroot}%{_datadir}/themes/
