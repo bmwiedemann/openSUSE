@@ -67,4 +67,15 @@
   * long list of fixes, see https://github.com/girder/girder/compare/v3.1.3...v3.1.20</comment>
     <requestid>1133684</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>382f3db2220033a63467b95789b575f5</srcmd5>
+    <version>3.2.1</version>
+    <time>1707070152</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.1:
+  * metadata fixes
+  * python 3.8 required
+- switch to PEP517 build</comment>
+    <requestid>1143811</requestid>
+  </revision>
 </revisionlist>

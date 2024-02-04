@@ -1,7 +1,7 @@
 #
 # spec file for package python-girder-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-girder-client
-Version:        3.1.24
+Version:        3.2.1
 Release:        0
 Summary:        Python Girder client
 License:        Apache-2.0
 URL:            https://girder.readthedocs.io/en/latest/python-client.html
 Source:         https://files.pythonhosted.org/packages/source/g/girder-client/girder-client-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 6.7
 Requires:       python-diskcache
 Requires:       python-requests >= 2.4.2
 Requires:       python-requests-toolbelt
-Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,10 +50,10 @@ with Girder servers
 sed -i -e '/^#!\//, 1d' girder_client/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/girder-client
 %python_clone -a %{buildroot}%{_bindir}/girder-cli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
