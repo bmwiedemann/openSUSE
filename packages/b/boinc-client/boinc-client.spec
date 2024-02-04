@@ -36,7 +36,7 @@
 Name:           boinc-client
 %define rel_name        %{name}_release
 %define minor_version   7.24
-Version:        %{minor_version}.1
+Version:        %minor_version.1
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
@@ -45,7 +45,6 @@ URL:            https://boinc.berkeley.edu/
 
 #Git-Clone:     https://github.com/BOINC/boinc
 Source0:        https://github.com/BOINC/boinc/archive/client_release/%{minor_version}/%{version}.tar.gz
-Source2:        boinc-sysusers
 Source3:        README.SUSE
 Source4:        sysconfig.%{name}
 Source5:        boinc-logrotate
@@ -71,12 +70,13 @@ BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  sqlite3-devel
+BuildRequires:  sysuser-tools
 BuildRequires:  xorg-x11-libXmu-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xi)
-Requires(pre):  shadow
+%sysusers_requires
 Requires:       ca-certificates-mozilla
 Recommends:     boinc-client-lang = %{version}
 Recommends:     logrotate
@@ -198,6 +198,16 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
 %install
 %make_install
+mkdir -p "%buildroot/%_sysusersdir"
+cat >system-user-boinc.conf <<-EOF
+	g boinc -
+	u boinc -:boinc "BOINC Client" /var/lib/boinc
+	# Several BOINC applications want to use the GPU for computations.
+	m boinc render
+EOF
+cp -a system-user-boinc.conf "%buildroot/%_sysusersdir/"
+%sysusers_generate_pre system-user-boinc.conf random system-user-boinc.conf
+
 %if %{with manager}
 for i in clientgui locale; do
 %else
@@ -246,9 +256,6 @@ sed -i \
 # Remove {buildroot}/etc/sysconfig/boinc-client, it is added by %%fillup_and_insserv
 rm -f %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 
-# Install sysusers config
-install -Dm0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
-
 # Install init and create symlink for rcboinc
 install -dm0755 %{buildroot}%{_sbindir}
 install -D -m0644 %{SOURCE20} %{buildroot}%{_unitdir}/%{name}.service
@@ -285,7 +292,7 @@ find %{buildroot}/%{_datadir}/locale/ -name "BOINC-Manager.mo" -delete
 
 %fdupes -s %{buildroot}
 
-%pre
+%pre -f random.pre
 # fix replacing old sysconfig file (r21)
 if [ -f %{_sysconfdir}/sysconfig/%{name} ]; then
   if ! grep -q "BOINC_BOINC_USR" %{_sysconfdir}/sysconfig/boinc-client; then
@@ -332,7 +339,7 @@ fi
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 %{_fillupdir}/sysconfig.%{name}
-%{_sysusersdir}/%{name}.conf
+%_sysusersdir/*
 %attr(-,boinc,boinc) %{boinc_dir}/
 
 %files -n %{name}-lang -f BOINC-Client.lang

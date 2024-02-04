@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb  3 12:56:03 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Employ %sysuser macros to generate "boinc" user
+
+-------------------------------------------------------------------
 Thu Jan  4 21:22:29 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Use systemd-sysusers to create service user and group.
