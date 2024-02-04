@@ -1,0 +1,31 @@
+From fea2c7b13f4d102608fe214a3d53b083d6eecf98 Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Tue, 30 Jan 2024 18:27:15 +0100
+Subject: [PATCH 8/8] ifreload: VLAN changes require device deletion
+References: bsc#1218927
+Upstream: submitted
+
+---
+ client/ifreload.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/client/ifreload.c b/client/ifreload.c
+index abe7a38d..8786cb3b 100644
+--- a/client/ifreload.c
++++ b/client/ifreload.c
+@@ -109,8 +109,10 @@ ifreload_mark_down(const ni_fsm_t *fsm, ni_ifworker_array_t *marked, ni_ifworker
+ 		w->target_range.max = NI_FSM_STATE_DEVICE_READY;
+ 
+ 		/* the config has been modified, but some changes require deletion */
+-		if (w->iftype == NI_IFTYPE_TEAM) {
+-			/* e.g. the team runner (mode) changes require teamd restart */
++		if (w->iftype == NI_IFTYPE_TEAM || w->iftype == NI_IFTYPE_VLAN) {
++			/* examples:
++			 *   - the team runner (mode) changes require teamd restart
++			 *   - VlanID changed, the interface need to be recreated */
+ 			w->target_range.max = NI_FSM_STATE_DEVICE_DOWN;
+ 		} else
+ 		if (w->iftype != NI_IFTYPE_UNKNOWN) {
+-- 
+2.35.3
+

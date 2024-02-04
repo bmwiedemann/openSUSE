@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Feb  1 08:58:28 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- ifreload: VLAN changes require device deletion (bsc#1218927) 
+  [+ 0009-ifreload-VLAN-changes-require-device-deletion-bsc-12.patch]
+- ifcheck: fix config changed check (bsc#1218926)
+  [+ 0008-ifcheck-fix-config-changed-check-bsc-1218926.patch]
+- client: fix exit code for no-carrier status (bsc#1219265)
+  [+ 0007-Fix-ifstatus-exit-code-for-NI_WICKED_ST_NO_CARRIER-s.patch]
+- dhcp6: omit the SO_REUSEPORT option (bsc#1215692)
+  [+ 0006-dhcp6-omit-the-SO_REUSEPORT-option-bsc-1215692.patch]
+- duid: fix comment for v6time
+  (https://github.com/openSUSE/wicked/pull/989)
+  [+ 0005-duid-fix-comment-for-v6time.patch]
+- rtnl: fix peer address parsing for non ptp-interfaces
+  (https://github.com/openSUSE/wicked/pull/987,
+  https://github.com/openSUSE/wicked/pull/988)
+  [+ 0003-rtnl-pass-ifname-in-newaddr-parsing-and-logging.patch]
+  [+ 0004-rtnl-parse-peer-address-on-non-ptp-interfaces.patch]
+- system-updater: Parse updater format from XML configuration to 
+  ensure install calls can run. 
+  (https://github.com/openSUSE/wicked/pull/985)
+  [+ 0002-system-updater-Parse-updater-format-from-XML-configu.patch]
+
+-------------------------------------------------------------------
 Wed Jul  5 08:06:15 UTC 2023 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - ifconfig: fix arp notify loop (boo#1212806) and burst sending

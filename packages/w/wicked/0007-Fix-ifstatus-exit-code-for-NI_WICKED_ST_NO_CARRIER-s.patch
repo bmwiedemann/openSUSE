@@ -1,0 +1,53 @@
+From cdbb4c573e41c5c9c4bf119bfe08776522d99e97 Mon Sep 17 00:00:00 2001
+From: liss <coder.liss@gmail.com>
+Date: Thu, 25 Jan 2024 11:52:54 +0800
+Subject: [PATCH 6/8] Fix ifstatus exit code for NI_WICKED_ST_NO_CARRIER status
+References: bsc#1219265
+Upstream: submitted
+
+The 'no-carrier' status was separated from the 'setup-in-progress'
+status. Even though the interface appears active during this status, the
+setup process is not complete and the NIC is not ready. Therefore, the
+`ifstatus <nic>` command should not return 0 for this status.
+---
+ client/ifstatus.c           | 2 ++
+ client/suse/scripts/ifup.in | 3 +++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/client/ifstatus.c b/client/ifstatus.c
+index ab0b5685..5feb79d2 100644
+--- a/client/ifstatus.c
++++ b/client/ifstatus.c
+@@ -884,6 +884,7 @@ ni_do_ifstatus(int argc, char **argv)
+ 			case NI_WICKED_ST_UNCONFIGURED:
+ 			case NI_WICKED_ST_NOT_RUNNING:
+ 			case NI_WICKED_ST_IN_PROGRESS:
++			case NI_WICKED_ST_NO_CARRIER:
+ 				break;
+ 			default:
+ 				status = NI_WICKED_ST_OK;
+@@ -1000,6 +1001,7 @@ ni_ifstatus_display_result(ni_fsm_t *fsm, ni_string_array_t *names, ni_ifworker_
+ 			case NI_WICKED_ST_UNCONFIGURED:
+ 			case NI_WICKED_ST_NOT_RUNNING:
+ 			case NI_WICKED_ST_IN_PROGRESS:
++			case NI_WICKED_ST_NO_CARRIER:
+ 				break;
+ 			default:
+ 				status = NI_WICKED_ST_OK;
+diff --git a/client/suse/scripts/ifup.in b/client/suse/scripts/ifup.in
+index 49c46c07..9f90591f 100644
+--- a/client/suse/scripts/ifup.in
++++ b/client/suse/scripts/ifup.in
+@@ -226,6 +226,9 @@ rc_map_status()
+ 	166)	# NI_WICKED_ST_PERSISTENT_ON
+ 		return $R_NOTALLOWED
+ 	;;
++	168)	# NI_WICKED_ST_NO_CARRIER
++		return $R_DHCP_BG
++	;;
+ 	*)	# any other
+ 		return ${1:-1}
+ 	;;
+-- 
+2.35.3
+
