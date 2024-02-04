@@ -1,0 +1,5 @@
+<package name="budgie-session" project="openSUSE:Factory">
+  <title>Budgie Session</title>
+  <description>Budgie Session is a softish fork of gnome-session, designed to provide a stable session manager for Budgie 10.x</description>
+  <devel project="X11:Solus" package="budgie-session"/>
+</package>
