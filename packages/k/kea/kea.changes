@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb  3 12:40:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Generate "keadhcp" user with sysusers mechanism
+
+-------------------------------------------------------------------
 Mon Jan  8 22:21:39 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - Update to release 2.4.1

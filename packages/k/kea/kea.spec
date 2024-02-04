@@ -70,9 +70,10 @@ BuildRequires:  postgresql-server-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-Sphinx
+BuildRequires:  sysuser-tools
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libcrypto)
-Requires(pre):  shadow
+%sysusers_requires
 Suggests:       %name-hooks = %version
 %if 0%{with regen_files}
 BuildRequires:  flex
@@ -368,8 +369,7 @@ make %{?_smp_mflags}
 b=%buildroot
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
-mkdir -p "$b/%_unitdir" "$b/%_prefix/lib/tmpfiles.d"
-ls -l "$b/%_unitdir/" "$b/%_prefix/lib/tmpfiles.d/" || :
+mkdir -p "$b/%_unitdir" "$b/%_tmpfilesdir" "$b/%_sysusersdir"
 cat <<-EOF >"$b/%_unitdir/kea.service"
 	[Unit]
 	Description=ISC Kea DHCP server
@@ -386,9 +386,12 @@ cat <<-EOF >"$b/%_unitdir/kea.service"
 	WantedBy=multi-user.target
 	Alias=dhcp-server.service
 EOF
-cat <<-EOF >"$b/%_prefix/lib/tmpfiles.d/kea.conf"
+cat <<-EOF >"$b/%_tmpfilesdir/kea.conf"
 	d /run/kea 0775 keadhcp keadhcp -
 EOF
+echo 'u keadhcp - "Kea DHCP server" /var/lib/kea' >system-user-keadhcp.conf
+cp -a system-user-keadhcp.conf "$b/%_sysusersdir/"
+%sysusers_generate_pre system-user-keadhcp.conf random system-user-keadhcp.conf
 
 perl -i -pe 's{%_localstatedir/log/kea-}{%_localstatedir/log/kea/}' \
 	"$b/%_sysconfdir/kea"/*.conf
@@ -400,11 +403,7 @@ ln -s "%_sbindir/service" "%buildroot/%_sbindir/rc%name"
 find "%buildroot/%_libdir" -name "*.so.*" -type l -delete
 rm -Rf "%buildroot/%python3_sitelib/kea/__pycache__"
 
-%pre
-getent group keadhcp >/dev/null || groupadd -r keadhcp
-getent passwd keadhcp >/dev/null || useradd -r -N -M -g keadhcp \
-	-s /sbin/nologin -d %_localstatedir/lib/kea -c "Kea DHCP server" \
-	keadhcp
+%pre -f random.pre
 systemd-tmpfiles --create kea.conf || :
 %service_add_pre kea.service
 
@@ -474,7 +473,8 @@ systemd-tmpfiles --create kea.conf || :
 %_datadir/kea/
 %_unitdir/*.service
 %dir %_localstatedir/lib/kea
-%_prefix/lib/tmpfiles.d/
+%_tmpfilesdir/
+%_sysusersdir/
 %attr(0775,keadhcp,keadhcp) %_localstatedir/log/kea/
 
 %files doc
