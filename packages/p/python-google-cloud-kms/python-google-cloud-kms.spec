@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-kms
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-kms
-Version:        2.20.0
+Version:        2.21.0
 Release:        0
 Summary:        Cloud Key Management Service (KMS) API API client library
 License:        Apache-2.0
@@ -39,7 +39,7 @@ Requires:       python-google-api-core >= 1.34.0
 Requires:       python-grpc-google-iam-v1 >= 0.12.4
 Requires:       python-proto-plus >= 1.22.3
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

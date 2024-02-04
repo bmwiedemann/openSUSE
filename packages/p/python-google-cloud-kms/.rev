@@ -173,4 +173,13 @@
   * Use retry_async instead of retry in async client</comment>
     <requestid>1133640</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3721902bf6fb5c276a11317a0ce0702a</srcmd5>
+    <version>2.21.0</version>
+    <time>1707070184</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.21.0:
+  * Allow users to explicitly configure universe domain</comment>
+    <requestid>1143974</requestid>
+  </revision>
 </revisionlist>
