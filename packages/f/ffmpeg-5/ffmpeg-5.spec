@@ -206,11 +206,6 @@ BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-%ifarch x86_64 %x86_64
-BuildRequires:  pkgconfig(libmfx)
-%endif
-%endif
 BuildRequires:  pkgconfig(zimg)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(zvbi-0.2) >= 0.2.28
@@ -645,9 +640,6 @@ LDFLAGS="%_lto_cflags" \
 %endif
 	--enable-lv2 \
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-%ifarch x86_64 %x86_64
-	--enable-libmfx \
-%endif
 %endif
 	--enable-vaapi \
 	--enable-vdpau \
