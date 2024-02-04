@@ -228,4 +228,20 @@ Now required by the upcoming alsa-1.2.1 release</comment>
     <comment></comment>
     <requestid>1108922</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>74cd3a3cc20ca6ebc42b6fa1ef5ac9ac</srcmd5>
+    <version>1.2.11</version>
+    <time>1707070029</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.11:
+  * Qualcomm, Mediatek, SOF soundwire, and various USB-audio profiles
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.10_v1.2.11#alsa-ucm-conf
+- Drop obsoleted patch:
+  0001-SplitPCM-Device-argument-may-not-be-set.patch
+
+- Update to version 1.2.10 (jsc#PED-6566):
+- Update to version 1.2.8 (jsc#PED-850):</comment>
+    <requestid>1143708</requestid>
+  </revision>
 </revisionlist>

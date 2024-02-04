@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  2 15:01:05 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.11:
+  * Qualcomm, Mediatek, SOF soundwire, and various USB-audio profiles
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.10_v1.2.11#alsa-ucm-conf
+- Drop obsoleted patch:
+  0001-SplitPCM-Device-argument-may-not-be-set.patch
+
+-------------------------------------------------------------------
 Mon Sep  4 12:41:12 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
-- Update to version 1.2.10:
+- Update to version 1.2.10 (jsc#PED-6566):
   * updates / fixes for various devices: mtk-rt5650, usb-audio, tegra
     es8316, sof-essx8336, pinephone, Steinberg UR44C, AMD ACP RPL,
     ACP63, sof-hda-dsp, etc
@@ -21,7 +31,7 @@ Mon May  8 08:49:05 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 -------------------------------------------------------------------
 Tue Oct 25 07:33:09 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
-- Update to version 1.2.8:
+- Update to version 1.2.8 (jsc#PED-850):
   lots of new profiles for USB-audio, SOF and others:
   https://www.alsa-project.org/wiki/Changes_v1.2.7.2_v1.2.8
 - Add keyring
