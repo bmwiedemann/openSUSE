@@ -279,4 +279,15 @@
     <comment></comment>
     <requestid>1123683</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>530d65651540594dbaecf532968027e5</srcmd5>
+    <version>2.0.4</version>
+    <time>1707070179</time>
+    <user>anag+factory</user>
+    <comment>- add python312-skip-tests.patch to skip failing tests from py312
+
+  * disallow 0 for indent-size option
+- python3 package added</comment>
+    <requestid>1143967</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-autopep8
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,11 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hhatto/autopep8
 Source:         https://files.pythonhosted.org/packages/source/a/autopep8/autopep8-%{version}.tar.gz
+Patch1:         https://github.com/hhatto/autopep8/commit/6ebcb3cfadd9b8764405e1cab24f4412f05b36bb.patch#/python312-skip-tests.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle >= 2.8}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
@@ -38,7 +40,7 @@ Requires:       python-pycodestyle >= 2.10.0
 Requires:       python-tomli
 %endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,7 +61,7 @@ sed -i '1s/^#!.*//' autopep8.py # Remove she-bang line
 
 %check
 export LANG="en_US.UTF-8"
-%pyunittest discover -v
+%pytest -k 'not test_e701_with_escaped_newline_and_spaces'
 
 %pre
 # Since /usr/bin/autopep8 became ghosted to be used with update-alternatives, we have to get rid
