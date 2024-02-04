@@ -29873,7 +29873,9 @@ unsorted:
   - python312-EasyProcess 
   - python312-EditorConfig 
   - python312-ExifRead 
+  - python312-Fabric 
   - python312-Faker 
+  - python312-Fiona 
   - python312-Flask 
   - python312-Flask-Assets 
   - python312-Flask-Babel 
@@ -29903,6 +29905,7 @@ unsorted:
   - python312-Glymur 
   - python312-GooCalendar 
   - python312-GooseMPL 
+  - python312-GridDataFormats 
   - python312-HTTPolice 
   - python312-HeapDict 
   - python312-HepMC 
@@ -29917,6 +29920,7 @@ unsorted:
   - python312-LHAPDF 
   - python312-LTTL 
   - python312-Levenshtein 
+  - python312-Logbook 
   - python312-M2Crypto 
   - python312-Mako 
   - python312-Markdown 
@@ -29945,6 +29949,7 @@ unsorted:
   - python312-Protego 
   - python312-PsyLab 
   - python312-PubChemPy 
+  - python312-Pweave 
   - python312-PyAudio 
   - python312-PyAutoGUI 
   - python312-PyBindGen 
@@ -30029,6 +30034,7 @@ unsorted:
   - python312-TagStats 
   - python312-Tempita 
   - python312-TermRecord 
+  - python312-Transplant 
   - python312-Trolly 
   - python312-Trololio 
   - python312-Twisted 
@@ -30130,6 +30136,7 @@ unsorted:
   - python312-anyio 
   - python312-anyjson 
   - python312-anymarkup-core 
+  - python312-apache-libcloud 
   - python312-apacheconfig 
   - python312-apfel 
   - python312-apipkg 
@@ -30223,6 +30230,7 @@ unsorted:
   - python312-azure-ai-language-nspkg 
   - python312-azure-ai-language-questionanswering 
   - python312-azure-ai-metricsadvisor 
+  - python312-azure-ai-ml 
   - python312-azure-ai-nspkg 
   - python312-azure-ai-textanalytics 
   - python312-azure-ai-translation-document 
@@ -30594,6 +30602,7 @@ unsorted:
   - python312-bowler 
   - python312-bpython 
   - python312-bracex 
+  - python312-branca 
   - python312-breathe 
   - python312-brewer2mpl 
   - python312-bson 
@@ -30643,6 +30652,7 @@ unsorted:
   - python312-cftime 
   - python312-chardet 
   - python312-charset-normalizer 
+  - python312-chartify 
   - python312-check-manifest 
   - python312-cheroot 
   - python312-chest 
@@ -30710,6 +30720,7 @@ unsorted:
   - python312-contexter 
   - python312-contextvars 
   - python312-contourpy 
+  - python312-conu 
   - python312-convertdate 
   - python312-cookiecutter 
   - python312-cookies 
@@ -30889,6 +30900,7 @@ unsorted:
   - python312-django-sekizai 
   - python312-django-settings-toml 
   - python312-django-sortedm2m 
+  - python312-django-storages 
   - python312-django-tables2 
   - python312-django-taggit 
   - python312-django-tagulous 
@@ -30911,6 +30923,7 @@ unsorted:
   - python312-doc 
   - python312-doc-devhelp 
   - python312-docformatter 
+  - python312-docker 
   - python312-docker-pycreds 
   - python312-dockerpty 
   - python312-docopt 
@@ -31290,6 +31303,7 @@ unsorted:
   - python312-ipdb 
   - python312-iptables 
   - python312-ipy 
+  - python312-ipykernel 
   - python312-ipython 
   - python312-ipython_genutils 
   - python312-irc 
@@ -31370,11 +31384,13 @@ unsorted:
   - python312-jupyter-client 
   - python312-jupyter-client7 
   - python312-jupyter-core 
+  - python312-jupyter-kernel-test 
   - python312-jupyter-packaging 
   - python312-jupyter-server 
   - python312-jupyter-server-terminals 
   - python312-jupyter-server-test 
   - python312-jupyter-ydoc 
+  - python312-jupyter_console 
   - python312-jupyterlab-pygments 
   - python312-jupyterlab-server 
   - python312-jupyterlab-server-openapi 
@@ -31474,6 +31490,7 @@ unsorted:
   - python312-lmfit 
   - python312-lml 
   - python312-localzone 
+  - python312-locket 
   - python312-lockfile 
   - python312-logilab-common 
   - python312-loguru 
@@ -31536,6 +31553,7 @@ unsorted:
   - python312-mergedeep 
   - python312-meson-python 
   - python312-metaextract 
+  - python312-metakernel 
   - python312-metamagic.json 
   - python312-methodtools 
   - python312-micropipenv 
@@ -31612,17 +31630,22 @@ unsorted:
   - python312-nbclient 
   - python312-nbconvert 
   - python312-nbformat 
+  - python312-nbsphinx 
   - python312-nbval 
   - python312-nbxmpp 
+  - python312-ncclient 
   - python312-ndg-httpsclient 
   - python312-ndjson 
+  - python312-ndtiff 
   - python312-neovim 
   - python312-nest-asyncio 
   - python312-nested-lookup 
   - python312-net-snmp 
   - python312-netCDF4 
   - python312-netaddr 
+  - python312-nethsm 
   - python312-netifaces 
+  - python312-netmiko 
   - python312-netpbmfile 
   - python312-netutils 
   - python312-networkx 
@@ -31649,10 +31672,13 @@ unsorted:
   - python312-numpy 
   - python312-numpy-devel 
   - python312-nwdiag 
+  - python312-nxapi-plumbing 
   - python312-o2sclpy 
   - python312-oauthlib 
   - python312-objgraph 
   - python312-oci-sdk 
+  - python312-oct2py 
+  - python312-octave-kernel 
   - python312-odfpy 
   - python312-ogr 
   - python312-oic 
@@ -31733,6 +31759,8 @@ unsorted:
   - python312-panflute 
   - python312-parallax 
   - python312-parameterized 
+  - python312-paramiko 
+  - python312-paramiko-expect 
   - python312-parfive 
   - python312-parse 
   - python312-parse_type 
@@ -31741,6 +31769,7 @@ unsorted:
   - python312-parsimonious 
   - python312-parso 
   - python312-parsy 
+  - python312-partd 
   - python312-particle 
   - python312-parver 
   - python312-pass-git-helper 
@@ -31810,6 +31839,7 @@ unsorted:
   - python312-plette 
   - python312-pluggy 
   - python312-pluginbase 
+  - python312-plumbum 
   - python312-ply 
   - python312-plyvel 
   - python312-pmw 
@@ -31856,6 +31886,7 @@ unsorted:
   - python312-protobuf 
   - python312-proton-client 
   - python312-protonvpn-nm-lib 
+  - python312-proxmoxer 
   - python312-proxy.py 
   - python312-psautohint 
   - python312-pscript 
@@ -31866,6 +31897,7 @@ unsorted:
   - python312-psycopg-pool 
   - python312-psycopg2 
   - python312-psycopg2cffi 
+  - python312-psygnal 
   - python312-ptpython 
   - python312-ptpython-ptipython 
   - python312-ptr 
@@ -32042,6 +32074,7 @@ unsorted:
   - python312-pypng 
   - python312-pyppmd 
   - python312-pyprimes 
+  - python312-pyproj 
   - python312-pyproject-api 
   - python312-pyproject-hooks 
   - python312-pyproject-metadata 
@@ -32121,6 +32154,7 @@ unsorted:
   - python312-pytest-jupyter-client 
   - python312-pytest-jupyter-server 
   - python312-pytest-lazy-fixture 
+  - python312-pytest-listener 
   - python312-pytest-localserver 
   - python312-pytest-metadata 
   - python312-pytest-mock 
@@ -32134,6 +32168,7 @@ unsorted:
   - python312-pytest-plus 
   - python312-pytest-pretty 
   - python312-pytest-pycodestyle 
+  - python312-pytest-pyramid-server 
   - python312-pytest-qt 
   - python312-pytest-randomly 
   - python312-pytest-regressions 
@@ -32141,6 +32176,7 @@ unsorted:
   - python312-pytest-remotedata 
   - python312-pytest-rerunfailures 
   - python312-pytest-responsemock 
+  - python312-pytest-server-fixtures 
   - python312-pytest-services 
   - python312-pytest-shutil 
   - python312-pytest-socket 
@@ -32151,6 +32187,7 @@ unsorted:
   - python312-pytest-sugar 
   - python312-pytest-svn 
   - python312-pytest-testconfig 
+  - python312-pytest-testinfra 
   - python312-pytest-timeout 
   - python312-pytest-tldr 
   - python312-pytest-tornado 
@@ -32189,6 +32226,7 @@ unsorted:
   - python312-python-gflags 
   - python312-python-gitlab 
   - python312-python-gnupg 
+  - python312-python-gvm 
   - python312-python-jenkins 
   - python312-python-jose 
   - python312-python-jose-cryptography 
@@ -32215,6 +32253,7 @@ unsorted:
   - python312-python-slugify 
   - python312-python-snappy 
   - python312-python-socks 
+  - python312-python-sofa 
   - python312-python-stdnum 
   - python312-python-subunit 
   - python312-python-ternary 
@@ -32261,6 +32300,8 @@ unsorted:
   - python312-pyxattr 
   - python312-pyxdg 
   - python312-pyyaml_env_tag 
+  - python312-pyzmq 
+  - python312-pyzmq-devel 
   - python312-pyzo 
   - python312-pyzstd 
   - python312-q 
@@ -32285,6 +32326,7 @@ unsorted:
   - python312-qtcharts-qt5-api 
   - python312-qtcharts-qt5-doc 
   - python312-qtcharts-qt5-sip 
+  - python312-qtconsole 
   - python312-qtdatavis3d-qt5 
   - python312-qtdatavis3d-qt5-devel 
   - python312-qtdatavis3d-qt5-doc 
@@ -32372,6 +32414,7 @@ unsorted:
   - python312-rollbar 
   - python312-roman 
   - python312-rope 
+  - python312-rpcq 
   - python312-rpds-py 
   - python312-rply 
   - python312-rpm 
@@ -32414,6 +32457,7 @@ unsorted:
   - python312-scipy 
   - python312-scitokens 
   - python312-scour 
+  - python312-scp 
   - python312-screeninfo 
   - python312-screenplain 
   - python312-scripttest 
@@ -32545,6 +32589,8 @@ unsorted:
   - python312-spin 
   - python312-spotipy 
   - python312-spsdk 
+  - python312-spur 
+  - python312-spyder-kernels 
   - python312-sqlalchemy-migrate 
   - python312-sqlglot 
   - python312-sqlite-fts4 
@@ -32553,6 +32599,7 @@ unsorted:
   - python312-srcinfo 
   - python312-ssdeep 
   - python312-sshpubkeys 
+  - python312-sshtunnel 
   - python312-stack-data 
   - python312-starlette 
   - python312-statsd 
@@ -32571,6 +32618,7 @@ unsorted:
   - python312-subprocrunner 
   - python312-subscene-api 
   - python312-suds 
+  - python312-sunpy 
   - python312-suntime 
   - python312-sure 
   - python312-surer 
@@ -32636,6 +32684,7 @@ unsorted:
   - python312-tinycss2 
   - python312-tinydb 
   - python312-tinyrecord 
+  - python312-tinyrpc 
   - python312-titlecase 
   - python312-tk 
   - python312-tkreadonly 
@@ -32664,6 +32713,7 @@ unsorted:
   - python312-traceback2 
   - python312-traitlets 
   - python312-traits 
+  - python312-traittypes 
   - python312-transaction 
   - python312-transip 
   - python312-transitions 
@@ -32680,6 +32730,7 @@ unsorted:
   - python312-truststore 
   - python312-tsk 
   - python312-ttp 
+  - python312-ttp-templates 
   - python312-tvm 
   - python312-tweepy 
   - python312-twine 
@@ -32689,6 +32740,7 @@ unsorted:
   - python312-twitter.common.rpc 
   - python312-twython 
   - python312-txWS 
+  - python312-txZMQ 
   - python312-txaio 
   - python312-txt2tags 
   - python312-txtorcon 
@@ -32824,6 +32876,7 @@ unsorted:
   - python312-x86-64-v3 
   - python312-xapian 
   - python312-xapp 
+  - python312-xarray 
   - python312-xattr 
   - python312-xcffib 
   - python312-xdg 
@@ -32849,6 +32902,7 @@ unsorted:
   - python312-xxhash 
   - python312-xyzservices 
   - python312-y-py 
+  - python312-yafe 
   - python312-yamale 
   - python312-yamldoc 
   - python312-yamllint 
