@@ -1,7 +1,7 @@
 #
 # spec file for package dehydrated
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,6 +88,8 @@ Requires(pre):  %{_sbindir}/useradd
 Obsoletes:      dehydrated-lighttpd < %{version}-%{release}
 Obsoletes:      letsencrypt.sh < %{version}
 Provides:       letsencrypt.sh = %{version}
+Provides:       user(%{_user})
+Provides:       group(%{_user})
 %if %{with nginx}
 BuildRequires:  nginx
 %endif
