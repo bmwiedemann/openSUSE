@@ -294,13 +294,9 @@ mkdir -p -m 755 %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_distconfdir}/pam.d
 
 %make_install
-# XXX remove for now until we have a security review of the new module
-rm -f %{buildroot}%{_libdir}/security/pam_canonicalize_user.so
 /sbin/ldconfig -n %{buildroot}%{_libdir}
 # Install documentation
 %make_install -C doc
-# XXX remove for now until we have a security review, see above
-rm -f %{buildroot}%{_mandir}/man8/pam_canonicalize_user.8*
 # install /etc/security/namespace.d used by pam_namespace.so for namespace.conf iscript
 install -d %{buildroot}%{_pam_secconfdir}/namespace.d
 # install other.pamd and common-*.pamd
@@ -431,6 +427,7 @@ done
 %{_libdir}/libpam_misc.so.%{libpam_misc_so_version}
 %dir %{_pam_moduledir}
 %{_pam_moduledir}/pam_access.so
+%{_pam_moduledir}/pam_canonicalize_user.so
 %{_pam_moduledir}/pam_debug.so
 %{_pam_moduledir}/pam_deny.so
 %{_pam_moduledir}/pam_echo.so
@@ -532,6 +529,7 @@ done
 %{_mandir}/man8/mkhomedir_helper.8%{?ext_man}
 %{_mandir}/man8/pam.8%{?ext_man}
 %{_mandir}/man8/pam_access.8%{?ext_man}
+%{_mandir}/man8/pam_canonicalize_user.8%{?ext_man}
 %{_mandir}/man8/pam_debug.8%{?ext_man}
 %{_mandir}/man8/pam_deny.8%{?ext_man}
 %{_mandir}/man8/pam_echo.8%{?ext_man}
