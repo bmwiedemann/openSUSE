@@ -225,4 +225,13 @@
   * Add SpeakerDiarizationConfig, deprecate enable_speaker_diarization</comment>
     <requestid>1133642</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7188a9d9b42ee9f3a410b2144403f8b3</srcmd5>
+    <version>2.24.0</version>
+    <time>1707070185</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.24.0:
+  * Allow users to explicitly configure universe domain</comment>
+    <requestid>1143975</requestid>
+  </revision>
 </revisionlist>
