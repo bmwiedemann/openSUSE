@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb  2 15:46:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enfore removal of python2 build dep (configure is started with
+  --disable-pyton since ever and it'd be python2):
+  + Drop pkgconfig(python) BuildRequires
+  + Add libtool BuildRequires in order to be able to regenerated
+    confgure
+  + Remove m4//ax_python_devel.m4 during prep, so the macros are
+    not known to configure
+  + sed out lines containing AX_SWIG_PYTHON or AX_PYTHON_DEVEL
+    from configure.ac and run autoreconf to regenerate the
+    configure script
+
+-------------------------------------------------------------------
 Sat May 20 16:03:43 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - flom 1.6.1:
