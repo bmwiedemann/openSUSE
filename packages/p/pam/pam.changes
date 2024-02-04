@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 30 15:17:57 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable pam_canonicalize_user.so
+
+-------------------------------------------------------------------
 Fri Jan 19 09:11:30 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add post 1.6.0 release fixes for pam_env and pam_unix:

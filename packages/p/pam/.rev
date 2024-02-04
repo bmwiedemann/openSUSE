@@ -1224,4 +1224,12 @@
   - pam_pwhistory: implemented reliable usernames handling when remembering</comment>
     <requestid>1139944</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>f0bfbf9feb892e962f2198362e9a4cf4</srcmd5>
+    <version>1.6.0</version>
+    <time>1707070031</time>
+    <user>anag+factory</user>
+    <comment>- Enable pam_canonicalize_user.so</comment>
+    <requestid>1143388</requestid>
+  </revision>
 </revisionlist>
