@@ -1,7 +1,7 @@
 #
 # spec file for package atheme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,13 +35,14 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libmowgli-2) >= 2.0.0.g185
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libqrencode)
+%sysusers_requires
 %define atheme_home /var/lib/atheme
 %define atheme_log  /var/log/atheme
 %define atheme_run  /run/atheme
-Requires(pre):  shadow
 
 %description
 Atheme is a set of modular IRC services (NickServ, ChanServ, etc.)
@@ -98,7 +99,7 @@ b="%buildroot"
 mkdir -p "$b/%_docdir/%name"
 install -m 0644 contrib/*.php contrib/*.pl TODO "$b/%_docdir/%name"
 
-mkdir -p "$b/%_unitdir" "$b/%_prefix/lib/tmpfiles.d"
+mkdir -p "$b/%_unitdir" "$b/%_prefix/lib/tmpfiles.d" "$b/%_sysusersdir"
 ln -s service "$b/%_sbindir/rcatheme"
 cat >"$b/%_unitdir/atheme.service" <<-EOF
 	[Unit]
@@ -113,6 +114,9 @@ EOF
 cat >"$b/%_prefix/lib/tmpfiles.d/atheme.conf" <<-EOF
 	d /run/atheme 0755 atheme atheme -
 EOF
+echo 'u atheme - "IRC services" %atheme_home' >system-user-atheme.conf
+cp -a system-user-atheme.conf "$b/%_sysusersdir/"
+%sysusers_generate_pre system-user-atheme.conf random system-user-atheme.conf
 
 mv "$b/%_sysconfdir/%name"/*example "$b/%_docdir/%name/"
 install -pm0644 "%{S:9}" "$b/%_sysconfdir/%name/atheme.conf"
@@ -121,13 +125,7 @@ mv "$b/%_sbindir/ecdsakeygen" "$b/%_sbindir/atheme-ecdsakeygen"
 mv "$b/%_sbindir/dbverify" "$b/%_sbindir/atheme-dbverify"
 %fdupes %buildroot/%_prefix
 
-%pre
-/usr/bin/getent group atheme >/dev/null || \
-	/usr/sbin/groupadd -r atheme
-/usr/bin/getent passwd atheme >/dev/null || \
-	/usr/sbin/useradd -r -g atheme -s /bin/false \
-	-c "Atheme IRC Services daemon" -d "%atheme_home" \
-	atheme
+%pre -f random.pre
 %service_add_pre atheme.service
 
 %post
@@ -157,7 +155,8 @@ systemd-tmpfiles --create atheme.conf || :
 %dir %attr(750,atheme,atheme) %atheme_home
 %dir %attr(750,atheme,atheme) %atheme_log
 %_unitdir/*.service
-%_prefix/lib/tmpfiles.d/
+%_tmpfilesdir/*
+%_sysusersdir/*
 
 %files -n %lname
 %_libdir/libathemecore.so.1*
