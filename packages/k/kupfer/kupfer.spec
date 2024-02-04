@@ -1,7 +1,7 @@
 #
 # spec file for package kupfer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,17 +28,14 @@ BuildRequires:  dbus-1-python3
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext
+BuildRequires:  gobject-introspection
 BuildRequires:  intltool
-BuildRequires:  python-base
 BuildRequires:  python3 >= 3.4
 BuildRequires:  python3-docutils
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-libxml2
 BuildRequires:  python3-pyxdg
-BuildRequires:  typelib-1_0-Gtk-3_0
-BuildRequires:  typelib-1_0-Keybinder-3_0
-BuildRequires:  typelib-1_0-Wnck-3_0
 BuildRequires:  update-desktop-files
 BuildRequires:  xml2po
 Requires:       desktop-file-utils
@@ -50,15 +47,12 @@ Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-libxml2
 Requires:       python3-pyxdg
-Requires:       typelib-1_0-Gtk-3_0
-Requires:       typelib-1_0-Keybinder-3_0
-Requires:       typelib-1_0-Wnck-3_0
 Requires(post): hicolor-icon-theme
 Requires(post): shared-mime-info
 Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):shared-mime-info
-Requires(postun):update-desktop-files
+Requires(postun): hicolor-icon-theme
+Requires(postun): shared-mime-info
+Requires(postun): update-desktop-files
 BuildArch:      noarch
 
 %description
