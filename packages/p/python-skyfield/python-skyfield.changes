@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb  4 11:12:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.47
+  * Added faster and more accurate almanac routines
+    :func:`~skyfield.almanac.find_risings()` and
+    :func:`~skyfield.almanac.find_settings()` and
+    :func:`~skyfield.almanac.find_transits()`.
+  * Skyfield’s internal table for the ∆T Earth orientation
+    parameter has been updated, so that its predictions now extend
+    to 2025-01-18.
+  * Constellation abbreviations are now consistent between the
+    :func:`~skyfield.api.load_constellation_map()` table and the
+    :func:`~skyfield.api.load_constellation_names()` list.
+    Previously, ``CVn`` and ``TrA`` had been mis-capitalized in the
+    list as ``Cvn`` and ``Tra``.
+- Skip testing python312: gh#brandon-rhodes/assay#15 still an issue
+
+-------------------------------------------------------------------
 Fri Nov 24 09:46:49 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.46:

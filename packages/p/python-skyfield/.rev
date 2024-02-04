@@ -328,4 +328,25 @@ research-grade positions for planets and Earth satellites.</comment>
     <comment></comment>
     <requestid>1128528</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c9f4233c4a944d61a3d98021c9b07450</srcmd5>
+    <version>1.47</version>
+    <time>1707070196</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.47
+  * Added faster and more accurate almanac routines
+    :func:`~skyfield.almanac.find_risings()` and
+    :func:`~skyfield.almanac.find_settings()` and
+    :func:`~skyfield.almanac.find_transits()`.
+  * Skyfield’s internal table for the ∆T Earth orientation
+    parameter has been updated, so that its predictions now extend
+    to 2025-01-18.
+  * Constellation abbreviations are now consistent between the
+    :func:`~skyfield.api.load_constellation_map()` table and the
+    :func:`~skyfield.api.load_constellation_names()` list.
+    Previously, ``CVn`` and ``TrA`` had been mis-capitalized in the
+    list as ``Cvn`` and ``Tra``.
+- Skip testing python312: gh#brandon-rhodes/assay#15 still an issue</comment>
+    <requestid>1143991</requestid>
+  </revision>
 </revisionlist>
