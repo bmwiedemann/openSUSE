@@ -169,4 +169,27 @@
     <comment></comment>
     <requestid>1032510</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5b46659a1c4c9559f8dcbf848dc88d40</srcmd5>
+    <version>2.10.0</version>
+    <time>1707070194</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.10.0:
+  * update tested ZK versions
+  * remove Python 3.7, add Python 3.11 and Python 3.12
+  * bump pypy to latest available
+  * add SSL test
+  * no need to specify `mock`
+  * remove unecessary import guard for gevent.lock
+  * remove string interpolation in favour of exception chaining
+  * remove backport of 'atexit.unregister'
+  * Replace usage of six for their py3 implementations
+  * **core:**  no need to alway perform an `os.stat(fd)`
+  * **exceptions:**  Register exception for server-side
+    QUOTAEXCEEDED(-125)
+
+- Update to version 2.9.0
+- Actually remove nose BuildRequires, replacing it with pytest.</comment>
+    <requestid>1143989</requestid>
+  </revision>
 </revisionlist>

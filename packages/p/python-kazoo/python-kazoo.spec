@@ -1,7 +1,7 @@
 #
 # spec file for package python-kazoo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-kazoo
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        Higher Level Zookeeper Client
 License:        Apache-2.0
