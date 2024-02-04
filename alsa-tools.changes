@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  2 15:04:27 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.11:
+  * hdajackretask: resolution limit for wide screen, pipewire support
+  * hdspmixer: fix coredump
+   For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.10_v1.2.11#alsa-tools
+- Fix build with gcc7:
+  0001-hdajackretask-Fix-build-with-gcc7.patch
+
+-------------------------------------------------------------------
 Mon Jan 29 16:10:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - hwmixvolume: replace the unversioned python shebang to point to

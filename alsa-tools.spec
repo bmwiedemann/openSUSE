@@ -23,7 +23,7 @@
 %define have_gtk3	0
 %endif
 Name:           alsa-tools
-Version:        1.2.5
+Version:        1.2.11
 Release:        0
 Summary:        Various ALSA Tools
 License:        GPL-2.0-or-later
@@ -36,6 +36,8 @@ Source3:        README.SUSE
 Source4:        sbipatches.tar.bz2
 Source5:        rmedigicontrol.desktop
 Source7:        rmedigicontrol.png
+# upstream fixes
+Patch1:         0001-hdajackretask-Fix-build-with-gcc7.patch
 # build fixes
 Patch101:       alsa-tools-no_m4_dir.dif
 BuildRequires:  alsa-devel
@@ -297,6 +299,7 @@ Hammerfall DSP soundcard series.
 
 %prep
 %setup -q -a 4
+%patch1 -p1
 cp %{SOURCE3} .
 %patch101 -p1
 
