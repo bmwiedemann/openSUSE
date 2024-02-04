@@ -336,4 +336,13 @@
   * Reapply &quot;implement wayland fractional scaling&quot; #381</comment>
     <requestid>1143615</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5e30dee2b96787b93c4692904f2e0856</srcmd5>
+    <version>0.6.19</version>
+    <time>1707070072</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.19:
+  * Revert &quot;wayland: force window-&gt;scale = 1, if BEMENU_SCALE&quot;</comment>
+    <requestid>1143745</requestid>
+  </revision>
 </revisionlist>
