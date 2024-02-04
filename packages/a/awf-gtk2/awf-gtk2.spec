@@ -1,7 +1,7 @@
 #
 # spec file for package awf-gtk2
 #
-# Copyright (c) 2021-2023 SUSE LLC
+# Copyright (c) 2021-2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           awf-gtk2
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        Theme preview application for GTK 2
 Summary(fr):    Application d'aperçu de thème pour GTK 2
@@ -63,27 +63,31 @@ autoreconf -fi -W none
 %install
 %make_install
 mkdir -p %{buildroot}%{_datadir}/applications/
+desktop-file-install --dir=%{buildroot}%{_datadir}/applications/ applications/%{name}.desktop
+
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/
-mkdir -p %{buildroot}%{_mandir}/man1/ %{buildroot}%{_mandir}/fr/man1/
-for file in icons/*/*/*; do mv $file ${file/\/awf./\/%{name}.}; done
+for file in icons/*/*/awf.png; do mv $file ${file/\/awf.png/\/%{name}.png}; done
+for file in icons/*/*/awf.svg; do mv $file ${file/\/awf.svg/\/%{name}.svg}; done
 cp -a icons/* %{buildroot}%{_datadir}/icons/hicolor/
+
+mkdir -p %{buildroot}%{_mandir}/man1/ %{buildroot}%{_mandir}/fr/man1/
+install -pm 644 debian/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
+install -pm 644 debian/%{name}.fr.1 %{buildroot}%{_mandir}/fr/man1/%{name}.1
+
 for file in src/po/*.po; do
   code=$(basename "$file" .po)
   mkdir -p %{buildroot}%{_datadir}/locale/${code}/LC_MESSAGES/
   msgfmt src/po/${code}.po -o %{buildroot}%{_datadir}/locale/${code}/LC_MESSAGES/%{name}.mo
 done
-install -p -m 644 debian-gtk/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
-install -p -m 644 debian-gtk/%{name}.fr.1 %{buildroot}%{_mandir}/fr/man1/%{name}.1
-desktop-file-install --dir=%{buildroot}%{_datadir}/applications/ applications/%{name}.desktop
 %find_lang %{name} --with-man
 
 %files -f %{name}.lang
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_mandir}/man1/%{name}.1*
 
 %changelog
