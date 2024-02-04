@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  3 10:08:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use python3-base to build instead of python-base (aka python2):
+  waf uses a /usr/bin/env python shebang, but the script is fully
+  compatible with python3. Call it explicitly as python3 waf.
+
+-------------------------------------------------------------------
 Thu Aug  3 13:06:03 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
 
 - fix TW compilation by adding BuildRequires: pkgconfig(gl)
