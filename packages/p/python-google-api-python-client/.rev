@@ -983,4 +983,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1141339</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b971e63c750a4fe78db8dcfb301d5103</srcmd5>
+    <version>2.116.0</version>
+    <time>1707070150</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.116.0:
+  * **aiplatform:** Update the api
+  * **androidmanagement:** Update the api
+  * **androidpublisher:** Update the api
+  * **artifactregistry:** Update the api
+  * **bigqueryconnection:** Update the api
+  * **bigquery:** Update the api
+  * **bigtableadmin:** Update the api
+  * **blockchainnodeengine:** Update the api
+  * **cloudasset:** Update the api
+  * **clouddeploy:** Update the api
+  * **container:** Update the api
+  * **content:** Update the api
+  * **dataflow:** Update the api
+  * **dataform:** Update the api
+  * **datastore:** Update the api
+  * **displayvideo:** Update the api
+  * **drive:** Update the api
+  * **firebaseappcheck:** Update the api
+  * **firestore:** Update the api
+  * **migrationcenter:** Update the api
+  * **monitoring:** Update the api
+  * **networkmanagement:** Update the api
+  * **recommender:** Update the api
+  * **retail:** Update the api
+  * **spanner:** Update the api
+  * **sqladmin:** Update the api
+  * **workflowexecutions:** Update the api
+  * **workloadmanager:** Update the api
+  * **youtube:** Update the api</comment>
+    <requestid>1143812</requestid>
+  </revision>
 </revisionlist>
