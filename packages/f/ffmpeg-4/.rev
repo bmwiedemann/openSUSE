@@ -590,4 +590,13 @@
 - Delete vmaf-trim-usr-local.patch</comment>
     <requestid>1135304</requestid>
   </revision>
+  <revision rev="63" vrev="6">
+    <srcmd5>d0d96360cc8acc05b1fac73a8c2bd2ad</srcmd5>
+    <version>4.4.4</version>
+    <time>1707070023</time>
+    <user>anag+factory</user>
+    <comment>- drop support for libmfx, which is no longer supported upstream
+  at all (boo#1219494) (forwarded request 1143610 from sndirsch)</comment>
+    <requestid>1143659</requestid>
+  </revision>
 </revisionlist>
