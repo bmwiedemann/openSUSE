@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb  3 22:41:42 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.2.1
+  * Fixed issue related to enqueuing/dequeuing the next song.
+
+-------------------------------------------------------------------
+Sat Feb  3 07:17:31 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.2
+  * This update mostly contains improvements to stability.
+  * M4a file decoding is no longer done by calling ffmpeg
+    externally, it's (finally) done like the other file formats.
+    This should make kew more stable, responsive and it should
+    consume less memory when playing m4a files.
+  * kew now starts the first time with your system volume as the
+    volume, after that it remembers the last volume it exited with
+    and uses that.
+  * kew now picks up and starts using the cover color without the
+    user having to first go to track view.
+
+-------------------------------------------------------------------
 Fri Jan 26 15:47:54 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.1.1
