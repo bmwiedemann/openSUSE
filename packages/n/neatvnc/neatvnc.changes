@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb  3 06:40:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.2:
+  * Clients are now allowed to request more than 32 encodings (#108)
+  * Zlib streams are now preserved when a client switches between
+    encodings (#109)
+
+-------------------------------------------------------------------
 Mon Nov  6 07:58:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.1:
