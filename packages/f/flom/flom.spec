@@ -1,6 +1,7 @@
 #
 # spec file for package flom
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,12 +25,12 @@ License:        GPL-2.0-only
 URL:            https://www.tiian.org/flom/
 Source:         https://sourceforge.net/projects/flom/files/1.6.x-stable/%{name}-%{version}.tar.gz
 BuildRequires:  c++_compiler
+BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(dbus-1) >= 1.2.16
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.22
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libssl)
-BuildRequires:  pkgconfig(python)
 
 %description
 FLoM is a distributed lock manager that can be used to
@@ -59,8 +60,11 @@ This package contains the files required to build programs with FLoM.
 
 %prep
 %autosetup -p1
+sed -i '/AX_SWIG_PYTHON/d' configure.ac
+sed -i '/AX_PYTHON_DEVEL/d' configure.ac
 
 %build
+autoreconf -fiv
 %configure \
 	--docdir=%{_docdir}/%{name} \
 	--disable-perl \
