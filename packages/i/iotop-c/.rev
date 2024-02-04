@@ -61,4 +61,13 @@
   * Change the condition of displaying processes in only mode</comment>
     <requestid>1117832</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>510c38b2f759b82bf54dcf807bb9fd28</srcmd5>
+    <version>1.26</version>
+    <time>1707070163</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.26:
+  * Add clock in upper right corner</comment>
+    <requestid>1143851</requestid>
+  </revision>
 </revisionlist>
