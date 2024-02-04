@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  1 09:29:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.2.2:
+  + No changelog provided by upstream.
+- Add 205.patch: Fix build against jxl 0.9.0.
+
+-------------------------------------------------------------------
 Sun Aug 27 05:58:30 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update to version 3.0.2
