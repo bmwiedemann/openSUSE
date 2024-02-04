@@ -1,0 +1,28 @@
+From ab82f5e54367815545dcab26b419acd9e0b9d431 Mon Sep 17 00:00:00 2001
+From: Mike Lamb <mrl@bytesbymike.com>
+Date: Wed, 1 Nov 2023 14:31:25 -0400
+Subject: [PATCH 4/8] duid: fix comment for v6time
+References: gh#openSUSE/wicked#989
+Upstream: submitted
+
+v6time is seconds since midnight (UTC), January 1, 2000, modulo 2^32. The value is generated correctly but the comment refers to 2001 instead of 2000.
+---
+ src/duid.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/duid.h b/src/duid.h
+index dbfd1b29..756d7cef 100644
+--- a/src/duid.h
++++ b/src/duid.h
+@@ -75,7 +75,7 @@
+ typedef struct ni_duid_llt {
+ 	uint16_t		type;		/* type 1                     */
+ 	uint16_t		hwtype;         /* link layer address type    */
+-	uint32_t		v6time;		/* second since 2001 % 2^32   */
++	uint32_t		v6time;		/* second since 2000 % 2^32   */
+ 	unsigned char		hwaddr[];	/* link layer address         */
+ } NI_PACKED ni_duid_llt_t;
+ 
+-- 
+2.35.3
+

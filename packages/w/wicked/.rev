@@ -1767,4 +1767,31 @@
   [+ 0001-fix_arp_notify_loop_and_burst_sending.patch]</comment>
     <requestid>1096908</requestid>
   </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>b99623e89ad84fdbe77b58332da1c307</srcmd5>
+    <version>0.6.73</version>
+    <time>1707070000</time>
+    <user>anag+factory</user>
+    <comment>- ifreload: VLAN changes require device deletion (bsc#1218927) 
+  [+ 0009-ifreload-VLAN-changes-require-device-deletion-bsc-12.patch]
+- ifcheck: fix config changed check (bsc#1218926)
+  [+ 0008-ifcheck-fix-config-changed-check-bsc-1218926.patch]
+- client: fix exit code for no-carrier status (bsc#1219265)
+  [+ 0007-Fix-ifstatus-exit-code-for-NI_WICKED_ST_NO_CARRIER-s.patch]
+- dhcp6: omit the SO_REUSEPORT option (bsc#1215692)
+  [+ 0006-dhcp6-omit-the-SO_REUSEPORT-option-bsc-1215692.patch]
+- duid: fix comment for v6time
+  (https://github.com/openSUSE/wicked/pull/989)
+  [+ 0005-duid-fix-comment-for-v6time.patch]
+- rtnl: fix peer address parsing for non ptp-interfaces
+  (https://github.com/openSUSE/wicked/pull/987,
+  https://github.com/openSUSE/wicked/pull/988)
+  [+ 0003-rtnl-pass-ifname-in-newaddr-parsing-and-logging.patch]
+  [+ 0004-rtnl-parse-peer-address-on-non-ptp-interfaces.patch]
+- system-updater: Parse updater format from XML configuration to 
+  ensure install calls can run. 
+  (https://github.com/openSUSE/wicked/pull/985)
+  [+ 0002-system-updater-Parse-updater-format-from-XML-configu.patch]</comment>
+    <requestid>1143605</requestid>
+  </revision>
 </revisionlist>
