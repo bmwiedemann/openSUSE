@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb  2 10:27:50 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.14.12
+  * Tags in Saved Messages.
+  * Audio output device selection for music and videos.
+  * Audio input device selection for voice messages recording.
+  * Default device changes should be applied instantly.
+    (Windows / macOS)
+
+- Updated to version 4.14.11
+  * Fix crash when accepting calls.
+  * Fix possible crash in loopback audio on Windows.
+
+- Updated to version 4.14.10
+  * Allow choosing audio device for music and video files.
+  * Allow choosing microphone device for voice recording.
+  * Allow pause and resume voice messages recording.
+  * Track audio device changes on Windows and macOS.
+
+-------------------------------------------------------------------
 Sat Jan 20 07:26:58 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.14.9
