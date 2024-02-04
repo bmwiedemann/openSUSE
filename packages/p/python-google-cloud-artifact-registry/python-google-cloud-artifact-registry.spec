@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-artifact-registry
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Google Cloud Artifact Registry API client library
 License:        Apache-2.0
