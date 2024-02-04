@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  4 12:12:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add pywebdav-server-configparser.patch: Replace long deprecated
+  SafeConfigParser
+
+-------------------------------------------------------------------
 Sat Jul 15 06:21:23 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - version 0.12.0
