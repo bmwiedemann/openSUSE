@@ -1,7 +1,7 @@
 #
 # spec file for package python-control
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        BSD-3-Clause
 URL:            https://python-control.org
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM python-control-pr961-py312.patch gh#python-control/python-control#961
+Patch0:         python-control-pr961-py312.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -37,13 +39,14 @@ Requires:       python-scipy >= 1.3
 Recommends:     python-slycot
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module matplotlib-qt5}
+BuildRequires:  %{python_module matplotlib-qt}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module scipy >= 1.3}
 BuildRequires:  %{python_module slycot}
 # /SECTION
@@ -74,7 +77,7 @@ donttest="dummyprefix"
 [ "${RPM_ARCH}" != "x86_64" ] && donttest="$donttest or (test_optimal_doc and shooting-3-u0-None)"
 # causes i586 segfaults in matplotlib after successful balanced model reduction tests
 [ $(getconf LONG_BIT) -eq 32 ] && donttest="$donttest or testBalredMatchDC"
-%pytest -k "not (${donttest})"
+%pytest -n auto -k "not (${donttest})"
 
 %files %{python_files}
 %doc ChangeLog README.rst
