@@ -261,4 +261,23 @@ This version works with llvm 4.</comment>
   * Remove support for LLVM &lt; 14</comment>
     <requestid>1127705</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>94fd819079ac05e771ea6390fcdd8a8a</srcmd5>
+    <version>0.42.0</version>
+    <time>1707070079</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.42.0:
+  * Support for Python 3.12.
+  * A fix for relocation overflows on AArch64 systems.
+  * Binding layer: new queries for incoming blocks of phi
+    instructions, type kinds, and elements.
+    Addition of the Instruction Namer pass.
+  * IR layer: Support convergent as an attribute of function
+    calls and call instructions.
+
+- Drop patch python311.patch, not required.
+- add python311.patch to build with python 3.11 as well
+- Bump llvm_major from 8 to 9</comment>
+    <requestid>1143748</requestid>
+  </revision>
 </revisionlist>
