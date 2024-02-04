@@ -296,4 +296,15 @@
     <comment></comment>
     <requestid>1032541</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>2e2706cf8c72408de244504bfa2e3e56</srcmd5>
+    <version>0.7.1</version>
+    <time>1707070063</time>
+    <user>anag+factory</user>
+    <comment>- Add user/group provides for rpm 4.19 
+
+- Add instance name to unit description
+- Check instance specific configuration</comment>
+    <requestid>1143714</requestid>
+  </revision>
 </revisionlist>
