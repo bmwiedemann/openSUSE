@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 03 08:21:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.3:
+  * fix docker build
+  * Added vulnerability fixes for Alpine Linux OS
+  * Fix incorrect spelling
+
+-------------------------------------------------------------------
 Thu Dec 21 17:16:32 UTC 2023 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.2:
