@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  2 15:20:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop obsolete python-xml BuildRequires: python-xml is a python2
+  package, but there seems to be no trace of python2 being used in
+  any way. Changelog mentioned in 2019 that python2 would not
+  longer be required to build. (boo#1219306).
+
+-------------------------------------------------------------------
 Wed Apr 26 11:50:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve xorg-x11-devel BuildRequire to pkgconfig(...)
