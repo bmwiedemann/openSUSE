@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 18 16:20:58 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Refresh CVE-2023-27043-email-parsing-errors.patch to
+  gh#python/cpython!111116, fixing bsc#1210638 (CVE-2023-27043).
+- Thus we can remove Revert-gh105127-left-tests.patch, which is
+  now useless.
+
+-------------------------------------------------------------------
 Wed Sep  6 06:09:33 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.8.18 (bsc#1214692):

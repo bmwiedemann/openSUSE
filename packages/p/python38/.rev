@@ -764,4 +764,15 @@ Core and Builtins
 </comment>
     <requestid>1109196</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>4ea4e55ffd6e4a675cdda9f7d1a34ef6</srcmd5>
+    <version>3.8.18</version>
+    <time>1707070042</time>
+    <user>anag+factory</user>
+    <comment>- Refresh CVE-2023-27043-email-parsing-errors.patch to
+  gh#python/cpython!111116, fixing bsc#1210638 (CVE-2023-27043).
+- Thus we can remove Revert-gh105127-left-tests.patch, which is
+  now useless.</comment>
+    <requestid>1143660</requestid>
+  </revision>
 </revisionlist>
