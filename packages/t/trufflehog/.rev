@@ -225,4 +225,21 @@
   * Detectors Updates 1 for Tristate Verification (#2187) (forwarded request 1143193 from ph03nix)</comment>
     <requestid>1143415</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9ab63ace5e5224c0ba99a079e62f67e5</srcmd5>
+    <version>3.67.1</version>
+    <time>1707070147</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.67.1:
+  * Add s3 credential validation (#2362)
+  * [bug] - use DetectorKey as the key in the detectorKeysWithResults map (#2366)
+
+- Update to version 3.67.0:
+  * [chore] Cleanup GitLab source errors (#2345)
+  * [bug] - use DetectorKey as the key in the detectorKeysWithResults map (#2366)
+  * Add s3 credential validation (#2362)
+  * Polite Verification (#2356)
+  * Make AzureDevopsPersonalAccessToken verification more robust (#2359) (forwarded request 1143756 from ph03nix)</comment>
+    <requestid>1143806</requestid>
+  </revision>
 </revisionlist>
