@@ -79,7 +79,6 @@ Patch4:         cups-filters-1.28.15-0003-beh-backend-Further-improvements-CVE-2
 # because newer cups-filters versions use stuff that is provided since CUPS > 1.5.4 so that it does
 # no longer build with CUPS 1.5.4 so that cups-filters does not work with CUPS 1.5.4:
 BuildRequires:  cups-devel > 1.5.4
-Requires:       cups > 1.5.4
 BuildRequires:  pkgconfig
 # pdftopdf
 BuildRequires:  qpdf-devel >= 8.3.0

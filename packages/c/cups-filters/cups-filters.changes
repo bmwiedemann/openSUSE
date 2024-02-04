@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  2 12:38:53 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- Removed outdated and obsoleted "Requires: cups > 1.5.4"
+  which was used to require a sufficient CUPS version
+  at times when also CUPS <= 1.5.4 was available
+  but it was not meant to require CUPS (boo#1216560)
+
+-------------------------------------------------------------------
 Wed Jan 24 12:04:25 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 1.28.17

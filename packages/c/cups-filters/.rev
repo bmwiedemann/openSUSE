@@ -462,4 +462,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1143023</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>0a6624bda41b83c7ff21f1c4e823cd8d</srcmd5>
+    <version>1.28.17</version>
+    <time>1707070003</time>
+    <user>anag+factory</user>
+    <comment>cups-filters: Removed outdated and obsoleted 'Requires: cups &gt; 1.5.4' (boo#1216560) (forwarded request 1143640 from jsmeix)</comment>
+    <requestid>1143641</requestid>
+  </revision>
 </revisionlist>
