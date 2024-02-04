@@ -1,5 +1,31 @@
 ## Modifications since last major version
 
+### 28.0.7
+
+* Make superscript/subscript/overscript Cyrillic characters obey localization forms of base letters (#2177).
+* Add IPA localization forms for Greek Lower Beta (`β`) and Chi (`χ`).
+* Add APLF variants for `U+25F0`, `U+25F3`, and `U+25F4`.
+* Make Ezh follow variants of `Z`/`z` (#1957).
+* Fix serif form for Cyrillic Lower Tall / Iotified Yat (#2178).
+* Make top serifs of Cyrillic Lower Straight U (`ү`, `ұ`) and Latin Lower Gamma (`ɣ`) respond to italics.
+* Fix leaning marks of Capital Turned/Half H (`U+2C75`, `U+2C76`, `U+A78D`, `U+A7F5`, `U+A7F6`).
+* Fix leaning marks of Wynn (`U+01BF`, `U+01F7`).
+* Fix leaning marks of Insular R (`U+A782`, `U+A783`).
+* Fix leaning marks of Greek/Latin Beta (`U+03B2`, `U+A7B4`, `U+A7B5`).
+* Fix leaning marks of Greek Lower San (`U+03FB`).
+
+
+### 28.0.6
+
+* Fix application of `APLF` for several [Uiua](https://www.uiua.org/) operators.
+* Adjust serif shapes for lowercase italic Yeri glyphs with corner body shape (#2151).
+* Adjustments to CV defaults:
+  - Make `a` (`cv26`) use `single-storey-tailed` under slab italic by default.
+  - Make `b` (`cv27`) use `toothed-motion-serifed` under slab italic by default.
+  - Make `g` (`cv32`) use `single-storey-serifless` under slab italic by default.
+  - Make `q` (`cv41`) use `straight-bottom-serifed` under slab italic by default.
+
+
 ### 28.0.5
 
 * Add characters:
