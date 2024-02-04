@@ -2,6 +2,7 @@
 # spec file for package timezone-java
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +18,12 @@
 
 
 Name:           timezone-java
-BuildRequires:  java
-BuildRequires:  javazic
-BuildRequires:  tzdb
+Version:        2024a
+Release:        0
 Summary:        Time Zone Descriptions
 License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
-# COMMON-BEGIN
-# COMMON-BEGIN
-Version:        2023d
-Release:        0
+URL:            https://www.iana.org/time-zones
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
 Source2:        https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz.asc
@@ -37,13 +34,15 @@ Patch0:         tzdata-china.diff
 Patch3:         iso3166-uk.diff
 Patch4:         timezone-2018f-bsc1112310.patch
 Patch5:         fat.patch
-# COMMON-END
-# COMMON-END
-URL:            https://www.iana.org/time-zones
-Requires(pre):  filesystem, coreutils
+BuildRequires:  java
+BuildRequires:  javazic
+BuildRequires:  tzdb
+#!BuildIgnore:  tzdata-java
+#!BuildIgnore:  tzdata-java8
+Requires(pre):  coreutils
+Requires(pre):  filesystem
 Provides:       tzdata-java = %{version}-%{release}
 Provides:       tzdata-java8 = %{version}-%{release}
-#!BuildIgnore:  tzdata-java tzdata-java8
 BuildArch:      noarch
 
 %description
@@ -51,17 +50,8 @@ These are configuration files that describe available time zones - this
 package is intended for Java Virtual Machine based on OpenJDK.
 
 %prep
-%setup -c  -a 1
-# COMMON-PREP-BEGIN
-# COMMON-PREP-BEGIN
-%patch0 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-sed -ri 's@/usr/local/etc/zoneinfo@%{_datadir}/zoneinfo@g' *.[1358]
-# COMMON-PREP-END
-# COMMON-PREP-END
-
+%autosetup -p1 -c -a1
+sed -ri 's@%{_prefix}/local%{_sysconfdir}/zoneinfo@%{_datadir}/zoneinfo@g' *.[1358]
 echo "tzdata%{version}" >> VERSION
 
 %build
@@ -85,11 +75,11 @@ java -jar %{_javadir}/tzdb.jar \
      %{_datadir}/tzdb/tzdata_jdk/jdk11_backward
 
 %install
-install -d -m 0755 $RPM_BUILD_ROOT/%{_datadir}
-cp -a javazi $RPM_BUILD_ROOT%{_datadir}
+install -d -m 0755 %{buildroot}/%{_datadir}
+cp -a javazi %{buildroot}%{_datadir}
 
 %files
-%defattr(-,root,root)
+%license LICENSE
 %{_datadir}/javazi
 
 %changelog
