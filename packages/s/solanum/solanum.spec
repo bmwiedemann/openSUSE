@@ -1,7 +1,7 @@
 #
 # spec file for package solanum
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Group:          Productivity/Networking/IRC
 URL:            https://github.com/solanum-ircd/solanum
 
 Source:         %name-%version.tar.xz
-Source1:        %name-sysusers.conf
 Source9:        example.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -35,10 +34,11 @@ BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  sqlite3-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libcrypto) >= 0.9.7
 BuildRequires:  pkgconfig(libssl) >= 0.9.7
 BuildRequires:  pkgconfig(zlib)
-Requires(pre):  shadow
+%sysusers_requires
 Obsoletes:      charybdis
 
 %description
@@ -68,8 +68,6 @@ mv "$b/%_sysconfdir/%name"/*.conf "$b/%_datadir/%name/"
 # Place some config file that will make it run out of the box on localhost
 cp "%{S:9}" "$b/%_sysconfdir/%name/ircd.conf"
 
-install -D %SOURCE1 %{buildroot}%{_sysusersdir}/%name.conf
-
 mkdir -p "$b/%_localstatedir/lib/solanum" \
 	"$b/%_localstatedir/log/solanum" "$b/%_sbindir" \
 	"$b/%_unitdir" "$b/%_sysusersdir" "$b/%_tmpfilesdir"
@@ -86,11 +84,13 @@ EOF
 cat >"$b/%_tmpfilesdir/solanum.conf" <<-EOF
 	d /run/%name 0755 solanum solanum -
 EOF
+echo 'u solanum - "Solanum ircd"' >system-user-solanum.conf
+cp -a system-user-solanum.conf "$b/%_sysusersdir/"
+%sysusers_generate_pre system-user-solanum.conf random system-user-solanum.conf
 # There are no headers installed, so the .pc and devel .so is useless
 rm -Rf "$b/%_libdir/pkgconfig" "$b/%_libdir/libratbox.so"
 
-%pre
-%sysusers_create_package %name %SOURCE1
+%pre -f random.pre
 %service_add_pre %name.service
 
 %post

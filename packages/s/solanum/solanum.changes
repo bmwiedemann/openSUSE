@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  3 12:52:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Emply %sysuser macros to generate "solanum" user
+  and have user(solanum) provided that way.
+
+-------------------------------------------------------------------
 Sun Jul 23 19:31:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0~ch640 (0ca18d072)

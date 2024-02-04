@@ -41,4 +41,13 @@
     <comment>- Update to snapshot 0~ch640 (0ca18d072)</comment>
     <requestid>1100210</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ba7872d520673be0fb5bde639f7a29ec</srcmd5>
+    <version>0~ch634</version>
+    <time>1707070146</time>
+    <user>anag+factory</user>
+    <comment>- Emply %sysuser macros to generate &quot;solanum&quot; user
+  and have user(solanum) provided that way.</comment>
+    <requestid>1143804</requestid>
+  </revision>
 </revisionlist>
