@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb  4 10:46:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23:
+  * Add _get_conversion_factor to registry with cache.
+  * Homogenize input and ouput of internal regitry functions to
+    facility typing, subclassing and wrapping.
+    (_yield_unit_triplets, )
+  * Generated downstream_status page to track the
+    state of downstream projects.
+  * Improve typing annotation.
+  * Updated to flexparser 0.2.
+  * Faster wraps
+  * Add codspeed github action.
+  * Move benchmarks to pytest-benchmarks.
+  * Support pytest on python 3.12 wrt Fraction formatting change
+  * Fixed Transformation type protocol.
+  * Documented to_preferred and created added an
+    autoautoconvert_to_preferred registry option.
+  * Enable Pint to parse uncertainty numbers.
+  * Optimize matplotlib unit conversion for Quantity arrays
+  * Add numpy.linalg.norm implementation.
+
+-------------------------------------------------------------------
 Thu Dec 28 15:25:28 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -34,7 +57,7 @@ Wed Jan  4 20:05:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Update test_non_int tests for pytest.
   * Create NaN-value quantities of appropriate non-int-type (Issue #1570).
   * New documentation format and organization!
-  * Better support for pandas and dask. 
+  * Better support for pandas and dask.
 
 -------------------------------------------------------------------
 Tue May 31 03:00:36 UTC 2022 - Arun Persaud <arun@gmx.de>
@@ -148,7 +171,7 @@ Mon Apr 19 04:13:18 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
   * Add sign function compatibility.
   * Fix scalar to ndarray tolist.
   * Fix tolist function with scalar ndarray.
-  * Implements a first benchmark suite in airspeed velocity (asv). 
+  * Implements a first benchmark suite in airspeed velocity (asv).
   * Power for pseudo-dimensionless units.
 - No longer build for Python 3.6, due to no NumPy.
 
@@ -547,16 +570,16 @@ Thu May  8 10:40:45 UTC 2014 - toddrme2178@gmail.com
   - Improved test suite helper functions.
   - Print honors default format w/o format().
   - Fixed sum() by treating number zero as a special case.
-  - Improved behaviour in ScaleConverter, OffsetConverter 
+  - Improved behaviour in ScaleConverter, OffsetConverter
     and Quantity.to.
-  - Reimplemented loading of default definitions to allow Pint in 
+  - Reimplemented loading of default definitions to allow Pint in
      a cx_freeze or similar package.
   - Implemented parsing of pretty printed units.
   - Fixed representation of dimensionless quantities.
   - Raise error when invalid formatting code is given.
   - Default registry to lazy load, raise error on redefinition.
   - Added condensed format.
-  - Added UnitRegistry () operator to parse 
+  - Added UnitRegistry () operator to parse
     expression replacing [].
   - Optional case insensitive unit parsing.
   - Change the Quantity mutability depending on magnitude type.

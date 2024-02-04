@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pint
-Version:        0.22
+Version:        0.23
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause
@@ -66,6 +66,7 @@ the complete list without changing the source code.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+rm -rv pint/testsuite/benchmarks
 # fails with numpy 1.25 https://github.com/hgrecco/pint/issues/1825
 %pytest -k "not test_equal_zero_nan_NP"
 
