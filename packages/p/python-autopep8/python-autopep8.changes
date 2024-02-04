@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  4 09:42:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add python312-skip-tests.patch to skip failing tests from py312
+
+-------------------------------------------------------------------
 Mon Nov  6 19:31:30 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add sle15_python_module_pythons
@@ -73,7 +78,7 @@ Tue May 11 21:16:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.7:
   * python 3.9
-  * disallow 0 for indent-size option 
+  * disallow 0 for indent-size option
   * exit code is 99 when error occured cli option parsing
   * exit code correctly on permission denied failure
 
@@ -400,7 +405,7 @@ Thu Oct 24 10:59:02 UTC 2013 - speilicke@suse.com
 Tue Aug 21 06:09:49 UTC 2012 - highwaystar.ru@gmail.com
 
 - updated to version 0.7.3
-- python3 package added 
+- python3 package added
 - spec improved
 
 -------------------------------------------------------------------
