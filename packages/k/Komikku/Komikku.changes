@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  2 20:37:03 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- switch over to download_files to simplify packaging
+- update to 1.37.1
+  * Improve the Webview
+
+-------------------------------------------------------------------
 Tue Jan 30 07:36:31 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.37.0

@@ -1,7 +1,7 @@
 #
-# spec file for package komikku
+# spec file for package Komikku
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,52 +17,52 @@
 
 
 Name:           Komikku
-Version:        1.37.0
+Version:        1.37.1
 Release:        0
 Summary:        A manga reader for GNOME
 License:        GPL-3.0-or-later
 URL:            https://codeberg.org/valos/Komikku
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         convert-to-modern-colorthief.patch
-BuildRequires:  meson
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  python3-devel
-BuildRequires:  intltool
 BuildRequires:  appstream-glib
 BuildRequires:  blueprint-compiler
-BuildRequires:  fdupes
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
+BuildRequires:  intltool
+BuildRequires:  meson
+BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
-Requires:       python3-modern-colorthief
-Requires:       python3-beautifulsoup4
-Requires:       python3-natsort
-Requires:       python3-dateparser
-Requires:       python3-emoji
-Requires:       python3-python-magic
-Requires:       python3-Unidecode
-Requires:       python3-rarfile
-Requires:       python3-keyring
-Requires:       python3-pure-protobuf
-Requires:       python3-Unidecode
-Requires:       python3-requests
-Requires:       python3-Pillow
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 Requires:       python3-Brotli
-Requires:       python3-pycairo
+Requires:       python3-Pillow
+Requires:       python3-Unidecode
+Requires:       python3-Unidecode
+Requires:       python3-beautifulsoup4
 Requires:       python3-cffi
 Requires:       python3-cloudscraper
+Requires:       python3-dateparser
+Requires:       python3-emoji
+Requires:       python3-keyring
 Requires:       python3-lxml
-Requires:       python3-wheel
-Requires:       python3-setuptools-gettext
+Requires:       python3-modern-colorthief
+Requires:       python3-natsort
 Requires:       python3-piexif
+Requires:       python3-pure-protobuf
+Requires:       python3-pycairo
+Requires:       python3-python-magic
+Requires:       python3-rarfile
+Requires:       python3-requests
+Requires:       python3-setuptools-gettext
+Requires:       python3-wheel
 Requires:       unrar_wrapper
 BuildArch:      noarch
 
 %description
 Komikku is a manga reader for GNOME. It focuses on providing a clean, intuitive
 and adaptive interface.
-	
+
 Keys features
 * Online reading from dozens of servers
 * Offline reading of downloaded comics
@@ -83,7 +83,7 @@ Keys features
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n komikku
 
 %build
 %meson
