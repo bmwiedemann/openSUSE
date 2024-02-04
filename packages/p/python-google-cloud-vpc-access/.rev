@@ -7,4 +7,13 @@
     <comment>Initial submission</comment>
     <requestid>1137708</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7b49c745a80babca0c30bed03dab5067</srcmd5>
+    <version>1.10.0</version>
+    <time>1707070182</time>
+    <user>anag+factory</user>
+    <comment> - update to google-cloud-vpc-access-v1.10.0:
+  * Allow users to explicitly configure universe domain</comment>
+    <requestid>1143972</requestid>
+  </revision>
 </revisionlist>
