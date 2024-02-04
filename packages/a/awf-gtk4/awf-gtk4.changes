@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  2 20:00:00 UTC 2024 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (2.8.0)
+  * add progress bar in tool bar and status bar
+  * auto resize window to minimal size after layout update
+
+-------------------------------------------------------------------
 Fri Jun 16 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
 
 - Package spec update
