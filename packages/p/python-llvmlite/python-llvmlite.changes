@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb  3 07:11:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.42.0:
+  * Support for Python 3.12.
+  * A fix for relocation overflows on AArch64 systems.
+  * Binding layer: new queries for incoming blocks of phi
+    instructions, type kinds, and elements.
+    Addition of the Instruction Namer pass.
+  * IR layer: Support convergent as an attribute of function
+    calls and call instructions.
+
+-------------------------------------------------------------------
 Mon Nov 20 13:29:12 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file
@@ -18,12 +30,12 @@ Fri May 26 13:34:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
   * This release predominantly upgrades to LLVM 14 and Python 3.11.
   * Bindings to a large number of passes are added.
   * The minimum supported Python version is now Python 3.8.
-- Drop patch python311.patch, not required. 
+- Drop patch python311.patch, not required.
 
 -------------------------------------------------------------------
 Thu Feb 23 15:07:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- add python311.patch to build with python 3.11 as well 
+- add python311.patch to build with python 3.11 as well
 
 -------------------------------------------------------------------
 Wed Sep 28 14:02:23 UTC 2022 - Arun Persaud <arun@gmx.de>
@@ -245,7 +257,7 @@ Tue Dec 17 17:06:49 CET 2019 - Matej Cepl <mcepl@suse.com>
 Thu Oct 31 15:18:38 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Add support-clang9.patch and apply it for llvm >= 9
-- Bump llvm_major from 8 to 9 
+- Bump llvm_major from 8 to 9
 
 -------------------------------------------------------------------
 Sat Oct 19 17:02:55 UTC 2019 - Arun Persaud <arun@gmx.de>
