@@ -1,7 +1,7 @@
 #
 # spec file for package ptokax
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Productivity/Networking/File-Sharing
 URL:            http://www.ptokax.org/
 BuildRequires:  gcc-c++
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  tinyxml-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(lua) >= 5.1
@@ -32,7 +33,7 @@ Source:         http://www.ptokax.org/files/0.5.3.0-nix-src.tgz
 Source1:        ptokax.service
 Patch1:         logs.patch
 Patch2:         nodate.diff
-Requires(pre):  shadow
+%sysusers_requires
 
 %description
 PtokaX Direct Connect Hub is a server application for Neo-Modus
@@ -56,22 +57,24 @@ perl -i -pe '
 %make_build
 
 %install
-install -D -m 755 PtokaX %buildroot/%_sbindir/%name
-mkdir -p %buildroot/%_sysconfdir/%name
-mkdir -p %buildroot/var/log/%name
-cp -a cfg.example %buildroot/%_sysconfdir/%name/cfg
-cp -a language %buildroot/%_sysconfdir/%name
+b="%buildroot"
+install -Dpm 755 PtokaX "$b/%_sbindir/%name"
+mkdir -p "$b/%_sysconfdir/%name"
+mkdir -p "$b/var/log/%name"
+cp -a cfg.example "$b/%_sysconfdir/%name/cfg"
+cp -a language "$b/%_sysconfdir/%name/"
 
 find scripting.docs -type d -exec chmod a+x {} +
 find scripting.docs -type f -exec chmod a-x {} +
 chmod 644 Changelog.txt ReadMe.txt License.txt
-install -D -m 644 %SOURCE1 %buildroot/%_unitdir/%name.service
-ln -s service %buildroot/%_sbindir/rcptokax
+install -Dpm 644 %SOURCE1 "$b/%_unitdir/%name.service"
 
-%pre
-getent group ptokax >/dev/null || %_sbindir/groupadd -r ptokax
-getent passwd ptokax >/dev/null || %_sbindir/useradd -g ptokax \
-	-s /bin/false -r -c "user for ptokax" -d %_sysconfdir/ptokax ptokax
+mkdir -p "$b/%_sysusersdir"
+echo 'u ptokax - "user for ptokax"' >system-user-ptokax.conf
+cp -a system-user-ptokax.conf "$b/%_sysusersdir/"
+%sysusers_generate_pre system-user-ptokax.conf random system-user-ptokax.conf
+
+%pre -f random.pre
 %service_add_pre %name.service
 
 %post
@@ -87,8 +90,8 @@ getent passwd ptokax >/dev/null || %_sbindir/useradd -g ptokax \
 %doc Changelog.txt ReadMe.txt scripting.docs
 %license License.txt
 %_sbindir/%name
-%_sbindir/rcptokax
 %_unitdir/%name.service
+%_sysusersdir/*
 %attr(-,ptokax,ptokax) %dir %_sysconfdir/%name
 %attr(-,ptokax,ptokax) %dir %_sysconfdir/%name/cfg
 %attr(-,ptokax,ptokax) %dir %_sysconfdir/%name/language

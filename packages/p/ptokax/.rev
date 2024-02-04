@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>1094820</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cb6fe9116168a24ad716885c193ffdce</srcmd5>
+    <version>0.5.3</version>
+    <time>1707070170</time>
+    <user>anag+factory</user>
+    <comment>- Employ %sysusers macros to make the &quot;ptokax&quot; user</comment>
+    <requestid>1143892</requestid>
+  </revision>
 </revisionlist>
