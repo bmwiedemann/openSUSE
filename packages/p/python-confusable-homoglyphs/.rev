@@ -40,4 +40,13 @@
     <comment></comment>
     <requestid>896449</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d3d95ac91614ce5fc72bebdc98a8ebc9</srcmd5>
+    <version>3.3.1</version>
+    <time>1707070181</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.1:
+  * Update unicode data</comment>
+    <requestid>1143978</requestid>
+  </revision>
 </revisionlist>
