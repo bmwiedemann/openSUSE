@@ -110,8 +110,8 @@ products:
     - x86_64
   - ceph-grafana-image:
     - x86_64
-  - ceph-image:
-    - x86_64
+#  - ceph-image:
+#    - x86_64
   - csi-attacher-image:
     - x86_64
   - csi-livenessprobe-image:
@@ -232,8 +232,8 @@ products:
     - x86_64
   - opensuse-registry-image:
     - x86_64
-  - opensuse-rmt-server-image:
-    - x86_64
+#  - opensuse-rmt-server-image:
+#    - x86_64
   - opensuse-rstudio-desktop:
     - x86_64
   - opensuse-rstudio-server:
@@ -311,8 +311,8 @@ products:
     - x86_64
   - httpd-image:
     - x86_64
-  - influxdb-image:
-    - x86_64
+#  - influxdb-image:
+#    - x86_64
   - java11-devel-container:
     - x86_64
   - keylime-control-plane-image:
@@ -369,8 +369,8 @@ products:
     - x86_64
   - rmt-nginx-image:
     - x86_64
-  - rmt-server-image:
-    - x86_64
+#  - rmt-server-image:
+#    - x86_64
   - ruby-3.3-image:
     - x86_64
   - rust-keylime-image:
@@ -391,8 +391,8 @@ products:
     - x86_64
   - samba-image:
     - x86_64
-  - tomcat-image:
-    - x86_64
+#  - tomcat-image:
+#    - x86_64
   - init-image:
     - x86_64
   - virt-api-container:
@@ -498,10 +498,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20240202'
 published: '20240201'
 publishing: '20240201'
-testing: '20240201'
+testing: '20240202'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
