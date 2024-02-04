@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyWebDAV3-GNUHealth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
-%define         skip_python2 1
+%{?sle15_python_module_pythons}
 %bcond_without  test
 Name:           python-PyWebDAV3-GNUHealth
 Version:        0.12.0
@@ -30,18 +28,17 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://health.gnu.org
 Source0:        https://files.pythonhosted.org/packages/source/P/PyWebDAV3-GNUHealth/PyWebDAV3-GNUHealth-%{version}.tar.gz
 Source1:        http://www.webdav.org/neon/litmus/litmus-%{ltmsver}.tar.gz
-BuildRequires:  %{python_module devel}
+# TODO: send this upstream (where?)
+Patch0:         pywebdav-server-configparser.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module pytest}
 %endif
 Conflicts:      python-PyWebDAV3
-%ifpython2
-Obsoletes:      %{oldpython}-PyWebDAV < %{version}
-Provides:       %{oldpython}-PyWebDAV = %{version}
-%endif
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -59,14 +56,14 @@ can be run as daemon.
 Port from Andrew Leech PyWebDAV3 library to Support GNU Health.
 
 %prep
-%setup -q -n PyWebDAV3-GNUHealth-%{version}
+%autosetup -p1 -n PyWebDAV3-GNUHealth-%{version}
 cp %{SOURCE1} test/
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %{python_expand chmod a+x %{buildroot}%{$python_sitelib}/pywebdav/server/server.py
 sed -i "s|^#!/usr/bin/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/pywebdav/server/server.py
@@ -80,7 +77,7 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/py
 
 %if %{with test}
 %check
-%python_expand py.test-%{$python_bin_suffix}
+%pytest
 %endif
 
 %post
@@ -90,10 +87,10 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/py
 %python_uninstall_alternative davserver
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license doc/LICENSE
 %doc README.rst doc/Changes doc/TODO
 %python_alternative %{_bindir}/davserver
-%{python_sitelib}/*
+%{python_sitelib}/pywebdav
+%{python_sitelib}/PyWebDAV3_GNUHealth-%{version}.dist-info
 
 %changelog
