@@ -80,7 +80,7 @@ BuildRequires:  npm >= 8.1.307
 
 Requires:       %{name}-common = %{version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       %{name}-ui = %{version}
 
 %description
@@ -96,7 +96,7 @@ Requires:       %{name}-common = %{version}
 # For canberra-gtk-play binary
 Requires:       canberra-gtk-play
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       %{name}-ui = %{version}
 
 %description gtk
@@ -112,7 +112,7 @@ Summary:        Qt interface for the "transmission" BitTorrent client
 Group:          Productivity/Networking/Other
 Requires:       %{name}-common = %{version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       %{name}-ui = %{version}
 
 %description qt
@@ -138,6 +138,8 @@ Discovery, DHT, µTP, PEX and magnet links.
 %package daemon
 Summary:        Daemon for the "transmission" BitTorrent client
 Group:          Productivity/Networking/Other
+Provides:       group(transmission)
+Provides:       user(transmission)
 %{?systemd_requires}
 
 %description daemon
