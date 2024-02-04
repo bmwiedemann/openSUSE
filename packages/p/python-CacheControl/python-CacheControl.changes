@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  3 13:34:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.0:
+  * Explicitly allow pathlib.Path as a type for
+    FileCache.directory.
+  * Drop support for Python 3.7. Python 3.8 is now the minimum
+    version.
+  * Don't use the cache to return a full response if a request
+    has a Range header.
+
+-------------------------------------------------------------------
 Fri Dec 29 11:48:07 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove BuildRequires and Suggests python-redis since it's not
