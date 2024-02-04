@@ -1,7 +1,7 @@
 #
 # spec file for package pix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define pix_ver master.mint21
 Name:           pix
-Version:        3.0.2
+Version:        3.2.2
 Release:        0
 Summary:        Image viewer and browser utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/linuxmint/pix
-Source:         https://github.com/linuxmint/%{name}/archive/%{pix_ver}.tar.gz#/%{name}-%{pix_ver}.tar.gz
+Source0:        https://github.com/linuxmint/pix/archive/refs/tags/%{version}.tar.gz
 Patch0:         pix-3.0.2-no-return.patch
+Patch1:         https://patch-diff.githubusercontent.com/raw/linuxmint/pix/pull/205.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -86,8 +86,7 @@ comments to images, organise images in catalogs, print images, view
 slide shows, set your desktop background, and more.
 
 %prep
-%setup -q -n %{name}-%{pix_ver}
-%patch0 -p1
+%autosetup -p1
 
 %build
 %meson
