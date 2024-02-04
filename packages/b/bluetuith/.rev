@@ -79,4 +79,21 @@
     <comment></comment>
     <requestid>1140245</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ea825787bdff3d65b9591ad63d442698</srcmd5>
+    <version>0.2.1</version>
+    <time>1707070077</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.1:
+  * go: Update dependencies
+  * ui, theme: Set adapter state colors appropriately
+  * ui: Handle default Ctrl-C keyevent
+  * ui: player: Use defined keybindings
+  * ui: player: Show help area after the information display
+  * ui: progress: Clear status progress on transfer completion
+  * bluez: services: Update service table and descriptors
+  * cmd: Finish parsing before initializing connection
+  * cmd: fix version print if no `@` is present</comment>
+    <requestid>1143747</requestid>
+  </revision>
 </revisionlist>

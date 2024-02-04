@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 03 06:44:15 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.2.1:
+  * go: Update dependencies
+  * ui, theme: Set adapter state colors appropriately
+  * ui: Handle default Ctrl-C keyevent
+  * ui: player: Use defined keybindings
+  * ui: player: Show help area after the information display
+  * ui: progress: Clear status progress on transfer completion
+  * bluez: services: Update service table and descriptors
+  * cmd: Finish parsing before initializing connection
+  * cmd: fix version print if no `@` is present
+
+-------------------------------------------------------------------
 Sat Jan 20 12:09:23 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to 0.2.0:
