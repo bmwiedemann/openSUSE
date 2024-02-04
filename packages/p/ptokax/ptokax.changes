@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  3 22:07:22 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Employ %sysusers macros to make the "ptokax" user
+- Drop vintage rc symlinks
+
+-------------------------------------------------------------------
 Fri Jun 23 07:15:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.5.3
