@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  3 14:24:07 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.2:
+  * Change user agent
+  * Discontinue Python 3.7 support (EOL)
+
+-------------------------------------------------------------------
 Wed Dec  7 22:34:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1:
