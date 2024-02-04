@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 03 09:11:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.9.2:
+  * Bump to v4.9.2
+  * Release notes for v4.9.2
+  * Cirrus: Update operating branch
+  * [v4.9] Bump to c/common v0.57.4, buildkit v0.12.5, c/buidah v1.33.5
+  * Fix updated runc dep breaking pod devices cgroup
+  * systests: kube with policies test: fix race
+  * Remove go.mod pin of runc and update to latest
+  * systests: kube with policies test: fix race
+  * Bump to v4.9.2-dev
+
+-------------------------------------------------------------------
 Thu Feb 01 14:28:00 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 4.9.1:
