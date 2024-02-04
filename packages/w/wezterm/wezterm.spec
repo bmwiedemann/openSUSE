@@ -20,7 +20,7 @@
 # %%global _dashed_version 20230712-072601-f4abf8fd
 
 Name:           wezterm
-Version:        20230712.072601.f4abf8fd+git210
+Version:        20240128.202157.1e552d76+git29
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm
@@ -28,7 +28,6 @@ License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (0BSD OR MIT OR Apache-
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Patch0:         do-not-send-eof-when-closing-application.patch
-Patch1:         https://github.com/wez/wezterm/pull/4578/commits/963413f8c550e7cf417a468a9f78bafcda512006.patch#/add-terminator-to-sync-capability.patch
 BuildRequires:  Mesa-libEGL-devel
 
 BuildRequires:  rust+cargo >= 1.43
