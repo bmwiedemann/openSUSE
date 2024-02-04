@@ -1,0 +1,192 @@
+-------------------------------------------------------------------
+Wed Jan 31 14:29:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add detailed versions for BuildRequires: based on configure.ac
+
+-------------------------------------------------------------------
+Wed Jan 31 12:05:34 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use 4.19.2 final tarball
+- Re-format spec file
+- Fix typelib package name (missing capitalisation)
+- Split off -doc subpackage
+- Change license to SPDX format
+- Use %ldconfig_scriptlets
+- Remove unneeded deps which will be automatically found by RPM
+
+-------------------------------------------------------------------
+Sat Apr 08 16:02:05 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.53.ae5e6e9:
+  * XfwScreenX11: Fix typo in property name when creating window
+
+-------------------------------------------------------------------
+Fri Apr 07 16:02:06 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.52.cb2e2d1:
+  * I18n: Update translation pt_BR (100%).
+
+-------------------------------------------------------------------
+Mon Apr 03 16:02:05 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.51.2603596:
+  * I18n: Update translation fr (100%).
+
+-------------------------------------------------------------------
+Sat Mar 18 16:02:26 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.50.0ab53e0:
+  * I18n: Add new translation ro (57%).
+
+-------------------------------------------------------------------
+Mon Mar 13 16:02:56 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.49.d1d464d:
+  * I18n: Add new translation en_GB (100%).
+
+-------------------------------------------------------------------
+Wed Mar 08 16:02:54 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.48.92088c6:
+  * Use XDT_CHECK_PACKAGE_BINARY for wayland-scanner
+  * Use XDT_CHECK_OPTIONAL_FEATURE
+
+-------------------------------------------------------------------
+Mon Mar 06 16:02:55 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.46.ca3773e:
+  * I18n: Add new translation id (100%).
+
+-------------------------------------------------------------------
+Sun Mar 05 16:02:51 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.45.4a9f397:
+  * Use XDT_VERSION_INIT() and eliminate need for configure.ac.in
+
+-------------------------------------------------------------------
+Sat Mar 04 16:02:51 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.44.0120b2d:
+  * Use $PKG_CONFIG and not pkg-config in configure.ac
+
+-------------------------------------------------------------------
+Wed Mar 01 16:02:57 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.43.89198a1:
+  * autogen.sh: fix xfce4-dev-tools dependency version
+
+-------------------------------------------------------------------
+Sat Feb 25 16:02:55 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.42.d0245eb:
+  * I18n: Add new translation hr (68%).
+
+-------------------------------------------------------------------
+Thu Feb 23 16:03:06 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.41.6672a6b:
+  * I18n: Update translation ko (100%).
+  * I18n: Update translation sv (100%).
+
+-------------------------------------------------------------------
+Tue Feb 21 16:02:48 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.39.19987e5:
+  * build: Get rid of IntlTool
+  * Use bind_textdomain_codeset() if available
+  * build: Fix autotools warning
+
+-------------------------------------------------------------------
+Sat Feb 18 16:02:25 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.36.539af2a:
+  * Update bug report address
+  * build: Fix "make dist" when disable wayland
+  * configure: Fix X11's dependencies detection
+
+-------------------------------------------------------------------
+Sun Feb 05 16:02:55 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.33.59416bd:
+  * I18n: Add new translation ie (100%).
+  * I18n: Add new translation uk (73%).
+
+-------------------------------------------------------------------
+Sat Feb 04 16:02:55 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.31.8f72515:
+  * I18n: Add new translation ru (100%).
+
+-------------------------------------------------------------------
+Fri Feb 03 16:02:55 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.30.8e21015:
+  * I18n: Add new translation oc (78%).
+
+-------------------------------------------------------------------
+Thu Feb 02 16:02:51 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.29.9923ca4:
+  * I18n: Add new translation en_CA (100%).
+
+-------------------------------------------------------------------
+Tue Jan 31 16:02:51 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.28.3ab4c88:
+  * I18n: Add new translation zh_TW (89%).
+  * I18n: Add new translation zh_CN (100%).
+  * I18n: Add new translation tr (100%).
+  * I18n: Add new translation sv (94%).
+  * I18n: Add new translation sr (100%).
+  * I18n: Add new translation sq (100%).
+  * I18n: Add new translation sl (100%).
+  * I18n: Add new translation pt_BR (100%).
+  * I18n: Add new translation pt (100%).
+  * I18n: Add new translation pl (100%).
+  * I18n: Add new translation nl (100%).
+  * I18n: Add new translation nb (100%).
+  * I18n: Add new translation lt (100%).
+  * I18n: Add new translation ko (89%).
+  * I18n: Add new translation ja (100%).
+  * I18n: Add new translation it (100%).
+  * I18n: Add new translation he (100%).
+  * I18n: Add new translation fr (100%).
+  * I18n: Add new translation fi (73%).
+  * I18n: Add new translation es (100%).
+  * I18n: Add new translation de (100%).
+  * I18n: Add new translation bg (100%).
+
+-------------------------------------------------------------------
+Sat Jan 14 16:02:43 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.6.66ca431:
+  * XfwWnckIcon: Silently return NULL if no X11 window can be found
+  * Add new CI builds to build without X11 and Wayland
+  * configure: error out if no windowing backend enabled
+  * Add configure args to enable/disable X11/Wayland
+  * Fix Wayland-only build
+  * Back to development
+  * Updates for release
+  * Allow callers to determine if a returned icon is a fallback icon
+  * Remove duplicate _get_icon() code
+  * Return correct fallback icon for XfwWindowWayland
+
+-------------------------------------------------------------------
+Fri Jan 13 16:30:51 UTC 2023 - mantarimay@pm.me
+
+- Update to version 4.19.1+git.6.66ca431:
+  * XfwWnckIcon: Silently return NULL if no X11 window can be found
+  * Add new CI builds to build without X11 and Wayland
+  * configure: error out if no windowing backend enabled
+  * Add configure args to enable/disable X11/Wayland
+  * Fix Wayland-only build
+  * Back to development
+  * Updates for release
+  * Allow callers to determine if a returned icon is a fallback icon
+  * Remove duplicate _get_icon() code
+  * Return correct fallback icon for XfwWindowWayland
+
+-------------------------------------------------------------------
+Mon Jan  9 12:21:48 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Initial package for openSUSE

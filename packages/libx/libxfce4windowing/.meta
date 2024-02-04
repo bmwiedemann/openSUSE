@@ -1,0 +1,6 @@
+<package name="libxfce4windowing" project="openSUSE:Factory">
+  <title>libxfce4windowing</title>
+  <description>Libxfce4windowing is an abstraction library that attempts to present windowing concepts (screens, toplevel windows, workspaces, etc.) in a windowing-system-independent manner.</description>
+  <devel project="X11:xfce" package="libxfce4windowing"/>
+  <url>https://gitlab.xfce.org/xfce/libxfce4windowing</url>
+</package>
