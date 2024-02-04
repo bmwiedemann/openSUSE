@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  1 12:44:09 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move autostart back to %_distconfdir as aaa_base is fixed
+- Use new budgie namespace for desktop file aswell
+
+-------------------------------------------------------------------
 Thu Feb  9 14:52:31 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use new budgie namespace for XDG autostart
