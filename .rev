@@ -755,4 +755,14 @@
 </comment>
     <requestid>1140893</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>a44d0040da938315bcb01835c0a8a937</srcmd5>
+    <version>6.0.41</version>
+    <time>1707070188</time>
+    <user>anag+factory</user>
+    <comment>- Version 6.0.41 - Bugfix Release
+  * added provides for user and group
+</comment>
+    <requestid>1143984</requestid>
+  </revision>
 </revisionlist>

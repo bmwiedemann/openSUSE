@@ -30,7 +30,7 @@
 %endif
 
 Name:           trytond
-Version:        %{majorver}.39
+Version:        %{majorver}.41
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
@@ -86,6 +86,9 @@ Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 # Database may run on a different machine, so a hard requirement is not ideal
 Recommends:     postgresql-server
+
+Provides:       group(tryton)
+Provides:       user(tryton)
 
 BuildArch:      noarch
 %{?systemd_ordering}
