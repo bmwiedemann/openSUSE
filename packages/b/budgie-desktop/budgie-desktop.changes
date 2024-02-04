@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 01 12:58:19 UTC 2024 - gmbr3@opensuse.org
+
+- Update to version 10.9+2:
+  * fix: multiple tabswitcher bugs
+  * sendto: Use stateless XDG autostart directory if stateless is
+    set
+
+-------------------------------------------------------------------
+Mon Jan 29 15:57:48 UTC 2024 - gmbr3@opensuse.org
+
+- Update to version 10.9+0:
+  * Release 10.9
+  * Update translations
+  * Implement a new Bluetooth indicator
+    (goodbye GNOME Bluetooth v1 :) )
+  * Start requiring budgie-session
+  * Port TabSwitcher & Workspace applets over to libxfce4windowing
+- Move autostart back to %_distconfdir as aaa_base is fixed
+- Add more specific dependencies for required userspace tools
+
+-------------------------------------------------------------------
 Fri Nov 24 13:15:42 UTC 2023 - gmbr3@opensuse.org
 
 - Update to version 10.8.2+0:
