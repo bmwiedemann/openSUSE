@@ -133,4 +133,15 @@
   * A new client connection no longer causes a DNS lookup.</comment>
     <requestid>1123502</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f92e8264c38a7b748b5c61046348d916</srcmd5>
+    <version>0.7.2</version>
+    <time>1707070074</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.2:
+  * Clients are now allowed to request more than 32 encodings (#108)
+  * Zlib streams are now preserved when a client switches between
+    encodings (#109)</comment>
+    <requestid>1143746</requestid>
+  </revision>
 </revisionlist>
