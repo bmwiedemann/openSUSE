@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  2 09:34:15 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- drop support for libmfx, which is no longer supported upstream
+  at all (boo#1219494)
+
+-------------------------------------------------------------------
 Tue Dec 26 13:36:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update ffmpeg-glslang-cxx17.patch to build with glslang 14

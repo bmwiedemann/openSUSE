@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -225,11 +225,6 @@ BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-%ifarch x86_64
-BuildRequires:  pkgconfig(libmfx)
-%endif
-%endif
 %if %{with zimg}
 BuildRequires:  pkgconfig(zimg)
 %endif
@@ -717,9 +712,6 @@ LDFLAGS="%_lto_cflags" \
 	--enable-lv2 \
 %endif
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-%ifarch x86_64
-	--enable-libmfx \
-%endif
 %endif
 	--enable-vaapi \
 	--enable-vdpau \
