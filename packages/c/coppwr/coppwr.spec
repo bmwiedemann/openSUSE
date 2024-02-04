@@ -1,7 +1,7 @@
 #
 # spec file for package coppwr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define appid   io.github.dimtpap.coppwr
 Name:           coppwr
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Low level PipeWire control GUI
 License:        GPL-3.0-or-later
@@ -53,7 +53,6 @@ install -Dm644 "assets/icon/64.png" "%{buildroot}%{_datadir}/icons/hicolor/64x64
 install -Dm644 "assets/icon/48.png" "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{appid}.png"
 install -Dm644 "assets/icon/32.png" "%{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{appid}.png"
 
-
 %files
 %license LICENSE*
 %doc README*
@@ -63,4 +62,3 @@ install -Dm644 "assets/icon/32.png" "%{buildroot}%{_datadir}/icons/hicolor/32x32
 %{_datadir}/icons/hicolor
 
 %changelog
-
