@@ -15,8 +15,6 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%define  py_ver  %(python -c "import sys; v=sys.version_info[:2]; print '%%d.%%d'%%v" 2>/dev/null || echo PYTHON-NOT-FOUND)
-
 Name:           libgooglepinyin
 Version:        0.1.2
 Release:        1
@@ -46,11 +44,6 @@ libgooglepinyin is an input method fork from google pinyin on android
 %package devel
 Summary:        Development files for libgooglepinyin
 Group:          Development/Libraries/Other
-%if 0%{?suse_version}
-Requires:       python-base >= %py_ver
-%else
-Requires:       python-libs >= %py_ver
-%endif
 Requires:	%{name}0 = %{version}
 
 %description devel
