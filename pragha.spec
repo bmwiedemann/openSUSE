@@ -1,7 +1,7 @@
 #
 # spec file for package pragha
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.31
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
 BuildRequires:  pkgconfig(gudev-1.0)
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || (0%{?suse_version} >= 1500 && 0%{?sle_version} > 150500)
 BuildRequires:  pkgconfig(gupnp-1.6)
 %else
 BuildRequires:  pkgconfig(gupnp-1.2)
