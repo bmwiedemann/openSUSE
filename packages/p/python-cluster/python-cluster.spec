@@ -1,7 +1,7 @@
 #
 # spec file for package python-cluster
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        LGPL-2.0-or-later
 URL:            https://github.com/exhuma/python-cluster
 Source:         https://files.pythonhosted.org/packages/source/c/cluster/cluster-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib >= 1.2
