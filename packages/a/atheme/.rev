@@ -224,4 +224,12 @@
     <comment>+bugref</comment>
     <requestid>955090</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>481c4f597ac84ae5edb06e513c9415e5</srcmd5>
+    <version>7.2.12</version>
+    <time>1707070140</time>
+    <user>anag+factory</user>
+    <comment>- Generate &quot;atheme&quot; user with sysusers mechanism</comment>
+    <requestid>1143802</requestid>
+  </revision>
 </revisionlist>
