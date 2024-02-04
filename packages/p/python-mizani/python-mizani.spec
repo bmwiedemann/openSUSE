@@ -1,7 +1,7 @@
 #
 # spec file for package python-mizani
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-mizani
-Version:        0.8.1
+Version:        0.10.0
 Release:        0
 Summary:        Scales for Python
 License:        BSD-3-Clause
@@ -52,8 +52,6 @@ Mizani is a scales package for graphics.
 
 %prep
 %setup -q -n mizani-%{version}
-# correct np.timedelta64 usage
-sed -i 's/unit=//' mizani/tests/test_*.py
 
 %build
 %pyproject_wheel
@@ -69,7 +67,7 @@ donttest="mizani.breaks.log_breaks"
 %pytest --ignore mizani/tests/test_breaks.py -k "not ($donttest)"
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/mizani
 %{python_sitelib}/mizani-%{version}*-info
