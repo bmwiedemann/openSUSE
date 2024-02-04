@@ -274,4 +274,18 @@
   %define. So we use %global instead. (forwarded request 1120761 from eeich)</comment>
     <requestid>1120762</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e8e10796e3382ae04c4efc7ece623185</srcmd5>
+    <version>0.5.20240203.a16bd5e</version>
+    <time>1707070139</time>
+    <user>anag+factory</user>
+    <comment>- Fix master package README generation 'trick' for rpm &lt;= 4.19.1
+  rpm version 4.19.1 started to add quotes around the file name
+  when it expands a %doc statements into a script. This broke
+  the 'trick' we've used to generate a README file on-the-fly.
+  Here the saving grace was the introduction of the macro %rpmversion
+  with the same version of rpm that can be used to identify
+  versions affected by this. (forwarded request 1143793 from eeich)</comment>
+    <requestid>1143794</requestid>
+  </revision>
 </revisionlist>
