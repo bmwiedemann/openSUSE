@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  1 20:17:40 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2024a:
+  * Kazakhstan unifies on UTC+5 beginning 2024-03-01
+  * Palestine springs forward a week later after Ramadan
+  * zic no longer pretends to support indefinite-past DST
+  * localtime no longer mishandles Ciudad Juárez in 2422
+
+-------------------------------------------------------------------
 Wed Dec 27 11:45:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023d:

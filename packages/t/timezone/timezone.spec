@@ -2,6 +2,7 @@
 # spec file for package timezone
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +17,15 @@
 #
 
 
+%global AREA    Etc
+%global ZONE    UTC
 Name:           timezone
+Version:        2024a
+Release:        0
 Summary:        Time Zone Descriptions
 License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
-URL:            http://www.iana.org/time-zones
-# COMMON-BEGIN
-Version:        2023d
-Release:        0
+URL:            https://www.iana.org/time-zones
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
 Source2:        https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz.asc
@@ -34,26 +36,14 @@ Patch0:         tzdata-china.diff
 Patch3:         iso3166-uk.diff
 Patch4:         timezone-2018f-bsc1112310.patch
 Patch5:         fat.patch
-# COMMON-END
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-%global AREA    Etc
-%global ZONE    UTC
 
 %description
 These are configuration files that describe available time zones. You
 can select an appropriate time zone for your system with YaST.
 
 %prep
-%setup -q -c -a 1
-# COMMON-PREP-BEGIN
-%patch0 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-sed -ri 's@/usr/local/etc/zoneinfo@%{_datadir}/zoneinfo@g' *.[1358]
-# COMMON-PREP-END
-
+%autosetup -p1 -c -a1
+sed -ri 's@%{_prefix}/local%{_sysconfdir}/zoneinfo@%{_datadir}/zoneinfo@g' *.[1358]
 touch version
 
 %build
@@ -63,37 +53,37 @@ LC_ALL=POSIX
 AREA=%{AREA}
 ZONE=%{ZONE}
 export AREA LANG LC_ALL ZONE
-make %{?_smp_mflags} TZDIR=%{_datadir}/zoneinfo CC="gcc" CFLAGS="%{optflags} -DHAVE_GETTEXT=1 -DTZDEFAULT='\"/etc/localtime\"' -DTM_GMTOFF=tm_gmtoff -DTM_ZONE=tm_zone -Dlint" AWK=awk BUGEMAIL="opensuse-support@opensuse.org"
-make %{?_smp_mflags} TZDIR=zoneinfo AWK=awk zones
+%make_build TZDIR=%{_datadir}/zoneinfo CC="gcc" CFLAGS="%{optflags} -DHAVE_GETTEXT=1 -DTZDEFAULT='\"%{_sysconfdir}/localtime\"' -DTM_GMTOFF=tm_gmtoff -DTM_ZONE=tm_zone -Dlint" AWK=awk BUGEMAIL="opensuse-support@opensuse.org"
+%make_build TZDIR=zoneinfo AWK=awk zones
 # Generate posixrules
 ./zic -b fat -y ./yearistype -d zoneinfo -p %{AREA}/%{ZONE}
 
 %install
-mkdir -p %{buildroot}%{_prefix}/share/zoneinfo
-cp -a zoneinfo %{buildroot}%{_prefix}/share/zoneinfo/posix
-cp -al %{buildroot}%{_prefix}/share/zoneinfo/posix/. %{buildroot}%{_prefix}/share/zoneinfo
-cp -a zoneinfo-leaps %{buildroot}%{_prefix}/share/zoneinfo/right
-mkdir -p %{buildroot}/etc
-rm -f  %{buildroot}/etc/localtime
-rm -f  %{buildroot}%{_prefix}/share/zoneinfo/posixrules
+mkdir -p %{buildroot}%{_datadir}/zoneinfo
+cp -a zoneinfo %{buildroot}%{_datadir}/zoneinfo/posix
+cp -al %{buildroot}%{_datadir}/zoneinfo/posix/. %{buildroot}%{_datadir}/zoneinfo
+cp -a zoneinfo-leaps %{buildroot}%{_datadir}/zoneinfo/right
+mkdir -p %{buildroot}%{_sysconfdir}
+rm -f  %{buildroot}%{_sysconfdir}/localtime
+rm -f  %{buildroot}%{_datadir}/zoneinfo/posixrules
 %if 0%{?suse_version} >= 1230
-ln -sf %{_prefix}/share/zoneinfo/%{AREA}/%{ZONE} %{buildroot}/etc/localtime
+ln -sf %{_datadir}/zoneinfo/%{AREA}/%{ZONE} %{buildroot}%{_sysconfdir}/localtime
 %else
-cp -fp %{buildroot}%{_prefix}/share/zoneinfo/%{AREA}/%{ZONE} %{buildroot}/etc/localtime
+cp -fp %{buildroot}%{_datadir}/zoneinfo/%{AREA}/%{ZONE} %{buildroot}%{_sysconfdir}/localtime
 %endif
-ln -sf /etc/localtime      %{buildroot}%{_prefix}/share/zoneinfo/posixrules
-install -m 644 iso3166.tab %{buildroot}%{_prefix}/share/zoneinfo/iso3166.tab
-install -m 644 zone.tab    %{buildroot}%{_prefix}/share/zoneinfo/zone.tab
-install -m 644 zone1970.tab %{buildroot}%{_prefix}/share/zoneinfo/zone1970.tab
-install -m 644 tzdata.zi %{buildroot}%{_prefix}/share/zoneinfo/tzdata.zi
+ln -sf %{_sysconfdir}/localtime      %{buildroot}%{_datadir}/zoneinfo/posixrules
+install -m 644 iso3166.tab %{buildroot}%{_datadir}/zoneinfo/iso3166.tab
+install -m 644 zone.tab    %{buildroot}%{_datadir}/zoneinfo/zone.tab
+install -m 644 zone1970.tab %{buildroot}%{_datadir}/zoneinfo/zone1970.tab
+install -m 644 tzdata.zi %{buildroot}%{_datadir}/zoneinfo/tzdata.zi
 install -D -m 755 tzselect %{buildroot}%{_bindir}/tzselect
 install -D -m 755 zdump    %{buildroot}%{_sbindir}/zdump
 install -D -m 755 zic      %{buildroot}%{_sbindir}/zic
 install -m 644 -t %{buildroot}%{_datadir}/zoneinfo/ leapseconds leapseconds.awk leap-seconds.list
 
 %files
-%defattr(-,root,root)
-%verify(not link md5 size mtime) %config(missingok,noreplace) /etc/localtime
+%license LICENSE
+%verify(not link md5 size mtime) %config(missingok,noreplace) %{_sysconfdir}/localtime
 %{_datadir}/zoneinfo
 %{_bindir}/tzselect
 %{_sbindir}/zdump

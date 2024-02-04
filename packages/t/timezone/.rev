@@ -1482,4 +1482,12 @@ bsc#1024677</comment>
   * ISO 6709 coordinates when using an awk that lacks the</comment>
     <requestid>1135296</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>767c0049b6cc2ddbbbcc7829c6b5a338</srcmd5>
+    <version>2024a</version>
+    <time>1707069997</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143625</requestid>
+  </revision>
 </revisionlist>
