@@ -74,4 +74,25 @@
     <comment></comment>
     <requestid>1126770</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d9071d94973b274f3cf6cefbcf73869d</srcmd5>
+    <version>2024</version>
+    <time>1707070055</time>
+    <user>anag+factory</user>
+    <comment>- Drop python3-espressomd testing dependency, revert once 
+  gh#espressomd/espresso#4856 is fixed.
+- Dropped 1093.patch, merged upstream
+  - fix links in README and doc ([gh#votca/votca#1091])
+  - fix python shebang to python3 ([gh#votca/votca#1093])
+  - Clean-up CI ([gh#votca/votca#1092], [gh#votca/votca#1095])
+  - remove reference to old webpage ([gh#votca/votca#1094])
+  - fix doc generation without pyxtp ([gh#votca/votca#1097])
+  - Do not run gmx tests without libgromacs ([gh#votca/votca#1099])
+  - KS-QMMM for single-particle states ([gh#votca/votca#1100])
+  - Spin-orbitals from ORCA in QMMM ([gh#votca/votca#1101])
+  - better unit test for DFT embedding ([gh#votca/votca#1102])
+- Update to 2024
+</comment>
+    <requestid>1143680</requestid>
+  </revision>
 </revisionlist>

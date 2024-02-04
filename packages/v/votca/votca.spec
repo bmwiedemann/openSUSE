@@ -25,17 +25,15 @@
 %endif
 
 Name:           votca
-Version:        2023
+Version:        2024
 Release:        0
 %define         uversion %{version}
-%define         sover 2023
+%define         sover 2024
 Summary:        Versatile Object-oriented Toolkit for Coarse-graining Applications
 License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            https://www.votca.org
 Source0:        https://github.com/votca/votca/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
-# PATCH-FIX-UPSTREAM 1093.patch -- fix python shebang
-Patch0:         1093.patch
 
 BuildRequires:  cmake >= 3.13
 BuildRequires:  eigen3-devel
@@ -74,9 +72,6 @@ BuildRequires:  procps
 BuildRequires:  psmisc
 BuildRequires:  python3-cma
 # only needed for testing
-%ifarch x86_64
-BuildRequires:  python3-espressomd
-%endif
 BuildRequires:  python3-lxml
 BuildRequires:  python3-pytest
 # for hdf5
@@ -180,8 +175,7 @@ Provides:       votca-csg-bash = %version-%release
 This package contains the bash completion support for votca.
 
 %prep
-%setup -n %{name}-%{uversion} -q
-%patch 0 -p1
+%autosetup -n %{name}-%{uversion}
 
 %build
 %setup_openmpi
