@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  2 15:26:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop bogus dependency on python-base from the devel project:
+  there seems to be no indicaton in the code that this would be
+  real.
+
+-------------------------------------------------------------------
 Wed Jan 17 02:34:24 UTC 2018 - i@marguerite.su
 
 - fix build
