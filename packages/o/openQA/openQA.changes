@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 02 21:02:01 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1706881004.0d50a814:
+  * Apply perlcritic rule for useless interpolation of literal string
+  * Remove no critic annotation
+  * Add service_port_delta config for livehandler
+
+-------------------------------------------------------------------
 Wed Jan 31 05:06:19 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1706677570.34cd7cff:
