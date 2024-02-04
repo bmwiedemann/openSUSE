@@ -143,4 +143,18 @@
     <comment></comment>
     <requestid>1136189</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7618e1b0c7cfc6991af51b5e04ff0e4c</srcmd5>
+    <version>0.14.0</version>
+    <time>1707070149</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.0:
+  * Explicitly allow pathlib.Path as a type for
+    FileCache.directory.
+  * Drop support for Python 3.7. Python 3.8 is now the minimum
+    version.
+  * Don't use the cache to return a full response if a request
+    has a Range header.</comment>
+    <requestid>1143810</requestid>
+  </revision>
 </revisionlist>
