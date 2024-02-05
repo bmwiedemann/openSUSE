@@ -1,7 +1,7 @@
 #
 # spec file for package powerline
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,11 +48,12 @@ Requires:       powerline-fonts
 Requires:       python3
 Requires:       python3-psutil
 Recommends:     git-core
-Recommends:     python3-i3ipc
 Recommends:     python3-netifaces
-Recommends:     python3-pygit2
+Recommends:     (python3-i3ipc if i3)
+Recommends:     (python3-pygit2 or git-core)
 Suggests:       i3
 Suggests:       lemonbar
+Suggests:       python3-pygit2
 Suggests:       tmux
 Provides:       python3-powerline-status = %{version}
 Obsoletes:      python3-powerline-status < %{version}
@@ -129,12 +130,6 @@ export CFLAGS="%{optflags}"
 
 %install
 %python3_install
-
-# Fix hashbangs in exec scripts to refere to exact python3.X version
-for f in %{buildroot}%{_bindir}/*
-do
-  sed -Ei "1{s@^#\!/usr/bin/python3@#\!%{_bindir}/python%{python3_version}@}" ${f}
-done
 
 # build docs
 pushd docs

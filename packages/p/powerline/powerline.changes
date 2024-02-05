@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb  5 07:41:41 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove manual python script hashbangs fix, that's done now
+  automatically by the %python_install macro.
+  Fix problem of package requiring /usr/bin/python3.11.11
+
+-------------------------------------------------------------------
+Thu Aug  3 03:36:13 UTC 2023 - André Werlang <beppe85@gmail.com>
+
+- Only recommend python311-i3ipc if i3 is installed
+- Make git-core a suitable alternative instead of python311-pygit2
+
+-------------------------------------------------------------------
 Sat Jun 17 15:58:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add powerline-python3.11-compat.patch -- Make powerline
