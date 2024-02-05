@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  4 21:01:42 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.7
+  * This release adds -help & -version options to the xditview
+    command. It also enables the use of the Xft code inherited
+    from XFree86 which was previously not enabled in our conversion
+    from Imake to autoconf.
+
+-------------------------------------------------------------------
 Sat Oct 15 21:13:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.6
