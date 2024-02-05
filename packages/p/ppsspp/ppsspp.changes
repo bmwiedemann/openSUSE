@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  5 05:24:19 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ppsspp 1.17.1:
+  * Fixes for functional and graphical issues in multiple games
+    and emulated elements
+  * Performance improvements
+  * Can now track total time played per game
+  * Pause screen now has an option to keep the game running behind
+    the menu (to avoid desyncs in multiplayer games)
+
+-------------------------------------------------------------------
 Tue Nov 21 08:54:45 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Align licenses with results from legaldb scan
