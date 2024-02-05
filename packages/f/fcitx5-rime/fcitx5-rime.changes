@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb  5 12:36:14 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.4
+  * follow preedit cursor position option in commit preview
+  * rename all rime action icon to avoid wrong icon being used
+  * don't use rime-im icon so we can see the label on kimpanel
+  * implement same preedit mode option like pinyin
+  * only clear saved state when fill a new session to the state
+  * always clear the saved state after request session
+  * do not unregister factory since the state will store the snap-
+    shotted value
+  * snapshot the state in deploy and reloadConfig
+  * set timeout to non-default value
+  * implement option's save and restore
+- changes in 5.1.3
+  * Show rime option in status area
+  * support virtual keyboard candidate list better
+  * add an option to control how the rime state is shared, default
+    behavior is changed to share in all clients.
+  * Restore rime schema / option when saving.
+
+-------------------------------------------------------------------
 Tue Oct  3 07:55:08 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.2

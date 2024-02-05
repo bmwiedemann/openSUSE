@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-rime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-rime
-Version:        5.1.2
+Version:        5.1.4
 Release:        0
 Summary:        RIME support for Fcitx5
 License:        LGPL-2.1-or-later
@@ -47,7 +47,7 @@ This package provides RIME support for Fcitx5.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 %cmake
@@ -61,11 +61,13 @@ This package provides RIME support for Fcitx5.
 %doc README.md
 %license LICENSES
 %dir %{_datadir}/fcitx5/inputmethod
-%{_libdir}/fcitx5/rime.so
+%{_libdir}/fcitx5/librime.so
 %{_datadir}/fcitx5/addon/rime.conf
 %{_datadir}/fcitx5/inputmethod/rime.conf
 %{_datadir}/icons/hicolor/*/apps/fcitx-rime*
+%{_datadir}/icons/hicolor/*/apps/fcitx_rime_*
 %{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-rime*
+%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx_rime_*
 %{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.Rime.metainfo.xml
 %{_datadir}/rime-data/fcitx5.yaml
 
