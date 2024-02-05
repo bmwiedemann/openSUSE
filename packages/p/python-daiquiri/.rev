@@ -128,4 +128,16 @@
   * Parameterizes overwriting `sys.excepthook` to allow it to be turned</comment>
     <requestid>1130491</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a7996a48d62c3d4030272dc3e9fe546d</srcmd5>
+    <version>3.2.5.1</version>
+    <time>1707166856</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.2.5.1:
+  * Only CI changes.
+- Skip some tests that are failing with python 3.12 because of some
+  issue in the way tests are running
+  gh#Mergifyio/daiquiri#74</comment>
+    <requestid>1144327</requestid>
+  </revision>
 </revisionlist>
