@@ -2,6 +2,7 @@
 # spec file for package lighttpd
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +73,8 @@ Recommends:     %{name}-mod_openssl = %{version}
 Recommends:     logrotate
 Provides:       http_daemon
 Provides:       httpd
+Provides:       user(%{name})
+Provides:       group(%{name})
 %{?systemd_requires}
 %if 0%{?suse_version} > 1500
 # pg_config moved to postgresql-server-devel in postgresql11* packages boo#1153722
