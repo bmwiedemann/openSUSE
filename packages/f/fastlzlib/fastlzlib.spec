@@ -1,7 +1,7 @@
 #
 # spec file for package fastlzlib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
-
 %define sover 1
 %define libname libfastlz%{sover}
 Name:           fastlzlib
@@ -26,10 +25,11 @@ Version:        0.0+git.20150524
 Release:        0
 Summary:        Zlib-like encapsulation interface to LZ4/FastLZ
 License:        BSD-2-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/bareos/fastlzlib
 Source:         %{name}-%{version}.tar.xz
+Source1:        baselibs.conf
 BuildRequires:  zlib-devel
+%{?suse_build_hwcaps_libs}
 
 %description
 A library that bundles and wraps LZ4 and FastLZ in a zlib-like interface.
@@ -52,20 +52,19 @@ Header files for the fastlzlib library, a library that bundles and
 wraps LZ4 and FastLZ in a zlib-like interface.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/doc/libfastlz
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %{_bindir}/fastlzcat

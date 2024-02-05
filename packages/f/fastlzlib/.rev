@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>613081</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d72bce852319d2cf566410aaf3693b57</srcmd5>
+    <version>0.0+git.20150524</version>
+    <time>1707166917</time>
+    <user>anag+factory</user>
+    <comment>- Modernise spec file
+- Build AVX2 enabled hwcaps library for x86_64-v3</comment>
+    <requestid>1144198</requestid>
+  </revision>
 </revisionlist>
