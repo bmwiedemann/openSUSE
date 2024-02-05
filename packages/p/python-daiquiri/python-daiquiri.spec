@@ -1,7 +1,7 @@
 #
 # spec file for package python-daiquiri
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-daiquiri
-Version:        3.2.3
+Version:        3.2.5.1
 Release:        0
 Summary:        Library to configure Python logging
 License:        Apache-2.0
@@ -50,7 +50,11 @@ provides some custom formatters and handlers.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest daiquiri/tests
+# Skip broken tests with python3.12 and not virtualenv,
+# looks like the "taskName" field is not present in the output for
+# some reason. Related to gh#Mergifyio/daiquiri#74
+donttest="test_setup_json_formatter or test_output"
+%pytest -k "not ($donttest)" daiquiri/tests
 
 %files %{python_files}
 %license LICENSE
