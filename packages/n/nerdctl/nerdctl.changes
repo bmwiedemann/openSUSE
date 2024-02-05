@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Mon Feb 05 08:16:42 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.7.3:
+  * build(deps): bump github.com/containerd/containerd from 1.7.12 to 1.7.13
+  * update BuildKit (0.12.5)
+  * update Kubo (0.26.0)
+  * update bypass4netns (0.4.0)
+  * update runc (1.1.12)
+  * update containerd (1.7.13)
+  * update RootlessKit (2.0.0)
+  * build(deps): bump github.com/containerd/containerd from 1.7.11 to 1.7.12
+  * add allow option in build
+  * Document that profiles are supported
+  * build(deps): bump github.com/rootless-containers/bypass4netns
+  * containerd-rootless-setuptool.sh nsenter: inherit RootlessKit env
+  * shfmt containerd-rootless-setuptool.sh
+  * fix: return error if volume create failed
+  * build(deps): bump golang.org/x/net from 0.19.0 to 0.20.0
+  * build(deps): bump github.com/docker/go-connections from 0.4.0 to 0.5.0
+  * build(deps): bump docker/metadata-action from 5.4.0 to 5.5.0
+  * build(deps): bump golang.org/x/sync from 0.5.0 to 0.6.0
+  * build(deps): bump golang.org/x/term from 0.15.0 to 0.16.0
+  * logging: respect ctx
+  * update runc (v1.1.10)
+  * cniNetworkManager: move Windows-specific variable to `_windows.go`
+  * nerdctl rm: fix printing `error="<nil>"` on warning
+  * build(deps): bump go.uber.org/mock from 0.3.0 to 0.4.0
+  * build(deps): bump github.com/containerd/cgroups/v3 from 3.0.2 to 3.0.3
+  * Add docs for trouble shooting nvidia gpu operator
+  * Remove "soci image rpull" from testing suite
+  * fix typo in filename
+  * Fix #2199 to allow users to bind a named pipe on Windows.
+  * go.mod: clean up
+  * fix groupadd in compose
+  * build(deps): bump github.com/awslabs/soci-snapshotter
+  * build(deps): bump golang.org/x/crypto from 0.16.0 to 0.17.0
+  * build(deps): bump docker/metadata-action from 5.3.0 to 5.4.0
+  * docs: Fix typo in command-reference.md
+  * fix etchosts in host network
+  * implement persistent logging for contaiers running in foreground
+  * fix deadlinks in the notation doc
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.1.0 to 2.1.1
+  * update BuildKit (0.12.4)
+  * update containerd (1.7.11)
+  * build(deps): bump github.com/containerd/containerd from 1.7.10 to 1.7.11
+  * Dedup mounts for /etc/hosts /etc/resolv.conf
+  * build(deps): bump actions/setup-go from 4 to 5
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * nerdctl run: reset the default value of limits.
+  * build(deps): bump docker/metadata-action from 5.2.0 to 5.3.0
+  * update CNI plugins (1.4.0)
+  * build(deps): bump github.com/containernetworking/plugins
+  * build(deps): bump github.com/klauspost/compress from 1.17.3 to 1.17.4
+  * build(deps): bump docker/metadata-action from 5.0.0 to 5.2.0
+  * update containerd (1.7.10)
+  * fix typo
+  * build(deps): bump github.com/containerd/containerd from 1.7.9 to 1.7.10
+  * update golangci-lint (1.55.2)
+  * build(deps): bump golang.org/x/net from 0.18.0 to 0.19.0
+  * build(deps): bump golang.org/x/crypto from 0.15.0 to 0.16.0
+  * update Nydus (2.2.4)
+  * update Kubo (0.24.0)
+  * update containerd (1.7.9)
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * Fix nerdctl system info : sort problem.
+  * remove incompatible in TestComposeExecTTY
+  * build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.0 to 3.0.1
+  * build(deps): bump github.com/compose-spec/compose-go
+  * fix: typo
+  * build(deps): bump github.com/klauspost/compress from 1.17.2 to 1.17.3
+  * Add SOCI index digest flag
+  * docs: read-only (RRO) bind-mount have been support by docker
+  * build(deps): bump github.com/containerd/containerd from 1.7.8 to 1.7.9
+  * build(deps): bump github.com/compose-spec/compose-go
+  * build(deps): bump docker/build-push-action from 5.0.0 to 5.1.0
+  * Deflake TestContainerListWithFilter
+  * build(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+  * build(deps): bump github.com/fatih/color from 1.15.0 to 1.16.0
+  * build(deps): bump golang.org/x/sync from 0.4.0 to 0.5.0
+  * build(deps): bump golang.org/x/net from 0.17.0 to 0.18.0
+  * [build][iidfile] Setthe same permissions as docker
+  * build(deps): bump golang.org/x/text from 0.13.0 to 0.14.0
+  * chore(test): remove some incompatible in compose test
+  * Add diff command to docs & fix usage message
+  * Use prepared Stdout
+  * Fix wrong comment of completion
+  * Fix missing error handling
+  * Support diff command's autocompletion
+  * Remove diff test from windows
+  * Add comment to diff test
+  * Add `diff` command
+
+-------------------------------------------------------------------
 Mon Dec 04 07:00:42 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.7.0:
