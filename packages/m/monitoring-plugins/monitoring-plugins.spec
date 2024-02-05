@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%bcond_with mssql
 
 Name:           monitoring-plugins
-Version:        2.3.3
+Version:        2.3.5
 Release:        0
 Summary:        The Monitoring Plug-Ins
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -61,14 +62,8 @@ Source57:       nrpe-check_users
 Source58:       nrpe-check_zombie_procs
 Source59:       nrpe-check_mysql
 Source60:       nrpe-check_ups
-# PATCH-FIX-UPSTREAM Quote the options comming in from users (path names might contain whitespaces)
-Patch1:         %{name}-2.3.3-check_log_-_quoting.patch
 # PATH-FIX-openSUSE - do not use/run chown in Makefile: we use RPM for this
 Patch6:         %{name}-2.3.3-root-plugins-Makefile_-_no_chown.patch
-# PATCH-FIX-UPSTREAM Use correct pointer
-Patch11:        %{name}-2.3.3-check_snmp.arrayaddress.patch
-# PATCH-FIX-UPSTREAM kstreitova@suse.com -- fix build with MariaDB 10.2
-Patch119:       %{name}-2.3.3-mariadb_102_build_fix.patch
 # PATCH-FIX-UPSTREAM see https://bugzilla.redhat.com/512559
 Patch121:       %{name}-2.3.3-wrong_percent_in_check_swap.patch
 # PATCH-FIX-UPSTREAM - return ntp offset absolute (as positive value) in performance data since warn and crit are also positive values 
@@ -76,18 +71,9 @@ Patch122:       %{name}-2.3.3-check_ntp_perf_absolute.patch
 # PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1322
 Patch125:       monitoring-plugins-2.3.3-check_ssh.patch
 Patch126:       monitoring-plugins-2.3.3-check_ssh.t_-_improve_testing.patch
-# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/issues/1375
-Patch127:       monitoring-plugins-2.3.3-check_dhcp_-_detect_rogue_dhcp_servers.patch
 Patch128:       monitoring-plugins-2.3.3-check_disk_on_btrfs.patch
 # PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1774
 Patch129:       monitoring-plugins-2.3.3-check_by_ssh.patch
-#
-# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1862
-Patch130:       monitoring-plugins-2.3.3-check_http-proxy.patch
-# PATCH-FIX-UPSTREAM - simple fix for compiler error regarding no return value in function get_ip_address
-Patch131:       monitoring-plugins-2.3.3-check_icmp.patch
-# PATCH-FEATURE-SLE - Use systemd-logind instead of utmp (jsc#PED-3144)
-Patch132:       systemd-not-utmp.patch
 BuildRequires:  bind-utils
 BuildRequires:  dhcp-devel
 BuildRequires:  fping
@@ -214,6 +200,9 @@ Requires:       %{name}-common = %{version}
 Recommends:     %{name}-fping
 Recommends:     %{name}-hpjd
 Recommends:     %{name}-ldap
+%if %{with mssql}
+Recommends:     %{name}-mssql
+%endif
 Recommends:     %{name}-mysql
 Recommends:     %{name}-pgsql
 Recommends:     %{name}-snmp
@@ -273,6 +262,9 @@ Recommends:     %{name}-maintenance
 Recommends:     %{name}-mem
 Recommends:     %{name}-mrtg
 Recommends:     %{name}-mrtgtraf
+%if %{with mssql}
+Recommends:     %{name}-mssql
+%endif
 Recommends:     %{name}-mysql
 Recommends:     %{name}-mysql_health
 Recommends:     %{name}-nagios
@@ -667,7 +659,7 @@ Summary:        Check an IRCd server
 Group:          System/Monitoring
 Requires:       %{name}-common = %{version}
 Requires:       perl
-Requires:       perl(IO::Socket::INET6)
+Requires:       perl(IO::Socket::IP)
 Requires:       perl(IO::Socket::SSL)
 Provides:       nagios-plugins-ircd = %{version}
 Obsoletes:      nagios-plugins-ircd <= 1.5
@@ -754,6 +746,23 @@ than <expire_minutes>, a WARNING status is returned. If either the
 incoming or outgoing rates exceed the <icl> or <ocl> thresholds (in
 Bytes/sec), a CRITICAL status results.  If either of the rates exceed
 the <iwl> or <owl> thresholds (in Bytes/sec), a WARNING status results.
+
+%if %{with mssql}
+%package mssql
+Summary:        MS-SQL server or Sybase server query check
+Group:          System/Monitoring
+Requires:       perl(DBI)
+Requires:       perl(DBD::Sybase)
+Requires:       perl(Getopt::Long)
+Requires:       perl(FindBin)
+Requires:       perl
+
+%description mssql
+This plugin runs a query against a MS-SQL server or Sybase server and returns
+the first row. It returns an error if no responses are running. Row is passed
+to perfdata	in semicolon delimited format.
+A simple sql statement like \"select getdate()\" verifies server responsiveness.
+%endif
 
 %package mysql
 Summary:        Test a MySQL DBMS
@@ -1135,22 +1144,15 @@ with the libdbi driver for $extension.
 EOF
 done
 
-%patch1 -p1
 %patch6 -p1
-%patch11 -p1
 # Debian patches
-%patch119 -p1
 %patch121 -p1
 %patch122 -p1
 # Github patches
 %patch125 -p1
 %patch126 -p1
-%patch127 -p1
 %patch128 -p1
 %patch129 -p1
-%patch130 -p1
-%patch131 -p1
-%patch132 -p1
 find -type f -exec chmod 644 {} +
 
 %build
@@ -1206,6 +1208,11 @@ fi
 %if 0%{?suse_version} >= 01310
 rm %{buildroot}%{nagios_plugindir}/check_apt
 rm %{buildroot}%{nagios_plugindir}/check_game
+%endif
+
+# mssql plugin is not installable due to missing package DBD::Sybase - Do not ship until built --with=mssql
+%if %{without mssql}
+rm %{buildroot}%{nagios_plugindir}/check_mssql
 %endif
 
 # fix "use lib" on installed perl checks
@@ -1526,6 +1533,14 @@ fi
 %defattr(0755,root,root)
 %dir %{nagios_plugindir}
 %{nagios_plugindir}/check_mrtgtraf
+
+
+%if %{with mssql}
+%files mssql
+%defattr(0755,root,root)
+%dir %{nagios_plugindir}
+%{nagios_plugindir}/check_mssql
+%endif
 
 %files mysql
 %defattr(0755,root,root)
