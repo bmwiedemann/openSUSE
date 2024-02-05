@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  5 10:31:25 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix user/group with rpm 4.19 (boo#1219549) 
+
+-------------------------------------------------------------------
 Tue Oct 31 06:53:05 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.73:

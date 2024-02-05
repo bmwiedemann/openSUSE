@@ -580,4 +580,12 @@ bsc#1181400</comment>
     <comment></comment>
     <requestid>1121373</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>8e715ad9843ad280d380434c99b767f7</srcmd5>
+    <version>1.4.73</version>
+    <time>1707166910</time>
+    <user>anag+factory</user>
+    <comment>fix user/group with rpm 4.19 (boo#1219549)</comment>
+    <requestid>1144182</requestid>
+  </revision>
 </revisionlist>
