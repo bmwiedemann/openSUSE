@@ -2,6 +2,7 @@
 # spec file for package nanomsg
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define sover 6
 Name:           nanomsg
-Version:        1.2
+Version:        1.2.1
 Release:        0
 Summary:        Socket library providing several common communication patterns
 License:        MIT
@@ -51,18 +52,19 @@ Requires:       libnanomsg%{sover} = %{version}
 Development and header files for nanomsg.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
 
-%post   -n libnanomsg%{sover} -p /sbin/ldconfig
-%postun -n libnanomsg%{sover} -p /sbin/ldconfig
+%check
+%ctest
+
+%ldconfig_scriptlets -n libnanomsg%{sover}
 
 %files -n libnanomsg%{sover}
 %license COPYING
@@ -70,12 +72,11 @@ make %{?_smp_mflags}
 %{_libdir}/libnanomsg.so.*
 
 %files devel
+%license COPYING
 %{_includedir}/nanomsg
 %{_libdir}/libnanomsg.so
 %{_bindir}/nanocat
 %{_libdir}/pkgconfig/nanomsg.pc
-%dir %{_libdir}/cmake/nanomsg-1.1.5
-%{_libdir}/cmake/nanomsg-1.1.5/nanomsg-config*.cmake
-%{_libdir}/cmake/nanomsg-1.1.5/nanomsg-target*.cmake
+%{_libdir}/cmake/nanomsg-*
 
 %changelog
