@@ -93,4 +93,20 @@
   * Mount read-only directly if mounting rw fails (forwarded request 1105443 from wfrisch)</comment>
     <requestid>1105446</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fa2062e2abc2848b6706c4d037696e20</srcmd5>
+    <version>3.4+git14.b740dcf</version>
+    <time>1707166929</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.4+git14.b740dcf:
+  * Improved cgroups2 support
+  * Improved cgroups2 + docker interoperability
+  * New configs: hexchat, telegram
+  * Better support for clone3
+  * New signals displayed: SIGPWR
+  * Support for nvim+.clangd
+  * Improved .clang-format rules
+  * Print help to stdout if -h | --help was used</comment>
+    <requestid>1144260</requestid>
+  </revision>
 </revisionlist>
