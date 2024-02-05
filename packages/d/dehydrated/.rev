@@ -307,4 +307,12 @@
 - Check instance specific configuration</comment>
     <requestid>1143714</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d17c14717ebe1bb2e932ee0b15b0ede7</srcmd5>
+    <version>0.7.1</version>
+    <time>1707166908</time>
+    <user>anag+factory</user>
+    <comment>- switch to sysuser for user/group setup</comment>
+    <requestid>1144187</requestid>
+  </revision>
 </revisionlist>

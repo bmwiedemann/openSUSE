@@ -77,6 +77,7 @@ Source17:       dehydrated.target
 Source18:       dehydrated-postrun-hooks.service
 Source19:       dehydrated-postrun-hooks@.service
 Source20:       README.postrun-hooks
+Source21:       dehydrated.sysusers
 BuildRequires:  %{_apache}
 Requires:       coreutils
 Requires:       curl
@@ -88,8 +89,6 @@ Requires(pre):  %{_sbindir}/useradd
 Obsoletes:      dehydrated-lighttpd < %{version}-%{release}
 Obsoletes:      letsencrypt.sh < %{version}
 Provides:       letsencrypt.sh = %{version}
-Provides:       user(%{_user})
-Provides:       group(%{_user})
 %if %{with nginx}
 BuildRequires:  nginx
 %endif
@@ -103,7 +102,10 @@ BuildRequires:  shadow
 %endif
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
+%{?systemd_ordering}
+%sysusers_requires
 %else #with_systemd
 %if 0%{?suse_version}
 Requires:       cron
@@ -151,10 +153,7 @@ Provides:       letsencrypt.sh-nginx = %{version}
 This adds a configuration file for dehydrated's acme-challenge to nginx.
 %endif #with nginx
 
-%pre
-getent group %{_user} >/dev/null || %{_sbindir}/groupadd -r %{_user}
-getent passwd %{_user} >/dev/null || %{_sbindir}/useradd -g %{_user} \
-	-s /bin/false -r -c "%{_user}" -d %{_home} %{_user}
+%pre -f %{name}.pre
 if [ -e %{_sysconfdir}/dehydrated/config.sh ]; then mv %{_sysconfdir}/dehydrated/config.sh %{_sysconfdir}/dehydrated/config; fi
 
 %if %{with systemd}
@@ -178,6 +177,7 @@ cp %{SOURCE10} .
 cp %{SOURCE20} .
 
 %build
+%sysusers_generate_pre %{SOURCE21} %{name} %{name}.conf
 
 %install
 # sensitive keys
@@ -259,6 +259,8 @@ perl -p -i -e 's|#DEHYDRATED_GROUP=|DEHYDRATED_GROUP="%{_user}"|' %{buildroot}%{
 
 diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
 
+install -Dpm0644 %{SOURCE21} %{buildroot}%{_sysusersdir}/%{name}.conf
+
 # Rename existing config file config files fror nginx
 %if %{with nginx}
 %pre nginx
@@ -294,6 +296,7 @@ diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
 %{_unitdir}/dehydrated*.timer
 %if %{with instantiated_service}
 %{_unitdir}/dehydrated.target
+%{_sysusersdir}/%{name}.conf
 %endif
 %if 0%{?suse_version}
 %{_sbindir}/rcdehydrated
