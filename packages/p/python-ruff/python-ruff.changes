@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Mon Feb  5 09:40:59 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.2.0
+ * Breaking changes
+   * The NURSERY selector cannot be used anymore
+   * Legacy selection of nursery rules by exact codes is no longer allowed without preview enabled
+   * See also, the "Remapped rules" section which may result in disabled rules.
+ * Deprecations
+  * The following rules are now deprecated:
+   * missing-type-self (ANN101)
+   * missing-type-cls (ANN102)
+  * The following command line options are now deprecated:
+   * --show-source; use --output-format full instead
+   * --no-show-source; use --output-format concise instead
+   * --output-format text; use full or concise instead
+  * The following settings have moved and the previous name is deprecated:
+   * ruff.allowed-confusables → ruff.lint.allowed-confusables
+   * ruff.dummy-variable-rgx → ruff.lint.dummy-variable-rgx
+   * ruff.explicit-preview-rules → ruff.lint.explicit-preview-rules
+   * ruff.extend-fixable → ruff.lint.extend-fixable
+   * ruff.extend-ignore → ruff.lint.extend-ignore
+   * ruff.extend-per-file-ignores → ruff.lint.extend-per-file-ignores
+   * ruff.extend-safe-fixes → ruff.lint.extend-safe-fixes
+   * ruff.extend-select → ruff.lint.extend-select
+   * ruff.extend-unfixable → ruff.lint.extend-unfixable
+   * ruff.extend-unsafe-fixes → ruff.lint.extend-unsafe-fixes
+   * ruff.external → ruff.lint.external
+   * ruff.fixable → ruff.lint.fixable
+   * ruff.flake8-annotations → ruff.lint.flake8-annotations
+   * ruff.flake8-bandit → ruff.lint.flake8-bandit
+   * ruff.flake8-bugbear → ruff.lint.flake8-bugbear
+   * ruff.flake8-builtins → ruff.lint.flake8-builtins
+   * ruff.flake8-comprehensions → ruff.lint.flake8-comprehensions
+   * ruff.flake8-copyright → ruff.lint.flake8-copyright
+   * ruff.flake8-errmsg → ruff.lint.flake8-errmsg
+   * ruff.flake8-gettext → ruff.lint.flake8-gettext
+   * ruff.flake8-implicit-str-concat → ruff.lint.flake8-implicit-str-concat
+   * ruff.flake8-import-conventions → ruff.lint.flake8-import-conventions
+   * ruff.flake8-pytest-style → ruff.lint.flake8-pytest-style
+   * ruff.flake8-quotes → ruff.lint.flake8-quotes
+   * ruff.flake8-self → ruff.lint.flake8-self
+   * ruff.flake8-tidy-imports → ruff.lint.flake8-tidy-imports
+   * ruff.flake8-type-checking → ruff.lint.flake8-type-checking
+   * ruff.flake8-unused-arguments → ruff.lint.flake8-unused-arguments
+   * ruff.ignore → ruff.lint.ignore
+   * ruff.ignore-init-module-imports → ruff.lint.ignore-init-module-imports
+   * ruff.isort → ruff.lint.isort
+   * ruff.logger-objects → ruff.lint.logger-objects
+   * ruff.mccabe → ruff.lint.mccabe
+   * ruff.pep8-naming → ruff.lint.pep8-naming
+   * ruff.per-file-ignores → ruff.lint.per-file-ignores
+   * ruff.pycodestyle → ruff.lint.pycodestyle
+   * ruff.pydocstyle → ruff.lint.pydocstyle
+   * ruff.pyflakes → ruff.lint.pyflakes
+   * ruff.pylint → ruff.lint.pylint
+   * ruff.pyupgrade → ruff.lint.pyupgrade
+   * ruff.select → ruff.lint.select
+   * ruff.task-tags → ruff.lint.task-tags
+   * ruff.typing-modules → ruff.lint.typing-modules
+   * ruff.unfixable → ruff.lint.unfixable
+ * Remapped rules
+  * The following rules have been remapped to new codes:
+   * raise-without-from-inside-except: TRY200 to B904
+   * suspicious-eval-usage: PGH001 to S307
+   * logging-warn: PGH002 to G010
+   * static-key-dict-comprehension: RUF011 to B035
+   * runtime-string-union: TCH006 to TCH010
+ * Stabilizations
+  * The following rules have been stabilized and are no longer in preview:
+   * trio-timeout-without-await (TRIO100)
+   * trio-sync-call (TRIO105)
+   * trio-async-function-with-timeout (TRIO109)
+   * trio-unneeded-sleep (TRIO110)
+   * trio-zero-sleep-call (TRIO115)
+   * unnecessary-escaped-quote (Q004)
+   * enumerate-for-loop (SIM113)
+   * zip-dict-keys-and-values (SIM911)
+   * timeout-error-alias (UP041)
+   * flask-debug-true (S201)
+   * tarfile-unsafe-members (S202)
+   * ssl-insecure-version (S502)
+   * ssl-with-bad-defaults (S503)
+   * ssl-with-no-version (S504)
+   * weak-cryptographic-key (S505)
+   * ssh-no-host-key-verification (S507)
+   * django-raw-sql (S611)
+   * mako-templates (S702)
+   * generator-return-from-iter-method (PYI058)
+   * runtime-string-union (TCH006)
+   * numpy2-deprecation (NPY201)
+   * quadratic-list-summation (RUF017)
+   * assignment-in-assert (RUF018)
+   * unnecessary-key-check (RUF019)
+   * never-union (RUF020)
+   * direct-logger-instantiation (LOG001)
+   * invalid-get-logger-argument (LOG002)
+   * exception-without-exc-info (LOG007)
+   * undocumented-warn (LOG009)
+  * Fixes for the following rules have been stabilized and are now available without preview:
+   * triple-single-quotes (D300)
+   * non-pep604-annotation (UP007)
+   * dict-get-with-none-default (SIM910)
+   * in-dict-keys (SIM118)
+   * collapsible-else-if (PLR5501)
+   * if-with-same-arms (SIM114)
+   * useless-else-on-loop (PLW0120)
+   * unnecessary-literal-union (PYI030)
+   * unnecessary-spread (PIE800)
+   * error-instead-of-exception (TRY400)
+   * redefined-while-unused (F811)
+   * duplicate-value (B033)
+   * multiple-imports-on-one-line (E401)
+   * non-pep585-annotation (UP006)
+  * Fixes for the following rules have been promoted from unsafe to safe:
+   * unaliased-collections-abc-set-import (PYI025)
+  * The following behaviors have been stabilized:
+   * module-import-not-at-top-of-file (E402) allows sys.path modifications between imports
+   * reimplemented-container-builtin (PIE807) includes lambdas that can be replaced with dict
+   * unnecessary-placeholder (PIE790) applies to unnecessary ellipses (...)
+   * if-else-block-instead-of-dict-get (SIM401) applies to if-else expressions
+ * Preview features
+   * [refurb] Implement metaclass_abcmeta (FURB180) 
+   * Implement blank_line_after_nested_stub_class preview style 
+   * The preview rule and-or-ternary (PLR1706) was removed
+ * Bug fixes
+   * [flake8-async] Take pathlib.Path into account when analyzing async functions 
+   * [flake8-return] - fix indentation syntax error (RET505) 
+   * Detect multi-statement lines in else removal 
+   * RUF022, RUF023: never add two trailing commas to the end of a sequence 
+   * RUF023: Don't sort __match_args__, only __slots__ 
+   * [flake8-simplify] - Fix syntax error in autofix (SIM114) 
+   * [pylint] Show verbatim constant in magic-value-comparison (PLR2004) 
+   * Removing trailing whitespace inside multiline strings is unsafe 
+   * Support IfExp with dual string arms in invalid-envvar-default 
+   * [pylint] Add __mro_entries__ to known dunder methods (PLW3201) 
+ * Documentation
+   * Removed rules are now retained in the documentation 
+   * Deprecated rules are now indicated in the documentation 
+
+-------------------------------------------------------------------
 Thu Feb  1 18:05:47 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.15
