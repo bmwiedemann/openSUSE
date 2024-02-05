@@ -83,4 +83,12 @@
 - Initial package (0.4.0)</comment>
     <requestid>1124975</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4d91889e4f7cbb13d925b85d9d5fda23</srcmd5>
+    <version>0.5.2</version>
+    <time>1707166883</time>
+    <user>anag+factory</user>
+    <comment>- Drop patch support-python-311.patch, no longer required.</comment>
+    <requestid>1144079</requestid>
+  </revision>
 </revisionlist>
