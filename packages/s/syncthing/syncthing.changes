@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  5 10:42:05 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
+
+- Make syncthing-relaysrv package resolvable by using systemd users
+  to create the required user and group
+
+-------------------------------------------------------------------
 Tue Jan  9 08:02:25 UTC 2024 - Kyle Scheuing <kyle@kylescheuing.com>
 
 - Update to 1.27.2

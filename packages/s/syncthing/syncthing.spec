@@ -26,10 +26,12 @@ URL:            https://syncthing.net/
 Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz
 Source1:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+Source3:        %{name}-relaysrv-user.conf
 Patch0:         harden_strelaysrv.service.patch
 Patch1:         harden_syncthing-resume.service.patch
 Patch2:         harden_syncthing@.service.patch
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
 BuildRequires:  golang(API) >= 1.14
 BuildRequires:  pkgconfig(systemd)
@@ -45,6 +47,7 @@ Summary:        Relay server for syncthing
 Group:          Productivity/Networking/File-Sharing
 Requires(pre):  pwdutils
 %{?systemd_ordering}
+%sysusers_requires
 
 %description relaysrv
 Syncthing requires relay servers for NAT traversal. This package
@@ -52,14 +55,11 @@ contains the necessary files for setting up a relay server, either
 joined to the syncthing relay pool or private.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -n %{name} -p1
 
 %build
 # move source archive which is extracted as "syncthing" to be "src/github.com/syncthing/syncthing"
-cd ..
+pushd ..
 install -d "src/github.com/syncthing/"
 mv %{name} "src/github.com/syncthing/"%{name}
 mkdir syncthing
@@ -74,6 +74,9 @@ export GOFLAGS="-trimpath -mod=vendor"
 go run build.go -no-upgrade -version v%{version} install
 # build and install strelaysrv without automatic updates
 go run build.go -no-upgrade -version v%{version} install strelaysrv
+popd
+
+%sysusers_generate_pre %{SOURCE3} %{name}-strelaysrv %{name}-strelaysrv-user.conf
 
 %install
 st_dir=$PWD
@@ -104,18 +107,15 @@ install -Dpm 0644 etc/linux-systemd/system/%{name}-resume.service  \
 install -Dpm 0644 etc/linux-systemd/user/%{name}.service           \
   %{buildroot}%{_userunitdir}/%{name}.service
 %endif
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-relaysrv.conf
 
 %suse_update_desktop_file -i "syncthing-ui"
 
 %pre
 %service_add_pre %{name}-resume.service
 
-%pre relaysrv
+%pre relaysrv -f %{name}-strelaysrv.pre
 %service_add_pre strelaysrv.service
-getent group strelaysrv >/dev/null || /usr/sbin/groupadd -r strelaysrv
-getent passwd strelaysrv >/dev/null || \
-	/usr/sbin/useradd -g strelaysrv -s /bin/false -r \
-	-c "User for syncthing relay server" -d /var/lib/strelaysrv strelaysrv
 
 %post
 %service_add_post %{name}-resume.service
@@ -160,5 +160,6 @@ getent passwd strelaysrv >/dev/null || \
 %{_bindir}/strelaysrv
 %{_unitdir}/strelaysrv.service
 %dir %attr(750,strelaysrv,strelaysrv) %{_localstatedir}/lib/syncthing-relaysrv
+%{_sysusersdir}/%{name}-relaysrv.conf
 
 %changelog
