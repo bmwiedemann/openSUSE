@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-sayura
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-sayura
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Sinhala input method for Fcitx5
 License:        GPL-2.0-or-later
@@ -53,7 +53,7 @@ Fcitx5-Sayura is a Sinhala input method for Fcitx5 input method framework ported
 %files -f %{name}.lang
 %license LICENSES
 %doc README.md
-%{_fcitx5_libdir}/sayura.so
+%{_fcitx5_libdir}/libsayura.so
 %{_fcitx5_addondir}/sayura.conf
 %{_fcitx5_imconfdir}/sayura.conf
 %{_datadir}/icons/hicolor/*/apps/fcitx-sayura*
