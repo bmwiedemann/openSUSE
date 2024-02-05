@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  2 08:23:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build using RPM 4.19: builddir does contain the extracted
+  tartball, but can also contain special directories used by RPM,
+  resolving in globbing to behave differently.
+
+-------------------------------------------------------------------
 Mon Nov 13 15:18:20 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Remove build key via utils/keys_gen.sh. (bsc#1216293)
