@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  5 08:59:37 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- provide user(pkcs11) and group(pkcs11)
+
+-------------------------------------------------------------------
 Mon Dec  4 13:40:57 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file  for pkcsslotd (jsc#1217703)
