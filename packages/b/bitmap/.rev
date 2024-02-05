@@ -87,4 +87,17 @@
   * bitmap: Fix a crash with underspecified dimensions</comment>
     <requestid>974166</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e8a97c39f15a87d20de6f957ad757892</srcmd5>
+    <version>1.1.1</version>
+    <time>1707166865</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.1.1
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+  * Ensure all *.c files include config.h before any other headers
+  * atobm, bmtoa, bitmap: Add -help and -version options
+  * bitmap: Print which option was in error along with usage message
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices</comment>
+    <requestid>1144046</requestid>
+  </revision>
 </revisionlist>

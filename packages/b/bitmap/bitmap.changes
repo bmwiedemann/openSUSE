@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  4 20:54:56 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.1.1
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+  * Ensure all *.c files include config.h before any other headers
+  * atobm, bmtoa, bitmap: Add -help and -version options
+  * bitmap: Print which option was in error along with usage message
+  * Remove "All rights reserved" from Oracle copyright notices
+
+-------------------------------------------------------------------
 Sun May  1 08:12:18 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 1.1.0
