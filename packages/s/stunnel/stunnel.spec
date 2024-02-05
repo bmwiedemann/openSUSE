@@ -62,6 +62,7 @@ Recommends:     stunnel-doc = %{version}
 %if 0%{?suse_version} >= 1500
 Requires(pre):  group(nogroup)
 %endif
+Provides:       user(stunnel)
 
 %description
 Stunnel is a proxy designed to add TLS encryption functionality to existing clients and servers without
