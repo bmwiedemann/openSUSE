@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb  5 14:01:26 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.0.2
+  * matomo-org/matomo
+    - #21809 Ensure values of fields with type password are redacted in API response
+    - #21752 Remove Cloudflare from No Data Screen
+    - #17807 Page Performance reports don’t show data (empty graph) when viewing performance for a flattened page URL
+    - #21810 Fix possible deprecation warning in UsersManager.getUsersPlusRole API
+    - #21829 [Bug] Sorting Product Revenue in Ecommerce not working
+    - #21837 [Bug] Annotations get wrong date on timeline chart view
+    - #21595 Always show evolution of “0%” for sparklines
+    - #21762 [Bug] Unable to close visitor profile by clicking ‘x’ button with one click.
+    - #21769 Enable language Gujarati
+    - #21800 [Bug] Console Archive Command ignores `–quiet` in v5.0.1
+
+-------------------------------------------------------------------
 Fri Jan  5 11:47:52 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.0.1
