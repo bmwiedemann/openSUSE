@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  5 08:57:04 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- provide user(motion) and group(motion)
+
+-------------------------------------------------------------------
 Sat Aug 26 04:56:10 UTC 2023 - munix9@googlemail.com
 
 - Fix undefined reference to symbol 'WebPMemoryWriterClear'

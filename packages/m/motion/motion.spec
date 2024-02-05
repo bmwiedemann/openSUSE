@@ -1,7 +1,7 @@
 #
 # spec file for package motion
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,8 @@ BuildRequires:  group(video)
 Requires(pre):  group(video)
 Requires(pre):  pwdutils
 Requires(pre):  %fillup_prereq
+Provides:       group(motion)
+Provides:       user(motion)
 
 %description
 Motion is a software motion detector. It grabs images from video4linux devices

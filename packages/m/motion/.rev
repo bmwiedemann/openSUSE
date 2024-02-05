@@ -218,4 +218,12 @@
     <comment></comment>
     <requestid>1107045</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>66e957f709deca39876576a2cff7a470</srcmd5>
+    <version>4.5.1</version>
+    <time>1707166900</time>
+    <user>anag+factory</user>
+    <comment>- provide user(motion) and group(motion) (forwarded request 1144146 from msmeissn)</comment>
+    <requestid>1144147</requestid>
+  </revision>
 </revisionlist>
