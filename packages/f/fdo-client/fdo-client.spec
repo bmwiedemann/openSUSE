@@ -1,7 +1,7 @@
 #
 # spec file for package fdo-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,10 +33,10 @@ Patch0:         build.patch
 Patch1:         gcc.patch
 Requires:       openssl
 BuildRequires:  cmake
-BuildRequires:  vim
 BuildRequires:  gcc-c++
-BuildRequires:  libopenssl-devel
 BuildRequires:  libcurl-devel
+BuildRequires:  libopenssl-devel
+BuildRequires:  vim
 %{?systemd_ordering}
 
 %description
@@ -59,18 +59,19 @@ credentials while porting this to different platforms.
 %setup -q
 %setup -q -D -a 1
 %setup -q -D -a 2
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
+echo "%_builddir"
 pushd .
 cd safestringlib*
 mkdir obj
 make
 popd
-cd tinycbor*
+pushd tinycbor*
 make
-cd %{_builddir}/%{name}*
+popd
 export SAFESTRING_ROOT=%{_builddir}/%{name}-%{version}/safestringlib-1.0.0+git20171208.5da1bad
 export TINYCBOR_ROOT=%{_builddir}/%{name}-%{version}/tinycbor-1.0.0+git20191022.755f9ef
 export BLOB_PATH=%{_sharedstatedir}/%{name}
