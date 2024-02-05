@@ -74,4 +74,14 @@
   * added map/remap/scale/rescale function</comment>
     <requestid>1137812</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>785b666c1ef1f36e69996f72d2ca4763</srcmd5>
+    <version>3.8.2</version>
+    <time>1707166859</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.8.2:
+  * Windows can also return an OSError instead of a ValueError
+    for a `fromtimestamp` overflow</comment>
+    <requestid>1144038</requestid>
+  </revision>
 </revisionlist>

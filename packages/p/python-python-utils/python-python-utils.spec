@@ -17,7 +17,7 @@
 
 
 Name:           python-python-utils
-Version:        3.8.1
+Version:        3.8.2
 Release:        0
 Summary:        Utilities not included with the standard Python install
 License:        BSD-3-Clause

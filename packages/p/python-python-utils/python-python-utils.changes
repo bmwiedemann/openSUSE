@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  4 18:30:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.2:
+  * Windows can also return an OSError instead of a ValueError
+    for a `fromtimestamp` overflow
+
+-------------------------------------------------------------------
 Tue Jan  9 21:32:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.1:
