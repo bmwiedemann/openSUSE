@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Feb  5 12:30:05 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.3
+  * add support to new CanRestart dbus api
+  * fix build and adapt to kirigami change
+  * improve option widget width
+  * further improve layout
+  * add desktop file
+  * fix kcm discovery under KDE
+  * fix directory name
+  * rename po and kpackage to kcm_fcitx5
+  * improve config UI layout
+  * add support for qt6 wrapper
+  * fix listview and ListItemDragHandle usage
+  * improve long list option
+  * fix KeyOption since eventToString was changed
+  * allow void symbol
+  * fix missing arg name
+  * fix wrong header path
+  * port to Qt6/KF6
+  * install desktop to appdir
+  * transition to json metadata
+  * get rid of qtkeytrans since non-*nix platform is not relevant
+- changes in 5.1.2
+  * use actual comment bounding rect to calculate the size hint
+
+-------------------------------------------------------------------
 Tue Oct  3 07:51:15 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.1

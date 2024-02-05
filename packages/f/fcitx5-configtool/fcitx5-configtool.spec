@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-configtool
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-configtool
-Version:        5.1.1
+Version:        5.1.3
 Release:        0
 Summary:        Configuration tool for fcitx5
 License:        GPL-2.0-or-later
@@ -84,7 +84,7 @@ Configuration module for fcitx5
 
 %install
 %cmake_install
-%find_lang org.fcitx.fcitx5.kcm
+%find_lang kcm_fcitx5
 %find_lang %{name}
 %suse_update_desktop_file kbd-layout-viewer5 Qt KDE Utility DesktopUtility
 %suse_update_desktop_file org.fcitx.fcitx5-migrator Qt KDE Utility DesktopUtility
@@ -105,15 +105,16 @@ Configuration module for fcitx5
 %{_datadir}/applications/kbd-layout-viewer5.desktop
 
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
-%files -n kcm_fcitx5 -f org.fcitx.fcitx5.kcm.lang
+%files -n kcm_fcitx5 -f kcm_fcitx5.lang
 %{_bindir}/fcitx5-plasma-theme-generator
-%dir %{_libdir}/qt5/plugins/kcms
+%dir %{_libdir}/qt5/plugins/plasma
+%dir %{_libdir}/qt5/plugins/plasma/kcms
+%dir %{_libdir}/qt5/plugins/plasma/kcms/systemsettings
 %dir %{_datadir}/kpackage
 %dir %{_datadir}/kpackage/kcms
-%{_libdir}/qt5/plugins/kcms/kcm_fcitx5.so
-%{_datadir}/kpackage/kcms/org.fcitx.fcitx5.kcm
-%{_datadir}/kservices5/kcm_fcitx5.desktop
-%{_datadir}/metainfo/org.fcitx.fcitx5.kcm.appdata.xml
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_fcitx5.so
+%{_datadir}/applications/kcm_fcitx5.desktop
+%{_datadir}/kpackage/kcms/kcm_fcitx5
 %endif
 
 %changelog
