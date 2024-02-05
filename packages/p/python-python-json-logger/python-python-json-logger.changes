@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  1 01:18:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python312.patch:
+  * Support logging changes in Python 3.12+.
+
+-------------------------------------------------------------------
 Tue Jan  2 22:49:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools

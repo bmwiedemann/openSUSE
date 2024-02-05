@@ -1,0 +1,24 @@
+From 7c8d06925305c578a1dc7a45d6180c2876cfc082 Mon Sep 17 00:00:00 2001
+From: finswimmer <finswimmer77@gmail.com>
+Date: Mon, 9 Oct 2023 13:56:38 +0200
+Subject: [PATCH] feat: add taskName to RESERVED_ATTRS
+
+taskName was added in Python 3.12
+---
+ src/pythonjsonlogger/jsonlogger.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: python-json-logger-2.0.7/src/pythonjsonlogger/jsonlogger.py
+===================================================================
+--- python-json-logger-2.0.7.orig/src/pythonjsonlogger/jsonlogger.py
++++ python-json-logger-2.0.7/src/pythonjsonlogger/jsonlogger.py
+@@ -21,7 +21,8 @@ RESERVED_ATTRS: Tuple[str, ...] = (
+     'args', 'asctime', 'created', 'exc_info', 'exc_text', 'filename',
+     'funcName', 'levelname', 'levelno', 'lineno', 'module',
+     'msecs', 'message', 'msg', 'name', 'pathname', 'process',
+-    'processName', 'relativeCreated', 'stack_info', 'thread', 'threadName')
++    'processName', 'relativeCreated', 'stack_info', 'thread', 'threadName',
++    'taskName')
+ 
+ 
+ 

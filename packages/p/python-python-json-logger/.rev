@@ -102,4 +102,14 @@
   * drop python 3.4 support</comment>
     <requestid>1136323</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>9cdf1dffd05a8b94695d6f61e679c959</srcmd5>
+    <version>2.0.7</version>
+    <time>1707166854</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python312.patch:
+  * Support logging changes in Python 3.12+.
+</comment>
+    <requestid>1143998</requestid>
+  </revision>
 </revisionlist>
