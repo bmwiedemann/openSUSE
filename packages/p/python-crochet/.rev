@@ -31,4 +31,15 @@
   * Dropped support for Python 2.7 and 3.5.</comment>
     <requestid>1098213</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1305eb686063f7ef6637bfce6c4887cf</srcmd5>
+    <version>2.1.1</version>
+    <time>1707166880</time>
+    <user>anag+factory</user>
+    <comment>- Add patch update-versioneer.patch:
+  * Fix build failure with Python 3.12.
+- Switch to pyproject and autosetup macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1144074</requestid>
+  </revision>
 </revisionlist>
