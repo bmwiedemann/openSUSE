@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  4 21:45:27 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- add user/group provides for rpm 4.19
+- drop conditional against obsolete suse 11.1
+
+-------------------------------------------------------------------
 Fri Jul 21 15:23:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.13:
