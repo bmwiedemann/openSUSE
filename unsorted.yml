@@ -22401,7 +22401,6 @@ unsorted:
   - pythia-devel 
   - pythia-doc 
   - python 
-  - python-32bit 
   - python-Flask-Assets-doc 
   - python-Genshi-doc 
   - python-Kivy-doc 
@@ -33823,6 +33822,7 @@ unsorted:
   - python39-bugzilla 
   - python39-bugzillatools 
   - python39-build 
+  - python39-buttplug 
   - python39-bytecode 
   - python39-cPyparsing 
   - python39-cached-property 
@@ -36437,6 +36437,7 @@ unsorted:
   - python39-weblate-schemas 
   - python39-webruntime 
   - python39-websocket-client 
+  - python39-websockets 
   - python39-websockify 
   - python39-wfuzz 
   - python39-whatever 
