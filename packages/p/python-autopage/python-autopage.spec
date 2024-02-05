@@ -1,7 +1,7 @@
 #
 # spec file for package python-autopage
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Summary:        A library to provide automatic paging for console output
 License:        Apache-2.0
 URL:            https://github.com/zaneb/autopage
 Source:         https://files.pythonhosted.org/packages/source/a/autopage/autopage-%{version}.tar.gz
-Patch0:         support-python-311.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -62,6 +61,6 @@ rm -v autopage/tests/test_end_to_end.py
 %doc README.md
 %license LICENSE
 %{python_sitelib}/autopage
-%{python_sitelib}/autopage-%{version}*-info
+%{python_sitelib}/autopage-%{version}.dist-info
 
 %changelog
