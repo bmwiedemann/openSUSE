@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python3-espressomd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,6 +34,8 @@ Patch0:         setuptools.patch
 Patch1:         tracers.patch
 # PATCH-FIX-UPSTREAM array-bounds.patch gh#espressomd/espresso#4715
 Patch2:         array-bounds.patch
+# PATCH-FIX-UPSTREAM mpi.patch gh#espressomd/espresso#4858
+Patch3:         mpi.patch
 # According to gh#espressomd/espresso#4537 32bit architectures are not supported any more
 ExcludeArch:    %{ix86}
 BuildRequires:  cmake
