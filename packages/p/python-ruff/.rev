@@ -509,4 +509,41 @@
    * [flake8-type-checking] Avoid marking InitVar as a typing-only annotation</comment>
     <requestid>1143460</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8d6eafd3db80aa89e52856bb369e9a80</srcmd5>
+    <version>0.2.0</version>
+    <time>1707166903</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.0
+ * Breaking changes
+   * The NURSERY selector cannot be used anymore
+   * Legacy selection of nursery rules by exact codes is no longer allowed without preview enabled
+   * See also, the &quot;Remapped rules&quot; section which may result in disabled rules.
+ * Deprecations
+  * The following rules are now deprecated:
+   * missing-type-self (ANN101)
+   * missing-type-cls (ANN102)
+  * The following command line options are now deprecated:
+   * --show-source; use --output-format full instead
+   * --no-show-source; use --output-format concise instead
+   * --output-format text; use full or concise instead
+  * The following settings have moved and the previous name is deprecated:
+   * ruff.allowed-confusables → ruff.lint.allowed-confusables
+   * ruff.dummy-variable-rgx → ruff.lint.dummy-variable-rgx
+   * ruff.explicit-preview-rules → ruff.lint.explicit-preview-rules
+   * ruff.extend-fixable → ruff.lint.extend-fixable
+   * ruff.extend-ignore → ruff.lint.extend-ignore
+   * ruff.extend-per-file-ignores → ruff.lint.extend-per-file-ignores
+   * ruff.extend-safe-fixes → ruff.lint.extend-safe-fixes
+   * ruff.extend-select → ruff.lint.extend-select
+   * ruff.extend-unfixable → ruff.lint.extend-unfixable
+   * ruff.extend-unsafe-fixes → ruff.lint.extend-unsafe-fixes
+   * ruff.external → ruff.lint.external
+   * ruff.fixable → ruff.lint.fixable
+   * ruff.flake8-annotations → ruff.lint.flake8-annotations
+   * ruff.flake8-bandit → ruff.lint.flake8-bandit
+   * ruff.flake8-bugbear → ruff.lint.flake8-bugbear
+   * ruff.flake8-builtins → ruff.lint.flake8-builtins</comment>
+    <requestid>1144159</requestid>
+  </revision>
 </revisionlist>
