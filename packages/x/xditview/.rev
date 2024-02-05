@@ -96,4 +96,16 @@
   * Declare guesses const</comment>
     <requestid>1011177</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e260e379f84f077333f20f914d03b808</srcmd5>
+    <version>1.0.7</version>
+    <time>1707166866</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.7
+  * This release adds -help &amp; -version options to the xditview
+    command. It also enables the use of the Xft code inherited
+    from XFree86 which was previously not enabled in our conversion
+    from Imake to autoconf.</comment>
+    <requestid>1144049</requestid>
+  </revision>
 </revisionlist>
