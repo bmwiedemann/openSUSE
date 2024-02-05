@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Feb  3 16:44:06 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7.1:
+  * Headline changes:
+    - Adding --interface-ipv4 and --interface-ipv6 command line
+      switches to server to allow better control over binding to
+      interfaces.
+  * Tweaks:
+    - Re-work readiness notifications for non-operators.
+    - Show current offset in set offset dialogue.
+  * Bug fixes and maintenance:
+    - Fix GUI TypeError.
+    - Playlist restoration should not undo clearing actions.
+    - Support player arguments like –no-border in mpv.
+    - Ensure MPC-HC resets position on playlist change.
+    - Define desktop filename for Wayland compliance to fix icon.
+    - Fix offset sub-second precision bug.
+    - Remove broken setAlignment calls.
+    - Don’t pass empty model to QCompleter.
+- Set `BuildArch` to `noarch`.
+
+-------------------------------------------------------------------
 Sun Apr 16 15:31:09 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.7.0:
