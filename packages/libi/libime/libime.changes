@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb  4 14:57:26 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- update to 1.1.5
+  * Replace PUA character with non-PUA unicode in the table data.
+- changes in 1.1.4
+  * Improve Pinyin prediction order
+  * Fix two shuangpin profile bugs
+  * Fix build on musl
+  * Fix for exact match mode
+  * libime_tabledict adds a new mode flag for extra dict.
+- changes in 1.1.3
+  * reduce user model weight and unigram weight.
+  * new pinyin prediction API to allow prediction from dictionaries.
+  * Add more pinyin correction for wrong order e.g. (hzi -> zhi)
+  * Fix exact match mode in table.
+
+-------------------------------------------------------------------
 Tue Oct  3 07:45:51 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update to 1.1.2
