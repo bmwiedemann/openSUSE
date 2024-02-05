@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb 01 16:36:18 UTC 2024 - dcermak@suse.com
+
+- Update to version 0.12.5:
+  * update runc to v1.1.12
+  * exec: add extra validation for submount sources (fixes CVE-2024-23651, bsc#1219267)
+  * oci: fix error handling on submount calls
+  * executor: recheck mount stub path within root after container run (fixes CVE-2024-23652, bsc#1219268)
+  * llbsolver: make sure interactive container API validates entitlements
+  * gateway: pass executor with build and not access worker directly
+  * pb: add extra validation to protobuf types
+  * sourcepolicy: add validations for nil values
+  * exporter: add validation for platforms key value
+  * exporter: add validation for invalid platorm
+  * exporter: validate null config metadata from gateway
+  * ci: disable push if not upstream repo
+  * hack: use git context only for upstream repo
+  * hack/test: allow ALPINE_VERSION to be set from env
+  * hack: align syntax
+  * vendor: github.com/cyphar/filepath-securejoin v0.2.4
+  * tracing: allow the `Resource` to be set externally
+
+-------------------------------------------------------------------
 Mon Dec 04 13:14:41 UTC 2023 - fredrik.lonnegren@suse.com
 
 - Update to version 0.12.4:

@@ -23,7 +23,7 @@
 %global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
 %global import_path     %{provider_prefix}
 Name:           buildkit
-Version:        0.12.4
+Version:        0.12.5
 Release:        0
 Summary:        Toolkit for converting source code to build artifacts
 License:        Apache-2.0
