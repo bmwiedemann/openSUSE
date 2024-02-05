@@ -10427,6 +10427,7 @@ unsorted:
   - libFcitx5Qt5DBusAddons1 
   - libFcitx5Qt5WidgetsAddons2 
   - libFcitx5Qt6DBusAddons1 
+  - libFcitx5Qt6WidgetsAddons2 
   - libFcitx5Utils2 
   - libGIMPACTUtils3_17 
   - libGLC-devel 
@@ -12262,6 +12263,7 @@ unsorted:
   - libfastjetcontribfragile 
   - libfastjson-devel 
   - libfastlz1 
+  - libfastlz1-x86-64-v3 
   - libfaxutil7_0_7 
   - libfcache-devel 
   - libfcache1 
@@ -12696,7 +12698,7 @@ unsorted:
   - libgnomesu-devel 
   - libgnt-devel 
   - libgnt0 
-  - libgnuastro19 
+  - libgnuastro20 
   - libgnuradio-3_10_9 
   - libgnuradio-funcube-devel 
   - libgnuradio-funcube3_10_0 
@@ -14291,7 +14293,7 @@ unsorted:
   - libpaper-devel 
   - libpapi 
   - libpapi-hpc 
-  - libpapi_7_0_0-hpc 
+  - libpapi_7_1_0-hpc 
   - libpappl1 
   - libparanoia1_0 
   - libparaview5_11 
@@ -19782,9 +19784,9 @@ unsorted:
   - papi-devel-static 
   - papi-hpc 
   - papi-hpc-devel 
-  - papi_7_0_0-hpc 
-  - papi_7_0_0-hpc-devel 
-  - papi_7_0_0-hpc-devel-static 
+  - papi_7_1_0-hpc 
+  - papi_7_1_0-hpc-devel 
+  - papi_7_1_0-hpc-devel-static 
   - papirus-folders 
   - papirus-icon-theme 
   - pappl 
@@ -22768,7 +22770,6 @@ unsorted:
   - python3-octaviaclient 
   - python3-onionshare 
   - python3-openbabel 
-  - python3-opencv 
   - python3-opencv3 
   - python3-openqa_review 
   - python3-openshot 
@@ -23064,7 +23065,6 @@ unsorted:
   - python310-PyTweening 
   - python310-PyVirtualDisplay 
   - python310-PyWavelets 
-  - python310-PyWebDAV3 
   - python310-PyWebDAV3-GNUHealth 
   - python310-PyX 
   - python310-PyYAML 
@@ -23654,6 +23654,8 @@ unsorted:
   - python310-bencode 
   - python310-beniget 
   - python310-beren 
+  - python310-berkeleydb 
+  - python310-berkeleydb-devel 
   - python310-betamax 
   - python310-betamax-matchers 
   - python310-bibtexparser 
@@ -25017,6 +25019,7 @@ unsorted:
   - python310-opencensus-context 
   - python310-opencensus-ext-azure 
   - python310-opencensus-ext-threading 
+  - python310-opencv 
   - python310-opengl 
   - python310-opengl-accelerate 
   - python310-openidc-client 
@@ -26607,7 +26610,6 @@ unsorted:
   - python311-PyTweening 
   - python311-PyVirtualDisplay 
   - python311-PyWavelets 
-  - python311-PyWebDAV3 
   - python311-PyWebDAV3-GNUHealth 
   - python311-PyX 
   - python311-Pympler 
@@ -27179,6 +27181,8 @@ unsorted:
   - python311-bencode 
   - python311-beniget 
   - python311-beren 
+  - python311-berkeleydb 
+  - python311-berkeleydb-devel 
   - python311-betamax 
   - python311-betamax-matchers 
   - python311-bibtexparser 
@@ -28478,6 +28482,7 @@ unsorted:
   - python311-opencensus-context 
   - python311-opencensus-ext-azure 
   - python311-opencensus-ext-threading 
+  - python311-opencv 
   - python311-opengl 
   - python311-opengl-accelerate 
   - python311-openidc-client 
@@ -30212,6 +30217,7 @@ unsorted:
   - python312-autobahn 
   - python312-autocommand 
   - python312-autodocsumm 
+  - python312-autopage 
   - python312-autopep8 
   - python312-autoupgrade-ng 
   - python312-av 
@@ -30575,6 +30581,8 @@ unsorted:
   - python312-bencode 
   - python312-beniget 
   - python312-beren 
+  - python312-berkeleydb 
+  - python312-berkeleydb-devel 
   - python312-betamax 
   - python312-betamax-matchers 
   - python312-bibtexparser 
@@ -30616,6 +30624,8 @@ unsorted:
   - python312-branca 
   - python312-breathe 
   - python312-brewer2mpl 
+  - python312-bsddb3 
+  - python312-bsddb3-devel 
   - python312-bson 
   - python312-bugzilla 
   - python312-build 
@@ -30687,6 +30697,7 @@ unsorted:
   - python312-click-repl 
   - python312-click-spinner 
   - python312-click-threading 
+  - python312-cliff 
   - python312-cligj 
   - python312-clikit 
   - python312-clint 
@@ -30755,6 +30766,7 @@ unsorted:
   - python312-crispy-bootstrap3 
   - python312-crispy-bootstrap4 
   - python312-crispy-bootstrap5 
+  - python312-crochet 
   - python312-cron-descriptor 
   - python312-croniter 
   - python312-crontab 
@@ -30781,6 +30793,7 @@ unsorted:
   - python312-cytoolz 
   - python312-czifile 
   - python312-daemonize 
+  - python312-daiquiri 
   - python312-dasbus 
   - python312-dash-core-components 
   - python312-dash-html-components 
@@ -30844,6 +30857,7 @@ unsorted:
   - python312-distroinfo 
   - python312-distutils-extra 
   - python312-dj-database-url 
+  - python312-django-allauth 
   - python312-django-appconf 
   - python312-django-attachments 
   - python312-django-auth-ldap 
@@ -30878,6 +30892,7 @@ unsorted:
   - python312-django-guardian 
   - python312-django-health-check 
   - python312-django-import-export 
+  - python312-django-invitations 
   - python312-django-ipware 
   - python312-django-jinja 
   - python312-django-js-asset 
@@ -30908,6 +30923,7 @@ unsorted:
   - python312-django-requests-debug-toolbar 
   - python312-django-rest-framework-client 
   - python312-django-rest-framework-social-oauth2 
+  - python312-django-rest-invitations 
   - python312-django-rest-knox 
   - python312-django-reversion 
   - python312-django-rosetta 
@@ -31220,6 +31236,7 @@ unsorted:
   - python312-hankel 
   - python312-hanzidentifier 
   - python312-haproxyctl 
+  - python312-hardware 
   - python312-hashids 
   - python312-hatch 
   - python312-hatch-fancy-pypi-readme 
@@ -31464,6 +31481,7 @@ unsorted:
   - python312-ldap 
   - python312-ldap3 
   - python312-ldapdomaindump 
+  - python312-ldappool 
   - python312-leather 
   - python312-leglight 
   - python312-lesscpy 
@@ -31524,6 +31542,7 @@ unsorted:
   - python312-macholib 
   - python312-magic 
   - python312-magic-wormhole-mailbox-server 
+  - python312-magic-wormhole-transit-relay 
   - python312-magicalimport 
   - python312-mailman3-fedmsg-plugin 
   - python312-main-wrapper 
@@ -31605,6 +31624,7 @@ unsorted:
   - python312-mpi4py 
   - python312-mpi4py-devel 
   - python312-mpl-animators 
+  - python312-mplcursors 
   - python312-mpld3 
   - python312-mpmath 
   - python312-mrcfile 
@@ -31721,6 +31741,7 @@ unsorted:
   - python312-opencensus-context 
   - python312-opencensus-ext-azure 
   - python312-opencensus-ext-threading 
+  - python312-opencv 
   - python312-opengl 
   - python312-opengl-accelerate 
   - python312-openidc-client 
@@ -32258,6 +32279,7 @@ unsorted:
   - python312-python-jenkins 
   - python312-python-jose 
   - python312-python-jose-cryptography 
+  - python312-python-json-logger 
   - python312-python-jsonschema-objects 
   - python312-python-lsp-black 
   - python312-python-lsp-jsonrpc 
@@ -33182,7 +33204,6 @@ unsorted:
   - python39-PyTweening 
   - python39-PyVirtualDisplay 
   - python39-PyWavelets 
-  - python39-PyWebDAV3 
   - python39-PyWebDAV3-GNUHealth 
   - python39-PyX 
   - python39-PyYAML 
@@ -33771,6 +33792,8 @@ unsorted:
   - python39-bencode 
   - python39-beniget 
   - python39-beren 
+  - python39-berkeleydb 
+  - python39-berkeleydb-devel 
   - python39-betamax 
   - python39-betamax-matchers 
   - python39-bibtexparser 
@@ -35130,6 +35153,7 @@ unsorted:
   - python39-opencensus-context 
   - python39-opencensus-ext-azure 
   - python39-opencensus-ext-threading 
+  - python39-opencv 
   - python39-opengl 
   - python39-opengl-accelerate 
   - python39-openidc-client 
@@ -39083,7 +39107,6 @@ unsorted:
   - sz2-devel 
   - t-prot 
   - t1utils 
-  - t38modem 
   - tabix 
   - tachyon 
   - tachyon-devel 
@@ -49541,7 +49564,6 @@ unsorted:
   - xbindkeys 
   - xbitmaps-devel 
   - xbomb 
-  - xboxdrv 
   - xbrz-devel 
   - xbsql 
   - xbsql-devel 
