@@ -36,4 +36,14 @@
 </comment>
     <requestid>977997</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>3ad8fd11a3a89b9c35d7a0227627009a</srcmd5>
+    <version>0.2.1</version>
+    <time>1707166879</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python312.patch:
+  * Support Python 3.12.
+- Switch to pyproject macros.</comment>
+    <requestid>1144072</requestid>
+  </revision>
 </revisionlist>

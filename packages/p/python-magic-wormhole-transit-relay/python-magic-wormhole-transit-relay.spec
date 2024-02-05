@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic-wormhole-transit-relay
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-magic-wormhole-transit-relay
 Version:        0.2.1
 Release:        0
@@ -26,10 +25,13 @@ URL:            https://github.com/warner/magic-wormhole-transit-relay
 Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole-transit-relay/magic-wormhole-transit-relay-%{version}.tar.gz
 # https://github.com/magic-wormhole/magic-wormhole/issues/439
 Patch0:         python-magic-wormhole-transit-relay-no-mock.patch
+# PATCH-FIX-UPSTREAM gh#magic-wormhole/magic-wormhole-transit-relay#36
+Patch1:         support-python312.patch
 BuildRequires:  %{python_module Twisted >= 17.5.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{pythons}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Twisted >= 17.5.0
@@ -43,10 +45,10 @@ Transit Relay server for Magic-Wormhole
 %autosetup -p1 -n magic-wormhole-transit-relay-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,7 +58,7 @@ Transit Relay server for Magic-Wormhole
 %doc README.md
 %license LICENSE
 %{python_sitelib}/wormhole_transit_relay
-%{python_sitelib}/magic_wormhole_transit_relay-%{version}*-info
+%{python_sitelib}/magic_wormhole_transit_relay-%{version}.dist-info
 %{python_sitelib}/twisted/plugins/magic_wormhole_transit_relay.py
 %pycache_only %{python_sitelib}/twisted/plugins/__pycache__/magic_wormhole_transit_relay*.pyc
 
