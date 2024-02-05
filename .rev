@@ -85,4 +85,13 @@
   * Improved --- and +++ headers highlighting</comment>
     <requestid>1143438</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fbd9bb394fcf56a5edb9dd2dfc2880cd</srcmd5>
+    <version>2.30.1~0</version>
+    <time>1707166888</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.30.1:
+  * Fix crash by handling conflict markers corner cases properly</comment>
+    <requestid>1144103</requestid>
+  </revision>
 </revisionlist>
