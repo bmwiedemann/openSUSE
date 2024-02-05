@@ -1,7 +1,7 @@
 #
 # spec file for package openCryptoki
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,8 @@ Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 Requires(pre):  %{_sbindir}/usermod
 ###
+Provides:       user(pkcs11)
+Provides:       group(pkcs11)
 
 # IBM maintains openCryptoki on these architectures:
 ExclusiveArch:  %{openCryptoki_32bit_arch} %{openCryptoki_64bit_arch}
