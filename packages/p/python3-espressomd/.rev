@@ -554,4 +554,14 @@
 - skip mpiio test (forwarded request 1114814 from mimi_vx)</comment>
     <requestid>1114815</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>6b969b35011b65c3815a8a8e517b4846</srcmd5>
+    <version>4.2.1</version>
+    <time>1707166869</time>
+    <user>anag+factory</user>
+    <comment>- Fix undefined behavior due to improper handling of MPI static globals
+- Add mpi.patch to remove MPI globals (gh#espressomd/espresso#4858)
+</comment>
+    <requestid>1144047</requestid>
+  </revision>
 </revisionlist>
