@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  4 19:16:55 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Use sysuser-tools to generate firejail group
+
+-------------------------------------------------------------------
 Sun Apr  9 14:43:39 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.72:
