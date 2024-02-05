@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  4 21:10:16 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.0.4
+  * This release adds -help and -version options to the xmore
+    command
+
+-------------------------------------------------------------------
 Fri Dec  3 14:06:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir)
