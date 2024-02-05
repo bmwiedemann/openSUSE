@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 29 00:23:11 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.1.3+git20240129.3f31c27:
+  * v2.1.3 (#1712)
+  * Add system.setenv (#1706)
+
+-------------------------------------------------------------------
+Mon Jan 22 15:11:06 UTC 2024 - scott.bradnick@suse.com
+
+- This is 2.1.3-rc2 (Pre-release)
+- Update to version 2.1.3+git20240121.8cf40de:
+  * Fix comment typos in data/core/{init.lua,dirwatch.lua} (#1549)
+  * process: style changes (#1709)
+  * language_js: support binary and octal representation (#1710)
+  * autoreload docs only if their filename matches an actual file (#1698)
+  * reorder nagview options on doc:save error to be more consistent with other nagview confirmations (#1696)
+  * Improve number highlighting for python syntax highlighting (#1704)
+  * Memory fixes (#1705)
+  * Fix doc:create-cursor-previous/next-line with tabs (#1697)
+
+-------------------------------------------------------------------
 Fri Dec 29 19:26:38 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 2.1.2+git20231229.b68efcd:
