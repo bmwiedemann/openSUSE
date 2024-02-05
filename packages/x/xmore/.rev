@@ -65,4 +65,14 @@
     <comment></comment>
     <requestid>935487</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3496fe1e88f03afae5fcf0a0bafdb6fd</srcmd5>
+    <version>1.0.4</version>
+    <time>1707166868</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.0.4
+  * This release adds -help and -version options to the xmore
+    command</comment>
+    <requestid>1144054</requestid>
+  </revision>
 </revisionlist>
