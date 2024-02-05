@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bsddb3
 Version:        6.2.9
 Release:        0
 Summary:        Python interface for Berkeley DB
 License:        BSD-3-Clause
-Group:          Development/Libraries/Python
 URL:            http://pypi.python.org/pypi/bsddb3
 #Freecode-URL:	 https://www.jcea.es/programacion/pybsddb.htm
 Source:         https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-%{version}.tar.gz
+Patch0:         support-python312.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  db-devel
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-testsuite
 %python_subpackages
@@ -43,7 +43,6 @@ bsddb3.db module.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 
 %description devel
@@ -55,7 +54,7 @@ bsddb3.db module.
 This package contains the development files for %{name}
 
 %prep
-%setup -q -n bsddb3-%{version}
+%autosetup -p1 -n bsddb3-%{version}
 sed -i "1d" Lib/bsddb/dbshelve.py # Fix non-executable bits
 
 %build
@@ -64,6 +63,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %install
 %pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_expand rm -rf %{buildroot}%{$python_sitearch}/bsddb3/tests
 
 %check

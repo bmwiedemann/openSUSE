@@ -252,4 +252,15 @@
 * Support for Berkeley DB 5.1.</comment>
     <requestid>1139030</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>71afcf4a083b55ebdddab842e24466d7</srcmd5>
+    <version>6.2.9</version>
+    <time>1707166882</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python312.patch:
+  * Fix the test script to support Python 3.12.
+- Use fdupes.
+- Switch to autosetup macro.</comment>
+    <requestid>1144077</requestid>
+  </revision>
 </revisionlist>
