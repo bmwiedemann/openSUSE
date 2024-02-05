@@ -219,4 +219,16 @@
 </comment>
     <requestid>1137492</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ce69f5e17174b7fc32bf363dd2fcd970</srcmd5>
+    <version>2.0.0</version>
+    <time>1707166896</time>
+    <user>anag+factory</user>
+    <comment>- Generate the pre script usingn sysusers_generate.
+
+- Actually run the generated sysusers script as part of pre (do not
+
+Sorry - I missed that on the previous fixup. Now we should be good for sysusers (forwarded request 1144265 from dimstar)</comment>
+    <requestid>1144284</requestid>
+  </revision>
 </revisionlist>

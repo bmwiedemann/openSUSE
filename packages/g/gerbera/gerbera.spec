@@ -37,6 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(duktape)
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(gmock)
@@ -61,6 +62,7 @@ BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 Requires:       logrotate
 %{?systemd_requires}
+%sysusers_requires
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 
 %description
@@ -117,23 +119,16 @@ ln -s service  %{buildroot}%{_sbindir}/rc%{name}
 install -p -D -m0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/gerbera/config.xml
 install -p -D -m0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/gerbera.conf
 
+%sysusers_generate_pre %{buildroot}%{_sysusersdir}/gerbera.conf gerbera gerbera.conf
+
 %check
 %ctest
 
-%pre
-getent group gerbera >/dev/null || groupadd -r gerbera
-getent passwd gerbera >/dev/null || \
-useradd -r -g gerbera -d %{_sysconfdir}/gerbera -s /sbin/nologin \
-    -c "To run Gerbera" gerbera
+%pre -f %{name}.pre
 %service_add_pre %{name}.service
 
 %post
 %service_add_post %{name}.service
-%if 0%{?suse_version} > 1590
-%sysusers_create_package %{name} %{SOURCE2}
-%else
-%sysusers_create %{_sysusersdir}/%{name}.conf
-%endif
 
 %preun
 %service_del_preun %{name}.service
