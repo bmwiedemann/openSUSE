@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  5 01:22:01 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python312.patch:
+  * Support Python 3.12.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed May 18 19:48:49 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file.
