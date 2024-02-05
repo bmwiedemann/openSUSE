@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 19 20:01:43 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- Add %{?sle15allpythons} and build python bindings for all
+  configured versions (also for Tumbleweed)
+
+-------------------------------------------------------------------
 Sat Dec 30 15:54:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - update to 4.9.0,  highlights below, for details check

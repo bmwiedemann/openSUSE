@@ -29,6 +29,11 @@
 %bcond_without ffmpeg
 %bcond_without python3
 %bcond_without openblas
+%if %{with python3}
+# Enable python311 for SLE15 in addition to the regular python3 which is python 3.6
+%{?sle15allpythons}
+%endif
+
 Name:           opencv
 Version:        4.9.0
 Release:        0
@@ -73,8 +78,11 @@ BuildRequires:  openblas-devel
 %endif
 %if %{with python3}
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-numpy-devel
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
+%else
+BuildRequires:  python3-base
 %endif
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0
@@ -87,6 +95,18 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 %endif
+%if %{with python3}
+%if "%pythons" != "python3"
+# For Tumbleweed and SLE15 with activated multiflavor
+%define python_subpackage_only 1
+%python_subpackages
+%else
+# For old SLE15 with only python3 and possibly old python-rpm-macros
+%define python_sitearch %python3_sitearch
+%define python_files() -n python3-%{**}
+%endif
+%endif
+
 
 %description
 OpenCV means Intel Open Source Computer Vision Library. It is a collection of C
@@ -236,6 +256,20 @@ This package contains the OpenCV C/C++ library and header files, as well as
 documentation. It should be installed if you want to develop programs that will
 use the OpenCV library.
 
+%if 0%{?python_subpackage_only}
+%package -n python-%{name}
+Summary:        Python %{python_version} bindings for apps which use OpenCV
+License:        BSD-3-Clause
+Group:          Development/Libraries/Python
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       python-%{name}-qt5 = %{version}
+Obsoletes:      python-%{name}-qt5 < %{version}
+%endif
+
+%description -n python-%{name}
+This package contains Python %{python_version} bindings for the OpenCV library.
+%else
+
 %package -n python3-%{name}
 Summary:        Python 3 bindings for apps which use OpenCV
 License:        BSD-3-Clause
@@ -245,6 +279,7 @@ Obsoletes:      python3-%{name}-qt5 < %{version}
 
 %description -n python3-%{name}
 This package contains Python 3 bindings for the OpenCV library.
+%endif
 
 %package doc
 Summary:        Documentation and examples for OpenCV
@@ -280,6 +315,7 @@ rm -f doc/packaging.txt
 # x86: disable SSE on 32bit, do not dispatch AVX and later - SSE3
 #      is the highest extension available on any non-64bit x86 CPU
 # ARM: ARMv6, e.g. RPi1, only has VFPv2
+pushd $PWD
 %cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_WITH_DEBUG_INFO=ON \
@@ -325,17 +361,54 @@ rm -f doc/packaging.txt
       -DCPU_BASELINE=NEON \
       -DCPU_DISPATCH=FP16 \
 %endif
-      -DPYTHON_DEFAULT_EXECUTABLE=%{_bindir}/python3 \
+%if %{with python3}
       -DOPENCV_SKIP_PYTHON_LOADER=ON \
+      -DOPENCV_PYTHON3_VERSION=%{python3_version} \
       -DOPENCV_PYTHON3_INSTALL_PATH=%{python3_sitearch} \
+%else
+      -DBUILD_opencv_python3=OFF \
+%endif
+      -DPYTHON_DEFAULT_EXECUTABLE=%{_bindir}/python3 \
       -DOPENCV_DOWNLOAD_TRIES_LIST:STRING="" \
       -DWITH_JASPER=OFF \
       %{nil}
 
 %cmake_build
+popd
+
+%if %{with python3}
+mkdir pythonbuilds
+pushd pythonbuilds
+%define __sourcedir ../modules/python
+%{python_expand # Build all non-primary flavors (if any) "standalone".
+# cmake takes most of the config defined from
+# $(OpenCV_BINARY_DIR)/opencv_python_config.cmake written during the main build.
+if [ "py%{$python_version}" != "py%{python3_version}" ]; then
+  pushd $PWD
+  %cmake \
+      -DOpenCV_BINARY_DIR=../../build/ \
+      -DOPENCV_SKIP_PYTHON_LOADER=ON \
+      -DOPENCV_PYTHON_VERSION=%{$python_version} \
+      -DOPENCV_PYTHON_STANDALONE_INSTALL_PATH=%{$python_sitearch} \
+      %{nil}
+  %cmake_build
+  popd
+fi
+}
+popd
+%endif
 
 %install
 %cmake_install
+%if %{with python3}
+pushd pythonbuilds
+%{python_expand #
+if [ "py%{$python_version}" != "py%{python3_version}" ]; then
+  %cmake_install
+fi
+}
+popd
+%endif
 mkdir -p %{buildroot}%{_docdir}/%{name}-doc
 mv %{buildroot}%{_datadir}/opencv4/samples %{buildroot}%{_docdir}/%{name}-doc/examples
 
@@ -461,9 +534,9 @@ grep -E 'model|stepping|flags' /proc/cpuinfo | head -n4
 %{_datadir}/opencv4/valgrind*
 
 %if %{with python3}
-%files -n python3-%{name}
+%files %{python_files %{name}}
 %license LICENSE LICENSE.contrib
-%{python3_sitearch}/cv2.%{py3_soflags}.so
+%{python_sitearch}/cv2.*.so
 %endif
 
 %files doc
