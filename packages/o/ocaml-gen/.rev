@@ -81,4 +81,14 @@ update: fixed license ID (used wrong casing)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1086690</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>dacabc1e672773b07bd5175ff97cd5d3</srcmd5>
+    <version>1.1</version>
+    <time>1707166954</time>
+    <user>anag+factory</user>
+    <comment>- add disabled conditional around testsuite
+
+- JaneStreet libraries are 64bit, this pkg depends on them</comment>
+    <requestid>1144323</requestid>
+  </revision>
 </revisionlist>

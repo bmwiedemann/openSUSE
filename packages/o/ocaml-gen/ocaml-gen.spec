@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-gen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,14 @@
 #
 
 
+%bcond_with ocaml_gen_testsuite
 %define build_flavor @BUILD_FLAVOR@%nil
 %if "%build_flavor" == "testsuite"
+%if %{without ocaml_gen_testsuite}
+ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+%endif
 %define nsuffix -testsuite
 %else
 %define nsuffix %nil
@@ -35,7 +41,7 @@ URL:            https://opam.ocaml.org/packages/gen
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 %if 1
 BuildRequires:  ocamlfind(seq)
 %endif
