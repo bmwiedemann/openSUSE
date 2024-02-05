@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb  5 11:01:57 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.3
+  * Improve pinyin initial loading by loading all the features, so first
+    stroke related key press won't be slowed down.
+  * Add extra dictionary support for the table engine. Right now, you
+    will need to put the dict file manually under
+    ~/.local/share/fcitx5/table/[tablename].dict.d/. scel2org5 have a new
+    option convert the dict to acceptable txt format. For the ease of use,
+    both txt/binary dict are accepted under that directory. But you will
+    need to make sure, that the table has built-in phrase rule, otherwise
+    it won't work.
+  * Port UI plugin to qt6
+  * Default to webengine since qt webkit is lack of maintenance.
+- changes in 5.1.2
+  * Pinyin prediction may also show words from pinyin dict, not just
+from the model.
+  * Add an animation for cloudpinyin loading
+  * Allow table to use other key for select default candidate other than space.
+
+-------------------------------------------------------------------
 Tue Oct  3 07:57:32 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.1
