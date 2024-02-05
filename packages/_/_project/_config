@@ -910,7 +910,7 @@ Prefer: -kubernetes1.24-client-common -kubernetes1.25-client-common
 Prefer: -deepin-kwin-devel
 
 # have choice for html2text
-Prefer: -python39-html2text -python310-html2text -python311-html2text
+Prefer: -python39-html2text -python310-html2text -python311-html2text -python312-html2text
 
 # have choice for (gnome-session or budgie-desktop) needed by gnome-shell: budgie-desktop gnome-session
 Prefer: -budgie-desktop
