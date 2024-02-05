@@ -280,4 +280,26 @@
   * arb_shader_texture_lod: Fix incorrect require directive for the ext.</comment>
     <requestid>1136697</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a5432392b9bbb72049cea0a3138a0b2e</srcmd5>
+    <version>1~20240202</version>
+    <time>1707166920</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1~20240202:
+  * glsl: test globals are handled correctly across stage
+  * Add GL_EXT_texture_storage tests
+  * tests/llvmpipe: Fix CMake mis-matching arguments warning.
+  * ci: teach codespell to accept my name
+  * tests/llvmpipe: don't require git repository, allow running from tarball
+  * tests/llvmpipe: drop unused GIT_HEAD_HASH_SHORT
+  * test/util: call destroy before reporting the result
+  * modifiers: Remove sampler-view tests
+  * modifiers: Add QCOM_TILED3
+  * ext_transform_feedback: document missing mode in usage
+  * arb_copy_image-formats: avoid undefined behavior
+  * arb_texture_barrier: allow testing the extension under GL3.0
+  * arb_shader_atomic_counters-semantics: use correct output-type
+  * egl_khr_create_context: add test for EXT_create_context_robustness and EXT_query_reset_notification_strategy</comment>
+    <requestid>1144214</requestid>
+  </revision>
 </revisionlist>
