@@ -1629,6 +1629,8 @@ unsorted:
   - budgie-screensaver-lang 
   - budgie-screenshot-applet 
   - budgie-screenshot-applet-lang 
+  - budgie-session 
+  - budgie-session-lang 
   - budgie-showtime-applet 
   - budgie-takeabreak-applet 
   - budgie-visualspace-applet 
@@ -13655,6 +13657,7 @@ unsorted:
   - libmfx-gen-devel 
   - libmfx-gen1_2 
   - libmfx-samples 
+  - libmfx1 
   - libmgl-fltk8 
   - libmgl-glut8 
   - libmgl-mpi8 
@@ -15926,7 +15929,7 @@ unsorted:
   - libvorbisenc2-32bit 
   - libvorbisfile3-32bit 
   - libvoro++0 
-  - libvotca2023 
+  - libvotca2024 
   - libvotequorum8 
   - libvotequorum8-32bit 
   - libvpd-2_2-3 
@@ -16236,6 +16239,11 @@ unsorted:
   - libxfce4ui-doc 
   - libxfce4util-devel 
   - libxfce4util-tools 
+  - libxfce4windowing-0-0 
+  - libxfce4windowing-devel 
+  - libxfce4windowing-devel-doc 
+  - libxfce4windowing-lang 
+  - libxfce4windowingui-0-0 
   - libxfconf-devel 
   - libxfdashboard0 
   - libxine-devel 
@@ -29356,6 +29364,7 @@ unsorted:
   - python311-sip6-devel 
   - python311-siphashc 
   - python311-sklearn-pandas 
+  - python311-skyfield 
   - python311-slack-sdk 
   - python311-slimit 
   - python311-slixmpp 
@@ -29946,6 +29955,7 @@ unsorted:
   - python312-Pebble 
   - python312-Pillow 
   - python312-Pillow-tk 
+  - python312-Pint 
   - python312-Protego 
   - python312-PsyLab 
   - python312-PubChemPy 
@@ -30002,6 +30012,7 @@ unsorted:
   - python312-PyTweening 
   - python312-PyVirtualDisplay 
   - python312-PyWavelets 
+  - python312-PyWebDAV3-GNUHealth 
   - python312-PyX 
   - python312-PyYAML 
   - python312-Pygments 
@@ -30202,6 +30213,7 @@ unsorted:
   - python312-autobahn 
   - python312-autocommand 
   - python312-autodocsumm 
+  - python312-autopep8 
   - python312-autoupgrade-ng 
   - python312-av 
   - python312-avahi 
@@ -30683,6 +30695,7 @@ unsorted:
   - python312-cloudflare 
   - python312-cloudpickle 
   - python312-cloup 
+  - python312-cluster 
   - python312-cma 
   - python312-cmapfile 
   - python312-cmarkgfm 
@@ -30714,12 +30727,14 @@ unsorted:
   - python312-configshell-fb 
   - python312-confluent-kafka 
   - python312-confpy 
+  - python312-confusable-homoglyphs 
   - python312-confuse 
   - python312-constantly 
   - python312-construct 
   - python312-contexter 
   - python312-contextvars 
   - python312-contourpy 
+  - python312-control 
   - python312-conu 
   - python312-convertdate 
   - python312-cookiecutter 
@@ -30890,6 +30905,7 @@ unsorted:
   - python312-django-q 
   - python312-django-qsessions 
   - python312-django-redis 
+  - python312-django-registration 
   - python312-django-requests-debug-toolbar 
   - python312-django-rest-framework-client 
   - python312-django-rest-framework-social-oauth2 
@@ -30899,6 +30915,7 @@ unsorted:
   - python312-django-rq 
   - python312-django-sekizai 
   - python312-django-settings-toml 
+  - python312-django-silk 
   - python312-django-sortedm2m 
   - python312-django-storages 
   - python312-django-tables2 
@@ -31043,6 +31060,7 @@ unsorted:
   - python312-flake8-debugger 
   - python312-flake8-deprecated 
   - python312-flake8-docstrings 
+  - python312-flake8-import-order 
   - python312-flake8-imports 
   - python312-flake8-isort 
   - python312-flake8-pep3101 
@@ -31502,6 +31520,7 @@ unsorted:
   - python312-lupa 
   - python312-lxml 
   - python312-lxml-devel 
+  - python312-ly 
   - python312-lz4 
   - python312-macholib 
   - python312-magic 
@@ -31667,10 +31686,16 @@ unsorted:
   - python312-ntfy 
   - python312-ntplib 
   - python312-num2words 
+  - python312-numba 
+  - python312-numba-devel 
   - python312-numcodecs 
   - python312-numericalunits 
   - python312-numpy 
   - python312-numpy-devel 
+  - python312-numpy-gnu-hpc 
+  - python312-numpy-gnu-hpc-devel 
+  - python312-numpy_1_26_2-gnu-hpc 
+  - python312-numpy_1_26_2-gnu-hpc-devel 
   - python312-nwdiag 
   - python312-nxapi-plumbing 
   - python312-o2sclpy 
@@ -32029,6 +32054,7 @@ unsorted:
   - python312-pykickstart 
   - python312-pykka 
   - python312-pykwalify 
+  - python312-pylama 
   - python312-pylast 
   - python312-pyleri 
   - python312-pylev 
@@ -32041,6 +32067,8 @@ unsorted:
   - python312-pylint-venv 
   - python312-pylons-sphinx-themes 
   - python312-pylru 
+  - python312-pyls-spyder 
+  - python312-pylsp-rope 
   - python312-pylsqpack 
   - python312-pylzma 
   - python312-pymacaroons 
@@ -32174,6 +32202,7 @@ unsorted:
   - python312-pytest-regressions 
   - python312-pytest-relaxed 
   - python312-pytest-remotedata 
+  - python312-pytest-reorder 
   - python312-pytest-rerunfailures 
   - python312-pytest-responsemock 
   - python312-pytest-server-fixtures 
@@ -32231,7 +32260,9 @@ unsorted:
   - python312-python-jose 
   - python312-python-jose-cryptography 
   - python312-python-jsonschema-objects 
+  - python312-python-lsp-black 
   - python312-python-lsp-jsonrpc 
+  - python312-python-lsp-server 
   - python312-python-lzo 
   - python312-python-magic 
   - python312-python-memcached 
@@ -32308,6 +32339,7 @@ unsorted:
   - python312-qcs-api-client 
   - python312-qet_tb_generator 
   - python312-qpageview 
+  - python312-qrcode 
   - python312-qscintilla-qt5 
   - python312-qstylizer 
   - python312-qsymm 
@@ -32387,6 +32419,7 @@ unsorted:
   - python312-requirements-detector 
   - python312-requirements-parser 
   - python312-requre 
+  - python312-resampy 
   - python312-resolvelib 
   - python312-responses 
   - python312-respx 
@@ -32455,6 +32488,8 @@ unsorted:
   - python312-scikit-image 
   - python312-scikit-learn 
   - python312-scipy 
+  - python312-scipy-gnu-hpc 
+  - python312-scipy_1_11_4-gnu-hpc 
   - python312-scitokens 
   - python312-scour 
   - python312-scp 
@@ -32511,6 +32546,7 @@ unsorted:
   - python312-siphashc 
   - python312-six 
   - python312-sklearn-pandas 
+  - python312-skyfield 
   - python312-slimit 
   - python312-sly 
   - python312-slycot 
@@ -32534,6 +32570,7 @@ unsorted:
   - python312-sox 
   - python312-soxr 
   - python312-spark_parser 
+  - python312-sparse 
   - python312-speaklater 
   - python312-specfile 
   - python312-sphinx-argparse 
@@ -32827,6 +32864,7 @@ unsorted:
   - python312-vsts 
   - python312-vsts-cd-manager 
   - python312-vulkan 
+  - python312-vulture 
   - python312-w3lib 
   - python312-wadllib 
   - python312-wafw00f 
@@ -33695,7 +33733,6 @@ unsorted:
   - python39-azure-schemaregistry 
   - python39-azure-schemaregistry-avroencoder 
   - python39-azure-schemaregistry-avroserializer 
-  - python39-azure-sdk 
   - python39-azure-search-documents 
   - python39-azure-search-nspkg 
   - python39-azure-security-attestation 
@@ -33786,7 +33823,6 @@ unsorted:
   - python39-bugzilla 
   - python39-bugzillatools 
   - python39-build 
-  - python39-buttplug 
   - python39-bytecode 
   - python39-cPyparsing 
   - python39-cached-property 
@@ -36401,7 +36437,6 @@ unsorted:
   - python39-weblate-schemas 
   - python39-webruntime 
   - python39-websocket-client 
-  - python39-websockets 
   - python39-websockify 
   - python39-wfuzz 
   - python39-whatever 
@@ -36604,7 +36639,6 @@ unsorted:
   - qlipper 
   - qlipper-lang 
   - qloud 
-  - qm 
   - qml-autoreqprov 
   - qml-box2d 
   - qmlkonsole 
@@ -48612,6 +48646,8 @@ unsorted:
   - typelib-1_0-LibvirtGObject-1_0 
   - typelib-1_0-LibvirtSandbox-1_0 
   - typelib-1_0-Libxfce4panel-2_0 
+  - typelib-1_0-Libxfce4windowing-0_0 
+  - typelib-1_0-Libxfce4windowingui-0_0 
   - typelib-1_0-LightDM-1 
   - typelib-1_0-MalcontentUi-1 
   - typelib-1_0-Manette-0_2-0 
