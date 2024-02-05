@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jan 28 20:29:34 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.14+git20240128.9189b99:
+  * Cleaned up example to use the "proper" hosted version.
+  * Added fonts to lpm as a new type.
+
+-------------------------------------------------------------------
+Sat Jan 27 00:15:09 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.14+git20240126.74aadee:
+  * Updated help.
+
+-------------------------------------------------------------------
+Thu Jan 18 23:35:14 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.13+git20240118.cda6773:
+  * Removing empty comments.
+  * Thing was due to the other thing.
+  * Removed looking for main/master; now ask directly what the primary branch is.
+
+-------------------------------------------------------------------
+Thu Jan 18 17:33:52 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.13+git20240118.e7bd5c0:
+  * Added in for case where branch or commit isn't supplied to local manifest repo with a remote.
+  * Added in changes from @parnikkapore to fix ssl certificates in a directory.
+
+-------------------------------------------------------------------
 Tue Dec 05 17:44:29 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 1.0.13+git20231205.1feceea:
