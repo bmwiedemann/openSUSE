@@ -1,7 +1,7 @@
 #
 # spec file for package gitolite
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Group:          Development/Tools/Version Control
 URL:            http://gitolite.com
 Source0:        https://github.com/sitaramc/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source11:       README.SUSE
+Provides:       group(%{git_user})
+Provides:       user(%{git_user})
 BuildRequires:  git
 Requires:       git
 Conflicts:      gitosis
@@ -35,11 +37,7 @@ BuildArch:      noarch
 Requires(pre):  user(wwwrun)
 Requires(pre):  user(nginx)
 %endif
-%if 0%{?suse_version} > 1110
 %{perl_requires}
-%else
-Requires:       perl = %{perl_version}
-%endif
 
 %description
 Gitolite is an access control layer on top of git, which allows access control
