@@ -22,9 +22,10 @@ Version:        2.0.7
 Release:        0
 Summary:        A python library adding a json log formatter
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/madzak/python-json-logger
 Source:         https://files.pythonhosted.org/packages/source/p/python-json-logger/python-json-logger-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#madzak/python-json-logger#183
+Patch0:         support-python312.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -52,7 +53,7 @@ A python library adding a json log formatter.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/python_json_logger-%{version}*-info
 %{python_sitelib}/pythonjsonlogger
+%{python_sitelib}/python_json_logger-%{version}.dist-info
 
 %changelog
