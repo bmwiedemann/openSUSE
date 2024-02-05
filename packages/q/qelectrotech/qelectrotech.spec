@@ -1,7 +1,7 @@
 #
 # spec file for package qelectrotech
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -81,6 +81,7 @@ sed -e s,%{_prefix}/local/,%{_prefix}/, \
 %{_datadir}/appdata/qelectrotech.appdata.xml
 %{_datadir}/applications/qelectrotech.desktop
 %{_datadir}/icons/hicolor/*/*/*.png
+%dir %{_mandir}/be
 %dir %{_mandir}/fr.ISO8859-1
 %dir %{_mandir}/fr.UTF-8
 %{_mandir}/man1/qelectrotech.1%{?ext_man}

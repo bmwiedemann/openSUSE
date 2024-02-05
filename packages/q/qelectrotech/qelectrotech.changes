@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  4 20:52:41 UTC 2024 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Fix build failure (directories not owned by a package).
+
+-------------------------------------------------------------------
 Sat Mar 11 05:29:24 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.90:
