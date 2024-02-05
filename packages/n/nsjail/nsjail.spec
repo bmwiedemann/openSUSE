@@ -1,7 +1,7 @@
 #
 # spec file for package nsjail
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nsjail
-Version:        3.3+git14.8308b91
+Version:        3.4+git14.b740dcf
 Release:        0
 Summary:        A light-weight process isolation tool
 License:        Apache-2.0
@@ -75,5 +75,7 @@ install -m 644 configs/*.cfg %{buildroot}/%{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/imagemagick-convert.cfg
 %config %{_sysconfdir}/%{name}/static-busybox-with-execveat.cfg
 %config %{_sysconfdir}/%{name}/tomcat8.cfg
+%config %{_sysconfdir}/%{name}/telegram.cfg
+%config %{_sysconfdir}/%{name}/hexchat-with-net.cfg
 
 %changelog

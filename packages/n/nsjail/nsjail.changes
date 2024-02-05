@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 05 12:25:41 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 3.4+git14.b740dcf:
+  * Improved cgroups2 support
+  * Improved cgroups2 + docker interoperability
+  * New configs: hexchat, telegram
+  * Better support for clone3
+  * New signals displayed: SIGPWR
+  * Support for nvim+.clangd
+  * Improved .clang-format rules
+  * Print help to stdout if -h | --help was used
+
+-------------------------------------------------------------------
 Wed Aug 23 08:54:02 UTC 2023 - wolfgang.frisch@suse.com
 
 - Fixed Tumbleweed build error caused by an incompatible libprotobuf.
