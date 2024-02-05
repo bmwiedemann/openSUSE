@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Jan 29 15:11:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not ship check_mssql unless built explicitly with mssql
+  support. DBD::Sybase is not available in openSUSE distros.
+
+-------------------------------------------------------------------
+Mon Jan 15 10:44:48 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- check_ircd: Remove the perl-IO-Socket-INET6 dependency.
+  * Remove the dependency on perl(IO::Socket::INET6) as it has been
+    deprecated by upstream, is no longer suitable for use and its not
+    being maintained. A compatible replacement for this package is
+    perl(IO::Socket::IP) which is shipped by the perl-base package.
+
+-------------------------------------------------------------------
+Tue Dec  5 11:46:24 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de> - 2.3.5
+
+- update to 2.3.5
+  FIXES
+  * Include maxfd.h in lib Makefile
+
+  included in 2.3.4
+  ENHANCEMENTS
+  * check_curl: added --cookie-jar and doing proper cleanup of libcurl
+  * check_curl: Include all IPs from getaddrinfo() in curl DNS cache
+  * check_dhcp: Add dhcp rogue detection
+  * check_disk: add ignore-missing option to return OK for missing fs
+  * check_disk_smb: allow checking 0-sized resource (ex. IPC$)
+  * check_disk: The options to include or exclude specific file 
+    systems now allow the usage of regex(7)
+  * check_icmp: Add support to Jitter, MOS and Score
+  * check_mysql: Detect running mysqldump and handle it 
+    more gracefully
+  * check_procs: Implement --exclude-process to exclude 
+    specific processes
+  * check_smtp: add new longoption --tls
+  * check_smtp: Add option to prefix PROXY header
+  * check_smtp: Add support for SMTP over TLS
+  * check_smtp: Add support for SNI
+  * check_snmp: Implement option to ignore mib file parsing errors
+  * check_users: prefer systemd-logind over utmp
+  FIXES
+  * check_disk: Display SI units correctly
+  * check_ircd: use pack_sockaddr_in rather than hand-rolled
+  * check_log/check_oracle/check_sensors: fixed the outputs of the 
+    help functionality
+  * check_mysql: Add mysql_close to avoid spamming the server logs
+  * check_smtp: add missing -r option in usage
+  * check_snmp: disable multiplier when unused
+  * check_wave: Use compile time determined path to snmpget
+  GENERAL
+  * Sync with the Gnulib code 668c0b8ffa
+  * Set autoconf prerequisite version to 2.64
+  * Remove sha1 and use sha256 in some parts of the plugin structure
+  * A lot of compiler warnings were fixed
+  * Some code was refactored a little bit
+- removed the following patches:
+  + monitoring-plugins-2.3.3-check_log_-_quoting.patch (upstream)
+  + monitoring-plugins-2.3.3-check_snmp.arrayaddress.patch (upstream)
+  + monitoring-plugins-2.3.3-mariadb_102_build_fix.patch
+  + monitoring-plugins-2.3.3-check_dhcp_-_detect_rogue_dhcp_servers.patch
+  + monitoring-plugins-2.3.3-check_http-proxy.patch
+  + monitoring-plugins-2.3.3-check_icmp.patch
+  + systemd-not-utmp.patch
+- new check: check_mssql
+  This plugin runs a query against a MS-SQL server or Sybase server 
+  and returns the first row.
+  Recommended in monitoring-plugins-all and monitoring-plugins-extra
+
+-------------------------------------------------------------------
 Thu Nov 16 14:04:40 CET 2023 - ro@suse.de
 
 - also require coreutils-systemd in monitoring-plugins-load

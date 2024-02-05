@@ -37,7 +37,7 @@
 # 1999/09/20. Some code taken from Charlie Cook (check_disk.pl).
 #
 use Getopt::Long;
-use IO::Socket::INET6;
+use IO::Socket::IP;
 use strict;
 use vars qw($PROGNAME $VERSION);
 use vars qw($opt_V $opt_h $opt_t $opt_p $opt_H $opt_w $opt_c $ssl $verbose);
@@ -106,10 +106,10 @@ sub connection ($$$$$$) {
     debug("Attempting connect.\n",$verbose);
     # Connect to server
     debug("Connecting ...........\n",$verbose);
-    my $sock = IO::Socket::INET6->new( PeerAddr => $server,
-                                       PeerPort => $port,
-                                       Proto => 'tcp',
-                                       Domain => AF_UNSPEC ) or return ($user);
+    my $sock = IO::Socket::IP->new( PeerAddr => $server,
+                                    PeerPort => $port,
+                                    Proto => 'tcp',
+                                    Domain => AF_UNSPEC ) or return ($user);
     if($ssl) {
         use IO::Socket::SSL;
         debug("Starting SSL .........\n",$verbose);
