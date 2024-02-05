@@ -1,7 +1,7 @@
 #
 # spec file for package xkbutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xkbutils
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Collection of small utilities utilizing the X11 XKeyboard extension
 License:        MIT

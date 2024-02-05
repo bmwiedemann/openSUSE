@@ -63,4 +63,14 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>988763</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9294acc6d7a820f90cb052ce38638792</srcmd5>
+    <version>1.0.6</version>
+    <time>1707166866</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.6
+  * This release includes minor cleanups, including a fix for an
+    issue that prevented building with gcc 14 betas.</comment>
+    <requestid>1144050</requestid>
+  </revision>
 </revisionlist>

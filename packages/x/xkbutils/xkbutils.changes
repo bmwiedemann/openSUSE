@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  4 20:58:10 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * This release includes minor cleanups, including a fix for an
+    issue that prevented building with gcc 14 betas.
+
+-------------------------------------------------------------------
 Tue Jul 12 22:14:38 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.5:
