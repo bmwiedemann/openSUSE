@@ -1,8 +1,8 @@
 #
 # spec file for package proteus
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2014-2021 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2014-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,16 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%define pythons python3
+%define mypython python3
+%define mysitelib %python3_sitelib
+%else
+%{?sle15_python_module_pythons}
+%define mypython %pythons
+%define mysitelib %{expand:%%%{mypython}_sitelib}
+%endif
+
 %define majorver 6.0
 Name:           proteus
 Version:        %{majorver}.8
@@ -29,15 +39,20 @@ Source0:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.g
 Source1:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
 Source2:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 # List of additional build dependencies
+BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-pip
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wheel
 BuildRequires:  fdupes
-BuildRequires:  python3-defusedxml
-BuildRequires:  python3-pip
-BuildRequires:  python3-python-dateutil
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
+BuildRequires:  python-rpm-generators
+BuildRequires:  python-rpm-macros
+
+BuildRequires:  %{mypython}-defusedxml
+BuildRequires:  %{mypython}-python-dateutil
+
 BuildRequires:  trytond
-Requires:       python3-defusedxml
-Requires:       python3-python-dateutil
+Requires:       %{mypython}-defusedxml
+Requires:       %{mypython}-python-dateutil
 Requires:       trytond
 BuildArch:      noarch
 
@@ -48,22 +63,21 @@ Proteus allows you to access Tryton's modules like a client. Useful for automati
 %setup -q
 
 %build
-%python3_pyproject_wheel
+%pyproject_wheel
 
 %install
-%python3_pyproject_install
-%fdupes %{buildroot}%{python3_sitelib}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{mysitelib}
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=%{buildroot}%{python3_sitelib}
-python3 -m unittest -v
+export PYTHONPATH=%{buildroot}%{mysitelib}
+%pyunittest discover -v
 
 %files
 %defattr(-,root,root)
+%{mysitelib}/proteus*
 %doc README.rst
 %license LICENSE
-%{python3_sitelib}/proteus
-%{python3_sitelib}/proteus-%{version}.dist-info
 
 %changelog
