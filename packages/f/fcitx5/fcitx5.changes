@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Feb  4 14:17:28 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.1.7
+  * fix some crash bugs introduced when porting to libuv
+  * some minor improvements on launching fcitx5
+- Changes in 5.1.6
+  * don't allow restart from UI when running with wayland im protocol
+  * improve ProcessKeyBatch to support delete surrounding
+  * Fix fractional scale rounding to follow the spec
+  * fix minor compatibility in ibus frontend with ibus 1.5.29 so ibus
+    im module won't spam the log
+  * fix modifier only hyper key detection
+  * don't use xcb grab key when wayland im module already has a grab
+- Changes in 5.1.2
+  * Fix dbus signature template parsing for certain signatures
+  * Add environment warning message under Wayland, to help
+    user to set it right
+    Act as a warning to distro (fedora/debian) that their tools do not
+    work under wayland properly.
+  * Fix virtual keyboard event not flushing wayland connection
+  * Add option to allow configure auto save behavior
+  * Make wayland event reading in a separate thread.
+  * Fix portal value not being read at start up.
+  * Add an option to allow use of the input method in password field
+  * make file system API respect umask settings, especially for safeSave
+  * Support bulk candidate list without a known size.
+
+-------------------------------------------------------------------
 Tue Oct  3 07:33:20 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.1.1

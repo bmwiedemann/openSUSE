@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define _environmentdir %{_prefix}/lib/environment.d
 %endif
 Name:           fcitx5
-Version:        5.1.1
+Version:        5.1.7
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later
@@ -54,8 +54,8 @@ BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-c)
-BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)
@@ -231,6 +231,8 @@ fi
 %doc README.md
 %license LICENSES
 %{_distconfdir}/X11/xim.d/
+%dir %{_sysconfdir}/xdg/Xwayland-session.d
+%{_sysconfdir}/xdg/Xwayland-session.d/20-fcitx-x11
 %{_sysconfdir}/xdg/autostart/org.fcitx.Fcitx5.desktop
 %{_bindir}/fcitx5
 %{_bindir}/fcitx5-configtool
@@ -241,6 +243,7 @@ fi
 %{_userunitdir}/fcitx5.service
 %{_datadir}/applications/org.fcitx.Fcitx5.desktop
 %{_datadir}/applications/fcitx5-configtool.desktop
+%{_datadir}/applications/fcitx5-wayland-launcher.desktop
 %{_datadir}/fcitx5
 %{_datadir}/icons/hicolor/*/apps/fcitx.*
 %{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.*
