@@ -1,8 +1,8 @@
 #
 # spec file for package XyGrib
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2018-2022 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2018-2024 Dr. Axel Braun <DocB@opensuse.org>
 # Copyright (c) 2018 Dominig ar Foll (Intel Open Source)
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,6 @@ Source1:        %{name}.png
 Source2:        %{name}.desktop
 Patch0:         QPainter.patch
 Patch1:         libjpeg24.diff
-Patch2:         proj8.diff
 Patch3:         projection.diff
 Patch4:         proj9.diff
 BuildRequires:  cmake
@@ -52,7 +51,7 @@ BuildRequires:  pkgconfig(proj)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} < 1500
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
+Requires(postun): update-desktop-files
 %endif
 
 %description
@@ -64,18 +63,9 @@ XyGrib also uses pre-cut Gribs of high-resolution regional models
 found on OpenSkiron.org.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-cp %{S:1} %{S:2} .
+%autosetup -p1
 
-#check for Leap version = 15.4
-%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
-%patch2 -p1
-%else
-%patch4 -p1
-%endif
-%patch3 -p1
+cp %{S:1} %{S:2} .
 
 %build
 # -DNO_UPDATE=1 deactivates XyGrib internal SW update
