@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/ValveSoftware/steam-devices.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">%cd+git.%h</param>
+    <param name="changesgenerate">enable</param>
+    <param name="revision">master</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
+

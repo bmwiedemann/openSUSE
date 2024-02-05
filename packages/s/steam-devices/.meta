@@ -1,0 +1,10 @@
+<package name="steam-devices" project="openSUSE:Factory">
+  <title>Device support for Steam-related hardware</title>
+  <description>The Steam Controller features dual trackpads, HD haptic feedback, dual-stage
+triggers, back grip buttons, and fully-customizable control schemes.
+Make sure that all users, which should have access to the steam-controller,
+are in the &quot;games&quot; group. Steam VR is a full-featured, 360° room-scale
+virtual reality experience.</description>
+  <devel project="games:tools" package="steam-devices"/>
+  <url>https://github.com/ValveSoftware/steam-devices/</url>
+</package>

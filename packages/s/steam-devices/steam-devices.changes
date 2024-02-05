@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon Feb  5 13:42:20 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- No longer recommends steam, but supplements it
+  * Non-OSS software should only be pulled through by default if the
+  user explicitly requests it
+- No longer require pkgconfig
+- No longer require user/group(games), uaccess is already used instead
+- Misc minor specfile cleanups 
+
+-------------------------------------------------------------------
+Wed Jan 31 13:56:59 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove tightly defined versions for Supplements, Recommends of steam
+    * This package should work with any steam version or without steam
+- Add versioned Obsoletes/Provides for steam-vr and steam-controller to
+  properly obsolete the old steam-devices subpackage provided by steam 
+
+-------------------------------------------------------------------
+Wed Jan 31 13:45:25 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove hard defined changesauthor in _service 
+
+-------------------------------------------------------------------
+Wed Jan 31 11:28:53 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Initial package. Seperated from steam-devices subpackage from
+  steam so it can be included in the OSS repo. 
