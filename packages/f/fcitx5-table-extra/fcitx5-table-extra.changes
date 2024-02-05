@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  5 13:13:33 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.3
+  * Replace PUA character with non-PUA unicode in the table data.
+- changes in 5.1.2
+  * fix wubi98 not get installed
+- changes in 5.1.1
+  * proofread-wubi98-tables
+
+-------------------------------------------------------------------
 Sun Aug 20 06:28:28 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.0
