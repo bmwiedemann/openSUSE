@@ -122,4 +122,15 @@
   (VA-API, ...) for Intel GPUs is outside of Mesa)</comment>
     <requestid>1034194</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9190cae4f99002234379ffe910f5a0a4</srcmd5>
+    <version>24.1.3</version>
+    <time>1707166851</time>
+    <user>anag+factory</user>
+    <comment>- updated hardware Supplements
+
+- Update to version 24.1.3
+  * bugfix release for 24.1</comment>
+    <requestid>1143796</requestid>
+  </revision>
 </revisionlist>
