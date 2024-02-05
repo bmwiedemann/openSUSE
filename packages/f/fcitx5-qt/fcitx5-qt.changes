@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  5 10:58:01 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.4
+  * fix a xtray menu positioning bug
+- changes in 5.1.3
+  * fix the build against pre-6.6 Qt
+- changes in 5.1.2
+  * do not use frameGeometry, use windowContentGeometry to clipping
+
+-------------------------------------------------------------------
 Tue Oct  3 07:54:01 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.1
