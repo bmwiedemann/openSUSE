@@ -100,4 +100,14 @@
 - Fix console_script.py missing +x</comment>
     <requestid>1143969</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>23547b08d2dc61326f3c10d0bec8f078</srcmd5>
+    <version>7.4.2</version>
+    <time>1707166886</time>
+    <user>anag+factory</user>
+    <comment>- Add missing Requires on pypng.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1144106</requestid>
+  </revision>
 </revisionlist>
