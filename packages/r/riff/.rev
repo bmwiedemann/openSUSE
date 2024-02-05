@@ -44,4 +44,54 @@
   * Don't require file names with -b #54.</comment>
     <requestid>1125797</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b553c592d50bc951711a1e701132b405</srcmd5>
+    <version>2.28.0~0</version>
+    <time>1706204493</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.28.0:
+  * Conflict markers can be added to files by git merge for example.</comment>
+    <requestid>1141443</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c3d980179042869fc0d1ecb4cda7cef</srcmd5>
+    <version>2.29.0~0</version>
+    <time>1706635580</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.29.0:
+  * Improve error handling
+  * Improve display</comment>
+    <requestid>1142714</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e58f7c9803649110c0db6fd52b6b1bde</srcmd5>
+    <version>2.29.1~0</version>
+    <time>1706741685</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.20.1:
+  * Fix losing part of the diff
+	* Align diff file timestamp</comment>
+    <requestid>1142894</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>09e87cf1ae4eaafaf65560d5680b1aaf</srcmd5>
+    <version>2.30.0~0</version>
+    <time>1706807194</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.30.0:
+  * Option to put command line options in the RIFF environment variable
+	  and riff will use them primarily
+  * --no-adds-only-special flag added
+  * Improved --- and +++ headers highlighting</comment>
+    <requestid>1143438</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fbd9bb394fcf56a5edb9dd2dfc2880cd</srcmd5>
+    <version>2.30.1~0</version>
+    <time>1707166888</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.30.1:
+  * Fix crash by handling conflict markers corner cases properly</comment>
+    <requestid>1144103</requestid>
+  </revision>
 </revisionlist>
