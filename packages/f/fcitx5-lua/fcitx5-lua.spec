@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-lua
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-lua
-Version:        5.0.11
+Version:        5.0.12
 Release:        0
 Summary:        Lua support for fcitx
 License:        LGPL-2.1-or-later
