@@ -27,12 +27,14 @@ Source0:        https://github.com/netblue30/%{name}/releases/download/%{version
 Source1:        https://github.com/netblue30/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 # https://firejail.wordpress.com/download-2/
 Source2:        %{name}.keyring
+Source3:        %{name}-group.conf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libapparmor-devel
+BuildRequires:  sysuser-tools
 BuildRequires:  xz
 Requires(post): permissions
-Requires(pre):  shadow
+%sysusers_requires
 
 %description
 Firejail is a SUID sandbox program that reduces the risk of security
@@ -49,6 +51,7 @@ Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
 
 %description bash-completion
 Optional dependency offering bash completion for firejail
@@ -59,27 +62,28 @@ Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
+BuildArch:      noarch
 
 %description zsh-completion
 Optional dependency offering zsh completion for firejail
 
 %prep
-%setup -q
+%autosetup
 sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' contrib/fj-mkdeb.py contrib/fjclip.py contrib/fjdisplay.py contrib/fjresize.py contrib/sort.py contrib/fix_private-bin.py contrib/jail_prober.py
 
 %build
+%sysusers_generate_pre %{SOURCE3} %{name} %{name}-group.conf
 %configure --docdir=%{_docdir}/%{name} \
 	   --enable-apparmor
 %make_build
 
-%pre
-getent group firejail >/dev/null || groupadd -r firejail
-exit 0
-
 %install
 %make_install
+install -D -m 644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-group.conf
 rm %{buildroot}%{_docdir}/firejail/COPYING
 %fdupes -s %{buildroot}
+
+%pre -f %{name}.pre
 
 %post
 %set_permissions %{_bindir}/firejail
@@ -115,6 +119,7 @@ rm %{buildroot}%{_docdir}/firejail/COPYING
 %dir %{_datadir}/gtksourceview-5/language-specs
 %{_datadir}/gtksourceview-5/language-specs/firejail-profile.lang
 %config /etc/apparmor.d/abstractions/base.d/firejail-base
+%{_sysusersdir}/%{name}-group.conf
 
 %files bash-completion
 %license COPYING
