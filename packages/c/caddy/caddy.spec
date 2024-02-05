@@ -1,7 +1,7 @@
 #
 # spec file for package caddy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,8 @@
 
 
 %define project github.com/caddyserver/caddy
+%define gname caddy
+%define uname caddy
 
 # SLE-12 _sharedstatedir was /usr/com, _localstatedir is /var as expected
 # SLE-15+ _sharedstatedir is /var/lib, _localstatedir is /var
@@ -45,6 +47,8 @@ BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  golang(API) >= 1.20
+Provides:       group(%{gname})
+Provides:       user(%{uname})
 %{?systemd_requires}
 %{sysusers_requires}
 %{go_provides}
@@ -118,7 +122,7 @@ install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_datadir}/zsh/site-functions/_%{n
 %{_sysusersdir}/%{name}.conf
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/Caddyfile
-%attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}
+%dir %attr(0750, %{uname}, %{gname}) %{_sharedstatedir}/%{name}
 # filesystem owns all the parent directories here
 %{_datadir}/bash-completion/completions/%{name}
 # own parent directories in case zsh is not installed
