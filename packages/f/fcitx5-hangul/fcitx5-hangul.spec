@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-hangul
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-hangul
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Hangul Wrapper for Fcitx5
 License:        LGPL-2.1-only
@@ -54,7 +54,7 @@ Hangul Wrapper for Fcitx5.
 %files -f %{name}.lang
 %license LICENSES
 %doc README.md
-%{_fcitx5_libdir}/hangul.so
+%{_fcitx5_libdir}/libhangul.so
 %{_fcitx5_addondir}/hangul.conf
 %{_fcitx5_imconfdir}/hangul.conf
 %{_fcitx5_datadir}/hangul
