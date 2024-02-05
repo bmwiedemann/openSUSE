@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname papi
-%define ver 7.0.0
-%define _ver 7_0_0
+%define ver 7.1.0
+%define _ver 7_1_0
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
@@ -78,8 +78,8 @@ BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake
 BuildRequires:  chrpath
 BuildRequires:  gcc-fortran
-BuildRequires:  libpfm-devel >= 4.3.0
-BuildRequires:  libpfm-devel-static >= 4.3.0
+BuildRequires:  libpfm-devel >= 4.13.0
+BuildRequires:  libpfm-devel-static >= 4.13.0
 BuildRequires:  libsensors4-devel
 BuildRequires:  linux-kernel-headers
 BuildRequires:  ncurses-devel
