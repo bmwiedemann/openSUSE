@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-qt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define build_qt6 0
 %endif
 Name:           fcitx5-qt
-Version:        5.1.1
+Version:        5.1.4
 Release:        0
 Summary:        Qt library and IM module for fcitx5
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -50,6 +50,8 @@ BuildRequires:  libqt4-devel
 %if %{build_qt6}
 BuildRequires:  qt6-base-devel
 BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-waylandclient-devel
+BuildRequires:  qt6-waylandclient-private-devel
 %endif
 
 %description
@@ -91,6 +93,13 @@ Group:          System/Libraries
 
 %description -n libFcitx5Qt6DBusAddons1
 This package provides Qt6 DBus Addons library for Fcitx5.
+
+%package -n libFcitx5Qt6WidgetsAddons2
+Summary:        Qt6 Widgets Addons library for Fcitx5
+Group:          System/Libraries
+
+%description -n libFcitx5Qt6WidgetsAddons2
+This package provides Qt6 Widgets Addons library for Fcitx5.
 %endif
 
 %package -n fcitx5-qt5
@@ -130,6 +139,7 @@ Requires:       libFcitx5Qt4DBusAddons1 = %{version}
 %if %{build_qt6}
 Requires:       fcitx5-qt6 = %{version}
 Requires:       libFcitx5Qt6DBusAddons1 = %{version}
+Requires:       libFcitx5Qt6WidgetsAddons2 = %{version}
 %endif
 
 %description devel
@@ -166,6 +176,8 @@ ARGS="$ARGS -DENABLE_QT6=ON"
 %if %{build_qt6}
 %post -n libFcitx5Qt6DBusAddons1 -p /sbin/ldconfig
 %postun -n libFcitx5Qt6DBusAddons1 -p /sbin/ldconfig
+%post -n libFcitx5Qt6WidgetsAddons2 -p /sbin/ldconfig
+%postun -n libFcitx5Qt6WidgetsAddons2 -p /sbin/ldconfig
 %endif
 
 %files -n fcitx5-qt5 -f %{name}.lang
@@ -174,17 +186,24 @@ ARGS="$ARGS -DENABLE_QT6=ON"
 %{_bindir}/fcitx5-qt5-immodule-probing
 %{_libexecdir}/fcitx5-qt5-gui-wrapper
 %{_datadir}/applications/org.fcitx.fcitx5-qt5-gui-wrapper.desktop
-%{_fcitx5_qt5dir}/libfcitx-quickphrase-editor5.so
 %{_libdir}/qt5/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so
 
 %if %{build_qt6}
 %files -n fcitx5-qt6
 %{_bindir}/fcitx5-qt6-immodule-probing
+%{_libexecdir}/fcitx5-qt6-gui-wrapper
+%dir %{_libdir}/fcitx5/qt6
+%{_libdir}/fcitx5/qt6/libfcitx-quickphrase-editor5.so
 %{_libdir}/qt6/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so
+%{_datadir}/applications/org.fcitx.fcitx5-qt6-gui-wrapper.desktop
 
 %files -n libFcitx5Qt6DBusAddons1
 %{_libdir}/libFcitx5Qt6DBusAddons.so.1
 %{_libdir}/libFcitx5Qt6DBusAddons.so.%{version}
+
+%files -n libFcitx5Qt6WidgetsAddons2
+%{_libdir}/libFcitx5Qt6WidgetsAddons.so.2
+%{_libdir}/libFcitx5Qt6WidgetsAddons.so.%{version}
 %endif
 
 %if %{build_qt4}
@@ -218,7 +237,9 @@ ARGS="$ARGS -DENABLE_QT6=ON"
 %if %{build_qt6}
 %{_includedir}/Fcitx5Qt6
 %{_libdir}/libFcitx5Qt6DBusAddons.so
+%{_libdir}/libFcitx5Qt6WidgetsAddons.so
 %{_libdir}/cmake/Fcitx5Qt6DBusAddons
+%{_libdir}/cmake/Fcitx5Qt6WidgetsAddons
 %endif
 
 %changelog
