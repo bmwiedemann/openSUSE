@@ -1,0 +1,23 @@
+Index: bsddb3-6.2.9/test3.py
+===================================================================
+--- bsddb3-6.2.9.orig/test3.py
++++ bsddb3-6.2.9/test3.py
+@@ -152,13 +152,13 @@ try :  # Check in the future if this sti
+     # Python 2.7 and 3.2
+     from unittest.runner import _TextTestResult
+ except ImportError :
+-    from unittest import _TextTestResult
++    from unittest import TextTestResult
+ 
+-class ImmediateTestResult(_TextTestResult):
++class ImmediateTestResult(TextTestResult):
+ 
+-    __super_init = _TextTestResult.__init__
+-    __super_startTest = _TextTestResult.startTest
+-    __super_printErrors = _TextTestResult.printErrors
++    __super_init = TextTestResult.__init__
++    __super_startTest = TextTestResult.startTest
++    __super_printErrors = TextTestResult.printErrors
+ 
+     def __init__(self, stream, descriptions, verbosity, debug=False,
+                  count=None, progress=False):
