@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 9.0
-Version:        9.0
+%define realver 9.1
+Version:        9.1
 Release:        0
 
 %if "%{flavor}" != ""
@@ -144,9 +144,9 @@ Summary:        An MS Windows Emulator
 License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
 URL:            https://www.winehq.org/
-Source0:        https://dl.winehq.org/wine/source/9.0/%{projectname}-%{realver}.tar.xz
+Source0:        https://dl.winehq.org/wine/source/9.x/%{projectname}-%{realver}.tar.xz
 Source41:       wine.keyring
-Source42:       https://dl.winehq.org/wine/source/9.0/%{projectname}-%{realver}.tar.xz.sign
+Source42:       https://dl.winehq.org/wine/source/9.x/%{projectname}-%{realver}.tar.xz.sign
 Source2:        http://kegel.com/wine/wisotool
 Source3:        README.SUSE
 Source4:        wine.desktop
@@ -174,7 +174,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 9.0
+%define staging_version 9.1
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -508,18 +508,23 @@ chmod 755 %winedir/my-find-requires.sh
 %dir /usr/lib/wine/
 %dir /usr/lib/wine/i386-windows
 %dir /usr/lib/wine/i386-unix
+%dir %{_libdir}/wine/x86_64-windows
+%dir %{_libdir}/wine/x86_64-unix
+%dir %{_libdir}/wine
 /usr/%{_lib}/wine/i386-windows
 /usr/%{_lib}/wine/i386-unix
-%endif
+%else
 %dir %{_libdir}/wine
 %dir %{_libdir}/wine/*-windows
+%dir %{_libdir}/wine/*-unix
+%endif
+
 %{_libdir}/wine/*-windows/*.[b-z]*
 %{_libdir}/wine/*-windows/*.ax
 %{_libdir}/wine/*-windows/*.acm
 #ifarch aarch64
 #{_libdir}/wine/*-windows/st*
 #endif
-%dir %{_libdir}/wine/*-unix
 %{_libdir}/wine/*-unix/*.so*
 
 %files devel
@@ -534,14 +539,16 @@ chmod 755 %winedir/my-find-requires.sh
 %{_bindir}/winemaker
 %{_bindir}/wmc
 %{_bindir}/wrc
-%dir %{_libdir}/wine/*-unix
 %ifnarch aarch64
 %{_libdir}/wine/*-unix/*.a
 %endif
 %if 0%{?suse_version} >= 1550
 %ifarch %{ix86} x86_64
+%ifarch x86_64
+%dir %{_libdir}/wine/x86_64-windows
+%dir %{_libdir}/wine/x86_64-unix
+%endif
 # only generated with mingw
-%dir %{_libdir}/wine/*-windows
 %{_libdir}/wine/*-windows/*.a
 %endif
 %endif

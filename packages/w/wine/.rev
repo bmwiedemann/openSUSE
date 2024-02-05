@@ -5045,4 +5045,19 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.0 release</comment>
     <requestid>1139672</requestid>
   </revision>
+  <revision rev="431" vrev="1">
+    <srcmd5>96f7a67aeca5fc41e323cfefae437bc7</srcmd5>
+    <version>9.1</version>
+    <time>1707166847</time>
+    <user>anag+factory</user>
+    <comment>- fixed directory usage to build withh rpm 4.19
+
+- Updated to 9.1 release
+  - A number of Input Method improvements.
+  - Improved Diffie-Hellman key support.
+  - Better Dvorak keyboard detection.
+  - Various bug fixes.
+- update staging to 9.1 release</comment>
+    <requestid>1144135</requestid>
+  </revision>
 </revisionlist>
