@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  5 13:23:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Generate the pre script usingn sysusers_generate.
+
+-------------------------------------------------------------------
+Mon Feb  5 11:53:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Actually run the generated sysusers script as part of pre (do not
+  manually provide the user() symbol, taken care of bu
+  rpm/sysusers.
+
+-------------------------------------------------------------------
+Mon Feb  5 07:37:46 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Adapt to RPM 4.19 on Tumbleweed.
+
+-------------------------------------------------------------------
 Mon Jan  8 07:14:18 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0.0:
