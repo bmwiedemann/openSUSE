@@ -459,4 +459,14 @@
   * Fix 12375</comment>
     <requestid>1141685</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d8e23903b399cf75954febb7c47b6a25</srcmd5>
+    <version>2.13.3</version>
+    <time>1707166905</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.13.3:
+  * settings.cpp: Update autosar+cert+misra checkers mappings
+  * Fix #12389 (GUI: premiumaddon is not executed properly anymore)</comment>
+    <requestid>1144161</requestid>
+  </revision>
 </revisionlist>

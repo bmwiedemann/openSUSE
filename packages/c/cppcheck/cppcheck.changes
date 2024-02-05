@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  5 09:43:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.3:
+  * settings.cpp: Update autosar+cert+misra checkers mappings
+  * Fix #12389 (GUI: premiumaddon is not executed properly anymore)
+
+-------------------------------------------------------------------
 Fri Jan 26 09:06:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.2:
