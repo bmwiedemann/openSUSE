@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  5 07:00:36 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing Requires on pypng.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Sun Feb  4 09:46:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.4.1:

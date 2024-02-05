@@ -22,17 +22,19 @@ Version:        7.4.2
 Release:        0
 Summary:        QR Code image generator
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/lincolnloop/python-qrcode
 Source:         https://files.pythonhosted.org/packages/source/q/qrcode/qrcode-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pypng}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
+Requires:       python-pypng
 Requires:       python-setuptools
 Requires:       python-typing-extensions
 Requires(post): update-alternatives
@@ -50,10 +52,10 @@ of QR Codes.
 sed -i '1s@^#!.*@@' qrcode/console_scripts.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_mandir}/man1/qr.1
 %python_clone -a %{buildroot}%{_bindir}/qr
 %fdupes %{buildroot}%{_prefix}
@@ -72,6 +74,7 @@ sed -i '1s@^#!.*@@' qrcode/console_scripts.py
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/qr
 %python_alternative %{_mandir}/man1/qr.1%{?ext_man}
-%{python_sitelib}/*
+%{python_sitelib}/qrcode
+%{python_sitelib}/qrcode-%{version}.dist-info
 
 %changelog
