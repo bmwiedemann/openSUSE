@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  4 13:49:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.3
+  * Require Python 3.7 (due to setuptools support ranges); mark
+    Matplotlib 3.7.1 as incompatible.
+  * Highlights can be removed by right-clicking anywhere on the
+    highlighting artist, not only on the annotation.
+- There was an otherwise unmentioned license change
+- Drop mplcursors-fix-stem-api.patch
+
+-------------------------------------------------------------------
 Fri Dec 29 21:21:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add mplcursors-fix-stem-api.patch, fixing API change in

@@ -1,7 +1,7 @@
 #
 # spec file for package python-mplcursors
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           python-mplcursors
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Interactive data selection cursors for Matplotlib
-License:        MIT
+License:        Zlib
 URL:            https://github.com/anntzer/mplcursors
 Source:         https://files.pythonhosted.org/packages/source/m/mplcursors/mplcursors-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mplcursors-fix-stem-api.patch main branch -- fix Matplotlib 3.8 API change
-Patch0:         https://github.com/anntzer/mplcursors/commit/689b4adefaf0302a9338bb28bd3c3f0ef1c95ce7.patch#/mplcursors-fix-stem-api.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -32,9 +31,14 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib >= 3.1
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib-metadata
+%endif
+Requires:       (python-matplotlib >= 3.1 without python-matplotlib = 3.7.1)
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module matplotlib >= 3.1}
+BuildRequires:  %{python_module matplotlib >= 3.1 without %python-matplotlib = 3.7.1}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
