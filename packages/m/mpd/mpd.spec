@@ -1,7 +1,7 @@
 #
 # spec file for package mpd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,10 +36,10 @@ Patch0:         %{name}-conf.patch
 Patch1:         %{name}-sndfile.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  group(audio)
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libcue-devel
-BuildRequires:  group(audio)
 # MPD_ENABLE_AUTO_LIB
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libmikmod-devel
@@ -101,6 +101,7 @@ BuildRequires:  pkgconfig(zziplib)
 Requires(pre):  %fillup_prereq
 Requires(pre):  group(audio)
 Requires(pre):  shadow
+Provides:       user(%{name})
 %{?systemd_requires}
 %if %{with faad}
 BuildRequires:  faad2-devel
@@ -229,7 +230,6 @@ install -Dpm0644 doc/mpdconf.example %{buildroot}%{_sysconfdir}/%{name}.conf
 rm %{buildroot}%{_userunitdir}/%{name}.socket
 ln -s ../system/%{name}.socket %{buildroot}%{_userunitdir}/%{name}.socket
 mkdir %{buildroot}%{_sbindir}
-ln -s service %{buildroot}%{_sbindir}/rc%{name}
 mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}/playlists
 
 %pre
@@ -251,7 +251,6 @@ getent passwd %{name} >/dev/null || useradd -rc 'Music Player Daemon' -s /bin/fa
 %doc AUTHORS NEWS README.md README.%{name} %{name}-user.conf doc/mpdconf.example
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_bindir}/%{name}
-%{_sbindir}/rc%{name}
 %attr(0755,mpd,audio) %{_localstatedir}/lib/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man5/%{name}.conf.5%{?ext_man}
