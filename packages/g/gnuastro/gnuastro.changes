@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb  4 13:05:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.22 (library 20.0.0):
+  * New program 'astscript-color-faint-gray'
+  * New options available in all programs to allow customization of
+    which metadata is printed in the 0-th HDU of the FITS output
+    --outfitsnoconfig, --outfitsnodate, --outfitsnoversions,
+    --outfitsnocommit
+  * New --arguments for passing a text file of very long list of
+    arguments
+  * Many new operators and options for operations, behavioral changes
+  * Library API removes redundant functions
+
+-------------------------------------------------------------------
 Sat Oct 21 15:09:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.21 (library 19.0.0): 
