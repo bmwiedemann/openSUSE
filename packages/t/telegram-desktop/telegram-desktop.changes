@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  5 12:58:05 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.14.13
+  * Fix display of statistics for single posts.
+  * Allow editing tag name from search tags.
+  * Fix a crash in tags removal.
+
+-------------------------------------------------------------------
 Fri Feb  2 10:27:50 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.14.12
