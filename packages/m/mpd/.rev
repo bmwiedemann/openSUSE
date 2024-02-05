@@ -749,4 +749,12 @@
   cause mpd to pull in ffmpeg-4 on installation.</comment>
     <requestid>1135538</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>df575c91cb467f68cd5cbee704e4fd1c</srcmd5>
+    <version>0.23.15</version>
+    <time>1707166857</time>
+    <user>anag+factory</user>
+    <comment>- Provided user(mpd).</comment>
+    <requestid>1144031</requestid>
+  </revision>
 </revisionlist>
