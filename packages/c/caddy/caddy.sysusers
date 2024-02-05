@@ -1,2 +1,3 @@
-# Type Name ID GECOS [HOME]
-u caddy - "Caddy web server" /var/lib/caddy
+#Type Name  ID   GECOS               Home directory  Shell
+u     caddy -    "Caddy web server"  /var/lib/caddy  -
+g     caddy -    -                   -               -
