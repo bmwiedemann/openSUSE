@@ -2283,6 +2283,7 @@ BuildFlags: onlybuild:libverto:libverto-libev
 BuildFlags: onlybuild:libvisual
 BuildFlags: onlybuild:libvoikko
 BuildFlags: onlybuild:libvorbis
+BuildFlags: onlybuild:libvpl
 BuildFlags: onlybuild:libvpx
 BuildFlags: onlybuild:libwacom
 BuildFlags: onlybuild:libwebp
@@ -2741,7 +2742,6 @@ BuildFlags: onlybuild:psutils
 BuildFlags: onlybuild:pthread-stubs
 BuildFlags: onlybuild:publicsuffix
 BuildFlags: onlybuild:pulseaudio
-BuildFlags: onlybuild:python
 BuildFlags: onlybuild:python-Automat
 BuildFlags: onlybuild:python-Babel
 BuildFlags: onlybuild:python-Cython
