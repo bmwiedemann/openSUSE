@@ -2,6 +2,7 @@
 # spec file for package ueberzugpp
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +19,22 @@
 
 %define short_name ueberzug
 Name:           ueberzugpp
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 Summary:        Utility to render images in terminals
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/jstkdng/%{name}
 Source:         https://github.com/jstkdng/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  cmake
-BuildRequires:  cmake(Microsoft.GSL)
-BuildRequires:  cmake(spdlog)
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  make
 BuildRequires:  ninja
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(Microsoft.GSL)
+BuildRequires:  cmake(spdlog)
 BuildRequires:  pkgconfig(CLI11)
 BuildRequires:  pkgconfig(botan-2)
 BuildRequires:  pkgconfig(chafa)
@@ -68,7 +70,7 @@ Advantages over w3mimgdisplay and ueberzug:
 %autosetup
 
 %build
-%cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_SKIP_RPATH=YES -DCMAKE_BUILD_TYPE=release -DENABLE_WLROOTS=ON
+%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_SKIP_RPATH=YES -DCMAKE_BUILD_TYPE=release -DENABLE_WLROOTS=ON
 %cmake_build
 
 %install
@@ -85,4 +87,3 @@ ln -s %{_mandir}/man1/ueberzugpp.1 %{buildroot}%{_mandir}/man1/ueberzug.1
 %{_mandir}/man1/%{short_name}pp.1%{?ext_man}
 
 %changelog
-
