@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Feb  5 10:52:27 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- update to 13.13:
+   * Add `debhelper-documentation` `debputy` plugin. This provides
+     `debputy` with some files and file patterns for `debputy`'s
+     new `debputy tool-support annotate-debian-directory`.
+   * Revert "Dh_Lib.pm: Fix warning from `cp -n`"
+     Thanks to Sven Joachim <svenjoac@gmx.de> (Closes: #1061610)
+
+-------------------------------------------------------------------
+Mon Feb  5 10:49:06 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- update to 13.12:
+   * Add support for an 'X-Time64-Compat' field in debian/control to allow
+     overriding of the auto-generated Provides: as necessary.
+     Closes: #1059941.
+   * dh_assistant: Exit with code 2 when unknown hook targets are found
+   * dh_assistant: Add the following new subcommands:
+     - `supports COMMAND` can be used to programmically check whether
+       dh_assistant knows about `COMMAND`. It is a lot better than having
+       to check versions or parse `--help` output.
+     - `list-commands` can be used to determine all "debhelper commands"
+        that will run from a source package (assuming no overrides and
+        no add-on adds a non-standard sequence). This command has a
+        text and a JSON output.
+      - `list-guessed-dh-config-files` can be used to list all
+        debhelper config and their related commands. The result
+        involves a lot of guess work and will never be 100% reliable,
+        which explains the `guessed` part of the command. The output
+        is always JSON.
+      - Add `restore-file-on-clean` with all its caveats. Use it with
+        care for the few cases where it is useful.  (Closes: #1051184)
+   * dh_assistant: Always parse Build-Depends for sequences. This
+     would have prevented `detect-unknown-hook-targets` from reporting
+     issues about hook targets related to add-ons if they were loaded
+     via `Build-Depends`.
+   * dh_assistant: `detect-unknown-hook-targets` now continues when
+     add-ons loading fails. It will still exit with status 2 by
+     default when this occurs as if it found an issue.
+   * cmake.pm: Remove compat guard for `-DBUILD_TESTING:BOOL=off`
+     on `nocheck`
+   * Dh_Lib.pm: Fix warning from `cp -n`
+   * qmake6.pm: Add cross-compiling support (Closes: #1059209)
+   * Add <pkg.debhelper.nonls> build profile (Closes: #1032816)
+
+-------------------------------------------------------------------
 Fri Jan 26 11:53:37 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - update to 13.11.10:
