@@ -397,4 +397,20 @@
     <comment></comment>
     <requestid>1142230</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1675b683e7bf753d2ffeffd8c0a21df0</srcmd5>
+    <version>1.3.5</version>
+    <time>1707166958</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.5 (jsc#SLE-23476):
+  - Additional unique index correction
+  - Remove timestamp from checkpoint
+  - Drop conditional when verifying entry checkpoint
+  - Fix panic for DSSE canonicalization
+  - Change Redis value for locking mechanism
+  - give log timestamps nanosecond precision
+  - output trace in slog and override correlation header name
+- bumped embedded golang.org/x/crypto/ssh to fix the Terrapin attack CVE-2023-48795 (bsc#1218207) (forwarded request 1144325 from msmeissn)</comment>
+    <requestid>1144326</requestid>
+  </revision>
 </revisionlist>
