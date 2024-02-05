@@ -745,4 +745,32 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1135782</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>911a654d41fdc0317ca6e6642ec7afa0</srcmd5>
+    <version>6.0.39</version>
+    <time>1706047013</time>
+    <user>anag+factory</user>
+    <comment>- Switch to wheel and %{?sle15_python_module_pythons}
+  Updated dependencies
+</comment>
+    <requestid>1140893</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>a44d0040da938315bcb01835c0a8a937</srcmd5>
+    <version>6.0.41</version>
+    <time>1707070188</time>
+    <user>anag+factory</user>
+    <comment>- Version 6.0.41 - Bugfix Release
+  * added provides for user and group
+</comment>
+    <requestid>1143984</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>9925a4da899821534ab70629279733ae</srcmd5>
+    <version>6.0.41</version>
+    <time>1707166918</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144210</requestid>
+  </revision>
 </revisionlist>

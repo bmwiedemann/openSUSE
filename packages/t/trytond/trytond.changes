@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb  4 21:49:34 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- Requires: python-Levenshtein adjusted
+
+-------------------------------------------------------------------
+Sat Feb  3 19:07:31 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- Version 6.0.41 - Bugfix Release
+  * added provides for user and group
+
+-------------------------------------------------------------------
+Sat Jan 13 11:50:59 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- Switch to wheel and %{?sle15_python_module_pythons}
+  Updated dependencies
+
+-------------------------------------------------------------------
 Sat Dec 23 17:52:24 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - Version 6.0.39 - Bugfix Release
