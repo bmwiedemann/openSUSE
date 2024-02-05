@@ -62,6 +62,7 @@ BuildRequires:  %{mypython}-pip
 BuildRequires:  %{mypython}-wheel
 
 Requires:       %{mypython}-Genshi
+Requires:       %{mypython}-Levenshtein
 Requires:       %{mypython}-Pillow
 Requires:       %{mypython}-Werkzeug
 Requires:       %{mypython}-bcrypt
@@ -80,7 +81,6 @@ Requires:       %{mypython}-wrapt
 Requires:       graphviz
 Requires:       html2text
 Requires:       libreoffice-pyuno
-Requires:       python3-Levenshtein
 Requires:       unoconv
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
