@@ -1,7 +1,7 @@
 #
 # spec file for package lite-xl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lite-xl
-Version:        2.1.2+git20231229.b68efcd
+Version:        2.1.3+git20240129.3f31c27
 Release:        0
 Summary:        A lightweight text editor written in Lua
 Group:          Productivity/Text/Editors
@@ -66,9 +66,14 @@ rm -rfv %{buildroot}%{_datadir}/doc/%{name}
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %dir %{_datadir}/%{name}
 %{_bindir}/%{name}
-%{_datadir}/applications/org.lite_xl.lite_xl.desktop
+### Seems to bounce between these depending on release cycle - 20240122, smb.
+#%%{_datadir}/applications/org.lite_xl.lite_xl.desktop
+%{_datadir}/applications/com.lite_xl.LiteXL.desktop
+#####
 %{_datadir}/icons/hicolor/scalable/apps/lite-xl.svg
 %{_datadir}/%{name}/*
-%{_datadir}/metainfo/org.lite_xl.lite_xl.appdata.xml
-
+### Seems to bounce between these depending on release cycle - 20240122, smb.
+#%%{_datadir}/metainfo/org.lite_xl.lite_xl.appdata.xml
+%{_datadir}/metainfo/com.lite_xl.LiteXL.appdata.xml
+######
 %changelog
