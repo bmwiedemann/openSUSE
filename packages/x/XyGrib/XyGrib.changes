@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  5 10:17:59 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- proj8.diff removed (Leap 15.4 is deprecated)
+  switch to %autosetup for rpm 4.19 compatibility
+
+-------------------------------------------------------------------
 Thu Nov 24 11:57:02 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - proj version 9 breaks TW build
