@@ -17,7 +17,7 @@
 
 
 Name:           intel-opencl
-Version:        23.35.27191.9
+Version:        23.48.27912.11
 Release:        1%{?dist}
 Summary:        Intel Graphics Compute Runtime for OpenCL
 License:        MIT
