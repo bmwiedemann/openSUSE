@@ -1,7 +1,7 @@
 #
 # spec file for package c-toxcore
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,11 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://tox.chat/
 Source0:        https://github.com/TokTok/c-toxcore/archive/v%{version}.tar.gz#./%{name}-%{version}.tar.gz
-Source1:        %{name}.tmpfiles.d
+Source1:        %{name}-user.conf
+Source2:        %{name}.tmpfiles.d
 # Dont't find right key at this time. :(
-#Source2:        https://github.com/TokTok/c-toxcore/releases/download/v%%{version}/%%{name}-%%{version}.tar.gz.asc
-Source3:        %{name}.keyring
+#Source3:        https://github.com/TokTok/c-toxcore/releases/download/v%%{version}/%%{name}-%%{version}.tar.gz.asc
+Source4:        %{name}.keyring
 Source10:       https://github.com/camgunz/cmp/archive/v20/cmp-v20.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -39,9 +40,11 @@ BuildRequires:  libsodium-devel
 BuildRequires:  libtool
 BuildRequires:  libvpx-devel
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(systemd)
 Requires(pre):  shadow
 Provides:       bundled(cmp) = 20
+%sysusers_requires
 %{?systemd_requires}
 
 %description
@@ -91,6 +94,8 @@ sed -ri 's:Group=tox-bootstrapd:Group=toxcmd:g' other/bootstrap_daemon/tox-boots
 sed -ri 's:%{_localstatedir}/lib/tox-bootstrapd/keys:%{_sysconfdir}/tox/bootstrapd/keys:g' other/bootstrap_daemon/tox-bootstrapd.conf
 
 %build
+# system user config
+%sysusers_generate_pre %{SOURCE1} %{name} %{name}-user.conf
 # SHARED_LIBS=ON produces a stray libmisc_tools.so which is not part of `make install`.
 # SHARED_LIBS=OFF still produces libtoxcore.so.2, so... *shrug*
 #
@@ -108,9 +113,12 @@ sed -ri 's:%{_localstatedir}/lib/tox-bootstrapd/keys:%{_sysconfdir}/tox/bootstra
 %install
 %cmake_install
 
+# system user config
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/%{name}-user.conf
+
 # Install dir /var/run/graylog2-server
 install -d -m 0755 %{buildroot}%{_prefix}/lib/tmpfiles.d/
-install -m 0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/tmpfiles.d/tox-bootstrapd.conf
+install -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/tmpfiles.d/tox-bootstrapd.conf
 
 # Install dir /var/lib/tox-bootstrapd
 install -d -m 0755 %{buildroot}%{_localstatedir}/lib/tox-bootstrapd/
@@ -126,17 +134,8 @@ mkdir -p %{buildroot}/%{_sbindir}
 install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.service %{buildroot}%{_unitdir}/tox-bootstrapd.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rctox-bootstrapd
 
-%pre daemon
+%pre daemon -f %{name}.pre
 %service_add_pre tox-bootstrapd.service
-# create tox-bootstrapd group
-if ! getent group toxcmd >/dev/null; then
-        groupadd -r toxcmd
-fi
-# create tox-bootstrapd user
-if ! getent passwd tox >/dev/null; then
-        useradd -r -g toxcmd -d %{_localstatedir}/lib/tox-bootstrapd \
-            -s /sbin/nologin -c "Tox Bootstrap" tox
-fi
 
 %post daemon
 %service_add_post tox-bootstrapd.service
@@ -165,6 +164,7 @@ systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/tox-bootstrapd.conf
 %files daemon
 %dir %{_sysconfdir}/tox
 %dir %{_sysconfdir}/tox/bootstrapd
+%{_sysusersdir}/%{name}-user.conf
 %config(noreplace) %{_sysconfdir}/tox/bootstrapd/tox-bootstrapd.conf
 %{_datadir}/bash-completion/completions/tox-bootstrapd
 %{_bindir}/DHT_bootstrap
