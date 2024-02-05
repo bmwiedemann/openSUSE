@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1137013</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8db114d404785dd4bd259187614a6c3b</srcmd5>
+    <version>5.0</version>
+    <time>1707166849</time>
+    <user>anag+factory</user>
+    <comment>To be coordinated with https://build.opensuse.org/request/show/1143350</comment>
+    <requestid>1143351</requestid>
+  </revision>
 </revisionlist>

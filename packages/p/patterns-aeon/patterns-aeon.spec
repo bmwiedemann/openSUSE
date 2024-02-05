@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-aeon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -368,6 +368,10 @@ Requires:       xdg-desktop-portal-gnome
 # ensure laptop power support is there
 Requires:       (power-profiles-daemon or tlp)
 Suggests:       power-profiles-daemon
+
+# add steam-devices
+Requires:       steam-devices
+
 #
 # Low-level parts that we need
 #

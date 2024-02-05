@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 30 19:15:44 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added "Requires: steam-devices"
+  * One of the most common user interactions with t-u, installing
+  it by default just makes sense, as it takes up close to zero disk
+  space and reduces the need for users to touch t-u
+
+-------------------------------------------------------------------
 Fri Dec 29 22:09:31 UTC 2023 - dopice <0xdopice@protonmail.com>
 
 - Added TPM2.0 packages - Bug 1211835
