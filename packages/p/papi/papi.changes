@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 23 18:52:36 UTC 2024 - Tony Jones <tonyj@suse.com>
+
+- Update to version 7.1 (jsc#PED-7679)
+
+  Major changes:
+  * Support for Intel Sapphire Rapids native and preset events
+  * Support for AMD Zen4 native and preset events
+  * Support for event qualifiers in the ROCm component
+  * New 'template' component
+  * Integration into Spack package manager
+  * Integration into the Extreme-Scale Scientific Software Stack (E4S)
+  * Refactored cuda component with multi-thread and multi-gpu support
+  * Support for ARM Neoverse V1 and V2
+
+  Update libpfm dependency to v4.13
+
+-------------------------------------------------------------------
 Tue Jan 17 18:19:14 UTC 2023 - Tony Jones <tonyj@suse.com>
 
 - Update to version 7.0 (jsc#PED-3032)

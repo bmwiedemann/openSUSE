@@ -295,4 +295,31 @@
     <comment></comment>
     <requestid>1059827</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ab28194eaffd024971efc2f20b73bf8d</srcmd5>
+    <version>7.1.0</version>
+    <time>1707166860</time>
+    <user>anag+factory</user>
+    <comment>Per Egbert:  &quot;Ok, it should build again once 
+https://build.opensuse.org/request/show/1143794
+is accepted. The fix is only required for Factory because the rpm package has been updated there last week. &quot;
+
+I see that 1143794 has been accepted so resubmitting PAPI update to Factory so that the parallel SP6 update can proceed.
+
+------
+
+- Update to version 7.1 (jsc#PED-7679)
+  Major changes:
+  * Support for Intel Sapphire Rapids native and preset events
+  * Support for AMD Zen4 native and preset events
+  * Support for event qualifiers in the ROCm component
+  * New 'template' component
+  * Integration into Spack package manager
+  * Integration into the Extreme-Scale Scientific Software Stack (E4S)
+  * Refactored cuda component with multi-thread and multi-gpu support
+  * Support for ARM Neoverse V1 and V2
+  Update libpfm dependency to v4.13
+</comment>
+    <requestid>1144039</requestid>
+  </revision>
 </revisionlist>
