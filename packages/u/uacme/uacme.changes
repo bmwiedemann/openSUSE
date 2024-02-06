@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  2 08:05:04 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.5
+  * fix ualpn exit code in client mode
+  * fix build with autoconf version 2.71
+  * nsupdate.sh overhaul and DNAME redirection support
+
+-------------------------------------------------------------------
 Tue Jun 27 15:19:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.4:

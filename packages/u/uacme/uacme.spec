@@ -1,8 +1,8 @@
 #
 # spec file for package uacme
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           uacme
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        A minimal ACMEv2 client
 License:        GPL-3.0-or-later
