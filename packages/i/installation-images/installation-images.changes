@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Feb 5 14:08:10 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#689
+- change HMC console name from ttyS1 to ttysclp0 (bsc#1203405)
+- 17.113
+
+--------------------------------------------------------------------
 Wed Jan 24 11:00:12 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#686
