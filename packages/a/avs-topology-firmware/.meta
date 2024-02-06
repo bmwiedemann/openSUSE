@@ -1,0 +1,5 @@
+<package name="avs-topology-firmware" project="openSUSE:Factory">
+  <title>Firmware files for ASoC AVS drivers</title>
+  <description></description>
+  <devel project="multimedia:libs" package="avs-topology-firmware"/>
+</package>
