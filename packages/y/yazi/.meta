@@ -1,0 +1,6 @@
+<package name="yazi" project="openSUSE:Factory">
+  <title></title>
+  <description>Blazing fast terminal file manager written in Rust, based on async I/O.</description>
+  <devel project="utilities" package="yazi"/>
+  <url>https://github.com/sxyazi/yazi</url>
+</package>
