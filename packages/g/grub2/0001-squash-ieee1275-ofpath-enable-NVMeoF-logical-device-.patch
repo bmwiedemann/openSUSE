@@ -1,0 +1,60 @@
+From 72a582b1c3954f9b917a4d687c95fc94faf551c6 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 24 Jan 2024 18:03:51 +0800
+Subject: [PATCH] squash! ieee1275/ofpath: enable NVMeoF logical device
+ translation
+
+Fixes build error on gcc-14:
+
+[   73s] In file included from ../grub-core/osdep/ofpath.c:2:
+[   73s] ../grub-core/osdep/linux/ofpath.c: In function 'of_find_fc_host':
+[   73s] ../grub-core/osdep/linux/ofpath.c:427:22: error: allocation of insufficient size '8' for type 'struct ofpath_files_list_root' with size '16' [-Werror=alloc-size]
+[   73s]   427 |   portnames_file_list=malloc(sizeof(portnames_file_list));
+[   73s]       |                      ^
+[   73s] ../grub-core/osdep/linux/ofpath.c: In function 'of_path_of_nvme':
+[   73s] ../grub-core/osdep/linux/ofpath.c:589:21: error: allocation of insufficient size '8' for type 'struct ofpath_nvmeof_info' with size '32' [-Werror=alloc-size]
+[   73s]   589 |         nvmeof_info = malloc(sizeof(nvmeof_info));
+[   73s]       |                     ^
+[   73s] ../grub-core/osdep/linux/ofpath.c:618:21: error: allocation of insufficient size '8' for type 'struct ofpath_nvmeof_info' with size '32' [-Werror=alloc-size]
+[   73s]   618 |         nvmeof_info = malloc(sizeof(nvmeof_info));
+[   73s]       |                     ^
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/osdep/linux/ofpath.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/grub-core/osdep/linux/ofpath.c b/grub-core/osdep/linux/ofpath.c
+index 7129099db..55ed7ddf2 100644
+--- a/grub-core/osdep/linux/ofpath.c
++++ b/grub-core/osdep/linux/ofpath.c
+@@ -424,7 +424,7 @@ of_find_fc_host(char* host_wwpn){
+ 
+   struct ofpath_files_list_root* portnames_file_list;
+ 
+-  portnames_file_list=malloc(sizeof(portnames_file_list));
++  portnames_file_list=malloc(sizeof(*portnames_file_list));
+   portnames_file_list->items=0;
+   portnames_file_list->first=NULL;
+ 
+@@ -586,7 +586,7 @@ of_path_of_nvme(const char *sys_devname __attribute__((unused)),
+       /* If is a NVMeoF */
+       if(strstr(sysfs_path,"nvme-fabrics")){
+         struct ofpath_nvmeof_info* nvmeof_info;
+-        nvmeof_info = malloc(sizeof(nvmeof_info));
++        nvmeof_info = malloc(sizeof(*nvmeof_info));
+ 
+         of_path_get_nvmeof_adapter_info(sysfs_path, nvmeof_info);
+ 
+@@ -615,7 +615,7 @@ of_path_of_nvme(const char *sys_devname __attribute__((unused)),
+       sysfs_path = nvme_get_syspath (device);
+       if(strstr(sysfs_path,"nvme-fabrics")){
+         struct ofpath_nvmeof_info* nvmeof_info;
+-        nvmeof_info = malloc(sizeof(nvmeof_info));
++        nvmeof_info = malloc(sizeof(*nvmeof_info));
+ 
+         of_path_get_nvmeof_adapter_info(sysfs_path, nvmeof_info);
+       
+-- 
+2.43.0
+
