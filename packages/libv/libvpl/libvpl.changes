@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  5 10:46:27 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Re-enable build on aarch64
+
+-------------------------------------------------------------------
 Sat Jan 20 10:02:00 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_buildfix-i586.patch
@@ -20,6 +25,7 @@ Fri Jan 19 16:06:29 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
     * vpl-infer example will fail to load model if built with CMake
       version higher than 3.25.3 on Windows
 - Add libva build dep
+
 -------------------------------------------------------------------
 Mon Dec  4 12:25:24 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
