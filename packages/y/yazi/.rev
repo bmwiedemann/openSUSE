@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c434d60d0c3a3e5db1abd0163a784ab</srcmd5>
+    <version>0.2.2</version>
+    <time>1707233643</time>
+    <user>anag+factory</user>
+    <comment>Yazi (means &quot;duck&quot;) is a terminal file manager written in Rust, based on non-blocking async I/O. It aims to provide an efficient, user-friendly, and customizable file management experience.
+
+Changes from last request:
+- Replace vendored lua with lua54-devel
+- yazi-bash-completion now supplements again bash-completion
+- Remove tar.zst sources, as obscpio is also available and should be preferred than zst</comment>
+    <requestid>1143525</requestid>
+  </revision>
+</revisionlist>
