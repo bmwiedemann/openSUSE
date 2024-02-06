@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 30 11:23:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to recent git checkout that will eventually become 1.6.5
+  * change dependency from pkgconfig(webkit2gtk-4.0) to
+    pkgconfig(webkit2gtk-4.1)
+
+-------------------------------------------------------------------
 Tue Aug  8 13:16:47 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.4:

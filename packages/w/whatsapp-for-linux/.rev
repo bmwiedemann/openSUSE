@@ -168,4 +168,12 @@
   * App so slow on fedora linux #319</comment>
     <requestid>1102903</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3edb29b300392f9cd9afc0ceffe31842</srcmd5>
+    <version>1.6.5~20240123.aada9ef</version>
+    <time>1707233752</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1144556</requestid>
+  </revision>
 </revisionlist>

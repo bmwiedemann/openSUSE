@@ -1,7 +1,7 @@
 #
 # spec file for package whatsapp-for-linux
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           whatsapp-for-linux
-Version:        1.6.4
+Version:        1.6.5~20240123.aada9ef
 Release:        0
 Summary:        WhatsApp for Linux
 License:        GPL-3.0-only
@@ -30,7 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(libcanberra)
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.34
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 BuildRequires:  gcc11-c++
 %else
@@ -69,6 +69,5 @@ export CXX="g++-11"
 %license LICENSE
 
 %files lang -f %{name}.lang
-%{_datadir}/locale/??/LC_MESSAGES/%{name}.mo
 
 %changelog
