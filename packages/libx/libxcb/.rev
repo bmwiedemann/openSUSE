@@ -359,4 +359,12 @@
 - added libxcb-dbe0 subpackage for libxcb-dbe.so.0*</comment>
     <requestid>1106070</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>aee046783adb4c92cf3bc97a9699b02d</srcmd5>
+    <version>1.16</version>
+    <time>1707233578</time>
+    <user>anag+factory</user>
+    <comment>- devel package: added missing Requires to libxcb-dbe0 (boo#1219572)</comment>
+    <requestid>1144288</requestid>
+  </revision>
 </revisionlist>

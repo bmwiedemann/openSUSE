@@ -1,7 +1,7 @@
 #
 # spec file for package libxcb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -351,6 +351,7 @@ Summary:        Development files for the X11 protocol C library
 Group:          Development/Libraries/C and C++
 Requires:       libxcb-composite0 = %{version}
 Requires:       libxcb-damage0 = %{version}
+Requires:       libxcb-dbe0 = %{version}
 Requires:       libxcb-dpms0 = %{version}
 Requires:       libxcb-dri2-0 = %{version}
 Requires:       libxcb-dri3-0 = %{version}
