@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Feb  5 17:07:43 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.0
+  * MIGRATED TO QT6
+  Added features:
+  * Wayland compatibility
+  * Get album art directly from MPD, also remotely.
+  * Large album comments are now mouse-scrollable.
+  * Auto-reconnecting can be turned off.
+  * MPD's command timeout can be set.
+  * IPv6 for remote connections.
+  * Parameter -e for more detailed cout.
+  * Option 'Bold' and 'Italic' for various labels.
+  * Icons and colors suited for a dark theme.
+  * Option to apply colors to the progress bar.
+  * Double-click on albumart opens it in image viewer.
+  * Set default album/stream art from local file.
+  * "Titles" mode for the library.
+  * "Album" column to titles in library.
+  * Connect tab shows if MPD is a user/system service.
+  Fixed bugs:
+  * A failing connection could freeze the program.
+  * Searched titles were sorted by artist.
+  * Connection crashed on 'mpd --kill' by the user.
+  * Errors rendering artist-title when scrolling.
+  * Artist-title scroll did not speed up on mouse-over.
+  * Vertical alingment of scrolling artist-title.
+  * Changing font size did not (de)activate scrolling.
+  * Scrolling font waaay too big on Fedora.
+  * Inconsistent handling of missing tag info.
+  * Streams starting with https were refused.
+  * Failing start/quit commands (like 'mpd --kill').
+  * Window icon was always a generic 'W' in Wayland.
+  * Systray's tooltip-text showed formatting code.
+  * Window did not open to foreground from system tray.
+  * Systray > Quit failed after close [x] from window.
+  * Remotely starting external tracks (2xclick) failed.
+  * Searching for local album art in the wrong order.
+  * Files 'open with' command was rather ramshackle.
+  * QtPainter error 'engine == 0' (error on cout).
+  * Stream timing-out triggered reconnecting to MPD.
+  * Media keys did not (all) work in the browser.
+  * Erractic auto-column-width in library and playlist.
+  * Palylist # column was too narrow for large numbers.
+  * MPD could be found running when it was not.
+  * Trying to connect locally when MPD is not running.
+  * Starting MPD without checking if it is installed.
+  * Not quitting MPD locally when connected remotely.
+  * Autodetect ignored ~/.config/mpd/mpd.conf.
+  * Context menus disappeared when not connected.
+  * Not checking if external apps are installed.
+  Other:
+  * Auto-detect now prioritizes 'bind-to-address'es.
+  * Auto-detect now runs only once, on startup.
+  * Removed taglib (MPD gets embedded album art now).
+  * Settings are now in ~/.config/quimup/quimup.conf.
+  * All bitmaps are svg (scalable vector graphics) now.
+  * Removes option to disable albumart..
+  * Several minor text and tooltip tweaks.
+  * Replaced obsolete email address in various places.
+  * Updated 'README' and 'FAQ.txt' files.
+  * Updated QtSingleApplication code from qt-solutions.
+- Dropped quimup.desktop
+- Added manpage
+
+-------------------------------------------------------------------
 Wed Dec 19 17:46:45 UTC 2018 - aloisio@gmx.com
 
 - Update to version 1.4.4
