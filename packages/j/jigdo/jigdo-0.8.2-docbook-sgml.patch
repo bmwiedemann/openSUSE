@@ -1,0 +1,61 @@
+Index: jigdo-0.8.2/doc/debian-jigdo-mini-howto.sgml
+===================================================================
+--- jigdo-0.8.2.orig/doc/debian-jigdo-mini-howto.sgml
++++ jigdo-0.8.2/doc/debian-jigdo-mini-howto.sgml
+@@ -206,8 +206,8 @@
+       were two ways of creating Debian CDs:</para>
+ 
+ 			<orderedlist>
+-			<listitem><para>Downloading the entire ISO</para>
+-			<listitem><para>Using the pseudo-image kit (PIK)</para>
++				<listitem><para>Downloading the entire ISO</para></listitem>
++				<listitem><para>Using the pseudo-image kit (PIK)</para></listitem>
+ 			</orderedlist>
+ 
+       <para>This document is about the newer and better way of obtaining Debian ISO images, using a
+@@ -1029,7 +1029,7 @@
+       image using "virtual drive" software.  <application><ulink
+       url="http://www.daemon-tools.cc">Daemon tools</ulink></application> and <application>Nero
+       Image Drive</application> are both very popular.  See also <ulink
+-      url="http://tinyurl.com/c39zr">http://tinyurl.com/c39zr</ulink> for more options.</para>
++      url="http://tinyurl.com/c39zr">http://tinyurl.com/c39zr</ulink> for more options.</para></listitem>
+ 
+ 
+       </itemizedlist>
+@@ -1219,13 +1219,13 @@
+ 
+       <para>You might find that under MS Windows, jigdo-lite will download some files but then fail
+       to read their contents, which will produce a "<literal>No such file or directory</literal>"
+-      error message.
++      error message.</para>
+ 
+       <para>It seems that this occurs if the length of the filenames that jigdo processes exceeds a
+       certain limit. The solution is to move the half-finished download up in the directory
+       hierarchy, closer to the top-level directory of the drive.</para>
+ 
+-
++    </sect2>
+ 
+     <sect2><title>On MS Windows, why won't my image grow larger than 2GB?</title>
+ 
+@@ -1312,6 +1312,7 @@
+         when a previous <application>jigdo-lite</application> run aborted.</para></listitem>
+ 
+       </itemizedlist>
++      </para>
+ 
+       <para>As Jens Seidel points out, there is another, rather crafty, source you should use for a
+       scanning source: your apt cache.  Apt uses the directory <filename
+Index: jigdo-0.8.2/doc/jigdo-file.sgml
+===================================================================
+--- jigdo-0.8.2.orig/doc/jigdo-file.sgml
++++ jigdo-0.8.2/doc/jigdo-file.sgml
+@@ -1580,7 +1580,7 @@ Any text, except that lines must not beg
+     <para>Steve McIntyre <email>93sam@debian.org</email> picked up
+     later development of jigdo after Richard had moved on - see
+     the <ulink url="https://git.einval.com/cgi-bin/gitweb.cgi?p=jigdo.git;a=summary">git
+-    repo work</ulink> or packages in Debian for more recent releases.
++    repo work</ulink> or packages in Debian for more recent releases.</para>
+ 
+   </refsect1>
+ </refentry>
