@@ -1,7 +1,7 @@
 #
 # spec file for package keepalived
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,6 +80,8 @@ BuildRequires:  pkgconfig(libsystemd)
 %else
 Requires(pre):  %insserv_prereq
 %endif
+Provides:       group(keepalived)
+Provides:       user(keepalived)
 
 %description
 This project provides facilities for load balancing and high-availability to
