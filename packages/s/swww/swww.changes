@@ -1,10 +1,22 @@
 -------------------------------------------------------------------
-Sun Aug 13 13:26:50 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Tue Jan 30 08:20:46 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.8.2:
+  * update daemon dependencies
+  * implement clear-cache command
+  * bump dependencies and fix versioning
+  * Update README.md - add final photo source
+  * Animated WebP Support + Memory Optimisations
+  * image_pad: fix capacity of Vec
+- Remove cargo_config. part of vendored tarball now.
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:50 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Replace obsoleted `disabled` option with `manual`
 
 -------------------------------------------------------------------
-Tue Jul 25 23:22:33 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Tue Jul 25 23:22:33 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.8.1:
   * fix sending images in quick succession
@@ -67,12 +79,12 @@ Tue Jul 25 23:22:33 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
   * impl beziers for simple
 
 -------------------------------------------------------------------
-Thu Jun  8 23:22:03 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Thu Jun  8 23:22:03 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update vendored dependencies. Resolves CVE and bsc#1212009.
 
 -------------------------------------------------------------------
-Sun May 07 20:36:24 UTC 2023 - socvirnyl.estela@gmail.com
+Sun May 07 20:36:24 UTC 2023 - uncomfy+openbuildservice@uncomfyhalomacro.pl
 
 - Update to version 0.7.3:
   * Log error instead of returning
@@ -97,28 +109,27 @@ Sun May  7 16:32:52 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 - Add cargo version requirement
 
 -------------------------------------------------------------------
-Sat Mar 18 01:33:30 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Sat Mar 18 01:33:30 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Fix specfile.
 - Fix installation of swww-daemon.
 
 -------------------------------------------------------------------
-Fri Mar 10 13:26:49 UTC 2023 - socvirnyl.estela@gmail.com
+Fri Mar 10 13:26:49 UTC 2023 - uncomfy+openbuildservice@uncomfyhalomacro.pl
 
 - Update to version 0.7.2:
-  * prepare 0.7.2 release
   * update dependencies
-  * man-pages (#84)
-  * Sync animations (#82)
+  * man-pages
+  * Sync animations
   * update changelog
   * ignore integration_tests by default
-  * cache the images to reload them on startup (#80)
+  * cache the images to reload them on startup
   * prepare 0.7.1 release
   * update dependencies
   * cargo clippy and style
   * update CHANGELOG.md
   * fix integration_tests calling incorrect daemon bin
-  * add ability to use screen cords instead of percentages in `--transition-pos` (#71)
+  * add ability to use screen cords instead of percentages in `--transition-pos`
   * typo: pipw -> pipe
   * fix reading image from stdin (don't cannonicalize)
   * document `--no_resize` and `--fill_color` args
@@ -126,7 +137,7 @@ Fri Mar 10 13:26:49 UTC 2023 - socvirnyl.estela@gmail.com
   * change the version in Cargo.toml
 
 -------------------------------------------------------------------
-Mon Jan 30 22:19:21 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Mon Jan 30 22:19:21 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.7.0
   * update changelog
@@ -139,7 +150,7 @@ Mon Jan 30 22:19:21 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
   * [client] use scaling when sending images
 
 -------------------------------------------------------------------
-Mon Jan 23 14:03:35 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Mon Jan 23 14:03:35 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.6.0+git18:
   * fix panic on gif with identical frames
@@ -155,7 +166,7 @@ Mon Oct 10 17:31:19 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 - Trim excess marketing from description
 
 -------------------------------------------------------------------
-Sun Oct 09 11:07:06 UTC 2022 - socvirnyl.estela@gmail.com
+Sun Oct 09 11:07:06 UTC 2022 - uncomfy+openbuildservice@uncomfyhalomacro.pl
 
 - Update to version 0.4.3+git14:
   * bump dependencies (clap went from 3.x to 4.x)
@@ -172,6 +183,6 @@ Sun Oct 09 11:07:06 UTC 2022 - socvirnyl.estela@gmail.com
 - Install shell completions for zsh, bash, and fish
 
 -------------------------------------------------------------------
-Sun Oct  9 06:37:58 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Sun Oct  9 06:37:58 UTC 2022 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Initial spec for swww version 0.4.3
