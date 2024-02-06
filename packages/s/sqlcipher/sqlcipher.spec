@@ -1,7 +1,7 @@
 #
 # spec file for package sqlcipher
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define         lib_version 3.42.0
-%define         lib_name libsqlcipher-3_42_0-0
+%define         lib_version 3.44.2
+%define         lib_name libsqlcipher-3_44_2-0
 Name:           sqlcipher
-Version:        4.5.5
+Version:        4.5.6
 Release:        0
 Summary:        SQLite database encryption
 License:        BSD-3-Clause
@@ -110,25 +110,25 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ldconfig_scriptlets -n %{lib_name}
 
 %files
-%license LICENSE
+%license LICENSE.md
 %doc README.md
 %{_bindir}/sqlcipher
 
 %files -n %{lib_name}
-%license LICENSE
+%license LICENSE.md
 %doc README.md
 %{_libdir}/libsqlcipher-%{lib_version}.so.0
 %{_libdir}/libsqlcipher-%{lib_version}.so.0.8.6
 
 %files -n tcl-%{name}
-%license LICENSE
+%license LICENSE.md
 %doc README.md
 %dir %{_libdir}/tcl/tcl8.?/sqlite3
 %{_libdir}/tcl/tcl8.?/sqlite3/libtclsqlite3.so
 %{_libdir}/tcl/tcl8.?/sqlite3/pkgIndex.tcl
 
 %files devel
-%license LICENSE
+%license LICENSE.md
 %doc README.md
 %{_libdir}/libsqlcipher.so
 %{_libdir}/pkgconfig/sqlcipher.pc
