@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  5 11:35:26 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.18
+  * Remove "All rights reserved" from Oracle copyright notices
+  * Try fopen(".../pci.ids", "re") on Solarish systems as well
+  * Remove autotools build
+  * gitlab-ci: use `meson setup`
+  * gitlab-ci: don't bother to configure meson for the version check
+  * gitlab-ci: remove unnecessary call to `meson configure`
+  * FreeBSD: Fallback to /usr/share/misc/pci_vendors
+  * FreeBSD: Remove sparc64 code
+  * Fix compilation warnings when building against hurd-amd64.
+
+-------------------------------------------------------------------
 Tue Oct 18 10:43:25 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.17
