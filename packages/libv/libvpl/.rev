@@ -173,4 +173,12 @@
 - Add libva build dep</comment>
     <requestid>1140080</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>fc7fcd891176d4f9d5aa2db27cee418d</srcmd5>
+    <version>2.10.1</version>
+    <time>1707233576</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144276</requestid>
+  </revision>
 </revisionlist>

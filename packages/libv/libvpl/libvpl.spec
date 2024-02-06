@@ -39,9 +39,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(wayland-client)
 %if 0%{?suse_version} > 1600
-ExclusiveArch:  x86_64 %ix86
+ExclusiveArch:  x86_64 %ix86 aarch64
 %else
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 %endif
 
 %description
