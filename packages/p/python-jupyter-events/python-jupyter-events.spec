@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-events
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Summary:        Jupyter Event System library
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/jupyter_events
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_events/jupyter_events-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE jupyter_events-py312-taskname.patch code@bnavigator.de -- we patched python-python-json-logger with gh#madzak/python-json-logger#183
+Patch0:         jupyter_events-py312-taskname.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
@@ -51,7 +53,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module rfc3339-validator}
