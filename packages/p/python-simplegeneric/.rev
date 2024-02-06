@@ -44,4 +44,14 @@
     <comment>- Remove superfluous devel dependency for noarch package</comment>
     <requestid>655915</requestid>
   </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>d98f7b3cf67892824243512a2d866c65</srcmd5>
+    <version>0.8.1</version>
+    <time>1707233693</time>
+    <user>anag+factory</user>
+    <comment>- Add missing BuildRequires on setuptools.
+- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1144436</requestid>
+  </revision>
 </revisionlist>
