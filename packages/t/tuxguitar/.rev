@@ -105,4 +105,12 @@
     <comment>add commons-compress to the classpath</comment>
     <requestid>1119345</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5740932f4a997b2ece2308aab9574461</srcmd5>
+    <version>1.6.1</version>
+    <time>1707233700</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144468</requestid>
+  </revision>
 </revisionlist>

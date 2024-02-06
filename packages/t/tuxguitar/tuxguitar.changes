@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  2 20:17:45 UTC 2024 - guiv42 <guiv42@tuta.io>
+
+- Updated to new upstream release 1.6.1
+- Simplified architecture-specific patches
+  * remove unused configurations: jfx, qt, debian
+- removed tuxguitar-viewer, deprecated upstream
+- deleted tuxguitar-CVE-2020-13940.patch, integrated upstream
+
+-------------------------------------------------------------------
 Sat Oct 21 08:59:55 UTC 2023 - guiv42 <guiv42@tuta.io>
 
 - Added path to commons-compress in 0013-startscript.patch

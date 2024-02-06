@@ -1,5 +1,5 @@
---- a/build-scripts/common-resources/common-linux/tuxguitar.sh
-+++ b/build-scripts/common-resources/common-linux/tuxguitar.sh
+--- a/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh
++++ b/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh
 @@ -1,20 +1,155 @@
  #!/bin/sh
 -##SCRIPT DIR
