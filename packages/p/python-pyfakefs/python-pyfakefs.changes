@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  4 12:23:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.5:
+  * Fixes a regression due to the changed behavior of the dynamic
+    patcher cleanup (see #939).
+  * The change is now by default only made if the `django` module
+    is loaded, and the behavior can
+  * be changed using the new argument `module_cleanup_mode`.
+
+-------------------------------------------------------------------
 Fri Jan 26 21:21:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.4:
