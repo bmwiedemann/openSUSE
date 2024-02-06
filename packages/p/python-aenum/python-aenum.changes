@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  6 08:42:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-python312-tests.patch to skip failing tests with python 3.12
+  gh#ethanfurman/aenum#36
+
+-------------------------------------------------------------------
 Thu Dec 14 09:12:26 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 3.1.15

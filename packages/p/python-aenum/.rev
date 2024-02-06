@@ -148,4 +148,13 @@ https://build.opensuse.org/request/show/612101</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1134618</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>83731b7acdd35b2d02a706d79fc41646</srcmd5>
+    <version>3.1.15</version>
+    <time>1707233723</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-python312-tests.patch to skip failing tests with python 3.12
+  gh#ethanfurman/aenum#36</comment>
+    <requestid>1144506</requestid>
+  </revision>
 </revisionlist>
