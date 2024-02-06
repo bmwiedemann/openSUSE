@@ -87,4 +87,12 @@
     <comment>- Run through spec-cleaner</comment>
     <requestid>746305</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>bc8e6b6d1e352ff48408246f4462f621</srcmd5>
+    <version>0.12.0</version>
+    <time>1707233561</time>
+    <user>anag+factory</user>
+    <comment>- enable %{?sle15_python_module_pythons}</comment>
+    <requestid>1144126</requestid>
+  </revision>
 </revisionlist>
