@@ -259,4 +259,13 @@ minor spec improvement (forwarded request 121844 from HighwayStar)</comment>
 - minor spec improvement</comment>
     <requestid>1141812</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>288934bf6be3aa03fdb1dbb551cce89a</srcmd5>
+    <version>2.1.5</version>
+    <time>1707233545</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.5:
+  * Fix striptags not collapsing spaces. :issue:`417`</comment>
+    <requestid>1143981</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %bcond_without test
 %{?sle15_python_module_pythons}
 Name:           python-MarkupSafe
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        Implements a XML/HTML/XHTML Markup safe string for Python
 License:        BSD-3-Clause
