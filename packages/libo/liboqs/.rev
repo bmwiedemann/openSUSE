@@ -115,4 +115,12 @@
     <comment></comment>
     <requestid>1141696</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8cdadc6f0acc4382e8acfb052501f41c</srcmd5>
+    <version>0.9.2</version>
+    <time>1707233588</time>
+    <user>anag+factory</user>
+    <comment>    (bsc#1219614)</comment>
+    <requestid>1144526</requestid>
+  </revision>
 </revisionlist>
