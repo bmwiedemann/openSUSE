@@ -1,7 +1,7 @@
 #
 # spec file for package tor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,8 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       logrotate
 Requires(post): %fillup_prereq
 Recommends:     torsocks
+Provides:       group(%{torgroup})
+Provides:       user(%{toruser})
 %systemd_ordering
 %if 0%{?suse_version} > 1500
 BuildRequires:  libscrypt-devel
