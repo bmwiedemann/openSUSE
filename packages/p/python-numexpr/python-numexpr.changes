@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  6 09:32:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * Support for PyPy (see PRs #467 and #740).  The full test suite
+    should pass now, at least for the 3.10 version.
+    providing help and additional fixes.
+  * Fixed more sanitizer issues (see PR #469).
+  * Modernized the test suite to avoid some warnings.
+
+-------------------------------------------------------------------
 Mon Dec 18 09:23:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.8:
