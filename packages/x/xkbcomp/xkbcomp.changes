@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  4 21:06:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.4.7
+  * This release mainly focuses on code cleanup and improving
+    maintainability and making static analysis work better on this
+    code base. It also fixes a bug that could cause build failures
+    with gcc when the -ftracer option was used.
+
+-------------------------------------------------------------------
 Sun Dec 18 12:55:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.6:
