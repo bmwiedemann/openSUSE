@@ -84,7 +84,7 @@ rm -rf external
 	--disable-music-midi-fluidsynth-shared \
 	--disable-music-ogg-shared \
 	--disable-music-flac-shared \
-	--enable-music-mp3-mpg123-shared \
+	--disable-music-mp3-mpg123-shared \
 	--disable-static
 %make_build
 
