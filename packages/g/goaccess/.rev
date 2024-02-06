@@ -811,4 +811,18 @@
   * Updated the list of browsers/bots.</comment>
     <requestid>1142893</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>61d0e6f0e6e015da69f57272af283518</srcmd5>
+    <version>1.9.1</version>
+    <time>1707233699</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.9.1:
+  * Added support for macOS to the OS detection.
+  * Fixed C99 mode issue with initial declarations [CentOS7].
+  * Fixed minor typographical, orthographic, and grammatical errors
+	  in the German translation.
+  * Fixed a regression issue wherein parsing would halt at the first
+	  empty log file.</comment>
+    <requestid>1144461</requestid>
+  </revision>
 </revisionlist>

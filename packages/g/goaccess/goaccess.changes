@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  6 07:18:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.1:
+  * Added support for macOS to the OS detection.
+  * Fixed C99 mode issue with initial declarations [CentOS7].
+  * Fixed minor typographical, orthographic, and grammatical errors
+	  in the German translation.
+  * Fixed a regression issue wherein parsing would halt at the first
+	  empty log file.
+
+-------------------------------------------------------------------
 Wed Jan 31 04:55:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Updaet to 1.9:
