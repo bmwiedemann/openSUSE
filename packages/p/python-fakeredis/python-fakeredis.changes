@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  4 10:08:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.21.0:
+  * Implement all TOP-K commands (`TOPK.INFO`, `TOPK.LIST`,
+    `TOPK.RESERVE`,
+  * `TOPK.ADD`, `TOPK.COUNT`, `TOPK.QUERY`, `TOPK.INCRBY`) #278
+  * Implement all cuckoo filter commands #276
+  * Implement all Count-Min Sketch commands #277
+  * Fix XREAD blocking bug #274 #275
+  * EXAT option does not work #279
+
+-------------------------------------------------------------------
 Mon Dec 18 09:28:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.20.1:
