@@ -1,7 +1,7 @@
 #
 # spec file for package libXext
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXext
 %define lname	libXext6
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        Common extensions to the X11 protocol
 License:        MIT
