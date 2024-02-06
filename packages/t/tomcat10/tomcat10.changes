@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  6 10:04:21 UTC 2024 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- rpm 4.19 requires dependencies on tomcat user and group (bsc#1219530)
+
+-------------------------------------------------------------------
 Wed Jan 17 15:59:25 UTC 2024 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Update to Tomcat 10.1.18
