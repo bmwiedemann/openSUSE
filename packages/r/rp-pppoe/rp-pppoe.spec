@@ -1,7 +1,7 @@
 #
 # spec file for package rp-pppoe
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,8 +65,6 @@ install -p %{SOURCE4} %{buildroot}%{_sbindir}
 install -p %{SOURCE5} %{buildroot}%{_sbindir}
 install -pm0644 %{SOURCE6} %{buildroot}%{_unitdir}/%{_name}.service
 install -pm0644 %{SOURCE7} %{buildroot}%{_unitdir}/%{_name}-server.service
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{_name}
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{_name}-server
 ln -s %{_name}-stop %{buildroot}%{_sbindir}/adsl-stop
 ln -s %{_name}-start %{buildroot}%{_sbindir}/adsl-start
 install -Dpm0644 %{buildroot}%{_sysconfdir}/ppp/plugins/README %{buildroot}%{_defaultdocdir}/%{name}/README.plugins
@@ -98,8 +96,6 @@ rm -r %{buildroot}%{_sysconfdir}/ppp/plugins \
 %{_sbindir}/%{_name}-*
 %{_mandir}/man?/*%{?ext_man}
 %{_sbindir}/adsl-st*
-%{_sbindir}/rc%{_name}
-%{_sbindir}/rc%{_name}-server
 %{_unitdir}/%{_name}.service
 %{_unitdir}/%{_name}-server.service
 

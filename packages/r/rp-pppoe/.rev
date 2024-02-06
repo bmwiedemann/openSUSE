@@ -262,4 +262,12 @@
   The major update to 4.0 dropped this.</comment>
     <requestid>1090461</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>1e8c12764b74b8d9e446a69425d07273</srcmd5>
+    <version>4.0</version>
+    <time>1707233549</time>
+    <user>anag+factory</user>
+    <comment>- Removed rcpppoe and rcpppoe-server rudiments.</comment>
+    <requestid>1144028</requestid>
+  </revision>
 </revisionlist>
