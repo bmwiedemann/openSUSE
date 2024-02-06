@@ -458,4 +458,17 @@
     <comment></comment>
     <requestid>1138146</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>cdac1aa6f52676a8b0fb7d47fac3d32b</srcmd5>
+    <version>2.27.0</version>
+    <time>1707233544</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.27.0:
+  * Add optional account association for Authorized User
+    credentials.
+  * Allow custom universe domain for gce creds
+  * Conditionally import requests only if no request was passed
+    by the caller.</comment>
+    <requestid>1143977</requestid>
+  </revision>
 </revisionlist>
