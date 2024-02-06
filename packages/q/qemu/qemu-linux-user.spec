@@ -1,7 +1,7 @@
 #
 # spec file for package qemu-linux-user
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            https://www.qemu.org/
 Summary:        CPU emulator for user space
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        8.1.3
+Version:        8.2.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -46,13 +46,19 @@ BuildRequires:  zlib-devel-static
 %if 0%{?qemu_user_space_build:1}
 #!BuildIgnore:  post-build-checks
 %endif
+BuildRequires:  discount
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja >= 1.7
-BuildRequires:  perl-Text-Markdown
+%if 0%{?suse_version} >= 1600
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-base >= 3.8
+%else
+BuildRequires:  python311-Sphinx
 BuildRequires:  python311-base
+%endif
 
 %description
 QEMU provides CPU emulation along with other related capabilities. This package
@@ -146,6 +152,11 @@ cd %blddir
 EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -Wno-error"
 
 %srcdir/configure \
+%if 0%{?suse_version} >= 1600
+	--python=%_bindir/python3 \
+%else
+	--python=%_bindir/python3.11 \
+%endif
 	--docdir=%_docdir \
 	--datadir=%_datadir \
 	--extra-cflags="${EXTRA_CFLAGS}" \
@@ -154,9 +165,9 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--libexecdir=%_libexecdir \
 	--localstatedir=%_localstatedir \
 	--prefix=%_prefix \
-	--python=%_bindir/python3.11 \
 	--sysconfdir=%_sysconfdir \
 	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
+	--disable-af-xdp \
 	--disable-alsa \
 	--disable-attr \
 	--disable-auth-pam \
@@ -198,7 +209,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-gtk \
 	--disable-guest-agent \
 	--disable-guest-agent-msi \
-	--disable-hax \
+	--disable-hv-balloon \
 	--disable-hvf \
 	--disable-iconv \
 	--disable-jack \
@@ -206,6 +217,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-l2tpv3 \
 	--disable-libdaxctl \
 	--disable-libiscsi \
+	--disable-libkeyutils \
 	--disable-libnfs \
 	--disable-libpmem \
 	--disable-libssh \
@@ -234,6 +246,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-parallels \
 	--disable-pie \
 	--disable-pipewire \
+	--disable-pixman \
 	--disable-plugins \
 	--disable-png \
 	--disable-pvrdma \
@@ -242,8 +255,10 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-qom-cast-debug \
 	--disable-rbd \
 	--disable-rdma \
+	--disable-relocatable \
 	--disable-replication \
 	--disable-rng-none \
+	--disable-rutabaga-gfx \
 	--disable-safe-stack \
 	--disable-sanitizers \
 	--disable-sdl \

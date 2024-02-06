@@ -1,7 +1,7 @@
 #
 # spec file for package qemu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,7 +82,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        8.1.3
+Version:        8.2.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -115,7 +115,9 @@ BuildRequires:  cross-ppc64-gcc%gcc_version
 %endif
 %ifarch x86_64
 BuildRequires:  gcc-32bit
+%if %{with_xen}
 BuildRequires:  xen-devel >= 4.2
+%endif
 BuildRequires:  pkgconfig(libpmem)
 %endif
 %ifnarch %arm s390x
@@ -127,6 +129,12 @@ BuildRequires:  pkgconfig(libndctl)
 %if 0%{?with_rbd}
 BuildRequires:  librbd-devel
 %endif
+%if 0%{with xdp}
+BuildRequires:  libxdp-devel
+%endif
+%if 0%{with canokey}
+BuildRequires:  canokey-qemu-devel
+%endif
 %if 0%{?with_uring}
 BuildRequires:  pkgconfig(liburing) >= %liburing_min_version
 %endif
@@ -136,7 +144,11 @@ BuildRequires:  pkgconfig(udev)
 BuildRequires:  Mesa-devel
 BuildRequires:  bison
 BuildRequires:  brlapi-devel
+BuildRequires:  discount
+BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  gcc-c++
+BuildRequires:  keyutils-devel
 BuildRequires:  libaio-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libbpf-devel
@@ -145,16 +157,11 @@ BuildRequires:  libcapstone-devel
 BuildRequires:  libfdt-devel >= 1.4.2
 BuildRequires:  libgcrypt-devel >= 1.8.0
 BuildRequires:  lzfse-devel
+BuildRequires:  meson
 BuildRequires:  multipath-tools-devel
+BuildRequires:  ninja >= 1.7
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-sphinx_rtd_theme
-BuildRequires:  rdma-core-devel
-BuildRequires:  snappy-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  usbredir-devel >= 0.6
-BuildRequires:  xfsprogs-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gbm)
@@ -191,13 +198,19 @@ BuildRequires:  pkgconfig(virglrenderer) >= 0.4.1
 BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(zlib)
-%{?systemd_ordering}
-BuildRequires:  discount
-BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  meson
-BuildRequires:  ninja >= 1.7
+%if 0%{?suse_version} >= 1600
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-base >= 3.8
+%else
+BuildRequires:  python311-Sphinx
 BuildRequires:  python311-base
+%endif
+BuildRequires:  rdma-core-devel
+BuildRequires:  snappy-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  usbredir-devel >= 0.6
+BuildRequires:  xfsprogs-devel
+%{?systemd_ordering}
 %if %{kvm_available}
 %ifarch %ix86 x86_64
 Requires:       qemu-x86
@@ -481,6 +494,11 @@ cd %blddir
 EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -Wno-error"
 
 %srcdir/configure \
+%if 0%{?suse_version} >= 1600
+	--python=%_bindir/python3 \
+%else
+	--python=%_bindir/python3.11 \
+%endif
 	--docdir=%_docdir \
 	--datadir=%_datadir \
 	--extra-cflags="${EXTRA_CFLAGS}" \
@@ -489,9 +507,9 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--libexecdir=%_libexecdir \
 	--localstatedir=%_localstatedir \
 	--prefix=%_prefix \
-        --python=%_bindir/python3.11 \
 	--sysconfdir=%_sysconfdir \
 	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
+	--disable-af-xdp \
 	--disable-alsa \
 	--disable-attr \
 	--disable-auth-pam \
@@ -533,7 +551,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-gtk \
 	--disable-guest-agent \
 	--disable-guest-agent-msi \
-	--disable-hax \
+	--disable-hv-balloon \
 	--disable-hvf \
 	--disable-iconv \
 	--disable-jack \
@@ -541,6 +559,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-l2tpv3 \
 	--disable-libdaxctl \
 	--disable-libiscsi \
+	--disable-libkeyutils \
 	--disable-libnfs \
 	--disable-libpmem \
 	--disable-libssh \
@@ -569,6 +588,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-parallels \
 	--disable-pie \
 	--disable-pipewire \
+	--disable-pixman \
 	--disable-plugins \
 	--disable-png \
 	--disable-pvrdma \
@@ -577,8 +597,10 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-qom-cast-debug \
 	--disable-rbd \
 	--disable-rdma \
+	--disable-relocatable \
 	--disable-replication \
 	--disable-rng-none \
+	--disable-rutabaga-gfx \
 	--disable-safe-stack \
 	--disable-sanitizers \
 	--disable-sdl \
@@ -623,25 +645,19 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-xkbcommon \
 	--disable-zstd \
 	--without-default-devices \
-%if %{with system_membarrier}
-	--enable-membarrier \
-%endif
-%if %{with malloc_trim}
-	--enable-malloc-trim \
-%endif
-%if "%{_lto_cflags}" != "%{nil}"
-	--enable-lto \
-%endif
 	--audio-drv-list=pipewire,pa,alsa,jack,oss \
-	--enable-auth-pam \
 %ifarch x86_64
 	--enable-avx2 \
 	--enable-libpmem \
+%if %{with_xen}
 	--enable-xen \
 	--enable-xen-pci-passthrough \
 %endif
-%ifnarch %arm s390x
-	--enable-numa \
+%if 0%{with xdp}
+	--enable-af-xdp \
+%endif
+%if 0%{with canokey}
+	--enable-canokey \
 %endif
 %if %{kvm_available}
 	--enable-kvm \
@@ -652,14 +668,31 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 %if 0%{?with_uring}
         --enable-linux-io-uring \
 %endif
+%if "%{_lto_cflags}" != "%{nil}"
+	--enable-lto \
+%endif
+%if %{with malloc_trim}
+	--enable-malloc-trim \
+%endif
+%if %{with system_membarrier}
+	--enable-membarrier \
+%endif
+%ifnarch %arm s390x
+	--enable-numa \
+%endif
+%endif
 %if 0%{?with_rbd}
 	--enable-rbd \
 %endif
+%if %{has_rutabaga_gfx}
+	--enable-rutabaga-gfx \
+%endif
 	--enable-alsa \
 	--enable-attr \
+	--enable-auth-pam \
 	--enable-bochs \
-	--enable-brlapi \
 	--enable-bpf \
+	--enable-brlapi \
 	--enable-bzip2 \
 	--enable-cap-ng \
 	--enable-capstone \
@@ -678,10 +711,12 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-gnutls \
 	--enable-gtk \
 	--enable-guest-agent \
+	--enable-hv-balloon \
 	--enable-iconv \
 	--enable-jack \
 	--enable-l2tpv3 \
 	--enable-libiscsi \
+	--enable-libkeyutils \
 	--enable-libnfs \
 	--enable-libssh \
 	--enable-libudev \
@@ -698,11 +733,13 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-parallels \
 	--enable-pie \
 	--enable-pipewire \
+	--enable-pixman \
 	--enable-png \
 	--enable-pvrdma \
 	--enable-qcow1 \
 	--enable-qed \
 	--enable-rdma \
+	--enable-relocatable \
 	--enable-replication \
 	--enable-seccomp \
 	--enable-selinux \
@@ -839,6 +876,8 @@ done
 
 %install
 cd %blddir
+export USER=abuild
+export HOSTNAME=OBS # is used in roms/SLOF/Makefile.gen (boo#1084909)
 
 %make_build install DESTDIR=%{buildroot}
 
@@ -990,18 +1029,38 @@ make -O V=1 VERBOSE=1 -j1 check-qtest
 # enable this at a later point
 #make -O V=1 VERBOSE=1 -j1 check-report.junit.xml
 
+%package spice
+Summary:        Modules and packages for SPICE
+Group:          System/Emulators/PC
+Requires:       qemu-audio-spice
+Requires:       qemu-chardev-spice
+Requires:       qemu-headless
+Requires:       qemu-hw-display-qxl
+Requires:       qemu-hw-usb-redirect
+Requires:       qemu-ui-spice-core
+
+%description spice
+%{generic_qemu_description}
+
+This meta-package brings in, as dependencies, the modules and packages
+necessary for having SPICE working for your VMs.
+
+%files spice
+
 %package headless
 Summary:        Minimum set of packages for having a functional QEMU
 Group:          System/Emulators/PC
 Requires:       qemu
+Requires:       qemu-block-curl
+Requires:       qemu-block-nfs
 Requires:       qemu-img
+%if %{has_virtiofsd}
+Requires:       virtiofsd
+%endif
 %if %{legacy_qemu_kvm}
 Requires:       qemu-kvm
 %endif
-Requires:       qemu-hw-usb-redirect
-# qemu-ui-spice-core will bring in qemu-audio-spice qemu-ui-opengl too
-Requires:       qemu-ui-spice-core
-Requires:       qemu-chardev-spice
+Recommends:     qemu-tools
 
 %description headless
 %{generic_qemu_description}
@@ -1601,8 +1660,7 @@ Requires(pre):  permissions
 Requires:       qemu-img
 Requires:       qemu-pr-helper
 Requires:       group(kvm)
-# Upstream virtiofsd does not even build on 32 bit systems...
-%ifnarch %ix86 %arm
+%if %{has_virtiofsd}
 Requires:       virtiofsd
 %endif
 Recommends:     multipath-tools
@@ -1843,7 +1901,7 @@ Summary:        OPAL firmware (aka skiboot), used in booting OpenPOWER systems
 Group:          System/Emulators/PC
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description skiboot
 Provides OPAL (OpenPower Abstraction Layer) firmware, aka skiboot, as
