@@ -1,4 +1,663 @@
 -------------------------------------------------------------------
+Mon Feb  5 15:17:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.15:
+  * Meshery UI
+    - Bump @babel/traverse from 7.23.6 to 7.23.9 in /ui @dependabot
+      (#10159)
+    - replace icon in header @sudhanshutech (#10168)
+    - Start sourcing icons from Sistent (1st phase) @sudhanshutech
+      (#10128)
+    - Bump @cypress/code-coverage from 3.12.17 to 3.12.19 in
+      /provider-ui @dependabot (#10160)
+    - Bump @emotion/react from 11.10.8 to 11.11.3 in /ui
+      @dependabot (#10155)
+    - Bump eslint-config-prettier from 9.0.0 to 9.1.0 in /ui
+      @dependabot (#10157)
+    - Bump @mui/material from 5.15.2 to 5.15.7 in /provider-ui
+      @dependabot (#10162)
+    - Bump eslint-config-next from 14.0.4 to 14.1.0 in /provider-ui
+      @dependabot (#10163)
+    - Bump @babel/eslint-parser from 7.22.15 to 7.23.10 in
+      /provider-ui @dependabot (#10161)
+    - Bump cypress from 13.6.2 to 13.6.4 in /provider-ui
+      @dependabot (#10164)
+  * - Maintenance
+    - Bump @babel/traverse from 7.23.6 to 7.23.9 in /ui @dependabot
+      (#10159)
+    - Bump @cypress/code-coverage from 3.12.17 to 3.12.19 in
+      /provider-ui @dependabot (#10160)
+    - Bump @emotion/react from 11.10.8 to 11.11.3 in /ui
+      @dependabot (#10155)
+    - Bump eslint-config-prettier from 9.0.0 to 9.1.0 in /ui
+      @dependabot (#10157)
+    - Bump @mui/material from 5.15.2 to 5.15.7 in /provider-ui
+      @dependabot (#10162)
+    - Bump eslint-config-next from 14.0.4 to 14.1.0 in /provider-ui
+      @dependabot (#10163)
+    - Bump @babel/eslint-parser from 7.22.15 to 7.23.10 in
+      /provider-ui @dependabot (#10161)
+    - Bump cypress from 13.6.2 to 13.6.4 in /provider-ui
+      @dependabot (#10164)
+  * - Documentation
+    - fix: remove direct link to the source code @RipulHandoo
+      (#10166)
+
+-------------------------------------------------------------------
+Mon Feb  5 15:01:01 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.14:
+  * General
+    - [chore] upgrade meshkit to v0.7.11 @MUzairS15 (#10144)
+    - [relationships] update selectors to represent correct path
+      @MUzairS15 (#10103)
+  * Meshery CLI
+    - [docs/mesheryctl] Fix annotations of exp command
+      @theBeginner86 (#10113)
+    - [docs] Fix mesheryctl exp @theBeginner86 (#10112)
+    - [mesheryctl] Registry command init @theBeginner86 (#10053)
+  * Meshery UI
+    - [RTK] Settings - Reset database @senali-d (#10135)
+    - [RTK] Environments and Workspaces @senali-d (#10131)
+    - [chore] upgrade relay-compiler to 16.2.0 @MUzairS15 (#10127)
+    - [Bug] Transfer list component @senali-d (#10124)
+    - fix text case style in modal @sudhanshutech (#10123)
+    - Alter icon @sudhanshutech (#10121)
+    - Descriptive info inside tooltip @sudhanshutech (#10120)
+    - Prevent lossing technology in infoModal @Yashsharma1911
+      (#10098)
+    - Fix casing for displayName in publish payload @Yashsharma1911
+      (#10095)
+  * Bug Fixes
+    - [Bug] Transfer list component @senali-d (#10124)
+    - [docs/mesheryctl] Fix annotations of exp command
+      @theBeginner86 (#10113)
+  * Maintenance
+    - Bump github.com/opencontainers/runc from 1.1.9 to 1.1.12
+      @dependabot (#10139)
+    - Update meshmap.yml @MUzairS15 (#10136)
+    - [CI] fixes E2E Test workflow. @singh1203 (#10114)
+    - Update integrations-updater.yml @theBeginner86 (#10097)
+    - Update integrations-updater.yml @theBeginner86 (#10096)
+  * Documentation
+    - [Docs] Components: remove source hyperlink @leecalcote
+      (#10140)
+    - Add: Managing Events with Notification Center abstract
+      @RipulHandoo (#10134)
+    - [Docs] Concepts: Logical policies @leecalcote (#10138)
+    - Redirects @vishalvivekm (#10132)
+    - readd-meshmodel-folder @vishalvivekm (#10129)
+    - add-redirect @vishalvivekm (#10115)
+    - [docs] Fix mesheryctl exp @theBeginner86 (#10112)
+    - docs fix quick start copy to clipboard button @ranjeetxsingh
+      (#10100)
+    - [Docs] Relocate Contrib-Community location in TOC @leecalcote
+      (#10093)
+    - Feature/add selectors documentation @RipulHandoo (#10035)
+    - [bug] Fix broken links for /concepts/ to /concept/logical/
+      @theBeginner86 (#10101)
+
+-------------------------------------------------------------------
+Sun Feb  4 20:16:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.13:
+  * General
+    - Add new entry for AYA Innovation Labs as adopter
+      @Yashsharma1911 (#10092)
+  * Meshery CLI
+    - [chore] run gofmt on server. @MUzairS15 (#10084)
+    - feat: responsive pagination for mesheryctl exp list cmd
+      @RipulHandoo (#10069)
+    - [bug/mesheryctl] Fix Import/Onboard @theBeginner86 (#10065)
+  * Meshery UI
+    - [UI] Update publish catalog request payload @Yashsharma1911
+      (#10091)
+    - [General] - Dark mode issue in transfer modal @senali-d
+      (#10088)
+    - add missing tooltip and refactor its styling @sudhanshutech
+      (#10086)
+    - Fix CASL typo from actions to action in performance page
+      @Yashsharma1911 (#10087)
+    - [Components] Improve default field descriptions @leecalcote
+      (#10067)
+  * Bug Fixes
+    - [bug/mesheryctl] Fix Import/Onboard @theBeginner86 (#10065)
+  * Maintenance
+    - Revert "Update error-codes-updater.yaml" @MUzairS15 (#10090)
+    - Update error-codes-updater.yaml @MUzairS15 (#10089)
+    - add conditional to use token only on master branch for
+      error-code-util @MUzairS15 (#10085)
+    - use GitHub PAT for checkoing out repo @MUzairS15 (#10083)
+    - Bump Screenshot Service version @theBeginner86 (#10081)
+    - Update generate_keys.yml @MUzairS15 (#10064)
+    - Update generate_keys.yml @MUzairS15 (#10063)
+    - [CI] Enhance Keys workflow with published CSV @leecalcote
+      (#10062)
+  * Documentation
+    - [Docs] Error Code Reference Layout @leecalcote (#10075)
+  * Security
+    - [CI] Enhance Keys workflow with published CSV @leecalcote
+      (#10062)
+
+-------------------------------------------------------------------
+Sun Feb  4 20:03:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.12:
+  * General
+    - added capabilities for edges @captain-Akshay (#10048)
+    - update meshsync crd @MUzairS15 (#10057)
+    - [Relationships] Add selectors sets in relationships.
+      @MUzairS15 (#9987)
+    - Update grafana_helper.go @eltociear (#9981)
+    - [Server] Fix remote pattern upload @MUzairS15 (#10014)
+    - [Server] Validate userid and handle remote provider responses
+      on failure correctly. @MUzairS15 (#10015)
+    - [bug] Fix Remote Design file upload @theBeginner86 (#10013)
+  * Meshery UI
+    - Fix developer warnings @JyothiSwaroopReddy07 (#10029)
+    - Added new icons for Kubernetes components @nwanduka (#9866)
+    - [WIP] Migrate registry page to use RTK @Yashsharma1911
+      (#10007)
+    - [NOTIFICATION] Added visual indication for notification
+      center @captain-Akshay (#10030)
+    - fix grammer issue in popup ui comopnents @amitamrutiya2210
+      (#10028)
+    - [UI] Refactor tooltip and its behaviour in dashboard cards
+      @sudhanshutech (#10042)
+    - [RTK] Connections api migrate to rtk @senali-d (#9992)
+    - [UI] Fix publishing design @Yashsharma1911 (#9990)
+    - [MeshModel Category] Database category icon added
+      @ritiksaxena124 (#10006)
+  * Maintenance
+    - Update meshmap.yml @theBeginner86 (#10055)
+    - [chore] Update meshmap.yml @MUzairS15 (#10054)
+    - [Bug] Reinitialise models and keys registration on Database
+      reset. @MUzairS15 (#10024)
+    - [models] Consolidate Meshery Docs Generator @theBeginner86
+      (#9941)
+  * Documentation
+    - broken link fixed w/signoff @prathyushmadhu (#9960)
+    - #9935 changed the link from
+      /guides/configuration-management/creating-a-meshrey-design to
+      /guides/creating-a-meshrey-design @muthu9594 (#9982)
+    - [Fixed Docs Cloud Native app Configuration] - Grammar
+      adjustment @shourya2002-geek (#10012)
+    - v0.4, v0.5, v0.6 added to excludes @iArchitSharma (#10051)
+    - Fix developer warnings @JyothiSwaroopReddy07 (#10029)
+    - [DOCS] Suggested Reading bug fix @iArchitSharma (#10020)
+    - modified provider urls @JyothiSwaroopReddy07 (#10027)
+    - [DOCS] MeshModel to Model fix @iArchitSharma (#10031)
+    - [docs] fix "Managing Events with Notification Center" link
+      not working properly @dottharun (#10044)
+    - [Docs] Relationships: Grammar fix in the "Design
+      Relationships and Restrictions" section @neerajmanivarnan
+      (#10003)
+    - [Docs Designs] Removed Repeated Phrase #9995 Fixed @ASK-03
+      (#10001)
+    - Added mesherycli cheatsheet @Dhanush0369 (#10022)
+    - [docs] Fix YAML issue in Meshery Docs @theBeginner86 (#10021)
+    - [models] Consolidate Meshery Docs Generator @theBeginner86
+      (#9941)
+    - Made grammatical changes for the paragraph under 'Importing
+      Applications'. @ayushgml (#10018)
+
+-------------------------------------------------------------------
+Sun Feb  4 19:42:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.11:
+  * General
+    - Generic Annotation Node @aabidsofi19 (#9974)
+    - [chore] fix unwanted warning on save @theBeginner86 (#9977)
+    - update: update Maintainer.md @RipulHandoo (#9972)
+    - [chore] Fix Failing MeshKit Error Util @theBeginner86 (#9962)
+    - [Docs] New make target for non-incremental serving of site
+      @leecalcote (#9945)
+    - [Permission] Update permission spreadsheet @Yashsharma1911
+      (#9948)
+    - [bug] Fix Error Message on K8s Manifest Upload @theBeginner86
+      (#9940)
+    - [Relationships] AWS RDS DBCluster to IAM Role @leecalcote
+      (#9666)
+    - [chore] fix models @theBeginner86 (#9921)
+  * Meshery UI
+    - Fix naming convention @sudhanshutech (#9993)
+    - Fix horizontal line alignment in registry tree view
+      @Yashsharma1911 (#9989)
+    - fixed the dropdown icon bug across modals @captain-Akshay
+      (#9983)
+    - [UI] Enhance the Meshery UI registry @Yashsharma1911 (#9939)
+    - fix controller version logic @MUzairS15 (#9975)
+    - [Env/Workspace] - Remove org selector from create environment
+      and workspace modal @senali-d (#9961)
+    - Feat: Import/Export Design as OCI Artifact @theBeginner86
+      (#9861)
+    - [UI] Filter support for Designs and Filters @sudhanshutech
+      (#9918)
+    - Fix Id formatter and empty data UX @sudhanshutech (#9933)
+    - solved icons cutoff issue @Aniket-76 (#9907)
+    - [UI] Fix dark mode issues in error component @Yashsharma1911
+      (#9924)
+    - [UI] Fix dysfunctional Metrics tab. @MUzairS15 (#9915)
+  * Maintenance
+    - [docs] Enhance Component Docs Updater Script @theBeginner86
+      (#9934)
+  * Documentation
+    - [DOCS] Fixed broken links @MonalikaPatnaik (#9988)
+    - [Docs] Add GitHub link to main navigation menu @leecalcote
+      (#9970)
+    - [Docs] Chore: Additional 404 error messages @leecalcote
+      (#9956)
+    - [Docs] Redirects for Adapters @leecalcote (#9955)
+    - fixed broken link issue in configuration-management.md
+      @prathyushmadhu (#9954)
+    - [Docs] Revise integrations on homepage @leecalcote (#9946)
+    - fix: meshery.io integrations link @leecalcote (#9944)
+    - Feat: Import/Export Design as OCI Artifact @theBeginner86
+      (#9861)
+    - solved issue #9913 @AkashMeheta (#9927)
+    - [Docs] Enhanced Integrations list @leecalcote (#9937)
+    - [Docs] Add menu toggle. Collapsed by default @leecalcote
+      (#9902)
+    - [Doc] Extensibility CASL @Yashsharma1911 (#9898)
+    - Fixed many links including the issue #9892 @Conqxeror (#9923)
+    - Update deploying-sample-apps.md @chiragbiradar (#9930)
+    - [Docs] Categorization and partial restructure @leecalcote
+      (#9920)
+    - [Docs] feat: add google tag manager @leecalcote (#9912)
+    - [Docs] Restructure proposal @leecalcote (#9887)
+
+-------------------------------------------------------------------
+Sun Feb  4 19:13:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.10:
+  * General
+    - chore(deps): Bump follow-redirects from 1.15.3 to 1.15.4 in
+      /install/docker-extension/ui @dependabot (#9909)
+  * Meshery UI
+    - [Bug] - Fix workspace and environment required field
+      validation @senali-d (#9917)
+    - chore(deps): Bump follow-redirects from 1.15.2 to 1.15.4 in
+      /ui @dependabot (#9903)
+    - [UI] Fix CASL issues @Yashsharma1911 (#9904)
+    - chore(deps): Bump follow-redirects from 1.15.2 to 1.15.4 in
+      /provider-ui @dependabot (#9905)
+    - [Enhancement] - Workspace and environments @senali-d (#9890)
+    - fix tooltip styling @sudhanshutech (#9906)
+    - resolved label cutoff issue @Aniket-76 (#9900)
+    - [fix] Some ui fixes in env and workspaces @sudhanshutech
+      (#9896)
+  * Maintenance
+    - chore(deps): Bump follow-redirects from 1.15.2 to 1.15.4 in
+      /ui @dependabot (#9903)
+    - chore(deps): Bump follow-redirects from 1.15.2 to 1.15.4 in
+      /provider-ui @dependabot (#9905)
+  * Documentation
+    - [Docs] Sitemap with URLs @leecalcote (#9908)
+    - feat: build a provider @leecalcote (#9889)
+    - [Docs] New Suggested Reading layout @leecalcote (#9891)
+
+-------------------------------------------------------------------
+Sun Feb  4 16:16:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.9:
+  * General
+    - fix: broken 'Security' category @leecalcote (#9884)
+    - Remove schemas from meshery/meshery. @MUzairS15 (#9876)
+    - [Models] Update connection transitions and middleware.
+      @MUzairS15 (#9881)
+  * Meshery UI
+    - Reuse tooltip @sudhanshutech (#9885)
+    - Bump @rjsf/utils from 5.8.1 to 5.15.1 in /ui @dependabot
+      (#9803)
+  * Maintenance
+    - Bump @rjsf/utils from 5.8.1 to 5.15.1 in /ui @dependabot
+      (#9803)
+    - chore(deps): Bump github.com/cloudflare/circl from 1.3.3 to
+      1.3.7 @dependabot (#9878)
+  * Documentation
+    - docs: rearrange extensions @leecalcote (#9883)
+
+-------------------------------------------------------------------
+Sun Feb  4 16:01:01 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.8:
+  * General
+    - [LocalProvider] Cleanup keys when server is shutdown.
+      @MUzairS15 (#9879)
+    - [Models] Rename relationships.reqo_query to
+      relationships.evaluationQuery. @MUzairS15 (#9875)
+    - [Server] Auto Register for Connections @MUzairS15 (#9785)
+    - [Models] Add support to update component capabilities.
+      @MUzairS15 (#9848)
+    - [Docker Extension] chore: update ui deps @leecalcote (#9841)
+  * Meshery CLI
+    - chore: remove mesheryctl unit test assertions @leecalcote
+      (#9853)
+  * Meshery UI
+    - [UI] Fix connection page crash @Yashsharma1911 (#9871)
+    - Enhance dashboard ui elements @sudhanshutech (#9872)
+    - [bug] fix null check for environment @sudhanshutech (#9860)
+    - [FIX] Sorting in designs and filters and fix some UI issues
+      @sudhanshutech (#9859)
+    - [WIP] Enforced CASL in UI @Yashsharma1911 (#9778)
+    - [FIX] Routing error in workspace @sudhanshutech (#9852)
+  * Bug Fixes
+    - [bug] fix null check for environment @sudhanshutech (#9860)
+  * Documentation
+    - fix: fixed broken link @ameeetgaikwad (#9874)
+    - Docs: Relocate Adapters Under Extensibility @leecalcote
+      (#9855)
+    - docs: refresh overview and structure @leecalcote (#9854)
+
+-------------------------------------------------------------------
+Sun Feb  4 14:00:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.7:
+  * General
+    - chore(deps): Bump github.com/containerd/containerd from 1.7.6
+      to 1.7.11 in /scripts/component_updater @dependabot (#9682)
+    - [relationships] Fix incorrect query in hierarchical_config
+      relationship definition. @MUzairS15 (#9837)
+    - [Models] Relationships for Kubernetes ConfigMap using
+      Environment Variables @leecalcote (#9816)
+  * Meshery CLI
+    - Fix experimental model command in mesheryctl @LakshyaSatpal
+      (#9813)
+    - add reference link in mesheryctl @Althaf66 (#9707)
+    - fix the grammatical issue #9810 @Althaf66 (#9811)
+  * Meshery UI
+    - Add Postgres Database Icon @Akshun-01 (#9674)
+    - Added icons for Kubernetes Node Metrics component @nwanduka
+      (#9760)
+    - Fix connection page issues @sudhanshutech (#9838)
+    - Fix Environment options update and undefined bug in
+      connections @sudhanshutech (#9831)
+    - [UI] Add info icon to prompt component @Yashsharma1911
+      (#9826)
+    - Bump @cypress/code-coverage from 3.12.7 to 3.12.17 in
+      /provider-ui @dependabot (#9814)
+    - Bump @mui/material from 5.14.19 to 5.15.2 in /provider-ui
+      @dependabot (#9792)
+    - Prevent common modal from rerender @Yashsharma1911 (#9822)
+  * Bug Fixes
+    - Fix Environment options update and undefined bug in
+      connections @sudhanshutech (#9831)
+  * Maintenance
+    - [chore] Bump MeshMap Snapshot @theBeginner86 (#9836)
+    - [Server] Seed keys for local provider @Yashsharma1911 (#9771)
+    - Bump @cypress/code-coverage from 3.12.7 to 3.12.17 in
+      /provider-ui @dependabot (#9814)
+    - Bump @mui/material from 5.14.19 to 5.15.2 in /provider-ui
+      @dependabot (#9792)
+    - Bump github.com/onsi/gomega from 1.27.10 to 1.30.0
+      @dependabot (#9799)
+    - Bump github.com/spf13/cobra from 1.7.0 to 1.8.0 @dependabot
+      (#9798)
+    - [Chore] GH Issue Template: Update and rename meshmodel.md to
+      models.md @leecalcote (#9820)
+  * Documentation
+    - Fixed mobile search results @Savio629 (#9613)
+    - Adding consistent font-weight for list-structure @yash37158
+      (#9759)
+    - fix v0.6 navbar dropdown and details marker in v0.6 meshery
+      docs @Aniket-76 (#9835)
+    - add reference link in mesheryctl @Althaf66 (#9707)
+    - [Docs] Update docs for configuring logs at runtime.
+      @MUzairS15 (#9827)
+    - docs: logical concepts update @leecalcote (#9808)
+    - [Docs] Relationships: Missing color for info/tip/note Alerts
+      + Models: Missing color @brandonkylely (#9823)
+
+-------------------------------------------------------------------
+Sun Feb  4 13:22:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.6:
+  * General
+    - [Server] Handle connection update events impacting
+      performance. @MUzairS15 (#9786)
+    - [bug] Fix Relationships Registration Process @theBeginner86
+      (#9783)
+    - [server] Revert unneeded changes @MUzairS15 (#9784)
+    - [Server] Organise packages and use of mutexes. @MUzairS15
+      (#9779)
+    - [ci] Fix MeshKit Error Utility @theBeginner86 (#9777)
+    - [bug] Fix application type @theBeginner86 (#9765)
+    - [Docs] Fix integration docs updater @MUzairS15 (#9756)
+  * Meshery CLI
+    - [Server] Add support to change log levels at runtime
+      @MUzairS15 (#9815)
+    - [mesheryctl] Fix mesheryctl app + unit tests @theBeginner86
+      (#9776)
+    - Fix app import failure. @shanukun (#9738)
+  * Meshery UI
+    - [Popup.js] fixed popup zindex and spacing issue
+      @prabhjeevnijjar (#9767)
+    - Bump @emotion/react from 11.11.1 to 11.11.3 in /provider-ui
+      @dependabot (#9793)
+    - Bump eslint-config-next from 14.0.3 to 14.0.4 in /provider-ui
+      @dependabot (#9791)
+    - Bump cypress from 13.6.1 to 13.6.2 in /provider-ui
+      @dependabot (#9795)
+    - Bump @cypress/code-coverage from 3.12.5 to 3.12.16 in /ui
+      @dependabot (#9796)
+    - Bump @mui/styles from 5.14.3 to 5.15.2 in /ui @dependabot
+      (#9805)
+    - Bump uuid from 9.0.0 to 9.0.1 in /ui @dependabot (#9802)
+    - Bump graphql-ws from 5.11.2 to 5.14.3 in /ui @dependabot
+      (#9804)
+    - [UI] fix: Update style for cursor @OmAximani0 (#9788)
+    - [Environments/Workspaces] - Scroll loading support for
+      transfer list modal @senali-d (#9806)
+    - Fix issue in registry @sudhanshutech (#9774)
+    - [Workspaces] - Workspaces page @senali-d (#9722)
+    - Fix technology not showing in info modal @Yashsharma1911
+      (#9763)
+    - [UI] - Environment card button arrow position @senali-d
+      (#9768)
+    - [FIX] k8s icon and connection transition naming @aabidsofi19
+      (#9764)
+    - fix row expansion on selecting env @sudhanshutech (#9762)
+    - [UI] Filter support for Meshsync and Connections
+      @sudhanshutech (#9717)
+  * Maintenance
+    - chore(deps): Bump github.com/containerd/containerd from 1.7.6
+      to 1.7.11 in /scripts/component_generation @dependabot
+      (#9681)
+    - Bump github.com/layer5io/meshkit from 0.7.0 to 0.7.2 in
+      /scripts/component_generation @dependabot (#9790)
+    - Bump @emotion/react from 11.11.1 to 11.11.3 in /provider-ui
+      @dependabot (#9793)
+    - Bump eslint-config-next from 14.0.3 to 14.0.4 in /provider-ui
+      @dependabot (#9791)
+    - Bump cypress from 13.6.1 to 13.6.2 in /provider-ui
+      @dependabot (#9795)
+    - Bump @cypress/code-coverage from 3.12.5 to 3.12.16 in /ui
+      @dependabot (#9796)
+    - Bump @mui/styles from 5.14.3 to 5.15.2 in /ui @dependabot
+      (#9805)
+    - Bump github.com/99designs/gqlgen from 0.17.39 to 0.17.42
+      @dependabot (#9800)
+    - Bump uuid from 9.0.0 to 9.0.1 in /ui @dependabot (#9802)
+    - Bump google.golang.org/api from 0.152.0 to 0.154.0 in
+      /scripts/component_generation @dependabot (#9789)
+    - Bump github.com/go-openapi/runtime from 0.26.0 to 0.26.2
+      @dependabot (#9797)
+    - Bump github.com/jinzhu/copier from 0.3.5 to 0.4.0 @dependabot
+      (#9801)
+    - Bump graphql-ws from 5.11.2 to 5.14.3 in /ui @dependabot
+      (#9804)
+    - [mesheryctl] Fix mesheryctl app + unit tests @theBeginner86
+      (#9776)
+    - fix-command-to-get-latest-Meshery-release-tag @vishalvivekm
+      (#9761)
+    - Bump github.com/layer5io/service-mesh-performance from 0.3.4
+      to 0.6.1 @dependabot (#9533)
+  * Documentation
+    - docs: Fix ruby version in contributing-docs page
+      @LakshyaSatpal (#9812)
+    - docs: pattern init @leecalcote (#9809)
+    - [API/Docs] Support for returning unassigned entities
+      @theBeginner86 (#9780)
+    - fixed details-marker @Aniket-76 (#9770)
+    - [Docs] Fix integrations docs page. @MUzairS15 (#9757)
+
+-------------------------------------------------------------------
+Sun Feb  4 11:20:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.5:
+  * General
+    - [HELM] Fix Ingress Resource of Meshery @theBeginner86 (#9755)
+    - preload kubernetes_resource_object_meta @MUzairS15 (#9753)
+  * Meshery UI
+    - [Connection Register] - Register MeshSync data as a
+      connection @senali-d (#9548)
+  * Bug Fixes
+    - [bug] Fix Searching + Preloading Issue @theBeginner86 (#9754)
+  * Documentation
+    - [Docs] enhance: Customizing Meshery's Installation with
+      values.yaml @leecalcote (#9747)
+
+-------------------------------------------------------------------
+Sun Feb  4 11:03:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.4:
+  * General
+    - chore: version: 0.7.0 @leecalcote (#9748)
+    - [bug] Fix searching in MeshSync resources @theBeginner86
+      (#9737)
+    - [Server] Added filters in connections API @Yashsharma1911
+      (#9729)
+    - Fix nil pointer errors and updated the keys new URL path
+      @Yashsharma1911 (#9731)
+    - [typo] Update sibling_matchlabels.rego @theBeginner86 (#9734)
+    - chore(deps): Bump golang.org/x/crypto from 0.14.0 to 0.17.0
+      in /scripts/component_updater @dependabot (#9669)
+    - [server][chore]: drop dead code @VihasMakwana (#9609)
+    - [MeshSync API]add API to delete resources by ID @MUzairS15
+      (#9728)
+    - update schemas and structs @MUzairS15 (#9723)
+    - fix meshkit error utiltiy @MUzairS15 (#9724)
+    - [Server] Handle database conflicts when persisting MeshSync
+      data. @MUzairS15 (#9718)
+    - [bug/rego] Fixes Tag Set Relationship Evaluation
+      @theBeginner86 (#9714)
+    - [Relationships] Add Environment Hierarchical Parent
+      Relationship @theBeginner86 (#9677)
+  * Features
+    - Add Routing To Dashboard tabs @aabidsofi19 (#9687)
+  * Meshery CLI
+    - [CI] Remove mesheryctl dependency for Helm Chart release
+      @leecalcote (#9746)
+  * Meshery UI
+    - Bump lint-staged from 13.2.3 to 15.1.0 in /ui @dependabot
+      (#9530)
+    - Enhancements and fixes in Registry @sudhanshutech (#9732)
+    - [ci] Fix Eslint @theBeginner86 (#9742)
+    - Fix routing issue in settings page @senali-d (#9736)
+    - [UI] Feat: Assign Connection to Envs @theBeginner86 (#9637)
+    - fix name in expansion row @sudhanshutech (#9720)
+    - [Environments] - Dark mode support and RTK migration
+      @senali-d (#9705)
+    - Fix cols and add resizeable support @sudhanshutech (#9713)
+    - Prevent expansion on chip @sudhanshutech (#9703)
+    - Added logic of HTML entity encoding in RJSF Text fields
+      widget @Yashsharma1911 (#9702)
+    - Enhancements in RJSF select widget @Yashsharma1911 (#9699)
+    - [UI] fix kubernetes icon @aabidsofi19 (#9690)
+    - Add Routing To Dashboard tabs @aabidsofi19 (#9687)
+  * Maintenance
+    - Bump lint-staged from 13.2.3 to 15.1.0 in /ui @dependabot
+      (#9530)
+    - Bump github.com/go-git/go-git/v5 from 5.9.0 to 5.11.0
+      @dependabot (#9733)
+    - [CI] Remove mesheryctl dependency for Helm Chart release
+      @leecalcote (#9746)
+    - [Helm] chore: dependency upgrade to Ingress v1 @leecalcote
+      (#9745)
+    - chore(deps): Bump golang.org/x/crypto from 0.15.0 to 0.17.0
+      @dependabot (#9668)
+    - chore(deps): Bump golang.org/x/crypto from 0.16.0 to 0.17.0
+      in /scripts/component_generation @dependabot (#9667)
+    - Update build-and-release-stable.yml @theBeginner86 (#9711)
+    - Bump meshkit to v0.7.1 @Yashsharma1911 (#9709)
+    - [snapshot] Update meshmap.yml @theBeginner86 (#9701)
+    - Update meshmap.yml @theBeginner86 (#9700)
+    - [snapshot] Update meshmap.yml @theBeginner86 (#9698)
+    - [CI] Update meshmap.yml to v0.1.3 @leecalcote (#9697)
+    - chore(deps): Bump github.com/containerd/containerd from 1.7.6
+      to 1.7.11 @dependabot (#9683)
+  * Documentation
+    - [Docs] Updated the width of the single column in responsive
+      view @Aniumbott (#9727)
+    - [Docs] Added Meshery CLI to the list of architectural
+      components @PrathumP (#9629)
+    - [Docs] Events Management: Remove duplicate page title (h1)
+      @leecalcote (#9743)
+    - Add OpenAPI Schema Links to concepts on docs @LakshyaSatpal
+      (#9708)
+    - Adding consistent color to list-structure @yash37158 (#9740)
+    - sidebar-list-restructure @vishalvivekm (#9710)
+    - [meshsync] GET MeshSync Resources Kinds @theBeginner86
+      (#9730)
+    - [UI] Feat: Assign Connection to Envs @theBeginner86 (#9637)
+    - [CI] feat: Dedicated URL for latest Meshery release tag
+      @leecalcote (#9725)
+    - Feat: Workspaces @theBeginner86 (#9654)
+    - Sidebar Unordered Lists Restructure @yash37158 (#9611)
+    - [bug] Fix support for exporting designs @theBeginner86
+      (#9692)
+    - [Docs] Update for each page's abstract @leecalcote (#9685)
+
+-------------------------------------------------------------------
+Sun Feb  4 10:53:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.3:
+  * Meshery UI
+    - [bug] Fix Unnecessary re-rendering of Dashboard
+      @theBeginner86 (#9684)
+    - Use rtk query in environments page @aabidsofi19 (#9679)
+    - fix connection status duplication and hide workspaces
+      allocation @aabidsofi19 (#9678)
+    - update route for service-mesh @aabidsofi19 (#9675)
+    - Fix Lifecycle routing @aabidsofi19 (#9673)
+    - Add Postgres Autoscalar Icon @Akshun-01 (#9672)
+    - fix broken imports in environments @aabidsofi19 (#9671)
+  * Bug Fixes
+    - [bug] Fix Unnecessary re-rendering of Dashboard
+      @theBeginner86 (#9684)
+
+-------------------------------------------------------------------
+Sun Feb  4 10:40:50 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.2:
+  * General
+    - [bug] Fix env component @theBeginner86 (#9659)
+    - [server][meshmodel] chore: add aws controllers @VihasMakwana
+      (#9650)
+    - [Model] AWS EKS: Model and Component metadata @leecalcote
+      (#9649)
+    - chore: add aws eks controller statically @VihasMakwana
+      (#9638)
+  * Meshery UI
+    - [Environments] Environments page @senali-d (#9647)
+    - [UI] Correct indicators for context switcher. @MUzairS15
+      (#9645)
+    - Upgrade Performance table to sistent table @sudhanshutech
+      (#9648)
+    - update mdeditor @aabidsofi19 (#9646)
+    - [UI] - Prompt Component button color @senali-d (#9644)
+  * Maintenance
+    - chore(build-and-release-stable): ignore rc releases
+      @chenrui333 (#9642)
+    - chore(ci/cd): Update e2e tests with newer k8s versions
+      @webstradev (#9665)
+    - [environments] Add API to Get Connections for Environment
+      @theBeginner86 (#9651)
+  * Documentation
+    - [environments] Add API to Get Connections for Environment
+      @theBeginner86 (#9651)
+
+-------------------------------------------------------------------
 Mon Dec 18 08:20:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.7.1:
@@ -74,13 +733,13 @@ Thu Nov 30 12:01:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
     - updated polygons @aabidsofi19 (#9500)
     - update comp generator @MUzairS15 (#9492)
     - Delete binding.rego @MUzairS15 (#9491)
-  * - Meshery CLI
+  * Meshery CLI
     - [cli][system][fix]: return error if detected while creating
       manifests folder @VihasMakwana (#9469)
-  * - Meshery UI
+  * Meshery UI
     - [MeshSync] Fix Sorting MeshSync table @senali-d (#9498)
     - [bug] Resolve connections bug and UI @sudhanshutech (#9488)
-  * - Documentation
+  * Documentation
     - Docs Meshsync CRD @KiptoonKipkurui (#9463)
     - Remove broken links in project/index.md @dmarcoux (#9499)
     - [Docs] Meshery Operator, MeshSync, Broker Troubleshooting
@@ -925,7 +1584,7 @@ Sun Sep 24 07:30:24 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 - update to 0.6.146:
   * General
     - MeshKit v0.6.67 @leecalcote (#8897)
-  * - Meshery UI
+  * Meshery UI
     - [UI] Notification Center: Increase size of unread indicator
       @leecalcote (#8891)
     - [extensions] fix error msg @theBeginner86 (#8892)
@@ -933,7 +1592,7 @@ Sun Sep 24 07:30:24 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
     - Connections row expand data with styling @senali-d (#8840)
     - [Fix] k8s-switcher select-all @aabidsofi19 (#8876)
     - [CI] e2e test job improvements @MarioArriaga92 (#8643)
-  * - Maintenance
+  * Maintenance
     - updating node versions workflow actions @Philip-21 (#8856)
     - [CI] e2e test job improvements @MarioArriaga92 (#8643)
 
@@ -951,7 +1610,7 @@ Sun Sep 24 06:51:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
     - add docs for component generation and updater scripts
       @MUzairS15 (#8860)
     - Fixed Meshary Integration Updater @ptdatta (#8774)
-  * - Meshery UI
+  * Meshery UI
     - [Designs] Fixes And Enhancements @aabidsofi19 (#8861)
     - Fix Notification center bell icon toggle btn @aabidsofi19
       (#8875)
@@ -964,9 +1623,9 @@ Sun Sep 24 06:51:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
       (#8858)
     - Fix typo in `component-svg/_.txt` @eltociear (#8830)
     - [UI] Enhance Error Handling @aabidsofi19 (#8851)
-  * - Bug Fixes
+  * Bug Fixes
     - [bug] Fix API docs build @theBeginner86 (#8852)
-  * - Documentation
+  * Documentation
     - [bug] Fix API docs build @theBeginner86 (#8852)
 
 -------------------------------------------------------------------
@@ -978,10 +1637,10 @@ Thu Sep 21 05:01:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
       (#8800)
     - handle nil checks @MUzairS15 (#8844)
     - watchtower label is added @zakisk (#8789)
-  * - Meshery CLI
+  * Meshery CLI
     - run error util for mesheryctl error codes replacement
       @MUzairS15 (#8846)
-  * - Meshery UI
+  * Meshery UI
     - [chore] Make MeshSyncEvents GraphQL Subscription Configurable
       @theBeginner86 (#8841)
     - [Servre] Graphql/directives @MUzairS15 (#8836)
@@ -990,9 +1649,9 @@ Thu Sep 21 05:01:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
     - fix pagination in meshmodel browser @sudhanshutech (#8838)
     - converted class based dashboard component to functional
       component @EraKin575 (#8724)
-  * - Bug Fixes
+  * Bug Fixes
     - [bug] Fix failing API docs build @theBeginner86 (#8850)
-  * - Documentation
+  * Documentation
     - [bug] Fix failing API docs build @theBeginner86 (#8850)
     - [Server] Added environments in Meshery @Yashsharma1911
       (#8723)
@@ -1006,7 +1665,7 @@ Wed Sep 20 06:06:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
       (#8810)
     - [Docker Extension] Remove adapters from default configuration
       @leecalcote (#8811)
-  * - Meshery UI
+  * Meshery UI
     - [chore] fix color undefined @theBeginner86 (#8832)
     - [UI] Notification Center: Update color of "No notifications
       to show" @leecalcote (#8828)
@@ -1014,14 +1673,14 @@ Wed Sep 20 06:06:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
       @sudhanshutech (#8825)
     - changed LoadTestTimerConfig and MeshAdapterConfigComponent to
       functional component @EraKin575 (#8781)
-  * - Bug Fixes
+  * Bug Fixes
     - [chore] fix color undefined @theBeginner86 (#8832)
     - Fix repetitive api calls and UI issues in connections page
       @sudhanshutech (#8825)
-  * - Maintenance
+  * Maintenance
     - Meshery End-to-End Tests with mesheryctl @KiptoonKipkurui
       (#8808)
-  * - Documentation
+  * Documentation
     - Update "Meshery Deployment Incompatible" error docs
       @Mohith234 (#8824)
 
