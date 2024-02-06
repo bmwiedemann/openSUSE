@@ -1,7 +1,7 @@
 #
 # spec file for package python-sortinghat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-sortinghat
-Version:        0.12.0
+Version:        0.19.1
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
@@ -26,6 +26,9 @@ Source:         https://github.com/chaoss/grimoirelab-sortinghat/archive/refs/ta
 # PATCH-FIX-OPENSUSE Allow overridding the database config
 Patch0:         allow-database-config-overrides.patch
 Patch1:         add-missing-format-calls.patch
+# PATCH-FIX-UPSTREAM gh#chaoss/grimoirelab-sortinghat#855
+Patch2:         use-correct-assertion-methods.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
@@ -45,14 +48,17 @@ Requires:       python-django-treebeard >= 4.5
 Requires:       python-graphene >= 2.1.5
 Requires:       python-graphene-django
 Requires:       python-grimoirelab-toolkit >= 0.3
+Requires:       python-importlib-resources
 Requires:       python-mysqlclient >= 2.0
+Requires:       python-numpy
 Requires:       python-pandas >= 1.3
 Requires:       python-python-dateutil >= 2.8.0
 Requires:       python-requests >= 2.7
 Requires:       python-rq
+Requires:       python-setuptools
 Requires:       python-sgqlc
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2 >= 3.1}

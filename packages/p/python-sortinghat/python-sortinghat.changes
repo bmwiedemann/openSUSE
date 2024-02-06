@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Feb  6 04:49:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.19.1:
+  * Fix "Table 'django_session' doesn't exist" error
+  * Unify identities with same source
+  * Use correct base URL for login and change password API calls (#851)
+  * Display individual's most recent organization
+  * CSRF token is only required on web requests
+  * Link to profile in individual cards (#837)
+  * Open calendar to the side of the date input (#838)
+  * Improved loading time when looking for organizations
+  * Gitdm identities importer
+  * Fix individual page not loading
+  * Recommendations for individuals modified after a given date (#813)
+  * Add individual to workspace from their profile page (#816)
+  * Cache individuals table data (#821)
+  * Strict criteria for merge recommendations (#812)
+  * Text field to update enrollment dates (#819)
+  * Improved organization selector (#820)
+  * API method to create a scheduled task
+  * Manage app settings from the user interface
+  * Remove tasks that fail to be scheduled
+  * Add Python 3.9 and drop 3.7 support
+  * Sub-domain affiliation error (#805)
+- Refresh patches.
+- Add patch use-correct-assertion-methods.patch:
+  * Use non-deprecated and non-removed assertion methods.
+
+-------------------------------------------------------------------
 Thu Jul 27 06:07:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.12.0:

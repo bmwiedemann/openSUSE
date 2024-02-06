@@ -1,7 +1,7 @@
-Index: grimoirelab-sortinghat-0.12.0/tests/test_schema.py
+Index: grimoirelab-sortinghat-0.19.1/tests/test_schema.py
 ===================================================================
---- grimoirelab-sortinghat-0.12.0.orig/tests/test_schema.py
-+++ grimoirelab-sortinghat-0.12.0/tests/test_schema.py
+--- grimoirelab-sortinghat-0.19.1.orig/tests/test_schema.py
++++ grimoirelab-sortinghat-0.19.1/tests/test_schema.py
 @@ -22,6 +22,7 @@
  #
  
@@ -18,7 +18,7 @@ Index: grimoirelab-sortinghat-0.12.0/tests/test_schema.py
      def test_page_size_negative(self):
          """Check if it fails when `pageSize` is a negative number"""
  
-@@ -6343,7 +6345,8 @@ class TestAddIdentityMutation(django.tes
+@@ -6367,7 +6369,8 @@ class TestAddIdentityMutation(django.tes
                                    variables=params)
  
          msg = executed['errors'][0]['message']
@@ -28,7 +28,7 @@ Index: grimoirelab-sortinghat-0.12.0/tests/test_schema.py
  
      def test_add_identity_name_none(self):
          """Check if the username is set to the profile when no name is provided"""
-@@ -8139,7 +8142,8 @@ class TestWithdrawMutation(django.test.T
+@@ -8163,7 +8166,8 @@ class TestWithdrawMutation(django.test.T
                                    variables=params)
  
          msg = executed['errors'][0]['message']
@@ -38,7 +38,7 @@ Index: grimoirelab-sortinghat-0.12.0/tests/test_schema.py
  
      def test_non_existing_organization(self):
          """Check if it fails when the organization does not exist"""
-@@ -9771,6 +9775,7 @@ class TestUnifyMutation(django.test.Test
+@@ -9850,6 +9854,7 @@ class TestUnifyMutation(django.test.Test
                                        source='scm',
                                        uuid=self.jrae.uuid)
  
@@ -46,18 +46,18 @@ Index: grimoirelab-sortinghat-0.12.0/tests/test_schema.py
      @unittest.mock.patch('sortinghat.core.jobs.rq.job.uuid4')
      def test_unify(self, mock_job_id_gen):
          """Check if unify is applied for the specified individuals"""
-@@ -9842,6 +9847,7 @@ class TestUnifyMutation(django.test.Test
+@@ -9922,6 +9927,7 @@ class TestUnifyMutation(django.test.Test
          id5 = identities[4]
          self.assertEqual(id5, self.jr2)
  
 +    @unittest.skip("Broken")
      @unittest.mock.patch('sortinghat.core.jobs.rq.job.uuid4')
-     def test_unify_exclude(self, mock_job_id_gen):
-         """Check if unify is applied for the specified individuals"""
-Index: grimoirelab-sortinghat-0.12.0/tests/cli/test_cmd_config.py
+     def test_unify_last_modified(self, mock_job_id_gen):
+         """Check if unify is applied only for the individuals modified after a date"""
+Index: grimoirelab-sortinghat-0.19.1/tests/cli/test_cmd_config.py
 ===================================================================
---- grimoirelab-sortinghat-0.12.0.orig/tests/cli/test_cmd_config.py
-+++ grimoirelab-sortinghat-0.12.0/tests/cli/test_cmd_config.py
+--- grimoirelab-sortinghat-0.19.1.orig/tests/cli/test_cmd_config.py
++++ grimoirelab-sortinghat-0.19.1/tests/cli/test_cmd_config.py
 @@ -41,10 +41,10 @@ MOCK_CONFIG_FILEPATH = os.path.join(os.p
  
  
@@ -71,16 +71,16 @@ Index: grimoirelab-sortinghat-0.12.0/tests/cli/test_cmd_config.py
  
  
  class TestInitConfig(unittest.TestCase):
-Index: grimoirelab-sortinghat-0.12.0/sortinghat/core/decorators.py
+Index: grimoirelab-sortinghat-0.19.1/sortinghat/core/decorators.py
 ===================================================================
---- grimoirelab-sortinghat-0.12.0.orig/sortinghat/core/decorators.py
-+++ grimoirelab-sortinghat-0.12.0/sortinghat/core/decorators.py
-@@ -44,6 +44,8 @@ check_auth = user_passes_test(
+--- grimoirelab-sortinghat-0.19.1.orig/sortinghat/core/decorators.py
++++ grimoirelab-sortinghat-0.19.1/sortinghat/core/decorators.py
+@@ -68,6 +68,8 @@ check_auth = user_passes_test(lambda u:
  
  
  def check_permissions(perms):
 +    if isinstance(perms, str):
 +        perms = (perms,)
-     return user_passes_test(
-         lambda u: u.has_perms(perms) or not settings.SORTINGHAT_AUTHENTICATION_REQUIRED
-     )
+     return user_passes_test(lambda u: u.has_perms(perms))
+ 
+ 

@@ -1,0 +1,53 @@
+From ad69dc80b8e8b4df49a3fe14e4a05ec31c7a67e8 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Tue, 6 Feb 2024 15:22:33 +1100
+Subject: [PATCH] Switch to self.assertRaisesRegex()
+
+assertRaisesRegexp() is a deprecated (and as of Python 3.12, removed)
+alias of assertRaisesRegex(). Switch to it to avoid future problems.
+
+Signed-off-by: Steve Kowalik <steven@wedontsleep.org>
+---
+ tests/test_aux.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_aux.py b/tests/test_aux.py
+index 86e421422..91a1c29c3 100644
+--- a/tests/test_aux.py
++++ b/tests/test_aux.py
+@@ -338,7 +338,7 @@ def test_dates_out_of_bounds(self):
+ 
+         expected = DATE_OUT_OF_BOUNDS_ERROR.format(type='start',
+                                                    date=r'1800-01-01 00:00:00\+00:00')
+-        with self.assertRaisesRegexp(ValueError, expected):
++        with self.assertRaisesRegex(ValueError, expected):
+             _ = [r for r in merge_datetime_ranges(dates)]
+ 
+         # Case 2
+@@ -349,7 +349,7 @@ def test_dates_out_of_bounds(self):
+ 
+         expected = DATE_OUT_OF_BOUNDS_ERROR.format(type='end',
+                                                    date=r'2100-02-01 00:00:00\+00:00')
+-        with self.assertRaisesRegexp(ValueError, expected):
++        with self.assertRaisesRegex(ValueError, expected):
+             _ = [r for r in merge_datetime_ranges(dates)]
+ 
+     def test_dates_no_timezone(self):
+@@ -361,7 +361,7 @@ def test_dates_no_timezone(self):
+             (datetime.datetime(1800, 1, 1, tzinfo=UTC), datetime.datetime(2010, 1, 1, tzinfo=UTC))
+         ]
+ 
+-        with self.assertRaisesRegexp(TypeError, CANT_COMPARE_DATES_ERROR):
++        with self.assertRaisesRegex(TypeError, CANT_COMPARE_DATES_ERROR):
+             _ = [r for r in merge_datetime_ranges(dates)]
+ 
+         # Case 2
+@@ -370,7 +370,7 @@ def test_dates_no_timezone(self):
+             (datetime.datetime(1900, 1, 1, tzinfo=UTC), datetime.datetime(2010, 1, 1))
+         ]
+ 
+-        with self.assertRaisesRegexp(TypeError, CANT_COMPARE_DATES_ERROR):
++        with self.assertRaisesRegex(TypeError, CANT_COMPARE_DATES_ERROR):
+             _ = [r for r in merge_datetime_ranges(dates)]
+ 
+ 
