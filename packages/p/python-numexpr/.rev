@@ -232,4 +232,17 @@ Implement single-spec version</comment>
   * Fixes for upcoming NumPy 2.0</comment>
     <requestid>1133817</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>dca0f52d57996a4d2611165f75050608</srcmd5>
+    <version>2.9.0</version>
+    <time>1707233734</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0:
+  * Support for PyPy (see PRs #467 and #740).  The full test suite
+    should pass now, at least for the 3.10 version.
+    providing help and additional fixes.
+  * Fixed more sanitizer issues (see PR #469).
+  * Modernized the test suite to avoid some warnings.</comment>
+    <requestid>1144513</requestid>
+  </revision>
 </revisionlist>
