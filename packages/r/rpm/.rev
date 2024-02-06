@@ -2499,4 +2499,12 @@ See bugzilla 1167537 for the gory details.</comment>
 - adapt buildrequires</comment>
     <requestid>1143331</requestid>
   </revision>
+  <revision rev="312" vrev="3">
+    <srcmd5>edb412628a58305f197521e765068b20</srcmd5>
+    <version>4.19.1</version>
+    <time>1707233536</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144124</requestid>
+  </revision>
 </revisionlist>

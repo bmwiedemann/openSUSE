@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  2 15:27:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Need to mention the changed patches for the python-setuptools to
+  cmake migration:
+  * Drop python_setup.diff
+  * Add cmake_python_version.diff
+
+-------------------------------------------------------------------
 Wed Dec 13 17:39:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - fix Source url to match what is listed on https://rpm.org/download.html

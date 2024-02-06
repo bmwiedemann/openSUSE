@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  1 15:07:34 CET 2024 - mls@suse.de
+
+- Use cmake for compiling and installing the python modules
+  * Drop python_setup.diff
+  * Add cmake_python_version.diff
+
+-------------------------------------------------------------------
 Thu Feb  1 11:59:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - buildrequire setuptools

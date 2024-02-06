@@ -1,0 +1,15 @@
+--- CMakeLists.txt.orig	2024-02-01 13:24:18.665660569 +0000
++++ CMakeLists.txt	2024-02-01 13:25:07.917586376 +0000
+@@ -238,7 +238,11 @@ endif()
+ list(APPEND db_backends dummy)
+ 
+ if (ENABLE_PYTHON)
+-	find_package(Python3 3.2 COMPONENTS Interpreter Development REQUIRED)
++	if (WITH_PYTHON_VERSION)
++		find_package(Python3 ${WITH_PYTHON_VERSION} EXACT COMPONENTS Interpreter Development REQUIRED)
++	else()
++		find_package(Python3 3.2 COMPONENTS Interpreter Development REQUIRED)
++	endif()
+ endif()
+ 
+ if (WITH_CAP)

@@ -28,9 +28,6 @@ Group:          Development/Libraries/Python
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  file-devel
@@ -70,18 +67,16 @@ that will manipulate RPM packages and databases.
 %prep
 %{expand:%(sed -n -e '/^%%prep/,/^%%install/p' <%{_sourcedir}/rpm.spec | sed -e '1d' -e '$d')}
 
-# The build stage is already declared and pulled in from rpm.spec
-cd ..
-cp _build/python/setup.py python
-pushd python
-%pyproject_wheel
-popd
-
 %install
-pushd python
-%pyproject_install
-popd
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+cd _build
+%{python_expand #
+cmake ..  -U\*Python3\* -DWITH_PYTHON_VERSION=%{$python_version}
+make DESTDIR=%{buildroot} -C python clean
+make DESTDIR=%{buildroot} -C python install
+}
+
+%python_compileall
+rm -rf %{buildroot}/%{_defaultdocdir}/%{NAME}
 
 %files %{python_files}
 %{python_sitearch}/rpm
