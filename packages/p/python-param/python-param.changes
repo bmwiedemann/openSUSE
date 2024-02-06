@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  6 01:28:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch filter-deprecationwarning.patch:
+  * Ignore a DeprecationWarning treated as an error.
+
+-------------------------------------------------------------------
 Sat Jan 20 19:27:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:
