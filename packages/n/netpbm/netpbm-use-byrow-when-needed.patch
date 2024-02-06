@@ -1,0 +1,77 @@
+Index: netpbm-11.5.2/converter/other/tifftopnm.c
+===================================================================
+--- netpbm-11.5.2.orig/converter/other/tifftopnm.c
++++ netpbm-11.5.2/converter/other/tifftopnm.c
+@@ -1393,7 +1393,7 @@ convertRasterByRows(pnmOut *       const
+ 
+ 
+ 
+-static void
++static int
+ warnBrokenTiffLibrary(TIFF * const tiffP) {
+ 
+ /* TIFF library bug:
+@@ -1423,6 +1423,7 @@ warnBrokenTiffLibrary(TIFF * const tiffP
+ 
+     unsigned short tiffOrientation;
+     int fldPresent;
++    int broken = false;
+     fldPresent = TIFFGetField(tiffP, TIFFTAG_ORIENTATION, &tiffOrientation);
+     if (fldPresent) {
+         switch (tiffOrientation) {
+@@ -1432,10 +1433,12 @@ warnBrokenTiffLibrary(TIFF * const tiffP
+         case ORIENTATION_LEFTBOT:
+             pm_message("WARNING: This TIFF image has an orientation that "
+                        "most TIFF libraries convert incorrectly.  "
+-                       "Use -byrow to circumvent.");
++                       "Using -byrow to circumvent.");
++            broken = true;
+             break;
+         }
+     }
++    return broken;
+ }
+ 
+ 
+@@ -1562,8 +1565,6 @@ convertRasterInMemory(pnmOut *
+     if (verbose)
+         pm_message("Converting in memory ...");
+ 
+-    warnBrokenTiffLibrary(tif);
+-
+     ok = TIFFRGBAImageOK(tif, emsg);
+     if (!ok) {
+         pm_message("%s", emsg);
+@@ -1662,7 +1663,7 @@ convertImage(TIFF *             const ti
+     xelval maxval;
+     xel colormap[MAXCOLORS];
+     unsigned short fillorder;
+-    bool flipOk, noflipOk;
++    bool flipOk, noflipOk, byrow;
+     pnmOut pnmOut;
+ 
+     readDirectory(tifP, cmdline.headerdump, &tiffDir);
+@@ -1674,15 +1675,21 @@ convertImage(TIFF *             const ti
+ 
+     pm_message("writing %s file", pnm_formattypenm(format));
+ 
++    byrow = cmdline.byrow;
++    if (warnBrokenTiffLibrary(tifP)) {
++       /* force byrow true: http://bugzilla.maptools.org/show_bug.cgi?id=2654#c9 */
++       byrow = true;
++    }
++
+     pnmOut_init(imageoutFileP, alphaFileP, tiffDir.width, tiffDir.height,
+                 tiffDir.orientation, maxval, format, maxval,
+-                cmdline.byrow, cmdline.orientraw,
++                byrow, cmdline.orientraw,
+                 cmdline.verbose,
+                 &flipOk, &noflipOk,
+                 &pnmOut);
+ 
+     convertRaster(&pnmOut, tifP, tiffDir, maxval,
+-                  fillorder, colormap, cmdline.byrow, flipOk, noflipOk,
++                  fillorder, colormap, byrow, flipOk, noflipOk,
+                   cmdline.verbose);
+ 
+     pnmOut_term(&pnmOut, cmdline.verbose);

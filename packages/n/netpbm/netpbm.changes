@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  2 14:11:02 UTC 2024 - pgajdos@suse.com
+
+- added patches
+  fix CVE-2017-5849 [bsc#1022790], CVE-2017-5849 [bsc#1022791]
+  + netpbm-use-byrow-when-needed.patch
+
+-------------------------------------------------------------------
 Wed Jan 31 14:59:08 UTC 2024 - pgajdos@suse.com
 
 - version update to 11.5.2
