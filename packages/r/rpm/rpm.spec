@@ -111,8 +111,8 @@ Patch133:       zstdpool.diff
 Patch134:       zstdthreaded.diff
 Patch135:       selinux_transactional_update.patch
 Patch136:       rpmsort_reverse.diff
-Patch137:       python_setup.diff
 Patch138:       canongnu.diff
+Patch139:       cmake_python_version.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -225,7 +225,8 @@ rm -rf sqlite
 %patch -P 100        -P 102 -P 103
 %patch                                                  -P 117
 %patch -P 122 -P 123
-%patch -P 131          -P 133 -P 134 -P 135 -P 136 -P 137 -P 138
+%patch -P 131          -P 133 -P 134 -P 135 -P 136        -P 138
+%patch -P 139
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
