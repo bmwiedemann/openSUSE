@@ -412,4 +412,12 @@
   * Add openssl-CVE-2023-5678.patch</comment>
     <requestid>1126788</requestid>
   </revision>
+  <revision rev="42" vrev="24">
+    <srcmd5>42acb2bd0d004546936f804e31f57c43</srcmd5>
+    <version>1.0.2u</version>
+    <time>1707233753</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144563</requestid>
+  </revision>
 </revisionlist>

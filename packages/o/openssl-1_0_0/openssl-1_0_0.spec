@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-1_0_0
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,6 +135,8 @@ Patch103:       openssl-1_0-CVE-2023-3817.patch
 # PATCH-FIX-UPSTREAM: bsc#1216922 CVE-2023-5678 Generating excessively long X9.42 DH keys or
 # checking excessively long X9.42 DH keys or parameters may be very slow
 Patch104:       openssl-CVE-2023-5678.patch
+# PATCH-FIX-UPSTREAM: bsc#1219243 CVE-2024-0727: denial of service via null dereference
+Patch105:       openssl-CVE-2024-0727.patch
 # steam patches
 Patch150:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -302,6 +304,7 @@ testing framework and utilities.
 %patch102 -p1
 %patch103 -p1
 %patch104 -p1
+%patch105 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete
