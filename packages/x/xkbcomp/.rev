@@ -187,4 +187,16 @@
     <comment></comment>
     <requestid>1045916</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e8e07778f0b4b17d256492a024deaafe</srcmd5>
+    <version>1.4.7</version>
+    <time>1707233550</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.7
+  * This release mainly focuses on code cleanup and improving
+    maintainability and making static analysis work better on this
+    code base. It also fixes a bug that could cause build failures
+    with gcc when the -ftracer option was used.</comment>
+    <requestid>1144053</requestid>
+  </revision>
 </revisionlist>
