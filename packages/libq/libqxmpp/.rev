@@ -200,4 +200,12 @@ Qt5 alternative.</comment>
   * Implement XEP-0450: Automatic Trust Management (ATM)</comment>
     <requestid>1071800</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cb14d4e4ceb4fe6050be125b609ac4ee</srcmd5>
+    <version>1.5.6</version>
+    <time>1707233725</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144498</requestid>
+  </revision>
 </revisionlist>

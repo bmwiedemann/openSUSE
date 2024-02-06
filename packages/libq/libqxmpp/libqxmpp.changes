@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Feb  5 06:37:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.6:
+  * Behaviour change: sendIq() automatically parses stanza errors (returned as QXmppError)
+  * CMake: "QXmpp" legacy cmake package is now only installed for Qt 5 builds
+  * Fix unit tests with Qt 6!
+  * EncryptedFileSharingProvider: Fix wrong cipher set in sent file share element
+  * Fix SCE parsing mode when parsing encrypted messages
+  * Fix file encryption with QCA issues
+  * Fix picking by strength of hashing algorithms
+  * Fix github ci
+  * Add unit tests for all file encryption ciphers
+
+-------------------------------------------------------------------
+Fri Feb  2 10:52:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.5:
+  * Fix dependencies in generated pkg-config files
+  * Fix compilation with android/clang
+
+-------------------------------------------------------------------
+Fri Feb  2 10:52:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.4:
+  * OMEMO fixes
+  * Fix use-after-move in EntityTimeManager
+  * EME: Always send encryption name text
+  * Fix interpretation of empty to/from address in the client
+  * MSVC related build fixes
+  * Support installing QXmpp with Qt 5 and Qt 6 in parallel
+  * Support building QXmppOmemo statically
+
+-------------------------------------------------------------------
 Tue Mar 14 14:25:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - remove baselibs, not sure if we need 32bit libs anymore.
