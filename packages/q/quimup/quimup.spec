@@ -1,7 +1,7 @@
 #
 # spec file for package quimup
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 Packman team: http://packman.links2linux.org/
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,26 +13,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           quimup
-Version:        1.4.4
+Version:        2.0.0
 Release:        0
 Summary:        A client for the music player daemon (MPD)
 # was http://www.coonsden.com
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://quimup.sourceforge.io
-Source0:        https://sourceforge.net/projects/quimup/files/Quimup_%{version}_source.tar.gz
-Source1:        %{name}.desktop
-BuildRequires:  libmpdclient-devel
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(taglib)
+Source0:        https://sourceforge.net/projects/quimup/files/Quimup%20%{version}/%{name}_%{version}_source.tar.gz
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(libmpdclient)
 Requires:       mpd
 
 %description
@@ -44,25 +43,27 @@ The focus is on mouse handling: playlist management is done entirely by drag-&-d
 playback functions are directly accessible from the system tray.
 
 %prep
-%setup -q -n Quimup_%{version}_source
-chmod -x COPYING changelog description FAQ.txt README
+%autosetup -p1 -n Quimup
+#chmod -x COPYING changelog description FAQ.txt README
 
 %build
-%qmake5
-make %{?_smp_mflags}
+%qmake6
+%qmake6_build
 
 %install
-%make_install
-install -D -m 755 %{name} %{buildroot}/%{_bindir}/%{name}
-install -D -m 644 %{SOURCE1} %{buildroot}/%{_datadir}/applications/%{name}.desktop
-install -D -m 644 src/resources/mn_icon.png %{buildroot}/%{_datadir}/pixmaps/%{name}.png
-%suse_update_desktop_file -r %{name} AudioVideo Player
+install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
+install -D -m 0644 RPM_DEB_build/share/applications/Quimup.desktop \
+  %{buildroot}/%{_datadir}/applications/%{name}.desktop
+cp -r RPM_DEB_build/share/icons %{buildroot}/%{_datadir}
+install -D -m 0644 RPM_DEB_build/share/man/man1/quimup.1 \
+  %{buildroot}/%{_mandir}/man1/%{name}.1
 
 %files
-%doc changelog description FAQ.txt README
+%doc changelog description faq readme
 %license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
