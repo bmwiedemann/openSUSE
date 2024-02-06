@@ -61,4 +61,12 @@
     + Fix:  67793: Ensure the original session timeout is restored</comment>
     <requestid>1139643</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0d0ba1c656056a0becf802c1427281ce</srcmd5>
+    <version>10.1.18</version>
+    <time>1707233741</time>
+    <user>anag+factory</user>
+    <comment>bsc#1219530</comment>
+    <requestid>1144554</requestid>
+  </revision>
 </revisionlist>

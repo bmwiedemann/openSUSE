@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package tomcat10
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
@@ -138,6 +138,8 @@ Requires:       libtcnative-1-0 >= 1.2.38
 Requires:       logrotate
 BuildArch:      noarch
 Conflicts:      %{app_name}
+Provides:       group(tomcat)
+Provides:       user(tomcat)
 
 %description
 Tomcat is the servlet container that is used in the official Reference
@@ -179,7 +181,7 @@ The documentation of web application for Apache Tomcat.
 Summary:        Expression Language v%{elspec} API
 Group:          Development/Libraries/Java
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Provides:       %{app_name}-el-%{elspec}-api = %{version}-%{release}
 Provides:       el_%{elspec_major}_%{elspec_minor}_api = %{version}-%{release}
 Provides:       el_api = %{elspec}
@@ -203,7 +205,7 @@ Javadoc generated documentation files for Apache Tomcat.
 Summary:        Apache Tomcat JSP API implementation classes
 Group:          Productivity/Networking/Web/Servers
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       %{app_name}-jsp-%{jspspec}-api
 Provides:       jsp = %{jspspec}
 Provides:       jsp%{jspspec_major}%{jspspec_minor}
@@ -234,7 +236,7 @@ Requires:       %{app_name}-jsp-%{jspspec}-api = %{version}-%{release}
 Requires:       %{app_name}-servlet-%{servletspec}-api = %{version}-%{release}
 Requires:       mvn(org.apache.tomcat:tomcat-websocket-client-api)
 Requires(post): ecj >= 4.4
-Requires(preun):coreutils
+Requires(preun): coreutils
 Provides:       jakarta-commons-dbcp-tomcat5 = 1.4
 Obsoletes:      jakarta-commons-dbcp-tomcat5 < 1.4
 Conflicts:      %{app_name}-lib
@@ -246,7 +248,7 @@ Libraries required to successfully run the Tomcat Web container
 Summary:        Apache Tomcat Servlet API implementation classes
 Group:          Productivity/Networking/Web/Servers
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       %{app_name}-servlet-%{servletspec}-api = %{version}-%{release}
 Provides:       servlet = %{servletspec}
 Provides:       servlet11
