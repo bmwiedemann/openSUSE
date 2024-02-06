@@ -1,7 +1,7 @@
 #
 # spec file for package fastjar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define _lto_cflags %{nil}
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           fastjar
 Version:        0.98
@@ -31,7 +32,7 @@ Patch3:         fastjar-CVE-2010-2322.patch
 BuildRequires:  zlib-devel
 %if 0%{?suse_version}
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 %endif
 
 %description

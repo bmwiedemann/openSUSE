@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  6 08:09:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Disable LTO to avoid undefined symbols on some platforms
+
+-------------------------------------------------------------------
 Tue Jul 27 13:06:24 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Define %%make_build for systems that don't have it defined in
