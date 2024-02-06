@@ -770,4 +770,12 @@
     <comment>October 2023 CPU fixes</comment>
     <requestid>1125800</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>2af961609da9448853cbdd9421740a0d</srcmd5>
+    <version>1.8.0.402</version>
+    <time>1707233748</time>
+    <user>anag+factory</user>
+    <comment>January 2024 CPU</comment>
+    <requestid>1144558</requestid>
+  </revision>
 </revisionlist>
