@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  5 11:25:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.14.52:
+  + xml: Fix build with libxml2 2.12.
+
+-------------------------------------------------------------------
 Tue Jan 16 16:01:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
