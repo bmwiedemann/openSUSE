@@ -5506,4 +5506,16 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   --&gt; https://docs.mesa3d.org/relnotes/23.3.4.html</comment>
     <requestid>1141480</requestid>
   </revision>
+  <revision rev="494" vrev="366">
+    <srcmd5>3922b63fec4f55373b71ab2c8068b131</srcmd5>
+    <version>unknown</version>
+    <time>1707233553</time>
+    <user>anag+factory</user>
+    <comment>- Update to bugfix release 23.3.5
+  --&gt; https://docs.mesa3d.org/relnotes/23.3.5.html 
+
+- re-enabled rusticl on sle15-sp6 after linkpac'ing rust-bindgen
+  in X11:XOrg project</comment>
+    <requestid>1144061</requestid>
+  </revision>
 </revisionlist>
