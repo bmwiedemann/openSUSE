@@ -42,6 +42,8 @@ Patch4:         %{name}-gcc-warnings.patch
 Patch5:         makeman-py3.patch
 # bsc#1144255 disable jpeg2k support due to removal of jasper
 Patch8:         netpbm-disable-jasper.patch
+# CVE-2017-5849 [bsc#1022790], CVE-2017-5849 [bsc#1022791]
+Patch9:         netpbm-use-byrow-when-needed.patch
 BuildRequires:  flex
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
