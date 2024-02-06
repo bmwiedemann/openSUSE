@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
@@ -58,7 +58,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 %if %{?suse_version} < 1500
