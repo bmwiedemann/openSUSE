@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 06 07:28:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.1:
+  * build(deps): bump github.com/opencontainers/runc from 1.1.9 to
+    1.1.12 (#2924)
+
+-------------------------------------------------------------------
 Fri Feb 02 15:11:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.55.0:
