@@ -1,0 +1,19 @@
+Index: jigdo-0.8.2/doc/Makefile.in
+===================================================================
+--- jigdo-0.8.2.orig/doc/Makefile.in
++++ jigdo-0.8.2/doc/Makefile.in
+@@ -15,12 +15,8 @@ DOCBOOK2HTML =	docbook2html
+ .SUFFIXES: .1 .sgml .html
+ 
+ .sgml.1:
+-		mkdir -p tmp && cp "$<" tmp \
+-		    && cd tmp && $(DOCBOOK2MAN) "`echo $< | sed 's%.*/%%'`"
+-		sed -e 's/   */ /g' <"`ls tmp/*.1`" >"$@"
+-		rm -rf tmp
+-#		sed -e 's%\\%\\\\%g;' <"$<" | tr -s '[:space:]' ' ' \
+-#		    | $(DOCBOOKTOMAN) - >"$@"
++		$(DOCBOOK2MAN) "$<"	
++		mv `echo "$@" | sed 's/\.1/.en.1'/g` "$@"		
+ .sgml.html:
+ 		rm -f "$@"
+ 		$(DOCBOOK2HTML) "$<" --nochunks
