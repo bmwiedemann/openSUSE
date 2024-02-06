@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  5 03:29:55 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.16.4
+  This release works around and improves detection of a bug in the
+  compression library used by restic. The resulting issue only
+  happens when using restic 0.16.3 and the max compression level
+  (the default auto and off compression levels are not affected),
+  and when the source files being backed up have specific data in
+  them to trigger the bug. If you use max compression, you can use
+  restic check --read-data to make sure you're not affected.
+
+-------------------------------------------------------------------
 Wed Jan 17 13:04:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.16.3
