@@ -117,4 +117,13 @@
   * Variable scope reductions as suggested by cppcheck</comment>
     <requestid>1040094</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1f6c9bcb087e1983a2cf99ab926a0e13</srcmd5>
+    <version>1.2.7</version>
+    <time>1707233552</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.7
+  * This release fixes a failure to build with C23 compilers.</comment>
+    <requestid>1144055</requestid>
+  </revision>
 </revisionlist>
