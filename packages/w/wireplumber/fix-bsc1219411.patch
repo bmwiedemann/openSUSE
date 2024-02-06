@@ -1,0 +1,28 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Fix bsc#1219411
+
+wireplumber enables the bluetooth support in pipewire by default but this
+clashes with the bluetooth support in pulseaudio if audio is disabled in
+pipewire so this patch disables bluetooth support unless the
+90-enable-all.lua file is installed and we now move that file into the
+wireplumber-audio package.
+
+Index: wireplumber-0.4.17/src/config/bluetooth.lua.d/50-bluez-config.lua
+===================================================================
+--- wireplumber-0.4.17.orig/src/config/bluetooth.lua.d/50-bluez-config.lua
++++ wireplumber-0.4.17/src/config/bluetooth.lua.d/50-bluez-config.lua
+@@ -1,4 +1,4 @@
+-bluez_monitor.enabled = true
++bluez_monitor.enabled = false
+ 
+ bluez_monitor.properties = {
+   -- Enabled roles (default: [ a2dp_sink a2dp_source bap_sink bap_source hfp_hf hfp_ag ])
+Index: wireplumber-0.4.17/src/config/bluetooth.lua.d/90-enable-all.lua
+===================================================================
+--- wireplumber-0.4.17.orig/src/config/bluetooth.lua.d/90-enable-all.lua
++++ wireplumber-0.4.17/src/config/bluetooth.lua.d/90-enable-all.lua
+@@ -1,2 +1,4 @@
++bluez_monitor.enabled = true
++
+ bluez_monitor.enable()
+ bluez_midi_monitor.enable()
