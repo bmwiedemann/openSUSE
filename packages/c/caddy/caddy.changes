@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Feb  6 13:22:22 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Remove define github project name components no longer needed
+  * Remove define gname and uname for user and group creation, use
+    package name macro with identical value
+  * Drop BuildRequires: golang-packaging. The original macros for
+    file movements into GOPATH are obsolete with Go modules. Macro
+    go_nostrip is no longer needed with current binutils and Go.
+  * Use autosetup -a 1 to unpack source and vendored dependencies
+  * Drop export CGO_ENABLED="0". Use the default unless there is a
+    defined requirement or benefit.
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Remove ldflags -s (Omit symbol table and debug info) and -w
+    (Omit DWARF symbol table). This information is used to produce
+    separate debuginfo packages and binaries are stripped for
+    reduced size by GNU strip during RPM build.
+  * Add basic %check to execute binary --help
+
+-------------------------------------------------------------------
+Tue Feb  6 08:23:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop deprecated go_provides macro: even though it tries to guard
+  on suse_version <= 1110, it has entirely disarms the dep scanner.
+- Remove the manual user/group provides: the package uses
+  sysusers.d; the auto-provides were not working due to the broken
+  go_provides.
+
+-------------------------------------------------------------------
 Mon Feb  5 13:40:52 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Provide user and group (due to RPM 4.19)

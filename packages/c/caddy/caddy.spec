@@ -16,10 +16,6 @@
 #
 
 
-%define project github.com/caddyserver/caddy
-%define gname caddy
-%define uname caddy
-
 # SLE-12 _sharedstatedir was /usr/com, _localstatedir is /var as expected
 # SLE-15+ _sharedstatedir is /var/lib, _localstatedir is /var
 # _sharedstatedir used here as home directory for newly created user caddy
@@ -43,17 +39,11 @@ Source4:        index.html
 Source5:        bash-completion
 Source6:        zsh-completion
 Source7:        caddy.sysusers
-BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  golang(API) >= 1.20
-Provides:       group(%{gname})
-Provides:       user(%{uname})
 %{?systemd_requires}
 %{sysusers_requires}
-%{go_provides}
-# Make sure that the binary is not getting stripped.
-%{go_nostrip}
 
 %description
 Caddy is a powerful, extensible platform to serve your sites, services, and
@@ -63,17 +53,18 @@ It operates primarily at L4 (transport layer) and L7 (application layer) of
 the OSI model, though it has the ability to work with other layers.
 
 %prep
-%setup -q
+%autosetup -a 1
 
 %build
-%{goprep} %{project}
+# Build the binary.
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build ./cmd/%{name}
 
-# tarball causes "inconsistent vendoring"
-tar -xf %{SOURCE1}
-
-CGO_ENABLED=0
-
-go build -v -buildmode=pie -mod=vendor -ldflags "-s -w" -o caddy cmd/caddy/main.go
+%check
+# execute the binary as a basic check
+./%{name} --help
 
 %sysusers_generate_pre %{SOURCE7} %{name} %{name}.conf
 
@@ -122,7 +113,7 @@ install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_datadir}/zsh/site-functions/_%{n
 %{_sysusersdir}/%{name}.conf
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/Caddyfile
-%dir %attr(0750, %{uname}, %{gname}) %{_sharedstatedir}/%{name}
+%dir %attr(0750, %{name}, %{name}) %{_sharedstatedir}/%{name}
 # filesystem owns all the parent directories here
 %{_datadir}/bash-completion/completions/%{name}
 # own parent directories in case zsh is not installed
