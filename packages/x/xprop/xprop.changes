@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  4 21:12:31 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.7
+  * This release fixes a failure to build with C23 compilers. 
+
+-------------------------------------------------------------------
 Sun Dec  4 22:29:05 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.6
