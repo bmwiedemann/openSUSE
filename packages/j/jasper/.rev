@@ -329,4 +329,20 @@
     <comment>  * Fix invalid memory write bug (#367) bsc#1218802 (CVE-2023-51257).</comment>
     <requestid>1138803</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2e626809495cb65694f6d3275c13e590</srcmd5>
+    <version>4.2.0</version>
+    <time>1707233634</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.2.0:
+  * Add the JAS_PACKAGING option to the CMake build in an attempt to allow
+    easier control over rpath settings by packagers of JasPer.
+  * Remove a number of obsolete scripts.
+  * Make some cosmetic changes to the code for the JPC codec in order
+    to improve readability (#371).
+  * Fix a portability bug related to threads/atomics.
+  * Replace some lingering uses of strtok in the JPC coder with jas_strtok,
+    since the use of strtok is problematic in multithreading contexts.</comment>
+    <requestid>1144460</requestid>
+  </revision>
 </revisionlist>
