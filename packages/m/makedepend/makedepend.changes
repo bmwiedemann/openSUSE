@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  5 12:31:54 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.9
+  * This release includes code cleanups and other changes,
+    including removing the build time dependency on the xorgproto
+    package.
+- supersedes u_Avoid-depending-on-xproto.patch
+
+-------------------------------------------------------------------
 Tue Jan 31 12:42:13 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - renamed 0001-Avoid-depending-on-xproto.patch to
