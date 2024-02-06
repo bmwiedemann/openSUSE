@@ -1,7 +1,7 @@
 #
 # spec file for package python-msgpack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-msgpack
-Version:        1.0.5
+Version:        1.0.7
 Release:        0
 Summary:        MessagePack (de)serializer
 License:        Apache-2.0
@@ -35,10 +34,6 @@ BuildRequires:  python-rpm-macros
 # was renamed at 0.5.0
 Provides:       python-msgpack-python = %{version}
 Obsoletes:      python-msgpack-python < 0.5.0
-%ifpython2
-Provides:       %{oldpython}-msgpack-python = %{version}
-Obsoletes:      %{oldpython}-msgpack-python < 0.5.0
-%endif
 %python_subpackages
 
 %description
@@ -56,6 +51,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_expand rm -v %{buildroot}%{$python_sitearch}/msgpack/*.h
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
