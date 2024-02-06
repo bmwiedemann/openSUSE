@@ -20,6 +20,7 @@
 %define user_group  dnscrypt
 %define config_dir  %{_sysconfdir}/%{name}
 %define home_dir    %{_localstatedir}/lib/%{name}
+%define home_dir_escaped    \\%{_localstatedir}\\/lib\\/%{name}
 %define log_dir     %{_localstatedir}/log/%{name}
 %define services    %{name}.socket %{name}.service %{name}-resolvconf.service
 
@@ -40,18 +41,19 @@ Source4:        example-dnscrypt-proxy.toml.sed
 Source5:        README.openSUSE
 # Example how to override socket unit
 Source6:        %{name}.socket.conf
+# dnscrypt user configuration
+Source7:        %{user_group}-user.conf
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
-BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  golang(API) >= 1.20
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  vendored_licenses_packager
+%sysusers_requires
+%{?systemd_requires}
 # For systemd pidfile solution.
 Requires:       bash
-# for daemon group/user
-Requires(pre):  shadow
-%{?systemd_requires}
 Recommends:     ca-certificates
 # needed for resolvconf support
 Suggests:       openresolv
@@ -66,6 +68,9 @@ and ODoH (Oblivious DoH).
 
 %prep
 %setup -q -n %{name}-%{version}
+
+# replace with home directory from spec
+sed -i "s/home_dir_placeholder/%{home_dir_escaped}/" %{SOURCE7}
 
 # duplicate original config file
 cp ./%{name}/example-%{name}.toml ./%{name}.toml.default
@@ -85,6 +90,7 @@ sed -i "1s/#! \/usr\/bin\/env python3/#! \/usr\/bin\/python3/" utils/generate-do
 %vendored_licenses_packager_prep
 
 %build
+%sysusers_generate_pre %{SOURCE7} %{user_group} %{user_group}.conf
 cd %{name}
 go build -mod=vendor -buildmode=pie
 
@@ -119,6 +125,9 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.socket
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}-resolvconf.service
 
+# sysuser
+install -D -m 0644 %{SOURCE7} %{buildroot}%{_sysusersdir}/%{user_group}.conf
+
 # service link
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-resolvconf
@@ -131,12 +140,7 @@ cp %{SOURCE5} README.openSUSE
 # Example drop-in.
 cp %{SOURCE6} %{name}.socket.conf
 
-%pre
-# group and user
-getent group %{user_group} >/dev/null || %{_sbindir}/groupadd -r %{user_group}
-getent passwd %{user_group} >/dev/null || %{_sbindir}/useradd -r -g %{user_group} \
-  -d %{home_dir} -s /bin/false -c "DNScrypt Proxy" %{user_group}
-
+%pre -f %{user_group}.pre
 %service_add_pre %{services}
 
 %post
@@ -160,6 +164,7 @@ getent passwd %{user_group} >/dev/null || %{_sbindir}/useradd -r -g %{user_group
 %config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/captive-portals.txt
 %config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/cloaking-rules.txt
 %config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/forwarding-rules.txt
+%{_sysusersdir}/%{user_group}.conf
 %{_sbindir}/%{name}
 %{_sbindir}/rc%{name}
 %{_sbindir}/rc%{name}-resolvconf
