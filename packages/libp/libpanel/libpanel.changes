@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  5 08:44:07 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- Choose higher gcc version to build on SLE and Leap 15.
+- Update the name of libpanel-1-1 to be compliant with:
+  https://en.opensuse.org/openSUSE:Shared_library_packaging_policy
+
+-------------------------------------------------------------------
 Sun Sep 17 01:24:14 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 1.4.0:
