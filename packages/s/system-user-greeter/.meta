@@ -1,0 +1,5 @@
+<package name="system-user-greeter" project="openSUSE:Factory">
+  <title>system-user-greeter</title>
+  <description>greeter system user and group, used by login managers such as greetd</description>
+  <devel project="X11:Wayland" package="system-user-greeter"/>
+</package>
