@@ -45,4 +45,12 @@ It is a dependency of the next version of Haxe (4.0.0).</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1089872</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2f4f2c0c08c08f79be1092193001aa1b</srcmd5>
+    <version>2.0.5</version>
+    <time>1707233742</time>
+    <user>anag+factory</user>
+    <comment>- remove unused BuildRequires oUnit qcheck qtest</comment>
+    <requestid>1144533</requestid>
+  </revision>
 </revisionlist>

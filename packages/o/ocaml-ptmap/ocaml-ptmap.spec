@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ptmap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,7 @@ URL:            https://opam.ocaml.org/packages/ptmap
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
-BuildRequires:  ocamlfind(oUnit)
-BuildRequires:  ocamlfind(qcheck)
-BuildRequires:  ocamlfind(qtest)
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocamlfind(seq)
 BuildRequires:  ocamlfind(stdlib-shims)
 
