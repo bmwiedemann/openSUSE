@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  3 09:32:40 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add profiler_builtins module needed by Chromium
+  * Use compiler-rt from Clang on TW
+- Disable pgo-branch-weights test - requires gold linker
+
+-------------------------------------------------------------------
 Sat Jan 27 01:03:10 UTC 2024 - William Brown <william.brown@suse.com>
 
 - bsc#1217722 jsc#PED-6570 - exclude issue-71519 as when we enable lld for wasm,
