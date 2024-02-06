@@ -1,7 +1,7 @@
 #
 # spec file for package tuxguitar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@
 %global bit x86
 %endif
 Name:           tuxguitar
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        A multitrack tablature editor and player written in Java-SWT
 License:        LGPL-2.1-or-later
@@ -65,7 +65,6 @@ Patch12:        0011-no-fluidsynth.patch
 Patch20:        0012-default-soundfont.patch
 Patch21:        0013-startscript.patch
 Patch22:        0014-desktop.patch
-Patch30:        tuxguitar-CVE-2020-13940.patch
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -82,6 +81,7 @@ Requires:       apache-commons-compress
 Requires:       eclipse-swt >= 4.13
 Recommends:     snd_sf2
 Recommends:     timidity
+Recommends:     wqy-zenhei-fonts
 Suggests:       fluid-soundfont-gm
 %if 0%{?suse_version} >= 1500
 BuildRequires:  fluidsynth-devel
@@ -118,9 +118,10 @@ find . -name "*.so" -print -delete
 # In source archive, all modules have an attribute "VERSION" set to "SNAPSHOT"
 # this attribute is set during build/delivery
 # Refer to application delivery process :
-#   https://github.com/helge17/tuxguitar/blob/9d40a35ffc906fd0479b4c47aff00e048daac220/misc/build_tuxguitar_from_source.sh#L118
-find . \( -name "*.xml" -or -name "*.gradle"  -or -name "*.properties" -or -name control -or -name Info.plist \) -and -type f -exec sed -i "s/SNAPSHOT/%{version}/" '{}' \;
-sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME = (TGApplication.NAME + \" %{version}\");/" TuxGuitar/src/org/herac/tuxguitar/app/view/dialog/about/TGAboutDialog.java
+#   https://github.com/helge17/tuxguitar/blob/bd6b29c9539d66b625a625e70bd8718497aa107b/misc/build_tuxguitar_from_source.sh#L148
+find . \( -name "*.xml" -or -name "*.gradle"  -or -name "*.properties" -or -name "*.html" -or -name control -or -name Info.plist \) -and -not -path "./website/*" -and -type f -exec sed -i "s/SNAPSHOT/%{version}/" '{}' \;
+# Also set the version in the "Help - About" dialog
+sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME = (TGApplication.NAME + \" %{version}\");/" desktop/TuxGuitar/src/org/herac/tuxguitar/app/view/dialog/about/TGAboutDialog.java
 
 %patch10 -p1
 %if 0%{?suse_version} <= 1500
@@ -134,22 +135,19 @@ sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME 
 %patch21 -p1
 %patch22 -p1
 
-%patch30 -p1
-
-%pom_xpath_remove "pom:profile[pom:id[text()='platform-windows-swt-all']]"
-%pom_xpath_remove "pom:profile[pom:id[text()='platform-macos-swt-cocoa-64']]"
-%pom_xpath_remove "pom:profile[pom:id[text()='platform-freebsd-swt-x86_64']]"
-%pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt
-%pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt build-scripts/%{name}-linux-swt-%{bit}
-%pom_xpath_remove "pom:artifactItem[pom:destFileName[text()='swt.jar']]" build-scripts/%{name}-linux-swt-%{bit}
-%pom_remove_dep :org.eclipse.swt.gtk.linux.x86_64
-%pom_remove_dep :org.eclipse.swt.win32.win32.x86_64
-%pom_remove_dep :org.eclipse.swt.cocoa.macosx.x86_64
-%pom_xpath_inject pom:modules "<module>../../TuxGuitar-viewer</module>" build-scripts/%{name}-linux-swt-%{bit}
+%pom_xpath_remove "pom:profile[pom:id[text()='platform-windows-all']]" desktop/pom.xml
+%pom_xpath_remove "pom:profile[pom:id[text()='platform-macos-cocoa-64']]" desktop/pom.xml
+%pom_xpath_remove "pom:profile[pom:id[text()='platform-freebsd-x86_64']]" desktop/pom.xml
+%pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt  desktop/pom.xml
+%pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt desktop/build-scripts/%{name}-linux-swt-%{bit}
+%pom_xpath_remove "pom:artifactItem[pom:destFileName[text()='swt.jar']]" desktop/build-scripts/%{name}-linux-swt-%{bit}
+%pom_remove_dep :org.eclipse.swt.gtk.linux.x86_64 desktop/pom.xml
+%pom_remove_dep :org.eclipse.swt.win32.win32.x86_64 desktop/pom.xml
+%pom_remove_dep :org.eclipse.swt.cocoa.macosx.x86_64 desktop/pom.xml
 
 %build
 %{mvn_build} -j -f -- \
-    -e -f build-scripts/%{name}-linux-swt-%{bit}/pom.xml \
+    -e -f desktop/build-scripts/%{name}-linux-swt-%{bit}/pom.xml \
     -Dproject.build.sourceEncoding=UTF-8 -Dnative-modules=true
 
 %install
@@ -157,11 +155,11 @@ sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME 
 
 # install jnis we built
 mkdir -p %{buildroot}%{_libdir}/%{name}
-cp -a build-scripts/native-modules/*/target/build/lib/*.so %{buildroot}%{_libdir}/%{name}/
+cp -a desktop/build-scripts/native-modules/*/target/build/lib/*.so %{buildroot}%{_libdir}/%{name}/
 
 # Launch script
 mkdir -p %{buildroot}/%{_bindir}
-cat build-scripts/common-resources/common-linux/tuxguitar.sh | sed 's#@LIBDIR@#%{_libdir}#g' > %{buildroot}/%{_bindir}/%{name}
+cat desktop/build-scripts/common-resources/common-linux/tuxguitar.sh | sed 's#@LIBDIR@#%{_libdir}#g' > %{buildroot}/%{_bindir}/%{name}
 
 # Fix permissions
 chmod 755 %{buildroot}/%{_bindir}/%{name}
@@ -169,25 +167,25 @@ chmod 755 %{buildroot}%{_libdir}/%{name}/*.so
 
 # mime types
 mkdir -p %{buildroot}/%{_datadir}/mime/packages/
-cp -a build-scripts/common-resources/common-linux/share/mime/packages/tuxguitar.xml %{buildroot}/%{_datadir}/mime/packages/
+cp -a desktop/build-scripts/common-resources/common-linux/share/mime/packages/tuxguitar.xml %{buildroot}/%{_datadir}/mime/packages/
 
 # data files
 mkdir -p %{buildroot}/%{_datadir}/%{name}
-cp -a TuxGuitar/share/* %{buildroot}/%{_datadir}/%{name}
+cp -a desktop/TuxGuitar/share/* %{buildroot}/%{_datadir}/%{name}
 cp -a misc/tuxguitar.tg %{buildroot}/%{_datadir}/%{name}
-cp -a build-scripts/%{name}-linux-swt-%{bit}/target/%{name}-%{version}-linux-swt-%{bit}/dist/* %{buildroot}/%{_datadir}/%{name}
+cp -a desktop/build-scripts/%{name}-linux-swt-%{bit}/target/%{name}-%{version}-linux-swt-%{bit}/dist/* %{buildroot}/%{_datadir}/%{name}
 
 # desktop files
 install -dm 755 %{buildroot}/%{_datadir}/applications
-install -pm 644 build-scripts/common-resources/common-linux/share/applications/tuxguitar.desktop %{buildroot}/%{_datadir}/applications/
+install -pm 644 desktop/build-scripts/common-resources/common-linux/share/applications/tuxguitar.desktop %{buildroot}/%{_datadir}/applications/
 
 # icon
-install -D -m 644 build-scripts/common-resources/common-linux/share/pixmaps/tuxguitar.xpm %{buildroot}%{_datadir}/pixmaps/tuxguitar.xpm
+install -D -m 644 desktop/build-scripts/common-resources/common-linux/share/pixmaps/tuxguitar.xpm %{buildroot}%{_datadir}/pixmaps/tuxguitar.xpm
 %suse_update_desktop_file -n -i tuxguitar AudioVideo Music Java
 
 # man page
 mkdir -p %{buildroot}/%{_mandir}/man1
-cp -a build-scripts/common-resources/common-linux/share/man/man1/%{name}.1 %{buildroot}/%{_mandir}/man1/
+cp -a desktop/build-scripts/common-resources/common-linux/share/man/man1/%{name}.1 %{buildroot}/%{_mandir}/man1/
 
 %fdupes -s %{buildroot}
 
