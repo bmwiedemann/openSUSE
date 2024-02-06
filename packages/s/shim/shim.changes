@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  2 05:57:07 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Limit the requirement of fde-tpm-helper-macros to the distro with
+  suse_version 1600 and above (bsc#1219460)
+
+-------------------------------------------------------------------
 Sun Jan 28 09:32:32 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
 
 -- Update to version 15.8

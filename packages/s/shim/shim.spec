@@ -80,8 +80,10 @@ BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl >= 0.9.8
 BuildRequires:  pesign
 BuildRequires:  pesign-obs-integration
-%if 0%{?suse_version} > 1320
+%if 0%{?suse_version} >= 1600
 BuildRequires:  fde-tpm-helper-rpm-macros
+%endif
+%if 0%{?suse_version} > 1320
 BuildRequires:  update-bootloader-rpm-macros
 %endif
 %if 0%{?update_bootloader_requires:1}
