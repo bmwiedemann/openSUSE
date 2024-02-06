@@ -20,7 +20,7 @@
 # and possibly prone to security issues.
 %bcond_with webextensions
 Name:           nyxt
-Version:        3.11.1
+Version:        3.11.2
 Release:        0
 Summary:        Keyboard-oriented, Common Lisp extensible web-browser
 License:        BSD-3-Clause
@@ -44,7 +44,6 @@ Requires:       gsettings-desktop-schemas
 Requires:       libfixposix4
 Requires:       libwebkit2gtk-4_1-0
 Requires:       xclip
-Conflicts:      nyxt-git
 
 %description
 Nyxt is a keyboard-oriented, extensible web-browser designed for power users.
@@ -67,10 +66,23 @@ make all PREFIX=/usr LIBDIR=%{_libdir} NASDF_COMPRESS=T
 %if %{with webextensions}
 strip -s %{buildroot}/%{_libdir}/nyxt/libnyxt.so
 %endif
+
+mv "%{buildroot}%{_bindir}/nyxt" "%{buildroot}%{_bindir}/nyxt.bin"
+cat > "%{buildroot}%{_bindir}/nyxt" << EOF
+#!/bin/sh
+
+# partial work-around for WebKitGTK gstreamer issue running nyxt sandboxed:
+# https://bugs.webkit.org/show_bug.cgi?id=268759
+
+GST_PLUGIN_SCANNER=/usr/libexec/gstreamer-1.0/gst-plugin-scanner-%{_target_cpu} exec -a nyxt nyxt.bin "\$@"
+EOF
+chmod +x "%{buildroot}%{_bindir}/nyxt"
+
 %suse_update_desktop_file %{name}
 
 %files
 %{_bindir}/nyxt
+%{_bindir}/nyxt.bin
 %if %{with webextensions}
 %{_libdir}/nyxt/
 %endif

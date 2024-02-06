@@ -127,4 +127,13 @@ These issues are now fixed with a patch, hence this new submission.</comment>
     <comment>Update to version 3.11.1</comment>
     <requestid>1140598</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5e21c5b5f9770aca08d02bae107da828</srcmd5>
+    <version>3.11.2</version>
+    <time>1707233685</time>
+    <user>anag+factory</user>
+    <comment>partial work-around for https://bugs.webkit.org/show_bug.cgi?id=268759
+Update to version 3.11.2</comment>
+    <requestid>1144423</requestid>
+  </revision>
 </revisionlist>

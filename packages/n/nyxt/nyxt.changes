@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  5 09:58:00 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- partial work-around for https://bugs.webkit.org/show_bug.cgi?id=268759
+- Update to version 3.11.2:
+  * Bug fixes
+    - When enabling vi keybindings via common settings, start the
+      prompt buffer with vi-insert-mode enabled
+    - The scroll position is remembered when issuing buffer reloading
+      commands, such as reload-current-buffer (f5).
+    - Improve performance of edit-file (unbound)
+    - Fix bug that prevented listing buffers recovered via command
+      reopen-buffer (Ctrl+/)
+
+-------------------------------------------------------------------
 Mon Jan 22 11:51:20 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - added nyxt-rpmlintrc
