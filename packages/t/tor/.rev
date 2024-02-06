@@ -1090,4 +1090,12 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>1132448</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>e378e5febc08923a44c6603982c6cfc9</srcmd5>
+    <version>0.4.8.10</version>
+    <time>1707233724</time>
+    <user>anag+factory</user>
+    <comment>- fix users/groups with rpm 4.19 (forwarded request 1144143 from AndreasStieger)</comment>
+    <requestid>1144494</requestid>
+  </revision>
 </revisionlist>
