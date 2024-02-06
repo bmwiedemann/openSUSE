@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Feb  6 07:50:29 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- Rely only on <major>.<minor> for aardvark-dns requires, even though
+  it is released in sync with netavark, relying on patch version is brittle.
+
+-------------------------------------------------------------------
+Thu Feb 01 14:04:11 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.10.2:
+  * Release v1.10.2
+  * Release notes for v1.10.2
+  * [CI:BUILD] Packit/rpm: fix aardvark-dns handling
+  * Do not perform network namespace detection on AV update
+  * Release v1.10.1
+  * Updated release notes for v1.10.1
+  * update to nftables release 0.3 from crates.io
+  * DISTRO_PACKAGE: fix incorrect vendored tar archive URL
+  * Bump to 1.11.0-dev
+  * Release 1.10.0
+  * Release notes for 1.10.0
+  * RPM: update .cargo/config before building
+  * Add support for isolation to the nftables driver
+  * build(deps): bump h2 from 0.3.22 to 0.3.24
+  * chore(deps): update rust crate chrono to 0.4.32
+  * fix(deps): update rust crate env_logger to 0.11.0
+  * chore(deps): update dependency containers/automation_images to v20240102
+  * Bump nftables-rs to latest commit
+  * Netavark: nftables support
+  * fix(deps): update rust crate serde_json to 1.0.111
+  * feat: added the --firewall-driver option
+  * Document how to generate a code coverage report for netavark
+  * fix(deps): update rust crate clap to ~4.4.12
+  * fix(deps): update rust crate serde_json to 1.0.110
+  * fix(deps): update rust-futures monorepo to 0.3.30
+  * fix(deps): update rust crate nispor to 1.2.16
+  * chore(deps): update rust crate tempfile to 3.9.0
+  * Use tonic::transport::Uri instead of HTTP
+  * chore(deps): update dependency containers/automation_images to v20231208
+  * fix(deps): update rust crate tokio to 1.35
+  * dhcp-proxy: return actual error instead of generic one
+  * dhcp-proxy: skip set gateway if missing
+  * bump netlink-packet-route to 0.18.1
+  * chore(deps): update rust crate once_cell to 1.19.0
+  * fix(deps): update rust crate nispor to 1.2.15
+  * fix(deps): update rust crate serde to 1.0.193
+  * fix(deps): update rust crate clap to ~4.4.10
+  * aardvark: show error if process is in wrong netns
+  * aardvark: remove unessesary unlock lockfile calls
+  * fix(deps): update rust crate url to 2.5.0
+  * Bump working version to v1.10.0-dev
+
+-------------------------------------------------------------------
 Thu Nov 30 07:05:28 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.9.0:
