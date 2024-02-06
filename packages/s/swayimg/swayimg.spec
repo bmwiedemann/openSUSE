@@ -56,7 +56,7 @@ opening the image directly in a terminal window.
 %autosetup
 
 %build
-%meson
+%meson -Dversion=%{version}
 %meson_build
 
 %install
