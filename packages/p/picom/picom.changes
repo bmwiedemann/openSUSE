@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Feb  3 16:44:06 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 11.1 (changes since 10.2):
+  * Notable features
+    - picom now uses dithering to prevent banding. Banding is most
+      notable when using a strong background blur.
+    - Frame pacing. picom uses present feedback information to
+      schedule new frames when it makes sense to do so. This
+      improves latency, and replaces the `glFlush` and
+      `GL_MaxFramesAllowed=1` hacks we used to do for NVIDIA.
+    - Some missing features have been implemented for the EGL
+      backend.
+  * Bug fixes
+    - Many memory/resource leak fixes.
+    - Fix tiling of wallpaper.
+    - Fix some blur artefacts.
+    - Fix shadow colour for transparent shadows.
+    - Don't spam logs when another compositor is running.
+    - Fix rounded corners showing as black with the xrender
+      backend.
+    - Fix blur with rounded windows.
+    - Fix missing fading on window close for some window managers.
+  * Build changes
+    - Dependency `pcre` has been replaced by `pcre2`.
+    - New dependency xcb-util.
+    - xinerama is no longer used.
+    - picom now tries to give itself a real-time scheduling
+      priority.
+  * Deprecations
+    - The `kawase` blur method is removed. Note this is just an
+      alias to the `dual_kawase` method, which is still available.
+    - Uses of `--sw-opti`, and `--respect-prop-shadow` are now hard
+      errors.
+    - `-F` has been removed completely. It was deprecated in 2012.
+- Drop patches included in upstream:
+  * 0001-core-expand-X-error-handling.patch
+  * 0002-core-added-proper-event-handling-for-XESetWireToEven.patch
+  * 0003-core-event-code-refactoring.patch
+- Add picom-11.1-fix-nvidia-high-cpu-usage.patch: Workaround a
+  NVIDIA problem that causes high CPU usage after suspend/resume
+  (adapted from commit 238c3cc8336fe24370a3ca44ff0d891ca8907c94).
+
+-------------------------------------------------------------------
 Tue Oct 17 16:40:34 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Add patch to Picom spamming Xlib: ignoring invalid extension event 161 errors.

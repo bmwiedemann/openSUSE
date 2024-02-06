@@ -150,4 +150,12 @@ Fixes:
   0003-core-event-code-refactoring.patch</comment>
     <requestid>1123689</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1ceefbf4aa2dd373c290cd7d8d7062a7</srcmd5>
+    <version>11.1</version>
+    <time>1707233758</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144655</requestid>
+  </revision>
 </revisionlist>

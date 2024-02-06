@@ -1,7 +1,7 @@
 #
 # spec file for package picom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,15 @@
 
 
 Name:           picom
-Version:        10.2
+Version:        11.1
 Release:        0
 Summary:        Stand-alone compositor for X11
 License:        MIT AND MPL-2.0
 Group:          System/X11/Utilities
 URL:            https://github.com/yshui/picom
-Source0:        https://github.com/yshui/picom/archive/v%{version}.tar.gz
-# Patch-FIX-UPSTREAM core: expand X error handling based on
-# aca3fdcef7bfcb1c3ce65cf87413fa6ab280d183
-# Required for the fix further below
-Patch1:         0001-core-expand-X-error-handling.patch
-# PATCH-FIX-UPSTREAM added proper event handling for XESetWireToEvent -- based on PR 123
-Patch2:         0002-core-added-proper-event-handling-for-XESetWireToEven.patch
-Patch3:         0003-core-event-code-refactoring.patch
+Source:         https://github.com/yshui/picom/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM picom-11.1-fix-nvidia-high-cpu-usage.patch yshuiv7@gmail.com -- Workaround a NVIDIA problem that causes high CPU usage after suspend/resume
+Patch0:         picom-11.1-fix-nvidia-high-cpu-usage.patch
 BuildRequires:  asciidoc
 BuildRequires:  c_compiler
 BuildRequires:  hicolor-icon-theme
@@ -43,7 +38,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libconfig)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libev)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libxdg-basedir)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(x11)
@@ -59,7 +54,6 @@ BuildRequires:  pkgconfig(xcb-shape)
 BuildRequires:  pkgconfig(xcb-sync)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes)
-BuildRequires:  pkgconfig(xcb-xinerama)
 BuildRequires:  pkgconfig(xext)
 Obsoletes:      compton <= 0.1.0
 Provides:       compton = %{version}
