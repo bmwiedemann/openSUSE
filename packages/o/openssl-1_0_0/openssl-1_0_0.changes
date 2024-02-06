@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 30 14:15:25 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security fix: [bsc#1219243, CVE-2024-0727]
+  * Add NULL checks where ContentInfo data can be NULL
+  * Add openssl-CVE-2024-0727.patch
+
+-------------------------------------------------------------------
 Mon Nov 13 09:29:26 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security fix: [bsc#1216922, CVE-2023-5678]
