@@ -4,7 +4,12 @@
 2. Adjust new package version in `_service`
 3. Run `osc service manualrun`
 4. Check the version numbers in all `kustomization.yaml` files in
-   `./flux2/manifests/bases/*`.
+   `./flux2/manifests/bases/*` by using the following command:
+
+   ```
+   grep github.com flux2/manifests/bases/*/kustomization.yaml
+   ```
+
 5. Run `download_yaml.sh` (this downloads the correct versions of all the
    controller yaml files to the current directory)
 6. Adjust the version numbers in the spec file. The code in the spec copies the

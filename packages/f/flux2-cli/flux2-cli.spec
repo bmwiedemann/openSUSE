@@ -1,7 +1,7 @@
 #
 # spec file for package flux2-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,15 @@
 
 # check these versions on updates
 # see flux2/manifests/bases/*/kustomization.yaml
-%define helm_controller_version             v0.37.2
-%define image_automation_controller_version v0.37.0
-%define image_reflector_controller_version  v0.31.1
-%define kustomize_controller_version        v1.2.1
-%define notification_controller_version     v1.2.3
-%define source_controller_version           v1.2.3
+%define helm_controller_version             v0.37.4
+%define image_automation_controller_version v0.37.1
+%define image_reflector_controller_version  v0.31.2
+%define kustomize_controller_version        v1.2.2
+%define notification_controller_version     v1.2.4
+%define source_controller_version           v1.2.4
 
 Name:           flux2-cli
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
