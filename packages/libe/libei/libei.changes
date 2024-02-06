@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  5 09:29:58 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.1
+  * Previously, using OEFFIS_DEVICE_ALL_DEVICES in
+    oeffis_create_session() would erroneously result in the portal
+    selecting no devices instead of all.
+
+-------------------------------------------------------------------
 Wed Dec  6 08:31:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2
