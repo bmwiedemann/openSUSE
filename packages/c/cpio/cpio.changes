@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  5 09:22:10 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 2.15:
+  * Fix the operation of --no-absolute-filenames --make-directories.
+  * Restore access and modification times of symlinks in copy-in and
+    copy-pass modes.
+- Remove fix-operation-no-absolute-filenames.patch
+
+-------------------------------------------------------------------
 Mon Jul 10 14:52:48 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Backport upstream fix for --no-absolute-filenames --make-directories
@@ -18,7 +27,7 @@ Fri Jun 23 13:02:55 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
   * Fix cpio header verification.
   * Fix handling of device numbers on copy out.
   * Fix calculation of CRC in copy-out mode.
-  * Rewrite the fix for CVE-2015-1197.
+  * Rewrite the fix for CVE-2015-1197
   * Fix combination of --create --append --directory.
   * Fix appending to archives bigger than 2G.
 - Refresh patches:
@@ -31,6 +40,7 @@ Fri Jun 23 13:02:55 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
   * fix-CVE-2021-38185.patch
   * fix-CVE-2021-38185_2.patch
   * fix-CVE-2021-38185_3.patch
+- Fix CVE-2023-7207, path traversal vulnerability, bsc#1218571
 
 -------------------------------------------------------------------
 Tue Dec 27 10:29:29 UTC 2022 - Ludwig Nussel <lnussel@suse.com>

@@ -1,7 +1,7 @@
 #
 # spec file for package cpio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cpio
-Version:        2.14
+Version:        2.15
 Release:        0
 Summary:        A Backup and Archiving Utility
 License:        GPL-3.0-only
@@ -41,8 +41,6 @@ Patch20:        cpio-close_files_after_copy.patch
 Patch21:        cpio-pattern-file-sigsegv.patch
 Patch23:        paxutils-rtapelib_mtget.patch
 Patch25:        cpio-fix_truncation_check.patch
-# PATCH-FIX-UPSTREAM
-Patch26:        fix-operation-no-absolute-filenames.patch
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 #Requires(post): %{xinstall_info_prereq}
@@ -83,7 +81,6 @@ This package includes the 'mt', a local tape drive control program.
 %patch21 -p1
 %patch23 -p1
 %patch25 -p1
-%patch26 -p1
 
 %build
 gettextize -f --no-changelog
