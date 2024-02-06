@@ -1,7 +1,7 @@
-Index: grimoirelab-sortinghat-0.11.1/config/settings/testing.py
+Index: grimoirelab-sortinghat-0.19.1/config/settings/testing.py
 ===================================================================
---- grimoirelab-sortinghat-0.11.1.orig/config/settings/testing.py
-+++ grimoirelab-sortinghat-0.11.1/config/settings/testing.py
+--- grimoirelab-sortinghat-0.19.1.orig/config/settings/testing.py
++++ grimoirelab-sortinghat-0.19.1/config/settings/testing.py
 @@ -1,3 +1,4 @@
 +import os
  import sys
@@ -30,10 +30,10 @@ Index: grimoirelab-sortinghat-0.11.1/config/settings/testing.py
      }
  }
  
-Index: grimoirelab-sortinghat-0.11.1/config/settings/testing_tenant.py
+Index: grimoirelab-sortinghat-0.19.1/config/settings/testing_tenant.py
 ===================================================================
---- grimoirelab-sortinghat-0.11.1.orig/config/settings/testing_tenant.py
-+++ grimoirelab-sortinghat-0.11.1/config/settings/testing_tenant.py
+--- grimoirelab-sortinghat-0.19.1.orig/config/settings/testing_tenant.py
++++ grimoirelab-sortinghat-0.19.1/config/settings/testing_tenant.py
 @@ -5,8 +5,8 @@ from .testing import SQL_MODE, DATABASES
  DATABASES.update({
      tenant: {

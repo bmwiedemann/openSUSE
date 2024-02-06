@@ -100,4 +100,36 @@
 - Refresh patch add-missing-format-calls.patch.</comment>
     <requestid>1100980</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>78d7c6d027aca93b3838c9345d983ace</srcmd5>
+    <version>0.19.1</version>
+    <time>1707233695</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.1:
+  * Fix &quot;Table 'django_session' doesn't exist&quot; error
+  * Unify identities with same source
+  * Use correct base URL for login and change password API calls (#851)
+  * Display individual's most recent organization
+  * CSRF token is only required on web requests
+  * Link to profile in individual cards (#837)
+  * Open calendar to the side of the date input (#838)
+  * Improved loading time when looking for organizations
+  * Gitdm identities importer
+  * Fix individual page not loading
+  * Recommendations for individuals modified after a given date (#813)
+  * Add individual to workspace from their profile page (#816)
+  * Cache individuals table data (#821)
+  * Strict criteria for merge recommendations (#812)
+  * Text field to update enrollment dates (#819)
+  * Improved organization selector (#820)
+  * API method to create a scheduled task
+  * Manage app settings from the user interface
+  * Remove tasks that fail to be scheduled
+  * Add Python 3.9 and drop 3.7 support
+  * Sub-domain affiliation error (#805)
+- Refresh patches.
+- Add patch use-correct-assertion-methods.patch:
+  * Use non-deprecated and non-removed assertion methods.</comment>
+    <requestid>1144440</requestid>
+  </revision>
 </revisionlist>
