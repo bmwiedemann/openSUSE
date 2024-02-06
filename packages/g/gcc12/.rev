@@ -168,4 +168,12 @@ to release my review on the gcc package now.
   from the branch after the release.</comment>
     <requestid>1110685</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>bde67a0fc4fd08835cc34d1fb3a2df8f</srcmd5>
+    <version>12.3.0+git1204</version>
+    <time>1707233999</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %{_target_cpu} to determine host and build.</comment>
+    <requestid>1144304</requestid>
+  </revision>
 </revisionlist>
