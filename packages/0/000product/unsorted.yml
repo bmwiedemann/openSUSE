@@ -1099,6 +1099,7 @@ unsorted:
   - avr-libc 
   - avrdude 
   - avrdude-devel 
+  - avs-topology-firmware 
   - awesome 
   - awesome-branding-openSUSE 
   - awesome-branding-upstream 
@@ -1870,7 +1871,6 @@ unsorted:
   - camsource-devel 
   - canberra-gtk-play-gnome 
   - canlock 
-  - canokey-qemu 
   - canokey-qemu-devel 
   - cantata 
   - cantata-lang 
@@ -3359,7 +3359,6 @@ unsorted:
   - dvdisaster-docs 
   - dvgt 
   - dwarf2json 
-  - dwarves 
   - dwayland-devel 
   - dwz 
   - dwz-testsuite 
@@ -3601,8 +3600,6 @@ unsorted:
   - epiphany-branding-openSUSE 
   - epiphany-branding-upstream 
   - epiphany-lang 
-  - epour 
-  - epour-lang 
   - epplet-base 
   - epub2txt2 
   - epy 
@@ -4532,7 +4529,6 @@ unsorted:
   - gcad3d 
   - gcal 
   - gcal-lang 
-  - gcc 
   - gcc-32bit 
   - gcc-PIE 
   - gcc-ada 
@@ -9015,6 +9011,7 @@ unsorted:
   - jhead 
   - jhighlight 
   - jhighlight-javadoc 
+  - jigdo 
   - jigit 
   - jikes 
   - jimtcl 
@@ -9431,9 +9428,7 @@ unsorted:
   - kernel-debug-devel 
   - kernel-debug-vdso 
   - kernel-default-base-rebuild 
-  - kernel-default-devel 
   - kernel-default-vdso 
-  - kernel-devel 
   - kernel-docs 
   - kernel-docs-html 
   - kernel-firmware 
@@ -9442,7 +9437,6 @@ unsorted:
   - kernel-kvmsmall 
   - kernel-kvmsmall-devel 
   - kernel-kvmsmall-vdso 
-  - kernel-macros 
   - kernel-obs-build 
   - kernel-obs-qa 
   - kernel-source 
@@ -12121,7 +12115,6 @@ unsorted:
   - libdwarf-tools 
   - libdwarf0 
   - libdwarves-devel 
-  - libdwarves1 
   - libdxflib-3_26_4-1 
   - libdxfrw-devel 
   - libdxfrw-tools 
@@ -12158,7 +12151,6 @@ unsorted:
   - libefa1-32bit 
   - libei-devel 
   - libeiskaltdcpp2_4 
-  - libelf-devel 
   - libelf-devel-32bit 
   - libelf1-32bit 
   - libembree3 
@@ -13654,11 +13646,9 @@ unsorted:
   - libmetrics-devel 
   - libmetrics0 
   - libmfx 
-  - libmfx-devel 
   - libmfx-gen 
   - libmfx-gen-devel 
   - libmfx-gen1_2 
-  - libmfx-samples 
   - libmfx1 
   - libmgl-fltk8 
   - libmgl-glut8 
@@ -14283,9 +14273,9 @@ unsorted:
   - libpamtest-devel 
   - libpamtest-devel-doc 
   - libpamtest0 
+  - libpanel-1-1 
   - libpanel-devel 
   - libpanel-lang 
-  - libpanel1-1 
   - libpango-1_0-0-32bit 
   - libpano-devel 
   - libpano-utils 
@@ -14514,15 +14504,12 @@ unsorted:
   - libprotobuf-c-devel 
   - libprotobuf-lite25_1_0-32bit 
   - libprotobuf-lite3_21_12 
-  - libprotobuf-lite3_21_12-32bit 
   - libprotobuf-nanopb0 
   - libprotobuf25_1_0-32bit 
   - libprotobuf3_21_12 
-  - libprotobuf3_21_12-32bit 
   - libprotoc25_1_0 
   - libprotoc25_1_0-32bit 
   - libprotoc3_21_12 
-  - libprotoc3_21_12-32bit 
   - libproxy-devel 
   - libproxy-devel-doc 
   - libproxy-tools 
@@ -15342,8 +15329,8 @@ unsorted:
   - libspooles2_2-openmpi 
   - libspqr2 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_42_0-0 
-  - libsqlcipher-3_42_0-0-x86-64-v3 
+  - libsqlcipher-3_44_2-0 
+  - libsqlcipher-3_44_2-0-x86-64-v3 
   - libsqlite3-0-32bit 
   - libsqlitecpp0 
   - libsqlparser1 
@@ -16234,7 +16221,6 @@ unsorted:
   - libxdg-basedir1 
   - libxdot4 
   - libxdp-devel 
-  - libxdp1 
   - libxerces-c-devel 
   - libxfce4ui-branding-upstream 
   - libxfce4ui-devel 
@@ -16427,7 +16413,6 @@ unsorted:
   - libzrtpcpp4 
   - libzscanner4 
   - libzsolve0 
-  - libzstd-devel 
   - libzstd-devel-32bit 
   - libzstd-devel-static 
   - libzvbi-chains0 
@@ -24031,7 +24016,6 @@ unsorted:
   - python310-django-registration 
   - python310-django-request 
   - python310-django-requests-debug-toolbar 
-  - python310-django-rest-framework-braces 
   - python310-django-rest-framework-client 
   - python310-django-rest-framework-social-oauth2 
   - python310-django-rest-invitations 
@@ -27541,7 +27525,6 @@ unsorted:
   - python311-django-registration 
   - python311-django-request 
   - python311-django-requests-debug-toolbar 
-  - python311-django-rest-framework-braces 
   - python311-django-rest-framework-client 
   - python311-django-rest-framework-social-oauth2 
   - python311-django-rest-invitations 
@@ -30066,6 +30049,7 @@ unsorted:
   - python312-Unidecode 
   - python312-VyattaConfParser 
   - python312-WSGIProxy2 
+  - python312-WSME 
   - python312-WTForms 
   - python312-WTForms-lang 
   - python312-WebOb 
@@ -30096,6 +30080,7 @@ unsorted:
   - python312-adblock 
   - python312-addict 
   - python312-aeidon 
+  - python312-aenum 
   - python312-aexpect 
   - python312-affine 
   - python312-agate 
@@ -30586,6 +30571,7 @@ unsorted:
   - python312-betamax 
   - python312-betamax-matchers 
   - python312-bibtexparser 
+  - python312-bidict 
   - python312-billiard 
   - python312-binary 
   - python312-binaryornot 
@@ -30717,6 +30703,7 @@ unsorted:
   - python312-cogapp 
   - python312-colander 
   - python312-colorama 
+  - python312-colorcet 
   - python312-colorclass 
   - python312-coloredlogs 
   - python312-colorful 
@@ -30808,9 +30795,11 @@ unsorted:
   - python312-dask-test 
   - python312-databases 
   - python312-datadiff 
+  - python312-datashader 
   - python312-dateparser 
   - python312-dateutils 
   - python312-datrie 
+  - python312-dbf 
   - python312-dbfread 
   - python312-dbm 
   - python312-dbus-deviation 
@@ -31020,6 +31009,7 @@ unsorted:
   - python312-epubmerge 
   - python312-eradicate 
   - python312-et_xmlfile 
+  - python312-etcd 
   - python312-evdev 
   - python312-eventlet 
   - python312-evilunit 
@@ -31418,9 +31408,13 @@ unsorted:
   - python312-jupyter-client 
   - python312-jupyter-client7 
   - python312-jupyter-core 
+  - python312-jupyter-events 
   - python312-jupyter-kernel-test 
+  - python312-jupyter-lsp 
   - python312-jupyter-packaging 
   - python312-jupyter-server 
+  - python312-jupyter-server-fileid 
+  - python312-jupyter-server-mathjax 
   - python312-jupyter-server-terminals 
   - python312-jupyter-server-test 
   - python312-jupyter-ydoc 
@@ -31668,6 +31662,7 @@ unsorted:
   - python312-nbclient 
   - python312-nbconvert 
   - python312-nbformat 
+  - python312-nbsmoke 
   - python312-nbsphinx 
   - python312-nbval 
   - python312-nbxmpp 
@@ -31709,6 +31704,7 @@ unsorted:
   - python312-numba-devel 
   - python312-numcodecs 
   - python312-numericalunits 
+  - python312-numexpr 
   - python312-numpy 
   - python312-numpy-devel 
   - python312-numpy-gnu-hpc 
@@ -31801,8 +31797,10 @@ unsorted:
   - python312-pandas-test 
   - python312-pandas-xml 
   - python312-pandocfilters 
+  - python312-panel 
   - python312-panflute 
   - python312-parallax 
+  - python312-param 
   - python312-parameterized 
   - python312-paramiko 
   - python312-paramiko-expect 
@@ -32018,6 +32016,7 @@ unsorted:
   - python312-pycrdt-websocket 
   - python312-pycryptodome 
   - python312-pycryptodomex 
+  - python312-pyct 
   - python312-pycups 
   - python312-pycurl 
   - python312-pycxx 
@@ -32304,6 +32303,7 @@ unsorted:
   - python312-python-rtmidi 
   - python312-python-slugify 
   - python312-python-snappy 
+  - python312-python-socketio 
   - python312-python-socks 
   - python312-python-sofa 
   - python312-python-stdnum 
@@ -32342,6 +32342,7 @@ unsorted:
   - python312-pyux 
   - python312-pyvdr 
   - python312-pyvips 
+  - python312-pyviz-comms 
   - python312-pywal 
   - python312-pywayland 
   - python312-pywbem 
@@ -32556,6 +32557,7 @@ unsorted:
   - python312-simpleaudio 
   - python312-simplebayes 
   - python312-simpleeval 
+  - python312-simplegeneric 
   - python312-simplejson 
   - python312-simplekml 
   - python312-single-version 
@@ -32586,6 +32588,7 @@ unsorted:
   - python312-solv 
   - python312-sortedcollections 
   - python312-sortedcontainers 
+  - python312-sortinghat 
   - python312-sounddevice 
   - python312-soupsieve 
   - python312-sox 
@@ -32694,6 +32697,7 @@ unsorted:
   - python312-system_hotkey 
   - python312-systemd 
   - python312-tableprint 
+  - python312-tables 
   - python312-tablib 
   - python312-tabulate 
   - python312-tap.py 
@@ -34170,7 +34174,6 @@ unsorted:
   - python39-django-registration 
   - python39-django-request 
   - python39-django-requests-debug-toolbar 
-  - python39-django-rest-framework-braces 
   - python39-django-rest-framework-client 
   - python39-django-rest-framework-social-oauth2 
   - python39-django-rest-invitations 
@@ -36642,6 +36645,7 @@ unsorted:
   - qemu-ppc 
   - qemu-s390x 
   - qemu-skiboot 
+  - qemu-spice 
   - qemu-uefi-aarch32 
   - qemu-uefi-aarch64 
   - qemu-uefi-riscv64 
@@ -39067,6 +39071,7 @@ unsorted:
   - system-group-obsolete 
   - system-group-sudo 
   - system-user-grafana 
+  - system-user-greeter 
   - system-user-grommunio 
   - system-user-gromox 
   - system-user-libvirt-dbus 
@@ -39132,9 +39137,6 @@ unsorted:
   - talosctl-zsh-completion 
   - tamago 
   - tamil-gtk2im 
-  - tanukiwrapper 
-  - tanukiwrapper-javadoc 
-  - tanukiwrapper-manual 
   - tar-backup-scripts 
   - tar-doc 
   - tar-tests 
@@ -50070,6 +50072,10 @@ unsorted:
   - yate-scripts 
   - yaz 
   - yaz-doc 
+  - yazi 
+  - yazi-bash-completion 
+  - yazi-fish-completion 
+  - yazi-zsh-completion 
   - yder-devel 
   - yecht 
   - yecht-javadoc 
@@ -50170,7 +50176,6 @@ unsorted:
   - zix-devel 
   - zk 
   - zk-spaced 
-  - zlib-devel 
   - zlib-devel-32bit 
   - zlib-devel-static 
   - zlib-devel-static-32bit 
