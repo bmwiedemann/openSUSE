@@ -97,6 +97,8 @@ BuildRequires:  pkgconfig(systemd)
 PreReq:         %fillup_prereq
 PreReq:         %insserv_prereq
 %endif
+Provides:       group(%{name})
+Provides:       user(%{name})
 
 %description
 DomainKeys Identified Mail (DKIM) lets an organization take responsibility for

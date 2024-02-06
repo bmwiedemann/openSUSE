@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  5 02:06:04 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add Provides for user/group needed by rpm 4.19
+
+-------------------------------------------------------------------
 Fri Oct 13 00:17:48 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add fix-RSA_sign-call.patch

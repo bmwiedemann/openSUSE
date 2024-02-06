@@ -69,4 +69,12 @@
     <comment></comment>
     <requestid>1117542</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>a7201718e6d4ea003aae22e91405d541</srcmd5>
+    <version>unknown</version>
+    <time>1707233644</time>
+    <user>anag+factory</user>
+    <comment>- Add Provides for user/group needed by rpm 4.19</comment>
+    <requestid>1144101</requestid>
+  </revision>
 </revisionlist>
