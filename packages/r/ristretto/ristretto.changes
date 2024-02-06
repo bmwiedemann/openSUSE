@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb  5 14:04:55 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.13.2
+  * Update copyright year
+  * Fix duplicate mnemonic in File menu
+  * image_viewer: Add missing sanity check
+  * Fix criticals about unset GIO attributes
+  * viewer: Fix possible crash when closing while an image is loading
+  * Ensure that file manager proxy creation is non-blocking
+  * Add icons at missing sizes, clean up SVG metadata
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat May 13 18:55:08 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.13.1

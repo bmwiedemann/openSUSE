@@ -1,7 +1,7 @@
 #
 # spec file for package ristretto
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           ristretto
-Version:        0.13.1
+Version:        0.13.2
 Release:        0lib
 Summary:        Image viewer for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
