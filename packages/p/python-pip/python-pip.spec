@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 %if %{with test}
 # Test requirements:
@@ -134,6 +134,11 @@ export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
 install -D -m 0644 -t %{buildroot}%{$python_sitelib}/../wheels dist/*.whl
 %fdupes %{buildroot}%{$python_sitelib}
 }
+
+%{python_expand # Fix shebang path for "pip3.XX" binaries
+sed -i "1s|#\!.*python.*|#\!/usr/bin/$python|" %{buildroot}%{_bindir}/pip%{$python_bin_suffix}
+}
+
 %python_clone -a %{buildroot}%{_bindir}/pip
 %python_clone -a %{buildroot}%{_bindir}/pip3
 %python_expand %fdupes %{buildroot}%{_bindir}

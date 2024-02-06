@@ -905,4 +905,12 @@
   - Drop obsolete python2 directives in specfile</comment>
     <requestid>1136254</requestid>
   </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>d4ae5a01b8a5a135278c72046d385870</srcmd5>
+    <version>23.3.2</version>
+    <time>1707233569</time>
+    <user>anag+factory</user>
+    <comment>- Fix shebang path for &quot;pip3.XX&quot; binaries</comment>
+    <requestid>1144283</requestid>
+  </revision>
 </revisionlist>
