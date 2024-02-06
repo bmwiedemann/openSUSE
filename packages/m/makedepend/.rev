@@ -108,4 +108,16 @@
   * 0001-Avoid-depending-on-xproto.patch</comment>
     <requestid>1062231</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>59f4b5832dc35e9a43d1e39be4dc3f7c</srcmd5>
+    <version>1.0.9</version>
+    <time>1707233640</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.9
+  * This release includes code cleanups and other changes,
+    including removing the build time dependency on the xorgproto
+    package.
+- supersedes u_Avoid-depending-on-xproto.patch</comment>
+    <requestid>1144238</requestid>
+  </revision>
 </revisionlist>

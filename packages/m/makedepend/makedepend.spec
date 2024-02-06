@@ -1,7 +1,7 @@
 #
 # spec file for package makedepend
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           makedepend
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        Utility to create dependencies in makefiles
 License:        MIT
@@ -25,7 +25,6 @@ Group:          Development/Tools/Building
 URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/xorg/util/makedepend/-/merge_requests/10
-Patch1:         u_Avoid-depending-on-xproto.patch
 # For autogen.sh
 BuildRequires:  autoconf
 BuildRequires:  automake
