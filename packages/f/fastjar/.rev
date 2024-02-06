@@ -165,4 +165,12 @@
     <comment>fix build on sle12</comment>
     <requestid>908787</requestid>
   </revision>
+  <revision rev="23" vrev="27">
+    <srcmd5>72e738805deacd655541a57fc7064e13</srcmd5>
+    <version>0.98</version>
+    <time>1707233715</time>
+    <user>anag+factory</user>
+    <comment>Fix build on arm32 architectures</comment>
+    <requestid>1144484</requestid>
+  </revision>
 </revisionlist>
