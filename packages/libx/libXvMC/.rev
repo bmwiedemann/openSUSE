@@ -120,4 +120,22 @@
 - supersedes n_bring-back-libXv-dep.patch</comment>
     <requestid>965074</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>56e513a47d10ec60cf4ac5d716139d51</srcmd5>
+    <version>1.0.14</version>
+    <time>1707233574</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.14
+  * Make doc install path from meson match autotools
+  * gitlab CI: add a basic build test
+  * gitlab CI: Add libtool to required packages
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Convert to X.Org standard code style
+  * Variable scope reductions as recommended by cppcheck
+  * Replace custom copy of GetReq macro with call to Xlib 1.5's _XGetRequest
+  * Handle implicit conversion warnings from clang
+- switched to meson build system</comment>
+    <requestid>1144234</requestid>
+  </revision>
 </revisionlist>
