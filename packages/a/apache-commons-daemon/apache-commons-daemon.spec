@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-daemon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define short_name commons-daemon
+%define _lto_cflags %{nil}
 Name:           apache-%{short_name}
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Commons Daemon - Controlling of Java Daemons
 License:        Apache-2.0
@@ -106,18 +107,22 @@ popd
 
 %install
 # native jsvc
+echo "Native"
 install -Dpm 0755 src/native/unix/jsvc %{buildroot}%{_bindir}/jsvc
 install -Dpm 0644 src/native/unix/jsvc.1 %{buildroot}%{_mandir}/man1/jsvc.1
 
 # jar
+echo "JAR"
 install -Dpm 0644 target/%{short_name}-%{version}.jar %{buildroot}%{_jnidir}/%{short_name}.jar
 ln -sf %{_jnidir}/%{short_name}.jar %{buildroot}%{_jnidir}/%{name}.jar
 
 # pom
+echo "POM"
 install -Dpm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 %add_maven_depmap %{short_name}.pom %{short_name}.jar -a "org.apache.commons:%{short_name}"
 
 # javadoc
+echo "Javadoc"
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
