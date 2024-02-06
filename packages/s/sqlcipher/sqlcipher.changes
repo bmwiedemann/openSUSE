@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb  6 13:40:40 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 4.5.6:
+  * Updates baseline to upstream SQLite 3.44.2
+  * Improve PRAGMA cipher_integrity check to report expected page size if invalid
+  * Implement PRAGMA page_size compatibility with PRAGMA cipher_page_size so both will operate properly on encrypted databases
+  * Updates LICENSE.md with SQLCipher license to avoid ambiguity and remove redundance
+
+-------------------------------------------------------------------
 Tue Nov 14 16:24:37 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.5.5:
