@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  4 09:20:25 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.6
+  * Compiler warning fixes on various non-Linux platforms
+  * Fix null dereference in check_finalizer_nested if redirecting
+    malloc on Linux
+  * Fix race in init_lib_bounds on Linux/glibc-2.34+ if
+    redirecting malloc
+
+-------------------------------------------------------------------
 Fri May 26 20:42:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.4

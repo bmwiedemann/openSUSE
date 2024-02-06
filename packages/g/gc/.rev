@@ -294,4 +294,12 @@ libatomic-ops-devel package should be removed after this SR is accepted</comment
     <comment>- Update to release 8.2.4</comment>
     <requestid>1089728</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ff191f12afa31505ff7463e23f29eb16</srcmd5>
+    <version>8.2.6</version>
+    <time>1707233542</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 8.2.6</comment>
+    <requestid>1143961</requestid>
+  </revision>
 </revisionlist>
