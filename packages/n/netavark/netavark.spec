@@ -1,7 +1,7 @@
 #
 # spec file for package netavark
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%define major_minor %((v=%{version}; echo ${v%.*}))
+
 Name:           netavark
-Version:        1.9.0
+Version:        1.10.2
 Release:        0
 Summary:        Container network stack
 License:        Apache-2.0
@@ -31,7 +33,7 @@ BuildRequires:  protobuf-devel
 BuildRequires:  rust+cargo >= 1.66
 BuildRequires:  systemd-rpm-macros
 # aardvark-dns and %%{name} are usually released in sync
-Requires:       aardvark-dns >= %{version}
+Requires:       aardvark-dns >= %{major_minor}
 # Provides: container-network-stack = 2
 
 %description
