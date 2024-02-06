@@ -1,7 +1,7 @@
 #
 # spec file for package catfish
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  python3-distutils-extra
 %if 0%{?suse_version} >= 01550 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 BuildRequires:  rsvg-convert
 %else
@@ -43,6 +42,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  gobject-introspection
 # Checking module dependencies...
 BuildRequires:  gtk3-devel >= 3.22
+BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-pexpect

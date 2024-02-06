@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb  6 13:45:08 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- As long as a new Python version does not ship a broken
+  python3-distutils, like python311 did in its early days, there is
+  no need to deal with or skip a specific python version at all.
+  Disable all %%{python_module ...} and skip_python... stuff again.
+
+-------------------------------------------------------------------
+Tue Feb  6 10:08:38 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Don't use %%{python_module ...} as we only build for the default
+  Python interpreter. python312 still needs to be skipped due to
+  python3-distutils!
+
+-------------------------------------------------------------------
+Sat Feb  3 14:39:56 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Skip python312 for now until all required Python modules have been
+  built.
+
+-------------------------------------------------------------------
+Wed Nov 15 14:23:43 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use %%{python_module ...} to specify required Python modules to
+  build this package.
+
+-------------------------------------------------------------------
 Sun Aug  6 09:10:18 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.0
