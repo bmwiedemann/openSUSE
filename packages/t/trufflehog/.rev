@@ -242,4 +242,16 @@
   * Make AzureDevopsPersonalAccessToken verification more robust (#2359) (forwarded request 1143756 from ph03nix)</comment>
     <requestid>1143806</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>caeacab96b40b57f60b2421b3b96d84c</srcmd5>
+    <version>3.67.2</version>
+    <time>1707233677</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.67.2:
+  * [fixup] - correctly use the buffered file writer (#2373)
+  * custom detector dogs (#2376)
+  * use only the DetectorKey as a map field (#2374)
+  * [feat] - concurently scan the filesystem source (#2364) (forwarded request 1144376 from ph03nix)</comment>
+    <requestid>1144407</requestid>
+  </revision>
 </revisionlist>
