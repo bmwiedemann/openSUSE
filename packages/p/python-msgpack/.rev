@@ -143,4 +143,23 @@
     <comment></comment>
     <requestid>1085450</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e7a24fa247c85970e28d32041801771b</srcmd5>
+    <version>1.0.7</version>
+    <time>1707233547</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.7:
+  * remove inline macro for msvc
+  * do not fallback on build error
+  * fix: build status badge
+  * Drop python2 support
+  * Drop Python 3.6 support
+  * try Cython 3.0
+  * sphinx-related work
+
+  * bugfixes
+ * unpacker: Default value of input limits are smaller than before to
+    into UnpackValueError. If you want to catch all exception during unpack,</comment>
+    <requestid>1143992</requestid>
+  </revision>
 </revisionlist>

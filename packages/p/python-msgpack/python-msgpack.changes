@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 27 19:33:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.7:
+  * remove inline macro for msvc
+  * do not fallback on build error
+  * fix: build status badge
+  * Drop python2 support
+  * Drop Python 3.6 support
+  * try Cython 3.0
+  * sphinx-related work
+
+-------------------------------------------------------------------
 Mon May  8 07:20:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
@@ -32,7 +44,7 @@ Mon Jan 10 23:20:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.3:
   * add python 3.10 support
-  * bugfixes 
+  * bugfixes
 
 -------------------------------------------------------------------
 Sun Dec 20 13:22:55 UTC 2020 - Dirk Müller <dmueller@suse.com>
@@ -77,10 +89,10 @@ Thu Mar  7 21:33:19 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
  * Unpacker(max_buffer_len=N) configures max_*_len options from N, instead
     of static default sizes.
  * max_bin_len, max_str_len, and max_ext_len are deprecated.
- * unpacker: Default value of input limits are smaller than before to 
+ * unpacker: Default value of input limits are smaller than before to
     avoid DoS attack
  * Unpacker doesn't wrap underlaying ValueError (including UnicodeError)
-    into UnpackValueError. If you want to catch all exception during unpack, 
+    into UnpackValueError. If you want to catch all exception during unpack,
     you need to use try ... except Exception with minimum try code block.
  * PackValueError and PackOverflowError are also removed. You need to catch
     normal ValueError and OverflowError.
@@ -190,7 +202,7 @@ Tue Nov 18 13:14:12 UTC 2014 - toddrme2178@gmail.com
   Bugs fixed
   - Unpacker doesn't increment refcount of hooks. Hooks may be GCed while unpacking.
   - Unpacker may read unfilled internal buffer.
-  
+
 -------------------------------------------------------------------
 Sun Dec  8 15:02:40 UTC 2013 - p.drouand@gmail.com
 
