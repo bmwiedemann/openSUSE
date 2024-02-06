@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb  3 14:41:54 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.0
+  * Gantt Layout issue when Print between is used with Printscale
+    weekly.
+  * Teoz produces odd legend for sequence diagrams.
+  * Note invalid position in Directory tree listing
+  * Shape "activity" ist hardly missing.
+  * Allow full local style (for while, repeat) on Activity diagram.
+  * Allow full local style (for if diamonds) on Activity diagram.
+  * Color individual conditional in activity diagram.
+  * Bug with activity diagram arrows fork.
+
+-------------------------------------------------------------------
 Thu Dec 14 14:12:57 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2023.13
