@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  6 07:19:27 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix build error on gcc-14 (bsc#1218949)
+  * 0001-squash-ieee1275-ofpath-enable-NVMeoF-logical-device-.patch
+
+-------------------------------------------------------------------
 Mon Jan 29 06:24:11 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Remove magic number header field check on arm64 (bsc#1218783)

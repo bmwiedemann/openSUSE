@@ -389,6 +389,7 @@ Patch195:       0004-Key-revocation-on-out-of-bound-file-access.patch
 Patch196:       fix_no_extra_deps_in_release_tarball.patch
 Patch197:       0001-fs-xfs-always-verify-the-total-number-of-entries-is-.patch
 Patch198:       0001-loader-arm64-efi-linux-Remove-magic-number-header-fi.patch
+Patch199:       0001-squash-ieee1275-ofpath-enable-NVMeoF-logical-device-.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
