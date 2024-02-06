@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  4 10:45:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.5:
+  * Fix striptags not collapsing spaces. :issue:`417`
+
+-------------------------------------------------------------------
 Fri Jan 26 21:18:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.4:
