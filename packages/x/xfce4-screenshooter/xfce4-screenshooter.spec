@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screenshooter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %bcond_with git
 
 Name:           xfce4-screenshooter
-Version:        1.10.4
+Version:        1.10.5
 Release:        0
 Summary:        Screenshot Tool for the Xfce Desktop
 License:        GPL-2.0-or-later
@@ -60,6 +60,9 @@ Requires:       libxfce4ui-tools
 Suggests:       xfce4-%{plugin}-plugin
 Obsoletes:      xfce4-screenshooter-doc <= 1.8.1
 Provides:       xfce4-screenshooter-doc = %{version}
+Recommends:     curl
+Recommends:     jq
+Recommends:     zenity
 
 %description
 Xfce4 Screenshooter is a tool for taking screenshots, it can capture the entire
@@ -117,6 +120,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %{_datadir}/icons/hicolor/*
 %{_datadir}/applications/xfce4-screenshooter.desktop
 %{_datadir}/metainfo/xfce4-screenshooter.appdata.xml
+%dir %{_libexecdir}/xfce4/screenshooter
+%dir %{_libexecdir}/xfce4/screenshooter/scripts
+%{_libexecdir}/xfce4/screenshooter/scripts/imgur-upload.sh
 %{_mandir}/man1/xfce4-screenshooter.1*
 
 %files -n xfce4-%{plugin}-plugin
