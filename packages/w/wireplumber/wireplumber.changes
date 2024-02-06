@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  5 06:46:58 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to only enable bluetooth when audio support is enabled
+  by installing wireplumber-audio (bsc#1219411):
+  * fix-bsc1219411.patch
+
+-------------------------------------------------------------------
 Tue Dec  5 19:28:42 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.4.17:

@@ -30,6 +30,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
+# FIX-PATCH-SUSE fix-bsc1219411.patch alarrosa@suse.com -- Enable bluetooth only when audio support is enabled
+Patch0:         fix-bsc1219411.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -232,11 +234,13 @@ fi
 %{_userunitdir}/wireplumber@.service
 %{_datadir}/wireplumber
 %exclude %{_datadir}/wireplumber/main.lua.d/90-2-1-enable-alsa.lua
+%exclude %{_datadir}/wireplumber/bluetooth.lua.d/90-enable-all.lua
 
 %files lang -f %{name}.lang
 
 %files audio
 %{_datadir}/wireplumber/main.lua.d/90-2-1-enable-alsa.lua
+%{_datadir}/wireplumber/bluetooth.lua.d/90-enable-all.lua
 
 %files devel
 %{_includedir}/wireplumber-%{apiver}
