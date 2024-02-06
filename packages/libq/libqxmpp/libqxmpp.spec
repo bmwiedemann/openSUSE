@@ -1,7 +1,7 @@
 #
 # spec file for package libqxmpp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 %define sover 4
 Name:           libqxmpp
-Version:        1.5.3
+Version:        1.5.6
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
@@ -114,19 +114,21 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %files -n %{name}%{sover}
 %license LICENSES/*
 %doc AUTHORS CHANGELOG.md README.md
-%{_libdir}/%{name}.so.*
+%{_libdir}/libQXmppQt5.so.*
 %if %{with omemo}
-%{_libdir}/libQXmppOmemo.so.*
+%{_libdir}/libQXmppOmemoQt5.so.*
 %endif
 
 %files -n %{name}-devel
-%{_includedir}/qxmpp/
-%{_libdir}/%{name}.so
-%{_libdir}/cmake/qxmpp/
+%{_includedir}/QXmppQt5/
+%{_libdir}/libQXmppQt5.so
+%{_libdir}/cmake/QXmpp/
+%{_libdir}/cmake/QXmppQt5/
 %{_libdir}/pkgconfig/qxmpp.pc
+%{_libdir}/pkgconfig/QXmppQt5.pc
 %if %{with omemo}
-%{_libdir}/libQXmppOmemo.so
-%{_libdir}/cmake/QXmppOmemo/
+%{_libdir}/libQXmppOmemoQt5.so
+%{_libdir}/cmake/QXmppOmemoQt5/
 %endif
 
 %files doc
