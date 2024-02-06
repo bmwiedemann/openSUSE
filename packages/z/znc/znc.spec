@@ -1,7 +1,7 @@
 #
 # spec file for package znc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,8 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(tcl)
 BuildRequires:  pkgconfig(zlib)
+Provides:       group(%{name})
+Provides:       user(%{name})
 Requires(pre):  shadow
 %systemd_ordering
 

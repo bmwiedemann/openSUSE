@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  6 07:57:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide user/group, as required by RPM 4.19 (boo#1219531).
+
+-------------------------------------------------------------------
 Fri Nov 18 15:41:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 1841.patch: support SWIG 4.1.0 (boo#1205425).
