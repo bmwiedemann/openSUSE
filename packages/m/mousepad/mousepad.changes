@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb  5 13:33:37 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.6.2
+  * Update copyright year
+  * history: Default to yes when user is asked to restore previous
+    session
+  * build: Search for bind_textdomain_codeset in libintl too
+  * tests: Increase timeout a bit
+  * tests: Check for pwait/pidwait
+  * dialogs: Do not reuse text buffer to test encoding in save-as dialog
+  * history: Remove dead code
+  * history: Rework paste menu
+  * Move paste history to mousepad-history.c
+  * window: Fix GVariant management
+  * Do not scroll text view when zooming in or out
+  * file-monitoring: Delay emission of "externaly-modified" signal
+  * Fix a typo in a comment, additionnal → additional.
+  * Add icons at missing sizes, clean up SVG metadata
+  * search: Properly reset current match
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat May 13 18:49:35 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.6.1
