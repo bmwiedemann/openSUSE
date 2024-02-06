@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb  5 09:07:36 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- disabled compiling samples, tools and tutorials, which are no 
+  longer packaged anyway
+
+-------------------------------------------------------------------
+Sat Feb  3 18:29:23 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- only package hardware specific ibmfxhw64 (+ libmfx_<codec>_hw64
+  plugins) loaded during runtime by libvpl (boo#1219494)
+- drop -devel and -samples subpackages
+
+-------------------------------------------------------------------
+Sat Feb  3 11:33:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- added hardware supplements, so it will be installed on GPUs which
+  are not supported by libmfx-gen (boo#1219494)
+
+-------------------------------------------------------------------
 Mon Dec  4 11:54:50 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - This includes latest version of one of the components needed for

@@ -1,7 +1,7 @@
 #
 # spec file for package libmfx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/Intel-Media-SDK/MediaSDK
 Source0:        %{url}/archive/intel-mediasdk-%{version}.tar.gz
+Source1:        supplements.inc
+Source2:        generate-supplements.sh
 Patch0:         cmake-sle12.patch
 Patch1:         gcc13-fix.patch
 BuildRequires:  cmake
@@ -48,6 +50,7 @@ platforms. The implementation is written in C++11, with parts in C-for-Media
 %package -n %lname
 Summary:        The Intel Media SDK
 Group:          System/Libraries
+%include %{S:1}
 
 %description -n %lname
 The Intel Media SDK provides a plain C API to access hardware-accelerated
@@ -88,9 +91,11 @@ cmake \
 -DENABLE_TEXTLOG:BOOL=ON \
 -DENABLE_STAT:BOOL=ON \
 -DBUILD_TESTS:BOOL=OFF \
--DBUILD_TOOLS:BOOL=ON \
+-DBUILD_TOOLS:BOOL=OFF \
 -DENABLE_ITT:BOOL=OFF \
 -DBUILD_KERNELS:BOOL=OFF \
+-DBUILD_TUTORIALS:BOOL=OFF \
+-DBUILD_SAMPLES:BOOL=OFF \
 ..
 make %{?_smp_mflags}
 popd
@@ -99,10 +104,10 @@ popd
 pushd build
 %make_install
 popd
-mkdir -p %{buildroot}/%{_libdir}/mfx/samples
-mv %{buildroot}/%{_datadir}/mfx/samples/* \
-   %{buildroot}/%{_libdir}/mfx/samples
-rmdir %{buildroot}/%{_datadir}/mfx/samples
+#mkdir -p %{buildroot}/%{_libdir}/mfx/samples
+#mv %{buildroot}/%{_datadir}/mfx/samples/* \
+#   %{buildroot}/%{_libdir}/mfx/samples
+#rmdir %{buildroot}/%{_datadir}/mfx/samples
 
 %post -n %lname -p /sbin/ldconfig
 
@@ -110,31 +115,31 @@ rmdir %{buildroot}/%{_datadir}/mfx/samples
 
 %files
 %doc CHANGELOG.md CODEOWNERS README.rst
-%{_bindir}/asg-hevc
-%{_bindir}/hevc_fei_extractor
-%{_bindir}/mfx-tracer-config
+%exclude %{_bindir}/asg-hevc
+%exclude %{_bindir}/hevc_fei_extractor
+%exclude %{_bindir}/mfx-tracer-config
 
 %files -n %lname
 %license LICENSE
-%{_libdir}/libmfx.so.%{sover}
-%{_libdir}/libmfx.so.%{sover}.*
+%exclude %{_libdir}/libmfx.so.%{sover}
+%exclude %{_libdir}/libmfx.so.%{sover}.*
 %{_libdir}/libmfxhw64.so.%{sover}
 %{_libdir}/libmfxhw64.so.%{sover}.*
-%{_libdir}/libmfx-tracer.so.%{sover}
-%{_libdir}/libmfx-tracer.so.%{sover}.*
+%exclude %{_libdir}/libmfx-tracer.so.%{sover}
+%exclude %{_libdir}/libmfx-tracer.so.%{sover}.*
 %dir %{_libdir}/mfx
 %{_libdir}/mfx/libmfx_*_hw64.so
 %dir %{_datadir}/mfx
 %{_datadir}/mfx/plugins.cfg
 
-%files samples
-%{_libdir}/mfx/samples/
+#%files samples
+%exclude %{_libdir}/mfx/samples/
 
-%files devel
-%{_includedir}/mfx/
-%{_libdir}/libmfx.so
-%{_libdir}/libmfxhw64.so
-%{_libdir}/libmfx-tracer.so
-%{_libdir}/pkgconfig/*.pc
+#%files devel
+%exclude %{_includedir}/mfx/
+%exclude %{_libdir}/libmfx.so
+%exclude %{_libdir}/libmfxhw64.so
+%exclude %{_libdir}/libmfx-tracer.so
+%exclude %{_libdir}/pkgconfig/*.pc
 
 %changelog
