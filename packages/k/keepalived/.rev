@@ -372,4 +372,12 @@
   https://www.keepalived.org/release-notes/Release-2.2.8.html</comment>
     <requestid>1090101</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>bd4f1a24a95e1b50e301ea003102ac01</srcmd5>
+    <version>2.2.8</version>
+    <time>1707233705</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144471</requestid>
+  </revision>
 </revisionlist>

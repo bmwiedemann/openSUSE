@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  5 09:16:05 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- provide user(keepalived) and group(keepalived)
+
+-------------------------------------------------------------------
 Wed May 31 21:32:46 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.2.8
