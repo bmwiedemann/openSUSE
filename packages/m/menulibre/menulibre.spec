@@ -1,7 +1,7 @@
 #
 # spec file for package menulibre
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,6 @@ BuildRequires:  gnome-menus
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  python3
-BuildRequires:  python3-base
 BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-gobject
 BuildRequires:  python3-psutil
@@ -43,7 +41,6 @@ BuildRequires:  xdg-utils
 BuildRequires:  typelib(Gtk) = 3.0
 Requires:       gnome-menus
 Requires:       hicolor-icon-theme
-Requires:       python3
 Requires:       python3-gobject
 Requires:       python3-psutil
 Requires:       xdg-utils
