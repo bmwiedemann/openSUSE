@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  6 08:11:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop go_provides macro: it is guarded by if suse_version <= 1110,
+  yet has a negative impact on the general RPM dep/provides scanner
+  (i.e user provides were not added).
+- Drop go_nostrip macro, as it does nothing useful.
+
+-------------------------------------------------------------------
 Fri Jan 19 16:30:44 UTC 2024 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.5.11:

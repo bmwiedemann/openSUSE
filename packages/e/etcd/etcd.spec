@@ -43,9 +43,6 @@ BuildRequires:  xz
 Requires(post): %fillup_prereq
 ExcludeArch:    s390 %{ix86}
 %sysusers_requires
-%{go_provides}
-# Make sure that the binary is not getting stripped.
-%{go_nostrip}
 
 %description
 etcd is a distributed, consistent key-value store for shared configuration and
