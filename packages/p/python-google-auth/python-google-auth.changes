@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  4 10:13:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.27.0:
+  * Add optional account association for Authorized User
+    credentials.
+  * Allow custom universe domain for gce creds
+  * Conditionally import requests only if no request was passed
+    by the caller.
+
+-------------------------------------------------------------------
 Thu Jan 11 14:38:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.26.2
