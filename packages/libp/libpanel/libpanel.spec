@@ -16,7 +16,7 @@
 #
 
 
-%define libname %{name}1-1
+%define libname %{name}-1-1
 
 Name:           libpanel
 Version:        1.4.0
@@ -26,6 +26,10 @@ License:        LGPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/libpanel
 Source:         https://download.gnome.org/sources/%{name}/1.4/%{name}-%{version}.tar.xz
 
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
@@ -41,6 +45,8 @@ GNOME using GTK and libadwaita.
 %package -n     %{libname}
 Summary:        Shared library files for %{name}
 Provides:       %{name} = %{version}
+Provides:       %{name}1-1
+Obsoletes:      %{name}1-1
 
 %description -n %{libname}
 The %{libname} package contains shared libraries %{name}.
@@ -66,6 +72,9 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+export CC=gcc-13
+%endif
 %meson \
 	-D docs=disabled \
 	%{nil}
