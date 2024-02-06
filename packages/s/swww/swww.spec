@@ -1,7 +1,7 @@
 #
 # spec file for package swww
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
 # upon. The license for this file, and modifications and additions to the
@@ -26,14 +26,13 @@
 
 
 Name:           swww
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Wallpaper daemon for Wayland
 License:        GPL-3.0-only
-URL:            https://github.com/Horus645/swww
+URL:            https://github.com/LGFae/swww
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo >= 1.64.0
 BuildRequires:  scdoc
@@ -78,8 +77,6 @@ Zsh command-line completion support for %{name}.
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 ./doc/gen.sh

@@ -1,9 +1,9 @@
 <services>
   <service mode="manual" name="obs_scm">
-    <param name="url">https://github.com/Horus645/swww</param>
+    <param name="url">https://github.com/LGFae/swww</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">b7cde38a983740aae1dfe4e48fd3fc7e6d403fe0</param>
+    <param name="revision">d60139dffe3fb7ee26814fed292fdcca2309df31</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
