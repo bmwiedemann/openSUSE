@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  5 11:40:10 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.3.6
+  * Wrap Xext*CheckExtension() in do { ... } while(0)
+  * configure: raise minimum autoconf requirement to 2.70
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * _xgeGetExtensionVersion should not free info on failure
+  * Check for malloc failure in _xgeGetExtensionVersion
+  * _xgeDpyClose: handle NULL return from _xgeFindDisplay
+  * XEVI: fix -Walloc-size
+
+-------------------------------------------------------------------
 Sat Oct 29 17:07:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.3.5
