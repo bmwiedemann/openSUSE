@@ -971,4 +971,12 @@ can be accepted after ecj-4.2.1 version upgrade
     + Fix:  67793: Ensure the original session timeout is restored</comment>
     <requestid>1139530</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>2a4b47cbcfc07853dc52932c8ccbdb45</srcmd5>
+    <version>9.0.85</version>
+    <time>1707233740</time>
+    <user>anag+factory</user>
+    <comment>bsc#1219530</comment>
+    <requestid>1144553</requestid>
+  </revision>
 </revisionlist>

@@ -121,6 +121,8 @@ Requires(pre):  shadow
 Recommends:     libtcnative-1-0 >= 1.1.24
 Recommends:     logrotate
 BuildArch:      noarch
+Provides:       group(tomcat)
+Provides:       user(tomcat)
 
 %description
 Tomcat is the servlet container that is used in the official Reference
@@ -159,7 +161,7 @@ The documentation of web application for Apache Tomcat.
 Summary:        Expression Language v3.0 API
 Group:          Development/Libraries/Java
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Provides:       %{name}-el-%{elspec}-api = %{version}-%{release}
 Provides:       el_3_0_api = %{version}-%{release}
 Provides:       el_api = %{elspec}
@@ -183,7 +185,7 @@ Group:          Productivity/Networking/Web/Servers
 Requires:       mvn(org.apache.tomcat:tomcat-el-api)
 Requires:       mvn(org.apache.tomcat:tomcat-servlet-api)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       %{name}-jsp-%{jspspec}-api
 Provides:       jsp = %{jspspec}
 Provides:       jsp23
@@ -211,7 +213,7 @@ Requires:       %{name}-el-%{elspec}-api = %{version}-%{release}
 Requires:       %{name}-jsp-%{jspspec}-api = %{version}-%{release}
 Requires:       %{name}-servlet-%{servletspec}-api = %{version}-%{release}
 Requires(post): ecj >= 4.4
-Requires(preun):coreutils
+Requires(preun): coreutils
 Provides:       jakarta-commons-dbcp-tomcat5 = 1.4
 Obsoletes:      jakarta-commons-dbcp-tomcat5 < 1.4
 
@@ -222,7 +224,7 @@ Libraries required to successfully run the Tomcat Web container
 Summary:        Apache Tomcat Servlet API implementation classes
 Group:          Productivity/Networking/Web/Servers
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       %{name}-servlet-%{servletspec}-api = %{version}-%{release}
 Provides:       servlet = %{servletspec}
 Provides:       servlet31
