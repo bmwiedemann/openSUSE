@@ -1,7 +1,7 @@
 #
 # spec file for package libxkbfile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libxkbfile1
 Name:           libxkbfile
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        X11 keyboard file manipulation library
 License:        MIT
@@ -28,9 +28,7 @@ URL:            https://xorg.freedesktop.org/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libxkbfile/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-BuildRequires:  autoconf >= 2.60
-BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(kbproto)
 BuildRequires:  pkgconfig(x11)
@@ -71,12 +69,11 @@ in %{lname}.
 %setup -q
 
 %build
-%configure --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig

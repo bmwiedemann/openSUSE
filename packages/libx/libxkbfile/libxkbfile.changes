@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb  5 11:51:49 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.1.3
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Set close-on-exec when opening files
+  * _XkbMakeAtom: remove check for impossible case
+  * _XkbInitAtoms: check for malloc() failure
+  * XkbChangeAtomDisplay: stop leaking atom name
+  * XkbCFReportError: avoid -Wformat-nonliteral warning
+  * XkbWriteCFile: stop leaking header file ifdef name
+  * DefaultParser: avoid -Wimplicit-fallthrough warnings
+  * xkbtext.c: Add tbGetBufferString helper function
+  * XkbIndentText: Fix -Wsign-compare warning
+  * Fix -Wsign-compare warnings in xkbtext.c & xkmread.c
+  * Add a meson build system
+-  switched to meson build system
+
+-------------------------------------------------------------------
 Thu Dec  8 20:55:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.2:
