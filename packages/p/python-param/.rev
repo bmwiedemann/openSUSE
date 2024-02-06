@@ -249,4 +249,13 @@
   * No upstream changelog</comment>
     <requestid>1140199</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>df8becb4dade6f3f8c74c03b5025e964</srcmd5>
+    <version>2.0.2</version>
+    <time>1707233687</time>
+    <user>anag+factory</user>
+    <comment>- Add patch filter-deprecationwarning.patch:
+  * Ignore a DeprecationWarning treated as an error.</comment>
+    <requestid>1144424</requestid>
+  </revision>
 </revisionlist>

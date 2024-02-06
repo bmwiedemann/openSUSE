@@ -22,10 +22,11 @@ Version:        2.0.2
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://param.holoviz.org/index.html
 Source:         https://files.pythonhosted.org/packages/source/p/param/param-%{version}.tar.gz
 Source100:      python-param-rpmlintrc
+# https://github.com/holoviz/param/issues/907
+Patch0:         filter-deprecationwarning.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
