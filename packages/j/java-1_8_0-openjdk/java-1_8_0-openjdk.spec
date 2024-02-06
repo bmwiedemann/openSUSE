@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openjdk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.29.0
+%global icedtea_version 3.30.0
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -31,7 +31,7 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       392
+%global updatever       402
 %global buildver        08
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
@@ -309,7 +309,7 @@ Requires:       mozilla-nss
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     tzdata-java8
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -342,7 +342,7 @@ Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-devel = %{javaver}
@@ -378,7 +378,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install javadoc alternative.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}

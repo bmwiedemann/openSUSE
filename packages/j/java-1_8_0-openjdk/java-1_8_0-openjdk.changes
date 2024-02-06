@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Feb  6 12:10:43 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u402 (icedtea-3.30.0)
+  * Security fixes
+    + JDK-8308204: Enhanced certificate processing
+    + JDK-8314284, CVE-2024-20926, bsc#1218906: Enhance Nashorn
+      performance
+    + JDK-8314295, CVE-2024-20919, bsc#1218903: Enhance
+      verification of verifier
+    + JDK-8314307, CVE-2024-20921, bsc#1218905: Improve loop
+      handling
+    + JDK-8314468, CVE-2024-20918, bsc#1218907: Improve Compiler
+      loops
+    + JDK-8316976, CVE-2024-20945, bsc#1218909: Improve signature
+      handling
+    + JDK-8317547, CVE-2024-20952, bsc#1218911: Enhance TLS
+      connection support
+  * Import of OpenJDK 8 u402 build 06
+    + JDK-6528710: sRGB-ColorSpace to sRGB-ColorSpace Conversion
+    + JDK-8029995: accept yes/no for boolean krb5.conf settings
+    + JDK-8159156: [TESTBUG] ReserveMemory test is not useful on
+      Aix.
+    + JDK-8176509: Use pandoc for converting build readme to html
+    + JDK-8206179: com/sun/management/OperatingSystemMXBean/
+     /GetCommittedVirtualMemorySize.java fails with Committed
+     virtual memory size illegal value
+    + JDK-8207404: MulticastSocket tests failing on AIX
+    + JDK-8212677: X11 default visual support for IM status window
+      on VNC
+    + JDK-8239365: ProcessBuilder test modifications for AIX
+      execution
+    + JDK-8271838: AmazonCA.java interop test fails
+    + JDK-8285398: Cache the results of constraint checks
+    + JDK-8285696: AlgorithmConstraints:permits not throwing
+      IllegalArgumentException when 'alg'  is null
+    + JDK-8302017: Allocate BadPaddingException only if it will be
+      thrown
+    + JDK-8305329: [8u] Unify test libraries into single test
+      library - step 1
+    + JDK-8307837: [8u] Check step in GHA should also print errors
+    + JDK-8309088: security/infra/java/security/cert/
+      /CertPathValidator/certification/AmazonCA.java fails
+    + JDK-8311813: C1: Uninitialized PhiResolver::_loop field
+    + JDK-8312489: Increase jdk.jar.maxSignatureFileSize default
+      which is too low for JARs such as WhiteSource/Mend unified agent jar
+    + JDK-8312535: MidiSystem.getSoundbank() throws unexpected
+      SecurityException
+    + JDK-8315280: Bump update version of OpenJDK: 8u402
+    + JDK-8315506: C99 compatibility issue in LinuxNativeDispatcher
+    + JDK-8317291: Missing null check for
+      nmethod::is_native_method()
+    + JDK-8317373: Add Telia Root CA v2
+    + JDK-8317374: Add Let's Encrypt ISRG Root X2
+    + JDK-8318759: Add four DigiCert root certificates
+    + JDK-8319187: Add three eMudhra emSign roots
+    + JDK-8319405: [s390] [jdk8] Increase javac default stack size
+      for s390x zero
+    + JDK-8320597: RSA signature verification fails on signed data
+      that does not encode params correctly
+  * Bug fixes
+    + JDK-8324184: Windows VS2010 build failed with "error C2275:
+      'int64_t'"
+
+-------------------------------------------------------------------
 Tue Nov 14 06:00:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u392 (icedtea-3.29.0)
