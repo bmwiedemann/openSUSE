@@ -302,4 +302,20 @@
   Video (processing) hardware support on Intel GPUs (bsc#1217770)</comment>
     <requestid>1130731</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>d61555244001c0a36de0a2f92a889b98</srcmd5>
+    <version>23.2.2</version>
+    <time>1707233571</time>
+    <user>anag+factory</user>
+    <comment>- disabled compiling samples, tools and tutorials, which are no 
+  longer packaged anyway
+
+- only package hardware specific ibmfxhw64 (+ libmfx_&lt;codec&gt;_hw64
+  plugins) loaded during runtime by libvpl (boo#1219494)
+- drop -devel and -samples subpackages
+
+- added hardware supplements, so it will be installed on GPUs which
+  are not supported by libmfx-gen (boo#1219494)</comment>
+    <requestid>1144149</requestid>
+  </revision>
 </revisionlist>
