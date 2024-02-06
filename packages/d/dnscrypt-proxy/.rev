@@ -299,4 +299,12 @@ dnscrypt-proxy v2 differs significantly from v1.</comment>
     <comment>Update to version 2.1.5</comment>
     <requestid>1103718</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>123666be3c5218ef1ebfbf8cbf9649c6</srcmd5>
+    <version>2.1.5</version>
+    <time>1707233676</time>
+    <user>anag+factory</user>
+    <comment>use systemd sysusers</comment>
+    <requestid>1144378</requestid>
+  </revision>
 </revisionlist>
