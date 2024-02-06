@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  1 19:34:16 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
+
+- Fix CVE-2023-5366 [bsc#1216002], openvswitch: missing masks on a final stage with ports trie
+- Added patch,
+   * CVE-2023-5366.patch
+
+-------------------------------------------------------------------
 Thu Dec 14 11:55:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - convert to sysuser generated users
