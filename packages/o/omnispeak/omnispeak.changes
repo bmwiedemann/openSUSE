@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 03 12:26:12 UTC 2024 - mardnh@gmx.de
+
+- Update to snapshot 1.1+git20240123 (b9e215b)
+  * Add liboplhw-based driver
+  * Initial support for OS text events
+  * Initial support for Game Controller bindings
+  * Add infrastructure for detecting soundcards
+  * Allow disabling "pole door glitches"
+  * Re-restrict platform surfing to Ep 5
+  * Add 70Hz ledge grabbing fix.
+- Drop patch (not longer needed):
+  * 0001-sd_opl2alsa-Don-t-include-x86-specific-headers.patch
+
+-------------------------------------------------------------------
 Thu Mar 23 09:38:19 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-sd_opl2alsa-Don-t-include-x86-specific-headers.patch,
@@ -7,4 +21,4 @@ Thu Mar 23 09:38:19 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Tue Feb 21 20:37:27 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
-- Initial package, version 1.1+git20230213
+- Initial package, version 1.1+git20230213 (72033b4e5)

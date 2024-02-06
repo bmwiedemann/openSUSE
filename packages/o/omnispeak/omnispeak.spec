@@ -1,8 +1,8 @@
 #
 # spec file for package omnispeak
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2023-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           omnispeak
-Version:        1.1+git20230213
+Version:        1.1+git20240123.b9e215b
 Release:        0
 Summary:        An reimplementation of "Commander Keen in Goodbye Galaxy!"
 License:        GPL-2.0-only
@@ -29,11 +29,11 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        omnispeak-keen4-wrapper.sh
 Source2:        omnispeak-keen5-wrapper.sh
 Source3:        omnispeak-keen6-wrapper.sh
-Patch1:         0001-sd_opl2alsa-Don-t-include-x86-specific-headers.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libieee1284-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(sdl2)
@@ -70,7 +70,7 @@ from the directory where the original game files are located.
   -DXDGUSERPATH=OFF \
   -DOMNIPATH=%{_datadir}/omnispeak \
   -DWITH_ALSA=ON \
-  -DWITH_IEEE1284=OFF
+  -DWITH_IEEE1284=ON
 %cmake_build
 
 %install
