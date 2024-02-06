@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  4 21:46:41 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- enable %{?sle15_python_module_pythons} 
+
+-------------------------------------------------------------------
 Thu Nov  7 14:53:50 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner
