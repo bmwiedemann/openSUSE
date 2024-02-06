@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  4 21:26:26 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 23.3.5
+  --> https://docs.mesa3d.org/relnotes/23.3.5.html 
+
+-------------------------------------------------------------------
+Wed Jan 31 17:40:11 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- re-enabled rusticl on sle15-sp6 after linkpac'ing rust-bindgen
+  in X11:XOrg project
+
+-------------------------------------------------------------------
 Thu Jan 25 05:19:47 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to bugfix release 23.3.4
