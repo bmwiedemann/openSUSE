@@ -1,7 +1,7 @@
 #
 # spec file for package python-h11
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-h11
 Version:        0.14.0
@@ -26,7 +24,9 @@ Summary:        A pure-Python, bring-your-own-I/O implementation of HTTP/11
 License:        MIT
 URL:            https://github.com/python-hyper/h11
 Source:         https://files.pythonhosted.org/packages/source/h/h11/h11-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,10 +43,10 @@ heavily inspired by hyper-h2 <https://hyper-h2.readthedocs.io>
 %setup -q -n h11-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +55,7 @@ heavily inspired by hyper-h2 <https://hyper-h2.readthedocs.io>
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/h11
+%{python_sitelib}/h11-%{version}.dist-info
 
 %changelog
