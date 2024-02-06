@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Feb 06 00:58:05 UTC 2024 - dfaggioli@suse.com
+
+- Fix a build issue of OVMF caused by
+  https://gitlab.com/qemu-project/qemu/-/issues/2064:
+  * target/i386: fix incorrect EIP in PC-relative translation blocks
+  * target/i386: Do not re-compute new pc with CF_PCREL
+
+-------------------------------------------------------------------
+Fri Jan 12 13:37:01 UTC 2024 - dfaggioli@suse.com
+
+- Update to latest upstream release, 8.2.0:
+  The full list of changes are available at: https://wiki.qemu.org/ChangeLog/8.2
+  Highlights include:
+  * New virtio-sound device emulation
+  * New virtio-gpu rutabaga device emulation used by Android emulator
+  * New hv-balloon for dynamic memory protocol device for Hyper-V guests
+  * New Universal Flash Storage device emulation
+  * Network Block Device (NBD) 64-bit offsets for improved performance
+  * dump-guest-memory now supports the standard kdump format
+  * ARM: Xilinx Versal board now models the CFU/CFI, and the TRNG device
+  * ARM: CPU emulation support for cortex-a710 and neoverse-n2
+  * ARM: architectural feature support for PACQARMA3, EPAC, Pauth2, FPAC,
+    FPACCOMBINE, TIDCP1, MOPS, HBC, and HPMN0
+  * HPPA: CPU emulation support for 64-bit PA-RISC 2.0
+  * HPPA: machine emulation support for C3700, including Astro memory
+    controller and four Elroy PCI bridges
+  * LoongArch: ISA support for LASX extension and PRELDX instruction
+  * LoongArch: CPU emulation support for la132
+  * RISC-V: ISA/extension support for AIA virtualization support via KVM,
+    and vector cryptographic instructions
+  * RISC-V: Numerous extension/instruction cleanups, fixes, and reworks
+  * s390x: support for vfio-ap passthrough of crypto adapter for
+    protected
+    virtualization guests
+  * Tricore: support for TC37x CPU which implements ISA v1.6.2
+  * Tricore: support for CRCN, FTOU, FTOHP, and HPTOF instructions
+  * x86: Zen support for PV console and network devices
+- Patch added (from upstream stable tree):
+  * include/ui/rect.h: fix qemu_rect_init() mis-assignment
+
+-------------------------------------------------------------------
+Wed Jan 10 13:30:37 UTC 2024 - dfaggioli@suse.com
+
+- Some packaging and dependencies fixes:
+  * [openSUSE] rpm: restrict canokey to openSUSE only
+  * [openSUSE] rpm: fix virtiofsd dependency on 32 bit systems
+  * [openSUSE] rpm: add support for canokeys (boo#1217520)
+
+-------------------------------------------------------------------
+Fri Dec 15 13:59:54 UTC 2023 - dfaggioli@suse.com
+
+- Rearrange dependencies and subpackages and filter features for ALP
+  * [openSUSE] rpm: disable Xen support in ALP-based distros
+  * [openSUSE] rpm: some more refinements of inter-subpackage dependencies
+
+-------------------------------------------------------------------
+Fri Dec 15 11:47:26 UTC 2023 - dfaggioli@suse.com
+
+- Fix boo#1084909 and create a new qemu-spice metapackage:
+  * [openSUSE] rpm: normalize hostname, for reproducible builds (#44)
+  * [openSUSE] rpm: new subpackage, for SPICE
+
+-------------------------------------------------------------------
 Wed Nov 29 10:50:56 UTC 2023 - dfaggioli@suse.com
 
 - Align to upstream stable release. It includes many of the patches we had
