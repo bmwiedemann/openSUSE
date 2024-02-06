@@ -1,0 +1,48 @@
+diff -ur jupyter_events-0.9.0.orig/tests/test_logger.py jupyter_events-0.9.0/tests/test_logger.py
+--- jupyter_events-0.9.0.orig/tests/test_logger.py	2024-02-06 16:12:31.070657567 +0100
++++ jupyter_events-0.9.0/tests/test_logger.py	2024-02-06 16:13:51.287692498 +0100
+@@ -165,8 +165,6 @@
+         "__metadata_version__": 1,
+         "something": "blah",
+     }
+-    if sys.version_info >= (3, 12):
+-        expected["taskName"] = None
+     assert event_capsule == expected
+ 
+ 
+@@ -213,8 +211,6 @@
+         "something": "blah",
+         "message": "a message was seen",
+     }
+-    if sys.version_info >= (3, 12):
+-        expected["taskName"] = None
+     assert event_capsule == expected
+ 
+ 
+@@ -262,8 +258,6 @@
+         "__metadata_version__": 1,
+         "thing": {"message": "a nested message was seen"},
+     }
+-    if sys.version_info >= (3, 12):
+-        expected["taskName"] = None
+     assert event_capsule == expected
+ 
+ 
+@@ -427,8 +421,6 @@
+         "__metadata_version__": 1,
+         "something": "blah",
+     }
+-    if sys.version_info >= (3, 12):
+-        expected["taskName"] = None
+     assert event_capsule0 == expected
+ 
+     event_capsule1 = json.loads(output1.getvalue())
+@@ -442,8 +434,6 @@
+         "__metadata_version__": 1,
+         "something": "blah",
+     }
+-    if sys.version_info >= (3, 12):
+-        expected["taskName"] = None
+     assert event_capsule1 == expected
+ 
+ 
