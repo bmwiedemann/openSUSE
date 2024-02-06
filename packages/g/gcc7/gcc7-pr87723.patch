@@ -1,0 +1,81 @@
+From 8c21b0d164f33d9d47acc26f4f9b99b53e3b1945 Mon Sep 17 00:00:00 2001
+From: Andreas Krebbel <krebbel@linux.ibm.com>
+Date: Tue, 6 Nov 2018 10:22:05 +0000
+Subject: [PATCH] S/390: Fix PR87723
+To: gcc-patches@gcc.gnu.org
+
+gcc/ChangeLog:
+
+2018-11-06  Andreas Krebbel  <krebbel@linux.ibm.com>
+
+	PR target/87723
+	* config/s390/s390.md ("*r<noxa>sbg_di_rotl"): Remove mode
+	attributes for operands 3 and 4.
+
+gcc/testsuite/ChangeLog:
+
+2018-11-06  Andreas Krebbel  <krebbel@linux.ibm.com>
+
+	PR target/87723
+	* gcc.target/s390/pr87723.c: New test.
+
+From-SVN: r265832
+---
+ gcc/ChangeLog                           |  6 +++++
+ gcc/config/s390/s390.md                 |  2 +-
+ gcc/testsuite/ChangeLog                 |  5 +++++
+ gcc/testsuite/gcc.target/s390/pr87723.c | 29 +++++++++++++++++++++++++
+ 4 files changed, 41 insertions(+), 1 deletion(-)
+ create mode 100644 gcc/testsuite/gcc.target/s390/pr87723.c
+
+diff --git a/gcc/config/s390/s390.md b/gcc/config/s390/s390.md
+index 8e7b285e1c3..4ffd438c07c 100644
+--- a/gcc/config/s390/s390.md
++++ b/gcc/config/s390/s390.md
+@@ -4230,7 +4230,7 @@
+ 	  (match_operand:DI 4 "nonimmediate_operand" "0")))
+    (clobber (reg:CC CC_REGNUM))]
+   "TARGET_Z10"
+-  "r<noxa>sbg\t%0,%1,%<bfstart>2,%<bfend>2,%b3"
++  "r<noxa>sbg\t%0,%1,%s2,%e2,%b3"
+   [(set_attr "op_type" "RIE")])
+ 
+ ; rosbg, rxsbg
+diff --git a/gcc/testsuite/gcc.target/s390/pr87723.c b/gcc/testsuite/gcc.target/s390/pr87723.c
+new file mode 100644
+index 00000000000..b0e8a5a3118
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/s390/pr87723.c
+@@ -0,0 +1,29 @@
++/* { dg-do compile } */
++/* { dg-options "-O3 -march=z196 -m64 -mzarch" } */
++
++unsigned long a;
++int b;
++void c(char* i) {
++  for (;;) {
++    char g = 0;
++    for (; g < 24; ++g)
++      b = a << g | a >> 64 - g;
++    {
++      char *d = i;
++      long h = b;
++      char e = 0;
++      for (; e < 8; ++e)
++	d[e] = h;
++    }
++    char *d = i;
++    signed e;
++    unsigned long f = 0;
++    e = 7;
++    for (; e; --e) {
++      f <<= 8;
++      f |= d[e];
++    }
++    for (; e < 8; ++e)
++      d[e] = f;
++  }
++}
+-- 
+2.35.3
+

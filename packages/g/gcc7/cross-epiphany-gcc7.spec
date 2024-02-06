@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -153,6 +153,8 @@ Patch42:        libgcc-riscv-div.patch
 Patch43:        gcc7-aarch64-bsc1214052.patch
 Patch44:        gcc7-aarch64-untyped_call.patch
 Patch45:        gcc7-lra-elim.patch
+Patch46:        gcc7-bsc1216488.patch
+Patch47:        gcc7-pr87723.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -203,7 +205,7 @@ Patch126:       gcc7-pfe-0022-Fix-unwinding-issues-when-pfe-is-enabled.patch
 %define biarch %(case " %{biarch_targets} " in (*" %{TARGET_ARCH} "*) echo 1;; (*) echo 0;; esac)
 %endif
 
-%define HOST_ARCH %(echo %{_host_cpu} | sed -e "s/i.86/i586/;s/ppc/powerpc/;s/sparc64.*/sparc64/;s/sparcv.*/sparc/;")
+%define HOST_ARCH %(echo %{_target_cpu} | sed -e "s/i.86/i586/;s/ppc/powerpc/;s/sparc64.*/sparc64/;s/sparcv.*/sparc/;")
 %ifarch ppc
 %define GCCDIST powerpc64-suse-linux
 %else
@@ -351,6 +353,8 @@ ln -s nvptx-newlib/newlib .
 %patch43 -p1
 %patch44 -p1
 %patch45 -p1
+%patch46 -p1
+%patch47 -p1
 %patch51
 %patch60
 %patch61

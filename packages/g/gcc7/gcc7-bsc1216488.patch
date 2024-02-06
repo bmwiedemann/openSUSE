@@ -1,0 +1,13 @@
+diff --git a/gcc/dwarf2out.c b/gcc/dwarf2out.c
+index 5590845d2a4..07185a1a0d3 100644
+--- a/gcc/dwarf2out.c
++++ b/gcc/dwarf2out.c
+@@ -23030,7 +23031,7 @@ gen_label_die (tree decl, dw_die_ref context_die)
+       lbl_die = new_die (DW_TAG_label, context_die, decl);
+       equate_decl_number_to_die (decl, lbl_die);
+ 
+-      if (origin != NULL)
++      if (origin != NULL && origin != decl)
+ 	add_abstract_origin_attribute (lbl_die, origin);
+       else
+ 	add_name_and_src_coords_attributes (lbl_die, decl);

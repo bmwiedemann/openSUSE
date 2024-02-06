@@ -631,4 +631,18 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
   paired loads and stores on aarch64.</comment>
     <requestid>1110684</requestid>
   </revision>
+  <revision rev="41" vrev="16">
+    <srcmd5>510a57aab5bb25c8619b5d6cbf9cb812</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1707233711</time>
+    <user>anag+factory</user>
+    <comment>- Use %{_target_cpu} to determine host and build.
+
+- Add gcc7-pr87723.patch to avoid ICE when hitting a broken pattern
+  in the s390 backend.
+
+- Add gcc7-bsc1216488.patch to avoid creating recursive DIE references
+  through DW_AT_abstract_origin when using LTO.  [bsc#1216488]</comment>
+    <requestid>1144321</requestid>
+  </revision>
 </revisionlist>
