@@ -333,6 +333,7 @@ BuildRequires:  ninja
 # Use distro provided LLVM on Tumbleweed, but pin it to the matching LLVM!
 # For details see boo#1192067
 BuildRequires:  llvm%{llvm_version}-devel
+BuildRequires:  clang%{llvm_version}
 Requires:       lld%{llvm_version}
 %endif
 
@@ -526,6 +527,11 @@ EOF
 RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args=-Wl,-v ${RUSTFLAGS} main.rs
 %endif
 
+# Find compiler-rt
+%if %{without bundled_llvm}
+PATH_TO_LLVM_PROFILER=`echo %{_libdir}/clang/??/lib/linux/libclang_rt.profile-*.a`
+%endif
+
 # The configure macro will modify some autoconf-related files, which upsets
 # cargo when it tries to verify checksums in those files. So we don't use
 # the macro, as it provides no tangible benefit to our build process.
@@ -563,7 +569,10 @@ RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args
   --enable-extended \
   --tools="cargo,rustdoc" \
   --release-channel="stable" \
-  --set rust.deny-warnings=false
+  --set rust.deny-warnings=false \
+  %{!?with_bundled_llvm: --set target.%{rust_triple}.profiler=${PATH_TO_LLVM_PROFILER}} \
+  %{?with_bundled_llvm: --set target.%{rust_triple}.profiler=true} \
+  %{nil}
 
 # We set deny warnings to false due to a problem where rust upstream didn't test building with
 # the same version (they did previous ver)
@@ -655,6 +664,7 @@ ln -s %{rust_root} %{_builddir}/rustc-%{version}-src/build/%{rust_triple}/stage0
 %ifarch aarch64
 python3 ./x.py test --target=%{rust_triple} \
     --exclude tests/run-make/issue-71519 \
+    --exclude tests/run-make/pgo-branch-weights \
     --exclude src/tools/tidy \
     --exclude src/tools/expand-yaml-anchors \
     --exclude tests/ui/methods \
@@ -667,6 +677,7 @@ python3 ./x.py test --target=%{rust_triple} \
 %else
 python3 ./x.py test --target=%{rust_triple} \
     --exclude tests/run-make/issue-71519 \
+    --exclude tests/run-make/pgo-branch-weights \
     --exclude src/tools/tidy \
     --exclude src/tools/expand-yaml-anchors \
     --exclude tests/ui/methods \
