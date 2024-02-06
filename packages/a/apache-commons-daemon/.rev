@@ -188,4 +188,12 @@
     <comment>1.3.3</comment>
     <requestid>1084292</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8dd19e71498a4da9030f85997176369c</srcmd5>
+    <version>1.3.4</version>
+    <time>1707233716</time>
+    <user>anag+factory</user>
+    <comment>Fix build on arm32 architectures</comment>
+    <requestid>1144485</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb  6 08:04:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Disable LTO to avoid undefined symbols on some platforms
+
+-------------------------------------------------------------------
+Tue Oct 17 07:48:06 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 1.3.4:
+  * Procrun. Configured stack size now applies to the main thread 
+    when running in JVM mode. Fixes DAEMON-451.
+  * Procrun. If the specified log directory does not exist, attempt
+    to create any missing parent directories, as well as the 
+    specified directory, when the service starts. Fixes DAEMON-452.
+  * Procrun. Allow Windows service dependencies to be managed by 
+    Procrun or by 'sc config ...'. Fixes DAEMON-458.
+  * jsvc. Fix DaemonController.reload() only working the first time
+    it is called. Fixes DAEMON-459. Thanks to Klaus Malorny.
+  * jsvc. Remove incorrent definition 'supported_os' which defined
+    in psupport.m4 file to fix jsvc build error on riscv64.
+  * Bump commons-parent from 54 to 57 #71, #91.
+
+-------------------------------------------------------------------
 Wed May  3 07:07:37 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.3.3:
