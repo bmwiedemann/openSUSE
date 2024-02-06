@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %bcond_with test
 Name:           python-Cython0
-Version:        0.29.36
+Version:        0.29.37
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
@@ -39,7 +39,7 @@ Provides:       python-cython = %{version}-%{release}
 Requires:       python-devel
 Requires:       python-xml
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
