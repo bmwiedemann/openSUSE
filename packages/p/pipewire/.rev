@@ -957,4 +957,28 @@ Build tested.
     <comment></comment>
     <requestid>1138107</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>3d3af8d195b027d572c86955fa45513e</srcmd5>
+    <version>1.0.1</version>
+    <time>1705951866</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1140584</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>40ca898a8b6aac7187b9485427cd7806</srcmd5>
+    <version>1.0.2</version>
+    <time>1706807019</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143073</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>950fa7e0521e519ab16990810e14feac</srcmd5>
+    <version>1.0.3</version>
+    <time>1707233559</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144102</requestid>
+  </revision>
 </revisionlist>

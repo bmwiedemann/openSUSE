@@ -62,7 +62,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -115,7 +115,7 @@ BuildRequires:  %{ffmpeg_pref}-mini-devel
 %endif
 BuildRequires:  pkgconfig(lc3)
 %if %{with libcamera}
-BuildRequires:  libcamera-devel >= 0.0.1
+BuildRequires:  libcamera-devel >= 0.2.0
 %endif
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcap)
@@ -190,7 +190,7 @@ This package provides the PipeWire shared library.
 Summary:        PipeWire libjack replacement libraries
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description libjack-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
