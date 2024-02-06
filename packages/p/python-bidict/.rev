@@ -152,4 +152,14 @@
     <comment></comment>
     <requestid>1138873</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>5e724efff25adaccc71fa9c3fcd1c3f4</srcmd5>
+    <version>0.22.1</version>
+    <time>1707233696</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python-312.patch:
+  * Cope with different TypeError raised.
+- No more greedy globs in %files.</comment>
+    <requestid>1144443</requestid>
+  </revision>
 </revisionlist>

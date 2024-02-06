@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  6 05:38:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-312.patch:
+  * Cope with different TypeError raised.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Jan 15 13:44:03 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove BuildRequires that aren't really used:

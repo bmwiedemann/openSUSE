@@ -24,6 +24,8 @@ Summary:        Bidirectional map implementation for Python
 License:        MPL-2.0
 URL:            https://github.com/jab/bidict
 Source:         https://github.com/jab/bidict/archive/refs/tags/v%{version}.tar.gz#/bidict-%{version}-gh.tar.gz
+# PATCH-FIX-OPENSUSE Upstream has since rewritten the test suite, drop on update
+Patch0:         support-python-312.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -61,6 +63,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc CHANGELOG.rst README.rst docs/*.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/bidict
+%{python_sitelib}/bidict-%{version}.dist-info
 
 %changelog
