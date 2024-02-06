@@ -486,4 +486,15 @@
 - add dependency on itsdangerous</comment>
     <requestid>1140137</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>cd4e45eb71a4e0da503381c7ed720655</srcmd5>
+    <version>3.0.2</version>
+    <time>1707233563</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.2:
+  * Correct type for jinja_loader property. :issue:`5388`
+  * Fix error with --extra-files and --exclude-patterns CLI
+    options. :issue:`5391`</comment>
+    <requestid>1144168</requestid>
+  </revision>
 </revisionlist>

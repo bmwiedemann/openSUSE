@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  5 10:05:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * Correct type for jinja_loader property. :issue:`5388`
+  * Fix error with --extra-files and --exclude-patterns CLI
+    options. :issue:`5391`
+
+-------------------------------------------------------------------
 Sat Jan 20 14:06:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.1:
