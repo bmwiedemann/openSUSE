@@ -1,7 +1,7 @@
 #
 # spec file for package libXvMC
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXvMC
 %define lname	libXvMC1
-Version:        1.0.13
+Version:        1.0.14
 Release:        0
 Summary:        X-Video Motion Compensation library
 License:        MIT
@@ -30,6 +30,7 @@ URL:            http://xorg.freedesktop.org/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(videoproto)
 BuildRequires:  pkgconfig(x11)
@@ -79,12 +80,15 @@ in %lname.
 %setup -q
 
 %build
-%configure --docdir=%_docdir/%name --disable-static
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%meson_install
+rm -f "%buildroot/%_libdir"/*.a
+mkdir -p %buildroot/%_docdir/%name
+mv %buildroot/%{_datadir}/doc/%name \
+   %buildroot/%{_docdir}/%name
 
 %post -n %lname -p /sbin/ldconfig
 
