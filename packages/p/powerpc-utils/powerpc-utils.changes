@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  5 15:30:16 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Use separate hcn-init service for wicked and NM (bsc#1200731 ltc#198485)
+ * hcn-init-Split-services-per-connection-manager.patch
+
+-------------------------------------------------------------------
 Thu Feb  1 09:17:33 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Support muliple NVMe device paths in bootlist (bsc#1219234 ltc#204975)

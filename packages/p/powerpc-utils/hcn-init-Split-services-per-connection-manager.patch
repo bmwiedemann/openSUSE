@@ -1,0 +1,194 @@
+From 5f825c75c6dfc2a95af1eebb6e364587d178deee Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Thu, 21 Jul 2022 12:38:16 +0200
+Subject: [PATCH] hcn-init: Split services per connection manager.
+
+The universal service using network.service alias does not work
+reliably.
+
+Use one service per supported connection manager.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ .gitignore                       |  4 +++-
+ Makefile.am                      | 11 ++++++++---
+ configure.ac                     |  2 +-
+ powerpc-utils.spec.in            | 19 ++++++++++++-------
+ systemd/hcn-init.service.in      | 13 -------------
+ systemd/hcn-init.service.in.in   | 13 +++++++++++++
+ systemd/hcn-init.service.suse.in | 14 --------------
+ 7 files changed, 37 insertions(+), 39 deletions(-)
+ delete mode 100644 systemd/hcn-init.service.in
+ create mode 100644 systemd/hcn-init.service.in.in
+ delete mode 100644 systemd/hcn-init.service.suse.in
+
+diff --git a/.gitignore b/.gitignore
+index 3edebeb..014043d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -49,7 +49,9 @@
+ /src/drmgr/Makefile.in
+ /systemd/smt_off.service
+ /systemd/smtstate.service
+-/systemd/hcn-init.service
++/systemd/hcn-init.service.in
++/systemd/hcn-init-NetworkManager.service
++/systemd/hcn-init-wicked.service
+ 
+ #
+ # git files that we don't want to ignore even it they are dot-files
+diff --git a/Makefile.am b/Makefile.am
+index 5c0ca3c..fe54de9 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -63,7 +63,7 @@ sbin_SCRIPTS += scripts/smtstate
+ man_MANS += man/smtstate.8
+ EXTRA_DIST += systemd/smt_off.service.in \
+ 	systemd/smtstate.service.in \
+-	systemd/hcn-init.service.in \
++	systemd/hcn-init.service.in.in \
+ 	scripts/smtstate.in \
+ 	var/lib/powerpc-utils/smt.state \
+ 	man/smtstate.8
+@@ -223,17 +223,22 @@ install-exec-hook:
+ 
+ if WITH_SYSTEMD
+ install-data-hook:
++	for i in NetworkManager wicked ; do \
++		sed -e "s,@CM@,$${i},g" < systemd/hcn-init.service.in > systemd/hcn-init-$${i}.service ;\
++	done
+ 	$(MKDIR_P) $(DESTDIR)${systemd_unit_dir}
+ 	$(MKDIR_P) $(DESTDIR)/var/lib/@PACKAGE@
+ 	$(MKDIR_P) $(DESTDIR)/usr/lib/@PACKAGE@
+ 	$(INSTALL_DATA) systemd/smt_off.service $(DESTDIR)${systemd_unit_dir}/
+ 	$(INSTALL_DATA) systemd/smtstate.service $(DESTDIR)${systemd_unit_dir}/
+-	$(INSTALL_DATA) systemd/hcn-init.service $(DESTDIR)${systemd_unit_dir}/
++	$(INSTALL_DATA) systemd/hcn-init-NetworkManager.service $(DESTDIR)${systemd_unit_dir}/
++	$(INSTALL_DATA) systemd/hcn-init-wicked.service $(DESTDIR)${systemd_unit_dir}/
+ 	$(INSTALL_DATA) var/lib/powerpc-utils/smt.state $(DESTDIR)/var/lib/@PACKAGE@/
+ 	$(INSTALL_SCRIPT) scripts/functions.suse $(DESTDIR)/usr/lib/@PACKAGE@/
+ 	$(INSTALL_SCRIPT) scripts/smtstate $(DESTDIR)@sbindir@
+ 	sed -i -e 's,$${exec_prefix},@prefix@,g' $(DESTDIR)${systemd_unit_dir}/smt_off.service
+ 	sed -i -e 's,$${exec_prefix},@prefix@,g' $(DESTDIR)${systemd_unit_dir}/smtstate.service
+-	sed -i -e 's,$${exec_prefix},@prefix@,g' $(DESTDIR)${systemd_unit_dir}/hcn-init.service
++	sed -i -e 's,$${exec_prefix},@prefix@,g' $(DESTDIR)${systemd_unit_dir}/hcn-init-NetworkManager.service
++	sed -i -e 's,$${exec_prefix},@prefix@,g' $(DESTDIR)${systemd_unit_dir}/hcn-init-wicked.service
+ 	sed -i -e 's,$${exec_prefix},@prefix@,g' $(DESTDIR)@sbindir@/smtstate
+ endif
+diff --git a/configure.ac b/configure.ac
+index b8eb649..df80917 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -117,5 +117,5 @@ LOCAL_CHECK_FLAGS
+ 
+ AC_CONFIG_FILES([Makefile powerpc-utils.spec systemd/smt_off.service])
+ AC_CONFIG_FILES([systemd/smtstate.service scripts/smtstate])
+-AC_CONFIG_FILES([systemd/hcn-init.service systemd/hcn-init.service.suse])
++AC_CONFIG_FILES([systemd/hcn-init.service.in])
+ AC_OUTPUT
+diff --git a/powerpc-utils.spec.in b/powerpc-utils.spec.in
+index f998628..6763510 100644
+--- a/powerpc-utils.spec.in
++++ b/powerpc-utils.spec.in
+@@ -89,7 +89,8 @@ Utilities for maintaining and servicing PowerPC systems.
+ /var/lib/powerpc-utils/smt.state
+ /lib/systemd/system/smtstate.service
+ /lib/systemd/system/smt_off.service
+-/lib/systemd/system/hcn-init.service
++/lib/systemd/system/hcn-init-NetworkManager.service
++/lib/systemd/system/hcn-init-wicked.service
+ /usr/share/man/man8/smtstate.8.gz
+ %endif
+ 
+@@ -124,8 +125,10 @@ ln -sf /usr/share/man/man8/serv_config.8 usr/share/man/man8/uspchrp.8
+ 
+ %if %{with systemd}
+ systemctl daemon-reload
+-systemctl start hcn-init.service
+-systemctl enable hcn-init.service
++for i in NetworkManager wicked ; do
++	systemctl start hcn-init-${i}.service
++	systemctl enable hcn-init-${i}.service
++done
+ # update the smt.state file with current SMT
+ /usr/sbin/smtstate --save
+ %endif
+@@ -138,10 +141,12 @@ if [ "$svc" = "0" ]; then
+     systemctl stop smtstate.service
+     systemctl disable smtstate.service
+ fi
+-if systemctl is-enabled hcn-init.service |grep -q "enabled"; then
+-	systemctl stop hcn-init.service
+-	systemctl disable hcn-init.service
+-fi
++for i in NetworkManager wicked ; do
++	if systemctl is-enabled hcn-init-${i}.service |grep -q "enabled"; then
++		systemctl stop hcn-init-${i}.service
++		systemctl disable hcn-init-${i}.service
++	fi
++done
+ %endif
+ 
+ %postun
+diff --git a/systemd/hcn-init.service.in b/systemd/hcn-init.service.in
+deleted file mode 100644
+index d91b760..0000000
+--- a/systemd/hcn-init.service.in
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[Unit]
+-Description=hybrid virtual network scan and config
+-After=NetworkManager.service
+-Requisite=NetworkManager.service
+-PartOf=NetworkManager.service
+-
+-[Service]
+-Type=oneshot
+-RemainAfterExit=yes
+-ExecStart=@sbindir@/hcnmgr -s
+-
+-[Install]
+-WantedBy=NetworkManager.service
+diff --git a/systemd/hcn-init.service.in.in b/systemd/hcn-init.service.in.in
+new file mode 100644
+index 0000000..f0701f5
+--- /dev/null
++++ b/systemd/hcn-init.service.in.in
+@@ -0,0 +1,13 @@
++[Unit]
++Description=hybrid virtual network scan and config for @CM@
++After=@CM@.service
++Requisite=@CM@.service
++PartOf=@CM@.service
++
++[Service]
++Type=oneshot
++RemainAfterExit=yes
++ExecStart=@sbindir@/hcnmgr -s
++
++[Install]
++WantedBy=@CM@.service
+diff --git a/systemd/hcn-init.service.suse.in b/systemd/hcn-init.service.suse.in
+deleted file mode 100644
+index 81a4cd3..0000000
+--- a/systemd/hcn-init.service.suse.in
++++ /dev/null
+@@ -1,14 +0,0 @@
+-[Unit]
+-Description=hybrid virtual network scan and config
+-After=network-pre.target NetworkManager.service
+-Before=wicked.service
+-Requisite=network.service
+-PartOf=network.service
+-
+-[Service]
+-Type=oneshot
+-RemainAfterExit=yes
+-ExecStart=@sbindir@/hcnmgr -s
+-
+-[Install]
+-WantedBy=multi-user.target network.target
+-- 
+2.43.0
+

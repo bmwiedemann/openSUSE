@@ -40,6 +40,7 @@ Patch12:        powerpc-nvram-fix-segmentation-fault-issue-in-print-.patch
 Patch13:        powerpc-nvram-Fix-Segmentation-fault-issue-in-nvram-.patch
 Patch14:        nvram-man-page-and-help-output-are-not-in-sync.patch
 Patch15:        ppc64_cpu-info-fix-bad-report-when-non-continuous-CP.patch
+Patch16:        hcn-init-Split-services-per-connection-manager.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel
@@ -96,24 +97,20 @@ ln -sf drmgr %{buildroot}%{_sbindir}/drmig_chrp_pmig
 
 ln -s service %{buildroot}%{_sbindir}/rcsmt_off
 
-install -m 644 systemd/hcn-init.service.suse %{buildroot}%{_unitdir}/hcn-init.service
-mkdir -p %{buildroot}/usr/lib/powerpc-utils
-install -m 644 scripts/functions.suse  %{buildroot}/usr/lib/powerpc-utils/functions.suse
-
 # remove docu installed by make_install as we hand-install them in %%files
 rm -rf %{buildroot}%{_docdir}/%{name}/*
 
 %pre
-%service_add_pre hcn-init.service smt_off.service smtstate.service
+%service_add_pre hcn-init-wicked.service hcn-init-NetworkManager.service smt_off.service smtstate.service
 
 %post
-%service_add_post hcn-init.service smt_off.service smtstate.service
+%service_add_post hcn-init-wicked.service hcn-init-NetworkManager.service smt_off.service smtstate.service
 
 %preun
-%service_del_preun hcn-init.service smt_off.service smtstate.service
+%service_del_preun hcn-init-wicked.service hcn-init-NetworkManager.service smt_off.service smtstate.service
 
 %postun
-%service_del_postun hcn-init.service smt_off.service smtstate.service
+%service_del_postun hcn-init-wicked.service hcn-init-NetworkManager.service smt_off.service smtstate.service
 
 %files
 %license COPYING
@@ -128,7 +125,8 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*
 %config(noreplace) %{_localstatedir}/lib/powerpc-utils/smt.state
 %dir /usr/lib/powerpc-utils
 /usr/lib/powerpc-utils/functions.suse
-%{_unitdir}/hcn-init.service
+%{_unitdir}/hcn-init-wicked.service
+%{_unitdir}/hcn-init-NetworkManager.service
 %{_unitdir}/smt_off.service
 %{_unitdir}/smtstate.service
 
