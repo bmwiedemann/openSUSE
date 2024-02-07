@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  6 16:05:37 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Restore the selected products after reloading the package
+  manager, properly install all products for new modules and
+  extensions when upgrading from SLE12 (bsc#1218391)
+- 5.0.6
+
+-------------------------------------------------------------------
 Fri Jan 26 12:26:06 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
 
 - In zVM or KVM installations the cio_ignore kernel argument will 
