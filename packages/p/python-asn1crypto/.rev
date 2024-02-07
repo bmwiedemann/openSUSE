@@ -159,4 +159,13 @@
   * Add support for explicit RSA SSA PSS to keys.PublicKeyInfo()</comment>
     <requestid>1136430</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>bac2cad1a0a4c3a12e4cff6fb5fb03e7</srcmd5>
+    <version>1.5.1</version>
+    <time>1707328141</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream support-python312.patch to support python3.12
+  gh#wbond/asn1crypto@32b67e3caf25, gh#wbond/asn1crypto@8ec764d3914e</comment>
+    <requestid>1144708</requestid>
+  </revision>
 </revisionlist>

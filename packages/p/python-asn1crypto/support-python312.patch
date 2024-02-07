@@ -1,0 +1,114 @@
+Index: asn1crypto-1.5.1/tests/__init__.py
+===================================================================
+--- asn1crypto-1.5.1.orig/tests/__init__.py
++++ asn1crypto-1.5.1/tests/__init__.py
+@@ -1,10 +1,15 @@
+ # coding: utf-8
+ from __future__ import unicode_literals, division, absolute_import, print_function
+ 
+-import imp
+ import os
++import sys
+ import unittest
+ 
++if sys.version_info < (3,):
++    import imp
++else:
++    import importlib
++
+ 
+ __version__ = '1.5.1'
+ __version_info__ = (1, 5, 1)
+@@ -28,6 +33,9 @@ def _import_from(mod, path, mod_dir=None
+         None if not loaded, otherwise the module
+     """
+ 
++    if mod in sys.modules:
++        return sys.modules[mod]
++
+     if mod_dir is None:
+         mod_dir = mod
+ 
+@@ -38,8 +46,20 @@ def _import_from(mod, path, mod_dir=None
+         return None
+ 
+     try:
+-        mod_info = imp.find_module(mod_dir, [path])
+-        return imp.load_module(mod, *mod_info)
++        if sys.version_info < (3,):
++            mod_info = imp.find_module(mod_dir, [path])
++            return imp.load_module(mod, *mod_info)
++        else:
++            loader_details = (
++                importlib.machinery.SourceFileLoader,
++                importlib.machinery.SOURCE_SUFFIXES
++            )
++            finder = importlib.machinery.FileFinder(path, loader_details)
++            spec = finder.find_spec(mod_dir)
++            module = importlib.util.module_from_spec(spec)
++            sys.modules[mod] = module
++            spec.loader.exec_module(module)
++            return module
+     except ImportError:
+         return None
+ 
+Index: asn1crypto-1.5.1/dev/_import.py
+===================================================================
+--- asn1crypto-1.5.1.orig/dev/_import.py
++++ asn1crypto-1.5.1/dev/_import.py
+@@ -1,10 +1,16 @@
+ # coding: utf-8
+ from __future__ import unicode_literals, division, absolute_import, print_function
+ 
+-import imp
+ import sys
+ import os
+ 
++if sys.version_info < (3, 5):
++    import imp
++else:
++    import importlib
++    import importlib.machinery
++    import importlib.util
++
+ from . import build_root, package_name, package_root
+ 
+ if sys.version_info < (3,):
+@@ -34,6 +40,14 @@ def _import_from(mod, path, mod_dir=None
+         None if not loaded, otherwise the module
+     """
+ 
++    if mod in sys.modules:
++        return sys.modules[mod]
++
++    if mod_dir is None:
++        full_mod = mod
++    else:
++        full_mod = mod_dir
++
+     if mod_dir is None:
+         mod_dir = mod.replace('.', os.sep)
+ 
+@@ -49,8 +63,20 @@ def _import_from(mod, path, mod_dir=None
+         path = os.path.join(path, append)
+ 
+     try:
+-        mod_info = imp.find_module(mod_dir, [path])
+-        return imp.load_module(mod, *mod_info)
++        if sys.version_info < (3, 5):
++            mod_info = imp.find_module(mod_dir, [path])
++            return imp.load_module(mod, *mod_info)
++        else:
++            loader_details = (
++                importlib.machinery.SourceFileLoader,
++                importlib.machinery.SOURCE_SUFFIXES
++            )
++            finder = importlib.machinery.FileFinder(path, loader_details)
++            spec = finder.find_spec(full_mod)
++            module = importlib.util.module_from_spec(spec)
++            sys.modules[mod] = module
++            spec.loader.exec_module(module)
++            return module
+     except ImportError:
+         if allow_error:
+             raise

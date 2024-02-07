@@ -24,6 +24,8 @@ Summary:        ASN.1 parser and serializer for Python
 License:        MIT
 URL:            https://github.com/wbond/asn1crypto
 Source:         https://github.com/wbond/asn1crypto/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM support-python312.patch gh#wbond/asn1crypto@32b67e3caf25, gh#wbond/asn1crypto@8ec764d3914e
+Patch1:         support-python312.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

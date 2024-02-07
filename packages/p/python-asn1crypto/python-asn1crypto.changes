@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  6 18:20:30 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream support-python312.patch to support python3.12
+  gh#wbond/asn1crypto@32b67e3caf25, gh#wbond/asn1crypto@8ec764d3914e
+
+-------------------------------------------------------------------
 Wed Jan  3 09:43:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools
