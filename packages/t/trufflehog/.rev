@@ -254,4 +254,41 @@
   * [feat] - concurently scan the filesystem source (#2364) (forwarded request 1144376 from ph03nix)</comment>
     <requestid>1144407</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>be9bec47a7899f0de89034a690ac66ae</srcmd5>
+    <version>3.67.4</version>
+    <time>1707328262</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.67.4:
+  * [feat] - use diff chan (#2387)
+  * [not-fixup] - Reduce memory consumption for Buffered File Writer (#2377)
+  * fix: case-insensitive ext check (#2383)
+  * tightening opsgenie detection and verification (#2389)
+  * Fix binary file hanging bug in git sources (#2388)
+  * Disable GitHub wiki scanning by default (#2386)
+  * [fixup] - correctly use the buffered file writer (#2373)
+  * custom detector dogs (#2376)
+  * use only the DetectorKey as a map field (#2374)
+  * [feat] - concurently scan the filesystem source (#2364)
+  * [chore] Cleanup GitLab source errors (#2345)
+  * [bug] - use DetectorKey as the key in the detectorKeysWithResults map (#2366)
+  * Add s3 credential validation (#2362)
+  * Polite Verification (#2356)
+  * Make AzureDevopsPersonalAccessToken verification more robust (#2359)
+  * fix (#2360)
+  * update azure test files to check rawV2 (#2353)
+  * [chore] Add filesystem integration test (#2358)
+  * Scan GitHub wikis #2233
+  * added flyio protos (#2357)
+  * Allow for configuring the buffered file writer (#2319)
+  * [feat] - tmp file diffs (#2306)
+  * Fix filesystem enumeration ignore paths bug (#2355)
+  * Detectors Updates 1 for Tristate Verification (#2187)
+  * feat(detectors): update template (#2342)
+  * Azure function key is throwing FPs (#2352)
+  * Improve fp ignore logic (#2351)
+  * added azuresearchquerykey detector (#2349)
+  * added azuresearchadminkey detector (#2348) (forwarded request 1144854 from ph03nix)</comment>
+    <requestid>1144948</requestid>
+  </revision>
 </revisionlist>
