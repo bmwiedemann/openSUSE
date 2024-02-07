@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  7 09:46:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.2:
+  + Sample items in mark chart rows to reduce chances of
+    overflowing Open GL maximum VBO size.
+  + Fix parsing of /proc/$pid/maps by being more lenient in what is
+    accepted device numbers. This fixes some unwindable stack
+    tracess
+  + Update categories that are highlighted.
+  + Be more defensive when cleaning up view models to reduce
+    chances of cuausing issues with GtkExpression.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Jan 17 12:28:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move wronly places obsoletes:

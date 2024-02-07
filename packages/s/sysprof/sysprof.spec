@@ -22,13 +22,13 @@
 %define glib_version 2.76.0
 
 Name:           sysprof
-Version:        45.1
+Version:        45.2
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
-Source0:        https://download.gnome.org/sources/sysprof/45/sysprof-%{version}.tar.xz
+Source0:        sysprof-%{version}.tar.zst
 Patch0:         harden_sysprof3.service.patch
 Patch1:         explicitly-include-unistd.patch
 
