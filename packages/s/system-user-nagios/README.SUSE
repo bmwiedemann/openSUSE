@@ -1,0 +1,14 @@
+We 'outsourced' the handling of users and groups for 
+nagios into this package.
+
+As result, this package creates the following user:
+ nagios
+and the following groups:
+ nagios
+ nagcmd
+
+This should be handled transparently with old (shadow based) and 
+new (systemd based) systems.
+
+Remember to have a lot of fun!
+ Your (open)SUSE team

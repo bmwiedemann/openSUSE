@@ -1,0 +1,8 @@
+<package name="system-user-nagios" project="openSUSE:Factory">
+  <title>System user and group nagios</title>
+  <description>This package provides the user and group 'nagios' for various applications.
+
+</description>
+  <devel project="server:monitoring" package="system-user-nagios"/>
+  <url>https://en.opensuse.org/openSUSE:Packaging_guidelines#Users_and_Groups</url>
+</package>
