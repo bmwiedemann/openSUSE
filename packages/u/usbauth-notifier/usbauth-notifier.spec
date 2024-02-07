@@ -1,7 +1,7 @@
 #
 # spec file for package usbauth-notifier
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2018 Stefan Koch <stefan.koch10@gmail.com>
 # Copyright (c) 2015 SUSE LLC. All Rights Reserved.
 # Author: Stefan Koch <skoch@suse.de>
@@ -22,22 +22,27 @@
 %define _name   usbauth-all
 Name:           usbauth-notifier
 Version:        1.0.4
-Release:        0
 Summary:        Notifier for USB Firewall to use with desktop environments
-License:        GPL-2.0-only
-Group:          System/X11/Utilities
 URL:            https://github.com/kochstefan/usbauth-all/
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
+
+Release:        0
+License:        GPL-2.0-only
+Group:          System/X11/Utilities
+
 Requires(pre):  permissions
 Requires:       usbauth
+BuildRequires:  gcc
 BuildRequires:  gettext-runtime
 BuildRequires:  libnotify-devel
 BuildRequires:  libtool
-BuildRequires:  libusbauth-configparser-devel
 BuildRequires:  permissions
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libusbauth-configparser)
+Provides:       group(usbauth)
+Provides:       group(usbauth-notifier)
 
 %description
 A notifier for the usbauth firewall against BadUSB attacks. The user could manually allow or deny USB devices.
@@ -45,39 +50,41 @@ A notifier for the usbauth firewall against BadUSB attacks. The user could manua
 %lang_package
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -n %{_name}-%{version}
 
 %build
-cd %{name}
+pushd %{name}/
 autoreconf -f -i
 %configure
 %make_build
+popd
 
 %pre
 if ! getent group usbauth>/dev/null; then groupadd -r usbauth; fi
 if ! getent group usbauth-notifier>/dev/null; then groupadd -r usbauth-notifier; fi
 
 %install
-%make_install -C %{name}
-%find_lang %{name}
+pushd %{name}/
+%make_install
+popd
+%find_lang %{name} --with-man
 
 %files
-%doc %{name}/README %{name}/CHANGELOG.md
 %license %{name}/COPYING
-%dir /etc/xdg/autostart
-/etc/xdg/autostart/usbauth-notifier.desktop
-%verify(not mode) %attr(04750,root,usbauth) %{_libexecdir}/usbauth-npriv
-%dir %verify(not mode) %attr(00750,root,usbauth-notifier) %{_libexecdir}/usbauth-notifier
-%verify(not mode) %attr(02755,root,usbauth) %{_libexecdir}/usbauth-notifier/usbauth-notifier
-%_mandir/man1/usbauth-notifier.1*
-%_mandir/man1/usbauth-npriv.1*
+%doc %{name}/README
+%doc %_mandir/*/*
+%dir %_sysconfdir/xdg/autostart
+%_sysconfdir/xdg/autostart/usbauth-notifier.desktop
+%verify(not mode) %attr(04750,root,usbauth) %_libexecdir/usbauth-npriv
+%dir %verify(not mode) %attr(00750,root,usbauth-notifier) %_libexecdir/usbauth-notifier
+%verify(not mode) %attr(02755,root,usbauth) %_libexecdir/usbauth-notifier/usbauth-notifier
 
 %files lang -f %{name}.lang
 
 %post
-%set_permissions %{_libexecdir}/usbauth-npriv %{_libexecdir}/usbauth-notifier %{_libexecdir}/usbauth-notifier/usbauth-notifier
+%set_permissions %_libexecdir/usbauth-npriv %_libexecdir/usbauth-notifier %_libexecdir/usbauth-notifier/usbauth-notifier
 
 %verifyscript
-%verify_permissions -e %{_libexecdir}/usbauth-npriv %{_libexecdir}/usbauth-notifier %{_libexecdir}/usbauth-notifier/usbauth-notifier
+%verify_permissions -e %_libexecdir/usbauth-npriv %_libexecdir/usbauth-notifier %_libexecdir/usbauth-notifier/usbauth-notifier
 
 %changelog

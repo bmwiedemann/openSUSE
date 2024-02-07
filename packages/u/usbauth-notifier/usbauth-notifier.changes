@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  6 16:00:33 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Fix lang subpackage
+
+-------------------------------------------------------------------
+Tue Feb  6 08:45:07 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- provide group(usbauth) group(usbauth-notifier) for rpm 4.19
+
+-------------------------------------------------------------------
 Tue May  3 12:42:04 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.0.4

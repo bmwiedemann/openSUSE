@@ -56,4 +56,14 @@
     <comment></comment>
     <requestid>974765</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5e5864e657c821fdef86dc7d83f49bbd</srcmd5>
+    <version>1.0.4</version>
+    <time>1707328071</time>
+    <user>anag+factory</user>
+    <comment>- Fix lang subpackage
+
+- provide group(usbauth) group(usbauth-notifier) for rpm 4.19</comment>
+    <requestid>1144906</requestid>
+  </revision>
 </revisionlist>
