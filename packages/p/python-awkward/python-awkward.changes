@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Feb  6 18:35:44 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 2.6.1:
+  The purpose of this release is to provide a lower-bound on the
+  fsspec dependency version (#3006).
+- 2.6.0:
+  From this point onward, awkward strictly depends on fsspec.
+  * feat: turn on CUDA unit tests for working kernels and add some CUDA kernels
+    (gh#scikit-hep/awkward#2930)
+  * feat: add string builder
+    (gh#scikit-hep/awkward#2899)
+  * feat: add to_parquet_row_groups
+    (gh#scikit-hep/awkward#2979)
+  * feat!: array is no longer allowed on NumpyArray and EmptyArray
+    (gh#scikit-hep/awkward#2997)
+  * fix: include header-only files in sdist
+    (gh#scikit-hep/awkward#2909)
+  * fix: touching of unions
+    (gh#scikit-hep/awkward#2906)
+  * fix: lazily project union contents
+    (gh#scikit-hep/awkward#2913)
+  * fix: support typetracer in to_packed for IndexedOptionArray
+    (gh#scikit-hep/awkward#2912)
+  * fix: cartesian nested record
+    (gh#scikit-hep/awkward#2929)
+  * fix: cast bool_ to int8 for positional reducers
+    (gh#scikit-hep/awkward#2935)
+  * fix: ak.std and ak.var for axis != -1.
+    (gh#scikit-hep/awkward#2918)
+
+-------------------------------------------------------------------
 Mon Jan 15 10:10:38 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.2:

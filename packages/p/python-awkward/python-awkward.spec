@@ -19,7 +19,7 @@
 %define awkward_cpp_version 28
 %{?sle15_python_module_pythons}
 Name:           python-awkward
-Version:        2.5.2
+Version:        2.6.1
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-awkward-cpp = %{awkward_cpp_version}
+Requires:       python-fsspec
 Requires:       python-numpy >= 1.17.0
 Requires:       python-packaging
 Requires:       (python-importlib-resources if python-base < 3.9)
@@ -43,6 +44,7 @@ Recommends:     python-pandas
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module awkward-cpp = %{awkward_cpp_version}}
+BuildRequires:  %{python_module fsspec}
 BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
 BuildRequires:  %{python_module numba >= 0.50 if %python-base < 3.11}
 BuildRequires:  %{python_module numexpr}
