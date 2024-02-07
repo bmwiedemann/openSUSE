@@ -154,4 +154,12 @@ Required by recent python-dfVFS release</comment>
     <comment>- Update to release 20231201</comment>
     <requestid>1130191</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>ff17ae73383470dfa3ce3075180aaedc</srcmd5>
+    <version>20231201</version>
+    <time>1707328114</time>
+    <user>anag+factory</user>
+    <comment>python 3.12 build fix</comment>
+    <requestid>1144601</requestid>
+  </revision>
 </revisionlist>
