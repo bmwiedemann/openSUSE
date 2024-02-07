@@ -1,7 +1,7 @@
 #
 # spec file for package influxdb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,6 +54,8 @@ Requires(pre):  %insserv_prereq
 # conflicts with new package influxdb2
 Conflicts:      influxdb2
 ExcludeArch:    %ix86 %arm ppc
+Provides:       group(influxdb)
+Provides:       user(influxdb)
 
 %description
 InfluxDB is an distributed time series database with no external dependencies.
