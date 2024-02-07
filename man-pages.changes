@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  9 12:29:35 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Do not remove bpf-helpers.7, as this is not provided by the bpftool
+  package any more.
+
+-------------------------------------------------------------------
 Thu Nov  9 09:07:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.05.01:

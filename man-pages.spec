@@ -1,7 +1,7 @@
 #
 # spec file for package man-pages
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,8 +59,6 @@ find -name "*.orig" | xargs rm -fv
 rm man3/{getifaddrs.3,freeifaddrs.3,crypt.3,crypt_r.3}
 # remove .so link to bzero.3, conflicts with libbsd
 rm man3/explicit_bzero.3
-# already in bpftool package
-rm man7/bpf-helpers.7
 # bsc#1188724
 rm man5/motd.5
 # conflicts with mandoc

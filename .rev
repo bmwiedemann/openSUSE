@@ -2043,4 +2043,13 @@
 - ready for autobuild (forwarded request 1124364 from dirkmueller)</comment>
     <requestid>1124374</requestid>
   </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>f0c3ec381e4b4ace689c060c4f9170a7</srcmd5>
+    <version>6.05.01</version>
+    <time>1705255283</time>
+    <user>anag+factory</user>
+    <comment>- Do not remove bpf-helpers.7, as this is not provided by the bpftool
+  package any more. (forwarded request 1137719 from ailiopoulos)</comment>
+    <requestid>1138338</requestid>
+  </revision>
 </revisionlist>
