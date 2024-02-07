@@ -1,7 +1,7 @@
 #
 # spec file for package python-openapi-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+# jsonschema-spec < 0.3 is not compatible with Python3.12. Waiting for a migration to jsonschema-path
+%define skip_python312 1
 Name:           python-openapi-core
 Version:        0.18.2
 Release:        0
