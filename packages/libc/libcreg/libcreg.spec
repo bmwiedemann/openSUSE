@@ -1,7 +1,7 @@
 #
 # spec file for package libcreg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?sle15_python_module_pythons}
 
@@ -29,6 +30,7 @@ Source:         https://github.com/libyal/libcreg/releases/download/%version/lib
 Source2:        https://github.com/libyal/libcreg/releases/download/%version/libcreg-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
 BuildRequires:  %python_module devel
+BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
