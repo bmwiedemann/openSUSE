@@ -392,4 +392,12 @@
       aborted. (forwarded request 1130176 from dirkmueller)</comment>
     <requestid>1130193</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>58bc57ac916fd2a46dcf610b877aee9c</srcmd5>
+    <version>7.4.2</version>
+    <time>1707328157</time>
+    <user>anag+factory</user>
+    <comment>- Use sysuser-tools to generate varnish user</comment>
+    <requestid>1144754</requestid>
+  </revision>
 </revisionlist>

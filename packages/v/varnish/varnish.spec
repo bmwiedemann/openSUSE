@@ -1,7 +1,7 @@
 #
 # spec file for package varnish
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,11 +45,13 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-docutils
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libpcre2-8)
 Requires:       c_compiler
-Requires(pre):  shadow
+%sysusers_requires
 Recommends:     logrotate
+%{?systemd_ordering}
 
 %description
 Varnish is an HTTP accelerator. Often called Reverse Proxy, it is an
@@ -133,6 +135,11 @@ cp -a doc/changes.rst LICENSE README.rst "$b/%_docdir/%name/"
 perl -i -pe 's{^#!/usr/bin/env python}{#!/usr/bin/python}g' \
 	"$b/%_datadir/varnish/vmodtool.py" "$b/%_datadir/varnish/vsctool.py"
 
+mkdir -p "$b/%_sysusersdir"
+echo 'u varnish - "user for Varnish" %pkg_home' >system-user-varnish.conf
+cp -a system-user-varnish.conf "$b/%_sysusersdir/"
+%sysusers_generate_pre system-user-varnish.conf random system-user-varnish.conf
+
 %check
 if ! %make_build check; then
 	x="$?"
@@ -140,12 +147,7 @@ if ! %make_build check; then
 	exit "$x"
 fi
 
-%pre
-%_bindir/getent group varnish >/dev/null || \
-	%_sbindir/groupadd -r varnish
-%_bindir/getent passwd varnish >/dev/null || \
-	%_sbindir/useradd -g varnish -s /bin/false -r -c "user for Varnish" \
-		-d %pkg_home varnish
+%pre -f random.pre
 %service_add_pre varnish.service varnishlog.service
 
 %post
@@ -176,6 +178,7 @@ fi
 %dir %attr(0750,varnish,varnish) %pkg_cachedir
 %dir %attr(0750,varnish,varnish) %pkg_logdir
 %_fillupdir/sysconfig.%name
+%_sysusersdir/*
 
 %files -n %library_name
 %_libdir/libvarnishapi.so.3*

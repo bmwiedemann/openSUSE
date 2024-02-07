@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  6 19:45:13 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Use sysuser-tools to generate varnish user
+
+-------------------------------------------------------------------
 Fri Dec  1 09:34:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.4.2 (bsc#1216123, CVE-2023-44487):
