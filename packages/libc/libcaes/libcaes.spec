@@ -30,6 +30,7 @@ Source:         https://github.com/libyal/libcaes/releases/download/%version/lib
 Source2:        https://github.com/libyal/libcaes/releases/download/%version/libcaes-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
