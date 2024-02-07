@@ -1,7 +1,7 @@
 #
 # spec file for package libesedb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libesedb1
 Name:           libesedb
-Version:        20231120
+Version:        20240202
 Release:        0
 Summary:        Library and tools to access the ESE Database File (EDB) format
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
@@ -33,26 +33,27 @@ Source12:       Forensic_analysis_of_the_Windows_Search_database.pdf
 Source13:       Windows_Search.pdf
 Source14:       libesedb-libfdata.pdf
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20220120
-BuildRequires:  pkgconfig(libcdata) >= 20230108
-BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20220107
-BuildRequires:  pkgconfig(libcnotify) >= 20220108
-BuildRequires:  pkgconfig(libcpath) >= 20220108
-BuildRequires:  pkgconfig(libcsplit) >= 20220109
-BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20230115
-BuildRequires:  pkgconfig(libfdata) >= 20220111
-BuildRequires:  pkgconfig(libfdatetime) >= 20220112
-BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libfmapi) >= 20220114
-BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libfwnt) >= 20210906
+BuildRequires:  pkgconfig(libbfio) >= 20221025
+BuildRequires:  pkgconfig(libcdata) >= 20240103
+BuildRequires:  pkgconfig(libcerror) >= 20240101
+BuildRequires:  pkgconfig(libcfile) >= 20240106
+BuildRequires:  pkgconfig(libclocale) >= 20240107
+BuildRequires:  pkgconfig(libcnotify) >= 20240108
+BuildRequires:  pkgconfig(libcpath) >= 20240109
+BuildRequires:  pkgconfig(libcsplit) >= 20240110
+BuildRequires:  pkgconfig(libcthreads) >= 20240102
+BuildRequires:  pkgconfig(libfcache) >= 20240112
+BuildRequires:  pkgconfig(libfdata) >= 20240114
+BuildRequires:  pkgconfig(libfdatetime) >= 20240115
+BuildRequires:  pkgconfig(libfguid) >= 20240116
+BuildRequires:  pkgconfig(libfmapi) >= 20240117
+BuildRequires:  pkgconfig(libfvalue) >= 20240124
+BuildRequires:  pkgconfig(libfwnt) >= 20240126
 BuildRequires:  pkgconfig(libmapidb) >= 20210421
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libuna) >= 20240130
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
@@ -61,12 +62,12 @@ Library and tools to access the Extensible Storage Engine (ESE) Database File
 (EDB) format. ESEDB is used in may different applications like Windows Search,
 Windows Mail, Exchange, Active Directory, etc.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to access the EDB format
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 Library to access the Extensible Storage Engine (ESE) Database File (EDB)
 format. ESEDB is used in may different applications like Windows Search,
 Windows Mail, Exchange, Active Directory, etc.
@@ -113,19 +114,19 @@ grep ' '' ''local' config.log && exit 1
 
 %install
 mv %_builddir/rt/* %buildroot/
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libesedb.so.*
+%_libdir/libesedb.so.*
 
 %files -n %name-tools
 %license COPYING*
-%{_bindir}/esedb*
-%{_mandir}/man1/esedb*.1*
+%_bindir/esedb*
+%_mandir/man1/esedb*.1*
 
 %files -n %name-devel
 %license COPYING*
@@ -134,14 +135,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc Forensic_analysis_of_the_Windows_Search_database.pdf
 %doc Windows_Search.pdf
 %doc libesedb-libfdata.pdf
-%{_includedir}/libesedb.h
-%{_includedir}/libesedb/
-%{_libdir}/libesedb.so
-%{_libdir}/pkgconfig/libesedb.pc
-%{_mandir}/man3/libesedb.3*
+%_includedir/libesedb.h
+%_includedir/libesedb/
+%_libdir/libesedb.so
+%_libdir/pkgconfig/libesedb.pc
+%_mandir/man3/libesedb.3*
 
 %files %python_files
 %license COPYING*
-%{python_sitearch}/pyesedb.so
+%python_sitearch/pyesedb.so
 
 %changelog
