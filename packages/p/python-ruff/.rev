@@ -546,4 +546,41 @@
    * ruff.flake8-builtins → ruff.lint.flake8-builtins</comment>
     <requestid>1144159</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>83ef9158eabe271bac6349dcb99ceefe</srcmd5>
+    <version>0.2.1</version>
+    <time>1707328245</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.1
+ * This release includes support for range formatting
+   (i.e., the ability to format specific lines within a source file).
+ * Preview features
+   * [refurb] Implement missing-f-string-syntax (RUF027) 
+   * Format module-level docstrings 
+ * Formatter
+   * Add --range option to ruff format 
+   * Don't trim last empty line in docstrings 
+ * Bug fixes
+   * Skip empty lines when determining base indentation 
+   * Drop __get__ and __set__ from unnecessary-dunder-call 
+   * Respect generic Protocol in ellipsis removal 
+   * Revert &quot;Use publicly available Apple Silicon runners&quot;
+ * Performance
+   * Skip LibCST parsing for standard dedent adjustments 
+   * Remove CST-based fixer for C408 
+   * Add our own ignored-names abstractions 
+   * Remove CST-based fixers for C400, C401, C410, and C418 
+   * Use AhoCorasick to speed up quote match 
+   * Remove CST-based fixers for C405 and C409 
+   * Add fast-path for comment detection 
+   * Invert order of checks in zero-sleep-call 
+   * Short-circuit typing matches based on imports 
+   * Run dunder method rule on methods directly 
+   * Track top-level module imports in the semantic model 
+   * Slight speed-up for lowercase and uppercase identifier checks 
+   * Remove LibCST-based fixer for C403 
+ * Documentation
+   * Update max-pos-args example to max-positional-args</comment>
+    <requestid>1144921</requestid>
+  </revision>
 </revisionlist>
