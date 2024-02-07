@@ -279,4 +279,17 @@
   * go#64718 crypto: upgrade to BoringCrypto fips-20220613 and enable TLS 1.3 (forwarded request 1137839 from jfkw)</comment>
     <requestid>1137840</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>63fb588c7a23ddb834fe99cd332c1b52</srcmd5>
+    <version>1.20.14</version>
+    <time>1707328067</time>
+    <user>anag+factory</user>
+    <comment>- go1.20.14 (released 2024-02-06) includes fixes to the crypto/x509
+  package.
+  Refs boo#1206346 go1.20 release tracking
+  * go#64760 staticlockranking builders failing on release branches on LUCI
+  * go#65322 crypto: rollback BoringCrypto fips-20220613 update
+  * go#65379 crypto/x509: TestIssue51759 consistently failing on gotip-darwin-amd64_10.15 LUCI builder (forwarded request 1144758 from jfkw)</comment>
+    <requestid>1144759</requestid>
+  </revision>
 </revisionlist>
