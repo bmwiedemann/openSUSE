@@ -27,4 +27,16 @@
   * refactoring and code cleanup and documentation updates</comment>
     <requestid>1138326</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f063fb66ce9f50a925c80bbb282dca13</srcmd5>
+    <version>0.3.3</version>
+    <time>1707328189</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.3.3
+  - fixes incorrect data inside of repomd.xml
+
+- update to version 0.3.2
+  * crash fixes</comment>
+    <requestid>1144804</requestid>
+  </revision>
 </revisionlist>
