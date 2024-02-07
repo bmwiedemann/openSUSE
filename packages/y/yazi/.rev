@@ -12,4 +12,38 @@ Changes from last request:
 - Remove tar.zst sources, as obscpio is also available and should be preferred than zst</comment>
     <requestid>1143525</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>42276409bdc135fd50eac753b6833f73</srcmd5>
+    <version>0.2.3</version>
+    <time>1707328268</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.3:
+  * chore: bump version to 0.2.3
+  * feat: if input is empty, close it on `backspace` command (#630)
+  * feat: add `ya.quote()` function instead of `ya.shell_join()`
+  * fix: task manager not re-rendering after progress update (#633)
+  * fix: hidden attribute of files on Windows (#632)
+  * feat: support char device in filetype (#628)
+  * feat: add `ya.shell_join()` API
+  * fix: attach plugin `args` to the `entry` method for better future optimization possibilities (#627)
+  * feat: `app_emit` and `manager_emit` accepts boolean, integer, and number as option values (#625)
+  * fix: image rotation with orientation 4
+  * feat: add `plugin` command to each layer
+  * feat: plugin interface for key events via `ya.which()` (#617)
+  * perf: use lazy sorting when loading large directories to reduce unnecessary CPU consumption (#607)
+  * feat: make `trash` crate optional on Android (#600)
+  * feat: support `unyank` (#313)
+  * refactor: use `Cmd` instead of `Exec` (#604)
+  * perf: read directory in bulk in the background at startup (#599)
+  * feat: preview image over SSH (#585)
+  * feat: plugin-specific state persistence (#590)
+  * feat: support passing arguments to plugin (#587)
+  * feat: allow to configure image filter (#586)
+  * feat: shorten unit names and add more units to `ya.readable_size`
+  * fix: parent folder not tracking CWD (#581)
+  * feat: new `image_quality` and `sixel_fraction` options to allow users to configure the image preview quality (#576)
+  * fix: input offset is not reset when renaming with `--cursor=start` and the filename is too long (#575)
+  * feat: customizing the number of columns of &quot;which key&quot; component (#571)</comment>
+    <requestid>1144959</requestid>
+  </revision>
 </revisionlist>
