@@ -608,4 +608,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1134610</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c721635eea3c9b5ec23417e6188d34fc</srcmd5>
+    <version>4.2.9</version>
+    <time>1707328132</time>
+    <user>anag+factory</user>
+    <comment>- VERSION 4.2 Patch 9 - 2024-02-04
+- CHANGE: remind: Do not attempt to guess terminal background color on
+  startup.  Only obtain it as needed.  This can prevent mojibake from
+  appearing on terminals that don't support the color query escape
+  sequence.
+- IMPROVEMENT: remind: Add new system variables $NumFullOmits,
+  $MaxFullOmits, $NumPartialOmits and $MaxPartialOmits.
+- IMPROVEMENT: remind: Issue a warning if someone OMITs every possible date.
+- IMPROVEMENT: remind: In several error messages complaining about limits
+  being exceeded, include the actual limit in the error message.  Clarify
+  the man page regarding limits on the number of OMITs.
+- MINOR NEW FEATURE: remind:  The expression STRING * INT or INT * STRING
+  is now accepted and yields a string that is INT concatenations of the
+  origina STRING.  In this case, INT must be non-negative and the total
+  string length can't exceed $MaxStringLen.
+- DOCUMENTATION: Add &quot;Astronomical Algorithms&quot; by Jean Meeus to bibliography.
+- DOCUMENTATION FIX: Update address of the Free Software Foundation in the
+  license file.
+- DOCUMENTATION: Note that rem2ps is deprecated and will not received any
+  new features.  Further development will happen on rem2pdf.
+- BUG FIX: Preserve the filename() and priority context for queued reminders.
+  Previously, the filename information was lost and the priority was
+  coming from uninitialized memory (yikes!).  bug found by Alexander
+  Möller.
+- BUG FIX: build.tk: Various minor improvements.
+- BUG FIX: remind: In server mode, if we de-queue a reminder without
+  triggering it, issue a &quot;NOTE queued %d&quot; message to update the
+  client's notion of the queue size.
+- BUG FIX: tkremind: Fix typo found by Lorenzo Bazzanini.</comment>
+    <requestid>1144662</requestid>
+  </revision>
 </revisionlist>
