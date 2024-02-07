@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jan 23 03:06:04 UTC 2024 - william.brown@suse.com
+
+- Update to version 0.7.5~9:
+  * Add experimental concurrent cache support
+  * feat(cache/oss): add support for oss (#2046)
+  * Improve of the description
+  * fix(src/compiler/c): take common_args into account during preprocessor hashing (#2039)
+  * Add support for symlinks in toolchains. (#2030)
+  * Fix docs on integrating sccache with MSVC when cmake >= 3.25 (#2031)
+  * refactor: Remove all dependences on ring 0.16 (#2036)
+  * feat(redis): add support for ttl, fix #1666 (#2027)
+  * Prepare version 0.7.5
+  * fix(src/compiler/msvc): add a new encode/decode test ...
+  * fix(src/compiler/msvc): use pre-encoded UTF-16 data ...
+  * chore(src/compiler/msvc): replace rust-encoding with encoding-rs ...
+  * build(deps): bump serde from 1.0.194 to 1.0.195 (#2017)
+  * build(deps): bump libc from 0.2.151 to 0.2.152 (#2019)
+  * build(deps): bump base64 from 0.21.5 to 0.21.6 (#2016)
+  * build(deps): bump opendal from 0.44.0 to 0.44.1 (#2014)
+  * feat(snap): add sccache-dist binary to the Snap
+  * chore(snap): adapt the configurations to Snapcraft 8.0
+  * build(deps): bump actions/github-script from 6 to 7
+  * build(deps): bump actions/download-artifact from 3 to 4
+  * build(deps): bump actions/upload-artifact from 3 to 4
+  * chore(cargo): update dependencies to compatible versions (#2009)
+  * build(deps): bump tar from 0.4.38 to 0.4.40
+  * build(deps): bump test-case from 3.2.1 to 3.3.1
+  * Clone repo in ci
+  * Fix typo
+  * Add ci feature check
+  * Expand cfg for operator storage impl
+  * Add i686 and fix armv7
+  * Fix typo in target
+  * Use container for arm build
+  * Versionbump opendal 0.41.0 -> 0.43.0 (#1992)
+  * build(deps): bump toml from 0.8.6 to 0.8.8
+  * build(deps): bump vmactions/freebsd-vm from 1.0.4 to 1.0.5
+  * build(deps): bump vmactions/freebsd-vm from 1.0.2 to 1.0.4
+  * build(deps): bump nix from 0.26.2 to 0.26.4
+
+-------------------------------------------------------------------
 Tue Dec 05 04:28:03 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.7.4~3:
