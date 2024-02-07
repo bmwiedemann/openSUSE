@@ -7,4 +7,17 @@
     <comment>kora</comment>
     <requestid>1074615</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>99b984e09338ff1ad48963fbbce3e039</srcmd5>
+    <version>1.6.0</version>
+    <time>1707328249</time>
+    <user>anag+factory</user>
+    <comment>- switch service mode to manual
+
+- Version 1.6.0
+- https://github.com/bikass/kora/releases/tag/v1.6.0
+
+- New and updated icons</comment>
+    <requestid>1144942</requestid>
+  </revision>
 </revisionlist>

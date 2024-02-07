@@ -1,7 +1,7 @@
 #
 # spec file for package kora-icon-theme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,16 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:               kora-icon-theme
-Version:            1.5.6
-Release:            0
-Summary:            SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
-License:            GPL-3.0
-URL:                https://github.com/bikass/kora
-Source0:            kora-%{version}.tar.gz
-BuildArch:          noarch
-BuildRequires:      fdupes
-Requires(post):     gtk3-tools
+
+Name:           kora-icon-theme
+Version:        1.6.0
+Release:        0
+Summary:        SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
+License:        GPL-3.0-only
+URL:            https://github.com/bikass/kora
+Source0:        https://github.com/bikass/kora/archive/refs/tags/v%{version}.tar.gz
+BuildArch:      noarch
+BuildRequires:  fdupes
+Requires(post): gtk3-tools
 
 %description
 Kora is an SVG icon theme with lots of new icons for GNU/Linux operating systems.
