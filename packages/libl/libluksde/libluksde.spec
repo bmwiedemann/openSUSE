@@ -30,6 +30,7 @@ Source:         https://github.com/libyal/libluksde/releases/download/%version/l
 Source2:        https://github.com/libyal/libluksde/releases/download/%version/libluksde-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
 BuildRequires:  %python_module devel
+BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
