@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  4 20:45:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.12.2:
+  * Fixes for Y4M, ANI, PNG and JPG loaders
+
+-------------------------------------------------------------------
 Sat Sep 23 17:14:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.1:

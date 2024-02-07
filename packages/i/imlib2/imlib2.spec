@@ -2,6 +2,7 @@
 # spec file for package imlib2
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +26,7 @@
 %bcond_with svg
 %bcond_with postscript
 Name:           imlib2
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
@@ -49,6 +50,7 @@ BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-shm) >= 1.9
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(zlib)
+Recommends:     imlib2-loaders
 %if %{with jxl}
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libjxl_threads)
@@ -59,7 +61,6 @@ BuildRequires:  pkgconfig(librsvg-2.0) >= 2.46
 %if %{with postscript}
 BuildRequires:  pkgconfig(libspectre)
 %endif
-Recommends:     imlib2-loaders
 
 %description
 Imlib2 is an advanced replacement library for libraries like libXpm
@@ -127,7 +128,7 @@ This package contains the imlib2 image loaders for: argb, bmp, gif,
 jpeg, png, pnm, tga, tiff, xpm, j2k, heif, jxl.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -156,11 +157,12 @@ jpeg, png, pnm, tga, tiff, xpm, j2k, heif, jxl.
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%check
+%make_build check
+
+%ldconfig_scriptlets -n %{lname}
 
 %files
-%defattr(-,root,root,0755)
 %license COPYING
 %doc AUTHORS README
 %{_bindir}/imlib2_bumpmap
@@ -176,19 +178,22 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/imlib2/*
 
 %files -n %{lname}
+%license COPYING
 %{_libdir}/libImlib2.so.1*
 
 %files devel
-%defattr(-,root,root,0755)
+%license COPYING
 %{_libdir}/pkgconfig/imlib2.pc
 %{_includedir}/*
 %{_libdir}/lib*.so
 
 %files filters
+%license COPYING
 %attr(755,root,root) %dir %{_libdir}/imlib2
 %attr(755,root,root) %{_libdir}/imlib2/filters
 
 %files loaders
+%license COPYING
 %attr(755,root,root) %dir %{_libdir}/imlib2
 %attr(755,root,root) %{_libdir}/imlib2/loaders
 
