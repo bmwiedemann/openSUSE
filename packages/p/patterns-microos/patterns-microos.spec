@@ -553,6 +553,10 @@ Requires:       xdg-desktop-portal-gnome
 # ensure laptop power support is there
 Requires:       (power-profiles-daemon or tlp)
 Suggests:       power-profiles-daemon
+
+# Add steam-devices for controller and other gaming device support.
+Requires:       steam-devices
+
 #
 # Low-level parts that we need
 #
@@ -686,6 +690,9 @@ Requires:       kdenetwork-filesharing
 
 # Add kcm_flatpak for managing flatpak permissions (boo#1208256)
 Requires:       kcm_flatpak
+
+# Add steam-devices for controller support
+Requires:       steam-devices
 
 %description desktop-kde
 Packages required for the openSUSE MicroOS with KDE Plasma

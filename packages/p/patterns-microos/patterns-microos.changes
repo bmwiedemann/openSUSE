@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 30 19:12:13 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add "Requires: steam-devices" for both Gnome and KDE
+  * This package is just a small set of udev rules for controller
+  support, and is one of the more common reasons for end users to
+  need to interact with transactional-update, no good reason to not
+  include it in the desktop patterns
+
+-------------------------------------------------------------------
 Thu Jan 18 07:54:21 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Switch from phonon4qt5-backend-gstreamer to phonon4qt5-backend-vlc
