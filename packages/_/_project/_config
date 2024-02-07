@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20231031
+ExpandFlags: macroserial:20240125
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -413,8 +413,9 @@ FileProvides: /usr/bin/rm busybox-coreutils coreutils coreutils-single
 FileProvides: /bin/rm busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/rmdir busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/rsync rsync
-FileProvides: /usr/bin/ruby ruby3.2
+FileProvides: /usr/bin/ruby ruby3.3
 FileProvides: /usr/bin/ruby.ruby3.2 ruby3.2
+FileProvides: /usr/bin/ruby.ruby3.3 ruby3.3
 FileProvides: /usr/bin/runawk runawk
 FileProvides: /usr/bin/scheme-srfi-7 scheme48
 FileProvides: /usr/bin/sed busybox-sed sed
@@ -1343,6 +1344,7 @@ Prefer: -zziplib-devel-32bit
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby3.2-rubygem-fast_gettext
+Prefer: ruby3.3-rubygem-fast_gettext
 Prefer: -ruby3.2-rubygem-public_suffix-3.1
 Prefer: -ruby3.3-rubygem-public_suffix-3.1
 
@@ -2980,6 +2982,7 @@ BuildFlags: onlybuild:ruby
 BuildFlags: onlybuild:ruby-bundled-gems-rpmhelper
 BuildFlags: onlybuild:ruby-common
 BuildFlags: onlybuild:ruby3.2
+BuildFlags: onlybuild:ruby3.3
 BuildFlags: onlybuild:rubygem-asciidoctor
 BuildFlags: onlybuild:rubygem-gem2rpm
 BuildFlags: onlybuild:rubygem-hpricot
@@ -3293,28 +3296,47 @@ Macros:
 %rubydevelruby32() ruby3.2-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
 %rubydevelxruby32() %{expand:%%{rubydevelx%*}}
 
+### And now Ruby 3.3
+
+%rubygemsruby33() rubygem(ruby:3.3.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsxruby33() %{expand:%%{rubygemsx%*}}
+
+%rubyruby33() ruby3.3 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
+%rubyxruby33() %{expand:%%{rubyx%*}}
+
+%rubydevelruby33() ruby3.3-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
+%rubydevelxruby33() %{expand:%%{rubydevelx%*}}
+
 ### Things to define default ruby stuff for the distro
 
-%rb_default_ruby        ruby32
-%rb_default_ruby_suffix ruby3.2
-%rb_default_ruby_abi    ruby:3.2.0
+%rb_default_ruby        ruby33
+%rb_default_ruby_suffix ruby3.3
+%rb_default_ruby_abi    ruby:3.3.0
 
-%rb_build_ruby_abis     ruby:3.2.0
-%rb_build_versions      ruby32
+%rb_build_ruby_abis     ruby:3.3.0 ruby:3.2.0
+%rb_build_versions      ruby33 ruby32
 :Macros
 
+# ruby 3.2 macros still around
 Macros:
 %_with_ruby32               1
 :Macros
 
-%define _with_ruby32         1
+%define _with_ruby32        1
 
-%define rb_default_ruby        ruby32
-%define rb_default_ruby_suffix ruby3.2
-%define rb_default_ruby_abi    ruby:3.2.0
+Macros:
+%_with_ruby33               1
+:Macros
 
-%define rb_build_ruby_abis     ruby:3.2.0
-%define rb_build_versions      ruby32
+%define _with_ruby33         1
+
+%define rb_default_ruby        ruby33
+%define rb_default_ruby_suffix ruby3.3
+%define rb_default_ruby_abi    ruby:3.3.0
+
+%define rb_build_ruby_abis     ruby:3.3.0 ruby:3.2.0
+%define rb_build_versions      ruby33 ruby32
+
 
 Prefer: %{rb_default_ruby_suffix}-rubygem-asciidoctor
 Prefer: %{rb_default_ruby_suffix}-rubygem-bundler
@@ -3322,6 +3344,7 @@ Prefer: %{rb_default_ruby_suffix}-rubygem-cfa
 Prefer: %{rb_default_ruby_suffix}-rubygem-cheetah
 Prefer: %{rb_default_ruby_suffix}-rubygem-gem2rpm
 Prefer: %{rb_default_ruby_suffix}-rubygem-inifile
+Prefer: %{rb_default_ruby_suffix}-rubygem-kramdown
 Prefer: %{rb_default_ruby_suffix}-rubygem-mini_portile2
 Prefer: %{rb_default_ruby_suffix}-rubygem-ronn
 Prefer: %{rb_default_ruby_suffix}-rubygem-rspec
