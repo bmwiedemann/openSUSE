@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  7 09:31:41 UTC 2024 - Pablo Herranz Ramírez <pablo.herranz@suse.com>
+
+- Update to 3.3.0:
+  * Set brackground to red when delete mode is entered
+  * Fix base32 encoding/decoding
+  * Requires libcotp >= 3.0
+
+-------------------------------------------------------------------
 Fri Nov  3 08:50:47 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.2.1:

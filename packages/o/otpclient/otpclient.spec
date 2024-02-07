@@ -1,7 +1,7 @@
 #
 # spec file for package otpclient
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define uclname OTPClient
 Name:           otpclient
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Simple GTK+ client for managing TOTP and HOTP
 License:        GPL-3.0-or-later
@@ -30,7 +30,7 @@ Source2:        otpclient.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  libcotp-devel >= 2.0.0
+BuildRequires:  libcotp-devel >= 3.0.0
 BuildRequires:  libgcrypt-devel >= 1.8.0
 BuildRequires:  libjansson-devel >= 2.12.0
 BuildRequires:  libpng16-devel >= 1.6.30

@@ -348,4 +348,16 @@
 </comment>
     <requestid>1123143</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bea879e39090041f0819cb01221d606f</srcmd5>
+    <version>3.3.0</version>
+    <time>1707328231</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.0:
+  * Set brackground to red when delete mode is entered
+  * Fix base32 encoding/decoding
+  * Requires libcotp &gt;= 3.0
+</comment>
+    <requestid>1144895</requestid>
+  </revision>
 </revisionlist>
