@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-multipart
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-multipart
-Version:        0.0.5
+Version:        0.0.7
 Release:        0
 License:        Apache-2.0
 Summary:        Python streaming multipart parser
 URL:            http://github.com/andrew-d/python-multipart
-Source:         https://files.pythonhosted.org/packages/source/p/python-multipart/python-multipart-%{version}.tar.gz
-Patch0:         support-pyyaml-6.patch
-# https://github.com/andrew-d/python-multipart/commit/8cff1aac7479fbb69087e355f66315b21640bab0
-# https://github.com/andrew-d/python-multipart/commit/2c7e95c7236fcecdb5660823936403d1359fdb85
-Patch1:         python-python-multipart-no-mock.patch
-# https://github.com/andrew-d/python-multipart/commit/c54ad6006bacc77623864ec8e5c96bfd32230e01
-Patch2:         python-python-multipart-no-six.patch
+Source:         https://files.pythonhosted.org/packages/source/p/python-multipart/python_multipart-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -47,7 +41,7 @@ BuildArch:      noarch
 A streaming multipart parser for Python.
 
 %prep
-%autosetup -p1 -n python-multipart-%{version}
+%autosetup -p1 -n python_multipart-%{version}
 
 %build
 %pyproject_wheel

@@ -49,4 +49,12 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
     <comment></comment>
     <requestid>1093047</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9f270f2c16cca95c1c735242866853ae</srcmd5>
+    <version>0.0.7</version>
+    <time>1707328054</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144633</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  6 11:19:14 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.0.7
+  0.0.7 (2024-02-03)
+  * Refactor header option parser to use the standard library instead of a custom RegEx #75.
+  [bsc#1219610] CVE-2024-24762 
+  0.0.6 (2023-02-27)
+  * Migrate package installation to pyproject.toml (PEP 621) #54.
+  * Use yaml.safe_load instead of yaml.load #46.
+  * Add support for Python 3.11, drop EOL 3.6 #51.
+  * Add support for Python 3.8-3.10, drop EOL 2.7-3.5 #42.
+  * QuerystringParser: don't raise an AttributeError in __repr__ #30.
+- deleted patches
+  - python-python-multipart-no-mock.patch (upstreamed)
+  - python-python-multipart-no-six.patch (upstreamed)
+  - support-pyyaml-6.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Jun 13 08:53:42 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
