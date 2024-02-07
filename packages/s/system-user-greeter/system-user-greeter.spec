@@ -22,7 +22,6 @@ Release:        0
 Summary:        System user and group greeter
 License:        MIT
 Group:          System/Management
-Source0:         %{name}.conf
 BuildRequires:  sysuser-tools
 BuildArch:      noarch
 %sysusers_requires
@@ -33,10 +32,14 @@ The greeter system user and group, used by login managers such as greetd
 %prep
 
 %build
-%sysusers_generate_pre %{SOURCE0} greeter
+echo " #Type Name    ID GECOS Home                          Shell
+u     greeter -  -     %{_localstatedir}/lib/greetd  -
+m     greeter video" > %{name}.conf
+
+%sysusers_generate_pre %{name}.conf greeter
 
 %install
-install -D -m 0644 %{SOURCE0} %{buildroot}%{_sysusersdir}/%{name}.conf
+install -D -m 0644 %{name}.conf %{buildroot}%{_sysusersdir}/%{name}.conf
 
 %pre -f greeter.pre
 

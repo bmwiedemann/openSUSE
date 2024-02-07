@@ -7,4 +7,12 @@
     <comment>Provide greeter user needed by greetd and openSUSEway</comment>
     <requestid>1144480</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec69b9164ba5de41a5da5264ffc2d960</srcmd5>
+    <version>1</version>
+    <time>1707328134</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144675</requestid>
+  </revision>
 </revisionlist>
