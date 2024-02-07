@@ -1,7 +1,7 @@
 #
 # spec file for package mosquitto
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Group:          Productivity/Networking/Other
 URL:            https://mosquitto.org/
 Source:         https://mosquitto.org/files/source/mosquitto-%{version}.tar.gz
 Source1:        mosquitto.service
+Source2:        %{name}-user.conf
 Source4:        README-conf-d
 Source5:        README-ca_certificates
 Source6:        README-certs
@@ -40,12 +41,13 @@ BuildRequires:  gcc-c++
 BuildRequires:  libxslt-tools
 BuildRequires:  openssl-devel >= 1.0.0
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 BuildRequires:  uthash-devel
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libcjson)
 BuildRequires:  pkgconfig(libwebsockets)
-Requires(pre):  shadow
+%sysusers_requires
 %{?systemd_ordering}
 
 %description
@@ -112,12 +114,11 @@ monitoring and automation with his twittering house and twittering ferry.
 Client for Mosquitto.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 find misc -type f -exec chmod a-x "{}" "+"
 
 %build
+%sysusers_generate_pre %{SOURCE2} %{name} %{name}-user.conf
 %cmake \
   -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir} \
   -DWITH_WEBSOCKETS=ON \
@@ -136,11 +137,9 @@ echo "# Site-specific additions and overrides for 'usr.sbin.mosquitto'" > %{buil
 install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/mosquitto/conf.d/README
 install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/mosquitto/ca_certificates/README
 install -D -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/mosquitto/certs/README
+install -D -m 644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 
-%pre
-getent group %{name} || %{_sbindir}/groupadd -r %{name}
-getent passwd %{name} || %{_sbindir}/useradd -g %{name} -s /bin/false -r -c "%{name}" -d %{home} %{name}
-
+%pre -f %{name}.pre
 %service_add_pre %{name}.service
 
 %preun
@@ -176,6 +175,7 @@ getent passwd %{name} || %{_sbindir}/useradd -g %{name} -s /bin/false -r -c "%{n
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 %{_libdir}/mosquitto_dynamic_security.so
+%{_sysusersdir}/%{name}-user.conf
 %dir %attr(-,%{name},%{name}) %{home}
 %dir %{_sysconfdir}/apparmor.d/
 %dir %{_sysconfdir}/apparmor.d/local/
