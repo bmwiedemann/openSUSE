@@ -17,7 +17,7 @@
 
 
 Name:           kanidm
-Version:        1.1.0~rc15~git8.122b6af
+Version:        1.1.0~rc16~git1.a917291
 Release:        0
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
@@ -115,7 +115,10 @@ cargo build --offline --release --features=kanidm_unix_int/selinux
 %else
 # Override buildflags, we want to use clang + lld here. It's much better/faster than bfd.
 %define build_rustflags -C linker=clang -C link-arg=-fuse-ld=/usr/lib/rustlib/%{_arch}-unknown-linux-gnu/bin/gcc-ld/ld.lld -C debuginfo=2 -C incremental=false
-%{cargo_build} --features=kanidm_unix_int/tpm,kanidm_unix_int/selinux
+
+# --features=kanidm_unix_int/tpm,kanidm_unix_int/selinux
+
+%{cargo_build} --features=kanidm_unix_int/selinux
 %endif
 
 %install
