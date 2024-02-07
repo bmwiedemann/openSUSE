@@ -29,6 +29,7 @@ Source2:        https://github.com/libyal/liblnk/releases/download/%version/libl
 Source3:        %name.keyring
 Source8:        Windows_Shortcut_File_LNK_format.pdf
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
