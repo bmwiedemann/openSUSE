@@ -30,4 +30,20 @@ the go metapackage to version 1.22.</comment>
   Refs boo#1218424 go1.22 release tracking (forwarded request 1141356 from jfkw)</comment>
     <requestid>1141357</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b1cccf61ef7aa7963877a224a484ea7</srcmd5>
+    <version>1.22.0</version>
+    <time>1707328160</time>
+    <user>anag+factory</user>
+    <comment>- go1.22 (released 2024-02-06) is a major release of Go.
+  go1.22.x minor releases will be provided through February 2024.
+  https://github.com/golang/go/wiki/Go-Release-Cycle
+  go1.22 arrives six months after go1.21. Most of its changes are
+  in the implementation of the toolchain, runtime, and libraries.
+  As always, the release maintains the Go 1 promise of
+  compatibility. We expect almost all Go programs to continue to
+  compile and run as before.
+  Refs boo#1218424 go1.22 release tracking (forwarded request 1144765 from jfkw)</comment>
+    <requestid>1144766</requestid>
+  </revision>
 </revisionlist>
