@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Feb 07 01:23:27 UTC 2024 - william.brown@suse.com
+
+- Update to version 0.19.0~git0.c9d1fbe:
+  * Bump version to 0.19.0
+  * Update changelog to 0.19
+  * Fill in link URLs
+  * Bump version
+  * populate changelog
+  * bump version
+  * Update changelog
+  * Bump gix to 0.58
+  * Revert "Merge pull request #1094 from rustsec/revert-1081-gix-upgrade"
+  * build(deps): bump comrak from 0.18.0 to 0.21.0 (#1090)
+  * build(deps): bump rust-embed from 6.8.1 to 8.2.0 (#1080)
+  * Cargo.toml: use `resolver = "2"` (#1095)
+  * Update abscissa_core and clap; MSRV 1.70 (#1092)
+  * Revert "gix upgrade to v0.56"
+  * Fix "error: the borrowed expression implements the required traits" lint
+  * build(deps): bump actions/cache from 3.0.11 to 4.0.0 (#1088)
+  * thanks clippy
+  * upgrade `gix` to v0.56 and `tame-index` to v0.9 to match it
+  * Bump platforms version to 3.3.0
+  * Regenerate platforms crate
+  * build(deps): bump url from 2.4.1 to 2.5.0 (#1071)
+  * Add a `source` field to `rustsec::Error`, and use it in simple cases. (#1067)
+  * build(deps): bump fs-err from 2.10.0 to 2.11.0 (#1069)
+  * Bump rustsec version
+  * Update changelog
+  * Turn link into an automatic link
+  * Display the chain of sources for errors in `cargo audit`
+  * bump cargo-lock msrv in another place too
+  * bump cargo-lock msrv again from 1.66 to 1.67
+  * bump cargo-lock msrv from 1.65 to 1.66
+  * cargo update
+  * Update to tame-index 0.8.x and gix 0.55.x
+  * build(deps): bump rustix from 0.37.21 to 0.37.27
+  * fix typo html in advisory scores (#1059)
+  * https://github.com/rustsec/rustsec/pull/1057#pullrequestreview-1714037690
+  * fix https://github.com/rustsec/rustsec/issues/503
+  * bump version
+  * regenerate platforms crate
+
+-------------------------------------------------------------------
 Thu Jan  4 02:03:56 UTC 2024 - William Brown <william.brown@suse.com>
 
 - bsc#1218227 - update vendored dependencies for ssh terrapin attack
