@@ -1,7 +1,7 @@
 #
 # spec file for package elinks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,28 +15,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %if 0%{?suse_version} > 1500
 %bcond_without js
 %else
 %bcond_with js
 %endif
-
 Name:           elinks
-Version:        0.16.1.1
+Version:        0.17.0
 Release:        0
 Summary:        An advanced and well-established feature-rich text mode web browser
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            http://elinks.or.cz/
 Source0:        https://github.com/rkd77/elinks/releases/download/v%{version}/elinks-%{version}.tar.xz
-Patch0:         0006-elinks-0.16.0-libidn2.patch
-Patch1:         perl-5.38.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gpm-devel
 %if %{with js}
 BuildRequires:  pkgconfig(libcss)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libdom)
 BuildRequires:  pkgconfig(libxml++-5.0)
 BuildRequires:  pkgconfig(mujs)
 BuildRequires:  pkgconfig(sqlite3)
@@ -90,6 +87,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
     --enable-88-colors \
     --enable-256-colors \
     --enable-true-color \
+    --enable-gemini \
     --enable-exmode \
     --enable-html-highlight \
     --enable-fastmem \

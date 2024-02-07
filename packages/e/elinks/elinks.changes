@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Jan 14 02:31:22 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- update to 0.17.0:
+  * Avoid division by zero. Refs #276
+  * fix for some 32-bit systems and select-only builds
+  * configuration files are now saved to ~/.config/elinks/ or 
+    $XDG_CONFIG_HOME/elinks/ #199
+  * User must copy files from ~/.elinks/ to ~/.config/elinks/
+    himself or herself
+  * HOME_ETC support was dropped, you can set with ELINKS_CONFDIR
+  * idn2 in place of idn #206
+  * libcss support (a few netsurf's libraries are required).
+    Set document.css.libcss = 1 to enable
+  * experimental libsixel support (image/*; img2sixel %s;
+    copiousoutput) in ~/.mailcap
+  * Must be enabled in a few places in configuration: set
+    document.plain.sixel = 1
+  * and in terminal options. Do not try it on metered remote
+    connections
+  * testing libcurl support (explicit FTPS and SFTP among others)
+  * To enable set protocol.ftp.use_curl = 1
+  * set protocol.http.use_curl = 1 for http/https
+  * ui.sessions.postpone_unlink option. Delete temporary files at
+    exit instead of immediately after
+  * closing viewer #257
+  * redefined isspace #249
+  * Serbian translation update
+  * compilation fixes
+- Add pkgconfig(libdom) BuildRequires: fix build to enable js.
+- Enable gemini support
+- Removed unneeded patches:
+  * perl-5.38.patch
+  * 0006-elinks-0.16.0-libidn2.patch
+
+-------------------------------------------------------------------
 Thu Aug  3 13:10:56 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add perl-5.38.patch: Fix compilation with Perl 5.38
