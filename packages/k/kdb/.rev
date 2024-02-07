@@ -110,4 +110,15 @@
     <comment></comment>
     <requestid>902475</requestid>
   </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>ad13e1d461e85f0c1b0419081b1dbdcf</srcmd5>
+    <version>3.2.0</version>
+    <time>1707328277</time>
+    <user>anag+factory</user>
+    <comment>- Build using python3 rather than python2
+- Spec cleanup
+- Add upstream change:
+  * 0001-Find-also-Python3-with-find_package-PythonInterp.patch</comment>
+    <requestid>1144973</requestid>
+  </revision>
 </revisionlist>

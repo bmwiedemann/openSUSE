@@ -1,7 +1,7 @@
 #
 # spec file for package kdb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,23 +22,20 @@ Version:        3.2.0
 Release:        0
 Summary:        Database Connectivity and Creation Framework
 License:        LGPL-2.0-only
-Group:          Productivity/Office/Other
 URL:            https://community.kde.org/KDb
 Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         Fix-build-with-PostgreSQL-12.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         Fix-build-with-newer-Qt.patch
+# PATCH-FIX-UPSTREAM -- Find python3
+Patch2:         0001-Find-also-Python3-with-find_package-PythonInterp.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libmysqld-devel
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  postgresql-server-devel
-%else
-BuildRequires:  postgresql-devel
-%endif
-BuildRequires:  python-base
+BuildRequires:  python3-base
 BuildRequires:  sqlite3-devel
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(Qt5Core)
@@ -53,18 +50,16 @@ A database connectivity and creation framework for various database vendors
 
 %package -n libKDb3-%{sover}
 Summary:        The library for the Database Connectivity and Creation Framework
-Group:          System/Libraries
-Recommends:     %{name}-lang >= %{version}
+Recommends:     kdb-lang >= %{version}
 Obsoletes:      calligra-kexi-mssql-driver < %{version}
 Obsoletes:      calligra-kexi-xbase-driver < %{version}
-Provides:       %{name} = %{version}
+Provides:       kdb = %{version}
 
 %description -n libKDb3-%{sover}
 The library for the database connectivity and creation framework for various database vendors
 
 %package devel
 Summary:        Development package for kdb
-Group:          Development/Libraries/KDE
 Requires:       libKDb3-%{sover} = %{version}
 
 %description devel
@@ -72,7 +67,6 @@ The development package for the database connectivity and creation framework
 
 %package mysql-driver
 Summary:        Database connectivity and creation framework - MySQL driver
-Group:          Productivity/Office/Suite
 Supplements:    (libKDb3-%{sover} and mariadb)
 Obsoletes:      calligra-kexi-mysql-driver < %{version}
 Provides:       calligra-kexi-mysql-driver = %{version}
@@ -82,7 +76,6 @@ This package contains the MySQL driver for the Database connectivity and creatio
 
 %package postgresql-driver
 Summary:        Database connectivity and creation framework - PostgreSQL driver
-Group:          Productivity/Office/Suite
 Supplements:    (libKDb3-%{sover} and postgresql)
 Obsoletes:      calligra-kexi-postgresql-driver < %{version}
 Provides:       calligra-kexi-postgresql-driver = %{version}
@@ -92,7 +85,6 @@ This package contains the PostgreSQL driver for the Database connectivity and cr
 
 %package sqlite3-driver
 Summary:        Database connectivity and creation framework - SQLite3 driver
-Group:          Productivity/Office/Suite
 Supplements:    (libKDb3-%{sover} and sqlite3)
 Obsoletes:      calligra-kexi-sqlite3-driver < %{version}
 Provides:       calligra-kexi-sqlite3-driver = %{version}
@@ -105,19 +97,22 @@ This package contains the SQLite3 driver for the Database connectivity and creat
 %prep
 %autosetup -p1
 
+sed -i 's#/usr/bin/env python$#/usr/bin/python3#' tools/sdc.py
+
 %build
 %cmake_kf5 -d build
+
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
+
 %find_lang %{name} %{name}.lang --all-name --with-qt
 
 # Contains bogus entries
 rm %{buildroot}%{_libdir}/pkgconfig/KDb3.pc
 
-%post -n libKDb3-%{sover} -p /sbin/ldconfig
-%postun -n libKDb3-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKDb3-%{sover}
 
 %files -n libKDb3-%{sover}
 %license COPYING.LIB

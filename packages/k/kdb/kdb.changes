@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  7 16:21:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Build using python3 rather than python2
+- Spec cleanup
+- Add upstream change:
+  * 0001-Find-also-Python3-with-find_package-PythonInterp.patch
+
+-------------------------------------------------------------------
 Sat Jun 26 06:08:50 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Fix-build-with-newer-Qt.patch to fix build after the latest
