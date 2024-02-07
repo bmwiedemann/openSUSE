@@ -1,7 +1,7 @@
 #
 # spec file for package poco
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define sover  95
+%define sover  101
 # disabled for now as 4 of them fail
 %bcond_with tests
 Name:           poco
-Version:        1.12.5
+Version:        1.13.1
 Release:        0
 Summary:        C++ Framework for Network-based Applications
 License:        BSL-1.0
@@ -302,7 +302,6 @@ network- and Internet-based applications.
 
 %install
 %cmake_install
-mv %{buildroot}/%{_bindir}/arc %{buildroot}/%{_bindir}/poco-arc
 rm -rf %{buildroot}%{_libdir}/cmake/Poco/V*
 %fdupes -s %{buildroot}/%{_libdir}/cmake/Poco
 
@@ -434,7 +433,7 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 
 %files -n poco-devel
 %license LICENSE
-%doc CHANGELOG CONTRIBUTORS NEWS README
+%doc CHANGELOG CONTRIBUTORS README
 %{_includedir}/Poco
 %{_bindir}/poco-arc
 %{_libdir}/libPoco*.so

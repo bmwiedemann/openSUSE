@@ -71,4 +71,41 @@
     <comment></comment>
     <requestid>1121403</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61e3ae7188e196dc455b0234a153e93f</srcmd5>
+    <version>1.13.1</version>
+    <time>1707328251</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.13.1:
+  * GH #4367 `SQLite` `FTS5` (full text search)
+  * GH #4335 Implement patches that Debian/Ubuntu applies when
+    preparing deb packages
+  * GH #4216 Replace C string literals (const char*) with C++
+    std::string literals for std::string parameters.
+  * GH #3890 Get rid of SingletonHolder
+  * GH #2450 Why does it take the ThreadPool 10+ seconds to
+    shutdown when there is nothing running.
+  * GH #2443 FileChannel doesn't flush to disk on unix until
+    close
+  * GH #4437 Add arm cross-compile config and CI
+  * PR #4422 enh(File): Linux, macOS: microsecond precision for
+    file times
+  * PR #4390 enh(DateTimeParser): option to cleanup input string
+    before parsing (#569)
+  * GH #4443 Upgrade libexpat to 2.6.0
+  * GH #4425 Unit tests: optional testing of deprecated
+    functionality
+  * GH #4421 Multiple calls to initializeSSL/uninitializeSSL
+    cause assert failure during certificate validation
+  * GH #4411 NULL pointer: strategy when setting rotation never
+    in FileChannel
+  * GH #4404 qnx build error: 'prctl' was not declared in this
+    scope
+  * GH #4400 SocketReactor deadlock test intermittently hangs
+  * GH #4398 Can not install CppUnit target
+  * GH #4393 iOS ARM64 : Invalid access: Can not convert empty
+    value.
+  * GH #4392 Environment_WIN32U nodeIdImpl access violation in</comment>
+    <requestid>1144940</requestid>
+  </revision>
 </revisionlist>
