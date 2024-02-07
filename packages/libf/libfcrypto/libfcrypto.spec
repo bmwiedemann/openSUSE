@@ -30,6 +30,7 @@ Source:         https://github.com/libyal/libfcrypto/releases/download/%version/
 Source2:        https://github.com/libyal/libfcrypto/releases/download/%version/libfcrypto-alpha-%version.tar.gz.asc
 Source9:        %name.keyring
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool

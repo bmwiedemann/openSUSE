@@ -67,4 +67,12 @@
   * Added Blowfish-{CBC,EBC} and DES3-CBC support</comment>
     <requestid>1138790</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>529356f2fb0c164ffda6c2ec2359244f</srcmd5>
+    <version>20240115</version>
+    <time>1707328086</time>
+    <user>anag+factory</user>
+    <comment>python 3.12 build fix</comment>
+    <requestid>1144579</requestid>
+  </revision>
 </revisionlist>
