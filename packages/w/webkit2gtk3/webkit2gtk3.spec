@@ -74,7 +74,7 @@ ExclusiveArch:  do-not-build
 Name:           webkit2%{_gtknamesuffix}
 ### FIXME ### Drop the disabling of LTO on next release/versionbump
 %define _lto_cflags %{nil}
-Version:        2.42.4
+Version:        2.42.5
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -91,8 +91,8 @@ Patch0:         reproducibility.patch
 Patch1:         webkit2gtk3-create-destroy-egl-image.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-disable-dmabuf-nvidia.patch boo#1216778 mgorse@suse.com -- disable the DMABuf renderer for NVIDIA proprietary drivers.
 Patch2:         webkit2gtk3-disable-dmabuf-nvidia.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-CVE-2024-23222.patch bsc#1219113 mgorse@suse.com -- fix a type confusion issue.
-Patch3:         webkit2gtk3-CVE-2024-23222.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-llint-build-fix.patch mgorse@suse.com -- fix the build for non-x86 architectures.
+Patch3:         webkit2gtk3-llint-build-fix.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -432,7 +432,9 @@ A small test browswer from webkit, useful for testing features.
 
 
 
+
 # Expand %%lang_package to Obsoletes its older-name counterpart
+
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization

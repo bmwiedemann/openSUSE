@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  5 16:58:41 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.42.5 (boo#1219604):
+  + Fix webkit_web_context_allow_tls_certificate_for_host to
+    handle IPv6 URIs produced by SoupURI.
+  + Ignore stops with offset zero before last one when rendering
+    gradients with cairo.
+  + Write bwrapinfo.json to disk for xdg-desktop-portal.
+  + Fix gamepads detection by correctly handling focused window in
+    GTK4.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2024-23222, CVE-2024-23206, CVE-2024-23213.
+- Drop webkit2gtk3-CVE-2024-23222.patch: fixed upstream.
+- Add webkit2gtk3-llint-build-fix.patch: fix the build for non-x86
+  architectures.
+
+-------------------------------------------------------------------
 Wed Jan 24 19:33:03 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add webkit2gtk3-CVE-2024-23222.patch: fix a type confusion issue
@@ -70,7 +87,7 @@ Fri Sep 29 18:10:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
     IndexedDB API.
   + Fix the build with GBM disabled.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2023-41993.
+  + Security fixes: CVE-2023-41993, CVE-2023-40414.
 
 -------------------------------------------------------------------
 Thu Sep 28 08:47:58 UTC 2023 - Marcus Meissner <meissner@suse.com>
@@ -89,7 +106,7 @@ Fri Sep 15 19:04:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
     for data storage.
   + GBM is no longer required for WebGL implementation.
   + Security fixes: CVE-2023-39928, CVE-2023-41074, CVE-2023-32359,
-    CVE-2023-42890.
+    CVE-2023-42890, CVE-2014-1745.
 
 -------------------------------------------------------------------
 Mon Sep 11 15:02:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -586,7 +603,7 @@ Fri Sep 16 22:44:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
   + Security fixes: CVE-2022-32886, CVE-2022-32888, CVE-2022-32912,
     CVE-2022-32923, CVE-2022-42863, CVE-2023-25358, CVE-2023-25360,
     CVE-2023-25361, CVE-2023-25362, CVE-2023-25363, CVE-2022-48503,
-    CVE-2022-32933.
+    CVE-2022-32933, CVE-2023-42833.
 
 -------------------------------------------------------------------
 Mon Sep  5 06:25:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
