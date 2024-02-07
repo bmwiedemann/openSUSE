@@ -1,7 +1,7 @@
 #
 # spec file for package amanda
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,6 +73,8 @@ Requires:       perl = %{perl_version}
 Requires:       tar
 Requires(post): permissions
 Requires(pre):  shadow
+Provides:       group(amanda)
+Provides:       user(amanda)
 
 %description
 AMANDA, the Advanced Maryland Automatic Network Disk Archiver, is a backup
