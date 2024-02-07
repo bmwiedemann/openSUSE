@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 15 07:45:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add ppc64-disable-liburing.patch (bsc#1218365)
+
+-------------------------------------------------------------------
 Wed Nov 15 16:58:41 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - libuv.keyring: added keyid 79A67C55A3679C8B
@@ -138,7 +143,7 @@ Sat Feb 12 11:48:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 - update to 1.43.0:
   * protect fork in uv_spawn from signals
   * drop only successfully sent packets post sendmmsg
-  * adjust stalebot deadline 
+  * adjust stalebot deadline
   * work around CIFS EPERM bug
   * documentation fixes
   * developer visible code fixes
@@ -613,7 +618,7 @@ Thu Feb 28 14:33:11 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Thu Nov 22 10:10:36 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to version 1.24.0: 
+- Update to version 1.24.0:
   * unix: do not require PATH_MAX to be defined (Brad King)
   * win,doc: path encoding in uv_fs_XX is UTF-8 (hitesh)
   * unix: add missing link dependency on kFreeBSD (Svante Signell)
@@ -654,7 +659,7 @@ Thu Oct 11 14:05:40 UTC 2018 - adam.majer@suse.de
 * install license as %license
 * fix_tests.patch: fix unit tests on OBS
 * fix for bsc#1199062 (backported as
-  0001-linux-remove-epoll-syscall-wrappers.patch and 
+  0001-linux-remove-epoll-syscall-wrappers.patch and
   0002-linux-drop-code-path-for-epoll_pwait-less-kernels.patch) is
   included in upstream releases from 1.23.1 on
 
@@ -755,13 +760,13 @@ Sat Jan 30 22:30:34 UTC 2016 - mpluskal@suse.com
 
 - Update to 1.8.0
   * unix: fix memory leak in uv_interface_addresses (Jianghua Yang)
-  * unix: make uv_guess_handle work properly for AIX (Gireesh 
+  * unix: make uv_guess_handle work properly for AIX (Gireesh
     Punathil)
   * fs: undo uv__req_init when uv__malloc failed (Jianghua Yang)
-  * build: remove unused 'component' GYP option (Saúl Ibarra 
+  * build: remove unused 'component' GYP option (Saúl Ibarra
     Corretgé)
   * include: remove duplicate extern declaration (Jianghua Yang)
-  * win: use the MSVC provided snprintf where possible (Jason 
+  * win: use the MSVC provided snprintf where possible (Jason
     Williams)
   * win, test: fix compilation warning (Saúl Ibarra Corretgé)
   * win: fix compilation with VS < 2012 (Ryan Johnston)
@@ -771,47 +776,47 @@ Sat Jan 30 22:30:34 UTC 2016 - mpluskal@suse.com
   * unix: use QUEUE_MOVE when iterating over lists (Ben Noordhuis)
   * unix: squelch harmless valgrind warning (Ben Noordhuis)
   * test: don't abort on setrlimit() failure (Ben Noordhuis)
-  * unix: only undo fs req registration in async mode (Ben 
+  * unix: only undo fs req registration in async mode (Ben
     Noordhuis)
   * unix: fix uv__getiovmax return value (HungMingWu)
   * unix: make work with Solaris Studio. (Adam Stylinski)
-  * test: fix fs_event_watch_file_currentdir flakiness (Santiago 
+  * test: fix fs_event_watch_file_currentdir flakiness (Santiago
     Gimeno)
-  * unix: skip prohibited syscalls on tvOS and watchOS (Nathan 
+  * unix: skip prohibited syscalls on tvOS and watchOS (Nathan
     Corvino)
   * test: use FQDN in getaddrinfo_fail test (Wink Saville)
-  * docs: clarify documentation of uv_tcp_init_ex (Andrius 
+  * docs: clarify documentation of uv_tcp_init_ex (Andrius
     Bentkus)
   * win: fix comment (Miodrag Milanovic)
   * doc: fix typo in README (Angel Leon)
   * darwin: abort() if (un)locking fs mutex fails (Ben Noordhuis)
   * pipe: enable inprocess uv_write2 on Windows (Louis DeJardin)
-  * win: properly return UV_EBADF when _close() fails (Nicholas 
+  * win: properly return UV_EBADF when _close() fails (Nicholas
     Vavilov)
   * test: skip process_title for AIX (Imran Iqbal)
   * misc: expose handle print APIs (Petka Antonov)
   * include: add stdio.h to uv.h (Saúl Ibarra Corretgé)
   * misc: remove unnecessary null pointer checks (Ian Kronquist)
-  * test,freebsd: skip udp_dual_stack if not supported (Santiago 
+  * test,freebsd: skip udp_dual_stack if not supported (Santiago
     Gimeno)
   * linux: don't retry dup2/dup3 on EINTR (Ben Noordhuis)
   * unix: don't retry dup2/dup3 on EINTR (Ben Noordhuis)
-  * test: fix -Wtautological-pointer-compare warnings (Saúl Ibarra 
+  * test: fix -Wtautological-pointer-compare warnings (Saúl Ibarra
     Corretgé)
   * win: map ERROR_BAD_PATHNAME to UV_ENOENT (Tony Kelman)
   * test: fix test/test-tty.c for AIX (Imran Iqbal)
   * android: support api level less than 21 (kkdaemon)
   * fsevents: fix race on simultaneous init+close (Fedor Indutny)
-  * linux,fs: fix p{read,write}v with a 64bit offset (Saúl Ibarra 
+  * linux,fs: fix p{read,write}v with a 64bit offset (Saúl Ibarra
     Corretgé)
   * fs: add uv_fs_realpath() (Yuval Brik)
-  * win: fix path for removed and renamed fs events (Joran Dirk 
+  * win: fix path for removed and renamed fs events (Joran Dirk
     Greef)
-  * win: do not read more from stream than available (Jeremy 
+  * win: do not read more from stream than available (Jeremy
     Whitlock)
   * test: test that uv_close() doesn't corrupt QUEUE (Andrey Mazo)
   * unix: fix uv_fs_event_stop() from fs_event_cb (Andrey Mazo)
-  * test: fix self-deadlocks in thread_rwlock_trylock (Ben 
+  * test: fix self-deadlocks in thread_rwlock_trylock (Ben
     Noordhuis)
   * src: remove non ascii character (sztomi)
   * test: fix test udp_multicast_join6 for AIX (Imran Iqbal)
@@ -961,48 +966,48 @@ Wed Aug  5 08:53:20 UTC 2015 - mpluskal@suse.com
   * unix: handle invalid _SC_GETPW_R_SIZE_MAX values (cjihrig)
 - Changes for 1.6.0
   * aix: fix setsockopt for multicast options (Michael)
-  * unix: don't block for io if any io handle is primed (Saúl 
+  * unix: don't block for io if any io handle is primed (Saúl
     Ibarra Corretgé)
   * windows: MSVC 2015 has snprintf() (Rui Abreu Ferreira)
   * windows: Add VS2015 support to vcbuild.bat (Jason Williams)
   * doc: fix typo in tcp.rst (Igor Soarez)
-  * linux: work around epoll bug in kernels < 2.6.37 (Ben 
+  * linux: work around epoll bug in kernels < 2.6.37 (Ben
     Noordhuis)
   * unix,win: add uv_os_homedir() (cjihrig)
   * stream: fix `select()` race condition (Fedor Indutny)
-  * unix: prevent infinite loop in uv__run_pending (Saúl Ibarra 
+  * unix: prevent infinite loop in uv__run_pending (Saúl Ibarra
     Corretgé)
-  * unix: make sure UDP send callbacks are asynchronous (Saúl 
+  * unix: make sure UDP send callbacks are asynchronous (Saúl
     Ibarra Corretgé)
   * test: fix `platform_output` netmask printing. (Andrew Paprocki)
-  * aix: add ahafs autoconf detection and README notes (Andrew 
+  * aix: add ahafs autoconf detection and README notes (Andrew
     Paprocki)
-  * core: add ability to customize memory allocator (Saúl Ibarra 
+  * core: add ability to customize memory allocator (Saúl Ibarra
     Corretgé)
 - Changes for 1.5.0
-  * doc: clarify that the thread pool primites are not thread safe 
+  * doc: clarify that the thread pool primites are not thread safe
     (Andrius Bentkus)
   * aix: always deregister closing fds from epoll (Michael)
-  * unix: fix glibc-2.20+ macro incompatibility (Massimiliano 
+  * unix: fix glibc-2.20+ macro incompatibility (Massimiliano
     Torromeo)
-  * doc: add Sphinx plugin for generating links to man pages 
+  * doc: add Sphinx plugin for generating links to man pages
     (Saúl Ibarra Corretgé)
-  * doc: link system and library calls to man pages (Saúl 
+  * doc: link system and library calls to man pages (Saúl
     Ibarra Corretgé)
-  * doc: document uv_getnameinfo_t.{host|service} (Saúl Ibarra 
+  * doc: document uv_getnameinfo_t.{host|service} (Saúl Ibarra
     Corretgé)
   * build: update the location of gyp (Stephen von Takach)
   * win: name all anonymous structs and unions (TomCrypto)
-  * linux: work around epoll bug in kernels 3.10-3.19 (Ben 
+  * linux: work around epoll bug in kernels 3.10-3.19 (Ben
     Noordhuis)
-  * darwin: fix size calculation in select() fallback (Ole 
+  * darwin: fix size calculation in select() fallback (Ole
     André Vadla Ravnås)
-  * solaris: fix setsockopt for multicast options (Julien 
+  * solaris: fix setsockopt for multicast options (Julien
     Gilli)
   * test: fix race condition in multithreaded test (Ben Noordhuis)
   * doc: fix long lines in tty.rst (Ben Noordhuis)
   * test: use UV_TTY_MODE_* values in tty test (Ben Noordhuis)
-  * unix: don't clobber errno in uv_tty_reset_mode() (Ben 
+  * unix: don't clobber errno in uv_tty_reset_mode() (Ben
     Noordhuis)
   * unix: reject non-tty fds in uv_tty_init() (Ben Noordhuis)
   * win: fix pipe blocking writes (Alexis Campailla)
@@ -1011,34 +1016,34 @@ Wed Aug  5 08:53:20 UTC 2015 - mpluskal@suse.com
   * include: use `extern "c++"` for defining C++ code (Kazuho Oku)
   * unix: reap child on execvp() failure (Ryan Phillips)
   * windows: fix handle leak on EMFILE (Brian Green)
-  * test: fix tty_file, close handle if initialized (Saúl Ibarra 
+  * test: fix tty_file, close handle if initialized (Saúl Ibarra
     Corretgé)
   * doc: clarify what uv_*_open accepts (Saúl Ibarra Corretgé)
-  * doc: clarify that we don't maintain external doc resources 
+  * doc: clarify that we don't maintain external doc resources
     (Saúl Ibarra Corretgé)
-  * build: add documentation for ninja support (Devchandra 
+  * build: add documentation for ninja support (Devchandra
     Meetei Leishangthem)
   * doc: document uv_buf_t members (Corey Farrell)
   * linux: fix epoll_pwait() fallback on arm64 (Ben Noordhuis)
   * android: fix compilation warning (Saúl Ibarra Corretgé)
   * unix: don't close the fds we just setup (Sam Roberts)
-  * test: spawn child replacing std{out,err} to stderr 
-  * unix: fix swapping fds order in uv_spawn 
-  * unix: fix potential bug if dup2 fails in uv_spawn 
+  * test: spawn child replacing std{out,err} to stderr
+  * unix: fix swapping fds order in uv_spawn
+  * unix: fix potential bug if dup2 fails in uv_spawn
   * test: remove LOG and LOGF variadic macros
-  * win: fix uv_fs_access on directories 
+  * win: fix uv_fs_access on directories
   * win: fix of double free in uv_uptime
-  * unix: open "/dev/null" instead of "/" for emfile_fd 
-  * docs: add some missing words 
-  * unix: clean up uv_fs_open() O_CLOEXEC logic 
-  * build: set SONAME for shared library in uv.gyp 
+  * unix: open "/dev/null" instead of "/" for emfile_fd
+  * docs: add some missing words
+  * unix: clean up uv_fs_open() O_CLOEXEC logic
+  * build: set SONAME for shared library in uv.gyp
   * windows: define snprintf replacement as inline instead of static
-  * win: fix unlink of readonly files 
-  * doc: fix uv_run(UV_RUN_DEFAULT) description 
+  * win: fix unlink of readonly files
+  * doc: fix uv_run(UV_RUN_DEFAULT) description
   * linux: intercept syscall when running under memory sanitizer
   * aix: fix uv_interface_addresses return value
   * windows: defer reporting TCP write failure until next tick
-  * test: add test for deferred TCP write failure 
+  * test: add test for deferred TCP write failure
 
 -------------------------------------------------------------------
 Mon Mar  2 15:50:47 UTC 2015 - tchvatal@suse.com
