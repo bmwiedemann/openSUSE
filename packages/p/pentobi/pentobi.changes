@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  7 11:41:45 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 24.0:
+  * Removed GNOME thumbnailer and man pages, which didn't work anyway if installed via Flatpak. 
+    Use --help or --help-all to list the command line options for pentobi.
+  * Removed rarely used menu item Export Ascii Art.
+  * Enable only menu item Save As but not Save if game has no filename yet.
+  * Don't refuse to open SGF files with non-SGF text after tree 
+    (e.g. files that were corrupted on Android by bug fixed in version 23.1).
+
+-------------------------------------------------------------------
 Sun Jul 16 11:00:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.1:
