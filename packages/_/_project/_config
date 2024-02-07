@@ -2031,6 +2031,7 @@ BuildFlags: onlybuild:kcoreaddons
 BuildFlags: onlybuild:kdbusaddons
 BuildFlags: onlybuild:kdoctools
 BuildFlags: onlybuild:keyutils
+BuildFlags: onlybuild:kernel-source
 BuildFlags: onlybuild:kf5-filesystem
 BuildFlags: onlybuild:kguiaddons
 BuildFlags: onlybuild:ki18n
@@ -2736,7 +2737,7 @@ BuildFlags: onlybuild:procmail
 BuildFlags: onlybuild:procps
 BuildFlags: onlybuild:protobuf
 BuildFlags: onlybuild:protobuf-c
-BuildFlags: onlybuild:protobuf21
+#BuildFlags: onlybuild:protobuf21
 BuildFlags: onlybuild:psmisc
 BuildFlags: onlybuild:psutils
 BuildFlags: onlybuild:pthread-stubs
@@ -3207,6 +3208,7 @@ BuildFlags: onlybuild:xcb-util-wm
 BuildFlags: onlybuild:xconsole
 BuildFlags: onlybuild:xdg-dbus-proxy
 BuildFlags: onlybuild:xdg-utils
+BuildFlags: onlybuild:xdp-tools
 BuildFlags: onlybuild:xdm
 BuildFlags: onlybuild:xerces-j2
 BuildFlags: onlybuild:xf86-video-intel
@@ -3586,6 +3588,9 @@ Macros:
 %product_libs_gcc_ver_libgo21 12
 %product_libs_gcc_ver_libgphobos3 12
 %product_libs_gcc_ver_libgdruntime3 12
+# The following shlibs have the latest version build from GCC 13 sources
+%product_libs_gcc_ver_libm2 13
+%product_libs_gcc_ver_libgo22 13
 %gcc_version 13
 
 %ext_info .gz
