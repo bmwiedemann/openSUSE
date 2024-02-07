@@ -46,7 +46,7 @@ Requires:       python3-neovim
 %bcond_with luajit
 %endif
 Name:           neovim
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim
@@ -74,7 +74,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(libuv) >= 1.42.0
-BuildRequires:  pkgconfig(msgpack)
+BuildRequires:  pkgconfig(msgpack-c)
 BuildRequires:  pkgconfig(termkey)
 BuildRequires:  pkgconfig(tree-sitter) >= 0.20.8
 BuildRequires:  pkgconfig(unibilium)
