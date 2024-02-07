@@ -1,7 +1,7 @@
 #
 # spec file for package libewf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Source21:       Expert_Witness_Compression_Format_EWF.pdf
 Source23:       Expert_Witness_Compression_Format_2_EWF2.pdf
 Patch1:         remove_date_time_macros.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  bison
 BuildRequires:  c_compiler
 BuildRequires:  flex

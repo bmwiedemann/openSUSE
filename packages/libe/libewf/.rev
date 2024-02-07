@@ -232,4 +232,12 @@ Replace python 2 with python 3</comment>
   tarballs directly from git)</comment>
     <requestid>1128392</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>8d8eb09ce9744aea69ccf045007e4854</srcmd5>
+    <version>20231119</version>
+    <time>1707328125</time>
+    <user>anag+factory</user>
+    <comment>python 3.12 build fix</comment>
+    <requestid>1144611</requestid>
+  </revision>
 </revisionlist>
