@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 06 16:36:10 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240206.b0eda3c:
+  * users-groups: add groups for usbauth-notifier
+  * cron-whitelist: patch2mail now uses systemd-timers
+  * Register greeter user and group
+
+-------------------------------------------------------------------
 Thu Feb 01 10:40:43 UTC 2024 - wolfgang.frisch@suse.com
 
 - Update to version 2.5.0+git20240201.be433b6:

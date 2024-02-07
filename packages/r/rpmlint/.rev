@@ -4742,4 +4742,16 @@ oddjob-gpupdate isn't blocked)</comment>
   * fix warnings about import order, attempt 2</comment>
     <requestid>1143293</requestid>
   </revision>
+  <revision rev="468" vrev="1">
+    <srcmd5>632e981bd5b7ad398a1eeefc50d8307c</srcmd5>
+    <version>2.5.0+git20240206.b0eda3c</version>
+    <time>1707328069</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.5.0+git20240206.b0eda3c:
+  * users-groups: add groups for usbauth-notifier
+  * cron-whitelist: patch2mail now uses systemd-timers
+  * Register greeter user and group
+</comment>
+    <requestid>1144682</requestid>
+  </revision>
 </revisionlist>
