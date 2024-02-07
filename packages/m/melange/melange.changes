@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb 07 07:34:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.9:
+  * use apko@main
+  * WIP: use charm logger
+  * Add WaitDelay to bubblewrap cmd
+  * Split options into separate files
+  * Cancel context on interrupt signal
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump cloud.google.com/go/storage from 1.36.0 to
+    1.37.0
+  * build(deps): bump sigstore/cosign-installer from 3.3.0 to 3.4.0
+
+-------------------------------------------------------------------
+Tue Feb 06 17:36:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.8:
+  * Add --rm flag (and options) to Build
+  * Respond to cancelled context while streaming logs
+  * Don't use goroutines for monitoring logs
+  * If arch is not specified, test all.
+  * Add Close() method to container runners
+  * use slogtest
+  * eliminate some more logger invocations
+  * Fix race condition in log monitoring
+  * Exclude "com.docker.grpcfuse.ownership" xattr
+
+-------------------------------------------------------------------
 Sat Feb 03 17:40:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.7:
