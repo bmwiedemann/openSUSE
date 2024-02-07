@@ -1,7 +1,7 @@
 #
 # spec file for package davfs2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,15 +28,18 @@ Source1:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{
 Source2:        %{name}-rpmlintrc
 # Taken from https://savannah.nongnu.org/project/release-gpgkeys.php?group=davfs2&download=1
 Source3:        davfs2.keyring
+Source4:        davfs2.sysusers
 BuildRequires:  automake >= 1.16
 BuildRequires:  fuse-devel >= 2.2
 BuildRequires:  neon-devel
 BuildRequires:  pwdutils
+BuildRequires:  sysuser-tools
 Requires:       fuse >= 2.2
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 Obsoletes:      fuse-%{name} < %{version}
 Provides:       fuse-%{name} = %{version}
+%sysusers_requires
 
 %description
 davfs2 is a FUSE file system driver that allows mounting a WebDAV server
@@ -72,9 +75,11 @@ install -d "%{buildroot}%{_localstatedir}/cache/%{name}"
 %find_lang %{name}
 rm -rf "%{buildroot}/%{_docdir}"
 
-%pre
-%{_bindir}/getent group %{name} >/dev/null || %{_sbindir}/groupadd -r %{name}
-%{_bindir}/getent passwd %{name} >/dev/null || %{_sbindir}/useradd -r -g %{name} -d %{_localstatedir}/cache/%{name} %{name}
+install -p -D -m0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
+
+%sysusers_generate_pre %{buildroot}%{_sysusersdir}/%{name}.conf %{name} %{name}.conf
+
+%pre -f %{name}.pre
 
 %post
 %if 0%{?set_permissions:1} > 0
@@ -100,6 +105,7 @@ rm -rf "%{buildroot}/%{_docdir}"
 %{_mandir}/*/man5/%{name}.conf.5%{?ext_man}
 %{_mandir}/*/man8/mount.davfs.8%{?ext_man}
 %{_mandir}/*/man8/umount.davfs.8%{?ext_man}
+%{_sysusersdir}/%{name}.conf
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
 %config %{_sysconfdir}/%{name}/secrets
