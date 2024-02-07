@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Feb  4 18:36:07 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.12:
+  * Fixes:
+    - QueryMode documentation in configuration file didn't match
+      implementation or man page description
+    - Daemon didn't try to import legacy databases when --noadd
+      was used and no current version database initially existed
+      resulting in the process exiting even when something could
+      have been done
+    - Daemon didn't try to import legacy databases when --initdb
+      was used and no current version database initially existed,
+      this behaviour can still be enabled by using --noadd in
+      combination with --initdb
+    - Using --nodaemon and --initdb at the same time didn't result
+      in an error being shown
+  * New
+   - Add 95th percentile output as --95th, also available via
+     --alert, --json, --xml and image output, requires
+     5MinuteHours configuration to be set to at least 744 for
+     storing all the necessary data
+   - Add --json support for --alert
+   - Database queries resulting in error exit with status 1
+   - Show spinning animation at the beginning of -l / --live
+     output line, visibility configurable using LiveSpinner
+     configuration option
+   - Add -ic / --invert-colors option to image output for
+     facilitating for example dark mode switching without needing
+     to have multiple separate color configurations
+   - Add dark mode option to image output example cgi
+     (examples/vnstat.cgi)
+   - Add option 4 to QueryMode for selecting summary output of
+     single interface regardless of the number of interfaces in
+     the database
+   - Add optional mode parameter to -q / --query for overriding
+     QueryMode for summary output and for enabling control of
+     summary output style regardless of the number of interfaces
+     in the database
+   - Add --startempty option to daemon for starting and keeping
+     the daemon running even if no interfaces were discovered and
+     the database is empty
+   - Add --noremove option to daemon for disabling the automatic
+     removal of interfaces from database that aren't currently
+     visible and haven't seen any traffic
+   - Add third mode option to --iflist and --dbiflist for getting
+     only the interface count as output
+- Add Provides for group and user names as required by rpm 4.19.
+- Drop conditionals supporting EOL openSUSE versions.
+
+-------------------------------------------------------------------
 Sun Aug 27 15:01:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.11
