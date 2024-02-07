@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  5 22:19:27 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- Update to AppArmor 3.1.7
+  - aa-logprof: don't skip exec events in hats
+  - fix aa-cleanprof to work with named profiles
+  - add permissions in various abstractions
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.7
+    for the full list of changes
+- drop upstreamed apparmor-systemd-sessions.patch
+
+-------------------------------------------------------------------
 Mon Jan 29 20:56:13 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - Add dovecot-unix_chkpwd.diff to allow dovecot-auth to execute

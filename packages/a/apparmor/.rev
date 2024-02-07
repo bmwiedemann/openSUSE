@@ -2672,4 +2672,18 @@ thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comme
 - Refresh apparmor.keyring - the key was renewed (forwarded request 1142649 from cboltz)</comment>
     <requestid>1142650</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>64bc4df7964707795d6a798def2b6bdc</srcmd5>
+    <version>3.1.7</version>
+    <time>1707328055</time>
+    <user>anag+factory</user>
+    <comment>- Update to AppArmor 3.1.7
+  - aa-logprof: don't skip exec events in hats
+  - fix aa-cleanprof to work with named profiles
+  - add permissions in various abstractions
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.7
+    for the full list of changes
+- drop upstreamed apparmor-systemd-sessions.patch (forwarded request 1144684 from cboltz)</comment>
+    <requestid>1144685</requestid>
+  </revision>
 </revisionlist>

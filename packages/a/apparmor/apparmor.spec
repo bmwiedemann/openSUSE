@@ -54,7 +54,7 @@
 %define JAR_FILE changeHatValve.jar
 
 Name:           apparmor
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -91,11 +91,6 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 
 # add path for precompiled cache (only done/applied if precompiled_cache is enabled)
 Patch7:         apparmor-enable-precompiled-cache.diff
-
-# To allow access to /run/systemd/sessions/ until the next release including the fix
-# for https://gitlab.com/apparmor/apparmor/-/issues/360 is out
-# Upstream MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/1121 (merged 2023-11-08 into master, 3.1 and 3.0)
-Patch8:         apparmor-systemd-sessions.patch
 
 # allow dovecot-auth to execute unix_chkpwd, and add a profile for unix_chkpwd. This is needed for PAM 1.6 (boo#1219139)
 Patch9:         dovecot-unix_chkpwd.diff
@@ -367,7 +362,6 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %if %{with precompiled_cache}
 %patch7
 %endif
-%patch8 -p1
 %patch9 -p1
 
 %build
