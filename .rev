@@ -1588,4 +1588,28 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>1119674</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>cdac958ca450e750d395318a87487d3a</srcmd5>
+    <version>45.2</version>
+    <time>1701792102</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1130618 from iznogood)</comment>
+    <requestid>1130746</requestid>
+  </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>5e06b2d438c9efe391752ed239d7d5d6</srcmd5>
+    <version>45.2.1</version>
+    <time>1701972557</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131385</requestid>
+  </revision>
+  <revision rev="212" vrev="2">
+    <srcmd5>b2ea260360ee2b9eecf9b7953a98835b</srcmd5>
+    <version>45.2.1</version>
+    <time>1702405945</time>
+    <user>dimstar_suse</user>
+    <comment>sync changelog with SLE/Leap. (forwarded request 1132208 from yfjiang)</comment>
+    <requestid>1132442</requestid>
+  </revision>
 </revisionlist>
