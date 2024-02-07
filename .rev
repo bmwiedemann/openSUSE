@@ -732,4 +732,13 @@ ARM builds fine. (forwarded request 141176 from Guillaume_G)</comment>
     <comment></comment>
     <requestid>1116450</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>fa042a979e0dcbb47a7c2fb91a5bd308</srcmd5>
+    <version>2.20.0</version>
+    <time>1701727251</time>
+    <user>anag+factory</user>
+    <comment>- This includes latest version of one of the components needed for
+  Video (processing) hardware support on Intel GPUs (bsc#1217770)</comment>
+    <requestid>1130735</requestid>
+  </revision>
 </revisionlist>
