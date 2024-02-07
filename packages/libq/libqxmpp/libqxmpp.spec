@@ -22,7 +22,7 @@
 %endif
 %define sover 4
 Name:           libqxmpp
-Version:        1.5.6
+Version:        1.6.0
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later

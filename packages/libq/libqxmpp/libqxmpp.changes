@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  7 05:49:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.0:
+  * First QXmpp logo (#528)
+  * Implement XEP-0215: External Service Discovery (#542)
+  * Implement XEP-0353: Jingle Message Initiation (#570)
+  * Implement XEP-0482: Call Invites (#575)
+  * Implement XEP-0191: Blocking Command (#577)
+  * Client: New constructor for creating without any extensions
+
+-------------------------------------------------------------------
 Mon Feb  5 06:37:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5.6:
