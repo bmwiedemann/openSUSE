@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  6 20:56:10 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- switch vacation user to use sysusers.d
+- drop usermod call for ancient (pre-2012) wrong group of vacation user
+
+-------------------------------------------------------------------
 Thu Dec  8 22:02:12 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - Update to PostfixAdmin 3.3.13

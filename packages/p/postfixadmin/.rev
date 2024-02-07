@@ -472,4 +472,13 @@ SVN changes since 2.3.4 release (postfixadmin-2.3 branch)
   - Fix two MySQL issues in upgrade.php (forwarded request 1041736 from cboltz)</comment>
     <requestid>1041738</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>df4d582a361ea0c5a03bae08b1421cca</srcmd5>
+    <version>3.3.13</version>
+    <time>1707328155</time>
+    <user>anag+factory</user>
+    <comment>- switch vacation user to use sysusers.d
+- drop usermod call for ancient (pre-2012) wrong group of vacation user (forwarded request 1144733 from cboltz)</comment>
+    <requestid>1144734</requestid>
+  </revision>
 </revisionlist>

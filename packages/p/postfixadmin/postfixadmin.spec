@@ -1,8 +1,8 @@
 #
 # spec file for package postfixadmin
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2007-2022 Christian Boltz
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2007-2024 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,11 @@ URL:            http://postfixadmin.sourceforge.net/
 Source0:        https://github.com/postfixadmin/postfixadmin/archive/%{name}-%{version}.tar.gz
 Source1:        config.local.php
 Source2:        apache-postfixadmin.conf
+Source3:        postfixadmin-user.conf
 
 BuildArch:      noarch
+BuildRequires:  sysuser-tools
+%sysusers_requires
 
 # Web interface
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_ver}
@@ -129,8 +132,11 @@ This package holds the apache configuration.
 %autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
+%sysusers_generate_pre %{SOURCE3} %{name} %{name}-user.conf
 
 %install
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}.conf
+
 mkdir -p -m0755 %{buildroot}%{_sysconfdir}/%{name}
 #mkdir -p -m0755 %{buildroot}%{_datadir}/%{name}
 mkdir -p -m0755 %{buildroot}%{_localstatedir}/spool/vacation
@@ -170,19 +176,7 @@ chmod 755 %{buildroot}%{_prefix}/lib/%{name}/ADDITIONS/*.{pl,sh,py} %{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}/apache2/conf.d
 install -m 0644 %{S:2} %{buildroot}/etc/apache2/conf.d/%{name}.conf
 
-%pre
-%{_sbindir}/groupadd -r vacation 2> /dev/null || :
-%{_sbindir}/useradd -c "Virtual Vacation" -d %{_localstatedir}/spool/vacation -s /sbin/nologin -M -r -g vacation vacation 2> /dev/null || :
-# fix group for vacation user (if created by older versions (< 2012-02-13) of this package, it was created with group users)
-%{_sbindir}/usermod -g vacation vacation 2> /dev/null || :
-
-#if [ -z "`grep vacation /etc/postfix/master.cf 2>/dev/null`" ]; then
-#cat <<'EOF' >>/etc/postfix/master.cf
-## Postfix Admin Vacation
-#vacation	unix	-	n	n	-	-	pipe
-#	flags=Rq user=vacation argv=/usr/lib/postfixadmin/vacation.pl -f ${sender} -- ${recipient}
-#EOF
-#fi
+%pre -f %{name}.pre
 
 %post
 # PostfixAdmin 3.2 comes with a new directory layout - warn if config files are found at the old location
@@ -198,6 +192,7 @@ fi
 
 %files
 %defattr(-,root,root)
+%{_sysusersdir}/%{name}.conf
 %config %dir %{_sysconfdir}/%{name}
 %attr(640,root,www) %config %{_sysconfdir}/%{name}/config.inc.php
 %attr(640,root,www) %config(noreplace) %{_sysconfdir}/%{name}/config.local.php
