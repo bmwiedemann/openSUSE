@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20240125
+ExpandFlags: macroserial:20240202
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -572,7 +572,7 @@ Prefer: -dbus-broker-allow-restart
 Prefer: -python311-fluent
 
 # have choice for fonttools: python310-FontTools python311-FontTools python39-FontTools
-Prefer: -python39-FontTools -python310-FontTools
+Prefer: -python39-FontTools -python310-FontTools -python311-FontTools
 
 # have choice for (python311-qt5 or python311-pyside2 or python311-PyQt6 or python311-pyside6) needed by python311-qtconsole: python311-pyside6 python311-qt5
 Prefer: -python311-pyside6
@@ -3374,7 +3374,7 @@ Macros:
 ## PYTHON MACROS BEGIN
 # order of %pythons is important: The last flavor overrides any operation on conflicting files and definitions during expansions,
 # making it the "default" in many cases --> keep the primary python3 provider at the end.
-%pythons %{?!skip_python3:%{?!skip_python39:python39} %{?!skip_python310:python310} %{?!skip_python311:python311}}
+%pythons %{?!skip_python3:%{?!skip_python39:python39} %{?!skip_python310:python310} %{?!skip_python312:python312} %{?!skip_python311:python311}}
 %add_python() %{expand:%%define pythons %1 %pythons}
 
 %_without_python2 1
