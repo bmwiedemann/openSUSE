@@ -10575,26 +10575,26 @@ unsorted:
   - libOsiCbc3 
   - libOsiClp1 
   - libPDAL15 
-  - libPocoActiveRecord95 
-  - libPocoCppParser95 
-  - libPocoCrypto95 
-  - libPocoData95 
-  - libPocoDataMySQL95 
-  - libPocoDataODBC95 
-  - libPocoDataSQLite95 
-  - libPocoEncodings95 
-  - libPocoFoundation95 
-  - libPocoJSON95 
-  - libPocoJWT95 
-  - libPocoMongoDB95 
-  - libPocoNet95 
-  - libPocoNetSSL95 
-  - libPocoPDF95 
-  - libPocoPrometheus95 
-  - libPocoRedis95 
-  - libPocoUtil95 
-  - libPocoXML95 
-  - libPocoZip95 
+  - libPocoActiveRecord101 
+  - libPocoCppParser101 
+  - libPocoCrypto101 
+  - libPocoData101 
+  - libPocoDataMySQL101 
+  - libPocoDataODBC101 
+  - libPocoDataSQLite101 
+  - libPocoEncodings101 
+  - libPocoFoundation101 
+  - libPocoJSON101 
+  - libPocoJWT101 
+  - libPocoMongoDB101 
+  - libPocoNet101 
+  - libPocoNetSSL101 
+  - libPocoPDF101 
+  - libPocoPrometheus101 
+  - libPocoRedis101 
+  - libPocoUtil101 
+  - libPocoXML101 
+  - libPocoZip101 
   - libQCSXCAD0 
   - libQCoro5Core0 
   - libQCoro5DBus0 
@@ -12199,7 +12199,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-4_3-0 
+  - libevtlog-4_6-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -18275,7 +18275,6 @@ unsorted:
   - mybatis-javadoc 
   - mybatis-parent 
   - mygnuhealth 
-  - mygnuhealth-doc 
   - mylvmbackup 
   - myman 
   - mypaint 
@@ -25822,7 +25821,6 @@ unsorted:
   - python310-rply 
   - python310-rpm 
   - python310-rpmfile 
-  - python310-rpmlb 
   - python310-rpy2 
   - python310-rpyc 
   - python310-rq 
@@ -26203,6 +26201,7 @@ unsorted:
   - python310-typing-inspect 
   - python310-typing_extensions 
   - python310-typogrify 
+  - python310-tzdata 
   - python310-tzlocal 
   - python310-u-msgpack-python 
   - python310-ua-parser 
@@ -26401,6 +26400,7 @@ unsorted:
   - python310-zignal 
   - python310-zipp 
   - python310-zipstream 
+  - python310-zlib-ng 
   - python310-zodbpickle 
   - python310-zope.cachedescriptors 
   - python310-zope.component 
@@ -29244,7 +29244,6 @@ unsorted:
   - python311-rpcq 
   - python311-rply 
   - python311-rpmfile 
-  - python311-rpmlb 
   - python311-rpy2 
   - python311-rpyc 
   - python311-rq 
@@ -29615,6 +29614,7 @@ unsorted:
   - python311-types-python-dateutil 
   - python311-typing-inspect 
   - python311-typogrify 
+  - python311-tzdata 
   - python311-tzlocal 
   - python311-u-msgpack-python 
   - python311-ua-parser 
@@ -29809,6 +29809,7 @@ unsorted:
   - python311-zict 
   - python311-zignal 
   - python311-zipstream 
+  - python311-zlib-ng 
   - python311-zodbpickle 
   - python311-zope.cachedescriptors 
   - python311-zope.component 
@@ -30105,6 +30106,7 @@ unsorted:
   - python312-aiohttp_cors 
   - python312-aioitertools 
   - python312-aiomisc 
+  - python312-aiomisc-pytest 
   - python312-aioquic 
   - python312-aioresponses 
   - python312-aiorpcX 
@@ -30166,7 +30168,9 @@ unsorted:
   - python312-asdf-transform-schemas 
   - python312-asdf-unit-schemas 
   - python312-asdf-wcs-schemas 
+  - python312-ase 
   - python312-asgiref 
+  - python312-asn1crypto 
   - python312-aspectlib 
   - python312-aspy.yaml 
   - python312-ast-decompiler 
@@ -30202,12 +30206,14 @@ unsorted:
   - python312-autobahn 
   - python312-autocommand 
   - python312-autodocsumm 
+  - python312-autoflake 
   - python312-autopage 
   - python312-autopep8 
   - python312-autoupgrade-ng 
   - python312-av 
   - python312-avahi 
   - python312-avro 
+  - python312-awkward 
   - python312-awkward-cpp 
   - python312-aws-xray-sdk 
   - python312-aws-xray-sdk-Django 
@@ -30560,6 +30566,7 @@ unsorted:
   - python312-base58 
   - python312-bashate 
   - python312-bcrypt 
+  - python312-beartype 
   - python312-beautifulsoup4 
   - python312-before-after 
   - python312-behave 
@@ -30591,6 +30598,7 @@ unsorted:
   - python312-blockdiag 
   - python312-blosc 
   - python312-bloscpack 
+  - python312-blue 
   - python312-blurb 
   - python312-bmap-tools 
   - python312-bobo 
@@ -30824,6 +30832,7 @@ unsorted:
   - python312-devpi-common 
   - python312-devpi-process 
   - python312-devpi-server 
+  - python312-dfVFS 
   - python312-dfdatetime 
   - python312-dialite 
   - python312-dictdiffer 
@@ -31032,6 +31041,7 @@ unsorted:
   - python312-factory_boy 
   - python312-fake-useragent 
   - python312-fakeredis 
+  - python312-falcon 
   - python312-fann2 
   - python312-fastapi 
   - python312-fastbencode 
@@ -31222,6 +31232,7 @@ unsorted:
   - python312-h5netcdf 
   - python312-h5py 
   - python312-h5py-openmpi4 
+  - python312-habanero 
   - python312-hammett 
   - python312-hankel 
   - python312-hanzidentifier 
@@ -31421,7 +31432,6 @@ unsorted:
   - python312-jupyter_console 
   - python312-jupyterlab-pygments 
   - python312-jupyterlab-server 
-  - python312-jupyterlab-server-openapi 
   - python312-jupyterlab-server-test 
   - python312-jupyterlab-widgets 
   - python312-jwcrypto 
@@ -31485,19 +31495,60 @@ unsorted:
   - python312-lib3to6 
   - python312-libarchive 
   - python312-libarchive-c 
+  - python312-libbde 
+  - python312-libcaes 
+  - python312-libcreg 
   - python312-libcst 
   - python312-libeconf 
+  - python312-libesedb 
   - python312-libevdev 
+  - python312-libevt 
+  - python312-libevtx 
+  - python312-libewf 
+  - python312-libexe 
+  - python312-libfcrypto 
+  - python312-libfmos 
+  - python312-libfsapfs 
+  - python312-libfsext 
+  - python312-libfsfat 
+  - python312-libfshfs 
+  - python312-libfsntfs 
+  - python312-libfsxfs 
+  - python312-libfvde 
+  - python312-libfwnt 
+  - python312-libfwps 
+  - python312-libfwsi 
+  - python312-liblnk 
+  - python312-libluksde 
+  - python312-libmodi 
   - python312-libmount 
+  - python312-libmsiecf 
   - python312-libnacl 
+  - python312-libolecf 
+  - python312-libpff 
   - python312-libpfm 
+  - python312-libphdi 
+  - python312-libqcow 
+  - python312-libregf 
   - python312-librouteros 
   - python312-libsass 
+  - python312-libscca 
+  - python312-libsigscan 
+  - python312-libsmdev 
+  - python312-libsmraw 
   - python312-libtmux 
   - python312-libusb1 
   - python312-libusbsio 
   - python312-libversion 
+  - python312-libvhdi 
   - python312-libvirt-python 
+  - python312-libvmdk 
+  - python312-libvsapm 
+  - python312-libvsgpt 
+  - python312-libvshadow 
+  - python312-libvslvm 
+  - python312-libvsmbr 
+  - python312-libwrc 
   - python312-libxml2 
   - python312-license-expression 
   - python312-ligo-lw 
@@ -31521,6 +31572,7 @@ unsorted:
   - python312-localzone 
   - python312-locket 
   - python312-lockfile 
+  - python312-logging-journald 
   - python312-logilab-common 
   - python312-loguru 
   - python312-logutils 
@@ -31761,6 +31813,7 @@ unsorted:
   - python312-orderedmultidict 
   - python312-orjson 
   - python312-osc-tiny 
+  - python312-oscrypto 
   - python312-osmviz 
   - python312-ospd-openvas 
   - python312-outcome 
@@ -32243,6 +32296,7 @@ unsorted:
   - python312-pytest-translations 
   - python312-pytest-trio 
   - python312-pytest-twisted 
+  - python312-pytest-vcr 
   - python312-pytest-verbose-parametrize 
   - python312-pytest-virtualenv 
   - python312-pytest-xdist 
@@ -32509,6 +32563,7 @@ unsorted:
   - python312-scikit-hep-testdata 
   - python312-scikit-image 
   - python312-scikit-learn 
+  - python312-scikit-umfpack 
   - python312-scipy 
   - python312-scipy-gnu-hpc 
   - python312-scipy_1_11_4-gnu-hpc 
@@ -32521,12 +32576,14 @@ unsorted:
   - python312-scrypt 
   - python312-scspell3k 
   - python312-sdnotify 
+  - python312-securesystemslib 
   - python312-selection 
   - python312-selenium 
   - python312-selinux 
   - python312-semanage 
   - python312-semantic_version 
   - python312-semver 
+  - python312-sentry-sdk 
   - python312-seqdiag 
   - python312-serpent 
   - python312-serverfiles 
@@ -32816,6 +32873,7 @@ unsorted:
   - python312-typing-inspect 
   - python312-typing_extensions 
   - python312-typogrify 
+  - python312-tzdata 
   - python312-tzlocal 
   - python312-u-msgpack-python 
   - python312-ua-parser 
@@ -32836,6 +32894,7 @@ unsorted:
   - python312-unpaddedbase64 
   - python312-unsync 
   - python312-untokenize 
+  - python312-uproot 
   - python312-uri-template 
   - python312-uritemplate 
   - python312-uritools 
@@ -32965,6 +33024,7 @@ unsorted:
   - python312-xxhash 
   - python312-xyzservices 
   - python312-y-py 
+  - python312-yacron 
   - python312-yafe 
   - python312-yamale 
   - python312-yamldoc 
@@ -32991,6 +33051,7 @@ unsorted:
   - python312-zict 
   - python312-zipp 
   - python312-zipstream 
+  - python312-zlib-ng 
   - python312-zodbpickle 
   - python312-zope.cachedescriptors 
   - python312-zope.component 
@@ -35976,7 +36037,6 @@ unsorted:
   - python39-rply 
   - python39-rpm 
   - python39-rpmfile 
-  - python39-rpmlb 
   - python39-rpy2 
   - python39-rpyc 
   - python39-rq 
@@ -36356,6 +36416,7 @@ unsorted:
   - python39-typing-inspect 
   - python39-typing_extensions 
   - python39-typogrify 
+  - python39-tzdata 
   - python39-tzlocal 
   - python39-u-msgpack-python 
   - python39-ua-parser 
@@ -36554,6 +36615,7 @@ unsorted:
   - python39-zignal 
   - python39-zipp 
   - python39-zipstream 
+  - python39-zlib-ng 
   - python39-zodbpickle 
   - python39-zope.cachedescriptors 
   - python39-zope.component 
@@ -37515,6 +37577,7 @@ unsorted:
   - rke2-1.25 
   - rke2-1.26 
   - rke2-1.27 
+  - rke2-1.28 
   - rke2-selinux 
   - rkhunter 
   - rkward 
@@ -38315,7 +38378,10 @@ unsorted:
   - scummvm-extra 
   - scummvm-tools 
   - sd 
+  - sd-bash-completion 
+  - sd-fish-completion 
   - sd-mux-ctrl 
+  - sd-zsh-completion 
   - sdbootutil-kernel-install 
   - sdbus-cpp-devel 
   - sdbus-cpp-devel-doc 
@@ -39047,11 +39113,15 @@ unsorted:
   - sysfsutils-devel 
   - sysinfo 
   - syslog-ng 
+  - syslog-ng-bigquery 
   - syslog-ng-bpf 
+  - syslog-ng-cloudauth 
   - syslog-ng-curl 
   - syslog-ng-devel 
   - syslog-ng-geoip 
+  - syslog-ng-grpc 
   - syslog-ng-java 
+  - syslog-ng-loki 
   - syslog-ng-mqtt 
   - syslog-ng-opentelemetry 
   - syslog-ng-python 
@@ -39078,6 +39148,7 @@ unsorted:
   - system-user-loki 
   - system-user-mktex 
   - system-user-msr 
+  - system-user-nagios 
   - system-user-ntp 
   - system-user-osc-collab 
   - system-user-prometheus 
