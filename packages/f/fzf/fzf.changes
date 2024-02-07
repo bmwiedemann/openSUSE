@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 23 19:48:30 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.46.0:
+  * Added new events, result and resize
+  * fzf now exports many new environment variables to the child
+    processes.
+  * fzf:prompt and fzf:action are being phased out
+  * Changed mattn/go-runewidth dependency to rivo/uniseg for
+    accurate results. Set --ambidouble if your terminal displays
+    ambigous width characters
+  * Bug fixes
+
+-------------------------------------------------------------------
 Mon Jan  1 06:54:30 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.45.0:

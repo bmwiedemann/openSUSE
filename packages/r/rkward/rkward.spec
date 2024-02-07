@@ -1,7 +1,7 @@
 #
 # spec file for package rkward
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,11 @@ License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            https://rkward.kde.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.gz
+Patch0:         Fix_handling_carriage_returns.patch
+Patch1:         Fix_Syntax_Pipe.patch
 BuildRequires:  R-base-devel
 BuildRequires:  cmake
+BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-fortran
 BuildRequires:  gettext
 BuildRequires:  karchive-devel
@@ -87,6 +90,8 @@ intégration dans les suites bureautiques.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 %cmake_kf5 -d build

@@ -64,6 +64,9 @@ PreReq:         permissions
 BuildRequires:  fdupes
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
+# declare the user/group we create in the preinstall script
+Provides:       user(%{uname})
+Provides:       greoup(%{gname})
 
 BuildRequires:  distribution-release
 BuildRequires:  timezone
@@ -139,6 +142,13 @@ export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 CFLAGS="${CFLAGS} ${RPM_OPT_FLAGS}"
 export CFLAGS
 make WWW_BASE=%{www_base} WWW_TMP=%{www_tmp} WWW_LOG=%{www_log} INIT_STYLE=%{init_style} LIBDIR=%{_libdir} BINDIR=%{_bindir} SBINDIR=%{_sbindir} RUBY_SUFFIX=.%{rb_ruby_suffix}
+# We need the Gemfile.lock only to set the permissions
+# (see %attr(-, %{uname},%{gname})%{www_base}/hawk/Gemfile.lock)
+# The content shoulhawk/Gemfile.lockd be generated locally.
+# Btw, I tried "> hawk/Gemfile.lock" instead of "rm + touch"
+# but there was a checksum error. So let's do "rm + touch".
+rm hawk/Gemfile.lock
+touch hawk/Gemfile.lock
 
 %install
 make WWW_BASE=%{www_base} WWW_TMP=%{www_tmp} WWW_LOG=%{www_log} INIT_STYLE=%{init_style} DESTDIR=%{buildroot} install

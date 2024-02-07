@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 23 08:50:35 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240123.680089b0:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: testcases: Adjust original regression test cases
+  * Dev: behave: Adjust functional test for previous change
+  * Fix: parse: Automatically append 's' as default time unit for timeout and interval (#1304)
+  * Dev: ui_configure: Update the operation id after the monitor interval changed
+
+-------------------------------------------------------------------
+Tue Jan 09 09:02:11 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240109.1eb53276:
+  * Dev: ChangeLog: update ChangeLog for release 4.6.0
+
+-------------------------------------------------------------------
 Tue Jan 09 04:34:42 UTC 2024 - XLiang@suse.com
 
 - Update to version 4.6.0+20240109.288ef6c4:

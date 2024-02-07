@@ -25,7 +25,7 @@ Name:           mbedtls
 Version:        3.5.1
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
-License:        Apache-2.0
+License:        Apache-2.0 OR GPL-2.0-or-later
 URL:            https://tls.mbed.org
 Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf

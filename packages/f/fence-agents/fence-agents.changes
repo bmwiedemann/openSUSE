@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 23 10:25:01 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- Update fence-agents package with fence_aws and fence_ibm_powervs (jsc#PED-7701)
+- Update to version 4.13.1+git.1704296072.32469f29:
+  * fence_zvmip: fix manpage formatting
+
+-------------------------------------------------------------------
 Tue Jan  9 16:44:32 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - Remove python3-oauth2. This is not needed to build.

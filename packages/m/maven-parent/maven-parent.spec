@@ -1,7 +1,7 @@
 #
 # spec file for package maven-parent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,10 @@ BuildRequires:  apache-parent
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
 Requires:       apache-parent
-Obsoletes:      maven-plugins-pom
-Provides:       maven-plugins-pom
-Obsoletes:      maven-shared
-Provides:       maven-shared
+Obsoletes:      maven-plugins-pom < %{version}-%{release}
+Provides:       maven-plugins-pom = %{version}-%{release}
+Obsoletes:      maven-shared < %{version}-%{release}
+Provides:       maven-shared = %{version}-%{release}
 BuildArch:      noarch
 
 %description
