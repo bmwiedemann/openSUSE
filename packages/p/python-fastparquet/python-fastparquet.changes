@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 22 12:41:30 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Do not run tests in s390x, bsc#1218603
+
+-------------------------------------------------------------------
 Tue Dec  5 12:23:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.10.0:

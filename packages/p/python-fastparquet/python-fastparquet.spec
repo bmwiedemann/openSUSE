@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastparquet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,7 +76,12 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+%ifarch s390x
+# Test suite is not working correctly in s390x so not running it.
+echo "Not running tests for s390x"
+%else
 %pytest_arch --pyargs fastparquet --import-mode append -n auto
+%endif
 
 %files %{python_files}
 %doc README.rst

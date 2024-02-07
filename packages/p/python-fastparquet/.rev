@@ -283,4 +283,12 @@
   * RLE bools and DELTA for v1 pages (#885, 883)</comment>
     <requestid>1130976</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>136ce88c10ae31bf7d1802e80f6b9f42</srcmd5>
+    <version>2023.10.1</version>
+    <time>1707328229</time>
+    <user>anag+factory</user>
+    <comment>- Do not run tests in s390x, bsc#1218603</comment>
+    <requestid>1144842</requestid>
+  </revision>
 </revisionlist>
