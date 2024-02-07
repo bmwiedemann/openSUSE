@@ -1,7 +1,7 @@
 #
 # spec file for package libqcow
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@
 %define lname	libqcow1
 Name:           libqcow
 Version:        20231125
-
 Release:        0
 Summary:        Library and tooling to access the QEMU Copy-On-Write (QCOW) image format
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
@@ -32,6 +31,7 @@ Source2:        https://github.com/libyal/libqcow/releases/download/%version/lib
 Source3:        %name.keyring
 Source8:        QEMU_Copy-On-Write_file_format.pdf
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
