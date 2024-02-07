@@ -17,7 +17,7 @@
 
 
 Name:           ddnet
-Version:        17.4.2
+Version:        18.0.3
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Apache-2.0 AND CC-BY-SA-3.0 AND Zlib AND MIT AND SUSE-Public-Domain
@@ -139,7 +139,6 @@ install -Dp -m 0644 man/DDNet-Server.6 %{buildroot}%{_mandir}/man6/DDNet-Server.
 %{_libdir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/metainfo/*.appdata.xml
 
 %files data
 %{_datadir}/%{name}/

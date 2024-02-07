@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sat Feb  3 17:37:48 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 18.0.3:
+  * [Client] Community server filter instead of DDNet/KoG tabs
+  * [Client] Add finish info messages
+  * [Client] Editable chat size and width
+  * [Client] Console: Scroll, search (ctrl-f), argument
+    autocompletion
+  * [Editor] Undo/Redo
+  * [Editor] Improved quad handling
+  * [Editor] Color palette and pipette
+  * [Client] Add /join [player] to join a player's team
+  * [Client] Improve performance when rendering text
+  * [Client] Multi-view: Don't zoom below cl_default_zoom
+  * [Client] Save current chat input when pressing up
+  * [Client] Better prediction margin updates
+  * [Client] Count deaths in statboard
+  * [Client] Quote names with spaces when auto-completing names
+    in commands
+  * [Client] Config manager improvements
+  * [Client] Validate filenames and network packets
+  * [Client] Fix votes with timeout over 60 seconds not
+    being shown
+  * [Client] Better key reader button in settings
+  * [Client] Render the tee being spectated after everyone else
+  * [Client] Validate favorite skin name
+  * [Client] Better text line spacing and console text selection
+  * [Client] Fix automatic hammer on release with cl_dummy_control
+  * [Client] Restart button when game needs to restart to
+    apply settings
+  * [Client] Improve performance of sounds
+  * [Client] Improve graphics performance by copying less data
+  * [Client] Improve player/tee settings
+  * [Client] Fix wrong selection in vote menu when selected
+    player leaves
+  * [Client] Fix hook collision line when paused
+  * [Client] Improved text outlines
+  * [Editor] Differentiate between normal and checkpoint teles
+  * [Editor] Editor buttons rework
+  * [Editor] Allow resize of layers panel
+  * [Editor] Shift-scroll to adjust special tile numbers
+  * [Editor] Don't duplicate images when appending
+  * [Editor] Warn about unused tiles
+  * [Editor] Better text rendering in tele tiles
+  * [Editor] Allow panning outside initial container
+  * [Server] Add /tp x y to teleport to coordinates
+  * [Server] Improve server-side auto demos
+  * [Server] Add Sv_CommandInfo netmsg for autocompletion of
+    chat commands
+  * [Server] sv_vote_kick_delay fixes
+  * [Server] Antibot improvements
+  * [Server] Dynamically connect/disconnect debug dummies
+  * [Server] Apply name bans to clans
+  * [Server] Stop recording of demos on shutdown
+  * [Server] Group list messages
+  * [Server] Fix happy birthday broadcast
+  * [Tools] Fix crashes on unknown UUID-based map items
+
+-------------------------------------------------------------------
 Wed Jan  3 16:26:08 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 17.4.2:
