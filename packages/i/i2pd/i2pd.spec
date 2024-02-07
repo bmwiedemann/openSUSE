@@ -1,7 +1,7 @@
 #
 # spec file for package i2pd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 PurpleI2P team
 #
 # All modifications and additions to the file contributed by third parties
@@ -45,6 +45,8 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 %endif
+Provides:       group(%{sysgroup})
+Provides:       user(%{sysuser})
 
 %description
 The Invisible Internet Protocol (I2P) is a universal anonymous network layer. All
