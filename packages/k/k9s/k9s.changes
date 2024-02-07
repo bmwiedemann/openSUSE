@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 07 06:48:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.31.8:
+  * Resolved Issues
+    - #2527 Multiple k9s panels open in parallel for the same
+      cluster breaks config.yaml
+    - #2520 pods with init container with restartPolicy: Always
+      stay in Init status
+    - #2501 Cannot add plugins to helm scope bug
+    - #2492 API Resources "carry over" between contexts, causing
+      errors if they share shortnames
+    - #1158 Removing a helm release incorrectly determines the
+      namespace of resources
+    - #1033 Helm delete deletes only the helm entry but not the
+      deployment
+
+-------------------------------------------------------------------
 Thu Jan 18 16:27:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.31.7:
