@@ -31,6 +31,7 @@ Source:         https://github.com/libyal/libfwnt/releases/download/%version/lib
 Source3:        %name.keyring
 Source11:       Locale_identifier_LCID.pdf
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros

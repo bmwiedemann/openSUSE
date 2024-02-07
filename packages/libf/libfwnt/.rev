@@ -144,4 +144,12 @@
     <comment>- Update to release 20240126</comment>
     <requestid>1141925</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>77997b06598a99601a8fe693800654d1</srcmd5>
+    <version>20240126</version>
+    <time>1707328089</time>
+    <user>anag+factory</user>
+    <comment>python 3.12 build fix</comment>
+    <requestid>1144582</requestid>
+  </revision>
 </revisionlist>
