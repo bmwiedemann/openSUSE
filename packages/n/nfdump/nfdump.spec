@@ -1,7 +1,7 @@
 #
 # spec file for package nfdump
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ BuildRequires:  rrdtool-devel
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libcurl)
 Requires:       rrdtool
+Provides:       group(%{name})
+Provides:       user(%{name})
 
 %description
 The nfdump tools collect and process netflow data on the command line.
