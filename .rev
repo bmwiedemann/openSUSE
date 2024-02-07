@@ -129,4 +129,13 @@ and a version update</comment>
   * changes to artwork search orders (easier static artwork for</comment>
     <requestid>1142111</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b999376c874d305b2b261c1a6373ae3a</srcmd5>
+    <version>28.9</version>
+    <time>1707328240</time>
+    <user>anag+factory</user>
+    <comment>- Provide user/group symbol for the user generated during pre.
+  Required by RPM 4.19. (forwarded request 1144890 from dimstar)</comment>
+    <requestid>1144912</requestid>
+  </revision>
 </revisionlist>

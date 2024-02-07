@@ -59,6 +59,8 @@ BuildRequires:  pkgconfig(mxml)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3) >= 3.5.0
 BuildRequires:  pkgconfig(zlib)
+Provides:       group(%{groupname})
+Provides:       user(%{username})
 
 Requires:       logrotate
 Requires(pre):  pwdutils
