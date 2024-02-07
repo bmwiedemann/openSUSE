@@ -30,4 +30,12 @@
     <comment>- Add cunit-ncurses6.patch to compile with ncurses6</comment>
     <requestid>340389</requestid>
   </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>d66b16448e20ab3fb499b48c7b2a79e4</srcmd5>
+    <version>2.1.3</version>
+    <time>1707328042</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144507</requestid>
+  </revision>
 </revisionlist>
