@@ -72,4 +72,12 @@ Develproject is Archiving. Thanks.</comment>
     <comment></comment>
     <requestid>1110270</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2d17661bf07829cbaf4302a6147be3ef</srcmd5>
+    <version>2.2.6</version>
+    <time>1707328282</time>
+    <user>anag+factory</user>
+    <comment>require python3-importlib-metadata for python &lt; 3.8 (boo#1219652) (forwarded request 1144977 from seife)</comment>
+    <requestid>1144983</requestid>
+  </revision>
 </revisionlist>

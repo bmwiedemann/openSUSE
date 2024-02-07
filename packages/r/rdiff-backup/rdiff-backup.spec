@@ -1,7 +1,7 @@
 #
 # spec file for package rdiff-backup
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,6 +34,10 @@ BuildRequires:  rubygem(asciidoctor)
 Requires:       python3-PyYAML
 Requires:       python3-pylibacl
 Requires:       python3-xattr
+%if %{python_version_nodots} < 38
+# boo#1219652
+Requires:       python3-importlib-metadata
+%endif
 
 %description
 rdiff-backup backs up one directory to another, possibly over a
