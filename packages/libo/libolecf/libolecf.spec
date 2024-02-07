@@ -1,7 +1,7 @@
 #
 # spec file for package libolecf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,11 @@ Source:         https://github.com/libyal/libolecf/releases/download/%version/li
 Source2:        https://github.com/libyal/libolecf/releases/download/%version/libolecf-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source11:       OLE_Compound_File_format.pdf
+BuildRequires:  %python_module devel
+BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  python-rpm-macros %{python_module devel}
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20220120
 BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
