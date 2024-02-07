@@ -425,4 +425,13 @@ I will submit the packages one by one once this is accepted.</comment>
   see included CHANGES.md file for details</comment>
     <requestid>1140024</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8639d9c22e86defd6d8bff78f2f6c127</srcmd5>
+    <version>3.13.1</version>
+    <time>1707328187</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.13.1
+  see included CHANGES.md file for details</comment>
+    <requestid>1144806</requestid>
+  </revision>
 </revisionlist>

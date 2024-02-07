@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-dune</param>
-    <param name="revision">21f904250f8bc27abbeafadf70682aceb198b1e3</param>
+    <param name="revision">b98be5f4c2bbac6f07ad0a9fa28de177f666b509</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml/dune.git</param>
