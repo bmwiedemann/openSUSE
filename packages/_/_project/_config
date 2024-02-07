@@ -224,6 +224,8 @@ FileProvides: /sbin/startproc sysvinit-tools
 FileProvides: /sbin/unix2_chkpwd pam
 FileProvides: /usr/bin/7z 7zip
 FileProvides: /usr/bin/Xvnc xorg-x11-Xvnc
+FileProvides: /usr/bin/appstreamcli AppStream
+FileProvides: /usr/bin/appstream-compose appstream-glib
 FileProvides: /usr/bin/ar binutils busybox-misc
 FileProvides: /usr/bin/at at
 FileProvides: /usr/bin/awk busybox-gawk gawk
@@ -2819,6 +2821,7 @@ BuildFlags: onlybuild:python-libevdev
 BuildFlags: onlybuild:python-lxml
 BuildFlags: onlybuild:python-mccabe
 BuildFlags: onlybuild:python-meson-python
+BuildFlags: onlybuild:python-mypy
 BuildFlags: onlybuild:python-mypy_extensions
 BuildFlags: onlybuild:python-nose2
 BuildFlags: onlybuild:python-notify2
@@ -2917,6 +2920,7 @@ BuildFlags: onlybuild:python-tomli-w
 BuildFlags: onlybuild:python-trio
 BuildFlags: onlybuild:python-trove-classifiers
 BuildFlags: onlybuild:python-trustme
+BuildFlags: onlybuild:python-typed-ast
 BuildFlags: onlybuild:python-typing-inspect
 BuildFlags: onlybuild:python-typing_extensions
 BuildFlags: onlybuild:python-typogrify
