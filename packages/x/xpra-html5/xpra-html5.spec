@@ -1,7 +1,7 @@
 #
 # spec file for package xpra-html5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 Name:           xpra-html5
 Release:        0
-Version:        11.0+git20231128.52742e3
+Version:        12.0+git20240131.f67917a
 Summary:        HTML5 client for Xpra
 License:        GPL-2.0+ AND BSD-3-Clause AND LGPL-3.0+ AND MIT
 URL:            https://xpra.org/

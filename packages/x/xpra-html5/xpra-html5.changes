@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jan 31 15:43:25 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 12.0+git20240131.f67917a:
+  * bump version
+  * update the release notes
+  * better compatibility with older python versions
+  * also add setuptools to the build dependencies
+  * newer python compatibility: prefer setuptools
+  * linter warning cleanup
+  * forgot to bump year..
+  * Revert "Update README.md"
+  * update the release notes
+  * #280 detect minifier, default to 'copy' if not found
+  * #273 copy 'text/html' to the server
+  * unescape plain/text clipboard data
+  * remove MSIE workarounds
+  * #273 prefer 'text/html', if available
+  * Update README.md
+  * Bugfix: Prefix the sessionStorage data with pathname
+  * doh: this is an assignment
+  * Add back 'setting-change' capability for compability with v5 servers (#263).
+  * #263 v5 servers need this flag
+  * More consistent positioning of fullscreen windows
+  * Set full range color space hint in videoDecoder.configure
+
+-------------------------------------------------------------------
 Tue Nov 28 15:20:14 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 11.0+git20231128.52742e3:

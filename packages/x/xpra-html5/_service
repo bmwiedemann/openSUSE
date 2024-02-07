@@ -15,7 +15,7 @@
     <param name="versionrewrite-pattern">v(.*)</param>
     -->
     <param name="versionrewrite-pattern">v9.0</param>
-    <param name="versionrewrite-replacement">11.0</param>
+    <param name="versionrewrite-replacement">12.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>
