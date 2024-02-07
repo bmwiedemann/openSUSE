@@ -1,7 +1,7 @@
 #
 # spec file for package mosquitto
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define c_lib   libmosquitto1
 %define cpp_lib libmosquittopp1
 Name:           mosquitto
-Version:        2.0.15
+Version:        2.0.18
 Release:        0
 Summary:        A MQTT v3.1/v3.1.1 Broker
 License:        EPL-1.0
