@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 05 08:36:43 UTC 2024 - vasily.ulyanov@suse.com
+
+- Update to version 2.0.17.8.g67984e5:
+  * numastat: Print package version number instead of own.
+  * numastat: Remove commented out perl code
+  * Check for MPOL_PREFERRED_MANY lazily
+  * libnuma: add numa_set_mempolicy_home_node API
+
+-------------------------------------------------------------------
 Tue Jan 30 06:11:46 UTC 2024 - trenn@suse.de
 
 - Update to version 2.0.17.4.g63befa8:
