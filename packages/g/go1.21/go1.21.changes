@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  6 18:00:12 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.7 (released 2024-02-06) includes fixes to the compiler,
+  the go command, the runtime, and the crypto/x509 package.
+  Refs boo#1212475 go1.21 release tracking
+  * go#63209 runtime: "fatal: morestack on g0" on amd64 after upgrade to Go 1.21
+  * go#63768 runtime: pinner.Pin doesn't panic when it says it will
+  * go#64497 cmd/go: flag modcacherw does not take effect in the target package
+  * go#64761 staticlockranking builders failing on release branches on LUCI
+  * go#64935 runtime: "traceback: unexpected SPWRITE function runtime.systemstack"
+  * go#65023 x/tools/go/analysis/unitchecker,slices: TestVetStdlib failing due to vet errors in panic tests
+  * go#65053 cmd/compile: //go:build file version ignored when calling generic fn which has related type params
+  * go#65323 crypto: rollback BoringCrypto fips-20220613 update
+  * go#65351 cmd/go: go generate fails silently when run on a package in a nested workspace module
+  * go#65380 crypto/x509: TestIssue51759 consistently failing on gotip-darwin-amd64_10.15 LUCI builder
+  * go#65449 runtime/trace: frame pointer unwinding crash on arm64 during async preemption
+
+-------------------------------------------------------------------
 Tue Jan  9 18:40:15 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.21.6 (released 2024-01-09) includes fixes to the compiler,

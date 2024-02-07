@@ -126,7 +126,7 @@
 %endif
 
 Name:           go1.21
-Version:        1.21.6
+Version:        1.21.7
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -166,7 +166,7 @@ BuildRequires:  gcc-c++
 #BNC#818502 debug edit tool of rpm fails on i586 builds
 BuildRequires:  rpm >= 4.11.1
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Requires:       gcc
 Provides:       go = %{version}
 Provides:       go-devel = go%{version}

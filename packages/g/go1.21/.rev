@@ -178,4 +178,25 @@
   * go#64757 runtime: race condition raised with parallel tests, panic(nil) and -race (forwarded request 1137838 from jfkw)</comment>
     <requestid>1137841</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>92efd4e1e5bac612921c529a441a2176</srcmd5>
+    <version>1.21.7</version>
+    <time>1707328064</time>
+    <user>anag+factory</user>
+    <comment>- go1.21.7 (released 2024-02-06) includes fixes to the compiler,
+  the go command, the runtime, and the crypto/x509 package.
+  Refs boo#1212475 go1.21 release tracking
+  * go#63209 runtime: &quot;fatal: morestack on g0&quot; on amd64 after upgrade to Go 1.21
+  * go#63768 runtime: pinner.Pin doesn't panic when it says it will
+  * go#64497 cmd/go: flag modcacherw does not take effect in the target package
+  * go#64761 staticlockranking builders failing on release branches on LUCI
+  * go#64935 runtime: &quot;traceback: unexpected SPWRITE function runtime.systemstack&quot;
+  * go#65023 x/tools/go/analysis/unitchecker,slices: TestVetStdlib failing due to vet errors in panic tests
+  * go#65053 cmd/compile: //go:build file version ignored when calling generic fn which has related type params
+  * go#65323 crypto: rollback BoringCrypto fips-20220613 update
+  * go#65351 cmd/go: go generate fails silently when run on a package in a nested workspace module
+  * go#65380 crypto/x509: TestIssue51759 consistently failing on gotip-darwin-amd64_10.15 LUCI builder
+  * go#65449 runtime/trace: frame pointer unwinding crash on arm64 during async preemption (forwarded request 1144736 from jfkw)</comment>
+    <requestid>1144738</requestid>
+  </revision>
 </revisionlist>
