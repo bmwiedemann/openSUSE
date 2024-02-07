@@ -1,7 +1,7 @@
 #
 # spec file for package afl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 
 Name:           afl
-Version:        4.09c
+Version:        4.10c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 #URL:            https://lcamtuf.coredump.cx/afl/
@@ -66,7 +66,7 @@ use cases - say, common image parsing or file compression libraries.
 
 %prep
 %setup -q -n AFLplusplus-%version
-%patch1 -p1
+%patch -P1 -p1
 sed -i 's|#!/usr/bin/env sh|#!/bin/sh|g' afl-cmin
 sed -i 's|#!/usr/bin/env bash|#!/bin/bash|g' afl-cmin.bash
 
@@ -110,6 +110,7 @@ chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 %{_datadir}/%{name}/testcases/*
 %dir %{_datadir}/afl/dictionaries/
 %{_datadir}/afl/dictionaries/*
+%{_datadir}/afl/injections.dic
 %{_mandir}/man8/afl*.8*
 
 %changelog
