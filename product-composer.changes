@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  6 15:13:11 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.3
+  - fixes incorrect data inside of repomd.xml
+
+-------------------------------------------------------------------
+Mon Feb  5 12:04:37 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.2
+  * crash fixes
+
+-------------------------------------------------------------------
 Thu Jan 11 08:17:38 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.3.1
