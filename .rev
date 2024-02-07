@@ -55,4 +55,12 @@
     <comment>- Update to release 20240118</comment>
     <requestid>1139915</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3b33364ebec8956950d0c83bb1e30ded</srcmd5>
+    <version>20240118</version>
+    <time>1707328087</time>
+    <user>anag+factory</user>
+    <comment>python 3.12 build fix</comment>
+    <requestid>1144580</requestid>
+  </revision>
 </revisionlist>

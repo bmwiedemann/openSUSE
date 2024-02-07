@@ -28,6 +28,7 @@ Source:         https://github.com/libyal/libfmos/releases/download/%version/lib
 Source2:        https://github.com/libyal/libfmos/releases/download/%version/libfmos-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20240101
