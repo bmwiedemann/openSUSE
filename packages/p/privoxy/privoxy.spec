@@ -1,7 +1,7 @@
 #
 # spec file for package privoxy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,8 @@ Requires:       logrotate
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 %{?systemd_ordering}
+Provides:       group(%{name})
+Provides:       user(%{name})
 
 %description
 The Internet Junkbuster - HTTP Proxy Server: A non-caching HTTP proxy
