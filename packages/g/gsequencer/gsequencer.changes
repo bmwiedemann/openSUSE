@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  6 15:40:51 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v6.4.3 enabled auto-scroll and refactored update-ui
+  event.
+
+-------------------------------------------------------------------
 Sat Jan 27 08:59:53 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstram v6.3.5 fixed some compiler warnings and make it
