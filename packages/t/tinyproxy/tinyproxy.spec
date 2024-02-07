@@ -1,7 +1,7 @@
 #
 # spec file for package tinyproxy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,10 @@ Source:         https://github.com/tinyproxy/tinyproxy/releases/download/%versio
 Source1:        %name.logrotate
 Patch1:         0001-prevent-junk-from-showing-up-in-error-page-in-invali.patch
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  xz
 Requires:       logrotate
-Requires(pre):  shadow
+%sysusers_requires
 
 %description
 Tinyproxy is a light-weight HTTP/HTTPS proxy daemon for POSIX
@@ -51,7 +52,7 @@ b="%buildroot"
 install -d -m0750 "$b/%_localstatedir/log/%name"
 install -D -m0644 "%SOURCE1" "$b/%_sysconfdir/logrotate.d/%name"
 
-mkdir -p "$b/%_unitdir" "$b/%_prefix/lib/tmpfiles.d"
+mkdir -p "$b/%_unitdir" "$b/%_tmpfilesdir" "$b/%_sysusersdir"
 cat >>"$b/%_unitdir/tinyproxy.service" <<-EOF
 	[Unit]
 	Description=A small HTTP/1 proxy
@@ -64,17 +65,16 @@ cat >>"$b/%_unitdir/tinyproxy.service" <<-EOF
 	[Install]
 	WantedBy=multi-user.target
 EOF
-cat >>"$b/%_prefix/lib/tmpfiles.d/tinyproxy.conf" <<-EOF
+cat >>"$b/%_tmpfilesdir/%name.conf" <<-EOF
 	d /run/tinyproxy 0755 tinyproxy tinyproxy -
 EOF
+echo 'u tinyproxy - "Tinyproxy" %_datadir/%name' >system-user-tinyproxy.conf
+cp -a system-user-tinyproxy.conf "$b/%_sysusersdir/"
+%sysusers_generate_pre system-user-tinyproxy.conf random system-user-tinyproxy.conf
 
 rm -rf "$b/%_datadir/doc/%name"
 
-%pre
-getent group tinyproxy >/dev/null || groupadd -r tinyproxy
-getent passwd tinyproxy >/dev/null || \
-	useradd -c "Tinyproxy" -d "%_datadir/%name" -g tinyproxy \
-	-r -s /bin/false tinyproxy
+%pre -f random.pre
 %service_add_pre tinyproxy.service
 
 %post
@@ -97,7 +97,8 @@ systemd-tmpfiles --create tinyproxy.conf || :
 %_mandir/man*/*
 %_datadir/%name
 %_unitdir/*.service
-%_prefix/lib/tmpfiles.d/
+%_tmpfilesdir/*
+%_sysusersdir/*
 %attr(750,%name,root) %_localstatedir/log/%name
 
 %changelog
