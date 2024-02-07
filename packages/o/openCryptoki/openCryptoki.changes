@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  7 07:27:00 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade openCryptoki to version 3.23 (jsc#PED-3360, jsc#PED-3361)
+  * EP11: Add support for FIPS-session mode
+  * Updates to harden against RSA timing attacks
+  * Bug fixes
+- Renamed ocki-3.22-remove-make-install-chgrp.patch to
+          ocki-3.23-remove-make-install-chgrp.patch
+
+-------------------------------------------------------------------
 Mon Feb  5 08:59:37 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - provide user(pkcs11) and group(pkcs11)
