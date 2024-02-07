@@ -16,11 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15allpythons}
 Name:           python-logging-journald
 Version:        0.6.7
 Release:        0
-Summary:        Pure python logging handler for writing logs to the journald using native protocol
+Summary:        Logging Handler For Sending Logs to journald
 License:        MIT
 URL:            https://github.com/mosquito/logging-journald
 Source:         https://files.pythonhosted.org/packages/source/l/logging_journald/logging_journald-%{version}.tar.gz

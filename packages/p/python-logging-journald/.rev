@@ -26,4 +26,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1140216</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f7971790b728b3dd558f141c87a7d121</srcmd5>
+    <version>0.6.7</version>
+    <time>1707328256</time>
+    <user>anag+factory</user>
+    <comment>- reduce rpmlint warnings</comment>
+    <requestid>1144946</requestid>
+  </revision>
 </revisionlist>
