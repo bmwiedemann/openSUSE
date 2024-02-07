@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  2 14:34:19 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Rename gnome subpackage to NetworkManager-applet-libreswan
+  to more accurately reflect its usage
+- Add missing requires: NetworkManager
+- Add missing supplements:
+  - NM and /usr/sbin/ipsec
+  - NMA subpackage: Main package and NMA
+
+-------------------------------------------------------------------
 Wed Dec 28 12:12:49 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move dbus-1 system.d conf file to /usr (bsc#1206757)
