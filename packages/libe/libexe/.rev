@@ -76,4 +76,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1102990</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>5d80db52837576364d9cc7edfd96fcb8</srcmd5>
+    <version>20210424</version>
+    <time>1707328124</time>
+    <user>anag+factory</user>
+    <comment>python 3.12 build fix</comment>
+    <requestid>1144610</requestid>
+  </revision>
 </revisionlist>
