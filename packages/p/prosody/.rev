@@ -674,4 +674,12 @@
 - Add prosody-lua54coexist.patch</comment>
     <requestid>1115621</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>90dbf197d06bc8db7380852eed29989e</srcmd5>
+    <version>0.12.4</version>
+    <time>1707328241</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144916</requestid>
+  </revision>
 </revisionlist>

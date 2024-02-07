@@ -1,7 +1,7 @@
 #
 # spec file for package prosody
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,8 @@ Requires:       lua54-luasocket
 Requires:       lua54-readline
 Requires(pre):  permissions
 Requires(pre):  shadow
+Provides:       user(%{name})
+Provides:       group(%{name})
 Recommends:     lua54-luadbi
 Recommends:     lua54-luaevent
 Recommends:     lua54-luaunbound
