@@ -159,6 +159,8 @@ Patch38:        python311.patch
 Patch39:        fix_sdl_build.patch
 # Fixes for openSUSE Leap 15.X
 Patch40:        fixes_for_leap.patch
+# Fix for set_pte() warning
+#Patch41:        fix_pte_warning.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -471,6 +473,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch38 -p1
 %patch39 -p1
 %patch40 -p1
+#%patch41 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
