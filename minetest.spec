@@ -18,12 +18,12 @@
 
 %define minetestuser %{name}
 %define minetestgroup %{name}
-%define irrlichtmt_version 1.9.0mt10
+%define irrlichtmt_version 1.9.0mt13
 %bcond_without leveldb
 %bcond_without redis
 %bcond_without postgresql
 Name:           minetest
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
@@ -33,10 +33,6 @@ Source:         https://github.com/minetest/%{name}/archive/%{version}/%{name}-%
 Source1:        minetest-rpmlintrc
 Source2:        minetest@.service
 Source3:        https://github.com/minetest/irrlicht/archive/%{irrlichtmt_version}/irrlicht-%{irrlichtmt_version}.tar.gz
-# PATCH-FIX-UPSTREAM - minetest-fix-luajit-include-path.diff -- Fixes the FindLuaJIT CMake module so it also looks for moonjit’s include path
-Patch0:         minetest-fix-luajit-include-path.patch
-# PATCH-FIX-OPENSUSE old-desktopfile-standard.patch dmueller@suse.com -- build without 'PrefersNonDefaultGPU' option in desktopfile on Leap 15.3 and below
-Patch1:         old-desktopfile-standard.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -54,6 +50,7 @@ BuildRequires:  libzstd-devel
 BuildRequires:  ncurses-devel
 # Needed for symlink checking
 BuildRequires:  opengl-games-utils
+BuildRequires:  desktop-file-utils >= 0.25
 BuildRequires:  pkgconfig
 BuildRequires:  spatialindex-devel
 BuildRequires:  systemd-rpm-macros
@@ -71,11 +68,6 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150400
-BuildRequires:  desktop-file-utils
-%else
-BuildRequires:  desktop-file-utils >= 0.25
-%endif
 %if %{with leveldb}
 BuildRequires:  leveldb-devel
 %endif
@@ -91,9 +83,9 @@ BuildRequires:  postgresql-server-devel
 %endif
 Requires:       %{name}-data = %{version}
 Requires:       opengl-games-utils
+Recommends:     %{name}-game
 Recommends:     %{name}-lang
-Recommends:     minetest-game
-Provides:       minetest-runtime = %{version}
+Provides:       %{name}-runtime = %{version}
 Provides:       bundled(irrlicht) = %{irrlichtmt_version}
 
 %description
@@ -108,8 +100,8 @@ License:        LGPL-2.1-or-later
 Group:          Amusements/Games/3D/Simulation
 Requires:       %{name}-data = %{version}
 Requires(pre):  shadow
-Recommends:     minetest-game
-Provides:       minetest-runtime = %{version}
+Recommends:     %{name}-game
+Provides:       %{name}-runtime = %{version}
 %{?systemd_requires}
 
 %description -n %{name}server
@@ -135,10 +127,6 @@ This package contains data for minetest and minetestserver.
 
 %prep
 %setup -q
-%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150400
-%patch0 -p1
-%patch1 -p1
-%endif
 
 cd lib
 tar -xzf %{SOURCE3}
@@ -202,8 +190,13 @@ done
 %fdupes %{buildroot}%{_datadir}/
 
 install -Dpm 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}@.service
-install -Dpm 0644 minetest.conf.example \
-  %{buildroot}%{_sysconfdir}/%{name}/minetest.conf.example
+install -Dpm 0644 %{name}.conf.example \
+  %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf.example
+
+cat >%{buildroot}%{_sysconfdir}/%{name}/%{name}.env.example <<%%
+# mintestet options for further configuration, e.g. to set the gameid with "--gameid ..."
+MINETEST_OPTIONS=""
+%%
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}/
 
@@ -246,7 +239,9 @@ getent passwd %{name} > /dev/null || \
 %attr(0755,%{minetestuser},%{minetestgroup}) %{_localstatedir}/lib/%{name}/
 %{_mandir}/man6/%{name}server.6%{?ext_man}
 %dir %{_sysconfdir}/%{name}
-%config %{_sysconfdir}/%{name}/minetest.conf.example
+%config %{_sysconfdir}/%{name}/%{name}.conf.example
+%config %{_sysconfdir}/%{name}/%{name}.env.example
+
 %{_unitdir}/%{name}@.service
 
 %files data
