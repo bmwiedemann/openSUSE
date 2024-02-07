@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-django-filter
 Version:        23.5
 Release:        0
@@ -28,7 +29,6 @@ BuildRequires:  %{python_module django-crispy-forms}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 3.2
