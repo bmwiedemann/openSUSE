@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  7 08:48:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip build for python 3.12
+
+-------------------------------------------------------------------
 Fri Sep 22 05:51:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package python-paginate, required by python-mkdocs-material

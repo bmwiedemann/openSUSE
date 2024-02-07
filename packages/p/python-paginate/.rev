@@ -7,4 +7,12 @@
     <comment>new package, required by python-mkdocs-material</comment>
     <requestid>1113622</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c858e8f1ca9773dfe1387fef17e5611f</srcmd5>
+    <version>0.5.6</version>
+    <time>1707328222</time>
+    <user>anag+factory</user>
+    <comment>- skip build for python 3.12</comment>
+    <requestid>1144836</requestid>
+  </revision>
 </revisionlist>

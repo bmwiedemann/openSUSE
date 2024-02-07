@@ -1,7 +1,7 @@
 #
 # spec file for package python-paginate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?sle15_python_module_pythons}
+%global skip_python312 1
 Name:           python-paginate
 Version:        0.5.6
 Release:        0
@@ -25,10 +26,10 @@ License:        MIT
 URL:            https://github.com/Signum/paginate
 # PyPI tarball does not include tests...
 Source:         https://github.com/Signum/paginate/archive/%{version}.tar.gz#/paginate-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
