@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  6 09:30:05 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.0.1
+  * BREAKING: Fix issue with httpx support (thanks @parkerhancock) in #784.
+  * BREAKING: Drop support for `boto` (vcrpy still supports boto3, but is dropping the deprecated `boto` support in this release. (thanks @jairhenrique)
+  * Fix compatibility issue with Python 3.12 (thanks @hartwork)
+  * Drop simplejson (fixes some compatibility issues) (thanks @jairhenrique)
+  * Run CI on Python 3.12 and PyPy 3.9-3.10 (thanks @mgorny)
+  * Various linting and docs improvements (thanks @jairhenrique)
+  * Tornado fixes (thanks @graingert)
+
+-------------------------------------------------------------------
 Mon Sep 18 11:25:25 UTC 2023 - pgajdos@suse.com
 
 - version update to 5.1.0

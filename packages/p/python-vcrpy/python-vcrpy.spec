@@ -1,7 +1,7 @@
 #
 # spec file for package python-vcrpy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-vcrpy
-Version:        5.1.0
+Version:        6.0.1
 Release:        0
 Summary:        Python module to mock and replay HTTP interactions
 License:        MIT
@@ -31,15 +31,17 @@ BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 # gh#kevin1024/vcrpy#688
-BuildRequires:  %{python_module urllib3 < 2}
+BuildRequires:  %{python_module urllib3 < 2 if %python-base < 3.10}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wrapt}
 BuildRequires:  %{python_module yarl}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
-Requires:       python-urllib3 < 2
 Requires:       python-wrapt
+%if 0%{python_version_nodots} < 310
+Requires:       python-urllib3 < 2
+%endif
 BuildArch:      noarch
 Requires:       python-yarl
 %python_subpackages
