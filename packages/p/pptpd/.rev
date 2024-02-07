@@ -173,4 +173,26 @@
     <comment></comment>
     <requestid>978084</requestid>
   </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>05332e811e78fe8190d9094622b0c64a</srcmd5>
+    <version>1.4.0</version>
+    <time>1707328258</time>
+    <user>anag+factory</user>
+    <comment>- drop LIESMICH.SUSE, rcpptpd: only for non-systemd distros
+- remove ifconditions for systemd, all maintained distros
+  have it by now
+- add bcrelay-iflog-size-limit.patch, gcc-14-fix.patch,
+  ppp-2.5.0.patch to fix build in TW
+
+- Update pptpd-stringcompare.patch
+- Changed file names README.SUSE and LIESMICH.SUSE, because it is
+  the right SUSE spelling (bnc#889011).
+- Add native systemd units
+- fix build
+- add missing calls to restart_on_update and stop_on_removal macros
+- avoid string compare with char literal
+- fix logwtmp plugin version. Use ppp devel files in the
+    PPTP Client anonymously</comment>
+    <requestid>1144930</requestid>
+  </revision>
 </revisionlist>

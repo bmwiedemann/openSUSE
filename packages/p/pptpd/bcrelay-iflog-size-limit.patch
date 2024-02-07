@@ -1,0 +1,36 @@
+diff --git a/bcrelay.c b/bcrelay.c
+index c5a6c73..02e7cdc 100644
+--- a/bcrelay.c
++++ b/bcrelay.c
+@@ -963,21 +963,21 @@ static char *iflistToString( struct iflist *ifp )
+ 
+ static char *iflistLogRToString( struct iflist *ifp, int idx, struct ifsnr *ifnr )
+ {
+-  static char str_tr[MAX_IFLOGTOSTR]; /*
+-                                       * This makes function: 1) non-reentrant (doesn't matter).
+-                                       *                      2) not useable multiple times by (s)printf.
+-                                       */
+-  sprintf(str_tr, "%s", ifp->ifname);
++  static char str_tr[MAX_IFLOGTOSTR] = { 0 }; /*
++                                               * This makes function: 1) non-reentrant (doesn't matter).
++                                               *                      2) not useable multiple times by (s)printf.
++                                               */
++  snprintf(str_tr, MAX_IFLOGTOSTR, "%s", ifp->ifname);
+   return str_tr;
+ }
+ 
+ static char *iflistLogIToString( struct iflist *ifp, int idx, struct ifsnr *ifnr )
+ {
+-  static char str_tr[MAX_IFLOGTOSTR]; /*
+-                                       * This makes function: 1) non-reentrant (doesn't matter).
+-                                       *                      2) not useable multiple times by (s)printf.
+-                                       */
+-  sprintf(str_tr, "%s(%d/%d/%d)", ifp->ifname, idx, ifp->index, ifnr->sock_nr);
++  static char str_tr[MAX_IFLOGTOSTR + 64] = { 0 }; /*
++                                               * This makes function: 1) non-reentrant (doesn't matter).
++                                               *                      2) not useable multiple times by (s)printf.
++                                               */
++  snprintf(str_tr, MAX_IFLOGTOSTR, "%s(%d/%d/%d)", ifp->ifname, idx, ifp->index, ifnr->sock_nr);
+   return str_tr;
+ }
+ 

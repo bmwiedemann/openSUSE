@@ -1,0 +1,15 @@
+diff --git a/compat.c b/compat.c
+index 8a91a66..285220c 100644
+--- a/compat.c
++++ b/compat.c
+@@ -10,9 +10,9 @@
+ 
+ #include "compat.h"
+ #include "our_syslog.h"
++#include <string.h>
+ 
+ #ifndef HAVE_STRLCPY
+-#include <string.h>
+ #include <stdio.h>
+ 
+ void strlcpy(char *dst, const char *src, size_t size)
