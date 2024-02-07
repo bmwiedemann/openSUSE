@@ -1,17 +1,17 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/k3s-io/k3s-selinux</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.4.stable.1</param>
+    <param name="revision">v1.5.stable.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="match-tag">*stable*</param>
   </service>
-  <service name="set_version" mode="disabled">
+  <service name="set_version" mode="manual">
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>

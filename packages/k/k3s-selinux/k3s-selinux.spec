@@ -1,7 +1,7 @@
 #
 # spec file for package k3s-selinux
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %define container_policyver 2.164.2-1.1
 
 Name:           k3s-selinux
-Version:        1.4.stable.1
+Version:        1.5.stable.1
 Release:        0
 Summary:        SELinux policy module for k3s
 
@@ -53,7 +53,7 @@ BuildRequires:  selinux-policy-devel >= %{selinux_policyver}
 Requires:       policycoreutils
 Requires:       selinux-tools
 Requires(post): selinux-policy-base >= %{selinux_policyver}, policycoreutils, container-selinux >= %{container_policyver}
-Requires(postun):policycoreutils
+Requires(postun): policycoreutils
 
 Provides:       %{name} = %{version}-%{release}
 Obsoletes:      k3s-selinux <= 0.5

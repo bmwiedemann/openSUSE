@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 07 07:13:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.5.stable.1:
+  * Fix /opt/bin/k3s context in all distros (#59)
+  * Adding changes for k3s when installing to /opt to match rke2
+    behaviour (#58)
+  * ci: configure Dependabot version updates (#55)
+  * build: Align drone base images Align the base images used in
+    drone with the images used across the ecosystem.
+
+-------------------------------------------------------------------
 Tue Jun 13 11:08:04 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.4.stable.1:
@@ -50,7 +61,7 @@ Wed Mar 16 17:39:11 UTC 2022 - kastl@b1-systems.de
 -------------------------------------------------------------------
 Wed Jan 26 11:52:45 UTC 2022 - Richard Brown <rbrown@suse.com>
 
-- Add missing spec license/copyright 
+- Add missing spec license/copyright
 
 -------------------------------------------------------------------
 Sun Jan  9 15:18:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
