@@ -1,7 +1,7 @@
 #
 # spec file for package libvshadow
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Source11:       Paper_-_Windowless_Shadow_Snapshots.pdf
 Source12:       Slides_-_Windowless_Shadow_Snapshots.pdf
 Source13:       Volume_Shadow_Snapshot_VSS_format.pdf
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
