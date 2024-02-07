@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 06 20:00:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.0:
+  * Use Ginkgo version from modules
+  * fix incorrect newline handling
+  * adapt testcases
+  * fix diff issue with latest version of go-diff lib
+  * improve multiline string diff handling
+  * Bump github.com/onsi/gomega from 1.31.0 to 1.31.1
+  * Bump github.com/onsi/ginkgo/v2 from 2.14.0 to 2.15.0
+  * Bump github.com/onsi/gomega from 1.30.0 to 1.31.0
+  * Handle comparisons of boolean values correctly
+  * Bump github.com/onsi/ginkgo/v2 from 2.13.2 to 2.14.0
+  * Bump github.com/onsi/ginkgo/v2 from 2.13.1 to 2.13.2
+  * Bump github.com/onsi/ginkgo/v2 from 2.13.0 to 2.13.1
+  * Bump github.com/onsi/gomega from 1.29.0 to 1.30.0
+  * Bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+  * Bump github.com/onsi/gomega from 1.28.1 to 1.29.0
+  * Bump github.com/onsi/gomega from 1.28.0 to 1.28.1
+  * Remove usage of deprecated `wrap.Error` function
+
+-------------------------------------------------------------------
 Thu Oct 19 06:04:47 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.6.0:

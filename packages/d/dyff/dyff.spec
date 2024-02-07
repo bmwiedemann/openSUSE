@@ -1,7 +1,7 @@
 #
 # spec file for package dyff
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           dyff
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Diff tool for YAML files, and sometimes JSON
 License:        MIT
