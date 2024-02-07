@@ -17,9 +17,10 @@
 
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+%define binary_name rke2
 
 Name:           rke2
-Version:        1.29.0+rke2r1
+Version:        1.29.1+rke2r1
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
@@ -53,12 +54,12 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 %{binary_name} "%{buildroot}/%{_bindir}/%{binary_name}"
 
 %files
 %defattr(-,root,root)
 %doc README.md
 %license LICENSE
-%{_bindir}/%{name}
+%{_bindir}/%{binary_name}
 
 %changelog
