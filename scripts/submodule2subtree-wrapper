@@ -1,0 +1,2 @@
+#!/bin/bash
+git submodule 2>&1 | perl -ne 'm!gitmodules for path .packages/.*/([^/]*).! && system("scripts/submodule2subtree", $1)'

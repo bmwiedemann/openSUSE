@@ -4,29 +4,137 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#1207390: '20240115'
-  boo#1207940: '20240115'
-  boo#1209053: '20240115'
-  boo#1209728: '20240115'
-  boo#1216660: '20240115'
-  boo#1217029: '20240115'
-  boo#1217683: '20240115'
-  boo#1218131: '20240112'
-  boo#1218492: '20240115'
-  boo#1218565: '20240107'
-  poo#120459: '20240110'
-  poo#132191: '20240115'
-  poo#133691: '20240111'
-  poo#134078: '20240115'
-  poo#137423: '20240115'
-  poo#138743: '20240115'
-  poo#152320: '20240115'
-  poo#152551: '20240115'
-  poo#152793: '20240109'
-  poo#152829: '20240112'
-  poo#153105: '20240114'
-  poo#153502: '20240115'
-  poo#153526: '20240115'
+  boo#1172073: '20230819'
+  boo#1190434: '20230902'
+  boo#1197719: '20230822'
+  boo#1201057: '20230813'
+  boo#1205314: '20230902'
+  boo#1205633: '20230902'
+  boo#1206230: '20230822'
+  boo#1206614: '20230503'
+  boo#1207385: '20230312'
+  boo#1207386: '20230416'
+  boo#1207390: '20230902'
+  boo#1207892: '20230306'
+  boo#1207940: '20230902'
+  boo#1208170: '20230313'
+  boo#1208822: '20230329'
+  boo#1208920: '20230307'
+  boo#1208963: '20230306'
+  boo#1209037: '20230413'
+  boo#1209043: '20230310'
+  boo#1209053: '20230902'
+  boo#1209105: '20230823'
+  boo#1209177: '20230319'
+  boo#1209179: '20230531'
+  boo#1209180: '20230415'
+  boo#1209249: '20230313'
+  boo#1209402: '20230318'
+  boo#1209682: '20230521'
+  boo#1209694: '20230324'
+  boo#1209727: '20230508'
+  boo#1209728: '20230902'
+  boo#1210027: '20230422'
+  boo#1210033: '20230417'
+  boo#1210479: '20230508'
+  boo#1210572: '20230604'
+  boo#1210648: '20230420'
+  boo#1210672: '20230423'
+  boo#1210716: '20230420'
+  boo#1210744: '20230822'
+  boo#1210815: '20230427'
+  boo#1210973: '20230628'
+  boo#1210976: '20230502'
+  boo#1211068: '20230510'
+  boo#1211161: '20230508'
+  boo#1211163: '20230522'
+  boo#1211353: '20230710'
+  boo#1211476: '20230607'
+  boo#1211566: '20230527'
+  boo#1211766: '20230604'
+  boo#1211940: '20230902'
+  boo#1211980: '20230607'
+  boo#1211981: '20230604'
+  boo#1212269: '20230821'
+  boo#1212449: '20230614'
+  boo#1212674: '20230628'
+  boo#1212675: '20230705'
+  boo#1212731: '20230730'
+  boo#1212735: '20230626'
+  boo#1212823: '20230627'
+  boo#1212824: '20230809'
+  boo#1212936: '20230711'
+  boo#1212952: '20230717'
+  boo#1212983: '20230810'
+  boo#1213160: '20230718'
+  boo#1213785: '20230822'
+  boo#1214057: '20230807'
+  boo#1214143: '20230809'
+  boo#1214786: '20230902'
+  boo#1214834: '20230902'
+  boo#1214875: '20230902'
+  bsc#1198101: '20230715'
+  bsc#1205897: '20230902'
+  gh#os-autoinst/opensuse-jobgroups#342: '20230621'
+  gh#os-autoinst/os-autoinst-distri-opensuse#17083: '20230605'
+  gh#os-autoinst/os-autoinst-distri-opensuse#17342: '20230629'
+  poo#112649: '20230302'
+  poo#115133: '20230901'
+  poo#117811: '20230902'
+  poo#120459: '20230902'
+  poo#123127: '20230312'
+  poo#124433: '20230308'
+  poo#124601: '20230419'
+  poo#125507: '20230330'
+  poo#125558: '20230308'
+  poo#125864: '20230417'
+  poo#125981: '20230521'
+  poo#126635: '20230417'
+  poo#126812: '20230411'
+  poo#127343: '20230606'
+  poo#127856: '20230509'
+  poo#127964: '20230422'
+  poo#127967: '20230422'
+  poo#127970: '20230423'
+  poo#128069: '20230420'
+  poo#128213: '20230426'
+  poo#128249: '20230502'
+  poo#128384: '20230902'
+  poo#128387: '20230502'
+  poo#128402: '20230628'
+  poo#128549: '20230509'
+  poo#128624: '20230503'
+  poo#128678: '20230510'
+  poo#129029: '20230509'
+  poo#129121: '20230520'
+  poo#129133: '20230902'
+  poo#129304: '20230606'
+  poo#129622: '20230703'
+  poo#130036: '20230606'
+  poo#130042: '20230807'
+  poo#130123: '20230629'
+  poo#130156: '20230605'
+  poo#130201: '20230602'
+  poo#130498: '20230607'
+  poo#131024: '20230724'
+  poo#131411: '20230902'
+  poo#132155: '20230713'
+  poo#132191: '20230902'
+  poo#132677: '20230807'
+  poo#132686: '20230715'
+  poo#132755: '20230717'
+  poo#132962: '20230718'
+  poo#133235: '20230731'
+  poo#133268: '20230902'
+  poo#133517: '20230731'
+  poo#133529: '20230902'
+  poo#133910: '20230816'
+  poo#134078: '20230902'
+  poo#134285: '20230902'
+  poo#134330: '20230819'
+  poo#134357: '20230902'
+  poo#134813: '20230902'
+  poo#135017: '20230902'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -41,7 +149,7 @@ source_projects_expand = devel:languages:haskell
 allowed-scm-submission-sources = devel:Factory:git-workflow:staging
 
 # devel projects are auto-maintained by devel flags of all existing packages. If a new devel project is to be introduced, it needs to be white listed until the first package entered
-devel-whitelist = systemsmanagement:opentofu devel:microos:kalpa devel:languages:python:google 
+devel-whitelist = hardware:RC-Model devel:microos:aeon devel:microos:aeon:images
  
 # packagelist generator related configuration
 pkglistgen-archs = x86_64
@@ -64,7 +172,6 @@ installcheck-ignore-duplicated-binaries =
 # libstdc++6-gccX are non-installable, but they are also not really meant to be used (see https://github.com/openSUSE/openSUSE-release-tools/pull/2968)
 # Please keep in sync with ports.
 installcheck-ignore-conflicts = busybox-misc libstdc++6-gcc7 libstdc++6-pp-gcc7 libstdc++6-pp-gcc7-32bit libstdc++6-gcc12 libstdc++6-pp-gcc12 libstdc++6-pp-gcc12-32bit
-installcheck-ignore-conflicts-i586 = policycoreutils-gui setools-gui
 
 # for scan_baselibs.py
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
@@ -77,11 +184,11 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240116</value>
+    <value>20230904</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
-jobs_num: 312
+jobs_num: 316
 openqa_group: openSUSE Tumbleweed
 openqa_server: https://openqa.opensuse.org
 product_repo: images
@@ -238,11 +345,7 @@ products:
     - x86_64
   - prometheus-webhook-snmp-image:
     - x86_64
-  - trivy-image:
-    - x86_64
   - tumbleweed-busybox-image:
-    - x86_64
-  - aeon-self-installer:
     - x86_64
   - busybox-image:
     - x86_64
@@ -279,8 +382,6 @@ products:
     - x86_64
   - cups-image:
     - x86_64
-  - gitea-runner-image:
-    - x86_64
   - go1.18-devel-container:
     - x86_64
   - golang-oldstable-image:
@@ -299,10 +400,6 @@ products:
     - x86_64
   - keylime-control-plane-image:
     - x86_64
-  - mariadb-client-image:
-    - x86_64
-  - mariadb-image:
-    - x86_64
   - microos-docserv-image:
     - x86_64
   - nginx-image:
@@ -317,9 +414,9 @@ products:
     - x86_64
   - openjdk-17-image:
     - x86_64
-  - openjdk-21-image:
+  - openjdk-20-devel-image:
     - x86_64
-  - openjdk-21-devel-image:
+  - openjdk-20-image:
     - x86_64
   - opensuse-memcached-image:
     - x86_64
@@ -339,8 +436,6 @@ products:
     - x86_64
   - postgres-15-image:
     - x86_64
-  - postgres-16-image:
-    - x86_64
   - prometheus-image:
     - x86_64
   - python-3.9-image:
@@ -348,6 +443,10 @@ products:
   - python-3.10-image:
     - x86_64
   - python-3.11-image:
+    - x86_64
+  - rmt-mariadb-client-image:
+    - x86_64
+  - rmt-mariadb-image:
     - x86_64
   - rmt-nginx-image:
     - x86_64
@@ -373,8 +472,8 @@ products:
     - x86_64
   - samba-image:
     - x86_64
-#  - tomcat-image:
-#    - x86_64
+  - tomcat-image:
+    - x86_64
   - init-image:
     - x86_64
   - virt-api-container:
@@ -415,8 +514,6 @@ products:
     - x86_64
   - kiwi-templates-Minimal:kvm-and-xen:
     - x86_64
-  - kiwi-templates-Minimal:kvm-and-xen-sdboot:
-    - x86_64
   - openSUSE-MicroOS:ContainerHost-kvm-and-xen:
     - x86_64
   - openSUSE-MicroOS:ContainerHost-MS-HyperV:
@@ -433,9 +530,9 @@ products:
     - x86_64
   - openSUSE-MicroOS:kvm-and-xen:
     - x86_64
-  - openSUSE-MicroOS:kvm-and-xen-sdboot:
-    - x86_64
   - openSUSE-MicroOS:MS-HyperV:
+    - x86_64
+  - openSUSE-MicroOS:onie:
     - x86_64
   - openSUSE-MicroOS:OpenStack-Cloud:
     - x86_64
@@ -481,9 +578,9 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20240115'
-publishing: '20240115'
-testing: '20240116'
+published: '20230902'
+publishing: '20230902'
+testing: '20230902'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
