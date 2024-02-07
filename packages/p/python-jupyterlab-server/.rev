@@ -92,4 +92,13 @@
     (@nbowditch-einblick)</comment>
     <requestid>1128948</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>85ac16e551deb2c2f78eb1528e44434e</srcmd5>
+    <version>2.25.2</version>
+    <time>1707328154</time>
+    <user>anag+factory</user>
+    <comment>- Disable openapi subpackage and tests for python312: not supported
+  yet</comment>
+    <requestid>1144742</requestid>
+  </revision>
 </revisionlist>

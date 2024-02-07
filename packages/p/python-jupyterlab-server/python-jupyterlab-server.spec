@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-jupyterlab-server
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -95,7 +95,9 @@ Requires:       (python-openapi-spec-validator >= 0.6 with python-openapi-spec-v
 Requires:       python-strict-rfc3339
 Requires:       python-jupyterlab-server = %{version}
 Requires:       python-ruamel.yaml
+%if %{python_version_nodots} < 312
 Requires:       (python-openapi-core >= 0.18 with python-openapi-core < 0.19)
+%endif
 
 %description test
 Metapackage for the jupyterlab_server[test] requirement specifier
@@ -126,6 +128,13 @@ sed -i 's/, "--color=yes"//' pyproject.toml
 %if %{with test}
 %check
 export PYTHONDONTWRITEBYTECODE=1
+# no openapi-core in python312
+python312_ignoretests="--ignore tests/test_labapp.py"
+python312_ignoretests="$python312_ignoretests --ignore tests/test_listings_api.py"
+python312_ignoretests="$python312_ignoretests --ignore tests/test_settings_api.py"
+python312_ignoretests="$python312_ignoretests --ignore tests/test_themes_api.py"
+python312_ignoretests="$python312_ignoretests --ignore tests/test_translation_api.py"
+python312_ignoretests="$python312_ignoretests --ignore tests/test_workspaces_api.py"
 %{python_expand # https://github.com/jupyterlab/jupyterlab_server/issues/390
 $python -m venv build/testenv --system-site-packages
 for p in \
@@ -134,7 +143,7 @@ for p in \
 do
   build/testenv/bin/pip install --use-pep517 --no-build-isolation --disable-pip-version-check $p
 done
-build/testenv/bin/python -m pytest -v $ignoretests
+build/testenv/bin/python -m pytest -v ${$python_ignoretests}
 }
 %endif
 
@@ -148,8 +157,10 @@ build/testenv/bin/python -m pytest -v $ignoretests
 %files %{python_files test}
 %license LICENSE
 
+%if %{python_version_nodots} < 312
 %files %{python_files openapi}
 %license LICENSE
+%endif
 %endif
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  6 21:55:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Disable openapi subpackage and tests for python312: not supported
+  yet
+
+-------------------------------------------------------------------
 Sun Nov 26 15:02:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.25.2
