@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Jan 14 00:32:19 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove improve-error-message-if-version-or-channel-is-not-installed.patch as
+  this is part of the patches now.
+- Update to version 0.13.0:
+  * Fix formatting
+  * Move the clap def structs to separate file
+  * change wording for comment for help text
+  * format: run cargo fmt.
+  * improvement: new message for `juliaup self uninstall command` if feature
+    `selfupdate` is disabled
+  * cleanup: add a period for each info/error messages.
+  * refactor: remove redundant versiondb_data. also remove
+    versiondb_data.available_versions since users cant access those
+  * Fix usage of drop
+  * Update all deps
+  * Replace unmaintained action-rs actions
+  * Don't detect ttyname if it is not needed
+  * Describe 'julia +channel' after primary help text
+  * juliaup-init.sh: backport changes from rustup
+  * fixup: message should be more clear and generic
+  * Try removing an unused import.
+  * Only register the CTRL-C handler when it's safe to do so.
+  * Format code.
+  * Use double fork to prevent zombies.
+  * launcher: replace parent process on supported platforms.
+  * fix other error messages as well
+  * fix error message on tests channel selection
+  * fix an oopsie on one of the messages
+  * run cargo fmt
+  * remove redundant use
+  * remove comment. irrelevant and unrelated now
+  * make julialauncher have saner error messages for channels and versions
+
+-------------------------------------------------------------------
 Tue Dec 12 19:37:00 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Use binjulialauncher feature.

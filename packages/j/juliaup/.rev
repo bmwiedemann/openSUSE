@@ -367,4 +367,43 @@
 </comment>
     <requestid>1132768</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>06fd0ea8ecf87b351e193106a2c605e7</srcmd5>
+    <version>1.13.0</version>
+    <time>1707328158</time>
+    <user>anag+factory</user>
+    <comment>- Remove improve-error-message-if-version-or-channel-is-not-installed.patch as
+  this is part of the patches now.
+- Update to version 0.13.0:
+  * Fix formatting
+  * Move the clap def structs to separate file
+  * change wording for comment for help text
+  * format: run cargo fmt.
+  * improvement: new message for `juliaup self uninstall command` if feature
+    `selfupdate` is disabled
+  * cleanup: add a period for each info/error messages.
+  * refactor: remove redundant versiondb_data. also remove
+    versiondb_data.available_versions since users cant access those
+  * Fix usage of drop
+  * Update all deps
+  * Replace unmaintained action-rs actions
+  * Don't detect ttyname if it is not needed
+  * Describe 'julia +channel' after primary help text
+  * juliaup-init.sh: backport changes from rustup
+  * fixup: message should be more clear and generic
+  * Try removing an unused import.
+  * Only register the CTRL-C handler when it's safe to do so.
+  * Format code.
+  * Use double fork to prevent zombies.
+  * launcher: replace parent process on supported platforms.
+  * fix other error messages as well
+  * fix error message on tests channel selection
+  * fix an oopsie on one of the messages
+  * run cargo fmt
+  * remove redundant use
+  * remove comment. irrelevant and unrelated now
+  * make julialauncher have saner error messages for channels and versions
+</comment>
+    <requestid>1144762</requestid>
+  </revision>
 </revisionlist>
