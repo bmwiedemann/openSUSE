@@ -26,6 +26,7 @@
 %bcond_with test
 %endif
 %define mod_name django-crispy-forms
+%{?sle15_python_module_pythons}
 Name:           python-%{mod_name}%{psuffix}
 Version:        2.1
 Release:        0
