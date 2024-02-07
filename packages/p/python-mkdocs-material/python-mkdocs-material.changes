@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb  7 08:48:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip build for python 3.12
+
+-------------------------------------------------------------------
+Wed Feb  7 07:33:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.8:
+  * Added Tamil translations
+  * Updated Esperanto translations
+  * Fixed relative images not being resolved for instant
+    navigation
+
+-------------------------------------------------------------------
+Sat Feb  3 09:12:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.7:
+  * Fixed #6731
+    <https://github.com/squidfunk/mkdocs-material/issues/6731>:
+    Small images in figures are not centered
+  * Fixed #6719
+    <https://github.com/squidfunk/mkdocs-material/issues/6719>:
+    Instant navigation breaks table of contents (9.5.5 regression)
+
+-------------------------------------------------------------------
 Sun Jan 28 08:49:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.6:

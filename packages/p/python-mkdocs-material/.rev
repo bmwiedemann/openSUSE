@@ -321,4 +321,26 @@ update to 9.1.12</comment>
     <comment></comment>
     <requestid>1142442</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a2d91a63b3a4ba602efa113c532c9de8</srcmd5>
+    <version>9.5.8</version>
+    <time>1707328221</time>
+    <user>anag+factory</user>
+    <comment>- skip build for python 3.12
+
+- update to 9.5.8:
+  * Added Tamil translations
+  * Updated Esperanto translations
+  * Fixed relative images not being resolved for instant
+    navigation
+
+- update to 9.5.7:
+  * Fixed #6731
+    &lt;https://github.com/squidfunk/mkdocs-material/issues/6731&gt;:
+    Small images in figures are not centered
+  * Fixed #6719
+    &lt;https://github.com/squidfunk/mkdocs-material/issues/6719&gt;:
+    Instant navigation breaks table of contents (9.5.5 regression)</comment>
+    <requestid>1144834</requestid>
+  </revision>
 </revisionlist>
