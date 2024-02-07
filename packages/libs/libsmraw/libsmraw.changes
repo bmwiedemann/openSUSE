@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  5 21:43:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Use python-setuptools for python distutils backport
+  gh#libyal/libbde#68
+
+-------------------------------------------------------------------
 Mon Nov 27 09:43:46 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20231127
