@@ -20,9 +20,6 @@
 %define modname MyGNUHealth
 %define majorver 2
 
-#boo#1181905
-%global __requires_exclude qmlimport\\((BloodPressure|FedLogin|GHBio|GHBol|GHPsycho|Glucose|LocalAccountManager|MoodEnergy|NetworkSettings|Osat|ProfileSettings|Weight|PoL|GHLifestyle|GHPhysicalActivity|GHNutrition|GHSleep|GHAbout)
-
 %if %{?suse_version} > 1500
 # only the primary one for TW
 %define pythons python3
@@ -37,7 +34,7 @@
 %endif
 
 Name:           mygnuhealth
-Version:        %{majorver}.0.0
+Version:        %{majorver}.0.1
 Release:        0
 Summary:        The personal health record for the GNU Health system
 License:        GPL-3.0-or-later
@@ -70,7 +67,7 @@ Requires:       %{mypython}-tinydb
 Requires:       %{mypython}-requests
 Requires:       %{mypython}-CairoSVG
 # /SECTION
-BuildArch:      noarch
+## BuildArch:      noarch
 # singlespec rewriter for exactly one python (see above)
 
 
@@ -78,16 +75,8 @@ BuildArch:      noarch
 The Personal Health Information Management System for Desktop and Mobile Devices
 for the GNU Health ecosystem
 
-%package -n %{name}-doc
-Summary:        Documentation files for MyGNUHealth
-Group:          Productivity/Office/Management
-
-%description -n %{name}-doc
-This package includes the documentation for MyGNUHealth Personal Health
-Information Management System for Desktop and Mobile Devices
-
 %prep
-%autosetup -p1 -n %{name}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %pyproject_wheel
@@ -104,11 +93,6 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications org.gnuhealth.my
 
 %python_expand %fdupes %{buildroot}%{python_sitelib}
 
-# install and deduplicate doc
-mkdir -p %{buildroot}%{_docdir}/%{name}-doc/
-cp -r doc/* %{buildroot}%{_docdir}/%{name}-doc/
-%fdupes %{buildroot}%{_docdir}
-
 %post
 #clean qml cache to avoid issues
 rm -rf /home/*/.cache/mygnuhealth
@@ -123,10 +107,5 @@ rm -rf /home/*/.cache/mygnuhealth
 %license COPYRIGHT LICENSE
 %{mypython_sitelib}/mygnuhealth
 %{mypython_sitelib}/mygnuhealth-%{version}.dist-info
-
-
-%files -n %{name}-doc
-%doc README.rst
-%{_docdir}/*
 
 %changelog

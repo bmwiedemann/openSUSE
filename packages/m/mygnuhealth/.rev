@@ -81,4 +81,12 @@ the _link needed to be removed as the .spec file got out of sync</comment>
     <comment></comment>
     <requestid>1114438</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eaf3e91c966d7efa856968d06368d922</srcmd5>
+    <version>2.0.1</version>
+    <time>1707328281</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144985</requestid>
+  </revision>
 </revisionlist>
