@@ -11,6 +11,7 @@ fi
 BUILD_DATA="${BUILD_DIST/.dist/.data}"
 if [ -e "${BUILD_DATA}" ]; then
 	. "${BUILD_DATA}"
+	BUILD_ARCH="${BUILD_ARCH%%:*}"
 
 	# The build script renames the recipe (to strip _service:foo:), but doesn't update .data
 	RECIPEFILE="${RECIPEFILE##*:}"
@@ -25,6 +26,7 @@ else
 	echo "Warning: No build data found - chroot build?"
 	DISTURL="local"
 	RELEASE=0
+	BUILD_ARCH="noarch"
 
 	# Guess the build recipe
 	files=(*.kiwi Dockerfile* Chart.yaml*)
@@ -129,4 +131,5 @@ sed -i"" \
     -e "s#%DISTURL%#${DISTURL}#g" \
     -e "s#%SOURCEURL%#${SOURCEURL}#g" \
     -e "s/%RELEASE%/${RELEASE}/g" \
+    -e "s/%ARCH%/${BUILD_ARCH}/g" \
     -e "s/%BUILDTIME%/$(date --utc +%FT%T.%NZ)/g" "${files[@]}"

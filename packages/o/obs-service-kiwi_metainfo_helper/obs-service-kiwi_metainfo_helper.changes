@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  1 15:54:12 UTC 2024 - Marina Latini <marina.latini@suse.com>
+
+- Replace %ARCH% with the architecture in images for supporting
+  subscriptions in SCC based on architectures
+
+-------------------------------------------------------------------
 Fri Sep 15 13:08:03 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - cpio on SLE12 does not support -D option, emulate it.
