@@ -114,4 +114,14 @@
 </comment>
     <requestid>1128026</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>05e7b14b003f786af6219839ae82eae6</srcmd5>
+    <version>0.9.1</version>
+    <time>1707328147</time>
+    <user>anag+factory</user>
+    <comment>- Remove black-23.3.patch and add black-24.1.patch to support latest
+  version of python-black.
+</comment>
+    <requestid>1144715</requestid>
+  </revision>
 </revisionlist>

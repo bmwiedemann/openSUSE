@@ -1,7 +1,7 @@
 #
 # spec file for package python-blue
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,8 @@ Source:         https://github.com/grantjenks/blue/archive/v%{version}.tar.gz#/b
 Patch1:         unpin-tomli.patch
 # PATCH-FIX-UPSTREAM flake8-v6-compatibility.patch -- gh#grantjenks/blue#96
 Patch2:         flake8-v6-compatibility.patch
-# PATCH-FIX-OPENSUSE black-23.3.patch -- gh#grantjenks/blue#97
-Patch3:         black-23.3.patch
+# PATCH-FIX-OPENSUSE black-24.1.patch -- gh#grantjenks/blue#97
+Patch3:         black-24.1.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module black >= 21.7}
@@ -41,10 +41,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-black >= 21.7
-Requires:       python-flake8 > 3.8
+Requires:       python-black >= 24.1
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

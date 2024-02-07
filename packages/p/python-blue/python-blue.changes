@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  6 19:04:16 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove black-23.3.patch and add black-24.1.patch to support latest
+  version of python-black.
+
+-------------------------------------------------------------------
 Wed Nov 22 07:48:48 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Make compatible with latest python-flake8 and python-black
