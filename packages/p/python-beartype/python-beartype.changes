@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb  6 18:46:35 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 0.17.0:
+  * Emit non-fatal warnings on type-checking violations? Yup. We got
+    that. Grep violation_*type, then win.
+  * Raise custom exception types on type-checking violations? We got
+    that, too. violation_*type grepping intensifies.
+  * Raise custom exception messages on type-checking violations? Got
+    that. __instancecheck_str() enters the chat emboldened and
+    swaggering.
+  * Modify the verbosity of type-checking violation messages? Got
+    that. violation_verbosity + BeartypeVerbosity is snickering in the
+    back.
+  * Reduce complex type hints to simple type aliases in type-checking
+    violations? That is a thing now. type {name} = {hard_stuff} |
+    {moar_stuff}.
+  * Blatantly lie about the types your API expects by instructing
+    @beartype to internally transform source to target type hints
+    matching various patterns with type hint overrides? You know we
+    even got that. hint_overrides + BeartypeHintOverrides. It's best
+    not to question this stuff.
+
+-------------------------------------------------------------------
 Fri Nov 10 12:43:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.4:

@@ -177,4 +177,31 @@
 - Update to version 0.11.0</comment>
     <requestid>1124971</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>939b092b24edd4520ebd0aa4d091049c</srcmd5>
+    <version>0.17.0</version>
+    <time>1707328146</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.17.0:
+  * Emit non-fatal warnings on type-checking violations? Yup. We got
+    that. Grep violation_*type, then win.
+  * Raise custom exception types on type-checking violations? We got
+    that, too. violation_*type grepping intensifies.
+  * Raise custom exception messages on type-checking violations? Got
+    that. __instancecheck_str() enters the chat emboldened and
+    swaggering.
+  * Modify the verbosity of type-checking violation messages? Got
+    that. violation_verbosity + BeartypeVerbosity is snickering in the
+    back.
+  * Reduce complex type hints to simple type aliases in type-checking
+    violations? That is a thing now. type {name} = {hard_stuff} |
+    {moar_stuff}.
+  * Blatantly lie about the types your API expects by instructing
+    @beartype to internally transform source to target type hints
+    matching various patterns with type hint overrides? You know we
+    even got that. hint_overrides + BeartypeHintOverrides. It's best
+    not to question this stuff.
+</comment>
+    <requestid>1144712</requestid>
+  </revision>
 </revisionlist>
