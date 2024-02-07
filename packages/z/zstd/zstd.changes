@@ -129,6 +129,21 @@ Fri Feb 10 08:22:04 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
   * misc: Fix `contrib/` seekable format
   * misc: Improve speed of the one-file library generator
 - rebase pzstd.1.patch
+  * Dropped patches:
+    - Disallow-empty-output-directory.patch
+    - Fix-buffer-underflow-for-null-dir1.patch
+    Fixed upstream
+
+-------------------------------------------------------------------
+Thu Feb 9 08:39:08 UTC 2023 - Ali Abdallah <ali.abdallah@suse.com>
+
+- Fix CVE-2022-4899, bsc#1209533
+ * Fix buffer underflow when dir1 == ""
+ * Disallow empty string as an argument for --output-dir-flat=""
+   and --output-dir-mirror="".
+- Added patches:
+ * Disallow-empty-output-directory.patch
+ * Fix-buffer-underflow-for-null-dir1.patch
 
 -------------------------------------------------------------------
 Tue Jan  3 09:03:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
