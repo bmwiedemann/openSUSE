@@ -1,7 +1,7 @@
 #
 # spec file for package vnstat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,19 @@
 #
 
 
-%if 0%{?suse_version} >= 1210
-%bcond_without systemd
-%else
-%bcond_with systemd
-%endif
 Name:           vnstat
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        Network Traffic Monitor
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            https://humdi.net/vnstat
 Source:         https://humdi.net/vnstat/vnstat-%{version}.tar.gz
-Source98:       https://humdi.net/vnstat/vnstat-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
-Source99:       %{name}.keyring
 Source2:        vnstat-cgi.conf
 Source3:        vnstat-create-db.sh
 Source4:        vnstat.init
+Source98:       https://humdi.net/vnstat/vnstat-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
+Source99:       %{name}.keyring
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel
@@ -43,14 +38,10 @@ BuildRequires:  sqlite3-devel
 Requires:       %{_bindir}/killall
 Requires:       /bin/ls
 Requires:       /bin/su
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if %{with systemd}
+Provides:       group(vnstat)
+Provides:       user(vnstat)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
-%else
-Requires(pre):  %fillup_prereq
-Requires(pre):  %insserv_prereq
-%endif
 
 %description
 vnStat is a network traffic monitor for Linux that keeps a log of
@@ -81,7 +72,7 @@ sed -i 's/\(\[Service\]\)/\1\nUser=vnstat\nGroup=vnstat/' examples/systemd/simpl
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -92,49 +83,27 @@ install -Dm 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/apache2/conf.d/vnstat.con
 
 install -Dm 0755 %{SOURCE3} %{buildroot}%{_bindir}/vnstat-create-db
 
-%if %{with systemd}
 install -Dm 0644 examples/systemd/simple/vnstat.service %{buildroot}%{_unitdir}/vnstatd.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcvnstatd
-%else
-install -Dm 0755 %{SOURCE4} %{buildroot}%{_initddir}/vnstatd
-mkdir -p %{buildroot}%{_sbindir}/
-ln -s %{_initddir}/vnstatd %{buildroot}%{_sbindir}/rcvnstatd
-%endif
 
 %check
-make check
+%make_build check
 
 %pre
 %{_sbindir}/groupadd -r vnstat &> /dev/null || :
 %{_sbindir}/useradd -g vnstat -s /bin/sh -r -c "vnstat daemon" -d %{_localstatedir}/lib/vnstat vnstat &>/dev/null ||:
-%if 0%{?with_systemd}
 %service_add_pre vnstatd.service
-%endif
 
 %post
-%if %{with systemd}
 %service_add_post vnstatd.service
-%else
-%fillup_and_insserv vnstatd
-%endif
 
 %preun
-%if %{with systemd}
 %service_del_preun vnstatd.service
-%else
-%stop_on_removal vnstatd
-%endif
 
 %postun
-%if %{with systemd}
 %service_del_postun vnstatd.service
-%else
-%restart_on_update vnstatd
-%insserv_cleanup
-%endif
 
 %files
-%defattr(-,root,root)
 %doc CHANGES FAQ README UPGRADE
 %license COPYING
 %config(noreplace) %{_sysconfdir}/vnstat.conf
@@ -142,23 +111,18 @@ make check
 %{_bindir}/vnstat
 %{_sbindir}/vnstatd
 %{_sbindir}/rcvnstatd
-%if %{with systemd}
 %{_unitdir}/vnstatd.service
-%else
-%{_initddir}/vnstatd
-%endif
 %{_mandir}/man1/vnstat.1%{?ext_man}
 %{_mandir}/man8/vnstatd.8%{?ext_man}
 %{_mandir}/man5/vnstat.conf.5%{?ext_man}
 %attr(0755,vnstat,root) %{_localstatedir}/lib/vnstat
 
 %files cgi
-%defattr(-,root,root)
 %dir %{_sysconfdir}/apache2/
 %dir %{_sysconfdir}/apache2/conf.d/
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/vnstat.conf
 %{_bindir}/vnstati
-%{_mandir}/man1/vnstati.1.gz
+%{_mandir}/man1/vnstati.1%{?ext_man}
 /srv/vnstat/
 
 %changelog
