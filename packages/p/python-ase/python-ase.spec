@@ -1,7 +1,7 @@
 #
 # spec file for package python-ase
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/a/ase/ase-%{versi
 Patch0:         support-matplotlib-36.patch
 # PATCH-FIX-UPSTREAM https://gitlab.com/ase/ase/-/merge_requests/2582
 Patch1:         2582.patch
+# PATCH-FIX-UPSTREAM deprecated-importlib-find_loader.patch https://gitlab.com/ase/ase/-/merge_requests/2938
+Patch2:         deprecated-importlib-find_loader.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements

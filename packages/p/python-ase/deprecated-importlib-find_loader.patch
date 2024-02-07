@@ -1,0 +1,32 @@
+Index: ase-3.22.1/ase/calculators/autodetect.py
+===================================================================
+--- ase-3.22.1.orig/ase/calculators/autodetect.py
++++ ase-3.22.1/ase/calculators/autodetect.py
+@@ -45,11 +45,11 @@ def detect(name):
+         return d
+ 
+     if name in python_modules:
+-        loader = importlib.find_loader(python_modules[name])
+-        if loader is not None:
++        spec = importlib.util.find_spec(python_modules[name])
++        if spec is not None:
+             d['type'] = 'python'
+             d['module'] = python_modules[name]
+-            d['path'] = loader.get_filename()
++            d['path'] = spec.loader.get_filename()
+             return d
+ 
+     envvar = get_executable_env_var(name)
+Index: ase-3.22.1/ase/test/testsuite.py
+===================================================================
+--- ase-3.22.1.orig/ase/test/testsuite.py
++++ ase-3.22.1/ase/test/testsuite.py
+@@ -53,7 +53,7 @@ def test(calculators=tuple(), jobs=0, ve
+ 
+ 
+ def have_module(module):
+-    return importlib.find_loader(module) is not None
++    return importlib.util.find_spec(module) is not None
+ 
+ 
+ MULTIPROCESSING_MAX_WORKERS = 32

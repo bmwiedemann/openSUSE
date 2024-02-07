@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  6 18:08:22 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch to support python3.12
+  deprecated-importlib-find_loader.patch
+  https://gitlab.com/ase/ase/-/merge_requests/2938
+
+-------------------------------------------------------------------
 Thu Mar  9 15:58:40 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix test on aarch64:

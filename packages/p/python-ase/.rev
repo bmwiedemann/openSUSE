@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1070524</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>18fea7b6fedff603ec7899f4cda2fbf9</srcmd5>
+    <version>3.22.1</version>
+    <time>1707328143</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch to support python3.12
+  deprecated-importlib-find_loader.patch
+  https://gitlab.com/ase/ase/-/merge_requests/2938</comment>
+    <requestid>1144709</requestid>
+  </revision>
 </revisionlist>
