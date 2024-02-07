@@ -17,7 +17,7 @@
 #
 
 
-%{?sle15_python_module_pythons}
+%{?sle15allpythons}
 Name:           python-manuel
 Version:        1.12.4
 Release:        0
