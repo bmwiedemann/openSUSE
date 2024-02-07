@@ -1,7 +1,7 @@
 #
 # spec file for package libbde
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,8 @@ Source:         https://github.com/libyal/libbde/releases/download/%version/libb
 Source2:        https://github.com/libyal/libbde/releases/download/%version/libbde-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source10:       BitLocker_Drive_Encryption_BDE_format.pdf
-BuildRequires:  %python_module devel
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros

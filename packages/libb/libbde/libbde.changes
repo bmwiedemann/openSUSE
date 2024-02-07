@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  4 09:41:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Use python-setuptools for python distutils backport
+  gh#libyal/libbde#68
+
+-------------------------------------------------------------------
 Wed Dec 20 11:52:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20231220
