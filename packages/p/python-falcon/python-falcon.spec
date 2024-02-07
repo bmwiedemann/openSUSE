@@ -18,24 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-falcon
-Version:        3.1.1
+Version:        3.1.3
 Release:        0
 Summary:        A web framework for building APIs and app backends
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            http://falconframework.org
-Source:         https://github.com/falconry/falcon/archive/%{version}.tar.gz#./falcon-%{version}.tar.gz
-# The file on pypi misses docs/ext, should be fixed in next version
-# Source:         https://files.pythonhosted.org/packages/source/f/falcon/falcon-%%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/falcon/falcon-%{version}.tar.gz
 # github pygments style is not available
 Patch0:         python-falcon-sphinx-pygments-style.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinx-tabs}
 BuildRequires:  %{python_module websockets}
+BuildRequires:  %{python_module wheel}
 # TODO: Cython support
 #BuildRequires:  %%{python_module Cython}
 # SECTION test requirements
@@ -56,7 +56,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 #Requires:       python-Cython
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       %{name}-doc
 BuildArch:      noarch
 %python_subpackages
@@ -75,19 +75,16 @@ as little as possible while remaining effective.
 HTML documentation including API documentation and changelog for %{name}.
 
 %prep
-%setup -q -n falcon-%{version}
-%patch0 -p1
+%autosetup -p1 -n falcon-%{version}
 # remove unwanted shebang
 sed -i '1s/^#!.*//' falcon/bench/bench.py falcon/cmd/inspect_app.py falcon/bench/dj/manage.py
 chmod a-x falcon/bench/dj/manage.py
 # we don't want to require rapidjson just for testing
 rm tests/test_media_handlers.py
-# Hidden files are evil
-rm examples/asgilook/.coveragerc
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 export PYTHONPATH="$(pwd)"
 pushd docs
 make html
@@ -95,18 +92,17 @@ rm _build/html/.buildinfo
 popd
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/falcon-bench
 %python_clone -a %{buildroot}%{_bindir}/falcon-inspect-app
 %python_clone -a %{buildroot}%{_bindir}/falcon-print-routes
-%{python_expand rm -rf %{buildroot}%{$python_sitelib}/examples
- %fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+mkdir -p %{buildroot}%{_defaultdocdir}/%{name}-doc
+cp -ar docs/_build/html examples %{buildroot}%{_defaultdocdir}/%{name}-doc/
+%fdupes %{buildroot}%{_defaultdocdir}/%{name}-doc/
 
 %check
 export LANG=en_US.UTF8
-# there are no websockets and httpx for python 3.6
-python36_donttest=("--ignore" "tests/asgi")
 if [ %{python3_version_nodots} -eq 36 ]; then
   python3_donttest=("--ignore" "tests/asgi")
 fi
@@ -119,15 +115,15 @@ fi
 %python_uninstall_alternative falcon-bench
 
 %files %{python_files}
-%doc README.rst CHANGES.rst examples/
+%doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/falcon-bench
 %python_alternative %{_bindir}/falcon-inspect-app
 %python_alternative %{_bindir}/falcon-print-routes
 %{python_sitelib}/falcon
-%{python_sitelib}/falcon-%{version}*-info
+%{python_sitelib}/falcon-%{version}.dist-info
 
 %files -n %{name}-doc
-%doc docs/_build/html
+%doc %{_defaultdocdir}/%{name}-doc
 
 %changelog
