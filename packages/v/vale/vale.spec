@@ -17,7 +17,7 @@
 
 
 Name:           vale
-Version:        3.0.5
+Version:        3.0.7
 Release:        0
 Summary:        CLI tool to lint text with extensible markup format support
 License:        MIT
@@ -25,7 +25,7 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/errata-ai/vale
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.21
 
 %description
 Vale is a command-line tool that brings code-like linting to prose. It's fast,

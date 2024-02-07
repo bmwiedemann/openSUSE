@@ -520,4 +520,35 @@
   * refactor: better error message for default styles (forwarded request 1139551 from jfkw)</comment>
     <requestid>1139554</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2af730a191465e95745da4f715f71171</srcmd5>
+    <version>3.0.7</version>
+    <time>1707328278</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.7:
+  * refactor: &quot;Location&quot; -&gt; &quot;Default Location&quot;
+  * chore: pterm requires Go v1.21
+  * chore: upgrade pterm
+  * fix: handle `sync` with relative `--config`
+- Packaging improvements:
+  * _service set_version remove param basename since autodetects OK
+  * Update to BuildRequires: golang(API) &gt;= 1.21 matching go.mod
+
+- Update to version 3.0.6:
+  * refactor: fix golangci
+  * fix: remove `-q` from asciidoctor args
+  * fix: don't double-report error context
+  * feat: support fragments in `.ps1` and `.jl` files
+  * fix: local config files should be in pipeline
+  * fix: add `.json` to `nativeHostName`
+  * feat: add `vale-native` to `ls-dirs`
+  * feat: add extension management commands
+  * feat: add `transform` api command
+  * chore: increase minAlertLevel
+  * refactor: fix benchmarks
+  * chore: bump module path
+  * refactor: fix golangci-lint issues
+  * chore: bump branch in workflow (forwarded request 1144969 from jfkw)</comment>
+    <requestid>1144970</requestid>
+  </revision>
 </revisionlist>

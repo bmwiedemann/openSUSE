@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb 07 05:45:22 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.0.7:
+  * refactor: "Location" -> "Default Location"
+  * chore: pterm requires Go v1.21
+  * chore: upgrade pterm
+  * fix: handle `sync` with relative `--config`
+- Packaging improvements:
+  * _service set_version remove param basename since autodetects OK
+  * Update to BuildRequires: golang(API) >= 1.21 matching go.mod
+
+-------------------------------------------------------------------
+Wed Feb 07 05:44:50 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.0.6:
+  * refactor: fix golangci
+  * fix: remove `-q` from asciidoctor args
+  * fix: don't double-report error context
+  * feat: support fragments in `.ps1` and `.jl` files
+  * fix: local config files should be in pipeline
+  * fix: add `.json` to `nativeHostName`
+  * feat: add `vale-native` to `ls-dirs`
+  * feat: add extension management commands
+  * feat: add `transform` api command
+  * chore: increase minAlertLevel
+  * refactor: fix benchmarks
+  * chore: bump module path
+  * refactor: fix golangci-lint issues
+  * chore: bump branch in workflow
+
+-------------------------------------------------------------------
 Wed Jan 17 22:23:58 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.0.5:
