@@ -39,4 +39,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1104911</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>30693a05aa8a6380a7e8fdec528df760</srcmd5>
+    <version>1.0.0+g0</version>
+    <time>1707328128</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0+g0:
+  * Prepare 1.0.0 release (#277)
+  * Update `sd` version in lockfile (#275)
+  * Prepare 1.0.0-beta.0 release (#274)
+  * Remove outdated release checklist step (#272)
+  * Fix release checklist indentation (#271)
+  * Make modified text blue instead of green (#269)
+  * Rework the replacements flag (#267)
+  * Temporarily remove recursive (`-r`) flag (#266)
+  * Update the changelog (#264)
+  * Update `--preview` help text (#263)
+- Update specfile
+  * add zsh, fish and bash completions
+  * remove cargo_config because of new obs-service-cargo
+    including that file now to vendored tarball.
+</comment>
+    <requestid>1144639</requestid>
+  </revision>
 </revisionlist>

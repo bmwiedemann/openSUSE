@@ -1,7 +1,7 @@
 #
 # spec file for package sd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           sd
-Version:        0.7.6+g33
+Version:        1.0.0+g0
 Release:        0
 Summary:        Intuitive find & replace CLI
 URL:            https://github.com/chmln/sd
 License:        (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND BSD-3-Clause AND MIT AND (MIT OR Unlicense)
+Group:          System/Base
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
 
@@ -32,10 +32,38 @@ BuildRequires:  zstd
 sd uses regex syntax that you already know from JavaScript and Python.
 Forget about dealing with quirks of sed or awk - get productive immediately.
 
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       fish
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       zsh
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
+
+%package        bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+Requires:       bash-completion
+BuildArch:      noarch
+
+%description    bash-completion
+Bash command-line completion support for %{name}.
+
 %prep
 %autosetup -a1
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config.toml
 
 %build
 %{cargo_build}
@@ -43,9 +71,37 @@ cp %{SOURCE2} .cargo/config.toml
 %install
 %{cargo_install}
 
+mkdir -p %{buildroot}%{_datadir}/zsh/site-functions/
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
+mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d/
+
+# Zsh completion
+install -Dpm644 gen/completions/_sd %{buildroot}%{_datadir}/zsh/site-functions/
+
+# Fish completion
+install -Dpm644 gen/completions/sd.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/sd.fish
+
+# Bash completion
+install -Dpm644 gen/completions/sd.bash %{buildroot}%{_datadir}/bash-completion/completions/sd
+
 %files
 %license LICENSE
 %doc README.md CHANGELOG.md
 %{_bindir}/sd
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/%{name}
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog
