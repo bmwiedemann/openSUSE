@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  6 02:29:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240204
+  * Documentation updates
+  * Remove legacy function ``libevtx_record_parse_data``
+    (ABI change)
+
+-------------------------------------------------------------------
 Tue Nov 21 09:57:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20231121
