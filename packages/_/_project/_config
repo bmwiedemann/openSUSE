@@ -444,6 +444,7 @@ FileProvides: /usr/bin/tee busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/test busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/texlua texlive-luatex-bin
 FileProvides: /usr/bin/time busybox-time time
+FileProvides: /usr/bin/timeout busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/touch busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/tput ncurses-utils
 FileProvides: /usr/bin/tr busybox-coreutils coreutils coreutils-single
