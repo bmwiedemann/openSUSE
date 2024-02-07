@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  5 14:24:16 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Use %{_target_cpu} to determine host and build.
+
+-------------------------------------------------------------------
 Thu Jan 25 07:59:39 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-13 branch head, fc7d87e0ffadca49bec29b2107, git8250

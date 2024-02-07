@@ -265,4 +265,12 @@
   are linked against libstdc++6.</comment>
     <requestid>1141444</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>eb4b742cc427162fec97e17b29620bf5</srcmd5>
+    <version>13.2.1+git8250</version>
+    <time>1707328023</time>
+    <user>anag+factory</user>
+    <comment>- Use %{_target_cpu} to determine host and build.</comment>
+    <requestid>1144290</requestid>
+  </revision>
 </revisionlist>
