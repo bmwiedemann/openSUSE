@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  3 12:57:25 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- Enable systemd-boot support (jsc#PED-1906)
+- 20240103
+
+-------------------------------------------------------------------
 Fri May 12 08:50:48 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Fix up for the previous update: xsltproc tool is still needed

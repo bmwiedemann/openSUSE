@@ -1,7 +1,7 @@
 #
 # spec file for package skelcd-control-openSUSE
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 #
 ######################################################################
 Name:           skelcd-control-openSUSE
-Version:        20230512.1
+Version:        20240103
 Release:        0
 Summary:        The openSUSE Installation Control file
 License:        MIT
@@ -117,7 +117,7 @@ make %{?_smp_mflags} -C control check
 #
 # Add control file
 #
-CONTROL_FILE=control.openSUSE.xml
+CONTROL_FILE=control.xml
 
 mkdir -p $RPM_BUILD_ROOT%{?skelcdpath}/CD1
 install -m 644 control/${CONTROL_FILE} $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control.xml
