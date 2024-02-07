@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb  7 07:20:22 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- drop do-not-use-numpy-decorators.patch
+- drop numpy125.patch
+- Update to 0.4.1
+  * BLD: fix building with Clang, avoid using GCC-specific -print-sysroot
+  * BLD: try to locate OpenBLAS with pkg-config first
+  * BLD: add support for using a native file to set library/include dirs
+  * DOC: update and extend the install instructions
+  * MAINT: include particular headers only for version < 6
+- 0.4.0
+  * Allow reuse of symbolic factorization
+  * do not use deprecated pkg_resources
+  * fix deprecation warning
+  * do not use NumPy decorators
+  * do not use nose-compat NumPy functions
+  * BLD: fix the build, remove `stdint.h` and suppress warnings
+  * TST: fix issues in test suite
+  * BLD: fix building in conda envs
+
+-------------------------------------------------------------------
 Thu Aug 31 12:48:22 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 0.3.3
