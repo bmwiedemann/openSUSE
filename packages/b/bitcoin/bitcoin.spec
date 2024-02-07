@@ -83,7 +83,7 @@ several GB of space, slowly growing.
 Summary:        An end-user Qt5 GUI for the %{name_pretty} crypto-currency
 Group:          Development/Libraries/Other
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
+Requires(postun): update-desktop-files
 
 %description qt5
 %{name_pretty} is a peer-to-peer electronic cash system
@@ -142,6 +142,8 @@ This package contains development files.
 %package -n %{name}d
 Summary:        Headless daemon for %{name_pretty} crypto-currency
 Group:          Development/Libraries/Other
+Provides:       group(%{name})
+Provides:       user(%{name})
 
 %description -n %{name}d
 %{name_pretty} is a peer-to-peer electronic cash system
