@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 07 05:56:42 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.122.0:
+  * build(deps): bump golang.org/x/tools from 0.16.0 to 0.17.0
+  * build(deps): bump github.com/rogpeppe/go-internal from 1.11.0 to 1.12.0
+  * docs: Regen docshelper
+  * Squashed 'docs/' changes from 4dd2d6415..3b1a8579d
+  * markup/goldmark: Support passthrough extension
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.1.0 to 2.1.1
+  * build(deps): bump github.com/evanw/esbuild from 0.19.8 to 0.19.12
+  * tpl/tplimpl: Fix incorrect lastBuildDate
+  * tpl: fix incorrect lastBuildDate
+  * parser/metadecoders: Accumulate org keywords into arrays
+  * deps: Update github.com/tdewolff/minify/v2 v2.20.9 => v2.20.13
+  * Upgrade to Go 1.21.6
+  * parser/metadecoders: Add CSV lazyQuotes option to transform.Unmarshal
+  * README: Update minimum Go version to 1.20
+
+-------------------------------------------------------------------
 Fri Jan 05 16:10:21 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.121.2:

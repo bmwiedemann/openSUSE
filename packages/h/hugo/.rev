@@ -900,4 +900,26 @@
   * all: Remove unused code (forwarded request 1137108 from jfkw)</comment>
     <requestid>1137109</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>8dc1da8165be61ae2464cc273bcde984</srcmd5>
+    <version>0.122.0</version>
+    <time>1707328166</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.122.0:
+  * build(deps): bump golang.org/x/tools from 0.16.0 to 0.17.0
+  * build(deps): bump github.com/rogpeppe/go-internal from 1.11.0 to 1.12.0
+  * docs: Regen docshelper
+  * Squashed 'docs/' changes from 4dd2d6415..3b1a8579d
+  * markup/goldmark: Support passthrough extension
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.1.0 to 2.1.1
+  * build(deps): bump github.com/evanw/esbuild from 0.19.8 to 0.19.12
+  * tpl/tplimpl: Fix incorrect lastBuildDate
+  * tpl: fix incorrect lastBuildDate
+  * parser/metadecoders: Accumulate org keywords into arrays
+  * deps: Update github.com/tdewolff/minify/v2 v2.20.9 =&gt; v2.20.13
+  * Upgrade to Go 1.21.6
+  * parser/metadecoders: Add CSV lazyQuotes option to transform.Unmarshal
+  * README: Update minimum Go version to 1.20 (forwarded request 1144780 from jfkw)</comment>
+    <requestid>1144781</requestid>
+  </revision>
 </revisionlist>
