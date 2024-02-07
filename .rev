@@ -109,4 +109,16 @@
     <comment></comment>
     <requestid>1062088</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c8b770ee3fa44789997b57da89d92f31</srcmd5>
+    <version>0.9.0</version>
+    <time>1707328134</time>
+    <user>anag+factory</user>
+    <comment>- Remove dependencies getent, groupadd, useradd, group(video), now taken care
+  of in system-user-greeter
+- Remove stale dependency diffutils
+- Do not create greeter user, rely on system-user-greeter
+</comment>
+    <requestid>1144865</requestid>
+  </revision>
 </revisionlist>

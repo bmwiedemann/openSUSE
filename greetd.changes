@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  7 09:53:18 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Remove dependencies getent, groupadd, useradd, group(video), now taken care
+  of in system-user-greeter
+- Remove stale dependency diffutils
+
+-------------------------------------------------------------------
+Tue Feb  6 16:37:49 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Do not create greeter user, rely on system-user-greeter
+
+-------------------------------------------------------------------
 Mon Jan 30 15:18:48 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.9.0:
