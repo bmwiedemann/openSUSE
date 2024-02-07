@@ -163,6 +163,7 @@ BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-requests
 BuildRequires:  python3-requests-oauthlib
 BuildRequires:  python3-rsa
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
 BuildRequires:  python3-urllib3
 BuildRequires:  python3-websocket-client
