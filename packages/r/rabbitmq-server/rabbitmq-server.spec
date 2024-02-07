@@ -73,6 +73,8 @@ Requires(pre):  shadow
 Requires(pre):  %fillup_prereq
 Requires:       rabbitmq-server-plugins
 BuildRequires:  pkgconfig(systemd)
+Provides:       group(%{_rabbitmq_group})
+Provides:       user(%{_rabbitmq_user})
 %{?systemd_ordering}
 # Do not use noarch since the Erlang packaging does not really allow that
 #BuildArch:      noarch

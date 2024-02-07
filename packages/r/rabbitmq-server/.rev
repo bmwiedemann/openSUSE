@@ -865,4 +865,12 @@ The new default is much safer and will reduce the effect application channel lea
     allowed removal of exclusive queues and introduced</comment>
     <requestid>1137247</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>912ace2550f2485142139df5ce2aaf14</srcmd5>
+    <version>3.12.11</version>
+    <time>1707328171</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144783</requestid>
+  </revision>
 </revisionlist>
