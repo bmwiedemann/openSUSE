@@ -1,7 +1,7 @@
 #
 # spec file for package golangci-lint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # timemstap can be obtained by doing an rpm query
 
 Name:           golangci-lint
-Version:        1.55.2
+Version:        1.56.0
 Release:        0
 Summary:        A fast Go linters runner
 License:        GPL-3.0-only
