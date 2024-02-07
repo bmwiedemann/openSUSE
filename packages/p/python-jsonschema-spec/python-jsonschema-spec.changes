@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  6 20:34:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python312. This one is not maintained but still required by
+  yet to be updated openapi-core
+
+-------------------------------------------------------------------
 Thu Jan  4 09:54:56 UTC 2024 - Jiri Srain <jsrain@suse.com>
 
 - Remove the upstream URL due to the project rename to

@@ -17,6 +17,8 @@
 
 
 %{?sle15_python_module_pythons}
+# not compatible, we still require it for openapi-core (see below)
+%define skip_python312 1
 Name:           python-jsonschema-spec
 Version:        0.2.3
 Release:        0
