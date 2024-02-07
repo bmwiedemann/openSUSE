@@ -311,4 +311,14 @@
   * Add OBS CI workflow</comment>
     <requestid>1137938</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0aaf9925fbd97b3901cb01c7192f0406</srcmd5>
+    <version>2.21+git11</version>
+    <time>1707328057</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.21+git11:
+  * Install man-online alias only for bash
+</comment>
+    <requestid>1144696</requestid>
+  </revision>
 </revisionlist>
