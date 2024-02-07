@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  6 18:28:40 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream support-python312.patch gh#PyCQA/autoflake#280
+
+-------------------------------------------------------------------
 Thu Dec 14 09:15:04 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 2.2.1:

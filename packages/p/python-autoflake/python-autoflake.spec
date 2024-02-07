@@ -1,7 +1,7 @@
 #
 # spec file for package python-autoflake
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Program to removes unused Python imports and variables
 License:        MIT
 URL:            https://github.com/myint/autoflake
 Source:         https://files.pythonhosted.org/packages/source/a/autoflake/autoflake-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM support-python312.patch gh#PyCQA/autoflake#280
+Patch1:         support-python312.patch
 Requires:       python-tomli
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}
@@ -33,7 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyflakes >= 3.0.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

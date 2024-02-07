@@ -130,4 +130,12 @@
 - Switch from setup.py test to pytest</comment>
     <requestid>1133401</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d8c4c9088d1c84c33c82f9dbce679037</srcmd5>
+    <version>2.2.1</version>
+    <time>1707328142</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream support-python312.patch gh#PyCQA/autoflake#280</comment>
+    <requestid>1144710</requestid>
+  </revision>
 </revisionlist>
