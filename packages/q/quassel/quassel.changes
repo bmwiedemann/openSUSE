@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  7 11:45:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide user/group symbol by the core sub-package: the pre script
+  of this package creates the user.
+
+-------------------------------------------------------------------
 Fri Dec 15 22:03:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time

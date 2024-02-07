@@ -1,7 +1,7 @@
 #
 # spec file for package quassel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -127,6 +127,8 @@ Requires:       logrotate
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
 Recommends:     libqt5-sql-sqlite
+Provides:       group(%{name}core)
+Provides:       user(%{name}core)
 
 %description core
 Quassel IRC is a distributed IRC client, meaning that one (or

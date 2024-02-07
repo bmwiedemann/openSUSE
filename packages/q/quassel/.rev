@@ -534,4 +534,12 @@
     <comment>Require extra-cmake-modules at build time</comment>
     <requestid>1133544</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>14202233da85d423792ce7a58c423fd2</srcmd5>
+    <version>0.14.0</version>
+    <time>1707328237</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1144904</requestid>
+  </revision>
 </revisionlist>
