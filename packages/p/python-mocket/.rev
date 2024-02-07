@@ -526,4 +526,16 @@
 </comment>
     <requestid>1140590</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>04dbeceffe7f82db969ce732a83e87d2</srcmd5>
+    <version>3.12.4</version>
+    <time>1707328051</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.12.4:
+ * When creating true socket connection, use host and port stored in instance variables, not in the Mocket class's variable by @ento in #222
+ * Switching to Compose v2 by @mindflayer in #223
+ * Add allowed locations (whitelist) for STRICT mode by @mindflayer (refactoring of #214 from @ento) in #224
+</comment>
+    <requestid>1144614</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  6 12:22:14 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 3.12.4:
+ * When creating true socket connection, use host and port stored in instance variables, not in the Mocket class's variable by @ento in #222
+ * Switching to Compose v2 by @mindflayer in #223
+ * Add allowed locations (whitelist) for STRICT mode by @mindflayer (refactoring of #214 from @ento) in #224
+
+-------------------------------------------------------------------
 Mon Jan 22 08:43:05 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - add pytest-asyncio and psutil to test build requirements

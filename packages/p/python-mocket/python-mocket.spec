@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mocket%{psuffix}
-Version:        3.12.3
+Version:        3.12.4
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
