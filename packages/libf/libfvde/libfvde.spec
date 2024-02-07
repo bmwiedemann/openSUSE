@@ -30,6 +30,7 @@ Source:         https://github.com/libyal/libfvde/releases/download/%version/lib
 Source2:        https://github.com/libyal/libfvde/releases/download/%version/libfvde-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
