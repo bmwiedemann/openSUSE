@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 07 14:29:21 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0~git486:
+  * fix: override user theme
+  * fix: ignore invalid LRC lines
+  * code quality: remove unused last_played_lyric_index
+  * chore: clean up lyric scroll
+  * chore: replace `with_borrow_mut` with `set` [ci skip]
+  * chore: openSUSE official package thanks to @xtexChooser
+  * fix: desktop file does not need a launch action [ci skip]
+  * chore(doc): mention desktop file for global shortcut
+  * refactor: move out update_lyric
+  * build(rpm): fix install
+  * chore: intro openssl/vendored to vendored feature [ci skip]
+
+-------------------------------------------------------------------
 Fri Feb  2 00:31:46 UTC 2024 - xtexChooser <xtexchooser@duck.com>
 
 - Remove tar.zst packaged sources, keep obscpio only

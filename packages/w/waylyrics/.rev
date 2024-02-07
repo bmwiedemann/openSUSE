@@ -9,4 +9,23 @@
 The upstream has developed for a long time and waylyrics has been stable, although they have not published any tag.</comment>
     <requestid>1143592</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>211d9fa127d5084c684aeaa5d44dfa36</srcmd5>
+    <version>0~git486</version>
+    <time>1707328266</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~git486:
+  * fix: override user theme
+  * fix: ignore invalid LRC lines
+  * code quality: remove unused last_played_lyric_index
+  * chore: clean up lyric scroll
+  * chore: replace `with_borrow_mut` with `set` [ci skip]
+  * chore: openSUSE official package thanks to @xtexChooser
+  * fix: desktop file does not need a launch action [ci skip]
+  * chore(doc): mention desktop file for global shortcut
+  * refactor: move out update_lyric
+  * build(rpm): fix install
+  * chore: intro openssl/vendored to vendored feature [ci skip]</comment>
+    <requestid>1144958</requestid>
+  </revision>
 </revisionlist>
