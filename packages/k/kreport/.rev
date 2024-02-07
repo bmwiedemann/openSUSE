@@ -73,4 +73,15 @@
   build on ppc (forwarded request 902865 from wolfi323)</comment>
     <requestid>902879</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>30f2b8fea1ae9690a25fa4911a2283e5</srcmd5>
+    <version>3.2.0</version>
+    <time>1707328277</time>
+    <user>anag+factory</user>
+    <comment>- Build using python3 rather than python2
+- Spec cleanup
+- Add upstream change:
+  * 0001-Find-also-Python3-with-find_package-PythonInterp.patch</comment>
+    <requestid>1144972</requestid>
+  </revision>
 </revisionlist>

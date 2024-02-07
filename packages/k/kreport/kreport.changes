@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  7 16:18:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Build using python3 rather than python2
+- Spec cleanup
+- Add upstream change:
+  * 0001-Find-also-Python3-with-find_package-PythonInterp.patch
+
+-------------------------------------------------------------------
 Mon Jun 28 14:47:16 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Requires: cmake(Qt5Qml) to the devel package to fix kexi's
