@@ -1,7 +1,7 @@
 #
 # spec file for package libgarcon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libgarcon-1-0
 Name:           libgarcon
-Version:        4.18.1
+Version:        4.18.2
 Release:        0
 Summary:        Library Implementing the freedesktop.org Desktop Menu Specification
 License:        GFDL-1.1-only AND LGPL-2.0-only
@@ -105,6 +105,7 @@ This package provides the upstream look and feel for garcon.
 
 
 # this should be replaced by %%lang_package once bnc#513786 is resolved
+
 %package lang
 Summary:        Languages for package %{name}
 Group:          System/Localization
@@ -118,7 +119,7 @@ Provides translations to the package %{name}
 
 %prep
 %setup -q -n garcon-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 %configure \

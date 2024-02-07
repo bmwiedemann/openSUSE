@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  5 18:34:11 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.2
+  * Update copyright year
+  * garcon-gtk: Remove weak ref on GarconMenu on finalize()
+  * Use target desktop files instead of symlinks (Fixes #1)
+  * garcon-gtk: Avoid populating a wrong menu
+  * garcon-gtk: Prevent use-after-free when loading garcon menu
+  * Add icon at 64px, clean up SVG metadata
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Apr 20 09:03:45 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Correction of license should be LGPL-2.0-only and GFDL-1.1-only 
