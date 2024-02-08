@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyscard
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname pyscard
 Name:           python-pyscard
 Version:        2.0.7
@@ -27,6 +26,7 @@ License:        LGPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://pyscard.sourceforge.io/
 Source:         https://files.pythonhosted.org/packages/source/p/pyscard/pyscard-%{version}.tar.gz
+Patch0:         0001-Remove-use-of-imp-module-for-wx-GUI.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
@@ -46,6 +46,7 @@ python framework built on top of the raw PCSC API.
 
 %prep
 %setup -q -n %{modname}-%{version}
+%autopatch -p1
 mv smartcard/doc .
 dos2unix LICENSE
 
@@ -64,6 +65,7 @@ mv smartcard smartcard_hide
 %files %{python_files}
 %doc ChangeLog doc README.md
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/pyscard*
+%{python_sitearch}/smartcard
 
 %changelog

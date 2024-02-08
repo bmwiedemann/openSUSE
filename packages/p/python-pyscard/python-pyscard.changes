@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  7 22:39:49 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * 0001-Remove-use-of-imp-module-for-wx-GUI.patch
+    Fix build for python >= 3.12
+
+-------------------------------------------------------------------
 Fri Apr  7 14:19:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.7
