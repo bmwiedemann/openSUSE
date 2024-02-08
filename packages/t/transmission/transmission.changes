@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  6 17:58:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add correct creation of the transmission user/group (needed by the
+  latest RPM 4.19).
+- Remove now useless Provides in the daemon subpackage.
+
+-------------------------------------------------------------------
 Sat Feb  3 11:00:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Have transmission-daemon provide user(transmission) and
