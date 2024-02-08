@@ -117,4 +117,12 @@
   * Avoid marking pthread_atfork() as weak if provided by libc_nonshared.a.</comment>
     <requestid>892299</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>07b33f05a9f4f45555c342610c2843a3</srcmd5>
+    <version>0.43</version>
+    <time>1707415468</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.43</comment>
+    <requestid>1145216</requestid>
+  </revision>
 </revisionlist>
