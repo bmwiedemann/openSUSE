@@ -134,10 +134,6 @@ Source0:        https://github.com/openjdk/%{openjdk_repo}/archive/%{openjdk_tag
 Source10:       systemtap-tapset.tar.xz
 # Desktop files. Adapated from IcedTea.
 Source11:       jconsole.desktop.in
-# nss configuration file
-Source12:       nss.cfg.in
-# nss fips configuration file
-Source13:       nss.fips.cfg.in
 # Ensure we aren't using the limited crypto policy
 Source14:       TestCryptoLevel.java
 # Ensure ECDSA is working
@@ -163,8 +159,7 @@ Patch12:        adlc-parser.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
 Patch15:        system-pcsclite.patch
-Patch17:        nss-security-provider.patch
-Patch18:        fips.patch
+Patch16:        fips.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
@@ -282,6 +277,7 @@ Requires(post): update-alternatives
 Requires(posttrans): java-ca-certificates
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun): update-alternatives
+Recommends:     mozilla-nss-sysinit
 Recommends:     tzdata-java8
 Obsoletes:      %{name}-accessibility
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
@@ -404,8 +400,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch15 -p1
 %endif
 
-%patch17 -p1
-%patch18 -p1
+%patch16 -p1
 
 %patch20 -p1
 
@@ -443,13 +438,6 @@ for file in %{SOURCE11} ; do
     sed -e s:@JAVA_HOME@:%{_jvmdir}/%{sdkdir}:g $file > $OUTPUT_FILE
     sed -i -e s:@VERSION@:%{javaver}:g $OUTPUT_FILE
 done
-
-# Setup nss.cfg
-sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE12} > nss.cfg
-
-# Setup nss.fips.cfg
-sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE13} > nss.fips.cfg
-sed -i -e "s:@NSS_SECMOD@:sql\:%{_sysconfdir}/pki/nssdb:g" nss.fips.cfg
 
 %build
 
@@ -518,12 +506,6 @@ find %{imagesdir}/jdk -iname '*.debuginfo' -exec rm {} \;
 popd >& /dev/null
 
 export JAVA_HOME=$(pwd)/%{buildoutputdir}/%{imagesdir}/jdk
-
-# Install nss.cfg right away as we will be using the JRE above
-install -m 644 nss.cfg $JAVA_HOME/conf/security/
-
-# Install nss.fips.cfg: NSS configuration for global FIPS mode (crypto-policies)
-# install -m 644 nss.fips.cfg $JAVA_HOME/conf/security/
 
 # Copy tz.properties
 echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties
@@ -966,7 +948,6 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/*/classes*.jsa
 
 %config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blocked.certs
-%config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.cfg
 %config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.fips.cfg
 %{_jvmdir}/%{sdkdir}/lib/security/default.policy
 %{_jvmdir}/%{sdkdir}/lib/security/public_suffix_list.dat

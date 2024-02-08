@@ -55,4 +55,12 @@
     <comment>bsc#1219115</comment>
     <requestid>1141174</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>de1fd9a5ddf24c99ee807f75b5a9bda0</srcmd5>
+    <version>21.0.2.0</version>
+    <time>1707415305</time>
+    <user>anag+factory</user>
+    <comment>Fips related fixes</comment>
+    <requestid>1144979</requestid>
+  </revision>
 </revisionlist>
