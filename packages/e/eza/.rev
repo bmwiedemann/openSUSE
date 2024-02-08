@@ -363,4 +363,14 @@
   * Regenerate classification related tests</comment>
     <requestid>1143198</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d7f08a61a3ee0182d8fcf35acbc0243c</srcmd5>
+    <version>0.18.1+0</version>
+    <time>1707415351</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.1:
+  * Add manual installation section
+  * Replace scoped_threadpool with rayon</comment>
+    <requestid>1145052</requestid>
+  </revision>
 </revisionlist>

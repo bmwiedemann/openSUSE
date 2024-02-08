@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  8 06:38:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.1:
+  * Add manual installation section
+  * Replace scoped_threadpool with rayon
+
+-------------------------------------------------------------------
 Thu Feb  1 07:54:59 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.0:
