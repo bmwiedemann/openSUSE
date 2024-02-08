@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Feb 08 06:37:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.104.0:
+  * fix: incorrect conversion between integer types (#2605)
+  * chore(deps): bump golang.org/x/mod from 0.14.0 to 0.15.0
+    (#2602)
+  * chore(deps): bump github.com/docker/docker (#2601)
+  * Fix: unmarshal key values in Java, Go, and Conan metadata
+    (#2603)
+  * fix(dotnet): prefer portable executable product version when
+    semantically greater than file version (#2600)
+  * Finalize Conan v2 support (#2587)
+  * chore(deps): update tools to latest versions (#2595)
+  * chore(deps): bump actions/upload-artifact from 4.3.0 to 4.3.1
+    (#2597)
+  * chore(deps): update stereoscope to
+    bfa15e446f061bda7f68305d2d6240b053f17e0c (#2589)
+  * chore(deps): bump actions/cache from 3.3.2 to 4.0.0 (#2592)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.0 to
+    0.5.2 (#2591)
+  * chore(deps): bump github/codeql-action from 3.23.2 to 3.24.0
+    (#2593)
+  * labeler should ignore latest version (#2588)
+  * chore: copy latest schema to stable path for easier diff
+    (#2586)
+  * Adding metadata fields when parsing yarn.lock and poetry.lock
+    (#2350)
+  * Add Erlang OTP Application cataloger (#2403)
+  * Detect ELF security features (#2443)
+  * Add API examples (#2517)
+  * feat: Record where CPEs come from (#2552)
+  * chore(deps): update stereoscope to
+    37291e81936d2b43b3cef56667a741ef715fbfe4 (#2583)
+  * chore(deps): bump github.com/charmbracelet/bubbles from 0.17.1
+    to 0.18.0 (#2584)
+  * swap format readseekers for readers (#2581)
+  * translate maps to sequences in pkg metadata (#2553)
+  * chore(deps): update tools to latest versions (#2576)
+  * chore(deps): bump anchore/sbom-action from 0.15.7 to 0.15.8
+    (#2578)
+  * chore(deps): bump marocchino/sticky-pull-request-comment
+    (#2579)
+  * chore(deps): bump github.com/docker/docker (#2580)
+  * chore(deps): update stereoscope to
+    db7a4bedaba6ad93becf22ce794f306dfb07fcb9 (#2577)
+  * Fix attest with --key (#2551)
+  * fix(java): improve identification for org.apache.kafka
+    artifacts (#2573)
+  * chore: pluralize the flag (#2564)
+  * chore(deps): update tools to latest versions (#2566)
+  * chore(deps): bump peter-evans/create-pull-request from 5.0.2 to
+    6.0.0 (#2567)
+  * chore(deps): bump anchore/sbom-action from 0.15.6 to 0.15.7
+    (#2568)
+  * re-add cosign signing checksums file (#2572)
+
+-------------------------------------------------------------------
 Wed Jan 31 17:29:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.103.1:
