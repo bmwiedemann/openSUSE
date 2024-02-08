@@ -420,4 +420,16 @@
 - add typing-extensions</comment>
     <requestid>1137453</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>fbbb27937f613eb12ca2bc944ba785df</srcmd5>
+    <version>1.3.1</version>
+    <time>1707415397</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.1:
+  * Added new parameter RedisBackend.username to the Redis
+    backend, and RedisSentinelBackend.username to the Redis
+    Sentinel backend. These parameters allow for username
+    authentication in Redis when RBAC is enabled.</comment>
+    <requestid>1145099</requestid>
+  </revision>
 </revisionlist>

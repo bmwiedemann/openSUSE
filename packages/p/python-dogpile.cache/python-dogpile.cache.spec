@@ -18,10 +18,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dogpile.cache
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 %define modname dogpile.cache
-%define modver  1_3_0
+%define modver  1_3_1
 Summary:        A caching front-end based on the Dogpile lock
 License:        BSD-3-Clause
 URL:            https://github.com/sqlalchemy/dogpile.cache

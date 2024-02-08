@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  8 09:34:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.1:
+  * Added new parameter RedisBackend.username to the Redis
+    backend, and RedisSentinelBackend.username to the Redis
+    Sentinel backend. These parameters allow for username
+    authentication in Redis when RBAC is enabled.
+
+-------------------------------------------------------------------
 Sun Jan  7 21:53:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use %{?sle15_python_module_pythons}
