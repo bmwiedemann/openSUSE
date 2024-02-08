@@ -1,7 +1,7 @@
 #
 # spec file for package lziprecover
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           lziprecover
-Version:        1.23
+Version:        1.24
 Release:        0
 Summary:        Utility to repair broken lzip files
 License:        GPL-2.0-or-later

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  8 13:21:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.24
+  * Added the command-line switches --empty-error,
+    --marking-error and --clear-marking
+  * Options were renamed: --repair to --byte-repair, --debug-repair
+    to --debug-byte-repair, --no-verify to --no-check.
+  * The option -o/--output now preserves dates, permissions, and
+    ownership of the file when (de)compressing exactly one file.
+  * The option -o/--output now creates missing intermediate
+    directories when writing to a file.
+
+
+-------------------------------------------------------------------
 Sun Feb 13 22:34:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.23
