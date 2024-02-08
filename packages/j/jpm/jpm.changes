@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Wed Feb  7 16:30:15 UTC 2024 - Jochen Breuer <brejoc@gmail.com>
+
+- Removal of redundant tarball unpacking
+
+- Modified:
+  * jpm.spec
+
+-------------------------------------------------------------------
+Thu Nov  9 09:04:51 UTC 2023 - Jochen Breuer <brejoc@gmail.com>
+
+- Add %build section in spec file as this is highly suggested even
+  if it stays empty
+
+- Modified:
+  * jpm.spec
+
+-------------------------------------------------------------------
+Fri Nov  3 12:30:43 UTC 2023 - Jochen Breuer <brejoc@gmail.com>
+
+- Fix for libpath location in default-config: should be /usr/lib64 on
+  64-bit systems 
+
+- Modified:
+  * jpm.spec
+
+-------------------------------------------------------------------
+Thu Nov  2 15:44:17 UTC 2023 - Jochen Breuer <brejoc@gmail.com> - 1.1.0
+
+* Initial commit of jpm, the Janet Project Manager, version 1.1.0
