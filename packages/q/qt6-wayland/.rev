@@ -223,4 +223,13 @@
     <comment>Qt 6.6.1 (forwarded request 1129814 from krop)</comment>
     <requestid>1130435</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>2ed46583fda6924bcff1ac1742fac6a4</srcmd5>
+    <version>6.6.1</version>
+    <time>1707415368</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix a frequent crash (kde#479302)
+  * client-avoid-creating-decorations-in-the-render-thread.patch (forwarded request 1145024 from fusionfuture)</comment>
+    <requestid>1145058</requestid>
+  </revision>
 </revisionlist>

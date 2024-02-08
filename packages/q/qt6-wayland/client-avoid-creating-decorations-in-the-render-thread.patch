@@ -1,0 +1,79 @@
+From c5aed5ae22f00e4b6c3be7051560b297bc10d941 Mon Sep 17 00:00:00 2001
+From: David Edmundson <davidedmundson@kde.org>
+Date: Wed, 10 Jan 2024 23:00:26 +0000
+Subject: client: Avoid creating decorations in the render thread
+
+createDecoration is called when on the main thread from when window
+flags change, implicitly from initWindow, and also every
+handleWindowStatesChanged which will be called when we get the first
+configure event in an xdg shell.
+
+There is no need to create the decoration in
+QWaylandGLContext::makeCurrent. Any current call to makeCurrent before
+the platform window is shown will not create a decoration as there's a check for a shell surface. Any call afterwards  will have already been handled by initWindow. Similarly the SHM backend store does not need to handle decorations itself.
+
+Fixes: QTBUG-105703
+Pick-to: 6.7
+Pick-to: 6.6
+Change-Id: I644cece28277131cf7a65eaa234ff08c8431d544
+Reviewed-by: Eskil Abrahamsen Blomfeldt <eskil.abrahamsen-blomfeldt@qt.io>
+---
+ src/client/qwaylandshmbackingstore.cpp                           | 1 -
+ src/client/qwaylandwindow.cpp                                    | 8 +++-----
+ src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp | 2 --
+ 3 files changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/src/client/qwaylandshmbackingstore.cpp b/src/client/qwaylandshmbackingstore.cpp
+index ffd17ce8..fc5e7822 100644
+--- a/src/client/qwaylandshmbackingstore.cpp
++++ b/src/client/qwaylandshmbackingstore.cpp
+@@ -204,7 +204,6 @@ void QWaylandShmBackingStore::endPaint()
+ void QWaylandShmBackingStore::ensureSize()
+ {
+     waylandWindow()->setBackingStore(this);
+-    waylandWindow()->createDecoration();
+     resize(mRequestedSize);
+ }
+ 
+diff --git a/src/client/qwaylandwindow.cpp b/src/client/qwaylandwindow.cpp
+index b34e448b..672ddc5b 100644
+--- a/src/client/qwaylandwindow.cpp
++++ b/src/client/qwaylandwindow.cpp
+@@ -1041,6 +1041,8 @@ void QWaylandWindow::setWindowFlags(Qt::WindowFlags flags)
+ 
+ bool QWaylandWindow::createDecoration()
+ {
++    Q_ASSERT_X(QThread::currentThreadId() == QThreadData::get2(thread())->threadId.loadRelaxed(),
++               "QWaylandWindow::createDecoration", "not called from main thread");
+     if (!mDisplay->supportsWindowDecoration())
+         return false;
+ 
+@@ -1121,11 +1123,7 @@ bool QWaylandWindow::createDecoration()
+         // size and are not redrawn, leaving the new buffer empty. As a simple
+         // work-around, we trigger a full extra update whenever the client-side
+         // window decorations are toggled while the window is showing.
+-        // Note: createDecoration() is sometimes called from the render thread
+-        // of Qt Quick. This is essentially wrong and could potentially cause problems,
+-        // but until the underlying issue has been fixed, we have to use invokeMethod()
+-        // here to avoid asserts.
+-        QMetaObject::invokeMethod(window(), &QWindow::requestUpdate);
++        window()->requestUpdate();
+     }
+ 
+     return mWindowDecoration;
+diff --git a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
+index 039ec1a6..685ad1e4 100644
+--- a/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
++++ b/src/hardwareintegration/client/wayland-egl/qwaylandglcontext.cpp
+@@ -313,8 +313,6 @@ bool QWaylandGLContext::makeCurrent(QPlatformSurface *surface)
+ 
+     if (m_currentWindow->isExposed())
+         m_currentWindow->setCanResize(false);
+-    if (m_decorationsContext != EGL_NO_CONTEXT && !m_currentWindow->decoration())
+-        m_currentWindow->createDecoration();
+ 
+     if (eglSurface == EGL_NO_SURFACE) {
+         m_currentWindow->updateSurface(true);
+-- 
+cgit v1.2.3
+
