@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20240207" schemaversion="4.1">
+<image name="OBS__openSUSE___20240208" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240207</productvar>
+      <productvar name="VERSION">20240208</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240207,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240208,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240207/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240208/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1052,6 +1052,8 @@
       <repopackage name="kidentitymanagement-lang"/>
       <repopackage name="kig"/>
       <repopackage name="kig-lang"/>
+      <repopackage name="kImageAnnotator-lang"/>
+      <repopackage name="kImageAnnotator-Qt5-0"/>
       <repopackage name="kimageformats"/>
       <repopackage name="kimageformats-eps"/>
       <repopackage name="kinfocenter5"/>
@@ -1817,7 +1819,7 @@
       <repopackage name="libkate1"/>
       <repopackage name="libkcddb"/>
       <repopackage name="libkcddb-lang"/>
-      <repopackage name="libkColorPicker0"/>
+      <repopackage name="libkColorPicker-Qt5-0"/>
       <repopackage name="libkcompactdisc-lang"/>
       <repopackage name="libkdecorations2-5"/>
       <repopackage name="libkdecorations2-5-lang"/>
@@ -1964,7 +1966,6 @@
       <repopackage name="libKGantt2"/>
       <repopackage name="libkgapi"/>
       <repopackage name="libkgapi-lang"/>
-      <repopackage name="libkImageAnnotator0"/>
       <repopackage name="libkioarchive5"/>
       <repopackage name="libkipi-data"/>
       <repopackage name="libkleo"/>
@@ -4092,6 +4093,7 @@
       <repopackage name="ruby3.3-rubygem-winrm"/>
       <repopackage name="ruby3.3-rubygem-winrm-elevated"/>
       <repopackage name="ruby3.3-rubygem-winrm-fs"/>
+      <repopackage name="ruby3.3-rubygem-xdg"/>
       <repopackage name="ruby3.3-rubygem-xdg-2"/>
       <repopackage name="ruby3.3-rubygem-xml-simple"/>
       <repopackage name="ruby3.3-rubygem-xmlhash"/>

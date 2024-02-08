@@ -2099,6 +2099,7 @@
     <package name="mozilla-nspr" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="mozilla-nss" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="mozilla-nss-certs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="mozilla-nss-sysinit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="mpg123-openal" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="mpt-status" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="multipath-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->

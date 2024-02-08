@@ -1462,6 +1462,7 @@
     <package name="mozilla-nspr" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="mozilla-nss" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="mozilla-nss-certs" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="mozilla-nss-sysinit" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="mpg123-openal" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="mutter" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="mutter-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
