@@ -1,7 +1,7 @@
 #
 # spec file for package felix-gogo-runtime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global bundle  org.apache.felix.gogo.runtime
 Name:           felix-gogo-runtime
-Version:        1.1.0
+Version:        1.1.6
 Release:        0
 Summary:        Apache Felix Gogo command line shell for OSGi
 License:        Apache-2.0
@@ -28,7 +28,8 @@ Source0:        http://archive.apache.org/dist/felix/%{bundle}-%{version}-source
 Source1:        %{bundle}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  osgi-annotation
 BuildRequires:  osgi-compendium
 BuildRequires:  osgi-core
 BuildArch:      noarch
@@ -48,12 +49,23 @@ This package contains the API documentation for %{name}.
 %setup -q -n %{bundle}-%{version}
 cp %{SOURCE1} build.xml
 
-%pom_remove_parent
-%pom_xpath_inject pom:project "<groupId>org.apache.felix</groupId>"
+# Use compendium dep
+%pom_remove_dep :org.osgi.namespace.service
+%pom_remove_dep :org.osgi.service.component.annotations
+%pom_remove_dep :org.osgi.service.event
+%pom_xpath_inject "pom:dependencies" "
+<dependency>
+<groupId>org.osgi</groupId>
+<artifactId>osgi.cmpn</artifactId>
+</dependency>"
+
+# These are test dependencies
+%pom_change_dep junit: :::test
+%pom_change_dep org.mockito: :::test
 
 %build
 mkdir -p lib
-build-jar-repository -s lib osgi-core osgi-compendium
+build-jar-repository -s lib osgi-annotation osgi-core osgi-compendium
 %{ant} jar javadoc
 
 %install
@@ -63,7 +75,7 @@ install -m 644 target/%{bundle}-%{version}.jar %{buildroot}%{_javadir}/felix/%{b
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}/felix
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/felix/%{bundle}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/felix/%{bundle}.pom
 %add_maven_depmap felix/%{bundle}.pom felix/%{bundle}.jar
 
 # javadoc

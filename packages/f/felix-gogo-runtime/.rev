@@ -31,4 +31,12 @@
     <comment>fix build of eclipse</comment>
     <requestid>1064163</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5cf400203582b47b8779aece7d20beb2</srcmd5>
+    <version>1.1.6</version>
+    <time>1707415551</time>
+    <user>anag+factory</user>
+    <comment>1.1.6</comment>
+    <requestid>1145280</requestid>
+  </revision>
 </revisionlist>
