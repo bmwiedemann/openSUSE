@@ -421,4 +421,14 @@
   * Fix webpdf test on Python 3.12 #2088 (@blink1073)</comment>
     <requestid>1140294</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>636bd5bf56352de71e802d44ee503d86</srcmd5>
+    <version>7.16.0</version>
+    <time>1707415336</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.16.0:
+  * Add a toggle to skip the svg encoding of images #2106
+  * Support configurable width and height of reveal presentations</comment>
+    <requestid>1144995</requestid>
+  </revision>
 </revisionlist>

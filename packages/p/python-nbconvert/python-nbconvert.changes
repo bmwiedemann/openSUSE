@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  7 19:37:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.16.0:
+  * Add a toggle to skip the svg encoding of images #2106
+  * Support configurable width and height of reveal presentations
+
+-------------------------------------------------------------------
 Sun Jan 21 11:39:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.14.2 via 7.14.1, 7.14.0

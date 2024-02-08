@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-nbconvert
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -30,9 +30,9 @@
 %bcond_with libalternatives
 %endif
 # X.X.0 gets abbreviated by pythondistdeps
-%define shortversion 7.14.2
+%define shortversion 7.16
 Name:           python-nbconvert%{psuffix}
-Version:        7.14.2
+Version:        7.16.0
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
@@ -75,7 +75,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 %if %{with test}
 BuildRequires:  %{python_module flaky}
