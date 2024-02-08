@@ -1,0 +1,132 @@
+Index: ndindex-1.7/ndindex/shapetools.py
+===================================================================
+--- ndindex-1.7.orig/ndindex/shapetools.py
++++ ndindex-1.7/ndindex/shapetools.py
+@@ -187,7 +187,7 @@ def iter_indices(*shapes, skip_axes=(),
+     >>> b
+     array([[100],
+            [110]])
+-    >>> for idx1, idx2 in iter_indices((1, 3), (2, 1)): # doctest: +SKIP37
++    >>> for idx1, idx2 in iter_indices((1, 3), (2, 1)):
+     ...     print(f"{idx1 = }; {idx2 = }; {(a[idx1.raw], b[idx2.raw]) = }")
+     idx1 = Tuple(0, 0); idx2 = Tuple(0, 0); (a[idx1.raw], b[idx2.raw]) = (0, 100)
+     idx1 = Tuple(0, 1); idx2 = Tuple(0, 0); (a[idx1.raw], b[idx2.raw]) = (1, 100)
+@@ -285,9 +285,7 @@ def iter_indices(*shapes, skip_axes=(),
+                     it.insert(0, range(shape[i]))
+ 
+     if _debug: # pragma: no cover
+-        print(iters)
+-        # Use this instead when we drop Python 3.7 support
+-        # print(f"{iters = }")
++        print(f"{iters = }")
+     for idxes in itertools.zip_longest(*[itertools.product(*i) for i in
+                                          iters], fillvalue=()):
+         yield tuple(ndindex(idx) for idx in idxes)
+Index: ndindex-1.7/ndindex/slice.py
+===================================================================
+--- ndindex-1.7.orig/ndindex/slice.py
++++ ndindex-1.7/ndindex/slice.py
+@@ -76,9 +76,11 @@ class Slice(NDIndex):
+         return args
+ 
+     def __hash__(self):
+-        # We can't use the default hash(self.raw) because slices are not
+-        # hashable
+-        return hash(self.args)
++        # Slices are only hashable in Python 3.12+
++        try:
++            return hash(self.raw)
++        except TypeError:
++            return hash(self.args)
+ 
+     @property
+     def raw(self):
+Index: ndindex-1.7/ndindex/tests/doctest.py
+===================================================================
+--- ndindex-1.7.orig/ndindex/tests/doctest.py
++++ ndindex-1.7/ndindex/tests/doctest.py
+@@ -3,12 +3,6 @@ Custom script to run the doctests
+ 
+ This runs the doctests but ignores trailing ``` in Markdown documents.
+ 
+-This also adds the flag SKIP37 to allow skipping doctests in Python 3.7.
+-
+->>> import sys
+->>> sys.version_info[1] > 7 # doctest: +SKIP37
+-True
+-
+ Running this separately from pytest also allows us to not include the doctests
+ in the coverage. It also allows us to force a separate namespace for each
+ docstring's doctest, which the pytest doctest integration does not allow.
+@@ -28,11 +22,7 @@ import glob
+ import os
+ from contextlib import contextmanager
+ from doctest import (DocTestRunner, DocFileSuite, DocTestSuite,
+-                     NORMALIZE_WHITESPACE, register_optionflag, SKIP)
+-
+-SKIP37 = register_optionflag("SKIP37")
+-
+-PY37 = sys.version_info[:2] == (3, 7)
++                     NORMALIZE_WHITESPACE)
+ 
+ @contextmanager
+ def patch_doctest():
+@@ -45,8 +35,6 @@ def patch_doctest():
+ 
+     def run(self, test, **kwargs):
+         for example in test.examples:
+-            if PY37 and SKIP37 in example.options:
+-                example.options[SKIP] = True
+             # Remove ```
+             example.want = example.want.replace('```\n', '')
+             example.exc_msg = example.exc_msg and example.exc_msg.replace('```\n', '')
+Index: ndindex-1.7/setup.py
+===================================================================
+--- ndindex-1.7.orig/setup.py
++++ ndindex-1.7/setup.py
+@@ -18,7 +18,9 @@ def check_cython():
+         from Cython.Build import cythonize
+         sys.argv = argv_org[:1] + ["build_ext"]
+         setuptools.setup(name="foo", version="1.0.0",
+-                         ext_modules=cythonize(["ndindex/__init__.py"]))
++                         ext_modules=cythonize(
++                             ["ndindex/__init__.py"],
++                             language_level="3"))
+     except:
+         return False
+     finally:
+@@ -37,7 +39,8 @@ else:
+ 
+ if use_cython:
+     from Cython.Build import cythonize
+-    ext_modules = cythonize(["ndindex/*.py"])
++    ext_modules = cythonize(["ndindex/*.py"],
++                            language_level="3")
+ else:
+     ext_modules = []
+ 
+@@ -67,7 +70,7 @@ setuptools.setup(
+         "License :: OSI Approved :: MIT License",
+         "Operating System :: OS Independent",
+     ],
+-    python_requires='>=3.7',
++    python_requires='>=3.8',
+ )
+ 
+ print("CYTHONIZE_NDINDEX: %r" % CYTHONIZE_NDINDEX)
+Index: ndindex-1.7/versioneer.py
+===================================================================
+--- ndindex-1.7.orig/versioneer.py
++++ ndindex-1.7/versioneer.py
+@@ -339,9 +339,9 @@ def get_config_from_root(root):
+     # configparser.NoOptionError (if it lacks "VCS="). See the docstring at
+     # the top of versioneer.py for instructions on writing your setup.cfg .
+     setup_cfg = os.path.join(root, "setup.cfg")
+-    parser = configparser.SafeConfigParser()
++    parser = configparser.ConfigParser()
+     with open(setup_cfg, "r") as f:
+-        parser.readfp(f)
++        parser.read_file(f)
+     VCS = parser.get("versioneer", "VCS")  # mandatory
+ 
+     def get(parser, name):

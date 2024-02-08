@@ -1,7 +1,7 @@
 #
 # spec file for package python-ndindex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,18 @@
 
 
 Name:           python-ndindex
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        A Python library for manipulating indices of ndarrays
 License:        MIT
 URL:            https://quansight-labs.github.io/ndindex/
 Source:         https://files.pythonhosted.org/packages/source/n/ndindex/ndindex-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ndindex-pr133-ragged.patch gh#Quansight-Labs/ndindex#133
-Patch0:         https://github.com/Quansight-Labs/ndindex/pull/133.patch#/ndindex-pr133-ragged.patch
-# PATCH-FIX-UPSTREAM ndindex-pr147-numpy.patch gh#Quansight-Labs/ndindex#147
-Patch1:         https://github.com/Quansight-Labs/ndindex/pull/147.patch#/ndindex-pr147-numpy.patch
+# PATCH-FIX-UPSTREAM ndindex-pr159-py312.patch gh#Quansight-Labs/ndindex#159
+Patch1:         ndindex-pr159-py312.patch
 # PATCH-FIX-OPENSUSE custom-pytest.patch gh#Quansight-Labs/ndindex#150
 Patch2:         custom-pytest.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -64,7 +62,6 @@ export CFLAGS="%{optflags}"
 donttest=("-k" "not test_as_subindex_hypothesis")
 %endif
 %pytest_arch --hypothesis-profile=obs "${donttest[@]}"
-
 
 %files %{python_files}
 %doc README.md

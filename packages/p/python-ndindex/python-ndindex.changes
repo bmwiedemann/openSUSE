@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Feb  7 09:59:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.7
+  * Breaking: the skip_axes argument iter_indices() function now
+    applies the skipped axes before broadcasting, not after. This
+    behavior is more generally useful and matches how functions
+    with stacking work (e.g., np.cross or np.matmul). The best way
+    to get the old behavior is to broadcast the arrays/shapes
+    together first. The skip_axes in iter_indices must be either
+    all negative or all nonnegative to avoid ambiguity. A future
+    version may add support for specifying different skip axes for
+    each shape.
+  * iter_indices() no longer requires the skipped axes specified by
+    skip_axes to be broadcast compatible.
+  * New method isvalid() to check if an index is valid on a given
+    shape.
+  * New function broadcast_shapes() which is the same as
+    np.broadcast_shapes() except it also allows specifying a set of
+    skip_axes which will be ignored when broadcasting.
+  * New exceptions BroadcastError and AxisError which are used by
+    iter_indices() and broadcast_shapes().
+  * Fix some test failures with the latest version of NumPy.
+  * Fix some tests that didn’t work properly when run against the
+  * sdist.
+  * The sdist now includes relevant testing files.
+- Drop patches fixed upstream
+  * ndindex-pr133-ragged.patch gh#Quansight-Labs/ndindex#133
+  * ndindex-pr147-numpy.patch gh#Quansight-Labs/ndindex#147
+- Refresh custom-pytest.patch gh#Quansight-Labs/ndindex#150
+- Add ndindex-pr159-py312.patch gh#Quansight-Labs/ndindex#159
+
+-------------------------------------------------------------------
 Fri Mar 31 09:06:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip a flaky test in i586

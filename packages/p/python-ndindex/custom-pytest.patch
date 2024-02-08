@@ -1,24 +1,35 @@
-Index: ndindex-1.6/conftest.py
+Index: ndindex-1.7/conftest.py
 ===================================================================
---- /dev/null
-+++ ndindex-1.6/conftest.py
-@@ -0,0 +1,7 @@
-+import hypothesis
+--- ndindex-1.7.orig/conftest.py
++++ ndindex-1.7/conftest.py
+@@ -6,7 +6,7 @@ try:
+ except ImportError:
+     from distutils.version import LooseVersion
+ 
+-from hypothesis import settings
++from hypothesis import settings, HealthCheck
+ 
+ # Make sure a new enough version of NumPy is installed for the tests
+ import numpy
+@@ -59,4 +59,10 @@ def pytest_configure(config):
+ 
+ 
+ settings.register_profile('ndindex_hypothesis_profile', deadline=800)
+-settings.load_profile('ndindex_hypothesis_profile')
++#settings.load_profile('ndindex_hypothesis_profile')
 +
-+hypothesis.settings.register_profile(
++settings.register_profile(
 +     'obs',
 +     deadline=5000,
-+     suppress_health_check=[hypothesis.HealthCheck.too_slow]
++     suppress_health_check=[HealthCheck.too_slow, HealthCheck.filter_too_much]
 +)
-Index: ndindex-1.6/setup.cfg
+Index: ndindex-1.7/pytest.ini
 ===================================================================
---- ndindex-1.6.orig/setup.cfg
-+++ ndindex-1.6/setup.cfg
-@@ -10,3 +10,7 @@ parentdir_prefix =
- tag_build = 
- tag_date = 0
- 
-+[tool:pytest]
-+filterwarnings = error
-+markers = 
+--- ndindex-1.7.orig/pytest.ini
++++ ndindex-1.7/pytest.ini
+@@ -1,3 +1,4 @@
+ [pytest]
+-addopts = --cov=ndindex/ --cov-report=term-missing --flakes --full-trace
+ filterwarnings = error
++markers =
 +  no_cover : we don't use coverage but there are some markers for it
