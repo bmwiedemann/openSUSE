@@ -686,4 +686,12 @@
     <comment>build without podofo on TW</comment>
     <requestid>1102710</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>a11787e8b91f93e2adbc4fdfe221cf99</srcmd5>
+    <version>1.6.1</version>
+    <time>1707415311</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.6.1</comment>
+    <requestid>1144999</requestid>
+  </revision>
 </revisionlist>

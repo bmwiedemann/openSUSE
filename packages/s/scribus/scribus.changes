@@ -1,4 +1,188 @@
 -------------------------------------------------------------------
+Wed Feb  7 17:39:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.6.1:
+  * [Scripter] Scripter: add functions to get the items in a group
+  * [Scripter] Scripter: add the return values for getObjectType
+  * [Story Editor / Text Frames] Wrapped text appears outside text
+    frame
+  * [Typography] Hyphenated text is rendering incorrectly in text
+    boxes
+  * [Usability] DublinCore DocInfo ComboBoxes
+  * [Usability] PDF/X accurate versions
+  * [OS-Win32] Windows installer causes reboot on some systems
+    part way through installation
+  * [User Interface] new document icon in 22x22 is garbage...
+  * [Language Tools] Can´t paste Spanish content
+  * [Story Editor / Text Frames] center alignment unprecise in
+    circles
+  * [Internal] [patch] remove a specific disabled broken code
+    or document what it should do
+  * [Usability] Y coordinate not updated in popup window
+  * [Build System] [PATCH] clean up the cmake files
+  * [User Interface] Create a command launcher
+  * [Story Editor / Text Frames] inline items produce a box at
+    the start of the frame
+  * [Story Editor / Text Frames] Incorrect layout of inline
+    items if vertical scale is different of 100%
+  * [User Interface] Snapping doesn't work when scaling frames
+  * [Canvas] Page margin rect inherits drop shadow properties of
+    line item
+  * [User Interface] ICC profile comboboxes too short
+  * [Translation] Wrong polish translation of orphan in edit->styles
+  * [Graphics / Image Frames] Adding a specific .psd file makes
+    itself and the other frames invisible
+  * [Scripter] PATCH: scripter: create setRotation(), deprecate
+    rotateObjectAbs() and add a way to use a specific basepoint
+  * [User Interface] arrange pages still has 3 and 4 pages layouts
+  * [Canvas] Changing the line blend mode has no effect on the canvas
+  * [User Interface] Add context menu to the "Arrange
+    Pages > Document Pages" Panel
+  * [User Interface] Spiral Edit Dialog doesn't allow angle greater
+    than 360°
+  * [General] When saving the document, arrows attached to spiral
+    shapes are not saved
+  * [Scripter] scribus_version and scribus_version_info should be
+    uppercase
+  * [Build System] [Proposal] Display versions of all libs used by
+    Scribus
+  * [General] Tooltips show no text
+  * [User Interface] Drag/Drop of ODT to text frame should trigger
+    the OpenDocument Importer menu
+  * [Scrapbook] White objects are invisible in scrapbook
+  * [Printing] Page prints incorrectly on Windows when using layer
+    blend modes
+  * [Styles] Sort the styles list in style deletion dialog
+  * [Typography] Hyphenation exceptions delete themselves
+  * [General] crash when starting the "insert > glyph" dialog
+  * [General] for loop defect
+  * [Scripter] [PATCH] scripter: accessing page > guides > columns/rows
+  * [Story Editor / Text Frames] Incorrect rendering of rotated
+    inline items
+  * [Story Editor / Text Frames] Copying a frame does not activate
+    paste when editing inside of a frame
+  * [Language Tools] File for Dutch hyphenation patterns gives bad
+    results.
+  * [General] Crash on startup if file recovery fails
+  * [Scripter] [PATCH] add setNormalMode() (and setEditMode()) to
+    the scripter
+  * [Graphics / Image Frames] Export to PDF ignores coloring effect
+    on grayscale PNG
+  * [User Interface] About box: Some names formatted improperly
+    in Authors tab
+  * [Build System] Build error caused by removed
+    'std::unary_function' template in C++17 mode
+  * [Build System] Build error caused by conversion between void
+    pointer and function pointer
+  * [User Interface] About box: table tags not closed
+  * [User Interface] About box: Some text issues in
+    Translations tab
+  * [General] Search & Replace 'Replace All' hangs Scribus when
+    searching for text color
+  * [Build System] Build failure on newer macOS versions than
+    were available when Scribus was released
+  * [Translation] Translation problems in story editor when
+    changing language from settings
+  * [General] Scribus slow and unusable on Wayland
+  * [User Interface] Document Items Attributes in Document
+    Setup/Preferences
+  * [Internal] Rename ui/cpalette.* to ui/colorpalette.*
+  * [Integration] CI fails because of podofo
+  * [Story Editor / Text Frames] Bad inline object vertical
+    alignement in PDF export
+  * [Build System] CI on Gitlab is failing on podofo
+  * [General] Scribus does not build with podofo-0.10.0
+  * [Internal] Internal page links not updated on page copy
+  * [Usability] Default button for preferences should be "Ok"
+  * [PDF] Build break with poppler 22.2.0
+  * [Story Editor / Text Frames] Hyphenation stop being applied
+    after conditional hyphen
+  * [Master Pages] Crash when clicking on specific text frame
+    in master page
+  * [User Interface] Keyboard shortcuts always load "iCalamusTM"
+    and modifications cannot be saved.
+  * [Translation] Norwegian nynorsk invalid file
+  * [Master Pages] Arrange Pages> Document Pages> mini-pages
+    are almost unreadable on hi-res display
+  * [Translation] Spelling error in French translation
+  * [PDF] Build break with poppler 22.03.0
+  * [PDF] Dashed lines imported from PDF have incorrect
+    segment lengths
+  * [General] Fix various typos
+  * [Graphics / Image Frames] "Show readable text" Option for
+    QR Code on "Insert Barcode" Window should be grey out
+  * [Graphics / Image Frames] QR code generated by "Insert
+    Barcode" could not show CJK characters correctly
+  * [Documentation] Fix various typos
+  * [Graphics / Image Frames] Issue when opening TIFF file
+    with incorrect embedded ICC profile
+  * [Scripter] importPage() argument usage documentation
+  * [Scripter] linkTextFrames() documentation vs GUI
+  * [User Interface] Scrapbook dialog dropdown menu has
+    unintuitive icon
+  * [Scripter] Scripter crashes with getAllObjects() on a
+    master page
+  * [Typography] A white space width become too small when
+    two Latin words are surrounded by CJK characters in a
+    justified paragraph
+  * [Scripter] Documentation of selectObject() lacks precision
+  * [Build System] No Document Icon is installed on Linux
+  * [Import / Export] Cannot export - save as image when active
+    layer is locked.
+  * [General] Import of Adobe Color Book palettes doesn't work
+  * [Usability] Unremovable or invisible tabulators on the ruler
+  * [User Interface] Cyrillic in Render Frame Editor English GUI
+  * [Typography] OpenType c2sc not practically usable
+  * [General] Scrbus fails to build since code cleanup in r25414
+  * [Printing] Transparent image sitting above blue frame causes
+    color change on frame where they overlap
+  * [User Interface] Folder icons are missing in file dialogues
+  * [General] barcode doesn't show readable text
+  * [Import / Export] Some issues with PDF import
+  * [Shape Drawing] Scribus crash if you delete a symbol during
+    in "symbol edit mode".
+  * [PDF] Drop shadow of very large shapes shows up wrong in
+    exported PDF
+  * [User Interface] F12 shortcut does not affect Align and
+    Distribute palette
+  * [Canvas] Some objects from left masterpage are not rendered
+  * [Build System] Typo in Findpoppler.cmake?
+  * [Documentation] Readme file has dead link to Ghostscript
+  * [Usability] Scribus silently upgrades your file to the new format
+  * [PDF] Open path with stroke gradient SVG results in closed
+    path in PDF
+  * [PDF] PDFs with layers do not allow layer exclusion when printing
+    on Mac and Windows using Adobe Reader or FoxIt PDF Reader
+  * [General] Moving cursor with down arrow jump to end of next frame
+  * [Usability] If a right to left paragraph follows a left to right
+    paragraph, one of the paragraphs will not work properly
+  * [Story Editor / Text Frames] "Permanently replace missing font"
+    isnt permanent
+  * [Import / Export] CVG-import faulty
+  * [Build System] NetBSD: link against libexecinfo for
+    backtrace_symbols
+  * [User Interface] File selection dialog box always reverts to
+    small size
+  * [User Interface] Pixelated display in Enhanced Character Palette
+  * [User Interface] Section Default Numbering
+  * [User Interface] Scribus first start with tiny window
+  * [Scripter] Pdf export by python scripter embeds fonts which
+    should be subsetted
+  * [Import / Export] Inline image disappears when two sla containing
+    ones are merged
+  * [User Interface] Colors and Fills dialog too narrow
+  * [User Interface] PageItem Attribute dialog too small by default
+  * [Scripter] Provide the information about the page number being "shown"
+- Drop patches, merged upstream:
+  * 0001-16734-Build-break-with-poppler-22.2.0.patch
+  * 0001-Small-update-vs-latest-code-in-poppler.patch
+  * 0001-16764-Build-break-with-poppler-22.03.0.patch
+  * 0001-Enforce-poppler-version-0.86.0.patch
+  * 0001-16764-Better-patch-avoid-a-memory-leak.patch
+  * 0001-Fix-build-with-poppler-22.04.0.patch
+  * scribus-1.5.8-poppler-22.09.0.patch
+
+-------------------------------------------------------------------
 Mon Aug  7 12:17:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Disable AI PDF import support until scribus supports Podofo >= 0.10

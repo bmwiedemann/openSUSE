@@ -17,36 +17,22 @@
 #
 
 
-# Disable AI PDF import until scribus supports podofo 0.10
-# (https://bugs.scribus.net/view.php?id=16948)
-%if 0%{?suse_version} < 1550
 %bcond_without podofo
-%endif
+%bcond_without released
 Name:           scribus
-Version:        1.5.8
+Version:        1.6.1
 Release:        0
 Summary:        Page Layout and Desktop Publishing (DTP)
 License:        GPL-2.0-or-later
 URL:            https://www.scribus.net/
-# https://sourceforge.net/projects/scribus/files/scribus-devel/1.5.8/
+# https://sourceforge.net/projects/scribus/files/scribus/1.6.1/
 Source0:        %{name}-%{version}.tar.xz
+%if %{with released}
 Source1:        %{name}-%{version}.tar.xz.asc
+Source2:        scribus.keyring
+%endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-16734-Build-break-with-poppler-22.2.0.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Small-update-vs-latest-code-in-poppler.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-16764-Build-break-with-poppler-22.03.0.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-Enforce-poppler-version-0.86.0.patch
-# PATCH-FIX-UPSTREAM
-Patch5:         0001-16764-Better-patch-avoid-a-memory-leak.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         0001-Fix-build-with-poppler-22.04.0.patch
-# PATCH-FIX-UPSTREAM
-Patch7:         scribus-1.5.8-poppler-22.09.0.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
@@ -69,17 +55,18 @@ BuildRequires:  libwpg-devel
 BuildRequires:  libzmf-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Core) >= 5.14.0
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.14.0
-BuildRequires:  cmake(Qt5Network) >= 5.14.0
-BuildRequires:  cmake(Qt5OpenGL) >= 5.14.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
-BuildRequires:  cmake(Qt5Xml) >= 5.14.0
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5OpenGL)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(GraphicsMagick)
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(harfbuzz)
@@ -90,15 +77,12 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(poppler)
+BuildRequires:  pkgconfig(poppler) > 21.03.0
 BuildRequires:  pkgconfig(zlib)
 Requires:       hicolor-icon-theme
 Recommends:     python3-Pillow
 Recommends:     python3-tk
-# Only available in graphics for the moment
-Recommends:     uniconvertor
 Recommends:     scribus-doc
-
 # Not packaged anymore
 Provides:       scribus-devel = %{version}
 Obsoletes:      scribus-devel < %{version}
@@ -121,6 +105,11 @@ This package provides the documentation for Scribus.
 %autosetup -p1
 # W: wrong-script-end-of-line-encoding
 find . -type f \( -iname \*.py -o -iname \*.cpp -o -iname \*.h \) -exec dos2unix {} \;
+
+# Unused test file still using QQC1
+rm scribus/ui/qml/qtq_test1.qml
+
+find . \( -name "*.py" -o -name "*.html" \) -exec sed -i 's#/usr/bin/env python.*#/usr/bin/python3#' {} \;
 
 %build
 # Don't use the %%cmake macro, it causes crashes when starting scribus
@@ -150,12 +139,10 @@ mkdir -p %{buildroot}%{_datadir}/scribus/aboutData
 mv %{buildroot}%{_datadir}/doc/scribus/{AUTHORS,COPYING,LINKS,TRANSLATION} %{buildroot}%{_datadir}/scribus/aboutData/
 
 # Already in %%doc
-rm -f %{buildroot}%{_datadir}/doc/scribus/{ChangeLog,README}
+rm %{buildroot}%{_datadir}/doc/scribus/{ChangeLog,README}
 
 %fdupes %{buildroot}%{_datadir}/doc/scribus
 %fdupes %{buildroot}%{_datadir}/scribus
-
-%suse_update_desktop_file -r scribus Qt Office WordProcessor
 
 %files doc
 %license COPYING
@@ -177,6 +164,7 @@ rm -f %{buildroot}%{_datadir}/doc/scribus/{ChangeLog,README}
 %{_bindir}/scribus
 %{_datadir}/applications/scribus.desktop
 %{_datadir}/icons/hicolor/*/apps/scribus.png
+%{_datadir}/icons/hicolor/*/mimetypes/application-vnd.scribus.png
 %{_datadir}/metainfo/scribus.appdata.xml
 %{_datadir}/mime/packages/scribus.xml
 %{_datadir}/scribus/
