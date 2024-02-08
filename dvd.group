@@ -913,6 +913,8 @@
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="jq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="json-glib-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="kImageAnnotator-Qt5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kImageAnnotator-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kaccounts-integration" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kaccounts-integration-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kaccounts-providers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2136,8 +2138,7 @@
     <package name="libjte2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libjxl0_9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjxl0_9-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libkColorPicker0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkImageAnnotator0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libkColorPicker-Qt5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkaccounts2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkate1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libkcddb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4043,6 +4044,7 @@
     <package name="ruby3.3-rubygem-winrm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-winrm-elevated" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-winrm-fs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.3-rubygem-xdg" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-xdg-2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-xml-simple" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.3-rubygem-xmlhash" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->

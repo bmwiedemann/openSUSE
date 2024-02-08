@@ -9103,6 +9103,7 @@ unsorted:
   - jp2a-bash-completion 
   - jpcre2-devel 
   - jpegoptim 
+  - jpm 
   - jpnevulator 
   - jrnl 
   - jrosetta 
@@ -9243,10 +9244,11 @@ unsorted:
   - k4dirstat-lang 
   - k8s-sidecar 
   - k9s 
-  - kColorPicker-devel 
-  - kImageAnnotator 
-  - kImageAnnotator-devel 
-  - kImageAnnotator-lang 
+  - kColorPicker-Qt5-devel 
+  - kColorPicker-Qt6-devel 
+  - kImageAnnotator-Qt5-devel 
+  - kImageAnnotator-Qt6-0 
+  - kImageAnnotator-Qt6-devel 
   - kaccounts-integration-devel 
   - kactivities-stats-devel 
   - kactivities5-devel 
@@ -9401,9 +9403,7 @@ unsorted:
   - kdiff3 
   - kdiff3-lang 
   - kdiskmark 
-  - kdnssd 
   - kdnssd-framework-devel 
-  - kdnssd-lang 
   - kdoctools-devel 
   - kdsingleapplication-devel 
   - kdsingleapplication-qt6-devel 
@@ -9681,9 +9681,6 @@ unsorted:
   - kopeninghours 
   - kopeninghours-devel 
   - kopeninghours-lang 
-  - kopete 
-  - kopete-devel 
-  - kopete-lang 
   - kor 
   - kor-bash-completion 
   - kor-fish-completion 
@@ -12457,7 +12454,7 @@ unsorted:
   - libfsrefs-devel 
   - libfsrefs-tools 
   - libfsrefs1 
-  - libfst25 
+  - libfst26 
   - libfstrcmp0 
   - libfsverity0 
   - libfsxfs-devel 
@@ -13076,8 +13073,8 @@ unsorted:
   - libiec61883-0-32bit 
   - libiec61883-devel 
   - libiec61883-tools 
+  - libieee1284-3 
   - libieee1284-devel 
-  - libieee12843 
   - libiga-devel 
   - libiga64-1 
   - libigc-devel 
@@ -13241,6 +13238,7 @@ unsorted:
   - libjxl-tools 
   - libjxl0_9-32bit 
   - libjxrglue0 
+  - libkColorPicker-Qt6-0 
   - libkadm5clnt7 
   - libkadm5srv8 
   - libkafs0 
@@ -14142,7 +14140,7 @@ unsorted:
   - libopenvas_wincmd1 
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
-  - libopenvdb11_0 
+  - libopenvdb10_1 
   - libopenvswitch-3_1-0 
   - liboping-devel 
   - liboping0 
@@ -17984,7 +17982,6 @@ unsorted:
   - mozilla-nss-32bit 
   - mozilla-nss-certs-32bit 
   - mozilla-nss-devel 
-  - mozilla-nss-sysinit 
   - mozilla-nss-sysinit-32bit 
   - mozilla-zilla-slab-fonts 
   - mozjs102 
@@ -22564,11 +22561,9 @@ unsorted:
   - python-zope.event-doc 
   - python-zope.hookable-doc 
   - python-zope.i18nmessageid-doc 
-  - python2-pip 
   - python2-pycairo 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
-  - python2-setuptools 
   - python3-Arcus 
   - python3-GDAL 
   - python3-GitgExt 
@@ -30134,6 +30129,7 @@ unsorted:
   - python312-ansicolor 
   - python312-ansicolors 
   - python312-ansiwrap 
+  - python312-antlr4-python3-runtime 
   - python312-anyascii 
   - python312-anyio 
   - python312-anyjson 
@@ -30215,6 +30211,7 @@ unsorted:
   - python312-avro 
   - python312-awkward 
   - python312-awkward-cpp 
+  - python312-aws-sam-translator 
   - python312-aws-xray-sdk 
   - python312-aws-xray-sdk-Django 
   - python312-aws-xray-sdk-Flask 
@@ -30597,6 +30594,7 @@ unsorted:
   - python312-blinker 
   - python312-blockdiag 
   - python312-blosc 
+  - python312-blosc2 
   - python312-bloscpack 
   - python312-blue 
   - python312-blurb 
@@ -30663,6 +30661,7 @@ unsorted:
   - python312-certstream 
   - python312-cffi 
   - python312-cfgv 
+  - python312-cfn-lint 
   - python312-cfscrape 
   - python312-cftime 
   - python312-chardet 
@@ -30747,6 +30746,7 @@ unsorted:
   - python312-cooldict 
   - python312-copr 
   - python312-copr-cli 
+  - python312-cornice 
   - python312-cov-core 
   - python312-covdefaults 
   - python312-coverage 
@@ -30779,6 +30779,7 @@ unsorted:
   - python312-csvkit 
   - python312-ctypesgen 
   - python312-cu2qu 
+  - python312-cufflinks 
   - python312-curlylint 
   - python312-curses 
   - python312-curtsies 
@@ -30790,6 +30791,7 @@ unsorted:
   - python312-daemonize 
   - python312-daiquiri 
   - python312-dasbus 
+  - python312-dash 
   - python312-dash-core-components 
   - python312-dash-html-components 
   - python312-dash-renderer 
@@ -30849,6 +30851,7 @@ unsorted:
   - python312-diskcache 
   - python312-dist 
   - python312-distlib 
+  - python312-distob 
   - python312-distorm3 
   - python312-distributed 
   - python312-distro 
@@ -30880,6 +30883,7 @@ unsorted:
   - python312-django-dj-inmemorystorage 
   - python312-django-environ 
   - python312-django-eremaea2 
+  - python312-django-extensions 
   - python312-django-extra-views 
   - python312-django-filter 
   - python312-django-formtools 
@@ -31011,6 +31015,7 @@ unsorted:
   - python312-enrich 
   - python312-entrypoint2 
   - python312-entrypoints 
+  - python312-environ-config 
   - python312-environmental-override 
   - python312-enzyme 
   - python312-ephem 
@@ -31139,6 +31144,7 @@ unsorted:
   - python312-geojson 
   - python312-geolib 
   - python312-geolinks 
+  - python312-geomdl 
   - python312-geomet 
   - python312-geopandas 
   - python312-geopy 
@@ -31345,6 +31351,7 @@ unsorted:
   - python312-ipykernel 
   - python312-ipyleaflet 
   - python312-ipympl 
+  - python312-ipyparallel 
   - python312-ipyscales 
   - python312-ipysheet 
   - python312-ipytablewidgets 
@@ -31429,6 +31436,7 @@ unsorted:
   - python312-jsonslicer 
   - python312-jsonxs 
   - python312-junit-xml 
+  - python312-jupyter 
   - python312-jupyter-client 
   - python312-jupyter-client7 
   - python312-jupyter-collaboration 
@@ -31685,6 +31693,9 @@ unsorted:
   - python312-monotonic 
   - python312-more-itertools 
   - python312-moreorless 
+  - python312-moto 
+  - python312-moto-all 
+  - python312-moto-server 
   - python312-mpi4py 
   - python312-mpi4py-devel 
   - python312-mpl-animators 
@@ -31741,6 +31752,7 @@ unsorted:
   - python312-nbxmpp 
   - python312-ncclient 
   - python312-ndg-httpsclient 
+  - python312-ndindex 
   - python312-ndjson 
   - python312-ndtiff 
   - python312-neovim 
@@ -31857,6 +31869,7 @@ unsorted:
   - python312-pandas-clipboard 
   - python312-pandas-compression 
   - python312-pandas-computation 
+  - python312-pandas-datareader 
   - python312-pandas-excel 
   - python312-pandas-feather 
   - python312-pandas-fss 
@@ -31875,6 +31888,7 @@ unsorted:
   - python312-pandocfilters 
   - python312-panel 
   - python312-panflute 
+  - python312-papermill 
   - python312-parallax 
   - python312-param 
   - python312-parameterized 
@@ -31934,6 +31948,7 @@ unsorted:
   - python312-photutils 
   - python312-phply 
   - python312-phue 
+  - python312-physt 
   - python312-pick 
   - python312-pickleshare 
   - python312-piexif 
@@ -31956,6 +31971,8 @@ unsorted:
   - python312-platformdirs 
   - python312-platformio 
   - python312-plette 
+  - python312-plotly 
+  - python312-plotly-jupyter 
   - python312-pluggy 
   - python312-pluginbase 
   - python312-plumbum 
@@ -32216,6 +32233,7 @@ unsorted:
   - python312-pyroute2 
   - python312-pyrsistent 
   - python312-pysaml2 
+  - python312-pyscard 
   - python312-pyscreenshot 
   - python312-pysendfile 
   - python312-pyserial 
@@ -32654,6 +32672,7 @@ unsorted:
   - python312-six 
   - python312-sklearn-pandas 
   - python312-skyfield 
+  - python312-slack-sdk 
   - python312-slimit 
   - python312-sly 
   - python312-slycot 
@@ -32952,6 +32971,7 @@ unsorted:
   - python312-vcversioner 
   - python312-vdf 
   - python312-vdirsyncer 
+  - python312-vega 
   - python312-vega_datasets 
   - python312-venusian 
   - python312-venusian-doc 
@@ -38134,7 +38154,6 @@ unsorted:
   - ruby3.2-rubygem-winrm 
   - ruby3.2-rubygem-winrm-elevated 
   - ruby3.2-rubygem-winrm-fs 
-  - ruby3.2-rubygem-xdg 
   - ruby3.2-rubygem-xdg-2 
   - ruby3.2-rubygem-xml-simple 
   - ruby3.2-rubygem-xmlhash 
@@ -39175,6 +39194,7 @@ unsorted:
   - system-user-greeter 
   - system-user-grommunio 
   - system-user-gromox 
+  - system-user-kankurun 
   - system-user-libvirt-dbus 
   - system-user-loki 
   - system-user-mktex 
@@ -39184,6 +39204,7 @@ unsorted:
   - system-user-osc-collab 
   - system-user-prometheus 
   - system-user-rustdesk 
+  - system-user-transmission 
   - system-user-uuidd 
   - system-user-velociraptor 
   - systemd-default-settings-branding-SLE-Micro 
