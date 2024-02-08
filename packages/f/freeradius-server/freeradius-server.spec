@@ -1,7 +1,7 @@
 #
 # spec file for package freeradius-server
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,6 +96,9 @@ Conflicts:      radiusd-cistron
 Conflicts:      radiusd-livingston
 BuildRequires:  libunbound-devel
 BuildRequires:  pkgconfig(systemd)
+Provides:       group(radiusd)
+Provides:       group(winbind)
+Provides:       user(radiusd)
 %{?systemd_requires}
 
 #bsc#1055679 - freeradius-server does not provide winbind/AD auth

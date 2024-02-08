@@ -1003,4 +1003,12 @@ Bug Fixes
     <comment>changes only changes, added CVE references</comment>
     <requestid>1121419</requestid>
   </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>2eca392984409fef33a96da995bf1a12</srcmd5>
+    <version>3.2.3</version>
+    <time>1707415429</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1145150</requestid>
+  </revision>
 </revisionlist>

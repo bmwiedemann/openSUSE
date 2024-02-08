@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  6 08:21:21 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- provides for user(radiusd), group(radiusd) and group (winbind) bsc#1219600
+
+-------------------------------------------------------------------
 Thu Aug 31 13:09:06 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - update to version 3.2.3 (jsc#PED-6567)
