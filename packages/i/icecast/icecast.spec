@@ -1,7 +1,7 @@
 #
 # spec file for package icecast
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Audio Streaming Server
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Servers
-Url:            http://www.icecast.org/
+URL:            http://www.icecast.org/
 Source:         http://downloads.xiph.org/releases/icecast/icecast-%{version}.tar.gz
 Source2:        icecast.service
 Source3:        icecast.logrotate
@@ -46,6 +46,8 @@ BuildRequires:  systemd-rpm-macros
 Requires(pre):  shadow
 Recommends:     logrotate
 %{?systemd_requires}
+Provides:       group(%{name})
+Provides:       user(%{name})
 
 %description
 Icecast is a MP3 and OGG streaming server able to serve many clients
