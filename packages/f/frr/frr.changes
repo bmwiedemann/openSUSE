@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  8 06:55:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide user/group symbol for user created during pre.
+
+-------------------------------------------------------------------
+Fri Feb  2 08:25:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: a stray %-escape sequence was found in
+  the files section.
+
+-------------------------------------------------------------------
 Mon Dec  4 09:11:46 UTC 2023 - Marius Tomaschewski <mt@suse.com>
 
 - Apply upstream fix for a crash on malformed BGP UPDATE message

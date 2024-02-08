@@ -1,7 +1,7 @@
 #
 # spec file for package frr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -92,11 +92,14 @@ BuildRequires:  pkgconfig(sqlite3)
 Requires(post): %{install_info_prereq}
 Requires(pre):  %{install_info_prereq}
 Requires(pre):  shadow
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 Recommends:     logrotate
 Conflicts:      quagga
 Provides:       zebra = %{version}
 Obsoletes:      zebra < %{version}
+Provides:       group(%{frr_group})
+Provides:       group(%{frrvty_group})
+Provides:       user(%{frr_user})
 
 %description
 FRR is free software which manages TCP/IP based routing protocols.
@@ -193,25 +196,7 @@ The frr-devel package contains the header and object files necessary for
 developing OSPF-API and frr applications.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
+%autosetup -n %{name}-%{name}-%{version} -p1
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors
@@ -419,7 +404,7 @@ done
 %{_infodir}/frr.info%{?ext_info}
 %{_mandir}/man?/*
 %{_docdir}/%{name}/html
-%{_unitdir}/%%{name}.service
+%{_unitdir}/%{name}.service
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/%{name}.conf
 %dir %attr(-,%{frr_user},%{frr_group}) %{_localstatedir}/log/frr
