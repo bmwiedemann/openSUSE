@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb  7 11:42:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.4.3
+  * ci: Disable broken rust dry-runs (#4384)
+  * Fix SSLv3 detection with AWS-LC (#4361)
+  * More specific error for unexpected cert request (#4381)
+  * test: Adds SSLv3 integ test (#4372)
+  * chore: add valgrind to nix develop (#4365)
+  * test: additional test certs (#4378)
+  * chore: bindings release 0.1.2 (#4376)
+  * test: add additional test certs (#4353)
+  * feature: Use S2N_FAST_INTEG_TESTS to run
+    pytest in parallel under nix (#4368)
+  * refactor: ossl x509 parsing (#4351)
+
+-------------------------------------------------------------------
 Fri Jan 26 12:20:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4.2
