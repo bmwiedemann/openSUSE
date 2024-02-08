@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb 08 11:54:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.74.5:
+  * chore(deps): update Syft to v0.104.0 (#1704)
+  * Bump Syft in Grype to pull in unmarshaling fix (#1703)
+  * chore(deps): bump github.com/docker/docker (#1702)
+  * chore(deps): bump gorm.io/gorm from 1.25.6 to 1.25.7 (#1700)
+  * chore(deps): update bootstrap tools to latest versions (#1698)
+  * chore(deps): bump actions/upload-artifact from 4.3.0 to 4.3.1
+    (#1699)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.0 to
+    0.5.2 (#1697)
+  * chore(deps): bump peter-evans/create-pull-request from 5.0.2 to
+    6.0.0 (#1687)
+  * chore(deps): bump anchore/sbom-action from 0.15.6 to 0.15.8
+    (#1690)
+  * chore(deps): bump sigstore/cosign-installer from 3.3.0 to 3.4.0
+    (#1691)
+  * chore(deps): bump github.com/docker/docker (#1692)
+  * chore(deps): bump github.com/opencontainers/runc from 1.1.5 to
+    1.1.12 (#1689)
+
+-------------------------------------------------------------------
 Thu Feb 01 06:30:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.74.4:
