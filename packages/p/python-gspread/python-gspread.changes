@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  7 20:12:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.1:
+  * Allow client to use external Session object
+  * Remove-py-3.7-support
+  * bugfix/client export
+  * Fix oauth flow typo
+  * check oauth creds type using isinstance
+  * Fix type hints at find method in worksheet.py
+  * Fixup get empty cell value is None
+  * Fix missing attribute spreadsheet in Worksheet.
+  * update migration guide
+
+-------------------------------------------------------------------
 Tue Jan 30 12:11:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:

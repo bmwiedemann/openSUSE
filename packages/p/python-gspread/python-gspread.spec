@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gspread
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        Google Spreadsheets Python API
 License:        MIT

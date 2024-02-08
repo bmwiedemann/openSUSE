@@ -221,4 +221,21 @@
   * Feature/release 6 0 0</comment>
     <requestid>1142772</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>15a246946245b1bb800c7e995127d4f9</srcmd5>
+    <version>6.0.1</version>
+    <time>1707415338</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.1:
+  * Allow client to use external Session object
+  * Remove-py-3.7-support
+  * bugfix/client export
+  * Fix oauth flow typo
+  * check oauth creds type using isinstance
+  * Fix type hints at find method in worksheet.py
+  * Fixup get empty cell value is None
+  * Fix missing attribute spreadsheet in Worksheet.
+  * update migration guide</comment>
+    <requestid>1145003</requestid>
+  </revision>
 </revisionlist>
