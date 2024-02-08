@@ -183,4 +183,26 @@
   * Update Spain holidays</comment>
     <requestid>1140748</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>98a0c0ef30837e529178a3821e8d0ef9</srcmd5>
+    <version>0.42</version>
+    <time>1707415338</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.42:
+  * Add Ghana holidays
+  * Add Jersey holidays
+  * Update Costa Rica holidays
+  * Update Croatia holidays
+  * Update Greece holidays
+  * Update Switzerland holidays
+  * Update United Arab Emirates holidays
+  * 2020 China calendar discrepancies fix
+  * Add United Kingdom's Whit Monday holidays for pre-1971 years
+  * Unify common holidays name translation
+  * Use current version for release notes generation
+
+  * Implement Tanzania `StaticHolidays`
+  - Pre-commit v.2.0.3 (dr-p)</comment>
+    <requestid>1145004</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb  7 20:13:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.42:
+  * Add Ghana holidays
+  * Add Jersey holidays
+  * Update Costa Rica holidays
+  * Update Croatia holidays
+  * Update Greece holidays
+  * Update Switzerland holidays
+  * Update United Arab Emirates holidays
+  * 2020 China calendar discrepancies fix
+  * Add United Kingdom's Whit Monday holidays for pre-1971 years
+  * Unify common holidays name translation
+  * Use current version for release notes generation
+
+-------------------------------------------------------------------
 Tue Jan 23 03:11:25 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.41:
@@ -26,7 +42,7 @@ Tue Jan 23 03:11:25 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
   * Update Portugal holidays: add holiday categories
   * Add Maldives holidays
   * Add Tanzania holidays
-  * Implement Tanzania `StaticHolidays` 
+  * Implement Tanzania `StaticHolidays`
   * Add Laos holidays
   * Update Belarus holidays: add substituted holidays
   * Update NYSE holidays: fix Juneteenth National Independence Day start year
@@ -304,7 +320,7 @@ Thu Sep 29 01:37:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   - NG updates #486 (pietervdw115)
   - UK updates #487 (orrock, dr-p)
   - .gitignore fix #462 (TheLastProject)
-  - Pre-commit v.2.0.3 (dr-p) 
+  - Pre-commit v.2.0.3 (dr-p)
 
 -------------------------------------------------------------------
 Mon May  3 13:19:03 UTC 2021 - Matej Cepl <mcepl@suse.com>
