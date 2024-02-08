@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  7 17:05:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.29.2:
+  * Fix: ipykernel_launcher, delete absolute sys.path\[0\]
+  * fix: on exception, return a 0, so that the "sum" still
+    computes #1204 (@petervandenabeele)
+  * Fix handling of "silent" in execute request #1200 (@Haadem)
+
+-------------------------------------------------------------------
 Sun Jan 21 10:45:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.29.0

@@ -540,4 +540,16 @@
   * Support python 3.12 #1185 (@blink1073)</comment>
     <requestid>1140287</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b46c3ff8cd7c89e0a9a13d8d76cd4fd8</srcmd5>
+    <version>6.29.2</version>
+    <time>1707415308</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.29.2:
+  * Fix: ipykernel_launcher, delete absolute sys.path\[0\]
+  * fix: on exception, return a 0, so that the &quot;sum&quot; still
+    computes #1204 (@petervandenabeele)
+  * Fix handling of &quot;silent&quot; in execute request #1200 (@Haadem)</comment>
+    <requestid>1144982</requestid>
+  </revision>
 </revisionlist>
