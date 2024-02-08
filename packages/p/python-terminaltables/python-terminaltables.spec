@@ -1,7 +1,7 @@
 #
 # spec file for package python-terminaltables
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-terminaltables
-Version:        3.1.0
+Version:        3.1.10
 Release:        0
 Summary:        Module for generating tables in terminals from a nested list of strings
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/Robpol86/terminaltables
+URL:            https://github.com/matthewdeanmartin/terminaltables
 Source:         https://files.pythonhosted.org/packages/source/t/terminaltables/terminaltables-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/Robpol86/terminaltables/v%{version}/LICENSE
-BuildRequires:  %{python_module setuptools}
+Source1:        https://raw.githubusercontent.com/matthewdeanmartin/terminaltables/v%{version}/LICENSE
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry >= 0.12}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,15 +46,15 @@ list of lists of strings, and supports multi-line rows.
 
 %build
 cp %SOURCE1 LICENSE
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/*
 
 %changelog
