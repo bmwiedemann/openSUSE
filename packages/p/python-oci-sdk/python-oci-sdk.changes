@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb  8 09:00:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.121.0
+  * Support for the Globally Distributed Database service
+  * Support for secret auto-rotation in the Secret Management service
+  * Support for dedicated key management in the Key Management service
+  * Support for resource locking operations in the Digital Media service
+  * Support for data sources, including prometheus emitter, in the Management Agent service
+  * Support for Bring Your Own Certificates (BYOC) in the MySQL HeatWave Database service
+  * Models `MediaWorkflowJobFact`, `MediaWorkflowJobFactCollection` and
+    `MediaWorkflowJobFactSummary` were removed from the Digital Media service
+  * Methods `get_media_workflow_job_fact` and `list_media_workflow_job_facts`
+    were removed from the Digital Media service
+- from version 2.120.0
+  * Support for OCI Control Center service
+  * Support for giro value set for address rules in the Oracle Store Platform service
+  * Support for giro in tax information for subscriptions in the Oracle Store Platform service
+  * Support for REST connectivity with Oath2 in the Data Integration service
+  * Support for resolver rules limit increase in the DNS service
+  * Support for named credentials in the Database Management service
+  * Default retry disabled on the operations of the DNS service
+
+-------------------------------------------------------------------
 Wed Jan 24 09:59:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.119.1
