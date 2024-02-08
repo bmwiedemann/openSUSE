@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  5 19:15:02 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.3.7:
+  * Un-deprecate idn2_to_ascii_4i and make it NUL terminate output
+  * Export punycode APIs
+  * Developer visible code maintenance
+
+-------------------------------------------------------------------
 Tue Oct 25 13:55:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.3.4:

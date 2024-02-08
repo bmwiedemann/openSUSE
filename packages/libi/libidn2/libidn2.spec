@@ -2,6 +2,7 @@
 # spec file for package libidn2
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define lname	libidn2-0
 %{!?make_build: %define make_build make %{?_smp_mflags}}
 Name:           libidn2
-Version:        2.3.4
+Version:        2.3.7
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN) based on IDNA2008
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later
@@ -28,7 +29,6 @@ Source0:        https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz.sig
 Source2:        https://josefsson.org/key-20190320.txt#/%{name}.keyring
 Source3:        baselibs.conf
-Source4:        %{name}-rpmlintrc
 BuildRequires:  libunistring-devel
 BuildRequires:  pkgconfig
 
@@ -62,7 +62,7 @@ An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -83,8 +83,7 @@ rm -rf %{buildroot}/%{_datadir}/gtk-doc/
 %check
 %make_build check
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files tools
 %license COPYING*
@@ -94,14 +93,17 @@ rm -rf %{buildroot}/%{_datadir}/gtk-doc/
 %{_mandir}/man1/idn2.1%{?ext_man}
 
 %files -n %{lname}
+%license COPYING*
 %{_libdir}/libidn2.so.*
 
 %files devel
+%license COPYING*
 %{_libdir}/libidn2.so
 %{_libdir}/pkgconfig/libidn2.pc
 %{_includedir}/*.h
 %{_mandir}/man3/*
 
 %files lang -f %{name}.lang
+%license COPYING*
 
 %changelog
