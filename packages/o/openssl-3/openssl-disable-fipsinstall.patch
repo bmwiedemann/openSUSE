@@ -25,7 +25,7 @@ Index: openssl-3.1.4/apps/fipsinstall.c
      EVP_MAC *mac = NULL;
      CONF *conf = NULL;
  
-+    BIO_printf(bio_err, "This command is not enabled in the Red Hat Enterprise Linux OpenSSL build, please consult Red Hat documentation to learn how to enable FIPS mode\n");
++    BIO_printf(bio_err, "This command is not enabled in SUSE/openSUSE OpenSSL build, please see 'man 8 fips-mode-setup' to learn how to enable FIPS mode\n");
 +    return 1;
 +
      if ((opts = sk_OPENSSL_STRING_new_null()) == NULL)
@@ -309,8 +309,8 @@ Index: openssl-3.1.4/doc/man1/openssl-fipsinstall.pod.in
 -L<OSSL_PROVIDER-FIPS(7)>,
 -L<EVP_MAC(3)>
 +This command is disabled.
-+Please consult Red Hat Enterprise Linux documentation to learn how to correctly
-+enable FIPS mode on Red Hat Enterprise
++Please consult the SUSE/openSUSE documentation to learn how to correctly
++enable FIPS mode.
  
  =head1 COPYRIGHT
  
@@ -449,10 +449,10 @@ Index: openssl-3.1.4/doc/man5/fips_config.pod
 -
 -L<config(5)>
 -L<openssl-fipsinstall(1)>
-+This command is disabled in Red Hat Enterprise Linux. The FIPS provider is
++This command is disabled in SUSE/openSUSE. The FIPS provider is
 +automatically loaded when the system is booted in FIPS mode, or when the
-+environment variable B<OPENSSL_FORCE_FIPS_MODE> is set. See the documentation
-+for more information.
++environment variable B<OPENSSL_FORCE_FIPS_MODE> is set.
++See the documentation for more information.
  
  =head1 HISTORY
  

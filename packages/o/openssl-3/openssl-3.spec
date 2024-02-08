@@ -79,8 +79,10 @@ Patch23:        openssl-load-legacy-provider.patch
 Patch24:        openssl-FIPS-embed-hmac.patch
 # PATCH-FIX-UPSTREAM: bsc#1218810 CVE-2023-6237: Excessive time spent checking invalid RSA public keys
 Patch25:        openssl-CVE-2023-6237.patch
-# PATCH-FIX-SUSE bsc#1194187, bsc#1207472, bsc#1218933  - Add engines section in openssl.cnf
+# PATCH-FIX-SUSE bsc#1194187, bsc#1207472, bsc#1218933 - Add engines section in openssl.cnf
 Patch26:        openssl-3-use-include-directive.patch
+# PATCH-FIX-UPSTREAM: bsc#1219243 CVE-2024-0727: denial of service via null dereference
+Patch27:        openssl-CVE-2024-0727.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl3 = %{version}-%{release}
@@ -312,6 +314,19 @@ if [ "$1" -gt 1 ] ; then
         echo -e " the original one shipped by the package. A copy of the original" ;
         echo -e " file is packaged and named as openssl-orig.cnf if needed."
     fi
+fi
+
+%pre
+# Migrate old engines.d to engines1.1.d.rpmsave
+if [ ! -L %{ssletcdir}/engines.d ] && [ -d %{ssletcdir}/engines.d ]; then
+   mkdir %{ssletcdir}/engines1.1.d.rpmsave ||:
+   mv %{ssletcdir}/engines.d %{ssletcdir}/engines1.1.d.rpmsave ||:
+fi
+
+# Migrate old engdef.d to engdef1.1.d.rpmsave
+if [ ! -L %{ssletcdir}/engdef.d ] && [ -d %{ssletcdir}/engdef.d ]; then
+   mkdir %{ssletcdir}/engdef1.1.d.rpmsave ||:
+   mv %{ssletcdir}/engdef.d %{ssletcdir}/engdef1.1.d.rpmsave ||:
 fi
 
 %post -n libopenssl3 -p /sbin/ldconfig
