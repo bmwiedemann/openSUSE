@@ -1,7 +1,7 @@
 #
 # spec file for package monero
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,6 +90,8 @@ This package provides %{display_name}-CLI, a command line interface for %{displa
 %package -n %{daemon_name}
 Summary:        Headless daemon for %{name} crypto-currency
 Group:          Productivity/Networking/Other
+Provides:       group(%{name})
+Provides:       user(%{name})
 
 %description -n %{daemon_name}
 %{description_text_1}
