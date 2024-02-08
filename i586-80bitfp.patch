@@ -8,11 +8,11 @@ Modeled upon a similar patch for opensuse's ICU package.
  src/include/fst/float-weight.h |    4 +++-
  2 files changed, 5 insertions(+), 3 deletions(-)
 
-Index: openfst-1.8.2/configure.ac
+Index: openfst-1.8.3/configure.ac
 ===================================================================
---- openfst-1.8.2.orig/configure.ac
-+++ openfst-1.8.2/configure.ac
-@@ -156,11 +156,11 @@ AC_RUN_IFELSE([AC_LANG_PROGRAM([
+--- openfst-1.8.3.orig/configure.ac
++++ openfst-1.8.3/configure.ac
+@@ -160,10 +160,10 @@ AC_RUN_IFELSE([AC_LANG_PROGRAM([
                   #include <cstdio>
  
                   template <typename T>
@@ -20,17 +20,16 @@ Index: openfst-1.8.2/configure.ac
 +                 bool FloatEqIsReflexive(volatile T m) {
                     volatile T x = 1.111;
                     x *= m;
- 
 -                   T y = 1.111;
 +                   volatile T y = 1.111;
                     y *= m;
- 
                     return x == y;
-Index: openfst-1.8.2/src/include/fst/float-weight.h
+                  }
+Index: openfst-1.8.3/src/include/fst/float-weight.h
 ===================================================================
---- openfst-1.8.2.orig/src/include/fst/float-weight.h
-+++ openfst-1.8.2/src/include/fst/float-weight.h
-@@ -117,7 +117,9 @@ constexpr bool operator==(const FloatWei
+--- openfst-1.8.3.orig/src/include/fst/float-weight.h
++++ openfst-1.8.3/src/include/fst/float-weight.h
+@@ -121,7 +121,9 @@ constexpr bool operator==(const FloatWei
  // register may cause it to compare unequal to that same weight when
  // stored to memory. This breaks =='s reflexivity, in turn breaking
  // NaturalLess.
