@@ -1,7 +1,7 @@
 #
 # spec file for package libxfce4util
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with git
 %define libname libxfce4util7
 Name:           libxfce4util
-Version:        4.18.1
+Version:        4.18.2
 Release:        0
 Summary:        Utility Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
@@ -30,8 +30,10 @@ Source100:      %{name}-rpmlintrc
 BuildRequires:  intltool
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.66.0
 BuildRequires:  pkgconfig(vapigen)
 %if %{with git}
 BuildRequires:  xfce4-dev-tools

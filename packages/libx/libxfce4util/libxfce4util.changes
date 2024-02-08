@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  5 19:04:23 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.2
+  * Update copyright year
+  * Search for bind_textdomain_codeset in libintl too
+  * xfce-rc: Add support for the LANGUAGE environment variable
+  * Add missing config.h includes
+  * Improve checksum calculation (#17)
+  * xfce-rc: Document the fact that delimiter escaping is not
+    supported
+  * xfce-rc: Properly write translated entries when available
+  * Update bug report address
+
+-------------------------------------------------------------------
 Wed Jan 11 11:19:16 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 4.18.1
