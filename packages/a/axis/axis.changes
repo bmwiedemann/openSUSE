@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  8 12:32:59 UTC 2024 - Gus Kenion <gkenion@suse.com>
+
+ - Security fix [bsc#1218605, CVE-2023-51441] SSRF when untrusted
+   input is passed to the service admin HTTP API
+   * Added axis-CVE-2023-51441.patch
+ - Update axis-jdk11.patch, remove references to files that are
+   no longer present.
+
+-------------------------------------------------------------------
 Mon Mar 21 13:15:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Depend on the glassfish-activation-api standalone in order to

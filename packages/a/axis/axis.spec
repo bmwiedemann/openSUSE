@@ -1,7 +1,7 @@
 #
 # spec file for package axis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,8 @@ Patch8:         axis-jdk11.patch
 # PATCH-FIX-UPSTREAM bsc#1134598 CVE-2012-5784 CVE-2014-3596 missing connection hostname check against X.509 certificate name
 Patch9:         axis-CVE-2014-3596.patch
 Patch10:        unimplemented-saaj13-methods.patch
+# PATCH-FIX-UPSTREAM bsc#1218605 CVE-2023-51441 SSRF when untrusted input is passed to the service admin HTTP API
+Patch11:        axis-CVE-2023-51441.patch
 BuildRequires:  ant
 BuildRequires:  ant-jdepend
 BuildRequires:  antlr
@@ -108,6 +110,7 @@ cp %{SOURCE5} %{SOURCE6} %{SOURCE7} .
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 # Remove provided binaries
 find . "(" -name "*.jar" -o -name "*.zip" -o -name "*.class" ")" -delete

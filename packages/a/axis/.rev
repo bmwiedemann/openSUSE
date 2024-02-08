@@ -291,4 +291,12 @@
     <comment>Build against the glassfish-activation-api unconditionally</comment>
     <requestid>964405</requestid>
   </revision>
+  <revision rev="40" vrev="307">
+    <srcmd5>869e3ce45c46000fa5f3d5885e4f4f3f</srcmd5>
+    <version>1.4</version>
+    <time>1707415434</time>
+    <user>anag+factory</user>
+    <comment>bsc#1218605, CVE-2023-51441</comment>
+    <requestid>1145180</requestid>
+  </revision>
 </revisionlist>
