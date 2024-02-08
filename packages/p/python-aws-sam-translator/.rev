@@ -206,4 +206,41 @@
     <comment></comment>
     <requestid>1131347</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d3e72afb7df5b58a0d8b54202d8f6d90</srcmd5>
+    <version>1.84.0</version>
+    <time>1707415349</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.84.0:
+  * chore(schema): update by @github-actions in #3490
+  * chore(schema): update by @github-actions in #3492
+  * chore(schema): update by @github-actions in #3494
+  * chore(schema): update by @github-actions in #3497
+  * chore: Less CloudFormation Schema Update PRs by @GavinZZ in #3498
+  * chore(schema): update by @github-actions in #3499
+  * chore(schema): update by @github-actions in #3503
+  * Drop python3.7 support for SAM-T by @xazhao in #3403
+  * chore(schema): update by @github-actions in #3404
+  * fix: Raise exception when using dynamic reference in CodeUri Uri 
+    format by @GavinZZ in #3405
+  * chore: Update how we download CFN documentation by @GavinZZ in #3406
+  * chore(schema): update by @github-actions in #3409
+  * chore(schema): update by @github-actions in #3413
+  * chore(schema): update by @github-actions in #3417
+  * Merge main to develop by @xazhao in #3420
+  * chore(schema): update by @github-actions in #3424
+  * [chore]: keep cfn schema used by cfn-lint up-to-date by
+    @ssenchenko in #3425
+  * adding new appsync props by @ssenchenko in #3423
+  * chore(schema): update by @github-actions in #3427
+  * chore(schema): update by @github-actions in #3421
+  * chore(schema): update by @github-actions in #3428
+  * fix: Tags with value of False got evaluated to &quot;&quot; by
+    @ConnorRobertson in #3429
+  * chore(schema): update by @github-actions in #3430
+  * chore(schema): update by @github-actions in #3441
+  * fix: Msk Tests Failure due to Missing Permissions by @GavinZZ in #3443
+  * chore: mq tests using a valid version by @ConnorRobertson in #3442</comment>
+    <requestid>1145030</requestid>
+  </revision>
 </revisionlist>

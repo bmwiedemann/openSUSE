@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Feb  8 02:07:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.84.0:
+  * chore(schema): update by @github-actions in #3490
+  * chore(schema): update by @github-actions in #3492
+  * chore(schema): update by @github-actions in #3494
+  * chore(schema): update by @github-actions in #3497
+  * chore: Less CloudFormation Schema Update PRs by @GavinZZ in #3498
+  * chore(schema): update by @github-actions in #3499
+  * chore(schema): update by @github-actions in #3503
+  * Drop python3.7 support for SAM-T by @xazhao in #3403
+  * chore(schema): update by @github-actions in #3404
+  * fix: Raise exception when using dynamic reference in CodeUri Uri 
+    format by @GavinZZ in #3405
+  * chore: Update how we download CFN documentation by @GavinZZ in #3406
+  * chore(schema): update by @github-actions in #3409
+  * chore(schema): update by @github-actions in #3413
+  * chore(schema): update by @github-actions in #3417
+  * Merge main to develop by @xazhao in #3420
+  * chore(schema): update by @github-actions in #3424
+  * [chore]: keep cfn schema used by cfn-lint up-to-date by
+    @ssenchenko in #3425
+  * adding new appsync props by @ssenchenko in #3423
+  * chore(schema): update by @github-actions in #3427
+  * chore(schema): update by @github-actions in #3421
+  * chore(schema): update by @github-actions in #3428
+  * fix: Tags with value of False got evaluated to "" by
+    @ConnorRobertson in #3429
+  * chore(schema): update by @github-actions in #3430
+  * chore(schema): update by @github-actions in #3441
+  * fix: Msk Tests Failure due to Missing Permissions by @GavinZZ in #3443
+  * chore: mq tests using a valid version by @ConnorRobertson in #3442
+  * chore(schema): update by @github-actions in #3448
+  * chore(schema): update by @github-actions in #3450
+  * chore(schema): update by @github-actions in #3452
+  * chore(schema): update by @github-actions in #3455
+  * chore(schema): update by @github-actions in #3456
+  * chore(schema): update by @github-actions in #3461
+  * chore(schema): update by @github-actions in #3462
+  * chore(schema): update by @github-actions in #3463
+  * chore(schema): update by @github-actions in #3466
+  * chore(schema): update by @github-actions in #3467
+  * Chore:Upgrade integ tests to node to v18.x by @ConnorRobertson in #3468
+  * chore(schema): update by @github-actions in #3469
+  * fix: clearer error when a property that modifies an OpenApiDefinition
+    is set and a DefinitionBody is defined by @ConnorRobertson in #3470
+  * chore(schema): update by @github-actions in #3471
+  * fix: Allow Dynamic Reference in CodeUri Property if no / used
+    by @GavinZZ in #3472
+  * chore(schema): update by @github-actions in #3473
+  * chore(schema): update by @github-actions in #3474
+  * chore: replace nodejs14.x with nodejs18.x by @xazhao in #3401
+- Add patch no-more-utcnow-in-metrics.patch:
+  * Stop calling a deprecated method.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Dec  5 14:31:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.81.0

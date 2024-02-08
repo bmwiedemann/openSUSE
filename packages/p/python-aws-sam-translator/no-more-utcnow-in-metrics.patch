@@ -1,0 +1,38 @@
+From aca3d4dca40b8d6b48c0a0f3b4bab5b0406f9865 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 8 Feb 2024 12:58:06 +1100
+Subject: [PATCH] Use datetime.now(utc) in MetricDatum
+
+datetime.utcnow() is deprecated as of Python 3.12, and its use will
+raise a DeprecationWarning. Since warnings are treated as errors, this
+results in test failures under Python 3.12. Switch to using
+datetime.now() with a timezone.utc parameter.
+---
+ samtranslator/metrics/metrics.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/samtranslator/metrics/metrics.py b/samtranslator/metrics/metrics.py
+index d026e9c13..72da530b7 100644
+--- a/samtranslator/metrics/metrics.py
++++ b/samtranslator/metrics/metrics.py
+@@ -1,9 +1,10 @@
+ """
+ Helper classes to publish metrics
+ """
++
+ import logging
+ from abc import ABC, abstractmethod
+-from datetime import datetime
++from datetime import datetime, timezone
+ from typing import Any, Dict, List, Optional, TypedDict, Union
+ 
+ from samtranslator.internal.deprecation_control import deprecated
+@@ -114,7 +115,7 @@ def __init__(
+         self.value = value
+         self.unit = unit
+         self.dimensions = dimensions if dimensions else []
+-        self.timestamp = timestamp if timestamp else datetime.utcnow()
++        self.timestamp = timestamp if timestamp else datetime.now(timezone.utc)
+ 
+     def get_metric_data(self) -> Dict[str, Any]:
+         return {

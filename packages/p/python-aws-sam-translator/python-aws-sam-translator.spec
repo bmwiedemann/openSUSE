@@ -1,7 +1,7 @@
 #
 # spec file for package python-aws-sam-translator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,22 +27,25 @@
 %define skip_python2 1
 %endif
 Name:           python-aws-sam-translator
-Version:        1.81.0
+Version:        1.84.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0
 URL:            https://github.com/awslabs/serverless-application-model
 Source:         https://github.com/awslabs/serverless-application-model/archive/v%{version}.tar.gz#/serverless-application-model-%{version}.tar.gz
-#Patch0:         skip-tests-require-network.patch
+# PATCH-FIX-UPSTREAM gh#aws/serverless-application-model#3538
+Patch0:         no-more-utcnow-in-metrics.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-boto3 >= 1.19.5
 Requires:       python-jsonschema >= 3.2
 Requires:       python-pydantic >= 1.8
-Requires:       (python-typing_extensions >= 4.4.0 if python-base < 3.7)
+Requires:       python-typing_extensions >= 4.4.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?suse_version} < 1500
 BuildRequires:  python
@@ -74,10 +77,10 @@ sed -i -e 's:~=:>=:g' requirements/base.txt
 rm bin/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 mkdir -p %{buildroot}%{_bindir}
@@ -110,6 +113,6 @@ donttest="$donttest test_is_service_supported_positive_4_ec2"
 %license LICENSE
 %python_alternative %{_bindir}/sam-translate
 %{python_sitelib}/samtranslator
-%{python_sitelib}/aws_sam_translator-%{version}*-info
+%{python_sitelib}/aws_sam_translator-%{version}.dist-info
 
 %changelog
