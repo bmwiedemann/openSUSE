@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-extensions
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,15 +83,20 @@ export LANG=en_US.UTF-8
 export DJANGO_SETTINGS_MODULE=tests.testapp.settings
 export PYTHONPATH=${PWD}
 
+# mail_debug depends on asyncore and smtpd, which have been removed from Python 3.12
+# There is a PR upstream for this already, but it isnt well tested.
+# Remove this when https://github.com/django-extensions/django-extensions/issues/1831 is resolved.
+rm django_extensions/management/commands/mail_debug.py tests/management/commands/test_mail_debug.py
+
 skips="(PipCheckerTests and not test_pipchecker_when_requirements_file_does_not_exist)"
-# test_should_colorize_noclasses_with_default_lexer - minor html output differences
-skips="$skips or test_should_colorize_noclasses_with_default_lexer"
 # test_no_models_dot_py fails to generate a .dot file
 skips="$skips or test_no_models_dot_py"
 # missing fixtures in sdist
-skips="$skips or test_migration_is_last_applied or test_syncdata or test_validate_templates"
-# https://github.com/django-extensions/django-extensions/issues/1795
-skips="$skips or test_should_highlight_bash_syntax_without_name"
+skips="$skips or test_migration_is_last_applied or test_installed_apps_no_resolve_conflicts_function or test_validate_templates"
+
+# test_should_colorize_noclasses_with_default_lexer can sometimes fail with minor html output differences
+# when pygments is updated.  Uncomment this when that occurs, and raise an issue upstream.
+#skips="$skips or test_should_colorize_noclasses_with_default_lexer"
 
 # test_export_emails, test_set_fake_emails and test_set_fake_emails fail in setup due to missing fixtures in sdist
 %pytest -rs -v -k "not ($skips)" --ignore tests/management/commands/test_set_fake_passwords.py --ignore tests/management/commands/test_set_fake_emails.py --ignore tests/management/commands/test_export_emails.py
