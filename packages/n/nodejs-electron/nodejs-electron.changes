@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  7 15:46:36 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.3.2
+  * Fixed an issue where select-usb-device did not respect the filter option in navigator.usb.requestDevice()
+  * Add an extra field to process.versions to attach information about the build vendor
+  * Multiple security fixes for Blink, RTC and Network
+
+-------------------------------------------------------------------
 Wed Jan 31 20:57:05 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 27.3.1

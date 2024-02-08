@@ -236,7 +236,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        27.3.1
+Version:        27.3.2
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -1101,6 +1101,7 @@ find third_party/electron_node/deps/simdutf -type f ! -name "*.gn" -a ! -name "*
 # Available options: out/Release/gn args --list out/Release/
 myconf_gn=""
 myconf_gn+=' override_electron_version="%{version}"'
+myconf_gn+=' electron_vendor_version="suse:Electron for openSUSE"'
 myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" use_custom_libcxx=false"
