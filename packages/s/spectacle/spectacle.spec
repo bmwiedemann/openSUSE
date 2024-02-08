@@ -1,7 +1,7 @@
 #
 # spec file for package spectacle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,8 +70,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  cmake(kColorPicker)
-BuildRequires:  cmake(kImageAnnotator)
 Obsoletes:      kscreengenie < %{version}
 Provides:       kscreengenie = %{version}
 # Upstream changed name twice (kscreengenie - kapture - spectacle)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  7 16:00:01 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop meanwhile unneeeded BuildReqs on kColorPicker and
+  kImageAnnotator
+
+-------------------------------------------------------------------
 Tue Dec  5 14:20:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4
