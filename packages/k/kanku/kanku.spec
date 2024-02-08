@@ -22,7 +22,7 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
@@ -35,6 +35,10 @@ ExclusiveArch:  aarch64 x86_64 %{ix86}
 BuildRequires:  fdupes
 BuildRequires:  perl-macros
 BuildRequires:  systemd-rpm-macros
+
+%if 0%{?suse_version}
+BuildRequires:  sysuser-tools
+%endif
 
 # perl requires for %check
 BuildRequires:  perl(Const::Fast)
@@ -105,10 +109,16 @@ e.g. to prepare development environments or run simple tests.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version}
+%sysusers_generate_pre dist/system-user-%{kanku_user}.conf %{kanku_user} system-user-%{kanku_user}.conf
+%else
 /bin/true
+%endif
 
 %install
 %make_install DOCDIR=%{_defaultdocdir}/kanku/
+mkdir -p %{buildroot}/%{_sysusersdir}/system-user-%{kanku_user}.conf
+cp dist/system-user-%{kanku_user}.conf %{buildroot}/%{_sysusersdir}/system-user-%{kanku_user}.conf
 %fdupes %{buildroot}/opt/kanku/share
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rckanku-web
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rckanku-worker
@@ -187,9 +197,6 @@ Conflicts:      perl-DBD-SQLite-Amalgamation
 %description common
 common config and lib files used in kanku
 
-%post common
-%tmpfiles_create %_tmpfilesdir/kanku.conf
-
 %files common
 %doc README.md RELEASE-NOTES-*.md CHANGELOG.md
 
@@ -224,12 +231,6 @@ common config and lib files used in kanku
 %config /etc/kanku/templates/examples-vm/obs-server-26.tt2
 %config /etc/kanku/templates/examples-vm/sles11sp3.tt2
 %config /etc/kanku/templates/examples-vm/obs-server.tt2
-
-%dir /etc/kanku/jobs
-%dir /etc/kanku/jobs/examples
-%config /etc/kanku/jobs/examples/obs-server.yml
-%config /etc/kanku/jobs/examples/obs-server-26.yml
-%config /etc/kanku/jobs/examples/sles11sp3.yml
 
 # %exclude %dir /etc/sudoers.d
 # %ghost /etc/sudoers.d/kanku
@@ -323,10 +324,39 @@ EOF
 /etc/bash_completion.d/kanku.sh
 %ghost %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something
 
+%package -n system-user-%{kanku_user}
+Summary: System user and group %{kanku_user}/%{kanku_group}
+Group:    System/Fhs
+Provides: user(%{kanku_user})
+Provides: group(%{kanku_group})
+%if 0%{?suse_version:1}
+Requires(pre):  shadow
+%endif
+
+%if 0%{?fedora}
+%{?sysusers_requires_compat}
+%else
+%sysusers_requires
+%endif
+
+%description -n system-user-%{kanku_user}
+This package provides the system account '%{kanku_user}' and group '%{kanku_group}'.
+
+
+%if 0%{?fedora}
+%pre -n system-user-%{kanku_user}
+%sysusers_create_compat dist//system-user-%{kanku_user}.conf
+%else
+%pre -n system-user-%{kanku_user} -f %{kanku_user}.pre
+%endif
+
+%files -n system-user-%{kanku_user}
+%{_sysusersdir}/system-user-%{kanku_user}.conf
+
 %package common-server
 Summary:        Common server files or settings for kanku
 Requires(pre):  libvirt-daemon libvirt-daemon-driver-qemu
-
+Requires: user(%{kanku_user})
 %if 0%{?fedora}
 Requires(pre):  shadow-utils
 %else
@@ -338,12 +368,17 @@ This package contains common server files, settings and dependencies
 for the kanku server components like kanku-worker, kanku-dispatcher,
 kanku-web, kanku-scheduler and kanku-triggerd.
 
-%pre common-server
-getent group %{kanku_group} >/dev/null || groupadd -r %{kanku_group}
-getent passwd %{kanku_user} >/dev/null || useradd -r -g %{kanku_group} -G libvirt -d %{kanku_vardir} -s /sbin/nologin -c "user for kanku" %{kanku_user}
+%post common-server
+%tmpfiles_create %_tmpfilesdir/kanku.conf
 
 %files common-server
 %defattr(-, root, root)
+%dir /etc/kanku/jobs
+%dir /etc/kanku/job_groups
+%dir /etc/kanku/jobs/examples
+%config /etc/kanku/jobs/examples/obs-server.yml
+%config /etc/kanku/jobs/examples/obs-server-26.yml
+%config /etc/kanku/jobs/examples/sles11sp3.yml
 %dir %attr(755, kankurun, kanku) /var/lib/kanku
 %dir %attr(755, kankurun, kanku) /var/lib/kanku/db
 %dir %attr(755, kankurun, kanku) /var/cache/kanku
@@ -397,7 +432,6 @@ WebUI for kanku using perl Dancer
 /usr/share/kanku/views/login.tt
 %dir /usr/share/kanku/views/login
 /usr/share/kanku/views/login/denied.tt
-/usr/share/kanku/views/admin.tt
 /usr/share/kanku/views/settings.tt
 /usr/share/kanku/views/signup.tt
 /usr/share/kanku/views/pwreset.tt

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 05 10:08:42 UTC 2024 - FSchreiner@suse.com
+
+- Update to version 0.16.1:
+  * BUGFIXES
+    * [dist] multiple improvements in packaging for rpm based
+      distros
+
+-------------------------------------------------------------------
 Mon Dec 04 12:00:07 UTC 2023 - FSchreiner@suse.com
 
 - fixes for 0.16.0 in spec file

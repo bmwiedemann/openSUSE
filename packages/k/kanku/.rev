@@ -205,4 +205,12 @@
     <comment>updated to new upstream version 0.16.0</comment>
     <requestid>1130759</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0cd245186d210462485e6d894b409b64</srcmd5>
+    <version>0.16.1</version>
+    <time>1707415460</time>
+    <user>anag+factory</user>
+    <comment>update to upstream version 0.16.1</comment>
+    <requestid>1145212</requestid>
+  </revision>
 </revisionlist>
