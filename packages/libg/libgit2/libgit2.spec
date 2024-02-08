@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 
 %define sover 1_7
 Name:           libgit2
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        C git library
 License:        GPL-2.0-only WITH GCC-exception-2.0
@@ -82,8 +83,7 @@ find examples -type f -name ".gitignore" -print -delete
 %install
 %cmake_install
 
-%post -n %{name}-%{sover} -p /sbin/ldconfig
-%postun -n %{name}-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}-%{sover}
 
 %files -n %{name}-%{sover}
 %license COPYING

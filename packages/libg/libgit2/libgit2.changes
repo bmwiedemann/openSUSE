@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  7 19:51:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.7.2:
+  * CVE-2024-24574: infinite loop condition given specially crafted
+    inputs (boo#1219664)
+  * CVE-2024-24577: arbitrary code execution due to heap corruption
+    in git_index_add (boo#1219660)
+  * Fix a bug in the smart transport negotiation could have caused
+    an out-of-bounds read when a remote server did not advertise
+    capabilities.
+
+-------------------------------------------------------------------
 Tue Aug 15 18:56:09 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.7.1:
