@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  5 18:21:53 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmicrohttpd 1.0.0:
+  * first stable release
+  * Client request parsing was rewritten to RFC 9910 and RFC 9112
+  * Support for strict and lenient specification enforcement
+  * Digest Auth was reworked, improved support for RFC 7617
+  * Improved functionality in multi-threading environment,
+    especially with external sockets polling modes.
+  * Reworked Basic Auth, adding new convenient API functions.
+  * Re-implemented GnuTLS initialisation. Now supported
+    libmicrohttpd-specific system-wide configuration, as well as
+    generic GnuTLS system-wide configuration. Application may adjust
+    settings based on system configuration instead of specifying its
+    own full configuration.
+
+-------------------------------------------------------------------
 Wed May 31 04:59:03 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - libmicrohttpd 0.9.77:

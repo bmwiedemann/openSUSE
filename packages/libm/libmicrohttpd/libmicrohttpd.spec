@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010,2011,2012  Stephan Kleine
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +21,7 @@
 %global sover   12
 %global libname %{name}%{sover}
 Name:           libmicrohttpd
-Version:        0.9.77
+Version:        1.0.0
 Release:        0
 Summary:        Small Embeddable HTTP Server Library
 # Some internal tests are licenced as GPL-3.0+ - they are only used in
@@ -85,7 +86,7 @@ Headers, pkg-config files, so link and other development files for %{name}
 (%{summary}).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -107,13 +108,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm -v %{buildroot}%{_infodir}/%{name}_performance_data.png
 
 %check
-# Parallel execution of tests fail
-# Tests randomly fail so keep them in log for inspection rather than for valid
-# verification of anything.
-%make_build -j1 check || :
+%make_build check
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license COPYING
