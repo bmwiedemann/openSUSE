@@ -1,7 +1,7 @@
 #
 # spec file for package libmemcached
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -100,6 +100,7 @@ usage, thread safe, and provide full access to server side methods.
     -DBUILD_DOCS_HTML=OFF \
     -DBUILD_DOCS_MANGZ=ON \
     -DENABLE_SASL=ON \
+    -DCMAKE_INSTALL_DOCDIR:PATH=share/doc/packages/libmemcached \
     -DBUILD_TESTING=ON
 %cmake_build
 
@@ -122,9 +123,9 @@ rm -f %{buildroot}%{_libdir}/cmake/*/p9y*
 %postun -n libmemcachedprotocol0 -p /sbin/ldconfig
 
 %files
-%license %{_datadir}/doc/%{name}-awesome/LICENSE
-%dir %{_datadir}/doc/%{name}-awesome
-%doc %{_datadir}/doc/%{name}-awesome/*
+%license %{_docdir}/%{name}/LICENSE
+%dir %{_docdir}/%{name}
+%doc %{_docdir}/%{name}/*
 %doc %{_datadir}/%{name}-awesome/example.cnf
 %dir %{_datadir}/%{name}-awesome
 %{_bindir}/memcapable

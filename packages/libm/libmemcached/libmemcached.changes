@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  5 11:07:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- explicitly set docdir to converge cmake doc macro change
+  between leap and tumbleweed
+
+-------------------------------------------------------------------
 Mon Apr 10 18:06:30 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Re-enable SASL support (boo#1210290)
@@ -70,13 +76,13 @@ Mon Mar 31 10:46:47 UTC 2014 - lars@linux-schulserver.de
   + MEMCACHED_BEHAVIOR_RETRY_TIMEOUT can now be set to zero.
   + Numerous bug fixes.
 - remove upstreamed patch libmemcached-with-memcached.patch
-- remove outdated dist version dependencies, (build)require the 
+- remove outdated dist version dependencies, (build)require the
   needed automake >= 1.13 instead
 
 -------------------------------------------------------------------
 Sat Jan  4 23:08:40 UTC 2014 - dmueller@suse.com
 
-- use rpmoptflags 
+- use rpmoptflags
 
 -------------------------------------------------------------------
 Fri Aug  2 22:56:56 UTC 2013 - chris@computersalat.de
@@ -141,7 +147,7 @@ Wed Nov 28 19:54:51 CET 2012 - sbrabec@suse.cz
 Mon Nov 19 16:19:25 UTC 2012 - dvaleev@suse.com
 
 - fix defined but not used variable error on bigendian machines
-  (libmemcached-bigendian.patch) 
+  (libmemcached-bigendian.patch)
 
 -------------------------------------------------------------------
 Fri Oct  5 09:51:40 UTC 2012 - coolo@suse.com
@@ -173,7 +179,7 @@ Mon Aug 13 22:43:19 UTC 2012 - chris@computersalat.de
 Mon Apr 30 07:43:54 UTC 2012 - idonmez@suse.com
 
 - Update to 1.0.7
-  * Add API call for exist calls. 
+  * Add API call for exist calls.
   * Update all license files to be BSD bnc#757326
 
 -------------------------------------------------------------------
@@ -187,9 +193,9 @@ Fri Apr 13 20:54:30 UTC 2012 - tabraham@novell.com
 
 - changes from 1.0.5
   * Fixes for OSX.
-  * Version is now parsed directly in the parser, which makes buffered 
+  * Version is now parsed directly in the parser, which makes buffered
     operations now work with it..
-  * memstat has been extended so that it can be used to find the version 
+  * memstat has been extended so that it can be used to find the version
     of the server.
   * Update documentation.
   * Fixes for compile issues on Debian and Ubuntu
@@ -233,7 +239,7 @@ Sat Feb 18 04:24:39 UTC 2012 - termim@gmail.com
   * Fix in parser for port number.
 
 0.50 Mon Jun 20 10:36:57 PDT 2011
- * Updates to C++ interface 
+ * Updates to C++ interface
  * Custom free allocators need to now check for value before calling free.
  * memcached_fetch_result() now uses the internal result when available (about 25 to 50% faster).
  * Fix for stats structure.
@@ -246,7 +252,7 @@ Sat Feb 18 04:24:39 UTC 2012 - termim@gmail.com
   * New error system.
   * New flow control for messages means faster get/set calls.
   * Added new documentation system.
-  * A behavior change has been now made that if you specify a weight for any server, we enable the weight flag and do weight balancing.  
+  * A behavior change has been now made that if you specify a weight for any server, we enable the weight flag and do weight balancing.
   * Added MEMCACHED_BEHAVIOR_REMOVE_FAILED_SERVERS to simplify the setting of AUTO REJECT for servers.
 
 - update to 0.48 Tue Mar 15 23:05:18 PDT 2011
@@ -257,7 +263,7 @@ Sat Feb 18 04:24:39 UTC 2012 - termim@gmail.com
 - update to 0.47 Wed Feb 23 18:46:48 PST 2011
   * Additional fixes for OpenBSD.
   * Bug fix 677609, 456080.
-  * SIGPIPE fix for Linux send(). 
+  * SIGPIPE fix for Linux send().
   * memcapable can now test ascii or binary based on flags.
   * Additional build fixes for SASL.
 
@@ -280,7 +286,7 @@ Sat Feb 18 04:24:39 UTC 2012 - termim@gmail.com
 - update to 0.43 Wed Jul 28 16:29:47 PDT 2010
   * Added --args to memstat so that a greater range of values can be returned.
   * Prelimanary support for Windows.
-  * memcached_stat_execute() merged. 
+  * memcached_stat_execute() merged.
 
 - update to 0.42 Tue Jul  6 12:29:50 PDT 2010
   * Mistake in libtool caused issue with library version
@@ -323,8 +329,8 @@ Sat Feb 18 04:24:39 UTC 2012 - termim@gmail.com
 
 - update to 0.37 Mon Jan 11 16:29:57 PST 2010
   * Fixed build for libhashkit.
-  * Fixed install path regression.  
-  * Modified RPM to strict check install. 
+  * Fixed install path regression.
+  * Modified RPM to strict check install.
   * Added documentation for memcached_server_cursor();
   * Added memcached_servers_reset().
   * Modified memcached_st to remove dead cursor_server member.
@@ -419,5 +425,5 @@ Tue Jun  2 19:49:13 CEST 2009 - pascal.bleser@opensuse.org
 -------------------------------------------------------------------
 Thu Feb  5 02:50:16 CET 2009 - crrodriguez@suse.de
 
-- initial version 
+- initial version
 
