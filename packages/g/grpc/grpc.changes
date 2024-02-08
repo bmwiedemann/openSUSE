@@ -104,7 +104,7 @@ Wed Sep  6 16:02:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Wed Aug  9 01:02:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 1.57 (CVE-2023-4785, bsc#1215334)
+- Update to release 1.57 (CVE-2023-4785, bsc#1215334, CVE-2023-33953, bsc#1214148)
   * EventEngine: Change GetDNSResolver to return
     absl::StatusOr<std::unique_ptr<DNSResolver>>.
   * Improve server handling of file descriptor exhaustion.
