@@ -1,7 +1,7 @@
 #
 # spec file for package gap-float
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-float
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        GAP: Integration of mpfr, mpfi, mpc, fplll and cxsc in GAP
 License:        GPL-3.0-or-later
@@ -25,7 +25,6 @@ Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/float/
 #Git-Clone:	https://github.com/gap-packages/float
 Source:         https://github.com/gap-packages/float/releases/download/v%version/float-%version.tar.gz
-Patch1:         0001-fplll-fix-namespace-issue.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gap-devel >= 4.11
