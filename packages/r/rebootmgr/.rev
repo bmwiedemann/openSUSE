@@ -221,4 +221,13 @@
 - Typo fix in spec description</comment>
     <requestid>1104682</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>60e9a283ee09833f696ee93bdbaaa41d</srcmd5>
+    <version>2.2</version>
+    <time>1707415300</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.2
+  - Make sure /run/reboot-needed get's deleted after a soft-reboot</comment>
+    <requestid>1144932</requestid>
+  </revision>
 </revisionlist>

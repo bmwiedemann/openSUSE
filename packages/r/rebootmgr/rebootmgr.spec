@@ -1,7 +1,7 @@
 #
 # spec file for package rebootmgr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           rebootmgr
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -82,6 +82,7 @@ test -f /etc/rebootmgr.conf.rpmsave && mv -v /etc/rebootmgr.conf.rpmsave /etc/re
 %{_distconfdir}/rebootmgr.conf
 %endif
 %{_unitdir}/rebootmgr.service
+%{_tmpfilesdir}/soft-reboot-cleanup.conf
 %{_sbindir}/rebootmgrctl
 %{_sbindir}/rebootmgrd
 %{_sbindir}/rcrebootmgr

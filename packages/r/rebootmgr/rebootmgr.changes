@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  7 13:07:11 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.2
+  - Make sure /run/reboot-needed get's deleted after a soft-reboot
+
+-------------------------------------------------------------------
 Fri Aug 18 13:46:41 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.1
