@@ -31308,6 +31308,7 @@ unsorted:
   - python312-imageio-ffmpeg 
   - python312-imagesize 
   - python312-imbox 
+  - python312-iminuit 
   - python312-immutabledict 
   - python312-immutables 
   - python312-impacket 
@@ -31338,9 +31339,21 @@ unsorted:
   - python312-ipdb 
   - python312-iptables 
   - python312-ipy 
+  - python312-ipydatawidgets 
+  - python312-ipyevents 
+  - python312-ipyfilechooser 
   - python312-ipykernel 
+  - python312-ipyleaflet 
+  - python312-ipympl 
+  - python312-ipyscales 
+  - python312-ipysheet 
+  - python312-ipytablewidgets 
   - python312-ipython 
   - python312-ipython_genutils 
+  - python312-ipyvue 
+  - python312-ipyvuetify 
+  - python312-ipywebrtc 
+  - python312-ipywidgets 
   - python312-irc 
   - python312-isbnlib 
   - python312-isc_dhcp_leases 
@@ -31418,6 +31431,7 @@ unsorted:
   - python312-junit-xml 
   - python312-jupyter-client 
   - python312-jupyter-client7 
+  - python312-jupyter-collaboration 
   - python312-jupyter-core 
   - python312-jupyter-events 
   - python312-jupyter-kernel-test 
@@ -31428,11 +31442,14 @@ unsorted:
   - python312-jupyter-server-mathjax 
   - python312-jupyter-server-terminals 
   - python312-jupyter-server-test 
+  - python312-jupyter-sphinx 
   - python312-jupyter-ydoc 
   - python312-jupyter_console 
+  - python312-jupyterlab 
   - python312-jupyterlab-pygments 
   - python312-jupyterlab-server 
   - python312-jupyterlab-server-test 
+  - python312-jupyterlab-templates 
   - python312-jupyterlab-widgets 
   - python312-jwcrypto 
   - python312-k5test 
@@ -31556,6 +31573,7 @@ unsorted:
   - python312-limnoria 
   - python312-linecache2 
   - python312-linetable 
+  - python312-lineup-widget 
   - python312-link-traits 
   - python312-linkify-it-py 
   - python312-linstor 
@@ -31713,6 +31731,9 @@ unsorted:
   - python312-nbclassic 
   - python312-nbclient 
   - python312-nbconvert 
+  - python312-nbdime 
+  - python312-nbdime-git 
+  - python312-nbdime-hg 
   - python312-nbformat 
   - python312-nbsmoke 
   - python312-nbsphinx 
@@ -31746,6 +31767,8 @@ unsorted:
   - python312-noiseprotocol 
   - python312-nornir 
   - python312-nose2 
+  - python312-notebook 
+  - python312-notebook-shim 
   - python312-notify2 
   - python312-nox 
   - python312-ntc-templates 
@@ -32033,6 +32056,7 @@ unsorted:
   - python312-pyRFC3339 
   - python312-pyRXP 
   - python312-pyScss 
+  - python312-pyUSID 
   - python312-pyVows 
   - python312-pyacoustid 
   - python312-pyahocorasick 
@@ -32374,6 +32398,7 @@ unsorted:
   - python312-pythonfinder 
   - python312-pythonwhois 
   - python312-pythran 
+  - python312-pythreejs 
   - python312-pytidylib 
   - python312-pytils 
   - python312-pytimeparse 
@@ -32609,6 +32634,8 @@ unsorted:
   - python312-shodan 
   - python312-shortuuid 
   - python312-show-in-file-manager 
+  - python312-sidecar 
+  - python312-sidpy 
   - python312-sievelib 
   - python312-signedjson 
   - python312-simpleaudio 
@@ -32727,6 +32754,7 @@ unsorted:
   - python312-stomp.py 
   - python312-straight-plugin 
   - python312-streamdeck 
+  - python312-streamz 
   - python312-strict-rfc3339 
   - python312-strictyaml 
   - python312-stripe 
@@ -32746,6 +32774,7 @@ unsorted:
   - python312-svneverever 
   - python312-swagger-spec-validator 
   - python312-swapper 
+  - python312-swifter 
   - python312-sybil 
   - python312-sympy 
   - python312-synr 
@@ -32795,6 +32824,7 @@ unsorted:
   - python312-thespian 
   - python312-threadpoolctl 
   - python312-three-merge 
+  - python312-threevis 
   - python312-tifffile 
   - python312-time-machine 
   - python312-time-travel 
@@ -32981,6 +33011,7 @@ unsorted:
   - python312-wheezy.template 
   - python312-whichcraft 
   - python312-whitenoise 
+  - python312-widgetsnbextension 
   - python312-wikipedia 
   - python312-wirerope 
   - python312-wiring 
