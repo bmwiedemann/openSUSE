@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Feb  7 18:05:15 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.7.4:
+ * change: migrating to GTK4 preparation (GtkScrolledWindow)
+ * change: statistic report default type is now Total
+ * wish  : #2037200 add a used feature for tags like for
+   payee/categories
+ * wish  : #2044850 revert 5.7.2 print single account (statement)
+   fit to the page width
+ * wish  : #2051419 management dialogs to shows hidden items
+   by default 
+ * bugfix: template deletion was possible despite used into
+   an account
+ * bugfix: dateentry was faultly trigger double parse/eval/update
+   sequence
+ * bugfix: filter for report was faultly show always show items
+ * bugfix: update currency was not counting change to enable save
+ * bugfix: input a mindate > maxdate from the filter was possible
+   with no warning
+ * bugfix: lp#2051440 export CSV not including memo field from
+   split transactions
+ * bugfix: lp#2051349 add an existing category/payee/tag from
+   manage dialog do not warn user
+ * bugfix: lp#2051307 export CSV not including remind status
+ * bugfix: lp#2050848 skip multiple Scheduled do not refresh
+   as expected
+ * bugfix: lp#2048236 transfer are not included in forecast,
+   balance mode
+ * bugfix: lp#2047647 cross-currency transfer do not propose
+   target transaction
+ * bugfix: lp#2046157 info icon for transfers is not displayed
+ * bugfix: lp#2046032 date filter shows wrong date
+ * bugfix: lp#2043523 exclude zero-sum categories from
+   Top Spending 
+
+-------------------------------------------------------------------
 Tue Jan  2 16:15:30 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.7.3:
