@@ -1,0 +1,5 @@
+<package name="gsasl" project="openSUSE:Factory">
+  <title>The libgsasl package</title>
+  <description>The libgsasl package</description>
+  <devel project="devel:libraries:c_c++" package="gsasl"/>
+</package>
