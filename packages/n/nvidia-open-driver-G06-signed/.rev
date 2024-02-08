@@ -283,4 +283,14 @@
   installed in parallel</comment>
     <requestid>1141543</requestid>
   </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>abfddb69bf9ba2cda3f2f08fe2036f7a</srcmd5>
+    <version>545.29.06</version>
+    <time>1707415436</time>
+    <user>anag+factory</user>
+    <comment>- provide nvidia-open-driver-G06-kmp = %version (jsc#PED-7117)
+  * this makes it easy to replace the package from nVidia's
+    CUDA repository with this presigned package</comment>
+    <requestid>1145160</requestid>
+  </revision>
 </revisionlist>

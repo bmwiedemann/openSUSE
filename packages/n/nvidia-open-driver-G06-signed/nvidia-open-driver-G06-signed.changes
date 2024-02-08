@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  8 12:10:55 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- provide nvidia-open-driver-G06-kmp = %version (jsc#PED-7117)
+  * this makes it easy to replace the package from nVidia's
+    CUDA repository with this presigned package
+
+-------------------------------------------------------------------
 Thu Jan 25 14:43:26 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - splitted up 61-nvidia-$flavor.conf to 59-nvidia-$flavor.conf 
