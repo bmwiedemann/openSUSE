@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb  7 07:55:51 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade s390-tools to version 2.31 (jsc#PED-3275, jsc#PED-3223) 
+- General:
+  * common.mak: Set default C/C++ standard to gnu11/gnu++11
+- Add new tools / libraries:
+  * pvapconfig: Tool to automatically configure APQNs in SE KVM guests
+  * s390-tools: Provide pre-commit configuration
+- Changes of existing tools:
+  * cpuplugd: Adjust to CPU 0 being no longer hotpluggable
+  * dbginfo.sh: Check for Dynamic Partition Mode
+  * dbginfo.sh: Update man page and copyright
+  * rust/pv: Add user-data signing and verifying
+  * rust/pvsecret: Add user defined signatures and verifications
+  * zdev/dracut: Consolidate device configuration
+- Bug Fixes:
+  * dbginfo.sh: Fix relative path on script copy
+  * libkmipclient: Fix build with libxml2-2.12.0
+  * pvsecret: Fix panic if empty file is used as host key document
+  * rust/pv: Fix 'elided_lifetimes_in_associated_constant' warning
+
+-------------------------------------------------------------------
 Thu Feb  1 08:31:08 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated read_values.c (bsc#1219227) 

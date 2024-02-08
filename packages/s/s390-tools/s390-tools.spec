@@ -33,7 +33,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.30.0
+Version:        2.31.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt
 License:        MIT
@@ -700,6 +700,10 @@ done
 %exclude %{_mandir}/man1/zdsfs.1.gz
 %exclude %{_mandir}/man1/hmcdrvfs.1.gz
 %exclude %{_mandir}/man8/lshmc.8.gz
+###
+%dir /etc/mdevctl.d/scripts.d/
+%dir /etc/mdevctl.d/scripts.d/callouts/
+###
 
 %files -n osasnmpd -f %{_builddir}/%{name}.osasnmp
 %{_libexecdir}/net-snmp/agents/osasnmpd

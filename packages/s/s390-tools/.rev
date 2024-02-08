@@ -804,4 +804,30 @@ Build succeeded on IBS (in a home project).</comment>
     <comment></comment>
     <requestid>1143269</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>6e8a87e9e4b8d9cb5a5f099869a41986</srcmd5>
+    <version>2.31.0</version>
+    <time>1707415426</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade s390-tools to version 2.31 (jsc#PED-3275, jsc#PED-3223) 
+- General:
+  * common.mak: Set default C/C++ standard to gnu11/gnu++11
+- Add new tools / libraries:
+  * pvapconfig: Tool to automatically configure APQNs in SE KVM guests
+  * s390-tools: Provide pre-commit configuration
+- Changes of existing tools:
+  * cpuplugd: Adjust to CPU 0 being no longer hotpluggable
+  * dbginfo.sh: Check for Dynamic Partition Mode
+  * dbginfo.sh: Update man page and copyright
+  * rust/pv: Add user-data signing and verifying
+  * rust/pvsecret: Add user defined signatures and verifications
+  * zdev/dracut: Consolidate device configuration
+- Bug Fixes:
+  * dbginfo.sh: Fix relative path on script copy
+  * libkmipclient: Fix build with libxml2-2.12.0
+  * pvsecret: Fix panic if empty file is used as host key document
+  * rust/pv: Fix 'elided_lifetimes_in_associated_constant' warning
+</comment>
+    <requestid>1145132</requestid>
+  </revision>
 </revisionlist>
