@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb  7 10:58:20 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.13.1
+  * Removed private include in b2nd.h. This fixes issue #579.
+- Release 2.13.0
+  * Added a new BLOSC_FILTER_INT_TRUNC filter for truncating
+    integers to a given number of bits. This is useful for
+    compressing integers that are not using all the bits of the
+    type. See PR #577.
+  * Optimized zstd, specially when using dicts. See PR #578.
+     Initialize grok library when loading the plugin. This is
+     needed for other plugins to be able to use it without the need
+     of importing the package.
+- Release 2.12.0
+  * New blosc2_get_slice_nchunks function for getting the
+    unidimensional chunk indexes of a Blosc2 container slice.
+  * Globally registered new codec grok. This will be loaded
+    dynamically.
+
+-------------------------------------------------------------------
 Fri Dec  1 13:37:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.11.3

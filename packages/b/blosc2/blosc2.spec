@@ -1,7 +1,7 @@
 #
 # spec file for package blosc2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define major 2
 %define libname lib%{name}-%{major}
 Name:           blosc2
-Version:        2.11.3
+Version:        2.13.1
 Release:        0
 Summary:        A fast, compressed, persistent binary data store library for C
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -70,7 +70,7 @@ This package provides development libraries and headers
 for %{libname}.
 
 %prep
-%autosetup -p1 -n c-blosc2-%{version}
+%autosetup -p1 -n C-Blosc2-%{version}
 
 %build
 %cmake \
