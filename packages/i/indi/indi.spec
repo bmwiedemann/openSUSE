@@ -1,7 +1,7 @@
 #
 # spec file for package indi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} && 0%{?suse_version} < 1590
 %global force_gcc_version 12
 %endif
 
 %define so_ver 2
 Name:           indi
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -38,12 +39,12 @@ BuildRequires:  cfitsio-devel
 %else
 BuildRequires:  libcfitsio-devel
 %endif
-BuildRequires:  pugixml-devel
-BuildRequires:  liblz4-devel
 BuildRequires:  libXISF-devel
 BuildRequires:  libev-devel >= 4.33
+BuildRequires:  liblz4-devel
 BuildRequires:  libnova-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pugixml-devel
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(websocketpp)
@@ -51,8 +52,8 @@ BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(zlib)
@@ -171,7 +172,6 @@ export CXXFLAGS="$CFLAGS"
 %endif
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
 %cmake_build
-
 
 %install
 %cmake_install

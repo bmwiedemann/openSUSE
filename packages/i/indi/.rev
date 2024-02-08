@@ -7,4 +7,12 @@
     <comment>rename package libindi to indi</comment>
     <requestid>1140781</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1012bb3e8b5ec082e01ef6c0bbcbf9f0</srcmd5>
+    <version>2.0.6</version>
+    <time>1707415371</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1145063</requestid>
+  </revision>
 </revisionlist>

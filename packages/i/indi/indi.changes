@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb  1 07:20:31 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.6:
+  * Link against httplib if using system libraries 
+  * fix(actions): upgrade actions versions 
+  * Fix various typos throughout the codebase 
+  * Remove obsolete Avalon Legacy driver 
+  * TeenAstro pulse behaviour #1977 
+  * iOptron iEAF indi driver 
+  * Allow using system provided json library 
+  * Flip-flat: Allow handshake without ioctl on virtual serial connection 
+  * Fix version reporting on older Celestron NexStar mounts 
+  * PegasusAstro SaddlePowerBox
+
+-------------------------------------------------------------------
 Tue Dec  5 07:18:26 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Rename libindi to indi.
