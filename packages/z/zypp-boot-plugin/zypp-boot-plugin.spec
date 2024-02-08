@@ -1,7 +1,7 @@
 #
 # spec file for package zypp-boot-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,24 +15,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           zypp-boot-plugin
-Version:        0.0.6
+Version:        0.0.7
 Release:        0
 Summary:        Zypp plugin for checking if a reboot is needed
 License:        AGPL-3.0-or-later
 Group:          System/Packages
 URL:            https://github.com/openSUSE/zypp-boot-plugin
 Source:         zypp-boot-plugin-%{version}.tar.xz
-BuildRequires:  meson
+BuildRequires:  boost-devel
+BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gcc-c++
+BuildRequires:  grep
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_system-devel
 BuildRequires:  libeconf-devel
 BuildRequires:  libjson-c-devel
-BuildRequires:  boost-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  grep
+BuildRequires:  meson
 BuildRequires:  xsltproc
-BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  libzypp(plugin:commit)
 
 Requires:       libzypp(plugin:commit) = 1
