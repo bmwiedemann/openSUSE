@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  8 08:05:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide user/group symbol for user created during pre.
+
+-------------------------------------------------------------------
+Sun Feb  4 19:55:17 UTC 2024 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Fix build by adding Provides: user(fonehome) and group(fonehome)
+
+-------------------------------------------------------------------
 Mon Apr 18 00:27:46 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Upgrade to version 1.2.2

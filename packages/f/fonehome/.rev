@@ -129,4 +129,12 @@ See also https://bugzilla.novell.com/show_bug.cgi?id=803028#c7</comment>
   + Remove harden_fonehome.service.patch, now integrated</comment>
     <requestid>970605</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c2a75a3ba924afdf3bef5ddf9b9a2145</srcmd5>
+    <version>1.2.2</version>
+    <time>1707415392</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1145084</requestid>
+  </revision>
 </revisionlist>

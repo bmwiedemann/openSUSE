@@ -1,7 +1,7 @@
 #
 # spec file for package fonehome
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -52,6 +52,8 @@ Requires:       openssh
 Requires:       sed
 BuildArch:      noarch
 %systemd_requires
+Provides:       group(%{usergroup})
+Provides:       user(%{username})
 
 %description
 fonehome allows remote access to machines behind firewalls using SSH
@@ -177,6 +179,8 @@ install /dev/null %{buildroot}%{authkeys}
 %package server
 Summary:        Server for %{name} SSH connections
 Group:          System/Daemons
+Provides:       group(%{usergroup})
+Provides:       user(%{username})
 Requires(post): openssh
 Requires(post): sed
 Requires(post): util-linux
