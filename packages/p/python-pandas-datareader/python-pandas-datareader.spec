@@ -1,7 +1,7 @@
 #
 # spec file for package python-pandas-datareader
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 # ONLINE tests only, disable by default
 %bcond_with test
 Name:           python-pandas-datareader
@@ -29,11 +26,15 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/pandas-datareader
 Source:         https://files.pythonhosted.org/packages/source/p/pandas-datareader/pandas-datareader-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pandas-datareader-pr978.patch gh#pydata/pandas-datareader#978
+Patch0:         pandas-datareader-pr978-setup.patch
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pandas >= 0.23}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.19.0}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module versioneer}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
@@ -50,13 +51,14 @@ BuildRequires:  %{python_module wrapt}
 Remote data access for pandas. Works for multiple versions of pandas.
 
 %prep
-%setup -q -n pandas-datareader-%{version}
+%autosetup -p1 -n pandas-datareader-%{version}
+sed -i 's/\r$//' README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -73,6 +75,6 @@ popd
 %doc README.md
 %license LICENSE.md
 %{python_sitelib}/pandas_datareader
-%{python_sitelib}/pandas_datareader-%{version}*-info/
+%{python_sitelib}/pandas_datareader-%{version}.dist-info/
 
 %changelog

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  7 11:23:55 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add pandas-datareader-pr978-setup.patch because versioneer is not
+  compatible with python 3.12
+  * gh#pydata/pandas-datareader#978
+- Some of the unit tests fail when run with online connection
+  locally. There have been recent commits but no release since
+  2021. This package might not work as expected.
+
+-------------------------------------------------------------------
 Wed Jul 13 08:09:24 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Tighten %%files.
