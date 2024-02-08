@@ -1418,8 +1418,8 @@
 --- a/src/java.base/share/conf/security/java.security
 +++ b/src/java.base/share/conf/security/java.security
 @@ -83,6 +83,17 @@ security.provider.tbd=Apple
+ #endif
  security.provider.tbd=SunPKCS11
- #security.provider.tbd=SunPKCS11 ${java.home}/lib/security/nss.cfg
  
 +#
 +# Security providers used when FIPS mode support is active

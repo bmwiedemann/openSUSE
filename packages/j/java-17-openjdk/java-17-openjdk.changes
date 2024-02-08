@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb  7 14:14:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Recommend mozilla-nss-sysinit in order to have available the
+  /etc/pki/nssdb directory and its content, required in fips mode
+  (bsc#1219662)
+- Do not install our crafted nss.fips.cfg file, but use the one that
+  the build produces with our fips.patch applied
+- Removed patch:
+  * nss-security-provider.patch
+    + this DISABLED nss security provider was not used for years and
+      is largely rendered obsolete by the NSS-FIPS provider
+- Modified patch:
+  * fips.patch
+    + adapt to the removal of the nss security provider
+
+-------------------------------------------------------------------
 Wed Jan 17 14:03:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-17.0.10+7 (January 2024 CPU)

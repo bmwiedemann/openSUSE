@@ -231,4 +231,12 @@
     <comment>January 2024 CPU</comment>
     <requestid>1139476</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>56b2ff826d3d53834d46037ea3c89dc9</srcmd5>
+    <version>17.0.10.0</version>
+    <time>1707415329</time>
+    <user>anag+factory</user>
+    <comment>Fips related fixes</comment>
+    <requestid>1144978</requestid>
+  </revision>
 </revisionlist>
