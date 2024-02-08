@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  7 11:53:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.3
+  * Fix NULL config clean-up by @waahm7 in (#620)
+
+-------------------------------------------------------------------
 Fri Jan 26 11:44:47 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.14.2
