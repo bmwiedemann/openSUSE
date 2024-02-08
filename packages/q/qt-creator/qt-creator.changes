@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  7 19:14:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 12.0.2. Bugfix release:
+  * https://www.qt.io/blog/qt-creator-12.0.2-released
+- Drop patch, merged upstream:
+  * 0001-Register-AutotoolsProject-as-handler-for-Makefiles-a.patch
+
+-------------------------------------------------------------------
 Mon Jan 22 13:04:30 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix opening Makefile projects:

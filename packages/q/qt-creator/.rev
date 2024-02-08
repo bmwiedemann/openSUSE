@@ -259,4 +259,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment></comment>
     <requestid>1140783</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a57552f8ed2c8505e726974ab1b0c10a</srcmd5>
+    <version>12.0.2</version>
+    <time>1707415365</time>
+    <user>anag+factory</user>
+    <comment>Update to 12.0.2 (forwarded request 1145029 from krop)</comment>
+    <requestid>1145057</requestid>
+  </revision>
 </revisionlist>
