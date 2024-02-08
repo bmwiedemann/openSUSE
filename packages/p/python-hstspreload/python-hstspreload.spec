@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-hstspreload
-Version:        2024.1.5
+Version:        2024.2.1
 Release:        0
 Summary:        Python Chromium HSTS Preload list
 License:        BSD-3-Clause

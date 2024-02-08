@@ -62,4 +62,13 @@
 - Update to version 2022.10.1</comment>
     <requestid>1138495</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ce3a66d82e56f972d9b5248a86bd6c97</srcmd5>
+    <version>2024.2.1</version>
+    <time>1707415339</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.2.1:
+  * Automated updates to the HSTS preload list on 2024-2-1</comment>
+    <requestid>1145005</requestid>
+  </revision>
 </revisionlist>
