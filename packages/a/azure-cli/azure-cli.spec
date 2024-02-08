@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.56.0
+Version:        2.57.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -52,7 +52,7 @@ BuildRequires:  python-rpm-macros
 Requires:       azure-cli-command-modules-nspkg >= 2.0
 Requires:       azure-cli-core = %{version}
 Requires:       azure-cli-nspkg >= 3.0.3
-Requires:       python3-Fabric >= 2.4
+Requires:       python3-Fabric >= 3.2.2
 Requires:       python3-PyGithub >= 1.38
 Requires:       python3-PyNaCl >= 1.5.0
 Requires:       python3-PyYAML >= 5.1
@@ -67,7 +67,6 @@ Requires:       python3-azure-keyvault-administration >= 4.4.0~b2
 Requires:       python3-azure-keyvault-certificates >= 4.7.0
 Requires:       python3-azure-keyvault-keys >= 4.9.0~b3
 Requires:       python3-azure-keyvault-secrets >= 4.7.0
-Requires:       python3-azure-loganalytics >= 0.1.0
 Requires:       python3-azure-mgmt-advisor >= 9.0.0
 Requires:       python3-azure-mgmt-apimanagement >= 4.0.0
 Requires:       python3-azure-mgmt-appconfiguration >= 3.0.0
@@ -83,7 +82,7 @@ Requires:       python3-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       python3-azure-mgmt-compute >= 30.4.0
 Requires:       python3-azure-mgmt-containerinstance >= 10.1.0
 Requires:       python3-azure-mgmt-containerregistry >= 10.1.0
-Requires:       python3-azure-mgmt-containerservice >= 28.0.0
+Requires:       python3-azure-mgmt-containerservice >= 29.0.0
 Requires:       python3-azure-mgmt-cosmosdb >= 9.4.0
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-store >= 0.5.0
@@ -94,7 +93,7 @@ Requires:       python3-azure-mgmt-eventgrid >= 10.2.0
 Requires:       python3-azure-mgmt-eventhub >= 10.1.0
 Requires:       python3-azure-mgmt-extendedlocation >= 1.0.0b2
 Requires:       python3-azure-mgmt-hdinsight >= 9.0.0
-Requires:       python3-azure-mgmt-imagebuilder >= 1.2.0
+Requires:       python3-azure-mgmt-imagebuilder >= 1.3.0
 Requires:       python3-azure-mgmt-iotcentral >= 10.0.0b1
 Requires:       python3-azure-mgmt-iothub >= 3.0.0
 Requires:       python3-azure-mgmt-iothubprovisioningservices >= 1.1.0
@@ -113,9 +112,9 @@ Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b4
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
 Requires:       python3-azure-mgmt-rdbms >= 10.2.0b12
 Requires:       python3-azure-mgmt-recoveryservices >= 2.5.0
-Requires:       python3-azure-mgmt-recoveryservicesbackup >= 7.0.0
+Requires:       python3-azure-mgmt-recoveryservicesbackup >= 8.0.0
 Requires:       python3-azure-mgmt-redhatopenshift >= 1.4.0
-Requires:       python3-azure-mgmt-redis >= 14.2.0
+Requires:       python3-azure-mgmt-redis >= 14.3.0
 Requires:       python3-azure-mgmt-reservations >= 2.0.0
 Requires:       python3-azure-mgmt-resource >= 23.1.0~b2
 Requires:       python3-azure-mgmt-search >= 9.0
@@ -125,12 +124,13 @@ Requires:       python3-azure-mgmt-servicefabric >= 1.0.0
 Requires:       python3-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
 Requires:       python3-azure-mgmt-servicelinker >= 1.2.0~b1
 Requires:       python3-azure-mgmt-signalr >= 2.0.0~b1
-Requires:       python3-azure-mgmt-sql >= 4.0.0b13
+Requires:       python3-azure-mgmt-sql >= 4.0.0b15
 Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
 Requires:       python3-azure-mgmt-storage >= 21.1.0
 Requires:       python3-azure-mgmt-synapse >= 2.1.0b5
 Requires:       python3-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       python3-azure-mgmt-web >= 7.2.0
+Requires:       python3-azure-monitor-query >= 1.2.0
 Requires:       python3-azure-multiapi-storage >= 1.2.0
 Requires:       python3-azure-storage-common >= 1.4
 Requires:       python3-azure-synapse-accesscontrol >= 0.5.0
@@ -144,7 +144,6 @@ Requires:       python3-javaproperties >= 0.5.1
 Requires:       python3-jsondiff >= 2.0.0
 Requires:       python3-packaging >= 20.9
 Requires:       python3-pycomposefile >= 0.0.29
-Requires:       python3-pydocumentdb >= 2.0.1
 Requires:       python3-pygments >= 2.4
 Requires:       python3-scp >= 0.13.2
 Requires:       python3-semver >= 2.13.0
