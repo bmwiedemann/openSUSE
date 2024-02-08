@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  7 21:13:13 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.14.17
+ * Features
+  - languages: Enable explicit hyphen repetition handling in Croatian,
+    Czech, Portuguese, Slovak and Spanish
+  - packages: Add balancing option to makecolums command
+
+-------------------------------------------------------------------
 Sat Jan 27 15:40:31 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 0.14.16

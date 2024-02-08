@@ -220,4 +220,16 @@
  - languages: U+00A0 nbsp in French causes unexpected word breaks</comment>
     <requestid>1141973</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cdec705e83398ada900d79c5a1a79058</srcmd5>
+    <version>0.14.17</version>
+    <time>1707415344</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.17
+ * Features
+  - languages: Enable explicit hyphen repetition handling in Croatian,
+    Czech, Portuguese, Slovak and Spanish
+  - packages: Add balancing option to makecolums command</comment>
+    <requestid>1145016</requestid>
+  </revision>
 </revisionlist>
