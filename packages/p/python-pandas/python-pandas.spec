@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-pandas
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -17,13 +17,6 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test-py39"
-%define psuffix -test-py39
-%define skip_python310 1
-%define skip_python311 1
-%define skip_python312 1
-%bcond_without test
-%endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
 %define skip_python39 1

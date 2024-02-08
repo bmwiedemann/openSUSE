@@ -643,4 +643,12 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>1138851</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>0a1e74bd09ad9b7fd7912c700c1c9764</srcmd5>
+    <version>2.1.4</version>
+    <time>1707415294</time>
+    <user>anag+factory</user>
+    <comment>- enable py312 testing, remove py39 testing</comment>
+    <requestid>1144848</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  6 08:59:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- enable py312 testing, remove py39 testing 
+
+-------------------------------------------------------------------
 Fri Jan 12 11:18:40 UTC 2024 - pgajdos@suse.com
 
 - have a possibility to not use pyarrow [bsc#1218592]
