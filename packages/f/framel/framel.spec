@@ -20,7 +20,7 @@
 %define python_subpackage_only 1
 %define shlib lib%{name}8
 Name:           framel
-Version:        8.46.2
+Version:        8.47.1
 Release:        0
 Summary:        Library to manipulate Gravitational Wave Detector data in frame format
 License:        LGPL-2.1-or-later
@@ -65,7 +65,6 @@ against the frame library.
 
 %package -n python-%{name}
 Summary:        Python bindings for framel, a gravitational wave frame data library
-BuildArch:      noarch
 
 %description -n python-%{name}
 The Frame Library is a software dedicated to frame data manipulation including
@@ -104,7 +103,7 @@ export LD_LIBRARY_PATH+=:%{buildroot}%{_libdir}
 # On 32-bit machines this test segfaults
 %define skip_test_arg "-k not test_frgetvect"
 %endif
-%pytest %{?skip_test_arg}
+%pytest_arch %{?skip_test_arg}
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -125,8 +124,8 @@ export LD_LIBRARY_PATH+=:%{buildroot}%{_libdir}
 
 %files %{python_files %{name}}
 %license LICENSE
-%{python_sitelib}/Fr.py
-%{python_sitelib}/framel/
-%{python_sitelib}/framel-%{version}*-info/
+%{python_sitearch}/Fr.py
+%{python_sitearch}/framel/
+%{python_sitearch}/framel-%{version}*-info/
 
 %changelog
