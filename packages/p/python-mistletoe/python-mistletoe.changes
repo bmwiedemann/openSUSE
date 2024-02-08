@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb  7 19:39:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Add line numbers (`line_number` attribute) on all _block_
+    tokens during parsing (#188).
+  * More thorough documentation and explanation of AST and tokens
+    in the Developer's Guide (within #188).
+  * `HtmlRenderer`: Option to skip HTML tokens parsing (#74 via
+    #204). Just pass `process_html_tokens=False` to the
+    renderer's constructor.
+  * `LaTeXRenderer`: Add AMS packages for Math (#207).
+  * `MarkdownRenderer`: Penultimate lines of multiline fragments
+    being ignored (#201).
+  * `MathJaxRenderer`: Output inline math (in: `$...$`) correctly
+    (out: `\(...\)`) (#195).
+  * Make local installation work again with pip 23.2 and above
+  * `MarkdownRenderer`: Keep the original content spacing after
+    the list marker (#196 via #197).
+  * The old behavior can be enforced by passing
+    `normalize_whitespace=True` to the renderer's constructor
+  * Provided you create `ListItem`'s tokens directly via its
+    constructor, you need to pass it a new parameter called
+    `indentation` (number of spaces before the item marker):
+
+-------------------------------------------------------------------
 Thu Dec 14 09:57:00 UTC 2023 - Elisei Roca <eroca@mailbox.org>
 
 - Switch to Github for sources as they include all tests

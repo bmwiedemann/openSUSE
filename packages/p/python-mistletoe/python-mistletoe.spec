@@ -1,7 +1,7 @@
 #
 # spec file for package python-mistletoe
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mistletoe
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        A Markdown parser in pure Python
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-Pygments
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
