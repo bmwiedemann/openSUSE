@@ -918,4 +918,13 @@
   * [fix #1726] Use boto3 for SQS async requests</comment>
     <requestid>1143296</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>1d1f621fb8608de0beac67140c05914f</srcmd5>
+    <version>5.3.5</version>
+    <time>1707415396</time>
+    <user>anag+factory</user>
+    <comment>- Clean up dependencies and address RPM warnings
+</comment>
+    <requestid>1145098</requestid>
+  </revision>
 </revisionlist>
