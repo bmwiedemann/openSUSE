@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2019-2023 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2019-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.12.2
+Version:        1.12.3
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -38,7 +38,7 @@ Source11:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/axios-0.
 Source12:       https://orthanc.osimis.io/ThirdPartyDownloads/jquery-3.4.1.min.js
 Source13:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/vuejs-2.6.10.tar.gz
 
-## Patch0:         libboost.diff
+Patch0:         dcmtk.diff
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  curl-devel
@@ -79,6 +79,9 @@ BuildRequires:  pkgconfig(lua5.1)
 Requires:       dcmtk
 Requires(pre):  /usr/sbin/groupadd
 Requires(pre):  /usr/sbin/useradd
+
+Provides:       group(orthanc)
+Provides:       user(orthanc)
 
 %{?systemd_ordering}
 
@@ -125,7 +128,7 @@ This package includes the source files for Orthanc. Use it in conjunction with t
 
 %prep
 %setup -q -n Orthanc-%{version}
-## %autopatch -p1
+%autopatch -p1
 
 cp %{S:1} %{S:2} .
 
