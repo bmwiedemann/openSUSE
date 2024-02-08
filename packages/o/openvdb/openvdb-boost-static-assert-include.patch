@@ -1,0 +1,12 @@
+Index: b/openvdb/openvdb/tools/VelocityFields.h
+===================================================================
+--- a/openvdb/openvdb/tools/VelocityFields.h
++++ b/openvdb/openvdb/tools/VelocityFields.h
+@@ -25,6 +25,7 @@
+ #ifndef OPENVDB_TOOLS_VELOCITY_FIELDS_HAS_BEEN_INCLUDED
+ #define OPENVDB_TOOLS_VELOCITY_FIELDS_HAS_BEEN_INCLUDED
+ 
++#include <boost/static_assert.hpp>
+ #include <tbb/parallel_reduce.h>
+ #include <openvdb/Platform.h>
+ #include <openvdb/openvdb.h>

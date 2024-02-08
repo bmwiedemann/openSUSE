@@ -2,7 +2,7 @@
 # spec file for package openvdb
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2019-2022 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2019-2024 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,21 @@
 
 %bcond_without nanovdb
 
-%define libname libopenvdb11_0
+%define libname libopenvdb10_1
 %if 0%{suse_version} <= 1500
 # force a recent gcc version on 15.X, default would be gcc7 which is too old
 %define gcc_major 10
 %endif
 
 Name:           openvdb
-Version:        11.0.0
+Version:        10.1.0
 Release:        0
 Summary:        Sparse volume data structure and tools
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.openvdb.org
 Source:         https://github.com/AcademySoftwareFoundation/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         openvdb-boost-static-assert-include.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc%{?gcc_major}-c++ >= 9.3.1
 BuildRequires:  libboost_iostreams-devel-impl >= 1.70
@@ -46,7 +47,7 @@ BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(jemalloc)
 # 32-bit: linker errors
-ExcludeArch: %ix86 %arm32
+ExcludeArch:    %ix86 %arm32
 
 %description
 OpenVDB is a C++ library comprising a hierarchical data structure and
@@ -124,7 +125,6 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
 %{_includedir}/%{name}
 %if %{with nanovdb}
 %{_includedir}/nanovdb
-%{_includedir}/nanovdb/util
 %endif
 %{_libdir}/cmake/OpenVDB
 %{_libdir}/*.so

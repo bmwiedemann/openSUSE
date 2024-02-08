@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 31 15:06:35 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Revert to 10.1.0: the NanoVDB API changed significantly in 11.0.0,
+  and prevent Blender 4.0(.2) from building successfully
+- Apply openvdb-boost-static-assert-include.patch in order to compile
+- Keep Ben's changes, since they do not harm anyway
+
+-------------------------------------------------------------------
 Mon Jan 22 08:43:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Disable 32-bit builds "ld error: access beyond end of merged
