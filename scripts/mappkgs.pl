@@ -13,6 +13,7 @@ our $maxaddsize = 0;
 
 sub wanted
 {
+  return 0 if $File::Find::name eq "in";
   push @list, $File::Find::name;
 }
 
