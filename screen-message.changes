@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  8 12:52:48 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- remove obsolete my_gdk_rgba_parse_void.patch
+- Update to version 0.28:
+ - sm.c: Address warning -Wunused-parameter 
+ - sm.c: Address warning -Wsign-compare 
+ - sm.c: Address warning -Wreturn-type 
+ - sm.c: Address warning -Wstrict-prototypes 
+ - sm.c: Fix compilation with -std=c99
+   M_PI_2 is not part of C99.
+- Update to version 0.27:
+ - sm.6: Fix clock example for copy'n'paste (#14)
+
+-------------------------------------------------------------------
 Thu Apr 29 08:58:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.26:

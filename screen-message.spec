@@ -1,7 +1,7 @@
 #
 # spec file for package screen-message
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 
 
 Name:           screen-message
-Version:        0.26
+Version:        0.28
 Release:        0
 Summary:        Program to display a short text fullscreen
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            https://www.joachim-breitner.de/en/projects#screen-message
-Source:         https://www.joachim-breitner.de/archive/screen-message/%{name}-%{version}.tar.gz
+Source:         https://github.com/nomeata/screen-message/archive/refs/tags/0.28.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         inst-dir.patch
-# PATCH-FIX-UPSTREAM my_gdk_rgba_parse_void.patch -- fix return value of function
-Patch1:         my_gdk_rgba_parse_void.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gtk3-devel
@@ -39,8 +37,7 @@ the screen. The text can be edited while Screen Message is running.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch 0 -p1
 
 %build
 autoreconf -fi
