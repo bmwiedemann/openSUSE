@@ -1,7 +1,7 @@
 #
 # spec file for package yate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 # Copyright (c) 2011, Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -32,8 +32,10 @@ Release:        0
 Summary:        Yet Another Telephony Engine
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Clients
-URL:            http://www.yate.null.ro/
+URL:            https://yate.ro/opensource.php?page=yate
+#Git-Clone:     https://github.com/yatevoip/yate.git
 Source0:        http://yate.null.ro/tarballs/yate6/yate-%{version}-1.tar.gz
+Source1:        yate.systemd
 Patch1:         dont-mess-with-cflags.patch
 Patch2:         add-arm64-support.patch
 Patch3:         spandsp3.patch
@@ -47,6 +49,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libgsm-devel
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libcrypto)
@@ -156,10 +159,25 @@ rm -fr %{buildroot}%{_datadir}/%{name}/help
 rm %{buildroot}%{_sysconfdir}/%{name}/yate-qt4.conf
 %endif
 
+install -Dpm 0644 %{SOURCE1} %{buildroot}%{_unitdir}/yate.service
+
 %fdupes %{buildroot}/%{_prefix}
+
+%pre
+%service_add_pre yate.service
+
+%preun
+%service_del_preun yate.service
+
+%post
+%service_add_post yate.service
+
+%postun
+%service_del_postun yate.service
 
 %post   -n libyate%{sover} -p /sbin/ldconfig
 %postun -n libyate%{sover} -p /sbin/ldconfig
+
 %post qt4 -p /sbin/ldconfig
 %postun qt4 -p /sbin/ldconfig
 
@@ -301,6 +319,7 @@ rm %{buildroot}%{_sysconfdir}/%{name}/yate-qt4.conf
 %config(noreplace) %{_sysconfdir}/%{name}/ystunchan.conf
 %config(noreplace) %{_sysconfdir}/%{name}/zapcard.conf
 %config(noreplace) %{_sysconfdir}/%{name}/zlibcompress.conf
+%{_unitdir}/yate.service
 
 %files -n libyate%{sover}
 %{_libdir}/libyate.so.6*

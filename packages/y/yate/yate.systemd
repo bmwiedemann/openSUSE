@@ -1,0 +1,9 @@
+[Unit]
+Description=Next-generation telephony engine
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/yate
+
+[Install]
+WantedBy=multi-user.target
