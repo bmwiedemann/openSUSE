@@ -1,7 +1,7 @@
 #
 # spec file for package libxfce4ui
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with git
 
 Name:           libxfce4ui
-Version:        4.18.4
+Version:        4.18.5
 Release:        0
 Summary:        Widgets Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
@@ -35,10 +35,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(gladeui-2.0)
+BuildRequires:  pkgconfig(gladeui-2.0) >= 3.5.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.66.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libgtop-2.0) >= 2.24.0
@@ -133,6 +133,7 @@ This package provides the upstream look and feel for libxfce4ui.
 
 
 # this should be replaced by %%lang_package once bnc#513786 is resolved
+
 %package lang
 Summary:        Languages for package %{name}
 License:        LGPL-2.1-or-later

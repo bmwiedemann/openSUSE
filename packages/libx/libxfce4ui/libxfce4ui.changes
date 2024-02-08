@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  5 18:28:18 UTC 2029 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.5
+  * Update copyright year
+  * build: Search for bind_textdomain_codeset in libintl too
+  * sm-client: Reset SmcConnection when IceConnection is closed on
+    error
+  * docs: Improve xfce_sm_client_get()
+  * shortcuts-grabber: Fix filtering by level
+  * shortcuts-grabber: Simplify filtering by group
+  * shortcuts-grabber: Variable renaming
+  * shortcuts-grabber: Filter grabbing by key level
+  * Detect keyboard shortcuts with only single modifier keys on key
+    release
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon May 22 17:55:50 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.4
