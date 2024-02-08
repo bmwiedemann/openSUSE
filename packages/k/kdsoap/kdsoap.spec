@@ -1,7 +1,7 @@
 #
 # spec file for package kdsoap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -121,12 +121,13 @@ mkdir -p %{buildroot}%{mkspecsdir}/features
 mv %{buildroot}%{_datadir}/mkspecs/features/kdsoap.prf %{buildroot}%{mkspecsdir}/features/
 %endif
 
+# Cleanup. Only README.md and the two .pri files need to be installed
+rm -r %{buildroot}%{_datadir}
+
 %fdupes %{buildroot}%{_includedir}/KDSoapClient/
 
-%post -n libkdsoap-server%{pkg_suffix}%{lib_suffix} -p /sbin/ldconfig
-%post -n libkdsoap%{pkg_suffix}%{lib_suffix} -p /sbin/ldconfig
-%postun -n libkdsoap-server%{pkg_suffix}%{lib_suffix} -p /sbin/ldconfig
-%postun -n libkdsoap%{pkg_suffix}%{lib_suffix} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libkdsoap-server%{pkg_suffix}%{lib_suffix}
+%ldconfig_scriptlets -n libkdsoap%{pkg_suffix}%{lib_suffix}
 
 %files -n libkdsoap%{pkg_suffix}%{lib_suffix}
 %license LICENSES/MIT.txt
@@ -138,8 +139,9 @@ mv %{buildroot}%{_datadir}/mkspecs/features/kdsoap.prf %{buildroot}%{mkspecsdir}
 
 %files devel
 %license LICENSES/MIT.txt
+# the pri files are only installed for documentation purpose
+%doc README.md kdsoap.pri kdwsdl2cpp.pri
 %{_bindir}/kdwsdl2cpp%{pkg_suffix}
-%{_datadir}/doc/KDSoap%{pkg_suffix}/
 %{_includedir}/KDSoapClient/
 %{_includedir}/KDSoapServer/
 %{_libdir}/cmake/KDSoap%{pkg_suffix}

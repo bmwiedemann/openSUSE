@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  7 16:53:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Fix package docs
+
+-------------------------------------------------------------------
+Thu Jan 25 15:44:05 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix build to handle changes in (open)SUSE specific cmake macros, 
+  no user visible changes
+
+-------------------------------------------------------------------
 Mon Jan  2 21:20:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 2.1.1:
