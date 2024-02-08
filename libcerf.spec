@@ -1,7 +1,7 @@
 #
 # spec file for package libcerf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -72,7 +72,9 @@ sed -i -e 's|${prefix}/lib|@LIB_INSTALL_DIR@|' libcerf.pc.in
 %install
 %cmake_install
 mkdir -p %{buildroot}%{_docdir}/%{name}
-mv %{buildroot}%{_datadir}/doc/cerf/* %{buildroot}%{_docdir}/%{name}
+if [ -d %{buildroot}%{_datadir}/doc/cerf ]; then
+    mv %{buildroot}%{_datadir}/doc/cerf/* %{buildroot}%{_docdir}/%{name}
+fi
 %fdupes %{buildroot}%{_prefix}
 
 %post -n libcerf2 -p /sbin/ldconfig

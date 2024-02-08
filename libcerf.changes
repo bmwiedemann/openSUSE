@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  5 10:43:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- handle different doc location based on version of cmake macros
+
+-------------------------------------------------------------------
 Wed Oct 11 03:59:43 UTC 2023 - ming li <mli@suse.com>
 
 - update to 2.4:
   * CMake: runtime destination corrected (bin, not lib)
-  * CMake: removed option PORTABLE and compiler flag -march (unavailable on some architectures)
+  * CMake: removed option PORTABLE and compiler flag -march
+    (unavailable on some architectures)
 
 -------------------------------------------------------------------
 Mon May 29 19:26:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -42,7 +48,7 @@ Tue Dec 14 18:21:54 UTC 2021 - Christoph Junghans <junghans@votca.org>
 Sat Dec  4 18:23:25 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Bump v1.17
-  - Correct pkgconfig installation directory (use GNU install 
+  - Correct pkgconfig installation directory (use GNU install
     dirs, install to LIBDIR/pkgconfig
 - added 2.patch from upstream PR#2 to add cmake export
 - added fix_return.patch to fix missing return value
@@ -56,7 +62,7 @@ Wed Nov 22 16:42:07 UTC 2017 - junghans@votca.org
 -------------------------------------------------------------------
 Tue Nov 21 15:58:05 UTC 2017 - idonmez@suse.com
 
-- Fix source url 
+- Fix source url
 
 -------------------------------------------------------------------
 Fri Oct  9 20:05:30 UTC 2015 - junghans@votca.org
@@ -72,7 +78,7 @@ Fri Oct  9 20:05:30 UTC 2015 - junghans@votca.org
 -------------------------------------------------------------------
 Fri Jul 24 10:38:34 UTC 2015 - werner@suse.de
 
-- Use official upstream URL 
+- Use official upstream URL
 
 -------------------------------------------------------------------
 Mon Jul 14 16:46:08 UTC 2014 - junghans@votca.org
