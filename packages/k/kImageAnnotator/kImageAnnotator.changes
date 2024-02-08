@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Feb  3 20:21:46 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Redownload tarball, the tag got force pushed
+
+-------------------------------------------------------------------
+Tue Jan 16 17:40:14 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 0.7.0:
+  * New: Allow copying items between tabs. (#318)
+  * New: CTRL + A does not select all text typed. (#198)
+  * New: Open text edit mode when double-click on textbox figure in Text tool. (#180)
+  * New: Add reflowing capability to the text tool. (#129)
+  * New: Editing text, no mouse cursor edit functions. (#297)
+  * New: Mouse click within a text box for setting specific editing position and selecting text. (#273)
+  * Fixed: Text isn't reflowed the next line within the box and text overlaps when resizing box. (#271)
+  * Fixed: Can't wrap long text line when I resize Text box area. (#211)
+  * Fixed: Key press operations affect items across different tabs. (#319)
+  * Fixed: Clipboard cleared when new tab added. (#321)
+- Build both -Qt5 and -Qt6 flavors
+- Don't build the example
+
+-------------------------------------------------------------------
 Mon Mar 20 07:34:57 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.1

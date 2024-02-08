@@ -1,7 +1,7 @@
 #
 # spec file for package kImageAnnotator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,55 @@
 #
 
 
+%global qtver 0
+%if "@BUILD_FLAVOR@" == ""
+ExclusiveArch:  do_not_build
+%endif
+%if "@BUILD_FLAVOR@" == "qt5"
+%global qtver 5
+%endif
+%if "@BUILD_FLAVOR@" == "qt6"
+%global qtver 6
+%endif
+
 %define sover   0
-%define libname libkImageAnnotator%{sover}
+%define libname kImageAnnotator-Qt%{qtver}-%{sover}
+%if %{qtver} == 0
 Name:           kImageAnnotator
-Version:        0.6.1
+%else
+Name:           kImageAnnotator-Qt%{qtver}
+%endif
+Version:        0.7.0
 Release:        0
 Summary:        Tool for annotating images
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/ksnip/kImageAnnotator
-Source:         https://github.com/ksnip/kImageAnnotator/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/ksnip/kImageAnnotator/archive/v%{version}.tar.gz#/kImageAnnotator-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  kColorPicker-devel >= 0.2.0
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt%{qtver}LinguistTools)
+BuildRequires:  cmake(Qt%{qtver}Svg)
+BuildRequires:  cmake(Qt%{qtver}Test)
+BuildRequires:  cmake(Qt%{qtver}Widgets)
+BuildRequires:  cmake(kColorPicker-Qt%{qtver})
 BuildRequires:  pkgconfig(x11)
-%lang_package
 
 %description
 kImageAnnotator is a tool for annotating images.
 
+%package -n kImageAnnotator-lang
+Summary:        Translations for package kImageAnnotator
+Group:          System/Localization
+BuildArch:      noarch
+
+%description -n kImageAnnotator-lang
+Provides translations for the "kImageAnnotator" package.
+
 %package -n %{libname}
 Summary:        Tool for annotating images
 Group:          System/Libraries
+Recommends:     kImageAnnotator-lang
 
 %description -n %{libname}
 kImageAnnotator is a tool for annotating images.
@@ -51,32 +73,41 @@ kImageAnnotator is a tool for annotating images.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
+%if %{qtver} == 5
+Obsoletes:      kImageAnnotator-devel < %{version}
+%endif
 
 %description devel
 Development files for %{name} including headers and libraries
 
 %prep
-%setup -q
+%autosetup -p1 -n kImageAnnotator-%{version}
 
 %build
 %cmake \
-    -DBUILD_EXAMPLE=ON \
+%if %{qtver} == 6
+    -DBUILD_WITH_QT6=TRUE \
+%endif
+    -DBUILD_EXAMPLE=FALSE \
     -DCMAKE_INSTALL_DATAROOTDIR="share"
 
 %cmake_build
 
 %install
 %cmake_install
-%find_lang %{name} --with-qt
+# Both packages build and install the same locale files.
+# Keep only the Qt 5 ones (for now).
+%if %{qtver} == 5
+%find_lang kImageAnnotator --with-qt
+%else
+rm -r %{buildroot}%{_datadir}/kImageAnnotator
+%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
-%files
-%license LICENSE
-%doc CHANGELOG.md README.md
-
 %files -n %{libname}
+%license LICENSE
 %{_libdir}/lib%{name}.so.%{sover}
 %{_libdir}/lib%{name}.so.%{version}
 
@@ -85,8 +116,10 @@ Development files for %{name} including headers and libraries
 %{_libdir}/cmake/%{name}
 %{_includedir}/%{name}
 
-%files lang -f %{name}.lang
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/translations
+%if %{qtver} == 5
+%files -n kImageAnnotator-lang -f kImageAnnotator.lang
+%dir %{_datadir}/kImageAnnotator
+%dir %{_datadir}/kImageAnnotator/translations
+%endif
 
 %changelog
