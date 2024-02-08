@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb  8 06:44:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new naming scheme upstream
+- update to 24.2.0:
+  * Drop support for Python 3.9 (#4009) @audgirka
+
+-------------------------------------------------------------------
+Thu Jan 18 16:34:16 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.22.2:
+  * Bugfixes
+    - Fix key error for name[casing] rule (#3987) @ajinkyau
+    - Allow dashes in legacy role namespaces (#3962) @sur5r
+    - Use new ansible-compat verbosity levels (#3975) @ssbarnea
+    - Remove dependency on newer requests library (#3959) @ssbarnea
+    - Ignore set-property for systemd command (#3949) @alanbbr
+    - Correct requires_ansible error message (#3954) @ssbarnea
+    - Improve transformation for `no-free-form` rule (#3945)
+      @ajinkyau
+    - Documentation improvement (#3946) @ssbarnea
+    - docs: fix grammatical issue in philosophy Q&A section (#3934)
+      @davidhulick
+    - Update supported versions of ansible (#3930) @ajinkyau
+    - Fix backward compatibility (#3929) @McSim85
+    - Fix auto capitalization for name[prefix] rule (#3922)
+      @ajinkyau
+    - Fix role deps check for detecting path names (#3923)
+      @cavcrosby
+    - Avoid warnings about PATH with pipx installations (#3920)
+      @ssbarnea
+
+-------------------------------------------------------------------
 Thu Nov 30 09:36:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.22.1:
@@ -335,7 +367,7 @@ Mon May 22 05:39:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
     - Ensure that we also lint files from git submodules (#3431)
       @ssbarnea
     - Adding 2.16 to the list of allowed ansible-core versions in
-      meta-runtime rule (#3455) @alisonlhart 
+      meta-runtime rule (#3455) @alisonlhart
 
 -------------------------------------------------------------------
 Wed May 17 09:06:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
@@ -1330,7 +1362,7 @@ Tue Sep 11 09:44:47 UTC 2018 - lars@linux-schulserver.de
   + Support arbitrary number of exclude flags (KellerFuchs)
   + Fix task has name check for empty name fields (ekeih)
   + Allow vault encrypted variables in YAML files (mozz)
-  + Octal permission check improvements - readability, test 
+  + Octal permission check improvements - readability, test
     coverage and bug fixes (willthames)
   + Fix very weird bug with line numbers in some test environments (kouk)
   + Python 3 fixes for octal literals in tests (willthames)
@@ -1339,7 +1371,7 @@ Tue Sep 11 09:44:47 UTC 2018 - lars@linux-schulserver.de
 Mon May  7 11:05:23 UTC 2018 - lars@linux-schulserver.de
 
 - update to 3.4.21:
-  + Update test that allows directories to have execute but not 
+  + Update test that allows directories to have execute but not
     read bit set
   + new playbook_import statement is now also recognized
   + Allow directories to have execute but not read bit set
@@ -1383,7 +1415,7 @@ Mon Jan 22 14:47:45 UTC 2018 - boris@steki.net
 -------------------------------------------------------------------
 Wed Sep  6 08:18:15 UTC 2017 - boris@steki.net
 
-- update to 3.4.15 
+- update to 3.4.15
 
 -------------------------------------------------------------------
 Mon Mar 20 00:00:00 UTC 2017 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.12-1
