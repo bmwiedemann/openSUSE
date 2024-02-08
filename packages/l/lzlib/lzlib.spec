@@ -1,7 +1,7 @@
 #
 # spec file for package lzlib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,14 @@
 
 %define lname liblz1
 Name:           lzlib
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        LZMA Compression and Decompression Library
 License:        BSD-2-Clause AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.nongnu.org/lzip/lzlib.html
 Source:         https://download.savannah.gnu.org/releases/lzip/lzlib/%name-%version.tar.gz
-#Source2:        https://download.savannah.gnu.org/releases/lzip/lzlib/%name-%version.tar.gz.sig
+Source2:        https://download.savannah.gnu.org/releases/lzip/lzlib/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 PreReq:         %install_info_prereq
 

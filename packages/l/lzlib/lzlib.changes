@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  8 13:28:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14
+  * The option -o/--output of minilzip now preserves dates,
+    permissions, and ownership of the file when (de)compressing
+    exactly one file.
+
+-------------------------------------------------------------------
 Fri Jan 28 20:41:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13:
