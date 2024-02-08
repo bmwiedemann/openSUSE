@@ -16,7 +16,7 @@
 #
 
 
-%define VERSION_DATE 20230602
+%define VERSION_DATE 20240206
 
 Name:           permissions
 Version:        %{suse_version}_%{VERSION_DATE}
@@ -48,8 +48,6 @@ make %{?_smp_mflags} CXXFLAGS="%{optflags}"
 
 %install
 %make_install fillupdir=%{_fillupdir}
-# create directory for packages to place their drop-ins
-mkdir %{buildroot}%{_datadir}/permissions/permissions.d
 # Fix shebang in scripts: Remove dependency on /usr/bin/python3,
 # making scripts to depends on the real python3 binary, not the link.
 # (bsc#1212476)

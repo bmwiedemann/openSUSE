@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb  6 16:42:10 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Drop superfluous mkdir /usr/share/permissions/permissions.d
+  This is now created by the Makefile. See also 
+  commit 5900bc1ffe6275298ded3c96dee03a5c98e4db1c
+
+-------------------------------------------------------------------
+Tue Feb 06 11:06:15 UTC 2024 - paolo.perego@suse.com
+
+- Update to version 20240206:
+  * Whitelisting libgtop_server2 (bsc#1218921)
+  * Removing bogus whitespaces
+  * chkstat: harmonize and transform to a more compact coding and doc style
+  * gitignore: also ignore hidden ctags
+  * build: Create /usr/share/permissions/permissions.d for packagers
+  * profiles: drop /usr/sbin/lockdev which is no longer packaged in Factory
+  * profiles: drop /etc/ftpusers which is no longer shipped in netcfg
+
+-------------------------------------------------------------------
 Tue Jan 30 12:13:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Create directory /usr/share/permissions/permissions.d for packages

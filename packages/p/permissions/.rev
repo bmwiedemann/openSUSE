@@ -1495,4 +1495,23 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
     <comment></comment>
     <requestid>1142785</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>c1d3efa6339f33945a86a8103df2c662</srcmd5>
+    <version>1699_20240206</version>
+    <time>1707415320</time>
+    <user>anag+factory</user>
+    <comment>- Drop superfluous mkdir /usr/share/permissions/permissions.d
+  This is now created by the Makefile. See also 
+  commit 5900bc1ffe6275298ded3c96dee03a5c98e4db1c
+
+- Update to version 20240206:
+  * Whitelisting libgtop_server2 (bsc#1218921)
+  * Removing bogus whitespaces
+  * chkstat: harmonize and transform to a more compact coding and doc style
+  * gitignore: also ignore hidden ctags
+  * build: Create /usr/share/permissions/permissions.d for packagers
+  * profiles: drop /usr/sbin/lockdev which is no longer packaged in Factory
+  * profiles: drop /etc/ftpusers which is no longer shipped in netcfg</comment>
+    <requestid>1144679</requestid>
+  </revision>
 </revisionlist>
