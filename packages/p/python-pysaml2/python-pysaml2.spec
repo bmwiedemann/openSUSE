@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysaml2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,22 +19,21 @@
 %global modname pysaml2
 %{?sle15_python_module_pythons}
 Name:           python-pysaml2
-Version:        7.2.1
+Version:        7.4.2
 Release:        0
 Summary:        Python implementation of SAML Version 2 to be used in a WSGI environment
 License:        Apache-2.0
 URL:            https://github.com/IdentityPython/pysaml2
 Source:         https://github.com/IdentityPython/pysaml2/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM closed PR, but provides context:
-# gh#IdentityPython/pysaml2#843
-Patch0:         pymongo-4-support.patch
 BuildRequires:  %{python_module Paste}
 BuildRequires:  %{python_module cryptography >= 3.1}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module importlib-resources}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pyOpenSSL}
-BuildRequires:  %{python_module pymongo}
+BuildRequires:  %{python_module pymongo >= 3.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
@@ -42,7 +41,6 @@ BuildRequires:  %{python_module repoze.who}
 BuildRequires:  %{python_module requests >= 1.0.0}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module xmlschema >= 1.2.1}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
@@ -57,15 +55,15 @@ Requires:       python-cryptography >= 3.1
 Requires:       python-defusedxml
 Requires:       python-importlib-resources
 Requires:       python-pyOpenSSL
+Requires:       python-pymongo >= 3.5
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-repoze.who
 Requires:       python-requests >= 1.0.0
-Requires:       python-six
 Requires:       python-xmlschema >= 1.2.1
 Requires:       python-zope.interface
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # We need to have arch build to make ifarch condition below working
 # BuildArch:      noarch
 %python_subpackages
@@ -84,13 +82,14 @@ find src/ -name '*.py' -print0 | xargs -0 sed -i '1s/#!.*$//'
 rm -f tests/test_30_mdstore*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-for exec in make_metadata.py parse_xsd2.py mdexport.py merge_metadata.py ; do
+%pyproject_install
+for exec in make_metadata parse_xsd2 mdexport merge_metadata ; do
 %python_clone -a %{buildroot}%{_bindir}/$exec
 done
+%python_expand rm -r %{buildroot}%{$python_sitelib}/{saml2test,utility}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -105,18 +104,18 @@ sed -i 's:mock.mock:unittest.mock:' tests/test_52_default_sign_alg.py
 %endif
 
 %post
-%python_install_alternative make_metadata.py parse_xsd2.py mdexport.py merge_metadata.py
+%python_install_alternative make_metadata parse_xsd2 mdexport merge_metadata
 
 %postun
-%python_uninstall_alternative make_metadata.py parse_xsd2.py mdexport.py merge_metadata.py
+%python_uninstall_alternative make_metadata parse_xsd2 mdexport merge_metadata
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst CHANGELOG.md
-%python_alternative %{_bindir}/make_metadata.py
-%python_alternative %{_bindir}/parse_xsd2.py
-%python_alternative %{_bindir}/mdexport.py
-%python_alternative %{_bindir}/merge_metadata.py
+%doc README.md CHANGELOG.md
+%python_alternative %{_bindir}/make_metadata
+%python_alternative %{_bindir}/parse_xsd2
+%python_alternative %{_bindir}/mdexport
+%python_alternative %{_bindir}/merge_metadata
 %{python_sitelib}/saml2
 %{python_sitelib}/pysaml2-%{version}*-info
 
