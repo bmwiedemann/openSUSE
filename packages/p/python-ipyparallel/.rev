@@ -310,4 +310,15 @@
     notebooks in documentation) (forwarded request 1082336 from bnavigator)</comment>
     <requestid>1082337</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>5f5e16435348f8b4c9f589bdcaf0f0b1</srcmd5>
+    <version>8.6.1</version>
+    <time>1707415321</time>
+    <user>anag+factory</user>
+    <comment>- Add ipyparallel-pr859-utcnow-deprecation.patch for Python 3.12
+  gh#ipython/ipyparallel#859
+- Jupyterlab does not require notebook &lt; 7 anymore
+</comment>
+    <requestid>1144868</requestid>
+  </revision>
 </revisionlist>

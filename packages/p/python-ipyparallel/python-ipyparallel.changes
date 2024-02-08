@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  7 09:44:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add ipyparallel-pr859-utcnow-deprecation.patch for Python 3.12
+  gh#ipython/ipyparallel#859
+
+-------------------------------------------------------------------
+Sun Feb  4 13:40:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Jupyterlab does not require notebook < 7 anymore
+
+-------------------------------------------------------------------
 Sun Apr 23 21:15:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.6.1

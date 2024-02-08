@@ -1,0 +1,22 @@
+From 0654e19b1f9ba5f9b96ccf9246aa2ab1664c12fb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Gonzalo=20Tornar=C3=ADa?= <tornaria@cmat.edu.uy>
+Date: Thu, 4 Jan 2024 10:11:00 -0300
+Subject: [PATCH] fix utcnow deprecation
+
+---
+ ipyparallel/util.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ipyparallel/util.py b/ipyparallel/util.py
+index 130d8cef3..c9cc659ff 100644
+--- a/ipyparallel/util.py
++++ b/ipyparallel/util.py
+@@ -591,7 +591,7 @@ def compare_datetimes(a, b):
+ 
+ def utcnow():
+     """Timezone-aware UTC timestamp"""
+-    return datetime.utcnow().replace(tzinfo=utc)
++    return datetime.now(utc)
+ 
+ 
+ def _v(version_s):

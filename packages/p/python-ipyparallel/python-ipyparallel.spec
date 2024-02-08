@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyparallel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipyparallel
 Source:         https://files.pythonhosted.org/packages/source/i/ipyparallel/ipyparallel-%{version}.tar.gz
 Source99:       python-ipyparallel-rpmlintrc
+# PATCH-FIX-UPSTREAM ipyparallel-pr859-utcnow-deprecation.patch gh#ipython/ipyparallel#859
+Patch0:         https://github.com/ipython/ipyparallel/pull/859.patch#/ipyparallel-pr859-utcnow-deprecation.patch
 # SECTION build-system requirements
 BuildRequires:  %{python_module hatchling >= 0.25}
 BuildRequires:  %{python_module base >= 3.7}
@@ -39,8 +41,7 @@ BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module ipykernel >= 4.4}
 BuildRequires:  %{python_module ipython >= 4}
-# jupyterlab: notebook <7: jupyter-client < 8
-BuildRequires:  %{python_module jupyter-client < 8}
+BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module pyzmq >= 18}
@@ -51,7 +52,7 @@ Requires:       python-decorator
 Requires:       python-entrypoints
 Requires:       python-ipykernel >= 4.4
 Requires:       python-ipython >= 4
-Requires:       python-jupyter-client < 8
+Requires:       python-jupyter-client
 Requires:       python-psutil
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-pyzmq >= 18
@@ -60,7 +61,7 @@ Requires:       python-tqdm
 Requires:       python-traitlets >= 4.3
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     jupyter-ipyparallel = %{version}
 Provides:       python-jupyter_ipyparallel = %{version}-%{release}
 Obsoletes:      python-jupyter_ipyparallel < %{version}-%{release}
