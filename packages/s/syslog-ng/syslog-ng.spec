@@ -309,7 +309,7 @@ Obsoletes:      libevtlog-devel <= 0.2.13
 Requires:       glib2-devel
 Requires:       glibc-devel
 Requires:       libcap-devel
-Requires:       libopenssl-1_1-devel
+Requires:       libopenssl-devel
 Requires:       pcre-devel
 Requires:       systemd-devel
 

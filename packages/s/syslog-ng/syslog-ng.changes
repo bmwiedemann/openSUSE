@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 08:16:12 UTC 2024 - peter czanik <peter@czanik.hu>
+
+- fix syslog-ng-devel dependencies (boo#1219672)
+
+-------------------------------------------------------------------
 Tue Feb  6 20:22:48 UTC 2024 - peter czanik <peter@czanik.hu>
 
 - add python3-setuptools as a build requiriement 
