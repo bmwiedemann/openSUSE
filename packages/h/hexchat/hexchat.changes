@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb  8 11:04:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.16.2:
+  + change /server to use TLS by default, use -insecure or the -
+    prefix on the port to disable.
+  + change preferences dialog to be modal.
+  + add support for the extended-monitor capability.
+  + add support for SCRAM SASL mechanisms.
+  + add option to hide nick from window title.
+  + increase max server password length to 1024.
+  + fix some detecting some URLs causing a crash.
+  + fix long SASL auth strings not being split.
+  + fix PROTOCOL_NAMESX support and only use it when not using
+    multi-prefix.
+  + fix dialog topic not being updated with CHGHOST.
+  + fix notify.conf being reversed when saved.
+  + lua: fix crash when using pluginprefs.
+  + python: fix API break in hook_timer().
+  + python: fix timers that unhook themselves.
+  + checksum: Various improvements including not blocking the UI.
+
+-------------------------------------------------------------------
 Mon Dec 12 11:46:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix execution on i586: the migration script is installed in

@@ -1,7 +1,7 @@
 #
 # spec file for package hexchat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           hexchat
-Version:        2.16.1
+Version:        2.16.2
 Release:        0
 Summary:        A graphical IRC (chat) client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/IRC
 URL:            https://hexchat.github.io/
-Source0:        https://dl.%{name}.net/%{name}/%{name}-%{version}.tar.xz
+Source0:        https://github.com/hexchat/hexchat/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        hexchat-migrate-sh
 # PATCH-FEATURE-SLE migrate-configuration-from-xchat.patch tyang@suse.com fate#318480 -- replace xchat with hexchat
 Patch1:         migrate-configuration-from-xchat.patch
