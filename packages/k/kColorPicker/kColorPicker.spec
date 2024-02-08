@@ -1,7 +1,7 @@
 #
 # spec file for package kColorPicker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,35 @@
 #
 
 
+%global qtver 0
+%if "@BUILD_FLAVOR@" == ""
+ExclusiveArch:  do_not_build
+%endif
+%if "@BUILD_FLAVOR@" == "qt5"
+%global qtver 5
+%endif
+%if "@BUILD_FLAVOR@" == "qt6"
+%global qtver 6
+%endif
+
 %define sover   0
-%define libname libkColorPicker%{sover}
+%define libname libkColorPicker-Qt%{qtver}-%{sover}
+%if %{qtver} == 0
 Name:           kColorPicker
-Version:        0.2.0
+%else
+Name:           kColorPicker-Qt%{qtver}
+%endif
+Version:        0.3.0
 Release:        0
 Summary:        Qt based Color Picker with popup menu
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/DamirPorobic/kColorPicker
-Source:         https://github.com/DamirPorobic/kColorPicker/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/DamirPorobic/kColorPicker/archive/v%{version}.tar.gz#/kColorPicker-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt%{qtver}Test)
+BuildRequires:  cmake(Qt%{qtver}Widgets)
 
 %description
 QToolButton with color popup menu with lets you select a color. The popup
@@ -50,26 +64,40 @@ popup menu.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
+%if %{qtver} == 5
+Obsoletes:      kColorPicker-devel < %{version}
+%endif
 
 %description devel
 Development files for %{name} including headers and libraries
 
 %prep
-%setup -q
+%autosetup -p1 -n kColorPicker-%{version}
 
 %build
-%cmake
+%cmake \
+%if %{qtver} == 6
+    -DBUILD_WITH_QT6=TRUE \
+%endif
+    -DBUILD_TESTS=TRUE \
+    -DBUILD_EXAMPLE=FALSE
+
 %make_jobs
 
 %install
 %cmake_install
+
+%check
+export QT_QPA_PLATFORM=offscreen
+%ctest
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
 %license LICENSE
-%{_libdir}/lib%{name}.so.*
+%{_libdir}/lib%{name}.so.%{sover}
+%{_libdir}/lib%{name}.so.%{sover}.*
 
 %files devel
 %doc README.md

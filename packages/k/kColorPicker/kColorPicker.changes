@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 16 17:14:48 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 0.3.0:
+  * Port away from deprecated QLayout API
+  * Add support for Qt 6
+- Build both Qt5 and Qt6 flavors
+- Build and run unittests
+
+-------------------------------------------------------------------
 Mon May 23 07:37:10 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 0.2.0
