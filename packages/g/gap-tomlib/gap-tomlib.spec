@@ -1,7 +1,7 @@
 #
 # spec file for package gap-tomlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-tomlib
-Version:        1.2.9
+Version:        1.2.11
 Release:        0
 Summary:        GAP: Library of Tables of Marks
 License:        GPL-2.0-or-later
@@ -27,8 +27,8 @@ URL:            https://gap-packages.github.io/tomlib
 Source:         https://github.com/gap-packages/tomlib/releases/download/v%version/tomlib-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.4
 Requires:       gap-atlasrep >= 1.5
+Requires:       gap-core >= 4.4
 Suggests:       gap-ctbllib >= 1.1
 
 %description
