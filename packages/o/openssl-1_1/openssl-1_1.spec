@@ -19,8 +19,8 @@
 %define ssletcdir %{_sysconfdir}/ssl
 %define maj_min 1.1
 %define _rname  openssl
-%global sslengcnf %{ssletcdir}/engines1_1.d
-%global sslengdef %{ssletcdir}/engdef1_1.d
+%global sslengcnf %{ssletcdir}/engines1.1.d
+%global sslengdef %{ssletcdir}/engdef1.1.d
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 # Enable livepatching support for SLE15-SP4 onwards. It requires
 # compiler support introduced there.
@@ -192,6 +192,8 @@ Patch114:       openssl-Improve-performance-for-6x-unrolling-with-vpermxor-i.pat
 Patch115:       openssl-CVE-2023-5678.patch
 # PATCH-FIX-OPENSUSE skip SHA1 test in FIPS mode
 Patch116:       openssl-Skip_SHA1-test-in-FIPS-mode.patch
+# PATCH-FIX-UPSTREAM: bsc#1219243 CVE-2024-0727: denial of service via null dereference
+Patch117:       openssl-CVE-2024-0727.patch
 BuildRequires:  jitterentropy-devel >= 3.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
@@ -458,6 +460,46 @@ mv %{buildroot}%{_libdir}/.libcrypto.so.%{maj_min}.temphmac %{buildroot}%{_libdi
 unset LD_LIBRARY_PATH
 
 }}
+
+%pre
+# Migrate old engines.d to engines1.1.d.rpmsave
+if [ ! -L %{ssletcdir}/engines.d ] && [ -d %{ssletcdir}/engines.d ]; then
+    mkdir %{ssletcdir}/engines1.1.d.rpmsave ||:
+    mv -v %{ssletcdir}/engines.d/* %{ssletcdir}/engines1.1.d.rpmsave ||:
+    rmdir %{ssletcdir}/engines.d ||:
+fi
+
+# Migrate old engdef.d to engdef1.1.d.rpmsave
+if [ ! -L %{ssletcdir}/engdef.d ] && [ -d %{ssletcdir}/engdef.d ]; then
+    mkdir %{ssletcdir}/engdef1.1.d.rpmsave ||:
+    mv -v %{ssletcdir}/engdef.d/* %{ssletcdir}/engdef1.1.d.rpmsave ||:
+    rmdir %{ssletcdir}/engdef.d ||:
+fi
+
+%posttrans
+# Restore engines1.1.d.rpmsave to engines1.1.d
+if [ -d %{ssletcdir}/engines1.1.d.rpmsave ]; then
+    mv -v %{ssletcdir}/engines1.1.d.rpmsave/* %{ssletcdir}/engines1.1.d ||:
+    rmdir %{ssletcdir}/engines1.1.d.rpmsave ||:
+fi
+
+# Restore engdef1.1.d.rpmsave to engdef1.1.d
+if [ -d %{ssletcdir}/engdef1.1.d.rpmsave ]; then
+    mv -v %{ssletcdir}/engdef1.1.d.rpmsave/* %{ssletcdir}/engdef1.1.d ||:
+    rmdir %{ssletcdir}/engdef1.1.d.rpmsave ||:
+fi
+
+# Move engines1_1.d to engines1.1.d
+if [ -d %{ssletcdir}/engines1_1.d ]; then
+    mv -v %{ssletcdir}/engines1_1.d/* %{ssletcdir}/engines1.1.d ||:
+    rmdir %{ssletcdir}/engines1_1.d ||:
+fi
+
+# Move engdef1_1.d to engdef1.1.d
+if [ -d %{ssletcdir}/engdef1_1.d ]; then
+    mv -v %{ssletcdir}/engdef1_1.d/* %{ssletcdir}/engdef1.1.d ||:
+    rmdir %{ssletcdir}/engdef1_1.d ||:
+fi
 
 %post -n libopenssl1_1 -p /sbin/ldconfig
 %postun -n libopenssl1_1 -p /sbin/ldconfig

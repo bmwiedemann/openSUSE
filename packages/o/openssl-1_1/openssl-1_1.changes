@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  5 16:29:26 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Rename engines directories to the same name like in SLE:
+    /etc/ssl/engines1_1.d -> /etc/ssl/engines1.1.d
+    /etc/ssl/engdef1_1.d -> /etc/ssl/engdef1.1.d
+  * Add migration script to move files (bsc#1219562)
+    /etc/ssl/engines.d/* -> /etc/ssl/engines1.1.d
+    /etc/ssl/engdef.d/* -> /etc/ssl/engdef1.1.d
+
+-------------------------------------------------------------------
+Tue Jan 30 14:15:25 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security fix: [bsc#1219243, CVE-2024-0727]
+  * Add NULL checks where ContentInfo data can be NULL
+  * Add openssl-CVE-2024-0727.patch
+
+-------------------------------------------------------------------
 Mon Jan 22 09:34:28 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Because OpenSSL 1.1.1 is no longer default, let's rename engine
