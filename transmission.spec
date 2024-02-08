@@ -16,24 +16,20 @@
 #
 
 
+%define qt5_version    5.6
+%define glibmm_version 2.60.0
 # Ninja has greater speed than GNU Make. And it provides better error output.
 %bcond_without ninja
 %bcond_with    webui
-
-%define qt5_version    5.6
-%define glibmm_version 2.60.0
-
 %if %{with ninja}
 %define __builder ninja
 #BuildIgnore:     make
 %endif
-
 %if %{with webui}
 %define webui_opt ON
 %else
 %define webui_opt OFF
 %endif
-
 Name:           transmission
 Version:        4.0.5
 Release:        0
@@ -43,10 +39,10 @@ Group:          Productivity/Networking/Other
 URL:            https://www.transmissionbt.com/
 Source0:        https://github.com/transmission/transmission/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        README.openSUSE
+Source98:       transmission-user.conf
 Source99:       %{name}.rpmlintrc
 # PATCH-FEATURE-OPENSUSE harden_transmission-daemon.service.patch
 Patch0:         harden_transmission-daemon.service.patch
-
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -59,6 +55,7 @@ BuildRequires:  libminiupnpc-devel
 BuildRequires:  libpsl-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
 BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
@@ -71,6 +68,10 @@ BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.10.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib) >= 1.2.3
+Requires:       %{name}-common = %{version}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Provides:       %{name}-ui = %{version}
 %if %{with ninja}
 BuildRequires:  ninja
 %endif
@@ -78,16 +79,19 @@ BuildRequires:  ninja
 BuildRequires:  npm >= 8.1.307
 %endif
 
-Requires:       %{name}-common = %{version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Provides:       %{name}-ui = %{version}
-
 %description
 Transmission is a BitTorrent client. It has GTK+ and Qt GUI clients,
 a daemon for servers and headless use, and both can be remote
 controlled by HTTP and the terminal. It supports Local Peer
 Discovery, DHT, µTP, PEX and magnet links.
+
+%package -n system-user-transmission
+Summary:        System user and group transmission
+BuildArch:      noarch
+%sysusers_requires
+
+%description -n system-user-transmission
+System user for use by the transmission service
 
 %package gtk
 Summary:        GTK client for the "transmission" BitTorrent client
@@ -138,8 +142,6 @@ Discovery, DHT, µTP, PEX and magnet links.
 %package daemon
 Summary:        Daemon for the "transmission" BitTorrent client
 Group:          Productivity/Networking/Other
-Provides:       group(transmission)
-Provides:       user(transmission)
 %{?systemd_requires}
 
 %description daemon
@@ -165,6 +167,8 @@ cp %{SOURCE1} .
     -D ENABLE_WEB=%{webui_opt}
 %cmake_build
 
+%sysusers_generate_pre %{SOURCE98} transmission system-user-transmission.conf
+
 %install
 %cmake_install
 
@@ -188,11 +192,11 @@ ln -s -f %{_sysconfdir}/alternatives/transmission.1.gz \
 # fix doc
 rm -rf %{buildroot}%{_datadir}/doc/transmission
 
+install -D -m 0644 %{SOURCE98} %{buildroot}%{_sysusersdir}/system-user-transmission.conf
+
+%pre -n system-user-transmission -f build/transmission.pre
+
 %pre daemon
-getent group transmission >/dev/null || groupadd -r transmission
-getent passwd transmission >/dev/null || \
-    useradd -r -g transmission -d %{_localstatedir}/lib/transmission \
-        -s /sbin/nologin -c "Transmission BT daemon user" transmission
 %service_add_pre transmission-daemon.service
 
 %post daemon
@@ -332,5 +336,8 @@ fi
 %dir %{_datadir}/%{name}/translations
 # English translations should be generally available
 %exclude %{_datadir}/%{name}/translations/transmission_en.qm
+
+%files -n system-user-transmission
+%{_sysusersdir}/system-user-transmission.conf
 
 %changelog
