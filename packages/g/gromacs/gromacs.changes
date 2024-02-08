@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  2 16:41:46 UTC 2024 - Christoph Junghans <junghans@votca.org>
+
+- Aarch64: fix tests and enable neon support
+- Tests have race condition, run them serially
+
+-------------------------------------------------------------------
 Thu Feb  1 01:58:30 UTC 2024 - Christoph Junghans <junghans@votca.org>
 
 - Update to 2024

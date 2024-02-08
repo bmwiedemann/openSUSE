@@ -188,11 +188,13 @@ sed -i -e '/set(CMAKE_BUILD_WITH_INSTALL_RPATH/ s@.*@# \0@' CMakeLists.txt
 %setup_openmpi
 %endif
 
+%global acce None
 %ifarch %x86 x86_64
 #increase to SSE4.1, AVX_128_FMA, AVX_256 when possible
-%define acce SSE2
-%else
-%define acce None
+%global acce SSE2
+%endif
+%ifarch aarch64
+%global simd ARM_NEON_ASIMD
 %endif
 
 # Avoid oversubscription, some tests run with 2 Ranks locally
@@ -265,18 +267,8 @@ rm -f %{buildroot}%{_bindir}/gmx-completion*
 
 %check
 %if %{with tests}
-%ifarch %{ix86}
-# Precision problems on x86, https://gitlab.com/gromacs/gromacs/-/issues/2584
-export GTEST_FILTER=:-LinearChainDataFixture:Polarize/ListedForcesTest
-%endif
-%ctest --exclude-regex 'physicalvalidationtests|regression|2Rank|TwoRanks'
-# Each OneRank/TwoRanks test pair uses the same temporary files, run separately
-%ctest --tests-regex '2Rank|TwoRanks'
-%ifarch %{ix86}
-  %ctest --tests-regex regression --exclude-regex regressiontests/complex --parallel 1
-%else
-  %ctest --tests-regex regression --parallel 1
-%endif
+# parallel test are broken, gl#gromacs/gromacs#4975
+%ctest --parallel 1
 %endif
 
 %post   -n %{libname_gromacs} -p /sbin/ldconfig
