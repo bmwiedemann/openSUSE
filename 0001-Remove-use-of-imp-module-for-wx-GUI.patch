@@ -1,0 +1,38 @@
+From 5a42e2e3be862d82fa3804eebf2e0d90756b7fcc Mon Sep 17 00:00:00 2001
+From: Ludovic Rousseau <ludovic.rousseau@free.fr>
+Date: Fri, 22 Dec 2023 12:56:00 +0100
+Subject: [PATCH] Remove use of imp module for wx (GUI)
+
+The module "imp" has been removed in Python 3.12
+https://docs.python.org/dev/whatsnew/3.12.html#imp
+
+Thanks to Christian Hesse for the bug report
+Closes: https://github.com/LudovicRousseau/pyscard/issues/161
+---
+ smartcard/wx/__init__.py | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/smartcard/wx/__init__.py b/smartcard/wx/__init__.py
+index 3ecde07..5c57f46 100644
+--- a/smartcard/wx/__init__.py
++++ b/smartcard/wx/__init__.py
+@@ -22,15 +22,13 @@ along with pyscard; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ """
+ 
+-import imp
+ import os.path
+ import sys
+ 
+ 
+ def main_is_frozen():
+     return(hasattr(sys, "frozen") or \
+-           hasattr(sys, "importers") or \
+-           imp.is_frozen("__main__"))
++           hasattr(sys, "importers"))
+ 
+ 
+ ICO_SMARTCARD = None
+-- 
+2.43.0
+
