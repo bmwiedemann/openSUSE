@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-ckeditor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-ckeditor
-Version:        6.7.0
+Version:        6.7.1
 Release:        0
 Summary:        Django admin CKEditor integration
 License:        BSD-3-Clause

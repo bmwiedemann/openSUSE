@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  8 13:09:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.7.1:
+  * Add Python 3.12, Django 5.0
+  * Silence the CKEditor version check/nag but include a system
+    check warning
+
+-------------------------------------------------------------------
 Tue Nov 14 12:42:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.7.0:

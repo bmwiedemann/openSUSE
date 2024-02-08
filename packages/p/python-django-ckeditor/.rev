@@ -101,4 +101,15 @@
   * Fixed the CKEditor styles when used with the dark Django admin theme.</comment>
     <requestid>1125875</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8b84a62e6f75982ff89580191f4fdf7b</srcmd5>
+    <version>6.7.1</version>
+    <time>1707415450</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.7.1:
+  * Add Python 3.12, Django 5.0
+  * Silence the CKEditor version check/nag but include a system
+    check warning</comment>
+    <requestid>1145182</requestid>
+  </revision>
 </revisionlist>
