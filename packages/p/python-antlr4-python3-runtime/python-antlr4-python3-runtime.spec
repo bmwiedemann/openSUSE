@@ -32,7 +32,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{python3_version_nodots} < 35
 Requires:       python-typing
@@ -48,6 +48,8 @@ This package contains the runtime for Python 3.
 %prep
 %setup -q -n antlr4-%{version}/runtime/Python3
 cp %{SOURCE1} LICENSE.txt
+# fixing for python 3.12
+sed -i 's,self.assertEquals,self.assertEqual,' tests/Test*
 
 %build
 %pyproject_wheel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 09:57:35 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- fix build for python 3.12
+
+-------------------------------------------------------------------
 Wed Jan  3 09:41:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools
