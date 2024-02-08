@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  7 16:27:25 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to support newer kImageAnnotator:
+  * 0001-Support-building-against-kImageAnnotator-Qt5-as-well.patch
+
+-------------------------------------------------------------------
 Tue Dec  5 14:19:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4

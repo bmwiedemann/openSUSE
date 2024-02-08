@@ -1,0 +1,36 @@
+From c3b867c3c1801aa654446c0a456aa2008fadd499 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 7 Feb 2024 17:25:50 +0100
+Subject: [PATCH] Support building against kImageAnnotator-Qt5 as well
+
+Got renamed upstream, detect both versions.
+Quick and dirty patch.
+---
+ CMakeLists.txt | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4104d717..e47ce691 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -167,10 +167,14 @@ endif()
+ 
+ if (QT_MAJOR_VERSION STREQUAL "5")
+     find_package(kImageAnnotator)
+-    set_package_properties(kImageAnnotator PROPERTIES URL "https://github.com/ksnip/kImageAnnotator" DESCRIPTION "The kImageAnnotator library provides tools to annotate" TYPE REQUIRED)
+-    if(kImageAnnotator_FOUND)
++    find_package(kImageAnnotator-Qt5)
++    set_package_properties(kImageAnnotator PROPERTIES URL "https://github.com/ksnip/kImageAnnotator" DESCRIPTION "The kImageAnnotator library provides tools to annotate" TYPE OPTIONAL)
++    set_package_properties(kImageAnnotator-Qt5 PROPERTIES URL "https://github.com/ksnip/kImageAnnotator" DESCRIPTION "The kImageAnnotator library provides tools to annotate" TYPE OPTIONAL)
++    if(kImageAnnotator_FOUND OR kImageAnnotator-Qt5_FOUND)
++        set(kImageAnnotator_FOUND 1)
+         set(KIMAGEANNOTATOR_FOUND 1)
+-        find_package(kColorPicker REQUIRED)
++        find_package(kColorPicker)
++        find_package(kColorPicker-Qt5)
+         if(NOT kImageAnnotator_VERSION VERSION_LESS 0.5.0)
+             set(KIMAGEANNOTATOR_CAN_LOAD_TRANSLATIONS 1)
+         endif()
+-- 
+2.43.0
+

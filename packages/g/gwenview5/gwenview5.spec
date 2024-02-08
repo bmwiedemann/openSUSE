@@ -1,7 +1,7 @@
 #
 # spec file for package gwenview5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Support-building-against-kImageAnnotator-Qt5-as-well.patch
 BuildRequires:  cfitsio-devel
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
@@ -37,8 +39,11 @@ BuildRequires:  libexiv2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  (cmake(kColorPicker) or cmake(kColorPicker-Qt5))
+BuildRequires:  (cmake(kImageAnnotator) or cmake(kImageAnnotator-Qt5))
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Baloo)
 BuildRequires:  cmake(KF5DocTools)
@@ -61,14 +66,11 @@ BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5WaylandClient)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  cmake(kImageAnnotator)
-BuildRequires:  cmake(kColorPicker)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  libqt5-qtbase-private-headers-devel
 %requires_ge    libQt5Core5
 Provides:       gwenview = %{version}
 Obsoletes:      gwenview < %{version}
