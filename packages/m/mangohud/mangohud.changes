@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Feb  8 07:12:13 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Added implot to versioned directory to allow build
+- Update to version 0.7.1:
+  * Parameters:
+    - gamepad_battery has been reworked to device_battery. This
+      parameter current supports the values gamepad and mouse time
+      now has a title
+    - fps_metrics takes a decimal value or "avg". e.g avg,0.001 and
+      displays the metrics
+    - winesync shows the current implementation of synchronization
+      primitives. E.g ESYNC/FSYNC etc
+    - present_mode shows the current vulkan present mode or vsync
+      status in opengl
+  * Changes:
+    - added support for gpu load on Adreno GPUs
+    - added cpu temp for zenpower3 module
+    - meson option: mangoplot
+  * Fixes:
+    - xnvctrl: fix an issue that could cause crashing when
+    accessing gpu fan speed
+    - fixed an issue where no config present wouldn't use default
+      mangohud presets
+    - fixed a crashing issue with CS2
+    - reworked intel code. Should resolve some issues where
+      mangohud didn't shutting down properly when using intel gpu
+    - fix opengl runtime on musl libc systems
+    - fixed text_outline_color incorrectly using BGR instead of RGB
+
+-------------------------------------------------------------------
 Fri Oct 20 05:11:35 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Restored mangoapp package.
