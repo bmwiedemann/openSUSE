@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:10:11 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.2.8:
+  * Rename option '--verify-on-error' to '--check-on-error'.
+    Rename option '--verify-input-size' to '--check-input-size'.
+    Remove synonym '--exit-on-error'.
+  * Issue a final fsync to prevent early exit if kernel caches
+    writes.
+  * Show mapfile names at verbosity == 0.
+
+-------------------------------------------------------------------
 Tue Jan 24 07:21:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 1.2.7:
