@@ -26,4 +26,19 @@
   * Fix sdist is missing tests</comment>
     <requestid>1088463</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9d949e593398e45901e35874185afcf9</srcmd5>
+    <version>2.0.3</version>
+    <time>1707415314</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.3:
+  * Update port.yml (linkify-it v5.0.0)
+  * Fix rtd
+  * Add linkify-it-py-demo url
+  * Fix package build
+
+  https://github.com/tsutsu3/linkify-it-py/compare/v1.0.2...v2.0.0
+- initial commit of python-linkify-it-py at version 1.0.2</comment>
+    <requestid>1145006</requestid>
+  </revision>
 </revisionlist>
