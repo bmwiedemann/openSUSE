@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  7 21:20:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Adhere to shared library naming guidelines,
+  rename libieee12843 to libieee1284-3
+- Move documentation to -devel subpackage,
+  it is not essential for the shared library
+
+-------------------------------------------------------------------
 Mon Feb 20 13:53:08 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Specfile cleanup

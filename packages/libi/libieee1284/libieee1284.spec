@@ -1,7 +1,7 @@
 #
 # spec file for package libieee1284
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 %define sover 3
-%define soname %{sover}
-%define libname libieee1284%{soname}
+%define libname libieee1284-%{sover}
 Name:           libieee1284
 Version:        0.2.11
 Release:        0
 Summary:        A Library for Interfacing IEEE 1284-Compatible Devices
 License:        GPL-2.0-or-later AND MIT
-Group:          System/Libraries
+Group:          Development/Libraries/C and C++
 URL:            https://cyberelk.net/tim/software/libieee1284/
 #Git-Clone:     https://github.com/twaugh/libieee1284.git
 Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
@@ -53,6 +52,9 @@ application does not have to care.
 %package -n %{libname}
 Summary:        A Library for Interfacing IEEE 1284-Compatible Devices
 Group:          System/Libraries
+%if "%sover" == "3"
+Obsoletes:      libieee12843 < %{version}-%{release}
+%endif
 
 %description -n %{libname}
 This library is intended to be used by applications that need to
@@ -69,8 +71,7 @@ Development files for libieee1284, a Library for Interfacing IEEE
 1284-Compatible Devices.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 cp %{SOURCE1} .
 
 %build
@@ -83,8 +84,9 @@ cp %{SOURCE1} .
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # create symbolic links to the actual library
-ln -sf %{buildroot}/%{_libdir}/libieee1284.so.3.2.1 libieee1284.so.3
-ln -sf %{buildroot}/%{_libdir}/libieee1284.so.3.2.1 libieee1284.so
+pwd
+#ln -sf %{buildroot}/%{_libdir}/libieee1284.so.3.2.1 libieee1284.so.3
+#ln -sf %{buildroot}/%{_libdir}/libieee1284.so.3.2.1 libieee1284.so
 %fdupes -s %{buildroot}
 
 %post   -n %{libname} -p /sbin/ldconfig
@@ -92,10 +94,10 @@ ln -sf %{buildroot}/%{_libdir}/libieee1284.so.3.2.1 libieee1284.so
 
 %files -n %{libname}
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README TODO
 %{_libdir}/libieee1284.so.%{sover}*
 
 %files devel
+%doc AUTHORS ChangeLog NEWS README TODO
 %doc interface.pdf
 %{_bindir}/libieee1284_test
 %{_includedir}/ieee1284.h
