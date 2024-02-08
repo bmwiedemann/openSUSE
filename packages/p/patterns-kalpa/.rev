@@ -28,4 +28,21 @@
 - Added TPM2.0 packages (boo#1218439)</comment>
     <requestid>1139813</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ec062c42815dd081f62943867cfacb3f</srcmd5>
+    <version>5.0</version>
+    <time>1707415333</time>
+    <user>anag+factory</user>
+    <comment>- Added &quot;Requires: kdnssd&quot;
+  * Adds zeroconf functionality to KIO for things like network
+  printing
+
+- Added &quot;Requires: gvfs and gvfs-backends&quot; (boo#1216667)
+  * Needed for use with many flatpaks like dejadup and others
+
+- Added &quot;Requires: steam-devices&quot;
+  * Negates need for users to install through t-u, and is harmless
+  on it's own.</comment>
+    <requestid>1145274</requestid>
+  </revision>
 </revisionlist>

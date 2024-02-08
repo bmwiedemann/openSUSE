@@ -355,6 +355,7 @@ Requires:       kcm_sddm
 # Add for mounting network shares in userspace (boo#1210125)
 Requires:       kio-fuse
 Requires:       kdenetwork-filesharing
+Requires:       kdnssd
 
 # Add kcm_flatpak for managing flatpak permissions (boo#1208256)
 Requires:       kcm_flatpak
@@ -364,6 +365,13 @@ Requires:       pam_kwallet
 
 # KDE Connect to communicate to phone devices
 Requires:       kdeconnect-kde
+
+# Add gvfs and gvfs-backends for usability with some flatpaks (boo#1216667)
+Requires:       gvfs
+Requires:       gvfs-backends
+
+# Add steam-devices to negate users needing to after install
+Requires:       steam-devices
 
 # Warn when apps are using all inotify watches and prompts the user to raise it
 Requires:       kde-inotify-survey

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:40:24 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added "Requires: kdnssd"
+  * Adds zeroconf functionality to KIO for things like network
+  printing
+
+-------------------------------------------------------------------
+Thu Feb  1 21:00:04 UTC 2024 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Added "Requires: gvfs and gvfs-backends" (boo#1216667)
+  * Needed for use with many flatpaks like dejadup and others
+
+-------------------------------------------------------------------
+Tue Jan 30 19:01:13 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added "Requires: steam-devices"
+  * Negates need for users to install through t-u, and is harmless
+  on it's own.
+
+-------------------------------------------------------------------
 Thu Jan 18 15:46:42 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Removed:
