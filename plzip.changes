@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  8 13:34:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11
+  * The option -o/--output now preserves dates, permissions, and
+    ownership of the file when (de)compressing exactly one file.
+  * The option -o/--output now creates missing intermediate
+    directories when writing to a file.
+
+-------------------------------------------------------------------
 Sun Feb 13 22:37:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.10
