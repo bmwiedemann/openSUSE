@@ -74,4 +74,18 @@
     <comment></comment>
     <requestid>1116828</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2eb9df37346d0f24b7e2e730f4800f7d</srcmd5>
+    <version>2.4</version>
+    <time>1707415297</time>
+    <user>anag+factory</user>
+    <comment>- handle different doc location based on version of cmake macros
+
+  * CMake: removed option PORTABLE and compiler flag -march
+    (unavailable on some architectures)
+  - Correct pkgconfig installation directory (use GNU install
+- Fix source url
+- Use official upstream URL</comment>
+    <requestid>1144849</requestid>
+  </revision>
 </revisionlist>
