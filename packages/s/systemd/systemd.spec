@@ -676,8 +676,6 @@ refer to %{_testsuitedir}/integration-tests/README.testsuite.
 Summary:        Experimental systemd features
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
-# Needed by ukify
-Requires:       python3-pefile
 %systemd_requires
 # fdisk is a build requirement for repart
 BuildRequires:  pkgconfig(fdisk)

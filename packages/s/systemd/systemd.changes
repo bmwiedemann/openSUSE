@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  6 14:48:27 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Drop python3-pefile dependency from the experimental package. MicroOs is fond
+  of the experimental stuff but OTOH it doesn't ship python3. Let's drop the
+  dependency for now, users of ukify are invited to install python3-pe manually.
+
+-------------------------------------------------------------------
+Tue Feb  6 13:31:09 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Move systemd-reboot.service from udev to the main package as this service is
+  useful in containers.
+
+-------------------------------------------------------------------
 Tue Jan 23 13:44:21 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Add patches that implement [jsc#PED-5659]
@@ -36,6 +49,10 @@ Fri Jan 12 10:12:15 UTC 2024 - Franck Bui <fbui@suse.com>
 Fri Jan 12 09:34:14 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit 67a5ac1043417d900bf417a884372ae14a96ef69 (merge of v254.8)
+
+  It includes the following fix:
+
+    029272750f resolved: actually check authenticated flag of SOA transaction (bsc#1218297 CVE-2023-7008)
 
   For a complete list of changes, visit:
   https://github.com/openSUSE/systemd/compare/071ac409a0564863657d8f8a5a35e6a4f914695f...67a5ac1043417d900bf417a884372ae14a96ef69

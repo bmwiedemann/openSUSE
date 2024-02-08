@@ -325,7 +325,6 @@
 %{_unitdir}/systemd-pstore.service
 %{_unitdir}/systemd-quotacheck.service
 %{_unitdir}/systemd-random-seed.service
-%{_unitdir}/systemd-reboot.service
 %{_unitdir}/systemd-remount-fs.service
 %{_unitdir}/systemd-rfkill.service
 %{_unitdir}/systemd-rfkill.socket

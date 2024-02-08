@@ -7010,4 +7010,20 @@ handle manual pages that consist only of a .so directive such as
   eventually moved to the git repo.</comment>
     <requestid>1141007</requestid>
   </revision>
+  <revision rev="414" vrev="4">
+    <srcmd5>9da529369a1202b78de43d0c97cae51f</srcmd5>
+    <version>254.8</version>
+    <time>1707415301</time>
+    <user>anag+factory</user>
+    <comment>- Drop python3-pefile dependency from the experimental package. MicroOs is fond
+  of the experimental stuff but OTOH it doesn't ship python3. Let's drop the
+  dependency for now, users of ukify are invited to install python3-pe manually.
+
+- Move systemd-reboot.service from udev to the main package as this service is
+  useful in containers.
+
+  It includes the following fix:
+    029272750f resolved: actually check authenticated flag of SOA transaction (bsc#1218297 CVE-2023-7008)</comment>
+    <requestid>1144939</requestid>
+  </revision>
 </revisionlist>

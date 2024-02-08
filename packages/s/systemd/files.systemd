@@ -603,6 +603,7 @@
 %{_unitdir}/systemd-logind.service
 %{_unitdir}/systemd-machine-id-commit.service
 %{_unitdir}/systemd-poweroff.service
+%{_unitdir}/systemd-reboot.service
 %{_unitdir}/systemd-soft-reboot.service
 %{_unitdir}/systemd-sysctl.service
 %{_unitdir}/systemd-sysext.service
