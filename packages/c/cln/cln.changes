@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  8 12:58:06 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.3.7
+  * Fixed compilation on ARM platforms.
+  * Add support for LoongArch.
+
+-------------------------------------------------------------------
 Mon Sep 21 11:16:22 UTC 2020 - pgajdos@suse.com
 
 - remove -fvisibility-inlines-hidden for now [bsc#1176710]

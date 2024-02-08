@@ -1,7 +1,7 @@
 #
 # spec file for package cln
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cln
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        Class Library for Numbers (C++)
 License:        GPL-2.0-or-later
@@ -110,6 +110,7 @@ make %{?_smp_mflags} check
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
