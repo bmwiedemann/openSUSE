@@ -15,4 +15,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>946496</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a99599c406b0b929a42843edd2b9c1cc</srcmd5>
+    <version>6.0.1</version>
+    <time>1707415431</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-python-312-test.patch from https://github.com/Cornices/cornice/commit/61e209d9bc946563bd7dc645a8a65f14d94246f1.patch to fix Python 3.12 build, see https://github.com/Cornices/cornice/issues/581
+</comment>
+    <requestid>1145145</requestid>
+  </revision>
 </revisionlist>

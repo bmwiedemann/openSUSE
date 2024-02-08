@@ -1,7 +1,7 @@
 #
 # spec file for package python-cornice
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,11 @@ URL:            https://cornice.readthedocs.io/
 # use github URL for docs and tests
 Source:         https://github.com/Cornices/cornice/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #Source:         https://files.pythonhosted.org/packages/source/c/cornice/cornice-%%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+# PATCH-FIX-UPSTREAM fix-python-312-test.patch -- from https://github.com/Cornices/cornice/commit/61e209d9bc946563bd7dc645a8a65f14d94246f1 see https://github.com/Cornices/cornice/issues/581
+Patch0:         https://github.com/Cornices/cornice/commit/61e209d9bc946563bd7dc645a8a65f14d94246f1.patch#/fix-python-312-test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 # SECTION tests
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module WebTest}
@@ -50,6 +52,7 @@ Provides helpers to build & document Web Services with Pyramid.
 
 %prep
 %setup -q -n cornice-%{version}
+%patch 0 -p1
 chmod -x docs/source/tutorial.rst
 
 %build
