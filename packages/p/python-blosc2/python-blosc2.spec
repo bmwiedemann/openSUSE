@@ -1,7 +1,7 @@
 #
 # spec file for package python-blosc2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-blosc2
-Version:        2.3.2
+Version:        2.5.1
 Release:        0
 Summary:        Python wrapper for the C-Blosc2 library
 License:        BSD-3-Clause
@@ -35,7 +35,7 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(blosc2) >= 2.11.3
+BuildRequires:  pkgconfig(blosc2) >= 2.13.1
 Requires:       python-msgpack
 Requires:       python-ndindex >= 1.4
 Requires:       python-numpy >= 1.20.3
