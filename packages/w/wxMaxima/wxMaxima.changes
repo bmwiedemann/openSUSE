@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Feb  5 13:17:59 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 24.02.0:
+  * Faster start-up
+  * Better performance directly after startup
+  * Faster loading of files
+  * Better button placement in sidebars
+  * Got rid of a crash on startup in fedora
+    (gh#wxmaxima-developers/wxmaxima#1862)
+  * Clear wxMaxima's input buffer on starting a new maxima process
+    (gh#wxmaxima-developers/wxmaxima#1856)
+  * A nicer ChangeLog dialogue
+  * Corrected for swapped row and columns in wizard enter matrix
+  * Fixed a few bugs in the XML saving code
+    (gh#wxmaxima-developers/wxmaxima#1867)
+  * Zooming did cause recalculation only for the 1st cell
+    (gh#wxmaxima-developers/wxmaxima#1870)
+  * Many config changes now have immediately effect on the
+    worksheet
+  * Added the unicode-enhanced ASCII art from maxima to the menus
+  * Steamlined the cell size calculation stuff
+  * Completely overhauled the printing functionality
+  * Moved more of the help file indexing to the background
+    (gh#wxmaxima-developers/wxmaxima#1856)
+  * Better event handling in the unicode sidebars
+    (gh#wxmaxima-developers/wxmaxima#1875, #1863)
+  * Reading out the values of maxima variables for the GUI was
+    broken
+  * Many checkmarks in menus had the wrong value
+  * Maxima's demos are now available in the menu and context menu
+  * Default the filter search boxes to text search, not regex
+  * Rescaling affected size calculations for code only with a
+    delay
+  * Mac Os: way higher stability if multiple windows are open
+  * The context menu in the "greek letters" sidebar now works
+    (gh#wxmaxima-developers/wxmaxima#1878)
+  * Resolved an assert if the internal help browser was disabled,
+  * but requested (gh#wxmaxima-developers/wxmaxima#1881)
+  * wxMaxima now preserves history entries between sessions
+  * Better LibreOffice compatibility with the MathML output
+  * Better HTML output
+  * Fix crash when exporting a worksheet with animations to TeX
+  * Resolved a crash on closing a window
+    (gh#wxmaxima-developers/wxmaxima#1889)
+
+-------------------------------------------------------------------
 Mon Dec 25 11:21:46 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 23.12.0:
