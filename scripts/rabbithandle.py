@@ -100,7 +100,7 @@ for line in watchtail(sys.stdin):
         process.communicate(info.encode('utf-8'))
         subprocess.call(["git", "pull", "--rebase"], cwd=mappedpkg)
         subprocess.call(["git", "rebase", "--skip"], cwd=mappedpkg) # handle conflict
-        subprocess.call(["git", "push", "origin"], cwd=mappedpkg)
+        subprocess.call(["git", "push", "--set-upstream", "origin", "master"], cwd=mappedpkg)
     count += 1
     #if os.environ.get('SSH_AUTH_SOCK') and (count%4) == 0:
     #    subprocess.call(["git", "push"])
