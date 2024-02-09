@@ -238,4 +238,12 @@
     <comment>Removal of -lang recommends (forwarded request 768609 from dimstar)</comment>
     <requestid>768675</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>43c2e54250cc411591eff9ddfc9de1ab</srcmd5>
+    <version>0.10.0</version>
+    <time>1707519147</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145233</requestid>
+  </revision>
 </revisionlist>
