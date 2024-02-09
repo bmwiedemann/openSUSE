@@ -1,7 +1,7 @@
 #
 # spec file for package python-cassandra-driver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,12 +42,19 @@ BuildRequires:  %{python_module sure}
 BuildRequires:  fdupes
 BuildRequires:  libev-devel
 BuildRequires:  python-rpm-macros
+%if 0%{?suse_version} >= 1600
+# The classic "if %%python-base > 3.11" made the build unresolvable (at least for me). Sorry for this, feel free to rewrite.
+BuildRequires:  python312-pyasyncore
+%endif
 Requires:       python-Cython
 Requires:       python-geomet >= 0.1
 Requires:       python-six >= 1.9
 Recommends:     python-Twisted
 Recommends:     python-eventlet
 Recommends:     python-gevent
+%if 0%{?python_version_nodots} > 311
+Requires:       python-pyasyncore
+%endif
 %if %{with python2}
 BuildRequires:  python2-futures
 %endif
@@ -73,6 +80,8 @@ rm -rf tests/unit/cython
 rm -f tests/unit/test_types.py
 # fix hardcoded cython dep
 sed -i -e 's:Cython>=0.20,!=0.25,<0.29:Cython:g' setup.py
+# fix tests on Python 3.12
+sed -i 's/assertRaisesRegexp/assertRaisesRegex/' tests/unit/test_response_future.py
 
 %build
 export CFLAGS="%{optflags}"

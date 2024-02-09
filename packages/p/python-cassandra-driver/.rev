@@ -272,4 +272,13 @@
   * Add support for client-side encryption (PYTHON-1341)</comment>
     <requestid>1095234</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>5407561f5db936f06d0f68519141c1c4</srcmd5>
+    <version>3.28.0</version>
+    <time>1707519133</time>
+    <user>anag+factory</user>
+    <comment>- Fix tests on Python 3.12
+</comment>
+    <requestid>1145153</requestid>
+  </revision>
 </revisionlist>
