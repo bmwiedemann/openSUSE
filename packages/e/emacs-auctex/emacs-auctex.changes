@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  9 13:28:42 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 13.4
+  * AUCTeX now requires GNU Emacs 26.1 or higher.
+  * LaTeX abbrevs are now available in docTeX mode buffers.
+  * AUCTeX temporarily rebinds the variable ‘gc-cons-percentage’ to a
+    higher value during parsing which speeds up the process
+    significantly.  The memory pressure should still be acceptable,
+    even on older machines.
+  * Macros provided by the ‘xparse’ package are part of LaTeX kernel
+    since October 2020.  AUCTeX tracks this change and the content of
+    ‘xparse.el’ is moved into ‘latex.el’ and ‘font-latex.el’
+    respectively.
+  * The variable ‘preview-scale-function’ is now allowed as a
+    file-local variable where the assigned value can only be between
+    0.1 and 10.
+
+-------------------------------------------------------------------
 Thu Aug  3 11:31:29 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Run TeX-auto-generate-global in emacs only once if auctex or
@@ -8,7 +26,7 @@ Thu Aug  3 11:31:29 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 Wed Aug  2 11:11:34 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to 13.2
-  • AUCTeX no longer refuses to insert dollar sign when you type ‘$’ at
+  * AUCTeX no longer refuses to insert dollar sign when you type ‘$’ at
     point where AUCTeX thinks the current math mode didn’t start with
     dollar(s).  AUCTeX assumes the user knows that it isn’t in math
     mode actually.

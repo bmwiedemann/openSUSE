@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-auctex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ BuildRequires:  texlive-latex
 BuildRequires:  texlive-tex
 BuildRequires:  texlive-texinfo
 %endif
-Version:        13.2
+Version:        13.3
 Release:        0
 Summary:        AUC TeX: An Emacs Extension
 License:        GPL-3.0-or-later
@@ -78,8 +78,8 @@ you cannot use this package for XEmacs.
 
 %prep
 %setup -n auctex-%{version}
-%patch0
-%patch1
+%patch -P0
+%patch -P1
 
 %build
     unset ${!LC_*}
@@ -110,9 +110,9 @@ you cannot use this package for XEmacs.
     %make_install DESTDIR=%{buildroot}
     pushd %{buildroot}%{_aucdir}/auto/
 %if %{with tex4auto}
-	cwd
+	pwd
 	echo "Run the command TeX-auto-generate-global in mini buffer"
-	emacs-gtk --no-site -L %{buildroot}%{_sitedir}/auctex 		\
+	emacs-gtk -Q -L %{buildroot}%{_sitedir}/auctex 				\
 	    --eval '(setq TeX-lisp-directory "%{buildroot}%{_aucdir}")'		\
 	    --eval '(setq TeX-auto-global "%{buildroot}%{_aucdir}/auto")'	\
 	    -l %{buildroot}%{_sitedir}/tex-site.el

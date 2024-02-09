@@ -507,4 +507,27 @@
                                          initial-input definition default)</comment>
     <requestid>1102168</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b1081c2c361ae41ce570222c85dad664</srcmd5>
+    <version>13.3</version>
+    <time>1707519284</time>
+    <user>anag+factory</user>
+    <comment>- Update to 13.4
+  * AUCTeX now requires GNU Emacs 26.1 or higher.
+  * LaTeX abbrevs are now available in docTeX mode buffers.
+  * AUCTeX temporarily rebinds the variable ‘gc-cons-percentage’ to a
+    higher value during parsing which speeds up the process
+    significantly.  The memory pressure should still be acceptable,
+    even on older machines.
+  * Macros provided by the ‘xparse’ package are part of LaTeX kernel
+    since October 2020.  AUCTeX tracks this change and the content of
+    ‘xparse.el’ is moved into ‘latex.el’ and ‘font-latex.el’
+    respectively.
+  * The variable ‘preview-scale-function’ is now allowed as a
+    file-local variable where the assigned value can only be between
+    0.1 and 10.
+
+  * AUCTeX no longer refuses to insert dollar sign when you type ‘$’ at</comment>
+    <requestid>1145462</requestid>
+  </revision>
 </revisionlist>
