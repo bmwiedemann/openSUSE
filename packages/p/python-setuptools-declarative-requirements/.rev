@@ -24,4 +24,14 @@
   * Ignore lines that start with `-i`. Fixes #6</comment>
     <requestid>1139047</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>829d8ad51062141d0ec5d969441f7d4f</srcmd5>
+    <version>1.3.0</version>
+    <time>1707519279</time>
+    <user>anag+factory</user>
+    <comment>- switch to multibuild for avoiding testing cycle with
+  pytest-shell-utilities
+- remove multibuild temporarily to avoid bootstrapping cycle</comment>
+    <requestid>1145304</requestid>
+  </revision>
 </revisionlist>
