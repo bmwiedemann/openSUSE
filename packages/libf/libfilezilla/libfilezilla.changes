@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:25:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.46.0:
+  + fz::process: Add io redirection mode that excluded stderr.
+  + fz::remove_file and remove_dir now take additional parameter
+    and return fz::result.
+  + Added transitional fz::file::read2 and fz::file::write2
+    returning fz::rwresult, old read/write have been marked
+    deprecated.
+  + HTTP: Fix redirect if "Connection: close" header is set.
+- Bump major to 42, following upstream sover bump.
+
+-------------------------------------------------------------------
 Tue Oct 24 10:54:17 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.45.0
