@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 09 19:18:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.4:
+  * Added missing resources and separated cluster-scoped resources
+    (#202)
+  * Fix: refactored mismatching deletion resource types (#201)
+  * Fix typo: corrected 'confimgmaps.go' to 'configmaps.go' (#196)
+  * Refactor some codes, add filter objects, and add support for
+    lable filtering... (#194)
+  * Fix typo: corrected 'retreive' to 'retrieve' (#195)
+  * refactor: remove unused "resourceMap" from GetUnusedCrds func
+    (#193)
+  * Version print only if table (#192)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.29.0 to
+    0.29.1 (#188)
+
+-------------------------------------------------------------------
 Mon Jan 15 16:52:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.3.3:
