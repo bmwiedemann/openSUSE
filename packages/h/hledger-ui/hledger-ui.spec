@@ -19,7 +19,7 @@
 %global pkg_name hledger-ui
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        1.32.2
+Version:        1.32.3
 Release:        0
 Summary:        Terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
