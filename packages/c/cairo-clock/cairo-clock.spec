@@ -1,6 +1,7 @@
 #
-# spec file for package cairo-clock (Version 0.3.4)
+# spec file for package cairo-clock
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -11,9 +12,10 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           cairo-clock
 Summary:        Cairo-rendered on-screen clock
@@ -24,7 +26,7 @@ Source0:        %{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM cairo-clock-fix-ldflags.patch deb#624922 vuntz@opensuse.org -- Taken from Debian, fix "unrecognized option '--export-dynamic'"
 Patch0:         cairo-clock-fix-ldflags.patch
 # Note: src/cairo-clock.c has a link to the GPL (unversioned) on gnu.org; when the file was created, that link was pointing to GPL-2.0, not GPL-3.0
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Amusements/Toys/Clocks
 BuildRequires:  fdupes
 BuildRequires:  gtk2-devel
@@ -41,8 +43,7 @@ time display with pretty-pixels.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure
