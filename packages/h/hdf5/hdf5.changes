@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  2 18:36:08 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add openmpi5 and gnu-hpc-openmpi5 flavours.
+
+-------------------------------------------------------------------
 Mon Oct 23 11:45:45 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for obsolete openmpi[123]
