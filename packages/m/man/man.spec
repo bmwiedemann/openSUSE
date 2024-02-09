@@ -286,10 +286,22 @@ end
 %filetriggerin -p <lua> -- %{_mandir}
 %endif
 %trigger_functions
-stat = posix.stat("/var/cache/man/index.db")
+stat = posix.stat("%{_localstatedir}/cache/man/index.db")
 if stat then
     execute("%{_bindir}/mandb", "--quiet")
 else
+    domkdir = false
+    stat = posix.stat("%{_localstatedir}/cache/man")
+    if not stat then
+        domkdir = true
+    elseif not (stat.type == "directory") then
+        domkdir = true
+        os.remove("%{_localstatedir}/cache/man")
+    end
+    if domkdir then
+        posix.mkdir("%{_localstatedir}/cache/man")
+        posix.chown("%{_localstatedir}/cache/man", "man", "man")
+    end
     execute("%{_bindir}/mandb", "--quiet", "--create")
 end
 
@@ -299,10 +311,22 @@ end
 %filetriggerpostun -p <lua> -- %{_mandir}
 %endif
 %trigger_functions
-stat = posix.stat("/var/cache/man/index.db")
+stat = posix.stat("%{_localstatedir}/cache/man/index.db")
 if stat then
     execute("%{_bindir}/mandb", "--quiet")
 else
+    domkdir = false
+    stat = posix.stat("%{_localstatedir}/cache/man")
+    if not stat then
+        domkdir = true
+    elseif not (stat.type == "directory") then
+        domkdir = true
+        os.remove("%{_localstatedir}/cache/man")
+    end
+    if domkdir then
+        posix.mkdir("%{_localstatedir}/cache/man")
+        posix.chown("%{_localstatedir}/cache/man", "man", "man")
+    end
     execute("%{_bindir}/mandb", "--quiet", "--create")
 end
 
@@ -332,7 +356,7 @@ then
 fi
 # Simply for systemdless containers
 getent group  man > /dev/null || groupadd -r man
-getent passwd man > /dev/null || useradd -r -g man -d /var/cache/man -s /sbin/nologin -c "Manual pages viewer" man
+getent passwd man > /dev/null || useradd -r -g man -d %{_localstatedir}/cache/man -s /sbin/nologin -c "Manual pages viewer" man
 
 %post
 %{fillup_only -an cron}
@@ -367,6 +391,7 @@ if test ! -d %{_localstatedir}/cache/man
 then
   # Simply for systemdless containers
   umask 022
+  rm -f %{_localstatedir}/cache/man
   mkdir -p %{_localstatedir}/cache/man
   chown -R man:man %{_localstatedir}/cache/man
 fi

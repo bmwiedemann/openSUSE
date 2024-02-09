@@ -1024,4 +1024,12 @@
   an uptodate man database for installed manual pages</comment>
     <requestid>1141710</requestid>
   </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>88c52640fa9ceadc6c90869851830738</srcmd5>
+    <version>2.12.0</version>
+    <time>1707519105</time>
+    <user>anag+factory</user>
+    <comment>- Make lua scriplets more failsafe (boo#1219370)</comment>
+    <requestid>1145198</requestid>
+  </revision>
 </revisionlist>
