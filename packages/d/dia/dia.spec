@@ -1,7 +1,7 @@
 #
 # spec file for package dia
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,11 +84,11 @@ pages).
 
 %prep
 %setup -q
-%patch0 -p1
-%patch3
-%patch17 -p1
-%patch20 -p1
-%patch23 -p1
+%patch -P 0 -p1
+%patch -P 3
+%patch -P 17 -p1
+%patch -P 20 -p1
+%patch -P 23 -p1
 cp $RPM_SOURCE_DIR/font-test*dia .
 
 %build

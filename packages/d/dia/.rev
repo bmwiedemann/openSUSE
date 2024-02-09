@@ -372,4 +372,12 @@ https://bugzilla.redhat.com/996759) (forwarded request 224089 from mgorse)</comm
   (jsc#SLE-21105). (forwarded request 919913 from sbrabec)</comment>
     <requestid>920290</requestid>
   </revision>
+  <revision rev="51" vrev="12">
+    <srcmd5>10db4fcafa5198d233c2e7fa6d7f95dc</srcmd5>
+    <version>0.97.3</version>
+    <time>1707519108</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145230</requestid>
+  </revision>
 </revisionlist>
