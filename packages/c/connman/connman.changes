@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  8 16:57:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change all hashbangs of test scripts from /usr/bin/python to
+  /usr/bin/python3: the code is py3 ready (boo#1219309, commit
+  55965561).
+
+-------------------------------------------------------------------
 Mon Nov 13 13:12:16 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to 1.42

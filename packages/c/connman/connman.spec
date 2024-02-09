@@ -1,7 +1,7 @@
 #
 # spec file for package connman
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -212,6 +212,8 @@ Provides client interface for Connman (Connection Manager).
 
 %prep
 %autosetup -p1 -n connman-%{version}
+# change hashbanh of all python scripts to python3. The code supports it
+sed -i "s|/usr/bin/python$|/usr/bin/python3|g" test/*
 
 %build
 # Using i586 repository, so explicitly forward it to CC.
