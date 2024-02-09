@@ -106,7 +106,7 @@ Sat Sep 24 13:47:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Mon Jul 11 14:56:15 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Add Fix-maes-msse41-leaking-into-pkgconfig.patch
-  * Do not make programs compiled with abseil require new-ish CPUs.
+  * Do not make programs compiled with abseil require new-ish CPUs (boo#1203379)
 
 -------------------------------------------------------------------
 Sun Jul  3 21:25:15 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
@@ -141,7 +141,7 @@ Wed Jun 29 12:49:20 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 -------------------------------------------------------------------
 Wed Jun 29 12:04:22 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 
-- Add options-old.patch, options-cxx17.patch
+- Add options-old.patch, options-cxx17.patch (boo#1203378)
   * Ensure ABI stability regardless of compiler settings per instruction in the header.
 
 -------------------------------------------------------------------
