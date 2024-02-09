@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Feb  8 04:36:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.1:
+  ## New Methods:
+  * SecretsManager:
+    * remove_regions_from_replication()
+    * replicate_secret_to_regions()
+  ## General:
+  * All decorators have been replaced with a single decorator: `mock_aws`
+  * The `mock_batch_simple` and `mock_lambda_simple` decorators can now be
+    configured using the `config`-parameter:
+  * It is now possible to configure methods/services which should reach out
+    to AWS.
+  * All requests now return a RequestId
+  ## Miscellaneous:
+  * AWSLambda: create_event_source_mapping() now supports Kinesis streams
+    as targets
+  * CloudFront: Removed error handling for InvalidOriginServer, as our
+    validation was too strict
+  * DynamoDB: batch_execute_statement() now supports for
+    Update/Insert/Delete-statements
+  * DynamoDB: query() now correctly handles calls where both Limit and
+    ScanIndexForward are supplied
+  * EC2: Now supports availability zones for eu-central-2 (Zurich)
+  * S3: list_objects_v2() can now return more then 1000 results max (again)
+  * S3: copy_object() now allows in-place copies when bucket versioning
+    is enabled
+  * SecretsManager: create_secrets() now supports the parameters
+    AddReplicaRegions and ForceOverwriteReplicaSecret
+  * SecretsManager: list_secrets() now supports the filters primary-region
+    and owning-service
+  * IAM: The AWS managed Policies are no longer loaded by default.
+  * S3: list_objects() now returns a hashed ContinuationToken
+
+-------------------------------------------------------------------
 Thu Dec 28 12:47:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.2.12

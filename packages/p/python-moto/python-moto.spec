@@ -1,7 +1,7 @@
 #
 # spec file for package python-moto
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-moto
-Version:        4.2.12
+Version:        5.0.1
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
 URL:            https://github.com/getmoto/moto
 Source:         https://files.pythonhosted.org/packages/source/m/moto/moto-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -32,18 +32,15 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.10.1
 Requires:       python-Werkzeug >= 0.5
 Requires:       python-boto3 >= 1.9.201
-Requires:       python-botocore >= 1.12.201
+Requires:       python-botocore >= 1.14.0
 Requires:       python-cryptography >= 3.3.1
 Requires:       python-requests >= 2.5
-Requires:       python-responses >= 0.13.0
+Requires:       python-responses >= 0.15.0
 Requires:       python-xmltodict
 Requires:       (python-python-dateutil >= 2.1 with python-python-dateutil < 3)
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib-metadata
-%endif
 Conflicts:      (python-Werkzeug >= 2.2.0 with python-Werkzeug < 2.2.2)
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Recommends:     python-moto-all
 Suggests:       python-moto-server
 BuildArch:      noarch
@@ -54,14 +51,13 @@ BuildRequires:  %{python_module Jinja2 >= 2.10.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module aws-xray-sdk >= 0.93}
 BuildRequires:  %{python_module boto3 >= 1.9.201}
-BuildRequires:  %{python_module botocore >= 1.12.201}
+BuildRequires:  %{python_module botocore >= 1.14.0}
 BuildRequires:  %{python_module cfn-lint >= 0.40.0}
 BuildRequires:  %{python_module cryptography >= 3.3.1}
 BuildRequires:  %{python_module docker >= 3.0.0}
 BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module graphql-core}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module openapi-spec-validator >= 0.5.0}
@@ -74,7 +70,7 @@ BuildRequires:  %{python_module python-dateutil >= 2.1 with %python-python-dateu
 BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module python-multipart}
 BuildRequires:  %{python_module requests >= 2.5}
-BuildRequires:  %{python_module responses >= 0.13.0}
+BuildRequires:  %{python_module responses >= 0.15.0}
 BuildRequires:  %{python_module sshpubkeys >= 3.1.0}
 BuildRequires:  %{python_module surer}
 BuildRequires:  %{python_module xmltodict}
@@ -151,6 +147,9 @@ sed -i '/py-partiql-parser/ s/==/>=/' setup.cfg
 export BOTO_CONFIG=/dev/null
 # no online tests on obs
 donttest="network"
+donttest+=" or test_passthrough_calls_for_entire_service"
+donttest+=" or test_passthrough_calls_for_specific_url"
+donttest+=" or test_passthrough_calls_for_wildcard_urls"
 # no connection -- no such file -- we don't have the test containers
 donttest+=" or test_terminate_job or test_cancel_running_job or test_cancel_pending_job"
 donttest+=" or (test_batch_jobs and (test_dependencies or test_container_overrides))"

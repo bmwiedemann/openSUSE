@@ -252,4 +252,41 @@
     <comment></comment>
     <requestid>1136175</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2b32af4c05ee68d71b63f634ff178bfd</srcmd5>
+    <version>5.0.1</version>
+    <time>1707519129</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.0.1:
+  ## New Methods:
+  * SecretsManager:
+    * remove_regions_from_replication()
+    * replicate_secret_to_regions()
+  ## General:
+  * All decorators have been replaced with a single decorator: `mock_aws`
+  * The `mock_batch_simple` and `mock_lambda_simple` decorators can now be
+    configured using the `config`-parameter:
+  * It is now possible to configure methods/services which should reach out
+    to AWS.
+  * All requests now return a RequestId
+  ## Miscellaneous:
+  * AWSLambda: create_event_source_mapping() now supports Kinesis streams
+    as targets
+  * CloudFront: Removed error handling for InvalidOriginServer, as our
+    validation was too strict
+  * DynamoDB: batch_execute_statement() now supports for
+    Update/Insert/Delete-statements
+  * DynamoDB: query() now correctly handles calls where both Limit and
+    ScanIndexForward are supplied
+  * EC2: Now supports availability zones for eu-central-2 (Zurich)
+  * S3: list_objects_v2() can now return more then 1000 results max (again)
+  * S3: copy_object() now allows in-place copies when bucket versioning
+    is enabled
+  * SecretsManager: create_secrets() now supports the parameters
+    AddReplicaRegions and ForceOverwriteReplicaSecret
+  * SecretsManager: list_secrets() now supports the filters primary-region
+    and owning-service
+  * IAM: The AWS managed Policies are no longer loaded by default.</comment>
+    <requestid>1145032</requestid>
+  </revision>
 </revisionlist>
