@@ -104,4 +104,13 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>15d3eb0556d2164d63200d9271705ca3</srcmd5>
+    <version>0.1.7</version>
+    <time>1707519166</time>
+    <user>anag+factory</user>
+    <comment>- Prepare for RPM 4.20: use autosetup.
+- Mention old baselibs.conf in spec file as source.</comment>
+    <requestid>1145251</requestid>
+  </revision>
 </revisionlist>
