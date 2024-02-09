@@ -225,7 +225,9 @@ BuildRequires:  pkgconfig(libopenjp2)
 %if %{with zbar}
 BuildRequires:  pkgconfig(zbar) >= 0.9
 %endif
+%ifarch x86_64 aarch64
 BuildRequires:  pkgconfig(vpl)
+%endif
 
 %if 0%{?BUILD_ORIG}
 BuildRequires:  pkgconfig(libde265) >= 0.9
