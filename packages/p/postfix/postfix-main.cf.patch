@@ -50,7 +50,7 @@ Index: conf/main.cf
  
  # PARALLEL DELIVERY TO THE SAME DESTINATION
  #
-@@ -682,4 +683,155 @@ sample_directory =
+@@ -682,4 +683,165 @@ sample_directory =
  # readme_directory: The location of the Postfix README files.
  #
  readme_directory =
@@ -79,6 +79,8 @@ Index: conf/main.cf
 +masquerade_classes = envelope_sender, header_sender, header_recipient
 +masquerade_domains = 
 +masquerade_exceptions = 
++mydestination = $myhostname, localhost.$mydomain, localhost
++myhostname = 
 +mynetworks_style = subnet
 +relayhost = 
 +
@@ -107,12 +109,19 @@ Index: conf/main.cf
 +
 +smtpd_recipient_restrictions = 
 +
-+# mitigation for CVE-2023-51764 - SMTP smuggling attack
-+# but allow local clients with non-standard SMTP implementations
-+# such as netcat, fax machines, or load balancer health checks.
-+#
-+smtpd_forbid_bare_newline = yes
++
++######################################################################
++# SMTP Smuggling (CVE-2023-51764)
++# no: allows SMTP smuggling
++# yes / normalize : 
++#   but allow local clients with non-standard SMTP implementations
++#   such as netcat, fax machines, or load balancer health checks.
++# reject: 
++#   rejects a command or message that contains a bare newline
++######################################################################
++smtpd_forbid_bare_newline = normalize
 +smtpd_forbid_bare_newline_exclusions = $mynetworks
++#smtpd_forbid_bare_newline_reject_code = 521
 +
 +############################################################
 +# SASL stuff
@@ -168,7 +177,7 @@ Index: conf/main.cf
 +# Start MySQL from postfixwiki.org
 +############################################################
 +relay_domains = $mydestination, lmdb:/etc/postfix/relay
-+relay_recipient_maps = lmdb:/etc/postfix/relay_recipients
++#relay_recipient_maps = lmdb:/etc/postfix/relay_recipients
 +#virtual_alias_domains = 
 +#virtual_alias_maps = lmdb:/etc/postfix/virtual
 +#virtual_uid_maps = static:303
@@ -201,6 +210,7 @@ Index: conf/main.cf
 +#unknown_client_reject_code = 550
 +#unknown_hostname_reject_code = 550
 +#unverified_recipient_reject_code = 550
++#unverified_sender_reject_code = 550
 +#soft_bounce = yes
 +############################################################
 +#debug_peer_list = example.com

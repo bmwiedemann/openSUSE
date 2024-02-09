@@ -69,7 +69,7 @@ Index: src/global/mail_params.h
 ===================================================================
 --- src/global/mail_params.h.orig
 +++ src/global/mail_params.h
-@@ -2960,7 +2960,7 @@ extern int var_vrfy_pend_limit;
+@@ -2964,7 +2964,7 @@ extern int var_vrfy_pend_limit;
  extern char *var_verify_service;
  
  #define VAR_VERIFY_MAP			"address_verify_map"
@@ -78,7 +78,7 @@ Index: src/global/mail_params.h
  extern char *var_verify_map;
  
  #define VAR_VERIFY_POS_EXP		"address_verify_positive_expire_time"
-@@ -3762,7 +3762,7 @@ extern char *var_multi_cntrl_cmds;
+@@ -3776,7 +3776,7 @@ extern char *var_multi_cntrl_cmds;
    * postscreen(8)
    */
  #define VAR_PSC_CACHE_MAP	"postscreen_cache_map"

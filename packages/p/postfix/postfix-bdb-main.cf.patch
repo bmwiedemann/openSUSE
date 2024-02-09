@@ -2,7 +2,7 @@ Index: conf/main.cf
 ===================================================================
 --- conf/main.cf.orig
 +++ conf/main.cf
-@@ -567,6 +567,7 @@ unknown_local_recipient_reject_code = 55
+@@ -576,6 +576,7 @@ unknown_local_recipient_reject_code = 55
  #
  #smtpd_banner = $myhostname ESMTP $mail_name
  #smtpd_banner = $myhostname ESMTP $mail_name ($mail_version)
@@ -10,7 +10,7 @@ Index: conf/main.cf
  
  # PARALLEL DELIVERY TO THE SAME DESTINATION
  #
-@@ -673,4 +674,140 @@ sample_directory =
+@@ -682,4 +683,165 @@ sample_directory =
  # readme_directory: The location of the Postfix README files.
  #
  readme_directory =
@@ -39,8 +39,8 @@ Index: conf/main.cf
 +masquerade_classes = envelope_sender, header_sender, header_recipient
 +masquerade_domains = 
 +masquerade_exceptions = 
-+mydestination = $myhostname, localhost.$mydomain
-+myhostname = localhost
++mydestination = $myhostname, localhost.$mydomain, localhost
++myhostname = 
 +mynetworks_style = subnet
 +relayhost = 
 +
@@ -70,6 +70,19 @@ Index: conf/main.cf
 +smtpd_recipient_restrictions = 
 +
 +
++######################################################################
++# SMTP Smuggling (CVE-2023-51764)
++# no: allows SMTP smuggling
++# yes / normalize : 
++#   but allow local clients with non-standard SMTP implementations
++#   such as netcat, fax machines, or load balancer health checks.
++# reject: 
++#   rejects a command or message that contains a bare newline
++######################################################################
++smtpd_forbid_bare_newline = normalize
++smtpd_forbid_bare_newline_exclusions = $mynetworks
++#smtpd_forbid_bare_newline_reject_code = 521
++
 +############################################################
 +# SASL stuff
 +############################################################
@@ -93,6 +106,7 @@ Index: conf/main.cf
 +smtp_use_tls = no
 +#smtp_tls_loglevel = 0
 +smtp_enforce_tls = no
++smtp_tls_security_level = 
 +smtp_tls_CAfile = 
 +smtp_tls_CApath = 
 +smtp_tls_cert_file = 
@@ -103,6 +117,8 @@ Index: conf/main.cf
 +
 +smtpd_use_tls = no
 +#smtpd_tls_loglevel = 0
++smtpd_enforce_tls = no
++smtpd_tls_security_level = 
 +smtpd_tls_CAfile = 
 +smtpd_tls_CApath = 
 +smtpd_tls_cert_file = 
@@ -111,9 +127,17 @@ Index: conf/main.cf
 +smtpd_tls_exclude_ciphers = RC4
 +smtpd_tls_received_header = no
 +############################################################
++# OpenDKIM
++############################################################
++#smtpd_milters = unix:/run/opendkim/opendkim.sock
++#non_smtpd_milters = $smtpd_milters
++#milter_default_action = accept
++#milter_protocol = 2
++############################################################
 +# Start MySQL from postfixwiki.org
 +############################################################
 +relay_domains = $mydestination, hash:/etc/postfix/relay
++#relay_recipient_maps = hash:/etc/postfix/relay_recipients
 +#virtual_alias_domains = 
 +#virtual_alias_maps = hash:/etc/postfix/virtual
 +#virtual_uid_maps = static:303
@@ -146,6 +170,7 @@ Index: conf/main.cf
 +#unknown_client_reject_code = 550
 +#unknown_hostname_reject_code = 550
 +#unverified_recipient_reject_code = 550
++#unverified_sender_reject_code = 550
 +#soft_bounce = yes
 +############################################################
 +#debug_peer_list = example.com

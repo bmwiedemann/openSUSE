@@ -19,7 +19,7 @@ Index: src/global/mail_params.h
 ===================================================================
 --- src/global/mail_params.h.orig
 +++ src/global/mail_params.h
-@@ -2657,6 +2657,54 @@ extern char *var_virt_uid_maps;
+@@ -2661,6 +2661,54 @@ extern char *var_virt_uid_maps;
  #define DEF_VIRT_GID_MAPS		""
  extern char *var_virt_gid_maps;
  

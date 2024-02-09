@@ -7,6 +7,29 @@ Tue Jan 23 18:24:16 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
     For background, see https://www.postfix.org/smtp-smuggling.html.
 
 -------------------------------------------------------------------
+Sat Jan  6 22:41:09 UTC 2024 - chris@computersalat.de
+
+- rework fix for bsc#1192173: keep myhostname and mydestination
+  patched, but with upstream default to have them in correct place
+  when updated via config.postfix
+- rework SMTP Smuggling defaults
+  * yes is now alias of 'normalize'
+    smtpd_forbid_bare_newline = normalize
+  * another new option is 'reject' wich should be used in connection
+    with
+    smtpd_forbid_bare_newline_reject_code = 521
+- rework patches
+  * postfix-bdb-main.cf.patch
+  * postfix-main.cf.patch
+- rebase patches
+  * postfix-linux45.patch
+  * postfix-ssl-release-buffers.patch
+  * postfix-vda-v14-3.0.3.patch
+  * set-default-db-type.patch
+- sync changes files
+  * add missing entries in postfix-bdb.changes
+
+-------------------------------------------------------------------
 Thu Dec 28 07:57:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update default configuration to enable the long-term fix for
