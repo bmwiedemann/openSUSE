@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb  9 13:21:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * Support for Python 3.12 was added.
+  * Updates `joinpath` syntax to only use one addition per call,
+    because the multiple inputs version was causing mypy errors
+    on Python 3.10.
+  * Makes the `reconfigure` verb actually use the staging server
+    for the dry run to check the new configuration.
+
+-------------------------------------------------------------------
+Wed Feb  7 12:41:17 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Dec  7 10:45:56 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to version 2.8.0
@@ -105,7 +121,7 @@ Wed May 12 12:06:51 UTC 2021 - Markéta Machová <mmachova@suse.com>
 Wed Apr 14 15:16:52 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.14.0
-  * The DigitalOcean plugin now creates TXT records for the DNS-01 
+  * The DigitalOcean plugin now creates TXT records for the DNS-01
     challenge with a lower 30s TTL.
 
 -------------------------------------------------------------------
