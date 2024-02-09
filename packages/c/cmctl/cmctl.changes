@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 08 20:07:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.14.2:
+  * Bug or Regression
+    - BUGFIX: cert-manager CA and SelfSigned issuers incorrectly
+      copied the critical flag from the CSR instead of
+      re-calculating that field themselves. (#6727, @jetstack-bot)
+    - Helm: Fix a bug in the logic that differentiates between 0
+      and an empty value. (#6729, @jetstack-bot)
+
+-------------------------------------------------------------------
 Sat Feb 03 08:23:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.14.1 (1.14.0 was not released):
