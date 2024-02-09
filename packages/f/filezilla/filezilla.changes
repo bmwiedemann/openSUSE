@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:22:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.66.5:
+  + Updated to libfilezilla 0.46.0
+  + MSW: Fixed tab navigation over message log
+- Changes from version 3.66.4:
+  + SFTP: Address Terrapin protocol vulerability
+- Changes from version 3.66.3-rc1:
+  + Test release for macOS CPU architecture migration.
+- Changes from version 3.66.3-beta1:
+  + Fixed a potential crash in the HTTP client
+
+-------------------------------------------------------------------
 Sat Dec  2 10:41:29 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.66.1
