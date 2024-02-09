@@ -576,6 +576,7 @@ Prefer: -python39-FontTools -python310-FontTools -python311-FontTools
 
 # have choice for (python311-qt5 or python311-pyside2 or python311-PyQt6 or python311-pyside6) needed by python311-qtconsole: python311-pyside6 python311-qt5
 Prefer: -python311-pyside6
+Prefer: -python312-pyside6
 
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
 Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
@@ -887,6 +888,7 @@ Prefer: -python39-SQLAlchemy1 -python310-SQLAlchemy1 -python311-SQLAlchemy1 -pyt
 # have choice for (python36-qt5 or python36-PyQt6) needed by python36-pytest-qt
 Prefer: -python310-PyQt6 -python39-PyQt6 -python3-pyside2
 Prefer: -python311-PyQt6
+Prefer: -python312-PyQt6
 # man and mandoc provide man; mandoc claims to be lightweight, but it was never discussed to be the new default
 Prefer: man
 
@@ -976,7 +978,7 @@ Prefer: -python310-jupyter-client7
 Prefer: -python311-jupyter-client7
 Prefer: -python312-jupyter-client7
 Prefer: -python310-nbclassic -python39-nbclassic -python312-nbclassic
-prefer: -python310-notebook -python39-notebook
+prefer: -python310-notebook -python39-notebook -python312-notebook
 
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
 # Use the real package name
