@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-celery
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,19 +28,15 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-celery%{psuffix}
-Version:        5.2.7
+Version:        5.3.6
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
 URL:            http://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
 Patch0:         move-pytest-configuration-to-conftest.patch
-Patch1:         tests.patch
-# PATCH-FIX-UPSTREAM compatibility with newer billiard
-Patch2:         https://github.com/celery/celery/commit/b260860988469ef8ad74f2d4225839c2fa91d590.patch
-Patch3:         https://github.com/celery/celery/commit/879af6341974c3778077d8212d78f093b2d77a4f.patch
-# PATCH-FIX-UPSTREAM sqlalchemy-2.0.patch -- gh#celery/celery#8271
-Patch4:         sqlalchemy-2.0.patch
+# PATCH-FIX-UPSTREAM gh#celery/celery#8838
+Patch1:         support-moto-5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
@@ -51,10 +47,11 @@ Requires:       python-click-didyoumean >= 0.0.3
 Requires:       python-click-plugins >= 1.1.1
 Requires:       python-click-repl >= 0.2.0
 Requires:       python-kombu >= 5.2.3
-Requires:       python-pytz >= 2021.3
+Requires:       python-python-dateutil
+Requires:       python-tzdata
 Requires:       python-vine >= 5.0.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-cryptography
 Recommends:     python-curses
 Suggests:       python-eventlet
@@ -70,13 +67,16 @@ BuildRequires:  %{python_module boto3 >= 1.9.178}
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module celery = %{version}}
 BuildRequires:  %{python_module cryptography >= 36.0.2}
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module eventlet >= 0.32.0}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module moto >= 2.2.6}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pymongo >= 4.0.2}
 BuildRequires:  %{python_module pytest >= 4.5.0}
+BuildRequires:  %{python_module pytest-click}
 BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module tzdata}
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %endif

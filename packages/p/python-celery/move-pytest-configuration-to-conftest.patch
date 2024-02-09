@@ -1,7 +1,7 @@
-Index: celery-5.2.6/celery/contrib/pytest.py
+Index: celery-5.3.6/celery/contrib/pytest.py
 ===================================================================
---- celery-5.2.6.orig/celery/contrib/pytest.py
-+++ celery-5.2.6/celery/contrib/pytest.py
+--- celery-5.3.6.orig/celery/contrib/pytest.py
++++ celery-5.3.6/celery/contrib/pytest.py
 @@ -19,16 +19,6 @@ NO_WORKER = os.environ.get('NO_WORKER')
  # Well, they're called fixtures....
  
@@ -19,11 +19,11 @@ Index: celery-5.2.6/celery/contrib/pytest.py
  @contextmanager
  def _create_app(enable_logging=False,
                  use_trap=False,
-Index: celery-5.2.6/t/unit/conftest.py
+Index: celery-5.3.6/t/unit/conftest.py
 ===================================================================
---- celery-5.2.6.orig/t/unit/conftest.py
-+++ celery-5.2.6/t/unit/conftest.py
-@@ -64,6 +64,16 @@ class WhateverIO(io.StringIO):
+--- celery-5.3.6.orig/t/unit/conftest.py
++++ celery-5.3.6/t/unit/conftest.py
+@@ -56,6 +56,16 @@ class WhateverIO(io.StringIO):
          _SIO_write(self, data.decode() if isinstance(data, bytes) else data)
  
  

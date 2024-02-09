@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Feb  9 03:09:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.3.6:
+  * Update task.py get_custom_headers missing 'compression' key
+  * Basic ElasticSearch / ElasticClient 8.x Support
+  * Fix eager tasks does not populate name field
+  * Fix: serialization error when gossip working
+  * Stamping bugfix with group/chord header errback linking
+  * Fixed issue: Flags broker_connection_retry_on_startup &
+    broker_connection_retry aren’t reliable
+  * Use string value for CELERY_SKIP_CHECKS envvar
+  * Added initial support for python 3.11
+  * Fixed a small float value of retry_backoff
+  * Update CELERY_TASK_EAGER setting in user guide
+  * Fixed bug where retrying a task loses its stamps
+  * Warn when an unnamed periodic task override another one.
+  * Fix Task.handle_ignore not wrapping exceptions properly
+  * Align revoke and revoke_by_stamped_headers return values (terminate=True)
+  * Added signal triggered before fork
+  * Deprecate pytz and use zoneinfo
+  * recreate_module: set spec to the new module
+  * Do not recommend using easy_install anymore
+  * importlib_metadata remove deprecated entry point interfaces
+  * New control command revoke_by_stamped_headers
+  * Remove reference to old Python version
+  * Stamping a task left the task properties dirty
+  * Bugfix for nested group stamping on task replace
+  * Add broker_channel_error_retry option
+  * async chords should pass it's kwargs to the group/body.
+  * Fix honor Django's TIME_ZONE setting.
+  * Remove Python 3.4 compatibility code.
+  * Use importlib instead of deprecated pkg_resources.
+  * load_extension_class_names - correct module_name
+  * Include dont_autoretry_for option in tasks.
+- Drop patches, included upstream:
+  * 879af6341974c3778077d8212d78f093b2d77a4f.patch
+  * b260860988469ef8ad74f2d4225839c2fa91d590.patch
+  * sqlalchemy-2.0.patch
+  * tests.patch
+- Refreshed move-pytest-configuration-to-conftest.patch
+- Add patch support-moto-5.patch:
+  * Support changes in moto 5.
+
+-------------------------------------------------------------------
 Sun Jun 11 13:26:40 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
