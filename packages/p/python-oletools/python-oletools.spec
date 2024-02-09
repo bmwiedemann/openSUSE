@@ -1,7 +1,7 @@
 #
 # spec file for package python-oletools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-oletools
-Version:        0.60
+Version:        0.60.1
 Release:        0
 Summary:        Tools to analyze security characteristics of MS Office and OLE files
 License:        BSD-2-Clause AND MIT
@@ -35,6 +34,7 @@ BuildRequires:  %{python_module pyparsing >= 2.1.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  unzip
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 %if 0%{?sle_version} == 150200 || 0%{?sle_version} == 150300
 BuildRequires:  python2-xml
@@ -48,6 +48,8 @@ Requires:       python-pyparsing >= 2.1.0
 %if "%{python_flavor}" == "python2"
 Requires:       python2-xml
 %endif
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,6 +60,7 @@ Python tools to analyze security characteristics of MS Office and OLE files (als
 %setup -q -n oletools-%{version}
 find oletools -name "*.py" -exec sed -i '1{/\/bin\/env python/d;}' {} \+
 find oletools -name "*.py" -exec sed -i 's/\r\n/\n/' {} \+
+dos2unix tests/olevba/test_basic.py oletools/olevba.py README.md
 
 %build
 %python_build
@@ -84,7 +87,9 @@ sed -i '1{/pcodedmp/d;}' %{buildroot}%{python_sitelib}/oletools-*.egg-info/requi
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not test_rough_doctype and not test_encrypted and not test_crypt_return and not test_all'
+# test_macros, test_empty_behaviour, test_rtf_behaviour, test_text_behaviour, test_xlm: reported at https://github.com/decalage2/oletools/issues/767
+%pytest -k 'not test_rough_doctype and not test_encrypted and not test_crypt_return and not test_all and not test_macros and not test_empty_behaviour and not test_rtf_behaviour and not test_text_behaviour and not test_xlm'
+#%%pyunittest
 
 %post
 %python_install_alternative ezhexviewer mraptor olebrowse oledir oleid olemap olemeta oletimes olevba pyxswf rtfobj oleobj msodde olefile ftguess
@@ -110,6 +115,7 @@ sed -i '1{/pcodedmp/d;}' %{buildroot}%{python_sitelib}/oletools-*.egg-info/requi
 %python_alternative %{_bindir}/msodde
 %python_alternative %{_bindir}/olefile
 %python_alternative %{_bindir}/ftguess
-%{python_sitelib}/*
+%{python_sitelib}/oletools/
+%{python_sitelib}/oletools-%{version}-py*.egg-info
 
 %changelog

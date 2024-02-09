@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb  2 13:58:18 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 0.60.1:
+ * olevba:
+  * fixed a bug when calling XLMMacroDeobfuscator (PR #737)
+  * removed keyword "sample" causing false positives
+ * oleid: fixed OleID init issue (issue #695, PR #696)
+ * oleobj:
+  * added simple detection of CVE-2021-40444 initial stage
+  * added detection for customUI onLoad
+  * improved handling of incorrect filenames in OLE package (PR #451)
+ * rtfobj: fixed code to find URLs in OLE2Link objects for Py3 (issue #692)
+ * ftguess:
+  * added PowerPoint and XPS formats (PR #716)
+  * fixed issue with XPS and malformed documents (issue #711)
+  * added XLSB format (issue #758)
+ * improved logging with common module log_helper (PR #449)
+ * More details about fixed issues and improvements in 0.60: https://github.com/decalage2/oletools/milestone/10?closed=1
+
+-------------------------------------------------------------------
 Tue Dec 14 11:46:21 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is not required for build
