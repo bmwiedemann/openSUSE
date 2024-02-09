@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  5 10:10:56 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Use sysuser-tools to create user.
+
+-------------------------------------------------------------------
 Thu Nov 23 17:05:39 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to 3.11.2
@@ -42,8 +47,8 @@ Thu Nov 23 17:05:39 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
   * Fixed issues with Hetzner zones
   * The OVH provider now ignores extra data returned
   * Merge multiple configs for the same hostname instead of use the last
-- Remove fix-configure_ac.patch 
-- Rebase disable-ip-test.patch 
+- Remove fix-configure_ac.patch
+- Rebase disable-ip-test.patch
 
 -------------------------------------------------------------------
 Sun Jan  1 10:41:36 UTC 2023 - munix9@googlemail.com
@@ -137,7 +142,7 @@ Tue May 18 14:43:16 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 -------------------------------------------------------------------
 Wed May 12 15:09:21 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
-  
+
 - Use an extended regular expression in sed to change (/var)?/run.
 
 -------------------------------------------------------------------

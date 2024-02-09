@@ -1,7 +1,7 @@
 #
 # spec file for package ddclient
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl
 BuildRequires:  make
+BuildRequires:  sysuser-tools
 BuildRequires:  perl(HTTP::Daemon)
 BuildRequires:  perl(HTTP::Message::PSGI)
 BuildRequires:  perl(IO::Socket::SSL)
@@ -46,6 +47,7 @@ Requires(pre):  shadow
 Recommends:     perl-IO-Socket-SSL
 BuildArch:      noarch
 %{?systemd_requires}
+%sysusers_requires
 
 %description
 ddclient is a client requiring only Perl. Supported
@@ -65,11 +67,13 @@ rm -f sample-etc_ddclient.conf.orig
 chmod a-x sample-*
 mkdir examples
 mv sample-* examples
+echo u ddclient - '"DDClient User"' %{_localstatedir}/cache/%{name} /bin/false > system-user-ddclient.conf
 
 %build
 ./autogen
 %configure
 make
+%sysusers_generate_pre system-user-ddclient.conf ddclient system-user-ddclient.conf
 
 %install
 %make_install
@@ -84,15 +88,12 @@ install -d -m 755 %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -d -m 755 %{buildroot}%{_localstatedir}/cache/%{name}
 install -d -m 755 %{buildroot}/run/%{name}
+install -D -m 0644 system-user-ddclient.conf %{buildroot}%{_sysusersdir}/system-user-ddclient.conf
 
 %check
 make VERBOSE=1 check
 
-%pre
-getent group %{name} >/dev/null || %{_sbindir}/groupadd -r %{name}
-getent passwd %{name} >/dev/null || \
-  %{_sbindir}/useradd -c "DDClient User" -d %{_localstatedir}/cache/%{name} \
-    -g %{name} -r -s /bin/false %{name}
+%pre -f ddclient.pre
 %service_add_pre %{name}.service
 
 %post
@@ -116,5 +117,6 @@ getent passwd %{name} >/dev/null || \
 %{_sbindir}/rc%{name}
 %{_fillupdir}/sysconfig.%{name}
 %dir %attr(700,%{name},root) %{_localstatedir}/cache/%{name}
+%{_sysusersdir}/system-user-ddclient.conf
 
 %changelog

@@ -439,4 +439,12 @@ I can't fix it as I don't know sysvinit scripts (forwarded request 204930 from p
     <comment></comment>
     <requestid>1130607</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>2e8d681be2cd7f17355cc094459d7f21</srcmd5>
+    <version>3.11.2</version>
+    <time>1707519183</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1145293</requestid>
+  </revision>
 </revisionlist>
