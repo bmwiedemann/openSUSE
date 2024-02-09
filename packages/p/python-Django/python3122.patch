@@ -1,0 +1,28 @@
+From 20b7aac7ca60b0352d926340622e618bcbee54a8 Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Mon, 16 Oct 2023 06:27:27 +0200
+Subject: [PATCH] Refs #34900, Refs #34118 -- Updated assertion in
+ test_skip_class_unless_db_feature() test on Python 3.12.1+.
+
+Python 3.12.1+ no longer includes skipped tests in the number of
+running tests. Check out:
+
+https://github.com/python/cpython/issues/110890#issuecomment-1763458686
+https://github.com/python/cpython/pull/106588
+---
+ tests/test_utils/tests.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+Index: Django-4.2.10/tests/test_utils/tests.py
+===================================================================
+--- Django-4.2.10.orig/tests/test_utils/tests.py
++++ Django-4.2.10/tests/test_utils/tests.py
+@@ -185,7 +185,7 @@ class SkippingClassTestCase(TestCase):
+         result = unittest.TextTestRunner(stream=StringIO()).run(test_suite)
+         # PY312: Python 3.12.1+ no longer includes skipped tests in the number
+         # of running tests.
+-        self.assertEqual(result.testsRun, 1 if sys.version_info >= (3, 12, 1) else 3)
++        self.assertEqual(result.testsRun, 1 if sys.version_info[:3] == (3, 12, 1) else 3)
+         self.assertEqual(len(result.skipped), 2)
+         self.assertEqual(result.skipped[0][1], "Database has feature(s) __class__")
+         self.assertEqual(result.skipped[1][1], "Database has feature(s) __class__")

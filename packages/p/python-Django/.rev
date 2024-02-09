@@ -1176,4 +1176,20 @@
     <comment></comment>
     <requestid>1137119</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>99aa9065d53cf1a946660c6f58d35040</srcmd5>
+    <version>4.2.10</version>
+    <time>1707519123</time>
+    <user>anag+factory</user>
+    <comment>- Add python3122.patch to fix tests with python 3.12.2
+  gh#django/django#17843
+- Update to 4.2.10 (bsc#1219683, CVE-2024-24680):
+  - Django 4.2.10 fixes a security issue with severity &quot;moderate&quot; in
+    4.2.9.
+    CVE-2024-24680: Potential denial-of-service in intcomma template
+    filter The intcomma template filter was subject to a potential
+    denial-of-service attack when used with very long strings.
+</comment>
+    <requestid>1145400</requestid>
+  </revision>
 </revisionlist>
