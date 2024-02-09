@@ -238,4 +238,13 @@
   * Pull request 307: AG-28327-upstream-config-parser (forwarded request 1143050 from VaiTon)</comment>
     <requestid>1143084</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3e183db193898a88727df919111cef5a</srcmd5>
+    <version>0.65.0</version>
+    <time>1707519222</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.65.0:
+  * Pull request 321: all: upd go, deps (forwarded request 1145320 from VaiTon)</comment>
+    <requestid>1145323</requestid>
+  </revision>
 </revisionlist>
