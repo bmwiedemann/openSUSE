@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 15:51:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare for RPM 4.20: use autosetup.
+
+-------------------------------------------------------------------
 Sun Apr 24 09:24:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update build system to use libopenraw-gnome-0.3 instead of

@@ -1,7 +1,7 @@
 #
 # spec file for package raw-thumbnailer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,12 +43,10 @@ A lightweight and fast thumbnailer used by Nautilus for digital camera RAW files
 Быстрое и не требовательное приложение, используемое Nautilus для создание миниатюр RAW файлов, полученных с цифровых камер.
 
 %prep
-%setup -q
+%autosetup -p0
 if pkg-config --exists libopenraw-gnome-0.3; then
   sed -i "s/libopenraw-gnome-1.0/libopenraw-gnome-0.3/g" configure*
 fi
-%patch0
-%patch1
 
 %build
 %configure

@@ -160,4 +160,12 @@
     <comment></comment>
     <requestid>972500</requestid>
   </revision>
+  <revision rev="23" vrev="13">
+    <srcmd5>cf3c9ec4cd6c6a4e960434fd917fbd13</srcmd5>
+    <version>3.0.0</version>
+    <time>1707519165</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145248</requestid>
+  </revision>
 </revisionlist>
