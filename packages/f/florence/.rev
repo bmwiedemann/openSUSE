@@ -85,4 +85,12 @@
 - Purged useless macros from %%post(un). (forwarded request 912832 from DarkSS)</comment>
     <requestid>913710</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>f9548d4bf382685fb19d24fa85ba0614</srcmd5>
+    <version>0.6.3</version>
+    <time>1707519144</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145231</requestid>
+  </revision>
 </revisionlist>

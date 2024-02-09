@@ -1,7 +1,7 @@
 #
 # spec file for package florence
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           florence
 Version:        0.6.3
 Release:        0
 Summary:        Extensible scalable on-screen virtual keyboard
-License:        GPL-2.0-or-later AND GFDL-1.2-only
+License:        GFDL-1.2-only AND GPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            http://florence.sourceforge.net
 Source0:        http://downloads.sourceforge.net/florence/%{name}-%{version}.tar.bz2
@@ -89,10 +89,10 @@ developing applications that use florence.
 %prep
 %setup -q
 sed -i 's|Icon=@ICONDIR@/%{name}.svg|Icon=%{name}|g' data/%{name}.desktop.in.in
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 autoreconf -fiv

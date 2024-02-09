@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  8 16:04:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare for RPM 4.20: patchN -> patch -P N.
+
+-------------------------------------------------------------------
 Wed Aug 18 05:39:04 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - `BuildRequires: python3-libxml2` to fix Factory build.
