@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb  9 09:19:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 8
+  * Update to latest plugin versions, support Java > 9, change urls
+    to https
+  * add local timestamp for Reproducible Build
+  * Update to latest Apache parent pom, update plugin versions and
+    replace ianal maven plugin
+  * Update parent pom to latest Apache pom 31, remove duplicate
+    plugin definitions
+
+-------------------------------------------------------------------
 Thu Oct 26 03:33:59 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build dependent projects with java source and target 8

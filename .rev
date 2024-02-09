@@ -23,4 +23,12 @@
     <comment>source/target 8 == build with jdk 21</comment>
     <requestid>1120407</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a002446a2af9d0e6c208d0213b969bb9</srcmd5>
+    <version>8</version>
+    <time>1707519246</time>
+    <user>anag+factory</user>
+    <comment>version 8</comment>
+    <requestid>1145381</requestid>
+  </revision>
 </revisionlist>
