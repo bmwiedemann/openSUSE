@@ -1,0 +1,53 @@
+From f1373c981a9a90a63ca95a814acf95f95a0c29ec Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Hrn=C4=8Diar?= <tomas.hrnciar@me.com>
+Date: Wed, 21 Jun 2023 09:40:04 +0000
+Subject: [PATCH] Replace the usage of failIf unit test alias removed in Python
+ 3.12 with assertFalse
+
+---
+ flufl/bounce/tests/test_detectors.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/flufl/bounce/tests/test_detectors.py b/flufl/bounce/tests/test_detectors.py
+index 3838a55..4b31d23 100644
+--- a/flufl/bounce/tests/test_detectors.py
++++ b/flufl/bounce/tests/test_detectors.py
+@@ -20,10 +20,10 @@ class TestOtherBounces(unittest.TestCase):
+         with closing(resource_stream('flufl.bounce.tests.data',
+                                      'postfix_01.txt')) as fp:
+             msg = parse(fp)
+-        self.failIf(msg['x-mailer'] is not None)
++        self.assertFalse(msg['x-mailer'] is not None)
+         temporary, permanent = SMTP32().process(msg)
+-        self.failIf(temporary)
+-        self.failIf(permanent)
++        self.assertFalse(temporary)
++        self.assertFalse(permanent)
+ 
+     def test_caiwireless(self):
+         # BAW: this is a mostly bogus test; I lost the samples. :(
+@@ -36,8 +36,8 @@ Content-Type: multipart/report; boundary=BOUNDARY
+ 
+ """)
+         temporary, permanent = Caiwireless().process(msg)
+-        self.failIf(temporary)
+-        self.failIf(permanent)
++        self.assertFalse(temporary)
++        self.assertFalse(permanent)
+ 
+     def test_microsoft(self):
+         # BAW: similarly as above, I lost the samples. :(
+@@ -50,8 +50,8 @@ Content-Type: multipart/report; boundary=BOUNDARY
+ 
+ """)
+         temporary, permanent = Microsoft().process(msg)
+-        self.failIf(temporary)
+-        self.failIf(permanent)
++        self.assertFalse(temporary)
++        self.assertFalse(permanent)
+ 
+     def test_caiwireless_lp_917720(self):
+         # https://bugs.launchpad.net/flufl.bounce/+bug/917720
+-- 
+GitLab
+

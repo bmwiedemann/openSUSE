@@ -1,7 +1,7 @@
 #
 # spec file for package python-flufl.bounce
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,11 @@ URL:            https://fluflbounce.readthedocs.io/en/latest/
 # https://gitlab.com/warsaw/flufl.bounce/merge_requests/10
 Source0:        https://files.pythonhosted.org/packages/source/f/flufl.bounce/flufl.bounce-%{version}.tar.gz
 Source1:        https://gitlab.com/warsaw/flufl.bounce/raw/master/LICENSE
+# PATCH-FIX-UPSTREAM https://gitlab.com/warsaw/flufl.bounce/-/merge_requests/21
+Patch0:         use-correct-assertion-methods.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-atpublic
 Requires:       python-zope.interface
@@ -43,14 +47,14 @@ BuildArch:      noarch
 Email bounce detectors.
 
 %prep
-%setup -q -n flufl.bounce-%{version}
+%autosetup -p1 -n flufl.bounce-%{version}
 
 %build
 cp %{SOURCE1} .
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +66,6 @@ cp %{SOURCE1} .
 %dir %{python_sitelib}/flufl
 %{python_sitelib}/flufl/bounce
 %{python_sitelib}/flufl.bounce-*.pth
-%{python_sitelib}/flufl.bounce-%{version}*-info
+%{python_sitelib}/flufl.bounce-%{version}.dist-info
 
 %changelog

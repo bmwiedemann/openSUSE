@@ -61,4 +61,14 @@
     <comment>- tag sle15 build for new python stack</comment>
     <requestid>1092913</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>da3560d19387223c9d94e94f1fbe45fb</srcmd5>
+    <version>4.0</version>
+    <time>1707519237</time>
+    <user>anag+factory</user>
+    <comment>- Add patch use-correct-assertion-methods.patch:
+  * Use non-removed assertion methods.
+- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1145318</requestid>
+  </revision>
 </revisionlist>

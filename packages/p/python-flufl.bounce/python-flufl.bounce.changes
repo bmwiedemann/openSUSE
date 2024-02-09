@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  9 02:14:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-correct-assertion-methods.patch:
+  * Use non-removed assertion methods.
+- Switch to autosetup and pyproject macros.
+
+-------------------------------------------------------------------
 Tue Jun 13 16:09:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - tag sle15 build for new python stack
