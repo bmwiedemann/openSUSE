@@ -1,0 +1,7 @@
+<package name="kubetui" project="openSUSE:Factory">
+  <title>kubetui: A terminal UI for Kubernetes</title>
+  <description>Kubetui is a terminal user interface (TUI) tool designed for monitoring Kubernetes resources.
+It provides an easy-to-use interface for developers and operators to access important information about their applications and infrastructure.</description>
+  <devel project="Virtualization:containers" package="kubetui"/>
+  <url>https://github.com/sarub0b0/kubetui</url>
+</package>
