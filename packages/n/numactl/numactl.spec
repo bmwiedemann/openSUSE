@@ -17,7 +17,7 @@
 
 
 Name:           numactl
-Version:        2.0.17.8.g67984e5
+Version:        2.0.18.0.g3871b1c
 Release:        0
 Summary:        NUMA Policy Control
 License:        GPL-2.0-only

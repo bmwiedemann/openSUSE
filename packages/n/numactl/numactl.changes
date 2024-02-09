@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 08 08:27:29 UTC 2024 - trenn@suse.de
+
+- Update to version 2.0.18.0.g3871b1c:
+  * Increase version number to 2.0.18
+  * man pages: fix table include preprocessor
+
+-------------------------------------------------------------------
 Mon Feb 05 08:36:43 UTC 2024 - vasily.ulyanov@suse.com
 
 - Update to version 2.0.17.8.g67984e5:
