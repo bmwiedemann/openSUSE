@@ -224,4 +224,12 @@
   https://github.com/timescale/timescaledb/releases/tag/2.13.0</comment>
     <requestid>1137725</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>37859628ef6b3cf1ec96f91cd4065fe7</srcmd5>
+    <version>2.14.0</version>
+    <time>1707519234</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1145366</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package timescaledb
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -21,7 +21,7 @@
 %{pg_version_from_name}
 
 Name:           %{pg_name}-%{ext_name}
-Version:        2.13.1
+Version:        2.14.0
 Release:        0
 Summary:        A time-series database extension for PostgreSQL
 License:        Apache-2.0
