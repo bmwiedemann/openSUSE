@@ -25,12 +25,12 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define drvver  16.1
+%define drvver  17.0
 %define soname  0
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
 %define _bashcompletionsdir %{_datadir}/bash-completion/completions
 Name:           pulseaudio
-Version:        16.1
+Version:        17.0
 Release:        0
 Summary:        A Networked Sound Server
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -54,12 +54,6 @@ Patch5:         qpaeq-shebang.patch
 Patch6:         pulseaudio-old-systemd-workaround.patch
 # PATCH-FIX-OPENSUSE Workaround for suse-module-tools directory
 Patch7:         pulseaudio-dump-module-Ignore-invalid-module-init-tools.patch
-# PATCH-FIX-UPSTREAM fix for webrtc-audioprocessing 1.3
-Patch8:         echo-cancel-add-webrtc-AEC3-support.patch
-# PATCH-FIX-UPSTREAM fix for webrtc-audioprocessing 1.3
-Patch9:         build-sys-Bump-cpp_std-to-c-17.patch
-# PATCH-FIX-UPSTREAM fix for webrtc-audioprocessing 1.3
-Patch10:        build-sys-Bump-webrtc-audio-processing-dependency.patch
 BuildRequires:  alsa-devel >= 1.0.19
 BuildRequires:  bluez-devel >= 5
 BuildRequires:  fdupes
@@ -328,17 +322,14 @@ System user for PulseAudio
 
 %prep
 %setup -q -T -b0
-%patch0 -p1
-%patch1 -p1
-%patch5 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P5 -p1
 # workaround for Leap 15.x
 %if 0%{?suse_version} < 1550
-%patch6 -p1
+%patch -P6 -p1
 %endif
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
+%patch -P7 -p1
 
 %build
 %meson \
@@ -402,10 +393,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/pulse/system.pa.d
 install -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/pulse/daemon.conf.d/60-disable_flat_volumes.conf
 # user
 install -Dm0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-pulse.conf
-# move dbus-1 system.d file to /usr
-install -Dm0644 %{buildroot}%{_sysconfdir}/dbus-1/system.d/pulseaudio-system.conf %{buildroot}%{_datadir}/dbus-1/system.d/pulseaudio-system.conf
-rm -rf %{buildroot}%{_sysconfdir}/dbus-1
-
 
 %find_lang %{name}
 

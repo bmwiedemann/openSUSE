@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb  8 11:24:48 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 17.0:
+  * Updates to ALSA UCM-based setups
+  * Battery level indication to Bluetooth devices
+  * Support for the Bluetooth FastStream codec
+  * webrtc-audio-processing dependency updated
+  * Trigger role groups added to module-role-cork
+  * XDG base directory spec for profile-set loading
+  * PA_RATE_MAX increased
+  * webrtc-audio-processing dependency updated
+  For details, see:
+    https://www.freedesktop.org/wiki/Software/PulseAudio/Notes/17.0/
+- Drop obsoleted patches:
+  echo-cancel-add-webrtc-AEC3-support.patch
+  build-sys-Bump-cpp_std-to-c-17.patch
+  build-sys-Bump-webrtc-audio-processing-dependency.patch
+
+-------------------------------------------------------------------
 Wed Dec 20 15:57:44 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - minor fixes for setup-pulseaudio
