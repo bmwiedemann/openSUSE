@@ -291,4 +291,27 @@
   * added azuresearchadminkey detector (#2348) (forwarded request 1144854 from ph03nix)</comment>
     <requestid>1144948</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f3f3168466311e337554f4add96383e2</srcmd5>
+    <version>3.67.5</version>
+    <time>1707519271</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.67.5:
+  * Refactor UnitHook to block the scan if finished metrics aren't handled (#2309)
+  * skip community PR (forks) secret scans for now (#2401)
+  * [feat] - buffered file writer metrics (#2395)
+  * Update GitParse to handle quoted binary filenames (#2391)
+  * Allow multiple domains for Forager (#2400)
+  * prevent concurrent map writes (#2399)
+  * Allow CLI version pinning in GHA (#2397) (#2398)
+  * Set GHA workdir (#2393)
+  * Fix handling of GitHub ratelimit information (#2041)
+  * [feat] - use diff chan (#2387)
+  * [not-fixup] - Reduce memory consumption for Buffered File Writer (#2377)
+  * fix: case-insensitive ext check (#2383)
+  * tightening opsgenie detection and verification (#2389)
+  * Fix binary file hanging bug in git sources (#2388)
+  * Disable GitHub wiki scanning by default (#2386) (forwarded request 1145429 from ph03nix)</comment>
+    <requestid>1145430</requestid>
+  </revision>
 </revisionlist>
