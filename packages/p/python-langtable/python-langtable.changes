@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  8 21:52:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.65:
+  * Add wuu, tok, glk, gbm, ssy
+  * Remove aa_ER.UTF-8@saaho
+  * Add kv_RU.UTF-8, chr_RU.UTF-8
+  * Add EU, EZ
+  * Add more translations from CLDR
+  * Get translation changes from CLDR
+
+-------------------------------------------------------------------
 Thu Dec  7 22:30:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.64:

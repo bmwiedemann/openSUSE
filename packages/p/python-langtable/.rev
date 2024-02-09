@@ -93,4 +93,18 @@
 - add python-rpm-macros dependency</comment>
     <requestid>1131729</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f06c69f8131cfcaf8faf3469110be70a</srcmd5>
+    <version>0.0.65</version>
+    <time>1707519215</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.0.65:
+  * Add wuu, tok, glk, gbm, ssy
+  * Remove aa_ER.UTF-8@saaho
+  * Add kv_RU.UTF-8, chr_RU.UTF-8
+  * Add EU, EZ
+  * Add more translations from CLDR
+  * Get translation changes from CLDR</comment>
+    <requestid>1145306</requestid>
+  </revision>
 </revisionlist>

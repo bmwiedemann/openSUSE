@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-langtable
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define skip_python2 1
 %global literalpython python
 Name:           python-langtable%{psuffix}
-Version:        0.0.64
+Version:        0.0.65
 Release:        0
 Summary:        Database to guess defaults for locale settings
 # the translations in languages.xml and territories.xml are (mostly)
