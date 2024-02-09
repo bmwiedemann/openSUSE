@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Fri Feb 09 10:08:50 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 8273a92:
+  * global: harmonize naming scheme, rename X++ -> xpp
+  * test/SConstruct: skip tests in non-graphical environments
+  * props test: further limit which properties can be used
+  * buildsystem: support building against libcosmos installed in the system
+  * ClientMessageEvent: add specialization for _NET_WM_STATE handling
+  * props test: make test more dynamic to find proper property
+  * Event: support clearing the low level event structure with zeroes
+  * update to newest libcosmos sub-module commit
+  * doxygen.conf: remove deprecated tags and fix file path names
+  * doxygen comments: replace \c commands by Markdown `` syntax.
+
+-------------------------------------------------------------------
+Wed Feb  7 11:01:34 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- initial version of the package
