@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb  7 12:32:15 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- update to 2.5.0:
+  * ykpiv: cmd: ykcs11: Add support for RSA3072 and RSA4096 key types.
+    Available in firmware 5.7.0 and newer
+  * ykpiv: cmd: Add support for ED25519 and X25519 key types.
+    Available in firmware 5.7.0 and newer
+  * ykpiv: cmd: Add support for deleting keys.
+    Available in firmware 5.7.0 and newer
+  * ykpiv: cmd: Add support for moving keys between slots.
+    Available in firmware 5.7.0 and newer
+- add temporary-cmake-flags-fix.patch
+  The included cmake modules are buggy. This patch should be removed once the
+  root cause is fixed in upstream.
+
+-------------------------------------------------------------------
 Sun Dec 17 15:01:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.2:

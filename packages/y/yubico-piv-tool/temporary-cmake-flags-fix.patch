@@ -1,0 +1,69 @@
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index f44d009..d41b568 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -30,6 +30,22 @@ message("lib/CMakeList.txt")
+ include(${CMAKE_SOURCE_DIR}/cmake/pcscd.cmake)
+ find_pcscd()
+ 
++# The included cmake modules are buggy, generating invalid flags with
++# semicolons inserted. Temporary workaround until I find the time to fix the
++# root cause:
++message("PCSC_LIBRARIES BEFORE: ${PCSC_LIBRARIES}")
++string(REPLACE ";" " " PCSC_LIBRARIES "${PCSC_LIBRARIES}")
++message("PCSC_LIBRARIES AFTER:  ${PCSC_LIBRARIES}")
++
++message("LIBCRYPTO_CFLAGS BEFORE: ${LIBCRYPTO_CFLAGS}")
++string(REPLACE ";" " " LIBCRYPTO_CFLAGS "${LIBCRYPTO_CFLAGS}")
++message("LIBCRYPTO_CFLAGS AFTER:  ${LIBCRYPTO_CFLAGS}")
++
++message("CMAKE_C_FLAGS BEFORE: ${CMAKE_C_FLAGS}")
++string(REPLACE ";" " " CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
++message("CMAKE_C_FLAGS AFTER:  ${CMAKE_C_FLAGS}")
++
++
+ set(YKPIV_VERSION_STRING "${yubico_piv_tool_VERSION_MAJOR}.${yubico_piv_tool_VERSION_MINOR}.${yubico_piv_tool_VERSION_PATCH}")
+ 
+ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+diff --git a/tool/CMakeLists.txt b/tool/CMakeLists.txt
+index f0e6de5..f2011bd 100644
+--- a/tool/CMakeLists.txt
++++ b/tool/CMakeLists.txt
+@@ -27,6 +27,14 @@
+ 
+ message("tool/CMakeList.txt")
+ 
++# The included cmake modules are buggy, generating invalid flags with
++# semicolons inserted. Temporary workaround until I find the time to fix the
++# root cause:
++message("CMAKE_C_FLAGS BEFORE: ${CMAKE_C_FLAGS}")
++string(REPLACE ";" " " CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
++message("CMAKE_C_FLAGS AFTER:  ${CMAKE_C_FLAGS}")
++
++
+ set (SOURCE
+         yubico-piv-tool.c
+         ../common/openssl-compat.c
+diff --git a/ykcs11/CMakeLists.txt b/ykcs11/CMakeLists.txt
+index 01670eb..c1e37b6 100644
+--- a/ykcs11/CMakeLists.txt
++++ b/ykcs11/CMakeLists.txt
+@@ -51,6 +51,18 @@ include_directories(
+         ${LIBCRYPTO_INCLUDE_DIRS}
+ )
+ 
++# The included cmake modules are buggy, generating invalid flags with
++# semicolons inserted. Temporary workaround until I find the time to fix the
++# root cause:
++message("LIBCRYPTO_CFLAGS BEFORE: ${LIBCRYPTO_CFLAGS}")
++string(REPLACE ";" " " LIBCRYPTO_CFLAGS "${LIBCRYPTO_CFLAGS}")
++message("LIBCRYPTO_CFLAGS AFTER:  ${LIBCRYPTO_CFLAGS}")
++
++message("CMAKE_C_FLAGS BEFORE: ${CMAKE_C_FLAGS}")
++string(REPLACE ";" " " CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
++message("CMAKE_C_FLAGS AFTER:  ${CMAKE_C_FLAGS}")
++
++
+ set(YKCS11_VERSION_MAJOR ${yubico_piv_tool_VERSION_MAJOR})
+ set(YKCS11_VERSION_MINOR  ${yubico_piv_tool_VERSION_MINOR})
+ set(YKCS11_VERSION_PATCH ${yubico_piv_tool_VERSION_PATCH})

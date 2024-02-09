@@ -1,7 +1,7 @@
-Index: yubico-piv-tool-2.2.1/ykcs11/CMakeLists.txt
+Index: yubico-piv-tool-2.5.0/ykcs11/CMakeLists.txt
 ===================================================================
---- yubico-piv-tool-2.2.1.orig/ykcs11/CMakeLists.txt
-+++ yubico-piv-tool-2.2.1/ykcs11/CMakeLists.txt
+--- yubico-piv-tool-2.5.0.orig/ykcs11/CMakeLists.txt
++++ yubico-piv-tool-2.5.0/ykcs11/CMakeLists.txt
 @@ -60,6 +60,9 @@ if(${ENABLE_HARDWARE_TESTS})
      set(HW_TESTS 1)
  endif(${ENABLE_HARDWARE_TESTS})
