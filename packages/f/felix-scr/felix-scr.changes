@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Feb  9 09:57:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.1.30
+  * Bug
+    + FELIX-6096: SCR fails if the Java Runtime Environment does not
+      support permissions
+    + FELIX-6206: NPE in ComponentRegistry.getComponentHolders()
+    + FELIX-6251: Possible NullPointerException when
+      DependencyManager.m_tracker is null
+    + FELIX-6252: Deadlock in SCR ComponentRegistry
+      updateChangeCount
+    + FELIX-6261: [Regression] Empty property values are treated as
+      String
+    + FELIX-6314: NullPointerException in
+      SingleComponentManager.disposeImplementationObject
+    + FELIX-6108: SCR activation log-messages cannot be disabled
+      with R7 LogService
+    + FELIX-6274: Potential Class Space problems with multiple Log
+      Service APIs
+    + FELIX-6317: dynamic greedy optional/mandatory references can
+      get wrong service ranking
+    + FELIX-6161: SCR: Method of resolving references limits Service
+      ListenerHook implementations
+    + FELIX-6327: NoSuchElementException can occur with
+      SingleDynamicCustomizer when services are removed
+    + FELIX-6315: Factory components are eagerly deactivated
+    + FELIX-6325: OSGi log package is mandatory but imported as
+      optional
+    + FELIX-6352: SCR should protect against unregistered
+      IllegalStateException for its ConfigurationListener
+      registrations
+    + FELIX-6361: IllegalArgumentException possible from
+      LoggerFactory.getLogger(Bundle, String, Class<L>)
+    + FELIX-6353: Constructor injection: activation with optional
+      reference fails if service not available
+    + FELIX-6351: EventDispatcher: Error during dispatch.
+      (java.lang.IllegalStateException: Service already
+      unregistered.)
+    + FELIX-6349: Possible NullPointerException on modified event in
+      DependencyManager
+    + FELIX-6407: SCR Log Extension still logs using the log level
+      of the extended bundle
+    + FELIX-6408: SCR NPE in MultipleStaticReluctantCustomizer
+      .modifiedService
+  * Improvement
+    + FELIX-6107: Logging Passwords when invoking activate Method
+    + FELIX-6215: Cannot run scr unit tests on Java 11
+    + FELIX-6218: Replace kxml2 with standard SAX XML parser
+    + FELIX-6220: Refactor injection implementation
+    + FELIX-6241: IllegalStateException can be thrown from listener
+      if BundleContext is invalid
+    + FELIX-6307: SCR logging uses null name for logger in
+      LogServiceEnabledLogger.getLogger()
+    + FELIX-6293: Apache Felix SCR Logging
+- Removed patch:
+  * 0002-Drop-the-dependencies-on-kxml-xpp3.patch
+    + integrated upstream
+- Modified patch:
+  * 0001-Use-import-package-instead-of-embedding-dependencies.patch
+    + regenerate to the changed context post-removal
+
+-------------------------------------------------------------------
 Sat Sep  9 13:27:49 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
@@ -7,8 +69,82 @@ Sat Sep  9 13:27:49 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 Wed Apr  1 08:21:39 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.1.16
+  * Bug
+    + FELIX-5769: SCR should not bind prototype_required reference
+      to bundle scope service
+    + FELIX-5775: Service properties not updated for lazy service
+      when configuration changes
+    + FELIX-5507: ConfigurationAdmin might not be visible to SCR
+      implementation
+    + FELIX-5543: Component property types must implement
+      java.lang.annotation.Annotation methods properly
+    + FELIX-5866: SCR does not respect the log level set in
+      LoggerAdmin
+    + FELIX-5865: SCR R7 logging support doesn't work on equinox
+      framework
+    + FELIX-5867: Reference field of type Logger for service
+      LoggerFactory is always null
+    + FELIX-5885: SCR uses an overly restrictive import range for
+      promises
+    + FELIX-5902: java.lang.IllegalArgumentException: Bundle
+      org.apache.felix.scr is not resolved with R7 LogService
+    + FELIX-5904: SCR is creating a logger instance using name
+      "null"
+    + FELIX-5927: Single element Annotation type does not
+      incorporate PREFIX_
+    + FELIX-5926: Logger instance is not set for constructor and
+      reference injection
+    + FELIX-5929: Failed activation state not reported in DTOs
+    + FELIX-5930: Service reference is missing in DTO
+    + FELIX-5905: SCR cannot access method getLogger from LogService
+      R7
+    + FELIX-5910: Set correct AccessControlContext when receiving
+      configuration events
+    + FELIX-4260: IllegalStateException: The service has been
+      unregistered
+    + FELIX-5947: ClassLoader memory leak
+    + FELIX-5959: Exception on changecount timer timeout
+    + FELIX-5950: NPE in MultiplePrototypeRefPair.unsetServiceObject
+    + FELIX-5974: Prototype scope references are not released on
+      deactivation
+    + FELIX-6056: SCR exports promises
+    + FELIX-6055: NullPointerException possible because
+      ServiceReference.getBundle() can return null
+    + FELIX-6050: Use abstract class for PrototypeRefPair
+      implementations for Single vs. Multiple case
+    + FELIX-6044: Component deactivation does not cause reference
+      services to be ungotten
+    + FELIX-6043: ClassNotFoundException
+      org.osgi.util.function.Function
+    + FELIX-6041: scr gogo commands require gogo runtime to be
+      present when scr resolves
+    + FELIX-6036: Race condition prevents optional/greedy ref setter
+      method from being called
+    + FELIX-6026: SCR command problems
+    + FELIX-5989: java.lang.IllegalArgumentException from
+      AbstractLogger.format when logging debug message
+  * Improvement
+    + FELIX-5354: Implement Declarative Service Updates for OSGi R7
+    + FELIX-5454: Service properties for ComponentFactory (OSGi R7)
+    + FELIX-5455: Constructor Injection (OSGi R7)
+    + FELIX-5456: Field injection of component activation objects
+      (OSGi R7)
+    + FELIX-5457: Logger support (OSGi R7)
+    + FELIX-5458: Improved ConfigurationPlugin Support (OSGi R7)
+    + FELIX-5460: DTO Updates (OSGi R7)
+    + FELIX-5557: Updates to section 112.8.2.2 Coercing Component
+      Property Values (OSGi R7)
+    + FELIX-5559: Add change count property to runtime service
+      (OSGi R7)
+    + FELIX-5590: Add support for single value annotations and new
+      key mapping (OSGi R7)
+    + FELIX-5695: Use Java 7 as base version
+    + FELIX-5696: Separate metatype provider from managed service
+    + FELIX-5948: Collection of performance and memory optimizations
+    + FELIX-5987: Slow ServiceComponentRuntime with delivering
+      ServiceReferenceDTOs
 - Modified patch:
-  * osgi-metadata.patch -> 
+  * osgi-metadata.patch ->
     0001-Use-import-package-instead-of-embedding-dependencies.patch
 	+ Don't embed dependencies, use import-package instead
 - Added patch:

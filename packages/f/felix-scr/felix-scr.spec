@@ -1,7 +1,7 @@
 #
 # spec file for package felix-scr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global bundle  org.apache.felix.scr
 Name:           felix-scr
-Version:        2.1.16
+Version:        2.1.30
 Release:        0
 Summary:        Apache Felix Service Component Runtime (SCR)
 License:        Apache-2.0
@@ -27,8 +27,6 @@ URL:            https://felix.apache.org/documentation/subprojects/apache-felix-
 Source0:        http://archive.apache.org/dist/felix/%{bundle}-%{version}-source-release.tar.gz
 # Don't embed deps, use import-package instead
 Patch0:         0001-Use-import-package-instead-of-embedding-dependencies.patch
-# Drop dep on kxml/xpp, use the system SAX implementation instead
-Patch1:         0002-Drop-the-dependencies-on-kxml-xpp3.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  xz
@@ -53,7 +51,6 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q -n %{bundle}-%{version}
 %patch0 -p1
-%patch1 -p1
 
 # All these OSGi deps are provided in the compendium jar
 %pom_add_dep org.osgi:osgi.cmpn:7.0.0:provided
