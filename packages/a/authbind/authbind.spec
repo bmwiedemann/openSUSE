@@ -1,7 +1,7 @@
 #
 # spec file for package authbind
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define args prefix="%{_prefix}" etc_dir="%{_sysconfdir}/authbind" lib_dir="%{_libdir}/authbind" libexec_dir="%{_libexecdir}/authbind"
 Name:           authbind
@@ -22,9 +23,9 @@ Release:        0
 Summary:        Authentication socket binding to priviledged ports without root
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            http://www.chiark.greenend.org.uk/ucgi/~ian/git/authbind.git
+URL:            http://www.chiark.greenend.org.uk/ucgi/~ian/git/authbind.git
 Source:         http://ftp.debian.org/debian/pool/main/a/authbind/authbind_%{version}.tar.gz
-Patch:          fix-Makefile.patch
+Patch0:         fix-Makefile.patch
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         permissions
 
@@ -35,8 +36,7 @@ root to bind to low-numbered ports in a controlled way.
 http://en.wikipedia.org/wiki/Authbind
 
 %prep
-%setup -q -n authbind
-%patch -p1
+%autosetup -n authbind -p1
 
 %build
 %define _lto_cflags %{nil}

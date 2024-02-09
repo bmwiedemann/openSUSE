@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  9 08:54:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare for RPM 4.20: use autosetup.
+
+-------------------------------------------------------------------
+Mon Nov  6 15:52:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+-  Fix build with RPM 4.19: unnumbered patches are no longer
+   supported.
+
+-------------------------------------------------------------------
 Sun Dec 27 17:55:04 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add fix-Makefile.patch: make Makefile work properly
