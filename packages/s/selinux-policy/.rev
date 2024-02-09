@@ -495,4 +495,105 @@
     <comment></comment>
     <requestid>1139103</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>97b0e16a61f8b88f323202845c570ce8</srcmd5>
+    <version>20240205</version>
+    <time>1707519095</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240205:
+  * Allow gpg manage rpm cache
+  * Allow login_userdomain name_bind to howl and xmsg udp ports
+  * Allow rules for confined users logged in plasma
+  * Label /dev/iommu with iommu_device_t
+  * Remove duplicate file context entries in /run
+  * Dontaudit getty and plymouth the checkpoint_restore capability
+  * Allow su domains write login records
+  * Revert &quot;Allow su domains write login records&quot;
+  * Allow login_userdomain delete session dbusd tmp socket files
+  * Allow unix dgram sendto between exim processes
+  * Allow su domains write login records
+  * Allow smbd_t to watch user_home_dir_t if samba_enable_home_dirs is on
+  * Allow chronyd-restricted read chronyd key files
+  * Allow conntrackd_t to use bpf capability2
+  * Allow systemd-networkd manage its runtime socket files
+  * Allow init_t nnp domain transition to colord_t
+  * Allow polkit status systemd services
+  * nova: Fix duplicate declarations
+  * Allow httpd work with PrivateTmp
+  * Add interfaces for watching and reading ifconfig_var_run_t
+  * Allow collectd read raw fixed disk device
+  * Allow collectd read udev pid files
+  * Set correct label on /etc/pki/pki-tomcat/kra
+  * Allow systemd domains watch system dbus pid socket files
+  * Allow certmonger read network sysctls
+  * Allow mdadm list stratisd data directories
+  * Allow syslog to run unconfined scripts conditionally
+  * Allow syslogd_t nnp_transition to syslogd_unconfined_script_t
+  * Allow qatlib set attributes of vfio device files
+  * Allow systemd-sleep set attributes of efivarfs files
+  * Allow samba-dcerpcd read public files
+  * Allow spamd_update_t the sys_ptrace capability in user namespace
+  * Allow bluetooth devices work with alsa
+  * Allow alsa get attributes filesystems with extended attributes
+  * Allow hypervkvp_t write access to NetworkManager_etc_rw_t
+  * Add interface for write-only access to NetworkManager rw conf
+  * Allow systemd-sleep send a message to syslog over a unix dgram socket
+  * Allow init create and use netlink netfilter socket
+  * Allow qatlib load kernel modules
+  * Allow qatlib run lspci
+  * Allow qatlib manage its private runtime socket files
+  * Allow qatlib read/write vfio devices
+  * Label /etc/redis.conf with redis_conf_t
+  * Remove the lockdown-class rules from the policy
+  * Allow init read all non-security socket files
+  * Replace redundant dnsmasq pattern macros
+  * Remove unneeded symlink perms in dnsmasq.if
+  * Add additions to dnsmasq interface
+  * Allow nvme_stas_t create and use netlink kobject uevent socket
+  * Allow collectd connect to statsd port
+  * Allow keepalived_t to use sys_ptrace of cap_userns
+  * Allow dovecot_auth_t connect to postgresql using UNIX socket
+  * Make named_zone_t and named_var_run_t a part of the mountpoint attribute
+  * Allow sysadm execute traceroute in sysadm_t domain using sudo
+  * Allow sysadm execute tcpdump in sysadm_t domain using sudo
+  * Allow opafm search nfs directories
+  * Add support for syslogd unconfined scripts
+  * Allow gpsd use /dev/gnss devices
+  * Allow gpg read rpm cache
+  * Allow virtqemud additional permissions
+  * Allow virtqemud manage its private lock files
+  * Allow virtqemud use the io_uring api
+  * Allow ddclient send e-mail notifications
+  * Allow postfix_master_t map postfix data files
+  * Allow init create and use vsock sockets
+  * Allow thumb_t append to init unix domain stream sockets
+  * Label /dev/vas with vas_device_t
+  * Create interface selinux_watch_config and add it to SELinux users
+  * Update cifs interfaces to include fs_search_auto_mountpoints()
+  * Allow sudodomain read var auth files
+  * Allow spamd_update_t read hardware state information
+  * Allow virtnetworkd domain transition on tc command execution
+  * Allow sendmail MTA connect to sendmail LDA
+  * Allow auditd read all domains process state
+  * Allow rsync read network sysctls
+  * Add dhcpcd bpf capability to run bpf programs
+  * Dontaudit systemd-hwdb dac_override capability
+  * Allow systemd-sleep create efivarfs files
+  * Allow map xserver_tmpfs_t files when xserver_clients_write_xshm is on
+  * Allow graphical applications work in Wayland
+  * Allow kdump work with PrivateTmp
+  * Allow dovecot-auth work with PrivateTmp
+  * Allow nfsd get attributes of all filesystems
+  * Allow unconfined_domain_type use io_uring cmd on domain
+  * ci: Only run Rawhide revdeps tests on the rawhide branch
+  * Label /var/run/auditd.state as auditd_var_run_t
+  * Allow fido-device-onboard (FDO) read the crack database
+  * Allow ip an explicit domain transition to other domains
+  * Label /usr/libexec/selinux/selinux-autorelabel with semanage_exec_t
+  * Allow  winbind_rpcd_t processes access when samba_export_all_* is on
+  * Enable NetworkManager and dhclient to use initramfs-configured DHCP connection
+  * Allow ntp to bind and connect to ntske port.
+</comment>
+    <requestid>1145097</requestid>
+  </revision>
 </revisionlist>
