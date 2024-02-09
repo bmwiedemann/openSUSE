@@ -1,7 +1,7 @@
 #
 # spec file for package distribution-logos-openSUSE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Sasi Olin <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,29 +18,27 @@
 
 
 Name:           distribution-logos-openSUSE
+Version:        20240207
+Release:        0
 Summary:        Logos for openSUSE Distros
 License:        CC-BY-SA-4.0
-Version:        20230921
-Release:        0
-Url:            https://github.com/openSUSE/distribution-logos
-Source:         distribution-logos-main.zip
-BuildRequires:  unzip
+URL:            https://github.com/openSUSE/distribution-logos
+# updated via "osc service manualrun"
+Source:         distribution-logos-%{version}.tar.zst
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  zstd
 BuildArch:      noarch
 
 %description
 Logos for openSUSE Distributions
 
 %if 0%{?sle_version}
-
 %package Leap
 Summary:        Logos for openSUSE Leap
-
+Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Conflicts:      distribution-logos
-
-RemovePathPostfixes: .Leap
+Removepathpostfixes: .Leap
 BuildArch:      noarch
 
 %description Leap
@@ -48,12 +46,10 @@ Logos for openSUSE Leap
 
 %package LeapMicro
 Summary:        Logos for openSUSE Leap Micro
-
+Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Conflicts:      distribution-logos
-
-RemovePathPostfixes: .LeapMicro
+Removepathpostfixes: .LeapMicro
 BuildArch:      noarch
 
 %description LeapMicro
@@ -63,12 +59,10 @@ Logos for openSUSE Leap Micro
 
 %package Tumbleweed
 Summary:        Logos for openSUSE Tumbleweed
-
+Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Conflicts:      distribution-logos
-
-RemovePathPostfixes: .Tumbleweed
+Removepathpostfixes: .Tumbleweed
 BuildArch:      noarch
 
 %description Tumbleweed
@@ -76,12 +70,10 @@ Logos for openSUSE Tumbleweed
 
 %package Kubic
 Summary:        Logos for openSUSE Kubic
-
+Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Conflicts:      distribution-logos
-
-RemovePathPostfixes: .Kubic
+Removepathpostfixes: .Kubic
 BuildArch:      noarch
 
 %description Kubic
@@ -89,12 +81,10 @@ Logos for openSUSE Kubic
 
 %package MicroOS
 Summary:        Logos for openSUSE MicroOS
-
+Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Conflicts:      distribution-logos
-
-RemovePathPostfixes: .MicroOS
+Removepathpostfixes: .MicroOS
 BuildArch:      noarch
 
 %description MicroOS
@@ -102,12 +92,10 @@ Logos for openSUSE MicroOS
 
 %package Aeon
 Summary:        Logos for openSUSE Aeon
-
+Conflicts:      distribution-logos
 Obsoletes:      distribution-logos
 Provides:       distribution-logos
-Conflicts:      distribution-logos
-
-RemovePathPostfixes: .Aeon
+Removepathpostfixes: .Aeon
 BuildArch:      noarch
 
 %description Aeon
@@ -117,20 +105,18 @@ Logos for openSUSE Aeon
 
 %package icons
 Summary:        Icons with distribution logos
-
 Requires:       distribution-logos
+Conflicts:      systemd-icon-branding-openSUSE
 Provides:       systemd-icon-branding
 Obsoletes:      systemd-icon-branding-openSUSE < 84.87.20210910
 Provides:       systemd-icon-branding-openSUSE = 84.87.20210910
-Conflicts:      systemd-icon-branding-openSUSE
-
 BuildArch:      noarch
 
 %description icons
 Icons with openSUSE distribution logos.
 
 %prep
-%setup -qn distribution-logos-main
+%setup -q -n distribution-logos-%{version}
 
 %build
 # Skip build
@@ -157,7 +143,6 @@ ln -sf %{_datadir}/pixmaps/distribution-logos/square-symbolic.svg %{buildroot}%{
 %dir %{_datadir}/pixmaps/distribution-logos
 
 %if 0%{?sle_version}
-
 %files Leap
 %{_datadir}/pixmaps/distribution-logos/*.Leap
 

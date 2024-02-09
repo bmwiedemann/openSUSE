@@ -85,4 +85,18 @@
     <user>dimstar_suse</user>
     <comment>Revert non-approved change</comment>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ddecd75d4f5f3d9a3e3ccac4634ca01d</srcmd5>
+    <version>20240207</version>
+    <time>1707519096</time>
+    <user>anag+factory</user>
+    <comment>- switch to a service using zstd
+
+- list the source url
+
+- Update Leap 15.6 branding poo#131666
+
+- Initial Leap Micro 5.2 branding</comment>
+    <requestid>1145115</requestid>
+  </revision>
 </revisionlist>

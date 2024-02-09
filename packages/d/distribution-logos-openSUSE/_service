@@ -1,0 +1,13 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/openSUSE/distribution-logos</param>
+    <param name="scm">git</param>
+    <param name="revision">main</param>
+    <param name="versionformat">%cd</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">distribution-logos-*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+</services>
