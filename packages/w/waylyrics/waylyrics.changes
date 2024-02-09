@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Feb 09 03:42:14 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.2.1:
+  * chore: release 0.2.1
+  * build: improve test build time
+  * test: move out doctest for `get_lrc_path`
+  * test: move unit tests to inside `src/`
+  * refactor: rename `get_lyric` to `parse_lyric` [ci skip]
+  * refactor: setup `QQMusic` with `init()` call
+  * doc(install): download pre-built executables [ci skip]
+  * doc(install): explain build environment variable
+  * ci: run real test in CI
+  * test: test LRC parsing
+  * doc: define `lrc_iter` behaviour
+  * refactor: impl into_owned for LyricLine
+  * test: test netease lyric get & parse
+  * refactor: remove `CONFIG_HOME`
+  * chore: remove unused import
+  * breaking(ui): drop `SIGUSR` control support
+  * refactor: make `init_dirs` a public method so we could write tests
+  * chore: release 0.2.0
+  * style: define `glib-macros` under `gtk`
+  * doc(readme): remove `lx-music` because it's dead [ci skip]
+  * chore(doc): add `musicfox`, a TUI based music player [ci skip]
+  * fix: hint support for musicfox
+  * chore(doc): update doc for youtube-music [ci skip]
+  * chore: drop support for ncm-gtk legacy name
+  * feat: add support for musicfox
+  * chore(doc): update translation [ci skip]
+  * chore(doc): update alternatives [ci skip]
+
+-------------------------------------------------------------------
 Wed Feb 07 14:29:21 UTC 2024 - xtexchooser@duck.com
 
 - Update to version 0~git486:

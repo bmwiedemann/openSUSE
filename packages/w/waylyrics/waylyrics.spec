@@ -17,7 +17,7 @@
 
 
 Name:           waylyrics
-Version:        0~git486
+Version:        0.2.1
 Release:        0
 Summary:        The furry way to show desktop lyrics
 License:        MIT
