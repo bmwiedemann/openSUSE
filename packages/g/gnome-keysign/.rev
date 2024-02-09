@@ -180,4 +180,12 @@ Binary file gnome-keysign-0.9.tar.xz (revision 3) deleted</comment>
     <comment>- Correct dependency on gstreamer plugin (forwarded request 741440 from Andreas_Schwab)</comment>
     <requestid>742023</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5f0b86a3291723f7e8cd3c8e66f37cf9</srcmd5>
+    <version>0.9.7.2</version>
+    <time>1707519145</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145232</requestid>
+  </revision>
 </revisionlist>

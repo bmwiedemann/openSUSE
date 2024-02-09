@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-keysign
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        GNOME OpenGPG key signing helper
 License:        GPL-3.0-or-later
 Group:          Productivity/Security
-Url:            https://github.com/GNOME-Keysign/gnome-keysign
+URL:            https://github.com/GNOME-Keysign/gnome-keysign
 Source:         %{name}-%{version}.tar.xz
 Patch0:         gnome-keysign-python3-setup.patch
 
@@ -56,8 +56,7 @@ Consider either of the aboved mentioned tools when you need a much
 more mature codebase.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 python3 setup.py build
