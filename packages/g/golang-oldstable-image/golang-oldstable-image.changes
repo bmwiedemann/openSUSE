@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  7 18:41:00 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- switch golang stable to 1.22, oldstable to 1.21
+
+-------------------------------------------------------------------
 Wed Jan 17 14:29:14 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Add initial README stub
