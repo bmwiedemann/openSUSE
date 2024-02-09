@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  9 08:08:42 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Replace python with python3 (bsc#1219308)
+
+-------------------------------------------------------------------
 Wed May  4 10:55:00 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - 0001-Compile-for-RISC-V.patch: add support for RISC-V

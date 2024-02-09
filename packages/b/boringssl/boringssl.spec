@@ -1,7 +1,7 @@
 #
 # spec file for package boringssl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -105,6 +105,7 @@ find %{buildroot}%{src_install_dir} -type f \( -name "*.a" -o -name "*.lib" -o -
 find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec chmod +x "{}" +
 # Fix env-script-interpreter error.
 find %{buildroot}%{src_install_dir} -type f -name "*.pl" -exec sed -i 's|#!.*/usr/bin/env perl|#!/usr/bin/perl|' "{}" +
+find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*/usr/bin/python$|#!/usr/bin/python3|' "{}" +
 find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*/usr/bin/env python.*|#!/usr/bin/python3|' "{}" +
 find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!.*/usr/bin/env bash|#!/bin/bash|' "{}" +
 
