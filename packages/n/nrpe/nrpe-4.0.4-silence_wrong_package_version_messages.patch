@@ -1,8 +1,8 @@
-Index: nrpe-4.0.3/src/nrpe.c
+Index: nrpe-4.1.0/src/nrpe.c
 ===================================================================
---- nrpe-4.0.3.orig/src/nrpe.c
-+++ nrpe-4.0.3/src/nrpe.c
-@@ -1764,7 +1764,7 @@ void handle_connection(int sock)
+--- nrpe-4.1.0.orig/src/nrpe.c
++++ nrpe-4.1.0/src/nrpe.c
+@@ -1788,7 +1788,7 @@ void handle_connection(int sock)
  	/* recv() error or client disconnect */
  	if (rc <= 0) {
  		/* log error */
@@ -11,7 +11,7 @@ Index: nrpe-4.0.3/src/nrpe.c
  		if (v3_receive_packet)
  			free(v3_receive_packet);
  #ifdef HAVE_SSL
-@@ -2114,7 +2114,7 @@ int read_packet(int sock, void *ssl_ptr,
+@@ -2138,7 +2138,7 @@ int read_packet(int sock, void *ssl_ptr,
  
  		packet_ver = ntohs(v2_pkt->packet_version);
  		if (packet_ver != NRPE_PACKET_VERSION_2 && packet_ver != NRPE_PACKET_VERSION_4) {
@@ -20,7 +20,7 @@ Index: nrpe-4.0.3/src/nrpe.c
  			return -1;
  		}
  
-@@ -2198,7 +2198,7 @@ int read_packet(int sock, void *ssl_ptr,
+@@ -2222,7 +2222,7 @@ int read_packet(int sock, void *ssl_ptr,
  
  		packet_ver = ntohs(v2_pkt->packet_version);
  		if (packet_ver != NRPE_PACKET_VERSION_2 && packet_ver != NRPE_PACKET_VERSION_4) {

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Feb  6 15:54:05 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 4.1.0
+  ENHANCEMENTS
+  + Add support for OpenSSL 3 (and EL9/Debian 11/Ubuntu 22)
+  + Allow tcpd/libwrap to be excluded from build when present on the system
+  + Allow loading of full certificate chains
+  + Change -u (connection issues return UNKNOWN) to include all SSL-layer failures.
+  + Disable renegotiation and enforce server cipher order when using SSL
+  + Verify that private keys match certificates when using SSL
+  FIXES
+  + Fixed incorrect default for nasty_metachars in nrpe.cfg
+  + Fixed incorrect help text for --use-adh
+  + Fixed potential out-of-bound read when used with IPv6
+- use system-user-nagios package to create the neccessary 
+  user and group
+- remove macros for old, unsupported SUSE versions
+- refresh patches:
+  + nrpe-implicit_declaration.patch
+  + nrpe-static_dh_parameters.patch
+  + nrpe-4.0.4-silence_wrong_package_version_messages.patch
+- remove patches:
+  + nrpe-disable-chkconfig_in_Makefile.patch (obsolete)
+  + nrpe-improved_help.patch (fixed upstream)
+  + nrpe_check_control.patch (better fix inside the spec file 
+    and use existing nagios macros)
+- remove obsolete nrpe-rpmlintrc
+
+-------------------------------------------------------------------
 Wed Nov  1 22:09:28 UTC 2023 - Michal Svec <msvec@suse.com>
 
 - Fixed SLES 12 build

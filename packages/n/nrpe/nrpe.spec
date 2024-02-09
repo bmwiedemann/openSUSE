@@ -1,7 +1,7 @@
 #
 # spec file for package nrpe
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %define nnmmsg logger -t %{name}/rpm
 %define nrpeport 5666
+
 %if ! %{defined _rundir}
   %define _rundir %{_localstatedir}/run
 %endif
@@ -37,16 +38,16 @@
 %else
 %bcond_with reproducable
 %endif
+
 Name:           nrpe
-Version:        4.0.3
+Version:        4.1.0
 Release:        0
 Summary:        Nagios Remote Plug-In Executor
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            http://www.nagios.org/
-Source0:        nrpe-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.xz
 Source1:        nrpe.init
-Source2:        nrpe-rpmlintrc
 Source3:        nrpe-SuSEfirewall2
 Source4:        nrpe.8
 Source5:        check_nrpe.cfg
@@ -55,19 +56,14 @@ Source11:       README.SUSE.systemd-addon
 Source12:       usr.sbin.nrpe
 Source13:       nrpe.xml
 Source14:       nrpe-dh.h
-# PATCH-FIX-UPSTREAM improve help output of nrpe and check_nrpe
-Patch2:         nrpe-improved_help.patch
-# PATCH-FIX-openSUSE fix pathnames for nrpe_check_control command
-Patch4:         nrpe_check_control.patch
-# PATCH-FIX-UPSTREAM using implicit definitions of functions
-Patch5:         nrpe-implicit_declaration.patch
-# PATCH-FIX-openSUSE patch used to NOT re-calculate dh.h parameters (for reproducable builds)
-Patch6:         nrpe-static_dh_parameters.patch
-# PATCH-FIX-openSUSE disable chkconfig call in Makefile
-Patch7:         nrpe-disable-chkconfig_in_Makefile.patch
 # PATCH-FIX-UPSTREAM this fills up the logs on the clients without real need
-Patch8:         nrpe-4.0.4-silence_wrong_package_version_messages.patch
+Patch1:         nrpe-4.0.4-silence_wrong_package_version_messages.patch
+# PATCH-FIX-UPSTREAM using implicit definitions of functions
+Patch2:         nrpe-implicit_declaration.patch
+# PATCH-FIX-openSUSE patch used to NOT re-calculate dh.h parameters (for reproducable builds)
+Patch3:         nrpe-static_dh_parameters.patch
 BuildRequires:  nagios-rpm-macros
+Requires(pre):  system-user-nagios
 Requires(pre):  grep
 Requires(pre):  sed
 Provides:       nagios-nrpe = %{version}
@@ -80,12 +76,6 @@ PreReq:         %insserv_prereq
 PreReq:         /bin/logger
 %else
 Requires(pre):  %{_bindir}/logger
-%endif
-%if 0%{?suse_version} > 1130
-%if 0%{?suse_version} <= 1230
-Requires(pre):  sysvinit(network)
-Requires(pre):  sysvinit(syslog)
-%endif
 %endif
 BuildRequires:  krb5-devel
 %if 0%{?suse_version}
@@ -124,9 +114,7 @@ Summary:        Nagios Remote Plug-In Executor documentation
 Group:          Documentation/Other
 Provides:       nagios-nrpe-doc = %{version}
 Obsoletes:      nagios-nrpe-doc < 2.14
-%if 0%{?suse_version} >= 1230
 BuildArch:      noarch
-%endif
 
 %description doc
 This package contains the README files, OpenOffice and PDF
@@ -139,9 +127,8 @@ Provides:       nagios-nrpe-server = %{version}-%{release}
 Obsoletes:      nagios-nrpe-server < 2.14
 Provides:       nagios-plugins-nrpe = %{version}-%{release}
 Obsoletes:      nagios-plugins-nrpe < 2.15-%{release}
-%if 0%{?suse_version} > 1020
+Requires(pre):  system-user-nagios
 Recommends:     monitoring_daemon
-%endif
 
 %description -n monitoring-plugins-nrpe
 This package contains the plugin for the host runing the Nagios
@@ -155,22 +142,35 @@ The plugin then uses the output and return code from the plugin
 execution on the remote host for its own output and return code.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -N
+
+%if 0%{?suse_version} < 01500
+%patch1 -p1
 %patch2 -p1
-%patch4 -p1
-%patch5 -p1
 %if %{with reproducable}
-%patch6 -p1
+%patch3 -p1
 install -m644 %{SOURCE14} include/dh.h
 %endif
-%patch7 -p1
-%patch8 -p1
-cp -a %{SOURCE10} .
-cp -a %{SOURCE12} .
-%if 0%{?suse_version} >= 1210
-cat %{SOURCE11} >> README.SUSE
+%else
+%if %{with reproducable}
+%autopatch -p1
+install -m644 %{SOURCE14} include/dh.h
+%else
+%autopatch -p1 1 2
 %endif
+%endif
+
+# README files
+cp -a %{SOURCE10} .
+cat %{SOURCE11} >> README.SUSE
+# apparmor
+cp -a %{SOURCE12} .
+# patch contrib script to use the right directories (as defined via macro in nagios-rpm-macros package)
+sed -i "s|/usr/local/nagios/var/rw/nagios.cmd|%{nagios_command_file}|g; \
+        s|/usr/local/nagios/etc/services.cfg|%{nagios_sysconfdir}/services.cfg|g;" \
+        contrib/nrpe_check_control.c
 chmod -x contrib/README.nrpe_check_control
+
 # increase the number of 'allowed' processes on newer systems:
 sed -i "s|check_procs -w 150 -c 200|check_procs -w 350 -c 400|g" sample-config/nrpe.cfg.in
 # add the new include directory
@@ -290,9 +290,6 @@ rm -rf %{buildroot}%{_sysconfdir}/xinetd.d
 %endif
 
 %pre
-# Create user and group on the system if necessary
-%nagios_user_group_add
-%nagios_command_user_group_add
 # check if the port for nrpe is already defined in /etc/services
 if getent services nrpe >/dev/null ; then
     : OK - port already defined
@@ -322,10 +319,6 @@ fi
   %service_add_post nrpe.service nrpe.socket
   %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 %endif
-
-%pre -n monitoring-plugins-nrpe
-# Create user and group on the system if necessary
-%nagios_user_group_add
 
 %triggerun -- nagios-nrpe < 2.14
 STATUS='%{_localstatedir}/adm/update-scripts/nrpe'
