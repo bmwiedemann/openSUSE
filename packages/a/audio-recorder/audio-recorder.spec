@@ -1,7 +1,7 @@
 #
 # spec file for package audio-recorder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,8 +70,7 @@ audio, FLAC, Opus, MP3 and WAV.
 %lang_package
 
 %prep
-%setup -q -n trunk
-%patch0 -p1
+%autosetup -n trunk -p1
 
 %build
 autoreconf -fi

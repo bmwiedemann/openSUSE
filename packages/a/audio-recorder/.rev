@@ -133,4 +133,12 @@ Updated source. (forwarded request 729546 from ukbeast89)</comment>
   * Later, newer audio-recorder versions will run on Gstreamer and Pipewire. (forwarded request 972170 from susnux)</comment>
     <requestid>972513</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>dcd444e315c5fc8fc71a12b735f75bf8</srcmd5>
+    <version>3.3.4</version>
+    <time>1707519141</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20</comment>
+    <requestid>1145228</requestid>
+  </revision>
 </revisionlist>
