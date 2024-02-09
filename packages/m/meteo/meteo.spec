@@ -17,7 +17,7 @@
 
 
 Name:           meteo
-Version:        0.9.9.2
+Version:        0.9.9.3
 Release:        0
 Summary:        Program to show the weather forecast of the next hours and days
 License:        GPL-3.0-or-later
