@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 09 17:18:40 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1707499101.aaa807d2:
+  * docs: Add instructions for pinging over GRE tunnels
+  * Ensure all hidden form fields in test overview filter
+  * Avoid sporadic failures in `t/ui/16-tests_job_next_previous.t`
+  * Add /job_groups/id/build_results API route
+  * Add signatures to OpenQA::WebAPI::Controller::API::V1::JobGroup
+  * git subrepo pull (merge) external/os-autoinst-common
+  * Ensure the worker can call `du` for space aware cleanup of Git caching
+  * docs: Explain combination of worker class values and more examples
+  * Adapt usage of tools/update-deps
+  * Remove unnecessary disabling of strict refs
+  * Refactor methods which violate the deeply nested loops
+  * Avoid workers from showing up shortly as broken after registration
+
+-------------------------------------------------------------------
 Fri Feb 02 21:02:01 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1706881004.0d50a814:
