@@ -275,6 +275,18 @@ then
     else
 	opts[o++]=--unshare-all
     fi
+    for so in /tmp/.X11-unix/*
+    do
+	test -s $so && continue
+	# Abstract sockets only
+	opts[o++]=--share-net
+    done
+    if test -n "${WAYLAND_DISPLAY}"
+    then
+	opts[o++]=--ro-bind
+	opts[o++]="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
+	opts[o++]="/run/user/$uid/$WAYLAND_DISPLAY"
+    fi
     if test -n "${GHOSTVIEW}"
     then
 	opts[o++]=--setenv
@@ -330,15 +342,18 @@ set -euo pipefail
       --proc /proc \
       --tmpfs /run \
       --tmpfs /tmp \
+      --dir /var \
       --ro-bind /bin/false /bin/false \
       --ro-bind $ghostscript /usr/bin/gs \
       --ro-bind /usr/share/ghostscript /usr/share/ghostscript \
+      --ro-bind /usr/share/xml/fontconfig /usr/share/xml/fontconfig \
+      --ro-bind /usr/share/fontconfig /usr/share/fontconfig \
       --ro-bind /usr/share/fonts /usr/share/fonts \
+      --ro-bind /var/cache/fontconfig /var/cache/fontconfig \
       --ro-bind /etc/fonts /etc/fonts \
       --ro-bind "$lock" /tmp/.lock \
       --lock-file /tmp/.lock \
       --dir "/run/user/$uid" \
-      --dir /var \
       --symlink ../run var/run \
       --symlink ../tmp var/tmp \
       --dir "$home" \

@@ -86,4 +86,12 @@
     <comment>- Make it work even with different hwcaps versions</comment>
     <requestid>1111326</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>93cb9304d812e8caf649f6eb257e8228</srcmd5>
+    <version>0.1</version>
+    <time>1707519254</time>
+    <user>anag+factory</user>
+    <comment>- Allow also abstract X11 socket</comment>
+    <requestid>1145407</requestid>
+  </revision>
 </revisionlist>

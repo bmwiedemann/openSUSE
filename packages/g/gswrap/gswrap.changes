@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  9 12:00:28 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Allow also abstract X11 socket 
+
+-------------------------------------------------------------------
 Thu Sep 14 11:56:38 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Make it work even with different hwcaps versions
