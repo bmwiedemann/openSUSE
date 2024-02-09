@@ -645,4 +645,35 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1142251</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>be4933ea2ce37672d44098b5e97b2716</srcmd5>
+    <version>1.9.13</version>
+    <time>1707519105</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.9.13:
+  + This release adds the following features:
+    - Add a timer inhibit if the daemon took a long time to
+      startup.
+    - Add a concept of 'Test Mode' rather than enabling specific
+      plugins.
+    - Do not idle-quit the daemon if there is a connected D-Bus
+      client.
+  + This release fixes the following bugs:
+    - Allow plugins to opt-out of the child-device first depsolve.
+    - Allow setting multiple flags in LVFS::DeviceFlags.
+    - Do not migrate config comments for removed keys.
+    - Do not request the Advantech BMC to reboot.
+    - Do not warn the user about ESP when using MBR.
+    - Fix a critical warning when adding a PixArt wireless device.
+    - Fix migration of legacy config files.
+    - Only save config values to the mutable config file.
+    - Parse DS-20 descriptors earlier in device setup.
+    - Store the version format in the history database to fix
+      offline reports.
+    - Use the correct GUID for matching realtek-mst and
+      parade-lspcon.
+  + This release adds support for the following hardware:
+    - GoodWay Acer Dock. (forwarded request 1145210 from dimstar)</comment>
+    <requestid>1145221</requestid>
+  </revision>
 </revisionlist>
